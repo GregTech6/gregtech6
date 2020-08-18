@@ -1108,7 +1108,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onCheckSpawnEvent(LivingSpawnEvent.CheckSpawn aEvent) {
-		if (aEvent.getResult() == Result.DENY || aEvent.world.provider.dimensionId != 0 || aEvent.y <= 50) return;
+		if (aEvent.getResult() == Result.DENY || aEvent.world.provider.dimensionId != 0 || aEvent.y + 16 < WD.waterLevel(aEvent.world)) return;
 		if (GENERATE_BIOMES) {
 			if (UT.Code.inside(-96,  95, (int)aEvent.x) && UT.Code.inside(-96,  95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		} else if (GENERATE_NEXUS) {

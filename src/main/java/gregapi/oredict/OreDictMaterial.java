@@ -601,9 +601,16 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		}
 		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7);
 	}
+
+	@Deprecated public OreDictMaterial setTooltip(String aTooltip) {mTooltipChemical = aTooltip; return this;}
 	
-	public OreDictMaterial setTooltip(String aTooltip) {
+	public OreDictMaterial tooltip(String aTooltip) {
 		mTooltipChemical = aTooltip;
+		return this;
+	}
+	
+	public OreDictMaterial handle(OreDictMaterial aHandle) {
+		mHandleMaterial = aHandle;
 		return this;
 	}
 	

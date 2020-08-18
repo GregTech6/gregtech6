@@ -53,12 +53,12 @@ public class MT {
 	protected static OreDictMaterial unused       (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial depricated   (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial invalid      (String aNameOreDict) {return unused(aNameOreDict).put(INVALID_MATERIAL);}
-	protected static OreDictMaterial create       (int aID, String aNameOreDict) {if (aID >= 10000) return null; OreDictMaterial rMaterial = OreDictMaterial.createMaterial(aID, aNameOreDict, aNameOreDict); ALL_MATERIALS_REGISTERED_HERE.add(rMaterial); rMaterial.mHandleMaterial = ANY.WoodPlastic; if (aID > 0) rMaterial.setOriginalMod(MD.GAPI); return rMaterial;}
+	protected static OreDictMaterial create       (int aID, String aNameOreDict) {if (aID >= 10000) return null; OreDictMaterial rMaterial = OreDictMaterial.createMaterial(aID, aNameOreDict, aNameOreDict); ALL_MATERIALS_REGISTERED_HERE.add(rMaterial); if (aID > 0) rMaterial.setOriginalMod(MD.GAPI); return rMaterial.handle(ANY.WoodPlastic);}
 	protected static OreDictMaterial create       (int aID, String aNameOreDict, TextureSet[] aSets) {return create(aID, aNameOreDict).setTextures(aSets);}
 	protected static OreDictMaterial create       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return create(aID, aNameOreDict, aSets).setRGBa(aR, aG, aB, aA).put(aRandomData, aR==256?UNUSED_MATERIAL:null).hide(aR==256);}
 	
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
-	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return create      (aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(ELEMENT).setTooltip(aSymbol);}
+	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return create      (aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(ELEMENT).tooltip(aSymbol);}
 	protected static OreDictMaterial metal        (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return element     (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, aR, aG, aB, aA, aRandomData).put(METAL    , G_INGOT_ORES, SMITHABLE, MELTING        , EXTRUDER, aMeltingPoint < 1200 ? new Object[] {EXTRUDER_SIMPLE, FURNACE, MORTAR} : null);}
 	protected static OreDictMaterial metalloid    (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return element     (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, aR, aG, aB, aA, aRandomData).put(METALLOID, G_INGOT_ORES, SMITHABLE, MELTING, MOLTEN, EXTRUDER, aMeltingPoint < 1200 ? new Object[] {EXTRUDER_SIMPLE, FURNACE, MORTAR} : null);}
 	protected static OreDictMaterial nonmetal     (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return element     (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, aR, aG, aB, aA, aRandomData).put(NONMETAL);}
@@ -77,9 +77,9 @@ public class MT {
 	protected static OreDictMaterial platingroup  (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB         , Object... aRandomData) {return precmetal   (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, aR, aG, aB,255, aRandomData).put(PLATINUM_GROUP);}
 	protected static OreDictMaterial posttrans    (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, long aR, long aG, long aB         , Object... aRandomData) {return metal       (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, aR, aG, aB,255, aRandomData).put(POST_TRANSITION_METAL);}
 	
-	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData... aTags                                         ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, ELEMENT).setTooltip(aSymbol);}
-	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData[] aTags2, TagData... aTags                       ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, aTags2, ELEMENT).setTooltip(aSymbol);}
-	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData aTag3, TagData[] aTags2, TagData... aTags        ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, aTags2, aTag3, ELEMENT).setTooltip(aSymbol);}
+	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData... aTags                                         ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, ELEMENT).tooltip(aSymbol);}
+	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData[] aTags2, TagData... aTags                       ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, aTags2, ELEMENT).tooltip(aSymbol);}
+	protected static OreDictMaterial element      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData aTag3, TagData[] aTags2, TagData... aTags        ) {return create      (aID, aNameOreDict, aSets, 256, 256, 256, 255).setStats(aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter).put(aTags, aTags2, aTag3, ELEMENT).tooltip(aSymbol);}
 	protected static OreDictMaterial unknown      (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons                                                                                            , TagData... aTags                                         ) {return element     (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, 1000, 3000, 0, SET_SHINY                                                        ).put(aTags).hide().aspects(TC.RADIO, 1);}
 	protected static OreDictMaterial metalloid    (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData... aTags                                         ) {return element     (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, 256, 256, 256, 255).put(aTags, METALLOID, G_INGOT_ORES, SMITHABLE, MELTING, MOLTEN, EXTRUDER, aMeltingPoint < 1200 ? new Object[] {EXTRUDER_SIMPLE, FURNACE, MORTAR} : null);}
 	protected static OreDictMaterial alkali       (int aID, String aNameOreDict, String aSymbol, long aProtonsAndElectrons, long aNeutrons, long aMeltingPoint, long aBoilingPoint, double aGramPerCubicCentimeter, TextureSet[] aSets, TagData... aTags                                         ) {return metal       (aID, aNameOreDict, aSymbol, aProtonsAndElectrons, aNeutrons, aMeltingPoint, aBoilingPoint, aGramPerCubicCentimeter, aSets, 256, 256, 256, 255).put(aTags, ALKALI_METAL, MOLTEN);}
@@ -191,8 +191,8 @@ public class MT {
 	protected static OreDictMaterial crystaldcmp  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return crystal         (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(DECOMPOSABLE);}
 	protected static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
 	protected static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(ELECTROLYSER);}
-	protected static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255, aRandomData).lens(aColor).put(MD.TC , ANY.ThaumCrystal, COMMON_ORE, MAGICAL, UNBURNABLE).setOreMultiplier(2).visDefault();}
-	protected static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127, aRandomData).lens(aColor).put(MD.HEX, ANY.Hexorium    , COMMON_ORE, GLOWING, MORTAR, BRITTLE, CRYSTALLISABLE, BLACKLISTED_SMELTER).setSmelting(null, 0).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).aspects(TC.VITREUS, 3, aColor == DYE_INDEX_Black ? TC.TENEBRAE : aColor == DYE_INDEX_White ? TC.LUX : TC.SENSUS, 4).setLocal(DYE_NAMES[aColor] + " Hexorium").qual(2, 5.0F, aColor == DYE_INDEX_Black ? 512 : aColor == DYE_INDEX_White ? 384 : 256, 2).visDefault();}
+	protected static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255, aRandomData).lens(aColor).put(MD.TC , ANY.ThaumCrystal, COMMON_ORE, MAGICAL, UNBURNABLE).handle(ANY.WoodMagical).setOreMultiplier(2).visDefault();}
+	protected static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127, aRandomData).lens(aColor).put(MD.HEX, ANY.Hexorium    , COMMON_ORE, GLOWING, MORTAR, BRITTLE, CRYSTALLISABLE, BLACKLISTED_SMELTER).setSmelting(null, 0).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).aspects(TC.VITREUS, 3, aColor == DYE_INDEX_Black ? TC.TENEBRAE : aColor == DYE_INDEX_White ? TC.LUX : TC.SENSUS, 4).setLocal(DYE_NAMES[aColor] + " Hexorium").qual(2, 5.0, aColor == DYE_INDEX_Black ? 512 : aColor == DYE_INDEX_White ? 384 : 256, 2).visDefault();}
 	protected static OreDictMaterial valgem       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(G_GEM_ORES_TRANSPARENT, CRYSTAL, VALUABLE);}
 	protected static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(DECOMPOSABLE).setSmelting(null, 0);}
 	protected static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
@@ -280,8 +280,8 @@ public class MT {
 		return rMaterial;
 	}
 	
-	protected static OreDictMaterial woodnormal(int aID, String aNameOreDict, String aLocal, long aR, long aG, long aB, Object... aRandomData) {
-		OreDictMaterial rMaterial = create(aID, aNameOreDict, SET_WOOD, aR, aG, aB, 255, aRandomData, G_WOOD, ANY.Wood, ANY.WoodPlastic, ANY.WoodNormal, ANY.WoodDefault, ANY.WoodUntreated, WOOD, MORTAR, TICKS_PER_SMELT/2, FLAMMABLE, APPROXIMATE).setLocal(aLocal).uumMcfg( 0, C, 6*U, H2O,15*U).aspects(TC.ARBOR, 1).setBurning(Ash, U9).setSmelting(Ash, U4).qual(1, 2.0, 16, 0).heat(400, 500);
+	protected static OreDictMaterial woodnormal(int aID, String aNameOreDict, String aLocal, long aR, long aG, long aB, double aSpeed, long aDurability, Object... aRandomData) {
+		OreDictMaterial rMaterial = create(aID, aNameOreDict, SET_WOOD, aR, aG, aB, 255, aRandomData, G_WOOD, ANY.Wood, ANY.WoodPlastic, ANY.WoodNormal, ANY.WoodDefault, ANY.WoodUntreated, WOOD, MORTAR, TICKS_PER_SMELT/2, FLAMMABLE, APPROXIMATE).setLocal(aLocal).uumMcfg( 0, C, 6*U, H2O,15*U).aspects(TC.ARBOR, 1).setBurning(Ash, U9).setSmelting(Ash, U4).qual(1, aSpeed, aDurability, 0).heat(400, 500);
 		String tPlank = "plank"+rMaterial.mNameInternal, tStick = "stick"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
 		OreDictManager.INSTANCE.addReRegistration(tStick, OD.stickWood);
@@ -355,15 +355,15 @@ public class MT {
 	
 	/** Some subatomic Particles and, this might be useful if Projectile Materials have to be determined and you shoot a Laser (Photons in that case) or something Radioactive. */
 	public static final OreDictMaterial
-	y       , Photon                    =   y       = create(   1, "Photon"     ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(255, 255, 255, 255).put(PARTICLE).setTooltip("y").hide(),
-	v       , Neutrino                  =   v       = create(   2, "Neutrino"   ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(180, 180, 180,   0).put(PARTICLE).setTooltip("v").hide(),
-	n       , Neutron                   =   n       = create(   3, "Neutron"    ).setStatsElement( 0, 0, 1, 0, 0).heat(0,0,0).setRGBa(128, 128, 128,   0).put(PARTICLE).setTooltip("n").hide(),
-	p       , Proton                    =   p       = create(   4, "Proton"     ).setStatsElement( 1, 0, 0, 0, 0).heat(0,0,0).setRGBa(255,   0,   0,   0).put(PARTICLE).setTooltip("p").hide(),
-	e       , Electron                  =   e       = create(   5, "Electron"   ).setStatsElement( 0, 1, 0, 0, 0).heat(0,0,0).setRGBa(  0,   0, 255,   0).put(PARTICLE).setTooltip("e").hide();
+	y       , Photon                    =   y       = create(   1, "Photon"     ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(255, 255, 255, 255).put(PARTICLE).tooltip("y").hide(),
+	v       , Neutrino                  =   v       = create(   2, "Neutrino"   ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(180, 180, 180,   0).put(PARTICLE).tooltip("v").hide(),
+	n       , Neutron                   =   n       = create(   3, "Neutron"    ).setStatsElement( 0, 0, 1, 0, 0).heat(0,0,0).setRGBa(128, 128, 128,   0).put(PARTICLE).tooltip("n").hide(),
+	p       , Proton                    =   p       = create(   4, "Proton"     ).setStatsElement( 1, 0, 0, 0, 0).heat(0,0,0).setRGBa(255,   0,   0,   0).put(PARTICLE).tooltip("p").hide(),
+	e       , Electron                  =   e       = create(   5, "Electron"   ).setStatsElement( 0, 1, 0, 0, 0).heat(0,0,0).setRGBa(  0,   0, 255,   0).put(PARTICLE).tooltip("e").hide();
 	
 	/** Yes, I consider Magic as some kind of Element. I placed it at the Spot of "Anti-Empty", since Slot 0 is for the "Empty" Material, and "Anti-Empty" = "Magically-Full", or some crazy shit like that. Also Magic has negative Mass. */
 	public static final OreDictMaterial
-	Ma      , Magic                     =   Ma      = create( 4000, "Magic"     ).setStatsElement( 0, 0, 0,-1, 0).heat(0,0,0).setRGBa(255,   0, 255,   0).setTextures(SET_SHINY).put(ELEMENT, MAGICAL, UNBURNABLE).setTooltip("Ma").hide().qual(3, 10.0, 5120, 5);
+	Ma      , Magic                     =   Ma      = create( 4000, "Magic"     ).setStatsElement( 0, 0, 0,-1, 0).heat(0,0,0).setRGBa(255,   0, 255,   0).setTextures(SET_SHINY).put(ELEMENT, MAGICAL, UNBURNABLE).tooltip("Ma").hide().qual(3, 10.0, 5120, 5);
 	
 	/**
 	 * All the Elements and a few of their Isotopes.
@@ -793,7 +793,7 @@ public class MT {
 	Teo     = unknown( 3980, 1460),
 	Tee     = unknown( 3990, 1465),
 	
-	Neutronium = unused("Neutronium").qual(3, 6.0, 81920, 6).put(IGNORE_IN_COLOR_LOG).setTooltip("Nt"),
+	Neutronium = unused("Neutronium").qual(3, 6.0, 81920, 6).put(IGNORE_IN_COLOR_LOG).tooltip("Nt"),
 	
 	
 	
@@ -1640,16 +1640,16 @@ public class MT {
 	Octine                  = metalmachore  ( 8786, "Octine"                                        , 255, 128,  32     , MOLTEN, MAGICAL, GLOWING, UNBURNABLE, BURNING)                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.MORTUUS, 1).qual(3, 8.0,  900, 2).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500),
 	
 	
-	HSSG                    = alloymachine  ( 8796, "HSS-G"                                         , 153, 153,   0     , MOLTEN).qual(3, 10.0F, 4000, 3)                                                                                                           .uumMcfg( 0, TungstenSteel  , 5*U, Cr               , 1*U, Mo               , 2*U, V                , 1*U)                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 1, TC.MACHINA, 1).alloyCentrifuge(),
-	HSSE                    = alloymachine  ( 8797, "HSS-E"                                         ,  51, 102,   0     , MOLTEN).qual(3, 10.0F, 5120, 4)                                                                                                           .uumMcfg( 0, HSSG           , 6*U, Co               , 1*U, Mn               , 1*U, Si               , 1*U)                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.MACHINA, 2).alloyCentrifuge(),
-	HSSS                    = alloymachine  ( 8798, "HSS-S"                                         , 102,   0,  51     , MOLTEN).qual(3, 14.0F, 3000, 4)                                                                                                           .uumMcfg( 0, HSSG           , 6*U, Osmiridium       , 2*U, Ir               , 1*U)                                                                          .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.MACHINA, 2, TC.NEBRISUM, 1).alloyCentrifuge(),
+	HSSG                    = alloymachine  ( 8796, "HSS-G"                                         , 153, 153,   0     , MOLTEN).qual(3, 10.0, 4000, 3)                                                                                                            .uumMcfg( 0, TungstenSteel  , 5*U, Cr               , 1*U, Mo               , 2*U, V                , 1*U)                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 1, TC.MACHINA, 1).alloyCentrifuge(),
+	HSSE                    = alloymachine  ( 8797, "HSS-E"                                         ,  51, 102,   0     , MOLTEN).qual(3, 10.0, 5120, 4)                                                                                                            .uumMcfg( 0, HSSG           , 6*U, Co               , 1*U, Mn               , 1*U, Si               , 1*U)                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.MACHINA, 2).alloyCentrifuge(),
+	HSSS                    = alloymachine  ( 8798, "HSS-S"                                         , 102,   0,  51     , MOLTEN).qual(3, 14.0, 3000, 4)                                                                                                            .uumMcfg( 0, HSSG           , 6*U, Osmiridium       , 2*U, Ir               , 1*U)                                                                          .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.MACHINA, 2, TC.NEBRISUM, 1).alloyCentrifuge(),
 	
 	
 	Bedrockium              = metalmachore  ( 8795, "Bedrockium"            , SET_ROUGH             ,  88,  88,  88     , WITHER_PROOF, ENDER_DRAGON_PROOF)                                                                                                                                                                                                                                                                     .aspects(TC.METALLUM, 1, TC.TERRA, 10).heat(2000),
 	
 	
-	Draconium               = metalmachore  ( 8791, "Draconium"                                     , 150,  50, 250     , MOLTEN, WITHER_PROOF, ENDER_DRAGON_PROOF).qual(3, 16.0F,  5000, 4)                                                                                                                                                                                                                                    .aspects(TC.METALLUM, 2, TC.ALIENIS, 1).heat(4500),
-	DraconiumAwakened       = alloymachine  ( 8792, "DraconiumAwakened"                             , 250, 150,  50     , MOLTEN, WITHER_PROOF, ENDER_DRAGON_PROOF, GLOWING).qual(3, 24.0F, 10000, 5)                                                               .setMcfg( 1, Draconium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.ALIENIS, 4).heat(5500).setLocal("Awakened Draconium"),
+	Draconium               = metalmachore  ( 8791, "Draconium"                                     , 150,  50, 250     , MOLTEN, WITHER_PROOF, ENDER_DRAGON_PROOF).qual(3, 16.0,  5000, 4)                                                                                                                                                                                                                                     .aspects(TC.METALLUM, 2, TC.ALIENIS, 1).heat(4500),
+	DraconiumAwakened       = alloymachine  ( 8792, "DraconiumAwakened"                             , 250, 150,  50     , MOLTEN, WITHER_PROOF, ENDER_DRAGON_PROOF, GLOWING).qual(3, 24.0, 10000, 5)                                                                .setMcfg( 1, Draconium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.ALIENIS, 4).heat(5500).setLocal("Awakened Draconium"),
 	
 	
 	CrystalMatrix           = slloymachine  ( 8799, "Crystal Matrix"                                ,  83, 231, 234     , VALUABLE, UNBURNABLE, MAGICAL, WITHER_PROOF, ENDER_DRAGON_PROOF).qual(3,        20.0,     25600,  4)                                      .setMcfg( 1, Diamond        ,20*U, NetherStar       , 2*U)                                                                                                  .aspects(TC.VITREUS, 8, TC.PRAECANTIO, 4, TC.NEBRISUM, 4).heat(3896, 5127),
@@ -2890,7 +2890,7 @@ public class MT {
 			, "However most of the time a Gamma Ray hits a Naquadah Vein, it just explodes, what is the main Factor of Naquadria being very rare. Also Naquadria turns back into Naquadah after a few thousand years."
 			};
 			
-			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = DarkThaumium.mHandleMaterial = Thaumium.mHandleMaterial = VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedVis.mHandleMaterial = InfusedWater.mHandleMaterial = ANY.WoodMagical;
+			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = Thaumium.mHandleMaterial = ANY.WoodMagical;
 			GaiaSpirit.mHandleMaterial = MT.ElvenElementium;
 			FierySteel.mHandleMaterial = Firestone.mHandleMaterial = Blaze.mHandleMaterial = Blaze;
 			Endium.mHandleMaterial = Endstone;
@@ -2902,7 +2902,7 @@ public class MT {
 			Etx.mHandleMaterial = Etx;
 			Vb.mHandleMaterial = VibraniumSteel.mHandleMaterial = VibraniumSilver.mHandleMaterial = VibraniumSteel;
 			Vibramantium.mHandleMaterial = Vibramantium;
-			VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedWater.mHandleMaterial = InfusedVis.mHandleMaterial = MD.TC.mLoaded?Thaumium:DamascusSteel;
+			VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedWater.mHandleMaterial = InfusedVis.mHandleMaterial = DarkThaumium.mHandleMaterial = MD.TC.mLoaded ? Thaumium : ANY.WoodMagical;
 		}
 	}
 	
@@ -3109,121 +3109,121 @@ public class MT {
 	public static class WOODS {
 		@SuppressWarnings("hiding")
 		public static final OreDictMaterial
-		Oak                 = woodnormal( 9300, "Oak"                     , "Oak"                 , 180, 144,  90, MD.MC),
-		Birch               = woodnormal( 9301, "Birch"                   , "Birch"               , 215, 204, 142, MD.MC),
-		Spruce              = woodnormal( 9302, "Spruce"                  , "Spruce"              , 102,  79,  47, MD.MC),
-		Jungle              = woodnormal( 9303, "Junglewood"              , "Junglewood"          , 177, 128,  92, MD.MC),
-		Acacia              = woodnormal( 9304, "Acacia"                  , "Acacia"              , 186, 104,  59, MD.MC),
-		DarkOak             = woodnormal( 9305, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21, MD.MC),
-		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106, MD.NePl),
-		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, MD.NePl),
+		Oak                 = woodnormal( 9300, "Oak"                     , "Oak"                 , 180, 144,  90, 3.0, 32, MD.MC),
+		Birch               = woodnormal( 9301, "Birch"                   , "Birch"               , 215, 204, 142, 2.5, 24, MD.MC),
+		Spruce              = woodnormal( 9302, "Spruce"                  , "Spruce"              , 102,  79,  47, 3.0, 24, MD.MC),
+		Jungle              = woodnormal( 9303, "Junglewood"              , "Junglewood"          , 177, 128,  92, 2.0, 16, MD.MC),
+		Acacia              = woodnormal( 9304, "Acacia"                  , "Acacia"              , 186, 104,  59, 2.5, 24, MD.MC),
+		DarkOak             = woodnormal( 9305, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21, 3.5, 32, MD.MC),
+		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106, 2.5, 24, MD.NePl),
+		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, 3.5, 32, MD.NePl),
 		
-		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, MD.GT).setPulver(MT.Wood, U),
-		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63, MD.BoP),
-		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15, MD.GT),
-		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0, MD.GT),
-		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125, MD.GT),
-		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44, MD.ERE),
-		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      ,  73,  48,  16, MD.ERE),
-		Bleached            = woodnormal( 9407, "WoodBleached"            , "Bleached Wood"       , 255, 255, 255, MD.ERE),
-		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231, MD.TCFM),
+		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, 1.5,  8, MD.GT).setPulver(MT.Wood, U),
+		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63, 1.5,  8, MD.BoP),
+		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15, 1.0,  8, MD.GT),
+		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0, 1.5,  8, MD.GT),
+		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125, 1.0,  8, MD.GT),
+		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44, 1.0,  8, MD.ERE),
+		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      ,  73,  48,  16, 3.0, 32, MD.ERE),
+		Bleached            = woodnormal( 9407, "WoodBleached"            , "Bleached Wood"       , 255, 255, 255, 2.0, 16, MD.ERE),
+		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231, 1.0, 64, MD.TCFM),
 		
-		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26, MD.FR),
-		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0, MD.FR),
-		BlueMahoe           = woodnormal( 9315, "BlueMahoe"               , "Blue Mahoe"          ,  15, 103, 254, MD.FR),
-		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175, MD.BINNIE),
-		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192, MD.HaC),
-		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0, MD.TROPIC),
-		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245, MD.GT),
+		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26, 3.0, 24, MD.FR),
+		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0, 2.0, 16, MD.FR),
+		BlueMahoe           = woodnormal( 9315, "BlueMahoe"               , "Blue Mahoe"          ,  15, 103, 254, 3.0, 24, MD.FR),
+		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175, 2.5, 16, MD.BINNIE),
+		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192, 1.5, 16, MD.HaC),
+		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0, 3.0, 16, MD.TROPIC),
+		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245, 4.0, 64, MD.GT),
 		
-		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58, MD.TF),
-		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142, MD.ARS),
-		Ogre                = woodnormal( 9322, "Ogrewood"                , "Ogrewood"            , 180,  90, 106, MD.MoCr),
-		Wyvern              = woodnormal( 9323, "Wyvernwood"              , "Wyvernwood"          ,  77, 159, 158, MD.MoCr),
-		Aspen               = woodnormal( 9324, "Aspen"                   , "Aspen"               ,  68,  65,  50, MD.TFC),
-		DouglasFir          = woodnormal( 9325, "DouglasFir"              , "Douglas Fir"         , 249, 197, 154, MD.TFC),
-		Sycamore            = woodnormal( 9326, "Sycamore"                , "Sycamore"            , 214, 155,  69, MD.TFC),
-		WhiteCedar          = woodnormal( 9327, "WhiteCedar"              , "White Cedar"         , 219, 219, 205, MD.TFC),
-		WhiteElm            = woodnormal( 9328, "WhiteElm"                , "White Elm"           , 162, 167, 103, MD.TFC),
-		Thorntree           = woodnormal( 9329, "Thorntree"               , "Thorntree"           , 180, 144,  90, MD.EB),
-		SilverPine          = woodnormal( 9330, "SilverPine"              , "Silver Pine"         ,  32,   7,  70, MD.EB),
-		Alder               = woodnormal( 9331, "Alder"                   , "Alder"               , 177,  95,  87, MD.WTCH),
-		Hawthorn            = woodnormal( 9332, "Hawthorn"                , "Hawthorn"            , 188, 182, 178, MD.WTCH),
-		Rowan               = woodnormal( 9333, "Rowan"                   , "Rowan"               , 205, 172,  87, MD.WTCH),
-		Mahogany            = woodnormal( 9356, "Mahogany"                , "Mahogany"            , 111,  61,  55, MD.TROPIC),
-		Palm                = woodnormal( 9358, "Palm"                    , "Palm"                , 201, 124,  69, MD.TROPIC),
+		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58, 4.0, 64, MD.TF),
+		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142, 3.5, 48, MD.ARS),
+		Ogre                = woodnormal( 9322, "Ogrewood"                , "Ogrewood"            , 180,  90, 106, 4.0, 48, MD.MoCr),
+		Wyvern              = woodnormal( 9323, "Wyvernwood"              , "Wyvernwood"          ,  77, 159, 158, 4.0, 48, MD.MoCr),
+		Aspen               = woodnormal( 9324, "Aspen"                   , "Aspen"               ,  68,  65,  50, 2.0, 24, MD.TFC),
+		DouglasFir          = woodnormal( 9325, "DouglasFir"              , "Douglas Fir"         , 249, 197, 154, 2.5, 24, MD.TFC),
+		Sycamore            = woodnormal( 9326, "Sycamore"                , "Sycamore"            , 214, 155,  69, 3.0, 16, MD.TFC),
+		WhiteCedar          = woodnormal( 9327, "WhiteCedar"              , "White Cedar"         , 219, 219, 205, 2.5, 24, MD.TFC),
+		WhiteElm            = woodnormal( 9328, "WhiteElm"                , "White Elm"           , 162, 167, 103, 2.0, 32, MD.TFC),
+		Thorntree           = woodnormal( 9329, "Thorntree"               , "Thorntree"           , 180, 144,  90, 3.0, 32, MD.EB),
+		SilverPine          = woodnormal( 9330, "SilverPine"              , "Silver Pine"         ,  32,   7,  70, 3.0, 32, MD.EB),
+		Alder               = woodnormal( 9331, "Alder"                   , "Alder"               , 177,  95,  87, 2.5, 32, MD.WTCH),
+		Hawthorn            = woodnormal( 9332, "Hawthorn"                , "Hawthorn"            , 188, 182, 178, 3.0, 24, MD.WTCH),
+		Rowan               = woodnormal( 9333, "Rowan"                   , "Rowan"               , 205, 172,  87, 3.5, 24, MD.WTCH),
+		Mahogany            = woodnormal( 9356, "Mahogany"                , "Mahogany"            , 111,  61,  55, 4.0, 48, MD.TROPIC),
+		Palm                = woodnormal( 9358, "Palm"                    , "Palm"                , 201, 124,  69, 3.0, 16, MD.TROPIC),
 		
-		Autumn              = woodnormal( 9334, "Autumnwood"              , "Autumn Wood"         , 191,  64,  35, MD.EBXL),
-		Cypress             = woodnormal( 9336, "Cypress"                 , "Cypress"             , 185, 187, 181, MD.EBXL),
-		Fir                 = woodnormal( 9337, "Fir"                     , "Fir"                 , 110, 106,  63, MD.EBXL),
-		JapaneseMaple       = woodnormal( 9338, "JapaneseMaple"           , "Japanese Maple"      , 152,  76,  86, MD.EBXL),
-		RainbowEucalyptus   = woodnormal( 9339, "RainbowEucalyptus"       , "Rainbow Eucalyptus"  , 116, 141, 198, MD.EBXL),
-		Redwood             = woodnormal( 9340, "Redwood"                 , "Redwood"             , 163, 115,  70, MD.EBXL),
-		Sakura              = woodnormal( 9341, "Sakura"                  , "Sakura"              , 250, 161, 122, MD.EBXL),
+		Autumn              = woodnormal( 9334, "Autumnwood"              , "Autumn Wood"         , 191,  64,  35, 2.5, 24, MD.EBXL),
+		Cypress             = woodnormal( 9336, "Cypress"                 , "Cypress"             , 185, 187, 181, 2.5, 16, MD.EBXL),
+		Fir                 = woodnormal( 9337, "Fir"                     , "Fir"                 , 110, 106,  63, 2.0, 32, MD.EBXL),
+		JapaneseMaple       = woodnormal( 9338, "JapaneseMaple"           , "Japanese Maple"      , 152,  76,  86, 3.0, 24, MD.EBXL),
+		RainbowEucalyptus   = woodnormal( 9339, "RainbowEucalyptus"       , "Rainbow Eucalyptus"  , 116, 141, 198, 3.0, 32, MD.EBXL),
+		Redwood             = woodnormal( 9340, "Redwood"                 , "Redwood"             , 163, 115,  70, 3.5, 24, MD.EBXL),
+		Sakura              = woodnormal( 9341, "Sakura"                  , "Sakura"              , 250, 161, 122, 3.0, 32, MD.EBXL),
 		
-		Balsa               = woodnormal( 9342, "Balsa"                   , "Balsa"               , 165, 158, 151, MD.FR),
-		Baobab              = woodnormal( 9343, "Baobab"                  , "Baobab"              , 136, 145,  95, MD.FR),
-		Cherry              = woodnormal( 9344, "Cherrywood"              , "Cherrywood"          , 173, 124,  50, MD.FR),
-		Chestnut            = woodnormal( 9345, "Chestnutwood"            , "Chestnutwood"        , 179, 162,  85, MD.FR),
-		Citrus              = woodnormal( 9346, "Citruswood"              , "Citruswood"          , 152, 163,  28, MD.FR),
-		Cocobolo            = woodnormal( 9347, "Cocobolowood"            , "Cocobolowood"        , 121,  18,   2, MD.FR),
-		Ebony               = woodnormal( 9348, "Ebony"                   , "Ebony"               ,  58,  52,  46, MD.FR),
-		Giganteum           = woodnormal( 9349, "Giganteumwood"           , "Giganteumwood"       , 102,  47,  39, MD.FR),
-		Greenheart          = woodnormal( 9350, "Greenheart"              , "Greenheart"          ,  76, 118,  88, MD.FR),
-		Ipe                 = woodnormal( 9351, "Ipe"                     , "Ipe"                 , 101,  58,  39, MD.FR),
-		Kapok               = woodnormal( 9352, "Kapok"                   , "Kapok"               , 116, 108,  52, MD.FR),
-		Larch               = woodnormal( 9353, "Larch"                   , "Larch"               , 215, 151, 133, MD.FR),
-		Lime                = woodnormal( 9354, "Limewood"                , "Limewood"            , 206, 154, 104, MD.FR),
-		Mahoe               = woodnormal( 9355, "Mahoe"                   , "Mahoe"               , 121, 147, 166, MD.FR),
-		Padauk              = woodnormal( 9357, "Padauk"                  , "Padauk"              , 179,  99,  59, MD.FR, "Paduak"),
-		Papaya              = woodnormal( 9359, "Papayawood"              , "Papayawood"          , 218, 200, 109, MD.FR),
-		Plum                = woodnormal( 9360, "Plumwood"                , "Plumwood"            , 171,  99, 123, MD.FR),
-		Poplar              = woodnormal( 9361, "Poplar"                  , "Poplar"              , 204, 204, 123, MD.FR),
-		Sequoia             = woodnormal( 9362, "Sequoia"                 , "Sequoia"             , 142,  87,  84, MD.FR),
-		Teak                = woodnormal( 9363, "Teak"                    , "Teak"                , 123, 115,  95, MD.FR),
-		Walnut              = woodnormal( 9364, "Walnutwood"              , "Walnutwood"          ,  98,  78,  64, MD.FR),
-		Wenge               = woodnormal( 9365, "Wenge"                   , "Wenge"               ,  88,  81,  70, MD.FR),
-		Zebrawood           = woodnormal( 9366, "Zebrawood"               , "Zebrawood"           , 172, 139,  86, MD.FR),
-		Pine                = woodnormal( 9335, "Pine"                    , "Pine"                , 187, 151,  77, MD.FR),
+		Balsa               = woodnormal( 9342, "Balsa"                   , "Balsa"               , 165, 158, 151, 2.0, 16, MD.FR),
+		Baobab              = woodnormal( 9343, "Baobab"                  , "Baobab"              , 136, 145,  95, 2.0, 16, MD.FR),
+		Cherry              = woodnormal( 9344, "Cherrywood"              , "Cherrywood"          , 173, 124,  50, 2.5, 24, MD.FR),
+		Chestnut            = woodnormal( 9345, "Chestnutwood"            , "Chestnutwood"        , 179, 162,  85, 3.0, 32, MD.FR),
+		Citrus              = woodnormal( 9346, "Citruswood"              , "Citruswood"          , 152, 163,  28, 2.5, 24, MD.FR),
+		Cocobolo            = woodnormal( 9347, "Cocobolowood"            , "Cocobolowood"        , 121,  18,   2, 3.0, 16, MD.FR),
+		Ebony               = woodnormal( 9348, "Ebony"                   , "Ebony"               ,  58,  52,  46, 4.0, 48, MD.FR),
+		Giganteum           = woodnormal( 9349, "Giganteumwood"           , "Giganteumwood"       , 102,  47,  39, 2.0, 16, MD.FR),
+		Greenheart          = woodnormal( 9350, "Greenheart"              , "Greenheart"          ,  76, 118,  88, 2.5, 16, MD.FR),
+		Ipe                 = woodnormal( 9351, "Ipe"                     , "Ipe"                 , 101,  58,  39, 2.0, 24, MD.FR),
+		Kapok               = woodnormal( 9352, "Kapok"                   , "Kapok"               , 116, 108,  52, 2.0, 24, MD.FR),
+		Larch               = woodnormal( 9353, "Larch"                   , "Larch"               , 215, 151, 133, 2.5, 16, MD.FR),
+		Lime                = woodnormal( 9354, "Limewood"                , "Limewood"            , 206, 154, 104, 2.5, 24, MD.FR),
+		Mahoe               = woodnormal( 9355, "Mahoe"                   , "Mahoe"               , 121, 147, 166, 3.0, 24, MD.FR),
+		Padauk              = woodnormal( 9357, "Padauk"                  , "Padauk"              , 179,  99,  59, 2.0, 24, MD.FR, "Paduak"),
+		Papaya              = woodnormal( 9359, "Papayawood"              , "Papayawood"          , 218, 200, 109, 3.0, 16, MD.FR),
+		Plum                = woodnormal( 9360, "Plumwood"                , "Plumwood"            , 171,  99, 123, 2.5, 16, MD.FR),
+		Poplar              = woodnormal( 9361, "Poplar"                  , "Poplar"              , 204, 204, 123, 2.5, 24, MD.FR),
+		Sequoia             = woodnormal( 9362, "Sequoia"                 , "Sequoia"             , 142,  87,  84, 2.0, 24, MD.FR),
+		Teak                = woodnormal( 9363, "Teak"                    , "Teak"                , 123, 115,  95, 3.0, 16, MD.FR),
+		Walnut              = woodnormal( 9364, "Walnutwood"              , "Walnutwood"          ,  98,  78,  64, 3.0, 32, MD.FR),
+		Wenge               = woodnormal( 9365, "Wenge"                   , "Wenge"               ,  88,  81,  70, 2.5, 16, MD.FR),
+		Zebrawood           = woodnormal( 9366, "Zebrawood"               , "Zebrawood"           , 172, 139,  86, 2.0, 24, MD.FR),
+		Pine                = woodnormal( 9335, "Pine"                    , "Pine"                , 187, 151,  77, 3.0, 32, MD.FR),
 		
-		Darkwood            = woodnormal( 9367, "Darkwood"                , "Darkwood"            ,  51,  45,  54, MD.BoP),
-		Ethereal            = woodnormal( 9368, "Etherealwood"            , "Etherealwood"        ,  76, 150, 115, MD.BoP),
-		Gold                = woodnormal( 9369, "Goldwood"                , "Goldwood"            , 210, 187, 151, MD.BoP),
-		HellBark            = woodnormal( 9370, "Hellbark"                , "Hellbark"            , 200, 150, 100, MD.BoP),
-		Jacaranda           = woodnormal( 9371, "Jacaranda"               , "Jacaranda"           , 201, 171, 162, MD.BoP),
-		Mangrove            = woodnormal( 9372, "Mangrove"                , "Mangrove"            , 236, 228, 217, MD.BoP),
-		SacredOak           = woodnormal( 9373, "SacredOak"               , "Sacred Oak"          , 159, 132,  77, MD.BoP),
-		Magic               = woodnormal( 9374, "Magicwood"               , "Magicwood"           ,  90, 105, 180, MD.BoP),
+		Darkwood            = woodnormal( 9367, "Darkwood"                , "Darkwood"            ,  51,  45,  54, 2.5, 32, MD.BoP),
+		Ethereal            = woodnormal( 9368, "Etherealwood"            , "Etherealwood"        ,  76, 150, 115, 3.0, 24, MD.BoP),
+		Gold                = woodnormal( 9369, "Goldwood"                , "Goldwood"            , 210, 187, 151, 2.5, 24, MD.BoP),
+		HellBark            = woodnormal( 9370, "Hellbark"                , "Hellbark"            , 200, 150, 100, 4.0, 16, MD.BoP),
+		Jacaranda           = woodnormal( 9371, "Jacaranda"               , "Jacaranda"           , 201, 171, 162, 2.5, 16, MD.BoP),
+		Mangrove            = woodnormal( 9372, "Mangrove"                , "Mangrove"            , 236, 228, 217, 2.0, 24, MD.BoP),
+		SacredOak           = woodnormal( 9373, "SacredOak"               , "Sacred Oak"          , 159, 132,  77, 4.0, 48, MD.BoP),
+		Magic               = woodnormal( 9374, "Magicwood"               , "Magicwood"           ,  90, 105, 180, 3.5, 32, MD.BoP),
 		
-		Apple               = woodnormal( 9375, "Applewood"               , "Applewood"           ,  97,  49,  36, MD.BINNIE_TREE),
-		Ash                 = woodnormal( 9376, "Ashwood"                 , "Ashwood"             , 244, 190,  90, MD.BINNIE_TREE),
-		Beech               = woodnormal( 9377, "Beech"                   , "Beech"               , 226, 144,  68, MD.BINNIE_TREE),
-		Box                 = woodnormal( 9378, "WoodBox"                 , "Box"                 , 253, 237, 192, MD.BINNIE_TREE),
-		Brazilwood          = woodnormal( 9379, "Brazilwood"              , "Brazilwood"          , 112,  55,  84, MD.BINNIE_TREE),
-		Butternut           = woodnormal( 9380, "Butternutwood"           , "Butternutwood"       , 237, 163, 112, MD.BINNIE_TREE),
-		Cedar               = woodnormal( 9381, "Cedar"                   , "Cedar"               , 217,  88,  37, MD.BINNIE_TREE),
-		Elder               = woodnormal( 9382, "Elderwood"               , "Elderwood"           , 189, 141, 115, MD.BINNIE_TREE),
-		Elm                 = woodnormal( 9383, "Elm"                     , "Elm"                 , 243, 163,  90, MD.BINNIE_TREE),
-		Eucalyptus          = woodnormal( 9384, "Eucalyptus"              , "Eucalyptus"          , 245, 164, 130, MD.BINNIE_TREE),
-		Fig                 = woodnormal( 9385, "Figwood"                 , "Figwood"             , 202, 126,  27, MD.BINNIE_TREE),
-		Gingko              = woodnormal( 9386, "Gingko"                  , "Gingko"              , 243, 226, 173, MD.BINNIE_TREE),
-		Hemlock             = woodnormal( 9387, "Hemlock"                 , "Hemlock"             , 196, 174,  96, MD.BINNIE_TREE),
-		Hickory             = woodnormal( 9388, "Hickory"                 , "Hickory"             , 218, 174, 134, MD.BINNIE_TREE),
-		Holly               = woodnormal( 9389, "Holly"                   , "Holly"               , 248, 242, 226, MD.BINNIE_TREE),
-		Hornbeam            = woodnormal( 9390, "Hornbeam"                , "Hornbeam"            , 195, 147,  87, MD.BINNIE_TREE),
-		Iroko               = woodnormal( 9391, "Iroko"                   , "Iroko"               , 117,  47,   0, MD.BINNIE_TREE),
-		Locust              = woodnormal( 9392, "Locust"                  , "Locust"              , 195, 140,  87, MD.BINNIE_TREE),
-		Logwood             = woodnormal( 9393, "Logwood"                 , "Logwood"             , 166,  44,  34, MD.BINNIE_TREE),
-		Maclura             = woodnormal( 9394, "Maclura"                 , "Maclura"             , 242, 168,  29, MD.BINNIE_TREE),
-		Olive               = woodnormal( 9395, "Olivewood"               , "Olivewood"           , 174, 169, 129, MD.BINNIE_TREE),
-		Pear                = woodnormal( 9396, "Pearwood"                , "Pearwood"            , 180, 127,  97, MD.BINNIE_TREE),
-		PinkIvory           = woodnormal( 9397, "PinkIvory"               , "Pink Ivory"          , 234, 125, 148, MD.BINNIE_TREE),
-		Purpleheart         = woodnormal( 9398, "Purpleheart"             , "Purpleheart"         ,  91,  22,  45, MD.BINNIE_TREE),
-		Rosewood            = woodnormal( 9399, "Rosewood"                , "Rosewood"            , 128,  12,   0, MD.BINNIE_TREE),
-		Sweetgum            = woodnormal( 9400, "Sweetgum"                , "Sweetgum"            , 215, 140,  74, MD.BINNIE_TREE),
-		Syzgium             = woodnormal( 9401, "Syzgium"                 , "Syzgium"             , 221, 184, 183, MD.BINNIE_TREE),
-		Whitebeam           = woodnormal( 9402, "Whitebeam"               , "Whitebeam"           , 192, 183, 174, MD.BINNIE_TREE),
-		Yew                 = woodnormal( 9403, "Yew"                     , "Yew"                 , 226, 160, 114, MD.BINNIE_TREE);
+		Apple               = woodnormal( 9375, "Applewood"               , "Applewood"           ,  97,  49,  36, 2.0, 24, MD.BINNIE_TREE),
+		Ash                 = woodnormal( 9376, "Ashwood"                 , "Ashwood"             , 244, 190,  90, 3.5, 16, MD.BINNIE_TREE),
+		Beech               = woodnormal( 9377, "Beech"                   , "Beech"               , 226, 144,  68, 2.0, 32, MD.BINNIE_TREE),
+		Box                 = woodnormal( 9378, "Boxwood"                 , "Boxwood"             , 253, 237, 192, 2.0, 24, MD.BINNIE_TREE),
+		Brazilwood          = woodnormal( 9379, "Brazilwood"              , "Brazilwood"          , 112,  55,  84, 3.0, 16, MD.BINNIE_TREE),
+		Butternut           = woodnormal( 9380, "Butternutwood"           , "Butternutwood"       , 237, 163, 112, 2.5, 16, MD.BINNIE_TREE),
+		Cedar               = woodnormal( 9381, "Cedar"                   , "Cedar"               , 217,  88,  37, 2.0, 24, MD.BINNIE_TREE),
+		Elder               = woodnormal( 9382, "Elderwood"               , "Elderwood"           , 189, 141, 115, 2.5, 16, MD.BINNIE_TREE),
+		Elm                 = woodnormal( 9383, "Elm"                     , "Elm"                 , 243, 163,  90, 3.0, 24, MD.BINNIE_TREE),
+		Eucalyptus          = woodnormal( 9384, "Eucalyptus"              , "Eucalyptus"          , 245, 164, 130, 2.5, 24, MD.BINNIE_TREE),
+		Fig                 = woodnormal( 9385, "Figwood"                 , "Figwood"             , 202, 126,  27, 2.0, 16, MD.BINNIE_TREE),
+		Gingko              = woodnormal( 9386, "Gingko"                  , "Gingko"              , 243, 226, 173, 2.0, 24, MD.BINNIE_TREE),
+		Hemlock             = woodnormal( 9387, "Hemlock"                 , "Hemlock"             , 196, 174,  96, 3.0, 16, MD.BINNIE_TREE),
+		Hickory             = woodnormal( 9388, "Hickory"                 , "Hickory"             , 218, 174, 134, 2.5, 16, MD.BINNIE_TREE),
+		Holly               = woodnormal( 9389, "Holly"                   , "Holly"               , 248, 242, 226, 2.0, 24, MD.BINNIE_TREE),
+		Hornbeam            = woodnormal( 9390, "Hornbeam"                , "Hornbeam"            , 195, 147,  87, 2.0, 16, MD.BINNIE_TREE),
+		Iroko               = woodnormal( 9391, "Iroko"                   , "Iroko"               , 117,  47,   0, 3.0, 24, MD.BINNIE_TREE),
+		Locust              = woodnormal( 9392, "Locust"                  , "Locust"              , 195, 140,  87, 2.0, 24, MD.BINNIE_TREE),
+		Logwood             = woodnormal( 9393, "Logwood"                 , "Logwood"             , 166,  44,  34, 2.5, 24, MD.BINNIE_TREE),
+		Maclura             = woodnormal( 9394, "Maclura"                 , "Maclura"             , 242, 168,  29, 2.0, 32, MD.BINNIE_TREE),
+		Olive               = woodnormal( 9395, "Olivewood"               , "Olivewood"           , 174, 169, 129, 3.0, 16, MD.BINNIE_TREE),
+		Pear                = woodnormal( 9396, "Pearwood"                , "Pearwood"            , 180, 127,  97, 2.5, 24, MD.BINNIE_TREE),
+		PinkIvory           = woodnormal( 9397, "PinkIvory"               , "Pink Ivory"          , 234, 125, 148, 2.5, 24, MD.BINNIE_TREE),
+		Purpleheart         = woodnormal( 9398, "Purpleheart"             , "Purpleheart"         ,  91,  22,  45, 2.0, 16, MD.BINNIE_TREE),
+		Rosewood            = woodnormal( 9399, "Rosewood"                , "Rosewood"            , 128,  12,   0, 3.0, 16, MD.BINNIE_TREE),
+		Sweetgum            = woodnormal( 9400, "Sweetgum"                , "Sweetgum"            , 215, 140,  74, 2.5, 16, MD.BINNIE_TREE),
+		Syzgium             = woodnormal( 9401, "Syzgium"                 , "Syzgium"             , 221, 184, 183, 2.5, 24, MD.BINNIE_TREE),
+		Whitebeam           = woodnormal( 9402, "Whitebeam"               , "Whitebeam"           , 192, 183, 174, 3.0, 16, MD.BINNIE_TREE),
+		Yew                 = woodnormal( 9403, "Yew"                     , "Yew"                 , 226, 160, 114, 2.5, 32, MD.BINNIE_TREE);
 	}
 	
 	/** The "I don't care" Section, everything I don't want to do anything with right now. Just to make the Material Finder shut up about them. But I do see potential uses in some of these Materials. */
