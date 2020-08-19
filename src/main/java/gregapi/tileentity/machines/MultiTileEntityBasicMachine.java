@@ -415,7 +415,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void onMagnifyingGlass(List<String> aChatReturn) {
-		aChatReturn.add("========================================");
 		aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
 		aChatReturn.add((mMode & 2) != 0 ?"Only accept Input on empty Input Slots":"Accept Input on all Input Slots");
 		if (SIDES_VALID[mItemAutoInput  ]) aChatReturn.add(mDisabledItemInput  ?"Auto Item Input Disabled"  :"Auto Item Input Enabled"  );

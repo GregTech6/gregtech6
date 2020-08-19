@@ -57,6 +57,7 @@ Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator
 [CHANGED] If you non-sneak rightclick Bedrock Ores you will get the overall Bedrock Drill Recipe List in NEI, making it easier to discover what their use is. (Does not apply to Bedrock Fluid Springs, obviously)
 [ADDED] All Basic Machines now have a Screwdriver Mode, which allows them to not accept more Items in their Input Slots once there is already a Stack inside. This makes precision inserting of Inputs using "Exact Mode Hoppers" and Item Pipes into a Bank of multiple Machines much easier than what you had to do before with Redstone, Shutters and Progress Sensors.
 [ADDED] Thaumcraft Flowers and Saplings should now generate in certain Biomes in the Twilight Forest.
+[ADDED] Recipe for the Name Tag. Yes that did not exist so far in GT6... I somehow forgot adding that one and thought I already did add it...
 [ADDED] Transformation Powder can now be used to turn Mob Spawners into their Twilight Forest Variant and back. You will need 16 Powder at a time for it to work though. I also added some additional Mappings for Spawners just in case.
 [ADDED] The Cube of Annihilation of Twilight Forest is now craftable using a bunch of different Trophies and Loot Items.
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.

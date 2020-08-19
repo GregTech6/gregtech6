@@ -284,6 +284,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.dispenser              , 1, 0), DEF                            ,  "B" ,  "D"        , 'B', ST.make(Items.bow, 1, 0), 'D', Blocks.dropper);
 		CR.shaped(ST.make(Blocks.noteblock              , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "WWW", "WRW", "WWW", 'W', OD.plankAnyWood, 'R', OD.itemRedstone);
 		CR.shaped(ST.make(Blocks.redstone_lamp          , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , " R ", "RGR", " R ", 'G', Blocks.glowstone, 'R', OD.itemRedstone);
+		CR.shaped(ST.make(Items.name_tag                , 1, 0), DEF_MIR                        , " S" ,  "Pq"       , 'S', OD.itemString, 'P', OD.paperEmpty);
 		
 		CR.shaped(ST.make(Blocks.tnt                    , 1, 0), DEF                            , "GSG", "SGS", "GSG", 'G', OP.dust.dat(MT.Gunpowder), 'S', OP.dust.dat(ANY.SiO2));
 		

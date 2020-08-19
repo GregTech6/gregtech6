@@ -28,36 +28,39 @@ import org.objectweb.asm.tree.MethodNode;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 
-/* Technomancy's ore dict processing step takes like 20 minutes on my computer to load with my modpack because it
- * exponentially goes through the oredict, just to do stuff that GT6 already does but better and faster, so disable that
- * to load a whole lot faster.  With just GT6, Thaumcraft, and Technomancy it still drops loading time from 5m to 1m20s.
- *
- * TODO:  This probably breaks technomancy's ore processing, could be fixed by manually populating it with GT6 data.
- * To populate it would just involve calling this with all ore/ingot material combos:
- * * `theflogat.technomancy.util.Ore.newOre(String oreDictName, ItemStack ingot, String nameNoPrefix)`
- * Where `oreDictName` is `"oreMaterial"` for every given material and nameNoPrefix is the corresponding `"Material" and
- * `ingot` is the ItemStack output when that `"oreMaterial"` is smelted in a vanilla(ish?) furnace, plus whatever else
- * might be appropriate.
- */
 /**
- * @author OvermindDL1
+ * @author Gregorius Techneticies
  */
-public class Technomancy_ExtremelySlowLoadFix implements IClassTransformer {
+public class CoFHLib_HashFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
-		if (!name.equals("theflogat.technomancy.util.Ore")) return basicClass;
-
+		if (!name.equals("cofh.lib.util.ComparableItem") && !name.equals("cofh.lib.util.ItemWrapper")) return basicClass;
+		
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
-
-		for (MethodNode m: classNode.methods) {
-			if (m.name.equals("init") && m.desc.equals("()V")) {
-				m.instructions.clear();
-				m.instructions.insert(new InsnNode(Opcodes.RETURN));
-			}
+		
+		// Screw that improperly coded Hashcode Function that violates Java Standards and crashes the Game.
+		// I'm gonna return 0 for it no matter what. It was broken before anyways, so I don't hurt anything.
+		// Also here have some comedy right from the Javadocs of the Class I am fixing with this ASM.
+		
+		// Description of the cofh.lib.util.ComparableItem Class:
+		// "Wrapper for an Item/Metadata combination post 1.7. Quick and dirty, allows for Integer-based Hashes without collisions."
+		
+		// What actually is inside the hashcode Function:
+		// "todo: this hash conflicts a lot"
+		// return (metadata & 65535) | getId() << 16;
+		
+		// And yes the getId() part violates the Hash Rule of Java since Item IDs constantly change when you load Worlds or join Servers.
+		
+		for (MethodNode m: classNode.methods) if (m.name.equals("hashcode")) {
+			// TODO Maybe put an Identity Hash for the Item instance and XOR it with the metadata.
+			m.instructions.clear();
+			m.instructions.insert(new InsnNode(Opcodes.ICONST_0));
+			m.instructions.insert(new InsnNode(Opcodes.IRETURN));
+			break;
 		}
-
+		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
 		classNode.accept(writer);
 		return writer.toByteArray();

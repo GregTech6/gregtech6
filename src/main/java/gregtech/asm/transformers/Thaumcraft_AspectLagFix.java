@@ -41,6 +41,9 @@ import net.minecraft.util.IntHashMap;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 
+/**
+ * @author OvermindDL1
+ */
 public class Thaumcraft_AspectLagFix implements IClassTransformer {
 	// TODO:  Probably do same thing to thaumcraft.common.lib.crafting.ThaumcraftCraftingManager.getObjectTags?
 	@Override

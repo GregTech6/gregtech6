@@ -28,6 +28,9 @@ import org.objectweb.asm.tree.MethodNode;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 
+/**
+ * @author OvermindDL1
+ */
 public class CoFHCore_CrashFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {

@@ -19,12 +19,20 @@
 
 package gregtech.asm.transformers;
 
-import net.minecraft.launchwrapper.IClassTransformer;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.LabelNode;
+import org.objectweb.asm.tree.MethodNode;
 
+import net.minecraft.launchwrapper.IClassTransformer;
+
+/**
+ * @author OvermindDL1
+ */
 public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
