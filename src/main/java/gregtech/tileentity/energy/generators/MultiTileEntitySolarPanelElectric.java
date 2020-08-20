@@ -38,6 +38,7 @@ import gregapi.tileentity.energy.ITileEntityEnergyElectricityEmitter;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -130,7 +131,9 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 			if (worldObj.isThundering()) {
 				mEnergy = 0;
 			} else {
-				if (worldObj.isDaytime()) {
+				if (WD.dimTF(worldObj)) {
+					mEnergy = mOutput / 2;
+				} else if (worldObj.isDaytime()) {
 					if (worldObj.isRaining() && getBiome().rainfall > 0) {
 						mEnergy = mOutput / 8;
 					} else {

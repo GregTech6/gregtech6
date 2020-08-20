@@ -278,12 +278,17 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
-	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
-		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+	public boolean mActLikeWeb = F;
+	public BlockBaseFluid setWeb() {
+		mActLikeWeb = T;
 		return this;
 	}
 	
 	public List<int[]> mEffects = new ArrayListNoNulls<>();
+	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
+		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+		return this;
+	}
 	
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
@@ -291,5 +296,6 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
 			if (getMaterial() != Material.water && SERVER_TIME % 20 == 0) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}
+		if (mActLikeWeb) aEntity.setInWeb();
 	}
 }

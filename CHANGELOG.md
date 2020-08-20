@@ -40,6 +40,7 @@ Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydr
 Thaumcraft and Ars Magica will have their important Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
 Netherite Plus will have its Ancient Debris spawn in the Deadrock near the final Twilight Castle, so you don't have to go to the Nether for it.
 Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
+Solar Panels in Twilight Forest will perpetually produce 4 EU/t all time, so exactly half of what they make in the Overworld during Daytime.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
