@@ -36,8 +36,8 @@ public class Compat_Recipes_Factorization extends CompatMods {
 	public Compat_Recipes_Factorization(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Factorization Recipes.");
-		RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4        .fluid(U, T), NF, ST.make(MD.FZ, "acid", 1, 0));
-		RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.AquaRegia    .fluid(U, T), NF, ST.make(MD.FZ, "acid", 1, 1));
+		RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4    .fluid(U, T), NF, ST.make(MD.FZ, "acid", 1, 0));
+		RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.AquaRegia.fluid(U, T), NF, ST.make(MD.FZ, "acid", 1, 1));
 		
 		RM.sawing(16, 800, F, 5000, ST.make(MD.FZ, "daybarrel", 1, W), IL.Plank.get(42), OP.dustSmall.mat(MT.Wood, 30));
 		

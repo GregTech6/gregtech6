@@ -249,17 +249,18 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return FL.Coolant_IC2.is(aFluidToFill) ||
-				FL.distw(aFluidToFill) ||
-				FL.Thorium_Salt.is(aFluidToFill) ||
-				MT.Sn.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.Na.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.HDO.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.D2O.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.T2O.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.LiCl.mLiquid.isFluidEqual(aFluidToFill) ||
-				MT.He.mGas.isFluidEqual(aFluidToFill) ||
-				MT.CO2.mGas.isFluidEqual(aFluidToFill) ? mTanks[0] : null;
+		return FL.Coolant_IC2.is(aFluidToFill)
+			|| FL.distw(aFluidToFill)
+			|| FL.Thorium_Salt.is(aFluidToFill)
+			|| MT.Sn.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.Na.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.HDO.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.D2O.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.T2O.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.LiCl.mLiquid.isFluidEqual(aFluidToFill)
+			|| MT.He.mGas.isFluidEqual(aFluidToFill)
+			|| MT.CO2.mGas.isFluidEqual(aFluidToFill)
+			? mTanks[0] : null;
 	}
 	
 	@Override
@@ -275,17 +276,18 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		if (!(FL.Coolant_IC2.is(aFluid) ||
-				FL.distw(aFluid) ||
-				FL.Thorium_Salt.is(aFluid) ||
-				MT.Sn.mLiquid.isFluidEqual(aFluid) ||
-				MT.Na.mLiquid.isFluidEqual(aFluid) ||
-				MT.HDO.mLiquid.isFluidEqual(aFluid) ||
-				MT.D2O.mLiquid.isFluidEqual(aFluid) ||
-				MT.T2O.mLiquid.isFluidEqual(aFluid) ||
-				MT.LiCl.mLiquid.isFluidEqual(aFluid) ||
-				MT.He.mGas.isFluidEqual(aFluid) ||
-				MT.CO2.mGas.isFluidEqual(aFluid))) return 0;
+		if (!( FL.Coolant_IC2.is(aFluid)
+			|| FL.distw(aFluid)
+			|| FL.Thorium_Salt.is(aFluid)
+			|| MT.Sn.mLiquid.isFluidEqual(aFluid)
+			|| MT.Na.mLiquid.isFluidEqual(aFluid)
+			|| MT.HDO.mLiquid.isFluidEqual(aFluid)
+			|| MT.D2O.mLiquid.isFluidEqual(aFluid)
+			|| MT.T2O.mLiquid.isFluidEqual(aFluid)
+			|| MT.LiCl.mLiquid.isFluidEqual(aFluid)
+			|| MT.He.mGas.isFluidEqual(aFluid)
+			|| MT.CO2.mGas.isFluidEqual(aFluid)
+			)) return 0;
 		updateInventory();
 		return mTanks[0].fill(aFluid, aDoFill);
 	}

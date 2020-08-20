@@ -626,7 +626,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.naquadah"          , T, T,  10000, MT.Nq                    , BlocksGT.FlowersA, 7, GEN_MARS);
 		new WorldgenOresBedrock("ore.bedrock.adamantine"        , T, T,  10000, MT.Adamantine            , BlocksGT.FlowersA, 7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS);
 		
-		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   8000, ANY.Hexorium, BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Hexorium Flower
+		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   8000, ANY.Hexorium, BlocksGT.FlowersA, 8, GEN_FLOOR);
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomBedrockOreSlots", 0); i < j; i++) {
 		new WorldgenOresBedrock("ore.bedrock.custom" + (i<10?"0":"") + i, F, T, 100000, MT.NULL, BlocksGT.FlowersA, 7, GEN_FLOOR);

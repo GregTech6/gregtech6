@@ -111,13 +111,15 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				}
 			}
 		} else {
-			int tCalc = (int) UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
+			long tCalc = UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 
-			// TODO Raycasting through Lead and similar Blocks.
-			if (tCalc > 0 && SERVER_TIME % 20 == 10)
+			// TODO Raycasting through Lead, Water and similar Blocks.
+			if (tCalc > 0 && SERVER_TIME % 20 == 10) {
 				for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>) worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord - tCalc, yCoord - tCalc, zCoord - tCalc, xCoord + 1 + tCalc, yCoord + 1 + tCalc, zCoord + 1 + tCalc))) {
-					UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), tCalc);
+					int tStrength = UT.Code.bindInt((long)(tCalc - tEntity.getDistance(xCoord, yCoord, zCoord)));
+					if (tStrength > 0) UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 				}
+			}
 
 			mRunning = (tCalc != 0);
 
@@ -192,7 +194,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>) worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord - tCalc, yCoord - tCalc, zCoord - tCalc, xCoord + 1 + tCalc, yCoord + 1 + tCalc, zCoord + 1 + tCalc))) {
-						UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), tCalc);
+						UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), (int)tCalc);
 					}
 				}
 			}

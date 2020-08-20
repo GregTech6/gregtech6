@@ -37,7 +37,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public BlockFlowersA(String aUnlocalised) {
-		super(null, aUnlocalised, 8, Textures.BlockIcons.FLOWERS_A);
+		super(null, aUnlocalised, 9, Textures.BlockIcons.FLOWERS_A);
 		LH.add(getUnlocalizedName()+ ".0.name", "Altered Andesite Buckwheat"); // Gold, Silver
 		LH.add(getUnlocalizedName()+ ".1.name", "Crosby Buckwheat"); // Gold, Silver, Sulfur
 		LH.add(getUnlocalizedName()+ ".2.name", "Alpine Catchfly"); // Copper
@@ -46,6 +46,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".5.name", "Tufted Evening Primrose"); // Uranium
 		LH.add(getUnlocalizedName()+ ".6.name", "Narcissus Sheldonia"); // Cooperite
 		LH.add(getUnlocalizedName()+ ".7.name", "Orechid"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".8.name", "Hexalily"); // Hexorium
 		
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);
@@ -67,7 +68,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"); break;
 		case  6: aList.add("Indicates presence of a Cooperite Deposit nearby"); break;
 		case  7: aList.add("Indicates presence of an Ore Deposit nearby"); break;
-		case  8: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby"); break;
 		case  9: aList.add("Indicates presence of some Ore Deposit nearby"); break;
 		case 10: aList.add("Indicates presence of some Ore Deposit nearby"); break;
 		case 11: aList.add("Indicates presence of some Ore Deposit nearby"); break;

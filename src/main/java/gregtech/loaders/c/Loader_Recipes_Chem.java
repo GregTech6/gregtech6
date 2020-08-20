@@ -51,9 +51,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Ca), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U * 2, F), OM.dust(MT.CaCO3, U*5));
 		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mg), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U * 2, F), OM.dust(MT.MgCO3, U*5));
 		
-		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.Cl .gas(U*2, T)), MT.HCl.fluid(U*4, F), MT.O.gas(U, F));
-		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.SO3.gas(U*4, T)), MT.H2SO4.fluid(U*7, F), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16,  192, FL.array(FL.mul(tFluid, 3), MT.NO2.gas(U*9, T)), MT.HNO3.liquid(U*10, F), MT.NO.gas(U*2, F));
+		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.Cl .gas(U*2, T)), MT.HCl  .fluid (U* 4, F), MT.O.gas(U, F));
+		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.SO3.gas(U*4, T)), MT.H2SO4.liquid(U* 7, F), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16,  192, FL.array(FL.mul(tFluid, 3), MT.NO2.gas(U*9, T)), MT.HNO3 .liquid(U*10, F), MT.NO.gas(U*2, F));
 		
 		RM.Mixer        .addRecipe0(T, 16,  224, FL.array(FL.mul(tFluid, 3), MT.H2S2O7.liquid(U*11, T)), MT.H2SO4.liquid(U*14, F), ZL_IS);
 		
@@ -350,6 +350,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), FL.make(tFluid,  8000), MT.CO2.gas(12*U  , F), ZL_IS);
 		
 		}
+		
+		RM.Injector.addRecipe1(T, 64, 256, OM.dust(MT.Th, 1*U), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(10000), ZL_IS);
 		
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		

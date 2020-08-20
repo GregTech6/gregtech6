@@ -94,6 +94,7 @@ public enum FL {
 	, Coolant_IC2               ("ic2coolant"                                               , SIMPLE, LIQUID)
 	, Coolant_IC2_Hot           ("ic2hotcoolant"                                            , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Freezing_Ooze             ("ooze"                                                     , SIMPLE, LIQUID, BROKEN)
+	, Thorium_Salt              ("thoriumsalt"                                              , SIMPLE, LIQUID)
 	
 	, Hot_Molten_Sodium         ("hotmoltensodium"                                          , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Molten_Tin            ("hotmoltentin"                                             , SIMPLE, LIQUID, POWER_CONDUCTING)
@@ -106,8 +107,7 @@ public enum FL {
 	, Lava                      ("lava"                                                     , SIMPLE, LIQUID)
 	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
 	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
-
-	, Thorium_Salt              ("thoriumsalt"                                              , SIMPLE, LIQUID)
+	
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)

@@ -136,7 +136,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		tBehaviour = new Behavior_Spray_Foam_Remover(IL.Spray_Empty.get(1), IL.Spray_Foam_Remover_Used.get(1), IL.Spray_Foam_Remover.get(1), 256);
 		addItemBehavior(1196, tBehaviour); addItemBehavior(1197, tBehaviour);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.H2SO4.fluid(16*U, T), NF, IL.Spray_Foam_Remover.get(1));
-		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.HNO3.fluid(16*U, T), NF, IL.Spray_Foam_Remover.get(1));
+		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.HNO3 .fluid(16*U, T), NF, IL.Spray_Foam_Remover.get(1));
 		ItemsGT.addNEIRedirects(IL.Spray_Foam_Remover_Used.get(1), IL.Spray_Foam_Remover.get(1));
 		
 		
