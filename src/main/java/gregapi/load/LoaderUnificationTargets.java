@@ -19,6 +19,8 @@
 
 package gregapi.load;
 
+import static gregapi.data.CS.*;
+
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -410,8 +412,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.CosmicNeutronium       , ST.make(MD.AV, "Resource_Block", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Infinity               , ST.make(MD.AV, "Resource_Block", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.CrystalMatrix          , ST.make(MD.AV, "Crystal_Matrix", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2SO4                  , ST.make(MD.FZ, "acid", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.AquaRegia              , ST.make(MD.FZ, "acid", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2SO4                  , ST.make(MD.FZ, "acid", 1, 0), T, MD.COFH_CORE.mLoaded, T);
+		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.AquaRegia              , ST.make(MD.FZ, "acid", 1, 1), T, MD.COFH_CORE.mLoaded, T);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Netherrack             , ST.make(MD.FZ, "nether_powder", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , ST.make(MD.RT, "ingredient", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , ST.make(MD.RT, "ingredient", 1, 3));
