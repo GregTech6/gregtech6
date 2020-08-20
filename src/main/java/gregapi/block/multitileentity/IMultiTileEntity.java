@@ -113,9 +113,9 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnBlockClicked                     extends IMultiTileEntity {public void onBlockClicked(EntityPlayer aPlayer);}
 	public static interface IMTE_VelocityToAddToEntity              extends IMultiTileEntity {public void velocityToAddToEntity(Entity aEntity, Vec3 aVector);}
 	public static interface IMTE_SetBlockBoundsBasedOnState         extends IMultiTileEntity {public void setBlockBoundsBasedOnState(Block aBlock);}
-	public static interface IMTE_IsProvidingWeakPower               extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */public int isProvidingWeakPower(byte aSide);}
-	public static interface IMTE_IsProvidingStrongPower             extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */public int isProvidingStrongPower(byte aSide);}
-	public static interface IMTE_OnEntityCollidedWithBlock          extends IMultiTileEntity {public void onEntityCollidedWithBlock(Entity aEntity);}
+	public static interface IMTE_IsProvidingWeakPower               extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */ public int isProvidingWeakPower(byte aOppositeSide);}
+	public static interface IMTE_IsProvidingStrongPower             extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */ public int isProvidingStrongPower(byte aOppositeSide);}
+	public static interface IMTE_OnEntityCollidedWithBlock          extends IMultiTileEntity {/** This Function has been named wrong. It should be onEntityOverlapWithBlock */ public void onEntityCollidedWithBlock(Entity aEntity);}
 	public static interface IMTE_CanBlockStay                       extends IMultiTileEntity {public boolean canBlockStay();}
 	public static interface IMTE_OnFallenUpon                       extends IMultiTileEntity {public void onFallenUpon(Entity aEntity, float aFallDistance);}
 	public static interface IMTE_OnBlockHarvested                   extends IMultiTileEntity {public void onBlockHarvested(int aMetaData, EntityPlayer aPlayer);}

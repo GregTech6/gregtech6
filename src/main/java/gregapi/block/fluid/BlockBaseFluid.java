@@ -41,6 +41,7 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
@@ -278,24 +279,29 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
+	
 	public boolean mActLikeWeb = F;
 	public BlockBaseFluid setWeb() {
 		mActLikeWeb = T;
 		return this;
 	}
+	/** This Function has been named wrong. It should be onEntityOverlapWithBlock */
+	@Override
+	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
+		if (mActLikeWeb) aEntity.setInWeb();
+	}
+	
 	
 	public List<int[]> mEffects = new ArrayListNoNulls<>();
 	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
 		return this;
 	}
-	
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
 		if (!mEffects.isEmpty() && (FL.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
 			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
 			if (getMaterial() != Material.water && SERVER_TIME % 20 == 0) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}
-		if (mActLikeWeb) aEntity.setInWeb();
 	}
 }

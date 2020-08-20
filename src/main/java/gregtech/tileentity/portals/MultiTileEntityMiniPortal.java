@@ -353,8 +353,8 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	}
 	
 	@Override
-	public int isProvidingWeakPower(byte aSide) {
-		return mRedstone[OPPOSITES[aSide]];
+	public int isProvidingWeakPower(byte aOppositeSide) {
+		return mRedstone[OPPOSITES[aOppositeSide]];
 	}
 	
 	// Relay Inventories
