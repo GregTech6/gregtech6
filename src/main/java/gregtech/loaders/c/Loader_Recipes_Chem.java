@@ -351,7 +351,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		}
 		
-		RM.Injector.addRecipe1(T, 64, 256, OM.dust(MT.Th, 1*U), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(10000), ZL_IS);
+		RM.Injector.addRecipe1(T, 64, 256, OM.dust(MT.Th), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(9216), ZL_IS);
 		
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		
