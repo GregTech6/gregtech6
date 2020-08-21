@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,22 +26,28 @@ import java.util.List;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.cover.CoverData;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidHandler;
+import openblocks.common.LiquidXpUtils;
+import openmods.utils.EnchantmentUtils;
 
 /**
  * @author Gregorius Techneticies
@@ -50,55 +56,55 @@ public class CoverDrain extends AbstractCoverAttachment {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity.canTick() && aData.mTileEntity instanceof IFluidHandler);}
 	
 	@Override
-	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
+	public void onTickPre(byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aData.mTileEntity instanceof IFluidHandler) {
-			if (SIDES_TOP_HORIZONTAL[aSide] && SERVER_TIME % 100 == 10 && aData.mTileEntity.getWorld().isRaining()) {
+			if (SIDES_TOP_HORIZONTAL[aCoverSide] && SERVER_TIME % 100 == 10 && aData.mTileEntity.getWorld().isRaining()) {
 				BiomeGenBase tBiome = aData.mTileEntity.getBiome();
 				if (tBiome.rainfall > 0 && tBiome.temperature >= 0.2) {
-					Block tInFront = aData.mTileEntity.getBlockAtSide(aSide);
-					if (!(tInFront instanceof BlockLiquid) && !(tInFront instanceof IFluidBlock) && !tInFront.isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), FORGE_DIR_OPPOSITES[aSide]) && !tInFront.isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), FORGE_DIR[SIDE_TOP])) {
+					Block tInFront = aData.mTileEntity.getBlockAtSide(aCoverSide);
+					if (!(tInFront instanceof BlockLiquid) && !(tInFront instanceof IFluidBlock) && !tInFront.isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), FORGE_DIR_OPPOSITES[aCoverSide]) && !tInFront.isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), FORGE_DIR[SIDE_TOP])) {
 						boolean temp = F;
 						if (tInFront instanceof BlockMetaType || tInFront instanceof BlockSlab || tInFront instanceof BlockStairs) {
-							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aSide], OFFSETS_Y[aSide]+1, OFFSETS_Z[aSide]);
+							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aCoverSide], OFFSETS_Y[aCoverSide]+1, OFFSETS_Z[aCoverSide]);
 						} else {
-							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aSide], OFFSETS_Y[aSide]  , OFFSETS_Z[aSide]) && (SIDES_TOP[aSide] || aData.mTileEntity.getBlockOffset(OFFSETS_X[aSide], -1, OFFSETS_Z[aSide]).isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getY()-1, aData.mTileEntity.getOffsetZ(aSide), FORGE_DIR[SIDE_TOP]));
+							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aCoverSide], OFFSETS_Y[aCoverSide]  , OFFSETS_Z[aCoverSide]) && (SIDES_TOP[aCoverSide] || aData.mTileEntity.getBlockOffset(OFFSETS_X[aCoverSide], -1, OFFSETS_Z[aCoverSide]).isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getY()-1, aData.mTileEntity.getOffsetZ(aCoverSide), FORGE_DIR[SIDE_TOP]));
 						}
-						if (temp) FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
+						if (temp) FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
 					}
 				}
 			}
 			if (aReceivedBlockUpdate || SERVER_TIME % 20 == 5) {
-				Block tBlock = aData.mTileEntity.getBlockAtSide(aSide);
+				Block tBlock = aData.mTileEntity.getBlockAtSide(aCoverSide);
 				FluidStack tFluid = NF;
 				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) {
-						if (WD.infiniteWater(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide))) {
-							FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
+					if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) {
+						if (WD.infiniteWater(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide))) {
+							FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
 						} else {
 							tFluid = FL.Water.make(1000);
 						}
 					}
 				} else
 				if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) tFluid = FL.Lava.make(1000);
+					if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) tFluid = FL.Lava.make(1000);
 				} else
 				if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
 				} else
 				if (tBlock == BlocksGT.Ocean) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Ocean.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Ocean.make(16000), T);
 				} else
 				if (tBlock == BlocksGT.Swamp) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Dirty_Water.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Dirty_Water.make(16000), T);
 				} else
-				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), F);
+				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), F);
 				
-				if (tFluid != null && (SIDES_HORIZONTAL[aSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aSide])) {
-					if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], tFluid, T)) {
+				if (tFluid != null && (SIDES_HORIZONTAL[aCoverSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aCoverSide])) {
+					if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) {
 						if (tBlock instanceof IFluidBlock) {
-							((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), T);
+							((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), T);
 						} else {
-							aData.mTileEntity.getWorld().setBlockToAir(aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide));
+							aData.mTileEntity.getWorld().setBlockToAir(aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide));
 						}
 					}
 				}
@@ -107,11 +113,31 @@ public class CoverDrain extends AbstractCoverAttachment {
 	}
 	
 	@Override
+	public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {
+		if (SIDES_TOP[aCoverSide]) {
+			if (MD.OB.mLoaded && !aData.mStopped && !aEntity.worldObj.isRemote && SERVER_TIME % 5 == 0 && aData.mTileEntity instanceof IFluidHandler && aEntity instanceof EntityPlayer && ((EntityPlayer)aEntity).isSneaking() && FL.XP.exists()) try {
+				FluidStack tFluid = FL.XP.make(LiquidXpUtils.xpToLiquidRatio(EnchantmentUtils.getPlayerXP(((EntityPlayer)aEntity))));
+				if (tFluid.amount <= 0) return T;
+				int tDrainedXP = LiquidXpUtils.liquidToXpRatio((int)FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, F));
+				tFluid.amount = LiquidXpUtils.xpToLiquidRatio(tDrainedXP);
+				if (tFluid.amount <= 0) return T;
+				if (!FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) return T;
+				EnchantmentUtils.addPlayerXP(((EntityPlayer)aEntity), -tDrainedXP);
+				UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, aEntity);
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+			return T;
+		}
+		return F;
+	}
+	
+	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Collects Fluid Blocks (if not against Gravity)");
 		aList.add(LH.Chat.CYAN + "Collects Rainwater (not in Dry or Cold Areas)");
 		aList.add(LH.Chat.CYAN + "Will work infinitely in Rivers and Oceans");
+		if (MD.OB.mLoaded)
+		aList.add(LH.Chat.BLINKING_CYAN + "Stand on this an Sneak to drain XP into the attached Tank");
 	}
 	
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}

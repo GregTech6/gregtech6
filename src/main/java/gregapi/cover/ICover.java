@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -146,7 +146,7 @@ public interface ICover {
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H);
 	
 	/**
-	 * Called when some Entity walks over this Cover.
+	 * Called when some Entity walks over this Cover. Obviously aCoverSide is always SIDE_TOP aka 1.
 	 */
 	public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity);
 	

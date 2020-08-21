@@ -1988,6 +1988,7 @@ public class CS {
 		, MC_EXPLODE            = "random.explode"
 		, MC_EAT                = "random.eat"
 		, MC_DRINK              = "random.drink"
+		, MC_XP                 = "random.orb"
 		, MC_TNT_IGNITE         = "game.tnt.primed"
 		, MC_IGNITE             = "fire.ignite"
 		, MC_DIG_CLOTH          = "dig.cloth"
