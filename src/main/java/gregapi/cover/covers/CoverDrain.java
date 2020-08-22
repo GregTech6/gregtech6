@@ -165,6 +165,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Sewage.make(Math.max(1, (long)(20 * aEntity.width * aEntity.width * aEntity.height))), T);
 				}
 			}
+			// TODO Slime Liquid from Slimes? Do Slimes even count as Walking on those Drains?
 			return T;
 		}
 		return F;
@@ -183,7 +184,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 		else if (FL.Mob.exists())
 		aList.add(LH.Chat.DGREEN + "Will collect XP Orbs to make Mob Essence");
 		if (MD.OB.mLoaded)
-		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain XP into the attached Tank");
+		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain your XP");
 	}
 	
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}

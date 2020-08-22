@@ -171,11 +171,9 @@ public class WoodEntry {
 		mPlankEntry.mWoodEntries.add(this);
 		
 		if (ST.valid(mLog) && !WoodDictionary.WOODS.containsKey(new ItemStackContainer(mLog))) {
-			if (ST.meta(mLog) == W) for (int i = 0; i < 16; i++) {
-			ItemStack tLog = ST.copyMeta(i, mLog);
-			if (OM.materialcontained(tLog, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tLog, mMaterialBark == mMaterialWood ? new OreDictItemData(mMaterialWood, (mPlankCountBuzz+3)*U) : new OreDictItemData(mMaterialWood, (mPlankCountBuzz+2)*U, mMaterialBark, U));
-			}
-			if (OM.materialcontained(mLog, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mLog, mMaterialBark == mMaterialWood ? new OreDictItemData(mMaterialWood, (mPlankCountBuzz+3)*U) : new OreDictItemData(mMaterialWood, (mPlankCountBuzz+2)*U, mMaterialBark, U));
+			if (ST.meta(mLog) == W) for (int i = 0; i < 16; i++) {ItemStack tLog = ST.copyMeta(i, mLog);
+			if (OM.materialcontained(tLog, T, MT.Wood, MT.WoodRubber, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tLog, mMaterialBark == mMaterialWood ? new OreDictItemData(mMaterialWood, (mPlankCountBuzz+3)*U) : new OreDictItemData(mMaterialWood, (mPlankCountBuzz+2)*U, mMaterialBark, U));}
+			if (OM.materialcontained(mLog, T, MT.Wood, MT.WoodRubber, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mLog, mMaterialBark == mMaterialWood ? new OreDictItemData(mMaterialWood, (mPlankCountBuzz+3)*U) : new OreDictItemData(mMaterialWood, (mPlankCountBuzz+2)*U, mMaterialBark, U));
 			WoodDictionary.WOODS.put(mLog, this);
 			WoodDictionary.LIST_WOODS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mLog));
