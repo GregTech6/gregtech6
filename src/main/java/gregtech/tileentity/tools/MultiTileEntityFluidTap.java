@@ -23,11 +23,12 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.data.CS.SFX;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
+import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MD;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -42,12 +43,15 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
+import openblocks.common.LiquidXpUtils;
+import openmods.utils.EnchantmentUtils;
 
 /**
  * @author Gregorius Techneticies
@@ -73,19 +77,19 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 		if (isServerSide()) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 			if (tDelegator.mTileEntity instanceof ITileEntityTapAccessible) {
-				FluidStack tFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
-				if (!FL.gas(tFluid, T) && tFluid.amount > 0 && (mAcidProof || !FL.acid(tFluid))) {
+				FluidStack aFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
+				if (!FL.gas(aFluid, T) && aFluid.amount > 0 && (mAcidProof || !FL.acid(aFluid))) {
 					ItemStack aStack = aPlayer.getCurrentEquippedItem();
 					if (aStack == null) {
 						DelegatorTileEntity<TileEntity> tDelegator2 = getAdjacentTileEntity(SIDE_BOTTOM);
 						if (tDelegator2.mTileEntity == null) {
 							if (tDelegator2.getBlock() instanceof BlockCauldron) {
 								byte tMeta = tDelegator2.getMetaData();
-								if (tMeta < 3 && FL.water(tFluid) && tFluid.amount >= 334) {
-									if (tFluid.amount >= 1000 && tMeta <= 0) {
+								if (tMeta < 3 && FL.water(aFluid) && aFluid.amount >= 334) {
+									if (aFluid.amount >= 1000 && tMeta <= 0) {
 										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, 1000, T);
 										tDelegator2.setMetaData((byte)(tMeta + 3));
-									} else if (tFluid.amount >= 667 && tMeta <= 1) {
+									} else if (aFluid.amount >= 667 && tMeta <= 1) {
 										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity,  667, T);
 										tDelegator2.setMetaData((byte)(tMeta + 2));
 									} else if (tMeta <= 2) {
@@ -97,13 +101,34 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 								}
 								return T;
 							}
+							if (FL.XP.is(aFluid)) {
+								if (MD.OB.mLoaded) {
+									try {
+										int tXP = Math.min(LiquidXpUtils.liquidToXpRatio(aFluid.amount), UT.Code.roundUp(EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel+1) - (aPlayer.experience * aPlayer.xpBarCap())));
+										int tDrain = LiquidXpUtils.xpToLiquidRatio(tXP);
+										if (tDrain > 0 && tXP > 0) {
+											((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tDrain, T);
+											worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+										}
+									} catch(Throwable e) {e.printStackTrace(ERR);}
+									return T;
+								}
+								// Even if OpenBlocks is not installed, in case Liquid XP exists somewhere, just turn it into regular XP at the default Rate.
+								int tXP = Math.min(50, aFluid.amount / 20);
+								if (tXP > 0) {
+									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP * 20, T);
+									worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+								}
+								return T;
+							}
+							// Nothing left to check
 							return T;
 						}
 						if (tDelegator2.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator2.mTileEntity instanceof MultiTileEntityMixingBowl) {
-							OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(tFluid.getFluid().getName());
-							tFluid = tFluid.copy();
-							tFluid.amount = Math.min(tFluid.amount, FL.lava(tFluid) ? 1000 : !FL.water(tFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
-							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(FL.fill_(tDelegator2, tFluid, T)), T) != null) {
+							OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(aFluid.getFluid().getName());
+							aFluid = aFluid.copy();
+							aFluid.amount = Math.min(aFluid.amount, FL.lava(aFluid) ? 1000 : !FL.water(aFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
+							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(FL.fill_(tDelegator2, aFluid, T)), T) != null) {
 								UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 								UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
 							}
@@ -111,9 +136,9 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 						}
 						return T;
 					}
-					FluidStack tNewFluid = tFluid.copy();
+					FluidStack tNewFluid = aFluid.copy();
 					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
-					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
+					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 						aStack.stackSize--;
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);

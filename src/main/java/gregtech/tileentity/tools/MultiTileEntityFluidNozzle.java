@@ -70,13 +70,13 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase10Attachment imple
 		if (isServerSide()) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 			if (tDelegator.mTileEntity instanceof ITileEntityTapAccessible) {
-				FluidStack tFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
-				if (FL.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !FL.acid(tFluid))) {
+				FluidStack aFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
+				if (FL.gas(aFluid, F) && aFluid.amount > 0 && (mAcidProof || !FL.acid(aFluid))) {
 					ItemStack aStack = aPlayer.getCurrentEquippedItem();
 					if (aStack == null) return T;
-					FluidStack tNewFluid = tFluid.copy();
+					FluidStack tNewFluid = aFluid.copy();
 					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
-					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
+					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
 						aStack.stackSize--;
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
