@@ -96,8 +96,12 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Retriever_Item.set(                  addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1000), FL.Ocean.make(1000), FL.Dirty_Water.make(1000)), 0, 0, 0);
 		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(1000), FL.Air_Nether.make(1000), FL.Air_End.make(1000)), 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1000), FL.Ocean.make(1000), FL.Dirty_Water.make(1000)), 0, 0, 0);
+		if (FL.XP.exists() || FL.Mob.exists())
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.XP.make(20), FL.Mob.make(66)), 0, 0, 0);
+		if (FL.Sewage.exists())
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sewage.make(1000)), 0, 0, 0);
 		
 		
 		IL.Cover_Logistics_Display_CPU_Logic.set(     addItem(tLastID =  1086, "Logistics Display (CPU Logic)"         , "For use with Logistics Cores and Wiring"         , CoverLogisticsDisplayCPULogic.INSTANCE                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 2), TC.stack(TC.ITER, 1)));
@@ -135,32 +139,32 @@ public class MultiItemTechnological extends MultiItemRandom {
 		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
-		CR.shaped(IL.Cover_Machine_Display          .get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W), 'L', OP.wireGt01.dat(MT.Lumium));
-		CR.shaped(IL.Cover_Auto_Switch              .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W));
+		CR.shaped(IL.Cover_Machine_Display          .get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.lever, 'L', OP.wireGt01.dat(MT.Lumium));
+		CR.shaped(IL.Cover_Auto_Switch              .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.lever);
 		CR.shaped(IL.Cover_Energy_Display           .get(1), CR.DEF_REV, "CLB", "WQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1], 'L', OP.wireGt01.dat(MT.Lumium));
 		CR.shaped(IL.Cover_Redstone_Switch          .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.craftingRedstoneTorch);
-		CR.shaped(IL.Cover_Auto_Switch_Redstone     .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Blocks.lever, 1, W));
-		CR.shaped(IL.Cover_Redstone_Selector        .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Items.comparator, 1, W), 'X', IL.Circuit_Selector.wild(1));
-		CR.shaped(IL.Cover_Manual_Selector          .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Blocks.stone_button, 1, W), 'X', IL.Circuit_Selector.wild(1));
-		CR.shaped(IL.Cover_Auto_Switch_01_Minute    .get(1), CR.DEF_REV, "BWd", "CQ "       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[5], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Auto_Switch_05_Minute    .get(1), CR.DEF_REV, "BW ", "CQd"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[4], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Auto_Switch_10_Minute    .get(1), CR.DEF_REV, "BW ", "CQ ", "  d", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[3], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Auto_Switch_20_Minute    .get(1), CR.DEF_REV, "BW" , "CQ" , " d" , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Auto_Switch_30_Minute    .get(1), CR.DEF_REV, "BW" , "CQ" , "d " , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Auto_Switch_Redstone     .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', Blocks.lever);
+		CR.shaped(IL.Cover_Redstone_Selector        .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', Items.comparator, 'X', IL.Circuit_Selector.wild(1));
+		CR.shaped(IL.Cover_Manual_Selector          .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', Blocks.stone_button, 'X', IL.Circuit_Selector.wild(1));
+		CR.shaped(IL.Cover_Auto_Switch_01_Minute    .get(1), CR.DEF_REV, "BWd", "CQ "       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[5], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
+		CR.shaped(IL.Cover_Auto_Switch_05_Minute    .get(1), CR.DEF_REV, "BW ", "CQd"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[4], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
+		CR.shaped(IL.Cover_Auto_Switch_10_Minute    .get(1), CR.DEF_REV, "BW ", "CQ ", "  d", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[3], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
+		CR.shaped(IL.Cover_Auto_Switch_20_Minute    .get(1), CR.DEF_REV, "BW" , "CQ" , " d" , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
+		CR.shaped(IL.Cover_Auto_Switch_30_Minute    .get(1), CR.DEF_REV, "BW" , "CQ" , "d " , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
 		CR.shaped(IL.Cover_Scale_Energy             .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1]);
-		CR.shaped(IL.Cover_Detector_Possible        .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
-		CR.shaped(IL.Cover_Detector_Passively       .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Detector_Actively        .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W), 'X', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Detector_Possible        .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator);
+		CR.shaped(IL.Cover_Detector_Passively       .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
+		CR.shaped(IL.Cover_Detector_Actively        .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator, 'X', Items.repeater);
 		CR.shaped(IL.Cover_Scale_Progress           .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', OP.gearGtSmall.dat(MT.Brass));
-		CR.shaped(IL.Cover_Detector_Success         .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', OD.craftingRedstoneTorch);
+		CR.shaped(IL.Cover_Detector_Success         .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.stone_button, 'X', OD.craftingRedstoneTorch);
 		CR.shaped(IL.Cover_Drain                    .get(1), CR.DEF_REV, "RRR", "RwR", "RRR", 'R', OP.stick.dat(ANY.Iron));
-		CR.shaped(IL.Cover_Redstone_Emitter         .get(1), CR.DEF_REV, "BQB", "WXW"       , 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', ST.make(Items.comparator, 1, W));
+		CR.shaped(IL.Cover_Redstone_Emitter         .get(1), CR.DEF_REV, "BQB", "WXW"       , 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', Blocks.stone_button, 'X', Items.comparator);
 		CR.shaped(IL.Cover_Vent                     .get(1), CR.DEF_REV, "RRR", "RXR", "RRR", 'R', OP.stick.dat(ANY.Iron), 'X', OP.rotor.dat(ANY.Iron));
 		CR.shaped(IL.Cover_Filter_Item              .get(1), CR.DEF_REV, " Z ", "ZQZ", " Z ", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
 		CR.shaped(IL.Cover_Filter_Fluid             .get(1), CR.DEF_REV, "Z Z", " Q ", "Z Z", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
-		CR.shaped(IL.Cover_Controller               .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
+		CR.shaped(IL.Cover_Controller               .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator);
 		CR.shaped(IL.Cover_Shutter                  .get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
-		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', IL.Circuit_Selector.wild(1));
+		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', Blocks.stone_button, 'X', IL.Circuit_Selector.wild(1));
 		CR.shaped(IL.Cover_Warning                  .get(1), CR.DEF_REV, "GB" , "YQ"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench, 'G', OD.itemGlue);
 		CR.shaped(IL.Cover_Redstone_Conductor_IN    .get(1), CR.DEF_REV,  "R" ,  "Q"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Redstone_Conductor_OUT   .get(1), CR.DEF_REV,  "Q" ,  "R"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
@@ -455,7 +459,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 
 
 		IL.Comp_Laser_Gas_Empty.set(            addItem(tLastID = 11000, "Empty Gas Laser Emitter"          , "For Electric Lasers"                             , TC.stack(TC.LUX, 1), TC.stack(TC.VACUOS, 2)));
-		CR.shaped(IL.Comp_Laser_Gas_Empty.get(1), CR.DEF_REV_NCC, "CWM", "WGx", "MTd", 'W', MT.DATA.CABLES_01[2], 'C', OD_CIRCUITS[2], 'M', OP.plate.dat(MT.Ag), 'T', OP.screw.dat(MT.StainlessSteel), 'G', ST.make(Blocks.glass, 1, W));
+		CR.shaped(IL.Comp_Laser_Gas_Empty.get(1), CR.DEF_REV_NCC, "CWM", "WGx", "MTd", 'W', MT.DATA.CABLES_01[2], 'C', OD_CIRCUITS[2], 'M', OP.plate.dat(MT.Ag), 'T', OP.screw.dat(MT.StainlessSteel), 'G', Blocks.glass);
 
 		IL.Comp_Laser_Gas_He.set(               addItem(tLastID = 11001, "Helium Laser Emitter"             , "Purpose: Weak Optical Appliances"                , TC.stack(TC.LUX, 2), TC.stack(TC.AER, 1), OM.data(IL.Comp_Laser_Gas_Empty.get(1))));
 		IL.Comp_Laser_Gas_Ne.set(               addItem(tLastID = 11002, "Neon Laser Emitter"               , "Purpose: Weak Optical Appliances"                , TC.stack(TC.LUX, 2), TC.stack(TC.AER, 1), OM.data(IL.Comp_Laser_Gas_Empty.get(1))));

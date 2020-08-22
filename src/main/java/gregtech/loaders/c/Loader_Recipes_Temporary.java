@@ -216,6 +216,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.make("carbondioxide"               , 5), FL.make("rc co2", 1));
 		RM.generify   (FL.make("chlorine"                    , 5), FL.make("rc chlorine", 1));
 		RM.generify   (FL.make("heavywater"                  , 1), FL.Heavy_Reiker.make(1));
+		RM.genericycle(FL.XP                            .make( 3), FL.Mob.make(10));
 		RM.genericycle(FL.Redstone_TE                   .make(25), FL.Redstone.make(36));
 		RM.genericycle(FL.Lubricant                     .make( 1), FL.LubRoCant.make(1));
 		RM.generify   (FL.Oil_Canola                    .make( 2), FL.lube(1));

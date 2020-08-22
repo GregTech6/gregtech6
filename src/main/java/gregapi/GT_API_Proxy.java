@@ -450,7 +450,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 		if (tBlock instanceof IBlockOnHeadInside) ((IBlockOnHeadInside)tBlock).onHeadInside(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
-
+		
 		if (aEvent.entityLiving.onGround) {
 			tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);

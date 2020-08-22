@@ -41,17 +41,19 @@ Thaumcraft and Ars Magica will have their important Ores generate in the Enchant
 Netherite Plus will have its Ancient Debris spawn in the Deadrock near the final Twilight Castle, so you don't have to go to the Nether for it.
 Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
 Solar Panels in Twilight Forest will perpetually produce 4 EU/t all time, so exactly half of what they make in the Overworld during Daytime.
-[COMPAT] Open Blocks
-The Drain Cover works like an XP Drain when you stand ontop of it and Sneak. It will also absorb stray XP Orbs in front of it.
+[COMPAT] OpenBlocks
+The Drain Cover works like an XP Drain when you stand ontop of it and Sneak. It will also absorb stray XP Orbs in front of it. (1 XP = 20L of Liquid XP)
 The Tap will give you one Level worth of XP when you rightclick it, as long as that much is available. Yes you have to click it 30 times if you wanna go all the way from level 0 to level 30.
+[COMPAT] MineFactory Reloaded
+The Drain Cover can work like a Sewer for Mob Essence from XP Orbs, but only if OpenBlocks is not installed. You can generify Liquid XP into Mob Essence and vice versa. (1 XP = 66.666L of Mob Essence, yes it is such a crummy number)
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
 [FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
+[FIXED] Double Chests should now work with Pipes, Hoppers and similar.
 [FIXED] The wrong Types of Honey and Milk were outputted by some Recipes.
 [FIXED] Twilight Forests dependance on Naga Scales/Trophies, Lich Scepters/Trophies and Hydra Blood/Trophies to trigger their Progress Achievements. Now you ONLY need the Trophy and not that extra Item.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
-[FIXED] Double Chests should now work with Pipes, Hoppers and similar.
 [FIXED] Radiation from Reactors should now not be as high if you are further away from them.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 [CHANGED] Certain Twilight Tools now have higher Durability so they aren't as "Single Use and Throw away" anymore as before. Applies to: Ore Magnet, Peacock Fan, Crumble Horn and Giant Pickaxe.

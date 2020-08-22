@@ -39,7 +39,10 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -62,7 +65,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 	@SuppressWarnings("unchecked")
 	public void onTickPre(byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aData.mTileEntity instanceof IFluidHandler) {
-			if (SIDES_TOP_HORIZONTAL[aCoverSide] && SERVER_TIME % 100 == 10 && aData.mTileEntity.getWorld().isRaining()) {
+			if (SERVER_TIME % 100 == 10 && SIDES_TOP_HORIZONTAL[aCoverSide] && aData.mTileEntity.getWorld().isRaining()) {
 				BiomeGenBase tBiome = aData.mTileEntity.getBiome();
 				if (tBiome.rainfall > 0 && tBiome.temperature >= 0.2) {
 					Block tInFront = aData.mTileEntity.getBlockAtSide(aCoverSide);
@@ -77,9 +80,9 @@ public class CoverDrain extends AbstractCoverAttachment {
 					}
 				}
 			}
-			if (SERVER_TIME % 100 == 10 && FL.XP.exists()) {
-				// Yes I know that the AABB Check is a bit weird looking, but I think I will do more than just XP Orbs with this later on.
-				for (Entity tEntity : (Iterable<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(aData.mTileEntity.getOffsetX(aCoverSide)-0.5, aData.mTileEntity.getOffsetY(aCoverSide)-0.5, aData.mTileEntity.getOffsetZ(aCoverSide)-0.5, aData.mTileEntity.getOffsetX(aCoverSide)+1.5, aData.mTileEntity.getOffsetY(aCoverSide)+1.5, aData.mTileEntity.getOffsetZ(aCoverSide)+1.5))) if (!tEntity.isDead) {
+			if (SERVER_TIME % 100 == 50 && (FL.XP.exists() || FL.Mob.exists())) {
+				// Yes, I know that the AABB Check is a bit weird looking, but I think I will do more than just XP Orbs with this later on.
+				for (Entity tEntity : (Iterable<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(aData.mTileEntity.getOffsetX(aCoverSide, 2)-1, aData.mTileEntity.getOffsetY(aCoverSide, 2)-1, aData.mTileEntity.getOffsetZ(aCoverSide, 2)-1, aData.mTileEntity.getOffsetX(aCoverSide, 2)+2, aData.mTileEntity.getOffsetY(aCoverSide, 2)+2, aData.mTileEntity.getOffsetZ(aCoverSide, 2)+2))) if (!tEntity.isDead) {
 					if (tEntity instanceof EntityXPOrb) {
 						if (MD.OB.mLoaded) {
 							try {
@@ -87,15 +90,17 @@ public class CoverDrain extends AbstractCoverAttachment {
 									UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, (TileEntity)aData.mTileEntity);
 									aData.mTileEntity.getWorld().removeEntity(tEntity);
 									tEntity.setDead();
+									continue;
 								}
 							} catch(Throwable e) {e.printStackTrace(ERR);}
-						} else {
-							if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.XP.make(((EntityXPOrb)tEntity).getXpValue() * 20), T)) {
-								UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, (TileEntity)aData.mTileEntity);
-								aData.mTileEntity.getWorld().removeEntity(tEntity);
-								tEntity.setDead();
-							}
 						}
+						if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.XP.make(((EntityXPOrb)tEntity).getXpValue() * 20, FL.Mob, UT.Code.units(((EntityXPOrb)tEntity).getXpValue(), 3, 200, F)), T)) {
+							UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, (TileEntity)aData.mTileEntity);
+							aData.mTileEntity.getWorld().removeEntity(tEntity);
+							tEntity.setDead();
+							continue;
+						}
+						continue;
 					}
 				}
 			}
@@ -140,17 +145,26 @@ public class CoverDrain extends AbstractCoverAttachment {
 	
 	@Override
 	public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {
-		if (SIDES_TOP[aCoverSide]) {
-			if (MD.OB.mLoaded && !aData.mStopped && !aEntity.worldObj.isRemote && SERVER_TIME % 5 == 0 && aData.mTileEntity instanceof IFluidHandler && aEntity instanceof EntityPlayer && ((EntityPlayer)aEntity).isSneaking() && FL.XP.exists()) try {
-				FluidStack tFluid = FL.XP.make(Math.min(1000, LiquidXpUtils.xpToLiquidRatio(EnchantmentUtils.getPlayerXP(((EntityPlayer)aEntity)))));
-				if (tFluid.amount <= 0) return T;
-				int tDrainedXP = LiquidXpUtils.liquidToXpRatio((int)FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, F));
-				tFluid.amount = LiquidXpUtils.xpToLiquidRatio(tDrainedXP);
-				if (tFluid.amount <= 0) return T;
-				if (!FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) return T;
-				EnchantmentUtils.addPlayerXP(((EntityPlayer)aEntity), -tDrainedXP);
-				UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, aEntity);
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (SIDES_TOP[aCoverSide] && !aData.mStopped && aData.mTileEntity instanceof IFluidHandler && aData.mTileEntity.isServerSide()) {
+			if (aEntity instanceof EntityPlayer) {
+				if (MD.OB.mLoaded && SERVER_TIME % 5 == 0 && ((EntityPlayer)aEntity).isSneaking() && FL.XP.exists()) try {
+					FluidStack tFluid = FL.XP.make(Math.min(1000, LiquidXpUtils.xpToLiquidRatio(EnchantmentUtils.getPlayerXP(((EntityPlayer)aEntity)))));
+					if (tFluid.amount > 0) {
+						int tDrainedXP = LiquidXpUtils.liquidToXpRatio((int)FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, F));
+						tFluid.amount = LiquidXpUtils.xpToLiquidRatio(tDrainedXP);
+						if (tFluid.amount > 0 && FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) {
+							EnchantmentUtils.addPlayerXP(((EntityPlayer)aEntity), -tDrainedXP);
+							UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, aEntity);
+						}
+					}
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				return T;
+			}
+			if (SERVER_TIME % 20 == 5 && aEntity instanceof IAnimals && !(aEntity instanceof EntityGolem) && FL.Sewage.exists()) {
+				if (!(aEntity instanceof EntityAgeable) || !((EntityAgeable)aEntity).isChild()) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Sewage.make(Math.max(1, (long)(20 * aEntity.width * aEntity.width * aEntity.height))), T);
+				}
+			}
 			return T;
 		}
 		return F;
@@ -162,8 +176,12 @@ public class CoverDrain extends AbstractCoverAttachment {
 		aList.add(LH.Chat.CYAN + "Collects Fluid Blocks (if not against Gravity)");
 		aList.add(LH.Chat.CYAN + "Collects Rainwater (not in Dry or Cold Areas)");
 		aList.add(LH.Chat.CYAN + "Will work infinitely in River and Lake Biomes");
+		if (FL.Sewage.exists())
+		aList.add(LH.Chat.ORANGE + "Will collect Sewage from adult Animals walking on it (Bigger Animals make more)");
 		if (FL.XP.exists())
 		aList.add(LH.Chat.GREEN + "Will collect XP Orbs to make Liquid XP");
+		else if (FL.Mob.exists())
+		aList.add(LH.Chat.DGREEN + "Will collect XP Orbs to make Mob Essence");
 		if (MD.OB.mLoaded)
 		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain XP into the attached Tank");
 	}

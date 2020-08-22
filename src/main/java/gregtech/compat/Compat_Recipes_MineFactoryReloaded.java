@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,10 +26,10 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
-import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -55,7 +55,7 @@ public class Compat_Recipes_MineFactoryReloaded extends CompatMods {
 		
 		for (byte i = 0; i < 16; i++) {
 			final int aIndex = i;
-			addListener(new OreDictListenerEvent_TwoNames(DYE_OREDICTS_MIXABLE[aIndex], "itemClay") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
+			addListener(new OreDictListenerEvent_TwoNames(DYE_OREDICTS_MIXABLE[aIndex], OD.itemClay) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
 				RM.Mixer.addRecipe2(T, 16, 16, aStack1, aStack2, ST.make(MD.MFR, "ceramicdye", 4, 15-aIndex));
 			}});
 		}
@@ -65,13 +65,10 @@ public class Compat_Recipes_MineFactoryReloaded extends CompatMods {
 		addListener(new OreDictListenerEvent_TwoNames("listAllwheats", OP.dustSmall.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
 			RM.Mixer    .addRecipeX(T, 16,  128, ST.array(ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone     ), OM.dust(MT.S     )), IL.MFR_Fertilizer.get(12));
 		}});
-		addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.itemClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			for (byte i = 0; i < 16; i++) for (FluidStack tDye : DYE_FLUIDS[i])
 			RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.clay_ball, 1, W), tDye, NF, ST.make(MD.MFR, "ceramicdye", 4, 15-i));
 		}});
 		}};
-		
-		RM.Coagulator   .addRecipe0(T,  0, 2048, FL.Sewage.make(2000), NF, IL.MFR_Fertilizer.get(1));
-		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Slime_Pink.make(100), NF, OP.nugget.mat(MT.MeatRaw, 1));
 	}
 }
