@@ -1220,6 +1220,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (tData != null && (tData.mPrefix == null || tData.mPrefix.contains(TD.Prefix.BURNABLE))) {
 			long tBurnTime = 0;
 			for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F);
+			if (tData.mPrefix == OP.stick          && ANY.Wood.mReRegistrations.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max( TICKS_PER_SMELT     /2, tBurnTime));
+			if (tData.mPrefix == OP.stickLong      && ANY.Wood.mReRegistrations.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max( TICKS_PER_SMELT       , tBurnTime));
+			if (tData.mPrefix == OP.blockPlate     && ANY.Wood.mReRegistrations.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT* 27)/2, tBurnTime));
+			if (tData.mPrefix == OP.crateGtPlate   && ANY.Wood.mReRegistrations.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT* 51)/2, tBurnTime));
+			if (tData.mPrefix == OP.crateGt64Plate && ANY.Wood.mReRegistrations.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT*195)/2, tBurnTime));
 			rFuelValue = Math.max(rFuelValue, tBurnTime);
 		}
 		return UT.Code.bind15(rFuelValue);

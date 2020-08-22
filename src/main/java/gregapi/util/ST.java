@@ -852,20 +852,18 @@ public class ST {
 		long rFuelValue = GameRegistry.getFuelValue(aStack);
 		if (rFuelValue > 0) return rFuelValue;
 		Item tItem = item_(aStack);
-		if (tItem instanceof ItemBlock && Block.getBlockFromItem(tItem) != NB) {
-			Block tBlock = Block.getBlockFromItem(tItem);
-			if (tBlock == Blocks.sapling) return 100;
-			if (tBlock == Blocks.wooden_slab) return 150;
-			if (tBlock == Blocks.coal_block) return 16000;
-			if (tBlock.getMaterial() == Material.wood) return 300;
-		}
-		if (tItem instanceof ItemTool && ((ItemTool)tItem).getToolMaterialName().equals("WOOD")) return 200;
+		if (tItem instanceof ItemTool  && ((ItemTool )tItem).getToolMaterialName().equals("WOOD")) return 200;
 		if (tItem instanceof ItemSword && ((ItemSword)tItem).getToolMaterialName().equals("WOOD")) return 200;
-		if (tItem instanceof ItemHoe && ((ItemHoe)tItem).getToolMaterialName().equals("WOOD")) return 200;
+		if (tItem instanceof ItemHoe   && ((ItemHoe  )tItem).getToolMaterialName().equals("WOOD")) return 200;
 		if (tItem == Items.stick) return 100;
 		if (tItem == Items.coal) return 1600;
 		if (tItem == Items.blaze_rod) return 2400;
 		if (tItem == Items.lava_bucket) return 20000;
+		Block tBlock = ST.block_(tItem);
+		if (tBlock == Blocks.sapling) return 100;
+		if (tBlock == Blocks.wooden_slab) return 150;
+		if (tBlock == Blocks.coal_block) return 16000;
+		if (tBlock.getMaterial() == Material.wood) return 300;
 		return 0;
 	}
 	
