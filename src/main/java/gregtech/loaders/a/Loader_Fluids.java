@@ -184,9 +184,9 @@ public class Loader_Fluids implements Runnable {
 		FL.createMolten(MT.WaxMagic          , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		FL.createMolten(MT.WaxAmnesic        , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		FL.createMolten(MT.WaxSoulful        , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
-
+		
 		FL.createMolten(MT.Al2O3             , 504);
-
+		
 		/*
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			if (tMaterial.mLiquid == null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL) && tMaterial.contains(TD.Properties.MELTING) && tMaterial.mTargetSmelting.mAmount > 0) {
@@ -196,11 +196,11 @@ public class Loader_Fluids implements Runnable {
 				}
 			}
 		}*/
-
+		
 		//-----
-
+		
 		new FoodStatDrink(FL.create("potion.tainted"                             , "Tainted Brew"                            , null, 1, 1000, 300)                                                                                       , "tainted between the lands"               ,  0, 0.0F  ,  20, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.poison           .id, 100, 3, 100, Potion.hunger         .id, 100, 3, 100);
-
+		
 		new FoodStatDrink(FL.create("potion.awkward"                             , "Awkward Brew"                            , null, 1, 1000, 300, ST.make(Items.potionitem, 1,    16), IL.Bottle_Empty.get(1), 250)                     , "well, that's awkward"                    ,  0, 0.0F  ,  20, C+37,  0.00F, EnumAction.drink, T, F, F);
 		new FoodStatDrink(FL.create("potion.thick"                               , "Thick Brew"                              , null, 1, 1000, 300, ST.make(Items.potionitem, 1,    32), IL.Bottle_Empty.get(1), 250)                     , "thick and gooey"                         ,  0, 0.0F  ,  15, C+37,  0.00F, EnumAction.drink, T, F, F);
 		new FoodStatDrink(FL.create("potion.mundane"                             , "Mundane Brew"                            , null, 1, 1000, 300, ST.make(Items.potionitem, 1,    64), IL.Bottle_Empty.get(1), 250)                     , "how mundane of you"                      ,  0, 0.0F  ,  25, C+37,  0.00F, EnumAction.drink, T, F, F);

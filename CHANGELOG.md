@@ -42,7 +42,7 @@ Netherite Plus will have its Ancient Debris spawn in the Deadrock near the final
 Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
 Solar Panels in Twilight Forest will perpetually produce 4 EU/t all time, so exactly half of what they make in the Overworld during Daytime.
 [COMPAT] Open Blocks
-The Drain Cover works like an XP Drain when you stand ontop of it and Sneak.
+The Drain Cover works like an XP Drain when you stand ontop of it and Sneak. It will also absorb stray XP Orbs in front of it.
 The Tap will give you one Level worth of XP when you rightclick it, as long as that much is available. Yes you have to click it 30 times if you wanna go all the way from level 0 to level 30.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)

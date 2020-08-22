@@ -1340,12 +1340,12 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.data(MD.FZ, "daybarrel"                          , 1,   W, ANY.Wood              ,113* U2);
-		OM.data(MD.FZ, "chainLink"                          , 1,   W, MT.DarkIron           ,  U3, MT.Ag                    ,  U15);
-		OM.data(MD.FZ, "shortChain"                         , 1,   W, MT.DarkIron           ,  U * 3, MT.Ag                 ,  3*U5);
-		OM.data(MD.FZ, "darkIronChain"                      , 1,   W, MT.DarkIron           ,  U *15, MT.Ag                 ,  U * 3);
+		OM.data(MD.FZ, "chainLink"                          , 1,   W, MT.DarkIron           ,  U3   , MT.Pb                 ,  U15);
+		OM.data(MD.FZ, "shortChain"                         , 1,   W, MT.DarkIron           ,  U * 3, MT.Pb                 ,  3*U5);
+		OM.data(MD.FZ, "darkIronChain"                      , 1,   W, MT.DarkIron           ,  U *15, MT.Pb                 ,  U * 3);
 		OM.data(MD.FZ, "servo/sprocket"                     , 1,   W, MT.DarkIron           ,  U * 2, MT.Ag                 ,  U2);
 		OM.data(MD.FZ, "ArtifactForge"                      , 1,   W, MT.DarkIron           ,  U *31);
-		OM.data(MD.FZ, "FzBlock"                            , 1,  27, MT.DarkIron           ,  U8, MT.Pb                    ,  U4);
+		OM.data(MD.FZ, "FzBlock"                            , 1,  27, MT.DarkIron           ,  U8   , MT.Pb                 ,  U4);
 		
 		
 		OM.data(MD.JABBA, "barrel"                          , 1,   W, ANY.Wood              ,129* U2);

@@ -117,7 +117,7 @@ public class WD {
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ) {return suck(aWorld, aX, aY, aZ, 1, 1, 1);}
 	@SuppressWarnings("unchecked")
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {
-		for (EntityItem tItem : (ArrayList<EntityItem>)aWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+aL, aY+aH, aZ+aW))) {
+		for (EntityItem tItem : (Iterable<EntityItem>)aWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+aL, aY+aH, aZ+aW))) {
 			if (!tItem.isDead) {
 				aWorld.removeEntity(tItem);
 				ItemStack rStack = tItem.getEntityItem();

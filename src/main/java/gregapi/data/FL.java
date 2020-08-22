@@ -62,10 +62,13 @@ import net.minecraftforge.fluids.IFluidTank;
 @SuppressWarnings("unchecked")
 public enum FL {
 	  Error                     ("error")
+	  
 	, UUM                       ("ic2uumatter"                                              , LIQUID, ENCHANTED_EFFECT)
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
+	
 	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
+	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID)
 	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
 	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)

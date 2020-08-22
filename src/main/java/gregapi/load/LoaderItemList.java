@@ -1173,7 +1173,7 @@ public class LoaderItemList implements Runnable {
 		
 		
 		IL.MFR_Fertilizer                       .set(ST.make(MD.MFR, "fertilizer"                           , 1, 0), null, OD.itemFertilizer, DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown]);
-		IL.MFR_Log_Rubber                       .set(ST.make(MD.MFR, "rubberwood.log"                       , 1, 0), new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U), OD.logRubber);
+		IL.MFR_Log_Rubber                       .set(ST.make(MD.MFR, "rubberwood.log"                       , 1, 0), null, OD.logRubber);
 		IL.MFR_Sapling_Rubber                   .set(ST.make(MD.MFR, "rubberwood.sapling"                   , 1, 0), null, OP.treeSapling);
 		IL.MFR_Sapling_Rubber_Sacred            .set(ST.make(MD.MFR, "rubberwood.sapling"                   , 1, 1), null, OP.treeSapling);
 		IL.MFR_Sapling_Rubber_Mega              .set(ST.make(MD.MFR, "rubberwood.sapling"                   , 1, 2), null, OP.treeSapling);

@@ -39,9 +39,12 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -56,6 +59,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity.canTick() && aData.mTileEntity instanceof IFluidHandler);}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onTickPre(byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aData.mTileEntity instanceof IFluidHandler) {
 			if (SIDES_TOP_HORIZONTAL[aCoverSide] && SERVER_TIME % 100 == 10 && aData.mTileEntity.getWorld().isRaining()) {
@@ -70,6 +74,28 @@ public class CoverDrain extends AbstractCoverAttachment {
 							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aCoverSide], OFFSETS_Y[aCoverSide]  , OFFSETS_Z[aCoverSide]) && (SIDES_TOP[aCoverSide] || aData.mTileEntity.getBlockOffset(OFFSETS_X[aCoverSide], -1, OFFSETS_Z[aCoverSide]).isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getY()-1, aData.mTileEntity.getOffsetZ(aCoverSide), FORGE_DIR[SIDE_TOP]));
 						}
 						if (temp) FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
+					}
+				}
+			}
+			if (SERVER_TIME % 100 == 10 && FL.XP.exists()) {
+				// Yes I know that the AABB Check is a bit weird looking, but I think I will do more than just XP Orbs with this later on.
+				for (Entity tEntity : (Iterable<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(aData.mTileEntity.getOffsetX(aCoverSide)-0.5, aData.mTileEntity.getOffsetY(aCoverSide)-0.5, aData.mTileEntity.getOffsetZ(aCoverSide)-0.5, aData.mTileEntity.getOffsetX(aCoverSide)+1.5, aData.mTileEntity.getOffsetY(aCoverSide)+1.5, aData.mTileEntity.getOffsetZ(aCoverSide)+1.5))) if (!tEntity.isDead) {
+					if (tEntity instanceof EntityXPOrb) {
+						if (MD.OB.mLoaded) {
+							try {
+								if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.XP.make(LiquidXpUtils.xpToLiquidRatio(((EntityXPOrb)tEntity).getXpValue())), T)) {
+									UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, (TileEntity)aData.mTileEntity);
+									aData.mTileEntity.getWorld().removeEntity(tEntity);
+									tEntity.setDead();
+								}
+							} catch(Throwable e) {e.printStackTrace(ERR);}
+						} else {
+							if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.XP.make(((EntityXPOrb)tEntity).getXpValue() * 20), T)) {
+								UT.Sounds.send(SFX.MC_XP, 0.1F, (RNGSUS.nextFloat()-RNGSUS.nextFloat()) * 0.35F + 0.9F, (TileEntity)aData.mTileEntity);
+								aData.mTileEntity.getWorld().removeEntity(tEntity);
+								tEntity.setDead();
+							}
+						}
 					}
 				}
 			}
@@ -135,9 +161,11 @@ public class CoverDrain extends AbstractCoverAttachment {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Collects Fluid Blocks (if not against Gravity)");
 		aList.add(LH.Chat.CYAN + "Collects Rainwater (not in Dry or Cold Areas)");
-		aList.add(LH.Chat.CYAN + "Will work infinitely in Rivers and Oceans");
+		aList.add(LH.Chat.CYAN + "Will work infinitely in River and Lake Biomes");
+		if (FL.XP.exists())
+		aList.add(LH.Chat.GREEN + "Will collect XP Orbs to make Liquid XP");
 		if (MD.OB.mLoaded)
-		aList.add(LH.Chat.BLINKING_CYAN + "Stand on this an Sneak to drain XP into the attached Tank");
+		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain XP into the attached Tank");
 	}
 	
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}
