@@ -795,7 +795,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		PLAYER_LAST_CLICKED.put(aEvent.entityPlayer, new ChunkCoordinates(aEvent.x, aEvent.y, aEvent.z));
 		
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
-		Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
+		Block aBlock = WD.block(aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
 		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
@@ -809,6 +809,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (IL.TF_Uncrafting.equal(aBlock)) {
 				UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + "No cheating! ;)");
 				aEvent.setCanceled(T);
+				return;
+			}
+			// Just rightclick the Trophy to get the Achievement/Progress.
+			if (IL.TF_Trophy_Naga.equal(aBlock)) {
+				UT.Inventories.checkAchievements(aEvent.entityPlayer, ST.make(aBlock, 1, WD.meta(aEvent.world, aEvent.x, aEvent.y, aEvent.z)));
 				return;
 			}
 			// Some Clientside Only Stuff.

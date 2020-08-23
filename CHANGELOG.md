@@ -53,7 +53,7 @@ It will also work for Sewage from Adult Mobs, based on the Size of the Mob stand
 [FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
 [FIXED] Double Chests should now work with Pipes, Hoppers and similar.
 [FIXED] The wrong Types of Honey and Milk were outputted by some Recipes.
-[FIXED] Twilight Forests dependance on Naga Scales/Trophies, Lich Scepters/Trophies and Hydra Blood/Trophies to trigger their Progress Achievements. Now you ONLY need the Trophy and not that extra Item.
+[FIXED] Twilight Forests dependance on Naga Scales/Trophies, Lich Scepters/Trophies and Hydra Blood/Trophies to trigger their Progress Achievements. Now you ONLY need the Trophy and not that extra Item. Also you can just rightclick a placed Trophy to get its Achievement too.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [FIXED] Radiation from Reactors should now not be as high if you are further away from them.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
