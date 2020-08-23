@@ -812,8 +812,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				return;
 			}
 			// Just rightclick the Trophy to get the Achievement/Progress.
-			if (IL.TF_Trophy_Naga.equal(aBlock)) {
-				UT.Inventories.checkAchievements(aEvent.entityPlayer, ST.make(aBlock, 1, WD.meta(aEvent.world, aEvent.x, aEvent.y, aEvent.z)));
+			if (IL.TF_Trophy.equal(aBlock)) {
+				UT.Inventories.checkAchievements(aEvent.entityPlayer, ST.make(aBlock.getItemDropped(0, RNGSUS, 0), 1, aBlock.getDamageValue(aEvent.world, aEvent.x, aEvent.y, aEvent.z)));
 				return;
 			}
 			// Some Clientside Only Stuff.

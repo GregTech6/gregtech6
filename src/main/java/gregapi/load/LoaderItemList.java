@@ -749,6 +749,7 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Core_Trans                        .set(ST.make(MD.TF, "tile.TFMagicLogSpecial"                , 1, 1), new OreDictItemData(MT.WOODS.Acacia   , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Core_Mine                         .set(ST.make(MD.TF, "tile.TFMagicLogSpecial"                , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Core_Sorting                      .set(ST.make(MD.TF, "tile.TFMagicLogSpecial"                , 1, 3), new OreDictItemData(MT.WOODS.DarkOak  , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Trophy                            .set(ST.make(MD.TF, "tile.TFTrophy"                         , 1, 0));
 		IL.TF_Trophy_Hydra                      .set(ST.make(MD.TF, "item.trophy"                           , 1, 0));
 		IL.TF_Trophy_Naga                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 1));
 		IL.TF_Trophy_Lich                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 2));

@@ -119,7 +119,7 @@ public enum IL implements IItemContainer {
 	TF_Nagastone, TF_Deadrock, TF_Deadrock_Cracked, TF_Deadrock_Weathered, TF_Trollsteinn, TF_Mazestone, TF_Mazehedge,
 	TF_Giant_Cobble, TF_Giant_Obsidian, TF_Giant_Log, TF_Giant_Leaves,
 	TF_Uncrafting, TF_Pick_Giant, TF_Sword_Giant, TF_Lamp_of_Cinders, TF_Cube_of_Annihilation,
-	TF_Trophy_Naga, TF_Trophy_Lich, TF_Trophy_Hydra, TF_Trophy_Urghast, TF_Trophy_Snowqueen,
+	TF_Trophy, TF_Trophy_Naga, TF_Trophy_Lich, TF_Trophy_Hydra, TF_Trophy_Urghast, TF_Trophy_Snowqueen,
 	HiL_Ironwood,
 	HaC_Log_Cinnamon, HaC_Log_Maple, HaC_Log_Paperbark,
 	HaC_Cinnamon,
