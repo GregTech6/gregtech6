@@ -2510,6 +2510,31 @@ public class UT {
 					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
 				} else
+				if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
+					aPlayer.triggerAchievement(AchievementList.openInventory);
+					aPlayer.triggerAchievement(AchievementList.mineWood);
+					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
+					aPlayer.triggerAchievement(AchievementList.buildSword);
+					aPlayer.triggerAchievement(AchievementList.killEnemy);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTrophyPedestal);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressKnights);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressUrghast);
+				} else
+				if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
+					aPlayer.triggerAchievement(AchievementList.openInventory);
+					aPlayer.triggerAchievement(AchievementList.mineWood);
+					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
+					aPlayer.triggerAchievement(AchievementList.buildSword);
+					aPlayer.triggerAchievement(AchievementList.killEnemy);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressYeti);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressGlacier);
+				} else
 				if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
 					aPlayer.triggerAchievement(AchievementList.openInventory);
 					aPlayer.triggerAchievement(AchievementList.mineWood);
