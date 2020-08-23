@@ -611,19 +611,21 @@ public class Loader_Fluids implements Runnable {
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
 		
-		FL.reg(FL.Air            .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
-		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
-		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
-		FL.reg(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears    .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood    .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(MT.Hg           .liquid(U, T), IL.HBM_Mercury_Bottle    .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.Gas_Natural    .make(1000), ST.make(MD.MaCu, "fluids", 1,27), IL.Bottle_Empty.get(1), F, T, T);
-		FL.reg(FL.Gas_Natural    .make(2000), ST.make(MD.MaCu, "fluids", 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
-		FL.reg(FL.Ambrosia       .make(1000), IL.FR_Ambrosia           .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
-		FL.reg(FL.Honey          .make(1000), IL.GrC_Honey_Jar         .get(1), ST.make(Items.flower_pot, 1, 0));
-		FL.reg(FL.Honey          .make( 500), IL.BoP_Jar_Honey         .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
-		FL.reg(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison        .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		FL.reg(FL.Air            .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
+		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
+		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
+		FL.reg(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle       .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears          .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood          .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(MT.Hg           .liquid(U, T), IL.HBM_Mercury_Bottle          .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.XP             .make( 160), ST.make(Items.experience_bottle, 1, 0), IL.Bottle_Empty.get(1), F, T, T);
+		FL.reg(FL.Mob            .make( 534), ST.make(Items.experience_bottle, 1, 0), IL.Bottle_Empty.get(1), F, T, F);
+		FL.reg(FL.Gas_Natural    .make(1000), ST.make(MD.MaCu, "fluids"      , 1,27), IL.Bottle_Empty.get(1), F, T, T);
+		FL.reg(FL.Gas_Natural    .make(2000), ST.make(MD.MaCu, "fluids"      , 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
+		FL.reg(FL.Ambrosia       .make(1000), IL.FR_Ambrosia                 .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
+		FL.reg(FL.Honey          .make(1000), IL.GrC_Honey_Jar               .get(1), ST.make(Items.flower_pot, 1, 0));
+		FL.reg(FL.Honey          .make( 500), IL.BoP_Jar_Honey               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		FL.reg(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison              .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
