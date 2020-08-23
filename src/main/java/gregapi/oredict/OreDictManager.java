@@ -267,10 +267,11 @@ public final class OreDictManager {
 	}
 	
 	private static class OreDictEventContainer {
-		protected final String mModID;
+		protected final String mModID, mRegName;
 		protected final OreRegisterEvent mEvent;
 		
-		protected OreDictEventContainer(String aModID, OreRegisterEvent aEvent) {
+		protected OreDictEventContainer(String aModID, String aRegName, OreRegisterEvent aEvent) {
+			mRegName = aRegName;
 			mModID = aModID;
 			mEvent = aEvent;
 		}
@@ -286,7 +287,7 @@ public final class OreDictManager {
 			UT.LoadingBar.start("OreDict", tBufferedRegistrations.size());
 			for (OreDictEventContainer tContainer : tBufferedRegistrations) {
 				UT.LoadingBar.step(tContainer.mEvent.Name);
-				onOreRegistration2(tContainer.mModID, tContainer.mEvent);
+				onOreRegistration2(tContainer.mModID, tContainer.mRegName, tContainer.mEvent);
 			}
 			tBufferedRegistrations.clear();
 			UT.LoadingBar.finish();
@@ -351,9 +352,9 @@ public final class OreDictManager {
 		
 		if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains(" ") || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
 			if (mBufferedRegistrations == null) {
-				onOreRegistration2(aModID, aEvent);
+				onOreRegistration2(aModID, aRegName, aEvent);
 			} else {
-				mBufferedRegistrations.add(new OreDictEventContainer(aModID, aEvent));
+				mBufferedRegistrations.add(new OreDictEventContainer(aModID, aRegName, aEvent));
 			}
 		}
 		
@@ -369,7 +370,7 @@ public final class OreDictManager {
 		aEvent.Ore.stackSize = 1;
 	}
 	
-	public void onOreRegistration2(String aModID, OreRegisterEvent aEvent) {
+	public void onOreRegistration2(String aModID, String aRegName, OreRegisterEvent aEvent) {
 		OreDictPrefix aPrefix = null;
 		OreDictMaterial aMaterial = null;
 		
@@ -430,7 +431,7 @@ public final class OreDictManager {
 			}
 		}
 		
-		OreDictRegistrationContainer tRegistration = new OreDictRegistrationContainer(aPrefix, aMaterial, aEvent.Name, aEvent.Ore, aEvent, aModID, aNotAlreadyRegisteredName);
+		OreDictRegistrationContainer tRegistration = new OreDictRegistrationContainer(aPrefix, aMaterial, aEvent.Name, aEvent.Ore, aEvent, aModID, aRegName, aNotAlreadyRegisteredName);
 		
 		// Global Listeners. Those are usually direct Name->Recipe Systems, meaning they should have priority over Prefix based Stuff.
 		for (IOreDictListenerEvent tListener : mGlobalOreDictListeners) tListener.onOreRegistration(tRegistration);

@@ -255,6 +255,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnySteel"           , "blockIngotAnySteel");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnyCopper"          , "blockIngotAnyCopper");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnyBronze"          , "blockIngotAnyBronze");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockMeat"               , "blockIngotMeat");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAlduorite"          , "blockIngotAlduorite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockInfuscolium"        , "blockIngotInfuscolium");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockRubracium"          , "blockIngotRubracium");
