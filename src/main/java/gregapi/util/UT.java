@@ -2493,8 +2493,6 @@ public class UT {
 					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressNaga);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightKillLich);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLich);
 				} else
@@ -2507,6 +2505,7 @@ public class UT {
 					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
+					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLabyrinth);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
 					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
 				} else
