@@ -55,44 +55,66 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		if (tOutput == null) return null;
 		if (FL.XP.exists()) {
 			FluidStack tFluid = null;
-			if (tOutput.getItem() == Items.brick || tOutput.getItem() == Items.netherbrick || tOutput.getItem() == Items.dye) {
+			if (tOutput.getItem() == Items.brick || tOutput.getItem() == Items.netherbrick || tOutput.getItem() == Items.clay_ball || tOutput.getItem() == Items.dye) {
+				// Bricks and Dyes are 0.05 XP
 				tFluid = FL.XP.make(tOutput.stackSize);
 			} else if (tOutput.getItem() == Items.coal) {
+				// Coal/Charcoal is giving 0.10 XP
 				tFluid = FL.XP.make(tOutput.stackSize * 2);
 			} else {
 				Block tBlock = ST.block(tOutput);
-				if (tBlock == Blocks.glass) {
+				if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick) {
+					// Stone should not give XP, especially not because of the Cobble Generator Upgrades.
+					
+				} else if (tBlock == Blocks.glass || tBlock == Blocks.stained_glass || tBlock == Blocks.glass_pane || tBlock == Blocks.stained_glass_pane) {
+					// Glass is 0.05 XP, yes I know it can be made from Stone, but this is enough effort to warrant at least some XP.
 					tFluid = FL.XP.make(tOutput.stackSize);
+				} else if (tBlock == Blocks.hardened_clay || tBlock == Blocks.stained_hardened_clay) {
+					// Hardened Clay is 0.10 XP
+					tFluid = FL.XP.make(tOutput.stackSize * 2);
 				} else if (tBlock == Blocks.brick_block || tBlock == Blocks.nether_brick) {
+					// Brick Blocks are 0.15 XP, yes only three instead of four Bricks worth of XP
 					tFluid = FL.XP.make(tOutput.stackSize * 3);
+				} else if (ST.food(tOutput) > 0) {
+					// Food always gives 0.05 XP, not more, not less.
+					tFluid = FL.XP.make(tOutput.stackSize);
 				} else {
+					// Now for OreDictItemData of the Input Item
 					OreDictItemData tData = OM.anydata_(aInputs[0]);
 					if (tData != null && tData.hasValidPrefixMaterialData()) {
 						if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
 							tData = OM.anydata_(tOutput);
 							if (tData != null && tData.hasValidPrefixMaterialData()) {
+								// Give XP based on Tool Quality of the Output.
 								long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
+								// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
 								if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
 								if (tData.mPrefix.mAmount > 0) {
+									// Give at least 0.05 XP for this, or more if the Recipes is valuable enough.
 									tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
 								} else {
+									// This is probably an Ore Block since those have a Value of -1, or something else that doesn't have a Unit Amount.
 									tFluid = FL.XP.make(tXP);
 								}
 							} else {
-								tFluid = FL.XP.make(5);
+								// I don't know what this is, guess I will default to 5.
+								tFluid = FL.XP.make(tOutput.stackSize * 5);
 							}
 						} else {
 							// No XP from this case! This is likely either a Recycling Recipe or a Dust to Ingot Recipe!
 						}
 					} else {
+						// Guess we need to default to the normal Furnace way of determining XP
 						tFluid = FL.XP.make(UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput)));
 					}
 				}
 			}
+			// return the Fluid Variant of the Recipe
 			if (tFluid != null && tFluid.amount > 0) {
 				return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, new FluidStack[] {tFluid}, 16, 16, 0);
 			}
 		}
+		// return the Normal Recipe
 		return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, ZL_FS, 16, 16, 0);
 	}
 	

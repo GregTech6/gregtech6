@@ -817,6 +817,12 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodMaplesyrup"                  , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("dustSugar"                       , "listAllsugar");
 		OreDictManager.INSTANCE.addReRegistration("foodHoneydrop"                   , "listAllsugar");
+		OreDictManager.INSTANCE.addReRegistration("bottleAquaRegia"                 , OD.aquaRegia);
+		OreDictManager.INSTANCE.addReRegistration("bucketAquaRegia"                 , OD.aquaRegia);
+		OreDictManager.INSTANCE.addReRegistration("cellAquaRegia"                   , OD.aquaRegia);
+		OreDictManager.INSTANCE.addReRegistration("bottleSulfuricAcid"              , OD.sulfuricAcid);
+		OreDictManager.INSTANCE.addReRegistration("bucketSulfuricAcid"              , OD.sulfuricAcid);
+		OreDictManager.INSTANCE.addReRegistration("cellSulfuricAcid"                , OD.sulfuricAcid);
 		OreDictManager.INSTANCE.addReRegistration("bottleGlue"                      , OD.itemGlue);
 		OreDictManager.INSTANCE.addReRegistration("bottleWater"                     , OD.container250water);
 		OreDictManager.INSTANCE.addReRegistration("bottleLava"                      , OD.container250lava);

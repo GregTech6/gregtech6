@@ -75,6 +75,8 @@ public enum OD {
 	, container250lubricant
 	, container1000glue
 	, container250glue
+	, aquaRegia
+	, sulfuricAcid
 	, enderChest
 	, soulsand
 	, pestleAndMortar
