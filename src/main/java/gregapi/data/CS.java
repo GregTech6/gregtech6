@@ -1393,7 +1393,7 @@ public class CS {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
 		
 		public static Set<String>
-		  SIMPLE = new HashSetNoNulls<>(F, "sewage", "poison")
+		  SIMPLE = new HashSetNoNulls<>(F, "poison")
 		, ACID = new HashSetNoNulls<>(F, "acid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()
@@ -1402,6 +1402,7 @@ public class CS {
 		, OXYGEN = new HashSetNoNulls<>()
 		, LIQUID_OXYGEN = new HashSetNoNulls<>()
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>()
+		, VOID_OVERFLOW = new HashSetNoNulls<>()
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()
 		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.

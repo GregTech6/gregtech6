@@ -27,6 +27,7 @@ import gregapi.block.misc.BlockBaseFlower;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.util.CR;
@@ -54,7 +55,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		OM.data(ST.make(this, 1, 0), MT.Wheat, U);
 		OM.data(ST.make(this, 1, 1), MT.Wheat, U);
 		
-		for (int i = 0; i < maxMeta(); i++) OM.reg(ST.make(this, 1, i), "flower");
+		for (int i = 0; i < maxMeta(); i++) OM.reg(ST.make(this, 1, i), OD.flower);
 	}
 	
 	@Override

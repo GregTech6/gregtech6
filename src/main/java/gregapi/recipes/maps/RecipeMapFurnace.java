@@ -23,11 +23,14 @@ import static gregapi.data.CS.*;
 
 import java.util.Collection;
 
+import gregapi.data.FL;
 import gregapi.data.RM;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
@@ -43,7 +46,14 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		if (aInputs == null || aInputs.length <= 0 || aInputs[0] == null) return null;
 		if (aRecipe != null && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe;
 		ItemStack tOutput = RM.get_smelting(aInputs[0], F, null);
-		return tOutput == null ? null : new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, null, null, 16, 16, 0);
+		if (tOutput == null) return null;
+		if (FL.XP.exists()) {
+			FluidStack tFluid = FL.XP.make(UT.Code.roundUp(20 * tOutput.stackSize * FurnaceRecipes.smelting().func_151398_b(tOutput)));
+			if (tFluid != null && tFluid.amount > 0) {
+				return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, new FluidStack[] {tFluid}, 16, 16, 0);
+			}
+		}
+		return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, ZL_FS, 16, 16, 0);
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack, F, null) != null;}

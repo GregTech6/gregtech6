@@ -448,7 +448,7 @@ public class LH {
 		add(TOOL_TO_TOGGLE_SOFT_HAMMER                  , "Use Soft Hammer to toggle States");
 		add(TOOL_TO_RESET_SOFT_HAMMER                   , "Use Soft Hammer to Reset");
 		add(TOOL_TO_TAPE                                , "Use Duct Tape to do anything Duct Tape can do!");
-		add(TOOL_TO_UNTAPE                              , "Use Scissors or Knives to remove Tape");
+		add(TOOL_TO_UNTAPE                              , "Use Scissors or a Knife to remove Tape");
 		add(TOOL_TO_SET_INPUT_MONKEY_WRENCH             , "Use Monkey Wrench to set Input Side");
 		add(TOOL_TO_SET_OUTPUT_MONKEY_WRENCH            , "Use Monkey Wrench to set Output Side");
 		add(TOOL_TO_SET_DIRECTION_MONKEY_WRENCH         , "Use Monkey Wrench to set Direction");

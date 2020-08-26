@@ -67,8 +67,8 @@ public enum FL {
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	
-	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
-	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID)
+	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID, VOID_OVERFLOW)
+	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID, VOID_OVERFLOW)
 	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
 	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)
