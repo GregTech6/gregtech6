@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -66,6 +66,10 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.rubble                .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.cluster               .addListener(new Listener_Furnace_Smelting(U*2, T));
+		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.crystalline           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.reduced               .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushed               .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedTiny           .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedPurified       .addListener(new Listener_Furnace_Smelting( -1, T));
