@@ -306,15 +306,16 @@ public final class OreDictManager {
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
 		ModContainer tContainer = Loader.instance().activeModContainer();
 		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
-		if (aEvent.Ore == null || aEvent.Ore.getItem() == null) {
-			ERR.print("ERROR: A NULL ITEM from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name);
-			return;
-		}
+		
+		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
+		if (aEvent.Ore == null) {ERR.println("ERROR: A NULL STACK from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
+		if (aEvent.Ore.getItem() == null) {ERR.println("ERROR: A NULL ITEM from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		
 		String aRegName = ST.regName(aEvent.Ore);
-		if (UT.Code.stringInvalid(aRegName)) {
-			ERR.print("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block as: " + aEvent.Name);
-			return;
-		}
+		
+		// Yeah this definitely can happen, and I want to see it if any Mod fucks that one up, so I can potentially fix that..
+		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block as: " + aEvent.Name); return;}
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
 		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
