@@ -257,11 +257,11 @@ public class TD {
 		public static final TagData DUST_ORE                                = TagData.createTagData("PREFIX.DUST_ORE", "Dust Ore");
 		/** If this Prefix is for Dense Ores */
 		public static final TagData DENSE_ORE                               = TagData.createTagData("PREFIX.DENSE_ORE", "Dense Ore");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_DIRTY                    = TagData.createTagData("PREFIX.ORE_PROCESSING_DIRTY", "Ore Processing Dirty");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_CLEAN                    = TagData.createTagData("PREFIX.ORE_PROCESSING_CLEAN", "Ore Processing Clean");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_REFINED                  = TagData.createTagData("PREFIX.ORE_PROCESSING_REFINED", "Ore Processing Refined");
 		/** If this Prefix is used for Ore Processing, like "crushed" for example */
 		public static final TagData ORE_PROCESSING_BASED                    = TagData.createTagData("PREFIX.ORE_PROCESSING_BASED", "Ore Processing Based");

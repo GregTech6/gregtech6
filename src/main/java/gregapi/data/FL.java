@@ -573,8 +573,8 @@ public enum FL {
 	
 	
 	public int id() {return FluidRegistry.getFluidID(mName);}
-	public Fluid fluid() {return FluidRegistry.getFluid(mName);}
-	public boolean exists() {return FluidRegistry.getFluid(mName) != null;}
+	public Fluid fluid() {return fluid_(mName);}
+	public boolean exists() {return fluid() != null;}
 	public ItemStack display() {return display(make(0), F, F);}
 	public ItemStack display(long aAmount) {return display(make(aAmount), aAmount, F, F);}
 	
@@ -627,7 +627,7 @@ public enum FL {
 	public static boolean is(FluidStack aFluid, String... aNames) {return aFluid != null && is(aFluid.getFluid(), aNames);}
 	public static boolean is(Fluid aFluid, String... aNames) {if (aFluid != null) for (String aName : aNames) if (aFluid.getName().equalsIgnoreCase(aName)) return T; return F;}
 	
-	public static boolean exists(String aFluidName) {return FluidRegistry.getFluid(aFluidName) != null;}
+	public static boolean exists(String aFluidName) {return fluid(aFluidName) != null;}
 	
 	public static ItemStack display(Fluid aFluid) {return aFluid == null ? null : display(make(aFluid, 0), F, F);}
 	public static ItemStack display(FluidStack aFluid, boolean aUseStackSize, boolean aLimitStackSize) {return display(aFluid, aFluid == null ? 0 : aFluid.amount, aUseStackSize, aLimitStackSize);}
@@ -751,14 +751,14 @@ public enum FL {
 	
 	public static FluidStack make (int aFluid, long aAmount) {return aFluid < 0 ? null : new FluidStack(fluid(aFluid), Code.bindInt(aAmount));}
 	public static FluidStack make (Fluid aFluid, long aAmount) {return aFluid == null ? null : new FluidStack(aFluid, Code.bindInt(aAmount));}
-	public static FluidStack make (String aFluidName, long aAmount) {return make(FluidRegistry.getFluid(aFluidName), aAmount);}
+	public static FluidStack make (String aFluidName, long aAmount) {return make(fluid(aFluidName), aAmount);}
 	public static FluidStack make (String aFluidName, long aAmount, String aReplacementFluidName) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make(aReplacementFluidName, aAmount) : rFluid;}
 	public static FluidStack make (String aFluidName, long aAmount, String aReplacementFluidName, long aReplacementAmount) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make(aReplacementFluidName, aReplacementAmount) : rFluid;}
 	public static FluidStack make (String aFluidName, long aAmount, FluidStack aReplacementFluid) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? aReplacementFluid : rFluid;}
 	
 	public static FluidStack make_(int aFluid, long aAmount) {return aFluid < 0 ? FL.Error.make(0) : new FluidStack(fluid(aFluid), Code.bindInt(aAmount));}
 	public static FluidStack make_(Fluid aFluid, long aAmount) {return aFluid == null ? FL.Error.make(0) : new FluidStack(aFluid, Code.bindInt(aAmount));}
-	public static FluidStack make_(String aFluidName, long aAmount) {return make_(FluidRegistry.getFluid(aFluidName), aAmount);}
+	public static FluidStack make_(String aFluidName, long aAmount) {return make_(fluid(aFluidName), aAmount);}
 	public static FluidStack make_(String aFluidName, long aAmount, String aReplacementFluidName) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make_(aReplacementFluidName, aAmount) : rFluid;}
 	public static FluidStack make_(String aFluidName, long aAmount, String aReplacementFluidName, long aReplacementAmount) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make_(aReplacementFluidName, aReplacementAmount) : rFluid;}
 	
@@ -983,10 +983,10 @@ public enum FL {
 		if (Code.stringInvalid(aName)) return null;
 		String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
 		Fluid aFluid;
-		if (Code.stringValid(tName) && (aFluid = FluidRegistry.getFluid(tName)) != null) {
+		if (Code.stringValid(tName) && (aFluid = fluid(tName)) != null) {
 			aName = tName;
 		} else {
-			aFluid = FluidRegistry.getFluid(aName);
+			aFluid = fluid(aName);
 		}
 		if (aFluid == null) {
 			if (FL.LubRoCant      .is(aName)) return FL.Lubricant    .make(aNBT.getInteger("Amount"));

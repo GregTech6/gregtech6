@@ -44,7 +44,7 @@ Solar Panels in Twilight Forest will perpetually produce 4 EU/t all time, so exa
 [COMPAT] OpenBlocks
 The Drain Cover works like an XP Drain when you stand ontop of it and Sneak. It will also absorb stray XP Orbs in front of it. (1 XP = 20L of Liquid XP)
 The Tap will give you one Level worth of XP when you rightclick it, as long as that much is available. Yes you have to click it 30 times if you wanna go all the way from level 0 to level 30.
-The regular and multiblock Furnace Ovens should have a Liquid XP Output along with the normal Item Outputs. Note that the Liquid XP Tank CAN overflow unlike the ones of other Machines, so you do not need to worry about the XP stopping the Furnace from operating.
+The regular and multiblock Furnace Ovens should have a Liquid XP Output along with the normal Item Outputs. Note that the Liquid XP Output Tank has unlimited Capacity unlike the ones of other Machines, so you do not need to worry about the XP stopping the Furnace from operating. The Tap can be useful to extract XP Orbs on an Oven by the way.
 [COMPAT] MineFactory Reloaded
 The Drain Cover can work like a Sewer for Mob Essence from XP Orbs, but only if OpenBlocks is not installed. You can generify Liquid XP into Mob Essence and vice versa. (1 XP = 66.666L of Mob Essence, yes it is such a crummy number)
 It will also work for Sewage from Adult Mobs, based on the Size of the Mob standing on it. Make sure their center is actually above the Drain, we dont want them to miss the Toilet do we?
