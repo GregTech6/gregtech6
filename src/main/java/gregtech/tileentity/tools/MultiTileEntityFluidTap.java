@@ -114,9 +114,18 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 									return T;
 								}
 								// Even if OpenBlocks is not installed, in case Liquid XP exists somewhere, just turn it into regular XP at the default Rate, with one bucket of XP per click.
-								int tXP = Math.min(50, aFluid.amount / 20);
+								int tXP = Math.min(50, aFluid.amount/20);
 								if (tXP > 0) {
-									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP * 20, T);
+									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP*20, T);
+									worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+								}
+								return T;
+							}
+							// Act like Liquid XP too.
+							if (FL.Mob.is(aFluid)) {
+								int tXP = Math.min(50, (aFluid.amount*3)/200);
+								if (tXP > 0) {
+									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, (tXP*200)/3, T);
 									worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
 								}
 								return T;

@@ -648,8 +648,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				if (aRecipe.mFluidOutputs[j] == null) {
 					tRequiredEmptyTanks--;
 				} else for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aRecipe.mFluidOutputs[j])) {
-					if (FluidsGT.VOID_OVERFLOW.contains(aRecipe.mFluidOutputs[j].getFluid().getName())) break;
-					if (mTanksOutput[i].has(Math.max(16000, 1+aRecipe.mFluidOutputs[j].amount*mParallel))) return 0;
+					if (mTanksOutput[i].has(Math.max(16000, 1+aRecipe.mFluidOutputs[j].amount*mParallel)) && !FluidsGT.VOID_OVERFLOW.contains(aRecipe.mFluidOutputs[j].getFluid().getName())) return 0;
 					tRequiredEmptyTanks--;
 					break;
 				}
