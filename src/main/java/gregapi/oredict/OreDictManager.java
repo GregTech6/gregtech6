@@ -306,8 +306,15 @@ public final class OreDictManager {
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
 		ModContainer tContainer = Loader.instance().activeModContainer();
 		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
+		if (aEvent.Ore == null || aEvent.Ore.getItem() == null) {
+			ERR.print("ERROR: A NULL ITEM from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name);
+			return;
+		}
 		String aRegName = ST.regName(aEvent.Ore);
-		if (UT.Code.stringInvalid(aRegName)) return;
+		if (UT.Code.stringInvalid(aRegName)) {
+			ERR.print("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block as: " + aEvent.Name);
+			return;
+		}
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
 		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.

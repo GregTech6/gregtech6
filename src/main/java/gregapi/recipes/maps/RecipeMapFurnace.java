@@ -67,18 +67,22 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 					tFluid = FL.XP.make(tOutput.stackSize * 3);
 				} else {
 					OreDictItemData tData = OM.anydata_(aInputs[0]);
-					if (tData != null && tData.hasValidPrefixMaterialData() && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
-						tData = OM.anydata_(tOutput);
-						if (tData != null && tData.hasValidPrefixMaterialData()) {
-							long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
-							if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
-							if (tData.mPrefix.mAmount > 0) {
-								tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
+					if (tData != null && tData.hasValidPrefixMaterialData()) {
+						if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+							tData = OM.anydata_(tOutput);
+							if (tData != null && tData.hasValidPrefixMaterialData()) {
+								long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
+								if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
+								if (tData.mPrefix.mAmount > 0) {
+									tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
+								} else {
+									tFluid = FL.XP.make(tXP);
+								}
 							} else {
-								tFluid = FL.XP.make(tXP);
+								tFluid = FL.XP.make(5);
 							}
 						} else {
-							tFluid = FL.XP.make(5);
+							// No XP from this case! This is likely either a Recycling Recipe or a Dust to Ingot Recipe!
 						}
 					} else {
 						tFluid = FL.XP.make(UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput)));

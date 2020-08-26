@@ -612,7 +612,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.ingot.dat(MT.ButterSalted)        , ST.make(MD.HaC, "butterItem", 1, 0));
 		OM.reg(OP.blockSolid, MT.Obsidian           , ST.make(MD.TC, "blockCosmeticSolid", 1, 0));
 		OM.reg(OP.blockSolid, MT.Obsidian           , ST.make(MD.TC, "blockCosmeticSolid", 1, 1));
-		OM.reg(OP.gemFlawed, MT.Diamond             , ST.make(MD.FZ, "diamond_shard", 1, W));
 		OM.reg(OP.circuit.dat(MT.Basic)             , ST.mkic("electronicCircuit", 1));
 		OM.reg(OP.circuit.dat(MT.Advanced)          , ST.mkic("advancedCircuit", 1));
 		OM.reg("cropHemp"                           , ST.make(MD.IE, "material", 1, 3));
