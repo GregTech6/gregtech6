@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.misc.BlockBaseFlower;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
@@ -47,7 +48,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	public BlockFlowersB(String aUnlocalised) {
-		super(null, aUnlocalised, 7, Textures.BlockIcons.FLOWERS_B);
+		super(null, aUnlocalised, 8, Textures.BlockIcons.FLOWERS_B);
 		LH.add(getUnlocalizedName()+ ".0.name", "Artemisia Tridentata"); // Gold, Antimony, Arsenic
 		LH.add(getUnlocalizedName()+ ".1.name", "Atriplex Canescens"); // Gold, Antimony, Arsenic
 		LH.add(getUnlocalizedName()+ ".2.name", "Desert Trumpet"); // Gold, color might vary depending on other Minerals close by
@@ -55,6 +56,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".4.name", "Prince's Plume"); // Selenium
 		LH.add(getUnlocalizedName()+ ".5.name", "Thompsons Locoweed"); // Uranium
 		LH.add(getUnlocalizedName()+ ".6.name", "Pandanus Candelabrum"); // Diamond
+		LH.add(getUnlocalizedName()+ ".7.name", "Tungstus"); // Tungsten
 		
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);
@@ -69,22 +71,22 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	@Override
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		switch(aMeta) {
-		case  0: aList.add("Indicates presence of an Arsenic Deposit nearby"); break;
-		case  1: aList.add("Indicates presence of an Antimony Deposit nearby"); break;
-		case  2: aList.add("Indicates presence of a Gold Deposit nearby"); break;
-		case  3: aList.add("Indicates presence of a Copper Deposit nearby"); break;
-		case  4: aList.add("Indicates presence of a Redstone Deposit nearby"); break;
-		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"); break;
-		case  6: aList.add("Indicates presence of a Diamond Deposit nearby"); break;
-		case  7: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case  8: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case  9: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 10: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 11: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 12: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 13: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 14: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 15: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  0: aList.add("Indicates presence of an Arsenic Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  1: aList.add("Indicates presence of an Antimony Deposit nearby"); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  2: aList.add("Indicates presence of a Gold Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  3: aList.add("Indicates presence of a Copper Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  4: aList.add("Indicates presence of a Redstone Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  5: aList.add("Indicates presence of an Uranium Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  6: aList.add("Indicates presence of a Diamond Deposit nearby"  ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  7: aList.add("Indicates presence of a Tungsten Deposit nearby" ); break;
+		case  8: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case  9: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 10: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 11: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 12: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 13: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 14: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 15: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
 		}
 	}
 	
@@ -104,11 +106,13 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
 		
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, FL.Juice_Cactus.make( 75), IL.Dye_Cactus.get(2));
 		
 		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 0));
 		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
@@ -125,6 +129,8 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.Purple                               ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
 		CR.shapeless(OP.stick.mat(MT.WOODS.Palm  , 1, IL.Stick.get(1)), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
 		
+		RM.add_smelting(ST.make(this, 1, 7), IL.Dye_Cactus.get(1));
+		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)));
 		RM.ic2_extractor(ST.make(this, 1, 1), OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)));
@@ -133,6 +139,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.Purple, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 6), OP.stick.mat(MT.WOODS.Palm  , 2, IL.Stick.get(2)));
+		RM.ic2_extractor(ST.make(this, 1, 7), IL.Dye_Cactus.get(2));
 		}
 	}
 	

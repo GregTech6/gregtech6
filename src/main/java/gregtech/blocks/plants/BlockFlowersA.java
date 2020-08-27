@@ -61,22 +61,22 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	@Override
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		switch(aMeta) {
-		case  0: aList.add("Indicates presence of a Gold Deposit nearby"); break;
-		case  1: aList.add("Indicates presence of a Silver Deposit nearby"); break;
-		case  2: aList.add("Indicates presence of a Copper Deposit nearby"); break;
-		case  3: aList.add("Indicates presence of a Zinc Deposit nearby"); break;
-		case  4: aList.add("Indicates presence of a Nickel Deposit nearby"); break;
-		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"); break;
+		case  0: aList.add("Indicates presence of a Gold Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  1: aList.add("Indicates presence of a Silver Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  2: aList.add("Indicates presence of a Copper Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  3: aList.add("Indicates presence of a Zinc Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  4: aList.add("Indicates presence of a Nickel Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  5: aList.add("Indicates presence of an Uranium Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
 		case  6: aList.add("Indicates presence of a Cooperite Deposit nearby"); break;
-		case  7: aList.add("Indicates presence of an Ore Deposit nearby"); break;
-		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby"); break;
-		case  9: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 10: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 11: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 12: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 13: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 14: aList.add("Indicates presence of some Ore Deposit nearby"); break;
-		case 15: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  7: aList.add("Indicates presence of an Ore Deposit nearby"     ); break;
+		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby" ); break;
+		case  9: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 10: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 11: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 12: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 13: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 14: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case 15: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
 		}
 	}
 	
