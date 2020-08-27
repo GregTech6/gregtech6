@@ -106,7 +106,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMeta | 8, 2);
 			return F;
 		}
-		return TerrainGen.saplingGrowTree(aWorld, aRandom, aX, aY, aZ) && grow(aWorld, aX, aY, aZ, (byte)(aMeta & 7), aRandom);
+		return TerrainGen.saplingGrowTree(aWorld, aRandom, aX, aY, aZ) && grow(aWorld, aX, aY, aZ, aMeta, aRandom);
 	}
 	
 	public int getMaxHeight(World aWorld, int aX, int aY, int aZ, int aMaxTreeHeight) {

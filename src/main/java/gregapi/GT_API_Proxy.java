@@ -1007,7 +1007,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				
 				for (ItemStack tDrop : aEvent.drops) {
 					OM.set(tDrop);
-					// TODO HASHMAP
+					// TODO Hashmap (one for Silk Touching and another for normal Harvesting)
 					if (MD.GT.mLoaded) {
 					if (IL.CHSL_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
 					if (IL.EtFu_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else

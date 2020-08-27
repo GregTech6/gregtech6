@@ -24,28 +24,17 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 
 import gregapi.data.IL;
-import gregapi.data.MT;
 import gregapi.data.OD;
-import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.oredict.OreDictItemData;
-import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
 
 public class Loader_ItemIterator implements Runnable {
 	@Override
 	public void run() {
-		ItemStack tStack;
-		
-		// TODO: I will keep this antiquated shit for now.
-		OM.data(CR.get(tStack = OP.ingot.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
-		OM.data(CR.get(tStack = OP.plate.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
-		
 		OUT.println("GT_Mod: Scanning Food for the Canning Machine.");
 		
 		boolean tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());

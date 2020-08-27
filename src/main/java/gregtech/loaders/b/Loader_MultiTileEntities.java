@@ -1498,7 +1498,7 @@ public class Loader_MultiTileEntities implements Runnable {
 	}
 	
 	private static void machines3(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {
-		// TODO: Amplifab
+		// TODO: Amplifab at 20401, 20402, 20403, 20404, 20405
 		
 		aClass = MultiTileEntityBasicMachine.class;
 		aMat = MT.Osmiridium;           aRegistry.add("Matter Fabricator (T1)"                              , "Basic Machines"                      , 20411, 20001, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  16.0F, NBT_RESISTANCE,  16.0F, NBT_INPUT,   32, NBT_TEXTURE, "massfab", NBT_ENERGY_ACCEPTED, TD.Energy.QU, NBT_RECIPEMAP, RM.Massfab, NBT_CHEAP_OVERCLOCKING, T, NBT_NO_CONSTANT_POWER, T, NBT_EFFICIENCY,  5000, NBT_INV_SIDE_IN, SBIT_L|SBIT_U, NBT_INV_SIDE_AUTO_IN, SIDE_LEFT, NBT_INV_SIDE_OUT, SBIT_D|SBIT_R, NBT_INV_SIDE_AUTO_OUT, SIDE_RIGHT, NBT_TANK_SIDE_IN, SBIT_L|SBIT_U, NBT_TANK_SIDE_AUTO_IN, SIDE_TOP, NBT_TANK_SIDE_OUT, SBIT_D|SBIT_R, NBT_TANK_SIDE_AUTO_OUT, SIDE_BOTTOM, NBT_ENERGY_ACCEPTED_SIDES, SBIT_B), "RFS", "FMF", "RFS", 'M', OP.casingMachine.dat(aMat), 'R', IL.Processor_Crystal_Ruby, 'S', IL.Processor_Crystal_Sapphire, 'F', IL.FIELD_GENERATORS[1]);

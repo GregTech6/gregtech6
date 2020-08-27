@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -72,11 +72,11 @@ public interface ITileEntityItemPipe extends ITileEntityConnector {
 	 */
 	public static class Util {
 		/**
-		 * TODO Make this iterative instead of recursive.
 		 * @return a List of connected Item Pipes
 		 */
 		public static Map<ITileEntityItemPipe, Long> scanPipes(ITileEntityItemPipe aPipe, Map<ITileEntityItemPipe, Long> aMap, long aStep, boolean aSuckItems, boolean aIgnoreCapacity) {
 			aStep += aPipe.getStepSize();
+			// TODO Make this iterative instead of recursive.
 			if (aIgnoreCapacity || aPipe.pipeCapacityCheck()) if (aMap.get(aPipe) == null || aMap.get(aPipe) > aStep) {
 				aMap.put(aPipe, aStep);
 				for (byte aSide : ALL_SIDES_VALID) {

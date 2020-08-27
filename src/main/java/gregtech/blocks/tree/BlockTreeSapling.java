@@ -74,7 +74,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 	@Override
 	public boolean grow(World aWorld, int aX, int aY, int aZ, byte aMeta, Random aRandom) {
 		int tMaxHeight = 0;
-		switch(aMeta) {
+		switch(aMeta & 7) {
 		case 0:
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 9);
 			if (tMaxHeight < 7) return F;

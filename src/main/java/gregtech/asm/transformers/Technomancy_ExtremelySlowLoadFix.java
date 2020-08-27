@@ -32,7 +32,7 @@ import net.minecraft.launchwrapper.IClassTransformer;
  * exponentially goes through the oredict, just to do stuff that GT6 already does but better and faster, so disable that
  * to load a whole lot faster.  With just GT6, Thaumcraft, and Technomancy it still drops loading time from 5m to 1m20s.
  *
- * TODO:  This probably breaks technomancy's ore processing, could be fixed by manually populating it with GT6 data.
+ * TODO This probably breaks technomancy's ore processing, could be fixed by manually populating it with GT6 data.
  * To populate it would just involve calling this with all ore/ingot material combos:
  * * `theflogat.technomancy.util.Ore.newOre(String oreDictName, ItemStack ingot, String nameNoPrefix)`
  * Where `oreDictName` is `"oreMaterial"` for every given material and nameNoPrefix is the corresponding `"Material" and

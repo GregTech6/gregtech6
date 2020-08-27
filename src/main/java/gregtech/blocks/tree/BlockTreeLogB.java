@@ -31,6 +31,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -50,37 +51,37 @@ public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolab
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Log");
 		LH.add(getUnlocalizedName()+ ".8.name", "Hazel Log");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Log");
-		OM.reg(ST.make(this, 1, 0), "logWood");
-		OM.reg(ST.make(this, 1, 4), "logWood");
-		OM.reg(ST.make(this, 1, 8), "logWood");
-		OM.reg(ST.make(this, 1,12), "logWood");
+		OM.reg(ST.make(this, 1, 0), OD.logWood);
+		OM.reg(ST.make(this, 1, 4), OD.logWood);
+		OM.reg(ST.make(this, 1, 8), OD.logWood);
+		OM.reg(ST.make(this, 1,12), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".1.name", "Cinnamon Log");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Log");
 		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Log");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Log");
-		OM.reg(ST.make(this, 1, 1), "logWood");
-		OM.reg(ST.make(this, 1, 5), "logWood");
-		OM.reg(ST.make(this, 1, 9), "logWood");
-		OM.reg(ST.make(this, 1,13), "logWood");
+		OM.reg(ST.make(this, 1, 1), OD.logWood);
+		OM.reg(ST.make(this, 1, 5), OD.logWood);
+		OM.reg(ST.make(this, 1, 9), OD.logWood);
+		OM.reg(ST.make(this, 1,13), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Log");
 		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Log");
 		LH.add(getUnlocalizedName()+".10.name", "Coconut Log");
 		LH.add(getUnlocalizedName()+".14.name", "Coconut Log");
-		OM.reg(ST.make(this, 1, 2), "logWood");
-		OM.reg(ST.make(this, 1, 6), "logWood");
-		OM.reg(ST.make(this, 1,10), "logWood");
-		OM.reg(ST.make(this, 1,14), "logWood");
+		OM.reg(ST.make(this, 1, 2), OD.logWood);
+		OM.reg(ST.make(this, 1, 6), OD.logWood);
+		OM.reg(ST.make(this, 1,10), OD.logWood);
+		OM.reg(ST.make(this, 1,14), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Log");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Log");
 		LH.add(getUnlocalizedName()+".11.name", "Rainbowood Log");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Log");
-		OM.reg(ST.make(this, 1, 3), "logWood");
-		OM.reg(ST.make(this, 1, 7), "logWood");
-		OM.reg(ST.make(this, 1,11), "logWood");
-		OM.reg(ST.make(this, 1,15), "logWood");
+		OM.reg(ST.make(this, 1, 3), OD.logWood);
+		OM.reg(ST.make(this, 1, 7), OD.logWood);
+		OM.reg(ST.make(this, 1,11), OD.logWood);
+		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
 	@Override
@@ -88,7 +89,7 @@ public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolab
 		switch(aMetaData & 3) {
 		case 0: return 3;
 		case 1: return 3;
-		case 2: return 3; // TODO
+		case 2: return 4;
 		case 3: return 3;
 		}
 		return 3;
@@ -99,7 +100,7 @@ public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolab
 		switch(aMetaData & 3) {
 		case 0: return 2;
 		case 1: return 3;
-		case 2: return 3; // TODO
+		case 2: return 1;
 		case 3: return 3;
 		}
 		return 3;

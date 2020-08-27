@@ -57,7 +57,6 @@ public class PlayerModelRenderer extends RenderPlayer {
 		if (aPlayer.equalsIgnoreCase("Mr_Brain"))       return mResources[2];
 		if (aPlayer.equalsIgnoreCase("Friedi4321"))     return mResources[0];
 		// Supporter Lists
-		//if (aPlayer.equalsIgnoreCase("Mine_Sasha"))   return mResources[4]; // Already in the Supporter Lists. TODO: Remove this Line
 		if (mSupporterListGold.contains(aPlayer))       return mResources[4];
 		if (mSupporterListSilver.contains(aPlayer))     return mResources[1];
 		return null;

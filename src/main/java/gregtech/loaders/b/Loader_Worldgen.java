@@ -606,13 +606,13 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.cooperite"         , T, T,  16000, MT.OREMATS.Cooperite     , BlocksGT.FlowersA, 6, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.copper"            , T, T,  16000, MT.Cu                    , BlocksGT.FlowersB, 3, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.monazite"          , T, T,  16000, MT.Monazite              , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Rare Earth Flower
-		new WorldgenOresBedrock("ore.bedrock.powellite"         , T, T,  14000, MT.OREMATS.Powellite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Molybdenum Flower? Unsure if I should just keep this one as Orechid.
+		new WorldgenOresBedrock("ore.bedrock.powellite"         , T, T,  14000, MT.OREMATS.Powellite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // Molybdenum Flower? Unsure if I should just keep this one as Orechid.
 		new WorldgenOresBedrock("ore.bedrock.bastnasite"        , T, T,   8000, MT.OREMATS.Bastnasite    , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Rare Earth Flower
 		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   8000, MT.OREMATS.Arsenopyrite  , BlocksGT.FlowersB, 0, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.redstone"          , T, T,   7000, MT.Redstone              , BlocksGT.FlowersB, 4, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.vanadium"          , T, T,   6000, MT.V2O5                  , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Vanadium Flower
 		new WorldgenOresBedrock("ore.bedrock.galena"            , T, T,   6000, MT.OREMATS.Galena        , BlocksGT.FlowersA, 1, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.graphite"          , T, T,   5000, MT.Graphite              , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Carbon Flower? Unsure if I should just keep this one as Orechid.
+		new WorldgenOresBedrock("ore.bedrock.graphite"          , T, T,   5000, MT.Graphite              , BlocksGT.FlowersA, 7, GEN_FLOOR); // Carbon Flower? Unsure if I should just keep this one as Orechid.
 		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   4000, MT.OREMATS.Stibnite      , BlocksGT.FlowersB, 1, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.hematite"          , T, T,   4000, MT.Fe2O3                 , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Iron Flower
 		new WorldgenOresBedrock("ore.bedrock.sphalerite"        , T, T,   3000, MT.OREMATS.Sphalerite    , BlocksGT.FlowersA, 3, GEN_FLOOR);
