@@ -1,27 +1,15 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.14.08: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
-6.14.07: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
-6.14.06: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
 6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.14.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
@@ -65,6 +53,7 @@ It will also work for Sewage from Adult Mobs, based on the Size of the Mob stand
 [CHANGED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists. It also has an Ore Drop Factor of x3 now.
 [CHANGED] Bumblebees in Twilight Forest now have the same variety that the Overworld ones have.
 [CHANGED] If you non-sneak rightclick Bedrock Ores you will get the overall Bedrock Drill Recipe List in NEI, making it easier to discover what their use is. (Does not apply to Bedrock Fluid Springs, obviously)
+[ADDED] Wood Pellets can be turned into Charcoal in the Coke Oven now, which doubles the Fuel Value.
 [ADDED] All Basic Machines now have a Screwdriver Mode, which allows them to not accept more Items in their Input Slots once there is already a Stack inside. This makes precision inserting of Inputs using "Exact Mode Hoppers" and Item Pipes into a Bank of multiple Machines much easier than what you had to do before with Redstone, Shutters and Progress Sensors.
 [ADDED] Thaumcraft Flowers and Saplings should now generate in certain Biomes in the Twilight Forest.
 [ADDED] Recipe for the Name Tag. Yes that did not exist so far in GT6... I somehow forgot adding that one and thought I already did add it...

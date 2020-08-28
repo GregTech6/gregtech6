@@ -392,7 +392,7 @@ public class Loader_Recipes_Ores implements Runnable {
 				FluidStack tFluid = tMaterial.fluid(DEF_ENV_TEMP, U9, F);
 				if (FL.Error.is(tFluid)) tFluid = null;
 				
-				RM.Centrifuge   .addRecipe1(T, F, F, ST.isGT(tImpure) && aMat != MT.Bedrock, T, 16, 256 + 256 * aMat.mToolQuality            , tImpure, NF, tFluid, tDust, tFluid==null?OM.dust(tMaterial, U9):null);
+				RM.Centrifuge   .addRecipe1(T, F, F, ST.isGT(tImpure), T, 16, 256 + 256 * aMat.mToolQuality            , tImpure, NF, tFluid, tDust, tFluid==null?OM.dust(tMaterial, U9):null);
 				
 				if (!tMagnetList.isEmpty())
 				RM.MagneticSeparator.addRecipe1(T, 16, 144, tMagnet, tImpure, dust.mat(aMat, 1), dustTiny.mat(tMagnetList.get(0),18), tMagnetList.size()<=1?null:dustTiny.mat(tMagnetList.get(1),18), tMagnetList.size()<=2?null:dustTiny.mat(tMagnetList.get(2),18), tMagnetList.size()<=3?null:dustTiny.mat(tMagnetList.get(3),18), tMagnetList.size()<=4?null:dustTiny.mat(tMagnetList.get(4),18), tMagnetList.size()<=5?null:dustTiny.mat(tMagnetList.get(5),18));
@@ -401,7 +401,7 @@ public class Loader_Recipes_Ores implements Runnable {
 				tFluid = tMaterial.fluid(DEF_ENV_TEMP, U9, F);
 				if (FL.Error.is(tFluid)) tFluid = null;
 				
-				RM.Electrolyzer .addRecipe2(T, F, F, ST.isGT(tImpure) && aMat != MT.Bedrock, T, 16, 256 + 256 * aMat.mToolQuality, ST.tag(0) , tImpure, NF, tFluid, tDust, tFluid==null?OM.dust(tMaterial, U9):null);
+				RM.Electrolyzer .addRecipe2(T, F, F, ST.isGT(tImpure), T, 16, 256 + 256 * aMat.mToolQuality, ST.tag(0) , tImpure, NF, tFluid, tDust, tFluid==null?OM.dust(tMaterial, U9):null);
 			}
 			
 			

@@ -147,7 +147,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			}
 			
 			RM.Lathe        .addRecipe1(T, 16,   80, aEvent.mStack, stickLong.mat(tWood, 4), dust.mat(tWood, 2));
-			RM.CokeOven     .addRecipe1(T,  0, 3600, aEvent.mStack, NF, MT.Creosote.liquid(U4, F), OP.gem.mat(MT.Charcoal, 1));
+			RM.CokeOven     .addRecipe1(T,  0, 3600, aEvent.mStack, NF, FL.Oil_Creosote.make(200), OP.gem.mat(MT.Charcoal, 1));
 			
 			if (ST.meta_(aEvent.mStack) == W) {
 				ItemStack tPlank;
