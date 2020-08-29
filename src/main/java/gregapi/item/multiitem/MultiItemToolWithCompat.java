@@ -120,7 +120,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	}
 	
 	@Override
-	public boolean canBeStoredInToolbox(ItemStack itemstack) {
+	public boolean canBeStoredInToolbox(ItemStack aStack) {
 		return T;
 	}
 	

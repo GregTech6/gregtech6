@@ -448,7 +448,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	
 	@Override
 	public ItemStack getContainerItem(ItemStack aStack) {
-		int aMeta = ST.meta_(aStack);
+		short aMeta = ST.meta_(aStack);
 		if (aMeta >=  1000 && aMeta <=  1999) return ST.make(this, 1,   999);
 		if (aMeta >   2000 && aMeta <=  2099) return ST.make(this, 1,  2000);
 		if (aMeta >   2100 && aMeta <=  2199) return ST.make(this, 1,  2100);
@@ -464,13 +464,18 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		if (aMeta ==  5006 || aMeta ==  5009) return ST.make(this, 1, aMeta - 2);
 		if (aMeta ==  5011) return ST.make(this, 1,  5013);
 		if (aMeta ==  5012) return ST.make(this, 1,  5010);
-//      if (aMeta == 32401) return ST.make(this, 1, aMeta - 1);
 		return super.getContainerItem(aStack);
 	}
 	
 	@Override
+	public boolean canBeStoredInToolbox(ItemStack aStack) {
+		short aMeta = ST.meta_(aStack);
+		return aMeta >= 9000 || aMeta == 6000 || (aMeta >= 1000 && aMeta < 5999);
+	}
+	
+	@Override
 	public int getDefaultStackLimit(ItemStack aStack) {
-		int aMeta = ST.meta_(aStack);
+		short aMeta = ST.meta_(aStack);
 		switch (aMeta) {
 		case 5002: case 5005: case 5008: case 5011: case 5014: case 5015: case 9001: case 9002: return 1;
 		default: return (aMeta >= 2000 && aMeta < 3000) ? 1 : 64;

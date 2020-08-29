@@ -2505,9 +2505,10 @@ public class MT {
 			OREMATS.Malachite               .addOreByProducts(Cu                    , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
 			OREMATS.Scheelite               .addOreByProducts(MnO2                  , Mo                        , Ca                    );
 			OREMATS.Tungstate               .addOreByProducts(MnO2                  , Ag                        , LiCl                  );
-			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     , OREMATS.Stannite      );
-			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
+			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     , OREMATS.Stannite      , OREMATS.Magnesite);
+			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     );
 			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate     , Bi                        );
+			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
 			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
 			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite     , OREMATS.YellowLimonite    );
 			OREMATS.Garnierite              .addOreByProducts(Ni                    , OREMATS.Sperrylite        );
