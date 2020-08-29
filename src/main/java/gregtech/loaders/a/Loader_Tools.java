@@ -338,7 +338,7 @@ public class Loader_Tools implements Runnable {
 		lens                        .addListener(new OreProcessing_Tool(MAGNIFYING_GLASS        , tCategory + "MagnifyingGlass"         ,T,F,0,0, null                          , null                                                                                      , null                                                          , null          , null, null, null                              , null, new And(ANTIMATTER.NOT, typemin(1))));
 		toolHeadArrow               .addListener(new OreProcessing_Tool(HAND_DRILL              , tCategory + "HandDrill"               ,T,F,0,0, null                          , new String[][] {{"  X", "HYH", "YH "}}                                                    , null                                                          , toolHeadArrow , bolt, null, null                              , null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2), qualmin(2))));
 		
-		GameRegistry.addRecipe(new AdvancedCraftingTool(MAGNIFYING_GLASS        , lens, MT.Glass));
+		GameRegistry.addRecipe(new AdvancedCraftingTool(MAGNIFYING_GLASS        , lens, typemin(1), MT.Glass));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(HARDHAMMER              , toolHeadHammer, new Nor(WOOD, BOUNCY, STRETCHY)));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SOFTHAMMER              , toolHeadHammer, new Or (WOOD, BOUNCY, STRETCHY), MT.Rubber));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SWORD                   , toolHeadSword));

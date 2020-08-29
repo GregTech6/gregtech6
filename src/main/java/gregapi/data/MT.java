@@ -876,14 +876,12 @@ public class MT {
 	
 	
 	MnO2                    = oredustdcmp   ( 9126, "Pyrolusite"            , SET_DULL              ,  50,  50,  70, 255, MELTING, MOLTEN, INGOTS, MORTAR, MAGNETIC_PASSIVE).setSmelting(Mn, 3*U4)                                                                  .uumMcfg( 1, Mn             , 1*U, O                , 2*U)                                                                                                  .heat( 808, 2334),
+	MnCl2                   = dustelec      ( 8031, "Manganese Chloride"    , SET_CUBE              , 255, 213, 213, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, Mn             , 1*U, Cl               , 2*U)                                                                                                  .heat( 927, 1498),
 	
 	
 	Fe2O3                   = oredustelec   ( 9104, "Hematite"              , SET_DULL              , 145,  90,  90, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE, "BandedIron", "IronOxide")                                                                     .uumMcfg( 0, Fe             , 2*U, O                , 3*U)                                                                                                  .qual(0).heat(2 * Fe.mMeltingPoint / 3),
 	FeCl2                   = dustelec      ( 8030, "Ferrous Chloride"      , SET_CUBE              , 199, 233, 199, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, Fe             , 1*U, Cl               , 2*U)                                                                                                  .heat( 950, 1296),
 	FeCl3                   = dustelec      ( 8017, "Ferric Chloride"       , SET_METALLIC          , 180, 180, 120, 255, MELTING)                                                                                                                                  .uumMcfg( 0, Fe             , 1*U, Cl               , 3*U)                                                                                                  .heat( 580,  589).setSmelting(FeCl2, 3*U4),
-	
-	
-	MnCl2                   = dustelec      ( 8031, "Manganese Chloride"    , SET_CUBE              , 255, 213, 213, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, Mn             , 1*U, Cl               , 2*U)                                                                                                  .heat( 927, 1498),
 	
 	
 	MgCl2                   = oredustelec   ( 8018, "Magnesium Chloride"    , SET_CUBE              , 235, 235, 250, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, Mg             , 1*U, Cl               , 2*U)                                                                                                  .aspects(TC.FAMES, 1).heat( 987, 1685), // Can be electrolyzed for real
@@ -1029,7 +1027,6 @@ public class MT {
 	VolcanicAsh             = dustcent      ( 8202, "Volcanic Ashes"        , SET_FLINT             ,  60,  50,  50, 255, MORTAR, BRITTLE, "VolcanicAsh", "AshVolcanic", "AshesVolcanic")                                                                           .setMcfg( 0, Flint          , 6*U, Fe2O3            , 1*U, Mg               , 1*U)                                                                          .aspects(TC.IGNIS, 2, TC.PERDITIO, 1),
 	
 	
-	RareEarth               = oredust       ( 9100, "Rare Earth"            , SET_FINE              , 128, 128, 100, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.VITREUS, 1, TC.LUCRUM, 1),
 	Chalk                   = oredustelec   ( 9112, "Chalk"                 , SET_FINE              , 250, 250, 250, 255, FURNACE, MORTAR).setSmelting(CaCO3, 2*U3)                                                                                                 .setMcfg( 0, CaCO3          , 1*U)                                                                                                                          ,
 	Dolomite                = oredustcent   ( 9163, "Dolomite"              , SET_FLINT             , 225, 205, 205, 255, FURNACE, MORTAR).setSmelting(CaCO3, U2)                                                                                                   .setMcfg( 0, CaCO3          , 1*U, MgCO3            , 1*U)                                                                                                  , // CaMg(CO3)2
 	Asbestos                = oredustelec   ( 9103, "Asbestos"              , SET_LAPIS             , 230, 230, 230, 255, PLATES, "Chrysotile")                                                                                                                     .uumMcfg( 0, Mg             , 3*U, SiO2             , 6*U, H2O              , 6*U, O                , 3*U)                                                  , // Mg3Si2O5(OH)4
@@ -1142,6 +1139,7 @@ public class MT {
 	SoulSand                = oredust       ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                       ,
 	SluiceSand              = oredust       ( 8102, "Sluice Sand"           , SET_SAND              , 165, 165, 120, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.TERRA, 1),
 	PlatinumGroupSludge     = oredust       ( 8103, "Platinum Group Sludge" , SET_SAND              ,  50,  50,  80, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.LUCRUM, 2),
+	RareEarth               = oredust       ( 9100, "Rare Earth"            , SET_FINE              , 128, 128, 100, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.VITREUS, 1, TC.LUCRUM, 1),
 	
 	
 	
@@ -2430,7 +2428,6 @@ public class MT {
 			Pyrite                          .addOreByProducts(S                     , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
 			Sn                              .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
 			OREMATS.Cassiterite             .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
-			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
 			OREMATS.Bauxite                 .addOreByProducts(OREMATS.Kaolinite     , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 , AlO3H3                );
 			AlO3H3                          .addOreByProducts(OREMATS.Bauxite       , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
 			OREMATS.Ilmenite                .addOreByProducts(TiO2                  , Fe2O3                     , Mg                    , MnO2                  );
@@ -2478,12 +2475,12 @@ public class MT {
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz          , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                 , Mg                        , MnO2                  );
-			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            );
 			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3);
 			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
+			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
 			Nikolite                        .addOreByProducts(Cu                    , RareEarth                 );
 			Teslatite                       .addOreByProducts(Cu                    , RareEarth                 );
@@ -2503,17 +2500,17 @@ public class MT {
 			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Scheelite         );
 			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite     , OREMATS.Scheelite         , Re                    , Os);
 			OREMATS.Malachite               .addOreByProducts(Cu                    , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
+			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite     , OREMATS.YellowLimonite    );
+			OREMATS.Garnierite              .addOreByProducts(Ni                    , OREMATS.Sperrylite        );          OREMATS.Tungstate               .addOreByProducts(MnO2                  , Ag                        , LiCl                  );
 			OREMATS.Scheelite               .addOreByProducts(MnO2                  , Mo                        , Ca                    );
-			OREMATS.Tungstate               .addOreByProducts(MnO2                  , Ag                        , LiCl                  );
+			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Wolframite    , OREMATS.Molybdenite       , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
 			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     , OREMATS.Stannite      , OREMATS.Magnesite);
 			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     );
 			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate     , Bi                        );
 			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
 			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
-			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite     , OREMATS.YellowLimonite    );
-			OREMATS.Garnierite              .addOreByProducts(Ni                    , OREMATS.Sperrylite        );
-			OREMATS.Bastnasite              .addOreByProducts(Monazite              , RareEarth                 , Nd                    );
 			Nd                              .addOreByProducts(Monazite              , RareEarth                 );
+			OREMATS.Bastnasite              .addOreByProducts(Monazite              , RareEarth                 , Nd                    );
 			NaCl                            .addOreByProducts(KCl                   , KIO3                      );
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
