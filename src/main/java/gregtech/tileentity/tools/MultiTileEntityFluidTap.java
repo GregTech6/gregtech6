@@ -101,39 +101,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 								}
 								return T;
 							}
-							if (FL.XP.is(aFluid)) {
-								if (MD.OB.mLoaded) {
-									try {
-										int tXP = Math.min(LiquidXpUtils.liquidToXpRatio(aFluid.amount), UT.Code.roundUp(EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel+1) - (EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel)+(aPlayer.experience * aPlayer.xpBarCap()))));
-										int tDrain = LiquidXpUtils.xpToLiquidRatio(tXP);
-										if (tDrain > 0 && tXP > 0) {
-											((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tDrain, T);
-											worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
-										}
-									} catch(Throwable e) {e.printStackTrace(ERR);}
-									return T;
-								}
-								// Even if OpenBlocks is not installed, in case Liquid XP exists somewhere, just turn it into regular XP at the default Rate, with one bucket of XP per click.
-								int tXP = Math.min(50, aFluid.amount/20);
-								if (tXP > 0) {
-									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP*20, T);
-									worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
-								}
-								return T;
-							}
-							// Act like Liquid XP too.
-							if (FL.Mob.is(aFluid)) {
-								int tXP = Math.min(50, (aFluid.amount*3)/200);
-								if (tXP > 0) {
-									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, (tXP*200)/3, T);
-									worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
-								}
-								return T;
-							}
-							// Nothing left to check
-							return T;
-						}
-						if (tDelegator2.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator2.mTileEntity instanceof MultiTileEntityMixingBowl) {
+						} else if (tDelegator2.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator2.mTileEntity instanceof MultiTileEntityMixingBowl) {
 							OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(aFluid.getFluid().getName());
 							aFluid = aFluid.copy();
 							aFluid.amount = Math.min(aFluid.amount, FL.lava(aFluid) ? 1000 : !FL.water(aFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
@@ -143,6 +111,37 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 							}
 							return T;
 						}
+						// Drop XP in case the Fluid is labeled as a Liquid
+						if (FL.XP.is(aFluid)) {
+							if (MD.OB.mLoaded) {
+								try {
+									int tXP = Math.min(LiquidXpUtils.liquidToXpRatio(aFluid.amount), UT.Code.roundUp(EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel+1) - (EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel)+(aPlayer.experience * aPlayer.xpBarCap()))));
+									int tDrain = LiquidXpUtils.xpToLiquidRatio(tXP);
+									if (tDrain > 0 && tXP > 0) {
+										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tDrain, T);
+										worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+									}
+								} catch(Throwable e) {e.printStackTrace(ERR);}
+								return T;
+							}
+							// Even if OpenBlocks is not installed, in case Liquid XP exists somewhere, just turn it into regular XP at the default Rate, with one bucket of XP per click.
+							int tXP = Math.min(50, aFluid.amount/20);
+							if (tXP > 0) {
+								((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP*20, T);
+								worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+							}
+							return T;
+						}
+						// Act like Liquid XP too.
+						if (FL.Mob.is(aFluid)) {
+							int tXP = Math.min(50, (aFluid.amount*3)/200);
+							if (tXP > 0) {
+								((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, (tXP*200)/3, T);
+								worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+							}
+							return T;
+						}
+						// Nothing left to check for empty Hands
 						return T;
 					}
 					FluidStack tNewFluid = aFluid.copy();

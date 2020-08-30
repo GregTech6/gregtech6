@@ -28,6 +28,7 @@ import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MD;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -39,12 +40,15 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
+import openblocks.common.LiquidXpUtils;
+import openmods.utils.EnchantmentUtils;
 
 /**
  * @author Gregorius Techneticies
@@ -73,7 +77,40 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase10Attachment imple
 				FluidStack aFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
 				if (FL.gas(aFluid, F) && aFluid.amount > 0 && (mAcidProof || !FL.acid(aFluid))) {
 					ItemStack aStack = aPlayer.getCurrentEquippedItem();
-					if (aStack == null) return T;
+					if (aStack == null) {
+						// Drop XP in case the Fluid is labeled as a Gas
+						if (FL.XP.is(aFluid)) {
+							if (MD.OB.mLoaded) {
+								try {
+									int tXP = Math.min(LiquidXpUtils.liquidToXpRatio(aFluid.amount), UT.Code.roundUp(EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel+1) - (EnchantmentUtils.getExperienceForLevel(aPlayer.experienceLevel)+(aPlayer.experience * aPlayer.xpBarCap()))));
+									int tDrain = LiquidXpUtils.xpToLiquidRatio(tXP);
+									if (tDrain > 0 && tXP > 0) {
+										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tDrain, T);
+										worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+									}
+								} catch(Throwable e) {e.printStackTrace(ERR);}
+								return T;
+							}
+							// Even if OpenBlocks is not installed, in case Liquid XP exists somewhere, just turn it into regular XP at the default Rate, with one bucket of XP per click.
+							int tXP = Math.min(50, aFluid.amount/20);
+							if (tXP > 0) {
+								((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tXP*20, T);
+								worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+							}
+							return T;
+						}
+						// Act like Liquid XP too.
+						if (FL.Mob.is(aFluid)) {
+							int tXP = Math.min(50, (aFluid.amount*3)/200);
+							if (tXP > 0) {
+								((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, (tXP*200)/3, T);
+								worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+0.2, zCoord+0.5, tXP));
+							}
+							return T;
+						}
+						// Nothing left to check for empty Hands
+						return T;
+					}
 					FluidStack tNewFluid = aFluid.copy();
 					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {

@@ -20,7 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.01: (Not released yet, I am still working on a ton of Twilight Forest Compat)
 [IMPORTANT] If you use Factorization, use Asie's Version of it from here https://asie.pl/files/mods/Factorization/ (the one with the highest number, without "-dev" at the end of it). The original is broken and may crash with CoFH-Core.
 [COMPAT] Twilight Forest
-Way better Ore Generation, and allowing Vanilla Ores again in there. GT5 Style Ore Generation is now completely gone from Twilight Forest.
+Way better Ore Generation, and allowing Vanilla Ores again in there. GT5 Style Ore Generation is now completely gone from Twilight Forest. (Remember that Iron Ore is already having all its Recipes overridden by GT6)
 In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
 The 16 Vanilla-ish Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
 I also added the 8 Rock-Layer-Ores in Blob form to there, getting the total count of new Ores up to 24.
