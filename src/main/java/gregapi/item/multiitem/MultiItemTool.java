@@ -369,7 +369,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer) {
 		if (!isItemStackUsable(aStack)) return F;
 		IItemEnergy tElectric = getEnergyStats(aStack);
-		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack).mToolQuality * 25)) == 0) {
+		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack).mToolQuality * 20)) == 0) {
 			long tNewDamage = getToolDamage(aStack) + aAmount;
 			setToolDamage(aStack, tNewDamage);
 			if (tNewDamage >= getToolMaxDamage(aStack)) {
@@ -444,7 +444,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		boolean rReturn = (getDigSpeed(aStack, aBlock, aMeta) > 0);
 		if (!UT.Entities.hasInfiniteItems(aPlayer)) {
-			double tDamage = Math.max(1, tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ));
+			double tDamage = tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ);
 			OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 			if (WD.dimBTL(aWorld) && tMaterial.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
 			if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
@@ -458,7 +458,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 					}
 				}
 			}
-			doDamage(aStack, (int)tDamage, aPlayer);
+			doDamage(aStack, UT.Code.roundUp(tDamage), aPlayer);
 		}
 		return rReturn;
 	}

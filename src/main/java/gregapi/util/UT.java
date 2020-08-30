@@ -1228,6 +1228,12 @@ public class UT {
 			return rList;
 		}
 		
+		@SafeVarargs
+		public static <E> E getFirstNonNull(E... aArray) {
+			if (aArray != null) for (E tObject : aArray) if (tObject != null) return tObject;
+			return null;
+		}
+		
 		private static final DateFormat sDateFormat = DateFormat.getInstance();
 		public static String dateAndTime() {
 			return sDateFormat.format(new Date());
