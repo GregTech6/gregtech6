@@ -1042,9 +1042,9 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   8, MT.HSLA               ,246* U9); // 16x Gear
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   9, MT.HSLA               ,  U9); // HSLA Scrap
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  10, ANY.Fe                ,  U * 1); // Iron Scrap
-		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  11, MT.HSLA               , 15* U9, ANY.Wood      ,  U * 8); // Wood Flywheel Core
-		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  12, MT.HSLA               , 15* U9, ANY.Stone     ,  U * 8); // Stone Flywheel Core
-		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  13, MT.HSLA               , 15* U9, ANY.Fe        ,  U * 8); // Iron Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  11, MT.HSLA               , 15* U9, ANY.Wood              ,  U * 8); // Wood Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  12, MT.HSLA               , 15* U9, ANY.Stone             ,  U * 8); // Stone Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  13, MT.HSLA               , 15* U9, ANY.Fe                ,  U * 8); // Iron Flywheel Core
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  14, MT.HSLA               , 15* U9, MT.Au                 ,  U * 8); // Gold Flywheel Core
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  15, MT.HSLA               , 33* U9); // Worm Gear
 		
@@ -1086,12 +1086,12 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  37, ANY.Stone             ,  U *34); // 16x Stone Gear
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  38, ANY.Stone             ,  U * 1); // Stone Bearing
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  39, ANY.Stone             ,  U * 3); // Stone Shaft Core
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  49, ANY.Diamond           ,     U2); // Diamond Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  50, ANY.Diamond           ,  U * 3); // 2x Diamond Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  51, ANY.Diamond           ,  U * 8); // 4x Diamond Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  52, ANY.Diamond           ,  U *13); // 8x Diamond Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  53, ANY.Diamond           ,  U *18); // 16x Diamond Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  54, ANY.Diamond           ,     U2); // Diamond Bearing
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  49, ANY.Diamond           ,     U2, MT.TungstenAlloy      ,  U8   ); // Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  50, ANY.Diamond           ,  U * 3, MT.TungstenAlloy      ,  U8* 2); // 2x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  51, ANY.Diamond           ,  U * 8, MT.TungstenAlloy      ,  U8* 4); // 4x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  52, ANY.Diamond           ,  U *13, MT.TungstenAlloy      ,  U8* 6); // 8x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  53, ANY.Diamond           ,  U *18, MT.TungstenAlloy      ,  U8* 8); // 16x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  54, ANY.Diamond           ,     U2, MT.TungstenAlloy      ,  U8   ); // Diamond Bearing
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  55, ANY.Diamond           ,  U * 3); // Diamond Shaft Core
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  64, MT.HSLA               ,     U4, MT.Bedrock            ,  U * 1); // Bedrock Shaft Unit
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  65, MT.HSLA               ,  5* U8, MT.Bedrock            ,     U2); // Bedrock Gear

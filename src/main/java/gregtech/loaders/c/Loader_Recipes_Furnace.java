@@ -49,20 +49,22 @@ public class Loader_Recipes_Furnace implements Runnable {
 				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
 					// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
 					tIterator.remove();
+				} else {
+					tEntry.setValue(OM.get(tEntry.getValue()));
 				}
 			} else {
+				tEntry.setValue(OM.get(tEntry.getValue()));
 				// Lots of RotaryCraft balance fixes and more Recipe Compat.
 				if (MD.RoC.owns(tEntry.getKey(), "extracts")) {
 					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						tEntry.setValue(OM.get(tEntry.getValue()));
 						if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 							RM.pulverizing(tEntry.getKey(), tEntry.getValue());
 							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
 							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
 							RM.Sifting .addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
 						} else {
-							ItemStack tDust = OM.dust(tData2.mMaterial, tEntry.getValue().stackSize, 1);
+							ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
 							RM.pulverizing(tEntry.getKey(), tDust);
 							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
 							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);

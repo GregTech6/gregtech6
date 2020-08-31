@@ -341,7 +341,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					switch(tIsTool ? Math.min(1, tData.mMaterial.mMaterial.mEnchantmentTools.size()) : tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
 					case 0:
 						break;
-					case 1: case 2: case 3: case 4:
+					case 1: case 2: case 3: case 4: case 5:
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
 						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
 							if (tEnchantment.mObject == Enchantment.fortune) {
