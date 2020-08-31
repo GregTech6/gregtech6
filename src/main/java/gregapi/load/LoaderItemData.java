@@ -1115,6 +1115,13 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 101, MT.Livingrock         ,  U *34); // 16x Livingrock Gear
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 102, MT.Livingrock         ,  U * 1); // Livingrock Bearing
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 103, MT.Livingrock         ,  U * 3); // Livingrock Shaft Core
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 113, MT.TungstenAlloy      ,  U    ); // Tungsten Alloy Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 114, MT.TungstenAlloy      ,  U * 2, MT.HSLA               ,  U * 2); // 2x Tungsten Alloy Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 115, MT.TungstenAlloy      ,  U * 4, MT.HSLA               ,  U * 6); // 4x Tungsten Alloy Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 116, MT.TungstenAlloy      ,  U * 6, MT.HSLA               ,  U *10); // 8x Tungsten Alloy Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 117, MT.TungstenAlloy      ,  U * 8, MT.HSLA               ,  U *14); // 16x Tungsten Alloy Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 118, MT.TungstenAlloy      ,  U    , MT.HSLA               ,  U * 2); // Tungsten Alloy Bearing
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 119, MT.TungstenAlloy      ,  U    , MT.HSLA               ,  U * 2); // Tungsten Alloy Shaft Core
 		
 		OM.data(MD.RoC, "rotarycraft_item_borecraft"        , 1,   0, MT.HSLA               ,  U * 7); // Drill
 		OM.data(MD.RoC, "rotarycraft_item_borecraft"        , 1,   1, MT.HSLA               ,  U * 1, ANY.Diamond           ,  U * 3, MT.Bedrock            ,  U * 3, MT.Obsidian           ,  U *18); // Pressure Head
@@ -1463,7 +1470,6 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.Sand               ,  U2);
 		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.Sand               ,  U * 1);
-		OM.data(MD.EtFu, "crying_obsidian"                  , 1,   W, MT.Obsidian           ,  U * 9, MT.Lapis, U * 1);
 		OM.data(MD.EtFu, "rabbit_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "rabbit_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "mutton_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);

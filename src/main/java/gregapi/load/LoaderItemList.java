@@ -974,6 +974,7 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Rabbit_Foot                     .set(ST.make(MD.EtFu, "rabbit_foot"                         , 1, 0));
 		IL.EtFu_Beet_Seeds                      .set(ST.make(MD.EtFu, "beetroot_seeds"                      , 1, 0), null, "seedBeet");
 		IL.EtFu_Dragon_Breath                   .set(ST.make(MD.EtFu, "dragon_breath"                       , 1, 0));
+		IL.EtFu_Obsidian                        .set(ST.make(MD.EtFu, "crying_obsidian"                     , 1, 0), new OreDictItemData(MT.Obsidian, U*9, MT.Lapis, U));
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));
 		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0));

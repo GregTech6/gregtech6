@@ -40,8 +40,8 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		
 		for (int tX = 5; tX <= 10; tX++) for (int tZ = 5; tZ <= 10; tZ++) {
 			if ((tX == 5 || tX == 10) && (tZ == 5 || tZ == 10)) {
-				aData.set(tX,  0, tZ, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
-				aData.set(tX,  1, tZ, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
+				aData.set(tX,  0, tZ, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+				aData.set(tX,  1, tZ, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
 				if (tHexorium != NB && tHexorium != null) {
 					aData.set(tX, 2, tZ, tHexorium, 9, 3);
 				} else {
@@ -63,10 +63,10 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		aData.set( 7,  0,  8, Blocks.end_portal, 0);
 		aData.set( 8,  0,  7, Blocks.end_portal, 0);
 		aData.set( 8,  0,  8, Blocks.end_portal, 0);
-		aData.set( 7, -1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
-		aData.set( 7, -1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
-		aData.set( 8, -1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
-		aData.set( 8, -1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0);
+		aData.set( 7, -1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+		aData.set( 7, -1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+		aData.set( 8, -1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+		aData.set( 8, -1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
 		return T;
 	}
 }

@@ -101,6 +101,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -377,22 +378,18 @@ public class GT6_Main extends Abstract_Mod {
 		Block tBlock = ST.block(MD.FR, "beehives", NB);
 		if (tBlock != NB) {tBlock.setHarvestLevel("scoop", 0); GT_Tool_Scoop.sBeeHiveMaterial = tBlock.getMaterial();}
 
-//      if (IL.FR_Tree_Sapling  .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_Tree_Sapling  .getWildcard(1)}                                , ST.array(IL.FR_Tree_Sapling   .getWithName(1, "Scanned Sapling"       )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Butterfly     .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_Butterfly     .getWildcard(1)}                                , ST.array(IL.FR_Butterfly      .getWithName(1, "Scanned Butterfly"     )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Larvae        .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_Larvae        .getWildcard(1)}                                , ST.array(IL.FR_Larvae         .getWithName(1, "Scanned Larvae"        )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Serum         .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_Serum         .getWildcard(1)}                                , ST.array(IL.FR_Serum          .getWithName(1, "Scanned Serum"         )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Caterpillar   .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_Caterpillar   .getWildcard(1)}                                , ST.array(IL.FR_Caterpillar    .getWithName(1, "Scanned Caterpillar"   )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_PollenFertile .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.FR_PollenFertile .getWildcard(1)}                                , ST.array(IL.FR_PollenFertile  .getWithName(1, "Scanned Pollen"        )}, null                                                    , FL.array(MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//      if (IL.IC2_Crop_Seeds   .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.IC2_Crop_Seeds   .getWildcard(1)}                                , ST.array(IL.IC2_Crop_Seeds    .getWithName(1, "Scanned Seeds"         )}, null                                                    , null, null, 160,  8, 0);
-//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(ST.make(Items.written_book, 1, W)}                          , ST.array(IL.Tool_DataStick    .getWithName(1, "Scanned Book Data"     )}, IL.Tool_DataStick.getWithName(1, "Stick to save it to") , null, null, 128, 32, 0);
-//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(ST.make(Items.filled_map, 1, W)}                                , ST.array(IL.Tool_DataStick    .getWithName(1, "Scanned Map Data"      )}, IL.Tool_DataStick.getWithName(1, "Stick to save it to") , null, null, 128, 32, 0);
 //                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.Tool_DataOrb     .getWithName(1, "Orb to overwrite")}            , ST.array(IL.Tool_DataOrb      .getWithName(1, "Copy of the Orb"       )}, IL.Tool_DataOrb.getWithName(0, "Orb to copy")           , null, null, 512, 32, 0);
 //                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, ST.array(IL.Tool_DataStick   .getWithName(1, "Stick to overwrite")}          , ST.array(IL.Tool_DataStick    .getWithName(1, "Copy of the Stick"     )}, IL.Tool_DataStick.getWithName(0, "Stick to copy")       , null, null, 128, 32, 0);
 		
 		for (IItemContainer tBee : new IItemContainer[] {IL.FR_Bee_Drone, IL.FR_Bee_Princess, IL.FR_Bee_Queen}) if (tBee.exists()) {
 		for (String tFluid : FluidsGT.HONEY) if (FL.exists(tFluid))
 		RM.Bumblelyzer.addFakeRecipe(F, ST.array(tBee.wild(1)), ST.array(tBee.getWithName(1, "Scanned Bee")), null, null, FL.array(FL.make(tFluid, 50)) , null, 64, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, ST.array(tBee.wild(1)), ST.array(tBee.getWithName(1, "Scanned Bee")), null, null, FL.array(FL.Honeydew.make(50))       , null, 64, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, ST.array(tBee.wild(1)), ST.array(tBee.getWithName(1, "Scanned Bee")), null, null, FL.array(FL.Honeydew.make(50)), null, 64, 16, 0);
 		}
 		for (IItemContainer tPlant : new IItemContainer[] {IL.FR_Tree_Sapling, IL.IC2_Crop_Seeds}) if (tPlant.exists()) {
 		RM.Plantalyzer.addFakeRecipe(F, ST.array(tPlant.wild(1)), ST.array(tPlant.getWithName(1, "Scanned Plant")), null, null, null, null, 64, 16, 0);
@@ -456,6 +453,11 @@ public class GT6_Main extends Abstract_Mod {
 		
 		
 		if (CODE_CLIENT) {
+			if (FL.XP.exists()) for (Object tObject : FurnaceRecipes.smelting().getSmeltingList().keySet()) if (tObject instanceof ItemStack) {
+				RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, T, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
+			}
+			
+			
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
 					boolean temp = T;

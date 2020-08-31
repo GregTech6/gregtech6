@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -64,6 +65,9 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 				} else if (tOutput.getItem() == Items.coal) {
 					// Coal/Charcoal is giving 0.10 XP
 					tFluid = FL.XP.make(tOutput.stackSize * 2);
+				} else if (IL.EtFu_Chorus_Popped.equal(tOutput)) {
+					// Chorus Fruit is 0.25 XP
+					tFluid = FL.XP.make(tOutput.stackSize * 5);
 				} else {
 					Block tBlock = ST.block(tOutput);
 					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick) {
@@ -121,5 +125,5 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, ZL_FS, 16, 16, 0);
 	}
 	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack, F, null) != null;}
+	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return ST.valid(RM.get_smelting(aStack, F, null));}
 }
