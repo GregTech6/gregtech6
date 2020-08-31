@@ -137,7 +137,7 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 								}
 							} else {
 								// Guess we need to default to the normal Furnace way of determining XP
-								tFluid = FL.XP.make(UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput)));
+								tFluid = FL.XP.make(UT.Code.bind(1, tOutput.stackSize * 20, UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput))));
 							}
 						}
 					}

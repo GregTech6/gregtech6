@@ -171,6 +171,7 @@ public class Loader_Fluids implements Runnable {
 		FL.create("concrete"                 , "Wet Concrete"        , MT.Concrete       , 1,    L,   300);
 		FL.create("molten.latex"             , "Latex"               , MT.Latex          , 1,    L, DEF_ENV_TEMP);
 		FL.create("latex"                    , "Latex"               , MT.Latex          , 1,    L, DEF_ENV_TEMP);
+		FL.create("molten hsla"              , "Molten HSLA Steel"   , MT.HSLA           , 1,    L,  1873).setLuminosity( 5);
 		
 		FL.createMolten(MT.Chocolate         , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		FL.createMolten(MT.Cheese            , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
