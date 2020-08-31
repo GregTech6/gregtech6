@@ -25,6 +25,7 @@ import java.util.Collection;
 
 import gregapi.data.FL;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -44,8 +45,8 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
-	public RecipeMapFurnace(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower) {
-		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, aCombinePower);
+	public RecipeMapFurnace(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower, boolean aUseBucketSizeIn, boolean aUseBucketSizeOut) {
+		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, aCombinePower, aUseBucketSizeIn, aUseBucketSizeOut);
 	}
 	
 	@Override
@@ -66,8 +67,8 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 					// Coal/Charcoal is giving 0.10 XP
 					tFluid = FL.XP.make(tOutput.stackSize * 2);
 				} else if (IL.EtFu_Chorus_Popped.equal(tOutput)) {
-					// Chorus Fruit is 0.25 XP
-					tFluid = FL.XP.make(tOutput.stackSize * 5);
+					// Chorus Fruit is 0.20 XP
+					tFluid = FL.XP.make(tOutput.stackSize * 4);
 				} else {
 					Block tBlock = ST.block(tOutput);
 					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick) {
@@ -95,6 +96,8 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
 									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
 									if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
+									// Magical Tag also doubles the XP you can get from this.
+									if (tData.mMaterial.mMaterial.contains(TD.Properties.MAGICAL )) tXP *= 2;
 									if (tData.mPrefix.mAmount > 0) {
 										// Give at least 0.05 XP for this, or more if the Recipes is valuable enough.
 										tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
@@ -110,8 +113,32 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 								// No XP from this case! This is likely either a Recycling Recipe or a Dust to Ingot Recipe!
 							}
 						} else {
-							// Guess we need to default to the normal Furnace way of determining XP
-							tFluid = FL.XP.make(UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput)));
+							String tName = ST.regName(aInputs[0]);
+							// Those RotaryCraft Extracts are all about Ore Processing.
+							if (MD.RoC.owns(tName) && tName.contains("extracts")) {
+								tData = OM.anydata_(tOutput);
+								if (tData != null && tData.hasValidPrefixMaterialData()) {
+									// Give XP based on Tool Quality of the Output.
+									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
+									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
+									if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
+									// Magical Tag also doubles the XP you can get from this.
+									if (tData.mMaterial.mMaterial.contains(TD.Properties.MAGICAL )) tXP *= 2;
+									if (tData.mPrefix.mAmount > 0) {
+										// Give at least 0.05 XP for this, or more if the Recipes is valuable enough.
+										tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
+									} else {
+										// This is probably something that doesn't have a Unit Amount.
+										tFluid = FL.XP.make(tXP);
+									}
+								} else {
+									// I don't know what this is, guess I will default to 5.
+									tFluid = FL.XP.make(tOutput.stackSize * 5);
+								}
+							} else {
+								// Guess we need to default to the normal Furnace way of determining XP
+								tFluid = FL.XP.make(UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput)));
+							}
 						}
 					}
 				}

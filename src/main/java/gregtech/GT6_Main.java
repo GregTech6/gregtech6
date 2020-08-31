@@ -101,7 +101,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -453,11 +452,6 @@ public class GT6_Main extends Abstract_Mod {
 		
 		
 		if (CODE_CLIENT) {
-			if (FL.XP.exists()) for (Object tObject : FurnaceRecipes.smelting().getSmeltingList().keySet()) if (tObject instanceof ItemStack) {
-				RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, T, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
-			}
-			
-			
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
 					boolean temp = T;
@@ -492,7 +486,8 @@ public class GT6_Main extends Abstract_Mod {
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
 		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-
+		
+		
 		ORD.println("============================");
 		ORD.println("Outputting Unknown Materials");
 		ORD.println("============================");

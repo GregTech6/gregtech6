@@ -35,16 +35,16 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class FM {
 	public static final RecipeMap
-	  Furnace       = new RecipeMapFurnaceFuel  (null, "mc.recipe.furnacefuel"      , "Furnace Fuels"      , "smelting"    , 0, 1, RES_PATH_GUI+"machines/E_Furnace"   ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "", 1, "", T, F, F, F, F)
+	  Furnace       = new RecipeMapFurnaceFuel  (null, "mc.recipe.furnacefuel"      , "Furnace Fuels"      , "smelting"    , 0, 1, RES_PATH_GUI+"machines/E_Furnace"   ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "", 1, "", T, F, F, F, F, F, F)
 	
-	, FluidBed      = new RecipeMapFuel         (null, "gt.recipe.fuels.fluidbed"   , "Fluidized Bed Fuels", null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 1, 2, 1,/*MIN*/ 2,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Burn          = new RecipeMapFuel         (null, "gt.recipe.fuels.burn"       , "Burnable Fuels"     , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Gas           = new RecipeMapFuel         (null, "gt.recipe.fuels.gas"        , "Gas Fuels"          , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Hot           = new RecipeMapFuel         (null, "gt.recipe.fuels.hot"        , "Hot Fuels"          , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Plasma        = new RecipeMapFuel         (null, "gt.recipe.fuels.plasma"     , "Plasma Fuels"       , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Engine        = new RecipeMapFuel         (null, "gt.recipe.fuels.engine"     , "Engine Fuels"       , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Turbine       = new RecipeMapFuel         (null, "gt.recipe.fuels.turbine"    , "Turbine Fuels"      , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
-	, Magic         = new RecipeMapFuel         (null, "gt.recipe.fuels.magic"      , "Magic Fuels"        , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T)
+	, FluidBed      = new RecipeMapFuel         (null, "gt.recipe.fuels.fluidbed"   , "Fluidized Bed Fuels", null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 1, 2, 1,/*MIN*/ 2,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Burn          = new RecipeMapFuel         (null, "gt.recipe.fuels.burn"       , "Burnable Fuels"     , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Gas           = new RecipeMapFuel         (null, "gt.recipe.fuels.gas"        , "Gas Fuels"          , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Hot           = new RecipeMapFuel         (null, "gt.recipe.fuels.hot"        , "Hot Fuels"          , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Plasma        = new RecipeMapFuel         (null, "gt.recipe.fuels.plasma"     , "Plasma Fuels"       , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Engine        = new RecipeMapFuel         (null, "gt.recipe.fuels.engine"     , "Engine Fuels"       , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Turbine       = new RecipeMapFuel         (null, "gt.recipe.fuels.turbine"    , "Turbine Fuels"      , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
+	, Magic         = new RecipeMapFuel         (null, "gt.recipe.fuels.magic"      , "Magic Fuels"        , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F, T, F, F)
 	;
 	
 	public static void te_fuel_magmatic(String fluidName, int energy) {

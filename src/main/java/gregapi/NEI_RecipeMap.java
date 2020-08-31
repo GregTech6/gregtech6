@@ -376,8 +376,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				break;
 			}
 
-			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
-			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F, mRecipeMap.mUseBucketSizeIn ),  53 - (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F, mRecipeMap.mUseBucketSizeOut), 107 + (i%3)*18, 63 - (i/3)*18));
 		}
 	}
 
