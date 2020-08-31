@@ -24,14 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import gregapi.data.FL;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.util.OM;
-import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -79,10 +77,6 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.crushedCentrifuged    .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedCentrifugedTiny.addListener(new Listener_Furnace_Smelting( -1, T));
 		RUNNING = F;
-		
-		if (CODE_CLIENT && FL.XP.exists()) for (Object tObject : FurnaceRecipes.smelting().getSmeltingList().keySet()) if (tObject instanceof ItemStack) {
-			RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, F, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
-		}
 	}
 	
 	public static class Listener_Furnace_Smelting implements IOreDictListenerEvent {

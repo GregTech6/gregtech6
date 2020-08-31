@@ -49,10 +49,12 @@ import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
 import gregapi.data.CS.ToolsGT;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
@@ -82,6 +84,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
@@ -438,21 +441,22 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-
-	public boolean mNeedsToHideMicroblocks = T;
-
+	
 	@SubscribeEvent
 	public void onClientTickEvent(ClientTickEvent aEvent) {
 		if (aEvent.phase == Phase.END) {
-			// Now for hiding stuff from NEI that should have never been there in the first place.
-			if (mNeedsToHideMicroblocks) {
+			if (CLIENT_TIME == 10) {
+				// Initializing the Fake Furnace Recipe Map
+				if (FL.XP.exists()) for (Object tObject : FurnaceRecipes.smelting().getSmeltingList().keySet()) if (tObject instanceof ItemStack) {
+					RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, F, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
+				}
+				// Now for hiding stuff from NEI that should have never been there in the first place.
 				if (!SHOW_MICROBLOCKS && NEI) for (Item aItem : new Item[] {ST.item(MD.FMB, "microblock"), ST.item(MD.ExU, "microblocks"), ST.item(MD.AE, "item.ItemFacade")}) if (aItem != null) {
 					ST.hide(aItem);
 					List<ItemStack> tList = new ArrayListNoNulls<>();
 					aItem.getSubItems(aItem, CreativeTabs.tabAllSearch, tList);
 					for (ItemStack tStack : tList) ST.hide(tStack);
 				}
-				mNeedsToHideMicroblocks = F;
 			}
 			
 			switch((int)(CLIENT_TIME % 10)) {
