@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -38,7 +39,6 @@ public class Loader_Recipes_Furnace implements Runnable {
 	public static boolean RUNNING = F;
 	
 	@Override public void run() {
-		// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
 		@SuppressWarnings("unchecked")
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
 		while (tIterator.hasNext()) {
@@ -47,7 +47,37 @@ public class Loader_Recipes_Furnace implements Runnable {
 			if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
 				OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+					// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
 					tIterator.remove();
+				}
+			} else {
+				// Lots of RotaryCraft balance fixes and more Recipe Compat.
+				if (MD.RoC.owns(tEntry.getKey(), "extracts")) {
+					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
+					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+						if (tData2.mPrefix == OP.dust) {
+							RM.pulverizing(tEntry.getKey(), tEntry.getValue());
+							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
+							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
+							RM.Sifting .addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+						} else {
+							ItemStack tDust = OM.dust(tData2.mMaterial, tEntry.getValue().stackSize, 1);
+							RM.pulverizing(tEntry.getKey(), tDust);
+							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							if (tData2.mPrefix == OP.ingot) {
+								// Only remove Flake Recipes that do not belong to the Furnace.
+								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tIterator.remove();
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							} else {
+								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+							}
+						}
+					} else {
+						RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+						RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+					}
 				}
 			}
 		}

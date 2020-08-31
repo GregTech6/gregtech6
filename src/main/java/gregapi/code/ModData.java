@@ -57,6 +57,12 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 	public boolean owns (ItemStack    aStack                        ) {return mLoaded && owns_(ST.regName(aStack));}
 	public boolean owns (String       aRegName                      ) {return mLoaded && owns_(aRegName);}
 	public boolean owns_(String       aRegName                      ) {return aRegName != null && aRegName.startsWith(mID);}
+	public boolean owns (IBlockAccess aWorld, int aX, int aY, int aZ, String aContains) {return mLoaded && owns_(ST.regName(aWorld.getBlock(aX, aY, aZ)), aContains);}
+	public boolean owns (Block        aBlock                        , String aContains) {return mLoaded && owns_(ST.regName(aBlock), aContains);}
+	public boolean owns (Item         aItem                         , String aContains) {return mLoaded && owns_(ST.regName(aItem), aContains);}
+	public boolean owns (ItemStack    aStack                        , String aContains) {return mLoaded && owns_(ST.regName(aStack), aContains);}
+	public boolean owns (String       aRegName                      , String aContains) {return mLoaded && owns_(aRegName, aContains);}
+	public boolean owns_(String       aRegName                      , String aContains) {return aRegName != null && aRegName.startsWith(mID) && aRegName.contains(aContains);}
 	
 	@Override
 	public String toString() {

@@ -113,9 +113,8 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 								// No XP from this case! This is likely either a Recycling Recipe or a Dust to Ingot Recipe!
 							}
 						} else {
-							String tName = ST.regName(aInputs[0]);
 							// Those RotaryCraft Extracts are all about Ore Processing.
-							if (MD.RoC.owns(tName) && tName.contains("extracts")) {
+							if (MD.RoC.owns(aInputs[0], "extracts")) {
 								tData = OM.anydata_(tOutput);
 								if (tData != null && tData.hasValidPrefixMaterialData()) {
 									// Give XP based on Tool Quality of the Output.
