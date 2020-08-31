@@ -55,7 +55,8 @@ public class Loader_Recipes_Furnace implements Runnable {
 				if (MD.RoC.owns(tEntry.getKey(), "extracts")) {
 					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						if (tData2.mPrefix == OP.dust) {
+						tEntry.setValue(OM.get(tEntry.getValue()));
+						if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 							RM.pulverizing(tEntry.getKey(), tEntry.getValue());
 							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
 							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
@@ -65,9 +66,9 @@ public class Loader_Recipes_Furnace implements Runnable {
 							RM.pulverizing(tEntry.getKey(), tDust);
 							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
 							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-							if (tData2.mPrefix == OP.ingot) {
-								// Only remove Flake Recipes that do not belong to the Furnace.
-								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tIterator.remove();
+							if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+								// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
+								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
 								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
 							} else {
 								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
@@ -120,7 +121,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Processing.FURNACE)) {
+			if (aEvent.mMaterial.contains(TD.Processing.FURNACE) && !aEvent.mMaterial.contains(TD.Properties.UNUSED_MATERIAL)) {
 				long aTargetAmount = UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F);
 				RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, aTargetAmount), mExp ? UT.Code.units(aTargetAmount, U, aEvent.mMaterial.mToolQuality+1, T) : 0, !RUNNING);
 			}
