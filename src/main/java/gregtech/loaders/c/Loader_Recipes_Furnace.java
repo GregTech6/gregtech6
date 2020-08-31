@@ -31,6 +31,7 @@ import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -65,13 +66,18 @@ public class Loader_Recipes_Furnace implements Runnable {
 							RM.Sifting .addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
 						} else {
 							ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
-							RM.pulverizing(tEntry.getKey(), tDust);
-							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-							if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
-								// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
-								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
-								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							if (ST.valid(tDust) && tDust.stackSize > 0) {
+								RM.pulverizing(tEntry.getKey(), tDust);
+								RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+								RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+								if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+									// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
+									if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
+									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+								} else {
+									RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+								}
 							} else {
 								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
 								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
