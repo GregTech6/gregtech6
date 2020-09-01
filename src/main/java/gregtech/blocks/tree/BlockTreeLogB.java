@@ -84,28 +84,8 @@ public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolab
 		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
-	@Override
-	public int getLeavesRangeSide(byte aMetaData) {
-		switch(aMetaData & 3) {
-		case 0: return 3;
-		case 1: return 3;
-		case 2: return 4;
-		case 3: return 3;
-		}
-		return 3;
-	}
-	
-	@Override
-	public int getLeavesRangeYPos(byte aMetaData) {
-		switch(aMetaData & 3) {
-		case 0: return 2;
-		case 1: return 3;
-		case 2: return 1;
-		case 3: return 3;
-		}
-		return 3;
-	}
-	
+	@Override public int getLeavesRangeSide(byte aMetaData) {return (aMetaData & 3) == 2 ? 4 : 3;}
+	@Override public int getLeavesRangeYPos(byte aMetaData) {aMetaData &= 3; return aMetaData == 0 ? 2 : aMetaData == 2 ? 1 : 3;}
 	@Override public int getLeavesRangeYNeg(byte aMetaData) {return 0;}
 	
 	@Override

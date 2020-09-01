@@ -637,7 +637,7 @@ public enum FL {
 	public static ItemStack display(FluidStack aFluid, long aAmount, boolean aUseStackSize, boolean aLimitStackSize, boolean aUseBucketSize) {
 		short aID = id(aFluid);
 		if (aID < 0) return null;
-		ItemStack rStack = IL.Display_Fluid.getWithMeta(aUseStackSize ? aUseBucketSize ? aLimitStackSize ? UT.Code.bind7(aAmount / 1000) : aAmount / 1000 : aLimitStackSize ? UT.Code.bind7(aAmount) : aAmount : 1, aID);
+		ItemStack rStack = IL.Display_Fluid.getWithMeta(Math.max(1, aUseStackSize ? aUseBucketSize ? aLimitStackSize ? UT.Code.bind7(aAmount / 1000) : aAmount / 1000 : aLimitStackSize ? UT.Code.bind7(aAmount) : aAmount : 1), aID);
 		if (rStack == null) return null;
 		NBTTagCompound tNBT = NBT.makeString("f", aFluid.getFluid().getName());
 		if (aAmount != 0) NBT.setNumber(tNBT, "a", aAmount);

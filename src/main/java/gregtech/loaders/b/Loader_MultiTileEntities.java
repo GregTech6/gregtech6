@@ -2118,8 +2118,9 @@ public class Loader_MultiTileEntities implements Runnable {
 		IL.Rope_Silk.set(aRegistry.getItem(32012));
 		IL.Rope_Grass.set(aRegistry.getItem(32013));
 		IL.Rope_Plastic.set(aRegistry.getItem(32014));
-		IL.Porcelain_Cup.set(aRegistry.getItem(32739), new OreDictItemData(MT.Porcelain, U*1));
+		IL.Bag_Sap_Resin.set(aRegistry.getItem(32736));
 		IL.Measuring_Pot.set(aRegistry.getItem(32738), new OreDictItemData(MT.Ceramic, U*4));
+		IL.Porcelain_Cup.set(aRegistry.getItem(32739), new OreDictItemData(MT.Porcelain, U*1));
 		IL.Ceramic_Jug.set(aRegistry.getItem(32740), new OreDictItemData(MT.Ceramic, U*6));
 		IL.PlasticCan.set(aRegistry.getItem(32715), new OreDictItemData(MT.Plastic, U*6));
 		IL.Dynamite.set(aRegistry.getItem(32713), new OreDictItemData(MT.Dynamite, U));

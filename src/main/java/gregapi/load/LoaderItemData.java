@@ -983,13 +983,13 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   0, MT.HSLA               ,251* U24,MT.Au                 ,  U * 5, MT.Glass              , 9* U16, MT.AluminiumAlloy     ,  U * 2); // Upgrade Performance Engine
 		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   1, MT.HSLA               , 33* U9, MT.Redstone           ,  U * 3, MT.Au                 ,  U * 2); // Upgrade Redstone Cooling
-		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   2, MT.HSLA               ,  U * 7, MT.Au                 ,  U * 4, MT.InductiveAlloy     ,  U * 2); // Upgrade Magnetic Coil
-		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   3, MT.HSLA               ,  U * 5, MT.Redstone           ,  2* U3, ANY.W ,  U * 1, MT.InductiveAlloy     ,  U * 3); // Upgrade Flux Conductance
-		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   4, MT.HSLA               ,  U * 2, ANY.W ,  U * 4, MT.Bedrock_HSLA_Alloy ,  U * 1); // Upgrade Thermal Stability
-		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   5, MT.HSLA               , 37* U8, MT.SpringSteel        ,  U * 4, MT.Bedrock            ,  U2); // Upgrade Torsion Resistance
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   2, MT.HSLA               ,  U * 9, MT.Au                 ,  U * 4, MT.InductiveAlloy     ,  U * 2, MT.TungstenAlloy      ,  U * 2); // Upgrade Magnetic Coil
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   3, MT.HSLA               ,  U * 5, MT.Redstone           ,  2* U3, ANY.W                 ,  U * 1, MT.InductiveAlloy     ,  U * 3); // Upgrade Flux Conductance
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   4, MT.HSLA               ,  U * 2, ANY.W                 ,  U * 4, MT.Bedrock_HSLA_Alloy ,  U * 1); // Upgrade Thermal Stability
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   5, MT.HSLA               , 37* U8, MT.SpringSteel        ,  U * 4, MT.Bedrock            ,  U2   ); // Upgrade Torsion Resistance
 		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   6, MT.HSLA               ,885* U9, MT.Bedrock            ,  U * 4, MT.Redstone           ,  U * 6, MT.Au                 ,  U * 4, MT.InductiveAlloy     ,  U * 6); // Upgrade Afterburner
 		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   7, MT.HSLA               ,  U *18, MT.Redstone           ,  2* U3, MT.Au                 ,  U * 8, MT.InductiveAlloy     ,  U * 2, MT.SpringSteel        ,  U * 6, ANY.W ,  U * 1, MT.SteelMagnetic      ,  U * 2); // Upgrade Resonance Stability
-		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   8, MT.HSLA               ,  U * 4, MT.Electrum           ,  U * 2, ANY.W ,  U * 2, MT.Enderium           ,  U * 1); // Flux Amplitude Upgrade
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"          , 1,   8, MT.HSLA               ,  U * 4, MT.Electrum           ,  U * 2, ANY.W                 ,  U * 2, MT.Enderium           ,  U * 1); // Flux Amplitude Upgrade
 		
 		
 		OM.data(MD.RoC, "rotarycraft_item_engine"           , 1,   0, MT.HSLA               ,  U * 7, MT.Redstone           ,  U * 2); // DC Engine
@@ -1002,13 +1002,13 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   3, MT.NetherStar         ,  U * 1, MT.Redstone           ,  U * 1,ANY.Glowstone  ,  U *12, MT.Blaze              ,  U * 2); // Heat Ray Core
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   4, MT.HSLA               ,  U * 5, MT.Au                 ,  U * 8, MT.Redstone           ,  U * 1); // Linear Induction Motor
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   5, MT.HSLA               ,  U * 3); // Propeller Blade
-		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   6, MT.HSLA               , 69* U9); // Hub
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   6, MT.HSLA               , 51* U9); // Hub
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   7, MT.Glass              ,  U * 3); // Mirror
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   8, MT.HSLA               ,  U * 5, MT.Au                 ,  U * 8); // Generator
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,   9, MT.HSLA               ,  U *41, MT.Au                 ,  U *65, MT.Redstone           , 26* U3); // Railgun Accelerator
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  10, MT.HSLA               ,  U * 9); // Turret Base
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  11, MT.HSLA               ,  U *21, ANY.Diamond           ,  U * 1, MT.Au                 ,  U * 9, MT.Redstone           , 16* U3); // Turret Aiming Unit
-		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  12, MT.HSLA               ,633* U9, ANY.W ,  U * 4); // Compound Turbine
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  12, MT.HSLA               ,624* U9, ANY.W                 ,  U * 4, MT.TungstenAlloy      ,  U * 1); // Compound Turbine
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  13, MT.HSLA               ,  U *65, MT.Bedrock            ,  U *16, ANY.Diamond           ,  U *16); // Bedrock Tension Coil
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  14, MT.HSLA               ,  5* U4); // Chain Link
 		OM.data(MD.RoC, "rotarycraft_item_misccraft"        , 1,  15, MT.Bedrock_HSLA_Alloy ,  U * 7); // Bedrock Drill
@@ -1030,7 +1030,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  14, MT.HSLA               ,  U * 3); // Shaft Core
 		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  15, MT.HSLA               ,  U * 5, MT.Redstone           ,  U * 1, MT.Au                 ,  U * 1); // Ignition Unit
 		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  16, ANY.Diamond           ,  U * 3); // Diamond Shaft Core
-		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  17, MT.HSLA               ,201* U9, ANY.W ,  U * 4); // Compound Compressor
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  17, MT.HSLA               ,192* U9, ANY.W                 ,  U * 4, MT.TungstenAlloy      ,  U * 1); // Compound Compressor
 		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  18, MT.AluminiumAlloy     ,  U * 4); // Aluminium Alloy Cylinder
 		OM.data(MD.RoC, "rotarycraft_item_enginecraft"      , 1,  19, MT.HSLA               ,  U * 9, MT.Redstone           ,  U * 2, MT.Au                 ,  U * 1, MT.InductiveAlloy     ,  U * 3); // HT Combustor
 		
@@ -1040,7 +1040,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   6, MT.HSLA               ,114* U9); // 4x Gear
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   7, MT.HSLA               ,180* U9); // 8x Gear
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   8, MT.HSLA               ,246* U9); // 16x Gear
-		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   9, MT.HSLA               ,  U9); // HSLA Scrap
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,   9, MT.HSLA               ,     U9); // HSLA Scrap
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  10, ANY.Fe                ,  U * 1); // Iron Scrap
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  11, MT.HSLA               , 15* U9, ANY.Wood              ,  U * 8); // Wood Flywheel Core
 		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"       , 1,  12, MT.HSLA               , 15* U9, ANY.Stone             ,  U * 8); // Stone Flywheel Core
