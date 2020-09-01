@@ -646,6 +646,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Override public final String getUnlocalizedName(ItemStack aStack) {return mBlock.mMultiTileEntityRegistry.mNameInternal+"."+getDamage(aStack);}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public int getSpriteNumber() {return 0;}
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aRegister) {/**/}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}

@@ -203,6 +203,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
 	@Override public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {/**/}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}

@@ -148,6 +148,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	@Override public final String getUnlocalizedName() {return mBlock.getUnlocalizedName();}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void updateItemStack(ItemStack aStack) {if (mBlock.mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return; int aDamage = ST.meta_(aStack); if (UT.Code.exists(aDamage, mBlock.mMaterialList)) {OreDictMaterial aMaterial = mBlock.mMaterialList[aDamage]; if (aMaterial != aMaterial.mTargetRegistration) aStack.setItemDamage(aMaterial.mTargetRegistration.mID);}}
 	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}

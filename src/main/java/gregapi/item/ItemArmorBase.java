@@ -157,6 +157,7 @@ public class ItemArmorBase extends ItemArmor implements IItemUpdatable, IItemGT,
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {isItemStackUsable(aStack);}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
 	@Override public boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void updateItemStack(ItemStack aStack) {isItemStackUsable(aStack);}
 	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
 	@Override public boolean doesSneakBypassUse(World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {return T;}

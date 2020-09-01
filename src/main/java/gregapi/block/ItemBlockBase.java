@@ -97,6 +97,7 @@ public class ItemBlockBase extends ItemBlock implements IBlock, IItemGT {
 	@Override public boolean onItemUse(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return mPlaceable.onItemUse(this, aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);}
 	@Override public IIcon getIconFromDamage(int aMeta) {return field_150939_a.getIcon(SIDE_TOP, aMeta);}
 	@Override public Block getBlock() {return field_150939_a;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public String getUnlocalizedName(ItemStack aStack) {return mPlaceable.name(UT.Code.bind4(getDamage(aStack)));}
 	@Override public boolean placeBlockAt(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ, int aMetaData) {return aWorld.setBlock(aX, aY, aZ, field_150939_a, aMetaData, 3);}
 	@Override public int getItemStackLimit(ItemStack aStack) {return mPlaceable.getItemStackLimit(aStack);}
