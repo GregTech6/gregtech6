@@ -52,7 +52,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tIron                   ,  6, "molten.nickel"         ,  1, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
 		mix(tIron                   ,  1, "molten.electrotine"    ,  8                                                            , "molten.electrotinealloy" ,  1);
 		}
-		for (String tSteel : new String[] {"molten.steel", "molten.meteoricsteel", "molten.hslasteel", "molten.knightmetal"}) {
+		for (String tSteel : new String[] {"molten.steel", "molten.meteoricsteel", "molten hsla", "molten.knightmetal"}) {
 		mix(tSteel                  ,  1, "molten.tungsten"       ,  1                                                            , "molten.tungstensteel"    ,  2);
 		}
 		mix("molten.teslatite"      ,  4, "molten.silver"         ,  1                                                            , "molten.bluealloy"        ,  1);

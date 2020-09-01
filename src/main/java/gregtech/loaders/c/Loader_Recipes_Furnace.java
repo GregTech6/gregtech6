@@ -59,31 +59,35 @@ public class Loader_Recipes_Furnace implements Runnable {
 				if (MD.RoC.owns(tEntry.getKey(), "extracts")) {
 					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
-							RM.pulverizing(tEntry.getKey(), tEntry.getValue());
-							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
-							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tEntry.getValue());
-							RM.Sifting .addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+						ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
+						if (ST.invalid(tDust) && tDust.stackSize <= 0) tDust = null;
+						
+						if (tDust == null) {
+							// Output the random Items.
+							RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
 						} else {
-							ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
-							if (ST.valid(tDust) && tDust.stackSize > 0) {
-								RM.pulverizing(tEntry.getKey(), tDust);
-								RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-								RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-								if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
-									// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
-									if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
-									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
-								} else {
-									RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
-									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
-								}
+							// Just making sure that things like Aluminium get a Dust Replacement too.
+							if (tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial != tData2.mMaterial.mMaterial) tEntry.setValue(tDust);
+							
+							RM.pulverizing(tEntry.getKey(), tDust);
+							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							
+							if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							} else if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+								// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
+								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
 							} else {
+								// Output Gems and the other random Items.
 								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
 								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
 							}
 						}
 					} else {
+						// Output unknown Items.
 						RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
 						RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
 					}
