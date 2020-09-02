@@ -404,7 +404,7 @@ public class GT_API extends Abstract_Mod {
 		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get("debug" , "block_update_sounds", F);
 		if ( ConfigsGT.CLIENT.get("debug" , "april"  , F)) APRIL_FOOLS = T;
 		
-		if (APRIL_FOOLS && CODE_CLIENT) {
+		if (APRIL_FOOLS) {
 			MT.W.setLocal("Wolframium");
 			MT.V.setLocal("Vandalium");
 			MT.B.setLocal("Boring");
@@ -434,13 +434,13 @@ public class GT_API extends Abstract_Mod {
 			MT.Zr.setLocal("Diamond");
 			MT.Au.setLocal("Pyrite");
 			MT.Pyrite.setLocal("Gold");
-			MT.Fe.setLocal("Iran");
-			MT.IronWood.setLocal("Iranwood");
-			MT.ShadowIron.setLocal("Shade Iran");
-			MT.DarkIron.setLocal("Dank Iran");
-			MT.MeteoricIron.setLocal("Metaur Iran");
-			MT.GildedIron.setLocal("Guild Iran");
-			MT.WroughtIron.setLocal("Wrecked Iran");
+			MT.Fe.setLocal("Irun");
+			MT.IronWood.setLocal("Irunwood");
+			MT.ShadowIron.setLocal("Shade Irun");
+			MT.DarkIron.setLocal("Dank Irun");
+			MT.MeteoricIron.setLocal("Metaur Irun");
+			MT.GildedIron.setLocal("Guild Irun");
+			MT.WroughtIron.setLocal("Wrecked Irun");
 			MT.Steel.setLocal("Style");
 			MT.RedSteel.setLocal("Rad Style");
 			MT.BlueSteel.setLocal("Blu Style");
@@ -468,6 +468,8 @@ public class GT_API extends Abstract_Mod {
 			MT.Plastic.setLocal("LEGO");
 			MT.Asbestos.setLocal("Bestos");
 			MT.AncientDebris.setLocal("Cinnabun");
+			MT.Cinnamon.setLocal("Ancient Debris");
+			MT.WOODS.Cinnamon.setLocal("Ancient Debris");
 			MT.Rb.setLocal("Ruby");
 			MT.Ruby.setLocal("Red Sapphire");
 			MT.KNO3.setLocal("Niter");
@@ -498,6 +500,8 @@ public class GT_API extends Abstract_Mod {
 			MT.OREMATS.Huebnerite.setLocal("Boobnerite");
 			MT.OREMATS.Bromargyrite.setLocal("Bromagnerite");
 			MT.OREMATS.Chalcopyrite.setLocal("Chackapackerite");
+			
+			for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (tMaterial.mNameLocal.toLowerCase().contains("wood")) tMaterial.setLocal(tMaterial.mNameLocal + " >:] nice");
 		}
 		
 		if (D1) {

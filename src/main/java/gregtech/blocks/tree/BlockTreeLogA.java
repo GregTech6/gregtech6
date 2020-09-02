@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.block.tree.BlockBaseLeaves;
 import gregapi.block.tree.BlockBaseLogFlammable;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
@@ -35,6 +36,7 @@ import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -83,19 +85,20 @@ public class BlockTreeLogA extends BlockBaseLogFlammable implements IBlockToolab
 		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
-	@Override public int getLeavesRangeSide(byte aMetaData) {aMetaData &= 3; return aMetaData == 3 ? 3 : aMetaData+2;}
-	@Override public int getLeavesRangeYPos(byte aMetaData) {return (aMetaData & 3) == 3 ? 4 : 2;}
-	@Override public int getLeavesRangeYNeg(byte aMetaData) {return 0;}
+	@Override public int getLeavesRangeSide(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeSide((byte)(aMeta & 3));}
+	@Override public int getLeavesRangeYPos(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeYNeg((byte)(aMeta & 3));} // Yes it has to be the Negative Range of the Leaves here
+	@Override public int getLeavesRangeYNeg(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeYPos((byte)(aMeta & 3));} // Yes it has to be the Positive Range of the Leaves here
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			if (aWorld.isRemote) return 0;
-			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, aWorld.getBlockMetadata(aX, aY, aZ), 3);
+			byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, aMeta, 3);
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Bark), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
 			return 1000;
 		}
-		if (SIDES_HORIZONTAL[aSide] && aTool.equals(TOOL_drill) && aWorld.getBlockMetadata(aX, aY, aZ) == 1) {
+		if (SIDES_HORIZONTAL[aSide] && aTool.equals(TOOL_drill) && WD.meta(aWorld, aX, aY, aZ) == 1) {
 			if (aWorld.isRemote) return 0;
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 			if (tRegistry != null) {

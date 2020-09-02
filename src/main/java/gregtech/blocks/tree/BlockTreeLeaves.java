@@ -69,6 +69,8 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 	@Override
 	public void run() {
 		if (COMPAT_FR != null) {
+			COMPAT_FR.addWindfall(IL.Food_Hazelnut.get(1));
+			COMPAT_FR.addWindfall(IL.Food_Coconut.get(1));
 			COMPAT_FR.addWindfall(IL.Stick.get(1));
 			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.Willow   , 1));
 			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.BlueMahoe, 1));
@@ -78,35 +80,26 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 	
 	@Override
 	public int getLeavesRangeSide(byte aMeta) {
-		switch(aMeta & 7) {
-		case 0: return 2;
-		case 1: return 3;
-		case 2: return 4;
-		case 3: return 3;
-		case 4: return 3;
-		case 5: return 3;
-		case 6: return 4;
-		case 7: return 3;
+		switch(aMeta) {
+		case  0: case  8: return 2;
+		case  2: case 10: return 4;
+		case  6: case 14: return 4;
+		default:          return 3;
 		}
-		return 3;
 	}
 	
 	@Override
 	public int getLeavesRangeYNeg(byte aMeta) {
-		switch(aMeta & 7) {
-		case 0: return 2;
-		case 1: return 2;
-		case 2: return 2;
-		case 3: return 4;
-		case 4: return 2;
-		case 5: return 3;
-		case 6: return 1;
-		case 7: return 3;
+		switch(aMeta) {
+		case  3: case 11: return 4;
+		case  5: case 13: return 3;
+		case  6: case 14: return 1;
+		case  7: case 15: return 3;
+		default:          return 2;
 		}
-		return 2;
 	}
 	
-	@Override public int getLeavesRangeYPos(byte aMeta) {return 0;}
+	@Override public int getLeavesRangeYPos(byte aMeta) {return 0;} // There is no instance where Leaves are below the Logs for these Trees.
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
