@@ -452,10 +452,12 @@ public class GT6_Main extends Abstract_Mod {
 											RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make(Blocks.bedrock, 1, W)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dustImpure.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
 		if (IL.BTL_Bedrock.exists())        RM.BedrockOreList.addFakeRecipe(F, ST.array(IL.BTL_Bedrock        .get(1)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dustImpure.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
 		
+		
+		
 		RM.Other.addFakeRecipe(F, ST.array(
 		  ST.make(BlocksGT.Sapling, 1, 0, "Find a Rubber Tree in a Taiga Biome or similar")
 		, ST.make(BlocksGT.Leaves, 1, 0, "Make sure its natural Leaves stay intact!")
-		, ST.make(BlocksGT.LogA, 1, 0, "Look for a possible Resin Hole of the Tree")
+		, ST.make(BlocksGT.LogA, 1, 0, "Look for a possible Resin Hole at the Tree")
 		, NI
 		, NI
 		, IL.Bag_Sap_Resin.getWithName(1, "Place Resin Bag at the Hole")
@@ -466,7 +468,7 @@ public class GT6_Main extends Abstract_Mod {
 		, ST.make(BlocksGT.Leaves, 1, 1, "Make sure its natural Leaves stay intact!")
 		, ST.make(BlocksGT.LogA, 1, 1, "Choose one of the Log Segments at the Base of the Tree")
 		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.HAND_DRILL, "Drill only one Hole into the Tree")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV, "Drill only one Hole into the Tree")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV  , "Drill only one Hole into the Tree")
 		, IL.Bag_Sap_Resin.getWithName(1, "Place Sap Bag at the drilled Hole")
 		), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sap_Maple.make(250)), 0, 0, 0);
 		
@@ -502,8 +504,8 @@ public class GT6_Main extends Abstract_Mod {
 		, ST.make(BlocksGT.Leaves, 1, 5, "Nothing special about its Leaves")
 		, ST.make(BlocksGT.LogB, 1, 1, "The Bark does not regrow! Plant a new Tree for more")
 		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.KNIFE, "Remove its edible Bark")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.AXE, "Remove its edible Bark")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SAW, "Remove its edible Bark")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.AXE  , "Remove its edible Bark")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SAW  , "Remove its edible Bark")
 		), ST.array(OM.dust(MT.Cinnamon), IL.Food_Cinnamon.get(1), IL.HaC_Cinnamon.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
@@ -520,9 +522,11 @@ public class GT6_Main extends Abstract_Mod {
 		, ST.make(BlocksGT.Leaves, 1, 7, "Make sure its natural Leaves stay intact!")
 		, ST.make(BlocksGT.LogB, 1, 3, "Choose one of the Log Segments at the Base of the Tree")
 		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.HAND_DRILL, "Drill only one Hole into the Tree")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV, "Drill only one Hole into the Tree")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV  , "Drill only one Hole into the Tree")
 		, IL.Bag_Sap_Resin.getWithName(1, "Place Sap Bag at the drilled Hole")
 		), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sap_Rainbow.make(250)), 0, 0, 0);
+		
+		
 		
 		if (CODE_CLIENT) {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
