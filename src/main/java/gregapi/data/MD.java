@@ -90,6 +90,7 @@ public class MD {
 	, CHSL              = new ModData(ModIDs.CHSL               , "Chisel")
 	
 	, NePl              = new ModData(ModIDs.NePl               , "Netherite Plus")
+	, NeLi              = new ModData(ModIDs.NeLi               , "Netherlicious")
 	, EtFu              = new ModData(ModIDs.EtFu               , "Et Futurum")
 	, BB                = new ModData(ModIDs.BB                 , "Better Beginnings")
 	, DYNAMIC_TREES     = new ModData(ModIDs.DYNAMIC_TREES      , "Dynamic Trees")

@@ -41,6 +41,10 @@ It will also work for Sewage from Adult Mobs, based on the Size of the Mob stand
 Tungsten Alloy and its direct Items now have Material Data. I think it got one of the most complicated Results in the Chemical Tooltip so far, closing in on the old Garnet Tooltips. XD
 The Flakes from Ore Processing can now be processed in more Machines than just the Furnace (like the Shredder or Sifter for example). Do note that most of those Recipes will output Dusts instead of Ingots now for somewhat obvious reasons. (I cant really do anything against the "Aluminum Dust" that the Ore Extractor outputs since it isn't Flakes)
 Also added Tungsten Alloy Drums, Anvils, Cells, Fluid Pipes, Storages, Shelves etc.
+[COMPAT] Netherlicious
+Netherlicious officially wont ever add Netherite, so the Netherite Plus Mod is still recommended for Netherite Items such as Armor, or the Twilight Forest Netherrite Ore Compat.
+Foxfire Planks are now in the GT6 Wood Dictionary.
+Crimson and Warped Wood Stuff from Netherite Plus are now overidden by Netherlicious Wood Stuff wherever applicable.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.

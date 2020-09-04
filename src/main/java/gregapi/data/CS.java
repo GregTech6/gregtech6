@@ -1408,13 +1408,13 @@ public class CS {
 		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
 		, BATH = new HashSetNoNulls<>()
 		, DYE = new HashSetNoNulls<>()
-
+		
 		, STEAM = new HashSetNoNulls<>()
 		, POWER_CONDUCTING = new HashSetNoNulls<>(F, "rc fusion plasma")
 		, LUBRICANT = new HashSetNoNulls<>()
 		, THERMOS = new HashSetNoNulls<>(F, "coffee")
 		, POTION = new HashSetNoNulls<>()
-
+		
 		, FOOD = new HashSetNoNulls<>(F, "coffee")
 		, JUICE = new HashSetNoNulls<>()
 		, FRUIT_JUICE = new HashSetNoNulls<>()
@@ -1425,7 +1425,7 @@ public class CS {
 		, TEA = new HashSetNoNulls<>()
 		, COOKING_OIL = new HashSetNoNulls<>()
 		, SLIME = new HashSetNoNulls<>()
-
+		
 		, ALCOHOLIC = new HashSetNoNulls<>()
 		, VINEGAR = new HashSetNoNulls<>()
 		, RUM = new HashSetNoNulls<>()
@@ -1806,6 +1806,7 @@ public class CS {
 		, CHSL              = "chisel"
 		
 		, NePl              = "netheriteplus"
+		, NeLi              = "netherlicious"
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
 		, DYNAMIC_TREES     = "dynamictrees"

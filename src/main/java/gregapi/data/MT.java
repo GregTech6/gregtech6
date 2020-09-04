@@ -3117,6 +3117,7 @@ public class MT {
 		DarkOak             = woodnormal( 9305, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21, 3.5, 32, MD.MC),
 		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106, 2.5, 24, MD.NePl),
 		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, 3.5, 32, MD.NePl),
+		Foxfire             = woodnormal( 9408, "Foxfirewood"             , "Foxfire"             ,  51,  51, 101, 4.0, 24, MD.NeLi),
 		
 		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, 1.5,  8, MD.GT).setPulver(MT.Wood, U),
 		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63, 1.5,  8, MD.BoP),

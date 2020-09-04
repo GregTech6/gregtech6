@@ -47,7 +47,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 235 is next! There is no Gaps in this List!
+		// 238 is next! There is no Gaps in this List!
 		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Vanilla Trees
@@ -767,14 +767,31 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.HaC, "pamstarfruitSapling"  , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
 			new SaplingEntry(ST.make(MD.HaC, "pamvanillabeanSapling", 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
 		}
+		// Netherlicious Planks
+		if (MD.NeLi.mLoaded) {
+			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 0), new WoodEntry(ST.make(MD.NeLi, "Stem" , 1, 0), new BeamEntry(ST.make(MD.NeLi, "Stem" , 1, 1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 0), ST.make(MD.NeLi, "PlankSingleSlab", 1, 0), ST.make(MD.NeLi, "CrimsonStairs", 1, W), MT.WOODS.Crimson, 235))));
+			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 1), new WoodEntry(ST.make(MD.NeLi, "Stem" , 1, 2), new BeamEntry(ST.make(MD.NeLi, "Stem" , 1, 3), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 1), ST.make(MD.NeLi, "PlankSingleSlab", 1, 1), ST.make(MD.NeLi, "WarpedStairs" , 1, W), MT.WOODS.Warped , 236))));
+			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 2), new WoodEntry(ST.make(MD.NeLi, "Stem2", 1, 0), new BeamEntry(ST.make(MD.NeLi, "Stem2", 1, 1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 2), ST.make(MD.NeLi, "PlankSingleSlab", 1, 2), ST.make(MD.NeLi, "FoxfireStairs", 1, W), MT.WOODS.Foxfire, 237))));
+			new WoodEntry(ST.make(MD.NeLi, "FullWood", 1, 0), new BeamEntry(ST.make(MD.NeLi, "FullWood", 1, 1), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 0)));
+			new WoodEntry(ST.make(MD.NeLi, "FullWood", 1, 2), new BeamEntry(ST.make(MD.NeLi, "FullWood", 1, 3), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 1)));
+			new WoodEntry(ST.make(MD.NeLi, "FullWood", 1, 4), new BeamEntry(ST.make(MD.NeLi, "FullWood", 1, 5), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 2)));
+		}
 		// Netherite Plus Planks
 		if (MD.NePl.mLoaded) {
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "CrimsonPlanks", 1, W));
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "WarpedPlanks" , 1, W));
-			
-			new SaplingEntry(ST.make(MD.NePl, "CrimsonFungus", 1, W), new WoodEntry(ST.make(MD.NePl, "CrimsonStem", 1, W), new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), MT.WOODS.Crimson, 233)));
-			new SaplingEntry(ST.make(MD.NePl, "WarpedFungus" , 1, W), new WoodEntry(ST.make(MD.NePl, "WarpedStem" , 1, W), new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234)));
-			new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
+			// Use Netherlicious Wood Stuff if available.
+			if (MD.NeLi.mLoaded) {
+				new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 0), ST.make(MD.NeLi, "CrimsonStairs", 1, W), MT.WOODS.Crimson, 233);
+				new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 1), ST.make(MD.NeLi, "WarpedStairs" , 1, W), MT.WOODS.Warped , 234);
+				new WoodEntry(ST.make(MD.NePl, "CrimsonStem"  , 1, W), WoodDictionary.BEAMS.get(MD.NeLi, "Stem"    , 1));
+				new WoodEntry(ST.make(MD.NePl, "WarpedStem"   , 1, W), WoodDictionary.BEAMS.get(MD.NeLi, "Stem"    , 3));
+				new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.BEAMS.get(MD.NeLi, "FullWood", 1));
+			} else {
+				new SaplingEntry(ST.make(MD.NePl, "CrimsonFungus", 1, W), new WoodEntry(ST.make(MD.NePl, "CrimsonStem", 1, W), new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), MT.WOODS.Crimson, 233)));
+				new SaplingEntry(ST.make(MD.NePl, "WarpedFungus" , 1, W), new WoodEntry(ST.make(MD.NePl, "WarpedStem" , 1, W), new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234)));
+				new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
+			}
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {

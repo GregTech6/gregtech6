@@ -133,20 +133,20 @@ public enum FL {
 	, MilkSoy                   ("soymilk"                  , "potion.soymilk"              , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkGrC                   ("grcmilk.milk"                                             , SIMPLE, LIQUID, FOOD, MILK, NONSTANDARD)
 	, Milk_Spoiled              ("spoiledmilk"                                              , SIMPLE, LIQUID, FOOD, MILK)
-
+	
 	, Honey                     ("for.honey"                                                , SIMPLE, LIQUID, FOOD, HONEY)
 	, HoneyGrC                  ("grc.honey"                                                , SIMPLE, LIQUID, FOOD, HONEY, NONSTANDARD)
 	, HoneyBoP                  ("honey"                                                    , SIMPLE, LIQUID, FOOD, HONEY, NONSTANDARD)
 	, Honeydew                  ("honeydew"                 , "for.honeydew"                , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Ambrosia                  ("potion.ambrosia"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, RoyalJelly                ("royaljelly"                                               , SIMPLE, LIQUID, FOOD)
-
+	
 	, Biomass                   ("biomass"                                                  , SIMPLE, LIQUID)
 	, BiomassIC2                ("ic2biomass"                                               , SIMPLE, LIQUID)
-
+	
 	, Lubricant                 ("lubricant"                                                , SIMPLE, LIQUID, LUBRICANT)
 	, LubRoCant                 ("rc lubricant"                                             , SIMPLE, LIQUID, LUBRICANT)
-
+	
 	, Juice                     ("juice"                                                    , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Kiwi                ("kiwijuice"                                                , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE, CITRUS_JUICE)
 	, Juice_Lime                ("binnie.juicelime"                                         , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE, CITRUS_JUICE)
@@ -425,6 +425,7 @@ public enum FL {
 	
 	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
 	
+	, Spectral_Dew              ("spectral_dew"                                             , LIQUID) // Something is broken with its Fluid Icon and its Bucket Registration. It is from Netherlicious btw.
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
