@@ -54,6 +54,7 @@ Crimson and Warped Wood Stuff from Netherite Plus are now overidden by Netherlic
 [FIXED] Twilight Forests dependance on Naga Scales/Trophies, Lich Scepters/Trophies and Hydra Blood/Trophies to trigger their Progress Achievements. Now you ONLY need the Trophy and not that extra Item. Also you can just rightclick a placed Trophy to get its Achievement too.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [FIXED] Radiation from Reactors should now not be as high if you are further away from them.
+[CHANGED] In order to make Potions in the Distillery you have to use Distilled Water now. Normal Water wont work anymore.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 [CHANGED] Certain Twilight Tools now have higher Durability so they aren't as "Single Use and Throw away" anymore as before. Applies to: Ore Magnet, Peacock Fan, Crumble Horn and Giant Pickaxe.
 [CHANGED] Twilight Forests Lamp of Cinders works as infinite Flint and Tinder on GT6 Machines and TNT, but it will not spawn Fire Blocks. Can also be used in the modified vanilla Furnace Recipe without being deleted.

@@ -167,13 +167,41 @@ public class Loader_Recipes_Temporary implements Runnable {
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener("cropApple", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				if (OM.is("cropAppleWhite", aEvent.mStack) || OM.is("cropCrabapple", aEvent.mStack)) return;
-				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.Pb.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 0));
+				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.Pb                .liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_lead"       , 1, 0));
 				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Schrabidium.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 0));
-				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Euphemium.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_euphemium", 1, 0));
+				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Euphemium  .liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_euphemium"  , 1, 0));
 			}});
 			}};
 		}
 		
+		if (MD.NeLi.mLoaded) {
+			// TODO Both Torch Recipes
+			
+			RM.Distillery.addRecipe1(T, 16, 16, ST.make(MD.NeLi, "Fungus"  , 1, 0), FL.DistW.make(250), FL.Potion_Awkward.make(250), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, ST.make(MD.NeLi, "WartItem", 1, 0), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
+			
+			RM.biomass(ST.make(MD.NeLi, "Fungus"          , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "WartItem"        , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Roots"           , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Plants"          , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "TwistingVines"   , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Sprouts"         , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "WitherRose"      , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "FoxfireLily"     , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "InfernalReedItem", 8, W));
+			RM.biomass(ST.make(MD.NeLi, "RoastedWart"     , 8, W));
+			
+			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
+			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 2), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart  , 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Roots"   , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 2), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Plants"  , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+		}
 		
 		if (MD.NePl.mLoaded) {
 			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
@@ -190,11 +218,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.NePl, "NetheriteLegg"      , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.NePl, "NetheriteBoots"     , 1, 0));
 			
-			RM.biomass(ST.make(MD.NePl, "WarpedFungus" , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "CrimsonFungus", 8, 0));
-			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, 0));
+			RM.biomass(ST.make(MD.NePl, "WarpedFungus" , 8, W));
+			RM.biomass(ST.make(MD.NePl, "CrimsonFungus", 8, W));
+			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, W));
+			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, W));
+			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, W));
 			
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
 		}
