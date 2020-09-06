@@ -796,7 +796,10 @@ public class ST {
 		if (invalid(aStack)) return NI;
 		if (item_(aStack).hasContainerItem(aStack)) return copy(item_(aStack).getContainerItem(aStack));
 		/** These are all special Cases, in which it is intended to have only GT Blocks outputting those Container Items */
-		if (IL.Cell_Empty.equal(aStack, F, T)) return NI;
+		if (IL.Cell_Empty.exists()) {
+			if (IL.Cell_Empty.equal(aStack, F, T)) return NI;
+			if (IL.Cell_Empty.equal(aStack, T, T)) return IL.Cell_Empty.get(1);
+		}
 		
 		if (aCheckIFluidContainerItems && item_(aStack) instanceof IFluidContainerItem && ((IFluidContainerItem)item_(aStack)).getCapacity(aStack) > 0) {
 			ItemStack tStack = amount(1, aStack);

@@ -87,8 +87,9 @@ public class Loader_Fluids implements Runnable {
 		FL.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1);
 		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1);
 		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
-		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
+		if (MD.IC2.mLoaded && !MD.IC2C.mLoaded) MT.Biomass.liquid(FL.BiomassIC2.make(1000)); else
+		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
 		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
 		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
 		FL.create("hotmoltensodium"          , "Hot Molten Sodium"   , null                  , 1,   1000,  1100);
@@ -612,9 +613,9 @@ public class Loader_Fluids implements Runnable {
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
 		
-		FL.reg(FL.Air            .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
-		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
-		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1));
+		FL.reg(FL.Air            .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, T);
+		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, F);
+		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, F);
 		FL.reg(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle       .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears          .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood          .get(1), IL.Bottle_Empty.get(1));

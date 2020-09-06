@@ -191,9 +191,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NeLi, "InfernalReedItem", 8, W));
 			RM.biomass(ST.make(MD.NeLi, "RoastedWart"     , 8, W));
 			
-			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
-			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
-			RM.compact(ST.make(MD.NeLi, "Fungus", 1, 2), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			RM.compact(ST.make(Items.nether_wart  , 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
+			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 2), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			
+			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
 			
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart  , 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));

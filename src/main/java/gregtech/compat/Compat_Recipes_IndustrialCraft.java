@@ -93,7 +93,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(IL.Cell_Empty.get(1));
 		CR.delate(IL.Cell_Universal_Fluid.get(1));
 		
-		CR.remove(ST.make(Items.lava_bucket, 1, 0), IL.Cell_Empty.get(1));
+		CR.remove(ST.make(Items.lava_bucket , 1, 0), IL.Cell_Empty.get(1));
 		CR.remove(ST.make(Items.water_bucket, 1, 0), IL.Cell_Empty.get(1));
 		
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(Blocks.bedrock);
