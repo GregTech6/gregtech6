@@ -631,8 +631,12 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		new LoaderBookList().run();
 		
-		// Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
+			// Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
+			if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
+			// Simple automatically added Alloying Recipes.
+			if (tMaterial.contains(TD.Processing.CRUCIBLE_ALLOY)) if (tMaterial.mComponents != null) tMaterial.addAlloyingRecipe(tMaterial.mComponents); else ERR.println("ERROR: Alloying Recipe for " + tMaterial.mNameLocal + " cannot be added due to lack of Component Information");
+		}
 		
 		MT.P .mTooltipChemical += "\u2084";
 		MT.S .mTooltipChemical += "\u2088";

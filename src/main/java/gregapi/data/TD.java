@@ -483,6 +483,8 @@ public class TD {
 		public static final TagData CENTRIFUGE                              = TagData.createTagData("PROCESSING.CENTRIFUGABLE", "Centrifugable");
 		/** If this Material is decomposable by an Electrolyser. Requires Compounds.DECOMPOSABLE too */
 		public static final TagData ELECTROLYSER                            = TagData.createTagData("PROCESSING.ELECTROLYSABLE", "Electrolysable");
+		/** If this Material can be alloyed in a Crucible. */
+		public static final TagData CRUCIBLE_ALLOY                          = TagData.createTagData("PROCESSING.CRUCIBLE_ALLOY", "Crucible Alloyable");
 		/** If this Material can be used in an Extruder. */
 		public static final TagData EXTRUDER                                = TagData.createTagData("PROCESSING.EXTRUDABLE", "Extrudable");
 		/** If this Material can be used in a low Tech Extruder. */
@@ -514,7 +516,7 @@ public class TD {
 		public static final TagData WASHING_MERCURY                         = TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
 		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Pulverisation Byproduct");
 		
-		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
+		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
 		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	

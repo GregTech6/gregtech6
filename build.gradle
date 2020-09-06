@@ -212,6 +212,8 @@ dependencies {
 	compileOnly "dan200.computercraft:ComputerCraft:1.75"
 	compileOnly "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
 	compileOnly "openmods:OpenModsLib:1.7.10-0.10:deobf"
+	compileOnly "pneumaticCraft:PneumaticCraft:1.7.10-1.12.7-153:userdev"
+	compileOnly "powercrystals:MineFactoryReloaded:[1.7.10]2.8.2B1-201:dev"
 	compileOnly "ic2:IC2Classic:1.2.1.8:dev"
 	compileOnly "com.builtbroken:AddictedToRed:1.7.10-0.4.0b145:deobf"
 	compileOnly "com.builtbroken:Assembly-Line:1.7.10-0.5.7b180:deobf-dev"

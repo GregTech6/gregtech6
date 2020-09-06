@@ -702,7 +702,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.AncientDebris          , ST.make(MD.NePl, "NetheriteScrap", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.AncientDebris          , ST.make(MD.NePl, "AncientDebris", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NePl, "GoldOre", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NePl, "GildedBlackstone", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NeLi, "NetherGoldOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.OREMATS.Hematite       , ST.make(MD.NeLi, "NetherIronOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Efrine                 , ST.make(MD.NeLi, "EfrineOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Efrine                 , ST.make(MD.NeLi, "Nugget", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Efrine                 , ST.make(MD.NeLi, "Ingot", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Efrine                 , ST.make(MD.NeLi, "EfrineBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));
