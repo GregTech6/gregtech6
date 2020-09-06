@@ -628,7 +628,7 @@ public enum FL {
 	public static boolean is(FluidStack aFluid, String... aNames) {return aFluid != null && is(aFluid.getFluid(), aNames);}
 	public static boolean is(Fluid aFluid, String... aNames) {if (aFluid != null) for (String aName : aNames) if (aFluid.getName().equalsIgnoreCase(aName)) return T; return F;}
 	
-	public static boolean exists(String aFluidName) {return fluid(aFluidName) != null;}
+	public static boolean exists(String aFluidName) {return aFluidName != null && fluid_(aFluidName) != null;}
 	
 	public static ItemStack display(Fluid aFluid) {return aFluid == null ? null : display(make(aFluid, 0), F, F, T);}
 	public static ItemStack display(FluidStack aFluid, boolean aUseStackSize, boolean aLimitStackSize) {return display(aFluid, aUseStackSize, aLimitStackSize, T);}
@@ -1049,14 +1049,14 @@ public enum FL {
 		for (Set<String> tSet : aFluidList) tSet.add(aName);
 		
 		switch (aState) {
-		case STATE_SOLID:   rFluid.setViscosity(10000); break;
-		case STATE_LIQUID:  rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
+		case STATE_SOLID  : rFluid.setViscosity(10000); break;
+		case STATE_LIQUID : rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
 		case STATE_GASEOUS: rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
-		case STATE_PLASMA:  rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
-		case 4:             rFluid.setViscosity( 1000); break;
+		case STATE_PLASMA : rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
+		case 4            : rFluid.setViscosity( 1000); break;
 		}
 		
-		if (!FluidRegistry.registerFluid(rFluid)) {
+		if (FL.exists(aName) || !FluidRegistry.registerFluid(rFluid)) {
 			rFluid = FluidRegistry.getFluid(aName);
 			LH.add(rFluid.getUnlocalizedName(), aLocalized);
 			if (rFluid.getTemperature() == new Fluid("test").getTemperature() || rFluid.getTemperature() <= 0) rFluid.setTemperature(UT.Code.bindInt(aTemperatureK));
@@ -1068,9 +1068,9 @@ public enum FL {
 			if (aMaterial.contains(TD.Properties.GLOWING )) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 5));
 			if (aMaterial.contains(TD.Properties.LIGHTING)) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 15));
 			switch (aState) {
-			case STATE_LIQUID:  aMaterial.liquid(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+			case STATE_LIQUID : aMaterial.liquid(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 			case STATE_GASEOUS: aMaterial.gas   (make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
-			case STATE_PLASMA:  aMaterial.plasma(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+			case STATE_PLASMA : aMaterial.plasma(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 			}
 			// Translating Real Life Density to that weird Integer based Density System.
 			if (aMaterial.mGramPerCubicCentimeter > 0 && (aState == STATE_LIQUID || aState == STATE_GASEOUS)) {

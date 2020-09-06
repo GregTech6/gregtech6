@@ -88,7 +88,6 @@ public class Loader_Fluids implements Runnable {
 		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1);
 		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
-		if (MD.IC2.mLoaded && !MD.IC2C.mLoaded) MT.Biomass.liquid(FL.BiomassIC2.make(1000)); else
 		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
 		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
 		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
