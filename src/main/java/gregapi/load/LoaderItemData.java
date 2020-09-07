@@ -139,7 +139,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(DYE_OREDICTS_MIXABLE[i]              , ST.make(MD.BOTA, "dye", 1, 15-i));
 		}
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.TCFM, "FMResource", 1, 1));
-		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.NeLi, "Dye", 1, 0));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 		OM.reg("foodCookie"                         , ST.make(Items.cookie, 1, 0));
 		OM.reg("foodCookie"                         , ST.make(MD.BOTA, "manaCookie", 1, 0));
 		OM.reg("cropAppleRed"                       , ST.make(Items.apple, 1, 0));
@@ -496,7 +496,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodCheese"                         , ST.make(MD.GC, "item.cheeseCurd", 1, W));
 		OM.reg("foodCheese"                         , ST.make(MD.AA, "itemFood", 1, 0));
 		OM.reg("foodCarrotjuice"                    , ST.make(MD.AA, "itemFood", 1, 2));
+		OM.reg("foodCookie"                         , ST.make(MD.AA, "itemFood", 1,12));
 		OM.reg("foodBaconcooked"                    , ST.make(MD.AA, "itemFood", 1,20));
+		OM.reg("foodDough"                          , ST.make(MD.AA, "itemMisc", 1, 4));
 		OM.reg(OD.slimeballRice                     , ST.make(MD.AA, "itemMisc", 1,12));
 		OM.reg("blockClay"                          , ST.make(Blocks.clay, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.book, 1, W));

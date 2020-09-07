@@ -68,6 +68,8 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		CR.delate(MD.AA, "itemMisc", 9);
 		CR.delate(MD.AA, "itemMisc",12);
 		
+		RM.Coagulator   .addRecipe0(T,  0,  160, FL.XP.make(160), NF, IL.AA_XP.get(1));
+		
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.dust        .mat(MT.Redstone, 1), ST.tag(0), OP.gem     .mat(MT.Redstonia   , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Lapis   , 1), ST.tag(0), OP.gem     .mat(MT.Palis       , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Coal    , 1), ST.tag(0), OP.gem     .mat(MT.VoidCrystal , 1));
@@ -87,10 +89,9 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockIngot  .mat(tMat       , 1), ST.tag(0), OP.blockGem.mat(MT.Enori       , 1));
 		}
 		
-		
 		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.DistW.make(250))) {
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Rice), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 9));
-		RM.Mixer        .addRecipe1(T, 16,   16, ST.make(MD.AA, "itemMisc", 1, 9), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 12));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Rice), tWater, NF, IL.AA_Dough_Rice.get(1));
+		RM.Mixer        .addRecipe1(T, 16,   16, IL.AA_Dough_Rice.get(1), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 12));
 		}
 		
 		RM.Squeezer     .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockBlackLotus", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], IL.AA_Dye_Black.get(2));

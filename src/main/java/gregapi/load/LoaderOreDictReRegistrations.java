@@ -179,6 +179,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropAbyssalOat"          , "cropAbyssalOats");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("baleAbyssalOat"          , "baleAbyssalOats");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("seedAbyssalOat"          , "seedAbyssalOats");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropHellderberry"        , "cropHellderBerry");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("seedHellderberry"        , "seedHellderBerry");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropMaplesyrup"          , "foodMaplesyrup");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("crystalCertusQuartz"     , "gemCertusQuartz");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("crystalNetherQuartz"     , "gemNetherQuartz");
@@ -1229,6 +1231,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("seedRice"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedOats"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedAbyssalOats"                 , "listAllseed");
+		OreDictManager.INSTANCE.addReRegistration("seedHellderberry"                , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedWheat"                       , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedBarley"                      , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedMelon"                       , "listAllseed");
