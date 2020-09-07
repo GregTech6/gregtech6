@@ -179,11 +179,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// TODO Torch Recipes for Soul and Foxfire.
 			// TODO Lantern Recipe Fix for Redstone ones.
 			// TODO Lantern Harvest by GT6 Tools for Free just like Torches.
-			// TODO Abyssal Oat Dough, unsure how I get a good Liquid for that in the Nether, since Water clearly is not an option and Hellderberries are used for Cookies already.
+			// TODO Abyssal Oat Dough, unsure how I get a good Liquid for that in the Nether, since Water clearly is not an option and Hellderberries are used for Cookies already. Maybe Lava, but then I need a new Nether Mixing Bowl. Nether Clay might be a nice thing to add.
 			// TODO Proper Recipes for Stuff from Infernal Reeds
 			
 			CR.delate(IL.NeLi_Bread.get(1));
 			CR.delate(IL.NeLi_Cookie.get(1));
+			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
 			
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));

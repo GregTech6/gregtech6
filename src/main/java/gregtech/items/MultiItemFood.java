@@ -389,7 +389,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 
 
 		IL.Food_Cookie_Raisins_Raw.set(             addItem(tLastID =  2002, "Cookie shaped Raisin Dough"               , "For baking Raisin Cookies"                                   , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Cookie_Raisins.set(                 addItem(tLastID =  2003, "Raisin Cookie"                          , "You don't like it? I don't care! It's delicious!", "foodCookie", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cookie_Raisins.set(                 addItem(tLastID =  2003, "Raisin Cookie"                   , "You don't like it? I don't care! It's delicious!", "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raisins_Raw.get(1), IL.Food_Cookie_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Raisins.get(6), 12, "Canned Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Raisins);
@@ -397,7 +397,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 
 
 		IL.Food_Cookie_Chocolate_Raisins_Raw.set(   addItem(tLastID =  2004, "Cookie shaped Chocolate Raisin Dough"     , "Almost looks like a regular Chocolate Chip Cookie >:D"       , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Cookie_Chocolate_Raisins.set(       addItem(tLastID =  2005, "Cookie"                                   , ""                                              , "foodCookie", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cookie_Chocolate_Raisins.set(       addItem(tLastID =  2005, "Cookie"                                   , ""                                       , "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Chocolate_Raisins_Raw.get(1), IL.Food_Cookie_Chocolate_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Chocolate_Raisins.get(6), 12, "Canned Chocolate Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Chocolate_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Chocolate_Raisins);

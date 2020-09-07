@@ -140,7 +140,7 @@ public enum IL implements IItemContainer {
 	BTL_Bark, BTL_Dry_Bark, BTL_Resin, BTL_Rubber, BTL_Skin, BTL_Tar,
 	ERE_Mud_Brick, ERE_Spray_Repellant, ERE_Herbicide, ERE_Compost, ERE_Bamboo, ERE_Gaean_Gem, ERE_Gaean_Staff, ERE_Umberstone, ERE_Umbercobble, ERE_White_Planks, ERE_White_Slab, ERE_White_Stairs, ERE_Crate, ERE_Pole, ERE_Ladder, ERE_Pot, ERE_Pot_Raw, ERE_Pot_Cooked,
 	ERE_Bambucket_Empty, ERE_Bambucket_Water, ERE_Bambucket_Milk, ERE_Bambucket_Honey, ERE_Bambucket_AntiVenom, ERE_Bambucket_FormicAcid, ERE_Bambucket_BeetleJuice,
-	AETHER_Skyroot_Planks, AETHER_Skyroot_Log, AETHER_Skyroot_Log_Gold, AETHER_Skyroot_Log_Small, AETHER_Torch_Ambrosium, AETHER_Apple, AETHER_Tall_Grass, AETHER_Dirt, AETHER_Grass, AETHER_Grass_Enchanted, AETHER_Grass_Enchanted_Vanilla, AETHER_Chest,
+	AETHER_Skyroot_Planks, AETHER_Skyroot_Log, AETHER_Skyroot_Log_Gold, AETHER_Skyroot_Log_Small, AETHER_Torch_Ambrosium, AETHER_Bowl, AETHER_Apple, AETHER_Tall_Grass, AETHER_Dirt, AETHER_Grass, AETHER_Grass_Enchanted, AETHER_Grass_Enchanted_Vanilla, AETHER_Chest,
 	AETHER_Skyroot_Sapling_Gold, AETHER_Skyroot_Sapling_Green, AETHER_Skyroot_Sapling_Blue, AETHER_Skyroot_Sapling_Dark, AETHER_Skyroot_Sapling_Purple,
 	AETHER_Skyroot_Leaves_Gold, AETHER_Skyroot_Leaves_Green, AETHER_Skyroot_Leaves_Blue, AETHER_Skyroot_Leaves_Dark, AETHER_Skyroot_Leaves_Purple, AETHER_Skyroot_Leaves_Apple,
 	GrC_Honey_Jar, GrC_Honey_Bucket, GrC_Honey_Bottle, GrC_Milk_Bucket, GrC_Milk_Bottle,

@@ -548,6 +548,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("itemFeather"                     , OD.craftingFeather);
 		OreDictManager.INSTANCE.addReRegistration("itemFur"                         , OD.craftingFur);
 		OreDictManager.INSTANCE.addReRegistration("itemPelt"                        , OD.craftingFur);
+		OreDictManager.INSTANCE.addReRegistration("itemGrassTall"                   , OD.itemGrass);
 		OreDictManager.INSTANCE.addReRegistration("bouleGtAnySilicon"               , "bouleSilicon");
 		OreDictManager.INSTANCE.addReRegistration("plateGemAnySilicon"              , OD.itemSilicon);
 		OreDictManager.INSTANCE.addReRegistration("plateAnySilicon"                 , OD.itemSilicon);
@@ -602,7 +603,11 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plantGtBlossomTea"               , "cropTea");
 		OreDictManager.INSTANCE.addReRegistration("plantGtBlossomMint"              , "cropMint");
 		OreDictManager.INSTANCE.addReRegistration("plantGtBlossomIndigo"            , "cropIndigo");
-		OreDictManager.INSTANCE.addReRegistration("itemGrassTall"                   , "itemGrass");
+		OreDictManager.INSTANCE.addReRegistration("foodRaisincookies"               , "foodCookie");
+		OreDictManager.INSTANCE.addReRegistration("foodChaoscookie"                 , "foodCookie");
+		OreDictManager.INSTANCE.addReRegistration("foodPeanutbuttercookies"         , "foodCookie");
+		OreDictManager.INSTANCE.addReRegistration("foodCreamcookie"                 , "foodCookie");
+		OreDictManager.INSTANCE.addReRegistration("foodCracker"                     , "foodCookie");
 		OreDictManager.INSTANCE.addReRegistration("foodRibeyesteakcooked"           , "listAllbeefcooked");
 		OreDictManager.INSTANCE.addReRegistration("foodRibeyesteakraw"              , "listAllbeefraw");
 		OreDictManager.INSTANCE.addReRegistration("foodRibcooked"                   , "listAllribcooked");

@@ -886,6 +886,7 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
 		IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
 		IL.AETHER_Skyroot_Log_Small             .set(ST.make(MD.AETHER, "skyrootLogWall"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log_Small.wild(1), OD.logWood);
+		IL.AETHER_Bowl                          .set(ST.make(MD.AETHER, "shoyrootBowl"                      , 1, 0), new OreDictItemData(MT.Skyroot, U));
 		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHER, "ambrosiumTorch"                    , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
 		IL.AETHER_Apple                         .set(ST.make(MD.AETHER, "whiteApple"                        , 1, 0), null, "cropAppleWhite");
 		IL.AETHER_Tall_Grass                    .set(ST.make(MD.AETHER, "tallAetherGrass"                   , 1, 0), null, OD.itemGrassTall);

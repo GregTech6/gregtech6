@@ -26,6 +26,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.ANY;
 import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -46,9 +47,11 @@ public class Compat_Recipes_Aether extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Aether Recipes.");
 		ST.item(MD.AETHER, "moaEgg").setMaxStackSize(64);
 		
-		CR.shaped(ST.make(MD.AETHER, "shoyrootBowl", 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankSkyroot);
-		CR.shapeless(ST.make(Items.bowl, 1, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.AETHER, "shoyrootBowl", 1, 0)});
-		RM.generify(ST.make(MD.AETHER, "shoyrootBowl", 1, 0), ST.make(Items.bowl, 1, 0));
+		CR.shaped(IL.AETHER_Bowl.get(1), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankSkyroot);
+		CR.shapeless(ST.make(Items.bowl, 1, 0), CR.DEF_NAC_NCC, new Object[] {IL.AETHER_Bowl});
+		RM.generify(IL.AETHER_Bowl.get(1), ST.make(Items.bowl, 1, 0));
+		
+		CR.shapeless(ST.make(MD.AETHER, "cornstarchBowl", 1, 0), CR.DEF_NAC_NCC, new Object[] {IL.AETHER_Bowl, OP.dust.dat(ANY.Flour)});
 		
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"         , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"        , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));

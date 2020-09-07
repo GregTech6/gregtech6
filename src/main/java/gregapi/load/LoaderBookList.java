@@ -218,6 +218,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.ABYSSAL, "necronomicon_dre"                ,   W, (byte)  5);
 			BooksGT.BOOK_REGISTER.put(MD.ABYSSAL, "necronomicon_cor"                ,   W, (byte)  6);
 		}
+		if (MD.AETHER.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.AETHER, "bronzeKey"                        ,   W, (byte)  1);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.IHL, "guidebook"                           ,   W, (byte) 48);
 		}
