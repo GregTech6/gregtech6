@@ -172,14 +172,14 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.OatAbyssal, U2), IL.Grass_Dry.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.OatAbyssal), IL.Grass_Dry.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack));
-			RM.compact(aEvent.mStack, 9, IL.Bale_AbyssalOats.get(1, IL.Bale_Dry.get(1)));
+			RM.compact(aEvent.mStack, 9, IL.Bale_AbyssalOats.exists() ? IL.Bale_AbyssalOats.get(1) : IL.Bale_Dry.get(1));
 		}});
 		addListener("baleAbyssalOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			// Those things grow in the Nether, that's why dry.
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.OatAbyssal, U*9), IL.Grass_Dry.get(9));
 			RM.Drying.addRecipe1(T, 16, 90, aEvent.mStack, NF, FL.DistW.make(45), IL.Bale_Dry.get(1));
 			RM.biomass(ST.amount(1, aEvent.mStack));
-			RM.unpack(aEvent.mStack, IL.Crop_AbyssalOats.get(9, IL.Grass_Dry.get(9)));
+			RM.unpack(aEvent.mStack, IL.Crop_AbyssalOats.exists() ? IL.Crop_AbyssalOats.get(9) : IL.Grass_Dry.get(9));
 		}});
 		
 		addListener("cropBarley", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

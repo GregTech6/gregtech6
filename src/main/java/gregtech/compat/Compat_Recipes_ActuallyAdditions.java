@@ -68,7 +68,8 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		CR.delate(MD.AA, "itemMisc", 9);
 		CR.delate(MD.AA, "itemMisc",12);
 		
-		RM.Coagulator   .addRecipe0(T,  0,  160, FL.XP.make(160), NF, IL.AA_XP.get(1));
+		RM.Coagulator   .addRecipe0(T,  0,  160, FL.XP .make(160), NF, IL.AA_XP.get(1));
+		RM.Coagulator   .addRecipe0(T,  0,  160, FL.Mob.make(528), NF, IL.AA_XP.get(1));
 		
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.dust        .mat(MT.Redstone, 1), ST.tag(0), OP.gem     .mat(MT.Redstonia   , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Lapis   , 1), ST.tag(0), OP.gem     .mat(MT.Palis       , 1));
