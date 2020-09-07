@@ -342,6 +342,7 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("gooseberryjuice"                            , "Gooseberry Juice"                        , null                  , 1, 1000, 300)                                                                                                , "Made of real Geese!"                                             ,  3, 0.4F  ,  30, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.damageBoost              .id, 200, 1,  25);
 		new FoodStatDrink(FL.create("binnie.juicecranberry"                      , "Cranberry Juice"                         , null                  , 1, 1000, 300)                                                                                                , "Made of real Cranes!"                                            ,  3, 0.4F  ,  30, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.damageBoost              .id, 200, 1,  25);
 		new FoodStatDrink(FL.create("binnie.juiceelderberry"                     , "Elderberry Juice"                        , null                  , 1, 1000, 300)                                                                                                , "Made of elderly Berries!"                                        ,  3, 0.4F  ,  30, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.damageBoost              .id, 200, 1,  25);
+		new FoodStatDrink(FL.create("hellderberryjuice"                          , "Hellderberry Juice"                      , null                  , 1, 1000, 300)                                                                                                , ""                                                                ,  3, 0.4F  ,  30, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.damageBoost              .id, 200, 1,  25);
 		new FoodStatDrink(FL.create("binnie.juicelemon"                          , "Lemon Juice"                             , null                  , 1, 1000, 300)                                                                                                , "Maybe adding Sugar will make it less sour"                       ,  3, 0.8F  ,  20, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.digSpeed                 .id,1200, 0,  60);
 		new FoodStatDrink(FL.create("binnie.juicepineapple"                      , "Ananas Juice"                            , null                  , 1, 1000, 300)                                                                                                , "Made of Trees!"                                                  ,  3, 0.4F  ,  20, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.digSpeed                 .id,1200, 0,  60);
 		new FoodStatDrink(FL.create("binnie.juiceorange"                         , "Orange Juice"                            , null                  , 1, 1000, 300)                                                                                                , "A very annoying Juice"                                           ,  3, 0.8F  ,  20, C+37,  0.50F,  0,  0,  0, 20,  0, EnumAction.drink, F, F, F, Potion.digSpeed                 .id,1200, 0,  60);
@@ -612,21 +613,22 @@ public class Loader_Fluids implements Runnable {
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
 		
-		FL.reg(FL.Air            .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, T);
-		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, F);
-		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air                    .get(1), IL.Cell_Empty.get(1), F, T, F);
-		FL.reg(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle       .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears          .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood          .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(MT.Hg           .liquid(U, T), IL.HBM_Mercury_Bottle          .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.XP             .make( 160), ST.make(Items.experience_bottle, 1, 0), IL.Bottle_Empty.get(1), F, T, T);
-		FL.reg(FL.Mob            .make( 534), ST.make(Items.experience_bottle, 1, 0), IL.Bottle_Empty.get(1), F, T, F);
-		FL.reg(FL.Gas_Natural    .make(1000), ST.make(MD.MaCu, "fluids"      , 1,27), IL.Bottle_Empty.get(1), F, T, T);
-		FL.reg(FL.Gas_Natural    .make(2000), ST.make(MD.MaCu, "fluids"      , 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
-		FL.reg(FL.Ambrosia       .make(1000), IL.FR_Ambrosia                 .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
-		FL.reg(FL.Honey          .make(1000), IL.GrC_Honey_Jar               .get(1), ST.make(Items.flower_pot, 1, 0));
-		FL.reg(FL.Honey          .make( 500), IL.BoP_Jar_Honey               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
-		FL.reg(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison              .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		FL.reg(FL.Air               .make(1000), IL.Cell_Air                     .get(1), IL.Cell_Empty.get(1), F, T, T);
+		FL.reg(FL.Air_Nether        .make(1000), IL.Cell_Air                     .get(1), IL.Cell_Empty.get(1), F, T, F);
+		FL.reg(FL.Air_End           .make(1000), IL.Cell_Air                     .get(1), IL.Cell_Empty.get(1), F, T, F);
+		FL.reg(FL.Air_End           .make(1000), IL.BOTA_Ender_Air_Bottle        .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.Juice_Hellderberry.make( 250), IL.NeLi_Bottle_Hellderberryjuice.get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryTears        .make(   L), IL.TF_Vial_FieryTears           .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryBlood        .make(   L), IL.TF_Vial_FieryBlood           .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(MT.Hg              .liquid(U, T), IL.HBM_Mercury_Bottle           .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.XP                .make( 160), ST.make(Items.experience_bottle , 1, 0), IL.Bottle_Empty.get(1), F, T, T);
+		FL.reg(FL.Mob               .make( 534), ST.make(Items.experience_bottle , 1, 0), IL.Bottle_Empty.get(1), F, T, F);
+		FL.reg(FL.Gas_Natural       .make(1000), ST.make(MD.MaCu, "fluids"       , 1,27), IL.Bottle_Empty.get(1), F, T, T);
+		FL.reg(FL.Gas_Natural       .make(2000), ST.make(MD.MaCu, "fluids"       , 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
+		FL.reg(FL.Ambrosia          .make(1000), IL.FR_Ambrosia                  .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
+		FL.reg(FL.Honey             .make(1000), IL.GrC_Honey_Jar                .get(1), ST.make(Items.flower_pot, 1, 0));
+		FL.reg(FL.Honey             .make( 500), IL.BoP_Jar_Honey                .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		FL.reg(FL.Potion_Poison_2   .make( 500), IL.BoP_Jar_Poison               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));

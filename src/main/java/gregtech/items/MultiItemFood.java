@@ -389,7 +389,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 
 
 		IL.Food_Cookie_Raisins_Raw.set(             addItem(tLastID =  2002, "Cookie shaped Raisin Dough"               , "For baking Raisin Cookies"                                   , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Cookie_Raisins.set(                 addItem(tLastID =  2003, "Raisin Cookie"                            , "You don't like it? I don't care! Its delicious!"             , new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cookie_Raisins.set(                 addItem(tLastID =  2003, "Raisin Cookie"                          , "You don't like it? I don't care! It's delicious!", "foodCookie", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raisins_Raw.get(1), IL.Food_Cookie_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Raisins.get(6), 12, "Canned Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Raisins);
@@ -397,7 +397,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 
 
 		IL.Food_Cookie_Chocolate_Raisins_Raw.set(   addItem(tLastID =  2004, "Cookie shaped Chocolate Raisin Dough"     , "Almost looks like a regular Chocolate Chip Cookie >:D"       , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Cookie_Chocolate_Raisins.set(       addItem(tLastID =  2005, "Cookie"                                   , ""                                                            , new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cookie_Chocolate_Raisins.set(       addItem(tLastID =  2005, "Cookie"                                   , ""                                              , "foodCookie", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Chocolate_Raisins_Raw.get(1), IL.Food_Cookie_Chocolate_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Chocolate_Raisins.get(6), 12, "Canned Chocolate Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Chocolate_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Chocolate_Raisins);
@@ -460,7 +460,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Buns_Sliced.get(1), CR.DEF_NAC, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced});
 		CR.shapeless(IL.Food_Bun_Sliced.get(2), CR.DEF_NAC, new Object[] {IL.Food_Buns_Sliced});
 		RM.Slicer.addRecipe2(T, 16,   16, IL.Food_Bun.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bun_Sliced.get(2));
-
+		
 		IL.Food_Burger_Veggie.set(                  addItem(tLastID =  5010, "Veggie Burger"                            , "No matter how you call this, this is NOT a Burger!"          , new FoodStat( 4, 1.200F,   0, C+35,  0.30F,   0,   0,   0,  12,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 2), TC.stack(TC.FAMES, 1)));
 		IL.Food_Burger_Cheese.set(                  addItem(tLastID =  5011, "Cheese Burger"                            , "Cheesy!"                                                     , new FoodStat( 4, 1.400F,   0, C+38,  0.50F,   0,   0,   8,   0,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 2)));
 		IL.Food_Burger_Meat.set(                    addItem(tLastID =  5012, "Hamburger"                                , "The Mc Burger Queen Burger"                                  , new FoodStat( 6, 1.600F,   0, C+38,  0.50F,   0,   0,   4,   0,  12, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1)));
@@ -509,8 +509,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Sandwich_Cheese.get(1) , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced});
 		CR.shapeless(IL.Food_Sandwich_Bacon.get(1)  , CR.DEF, new Object[] {IL.Food_Breads_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
 		CR.shapeless(IL.Food_Sandwich_Bacon.get(1)  , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
-		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Breads_Sliced, ST.make(Items.cooked_beef, 1, W)});
-		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, ST.make(Items.cooked_beef, 1, W)});
+		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Breads_Sliced, Items.cooked_beef});
+		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, Items.cooked_beef});
 
 
 
@@ -538,8 +538,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Large_Sandwich_Cheese.get(1)   , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced});
 		CR.shapeless(IL.Food_Large_Sandwich_Bacon.get(1)    , CR.DEF, new Object[] {IL.Food_Baguettes_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
 		CR.shapeless(IL.Food_Large_Sandwich_Bacon.get(1)    , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
-		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguettes_Sliced, ST.make(Items.cooked_beef, 1, W), ST.make(Items.cooked_beef, 1, W)});
-		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, ST.make(Items.cooked_beef, 1, W), ST.make(Items.cooked_beef, 1, W)});
+		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguettes_Sliced, Items.cooked_beef, Items.cooked_beef});
+		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, Items.cooked_beef, Items.cooked_beef});
 
 
 		FoodsGT.put(ST.make(Items.poisonous_potato  , 1, W), 0, 0, 0, 4, 0);

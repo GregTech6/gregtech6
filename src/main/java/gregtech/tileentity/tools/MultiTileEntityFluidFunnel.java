@@ -130,7 +130,7 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment imple
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return (aRenderPass > 0 && SIDES_TOP[aSide]) || (!aShouldSideBeRendered[aSide] && ((SIDES_HORIZONTAL[mFacing] && aSide == mFacing) || (aRenderPass == 2 && SIDES_BOTTOM[aSide]))) ? null : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
 	}
 	
 	// Icons

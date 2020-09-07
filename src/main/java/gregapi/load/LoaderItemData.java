@@ -139,6 +139,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(DYE_OREDICTS_MIXABLE[i]              , ST.make(MD.BOTA, "dye", 1, 15-i));
 		}
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.TCFM, "FMResource", 1, 1));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.NeLi, "Dye", 1, 0));
+		OM.reg("foodCookie"                         , ST.make(Items.cookie, 1, 0));
+		OM.reg("foodCookie"                         , ST.make(MD.BOTA, "manaCookie", 1, 0));
 		OM.reg("cropAppleRed"                       , ST.make(Items.apple, 1, 0));
 		OM.reg("cropMelon"                          , ST.make(Items.melon, 1, 0));
 		OM.reg("cropPumpkin"                        , ST.make(Blocks.pumpkin, 1, 0));
@@ -372,6 +375,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedsartichoke", 1, 0));
 		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedswolfsbane", 1, 0));
 		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedsbelladonna", 1, 0));
+		OM.reg("seedPumpkin"                        , ST.make(MD.NeLi, "GhastlyGourdSeeds", 1, 0));
+		OM.reg("seedAbyssalOats"                    , ST.make(MD.NeLi, "AbyssalOatSeeds", 1, 0));
+		OM.reg("seedCorn"                           , ST.make(MD.NeLi, "DevilishMaizeSeeds", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.NeLi, "HellderBerrySeeds", 1, 0));
 		OM.reg("seedCanola"                         , ST.make(MD.RoC, "rotarycraft_item_canola", 1, 0));
 		OM.reg("seedThistle"                        , ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0));
 		OM.reg("seedCabbage"                        , ST.make(MD.ERE, "cabbageSeeds", 1, 0));
@@ -628,6 +635,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropAnanas"                         , ST.make(MD.TROPIC, "tile.pineapple", 1, W));
 		OM.reg("cropCoconut"                        , ST.make(MD.TROPIC, "tile.coconut", 1, W));
 		OM.reg("cropCoffee"                         , ST.make(MD.TROPIC, "coffeeBean", 1, W));
+		OM.reg("cropHellderberry"                   , ST.make(MD.NeLi, "HellderBerryItem", 1, 0));
+		OM.reg("foodHellderberryjuice"              , ST.make(MD.NeLi, "JuiceHellderberry", 1, 0));
 		
 		
 		OM.reg(OP.dustSmall.dat(MT.Fe)              , ST.make(MD.BINNIE_BEE, "misc", 1, 6));
@@ -1507,9 +1516,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.ERE, "amberBrickStairs"                  , 1,   W, MT.Amber              ,  U);
 		OM.data(MD.ERE, "door_amber"                        , 1,   W, MT.Amber              ,  U * 2);
 		OM.data(MD.ERE, "materials"                         , 1,  42, MT.Amber              ,  U * 1);
-		OM.data(MD.ERE, "materials"                         , 1,  62, ANY.Fe                ,  U * 7);
-		OM.data(MD.ERE, "materials"                         , 1,  63, ANY.Fe                ,  U * 7);
-		OM.data(MD.ERE, "food"                              , 1,  16, ANY.Fe                ,  U * 7);
 		OM.data(MD.ERE, "idols"                             , 1,   1, ANY.Fe                ,  U *36);
 		OM.data(MD.ERE, "idols"                             , 1,   5, ANY.Fe                ,  U *72);
 		OM.data(MD.ERE, "idols"                             , 1,   2, MT.Au                 ,  U *36);

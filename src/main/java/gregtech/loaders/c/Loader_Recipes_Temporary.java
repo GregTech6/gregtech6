@@ -41,6 +41,7 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 /**
  * @author Gregorius Techneticies
@@ -178,7 +179,22 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// TODO Torch Recipes for Soul and Foxfire.
 			// TODO Lantern Recipe Fix for Redstone ones.
 			// TODO Lantern Harvest by GT6 Tools for Free just like Torches.
-			// TODO Abyssal Oats "cropAbyssalOats", "baleAbyssalOats"
+			// TODO Abyssal Oat Dough, unsure how I get a good Liquid for that in the Nether, since Water clearly is not an option and Hellderberries are used for Cookies already.
+			// TODO Proper Recipes for Stuff from Infernal Reeds
+			
+			CR.delate(IL.NeLi_Bread.get(1));
+			CR.delate(IL.NeLi_Cookie.get(1));
+			
+			CR.remove(IL.NeLi_Reed.get(1));
+			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
+			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
+			for (FluidStack tFluid : FL.array(FL.Water.make(125), FL.DistW.make(100), FL.Lava.make(10)))
+			RM.Bath         .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tFluid, NF, ST.make(Items.paper, 1, 0));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
+			RM.Squeezer     .addRecipe1(T, 16, 16,      4000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make(10), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16,      5000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make( 5), IL.Remains_Plant.get(1));
+			RM.Shredder     .addRecipe1(T, 16, 16           , IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1));
+			RM.pulverizing(IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1), T);
 			
 			RM.Distillery.addRecipe1(T, 16, 16, ST.make(MD.NeLi, "Fungus"  , 1, 0), FL.DistW.make(250), FL.Potion_Awkward.make(250), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, ST.make(MD.NeLi, "WartItem", 1, 0), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
@@ -191,13 +207,18 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NeLi, "Sprouts"         , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "WitherRose"      , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "FoxfireLily"     , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "InfernalReedItem", 8, W));
+			RM.biomass(IL.NeLi_Reed                       .get(8));
 			RM.biomass(ST.make(MD.NeLi, "RoastedWart"     , 8, W));
 			
 			RM.compact(ST.make(Items.nether_wart  , 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
 			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
 			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
 			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 2), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_CrimsonStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 0));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_WarpedStew   .get(1), ST.make(MD.NeLi, "Fungus", 2, 1));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_FoxfireStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 2));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_DevilishMaize.get(1), ST.make(MD.NeLi, "DevilishMaizeSeeds", 2, 0));
 			
 			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
 			

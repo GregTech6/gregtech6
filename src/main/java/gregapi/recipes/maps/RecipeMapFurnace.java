@@ -69,6 +69,9 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 				} else if (IL.EtFu_Chorus_Popped.equal(tOutput)) {
 					// Chorus Fruit is 0.20 XP
 					tFluid = FL.XP.make(tOutput.stackSize * 4);
+				} else if (IL.ERE_Pot_Cooked.equal(tOutput)) {
+					// The Titan Stew a whole Orb of XP
+					tFluid = FL.XP.make(tOutput.stackSize * 20);
 				} else {
 					Block tBlock = ST.block(tOutput);
 					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick) {

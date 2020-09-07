@@ -225,7 +225,7 @@ public class GT6_Main extends Abstract_Mod {
 		RM.pulverizing(ST.make(Blocks.pumpkin       , 1, W), ST.make(Items.pumpkin_seeds, 4, 0), null, 0, F);
 		RM.pulverizing(ST.make(Items.melon          , 1, W), ST.make(Items.melon_seeds, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.wool          , 1, W), ST.make(Items.string, 2, 0), ST.make(Items.string, 1, 0), 50, F);
-
+		
 		new Loader_Fluids().run();
 		new Loader_Tools().run();
 		new Loader_Items().run();
@@ -236,22 +236,22 @@ public class GT6_Main extends Abstract_Mod {
 		new Loader_Rails().run();
 		new Loader_Ores().run();
 		new Loader_Others().run();
-
+		
 //      new Loader_CircuitBehaviors().run();
 //      new Loader_CoverBehaviors().run();
 //      new Loader_Sonictron().run();
-
+		
 		new CompatMods(MD.MC, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 			// Clearing the AE Grindstone Recipe List, so we don't need to worry about pre-existing Recipes.
 			if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
 			// We ain't got Water in that Water Bottle. That would be an infinite Water Exploit.
 			for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-
+			
 			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 				new Loader_BlockResistance(),
 				new Loader_Fuels(),
 				new Loader_Loot(),
-
+				
 				new Loader_Recipes_Furnace(), // has to be before everything else!
 				new Loader_Recipes_Woods(), // has to be before Vanilla!
 				new Loader_Recipes_Vanilla(), // has to be after Woods!
@@ -263,13 +263,13 @@ public class GT6_Main extends Abstract_Mod {
 				new Loader_Recipes_Ores(),
 				new Loader_Recipes_Alloys(),
 				new Loader_Recipes_Other(),
-
+				
 				new Loader_Recipes_Extruder()
 			);
-
+			
 			for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 		}};
-
+		
 		new Compat_Recipes_Ganys                (MD.GAPI          , this);
 		new Compat_Recipes_Chisel               (MD.CHSL          , this);
 		new Compat_Recipes_FunkyLocomotion      (MD.FUNK          , this);
@@ -325,7 +325,7 @@ public class GT6_Main extends Abstract_Mod {
 		new Compat_Recipes_ActuallyAdditions    (MD.AA            , this);
 		new Compat_Recipes_ExtraUtilities       (MD.ExU           , this);
 		new Compat_Recipes_WRCBE                (MD.WR_CBE_C      , this);
-
+		
 		new CompatMods(MD.GT, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 				new Loader_Recipes_Replace(),

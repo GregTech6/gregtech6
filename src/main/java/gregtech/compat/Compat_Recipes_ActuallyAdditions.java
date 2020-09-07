@@ -45,7 +45,7 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Actually Adding Recipes.");
 		CR.shaped(ST.make(MD.AA, "itemFood", 1,  7), CR.DEF_REM_NCC, " k", "D ", 'D', IL.Food_Dough_Egg_Flat);
-		CR.shaped(ST.make(MD.AA, "itemFood", 2, 10), CR.DEF_REM_NCC, " k", "X ", 'X', IL.Food_Bread);
+		CR.shaped(ST.make(MD.AA, "itemFood", 2, 10), CR.DEF_REM_NCC, " k", "X ", 'X', "foodBread");
 		CR.shaped(ST.make(MD.AA, "itemFood", 1,  8), CR.DEF_REM_NCC, "C", "Z", 'Z', IL.Food_CakeBottom, 'C', "foodChocolatecream");
 		CR.shaped(ST.make(MD.AA, "itemFood", 1, 12), CR.DEF_REM_NCC, "DDD", 'D', "foodChocolateDough");
 		

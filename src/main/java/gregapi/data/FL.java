@@ -163,6 +163,7 @@ public enum FL {
 	, Juice_Plum                ("binnie.juiceplum"                                         , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Peach               ("binnie.juicepeach"                                        , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Elderberry          ("binnie.juiceelderberry"                                   , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
+	, Juice_Hellderberry        ("hellderberryjuice"                                        , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Grapefruit          ("binnie.juicegrapefruit"                                   , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Apricot             ("binnie.juiceapricot"                                      , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Pear                ("binnie.juicepear"                                         , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)

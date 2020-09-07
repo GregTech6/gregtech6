@@ -28,6 +28,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -78,44 +79,50 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		
 		
-		addListener("bamboo", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.bamboo, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(4, aEvent.mStack));
-			RM.CokeOven.addRecipe1(F, 0, 3600, ST.amount(2, aEvent.mStack), NF, MT.Creosote.liquid(U8, F), IL.GrC_Bamboo_Charcoal.get(2, OP.stick.mat(MT.Charcoal, 2)));
+			RM.CokeOven.addRecipe1(F, 0, 1800, ST.amount(1, aEvent.mStack), NF, FL.Oil_Creosote.make(50), IL.GrC_Bamboo_Charcoal.get(1, OP.stick.mat(MT.Charcoal, 1)));
 		}});
-		addListener("itemPlantRemains", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.biomass(ST.amount(8, aEvent.mStack));
-		}});
-		addListener("baleGrassMoldy", "baleGrassRotten", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		
+		
+		addListener(OD.baleGrassRotten, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(1, aEvent.mStack), 16);
+			RM.unpack(aEvent.mStack, IL.Grass_Rotten.get(9));
 		}});
-		addListener("baleGrassDry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.baleGrassMoldy, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.biomass(ST.amount(1, aEvent.mStack), 16);
+			RM.unpack(aEvent.mStack, IL.Grass_Moldy.get(9));
+		}});
+		addListener(OD.baleGrassDry, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(1, aEvent.mStack));
+			RM.unpack(aEvent.mStack, IL.Grass_Dry.get(9));
 		}});
-		addListener(new String[] {"baleGrass", "baleWheat", "baleRye", "baleOats", "baleBarley", "baleRice"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.baleGrass, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
 			RM.biomass(ST.amount(1, aEvent.mStack));
+			RM.unpack(aEvent.mStack, IL.Grass.get(9));
 		}});
-		addListener("itemGrassMoldy", "itemGrassRotten", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.itemGrassRotten, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(9, aEvent.mStack), 16);
+			RM.compact(aEvent.mStack, 9, IL.Bale_Rotten.get(1));
 		}});
-		addListener("itemGrass", "itemGrassDry", "cropStraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.itemGrassMoldy, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.biomass(ST.amount(9, aEvent.mStack), 16);
+			RM.compact(aEvent.mStack, 9, IL.Bale_Moldy.get(1));
+		}});
+		addListener(OD.itemGrassDry, "cropStraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(9, aEvent.mStack));
+			RM.compact(aEvent.mStack, 9, IL.Bale_Dry.get(1));
 		}});
-		addListener("itemPlantRemains", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.itemGrass, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Drying.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.biomass(ST.amount(9, aEvent.mStack));
+			RM.compact(aEvent.mStack, 9, IL.Bale.get(1));
+		}});
+		addListener(OD.itemPlantRemains, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.biomass(ST.amount(8, aEvent.mStack));
 			RM.generify(aEvent.mStack, IL.Remains_Plant.get(1));
 		}});
-		
-		addListener("itemGrass", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.compact(aEvent.mStack, 9, IL.Bale.get(1)); RM.Drying.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));}});
-		addListener("baleGrass", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.unpack(aEvent.mStack, IL.Grass.get(9));}});
-		
-		addListener("itemGrassDry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.compact(aEvent.mStack, 9, IL.Bale_Dry.get(1));}});
-		addListener("baleGrassDry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.unpack(aEvent.mStack, IL.Grass_Dry.get(9));}});
-		
-		addListener("itemGrassMoldy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.compact(aEvent.mStack, 9, IL.Bale_Moldy.get(1));}});
-		addListener("baleGrassMoldy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.unpack(aEvent.mStack, IL.Grass_Moldy.get(9));}});
-		
-		addListener("itemGrassRotten", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.compact(aEvent.mStack, 9, IL.Bale_Rotten.get(1));}});
-		addListener("baleGrassRotten", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.unpack(aEvent.mStack, IL.Grass_Rotten.get(9));}});
 		
 		
 		
@@ -132,6 +139,8 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("baleRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Rice, U*9), IL.Grass.get(9));
+			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Crop_Rice.get(9));
 		}});
 		
@@ -148,23 +157,29 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("baleOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Oat, U*9), IL.Grass.get(9));
+			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Crop_Oats.get(9));
 		}});
 		
 		addListener("cropAbyssalOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			// Those things grow in the Nether, that's why dry.
+			RM.Drying       .addRecipe1(T, 16, 10, aEvent.mStack, NF, FL.DistW.make(5), IL.Grass_Dry.get(1));
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
 			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.OatAbyssal), IL.Grass_Dry.get(1));
 			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.OatAbyssal, U2), IL.Grass_Dry.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.OatAbyssal), IL.Grass_Dry.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack));
-			RM.compact(aEvent.mStack, 9, IL.Bale_Dry.get(1)); // TODO take the actual Bale if it exists
+			RM.compact(aEvent.mStack, 9, IL.Bale_AbyssalOats.get(1, IL.Bale_Dry.get(1)));
 		}});
 		addListener("baleAbyssalOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			// Those things grow in the Nether, that's why dry.
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.OatAbyssal, U*9), IL.Grass_Dry.get(9));
-		//  RM.unpack(aEvent.mStack, IL.Crop_Oats.get(9)); // TODO Oats Item reference
+			RM.Drying.addRecipe1(T, 16, 90, aEvent.mStack, NF, FL.DistW.make(45), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
+			RM.unpack(aEvent.mStack, IL.Crop_AbyssalOats.get(9, IL.Grass_Dry.get(9)));
 		}});
 		
 		addListener("cropBarley", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -180,6 +195,8 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("baleBarley", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Barley, U*9), IL.Grass.get(9));
+			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Crop_Barley.get(9));
 		}});
 		
@@ -196,6 +213,8 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("baleRye", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Rye, U*9), IL.Grass.get(9));
+			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Crop_Rye.get(9));
 		}});
 		
@@ -212,6 +231,8 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("baleWheat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Wheat, U*9), IL.Grass.get(9));
+			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
+			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Crop_Wheat.get(9));
 		}});
 		
@@ -222,7 +243,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(20), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(20), ZL_IS);
 		}});
-		addListener(new String[] {"seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", "seedMisc"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", "seedCorn", "seedMisc"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
@@ -232,7 +253,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(40), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(40), ZL_IS);
 		}});
-		addListener(new String[] {"seedWheat", "seedBarley", "seedOats", "seedRye", "seedCamellia"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedWheat", "seedBarley", "seedOats", "seedAbyssalOats", "seedRye", "seedCamellia"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(50), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(50), ZL_IS);
@@ -497,6 +518,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("cropElderberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Elderberry, 100, 4000, "Canned Elderberries", 0, 0, 0, 8, 0);
+		}});
+		addListener("cropHellderberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.crop_fruit(aEvent.mStack, FL.Juice_Hellderberry, 100, 4000, "Canned Hellderberries", 0, 0, 0, 8, 0);
 		}});
 		addListener("cropCurrantsRed", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Currant, 100, 4000, "Canned Red Currants", 0, 0, 0, 8, 0);

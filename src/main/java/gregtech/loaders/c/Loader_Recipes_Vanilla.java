@@ -46,14 +46,15 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Vanilla implements Runnable {
 	@Override public void run() {
+		CR.remove(ST.make(Items.reeds, 1, 0));
+		CR.remove(ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Blocks.cobblestone, 1, 0), ST.make(Items.quartz, 1, 0), NI, ST.make(Items.quartz, 1, 0), ST.make(Blocks.cobblestone, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
-		CR.remove(ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
 		
-		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {ST.make(Items.bone, 1, W)});
-		CR.shapeless(ST.make(Items.blaze_powder, 1, 0), DEF_NAC, new Object[] {ST.make(Items.blaze_rod, 1, W)});
-		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', ST.make(Items.reeds, 1, 0));
+		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {Items.bone});
+		CR.shapeless(ST.make(Items.blaze_powder, 1, 0), DEF_NAC, new Object[] {Items.blaze_rod});
+		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', Items.reeds);
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone, 'F', OD.craftingFirestarter);

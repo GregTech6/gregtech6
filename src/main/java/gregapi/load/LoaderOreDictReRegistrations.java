@@ -176,6 +176,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropOat"                 , "cropOats");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("baleOat"                 , "baleOats");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("seedOat"                 , "seedOats");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropAbyssalOat"          , "cropAbyssalOats");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("baleAbyssalOat"          , "baleAbyssalOats");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("seedAbyssalOat"          , "seedAbyssalOats");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("cropMaplesyrup"          , "foodMaplesyrup");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("crystalCertusQuartz"     , "gemCertusQuartz");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("crystalNetherQuartz"     , "gemNetherQuartz");
@@ -892,6 +895,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodDatejuice"                   , "listAlljuice");
 		OreDictManager.INSTANCE.addReRegistration("foodDragonfruitjuice"            , "listAlljuice");
 		OreDictManager.INSTANCE.addReRegistration("foodElderberryjuice"             , "listAlljuice");
+		OreDictManager.INSTANCE.addReRegistration("foodHellderberryjuice"           , "listAlljuice");
 		OreDictManager.INSTANCE.addReRegistration("foodFigjuice"                    , "listAlljuice");
 		OreDictManager.INSTANCE.addReRegistration("foodGooseberryjuice"             , "listAlljuice");
 		OreDictManager.INSTANCE.addReRegistration("foodGrapejuice"                  , "listAlljuice");
@@ -1056,6 +1060,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropSwampberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropHeartberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropElderberry"                  , "listAllberry");
+		OreDictManager.INSTANCE.addReRegistration("cropHellderberry"                , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropBlackberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropBlackthorn"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropBlueberry"                   , "listAllberry");
@@ -1170,11 +1175,13 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropRye"                         , "listAllwheats");
 		OreDictManager.INSTANCE.addReRegistration("cropBarley"                      , "listAllwheats");
 		OreDictManager.INSTANCE.addReRegistration("cropOats"                        , "listAllwheats");
+		OreDictManager.INSTANCE.addReRegistration("cropAbyssalOats"                 , "listAllwheats");
 		OreDictManager.INSTANCE.addReRegistration("listAllseed"                     , "seeds");
 		OreDictManager.INSTANCE.addReRegistration("listAllwheats"                   , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustWheat"                       , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustBarley"                      , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustOats"                        , "listAllgrain");
+		OreDictManager.INSTANCE.addReRegistration("dustAbyssalOats"                 , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustRye"                         , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("cropSpiceleaf"                   , "listAllspice");
 		OreDictManager.INSTANCE.addReRegistration("cropMustard"                     , "listAllspice");
@@ -1216,6 +1223,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("seedHemp"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedRice"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedOats"                        , "listAllseed");
+		OreDictManager.INSTANCE.addReRegistration("seedAbyssalOats"                 , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedWheat"                       , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedBarley"                      , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedMelon"                       , "listAllseed");
@@ -1228,6 +1236,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("seedBeet"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedCrop"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedGrape"                       , "listAllseed");
+		OreDictManager.INSTANCE.addReRegistration("seedCorn"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("foodIcecream"                    , "listAllicecream");
 		OreDictManager.INSTANCE.addReRegistration("foodHoneyicecream"               , "listAllicecream");
 		OreDictManager.INSTANCE.addReRegistration("foodNutellaicecream"             , "listAllicecream");
@@ -1291,6 +1300,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("seedAbyssalOats", new OreDictItemData(MT.OatAbyssal, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedBarley", new OreDictItemData(MT.Barley, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedRice", new OreDictItemData(MT.Rice, U9));
+		OreDictManager.INSTANCE.setAutomaticItemData("seedCorn", new OreDictItemData(MT.Corn, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleWheat", new OreDictItemData(MT.Wheat, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleRye", new OreDictItemData(MT.Rye, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleOats", new OreDictItemData(MT.Oat, U*9));
@@ -1313,9 +1323,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("cropRye", new OreDictItemData(MT.Rye, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropBarley", new OreDictItemData(MT.Barley, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropOats", new OreDictItemData(MT.Oat, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("cropOat", new OreDictItemData(MT.Oat, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropAbyssalOats", new OreDictItemData(MT.OatAbyssal, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("cropAbyssalOat", new OreDictItemData(MT.OatAbyssal, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropRice", new OreDictItemData(MT.Rice, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropCorn", new OreDictItemData(MT.Corn, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropTea", new OreDictItemData(MT.Tea, U9));

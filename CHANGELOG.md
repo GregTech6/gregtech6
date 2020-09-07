@@ -45,6 +45,7 @@ Also added Tungsten Alloy Drums, Anvils, Cells, Fluid Pipes, Storages, Shelves e
 Netherlicious officially wont ever add Netherite, so the Netherite Plus Mod is still recommended for Netherite Items such as Armor, or the Twilight Forest Netherrite Ore Compat.
 Foxfire Planks are now in the GT6 Wood Dictionary.
 Crimson and Warped Wood Stuff from Netherite Plus are now overidden by Netherlicious Wood Stuff wherever applicable.
+Its Food Stuff has now more consistency.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
