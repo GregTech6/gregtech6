@@ -315,6 +315,9 @@ public class LanguageHandler {
 		if (aMaterial == MT.Oat) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Oatmeal";
 		} else
+		if (aMaterial == MT.OatAbyssal) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Abyssal Oatmeal";
+		} else
 		if (aMaterial == MT.Rye) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Rye Flour";
 		} else

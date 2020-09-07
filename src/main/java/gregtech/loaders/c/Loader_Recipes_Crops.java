@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -149,6 +149,22 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("baleOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.Oat, U*9), IL.Grass.get(9));
 			RM.unpack(aEvent.mStack, IL.Crop_Oats.get(9));
+		}});
+		
+		addListener("cropAbyssalOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OP.dust.contains(aEvent.mStack)) return;
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.OatAbyssal), IL.Grass_Dry.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.OatAbyssal, U2), IL.Grass_Dry.get(1));
+			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.OatAbyssal), IL.Grass_Dry.get(1), 0.8F);
+			RM.biomass(ST.amount(9, aEvent.mStack));
+			RM.compact(aEvent.mStack, 9, IL.Bale_Dry.get(1)); // TODO take the actual Bale if it exists
+		}});
+		addListener("baleAbyssalOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Shredder.addRecipe1(T, 16, 144, aEvent.mStack, OM.dust(MT.OatAbyssal, U*9), IL.Grass_Dry.get(9));
+		//  RM.unpack(aEvent.mStack, IL.Crop_Oats.get(9)); // TODO Oats Item reference
 		}});
 		
 		addListener("cropBarley", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

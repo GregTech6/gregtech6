@@ -1288,11 +1288,13 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("seedWheat", new OreDictItemData(MT.Wheat, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedRye", new OreDictItemData(MT.Rye, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedOats", new OreDictItemData(MT.Oat, U9));
+		OreDictManager.INSTANCE.setAutomaticItemData("seedAbyssalOats", new OreDictItemData(MT.OatAbyssal, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedBarley", new OreDictItemData(MT.Barley, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedRice", new OreDictItemData(MT.Rice, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleWheat", new OreDictItemData(MT.Wheat, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleRye", new OreDictItemData(MT.Rye, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleOats", new OreDictItemData(MT.Oat, U*9));
+		OreDictManager.INSTANCE.setAutomaticItemData("baleAbyssalOats", new OreDictItemData(MT.OatAbyssal, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleBarley", new OreDictItemData(MT.Barley, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("baleRice", new OreDictItemData(MT.Rice, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData("leafCocaDried", new OreDictItemData(MT.UNUSED.Cocaine, U));
@@ -1312,6 +1314,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("cropBarley", new OreDictItemData(MT.Barley, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropOats", new OreDictItemData(MT.Oat, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropOat", new OreDictItemData(MT.Oat, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("cropAbyssalOats", new OreDictItemData(MT.OatAbyssal, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("cropAbyssalOat", new OreDictItemData(MT.OatAbyssal, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropRice", new OreDictItemData(MT.Rice, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropCorn", new OreDictItemData(MT.Corn, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("cropTea", new OreDictItemData(MT.Tea, U9));

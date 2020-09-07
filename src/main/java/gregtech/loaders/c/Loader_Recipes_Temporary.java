@@ -175,7 +175,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 		}
 		
 		if (MD.NeLi.mLoaded) {
-			// TODO Both Torch Recipes
+			// TODO Torch Recipes for Soul and Foxfire.
+			// TODO Lantern Recipe Fix for Redstone ones.
+			// TODO Lantern Harvest by GT6 Tools for Free just like Torches.
+			// TODO Abyssal Oats "cropAbyssalOats", "baleAbyssalOats"
 			
 			RM.Distillery.addRecipe1(T, 16, 16, ST.make(MD.NeLi, "Fungus"  , 1, 0), FL.DistW.make(250), FL.Potion_Awkward.make(250), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, ST.make(MD.NeLi, "WartItem", 1, 0), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
@@ -248,48 +251,48 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.
-		RM.generify   (FL.make("molten.meteoriciron"         , 1), FL.make("molten.iron", 1));
-		RM.generify   (FL.make("molten.wroughtiron"          , 1), FL.make("molten.iron", 1));
-		RM.generify   (FL.make("molten.osmiumelemental"      , 1), FL.make("molten.osmium", 1));
-		RM.generify   (FL.make("deuterium"                   , 5), FL.make("rc deuterium", 1));
-		RM.generify   (FL.make("tritium"                     , 5), FL.make("rc tritium", 1));
-		RM.generify   (FL.make("carbondioxide"               , 5), FL.make("rc co2", 1));
-		RM.generify   (FL.make("chlorine"                    , 5), FL.make("rc chlorine", 1));
-		RM.generify   (FL.make("heavywater"                  , 1), FL.Heavy_Reiker.make(1));
-		RM.genericycle(FL.XP                            .make( 3), FL.Mob.make(10));
-		RM.genericycle(FL.Redstone_TE                   .make(25), FL.Redstone.make(36));
-		RM.genericycle(FL.Lubricant                     .make( 1), FL.LubRoCant.make(1));
-		RM.generify   (FL.Oil_Canola                    .make( 2), FL.lube(1));
-		RM.generify   (FL.make("ethanol"                     , 1), FL.BioEthanol.make(1));
-		RM.genericycle(FL.BioEthanol                    .make( 1), FL.Reikanol.make(1));
-		RM.genericycle(FL.Oxygen                        .make( 1), FL.Reikygen.make(1));
-		RM.genericycle(FL.Liquid_Oxygen                 .make( 1), FL.Liquid_Reikygen.make(1));
-		RM.genericycle(FL.make("molten.latex"                , 1), FL.Latex.make(1));
-		RM.generify   (FL.Slime_Pink                    .make( 1), FL.Slime_Green.make(1));
-		RM.generify   (FL.RoyalJelly                    .make( 1), FL.Honey.make(10));
-		RM.genericycle(FL.Honey                         .make( 1), FL.HoneyGrC.make(1), FL.HoneyBoP.make(1));
-		RM.genericycle(FL.Milk                          .make( 1), FL.MilkGrC.make(1));
-		RM.genericycle(FL.make("for.honeydew"                , 1), FL.Honeydew.make(1));
-		RM.genericycle(FL.Resin_Spruce                  .make( 1), FL.Resin.make(1));
-		RM.genericycle(FL.make("sulfuricacid"                , 1), FL.make("acid", 1));
-		RM.genericycle(FL.Oil_Plant                     .make( 2), FL.Oil_Seed.make(1));
-		RM.genericycle(FL.make("biomass"                     , 1), FL.make("ic2biomass", 1));
-		RM.genericycle(FL.Methane                       .make( 1), FL.make("ic2biogas", 4));
-		RM.generify   (FL.make("gas_natural_gas"             , 1), FL.Methane.make(1));
-		RM.generify   (FL.make("naturalgas"                  , 1), FL.Methane.make(1));
-		RM.generify   (FL.make("gas.natural"                 , 1), FL.Methane.make(1));
-		RM.generify   (FL.Liquid_Methane                .make( 1), FL.Methane.make(643));
-		RM.genericycle(FL.make("kerosine"                    , 1), FL.make("kerosene", 1));
-		RM.genericycle(FL.make("petrol"                      , 1), FL.make("gasoline", 1));
-		RM.genericycle(FL.make("fuel"                        , 1), FL.make("fueloil", 1));
-		RM.generify   (FL.Steam_IC2_Superheated         .make( 1), FL.Steam.make(3));
-		RM.generify   (FL.Steam_IC2                     .make( 1), FL.Steam.make(1));
-		RM.generify   (FL.DistW                         .make( 1), FL.Water.make(1));
-		RM.generify   (FL.Oil_Lin                       .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Hemp                      .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Olive                     .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Sunflower                 .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Nut                       .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.make("molten.meteoriciron"   , 1), FL.make("molten.iron", 1));
+		RM.generify   (FL.make("molten.wroughtiron"    , 1), FL.make("molten.iron", 1));
+		RM.generify   (FL.make("molten.osmiumelemental", 1), FL.make("molten.osmium", 1));
+		RM.generify   (FL.make("deuterium"             , 5), FL.make("rc deuterium", 1));
+		RM.generify   (FL.make("tritium"               , 5), FL.make("rc tritium", 1));
+		RM.generify   (FL.make("carbondioxide"         , 5), FL.make("rc co2", 1));
+		RM.generify   (FL.make("chlorine"              , 5), FL.make("rc chlorine", 1));
+		RM.generify   (FL.make("heavywater"            , 1), FL.Heavy_Reiker.make(1));
+		RM.genericycle(FL.XP                      .make( 3), FL.Mob.make(10));
+		RM.genericycle(FL.Redstone_TE             .make(25), FL.Redstone.make(36));
+		RM.genericycle(FL.Lubricant               .make( 1), FL.LubRoCant.make(1));
+		RM.generify   (FL.Oil_Canola              .make( 2), FL.lube(1));
+		RM.generify   (FL.make("ethanol"               , 1), FL.BioEthanol.make(1));
+		RM.genericycle(FL.BioEthanol              .make( 1), FL.Reikanol.make(1));
+		RM.genericycle(FL.Oxygen                  .make( 1), FL.Reikygen.make(1));
+		RM.genericycle(FL.Liquid_Oxygen           .make( 1), FL.Liquid_Reikygen.make(1));
+		RM.genericycle(FL.make("molten.latex"          , 1), FL.Latex.make(1));
+		RM.generify   (FL.Slime_Pink              .make( 1), FL.Slime_Green.make(1));
+		RM.generify   (FL.RoyalJelly              .make( 1), FL.Honey.make(10));
+		RM.genericycle(FL.Honey                   .make( 1), FL.HoneyGrC.make(1), FL.HoneyBoP.make(1));
+		RM.genericycle(FL.Milk                    .make( 1), FL.MilkGrC.make(1));
+		RM.genericycle(FL.make("for.honeydew"          , 1), FL.Honeydew.make(1));
+		RM.genericycle(FL.Resin_Spruce            .make( 1), FL.Resin.make(1));
+		RM.genericycle(FL.make("sulfuricacid"          , 1), FL.make("acid", 1));
+		RM.genericycle(FL.Oil_Plant               .make( 2), FL.Oil_Seed.make(1));
+		RM.genericycle(FL.Biomass                 .make( 1), FL.BiomassIC2.make(1));
+		RM.genericycle(FL.Methane                 .make( 1), FL.make("ic2biogas", 4));
+		RM.generify   (FL.make("gas_natural_gas"       , 1), FL.Methane.make(1));
+		RM.generify   (FL.make("naturalgas"            , 1), FL.Methane.make(1));
+		RM.generify   (FL.make("gas.natural"           , 1), FL.Methane.make(1));
+		RM.generify   (FL.Liquid_Methane          .make( 1), FL.Methane.make(643));
+		RM.genericycle(FL.make("kerosine"              , 1), FL.make("kerosene", 1));
+		RM.genericycle(FL.make("petrol"                , 1), FL.make("gasoline", 1));
+		RM.genericycle(FL.make("fuel"                  , 1), FL.make("fueloil", 1));
+		RM.generify   (FL.Steam_IC2_Superheated   .make( 1), FL.Steam.make(3));
+		RM.generify   (FL.Steam_IC2               .make( 1), FL.Steam.make(1));
+		RM.generify   (FL.DistW                   .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Sunflower           .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Nut                 .make( 1), FL.Oil_Seed.make(1));
 		
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 	}
