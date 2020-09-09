@@ -1053,12 +1053,10 @@ public class ST {
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(ItemStack aStack) {
-		if (aStack == null || aStack.stackSize < 0) return null;
-		Item tItem = item_(aStack);
-		if (tItem == null) return null;
+		if (aStack == null || item_(aStack) == null || aStack.stackSize < 0) return null;
 		NBTTagCompound rNBT = UT.NBT.make();
 		aStack = OM.get_(aStack);
-		rNBT.setShort("id", (short)Item.getIdFromItem(tItem));
+		rNBT.setShort("id", id(aStack));
 		UT.NBT.setNumber(rNBT, "Count", aStack.stackSize);
 		rNBT.setShort("Damage", meta_(aStack));
 		if (aStack.hasTagCompound()) rNBT.setTag("tag", aStack.getTagCompound());

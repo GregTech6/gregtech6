@@ -117,7 +117,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Bark_Dry.set(                            addItem(tLastID = 12201, "Dry Bark"                                 , "Useful for making a simple Fire Starter"                     , OD.itemBarkDry, TICKS_PER_SMELT / 4, TC.stack(TC.ARBOR, 1), new OreDictItemData(MT.Bark, U2)));
 		
 		
-		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud, TC.stack(TC.TERRA, 1)));
+		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud , TC.stack(TC.TERRA, 1)));
 		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
 		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay Ball"                            , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
 		RM.generify(IL.Clay_Ball_Brown.get(1), ST.make(Items.clay_ball, 1, 0));

@@ -988,6 +988,7 @@ public class LoaderItemList implements Runnable {
 		
 		
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
+		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		IL.NeLi_Bowl_DevilishMaize              .set(ST.make(MD.NeLi, "DevilishPopcornRaw"                  , 1, 0));
 		IL.NeLi_Bowl_DevilishPopcorn            .set(ST.make(MD.NeLi, "DevilishPopcorn"                     , 1, 0));
 		IL.NeLi_Bowl_CrimsonStew                .set(ST.make(MD.NeLi, "StewCrimson"                         , 1, 0));
