@@ -120,21 +120,21 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		addListener("foodVanilla", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!OM.prefixcontains(aEvent.mStack, TD.Prefix.DUST_BASED)) {
-			RM.Shredder     .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Vanilla));
-			RM.Mortar       .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Vanilla, U2));
+			RM.Shredder         .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Vanilla));
+			RM.Mortar           .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Vanilla, U2));
 			}
 		}});
 		addListener("foodCheese", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Slicer       .addRecipe2(T, 16,   16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Cheese_Sliced.get(4));
+			RM.Slicer           .addRecipe2(T, 16,   16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Cheese_Sliced.get(4));
 			if (!OM.prefixcontains(aEvent.mStack, TD.Prefix.DUST_BASED)) {
-			RM.Shredder     .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese));
-			RM.Mortar       .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese, U2));
+			RM.Shredder         .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese));
+			RM.Mortar           .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese, U2));
 			}
 			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 8, 0, 8);
 		}});
 		addListener("foodDough", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
-			RM.RollingMill  .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Dough_Flat.get(1));
+			RM.RollingMill      .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Dough_Flat.get(1));
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, gemChipped.mat(MT.Sugar, 4      ), IL.Food_Dough_Sugar.get(2));
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Sugar                ), IL.Food_Dough_Sugar.get(2));
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Cocoa                ), IL.Food_Dough_Chocolate.get(1));
@@ -439,7 +439,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee, U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.Flour.mToThis)
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat           ), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Milk        ), FL.mul(tWater, 1, 2, T), FL.Milk.make(1000), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Honey       ), FL.mul(tWater, 1, 2, T), FL.Honey.make(1000), ZL_IS);
@@ -559,6 +559,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(tMat), OM.dust(MT.MeatRotten), OM.ingot(MT.MeatRotten));
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(tMat), OM.dust(MT.FishRotten), OM.ingot(MT.FishRotten));
 		}
+		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.OatAbyssal), FL.Juice_Hellderberry.make(100), NF, IL.Food_Dough_Abyssal.get(1));
 		
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Mash_Wheat.make(50), FL.Mash_Hops.make(50)), FL.Mash_WheatHops.make(100), ZL_IS);
 		

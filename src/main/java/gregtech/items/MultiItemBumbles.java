@@ -286,7 +286,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case 100:
 			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
 				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
-				if (tBlock == Blocks.clay || (tBlock == BlocksGT.Diggables && WD.meta(aWorld, aX+i, aY+j, aZ+k) == 1)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == Blocks.clay || (tBlock == BlocksGT.Diggables && WD.meta(aWorld, aX+i, aY+j, aZ+k) % 2 == 1)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 			}
 			return null;
 		case 101:

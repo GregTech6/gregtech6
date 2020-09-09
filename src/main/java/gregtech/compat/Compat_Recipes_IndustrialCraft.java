@@ -177,10 +177,10 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1)), FL.Potion_Poison_2.make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer",  3, 0));
 		RM.Mixer        .addRecipeX(T, 16,  192, ST.array(IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)        ), FL.Potion_Poison_2.make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer", 12, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
+		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)             ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)             ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
+		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(MD.IC2, "item.itemScrapMetal", 8, 0), ST.make(MD.IC2, "item.scrapMetalChunk", 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, IL.IC2_Plantball.get(1), ST.make(MD.IC2, "item.itemFuelPlantCmpr", 1, 0));
@@ -416,7 +416,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.pulverizing(ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay, U));
 		RM.pulverizing(ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));
 		RM.pulverizing(IL.Clay_Ball_Brown.get(1), OM.dust(MT.ClayBrown, U));
+		RM.pulverizing(IL.Clay_Ball_Red.get(1), OM.dust(MT.ClayRed, U));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
+		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
 		
 		if (IL.IC2_Sapling_Rubber.exists())
 		RM.ic2_extractor(IL.IC2_Sapling_Rubber.get(1), OM.ingot(MT.Rubber, 2*U9));

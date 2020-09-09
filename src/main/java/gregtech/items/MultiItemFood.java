@@ -119,15 +119,20 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud, TC.stack(TC.TERRA, 1)));
 		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
+		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay Ball"                            , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
 		RM.generify(IL.Clay_Ball_Brown.get(1), ST.make(Items.clay_ball, 1, 0));
+		RM.generify(IL.Clay_Ball_Red  .get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Brown.get(1), ST.make(Items.brick, 1, 0));
+		RM.add_smelting(IL.Clay_Ball_Red  .get(1), ST.make(Items.brick, 1, 0));
 		CR.remove(ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0), NI, ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0));
-		CR.shaped       (ST.make(BlocksGT.Diggables , 1, 0) , CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Mud_Ball);
-		CR.shaped       (ST.make(Blocks.clay        , 1, 0) , CR.DEF_NAC_NCC, "XX", "XX", 'X', ST.make(Items.clay_ball, 1, W));
-		CR.shaped       (ST.make(BlocksGT.Diggables , 1, 1) , CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Brown);
-		CR.shapeless    (IL.Mud_Ball.get(4)                 , CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables  , 1, 0)});
-		CR.shapeless    (IL.Clay_Ball_Brown.get(4)          , CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables  , 1, 1)});
-		CR.shapeless    (ST.make(Items.clay_ball, 4, 0)     , CR.DEF_NAC_NCC, new Object[] {ST.make(Blocks.clay         , 1, W)});
+		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Mud_Ball);
+		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 1), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Brown);
+		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 3), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Red);
+		CR.shaped       (ST.make(Blocks.clay       , 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', ST.make(Items.clay_ball, 1, W));
+		CR.shapeless    (IL.Mud_Ball               .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 0)});
+		CR.shapeless    (IL.Clay_Ball_Brown        .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 1)});
+		CR.shapeless    (IL.Clay_Ball_Red          .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 3)});
+		CR.shapeless    (ST.make(Items.clay_ball   , 4, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(Blocks.clay       , 1, W)});
 		
 		
 		IL.Comb_Honey.set(          addItem(tLastID = 30000, "Honey Comb"           , "", OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb", TC.stack(TC.LIMUS, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.SANO, 1)));
@@ -140,14 +145,14 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Comb_Frozen.set(         addItem(tLastID = 30007, "Frozen Comb"          , "", OD.beeComb, TC.stack(TC.GELUM, 2)));
 		IL.Comb_Shroom.set(         addItem(tLastID = 30008, "Shroomy Comb"         , "", OD.beeComb, TC.stack(TC.VITIUM, 1), TC.stack(TC.HERBA, 1)));
 		IL.Comb_Sandy.set(          addItem(tLastID = 30009, "Sandy Comb"           , "", OD.beeComb, TC.stack(TC.TERRA, 1), TC.stack(TC.IGNIS, 1)));
-
+		
 		IL.Comb_Clay.set(           addItem(tLastID = 30100, "Clay Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
 		IL.Comb_Sticky.set(         addItem(tLastID = 30101, "Sticky Comb"          , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.LIMUS, 2)));
 		IL.Comb_Royal.set(          addItem(tLastID = 30102, "Royal Comb"           , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.LIMUS, 1), TC.stack(TC.SANO, 1)));
 		IL.Comb_Soul.set(           addItem(tLastID = 30103, "Soul Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.SPIRITUS, 2)));
 		IL.Comb_Amnesic.set(        addItem(tLastID = 30104, "Amnesic Comb"         , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.LIMUS, 1), TC.stack(TC.STRONTIO, 1)));
 		IL.Comb_Military.set(       addItem(tLastID = 30105, "Military Comb"        , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TELUM, 2)));
-
+		
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Honey     .get(1), NF, FL.Honey           .make( 100), OM.dust(MT.WaxBee)                 , IL.FR_Propolis.get(1));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Water     .get(1), NF, FL.Water           .make(1000), OM.dust(MT.WaxBee)                 );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Magic     .get(1), NF, FL.Ambrosia        .make( 100), OM.dust(MT.WaxMagic)               );
@@ -158,15 +163,15 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Frozen    .get(1), NF, FL.Ice             .make(1000), OM.dust(MT.Ice)                    );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  2000,  2000} , IL.Comb_Shroom    .get(1), NF, FL.Soup_Mushroom   .make(1000), ST.make(Blocks.red_mushroom, 1, 0) , ST.make(Blocks.brown_mushroom, 1, 0), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Sandy     .get(1), NF, FL.Juice_Cactus    .make( 100), ST.make(Blocks.sand, 1, 0)         );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 6000,  6000}               , IL.Comb_Clay      .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Clay)                   , OM.dust(MT.ClayBrown));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  4000}        , IL.Comb_Clay      .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Clay)                   , OM.dust(MT.ClayBrown), OM.dust(MT.ClayRed));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  3000}               , IL.Comb_Sticky    .get(1), NF, FL.Latex           .make(   L), OM.dust(MT.WaxBee)                 , IL.FR_Propolis_Sticky.get(1, IL.IC2_Resin.get(1, IL.Resin.get(1))));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000}                      , IL.Comb_Royal     .get(1), ZL_FS,FL.array(FL.Honey.make(  50), FL.RoyalJelly.make(10))            , OM.dust(MT.WaxBee));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Soul      .get(1), NF, FL.Oil_Soulsand    .make(  50), OM.dust(MT.WaxSoulful)             , ST.make(Blocks.soul_sand, 1, 0));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Amnesic   .get(1), NF, FL                 .lube(1000), OM.dust(MT.WaxAmnesic)             );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Military  .get(1), NF, FL.Juice_Cactus    .make( 150), OM.dust(MT.Bone)                   );
-
-
-
+		
+		
+		
 		IL.Food_Lemon.set(                          addItem(tLastID =     0, "Lemon"                                    , "Don't make Lemonade"         , "cropLemon"                   , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Lemon_Sliced.set(                   addItem(tLastID =     1, "Lemon Slice"                              , "Ideal to put on your Drink"                                  , new FoodStat( 0, 0.150F,   0, C+36,  0.30F,   0,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1)));
 		CR.shaped(IL.Food_Lemon_Sliced.get(4), CR.DEF_NAC_NCC, "kX", 'X', "cropLemon");
@@ -374,36 +379,48 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Dough_Egg.set(                      addItem(tLastID = 32003, "Egg Dough"                            , "For making Pasta"                        , "foodEggDough"        , new FoodStat( 1, 1.000F,   0, C+37,  0.10F,   0,   0,   0,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Dough_Sugar_Raisins.set(            addItem(tLastID = 32004, "Sugary Raisin Dough"                  , "Don't eat the Dough before it is baken"  , "foodSugarDough"      , new FoodStat( 1, 1.000F,   0, C+37,  0.10F,   0,   0,   0,  30,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Dough_Sugar_Chocolate_Raisins.set(  addItem(tLastID = 32005, "Sugary Chocolate Raisin Dough"        , "Almost looks like Chocolate Chips"       , "foodSugarDough"      , new FoodStat( 1, 1.000F,   0, C+37,  0.10F,   0,   0,   0,  40,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-
-
-
+		IL.Food_Dough_Abyssal.set(                  addItem(tLastID = 32006, "Abyssal Dough"                        , "For practicing netherlicious Bakery"     , "foodAbyssalDough"    , new FoodStat( 1, 1.000F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		if (IL.NeLi_Bread.exists()) RM.add_smelting(IL.Food_Dough_Abyssal.get(1), IL.NeLi_Bread.get(1));
+		
+		
+		
 		IL.Food_Chum.set(                           addItem(tLastID = 10000, "Chum"                                     , "Chum is Fum!"                            , "foodChum"        , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, null                                 , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1)));
-
-
-
+		
+		
+		
 		IL.Food_Cookie_Raw.set(                     addItem(tLastID =  2000, "Cookie shaped Dough"                      , "For baking Cookies"                                          , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,   5,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raw.get(1), ST.make(Items.cookie, 1, 0)); FoodsGT.put(ST.make(Items.cookie, 1, W), 0, 0, 0,10, 0);
 		RM.food_can(ST.make(Items.cookie, 6, W), 12, "Canned Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', "foodChocolateDough");
 		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Chocolate.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Raw.get(4));
-
-
+		
+		
 		IL.Food_Cookie_Raisins_Raw.set(             addItem(tLastID =  2002, "Cookie shaped Raisin Dough"               , "For baking Raisin Cookies"                                   , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cookie_Raisins.set(                 addItem(tLastID =  2003, "Raisin Cookie"                   , "You don't like it? I don't care! It's delicious!", "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raisins_Raw.get(1), IL.Food_Cookie_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Raisins.get(6), 12, "Canned Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Raisins);
 		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Sugar_Raisins.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Raisins_Raw.get(4));
-
-
+		
+		
 		IL.Food_Cookie_Chocolate_Raisins_Raw.set(   addItem(tLastID =  2004, "Cookie shaped Chocolate Raisin Dough"     , "Almost looks like a regular Chocolate Chip Cookie >:D"       , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cookie_Chocolate_Raisins.set(       addItem(tLastID =  2005, "Cookie"                                   , ""                                       , "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Chocolate_Raisins_Raw.get(1), IL.Food_Cookie_Chocolate_Raisins.get(1));
 		RM.food_can(IL.Food_Cookie_Chocolate_Raisins.get(6), 12, "Canned Chocolate Raisin Cookies", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Cookie_Chocolate_Raisins_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', IL.Food_Dough_Sugar_Chocolate_Raisins);
-
-
-
+		
+		
+		IL.Food_Cookie_Abyssal_Raw.set(             addItem(tLastID =  2006, "Cookie shaped Abyssal Dough"              , "For baking netherlicious Cookies"                            , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,   5,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		if (IL.NeLi_Cookie.exists()) {
+		RM.add_smelting(IL.Food_Cookie_Abyssal_Raw.get(1), IL.NeLi_Cookie.get(1)); FoodsGT.put(IL.NeLi_Cookie.get(1), 0, 0, 0,10, 0);
+		RM.food_can(IL.NeLi_Cookie.get(6), 12, "Canned Abyssal Cookies", IL.CANS_BREAD);
+		} else {
+		RM.add_smelting(IL.Food_Cookie_Abyssal_Raw.get(1), ST.make(Items.cookie, 1, 0));
+		}
+		CR.shaped(IL.Food_Cookie_Abyssal_Raw.get(4), CR.DEF_NAC_NCC, "kX", 'X', "foodAbyssalDough");
+		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Abyssal.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Abyssal_Raw.get(4));
+		
+		
 		IL.Food_CakeBottom_Raw.set(                 addItem(tLastID =  3000, "Raw Cake Bottom"                          , "For making Cake"                                             , new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_CakeBottom.set(                     addItem(tLastID =  3001, "Cake Bottom"                              , "I know I promised you an actual Cake, but well..."           , new FoodStat( 3, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_CakeBottom_Raw.get(1), IL.Food_CakeBottom.get(1));
@@ -482,9 +499,9 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Burger_Fish.get(1)     , CR.DEF, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced, OP.ingot.dat(MT.FishCooked)});
 		CR.shapeless(IL.Food_Burger_Chum.get(1)     , CR.DEF, new Object[] {IL.Food_Buns_Sliced, "foodChum"});
 		CR.shapeless(IL.Food_Burger_Chum.get(1)     , CR.DEF, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced, "foodChum"});
-
-
-
+		
+		
+		
 		IL.Food_Bread_Raw.set(                      addItem(tLastID =  6000, "Dough (Bread)"                            , "In Bread Shape"                                              , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Bread.set(                          ST.make(Items.bread, 1, 0)); // My OCD told me to do this, it is not my fault! XD                                                   , new FoodStat( 5, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Bread_Sliced.set(                   addItem(tLastID =  6002, "Sliced Bread"                             , "Best thing since sliced Bread, oh wait..."                   , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
@@ -498,7 +515,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Breads_Sliced.get(1), CR.DEF_NAC, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced});
 		CR.shapeless(IL.Food_Bread_Sliced.get(2), CR.DEF_NAC, new Object[] {IL.Food_Breads_Sliced});
 		RM.Slicer.addRecipe2(T, 16,   16, IL.Food_Bread.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bread_Sliced.get(2));
-
+		
 		IL.Food_Sandwich_Veggie.set(                addItem(tLastID =  6010, "Veggie Sandwich"                          , "It's Canon, Guys! Season 4, Vegan Morty!"                    , new FoodStat( 7, 1.200F,   0, C+35,  0.30F,   0,   0,   0,  24,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 2), TC.stack(TC.FAMES, 1)));                                                  setFluidContainerStats(tLastID, 0, 32);
 		IL.Food_Sandwich_Cheese.set(                addItem(tLastID =  6011, "Cheese Sandwich"                          , "Say Cheese!"                                                 , new FoodStat( 7, 1.400F,   0, C+38,  0.50F,   0,   0,  16,   0,  16, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 2)));                                                  setFluidContainerStats(tLastID, 0, 32);
 		IL.Food_Sandwich_Bacon.set(                 addItem(tLastID =  6014, "Bacon Sandwich"                           , "The best Sandwich ever!"                                     , new FoodStat(10, 1.800F,   0, C+38,  0.50F,   0,   0,  12,   0,  18, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1)));                          setFluidContainerStats(tLastID, 0, 32);
@@ -511,9 +528,9 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Sandwich_Bacon.get(1)  , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
 		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Breads_Sliced, Items.cooked_beef});
 		CR.shapeless(IL.Food_Sandwich_Steak.get(1)  , CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced, Items.cooked_beef});
-
-
-
+		
+		
+		
 		IL.Food_Baguette_Raw.set(                   addItem(tLastID =  7000, "Dough (Baguette)"                         , "In Baguette Shape"                                           , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Baguette.set(                       addItem(tLastID =  7001, "Baguette"                                 , "I teleported nothing BUT Bread!!!"                           , new FoodStat( 8, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Baguette_Sliced.set(                addItem(tLastID =  7002, "Sliced Baguette"                          , "Just half a Baguette"                                        , new FoodStat( 4, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));

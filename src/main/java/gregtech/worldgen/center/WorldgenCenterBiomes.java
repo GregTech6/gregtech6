@@ -163,8 +163,8 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight-2, j, BlocksGT.Diggables, 1);
 							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 1);
 							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 1);
+							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 3);
+							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 3);
 							for (int k = 1; k < mHeight-6; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.Limestone : BlocksGT.Marble, aRandom.nextBoolean()?2:0);
 							switch(aRandom.nextInt(60)) {
 							case  0: case  1: case  2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;

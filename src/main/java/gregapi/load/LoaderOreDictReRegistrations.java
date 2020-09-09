@@ -1283,14 +1283,14 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodChumicecream"                , "listAllicecream");
 		OreDictManager.INSTANCE.addReRegistration("foodBearicecream"                , "listAllicecream");
 		
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetRed"       , new OreDictItemData(MT.Redstone, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetIron"      , new OreDictItemData(MT.Redstone, U, ANY.Fe, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetGold"      , new OreDictItemData(MT.Redstone, U, MT.Au, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetDiamond"   , new OreDictItemData(MT.Redstone, U, ANY.Diamond, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetPulsating" , new OreDictItemData(MT.Redstone, U2, MT.EnderPearl, U2));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetQuartz"    , new OreDictItemData(MT.Redstone, U, ANY.SiO2, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetComp"      , new OreDictItemData(MT.Redstone, U*4));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetEmerald"   , new OreDictItemData(MT.Redstone, U, ANY.Emerald, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetRed"      , new OreDictItemData(MT.Redstone, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetIron"     , new OreDictItemData(MT.Redstone, U, ANY.Fe, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetGold"     , new OreDictItemData(MT.Redstone, U, MT.Au, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetDiamond"  , new OreDictItemData(MT.Redstone, U, ANY.Diamond, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetPulsating", new OreDictItemData(MT.Redstone, U2, MT.EnderPearl, U2));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetQuartz"   , new OreDictItemData(MT.Redstone, U, ANY.SiO2, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetComp"     , new OreDictItemData(MT.Redstone, U*4));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetEmerald"  , new OreDictItemData(MT.Redstone, U, ANY.Emerald, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("ForciciumItem", new OreDictItemData(MT.Forcicium, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("itemFlint", new OreDictItemData(MT.Flint, U2));
 		OreDictManager.INSTANCE.setAutomaticItemData("flint", new OreDictItemData(MT.Flint, U2));
@@ -1370,16 +1370,16 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("diorite", new OreDictItemData(MT.Diorite, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("ingotRefinedIron", new OreDictItemData(MT.Fe, U*1));
 		
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand           ), new OreDictItemData(MT.Sand          , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock        ), new OreDictItemData(MT.Bedrock       , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint          ), new OreDictItemData(MT.Flint         , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock        ), new OreDictItemData(MT.Redrock       , U, MT.ClayBrown   , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Shale          ), new OreDictItemData(MT.Shale         , U, MT.Clay        , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite       ), new OreDictItemData(MT.Dolomite      , U, MT.Bone        , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite       ), new OreDictItemData(MT.Eclogite      , U, MT.TiO2        , U72));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3          ), new OreDictItemData(MT.CaCO3         , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Soapstone      ), new OreDictItemData(MT.Soapstone     , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk          ), new OreDictItemData(MT.Chalk         , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Lignite        ), new OreDictItemData(MT.Lignite       , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand     ), new OreDictItemData(MT.Sand     , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock  ), new OreDictItemData(MT.Bedrock  , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint    ), new OreDictItemData(MT.Flint    , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock  ), new OreDictItemData(MT.Redrock  , U, MT.ClayRed, U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Shale    ), new OreDictItemData(MT.Shale    , U, MT.Clay   , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite ), new OreDictItemData(MT.Dolomite , U, MT.Bone   , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite ), new OreDictItemData(MT.Eclogite , U, MT.TiO2   , U72));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3    ), new OreDictItemData(MT.CaCO3    , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Soapstone), new OreDictItemData(MT.Soapstone, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk    ), new OreDictItemData(MT.Chalk    , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Lignite  ), new OreDictItemData(MT.Lignite  , U));
 	}
 }

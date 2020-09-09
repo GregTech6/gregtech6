@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -139,7 +139,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Blaze      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Blaze, U*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Shimmering .get(1), NF, FL.Honey.make(20), OM.dust(MT.EnderPearl, U2));
 			
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500,  7500}                  , IL.BINNIE_Comb_Clay       .get(1), NF, FL.Honey.make(20), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 5000,  5000,  5000}           , IL.BINNIE_Comb_Clay       .get(1), NF, FL.Honey.make(20), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Fossil     .get(1), NF, FL.Honey.make(20), OM.dust(MT.Coal, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Brimstone  .get(1), NF, MT.H2SO4.liquid(U10,F), OM.dust(MT.S, U*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500,  7500}                  , IL.BINNIE_Comb_Unstable   .get(1), NF, MT.HNO3 .liquid(U10,F), OM.dust(MT.KNO3), OM.dust(MT.NaNO3));

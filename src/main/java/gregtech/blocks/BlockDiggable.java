@@ -49,17 +49,22 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	public BlockDiggable(String aUnlocalised) {
-		super(null, aUnlocalised, Material.ground, soundTypeGravel, 3, Textures.BlockIcons.DIGGABLES);
+		super(null, aUnlocalised, Material.ground, soundTypeGravel, 4, Textures.BlockIcons.DIGGABLES);
 		LH.add(getUnlocalizedName()+ ".0.name", "Mud");
 		LH.add(getUnlocalizedName()+ ".1.name", "Brown Clay");
 		LH.add(getUnlocalizedName()+ ".2.name", "Turf");
+		LH.add(getUnlocalizedName()+ ".3.name", "Red Clay");
 		
 		RM.generify(ST.make(this, 1, 1), ST.make(Blocks.clay, 1, 0));
+		RM.generify(ST.make(this, 1, 3), ST.make(Blocks.clay, 1, 0));
 		RM.add_smelting(ST.make(this, 1, 0), ST.make(Blocks.dirt, 1, 1));
 		RM.add_smelting(ST.make(this, 1, 1), ST.make(Blocks.hardened_clay, 1, 0));
+		RM.add_smelting(ST.make(this, 1, 3), ST.make(Blocks.hardened_clay, 1, 0));
 		OM.data(ST.make(this, 1, 1), MT.ClayBrown, U*4);
 		OM.data(ST.make(this, 1, 2), MT.Peat, U);
+		OM.data(ST.make(this, 1, 3), MT.ClayRed, U*4);
 		OM.reg(ST.make(this, 1, 1), "blockClay");
+		OM.reg(ST.make(this, 1, 3), "blockClay");
 		
 		BlocksGT.harvestableSpade.add(this);
 	}
@@ -78,6 +83,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		case  0: return new ArrayListNoNulls<>(F, IL.Mud_Ball.get(4));
 		case  1: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
 		case  2: return new ArrayListNoNulls<>(F, OP.ingot.mat(MT.Peat, 1));
+		case  3: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
 		default: return new ArrayListNoNulls<>(F, ST.make(this, 1, aMeta));
 		}
 	}
@@ -90,7 +96,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	@Override public boolean useGravity      (byte aMeta) {return aMeta != 1;}
 	@Override public boolean doesWalkSpeed   (byte aMeta) {return aMeta != 1;}
 	@Override public boolean doesPistonPush  (byte aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(byte aMeta) {return aMeta < 3;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return aMeta < 4;}
 	@Override public boolean isSealable      (byte aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool   (int  aMeta) {return TOOL_shovel;}
 	@Override public int getHarvestLevel     (int  aMeta) {return 0;}

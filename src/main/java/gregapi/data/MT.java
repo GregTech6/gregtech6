@@ -1079,6 +1079,7 @@ public class MT {
 	Obsidian                = elec          ( 8214, "Obsidian"              , SET_STONE             ,  80,  50, 100, 255, G_STONE, STONE, BRITTLE, MORTAR)                                                                                                          .setMcfg(64, Mg             , 1*U, Fe               , 1*U, SiO2             , 6*U, O                , 4*U)                                                  .setSmelting(Lava, U).heat(1300, 4000).qual(1, 3.0, 32, 3),
 	Clay                    = oredustelec   ( 8215, "Clay"                  , SET_ROUGH             , 200, 200, 220, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, Na               , 2*U)                                                  .heat(2000),
 	ClayBrown               = oredustelec   ( 8276, "ClayBrown"             , SET_ROUGH             , 230, 140,  75, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, K                , 2*U)                                                  .heat(2000).setLocal("Brown Clay"),
+	ClayRed                 = oredustelec   ( 8455, "ClayRed"               , SET_ROUGH             , 230,  40,  25, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, K                , 2*U)                                                  .heat(2000).setLocal("Red Clay"),
 	Ceramic                 = dust          ( 8225, "Ceramic"               , SET_ROUGH             , 220, 130,  70, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U)                                                                          .steal(Clay).heat(2000).setPulver(Clay, U2).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
 	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 195, 195, 222, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Clay           , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
 	Paper                   = dust          ( 8216, "Paper"                 , SET_PAPER             , 250, 250, 250, 255, TICKS_PER_SMELT/ 8, MULTIPLATES, MORTAR)                                                                                                                                                                                                                                                              .aspects(TC.COGNITO, 1).setBurning(Ash, U9),
@@ -1427,7 +1428,7 @@ public class MT {
 	Betweenstone            = stone         ( 8519, "Betweenstone"                                  , 100, 160, 110, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.MORTUUS     , 1).qual(1, 3.0, 32, 1).heat(1000),
 	Pitstone                = stone         ( 8520, "Pitstone"                                      , 120, 160,  50, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.MORTUUS     , 1).qual(1, 3.0, 32, 1).heat(1200),
 	Umber                   = stone         ( 8517, "Umber"                                         , 111,  77,  11, 255, MD.ERE)                                                                                                                                                                                                                                                                                               .aspects(TC.BESTIA      , 1).qual(1, 3.0, 32, 1).heat( 987).setLocal("Umberstone"),
-	Redrock                 = stonecent     ( 8509, "Redrock"                                       , 255,  80,  50, 255, "RedRock")                                                                                                                                .setMcfg( 0, CaCO3          , 2*U, Flint            , 1*U, ClayBrown        , 1*U)                                                                          .aspects(TC.TERRA       , 1).qual(1, 2.5, 16, 1),
+	Redrock                 = stonecent     ( 8509, "Redrock"                                       , 255,  80,  50, 255, "RedRock")                                                                                                                                .setMcfg( 0, CaCO3          , 2*U, Flint            , 1*U, ClayRed          , 1*U)                                                                          .aspects(TC.TERRA       , 1).qual(1, 2.5, 16, 1),
 	Gabbro                  = stonecent     ( 9176, "Gabbro"                                        ,  65,  60,  60, 255)                                                                                                                                           .setMcfg( 0, Olivine        , 1*U, CaCO3            , 3*U, Flint            , 8*U, DarkAsh          , 4*U)                                                  .aspects(TC.TENEBRAE    , 1).qual(1, 3.0, 32, 2).heat(1673),
 	Komatiite               = stonecent     ( 9177, "Komatiite"                                     , 190, 190, 105, 255)                                                                                                                                           .setMcfg( 0, Olivine        , 1*U, MgCO3            , 2*U, Flint            , 6*U, DarkAsh          , 3*U)                                                  .aspects(TC.SANO        , 1).qual(1, 3.0, 32, 2).heat(1673),
 	Basalt                  = stonecent     ( 8505, "Basalt"                                        ,  60,  50,  50, 255)                                                                                                                                           .setMcfg( 0, Olivine        , 1*U, CaCO3            , 3*U, Flint            , 8*U, DarkAsh          , 4*U)                                                  .aspects(TC.TENEBRAE    , 1).qual(1, 3.0, 32, 2).heat(1673),
@@ -1670,6 +1671,7 @@ public class MT {
 		Lava.setSolidifying(Obsidian, U).setDensity(Obsidian.mGramPerCubicCentimeter);
 		Clay.setSmelting(Ceramic, U);
 		ClayBrown.setSmelting(Ceramic, U);
+		ClayRed.setSmelting(Ceramic, U);
 		Netherrack.setSmelting(NetherBrick, U);
 		
 		ANY.init();
@@ -1844,6 +1846,7 @@ public class MT {
 			NitroFuel               .put(MD.GT);
 			SoylentGreen            .put(MD.GT);
 			ClayBrown               .put(MD.GT);
+			ClayRed                 .put(MD.GT);
 			Ceramic                 .put(MD.GT);
 			SluiceSand              .put(MD.GT);
 			Nichrome                .put(MD.GT);
@@ -2495,7 +2498,7 @@ public class MT {
 			TiO2                            .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
 			OREMATS.Arsenopyrite            .addOreByProducts(Au                    , CaF2                      , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
 			Ti                              .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
-			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite      , OREMATS.Magnetite         , MnO2                  , ClayBrown             );
+			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite      , OREMATS.Magnetite         , MnO2                  , ClayRed               );
 			OREMATS.Zeolite                 .addOreByProducts(Na                    , K                         , Ca                    , Mg                    );
 			OREMATS.YellowLimonite          .addOreByProducts(Ni                    , OREMATS.BrownLimonite     , Co                    );
 			Cu                              .addOreByProducts(Co                    , Au                        , Ni                    );
@@ -2680,8 +2683,9 @@ public class MT {
 			Redrock                         .addOreByProducts(ClayBrown             );
 			Limestone                       .addOreByProducts(CaCO3                 );
 			Marble                          .addOreByProducts(CaCO3                 );
-			Clay                            .addOreByProducts(ClayBrown             );
-			ClayBrown                       .addOreByProducts(Clay                  );
+			Clay                            .addOreByProducts(ClayBrown             , ClayRed                   );
+			ClayBrown                       .addOreByProducts(Clay                  , ClayRed                   );
+			ClayRed                         .addOreByProducts(Clay                  , ClayBrown                 );
 			GraniteBlack                    .addOreByProducts(Biotite               );
 			GraniteRed                      .addOreByProducts(PotassiumFeldspar     );
 			Granite                         .addOreByProducts(PotassiumFeldspar     );

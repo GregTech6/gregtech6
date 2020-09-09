@@ -84,10 +84,10 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Food_Can_Empty.set(                  addItem(tLastID =   998, "Empty Food Can"               , "Used for canning Food"           , new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
 		IL.Spray_Empty.set(                     addItem(tLastID =   999, "Empty Spray Can"              , "Used for making Sprays"          , new OreDictItemData(MT.Sn, OP.plateCurved.mAmount, MT.Redstone, OP.dust.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.MOTUS, 1)));
 		
-		CR.shaped(IL.Ceramic_Jug_Raw    .get(1), CR.DEF_NCC     , "kCR", "C C", "CCC", 'C', "itemClay", 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Measuring_Pot_Raw  .get(1), CR.DEF_NCC     , "CkC", "CCR"     , 'C', "itemClay", 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Food_Can_Empty     .get(1), CR.DEF_NAC_NCC , "fh" , "oP"       , 'P', OP.plateCurved.dat(MT.TinAlloy));
-		CR.shaped(IL.Spray_Empty        .get(1), CR.DEF_NCC     , "Rf" , "Cs"       , 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Sn));
+		CR.shaped(IL.Ceramic_Jug_Raw    .get(1), CR.DEF_NCC     , "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Measuring_Pot_Raw  .get(1), CR.DEF_NCC     , "CkC", "CCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Food_Can_Empty     .get(1), CR.DEF_NAC_NCC , "fh" , "oP"        , 'P', OP.plateCurved.dat(MT.TinAlloy));
+		CR.shaped(IL.Spray_Empty        .get(1), CR.DEF_NCC     , "Rf" , "Cs"        , 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Sn));
 		
 		RM.RollBender.addRecipe1(T, 16, 64, OP.plateCurved.mat(MT.TinAlloy, 1), IL.Food_Can_Empty.get(1));
 		

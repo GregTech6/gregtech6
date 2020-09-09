@@ -43,7 +43,7 @@ public class Textures {
 		, ZPM_TOP, ZPM_SIDES, ZPM_BOTTOM
 		, DUCT_TAPE
 		
-		, MUD, CLAY_BROWN, TURF
+		, MUD, CLAY_BROWN, TURF, CLAY_RED
 		, SAND_MAGNETITE
 		
 		, PATH_TOP, PATH_SIDE
@@ -398,7 +398,7 @@ public class Textures {
 			MUD,
 			CLAY_BROWN,
 			TURF,
-			CLAY_BROWN,
+			CLAY_RED,
 			CLAY_BROWN,
 			CLAY_BROWN,
 			CLAY_BROWN,
