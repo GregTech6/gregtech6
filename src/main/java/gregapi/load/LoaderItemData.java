@@ -417,7 +417,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("bucketLava"                         , ST.make(Items.lava_bucket, 1, W));
 		OM.reg("bucketMilk"                         , ST.make(Items.milk_bucket, 1, W));
 		OM.reg("bottleMilk"                         , ST.make(MD.MFR, "milkbottle", 1, 0));
-		OM.reg("glowstone"                          , ST.make(Blocks.glowstone, 1, W));
+		OM.reg(OD.glowstone                         , ST.make(Blocks.glowstone, 1, W));
 		OM.reg("dirt"                               , ST.make(Blocks.dirt, 1, W));
 		OM.reg("sand"                               , ST.make(Blocks.sand, 1, W));
 		OM.reg("gravel"                             , ST.make(Blocks.gravel, 1, W));
@@ -1753,7 +1753,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.Livingrock         ,  U2* 3);
 		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.Livingrock         ,  U2);
 		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.Livingrock         ,  U2);
-		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glowstone, U * 4));
+		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(ANY.Glowstone, U * 4));
 		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Livingrock, U * 8));
 		OM.dat2(MD.BOTA, "glassPick"                        , 1     , MT.Manasteel          ,  U * 1, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glass, U * 2));
 		
@@ -1839,7 +1839,7 @@ public class LoaderItemData implements Runnable {
 		
 		
 		if (ST.valid(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0))) {
-		OM.data(MD.GC_GALAXYSPACE, "dungeonglowstone"       , 1,   0, MT.GlowstoneCeres     , U*4);
+		OM.data(MD.GC_GALAXYSPACE, "dungeonglowstone"       , 1,   0, MT.GlowstoneCeres     , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0), OD.glowstone);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   0, MT.Co                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   1, MT.Mg                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   2, MT.Ni                 ,    U4, ANY.Stone,   U4);
@@ -1851,11 +1851,11 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"        , 1,   8, MT.Fe2O3              ,  5*U );
 		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"        , 1,  16, MT.OREMATS.Uraninite  ,  1*U );
 		} else {
-		OM.data(MD.GC_GALAXYSPACE, "ceresglowstone"         , 1,   W, MT.GlowstoneCeres     , U*4);
-		OM.data(MD.GC_GALAXYSPACE, "ioglowstone"            , 1,   W, MT.GlowstoneIo        , U*4);
-		OM.data(MD.GC_GALAXYSPACE, "enceladusglowstone"     , 1,   W, MT.GlowstoneEnceladus , U*4);
-		OM.data(MD.GC_GALAXYSPACE, "proteusglowstone"       , 1,   W, MT.GlowstoneProteus   , U*4);
-		OM.data(MD.GC_GALAXYSPACE, "plutoglowstone"         , 1,   W, MT.GlowstonePluto     , U*4);
+		OM.data(MD.GC_GALAXYSPACE, "ceresglowstone"         , 1,   W, MT.GlowstoneCeres     , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, W), OD.glowstone);
+		OM.data(MD.GC_GALAXYSPACE, "ioglowstone"            , 1,   W, MT.GlowstoneIo        , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, W), OD.glowstone);
+		OM.data(MD.GC_GALAXYSPACE, "enceladusglowstone"     , 1,   W, MT.GlowstoneEnceladus , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, W), OD.glowstone);
+		OM.data(MD.GC_GALAXYSPACE, "proteusglowstone"       , 1,   W, MT.GlowstoneProteus   , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, W), OD.glowstone);
+		OM.data(MD.GC_GALAXYSPACE, "plutoglowstone"         , 1,   W, MT.GlowstonePluto     , U*4); OM.reg(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, W), OD.glowstone);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   0, MT.Pb                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   1, MT.Adamantite         ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   2, MT.Co                 ,    U4, ANY.Stone,   U4);

@@ -181,15 +181,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// TODO Might need a non-Stainless Bath for Lava? Maybe made of some type of Rock.
 			
 			
-			// Chrisopoeia
 			// MagmaBlock
-			// RespawnAnchor
-			// Rubedo
-			// SoBelow
 			// SpectralBucket
-			// Sprouts
-			
-			// WeepingVines
 			
 			// EmptyLantern
 			// EmptyLanternEfrine
@@ -244,7 +237,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// SoulSandstoneWall
 			
 			// ShroomLight
-			// Nether_Gravel
 			// BoneBlock
 			
 			// FoxfirePowder
@@ -257,7 +249,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			
 			
-			
 			CR.delate(IL.NeLi_Bread.get(1));
 			CR.delate(IL.NeLi_Cookie.get(1));
 			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
@@ -265,6 +256,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
+			
+			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor", 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
+			
+			
+			
 			for (FluidStack tFluid : FL.array(FL.Water.make(125), FL.DistW.make(100), FL.Lava.make(10)))
 			RM.Bath         .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tFluid, NF, ST.make(Items.paper, 1, 0));
 			RM.Loom         .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
@@ -281,6 +277,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NeLi, "Roots"           , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Plants"          , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "TwistingVines"   , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "WeepingVines"    , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Sprouts"         , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "WitherRose"      , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "FoxfireLily"     , 8, W));

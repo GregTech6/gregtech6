@@ -99,8 +99,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("ingotNetherite"          , "NetheriteIngot");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemAnthracite"          , "gemAnthracite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("obsidianRod"             , "stickObsidian");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("obsidian"                , "blockSolidObsidian");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("stoneObsidian"           , "blockSolidObsidian");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("sheetPlastic"            , "platePlastic");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("sheetRubber"             , "plateRubber");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardAir"                , "gemInfusedAir");
@@ -463,6 +461,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateGemRedstone"                , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("crystalRedstone"                 , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("redstoneCrystal"                 , OD.itemRedstone);
+		OreDictManager.INSTANCE.addReRegistration("blockSolidObsidian"              , OD.obsidian);
+		OreDictManager.INSTANCE.addReRegistration(OD.obsidian                       , "stoneObsidian");
+		OreDictManager.INSTANCE.addReRegistration(OD.cryingObsidian                 , OD.obsidian);
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "fuelCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coalCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coke");
@@ -595,6 +596,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("ingotDuranium"                   , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotTritanium"                  , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotSyrmorite"                  , OD.craftingPistonIngot);
+		OreDictManager.INSTANCE.addReRegistration("dustSoulsand"                    , OD.soulsand);
 		OreDictManager.INSTANCE.addReRegistration("dustSoulSand"                    , OD.soulsand);
 		OreDictManager.INSTANCE.addReRegistration("ingotTarPitch"                   , OD.itemTar);
 		OreDictManager.INSTANCE.addReRegistration("nuggetTarPitch"                  , OD.itemTar);
@@ -1300,7 +1302,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("hambone", new OreDictItemData(MT.MeatRaw, 2*U));
 		OreDictManager.INSTANCE.setAutomaticItemData("livingRoot", new OreDictItemData(MT.LiveRoot, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("silicon", new OreDictItemData(MT.Si, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("glowstone", new OreDictItemData(MT.Glowstone, 4*U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.glowstone, new OreDictItemData(ANY.Glowstone, 4*U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.soulsand, new OreDictItemData(MT.SoulSand, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedWheat", new OreDictItemData(MT.Wheat, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedRye", new OreDictItemData(MT.Rye, U9));
@@ -1369,6 +1371,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("schist", new OreDictItemData(MT.Blueschist, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("diorite", new OreDictItemData(MT.Diorite, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("ingotRefinedIron", new OreDictItemData(MT.Fe, U*1));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.obsidian, new OreDictItemData(MT.Obsidian, U*9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.cryingObsidian, new OreDictItemData(MT.Obsidian, U*9));
 		
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand     ), new OreDictItemData(MT.Sand     , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock  ), new OreDictItemData(MT.Bedrock  , U));

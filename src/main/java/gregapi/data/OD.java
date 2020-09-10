@@ -79,6 +79,7 @@ public enum OD {
 	, sulfuricAcid
 	, enderChest
 	, soulsand
+	, glowstone
 	, pestleAndMortar
 	, materialPressedwax
 	, materialWaxcomb
@@ -162,7 +163,11 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
+	, obsidian
+	, cryingObsidian
 	, blockTorch
+	, blockSoulTorch
+	, blockFoxfireTorch
 	, listAllmeatsubstitute
 	;
 	
