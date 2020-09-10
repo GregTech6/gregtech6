@@ -60,20 +60,20 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
 
-			aData.set( 2, 1,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 1,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 2,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 2,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 3,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 3,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 4,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 4,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 5,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 2, 5,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 2, 5,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 2, 5,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+			aData.obsidian( 2, 1,  6, T);
+			aData.obsidian( 2, 1,  7, T);
+			aData.obsidian( 2, 1,  8, T);
+			aData.obsidian( 2, 1,  9, T);
+			aData.obsidian( 2, 2,  6, T);
+			aData.obsidian( 2, 2,  9, T);
+			aData.obsidian( 2, 3,  6, T);
+			aData.obsidian( 2, 3,  9, T);
+			aData.obsidian( 2, 4,  6, T);
+			aData.obsidian( 2, 4,  9, T);
+			aData.obsidian( 2, 5,  6, T);
+			aData.obsidian( 2, 5,  7, F);
+			aData.obsidian( 2, 5,  8, F);
+			aData.obsidian( 2, 5,  9, T);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
 			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
@@ -89,20 +89,20 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
 			
-			aData.set(13, 1,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 1,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 1,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 1,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 2,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 2,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 3,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 3,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 4,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 4,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 5,  6, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set(13, 5,  7, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set(13, 5,  8, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set(13, 5,  9, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+			aData.obsidian(13, 1,  6, T);
+			aData.obsidian(13, 1,  7, T);
+			aData.obsidian(13, 1,  8, T);
+			aData.obsidian(13, 1,  9, T);
+			aData.obsidian(13, 2,  6, T);
+			aData.obsidian(13, 2,  9, T);
+			aData.obsidian(13, 3,  6, T);
+			aData.obsidian(13, 3,  9, T);
+			aData.obsidian(13, 4,  6, T);
+			aData.obsidian(13, 4,  9, T);
+			aData.obsidian(13, 5,  6, T);
+			aData.obsidian(13, 5,  7, F);
+			aData.obsidian(13, 5,  8, F);
+			aData.obsidian(13, 5,  9, T);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
 			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
@@ -118,20 +118,20 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
-			aData.set( 6, 1,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 7, 1,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 8, 1,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 1,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 2,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 2,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 3,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 3,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 4,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 4,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 5,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 7, 5,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 8, 5,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 9, 5,  2, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+			aData.obsidian( 6, 1,  2, T);
+			aData.obsidian( 7, 1,  2, T);
+			aData.obsidian( 8, 1,  2, T);
+			aData.obsidian( 9, 1,  2, T);
+			aData.obsidian( 6, 2,  2, T);
+			aData.obsidian( 9, 2,  2, T);
+			aData.obsidian( 6, 3,  2, T);
+			aData.obsidian( 9, 3,  2, T);
+			aData.obsidian( 6, 4,  2, T);
+			aData.obsidian( 9, 4,  2, T);
+			aData.obsidian( 6, 5,  2, T);
+			aData.obsidian( 7, 5,  2, F);
+			aData.obsidian( 8, 5,  2, F);
+			aData.obsidian( 9, 5,  2, T);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
 			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
@@ -147,20 +147,20 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
-			aData.set( 6, 1, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 7, 1, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 8, 1, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 1, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 2, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 2, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 3, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 3, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 4, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 9, 4, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 6, 5, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
-			aData.set( 7, 5, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 8, 5, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, Blocks.obsidian               , 0);
-			aData.set( 9, 5, 13, Blocks.obsidian, 0, IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, IL.RC_Crushed_Obsidian.block(), 4);
+			aData.obsidian( 6, 1, 13, T);
+			aData.obsidian( 7, 1, 13, T);
+			aData.obsidian( 8, 1, 13, T);
+			aData.obsidian( 9, 1, 13, T);
+			aData.obsidian( 6, 2, 13, T);
+			aData.obsidian( 9, 2, 13, T);
+			aData.obsidian( 6, 3, 13, T);
+			aData.obsidian( 9, 3, 13, T);
+			aData.obsidian( 6, 4, 13, T);
+			aData.obsidian( 9, 4, 13, T);
+			aData.obsidian( 6, 5, 13, T);
+			aData.obsidian( 7, 5, 13, F);
+			aData.obsidian( 8, 5, 13, F);
+			aData.obsidian( 9, 5, 13, T);
 		}
 		return T;
 	}

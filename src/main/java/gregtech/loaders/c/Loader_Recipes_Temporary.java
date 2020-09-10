@@ -178,8 +178,85 @@ public class Loader_Recipes_Temporary implements Runnable {
 		if (MD.NeLi.mLoaded) {
 			// TODO Torch Recipes for Soul and Foxfire.
 			// TODO Lantern Recipe Fix for Redstone ones.
-			// TODO Lantern Harvest by GT6 Tools for Free just like Torches.
 			// TODO Might need a non-Stainless Bath for Lava? Maybe made of some type of Rock.
+			
+			
+			// Chrisopoeia
+			// MagmaBlock
+			// RespawnAnchor
+			// Rubedo
+			// SoBelow
+			// SpectralBucket
+			// Sprouts
+			
+			// WeepingVines
+			
+			// EmptyLantern
+			// EmptyLanternEfrine
+			// EmptyLanternGold
+			// Lantern
+			// LanternEfrine
+			// LanternGold
+			// GlowstoneLantern
+			// GlowstoneLanternEfrine
+			// GlowstoneLanternGold
+			// FoxfireLantern
+			// FoxfireLanternEfrine
+			// FoxfireLanternGold
+			// SoulLantern
+			// SoulLanternEfrine
+			// SoulLanternGold
+			// RedstoneLantern
+			// RedstoneLanternEfrine
+			// RedstoneLanternGold
+			// RedstoneLanternOn
+			// RedstoneLanternEfrineOn
+			// RedstoneLanternGoldOn
+			
+			// Chain
+			// ChainEfrine
+			// ChainGold
+			// ChainPowered
+			// ChainPoweredEfrine
+			// ChainPoweredGold
+			
+			// Basalt
+			// BasaltBrickStairs
+			// BasaltBricks
+			// BasaltSingleSlab
+			// BasaltStairs
+			// BasaltWall
+			// SmoothBasaltStairs
+			// PolishedBasaltBrickStairs
+			// PolishedBasaltStairs
+			// PolishedSmoothBasaltStairs
+			
+			// Blackstone
+			// BlackstoneBrickStairs
+			// BlackstoneSingleSlab
+			// BlackstoneStairs
+			// PolishedBlackstoneStairs
+			
+			// SoulSandstone
+			// SoulSandstoneSingleSlab
+			// SoulSandstoneStairs
+			// SmoothSoulSandstoneStairs
+			// SoulSandstoneWall
+			
+			// ShroomLight
+			// Nether_Gravel
+			// BoneBlock
+			
+			// FoxfirePowder
+			
+			// WitherRose
+			// FoxfireLily
+			
+			// FoxFire
+			// SoulFire
+			
+			
+			
 			
 			CR.delate(IL.NeLi_Bread.get(1));
 			CR.delate(IL.NeLi_Cookie.get(1));

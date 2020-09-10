@@ -1479,7 +1479,7 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = new ItemStackSet<>();
-
+		
 		public static boolean addNEIRedirect(ItemStack aStack, ItemStack... aRedirects) {if (aStack == null) return F; ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(aStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(aStack), tList = new ArrayListNoNulls<>()); return tList.addAll(Arrays.asList(aRedirects));}
 		public static boolean addNEIRedirects(Block aBlock) {ItemStack[] tRedirects = new ItemStack[16]; for (int i = 0; i < tRedirects.length; i++) tRedirects[i] = ST.make(aBlock, 1, i); return addNEIRedirects(tRedirects);}
 		public static boolean addNEIRedirects(ItemStack... aRedirects) {for (ItemStack tStack : aRedirects) if (ST.valid(tStack)) {ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(tStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(tStack), tList = new ArrayListNoNulls<>()); tList.addAll(Arrays.asList(aRedirects));} return T;}
@@ -1533,6 +1533,7 @@ public class CS {
 		;
 		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
+		public static final Set<Object> instaharvest     = new HashSetNoNulls<Object>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		public static final Set<Object> openableCrowbar  = new HashSetNoNulls<Object>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);

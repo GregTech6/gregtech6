@@ -398,6 +398,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		if (IL.NePl_Quartz_Bricks.exists())
 		RM.Hammer       .addRecipe1(T, 16,  16, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
+		if (IL.NeLi_Quartz_Bricks.exists())
+		RM.Hammer       .addRecipe1(T, 16,  16, IL.NeLi_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -422,6 +424,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		if (IL.NePl_Quartz_Bricks.exists())
 		RM.Crusher      .addRecipe1(T, 16,  32, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
+		if (IL.NeLi_Quartz_Bricks.exists())
+		RM.Crusher      .addRecipe1(T, 16,  32, IL.NeLi_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  48, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));

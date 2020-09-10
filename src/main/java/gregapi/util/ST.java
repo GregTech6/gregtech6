@@ -32,6 +32,7 @@ import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
@@ -756,6 +757,13 @@ public class ST {
 	
 	public static boolean debug(ItemStack aStack) {
 		return ItemsGT.DEBUG_ITEMS.contains(aStack, T);
+	}
+	
+	public static boolean instaharvest(Block aBlock) {
+		return torch(aBlock) || BlocksGT.instaharvest.contains(aBlock);
+	}
+	public static boolean instaharvest(Block aBlock, long aMeta) {
+		return torch(aBlock, aMeta) || BlocksGT.instaharvest.contains(aBlock);
 	}
 	
 	public static boolean torch(Block aBlock) {

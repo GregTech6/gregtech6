@@ -458,6 +458,35 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_forestry"      , null));
 		
 		
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "Chain"                         , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "ChainEfrine"                   , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "ChainGold"                     , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "ChainPowered"                  , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "ChainPoweredEfrine"            , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "ChainPoweredGold"              , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "EmptyLantern"                  , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "EmptyLanternEfrine"            , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "EmptyLanternGold"              , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "Lantern"                       , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "LanternEfrine"                 , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "LanternGold"                   , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "GlowstoneLantern"              , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "GlowstoneLanternEfrine"        , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "GlowstoneLanternGold"          , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "FoxfireLantern"                , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "FoxfireLanternEfrine"          , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "FoxfireLanternGold"            , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "SoulLantern"                   , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "SoulLanternEfrine"             , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "SoulLanternGold"               , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLantern"               , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLanternEfrine"         , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLanternGold"           , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLanternOn"             , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLanternEfrineOn"       , null));
+		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "RedstoneLanternGoldOn"         , null));
+		
+		
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "igneousStone"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "metamorphicStone"                 , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "sedimentaryStone"                 , null));
@@ -976,6 +1005,7 @@ public class LoaderItemList implements Runnable {
 		
 		IL.NePl_Torch                           .set(ST.make(MD.NePl, "SoulTorch"                           , 1, 0), null, OD.blockTorch);
 		IL.NePl_Obsidian                        .set(ST.make(MD.NePl, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9));
+		IL.NePl_Quartz_Bricks                   .set(ST.make(MD.NePl, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
 		IL.NePl_Blackstone                      .set(ST.make(MD.NePl, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Bricks               .set(ST.make(MD.NePl, "PolishedBlackstoneBricks"            , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Cracked              .set(ST.make(MD.NePl, "CrackedPolishedBlackstoneBricks"     , 1, 0), OP.stone.dat(MT.Blackstone));
@@ -984,20 +1014,24 @@ public class LoaderItemList implements Runnable {
 		IL.NePl_Basalt                          .set(ST.make(MD.NePl, "Basalt"                              , 1, 0), OP.stone.dat(MT.Basalt));
 		IL.NePl_Basalt_Polished                 .set(ST.make(MD.NePl, "PolishedBasalt"                      , 1, 0), OP.stone.dat(MT.Basalt));
 		IL.NePl_SoulSoil                        .set(ST.make(MD.NePl, "SoulSoil"                            , 1, 0), null, OD.soulsand);
-		IL.NePl_Quartz_Bricks                   .set(ST.make(MD.NePl, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
 		
 		
+		IL.NeLi_Torch_Soul                      .set(ST.make(MD.NeLi, "SoulTorch"                           , 1, 0), null, OD.blockTorch);
+		IL.NeLi_Torch_Fox                       .set(ST.make(MD.NeLi, "FoxfireTorch"                        , 1, 0), null, OD.blockTorch);
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
+		IL.NeLi_Obsidian                        .set(ST.make(MD.NeLi, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9));
+		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
 		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, 0), null, OD.soulsand);
+		IL.NeLi_SoulFarm                        .set(ST.make(MD.NeLi, "SoulFarmland"                        , 1, 0), null, OD.soulsand);
+		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, "foodBread");
+		IL.NeLi_Cookie                          .set(ST.make(MD.NeLi, "CookieHellderberry"                  , 1, 0), null, "foodCookie");
+		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, "foodHellderberryjuice");
 		IL.NeLi_Bowl_DevilishMaize              .set(ST.make(MD.NeLi, "DevilishPopcornRaw"                  , 1, 0));
 		IL.NeLi_Bowl_DevilishPopcorn            .set(ST.make(MD.NeLi, "DevilishPopcorn"                     , 1, 0));
 		IL.NeLi_Bowl_CrimsonStew                .set(ST.make(MD.NeLi, "StewCrimson"                         , 1, 0));
 		IL.NeLi_Bowl_WarpedStew                 .set(ST.make(MD.NeLi, "StewWarped"                          , 1, 0));
 		IL.NeLi_Bowl_FoxfireStew                .set(ST.make(MD.NeLi, "StewFoxfire"                         , 1, 0));
-		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, "foodHellderberryjuice");
 		IL.NeLi_Reed                            .set(ST.make(MD.NeLi, "InfernalReedItem"                    , 1, 0));
-		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, "foodBread");
-		IL.NeLi_Cookie                          .set(ST.make(MD.NeLi, "CookieHellderberry"                  , 1, 0), null, "foodCookie");
 		
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_DevilishPopcorn    .exists()) IL.NeLi_Bowl_DevilishPopcorn    .item().setContainerItem(Items.bowl);

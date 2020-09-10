@@ -182,7 +182,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	 * Called by the Block Harvesting Event within the GT_Proxy
 	 */
 	public void onHarvestBlockEvent(ArrayList<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, int aX, int aY, int aZ, byte aMeta, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
-		if (ST.torch(aBlock, aMeta)) return;
+		if (ST.instaharvest(aBlock, aMeta)) return;
 		IToolStats tStats = getToolStats(aStack);
 		if (isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMeta) > 0) {
 			int tDamage = tStats.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, (getToolMaxDamage(aStack) - getToolDamage(aStack)) / tStats.getToolDamagePerDropConversion(), aX, aY, aZ, aMeta, aFortune, aSilkTouch, aEvent);
@@ -193,13 +193,13 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	public boolean canCollectDropsDirectly(ItemStack aStack, Block aBlock, byte aMeta) {
-		if (ST.torch(aBlock, aMeta)) return T;
+		if (ST.instaharvest(aBlock, aMeta)) return T;
 		IToolStats tStats = getToolStats(aStack);
 		return (tStats.canCollect() || getPrimaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE)) && isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMeta) > 0;
 	}
 	
 	public float onBlockBreakSpeedEvent(float aDefault, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, int aX, int aY, int aZ, byte aMeta, PlayerEvent.BreakSpeed aEvent) {
-		if (ST.torch(aBlock, aMeta)) return Float.MAX_VALUE;
+		if (ST.instaharvest(aBlock, aMeta)) return Float.MAX_VALUE;
 		IToolStats tStats = getToolStats(aStack);
 		return tStats == null ? aDefault : tStats.getMiningSpeed(aBlock, aMeta, aDefault, aPlayer, aPlayer.worldObj, aX, aY, aZ);
 	}
@@ -411,7 +411,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override
 	public float getDigSpeed(ItemStack aStack, Block aBlock, int aMeta) {
 		if (aBlock == NB || WD.bedrock(aBlock)) return 0;
-		if (ST.torch(aBlock, aMeta)) return 10;
+		if (ST.instaharvest(aBlock, aMeta)) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
 		float tMultiplier = 1.0F;
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
@@ -436,7 +436,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public boolean onBlockDestroyed(ItemStack aStack, World aWorld, Block aBlock, int aX, int aY, int aZ, EntityLivingBase aPlayer) {
-		if (ST.torch(aBlock)) return T;
+		if (ST.instaharvest(aBlock)) return T;
 		if (!isItemStackUsable(aStack)) return F;
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return F;

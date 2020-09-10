@@ -30,6 +30,7 @@ import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.OP;
 import gregapi.fluid.FluidTankGT;
 import gregapi.oredict.OreDictMaterial;
@@ -227,6 +228,10 @@ public class DungeonData extends WorldAndCoords {
 	}
 	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMeta, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
 		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
+	}
+	
+	public boolean obsidian(int aX, int aY, int aZ, boolean aGravity) {
+		return set(aX, aY, aZ, Blocks.obsidian, 0, IL.NeLi_Obsidian.exists() ? IL.NeLi_Obsidian.block() : IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, aGravity ? IL.RC_Crushed_Obsidian.block() : Blocks.obsidian, aGravity ? 4 : 0);
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {
