@@ -322,11 +322,15 @@ public final class OreDictManager {
 		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
 		
 		if (GT != null) {
+			if (MD.NeLi.owns(aRegName) &&  aEvent.Name.endsWith("ravel")) {
+				DEB.println(aModID + " - " + aEvent.Name);
+				return;
+			}
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
-			if (MD.TC .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
-			if (MD.HBM.owns(aRegName) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
+			if (MD.HBM .owns(aRegName) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
 			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
 			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
 			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
