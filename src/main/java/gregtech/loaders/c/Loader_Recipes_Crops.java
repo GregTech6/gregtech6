@@ -431,6 +431,16 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		
 		addListener("cropCorn", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Corn", IL.CANS_VEGGIE);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Corn.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Corn.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn, U2));
+			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Corn));
+			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
+		}});
+		addListener("cropDevilishMaize", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Devilish Maize", IL.CANS_VEGGIE);
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Corn.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Corn.make(250), ZL_IS);
 			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));

@@ -83,18 +83,18 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		case  0: return new ArrayListNoNulls<>(F, IL.Mud_Ball.get(4));
 		case  1: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
 		case  2: return new ArrayListNoNulls<>(F, OP.ingot.mat(MT.Peat, 1));
-		case  3: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
+		case  3: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Red.get(4));
 		default: return new ArrayListNoNulls<>(F, ST.make(this, 1, aMeta));
 		}
 	}
 	
 	@Override
 	public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (WD.meta(aWorld, aX, aY, aZ) != 1) {aEntity.motionX *= 0.5; aEntity.motionZ *= 0.5;}
+		if (doesWalkSpeed(WD.meta(aWorld, aX, aY, aZ))) {aEntity.motionX *= 0.5; aEntity.motionZ *= 0.5;}
 	}
 	
-	@Override public boolean useGravity      (byte aMeta) {return aMeta != 1;}
-	@Override public boolean doesWalkSpeed   (byte aMeta) {return aMeta != 1;}
+	@Override public boolean useGravity      (byte aMeta) {return aMeta == 0 || aMeta == 2;}
+	@Override public boolean doesWalkSpeed   (byte aMeta) {return aMeta == 0 || aMeta == 2;}
 	@Override public boolean doesPistonPush  (byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return aMeta < 4;}
 	@Override public boolean isSealable      (byte aMeta, byte aSide) {return F;}

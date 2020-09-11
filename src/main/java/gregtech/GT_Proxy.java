@@ -77,7 +77,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -167,7 +166,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	@SubscribeEvent
 	public void onOreGenEvent(GenerateMinable aEvent) {
-		if (mDisableVanillaOres && aEvent.generator instanceof WorldGenMinable && !WD.dimTF(aEvent.world) && PREVENTED_ORES.contains(aEvent.type)) aEvent.setResult(Result.DENY);
+		if (mDisableVanillaOres && !WD.dimTF(aEvent.world) && PREVENTED_ORES.contains(aEvent.type)) aEvent.setResult(Result.DENY);
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(DecorateBiomeEvent.Decorate aEvent) {
