@@ -60,7 +60,7 @@ public class WorldgenPit extends WorldgenObject {
 		int tX = aMinX - 16, tZ = aMinZ -16, tUpperBound = WD.waterLevel(aWorld)+8, tLowerBound = WD.waterLevel(aWorld)-8;
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 71, tZ+j);
-			for (int tY = tUpperBound, tGenerated = 0; tY > tLowerBound && tGenerated < 7; tY--, tLastBlock = tBlock) {
+			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 7; tY--, tLastBlock = tBlock) {
 				tBlock = aWorld.getBlock(tX+i, tY, tZ+j);
 				if (tBlock == mBlock && mMeta == aWorld.getBlockMetadata(tX+i, tY, tZ+j)) {tGenerated++; continue;}
 				if (!tBlock.isOpaqueCube()) {if (tGenerated > 0) break; continue;}

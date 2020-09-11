@@ -96,6 +96,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemGlue               , "glue");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OP.stone                  , "stoneSmooth");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OP.cobblestone            , "stoneCobble");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("gravel"                  , "Gravel");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("gravel"                  , "blockGravel");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("ingotNetherite"          , "NetheriteIngot");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemAnthracite"          , "gemAnthracite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("obsidianRod"             , "stickObsidian");

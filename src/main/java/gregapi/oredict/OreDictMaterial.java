@@ -1104,7 +1104,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 */
 	public OreDictMaterial setPriorityPrefix(int aIndex) {
 		mPriorityPrefixIndex = aIndex;
-		if (!mNameInternal.startsWith("Clay")) switch (mPriorityPrefixIndex) {
+		if (!mNameInternal.startsWith("Clay") && !"Gravel".equalsIgnoreCase(mNameInternal)) switch (mPriorityPrefixIndex) {
 		case 0: break;
 		case 1: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
 		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;

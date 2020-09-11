@@ -52,6 +52,8 @@ import gregtech.worldgen.center.WorldgenTesting;
 import gregtech.worldgen.erebus.WorldgenErebusRocks;
 import gregtech.worldgen.mars.WorldgenMarsRocks;
 import gregtech.worldgen.moon.WorldgenMoonRocks;
+import gregtech.worldgen.nether.WorldgenNetherClay;
+import gregtech.worldgen.nether.WorldgenRacks;
 import gregtech.worldgen.planets.WorldgenPlanetRocks;
 import gregtech.worldgen.tree.*;
 import net.minecraft.block.Block;
@@ -458,7 +460,9 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenPit             ("pit.clay.vanilla"        , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenPit             ("pit.clay.brown"          , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.red"            , F, BlocksGT.Diggables, 3, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM); // Disabled by default because its supposed to be only in the Nether
 		
+		new WorldgenNetherClay      ("nether.clay"             , T, GEN_NETHER);
 		new WorldgenBlackSand       ("river.magnetite"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenTurf            ("swamp.turf"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
 		
@@ -667,7 +671,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.iridium"           , T,  20,  40,   6, MT.Ir                           , GEN_END, GEN_ASTEROIDS, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.ambrosium"         , T,  30, 120,  64, MT.Ambrosium                    , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.zanite"            , T,  30, 120,  16, MT.Zanite                       , GEN_AETHER);
-		new WorldgenOresSmall("ore.small.netherquartz"      , T,  30, 120, 128, MT.NetherQuartz                 , GEN_NETHER);
+		new WorldgenOresSmall("ore.small.netherquartz"      , T,  30, 250, 256, MT.NetherQuartz                 , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.cinnabar"          , T,  30,  90,  32, MT.OREMATS.Cinnabar             , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.ancientdebris"     , T,   5,  90,  16, MT.AncientDebris                , GEN_NETHER, GEN_MARS);
 		new WorldgenOresSmall("ore.small.niter"             , T,  10,  60,  16, MT.Niter                        , GEN_NETHER);

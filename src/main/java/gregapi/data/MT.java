@@ -1681,6 +1681,7 @@ public class MT {
 		DATA.Dye_Materials.getClass();
 		WOODS.Oak.getClass();
 		OREMATS.Magnetite.getClass();
+		AM.Hydrogen.getClass();
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */

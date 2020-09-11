@@ -63,7 +63,7 @@ Its Food Stuff has now more consistency.
 [CHANGED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists. It also has an Ore Drop Factor of x3 now.
 [CHANGED] Bumblebees in Twilight Forest now have the same variety that the Overworld ones have.
 [CHANGED] If you non-sneak rightclick Bedrock Ores you will get the overall Bedrock Drill Recipe List in NEI, making it easier to discover what their use is. (Does not apply to Bedrock Fluid Springs, obviously)
-[ADDED] Red Clay, which should be available in the Nether.
+[ADDED] Red Clay, which is generating in the Nether now. Look at the big Lava Pools, it always generates at the same height.
 [ADDED] Wood Pellets can be turned into Charcoal in the Coke Oven now, which doubles the Fuel Value.
 [ADDED] All Basic Machines now have a Screwdriver Mode, which allows them to not accept more Items in their Input Slots once there is already a Stack inside. This makes precision inserting of Inputs using "Exact Mode Hoppers" and Item Pipes into a Bank of multiple Machines much easier than what you had to do before with Redstone, Shutters and Progress Sensors.
 [ADDED] Thaumcraft Flowers and Saplings should now generate in certain Biomes in the Twilight Forest.

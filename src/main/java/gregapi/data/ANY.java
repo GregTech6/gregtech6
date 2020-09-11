@@ -30,6 +30,7 @@ import gregapi.oredict.OreDictMaterial;
  */
 public class ANY {
 	private static OreDictMaterial any(String aNameOreDict) {return OreDictMaterial.createMaterial(-1, aNameOreDict, aNameOreDict).put(UNUSED_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG);}
+	private static boolean INITIALIZED = F;
 	
 	/** Technical Materials, which are only there for Recipes and such. */
 	public static final OreDictMaterial
@@ -78,6 +79,9 @@ public class ANY {
 	_Metal          = any("Any Metal"           );
 	
 	protected static void init() {
+		if (INITIALIZED) return;
+		INITIALIZED = T;
+		
 		Glowstone       .stealLooks(MT.Glowstone      ).steal(MT.Glowstone      ).setLocal("Glowstone"          ).setAllToTheOutputOf(MT.Glowstone      ).put(CRYSTAL, GLOWING, LIGHTING             );
 		Diamond         .stealLooks(MT.Diamond        ).steal(MT.Diamond        ).setLocal("Diamond"            ).setAllToTheOutputOf(MT.Diamond        ).put(CRYSTAL, VALUABLE                      ).addReRegistrationToThis(MT.Diamantine);
 		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL, VALUABLE                      );

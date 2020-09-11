@@ -322,10 +322,6 @@ public final class OreDictManager {
 		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
 		
 		if (GT != null) {
-			if (MD.NeLi.owns(aRegName) &&  aEvent.Name.endsWith("ravel")) {
-				DEB.println(aModID + " - " + aEvent.Name);
-				return;
-			}
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
 			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;

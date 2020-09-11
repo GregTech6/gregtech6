@@ -88,7 +88,7 @@ public class WorldgenHives extends WorldgenObject {
 			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Cyan        ,     0, aRandom)) || rResult;
 		case DIM_NETHER:
-			tY = 16+aRandom.nextInt(96);
+			tY = 16+aRandom.nextInt(WD.bedrock(aWorld, tX, 255, tZ) ? 224 : 96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
 			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, 0xaa0000            ,   300, aRandom)) || rResult;

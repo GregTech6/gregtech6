@@ -517,6 +517,8 @@ public class OP {
 	bar                         = unused("bar"                          ).setCategoryName("Bars");
 	
 	static {
+		ANY.init();
+		
 		crushed     .addListener(new OreDictListenerItem_Washing(crushedPurified, 2, nugget, gemChipped, crushedPurifiedTiny, crushedPurifiedTiny, dustTiny, dustTiny));
 		dustImpure  .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));
 		dustPure    .addListener(new OreDictListenerItem_Washing(dust, 4, dustTiny));
@@ -556,11 +558,14 @@ public class OP {
 		bucket              .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
 		bottle              .disableItemGeneration(MT.Empty, MT.H2O);
 		
-		gemChipped          .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Sugar);
-		gemFlawed           .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);
-		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);
-		bouleGt             .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy, MT.Sapphire, MT.GreenSapphire, MT.YellowSapphire, MT.OrangeSapphire, MT.BlueSapphire, MT.PurpleSapphire, MT.Ruby, MT.HexoriumRed, MT.HexoriumGreen, MT.HexoriumBlue, MT.HexoriumBlack, MT.HexoriumWhite);
+		gemChipped          .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
+		gemFlawed           .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		bouleGt             .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
 		plateTiny           .forceItemGeneration(MT.Paper);
+		
+		for (OreDictMaterial tMat : ANY.Sapphire.mToThis) bouleGt.forceItemGeneration(tMat);
+		for (OreDictMaterial tMat : ANY.Hexorium.mToThis) bouleGt.forceItemGeneration(tMat);
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			switch (tMaterial.mPriorityPrefixIndex) {

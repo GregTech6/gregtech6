@@ -610,7 +610,7 @@ public class WD {
 	public static boolean setSmallOre(World aWorld, int aX, int aY, int aZ, short aID) {
 		if (aID <= 0 && aID == W) return F;
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
-		if (aBlock == NB) return F;
+		if (aBlock == NB || WD.bedrock(aBlock)) return F;
 		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		IBlockPlacable tBlock = BlocksGT.stoneToSmallOres.get(new ItemStackContainer(aBlock, 1, aMetaData));

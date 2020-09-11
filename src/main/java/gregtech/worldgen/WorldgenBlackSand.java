@@ -55,7 +55,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 		int tX = aMinX - 16, tZ = aMinZ -16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12;
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 64, tZ+j);
-			for (int tY = tUpperBound, tGenerated = 0; tY > tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {
+			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {
 				tBlock = aWorld.getBlock(tX+i, tY, tZ+j);
 				if (tBlock == BlocksGT.Sands && 0 == aWorld.getBlockMetadata(tX+i, tY, tZ+j)) {tGenerated++; continue;}
 				if (!tBlock.isOpaqueCube()) {if (tGenerated > 0) break; continue;}

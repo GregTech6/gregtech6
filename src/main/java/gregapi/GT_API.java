@@ -70,7 +70,6 @@ import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.cover.covers.CoverRedstoneRepeater;
 import gregapi.cover.covers.CoverRedstoneTorch;
-import gregapi.data.AM;
 import gregapi.data.BI;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.DirectoriesGT;
@@ -184,7 +183,6 @@ public class GT_API extends Abstract_Mod {
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
 		BI.BAROMETER.toString();
 		MT.NULL.toString();
-		AM.Hydrogen.toString();
 		OP.ore.toString();
 		
 		Textures.BlockIcons.VOID.toString();

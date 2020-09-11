@@ -544,13 +544,13 @@ public enum IL implements IItemContainer {
 	}
 	
 	@Override
-	public boolean equal(Object aStack) {
-		return aStack instanceof Block ? aStack != NB && block() == aStack : equal(aStack, F, F);
+	public boolean equal(Object aStackOrBlock) {
+		return mStack != null && (aStackOrBlock instanceof Block ? aStackOrBlock != NB && ST.block_(mStack) == aStackOrBlock : equal(aStackOrBlock, F, F));
 	}
 	
 	@Override
 	public boolean equal(Object aStack, boolean aWildcard, boolean aIgnoreNBT) {
-		return (aWildcard ? ST.equal((ItemStack)aStack, ST.item(mStack)) : ST.equal((ItemStack)aStack, mStack, aIgnoreNBT));
+		return mStack != null && (aWildcard ? ST.item((ItemStack)aStack) == ST.item_(mStack) : ST.equal((ItemStack)aStack, mStack, aIgnoreNBT));
 	}
 	
 	@Override
