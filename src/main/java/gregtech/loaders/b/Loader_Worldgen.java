@@ -457,14 +457,14 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenSwamp           ("swamp.dirtywater"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER RIVER AND OCEAN!!!
 		
 		new WorldgenDeepOcean       ("ocean.prismacorals"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
+		new WorldgenBlackSand       ("river.magnetite"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS);
+		new WorldgenTurf            ("swamp.turf"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
 		
 		new WorldgenPit             ("pit.clay.vanilla"        , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenPit             ("pit.clay.brown"          , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenPit             ("pit.clay.red"            , F, BlocksGT.Diggables, 3, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM); // Disabled by default because its supposed to be only in the Nether
 		
-		new WorldgenNetherClay      ("nether.clay"             , T, GEN_NETHER);
-		new WorldgenBlackSand       ("river.magnetite"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS);
-		new WorldgenTurf            ("swamp.turf"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
+		new WorldgenNetherClay      ("nether.clay.red"         , T, GEN_NETHER);
 		
 		new WorldgenLogDry          ("log.dry"                 , T, 1, 8, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenLogRotten       ("log.rotten"              , T, 1, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
@@ -626,7 +626,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.bauxite"      , T, T,   2000, MT.OREMATS.Bauxite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Aluminium Flower
 		new WorldgenOresBedrock("ore.bedrock.cassiterite"  , T, T,   2000, MT.OREMATS.Cassiterite , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tin Flower
 		new WorldgenOresBedrock("ore.bedrock.chalcopyrite" , T, T,   2000, MT.OREMATS.Chalcopyrite, BlocksGT.FlowersA, 2, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.ancientdebris", T, T,   1000, MT.AncientDebris       , BlocksGT.FlowersA, 2, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.ancientdebris", T, T,   2000, MT.AncientDebris       , BlocksGT.FlowersA, 7, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.netherquartz" , T, T,   1000, MT.NetherQuartz        , BlocksGT.FlowersA, 7, GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.naquadah"     , T, T,  10000, MT.Nq                  , BlocksGT.FlowersA, 7, GEN_MARS);
 		new WorldgenOresBedrock("ore.bedrock.adamantine"   , T, T,  10000, MT.Adamantine          , BlocksGT.FlowersA, 7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS);
 		

@@ -1026,7 +1026,16 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Bowl_CrimsonStew                .set(ST.make(MD.NeLi, "StewCrimson"                         , 1, 0));
 		IL.NeLi_Bowl_WarpedStew                 .set(ST.make(MD.NeLi, "StewWarped"                          , 1, 0));
 		IL.NeLi_Bowl_FoxfireStew                .set(ST.make(MD.NeLi, "StewFoxfire"                         , 1, 0));
+		IL.NeLi_ShroomLight                     .set(ST.make(MD.NeLi, "ShroomLight"                         , 1, 0));
 		IL.NeLi_Reed                            .set(ST.make(MD.NeLi, "InfernalReedItem"                    , 1, 0));
+		IL.NeLi_Wart_Crimson                    .set(ST.make(MD.NeLi, "WartItem"                            , 1, 0));
+		IL.NeLi_Wart_Warped                     .set(ST.make(MD.NeLi, "WartItem"                            , 1, 1));
+		IL.NeLi_Wart_Soggy                      .set(ST.make(MD.NeLi, "WartItem"                            , 1, 2));
+		IL.NeLi_FoxfireLily                     .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
+		IL.NeLi_WitherRose                      .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower);
+		
+		
+		
 		
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_DevilishPopcorn    .exists()) IL.NeLi_Bowl_DevilishPopcorn    .item().setContainerItem(Items.bowl);

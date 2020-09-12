@@ -233,17 +233,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// SoulSandstone
 			// SoulSandstoneSingleSlab
 			// SoulSandstoneStairs
-			// SmoothSoulSandstoneStairs
 			// SoulSandstoneWall
+			// SmoothSoulSandstoneStairs
 			
-			// ShroomLight
 			// BoneBlock
 			
 			// FoxfirePowder
-			
-			// WitherRose
-			// FoxfireLily
-			
 			// FoxFire
 			// SoulFire
 			
@@ -262,32 +257,34 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			
 			for (FluidStack tFluid : FL.array(FL.Water.make(125), FL.DistW.make(100), FL.Lava.make(10)))
-			RM.Bath         .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tFluid, NF, ST.make(Items.paper, 1, 0));
-			RM.Loom         .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
-			RM.Squeezer     .addRecipe1(T, 16, 16,      4000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make(10), IL.Remains_Plant.get(1));
-			RM.Juicer       .addRecipe1(T, 16, 16,      5000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make( 5), IL.Remains_Plant.get(1));
-			RM.Shredder     .addRecipe1(T, 16, 16           , IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1));
+			RM.Bath    .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tFluid, NF, ST.make(Items.paper, 1, 0));
+			RM.Loom    .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
+			RM.Squeezer.addRecipe1(T, 16, 16,      4000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make(10), IL.Remains_Plant.get(1));
+			RM.Juicer  .addRecipe1(T, 16, 16,      5000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make( 5), IL.Remains_Plant.get(1));
+			RM.Shredder.addRecipe1(T, 16, 16           , IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1));
 			RM.pulverizing(IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1), T);
 			
-			RM.Distillery.addRecipe1(T, 16, 16, ST.make(MD.NeLi, "Fungus"  , 1, 0), FL.DistW.make(250), FL.Potion_Awkward.make(250), ZL_IS);
-			RM.Distillery.addRecipe1(T, 16, 32, ST.make(MD.NeLi, "WartItem", 1, 0), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Crimson.get(1), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Warped .get(1), FL.DistW.make(500), FL.Potion_Thick  .make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy  .get(1), FL.DistW.make(500), FL.Potion_Mundane.make(500), ZL_IS);
 			
 			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "WartItem"     , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));
 			RM.biomass(ST.make(MD.NeLi, "Roots"        , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Plants"       , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "TwistingVines", 8, W));
 			RM.biomass(ST.make(MD.NeLi, "WeepingVines" , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Sprouts"      , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "WitherRose"   , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "FoxfireLily"  , 8, W));
-			RM.biomass(IL.NeLi_Reed                    .get(8));
 			RM.biomass(ST.make(MD.NeLi, "RoastedWart"  , 8, W));
+			RM.biomass(IL.NeLi_Wart_Crimson           .wild(8));
+			RM.biomass(IL.NeLi_Reed                    .get(8));
+			RM.biomass(IL.NeLi_WitherRose              .get(8));
+			RM.biomass(IL.NeLi_FoxfireLily             .get(8));
 			
-			RM.compact(ST.make(Items.nether_wart  , 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
-			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
-			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
-			RM.compact(ST.make(MD.NeLi, "WartItem", 1, 2), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(IL.NeLi_Wart_Crimson     .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(IL.NeLi_Wart_Warped      .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
+			RM.compact(IL.NeLi_Wart_Soggy       .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
 			
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_CrimsonStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 0));
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_WarpedStew   .get(1), ST.make(MD.NeLi, "Fungus", 2, 1));
@@ -296,12 +293,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
 			
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart  , 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Roots"   , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "WartItem", 2, 2), ST.make(MD.NeLi, "Netherbricks", 1, 8));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Plants"  , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Crimson     .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Warped      .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Roots" , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Soggy       .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Plants", 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 8));
 		}
 		
 		if (MD.NePl.mLoaded) {

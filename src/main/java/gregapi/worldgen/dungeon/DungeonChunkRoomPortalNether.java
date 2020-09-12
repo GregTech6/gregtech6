@@ -22,8 +22,10 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagList;
@@ -46,20 +48,35 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(Items.blaze_rod  ,  4, 0)), "s", (short)33));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.Tool_MatchBox_Full     .get(1)), "s", (short)40));
 		
+		Block tShroomLight = IL.NeLi_ShroomLight.block(), tWartBlock = ST.block(MD.NeLi, "Wartblock");
+		int tMeta = aData.next(3);
+		
+		if (tShroomLight != NB && tWartBlock != NB) {
+			for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
+				if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
+					aData.set  (tX, 7, tZ, tShroomLight);
+					aData.tiles(tX, 8, tZ);
+				} else {
+					aData.set  (tX, 7, tZ, tWartBlock, tMeta);
+					aData.tiles(tX, 8, tZ);
+				}
+			}
+		}
+		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
 			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, Blocks.soul_sand, 0, 2);
-				aData.set   ( i, 2,  1, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( i, 1,  1, Blocks.soul_sand);
+				aData.set   ( i, 2,  1, Blocks.nether_wart, aData.next(4));
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, Blocks.soul_sand, 0, 2);
-				aData.set   ( i, 2, 14, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( i, 1, 14, Blocks.soul_sand);
+				aData.set   ( i, 2, 14, Blocks.nether_wart, aData.next(4));
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
-
+			
 			aData.obsidian( 2, 1,  6, T);
 			aData.obsidian( 2, 1,  7, T);
 			aData.obsidian( 2, 1,  8, T);
@@ -79,11 +96,11 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, Blocks.soul_sand, 0, 2);
-				aData.set   ( i, 2,  1, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( i, 1,  1, Blocks.soul_sand);
+				aData.set   ( i, 2,  1, Blocks.nether_wart, aData.next(4));
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, Blocks.soul_sand, 0, 2);
-				aData.set   ( i, 2, 14, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( i, 1, 14, Blocks.soul_sand);
+				aData.set   ( i, 2, 14, Blocks.nether_wart, aData.next(4));
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
@@ -108,11 +125,11 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set   ( 1, 2,  i, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( 1, 1,  i, Blocks.soul_sand);
+				aData.set   ( 1, 2,  i, Blocks.nether_wart, aData.next(4));
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set   (14, 2,  i, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   (14, 1,  i, Blocks.soul_sand);
+				aData.set   (14, 2,  i, Blocks.nether_wart, aData.next(4));
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
@@ -137,11 +154,11 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set   ( 1, 2,  i, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   ( 1, 1,  i, Blocks.soul_sand);
+				aData.set   ( 1, 2,  i, Blocks.nether_wart, aData.next(4));
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set   (14, 2,  i, Blocks.nether_wart, aData.next(4), 2);
+				aData.set   (14, 1,  i, Blocks.soul_sand);
+				aData.set   (14, 2,  i, Blocks.nether_wart, aData.next(4));
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
