@@ -89,6 +89,7 @@ public enum FL {
 	, Helium_3                  ("helium-3"                                                 , GAS)
 	, Neon                      ("neon"                                                     , GAS)
 	, Argon                     ("argon"                                                    , GAS)
+	, CarbonDioxide             ("carbondioxide"                                            , GAS)
 	
 	, Steam                     ("steam"                                                    , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	, Steam_IC2                 ("ic2steam"                                                 , SIMPLE, GAS, STEAM, POWER_CONDUCTING)

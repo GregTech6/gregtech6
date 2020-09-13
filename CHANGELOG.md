@@ -56,6 +56,7 @@ Its Food Stuff has now more consistency.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [FIXED] Radiation from Reactors should now not be as high if you are further away from them.
 [CHANGED] In order to make Potions in the Distillery you have to use Distilled Water now. Normal Water wont work anymore.
+[CHANGED] Oil now burns in the Burning Box with the same total Power Value as "Fuel", due to being able to get way more Power with a Distillation Towers other additional Fuels later on. I also noticed Soulsand Oil did not have a burn Value so I added that too. You can also use the Distillery again for making Oil to Fuel and Lube at a loss.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 [CHANGED] Certain Twilight Tools now have higher Durability so they aren't as "Single Use and Throw away" anymore as before. Applies to: Ore Magnet, Peacock Fan, Crumble Horn and Giant Pickaxe.
 [CHANGED] Twilight Forests Lamp of Cinders works as infinite Flint and Tinder on GT6 Machines and TNT, but it will not spawn Fire Blocks. Can also be used in the modified vanilla Furnace Recipe without being deleted.
