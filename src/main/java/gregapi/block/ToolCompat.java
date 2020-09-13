@@ -119,6 +119,12 @@ public class ToolCompat {
 					if (rReturn) tBark = IL.HaC_Cinnamon.get(2, IL.Food_Cinnamon.get(2, OM.dust(MT.Cinnamon, U*2)));
 				}
 			}
+			if (!rReturn && MD.NeLi.mLoaded && (aMeta & 1) == 0) {
+				if (IL.NeLi_Stem_Crimson.equal(aBlock) || IL.NeLi_Stem_FoxFire.equal(aBlock) || IL.NeLi_Hyphae_Crimson.equal(aBlock) ) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, aBlock, aMeta+1, 3);
+					tBark = null;
+				}
+			}
 			if (!rReturn && BlocksGT.Beam1 != null) {
 				if (aBlock == Blocks.log) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
@@ -153,7 +159,7 @@ public class ToolCompat {
 					rReturn = F;
 				} else if (IL.TF_Log_Trans.equal(aBlock) && (aMeta & 1) == 1) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|((aMeta & 2) == 0 ? 0 : 1), 3);
-				} else if (OD.logWood.is(ST.make(aBlock, 1, aMeta))) {
+				} else if (OD.logWood.is(ST.make(aBlock, 1, aMeta)) && !OD.beamWood.is(ST.make(aBlock, 1, aMeta))) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|3, 3);
 				}
 			}

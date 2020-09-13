@@ -1015,6 +1015,18 @@ public class LoaderItemList implements Runnable {
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
 		IL.NeLi_Obsidian                        .set(ST.make(MD.NeLi, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9), OD.cryingObsidian);
 		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
+		IL.NeLi_Stem_Crimson                    .set(ST.make(MD.NeLi, "Stem"                                , 1, 0), null, OD.logWood);
+		IL.NeLi_Stem_Warped                     .set(ST.make(MD.NeLi, "Stem"                                , 1, 2), null, OD.logWood);
+		IL.NeLi_Stem_FoxFire                    .set(ST.make(MD.NeLi, "Stem2"                               , 1, 0), null, OD.logWood);
+		IL.NeLi_Beam1_Crimson                   .set(ST.make(MD.NeLi, "Stem"                                , 1, 1), null, OD.beamWood);
+		IL.NeLi_Beam1_Warped                    .set(ST.make(MD.NeLi, "Stem"                                , 1, 3), null, OD.beamWood);
+		IL.NeLi_Beam1_FoxFire                   .set(ST.make(MD.NeLi, "Stem2"                               , 1, 1), null, OD.beamWood);
+		IL.NeLi_Hyphae_Crimson                  .set(ST.make(MD.NeLi, "FullWood"                            , 1, 0), null, OD.logWood);
+		IL.NeLi_Hyphae_Warped                   .set(ST.make(MD.NeLi, "FullWood"                            , 1, 2), null, OD.logWood);
+		IL.NeLi_Hyphae_FoxFire                  .set(ST.make(MD.NeLi, "FullWood"                            , 1, 4), null, OD.logWood);
+		IL.NeLi_Beam2_Crimson                   .set(ST.make(MD.NeLi, "FullWood"                            , 1, 1), null, OD.beamWood);
+		IL.NeLi_Beam2_Warped                    .set(ST.make(MD.NeLi, "FullWood"                            , 1, 3), null, OD.beamWood);
+		IL.NeLi_Beam2_FoxFire                   .set(ST.make(MD.NeLi, "FullWood"                            , 1, 5), null, OD.beamWood);
 		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		IL.NeLi_SoulFarm                        .set(ST.make(MD.NeLi, "SoulFarmland"                        , 1, 0), null, OD.soulsand);
 		IL.NeLi_Gravel                          .set(ST.make(MD.NeLi, "Nether_Gravel"                       , 1, 0), null, "gravel");

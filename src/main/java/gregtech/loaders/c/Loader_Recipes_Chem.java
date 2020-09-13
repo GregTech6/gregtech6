@@ -278,12 +278,12 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(0), FL.Biomass       .make( 40), FL.Reikanol.make(12, FL.BioEthanol), FL.DistW.make(20));
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(0), FL.BiomassIC2    .make( 40), FL.Reikanol.make(12, FL.BioEthanol), FL.DistW.make(20));
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_ExtraHeavy.make(100), FL.Fuel.make(70), FL.lube(100));
-		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Heavy     .make(100), FL.Fuel.make(60), FL.lube( 80));
+		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Heavy     .make(100), FL.Fuel.make(60), FL.lube( 80)); if (FL.Oil_Heavy2.exists())
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Heavy2    .make(100), FL.Fuel.make(60), FL.lube( 80));
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Medium    .make(100), FL.Fuel.make(50), FL.lube( 50));
-		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Normal    .make(100), FL.Fuel.make(50), FL.lube( 50));
+		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Normal    .make(100), FL.Fuel.make(50), FL.lube( 50)); if (FL.Oil_HotCrude.exists())
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_HotCrude  .make(100), FL.Fuel.make(50), FL.lube( 50));
-		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Light     .make(100), FL.Fuel.make(25), FL.lube( 25));
+		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Light     .make(100), FL.Fuel.make(25), FL.lube( 25)); if (FL.Oil_Light2.exists())
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Light2    .make(100), FL.Fuel.make(25), FL.lube( 25));
 		RM.Distillery       .addRecipe1(T, 16,  64, ST.tag(0), FL.Oil_Soulsand  .make(100), FL.Fuel.make(20), FL.lube( 80));
 		

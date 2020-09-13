@@ -176,8 +176,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 		}
 		
 		if (MD.NeLi.mLoaded) {
-			// TODO Torch Recipes for Foxfire.
-			
 			// MagmaBlock
 			// SpectralBucket
 			
@@ -214,12 +212,19 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.delate(IL.NeLi_Bread.get(1));
 			CR.delate(IL.NeLi_Cookie.get(1));
 			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
-			CR.delate(MD.NeLi, "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
+			CR.delate(MD.NeLi, "SoulTorch", "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
 			
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
-			CR.shaped(IL.NeLi_Torch_Soul.get(4), DEF_NAC, "X", "S", 'X', OD.soulsand, 'S', OP.stick.dat(ANY.Wood));
+			CR.shapeless(IL.NeLi_Torch_Soul.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul.get(2), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul.get(4), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox .get(1), DEF_NCC, new Object[] {IL.NeLi_FoxfireLily, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox .get(2), DEF_NCC, new Object[] {IL.NeLi_FoxfireLily, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox .get(3), DEF_NCC, new Object[] {IL.NeLi_FoxfireLily, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox .get(4), DEF_NCC, new Object[] {IL.NeLi_FoxfireLily, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			
 			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor"         , 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
 			
@@ -307,8 +312,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 		if (MD.NePl.mLoaded) {
 			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
 			
-			CR.shaped(IL.NePl_Torch.get(4), DEF_NAC, " X", "S ", 'X', OD.soulsand, 'S', OP.stick.dat(ANY.Wood));
-			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.NePl, "ItemNetheriteSword" , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.NePl, "NetheritePickaxe"   , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_shovel    , 1, 0), MT.Netherite.liquid(1*U4, T), NF, ST.make(MD.NePl, "ItemNetheriteShovel", 1, 0));
@@ -325,8 +328,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, W));
 			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, W));
 			
-			if (!MD.NeLi.mLoaded)
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
+			if (!MD.NeLi.mLoaded) {
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				
+				RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
+			}
 		}
 		
 		

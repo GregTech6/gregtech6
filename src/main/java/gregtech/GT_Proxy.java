@@ -351,6 +351,18 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					}
 				}
 			}
+		} else {
+			if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+				if (aEvent.entityPlayer.isBurning()) {
+					List<String> tChatReturn = new ArrayListNoNulls<>();
+					long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), NI, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+					UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
+					if (tDamage > 0) {
+						UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+						aEvent.setCanceled(T);
+					}
+				}
+			}
 		}
 	}
 	

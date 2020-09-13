@@ -2107,6 +2107,7 @@ public class CS {
 	, RES_PATH_GUI              = MD.GT.mID + ":" + TEX_DIR_GUI
 	, RES_PATH_ITEM             = MD.GT.mID + ":"
 	, RES_PATH_BLOCK            = MD.GT.mID + ":"
+	, RES_PATH_MODEL            = MD.GT.mID + ":" + TEX_DIR_MODEL
 	, RES_PATH_ARMOR            = MD.GT.mID + ":" + TEX_DIR_ARMOR
 	, RES_PATH_ENTITY           = MD.GT.mID + ":" + TEX_DIR_ENTITY
 	, RES_PATH_API_ITEM         = MD.GAPI.mID + ":"

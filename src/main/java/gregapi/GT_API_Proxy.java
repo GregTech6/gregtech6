@@ -860,7 +860,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if (IL.RC_Crowbar_Iron.equal(aStack, T, T) || IL.RC_Crowbar_Steel.equal(aStack, T, T) || IL.RC_Crowbar_Thaumium.equal(aStack, T, T) || IL.RC_Crowbar_Voidmetal.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_crowbar, Long.MAX_VALUE, 2, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
-						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
@@ -871,8 +871,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Make Forestry Scoops work on GT6 Stuff.
 					if (IL.FR_Scoop.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
-						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
@@ -883,22 +883,22 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Make Twilight Forests Lamp of Cinders work as infinite Flint and Steel on TNT and GT6 Machines
 					if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, Long.MAX_VALUE, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
-						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, Long.MAX_VALUE, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) aEvent.setCanceled(T);
 						return;
 					}
 					if (IL.TF_Transformation_Powder.equal(aStack, T, T)) {
 						// Make Twilight Forests Transformation Powder work on Mob Spawners
 						if (aTileEntity instanceof TileEntityMobSpawner) {
-							if (aEvent.entityPlayer.worldObj.isRemote) return;
+							if (aEvent.world.isRemote) return;
 							MobSpawnerBaseLogic tSpawner = ((TileEntityMobSpawner)aTileEntity).func_145881_a();
 							String tResult = TRANSFORMATION_POWDER_SPAWNER_MAP.get(tSpawner.getEntityNameToSpawn());
 							if (UT.Code.stringValid(tResult)) {
 								if (ST.use(aEvent.entityPlayer, aStack, 16)) {
 									tSpawner.setEntityName(tResult);
 									// I hope this works sync the new Mob Data over.
-									aEvent.entityPlayer.worldObj.markBlockForUpdate(aEvent.x, aEvent.y, aEvent.z);
+									aEvent.world.markBlockForUpdate(aEvent.x, aEvent.y, aEvent.z);
 								} else {
 									UT.Entities.sendchat(aEvent.entityPlayer, "You need 16 Bags of Transformation Powder to convert this!");
 								}
