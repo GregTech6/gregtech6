@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.Collection;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -74,9 +75,9 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 					tFluid = FL.XP.make(tOutput.stackSize * 20);
 				} else {
 					Block tBlock = ST.block(tOutput);
-					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick) {
+					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick || tBlock instanceof BlockStones) {
 						// Stone should not give XP, especially not because of the Cobble Generator Upgrades.
-						
+						// GT6 Stone is also not allowed due to easily recycleable Recipes.
 					} else if (tBlock == Blocks.glass || tBlock == Blocks.stained_glass || tBlock == Blocks.glass_pane || tBlock == Blocks.stained_glass_pane) {
 						// Glass is 0.05 XP, yes I know it can be made from Stone, but this is enough effort to warrant at least some XP.
 						tFluid = FL.XP.make(tOutput.stackSize);

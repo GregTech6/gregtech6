@@ -179,29 +179,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 			// MagmaBlock
 			// SpectralBucket
 			
-			// Basalt
-			// BasaltBrickStairs
-			// BasaltBricks
-			// BasaltSingleSlab
-			// BasaltStairs
-			// BasaltWall
-			// SmoothBasaltStairs
-			// PolishedBasaltBrickStairs
-			// PolishedBasaltStairs
-			// PolishedSmoothBasaltStairs
-			
-			// Blackstone
-			// BlackstoneBrickStairs
-			// BlackstoneSingleSlab
-			// BlackstoneStairs
-			// PolishedBlackstoneStairs
-			
-			// SoulSandstone
-			// SoulSandstoneSingleSlab
-			// SoulSandstoneStairs
-			// SoulSandstoneWall
-			// SmoothSoulSandstoneStairs
-			
 			// BoneBlock
 			
 			// FoxfirePowder
@@ -212,11 +189,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.delate(IL.NeLi_Bread.get(1));
 			CR.delate(IL.NeLi_Cookie.get(1));
 			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
-			CR.delate(MD.NeLi, "SoulTorch", "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
+			CR.delate(MD.NeLi, "SoulTorch", "FoxfireTorch", "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
 			
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
+			
 			CR.shapeless(IL.NeLi_Torch_Soul.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul.get(2), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
@@ -275,6 +253,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Crimson.get(1), FL.DistW.make(500), FL.Potion_Awkward.make(500), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Warped .get(1), FL.DistW.make(500), FL.Potion_Thick  .make(500), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy  .get(1), FL.DistW.make(500), FL.Potion_Mundane.make(500), ZL_IS);
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_FoxfireLily.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 1, DYE_INDEX_Purple));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_FoxfireLily.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 1, DYE_INDEX_Purple));
+			RM.ic2_extractor(IL.NeLi_FoxfireLily.get(1), ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_WitherRose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_WitherRose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+			RM.ic2_extractor(IL.NeLi_WitherRose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
 			
 			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));

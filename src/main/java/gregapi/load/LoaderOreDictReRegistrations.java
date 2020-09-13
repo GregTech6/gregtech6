@@ -1377,6 +1377,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.cryingObsidian, new OreDictItemData(MT.Obsidian, U*9));
 		
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand     ), new OreDictItemData(MT.Sand     , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.SoulSand ), new OreDictItemData(MT.SoulSand , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock  ), new OreDictItemData(MT.Bedrock  , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint    ), new OreDictItemData(MT.Flint    , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock  ), new OreDictItemData(MT.Redrock  , U, MT.ClayRed, U9));

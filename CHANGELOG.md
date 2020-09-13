@@ -55,6 +55,7 @@ Its Food Stuff has now more consistency.
 [FIXED] Twilight Forests dependance on Naga Scales/Trophies, Lich Scepters/Trophies and Hydra Blood/Trophies to trigger their Progress Achievements. Now you ONLY need the Trophy and not that extra Item. Also you can just rightclick a placed Trophy to get its Achievement too.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [FIXED] Radiation from Reactors should now not be as high if you are further away from them.
+[CHANGED] The Distillery no longer requires Blaze Rods. Netherwart is enough of a Gatekeeper for Potion Brewing.
 [CHANGED] In order to make Potions in the Distillery you have to use Distilled Water now. Normal Water wont work anymore.
 [CHANGED] Oil now burns in the Burning Box with the same total Power Value as "Fuel", due to being able to get way more Power with a Distillation Towers other additional Fuels later on. I also noticed Soulsand Oil did not have a burn Value so I added that too. You can also use the Distillery again for making Oil to Fuel and Lube at a loss.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.

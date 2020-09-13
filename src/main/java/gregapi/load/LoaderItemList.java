@@ -1046,9 +1046,6 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_FoxfireLily                     .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
 		IL.NeLi_WitherRose                      .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower);
 		
-		
-		
-		
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_DevilishPopcorn    .exists()) IL.NeLi_Bowl_DevilishPopcorn    .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_CrimsonStew        .exists()) IL.NeLi_Bowl_CrimsonStew        .item().setContainerItem(Items.bowl);
