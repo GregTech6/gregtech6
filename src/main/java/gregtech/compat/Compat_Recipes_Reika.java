@@ -99,9 +99,9 @@ public class Compat_Recipes_Reika extends CompatMods {
 			
 			
 			for (FluidStack tFuel : FL.array(FL.Kerosine.make(8000), FL.make("kerosene", 8000), FL.Fuel.make(16000), FL.BioEthanol.make(16000), FL.Reikanol.make(16000), FL.make("ethanol", 16000))) if (tFuel != null) {
-			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U  ), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1), ST.make(Items.magma_cream, 1, W)), tFuel, FL.JetFuel.make(4000));
-			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Green.make(250)), FL.JetFuel.make(4000));
-			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Pink .make(250)), FL.JetFuel.make(4000));
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U  ), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1), ST.make(Items.magma_cream, 1, W)), tFuel, FL.JetFuel.make(4000), ZL_IS);
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Green.make(250)), FL.JetFuel.make(4000), ZL_IS);
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Pink .make(250)), FL.JetFuel.make(4000), ZL_IS);
 			}
 			
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6, 7);
