@@ -115,7 +115,8 @@ public enum FL {
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
-	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER)
+	, SpDew                     ("spectral_dew"                                             , SIMPLE, LIQUID, FOOD, WATER, INFINITE) // Something is broken with its Fluid Icon and its Bucket Registration. It is "Nether Water" from Netherlicious btw.
+	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
 	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
 	, Heavy_Reiker              ("rc heavy water"                                           , SIMPLE, LIQUID)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
@@ -129,7 +130,7 @@ public enum FL {
 	, Swampwater                ("swampwater"                                               , SIMPLE, LIQUID)
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)
 	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID)
-
+	
 	, Milk                      ("milk"                                                     , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkSoy                   ("soymilk"                  , "potion.soymilk"              , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkGrC                   ("grcmilk.milk"                                             , SIMPLE, LIQUID, FOOD, MILK, NONSTANDARD)
@@ -427,7 +428,6 @@ public enum FL {
 	
 	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
 	
-	, Spectral_Dew              ("spectral_dew"                                             , LIQUID) // Something is broken with its Fluid Icon and its Bucket Registration. It is from Netherlicious btw.
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
@@ -654,7 +654,7 @@ public enum FL {
 	/** @return if that Liquid is Water or Distilled Water */
 	public static boolean water(FluidStack aFluid) {return aFluid != null && water(aFluid.getFluid());}
 	/** @return if that Liquid is Water or Distilled Water */
-	public static boolean water(Fluid aFluid) {return aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid);}
+	public static boolean water(Fluid aFluid) {return aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid) || FL.SpDew.is(aFluid);}
 	
 	/** @return if that Liquid is distilled Water */
 	public static boolean distw(IFluidTank aFluid) {return aFluid != null && distw(aFluid.getFluid());}

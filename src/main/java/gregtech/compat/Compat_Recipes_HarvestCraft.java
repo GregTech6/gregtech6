@@ -127,6 +127,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T,  0,  128, OM.dust(MT.Mint, U ), MT.Sugar.liquid(9*U4, T), NF, ST.make(MD.HaC, "peppermintItem", 9));
 		
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.Water.make(1000), NF, IL.Food_Dough.get(1));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.SpDew.make(1000), NF, IL.Food_Dough.get(1));
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.DistW.make(1000), NF, IL.Food_Dough.get(1));
 		
 		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.RoyalJelly.make(10), NF, ST.make(MD.HaC, "marzipanItem", 1));

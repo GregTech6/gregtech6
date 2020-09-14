@@ -227,7 +227,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 				if (tBlock == tWartCrimson          ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 				if (tBlock == tWartWarped           ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 				if (tBlock == tWartSoggy            ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
-				if (IL.NeLi_WitherRose.equal(tBlock)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (IL.NeLi_Wither_Rose.equal(tBlock)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 				if (tBlock == tFireFlower) {
 					if (WD.meta(aWorld, aX+i, aY+j, aZ+k) == 2) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 					continue;

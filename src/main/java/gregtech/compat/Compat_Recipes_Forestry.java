@@ -366,10 +366,13 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin  .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.Water.make(1000), NF, IL.FR_Mulch.get(1));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.SpDew.make(1000), NF, IL.FR_Mulch.get(1));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.DistW.make( 800), NF, IL.FR_Mulch.get(1));
 		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.Water.make( 250), FL.Glue.make( 250), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.SpDew.make( 250), FL.Glue.make( 250), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.DistW.make( 200), FL.Glue.make( 250), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.Water.make(1000), FL.Glue.make(1000), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.SpDew.make(1000), FL.Glue.make(1000), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.DistW.make( 800), FL.Glue.make(1000), ZL_IS);
 		
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Ash, 4*U)               , ST.make(Blocks.dirt, 1, W), IL.FR_Compost.get(1));
@@ -421,7 +424,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)), ST.make(MD.FR, "soil", 8, 1));
 		
-		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tFluid.exists()) {
+		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.SpDew, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tFluid.exists()) {
 		if (IL.IC2_Fertilizer.exists())
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.IC2_Fertilizer.get(1)   , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Fertilizer.get(1)    , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));

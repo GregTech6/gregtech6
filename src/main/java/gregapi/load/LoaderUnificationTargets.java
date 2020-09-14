@@ -703,7 +703,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.AncientDebris          , ST.make(MD.NePl, "AncientDebris", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NePl, "GoldOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NePl, "GildedBlackstone", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NeLi, "Blackstone", 1, 5));
+//      OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NeLi, "Blackstone", 1, 5)); // DONT! This thing is crafted with 4 Nuggets and a Blackstone!
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NeLi, "NetherGoldOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.OREMATS.Hematite       , ST.make(MD.NeLi, "NetherIronOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Efrine                 , ST.make(MD.NeLi, "EfrineOre", 1, 0));
@@ -713,6 +713,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Fe                     , ST.make(MD.NeLi, "Chain", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , ST.make(MD.NeLi, "ChainGold", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , ST.make(MD.NeLi, "ChainEfrine", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , ST.make(MD.NeLi, "BoneBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

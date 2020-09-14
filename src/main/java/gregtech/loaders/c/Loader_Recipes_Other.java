@@ -110,6 +110,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(DYE_OREDICTS_MIXABLE[aIndex], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null) {
 				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
+				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.SpDew.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
 				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
 				
 				ItemStack tStack = dust.mat(MT.DATA.Dye_Materials[aIndex], 1);
@@ -154,6 +155,7 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.Squeezer         .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L  ), NI);
 			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L  ), FL.Glue.make(250));
 			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.Water.make(250), FL.Glue.make(250), ZL_IS);
+			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
 			RM.Laminator        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
 		}});
@@ -175,6 +177,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U , T), NF, OM.dust(MT.Dynamite,2*U ));
 			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.Water.make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.SpDew.make(125), NF, ST.make(Items.paper, 1, 0));
 			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.DistW.make(100), NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -191,15 +194,15 @@ public class Loader_Recipes_Other implements Runnable {
 			if (FL.Resin_Spruce.exists()) RM.Distillery.addRecipe1(T, 16, 16, ST.tag(0), FL.Resin_Spruce.make(10), FL.Turpentine.make(6), FL.DistW.make(3));
 		}
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
+		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Coal)                                   , FL.mul(tWater, 1, 8, T), NF, OM.dust(MT.HydratedCoal));
 		
-		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.NaNO3)), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
-		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.NaNO3, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
-		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.KNO3)), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
-		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.KNO3, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
-		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.Niter)), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
-		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Niter, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
+		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz     ), OM.dust(MT.NaNO3     )), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
+		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.NaNO3, U*4)),        tWater          , NF, OM.dust(MT.Cryotheum, 8*U));
+		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz     ), OM.dust(MT.KNO3      )), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
+		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.KNO3 , U*4)),        tWater          , NF, OM.dust(MT.Cryotheum, 8*U));
+		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz     ), OM.dust(MT.Niter     )), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
+		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Niter, U*4)),        tWater          , NF, OM.dust(MT.Cryotheum, 8*U));
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
@@ -332,7 +335,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		for (OreDictMaterial tIron : ANY.Iron.mToThis)
 		RM.Drying           .addRecipe1(T, 16,   16, stick.mat(tIron, 1) , FL.Concrete.make(L), FL.DistW.make(8), ST.make(BlocksGT.ConcreteReinforced    , 1, DYE_INDEX_LightGray));
-		RM.Drying           .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Concrete.make(L), FL.DistW.make(8), ST.make(BlocksGT.Concrete              , 1, DYE_INDEX_LightGray));
+		RM.Drying           .addRecipe1(T, 16,   16, ST.tag(0)           , FL.Concrete.make(L), FL.DistW.make(8), ST.make(BlocksGT.Concrete              , 1, DYE_INDEX_LightGray));
 		
 		// Asphalt
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Soapstone, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert})

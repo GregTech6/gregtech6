@@ -641,12 +641,14 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Ice_Cream_Spumoni_Vanilla.set(      addItem(tLastID = 13997, "Spumoni Vanilla Ice Cream"                , "Gelato mix of Cherry, Pistachio and Vanilla"     , "foodSpumoniicecream"             , new FoodStat( 1, 0.600F,   2, C+35,  0.50F,   0,   0,   5,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.GELUM, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Ice_Cream_Superman.set(             addItem(tLastID = 13998, "Superman Ice Cream"                       , "Gelato that saves the Day!"                      , "foodSupermanicecream"            , new FoodStat( 1, 0.600F,   5, C+35,  0.50F,   0,   0,   5,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.GELUM, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Ice_Cream_Rainbow.set(              addItem(tLastID = 13999, "Rainbow Ice Cream"                        , "Gelato of Friendship and Magic"                  , "foodRainbowicecream"             , new FoodStat( 1, 0.600F,   0, C+35,  0.50F,   0,   0,   5,  15,   0, EnumAction.eat, null                                 , F, T, F, T, Potion.regeneration.id, 10, 4, 100, Potion.digSpeed.id, 200, 2, 100), TC.stack(TC.GELUM, 1), TC.stack(TC.AURAM, 1)));
-
+		
 		RM.CryoMixer.addRecipe1(T, 16, 16, OM.dust(MT.NaCl, U4), FL.array(FL.Water.make( 250), FL.Cream.make( 250)), ZL_FS, IL.Food_Ice_Cream.get(1));
+		RM.CryoMixer.addRecipe1(T, 16, 16, OM.dust(MT.NaCl, U4), FL.array(FL.SpDew.make( 250), FL.Cream.make( 250)), ZL_FS, IL.Food_Ice_Cream.get(1));
 		RM.CryoMixer.addRecipe1(T, 16, 16, OM.dust(MT.NaCl, U4), FL.array(FL.DistW.make( 250), FL.Cream.make( 250)), ZL_FS, IL.Food_Ice_Cream.get(1));
 		RM.CryoMixer.addRecipe1(T, 16, 64, OM.dust(MT.NaCl, U ), FL.array(FL.Water.make(1000), FL.Cream.make(1000)), ZL_FS, IL.Food_Ice_Cream.get(4));
+		RM.CryoMixer.addRecipe1(T, 16, 64, OM.dust(MT.NaCl, U ), FL.array(FL.SpDew.make(1000), FL.Cream.make(1000)), ZL_FS, IL.Food_Ice_Cream.get(4));
 		RM.CryoMixer.addRecipe1(T, 16, 64, OM.dust(MT.NaCl, U ), FL.array(FL.DistW.make(1000), FL.Cream.make(1000)), ZL_FS, IL.Food_Ice_Cream.get(4));
-
+		
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Lemon             .make( 50), NF, IL.Food_Ice_Cream_Lemon.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Banana            .make( 50), NF, IL.Food_Ice_Cream_Banana.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Grape_Red         .make( 50), NF, IL.Food_Ice_Cream_Grape.get(1));

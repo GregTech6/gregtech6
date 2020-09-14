@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -103,11 +103,13 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 			
 			CR.delate(MD.BC_TRANSPORT, "pipeWaterproof");
 			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
+			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.SpDew.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.DistW.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.ic2_extractor(IL.Dye_Cactus.get(1), ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			
 			for (OreDictMaterial tMat : ANY.Wax.mToThis) {
 			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
+			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.SpDew.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.DistW.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.ic2_extractor(OM.dust(tMat), ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			}

@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.01: (Not released yet, I am still working on a ton of Twilight Forest Compat)
 [IMPORTANT] If you use Factorization, use Asie's Version of it from here https://asie.pl/files/mods/Factorization/ (the one with the highest number, without "-dev" at the end of it). The original is broken and may crash with CoFH-Core.
+[NOTE] Just a nice reminder because a bunch of Potion related Stuff happened this update: Ever since Version 6.05.34, using the Bathing Pot you can bath Food Items in a Potion to give the Food Item that Effect.
 [COMPAT] Twilight Forest
 Way better Ore Generation, and allowing Vanilla Ores again in there. GT5 Style Ore Generation is now completely gone from Twilight Forest. (Remember that Iron Ore is already having all its Recipes overridden by GT6)
 In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
@@ -45,7 +46,10 @@ Also added Tungsten Alloy Drums, Anvils, Cells, Fluid Pipes, Storages, Shelves e
 Netherlicious officially wont ever add Netherite, so the Netherite Plus Mod is still recommended for Netherite Items such as Armor, or the Twilight Forest Netherrite Ore Compat.
 Foxfire Planks are now in the GT6 Wood Dictionary.
 Crimson and Warped Wood Stuff from Netherite Plus are now overidden by Netherlicious Wood Stuff wherever applicable.
-Its Food Stuff has now more consistency.
+The Mushroom Logs can now properly be made into their Beam counterparts using GT6 Tools.
+Its Food Stuff has more consistency now.
+There is also additional ways to make Potions.
+Spectral Dew is a Type of "Nether Water" that can be used in many Recipes that require regular Water.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.

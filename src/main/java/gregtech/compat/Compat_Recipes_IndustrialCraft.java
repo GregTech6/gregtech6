@@ -178,8 +178,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1)), FL.Potion_Poison_2.make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer",  3, 0));
 		RM.Mixer        .addRecipeX(T, 16,  192, ST.array(IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)        ), FL.Potion_Poison_2.make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer", 12, 0));
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)             ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)             ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.Water.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.SpDew.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.DistW.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
 		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(MD.IC2, "item.itemScrapMetal", 8, 0), ST.make(MD.IC2, "item.scrapMetalChunk", 1, 0));
@@ -344,8 +345,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) if (tMat != MT.Enori)
 		RM.RollFormer   .addRecipe1(T,256,   16, OP.blockSolid.mat(tMat, 1)                         , IL.IC2_ShaftIron.get(1));
 		
-		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
-		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, FL.CFoam.make(1000), ZL_IS);
+		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
+		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tWater, FL.CFoam.make(1000), ZL_IS);
 		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.U_238)                                  , ST.mkic("Uran238", 1));
@@ -496,6 +497,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Electrolyzer     .addRecipe2(T, 16, 1000, ST.tag(0), IL.Cell_Water.get(1)                    , ST.mkic("electrolyzedWaterCell", 1));
 		
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.Water.make(1000)          , NF, ST.mkic("hydratingCell", 1));
+		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.SpDew.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.DistW.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		
 		RM.generify(IL.Circuit_Basic.get(1)     , ST.mkic("electronicCircuit", 1));
@@ -504,55 +506,54 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));
 		
-		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
+		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250)))
+		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
 		
-		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , FL.mul(tFluid, 1, 4, T), FL.Potion_Poison_2.make(250), ZL_IS);
-		
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.SoylentGreen  ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRaw       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishRaw       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatCooked    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishCooked    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRotten    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishRotten    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.CaCO3                   ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                   ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(1));
-		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                   ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(1));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                      ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Ca                      ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                      ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                      ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                      ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Apatite                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.SoylentGreen  ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatRaw       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishRaw       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatCooked    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishCooked    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatRotten    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishRotten    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.CaCO3                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(1));
+		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(1));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                    ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Ca                    ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                    ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                    ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                    ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite               ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Apatite               ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite               ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
 		if (!MD.FR.mLoaded) {
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite               ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite               ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
 		}
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                  ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.NaHSO4                  ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                  ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                  ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                  ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                   ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.KHSO4                   ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                   ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                   ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                   ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		}
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.NaHSO4                ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.KHSO4                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (tMat != MT.Enori) {
 		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));

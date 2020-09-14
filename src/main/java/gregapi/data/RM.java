@@ -261,6 +261,7 @@ public class RM {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;
 		if (aWater <= 0) aWater = 1;
 		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.Water.make(aWater), NF, aOutputs);
+		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.SpDew.make(aWater), NF, aOutputs);
 		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.DistW.make(aWater), NF, aOutputs);
 		return T;
 	}
@@ -269,6 +270,7 @@ public class RM {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;
 		if (aLubricantAmount <= 0) aLubricantAmount = 1;
 		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.Water.make(aLubricantAmount*4), NF, aOutputs);
+		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.SpDew.make(aLubricantAmount*4), NF, aOutputs);
 		Cutter.addRecipe1(T, aEUt, aDuration*3, aInput, FL.DistW.make(aLubricantAmount*3), NF, aOutputs);
 		if (!aIsFoodItem) for (String tFluidName : FluidsGT.LUBRICANT) {
 			FluidStack tFluid = FL.make(tFluidName, aLubricantAmount);
