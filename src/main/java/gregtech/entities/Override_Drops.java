@@ -33,7 +33,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
@@ -50,7 +49,7 @@ public class Override_Drops {
 	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
 		if (UT.Code.stringInvalid(aClass) || "EntityTFLichMinion".equalsIgnoreCase(aClass) || "EntitySkeletonBoss".equalsIgnoreCase(aClass)) return;
 		final boolean aSpace = aClass.startsWith("entityevolved") || aClass.startsWith("entityalien");
-		boolean tReplaceIron = aClass.startsWith("entitygaia"), tReplaceSlimeWithMagmaCream = (aDead.getClass() == EntityMagmaCube.class);
+		boolean tReplaceIron = aClass.startsWith("entitygaia");
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
 		
@@ -512,12 +511,6 @@ public class Override_Drops {
 				} else
 				if (OM.is("nuggetAnyIronOrSteel", tStack)) {
 					ST.set(tStack, OP.nugget.mat(MT.Pb, 1), F, F);
-				}
-			}
-			// Some random Mod breaks Magma Cube drops without adding a Config for it, so here is the fix that hopefully undoes that change.
-			if (tReplaceSlimeWithMagmaCream) {
-				if (ST.item(tStack) == Items.slime_ball) {
-					ST.set(tStack, ST.make(Items.magma_cream, 1, 0), F, F);
 				}
 			}
 			// Give Meat more variety! :D
