@@ -668,6 +668,9 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodSealed, 8*U), OD.craftingChest);
 		
 		
+		IL.FZ_Sludge                            .set(ST.make(MD.FZ, "sludge"                                , 1, 0), null, OD.itemSlag);
+		
+		
 		IL.ABYSSAL_Crate                        .set(ST.make(MD.ABYSSAL, "Crate"                            , 1, 0), new OreDictItemData(ANY.Wood, 7*U), OD.craftingChest);
 		IL.ABYSSAL_Lava                         .set(ST.make(MD.ABYSSAL, "solidlava"                        , 1, 0), new OreDictItemData(MT.Lava, 9*U));
 		
