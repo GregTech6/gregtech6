@@ -36,6 +36,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
 import gregapi.render.TextureSet;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.potion.Potion;
@@ -626,11 +627,13 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Mob               .make( 534), ST.make(Items.experience_bottle , 1, 0), IL.Bottle_Empty.get(1), F, T, F);
 		FL.reg(FL.Gas_Natural       .make(1000), ST.make(MD.MaCu, "fluids"       , 1,27), IL.Bottle_Empty.get(1), F, T, T);
 		FL.reg(FL.Gas_Natural       .make(2000), ST.make(MD.MaCu, "fluids"       , 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
-		FL.reg(FL.SpDew             .make(1000), IL.NeLi_Bucket_Spectral_Dew     .get(1), ST.make(Items.bucket, 1, 0), F, T, T);
 		FL.reg(FL.Ambrosia          .make(1000), IL.FR_Ambrosia                  .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
 		FL.reg(FL.Honey             .make(1000), IL.GrC_Honey_Jar                .get(1), ST.make(Items.flower_pot, 1, 0));
 		FL.reg(FL.Honey             .make( 500), IL.BoP_Jar_Honey                .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		FL.reg(FL.Potion_Poison_2   .make( 500), IL.BoP_Jar_Poison               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		
+		// This one is "Special"...
+		FL.reg(FL.SpDew.make(1000), IL.NeLi_Bucket_Spectral_Dew.getWithNBT(1, UT.NBT.make("Fluid", UT.NBT.make("FluidName", FL.SpDew.mName, "Amount", 1000))), ST.make(Items.bucket, 1, 0), F, T, T);
 		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));

@@ -1057,6 +1057,7 @@ public class LoaderItemList implements Runnable {
 		if (IL.NeLi_Bowl_CrimsonStew        .exists()) IL.NeLi_Bowl_CrimsonStew        .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_WarpedStew         .exists()) IL.NeLi_Bowl_WarpedStew         .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_FoxfireStew        .exists()) IL.NeLi_Bowl_FoxfireStew        .item().setContainerItem(Items.bowl);
+		if (IL.NeLi_Bucket_Spectral_Dew     .exists()) IL.NeLi_Bucket_Spectral_Dew     .item().setContainerItem(Items.bucket);
 		if (IL.NeLi_Bottle_Hellderberryjuice.exists()) IL.NeLi_Bottle_Hellderberryjuice.item().setContainerItem(Items.glass_bottle);
 		
 		
