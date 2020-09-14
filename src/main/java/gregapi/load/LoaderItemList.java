@@ -1034,9 +1034,12 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		IL.NeLi_SoulFarm                        .set(ST.make(MD.NeLi, "SoulFarmland"                        , 1, 0), null, OD.soulsand);
 		IL.NeLi_Gravel                          .set(ST.make(MD.NeLi, "Nether_Gravel"                       , 1, 0), null, "gravel");
+		IL.NeLi_Foxfire_Lily                    .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
+		IL.NeLi_Wither_Rose                     .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower);
 		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, "foodBread");
 		IL.NeLi_Cookie                          .set(ST.make(MD.NeLi, "CookieHellderberry"                  , 1, 0), null, "foodCookie");
 		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, "foodHellderberryjuice");
+		IL.NeLi_Bucket_Spectral_Dew             .set(ST.make(MD.NeLi, "SpectralBucket"                      , 1, 0), null, OD.container1000water);
 		IL.NeLi_Bowl_DevilishMaize              .set(ST.make(MD.NeLi, "DevilishPopcornRaw"                  , 1, 0));
 		IL.NeLi_Bowl_DevilishPopcorn            .set(ST.make(MD.NeLi, "DevilishPopcorn"                     , 1, 0));
 		IL.NeLi_Bowl_CrimsonStew                .set(ST.make(MD.NeLi, "StewCrimson"                         , 1, 0));
@@ -1047,10 +1050,7 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Wart_Crimson                    .set(ST.make(MD.NeLi, "WartItem"                            , 1, 0));
 		IL.NeLi_Wart_Warped                     .set(ST.make(MD.NeLi, "WartItem"                            , 1, 1));
 		IL.NeLi_Wart_Soggy                      .set(ST.make(MD.NeLi, "WartItem"                            , 1, 2));
-		IL.NeLi_Bucket_Spectral_Dew             .set(ST.make(MD.NeLi, "SpectralBucket"                      , 1, 0));
 		IL.NeLi_Foxfire_Powder                  .set(ST.make(MD.NeLi, "FoxfirePowder"                       , 1, 0));
-		IL.NeLi_Foxfire_Lily                    .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
-		IL.NeLi_Wither_Rose                     .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower);
 		
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_DevilishPopcorn    .exists()) IL.NeLi_Bowl_DevilishPopcorn    .item().setContainerItem(Items.bowl);

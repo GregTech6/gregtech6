@@ -39,6 +39,7 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -48,7 +49,8 @@ public class Compat_Recipes_Reika extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		if (MD.RoC.mLoaded) {
 			OUT.println("GT_Mod: Doing RotaryCraft Recipes.");
-			CR.delate(MD.RoC, "rotarycraft_item_borecraft", 13, 14);
+			CR.delate(MD.RoC, "rotarycraft_item_machine"   , 116);
+			CR.delate(MD.RoC, "rotarycraft_item_borecraft" , 13, 14);
 			CR.delate(MD.RoC, "rotarycraft_item_shaftcraft", 0, 2, 9, 10);
 			new OreDictListenerEvent_Names(OP.seed) {@Override public void addAllListeners() {
 			addListener("seedCanola", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -71,6 +73,17 @@ public class Compat_Recipes_Reika extends CompatMods {
 			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery    .get(1), NF, FL.lube( 50), IL.RoC_Propolis_Slippery.get(1));
 			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery.get(1), NF, FL.lube(150), ZL_IS);
 			
+			
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_ExtraHeavy.make(100), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Heavy     .make(150), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)); if (FL.Oil_Heavy2.exists())
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Heavy2    .make(150), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Medium    .make(200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Normal    .make(200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)); if (FL.Oil_HotCrude.exists())
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_HotCrude  .make(200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Light     .make(250), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)); if (FL.Oil_Light2.exists())
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Light2    .make(250), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			RM.Drying           .addRecipe0(T, 16,   64, FL.Oil_Soulsand  .make( 50), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
+			
 			if (FL.exists("rc co2"))
 			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), FL.make("rc co2" ,  200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
 			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), MT.CO2       .gas(U , T), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
@@ -84,6 +97,12 @@ public class Compat_Recipes_Reika extends CompatMods {
 			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Crystal.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			
+			
+			for (FluidStack tFuel : FL.array(FL.Kerosine.make(8000), FL.make("kerosene", 8000), FL.Fuel.make(16000), FL.BioEthanol.make(16000), FL.Reikanol.make(16000), FL.make("ethanol", 16000))) if (tFuel != null) {
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U  ), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1), ST.make(Items.magma_cream, 1, W)), tFuel, FL.JetFuel.make(4000));
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Green.make(250)), FL.JetFuel.make(4000));
+			RM.Mixer            .addRecipeX(T, 16, 2048, ST.array(OM.dust(MT.Blaze, U*2), OM.dust(MT.Netherrack, U), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1)), FL.array(tFuel, FL.Slime_Pink .make(250)), FL.JetFuel.make(4000));
+			}
 			
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6, 7);
 			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U ), OM.dust(MT.Coal, U ), OM.dust(MT.NaCl,U ), OM.dust(MT.Gunpowder, U )), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));

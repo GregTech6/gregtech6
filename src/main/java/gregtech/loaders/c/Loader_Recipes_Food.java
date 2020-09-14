@@ -455,7 +455,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.mul(tWater, 1, 4, T), MT.CO2.gas(U4, T)), FL.Soda.make(250), ZL_IS);
 		}
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Mineralwater.make(250), MT.CO2.gas(U4, T)), FL.Mineralsoda.make(250), ZL_IS);
-		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Green.make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
+		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Green .make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
 		
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Milk.make (                                    50), FL.Milk_Spoiled                          .make(50), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.MilkGrC.make (                                 50), FL.Milk_Spoiled                          .make(50), ZL_IS);
@@ -536,7 +536,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Coagulator       .addRecipe0(T,  0,   16, FL.RoyalJelly.make(100), NF, tOutput);
 		
 		if (FL.Slime_Pink.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballPink", 1); if (ST.valid(tOutput))
-		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink.make(250), NF, tOutput);}
+		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink .make(250), NF, tOutput);}
 		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Green.make(250), NF, ST.make(Items.slime_ball, 1, 0));
 		
 		RM.Coagulator       .addRecipe0(T,  0, 1024, FL.Milk   .make(1000), NF, IL.Food_Cheese.get(1));

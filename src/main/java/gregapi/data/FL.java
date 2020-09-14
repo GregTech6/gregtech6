@@ -411,6 +411,7 @@ public enum FL {
 	, Diesel                    ("diesel"                                                   , SIMPLE, LIQUID)
 	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
 	, LPG                       ("lpg"                                                      , LIQUID)
+	, JetFuel                   ("rc jet fuel"                                              , LIQUID)
 	
 	, BioFuel                   ("biofuel"                                                  , SIMPLE, LIQUID)
 	, BioDiesel                 ("biodiesel"                                                , SIMPLE, LIQUID)
