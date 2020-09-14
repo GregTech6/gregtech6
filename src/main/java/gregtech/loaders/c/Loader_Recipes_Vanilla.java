@@ -251,13 +251,14 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke)    , 'S', OP.stick.dat(ANY.Wood));
 		}
 		
-		CR.shaped(ST.make(Items.coal   , 1, 0), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Coal    ));
-		CR.shaped(ST.make(Items.coal   , 1, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Charcoal));
-		CR.shaped(OP.ingot.mat(MT.Coal    , 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 0));
+		CR.shaped(ST.make(Items.coal, 1, 0), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Coal));
+		CR.shaped(OP.ingot.mat(MT.Coal, 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 0));
+		RM.generify(OP.ingot.mat(MT.Coal, 1), ST.make(Items.coal, 1, 0));
+		RM.generify(ST.make(Items.coal, 1, 0), OP.ingot.mat(MT.Coal, 1));
+		
+		CR.shaped(ST.make(Items.coal, 1, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Charcoal));
 		CR.shaped(OP.ingot.mat(MT.Charcoal, 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 1));
-		RM.generify(OP.ingot.mat(MT.Coal    , 1), ST.make(Items.coal, 1, 0));
 		RM.generify(OP.ingot.mat(MT.Charcoal, 1), ST.make(Items.coal, 1, 1));
-		RM.generify(ST.make(Items.coal, 1, 0), OP.ingot.mat(MT.Coal    , 1));
 		RM.generify(ST.make(Items.coal, 1, 1), OP.ingot.mat(MT.Charcoal, 1));
 		
 		CR.shaped(OP.gem  .mat(MT.NetherizedDiamond, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.NetherizedDiamond));

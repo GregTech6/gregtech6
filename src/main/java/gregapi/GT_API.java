@@ -630,14 +630,15 @@ public class GT_API extends Abstract_Mod {
 		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		
 		GT6WorldGenerator.PFAA = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && MD.PFAA.mLoaded);
-		GT6WorldGenerator.TFC  = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && (MD.TFC.mLoaded || MD.TFCP.mLoaded));
+		GT6WorldGenerator.TFC  = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectTFC" , T) && (MD.TFC.mLoaded || MD.TFCP.mLoaded));
 		
 		// Register Crafting Recipe Classes.
-		RecipeSorter.register("gregtech:shaped"         , AdvancedCraftingShaped.class              , net.minecraftforge.oredict.RecipeSorter.Category.SHAPED       , "after:minecraft:shaped before:minecraft:shapeless");
-		RecipeSorter.register("gregtech:shapeless"      , AdvancedCraftingShapeless.class           , net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS    , "after:minecraft:shapeless");
-		RecipeSorter.register("gregtech:1ToY"           , AdvancedCrafting1ToY.class                , net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS    , "after:gregtech:shapeless");
-		RecipeSorter.register("gregtech:XToY"           , AdvancedCraftingXToY.class                , net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS    , "after:gregtech:1ToY");
-		RecipeSorter.register("gregtech:tool"           , AdvancedCraftingTool.class                , net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS    , "after:gregtech:1ToY");
+		RecipeSorter.register("gregtech:shaped"   , AdvancedCraftingShaped.class   , RecipeSorter.Category.SHAPED   , "after:minecraft:shaped before:minecraft:shapeless");
+		RecipeSorter.register("gregtech:shapeless", AdvancedCraftingShapeless.class, RecipeSorter.Category.SHAPELESS, "after:gregtech:shaped after:minecraft:shapeless");
+		RecipeSorter.register("gregtech:1ToY"     , AdvancedCrafting1ToY.class     , RecipeSorter.Category.SHAPELESS, "after:gregtech:shaped after:gregtech:shapeless");
+		RecipeSorter.register("gregtech:XToY"     , AdvancedCraftingXToY.class     , RecipeSorter.Category.SHAPELESS, "after:gregtech:shaped after:gregtech:1ToY");
+		RecipeSorter.register("gregtech:tool"     , AdvancedCraftingTool.class     , RecipeSorter.Category.SHAPELESS, "after:gregtech:shaped after:gregtech:XToY");
+		
 		// A Default Packet Handler for some of the already existing Code. Yes, all those Packets are generalised special cases in order to save on Bandwidth.
 		// [        +127] = PacketConfig
 		// [        +126] = PacketPrefix

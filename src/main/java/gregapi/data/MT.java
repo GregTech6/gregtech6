@@ -1715,11 +1715,12 @@ public class MT {
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
 			OREMATS.Cassiterite     .setOreMultiplier( 2);
+			OREMATS.Malachite       .setOreMultiplier( 2);
+			OREMATS.Bastnasite      .setOreMultiplier( 3);
+			Monazite                .setOreMultiplier( 2);
 			NetherQuartz            .setOreMultiplier( 2);
 			CertusQuartz            .setOreMultiplier( 2);
 			ChargedCertusQuartz     .setOreMultiplier( 2);
-			Monazite                .setOreMultiplier( 2);
-			OREMATS.Bastnasite      .setOreMultiplier( 3);
 			Scabyst                 .setOreMultiplier( 2);
 			Phosphorus              .setOreMultiplier( 3);
 			NaNO3                   .setOreMultiplier( 3);
