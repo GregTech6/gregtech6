@@ -17,7 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.01: (Not released yet, I am still working on a ton of Twilight Forest Compat)
+6.14.01:
 [IMPORTANT] If you use Factorization, use Asie's Version of it from here https://asie.pl/files/mods/Factorization/ (the one with the highest number, without "-dev" at the end of it). The original is broken and may crash with CoFH-Core.
 [NOTE] Just a nice reminder because a bunch of Potion related Stuff happened this update: Ever since Version 6.05.34, using the Bathing Pot you can bath Food Items in a Potion to give the Food Item that Effect.
 [COMPAT] Twilight Forest
@@ -80,7 +80,7 @@ Spectral Dew is a Type of "Nether Water" that can be used in many Recipes that r
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds, Rubies and Sapphires.
-[ADDED] Wooden Buckets for Soy Milk and Glue.
+[ADDED] Wooden Buckets for Soy Milk, Glue and Spectral Dew.
 [ADDED] Bedrock Diamond Ore. About twice as rare as Bedrock Gold Ore. Also Pink Diamond is now a Byproduct of regular Diamond.
 
 
