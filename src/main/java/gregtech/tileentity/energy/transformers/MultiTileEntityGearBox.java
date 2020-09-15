@@ -176,8 +176,13 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					for (byte i = 0; i < 6; i++) {
 						byte tSide = (byte)((mOrder+i)%6);
 						if (!FACE_CONNECTED[tSide][mInputtedSides]) {
-							if (FACE_CONNECTED[tSide][mAxleGear & 63] || (AXIS_XYZ[(mAxleGear >>> 6) & 3][tSide] && FACE_CONNECTED[OPPOSITES[tSide]][mAxleGear & 63])) {
-								if (ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[tSide]) != 0 ? +mCurrentSpeed : -mCurrentSpeed, 1, this, getAdjacentTileEntity(tSide)) > 0) {
+							if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
+								if (ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[          tSide ]) != 0 ? +mCurrentSpeed : -mCurrentSpeed, 1, this, getAdjacentTileEntity(tSide)) > 0) {
+									if (--mCurrentPower <= 0) {temp = F; break;}
+									temp = T;
+								}
+							} else if (AXIS_XYZ[(mAxleGear >>> 6) & 3][tSide] && FACE_CONNECTED[OPPOSITES[tSide]][mAxleGear & 63]) {
+								if (ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[OPPOSITES[tSide]]) == 0 ? +mCurrentSpeed : -mCurrentSpeed, 1, this, getAdjacentTileEntity(tSide)) > 0) {
 									if (--mCurrentPower <= 0) {temp = F; break;}
 									temp = T;
 								}
