@@ -49,6 +49,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -110,7 +111,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			byte tSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
 				mAxleGear &= ~B[tSide];
-				ST.place(getWorld(), getOffset(tSide, 1), OP.gearGt.mat(mMaterial, 1));
+				ItemStack tGear = OP.gearGt.mat(mMaterial, 1);
+				if (!(aPlayer instanceof EntityPlayer) || !UT.Inventories.addStackToPlayerInventory((EntityPlayer)aPlayer, tGear)) ST.place(getWorld(), getOffset(tSide, 1), tGear);
 				mJammed = F;
 				mGearsWork = checkGears();
 				updateClientData();
@@ -220,12 +222,18 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (FACE_CONNECTED[          aSide ][mAxleGear & 63]) {
 				// All adjacent Gears need to rotate the opposite direction of this Gear.
 				if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
+				// Clear unused Values to make sure that it can be compared properly.
+				for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
+				// Return the Value.
 				return rRotationData;
 			}
 			// Gear on Throughput Side.
 			if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 				// Make adjacent Gears rotate according to the Gear on the opposite Side.
 				if ( aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
+				// Clear unused Values to make sure that it can be compared properly.
+				for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
+				// Return the Value.
 				return rRotationData;
 			}
 			// There is no Gears on that Axle, this should actually not get this far, because the Passthrough takes over, before this gets called.
@@ -237,8 +245,12 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if ( aNegative) rRotationData |= B[OPPOSITES[aSide]];
 			// All adjacent Gears need to rotate the opposite direction of this Gear.
 			if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
+			// Clear unused Values to make sure that it can be compared properly.
+			for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
+			// Return the Value.
 			return rRotationData;
 		}
+		// This Facing is not even connected so nothing to do here.
 		return 0;
 	}
 	
@@ -350,6 +362,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			byte tRotationData = getRotations(aSide, aSpeed < 0);
 			if (tRotationData != mRotationData) {
 				// Gears are jamming!
+				UT.Sounds.send(SFX.MC_BREAK, this);
 				mRotationData = 0;
 				mJammed = T;
 				return aPower;
