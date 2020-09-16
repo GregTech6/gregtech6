@@ -58,10 +58,10 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
-	public boolean mJammed = F, mUsedGear = F, mGearsWork = F, mIgnorePower = F;
+	public boolean mJammed = F, mUsedGear = F, mGearsWork = F;
 	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredLast = 0;
-	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
-	public byte mInputtedSides = 0, mOrder = 0;
+	public short mAxleGear = 0;
+	public byte mInputtedSides = 0, mOrder = 0, mRotationData = 0, oRotationData = 0, mIgnorePower = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -163,7 +163,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			mGearsWork = checkGears();
-			if (aChatReturn != null) aChatReturn.add(mGearsWork ? "Gears interlocked properly." : "Gears interlocked improperly!");
+			if (aChatReturn != null) aChatReturn.add(mGearsWork ? mJammed ? "Gears interlocked properly, but they are jammed!" : "Gears interlocked properly." : "Gears interlocked improperly!");
 			return 1;
 		}
 		return 0;
@@ -203,7 +203,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				}
 			}
 			mTransferredLast -= Math.abs(mCurrentPower * mCurrentSpeed);
-			if (!mUsedGear) mRotationData = 0;
+			if (!mUsedGear) mRotationData &= ~B[6];
 			mInputtedSides = 0;
 			mUsedGear = F;
 		}
@@ -213,7 +213,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		// Nothing is interlocked properly so no functionality here.
 		if (!mGearsWork) return 0;
 		// The Gear on the Input Side needs the correct direction set.
-		byte rRotationData = (byte)(aNegative ? B[aSide]|B[6] : B[6]);
+		byte rRotationData = (byte)(aNegative ? B[aSide] : 0);
 		// There is an Axle along this Axis.
 		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
 			// Make whatever is on the other side of the Axle rotate the same direction the Axle does.
@@ -223,21 +223,19 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				// All adjacent Gears need to rotate the opposite direction of this Gear.
 				if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
 				// Clear unused Values to make sure that it can be compared properly.
-				for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
-				// Return the Value.
-				return rRotationData;
+				return (byte)((rRotationData & mAxleGear & 63) | B[6]);
 			}
 			// Gear on Throughput Side.
 			if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 				// Make adjacent Gears rotate according to the Gear on the opposite Side.
 				if ( aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
 				// Clear unused Values to make sure that it can be compared properly.
-				for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
-				// Return the Value.
-				return rRotationData;
+				return (byte)((rRotationData & mAxleGear & 63) | B[6]);
 			}
 			// There is no Gears on that Axle, this should actually not get this far, because the Passthrough takes over, before this gets called.
-			return 0;
+			ERR.print("Something went wrong with the free Axle inside the Gearbox at " + getCoords() + " receiving power from Side: " + aSide);
+			// Returning the current Rotation Data to make sure nothing breaks too badly.
+			return mRotationData;
 		}
 		// Axle not involved.
 		if (FACE_CONNECTED[aSide][mAxleGear & 63]) {
@@ -246,15 +244,21 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			// All adjacent Gears need to rotate the opposite direction of this Gear.
 			if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
 			// Clear unused Values to make sure that it can be compared properly.
-			for (byte tSide : ALL_SIDES_VALID) if (!FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData &= ~B[tSide];
-			// Return the Value.
-			return rRotationData;
+			return (byte)((rRotationData & mAxleGear & 63) | B[6]);
 		}
-		// This Facing is not even connected so nothing to do here.
-		return 0;
+		// This Facing is not even connected so nothing to do here. This should not get this far either!
+		ERR.print("Something went wrong with the Gearbox at " + getCoords() + " receiving power from Side: " + aSide + " even though there is neither a Gear nor an Axle at that Side");
+		// Returning the current Rotation Data to make sure nothing breaks too badly.
+		return mRotationData;
 	}
 	
+	/** This is only ever called whenever the Axle or Gears change or when the Gearbox TileEntity is loaded. */
 	public boolean checkGears() {
+		// Just in case something broke during setting up the Gearbox.
+		mIgnorePower = 0;
+		// Current Power and Speed need to be 0.
+		mCurrentSpeed = mCurrentPower = 0;
+		// Check if the Gearbox actually works properly.
 		switch(FACE_CONNECTION_COUNT[mAxleGear & 63]) {
 		case 0:
 			// Just prevents the Error Tooltip from popping up.
@@ -286,14 +290,14 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if ((mAxleGear & 12) != 0) tAxisUsed++;
 			return tAxisUsed < 3;
 		}
-		// 5 Gears never work, same as 6 Gears
+		// 5 Gears never work, same for 6 Gears
 		return F;
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationData != oRotationData || super.onTickCheck(aTimer);}
 	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationData = mRotationData;}
 	@Override public void setVisualData(byte aData) {mRotationData = aData;}
-	@Override public byte getVisualData() {return (byte)mRotationData;}
+	@Override public byte getVisualData() {return mRotationData;}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
@@ -328,7 +332,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public long doInject(TagData aEnergyType, byte aSide, long aSpeed, long aPower, boolean aDoInject) {
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
 		if (!AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63]) return 0;
-		if (!aDoInject) return mIgnorePower ? 0 : aPower;
+		if (!aDoInject) return mIgnorePower == 0 ? aPower : 0;
 		
 		long tSpeed = Math.abs(aSpeed);
 		
@@ -347,14 +351,12 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			return aPower;
 		}
 		
-		mInputtedSides |= B[aSide];
-		
 		// Free Axle means it is always a Passthrough.
 		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63] && !FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 			return ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, aSpeed, aPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 		}
 		
-		// Just absorb all power if the Gearbox is not set up properly.
+		// Just void all power if the Gearbox is not set up properly.
 		if (!mGearsWork) return aPower;
 		
 		// There already has been at least one Input during this Tick. Add more Power.
@@ -367,20 +369,27 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				mJammed = T;
 				return aPower;
 			}
+			// If ignoring further Inputs, keep the old values.
+			if (mIgnorePower != 0) return 0;
 			// Just take the lowest Speed available. Gives a different Type of Loss Mechanic that somewhat makes sense.
 			mCurrentSpeed = Math.min(tSpeed, mCurrentSpeed);
-			if (mIgnorePower) return 0;
 			mCurrentPower += aPower;
+			// Received Input from this Side successfully.
+			mInputtedSides |= B[aSide];
 			return aPower;
 		}
-		// There was no Input during this Tick yet, set Maximum Speed and Stuff.
+		// There was no Input during this Tick yet.
 		if ((mRotationData = getRotations(aSide, aSpeed < 0)) != 0) {
-			mCurrentSpeed = tSpeed;
-			// Still had leftover Power from last time. Start ignoring Input in order to not waste Power.
-			mIgnorePower = (mCurrentPower > 0);
 			mUsedGear = T;
-			if (mIgnorePower) return 0;
+			// Still had leftover Power from last time. Start ignoring Input in order to not waste Power.
+			if (mCurrentPower > 0) mIgnorePower++; else mIgnorePower = 0;
+			// If ignoring further Inputs, keep the old values.
+			if (mIgnorePower != 0) return 0;
+			// Set Maximum Speed and current Power.
+			mCurrentSpeed = tSpeed;
 			mCurrentPower = aPower;
+			// Received Input from this Side successfully.
+			mInputtedSides |= B[aSide];
 			return aPower;
 		}
 		return 0;
