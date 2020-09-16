@@ -892,7 +892,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public boolean doInactive(long aTimer) {
 		if (mActive) {
 			doSoundInterrupt();
-			doOutputItems();
+			if (!mDisabledItemOutput) doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
 		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer%1200 == 5) {

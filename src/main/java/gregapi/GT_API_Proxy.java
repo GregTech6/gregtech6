@@ -565,7 +565,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					aEvent.player.capabilities.allowEdit = F;
 					if (ADVENTURE_MODE_KIT) {
 						if (MD.GT.mLoaded) {
-							UT.Entities.chat(aEvent.player, CHAT_GREG + "Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
+							UT.Entities.sendchat(aEvent.player, CHAT_GREG + "Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
 							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
 							ST.drop(aEvent.player, IL.Stick.get(16));
@@ -579,7 +579,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							case 3: ST.drop(aEvent.player, IL.Food_Large_Sandwich_Bacon .get(1)); break;
 							}
 						} else {
-							UT.Entities.chat(aEvent.player, CHAT_GREG + "It's dangerous to go alone! Take this.");
+							UT.Entities.sendchat(aEvent.player, CHAT_GREG + "It's dangerous to go alone! Take this.");
 							ST.drop(aEvent.player, Items.stone_axe, 1, 0);
 						}
 					}

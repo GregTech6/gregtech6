@@ -46,6 +46,10 @@ public enum OD {
 	, craftingWireIron
 	, craftingWireTin
 	, craftingDuctTape
+	, lever
+	, button
+	, buttonWood
+	, buttonStone
 	, listAllpropolis
 	, listAllmushroom
 	, listAllwheats

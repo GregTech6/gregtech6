@@ -292,15 +292,15 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		CR.shaped(ST.make(Items.minecart                , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , " h ", "PwP", "WPW", 'P', OP.plate.dat(ANY.Iron), 'W', OP.minecartWheels.dat(ANY.Iron));
 		
-		CR.shaped(ST.make(Items.chest_minecart          , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', Blocks.chest);
-		CR.shaped(ST.make(Items.furnace_minecart        , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', OD.craftingFurnace);
-		CR.shaped(ST.make(Items.hopper_minecart         , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', Blocks.hopper);
-		CR.shaped(ST.make(Items.tnt_minecart            , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', Blocks.tnt);
+		CR.shaped(ST.make(Items.chest_minecart          , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', Items.minecart, 'X', Blocks.chest);
+		CR.shaped(ST.make(Items.furnace_minecart        , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', Items.minecart, 'X', OD.craftingFurnace);
+		CR.shaped(ST.make(Items.hopper_minecart         , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', Items.minecart, 'X', Blocks.hopper);
+		CR.shaped(ST.make(Items.tnt_minecart            , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', Items.minecart, 'X', Blocks.tnt);
 		
-		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.chest_minecart  , 1, 0), ST.make(Blocks.chest, 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.chest_minecart  , 1, 0), ST.make(Blocks.chest  , 1, 0));
 		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.furnace_minecart, 1, 0), ST.make(Blocks.furnace, 1, 0));
-		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.hopper_minecart , 1, 0), ST.make(Blocks.hopper, 1, 0));
-		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.tnt_minecart    , 1, 0), ST.make(Blocks.tnt, 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.hopper_minecart , 1, 0), ST.make(Blocks.hopper , 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.tnt_minecart    , 1, 0), ST.make(Blocks.tnt    , 1, 0));
 		
 		
 		RM.boxunbox(OP.stick.mat(MT.Wood, 1), ST.make(Items.wooden_sword     , 1, 0), OP.toolHeadSword  .mat(MT.Wood   , 1));

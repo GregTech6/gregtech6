@@ -113,6 +113,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
 				mAxleGear &= ~B[tSide];
 				ST.place(getWorld(), getOffset(tSide, 1), OP.gearGt.mat(mMaterial, 1));
+				mJammed = F;
 				mGearsWork = checkGears();
 				updateClientData();
 				causeBlockUpdate();
@@ -120,6 +121,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			if (UT.Entities.hasInfiniteItems(aPlayer)) {
 				mAxleGear |= B[tSide];
+				mJammed = F;
 				mGearsWork = checkGears();
 				updateClientData();
 				causeBlockUpdate();
@@ -130,13 +132,14 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				if (tData != null && tData.mPrefix == OP.gearGt && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					aPlayerInventory.decrStackSize(i, 1);
 					mAxleGear |= B[tSide];
+					mJammed = F;
 					mGearsWork = checkGears();
 					updateClientData();
 					causeBlockUpdate();
 					return 10000;
 				}
 			}
-			UT.Entities.chat(aPlayer, "You dont have a Gear of the same Material in your Inventory!");
+			if (aChatReturn != null) aChatReturn.add("You dont have a Gear of the corresponding Material in your Inventory!");
 			return 0;
 		}
 		if (aTool.equals(TOOL_monkeywrench)) {
@@ -145,6 +148,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (SIDES_AXIS_X[tSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear = (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Y[tSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear = (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Z[tSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear = (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
+			mJammed = F;
 			mGearsWork = checkGears();
 			updateClientData();
 			causeBlockUpdate();
@@ -325,10 +329,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				mJammed = T;
 				return aPower;
 			}
-			if (Math.abs(aSpeed) != mCurrentSpeed) {
-				// Gears are not accepting the Power!
-				return aPower;
-			}
+			// Just take the lowest Speed available. Gives a different Type of Loss Mechanic that somewhat makes sense.
+			mCurrentSpeed = Math.min(Math.abs(aSpeed), mCurrentSpeed);
 			if (mIgnorePower) return 0;
 			mCurrentPower += aPower;
 			return aPower;

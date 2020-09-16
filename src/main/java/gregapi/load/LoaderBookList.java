@@ -32,21 +32,21 @@ public class LoaderBookList implements Runnable {
 	public void run() {
 		BooksGT.BOOK_REGISTER.put(IL.Circuit_Selector.wild(1), (byte) 43);
 		
-		BooksGT.BOOK_REGISTER.put(Items.paper           ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.name_tag        ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.map             ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.filled_map      ,   W, (byte) 26);
-		BooksGT.BOOK_REGISTER.put(Items.book            ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.writable_book   ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.written_book    ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.enchanted_book  ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Items.item_frame      ,   W, (byte) 34);
-		BooksGT.BOOK_REGISTER.put(Items.painting        ,   W, (byte) 34);
-		BooksGT.BOOK_REGISTER.put(Blocks.wooden_button  ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Blocks.stone_button   ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Blocks.lever          ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Blocks.redstone_torch ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Blocks.cobblestone    ,   W, (byte)255);
+		BooksGT.BOOK_REGISTER.put(Items.paper          , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.name_tag       , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.map            , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.filled_map     , W, (byte) 26);
+		BooksGT.BOOK_REGISTER.put(Items.book           , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.writable_book  , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.written_book   , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.enchanted_book , W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Items.item_frame     , W, (byte) 34);
+		BooksGT.BOOK_REGISTER.put(Items.painting       , W, (byte) 34);
+		BooksGT.BOOK_REGISTER.put(Blocks.wooden_button , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Blocks.stone_button  , W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Blocks.lever         , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Blocks.redstone_torch, W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Blocks.cobblestone   , W, (byte)255);
 		
 		if (MD.FR.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.FR, "catalogue"                            ,   W, (byte) 32);

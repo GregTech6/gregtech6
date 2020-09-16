@@ -32,6 +32,7 @@ import gregapi.data.CS.PlankData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MD;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.dummies.DummyInventory;
 import gregapi.network.INetworkHandler;
@@ -211,13 +212,13 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	private boolean switchBooks(EntityPlayer aPlayer, int aSlot) {
 		if (slotHas(aSlot)) {
 			if (!aPlayer.isSneaking()) {
-				if (ST.equal(slot(aSlot), Blocks.stone_button) || ST.equal(slot(aSlot), Blocks.wooden_button)) {
+				if (OD.button.is(slot(aSlot))) {
 					mRedstoneDelay = 120;
 					causeBlockUpdate();
 					playClick();
 					return T;
 				}
-				if (ST.equal(slot(aSlot), Blocks.lever) || ST.equal(slot(aSlot), Blocks.redstone_torch)) {
+				if (OD.lever.is(slot(aSlot)) || ST.equal(slot(aSlot), Blocks.redstone_torch)) {
 					if (mRedstoneDelay == 0) mRedstoneDelay = -1; else mRedstoneDelay = 0;
 					causeBlockUpdate();
 					playClick();
@@ -357,8 +358,8 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	private static final int[] ACCESSIBLE_SLOTS = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
-	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && BooksGT.BOOK_REGISTER.containsKey(aStack, T) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot)                                                 && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !OD.lever.is(slot(aSlot)) && !OD.button.is(slot(aSlot));}
+	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && BooksGT.BOOK_REGISTER.containsKey(aStack, T) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !OD.lever.is(slot(aSlot)) && !OD.button.is(slot(aSlot));}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.shelf.books";}
 }

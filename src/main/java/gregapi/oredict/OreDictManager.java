@@ -98,7 +98,7 @@ public final class OreDictManager {
 	private final Set<String> mAutoBlackListedMods = new HashSetNoNulls<>();
 	/** Lists all Names which are definitely not unknown. */
 	private final Set<String> mKnownNames = new HashSetNoNulls<>(F
-	, "slimeballRice", "buttonWood"
+	, "rennetSource", "yeastBrewers", "yeastLager", "yeastBayanus", "yeastEthereal", "yeastOrigin"
 	, "holystone", "darkStone", "whiteStone", "brightStone", "lavastone"
 	, "mycelium", "podzol", "grass", "soulSand", "taintedSoil"
 	, "snowLayer", "ice", "cloud"

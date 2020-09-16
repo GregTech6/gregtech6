@@ -139,13 +139,13 @@ public class MultiItemTechnological extends MultiItemRandom {
 		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
-		CR.shaped(IL.Cover_Machine_Display          .get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.lever, 'L', OP.wireGt01.dat(MT.Lumium));
-		CR.shaped(IL.Cover_Auto_Switch              .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.lever);
+		CR.shaped(IL.Cover_Machine_Display          .get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.lever, 'L', OP.wireGt01.dat(MT.Lumium));
+		CR.shaped(IL.Cover_Auto_Switch              .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.lever);
 		CR.shaped(IL.Cover_Energy_Display           .get(1), CR.DEF_REV, "CLB", "WQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1], 'L', OP.wireGt01.dat(MT.Lumium));
 		CR.shaped(IL.Cover_Redstone_Switch          .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.craftingRedstoneTorch);
-		CR.shaped(IL.Cover_Auto_Switch_Redstone     .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', Blocks.lever);
+		CR.shaped(IL.Cover_Auto_Switch_Redstone     .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', OD.lever);
 		CR.shaped(IL.Cover_Redstone_Selector        .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', Items.comparator, 'X', IL.Circuit_Selector.wild(1));
-		CR.shaped(IL.Cover_Manual_Selector          .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', Blocks.stone_button, 'X', IL.Circuit_Selector.wild(1));
+		CR.shaped(IL.Cover_Manual_Selector          .get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', OD.button, 'X', IL.Circuit_Selector.wild(1));
 		CR.shaped(IL.Cover_Auto_Switch_01_Minute    .get(1), CR.DEF_REV, "BWd", "CQ "       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[5], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
 		CR.shaped(IL.Cover_Auto_Switch_05_Minute    .get(1), CR.DEF_REV, "BW ", "CQd"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[4], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
 		CR.shaped(IL.Cover_Auto_Switch_10_Minute    .get(1), CR.DEF_REV, "BW ", "CQ ", "  d", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[3], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
@@ -156,15 +156,15 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Cover_Detector_Passively       .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.repeater);
 		CR.shaped(IL.Cover_Detector_Actively        .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator, 'X', Items.repeater);
 		CR.shaped(IL.Cover_Scale_Progress           .get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', OP.gearGtSmall.dat(MT.Brass));
-		CR.shaped(IL.Cover_Detector_Success         .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Blocks.stone_button, 'X', OD.craftingRedstoneTorch);
+		CR.shaped(IL.Cover_Detector_Success         .get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', OD.button, 'X', OD.craftingRedstoneTorch);
 		CR.shaped(IL.Cover_Drain                    .get(1), CR.DEF_REV, "RRR", "RwR", "RRR", 'R', OP.stick.dat(ANY.Iron));
-		CR.shaped(IL.Cover_Redstone_Emitter         .get(1), CR.DEF_REV, "BQB", "WXW"       , 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', Blocks.stone_button, 'X', Items.comparator);
+		CR.shaped(IL.Cover_Redstone_Emitter         .get(1), CR.DEF_REV, "BQB", "WXW"       , 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', OD.button, 'X', Items.comparator);
 		CR.shaped(IL.Cover_Vent                     .get(1), CR.DEF_REV, "RRR", "RXR", "RRR", 'R', OP.stick.dat(ANY.Iron), 'X', OP.rotor.dat(ANY.Iron));
 		CR.shaped(IL.Cover_Filter_Item              .get(1), CR.DEF_REV, " Z ", "ZQZ", " Z ", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
 		CR.shaped(IL.Cover_Filter_Fluid             .get(1), CR.DEF_REV, "Z Z", " Q ", "Z Z", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
 		CR.shaped(IL.Cover_Controller               .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator);
 		CR.shaped(IL.Cover_Shutter                  .get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
-		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', Blocks.stone_button, 'X', IL.Circuit_Selector.wild(1));
+		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', OD.button, 'X', IL.Circuit_Selector.wild(1));
 		CR.shaped(IL.Cover_Warning                  .get(1), CR.DEF_REV, "GB" , "YQ"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench, 'G', OD.itemGlue);
 		CR.shaped(IL.Cover_Redstone_Conductor_IN    .get(1), CR.DEF_REV,  "R" ,  "Q"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Redstone_Conductor_OUT   .get(1), CR.DEF_REV,  "Q" ,  "R"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));

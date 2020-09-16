@@ -335,7 +335,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Cropnalyzer.set(                addItem(tLastID =  9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 2, ST.make(this, 1, tLastID)), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
 		IL.Tool_Worldgen_Debugger.set(          addItem(tLastID =  9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
 		
-		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', ST.make(Blocks.stone_button, 1, W));
+		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', OD.button);
 		BooksGT.BOOK_REGISTER.put(IL.Tool_Remote_Activator, (byte)1);
 //      Moved to the Battery Section of the MTE Loader.
 //      CR.shaped(IL.Tool_Scanner               .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_HV, 'X', OP.plate.dat(MT.Cr), 'U', OD_USB_STICKS[3], 'C', OD_USB_CABLES[3], 'E', IL.EMITTERS[4], 'R', IL.SENSORS[4], 'P', IL.Processor_Crystal_Sapphire);

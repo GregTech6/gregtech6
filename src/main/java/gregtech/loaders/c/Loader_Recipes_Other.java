@@ -400,7 +400,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF_NAC, "k", "X", 'X', plate.dat(MT.Rubber));
 		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF_NAC, "X", "k", 'X', plate.dat(MT.Rubber));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', ST.make(Blocks.stone_button, 1, W));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', OD.buttonStone);
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
 		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF_NAC, "P ", " f", 'P', stoneSmooth);

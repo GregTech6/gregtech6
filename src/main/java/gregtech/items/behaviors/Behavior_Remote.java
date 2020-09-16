@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,19 +49,19 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		ArrayListNoNulls<ChunkCoordinates> tList = getCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId);
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
 		if (tList.contains(tCoords)) {
-			UT.Entities.chat(aPlayer, "Coordinates removed!");
+			UT.Entities.sendchat(aPlayer, "Coordinates removed!");
 			UT.Sounds.send(aWorld, SFX.IC_SCANNER, 1.0F, 1.0F, tCoords);
 			tList.remove(tCoords);
 		} else if (tList.size() >= 16) {
-			UT.Entities.chat(aPlayer, "Cant hold more than 16 Coordinates per Dimension!");
+			UT.Entities.sendchat(aPlayer, "Cant hold more than 16 Coordinates per Dimension!");
 		} else {
 			TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 			if (tTileEntity instanceof ITileEntityRemoteActivateable) {
-				UT.Entities.chat(aPlayer, "Coordinates added!");
+				UT.Entities.sendchat(aPlayer, "Coordinates added!");
 				UT.Sounds.send(aWorld, SFX.IC_SCANNER, 1.0F, 1.0F, tCoords);
 				tList.add(tCoords);
 			} else {
-				UT.Entities.chat(aPlayer, "This cannot be added!");
+				UT.Entities.sendchat(aPlayer, "This cannot be added!");
 			}
 		}
 		setCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId, tList);

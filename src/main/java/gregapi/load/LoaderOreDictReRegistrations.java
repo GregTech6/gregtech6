@@ -109,6 +109,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardEarth"              , "gemInfusedEarth");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardOrder"              , "gemInfusedOrder");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardEntropy"            , "gemInfusedEntropy");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("actAddCrystalRed"        , "gemRedstonia");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("elvenDragonstone"        , "gemElvenDragonstone");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("manaDiamond"             , "gemManaDiamond");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateLivingwood"         , "livingwood");
@@ -463,6 +464,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateGemRedstone"                , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("crystalRedstone"                 , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("redstoneCrystal"                 , OD.itemRedstone);
+		OreDictManager.INSTANCE.addReRegistration(OD.buttonWood                     , OD.button);
+		OreDictManager.INSTANCE.addReRegistration(OD.buttonStone                    , OD.button);
 		OreDictManager.INSTANCE.addReRegistration("blockSolidObsidian"              , OD.obsidian);
 		OreDictManager.INSTANCE.addReRegistration(OD.obsidian                       , "stoneObsidian");
 		OreDictManager.INSTANCE.addReRegistration(OD.cryingObsidian                 , OD.obsidian);
