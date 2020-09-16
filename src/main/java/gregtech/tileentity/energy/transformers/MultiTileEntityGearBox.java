@@ -66,7 +66,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_STOPPED)) mJammed = aNBT.getBoolean(NBT_STOPPED);
-		if (aNBT.hasKey(NBT_ACTIVE)) mIgnorePower = aNBT.getBoolean(NBT_ACTIVE);
 		if (aNBT.hasKey(NBT_CONNECTION)) mAxleGear = UT.Code.unsignB(aNBT.getByte(NBT_CONNECTION));
 		if (aNBT.hasKey(NBT_INPUT)) mMaxThroughPut = aNBT.getLong(NBT_INPUT);
 		mGearsWork = checkGears();
@@ -76,7 +75,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mJammed);
-		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mIgnorePower);
 		aNBT.setByte(NBT_CONNECTION, (byte)mAxleGear);
 	}
 	
@@ -177,17 +175,23 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				boolean temp = T;
 				while (temp) {
 					temp = F;
+					// Due to Geometry, there can only ever be up to 3 Output Sides at once.
+					long tUsable = Math.max(1, mCurrentPower/3);
 					for (byte i = 0; i < 6; i++) {
 						byte tSide = (byte)((mOrder+i)%6);
 						if (!FACE_CONNECTED[tSide][mInputtedSides]) {
 							if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
-								if (ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[          tSide ]) != 0 ? +mCurrentSpeed : -mCurrentSpeed, 1, this, getAdjacentTileEntity(tSide)) > 0) {
-									if (--mCurrentPower <= 0) {temp = F; break;}
+								long tUsed = ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[          tSide ]) != 0 ? +mCurrentSpeed : -mCurrentSpeed, tUsable, this, getAdjacentTileEntity(tSide));
+								if (tUsed > 0) {
+									mCurrentPower -= tUsed;
+									if (mCurrentPower <= 0) {temp = F; break;}
 									temp = T;
 								}
 							} else if (AXIS_XYZ[(mAxleGear >>> 6) & 3][tSide] && FACE_CONNECTED[OPPOSITES[tSide]][mAxleGear & 63]) {
-								if (ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[OPPOSITES[tSide]]) == 0 ? +mCurrentSpeed : -mCurrentSpeed, 1, this, getAdjacentTileEntity(tSide)) > 0) {
-									if (--mCurrentPower <= 0) {temp = F; break;}
+								long tUsed = ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, (mRotationData & B[OPPOSITES[tSide]]) == 0 ? +mCurrentSpeed : -mCurrentSpeed, tUsable, this, getAdjacentTileEntity(tSide));
+								if (tUsed > 0) {
+									mCurrentPower -= tUsed;
+									if (mCurrentPower <= 0) {temp = F; break;}
 									temp = T;
 								}
 							}
@@ -204,20 +208,35 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	}
 	
 	public byte getRotations(byte aSide, boolean aNegative) {
+		// Nothing is interlocked properly so no functionality here.
 		if (!mGearsWork) return 0;
+		// The Gear on the Input Side needs the correct direction set.
 		byte rRotationData = (byte)(aNegative ? B[aSide]|B[6] : B[6]);
+		// There is an Axle along this Axis.
+		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
+			// Make whatever is on the other side of the Axle rotate the same direction the Axle does.
+			if (!aNegative) rRotationData |= B[OPPOSITES[aSide]];
+			// Gear on Input Side.
+			if (FACE_CONNECTED[          aSide ][mAxleGear & 63]) {
+				// All adjacent Gears need to rotate the opposite direction of this Gear.
+				if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
+				return rRotationData;
+			}
+			// Gear on Throughput Side.
+			if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
+				// Make adjacent Gears rotate according to the Gear on the opposite Side.
+				if ( aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
+				return rRotationData;
+			}
+			// There is no Gears on that Axle, this should actually not get this far, because the Passthrough takes over, before this gets called.
+			return 0;
+		}
+		// Axle not involved.
 		if (FACE_CONNECTED[aSide][mAxleGear & 63]) {
-			// There is a Gear on opposite Sides of the Gearbox and there is at least one Gear inbetween them.
-			if ( aNegative) if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63] && FACE_CONNECTION_COUNT[mAxleGear & 63] > 2) rRotationData |= B[OPPOSITES[aSide]];
+			// The Gear on opposite Sides of the Gearbox rotates the opposite direction.
+			if ( aNegative) rRotationData |= B[OPPOSITES[aSide]];
 			// All adjacent Gears need to rotate the opposite direction of this Gear.
 			if (!aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
-			return rRotationData;
-		}
-		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
-			// Make whatever is on the other side of the Axle rotate the right way.
-			if (!aNegative) rRotationData |= B[OPPOSITES[aSide]];
-			// Make adjacent Gears rotate according to the Gear on the opposite Side.
-			if ( aNegative) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) rRotationData |= B[tSide];
 			return rRotationData;
 		}
 		return 0;
@@ -299,7 +318,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (!AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63]) return 0;
 		if (!aDoInject) return mIgnorePower ? 0 : aPower;
 		
-		if (Math.abs(aSpeed) > mMaxThroughPut) {
+		long tSpeed = Math.abs(aSpeed);
+		
+		if (tSpeed > mMaxThroughPut) {
 			if (mTimer < 10) return aPower;
 			UT.Sounds.send(SFX.MC_BREAK, this);
 			byte tCount = FACE_CONNECTION_COUNT[mAxleGear & 63];
@@ -316,11 +337,15 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		
 		mInputtedSides |= B[aSide];
 		
-		// Free Axle means it is always a passthrough.
+		// Free Axle means it is always a Passthrough.
 		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63] && !FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 			return ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, aSpeed, aPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 		}
 		
+		// Just absorb all power if the Gearbox is not set up properly.
+		if (!mGearsWork) return aPower;
+		
+		// There already has been at least one Input during this Tick. Add more Power.
 		if (mUsedGear) {
 			byte tRotationData = getRotations(aSide, aSpeed < 0);
 			if (tRotationData != mRotationData) {
@@ -330,13 +355,15 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				return aPower;
 			}
 			// Just take the lowest Speed available. Gives a different Type of Loss Mechanic that somewhat makes sense.
-			mCurrentSpeed = Math.min(Math.abs(aSpeed), mCurrentSpeed);
+			mCurrentSpeed = Math.min(tSpeed, mCurrentSpeed);
 			if (mIgnorePower) return 0;
 			mCurrentPower += aPower;
 			return aPower;
 		}
+		// There was no Input during this Tick yet, set Maximum Speed and Stuff.
 		if ((mRotationData = getRotations(aSide, aSpeed < 0)) != 0) {
-			mCurrentSpeed = Math.abs(aSpeed);
+			mCurrentSpeed = tSpeed;
+			// Still had leftover Power from last time. Start ignoring Input in order to not waste Power.
 			mIgnorePower = (mCurrentPower > 0);
 			mUsedGear = T;
 			if (mIgnorePower) return 0;
