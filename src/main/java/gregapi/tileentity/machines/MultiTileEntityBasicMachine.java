@@ -816,7 +816,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				mProgress += aEnergy;
 			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
-				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
+				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mIgnited = 40; mOutputItems[i] = null; continue;}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
