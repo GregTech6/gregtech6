@@ -89,6 +89,7 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		}
 		
 		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(MT.Pb));
+		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(MT.HSLA));
 		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(ANY.Steel));
 		CR.shaped   (ST.make(MD.OMT, "grenadeCraftable"         ,16, 0), CR.DEF_REV_NCC    , "BRB", "GPG", "BRB", 'P', OP.pipeTiny.dat(ANY.Iron), 'R', OP.ring.dat(ANY.Iron), 'B', OP.bolt.dat(ANY.Iron), 'G', OP.dustSmall.dat(MT.Gunpowder));
 		CR.shaped   (ST.make(MD.OMT, "rocketCraftable"          , 8, 0), CR.DEF_REV_NCC    , " X ", " G ", "XPX", 'P', OP.pipeSmall.dat(ANY.Steel), 'X', OP.plateTiny.dat(ANY.Steel), 'G', OP.dust.dat(MT.Gunpowder));

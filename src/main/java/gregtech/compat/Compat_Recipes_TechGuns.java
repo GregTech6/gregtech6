@@ -58,12 +58,16 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NAC_NCC, new Object[] {"X  ", "  x", 'X', OP.wireGt01.dat(ANY.Cu)});
 		
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.HSLA));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.HSLA));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(MT.HSLA));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.HSLA));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(ANY.Iron));
 		
 		RM.pack(ST.make(MD.TG, "TechgunsAmmo", 4, 7), ST.make(MD.TG, "TechgunsAmmo", 1, 88));
@@ -74,6 +78,11 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium  .mat(MT.Pb, 3));
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), OP.bulletGtSmall   .mat(MT.Pb, 3));
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), OP.bulletGtSmall   .mat(MT.Pb, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge   .mat(MT.HSLA, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium  .mat(MT.HSLA, 8));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium  .mat(MT.HSLA, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), OP.bulletGtSmall   .mat(MT.HSLA, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), OP.bulletGtSmall   .mat(MT.HSLA, 2));
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) {
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge   .mat(tMat, 2));
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium  .mat(tMat, 8));
@@ -109,13 +118,22 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Steel.mToThis) {ItemStack tStack = OP.plate.mat(tMat, 1); if (ST.valid(tStack)) {
 		RM.Press.addRecipe2(T, 16, 256, tStack, OP.plate.mat(MT.Bronze, 1), ST.make(MD.TG, "TechgunsAmmo", 1, 67));
 		}}
+		RM.Press.addRecipe2(T, 16, 256, OP.plate.mat(MT.HSLA, 1), OP.plate.mat(MT.Bronze, 1), ST.make(MD.TG, "TechgunsAmmo", 1, 67));
+		
+		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) {ItemStack tStack = OP.casingSmall.mat(tMat, 2); if (ST.valid(tStack)) {
 		RM.Press.addRecipe2(T, 16, 128, tStack, ST.make(Items.flint, 1, W), ST.make(MD.TG, "TechgunsAmmo", 1, 30));
 		RM.Press.addRecipe2(T, 16, 128, tStack, ST.make(Blocks.tnt, 1, W), ST.make(MD.TG, "TechgunsAmmo", 16, 93));
 		}}
+		RM.Press.addRecipe2(T, 16, 128, OP.casingSmall.mat(MT.HSLA, 2), ST.make(Items.flint, 1, W), ST.make(MD.TG, "TechgunsAmmo", 1, 30));
+		RM.Press.addRecipe2(T, 16, 128, OP.casingSmall.mat(MT.HSLA, 2), ST.make(Blocks.tnt, 1, W), ST.make(MD.TG, "TechgunsAmmo", 16, 93));
+		
+		
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {ItemStack tStack = OP.gem.mat(tMat, 1); if (ST.valid(tStack)) {
 		RM.Press.addRecipe2(T, 16, 128, OP.casingSmall.mat(MT.ObsidianSteel, 2), tStack, ST.make(MD.TG, "TechgunsAmmo", 1, 34));
 		}}
+		
+		
 		for (OreDictMaterial tMat : ANY.C.mToThis) {ItemStack tStack = OP.plate.mat(tMat, 1); if (ST.valid(tStack)) {
 		RM.Press.addRecipe2(T, 16, 128, tStack, ST.make(Items.blaze_rod, 1, W), ST.make(MD.TG, "TechgunsAmmo", 2, 37));
 		}}

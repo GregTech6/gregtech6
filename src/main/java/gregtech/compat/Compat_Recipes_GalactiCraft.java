@@ -57,26 +57,26 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			for (OreDictMaterial tMat : ANY.Steel.mToThis) {
 			ItemStack
 			tStack = OP.plate.mat(tMat, 1);
-			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, ST.array(tStack, OP.plate.mat(MT.Al, 1), OP.plate.mat(MT.Bronze, 1)), ST.make(MD.GC, "item.heavyPlating", 1, 0));
+			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, ST.array(tStack, OP.plate     .mat(MT.Al, 1), OP.plate     .mat(MT.Bronze, 1)), ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			tStack = OP.compressed.mat(tMat, 1);
 			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, ST.array(tStack, OP.compressed.mat(MT.Al, 1), OP.compressed.mat(MT.Bronze, 1)), ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			}
 			
 			CR.delate(MD.GC, "tile.landingPad");
 			
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),  CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe      ), 'D', OP.plateDense.dat(ANY.Fe    ));
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),  CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel   ), 'D', OP.plateDense.dat(ANY.Steel ));
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0), CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe   ), 'D', OP.plateDense.dat(ANY.Fe   ));
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1), CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel), 'D', OP.plateDense.dat(ANY.Steel));
 			
 			List<ItemStack>
-			  tListA = OreDictionary.getOres("gt:complateCopper"        ), tListA1 = OreDictionary.getOres("compressedCopper"       )
-			, tListB = OreDictionary.getOres("gt:complateTin"           ), tListB1 = OreDictionary.getOres("compressedTin"          )
-			, tListC = OreDictionary.getOres("gt:complateAluminium"     ), tListC1 = OreDictionary.getOres("compressedAluminum"     ), tListC2 = OreDictionary.getOres("compressedAluminium")
-			, tListD = OreDictionary.getOres("gt:complateSteel"         ), tListD1 = OreDictionary.getOres("compressedSteel"        )
-			, tListE = OreDictionary.getOres("gt:complateBronze"        ), tListE1 = OreDictionary.getOres("compressedBronze"       )
-			, tListF = OreDictionary.getOres("gt:complateIron"          ), tListF1 = OreDictionary.getOres("compressedIron"         )
-			, tListG = OreDictionary.getOres("gt:complateMeteoricIron"  ), tListG1 = OreDictionary.getOres("compressedMeteoricIron" )
-			, tListH = OreDictionary.getOres("gt:complateDesh"          ), tListH1 = OreDictionary.getOres("compressedDesh"         ), tListH2 = OreDictionary.getOres("stickDesh"), tListH3 = OreDictionary.getOres("ingotDesh")
-			, tListI = OreDictionary.getOres("gt:complateTitanium"      ), tListI1 = OreDictionary.getOres("compressedTitanium"     )
+			  tListA = OreDictionary.getOres("gt:complateCopper"      ), tListA1 = OreDictionary.getOres("compressedCopper"      )
+			, tListB = OreDictionary.getOres("gt:complateTin"         ), tListB1 = OreDictionary.getOres("compressedTin"         )
+			, tListC = OreDictionary.getOres("gt:complateAluminium"   ), tListC1 = OreDictionary.getOres("compressedAluminum"    ), tListC2 = OreDictionary.getOres("compressedAluminium")
+			, tListD = OreDictionary.getOres("gt:complateSteel"       ), tListD1 = OreDictionary.getOres("compressedSteel"       )
+			, tListE = OreDictionary.getOres("gt:complateBronze"      ), tListE1 = OreDictionary.getOres("compressedBronze"      )
+			, tListF = OreDictionary.getOres("gt:complateIron"        ), tListF1 = OreDictionary.getOres("compressedIron"        )
+			, tListG = OreDictionary.getOres("gt:complateMeteoricIron"), tListG1 = OreDictionary.getOres("compressedMeteoricIron")
+			, tListH = OreDictionary.getOres("gt:complateDesh"        ), tListH1 = OreDictionary.getOres("compressedDesh"        ), tListH2 = OreDictionary.getOres("stickDesh"), tListH3 = OreDictionary.getOres("ingotDesh")
+			, tListI = OreDictionary.getOres("gt:complateTitanium"    ), tListI1 = OreDictionary.getOres("compressedTitanium"    )
 			;
 			
 			Item

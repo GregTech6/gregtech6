@@ -247,7 +247,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Lighter_Plastic_Broken.set(     addItem(tLastID =  5013, "BIC (Broken)"                     , ""                                            , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.PERDITIO, 1), TD.Creative.HIDDEN));
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Plastic_Broken.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), 100, 9000);
 		addItemBehavior(5011, tBehaviour); addItemBehavior(5012, tBehaviour);
-		CR.shaped(IL.Tool_Lighter_Plastic_Empty.get(1), CR.DEF_NCC, "IF", "dP", "xP", 'F', "itemFlint", 'P', OP.plateCurved.dat(MT.Plastic), 'I', OP.screw.dat(ANY.Iron));
+		CR.shaped(IL.Tool_Lighter_Plastic_Empty.get(1), CR.DEF_NCC, "IF", "dP", "xP", 'F', OD.itemFlint, 'P', OP.plateCurved.dat(MT.Plastic), 'I', OP.screw.dat(ANY.Iron));
 		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Butane .make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
 		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Propane.make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Plastic_Empty.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), IL.Tool_Lighter_Plastic_Broken.get(1));

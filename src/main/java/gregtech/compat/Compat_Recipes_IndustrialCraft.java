@@ -328,12 +328,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		CR.shaped(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0), CR.DEF_REV_NCC, "PSP", "SPS", "PSP", 'P', OP.plate.dat(MT.Pb), 'S', OP.stone);
 		CR.shaped(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0), CR.DEF_REV_NCC, "XXX", "XCX", "XXX", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockreactorvessel", 1, 0));
-		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'P', OP.casingSmall.dat(ANY.Iron), 'S', IL.IC2_ShaftIron);
 		CR.shaped(ST.make(MD.IC2, "blockMachine3"           , 1, 3), CR.DEF_REV_NCC, "GGG", "G G", "CXC", 'C', OP.cell.dat(MT.Empty), 'X', IL.IC2_Machine, 'G', OP.plateGem.dat(MT.Glass));
-		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron), 'R', OD.itemRedstone);
+		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1));
+		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5));
+		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'S', IL.IC2_ShaftIron);
+		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', OD_CIRCUITS[1]);
+		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', OD_CIRCUITS[1], 'R', OD.itemRedstone);
 		CR.shaped(ST.make(MD.IC2, "itemFoamSprayer"         , 1, 0), CR.DEF_REV_NCC, "P  ", " P ", " CP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron));
 		
 		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrap       .get(36), NF, FL.UUM.make(1), ZL_IS);
@@ -556,9 +556,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (tMat != MT.Enori) {
-		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
-		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(tMat, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat   , 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(tMat   , 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
 		}
+		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(MT.HSLA, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(MT.HSLA, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("blockSolidObsidian", "blockDustObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

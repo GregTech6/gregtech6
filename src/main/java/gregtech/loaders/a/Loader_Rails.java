@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -66,59 +66,59 @@ public class Loader_Rails implements Runnable {
 		BlocksGT.RailTungstenCarbideDetector        = new BlockBaseRail(null, "gt.block.rail.detector.tungstencarbide"  , "Tungstencarbide Detector Track"  , F, T, 1.00F, 24, MT.TungstenCarbide   .mToolQuality-1, Textures.BlockIcons.RAIL_DETECTOR_TUNGSTENCARBIDE  , Textures.BlockIcons.RAIL_DETECTOR_ACTIVE_TUNGSTENCARBIDE);
 		
 		if (MD.RC.mLoaded) {
-			CR.shaped(ST.make((Block)BlocksGT.RailSteel                     , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(ANY.Steel             ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminium                 , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Al                 ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailBronze                    , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Bronze             ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteel            , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailTitanium                  , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Ti                 ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailTungsten                  , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(ANY.W                 ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteel             , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'B', IL.RC_Bed_Wood);
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbide           , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailSteel                     , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(ANY.Steel         ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminium                 , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Al             ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailBronze                    , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Bronze         ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteel            , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.StainlessSteel ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailTitanium                  , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.Ti             ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungsten                  , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(ANY.W             ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteel             , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'B', IL.RC_Bed_Wood);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbide           , 12, 0), CR.DEF_REV_NCC, "R R", "RBR", "R R", 'R', OP.railGt.dat(MT.TungstenCarbide), 'B', IL.RC_Bed_Wood);
 			
-			CR.shaped(ST.make((Block)BlocksGT.RailSteelBooster              , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(ANY.Steel             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumBooster          , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Al                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
-			CR.shaped(ST.make((Block)BlocksGT.RailBronzeBooster             , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Bronze             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelBooster     , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
-			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumBooster           , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Ti                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenBooster           , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(ANY.W                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelBooster      , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideBooster    , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
+			CR.shaped(ST.make((Block)BlocksGT.RailSteelBooster              , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(ANY.Steel         ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumBooster          , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Al             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
+			CR.shaped(ST.make((Block)BlocksGT.RailBronzeBooster             , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Bronze         ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelBooster     , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
+			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumBooster           , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.Ti             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenBooster           , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(ANY.W             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelBooster      , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideBooster    , 12, 0), CR.DEF_REV_NCC, "RDR", "GBG", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
 			
-			CR.shaped(ST.make((Block)BlocksGT.RailSteelDetector             , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Steel             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumDetector         , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Al                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailBronzeDetector            , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Bronze             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelDetector    , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumDetector          , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Ti                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenDetector          , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.W                 ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelDetector     , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideDetector   , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
+			CR.shaped(ST.make((Block)BlocksGT.RailSteelDetector             , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Steel         ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumDetector         , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Al             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailBronzeDetector            , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Bronze         ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelDetector    , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumDetector          , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Ti             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenDetector          , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.W             ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelDetector     , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideDetector   , 12, 0), CR.DEF_REV_NCC, "RBR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'B', IL.RC_Bed_Wood, 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
 		} else {
-			CR.shaped(ST.make((Block)BlocksGT.RailSteel                     ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.Steel             ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminium                 ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Al                 ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailBronze                    ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Bronze             ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteel            ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailTitanium                  ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Ti                 ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungsten                  ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.W                 ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteel             ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'S', OP.stick.dat(MT.WoodSealed));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbide           ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailSteel                     ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.Steel         ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminium                 ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Al             ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailBronze                    ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Bronze         ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteel            ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailTitanium                  ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.Ti             ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungsten                  ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.W             ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteel             ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbide           ,  4, 0), CR.DEF_REV_NCC, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'S', OP.stick.dat(MT.WoodSealed));
 			
-			CR.shaped(ST.make((Block)BlocksGT.RailSteelBooster              ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.Steel             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumBooster          ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Al                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
-			CR.shaped(ST.make((Block)BlocksGT.RailBronzeBooster             ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Bronze             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelBooster     ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
-			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumBooster           ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Ti                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenBooster           ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.W                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelBooster      ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideBooster    ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
+			CR.shaped(ST.make((Block)BlocksGT.RailSteelBooster              ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.Steel         ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumBooster          ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Al             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
+			CR.shaped(ST.make((Block)BlocksGT.RailBronzeBooster             ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Bronze         ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Ag));
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelBooster     ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
+			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumBooster           ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.Ti             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenBooster           ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.W             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Electrum));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelBooster      ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideBooster    ,  4, 0), CR.DEF_REV_NCC, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Pt));
 			
-			CR.shaped(ST.make((Block)BlocksGT.RailSteelDetector             ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Steel             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumDetector         ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Al                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailBronzeDetector            ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Bronze             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelDetector    ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel     ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumDetector          ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Ti                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenDetector          ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.W                 ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelDetector     ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel      ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideDetector   ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide    ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
+			CR.shaped(ST.make((Block)BlocksGT.RailSteelDetector             ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Steel         ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailAluminiumDetector         ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Al             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailBronzeDetector            ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Bronze         ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailStainlessSteelDetector    ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTitaniumDetector          ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.Ti             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenDetector          ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.W             ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenSteelDetector     ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			CR.shaped(ST.make((Block)BlocksGT.RailTungstenCarbideDetector   ,  4, 0), CR.DEF_REV_NCC, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
 		}
 	}
 }

@@ -215,39 +215,40 @@ public class Loader_Tools implements Runnable {
 		GAPI.mBeforePostInit.add(new Runnable() {@SuppressWarnings({"rawtypes", "unchecked"})
 		@Override public void run() {
 		
-		CR.shapeless(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, 1, MT.Steel               , MT.Flint  ), CR.DEF       , new Object[] {ST.make(Items.flint_and_steel, 1, 0)});
-		CR.shaped(ST.make(Items.flint_and_steel, 1, 0)                          , CR.DEL_OTHER_NATIVE_RECIPES           |  CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(MT.Steel));
+		CR.shapeless(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, 1, MT.Steel, MT.Flint), CR.DEF    , new Object[] {ST.make(Items.flint_and_steel, 1, 0)});
+		CR.shaped(ST.make(Items.flint_and_steel, 1, 0)               , CR.DEL_OTHER_NATIVE_RECIPES | CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(MT.Steel));
 		for (OreDictMaterial tMaterial : ANY.Iron.mToThis) if (tMaterial != MT.Steel) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : ANY.Jasper.mToThis) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : ANY.TigerEye.mToThis) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : ANY.Aventurine.mToThis) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.NetherQuartz, MT.MilkyQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Quartzite, MT.Phosphorite, MT.Phosphorus, MT.PO4, MT.P, MT.Apatite}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gem.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', gem.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Au, MT.As, MT.Co, MT.Co_60, MT.Ni, MT.Thaumium, MT.DamascusSteel, MT.Netherite, MT.NetherizedDiamond}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Au, MT.As, MT.Co, MT.Co_60, MT.Ni, MT.HSLA, MT.Thaumium, MT.DamascusSteel, MT.Netherite, MT.NetherizedDiamond}) {
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Chert}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', stone.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', stone.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Pyrite, MT.Fe2O3, MT.OREMATS.Cobaltite, MT.OREMATS.Garnierite, MT.OREMATS.Pentlandite, MT.OREMATS.Chromite, MT.OREMATS.Ilmenite, MT.OREMATS.BrownLimonite, MT.OREMATS.YellowLimonite, MT.OREMATS.Magnetite, MT.OREMATS.Arsenopyrite, MT.OREMATS.Chalcopyrite}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
+		
 		
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Plastic, MT.Syrmorite, MT.Au, MT.Al, MT.Cr, MT.StainlessSteel, MT.Netherite, MT.NetherizedDiamond})
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , tMaterial         , tMaterial         ), CR.DEF_MIR   , "  S", " I ", "S f", 'I', ingot.dat(tMaterial), 'S', stick.dat(tMaterial));
@@ -258,7 +259,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , MT.Wood           , MT.Wood           ), CR.DEF_MIR   , "  S", " I ", "S f", 'I', OD.plankAnyWood, 'S', stick.dat(ANY.Wood));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , MT.Wood           , MT.Wood           ), CR.DEF_MIR   , "  S", " I ", "S k", 'I', OD.plankAnyWood, 'S', stick.dat(ANY.Wood));
 		
-		for (Object[] tHandle : new Object[][] {{MT.Wood, stick.dat(ANY.Wood)}, {MT.PetrifiedWood, stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, ST.make(Items.bone, 1, W)}, {MT.Plastic, stick.dat(MT.Plastic)}}) {
+		for (Object[] tHandle : new Object[][] {{MT.Wood, stick.dat(ANY.Wood)}, {MT.PetrifiedWood, stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, Items.bone}, {MT.Plastic, stick.dat(MT.Plastic)}}) {
 		
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE              , MT.Flint          , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , "SF"               , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE                , MT.Flint          , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , "FF" , "FS"        , 'S', tHandle[1], 'F', OD.itemFlint);

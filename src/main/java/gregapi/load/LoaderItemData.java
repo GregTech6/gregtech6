@@ -1600,7 +1600,7 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  25, ANY.Stone             ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  27, ANY.Iron              ,  U * 6);
-		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U * 1, MT.Flint,  U2);
+		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U2   , MT.Flint,  U2);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  33, MT.ObsidianSteel      ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  34, MT.ObsidianSteel      ,  U * 1, ANY.Quartz,  U * 1);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  37, MT.C                  ,  U2   , MT.Blaze,  U2);

@@ -360,12 +360,13 @@ public class GT6_Main extends Abstract_Mod {
 		if (!MD.RC.mLoaded) {
 			CR.shaped(ST.make(Blocks.rail          ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed));
 			CR.shaped(ST.make(Blocks.golden_rail   ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
-			CR.shaped(ST.make(Blocks.detector_rail ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
-
+			CR.shaped(ST.make(Blocks.detector_rail ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', Blocks.stone_pressure_plate);
+			
 			CR.shaped(ST.make(Blocks.activator_rail,  1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Al             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Bronze         ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  2, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.Fe            ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  3, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.Steel         ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  3, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.HSLA           ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  4, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  6, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Ti             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
 			CR.shaped(ST.make(Blocks.activator_rail,  6, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.W             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);

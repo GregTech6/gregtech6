@@ -410,28 +410,28 @@ public class MultiItemTechnological extends MultiItemRandom {
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bread.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Baguette.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Cylinder.get(1)), (byte)45);
-
-
-
-
+		
+		
+		
+		
 		IL.Shape_Press_Bullet_Casing_Small.set( addItem(tLastID = 10896, "Bullet Casing Mold (Small)"       , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.TELUM, 2)));
 		IL.Shape_Press_Bullet_Casing_Medium.set(addItem(tLastID = 10897, "Bullet Casing Mold (Medium)"      , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.TELUM, 3)));
 		IL.Shape_Press_Bullet_Casing_Large.set( addItem(tLastID = 10898, "Bullet Casing Mold (Large)"       , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.TELUM, 4)));
 
-		CR.shaped(IL.Shape_Press_Bullet_Casing_Small    .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateDouble.dat(ANY.Steel));
-		CR.shaped(IL.Shape_Press_Bullet_Casing_Medium   .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateTriple.dat(ANY.Steel));
-		CR.shaped(IL.Shape_Press_Bullet_Casing_Large    .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateQuadruple.dat(ANY.Steel));
+		CR.shaped(IL.Shape_Press_Bullet_Casing_Small .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateDouble.dat(ANY.Steel));
+		CR.shaped(IL.Shape_Press_Bullet_Casing_Medium.get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateTriple.dat(ANY.Steel));
+		CR.shaped(IL.Shape_Press_Bullet_Casing_Large .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateQuadruple.dat(ANY.Steel));
 
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Small.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Small .get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Medium.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Large.get(1)), (byte)45);
-
-
-
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Large .get(1)), (byte)45);
+		
+		
+		
 		IL.Shape_Slicer_Empty.set(              addItem(tLastID = 10900, "Slicer Blade Frame"               , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
-
+		
 		CR.shaped(IL.Shape_Slicer_Empty.get(1), CR.DEF_REV, " R ", "RhR", " R ", 'R', OP.stick.dat(MT.StainlessSteel));
-
+		
 		IL.Shape_Slicer_Flat.set(               addItem(tLastID = 10901, "Slicer Blades (Flat)"             , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1), TC.stack(TC.TELUM, 1)));
 		IL.Shape_Slicer_Grid.set(               addItem(tLastID = 10902, "Slicer Blades (Grid)"             , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1), TC.stack(TC.TELUM, 1)));
 		IL.Shape_Slicer_Eigths.set(             addItem(tLastID = 10903, "Slicer Blades (Eigths)"           , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1), TC.stack(TC.TELUM, 1)));
