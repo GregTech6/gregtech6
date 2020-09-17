@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+[CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 
@@ -4229,7 +4230,7 @@ A Meltdown at 2000 Kelvin seems most realistic, since it is mostly made of Steel
 [DISABLED] NEI for my Recipe System, since there is no Machine using it.
 [CHANGED] The 3 Crushed Ore Items are now worth 11/9 of a Material Unit per default.
 [CHANGED] MOST METALS DO NOT SMELT ANYMORE IN ANY FURNACE!!! This is because I finished the Smelting System and the Molds.
-[ADDED] 0.25 large Nugget to have somethign that is worth 1/4th of a Unit and considered an Ingot Type of thing.
+[ADDED] 0.25 large Nugget to have something that is worth 1/4th of a Unit and considered an Ingot Type of thing.
 [ADDED] Small Graphite Ores to the Worldgen, which are as rare as Diamond.
 [ADDED]
 A Functionality to my Metal Chests which enables them to generate Dungeon Loot inside once they are opened/broken the very first time.
