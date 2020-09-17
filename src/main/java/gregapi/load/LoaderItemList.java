@@ -750,6 +750,9 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Bucket_Death                      .set(ST.make(MD.TC, "ItemBucketDeath"                       , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.itemPoison);
 		IL.TC_Bucket_Pure                       .set(ST.make(MD.TC, "ItemBucketPure"                        , 1, 0), new OreDictItemData(ANY.Fe, U*3));
 		
+		if (IL.TC_Bucket_Death.exists()) IL.TC_Bucket_Death.item().setContainerItem(Items.bucket);
+		if (IL.TC_Bucket_Pure .exists()) IL.TC_Bucket_Pure .item().setContainerItem(Items.bucket);
+		
 		
 		IL.TF_LiveRoot                          .set(ST.make(MD.TF, "item.liveRoot"                         , 1, 0), new OreDictItemData(MT.LiveRoot, U));
 		IL.TF_Torchberries                      .set(ST.make(MD.TF, "item.torchberries"                     , 1, 0));
