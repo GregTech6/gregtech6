@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
-[FIXED] The Axle inside the Custom Gearbox was not always perfectly working like intended.
+[FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 
 

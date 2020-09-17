@@ -395,15 +395,15 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		return 0;
 	}
 	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return TD.Energy.RU == aEnergyType;}
-	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mJammed) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                               super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeOutputMin            (TagData aEnergyType, byte aSide) {return 0;}
-	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mMaxThroughPut/2;}
-	@Override public long getEnergySizeOutputMax            (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
-	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return 0;}
-	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mMaxThroughPut/2;}
-	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
+	@Override public boolean isEnergyType               (TagData aEnergyType, byte aSide, boolean aEmitting) {return TD.Energy.RU == aEnergyType;}
+	@Override public boolean isEnergyAcceptingFrom      (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mJammed) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo         (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                               super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeOutputMin        (TagData aEnergyType, byte aSide) {return 0;}
+	@Override public long getEnergySizeOutputRecommended(TagData aEnergyType, byte aSide) {return mMaxThroughPut/2;}
+	@Override public long getEnergySizeOutputMax        (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
+	@Override public long getEnergySizeInputMin         (TagData aEnergyType, byte aSide) {return 0;}
+	@Override public long getEnergySizeInputRecommended (TagData aEnergyType, byte aSide) {return mMaxThroughPut/2;}
+	@Override public long getEnergySizeInputMax         (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.RU.AS_LIST;}
 	
 	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return super.isUsingWrenchingOverlay(aStack, aSide) || ToolsGT.contains(TOOL_wrench, aStack) || ToolsGT.contains(TOOL_monkeywrench, aStack);}
