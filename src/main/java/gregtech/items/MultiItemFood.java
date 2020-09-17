@@ -118,8 +118,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud , TC.stack(TC.TERRA, 1)));
-		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
-		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay Ball"                            , "Perfectly Balanced With No Exploits, except INFINITE CLAY!!!", OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
+		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , "Perfectly Balanced With No Exploits!"                        , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
+		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay Ball"                            , "Clay ONLY Challenge Is Broken!"                              , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
 		RM.generify(IL.Clay_Ball_Brown.get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.generify(IL.Clay_Ball_Red  .get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Brown.get(1), ST.make(Items.brick, 1, 0));

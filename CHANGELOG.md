@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
+[FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
 
 
 6.14.01:

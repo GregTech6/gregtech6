@@ -874,6 +874,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cellLubricant"                   , OD.container1000lubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250glue               , OD.itemGlue);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000glue              , OD.itemGlue);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250poison             , OD.itemPoison);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000poison            , OD.itemPoison);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250lubricant          , OD.itemLubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000lubricant         , OD.itemLubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLubricant                  , OD.itemLubricantEarly);

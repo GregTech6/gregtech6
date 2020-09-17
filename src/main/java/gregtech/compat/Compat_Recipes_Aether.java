@@ -53,14 +53,14 @@ public class Compat_Recipes_Aether extends CompatMods {
 		
 		CR.shapeless(ST.make(MD.AETHER, "cornstarchBowl", 1, 0), CR.DEF_NAC_NCC, new Object[] {IL.AETHER_Bowl, OP.dust.dat(ANY.Flour)});
 		
-		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"         , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
-		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"        , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));
-		RM.sawing(16,  48, F, 100, ST.make(MD.AETHER, "skyrootBedItem"          , 1, W), IL.AETHER_Skyroot_Planks.get(3), ST.make(Blocks.wool, 3, 0));
-		RM.sawing(16,  48, F, 100, ST.make(MD.AETHER, "skyrootTrapDoor"         , 1, W), IL.AETHER_Skyroot_Planks.get(3));
-		RM.sawing(16,  64, F, 100, ST.make(MD.AETHER, "skyrootCraftingTable"    , 1, W), IL.AETHER_Skyroot_Planks.get(4));
-		RM.sawing(16,  96, F, 100, ST.make(MD.AETHER, "skyrootDoorItem"         , 1, W), IL.AETHER_Skyroot_Planks.get(6));
-		RM.sawing(16,  96, F, 100, ST.make(MD.AETHER, "skyrootBookshelf"        , 1, W), IL.AETHER_Skyroot_Planks.get(6), ST.make(Items.book, 3, 0));
-		RM.sawing(16, 128, F, 100, ST.make(MD.AETHER, "skyrootChest"            , 1, W), IL.AETHER_Skyroot_Planks.get(8));
+		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"     , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
+		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"    , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));
+		RM.sawing(16,  48, F, 100, ST.make(MD.AETHER, "skyrootBedItem"      , 1, W), IL.AETHER_Skyroot_Planks.get(3), ST.make(Blocks.wool, 3, 0));
+		RM.sawing(16,  48, F, 100, ST.make(MD.AETHER, "skyrootTrapDoor"     , 1, W), IL.AETHER_Skyroot_Planks.get(3));
+		RM.sawing(16,  64, F, 100, ST.make(MD.AETHER, "skyrootCraftingTable", 1, W), IL.AETHER_Skyroot_Planks.get(4));
+		RM.sawing(16,  96, F, 100, ST.make(MD.AETHER, "skyrootDoorItem"     , 1, W), IL.AETHER_Skyroot_Planks.get(6));
+		RM.sawing(16,  96, F, 100, ST.make(MD.AETHER, "skyrootBookshelf"    , 1, W), IL.AETHER_Skyroot_Planks.get(6), ST.make(Items.book, 3, 0));
+		RM.sawing(16, 128, F, 100, ST.make(MD.AETHER, "skyrootChest"        , 1, W), IL.AETHER_Skyroot_Planks.get(8));
 		
 		CR.shapeless(IL.AETHER_Skyroot_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.AETHER, "skyrootSignItem"     )});
 		CR.shapeless(IL.AETHER_Skyroot_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.AETHER, "skyrootFenceGate"    )});
@@ -85,12 +85,12 @@ public class Compat_Recipes_Aether extends CompatMods {
 		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium,16), OP.gemLegendary.mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 8, 0));
 		
 		RM.biomass(ST.make(MD.AETHER, "purpleFlower", 16, W));
-		RM.biomass(ST.make(MD.AETHER, "whiteRose", 16, W));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower" , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"    , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower"   , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"      , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
-		RM.ic2_extractor(ST.make(MD.AETHER, "purpleFlower"  , 1, W), ST.make(Items.dye, 3, DYE_INDEX_Purple));
-		RM.ic2_extractor(ST.make(MD.AETHER, "whiteRose"     , 1, W), OM.dust(MT.White, U*3));
+		RM.biomass(ST.make(MD.AETHER, "whiteRose"   , 16, W));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower", 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"   , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower", 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"   , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
+		RM.ic2_extractor(ST.make(MD.AETHER, "purpleFlower", 1, W), ST.make(Items.dye, 3, DYE_INDEX_Purple));
+		RM.ic2_extractor(ST.make(MD.AETHER, "whiteRose"   , 1, W), OM.dust(MT.White, U*3));
 	}
 }

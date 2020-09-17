@@ -79,6 +79,8 @@ public enum OD {
 	, container250lubricant
 	, container1000glue
 	, container250glue
+	, container1000poison
+	, container250poison
 	, aquaRegia
 	, sulfuricAcid
 	, enderChest
@@ -136,6 +138,7 @@ public enum OD {
 	, itemMoss
 	, itemSlag
 	, itemGlue
+	, itemPoison
 	, itemBarkDry
 	, itemLubricant
 	, itemLubricantEarly
@@ -169,6 +172,10 @@ public enum OD {
 	, fishtrapBait
 	, obsidian
 	, cryingObsidian
+	, paneGlass
+	, paneGlassColorless
+	, blockGlass
+	, blockGlassColorless
 	, blockTorch
 	, blockSoulTorch
 	, blockFoxfireTorch

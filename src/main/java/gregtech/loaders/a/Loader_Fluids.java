@@ -266,7 +266,8 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("potion.invisibility.long"                   , "Stretched Invisible Brew"                , null, 1, 1000, 300, ST.make(Items.potionitem, 1,  8270), IL.Bottle_Empty.get(1), 250).setLuminosity( 5)   , LH.Chat.CYAN  + "Invisibility (8:00)"     ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.invisibility     .id,9600, 0, 100);
 		new FoodStatDrink(FL.create("potion.invisibility.splash"                 , "Splash Invisible Brew"                   , null, 1, 1000, 300, ST.make(Items.potionitem, 1, 16398), IL.Bottle_Empty.get(1), 250)                     , LH.Chat.CYAN  + "Invisibility (2:15)"     ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.invisibility     .id,2700, 0, 100);
 		new FoodStatDrink(FL.create("potion.invisibility.long.splash"            , "Stretched Splash Invisible Brew"         , null, 1, 1000, 300, ST.make(Items.potionitem, 1, 16462), IL.Bottle_Empty.get(1), 250).setLuminosity( 5)   , LH.Chat.CYAN  + "Invisibility (6:00)"     ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.invisibility     .id,7200, 0, 100);
-
+		
+		
 		// Those Potions are broken duplicates, which cannot be improved with Redstone or Glowstone anymore, so I need to at least add them for emptying the Bottles.
 		FL.reg(FL.make("potion.weakness"           , 250), ST.make(Items.potionitem, 1,  8232), IL.Bottle_Empty.get(1));
 		FL.reg(FL.make("potion.slowness"           , 250), ST.make(Items.potionitem, 1,  8234), IL.Bottle_Empty.get(1));
@@ -631,6 +632,8 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Honey             .make(1000), IL.GrC_Honey_Jar                .get(1), ST.make(Items.flower_pot, 1, 0));
 		FL.reg(FL.Honey             .make( 500), IL.BoP_Jar_Honey                .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		FL.reg(FL.Potion_Poison_2   .make( 500), IL.BoP_Jar_Poison               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		FL.reg(FL.Water             .make(1000), IL.AETHER_Bucket_Water          .get(1), IL.AETHER_Bucket_Empty.get(1));
+		FL.reg(FL.Milk              .make(1000), IL.AETHER_Bucket_Milk           .get(1), IL.AETHER_Bucket_Empty.get(1));
 		
 		// This one is "Special"...
 		FL.reg(FL.SpDew.make(1000), IL.NeLi_Bucket_Spectral_Dew.getWithNBT(1, UT.NBT.make("Fluid", UT.NBT.make("FluidName", FL.SpDew.mName, "Amount", 1000))), ST.make(Items.bucket, 1, 0), F, T, T);
