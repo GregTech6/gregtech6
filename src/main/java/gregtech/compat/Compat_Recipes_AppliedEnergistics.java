@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -90,6 +91,11 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.CertusQuartz), ST.make(Blocks.sand, 1, W), ST.make(MD.AE, "item.ItemCrystalSeed", 2,    0));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.NetherQuartz), ST.make(Blocks.sand, 1, W), ST.make(MD.AE, "item.ItemCrystalSeed", 2,  600));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Fluix       ), ST.make(Blocks.sand, 1, W), ST.make(MD.AE, "item.ItemCrystalSeed", 2, 1200));
+		if (IL.AETHER_Sand.exists()) {
+		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.CertusQuartz), IL.AETHER_Sand     .get(1), ST.make(MD.AE, "item.ItemCrystalSeed", 2,    0));
+		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.NetherQuartz), IL.AETHER_Sand     .get(1), ST.make(MD.AE, "item.ItemCrystalSeed", 2,  600));
+		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Fluix       ), IL.AETHER_Sand     .get(1), ST.make(MD.AE, "item.ItemCrystalSeed", 2, 1200));
+		}
 		
 		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AE, "tile.BlockQuartz"              , 1, W), OP.gem.mat(MT.CertusQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AE, "tile.BlockQuartzPillar"        , 1, W), OP.gem.mat(MT.CertusQuartz, 4));

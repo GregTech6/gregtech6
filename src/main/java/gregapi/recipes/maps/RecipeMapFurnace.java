@@ -27,6 +27,7 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
+import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -59,7 +60,7 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		if (FL.XP.exists()) {
 			OreDictItemData tData = OM.anydata_(aInputs[0]);
 			// Don't allow any Dusts to give XP
-			if (!OM.prefixcontains(tData, TD.Prefix.DUST_BASED)) {
+			if (!OM.prefixcontainsany(tData, TD.Prefix.DUST_BASED, TD.Prefix.INGOT_BASED, TD.Prefix.GEM_BASED)) {
 				FluidStack tFluid = null;
 				if (tOutput.getItem() == Items.brick || tOutput.getItem() == Items.netherbrick || tOutput.getItem() == Items.clay_ball || tOutput.getItem() == Items.dye) {
 					// Bricks and Dyes are 0.05 XP
@@ -73,14 +74,14 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 				} else if (IL.ERE_Pot_Cooked.equal(tOutput)) {
 					// The Titan Stew a whole Orb of XP
 					tFluid = FL.XP.make(tOutput.stackSize * 20);
+				} else if (OD.blockGlass.is(tOutput) || OD.paneGlass.is(tOutput)) {
+					// Glass is 0.05 XP, yes I know it can be made from Stone, but this is enough effort to warrant at least some XP.
+					tFluid = FL.XP.make(tOutput.stackSize);
 				} else {
 					Block tBlock = ST.block(tOutput);
 					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick || tBlock instanceof BlockStones) {
 						// Stone should not give XP, especially not because of the Cobble Generator Upgrades.
 						// GT6 Stone is also not allowed due to easily recycleable Recipes.
-					} else if (tBlock == Blocks.glass || tBlock == Blocks.stained_glass || tBlock == Blocks.glass_pane || tBlock == Blocks.stained_glass_pane) {
-						// Glass is 0.05 XP, yes I know it can be made from Stone, but this is enough effort to warrant at least some XP.
-						tFluid = FL.XP.make(tOutput.stackSize);
 					} else if (tBlock == Blocks.hardened_clay || tBlock == Blocks.stained_hardened_clay) {
 						// Hardened Clay is 0.10 XP
 						tFluid = FL.XP.make(tOutput.stackSize * 2);

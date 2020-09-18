@@ -86,6 +86,9 @@ public enum OD {
 	, enderChest
 	, soulsand
 	, glowstone
+	, dirt
+	, sand
+	, gravel
 	, pestleAndMortar
 	, materialPressedwax
 	, materialWaxcomb

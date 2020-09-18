@@ -153,22 +153,22 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Comb_Amnesic.set(        addItem(tLastID = 30104, "Amnesic Comb"         , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.LIMUS, 1), TC.stack(TC.STRONTIO, 1)));
 		IL.Comb_Military.set(       addItem(tLastID = 30105, "Military Comb"        , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TELUM, 2)));
 		
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Honey     .get(1), NF, FL.Honey           .make( 100), OM.dust(MT.WaxBee)                 , IL.FR_Propolis.get(1));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Water     .get(1), NF, FL.Water           .make(1000), OM.dust(MT.WaxBee)                 );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Magic     .get(1), NF, FL.Ambrosia        .make( 100), OM.dust(MT.WaxMagic)               );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Nether    .get(1), NF, FL.Blaze           .make(   L), OM.dust(MT.WaxRefractory)          );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000,  1000}        , IL.Comb_End       .get(1), NF, FL.Dragon_Breath   .make( 125), OM.dust(MT.Endstone)               , IL.FR_Propolis_Pulsating.get(1), IL.EtFu_Chorus_Fruit.get(1));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Rock      .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Stone)                  );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Jungle    .get(1), NF, MT.Chocolate     .liquid(U, T), OM.dust(MT.Cocoa)                  , IL.FR_Propolis_Silky.get(1));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Frozen    .get(1), NF, FL.Ice             .make(1000), OM.dust(MT.Ice)                    );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  2000,  2000} , IL.Comb_Shroom    .get(1), NF, FL.Soup_Mushroom   .make(1000), ST.make(Blocks.red_mushroom, 1, 0) , ST.make(Blocks.brown_mushroom, 1, 0), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Sandy     .get(1), NF, FL.Juice_Cactus    .make( 100), ST.make(Blocks.sand, 1, 0)         );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  4000}        , IL.Comb_Clay      .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Clay)                   , OM.dust(MT.ClayBrown), OM.dust(MT.ClayRed));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  3000}               , IL.Comb_Sticky    .get(1), NF, FL.Latex           .make(   L), OM.dust(MT.WaxBee)                 , IL.FR_Propolis_Sticky.get(1, IL.IC2_Resin.get(1, IL.Resin.get(1))));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000}                      , IL.Comb_Royal     .get(1), ZL_FS,FL.array(FL.Honey.make(  50), FL.RoyalJelly.make(10))            , OM.dust(MT.WaxBee));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Soul      .get(1), NF, FL.Oil_Soulsand    .make(  50), OM.dust(MT.WaxSoulful)             , OM.dust(MT.SoulSand));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Amnesic   .get(1), NF, FL                 .lube(1000), OM.dust(MT.WaxAmnesic)             );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Military  .get(1), NF, FL.Juice_Cactus    .make( 150), OM.dust(MT.Bone)                   );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Honey   .get(1), NF, FL.Honey           .make( 100), OM.dust(MT.WaxBee)                , IL.FR_Propolis.get(1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Water   .get(1), NF, FL.Water           .make(1000), OM.dust(MT.WaxBee)                );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Magic   .get(1), NF, FL.Ambrosia        .make( 100), OM.dust(MT.WaxMagic)              );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Nether  .get(1), NF, FL.Blaze           .make(   L), OM.dust(MT.WaxRefractory)         );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000,  1000}       , IL.Comb_End     .get(1), NF, FL.Dragon_Breath   .make( 125), OM.dust(MT.Endstone)              , IL.FR_Propolis_Pulsating.get(1), IL.EtFu_Chorus_Fruit.get(1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Rock    .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Stone)                 );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Jungle  .get(1), NF, MT.Chocolate     .liquid(U, T), OM.dust(MT.Cocoa)                 , IL.FR_Propolis_Silky.get(1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Frozen  .get(1), NF, FL.Ice             .make(1000), OM.dust(MT.Ice)                   );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  2000,  2000}, IL.Comb_Shroom  .get(1), NF, FL.Soup_Mushroom   .make(1000), ST.make(Blocks.red_mushroom, 1, 0), ST.make(Blocks.brown_mushroom, 1, 0), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Sandy   .get(1), NF, FL.Juice_Cactus    .make( 100), ST.make(Blocks.sand, 1, 0)        );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  4000}       , IL.Comb_Clay    .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Clay)                  , OM.dust(MT.ClayBrown), OM.dust(MT.ClayRed));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  3000}              , IL.Comb_Sticky  .get(1), NF, FL.Latex           .make(   L), OM.dust(MT.WaxBee)                , IL.FR_Propolis_Sticky.get(1, IL.IC2_Resin.get(1, IL.Resin.get(1))));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000}                     , IL.Comb_Royal   .get(1), ZL_FS,FL.array(FL.Honey.make(  50), FL.RoyalJelly.make(10))           , OM.dust(MT.WaxBee));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Soul    .get(1), NF, FL.Oil_Soulsand    .make(  50), OM.dust(MT.WaxSoulful)            , OM.dust(MT.SoulSand));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Amnesic .get(1), NF, FL                 .lube(1000), OM.dust(MT.WaxAmnesic)            );
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Military.get(1), NF, FL.Juice_Cactus    .make( 150), OM.dust(MT.Bone)                  );
 		
 		
 		

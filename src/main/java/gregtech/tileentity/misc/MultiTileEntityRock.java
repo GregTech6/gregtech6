@@ -28,6 +28,7 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -182,59 +183,42 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
 		if (worldObj == null) {
-			mTexture = BlockTextureCopied.get(Blocks.stone);
-			return 1;
+			mTexture = BlockTextureCopied.get(Blocks.stone); return 1;
 		}
 		Block tBlock = getBlockAtSide(SIDE_BOTTOM);
 		if (tBlock == BlocksGT.Diggables) {
-			mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x806040, F, F, F);
-			return 1;
+			mTexture = BlockTextureCopied.get(BlocksGT.Kimberlite, SIDE_ANY, 0); return 1;
 		}
 		if (tBlock instanceof BlockStones || tBlock == Blocks.stone || tBlock == Blocks.end_stone || tBlock == Blocks.obsidian) {
-			mTexture = BlockTextureCopied.get(tBlock, SIDE_ANY, 0);
-			return 1;
+			mTexture = BlockTextureCopied.get(tBlock, SIDE_ANY, 0); return 1;
 		}
 		if (tBlock == Blocks.netherrack || tBlock == Blocks.nether_brick || tBlock == Blocks.soul_sand) {
-			mTexture = BlockTextureCopied.get(Blocks.netherrack, SIDE_ANY, 0);
-			return 1;
+			mTexture = BlockTextureCopied.get(Blocks.netherrack, SIDE_ANY, 0); return 1;
 		}
-		if (tBlock == Blocks.sandstone || tBlock == Blocks.sand) {
-			mTexture = BlockTextureCopied.get(Blocks.sandstone, SIDE_FRONT, 0);
-			return 1;
+		if (tBlock == Blocks.sandstone || tBlock == Blocks.sand || IL.AETHER_Sand.equal(tBlock)) {
+			mTexture = BlockTextureCopied.get(Blocks.sandstone, SIDE_FRONT, 0); return 1;
 		}
 		if (tBlock == Blocks.cobblestone || tBlock == Blocks.gravel) {
-			mTexture = BlockTextureCopied.get(Blocks.cobblestone, SIDE_ANY, 0);
-			return 1;
+			mTexture = BlockTextureCopied.get(Blocks.cobblestone, SIDE_ANY, 0); return 1;
 		}
-		if (worldObj.provider.dimensionId == -1) {
-			mTexture = BlockTextureCopied.get(Blocks.netherrack);
-			return 1;
+		if (IL.NeLi_Gravel.equal(tBlock)) {
+			mTexture = BlockTextureCopied.get(BlocksGT.GraniteBlack, SIDE_ANY, 0); return 1;
 		}
-		if (worldObj.provider.dimensionId == +1) {
-			mTexture = BlockTextureCopied.get(Blocks.end_stone);
-			return 1;
-		}
-		if (WD.dimERE(worldObj)) {
-			mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x907050, F, F, F);
-			return 1;
-		}
-		if (WD.dimBTL(worldObj)) {
-			mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x308030, F, F, F);
-			return 1;
-		}
-		if (WD.dimATUM(worldObj)) {
-			mTexture = BlockTextureCopied.get(Blocks.sandstone);
-			return 1;
-		}
-		if (worldObj.provider.dimensionId !=  0) {
-			if (BIOMES_SPACE.contains(getBiome().biomeName)) {
-				if (tBlock.getMaterial() == Material.rock) {
-					mTexture = BlockTextureCopied.get(tBlock, getMetaDataAtSide(SIDE_BOTTOM));
-					return 1;
-				}
-				mTexture = BlockTextureCopied.get(Blocks.obsidian);
-				return 1;
-			}
+		
+		if (worldObj.provider.dimensionId == -1) {mTexture = BlockTextureCopied.get(Blocks.netherrack); return 1;}
+		if (worldObj.provider.dimensionId ==  0) {mTexture = BlockTextureCopied.get(Blocks.stone); return 1;}
+		if (worldObj.provider.dimensionId == +1) {mTexture = BlockTextureCopied.get(Blocks.end_stone); return 1;}
+		if (WD.dimTF(worldObj))                  {mTexture = BlockTextureCopied.get(Blocks.stone); return 1;}
+		if (WD.dimERE(worldObj))                 {mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x907050, F, F, F); return 1;}
+		if (WD.dimBTL(worldObj))                 {mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x308030, F, F, F); return 1;}
+		if (WD.dimALF(worldObj))                 {mTexture = BlockTextureCopied.get(BlocksGT.Marble); return 1;}
+		if (WD.dimATUM(worldObj))                {mTexture = BlockTextureCopied.get(BlocksGT.Limestone); return 1;}
+		if (WD.dimAETHER(worldObj))              {mTexture = BlockTextureCopied.get(BlocksGT.Andesite); return 1;}
+		if (WD.dimTROPIC(worldObj))              {mTexture = BlockTextureCopied.get(BlocksGT.Basalt); return 1;}
+		
+		if (BIOMES_SPACE.contains(getBiome().biomeName)) {
+			if (tBlock.getMaterial() == Material.rock) {mTexture = BlockTextureCopied.get(tBlock, getMetaDataAtSide(SIDE_BOTTOM)); return 1;}
+			mTexture = BlockTextureCopied.get(Blocks.obsidian); return 1;
 		}
 		mTexture = BlockTextureCopied.get(Blocks.stone);
 		return 1;

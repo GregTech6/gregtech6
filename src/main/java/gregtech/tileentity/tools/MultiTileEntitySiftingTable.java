@@ -114,6 +114,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedInput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedInput =-10;} else
 				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedInput =-11;} else
+				if (IL.AETHER_Sand                  .equal(tStack, T, T)) {mDisplayedInput = -5;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedInput =- 5;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
@@ -180,6 +181,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedOutput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedOutput =-10;} else
 				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedOutput =-11;} else
+				if (IL.AETHER_Sand                  .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else

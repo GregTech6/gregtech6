@@ -568,6 +568,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateWood"                       , OD.plankWood);
 		OreDictManager.INSTANCE.addReRegistration("plankWood"                       , OD.plankAnyWood);
 		OreDictManager.INSTANCE.addReRegistration("plateAnyWood"                    , OD.plankAnyWood);
+		OreDictManager.INSTANCE.addReRegistration(OD.blockGlassColorless            , OD.blockGlass);
+		OreDictManager.INSTANCE.addReRegistration(OD.paneGlassColorless             , OD.paneGlass);
 		OreDictManager.INSTANCE.addReRegistration(OreDictToolNames.axe              , OreDictToolNames.sawaxe);
 		OreDictManager.INSTANCE.addReRegistration(OreDictToolNames.saw              , OreDictToolNames.sawaxe);
 		OreDictManager.INSTANCE.addReRegistration("wireFineTin"                     , OreDictToolNames.solderingmetal);
@@ -1313,6 +1315,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("hambone", new OreDictItemData(MT.MeatRaw, 2*U));
 		OreDictManager.INSTANCE.setAutomaticItemData("livingRoot", new OreDictItemData(MT.LiveRoot, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("silicon", new OreDictItemData(MT.Si, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.blockGlass, new OreDictItemData(MT.Glass, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.paneGlass, new OreDictItemData(MT.Glass, 3*U8));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.glowstone, new OreDictItemData(ANY.Glowstone, 4*U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.soulsand, new OreDictItemData(MT.SoulSand, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedWheat", new OreDictItemData(MT.Wheat, U9));

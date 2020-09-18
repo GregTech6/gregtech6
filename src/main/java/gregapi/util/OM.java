@@ -266,6 +266,9 @@ public class OM {
 	public static boolean prefixcontains(OreDictItemData aData, TagData... aTags) {
 		return aData != null && aData.mPrefix != null && aData.mPrefix.containsAll(aTags);
 	}
+	public static boolean prefixcontainsany(OreDictItemData aData, TagData... aTags) {
+		return aData != null && aData.mPrefix != null && aData.mPrefix.containsAny(aTags);
+	}
 	
 	public static boolean materialcontains(ItemStack aStack, TagData... aTags) {
 		return materialcontains(anydata(aStack), aTags);
@@ -275,6 +278,9 @@ public class OM {
 	}
 	public static boolean materialcontains(OreDictItemData aData, TagData... aTags) {
 		return aData != null && aData.mMaterial != null && aData.mMaterial.mMaterial.containsAll(aTags);
+	}
+	public static boolean materialcontainsany(OreDictItemData aData, TagData... aTags) {
+		return aData != null && aData.mMaterial != null && aData.mMaterial.mMaterial.containsAny(aTags);
 	}
 	
 	public static boolean materialcontained(ItemStack aStack, OreDictMaterial... aMaterials) {

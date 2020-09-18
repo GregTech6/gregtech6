@@ -299,7 +299,9 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.quartz_block                 , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.wool                         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.glass                        , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.glass_pane                   , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.stained_glass                , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.stained_glass_pane           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.clay                         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.hardened_clay                , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.stained_hardened_clay        , 1, W));
@@ -808,8 +810,6 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
 		
-		// Those are bugged, so I gotta fix them ofcourse.
-		if (IL.TF_Liveroots      .exists()) IL.TF_Liveroots.item().setHasSubtypes(T);
 		// These Bottles should actually have an empty Variant.
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.exists()) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
@@ -937,9 +937,9 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHER, "ambrosiumTorch"                    , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
 		IL.AETHER_Apple                         .set(ST.make(MD.AETHER, "whiteApple"                        , 1, 0), null, "cropAppleWhite");
 		IL.AETHER_Tall_Grass                    .set(ST.make(MD.AETHER, "tallAetherGrass"                   , 1, 0), null, OD.itemGrassTall);
-		IL.AETHER_Sand                          .set(ST.make(MD.AETHER, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U));
-		IL.AETHER_Glass                         .set(ST.make(MD.AETHER, "quicksoilGlass"                    , 1, 0), new OreDictItemData(MT.Glass, U), OD.blockGlass, OD.blockGlassColorless);
-		IL.AETHER_Glass_Pane                    .set(ST.make(MD.AETHER, "quicksoilGlassPane"                , 1, 0), new OreDictItemData(MT.Glass, 3*U8), OD.paneGlass, OD.paneGlassColorless);
+		IL.AETHER_Sand                          .set(ST.make(MD.AETHER, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U), OD.sand);
+		IL.AETHER_Glass                         .set(ST.make(MD.AETHER, "quicksoilGlass"                    , 1, 0), null, OD.blockGlassColorless);
+		IL.AETHER_Glass_Pane                    .set(ST.make(MD.AETHER, "quicksoilGlassPane"                , 1, 0), null, OD.paneGlassColorless);
 		IL.AETHER_Dirt                          .set(ST.make(MD.AETHER, "aetherDirt"                        , 1, 0));
 		IL.AETHER_Grass                         .set(ST.make(MD.AETHER, "aetherGrass"                       , 1, 0));
 		IL.AETHER_Grass_Enchanted               .set(ST.make(MD.AETHER, "enchantedAetherGrass"              , 1, 0));
@@ -1064,7 +1064,7 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Beam2_FoxFire                   .set(ST.make(MD.NeLi, "FullWood"                            , 1, 5), null, OD.beamWood);
 		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		IL.NeLi_SoulFarm                        .set(ST.make(MD.NeLi, "SoulFarmland"                        , 1, 0), null, OD.soulsand);
-		IL.NeLi_Gravel                          .set(ST.make(MD.NeLi, "Nether_Gravel"                       , 1, 0), null, "gravel");
+		IL.NeLi_Gravel                          .set(ST.make(MD.NeLi, "Nether_Gravel"                       , 1, 0), null, OD.gravel);
 		IL.NeLi_Foxfire_Lily                    .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
 		IL.NeLi_Wither_Rose                     .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower);
 		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, "foodBread");
@@ -1101,7 +1101,7 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Obsidian                        .set(ST.make(MD.EtFu, "crying_obsidian"                     , 1, 0), new OreDictItemData(MT.Obsidian, U*9, MT.Lapis, U), OD.cryingObsidian);
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));
-		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0), null, "gravel");
+		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0), null, OD.gravel);
 		IL.EtFu_Granite                         .set(ST.make(MD.EtFu, "stone"                               , 1, 1), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
 		IL.EtFu_Granite_Smooth                  .set(ST.make(MD.EtFu, "stone"                               , 1, 2), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
 		IL.EtFu_Diorite                         .set(ST.make(MD.EtFu, "stone"                               , 1, 3), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
@@ -1599,26 +1599,26 @@ public class LoaderItemList implements Runnable {
 		IL.FR_PollenFertile                     .set(ST.make(MD.FR, "pollenFertile"                         , 1, 0));
 		IL.FR_Stick                             .set(ST.make(MD.FR, "oakStick"                              , 1, 0));
 		IL.FR_Scoop                             .set(ST.make(MD.FR, "scoop"                                 , 1, 0));
-		IL.FR_Casing_Impregnated                .set(ST.make(MD.FR, "impregnatedCasing"                     , 1, 0), new OreDictItemData(ANY.Wood           , U *64));
-		IL.FR_Casing_Sturdy                     .set(ST.make(MD.FR, "sturdyMachine"                         , 1, 0), new OreDictItemData(MT.Bronze          , U * 8));
-		IL.FR_Casing_Hardened                   .set(ST.make(MD.FR, "hardenedMachine"                       , 1, 0), new OreDictItemData(MT.Bronze          , U * 8, ANY.Diamond, U * 4));
-		IL.FR_Chipset_Tin                       .set(ST.make(MD.FR, "chipsets"                              , 1, 0), new OreDictItemData(MT.Sn              , U * 1, MT.Redstone, U * 6));
-		IL.FR_Chipset_Bronze                    .set(ST.make(MD.FR, "chipsets"                              , 1, 1), new OreDictItemData(MT.Bronze          , U * 3, MT.Redstone, U * 6));
-		IL.FR_Chipset_Iron                      .set(ST.make(MD.FR, "chipsets"                              , 1, 2), new OreDictItemData(ANY.Fe             , U * 3, MT.Redstone, U * 6));
-		IL.FR_Chipset_Gold                      .set(ST.make(MD.FR, "chipsets"                              , 1, 3), new OreDictItemData(MT.Au              , U * 3, MT.Redstone, U * 6));
-		IL.FR_ElectronTube_Copper               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 0), new OreDictItemData(MT.Cu              , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Tin                  .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 1), new OreDictItemData(MT.Sn              , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Bronze               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 2), new OreDictItemData(MT.Bronze          , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Iron                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 3), new OreDictItemData(ANY.Fe             , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Gold                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 4), new OreDictItemData(MT.Au              , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Diamond              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 5), new OreDictItemData(ANY.Diamond        , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Obsidian             .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 6), new OreDictItemData(MT.Obsidian        , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Blaze                .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 7), new OreDictItemData(MT.Blaze           , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Rubber               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 8), new OreDictItemData(MT.Rubber          , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Emerald              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 9), new OreDictItemData(ANY.Emerald        , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Apatite              .set(ST.make(MD.FR, "thermionicTubes"                       , 1,10), new OreDictItemData(MT.Apatite         , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Lapis                .set(ST.make(MD.FR, "thermionicTubes"                       , 1,11), new OreDictItemData(MT.Lapis           , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Ender                .set(ST.make(MD.FR, "thermionicTubes"                       , 1,12), new OreDictItemData(MT.Endstone        , 5*U4, MT.EnderEye, U2, MT.Glass, U8));
+		IL.FR_Casing_Impregnated                .set(ST.make(MD.FR, "impregnatedCasing"                     , 1, 0), new OreDictItemData(ANY.Wood   , U*64));
+		IL.FR_Casing_Sturdy                     .set(ST.make(MD.FR, "sturdyMachine"                         , 1, 0), new OreDictItemData(MT.Bronze  , U* 8));
+		IL.FR_Casing_Hardened                   .set(ST.make(MD.FR, "hardenedMachine"                       , 1, 0), new OreDictItemData(MT.Bronze  , U* 8, ANY.Diamond, U * 4));
+		IL.FR_Chipset_Tin                       .set(ST.make(MD.FR, "chipsets"                              , 1, 0), new OreDictItemData(MT.Sn      , U* 1, MT.Redstone, U * 6));
+		IL.FR_Chipset_Bronze                    .set(ST.make(MD.FR, "chipsets"                              , 1, 1), new OreDictItemData(MT.Bronze  , U* 3, MT.Redstone, U * 6));
+		IL.FR_Chipset_Iron                      .set(ST.make(MD.FR, "chipsets"                              , 1, 2), new OreDictItemData(ANY.Fe     , U* 3, MT.Redstone, U * 6));
+		IL.FR_Chipset_Gold                      .set(ST.make(MD.FR, "chipsets"                              , 1, 3), new OreDictItemData(MT.Au      , U* 3, MT.Redstone, U * 6));
+		IL.FR_ElectronTube_Copper               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 0), new OreDictItemData(MT.Cu      , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Tin                  .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 1), new OreDictItemData(MT.Sn      , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Bronze               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 2), new OreDictItemData(MT.Bronze  , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Iron                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 3), new OreDictItemData(ANY.Fe     , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Gold                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 4), new OreDictItemData(MT.Au      , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Diamond              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 5), new OreDictItemData(ANY.Diamond, 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Obsidian             .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 6), new OreDictItemData(MT.Obsidian, 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Blaze                .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 7), new OreDictItemData(MT.Blaze   , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Rubber               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 8), new OreDictItemData(MT.Rubber  , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Emerald              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 9), new OreDictItemData(ANY.Emerald, 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Apatite              .set(ST.make(MD.FR, "thermionicTubes"                       , 1,10), new OreDictItemData(MT.Apatite , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Lapis                .set(ST.make(MD.FR, "thermionicTubes"                       , 1,11), new OreDictItemData(MT.Lapis   , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Ender                .set(ST.make(MD.FR, "thermionicTubes"                       , 1,12), new OreDictItemData(MT.Endstone, 5*U4, MT.EnderEye, U2, MT.Glass, U8));
 		IL.BINNIE_Dye_Red                       .set(ST.make(MD.BINNIE_BEE, "misc"                          , 1,19), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Red]);
 		IL.BINNIE_Dye_Yellow                    .set(ST.make(MD.BINNIE_BEE, "misc"                          , 1,20), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Yellow]);
 		IL.BINNIE_Dye_Blue                      .set(ST.make(MD.BINNIE_BEE, "misc"                          , 1,21), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue]);

@@ -418,9 +418,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg("bucketMilk"                         , ST.make(Items.milk_bucket, 1, W));
 		OM.reg("bottleMilk"                         , ST.make(MD.MFR, "milkbottle", 1, 0));
 		OM.reg(OD.glowstone                         , ST.make(Blocks.glowstone, 1, W));
-		OM.reg("dirt"                               , ST.make(Blocks.dirt, 1, W));
-		OM.reg("sand"                               , ST.make(Blocks.sand, 1, W));
-		OM.reg("gravel"                             , ST.make(Blocks.gravel, 1, W));
+		OM.reg(OD.dirt                              , ST.make(Blocks.dirt, 1, W));
+		OM.reg(OD.sand                              , ST.make(Blocks.sand, 1, W));
+		OM.reg(OD.gravel                            , ST.make(Blocks.gravel, 1, W));
 		OM.reg(OD.soulsand                          , ST.make(Blocks.soul_sand, 1, W));
 		OM.reg(OD.itemGrassTall                     , ST.make(Blocks.tallgrass, 1, 1));
 		OM.reg(OD.itemGrassTall                     , ST.make(Blocks.tallgrass, 1, 2));
@@ -445,14 +445,30 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemString                        , ST.make(Items.string, 1, W));
 		OM.reg(OD.itemString                        , ST.make(MD.MaCu, "crafting", 1, 0));
 		OM.reg(OD.itemMoss                          , ST.make(MD.CHSL, "ballomoss", 1, 0));
-		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "glass", 1, W));
-		OM.reg(OD.blockGlassColorless               , ST.make(MD.CHSL, "glass", 1, W));
-		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "glass_pane", 1, W));
-		OM.reg(OD.paneGlassColorless                , ST.make(MD.CHSL, "glass_pane", 1, W));
 		OM.reg(OD.itemMoss                          , ST.make(MD.ERE, "materials", 1, 34));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "plantDrop", 1, 29));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "plantDrop", 1, 30));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BoP, "moss", 1, 0));
+		OM.reg(OD.blockGlass                        , ST.make(Blocks.stained_glass, 1, W));
+		OM.reg(OD.blockGlassColorless               , ST.make(Blocks.glass, 1, W));
+		OM.reg(OD.blockGlassColorless               , ST.make(MD.CHSL, "glass", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(Blocks.stained_glass_pane, 1, W));
+		OM.reg(OD.paneGlassColorless                , ST.make(Blocks.glass_pane, 1, W));
+		OM.reg(OD.paneGlassColorless                , ST.make(MD.CHSL, "glass_pane", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_brown", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_red", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_purple", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_magenta", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_yellow", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_white", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_pink", 1, W));
+		OM.reg(OD.paneGlass                         , ST.make(MD.CHSL, "stained_glass_pane_lightgray", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_brown", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_white", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_lightgray", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_yellow", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "glass2", 1, W));
+		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_forestry", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_philosophers_stone", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
 		OM.reg(OD.container1000water                , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
@@ -1832,22 +1848,6 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.data(MD.CHSL, "tallow"                           , 1,   W, MT.Tallow             ,  U * 9);
-		OM.data(MD.CHSL, "glass_pane"                       , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_brown"         , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_red"           , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_purple"        , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_magenta"       , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_yellow"        , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_white"         , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_pink"          , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_pane_lightgray"     , 1,   W, MT.Glass              ,  3* U8);
-		OM.data(MD.CHSL, "stained_glass_brown"              , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "stained_glass_white"              , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "stained_glass_lightgray"          , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "stained_glass_yellow"             , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "glass"                            , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "glass2"                           , 1,   W, MT.Glass              ,  U * 1);
-		OM.data(MD.CHSL, "stained_glass_forestry"           , 1,   W, MT.Glass              ,  U * 1);
 		
 		
 		OM.data(MD.FM, "MeteorChips"                        , 1,   W, MT.Meteorite          ,  U * 1);
