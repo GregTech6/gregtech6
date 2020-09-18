@@ -46,7 +46,7 @@ public class BlockTreePlanks extends BlockBasePlanksFlammable {
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Planks");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Planks");
 		LH.add(getUnlocalizedName()+".10.name", "Treated Planks");
-		LH.add(getUnlocalizedName()+".11.name", "Empty Crate");
+		LH.add(getUnlocalizedName()+".11.name", "Crate");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Planks");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Planks");
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Planks");
@@ -71,7 +71,7 @@ public class BlockTreePlanks extends BlockBasePlanksFlammable {
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Slab");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Slab");
 		LH.add(getUnlocalizedName()+".10.name", "Treated Slab");
-		LH.add(getUnlocalizedName()+".11.name", "Empty Crate Slab");
+		LH.add(getUnlocalizedName()+".11.name", "Crate Slab");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Slab");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Slab");
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Slab");

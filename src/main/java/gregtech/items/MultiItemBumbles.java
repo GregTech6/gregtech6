@@ -26,6 +26,7 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.damage.DamageSources;
 import gregapi.data.*;
@@ -160,7 +161,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		// Rock + Nether = Heavy Metal
 		// Royal + ??? = Heroic
 	}
-
+	
 	@Override
 	public ItemStack bumbleProductStack(ItemStack aBumbleBee, short aMetaData, long aStacksize, int aProductIndex) {
 		switch(aMetaData / 100) {
@@ -183,7 +184,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		default : return IL.Comb_Honey      .get(aStacksize);
 		}
 	}
-
+	
 	@Override
 	public ChunkCoordinates bumbleCanProduce(World aWorld, int aX, int aY, int aZ, ItemStack aBumbleBee, short aMetaData, int aDistance) {
 		boolean temp = T;
@@ -252,7 +253,11 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case   5:
 			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
 				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
-				if (tBlock != NB && WD.stone(tBlock, WD.meta(aWorld, aX+i, aY+j, aZ+k))) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == Blocks.mossy_cobblestone || tBlock == Blocks.cobblestone || tBlock == Blocks.stone) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				byte tMeta = WD.meta(aWorld, aX+i, aY+j, aZ+k);
+				if (tBlock == Blocks.stonebrick && tMeta == 1) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock instanceof BlockStones && (BlockStones.SPAWNABLE[tMeta] || BlockStones.MOSSY[tMeta])) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (WD.stone(tBlock, tMeta)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);;
 			}
 			return null;
 		case   6:
@@ -313,7 +318,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 		return null;
 	}
-
+	
 	public String getFlowerTooltip(short aMetaData) {
 		switch(aMetaData / 100) {
 		case 102:
@@ -323,7 +328,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case   2: return "Magical Biome or Thaumic Flowers";
 		case   3: return MD.BoP.mLoaded ? "Netherwart or Burning Blossoms" : "Netherwart";
 		case   4: return MD.EtFu.mLoaded ? "Chorus Flower or Dragon Egg" : "End Portal, End Biome or Dragon Egg";
-		case   5: return "Stone";
+		case   5: return "Stone, Cobble or Mossy";
 		case   6: return "Cocoa";
 		case   7: return "Snow or Ice";
 		case   8: return "Mycelium or Mushrooms";
@@ -335,7 +340,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 		return null;
 	}
-
+	
 	@Override
 	public ItemStack bumbleCombine(ItemStack aBumbleBeeA, short aMetaDataA, ItemStack aBumbleBeeB, short aMetaDataB, byte aBumbleType, Random aRandom) {
 		if (aBumbleBeeB.getItem() != this) return ST.copyAmountAndMeta(1, (aMetaDataA/10)*10+aBumbleType, aBumbleBeeA);

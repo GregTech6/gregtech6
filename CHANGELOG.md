@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
+[CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.

@@ -482,6 +482,7 @@ public class WD {
 	public static boolean liquid(Block aBlock) {return aBlock instanceof BlockLiquid || aBlock instanceof IFluidBlock;}
 	
 	public static boolean stone(Block aBlock, short aMetaData) {
+		if (aBlock == NB) return F;
 		if (aBlock == Blocks.obsidian) return T;
 		ItemStackContainer tStack = new ItemStackContainer(aBlock, 1, aMetaData);
 		return BlocksGT.stoneToNormalOres.containsKey(tStack) || BlocksGT.stoneToBrokenOres.containsKey(tStack) || BlocksGT.stoneToSmallOres.containsKey(tStack);
