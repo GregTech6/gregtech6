@@ -537,14 +537,14 @@ public class OP {
 		crushedCentrifugedTiny.addFamiliarPrefix(crushedCentrifuged);
 		
 		for (OreDictPrefix tPrefix1 : OreDictPrefix.VALUES) for (OreDictPrefix tPrefix2 : OreDictPrefix.VALUES) {
-			if (tPrefix1.contains(INGOT_BASED               ) && tPrefix2.contains(INGOT_BASED                  )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DUST_BASED                ) && tPrefix2.contains(DUST_BASED                   )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DUST_ORE                  ) && tPrefix2.contains(DUST_ORE                     )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DENSE_ORE                 ) && tPrefix2.contains(DENSE_ORE                    )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(STANDARD_ORE              ) && tPrefix2.contains(STANDARD_ORE                 )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("pipe"    ) && tPrefix2.mNameInternal.startsWith("pipe"       )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("wireGt"  ) && tPrefix2.mNameInternal.startsWith("wireGt"     )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("cableGt" ) && tPrefix2.mNameInternal.startsWith("cableGt"    )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(INGOT_BASED               ) && tPrefix2.contains(INGOT_BASED              )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DUST_BASED                ) && tPrefix2.contains(DUST_BASED               )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DUST_ORE                  ) && tPrefix2.contains(DUST_ORE                 )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DENSE_ORE                 ) && tPrefix2.contains(DENSE_ORE                )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(STANDARD_ORE              ) && tPrefix2.contains(STANDARD_ORE             )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("pipe"    ) && tPrefix2.mNameInternal.startsWith("pipe"   )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("wireGt"  ) && tPrefix2.mNameInternal.startsWith("wireGt" )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("cableGt" ) && tPrefix2.mNameInternal.startsWith("cableGt")) tPrefix1.addFamiliarPrefix(tPrefix2);
 		}
 		
 		// Items which are already there in vanilla MC, or make Issues like with Mekanism.

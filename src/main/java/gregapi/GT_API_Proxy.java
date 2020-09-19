@@ -474,7 +474,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if (ST.valid(aStack)) {
 						ItemStack rStack = ST.copy(aStack);
 						
-						boolean tBreak = F;
+						boolean tBreak = F, tFireProof = F;
+						
+						// TODO make a case for Armor too whenever I decide to ever add Armor.
+						if (rStack.getItem() instanceof MultiItemTool) {
+							if (MultiItemTool.getPrimaryMaterial  (aStack).contains(TD.Properties.UNBURNABLE)) tFireProof = T;
+							if (MultiItemTool.getSecondaryMaterial(aStack).contains(TD.Properties.UNBURNABLE)) tFireProof = T;
+						}
 						OreDictItemData aData = OM.anydata_(rStack);
 						if (aData != null) {
 							if (aData.mPrefix != null) for (IOreDictListenerItem tListener : aData.mPrefix.mListenersItem) {
@@ -486,6 +492,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								}
 							}
 							if (!tBreak && aData.mMaterial != null) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) {
+								if (tMaterial.mMaterial.contains(TD.Properties.UNBURNABLE)) tFireProof = T;
 								if (tBreak) break;
 								for (IOreDictListenerItem tListener : tMaterial.mMaterial.mListenersItem) {
 									rStack = tListener.onTickWorld(aData.mPrefix, tMaterial.mMaterial, rStack, (EntityItem)aEntity);
@@ -502,6 +509,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							} else {
 								((EntityItem)aEntity).setEntityItemStack(rStack);
 							}
+						}
+						
+						if (!aEntity.isDead && tFireProof && aEntity.isBurning()) {
+							UT.Reflection.setField(EntityItem.class, aEntity, "health", 250);
+							UT.Reflection.setField(EntityItem.class, aEntity, "field_70291_e", 250);
 						}
 					}
 				} else if (aEntity instanceof EntityLivingBase) {
