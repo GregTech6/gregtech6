@@ -512,8 +512,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						
 						if (!aEntity.isDead && tFireProof && aEntity.isBurning()) {
-							UT.Reflection.setField(EntityItem.class, aEntity, "health", 250);
-							UT.Reflection.setField(EntityItem.class, aEntity, "field_70291_e", 250);
+							UT.Reflection.setField(EntityItem.class, aEntity, "health", 250, F);
+							UT.Reflection.setField(EntityItem.class, aEntity, "field_70291_e", 250, F);
 						}
 					}
 				} else if (aEntity instanceof EntityLivingBase) {

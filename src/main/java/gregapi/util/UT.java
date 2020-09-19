@@ -2216,16 +2216,21 @@ public class UT {
 		}
 		
 		public static Field setField(Object aObject, String aField, Object aValue) {
-			return setField(aObject.getClass(), aObject, aField, aValue);
+			return setField(aObject.getClass(), aObject, aField, aValue, T);
 		}
-		
+		public static Field setField(Object aObject, String aField, Object aValue, boolean aLogErrors) {
+			return setField(aObject.getClass(), aObject, aField, aValue, aLogErrors);
+		}
 		public static Field setField(Class<?> aClass, Object aObject, String aField, Object aValue) {
+			return setField(aClass, aObject, aField, aValue, T);
+		}
+		public static Field setField(Class<?> aClass, Object aObject, String aField, Object aValue, boolean aLogErrors) {
 			Field rField = null;
 			try {
 				rField = aClass.getDeclaredField(aField);
 				rField.setAccessible(T);
 				rField.set(aObject, aValue);
-			} catch (Throwable e) {e.printStackTrace(DEB);}
+			} catch (Throwable e) {if (aLogErrors) e.printStackTrace(DEB);}
 			return rField;
 		}
 		
