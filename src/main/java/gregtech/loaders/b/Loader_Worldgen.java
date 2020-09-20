@@ -626,8 +626,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.bauxite"      , T, T,   2000, MT.OREMATS.Bauxite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Aluminium Flower
 		new WorldgenOresBedrock("ore.bedrock.cassiterite"  , T, T,   2000, MT.OREMATS.Cassiterite , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tin Flower
 		new WorldgenOresBedrock("ore.bedrock.chalcopyrite" , T, T,   2000, MT.OREMATS.Chalcopyrite, BlocksGT.FlowersA, 2, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.ancientdebris", T, T,   2000, MT.AncientDebris       , BlocksGT.FlowersA, 7, GEN_NETHER);
-		new WorldgenOresBedrock("ore.bedrock.netherquartz" , T, T,   1000, MT.NetherQuartz        , BlocksGT.FlowersA, 7, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.ancientdebris", T, T,   4000, MT.AncientDebris       , BlocksGT.FlowersA, 7, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.netherquartz" , T, T,   2000, MT.NetherQuartz        , BlocksGT.FlowersA, 7, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.glowstone"    , T, T,   2000, MT.Glowstone           , BlocksGT.FlowersA, 7, GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.naquadah"     , T, T,  10000, MT.Nq                  , BlocksGT.FlowersA, 7, GEN_MARS);
 		new WorldgenOresBedrock("ore.bedrock.adamantine"   , T, T,  10000, MT.Adamantine          , BlocksGT.FlowersA, 7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS);
 		

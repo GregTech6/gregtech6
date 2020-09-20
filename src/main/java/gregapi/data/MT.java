@@ -1848,7 +1848,7 @@ public class MT {
 			
 			
 			Efrine                  .put(MD.NeLi, COMMON_ORE);
-			Gloomstone              .put(MD.NeLi);
+			Gloomstone              .put(MD.NeLi, COMMON_ORE);
 			OatAbyssal              .put(MD.NeLi);
 			
 			
@@ -2591,12 +2591,13 @@ public class MT {
 			NaCl                            .addOreByProducts(KCl                   , KIO3                      );
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
-			Glowstone                       .addOreByProducts(Redstone              , Au                        );
+			Glowstone                       .addOreByProducts(Redstone              , Au                        , Gloomstone            );
 			GlowstoneCeres                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstoneIo                     .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstoneEnceladus              .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstoneProteus                .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstonePluto                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
+			Gloomstone                      .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			Ga                              .addOreByProducts(Zn                    , Se                        );
 			Zn                              .addOreByProducts(Sn                    , Ga                        );
 			W                               .addOreByProducts(MnO2                  , Mo                        );
@@ -2658,7 +2659,7 @@ public class MT {
 			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
 			Efrine                          .addOreByProducts(SoulSand              , NetherQuartz              , AncientDebris         );
 			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              , Efrine                );
-			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 );
+			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 , Gloomstone);
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
 			Diamond                         .addOreByProducts(Graphite              , DiamondPink               );
 			DiamondPink                     .addOreByProducts(Graphite              , Diamond                   );

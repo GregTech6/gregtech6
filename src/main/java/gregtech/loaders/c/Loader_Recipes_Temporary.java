@@ -271,7 +271,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
 			
 			RM.compact(OM.dust(MT.Gloomstone), 4, IL.NeLi_Gloomstone.get(1));
-			RM.sawing(16, 64, F, 25, IL.NeLi_Gloomstone.get(1), OP.plate.mat(MT.Gloomstone, 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Gloomstone.get(1), OP.plateGem.mat(MT.Gloomstone, 4));
+			RM.lathing(16, 64, IL.NeLi_Gloomstone.get(1), OP.stickLong.mat(MT.Gloomstone, 2), OM.dust(MT.Gloomstone, 2*U));
 			RM.generify(IL.NeLi_Gloomstone.get(1), ST.make(Blocks.glowstone, 1, 0));
 			
 			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));

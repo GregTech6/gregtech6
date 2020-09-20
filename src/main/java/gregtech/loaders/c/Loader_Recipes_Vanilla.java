@@ -444,6 +444,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher      .addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_stairs       , 1, W), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab         , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		
+		RM.compact(OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
+		RM.sawing(16,  64, F,  25, ST.make(Blocks.glowstone, 1, W), OP.plateGem.mat(MT.Glowstone, 4));
+		RM.lathing(16, 64, ST.make(Blocks.glowstone, 1, W), OP.stickLong.mat(MT.Glowstone, 2), OM.dust(MT.Glowstone, 2*U));
+		
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) {
 		RM.sawing(16,  16, F,   3, OP.stick.mat(tMaterial, 1), OP.bolt.mat(tMaterial, 4));
 		RM.sawing(16,  16, F,   1, OP.stickLong.mat(tMaterial, 1), OP.stick.mat(tMaterial, 2));
@@ -461,7 +465,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.stonebrick                , 1, 0), ST.make(Blocks.stone_slab, 2, 5));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.nether_brick              , 1, 0), ST.make(Blocks.stone_slab, 2, 6));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.quartz_block              , 1, W), ST.make(Blocks.stone_slab, 2, 7));
-		RM.sawing(16,  64, F,  25, ST.make(Blocks.glowstone                 , 1, W), OP.plate.mat(MT.Glowstone, 4));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.wooden_button             , 1, W), IL.Plank.get(1));
 		RM.sawing(16,  32, F, 100, ST.make(Blocks.wooden_pressure_plate     , 1, W), IL.Plank.get(2));
 		RM.sawing(16,  32, F, 100, ST.make(Items.sign                       , 1, W), IL.Plank.get(2), OM.dust(MT.Wood, OP.stick.mAmount / 3));
@@ -515,7 +518,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Clay, 4*U), ST.make(Blocks.clay, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayBrown, 4*U), ST.make(BlocksGT.Diggables, 1, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayRed, 4*U), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.Compressor   .addRecipe1(T, 16,   64, OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Blaze), OP.plate.mat(MT.Blaze, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lapis), OP.plateGem.mat(MT.Lapis, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Asbestos), OP.plate.mat(MT.Asbestos, 1));

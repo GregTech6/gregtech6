@@ -160,6 +160,9 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		// Rock + Frozen = Coal
 		// Rock + Nether = Heavy Metal
 		// Royal + ??? = Heroic
+		
+		
+		// Glowstone Bumbles from Satanic and Frosty?
 	}
 	
 	@Override
