@@ -430,6 +430,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Juice_Lime  .make(   4), FL.Alcopops   .make( 2), ZL_IS);
 		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Juice_Potato.make(   4), FL.Vodka      .make( 2), ZL_IS);
 		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Rum_White   .make(   2), FL.Rum_Dark   .make( 1), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.ShortMead   .make(   2), FL.Mead       .make( 1), ZL_IS);
 		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Vodka       .make(   2), FL.Vodka      .make( 1), ZL_IS);
 		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Rum_Dark    .make(   2), FL.Rum_Dark   .make( 1), ZL_IS);
 		RM.Distillery   .addRecipe1(T,T,F,F,F, 16,  80, ST.tag(0), FL.Sap         .make( 125), FL.DistW      .make(50), OM.dust(MT.Sugar));
@@ -463,7 +464,7 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Milk.make (                                    50), FL.Milk_Spoiled                          .make(50), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.MilkGrC.make (                                 50), FL.Milk_Spoiled                          .make(50), ZL_IS);
-		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Honeydew.make (                                50), FL.Mead                                  .make(25), ZL_IS);
+		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Honeydew.make (                                50), FL.ShortMead                             .make(50), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Juice_Pear                               .make(50), FL.Cider_Pear                            .make(25, FL.Cider_Apple), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Juice_Peach                              .make(50), FL.Cider_Peach                           .make(25, FL.Cider_Apple), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Juice_Ananas                             .make(50), FL.Cider_Ananas                          .make(25), ZL_IS);

@@ -1585,7 +1585,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Water_Capsule                     .set(ST.make(MD.FR, "waxCapsuleWater"                       , 1, 0), null, OD.container1000water);
 		IL.FR_Water_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryWater"                       , 1, 0), null, OD.container1000water);
 		IL.FR_Lava_RefractoryCapsule            .set(ST.make(MD.FR, "refractoryLava"                        , 1, 0), null, OD.container1000lava);
-		IL.FR_Candle                            .set(ST.make(MD.FR, "candle"                                , 1, 0));
+		IL.FR_Candle                            .set(ST.make(MD.FR, "candle"                                , 1, 0), null, OD.blockCandle);
 		IL.FR_Bee_Drone                         .set(ST.make(MD.FR, "beeDroneGE"                            , 1, 0));
 		IL.FR_Bee_Princess                      .set(ST.make(MD.FR, "beePrincessGE"                         , 1, 0));
 		IL.FR_Bee_Queen                         .set(ST.make(MD.FR, "beeQueenGE"                            , 1, 0));

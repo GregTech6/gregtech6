@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+[NOTE] The Default Config Pack updated to disable Netherlicious Quartz Generation and some other random things.
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
@@ -21,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
+[ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
 
 
 6.14.01:

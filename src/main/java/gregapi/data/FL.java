@@ -373,7 +373,8 @@ public enum FL {
 
 	, Vodka                     ("binnie.vodka"             , "potion.vodka", "vodka"       , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Leninade                  ("potion.leninade"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
-	, Mead                      ("short.mead"               , "mead"                        , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
+	, Mead                      ("mead"                                                     , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
+	, ShortMead                 ("short.mead"                                               , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Sake                      ("potion.sake"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Tequila                   ("binnie.tequila"           , "tequila"                     , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Alcopops                  ("potion.alcopops"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
