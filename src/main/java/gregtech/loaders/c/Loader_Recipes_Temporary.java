@@ -270,6 +270,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
 			
+			RM.compact(OM.dust(MT.Gloomstone), 4, IL.NeLi_Gloomstone.get(1));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Gloomstone.get(1), OP.plate.mat(MT.Gloomstone, 4));
+			RM.generify(IL.NeLi_Gloomstone.get(1), ST.make(Blocks.glowstone, 1, 0));
+			
 			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));
 			RM.biomass(ST.make(MD.NeLi, "Roots"        , 8, W));

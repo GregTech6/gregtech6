@@ -710,6 +710,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Efrine                 , ST.make(MD.NeLi, "Nugget", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Efrine                 , ST.make(MD.NeLi, "Ingot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Efrine                 , ST.make(MD.NeLi, "EfrineBlock", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Gloomstone             , ST.make(MD.NeLi, "GloomstoneDust", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Fe                     , ST.make(MD.NeLi, "Chain", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , ST.make(MD.NeLi, "ChainGold", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , ST.make(MD.NeLi, "ChainEfrine", 1, 0));

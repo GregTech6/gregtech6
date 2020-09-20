@@ -488,12 +488,12 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Basalz), OM.dust(tClay), OM.dust(MT.Obsidian)), OM.dust(MT.Petrotheum, 2*U));
 		}
 		for (OreDictMaterial tGlowstone : ANY.Glowstone.mToThis) {
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone          ), OM.dust(MT.Netherrack    ), OM.dust(MT.Redstone      ), OM.dust(tGlowstone   )), OM.dust(MT.ArcaneCompound, U2));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone      , U4), OM.dust(MT.Netherrack, U4), OM.dust(MT.Redstone  , U4), OM.dust(tGlowstone,U4)), OM.dust(MT.ArcaneCompound, U8));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone      , U9), OM.dust(MT.Netherrack, U9), OM.dust(MT.Redstone  , U9), OM.dust(tGlowstone,U9)), OM.dust(MT.ArcaneCompound, U18));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel         ), OM.dust(MT.Netherrack    ), OM.dust(MT.Redstone      ), OM.dust(tGlowstone   )), OM.dust(MT.ArcaneCompound, U2));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel     , U4), OM.dust(MT.Netherrack, U4), OM.dust(MT.Redstone  , U4), OM.dust(tGlowstone,U4)), OM.dust(MT.ArcaneCompound, U8));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel     , U9), OM.dust(MT.Netherrack, U9), OM.dust(MT.Redstone  , U9), OM.dust(tGlowstone,U9)), OM.dust(MT.ArcaneCompound, U18));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone          ), OM.dust(MT.Netherrack    ), OM.dust(MT.Redstone    ), OM.dust(tGlowstone   )), OM.dust(MT.ArcaneCompound, U2));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone      , U4), OM.dust(MT.Netherrack, U4), OM.dust(MT.Redstone, U4), OM.dust(tGlowstone,U4)), OM.dust(MT.ArcaneCompound, U8));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone      , U9), OM.dust(MT.Netherrack, U9), OM.dust(MT.Redstone, U9), OM.dust(tGlowstone,U9)), OM.dust(MT.ArcaneCompound, U18));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel         ), OM.dust(MT.Netherrack    ), OM.dust(MT.Redstone    ), OM.dust(tGlowstone   )), OM.dust(MT.ArcaneCompound, U2));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel     , U4), OM.dust(MT.Netherrack, U4), OM.dust(MT.Redstone, U4), OM.dust(tGlowstone,U4)), OM.dust(MT.ArcaneCompound, U8));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Gravel     , U9), OM.dust(MT.Netherrack, U9), OM.dust(MT.Redstone, U9), OM.dust(tGlowstone,U9)), OM.dust(MT.ArcaneCompound, U18));
 		}
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Ag             ), OM.dust(MT.I    )), OM.dust(MT.AgI, 2*U  ));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Ag         , U4), OM.dust(MT.I, U4)), OM.dust(MT.AgI, 2* U4));
@@ -591,10 +591,10 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16, 16, OM.dust(MT.K2SO4 ,  U4), FL.array(FL.make("glass",  1000), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  4, T)), ZL_FS, ST.make(BlocksGT.Glass, 1, i));
 		
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {
-		RM.Injector         .addRecipe2(T, 16, 32, dust      .mat(tMat, 1), ST.make(BlocksGT.Glass, 1, i), ST.make(BlocksGT.GlowGlass, 1, i));
-		RM.Injector         .addRecipe2(T, 16, 32, dustSmall .mat(tMat, 4), ST.make(BlocksGT.Glass, 1, i), ST.make(BlocksGT.GlowGlass, 1, i));
-		RM.Injector         .addRecipe2(T, 16, 32, dust      .mat(tMat, 1), ST.make(((BlockMetaType)BlocksGT.Glass).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.GlowGlass).mSlabs[0], 2, i));
-		RM.Injector         .addRecipe2(T, 16, 16, dustSmall .mat(tMat, 2), ST.make(((BlockMetaType)BlocksGT.Glass).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.GlowGlass).mSlabs[0], 1, i));
+		RM.Injector         .addRecipe2(T, 16, 32, dust     .mat(tMat, 1), ST.make(BlocksGT.Glass, 1, i), ST.make(BlocksGT.GlowGlass, 1, i));
+		RM.Injector         .addRecipe2(T, 16, 32, dustSmall.mat(tMat, 4), ST.make(BlocksGT.Glass, 1, i), ST.make(BlocksGT.GlowGlass, 1, i));
+		RM.Injector         .addRecipe2(T, 16, 32, dust     .mat(tMat, 1), ST.make(((BlockMetaType)BlocksGT.Glass).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.GlowGlass).mSlabs[0], 2, i));
+		RM.Injector         .addRecipe2(T, 16, 16, dustSmall.mat(tMat, 2), ST.make(((BlockMetaType)BlocksGT.Glass).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.GlowGlass).mSlabs[0], 1, i));
 		}
 		}
 		

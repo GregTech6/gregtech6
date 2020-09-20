@@ -1338,6 +1338,7 @@ public class MT {
 	GlowstoneEnceladus      = glowstone     ( 8370, "GlowstoneEnceladus"    , SET_REDSTONE          ,   0, 250, 250, 255)                                                                                                                                           .uumMcfg( 0, Phosphorite    , 5*U, Au               , 3*U, SiO2             , 1*U, He               , 1*U)                                                  .aspects(TC.LUX, 2, TC.SENSUS, 1, TC.AQUA       , 1).heat(500, 600).setLocal("Enceladus Glowstone"),
 	GlowstoneProteus        = glowstone     ( 8371, "GlowstoneProteus"      , SET_REDSTONE          ,  62,  62,  62, 255)                                                                                                                                           .uumMcfg( 0, Phosphorite    , 5*U, Au               , 3*U, SiO2             , 1*U, He               , 1*U)                                                  .aspects(TC.LUX, 2, TC.SENSUS, 1, TC.TENEBRAE   , 1).heat(500, 600).setLocal("Proteus Glowstone"),
 	GlowstonePluto          = glowstone     ( 8372, "GlowstonePluto"        , SET_REDSTONE          , 123, 150, 220, 255)                                                                                                                                           .uumMcfg( 0, Phosphorite    , 5*U, Au               , 3*U, SiO2             , 1*U, He               , 1*U)                                                  .aspects(TC.LUX, 2, TC.SENSUS, 1, TC.GELUM      , 1).heat(500, 600).setLocal("Pluto Glowstone"),
+	Gloomstone              = glowstone     ( 8456, "Gloomstone"            , SET_REDSTONE          ,  19, 250, 255, 255)                                                                                                                                           .uumMcfg( 0, Phosphorite    , 5*U, Au               , 3*U, SiO2             , 1*U, He               , 1*U)                                                  .aspects(TC.LUX, 2, TC.SENSUS, 1, TC.SPIRITUS   , 1).heat(500, 600),
 	
 	
 	NetherQuartz            = quartz        ( 8346, "Nether Quartz"                                 , 230, 210, 210, 255, CRYSTALLISABLE, "Quartz")                                                                                                                 .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 2.5, 32, 1),
@@ -1678,11 +1679,13 @@ public class MT {
 		ANY.init();
 		
 		// Making sure shit is statically loaded, damn it.
-		TECH.Brick.getClass();
 		DATA.Dye_Materials.getClass();
 		WOODS.Oak.getClass();
 		OREMATS.Magnetite.getClass();
 		AM.Hydrogen.getClass();
+		
+		TECH.Brick.getClass();
+		TECH.init();
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
@@ -1701,7 +1704,12 @@ public class MT {
 		
 		RefinedIron                 = invalid("RefinedIron"                 ).stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
-		static {
+		private static boolean INITIALIZED = false;
+		
+		protected static void init() {
+			if (INITIALIZED) return;
+			INITIALIZED = true;
+			
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
 			
 			
@@ -1840,6 +1848,7 @@ public class MT {
 			
 			
 			Efrine                  .put(MD.NeLi, COMMON_ORE);
+			Gloomstone              .put(MD.NeLi);
 			OatAbyssal              .put(MD.NeLi);
 			
 			

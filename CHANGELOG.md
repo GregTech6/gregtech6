@@ -53,9 +53,9 @@ Netherlicious officially wont ever add Netherite, so the Netherite Plus Mod is s
 Foxfire Planks are now in the GT6 Wood Dictionary.
 Crimson and Warped Wood Stuff from Netherite Plus are now overidden by Netherlicious Wood Stuff wherever applicable.
 The Mushroom Logs can now properly be made into their Beam counterparts using GT6 Tools.
-Its Food Stuff has more consistency now.
+Its Food Stuff has more consistency with GT6 now.
 There is also additional ways to make Potions.
-Spectral Dew is a Type of "Nether Water" that can be used in many Recipes that require regular Water.
+Spectral Dew is a Type of "Nether Water" that can be used in many Recipes and even Boilers that require regular Water.
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when any IC2 is installed. This should reduce the occurences of it quite a bit, at least with other GT6 TileEntities adjacent to the GT6 Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
