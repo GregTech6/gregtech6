@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -100,13 +100,10 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	@Override
 	public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		super.onLeftClickEntity(aStack, aPlayer, aEntity);
-		if (aEntity instanceof EntityLivingBase) {
-			if (mStabbing) {
-				UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
-				UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
-			}
-			if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
-			if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+		if (mStabbing && aEntity instanceof EntityLivingBase) {
+			UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
+			UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
+			ST.use(aPlayer, aStack);
 			return F;
 		}
 		return F;

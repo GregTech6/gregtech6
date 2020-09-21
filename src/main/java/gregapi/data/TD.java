@@ -237,6 +237,8 @@ public class TD {
 		public static final TagData UNIFICATABLE                            = TagData.createTagData("PREFIX.UNIFICATABLE", "Unificatable");
 		/** If this Prefix has the Material Tooltip */
 		public static final TagData TOOLTIP_MATERIAL                        = TagData.createTagData("PREFIX.TOOLTIP_MATERIAL", "Material Tooltip");
+		/** If this Prefix has the Enchantment Tooltip */
+		public static final TagData TOOLTIP_ENCHANTS                        = TagData.createTagData("PREFIX.TOOLTIP_ENCHANTS", "Enchantment Tooltip");
 		/** If this Prefix is not Filterable inside the Prefix Filter */
 		public static final TagData NO_PREFIX_FILTERING                     = TagData.createTagData("PREFIX.NO_PREFIX_FILTERING", "Not Prefix Filterable");
 		/** If this Prefix is Gem based */

@@ -196,6 +196,7 @@ public class LH {
 	, TOOLTIP_AUTOCOLLECT = "gt.lang.autocollect"
 	, TOOLTIP_BEACON_PAYMENT = "gt.lang.beacon.payment"
 	, TOOLTIP_SHELFABLE = "gt.lang.shelfable"
+	, TOOLTIP_AMMO_ENCHANTS = "gt.lang.ammo.enchants"
 	, TOOLTIP_POSSIBLE_TOOL_ENCHANTS = "gt.lang.tool.enchants"
 	, TOOLTIP_POSSIBLE_ARMOR_ENCHANTS = "gt.lang.armor.enchants"
 	, TOOLTIP_TOO_MANY_TOOL_ENCHANTS = "gt.lang.tool.enchants.too.many"
@@ -204,6 +205,7 @@ public class LH {
 	, TOOLTIP_FLAMMABLE_AND_EXPLOSIVE = "gt.lang.flammable.explosive"
 	, TOOLTIP_FLAMMABLE = "gt.lang.flammable"
 	, TOOLTIP_EXPLOSIVE = "gt.lang.explosive"
+	, TOOLTIP_UNBURNABLE = "gt.lang.unburnable"
 	, TOOLTIP_BLAST_RESISTANCE_TERRIBLE = "gt.lang.blast.resist.terrible"
 	, TOOLTIP_BLAST_RESISTANCE_GHAST = "gt.lang.blast.resist.ghast.proof"
 	, TOOLTIP_BLAST_RESISTANCE_CREEPER = "gt.lang.blast.resist.creeper.proof"
@@ -507,6 +509,7 @@ public class LH {
 		add(TOOLTIP_AUTOCOLLECT                         , "Can Auto-Collect Items when harvesting Block");
 		add(TOOLTIP_BEACON_PAYMENT                      , "Can be used as a Beacon Payment");
 		add(TOOLTIP_SHELFABLE                           , "Can be placed inside a GT Bookshelf");
+		add(TOOLTIP_AMMO_ENCHANTS                       , "Ammo Enchantments:");
 		add(TOOLTIP_POSSIBLE_TOOL_ENCHANTS              , "Possible Tool Enchantments:");
 		add(TOOLTIP_POSSIBLE_ARMOR_ENCHANTS             , "Possible Armor Enchantments:");
 		add(TOOLTIP_TOO_MANY_TOOL_ENCHANTS              , "Too Many Tool Enchantments to List");
@@ -515,13 +518,14 @@ public class LH {
 		add(TOOLTIP_FLAMMABLE_AND_EXPLOSIVE             , "Flammable and Explosive!");
 		add(TOOLTIP_FLAMMABLE                           , "Flammable!");
 		add(TOOLTIP_EXPLOSIVE                           , "Explosive!");
+		add(TOOLTIP_UNBURNABLE                          , "Unburnable!");
 		add(TOOLTIP_BLAST_RESISTANCE_TERRIBLE           , "(Terrible)");
 		add(TOOLTIP_BLAST_RESISTANCE_GHAST              , "(Ghast Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_CREEPER            , "(Creeper Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_TNT                , "(TNT Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes can still go through!)");
-		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
+		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the rotting Effects of the Betweenlands");
 		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Tools made of this can break Twilight Forest Mazes");
 		add(TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING        , "Can break Twilight Forest Maze Hedges");
 		add(TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING        , "Can break Twilight Forest Mazestone");
