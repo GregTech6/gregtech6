@@ -100,9 +100,11 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	@Override
 	public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		super.onLeftClickEntity(aStack, aPlayer, aEntity);
-		if (mStabbing && aEntity instanceof EntityLivingBase) {
-			UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
-			UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
+		if (aEntity instanceof EntityLivingBase) {
+			if (mStabbing) {
+				UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
+				UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
+			}
 			ST.use(aPlayer, aStack);
 			return F;
 		}

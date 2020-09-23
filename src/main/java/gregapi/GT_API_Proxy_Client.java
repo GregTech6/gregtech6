@@ -80,7 +80,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFallingBlock;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -339,16 +338,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					
 					if (tData.mPrefix.contains(TD.Prefix.TOOLTIP_ENCHANTS)) {
 						if (!tData.mMaterial.mMaterial.mEnchantmentTools.isEmpty()) {
-							if (tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE)) {
-								aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_AMMO_ENCHANTS));
-								for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
-									if (tEnchantment.mObject == Enchantment.fortune) {
-										aEvent.toolTip.add(LH.Chat.PINK + Enchantment.looting.getTranslatedName((int)tEnchantment.mAmount));
-									} else if (tEnchantment.mObject.type == EnumEnchantmentType.weapon) {
-										aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
-									}
-								}
-							} else {
+							if (!tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE)) {
 								if (tData.mMaterial.mMaterial.mEnchantmentTools.size() <= 5) {
 									aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
 									for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {

@@ -190,6 +190,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
 			
+			CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'X', IL.NeLi_ShroomLight, 'S', OD.stickAnyWood);
+			
 			CR.shapeless(IL.NeLi_Torch_Soul.get(4), DEF_NCC, new Object[] {OD.soulsand           , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul.get(4), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul.get(3), DEF_NCC, new Object[] {OD.soulsand           , OD.blockTorch, OD.blockTorch, OD.blockTorch});
