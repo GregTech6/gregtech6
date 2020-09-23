@@ -36,7 +36,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
 import gregapi.render.TextureSet;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.potion.Potion;
@@ -635,10 +634,7 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Potion_Poison_2   .make( 500), IL.BoP_Jar_Poison               .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		FL.reg(FL.Water             .make(1000), IL.AETHER_Bucket_Water          .get(1), IL.AETHER_Bucket_Empty.get(1));
 		FL.reg(FL.Milk              .make(1000), IL.AETHER_Bucket_Milk           .get(1), IL.AETHER_Bucket_Empty.get(1));
-		FL.reg(FL.SpDew             .make(1000), IL.NeLi_Bucket_Spectral_Dew     .get(1), ST.make(Items.bucket, 1, 0), F, F, T);
-		
-		// This one is "Special". Might need removal once Netherlicious fixes the Problem.
-		FL.reg(FL.SpDew.make(1000), IL.NeLi_Bucket_Spectral_Dew.getWithNBT(1, UT.NBT.make("Fluid", UT.NBT.make("FluidName", FL.SpDew.mName, "Amount", 1000))), ST.make(Items.bucket, 1, 0), F, T, T);
+		FL.reg(FL.SpDew             .make(1000), IL.NeLi_Bucket_Spectral_Dew     .get(1), ST.make(Items.bucket, 1, 0), F, T, T);
 		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Empty.get(1));

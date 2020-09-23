@@ -33,6 +33,7 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSnow;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -122,7 +123,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	
 	public boolean canPlaceTree(World aWorld, int aX, int aY, int aZ) {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		return tBlock instanceof BlockTallGrass || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
+		return tBlock instanceof BlockTallGrass || tBlock instanceof BlockSnow || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
 	}
 	
 	@Override public boolean canPlaceBlockAt(World aWorld, int aX, int aY, int aZ) {return super.canPlaceBlockAt(aWorld, aX, aY, aZ) && canBlockStay(aWorld, aX, aY, aZ);}

@@ -616,6 +616,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.redstone"     , T, T,   7000, MT.Redstone            , BlocksGT.FlowersB, 4, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.vanadium"     , T, T,   6000, MT.V2O5                , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Vanadium Flower
 		new WorldgenOresBedrock("ore.bedrock.galena"       , T, T,   6000, MT.OREMATS.Galena      , BlocksGT.FlowersA, 1, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.coal"         , T, T,   5000, MT.Coal                , BlocksGT.FlowersA, 7, GEN_FLOOR); // Coal Flower?
 		new WorldgenOresBedrock("ore.bedrock.graphite"     , T, T,   5000, MT.Graphite            , BlocksGT.FlowersA, 7, GEN_FLOOR); // Carbon Flower? I think I should just keep this one as Orechid.
 		new WorldgenOresBedrock("ore.bedrock.stibnite"     , T, T,   4000, MT.OREMATS.Stibnite    , BlocksGT.FlowersB, 1, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.hematite"     , T, T,   4000, MT.Fe2O3               , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Iron Flower

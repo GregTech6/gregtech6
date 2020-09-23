@@ -21,6 +21,7 @@ package gregapi.worldgen;
 
 import static gregapi.data.CS.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -53,8 +54,7 @@ public class GT6WorldGenerator {
 			mRandom = WD.random(aWorld, aX >> 4, aZ >> 4);
 		}
 		
-		@SuppressWarnings("unchecked")
-		@Override
+		@Override @SuppressWarnings("unchecked")
 		public void run() {
 			if (!mGenNormal.isEmpty()) {
 				Chunk tChunk = mWorld.getChunkFromBlockCoords(mMinX+7, mMinZ+7);
@@ -95,7 +95,9 @@ public class GT6WorldGenerator {
 				
 				// Kill off every single Item Entity that may have dropped during Worldgen.
 				for (EntityItem tEntity : (List<EntityItem>)mWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(mMinX-32, 0, mMinZ-32, mMinX+48, 256, mMinZ+48))) tEntity.setDead();
-				
+				// Prevent Snow Layers from killing Treestumps. I really hope this works...
+				Arrays.fill(tChunk.precipitationHeightMap, -999);
+				// Chunk got modified, duh.
 				tChunk.isModified = T;
 			}
 		}
