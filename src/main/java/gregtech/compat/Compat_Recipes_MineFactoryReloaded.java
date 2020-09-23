@@ -68,10 +68,12 @@ public class Compat_Recipes_MineFactoryReloaded extends CompatMods {
 			}});
 		}
 		addListener(new OreDictListenerEvent_TwoNames(OD.listAllwheats, OP.dust.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(8, aStack1), aStack2, OM.dust(MT.Bone, U*4), OM.dust(MT.S, U*4)), IL.MFR_Fertilizer.get(48));
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(8, aStack1), aStack2, OM.dust(MT.Bone, U*4), OM.dust(MT.S    , U*4)), IL.MFR_Fertilizer.get(48));
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(8, aStack1), aStack2, OM.dust(MT.Bone, U*4), OM.dust(MT.Blaze, U*4)), IL.MFR_Fertilizer.get(48));
 		}});
 		addListener(new OreDictListenerEvent_TwoNames(OD.listAllwheats, OP.dustSmall.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-			RM.Mixer.addRecipeX(T, 16, 128, ST.array(ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone     ), OM.dust(MT.S     )), IL.MFR_Fertilizer.get(12));
+			RM.Mixer.addRecipeX(T, 16, 128, ST.array(ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone     ), OM.dust(MT.S         )), IL.MFR_Fertilizer.get(12));
+			RM.Mixer.addRecipeX(T, 16, 128, ST.array(ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone     ), OM.dust(MT.Blaze     )), IL.MFR_Fertilizer.get(12));
 		}});
 		addListener(OD.itemClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			for (byte i = 0; i < 16; i++) for (FluidStack tDye : DYE_FLUIDS[i])

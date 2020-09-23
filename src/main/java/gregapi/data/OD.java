@@ -179,6 +179,7 @@ public enum OD {
 	, paneGlassColorless
 	, blockGlass
 	, blockGlassColorless
+	, blockClay
 	, blockCandle
 	, blockTorch
 	, blockSoulTorch

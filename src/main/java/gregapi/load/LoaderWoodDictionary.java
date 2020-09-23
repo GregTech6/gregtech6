@@ -47,7 +47,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 238 is next! There is no Gaps in this List!
+		// 239 is next! There is no Gaps in this List!
 		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Vanilla Trees
@@ -772,9 +772,11 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 0), new WoodEntry(IL.NeLi_Stem_Crimson.get(1), new BeamEntry(IL.NeLi_Beam1_Crimson.get(1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 0), ST.make(MD.NeLi, "PlankSingleSlab", 1, 0), ST.make(MD.NeLi, "CrimsonStairs", 1, W), MT.WOODS.Crimson, 235), 1, 150), 1, 150, ST.make(MD.NeLi, "Fungus", 1, 0), MT.WOODS.Crimson), ST.make(MD.NeLi, "Wartblock", 1, 0));
 			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 1), new WoodEntry(IL.NeLi_Stem_Warped .get(1), new BeamEntry(IL.NeLi_Beam1_Warped .get(1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 1), ST.make(MD.NeLi, "PlankSingleSlab", 1, 1), ST.make(MD.NeLi, "WarpedStairs" , 1, W), MT.WOODS.Warped , 236), 1, 200), 1, 200, ST.make(MD.NeLi, "Fungus", 1, 1), MT.WOODS.Warped ), ST.make(MD.NeLi, "Wartblock", 1, 1));
 			new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 2), new WoodEntry(IL.NeLi_Stem_FoxFire.get(1), new BeamEntry(IL.NeLi_Beam1_FoxFire.get(1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 2), ST.make(MD.NeLi, "PlankSingleSlab", 1, 2), ST.make(MD.NeLi, "FoxfireStairs", 1, W), MT.WOODS.Foxfire, 237), 1, 250), 1, 250, ST.make(MD.NeLi, "Fungus", 1, 2), MT.WOODS.Foxfire), ST.make(MD.NeLi, "Wartblock", 1, 2));
+		//  new SaplingEntry(ST.make(MD.NeLi, "Fungus", 1, 3), new WoodEntry(IL.NeLi_Stem_       .get(1), new BeamEntry(IL.NeLi_Beam1_       .get(1), new PlankEntry(ST.make(MD.NeLi, "Planks", 1, 3), ST.make(MD.NeLi, "PlankSingleSlab", 1, 3), ST.make(MD.NeLi, xxxxxxx"Stairs", 1, W), MT.WOODS.       , 238), 1, 250), 1, 250, ST.make(MD.NeLi, "Fungus", 1, 3), MT.WOODS.       ), ST.make(MD.NeLi, "Wartblock", 1, 3));
 			new WoodEntry(IL.NeLi_Hyphae_Crimson.get(1), new BeamEntry(IL.NeLi_Beam2_Crimson.get(1), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 0), 1, 150), 1, 150, ST.make(MD.NeLi, "Fungus", 1, 0), MT.WOODS.Crimson);
 			new WoodEntry(IL.NeLi_Hyphae_Warped .get(1), new BeamEntry(IL.NeLi_Beam2_Warped .get(1), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 1), 1, 200), 1, 200, ST.make(MD.NeLi, "Fungus", 1, 1), MT.WOODS.Warped );
 			new WoodEntry(IL.NeLi_Hyphae_FoxFire.get(1), new BeamEntry(IL.NeLi_Beam2_FoxFire.get(1), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 2), 1, 250), 1, 250, ST.make(MD.NeLi, "Fungus", 1, 2), MT.WOODS.Foxfire);
+		//  new WoodEntry(IL.NeLi_Hyphae_       .get(1), new BeamEntry(IL.NeLi_Beam2_       .get(1), WoodDictionary.PLANKS.get(MD.NeLi, "Planks", 3), 1, 250), 1, 250, ST.make(MD.NeLi, "Fungus", 1, 3), MT.WOODS.       );
 		}
 		// Netherite Plus Planks
 		if (MD.NePl.mLoaded) {

@@ -179,6 +179,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.S)                    );
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedPurified.dat(MT.S)            );
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedCentrifuged.dat(MT.S)         );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.Blaze)                    );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.Blaze)                   );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.Blaze)                );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedPurified.dat(MT.Blaze)        );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedCentrifuged.dat(MT.Blaze)     );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.P)                        );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.P)                       );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.P)                    );
@@ -501,6 +506,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block, 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
+		for (OreDictMaterial tBlaze : ANY.Blaze.mToThis)
+		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(tBlaze), OP.plate.mat(tBlaze, 1));
 		RM.Compressor   .addRecipe1(T, 64,   32, ST.make(Blocks.ice, 2, W), ST.make(Blocks.packed_ice, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Ice), ST.make(Blocks.ice, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.Ice, U4), OP.gemChipped.mat(MT.Ice, 1));
@@ -518,7 +525,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Clay, 4*U), ST.make(Blocks.clay, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayBrown, 4*U), ST.make(BlocksGT.Diggables, 1, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayRed, 4*U), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Blaze), OP.plate.mat(MT.Blaze, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lapis), OP.plateGem.mat(MT.Lapis, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Asbestos), OP.plate.mat(MT.Asbestos, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lazurite), OP.plateGem.mat(MT.Lazurite, 1));

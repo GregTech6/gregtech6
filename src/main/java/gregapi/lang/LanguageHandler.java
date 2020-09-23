@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import gregapi.data.ANY;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -407,7 +408,7 @@ public class LanguageHandler {
 		if (aMaterial == MT.Butter || aMaterial == MT.ButterSalted) {
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
-		if (aMaterial == MT.Indigo || aMaterial == MT.Blaze || aMaterial == MT.ConstructionFoam || aMaterial == MT.Cocoa || aMaterial == MT.Curry || aMaterial == MT.Chocolate || aMaterial == MT.Coffee || aMaterial == MT.Chili || aMaterial == MT.Cheese || aMaterial == MT.Snow) {
+		if (aMaterial == MT.Indigo || ANY.Blaze.mToThis.contains(aMaterial) || aMaterial == MT.ConstructionFoam || aMaterial == MT.Cocoa || aMaterial == MT.Curry || aMaterial == MT.Chocolate || aMaterial == MT.Coffee || aMaterial == MT.Chili || aMaterial == MT.Cheese || aMaterial == MT.Snow) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 		} else
 		if (aMaterial == MT.Potato || aMaterial == MT.Hazelnut || aMaterial == MT.Pistachio || aMaterial == MT.Almond || aMaterial == MT.Peanut || aMaterial == MT.Nutmeg || aMaterial == MT.Cinnamon || aMaterial == MT.Vanilla || aMaterial == MT.PepperBlack) {

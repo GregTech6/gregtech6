@@ -525,7 +525,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodBaconcooked"                    , ST.make(MD.AA, "itemFood", 1,20));
 		OM.reg("foodDough"                          , ST.make(MD.AA, "itemMisc", 1, 4));
 		OM.reg(OD.slimeballRice                     , ST.make(MD.AA, "itemMisc", 1,12));
-		OM.reg("blockClay"                          , ST.make(Blocks.clay, 1, W));
+		OM.reg(OD.blockClay                         , ST.make(Blocks.clay, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.book, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.writable_book, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.written_book, 1, W));
@@ -2133,8 +2133,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Items.fish, 1,19)                           , MT.FishRaw            ,  U2, MT.Bone, U3, MT.FishOil, U * 1);
 		OM.data(ST.make(Items.fish, 1,20)                           , MT.FishRaw            ,  U2, MT.Bone, U3, MT.FishOil, U2);
 		OM.data(ST.make(Items.fish, 1,21)                           , MT.FishRaw            ,  U * 3, MT.FishOil, U * 5);
-		OM.data(ST.make(Items.fish, 1,22)                           , MT.FishOil, U * 5);
-		OM.data(ST.make(Items.fish, 1,23)                           , MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,22)                           , MT.FishOil            ,  U * 5);
+		OM.data(ST.make(Items.fish, 1,23)                           , MT.FishOil            ,  U * 5);
 		OM.data(ST.make(Items.fish, 1,24)                           , MT.FishRaw            ,  U2, MT.Bone, U9, MT.FishOil, U * 1, MT.Au, U72);
 		OM.data(ST.make(Items.fish, 1,25)                           , MT.FishRaw            ,  U2, MT.Bone, U3, MT.FishOil, U100);
 		OM.data(ST.make(Items.fish, 1,26)                           , MT.FishRaw            ,  U * 3, MT.Bone, U3, MT.FishOil, U * 5);
@@ -2146,14 +2146,14 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Items.fish, 1,32)                           , MT.FishRaw            ,  U * 1, MT.Bone, U3, MT.FishOil, U * 2);
 		OM.data(ST.make(Items.fish, 1,33)                           , MT.FishRaw            ,  U2, MT.Bone, U9, MT.FishOil, U * 1);
 		OM.data(ST.make(Items.fish, 1,34)                           , MT.FishRotten         ,  U * 2, MT.Bone, U3, MT.FishOil, U * 1);
-		OM.data(ST.make(Items.fish, 1,35)                           , MT.Bone, U * 6);
+		OM.data(ST.make(Items.fish, 1,35)                           , MT.Bone               ,  U * 6);
 		OM.data(ST.make(Items.fish, 1,36)                           , MT.FishRaw            ,  U * 2, MT.Bone, U3, MT.FishOil, U * 4);
 		OM.data(ST.make(Items.fish, 1,37)                           , MT.FishRaw            ,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
 		OM.data(ST.make(Items.fish, 1,38)                           , MT.FishRaw            ,  U * 1, MT.Bone, U9, MT.FishOil, U * 1, MT.Redstone,  U4);
 		OM.data(ST.make(Items.fish, 1,39)                           , MT.FishRaw            ,  U * 2, MT.Bone, U9, MT.FishOil, U * 2);
 		OM.data(ST.make(Items.fish, 1,40)                           , MT.FishRaw            ,  U * 1, MT.Bone, U9, MT.FishOil, U * 1);
 		OM.data(ST.make(Items.fish, 1,41)                           , MT.FishRaw            ,  U * 1, MT.Bone, U9, MT.FishOil, U2);
-		OM.data(ST.make(Items.fish, 1,42)                           , MT.FishRaw            ,  U2, MT.Bone, U3, MT.FishOil, U20);
+		OM.data(ST.make(Items.fish, 1,42)                           , MT.FishRaw            ,  U2   , MT.Bone, U3, MT.FishOil, U20);
 		OM.data(ST.make(Items.fish, 1,43)                           , MT.FishRaw            ,  U * 1, MT.Bone, U3, MT.FishOil, U * 1);
 		OM.data(ST.make(Items.fish, 1,44)                           , MT.FishRaw            ,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
 		OM.data(ST.make(Items.fish, 1,45)                           , MT.FishRaw            ,  U * 2, MT.Bone, U3, MT.FishOil, U * 4);

@@ -112,6 +112,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Al                  ,U * 1), MT.F           .gas  (U * 3, T)                                                            , NF                                , OM.dust(MT.AlF3, U*4));
 		RM.Mixer        .addRecipe1(T, 16,   48, OM.dust(MT.Ca                  ,U * 1), MT.F           .gas  (U * 2, T)                                                            , NF                                , OM.dust(MT.CaF2, U*3));
 		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.S                   ,U * 1), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
+		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.Blaze               ,U * 1), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
 		RM.HeatMixer    .addRecipe1(T, 16,  160, OM.dust(MT.WO3                 ,U * 4), MT.H           .gas  (U * 6, T)                                                            , MT.H2O            .liquid(U* 9, F), OM.dust(MT.W, U));
 //      RM.Mixer        .addRecipe1(T, 16,   96, OM.dust(MT.FeS                 ,U * 2), MT.HCl         .fluid(U * 4, T)                                                            , MT.H2S            .gas  (U * 3, F), OM.dust(MT.FeCl2, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  752, OM.dust(MT.OREMATS.Borax       ,U *43), MT.HCl         .fluid(U * 4, T)                                                            , MT.SaltWater      .liquid(U*16, F), OM.dust(MT.H3BO3, U*28)); // + 3 Units of Water
@@ -140,8 +141,10 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe0(T, 16,  160, FL.array(MT.NO2.gas(U*6, T), MT.H2O2.liquid(U*4, T))                                                                               , MT.HNO3           .liquid(U*10, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,  176, FL.array(MT.SO3.gas(U*4, T), MT.H2SO4.liquid(U*7, T))                                                                              , MT.H2S2O7         .liquid(U*11, F), ZL_IS);
 		RM.HeatMixer    .addRecipe0(T, 16,   48, FL.array(MT.H2S.gas(U*2, T), MT.SO2.gas(U*1, T))                                                                                   , MT.H2O            .liquid(U* 2, F), OM.dust(MT.S, U));
-		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.Na, 2), OP.dust.mat(MT.S, 1), OP.dust.mat(MT.Na2S, 3));
-		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.K , 2), OP.dust.mat(MT.S, 1), OP.dust.mat(MT.K2S , 3));
+		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.Na, 2), OP.dust.mat(MT.S    , 1), OP.dust.mat(MT.Na2S, 3));
+		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.Na, 2), OP.dust.mat(MT.Blaze, 1), OP.dust.mat(MT.Na2S, 3));
+		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.K , 2), OP.dust.mat(MT.S    , 1), OP.dust.mat(MT.K2S , 3));
+		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.K , 2), OP.dust.mat(MT.Blaze, 1), OP.dust.mat(MT.K2S , 3));
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {ItemStack tSiliconDioxide = OM.dust(tMat, U*3); if (ST.invalid(tSiliconDioxide)) continue;
 		RM.HeatMixer    .addRecipe2(T, 16,  144, tSiliconDioxide, OP.dust.mat(MT.CaSO4, 6), NF, MT.SO3.gas(U*4, F), OM.dust(MT.OREMATS.Wollastonite, U*5));
 		}
@@ -352,6 +355,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), FL.make(tFluid,  2500), NF                   , OM.dust(MT.V2O5, 7*U2));
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Cr                      ), FL.make(tFluid,  2000), NF                   , OM.dust(MT.CrO2,   U ));
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S                       ), FL.make(tFluid,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Blaze                   ), FL.make(tFluid,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.C.mToThis) if (tMat != MT.Graphene)
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), FL.make(tFluid,  2000), MT.CO2.gas( 3*U  , F), ZL_IS);
@@ -381,8 +385,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite), FL.make(tFluid, 3000), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu, 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe, 1*U8));
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite    ), FL.make(tFluid, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Fe, 1*U8), OM.dust(MT.Sn, 1*U8));
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite   ), FL.make(tFluid, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S), FL.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
-		
+		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S    ), FL.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Blaze), FL.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		}
 		
 		if (FL.Heavy_Reiker.exists())

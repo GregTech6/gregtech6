@@ -44,6 +44,7 @@ public class ANY {
 	TigerEye        = any("Any Tiger Eye"       ),
 	Aventurine      = any("Any Aventurine"      ),
 	Fluorite        = any("Any Fluorite"        ), CaF2 = Fluorite,
+	Blaze           = any("Any Blaze"           ),
 	Prismarine      = any("Any Prismarine"      ),
 	Grains          = any("Any Grains"          ),
 	Flour           = any("Any Flour"           ),
@@ -92,6 +93,7 @@ public class ANY {
 		TigerEye        .stealLooks(MT.TigerEyeYellow ).steal(MT.TigerEyeYellow ).setLocal("Tiger Eye"                                                  ).put(CRYSTAL, VALUABLE                      );
 		Aventurine      .stealLooks(MT.AventurineGreen).steal(MT.AventurineGreen).setLocal("Aventurine"                                                 ).put(CRYSTAL, VALUABLE                      );
 		Fluorite        .stealLooks(MT.CaF2           ).steal(MT.CaF2           ).setLocal("Fluorite"           ).setAllToTheOutputOf(MT.CaF2           ).put(CRYSTAL, MORTAR, MELTING, BRITTLE, ACID);
+		Blaze           .stealLooks(MT.Blaze          ).steal(MT.Blaze          ).setLocal("Blaze"                                                      ).put(GLOWING, MAGICAL, BRITTLE, MORTAR      );
 		Prismarine      .stealLooks(MT.PrismarineLight).steal(MT.PrismarineLight).setLocal("Prismarine"         ).setAllToTheOutputOf(MT.PrismarineLight).put(CRYSTAL                                ).addReRegistrationToThis(MT.PrismarineLight, MT.PrismarineDark);
 		Grains          .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Grains"             ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE                );
 		Flour           .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Flour"              ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE                ).addReRegistrationToThis(MT.Wheat, MT.Rye, MT.Oat, MT.OatAbyssal, MT.Barley, MT.Potato, MT.Corn);

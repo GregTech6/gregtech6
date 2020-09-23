@@ -195,7 +195,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public boolean canCollectDropsDirectly(ItemStack aStack, Block aBlock, byte aMeta) {
 		if (ST.instaharvest(aBlock, aMeta)) return T;
 		IToolStats tStats = getToolStats(aStack);
-		return (tStats.canCollect() || getPrimaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE)) && isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMeta) > 0;
+		return (tStats.canCollect() || getPrimaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE) || getSecondaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE)) && isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMeta) > 0;
 	}
 	
 	public float onBlockBreakSpeedEvent(float aDefault, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, int aX, int aY, int aZ, byte aMeta, PlayerEvent.BreakSpeed aEvent) {
@@ -291,7 +291,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (canHarvestBlock(IL.TF_Mazehedge.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING));
 			}
 			if (tMat1.contains(TD.Properties.UNBURNABLE) || tMat2.contains(TD.Properties.UNBURNABLE)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
-			if (tStats.canCollect() || tMat1.contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
+			if (tStats.canCollect() || tMat1.contains(TD.Properties.MAGNETIC_ACTIVE) || tMat2.contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
 		}
 	}
 	

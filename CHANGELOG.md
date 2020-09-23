@@ -20,9 +20,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
+[CHANGED] Blaze Powder can no longer be turned into Sulfur and Ashes using the Centrifuge. However, many Recipes that require Sulfur now also allow Blaze Powder directly. (The Pyrotheum Recipes still require Sulfur seperately!)
+[CHANGED] The Autocollect Effect of Magnetic Materials for Tools also applies for the Handles now. This is only really useful with a Basalz Rod as Tool Handle though, which now counts as Magnetic.
+[ADDED] Basalz, Blizz and Blitz Powder can now be used for different ways to obtain some Potions in the Distillery.
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
 [ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
+[ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
 
 
 6.14.01:
@@ -1326,7 +1330,7 @@ Added Octine Crucible Set and Weedwood Barrels for both, Items and Fluids.
 Using the Plunger to delete Fluids from a Tank will cause the Fluid to go into the Global Trash instead of being entirely voided.
 If a Mass Storage or Item Barrel with more than 512 Stacks inside it is broken, the previously voided surplus Stacks will now go into the Global Trash.
 [CHANGED] If you rightclick any Bibliocraft thing with a GT6 Item or Tool, it wont do any of the Items or Tools Rightclick-Actions anymore.
-[ADDED] Military Bumblebees that produce Combs that yield Bone Dust, they will not attack Players, but they can attack any Mob closeby, even Skeletons and Stuff that would be immune to normal Bumbles. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YDNAS and ELGNUJ (you have to read those in reverse).
+[ADDED] Military Bumblebees that produce Combs that yield Bone Dust, they will not attack Players, but they can attack any Mob closeby, even Skeletons and Stuff that would be immune to normal Bumbles. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YDNAS&ELGNUJ (you have to read those in reverse).
 
 
 6.07.14:
@@ -1350,7 +1354,7 @@ Also make sure you get the right Voltage as some Recipes require a rather high o
 [CHANGED] Sulfur Dioxide to Sulfur Trioxide Mixing now additionally consumes Air or Oxygen. There is no penalty of using Air instead of Oxygen.
 [ADDED] NEI Fake Recipe List for the Bedrock Drill.
 [ADDED] Pyrite, Limonite and similar "Iron containing Mineral"-containing Small Rocks can be used for Flint and Tinder now.
-[ADDED] Amnesiac Bumblebees that produce Combs that yield Lubricant and Amnesic Wax. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of SIVLEBMUB and CITUANBUS (you have to read those in reverse).
+[ADDED] Amnesiac Bumblebees that produce Combs that yield Lubricant and Amnesic Wax. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of SIVLEBMUB&CITUANBUS (you have to read those in reverse).
 [ADDED]
 Advanced Bumbliary.
 Requires a Comb from a crossbred Bumblebee Species in order to be crafted, so you have to have some Bumblebee Experience before you can get this!
@@ -1967,7 +1971,7 @@ Did I mention that you can paint them too, just like all the other GT6 Container
 [ADDED] Queue Hopper, a Hopper that remembers the order at which things came in, and always emits the first inserted Item and works it's way to the last inserted Item in an ordered fashion. Professionals would call it a FIFO (First IN, First OUT). You can manually change the Order in its GUI ofcourse.
 [ADDED] Glow Glass, a variant of my Clear Glass that emits light like Glowstone. It is produced with the Injector, 1 Glowstone Dust per piece (or half a Glowstone Dust per Slab) and a Block of GT6 Clear Glass. Aside from emitting a constant Light Level this Block uses the same Texture as the normal Clear Glass.
 [ADDED] The Chemical Formula Tooltips back. Now even with Subscript Numbers instead of normal ones!
-[ADDED] Satanic Bumblebees that produce Soul Combs (Soulsand & Soulsand Oil). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of CITSILIHIN and CINOMED (you have to read those in reverse).
+[ADDED] Satanic Bumblebees that produce Soul Combs (Soulsand & Soulsand Oil). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of CITSILIHIN&CINOMED (you have to read those in reverse).
 [ADDED] A Book containing Descriptions of all current GT6 Tools. It is added to all Loot Lists that contain Books of that kind.
 
 
@@ -2057,7 +2061,7 @@ Hydrogen + Oxygen = Water does count as burning, that is a good Suggestion btw f
 [CHANGED] Having Acids in the Crucible may result in them breaking apart. Use an Acid Proof Crucible if you have to Handle that kind of Stuff.
 [CHANGED] A lot of Electrolyzer and Centrifuge Recipe Outputs. They will do Silicon Dioxide and Alumina whereever possible now.
 [ADDED] Mud variant of some Forestry Recipes that need Dirt and Water.
-[ADDED] Industrial Bumblebees that produce Combs that yield Latex, Wax and Resin. As with before, you need to combine 2 certain highest Tier Species to get it. In this case, Spoiler alert do not continue reading if you wanna find out yourself, it is the combination of DETAVITLUC and CITUANBUS (you have to read those in reverse).
+[ADDED] Industrial Bumblebees that produce Combs that yield Latex, Wax and Resin. As with before, you need to combine 2 certain highest Tier Species to get it. In this case, Spoiler alert do not continue reading if you wanna find out yourself, it is the combination of DETAVITLUC&CITUANBUS (you have to read those in reverse).
 [ADDED] Royal Bumblebees that produce Combs that yield Royal Jelly from both Harvestcraft and Forestry. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of DETAVITLUC and highest Tier YDNAS (you have to read those in reverse).
 [ADDED] Titanium Drum. Twice the Capacity of the Stainless Steel Drum, but no Corrosion Resistance.
 [ADDED] Iridium Fluid Pipes (Acid Proof).
@@ -2078,7 +2082,7 @@ The overall Bauxite Processing chain yields 1/2 Unit of Aluminium per Unit of Ba
 [ADDED]
 Breeding System for Bumblebee Species (it was already there but it was unused).
 Take 2 Bumbles of the highest Tier of their Breed (Cultivated would be the highest Tier of the Wild ones) and breed them to get a potentially new Bumblebreed of offspring with a 25%-50% chance.
-[ADDED] Clay Comb Producing Bumblebees. They are created by breeding 2 specific Types of Bumblebees together. Since it is the first and only type for now, I will give you a hint, so Spoilers ahead if you don't like them: It's SIVLEBMUB and DETAVITLUC (you have to read those in reverse).
+[ADDED] Clay Comb Producing Bumblebees. They are created by breeding 2 specific Types of Bumblebees together. Since it is the first and only type for now, I will give you a hint, so Spoilers ahead if you don't like them: It's SIVLEBMUB&DETAVITLUC (you have to read those in reverse).
 
 
 6.05.36:

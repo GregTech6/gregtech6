@@ -30,6 +30,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.Textures;
@@ -63,8 +64,8 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		OM.data(ST.make(this, 1, 1), MT.ClayBrown, U*4);
 		OM.data(ST.make(this, 1, 2), MT.Peat, U);
 		OM.data(ST.make(this, 1, 3), MT.ClayRed, U*4);
-		OM.reg(ST.make(this, 1, 1), "blockClay");
-		OM.reg(ST.make(this, 1, 3), "blockClay");
+		OM.reg(ST.make(this, 1, 1), OD.blockClay);
+		OM.reg(ST.make(this, 1, 3), OD.blockClay);
 		
 		BlocksGT.harvestableSpade.add(this);
 	}

@@ -79,10 +79,10 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shaped(IL.Bale_Barley        .get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', "cropBarley");
 		CR.shaped(IL.Bale_Rice          .get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', "cropRice");
 		CR.shapeless(IL.Grass           .get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassTall});
-		CR.shapeless(IL.Grass           .get(9), CR.DEF_NAC_NCC, new Object[] {"baleGrass"});
-		CR.shapeless(IL.Grass_Dry       .get(9), CR.DEF_NAC_NCC, new Object[] {"baleGrassDry"});
-		CR.shapeless(IL.Grass_Moldy     .get(9), CR.DEF_NAC_NCC, new Object[] {"baleGrassMoldy"});
-		CR.shapeless(IL.Grass_Rotten    .get(9), CR.DEF_NAC_NCC, new Object[] {"baleGrassRotten"});
+		CR.shapeless(IL.Grass           .get(9), CR.DEF_NAC_NCC, new Object[] {OD.baleGrass});
+		CR.shapeless(IL.Grass_Dry       .get(9), CR.DEF_NAC_NCC, new Object[] {OD.baleGrassDry});
+		CR.shapeless(IL.Grass_Moldy     .get(9), CR.DEF_NAC_NCC, new Object[] {OD.baleGrassMoldy});
+		CR.shapeless(IL.Grass_Rotten    .get(9), CR.DEF_NAC_NCC, new Object[] {OD.baleGrassRotten});
 		CR.shapeless(IL.Crop_Rye        .get(9), CR.DEF_NAC_NCC, new Object[] {"baleRye"});
 		CR.shapeless(IL.Crop_Oats       .get(9), CR.DEF_NAC_NCC, new Object[] {"baleOats"});
 		CR.shapeless(IL.Crop_Barley     .get(9), CR.DEF_NAC_NCC, new Object[] {"baleBarley"});
@@ -153,6 +153,13 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Comb_Amnesic.set(        addItem(tLastID = 30104, "Amnesic Comb"         , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.LIMUS, 1), TC.stack(TC.STRONTIO, 1)));
 		IL.Comb_Military.set(       addItem(tLastID = 30105, "Military Comb"        , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TELUM, 2)));
 		
+		IL.Comb_Pyro.set(           addItem(tLastID = 30200, "Pyro Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.IGNIS, 2)));
+		IL.Comb_Cryo.set(           addItem(tLastID = 30201, "Cryo Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.GELUM, 2)));
+		IL.Comb_Aero.set(           addItem(tLastID = 30202, "Aero Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.AER  , 2)));
+		IL.Comb_Tera.set(           addItem(tLastID = 30203, "Tera Comb"            , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TERRA, 2)));
+		
+		
+		
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Honey   .get(1), NF, FL.Honey           .make( 100), OM.dust(MT.WaxBee)                , IL.FR_Propolis.get(1));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Water   .get(1), NF, FL.Water           .make(1000), OM.dust(MT.WaxBee)                );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Magic   .get(1), NF, FL.Ambrosia        .make( 100), OM.dust(MT.WaxMagic)              );
@@ -168,8 +175,11 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000}                     , IL.Comb_Royal   .get(1), ZL_FS,FL.array(FL.Honey.make(  50), FL.RoyalJelly.make(10))           , OM.dust(MT.WaxBee));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Soul    .get(1), NF, FL.Oil_Soulsand    .make(  50), OM.dust(MT.WaxSoulful)            , OM.dust(MT.SoulSand));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Amnesic .get(1), NF, FL                 .lube(1000), OM.dust(MT.WaxAmnesic)            );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Military.get(1), NF, FL.Juice_Cactus    .make( 150), OM.dust(MT.Bone)                  );
-		
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Military.get(1), NF, FL.Juice_Cactus    .make( 150), OM.dust(MT.Bone)                  , ST.make(Items.bone, 1, 0));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Pyro    .get(1), NF, FL.Blaze           .make(   L), OM.dust(MT.Blaze)                 , OP.stick.mat(MT.Blaze, 1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Cryo    .get(1), NF, FL.Ice             .make(1000), OM.dust(MT.Blizz)                 , OP.stick.mat(MT.Blizz, 1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Aero    .get(1), NF, FL.Dragon_Breath   .make( 125), OM.dust(MT.Blitz)                 , OP.stick.mat(MT.Blitz, 1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Tera    .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Basalz)                , OP.stick.mat(MT.Basalz, 1));
 		
 		
 		IL.Food_Lemon.set(                          addItem(tLastID =     0, "Lemon"                                    , "Don't make Lemonade"         , "cropLemon"                   , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
