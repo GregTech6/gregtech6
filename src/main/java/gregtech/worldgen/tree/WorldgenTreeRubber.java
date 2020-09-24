@@ -54,7 +54,7 @@ public class WorldgenTreeRubber extends WorldgenOnSurface {
 	@Override
 	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
 		if (!BlocksGT.plantableTrees.contains(aContact)) return F;
-		if (!WD.air(aWorld, aX, aY+1, aZ)) return F;
+		if (!WD.easyRep(aWorld, aX, aY+1, aZ)) return F;
 		return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aX, aY+1, aZ, (byte)0, aRandom);
 	}
 }

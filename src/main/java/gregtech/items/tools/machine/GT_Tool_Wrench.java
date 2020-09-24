@@ -31,6 +31,7 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -64,8 +65,12 @@ public class GT_Tool_Wrench extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equals(TOOL_wrench)) || aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper;
+		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
+		String tString = aBlock.getHarvestTool(aMetaData);
+		if (tString != null && tString.equals(TOOL_wrench)) return T;
+		if (aBlock.getMaterial().isLiquid()) return F;
+		tString = ST.regName(aBlock);
+		return tString != null && tString.startsWith("BuildCraft|");
 	}
 	
 	@Override

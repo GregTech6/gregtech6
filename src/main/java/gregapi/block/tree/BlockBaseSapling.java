@@ -123,7 +123,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	
 	public boolean canPlaceTree(World aWorld, int aX, int aY, int aZ) {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		return tBlock instanceof BlockTallGrass || tBlock instanceof BlockSnow || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
+		return tBlock == this || tBlock instanceof BlockTallGrass || tBlock instanceof BlockSnow || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
 	}
 	
 	@Override public boolean canPlaceBlockAt(World aWorld, int aX, int aY, int aZ) {return super.canPlaceBlockAt(aWorld, aX, aY, aZ) && canBlockStay(aWorld, aX, aY, aZ);}

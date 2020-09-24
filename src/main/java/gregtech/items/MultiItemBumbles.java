@@ -164,7 +164,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		make(20100, "Blizzful Bumblebee"        , "");
 		make(20110, "Freezing Bumblebee"        , "");
 		make(20120, "Mr. Bumblefreeze"          , "Ice to meet you!");
-		make(20130, "Cryo Bumble"               , "Delivered Pizza to I. C. Wiener");
+		make(20130, "Cryo Bumble"               , "Delivered Pizza to I.C.Wiener");
 		
 		// End + Military = Aero   TODO All Textures!
 		make(20200, "Blitzing Bumblebee"        , "");
