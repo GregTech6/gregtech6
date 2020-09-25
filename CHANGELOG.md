@@ -27,8 +27,16 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Basalz, Blizz and Blitz Powder can now be used for different ways to obtain some Potions in the Distillery.
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
+[ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
 [ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
+[ADDED]
+Metal Scaffolds made of each of the Metal Shelf Set Materials.
+These Scaffolds are NOT intended to be identical to any other Scaffolds you might know! They are NOT supposed to be exactly like IC2, Vanilla or any other Scaffolds!
+Vertical Scaffolds contain a Ladder on the inside, which you can use to climb up through the Scaffolds Platform.
+Sneaking ontop of the Scaffold Platform makes it possible to go down the Ladder, as long as you dont stand on the Ladder part itself.
+Sideways Scaffolds need to be connected to at least one vertical Scaffold on the same Y-Level to stay in place.
+You should use Steel Bars or similar as a Guard Rail, if you use the Scaffolds as a Catwalk.
 
 
 6.14.01:

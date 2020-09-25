@@ -447,6 +447,10 @@ public class WD {
 	public static boolean even(ChunkCoordinates aCoords) {return even(aCoords.posX, aCoords.posY, aCoords.posZ);}
 	public static boolean even(int... aCoords) {int i = 0; for (int tCoord : aCoords) if (tCoord % 2 == 0) i++; return i % 2 == 0;}
 	
+	public static int evenness(TileEntity aTileEntity) {return evenness(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);}
+	public static int evenness(ChunkCoordinates aCoords) {return evenness(aCoords.posX, aCoords.posY, aCoords.posZ);}
+	public static int evenness(int... aCoords) {int i = 0; for (int tCoord : aCoords) {i <<= 1; if (tCoord % 2 != 0) i++;} return i;}
+	
 	public static boolean setIfDiff(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMetaData, int aFlags) {return (aWorld.getBlock(aX, aY, aZ) != aBlock || aWorld.getBlockMetadata(aX, aY, aZ) != aMetaData) && aWorld.setBlock(aX, aY, aZ, aBlock, aMetaData, aFlags);}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, ItemStack aStack) {

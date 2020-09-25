@@ -175,9 +175,9 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt  (byte aSide) {return F;}
 	@Override public boolean isLadder(EntityLivingBase aEntity) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	@Override public boolean useSidePlacementRotation        () {return T;}
 	@Override public boolean useInversePlacementRotation     () {return T;}
-	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_Y_NEG;}
