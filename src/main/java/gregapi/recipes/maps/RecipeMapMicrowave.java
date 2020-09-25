@@ -72,7 +72,7 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 			
 			if (tData != null) {
 				if (tData.mMaterial != null) {
-					if (tData.mMaterial.mMaterial.contains(TD.Atomic.METAL) || tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
+					if (tData.mMaterial.mMaterial.containsAny(TD.Atomic.METAL, TD.Properties.EXPLOSIVE)) {
 						if (aTileEntity instanceof TileEntityBase01Root) ((TileEntityBase01Root)aTileEntity).overcharge(aSize * 4, TD.Energy.EU);
 						return null;
 					}
@@ -82,7 +82,7 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 					}
 				}
 				for (OreDictMaterialStack tMaterial : tData.mByProducts) if (tMaterial != null) {
-					if (tMaterial.mMaterial.contains(TD.Atomic.METAL) || tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
+					if (tMaterial.mMaterial.containsAny(TD.Atomic.METAL, TD.Properties.EXPLOSIVE)) {
 						if (aTileEntity instanceof TileEntityBase01Root) ((TileEntityBase01Root)aTileEntity).overcharge(aSize * 4, TD.Energy.EU);
 						return null;
 					}

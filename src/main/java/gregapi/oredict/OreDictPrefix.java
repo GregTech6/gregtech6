@@ -123,7 +123,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 			}
 		}
 		sPrefixes.put(mNameInternal, this);
-		mFamiliarPrefixes.add(this);
+		addFamiliarPrefix(this);
 	}
 	
 	public static OreDictPrefix get(String aOre) {

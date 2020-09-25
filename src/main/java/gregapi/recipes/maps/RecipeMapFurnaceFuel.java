@@ -51,7 +51,7 @@ public class RecipeMapFurnaceFuel extends RecipeMap {
 		if (rRecipe == null) {
 			long tFuelValue = ST.fuel(aInputs[0]);
 			OreDictItemData tData = OM.anydata_(aInputs[0]);
-			if (tFuelValue > 0 && !FL.contains(aInputs[0], FL.Lava.make(0), T) && !OM.materialcontains(tData, TD.Properties.FLAMMABLE, TD.Properties.EXPLOSIVE)) {
+			if (tFuelValue > 0 && !FL.contains(aInputs[0], FL.Lava.make(0), T) && !OM.materialcontains(tData, TD.Properties.EXPLOSIVE)) {
 				ItemStack tContainer = ST.container(aInputs[0], T);
 				if (tContainer == null) {
 					OreDictMaterialStack tMaterial = null;

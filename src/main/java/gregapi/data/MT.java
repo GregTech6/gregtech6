@@ -1047,11 +1047,11 @@ public class MT {
 	Bamboo                  = wood          ( 8418, "Bamboo"                                        , 100, 200, 100, 255, TICKS_PER_SMELT/ 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.HERBA, 1                   ).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 2.0, 32, 0).heat(350, 450),
 	Skyroot                 = wood          ( 8291, "Skyroot"                                       ,  50,  80,  80, 255, TICKS_PER_SMELT/ 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VOLATUS    , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0, 64, 0).heat(350, 450),
 	Weedwood                = wood          ( 8286, "Weedwood"                                      ,  80,  50,   0, 255, TICKS_PER_SMELT/ 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.MORTUUS    , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 2.0, 32, 0).heat(350, 450),
-	Livingwood              = wood          ( 8289, "Livingwood"                                    ,  60,  30,   0, 255, TICKS_PER_SMELT   , FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0, 64, 0).heat(350, 500),
-	Dreamwood               = wood          ( 8290, "Dreamwood"                                     , 200, 240, 240, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.SPIRITUS   , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0,128, 1).heat(350, 550),
-	Shimmerwood             = wood          ( 8414, "Shimmerwood"                                   , 234, 234, 234, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.LUX        , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0,128, 1).heat(350, 550),
-	Greatwood               = wood          ( 8296, "Greatwood"                                     ,  60,  30,  25, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1                   ).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 6.0, 64, 1).heat(400, 600),
-	Silverwood              = wood          ( 8297, "Silverwood"                                    , 234, 222, 210, 255, TICKS_PER_SMELT* 4, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.PRAECANTIO , 1).setBurning(Ash,  0).setSmelting(Ash,  0).qual(1, 8.0,128, 1).heat(450, 650),
+	Livingwood              = wood          ( 8289, "Livingwood"                                    ,  60,  30,   0, 255, TICKS_PER_SMELT   , FLAMMABLE, APPROXIMATE, MAGICAL)                                                                                      .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0, 64, 0).heat(350, 500),
+	Dreamwood               = wood          ( 8290, "Dreamwood"                                     , 200, 240, 240, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE, MAGICAL)                                                                                      .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.SPIRITUS   , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0,128, 1).heat(350, 550),
+	Shimmerwood             = wood          ( 8414, "Shimmerwood"                                   , 234, 234, 234, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE, MAGICAL)                                                                                      .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.LUX        , 1).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 4.0,128, 1).heat(350, 550),
+	Greatwood               = wood          ( 8296, "Greatwood"                                     ,  60,  30,  25, 255, TICKS_PER_SMELT* 2, FLAMMABLE, APPROXIMATE, MAGICAL)                                                                                      .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1                   ).setBurning(Ash, U4).setSmelting(Ash, U2).qual(1, 6.0, 64, 1).heat(400, 600),
+	Silverwood              = wood          ( 8297, "Silverwood"                                    , 234, 222, 210, 255, TICKS_PER_SMELT* 4, FLAMMABLE, APPROXIMATE, MAGICAL)                                                                                      .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.PRAECANTIO , 1).setBurning(Ash,  0).setSmelting(Ash,  0).qual(1, 8.0,128, 1).heat(450, 650),
 	Peanutwood              = wood          ( 8227, "Peanut Wood"                                   , 120,  60,   0, 255, TICKS_PER_SMELT/ 2, FLAMMABLE, "Peanutwood")                                                                                              .setMcfg( 0, Wood           , 1*U)                                                                                                                          .aspects(TC.ARBOR, 1                   ).steal(Wood).heat(350, 450),
 	Marshmallow             = wood          ( 9715, "Marshmallow"           , SET_FINE              , 255, 220, 220, 255, FOOD)                                                                                                                                                                                                                                                                                                 .aspects(TC.FAMES, 1                   ).qual(1, 3.0, 24, 0),
 	LiveRoot                = dustcent      ( 8223, "LiveRoot"              , SET_WOOD              , 220, 200,   0, 255, TICKS_PER_SMELT   , WOOD, MORTAR, MAGICAL, MORTAR)                                                                                        .setMcfg( 3, Wood           , 3*U, Ma               , 1*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setLocal("Liveroot").setBurning(Ash, U9).heat(1178, 2465),
@@ -2663,7 +2663,7 @@ public class MT {
 			Nq                              .addOreByProducts(Nq_528                );
 			Ad                              .addOreByProducts(OREMATS.Magnetite     , Adamantine                );
 			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
-			Efrine                          .addOreByProducts(SoulSand              , NetherQuartz              , AncientDebris         );
+			Efrine                          .addOreByProducts(SoulSand              , NetherQuartz              , Be                    );
 			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              , Efrine                );
 			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 , Gloomstone);
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
@@ -2692,7 +2692,7 @@ public class MT {
 			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );
 			KNO3                            .addOreByProducts(NaNO3                 , Niter                     );
 			Niter                           .addOreByProducts(KNO3                  , NaNO3                     );
-			Endstone                        .addOreByProducts(He_3                  );
+			Endstone                        .addOreByProducts(He_3                  , Be                        );
 			Hf                              .addOreByProducts(Zircon                );
 			Mg                              .addOreByProducts(Olivine               );
 			OREMATS.Cobaltite               .addOreByProducts(Co                    );
@@ -3199,9 +3199,9 @@ public class MT {
 		Jungle              = woodnormal( 9303, "Junglewood"              , "Junglewood"          , 177, 128,  92, 2.0, 16, MD.MC),
 		Acacia              = woodnormal( 9304, "Acacia"                  , "Acacia"              , 186, 104,  59, 2.5, 24, MD.MC),
 		DarkOak             = woodnormal( 9305, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21, 3.5, 32, MD.MC),
-		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106, 2.5, 24, MD.NeLi),
-		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, 3.5, 32, MD.NeLi),
-		Foxfire             = woodnormal( 9408, "Foxfirewood"             , "Foxfire"             ,  51,  51, 101, 4.0, 24, MD.NeLi),
+		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106, 2.5, 24, MD.NeLi, UNBURNABLE),
+		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, 3.5, 32, MD.NeLi, UNBURNABLE),
+		Foxfire             = woodnormal( 9408, "Foxfirewood"             , "Foxfire"             ,  51,  51, 101, 4.0, 24, MD.NeLi, UNBURNABLE),
 		
 		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, 1.5,  8, MD.GT).setPulver(MT.Wood, U),
 		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63, 1.5,  8, MD.BoP),
@@ -3211,7 +3211,7 @@ public class MT {
 		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44, 1.0,  8, MD.ERE),
 		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      ,  73,  48,  16, 3.0, 32, MD.ERE),
 		Bleached            = woodnormal( 9407, "WoodBleached"            , "Bleached Wood"       , 255, 255, 255, 2.0, 16, MD.ERE),
-		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231, 1.0, 64, MD.TCFM),
+		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231, 1.0, 64, MD.TCFM, MAGICAL),
 		
 		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26, 3.0, 24, MD.FR),
 		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0, 2.0, 16, MD.FR),
@@ -3219,7 +3219,7 @@ public class MT {
 		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175, 2.5, 16, MD.BINNIE),
 		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192, 1.5, 16, MD.HaC),
 		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0, 3.0, 16, MD.TROPIC),
-		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245, 4.0, 64, MD.GT),
+		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245, 4.0, 64, MD.GT, MAGICAL, UNBURNABLE),
 		
 		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58, 4.0, 64, MD.TF),
 		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142, 3.5, 48, MD.ARS),
@@ -3278,7 +3278,7 @@ public class MT {
 		Jacaranda           = woodnormal( 9371, "Jacaranda"               , "Jacaranda"           , 201, 171, 162, 2.5, 16, MD.BoP),
 		Mangrove            = woodnormal( 9372, "Mangrove"                , "Mangrove"            , 236, 228, 217, 2.0, 24, MD.BoP),
 		SacredOak           = woodnormal( 9373, "SacredOak"               , "Sacred Oak"          , 159, 132,  77, 4.0, 48, MD.BoP),
-		Magic               = woodnormal( 9374, "Magicwood"               , "Magicwood"           ,  90, 105, 180, 3.5, 32, MD.BoP),
+		Magic               = woodnormal( 9374, "Magicwood"               , "Magicwood"           ,  90, 105, 180, 3.5, 32, MD.BoP, MAGICAL),
 		
 		Apple               = woodnormal( 9375, "Applewood"               , "Applewood"           ,  97,  49,  36, 2.0, 24, MD.BINNIE_TREE),
 		Ash                 = woodnormal( 9376, "Ashwood"                 , "Ashwood"             , 244, 190,  90, 3.5, 16, MD.BINNIE_TREE),

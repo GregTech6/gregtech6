@@ -290,7 +290,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			} else if (tMaterial.mMaterial.mGramPerCubicCentimeter <= WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
 				GarbageGT.trash(mContent.remove(i--));
 				UT.Sounds.send(SFX.MC_FIZZ, this);
-			} else if (mTemperature >= tMaterial.mMaterial.mBoilingPoint || (mTemperature > C + 40 && tMaterial.mMaterial.contains(TD.Properties.FLAMMABLE) && !tMaterial.mMaterial.contains(TD.Processing.MELTING))) {
+			} else if (mTemperature >= tMaterial.mMaterial.mBoilingPoint || (mTemperature > C + 40 && tMaterial.mMaterial.contains(TD.Properties.FLAMMABLE) && !tMaterial.mMaterial.containsAny(TD.Properties.UNBURNABLE, TD.Processing.MELTING))) {
 				GarbageGT.trash(mContent.remove(i--));
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (tMaterial.mMaterial.mBoilingPoint - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}

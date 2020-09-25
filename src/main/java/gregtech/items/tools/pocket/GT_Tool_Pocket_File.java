@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import gregtech.items.tools.crafting.GT_Tool_File;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Pocket_File extends GT_Tool_File {
+	@Override public float getMaxDurabilityMultiplier() {return 4.0F;}
 	public final int mSwitchIndex;
 	
 	public GT_Tool_Pocket_File(int aSwitchIndex) {

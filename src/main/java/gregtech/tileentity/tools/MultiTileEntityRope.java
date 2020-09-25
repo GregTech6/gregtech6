@@ -21,8 +21,6 @@ package gregtech.tileentity.tools;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
@@ -53,21 +51,6 @@ import net.minecraft.util.AxisAlignedBB;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_OnBlockHarvested, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
-	@Override
-	public void readFromNBT2(NBTTagCompound aNBT) {
-		super.readFromNBT2(aNBT);
-	}
-	
-	@Override
-	public void writeToNBT2(NBTTagCompound aNBT) {
-		super.writeToNBT2(aNBT);
-	}
-	
-	@Override
-	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		//
-	}
-	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
@@ -120,17 +103,16 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 		switch(aRenderPass) {
 		case 0:
 			switch(mFacing) {
-			case SIDE_Z_POS: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[12], PX_N[ 6], PX_N[ 0], PX_N[ 0]); return T;
-			case SIDE_Z_NEG: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 0], PX_N[ 6], PX_N[ 0], PX_N[12]); return T;
-			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 0], PX_P[ 6], PX_N[ 0], PX_N[ 0], PX_N[ 6]); return T;
-			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 6], PX_N[12], PX_N[ 0], PX_N[ 6]); return T;
-			case SIDE_Y_POS: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]); return T;
-			case SIDE_Y_NEG: box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]); return T;
-			default        : box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]); return T;
+			case SIDE_Z_POS: return box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[12], PX_N[ 6], PX_N[ 0], PX_N[ 0]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 0], PX_N[ 6], PX_N[ 0], PX_N[12]);
+			case SIDE_X_POS: return box(aBlock, PX_P[12], PX_P[ 0], PX_P[ 6], PX_N[ 0], PX_N[ 0], PX_N[ 6]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 6], PX_N[12], PX_N[ 0], PX_N[ 6]);
+			case SIDE_Y_POS: return box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);
+			case SIDE_Y_NEG: return box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]);
+			default        : return box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]);
 			}
 		case 1:
-			box(aBlock, PX_P[ 4], PX_P[ 4], PX_P[ 4], PX_N[ 4], PX_N[ 8], PX_N[ 4]);
-			return T;
+			return box(aBlock, PX_P[ 4], PX_P[ 4], PX_P[ 4], PX_N[ 4], PX_N[ 8], PX_N[ 4]);
 		default:
 			return F;
 		}
@@ -183,24 +165,25 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 		}
 	}
 	
-	@Override public float getSurfaceSize           (byte aSide) {return 0;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0;}
-	@Override public float getSurfaceDistance       (byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
-	@Override public boolean isSideSolid2           (byte aSide) {return F;}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
-	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
-	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
+	@Override public float getSurfaceSize          (byte aSide) {return 0;}
+	@Override public float getSurfaceSizeAttachable(byte aSide) {return 0;}
+	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
+	@Override public boolean isSurfaceSolid        (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2      (byte aSide) {return F;}
+	@Override public boolean isSideSolid2          (byte aSide) {return F;}
+	@Override public boolean allowCovers           (byte aSide) {return F;}
+	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt  (byte aSide) {return F;}
 	@Override public boolean isLadder(EntityLivingBase aEntity) {return T;}
-	@Override public boolean useSidePlacementRotation       () {return T;}
-	@Override public boolean useInversePlacementRotation    () {return T;}
+	@Override public boolean useSidePlacementRotation        () {return T;}
+	@Override public boolean useInversePlacementRotation     () {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
+	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_Y_NEG;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
-	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
+	@Override public String getFacingTool() {return null;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.rope";}
 }

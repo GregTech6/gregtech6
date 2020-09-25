@@ -520,11 +520,11 @@ public class OP {
 	static {
 		ANY.init();
 		
-		crushed     .addListener(new OreDictListenerItem_Washing(crushedPurified, 2, nugget, gemChipped, crushedPurifiedTiny, crushedPurifiedTiny, dustTiny, dustTiny));
-		dustImpure  .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));
-		dustPure    .addListener(new OreDictListenerItem_Washing(dust, 4, dustTiny));
-		dustRefined .addListener(new OreDictListenerItem_Washing(dust, 5, dustTiny));
-		rockGt      .addListener(new OreDictListenerItem_Rocks());
+		crushed    .addListener(new OreDictListenerItem_Washing(crushedPurified, 2, crushedPurifiedTiny));
+		dustImpure .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));
+		dustPure   .addListener(new OreDictListenerItem_Washing(dust, 4, dustTiny));
+		dustRefined.addListener(new OreDictListenerItem_Washing(dust, 5, dustTiny));
+		rockGt     .addListener(new OreDictListenerItem_Rocks());
 		
 		bottle.mContainerItem = ST.make(Items.glass_bottle, 1, 0);
 		
@@ -538,32 +538,32 @@ public class OP {
 		crushedCentrifugedTiny.addFamiliarPrefix(crushedCentrifuged);
 		
 		for (OreDictPrefix tPrefix1 : OreDictPrefix.VALUES) for (OreDictPrefix tPrefix2 : OreDictPrefix.VALUES) {
-			if (tPrefix1.contains(INGOT_BASED               ) && tPrefix2.contains(INGOT_BASED              )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DUST_BASED                ) && tPrefix2.contains(DUST_BASED               )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DUST_ORE                  ) && tPrefix2.contains(DUST_ORE                 )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(DENSE_ORE                 ) && tPrefix2.contains(DENSE_ORE                )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.contains(STANDARD_ORE              ) && tPrefix2.contains(STANDARD_ORE             )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("pipe"    ) && tPrefix2.mNameInternal.startsWith("pipe"   )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("wireGt"  ) && tPrefix2.mNameInternal.startsWith("wireGt" )) tPrefix1.addFamiliarPrefix(tPrefix2);
-			if (tPrefix1.mNameInternal.startsWith("cableGt" ) && tPrefix2.mNameInternal.startsWith("cableGt")) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(INGOT_BASED              ) && tPrefix2.contains(INGOT_BASED              )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DUST_BASED               ) && tPrefix2.contains(DUST_BASED               )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DUST_ORE                 ) && tPrefix2.contains(DUST_ORE                 )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(DENSE_ORE                ) && tPrefix2.contains(DENSE_ORE                )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.contains(STANDARD_ORE             ) && tPrefix2.contains(STANDARD_ORE             )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("pipe"   ) && tPrefix2.mNameInternal.startsWith("pipe"   )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("wireGt" ) && tPrefix2.mNameInternal.startsWith("wireGt" )) tPrefix1.addFamiliarPrefix(tPrefix2);
+			if (tPrefix1.mNameInternal.startsWith("cableGt") && tPrefix2.mNameInternal.startsWith("cableGt")) tPrefix1.addFamiliarPrefix(tPrefix2);
 		}
 		
 		// Items which are already there in vanilla MC, or make Issues like with Mekanism.
-		gem                 .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
-		dust                .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze, MT.RefinedObsidian, MT.RefinedGlowstone);
-		dustRefined         .disableItemGeneration(MT.Obsidian, MT.Glowstone);
-		stick               .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
-		ingot               .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);
-		nugget              .disableItemGeneration(MT.Au);
-		plate               .disableItemGeneration(MT.Paper);
-		bucket              .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
-		bottle              .disableItemGeneration(MT.Empty, MT.H2O);
+		gem        .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
+		dust       .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze, MT.RefinedObsidian, MT.RefinedGlowstone);
+		dustRefined.disableItemGeneration(MT.Obsidian, MT.Glowstone);
+		stick      .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
+		ingot      .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);
+		nugget     .disableItemGeneration(MT.Au);
+		plate      .disableItemGeneration(MT.Paper);
+		bucket     .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
+		bottle     .disableItemGeneration(MT.Empty, MT.H2O);
 		
-		gemChipped          .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
-		gemFlawed           .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
-		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
-		bouleGt             .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
-		plateTiny           .forceItemGeneration(MT.Paper);
+		gemChipped .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
+		gemFlawed  .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		gem        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		bouleGt    .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
+		plateTiny  .forceItemGeneration(MT.Paper);
 		
 		for (OreDictMaterial tMat : ANY.Sapphire.mToThis) bouleGt.forceItemGeneration(tMat);
 		for (OreDictMaterial tMat : ANY.Hexorium.mToThis) bouleGt.forceItemGeneration(tMat);
@@ -591,7 +591,7 @@ public class OP {
 		cableGt04               .mByProducts.add(OM.stack(MT.Rubber             , plate.mAmount * 2));
 		cableGt02               .mByProducts.add(OM.stack(MT.Rubber             , plate.mAmount));
 		cableGt01               .mByProducts.add(OM.stack(MT.Rubber             , plate.mAmount));
-//      bucket                  .mByProducts.add(OM.stack(MT.Fe                 , ingot.mAmount * 3));
+//      bucket                  .mByProducts.add(OM.stack(Any.Fe                , ingot.mAmount * 3));
 		cell                    .mByProducts.add(OM.stack(MT.Sn                 , plateCurved.mAmount));
 		bottle                  .mByProducts.add(OM.stack(MT.Glass              , U));
 		chemtube                .mByProducts.add(OM.stack(MT.Glass              , U3));
@@ -651,11 +651,11 @@ public class OP {
 		plantGtTwig             .mByProducts.add(OM.stack(ANY.Wood              , stick.mAmount));
 		arrowGtWood             .mByProducts.add(OM.stack(ANY.Wood              , stick.mAmount));
 		arrowGtPlastic          .mByProducts.add(OM.stack(MT.Plastic            , stick.mAmount));
-		bulletGtSmall           .mByProducts.add(OM.stack(MT.Brass              , U9));
+		bulletGtSmall           .mByProducts.add(OM.stack(MT.Brass              ,   U9));
 		bulletGtMedium          .mByProducts.add(OM.stack(MT.Brass              , 2*U9));
-		bulletGtLarge           .mByProducts.add(OM.stack(MT.Brass              , U3));
-		bulletGtSmall           .mByProducts.add(OM.stack(MT.Gunpowder          , U9));
+		bulletGtLarge           .mByProducts.add(OM.stack(MT.Brass              ,   U3));
+		bulletGtSmall           .mByProducts.add(OM.stack(MT.Gunpowder          ,   U9));
 		bulletGtMedium          .mByProducts.add(OM.stack(MT.Gunpowder          , 2*U9));
-		bulletGtLarge           .mByProducts.add(OM.stack(MT.Gunpowder          , U3));
+		bulletGtLarge           .mByProducts.add(OM.stack(MT.Gunpowder          ,   U3));
 	}
 }
