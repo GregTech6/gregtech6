@@ -111,14 +111,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	public void beginLeavesDecay(World aWorld, int aX, int aY, int aZ) {
 		if (aWorld.isRemote) return;
 		if (!WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 201+RNGSUS.nextInt(100)); return;}
-		int aMeta = WD.meta(aWorld, aX, aY, aZ), tRangeSide = getLeavesRangeSide((byte)aMeta)+1, tRangeYNeg = getLeavesRangeYNeg((byte)aMeta)+1, tRangeYPos = getLeavesRangeYPos((byte)aMeta)+1;
-		if (aMeta < 8 || !aWorld.checkChunksExist(aX - tRangeSide, aY - tRangeYNeg, aZ - tRangeSide, aX + tRangeSide, aY + tRangeYPos, aZ + tRangeSide)) return;
-		tRangeSide--; tRangeYNeg--; tRangeYPos--;
-		for (int i = -tRangeSide; i <= tRangeSide; ++i) for (int j = -tRangeYNeg; j <= tRangeYPos; ++j) for (int k = -tRangeSide; k <= tRangeSide; ++k) {
-			if (mLogs[aMeta & 7] != aWorld.getBlock(aX + i, aY + j, aZ + k)) continue;
-			if (mLogMetas[aMeta & 7] != (aWorld.getBlockMetadata(aX + i, aY + j, aZ + k) & 3)) continue;
-			return;
-		}
+		if (WD.meta(aWorld, aX, aY, aZ) < 8) return;
 		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 1+RNGSUS.nextInt(100));
 	}
 	
@@ -128,6 +121,12 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 		if (!WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlockToAir(aX, aY, aZ); return;}
 		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		if (aMeta < 8) return;
+		int tRangeSide = getLeavesRangeSide(aMeta), tRangeYNeg = getLeavesRangeYNeg(aMeta), tRangeYPos = getLeavesRangeYPos(aMeta);
+		for (int i = -tRangeSide; i <= tRangeSide; ++i) for (int j = -tRangeYNeg; j <= tRangeYPos; ++j) for (int k = -tRangeSide; k <= tRangeSide; ++k) {
+			if (mLogs    [aMeta & 7] != WD.block(aWorld, aX + i, aY + j, aZ + k)) continue;
+			if (mLogMetas[aMeta & 7] != (WD.meta(aWorld, aX + i, aY + j, aZ + k) & 3)) continue;
+			return;
+		}
 		if (!(MD.TFC.mLoaded || MD.TFCP.mLoaded) || aRandom.nextInt(4) == 0) dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, 0);
 		aWorld.setBlockToAir(aX, aY, aZ);
 	}

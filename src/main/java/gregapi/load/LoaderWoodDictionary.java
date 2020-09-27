@@ -784,15 +784,15 @@ public class LoaderWoodDictionary implements Runnable {
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "WarpedPlanks" , 1, W));
 			// Use Netherlicious Wood Stuff if available.
 			if (MD.NeLi.mLoaded) {
-				new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 0), ST.make(MD.NeLi, "CrimsonStairs", 1, W), MT.WOODS.Crimson, 233);
-				new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 1), ST.make(MD.NeLi, "WarpedStairs" , 1, W), MT.WOODS.Warped , 234);
-				new WoodEntry(ST.make(MD.NePl, "CrimsonStem"  , 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam1_Crimson));
-				new WoodEntry(ST.make(MD.NePl, "WarpedStem"   , 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam1_Warped ));
-				new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam2_Crimson));
+				new PlankEntry  (ST.make(MD.NePl, "CrimsonPlanks", 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 0), ST.make(MD.NeLi, "CrimsonStairs", 1, W), MT.WOODS.Crimson, 233);
+				new PlankEntry  (ST.make(MD.NePl, "WarpedPlanks" , 1, W), ST.make(MD.NeLi, "PlankSingleSlab", 1, 1), ST.make(MD.NeLi, "WarpedStairs" , 1, W), MT.WOODS.Warped , 234);
+				new WoodEntry   (ST.make(MD.NePl, "CrimsonStem"  , 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam1_Crimson));
+				new WoodEntry   (ST.make(MD.NePl, "WarpedStem"   , 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam1_Warped ));
+				new WoodEntry   (ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.BEAMS.get(IL.NeLi_Beam2_Crimson));
 			} else {
 				new SaplingEntry(ST.make(MD.NePl, "CrimsonFungus", 1, W), new WoodEntry(ST.make(MD.NePl, "CrimsonStem", 1, W), new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), MT.WOODS.Crimson, 233)));
 				new SaplingEntry(ST.make(MD.NePl, "WarpedFungus" , 1, W), new WoodEntry(ST.make(MD.NePl, "WarpedStem" , 1, W), new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234)));
-				new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
+				new WoodEntry   (ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
 			}
 		}
 		// Chisel Planks

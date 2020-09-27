@@ -164,7 +164,7 @@ public class ToolCompat {
 				}
 			}
 			if (rReturn) {
-				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null);
+				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null, F);
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}

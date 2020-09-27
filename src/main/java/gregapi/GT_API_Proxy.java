@@ -996,7 +996,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		
 		if (aEvent.harvester != null) {
-			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.block);
+			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.block, F);
 			ItemStack aStack = aEvent.harvester.getCurrentEquippedItem();
 			if (aStack != null) {
 				boolean tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aStack) >= 3), tCanCollect = (aStack.getItem() instanceof MultiItemTool && ((MultiItemTool)aStack.getItem()).canCollectDropsDirectly(aStack, aEvent.block, (byte)aEvent.blockMetadata));

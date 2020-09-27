@@ -34,6 +34,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -105,7 +106,12 @@ public class GT_Tool_Axe extends ToolStats {
 			try {
 				int tIncrement = (int)Math.max(1, (aBlock.getBlockHardness(aPlayer.worldObj, aX, aY, aZ) * getToolDamagePerBlockBreak()) / 10);
 				LOCK = F;
-				for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH && rAmount <= aAvailableDurability; tY++) if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock && aPlayer.worldObj.func_147480_a(aX, tY, aZ, T)) {tIncrement++; rAmount+=tIncrement;} else break;
+				for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH && rAmount <= aAvailableDurability; tY++) {
+					if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock && aPlayer.worldObj.func_147480_a(aX, tY, aZ, T)) {
+						if (FAST_LEAF_DECAY) WD.leafdecay(aPlayer.worldObj, aX, tY, aZ, aBlock, T);
+						rAmount+= ++tIncrement;
+					} else break;
+				}
 			} catch(Throwable e) {/**/}
 			LOCK = T;
 		}
