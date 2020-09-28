@@ -273,7 +273,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis            .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), ZL_IS);
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis_Sticky     .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make(1000)), ZL_IS);
-		RM.Centrifuge   .addRecipe1(T, 16,   64,   100                              , IL.FR_Propolis_Pulsating  .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make( 125)), OM.dust(MT.EnderPearl, U9));
+		RM.Centrifuge   .addRecipe1(T, 16,   64,   800                              , IL.FR_Propolis_Pulsating  .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make( 125)), OM.dust(MT.EnderPearl, U72));
 		RM.Centrifuge   .addRecipe1(T, 16,   64,  6000                              , IL.FR_Propolis_Silky      .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make( 125)), IL.FR_Silk.get(1));
 		
 //      RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Honey          .get(1), NF, FL.Honey   .make( 90), OM.dust(MT.WaxBee));
