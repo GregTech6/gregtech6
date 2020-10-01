@@ -60,7 +60,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addAutoBlackListing("stickBlaze");
 		OreDictManager.INSTANCE.addAutoBlackListing("dustBone");
 		OreDictManager.INSTANCE.addAutoBlackListing("dustSugar");
-		OreDictManager.INSTANCE.addAutoBlackListing("dustBlaze");
+		OreDictManager.INSTANCE.addAutoBlackListing("dustTinyBlaze");
 		OreDictManager.INSTANCE.addAutoBlackListing("dustRedstone");
 		OreDictManager.INSTANCE.addAutoBlackListing("dustGlowstone");
 		OreDictManager.INSTANCE.addAutoBlackListing("dustGunpowder");
@@ -133,6 +133,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("bacon"                   , "foodBaconraw");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemBacon"               , "foodBaconraw");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("slimeball"               , "itemSlimeball");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustTinyBlaze"           , "powderBlaze");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustWheat"               , "flour");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("wheat"                   , "cropWheat");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemWheat"               , "cropWheat");

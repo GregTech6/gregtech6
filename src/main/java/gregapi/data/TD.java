@@ -434,7 +434,7 @@ public class TD {
 		public static final TagData ENDER_DRAGON_PROOF                      = TagData.createTagData("PROPERTIES.ENDER_DRAGON_PROOF", "Ender Dragon Proof");
 		/** If this Material is Wither Proof. */
 		public static final TagData WITHER_PROOF                            = TagData.createTagData("PROPERTIES.WITHER_PROOF", "Wither Proof");
-		/** If this Material has Tool Stats. */
+		/** Unused, there is Tool Type checks instead. */
 		public static final TagData NO_ADVANCED_TOOLS                       = TagData.createTagData("PROPERTIES.NO_ADVANCED_TOOLS", "No Advanced Tools");
 		/** If this Material has Tool Stats. */
 		public static final TagData HAS_TOOL_STATS                          = TagData.createTagData("PROPERTIES.HAS_TOOL_STATS", "Has Tool Stats");

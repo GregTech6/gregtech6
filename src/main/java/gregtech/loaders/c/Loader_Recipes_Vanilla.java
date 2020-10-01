@@ -53,7 +53,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Items.bone, 1, 0));
 		
 		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {Items.bone});
-		CR.shapeless(ST.make(Items.blaze_powder, 1, 0), DEF_NAC, new Object[] {Items.blaze_rod});
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', Items.reeds);
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
@@ -589,15 +588,18 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (OreDictMaterial tBlaze : ANY.Blaze.mToThis) {
 		CR.shapeless(OP.dustTiny.mat(tBlaze, 2), CR.DEF_NAC, new Object[] {OP.stick.dat(tBlaze)});
 		CR.shapeless(OP.dustTiny.mat(tBlaze, 4), CR.DEF_NAC, new Object[] {OP.stickLong.dat(tBlaze)});
-		RM.Mortar       .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 3));
-		RM.Mortar       .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 6));
-		RM.pulverizing(                        OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 4), T);
-		RM.pulverizing(                        OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 8), T);
-		RM.Shredder     .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustSmall.mat(tBlaze, 2));
-		RM.Shredder     .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dust     .mat(tBlaze, 1));
-		RM.Compressor   .addRecipe1(T, 16, 32, OP.dust     .mat(tBlaze, 1), OP.plate    .mat(tBlaze, 1));
-		RM.Compressor   .addRecipe1(T, 16, 32, OP.dustSmall.mat(tBlaze, 4), OP.plate    .mat(tBlaze, 1));
-		RM.Compressor   .addRecipe1(T, 16, 32, OP.dustTiny .mat(tBlaze, 9), OP.plate    .mat(tBlaze, 1));
+		RM.Mortar    .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 3));
+		RM.Mortar    .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 6));
+		RM.pulverizing(                     OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 4), T);
+		RM.pulverizing(                     OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 8), T);
+		RM.Shredder  .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustSmall.mat(tBlaze, 2));
+		RM.Shredder  .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dust     .mat(tBlaze, 1));
+		RM.Compressor.addRecipe1(T, 16, 32, OP.dust     .mat(tBlaze, 1), OP.plate    .mat(tBlaze, 1));
+		RM.Compressor.addRecipe1(T, 16, 32, OP.dustSmall.mat(tBlaze, 4), OP.plate    .mat(tBlaze, 1));
+		RM.Compressor.addRecipe1(T, 16, 32, OP.dustTiny .mat(tBlaze, 9), OP.plate    .mat(tBlaze, 1));
+		RM.ic2_compressor(                  OP.dust     .mat(tBlaze, 1), OP.plate    .mat(tBlaze, 1));
+		RM.ic2_compressor(                  OP.dustSmall.mat(tBlaze, 4), OP.plate    .mat(tBlaze, 1));
+		RM.ic2_compressor(                  OP.dustTiny .mat(tBlaze, 9), OP.plate    .mat(tBlaze, 1));
 		}
 		
 		
