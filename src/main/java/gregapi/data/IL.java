@@ -40,9 +40,9 @@ import net.minecraft.nbt.NBTTagCompound;
  * Class containing all non-OreDict Items of GregTech.
  */
 public enum IL implements IItemContainer {
-	Display_Fluid,    // <-- Display Fluid for Tank Slots
+	Display_Fluid,    // <-- Display Fluid for Tank Slots.
 	Circuit_Selector, // <-- this is the Circuit that has the adjustable Numbers on it, renamed to Selector Tag later on.
-	Empty_Slot,       // <-- Marker for Slots to be left Empty
+	Empty_Slot,       // <-- Marker for Slots to be left Empty, used in the Anvil.
 	
 	TE_Slag, TE_Slag_Rich, TE_Cinnabar,
 	TE_Phyto_Gro, TE_Phyto_Gro_Rich,

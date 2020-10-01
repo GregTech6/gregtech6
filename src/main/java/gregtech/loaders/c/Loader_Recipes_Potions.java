@@ -68,22 +68,22 @@ public class Loader_Recipes_Potions implements Runnable {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Speed_1          .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_Speed_2          .make(250), ZL_IS);
 		}
-		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Blaze, 1), OP.dustSmall.mat(MT.Blaze, 4), OP.dustTiny.mat(MT.Blaze, 9))) if (tStack != null) {
+		for (ItemStack tStack : ST.array(OP.dustTiny.mat(MT.Blaze, 1))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Mundane          .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Strength_1       .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_Strength_2       .make(250), ZL_IS);
 		}
-		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Blizz, 1), OP.dustSmall.mat(MT.Blizz, 4), OP.dustTiny.mat(MT.Blizz, 9))) if (tStack != null) {
+		for (ItemStack tStack : ST.array(OP.dustTiny.mat(MT.Blizz, 1))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Thick            .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_FireResistance_1 .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Mundane.make(250), FL.Potion_FireResistance_1L.make(250), ZL_IS);
 		}
-		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Blitz, 1), OP.dustSmall.mat(MT.Blitz, 4), OP.dustTiny.mat(MT.Blitz, 9))) if (tStack != null) {
+		for (ItemStack tStack : ST.array(OP.dustTiny.mat(MT.Blitz, 1))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Mundane          .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_WaterBreathing_1 .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_WaterBreathing_1L.make(250), ZL_IS);
 		}
-		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Basalz, 1), OP.dustSmall.mat(MT.Basalz, 4), OP.dustTiny.mat(MT.Basalz, 9))) if (tStack != null) {
+		for (ItemStack tStack : ST.array(OP.dustTiny.mat(MT.Basalz, 1))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Thick            .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Jump_1           .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Mundane.make(250), FL.Potion_Jump_2           .make(250), ZL_IS);

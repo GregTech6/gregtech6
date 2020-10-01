@@ -160,14 +160,10 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Pt            , 4), OP.dust     .mat(MT.Redstone, 1)), IL.RC_Rail_Adv.get(8));
 		RM.Press.addRecipeX(F, 16, 16, ST.array(IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Pt            , 1), OP.dustSmall.mat(MT.Redstone, 1)), IL.RC_Rail_Adv.get(2));
 		for (OreDictMaterial tMat : ANY.Blaze.mToThis) {
-		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Ag            , 4), OP.dust     .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
-		RM.Press.addRecipeX(F, 16, 16, ST.array(IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Ag            , 1), OP.dustSmall.mat(tMat, 1)), IL.RC_Rail_HS.get(1));
-		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Au            , 4), OP.dust     .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
-		RM.Press.addRecipeX(F, 16, 16, ST.array(IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Au            , 1), OP.dustSmall.mat(tMat, 1)), IL.RC_Rail_HS.get(1));
-		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Electrum      , 4), OP.dust     .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
-		RM.Press.addRecipeX(F, 16, 16, ST.array(IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Electrum      , 1), OP.dustSmall.mat(tMat, 1)), IL.RC_Rail_HS.get(1));
-		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Pt            , 4), OP.dust     .mat(tMat, 1)), IL.RC_Rail_HS.get(8));
-		RM.Press.addRecipeX(F, 16, 16, ST.array(IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Pt            , 1), OP.dustSmall.mat(tMat, 1)), IL.RC_Rail_HS.get(2));
+		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Ag            , 4), OP.dustTiny .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
+		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Au            , 4), OP.dustTiny .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
+		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Electrum      , 4), OP.dustTiny .mat(tMat, 1)), IL.RC_Rail_HS.get(4));
+		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Pt            , 4), OP.dustTiny .mat(tMat, 1)), IL.RC_Rail_HS.get(8));
 		}
 		
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Al                ,  6), IL.RC_Rail_Standard.get( 1));

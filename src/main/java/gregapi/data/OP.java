@@ -550,7 +550,8 @@ public class OP {
 		
 		// Items which are already there in vanilla MC, or make Issues like with Mekanism.
 		gem        .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
-		dust       .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze, MT.RefinedObsidian, MT.RefinedGlowstone);
+		dust       .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.RefinedObsidian, MT.RefinedGlowstone);
+		dustTiny   .disableItemGeneration(MT.Blaze);
 		dustRefined.disableItemGeneration(MT.Obsidian, MT.Glowstone);
 		stick      .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
 		ingot      .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);

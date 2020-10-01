@@ -136,7 +136,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Diamond    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Diamond, 1));
 			
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mucous     .get(1), ZL_FS, FL.Honey.make(20), FL.Slime_Green.make(200), FL.Slime_Pink.make(50));
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Blaze      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Blaze, U*2));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Blaze      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Blaze, U9*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Shimmering .get(1), NF, FL.Honey.make(20), OM.dust(MT.EnderPearl, U2));
 			
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 5000,  5000,  5000}           , IL.BINNIE_Comb_Clay       .get(1), NF, FL.Honey.make(20), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1));

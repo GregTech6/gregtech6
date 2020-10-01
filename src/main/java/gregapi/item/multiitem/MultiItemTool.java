@@ -327,7 +327,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
 			if (aNBT != null) {
-				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 1, ST.make(aStack.getItem(), 1, getEmptyMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)));
+				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 64, ST.make(aStack.getItem(), 1, getEmptyMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)));
 			}
 		}
 		return null;

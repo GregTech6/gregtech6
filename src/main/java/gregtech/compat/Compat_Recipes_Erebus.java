@@ -51,7 +51,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.generify(IL.BoP_Mud_Brick.get(1), IL.ERE_Mud_Brick.get(1));
 		RM.generify(IL.ERE_Mud_Brick.get(1), IL.BoP_Mud_Brick.get(1));
 		
-		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "fireBloom"           , 1, W), OM.dust(MT.Blaze, U9));
+		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "fireBloom"           , 1, W), OM.dust(MT.Blaze, U72));
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "materials"           , 1,56), OM.dust(MT.Jade, U9));
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "materials"           , 1, 0), IL.Dye_Bonemeal.get(1));
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "materials"           , 1, 2), IL.Dye_Bonemeal.get(1));

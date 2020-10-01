@@ -179,11 +179,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.S)                    );
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushedPurified.dat(MT.S)            );
 		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.S)         );
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.gem.dat(MT.Blaze)                    );
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.dust.dat(MT.Blaze)                   );
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.Blaze)                );
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushedPurified.dat(MT.Blaze)        );
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Blaze)     );
+		CR.shaped(IL.Torch.get(2), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.dustTiny.dat(MT.Blaze)               );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.gem.dat(MT.P)                        );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.dust.dat(MT.P)                       );
 		CR.shaped(IL.Torch.get(6), DEF_NAC,  "X" ,  "S" , 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.P)                    );
@@ -506,8 +502,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block, 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
-		for (OreDictMaterial tBlaze : ANY.Blaze.mToThis)
-		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(tBlaze), OP.plate.mat(tBlaze, 1));
 		RM.Compressor   .addRecipe1(T, 64,   32, ST.make(Blocks.ice, 2, W), ST.make(Blocks.packed_ice, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Ice), ST.make(Blocks.ice, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.Ice, U4), OP.gemChipped.mat(MT.Ice, 1));
@@ -593,9 +587,17 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		
 		for (OreDictMaterial tBlaze : ANY.Blaze.mToThis) {
-		RM.Mortar       .addRecipe1(T, 16, 32, OP.stick.mat(tBlaze, 1), OP.dust.mat(tBlaze, 2));
-		RM.Shredder     .addRecipe1(T, 16, 32, OP.stick.mat(tBlaze, 1), OP.dust.mat(tBlaze, 4));
-		RM.pulverizing(                        OP.stick.mat(tBlaze, 1), OP.dust.mat(tBlaze, 3), T);
+		CR.shapeless(OP.dustTiny.mat(tBlaze, 2), CR.DEF_NAC, new Object[] {OP.stick.dat(tBlaze)});
+		CR.shapeless(OP.dustTiny.mat(tBlaze, 4), CR.DEF_NAC, new Object[] {OP.stickLong.dat(tBlaze)});
+		RM.Mortar       .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 3));
+		RM.Mortar       .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 6));
+		RM.pulverizing(                        OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 4), T);
+		RM.pulverizing(                        OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 8), T);
+		RM.Shredder     .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustSmall.mat(tBlaze, 2));
+		RM.Shredder     .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dust     .mat(tBlaze, 1));
+		RM.Compressor   .addRecipe1(T, 16, 32, OP.dust     .mat(tBlaze, 1), OP.plate    .mat(tBlaze, 1));
+		RM.Compressor   .addRecipe1(T, 16, 32, OP.dustSmall.mat(tBlaze, 4), OP.plate    .mat(tBlaze, 1));
+		RM.Compressor   .addRecipe1(T, 16, 32, OP.dustTiny .mat(tBlaze, 9), OP.plate    .mat(tBlaze, 1));
 		}
 		
 		
@@ -622,9 +624,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100))) {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.reeds, 1, W)             , tWater, NF, ST.make(Items.paper, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Paper)                      , tWater, NF, ST.make(Items.paper, 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Ceramic)                    , tWater, NF, ST.make(Items.clay_ball, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Clay)                       , tWater, NF, ST.make(Items.clay_ball, 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.ClayBrown)                  , tWater, NF, IL.Clay_Ball_Brown.get(1));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.ClayRed)                    , tWater, NF, IL.Clay_Ball_Red.get(1));
+		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.ClayBrown)                  , tWater, NF, IL.Clay_Ball_Brown.get(1));
 		}
 		
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_hardened_clay   , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.hardened_clay  , 1, 0));
@@ -773,13 +776,14 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.Water.make(3000), NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.SpDew.make(3000), NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.DistW.make(3000), NF, IL.Clay_Ball_Red.get(4));
-		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.EnderPearl), OM.dust(MT.Blaze), OM.dust(MT.EnderEye));
+		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.EnderPearl     ), OM.dust(MT.Blaze, U9), OM.dust(MT.EnderEye     ));
+		RM.Mixer        .addRecipe2(T, 16,  144, OM.dust(MT.EnderPearl, U*9), OM.dust(MT.Blaze    ), OM.dust(MT.EnderEye, U*9));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Sugar              ), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)), ST.make(Items.fermented_spider_eye, 1, 0));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OP.gemChipped.mat(MT.Sugar , 4), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)), ST.make(Items.fermented_spider_eye, 1, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal               ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.CoalCoke           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.LigniteCoke        ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal               ), OM.dust(MT.Blaze, U9), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal           ), OM.dust(MT.Blaze, U9), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.CoalCoke           ), OM.dust(MT.Blaze, U9), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.LigniteCoke        ), OM.dust(MT.Blaze, U9), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
 		
 		
 		RM.Electrolyzer .addRecipe1(T, 16, 3200, ST.tag(0), FL.Water.make(3000), MT.H.gas(2*U, F), MT.O.gas(U, F));
@@ -791,7 +795,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Centrifuge   .addRecipe1(T, 16,   16, ST.make(Items.magma_cream, 1, W), NF, FL.Slime_Green.make(250), ST.make(Items.blaze_powder, 1, 0));
 		for (String tFluid : FluidsGT.SLIME) if (FL.exists(tFluid)) {
 		RM.Centrifuge   .addRecipe0(T, 16,   64, FL.make(tFluid, 250), FL.Latex.make(L/2), FL.Glue.make(250));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Blaze), FL.make(tFluid, 250), NF, ST.make(Items.magma_cream, 1, 0));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Blaze, U9), FL.make(tFluid, 250), NF, ST.make(Items.magma_cream, 1, 0));
+		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.Blaze    ), FL.make(tFluid,2250), NF, ST.make(Items.magma_cream, 9, 0));
 		}
 		
 		

@@ -516,7 +516,7 @@ public class TD {
 		
 		public static final TagData WASHING_PERSULFATE                      = TagData.createTagData("PROCESSING.WASHING_PERSULFATE", "Persulfate Washable"), WASHING_SODIUMPERSULFATE = WASHING_PERSULFATE;
 		public static final TagData WASHING_MERCURY                         = TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
-		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Pulverisation Byproduct");
+		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Crystal from Pulverisation");
 		
 		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
 		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));

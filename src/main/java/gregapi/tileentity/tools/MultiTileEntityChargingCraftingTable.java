@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,14 +45,16 @@ public class MultiTileEntityChargingCraftingTable extends MultiTileEntityAdvance
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
 		long rReturn = 0;
-		for (int i : SLOTS_TOOLS) if (slotHas(i)) rReturn += IItemEnergy.Utility.inject(aEnergyType, slot(i), aSize, aAmount-rReturn, this, getWorld(), getX(), getY(), getZ(), aDoInject);
+		for (int i : SLOTS_TOOLS) if (slotHas(i) && aAmount > rReturn) {
+			rReturn += IItemEnergy.Utility.inject(aEnergyType, slot(i), aSize, 1, this, getWorld(), getX(), getY(), getZ(), aDoInject);
+		}
 		return rReturn;
 	}
 	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
-	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return 1;}
-	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
-	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public boolean isEnergyType              (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
+	@Override public long getEnergySizeInputMin        (TagData aEnergyType, byte aSide) {return 1;}
+	@Override public long getEnergySizeInputMax        (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL;}
 	
 	@Override

@@ -26,12 +26,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
 [CHANGED] Blaze Powder can no longer be turned into Sulfur and Ashes using the Centrifuge. However, many Recipes that require Sulfur now also allow Blaze Powder directly. (The Pyrotheum Recipes still require Sulfur seperately!)
 [CHANGED] The Autocollect Effect of Magnetic Materials for Tools also applies for the Handles now. This is only really useful with a Basalz Rod as Tool Handle though, which now counts as Magnetic.
+[CHANGED] Blaze Powder and its Thermal Expansion equivalents are now considered a Tiny Pile of Dust instead of a full Pile of Dust. All Recipes should have been adjusted to take this into account.
 [ADDED] Basalz, Blizz and Blitz Powder can now be used for different ways to obtain some Potions in the Distillery.
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
-[ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust. Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
+[ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust, this makes it possible to obtain those Mob Drops in Peaceful (or in general since those TE Mobs are way too rare, and yes I know Blaze is already doable with regular Nether Bumbles). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
 [ADDED]
 Metal Scaffolds made of each of the Metal Shelf Set Materials.
 These Scaffolds are NOT intended to be identical to any other Scaffolds you might know! They are NOT supposed to be exactly like IC2, Vanilla or any other Scaffolds!

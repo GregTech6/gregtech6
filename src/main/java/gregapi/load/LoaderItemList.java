@@ -621,10 +621,10 @@ public class LoaderItemList implements Runnable {
 		
 		
 		
-		IL.TE_Cinnabar                          .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,  20), new OreDictItemData(MT.OREMATS.Cinnabar, U));
-		IL.TE_Rod_Blizz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1024), new OreDictItemData(MT.Blizz, U*2));
-		IL.TE_Rod_Blitz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1026), new OreDictItemData(MT.Blitz, U*2));
-		IL.TE_Rod_Basalz                        .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1028), new OreDictItemData(MT.Basalz, U*2));
+		IL.TE_Cinnabar                          .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,  20));
+		IL.TE_Rod_Blizz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1024));
+		IL.TE_Rod_Blitz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1026));
+		IL.TE_Rod_Basalz                        .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1028));
 		IL.TE_Slag                              .set(ST.make(MD.TE, "material"                              , 1, 514), null, OD.itemSlag);
 		IL.TE_Slag_Rich                         .set(ST.make(MD.TE, "material"                              , 1, 515), null, OD.itemSlag);
 		IL.TE_Phyto_Gro                         .set(ST.make(MD.TE, "material"                              , 1, 516), null, OD.itemFertilizer);
@@ -738,7 +738,7 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Greatwood_Planks                  .set(ST.make(MD.TC, "blockWoodenDevice"                     , 1, 6), new OreDictItemData(MT.Greatwood , U), OP.plank.dat(MT.Greatwood));
 		IL.TC_Silverwood_Planks                 .set(ST.make(MD.TC, "blockWoodenDevice"                     , 1, 7), new OreDictItemData(MT.Silverwood, U), OP.plank.dat(MT.Silverwood));
 		IL.TC_Shimmerleaf                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 2), new OreDictItemData(MT.Hg, U), "flowerShimmerleaf");
-		IL.TC_Cinderpearl                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 3), new OreDictItemData(MT.Blaze, U), "flowerCinderpearl");
+		IL.TC_Cinderpearl                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 3), new OreDictItemData(MT.Blaze, U9), "flowerCinderpearl");
 		IL.TC_Vishroom                          .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 5));
 		IL.TC_Block_Amber                       .set(ST.make(MD.TC, "blockCosmeticOpaque"                   , 1, 0), new OreDictItemData(MT.Amber, 4*U));
 		IL.TC_Block_Amber_Bricks                .set(ST.make(MD.TC, "blockCosmeticOpaque"                   , 1, 1), new OreDictItemData(MT.Amber, 4*U));

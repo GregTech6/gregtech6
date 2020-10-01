@@ -251,10 +251,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Shredder.addRecipe1(T, 16, 16           , IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1));
 			RM.pulverizing(IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1), T);
 			
-			RM.Mixer.addRecipe2(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), OP.dustTiny .mat(MT.Blaze, 9), IL.NeLi_Foxfire_Powder.get(1));
-			RM.Mixer.addRecipe2(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), OP.dustSmall.mat(MT.Blaze, 4), IL.NeLi_Foxfire_Powder.get(1));
-			RM.Mixer.addRecipe2(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), OP.dust     .mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(1));
-			RM.Mixer.addRecipe2(T, 16,144, IL.NeLi_Foxfire_Lily.get(9), OP.blockDust.mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(9));
+			RM.Mixer.addRecipe2(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), OP.dustTiny .mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(1));
+			RM.Mixer.addRecipe2(T, 16,144, IL.NeLi_Foxfire_Lily.get(9), OP.dust     .mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(9));
 			
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Crimson  .get(1), FL.DistW         .make(500), FL.Potion_Awkward         .make(500), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Warped   .get(1), FL.DistW         .make(500), FL.Potion_Thick           .make(500), ZL_IS);

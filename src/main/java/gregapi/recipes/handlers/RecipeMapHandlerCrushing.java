@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -50,7 +51,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
-		if (aData.mPrefix == oreNetherrack || aData.mPrefix == oreNether || aData.mPrefix == oreBasalt) {
+		if (aData.mPrefix == oreNetherrack || aData.mPrefix == oreNether || aData.mPrefix == oreBasalt || aData.mPrefix == oreKomatiite) {
 			if (aData.mMaterial.mMaterial == MT.HexoriumBlack || aData.mMaterial.mMaterial == MT.HexoriumWhite) {
 				aMultiplier *= (aData.mMaterial.mMaterial.mOreMultiplier + 1);
 			} else if (aData.mMaterial.mMaterial == MT.HexoriumRed || aData.mMaterial.mMaterial == MT.HexoriumGreen || aData.mMaterial.mMaterial == MT.HexoriumBlue) {
@@ -71,25 +72,41 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			return F;
 		}
 		ItemStack[] tOutputs = new ItemStack[aMap.mOutputItemsCount];
-		tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
-		if (tOutputs[0] == null) tOutputs[0] = OP.dust.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
-		if (tOutputs[0] == null) tOutputs[0] = OP.gem.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+		                         tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+		if (tOutputs[0] == null) tOutputs[0] = OP.dust   .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+		if (tOutputs[0] == null) tOutputs[0] = OP.gem    .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
 		if (tOutputs[0] == null) return F;
+		long[] tChances = new long[tOutputs.length];
 		int i = 1, tDuration = 128*tOutputs[0].stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1);
-		tOutputs[i++] = ST.copy_(tOutputs[0]);
+		tChances[i  ] = 10000;
+		tOutputs[i++] = tOutputs[0];
 		if (aData.mPrefix.contains(TD.Prefix.DENSE_ORE)) {
-			tOutputs[i++] = ST.copy_(tOutputs[0]);
-			tOutputs[i++] = ST.copy_(tOutputs[0]);
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
 			tDuration *= 2;
+			if (IL.TE_Cinnabar.exists() && aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
+				tChances[i  ] = 5000;
+				tOutputs[i++] = IL.TE_Cinnabar.get(1);
+			}
+		} else {
+			if (IL.TE_Cinnabar.exists() && aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
+				tChances[i  ] = 2500;
+				tOutputs[i++] = IL.TE_Cinnabar.get(1);
+			}
 		}
 		for (OreDictMaterialStack tMaterial : aData.mPrefix.mByProducts) {
 			tDuration += UT.Code.units(tMaterial.mAmount, U, 64*Math.max(1, tMaterial.mMaterial.mToolQuality+1), T);
 			if (i < tOutputs.length) {
 				ItemStack tStack = OM.dust(tMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetCrushing.mAmount, F));
-				if (tStack != null) tOutputs[i++] = tStack;
+				if (tStack != null) {
+					tChances[i  ] = 10000;
+					tOutputs[i++] = tStack;
+				}
 			}
 		}
-		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));
+		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));
 	}
 	
 	@Override

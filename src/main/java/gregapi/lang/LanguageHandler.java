@@ -408,7 +408,12 @@ public class LanguageHandler {
 		if (aMaterial == MT.Butter || aMaterial == MT.ButterSalted) {
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
-		if (aMaterial == MT.Indigo || ANY.Blaze.mToThis.contains(aMaterial) || aMaterial == MT.ConstructionFoam || aMaterial == MT.Cocoa || aMaterial == MT.Curry || aMaterial == MT.Chocolate || aMaterial == MT.Coffee || aMaterial == MT.Chili || aMaterial == MT.Cheese || aMaterial == MT.Snow) {
+		if (ANY.Blaze.mToThis.contains(aMaterial)) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
+			if (aPrefix.mNameInternal.startsWith("stick"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Rod";
+			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
+		} else
+		if (aMaterial == MT.Indigo || aMaterial == MT.ConstructionFoam || aMaterial == MT.Cocoa || aMaterial == MT.Curry || aMaterial == MT.Chocolate || aMaterial == MT.Coffee || aMaterial == MT.Chili || aMaterial == MT.Cheese || aMaterial == MT.Snow) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 		} else
 		if (aMaterial == MT.Potato || aMaterial == MT.Hazelnut || aMaterial == MT.Pistachio || aMaterial == MT.Almond || aMaterial == MT.Peanut || aMaterial == MT.Nutmeg || aMaterial == MT.Cinnamon || aMaterial == MT.Vanilla || aMaterial == MT.PepperBlack) {
