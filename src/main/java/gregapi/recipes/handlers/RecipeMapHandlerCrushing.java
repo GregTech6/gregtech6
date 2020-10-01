@@ -86,14 +86,41 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			tChances[i  ] = 10000;
 			tOutputs[i++] = tOutputs[0];
 			tDuration *= 2;
-			if (IL.TE_Cinnabar.exists() && aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
-				tChances[i  ] = 5000;
-				tOutputs[i++] = IL.TE_Cinnabar.get(1);
+			
+			if (IL.TE_Cinnabar.exists()) {
+				if (aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
+					tChances[i  ] += 5000;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Hg)) {
+					tChances[i  ] += 2000;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.OREMATS.Cinnabar)) {
+					tChances[i  ] += 1000;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Redstone)) {
+					tChances[i  ] += 1000;
+				}
+				if (tChances[i  ] > 0) {
+					tOutputs[i++] = IL.TE_Cinnabar.get(1);
+				}
 			}
 		} else {
-			if (IL.TE_Cinnabar.exists() && aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
-				tChances[i  ] = 2500;
-				tOutputs[i++] = IL.TE_Cinnabar.get(1);
+			if (IL.TE_Cinnabar.exists()) {
+				if (aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
+					tChances[i  ] += 2500;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Hg)) {
+					tChances[i  ] += 1000;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.OREMATS.Cinnabar)) {
+					tChances[i  ] +=  500;
+				}
+				if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Redstone)) {
+					tChances[i  ] +=  500;
+				}
+				if (tChances[i  ] > 0) {
+					tOutputs[i++] = IL.TE_Cinnabar.get(1);
+				}
 			}
 		}
 		for (OreDictMaterialStack tMaterial : aData.mPrefix.mByProducts) {

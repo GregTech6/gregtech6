@@ -409,6 +409,8 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
 		if (ANY.Blaze.mToThis.contains(aMaterial)) {
+			if (aPrefix == OP.dust)                                         return "Big Pile of " + aMaterial.mNameLocal + " Powder";
+			if (aPrefix == OP.dustSmall)                                    return "Medium Pile of " + aMaterial.mNameLocal + " Powder";
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 			if (aPrefix.mNameInternal.startsWith("stick"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Rod";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";

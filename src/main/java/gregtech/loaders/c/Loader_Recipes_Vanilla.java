@@ -590,8 +590,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(OP.dustTiny.mat(tBlaze, 4), CR.DEF_NAC, new Object[] {OP.stickLong.dat(tBlaze)});
 		RM.Mortar    .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 3));
 		RM.Mortar    .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 6));
-		RM.pulverizing(                     OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 4), T);
-		RM.pulverizing(                     OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 8), T);
 		RM.Shredder  .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustSmall.mat(tBlaze, 2));
 		RM.Shredder  .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dust     .mat(tBlaze, 1));
 		RM.Compressor.addRecipe1(T, 16, 32, OP.dust     .mat(tBlaze, 1), OP.plate    .mat(tBlaze, 1));
