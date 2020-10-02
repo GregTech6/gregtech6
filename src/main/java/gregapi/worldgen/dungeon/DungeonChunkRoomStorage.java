@@ -40,8 +40,9 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 	public static OreDictMaterial[]
 	  sHexoriums = {MT.HexoriumRed, MT.HexoriumGreen, MT.HexoriumBlue, MT.HexoriumWhite, MT.HexoriumBlack}
 	, sInfused   = {MT.InfusedFire, MT.InfusedAir, MT.InfusedWater, MT.InfusedEarth, MT.InfusedEntropy, MT.InfusedOrder}
+	, sDusts     = {MT.NaCl, MT.NaCl, MT.KCl, MT.KCl, MT.Gunpowder, MT.Gunpowder, MT.Gunpowder, MT.Bone, MT.Bone, MT.Asphalt, MT.Asphalt, MT.Clay, MT.ClayBrown, MT.ClayRed, MT.RareEarth, MT.Sugar, MT.Cocoa, MT.Coffee, MT.Vanilla, MT.PepperBlack, MT.Curry, MT.Wheat, MT.Barley, MT.Rye, MT.Rice, MT.Oat, MT.OatAbyssal, MT.Corn, MT.Potato, MT.Blaze, MT.Blizz, MT.Blitz, MT.Basalz}
 	, sWoods     = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Crimson, MT.WOODS.Warped, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood, MT.Livingwood, MT.Greatwood, MT.Silverwood, MT.WoodSealed, MT.Weedwood, MT.Skyroot}
-	, sGems      = {MT.EnderPearl, MT.EnderPearl, MT.EnderEye, MT.Diamond, MT.DiamondPink, MT.Emerald, MT.Aquamarine, MT.Ruby, MT.GreenSapphire, MT.BlueSapphire, MT.Amethyst, MT.Craponite, MT.Amber, MT.NetherQuartz, MT.NetherQuartz, MT.MilkyQuartz, MT.MilkyQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Lapis, MT.Lapis, MT.Redstone, MT.Redstone, MT.Glowstone, MT.Glowstone, MT.Apatite, MT.Apatite, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite}
+	, sGems      = {MT.EnderPearl, MT.EnderPearl, MT.EnderEye, MT.Diamond, MT.DiamondPink, MT.Emerald, MT.Aquamarine, MT.Ruby, MT.GreenSapphire, MT.BlueSapphire, MT.Amethyst, MT.Craponite, MT.Amber, MT.WaxBee, MT.WaxRefractory, MT.NetherQuartz, MT.NetherQuartz, MT.MilkyQuartz, MT.MilkyQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Lapis, MT.Lapis, MT.Lapis, MT.Redstone, MT.Redstone, MT.Redstone, MT.Glowstone, MT.Glowstone, MT.Gloomstone, MT.Apatite, MT.Apatite, MT.Apatite, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite}
 	, sMetals    = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel}
 	;
 	
@@ -146,19 +147,27 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 1, j, 0, sMetals);
 				}
 				break;
-			case  1: case  2:
+			case  1:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next3in4()) {aData.set(BlocksGT.crateGt64Plate, i, 1, j, sWoods);
-					if (aData.next2in3()) {aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
-					if (aData.next1in2()) {aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+					if (aData.next3in4()) {aData.set(aData.next1in2() ? BlocksGT.crateGt64Dust : BlocksGT.crateGtDust, i, 1, j, sDusts);
+					if (aData.next2in3()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Dust : BlocksGT.crateGtDust, i, 2, j, sDusts);
+					if (aData.next1in2()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Dust : BlocksGT.crateGtDust, i, 3, j, sDusts);
+					}}}
+				}
+				break;
+			case  2:
+				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
+					if (aData.next3in4()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sGems);
+					if (aData.next2in3()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sGems);
+					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sGems);
 					}}}
 				}
 				break;
 			case  3:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next3in4()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sGems);
-					if (aData.next2in3()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sGems);
-					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sGems);
+					if (aData.next3in4()) {aData.set(BlocksGT.crateGt64Plate, i, 1, j, sWoods);
+					if (aData.next2in3()) {aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+					if (aData.next1in2()) {aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
 					}}}
 				}
 				break;
