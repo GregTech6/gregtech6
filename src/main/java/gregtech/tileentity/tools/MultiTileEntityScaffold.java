@@ -28,12 +28,14 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsLadder;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.old.Textures.BlockIcons;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -61,7 +63,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		}
 	}
 	
-	protected ITexture mTexture;
+	protected ITexture mTexturePlate, mTextureRod;
 	protected byte mRenderValue = 0;
 	protected boolean mBlockUpdatedLastTime = F;
 	
@@ -76,7 +78,8 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		} else {
 			mRenderValue = 0;
 		}
-		mTexture = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+		mTexturePlate = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+		mTextureRod   = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
 		return mRenderValue == 0 ? 4 : 7;
 	}
 	
@@ -106,27 +109,27 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	}
 	
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass != 0 || mRenderValue != 2;}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTexture;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aRenderPass == 0 || aRenderPass > 4 ? mTexturePlate : mTextureRod;}
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		if (mRenderValue > 0) switch(aRenderPass) {
 			default        : return box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[14]);
-			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[ 0], PX_N[ 0]);
-			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]);
-			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mRenderValue==2?0:8], PX_N[14]);
+			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mRenderValue==2?0:8], PX_N[ 0]);
+			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[mRenderValue==2?0:8], PX_N[14]);
+			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[mRenderValue==2?0:8], PX_N[ 0]);
 			case  5: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[ 0], PX_N[ 1], PX_N[11], PX_N[12]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[12], PX_N[ 1], PX_N[11], PX_N[ 0]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[ 3], PX_P[ 1], PX_N[12], PX_N[11], PX_N[ 1]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[ 3], PX_P[ 1], PX_N[ 0], PX_N[11], PX_N[ 1]);
+			default        : return box(aBlock, PX_P[ 2], PX_P[ 3], PX_P[ 0], PX_N[ 2], PX_N[11], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[ 3], PX_P[12], PX_N[ 2], PX_N[11], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[ 3], PX_P[ 2], PX_N[12], PX_N[11], PX_N[ 2]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[ 3], PX_P[ 2], PX_N[ 0], PX_N[11], PX_N[ 2]);
 			}
 			case  6: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 1], PX_P[11], PX_P[ 0], PX_N[ 1], PX_N[ 3], PX_N[12]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[11], PX_P[12], PX_N[ 1], PX_N[ 3], PX_N[ 0]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[11], PX_P[ 1], PX_N[12], PX_N[ 3], PX_N[ 1]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[11], PX_P[ 1], PX_N[ 0], PX_N[ 3], PX_N[ 1]);
+			default        : return box(aBlock, PX_P[ 2], PX_P[11], PX_P[ 0], PX_N[ 2], PX_N[ 3], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[11], PX_P[12], PX_N[ 2], PX_N[ 3], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[11], PX_P[ 2], PX_N[12], PX_N[ 3], PX_N[ 2]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[11], PX_P[ 2], PX_N[ 0], PX_N[ 3], PX_N[ 2]);
 			}
 		}
 		switch(aRenderPass) {
