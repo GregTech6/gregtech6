@@ -69,7 +69,7 @@ public abstract class TileEntityBase09FacingSingle extends TileEntityBase08Direc
 	
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		mFacing = useSidePlacementRotation()?useInversePlacementRotation()?getValidSides()[OPPOSITES[aSide]]?OPPOSITES[aSide]:getDefaultSide():getValidSides()[aSide]?aSide:getDefaultSide():(useInversePlacementRotation()?UT.Code.getOppositeSideForPlayerPlacing(aPlayer, mFacing, getValidSides()):UT.Code.getSideForPlayerPlacing(aPlayer, mFacing, getValidSides()));
+		mFacing = useSidePlacementRotation(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)?useInversePlacementRotation(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)?getValidSides()[OPPOSITES[aSide]]?OPPOSITES[aSide]:getDefaultSide():getValidSides()[aSide]?aSide:getDefaultSide():(useInversePlacementRotation(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)?UT.Code.getOppositeSideForPlayerPlacing(aPlayer, mFacing, getValidSides()):UT.Code.getSideForPlayerPlacing(aPlayer, mFacing, getValidSides()));
 		onFacingChange(SIDE_UNKNOWN);
 		checkCoverValidity();
 		doEnetUpdate();
@@ -91,5 +91,7 @@ public abstract class TileEntityBase09FacingSingle extends TileEntityBase08Direc
 	public boolean[] getValidSides() {return SIDES_VALID;}
 	public void onFacingChange(byte aPreviousFacing) {/**/}
 	public boolean useSidePlacementRotation() {return F;}
+	public boolean useSidePlacementRotation(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return useSidePlacementRotation();}
 	public boolean useInversePlacementRotation() {return F;}
+	public boolean useInversePlacementRotation(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return useInversePlacementRotation();}
 }

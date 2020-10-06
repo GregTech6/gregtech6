@@ -28,20 +28,21 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsLadder;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.OP;
 import gregapi.data.TD;
+import gregapi.old.Textures.BlockIcons;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
 
 /**
  * @author Gregorius Techneticies
@@ -75,7 +76,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		} else {
 			mRenderValue = 0;
 		}
-		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
+		mTexture = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
 		return mRenderValue == 0 ? 4 : 7;
 	}
 	
@@ -116,16 +117,16 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]);
 			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 			case  5: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[ 1], PX_N[ 1], PX_N[11], PX_N[14]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[14], PX_N[ 1], PX_N[11], PX_N[ 1]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[ 1], PX_N[14], PX_N[11], PX_N[ 1]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[14], PX_P[ 3], PX_P[ 1], PX_N[ 1], PX_N[11], PX_N[ 1]);
+			default        : return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[ 0], PX_N[ 1], PX_N[11], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[ 3], PX_P[12], PX_N[ 1], PX_N[11], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[ 3], PX_P[ 1], PX_N[12], PX_N[11], PX_N[ 1]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[ 3], PX_P[ 1], PX_N[ 0], PX_N[11], PX_N[ 1]);
 			}
 			case  6: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 1], PX_P[11], PX_P[ 1], PX_N[ 1], PX_N[ 3], PX_N[14]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[11], PX_P[14], PX_N[ 1], PX_N[ 3], PX_N[ 1]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 1], PX_P[11], PX_P[ 1], PX_N[14], PX_N[ 3], PX_N[ 1]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[14], PX_P[11], PX_P[ 1], PX_N[ 1], PX_N[ 3], PX_N[ 1]);
+			default        : return box(aBlock, PX_P[ 1], PX_P[11], PX_P[ 0], PX_N[ 1], PX_N[ 3], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 1], PX_P[11], PX_P[12], PX_N[ 1], PX_N[ 3], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[11], PX_P[ 1], PX_N[12], PX_N[ 3], PX_N[ 1]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[11], PX_P[ 1], PX_N[ 0], PX_N[ 3], PX_N[ 1]);
 			}
 		}
 		switch(aRenderPass) {
@@ -183,6 +184,9 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public boolean isObstructingBlockAt  (byte aSide) {return F;}
 	@Override public boolean isLadder(EntityLivingBase aEntity) {return T;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
+	@Override public boolean useSidePlacementRotation        () {return F;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer == null || !aPlayer.isSneaking();}
+	@Override public boolean useSidePlacementRotation        (ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer != null &&  aPlayer.isSneaking();}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
