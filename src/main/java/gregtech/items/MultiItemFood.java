@@ -169,7 +169,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Jungle  .get(1), NF   , MT.Chocolate                          .liquid(U, T), OM.dust(MT.Cocoa)                 , IL.FR_Propolis_Silky.get(1, ST.make(Items.string, 1, 0)));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Frozen  .get(1), NF   , FL.Ice                                  .make(1000), OM.dust(MT.Ice)                   );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  2000,  2000}, IL.Comb_Shroom  .get(1), NF   , FL.Soup_Mushroom                        .make(1000), ST.make(Blocks.red_mushroom, 1, 0), ST.make(Blocks.brown_mushroom, 1, 0), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Sandy   .get(1), NF   , FL.Juice_Cactus                         .make( 100), ST.make(Blocks.sand, 1, 0)        , ST.make(Blocks.sand, 1, 1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Sandy   .get(1), NF   , FL.Juice_Cactus                         .make( 100), ST.make(Blocks.sand, 1, 0)        );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] { 4000,  4000,  4000}       , IL.Comb_Clay    .get(1), NF   , FL.Concrete                             .make(   L), OM.dust(MT.Clay)                  , OM.dust(MT.ClayBrown), OM.dust(MT.ClayRed));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  3000}              , IL.Comb_Sticky  .get(1), NF   , FL.Latex                                .make(   L), OM.dust(MT.WaxBee)                , IL.FR_Propolis_Sticky.get(1, IL.IC2_Resin.get(1, IL.Resin.get(1))));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000}                     , IL.Comb_Royal   .get(1), ZL_FS, FL.array(FL.Honey.make(50), FL.RoyalJelly.make(10)), OM.dust(MT.WaxBee)                );
@@ -742,8 +742,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Fish.set(                           addItem(tLastID = 32115, "Cooked Fish Bar"                          , "Like Fish Sticks? You're a gay Fish" , OP.ingot.dat(MT.FishCooked)   , new FoodStat( 2, 1.600F,   0, C+38,  0.50F,   0,   0,   3,   0,   8, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.CORPUS, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Butter.set(                         addItem(tLastID = 32117, "Butter"                                   , "A chunk of pure Fat"                 , OP.ingot.dat(MT.Butter)       , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,   0,   0,  80, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.Butter      , ST.make(this, 1, tLastID));
 		IL.Food_Butter_Salted.set(                  addItem(tLastID = 32119, "Salted Butter"                            , "As if it wasn't unhealthy already"   , OP.ingot.dat(MT.ButterSalted) , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,  40,   0,  80, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.ButterSalted, ST.make(this, 1, tLastID));
-
-
+		
+		
 		IL.Food_Potato_On_Stick.set(                addItem(tLastID = 32700, "Potato on a Stick"                        , "Totally looks like a Crab Claw"      , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 1, 0.600F,   0, C+37,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, IL.Stick.get(1), F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1)));
 		IL.Food_Potato_On_Stick_Roasted.set(        addItem(tLastID = 32701, "Roasted Potato on a Stick"                , "Still looks like a Crab Claw"        , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 5, 1.200F,   0, C+38,  0.50F,   0,   0,   0,   4,   0, EnumAction.eat, IL.Stick.get(1), F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.IGNIS, 1)));
 		RM.add_smelting(IL.Food_Potato_On_Stick.get(1), IL.Food_Potato_On_Stick_Roasted.get(1));
@@ -753,7 +753,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Boxinator.addRecipe2(T, 16, 16, IL.Food_Potato_Baked.get(1), tStick, IL.Food_Potato_On_Stick_Roasted.get(1));
 		}}
 	}
-
+	
 	@Override
 	public ItemStack getRotten(ItemStack aStack) {
 		short aMeta = ST.meta_(aStack);
@@ -761,7 +761,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		if (UT.Code.inside( 1100,  1999, aMeta)) return ST.make(Items.rotten_flesh, aStack.stackSize, 0);
 		if (UT.Code.inside(13000, 13999, aMeta)) return null;
 		if (UT.Code.inside(31000, 31999, aMeta)) return aStack;
-
+		
 		switch(aMeta) {
 		case 12000: return ST.make(this, aStack.stackSize, 12002, aStack.getTagCompound());
 		case 12001: return ST.make(this, aStack.stackSize, 12002, aStack.getTagCompound());
@@ -774,10 +774,10 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		case 32701: return (IL.ENVM_Rotten_Food.exists()?IL.ENVM_Rotten_Food:IL.Remains_Plant).get(aStack.stackSize);
 		case 32105: case 32107: return OP.ingot.mat(MT.MeatRotten, aStack.stackSize);
 		case 32113: case 32115: return OP.ingot.mat(MT.FishRotten, aStack.stackSize);
-
+		
 		default: return ST.food(aStack) > 0 ? IL.ENVM_Rotten_Food.exists() ? IL.ENVM_Rotten_Food.get(aStack.stackSize) : null : aStack;
 		}
 	}
-
+	
 	@Override public ItemStack getRotten(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {return getRotten(aStack);}
 }

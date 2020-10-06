@@ -40,6 +40,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
 /**
@@ -48,7 +49,7 @@ import net.minecraft.util.AxisAlignedBB;
 public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide && aTimer > 1 && SERVER_TIME % 8 == WD.evenness(this) && !isConnectedToGround()) popOff();
+		if (aIsServerSide && aTimer > 1 && (SERVER_TIME % 20) == 0 && (SERVER_TIME / 20) % 8 == WD.evenness(this) && !isConnectedToGround()) popOff();
 	}
 	
 	protected ITexture mTexture;
@@ -70,8 +71,25 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	}
 	
 	public boolean isConnectedToGround() {
-		// TODO Make Horizontal Scaffolds doable.
-		return isConnectedVertically();
+		if (isConnectedVertically()) return T;
+		Block tBlock = getBlock(getCoords());
+		if (SIDES_AXIS_X[mFacing]) {
+			for (byte tSide : ALL_SIDES_X) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
+				TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
+				if (tTileEntity instanceof MultiTileEntityScaffold) {
+					if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
+				} else break;
+			} else break;
+		}
+		if (SIDES_AXIS_Z[mFacing]) {
+			for (byte tSide : ALL_SIDES_Z) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
+				TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
+				if (tTileEntity instanceof MultiTileEntityScaffold) {
+					if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
+				} else break;
+			} else break;
+		}
+		return F;
 	}
 	public boolean isConnectedVertically() {
 		return worldObj == null || WD.opq(worldObj, xCoord, yCoord-1, zCoord, T, T) || getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold;

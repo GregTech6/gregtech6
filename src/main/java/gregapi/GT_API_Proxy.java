@@ -650,14 +650,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								EntityPlayer tPlayer = (EntityPlayer)aEvent.player.worldObj.playerEntities.get(i);
 								if (tPlayer == null) continue;
 								if ("Bear989Sr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									if (tPlayer.posY < 20) {
+									if (tPlayer.posY < 30) {
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Stop making Holes in the Ground, Bear!"));
 									} else {
 										switch(tEmptySlots) {
-										case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You are full of shit, Bear!!!")); break;
-										case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Your Inventory is almost full, Bear!!")); break;
-										case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You should clean up your Inventory, Bear!")); break;
-										case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Bear, your Inventory starts to get full.")); break;
+										case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You still have a lot of empty Slots left... In your 2x2 Crafting Grid.")); break;
+										case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "There is like a Gazillion Slots left in your Inventory... If you use that one Slot for a Backpack.")); break;
+										case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You shouldn't clean up your Inventory... If you want it to be full soon.")); break;
+										case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Your Inventory is not going to get full... If you stop collecting Items.")); break;
 										}
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {

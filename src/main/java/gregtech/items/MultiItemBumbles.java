@@ -116,7 +116,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		make(  900, "Sandy Bumblebee"           , "");
 		make(  910, "Sandy Bumblebee (T2)"      , "");//TODO Change Bumble Texture and Name
 		make(  920, "Sandy Bumblebee (T3)"      , "");//TODO Change Bumble Texture and Name
-		make(  930, "Bumbobee"                  , "Shop at Sahara!");//TODO Change Bumble Texture
+		make(  930, "Bumbobee"                  , "Shop at Sahara!");
 		
 		// Normal + Rocky = Clay
 		make(10000, "Creative Bumblebee"        , "Interested in Pottery");
@@ -154,29 +154,29 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		make(10520, "Colonel Bumble O'Beeill"   , "Leading the Team");
 		make(10530, "General Bumblemond"        , "In charge of the Bumblyene Mountain Base");
 		
-		// Nether + Military = Pyro   TODO All Textures!
+		// Nether + Military = Pyro
 		make(20000, "Blazing Bumblebee"         , "");
-		make(20010, "Flaming Bumblebee"         , "");
-		make(20020, "Bumbletrantor"             , "The Last Stormbumble");
-		make(20030, "Pyro Bumble"               , "Likes Unicorns, Rainbows and Candy");
+		make(20010, "Flaming Bumblebee"         , "");//TODO Change Bumble Texture
+		make(20020, "Bumbletrantor"             , "The Last Stormbumble");//TODO Change Bumble Texture
+		make(20030, "Pyro Bumble"               , "Likes Unicorns, Rainbows and Candy");//TODO Change Bumble Texture
 		
-		// Frosty + Military = Cryo   TODO All Textures!
+		// Frosty + Military = Cryo
 		make(20100, "Blizzful Bumblebee"        , "");
-		make(20110, "Freezing Bumblebee"        , "");
-		make(20120, "Mr. Bumblefreeze"          , "Ice to meet you!");
-		make(20130, "Cryo Bumble"               , "Delivered Pizza to I.C.Wiener");
+		make(20110, "Freezing Bumblebee"        , "");//TODO Change Bumble Texture
+		make(20120, "Mr. Bumblefreeze"          , "Ice to meet you!");//TODO Change Bumble Texture
+		make(20130, "Cryo Bumble"               , "Delivered Pizza to I.C.Wiener");//TODO Change Bumble Texture
 		
-		// End + Military = Aero   TODO All Textures!
+		// End + Military = Aero
 		make(20200, "Blitzing Bumblebee"        , "");
-		make(20210, "Storming Bumblebee"        , "");
-		make(20220, "Bumbleaang"                , "The Last Bumblebender");
-		make(20230, "Aero Bumble"               , "According to the Laws of Fluid Dynamics, this Bumblebee CAN Fly!");
+		make(20210, "Storming Bumblebee"        , "");//TODO Change Bumble Texture
+		make(20220, "Bumbleaang"                , "The Last Bumblebender");//TODO Change Bumble Texture
+		make(20230, "Aero Bumble"               , "According to the Laws of Fluid Dynamics, this Bumblebee CAN Fly!");//TODO Change Bumble Texture
 		
-		// Rocky + Military = Tera   TODO All Textures!
+		// Rocky + Military = Tera
 		make(20300, "Basalzed Bumblebee"        , "");
 		make(20310, "Quakeing Bumblebee"        , "With a mighty White Beard!");
-		make(20320, "Earth Bound Bumblebee"     , "PK Bumble!");
-		make(20330, "Tera Bumble"               , "By your Powers combined, I am Captain Bumblebee!");
+		make(20320, "Earth Bound Bumblebee"     , "PK Bumble!");//TODO Change Bumble Texture, do NOT use Ness! Use Lucas Instead.
+		make(20330, "Tera Bumble"               , "By your Powers combined, I am Captain Bumblebee!");//TODO Change Bumble Texture
 		
 		// Jungle + Water = Swamp
 		// Rocky  + Sandy = Red Sand?
@@ -357,11 +357,10 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case   8:           return "Mycelium or Mushrooms";
 		case   9: case 105: return "Desert Flowers and Cacti (even potted ones work)";
 		case 100:           return "Raw Clay Blocks";
-		case 101:           return MD.IC2.mLoaded ? "Rubbertree Resin Holes (IC2 or GT6)" : "Rubbertree Resin Holes";
+		case 101:           return MD.IC2.mLoaded ? "Rubber Tree Resin Holes (IC2 or GT6)" : "Rubber Tree Resin Holes";
 		case 103:           return "Soul Sand Blocks";
 		default :           return "Flowers (even potted ones work)";
 		}
-		
 	}
 	
 	@Override
@@ -500,7 +499,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			aList.add(LH.Chat.CYAN + "Generates random 'Outsider-Plains-Biome' Genes when used");
 		} else {
 			if (ST.meta_(aStack) % 10 < 5) {
-				aList.add(LH.Chat.RED + "Not scanned");
+				aList.add(LH.Chat.RED + "Not scanned yet!");
 			} else {
 				aList.add(LH.Chat.CYAN + "Humidity: " + LH.Chat.WHITE + Util.getHumidityMin(aBumbleTag) + " to " + Util.getHumidityMax(aBumbleTag) + LH.Chat.RED + "   Temp: " + LH.Chat.WHITE + Util.getTemperatureMin(aBumbleTag) + "K to " + Util.getTemperatureMax(aBumbleTag) + "K");
 				aList.add(LH.Chat.GREEN + "Offspring: " + LH.Chat.WHITE + Util.getOffspring(aBumbleTag) + LH.Chat.ORANGE + "   Life: " + LH.Chat.WHITE + Util.getLifeSpan(aBumbleTag) + " ticks");
