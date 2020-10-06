@@ -86,22 +86,12 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	public boolean isConnectedToGround() {
 		if (isConnectedVertically()) return T;
 		Block tBlock = getBlock(getCoords());
-		if (SIDES_AXIS_X[mFacing]) {
-			for (byte tSide : ALL_SIDES_X) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
-				TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
-				if (tTileEntity instanceof MultiTileEntityScaffold) {
-					if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
-				} else break;
+		for (byte tSide : SIDES_AXIS_X[mFacing] ? ALL_SIDES_X : ALL_SIDES_Z) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
+			TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
+			if (tTileEntity instanceof MultiTileEntityScaffold) {
+				if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
 			} else break;
-		}
-		if (SIDES_AXIS_Z[mFacing]) {
-			for (byte tSide : ALL_SIDES_Z) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
-				TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
-				if (tTileEntity instanceof MultiTileEntityScaffold) {
-					if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
-				} else break;
-			} else break;
-		}
+		} else break;
 		return F;
 	}
 	public boolean isConnectedVertically() {
@@ -115,21 +105,21 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		if (mRenderValue > 0) switch(aRenderPass) {
 			default        : return box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mRenderValue==2?0:8], PX_N[14]);
-			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mRenderValue==2?0:8], PX_N[ 0]);
-			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[mRenderValue==2?0:8], PX_N[14]);
-			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[mRenderValue==2?0:8], PX_N[ 0]);
+			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[14]);
+			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[ 0]);
+			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[mRenderValue==2?0:6], PX_N[14]);
+			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[mRenderValue==2?0:6], PX_N[ 0]);
 			case  5: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 2], PX_P[ 3], PX_P[ 0], PX_N[ 2], PX_N[11], PX_N[12]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[ 3], PX_P[12], PX_N[ 2], PX_N[11], PX_N[ 0]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[ 3], PX_P[ 2], PX_N[12], PX_N[11], PX_N[ 2]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[ 3], PX_P[ 2], PX_N[ 0], PX_N[11], PX_N[ 2]);
+			default        : return box(aBlock, PX_P[ 2], PX_P[ 4], PX_P[ 0], PX_N[ 2], PX_N[11], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[ 4], PX_P[12], PX_N[ 2], PX_N[11], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[ 4], PX_P[ 2], PX_N[12], PX_N[11], PX_N[ 2]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[ 4], PX_P[ 2], PX_N[ 0], PX_N[11], PX_N[ 2]);
 			}
 			case  6: switch(mFacing) {
-			default        : return box(aBlock, PX_P[ 2], PX_P[11], PX_P[ 0], PX_N[ 2], PX_N[ 3], PX_N[12]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[11], PX_P[12], PX_N[ 2], PX_N[ 3], PX_N[ 0]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[11], PX_P[ 2], PX_N[12], PX_N[ 3], PX_N[ 2]);
-			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[11], PX_P[ 2], PX_N[ 0], PX_N[ 3], PX_N[ 2]);
+			default        : return box(aBlock, PX_P[ 2], PX_P[12], PX_P[ 0], PX_N[ 2], PX_N[ 3], PX_N[12]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[12], PX_P[12], PX_N[ 2], PX_N[ 3], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 2], PX_N[12], PX_N[ 3], PX_N[ 2]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[12], PX_P[12], PX_P[ 2], PX_N[ 0], PX_N[ 3], PX_N[ 2]);
 			}
 		}
 		switch(aRenderPass) {
