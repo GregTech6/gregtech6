@@ -48,12 +48,21 @@ import net.minecraft.util.AxisAlignedBB;
  */
 public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
+	public void onTickFirst2(boolean aIsServerSide) {
+		if (aIsServerSide && !isConnectedToGround()) popOff();
+	}
+	
+	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide && aTimer > 1 && (SERVER_TIME % 20) == 0 && (SERVER_TIME / 20) % 8 == WD.evenness(this) && !isConnectedToGround()) popOff();
+		if (aIsServerSide) {
+			if (mBlockUpdatedLastTime && !isConnectedToGround()) popOff();
+			mBlockUpdatedLastTime = mBlockUpdated;
+		}
 	}
 	
 	protected ITexture mTexture;
 	protected byte mRenderValue = 0;
+	protected boolean mBlockUpdatedLastTime = F;
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
