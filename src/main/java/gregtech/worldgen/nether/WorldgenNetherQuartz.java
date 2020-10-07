@@ -26,8 +26,9 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
-import gregtech.worldgen.WorldgenPit;
+import gregtech.worldgen.NoiseGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -44,11 +45,10 @@ public class WorldgenNetherQuartz extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		
-		int tX = aMinX-16, tZ = aMinZ-16, tY = 40+aRandom.nextInt(200);
-		if (aWorld.getBlock(aMinX+8, tY, aMinZ+8) == Blocks.netherrack) for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
-			if (aWorld.getBlock(tX+i, tY, tZ+j) == Blocks.netherrack) aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.RockOres, 8, 2);
+		NoiseGenerator tNoise = new NoiseGenerator(aWorld);
+		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
+			int tY = 40+(int)(tNoise.get(aMinX+i, 42, aMinZ+j) * 200);
+			if (aChunk.getBlock(i, tY, j) == Blocks.netherrack) WD.set(aChunk, i, tY, j, BlocksGT.RockOres, 8);
 		}
 		return T;
 	}
