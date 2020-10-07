@@ -21,7 +21,6 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
-[CHANGED] Netherquartz now generates in large flat Layers in the Nether.
 [CHANGED] The Mixing Bowl is now made with a Raw Mixing Bowl in a Furnace. also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
@@ -29,11 +28,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The Autocollect Effect of Magnetic Materials for Tools also applies for the Handles now. This is only really useful with a Basalz Rod as Tool Handle though, which now counts as Magnetic.
 [CHANGED] Blaze Powder and its Thermal Expansion equivalents are now considered a Tiny Pile of Dust instead of a full Pile of Dust. All Recipes should have been adjusted to take this into account.
 [ADDED] Basalz, Blizz and Blitz Powder can now be used for different ways to obtain some Potions in the Distillery.
+[ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust, this makes it possible to obtain those Mob Drops in Peaceful (or in general since those TE Mobs are way too rare, and yes I know Blaze is already doable with regular Nether Bumbles). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
-[ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust, this makes it possible to obtain those Mob Drops in Peaceful (or in general since those TE Mobs are way too rare, and yes I know Blaze is already doable with regular Nether Bumbles). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
+[ADDED] Netherquartz now generates in large flat Layers in the Nether. The old GT5 Veins and the Small Ores for Netherquartz wont generate anymore.
 [ADDED]
 Metal Scaffolds made of each of the Metal Shelf Set Materials.
 These Scaffolds are NOT intended to be identical to any other Scaffolds you might know! They are NOT supposed to be exactly like IC2, Vanilla or any other Scaffolds!

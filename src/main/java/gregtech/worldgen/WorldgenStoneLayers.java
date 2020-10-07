@@ -59,7 +59,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
-		final int tListSize = StoneLayer.LAYERS.size(), tListMax = tListSize-1, tMaxHeight = aChunk.getTopFilledSegment()+15;
+		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
@@ -68,13 +68,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
 			StoneLayer[] tScan = new StoneLayer[] {
-			  StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX, -2, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX, -1, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  0, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  1, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  2, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  3, tZ, tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  4, tZ, tListSize)))
+			  StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  0, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  1, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize))
 			};
 			
 			boolean tCanPlaceRocks = F;
@@ -182,7 +182,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				
 				// And scan for next Block on the Stone Layer Type.
 				for (int t = 1; t < tScan.length; t++) tScan[t-1] = tScan[t];
-				tScan[6] = StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, tY+4, tZ) + 1) / 2) * tListSize)));
+				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX, tY+4, tZ, tListSize));
 			}
 		}
 		return T;

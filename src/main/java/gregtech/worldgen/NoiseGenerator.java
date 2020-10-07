@@ -43,9 +43,13 @@ public class NoiseGenerator {
 		mFrequencyZ = aZ;
 		return this;
 	}
+	
+	/** @return a Number between 0 and aOptionCount-1. */
 	public int get(float aX, float aY, float aZ, int aOptionCount) {
-		return (int)(((get(aX, aY, aZ)+1)/2.0F) * aOptionCount);
+		return Math.min(aOptionCount-1, (int)(((get(aX, aY, aZ)+1)/2.0F) * aOptionCount));
 	}
+	
+	/** @return a Number between -1.0F and +1.0F. Hitting exactly +-1.0F is extremely unlikely, but possible. */
 	public float get(float aX, float aY, float aZ) {
 		aX *= mFrequencyX; aY *= mFrequencyY; aZ *= mFrequencyZ;
 		int xr = Math.round(aX), yr = Math.round(aY), zr = Math.round(aZ), xc = 0, yc = 0, zc = 0;
