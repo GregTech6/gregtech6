@@ -26,7 +26,6 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.data.CS.BlocksGT;
-import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.worldgen.WorldgenPit;
 import net.minecraft.init.Blocks;
@@ -37,21 +36,19 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenNetherClay extends WorldgenObject {
+public class WorldgenNetherQuartz extends WorldgenObject {
 	@SafeVarargs
-	public WorldgenNetherClay(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
+	public WorldgenNetherQuartz(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(64) > 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
+		if (aRandom.nextInt(16) > 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		
-		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+3, tLowerBound = WD.waterLevel(aWorld)+2;
-		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
-			for (int tY = tUpperBound; tY >= tLowerBound; tY--) {
-				if (aWorld.getBlock(tX+i, tY, tZ+j) == Blocks.netherrack) aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.Diggables, 3, 2);
-			}
+		int tX = aMinX-16, tZ = aMinZ-16, tY = 40+aRandom.nextInt(200);
+		if (aWorld.getBlock(aMinX+8, tY, aMinZ+8) == Blocks.netherrack) for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
+			if (aWorld.getBlock(tX+i, tY, tZ+j) == Blocks.netherrack) aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.RockOres, 8, 2);
 		}
 		return T;
 	}

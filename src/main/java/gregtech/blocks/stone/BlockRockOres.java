@@ -35,12 +35,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 public class BlockRockOres extends BlockBaseMeta {
-	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0};
+	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0};
 	public static int[] BURN_LEVELS = {100, 100, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 1.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
+	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
 	
 	public BlockRockOres(String aUnlocalised) {
-		super(null, aUnlocalised, Material.rock, soundTypeStone, 8, Textures.BlockIcons.ROCK_ORES);
+		super(null, aUnlocalised, Material.rock, soundTypeStone, 9, Textures.BlockIcons.ROCK_ORES);
 		LH.add(getUnlocalizedName()+ ".0.name", "Anthracite Coal");
 		LH.add(getUnlocalizedName()+ ".1.name", "Lignite Coal");
 		LH.add(getUnlocalizedName()+ ".2.name", "Salt");
@@ -49,6 +49,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".5.name", "Oil Shale");
 		LH.add(getUnlocalizedName()+ ".6.name", "Gypsum");
 		LH.add(getUnlocalizedName()+ ".7.name", "Milky Quartz");
+		LH.add(getUnlocalizedName()+ ".8.name", "Nether Quartz");
 		
 		OM.reg(ST.make(this, 1, 0), OP.oreDense.dat(MT.Coal));
 		OM.reg(ST.make(this, 1, 1), OP.oreDense.dat(MT.Lignite));
@@ -58,6 +59,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		OM.reg(ST.make(this, 1, 5), OP.oreDense.dat(MT.Oilshale));
 		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.OREMATS.Gypsum));
 		OM.reg(ST.make(this, 1, 7), OP.oreDense.dat(MT.MilkyQuartz));
+		OM.reg(ST.make(this, 1, 8), OP.oreDense.dat(MT.NetherQuartz));
 		
 		if (COMPAT_IC2 != null) {
 		COMPAT_IC2.valuable(this,  0, 1);
@@ -68,7 +70,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		COMPAT_IC2.valuable(this,  5, 2);
 		COMPAT_IC2.valuable(this,  6, 1);
 		COMPAT_IC2.valuable(this,  7, 2);
-		COMPAT_IC2.valuable(this,  8, 0);
+		COMPAT_IC2.valuable(this,  8, 2);
 		COMPAT_IC2.valuable(this,  9, 0);
 		COMPAT_IC2.valuable(this, 10, 0);
 		COMPAT_IC2.valuable(this, 11, 0);
@@ -86,6 +88,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		StoneLayer.LAYERS.add(new StoneLayer(this, 5, MT.Oilshale));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.OREMATS.Gypsum));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
+	//  StoneLayer.LAYERS.add(new StoneLayer(this, 8, MT.NetherQuartz)); Nope, that is not for the Overworld.
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return F;}
