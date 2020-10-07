@@ -47,7 +47,10 @@ public class WorldgenNetherQuartz extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
-			int tY = 40+(int)(tNoise.get(aMinX+i, 42, aMinZ+j) * 200);
+			int
+			tY = 40+tNoise.get(aMinX+i,  0, aMinZ+j, 200);
+			if (aChunk.getBlock(i, tY, j) == Blocks.netherrack) WD.set(aChunk, i, tY, j, BlocksGT.RockOres, 8);
+			tY = 40+tNoise.get(aMinX+i,  0, aMinZ+j, 200);
 			if (aChunk.getBlock(i, tY, j) == Blocks.netherrack) WD.set(aChunk, i, tY, j, BlocksGT.RockOres, 8);
 		}
 		return T;

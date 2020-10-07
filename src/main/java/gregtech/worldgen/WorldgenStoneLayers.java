@@ -68,13 +68,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
 			StoneLayer[] tScan = new StoneLayer[] {
-			  StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  0, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  3, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  4, tZ) + 1) / 2) * tListSize)))
+			  StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX, -2, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX, -1, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  0, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  1, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  2, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  3, tZ, tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, tNoise.get(tX,  4, tZ, tListSize)))
 			};
 			
 			boolean tCanPlaceRocks = F;

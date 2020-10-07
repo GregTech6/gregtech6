@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,7 @@ public class WorldgenDeepOcean extends WorldgenObject {
 		if (!aBiomeNames.contains(BiomeGenBase.deepOcean.biomeName)) return F;
 		int i = 3 + aRandom.nextInt(9), j = 30 + aRandom.nextInt(9), k = 3 + aRandom.nextInt(9);
 		if (WD.anywater(aChunk.getBlock(i, j, k))) {
-			switch ((int)(new NoiseGenerator(aWorld).get(aMinX+8, 32, aMinZ+8)*16)) {
+			switch (new NoiseGenerator(aWorld).get(aMinX+8, 32, aMinZ+8, 16)) {
 			default:
 				// Keep Deep Ocean Normal.
 				return F;
