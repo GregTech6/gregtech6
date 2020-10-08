@@ -117,7 +117,7 @@ public class Recipe {
 			mRecipeList = (aRecipeList == null ? new HashSetNoNulls<Recipe>() : aRecipeList);
 			mNameInternal = aNameInternal;
 			mNameLocal = aNameLocal;
-			mNameLocalUnderscored = mNameLocal.replaceAll(" ", "_");
+			mNameLocalUnderscored = mNameLocal.replaceAll(" ", "_").replaceAll("(", "").replaceAll(")", "");
 			mNameNEI = aNameNEI == null ? mNameInternal : aNameNEI;
 			mGUIPath = aNEIGUIPath.endsWith(".png")?aNEIGUIPath:aNEIGUIPath + ".png";
 			mNEISpecialValuePre = aNEISpecialValuePre;
