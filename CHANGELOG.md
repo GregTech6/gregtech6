@@ -21,7 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
-[CHANGED] The Mixing Bowl is now made with a Raw Mixing Bowl in a Furnace. also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
+[CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
+[CHANGED] The Recipes for Mortars and Juicers are now more similar to the Ceramic Bowl Recipe too. Mortars also only need one Ingot/Gem to craft the Pestle part now.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Blast Furnace Recipe.
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
 [CHANGED] Blaze Powder can no longer be turned into Sulfur and Ashes using the Centrifuge. However, many Recipes that require Sulfur now also allow Blaze Powder directly. (The Pyrotheum Recipes still require Sulfur seperately!)
@@ -34,6 +35,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
 [ADDED] Netherquartz now generates in large flat Layers in the Nether. The old GT5 Veins and the Small Ores for Netherquartz wont generate anymore.
+[ADDED] Netherite Version of the Mortar, because most usable Mortar Materials, including Iron, are too hard to come by in the Nether.
 [ADDED]
 Metal Scaffolds made of each of the Metal Shelf Set Materials.
 These Scaffolds are NOT intended to be identical to any other Scaffolds you might know! They are NOT supposed to be exactly like IC2, Vanilla or any other Scaffolds!

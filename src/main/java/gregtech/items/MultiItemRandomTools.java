@@ -71,25 +71,27 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		int tLastID = 0;
 		IBehavior<MultiItem> tBehaviour;
 		
-		IL.Compound_Bronze.set(                 addItem(tLastID =     0, "Bronze Compound"              , "Put in Furnace to smelt it"      , new OreDictItemData(MT.Bronze       , U9), TC.stack(TC.METALLUM, 1)));
-		IL.Compound_Brass.set(                  addItem(tLastID =     1, "Brass Compound"               , "Put in Furnace to smelt it"      , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
-		IL.Compound_BismuthBronze.set(          addItem(tLastID =     2, "Bismuth Bronze Compound"      , "Put in Furnace to smelt it"      , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_Bronze.set(       addItem(tLastID =     0, "Bronze Compound"        , "Put in Furnace to smelt it" , new OreDictItemData(MT.Bronze       , U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_Brass.set(        addItem(tLastID =     1, "Brass Compound"         , "Put in Furnace to smelt it" , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_BismuthBronze.set(addItem(tLastID =     2, "Bismuth Bronze Compound", "Put in Furnace to smelt it" , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
 		
 		RM.add_smelting(IL.Compound_Bronze       .get(1), OP.nugget.mat(MT.Bronze       , 1));
 		RM.add_smelting(IL.Compound_Brass        .get(1), OP.nugget.mat(MT.Brass        , 1));
 		RM.add_smelting(IL.Compound_BismuthBronze.get(1), OP.nugget.mat(MT.BismuthBronze, 1));
 		
-		IL.Mixing_Bowl_Raw.set(                 addItem(tLastID =   995, "Raw Mixing Bowl"              , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*5), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
-		IL.Ceramic_Jug_Raw.set(                 addItem(tLastID =   996, "Raw Clay Jug"                 , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*6), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
-		IL.Measuring_Pot_Raw.set(               addItem(tLastID =   997, "Raw Measuring Pot"            , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*4), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
-		IL.Food_Can_Empty.set(                  addItem(tLastID =   998, "Empty Food Can"               , "Used for canning Food"           , new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
-		IL.Spray_Empty.set(                     addItem(tLastID =   999, "Empty Spray Can"              , "Used for making Sprays"          , new OreDictItemData(MT.Sn, OP.plateCurved.mAmount, MT.Redstone, OP.dust.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.MOTUS, 1)));
+		IL.Juicer_Raw.set(            addItem(tLastID =   994, "Clay Juicer"            , "Put in Furnace to harden it", new OreDictItemData(MT.Clay, U*4), TC.stack(TC.TERRA, 2), TC.stack(TC.LIMUS, 1)));
+		IL.Ceramic_Bowl_Raw.set(      addItem(tLastID =   995, "Clay Bowl"              , "Put in Furnace to harden it", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Ceramic_Jug_Raw.set(       addItem(tLastID =   996, "Clay Jug"               , "Put in Furnace to harden it", new OreDictItemData(MT.Clay, U*6), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS, 1)));
+		IL.Measuring_Pot_Raw.set(     addItem(tLastID =   997, "Clay Measuring Pot"     , "Put in Furnace to harden it", new OreDictItemData(MT.Clay, U*4), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS, 1)));
+		IL.Food_Can_Empty.set(        addItem(tLastID =   998, "Empty Food Can"         , "Used for canning Food"      , new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
+		IL.Spray_Empty.set(           addItem(tLastID =   999, "Empty Spray Can"        , "Used for making Sprays"     , new OreDictItemData(MT.Sn, OP.plateCurved.mAmount, MT.Redstone, OP.dust.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.MOTUS, 1)));
 		
-		CR.shaped(IL.Mixing_Bowl_Raw    .get(1), CR.DEF_NCC     , "k R", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Jug_Raw    .get(1), CR.DEF_NCC     , "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Measuring_Pot_Raw  .get(1), CR.DEF_NCC     , "CkC", "CCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Food_Can_Empty     .get(1), CR.DEF_NAC_NCC , "fh" , "oP"        , 'P', OP.plateCurved.dat(MT.TinAlloy));
-		CR.shaped(IL.Spray_Empty        .get(1), CR.DEF_NCC     , "Rf" , "Cs"        , 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Sn));
+		CR.shaped(IL.Juicer_Raw       .get(1), CR.DEF_NCC    , "kCR", "CCC"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Bowl_Raw .get(1), CR.DEF_NCC    , "k R", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Jug_Raw  .get(1), CR.DEF_NCC    , "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Measuring_Pot_Raw.get(1), CR.DEF_NCC    , "CkC", "CCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Food_Can_Empty   .get(1), CR.DEF_NAC_NCC, "fh" , "oP"        , 'P', OP.plateCurved.dat(MT.TinAlloy));
+		CR.shaped(IL.Spray_Empty      .get(1), CR.DEF_NCC    , "Rf" , "Cs"        , 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Sn));
 		
 		RM.RollBender.addRecipe1(T, 16, 64, OP.plateCurved.mat(MT.TinAlloy, 1), IL.Food_Can_Empty.get(1));
 		

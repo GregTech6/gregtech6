@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,7 +81,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 	protected RecipeMap mRecipes = RM.Mixer;
 	protected Recipe mLastRecipe = null;
 	protected FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
-
+	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -94,14 +94,14 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		mTanksOutput = new FluidTankGT[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(tCapacity).readFromNBT(aNBT, NBT_TANK+".out."+i);
 	}
-
+	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		for (int i = 0; i < mTanksInput .length; i++) mTanksInput [i].writeToNBT(aNBT, NBT_TANK+".in." +i);
 		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i].writeToNBT(aNBT, NBT_TANK+".out."+i);
 	}
-
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
@@ -109,7 +109,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
-
+	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);

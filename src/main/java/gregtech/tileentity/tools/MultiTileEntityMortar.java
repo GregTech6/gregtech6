@@ -32,6 +32,7 @@ import gregapi.data.BI;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
@@ -59,7 +60,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 	protected Recipe mLastRecipe = null;
 	public byte mStyle = 0;
 	
-	public static final OreDictMaterial MORTAR_MATERIALS[] = {ANY.Steel, ANY.Sapphire, ANY.Diamond, ANY.Amethyst};
+	public static final OreDictMaterial MORTAR_MATERIALS[] = {ANY.Steel, MT.Netherite, ANY.Sapphire, ANY.Diamond, ANY.Amethyst};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
