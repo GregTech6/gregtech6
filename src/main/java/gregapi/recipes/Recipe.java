@@ -117,7 +117,13 @@ public class Recipe {
 			mRecipeList = (aRecipeList == null ? new HashSetNoNulls<Recipe>() : aRecipeList);
 			mNameInternal = aNameInternal;
 			mNameLocal = aNameLocal;
-			mNameLocalUnderscored = mNameLocal.replaceAll(" ", "_").replaceAll("(", "").replaceAll(")", "");
+			// TODO proper String sanitizer
+			StringBuilder tBuilder = new StringBuilder(mNameLocal.length());
+			for (char tChar : mNameLocal.toCharArray()) {
+				if (tChar == '(' || tChar == ')' || tChar == '[' || tChar == ']' || tChar == '{' || tChar == '}' || tChar == '"' || tChar == '\'' || tChar == '<' || tChar == '>' || tChar == '°' || tChar == '~' || tChar == '$' || tChar == '%' || tChar == '#' || tChar == '+' || tChar == '*' || tChar == '§' || tChar == '!' || tChar == '?' || tChar == '.' || tChar == ',' || tChar == ':' || tChar == ';') continue;
+				if (tChar == ' ' || tChar == '-' || tChar == '=' || tChar == '&' || tChar == '^' || tChar == '|' || tChar == '/' || tChar == '\\') tBuilder.append('_'); else tBuilder.append(tChar);
+			}
+			mNameLocalUnderscored = tBuilder.toString();
 			mNameNEI = aNameNEI == null ? mNameInternal : aNameNEI;
 			mGUIPath = aNEIGUIPath.endsWith(".png")?aNEIGUIPath:aNEIGUIPath + ".png";
 			mNEISpecialValuePre = aNEISpecialValuePre;
