@@ -56,8 +56,8 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		char tHammer = ' ', tFile = ' ', tWrench = ' ';
 		OreDictPrefix tIngot = OP.ingot;
 		
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_tools", T))      {tHammer = 'h'; tFile = 'f'; tWrench = 'w';}
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_plates", T))     {tIngot = OP.plate;}
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_tools", T))  {tHammer = 'h'; tFile = 'f'; tWrench = 'w';}
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_plates", T)) {tIngot = OP.plate;}
 		
 		CR.shaped(ST.make(MD.RC, "part.gear"   , 2,  3), tBits | MIR, tHammer+""+tFile, "XX" , "XX", 'X', tIngot.dat(MT.Sn));
 		
