@@ -62,6 +62,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.delate(ST.make(Blocks.ender_chest, 1, 0));
 		CR.delate(ST.make(Blocks.furnace, 1, 0));
 		CR.delate(ST.make(Items.saddle, 1, 0));
+		CR.delate(ST.make(Items.magma_cream, 1, 0));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "enchantmenttable", F)) {
 			OUT.println("GT_Mod: Removing the Recipe of the Enchantment Table, to have Fun enchanting with the Anvil and Books from Dungeons.");
