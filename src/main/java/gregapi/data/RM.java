@@ -189,17 +189,30 @@ public class RM {
 		return T;
 	}
 	
+	
 	public static boolean pack(ItemStack aContent, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
 		Boxinator.addRecipe2(T, 16, 16, aContent, ST.tag(aContent.stackSize), aFull);
 		return T;
 	}
-	
 	public static boolean pack(ItemStack aContent, long aAmount, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
 		Boxinator.addRecipe2(T, 16, 16, ST.amount(aAmount, aContent), ST.tag(aAmount), aFull);
 		return T;
 	}
+	public static boolean unpack(ItemStack aFull, ItemStack aContent) {
+		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
+		Unboxinator.addRecipe1(T, 16, 16, aFull, aContent);
+		ic2_extractor(aFull, aContent);
+		return T;
+	}
+	public static boolean packunpack(ItemStack aContent, ItemStack aFull) {
+		return pack(aContent, aFull) && unpack(aFull, aContent);
+	}
+	public static boolean packunpack(ItemStack aContent, long aAmount, ItemStack aFull) {
+		return pack(aContent, aAmount, aFull) && unpack(aFull, ST.amount(aAmount, aContent));
+	}
+	
 	
 	public static boolean compact(ItemStack aContent, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
@@ -208,7 +221,6 @@ public class RM {
 		ic2_compressor(aContent, aFull);
 		return T;
 	}
-	
 	public static boolean compact(ItemStack aContent, long aAmount, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
 		Boxinator .addRecipe2(T, 16, 16, ST.amount(aAmount, aContent), ST.tag(aAmount), aFull);
@@ -216,19 +228,23 @@ public class RM {
 		ic2_compressor(ST.amount(aAmount, aContent), aFull);
 		return T;
 	}
-	
-	public static boolean unpack (ItemStack aFull, ItemStack aContent) {
-		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
-		Unboxinator.addRecipe1(T, 16, 16, aFull, aContent);
-		ic2_extractor(aFull, aContent);
+	public static boolean smash(ItemStack aObject, ItemStack aOutput) {
+		if (ST.invalid(aObject) || ST.invalid(aOutput)) return F;
+		Hammer .addRecipe1(T, 16,  16, aObject, aOutput);
+		Crusher.addRecipe1(T, 16,  32, aObject, aOutput);
 		return T;
 	}
-	
-	public static boolean packunpack (ItemStack aContent, ItemStack aFull) {
-		return pack(aContent, aFull) && unpack(aFull, aContent);
+	public static boolean smash(ItemStack aObject, ItemStack aOutput, long aAmount) {
+		if (ST.invalid(aObject) || ST.invalid(aOutput)) return F;
+		Hammer .addRecipe1(T, 16,  16, aObject, ST.amount(aAmount, aOutput));
+		Crusher.addRecipe1(T, 16,  32, aObject, ST.amount(aAmount, aOutput));
+		return T;
 	}
-	public static boolean packunpack (ItemStack aContent, long aAmount, ItemStack aFull) {
-		return pack(aContent, 9, aFull) && unpack(aFull, ST.amount(aAmount, aContent));
+	public static boolean compactsmash(ItemStack aContent, ItemStack aFull) {
+		return compact(aContent, aFull) && smash(aFull, aContent);
+	}
+	public static boolean compactsmash(ItemStack aContent, long aAmount, ItemStack aFull) {
+		return compact(aContent, aAmount, aFull) && smash(aFull, aContent, aAmount);
 	}
 	
 	public static boolean biomass(ItemStack aBiomass) {return biomass(aBiomass, 64);}

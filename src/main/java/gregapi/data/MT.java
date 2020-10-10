@@ -2557,12 +2557,6 @@ public class MT {
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz          , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                 , Mg                        , MnO2                  );
-			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            , Efrine                );
-			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3                 );
-			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
-			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
 			Nikolite                        .addOreByProducts(Cu                    , RareEarth                 );
 			Teslatite                       .addOreByProducts(Cu                    , RareEarth                 );
@@ -2604,6 +2598,15 @@ public class MT {
 			GlowstoneProteus                .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstonePluto                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			Gloomstone                      .addOreByProducts(Redstone              , Au                        , Glowstone             );
+			Efrine                          .addOreByProducts(SoulSand              , Be                        , OREMATS.Pentlandite   , Zircon);
+			AncientDebris                   .addOreByProducts(SoulSand              , Efrine                    , OREMATS.Huebnerite    );
+			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 , Gloomstone);
+			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            , Efrine                );
+			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3                 );
+			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
+			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
+			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
+			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			Ga                              .addOreByProducts(Zn                    , Se                        );
 			Zn                              .addOreByProducts(Sn                    , Ga                        );
 			W                               .addOreByProducts(MnO2                  , Mo                        );
@@ -2663,9 +2666,6 @@ public class MT {
 			Nq                              .addOreByProducts(Nq_528                );
 			Ad                              .addOreByProducts(OREMATS.Magnetite     , Adamantine                );
 			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
-			Efrine                          .addOreByProducts(SoulSand              , NetherQuartz              , Be                    );
-			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              , Efrine                );
-			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 , Gloomstone);
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
 			Diamond                         .addOreByProducts(Graphite              , DiamondPink               );
 			DiamondPink                     .addOreByProducts(Graphite              , Diamond                   );

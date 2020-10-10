@@ -1025,28 +1025,39 @@ public class LoaderItemList implements Runnable {
 		
 		
 		IL.NePl_Torch                           .set(ST.make(MD.NePl, "SoulTorch"                           , 1, 0), null, OD.blockSoulTorch);
+		IL.NePl_SoulSoil                        .set(ST.make(MD.NePl, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		IL.NePl_Obsidian                        .set(ST.make(MD.NePl, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9), OD.cryingObsidian);
 		IL.NePl_Quartz_Bricks                   .set(ST.make(MD.NePl, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
-		IL.NePl_Blackstone                      .set(ST.make(MD.NePl, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone));
-		IL.NePl_Blackstone_Bricks               .set(ST.make(MD.NePl, "PolishedBlackstoneBricks"            , 1, 0), OP.stone.dat(MT.Blackstone));
-		IL.NePl_Blackstone_Cracked              .set(ST.make(MD.NePl, "CrackedPolishedBlackstoneBricks"     , 1, 0), OP.stone.dat(MT.Blackstone));
+		IL.NePl_Blackstone                      .set(ST.make(MD.NePl, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone), OP.cobblestone);
 		IL.NePl_Blackstone_Polished             .set(ST.make(MD.NePl, "PolishedBlackstone"                  , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Chiseled             .set(ST.make(MD.NePl, "ChiseledPolishedBlackstone"          , 1, 0), OP.stone.dat(MT.Blackstone));
+		IL.NePl_Blackstone_Bricks               .set(ST.make(MD.NePl, "PolishedBlackstoneBricks"            , 1, 0), OP.stone.dat(MT.Blackstone));
+		IL.NePl_Blackstone_Cracked              .set(ST.make(MD.NePl, "CrackedPolishedBlackstoneBricks"     , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Basalt                          .set(ST.make(MD.NePl, "Basalt"                              , 1, 0), OP.stone.dat(MT.Basalt));
 		IL.NePl_Basalt_Polished                 .set(ST.make(MD.NePl, "PolishedBasalt"                      , 1, 0), OP.stone.dat(MT.Basalt));
-		IL.NePl_SoulSoil                        .set(ST.make(MD.NePl, "SoulSoil"                            , 1, 0), null, OD.soulsand);
 		
 		
-		// "NetherCrystal" is not needed right now
 		IL.NeLi_Fire_Soul                       .set(ST.make(MD.NeLi, "SoulFire"                            , 1, 0));
 		IL.NeLi_Fire_Fox                        .set(ST.make(MD.NeLi, "FoxFire"                             , 1, 0));
 		IL.NeLi_Torch_Soul                      .set(ST.make(MD.NeLi, "SoulTorch"                           , 1, 0), null, OD.blockSoulTorch);
 		IL.NeLi_Torch_Fox                       .set(ST.make(MD.NeLi, "FoxfireTorch"                        , 1, 0), null, OD.blockFoxfireTorch);
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
 		IL.NeLi_Obsidian                        .set(ST.make(MD.NeLi, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9), OD.cryingObsidian);
-		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz, U*4));
+		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz   , U*4));
+		IL.NeLi_Crystal_White                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U*4));
+		IL.NeLi_Crystal_Blue                    .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*4));
+		IL.NeLi_Crystal_Green                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 2), new OreDictItemData(MT.FluoriteGreen  , U*4));
+		IL.NeLi_Crystal_Yellow                  .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 3), new OreDictItemData(MT.FluoriteYellow , U*4));
+		IL.NeLi_Crystal_Magenta                 .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 4), new OreDictItemData(MT.FluoriteMagenta, U*4));
 		IL.NeLi_Magmatic_Netherrack             .set(ST.make(MD.NeLi, "MagmaBlock"                          , 1, 1), new OreDictItemData(MT.Netherrack, U));
 		IL.NeLi_Magmatic_Blackstone             .set(ST.make(MD.NeLi, "MagmaBlock"                          , 1, 0), new OreDictItemData(MT.Blackstone, U));
+		IL.NeLi_Blackstone                      .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone), OP.cobblestone);
+		IL.NeLi_Blackstone_Polished             .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 1), OP.stone.dat(MT.Blackstone));
+		IL.NeLi_Blackstone_Chiseled             .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 2), OP.stone.dat(MT.Blackstone));
+		IL.NeLi_Blackstone_Bricks               .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 3), OP.stone.dat(MT.Blackstone));
+		IL.NeLi_Blackstone_Cracked              .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 4), OP.stone.dat(MT.Blackstone));
+		IL.NeLi_Basalt                          .set(ST.make(MD.NeLi, "Basalt"                              , 1, 0), OP.stone.dat(MT.Basalt));
+		IL.NeLi_Basalt_Polished                 .set(ST.make(MD.NeLi, "Basalt"                              , 1, 1), OP.stone.dat(MT.Basalt));
 		IL.NeLi_Stem_Crimson                    .set(ST.make(MD.NeLi, "Stem"                                , 1, 0), null, OD.logWood);
 		IL.NeLi_Stem_Warped                     .set(ST.make(MD.NeLi, "Stem"                                , 1, 2), null, OD.logWood);
 		IL.NeLi_Stem_FoxFire                    .set(ST.make(MD.NeLi, "Stem2"                               , 1, 0), null, OD.logWood);

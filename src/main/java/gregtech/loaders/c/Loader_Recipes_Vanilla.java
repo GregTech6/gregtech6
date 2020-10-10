@@ -347,7 +347,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.chainmail_boots         , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "R R", "RhR"       , 'R', OP.ring.dat(ANY.Steel));
 		
 		for (int i = 1; i < 16; i++)
-		CR.shapeless(ST.make(Blocks.wool, 1,  i), DEF_NAC, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
+		CR.shapeless(ST.make(Blocks.wool, 1, i), DEF_NAC, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
 		
 		CR.delate(IL.Food_Bread.get(1));
 		CR.delate(ST.make(Items.arrow, 1, 0));
@@ -388,8 +388,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
 		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
 		
-		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.storageblockcrafting, "tile.glowstone", F)) CR.remove(ST.make(Items.glowstone_dust, 1, 0), ST.make(Items.glowstone_dust, 1, 0), NI, ST.make(Items.glowstone_dust, 1, 0), ST.make(Items.glowstone_dust, 1, 0));
-		
 		CR.shaped(OP.toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', "itemFlint");
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), OP.toolHeadArrow.mat(MT.Flint, 1));
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Blocks.glass, 1, W), OP.lens.mat(MT.Glass, 1));
@@ -398,10 +396,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.stone, 1, W), OP.stickLong.mat(MT.Stone, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Stone_Generator.get(  0), OP.stickLong.mat(MT.Stone, 1));
 		
-		if (IL.NePl_Quartz_Bricks.exists())
-		RM.Hammer       .addRecipe1(T, 16,  16, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
-		if (IL.NeLi_Quartz_Bricks.exists())
-		RM.Hammer       .addRecipe1(T, 16,  16, IL.NeLi_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -424,10 +418,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.brick_stairs             , 1, W), ST.make(Items.brick, 5, 0));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stone_slab               , 1, 4), ST.make(Items.brick, 1, 0));
 		
-		if (IL.NePl_Quartz_Bricks.exists())
-		RM.Crusher      .addRecipe1(T, 16,  32, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
-		if (IL.NeLi_Quartz_Bricks.exists())
-		RM.Crusher      .addRecipe1(T, 16,  32, IL.NeLi_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  48, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -445,7 +435,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher      .addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_stairs       , 1, W), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab         , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		
-		RM.compact(OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
+		RM.compactsmash(OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
 		RM.sawing(16,  64, F,  25, ST.make(Blocks.glowstone, 1, W), OP.plateGem.mat(MT.Glowstone, 4));
 		RM.lathing(16, 64, ST.make(Blocks.glowstone, 1, W), OP.stickLong.mat(MT.Glowstone, 2), OM.dust(MT.Glowstone, 2*U));
 		

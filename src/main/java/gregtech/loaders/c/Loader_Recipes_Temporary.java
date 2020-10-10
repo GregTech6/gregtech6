@@ -270,10 +270,28 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
 			
-			RM.compact(OM.dust(MT.Gloomstone), 4, IL.NeLi_Gloomstone.get(1));
+			RM.compactsmash(OM.dust(MT.Gloomstone), 4, IL.NeLi_Gloomstone.get(1));
 			RM.sawing(16, 64, F, 25, IL.NeLi_Gloomstone.get(1), OP.plateGem.mat(MT.Gloomstone, 4));
 			RM.lathing(16, 64, IL.NeLi_Gloomstone.get(1), OP.stickLong.mat(MT.Gloomstone, 2), OM.dust(MT.Gloomstone, 2*U));
 			RM.generify(IL.NeLi_Gloomstone.get(1), ST.make(Blocks.glowstone, 1, 0));
+			
+			RM.compactsmash(OP.gem.mat(MT.FluoriteWhite  , 1), 4, IL.NeLi_Crystal_White  .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteBlue   , 1), 4, IL.NeLi_Crystal_Blue   .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteGreen  , 1), 4, IL.NeLi_Crystal_Green  .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteYellow , 1), 4, IL.NeLi_Crystal_Yellow .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteMagenta, 1), 4, IL.NeLi_Crystal_Magenta.get(1));
+			
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_White  .get(1), OP.plateGem.mat(MT.FluoriteWhite  , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Blue   .get(1), OP.plateGem.mat(MT.FluoriteBlue   , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Green  .get(1), OP.plateGem.mat(MT.FluoriteGreen  , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Yellow .get(1), OP.plateGem.mat(MT.FluoriteYellow , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Magenta.get(1), OP.plateGem.mat(MT.FluoriteMagenta, 4));
+			
+			RM.lathing(16, 64, IL.NeLi_Crystal_White  .get(1), OP.stickLong.mat(MT.FluoriteWhite  , 2), OM.dust(MT.FluoriteWhite  , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Blue   .get(1), OP.stickLong.mat(MT.FluoriteBlue   , 2), OM.dust(MT.FluoriteBlue   , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Green  .get(1), OP.stickLong.mat(MT.FluoriteGreen  , 2), OM.dust(MT.FluoriteGreen  , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Yellow .get(1), OP.stickLong.mat(MT.FluoriteYellow , 2), OM.dust(MT.FluoriteYellow , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Magenta.get(1), OP.stickLong.mat(MT.FluoriteMagenta, 2), OM.dust(MT.FluoriteMagenta, 2*U));
 			
 			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
 			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));
@@ -300,12 +318,19 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
 			
+			RM.smash(IL.NeLi_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4), 4);
+			
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Crimson     .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 2));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Warped      .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 5));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Roots" , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Soggy       .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 8));
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Plants", 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			
+			RM.pack(rockGt.mat(MT.Basalt    , 4), IL.NeLi_Basalt.get(1));
+			RM.pack(rockGt.mat(MT.Blackstone, 4), IL.NeLi_Blackstone.get(1));
+			CR.shaped(IL.NeLi_Basalt    .get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Basalt));
+			CR.shaped(IL.NeLi_Blackstone.get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Blackstone));
 		}
 		
 		if (MD.NePl.mLoaded) {
@@ -327,6 +352,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, W));
 			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, W));
 			
+			RM.smash(IL.NePl_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4), 4);
+			
 			if (!MD.NeLi.mLoaded) {
 				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
@@ -334,6 +361,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
 				
 				RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
+				
+				RM.pack(rockGt.mat(MT.Basalt    , 4), IL.NePl_Basalt.get(1));
+				RM.pack(rockGt.mat(MT.Blackstone, 4), IL.NePl_Blackstone.get(1));
+				CR.shaped(IL.NePl_Basalt    .get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Basalt));
+				CR.shaped(IL.NePl_Blackstone.get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Blackstone));
 			}
 		}
 		

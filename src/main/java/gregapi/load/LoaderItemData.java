@@ -957,9 +957,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stone, MT.Netherrack                          , ST.make(Blocks.netherrack             , 1, W));
 		OM.reg(OP.stone, MT.NetherBrick                         , ST.make(Blocks.nether_brick           , 1, W));
 		OM.reg(OP.stone, MT.Endstone                            , ST.make(Blocks.end_stone              , 1, W));
-		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.NeLi, "Basalt"             , 1, W));
-		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.NeLi, "BasaltBricks"       , 1, W));
-		OM.reg(OP.stone, MT.Blackstone                          , ST.make(MD.NeLi, "Blackstone"         , 1, W));
 		OM.reg(OP.stone, MT.SoulSand                            , ST.make(MD.NeLi, "SoulSandstone"      , 1, W));
 		
 		

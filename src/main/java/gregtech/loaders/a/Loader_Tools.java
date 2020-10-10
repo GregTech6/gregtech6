@@ -277,7 +277,9 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Plastic, (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', ingot.dat(MT.Plastic));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Plastic, (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', plate.dat(MT.Plastic));
 		
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.PetrifiedWood}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.PetrifiedWood, MT.Obsidian}) {
+		if (tRock == MT.Obsidian)
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SF"               , 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , " S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));

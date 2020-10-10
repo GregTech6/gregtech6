@@ -58,9 +58,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.LaserEngraver    .addRecipe2(T, 16, 128, IL.Module_Stone_Generator.get(  0), ST.amount(0, aEvent.mStack), ST.make(Blocks.stonebrick, 1, 3));
 		}});
 		addListener("blockSolidObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Hammer       .addRecipe1(T, 16,  64, aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)));
+			RM.Hammer       .addRecipe1(T, 16,  64,                           aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)), OP.dust.mat(MT.Obsidian, 1));
 			RM.Crusher      .addRecipe1(T, 16, 600, new long[] {10000, 2500}, aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)), OP.dust.mat(MT.Obsidian, 1));
-			RM.pulverizing(aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)), OP.dust.mat(MT.Obsidian, 1), 25, T);
+			RM.pulverizing(                                                   aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)), OP.dust.mat(MT.Obsidian, 1), 25, T);
 		}});
 		addListener("stoneNetherBrick", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Hammer       .addRecipe1(T, 16,  16, aEvent.mStack, ST.make(Items.netherbrick, 3, 0));

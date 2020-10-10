@@ -34,6 +34,7 @@ import gregapi.code.ItemStackSet;
 import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -206,10 +207,12 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	@Override
 	@SuppressWarnings("unchecked")
 	public void run() {
-		RM.pack(rockGt.mat(mMaterial, 4), ST.make(this, 1, COBBL));
+		if ((!MD.NePl.mLoaded && !MD.NeLi.mLoaded) || (mMaterial != MT.Basalt && mMaterial != MT.Blackstone)) {
+			RM.pack(rockGt.mat(mMaterial, 4), ST.make(this, 1, COBBL));
+			CR.shaped(ST.make(this, 1, COBBL), CR.DEF, "XX", "XX", 'X', OP.rockGt.dat(mMaterial));
+		}
 		
-		CR.shaped(gearGtSmall.mat(     mMaterial, 1), CR.DEF_NAC, "P ", " f", 'P', OP.stone.dat(mMaterial));
-		CR.shaped(ST.make(this           , 1, COBBL), CR.DEF    , "XX", "XX", 'X', OP.rockGt.dat(mMaterial));
+		CR.shaped(gearGtSmall.mat(     mMaterial, 1), CR.DEF_NAC, "X ", " f", 'X', OP.stone.dat(mMaterial));
 		CR.shaped(ST.make(Blocks.stone_stairs, 1, 0), CR.DEF_MIR, " X", "XX", 'X', OP.rockGt.dat(mMaterial)); // TODO Stairs
 		CR.shaped(ST.make(mSlabs[0]      , 1, COBBL), CR.DEF    , "  ", "XX", 'X', OP.rockGt.dat(mMaterial));
 		
