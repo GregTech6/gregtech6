@@ -181,8 +181,8 @@ public class GT_API extends Abstract_Mod {
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
+		MT.init();
 		BI.BAROMETER.toString();
-		MT.NULL.toString();
 		OP.ore.toString();
 		
 		Textures.BlockIcons.VOID.toString();

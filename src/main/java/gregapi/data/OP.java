@@ -518,7 +518,7 @@ public class OP {
 	
 	
 	static {
-		ANY.init();
+		MT.init();
 		
 		crushed    .addListener(new OreDictListenerItem_Washing(crushedPurified, 2, crushedPurifiedTiny));
 		dustImpure .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));

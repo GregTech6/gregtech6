@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
+[REMOVED] Some of the Tools that did not make proper sense like the Flint Club (that would shatter).
 [CHANGED] The Durability of Bronze Tools got buffed to be more than Wrought Iron, but less than Steel.
 [CHANGED] Many GT6 Wood Tools are now properly craftable. Wooden Clubs are made by putting a Log or Beam on a Stick in a 2x2.
 [CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.

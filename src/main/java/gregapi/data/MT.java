@@ -1679,14 +1679,20 @@ public class MT {
 		ClayRed.setSmelting(Ceramic, U);
 		Netherrack.setSmelting(NetherBrick, U);
 		
-		ANY.init();
-		
+	}
+	
+	private static boolean INITIALIZED = false;
+	
+	public static void init() {
+		if (INITIALIZED) return;
+		INITIALIZED = true;
 		// Making sure shit is statically loaded, damn it.
+		H.getClass();
 		DATA.Dye_Materials.getClass();
-		WOODS.Oak.getClass();
 		OREMATS.Magnetite.getClass();
+		WOODS.Oak.getClass();
 		AM.Hydrogen.getClass();
-		
+		ANY.init();
 		TECH.Brick.getClass();
 		TECH.init();
 	}
@@ -1699,22 +1705,16 @@ public class MT {
 		@Deprecated public static final OreDictMaterial AnyGlowstone = ANY.Glowstone, AnyWax = ANY.Wax, AnyWood = ANY.Wood, AnyStone = ANY.Stone, AnyClay = ANY.Clay, AnyIron = ANY.Fe, AnyIronSteel = ANY.Steel, AnyCopper = ANY.Cu, AnySilicon = ANY.Si, AnyTungsten = ANY.W, AnyThaumicCrystal = ANY.ThaumCrystal, AnySalt = ANY.Salt, AnySteel = ANY._Steel, AnyBronze = ANY._Bronze, AnyMetal = ANY._Metal;
 		
 		public static final OreDictMaterial
-		Brick                       = invalid("Brick"                       ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, STONE, BRITTLE, MORTAR).heat(2000).setRGBa(183, 90, 64, 255),
-		Organic                     = invalid("Organic"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
-		Crystal                     = invalid("Crystal"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, BRITTLE, CRYSTAL),
-		Unknown                     = invalid("Unknown"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
-		Cobblestone                 = invalid("Cobblestone"                 ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, UNRECYCLABLE),
+		Brick       = invalid("Brick"      ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, STONE, BRITTLE, MORTAR).heat(2000).setRGBa(183, 90, 64, 255),
+		Organic     = invalid("Organic"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
+		Crystal     = invalid("Crystal"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, BRITTLE, CRYSTAL),
+		Unknown     = invalid("Unknown"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
+		Cobblestone = invalid("Cobblestone").put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, UNRECYCLABLE),
 		
-		RefinedIron                 = invalid("RefinedIron"                 ).stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
-		
-		private static boolean INITIALIZED = false;
+		RefinedIron = invalid("RefinedIron").stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
 		protected static void init() {
-			if (INITIALIZED) return;
-			INITIALIZED = true;
-			
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
-			
 			
 			Ad                      .visDefault(Adamantine);
 			

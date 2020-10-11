@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -93,11 +93,11 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 		return rOutput;
 	}
 	
-	private final Collection<Block> mAllowedVanillaBlocks = Arrays.asList(Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane, Blocks.carpet, Blocks.hardened_clay, Blocks.stained_hardened_clay, IL.TE_Rockwool.block());
+	private final Collection<Block> mAllowedVanillaBlocks = Arrays.asList(Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane, Blocks.carpet, Blocks.hardened_clay, Blocks.stained_hardened_clay);
 	
 	private boolean colorize(World aWorld, int aX, int aY, int aZ, byte aSide) {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
-		if (aBlock != NB && (mAllowedVanillaBlocks.contains(aBlock) || aBlock instanceof BlockColored)) {
+		if (aBlock != NB && (mAllowedVanillaBlocks.contains(aBlock) || aBlock instanceof BlockColored || IL.TE_Rockwool.block() == aBlock)) {
 			if (aBlock == Blocks.hardened_clay  ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay , ~mColor & 15, 3); return T;}
 			if (aBlock == Blocks.glass_pane     ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane    , ~mColor & 15, 3); return T;}
 			if (aBlock == Blocks.glass          ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass         , ~mColor & 15, 3); return T;}

@@ -257,24 +257,20 @@ public class Loader_Tools implements Runnable {
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Plastic, MT.Syrmorite, MT.Au, MT.Al, MT.Cr, MT.StainlessSteel, MT.Netherite, MT.NetherizedDiamond})
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, tMaterial , tMaterial), CR.DEF_MIR, "  S", " I ", "S f", 'I', ingot.dat(tMaterial), 'S', stick.dat(tMaterial));
 		
-		for (Object[] tHandle : new Object[][] {{MT.Wood, OD.stickAnyWood}, {MT.PetrifiedWood, stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, Items.bone}, {MT.Plastic, stick.dat(MT.Plastic)}}) {
+		for (Object[] tHandle : new Object[][] {{ANY.Wood, OD.stickAnyWood}, {MT.PetrifiedWood, stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, Items.bone}, {MT.Plastic, stick.dat(MT.Plastic)}}) {
 		
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SF"               , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , " S"        , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SWORD      , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "F" ,  "S" , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', OD.itemFlint);
 		
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Rubber , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', ingot.dat(MT.Rubber));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Rubber , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', plate.dat(MT.Rubber));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Plastic, (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', ingot.dat(MT.Plastic));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER , MT.Plastic, (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', plate.dat(MT.Plastic));
-		
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.PetrifiedWood, MT.Obsidian}) {
-		if (tRock == MT.Obsidian)
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Obsidian}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SF"               , 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		}
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.PetrifiedWood}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , " S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
@@ -306,7 +302,7 @@ public class Loader_Tools implements Runnable {
 		toolHeadAxeDouble          .addListener(new OreProcessing_Tool(DOUBLE_AXE            , tCategory + "DoubleAxe"           ,T,F,0,0, null, null                                                                                , new String[][] {{"PIP", "P P", "f h"}, {"CGC", "C C", "f  "}}, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
 		toolHeadSense              .addListener(new OreProcessing_Tool(SENSE                 , tCategory + "Sense"               ,T,F,0,0, null, null                                                                                , new String[][] {{"PPI", "f h"       }, {"CCG", "f  "       }}, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
 		toolHeadPlow               .addListener(new OreProcessing_Tool(PLOW                  , tCategory + "Plow"                ,T,F,0,0, null, null                                                                                , new String[][] {{"PPP", "PPP", "f h"}, {"CCC", "CCC", "f  "}}, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
-		toolHeadFile               .addListener(new OreProcessing_Tool(FILE                  , tCategory + "File"                ,T,F,0,0, null, null                                                                                , new String[][] {{" Pk", " P "       }}                       , null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2), qualmax(2))));
+		toolHeadFile               .addListener(new OreProcessing_Tool(FILE                  , tCategory + "File"                ,T,F,0,0, null, null                                                                                , new String[][] {{" P ", " Pk"       }}                       , null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2), qualmax(2))));
 		toolHeadChisel             .addListener(new OreProcessing_Tool(CHISEL                , tCategory + "Chisel"              ,T,F,0,0, null, null                                                                                , new String[][] {{"hPf", " S "       }, {"Cf" , "S "        }}, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
 		toolHeadScrewdriver        .addListener(new OreProcessing_Tool(SCREWDRIVER           , tCategory + "Screwdriver"         ,T,F,0,0, null, null                                                                                , new String[][] {{"hS" , "Sf"        }}                       , null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
 		toolHeadSaw                .addListener(new OreProcessing_Tool(SAW                   , tCategory + "Saw"                 ,T,F,0,0, null, null                                                                                , new String[][] {{"PP" , "fh"        }, {"CC" , "f "        }}, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, typemin(2))));
