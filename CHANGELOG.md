@@ -21,18 +21,20 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
+[FIXED] Many GT6 Wood Tools were not craftable at all.
 [CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
 [CHANGED] The Recipes for Mortars and Juicers are now more similar to the Ceramic Bowl Recipe too. Mortars also only need one Ingot/Gem to craft the Pestle part now.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Reika Blast Furnace Recipe.
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
-[CHANGED] Blaze Powder can no longer be turned into Sulfur and Ashes using the Centrifuge. However, many Recipes that require Sulfur now also allow Blaze Powder directly. (The Pyrotheum Recipes still require Sulfur seperately!)
+[CHANGED] Hard and Soft Hammers aswell as Files, can no longer be direct crafted, and now require the typical Toolhead+Handle Recipe to be used. This is to reduce Crafting Recipe Count and because the direct Recipes dont take Handles into account.
 [CHANGED] The Autocollect Effect of Magnetic Materials for Tools also applies for the Handles now. This is only really useful with a Basalz Rod as Tool Handle though, which now counts as Magnetic. Note, that this currently only works with the Toolhead + Rod Recipes, not the hardcoded ones.
+[CHANGED] Blaze Powder can no longer be turned into Sulfur and Ashes using the Centrifuge. However, many Recipes that require Sulfur now also allow Blaze Powder directly. (The Pyrotheum Recipes still require Sulfur seperately!)
 [CHANGED] Blaze Powder and its Thermal Expansion equivalents are now considered a Tiny Pile of Dust instead of a full Pile of Dust. All Recipes should have been adjusted to take this into account.
-[ADDED] Lumium can now be made in a Mixer with all variants of molten Glowstone. Same goes for Lumium Glass and Hardened Glass from Thermal Expansion.
 [ADDED] Basalz, Blizz and Blitz Powder can now be used for different ways to obtain some Potions in the Distillery.
 [ADDED] Blaze/Blizz/Blitz/Basalz Bumblebees that produce Combs that yield their respective Rods and Dust, this makes it possible to obtain those Mob Drops in Peaceful (or in general since those TE Mobs are way too rare, and yes I know Blaze is already doable with regular Nether Bumbles). Spoiler alert do not continue reading if you wanna find out the combo yourself, it is the combination of the highest Tiers of YRATILIM&YTSORFXDNEXREHTENXDENOTS (you have to read those in reverse, and replace the X-es with Slashes).
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
+[ADDED] Lumium can now be made in a Mixer with all variants of molten Glowstone. Same goes for Lumium Glass and Hardened Glass from Thermal Expansion.
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone from Netherlicious as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
 [ADDED] Netherquartz now generates in large flat Layers in the Nether. The old GT5 Veins and the Small Ores for Netherquartz wont generate anymore.

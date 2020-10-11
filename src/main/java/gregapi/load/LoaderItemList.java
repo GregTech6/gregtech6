@@ -630,9 +630,6 @@ public class LoaderItemList implements Runnable {
 		IL.TE_Slag_Rich                         .set(ST.make(MD.TE, "material"                              , 1, 515), null, OD.itemSlag);
 		IL.TE_Phyto_Gro                         .set(ST.make(MD.TE, "material"                              , 1, 516), null, OD.itemFertilizer);
 		IL.TE_Phyto_Gro_Rich                    .set(ST.make(MD.TE, "material"                              , 1, 517), null, OD.itemFertilizer);
-		IL.TE_Rockwool                          .set(ST.make(MD.TE, "Rockwool"                              , 1,   0));
-		IL.TE_ObsidiGlass                       .set(ST.make(MD.TE, "Glass"                                 , 1,   0));
-		IL.TE_LumiumGlass                       .set(ST.make(MD.TE, "Glass"                                 , 1,   1));
 		
 		
 		IL.RC_ShuntingWire                      .set(ST.make(MD.RC, "machine.delta"                         , 1, 0));

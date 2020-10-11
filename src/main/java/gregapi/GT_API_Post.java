@@ -386,16 +386,20 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
+			IL.TE_Rockwool   .set(ST.make(MD.TE, "Rockwool", 1, 0));
+			IL.TE_ObsidiGlass.set(ST.make(MD.TE, "Glass"   , 1, 0));
+			IL.TE_LumiumGlass.set(ST.make(MD.TE, "Glass"   , 1, 1));
+			
 			OM.data(MD.TE, "Tank", 1, 1, ANY.Cu     ,  U * 1, MT.Glass,  U * 4);
 			OM.data(MD.TE, "Tank", 1, 2, MT.Invar   ,  U * 4, ANY.Cu  ,  U * 1, MT.Glass,  U * 4);
 			OM.data(MD.TE, "Tank", 1, 3, MT.Invar   ,  U * 4, ANY.Cu  ,  U * 1, MT.Glass,  U * 4);
 			OM.data(MD.TE, "Tank", 1, 4, MT.Enderium,  U * 4, MT.Invar,  U * 4, ANY.Cu  ,  U * 1, MT.Glass,  U * 4);
 		}
-
+		
 		// Wow, Ars Magica too is on this List, at least for its Blocks...
 		IL.ARS_Cerublossom.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
 		IL.ARS_DesertNova .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
-
+		
 		// Cooking for Blockheads is here too!...
 		if (MD.CookBook.mLoaded) {
 			OM.data(MD.CookBook, "recipebook", 1, W, MT.Paper, U*3);
