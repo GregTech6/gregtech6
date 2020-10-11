@@ -51,12 +51,14 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Blocks.cobblestone, 1, 0), ST.make(Items.quartz, 1, 0), NI, ST.make(Items.quartz, 1, 0), ST.make(Blocks.cobblestone, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
+		CR.remove(ST.make(Items.glowstone_dust, 1, 0), ST.make(Items.glowstone_dust, 1, 0), NI, ST.make(Items.glowstone_dust, 1, 0), ST.make(Items.glowstone_dust, 1, 0));
 		
 		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {Items.bone});
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', Items.reeds);
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
-		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone, 'F', OD.craftingFirestarter);
+		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone         , 'F', OD.craftingFirestarter);
+		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.stone.dat(MT.Basalt), 'F', OD.craftingFirestarter);
 		
 		CR.delate(ST.make(Blocks.enchanting_table, 1, 0));
 		CR.delate(ST.make(Blocks.ender_chest, 1, 0));
@@ -126,8 +128,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.stone_pressure_plate, 1, 0)    , DEF, "SS", 'S', Blocks.stone);
 		CR.shaped(ST.make(Blocks.stone_pressure_plate, 1, 0)    , DEF, "SS", 'S', OP.stone);
 		
-		CR.shapeless(OP.stick       .mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {OP.stick       .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
-		CR.shapeless(OP.stickLong   .mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {OP.stickLong   .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
+		CR.shapeless(stick    .mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {stick    .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
+		CR.shapeless(stickLong.mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {stickLong.dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
 		
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', ST.make(Items.bone, 1, W));
 		
@@ -136,11 +138,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.pack(rockGt.mat(MT.Netherrack, 4), ST.make(Blocks.netherrack , 1, 0));
 		RM.pack(rockGt.mat(MT.Endstone  , 4), ST.make(Blocks.end_stone  , 1, 0));
 		
+		CR.shaped(ST.make(Blocks.glowstone                  , 1, 0), DEF    , "XX", "XX", 'X', Items.glowstone_dust);
 		CR.shaped(ST.make(Blocks.netherrack                 , 1, 0), DEF    , "XX", "XX", 'X', rockGt.dat(MT.Netherrack));
 		CR.shaped(ST.make(Blocks.end_stone                  , 1, 0), DEF    , "XX", "XX", 'X', rockGt.dat(MT.Endstone));
-		CR.shaped(ST.make(Blocks.cobblestone                , 1, 0), DEF    , "XX", "XX", 'X', OP.rockGt.dat(MT.Stone));
-		CR.shaped(ST.make(Blocks.stone_stairs               , 1, 0), DEF_MIR, " X", "XX", 'X', OP.rockGt.dat(MT.Stone));
-		CR.shaped(ST.make(Blocks.stone_slab                 , 1, 3), DEF    , "  ", "XX", 'X', OP.rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.cobblestone                , 1, 0), DEF    , "XX", "XX", 'X', rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.stone_stairs               , 1, 0), DEF_MIR, " X", "XX", 'X', rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.stone_slab                 , 1, 3), DEF    , "  ", "XX", 'X', rockGt.dat(MT.Stone));
 		CR.shaped(ST.make(Blocks.stone_stairs               , 4, 0), DEF_MIR, " X", "XX", 'X', Blocks.cobblestone);
 		CR.shaped(ST.make(Blocks.stone_slab                 , 4, 3), DEF    , "  ", "XX", 'X', Blocks.cobblestone);
 		

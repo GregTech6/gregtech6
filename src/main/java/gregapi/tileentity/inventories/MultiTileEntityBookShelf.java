@@ -34,6 +34,7 @@ import gregapi.data.LH.Chat;
 import gregapi.data.MD;
 import gregapi.data.OD;
 import gregapi.data.OP;
+import gregapi.data.TD;
 import gregapi.dummies.DummyInventory;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -320,13 +321,13 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 		if (aRenderPass <  7) {
 			if (ALONG_AXIS[aSide][mFacing] && !aShouldSideBeRendered[aSide]) return null;
 			switch(aRenderPass) {
-			case 0: return ALONG_AXIS[aSide][mFacing] || !aShouldSideBeRendered[aSide] ? null : BlockTextureDefault.get(mShelfIcon, mRGBa);
-			case 1: return ALONG_AXIS[aSide][mFacing] || SIDES_TOP[aSide]              ? BlockTextureDefault.get(mShelfIcon, mRGBa) : null;
-			case 2: return ALONG_AXIS[aSide][mFacing] || SIDES_BOTTOM[aSide]           ? BlockTextureDefault.get(mShelfIcon, mRGBa) : null;
-			case 3: return aSide==(SIDES_AXIS_Z[mFacing]?SIDE_X_NEG:SIDE_Z_NEG)        ? null : BlockTextureDefault.get(mShelfIcon, mRGBa);
-			case 4: return aSide==(SIDES_AXIS_Z[mFacing]?SIDE_X_POS:SIDE_Z_POS)        ? null : BlockTextureDefault.get(mShelfIcon, mRGBa);
-			case 5: return ALONG_AXIS[aSide][mFacing]                                  ? BlockTextureDefault.get(mShelfIcon, mRGBa) : null;
-			case 6: return ALONG_AXIS[aSide][mFacing] || SIDES_VERTICAL[aSide]         ? BlockTextureDefault.get(mShelfIcon, mRGBa) : null;
+			case 0: return ALONG_AXIS[aSide][mFacing] || !aShouldSideBeRendered[aSide] ? null : BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+			case 1: return ALONG_AXIS[aSide][mFacing] || SIDES_TOP[aSide]              ? BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING)) : null;
+			case 2: return ALONG_AXIS[aSide][mFacing] || SIDES_BOTTOM[aSide]           ? BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING)) : null;
+			case 3: return aSide==(SIDES_AXIS_Z[mFacing]?SIDE_X_NEG:SIDE_Z_NEG)        ? null : BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+			case 4: return aSide==(SIDES_AXIS_Z[mFacing]?SIDE_X_POS:SIDE_Z_POS)        ? null : BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+			case 5: return ALONG_AXIS[aSide][mFacing]                                  ? BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING)) : null;
+			case 6: return ALONG_AXIS[aSide][mFacing] || SIDES_VERTICAL[aSide]         ? BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING)) : null;
 			}
 		}
 		if (SIDES_VERTICAL[aSide] || aSide==(aRenderPass<21?OPPOSITES[mFacing]:mFacing)) return null;

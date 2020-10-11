@@ -3203,13 +3203,13 @@ public class UT {
 			if (aOutput.length == 0) return F;
 			OreDictItemData tOreName = OM.association_(aInput);
 			if (aRecipeManager instanceof IMachineRecipeManagerExt) {
-				if (tOreName != null) {
+				if (tOreName != null && !tOreName.mBlackListed && !OreDictManager.INSTANCE.isBlacklisted(aInput)) {
 					((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
 				} else {
 					((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
 				}
 			} else {
-				if (tOreName != null) {
+				if (tOreName != null && !tOreName.mBlackListed && !OreDictManager.INSTANCE.isBlacklisted(aInput)) {
 					aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));
 				} else {
 					aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));

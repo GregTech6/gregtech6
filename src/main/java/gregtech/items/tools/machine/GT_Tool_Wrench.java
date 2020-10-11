@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Arrays;
 import java.util.List;
 
+import gregapi.block.misc.BlockBaseBars;
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
@@ -65,7 +66,7 @@ public class GT_Tool_Wrench extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
+		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock instanceof BlockBaseBars || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
 		String tString = aBlock.getHarvestTool(aMetaData);
 		if (tString != null && tString.equals(TOOL_wrench)) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;

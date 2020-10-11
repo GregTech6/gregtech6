@@ -22,6 +22,7 @@ package gregtech.tileentity.inventories;
 import static gregapi.data.CS.*;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -104,7 +105,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColored, mRGBa), BlockTextureDefault.get(sOverlay)) : null;
+		return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColored, mRGBa, mMaterial.contains(TD.Properties.GLOWING)), BlockTextureDefault.get(sOverlay)) : null;
 	}
 	
 	@Override public boolean canDrop(int aSlot) {return T;}
