@@ -1514,9 +1514,9 @@ public class CS {
 		public static BlockBase LongDistWire01, LongDistPipe01;
 		
 		public static IBlockBase
-		RailAluminium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
-		RailAluminiumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
-		RailAluminiumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
+		RailAluminium, RailMagnalium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
+		RailAluminiumBooster, RailMagnaliumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
+		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
 		
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark;

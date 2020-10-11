@@ -171,6 +171,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		}
 		
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Al                ,  6), IL.RC_Rail_Standard.get( 1));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Magnalium         ,  3), IL.RC_Rail_Standard.get( 2));
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Fe                ,  3), IL.RC_Rail_Standard.get( 1));
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.WroughtIron       ,  2), IL.RC_Rail_Standard.get( 1));
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.MeteoricIron      ,  3), IL.RC_Rail_Standard.get( 2));
@@ -188,6 +189,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.TungstenCarbide   ,  1), IL.RC_Rail_Reinforced.get( 2));
 		
 		RM.RollFormer.addRecipe1(T, 16, 100, OP.stick.mat(MT.Al                 ,  3), IL.RC_Rebar.get( 1));
+		RM.RollFormer.addRecipe1(T, 16, 100, OP.stick.mat(MT.Magnalium          ,  3), IL.RC_Rebar.get( 4));
 		RM.RollFormer.addRecipe1(T, 16, 200, OP.stick.mat(MT.Fe                 ,  3), IL.RC_Rebar.get( 2));
 		RM.RollFormer.addRecipe1(T, 16, 500, OP.stick.mat(MT.WroughtIron        ,  6), IL.RC_Rebar.get( 5));
 		RM.RollFormer.addRecipe1(T, 16, 100, OP.stick.mat(MT.Bronze             ,  2), IL.RC_Rebar.get( 1));
@@ -201,6 +203,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.RollFormer.addRecipe1(T, 16, 400, OP.stick.mat(MT.TungstenCarbide    ,  1), IL.RC_Rebar.get( 4));
 		
 		RM.RollFormer.addRecipe1(T, 16, 224, OP.ingot.mat(MT.Al                 ,  7), IL.RC_Post_Metal.get( 8));
+		RM.RollFormer.addRecipe1(T, 16, 224, OP.ingot.mat(MT.Magnalium          ,  7), IL.RC_Post_Metal.get(32));
 		RM.RollFormer.addRecipe1(T, 16, 224, OP.ingot.mat(MT.Fe                 ,  7), IL.RC_Post_Metal.get(16));
 		RM.RollFormer.addRecipe1(T, 16, 224, OP.ingot.mat(MT.WroughtIron        ,  7), IL.RC_Post_Metal.get(24));
 		RM.RollFormer.addRecipe1(T, 16, 224, OP.ingot.mat(MT.Bronze             ,  7), IL.RC_Post_Metal.get(12));
