@@ -39,6 +39,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -386,6 +387,8 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
+			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TE, "Glass", 1, W));
+			
 			IL.TE_Rockwool   .set(ST.make(MD.TE, "Rockwool", 1, 0));
 			IL.TE_ObsidiGlass.set(ST.make(MD.TE, "Glass"   , 1, 0));
 			IL.TE_LumiumGlass.set(ST.make(MD.TE, "Glass"   , 1, 1));

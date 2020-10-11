@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -61,7 +61,7 @@ public class OreDictMaterialCondition {
 	private static class TypeMax implements ICondition<OreDictMaterial> {
 		private final long mMaxType;
 		public TypeMax(long aMaxType) {mMaxType = aMaxType;}
-		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mToolTypes >= mMaxType;}
+		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mToolTypes <= mMaxType;}
 	}
 	
 	private static class QualityMin implements ICondition<OreDictMaterial> {
@@ -73,7 +73,7 @@ public class OreDictMaterialCondition {
 	private static class QualityMax implements ICondition<OreDictMaterial> {
 		private final long mMaxQuality;
 		public QualityMax(long aMaxQuality) {mMaxQuality = aMaxQuality;}
-		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mToolQuality >= mMaxQuality;}
+		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mToolQuality <= mMaxQuality;}
 	}
 	
 	private static class MeltingPointMin implements ICondition<OreDictMaterial> {

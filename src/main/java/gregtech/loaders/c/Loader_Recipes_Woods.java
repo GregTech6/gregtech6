@@ -35,6 +35,7 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.RM;
+import gregapi.data.TD;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -143,6 +144,8 @@ public class Loader_Recipes_Woods implements Runnable {
 			if (IL.RC_Creosote_Wood.exists())
 			RM.Bath.addRecipe1(T, 0, 16,       aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
 			
+			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB, aEntry.mMaterialWood, MT.Wood), CR.DEF_MIR, " L", "S ", 'L', aEntry.mLog, 'S', OD.stickAnyWood);
+			
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
@@ -162,6 +165,8 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
 			RM.lathing(16, 80,                 aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
 			
+			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB, aEntry.mMaterialBeam, MT.Wood), CR.DEF_MIR, " B", "S ", 'B', aEntry.mBeam, 'S', OD.stickAnyWood);
+			
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
@@ -179,21 +184,22 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
 			RM.pulverizing(aEntry.mPlank, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 1));
 			
-			CR.shaped(gearGt            .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(gearGtSmall       .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " s"       , 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(plateTiny         .mat(aEntry.mMaterialPlank, 8), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "s ",  " P"       , 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadHammer    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PP ", "PPS", "PP ", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawSword  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "rPs", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawPickaxe.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "PPP", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawShovel .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,               "rPs", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawSpade  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawAxe    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "rPs", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawHoe    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawSense  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "   ", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawPlow   .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "PPP", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
-			CR.shaped(toolHeadRawArrow  .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "  P", "r s", 'P', aPlank, 'S', stick.dat(aEntry.mMaterialPlank));
+			CR.shaped(gearGt            .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "BPB", "PsP", "BPB", 'P', aPlank, 'B', bolt.dat(aEntry.mMaterialPlank));
+			CR.shaped(gearGtSmall       .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " s"       , 'P', aPlank);
+			CR.shaped(plateTiny         .mat(aEntry.mMaterialPlank, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "s ",  " P"       , 'P', aPlank);
+			CR.shaped(toolHeadHammer    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PP ", "PP ", "PPv", 'P', aPlank);
+			if (!aEntry.mMaterialPlank.contains(TD.Compounds.COATED)) {
+			CR.shaped(toolHeadRawSword  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "rPv", 'P', aPlank);
+			CR.shaped(toolHeadRawPickaxe.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "PPP", "r v", 'P', aPlank);
+			CR.shaped(toolHeadRawShovel .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,               "rPv", 'P', aPlank);
+			CR.shaped(toolHeadRawSpade  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "r v", 'P', aPlank);
+			CR.shaped(toolHeadRawAxe    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "rPv", 'P', aPlank);
+			CR.shaped(toolHeadRawHoe    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "r v", 'P', aPlank);
+			CR.shaped(toolHeadRawSense  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "   ", "r v", 'P', aPlank);
+			CR.shaped(toolHeadRawPlow   .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "PPP", "r v", 'P', aPlank);
+			CR.shaped(toolHeadRawArrow  .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "  P", "r v", 'P', aPlank);
+			}
 			
-			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , aEntry.mMaterialPlank, MT.Wood), CR.DEF_MIR, " PP", "PPP", "SP ", 'P', aPlank, 'S', OD.stickAnyWood);
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, aEntry.mMaterialPlank, MT.Wood), CR.DEF_MIR, "  S", " P ", "S f", 'P', aPlank, 'S', OD.stickAnyWood);
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, aEntry.mMaterialPlank, MT.Wood), CR.DEF_MIR, "  S", " P ", "S k", 'P', aPlank, 'S', OD.stickAnyWood);
 			

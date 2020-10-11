@@ -21,7 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A lot about the Custom Gearbox was not always working like intended, especially not the internal Axle.
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
-[FIXED] Many GT6 Wood Tools were not craftable at all.
+[CHANGED] The Durability of Bronze Tools got buffed to be more than Wrought Iron, but less than Steel.
+[CHANGED] Many GT6 Wood Tools are now properly craftable. Wooden Clubs are made by putting a Log or Beam on a Stick in a 2x2.
 [CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
 [CHANGED] The Recipes for Mortars and Juicers are now more similar to the Ceramic Bowl Recipe too. Mortars also only need one Ingot/Gem to craft the Pestle part now.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Reika Blast Furnace Recipe.

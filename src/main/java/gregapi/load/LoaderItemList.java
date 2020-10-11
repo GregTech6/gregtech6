@@ -327,7 +327,6 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedGlass"                   , 1   ));
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedStone"                   , 1   ));
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("constructionFoamWall"              , 1   ));
-		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TE, "Glass"                      , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "container"                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel"                 , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel2"                , 1, W));
