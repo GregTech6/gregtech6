@@ -47,7 +47,7 @@ public enum IL implements IItemContainer {
 	TE_Slag, TE_Slag_Rich, TE_Cinnabar,
 	TE_Phyto_Gro, TE_Phyto_Gro_Rich,
 	TE_Rod_Blizz, TE_Rod_Blitz, TE_Rod_Basalz,
-	TE_Rockwool,
+	TE_Rockwool, TE_ObsidiGlass, TE_LumiumGlass,
 	FR_Planks_Fireproof, FR_Planks,
 	FR_Slabs_Fireproof, FR_Slabs,
 	FR_Logs_Fireproof, FR_Logs,

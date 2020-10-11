@@ -62,8 +62,8 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 1, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
 		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 1, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
 		
-		RM.Bath.addRecipe1(T,  0,  128, OP.crushed    .mat(MT.OREMATS.Cinnabar, 1), MT.Cryotheum.liquid(U2, T), NF, IL.TE_Cinnabar.get(2));
-		RM.Bath.addRecipe1(T,  0,  128, OP.crushedTiny.mat(MT.OREMATS.Cinnabar, 9), MT.Cryotheum.liquid(U2, T), NF, IL.TE_Cinnabar.get(2));
+		RM.Bath.addRecipe1(T,  0,  128, OP.crushed    .mat(MT.OREMATS.Cinnabar, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
+		RM.Bath.addRecipe1(T,  0,  128, OP.crushedTiny.mat(MT.OREMATS.Cinnabar, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
 		
 		FluidStack tPyrotheum = MT.Pyrotheum.liquid(U2, T);
 		if (!FL.Error.is(tPyrotheum)) {
@@ -154,6 +154,11 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		}
 		if (MD.TE.mLoaded) {
 			OUT.println("GT_Mod: Doing Thermal Expansion Recipes.");
+			
+			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Pb    .liquid(U2, T), NF, IL.TE_ObsidiGlass.get(1));
+			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Pb    .liquid(U2, T), NF, IL.TE_ObsidiGlass.get(1));
+			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Lumium.liquid(U2, T), NF, IL.TE_LumiumGlass.get(1));
+			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Lumium.liquid(U2, T), NF, IL.TE_LumiumGlass.get(1));
 			
 			for (FluidStack tEnder : FL.array(FL.Ender.make(L), FL.Ender_TE.make(250))) {
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));

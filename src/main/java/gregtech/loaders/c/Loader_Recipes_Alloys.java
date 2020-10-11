@@ -21,8 +21,10 @@ package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.RM;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 
 public class Loader_Recipes_Alloys implements Runnable {
@@ -54,6 +56,9 @@ public class Loader_Recipes_Alloys implements Runnable {
 		}
 		for (String tSteel : new String[] {"molten.steel", "molten.meteoricsteel", "molten hsla", "molten.knightmetal"}) {
 		mix(tSteel                  ,  1, "molten.tungsten"       ,  1                                                            , "molten.tungstensteel"    ,  2);
+		}
+		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {
+		mix("molten.tin"            ,  3, "molten.silver"         ,  1, "molten."+tMat.mNameInternal.toLowerCase(), 4             , "molten.lumium"           ,  4);
 		}
 		mix("molten.teslatite"      ,  4, "molten.silver"         ,  1                                                            , "molten.bluealloy"        ,  1);
 		mix("molten.nikolite"       ,  4, "molten.silver"         ,  1                                                            , "molten.bluealloy"        ,  1);

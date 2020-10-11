@@ -327,6 +327,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedGlass"                   , 1   ));
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedStone"                   , 1   ));
 		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("constructionFoamWall"              , 1   ));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TE, "Glass"                      , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "container"                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel"                 , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel2"                , 1, W));
@@ -630,6 +631,8 @@ public class LoaderItemList implements Runnable {
 		IL.TE_Phyto_Gro                         .set(ST.make(MD.TE, "material"                              , 1, 516), null, OD.itemFertilizer);
 		IL.TE_Phyto_Gro_Rich                    .set(ST.make(MD.TE, "material"                              , 1, 517), null, OD.itemFertilizer);
 		IL.TE_Rockwool                          .set(ST.make(MD.TE, "Rockwool"                              , 1,   0));
+		IL.TE_ObsidiGlass                       .set(ST.make(MD.TE, "Glass"                                 , 1,   0));
+		IL.TE_LumiumGlass                       .set(ST.make(MD.TE, "Glass"                                 , 1,   1));
 		
 		
 		IL.RC_ShuntingWire                      .set(ST.make(MD.RC, "machine.delta"                         , 1, 0));
