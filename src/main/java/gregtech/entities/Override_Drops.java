@@ -430,6 +430,8 @@ public class Override_Drops {
 			}
 			
 			}
+		} else if (aClass.equalsIgnoreCase("EntityStrider")) {
+			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));

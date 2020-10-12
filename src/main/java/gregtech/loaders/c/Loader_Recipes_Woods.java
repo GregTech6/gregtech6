@@ -137,12 +137,12 @@ public class Loader_Recipes_Woods implements Runnable {
 		// Log related Recipes
 		for (WoodEntry aEntry : WoodDictionary.LIST_WOODS) {
 			if (aEntry.mBeamEntry != null)
-			RM.debarking(                      aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
-			RM.pulverizing(                    aEntry.mLog, OM.dust(aEntry.mMaterialWood.mTargetPulver, aEntry.mPlankCountBuzz, 1), aEntry.mBark, 50, F);
-			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
-			RM.lathing(16, 80,                 aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
+			RM.debarking(                aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
+			RM.pulverizing(              aEntry.mLog, OM.dust(aEntry.mMaterialWood.mTargetPulver, aEntry.mPlankCountBuzz, 1), aEntry.mBark, 50, F);
+			RM.sawing(16, 128, F, 4,     aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
+			RM.lathing(16, 80,           aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			if (IL.RC_Creosote_Wood.exists())
-			RM.Bath.addRecipe1(T, 0, 16,       aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
+			RM.Bath.addRecipe1(T, 0, 16, aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
 			
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB, aEntry.mMaterialWood, MT.Wood), CR.DEF_MIR, " L", "S ", 'L', aEntry.mLog, 'S', OD.stickAnyWood);
 			
@@ -160,10 +160,10 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		// Beam related Recipes
 		for (BeamEntry aEntry : WoodDictionary.LIST_BEAMS) {
-			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
-			RM.pulverizing(                    aEntry.mBeam, OM.dust(aEntry.mMaterialBeam.mTargetPulver, aEntry.mPlankCountBuzz, 1));
-			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
-			RM.lathing(16, 80,                 aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
+			RM.generify(                 aEntry.mBeam, IL.Beam.get(1));
+			RM.pulverizing(              aEntry.mBeam, OM.dust(aEntry.mMaterialBeam.mTargetPulver, aEntry.mPlankCountBuzz, 1));
+			RM.sawing(16, 128, F, 4,     aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
+			RM.lathing(16, 80,           aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
 			
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB, aEntry.mMaterialBeam, MT.Wood), CR.DEF_MIR, " B", "S ", 'B', aEntry.mBeam, 'S', OD.stickAnyWood);
 			

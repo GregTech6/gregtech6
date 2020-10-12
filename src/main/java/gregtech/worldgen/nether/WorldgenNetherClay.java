@@ -49,7 +49,7 @@ public class WorldgenNetherClay extends WorldgenObject {
 		int tUpperBound = WD.waterLevel(aWorld)+3, tLowerBound = WD.waterLevel(aWorld)+2;
 		
 		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
-			if (tNoise.get(aMinX+i, 42, aMinZ+j, 4) == 0) for (int tY = tUpperBound; tY >= tLowerBound; tY--) {
+			if (tNoise.get(aMinX+i, 42, aMinZ+j, 8) == 0) for (int tY = tUpperBound; tY >= tLowerBound; tY--) {
 				if (aChunk.getBlock(i, tY, j) == Blocks.netherrack) WD.set(aChunk, i, tY, j, BlocksGT.Diggables, 3);
 			}
 		}
