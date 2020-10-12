@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
 [FIXED] Charge Speed of GT6 Tools in Battery Boxes.
+[FIXED] Recipe Replacer did not always know what a vanilla wooden Stick is, since I added a ton of different Wood Materials.
 [REMOVED] Some of the Tools that did not make proper sense like the Flint Club.
 [CHANGED] The Durability of Bronze Tools got buffed to be more than Wrought Iron, but less than Steel.
 [CHANGED] Many GT6 Wood Tools are now properly craftable. Wooden Clubs are made by putting a Log or Beam on a Stick in a 2x2.
@@ -105,7 +106,7 @@ Spectral Dew is a Type of "Nether Water" that can be used in many Recipes and ev
 [CHANGED] Bumblebees in Twilight Forest now have the same variety that the Overworld ones have.
 [CHANGED] If you non-sneak rightclick Bedrock Ores you will get the overall Bedrock Drill Recipe List in NEI, making it easier to discover what their use is. (Does not apply to Bedrock Fluid Springs, obviously)
 [CHANGED] If you set yourself on Fire and rightclick a GT6 Machine with your bare hand it will count as Igniting the Machine with a Flint and Tinder or similar.
-[ADDED] Red Clay, which is generating in the Nether now. Look at the big Lava Pools, it always generates at the same height.
+[ADDED] Red Clay, which is generating in the Nether now. Look close to the big Lava Pools, it always generates at the same height.
 [ADDED] Wood Pellets can be turned into Charcoal in the Coke Oven now, which doubles the Fuel Value.
 [ADDED] All Basic Machines now have a Screwdriver Mode, which allows them to not accept more Items in their Input Slots once there is already a Stack inside. This makes precision inserting of Inputs using "Exact Mode Hoppers" and Item Pipes into a Bank of multiple Machines much easier than what you had to do before with Redstone, Shutters and Progress Sensors.
 [ADDED] Thaumcraft Flowers and Saplings should now generate in certain Biomes in the Twilight Forest.

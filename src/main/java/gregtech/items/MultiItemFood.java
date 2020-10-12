@@ -117,22 +117,26 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Bark_Dry.set(                            addItem(tLastID = 12201, "Dry Bark"                                 , "Useful for making a simple Fire Starter"                     , OD.itemBarkDry, TICKS_PER_SMELT / 4, TC.stack(TC.ARBOR, 1), new OreDictItemData(MT.Bark, U2)));
 		
 		
-		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud , TC.stack(TC.TERRA, 1)));
-		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , "Perfectly Balanced With No Exploits!"                        , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
-		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay Ball"                            , "Clay ONLY Challenge Is Broken!"                              , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
+		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud"                                      , ""                                                            , OD.itemMud , TC.stack(TC.TERRA, 1)));
+		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay"                               , "Perfectly Balanced With No Exploits!"                        , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
+		IL.Clay_Ball_Red.set(                       addItem(tLastID = 12311, "Red Clay"                                 , "Clay ONLY Challenge Is Broken!"                              , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
 		RM.generify(IL.Clay_Ball_Brown.get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.generify(IL.Clay_Ball_Red  .get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Brown.get(1), ST.make(Items.brick, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Red  .get(1), ST.make(Items.brick, 1, 0));
 		CR.remove(ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0), NI, ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0));
-		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Mud_Ball);
-		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 1), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Brown);
-		CR.shaped       (ST.make(BlocksGT.Diggables, 1, 3), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Red);
-		CR.shaped       (ST.make(Blocks.clay       , 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', ST.make(Items.clay_ball, 1, W));
-		CR.shapeless    (IL.Mud_Ball               .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 0)});
-		CR.shapeless    (IL.Clay_Ball_Brown        .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 1)});
-		CR.shapeless    (IL.Clay_Ball_Red          .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 3)});
-		CR.shapeless    (ST.make(Items.clay_ball   , 4, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(Blocks.clay       , 1, W)});
+		CR.shaped   (ST.make(BlocksGT.Diggables, 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Mud_Ball);
+		CR.shaped   (ST.make(BlocksGT.Diggables, 1, 1), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Brown);
+		CR.shaped   (ST.make(BlocksGT.Diggables, 1, 3), CR.DEF_NAC_NCC, "XX", "XX", 'X', IL.Clay_Ball_Red);
+		CR.shaped   (ST.make(Blocks.clay       , 1, 0), CR.DEF_NAC_NCC, "XX", "XX", 'X', ST.make(Items.clay_ball, 1, W));
+		CR.shapeless(IL.Mud_Ball               .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 0)});
+		CR.shapeless(IL.Clay_Ball_Brown        .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 1)});
+		CR.shapeless(IL.Clay_Ball_Red          .get(4), CR.DEF_NAC_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 3)});
+		CR.shapeless(ST.make(Items.clay_ball   , 4, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(Blocks.clay       , 1, W)});
+		RM.packunpack(IL.Mud_Ball              .get(4), ST.make(BlocksGT.Diggables, 1, 0));
+		RM.packunpack(IL.Clay_Ball_Brown       .get(4), ST.make(BlocksGT.Diggables, 1, 1));
+		RM.packunpack(IL.Clay_Ball_Red         .get(4), ST.make(BlocksGT.Diggables, 1, 3));
+		RM.packunpack(ST.make(Items.clay_ball  , 4, 0), ST.make(Blocks.clay       , 1, 0));
 		
 		
 		IL.Comb_Honey.set(          addItem(tLastID = 30000, "Honey Comb"           , "", OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb", TC.stack(TC.LIMUS, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.SANO, 1)));

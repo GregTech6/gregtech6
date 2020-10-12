@@ -659,7 +659,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		long tGUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;
 		long tDuration  = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mDuration;
 		if (tGUt == 0) {
-			drawText(10, 93, "Tier: unspecified", 0xFF000000);
+			if (mRecipeMap.mShowVoltageAmperageInNEI) {
+				drawText(10, 93, "Tier: unspecified", 0xFF000000);
+			}
 		} else {
 			if (tGUt > 0) {
 				drawText    (10, 73, "Costs: "  + (tDuration*tGUt) + " GU"        , 0xFF000000);

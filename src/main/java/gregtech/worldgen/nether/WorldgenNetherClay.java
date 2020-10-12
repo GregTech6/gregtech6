@@ -28,7 +28,7 @@ import java.util.Set;
 import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
-import gregtech.worldgen.WorldgenPit;
+import gregtech.worldgen.NoiseGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -45,12 +45,12 @@ public class WorldgenNetherClay extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(64) > 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
+		NoiseGenerator tNoise = new NoiseGenerator(aWorld);
+		int tUpperBound = WD.waterLevel(aWorld)+3, tLowerBound = WD.waterLevel(aWorld)+2;
 		
-		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+3, tLowerBound = WD.waterLevel(aWorld)+2;
-		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
-			for (int tY = tUpperBound; tY >= tLowerBound; tY--) {
-				if (aWorld.getBlock(tX+i, tY, tZ+j) == Blocks.netherrack) aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.Diggables, 3, 2);
+		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
+			if (tNoise.get(aMinX+i, 42, aMinZ+j, 4) == 0) for (int tY = tUpperBound; tY >= tLowerBound; tY--) {
+				if (aChunk.getBlock(i, tY, j) == Blocks.netherrack) WD.set(aChunk, i, tY, j, BlocksGT.Diggables, 3);
 			}
 		}
 		return T;
