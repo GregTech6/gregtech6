@@ -140,7 +140,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (isConnectedVertically()) {
 			if (!(getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold)) {
-				if (aEntity == null || (!aEntity.isSneaking() && aEntity.posY >= yCoord+1)) {
+				if (aEntity == null || (!aEntity.isSneaking() && aEntity.posY >= yCoord+1) || !(getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold)) {
 					box(aAABB, aList, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 				}
 			}
