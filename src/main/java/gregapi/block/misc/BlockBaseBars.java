@@ -119,6 +119,8 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
 		}
 		
+		if (!aBlock.isReplaceable(aWorld, aX, aY, aZ)) return F;
+		
 		// if used in conjunction with << 2 , these Meta Values return the Side Bits perfectly.
 		// Z- = 1, Z+ = 2, X- = 4, X+ = 8
 		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, (SIDES_HORIZONTAL[aSide] ? SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8 : aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8))) {
