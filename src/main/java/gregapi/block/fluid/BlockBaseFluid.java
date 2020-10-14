@@ -277,6 +277,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
+	@Override public boolean isOpaqueCube() {return F;}
+	@Override public boolean func_149730_j() {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 	

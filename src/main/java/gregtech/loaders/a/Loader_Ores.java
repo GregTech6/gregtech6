@@ -208,9 +208,6 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.CHSL, "marble"                       , 0, "chisel.marble"        , OP.oreMarble              , MT.Marble);
 		rockset(MD.CHSL, "limestone"                    , 0, "chisel.limestone"     , OP.oreLimestone           , MT.Limestone);
 		
-		rockset(MD.NePl, "Blackstone"                   , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
-		rockset(MD.NePl, "Basalt"                       , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
-		
 		rockset(MD.EtFu, "stone"                        , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.Granite);
 		rockset(MD.EtFu, "stone"                        , 3, "etfu.diorite"         , OP.oreDiorite             , MT.Diorite);
 		rockset(MD.EtFu, "stone"                        , 5, "etfu.andesite"        , OP.oreAndesite            , MT.Andesite);
@@ -240,6 +237,14 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.MIN, "pegmatite"                     , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
 		rockset(MD.MIN, "chert"                         , 0, "min.chert"            , OP.oreVanillastone        , MT.Chert);
 		
+		if (MD.NePl.mLoaded) {
+		rockset(MD.NePl, "Blackstone"                   , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
+		rockset(MD.NePl, "Basalt"                       , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
+		}
+		if (MD.NeLi.mLoaded) {
+		rockset(MD.NeLi, "Blackstone"                   , 0, "neli.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
+		rockset(MD.NeLi, "Basalt"                       , 0, "neli.basalt"          , OP.oreBasalt              , MT.Basalt);
+		}
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
 		}

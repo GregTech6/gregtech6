@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 import static gregapi.util.CR.*;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.config.ConfigCategories;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -397,7 +398,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.glass, 1, W), OP.lens.mat(MT.Glass, 1), OP.dustSmall.mat(MT.Glass, 1));
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.stone, 1, W), OP.stickLong.mat(MT.Stone, 1));
-		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Stone_Generator.get(  0), OP.stickLong.mat(MT.Stone, 1));
+		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Stone_Generator     .get(0), OP.stickLong.mat(MT.Stone, 1));
+		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), OP.stickLong.mat(MT.Basalt, 1));
+		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(0), OP.stickLong.mat(MT.Blackstone, 1));
 		
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
@@ -406,6 +409,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stonebrick               , 1, 0), ST.make(Blocks.stonebrick, 1, 2));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stone                    , 1, 0), ST.make(Blocks.cobblestone, 1, 0));
 		RM.Hammer       .addRecipe1(T, 16,  32, IL.Module_Stone_Generator.get(               0), ST.make(Blocks.cobblestone, 1, 0));
+		RM.Hammer       .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator.get(              0), IL.NeLi_Basalt.get(1, IL.NePl_Basalt.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.COBBL))));
+		RM.Hammer       .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(          0), IL.NeLi_Blackstone.get(1, IL.NePl_Blackstone.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.COBBL))));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.cobblestone              , 1, 0), ST.make(Blocks.gravel, 1, 0));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.sandstone                , 1, W), ST.make(Blocks.sand, 1, 0));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.ice                      , 1, W), OM.dust(MT.Ice));
@@ -431,6 +436,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.stonebrick               , 1, 3), ST.make(Blocks.cobblestone, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.stone                    , 1, 0), ST.make(Blocks.cobblestone, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, IL.Module_Stone_Generator.get(               0), ST.make(Blocks.cobblestone, 1, 0));
+		RM.Crusher      .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator.get(              0), IL.NeLi_Basalt.get(1, IL.NePl_Basalt.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.COBBL))));
+		RM.Crusher      .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(          0), IL.NeLi_Blackstone.get(1, IL.NePl_Blackstone.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.COBBL))));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.cobblestone              , 1, 0), ST.make(Blocks.gravel, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.sandstone                , 1, W), ST.make(Blocks.sand, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_block        , 1, W), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
@@ -453,6 +460,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.glass                     , 3, 0), ST.make(Blocks.glass_pane, 8, 0));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.stone                     , 1, 0), ST.make(Blocks.stone_slab, 2, 0));
 		RM.sawing(16,  16, F, 100, IL.Module_Stone_Generator.get(                0), ST.make(Blocks.stone_slab, 1, 0));
+		RM.sawing(16,  16, F, 100, IL.Module_Basalt_Generator.get(               0), ST.make(Blocks.stone_slab, 1, 0)); // TODO Basalt Slabs
+		RM.sawing(16,  16, F, 100, IL.Module_Blackstone_Generator.get(           0), ST.make(Blocks.stone_slab, 1, 0)); // TODO Blackstone Slabs
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.sandstone                 , 1, 0), ST.make(Blocks.stone_slab, 2, 1));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.cobblestone               , 1, 0), ST.make(Blocks.stone_slab, 2, 3));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.brick_block               , 1, 0), ST.make(Blocks.stone_slab, 2, 4));
@@ -575,6 +584,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.cobblestone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.stone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Stone_Generator.get(0), OM.dust(MT.Stone));
+		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Basalt_Generator.get(0), OM.dust(MT.Basalt));
+		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.Blackstone));
 		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(4));
 		RM.Shredder     .addRecipe1(T, 16,128,  6000, ST.make(Blocks.melon_block, 1, W), IL.Remains_Fruit.get(9));
 		

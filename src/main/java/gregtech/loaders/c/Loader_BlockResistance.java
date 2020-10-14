@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,6 +19,10 @@
 
 package gregtech.loaders.c;
 
+import static gregapi.data.CS.*;
+
+import gregapi.data.IL;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
 public class Loader_BlockResistance implements Runnable {
@@ -39,5 +43,11 @@ public class Loader_BlockResistance implements Runnable {
 		Blocks.water.setResistance(30);
 		Blocks.flowing_water.setResistance(30);
 		Blocks.lava.setResistance(30);
+		
+		Block
+		tBlock = IL.EtFu_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
+		tBlock = IL.NeLi_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
+		tBlock = IL.NePl_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
+		tBlock = IL.NePl_Ancient_Debris.block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
 	}
 }

@@ -22,6 +22,7 @@ package gregtech.loaders.c;
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.code.ItemStackContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.CS.BlocksGT;
@@ -55,7 +56,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 		}});
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.LaserEngraver    .addRecipe2(T, 16,  64, ST.make(Blocks.stone, 1, W), ST.amount(0, aEvent.mStack), ST.make(Blocks.stonebrick, 1, 3));
-			RM.LaserEngraver    .addRecipe2(T, 16, 128, IL.Module_Stone_Generator.get(  0), ST.amount(0, aEvent.mStack), ST.make(Blocks.stonebrick, 1, 3));
+			RM.LaserEngraver    .addRecipe2(T, 16, 128, IL.Module_Stone_Generator     .get(0), ST.amount(0, aEvent.mStack), ST.make(Blocks.stonebrick, 1, 3));
+			RM.LaserEngraver    .addRecipe2(T, 16, 128, IL.Module_Basalt_Generator    .get(0), ST.amount(0, aEvent.mStack), IL.NeLi_Basalt_Polished.get(1, IL.NePl_Basalt_Polished.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
+			RM.LaserEngraver    .addRecipe2(T, 16, 128, IL.Module_Blackstone_Generator.get(0), ST.amount(0, aEvent.mStack), IL.NeLi_Blackstone_Bricks.get(1, IL.NePl_Blackstone_Bricks.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
 		}});
 		addListener("blockSolidObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Hammer       .addRecipe1(T, 16,  64,                           aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8)));

@@ -287,12 +287,16 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		IL.Module_Stone_Generator.set(          addItem(tLastID =  6000, "Stone Generator Module"           , "Generates Stone for Recipes"                 , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
-		CR.shaped(IL.Module_Stone_Generator.get(1), CR.DEF_REV_NCC, "CPC", "LMW", "COC", 'M', OP.casingMachine.dat(MT.SteelGalvanized), 'O', IL.Shape_Extruder_Block, 'C', OD_CIRCUITS[4], 'P', OD.craftingPiston, 'L', "container1000lava", 'W', "container1000water");
+		IL.Module_Basalt_Generator.set(         addItem(tLastID =  6001, "Basalt Generator Module"          , "Generates Basalt for Recipes"                , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
+		IL.Module_Blackstone_Generator.set(     addItem(tLastID =  6002, "Blackstone Generator Module"      , "Generates Blackstone for Recipes"            , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
+		CR.shaped(IL.Module_Stone_Generator     .get(1), CR.DEF_REV_NCC, "CPC", "LMW", "COC", 'M', OP.casingMachine.dat(MT.SteelGalvanized), 'O', IL.Shape_Extruder_Block, 'C', OD_CIRCUITS[4], 'P', OD.craftingPiston, 'L', OD.container1000lava, 'W', OD.container1000water);
+		CR.shaped(IL.Module_Basalt_Generator    .get(1), CR.DEF_REV_NCC, "S", "M", "I", 'M', IL.Module_Stone_Generator, 'S', OD.soulsand, 'I', Blocks.packed_ice);
+		CR.shaped(IL.Module_Blackstone_Generator.get(1), CR.DEF_REV_NCC, "S", "M", "O", 'M', IL.Module_Stone_Generator, 'S', OD.soulsand, 'O', OD.obsidian);
 		
 		
 		IL.Paper_Printed_Pages.set(             addItem(tLastID =  7002, "Printed Pages"                    , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*3), TC.stack(TC.COGNITO, 3)));
 		IL.Paper_Printed_Pages_Many.set(        addItem(tLastID =  7003, "Many Printed Pages"               , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*6), TC.stack(TC.COGNITO, 6)));
-		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages, (byte)26);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages     , (byte)26);
 		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages_Many, (byte)26);
 		
 		IL.Paper_Blueprint_Empty.set(           addItem(tLastID =  7010, "Empty Blueprint"                  , "Place in Blueprint Slot and Shiftclick it, to assign Recipe" , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITO, 1)));
@@ -300,7 +304,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Blue])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(Items.paper, 1, W), tDye, NF, IL.Paper_Blueprint_Empty.get(1));
 		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Empty, (byte)25);
-		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Used, (byte)28);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Used , (byte)28);
 		ItemsGT.addNEIRedirects(IL.Paper_Blueprint_Empty.get(1), IL.Paper_Blueprint_Used.get(1));
 		
 		
@@ -476,7 +480,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	@Override
 	public boolean canBeStoredInToolbox(ItemStack aStack) {
 		short aMeta = ST.meta_(aStack);
-		return aMeta >= 9000 || aMeta == 6000 || (aMeta >= 1000 && aMeta < 5999);
+		return aMeta >= 9000 || aMeta == 6000 || aMeta == 6001 || aMeta == 6002 || (aMeta >= 1000 && aMeta < 5999);
 	}
 	
 	@Override

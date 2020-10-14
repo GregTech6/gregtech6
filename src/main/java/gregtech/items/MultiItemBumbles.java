@@ -175,8 +175,8 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		// Rocky + Military = Tera
 		make(20300, "Basalzed Bumblebee"        , "");
 		make(20310, "Quakeing Bumblebee"        , "With a mighty White Beard!");
-		make(20320, "Earth Bound Bumblebee"     , "PK Bumble!");//TODO Change Bumble Texture, do NOT use Ness! Use Lucas Instead.
-		make(20330, "Tera Bumble"               , "By your Powers combined, I am Captain Bumblebee!");//TODO Change Bumble Texture
+		make(20320, "Earth Bound Bumblebee"     , "PK Bumble!");
+		make(20330, "Tera Bumble"               , "By your Powers combined, I am Captain Bumblebee!");
 		
 		// Jungle + Water = Swamp
 		// Rocky  + Sandy = Red Sand?

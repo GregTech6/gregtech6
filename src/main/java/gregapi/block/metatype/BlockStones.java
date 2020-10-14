@@ -33,6 +33,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.data.ANY;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -225,6 +226,36 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, SMOTH));
 		CR.shaped(ST.make(this, 4, BRICK), CR.DEF_NAC, "XX", "XX", 'X', tStack.toStack());
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(mMaterial, 2));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,   8, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(mMaterial, 8));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Ingot       .get(0), ST.make(this, 1, BRICK));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Block       .get(0), ST.make(this, 1, STONE));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, ST.amount(4, tStack.toStack()), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, ST.amount(6, tStack.toStack()), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(mMaterial, 2));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,   8, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(mMaterial, 8));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Ingot       .get(0), ST.make(this, 1, BRICK));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Block       .get(0), ST.make(this, 1, STONE));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, ST.amount(4, tStack.toStack()), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, ST.amount(6, tStack.toStack()), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(mMaterial, 1));
 		}
 		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[COBBL]) {
@@ -237,6 +268,36 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shaped(ST.make(mSlabs[0]      , 4, COBBL), CR.DEF    , "  ", "XX", 'X', tStack.toStack());
 		CR.shaped(ST.make(Blocks.stone_stairs, 4, 0), CR.DEF_MIR, " X", "XX", 'X', tStack.toStack()); // TODO Stairs
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(mMaterial, 2));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,   8, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(mMaterial, 8));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Ingot       .get(0), ST.make(this, 1, BRICK));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Block       .get(0), ST.make(this, 1, STONE));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, ST.amount(4, tStack.toStack()), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, ST.amount(6, tStack.toStack()), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(mMaterial, 2));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,   8, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(mMaterial, 8));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Ingot       .get(0), ST.make(this, 1, BRICK));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Block       .get(0), ST.make(this, 1, STONE));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.amount(2, tStack.toStack()), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  96, ST.amount(3, tStack.toStack()), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, ST.amount(4, tStack.toStack()), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(mMaterial, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, ST.amount(6, tStack.toStack()), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(mMaterial, 1));
 		}
 		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[MCOBL]) {
