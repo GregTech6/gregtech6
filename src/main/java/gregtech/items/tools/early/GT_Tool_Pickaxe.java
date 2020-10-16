@@ -25,6 +25,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Torch;
+import gregapi.item.multiitem.behaviors.Behavior_Plug_Leak;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
@@ -58,6 +59,7 @@ public class GT_Tool_Pickaxe extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, Behavior_Plug_Leak.INSTANCE);
 		aItem.addItemBehavior(aID, Behavior_Place_Torch.INSTANCE);
 	}
 	

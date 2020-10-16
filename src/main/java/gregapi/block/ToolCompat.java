@@ -214,7 +214,7 @@ public class ToolCompat {
 		}
 		if (aTool.equals(TOOL_rotator)) {
 			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) % 12, 3)) return 5000;
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
 			}
 			if (aBlock instanceof BlockPistonBase || aBlock instanceof BlockDispenser) {
 				if (aMeta < 6 && aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1) % 6, 3)) return 2000;
@@ -267,7 +267,7 @@ public class ToolCompat {
 				return tResult?10000:0;
 			}
 			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) % 12, 3)) return 5000;
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
 			}
 			if (aBlock instanceof BlockPistonBase || aBlock instanceof BlockDispenser) {
 				if (aMeta < 6 && aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1) % 6, 3)) return 2000;
@@ -312,7 +312,7 @@ public class ToolCompat {
 			}
 			
 			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) % 12, 3)) return 5000;
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
 			}
 			
 			if (aBlock instanceof BlockWorkbench || aBlock instanceof BlockBookshelf) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Torch;
+import gregapi.item.multiitem.behaviors.Behavior_Plug_Leak;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
@@ -112,6 +113,8 @@ public class GT_Tool_MiningDrill_LV extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID  , Behavior_Plug_Leak.INSTANCE);
+		aItem.addItemBehavior(aID+1, Behavior_Plug_Leak.INSTANCE);
 		aItem.addItemBehavior(aID  , Behavior_Place_Torch.INSTANCE);
 		aItem.addItemBehavior(aID+1, Behavior_Place_Torch.INSTANCE);
 	}

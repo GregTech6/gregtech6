@@ -335,7 +335,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), MT.CO2.gas(12*U  , T), MT.CO .gas(16*U  , F), ZL_IS);
 		
 		
-
+		
 		for (String tFluid : FluidsGT.OXYGEN) if (FL.exists(tFluid)) {
 		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.Pyrite                  ), FL.make(tFluid,  1334), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe,   U3 ));
 		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Sphalerite      ), FL.make(tFluid,  1000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn,   U2 ));

@@ -31,6 +31,7 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Paddy;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Path;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Torch;
+import gregapi.item.multiitem.behaviors.Behavior_Plug_Leak;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
@@ -112,6 +113,7 @@ public class GT_Tool_Spade extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, Behavior_Plug_Leak.INSTANCE);
 		aItem.addItemBehavior(aID, new Behavior_Place_Path(50));
 		aItem.addItemBehavior(aID, new Behavior_Place_Paddy(50));
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_shovel, SFX.MC_DIG_GRAVEL, 100, F, T));
