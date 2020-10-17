@@ -662,7 +662,7 @@ public class CS {
 											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F},
 											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F},
 											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F};
-
+	
 	/** For Facing Checks. */
 	public static final boolean[][]
 	SIDES_ANY_BUT = {
@@ -707,7 +707,7 @@ public class CS {
 		SIDES_AXIS_Y,
 		SIDES_AXIS_Z
 	};
-
+	
 	/** Pillar Stuff for more understandable references. */
 	public static final byte PILLAR_X = 4, PILLAR_Y = 0, PILLAR_Z = 8, PILLAR_BITS = 12, PILLAR_DATA = 3, PILLAR_RENDER = 31
 	, PILLARS_X[] = {4,5,6,7}, PILLARS_Y[] = {0,1,2,3}, PILLARS_Z[] = {8,9,10,11}
@@ -723,11 +723,11 @@ public class CS {
 		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
 		SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X,
 		SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z,
-		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
+		SIDES_NONE  , SIDES_NONE  , SIDES_NONE  , SIDES_NONE  ,
 	};
-
+	
 	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
-
+	
 	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */
 	public static final int[]
 	  SCAN_NEG_0 = {0}

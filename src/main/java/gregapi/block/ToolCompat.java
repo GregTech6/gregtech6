@@ -389,7 +389,7 @@ public class ToolCompat {
 				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID));
 				break;
 			}
-			if (tBlock == Blocks.monster_egg || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
+			if (tBlock instanceof BlockSilverfish || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
 				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR));
 				break;
 			}

@@ -231,6 +231,8 @@ public class TD {
 		public static final TagData MATERIAL_BASED                          = TagData.createTagData("PREFIX.MATERIAL_BASED", "Material Based");
 		/** If this Prefix is normally used for Blocks */
 		public static final TagData BLOCK_BASED                             = TagData.createTagData("PREFIX.BLOCK_BASED", "Block Based");
+		/** If this Prefix is Storage Based */
+		public static final TagData STORAGE_BASED                           = TagData.createTagData("PREFIX.STORAGE_BASED", "Storage Based");
 		/** If this Prefix is normally used for Crop Drops */
 		public static final TagData PLANT_DROP                              = TagData.createTagData("PREFIX.PLANT_DROP", "Plant Drop");
 		/** If this Prefix is Unificatable in Inventory */

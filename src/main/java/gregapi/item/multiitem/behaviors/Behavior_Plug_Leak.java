@@ -21,6 +21,7 @@ package gregapi.item.multiitem.behaviors;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.IPrefixBlock;
 import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -29,6 +30,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSilverfish;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -51,10 +54,12 @@ public class Behavior_Plug_Leak extends AbstractBehaviorDefault {
 				Block tBlock = ST.block(tStack);
 				// The Block has to be Opaque to ensure the Leak is plugged.
 				if (tBlock == NB || !tBlock.isOpaqueCube()) continue;
+				// Don't use any PrefixBlocks, TileEntities or Silverfish Blocks.
+				if (tBlock instanceof IPrefixBlock || tBlock instanceof ITileEntityProvider || tBlock instanceof BlockSilverfish) continue;
 				// Only use Blocks that are typically mined.
 				if (tBlock.getMaterial() != Material.rock && tBlock.getMaterial() != Material.ground && tBlock.getMaterial() != Material.sand && tBlock.getMaterial() != Material.clay) continue;
-				// Don't use frikkin Ore Blocks for this!
-				if (OM.prefixcontains(tStack, TD.Prefix.ORE)) continue;
+				// Don't use frikkin Ore Blocks or Storage Blocks for this!
+				if (OM.prefixcontainsany(OM.anydata(tStack), TD.Prefix.ORE, TD.Prefix.STORAGE_BASED)) continue;
 				
 				int tOldSize = tStack.stackSize;
 				if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
