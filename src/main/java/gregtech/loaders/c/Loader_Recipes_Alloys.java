@@ -41,7 +41,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tCopper                 ,  1, "molten.redstone"       ,  4                                                            , "molten.redalloy"         ,  1);
 		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  4, "molten.teslatite"      ,  4, "molten.purplealloy"      ,  2);
 		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  4, "molten.nikolite"       ,  4, "molten.purplealloy"      ,  2);
-		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  2                              , "molten.signalum"         ,  4);
+		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.redstone"       , 10                              , "molten.signalum"         ,  4);
 		mix(tCopper                 ,  1, "molten.silver"         ,  2, "molten.redalloy"       ,  5                              , "molten.signalum"         ,  8);
 		mix(tCopper                 ,  3, "molten.electrum"       ,  2                                                            , "molten.blackbronze"      ,  5);
 		}

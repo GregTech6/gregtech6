@@ -178,13 +178,13 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Pu.addOreByProducts(MT.Blutonium);
 			MT.Am.addOreByProducts(MT.Blutonium);
 		}
-		if (MD.AE.mLoaded) {
-			OP.gem .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
-			OP.dust.disableItemGeneration(MT.CertusQuartz, MT.Fluix);
-		}
 		if (MD.AA.mLoaded) {
 			MT.OREMATS.Barite.addOreByProducts(MT.BlackQuartz);
 			MT.MilkyQuartz.addOreByProducts(MT.BlackQuartz);
+		}
+		if (MD.AE.mLoaded) {
+			OP.gem .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
+			OP.dust.disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 		}
 	}
 
