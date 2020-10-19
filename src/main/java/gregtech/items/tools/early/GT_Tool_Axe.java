@@ -151,7 +151,7 @@ public class GT_Tool_Axe extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_axe, SFX.MC_DIG_WOOD, getToolDamagePerContainerCraft(), T, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_axe, SFX.MC_DIG_WOOD, getToolDamagePerContainerCraft(), F, T));
 		aItem.addItemBehavior(aID, Behavior_Place_Workbench.INSTANCE);
 	}
 	
