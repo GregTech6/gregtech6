@@ -255,36 +255,38 @@ public class Loader_Tools implements Runnable {
 		
 		
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Plastic, MT.Syrmorite, MT.Au, MT.Al, MT.Cr, MT.StainlessSteel, MT.Netherite, MT.NetherizedDiamond})
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, tMaterial , tMaterial), CR.DEF_MIR, "  S", " I ", "S f", 'I', ingot.dat(tMaterial), 'S', stick.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, tMaterial, tMaterial), CR.DEF_MIR, "  S", " I ", "S f", 'I', ingot.dat(tMaterial), 'S', stick.dat(tMaterial));
 		
 		for (Object[] tHandle : new Object[][] {{ANY.Wood, OD.stickAnyWood}, {MT.PetrifiedWood, stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, Items.bone}, {MT.Plastic, stick.dat(MT.Plastic)}}) {
 		
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SF"               , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , MT.Flint  , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , MT.Flint , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SX"               , 'S', tHandle[1], 'X', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , MT.Flint , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , "XS"        , 'S', tHandle[1], 'X', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , MT.Flint , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "X" ,  "S"        , 'S', tHandle[1], 'X', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , MT.Flint , (OreDictMaterial)tHandle[0]), CR.DEF    , "XXX", " S "       , 'S', tHandle[1], 'X', OD.itemFlint);
+		
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , MT.Bone  , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "  X", " X ", "S  ", 'S', tHandle[1], 'X', Items.bone);
 		
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Obsidian}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SF"               , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE      , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "SX"               , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , "XS"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "X" ,  "S"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    , "XXX", " S "       , 'S', tHandle[1], 'X', rockGt.dat(tRock));
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.PetrifiedWood}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , " S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , "XS"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , " S"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "X" ,  "S"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    , "XXX", " S "       , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, " XX", "XXX", "SX ", 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX ", "XXS", "XX ", 'S', tHandle[1], 'X', rockGt.dat(tRock));
 		}
 		for (OreDictMaterial tRock : ANY.Stone.mToThis) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , "FS"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF" , " S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "F" ,  "S"        , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF    , "FFF", " S "       , 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER , tRock     , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE        , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , "XS"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE        , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX" , " S"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL     , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    ,  "X" ,  "S"        , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE    , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF    , "XXX", " S "       , 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB       , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, " XX", "XXX", "SX ", 'S', tHandle[1], 'X', rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER , tRock    , (OreDictMaterial)tHandle[0]), CR.DEF_MIR, "XX ", "XXS", "XX ", 'S', tHandle[1], 'X', rockGt.dat(tRock));
 		}
 		
 		// End of Tool Handle Loop
