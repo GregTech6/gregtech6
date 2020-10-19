@@ -30,6 +30,7 @@ import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Place_Workbench;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
@@ -186,6 +187,7 @@ public class GT_Tool_Saw extends ToolStats {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_saw, SFX.MC_DIG_WOOD, getToolDamagePerContainerCraft(), T, T));
+		aItem.addItemBehavior(aID, Behavior_Place_Workbench.INSTANCE);
 	}
 	
 	@Override

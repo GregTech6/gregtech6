@@ -46,7 +46,7 @@ public class Behavior_Plug_Leak extends AbstractBehaviorDefault {
 		for (byte tSide : ALL_SIDES) {
 			// Only place right next to Liquids or inside of Liquids.
 			if (!WD.liquid(WD.block(aWorld, aX+OFFSETS_X[aSide]+OFFSETS_X[tSide], aY+OFFSETS_Y[aSide]+OFFSETS_Y[tSide], aZ+OFFSETS_Z[aSide]+OFFSETS_Z[tSide]))) continue;
-			// Scan Inventory for suitable Items
+			// Scan Inventory for suitable Items.
 			for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 				int tIndex = aPlayer.inventory.mainInventory.length-i-1;
 				ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];

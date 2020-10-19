@@ -131,8 +131,8 @@ public class GT_Tool_HardHammer extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer        , SFX.MC_ANVIL_LAND, 100, T, T));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector    , SFX.MC_ANVIL_USE ,  10, T, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer    , SFX.MC_ANVIL_LAND, 100, T, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector, SFX.MC_ANVIL_USE ,  10, T, T));
 	}
 	
 	@Override

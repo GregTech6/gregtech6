@@ -26,24 +26,32 @@ import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class Behavior_Place_Torch extends AbstractBehaviorDefault {
-	public static final Behavior_Place_Torch INSTANCE = new Behavior_Place_Torch();
+public class Behavior_Place_Workbench extends AbstractBehaviorDefault {
+	public static final Behavior_Place_Workbench INSTANCE = new Behavior_Place_Workbench();
 	
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-		// Don't place Torches in Liquids!
-		if (WD.liquid(WD.block(aWorld, aX, aY, aZ, aSide))) return F;
-		// Scan Inventory for suitable Torches.
+		
+		Block aBlock = WD.block(aWorld, aX, aY, aZ);
+		// Don't place Workbenches on Wood or Plants, since this Class is supposed to be used by Axes and Saws.
+		if (aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.cactus) return F;
+		if (aBlock.isWood(aWorld, aX, aY, aZ) || aBlock.isLeaves(aWorld, aX, aY, aZ)) return F;
+		// Scan Inventory for suitable Workbenches.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
 			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
-			if (ST.invalid(tStack) || !ST.torch(tStack)) continue;
-			if (WD.grass(aWorld, aX, aY, aZ)) {aSide = SIDE_TOP; aWorld.setBlockToAir(aX, aY--, aZ);}
+			if (ST.invalid(tStack)) continue;
+			Block tBlock = ST.block(tStack);
+			// Right now only supports vanilla Workbenches.
+			if (tBlock != Blocks.crafting_table) continue;
 			
 			int tOldSize = tStack.stackSize;
 			if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
