@@ -27,8 +27,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The Durability of Bronze Tools got buffed to be more than Wrought Iron, but less than Steel.
 [CHANGED] Many GT6 Wood Tools are now properly craftable. Wooden Clubs are made by putting a Log or Beam on a Stick in a 2x2.
 [CHANGED] Rotating Pillar like Blocks such as Logs or Beams, using a Soft Hammer or Wrench, can now also make them enter their "all sides covered" State. Useful for making custom Trees.
-[CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also remvoed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
-[CHANGED] The Recipes for Mortars and Juicers are now more similar to the Ceramic Bowl Recipe too. Mortars also only need one Ingot/Gem to craft the Pestle part now.
+[CHANGED] The Ceramic Bowl (formerly known as Mixing Bowl) is now made with a Clay Bowl in a Furnace. I also removed the Red Dye requirement. This should fix the Chisel not really being available if you don't have Bronze (even though you likely need to make Bronze to make the Bowl in the first place). Wait was there a Lead Chisel? Well anyways this Recipe makes more sense regardless.
+[CHANGED] The Recipes for Mortars, Juicers, Crucible Stuff, Taps and Funnels are now more similar to the Ceramic Bowl Recipe too. Mortars also only need one Ingot/Gem to craft the Pestle part now.
+[CHANGED] Nozzles and Cap Nozzles made of Ceramic have now been replaced with Steel ones instead.
 [CHANGED] HSLA Steel from Rotarycraft can now no longer be used to make "regular Steel" things (dedicated HSLA things still exist ofcourse), because HSLA is only worth half as much Iron as regular Steel. Yes I found out about the additional Output of that one Reika Blast Furnace Recipe.
 [CHANGED] Stone Bumblebees now ALSO accept Cobblestone, Mossy Cobble and Mossy Bricks, and state so in the Tooltip.
 [CHANGED] Hard and Soft Hammers aswell as Files, can no longer be direct crafted, and now require the typical Toolhead+Handle Recipe to be used. This is to reduce Crafting Recipe Count and because the direct Recipes dont take Handles into account.

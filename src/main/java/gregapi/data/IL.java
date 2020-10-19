@@ -217,6 +217,13 @@ public enum IL implements IItemContainer {
 	Cell_Empty, Cell_Water, Cell_Lava, Cell_Air, Cell_CFoam, Cell_UUM,
 	// If you want the filled Variants, just fill them using the Fluid Container Registry.
 	Wooden_Bucket_Copper, Wooden_Bucket_Tin, Wooden_Bucket_Zinc, Wooden_Bucket_Lead, Wooden_Bucket_Bismuth, Wooden_Bucket_Brass, Wooden_Bucket_Bronze, Wooden_Bucket_BismuthBronze, Wooden_Bucket_Au,
+	Ceramic_Tap, Ceramic_Tap_Raw,
+	Ceramic_Funnel, Ceramic_Funnel_Raw,
+	Ceramic_Crucible, Ceramic_Crucible_Raw,
+	Ceramic_Basin, Ceramic_Basin_Raw,
+	Ceramic_Mold, Ceramic_Mold_Raw,
+	Ceramic_Faucet, Ceramic_Faucet_Raw,
+	Ceramic_Crossing, Ceramic_Crossing_Raw,
 	Juicer, Juicer_Raw,
 	Ceramic_Bowl, Ceramic_Bowl_Raw,
 	Measuring_Pot, Measuring_Pot_Raw,
