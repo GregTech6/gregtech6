@@ -190,8 +190,8 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
-	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] ? 1 : 0;}
-	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] ? 1 : 0;}
+	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3 ? 1 : 0;}
+	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3 ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
 	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
 	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
@@ -206,7 +206,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public boolean useSidePlacementRotation        () {return F;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer == null || !aPlayer.isSneaking();}
 	@Override public boolean useSidePlacementRotation        (ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer != null &&  aPlayer.isSneaking();}
-	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return mRenderValue == 3;}
+	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
