@@ -126,7 +126,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		if (mDesign == 3) return F;
-		if (mDesign >= 1) switch(aRenderPass) {
+		if (mDesign != 0) switch(aRenderPass) {
 			default        : return box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mDesign==2?0:6], PX_N[14]);
 			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mDesign==2?0:6], PX_N[ 0]);
@@ -161,34 +161,34 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
-		if (isConnectedVertically()) {
-			if (!(getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold)) {
-				if (aEntity == null || (!aEntity.isSneaking() && aEntity.posY >= yCoord+1) || !(getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold)) {
-					box(aAABB, aList, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-				}
-			}
-			
+		switch(mDesign) {
+		default: box(aAABB, aList); return;
+		case  0: box(aAABB, aList, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return;
+		case  1:
+			if (aEntity == null || (!aEntity.isSneaking() && aEntity.posY >= yCoord+1))
+			box(aAABB, aList, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+		case  2:
 			box(aAABB, aList, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[15], PX_N[ 0], PX_N[15]);
 			box(aAABB, aList, PX_P[ 0], PX_P[ 0], PX_P[15], PX_N[15], PX_N[ 0], PX_N[ 0]);
 			box(aAABB, aList, PX_P[15], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[15]);
 			box(aAABB, aList, PX_P[15], PX_P[ 0], PX_P[15], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+			
 			switch(mFacing) {
 			default        : box(aAABB, aList, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]); break;
 			case SIDE_Z_NEG: box(aAABB, aList, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]); break;
 			case SIDE_X_POS: box(aAABB, aList, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]); break;
 			case SIDE_X_NEG: box(aAABB, aList, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); break;
 			}
-		} else {
-			box(aAABB, aList, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+			return;
 		}
 	}
 	
 	@Override public byte getVisualData() {return mDesign;}
 	@Override public void setVisualData(byte aData) {mDesign = aData;}
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
 	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
