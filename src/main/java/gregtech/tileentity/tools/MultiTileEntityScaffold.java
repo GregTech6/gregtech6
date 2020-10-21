@@ -196,7 +196,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
-	@Override public boolean isCoverSurface        (byte aSide) {return mDesign == 3;}
+	@Override public boolean isCoverSurface        (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean allowCovers           (byte aSide) {return mDesign == 3;}
 	@Override public boolean allowCoverHolders     (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
