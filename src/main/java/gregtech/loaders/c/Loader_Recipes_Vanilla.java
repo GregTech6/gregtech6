@@ -445,9 +445,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher      .addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_stairs       , 1, W), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab         , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		
-		RM.compactsmash(OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
-		RM.sawing(16,  64, F,  25, ST.make(Blocks.glowstone, 1, W), OP.plateGem.mat(MT.Glowstone, 4));
-		RM.lathing(16, 64, ST.make(Blocks.glowstone, 1, W), OP.stickLong.mat(MT.Glowstone, 2), OM.dust(MT.Glowstone, 2*U));
+		RM.glowstone(ST.make(Blocks.glowstone, 1, 0), MT.Glowstone);
 		
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) {
 		RM.sawing(16,  16, F,   3, OP.stick.mat(tMaterial, 1), OP.bolt.mat(tMaterial, 4));

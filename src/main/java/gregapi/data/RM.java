@@ -246,6 +246,15 @@ public class RM {
 	public static boolean compactsmash(ItemStack aContent, long aAmount, ItemStack aFull) {
 		return compact(aContent, aAmount, aFull) && smash(aFull, aContent, aAmount);
 	}
+	public static boolean glowstone(ItemStack aBlock, OreDictMaterial aMaterial) {
+		if (ST.invalid(aBlock)) return F;
+		RM.compactsmash(OP.dust.mat(aMaterial, 4), aBlock);
+		RM.compact     (OP.gem .mat(aMaterial, 4), aBlock);
+		RM.sawing      (16, 64, F, 25, aBlock, OP.plateGem.mat(aMaterial, 4));
+		RM.lathing     (16, 64, aBlock, OP.stickLong.mat(aMaterial, 2), OP.dust.mat(aMaterial, 2));
+		RM.generify    (aBlock, ST.make(Blocks.glowstone, 1, 0));
+		return T;
+	}
 	
 	public static boolean biomass(ItemStack aBiomass) {return biomass(aBiomass, 64);}
 	public static boolean biomass(ItemStack aBiomass, long aSpeed) {

@@ -162,10 +162,10 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			RM.sawing(16, 16, F, 50, OP.plateGemTiny.mat(MT.Si, 2), ST.make(MD.GC_ADV_ROCKETRY, "wafer", 1, 0));
 			RM.sawing(16, 16, F, 50, ST.make(MD.GC_ADV_ROCKETRY, "circuitplate", 1, 0), ST.make(MD.GC_ADV_ROCKETRY, "circuitIC", 4, 0));
 			RM.sawing(16, 16, F, 50, ST.make(MD.GC_ADV_ROCKETRY, "circuitplate", 1, 1), ST.make(MD.GC_ADV_ROCKETRY, "circuitIC", 4, 2));
-			RM.RollBender.addRecipe1(T, 16, 128, OP.sheetGt.mat(MT.Fe       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 0));
-			RM.RollBender.addRecipe1(T, 16, 256, OP.sheetGt.mat(MT.Steel    , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 1));
-			RM.RollBender.addRecipe1(T, 16, 512, OP.sheetGt.mat(MT.Al       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 2));
-			RM.RollBender.addRecipe1(T, 64, 512, OP.sheetGt.mat(MT.Ti       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 3));
+			RM.RollBender.addRecipe1(T, 16, 128, OP.sheetGt.mat(MT.Fe   , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 0));
+			RM.RollBender.addRecipe1(T, 16, 256, OP.sheetGt.mat(MT.Steel, 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 1));
+			RM.RollBender.addRecipe1(T, 16, 512, OP.sheetGt.mat(MT.Al   , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 2));
+			RM.RollBender.addRecipe1(T, 64, 512, OP.sheetGt.mat(MT.Ti   , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 3));
 		}
 		if (MD.GC_GALAXYSPACE.mLoaded) {
 			OUT.println("GT_Mod: Doing Galaxy Space Recipes.");
@@ -175,39 +175,18 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				
 				RM.Compressor.addRecipe1(T, 16, 64, OP.plateGem.mat(MT.Coal, 9), ST.make(MD.GC_GALAXYSPACE, "item.CompressedPlates", 1, 3));
 				
-				RM.compactsmash(OM.dust(MT.GlowstoneCeres), 4, ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0), OP.plateGem.mat(MT.GlowstoneCeres, 4));
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0), OP.stickLong.mat(MT.GlowstoneCeres, 2), OM.dust(MT.GlowstoneCeres, 2*U));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0), ST.make(Blocks.glowstone, 1, 0));
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone"  , 1, 0), MT.GlowstoneCeres    );
 				
 				RM.generify(IL.Pill_Iodine.get(1), ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 11));
 				CR.delate(MD.GC_GALAXYSPACE, "item.BasicItems", 11);
 				CR.shapeless(ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 11), new Object[] {IL.Pill_Iodine});
 			}
 			if (ST.valid(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone", 1, 0))) {
-				RM.compactsmash(OM.dust(MT.GlowstoneCeres    ), 4, ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, W));
-				RM.compactsmash(OM.dust(MT.GlowstoneIo       ), 4, ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, W));
-				RM.compactsmash(OM.dust(MT.GlowstoneEnceladus), 4, ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, W));
-				RM.compactsmash(OM.dust(MT.GlowstoneProteus  ), 4, ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, W));
-				RM.compactsmash(OM.dust(MT.GlowstonePluto    ), 4, ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, W));
-				
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, W), OP.plateGem.mat(MT.GlowstoneCeres    , 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, W), OP.plateGem.mat(MT.GlowstoneIo       , 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, W), OP.plateGem.mat(MT.GlowstoneEnceladus, 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, W), OP.plateGem.mat(MT.GlowstoneProteus  , 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, W), OP.plateGem.mat(MT.GlowstonePluto    , 4));
-				
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, W), OP.stickLong.mat(MT.GlowstoneCeres    , 2), OM.dust(MT.GlowstoneCeres    , 2*U));
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, W), OP.stickLong.mat(MT.GlowstoneIo       , 2), OM.dust(MT.GlowstoneIo       , 2*U));
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, W), OP.stickLong.mat(MT.GlowstoneEnceladus, 2), OM.dust(MT.GlowstoneEnceladus, 2*U));
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, W), OP.stickLong.mat(MT.GlowstoneProteus  , 2), OM.dust(MT.GlowstoneProteus  , 2*U));
-				RM.lathing(16, 64, ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, W), OP.stickLong.mat(MT.GlowstonePluto    , 2), OM.dust(MT.GlowstonePluto    , 2*U));
-				
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"    , 1, 0), MT.GlowstoneCeres    );
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "ioglowstone"       , 1, 0), MT.GlowstoneIo       );
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone", 1, 0), MT.GlowstoneEnceladus);
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"  , 1, 0), MT.GlowstoneProteus  );
+				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, 0), MT.GlowstonePluto    );
 			}
 			
 			CR.delate(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, W));

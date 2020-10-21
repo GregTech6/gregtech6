@@ -52,6 +52,9 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+	protected byte mDesign = 1;
+	protected boolean mBlockUpdatedLastTime = T;
+	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -67,7 +70,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mBlockUpdatedLastTime || mBlockUpdated) onFacingChange(SIDE_UNKNOWN);
+			if (mBlockUpdatedLastTime) onFacingChange(SIDE_UNKNOWN);
 			mBlockUpdatedLastTime = mBlockUpdated;
 		}
 	}
@@ -76,23 +79,21 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	public void onFacingChange(byte aPreviousFacing) {
 		if (isConnectedVertically()) {
 			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
-				if (mDesign != 2) {mDesign = 2; updateClientData();}
+				if (mDesign != 2) {mDesign = 2; checkCoverValidity(); updateClientData();}
 			} else {
 				if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
-					if (mDesign != 1) {mDesign = 1; updateClientData();}
+					if (mDesign != 1) {mDesign = 1; checkCoverValidity(); updateClientData();}
 				} else {
-					if (mDesign != 3) {mDesign = 3; updateClientData();}
+					if (mDesign != 3) {mDesign = 3; checkCoverValidity(); updateClientData();}
 				}
 			}
 		} else {
 			if (!isConnectedToGround()) {popOff(); return;}
-			if (mDesign != 0) {mDesign = 0; updateClientData();}
+			if (mDesign != 0) {mDesign = 0; checkCoverValidity(); updateClientData();}
 		}
 	}
 	
 	protected ITexture mTexturePlate, mTextureHatch, mTextureRod;
-	protected byte mDesign = 1;
-	protected boolean mBlockUpdatedLastTime = T;
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
@@ -186,17 +187,17 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public byte getVisualData() {return mDesign;}
 	@Override public void setVisualData(byte aData) {mDesign = aData;}
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, mDesign == 0 ? PX_P[12] : 0, 0, 1, 1, 1);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
 	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
 	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
-	@Override public boolean isCoverSurface        (byte aSide) {return F;}
-	@Override public boolean allowCovers           (byte aSide) {return F;}
+	@Override public boolean isCoverSurface        (byte aSide) {return mDesign == 3;}
+	@Override public boolean allowCovers           (byte aSide) {return mDesign == 3;}
 	@Override public boolean allowCoverHolders     (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt  (byte aSide) {return mDesign == 3;}
