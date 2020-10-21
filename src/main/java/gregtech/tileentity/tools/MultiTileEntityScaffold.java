@@ -43,6 +43,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -52,58 +53,54 @@ import net.minecraft.world.World;
  */
 public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
-	public void onTickFirst2(boolean aIsServerSide) {
-		if (aIsServerSide && !isConnectedToGround()) {popOff(); return;}
-		
-		if (isConnectedVertically()) {
-			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
-				mRenderValue = 2;
-			} else {
-				if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
-					mRenderValue = 1;
-				} else {
-					mRenderValue = 3;
-				}
-			}
-		} else {
-			mRenderValue = 0;
-		}
+	public void readFromNBT2(NBTTagCompound aNBT) {
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_DESIGN)) mDesign = aNBT.getByte(NBT_DESIGN);
+	}
+	
+	@Override
+	public void writeToNBT2(NBTTagCompound aNBT) {
+		super.writeToNBT2(aNBT);
+		aNBT.setByte(NBT_DESIGN, mDesign);
 	}
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mBlockUpdatedLastTime && !isConnectedToGround()) {popOff(); return;}
+			if (mBlockUpdatedLastTime || mBlockUpdated) onFacingChange(SIDE_UNKNOWN);
 			mBlockUpdatedLastTime = mBlockUpdated;
 		}
-		if (!aIsServerSide || mBlockUpdatedLastTime || mBlockUpdated) {
-			if (isConnectedVertically()) {
-				if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
-					mRenderValue = 2;
-				} else {
-					if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
-						mRenderValue = 1;
-					} else {
-						mRenderValue = 3;
-					}
-				}
+	}
+	
+	@Override
+	public void onFacingChange(byte aPreviousFacing) {
+		if (isConnectedVertically()) {
+			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
+				if (mDesign != 2) {mDesign = 2; updateClientData();}
 			} else {
-				mRenderValue = 0;
+				if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
+					if (mDesign != 1) {mDesign = 1; updateClientData();}
+				} else {
+					if (mDesign != 3) {mDesign = 3; updateClientData();}
+				}
 			}
+		} else {
+			if (!isConnectedToGround()) {popOff(); return;}
+			if (mDesign != 0) {mDesign = 0; updateClientData();}
 		}
 	}
 	
 	protected ITexture mTexturePlate, mTextureHatch, mTextureRod;
-	protected byte mRenderValue = 1;
-	protected boolean mBlockUpdatedLastTime = F;
+	protected byte mDesign = 1;
+	protected boolean mBlockUpdatedLastTime = T;
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTexturePlate = mTextureHatch = mTextureRod = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
-		if (mRenderValue == 3) return 1;
+		if (mDesign == 3) return 1;
 		mTextureRod   = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
-		if (mRenderValue == 0) return 4;
-		if (mRenderValue == 2) return 7;
+		if (mDesign == 0) return 4;
+		if (mDesign == 2) return 7;
 		mTextureHatch = BlockTextureMulti.get(mTexturePlate, BlockTextureDefault.get(BlockIcons.HATCH, mRGBa, mMaterial.contains(TD.Properties.GLOWING)));
 		return 7;
 	}
@@ -111,7 +108,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	public boolean isConnectedToGround() {
 		if (isConnectedVertically()) return T;
 		Block tBlock = getBlock(getCoords());
-		for (byte tSide : SIDES_AXIS_X[mFacing] ? ALL_SIDES_X : ALL_SIDES_Z) for (int i = 1; i < 128; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
+		for (byte tSide : SIDES_AXIS_X[mFacing] ? ALL_SIDES_X : ALL_SIDES_Z) for (int i = 1; i < 256; i++) if (tBlock == getBlockAtSideAndDistance(tSide, i)) {
 			TileEntity tTileEntity = getTileEntityAtSideAndDistance(tSide, i);
 			if (tTileEntity instanceof MultiTileEntityScaffold) {
 				if (((MultiTileEntityScaffold)tTileEntity).isConnectedVertically()) return T;
@@ -123,18 +120,18 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		return worldObj == null || WD.opq(worldObj, xCoord, yCoord-1, zCoord, T, T) || getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold;
 	}
 	
-	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass != 0 || mRenderValue != 2;}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mRenderValue == 3 ? aShouldSideBeRendered[aSide] ? mTexturePlate : null : aRenderPass == 0 || aRenderPass > 4 ? mRenderValue == 1 && SIDES_VERTICAL[aSide] ? mTextureHatch : mTexturePlate : mTextureRod;}
+	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass != 0 || mDesign != 2;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mDesign == 3 ? aShouldSideBeRendered[aSide] ? mTexturePlate : null : aRenderPass == 0 || aRenderPass > 4 ? mDesign == 1 && SIDES_VERTICAL[aSide] ? mTextureHatch : mTexturePlate : mTextureRod;}
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		if (mRenderValue == 3) return F;
-		if (mRenderValue >= 1) switch(aRenderPass) {
+		if (mDesign == 3) return F;
+		if (mDesign >= 1) switch(aRenderPass) {
 			default        : return box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[14]);
-			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[ 0]);
-			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[mRenderValue==2?0:6], PX_N[14]);
-			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[mRenderValue==2?0:6], PX_N[ 0]);
+			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mDesign==2?0:6], PX_N[14]);
+			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mDesign==2?0:6], PX_N[ 0]);
+			case  3        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[mDesign==2?0:6], PX_N[14]);
+			case  4        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[mDesign==2?0:6], PX_N[ 0]);
 			case  5: switch(mFacing) {
 			default        : return box(aBlock, PX_P[ 2], PX_P[ 4], PX_P[ 0], PX_N[ 2], PX_N[11], PX_N[12]);
 			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[ 4], PX_P[12], PX_N[ 2], PX_N[11], PX_N[ 0]);
@@ -186,22 +183,24 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		}
 	}
 	
+	@Override public byte getVisualData() {return mDesign;}
+	@Override public void setVisualData(byte aData) {mDesign = aData;}
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, isConnectedVertically() ? 0 : PX_P[12], 0, 1, 1, 1);}
-	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3 ? 1 : 0;}
-	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3 ? 1 : 0;}
+	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
+	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
-	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
-	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
+	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
+	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
+	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3;}
 	@Override public boolean isCoverSurface        (byte aSide) {return F;}
 	@Override public boolean allowCovers           (byte aSide) {return F;}
 	@Override public boolean allowCoverHolders     (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt  (byte aSide) {return mRenderValue == 3;}
-	@Override public boolean isLadder(EntityLivingBase aEntity) {return mRenderValue != 3;}
+	@Override public boolean isObstructingBlockAt  (byte aSide) {return mDesign == 3;}
+	@Override public boolean isLadder(EntityLivingBase aEntity) {return mDesign != 3;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	@Override public boolean useSidePlacementRotation        () {return F;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer == null || !aPlayer.isSneaking();}
