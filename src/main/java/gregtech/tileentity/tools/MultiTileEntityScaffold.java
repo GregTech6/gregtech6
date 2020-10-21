@@ -32,6 +32,7 @@ import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.old.Textures.BlockIcons;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -52,35 +53,59 @@ import net.minecraft.world.World;
 public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
 	public void onTickFirst2(boolean aIsServerSide) {
-		if (aIsServerSide && !isConnectedToGround()) popOff();
+		if (aIsServerSide && !isConnectedToGround()) {popOff(); return;}
+		
+		if (isConnectedVertically()) {
+			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
+				mRenderValue = 2;
+			} else {
+				if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
+					mRenderValue = 1;
+				} else {
+					mRenderValue = 3;
+				}
+			}
+		} else {
+			mRenderValue = 0;
+		}
 	}
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mBlockUpdatedLastTime && !isConnectedToGround()) popOff();
+			if (mBlockUpdatedLastTime && !isConnectedToGround()) {popOff(); return;}
 			mBlockUpdatedLastTime = mBlockUpdated;
+		}
+		if (!aIsServerSide || mBlockUpdatedLastTime || mBlockUpdated) {
+			if (isConnectedVertically()) {
+				if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
+					mRenderValue = 2;
+				} else {
+					if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
+						mRenderValue = 1;
+					} else {
+						mRenderValue = 3;
+					}
+				}
+			} else {
+				mRenderValue = 0;
+			}
 		}
 	}
 	
-	protected ITexture mTexturePlate, mTextureRod;
-	protected byte mRenderValue = 0;
+	protected ITexture mTexturePlate, mTextureHatch, mTextureRod;
+	protected byte mRenderValue = 1;
 	protected boolean mBlockUpdatedLastTime = F;
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		if (isConnectedVertically()) {
-			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
-				mRenderValue = 2;
-			} else {
-				mRenderValue = 1;
-			}
-		} else {
-			mRenderValue = 0;
-		}
-		mTexturePlate = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+		mTexturePlate = mTextureHatch = mTextureRod = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+		if (mRenderValue == 3) return 1;
 		mTextureRod   = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
-		return mRenderValue == 0 ? 4 : 7;
+		if (mRenderValue == 0) return 4;
+		if (mRenderValue == 2) return 7;
+		mTextureHatch = BlockTextureMulti.get(mTexturePlate, BlockTextureDefault.get(BlockIcons.HATCH, mRGBa, mMaterial.contains(TD.Properties.GLOWING)));
+		return 7;
 	}
 	
 	public boolean isConnectedToGround() {
@@ -99,11 +124,12 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	}
 	
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass != 0 || mRenderValue != 2;}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aRenderPass == 0 || aRenderPass > 4 ? mTexturePlate : mTextureRod;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mRenderValue == 3 ? aShouldSideBeRendered[aSide] ? mTexturePlate : null : aRenderPass == 0 || aRenderPass > 4 ? mRenderValue == 1 && SIDES_VERTICAL[aSide] ? mTextureHatch : mTexturePlate : mTextureRod;}
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		if (mRenderValue > 0) switch(aRenderPass) {
+		if (mRenderValue == 3) return F;
+		if (mRenderValue >= 1) switch(aRenderPass) {
 			default        : return box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 			case  1        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[14]);
 			case  2        : return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_N[mRenderValue==2?0:6], PX_N[ 0]);
@@ -167,20 +193,20 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] ? 1 : 0;}
 	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceSolid        (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
+	@Override public boolean isSurfaceOpaque2      (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
+	@Override public boolean isSideSolid2          (byte aSide) {return SIDES_TOP[aSide] || mRenderValue == 3;}
 	@Override public boolean isCoverSurface        (byte aSide) {return F;}
 	@Override public boolean allowCovers           (byte aSide) {return F;}
 	@Override public boolean allowCoverHolders     (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst     (byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt  (byte aSide) {return F;}
-	@Override public boolean isLadder(EntityLivingBase aEntity) {return T;}
+	@Override public boolean isObstructingBlockAt  (byte aSide) {return mRenderValue == 3;}
+	@Override public boolean isLadder(EntityLivingBase aEntity) {return mRenderValue != 3;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	@Override public boolean useSidePlacementRotation        () {return F;}
 	@Override public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer == null || !aPlayer.isSneaking();}
 	@Override public boolean useSidePlacementRotation        (ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return aPlayer != null &&  aPlayer.isSneaking();}
-	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
+	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return mRenderValue == 3;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
