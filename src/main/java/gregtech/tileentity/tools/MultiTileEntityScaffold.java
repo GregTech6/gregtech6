@@ -78,34 +78,25 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override
 	public void onFacingChange(byte aPreviousFacing) {
 		if (isConnectedVertically()) {
-			if (getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold) {
-				if (mDesign != 2) {mDesign = 2; checkCoverValidity(); updateClientData();}
-			} else {
-				if (getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold) {
-					if (mDesign != 1) {mDesign = 1; checkCoverValidity(); updateClientData();}
-				} else {
-					if (mDesign != 3) {mDesign = 3; checkCoverValidity(); updateClientData();}
-				}
-			}
+			setDesign(getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold ? 2 : getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold ? 1 : 3);
 		} else {
+			setDesign(0);
 			if (!isConnectedToGround()) {popOff(); return;}
-			if (mDesign != 0) {mDesign = 0; checkCoverValidity(); updateClientData();}
 		}
 	}
 	
-	protected ITexture mTexturePlate, mTextureHatch, mTextureRod;
-	
-	@Override
-	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTexturePlate = mTextureHatch = mTextureRod = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
-		if (mDesign == 3) return 1;
-		mTextureRod   = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
-		if (mDesign == 0) return 4;
-		if (mDesign == 2) return 7;
-		mTextureHatch = BlockTextureMulti.get(mTexturePlate, BlockTextureDefault.get(BlockIcons.HATCH, mRGBa, mMaterial.contains(TD.Properties.GLOWING)));
-		return 7;
+	public boolean setDesign(long aDesign) {
+		if (mDesign == aDesign) return F;
+		mDesign = (byte)aDesign;
+		checkCoverValidity();
+		updateClientData();
+		causeBlockUpdate();
+		return T;
 	}
 	
+	public boolean isConnectedVertically() {
+		return worldObj == null || WD.opq(worldObj, xCoord, yCoord-1, zCoord, T, T) || getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold;
+	}
 	public boolean isConnectedToGround() {
 		if (isConnectedVertically()) return T;
 		Block tBlock = getBlock(getCoords());
@@ -117,8 +108,18 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 		} else break;
 		return F;
 	}
-	public boolean isConnectedVertically() {
-		return worldObj == null || WD.opq(worldObj, xCoord, yCoord-1, zCoord, T, T) || getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold;
+	
+	protected ITexture mTexturePlate, mTextureHatch, mTextureRod;
+	
+	@Override
+	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+		mTexturePlate = mTextureHatch = mTextureRod = BlockTextureDefault.get(BlockIcons.PLATE, mRGBa, mMaterial.contains(TD.Properties.GLOWING));
+		if (mDesign == 3) return 1;
+		mTextureRod = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
+		if (mDesign == 0) return 4;
+		if (mDesign == 2) return 7;
+		mTextureHatch = BlockTextureMulti.get(mTexturePlate, BlockTextureDefault.get(BlockIcons.HATCH, mRGBa, mMaterial.contains(TD.Properties.GLOWING)));
+		return 7;
 	}
 	
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass != 0 || mDesign != 2;}
