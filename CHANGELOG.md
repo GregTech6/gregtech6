@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] An Issue where some Machines did not output all Items at once somehow.
 [FIXED] A few Fluid Containers like Et Futurum Glass Bottles (Lingering Potions), Railcraft Creosote Cells and several broken Buckets.
 [FIXED] Charge Speed of GT6 Tools in Battery Boxes.
+[FIXED] Battery Boxes now no longer accept Energy in large bursts. Small bursts may still happen, because I cant set the Energy-Consumption-per-Tick Limiter to a Value lower than what it can actually charge.
 [FIXED] Recipe Replacer did not always know what a vanilla wooden Stick is, since I added a ton of different Wood Materials.
 [REMOVED] Some of the Tools that did not make proper sense like the Flint Club, Sword and Hoe.
 [CHANGED] The Durability of Bronze Tools got buffed to be more than Wrought Iron, but less than Steel.

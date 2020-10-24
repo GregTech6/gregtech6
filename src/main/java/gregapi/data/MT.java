@@ -1844,7 +1844,6 @@ public class MT {
 			Marshmallow             .put(MD.CANDY);
 			
 			
-			Basalt                  .put(MD.NePl);
 			Netherite               .put(MD.NePl, COMMON_ORE);
 			NetherizedDiamond       .put(MD.NePl);
 			AncientDebris           .put(MD.NePl, COMMON_ORE);
@@ -1853,6 +1852,8 @@ public class MT {
 			Efrine                  .put(MD.NeLi, COMMON_ORE);
 			Gloomstone              .put(MD.NeLi, COMMON_ORE);
 			OatAbyssal              .put(MD.NeLi);
+			Basalt                  .put(MD.NeLi);
+			Blackstone              .put(MD.NeLi);
 			
 			
 			Zn                      .put(MD.GT, COMMON_ORE);

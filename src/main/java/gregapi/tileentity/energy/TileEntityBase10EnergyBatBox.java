@@ -49,7 +49,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
-	public long mEnergy = 0, mInput = 32, mOutput = 32, mOutputCount = -1;
+	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mReceivablePower = 0;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
@@ -126,16 +126,16 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 			mActive = (mEnergy >= mOutput);
 			
 			if (mActive) {
-				if (mOutputCount < 0 || mInventoryChanged) {
-					mOutputCount = 0;
+				if (mBatteryCount < 0 || mInventoryChanged) {
+					mBatteryCount = 0;
 					if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
-						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy    && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mOutputCount++;
+						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy    && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;
 					} else {
-						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mOutputCount++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) mOutputCount++;}
+						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) mBatteryCount++;}
 					}
 				}
 				
-				long tOutput = mOutputCount;
+				long tOutput = mBatteryCount;
 				if (mMode != 0) tOutput = Math.min(mMode, tOutput);
 				if (!mStopped && tOutput > 0) {
 					long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeOut, mOutput, tOutput, this);
@@ -145,6 +145,8 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 				
 				if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			}
+			
+			mReceivablePower = mBatteryCount * mInput * 2;
 		}
 	}
 	
@@ -170,6 +172,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
+		if (mReceivablePower <= 0) return 0;
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
@@ -177,7 +180,11 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		}
 		if (mEnergy >= mInput * 320 * getSizeInventory()) return 0;
 		long tInput = Math.min(mInput * 320 * getSizeInventory() - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
-		if (aDoInject) mEnergy += tConsumed * aSize;
+		while (tConsumed > 1 && (tConsumed-1) * aSize > mReceivablePower) tConsumed--;
+		if (aDoInject) {
+			mReceivablePower -= tConsumed * aSize;
+			mEnergy += tConsumed * aSize;
+		}
 		return tConsumed;
 	}
 	

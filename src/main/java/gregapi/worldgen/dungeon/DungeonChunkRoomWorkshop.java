@@ -166,10 +166,10 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 				aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
 				if (aData.next1in2()) break;
 			} else if (aData.next1in2()) {
-				if (aData.next1in2()) {
-					aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
-				} else {
-					aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32056, new FluidTankGT(FL.Helium.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Yellow, NBT_PAINTED, T), NBT_TANK), T, T);
+				switch(aData.next(3)) {
+				case 0: aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red      , NBT_PAINTED, T), NBT_TANK), T, T); break;
+				case 1: aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32056, new FluidTankGT(FL.Oxygen .make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_LightBlue, NBT_PAINTED, T), NBT_TANK), T, T); break;
+				case 2: aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32056, new FluidTankGT(FL.Helium .make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Yellow   , NBT_PAINTED, T), NBT_TANK), T, T); break;
 				}
 			}
 		}
