@@ -125,16 +125,16 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 			
 			mActive = (mEnergy >= mOutput);
 			
-			if (mActive) {
-				if (mBatteryCount < 0 || mInventoryChanged) {
-					mBatteryCount = 0;
-					if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
-						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy    && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;
-					} else {
-						for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) mBatteryCount++;}
-					}
+			if (mBatteryCount < 0 || mInventoryChanged) {
+				mBatteryCount = 0;
+				if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
+					for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy    && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;
+				} else {
+					for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) mBatteryCount++;}
 				}
-				
+			}
+			
+			if (mActive) {
 				long tOutput = mBatteryCount;
 				if (mMode != 0) tOutput = Math.min(mMode, tOutput);
 				if (!mStopped && tOutput > 0) {
