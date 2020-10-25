@@ -474,6 +474,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("blockSolidObsidian"              , OD.obsidian);
 		OreDictManager.INSTANCE.addReRegistration(OD.obsidian                       , "stoneObsidian");
 		OreDictManager.INSTANCE.addReRegistration(OD.cryingObsidian                 , OD.obsidian);
+		OreDictManager.INSTANCE.addReRegistration("stoneSand"                       , OD.sandstone);
+		OreDictManager.INSTANCE.addReRegistration("stoneSoulSand"                   , OD.sandstone);
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "fuelCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coalCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coke");

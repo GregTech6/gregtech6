@@ -478,38 +478,38 @@ public class MultiItemTechnological extends MultiItemRandom {
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.HeNe    .gas(U, T), NF, IL.Comp_Laser_Gas_HeNe.get(1));
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.CO      .gas(U, T), NF, IL.Comp_Laser_Gas_CO.get(1));
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.CO2     .gas(U, T), NF, IL.Comp_Laser_Gas_CO2.get(1));
-
+		
 		CR.shaped(IL.MOTORS[0].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.IronMagnetic)       , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
 		CR.shaped(IL.MOTORS[0].get(1), CR.DEF       , "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
 		CR.shaped(IL.MOTORS[1].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.IronMagnetic)       , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
 		CR.shaped(IL.MOTORS[1].get(1), CR.DEF       , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
 		CR.shaped(IL.MOTORS[2].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[2]), 'R', OP.stick.dat(MT.DATA.Electric_T[2]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[2]);
-		CR.shaped(IL.MOTORS[3].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[3]), 'R', OP.stick.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[3]);
+		CR.shaped(IL.MOTORS[3].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[3]), 'R', OP.stick.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt03.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[3]);
 		CR.shaped(IL.MOTORS[4].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[4]), 'R', OP.stick.dat(MT.DATA.Electric_T[4]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[4]);
-		CR.shaped(IL.MOTORS[5].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[5]), 'R', OP.stick.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[5]);
-		CR.shaped(IL.MOTORS[6].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[6]), 'R', OP.stick.dat(MT.DATA.Electric_T[6]), 'W', OP.wireGt08.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[6]);
-		CR.shaped(IL.MOTORS[7].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[7]), 'R', OP.stick.dat(MT.DATA.Electric_T[7]), 'W', OP.wireGt12.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[7]);
-		CR.shaped(IL.MOTORS[8].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[8]), 'R', OP.stick.dat(MT.DATA.Electric_T[8]), 'W', OP.wireGt16.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[8]);
-		CR.shaped(IL.MOTORS[9].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[9]), 'R', OP.stick.dat(MT.DATA.Electric_T[9]), 'W', OP.wireGt16.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[9]);
-
+		CR.shaped(IL.MOTORS[5].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[5]), 'R', OP.stick.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt05.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[5]);
+		CR.shaped(IL.MOTORS[6].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[6]), 'R', OP.stick.dat(MT.DATA.Electric_T[6]), 'W', OP.wireGt06.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[6]);
+		CR.shaped(IL.MOTORS[7].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[7]), 'R', OP.stick.dat(MT.DATA.Electric_T[7]), 'W', OP.wireGt07.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[7]);
+		CR.shaped(IL.MOTORS[8].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[8]), 'R', OP.stick.dat(MT.DATA.Electric_T[8]), 'W', OP.wireGt08.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[8]);
+		CR.shaped(IL.MOTORS[9].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)  , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[9]), 'R', OP.stick.dat(MT.DATA.Electric_T[9]), 'W', OP.wireGt09.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[9]);
+		
 		for (int i = 0; i < 10; i++) {
 		CR.shaped(IL.PUMPS      [i].get(1), CR.DEF_REV, "TXO", "dPw", "OMT", 'M', IL.MOTORS[i], 'O', OP.ring.dat(MT.Rubber), 'X', OP.rotor.dat(MT.DATA.Electric_T[i]), 'T', OP.screw.dat(MT.DATA.Electric_T[i]), 'P', OP.plateCurved.dat(MT.DATA.Electric_T[i]));
 		CR.shaped(IL.CONVEYERS  [i].get(1), CR.DEF_REV, "RRR", "MCM", "RRR", 'M', IL.MOTORS[i], 'C', MT.DATA.CABLES_01[i], 'R', OP.plate.dat(MT.Rubber));
 		CR.shaped(IL.PISTONS    [i].get(1), CR.DEF_REV, "TPP", "dSS", "TMG", 'M', IL.MOTORS[i], 'P', OP.plate.dat(MT.DATA.Electric_T[i]), 'S', OP.stick.dat(MT.DATA.Electric_T[i]), 'G', OP.gearGtSmall.dat(MT.DATA.Electric_T[i]), 'T', OP.screw.dat(MT.DATA.Electric_T[i]));
 		CR.shaped(IL.ROBOT_ARMS [i].get(1), CR.DEF_REV, "CCC", "MSM", "PES", 'M', IL.MOTORS[i], 'C', MT.DATA.CABLES_01[i], 'E', OD_CIRCUITS[i], 'S', OP.stick.dat(MT.DATA.Electric_T[i]), 'P', IL.PISTONS[i]);
 		}
-
+		
 		CR.shaped(IL.FIELD_GENERATORS[0].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.EnderPearl ), 'C', OD_CIRCUITS[0], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(MT.Os));
 		CR.shaped(IL.FIELD_GENERATORS[1].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.EnderPearl ), 'C', OD_CIRCUITS[1], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(MT.Os));
 		CR.shaped(IL.FIELD_GENERATORS[2].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.EnderEye   ), 'C', OD_CIRCUITS[2], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[2]), 'W', OP.wireGt02.dat(MT.Os));
-		CR.shaped(IL.FIELD_GENERATORS[3].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.EnderEye   ), 'C', OD_CIRCUITS[3], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt02.dat(MT.Os));
-		CR.shaped(IL.FIELD_GENERATORS[4].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[4], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[4]), 'W', OP.wireGt04.dat(MT.Os));
-		CR.shaped(IL.FIELD_GENERATORS[5].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[5], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt04.dat(MT.Os));
-		CR.shaped(IL.FIELD_GENERATORS[6].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[6], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[6]), 'W', OP.wireGt08.dat(MT.Os));
+		CR.shaped(IL.FIELD_GENERATORS[3].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.EnderEye   ), 'C', OD_CIRCUITS[3], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt04.dat(MT.Os));
+		CR.shaped(IL.FIELD_GENERATORS[4].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[4], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[4]), 'W', OP.wireGt06.dat(MT.Os));
+		CR.shaped(IL.FIELD_GENERATORS[5].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[5], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt08.dat(MT.Os));
+		CR.shaped(IL.FIELD_GENERATORS[6].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[6], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[6]), 'W', OP.wireGt10.dat(MT.Os));
 		CR.shaped(IL.FIELD_GENERATORS[7].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[7], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[7]), 'W', OP.wireGt12.dat(MT.Os));
-		CR.shaped(IL.FIELD_GENERATORS[8].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[8], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[8]), 'W', OP.wireGt16.dat(MT.Os));
+		CR.shaped(IL.FIELD_GENERATORS[8].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[8], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[8]), 'W', OP.wireGt14.dat(MT.Os));
 		CR.shaped(IL.FIELD_GENERATORS[9].get(1), CR.DEF_REV, "WPW", "CGC", "WPW", 'G', OP.gem.dat(MT.NetherStar ), 'C', OD_CIRCUITS[9], 'P', OP.plateDouble.dat(MT.DATA.Electric_T[9]), 'W', OP.wireGt16.dat(MT.Os));
-
+		
 		CR.shaped(IL.EMITTERS[0].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(ANY.SiO2)         , 'S', MT.DATA.WIRES_04[0], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'C', OD_CIRCUITS[0], 'W', MT.DATA.CABLES_01[0]);
 		CR.shaped(IL.EMITTERS[1].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(ANY.SiO2)         , 'S', MT.DATA.WIRES_04[1], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1]);
 		CR.shaped(IL.EMITTERS[2].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(ANY.SiO2)         , 'S', MT.DATA.WIRES_04[2], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[2]), 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2]);
@@ -520,7 +520,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.EMITTERS[7].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(MT.NetherStar)    , 'S', MT.DATA.WIRES_04[7], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[7]), 'C', OD_CIRCUITS[7], 'W', MT.DATA.CABLES_01[7]);
 		CR.shaped(IL.EMITTERS[8].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(MT.NetherStar)    , 'S', MT.DATA.WIRES_04[8], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[8]), 'C', OD_CIRCUITS[8], 'W', MT.DATA.CABLES_01[8]);
 		CR.shaped(IL.EMITTERS[9].get(1), CR.DEF_REV, "SPC", "WQP", "CWS", 'Q', OP.gem.dat(MT.NetherStar)    , 'S', MT.DATA.WIRES_04[9], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[9]), 'C', OD_CIRCUITS[9], 'W', MT.DATA.CABLES_01[9]);
-
+		
 		CR.shaped(IL.SENSORS[0].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(ANY.SiO2)          , 'S', MT.DATA.WIRES_01[0], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'C', OD_CIRCUITS[0]);
 		CR.shaped(IL.SENSORS[1].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(ANY.SiO2)          , 'S', MT.DATA.WIRES_01[1], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'C', OD_CIRCUITS[1]);
 		CR.shaped(IL.SENSORS[2].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(ANY.SiO2)          , 'S', MT.DATA.WIRES_01[2], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[2]), 'C', OD_CIRCUITS[2]);
@@ -531,10 +531,10 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.SENSORS[7].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(MT.NetherStar)     , 'S', MT.DATA.WIRES_01[7], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[7]), 'C', OD_CIRCUITS[7]);
 		CR.shaped(IL.SENSORS[8].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(MT.NetherStar)     , 'S', MT.DATA.WIRES_01[8], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[8]), 'C', OD_CIRCUITS[8]);
 		CR.shaped(IL.SENSORS[9].get(1), CR.DEF_REV, "P Q", "PS ", "CPP", 'Q', OP.gem.dat(MT.NetherStar)     , 'S', MT.DATA.WIRES_01[9], 'P', OP.plateCurved.dat(MT.DATA.Electric_T[9]), 'C', OD_CIRCUITS[9]);
-
-
-
-
+		
+		
+		
+		
 		IL.Battery_Lead_Acid_Cell_Empty    .set(addItem(tLastID = 20000, "Lead Acid Cell (Empty)"           , "Battery Part (doesn't require Canning Machine!)" , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.METALLUM, 2), TC.stack(TC.VACUOS , 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U)));
 		IL.Battery_Lead_Acid_Cell_Filled   .set(addItem(tLastID = 20001, "Lead Acid Cell (Filled)"          , "Battery Part"                                    , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.ELECTRUM, 2), TC.stack(TC.VENENUM, 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U, MT.H2SO4, 2*U), new FluidContainerData(MT.H2SO4.liquid(2*U, T), ST.make(this, 1, 20001), ST.make(this, 1, 20000), F)));
 		ItemsGT.addNEIRedirects(IL.Battery_Lead_Acid_Cell_Empty.get(1), IL.Battery_Lead_Acid_Cell_Filled.get(1));

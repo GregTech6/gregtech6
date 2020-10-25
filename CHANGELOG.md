@@ -42,7 +42,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Certain Materials prevent Items from burning in Lava/Fire. Netherite, Blaze, Fiery Steel and Efrine being an example of Materials like that. It is enough to have even the tiniest Amount of such a Material in the Item to prevent it from burning in Lava. You could for example slap a Refactory Wax Cover on a GT6 Block and its fully Lava Proof whenever you drop it.
 [ADDED] Basalt and Blackstone Generator Module since those two Rock Types are just as infinite as Stone.
 [ADDED] Wooden Bucket Recipe with Gold Plate, to make it easier to get from the Nuggets in the Nether.
+[ADDED] Soulsandstone can be used in the Grindstone now.
 [ADDED] Efrine Drums, Cells, Pipes, Wires, Anvils and the typical Shelf Stuff. Also Netherite Wires at Aluminium Tier.
+[ADDED] All Wires for 1x to 16x exist now, and not only 5 of the bundles. Does not include Cables!
 [ADDED] Lumium can now be made in a Mixer with all variants of molten Glowstone. Same goes for Lumium Glass and Hardened Glass from Thermal Expansion.
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone from Netherlicious as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.

@@ -84,6 +84,7 @@ public enum OD {
 	, aquaRegia
 	, sulfuricAcid
 	, enderChest
+	, sandstone
 	, soulsand
 	, glowstone
 	, dirt

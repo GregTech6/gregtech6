@@ -245,20 +245,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.RollFormer           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,    64, NF, railGt          , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 2, NF,  16, 0,    64, NF, wireGt02        , 1, ST.tag( 2), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 4, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 8, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,12, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,16, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 2, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 4, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 6, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 8, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 2, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 3, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 4, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt08                        , 2, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
-		
 		RM.Welder               .add(new RecipeMapHandlerPrefix(ingot                           , 2, NF,  16, 0,    64, NF, ingotDouble     , 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.Welder               .add(new RecipeMapHandlerPrefix(ingot                           , 3, NF,  16, 0,    64, NF, ingotTriple     , 1, ST.tag( 3), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.Welder               .add(new RecipeMapHandlerPrefix(ingot                           , 4, NF,  16, 0,    64, NF, ingotQuadruple  , 1, ST.tag( 4), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
@@ -415,19 +401,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(blockGem                    , gem                       , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(blockPlate                  , plate                     , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(blockPlateGem               , plateGem                  , 9, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt02                    , wireGt01                  , 2, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt04                    , wireGt01                  , 4, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt04                    , wireGt02                  , 2, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt08                    , wireGt01                  , 8, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt08                    , wireGt02                  , 4, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt08                    , wireGt04                  , 2, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt12                    , wireGt01                  ,12, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt12                    , wireGt02                  , 6, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt12                    , wireGt04                  , 3, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt16                    , wireGt01                  ,16, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt16                    , wireGt02                  , 8, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt16                    , wireGt04                  , 4, F));
-		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt16                    , wireGt08                  , 2, F));
 		
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedTiny             ,  9, crushed                   , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedPurifiedTiny     ,  9, crushedPurified           , 1, F));
@@ -444,18 +417,15 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(gem                     ,  9, blockGem                  , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plate                   ,  9, blockPlate                , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateGem                ,  9, blockPlateGem             , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt01                ,  2, wireGt02                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt01                ,  4, wireGt04                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt01                ,  8, wireGt08                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt02                ,  2, wireGt04                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt02                ,  4, wireGt08                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt02                ,  6, wireGt12                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt02                ,  8, wireGt16                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt04                ,  2, wireGt08                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt04                ,  3, wireGt12                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt04                ,  4, wireGt16                  , 1, F));
-		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt08                ,  2, wireGt16                  , 1, F));
 		
+		for (int tBig = 1; tBig <= 16; tBig++) for (int tSmall = tBig+1; tSmall <= 16; tSmall++) if (tBig % tSmall == 0) {
+		int tAmount = tBig/tSmall;
+		RM.Loom       .add(new RecipeMapHandlerPrefix(wireGt[tSmall-1], tAmount, NF, 16, 0, 64, NF, wireGt[tBig-1], 1, ST.tag(tBig), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator.add(new RecipeMapHandlerPrefix(wireGt[tBig-1], 1, NF, 16, 16, 0, NF, wireGt[tSmall-1], tAmount, NI, NI, T, F, F, ANTIMATTER.NOT));
+		if (tAmount < 10)
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt[tSmall-1], tAmount, wireGt[tBig-1], 1, F));
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(wireGt[tBig-1], wireGt[tSmall-1], tAmount, F));
+		}
 		
 		FluidStack[] tFluids = FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000), FL.Lubricant.make(1000), FL.LubRoCant.make(1000));
 		long[] tMultiplier = new long[] {4, 4, 3, 1, 1};
