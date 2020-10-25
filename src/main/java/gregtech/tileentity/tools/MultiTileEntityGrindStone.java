@@ -31,6 +31,7 @@ import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -111,6 +112,11 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						if (ST.use(aPlayer, aStack)) {
 							mClickCount = 0;
 							mStone =  4;
+						}
+					} else if (OD.sandstone.is(aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone =  8;
 						}
 					}
 				} else if (UT.Entities.hasInfiniteItems(aPlayer)) {

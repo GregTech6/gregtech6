@@ -89,7 +89,7 @@ public enum IL implements IItemContainer {
 	NeLi_Crystal_White, NeLi_Crystal_Blue, NeLi_Crystal_Green, NeLi_Crystal_Yellow, NeLi_Crystal_Magenta,
 	NeLi_Torch_Soul, NeLi_Torch_Fox, NeLi_Fire_Soul, NeLi_Fire_Fox, NeLi_Obsidian, NeLi_Bowl_DevilishMaize, NeLi_Bowl_DevilishPopcorn, NeLi_Bowl_CrimsonStew, NeLi_Bowl_WarpedStew, NeLi_Bowl_FoxfireStew, NeLi_Bottle_Hellderberryjuice, NeLi_Bucket_Spectral_Dew, NeLi_ShroomLight, NeLi_Gloomstone, NeLi_Reed, NeLi_Wither_Rose, NeLi_Foxfire_Lily, NeLi_Foxfire_Powder, NeLi_Wart_Crimson, NeLi_Wart_Warped, NeLi_Wart_Soggy, NeLi_Bread, NeLi_Cookie, NeLi_SoulSoil, NeLi_SoulFarm, NeLi_Quartz_Bricks, NeLi_Gravel, NeLi_Magmatic_Netherrack, NeLi_Magmatic_Blackstone, NeLi_Strider_Flank_Raw, NeLi_Strider_Flank_Cooked,
 	NeLi_Stem_Crimson, NeLi_Stem_Warped, NeLi_Stem_FoxFire, NeLi_Beam1_Crimson, NeLi_Beam1_Warped, NeLi_Beam1_FoxFire, NeLi_Hyphae_Crimson, NeLi_Hyphae_Warped, NeLi_Hyphae_FoxFire, NeLi_Beam2_Crimson, NeLi_Beam2_Warped, NeLi_Beam2_FoxFire,
-	EtFu_Chorus_Fruit, EtFu_Chorus_Popped, EtFu_Rabbit_Foot, EtFu_Beet_Seeds, EtFu_Dragon_Breath, EtFu_Lingering_Potion, EtFu_Path, EtFu_Dirt, EtFu_Gravel, EtFu_Obsidian,
+	EtFu_Chorus_Fruit, EtFu_Chorus_Popped, EtFu_Rabbit_Foot, EtFu_Beet_Seeds, EtFu_Dragon_Breath, EtFu_Lingering_Potion, EtFu_Path, EtFu_Dirt, EtFu_Gravel, EtFu_Sandstone, EtFu_Obsidian,
 	EtFu_Granite, EtFu_Diorite, EtFu_Andesite, EtFu_Granite_Smooth, EtFu_Diorite_Smooth, EtFu_Andesite_Smooth,
 	GaSu_Granite, GaSu_Diorite, GaSu_Andesite, GaSu_Granite_Smooth, GaSu_Diorite_Smooth, GaSu_Andesite_Smooth, GaSu_Basalt, GaSu_Basalt_Smooth, GaSu_Beet_Seeds,
 	CHSL_Granite, CHSL_Diorite, CHSL_Andesite, CHSL_Granite_Smooth, CHSL_Diorite_Smooth, CHSL_Andesite_Smooth,
