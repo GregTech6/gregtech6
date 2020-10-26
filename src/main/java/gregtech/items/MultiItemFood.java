@@ -255,7 +255,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Food_Potato_Poisonous               .set(ST.make(Items.poisonous_potato, 1, 0)); FoodsGT.put(ST.make(Items.poisonous_potato, 1, W), 0, 0, 0, 4, 0);
-		RM.replicateOrganic( 4, 12, IL.Food_Potato_Poisonous.get(1));
+		RM.replicateOrganic( 4, 11, IL.Food_Potato_Poisonous.get(1));
 		
 		
 		IL.Food_Potato                         .set(ST.make(Items.potato, 1, 0)); FoodsGT.put(ST.make(Items.potato, 1, W), 0, 0, 0, 4, 0);
@@ -266,7 +266,6 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Food_Potato_Baked                   .set(ST.make(Items.baked_potato, 1, 0)); FoodsGT.put(ST.make(Items.baked_potato, 1, W), 0, 0, 0, 4, 0);
 		IL.Food_Potato_On_Stick_Roasted        .set(addItem(tLastID = 32701, "Roasted Potato on a Stick", "Still looks like a Crab Claw"  , new OreDictItemData(MT.Potato,U,ANY.Wood,U2), new FoodStat( 5, 1.200F,   0, C+38,  0.50F,   0,   0,   0,   4,   0, EnumAction.eat, IL.Stick.get(1), F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.IGNIS, 1)));
-		RM.replicateOrganic( 4, 11, IL.Food_Potato.get(1));
 		RM.add_smelting(IL.Food_Potato_On_Stick.get(1), IL.Food_Potato_On_Stick_Roasted.get(1));
 		CR.shapeless(IL.Food_Potato_On_Stick_Roasted.get(1), CR.DEF, new Object[] {OP.stick.dat(ANY.Wood), IL.Food_Potato_Baked});
 		for (OreDictMaterial tMat : ANY.Wood.mToThis) {ItemStack tStick = OP.stick.mat(tMat, 1); if (ST.valid(tStick))
@@ -300,7 +299,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Unboxinator.addRecipe1(T, 16, 16, IL.Food_ChiliChips_Packaged.get(1), IL.Food_ChiliChips.get(1), OP.scrapGt.mat(MT.Al, 2));
 		
 		
-		RM.replicateOrganic( 4, 13, ST.make(Blocks.pumpkin, 1, 0));
+		RM.replicateOrganic( 4, 12, ST.make(Blocks.pumpkin, 1, 0));
 		
 		
 		IL.Food_Banana                         .set(addItem(tLastID =    90, "Banana"                                   , "For Scale"                   , "cropBanana"                  , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
@@ -315,11 +314,11 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Food_Blueberry                      .set(addItem(tLastID =   110, "Blueberry"                                , ""                            , "cropBlueberry"               , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.SENSUS, 1)));
-		RM.replicateOrganic( 5,  6, IL.Food_Apple_DarkRed.get(1));
+		RM.replicateOrganic( 5,  6, IL.Food_Blueberry.get(1));
 		BushesGT.put(IL.Food_Blueberry.get(1), 0x22ff22, 0xffcccc, 0x6666dd, 0x0000ff);
 		
 		IL.Food_Gooseberry                     .set(addItem(tLastID =   120, "Gooseberry"                               , ""                            , "cropGooseberry"              , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		RM.replicateOrganic( 5,  7, IL.Food_Apple_DarkRed.get(1));
+		RM.replicateOrganic( 5,  7, IL.Food_Gooseberry.get(1));
 		// Grows on Trees
 		
 		IL.Food_Candleberry                    .set(addItem(tLastID =   130, "Candleberry"                              , ""                            , "cropCandleberry"             , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.GELUM, 1)));
