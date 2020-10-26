@@ -53,6 +53,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Magnalium Rail Set. Same Cart Speed and Explosion Resistance as the Steel Rail Set. Big Upgrade from Aluminium, which is basically garbage Tier.
 [ADDED] Mining Tools which can place Torches, now can plug leaking Liquids like Lava with mostly non-valuable mined Blocks from your Inventory. Just rightclick either next to or into the Liquid Block that is coming at you.
 [ADDED] Axes and Saws can now place Workbenches, when you click on something that isn't Wood or a Plant. Why Workbenches? Because Greg wants to free that one Hotbar Slot he always uses for Workbenches, that's why!
+[ADDED] Replicator Recipes for some Food and other Organic Items, using Biomass + Charged/Neutral Matter (or Liquid IC2 UUM). Mostly for making GT6 and Vanilla things, which might otherwise be unobtainable in some cases. This should likely fix the unobtainable Ultimate Stew from Avarita.
 [ADDED]
 Metal Scaffolds made of each of the Metal Shelf Set Materials.
 These Scaffolds are NOT intended to be identical to any other Scaffolds you might know! They are NOT supposed to be exactly like IC2, Vanilla or any other Scaffolds!

@@ -402,6 +402,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), OP.stickLong.mat(MT.Basalt, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(0), OP.stickLong.mat(MT.Blackstone, 1));
 		
+		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.brown_mushroom_block     , 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
+		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.red_mushroom_block       , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -426,6 +428,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.brick_stairs             , 1, W), ST.make(Items.brick, 5, 0));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stone_slab               , 1, 4), ST.make(Items.brick, 1, 0));
 		
+		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.brown_mushroom_block     , 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
+		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.red_mushroom_block       , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  48, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));

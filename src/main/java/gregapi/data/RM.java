@@ -144,7 +144,7 @@ public class RM {
 	, CNC                       = new RecipeMap                     (null, "gt.recipe.cncmachine"                   , "CNC Machine"                     , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 2, 1, 2,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, F/*T*/, F/*T*/, T, F, T, T)
 	;
 	
-	// For Compatibility with old API Stuff.
+	// For Compatibility with old API Stuff. Well mainly for preventing crashes.
 	static {
 		RecipeMap.sFurnaceRecipes=Furnace;RecipeMap.sMicrowaveRecipes=Microwave;RecipeMap.sFurnaceFuel=FM.Furnace;RecipeMap.sByProductList=ByProductList;RecipeMap.sCrucibleSmelting=CrucibleSmelting;RecipeMap.sCrucibleAlloying=CrucibleAlloying;RecipeMap.sGenerifierRecipes=Generifier;RecipeMap.sSharpeningRecipes=Sharpening;RecipeMap.sSifterRecipes=Sifting;
 		RecipeMap.sHammerRecipes=Hammer;RecipeMap.sChiselRecipes=Chisel;RecipeMap.sShredderRecipes=Shredder;RecipeMap.sCrusherRecipes=Crusher;RecipeMap.sLatheRecipes=Lathe;RecipeMap.sCutterRecipes=Cutter;RecipeMap.sCoagulatorRecipes=Coagulator;RecipeMap.sSqueezerRecipes=Squeezer;RecipeMap.sJuicerRecipes=Juicer;RecipeMap.sMortarRecipes=Mortar;
@@ -253,6 +253,13 @@ public class RM {
 		RM.sawing      (16, 64, F, 25, aBlock, OP.plateGem.mat(aMaterial, 4));
 		RM.lathing     (16, 64, aBlock, OP.stickLong.mat(aMaterial, 2), OP.dust.mat(aMaterial, 2));
 		RM.generify    (aBlock, ST.make(Blocks.glowstone, 1, 0));
+		return T;
+	}
+	public static boolean replicateOrganic(long aTag1, long aTag2, ItemStack aOutput) {
+		RM.Replicator.addRecipe2(T,  16, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.MatterNeutral.make(1), FL.MatterCharged.make(1), FL.Biomass   .make(1000)), ZL_FS, aOutput);
+		RM.Replicator.addRecipe2(T,  16, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.MatterNeutral.make(1), FL.MatterCharged.make(1), FL.BiomassIC2.make(1000)), ZL_FS, aOutput);
+		RM.Replicator.addRecipe2(T, 256, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.UUM.make(10)                                   , FL.Biomass   .make(1000)), ZL_FS, aOutput);
+		RM.Replicator.addRecipe2(T, 256, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.UUM.make(10)                                   , FL.BiomassIC2.make(1000)), ZL_FS, aOutput);
 		return T;
 	}
 	
