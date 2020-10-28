@@ -31,6 +31,7 @@ import gregapi.data.OP;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityPigZombie;
@@ -561,5 +562,9 @@ public class Override_Drops {
 		}}
 		
 		while (tIntestinesAmount-->0) aDrops.add(ST.entity(aDead, IL.Food_Scrap_Meat.get(1)));
+		
+		if (aDead instanceof EntityLiving && ((EntityLiving)aDead).isNoDespawnRequired() && ((EntityLiving)aDead).hasCustomNameTag()) {
+			aDrops.add(ST.entity(aDead, ST.make(Items.name_tag, 1, 0, ((EntityLiving)aDead).getCustomNameTag())));
+		}
 	}
 }

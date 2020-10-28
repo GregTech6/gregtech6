@@ -129,8 +129,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropRice", "cropWildRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rice.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Rice.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.SpDew.make(250), FL.Mash_Rice.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rice.make(250), ZL_IS);
 			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice), IL.Grass.get(1));
 			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Rice), IL.Grass.get(1), 0.8F);

@@ -633,7 +633,11 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.netherquartz" , T, T,   2000, MT.NetherQuartz                              , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.glowstone"    , T, T,   2000, MT.Glowstone                                 , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.naquadah"     , T, T,  10000, MT.Nq                                        , GEN_MARS);
+		new WorldgenOresBedrock("ore.bedrock.desh"         , T, T,   2000, MT.Desh                                      , GEN_MARS);
+		new WorldgenOresBedrock("ore.bedrock.dolamide"     , T, T,   5000, MT.Dolamide                                  , GEN_MARS, GEN_PLANETS);
 		new WorldgenOresBedrock("ore.bedrock.adamantine"   , T, T,  10000, MT.Adamantine                                , GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS);
+		new WorldgenOresBedrock("ore.bedrock.octine"       , T, T,   5000, MT.Octine                                    , GEN_BETWEENLANDS);
+		new WorldgenOresBedrock("ore.bedrock.syrmorite"    , T, T,   2000, MT.Syrmorite                                 , GEN_BETWEENLANDS);
 		
 		new WorldgenOresBedrock("ore.bedrock.hexorium"     , MD.HEX.mLoaded, T, 9000, ANY.Hexorium, BlocksGT.FlowersA, 8, GEN_FLOOR);
 		

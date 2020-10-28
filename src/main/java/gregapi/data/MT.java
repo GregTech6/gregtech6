@@ -2608,6 +2608,8 @@ public class MT {
 			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
+			Syrmorite                       .addOreByProducts(OREMATS.Stannite      , OREMATS.Tetrahedrite      , Be                    );
+			Octine                          .addOreByProducts(OREMATS.Pentlandite   , OREMATS.Huebnerite        , Zircon                );
 			Ga                              .addOreByProducts(Zn                    , Se                        );
 			Zn                              .addOreByProducts(Sn                    , Ga                        );
 			W                               .addOreByProducts(MnO2                  , Mo                        );

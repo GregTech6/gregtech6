@@ -256,6 +256,7 @@ public class RM {
 		return T;
 	}
 	public static boolean replicateOrganic(long aTag1, long aTag2, ItemStack aOutput) {
+		if (ST.invalid(aOutput)) return F;
 		RM.Replicator.addRecipe2(T,  16, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.MatterNeutral.make(1), FL.MatterCharged.make(1), FL.Biomass   .make(1000)), ZL_FS, aOutput);
 		RM.Replicator.addRecipe2(T,  16, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.MatterNeutral.make(1), FL.MatterCharged.make(1), FL.BiomassIC2.make(1000)), ZL_FS, aOutput);
 		RM.Replicator.addRecipe2(T, 256, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.UUM.make(10)                                   , FL.Biomass   .make(1000)), ZL_FS, aOutput);
