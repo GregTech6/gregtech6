@@ -48,7 +48,7 @@ public class WorldgenNetherCrystals extends WorldgenObject {
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (aRandom.nextBoolean()) return F;
-		int aX = aMinX+aRandom.nextInt(16), aY = WD.waterLevel(aWorld), aZ = aMinZ+aRandom.nextInt(16), aMeta = new NoiseGenerator(aWorld).get(aX, 360, aZ, BlocksGT.CrystalOres.maxMeta());
+		int aX = aMinX+aRandom.nextInt(16), aY = WD.waterLevel(aWorld), aZ = aMinZ+aRandom.nextInt(16), aMeta = new NoiseGenerator(aWorld).get(aX/2, 360, aZ/2, BlocksGT.CrystalOres.maxMeta());
 		
 		while (WD.air(aWorld, aX, ++aY, aZ) && aY < aWorld.getHeight());
 		Block tBlock = WD.block(aWorld, aX, aY, aZ);
