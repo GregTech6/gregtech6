@@ -709,7 +709,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NePl, "GildedBlackstone", 1, 0));
 //      OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NeLi, "Blackstone", 1, 5)); // DONT! This thing is crafted with 4 Nuggets and a Blackstone!
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NeLi, "NetherGoldOre", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.OREMATS.Hematite       , ST.make(MD.NeLi, "NetherIronOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Fe2O3                  , ST.make(MD.NeLi, "NetherIronOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Efrine                 , ST.make(MD.NeLi, "EfrineOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Efrine                 , ST.make(MD.NeLi, "Nugget", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Efrine                 , ST.make(MD.NeLi, "Ingot", 1, 0));

@@ -109,12 +109,12 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Cerublossom    .set(addItem(tLastID = 12010, "Cerublossom"      , "Used for magical Purposes"              , new Behavior_Turn_Into(IL.ARS_Cerublossom ), IL.ARS_Cerublossom.exists() ? TD.Creative.HIDDEN : "flowerCerublossom", TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
 		IL.DesertNova     .set(addItem(tLastID = 12011, "Desert Nova"      , "Used for magical Purposes"              , new Behavior_Turn_Into(IL.ARS_DesertNova  ), IL.ARS_DesertNova .exists() ? TD.Creative.HIDDEN : "flowerDesertNova" , TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
-		RM.replicateOrganic( 2,  3, IL.ARS_Cerublossom.get(1, IL.Cerublossom.get(1)));
-		RM.replicateOrganic( 2,  4, IL.ARS_DesertNova .get(1, IL.DesertNova .get(1)));
+		RM.replicateOrganic( 2,  3, IL.ARS_Cerublossom.exists() ? IL.ARS_Cerublossom.get(1) : IL.Cerublossom.get(1));
+		RM.replicateOrganic( 2,  4, IL.ARS_DesertNova .exists() ? IL.ARS_DesertNova .get(1) : IL.DesertNova .get(1));
 		
 		
 		IL.Resin          .set(addItem(tLastID = 12050, "Rubber Resin"     , ""                                       , new Behavior_Turn_Into(IL.IC2_Resin       ), IL.IC2_Resin      .exists() ? TD.Creative.HIDDEN : OD.itemResin       , TC.stack(TC.LIMUS, 1), TICKS_PER_SMELT / 2));
-		RM.replicateOrganic( 2,  5, IL.IC2_Resin.get(1, IL.Resin.get(1)));
+		RM.replicateOrganic( 2,  5, IL.IC2_Resin.exists() ? IL.IC2_Resin.get(1) : IL.Resin.get(1));
 		
 		
 		IL.Remains_Plant  .set(addItem(tLastID = 12100, "Plant Remains"    , ""                                       , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));

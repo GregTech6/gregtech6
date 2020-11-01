@@ -44,6 +44,7 @@ import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.plants.BlockFlowersA;
 import gregtech.blocks.plants.BlockFlowersB;
 import gregtech.blocks.plants.BlockGlowtus;
+import gregtech.blocks.stone.BlockCrystalOres;
 import gregtech.blocks.stone.BlockRockOres;
 import gregtech.blocks.stone.BlockVanillaOresA;
 import gregtech.blocks.tool.*;
@@ -88,6 +89,7 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Paths, 1, W), F, TC.stack(TC.TERRA, 2));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.RockOres                            = new BlockRockOres             ("gt.block.rockores"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.CrystalOres                         = new BlockCrystalOres          ("gt.block.crystalores"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.VanillaOresA                        = new BlockVanillaOresA         ("gt.block.vanillaores.a"));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Sands                               = new BlockSands                ("gt.block.sands"));

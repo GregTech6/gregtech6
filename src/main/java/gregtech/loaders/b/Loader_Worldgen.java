@@ -53,6 +53,7 @@ import gregtech.worldgen.erebus.WorldgenErebusRocks;
 import gregtech.worldgen.mars.WorldgenMarsRocks;
 import gregtech.worldgen.moon.WorldgenMoonRocks;
 import gregtech.worldgen.nether.WorldgenNetherClay;
+import gregtech.worldgen.nether.WorldgenNetherCrystals;
 import gregtech.worldgen.nether.WorldgenNetherQuartz;
 import gregtech.worldgen.nether.WorldgenRacks;
 import gregtech.worldgen.planets.WorldgenPlanetRocks;
@@ -467,6 +468,7 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenNetherClay      ("nether.clay.red"         , T, GEN_NETHER);
 		new WorldgenNetherQuartz    ("nether.netherquartz"     , T, GEN_NETHER);
+		new WorldgenNetherCrystals  ("nether.nethercrystals"   , T, GEN_NETHER);
 		
 		new WorldgenLogDry          ("log.dry"                 , T, 1, 8, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenLogRotten       ("log.rotten"              , T, 1, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
@@ -808,13 +810,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.dolamide"          , T, T,   5,  60,     40,   3,  16, MT.Dolamide                 , MT.Dolamide               , MT.OREMATS.DuraniumHexabromide    , MT.OREMATS.DuraniumHexaastatide   , ORE_MARS, ORE_PLANETS, ORE_ASTEROIDS);
 		new WorldgenOresLarge("ore.large.moonmars"          , T, T,  10,  90,    240,   1,   8, MT.OREMATS.Magnesite        , MT.MnO2                   , MT.Al2O3                          , MT.TiO2                           , ORE_MARS, ORE_PLANETS, ORE_MOON);
 		new WorldgenOresLarge("ore.large.cheese"            , T, T,  10,  90,    100,   3,  16, MT.Cheese                   , MT.Cheese                 , MT.Cheese                         , MT.Se                             , ORE_MOON);
-		if (MD.GC.mLoaded) {
 		new WorldgenOresLarge("ore.large.desh"              , T, T,  10,  90,    100,   3,  16, MT.Desh                     , MT.Desh                   , MT.Desh                           , MT.Desh                           , ORE_MARS);
-		}
-		if (MD.BTL.mLoaded) {
 		new WorldgenOresLarge("ore.large.syrmorite"         , T, T,  30,  45,    160,   2,  32, MT.Syrmorite                , MT.Syrmorite              , MT.Syrmorite                      , MT.Syrmorite                      , ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.octine"            , T, T,  10,  25,     40,   1,  32, MT.Octine                   , MT.Octine                 , MT.Octine                         , MT.Octine                         , ORE_BETWEENLANDS);
-		}
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomLargeVeinSlots", 0); i < j; i++) {
 		new WorldgenOresLarge("ore.large.custom" + (i<10?"0":"") + i, F, T, 0, 0, 0, 0, 0, MT.NULL, MT.NULL, MT.NULL, MT.NULL, ORE_ALL);
