@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason, right now testing how well Survival with ONLY the Nether works)
+6.14.02: (Not released yet, going to be released soon)
 [NOTE] The Default Config Pack updated to disable Netherlicious Quartz Generation and some other random things.
 [NOTE] I would recommend updating Netherlicious by the way, if you have it.
 [FIXED] An Problem where GT-Fast-Leaf-Decay caused GT6 Trees to lose most of their Leaves when Non-GT6-Logs were harvested closeby.

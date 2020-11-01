@@ -36,7 +36,6 @@ import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -48,7 +47,7 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	
 	// Vanilla Style GT6 Stone Ores, mainly used for Twilight Forest, so the Ore Magnet doesn't draw too many breaking Ores.
 	public BlockVanillaOresA(String aUnlocalised) {
-		super(null, aUnlocalised, Material.rock, soundTypeStone, 16, Textures.BlockIcons.VANILLA_ORES_A);
+		super(null, aUnlocalised, Material.rock, soundTypeStone, ORE_MATERIALS.length, Textures.BlockIcons.VANILLA_ORES_A);
 		LH.add(getUnlocalizedName()+  ".0.name", "Sulfur Ore"      );
 		LH.add(getUnlocalizedName()+  ".1.name", "Apatite Ore"     );
 		LH.add(getUnlocalizedName()+  ".2.name", "Ruby Ore"        );
@@ -66,7 +65,7 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".14.name", "Pitchblende Ore" );
 		LH.add(getUnlocalizedName()+ ".15.name", "Borax Ore"       );
 		
-		for (int i = 0; i < ORE_MATERIALS.length; i++) OM.reg(ST.make(this, 1, i), OP.oreVanillastone.dat(ORE_MATERIALS[i]));
+		for (int i = 0; i < maxMeta(); i++) OM.reg(ST.make(this, 1, i), OP.oreVanillastone.dat(ORE_MATERIALS[i]));
 		
 		if (COMPAT_IC2 != null) {
 		COMPAT_IC2.valuable(this,  0, 1);
@@ -108,15 +107,13 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	@Override
 	public int getExpDrop(IBlockAccess aWorld, int aMeta, int aFortune) {
 		switch(aMeta) {
-		case  0: case  1:          return MathHelper.getRandomIntegerInRange(RNGSUS, 0, 2);
-		case 13: case 15:          return MathHelper.getRandomIntegerInRange(RNGSUS, 2, 5);
-		case  2: case  3: case  4: return MathHelper.getRandomIntegerInRange(RNGSUS, 3, 7);
+		case  0: case  1:          return 0+RNGSUS.nextInt(3);
+		case 13: case 15:          return 2+RNGSUS.nextInt(4);
+		case  2: case  3: case  4: return 3+RNGSUS.nextInt(5);
 		default: return 0;
 		}
 	}
 	
-	@Override public boolean useGravity(byte aMeta) {return F;}
-	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
 	@Override public boolean doesPistonPush(byte aMeta) {return T;}
 	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return T;}
