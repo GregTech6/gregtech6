@@ -30,6 +30,7 @@ import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.worldgen.NoiseGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -49,7 +50,9 @@ public class WorldgenNetherCrystals extends WorldgenObject {
 		if (aRandom.nextBoolean()) return F;
 		int aX = aMinX+aRandom.nextInt(16), aY = WD.waterLevel(aWorld), aZ = aMinZ+aRandom.nextInt(16), aMeta = new NoiseGenerator(aWorld).get(aX, 360, aZ, BlocksGT.CrystalOres.maxMeta());
 		
-		while (WD.air(aWorld, aX, ++aY, aZ) && aY < aWorld.getHeight()) if (WD.block(aWorld, aX, aY, aZ) != Blocks.netherrack) return F;
+		while (WD.air(aWorld, aX, ++aY, aZ) && aY < aWorld.getHeight());
+		Block tBlock = WD.block(aWorld, aX, aY, aZ);
+		if (tBlock == Blocks.nether_brick || tBlock.getMaterial() != Material.rock) return F;
 		if (--aY -10 < WD.waterLevel(aWorld)) return F;
 		
 		aWorld.setBlock(aX, aY, aZ, BlocksGT.CrystalOres, aMeta, 2);
