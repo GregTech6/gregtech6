@@ -934,6 +934,20 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 1));
 			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 2));
 		}
+		if (MD.GC_GALAXYSPACE.mLoaded) {
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "mercuryblocks"    , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ceresblocks"      , 1, 1));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "deimosblocks"     , 1, 1));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ioblocks"         , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "oberonblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "proteusblocks"    , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "tritonblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "mirandablocks"    , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "venusblocks"      , 1, 1));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "phobosblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ganymedeblocks"   , 1, 1));
+			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "barnardaEsubgrunt", 1, 0));
+		}
 		
 		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 0));
 		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
