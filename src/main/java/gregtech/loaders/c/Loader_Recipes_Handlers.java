@@ -418,7 +418,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plate                   ,  9, blockPlate                , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateGem                ,  9, blockPlateGem             , 1, F));
 		
-		for (int tBig = 1; tBig <= 16; tBig++) for (int tSmall = tBig+1; tSmall <= 16; tSmall++) if (tBig % tSmall == 0) {
+		for (int tBig = 1; tBig <= 16; tBig++) for (int tSmall = 1; tSmall < tBig; tSmall++) if (tBig % tSmall == 0) {
 		int tAmount = tBig/tSmall;
 		RM.Loom       .add(new RecipeMapHandlerPrefix(wireGt[tSmall-1], tAmount, NF, 16, 0, 64, NF, wireGt[tBig-1], 1, ST.tag(tBig), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator.add(new RecipeMapHandlerPrefix(wireGt[tBig-1], 1, NF, 16, 16, 0, NF, wireGt[tSmall-1], tAmount, NI, NI, T, F, F, ANTIMATTER.NOT));
