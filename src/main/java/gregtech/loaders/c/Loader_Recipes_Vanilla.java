@@ -272,6 +272,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(OP.ingot.mat(MT.NetherizedDiamond, 1), OP.gem  .mat(MT.NetherizedDiamond, 1));
 		
 		
+		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);
 		

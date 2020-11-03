@@ -1726,6 +1726,7 @@ public class MT {
 			Amber                   .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
+			OREMATS.Borax           .setOreMultiplier( 2);
 			OREMATS.Cassiterite     .setOreMultiplier( 2);
 			OREMATS.Malachite       .setOreMultiplier( 2);
 			OREMATS.Bastnasite      .setOreMultiplier( 3);
@@ -2589,7 +2590,7 @@ public class MT {
 			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
 			Nd                              .addOreByProducts(Monazite              , RareEarth                 );
 			OREMATS.Bastnasite              .addOreByProducts(Monazite              , RareEarth                 , Nd                    );
-			NaCl                            .addOreByProducts(KCl                   , KIO3                      );
+			NaCl                            .addOreByProducts(KCl                   , KIO3                      , OREMATS.Borax         );
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
 			Glowstone                       .addOreByProducts(Redstone              , Au                        , Gloomstone            );
@@ -2689,7 +2690,7 @@ public class MT {
 			Graphite                        .addOreByProducts(C                     );
 			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
 			OREMATS.Gypsum                  .addOreByProducts(S                     , Asbestos                  , Soapstone             , Talc);
-			OREMATS.Borax                   .addOreByProducts(B                     );
+			OREMATS.Borax                   .addOreByProducts(B                     , NaCl                      );
 			Netherrack                      .addOreByProducts(S                     );
 			Flint                           .addOreByProducts(Obsidian              );
 			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );
