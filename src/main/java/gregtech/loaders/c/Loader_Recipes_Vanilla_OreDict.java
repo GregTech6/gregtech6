@@ -89,18 +89,19 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			for (byte i = 0; i < 16; i++)
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)), ST.make(Items.lead, 2, 0));
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string  , 4, W)), ST.make(Items.lead, 2, 0));
 		}});
 		addListener(OD.slimeball, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.itemTar.is_(aEvent.mStack)) return;
 			if (ST.item_(aEvent.mStack) != Items.slime_ball) RM.generify(aEvent.mStack, ST.make(Items.slime_ball, 1, 0));
 			RM.Mixer        .addRecipe2(T, 16,   16,              aEvent.mStack , OM.dust(MT.Blaze, U9), ST.make(Items.magma_cream, 1, 0));
 			RM.Mixer        .addRecipe2(T, 16,   16, ST.amount(9, aEvent.mStack), OM.dust(MT.Blaze    ), ST.make(Items.magma_cream, 9, 0));
-			if (!OD.slimeballSwet.is_(aEvent.mStack) && !OD.slimeballPink.is_(aEvent.mStack) && !OD.slimeballRice.is_(aEvent.mStack)) {
+			if (!OD.slimeballSwet.is_(aEvent.mStack) && !OD.slimeballPink.is_(aEvent.mStack) && !OD.slimeballRice.is_(aEvent.mStack) && !OD.slimeballBorax.is_(aEvent.mStack)) {
 			RM.Squeezer     .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(250), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(125), ZL_IS);
 			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));
 			}
+			
 			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.Water.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
@@ -108,7 +109,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			for (byte i = 0; i < 16; i++)
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)), ST.make(Items.lead, 2, 0));
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string  , 4, W)), ST.make(Items.lead, 2, 0));
 		}});
 		addListener(OD.slimeballPink, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Squeezer     .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Slime_Pink.make(250, FL.Slime_Green), ZL_IS);

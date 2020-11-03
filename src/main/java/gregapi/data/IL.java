@@ -234,6 +234,7 @@ public enum IL implements IItemContainer {
 	Pellet_Wood,
 	Bag_Sap_Resin,
 	Rope, Rope_Silk, Rope_Grass, Rope_Plastic,
+	Slimeball_Borax,
 	Cerublossom, DesertNova, Resin,
 	Comb_Honey, Comb_Water, Comb_Magic, Comb_Nether, Comb_End, Comb_Rock, Comb_Jungle, Comb_Frozen, Comb_Shroom, Comb_Sandy, Comb_Clay, Comb_Sticky, Comb_Royal, Comb_Soul, Comb_Amnesic, Comb_Military, Comb_Pyro, Comb_Cryo, Comb_Aero, Comb_Tera,
 	PlasticCan, Crate, Crate_Fireproof,

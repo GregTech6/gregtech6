@@ -117,6 +117,10 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.replicateOrganic( 2,  5, IL.IC2_Resin.exists() ? IL.IC2_Resin.get(1) : IL.Resin.get(1));
 		
 		
+		IL.Slimeball_Borax.set(addItem(tLastID = 12099, "Slimeball"        , "Made with Borax and Glue"               , OD.slimeball, OD.slimeballBorax, TC.stack(TC.LIMUS, 2)));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.OREMATS.Borax), FL.Glue.make(250), NF, IL.Slimeball_Borax.get(1));
+		
+		
 		IL.Remains_Plant  .set(addItem(tLastID = 12100, "Plant Remains"    , ""                                       , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
 		IL.Remains_Fruit  .set(addItem(tLastID = 12101, "Fruit Remains"    , ""                                       , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
 		IL.Remains_Veggie .set(addItem(tLastID = 12102, "Vegetable Remains", ""                                       , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
