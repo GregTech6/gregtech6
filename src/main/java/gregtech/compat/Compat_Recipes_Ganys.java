@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -57,8 +57,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "rose", 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
 			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.Drying.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
-			RM.Hammer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
-			RM.Crusher.addRecipe1(T, 16, 16,        ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
+			RM.smash(                               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
 			RM.sawing(16, 16, F, 100,               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(MD.EtFu, "red_sandstone_slab", 2, 0));
 			RM.Compressor.addRecipe1(T, 16, 32,     ST.make(Blocks.sand, 4, 1), ST.make(MD.EtFu, "red_sandstone", 1, 0));
 			RM.generify(                            ST.make(Blocks.sponge, 1, W), ST.make(MD.EtFu, "sponge", 1, 0));

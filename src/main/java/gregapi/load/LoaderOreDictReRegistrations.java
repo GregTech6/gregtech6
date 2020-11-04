@@ -48,8 +48,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addAutoBlackListing("gemLapis");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemEnderEye");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemEnderPearl");
-		OreDictManager.INSTANCE.addAutoBlackListing("gemNetherQuartz");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemNetherStar");
+		OreDictManager.INSTANCE.addAutoBlackListing("gemNetherQuartz");
+		OreDictManager.INSTANCE.addAutoBlackListing("gemQuartz");
 		OreDictManager.INSTANCE.addAutoBlackListing("ingotIron");
 		OreDictManager.INSTANCE.addAutoBlackListing("ingotGold");
 		OreDictManager.INSTANCE.addAutoBlackListing("nuggetGold");

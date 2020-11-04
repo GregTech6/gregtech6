@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,13 +40,13 @@ public class Compat_Recipes_Witchery extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Witchery Recipes.");
 		CR.shaped(ST.make(MD.WTCH, "ingredient", 1, 7), CR.DEF_NCC, "B  ", "   ", "  k", 'B', Items.bone);
 		
-		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(MD.WTCH, "perpetualice", 1, 0), OM.dust(MT.Ice, U));
+		RM.smash(ST.make(MD.WTCH, "perpetualice", 1, 0), OM.dust(MT.Ice, U));
 		RM.Squeezer     .addRecipe1(T, 16, 128, ST.make(MD.WTCH, "perpetualice", 1, 0), NF, FL.Ice.make(1000), NI);
 		RM.Juicer       .addRecipe1(T, 16, 128, ST.make(MD.WTCH, "perpetualice", 1, 0), NF, FL.Ice.make(1000), NI);
-		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(MD.WTCH, "icestairs", 1, 0), OM.dust(MT.Ice, 3*U4));
+		RM.smash(ST.make(MD.WTCH, "icestairs", 1, 0), OM.dust(MT.Ice, 3*U4));
 		RM.Squeezer     .addRecipe1(T, 16,  96, ST.make(MD.WTCH, "icestairs", 1, 0), NF, FL.Ice.make(750), NI);
 		RM.Juicer       .addRecipe1(T, 16,  96, ST.make(MD.WTCH, "icestairs", 1, 0), NF, FL.Ice.make(750), NI);
-		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(MD.WTCH, "iceslab", 1, 0), OM.dust(MT.Ice, U2));
+		RM.smash(ST.make(MD.WTCH, "iceslab", 1, 0), OM.dust(MT.Ice, U2));
 		RM.Squeezer     .addRecipe1(T, 16,  64, ST.make(MD.WTCH, "iceslab", 1, 0), NF, FL.Ice.make(500), NI);
 		RM.Juicer       .addRecipe1(T, 16,  64, ST.make(MD.WTCH, "iceslab", 1, 0), NF, FL.Ice.make(500), NI);
 		

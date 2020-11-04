@@ -135,7 +135,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
 			CR.delate(MD.GC_PLANETS, "item.carbonFragments");
 			
-			RM.Hammer       .addRecipe1(T,  16,   16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
+			RM.smash(ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
 			RM.Squeezer     .addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
 			RM.Juicer       .addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
 			RM.Compressor   .addRecipe1(T, 256,   32, ST.make(Blocks.packed_ice, 2, W), ST.make(MD.GC_PLANETS, "tile.denseIce", 1, 0));

@@ -230,14 +230,14 @@ public class RM {
 	}
 	public static boolean smash(ItemStack aObject, ItemStack aOutput) {
 		if (ST.invalid(aObject) || ST.invalid(aOutput)) return F;
-		Hammer .addRecipe1(T, 16,  16, aObject, aOutput);
-		Crusher.addRecipe1(T, 16,  32, aObject, aOutput);
+		Hammer .addRecipe1(T, 16, 16, aObject, aOutput);
+		Crusher.addRecipe1(T, 16, 32, aObject, aOutput);
 		return T;
 	}
 	public static boolean smash(ItemStack aObject, ItemStack aOutput, long aAmount) {
 		if (ST.invalid(aObject) || ST.invalid(aOutput)) return F;
-		Hammer .addRecipe1(T, 16,  16, aObject, ST.amount(aAmount, aOutput));
-		Crusher.addRecipe1(T, 16,  32, aObject, ST.amount(aAmount, aOutput));
+		Hammer .addRecipe1(T, 16, 16, aObject, ST.amount(aAmount, aOutput));
+		Crusher.addRecipe1(T, 16, 32, aObject, ST.amount(aAmount, aOutput));
 		return T;
 	}
 	public static boolean compactsmash(ItemStack aContent, ItemStack aFull) {
@@ -246,6 +246,8 @@ public class RM {
 	public static boolean compactsmash(ItemStack aContent, long aAmount, ItemStack aFull) {
 		return compact(aContent, aAmount, aFull) && smash(aFull, aContent, aAmount);
 	}
+	
+	
 	public static boolean glowstone(ItemStack aBlock, OreDictMaterial aMaterial) {
 		if (ST.invalid(aBlock)) return F;
 		RM.compactsmash(OP.dust.mat(aMaterial, 4), aBlock);
@@ -255,6 +257,8 @@ public class RM {
 		RM.generify    (aBlock, ST.make(Blocks.glowstone, 1, 0));
 		return T;
 	}
+	
+	
 	public static boolean replicateOrganic(long aTag1, long aTag2, ItemStack aOutput) {
 		if (ST.invalid(aOutput)) return F;
 		RM.Replicator.addRecipe2(T,  16, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.MatterNeutral.make(1), FL.MatterCharged.make(1), FL.Biomass   .make(1000)), ZL_FS, aOutput);
@@ -263,6 +267,7 @@ public class RM {
 		RM.Replicator.addRecipe2(T, 256, 256, ST.tag(aTag1), ST.tag(aTag2), FL.array(FL.UUM.make(10)                                   , FL.BiomassIC2.make(1000)), ZL_FS, aOutput);
 		return T;
 	}
+	
 	
 	public static boolean biomass(ItemStack aBiomass) {return biomass(aBiomass, 64);}
 	public static boolean biomass(ItemStack aBiomass, long aSpeed) {

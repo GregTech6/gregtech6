@@ -101,46 +101,25 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		
 		RM.Compressor   .addRecipe1(T, 16,   16, OP.gem.mat(MT.BlackQuartz, 4), ST.make(MD.AA, "blockMisc", 1, 1));
 		
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockMisc"                         , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockMisc"                         , 1, 1), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockMisc"                         , 1, 2), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzStair"            , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzStair"          , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzStair"                  , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzWall"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzWall"           , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzWall"                   , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzSlab"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 1));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzSlab"           , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzSlab"                   , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteWall"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteFence"       , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteStairs"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteSlab"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenWall"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenFence"       , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenStairs"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Hammer       .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenSlab"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
-		
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockMisc"                         , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockMisc"                         , 1, 1), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockMisc"                         , 1, 2), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzSlab"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 1));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzSlab"           , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzSlab"                   , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzStair"            , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzStair"          , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzStair"                  , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockPillarQuartzWall"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockChiseledQuartzWall"           , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockQuartzWall"                   , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockTestifiBucksWhiteWall"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteFence"       , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockTestifiBucksWhiteStairs"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksWhiteSlab"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockTestifiBucksGreenWall"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenFence"       , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   32, ST.make(MD.AA, "blockTestifiBucksGreenStairs"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
-		RM.Crusher      .addRecipe1(T, 16,   16, ST.make(MD.AA, "blockTestifiBucksGreenSlab"        , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockMisc"                   , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockMisc"                   , 1, 1), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockMisc"                   , 1, 2), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockPillarQuartzStair"      , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockChiseledQuartzStair"    , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockQuartzStair"            , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockPillarQuartzWall"       , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockChiseledQuartzWall"     , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockQuartzWall"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockPillarQuartzSlab"       , 1, 0), OP.gem.mat(MT.BlackQuartz, 1));
+		RM.smash(ST.make(MD.AA, "blockChiseledQuartzSlab"     , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockQuartzSlab"             , 1, 0), OP.gem.mat(MT.BlackQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksWhiteWall"  , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksWhiteFence" , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksWhiteStairs", 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksWhiteSlab"  , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksGreenWall"  , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksGreenFence" , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksGreenStairs", 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+		RM.smash(ST.make(MD.AA, "blockTestifiBucksGreenSlab"  , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
 	}
 }

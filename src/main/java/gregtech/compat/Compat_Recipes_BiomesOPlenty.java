@@ -76,7 +76,7 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.Mortar       .addRecipe1(T, 16, 32, IL.BoP_Bone_Medium.get(1), IL.Dye_Bonemeal.get(4));
 		RM.Mortar       .addRecipe1(T, 16, 64, IL.BoP_Bone_Large.get(1), IL.Dye_Bonemeal.get(8));
 		
-		RM.Hammer       .addRecipe1(T, 16,  16, IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
+		RM.smash(IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
 		RM.Squeezer     .addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);
 		RM.Juicer       .addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);
 		
