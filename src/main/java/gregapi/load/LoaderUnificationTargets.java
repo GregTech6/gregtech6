@@ -710,11 +710,14 @@ public class LoaderUnificationTargets implements Runnable {
 //      OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.Au                     , ST.make(MD.NeLi, "Blackstone", 1, 5)); // DONT! This thing is crafted with 4 Nuggets and a Blackstone!
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.NeLi, "NetherGoldOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Fe2O3                  , ST.make(MD.NeLi, "NetherIronOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreBlackstone  , MT.VoidQuartz             , ST.make(MD.NeLi, "VoidQuartzOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.VoidQuartz             , ST.make(MD.NeLi, "VoidQuartzOre", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Efrine                 , ST.make(MD.NeLi, "EfrineOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Efrine                 , ST.make(MD.NeLi, "Nugget", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Efrine                 , ST.make(MD.NeLi, "Ingot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Efrine                 , ST.make(MD.NeLi, "EfrineBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Gloomstone             , ST.make(MD.NeLi, "GloomstoneDust", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.VoidQuartz             , ST.make(MD.NeLi, "VoidQuartzItem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Fe                     , ST.make(MD.NeLi, "Chain", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , ST.make(MD.NeLi, "ChainGold", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , ST.make(MD.NeLi, "ChainEfrine", 1, 0));

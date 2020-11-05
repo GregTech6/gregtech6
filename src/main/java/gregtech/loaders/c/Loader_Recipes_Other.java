@@ -204,6 +204,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone    ), OM.dust(MT.Blizz, U9  ), OM.dust(MT.Niter     )), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
 		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone,U*4), OM.dust(MT.Blizz, U9*4), OM.dust(MT.Niter, U*4)),        tWater          , NF, OM.dust(MT.Cryotheum, 8*U));
 		
+		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.VoidQuartz, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
+		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.VoidQuartz, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.MilkyQuartz , 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));

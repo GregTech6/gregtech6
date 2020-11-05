@@ -631,6 +631,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.bauxite"      , T, T,   2000, MT.OREMATS.Bauxite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Aluminium Flower
 		new WorldgenOresBedrock("ore.bedrock.cassiterite"  , T, T,   2000, MT.OREMATS.Cassiterite , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tin Flower
 		new WorldgenOresBedrock("ore.bedrock.chalcopyrite" , T, T,   2000, MT.OREMATS.Chalcopyrite, BlocksGT.FlowersA, 2, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.voidquartz"   , T, T,   4000, MT.VoidQuartz                                , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.glowstone"    , T, T,   4000, MT.Glowstone                                 , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.gloomstone"   , T, T,   4000, MT.Gloomstone                                , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.efrine"       , T, T,   2000, MT.Efrine                                    , GEN_NETHER);

@@ -185,6 +185,7 @@ public enum OD {
 	, blockCandle
 	, blockTorch
 	, blockSoulTorch
+	, blockShadowTorch
 	, blockFoxfireTorch
 	, listAllmeatsubstitute
 	;

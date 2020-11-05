@@ -477,6 +477,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MilkyQuartz            , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.NetherQuartz         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		}
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U4, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) {
@@ -498,6 +499,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		tConditionP = new And(SIMPLIFIABLE, ingotHot.NOT);
 		
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , NF                                ,   0,   1, NF, MT.NetherQuartz         , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , NF                                ,   0,   1, NF, MT.MilkyQuartz          , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.CertusQuartz           , NF                                ,   0,   1, NF, MT.MilkyQuartz          , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.ChargedCertusQuartz    , NF                                ,   0,   1, NF, MT.CertusQuartz         , NI, T, tConditionP));

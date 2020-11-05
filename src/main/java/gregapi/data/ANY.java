@@ -63,7 +63,7 @@ public class ANY {
 	Coal            = any("Any Coal/Carbon"     ),
 	Si              = any("Any Silicon"         ),
 	SiO2            = any("Any Silicon Dioxide" ),
-	Quartz          = any("Any Quartz"          ),
+	Quartz          = any("Quartz"              ),
 	W               = any("Any Tungsten"        ),
 	ThaumCrystal    = any("Any Thaumic Crystal" ),
 	Hexorium        = any("Hexorium"            ),

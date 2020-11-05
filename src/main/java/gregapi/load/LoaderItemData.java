@@ -1668,6 +1668,29 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.AE, "tile.ChiseledQuartzSlabBlock"       , 1,   W, MT.CertusQuartz       ,  U * 2);
 		
 		
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   0, MT.NetherQuartz       ,  U * 4);
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   1, MT.NetherQuartz       ,  U * 4);
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   2, MT.NetherQuartz       ,  U * 4);
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   3, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   4, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzWall"                       , 1,   5, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzSingleSlab"                 , 1,   0, MT.NetherQuartz       ,  U * 2);
+		OM.data(MD.NeLi, "QuartzSingleSlab"                 , 1,   1, MT.NetherQuartz       ,  U * 2);
+		OM.data(MD.NeLi, "QuartzSingleSlab"                 , 1,   2, MT.VoidQuartz         ,  U * 2);
+		OM.data(MD.NeLi, "QuartzSingleSlab"                 , 1,   3, MT.VoidQuartz         ,  U * 2);
+		OM.data(MD.NeLi, "QuartzSingleSlab"                 , 1,   4, MT.VoidQuartz         ,  U * 2);
+		OM.data(MD.NeLi, "QuartzDoubleSlab"                 , 1,   0, MT.NetherQuartz       ,  U * 4);
+		OM.data(MD.NeLi, "QuartzDoubleSlab"                 , 1,   1, MT.NetherQuartz       ,  U * 4);
+		OM.data(MD.NeLi, "QuartzDoubleSlab"                 , 1,   2, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzDoubleSlab"                 , 1,   3, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzDoubleSlab"                 , 1,   4, MT.VoidQuartz         ,  U * 4);
+		OM.data(MD.NeLi, "QuartzSmoothStairs"               , 1,   W, MT.NetherQuartz       ,  U * 6);
+		OM.data(MD.NeLi, "QuartzBrickStairs"                , 1,   W, MT.NetherQuartz       ,  U * 6);
+		OM.data(MD.NeLi, "QuartzVoidSmoothStairs"           , 1,   W, MT.VoidQuartz         ,  U * 6);
+		OM.data(MD.NeLi, "QuartzVoidBrickStairs"            , 1,   W, MT.VoidQuartz         ,  U * 6);
+		OM.data(MD.NeLi, "QuartzVoidStairs"                 , 1,   W, MT.VoidQuartz         ,  U * 6);
+		
+		
 		OM.data(MD.AA, "blockMisc"                          , 1,   0, MT.BlackQuartz        ,  U * 2);
 		OM.data(MD.AA, "blockMisc"                          , 1,   1, MT.BlackQuartz        ,  U * 4);
 		OM.data(MD.AA, "blockMisc"                          , 1,   2, MT.BlackQuartz        ,  U * 4);

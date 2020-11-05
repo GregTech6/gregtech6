@@ -1042,12 +1042,22 @@ public class LoaderItemList implements Runnable {
 		
 		
 		IL.NeLi_Fire_Soul                       .set(ST.make(MD.NeLi, "SoulFire"                            , 1, 0));
+		IL.NeLi_Fire_Shadow                     .set(ST.make(MD.NeLi, "ShadowFire"                          , 1, 0));
 		IL.NeLi_Fire_Fox                        .set(ST.make(MD.NeLi, "FoxFire"                             , 1, 0));
 		IL.NeLi_Torch_Soul                      .set(ST.make(MD.NeLi, "SoulTorch"                           , 1, 0), null, OD.blockSoulTorch);
+		IL.NeLi_Torch_Shadow                    .set(ST.make(MD.NeLi, "ShadowTorch"                         , 1, 0), null, OD.blockShadowTorch);
 		IL.NeLi_Torch_Fox                       .set(ST.make(MD.NeLi, "FoxfireTorch"                        , 1, 0), null, OD.blockFoxfireTorch);
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
 		IL.NeLi_Obsidian                        .set(ST.make(MD.NeLi, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9), OD.cryingObsidian);
 		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz   , U*4));
+		IL.NeLi_Quartz_Smooth                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 1), new OreDictItemData(MT.NetherQuartz   , U*4));
+		IL.NeLi_Quartz_Chiseled_Pillar          .set(ST.make(MD.NeLi, "QuartzPillar"                        , 1, 0), new OreDictItemData(MT.NetherQuartz   , U*4));
+		IL.NeLi_Void_Block                      .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 2), new OreDictItemData(MT.VoidQuartz     , U*4));
+		IL.NeLi_Void_Bricks                     .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 4), new OreDictItemData(MT.VoidQuartz     , U*4));
+		IL.NeLi_Void_Smooth                     .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 5), new OreDictItemData(MT.VoidQuartz     , U*4));
+		IL.NeLi_Void_Chiseled                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 3), new OreDictItemData(MT.VoidQuartz     , U*4));
+		IL.NeLi_Void_Pillar                     .set(ST.make(MD.NeLi, "QuartzPillar"                        , 1, 1), new OreDictItemData(MT.VoidQuartz     , U*4));
+		IL.NeLi_Void_Chiseled_Pillar            .set(ST.make(MD.NeLi, "QuartzPillar"                        , 1, 2), new OreDictItemData(MT.VoidQuartz     , U*4));
 		IL.NeLi_Crystal_White                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U*4));
 		IL.NeLi_Crystal_Blue                    .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*4));
 		IL.NeLi_Crystal_Green                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 2), new OreDictItemData(MT.FluoriteGreen  , U*4));
@@ -1055,6 +1065,7 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Crystal_Magenta                 .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 4), new OreDictItemData(MT.FluoriteMagenta, U*4));
 		IL.NeLi_Magmatic_Netherrack             .set(ST.make(MD.NeLi, "MagmaBlock"                          , 1, 1), new OreDictItemData(MT.Netherrack, U));
 		IL.NeLi_Magmatic_Blackstone             .set(ST.make(MD.NeLi, "MagmaBlock"                          , 1, 0), new OreDictItemData(MT.Blackstone, U));
+		IL.NeLi_Blackstone_Crying               .set(ST.make(MD.NeLi, "CryingBlackstone"                    , 1, 0), new OreDictItemData(MT.Blackstone, U));
 		IL.NeLi_Blackstone                      .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone), OP.cobblestone);
 		IL.NeLi_Blackstone_Polished             .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 1), OP.stone.dat(MT.Blackstone));
 		IL.NeLi_Blackstone_Chiseled             .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 2), OP.stone.dat(MT.Blackstone));

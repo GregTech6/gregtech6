@@ -222,6 +222,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {1000, 7000, 5000}, crushedPurifiedTiny.mat(MT.CertusQuartz       , 9), gem.mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.CertusQuartz, 1), dust.mat(MT.CertusQuartz, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurified    .mat(MT.NetherQuartz       , 1), gem.mat(MT.NetherQuartz       , 1), dust.mat(MT.NetherQuartz, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurifiedTiny.mat(MT.NetherQuartz       , 9), gem.mat(MT.NetherQuartz       , 1), dust.mat(MT.NetherQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurified    .mat(MT.VoidQuartz         , 1), gem.mat(MT.VoidQuartz         , 1), dust.mat(MT.VoidQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurifiedTiny.mat(MT.VoidQuartz         , 9), gem.mat(MT.VoidQuartz         , 1), dust.mat(MT.VoidQuartz, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurified    .mat(MT.MilkyQuartz        , 1), gem.mat(MT.MilkyQuartz        , 1), dust.mat(MT.MilkyQuartz, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurifiedTiny.mat(MT.MilkyQuartz        , 9), gem.mat(MT.MilkyQuartz        , 1), dust.mat(MT.MilkyQuartz, 1));
 		
