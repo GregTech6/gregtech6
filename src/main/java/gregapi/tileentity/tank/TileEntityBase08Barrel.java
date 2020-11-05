@@ -238,6 +238,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 
 	@Override
 	public int fill(ItemStack aStack, FluidStack aFluid, boolean aDoFill) {
+		if ((mMode & B[1]) != 0) return 0;
 		if (!allowFluid(aFluid)) return 0;
 		if (!mGasProof && FL.gas(aFluid)) return 0;
 		if (!mAcidProof && FL.acid(aFluid)) return 0;
@@ -249,6 +250,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 
 	@Override
 	public FluidStack drain(ItemStack aStack, int aMaxDrain, boolean aDoDrain) {
+		if ((mMode & B[1]) != 0) return null;
 		FluidStack tDrained = mTank.drain(aMaxDrain, aDoDrain);
 		if (tDrained != NF && aDoDrain) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tDrained;
@@ -256,12 +258,12 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		return mTank.fill(aFluid, aDoFill);
+		return (mMode & B[1]) != 0 ? 0 : mTank.fill(aFluid, aDoFill);
 	}
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		return mTank.drain(aMaxDrain, aDoDrain);
+		return (mMode & B[1]) != 0 ? null : mTank.drain(aMaxDrain, aDoDrain);
 	}
 	
 	@Override public long getProgressValue(byte aSide) {return mSealedTime;}
@@ -287,18 +289,19 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	
 	@Override
 	public int addFluidToConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated) {
+		if ((mMode & B[1]) != 0) return 0;
 		if (aFluid == NF || (mTank.isEmpty() && aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated)) return 0;
 		return mTank.fill(aFluid, T);
 	}
 	
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
-		if (mTank.contains(aFluid) && mTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)mTank.remove(aFluid.amount);
+		if ((mMode & B[1]) == 0 && mTank.contains(aFluid) && mTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)mTank.remove(aFluid.amount);
 		return 0;
 	}
 	
 	@Override
 	public long getAmountOfFluidInConnectedTank(byte aSide, FluidStack aFluid) {
-		return mTank.contains(aFluid) ? mTank.amount() : 0;
+		return (mMode & B[1]) == 0 && mTank.contains(aFluid) ? mTank.amount() : 0;
 	}
 }
