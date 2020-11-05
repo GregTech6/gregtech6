@@ -485,7 +485,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("gemChargedCertusQuartz"          , OD.itemCertusQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemCertusQuartz"                 , OD.itemCertusQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemNetherQuartz"                 , OD.itemNetherQuartz);
-		OreDictManager.INSTANCE.addReRegistration("gemAnyQuartz"                    , OD.craftingQuartz);
+		OreDictManager.INSTANCE.addReRegistration("gemQuartz"                       , OD.craftingQuartz);
 		OreDictManager.INSTANCE.addReRegistration("itemCertusQuartz"                , OD.craftingQuartz);
 		OreDictManager.INSTANCE.addReRegistration("itemNetherQuartz"                , OD.craftingQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemMalachite"                    , "dyeMixableGreen");
