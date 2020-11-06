@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.02: (Not released yet, going to be released soon)
+6.14.02:
 [NOTE] The Default Config Pack updated to disable Netherlicious Quartz Generation and some other random things.
 [NOTE] I would recommend updating Netherlicious to 2.2.0 or later, if you have it, by the way.
 [FIXED] An Problem where GT-Fast-Leaf-Decay caused GT6 Trees to lose most of their Leaves when Non-GT6-Logs were harvested closeby.
