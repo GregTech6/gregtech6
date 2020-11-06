@@ -612,25 +612,26 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
 		for (FluidStack tFluid : FL.array(MT.He.gas(U, T), MT.Ne.gas(U, T), MT.Ar.gas(U, T), MT.Kr.gas(U, T), MT.Xe.gas(U, T), MT.Rn.gas(U, T))) if (tFluid != null) {
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si             ,  U9), FL.array(              tFluid    , MT.Si            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Si              , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Ge             ,  U9), FL.array(              tFluid    , MT.Ge            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Ge              , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), FL.array(              tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), FL.array(              tFluid    , MT.NikolineAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.NikolineAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy ,  U9), FL.array(              tFluid    , MT.TeslatineAlloy.liquid(35*U9, T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si             ,  U9), FL.array(       tFluid    , MT.Si            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Si              , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Ge             ,  U9), FL.array(       tFluid    , MT.Ge            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Ge              , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), FL.array(       tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), FL.array(       tFluid    , MT.NikolineAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.NikolineAlloy   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy ,  U9), FL.array(       tFluid    , MT.TeslatineAlloy.liquid(35*U9, T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), FL.array(FL.mul(tFluid, 9), MT.Si            .liquid(35*U , T)), NF, bouleGt.mat(MT.Si              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Ge                  ), FL.array(FL.mul(tFluid, 9), MT.Ge            .liquid(35*U , T)), NF, bouleGt.mat(MT.Ge              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), FL.array(FL.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), FL.array(FL.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.NikolineAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), FL.array(FL.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U , T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
 			
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Al2O3          ,  U3), FL.array(              tFluid    , MT.Al2O3         .liquid(29*U3, T)), NF, bouleGt.mat(MT.Sapphire        , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Mg             ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.GreenSapphire   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Ti             ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.YellowSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cu             ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.OrangeSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Fe             ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.BlueSapphire    , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.V              ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.PurpleSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cr             ,2*U3), FL.array(              tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.Ruby            , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Al2O3          ,  U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(29*U , T)), NF, bouleGt.mat(MT.Sapphire        , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Al2O3          ,  U9), FL.array(       tFluid    , MT.Al2O3         .liquid(29*U9, T)), NF, bouleGt.mat(MT.Sapphire        , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512, 156000, OM.dust(MT.Al2O3               ), FL.array(FL.mul(tFluid, 9), MT.Al2O3         .liquid(29*U , T)), NF, bouleGt.mat(MT.Sapphire        , 9));
+			
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Mg             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.GreenSapphire   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Ti             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.YellowSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cu             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.OrangeSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Fe             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.BlueSapphire    , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.V              ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.PurpleSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cr             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.Ruby            , 1));
 			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Mg             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.GreenSapphire   , 3));
 			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Ti             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.YellowSapphire  , 3));
 			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Cu             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.OrangeSapphire  , 3));
