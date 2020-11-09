@@ -198,6 +198,8 @@ public class MD {
 	, GaEn              = new ModData(ModIDs.GaEn               , "Ganys End")
 	, WdSt              = new ModData(ModIDs.WdSt               , "Ganys Wood Stuff")
 	
+	, HEE               = new ModData(ModIDs.HEE                , "Hardcore Ender Expansion")
+	
 	, LycM              = new ModData(ModIDs.LycM               , "Lycanites Mobs")
 	, LycM_Fresh        = new ModData(ModIDs.LycM_Fresh         , "Lycanites Mobs (Freshwater)")
 	, LycM_Salt         = new ModData(ModIDs.LycM_Salt          , "Lycanites Mobs (Saltwater)")

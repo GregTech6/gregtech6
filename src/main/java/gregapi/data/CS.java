@@ -1916,6 +1916,8 @@ public class CS {
 		, GaEn              = "ganysend"
 		, WdSt              = "woodstuff"
 		
+		, HEE               = "HardcoreEnderExpansion"
+		
 		, LycM              = "lycanitesmobs"
 		, LycM_Fresh        = "freshwatermobs"
 		, LycM_Salt         = "saltwatermobs"

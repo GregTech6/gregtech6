@@ -416,8 +416,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gemFlawed      , MT.Diamond                , ST.make(MD.FZ, "diamond_shard"  , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DarkIron               , ST.make(MD.FZ, "dark_iron_ingot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , ST.make(MD.RT, "ingredient", 1, 2));
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , ST.make(MD.RT, "ingredient", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.SpectreIron            , ST.make(MD.RT, "ingredient", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , ST.make(MD.RT, "ingredient", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , ST.make(MD.HEE, "endoplasm", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Endium                 , ST.make(MD.HEE, "endium_ingot", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Endium                 , ST.make(MD.HEE, "endium_block", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.Endium                 , ST.make(MD.HEE, "endium_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.OREMATS.Sphalerite     , ST.make(MD.HEE, "sphalerite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.OREMATS.Sphalerite     , ST.make(MD.HEE, "sphalerite", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.EnderiumBase           , ST.make(MD.EIO, "itemPowderIngot", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.ElectricalSteel        , ST.make(MD.EIO, "itemAlloy", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.EnergeticAlloy         , ST.make(MD.EIO, "itemAlloy", 1, 1));

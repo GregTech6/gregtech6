@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+[COMPAT] Some Hardcore Ender Expansion Stuff has Material Data now.
 [FIXED] Colorless Sapphire Boule Recipe was producing at a wrong rate.
 [ADDED] Magic Research Papers to Library Loot. So far only useful for Thaumcraft. Getting all 9 of them and scanning them with the Thaumometer in order will unlock all Aspects. They can be turned into Knowledge Fragments too.
 

@@ -331,21 +331,21 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		BooksGT.BOOK_REGISTER.put(this, 7030+i, (byte)27);
 		
 		
-		IL.Paper_Magic_Research_0          .set(addItem(tLastID =  7990, "Magic Research Paper (Introduction)", "", new OreDictItemData(MT.Paper, U), TC.TERRA.get(8), TC.AQUA.get(8), TC.AER.get(8), TC.IGNIS.get(8), TC.PERDITIO.get(8), TC.ORDO.get(8)));
-		IL.Paper_Magic_Research_1          .set(addItem(tLastID =  7991, "Magic Research Paper (Page 1 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.LUX.get(8), TC.TEMPESTAS.get(8), TC.MOTUS.get(8), TC.VACUOS.get(8), TC.GELUM.get(8), TC.POTENTIA.get(8), TC.VITREUS.get(8), TC.VICTUS.get(8), TC.VENENUM.get(8), TC.PERMUTATIO.get(8)));
-		IL.Paper_Magic_Research_2          .set(addItem(tLastID =  7992, "Magic Research Paper (Page 2 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.VOLATUS.get(8), TC.VINCULUM.get(8), TC.ITER.get(8), TC.METALLUM.get(8), TC.HERBA.get(8), TC.LIMUS.get(8), TC.SANO.get(8), TC.MORTUUS.get(8), TC.BESTIA.get(8), TC.BESTIA.get(8), TC.FAMES.get(8), TC.TENEBRAE.get(8), TC.PRAECANTIO.get(8), TC.RADIO.get(8)));
-		IL.Paper_Magic_Research_3          .set(addItem(tLastID =  7993, "Magic Research Paper (Page 3 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.MAGNETO.get(8), TC.CORPUS.get(8), TC.ALIENIS.get(8), TC.EXAMINIS.get(8), TC.SPIRITUS.get(8), TC.VITIUM.get(8), TC.AURAM.get(8), TC.ARBOR.get(8)));
-		IL.Paper_Magic_Research_4          .set(addItem(tLastID =  7994, "Magic Research Paper (Page 4 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.COGNITIO.get(8), TC.SENSUS.get(8)));
-		IL.Paper_Magic_Research_5          .set(addItem(tLastID =  7995, "Magic Research Paper (Page 5 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.HUMANUS.get(8), TC.STRONTIO.get(8)));
-		IL.Paper_Magic_Research_6          .set(addItem(tLastID =  7996, "Magic Research Paper (Page 6 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.PERFODIO.get(8), TC.INSTRUMENTUM.get(8), TC.MESSIS.get(8), TC.LUCRUM.get(8)));
-		IL.Paper_Magic_Research_7          .set(addItem(tLastID =  7997, "Magic Research Paper (Page 7 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.TELUM.get(8), TC.TUTAMEN.get(8), TC.PANNUS.get(8), TC.FABRICO.get(8), TC.METO.get(8), TC.MACHINA.get(8), TC.NEBRISUM.get(8)));
-		IL.Paper_Magic_Research_8          .set(addItem(tLastID =  7998, "Magic Research Paper (Page 8 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.ELECTRUM.get(8)));
+		IL.Paper_Magic_Research_0          .set(addItem(tLastID =  7990, "Magic Research Paper (Introduction)", "", new OreDictItemData(MT.Paper, U), TC.TERRA   .get(8), TC.AQUA        .get(8), TC.AER     .get(8), TC.IGNIS   .get(8), TC.PERDITIO .get(8), TC.ORDO      .get(8)));
+		IL.Paper_Magic_Research_1          .set(addItem(tLastID =  7991, "Magic Research Paper (Page 1 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.LUX     .get(8), TC.MOTUS       .get(8), TC.VACUOS  .get(8), TC.POTENTIA.get(8), TC.VITREUS  .get(8), TC.VICTUS    .get(8)));
+		IL.Paper_Magic_Research_2          .set(addItem(tLastID =  7992, "Magic Research Paper (Page 2 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.VOLATUS .get(8), TC.ITER        .get(8), TC.MORTUUS .get(8), TC.BESTIA  .get(8), TC.TENEBRAE .get(8), TC.PRAECANTIO.get(8)));
+		IL.Paper_Magic_Research_3          .set(addItem(tLastID =  7993, "Magic Research Paper (Page 3 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.ALIENIS .get(8), TC.EXAMINIS    .get(8), TC.SPIRITUS.get(8), TC.VITIUM  .get(8), TC.METALLUM .get(8), TC.GELUM     .get(8)));
+		IL.Paper_Magic_Research_4          .set(addItem(tLastID =  7994, "Magic Research Paper (Page 4 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.COGNITIO.get(8), TC.SENSUS      .get(8), TC.HERBA   .get(8), TC.SANO    .get(8), TC.LIMUS    .get(8)));
+		IL.Paper_Magic_Research_5          .set(addItem(tLastID =  7995, "Magic Research Paper (Page 5 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.HUMANUS .get(8), TC.STRONTIO    .get(8), TC.ARBOR   .get(8), TC.FAMES   .get(8), TC.CORPUS   .get(8), TC.AURAM     .get(8)));
+		IL.Paper_Magic_Research_6          .set(addItem(tLastID =  7996, "Magic Research Paper (Page 6 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.PERFODIO.get(8), TC.INSTRUMENTUM.get(8), TC.MESSIS  .get(8), TC.LUCRUM  .get(8), TC.VENENUM  .get(8), TC.PERMUTATIO.get(8)));
+		IL.Paper_Magic_Research_7          .set(addItem(tLastID =  7997, "Magic Research Paper (Page 7 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.TELUM   .get(8), TC.TUTAMEN     .get(8), TC.PANNUS  .get(8), TC.FABRICO .get(8), TC.METO     .get(8), TC.MACHINA   .get(8)));
+		IL.Paper_Magic_Research_8          .set(addItem(tLastID =  7998, "Magic Research Paper (Page 8 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.ELECTRUM.get(8), TC.RADIO       .get(8), TC.MAGNETO .get(8), TC.NEBRISUM.get(8), TC.TEMPESTAS.get(8), TC.VINCULUM  .get(8)));
 		
 		for (int i = 0; i < IL.MAGIC_RESEARCH_PAPERS.length; i++) {
 			BooksGT.BOOK_REGISTER.put(IL.MAGIC_RESEARCH_PAPERS[i], (byte)18);
 			if (IL.TC_Knowledge_Fragment.exists()) {
-				RM.generify(IL.MAGIC_RESEARCH_PAPERS[i].get(1), IL.TC_Knowledge_Fragment.get(i+1));
-				CR.shapeless(IL.TC_Knowledge_Fragment.get(i+1), CR.DEF, new Object[] {IL.MAGIC_RESEARCH_PAPERS[i]});
+				RM.generify(IL.MAGIC_RESEARCH_PAPERS[i].get(1), IL.TC_Knowledge_Fragment.get(Math.max(1, i)));
+				CR.shapeless(IL.TC_Knowledge_Fragment.get(Math.max(1, i)), CR.DEF, new Object[] {IL.MAGIC_RESEARCH_PAPERS[i]});
 			}
 		}
 		
