@@ -101,10 +101,10 @@ public class Compat_Recipes_Ganys extends CompatMods {
 				RM.ic2_compressor(                  ST.make(Items.slime_ball, 9, 0), ST.make(MD.GaSu, "slimeBlock", 1, 0));
 				RM.Compressor.addRecipe1(T, 16, 16, ST.make(Items.slime_ball, 9, W), ST.make(MD.GaSu, "slimeBlock", 1, 0));
 				RM.Boxinator.addRecipe2(T, 16, 16,  ST.make(Items.slime_ball, 9, W), ST.tag(9), ST.make(MD.GaSu, "slimeBlock", 1, 0));
+				RM.Unboxinator.addRecipe1(T, 16, 16,ST.make(MD.GaSu, "slimeBlock", 1, 0), ST.make(Items.slime_ball, 9, 0));
+				RM.ic2_extractor(                   ST.make(MD.GaSu, "slimeBlock", 1, 0), ST.make(Items.slime_ball, 9, 0));
+				CR.shapeless(                       ST.make(Items.slime_ball, 9, 0), CR.DEF, new Object[] {ST.make(MD.GaSu, "slimeBlock", 1, 0)});
 			}
-			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.GaSu, "slimeBlock", 1, 0), ST.make(Items.slime_ball, 9, 0));
-			RM.ic2_extractor(                       ST.make(MD.GaSu, "slimeBlock", 1, 0), ST.make(Items.slime_ball, 9, 0));
-			CR.shapeless(                           ST.make(Items.slime_ball, 9, 0), CR.DEF, new Object[] {ST.make(MD.GaSu, "slimeBlock", 1, 0)});
 			
 			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.flint, 9, W), ST.tag(9), ST.make(MD.GaSu, "storage", 1, 0));
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.GaSu, "storage", 1, 0), ST.make(Items.flint, 9, 0));

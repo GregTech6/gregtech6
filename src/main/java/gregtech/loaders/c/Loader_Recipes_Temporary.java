@@ -169,9 +169,9 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Orange], ST.make(Items.dye, 2, DYE_INDEX_Orange));
 			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1, 6), ST.make(Items.dye, 3, DYE_INDEX_Orange));
 			
-			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Gray], ST.make(Items.dye, 2, DYE_INDEX_Gray));
-			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Gray], ST.make(Items.dye, 2, DYE_INDEX_Gray));
-			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1,13), ST.make(Items.dye, 3, DYE_INDEX_Gray));
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1,13), ST.make(Items.dye, 3, DYE_INDEX_Purple));
 		}
 		
 		
