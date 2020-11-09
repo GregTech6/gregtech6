@@ -94,9 +94,10 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			aBlock.shouldSideBeRendered(aWorld, aX + 1, aY, aZ, 5)
 		};
 		
-		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return T;
+		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return F;
 		double heightNW, heightSW, heightSE, heightNE;
 		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid, aBlock);
+		boolean rRendered = F;
 		
 		if (flow11 != 1) {
 			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, aFluid, null);
@@ -121,6 +122,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		
 		boolean rises = aDir == 1;
 		if (aRenderer.renderAllFaces || renderTop) {
+			rRendered = T;
 			IIcon iconStill = aBlock.getIcon(1, bMeta);
 			float flowDir = (float)BlockFluidBase.getFlowDirection(aWorld, aX, aY, aZ);
 			
@@ -182,6 +184,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		}
 		
 		if (aRenderer.renderAllFaces || renderBottom) {
+			rRendered = T;
 			tessellator.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY - 1, aZ));
 			if (!rises) {
 				tessellator.setColorOpaque_F(LIGHT_Y_NEG * red, LIGHT_Y_NEG * green, LIGHT_Y_NEG * blue);
@@ -206,6 +209,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			IIcon iconFlow = aBlock.getIcon(side + 2, bMeta);
 			if (aRenderer.renderAllFaces || renderSides[side]) {
 				double ty1, tx1, ty2, tx2, tz1, tz2;
+				rRendered = T;
 				
 				if (side == 0) {
 					ty1 = heightNW;
@@ -272,7 +276,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		}
 		aRenderer.renderMinY = 0;
 		aRenderer.renderMaxY = 1;
-		return T;
+		return rRendered;
 	}
 	
 	@Override public boolean shouldRender3DInInventory(int modelId){ return F; }
