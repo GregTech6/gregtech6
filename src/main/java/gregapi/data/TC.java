@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,13 +22,89 @@ package gregapi.data;
 import java.util.List;
 
 public class TC {
-	public static final TC AER = new TC("Aer"), ALIENIS = new TC("Alienis"), AQUA = new TC("Aqua"), ARBOR = new TC("Arbor"), AURAM = new TC("Auram"), BESTIA = new TC("Bestia"), COGNITO = new TC("Cognito"), CORPUS = new TC("Corpus"), ELECTRUM = new TC("Electrum"), EXAMINIS = new TC("Examinis"), FABRICO = new TC("Fabrico"), FAMES = new TC("Fames"), GELUM = new TC("Gelum"), GRANUM = new TC("Granum"), HERBA = new TC("Herba"), HUMANUS = new TC("Humanus"), IGNIS = new TC("Ignis"), INSTRUMENTUM = new TC("Instrumentum"), ITER = new TC("Iter"), LIMUS = new TC("Limus"), LUCRUM = new TC("Lucrum"), LUX = new TC("Lux"), MACHINA = new TC("Machina"), MAGNETO = new TC("Magneto"), MESSIS = new TC("Messis"), METALLUM = new TC("Metallum"), METO = new TC("Meto"), MORTUUS = new TC("Mortuus"), MOTUS = new TC("Motus"), NEBRISUM = new TC("Nebrisum"), ORDO = new TC("Ordo"), PANNUS = new TC("Pannus"), PERDITIO = new TC("Perditio"), PERFODIO = new TC("Perfodio"), PERMUTATIO = new TC("Permutatio"), POTENTIA = new TC("Potentia"), PRAECANTIO = new TC("Praecantio"), RADIO = new TC("Radio"), REFLEXIO = new TC("Reflexio"), SANO = new TC("Sano"), SENSUS = new TC("Sensus"), SPIRITUS = new TC("Spiritus"), STRONTIO = new TC("Strontio"), TELUM = new TC("Telum"), TERRA = new TC("Terra"), TEMPESTAS = new TC("Tempestas"), TENEBRAE = new TC("Tenebrae"), TUTAMEN = new TC("Tutamen"), VACUOS = new TC("Vacuos"), VENENUM = new TC("Venemum"), VICTUS = new TC("Victus"), VINCULUM = new TC("Vinculum"), VITIUM = new TC("Vitium"), VITREUS = new TC("Vitreus"), VOLATUS = new TC("Volatus");
+	public static final TC ORDO = new TC("Ordo"), PERDITIO = new TC("Perditio"), TERRA = new TC("Terra"), AQUA = new TC("Aqua"), AER = new TC("Aer"), IGNIS = new TC("Ignis")
+	
+	// Tier 1
+	, LUX          = new TC(AER         , IGNIS       , "Lux")
+	, TEMPESTAS    = new TC(AER         , AQUA        , "Tempestas")
+	, MOTUS        = new TC(AER         , ORDO        , "Motus")
+	, VACUOS       = new TC(AER         , PERDITIO    , "Vacuos")
+	, GELUM        = new TC(IGNIS       , PERDITIO    , "Gelum")
+	, POTENTIA     = new TC(IGNIS       , ORDO        , "Potentia")
+	, VITREUS      = new TC(TERRA       , ORDO        , "Vitreus")
+	, VICTUS       = new TC(AQUA        , TERRA       , "Victus")
+	, VENENUM      = new TC(AQUA        , PERDITIO    , "Venemum")
+	, PERMUTATIO   = new TC(ORDO        , PERDITIO    , "Permutatio")
+	
+	// Tier 2
+	, VOLATUS      = new TC(MOTUS       , AER         , "Volatus")
+	, VINCULUM     = new TC(MOTUS       , PERDITIO    , "Vinculum")
+	, ITER         = new TC(MOTUS       , TERRA       , "Iter")
+	, METALLUM     = new TC(VITREUS     , TERRA       , "Metallum")
+	, HERBA        = new TC(VICTUS      , TERRA       , "Herba"), GRANUM = HERBA
+	, LIMUS        = new TC(VICTUS      , AQUA        , "Limus")
+	, SANO         = new TC(VICTUS      , ORDO        , "Sano")
+	, MORTUUS      = new TC(VICTUS      , PERDITIO    , "Mortuus")
+	, BESTIA       = new TC(VICTUS      , MOTUS       , "Bestia")
+	, FAMES        = new TC(VICTUS      , VACUOS      , "Fames")
+	, TENEBRAE     = new TC(LUX         , VACUOS      , "Tenebrae")
+	, PRAECANTIO   = new TC(POTENTIA    , VACUOS      , "Praecantio")
+	, REFLEXIO     = new TC(POTENTIA    , PERMUTATIO  , "Reflexio")
+	, RADIO        = new TC(POTENTIA    , LUX         , "Radio")
+	
+	// Tier 3
+	, ARBOR        = new TC(HERBA       , AER         , "Arbor")
+	, AURAM        = new TC(PRAECANTIO  , AER         , "Auram")
+	, VITIUM       = new TC(PRAECANTIO  , PERDITIO    , "Vitium")
+	, SPIRITUS     = new TC(MORTUUS     , VICTUS      , "Spiritus")
+	, EXAMINIS     = new TC(MORTUUS     , MOTUS       , "Examinis")
+	, ALIENIS      = new TC(TENEBRAE    , VACUOS      , "Alienis")
+	, CORPUS       = new TC(BESTIA      , MORTUUS     , "Corpus")
+	, MAGNETO      = new TC(ITER        , METALLUM    , "Magneto")
+	
+	// Tier 4
+	, SENSUS       = new TC(SPIRITUS    , AER         , "Sensus")
+	, COGNITIO     = new TC(SPIRITUS    , IGNIS       , "Cognitio"), COGNITO = COGNITIO
+	
+	// Tier 5
+	, STRONTIO     = new TC(COGNITIO    , PERDITIO    , "Strontio")
+	, HUMANUS      = new TC(COGNITIO    , BESTIA      , "Humanus")
+	
+	// Tier 6
+	, PERFODIO     = new TC(HUMANUS     , TERRA       , "Perfodio")
+	, INSTRUMENTUM = new TC(HUMANUS     , ORDO        , "Instrumentum")
+	, MESSIS       = new TC(HUMANUS     , HERBA       , "Messis")
+	, LUCRUM       = new TC(HUMANUS     , FAMES       , "Lucrum")
+	
+	// Tier 7
+	, TELUM        = new TC(INSTRUMENTUM, IGNIS       , "Telum")
+	, TUTAMEN      = new TC(INSTRUMENTUM, TERRA       , "Tutamen")
+	, PANNUS       = new TC(INSTRUMENTUM, BESTIA      , "Pannus")
+	, FABRICO      = new TC(INSTRUMENTUM, HUMANUS     , "Fabrico")
+	, METO         = new TC(INSTRUMENTUM, MESSIS      , "Meto")
+	, MACHINA      = new TC(INSTRUMENTUM, MOTUS       , "Machina")
+	, NEBRISUM     = new TC(PERFODIO    , LUCRUM      , "Nebrisum")
+	
+	// Tier 8
+	, ELECTRUM     = new TC(MACHINA     , POTENTIA    , "Electrum")
+	;
 	
 	public TC(String aName) {
 		mName = aName;
+		mComponentA = this;
+		mComponentB = this;
+		mTier = 0;
+	}
+	public TC(TC aComponentA, TC aComponentB, String aName) {
+		mName = aName;
+		mComponentA = aComponentA;
+		mComponentB = aComponentB;
+		mTier = (byte)(1+Math.max(mComponentA.mTier, mComponentB.mTier));
 	}
 	
 	public String mName;
+	public TC mComponentA, mComponentB;
+	public byte mTier;
 	/** The ThaumCraft Aspect Object of the Mod itself. */
 	public Object mAspect;
 	

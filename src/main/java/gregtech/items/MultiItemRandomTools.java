@@ -308,13 +308,13 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shaped(IL.Module_Blackstone_Generator.get(1), CR.DEF_REV_NCC, "S", "M", "O", 'M', IL.Module_Stone_Generator, 'S', OD.soulsand, 'O', OD.obsidian);
 		
 		
-		IL.Paper_Printed_Pages             .set(addItem(tLastID =  7002, "Printed Pages"                    , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*3), TC.stack(TC.COGNITO, 3)));
-		IL.Paper_Printed_Pages_Many        .set(addItem(tLastID =  7003, "Many Printed Pages"               , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*6), TC.stack(TC.COGNITO, 6)));
+		IL.Paper_Printed_Pages             .set(addItem(tLastID =  7002, "Printed Pages"                    , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*3), TC.stack(TC.COGNITIO, 3)));
+		IL.Paper_Printed_Pages_Many        .set(addItem(tLastID =  7003, "Many Printed Pages"               , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*6), TC.stack(TC.COGNITIO, 6)));
 		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages     , (byte)26);
 		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages_Many, (byte)26);
 		
-		IL.Paper_Blueprint_Empty           .set(addItem(tLastID =  7010, "Empty Blueprint"                  , "Place in Blueprint Slot and Shiftclick it, to assign Recipe" , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITO, 1)));
-		IL.Paper_Blueprint_Used            .set(addItem(tLastID =  7011, "Blueprint"                        , "Blueprint containing a Crafting Recipe"                      , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITO, 2), "gt:autocrafterblueprintitem"));
+		IL.Paper_Blueprint_Empty           .set(addItem(tLastID =  7010, "Empty Blueprint"                  , "Place in Blueprint Slot and Shiftclick it, to assign Recipe" , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITIO, 1)));
+		IL.Paper_Blueprint_Used            .set(addItem(tLastID =  7011, "Blueprint"                        , "Blueprint containing a Crafting Recipe"                      , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITIO, 2), "gt:autocrafterblueprintitem"));
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Blue])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(Items.paper, 1, W), tDye, NF, IL.Paper_Blueprint_Empty.get(1));
 		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Empty, (byte)25);
@@ -322,13 +322,32 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		ItemsGT.addNEIRedirects(IL.Paper_Blueprint_Empty.get(1), IL.Paper_Blueprint_Used.get(1));
 		
 		
-		for (int i = 0; i < 16; i++)            addItem(i      +  7030, DYE_NAMES[i] + " Canvas"            , "Can be used together with the Obscurator"    , "gt:canvas", new CoverTextureCanvas(BlockTextureDefault.get("machines/covers/canvas", DYES[i])), new OreDictItemData(MT.Paper, U), TC.stack(TC.PANNUS, 1));
+		for (int i = 0; i < 16; i++)            addItem(i       +  7030, DYE_NAMES[i] + " Canvas"           , "Can be used together with the Obscurator"    , "gt:canvas", new CoverTextureCanvas(BlockTextureDefault.get("machines/covers/canvas", DYES[i])), new OreDictItemData(MT.Paper, U), TC.stack(TC.PANNUS, 1));
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_White])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(Items.paper, 1, W), tDye, NF, ST.make(this, 1, 7030+DYE_INDEX_White));
 		for (int i = 0; i < 16; i++) if (i != DYE_INDEX_White) for (FluidStack tDye : DYE_FLUIDS[i])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(this, 1, 7030+DYE_INDEX_White), tDye, NF, ST.make(this, 1, 7030+i));
 		for (int i = 0; i < 16; i++)
 		BooksGT.BOOK_REGISTER.put(this, 7030+i, (byte)27);
+		
+		
+		IL.Paper_Magic_Research_0          .set(addItem(tLastID =  7990, "Magic Research Paper (Introduction)", "", new OreDictItemData(MT.Paper, U), TC.TERRA.get(8), TC.AQUA.get(8), TC.AER.get(8), TC.IGNIS.get(8), TC.PERDITIO.get(8), TC.ORDO.get(8)));
+		IL.Paper_Magic_Research_1          .set(addItem(tLastID =  7991, "Magic Research Paper (Page 1 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.LUX.get(8), TC.TEMPESTAS.get(8), TC.MOTUS.get(8), TC.VACUOS.get(8), TC.GELUM.get(8), TC.POTENTIA.get(8), TC.VITREUS.get(8), TC.VICTUS.get(8), TC.VENENUM.get(8), TC.PERMUTATIO.get(8)));
+		IL.Paper_Magic_Research_2          .set(addItem(tLastID =  7992, "Magic Research Paper (Page 2 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.VOLATUS.get(8), TC.VINCULUM.get(8), TC.ITER.get(8), TC.METALLUM.get(8), TC.HERBA.get(8), TC.LIMUS.get(8), TC.SANO.get(8), TC.MORTUUS.get(8), TC.BESTIA.get(8), TC.BESTIA.get(8), TC.FAMES.get(8), TC.TENEBRAE.get(8), TC.PRAECANTIO.get(8), TC.RADIO.get(8)));
+		IL.Paper_Magic_Research_3          .set(addItem(tLastID =  7993, "Magic Research Paper (Page 3 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.MAGNETO.get(8), TC.CORPUS.get(8), TC.ALIENIS.get(8), TC.EXAMINIS.get(8), TC.SPIRITUS.get(8), TC.VITIUM.get(8), TC.AURAM.get(8), TC.ARBOR.get(8)));
+		IL.Paper_Magic_Research_4          .set(addItem(tLastID =  7994, "Magic Research Paper (Page 4 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.COGNITIO.get(8), TC.SENSUS.get(8)));
+		IL.Paper_Magic_Research_5          .set(addItem(tLastID =  7995, "Magic Research Paper (Page 5 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.HUMANUS.get(8), TC.STRONTIO.get(8)));
+		IL.Paper_Magic_Research_6          .set(addItem(tLastID =  7996, "Magic Research Paper (Page 6 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.PERFODIO.get(8), TC.INSTRUMENTUM.get(8), TC.MESSIS.get(8), TC.LUCRUM.get(8)));
+		IL.Paper_Magic_Research_7          .set(addItem(tLastID =  7997, "Magic Research Paper (Page 7 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.TELUM.get(8), TC.TUTAMEN.get(8), TC.PANNUS.get(8), TC.FABRICO.get(8), TC.METO.get(8), TC.MACHINA.get(8), TC.NEBRISUM.get(8)));
+		IL.Paper_Magic_Research_8          .set(addItem(tLastID =  7998, "Magic Research Paper (Page 8 / 8)"  , "", new OreDictItemData(MT.Paper, U), TC.ELECTRUM.get(8)));
+		
+		for (int i = 0; i < IL.MAGIC_RESEARCH_PAPERS.length; i++) {
+			BooksGT.BOOK_REGISTER.put(IL.MAGIC_RESEARCH_PAPERS[i], (byte)18);
+			if (IL.TC_Knowledge_Fragment.exists()) {
+				RM.generify(IL.MAGIC_RESEARCH_PAPERS[i].get(1), IL.TC_Knowledge_Fragment.get(i+1));
+				CR.shapeless(IL.TC_Knowledge_Fragment.get(i+1), CR.DEF, new Object[] {IL.MAGIC_RESEARCH_PAPERS[i]});
+			}
+		}
 		
 		IL.Robot_Tip_Wrench                .set(addItem(tLastID =  8000, "Robot Arm Wrench Tip"         , "Infinitely usable inside an Autocrafter", OreDictToolNames.wrench                                , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		IL.Robot_Tip_Screwdriver           .set(addItem(tLastID =  8001, "Robot Arm Screwdriver Tip"    , "Infinitely usable inside an Autocrafter", OreDictToolNames.screwdriver                           , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
@@ -377,11 +396,11 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
 		
-		IL.Compass_North                   .set(addItem(tLastID = 11000, "Compass (NORTH)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11001), OM.data(ST.make(Items.compass, 1, 0)), TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO                                             , 2))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
-		IL.Compass_Face                    .set(addItem(tLastID = 11001, "Compass (FACE)"       , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11002), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.COGNITO, 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
-		IL.Compass_Spawn                   .set(addItem(tLastID = 11002, "Compass (SPAWN)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11003), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.HUMANUS, 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
-		IL.Compass_Center                  .set(addItem(tLastID = 11003, "Compass (CENTER)"     , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11004), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.TERRA  , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
-		IL.Compass_Death                   .set(addItem(tLastID = 11004, "Compass (DEATH)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11000), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.MORTUUS, 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
+		IL.Compass_North                   .set(addItem(tLastID = 11000, "Compass (NORTH)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11001), OM.data(ST.make(Items.compass, 1, 0)), TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO                                              , 2))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
+		IL.Compass_Face                    .set(addItem(tLastID = 11001, "Compass (FACE)"       , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11002), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.COGNITIO, 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
+		IL.Compass_Spawn                   .set(addItem(tLastID = 11002, "Compass (SPAWN)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11003), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.HUMANUS , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
+		IL.Compass_Center                  .set(addItem(tLastID = 11003, "Compass (CENTER)"     , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11004), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.TERRA   , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
+		IL.Compass_Death                   .set(addItem(tLastID = 11004, "Compass (DEATH)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11000), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.MORTUUS , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, tLastID)});
 		ItemsGT.addNEIRedirects(IL.Compass_North.get(1), IL.Compass_Face.get(1), IL.Compass_Spawn.get(1), IL.Compass_Center.get(1), IL.Compass_Death.get(1));
 		CR.shapeless(IL.Compass_North.get(1), CR.DEF, new Object[] {ST.make(Items.compass, 1, W)});
 		

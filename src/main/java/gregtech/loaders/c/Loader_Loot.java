@@ -316,6 +316,15 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   3, 1, 1, ST.book("Manual_Steam"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   3, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,  20, 1,10, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 9, IL.Paper_Magic_Research_0.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 8, IL.Paper_Magic_Research_1.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 7, IL.Paper_Magic_Research_2.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 6, IL.Paper_Magic_Research_3.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 5, IL.Paper_Magic_Research_4.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 4, IL.Paper_Magic_Research_5.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 3, IL.Paper_Magic_Research_6.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 2, IL.Paper_Magic_Research_7.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        ,   1, 1, 1, IL.Paper_Magic_Research_8.get(1));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING       ,   6, 4, 8, IL.Bottle_Holy_Water.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING       ,   4, 8,16, IL.Bottle_Glue.get(1));

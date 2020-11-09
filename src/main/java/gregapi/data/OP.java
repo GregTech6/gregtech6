@@ -95,8 +95,7 @@ public class OP {
 	oreNether                   = create("oreNether"                    , "Nether Ores"                     , "Nether "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, DENSE_ORE   ).aspects(TC.TERRA      , 1).setTextureSetName("oreDense"), // Prefix of the Nether-Ores Mod. Causes Ores to double. Ore -> Material is a Oneway Operation!
 	oreDense                    = create("oreDense"                     , "Dense Ores"                      , "Dense "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, DENSE_ORE   ).aspects(TC.TERRA      , 1).setTextureSetName("oreDense").addIdenticalNames("denseore"), // Prefix of the Dense-Ores Mod. Causes Ores to double. Ore -> Material is a Oneway Operation!
 	oreEnd                      = create("oreEnd"                       , "End Ores"                        , "End "                            , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, DENSE_ORE   ).aspects(TC.TERRA      , 1).setTextureSetName("oreDense"), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
-	
-	oreHee                      = create("oreHee"                       , "Hardcore Ender Expansion Ores"   , "End "                            , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS              ).aspects(TC.TERRA      , 1),
+	oreHee                      = oreEndstone,
 	
 	oreRich                     = create("oreRich"                      , "Rich Ores"                       , "Rich "                           , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS              ).aspects(TC.TERRA      , 1), // Prefix of TFC
 	oreNormal                   = create("oreNormal"                    , "Normal Ores"                     , "Normal "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS              ).aspects(TC.TERRA      , 1), // Prefix of TFC
@@ -396,8 +395,8 @@ public class OP {
 	 */
 	batterySingleuse            = create("batterySingleuse"             , "Single Use Batteries"            ).add(MATERIAL_BASED).aspects(TC.ELECTRUM, 2),
 	battery                     = create("battery"                      , "Reusable Batteries"              ).add(MATERIAL_BASED).aspects(TC.ELECTRUM, 1), // Introduced by Calclavia
-	circuit                     = create("circuit"                      , "Circuits"                        ).add(MATERIAL_BASED).aspects(TC.COGNITO, 1), // Introduced by Calclavia
-	computer                    = create("computer"                     , "Computers"                       ).add(MATERIAL_BASED).aspects(TC.COGNITO, 4), // A whole Computer.
+	circuit                     = create("circuit"                      , "Circuits"                        ).add(MATERIAL_BASED).aspects(TC.COGNITIO, 1), // Introduced by Calclavia
+	computer                    = create("computer"                     , "Computers"                       ).add(MATERIAL_BASED).aspects(TC.COGNITIO, 4), // A whole Computer.
 	
 	// random known prefixes without special abilities.
 	shard                       = unused("shard"                        ).setCategoryName("Crystallised Shards"             ), // Introduced by Mekanism, abused too much to be used...
@@ -638,7 +637,6 @@ public class OP {
 		oreQuartzite            .mByProducts.add(OM.stack(MT.Quartzite          , dust.mAmount));
 		oreNetherrack           .mByProducts.add(OM.stack(MT.Netherrack         , dust.mAmount));
 		oreNether               .mByProducts.add(OM.stack(MT.Netherrack         , dust.mAmount));
-		oreHee                  .mByProducts.add(OM.stack(MT.Endstone           , dust.mAmount));
 		oreEndstone             .mByProducts.add(OM.stack(MT.Endstone           , dust.mAmount));
 		oreEnd                  .mByProducts.add(OM.stack(MT.Endstone           , dust.mAmount));
 		orePoor                 .mByProducts.add(OM.stack(MT.Stone              , dust.mAmount * 2));

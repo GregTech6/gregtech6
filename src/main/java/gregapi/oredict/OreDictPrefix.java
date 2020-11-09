@@ -36,6 +36,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
 import gregapi.code.TagData;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TC;
@@ -447,10 +448,10 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (aEvent.mMaterial == MT.NULL) {
 			if (!contains(TD.Prefix.MATERIAL_BASED)) {
-				if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom)) {
+				if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom) && !MD.MC.owns(aEvent.mRegName) && !MD.TC.owns(aEvent.mRegName)) {
 					List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 					for (TC_AspectStack tAspect : mAspects) tAspect.addToAspectList(tAspects);
-					COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, aEvent.mOreDictName);
+					COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, F);
 				}
 				for (IOreDictListenerEvent tListener : mListenersOre) {
 					if (D2) ORD.println("Processing '" + aEvent.mOreDictName + "' with the Prefix '" + mNameInternal + "' and without Material at " + UT.Reflection.getClassName(tListener));
@@ -462,7 +463,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		} else {
 			if (!mIgnoredRegistrations.contains(aEvent.mMaterial)) {
 				if (!aEvent.mMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
-					if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom)) {
+					if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom) && !MD.MC.owns(aEvent.mRegName) && !MD.TC.owns(aEvent.mRegName)) {
 						List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 						for (TC_AspectStack tAspect : mAspects) {
 							if (tAspect.mAspect == TC.METALLUM && !aEvent.mMaterial.mHasMetallum) {
@@ -473,7 +474,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 							}
 						}
 						if (mAmount >= U || mAmount < 0) for (TC_AspectStack tAspect : aEvent.mMaterial.mAspects) tAspect.addToAspectList(tAspects);
-						COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, aEvent.mOreDictName);
+						COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, F);
 					}
 					for (IOreDictListenerEvent tListener : mListenersOre) {
 						if (D2) ORD.println("Processing '" + aEvent.mOreDictName + "' with the Prefix '" + mNameInternal + "' and the Material '" + aEvent.mMaterial.mNameInternal + "' at " + UT.Reflection.getClassName(tListener));

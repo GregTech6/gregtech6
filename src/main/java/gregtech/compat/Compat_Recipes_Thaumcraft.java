@@ -235,7 +235,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		//
 		COMPAT_TC.addResearch(tKey = ADVANCEDMETALLURGY
 			, "Advanced Metallurgic Transmutation", "Mastering the basic Metals", new String[] {TRANSBISMUTH, IRON_TO_STEEL, TRANSSOLDERINGALLOY, TRANSBATTERYALLOY, TRANSBRASS, TRANSELECTRUM, TRANSCONSTANTAN, TRANSINVAR}, CATEGORY_ALCHEMY, OP.ingot.mat(MT.Fe, 1), 4, RESEARCH_TYPE_HIDDEN, 16, 14
-			, Arrays.asList(TC.stack(TC.METALLUM, 50), TC.stack(TC.PERMUTATIO, 20), TC.stack(TC.COGNITO, 20), TC.stack(TC.PRAECANTIO, 20), TC.stack(TC.NEBRISUM, 20), TC.stack(TC.MAGNETO, 20))
+			, Arrays.asList(TC.stack(TC.METALLUM, 50), TC.stack(TC.PERMUTATIO, 20), TC.stack(TC.COGNITIO, 20), TC.stack(TC.PRAECANTIO, 20), TC.stack(TC.NEBRISUM, 20), TC.stack(TC.MAGNETO, 20))
 			, null
 			, LH.add("gt.research.page.1." + tKey, "Now that you have discovered all the basic Metals, you can finally move on to the next Level of Magic Metallurgy and create more advanced Metals")
 		);

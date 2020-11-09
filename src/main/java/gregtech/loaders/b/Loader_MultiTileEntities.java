@@ -1065,8 +1065,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gemExquisite   , MT.EnergiumCyan, IL.Crystal_Energium_Cyan_EV.get(1));
 		OreDictManager.INSTANCE.setTarget(OP.gemLegendary   , MT.EnergiumCyan, IL.Crystal_Energium_Cyan_IV.get(1));
 		
-		IL.ZPM                          .set(aRegistry.add("Zero-Point-Module (ZPM)"                        , "ZPM"                                 , 14999, 14999, MultiTileEntityZPM.class, 0, 16, aUtilMetal, UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 1.0F, NBT_COLOR, 0xffdd00, NBT_INPUT_MIN, 1, NBT_INPUT, V[7], NBT_INPUT_MAX, VMAX[7], NBT_CAPACITY, 2000000000000L, NBT_ENERGY_ACCEPTED, TD.Energy.QU)), null, "gt:zpm");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(IL.ZPM.get(1), F, TC.stack(TC.ALIENIS, 10), TC.stack(TC.MACHINA, 10), TC.stack(TC.VACUOS, 10), TC.stack(TC.POTENTIA, 10), TC.stack(TC.LUX, 10), TC.stack(TC.LUCRUM, 10));
+		IL.ZPM                          .set(aRegistry.add("Zero-Point-Module (ZPM)"                        , "ZPM"                                 , 14999, 14999, MultiTileEntityZPM.class, 0, 16, aUtilMetal, UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 1.0F, NBT_COLOR, 0xffdd00, NBT_INPUT_MIN, 1, NBT_INPUT, V[7], NBT_INPUT_MAX, VMAX[7], NBT_CAPACITY, 2000000000000L, NBT_ENERGY_ACCEPTED, TD.Energy.QU)), null, "gt:zpm"); if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(aRegistry.getItem(), F, TC.stack(TC.ALIENIS, 10), TC.stack(TC.MACHINA, 10), TC.stack(TC.VACUOS, 10), TC.stack(TC.POTENTIA, 10), TC.stack(TC.LUX, 10), TC.stack(TC.LUCRUM, 10));
 		
 		
 		

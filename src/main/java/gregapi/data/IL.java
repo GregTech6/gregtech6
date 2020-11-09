@@ -114,7 +114,7 @@ public enum IL implements IItemContainer {
 	TC_Nugget_Chicken, TC_Nugget_Beef, TC_Nugget_Pork, TC_Nugget_Fish, TC_Triple_Meat_Treat,
 	TC_Warded_Glass, TC_Block_Air,
 	TC_Thaumometer,
-	TC_Thaumonomicon, TC_Crimson_Rites,
+	TC_Thaumonomicon, TC_Crimson_Rites, TC_Knowledge_Fragment,
 	TC_Block_Flesh, TC_Block_Tallow, TC_Block_Amber, TC_Block_Amber_Bricks,
 	TC_Nitor, TC_Alumentum, TC_Tallow, TC_Phial,
 	TC_Bucket_Death, TC_Bucket_Pure,
@@ -231,7 +231,6 @@ public enum IL implements IItemContainer {
 	Ceramic_Jug, Ceramic_Jug_Raw,
 	Porcelain_Cup,
 	Compound_Bronze, Compound_Brass, Compound_BismuthBronze,
-	Paper_Blueprint_Empty, Paper_Blueprint_Used,
 	Pellet_Wood,
 	Bag_Sap_Resin,
 	Rope, Rope_Silk, Rope_Grass, Rope_Plastic,
@@ -424,8 +423,10 @@ public enum IL implements IItemContainer {
 	Dye_SquidInk, Dye_Bonemeal, Dye_Cactus, Dye_Cocoa,
 	Tape,Tape_Used, Duct_Tape, Duct_Tape_Used, Brain_Tape, Brain_Tape_Used,
 	Dynamite, Dynamite_Strong,
+	Paper_Blueprint_Empty, Paper_Blueprint_Used,
 	Paper_Printed_Pages, Paper_Printed_Pages_Many,
 	Paper_Magic_Empty, Paper_Magic_Page, Paper_Magic_Pages,
+	Paper_Magic_Research_0, Paper_Magic_Research_1, Paper_Magic_Research_2, Paper_Magic_Research_3, Paper_Magic_Research_4, Paper_Magic_Research_5, Paper_Magic_Research_6, Paper_Magic_Research_7, Paper_Magic_Research_8,
 	Paper_Punch_Card_Empty, Paper_Punch_Card_Encoded,
 	Tool_Matches, Tool_MatchBox_Empty, Tool_MatchBox_Used, Tool_MatchBox_Full,
 	Tool_Lighter_Invar_Empty, Tool_Lighter_Invar_Used, Tool_Lighter_Invar_Full,
@@ -478,6 +479,7 @@ public enum IL implements IItemContainer {
 	, FIELD_GENERATORS = {Field_Generator_ULV, Field_Generator_LV, Field_Generator_MV, Field_Generator_HV, Field_Generator_EV, Field_Generator_IV, Field_Generator_LuV, Field_Generator_ZPM, Field_Generator_UV, Field_Generator_PUV1, Field_Generator_PUV2, Field_Generator_PUV3, Field_Generator_PUV4, Field_Generator_PUV5, Field_Generator_OMEGA}
 	, EMITTERS = {Emitter_ULV, Emitter_LV, Emitter_MV, Emitter_HV, Emitter_EV, Emitter_IV, Emitter_LuV, Emitter_ZPM, Emitter_UV, Emitter_PUV1, Emitter_PUV2, Emitter_PUV3, Emitter_PUV4, Emitter_PUV5, Emitter_OMEGA}
 	, SENSORS = {Sensor_ULV, Sensor_LV, Sensor_MV, Sensor_HV, Sensor_EV, Sensor_IV, Sensor_LuV, Sensor_ZPM, Sensor_UV, Sensor_PUV1, Sensor_PUV2, Sensor_PUV3, Sensor_PUV4, Sensor_PUV5, Sensor_OMEGA}
+	, MAGIC_RESEARCH_PAPERS = {Paper_Magic_Research_0, Paper_Magic_Research_1, Paper_Magic_Research_2, Paper_Magic_Research_3, Paper_Magic_Research_4, Paper_Magic_Research_5, Paper_Magic_Research_6, Paper_Magic_Research_7, Paper_Magic_Research_8,}
 	;
 	private ItemStack mStack;
 	private boolean mHasNotBeenSet = T;

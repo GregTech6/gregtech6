@@ -43,7 +43,6 @@ public class LoaderItemData implements Runnable {
 	@Override
 	public void run() {
 		OM.reg(OP.glass, MT.UNUSED.Reinforced       , ST.mkic("reinforcedGlass", 1));
-		OM.reg("paperResearchFragment"              , ST.make(MD.TC, "ItemResource", 1, 9));
 		OM.reg(OP.circuit, MT.Basic                 , ST.mkic("electronicCircuit", 1));
 		OM.reg(OP.circuit, MT.Advanced              , ST.mkic("advancedCircuit", 1));
 		OM.reg(OP.battery, MT.Basic                 , ST.mkic("reBattery", 1));
@@ -786,7 +785,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.OC, "item"                                       , 1,  98, MT.Paper              , U*3);
 		OM.data(MD.HQM, "quest_book"                                , 1,   W, MT.Paper              , U*3);
 		OM.data(MD.TC, "ItemResearchNotes"                          , 1,   W, MT.Paper              , U);
-		OM.data(MD.TC, "ItemResource"                               , 1,   9, MT.Paper              , U9);
 		OM.data(MD.MoCr, "scrollofsale"                             , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrollofowner"                            , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrolloffreedom"                          , 1,   W, MT.Paper              , U);
