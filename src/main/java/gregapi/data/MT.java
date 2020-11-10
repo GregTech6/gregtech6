@@ -2597,6 +2597,8 @@ public class MT {
 			NaCl                            .addOreByProducts(KCl                   , KIO3                      , OREMATS.Borax         );
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
+			Endstone                        .addOreByProducts(He_3                  , Be                        );
+			Endium                          .addOreByProducts(OREMATS.Wolframite    , OREMATS.Sperrylite        , OREMATS.Tantalite     , Be);
 			Glowstone                       .addOreByProducts(Redstone              , Au                        , Gloomstone            );
 			GlowstoneCeres                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstoneIo                     .addOreByProducts(Redstone              , Au                        , Glowstone             );
@@ -2701,7 +2703,6 @@ public class MT {
 			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );
 			KNO3                            .addOreByProducts(NaNO3                 , Niter                     );
 			Niter                           .addOreByProducts(KNO3                  , NaNO3                     );
-			Endstone                        .addOreByProducts(He_3                  , Be                        );
 			Hf                              .addOreByProducts(Zircon                );
 			Mg                              .addOreByProducts(Olivine               );
 			OREMATS.Cobaltite               .addOreByProducts(Co                    );
