@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.03: (Not released yet, going to be released at the 10th or 11th of November, due to an important Bugfix)
+6.14.03:
 [COMPAT] Some Hardcore Ender Expansion Stuff has Material Data now.
 [FIXED] An Issue with Rendering on some peoples Worlds/Computers.
 [FIXED] Colorless Sapphire Boule Recipe was producing at a wrong rate.
