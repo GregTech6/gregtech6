@@ -2598,7 +2598,7 @@ public class MT {
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
 			Endstone                        .addOreByProducts(He_3                  , Be                        );
-			Endium                          .addOreByProducts(OREMATS.Wolframite    , OREMATS.Sperrylite        , OREMATS.Tantalite     , Be);
+			Endium                          .addOreByProducts(OREMATS.Wolframite    , OREMATS.Sperrylite        , OREMATS.Tantalite     , Ke);
 			Glowstone                       .addOreByProducts(Redstone              , Au                        , Gloomstone            );
 			GlowstoneCeres                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
 			GlowstoneIo                     .addOreByProducts(Redstone              , Au                        , Glowstone             );

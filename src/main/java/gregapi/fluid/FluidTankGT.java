@@ -152,6 +152,17 @@ public class FluidTankGT implements IFluidTank {
 		return aFilled;
 	}
 	
+	public long add(long aFilled, FluidStack aFluid) {
+		if (aFluid == null || aFilled <= 0) return 0;
+		if (isEmpty()) {
+			mFluid = aFluid.copy();
+			mChangedFluids = T;
+			mAmount = Math.min(mCapacity, aFilled);
+			return mVoidExcess ? aFilled : mAmount;
+		}
+		return contains(aFluid) ? add(aFilled) : 0;
+	}
+	
 	public int fill(FluidStack aFluid) {return fill(aFluid, T);}
 	@Override
 	public int fill(FluidStack aFluid, boolean aDoFill) {

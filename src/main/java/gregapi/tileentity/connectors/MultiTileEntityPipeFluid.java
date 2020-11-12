@@ -275,7 +275,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		for (byte aSide : ALL_SIDES_VALID) if (aAdjacentTanks[aSide] != null && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
 			tTank = aAdjacentTanks[aSide];
 			if (tTank.mTileEntity == null) {
-				if (tTank.getBlock() instanceof BlockCauldron && aTank.amount() >= 334 && FL.water(aTank.get())) {
+				if (tTank.getBlock() instanceof BlockCauldron && aTank.has(334) && FL.water(aTank.get())) {
 					switch(tTank.getMetaData()) {
 					case 0:
 						if (aTank.drainAll(1000)) {tTank.setMetaData(3); break;}
@@ -319,9 +319,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				if (!((MultiTileEntityPipeFluid)tTank.mTileEntity).hasCovers() || ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity] == null || !((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity].interceptFluidFill(tTank.mSideOfTileEntity, ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers, tTank.mSideOfTileEntity, aTank.get())) {
 					tAdjacentPipes.add(tTank);
 					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
-					if (tTarget != null) {
-						mTransferredAmount += aTank.remove(FL.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
-					}
+					if (tTarget != null) mTransferredAmount += aTank.remove(tTarget.add(Math.min(aTank.amount(), tAmount-tTarget.amount()), aTank.get()));
 				}
 			}
 		}
@@ -344,7 +342,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tAmount = (aTank.amount() - mCapacity / 2) / tAdjacentPipes.size();
 			if (tAmount > 0) {
 				for (DelegatorTileEntity<IFluidHandler> tPipe : tAdjacentPipes) {
-					mTransferredAmount += aTank.remove(FL.fill_(tPipe, aTank.get(tAmount), T));
+					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tPipe.mTileEntity).getFluidTankFillable2(tPipe.mSideOfTileEntity, aTank.get());
+					if (tTarget != null) mTransferredAmount += aTank.remove(tTarget.add(Math.min(aTank.amount(), tAmount), aTank.get()));
 				}
 			}
 		}
