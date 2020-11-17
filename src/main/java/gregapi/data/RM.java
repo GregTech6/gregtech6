@@ -60,7 +60,7 @@ public class RM {
 	
 	, BedrockOreList            = new RecipeMap                     (null, "gt.recipe.bedrockorelist"               , "Bedrock Drill"                   , null, 0, 1, RES_PATH_GUI+"machines/BedrockOreList"            ,/*IN-OUT-MIN-ITEM=*/ 1,12, 1,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, F, T, F, F, F)
 	, ByProductList             = new RecipeMap                     (null, "gt.recipe.byproductlist"                , "Ore Byproduct List"              , null, 0, 1, RES_PATH_GUI+"machines/OreByproducts"             ,/*IN-OUT-MIN-ITEM=*/ 6,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, F, T, F, T, T)
-	, CrucibleSmelting          = new RecipeMap                     (null, "gt.recipe.cruciblesmelting"             , "Crucible Smelting"               , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "Temperature: "       ,    1, " K"    , T, T, F, T, F, T, T)
+	, CrucibleSmelting          = new RecipeMapCrucible             (null, "gt.recipe.cruciblesmelting"             , "Crucible Smelting"               , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "Temperature: "       ,    1, " K"    , T, T, F, T, F, T, T)
 	, CrucibleAlloying          = new RecipeMap                     (null, "gt.recipe.cruciblealloying"             , "Combination Smelting"            , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "Temperature: "       ,    1, " K"    , T, T, F, T, F, T, T)
 	, BumbleQueens              = new RecipeMap                     (null, "gt.recipe.bumblequeen"                  , "Bumblebee Queen"                 , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 2, 6, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, T, F, T, T)
 	, Trees                     = new RecipeMap                     (null, "gt.recipe.trees"                        , "Family Tree"                     , null, 0, 1, RES_PATH_GUI+"machines/FamilyTree"                ,/*IN-OUT-MIN-ITEM=*/ 2,12, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, F, F, T, T)
@@ -157,10 +157,12 @@ public class RM {
 	}
 	
 	public static boolean generify(ItemStack aStack1, ItemStack aStack2) {
+		if (ST.invalid(aStack1) || ST.invalid(aStack2)) return F;
 		return RM.Generifier.addRecipe1(F, T, F, F, F, 0, 1, aStack1, aStack2) != null;
 	}
 	
 	public static boolean generify(FluidStack aFluid1, FluidStack aFluid2) {
+		if (aFluid1 == null || aFluid2 == null) return F;
 		return RM.Generifier.addRecipe0(F, T, F, F, F, 0, 1, aFluid1, aFluid2, ZL_IS) != null;
 	}
 	

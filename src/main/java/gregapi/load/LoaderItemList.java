@@ -1298,6 +1298,7 @@ public class LoaderItemList implements Runnable {
 		IL.HaC_Log_Maple                        .set(ST.make(MD.HaC, "pamMaple"                             , 1, 0), null, OD.logWood);
 		IL.HaC_Log_Paperbark                    .set(ST.make(MD.HaC, "pamPaperbark"                         , 1, 0), null, OD.logWood);
 		IL.HaC_Cinnamon                         .set(ST.make(MD.HaC, "cinnamonItem"                         , 1, 0), null, "cropCinnamon");
+		IL.HaC_Royal_Jelly                      .set(ST.make(MD.HaC, "royaljellyItem"                       , 1, 0), null, "dropRoyalJelly");
 		
 		
 		IL.RoC_Comb_Slippery                    .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 0), null, OD.beeComb);
@@ -1366,7 +1367,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Logs_Fireproof                    .set(ST.make(MD.FR, "logsFireproof"                         , 1, 0));
 		IL.FR_Logs                              .set(ST.make(MD.FR, "logs"                                  , 1, 0));
 		IL.FR_Phosphor                          .set(ST.make(MD.FR, "phosphor"                              , 1, 0), new OreDictItemData(MT.P, U));
-		IL.FR_Royal_Jelly                       .set(ST.make(MD.FR, "royalJelly"                            , 1, 0));
+		IL.FR_Royal_Jelly                       .set(ST.make(MD.FR, "royalJelly"                            , 1, 0), null, "dropRoyalJelly");
 		IL.FR_Propolis                          .set(ST.make(MD.FR, "propolis"                              , 1, 0), null, OD.listAllpropolis);
 		IL.FR_Propolis_Sticky                   .set(ST.make(MD.FR, "propolis"                              , 1, 1), null, OD.listAllpropolis);
 		IL.FR_Propolis_Pulsating                .set(ST.make(MD.FR, "propolis"                              , 1, 2), null, OD.listAllpropolis);

@@ -142,7 +142,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), FL.Sauce_Chili.make(100), NF, ST.make(MD.HaC, "extremechiliItem", 1));
 		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), OM.dust(MT.Chili), ST.make(MD.HaC, "extremechiliItem", 1));
 		
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "royaljellyItem", 1), FL.Honeydew.make(40), FL.make("potion.ambrosia", 80), ZL_IS);
+		RM.Mixer    .addRecipe1(T, 16,   16, IL.HaC_Royal_Jelly.get(1), FL.Honeydew.make(40), FL.make("potion.ambrosia", 80), ZL_IS);
 		
 		if (IL.GrC_Starter_Culture.exists()) {
 		RM.Mixer    .addRecipe1(T, 16,   16, IL.GrC_Starter_Culture.get(1), FL.Milk   .make( 250), NF, tYogurt);

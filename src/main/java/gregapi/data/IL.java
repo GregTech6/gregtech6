@@ -129,7 +129,7 @@ public enum IL implements IItemContainer {
 	TF_Trophy, TF_Trophy_Naga, TF_Trophy_Lich, TF_Trophy_Hydra, TF_Trophy_Urghast, TF_Trophy_Snowqueen,
 	HiL_Ironwood,
 	HaC_Log_Cinnamon, HaC_Log_Maple, HaC_Log_Paperbark,
-	HaC_Cinnamon,
+	HaC_Cinnamon, HaC_Royal_Jelly,
 	ABYSSAL_Crate, ABYSSAL_Lava,
 	ATUM_Scarab, ATUM_Limestone, ATUM_Limecobble,
 	RH_Sand_Magnetite, RH_Sand_Olivine, RH_Sand_Coral, RH_Sand_Gypsum,

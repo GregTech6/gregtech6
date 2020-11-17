@@ -749,7 +749,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Raspberry         .make( 50), NF, IL.Food_Ice_Cream_Raspberry.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Blackberry        .make( 50), NF, IL.Food_Ice_Cream_Blackberry.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Blueberry         .make( 50), NF, IL.Food_Ice_Cream_Blueberry.get(1));
-		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Gooseberry        .make( 50), NF, IL.Food_Ice_Cream_Cherry.get(1));
+		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Juice_Gooseberry        .make( 50), NF, IL.Food_Ice_Cream_Gooseberry.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.RoyalJelly              .make(  5), NF, IL.Food_Ice_Cream_Honey.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Honey                   .make( 50), NF, IL.Food_Ice_Cream_Honey.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.HoneyGrC                .make( 50), NF, IL.Food_Ice_Cream_Honey.get(1));

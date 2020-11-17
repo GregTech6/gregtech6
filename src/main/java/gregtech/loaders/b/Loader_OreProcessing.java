@@ -199,23 +199,22 @@ public class Loader_OreProcessing implements Runnable {
 		toolHeadRawUniversalSpade   .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadSpade      , OreDictToolNames.file, OreDictToolNames.saw       }, new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadConstructionPickaxe .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe , OreDictToolNames.file, OreDictToolNames.hammer    }, new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadPickaxeGem          .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe.dat(ANY.Steel), gemFlawed, gemFlawed, OreDictToolNames.file, OreDictToolNames.hammer, OreDictToolNames.saw}, ANTIMATTER.NOT));
-
+		
 		IOreDictListenerEvent tProcessor = new OreProcessing_Ore();
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(ORE) && tPrefix != oreBedrock && tPrefix != orePoor && tPrefix != oreSmall && tPrefix != oreRich && tPrefix != oreNormal) tPrefix.addListener(tProcessor);
-
+		
 		OreDictManager.INSTANCE.addListener(new RecyclingProcessing());
-		if (CODE_CLIENT) OreDictManager.INSTANCE.addListener(new RecyclingProcessingCrucibleFakeRecipes());
 	}
-
+	
 	public static class OreProcessing_CoversSimple implements IOreDictListenerEvent {
 		private final ICondition<OreDictMaterial> mCondition;
 		public final OreDictPrefix mTargetPrefix;
-
+		
 		public OreProcessing_CoversSimple(ICondition<OreDictMaterial> aCondition, OreDictPrefix aTargetPrefix) {
 			mTargetPrefix = aTargetPrefix;
 			mCondition = aCondition;
 		}
-
+		
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (mCondition.isTrue(aEvent.mMaterial)) {
@@ -223,7 +222,7 @@ public class Loader_OreProcessing implements Runnable {
 			}
 		}
 	}
-
+	
 	public static class OreProcessing_CoversMulti implements IOreDictListenerEvent {
 		private final ICondition<OreDictMaterial> mCondition;
 		public final OreDictPrefix[] mTargetPrefixes;
@@ -280,22 +279,6 @@ public class Loader_OreProcessing implements Runnable {
 		}
 	}
 	
-	public static class RecyclingProcessingCrucibleFakeRecipes implements IOreDictListenerRecyclable {
-		@Override
-		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
-			if (aEvent.mItemData == null || (aEvent.mItemData.mPrefix != null && aEvent.mItemData.mPrefix.contains(INGOT_BASED))) return;
-
-			List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
-			for (OreDictMaterialStack tMaterial : aEvent.mItemData.getAllMaterialStacks()) if (tMaterial.mMaterial.mTargetSmelting.mAmount > 0 && tMaterial.mMaterial.contains(MELTING)) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F), tMaterial.mMaterial.mTargetSmelting.mMaterial).addToList(tList);
-			if (tList.isEmpty()) return;
-
-			ArrayListNoNulls<ItemStack> tIngots = new ArrayListNoNulls<>();
-			for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
-
-			if (!tIngots.isEmpty()) RM.CrucibleSmelting.addFakeRecipe(F, ST.array(aEvent.mStack), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aEvent.mItemData.mMaterial.mMaterial.mMeltingPoint);
-		}
-	}
-
 	public static class OreProcessing_Ore implements IOreDictListenerEvent {
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {

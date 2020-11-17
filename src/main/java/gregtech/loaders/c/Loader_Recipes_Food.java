@@ -27,7 +27,6 @@ import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -537,11 +536,11 @@ public class Loader_Recipes_Food implements Runnable {
 		}
 		tOutput = OreDictManager.INSTANCE.getFirstOre("dropHoneydew", 1); if (ST.valid(tOutput))
 		RM.Coagulator       .addRecipe0(T,  0,   16, FL.Honeydew.make(200), NF, tOutput);
-		tOutput = IL.FR_Royal_Jelly.get(1, ST.make(MD.HaC, "royaljellyItem", 1)); if (ST.valid(tOutput))
+		tOutput = IL.FR_Royal_Jelly.get(1, IL.HaC_Royal_Jelly.get(1)); if (ST.valid(tOutput))
 		RM.Coagulator       .addRecipe0(T,  0,   16, FL.RoyalJelly.make(100), NF, tOutput);
 		
-		if (FL.Slime_Pink.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballPink", 1); if (ST.valid(tOutput))
-		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink .make(250), NF, tOutput);}
+		if (FL.Slime_Pink.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballPink", 1);
+		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink .make(250), NF, ST.valid(tOutput) ? tOutput : OP.nugget.mat(MT.MeatRaw, 1));}
 		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Green.make(250), NF, ST.make(Items.slime_ball, 1, 0));
 		
 		RM.Coagulator       .addRecipe0(T,  0, 1024, FL.Milk   .make(1000), NF, IL.Food_Cheese.get(1));
