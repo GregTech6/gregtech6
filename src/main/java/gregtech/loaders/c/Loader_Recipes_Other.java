@@ -566,7 +566,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		}
 		
-		RM.Lightning    .addRecipe2(T, 16, 2048, ST.tag(0), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
+		RM.Lightning    .addRecipe2(T, 16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
 		
 		for (byte i = 0; i < 16; i++) {
 		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), OM.dust(MT.Dynamite, U*1), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite.get(1));

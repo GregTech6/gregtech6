@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+[IMPROVED] Ores that generate between two Stone Layers are now no longer stopped by other Mods equal Blocks (like comparing GT Marble with Chisel Marble, both should obviously count as Marble, which they did not before)
 [FIXED] Some minor Inconsistencies.
 [FIXED] Insanely large Capacity Pipes had Integer Overflow Issues.
 

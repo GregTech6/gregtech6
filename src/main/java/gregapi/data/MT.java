@@ -2545,7 +2545,7 @@ public class MT {
 			OREMATS.Chromite                .addOreByProducts(MnO2                  , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
 			OREMATS.Bromargyrite            .addOreByProducts(MnO2                  , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
 			OREMATS.Pollucite               .addOreByProducts(Cs                    , Al2O3                     , Rb                    );
-			Asbestos                        .addOreByProducts(Asbestos              , SiO2                      , Mg                    );
+			Asbestos                        .addOreByProducts(SiO2                  , Mg                        , Soapstone             , Talc                  );
 			Phosphorus                      .addOreByProducts(Phosphorite           , Apatite                   , CaF2                  , PO4                   );
 			Apatite                         .addOreByProducts(Phosphorite           , Phosphorus                , CaF2                  , PO4                   );
 			Sapphire                        .addOreByProducts(Ruby                  , PurpleSapphire            , GreenSapphire         );
@@ -2734,7 +2734,7 @@ public class MT {
 			
 			Dn                              .addOreByProducts(Tn                    );
 			Tn                              .addOreByProducts(Dn                    );
-			Dolamide                        .addOreByProducts(MT.Dilithium          , OREMATS.DiduraniumTrioxide, OREMATS.DuraniumHexafluoride, OREMATS.DuraniumHexaastatide, OREMATS.DuraniumHexabromide);
+			Dolamide                        .addOreByProducts(Dilithium             , OREMATS.DiduraniumTrioxide, OREMATS.DuraniumHexafluoride, OREMATS.DuraniumHexaastatide, OREMATS.DuraniumHexabromide);
 			
 			Alduorite                       .addOreByProducts(Cd                    );
 			Infuscolium                     .addOreByProducts(Cu                    );
