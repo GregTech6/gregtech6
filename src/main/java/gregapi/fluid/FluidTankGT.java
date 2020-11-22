@@ -296,7 +296,7 @@ public class FluidTankGT implements IFluidTank {
 	public long capacity_(                 ) {return capacity_(mFluid);}
 	public long capacity_(FluidStack aFluid) {return aFluid == null ? mCapacity : capacity_(aFluid.getFluid());}
 	public long capacity_(Fluid      aFluid) {return aFluid == null ? mCapacity : capacity_(aFluid.getName());}
-	public long capacity_(String     aFluid) {return aFluid == null ? mCapacity : Math.max(mAdjustableCapacity.get(aFluid) * mAdjustableMultiplier, mCapacity);}
+	public long capacity_(String     aFluid) {return aFluid == null ? mCapacity : Math.max(mAdjustableCapacity.get(aFluid) * mAdjustableMultiplier, Math.max(mAmount, mCapacity));}
 	
 	public String name() {return mFluid == null ? null : mFluid.getFluid().getName();}
 	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
