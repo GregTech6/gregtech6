@@ -115,7 +115,7 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 		if (mFluidInputPerUnit != null) {
 			aMap.mMaxFluidInputSize = Math.max(mFluidInputPerUnit.amount * 16, aMap.mMaxFluidInputSize);
 			Long tSize = aMap.mMinInputTankSizes.get(mFluidInputPerUnit.getFluid().getName());
-			if (tSize != null && tSize < mFluidInputPerUnit.amount) aMap.mMinInputTankSizes.put(mFluidInputPerUnit.getFluid().getName(), (long)mFluidInputPerUnit.amount);
+			if (tSize == null || tSize < mFluidInputPerUnit.amount) aMap.mMinInputTankSizes.put(mFluidInputPerUnit.getFluid().getName(), (long)mFluidInputPerUnit.amount);
 		}
 		if (mFluidOutputPerUnit != null) {
 			aMap.mMaxFluidOutputSize = Math.max(mFluidOutputPerUnit.amount * 16, aMap.mMaxFluidOutputSize);
