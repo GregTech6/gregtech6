@@ -87,7 +87,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
 
-		int tCapacity = Math.max(1000, mRecipes.mMaxFluidInputSize * 2);
+		int tCapacity = 1000;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTanksInput = new FluidTankGT[mRecipes.mInputFluidCount];
 		for (int i = 0; i < mTanksInput.length; i++) mTanksInput[i] = new FluidTankGT(tCapacity).readFromNBT(aNBT, NBT_TANK+".in."+i);

@@ -69,6 +69,8 @@ public class Recipe {
 		public final ItemStackMap<ItemStackContainer, Collection<Recipe>> mRecipeItemMap = new ItemStackMap<>();
 		/** HashMap of Recipes based on their Fluids */
 		public final Map<String, Collection<Recipe>> mRecipeFluidMap = new HashMap<>();
+		/** HashMap of Minimum Tank Sizes based on the Input Fluids */
+		public final Map<String, Long> mMinInputTankSizes = new HashMap<>();
 		/** The List of all Recipes */
 		public final Collection<Recipe> mRecipeList;
 		/** Used to detect if MineTweaker fucked with the Recipe List without also fixing the HashMaps. */
@@ -371,10 +373,12 @@ public class Recipe {
 			mRecipeListSize++;
 			
 			for (FluidStack aFluid : aRecipe.mFluidInputs) if (aFluid != null) {
+				String aFluidName = aFluid.getFluid().getName();
 				mMaxFluidInputSize = Math.max(mMaxFluidInputSize, aFluid.amount);
-				Collection<Recipe> tList = mRecipeFluidMap.get(aFluid.getFluid().getName());
-				if (tList == null) mRecipeFluidMap.put(aFluid.getFluid().getName(), tList = new HashSet<>(1));
+				Collection<Recipe> tList = mRecipeFluidMap.get(aFluidName);
+				if (tList == null) mRecipeFluidMap.put(aFluidName, tList = new HashSet<>(1));
 				tList.add(aRecipe);
+				if (mMinInputTankSizes.get(aFluidName) < aFluid.amount) mMinInputTankSizes.put(aFluidName, (long)aFluid.amount);
 			}
 			for (FluidStack aFluid : aRecipe.mFluidOutputs) if (aFluid != null) {
 				mMaxFluidOutputSize = Math.max(mMaxFluidOutputSize, aFluid.amount);
@@ -422,6 +426,13 @@ public class Recipe {
 			if (mRecipeMapHandlers.isEmpty()) return F;
 			for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.containsInput(this, aFluid)) return T;
 			return F;
+		}
+		
+		/** @return the Tank Size that is the Minimum for this Fluid Input.*/
+		public long minTankSize(Fluid aFluid) {
+			if (aFluid == null) return 1000;
+			Object tSize = mMinInputTankSizes.get(aFluid.getName());
+			return tSize == null ? 1000 : Math.max(1000, (long)tSize);
 		}
 		
 		private Recipe oRecipe = null;
