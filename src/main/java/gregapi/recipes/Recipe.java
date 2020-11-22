@@ -378,7 +378,8 @@ public class Recipe {
 				Collection<Recipe> tList = mRecipeFluidMap.get(aFluidName);
 				if (tList == null) mRecipeFluidMap.put(aFluidName, tList = new HashSet<>(1));
 				tList.add(aRecipe);
-				if (mMinInputTankSizes.get(aFluidName) < aFluid.amount) mMinInputTankSizes.put(aFluidName, (long)aFluid.amount);
+				Long tSize = mMinInputTankSizes.get(aFluidName);
+				if (tSize != null && tSize < aFluid.amount) mMinInputTankSizes.put(aFluidName, (long)aFluid.amount);
 			}
 			for (FluidStack aFluid : aRecipe.mFluidOutputs) if (aFluid != null) {
 				mMaxFluidOutputSize = Math.max(mMaxFluidOutputSize, aFluid.amount);

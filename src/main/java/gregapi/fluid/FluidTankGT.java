@@ -272,8 +272,8 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT setCapacity(Map<String, Long> aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap; mAdjustableMultiplier = aCapacityMultiplier; return this;}
 	
 	public boolean isEmpty() {return mFluid == null;}
-	public boolean isFull() {return mFluid != null && mAmount     >= capacity();}
-	public boolean isHalf() {return mFluid != null && mAmount * 2 >= capacity();}
+	public boolean isFull () {return mFluid != null && mAmount     >= capacity();}
+	public boolean isHalf () {return mFluid != null && mAmount * 2 >= capacity();}
 	
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
 	public boolean contains(FluidStack aFluid) {return FL.equal(mFluid, aFluid);}
@@ -292,11 +292,13 @@ public class FluidTankGT implements IFluidTank {
 	public long capacity (FluidStack aFluid) {return mAdjustableCapacity == null ? mCapacity : capacity_(aFluid);}
 	public long capacity (Fluid      aFluid) {return mAdjustableCapacity == null ? mCapacity : capacity_(aFluid);}
 	public long capacity (String     aFluid) {return mAdjustableCapacity == null ? mCapacity : capacity_(aFluid);}
-	
-	public long capacity_(                 ) {return capacity_(mFluid);}
 	public long capacity_(FluidStack aFluid) {return aFluid == null ? mCapacity : capacity_(aFluid.getFluid());}
 	public long capacity_(Fluid      aFluid) {return aFluid == null ? mCapacity : capacity_(aFluid.getName());}
-	public long capacity_(String     aFluid) {return aFluid == null ? mCapacity : Math.max(mAdjustableCapacity.get(aFluid) * mAdjustableMultiplier, Math.max(mAmount, mCapacity));}
+	public long capacity_(String     aFluid) {
+		if (aFluid == null) return mCapacity;
+		Long tSize = mAdjustableCapacity.get(aFluid);
+		return tSize == null ? Math.max(mAmount, mCapacity) : Math.max(tSize * mAdjustableMultiplier, Math.max(mAmount, mCapacity));
+	}
 	
 	public String name() {return mFluid == null ? null : mFluid.getFluid().getName();}
 	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
