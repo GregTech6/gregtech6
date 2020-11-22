@@ -216,7 +216,11 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			if (aFluid instanceof FluidGT) {
 				aList.add(LH.Chat.DGRAY + "Fluid owned by GT6" + LH.Chat.GRAY);
 			} else {
-				aList.add(LH.Chat.DGRAY + "Fluid NOT owned by GT6" + LH.Chat.GRAY);
+				if (FL.Water.is(aFluid) || FL.Lava.is(aFluid)) {
+					aList.add(LH.Chat.DGRAY + "Fluid owned by vanilla Minecraft" + LH.Chat.GRAY);
+				} else {
+					aList.add(LH.Chat.DGRAY + "Fluid NOT owned by GT6" + LH.Chat.GRAY);
+				}
 			}
 		}
 	}
