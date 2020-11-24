@@ -22,6 +22,12 @@ jobs:
       run: chmod +x gradlew
     #- name: Fetch git tags to know if this is a release
     #  run: git fetch --prune --unshallow --tags
+    - name: Update cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle
+        key: .gradle
     - name: Build with Gradle
       env:
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
@@ -29,12 +35,6 @@ jobs:
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ARTIFACT_VERSION: SNAPSHOT
       run: ./gradlew setupCIWorkspace build uploadArchives
-    - name: Update cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle
-        key: .gradle
     - name: Regenerate website
       env:
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
