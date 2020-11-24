@@ -5,11 +5,11 @@ This is the most recent Changelog. It also contains some of the changes inside t
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Life and things)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Life and things)
 [IMPROVED] Ores that generate between two Stone Layers are now no longer stopped by other Mods equal Blocks (like comparing GT Marble with Chisel Marble, both should obviously count as Marble, which they did not before)
 [IMPROVED] Basic Machine Input Tanks now have Capacities based off the actual Recipe Inputs. That way a single huge Recipe wont mess up automation of the many smaller ones.
 [FIXED] Some minor Inconsistencies.
