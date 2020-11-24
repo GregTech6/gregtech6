@@ -29,6 +29,9 @@
 # Meta Project Files
 !/.meta/**/*
 
+# Github files
+!/.github/**/*
+
 # Default Config Pack
 !/.defaultconfigs/**/*
 /.defaultconfigs/**/.directory
