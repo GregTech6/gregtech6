@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,7 +44,7 @@ public class WorldgenNexus extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenNexus(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
+		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_NEXUS = mEnabled;
 	}
 	

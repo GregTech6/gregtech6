@@ -38,32 +38,34 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		Block tHexorium = ST.block(MD.HEX, "blockEnergizedHexoriumMonolithRainbow");
 		
 		for (int tX = 5; tX <= 10; tX++) for (int tZ = 5; tZ <= 10; tZ++) {
-			aData.set(tX, 0, tZ, Blocks.end_stone, 0);
 			if ((tX == 5 || tX == 10) && (tZ == 5 || tZ == 10)) {
-				aData.set(tX, 1, tZ, Blocks.end_stone, 0);
+				aData.obsidian(tX,  0, tZ, T);
+				aData.obsidian(tX,  1, tZ, T);
 				if (tHexorium != NB && tHexorium != null) {
 					aData.set(tX, 2, tZ, tHexorium, 9, 3);
 				} else {
 					aData.set(tX, 2, tZ, Blocks.glowstone, 0, 3);
 				}
+			} else {
+				aData.set(tX, 0, tZ, Blocks.end_stone, 0);
 			}
 		}
-		aData.set( 7,  0,  6, Blocks.end_portal_frame, 4);
-		aData.set( 8,  0,  6, Blocks.end_portal_frame, 4);
-		aData.set( 9,  0,  7, Blocks.end_portal_frame, 5);
-		aData.set( 9,  0,  8, Blocks.end_portal_frame, 5);
-		aData.set( 7,  0,  9, Blocks.end_portal_frame, 6);
-		aData.set( 8,  0,  9, Blocks.end_portal_frame, 6);
-		aData.set( 6,  0,  7, Blocks.end_portal_frame, 7);
-		aData.set( 6,  0,  8, Blocks.end_portal_frame, 7);
-		aData.set( 7,  0,  7, Blocks.end_portal, 0);
-		aData.set( 7,  0,  8, Blocks.end_portal, 0);
-		aData.set( 8,  0,  7, Blocks.end_portal, 0);
-		aData.set( 8,  0,  8, Blocks.end_portal, 0);
-		aData.set( 7, -1,  7, Blocks.end_stone, 0);
-		aData.set( 7, -1,  8, Blocks.end_stone, 0);
-		aData.set( 8, -1,  7, Blocks.end_stone, 0);
-		aData.set( 8, -1,  8, Blocks.end_stone, 0);
+		aData.set     ( 7,  0,  6, Blocks.end_portal_frame, 4);
+		aData.set     ( 8,  0,  6, Blocks.end_portal_frame, 4);
+		aData.set     ( 9,  0,  7, Blocks.end_portal_frame, 5);
+		aData.set     ( 9,  0,  8, Blocks.end_portal_frame, 5);
+		aData.set     ( 7,  0,  9, Blocks.end_portal_frame, 6);
+		aData.set     ( 8,  0,  9, Blocks.end_portal_frame, 6);
+		aData.set     ( 6,  0,  7, Blocks.end_portal_frame, 7);
+		aData.set     ( 6,  0,  8, Blocks.end_portal_frame, 7);
+		aData.set     ( 7,  0,  7, Blocks.end_portal, 0);
+		aData.set     ( 7,  0,  8, Blocks.end_portal, 0);
+		aData.set     ( 8,  0,  7, Blocks.end_portal, 0);
+		aData.set     ( 8,  0,  8, Blocks.end_portal, 0);
+		aData.obsidian( 7, -1,  7, T);
+		aData.obsidian( 7, -1,  8, T);
+		aData.obsidian( 8, -1,  7, T);
+		aData.obsidian( 8, -1,  8, T);
 		return T;
 	}
 }

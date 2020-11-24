@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,6 +39,7 @@ public class Compat_Recipes_Mystcraft extends CompatMods {
 		
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black]) {
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.Water.make(125)), FL.Myst_Ink.make(500), ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.SpDew.make(100)), FL.Myst_Ink.make(500), ZL_IS);
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.DistW.make(125)), FL.Myst_Ink.make(500), ZL_IS);
 		}
 	}

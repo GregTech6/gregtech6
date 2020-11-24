@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,7 +36,7 @@ import net.minecraft.util.IIcon;
 public abstract class BlockBaseMeta extends BlockBaseSealable {
 	public IIconContainer[] mIcons;
 	/** For Creative Subsets, not actually important. */
-	public final byte mMaxMeta;
+	private final byte mMaxMeta;
 	
 	public BlockBaseMeta(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType);
@@ -44,6 +44,7 @@ public abstract class BlockBaseMeta extends BlockBaseSealable {
 		mIcons = aIcons;
 	}
 	
+	@Override public byte maxMeta() {return mMaxMeta;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[aMeta % mIcons.length].getIcon(0);}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {for (int i = 0; i < mMaxMeta; i++) aList.add(ST.make(aItem, 1, i));}
 }

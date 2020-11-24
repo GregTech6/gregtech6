@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,9 +41,12 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalBetweenlands>
+	public static List<MultiTileEntityMiniPortal>
 	sListBetweenlandsSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListBetweenlandsSide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.betweenlands.tooltip.1", "Only works between the Betweenlands and the Overworld!");
@@ -64,7 +67,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 		if (MD.BTL.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListBetweenlandsSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListBetweenlandsSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +79,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 				}
 			} else if (WD.dimBTL(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -95,22 +98,16 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 		if (MD.BTL.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalBetweenlands tPortal : sListBetweenlandsSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListBetweenlandsSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimBTL(worldObj)) {
 				if (!sListBetweenlandsSide.contains(this)) sListBetweenlandsSide.add(this);
-				for (MultiTileEntityMiniPortalBetweenlands tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListBetweenlandsSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListBetweenlandsSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

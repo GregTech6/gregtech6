@@ -250,11 +250,16 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 								for (ItemStack tOffSpring : mOffSpring) if (ST.valid(tOffSpring)) Util.setBumbleTag(tOffSpring, Util.getBumbleGenes(tRoyalStack, tBreedStack, RNGSUS));
 								
 								mLife = Util.getLifeSpan(tRoyalTag);
-								decrStackSize(tBreedSlot, tBreedSlot == SLOT_DRONE && tBreedStack.stackSize > 1 ? 2 : 1);
+								
+								int tLoss = (tBreedSlot == SLOT_DRONE && tBreedStack.stackSize > 1 ? 2 : 1);
+								ItemStack tDead = tBreedItem.bumbleKill(ST.amount(tLoss, tBreedStack));
+								for (int tDeadSlot : SLOTS_DEAD) if (addStackToSlot(tDeadSlot, tDead)) break;
+								decrStackSize(tBreedSlot, tLoss);
+								
 								slot(SLOT_ROYAL, ST.amount(1, tRoyalItem.bumbleCrown(tRoyalStack)));
 								
 								for (int tDroneSlot : SLOTS_DRONE) if (slotHas(tDroneSlot) && slot(tDroneSlot).getItem() instanceof IItemBumbleBee && ((IItemBumbleBee)slot(tDroneSlot).getItem()).bumbleType(slot(tDroneSlot)) % 5 != 0) {
-									ItemStack tDead = ((IItemBumbleBee)slot(tDroneSlot).getItem()).bumbleKill(slotTake(tDroneSlot));
+									tDead = ((IItemBumbleBee)slot(tDroneSlot).getItem()).bumbleKill(slotTake(tDroneSlot));
 									for (int tDeadSlot : SLOTS_DEAD) if (addStackToSlot(tDeadSlot, tDead)) break;
 								}
 							}

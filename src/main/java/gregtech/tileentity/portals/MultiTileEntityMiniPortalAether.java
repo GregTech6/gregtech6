@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,14 +41,17 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalAether>
+	public static List<MultiTileEntityMiniPortal>
 	sListAetherSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListAetherSide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.aether.tooltip.1", "Only works between the Aether and the Overworld!");
 		LH.add("gt.tileentity.portal.aether.tooltip.2", "Margin of Error to still work: 128 Meters.");
-		LH.add("gt.tileentity.portal.aether.tooltip.3", "Requires Holy Water for activation");
+		LH.add("gt.tileentity.portal.aether.tooltip.3", "Requires a Glass Bottle of Holy Water for activation");
 	}
 	
 	@Override
@@ -64,7 +67,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 		if (MD.AETHER.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAether tTarget : sListAetherSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListAetherSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +79,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 				}
 			} else if (WD.dimAETHER(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAether tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -95,22 +98,16 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 		if (MD.AETHER.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalAether tPortal : sListAetherSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListAetherSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimAETHER(worldObj)) {
 				if (!sListAetherSide.contains(this)) sListAetherSide.add(this);
-				for (MultiTileEntityMiniPortalAether tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListAetherSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListAetherSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

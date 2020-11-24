@@ -125,9 +125,9 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.oreMud                     = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.mud"              , OP.oreMud                 , null                                  , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallMud                = new PrefixBlock_(MD.GT, "gt.meta.ore.small.mud"               , OP.oreSmall               , new Drops_SmallOre(null)              , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(BlocksGT.Diggables     , 1, 0), BlocksGT.oreSmallMud           );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreMud     );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreMud     );
+		BlocksGT.stoneToSmallOres .put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreSmallMud);
 		
 		//====================================================================================================//
 		
@@ -174,14 +174,14 @@ public class Loader_Ores implements Runnable {
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "sedimentaryStone", i, i+8, "sedimentaryStone", i, "ub.sedimentary."+i, tPrefix[i], tDrops[i]);
 		
 		if (MD.PFAA.mLoaded) {
-		RM.generify(ST.make(MD.PFAA, "weakStone"            , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "mediumStone"          , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "strongStone"          , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "veryStrongStone"      , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "weakRubble"           , 1, W), ST.make(Blocks.gravel, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "mediumCobble"         , 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "strongCobble"         , 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "veryStrongCobble"     , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "weakStone"       , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "mediumStone"     , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "strongStone"     , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "veryStrongStone" , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "weakRubble"      , 1, W), ST.make(Blocks.gravel, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "mediumCobble"    , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "strongCobble"    , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "veryStrongCobble", 1, W), ST.make(Blocks.cobblestone, 1, 0));
 		}
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreShale};
@@ -207,9 +207,6 @@ public class Loader_Ores implements Runnable {
 		
 		rockset(MD.CHSL, "marble"                       , 0, "chisel.marble"        , OP.oreMarble              , MT.Marble);
 		rockset(MD.CHSL, "limestone"                    , 0, "chisel.limestone"     , OP.oreLimestone           , MT.Limestone);
-		
-		rockset(MD.NePl, "Blackstone"                   , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
-		rockset(MD.NePl, "Basalt"                       , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
 		
 		rockset(MD.EtFu, "stone"                        , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.Granite);
 		rockset(MD.EtFu, "stone"                        , 3, "etfu.diorite"         , OP.oreDiorite             , MT.Diorite);
@@ -240,8 +237,19 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.MIN, "pegmatite"                     , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
 		rockset(MD.MIN, "chert"                         , 0, "min.chert"            , OP.oreVanillastone        , MT.Chert);
 		
+		if (MD.NePl.mLoaded) {
+		rockset(MD.NePl, "Blackstone"                   , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
+		rockset(MD.NePl, "Basalt"                       , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
+		}
+		if (MD.NeLi.mLoaded) {
+		rockset(MD.NeLi, "Blackstone"                   , 0, "neli.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
+		rockset(MD.NeLi, "Basalt"                       , 0, "neli.basalt"          , OP.oreBasalt              , MT.Basalt);
+		}
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
+		}
+		if (MD.TF.mLoaded) {
+		rockset(MD.TF, "tile.TFDeadrock"                , 2, "twilight.deadrock"    , OP.oreDeadrock            , MT.Deadrock);
 		}
 		if (MD.AETHER.mLoaded) {
 		rockset(MD.AETHER, "holystone"                  , 1, "aether.holystone"     , OP.oreHolystone           , MT.Holystone);

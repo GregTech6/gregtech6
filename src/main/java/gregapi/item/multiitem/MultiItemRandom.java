@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -79,11 +79,12 @@ import net.minecraftforge.fluids.FluidStack;
 @Optional.InterfaceList(value = {
   @Optional.Interface(iface = "squeek.applecore.api.food.IEdible", modid = ModIDs.APC)
 , @Optional.Interface(iface = "ic2.api.item.IItemReactorPlanStorage", modid = ModIDs.IC2C)
+, @Optional.Interface(iface = "ic2.api.item.IBoxable", modid = ModIDs.IC2)
 , @Optional.Interface(iface = "ic2.api.item.ISpecialElectricItem", modid = ModIDs.IC2)
 , @Optional.Interface(iface = "ic2.api.item.IElectricItemManager", modid = ModIDs.IC2)
 , @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.item.IItemElectric", modid = ModIDs.GC)
 })
-public abstract class MultiItemRandom extends MultiItem implements Runnable, squeek.applecore.api.food.IEdible, ic2.api.item.IItemReactorPlanStorage, ISpecialElectricItem, IElectricItemManager, IItemElectric {
+public abstract class MultiItemRandom extends MultiItem implements Runnable, squeek.applecore.api.food.IEdible, ic2.api.item.IBoxable, ic2.api.item.IItemReactorPlanStorage, ISpecialElectricItem, IElectricItemManager, IItemElectric {
 	public final BitSet mEnabledItems = new BitSet(32767);
 	public final BitSet mVisibleItems = new BitSet(32767);
 	public final IIcon[][] mIconList = new IIcon[32767][1];
@@ -433,6 +434,11 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		IFoodStat tStat = mFoodStats.get((short)getDamage(aStack));
 		if (tStat != null) tStat.addAdditionalToolTips(this, aList, aStack, aF3_H);
+	}
+	
+	@Override
+	public boolean canBeStoredInToolbox(ItemStack aStack) {
+		return mElectricStats.get(ST.meta(aStack)) != null;
 	}
 	
 	@Override

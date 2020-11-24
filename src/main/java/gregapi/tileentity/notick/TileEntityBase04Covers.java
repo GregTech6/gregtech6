@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -440,17 +440,17 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	}
 	
 	@Override
-	public final int isProvidingWeakPower(byte aSide) {
-		byte tActualSide = OPPOSITES[aSide];
-		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutWeak(tActualSide, mCovers, isProvidingWeakPower2(aSide));
-		return isProvidingWeakPower2(aSide);
+	public final int isProvidingWeakPower(byte aOppositeSide) {
+		byte tActualSide = OPPOSITES[aOppositeSide];
+		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutWeak(tActualSide, mCovers, isProvidingWeakPower2(aOppositeSide));
+		return isProvidingWeakPower2(aOppositeSide);
 	}
 	
 	@Override
-	public final int isProvidingStrongPower(byte aSide) {
-		byte tActualSide = OPPOSITES[aSide];
-		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutStrong(tActualSide, mCovers, isProvidingStrongPower2(aSide));
-		return isProvidingStrongPower2(aSide);
+	public final int isProvidingStrongPower(byte aOppositeSide) {
+		byte tActualSide = OPPOSITES[aOppositeSide];
+		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutStrong(tActualSide, mCovers, isProvidingStrongPower2(aOppositeSide));
+		return isProvidingStrongPower2(aOppositeSide);
 	}
 	
 	public byte isProvidingWeakPower2(byte aSide) {return 0;}

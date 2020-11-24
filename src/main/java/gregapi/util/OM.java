@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -102,17 +102,17 @@ public class OM {
 	public static void data(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount, OreDictMaterial aByProduct2, long aByProduct2Amount, OreDictMaterial aByProduct3, long aByProduct3Amount, OreDictMaterial aByProduct4, long aByProduct4Amount, OreDictMaterial aByProduct5, long aByProduct5Amount, OreDictMaterial aByProduct6, long aByProduct6Amount, OreDictMaterial aByProduct7, long aByProduct7Amount, OreDictMaterial aByProduct8, long aByProduct8Amount) {
 		data(ST.make(aModID, aModItemName, aStackSize, aMetaData), new OreDictItemData(aMaterial, aAmount, OM.stack(aByProduct, aByProductAmount), OM.stack(aByProduct2, aByProduct2Amount), OM.stack(aByProduct3, aByProduct3Amount), OM.stack(aByProduct4, aByProduct4Amount), OM.stack(aByProduct5, aByProduct5Amount), OM.stack(aByProduct6, aByProduct6Amount), OM.stack(aByProduct7, aByProduct7Amount), OM.stack(aByProduct8, aByProduct8Amount)));
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictItemData aData) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aData);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictItemData aData) {
+		dat2(ST.make(aModID, aModItemName, aStackSize, 0), aData);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aByProducts);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
+		dat2(ST.make(aModID, aModItemName, aStackSize, 0), aMaterial, aByProducts);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aAmount, aByProducts);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
+		dat2(ST.make(aModID, aModItemName, aStackSize, 0), aMaterial, aAmount, aByProducts);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aAmount, aByProduct, aByProductAmount);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
+		dat2(ST.make(aModID, aModItemName, aStackSize, 0), aMaterial, aAmount, aByProduct, aByProductAmount);
 	}
 	public static void data(ItemStack aStack, OreDictItemData aData) {
 		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, aData);
@@ -148,16 +148,16 @@ public class OM {
 		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, new OreDictItemData(aMaterial, aAmount, OM.stack(aByProduct, aByProductAmount), OM.stack(aByProduct2, aByProduct2Amount), OM.stack(aByProduct3, aByProduct3Amount), OM.stack(aByProduct4, aByProduct4Amount), OM.stack(aByProduct5, aByProduct5Amount), OM.stack(aByProduct6, aByProduct6Amount), OM.stack(aByProduct7, aByProduct7Amount), OM.stack(aByProduct8, aByProduct8Amount)));
 	}
 	public static void dat2(ItemStack aStack, OreDictItemData aData) {
-		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, aData.setUseVanillaDamage());
+		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(ST.copyMeta(0, aStack), aData.setUseVanillaDamage());
 	}
 	public static void dat2(ItemStack aStack, OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
-		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, new OreDictItemData(aMaterial, aByProducts).setUseVanillaDamage());
+		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(ST.copyMeta(0, aStack), new OreDictItemData(aMaterial, aByProducts).setUseVanillaDamage());
 	}
 	public static void dat2(ItemStack aStack, OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
-		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, new OreDictItemData(aMaterial, aAmount, aByProducts).setUseVanillaDamage());
+		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(ST.copyMeta(0, aStack), new OreDictItemData(aMaterial, aAmount, aByProducts).setUseVanillaDamage());
 	}
 	public static void dat2(ItemStack aStack, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
-		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, new OreDictItemData(aMaterial, aAmount, aByProduct, aByProductAmount).setUseVanillaDamage());
+		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(ST.copyMeta(0, aStack), new OreDictItemData(aMaterial, aAmount, aByProduct, aByProductAmount).setUseVanillaDamage());
 	}
 	
 	public static OreDictItemData data(String aOre) {
@@ -266,6 +266,9 @@ public class OM {
 	public static boolean prefixcontains(OreDictItemData aData, TagData... aTags) {
 		return aData != null && aData.mPrefix != null && aData.mPrefix.containsAll(aTags);
 	}
+	public static boolean prefixcontainsany(OreDictItemData aData, TagData... aTags) {
+		return aData != null && aData.mPrefix != null && aData.mPrefix.containsAny(aTags);
+	}
 	
 	public static boolean materialcontains(ItemStack aStack, TagData... aTags) {
 		return materialcontains(anydata(aStack), aTags);
@@ -273,20 +276,31 @@ public class OM {
 	public static boolean materialcontains_(ItemStack aStack, TagData... aTags) {
 		return materialcontains(anydata_(aStack), aTags);
 	}
-	
 	public static boolean materialcontains(OreDictItemData aData, TagData... aTags) {
 		return aData != null && aData.mMaterial != null && aData.mMaterial.mMaterial.containsAll(aTags);
 	}
+	public static boolean materialcontainsany(OreDictItemData aData, TagData... aTags) {
+		return aData != null && aData.mMaterial != null && aData.mMaterial.mMaterial.containsAny(aTags);
+	}
 	
 	public static boolean materialcontained(ItemStack aStack, OreDictMaterial... aMaterials) {
-		return materialcontained(anydata(aStack), aMaterials);
+		return materialcontained(anydata(aStack), F, aMaterials);
 	}
 	public static boolean materialcontained_(ItemStack aStack, OreDictMaterial... aMaterials) {
-		return materialcontained(anydata_(aStack), aMaterials);
+		return materialcontained(anydata_(aStack), F, aMaterials);
 	}
-	
 	public static boolean materialcontained(OreDictItemData aData, OreDictMaterial... aMaterials) {
-		if (aData != null) for (OreDictMaterial aMaterial : aMaterials) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (aMaterial == tMaterial.mMaterial) return T; return F;
+		return materialcontained(aData, F, aMaterials);
+	}
+	public static boolean materialcontained(ItemStack aStack, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		return materialcontained(anydata(aStack), aReturnWhenNoData, aMaterials);
+	}
+	public static boolean materialcontained_(ItemStack aStack, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		return materialcontained(anydata_(aStack), aReturnWhenNoData, aMaterials);
+	}
+	public static boolean materialcontained(OreDictItemData aData, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		if (aData == null) return aReturnWhenNoData;
+		for (OreDictMaterial aMaterial : aMaterials) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (aMaterial == tMaterial.mMaterial) return T; return F;
 	}
 	
 	public static void blacklist(ItemStack aStack) {
@@ -340,6 +354,10 @@ public class OM {
 	
 	public static ItemStack dust(OreDictMaterialStack aMaterial) {
 		return aMaterial==null?null:dust(aMaterial.mMaterial, aMaterial.mAmount);
+	}
+	
+	public static ItemStack dust(OreDictMaterialStack aMaterial, long aMultiplier, long aDivider) {
+		return aMaterial==null?null:dust(aMaterial.mMaterial, (aMaterial.mAmount * aMultiplier) / aDivider);
 	}
 	
 	public static ItemStack dust(OreDictMaterial aMaterial, OreDictPrefix aPrefix) {

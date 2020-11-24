@@ -41,6 +41,7 @@ import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.IPrefixItem;
@@ -97,7 +98,8 @@ public final class OreDictManager {
 	private final Set<String> mAutoBlackListedMods = new HashSetNoNulls<>();
 	/** Lists all Names which are definitely not unknown. */
 	private final Set<String> mKnownNames = new HashSetNoNulls<>(F
-	, "slimeballRice", "buttonWood"
+	, "oreHeeInstabilityOrb", "oreHeeEndPowder", "oreHeeIgneousRock", "oreHeeStardust"
+	, "rennetSource", "yeastBrewers", "yeastLager", "yeastBayanus", "yeastEthereal", "yeastOrigin"
 	, "holystone", "darkStone", "whiteStone", "brightStone", "lavastone"
 	, "mycelium", "podzol", "grass", "soulSand", "taintedSoil"
 	, "snowLayer", "ice", "cloud"
@@ -266,10 +268,11 @@ public final class OreDictManager {
 	}
 	
 	private static class OreDictEventContainer {
-		protected final String mModID;
+		protected final String mModID, mRegName;
 		protected final OreRegisterEvent mEvent;
 		
-		protected OreDictEventContainer(String aModID, OreRegisterEvent aEvent) {
+		protected OreDictEventContainer(String aModID, String aRegName, OreRegisterEvent aEvent) {
+			mRegName = aRegName;
 			mModID = aModID;
 			mEvent = aEvent;
 		}
@@ -285,7 +288,7 @@ public final class OreDictManager {
 			UT.LoadingBar.start("OreDict", tBufferedRegistrations.size());
 			for (OreDictEventContainer tContainer : tBufferedRegistrations) {
 				UT.LoadingBar.step(tContainer.mEvent.Name);
-				onOreRegistration2(tContainer.mModID, tContainer.mEvent);
+				onOreRegistration2(tContainer.mModID, tContainer.mRegName, tContainer.mEvent);
 			}
 			tBufferedRegistrations.clear();
 			UT.LoadingBar.finish();
@@ -304,8 +307,16 @@ public final class OreDictManager {
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
 		ModContainer tContainer = Loader.instance().activeModContainer();
 		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
+		
+		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
+		if (aEvent.Ore == null) {ERR.println("ERROR: A NULL STACK from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
+		if (aEvent.Ore.getItem() == null) {ERR.println("ERROR: A NULL ITEM from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		
 		String aRegName = ST.regName(aEvent.Ore);
-		if (UT.Code.stringInvalid(aRegName)) return;
+		
+		// Yeah this definitely can happen, and I want to see it if any Mod fucks that one up, so I can potentially fix that..
+		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block as: " + aEvent.Name); return;}
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
 		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
@@ -314,9 +325,9 @@ public final class OreDictManager {
 		if (GT != null) {
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
-			if (MD.TC .mLoaded && aModID.equals(MD.TC .mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
-			if (MD.HBM.mLoaded && aModID.equals(MD.HBM.mID) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
+			if (MD.HBM .owns(aRegName) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
 			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
 			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
 			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
@@ -328,9 +339,9 @@ public final class OreDictManager {
 			// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
 			// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
 			// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
-			if (MD.RoC.mLoaded && aModID.equals(MD.RoC.mID) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
+			if (MD.RoC.owns(aRegName) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
 				ItemStack tTargetStack = null, tFoundStack = null;
-				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it would be supposed to.
+				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it is supposed to.
 				for (ItemStack tStack : OreDictionary.getOres(aEvent.Name, F)) if (ST.equal(tStack, aEvent.Ore)) tFoundStack = tStack; else tTargetStack = tStack;
 				if (tTargetStack != null) {
 					ST.set(tFoundStack, tTargetStack);
@@ -350,9 +361,9 @@ public final class OreDictManager {
 		
 		if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains(" ") || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
 			if (mBufferedRegistrations == null) {
-				onOreRegistration2(aModID, aEvent);
+				onOreRegistration2(aModID, aRegName, aEvent);
 			} else {
-				mBufferedRegistrations.add(new OreDictEventContainer(aModID, aEvent));
+				mBufferedRegistrations.add(new OreDictEventContainer(aModID, aRegName, aEvent));
 			}
 		}
 		
@@ -368,7 +379,7 @@ public final class OreDictManager {
 		aEvent.Ore.stackSize = 1;
 	}
 	
-	public void onOreRegistration2(String aModID, OreRegisterEvent aEvent) {
+	public void onOreRegistration2(String aModID, String aRegName, OreRegisterEvent aEvent) {
 		OreDictPrefix aPrefix = null;
 		OreDictMaterial aMaterial = null;
 		
@@ -402,7 +413,7 @@ public final class OreDictManager {
 				// This is a vanilla Forge Rule. I just make sure it gets applied. All Dyes no matter of which Colour have to be registered under the Name "dye" too.
 				if (aPrefix == OP.dye) registerOreSafe("dye", aEvent.Ore);
 				if (aPrefix == OP.flower) registerOreSafe("flower", aEvent.Ore);
-				if (aPrefix == OP.plantGtFiber) registerOreSafe("itemString", aEvent.Ore);
+				if (aPrefix == OP.plantGtFiber) registerOreSafe(OD.itemString, aEvent.Ore);
 				
 				if (aMaterial == null) aMaterial = OreDictMaterial.MATERIAL_MAP.get(tName);
 				
@@ -413,6 +424,7 @@ public final class OreDictManager {
 					if (aMaterial.contains(TD.Properties.AUTO_BLACKLIST)) addToBlacklist_(aEvent.Ore);
 					for (OreDictMaterial tReRegisteredMaterial : aMaterial.mReRegistrations) registerOreSafe(aPrefix.mNameInternal + tReRegisteredMaterial.mNameInternal, aEvent.Ore);
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+						if (aPrefix == OP.rockGt && aMaterial.contains(TD.Properties.STONE)) registerOreSafe(OD.itemRock, aEvent.Ore);
 						if (aPrefix != OP.ore && aPrefix.contains(TD.Prefix.STANDARD_ORE) && aMaterial.contains(TD.Properties.COMMON_ORE)) registerOreSafe(OP.ore.mNameInternal + aMaterial.mNameInternal, aEvent.Ore);
 						if ((MD.TFC.mLoaded || MD.TFCP.mLoaded) && (aModID.equalsIgnoreCase(MD.TFC.mID) || aModID.equalsIgnoreCase(MD.TFCP.mID)) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
@@ -428,7 +440,7 @@ public final class OreDictManager {
 			}
 		}
 		
-		OreDictRegistrationContainer tRegistration = new OreDictRegistrationContainer(aPrefix, aMaterial, aEvent.Name, aEvent.Ore, aEvent, aModID, aNotAlreadyRegisteredName);
+		OreDictRegistrationContainer tRegistration = new OreDictRegistrationContainer(aPrefix, aMaterial, aEvent.Name, aEvent.Ore, aEvent, aModID, aRegName, aNotAlreadyRegisteredName);
 		
 		// Global Listeners. Those are usually direct Name->Recipe Systems, meaning they should have priority over Prefix based Stuff.
 		for (IOreDictListenerEvent tListener : mGlobalOreDictListeners) tListener.onOreRegistration(tRegistration);
@@ -610,7 +622,7 @@ public final class OreDictManager {
 	}
 	public boolean setItemData_(ItemStack aStack, OreDictItemData aData) {
 		OreDictItemData tData = getAssociation_(aStack, F);
-		if (tData != null && (tData.mPrefix != OP.plate || tData.mMaterial.mMaterial != MT.Wood)) return F;
+		if (tData != null && tData.mMaterial.mMaterial != MT.Wood && tData.mMaterial.mMaterial != ANY.Wood) return F;
 		if (aStack.stackSize > 1) {
 			if (aData.mMaterial != null) aData.mMaterial.mAmount /= aStack.stackSize;
 			for (OreDictMaterialStack tMaterial : aData.mByProducts) tMaterial.mAmount /= aStack.stackSize;

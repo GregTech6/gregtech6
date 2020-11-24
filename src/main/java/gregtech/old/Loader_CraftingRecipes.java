@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import gregapi.data.ANY;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -414,7 +415,7 @@ public class Loader_CraftingRecipes implements Runnable {
 		CR.shaped(ST.mkic("reactorVent", 1), DEF, "AIA", "I I", "AIA", 'I', ST.make(Blocks.iron_bars, 1, 0), 'A', OP.plate.dat(MT.Al));
 		CR.shapeless(ST.mkic("reactorPlatingExplosive", 1), DEF, new Object[] {ST.mkic("reactorPlating", 1), OP.plate.dat(MT.Pb)});
 		
-		CR.shaped(ST.mkic("glassFiberCableItem", 1), DEF, "GGG", "EDE", "GGG", 'G', ST.make(Blocks.glass, 1, W), 'D', OP.dust.dat(MT.Ag), 'E', IL.IC2_Energium_Dust.get(1));
+		CR.shaped(ST.mkic("glassFiberCableItem", 1), DEF, "GGG", "EDE", "GGG", 'G', OD.blockGlassColorless, 'D', OP.dust.dat(MT.Ag), 'E', IL.IC2_Energium_Dust.get(1));
 		
 		CR.delate(ST.mkic("lapotronCrystal", 1));
 		CR.shaped(ST.mkic("lapotronCrystal", 1), DEF, "LCL", "LSL", "LCL", 'C', OD_CIRCUITS[3], 'S', ST.mkic("energyCrystal", 1, W), 'L', OP.dust.dat(MT.Lazurite));

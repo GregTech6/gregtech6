@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,9 +21,11 @@ package gregapi.block.multitileentity;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.IBlock;
 import gregapi.block.IBlockPlacable;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_HasMultiBlockMachineRelevantData;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RegisterIcons;
+import gregapi.item.IItemGT;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
@@ -44,7 +46,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBlockInternal extends Block implements IRenderedBlock, IBlockPlacable {
+public class MultiTileEntityBlockInternal extends Block implements IBlock, IItemGT, IRenderedBlock, IBlockPlacable {
 	public MultiTileEntityRegistry mMultiTileEntityRegistry;
 	
 	public MultiTileEntityBlockInternal() {
@@ -78,6 +80,7 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 	
 	@Override public final int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public final int getRenderType() {return RendererBlockTextured.INSTANCE==null?super.getRenderType():RendererBlockTextured.INSTANCE.mRenderID;}
+	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mMultiTileEntityRegistry.mNameInternal;}
 	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mMultiTileEntityRegistry.mNameInternal + ".name");}
 	
@@ -86,11 +89,14 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 		Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 		MultiTileEntityContainer aMTEContainer = mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aMetaData, aNBT);
 		if (aMTEContainer != null && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
+			
+			// That is some complicated Bullshit I have to do to make my MTEs work right.
 			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
 			WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
 			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+			
 			try {
 				if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
 					if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);

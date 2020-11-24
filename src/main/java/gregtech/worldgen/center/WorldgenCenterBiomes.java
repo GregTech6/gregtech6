@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,7 +31,6 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.blocks.fluids.BlockRiver;
@@ -52,7 +51,7 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenCenterBiomes(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
+		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_BIOMES = mEnabled;
 	}
 	
@@ -164,11 +163,11 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight-2, j, BlocksGT.Diggables, 1);
 							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 1);
 							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 1);
+							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 3);
+							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 3);
 							for (int k = 1; k < mHeight-6; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.Limestone : BlocksGT.Marble, aRandom.nextBoolean()?2:0);
 							switch(aRandom.nextInt(60)) {
-							case  0: case  1: case  2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;
+							case  0: case  1: case  2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;
 							case  3: case  4: case  5: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, null, F, T); break;
 							case  6: case  7: case  8: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32756, null, F, T); break;
 							case  9: case 10: case 11: case 12: case 13: case 14: WD.set(aChunk, i, mHeight+1, j, Blocks.tallgrass, 1); break;

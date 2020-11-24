@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,11 +64,11 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		RM.generify (ST.make(MD.OMT, "hardWallTierFour"         , 1, W), ST.make(BlocksGT.ConcreteReinforced    , 1, 7));
 		RM.generify (ST.make(MD.OMT, "hardWallTierFive"         , 1, W), ST.make(BlocksGT.ConcreteReinforced    , 1, 7));
 		
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierOne"   , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierTwo"   , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierThree" , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierFour"  , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierFive"  , 1, W)});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierOne"  )});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierTwo"  )});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierThree")});
+		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierFour" )});
+		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierFive" )});
 		
 		OM.data             (MD.OMT, "hardWallTierOne"          , 1, 0, MT.Concrete, U);
 		CR.shapeless(ST.make(MD.OMT, "hardWallTierOne"          , 1, 0), CR.DEF_NCC        , new Object[] {ST.make(BlocksGT.Concrete, 1, W)});
@@ -89,26 +89,23 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		}
 		
 		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(MT.Pb));
+		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(MT.HSLA));
 		CR.shaped   (ST.make(MD.OMT, "bulletCraftable"          , 8, 0), CR.DEF_NCC        , " X", 'X', OP.bulletGtSmall.dat(ANY.Steel));
 		CR.shaped   (ST.make(MD.OMT, "grenadeCraftable"         ,16, 0), CR.DEF_REV_NCC    , "BRB", "GPG", "BRB", 'P', OP.pipeTiny.dat(ANY.Iron), 'R', OP.ring.dat(ANY.Iron), 'B', OP.bolt.dat(ANY.Iron), 'G', OP.dustSmall.dat(MT.Gunpowder));
 		CR.shaped   (ST.make(MD.OMT, "rocketCraftable"          , 8, 0), CR.DEF_REV_NCC    , " X ", " G ", "XPX", 'P', OP.pipeSmall.dat(ANY.Steel), 'X', OP.plateTiny.dat(ANY.Steel), 'G', OP.dust.dat(MT.Gunpowder));
 		CR.shaped   (ST.make(MD.OMT, "ferroSlug"                ,16, 0), CR.DEF_REV_NCC    , "BRB", "BRB", 'B', OP.bolt.dat(MT.SteelMagnetic), 'R', OP.ring.dat(MT.SteelMagnetic));
 		
-		OM.data(MD.OMT, "blazingClayCraftable", 32, W, ANY.Clay, U*4, MT.Redstone, U*4, MT.Blaze, U);
+		OM.data(MD.OMT, "blazingClayCraftable", 32, W, ANY.Clay, U*4, MT.Redstone, U*4, MT.Blaze, U9);
 		
-		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-		RM.Mixer.addRecipeX(T, 16, 512, ST.array(OP.dust.mat(tMat, 4), OP.dust.mat(MT.Redstone, 4), OP.dust     .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-		RM.Mixer.addRecipeX(T, 16, 128, ST.array(OP.dust.mat(tMat, 1), OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
-		}
+		for (OreDictMaterial tMat : ANY.Clay.mToThis)
+		RM.Mixer.addRecipeX(T, 16, 512, ST.array(OP.dust.mat(tMat, 4), OP.dust.mat(MT.Redstone, 4), OP.dustTiny.mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
-		addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(4, aEvent.mStack), OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-			RM.Mixer.addRecipeX(T, 16, 128, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 1), OP.dustSmall .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
+		addListener(OD.itemClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(4, aEvent.mStack), OP.dust.mat(MT.Redstone, 4), OP.dustTiny.mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
 		}});
-		addListener("blockClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer.addRecipeX(T, 16, 512, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-			RM.Mixer.addRecipeX(T, 16, 512, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dustSmall .mat(MT.Blaze, 4)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
+		addListener(OD.blockClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dustTiny.mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
 		}});
 		}};
 	}

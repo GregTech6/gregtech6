@@ -112,9 +112,12 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
-		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAPE));
-		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_UNTAPE));
+		if ((mMode & B[3]) == 0) {
+			aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
+			aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAPE));
+		} else {
+			aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_UNTAPE));
+		}
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -125,6 +128,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_softhammer)) {
+			if ((mMode & B[3]) != 0) return 0;
 			if (slotHas(0)) {
 				ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.copy(slot(0)));
 				slotKill(0);

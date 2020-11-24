@@ -109,6 +109,9 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	/** This Variable is for the IC2 E-net. */
 	public boolean mIsAddedToEnet = F, mDoEnetCheck = T;
 	
+	/** This Variable is for forcing the Selection Box to be full. */
+	public boolean FORCE_FULL_SELECTION_BOXES = F;
+	
 	/** If this TileEntity is ticking at all */
 	public final boolean mIsTicking;
 	
@@ -764,7 +767,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean isWaterProof             (byte aSide) {return F;}
 	public boolean isThunderProof           (byte aSide) {return F;}
 	
-	// A Default implementation of the Surface behaviour.
+	// A Default implementation of the Surface behavior.
 	
 	public float getSurfaceSize             (byte aSide) {return 1;}
 	public float getSurfaceSizeAttachable   (byte aSide) {return getSurfaceSize(aSide);}
@@ -773,6 +776,11 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean isSurfaceOpaque          (byte aSide) {return T;}
 	public boolean isSealable               (byte aSide) {return F;}
 	public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box();}
+	public AxisAlignedBB getSelectedBoundingBoxFromPool () {if (FORCE_FULL_SELECTION_BOXES) return box(); return box(shrunkBox());}
+	public void setBlockBoundsBasedOnState(Block aBlock) {if (FORCE_FULL_SELECTION_BOXES) box(aBlock); else box(aBlock, shrunkBox());}
+	public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return ignorePlayerCollisionWhenPlacing();}
+	public boolean ignorePlayerCollisionWhenPlacing() {return F;}
+	
 	/** Old Coordinate containing Variant of onCoordinateChange, use only if you really need the Coordinates, as there is also a No-Parameter variant in use for some TileEntity Types! */
 	public void onCoordinateChange(World aWorld, int aOldX, int aOldY, int aOldZ) {onCoordinateChange();}
 	public void onCoordinateChange() {/**/}
@@ -895,16 +903,19 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
 	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
-		AxisAlignedBB tBox = box(0, 0, 0, 1, 1, 1);
+		AxisAlignedBB tBox = box(PX_BOX);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
 	public boolean box(AxisAlignedBB aBox, AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
 		return aBox != null && aBox.intersectsWith(aAABB) && aList.add(aBox);
 	}
 	
+	public boolean box(Block aBlock) {aBlock.setBlockBounds(0,0,0,1,1,1); return T;}
 	public boolean box(Block aBlock, double[] aBox) {aBlock.setBlockBounds((float)aBox[0], (float)aBox[1], (float)aBox[2], (float)aBox[3], (float)aBox[4], (float)aBox[5]); return T;}
 	public boolean box(Block aBlock, float[] aBox) {aBlock.setBlockBounds(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]); return T;}
 	public boolean box(Block aBlock, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {aBlock.setBlockBounds((float)aMinX, (float)aMinY, (float)aMinZ, (float)aMaxX, (float)aMaxY, (float)aMaxZ); return T;}
+	
+	public float[] shrunkBox() {return PX_BOX;}
 	
 	// Default Overlay Code
 	
@@ -919,9 +930,11 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean onDrawBlockHighlight2(DrawBlockHighlightEvent aEvent) {return F;}
 	
 	public final boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
+		FORCE_FULL_SELECTION_BOXES = F;
 		if (!SIDES_VALID[aEvent.target.sideHit] || onDrawBlockHighlight2(aEvent)) return T;
-		byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
 		if (ST.valid(aEvent.currentItem) && isUsingWrenchingOverlay(aEvent.currentItem, (byte)aEvent.target.sideHit)) {
+			FORCE_FULL_SELECTION_BOXES = T;
+			byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
 			RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, tConnections, (byte)aEvent.target.sideHit, aEvent.partialTicks);
 			return T;
 		}

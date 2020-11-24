@@ -202,7 +202,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 					OreDictPrefix tPrefix = getMoldRecipe(mShape);
 					if (tPrefix == OP.plate && mContent.mMaterial == MT.Glass) tPrefix = OP.plateGem;
 					if (tPrefix != null) {
-						slot(0, tPrefix.mat(mContent.mMaterial, mContent.mMaterial == MT.Blaze && (tPrefix == OP.stick || tPrefix == OP.stickLong) ? 1 : mContent.mAmount / tPrefix.mAmount));
+						slot(0, tPrefix.mat(mContent.mMaterial, mContent.mAmount / tPrefix.mAmount));
 						mContent.mAmount = 0;
 					}
 				}
@@ -255,7 +255,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (tPrefix != null && mContent == null && slot(0) == null && isMoldInputSide(aSide) && aMaterial.mAmount > 0) {
 			if (tPrefix == OP.plate && aMaterial.mMaterial == MT.Glass) tPrefix = OP.plateGem;
 			if (tPrefix.mat(aMaterial.mMaterial.mTargetSolidifying.mMaterial, 1) != null) {
-				long tRequiredAmount = (aMaterial.mMaterial == MT.Blaze && (tPrefix == OP.stick || tPrefix == OP.stickLong)) ? getMoldRequiredMaterialUnits() * 16 : getMoldRequiredMaterialUnits(), rAmount = UT.Code.units(tRequiredAmount, U, aMaterial.mMaterial.mTargetSolidifying.mAmount, T);
+				long tRequiredAmount = getMoldRequiredMaterialUnits(), rAmount = UT.Code.units(tRequiredAmount, U, aMaterial.mMaterial.mTargetSolidifying.mAmount, T);
 				if (aMaterial.mAmount >= rAmount) {
 					mContent = OM.stack(aMaterial.mMaterial, tRequiredAmount);
 					mTemperature = aTemperature;
@@ -650,7 +650,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		OreDictPrefix tPrefix = getMoldRecipe(mShape);
 		if (tPrefix == OP.plate && aMaterial.mMaterial == MT.Glass) tPrefix = OP.plateGem;
 		if (tPrefix == null || tPrefix.mat(aMaterial.mMaterial.mTargetSolidifying.mMaterial, 1) == null) return 0;
-		long tRequiredAmount = (aMaterial.mMaterial == MT.Blaze && (tPrefix == OP.stick || tPrefix == OP.stickLong)) ? getMoldRequiredMaterialUnits() * 16 : getMoldRequiredMaterialUnits();
+		long tRequiredAmount = getMoldRequiredMaterialUnits();
 		long rAmount = UT.Code.units(tRequiredAmount, U, aMaterial.mMaterial.mTargetSolidifying.mAmount, T);
 		if (aMaterial.mAmount >= rAmount) {
 			if (aDoFill) {

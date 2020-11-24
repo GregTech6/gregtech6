@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -79,8 +79,8 @@ public class MultiTileEntitySapHoleRainbowood extends MultiTileEntityTreeHole {
 	
 	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogB, 1, 1));}
 	@Override public ItemStack getResinItem(byte aSide) {return null;}
-	@Override public FluidStack getResinFluid(byte aSide) {return FL.make("rainbowsap", 250);}
+	@Override public FluidStack getResinFluid(byte aSide) {return FL.Sap_Rainbow.make(250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogB, SIDE_ANY, 3) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_SAP_RAINBOWOOD:Textures.BlockIcons.LOG_HOLE_RAINBOWOOD) : null;}
-	@Override public float getExplosionResistance2() {return BlocksGT.LogB.getExplosionResistance(3);}
+	@Override public float getExplosionResistance2() {return BlocksGT.LogB.getExplosionResistance((byte)3);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.tree.rainbowood.saphole";}
 }

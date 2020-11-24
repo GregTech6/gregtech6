@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Arrays;
 import java.util.List;
 
+import gregapi.block.misc.BlockBaseBars;
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
@@ -31,6 +32,7 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -64,8 +66,12 @@ public class GT_Tool_Wrench extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equals(TOOL_wrench)) || aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper;
+		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock instanceof BlockBaseBars || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
+		String tString = aBlock.getHarvestTool(aMetaData);
+		if (tString != null && tString.equals(TOOL_wrench)) return T;
+		if (aBlock.getMaterial().isLiquid()) return F;
+		tString = ST.regName(aBlock);
+		return tString != null && tString.startsWith("BuildCraft|");
 	}
 	
 	@Override
@@ -80,7 +86,7 @@ public class GT_Tool_Wrench extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_wrench, SFX.GT_WRENCH, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_wrench, SFX.GT_WRENCH, 100, !canBlock(), T));
 	}
 	
 	@Override

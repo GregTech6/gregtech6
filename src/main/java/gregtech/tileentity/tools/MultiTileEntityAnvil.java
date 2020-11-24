@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -76,6 +76,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_DURABILITY)) mDurability = aNBT.getLong(NBT_DURABILITY);
+		// To make onTick actually update the Visual Data once.
+		updateInventory();
 	}
 	
 	@Override
@@ -129,7 +131,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				mDurability -= tDurability;
 				if (mDurability <= 0) {
 					UT.Sounds.send(SFX.MC_BREAK, this);
-					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 32+rng(32))); // Drops up to 63 Scraps, so 7 Units.
+					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 48+rng(16))); // Drops up to 63 Scraps, so 7 Units.
 					setToAir();
 				}
 				updateInventory();
@@ -153,8 +155,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (mMaterialA <= 0) mMaterialA = MT.Steel.mID;
 					mShapeA = 8;
 				} else if (ToolsGT.contains(TOOL_hammer, slot(1))) {
-					mMaterialA = MultiItemTool.getSecondaryMaterial(slot(1), MT.Wood).mID;
-					if (mMaterialA <= 0) mMaterialA = MT.Wood.mID;
+					mMaterialA = MultiItemTool.getSecondaryMaterial(slot(1), MT.WOODS.Spruce).mID;
+					if (mMaterialA <= 0) mMaterialA = MT.WOODS.Spruce.mID;
 					mShapeA = 9;
 				} else if (slotHas(0)) {
 					mMaterialA = MT.Fe.mID;
@@ -186,8 +188,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (mMaterialB <= 0) mMaterialB = MT.Steel.mID;
 					mShapeB = 8;
 				} else if (ToolsGT.contains(TOOL_hammer, slot(0))) {
-					mMaterialB = MultiItemTool.getSecondaryMaterial(slot(0), MT.Steel).mID;
-					if (mMaterialB <= 0) mMaterialB = MT.Wood.mID;
+					mMaterialB = MultiItemTool.getSecondaryMaterial(slot(0), MT.WOODS.Spruce).mID;
+					if (mMaterialB <= 0) mMaterialB = MT.WOODS.Spruce.mID;
 					mShapeB = 9;
 				} else if (slotHas(1)) {
 					mMaterialB = MT.Fe.mID;
@@ -306,7 +308,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock);
+		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING));
 		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], mShapeA==6?OP.blockGem:mShapeA==7?OP.ore:OP.blockSolid)));
 		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], mShapeB==6?OP.blockGem:mShapeB==7?OP.ore:OP.blockSolid)));
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;

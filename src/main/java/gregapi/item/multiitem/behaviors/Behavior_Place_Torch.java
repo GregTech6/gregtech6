@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,22 +36,25 @@ public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		// Don't place Torches in Liquids!
+		if (WD.liquid(WD.block(aWorld, aX, aY, aZ, aSide))) return F;
+		// Scan Inventory for suitable Torches.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
 			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
-			if (ST.valid(tStack) && ST.torch(tStack)) {
-				int tOldSize = tStack.stackSize;
-				if (WD.grass(aWorld, aX, aY, aZ)) {aSide = SIDE_TOP; aWorld.setBlockToAir(aX, aY--, aZ);}
-				if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
-					if (UT.Entities.hasInfiniteItems(aPlayer)) {
-						tStack.stackSize = tOldSize;
-					} else {
-						ST.use(aPlayer, tIndex, tStack, 0);
-					}
-					return T;
+			if (ST.invalid(tStack) || !ST.torch(tStack)) continue;
+			if (WD.grass(aWorld, aX, aY, aZ)) {aSide = SIDE_TOP; aWorld.setBlockToAir(aX, aY--, aZ);}
+			
+			int tOldSize = tStack.stackSize;
+			if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
+				if (UT.Entities.hasInfiniteItems(aPlayer)) {
+					tStack.stackSize = tOldSize;
+				} else {
+					ST.use(aPlayer, tIndex, tStack, 0);
 				}
-				return F;
+				return T;
 			}
+			return F;
 		}
 		return F;
 	}

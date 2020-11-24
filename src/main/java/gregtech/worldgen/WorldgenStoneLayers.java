@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,7 +31,6 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
 import gregapi.worldgen.StoneLayerOres;
@@ -60,7 +59,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
-		final int tListSize = StoneLayer.LAYERS.size(), tListMax = tListSize-1, tMaxHeight = aChunk.getTopFilledSegment()+15;
+		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
@@ -69,13 +68,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
 			StoneLayer[] tScan = new StoneLayer[] {
-			  StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  0, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  3, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  4, tZ) + 1) / 2) * tListSize)))
+			  StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  0, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  1, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize))
+			, StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize))
 			};
 			
 			boolean tCanPlaceRocks = F;
@@ -90,7 +89,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = T;
 				// Place Rock if on Opaque Surface.
 				} else if (aBlock == NB) {
-					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Stone and Ore Generation in vanilla Stone.
@@ -166,7 +165,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = (aStorage.getExtBlockMetadata(i, tY & 15, j) < 3);
 				// Place Rock if on Opaque Surface.
 				} else if (WD.easyRep(aWorld, tX, tY, tZ, aBlock)) {
-					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Just check if the last Block was Opaque and of the right kind of Material.
@@ -183,7 +182,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				
 				// And scan for next Block on the Stone Layer Type.
 				for (int t = 1; t < tScan.length; t++) tScan[t-1] = tScan[t];
-				tScan[6] = StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, tY+4, tZ) + 1) / 2) * tListSize)));
+				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX, tY+4, tZ, tListSize));
 			}
 		}
 		return T;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -49,19 +48,24 @@ public abstract class WorldgenBlob extends WorldgenObject {
 	public WorldgenBlob(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mBlock          = aBlock==null?Blocks.cobblestone:aBlock;
-		mBlockMeta      = Math.min(Math.max(aBlockMeta, 0), 15);
+		mBlockMeta      = UT.Code.bind4(aBlockMeta);
 		mProbability    = ConfigsGT.WORLDGEN.get(mCategory, "Probability"   , aProbability);
 		mAmount         = ConfigsGT.WORLDGEN.get(mCategory, "Amount"        , aAmount);
 		mSize           = ConfigsGT.WORLDGEN.get(mCategory, "Size"          , aSize);
 		mMinY           = ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"     , aMinY);
 		mMaxY           = ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"     , aMaxY);
-		if (aBiomeList == null) mBiomeList = new ArrayListNoNulls<>(); else mBiomeList = aBiomeList;
+		mBiomeList = aBiomeList;
 		mAllowToGenerateinVoid = aAllowToGenerateinVoid;
 	}
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if ((mBiomeList.isEmpty() || mBiomeList.contains(aBiomes[7][7].toString())) && (mProbability <= 1 || aRandom.nextInt(mProbability) == 0)) {
+		if (mBiomeList != null) {
+			boolean temp = T;
+			for (String tName : aBiomeNames) if (mBiomeList.contains(tName)) {temp = F; break;}
+			if (temp) return F;
+		}
+		if (mProbability <= 1 || aRandom.nextInt(mProbability) == 0) {
 			for (int i = 0; i < mAmount; i++) {
 				int tX = aMinX + aRandom.nextInt(16), tY = mMinY + aRandom.nextInt(mMaxY - mMinY), tZ = aMinZ + aRandom.nextInt(16);
 				if (mAllowToGenerateinVoid || !aWorld.getBlock(tX, tY, tZ).isAir(aWorld, tX, tY, tZ)) {
@@ -89,7 +93,7 @@ public abstract class WorldgenBlob extends WorldgenObject {
 						bMaxZ = Math.max(bMaxZ, UT.Code.roundDown(bZ + b));
 					}
 					
-					boolean[][][] tCheck = new boolean[bMaxX-bMinX+1][bMaxY-bMinY+1][bMaxZ-bMinZ+1];
+					boolean[][][] tCheck = new boolean[Math.max(4, bMaxX-bMinX+1)][Math.max(4, bMaxY-bMinY+1)][Math.max(4, bMaxZ-bMinZ+1)];
 					
 					for (int j = 0; j <= mSize; ++j) {
 						double bX = aX1 + (aX2 - aX1) * j / mSize, bY = aY1 + (aY2 - aY1) * j / mSize, bZ = aZ1 + (aZ2 - aZ1) * j / mSize, b = ((MathHelper.sin(j * (float)Math.PI / mSize) + 1) * tRandoms[j] + 1) / 2;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,21 +24,24 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.item.IItemGT;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
@@ -56,7 +59,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInside {
+public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
 	public final String mNameInternal;
 	public final int mFlammability;
 	public final Fluid mFluid;
@@ -71,8 +74,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		setResistance(30);
 		mFlammability = aFlammability;
 		setBlockName(mNameInternal = aNameInternal);
-		GameRegistry.registerBlock(this, ItemBlock.class, mNameInternal);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, mNameInternal, ItemBlock.class);
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		// Speaking of retarded, only allowing one type of Block per Fluid is retarded too! So I guess I gotta override all pre-existing Fluids with my Version to make sure shit works.
 		UT.Reflection.setField(Fluid.class, aFluid, "block", this);
@@ -81,7 +83,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
-		FluidStack rFluid = FL.make(getFluid(), (aWorld.getBlockMetadata(aX, aY, aZ) + 1) * 125);
+		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * 125);
 		if (aDoDrain) {
 			aWorld.setBlockToAir(aX, aY, aZ);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
@@ -109,7 +111,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		}
 		
 		boolean changed = F;
-		int tRemainingQuanta = aWorld.getBlockMetadata(aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
+		int tRemainingQuanta = WD.meta(aWorld, aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
 		
 		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
 		
@@ -261,6 +263,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		return !(tTileEntity instanceof ITileEntitySurface && !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]));
 	}
 	
+	@Override public Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mFluid.getUnlocalizedName();}
 	@Override public String getLocalizedName() {return LH.get(mFluid.getUnlocalizedName());}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
@@ -274,15 +277,28 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
+	@Override public boolean isOpaqueCube() {return F;}
+	@Override public boolean func_149730_j() {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
+	
+	public boolean mActLikeWeb = F;
+	public BlockBaseFluid setWeb() {
+		mActLikeWeb = T;
+		return this;
+	}
+	/** This Function has been named wrong. It should be onEntityOverlapWithBlock */
+	@Override
+	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
+		if (mActLikeWeb) aEntity.setInWeb();
+	}
+	
+	
+	public List<int[]> mEffects = new ArrayListNoNulls<>();
 	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
 		return this;
 	}
-	
-	public List<int[]> mEffects = new ArrayListNoNulls<>();
-	
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
 		if (!mEffects.isEmpty() && (FL.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {

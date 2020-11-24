@@ -31,6 +31,7 @@ import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemGT;
@@ -181,8 +182,8 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		return F;
 	}
 	
-	@Override
-	public void updateItemStack(ItemStack aStack) {
+	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
+	@Override public void updateItemStack(ItemStack aStack) {
 		if (mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return;
 		int aMeta = ST.meta_(aStack);
 		if (UT.Code.exists(aMeta, mMaterialList)) {
@@ -191,9 +192,10 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 			if (!mPrefix.isGeneratingItem(aMaterial.mTargetRegistration)) ST.set(aStack, mPrefix.mat(aMaterial.mTargetRegistration, 1), F, F);
 		}
 	}
+	
 	@Override
-	public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
-		updateItemStack(aStack);
+	public float getSmeltingExperience(ItemStack aStack) {
+		return mPrefix == OP.gem ? 1.0F : 0.0F;
 	}
 	
 	@Override public String toString() {return mNameInternal;}
@@ -201,6 +203,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
 	@Override public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {/**/}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -104,8 +104,8 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 	
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		mFacing         = (useInversePlacementRotation()?UT.Code.getOppositeSideForPlayerPlacing    (aPlayer, mFacing       , getValidSides         ()):UT.Code.getSideForPlayerPlacing         (aPlayer, mFacing       , getValidSides         ()));
-		mSecondFacing   = (useInversePlacementRotation()?UT.Code.getSideForPlayerPlacing            (aPlayer, mSecondFacing , getValidSecondSides   ()):UT.Code.getOppositeSideForPlayerPlacing (aPlayer, mSecondFacing , getValidSecondSides   ()));
+		mFacing       = (useInversePlacementRotation(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)?UT.Code.getOppositeSideForPlayerPlacing(aPlayer, mFacing      , getValidSides      ()):UT.Code.getSideForPlayerPlacing        (aPlayer, mFacing      , getValidSides      ()));
+		mSecondFacing = (useInversePlacementRotation(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)?UT.Code.getSideForPlayerPlacing        (aPlayer, mSecondFacing, getValidSecondSides()):UT.Code.getOppositeSideForPlayerPlacing(aPlayer, mSecondFacing, getValidSecondSides()));
 		onFacingChange(SIDE_UNKNOWN, SIDE_UNKNOWN);
 		checkCoverValidity();
 		doEnetUpdate();

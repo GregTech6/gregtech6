@@ -362,7 +362,7 @@ public class EntityArrow_Material extends EntityProjectile {
 	
 	@Override
 	public void setProjectileStack(ItemStack aStack) {
-		mArrow = ST.update(ST.amount(1, aStack), worldObj, UT.Code.roundDown(posX), UT.Code.roundDown(posY), UT.Code.roundDown(posZ));
+		mArrow = ST.update(ST.amount(1, aStack), this);
 	}
 	
 	public ItemStack getArrowItem() {

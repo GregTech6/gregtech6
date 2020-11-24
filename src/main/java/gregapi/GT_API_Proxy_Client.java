@@ -35,6 +35,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import gregapi.api.Abstract_Mod;
+import gregapi.block.IBlockBase;
 import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
@@ -42,15 +43,18 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ObjectStack;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.BooksGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
 import gregapi.data.CS.ToolsGT;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
@@ -80,6 +84,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
@@ -100,8 +105,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		CODE_UNCHECKED = F;
 		
 		for (int i = 0; i < 4; i++) {
-			sPosR.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.Mcg.mRGBa[i], MT.Thaumium.mRGBa[i], MT.InfusedVis.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedFire.mRGBa[i], MT.FierySteel.mRGBa[i], MT.Firestone.mRGBa[i], MT.ArcaneAsh.mRGBa[i]));
-			sPosG.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedEarth.mRGBa[i]));
+			sPosR.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Mcg.mRGBa[i], MT.Thaumium.mRGBa[i], MT.InfusedVis.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedFire.mRGBa[i], MT.FierySteel.mRGBa[i], MT.Firestone.mRGBa[i], MT.ArcaneAsh.mRGBa[i]));
+			sPosG.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedEarth.mRGBa[i]));
 			sPosB.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Mcg.mRGBa[i], MT.InfusedVis.mRGBa[i], MT.InfusedWater.mRGBa[i], MT.Thaumium.mRGBa[i], MT.Co_60.mRGBa[i], MT.Lumium.mRGBa[i], MT.VinteumPurified.mRGBa[i], MT.ArcaneAsh.mRGBa[i]));
 			sNegR.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
 			sNegG.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
@@ -218,7 +223,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
 		}
 		short aMeta = ST.meta_(aEvent.itemStack);
-		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
+		byte aBlockMeta = UT.Code.bind4(aMeta);
 		Block aBlock = ST.block(aEvent.itemStack);
 		Item aItem = ST.item(aEvent.itemStack);
 		
@@ -244,7 +249,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		ICover tCover = CoverRegistry.get(aEvent.itemStack);
 		if (tCover != null) tCover.addToolTips(aEvent.toolTip, aEvent.itemStack, aEvent.showAdvancedItemTooltips);
 		
-		if (aBlock != NB && aBlock != null) {
+		if (aBlock != NB) {
 			if (IL.TC_Warded_Glass.equal(aEvent.itemStack, F, T)) {
 				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 999));
 			} else if (ItemsGT.SHOW_RESISTANCE.contains(aEvent.itemStack, T)) {
@@ -257,7 +262,10 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				} else {
 					aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, aBlock.getExplosionResistance(null)));
 				}
-				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
+				aEvent.toolTip.add(LH.getToolTipHarvest(aBlock.getMaterial(), aBlock.getHarvestTool(aBlockMeta), aBlock.getHarvestLevel(aBlockMeta)));
+			}
+			if (BlocksGT.openableCrowbar.contains(aBlock)) {
+				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
 			}
 		}
 		
@@ -289,86 +297,89 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
 			}
 		}
-
+		
 		if (tData != null) {
-			if (tData.mPrefix != null) {
+			if (tData.hasValidPrefixData()) {
 				for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
 					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
+			} else {
+				if (IL.TF_Pick_Giant     .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
+				if (IL.TF_Sword_Giant    .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
+				if (IL.TF_Lamp_of_Cinders.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
 			}
-			for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
-				for (IOreDictListenerItem tListener : tMaterial.mMaterial.mListenersItem) {
-					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
-					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
-				}
-			}
-
 			if (tData.hasValidMaterialData()) {
-				boolean tShowMaterialToolInfo = tData.mMaterial.mMaterial.mToolTypes > 0 && (tData.mPrefix != null || (aEvent.itemStack.getMaxStackSize() > 1 && tData.mByProducts.length == 0 && tData.mMaterial.mAmount <= U));
-				if (tShowMaterialToolInfo) {
+				boolean tUnburnable = F;
+				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
+					if (tMaterial.mMaterial.contains(TD.Properties.UNBURNABLE)) tUnburnable = T;
+					for (IOreDictListenerItem tListener : tMaterial.mMaterial.mListenersItem) {
+						String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
+						if (tToolTip != null) aEvent.toolTip.add(tToolTip);
+					}
+				}
+				if (tData.mMaterial.mMaterial.mToolTypes > 0 && (tData.mPrefix != null || (aEvent.itemStack.getMaxStackSize() > 1 && tData.mByProducts.length == 0 && tData.mMaterial.mAmount <= U))) {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Q: " + tData.mMaterial.mMaterial.mToolQuality + " - S: " + tData.mMaterial.mMaterial.mToolSpeed + " - D: " + tData.mMaterial.mMaterial.mToolDurability);
 				}
 				if (SHOW_CHEM_FORMULAS && UT.Code.stringValid(tData.mMaterial.mMaterial.mTooltipChemical) && (tData.mPrefix == null ? tData.mByProducts.length == 0 : tData.mPrefix.contains(TD.Prefix.TOOLTIP_MATERIAL))) {
 					aEvent.toolTip.add(LH.Chat.YELLOW + tData.mMaterial.mMaterial.mTooltipChemical);
 				}
 				if (tData.hasValidPrefixData()) {
-					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING   )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
-					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE       )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
-
+					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING)) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
+					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE    )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
+					
 					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls<>();
-					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
-					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers       ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
+					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
+					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers      ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
 					if (!tShapelessAmounts.isEmpty()) {
 						Collections.sort(tShapelessAmounts);
 						aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SHAPELESS_CRAFT) + LH.Chat.WHITE + tShapelessAmounts);
 					}
-				}
-				if (tShowMaterialToolInfo && tData.mMaterial.mMaterial.mEnchantmentTools.size() + tData.mMaterial.mMaterial.mEnchantmentArmors.size() > 0) {
-					boolean tIsTool = (tData.mPrefix != null && tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE));
-					switch(tIsTool ? Math.min(1, tData.mMaterial.mMaterial.mEnchantmentTools.size()) : tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
-					case 0:
-						break;
-					case 1: case 2: case 3: case 4:
-						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
-						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
-							if (tEnchantment.mObject == Enchantment.fortune) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting .getTranslatedName((int)tEnchantment.mAmount));
-							} else if (tEnchantment.mObject == Enchantment.knockback) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch   .getTranslatedName((int)tEnchantment.mAmount));
-							} else if (tEnchantment.mObject == Enchantment.fireAspect) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame   .getTranslatedName((int)tEnchantment.mAmount));
-							} else {
-								aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+					
+					if (tData.mPrefix.contains(TD.Prefix.TOOLTIP_ENCHANTS)) {
+						if (!tData.mMaterial.mMaterial.mEnchantmentTools.isEmpty()) {
+							if (!tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE)) {
+								if (tData.mMaterial.mMaterial.mEnchantmentTools.size() <= 5) {
+									aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
+									for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
+										if (tEnchantment.mObject == Enchantment.fortune) {
+											aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting.getTranslatedName((int)tEnchantment.mAmount));
+										} else if (tEnchantment.mObject == Enchantment.knockback) {
+											aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch  .getTranslatedName((int)tEnchantment.mAmount));
+										} else if (tEnchantment.mObject == Enchantment.fireAspect) {
+											if (tEnchantment.mAmount >= 3)
+											aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame  .getTranslatedName((int)tEnchantment.mAmount) + " / Auto Smelt I");
+											else
+											aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame  .getTranslatedName((int)tEnchantment.mAmount));
+										} else {
+											aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject  .getTranslatedName((int)tEnchantment.mAmount));
+										}
+									}
+								} else {
+									aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_TOOL_ENCHANTS));
+								}
 							}
 						}
-						break;
-					default:
-						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_TOOL_ENCHANTS));
-						break;
-					}
-					
-					if (!tIsTool)
-					switch(tData.mMaterial.mMaterial.mEnchantmentArmors.size()) {
-					case 0:
-						break;
-					case 1: case 2: case 3:
-						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_ARMOR_ENCHANTS));
-						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentArmors) {
-							aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+						if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
+							aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 						}
-						break;
-					default:
-						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_ARMOR_ENCHANTS));
-						break;
+						if (!tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE)) {
+							if (!tData.mMaterial.mMaterial.mEnchantmentArmors.isEmpty()) {
+								if (tData.mMaterial.mMaterial.mEnchantmentArmors.size() <= 3) {
+									aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_ARMOR_ENCHANTS));
+									for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentArmors) {
+										aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+									}
+								} else {
+									aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_ARMOR_ENCHANTS));
+								}
+							}
+							if ((IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+								aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
+							}
+						}
 					}
-				}
-				
-				if (tData.hasValidPrefixData()) {
-					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
-						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
-					}
-					if (!(aBlock instanceof MultiTileEntityBlockInternal)) {
+					if (aBlock == NB || !(aBlock instanceof MultiTileEntityBlockInternal || aBlock instanceof IBlockBase)) {
 						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
 							if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
 								aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE_AND_EXPLOSIVE));
@@ -380,7 +391,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						}
 					}
 				}
+				if (tUnburnable) aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
 			}
+			
 			if (aEvent.showAdvancedItemTooltips) {
 				boolean temp = T;
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) if (tMaterial.mAmount != 0 && !tMaterial.mMaterial.contains(TD.Properties.DONT_SHOW_THIS_COMPONENT)) {
@@ -391,19 +404,19 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					StringBuilder tString = new StringBuilder(128);
 					double aWeight = tMaterial.weight();
 					long tWeight = ((long)(aWeight*1000))%1000;
-					tString.append(LH.Chat.WHITE    ).append(UT.Code.displayUnits(tMaterial.mAmount)).append(" ");
-					tString.append(LH.Chat.YELLOW   ).append(tMaterial.mMaterial.getLocal());
-					tString.append(LH.Chat.WHITE    ).append(" (");
-					tString.append(LH.Chat.CYAN     ).append("M: ");
-					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mMeltingPoint);
-					tString.append(LH.Chat.RED      ).append("K ");
-					tString.append(LH.Chat.CYAN     ).append(" B: ");
-					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mBoilingPoint);
-					tString.append(LH.Chat.RED      ).append("K ");
-					tString.append(LH.Chat.CYAN     ).append(" W: ");
-					tString.append(LH.Chat.WHITE    ).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
-					tString.append(LH.Chat.YELLOW   ).append("kg");
-					tString.append(LH.Chat.WHITE    ).append(")");
+					tString.append(LH.Chat.WHITE ).append(UT.Code.displayUnits(tMaterial.mAmount)).append(" ");
+					tString.append(LH.Chat.YELLOW).append(tMaterial.mMaterial.getLocal());
+					tString.append(LH.Chat.WHITE ).append(" (");
+					tString.append(LH.Chat.CYAN  ).append("M: ");
+					tString.append(LH.Chat.WHITE ).append(tMaterial.mMaterial.mMeltingPoint);
+					tString.append(LH.Chat.RED   ).append("K ");
+					tString.append(LH.Chat.CYAN  ).append(" B: ");
+					tString.append(LH.Chat.WHITE ).append(tMaterial.mMaterial.mBoilingPoint);
+					tString.append(LH.Chat.RED   ).append("K ");
+					tString.append(LH.Chat.CYAN  ).append(" W: ");
+					tString.append(LH.Chat.WHITE ).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
+					tString.append(LH.Chat.YELLOW).append("kg");
+					tString.append(LH.Chat.WHITE ).append(")");
 					aEvent.toolTip.add(tString.toString());
 				}
 			} else {
@@ -422,22 +435,22 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-
-	public boolean mNeedsToHideMicroblocks = T;
-
+	
 	@SubscribeEvent
 	public void onClientTickEvent(ClientTickEvent aEvent) {
 		if (aEvent.phase == Phase.END) {
-			// Now for hiding stuff from NEI that should have never been there in the first place.
-			if (mNeedsToHideMicroblocks) {
-				if (!SHOW_MICROBLOCKS && NEI) for (ItemStack aStack : ST.array(ST.make(MD.FMB, "microblock", 1, W), ST.make(MD.ExU, "microblocks", 1, W), ST.make(MD.AE, "item.ItemFacade", 1, W))) if (ST.valid(aStack)) {
-					ST.hide(aStack);
-
+			if (CLIENT_TIME == 10) {
+				// Initializing the Fake Furnace Recipe Map
+				if (FL.XP.exists()) for (Object tObject : FurnaceRecipes.smelting().getSmeltingList().keySet()) if (tObject instanceof ItemStack) {
+					RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, F, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
+				}
+				// Now for hiding stuff from NEI that should have never been there in the first place.
+				if (!SHOW_MICROBLOCKS && NEI) for (Item aItem : new Item[] {ST.item(MD.FMB, "microblock"), ST.item(MD.ExU, "microblocks"), ST.item(MD.ExS, "microblocks"), ST.item(MD.AE, "item.ItemFacade")}) if (aItem != null) {
+					ST.hide(aItem);
 					List<ItemStack> tList = new ArrayListNoNulls<>();
-					aStack.getItem().getSubItems(aStack.getItem(), CreativeTabs.tabAllSearch, tList);
+					aItem.getSubItems(aItem, CreativeTabs.tabAllSearch, tList);
 					for (ItemStack tStack : tList) ST.hide(tStack);
 				}
-				mNeedsToHideMicroblocks = F;
 			}
 			
 			switch((int)(CLIENT_TIME % 10)) {

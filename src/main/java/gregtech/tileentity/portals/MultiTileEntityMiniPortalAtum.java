@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,9 +42,12 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalAtum>
+	public static List<MultiTileEntityMiniPortal>
 	sListAtumSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListAtumSide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.atum.tooltip.1", "Only works between the Atum Desert and the Overworld!");
@@ -65,7 +68,7 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 		if (MD.ATUM.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAtum tTarget : sListAtumSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListAtumSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -77,7 +80,7 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 				}
 			} else if (WD.dimATUM(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAtum tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -96,22 +99,16 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 		if (MD.ATUM.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalAtum tPortal : sListAtumSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListAtumSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimATUM(worldObj)) {
 				if (!sListAtumSide.contains(this)) sListAtumSide.add(this);
-				for (MultiTileEntityMiniPortalAtum tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListAtumSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListAtumSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

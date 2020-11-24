@@ -111,13 +111,15 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				}
 			}
 		} else {
-			int tCalc = (int) UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
+			long tCalc = UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 
-			// TODO Raycasting through Lead and similar Blocks.
-			if (tCalc > 0 && SERVER_TIME % 20 == 10)
+			// TODO Raycasting through Lead, Water and similar Blocks.
+			if (tCalc > 0 && SERVER_TIME % 20 == 10) {
 				for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>) worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord - tCalc, yCoord - tCalc, zCoord - tCalc, xCoord + 1 + tCalc, yCoord + 1 + tCalc, zCoord + 1 + tCalc))) {
-					UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), tCalc);
+					int tStrength = UT.Code.bindInt((long)(tCalc - tEntity.getDistance(xCoord, yCoord, zCoord)));
+					if (tStrength > 0) UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 				}
+			}
 
 			mRunning = (tCalc != 0);
 
@@ -182,6 +184,11 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Helium.make(tEnergy))) {
 						mEnergy -= EU_PER_HELIUM * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
+				} else if (FL.Thorium_Salt.is(mTanks[0])) {
+					tEnergy = mEnergy / EU_PER_THORIUM_SALT;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.amount(MT.LiCl.mLiquid, tEnergy))) {
+						mEnergy -= EU_PER_THORIUM_SALT * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
 				} else if (mTanks[0].isEmpty()) {
 					if (mEnergy > EU_PER_THORIUM_SALT) tIsExploding = T;
 				}
@@ -189,10 +196,11 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				if (tIsExploding && !invempty()) {
 					// TODO proper explosion.
 					// explode(10); // TODO Keep commented out until Reactor System has been tested well enough.
+					slotKill(0); slotKill(1); slotKill(2); slotKill(3);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>) worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord - tCalc, yCoord - tCalc, zCoord - tCalc, xCoord + 1 + tCalc, yCoord + 1 + tCalc, zCoord + 1 + tCalc))) {
-						UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), tCalc);
+						UT.Entities.applyRadioactivity(tEntity, (int) UT.Code.divup(tCalc, 10), (int)tCalc);
 					}
 				}
 			}

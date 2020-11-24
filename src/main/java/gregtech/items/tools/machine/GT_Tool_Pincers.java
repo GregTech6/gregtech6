@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Pincers extends ToolStats {
@@ -107,7 +108,7 @@ public class GT_Tool_Pincers extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_pincers);
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_pincers)) || aBlock.getMaterial() == Material.dragonEgg;
 	}
 	
 	@Override
@@ -122,7 +123,7 @@ public class GT_Tool_Pincers extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_pincers, SFX.MC_CLICK, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_pincers, SFX.MC_CLICK, 100, !canBlock(), T));
 	}
 	
 	@Override

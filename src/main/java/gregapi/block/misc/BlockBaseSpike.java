@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,6 +64,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	
 	public BlockBaseSpike(String aNameInternal, OreDictMaterial aMat1, OreDictMaterial aMat2) {
 		super(null, aNameInternal, Material.iron, Block.soundTypeMetal);
+		setCreativeTab(CreativeTabs.tabRedstone);
 		mMat1 = aMat1; mMat2 = aMat2;
 		
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_NCC, "BTB", "TPT", "BTB", 'B', OP.toolHeadSword.dat(mMat1), 'P', OP.plate.dat(mMat1), 'T', OP.screw.dat(mMat1));
@@ -102,49 +103,50 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 		}
 	}
 	
-	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {if ((aWorld.getBlockMetadata(aX, aY, aZ) & 7) != SIDE_UP) {aEntity.motionX *= 0.1; aEntity.motionZ *= 0.1;}}
+	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {if ((WD.meta(aWorld, aX, aY, aZ) & 7) != SIDE_UP) {aEntity.motionX *= 0.1; aEntity.motionZ *= 0.1;}}
 	@Override public int onBlockPlaced(World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ, int aMeta) {return (aMeta & 7) < 6 ? (aMeta & 8) | OPPOSITES[aSide] : aMeta;}
-	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (useGravity(aWorld.getBlockMetadata(aX, aY, aZ))) UT.Sounds.send(aWorld, SFX.MC_ANVIL_LAND, 1, 2, aX, aY, aZ);}
+	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (useGravity(WD.meta(aWorld, aX, aY, aZ))) UT.Sounds.send(aWorld, SFX.MC_ANVIL_LAND, 1, 2, aX, aY, aZ);}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return aMeta < 8 ? mMat1.mToolQuality : mMat2.mToolQuality;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return (aMeta & 7) < 6 ? aMeta & 8 : aMeta;}
+	@Override public byte maxMeta() {return 16;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 30;}
-	@Override public float getExplosionResistance(int aMeta) {return 5;}
+	@Override public float getExplosionResistance(byte aMeta) {return 5;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return (aMeta & 7) < 6 && aMeta == aSide;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
-	@Override public boolean useGravity(int aMeta) {return (aMeta & 7) == 7;}
-	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean useGravity(byte aMeta) {return (aMeta & 7) == 7;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return T;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return T;}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0)); aList.add(ST.make(aItem, 1, 6)); aList.add(ST.make(aItem, 1, 7)); aList.add(ST.make(aItem, 1, 8)); aList.add(ST.make(aItem, 1, 14)); aList.add(ST.make(aItem, 1, 15));}
 	
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {
-		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+		int aMeta = WD.meta(aWorld, aX, aY, aZ);
 		return ST.make(this, 1, (aMeta & 7) < 6 ? aMeta & 8 : aMeta);
 	}
 	
 	@Override
 	public boolean rotateBlock(World aWorld, int aX, int aY, int aZ, ForgeDirection aAxis) {
-		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+		int aMeta = WD.meta(aWorld, aX, aY, aZ);
 		return (aMeta & 7) < 6 && aWorld.setBlock(aX, aY, aZ, this, (aMeta & 8) | (((aMeta & 7) + 1) % 6), 3);
 	}
 	
 	@Override
 	public ForgeDirection[] getValidRotations(World aWorld, int aX, int aY, int aZ) {
-		return (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 6 ? ForgeDirection.VALID_DIRECTIONS : null;
+		return (WD.meta(aWorld, aX, aY, aZ) & 7) < 6 ? ForgeDirection.VALID_DIRECTIONS : null;
 	}
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_wrench) || aTool.equals(TOOL_rotator)) {
 			if (aWorld.isRemote) return 0;
-			int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+			int aMeta = WD.meta(aWorld, aX, aY, aZ);
 			if ((aMeta & 7) >= 6) return 0;
 			byte tSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			return (aMeta & 7) != tSide && aWorld.setBlock(aX, aY, aZ, this, (aMeta & 8) | tSide, 3) ? 2000 : 0;
@@ -154,7 +156,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
-		switch(aWorld.getBlockMetadata(aX, aY, aZ) & 7) {
+		switch(WD.meta(aWorld, aX, aY, aZ) & 7) {
 		case SIDE_X_POS: return AxisAlignedBB.getBoundingBox(aX+0.4, aY    , aZ    , aX+1  , aY+1  , aZ+1  );
 		case SIDE_Y_POS: return AxisAlignedBB.getBoundingBox(aX    , aY+0.4, aZ    , aX+1  , aY+1  , aZ+1  );
 		case SIDE_Z_POS: return AxisAlignedBB.getBoundingBox(aX    , aY    , aZ+0.4, aX+1  , aY+1  , aZ+1  );
@@ -177,7 +179,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public int getRenderPasses(ItemStack aStack) {return 0;}
 	@Override public int getRenderPasses(IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return 0;}
 	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return mRenderers[ST.meta_(aStack) & 15];}
-	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return mRenderers[aWorld.getBlockMetadata(aX, aY, aZ)];}
+	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return mRenderers[WD.meta(aWorld, aX, aY, aZ)];}
 	
 	public SpikeRendererBase[] mRenderers = new SpikeRendererBase[16];
 	

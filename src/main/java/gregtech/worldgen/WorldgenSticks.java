@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import java.util.Set;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
@@ -37,35 +38,31 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenSticks extends WorldgenObject {
+public class WorldgenSticks extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenSticks(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenSticks(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		int tCount = (WD.dimBTL(aWorld) || WD.dimAETHER(aWorld) ? 2 : 0);
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		if (WD.dimBTL(aWorld) || WD.dimAETHER(aWorld)) return mAmount * 2;
+		int tCount = 0;
 		for (String tName : aBiomeNames) {
-			if (tCount < 3) if (BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) {tCount = 3; continue;}
-			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_SAVANNA.contains(tName) || "Wasteland Forest".equals(tName)) {tCount = 2; continue;}
-			if (tCount < 1) if (BIOMES_TAIGA.contains(tName) || BIOMES_MESA.contains(tName) || (aRandom.nextBoolean() && BIOMES_WASTELANDS.contains(tName))) {tCount = 1; continue;}
+			if (BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) {return mAmount * 3;}
+			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_SAVANNA.contains(tName) || "Wasteland Forest".equalsIgnoreCase(tName)) {tCount = 2; continue;}
+			if (tCount < 1) if (BIOMES_TAIGA.contains(tName) || BIOMES_MESA.contains(tName) || BIOMES_WASTELANDS.contains(tName)) {tCount = 1; continue;}
 		}
-		if (tCount <= 0) return F;
+		return mAmount * tCount;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (aContact.getMaterial() != Material.grass && aContact.getMaterial() != Material.ground) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
-		for (int i = 0, j = tCount+aRandom.nextInt(Math.max(2, tCount)); i < j; i++) {
-			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-			for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
-				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-				if (tContact.getMaterial().isLiquid()) break;
-				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground) continue;
-				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32756, null, F, T);
-				break;
-			}
-		}
-		return T;
+		if (WD.easyRep(aWorld, aX, aY+1, aZ)) return tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32756, null, F, T);
+		return F;
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,6 +30,9 @@ import gregapi.data.BI;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.old.Textures;
@@ -40,11 +43,11 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -63,19 +66,19 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		if (aNBT.hasKey(NBT_STATE)) mStone = aNBT.getByte(NBT_STATE);
 		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
 	}
-
+	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		aNBT.setByte(NBT_STATE, mStone);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		aNBT.setByte(NBT_STATE, mStone);
 		return aNBT;
 	}
-
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
@@ -84,9 +87,9 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_ANYBUT_SIDES) + ")");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
-
+	
 	@Override public boolean attachCoversFirst(byte aSide) {return F;}
-
+	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aSide != mFacing && !SIDES_TOP[aSide]) return F;
@@ -100,19 +103,37 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 				if (aStack == null || mRecipes == null || !UT.Entities.isPlayer(aPlayer)) {
 					mClickCount = 0;
 				} else if (mStone <= 0) {
-					if (ST.equal(aStack, Blocks.sandstone) && aStack.stackSize > 0) {
-						mClickCount = 0;
-						mStone = 4;
-						if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
+					if (OM.is(OP.stone.dat(MT.SoulSand), aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone = 16;
+						}
+					} else if (OM.is(OP.stone.dat(MT.Sand), aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone =  4;
+						}
+					} else if (OD.sandstone.is(aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone =  8;
+						}
 					}
-				} else if (UT.Entities.hasInfiniteItems(aPlayer) || ++mClickCount >= 20) {
+				} else if (UT.Entities.hasInfiniteItems(aPlayer)) {
+					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+					if (tRecipe != null) {
+						mLastRecipe = tRecipe;
+						if (tRecipe.isRecipeInputEqual(F, T, ZL_FS, ST.array(aStack))) {
+							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+						}
+					}
+				} else if (++mClickCount >= 20) {
 					mClickCount = 0;
 					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 					if (tRecipe != null) {
 						mLastRecipe = tRecipe;
 						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
 							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
-							if (!UT.Entities.hasInfiniteItems(aPlayer)) mStone--;
 							aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
 						}
 					}

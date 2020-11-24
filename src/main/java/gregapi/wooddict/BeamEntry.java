@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,11 +24,14 @@ import static gregapi.data.CS.*;
 import java.util.Set;
 
 import gregapi.code.HashSetNoNulls;
+import gregapi.code.ItemStackContainer;
+import gregapi.data.ANY;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 
@@ -73,8 +76,13 @@ public class BeamEntry {
 		mPlankEntry = aPlank;
 		mPlankEntry.mBeamEntries.add(this);
 		
-		WoodDictionary.BEAMS.put(mBeam, this);
-		WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mBeam));
-		OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, U*8));
+		if (ST.valid(mBeam) && !WoodDictionary.WOODS.containsKey(new ItemStackContainer(mBeam))) {
+			if (ST.meta(mBeam) == W) for (int i = 0; i < 16; i++) {ItemStack tBeam = ST.copyMeta(i, mBeam);
+			if (OM.materialcontained(tBeam, T, MT.Wood, MT.WoodRubber, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));}
+			if (OM.materialcontained(mBeam, T, MT.Wood, MT.WoodRubber, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
+			WoodDictionary.BEAMS.put(mBeam, this);
+			WoodDictionary.LIST_BEAMS.add(this);
+			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mBeam));
+		}
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -85,21 +85,20 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		int bMeta = aWorld.getBlockMetadata(aX, aY, aZ), aDir = FL.dir(aFluid);
 		
 		boolean renderTop = aWorld.getBlock(aX, aY - aDir, aZ) != aFluid;
-
 		boolean renderBottom = aBlock.shouldSideBeRendered(aWorld, aX, aY + aDir, aZ, 0) && aWorld.getBlock(aX, aY + aDir, aZ) != aFluid;
-
+		
 		boolean[] renderSides = new boolean[] {
-			aBlock.shouldSideBeRendered(aWorld, aX, aY, aZ - 1, 2), 
+			aBlock.shouldSideBeRendered(aWorld, aX, aY, aZ - 1, 2),
 			aBlock.shouldSideBeRendered(aWorld, aX, aY, aZ + 1, 3),
-			aBlock.shouldSideBeRendered(aWorld, aX - 1, aY, aZ, 4), 
+			aBlock.shouldSideBeRendered(aWorld, aX - 1, aY, aZ, 4),
 			aBlock.shouldSideBeRendered(aWorld, aX + 1, aY, aZ, 5)
 		};
-
+		
 		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return F;
-		boolean rendered = F;
 		double heightNW, heightSW, heightSE, heightNE;
 		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid, aBlock);
-
+		boolean rRendered = F;
+		
 		if (flow11 != 1) {
 			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, aFluid, null);
 			float flow01 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ,     aFluid, null);
@@ -120,10 +119,10 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			heightSE = flow11;
 			heightNE = flow11;
 		}
-
+		
 		boolean rises = aDir == 1;
 		if (aRenderer.renderAllFaces || renderTop) {
-			rendered = T;
+			rRendered = T;
 			IIcon iconStill = aBlock.getIcon(1, bMeta);
 			float flowDir = (float)BlockFluidBase.getFlowDirection(aWorld, aX, aY, aZ);
 			
@@ -183,9 +182,9 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 				tessellator.addVertexWithUV(aX + 1, aY + 1 - heightSE, aZ + 1, u4, v4);
 			}
 		}
-
+		
 		if (aRenderer.renderAllFaces || renderBottom) {
-			rendered = T;
+			rRendered = T;
 			tessellator.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY - 1, aZ));
 			if (!rises) {
 				tessellator.setColorOpaque_F(LIGHT_Y_NEG * red, LIGHT_Y_NEG * green, LIGHT_Y_NEG * blue);
@@ -195,7 +194,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 				aRenderer.renderFaceYPos(aBlock, aX, aY + RENDER_OFFSET, aZ, aBlock.getIcon(1, bMeta));
 			}
 		}
-
+		
 		for (int side = 0; side < 4; ++side) {
 			int x2 = aX;
 			int z2 = aZ;
@@ -209,15 +208,9 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 
 			IIcon iconFlow = aBlock.getIcon(side + 2, bMeta);
 			if (aRenderer.renderAllFaces || renderSides[side]) {
-				rendered = T;
-
-				double ty1;
-				double tx1;
-				double ty2;
-				double tx2;
-				double tz1;
-				double tz2;
-
+				double ty1, tx1, ty2, tx2, tz1, tz2;
+				rRendered = T;
+				
 				if (side == 0) {
 					ty1 = heightNW;
 					ty2 = heightNE;
@@ -283,7 +276,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		}
 		aRenderer.renderMinY = 0;
 		aRenderer.renderMaxY = 1;
-		return rendered;
+		return rRendered;
 	}
 	
 	@Override public boolean shouldRender3DInInventory(int modelId){ return F; }

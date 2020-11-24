@@ -22,6 +22,8 @@ package gregapi.config;
 import static gregapi.data.CS.*;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 import gregapi.api.Abstract_Mod;
 import gregapi.data.CS.DirectoriesGT;
@@ -55,7 +57,7 @@ public class Config implements Runnable {
 				if (tPathUsed.renameTo(tPathLowercase)) tPathUsed = tPathLowercase;
 			} else {
 				if (tPathUppercase.exists()) {
-					if (tPathLowercase.exists() && !tPathUppercase.equals(tPathLowercase)) {
+					if (tPathLowercase.exists() && !Files.isSameFile(tPathLowercase.toPath(), tPathUppercase.toPath())) {
 						// This is likely on Unix Systems.
 						// There is two matching Config Files in this Folder, choose the Lowercase one.
 						tPathUsed = tPathLowercase;
@@ -72,7 +74,17 @@ public class Config implements Runnable {
 					tPathUsed = tPathLowercase;
 				}
 			}
-		} catch(Throwable e) {/* Not like that would change anything, if there was a File System related Error. */}
+		} catch(IOException e) {
+			// Not like I could change anything if there was an IO-Error.
+			ERR.println("IO EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
+		} catch(SecurityException e) {
+			// Well, guess we are READ ONLY here.
+			ERR.println("SECURITY EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
+		} catch(Throwable e) {
+			// WTF?
+			ERR.println("RANDOM EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
+			e.printStackTrace(ERR);
+		}
 		
 		mConfig = new Configuration(tPathUsed);
 		mConfig.load();

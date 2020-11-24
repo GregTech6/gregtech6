@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,7 +30,7 @@ import net.minecraft.block.Block;
 public class DungeonChunkEntrance extends DungeonChunkPillar {
 	@Override
 	public boolean generate(DungeonData aData) {
-		super.generate(aData);
+		try {super.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} // The Pillar is not important enough to fail the entire Entrance.
 		
 		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) for (int tY = 0; tY <= 7; tY++) {
 			if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15 || tY == 0 || tY == 7) {
@@ -205,132 +205,132 @@ public class DungeonChunkEntrance extends DungeonChunkPillar {
 		}
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
-			aData.colored      (15, 0,  5);
-			aData.colored      (15, 0,  6);
-			aData.colored      (15, 0,  7);
-			aData.colored      (15, 0,  8);
-			aData.colored      (15, 0,  9);
-			aData.colored      (15, 0, 10);
-			aData.colored      (15, 1,  5);
+			aData.colored (15, 0,  5);
+			aData.colored (15, 0,  6);
+			aData.colored (15, 0,  7);
+			aData.colored (15, 0,  8);
+			aData.colored (15, 0,  9);
+			aData.colored (15, 0, 10);
+			aData.colored (15, 1,  5);
 			aData.air     (15, 1,  6);
 			aData.air     (15, 1,  7);
 			aData.air     (15, 1,  8);
 			aData.air     (15, 1,  9);
-			aData.colored      (15, 1, 10);
-			aData.colored      (15, 2,  5);
+			aData.colored (15, 1, 10);
+			aData.colored (15, 2,  5);
 			aData.air     (15, 2,  6);
 			aData.air     (15, 2,  7);
 			aData.air     (15, 2,  8);
 			aData.air     (15, 2,  9);
-			aData.colored      (15, 2, 10);
-			aData.colored      (15, 3,  5);
+			aData.colored (15, 2, 10);
+			aData.colored (15, 3,  5);
 			aData.air     (15, 3,  6);
 			aData.air     (15, 3,  7);
 			aData.air     (15, 3,  8);
 			aData.air     (15, 3,  9);
-			aData.colored      (15, 3, 10);
-			aData.colored      (15, 4,  5);
-			aData.colored      (15, 4,  6);
-			aData.colored      (15, 4,  7);
-			aData.colored      (15, 4,  8);
-			aData.colored      (15, 4,  9);
-			aData.colored      (15, 4, 10);
+			aData.colored (15, 3, 10);
+			aData.colored (15, 4,  5);
+			aData.colored (15, 4,  6);
+			aData.colored (15, 4,  7);
+			aData.colored (15, 4,  8);
+			aData.colored (15, 4,  9);
+			aData.colored (15, 4, 10);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
-			aData.colored      ( 0, 0,  5);
-			aData.colored      ( 0, 0,  6);
-			aData.colored      ( 0, 0,  7);
-			aData.colored      ( 0, 0,  8);
-			aData.colored      ( 0, 0,  9);
-			aData.colored      ( 0, 0, 10);
-			aData.colored      ( 0, 1,  5);
+			aData.colored ( 0, 0,  5);
+			aData.colored ( 0, 0,  6);
+			aData.colored ( 0, 0,  7);
+			aData.colored ( 0, 0,  8);
+			aData.colored ( 0, 0,  9);
+			aData.colored ( 0, 0, 10);
+			aData.colored ( 0, 1,  5);
 			aData.air     ( 0, 1,  6);
 			aData.air     ( 0, 1,  7);
 			aData.air     ( 0, 1,  8);
 			aData.air     ( 0, 1,  9);
-			aData.colored      ( 0, 1, 10);
-			aData.colored      ( 0, 2,  5);
+			aData.colored ( 0, 1, 10);
+			aData.colored ( 0, 2,  5);
 			aData.air     ( 0, 2,  6);
 			aData.air     ( 0, 2,  7);
 			aData.air     ( 0, 2,  8);
 			aData.air     ( 0, 2,  9);
-			aData.colored      ( 0, 2, 10);
-			aData.colored      ( 0, 3,  5);
+			aData.colored ( 0, 2, 10);
+			aData.colored ( 0, 3,  5);
 			aData.air     ( 0, 3,  6);
 			aData.air     ( 0, 3,  7);
 			aData.air     ( 0, 3,  8);
 			aData.air     ( 0, 3,  9);
-			aData.colored      ( 0, 3, 10);
-			aData.colored      ( 0, 4,  5);
-			aData.colored      ( 0, 4,  6);
-			aData.colored      ( 0, 4,  7);
-			aData.colored      ( 0, 4,  8);
-			aData.colored      ( 0, 4,  9);
-			aData.colored      ( 0, 4, 10);
+			aData.colored ( 0, 3, 10);
+			aData.colored ( 0, 4,  5);
+			aData.colored ( 0, 4,  6);
+			aData.colored ( 0, 4,  7);
+			aData.colored ( 0, 4,  8);
+			aData.colored ( 0, 4,  9);
+			aData.colored ( 0, 4, 10);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
-			aData.colored      ( 5, 0, 15);
-			aData.colored      ( 6, 0, 15);
-			aData.colored      ( 7, 0, 15);
-			aData.colored      ( 8, 0, 15);
-			aData.colored      ( 9, 0, 15);
-			aData.colored      (10, 0, 15);
-			aData.colored      ( 5, 1, 15);
+			aData.colored ( 5, 0, 15);
+			aData.colored ( 6, 0, 15);
+			aData.colored ( 7, 0, 15);
+			aData.colored ( 8, 0, 15);
+			aData.colored ( 9, 0, 15);
+			aData.colored (10, 0, 15);
+			aData.colored ( 5, 1, 15);
 			aData.air     ( 6, 1, 15);
 			aData.air     ( 7, 1, 15);
 			aData.air     ( 8, 1, 15);
 			aData.air     ( 9, 1, 15);
-			aData.colored      (10, 1, 15);
-			aData.colored      ( 5, 2, 15);
+			aData.colored (10, 1, 15);
+			aData.colored ( 5, 2, 15);
 			aData.air     ( 6, 2, 15);
 			aData.air     ( 7, 2, 15);
 			aData.air     ( 8, 2, 15);
 			aData.air     ( 9, 2, 15);
-			aData.colored      (10, 2, 15);
-			aData.colored      ( 5, 3, 15);
+			aData.colored (10, 2, 15);
+			aData.colored ( 5, 3, 15);
 			aData.air     ( 6, 3, 15);
 			aData.air     ( 7, 3, 15);
 			aData.air     ( 8, 3, 15);
 			aData.air     ( 9, 3, 15);
-			aData.colored      (10, 3, 15);
-			aData.colored      ( 5, 4, 15);
-			aData.colored      ( 6, 4, 15);
-			aData.colored      ( 7, 4, 15);
-			aData.colored      ( 8, 4, 15);
-			aData.colored      ( 9, 4, 15);
-			aData.colored      (10, 4, 15);
+			aData.colored (10, 3, 15);
+			aData.colored ( 5, 4, 15);
+			aData.colored ( 6, 4, 15);
+			aData.colored ( 7, 4, 15);
+			aData.colored ( 8, 4, 15);
+			aData.colored ( 9, 4, 15);
+			aData.colored (10, 4, 15);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
-			aData.colored      ( 5, 0,  0);
-			aData.colored      ( 6, 0,  0);
-			aData.colored      ( 7, 0,  0);
-			aData.colored      ( 8, 0,  0);
-			aData.colored      ( 9, 0,  0);
-			aData.colored      (10, 0,  0);
-			aData.colored      ( 5, 1,  0);
+			aData.colored ( 5, 0,  0);
+			aData.colored ( 6, 0,  0);
+			aData.colored ( 7, 0,  0);
+			aData.colored ( 8, 0,  0);
+			aData.colored ( 9, 0,  0);
+			aData.colored (10, 0,  0);
+			aData.colored ( 5, 1,  0);
 			aData.air     ( 6, 1,  0);
 			aData.air     ( 7, 1,  0);
 			aData.air     ( 8, 1,  0);
 			aData.air     ( 9, 1,  0);
-			aData.colored      (10, 1,  0);
-			aData.colored      ( 5, 2,  0);
+			aData.colored (10, 1,  0);
+			aData.colored ( 5, 2,  0);
 			aData.air     ( 6, 2,  0);
 			aData.air     ( 7, 2,  0);
 			aData.air     ( 8, 2,  0);
 			aData.air     ( 9, 2,  0);
-			aData.colored      (10, 2,  0);
-			aData.colored      ( 5, 3,  0);
+			aData.colored (10, 2,  0);
+			aData.colored ( 5, 3,  0);
 			aData.air     ( 6, 3,  0);
 			aData.air     ( 7, 3,  0);
 			aData.air     ( 8, 3,  0);
 			aData.air     ( 9, 3,  0);
-			aData.colored      (10, 3,  0);
-			aData.colored      ( 5, 4,  0);
-			aData.colored      ( 6, 4,  0);
-			aData.colored      ( 7, 4,  0);
-			aData.colored      ( 8, 4,  0);
-			aData.colored      ( 9, 4,  0);
-			aData.colored      (10, 4,  0);
+			aData.colored (10, 3,  0);
+			aData.colored ( 5, 4,  0);
+			aData.colored ( 6, 4,  0);
+			aData.colored ( 7, 4,  0);
+			aData.colored ( 8, 4,  0);
+			aData.colored ( 9, 4,  0);
+			aData.colored (10, 4,  0);
 		}
 		
 		return T;

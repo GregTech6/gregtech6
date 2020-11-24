@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,6 +30,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
 
 public class GT_Tool_Pocket_Knife extends GT_Tool_Knife {
+	@Override public float getMaxDurabilityMultiplier() {return 4.0F;}
 	public final int mSwitchIndex;
 	
 	public GT_Tool_Pocket_Knife(int aSwitchIndex) {

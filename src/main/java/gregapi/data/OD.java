@@ -46,8 +46,13 @@ public enum OD {
 	, craftingWireIron
 	, craftingWireTin
 	, craftingDuctTape
+	, lever
+	, button
+	, buttonWood
+	, buttonStone
 	, listAllpropolis
 	, listAllmushroom
+	, listAllwheats
 	, container1000water
 	, container250water
 	, container1000lava
@@ -74,8 +79,17 @@ public enum OD {
 	, container250lubricant
 	, container1000glue
 	, container250glue
+	, container1000poison
+	, container250poison
+	, aquaRegia
+	, sulfuricAcid
 	, enderChest
+	, sandstone
 	, soulsand
+	, glowstone
+	, dirt
+	, sand
+	, gravel
 	, pestleAndMortar
 	, materialPressedwax
 	, materialWaxcomb
@@ -84,14 +98,24 @@ public enum OD {
 	, plankWeedwood
 	, plankAnyWood
 	, plankWood
-	, paperEmpty
+	, stickAnyWood
+	, stickWood
 	, paperMap
+	, paperEmpty
+	, paperWritten
+	, paperWritable
+	, paperEnchanted
+	, bookEmpty
+	, bookWritten
+	, bookWritable
+	, bookEnchanted
 	, stairWood
 	, slabWood
 	, beamWood
 	, logWood
 	, logRubber
 	, woodLog
+	, woodRubber
 	, flower
 	, bamboo
 	, record
@@ -103,6 +127,7 @@ public enum OD {
 	, slimeballPink
 	, slimeballRice
 	, slimeballSwet
+	, slimeballBorax
 	, itemGrassTall
 	, itemGrass
 	, itemGrassDry
@@ -118,12 +143,14 @@ public enum OD {
 	, itemMoss
 	, itemSlag
 	, itemGlue
+	, itemPoison
 	, itemBarkDry
 	, itemLubricant
 	, itemLubricantEarly
 	, itemResin
 	, itemRubber
 	, itemSalt
+	, itemRock
 	, itemFlint
 	, itemPearl
 	, itemString
@@ -148,10 +175,18 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
-	, bookEmpty
-	, bookWritten
-	, bookWritable
-	, bookEnchanted
+	, obsidian
+	, cryingObsidian
+	, paneGlass
+	, paneGlassColorless
+	, blockGlass
+	, blockGlassColorless
+	, blockClay
+	, blockCandle
+	, blockTorch
+	, blockSoulTorch
+	, blockShadowTorch
+	, blockFoxfireTorch
 	, listAllmeatsubstitute
 	;
 	

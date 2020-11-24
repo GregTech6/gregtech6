@@ -29,6 +29,7 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -63,21 +64,22 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	}
 	@SafeVarargs
 	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
-		this(aName, aDefault, aIndicatorRocks, aProbability, aPrimary, null, 0, aLists);
+		this(aName, aDefault, aIndicatorRocks, aProbability, aPrimary, NB, 0, aLists);
 	}
 	@SafeVarargs
-	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Block aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
+	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Object aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mProbability        = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "Probability"         , aProbability));
-		mMaterial           = OreDictMaterial.get(  ConfigsGT.WORLDGEN.get(mCategory, "Ore"                 , aPrimary.mNameInternal));
-		mIndicatorRocks     =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"      , aIndicatorRocks);
-		mIndicatorFlowers   =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers"    , aFlower != null && aFlower != NB);
+		aFlower             = aFlower instanceof Block ? (Block)aFlower : NB;
+		mProbability        = Math.max(1,         ConfigsGT.WORLDGEN.get(mCategory, "Probability"     , aProbability));
+		mMaterial           = OreDictMaterial.get(ConfigsGT.WORLDGEN.get(mCategory, "Ore"             , aPrimary.mNameInternal));
+		mIndicatorRocks     =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"  , aIndicatorRocks);
+		mIndicatorFlowers   =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers", aFlower != NB);
 		
-		if (mIndicatorFlowers && (aFlower == null || aFlower == NB)) {
+		if (mIndicatorFlowers && aFlower == NB) {
 			mFlower = Blocks.yellow_flower;
 			mFlowerMeta = 0;
 		} else {
-			mFlower = aFlower;
+			mFlower = (Block)aFlower;
 			mFlowerMeta = UT.Code.bind4(aFlowerMeta);
 		}
 		
@@ -100,11 +102,11 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			tChances[4] =  500;
 			tChances[5] =   10;
 			
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumWhite.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlack.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumRed  .mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumGreen.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlue .mID)), tOres, null, tChances, null, null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumWhite.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlack.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumRed  .mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumGreen.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlue .mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
 		} else if (mMaterial.mID <= 0) {
 			ERR.println("The Material is not valid for Ores: " + mMaterial);
 			mInvalid = T;
@@ -123,7 +125,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				tChances[i+1] = UT.Code.divup(10000, (32 * (tChances.length - 2)));
 			}
 			
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, null, null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
 		}
 	}
 	
@@ -139,18 +141,19 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-			int tHeight = WD.waterLevel(aWorld);
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 				ItemStack tRock = OP.rockGt.mat(mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial, 1);
 				if (ST.valid(tRock)) {
 					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 					if (tRegistry != null) {
+						int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
+						,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
 						for (int i = 0; i < 32; i++) {
 							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
-							for (int tY = 127; tY > tHeight; tY--) {
+							for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
 								Block tContact = aWorld.getBlock(tX, tY, tZ);
-								if (tContact.getMaterial().isLiquid()) break;
-								if (!tContact.isOpaqueCube()) continue;
+								if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+								if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 								if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
 								if (mIndicatorFlowers && (tContact != Blocks.dirt || !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)) && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
 									WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);
@@ -158,7 +161,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 									WD.set(aWorld, tX, tY+1, tZ, NB, 0, 0);
 								}
 								if (mIndicatorRocks && (tContact.getMaterial() == Material.grass || tContact.getMaterial() == Material.ground || tContact.getMaterial() == Material.sand || tContact.getMaterial() == Material.rock)) {
-									tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(3)!=0?ST.save(UT.NBT.make(), NBT_VALUE, tRock):UT.NBT.make(), F, T);
+									tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tRock), F, T);
 									break;
 								}
 								break;

@@ -73,6 +73,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
@@ -121,13 +122,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			float tResistance = ((IMTE_GetExplosionResistance)tTileEntityContainer.mTileEntity).getExplosionResistance();
 			if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(mBlock, tResistance));
 		}
-		int tHarvestLevel = tTileEntityContainer.mBlock.getHarvestLevel(tTileEntityContainer.mBlockMetaData);
-		String tHarvestTool = tTileEntityContainer.mBlock.getHarvestTool(tTileEntityContainer.mBlockMetaData);
-		if (tHarvestLevel == 0 && tTileEntityContainer.mBlock.getMaterial().isAdventureModeExempt()) {
-			aList.add(LH.Chat.DGRAY + "Hand-Harvestable, but " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, "Unknown") + LH.Chat.DGRAY + " is faster");
-		} else {
-			aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, "Unknown") + " (" + tHarvestLevel + ")");
-		}
+		aList.add(LH.getToolTipHarvest(tTileEntityContainer.mBlock.getMaterial(), tTileEntityContainer.mBlock.getHarvestTool(tTileEntityContainer.mBlockMetaData), tTileEntityContainer.mBlock.getHarvestLevel(tTileEntityContainer.mBlockMetaData)));
 		// Remove all Nulls and fix eventual Formatting mistakes.
 		for (int i = 0, j = aList.size(); i < j; i++) if (aList.get(i) == null) {aList.remove(i--); j--;} else aList.set(i, LH.Chat.GRAY + aList.get(i) + LH.Chat.RESET);
 	}
@@ -174,17 +169,23 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			}
 			Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 			
+			if (!tReplacedBlock.isReplaceable(aWorld, aX, aY, aZ) || !mBlock.canReplace(aWorld, aX, aY, aZ, aSide, aStack)) return F;
 			if (aStack.stackSize == 0 || (aPlayer != null && !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack))) return F;
 			
 			MultiTileEntityContainer aMTEContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aStack);
 			
-			if (aMTEContainer != null && (aPlayer == null || aPlayer.isSneaking() || !(aMTEContainer.mTileEntity instanceof IMTE_OnlyPlaceableWhenSneaking) || !((IMTE_OnlyPlaceableWhenSneaking)aMTEContainer.mTileEntity).onlyPlaceableWhenSneaking()) && aWorld.canPlaceEntityOnSide(aMTEContainer.mBlock, aX, aY, aZ, F, aSide, aPlayer, aStack) && (!(aMTEContainer.mTileEntity instanceof IMTE_CanPlace) || ((IMTE_CanPlace)aMTEContainer.mTileEntity).canPlace(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ)) && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
-				// That is some complicated Bullshit I have to do to make my MTEs work right. 
+			if (aMTEContainer != null
+			&& (aPlayer == null || aPlayer.isSneaking() || !(aMTEContainer.mTileEntity instanceof IMTE_OnlyPlaceableWhenSneaking) || !((IMTE_OnlyPlaceableWhenSneaking)aMTEContainer.mTileEntity).onlyPlaceableWhenSneaking())
+			&& ((aMTEContainer.mTileEntity instanceof IMTE_IgnorePlayerCollisionWhenPlacing && ((IMTE_IgnorePlayerCollisionWhenPlacing)aMTEContainer.mTileEntity).ignorePlayerCollisionWhenPlacing(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ)) || aWorld.checkNoEntityCollision(AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1)))
+			&& (!(aMTEContainer.mTileEntity instanceof IMTE_CanPlace) || ((IMTE_CanPlace)aMTEContainer.mTileEntity).canPlace(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ))
+			&& aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
+				
+				// That is some complicated Bullshit I have to do to make my MTEs work right.
 				((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-				WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+				WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
 				WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
 				((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-				WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, T);
+				WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, T);
 				
 				try {
 					if (!(aMTEContainer.mTileEntity instanceof IMTE_OnPlaced) || ((IMTE_OnPlaced)aMTEContainer.mTileEntity).onPlaced(aStack, aPlayer, aMTEContainer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ)) {
@@ -623,6 +624,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Optional.Method(modid = ModIDs.BOTA) @Override public Block getBlockToPlaceByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {return null;}
 	@Optional.Method(modid = ModIDs.BOTA) @Override public void onBlockPlacedByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {/**/}
 	
+	@Override public boolean func_150936_a(World aWorld, int aX, int aY, int aZ, int aSide, EntityPlayer aPlayer, ItemStack aStack) {return T;}
 	@Override public String getToolTip(ItemStack aStack) {return null;} // This has its own ToolTip Handler, no need to let the IC2 Handler screw us up at this Point
 	@Override public void chargeFromArmor(ItemStack aStack, EntityLivingBase aPlayer) {/**/}
 	@Override public float getElectricityStored(ItemStack aStack) {return getEnergyStored(TD.Energy.EU, aStack) * EnergyConfigHandler.IC2_RATIO;}
@@ -644,6 +646,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Override public final String getUnlocalizedName(ItemStack aStack) {return mBlock.mMultiTileEntityRegistry.mNameInternal+"."+getDamage(aStack);}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
+	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public int getSpriteNumber() {return 0;}
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aRegister) {/**/}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}

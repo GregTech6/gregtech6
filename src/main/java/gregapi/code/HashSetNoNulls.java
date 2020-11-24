@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,7 +38,7 @@ public class HashSetNoNulls<E> extends AbstractSet<E> {
 	}
 	
 	public HashSetNoNulls(Collection<? extends E> c) {
-		map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
+		map = new HashMap<>(Math.max((int)(c.size()/.75F) + 1, 16));
 		addAll(c);
 	}
 	

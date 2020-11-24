@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -49,7 +50,7 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment {
+public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment implements IMTE_IgnorePlayerCollisionWhenPlacing {
 	public boolean mAcidProof = F;
 	
 	@Override
@@ -129,7 +130,7 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment {
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return (aRenderPass > 0 && SIDES_TOP[aSide]) || (!aShouldSideBeRendered[aSide] && ((SIDES_HORIZONTAL[mFacing] && aSide == mFacing) || (aRenderPass == 2 && SIDES_BOTTOM[aSide]))) ? null : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
 	}
 	
 	// Icons
@@ -168,6 +169,7 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment {
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_BOTTOM_HORIZONTAL;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.funnel";}
 }

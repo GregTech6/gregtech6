@@ -60,15 +60,15 @@ public class MultiItemBooks extends MultiItemRandom {
 		@SuppressWarnings("unused")
 		int tLastID = 0;
 		for (int i = 0; i < 8; i++) {
-			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID =      i, "Book"       , "", OD.bookWritten, TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)(3+i));
-			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 1000+i, "Large Book" , "", OD.bookWritten, TC.stack(TC.COGNITO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)(3+i));
+			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID =      i, "Book"       , "", OD.bookWritten, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)(3+i));
+			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 1000+i, "Large Book" , "", OD.bookWritten, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)(3+i));
 		}
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32000, "Book"                    , "With a Bronze Emblem on it"      , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3, MT.Bronze, U9))), (byte)12);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32001, "Large Book"              , "With a Bronze Emblem on it"      , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Bronze, U9))), (byte)12);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32000, "Book"                    , "With a Bronze Emblem on it"      , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3, MT.Bronze, U9))), (byte)12);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32001, "Large Book"              , "With a Bronze Emblem on it"      , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Bronze, U9))), (byte)12);
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32002, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)11);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32003, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)11);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32002, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)11);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32003, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)11);
 		
 		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});

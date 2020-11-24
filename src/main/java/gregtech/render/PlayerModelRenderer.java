@@ -35,24 +35,32 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 public class PlayerModelRenderer extends RenderPlayer {
-	private final ResourceLocation[] mResources = new ResourceLocation[] {new ResourceLocation(RES_PATH + "model/BrainTech.png"), new ResourceLocation(RES_PATH + "model/Silver.png"), new ResourceLocation(RES_PATH + "model/MrBrain.png"), new ResourceLocation(RES_PATH + "model/Dev.png"), new ResourceLocation(RES_PATH + "model/Gold.png")};
+	private final ResourceLocation[] mResources = new ResourceLocation[] {new ResourceLocation(RES_PATH_MODEL + "BrainTech.png"), new ResourceLocation(RES_PATH_MODEL + "Silver.png"), new ResourceLocation(RES_PATH_MODEL + "MrBrain.png"), new ResourceLocation(RES_PATH_MODEL + "Dev.png"), new ResourceLocation(RES_PATH_MODEL + "Gold.png"), new ResourceLocation(RES_PATH_MODEL + "Crazy.png")};
 	private final Collection<String> mSupporterListSilver, mSupporterListGold;
 	
 	public PlayerModelRenderer(Collection<String> aSupporterListSilver, Collection<String> aSupporterListGold) {
 		mSupporterListSilver = aSupporterListSilver;
-		mSupporterListGold = aSupporterListGold;
+		mSupporterListGold   = aSupporterListGold;
 		setRenderManager(RenderManager.instance);
 	}
 	
 	private ResourceLocation getResource(String aPlayer) {
 		aPlayer = aPlayer.toLowerCase();
-		if (aPlayer.equalsIgnoreCase("GregoriusT"))     return mResources[3];
-		if (aPlayer.equalsIgnoreCase("OvermindDL1"))    return mResources[3];
-		if (aPlayer.equalsIgnoreCase("Mine_Sasha"))     return mResources[4];
-		if (aPlayer.equalsIgnoreCase("Mr_Brain"))       return mResources[2];
-		if (aPlayer.equalsIgnoreCase("Friedi4321"))     return mResources[0];
-		if (mSupporterListGold.contains(aPlayer))       return mResources[4];
-		if (mSupporterListSilver.contains(aPlayer))     return mResources[1];
+		// GT6 Team
+		if (aPlayer.equalsIgnoreCase("GregoriusT"))   return mResources[3];
+		if (aPlayer.equalsIgnoreCase("OvermindDL1"))  return mResources[3];
+		// GT6U Team
+		if (aPlayer.equalsIgnoreCase("jihuayu123"))   return mResources[3];
+		if (aPlayer.equalsIgnoreCase("Yuesha_Kev14")) return mResources[3];
+		if (aPlayer.equalsIgnoreCase("Evanvenir"))    return mResources[3];
+		// This "special" Cape is totally just to mess with her. XD
+		if (aPlayer.equalsIgnoreCase("CrazyJ1984"))   return mResources[5];
+		// People who helped back in ancient GT Versions.
+		if (aPlayer.equalsIgnoreCase("Mr_Brain"))     return mResources[2];
+		if (aPlayer.equalsIgnoreCase("Friedi4321"))   return mResources[0];
+		// Supporter Lists
+		if (mSupporterListGold  .contains(aPlayer))   return mResources[4];
+		if (mSupporterListSilver.contains(aPlayer))   return mResources[1];
 		return null;
 	}
 	

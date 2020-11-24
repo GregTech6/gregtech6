@@ -30,6 +30,7 @@ import gregapi.block.IBlockPlacable;
 import gregapi.block.IPrefixBlock;
 import gregapi.block.fluid.BlockBaseFluid;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.BiomeNameSet;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
@@ -62,6 +63,7 @@ import gregapi.render.ITexture;
 import gregapi.render.IconContainerCopied;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.PlankEntry;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -217,7 +219,7 @@ public class CS {
 	public static int EU_PER_FURNACE_TICK = 25;
 	/** The value of how many Energy Units are worth a Smelt Operation in regards of Energy -> Smelt, because many Mods including IC2 have cheaper smelting. In GT, I go for a Max Efficiency of 19.53125 times that value, so 256 GU per Furnace Operation. */
 	public static int EU_PER_SMELT = 256;
-	/** The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU or 80000 GU per Bucket. */
+	/** The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU/L or 80000 GU per Bucket. Cannot be above 200 GU/L or else MFR exploit with infinite Lava! */
 	public static int EU_PER_LAVA = 80;
 	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
@@ -250,40 +252,44 @@ public class CS {
 	public static final int LIGHT_OPACITY_NONE = 0, LIGHT_OPACITY_LEAVES = 1, LIGHT_OPACITY_WATER = 3, LIGHT_OPACITY_MAX = 255;
 	
 	public static final Set<String>
-	  BIOMES_RIVER          = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed")
-	, BIOMES_RIVER_LAKE     = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed", "Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge") // "Ephemeral Lake", "Ephemeral Lake Edge" those are vapourizing Lakes that vanish depending on Season.
-	, BIOMES_OCEAN          = new HashSetNoNulls<>(F, BiomeGenBase.ocean.biomeName, BiomeGenBase.frozenOcean.biomeName, BiomeGenBase.deepOcean.biomeName, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean")
-	, BIOMES_OCEAN_BEACH    = new HashSetNoNulls<>(F, BiomeGenBase.ocean.biomeName, BiomeGenBase.frozenOcean.biomeName, BiomeGenBase.deepOcean.biomeName, BiomeGenBase.beach.biomeName, BiomeGenBase.coldBeach.biomeName, BiomeGenBase.stoneBeach.biomeName, BiomeGenBase.mushroomIslandShore.biomeName, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach")
-	, BIOMES_INFINITE_WATER = new HashSetNoNulls<>(F, BiomeGenBase.ocean.biomeName, BiomeGenBase.frozenOcean.biomeName, BiomeGenBase.deepOcean.biomeName, BiomeGenBase.beach.biomeName, BiomeGenBase.coldBeach.biomeName, BiomeGenBase.stoneBeach.biomeName, BiomeGenBase.mushroomIslandShore.biomeName, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach", BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed", "Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge")
-	, BIOMES_JUNGLE         = new HashSetNoNulls<>(F, BiomeGenBase.jungle.biomeName, BiomeGenBase.jungleHills.biomeName, BiomeGenBase.jungleEdge.biomeName, "Undergound Jungle", "Undergound Jungle M", "Jungle Island", "Extreme Jungle", "Jungle M", "JungleEdge M", "Mini Jungle", "Rainforest Hills")
-	, BIOMES_DESERT         = new HashSetNoNulls<>(F, BiomeGenBase.desert.biomeName, BiomeGenBase.desertHills.biomeName, "Sahara", "Red Desert", "Desert Archipelago", "Oasis", "Sandstone Canyon", "Sandstone Canyon 2", "Sandstone Ranges", "Sandstone Ranges M", "Sahel", "Lush Desert", "Desert Oil Field", "Desert Island", "Desert M", "Mountainous Desert", "Desert Mountains", "Volcanic Desert", "Volcanic Desert M", "Ulterior Outback", "Ulterior Outback M")
-	, BIOMES_MESA           = new HashSetNoNulls<>(F, BiomeGenBase.mesa.biomeName, BiomeGenBase.mesaPlateau.biomeName, BiomeGenBase.mesaPlateau_F.biomeName, "Canyon", "Mesa (Bryce)", "Mesa Plateau F M", "Mesa Plateau M", "Mesa", "Clay Hills")
-	, BIOMES_SAVANNA        = new HashSetNoNulls<>(F, BiomeGenBase.savanna.biomeName, BiomeGenBase.savannaPlateau.biomeName, "Steppe", "Subterranean Savannah", "Subterranean Savannah M", "Oak Savanna", "Savannah", "Savanna M", "Savanna Plateau M", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie")
-	, BIOMES_SWAMP          = new HashSetNoNulls<>(F, BiomeGenBase.swampland.biomeName, "Swampland M", "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Submerged Swamp M", "Fire Swamp")
-	, BIOMES_TAIGA          = new HashSetNoNulls<>(F, BiomeGenBase.taiga.biomeName, BiomeGenBase.taigaHills.biomeName, BiomeGenBase.coldTaiga.biomeName, BiomeGenBase.coldTaigaHills.biomeName, BiomeGenBase.megaTaiga.biomeName, BiomeGenBase.megaTaigaHills.biomeName, "Mountain Taiga", "Cold Taiga M", "Taiga M", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Boreal Plateau M")
-	, BIOMES_FROZEN         = new HashSetNoNulls<>(F, BiomeGenBase.icePlains.biomeName, BiomeGenBase.iceMountains.biomeName, BiomeGenBase.coldTaiga.biomeName, BiomeGenBase.coldTaigaHills.biomeName, "Snow Island", "Ice Plains Spikes", "Ice Wasteland", "Cold Taiga M", "Frost Forest", "Snowy Rainforest", "Snow Forest", "Snowy Forest", "Twilight Glacier", "Alpine", "Glacier", "Tundra", "Snowy Desert", "Snowy Plateau", "Snowy Ranges", "Snowy Wastelands", "Polar Desert", "Ice Sheet", "Frozen Archipelago", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Mountains M", "Alpine Tundra")
-	, BIOMES_WOODS          = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Maple Woods", BiomeGenBase.roofedForest.biomeName, BiomeGenBase.birchForest.biomeName, BiomeGenBase.birchForestHills.biomeName, "Pine Forest", "Rainforest", "Rainforest Valley", "Redwood Forest", "Lush Redwoods", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest", "Spruce Woods", "Autumn Woods", "Flower Forest", "Birch Hills", "Birch Forest M", "Birch Forest Hills M", "Roofed Forest M", "Woodlands", "Temperate Rainforest", "Pinelands", "Tall Pine Forest", "Shield", "Mystic Grove", "Ominous Woods", "Blossom Hills", "Blossom Woods", "Aspen Forest", "Aspen Hills", "Cypress Forest", "Silver Pine Forest", "Silver Pine Hills", "Fir Forest", "Flowery Archipelago", "Oak Forest", "Pine Forest", "Pine Forest Archipelago", "Rainforest Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
-	, BIOMES_FOREST         = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge")
-	, BIOMES_MAPLE          = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Maple Woods")
-	, BIOMES_PLAINS         = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Rainforest Plains", "Tropics", "Highlands", "Bald Hill", "Tundra", "Low Hills")
-	, BIOMES_HAZEL          = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim")
-	, BIOMES_MOUNTAINS      = new HashSetNoNulls<>(F, BiomeGenBase.extremeHills.biomeName, BiomeGenBase.extremeHillsEdge.biomeName, BiomeGenBase.extremeHillsPlus.biomeName, BiomeGenBase.stoneBeach.biomeName, "Extreme Hills M", "Extreme Hills+ M", "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Mountains M", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
-	, BIOMES_NETHER         = new HashSetNoNulls<>(F, BiomeGenBase.hell.biomeName)
-	, BIOMES_END            = new HashSetNoNulls<>(F, BiomeGenBase.sky.biomeName)
-	, BIOMES_WASTELANDS     = new HashSetNoNulls<>(F, "Wasteland", "Wastelands", "Wasteland Mountains", "Wasteland Forest", "Radioactive Wasteland")
-	, BIOMES_RADIOACTIVE    = new HashSetNoNulls<>(F, "Radioactive Wasteland")
-	, BIOMES_SHROOM         = new HashSetNoNulls<>(F, BiomeGenBase.mushroomIsland.biomeName, BiomeGenBase.mushroomIslandShore.biomeName, "Fungal Forest", "Fungal Forest M")
-	, BIOMES_MAGICAL        = new HashSetNoNulls<>(F, "Magical Forest", "Tainted Land", "Eerie", "WyvernBiome", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim")
-	, BIOMES_MAGICAL_GOOD   = new HashSetNoNulls<>(F, "Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim")
-	, BIOMES_MAGICAL_BAD    = new HashSetNoNulls<>(F, "Tainted Land", "Eerie", "WyvernBiome", "Ominous Woods")
-	, BIOMES_EREBUS         = new HashSetNoNulls<>(F, "Undergound Jungle", "Volcanic Desert", "Subterranean Savannah", "Elysian Fields", "Ulterior Outback", "Fungal Forest", "Submerged Swamp", "Elysian Forest", "Undergound Jungle M", "Volcanic Desert M", "Subterranean Savannah M", "Elysian Fields M", "Ulterior Outback M", "Fungal Forest M", "Submerged Swamp M", "Elysian Forest M")
-	, BIOMES_VOID           = new HashSetNoNulls<>(F, "Space", "space")
-	, BIOMES_MOON           = new HashSetNoNulls<>(F, "Moon", "moon")
-	, BIOMES_MARS           = new HashSetNoNulls<>(F, "Mars", "mars", "marsFlat")
-	, BIOMES_ASTEROIDS      = new HashSetNoNulls<>(F, "Asteroids", "asteroids")
-	, BIOMES_SPACE          = new HashSetNoNulls<>(F, "Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
+	  BIOMES_RIVER          = new BiomeNameSet(BiomeGenBase.river, BiomeGenBase.frozenRiver, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed")
+	, BIOMES_RIVER_LAKE     = new BiomeNameSet(BiomeGenBase.river, BiomeGenBase.frozenRiver, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed", "Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge") // "Ephemeral Lake", "Ephemeral Lake Edge" those are vapourizing Lakes that vanish depending on Season.
+	, BIOMES_LAKE           = new BiomeNameSet("Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge", "Ephemeral Lake", "Ephemeral Lake Edge")
+	, BIOMES_OCEAN          = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean")
+	, BIOMES_OCEAN_BEACH    = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, BiomeGenBase.beach, BiomeGenBase.coldBeach, BiomeGenBase.stoneBeach, BiomeGenBase.mushroomIslandShore, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach")
+	, BIOMES_INFINITE_WATER = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, BiomeGenBase.beach, BiomeGenBase.coldBeach, BiomeGenBase.stoneBeach, BiomeGenBase.mushroomIslandShore, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach", BiomeGenBase.river, BiomeGenBase.frozenRiver, "Lush River", "Estuary", "Twilight Stream", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed", "Tropical River", "Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge")
+	, BIOMES_JUNGLE         = new BiomeNameSet(BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.jungleEdge, "Undergound Jungle", "Jungle Island", "Extreme Jungle", "Mini Jungle", "Rainforest Hills")
+	, BIOMES_DESERT         = new BiomeNameSet(BiomeGenBase.desert, BiomeGenBase.desertHills, "Sahara", "Red Desert", "Desert Archipelago", "Oasis", "Sandstone Canyon", "Sandstone Canyon 2", "Sandstone Ranges", "Sahel", "Lush Desert", "Desert Oil Field", "Desert Island", "Mountainous Desert", "Desert Mountains", "Volcanic Desert", "Ulterior Outback")
+	, BIOMES_MESA           = new BiomeNameSet(BiomeGenBase.mesa, BiomeGenBase.mesaPlateau, BiomeGenBase.mesaPlateau_F, "Canyon", "Mesa (Bryce)", "Mesa", "Clay Hills")
+	, BIOMES_SAVANNA        = new BiomeNameSet(BiomeGenBase.savanna, BiomeGenBase.savannaPlateau, "Steppe", "Subterranean Savannah", "Oak Savanna", "Savannah", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie")
+	, BIOMES_SWAMP          = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
+	, BIOMES_TAIGA          = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands")
+	, BIOMES_FROZEN         = new BiomeNameSet(BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, "Snow Island", "Ice Plains Spikes", "Ice Wasteland", "Frost Forest", "Snowy Rainforest", "Snow Forest", "Snowy Forest", "Twilight Glacier", "Alpine", "Glacier", "Tundra", "Snowy Desert", "Snowy Plateau", "Snowy Ranges", "Snowy Wastelands", "Polar Desert", "Ice Sheet", "Frozen Archipelago", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra")
+	, BIOMES_WOODS          = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Dark Forest", "Dark Forest Center", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest", "Maple Woods", BiomeGenBase.roofedForest, BiomeGenBase.birchForest, BiomeGenBase.birchForestHills, "Pine Forest", "Rainforest", "Rainforest Valley", "Redwood Forest", "Lush Redwoods", "Spruce Woods", "Autumn Woods", "Flower Forest", "Birch Hills", "Woodlands", "Temperate Rainforest", "Pinelands", "Tall Pine Forest", "Shield", "Mystic Grove", "Ominous Woods", "Blossom Hills", "Blossom Woods", "Aspen Forest", "Aspen Hills", "Cypress Forest", "Silver Pine Forest", "Silver Pine Hills", "Fir Forest", "Flowery Archipelago", "Oak Forest", "Pine Forest", "Pine Forest Archipelago", "Rainforest Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
+	, BIOMES_FOREST         = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Dark Forest", "Dark Forest Center", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest")
+	, BIOMES_MAPLE          = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Maple Woods", "Firefly Forest")
+	, BIOMES_DARK_FOREST    = new BiomeNameSet(BiomeGenBase.roofedForest, "Dark Forest", "Dark Forest Center")
+	, BIOMES_PLAINS         = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Rainforest Plains", "Tropics", "Highlands", "Bald Hill", "Tundra", "Low Hills")
+	, BIOMES_HAZEL          = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim")
+	, BIOMES_COCONUT        = new BiomeNameSet(BiomeGenBase.beach, "Tropical Ocean", "Tropical Beach", "Tropical River", "Tropical Lake", "Tropical Archipelago", "Tropical Islands", "Tropics", "Oasis")
+	, BIOMES_MOUNTAINS      = new BiomeNameSet(BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.extremeHillsPlus, BiomeGenBase.stoneBeach, "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Twilight Highlands", "Thornlands", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
+	, BIOMES_NETHER         = new BiomeNameSet(BiomeGenBase.hell, "Ruptured Chasm", "Abyssal Shadowland", "Crystalline Crag", "Basalt Deltas", "Crimson Forest", "Soul Sand Valley", "Warped Forest", "Foxfire Swamp")
+	, BIOMES_END            = new BiomeNameSet(BiomeGenBase.sky)
+	, BIOMES_VOLCANIC       = new BiomeNameSet("Fire Swamp", "Volcano", "Volcano Island", "Volcanic Desert")
+	, BIOMES_WASTELANDS     = new BiomeNameSet("Wasteland", "Wastelands", "Wasteland Mountains", "Wasteland Forest", "Radioactive Wasteland")
+	, BIOMES_RADIOACTIVE    = new BiomeNameSet("Radioactive Wasteland")
+	, BIOMES_SHROOM         = new BiomeNameSet(BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, "Fungal Forest", "Mushroom Forest", "Deep Mushroom Forest")
+	, BIOMES_MAGICAL        = new BiomeNameSet("Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim", "Tainted Land", "Eerie", "WyvernBiome", "Ominous Woods")
+	, BIOMES_MAGICAL_GOOD   = new BiomeNameSet("Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim")
+	, BIOMES_MAGICAL_BAD    = new BiomeNameSet("Tainted Land", "Eerie", "WyvernBiome", "Ominous Woods")
+	, BIOMES_EREBUS         = new BiomeNameSet("Undergound Jungle", "Volcanic Desert", "Subterranean Savannah", "Elysian Fields", "Ulterior Outback", "Fungal Forest", "Submerged Swamp", "Elysian Forest")
+	, BIOMES_VOID           = new BiomeNameSet("Space", "space")
+	, BIOMES_MOON           = new BiomeNameSet("Moon", "moon")
+	, BIOMES_MARS           = new BiomeNameSet("Mars", "mars", "marsFlat")
+	, BIOMES_ASTEROIDS      = new BiomeNameSet("Asteroids", "asteroids")
+	, BIOMES_SPACE          = new BiomeNameSet("Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
 	
-	// "Wasteland City", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Basin", "Badlands", "Outback", "Tropical Islands", "Tropical Archipelago", "Windy Island", "Volcano Island", "Volcano", "Volcano M"
+	// "Wasteland City", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Basin", "Badlands", "Outback", "Windy Island"
 	
 	/** Stores the Coordinates that any given Player last interacted with. */
 	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new IdentityHashMap<>();
@@ -295,15 +301,15 @@ public class CS {
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
-
+	
 	/** If I ever need to talk in Chat. XD */
-	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+">";
+	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+"> ";
 	/** The Colour White as RGB Short Array. */
 	public static final short[] UNCOLOURED = {255, 255, 255, 255};
 	/** The Colour White as simple Integer (0x00ffffff). */
 	public static final int UNCOLORED = 16777215;
 	public static final int ALL_NON_ALPHA_COLOR = 0x00ffffff;
-
+	
 	public static final int[] RAINBOW_ARRAY = {
 		0xff0000,
 		0xff4000,
@@ -461,7 +467,10 @@ public class CS {
 
 	/** Offset for Rendering Text on Surfaces. */
 	public static final float PX_OFFSET = 0.005F;
-
+	
+	/** Default Size Box. */
+	public static final float[] PX_BOX = {0,0,0,1,1,1};
+	
 	/** Array with length 17 containing the Coordinates of Pixels from 0/16 to 16/16 */
 	public static final float[] PX_P = {
 		  0.0000F, 0.0625F, 0.1250F, 0.1875F
@@ -653,7 +662,7 @@ public class CS {
 											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F},
 											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F},
 											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F};
-
+	
 	/** For Facing Checks. */
 	public static final boolean[][]
 	SIDES_ANY_BUT = {
@@ -698,7 +707,7 @@ public class CS {
 		SIDES_AXIS_Y,
 		SIDES_AXIS_Z
 	};
-
+	
 	/** Pillar Stuff for more understandable references. */
 	public static final byte PILLAR_X = 4, PILLAR_Y = 0, PILLAR_Z = 8, PILLAR_BITS = 12, PILLAR_DATA = 3, PILLAR_RENDER = 31
 	, PILLARS_X[] = {4,5,6,7}, PILLARS_Y[] = {0,1,2,3}, PILLARS_Z[] = {8,9,10,11}
@@ -714,11 +723,11 @@ public class CS {
 		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
 		SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X,
 		SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z,
-		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
+		SIDES_NONE  , SIDES_NONE  , SIDES_NONE  , SIDES_NONE  ,
 	};
-
+	
 	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
-
+	
 	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */
 	public static final int[]
 	  SCAN_NEG_0 = {0}
@@ -798,7 +807,7 @@ public class CS {
 	
 	/** Not really Constants, but they set using the Config and therefore should be constant. */
 	@SuppressWarnings("deprecation")
-	public static boolean D1 = F, D2 = F, D3 = F, CLIENT_BLOCKUPDATE_SOUNDS = F, NEI = F, APRIL_FOOLS = (new Date().getMonth() == 3 && new Date().getDate() <= 3), TOOL_SOUNDS = T, EMIT_EU_AS_RF = F, DISABLE_GT6_CRAFTING_RECIPES = F, ENABLE_ADDING_IC2_MACERATOR_RECIPES = T, DISABLE_ALL_IC2_MACERATOR_RECIPES = F, ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = T, DISABLE_ALL_IC2_EXTRACTOR_RECIPES = F, ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = T, DISABLE_ALL_IC2_COMPRESSOR_RECIPES = F, ENABLE_ADDING_IC2_OREWASHER_RECIPES = T, DISABLE_ALL_IC2_OREWASHER_RECIPES = F, ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = T, DISABLE_ALL_IC2_CENTRIFUGE_RECIPES = F, FAST_LEAF_DECAY = T, NERFED_WOOD = T, FOOD_OVERDOSE_DEATH = T, NUTRITION_SYSTEM = T, OWNERSHIP_RESET = F, SPAWN_ZONE_MOB_PROTECTION = T, CONSTANT_ENERGY = T, RAIN_EXPLOSIONS = F, WATER_EXPLOSIONS = F, THUNDER_EXPLOSIONS = F, FIRE_EXPLOSIONS = F, OVERCHARGE_EXPLOSIONS = F, FIRE_BREAKING = F, RAIN_BREAKING = F, WATER_BREAKING = F, THUNDER_BREAKING = F, OVERCHARGE_BREAKING = F, SHOW_MICROBLOCKS = F, SHOW_CHEM_FORMULAS = T, SHOW_INTERNAL_NAMES = F, SHOW_HIDDEN_MATERIALS = F, SHOW_HIDDEN_PREFIXES = F, SHOW_ORE_BLOCK_PREFIXES = F, SHOW_HIDDEN_ITEMS = F, DRINKS_ALWAYS_DRINKABLE = F, HUNGER_BY_INVENTORY_WEIGHT = F, INVENTORY_UNIFICATION = T, XP_ORB_COMBINING = T, ADVENTURE_MODE_KIT = F, SURVIVAL_INTO_ADVENTURE_MODE = F, DISPLAY_TEMP_TOOLTIP = T, GENERATE_STONE = T, GENERATE_STREETS = F, GENERATE_NEXUS = F, GENERATE_TESTING = F, GENERATE_BEACON = F, GENERATE_BIOMES = F;
+	public static boolean D1 = F, D2 = F, D3 = F, CLIENT_BLOCKUPDATE_SOUNDS = F, NEI = F, APRIL_FOOLS = (new Date().getMonth() == 3 && new Date().getDate() <= 3), TOOL_SOUNDS = T, EMIT_EU_AS_RF = F, DISABLE_GT6_CRAFTING_RECIPES = F, ENABLE_ADDING_IC2_MACERATOR_RECIPES = T, DISABLE_ALL_IC2_MACERATOR_RECIPES = F, ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = T, DISABLE_ALL_IC2_EXTRACTOR_RECIPES = F, ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = T, DISABLE_ALL_IC2_COMPRESSOR_RECIPES = F, ENABLE_ADDING_IC2_OREWASHER_RECIPES = T, DISABLE_ALL_IC2_OREWASHER_RECIPES = F, ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = T, DISABLE_ALL_IC2_CENTRIFUGE_RECIPES = F, FAST_LEAF_DECAY = T, NERFED_WOOD = T, FOOD_OVERDOSE_DEATH = T, NUTRITION_SYSTEM = T, OBSTRUCTION_CHECKS = T, OWNERSHIP_RESET = F, SPAWN_ZONE_MOB_PROTECTION = T, CONSTANT_ENERGY = T, RAIN_EXPLOSIONS = F, WATER_EXPLOSIONS = F, THUNDER_EXPLOSIONS = F, FIRE_EXPLOSIONS = F, OVERCHARGE_EXPLOSIONS = F, FIRE_BREAKING = F, RAIN_BREAKING = F, WATER_BREAKING = F, THUNDER_BREAKING = F, OVERCHARGE_BREAKING = F, SHOW_MICROBLOCKS = F, SHOW_CHEM_FORMULAS = T, SHOW_INTERNAL_NAMES = F, SHOW_HIDDEN_MATERIALS = F, SHOW_HIDDEN_PREFIXES = F, SHOW_ORE_BLOCK_PREFIXES = F, SHOW_HIDDEN_ITEMS = F, DRINKS_ALWAYS_DRINKABLE = F, HUNGER_BY_INVENTORY_WEIGHT = F, INVENTORY_UNIFICATION = T, XP_ORB_COMBINING = T, ADVENTURE_MODE_KIT = F, SURVIVAL_INTO_ADVENTURE_MODE = F, DISPLAY_TEMP_TOOLTIP = T, GENERATE_STONE = T, GENERATE_STREETS = F, GENERATE_NEXUS = F, GENERATE_TESTING = F, GENERATE_BEACON = F, GENERATE_BIOMES = F;
 	/** This means that Client or Server specific Base Files are definitely existing and loaded! Not if the World is actually client side or server side! */
 	public static boolean CODE_UNCHECKED = T, CODE_CLIENT = F, CODE_SERVER = F;
 	
@@ -808,6 +817,8 @@ public class CS {
 	public static double CONFIG_HARDNESS_MULTIPLIER_SAND = 1.0, CONFIG_HARDNESS_MULTIPLIER_ROCK = 1.0, CONFIG_HARDNESS_MULTIPLIER_ORES = 1.0;
 	/** Tree Growth Time Multiplier. */
 	public static int TREE_GROWTH_TIME = 1;
+	/** TFC Damage Multiplier. */
+	public static int TFC_DAMAGE_MULTIPLIER = 80;
 	/** Entity Cramming */
 	public static int ENTITY_CRAMMING = 3;
 	/** Item Related */
@@ -844,13 +855,14 @@ public class CS {
 	, DIM_LASTMILLENIUM = -112
 	, DIM_TROPICS = -127
 	;
-
+	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
 	  GEN_OVERWORLD     = new ArrayListNoNulls<>()
 	, GEN_GT            = new ArrayListNoNulls<>()
 	, GEN_PFAA          = new ArrayListNoNulls<>()
+	, GEN_TFC           = new ArrayListNoNulls<>()
 	, GEN_NETHER        = new ArrayListNoNulls<>()
 	, GEN_AETHER        = new ArrayListNoNulls<>()
 	, GEN_END           = new ArrayListNoNulls<>()
@@ -867,15 +879,17 @@ public class CS {
 	, GEN_ALFHEIM       = new ArrayListNoNulls<>()
 	, GEN_TROPICS       = new ArrayListNoNulls<>()
 	, GEN_CANDY         = new ArrayListNoNulls<>()
-	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY}
-	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
+	, GEN_GEMS[]        = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
+	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY}
+	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
-
+	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
 	  ORE_OVERWORLD     = new ArrayListNoNulls<>()
 	, ORE_PFAA          = new ArrayListNoNulls<>()
+	, ORE_TFC           = new ArrayListNoNulls<>()
 	, ORE_NETHER        = new ArrayListNoNulls<>()
 	, ORE_AETHER        = new ArrayListNoNulls<>()
 	, ORE_END           = new ArrayListNoNulls<>()
@@ -892,10 +906,10 @@ public class CS {
 	, ORE_ALFHEIM       = new ArrayListNoNulls<>()
 	, ORE_TROPICS       = new ArrayListNoNulls<>()
 	, ORE_CANDY         = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
-	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
+	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
+	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
-
+	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */
 	public static INetworkHandler NW_GT;
 
@@ -1034,8 +1048,8 @@ public class CS {
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_screwdriver       , "Adjusts Covers, Machines and Redstone Diodes");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_drill             , "Places Dynamite Sticks and reinforces Bricks");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_chisel            , "Chisels Storage Blocks and chiselable Blocks");
-		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_sense             , "Used to mass harvest Crops");
-		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_scythe            , "Used to mass harvest Crops");
+		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_sense             , "Used to mass harvest Crops and Leaves");
+		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_scythe            , "Used to mass harvest Crops and Leaves");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_softhammer        , "Toggles the States of Machines");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_cutter            , "Cuts and Connects Wires");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_plasmatorch       , "");
@@ -1255,7 +1269,7 @@ public class CS {
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
-
+		
 		public static int trash(ItemStack aStack) {
 			if (ST.invalid(aStack) || aStack.stackSize <= 0 || BLACKLIST.contains(aStack, T)) return 0;
 			if (aStack.hasTagCompound()) {
@@ -1266,7 +1280,7 @@ public class CS {
 				GARBAGE_ITEMS.add(aStack.copy());
 				return aStack.stackSize;
 			}
-			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(ST.item_(aStack), ST.meta_(aStack));
+			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(aStack);
 			if (ST.valid(tGarbage)) {
 				tGarbage.stackSize = UT.Code.bindInt((long)tGarbage.stackSize + (long)aStack.stackSize);
 				return aStack.stackSize;
@@ -1355,7 +1369,7 @@ public class CS {
 					GARBAGE_ITEMS.add(aStack);
 				}
 			}
-
+			
 			GARBAGE_FLUIDS.clear();
 			aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.fluids.dat");
 			if (aTargetFile.exists()) {
@@ -1380,7 +1394,7 @@ public class CS {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
 		
 		public static Set<String>
-		  SIMPLE = new HashSetNoNulls<>(F, "sewage", "poison")
+		  SIMPLE = new HashSetNoNulls<>(F, "poison")
 		, ACID = new HashSetNoNulls<>(F, "acid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()
@@ -1389,18 +1403,19 @@ public class CS {
 		, OXYGEN = new HashSetNoNulls<>()
 		, LIQUID_OXYGEN = new HashSetNoNulls<>()
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>()
+		, VOID_OVERFLOW = new HashSetNoNulls<>()
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()
 		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
 		, BATH = new HashSetNoNulls<>()
 		, DYE = new HashSetNoNulls<>()
-
+		
 		, STEAM = new HashSetNoNulls<>()
 		, POWER_CONDUCTING = new HashSetNoNulls<>(F, "rc fusion plasma")
 		, LUBRICANT = new HashSetNoNulls<>()
 		, THERMOS = new HashSetNoNulls<>(F, "coffee")
 		, POTION = new HashSetNoNulls<>()
-
+		
 		, FOOD = new HashSetNoNulls<>(F, "coffee")
 		, JUICE = new HashSetNoNulls<>()
 		, FRUIT_JUICE = new HashSetNoNulls<>()
@@ -1411,7 +1426,7 @@ public class CS {
 		, TEA = new HashSetNoNulls<>()
 		, COOKING_OIL = new HashSetNoNulls<>()
 		, SLIME = new HashSetNoNulls<>()
-
+		
 		, ALCOHOLIC = new HashSetNoNulls<>()
 		, VINEGAR = new HashSetNoNulls<>()
 		, RUM = new HashSetNoNulls<>()
@@ -1429,30 +1444,30 @@ public class CS {
 			SIMPLE.addAll(FOOD);
 		}
 	}
-
+	
 	/** Contains used Potion Effects. IDs are to be set on API postInit. */
 	public static class PotionsGT {
 		public static int
 		ID_RADIATION = -2,
 		ID_HYPOTHERMIA = -3, ID_HEATSTROKE = -4, ID_FROSTBITE = -5, ID_DEHYDRATION = -6, ID_INSANITY = -7;
 	}
-
+	
 	public static class BushesGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
-		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack, 1, W));}
+		public static int[] get(ItemStack aStack) {return MAP.containsKey(aStack, F) ? MAP.get(aStack) : MAP.get(new ItemStackContainer(aStack, 1, W));}
 		/** Bush Color, Stage 1, Stage 2, Stage 3 */
-		public static void put(ItemStack aStack, int aBush, int aBloom, int aImmature, int aBerry) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aBush, aBloom, aImmature, aBerry});}
-		public static void override(ItemStack aStack, int... aColors) {MAP.put(new ItemStackContainer(aStack), aColors);}
+		public static void put(ItemStack aStack, int aBush, int aBloom, int aImmature, int aBerry) {if (!MAP.containsKey(aStack, F)) MAP.put(aStack, new int[] {aBush, aBloom, aImmature, aBerry});}
+		public static void override(ItemStack aStack, int... aColors) {MAP.put(aStack, aColors);}
 	}
-
+	
 	public static class FoodsGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
-		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack, 1, W));}
+		public static int[] get(ItemStack aStack) {return MAP.containsKey(aStack, F) ? MAP.get(aStack) : MAP.get(new ItemStackContainer(aStack, 1, W));}
 		/** Alcohol, Caffeine, Dehydration, Sugar, Fat */
-		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat});}
-		public static void override(ItemStack aStack, int... aStats) {MAP.put(new ItemStackContainer(aStack), aStats);}
+		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {if (!MAP.containsKey(aStack, F)) MAP.put(aStack, new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat});}
+		public static void override(ItemStack aStack, int... aStats) {MAP.put(aStack, aStats);}
 	}
-
+	
 	/** Contains GT Items and Item related References. */
 	public static class ItemsGT {
 		/** The MultiItems */
@@ -1465,7 +1480,7 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = new ItemStackSet<>();
-
+		
 		public static boolean addNEIRedirect(ItemStack aStack, ItemStack... aRedirects) {if (aStack == null) return F; ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(aStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(aStack), tList = new ArrayListNoNulls<>()); return tList.addAll(Arrays.asList(aRedirects));}
 		public static boolean addNEIRedirects(Block aBlock) {ItemStack[] tRedirects = new ItemStack[16]; for (int i = 0; i < tRedirects.length; i++) tRedirects[i] = ST.make(aBlock, 1, i); return addNEIRedirects(tRedirects);}
 		public static boolean addNEIRedirects(ItemStack... aRedirects) {for (ItemStack tStack : aRedirects) if (ST.valid(tStack)) {ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(tStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(tStack), tList = new ArrayListNoNulls<>()); tList.addAll(Arrays.asList(aRedirects));} return T;}
@@ -1479,30 +1494,30 @@ public class CS {
 		blockGem, blockDust, blockIngot, blockSolid, blockPlate, blockPlateGem,
 		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem,
 		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem;
-
+		
 		/** Ore Blocks */
 		public static IPrefixBlock
 		ore         , oreSandstone          , oreNetherrack         , oreEndstone       , oreAtumLimestone          , oreAtumSand, oreGravel, oreMud, oreSand, oreRedSand, oreBedrock,
 		oreBroken   , oreBrokenSandstone    , oreBrokenNetherrack   , oreBrokenEndstone , oreBrokenAtumLimestone    ,
 		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
-
+		
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
-
-		public static BlockBase Sands, Diggables, Grass, Paths, RockOres;
-
+		
+		public static BlockBase Sands, Diggables, Grass, Paths, RockOres, CrystalOres, VanillaOresA;
+		
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
 		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof;
-
+		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
-
+		
 		public static IBlockBase
-		RailAluminium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
-		RailAluminiumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
-		RailAluminiumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
-
+		RailAluminium, RailMagnalium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
+		RailAluminiumBooster, RailMagnaliumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
+		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
+		
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark;
 		/** Contains all GT6 Stone Types. */
@@ -1510,29 +1525,31 @@ public class CS {
 		public static BlockBase[] stones = {GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark};
 		/** Contains the Ore Blocks for all the GT6 Type Stones, corresponding to the Array above. */
 		public static IPrefixBlock[] ores_normal = new IPrefixBlock[stones.length], ores_broken = new IPrefixBlock[stones.length], ores_small = new IPrefixBlock[stones.length];
-
+		
 		/** Mappings for Stones to their correspondent Ores. No WildCard allowed! Register all 16 MetaData Values here instead. */
 		public static Map<ItemStackContainer, IBlockPlacable>
 		  stoneToNormalOres = new ItemStackMap<>()
 		, stoneToBrokenOres = new ItemStackMap<>()
 		, stoneToSmallOres  = new ItemStackMap<>()
 		;
-
+		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
+		public static final Set<Object> instaharvest     = new HashSetNoNulls<Object>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
+		public static final Set<Object> openableCrowbar  = new HashSetNoNulls<Object>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
 		public static final Set<Object> plantableTrees   = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);
-
+		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
-
+		
 		public static final Set<Object> FLOWERS = new HashSetNoNulls<Object>(F, Blocks.yellow_flower, Blocks.red_flower);
-
+		
 		public static final Block[] POT_FLOWER_TILES = {Blocks.cactus, Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] POT_FLOWER_METAS = {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
-
+		
 		public static final Block[] FLOWER_TILES = {Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] FLOWER_METAS = {0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
 	}
@@ -1568,11 +1585,11 @@ public class CS {
 		, POCKET_MULTITOOL = 1000, POCKET_KNIFE = 1002, POCKET_SAW = 1004, POCKET_FILE = 1006, POCKET_SCREWDRIVER = 1008, POCKET_WIRECUTTER = 1010, POCKET_SCISSORS = 1012, POCKET_CHISEL = 1014
 		, PISTOL = 5000
 		;
-
+		
 		public static MultiItemTool sMetaTool;
-
+		
 		// If you plan do use this to detect Crafting Items, DON'T! Use OreDict for detecting Crafting Items being Tools!
-
+		
 		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = new ItemStackSet<>();
 		private static final Map<String, ItemStackSet<ItemStackContainer>> TOOL_LISTS = new HashMap<>();
 		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = new ItemStackSet<>()); return rSet;}
@@ -1583,17 +1600,18 @@ public class CS {
 		public static boolean add(String aToolType, ItemStack aStack) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 		public static boolean add(ItemStack aStack, String aToolType) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 	}
-
+	
 	public static class PlankData {
-		public static ItemStack[] PLANKS = new ItemStack[300];
-		public static IIconContainer[] PLANK_ICONS = new IIconContainer[300];
-
+		public static ItemStack      PLANKS       [] = new ItemStack     [300];
+		public static IIconContainer PLANK_ICONS  [] = new IIconContainer[300];
+		public static PlankEntry     PLANK_ENTRIES[] = new PlankEntry    [300];
+		
 		static {
 			PLANKS[0] = ST.make(Blocks.planks, 1, 0);
 			Arrays.fill(PLANK_ICONS, new IconContainerCopied(Blocks.planks, 0, 0));
 		}
 	}
-
+	
 	/** Contains the IDs for my Book Shelf Stuff. */
 	public static class BooksGT {
 		//   0 = null
@@ -1732,27 +1750,28 @@ public class CS {
 		@SuppressWarnings("hiding")
 		public static final String
 		  MC                = "minecraft"
-
+		
 		, GT                = "gregtech"
 		, GAPI              = "gregapi"
 		, GAPI_POST         = "gregapi_post"
-
+		
 		, QT                = "qwertech"
-
+		
 		, WAILA             = "Waila"
-
+		
 		, IC2               = "IC2"
 		, IC2C              = "IC2-Classic-Spmod"
-
+		
 		, NC                = "IC2NuclearControl"
 		, IHL               = "ihl"
-
+		
 		, FMB               = "ForgeMicroblock"
 		, FUNK              = "funkylocomotion"
 		, BAUBLES           = "Baubles"
-
+		
 		, TC                = "Thaumcraft"
 		, TCFM              = "ForbiddenMagic"
+		, TECHNOM           = "technom"
 		, BOTA              = "Botania"
 		, ALF               = "alfheim"
 		, PE                = "ProjectE"
@@ -1770,9 +1789,9 @@ public class CS {
 		, CANDY             = "candycraftmod"
 		, ABYSSAL           = "abyssalcraft"
 		, SOULFOREST        = "soulforest"
-
+		
 		, RC                = "Railcraft"
-
+		
 		, IE                = "ImmersiveEngineering"
 		
 		, TE                = "ThermalExpansion"
@@ -1789,6 +1808,7 @@ public class CS {
 		, CHSL              = "chisel"
 		
 		, NePl              = "netheriteplus"
+		, NeLi              = "netherlicious"
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
 		, DYNAMIC_TREES     = "dynamictrees"
@@ -1801,13 +1821,13 @@ public class CS {
 		, LOSTBOOKS         = "LostBooks"
 		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
-
+		
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"
 		, PFAA              = "PFAAGeologica"
 		, MIN               = "mineralogy"
 		, RH                = "globbypotato_rockhounding"
-
+		
 		, FR                = "Forestry"
 		, FRMB              = "MagicBees"
 		, BINNIE            = "BinnieCore"
@@ -1816,7 +1836,7 @@ public class CS {
 		, BINNIE_GENETICS   = "Genetics"
 		, BINNIE_BOTANY     = "Botany"
 		, BINNIE_PATCHER    = "BinniePatcher"
-
+		
 		, MFR               = "MineFactoryReloaded"
 		, PnC               = "PneumaticCraft"
 		, ExU               = "ExtraUtilities"
@@ -1824,31 +1844,32 @@ public class CS {
 		, EIO               = "EnderIO"
 		, RT                = "RandomThings"
 		, AA                = "ActuallyAdditions"
+		, SD                = "StorageDrawers"
 		, JABBA             = "JABBA"
-
+		
 		, MgC               = "Magneticraft"
 		, BR                = "BigReactors"
 		, HBM               = "hbm"
 		, ELN               = "Eln"
-
+		
 		, DRGN              = "DragonAPI"
 		, RoC               = "RotaryCraft"
 		, ReC               = "ReactorCraft"
 		, ElC               = "ElectriCraft"
 		, CrC               = "ChromatiCraft"
-
+		
 		, VOLTZ             = "voltzengine"
 		, MFFS              = "mffs"
 		, ICBM              = "icbmclassic"
 		, ATSCI             = "atomicscience"
-
+		
 		, Mek               = "Mekanism"
 		, Mek_Tools         = "MekanismTools"
 		, Mek_Generators    = "MekanismGenerators"
-
+		
 		, OC                = "OpenComputers"
 		, CC                = "ComputerCraft"
-
+		
 		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
 		, CookBook          = "cookingbook"
@@ -1895,6 +1916,8 @@ public class CS {
 		, GaEn              = "ganysend"
 		, WdSt              = "woodstuff"
 		
+		, HEE               = "HardcoreEnderExpansion"
+		
 		, LycM              = "lycanitesmobs"
 		, LycM_Fresh        = "freshwatermobs"
 		, LycM_Salt         = "saltwatermobs"
@@ -1908,7 +1931,7 @@ public class CS {
 		, LycM_Inferno      = "infernomobs"
 		, LycM_Demon        = "demonmobs"
 		, LycM_Shadow       = "shadowmobs"
-
+		
 		, BC                = "BuildCraft|Core"
 		, BC_SILICON        = "BuildCraft|Silicon"
 		, BC_TRANSPORT      = "BuildCraft|Transport"
@@ -1916,7 +1939,7 @@ public class CS {
 		, BC_ENERGY         = "BuildCraft|Energy"
 		, BC_BUILDERS       = "BuildCraft|Builders"
 		, BC_ROBOTICS       = "BuildCraft|Robotics"
-
+		
 		, RP                = "Redpower"
 		, BP                = "bluepower"
 		, PR                = "ProjRed|Core"
@@ -1928,24 +1951,25 @@ public class CS {
 		, PR_COMPATIBILITY  = "ProjRed|Compatibility"
 		, PR_FABRICATION    = "ProjRed|Fabrication"
 		, PR_ILLUMINATION   = "ProjRed|Illumination"
-
+		
 		, WR_CBE_C          = "WR-CBE|Core"
 		, WR_CBE_A          = "WR-CBE|Addons"
 		, WR_CBE_L          = "WR-CBE|Logic"
-
+		
 		, COFH_API          = "CoFHAPI"
 		, COFH_API_ENERGY   = "CoFHAPI|energy"
 		, COFH_CORE         = "CoFHCore"
-
+		
 		, OB                = "OpenBlocks"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
+		, Natura            = "Natura"
 		, MF2               = "minefantasy2"
 		, FZ                = "factorization"
 		, BWM               = "weaponmod"
 		, OMT               = "openmodularturrets"
 		, TG                = "Techguns"
-
+		
 		, FM                = "meteors"
 		, GC                = "GalacticraftCore"
 		, GC_PLANETS        = "GalacticraftMars"
@@ -1970,6 +1994,7 @@ public class CS {
 		, MC_EXPLODE            = "random.explode"
 		, MC_EAT                = "random.eat"
 		, MC_DRINK              = "random.drink"
+		, MC_XP                 = "random.orb"
 		, MC_TNT_IGNITE         = "game.tnt.primed"
 		, MC_IGNITE             = "fire.ignite"
 		, MC_DIG_CLOTH          = "dig.cloth"
@@ -2013,7 +2038,63 @@ public class CS {
 
 		, MISSING = null;
 	}
-
+	
+	public static final Map<String, String> TRANSFORMATION_POWDER_SPAWNER_MAP = new HashMap<>();
+	
+	static {
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Minotaur"          , "PigZombie"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Wild Deer"         , "Cow"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Bighorn Sheep"     , "Sheep"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Wild Boar"         , "Pig"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Raven"      , "Bat"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Hostile Wolf"      , "Wolf"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Glacier Penguin"   , "Chicken"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Hedge Spider"      , "Spider"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Swarm Spider"      , "CaveSpider"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Twilight Wraith"   , "Blaze"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redcap"            , "Zombie"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Skeleton Druid"    , "Witch"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Tower Termite"     , "Silverfish"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redcap Sapper"     , "Creeper"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Mini Ghast"        , "Ghast"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Mist Wolf"         , "Enderman"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.King Spider"       , "Skeleton"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Slime Beetle"      , "Slime"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Fire Beetle"       , "LavaSlime"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Tower Golem"       , "VillagerGolem");
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Firefly"           , "Squid"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redscale Broodling", "MushroomCow"  );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Pinch Beetle"      , "EntityHorse"  );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Squirrel"   , "Ozelot"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Bunny"      , "SnowMan"      );
+		
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("PigZombie"    , "TwilightForest.Minotaur"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Cow"          , "TwilightForest.Wild Deer"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Sheep"        , "TwilightForest.Bighorn Sheep"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Pig"          , "TwilightForest.Wild Boar"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Bat"          , "TwilightForest.Forest Raven"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Wolf"         , "TwilightForest.Hostile Wolf"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Chicken"      , "TwilightForest.Glacier Penguin"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Spider"       , "TwilightForest.Hedge Spider"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("CaveSpider"   , "TwilightForest.Swarm Spider"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Blaze"        , "TwilightForest.Twilight Wraith"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Zombie"       , "TwilightForest.Redcap"            );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Witch"        , "TwilightForest.Skeleton Druid"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Silverfish"   , "TwilightForest.Tower Termite"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Creeper"      , "TwilightForest.Redcap Sapper"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Ghast"        , "TwilightForest.Mini Ghast"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Enderman"     , "TwilightForest.Mist Wolf"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Skeleton"     , "TwilightForest.King Spider"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Slime"        , "TwilightForest.Slime Beetle"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("LavaSlime"    , "TwilightForest.Fire Beetle"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("VillagerGolem", "TwilightForest.Tower Golem"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Squid"        , "TwilightForest.Firefly"           );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("MushroomCow"  , "TwilightForest.Redscale Broodling");
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("EntityHorse"  , "TwilightForest.Pinch Beetle"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Ozelot"       , "TwilightForest.Forest Squirrel"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("SnowMan"      , "TwilightForest.Forest Bunny"      );
+	}
+	
 	/** File Paths and Resource Paths */
 	public static final String
 	  TEX_DIR                   = "textures/"
@@ -2029,6 +2110,7 @@ public class CS {
 	, RES_PATH_GUI              = MD.GT.mID + ":" + TEX_DIR_GUI
 	, RES_PATH_ITEM             = MD.GT.mID + ":"
 	, RES_PATH_BLOCK            = MD.GT.mID + ":"
+	, RES_PATH_MODEL            = MD.GT.mID + ":" + TEX_DIR_MODEL
 	, RES_PATH_ARMOR            = MD.GT.mID + ":" + TEX_DIR_ARMOR
 	, RES_PATH_ENTITY           = MD.GT.mID + ":" + TEX_DIR_ENTITY
 	, RES_PATH_API_ITEM         = MD.GAPI.mID + ":"

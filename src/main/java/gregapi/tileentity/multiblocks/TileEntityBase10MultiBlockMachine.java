@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -111,7 +111,6 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
 	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}
 	
-	@Override public int getDefaultTankCapacity() {return UT.Code.bindInt(Math.max(16000, mRecipes.mMaxFluidInputSize * 2L * mParallel));}
 	@Override public void updateAdjacentToggleableEnergySources() {/**/}
 	
 	@Override public boolean doDefaultStructuralChecks() {return T;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -34,6 +34,7 @@ import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -81,7 +82,7 @@ public class BlockCFoamFresh extends BlockColored implements IBlockFoamable {
 	}
 	
 	@Override
-	public boolean isSealable(int aMeta, byte aSide) {
+	public boolean isSealable(byte aMeta, byte aSide) {
 		return F;
 	}
 	
@@ -107,7 +108,7 @@ public class BlockCFoamFresh extends BlockColored implements IBlockFoamable {
 	
 	@Override
 	public boolean dryFoam(World aWorld, int aX, int aY, int aZ, byte aSide) {
-		return aWorld.setBlock(aX, aY, aZ, SIDES_VALID[mSide]?((BlockMetaType)BlocksGT.CFoam).mSlabs[mSide]:BlocksGT.CFoam, aWorld.getBlockMetadata(aX, aY, aZ), 3);
+		return aWorld.setBlock(aX, aY, aZ, SIDES_VALID[mSide]?((BlockMetaType)BlocksGT.CFoam).mSlabs[mSide]:BlocksGT.CFoam, WD.meta(aWorld, aX, aY, aZ), 3);
 	}
 	
 	@Override

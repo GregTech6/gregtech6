@@ -35,6 +35,7 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.data.TD;
+import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.recipes.Recipe;
 import gregapi.util.OM;
@@ -105,13 +106,35 @@ public class ToolCompat {
 		
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			boolean rReturn = F;
-			if (BlocksGT.Beam1 != null) {
+			ItemStack tBark = OM.dust(MT.Bark);
+			
+			if (!rReturn && BlocksGT.BeamA != null) {
+				if (IL.HaC_Log_Maple.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, 1, 3);
+				}
+			}
+			if (!rReturn && BlocksGT.BeamB != null) {
+				if (IL.HaC_Log_Cinnamon.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamB, 1, 3);
+					if (rReturn) tBark = IL.HaC_Cinnamon.get(2, IL.Food_Cinnamon.get(2, OM.dust(MT.Cinnamon, U*2)));
+				}
+			}
+			if (!rReturn && MD.NeLi.mLoaded && (aMeta & 1) == 0) {
+				if (IL.NeLi_Stem_Crimson.equal(aBlock) || IL.NeLi_Stem_FoxFire.equal(aBlock) || IL.NeLi_Hyphae_Crimson.equal(aBlock) ) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, aBlock, aMeta+1, 3);
+					tBark = null;
+				}
+			}
+			if (!rReturn && BlocksGT.Beam1 != null) {
 				if (aBlock == Blocks.log) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Darkwood.equal(aBlock) && (aMeta & 3) != 3) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Time.equal(aBlock) && (aMeta & 1) == 0) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, (aMeta&12)|((aMeta & 2) == 0 ? 1 : 2), 3);
+				} else if (IL.HaC_Log_Paperbark.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, 3, 3);
+					if (rReturn) tBark = ST.make(Items.paper, 4, 0);
 				}
 			}
 			if (!rReturn && BlocksGT.Beam3 != null) {
@@ -136,13 +159,13 @@ public class ToolCompat {
 					rReturn = F;
 				} else if (IL.TF_Log_Trans.equal(aBlock) && (aMeta & 1) == 1) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|((aMeta & 2) == 0 ? 0 : 1), 3);
-				} else if (OD.logWood.is(ST.make(aBlock, 1, aMeta))) {
+				} else if (OD.logWood.is(ST.make(aBlock, 1, aMeta)) && !OD.beamWood.is(ST.make(aBlock, 1, aMeta))) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|3, 3);
 				}
 			}
 			if (rReturn) {
-				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null);
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Bark), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
+				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null, F);
+				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 			return 0;
@@ -166,15 +189,19 @@ public class ToolCompat {
 			}
 		}
 		if (aTool.equals(TOOL_igniter) && (aStack == null || aStack.getItem() != Items.flint_and_steel)) {
+			// Ignite any TNT Blocks.
 			if (aBlock instanceof BlockTNT) {
 				((BlockTNT)aBlock).func_150114_a(aWorld, aX, aY, aZ, 1, aEntityLiving);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				return 10000;
 			}
-			if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aSide, aStack)) {
-				if (aWorld.isAirBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
-					if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], Blocks.fire);
-					return 10000;
+			// This thing has a special Functionality, which should override spawning Fire Blocks.
+			if (!IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+				if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aSide, aStack)) {
+					if (aWorld.isAirBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
+						if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], Blocks.fire);
+						return 10000;
+					}
 				}
 			}
 		}
@@ -186,6 +213,18 @@ public class ToolCompat {
 			}
 		}
 		if (aTool.equals(TOOL_rotator)) {
+			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
+			}
+			if (aBlock instanceof BlockPistonBase || aBlock instanceof BlockDispenser) {
+				if (aMeta < 6 && aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1) % 6, 3)) return 2000;
+			}
+			if (aBlock instanceof BlockPumpkin || aBlock instanceof BlockFurnace || aBlock instanceof BlockChest || aBlock instanceof BlockEnderChest) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ((aMeta-1)%4)+2, 3)) return 2500;
+			}
+			if (aBlock instanceof BlockHopper) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1)%6==1?(aMeta+1)%6:2, 3)) return 2500;
+			}
 			if (aBlock.rotateBlock(aWorld, aX, aX, aX, ForgeDirection.getOrientation(aSide))) return 10000;
 		}
 		if (aTool.equals(TOOL_screwdriver)) {
@@ -194,12 +233,12 @@ public class ToolCompat {
 			}
 		}
 		if (aTool.equals(TOOL_crowbar)) {
-			if (!MD.RC.mLoaded && aBlock instanceof BlockRailBase) {
+			if (aBlock instanceof BlockRailBase && (!MD.RC.mLoaded || !(MD.MC.owns(aBlock) || MD.RC.owns(aBlock)))) {
 				aWorld.isRemote = T;
-				// WTF, why are the two Coordinate Parameters in isFlexibleRail switched? And then it is used like x y z instead of using the broken namings.
-				boolean tResult = aWorld.setBlock(aX, aY, aZ, aBlock, ((BlockRailBase)aBlock).isFlexibleRail(aWorld, aX, aY, aZ)?(aMeta + 1) % 10:((aMeta / 8) * 8) + (((aMeta%8)+1) % 6), 0);
+				// Why the fuck are the two Coordinate Parameters in isFlexibleRail switched? And then it is used like x y z instead of using the broken namings.
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, aBlock, ((BlockRailBase)aBlock).isFlexibleRail(aWorld, aX, aY, aZ) ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
 				aWorld.isRemote = F;
-				return tResult?10000:0;
+				return tResult?2000:0;
 			}
 		}
 		if (aTool.equals(TOOL_softhammer)) {
@@ -227,25 +266,18 @@ public class ToolCompat {
 				aWorld.isRemote = F;
 				return tResult?10000:0;
 			}
-			if (aBlock instanceof BlockRotatedPillar) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) % 12, 3)) return 10000;
+			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
 			}
-			if (aBlock == Blocks.piston || aBlock == Blocks.sticky_piston || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1) % 6, 3)) return 10000;
+			if (aBlock instanceof BlockPistonBase || aBlock instanceof BlockDispenser) {
+				if (aMeta < 6 && aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1) % 6, 3)) return 2000;
 			}
-			if (aBlock == Blocks.pumpkin || aBlock == Blocks.lit_pumpkin || aBlock == Blocks.furnace || aBlock == Blocks.lit_furnace || aBlock == Blocks.chest || aBlock == Blocks.trapped_chest) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ((aMeta-1)%4)+2, 3)) return 10000;
+			if (aBlock instanceof BlockPumpkin || aBlock instanceof BlockFurnace || aBlock instanceof BlockChest || aBlock instanceof BlockEnderChest) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ((aMeta-1)%4)+2, 3)) return 2500;
 			}
-			if (aBlock == Blocks.hopper) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1)%6==1?(aMeta+1)%6:2, 3)) return 10000;
+			if (aBlock instanceof BlockHopper) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta+1)%6==1?(aMeta+1)%6:2, 3)) return 2500;
 			}
-		}
-		if (aTool.equals(TOOL_prospector)) {
-			if (prospectOre(aBlock, aMeta, aChatReturn, aWorld, aX, aY, aZ)) return 100;
-			if (aBlock != Blocks.obsidian && aBlock != BlocksGT.RockOres && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
-				if (prospectStone(aBlock, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ)) return 10000;
-			}
-			return 0;
 		}
 		if (aTool.equals(TOOL_wrench) || aTool.equals(TOOL_monkeywrench)) {
 			if (GC_BLOCKADVANCED && aBlock instanceof BlockAdvanced) {
@@ -279,8 +311,8 @@ public class ToolCompat {
 				}
 			}
 			
-			if (aBlock instanceof BlockRotatedPillar) {
-				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) % 12, 3)) return 10000;
+			if (aBlock instanceof BlockRotatedPillar || aBlock.getRenderType() == PILLAR_RENDER) {
+				if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (aMeta + 4) & 15, 3)) return 5000;
 			}
 			
 			if (aBlock instanceof BlockWorkbench || aBlock instanceof BlockBookshelf) {
@@ -316,6 +348,13 @@ public class ToolCompat {
 				}
 			}
 		}
+		if (aTool.equals(TOOL_prospector)) {
+			if (prospectOre(aBlock, aMeta, aChatReturn, aWorld, aX, aY, aZ)) return 100;
+			if (aBlock != Blocks.obsidian && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
+				if (prospectStone(aBlock, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ)) return 10000;
+			}
+			return 0;
+		}
 		
 		} catch(Throwable e) {
 			FMLLog.severe("Exception occured when ToolCompat was used at the Coordinates: [%d;%d;%d] at '%s' with TileEntity '%s' using the Tool '%s' %s", aX, aY, aZ, aBlock.getUnlocalizedName(), aTileEntity.getClass(), aTool, e.toString());
@@ -327,7 +366,7 @@ public class ToolCompat {
 	public static boolean prospectOre(Block aBlock, byte aMeta, List<String> aChatReturn, World aWorld, int aX, int aY, int aZ) {
 		OreDictItemData tAssotiation = OM.anyassociation(ST.make(aBlock, 1, aWorld.getBlockMetadata(aX, aY, aZ)));
 		if (tAssotiation != null && tAssotiation.mPrefix.contains(TD.Prefix.ORE)) {
-			if (aChatReturn != null) aChatReturn.add(tAssotiation.mMaterial.mMaterial.getLocal() + " Ore!");
+			if (aChatReturn != null) aChatReturn.add(LanguageHandler.getLocalName(tAssotiation.mPrefix, tAssotiation.mMaterial.mMaterial)+"!");
 			return T;
 		}
 		return F;
@@ -343,19 +382,19 @@ public class ToolCompat {
 			
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA, "There is Lava behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA));
 				break;
 			}
 			if (tBlock instanceof BlockLiquid || tBlock instanceof IFluidBlock) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID, "There is a Liquid behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID));
 				break;
 			}
-			if (tBlock == Blocks.monster_egg || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR, "There is an Air Pocket behind this Rock."));
+			if (tBlock instanceof BlockSilverfish || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR));
 				break;
 			}
 			if (i < 4) if (tBlock != aBlock || aMeta != aWorld.getBlockMetadata(tX, tY, tZ)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE, "Material is changing behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE));
 				break;
 			}
 		}
@@ -370,12 +409,12 @@ public class ToolCompat {
 			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {
 				OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
 				if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
-					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES, "Found traces of ") + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
+					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal());
 					return T;
 				}
 			}
 		}
-		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING, "No traces of Ore found."));
+		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING));
 		return T;
 	}
 }

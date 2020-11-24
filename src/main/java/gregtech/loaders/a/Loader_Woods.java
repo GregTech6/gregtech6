@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -73,16 +73,18 @@ public class Loader_Woods implements Runnable {
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
 		IL.Plank              .set(ST.make(BlocksGT.Planks, 1,  9));
 		IL.Treated_Planks_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 10));
-		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1,  10));
-		IL.Beam .set(ST.make(BlocksGT.Beam2 , 1,  3));
-		IL.Crate.set(ST.make(BlocksGT.Planks, 1, 11));
-		IL.Crate_Fireproof.set(ST.make(BlocksGT.PlanksFireProof, 1, 11));
+		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1, 10));
+		IL.Beam               .set(ST.make(BlocksGT.Beam2 , 1,  3));
+		IL.Crate              .set(ST.make(BlocksGT.Planks, 1, 11));
+		IL.Crate_Fireproof    .set(ST.make(BlocksGT.PlanksFireProof, 1, 11));
 		
+		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(MT.HSLA));
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.Iron));
+		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.WoodPlastic));
 		
 		OM.reg(OP.plate, MT.WoodSealed, ST.make(BlocksGT.PlanksFireProof, 1, 10));
-		OreDictManager.INSTANCE.setTarget(OP.plate, MT.Wood         , IL.Plank.get(1));
-		OreDictManager.INSTANCE.setTarget(OP.plate, MT.WoodSealed   , ST.make(BlocksGT.Planks, 1, 10));
+		OreDictManager.INSTANCE.setTarget(OP.plate, MT.Wood      , IL.Plank.get(1));
+		OreDictManager.INSTANCE.setTarget(OP.plate, MT.WoodSealed, ST.make(BlocksGT.Planks, 1, 10));
 		
 		for (int i = 0; i < 16; i++) {
 			if (i != 10) {
@@ -110,6 +112,7 @@ public class Loader_Woods implements Runnable {
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamBFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		}
 		
+		// Those typically get overridden, but in case of a fuck up it is at least worth some Wood.
 		OM.data(ST.make(BlocksGT.Log1           , 1, W), ANY.Wood, U*4);
 		OM.data(ST.make(BlocksGT.Log1FireProof  , 1, W), ANY.Wood, U*4);
 		OM.data(ST.make(BlocksGT.Beam1          , 1, W), ANY.Wood, U*8);

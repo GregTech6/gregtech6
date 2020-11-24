@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -162,7 +162,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (aPlayer.isSneaking()) {
 				// TODO: Open GUI for reloading Gun
 			} else {
-				// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage.
+				// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage. And Remember the TFC Damage Multiplier!
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 			return T;

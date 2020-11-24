@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.code.TagData;
 import gregapi.data.MD;
 import gregapi.data.TD;
+import gregapi.tileentity.base.TileEntityBase01Root;
 import gregapi.util.UT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -75,10 +76,12 @@ public class EnergyCompat {
 	
 	public static boolean isElectricRFReceiver(TileEntity aReceiver) {
 		if (aReceiver == null) return F;
-		if (MD.FUNK.mLoaded && aReceiver.getClass().getName().startsWith("com.rwtema.funkylocomotion"     )) return T;
-		if (MD.OMT .mLoaded && aReceiver.getClass().getName().startsWith("openmodularturrets"             )) return T;
-		if (MD.TG  .mLoaded && aReceiver.getClass().getName().startsWith("techguns"                       )) return T;
-		if (MD.IE  .mLoaded && aReceiver.getClass().getName().startsWith("blusunrize.immersiveengineering")) return T;
+		String tClass = null;
+		if (MD.FUNK.mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("com.rwtema.funkylocomotion"     )) return T;}
+		if (MD.OMT .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
+		if (MD.TG  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("techguns"                       )) return T;}
+		if (MD.IE  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("blusunrize.immersiveengineering")) return T;}
+		if (MD.OC  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("li.cil.oc"                      )) return T;}
 		return F;
 	}
 	
@@ -88,6 +91,7 @@ public class EnergyCompat {
 		if (aTarget instanceof ITileEntityEnergy                                      ) return ((ITileEntityEnergy                                               )aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((ITileEntityEnergy                                  )aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
 		if (aTarget instanceof gregapi.tileentity.ITileEntityEnergy                   ) return ((gregapi.tileentity.ITileEntityEnergy                            )aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((gregapi.tileentity.ITileEntityEnergy               )aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
 		if (aTarget instanceof gregtech.api.interfaces.tileentity.IEnergyConnected    ) return T; // return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).inputEnergyFrom      (aSide                 ) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).outputsEnergyTo(aSide);
+		
 		if (AE_ENERGY && aThis != null && aTarget instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aTarget).acceptsEnergyFrom    (aThis, FORGE_DIR[aSide]);
 		
 		if (GC_ENERGY && aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
@@ -121,9 +125,11 @@ public class EnergyCompat {
 	@SuppressWarnings("deprecation")
 	public static long insertEnergyInto(TagData aEnergyType, byte aSide, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
 		if (aAmount <= 0 || aSize == 0 || aReceiver == null) return 0;
+		// Obvious GT6 Blocks should not be eligible for Compat. Should reduce some IC2 Compat Lag.
+		if (aReceiver instanceof TileEntityBase01Root) return 0;
 		
 		if (aEnergyType == TD.Energy.EU) {
-			// Nothing here needs the Negative Part of this, so it is gonna be skipped.
+			// Nothing here needs the Negative Part of this, so it's gonna be skipped.
 			aSize = Math.abs(aSize);
 			
 			// Applied Energistics gets a special case.
@@ -167,7 +173,7 @@ public class EnergyCompat {
 			}
 			
 			// Electricity alike RF Receivers that are whitelisted for my Power System.
-			if (RF_ENERGY && isElectricRFReceiver(aReceiver)) {
+			if (RF_ENERGY && (EMIT_EU_AS_RF || isElectricRFReceiver(aReceiver))) {
 				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSide])) {
 					if (aReceiver instanceof cofh.api.energy.IEnergyReceiver) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
 					if (aReceiver instanceof cofh.api.energy.IEnergyHandler ) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyHandler )aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
@@ -198,6 +204,9 @@ public class EnergyCompat {
 					return rUsedAmount;
 				}
 			}
+			
+			// No need to check the rest since this isn't RF.
+			return 0;
 		}
 		
 		if (RF_ENERGY && aSize > 0) {
@@ -206,10 +215,8 @@ public class EnergyCompat {
 			if (aEnergyType == TD.Energy.KU) tSizeToReceive = aSize * RF_PER_EU; else
 			// MJ auto-convert to RF too. And yes I do know that BuildCraft and other Mods moved away from MJ to use RF.
 			if (aEnergyType == TD.Energy.MJ) tSizeToReceive = aSize * RF_PER_MJ; else
-			// RF is RF and therefore doesn't really need to be converted, therefore 1:1 Ratio
-			if (aEnergyType == TD.Energy.RF) tSizeToReceive = aSize; else
-			// If the usage of EU from GT6 counts as RF for Consumers then allow this
-			if (aEnergyType == TD.Energy.EU && EMIT_EU_AS_RF) tSizeToReceive = aSize * RF_PER_EU;
+			// RF is RF and therefore doesn't really need to be converted, meaning a 1:1 Ratio
+			if (aEnergyType == TD.Energy.RF) tSizeToReceive = aSize;
 			
 			if (tSizeToReceive > 0) {
 				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSide])) {

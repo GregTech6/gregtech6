@@ -84,7 +84,7 @@ public class BlockGrass extends BlockBaseMeta {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + LH.get("gt.grass.tooltip"));
 	}
 	
@@ -98,11 +98,11 @@ public class BlockGrass extends BlockBaseMeta {
 	
 	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_BOTTOM[aSide]?DIRT:(SIDES_TOP[aSide]?Textures.BlockIcons.GRASSES_TOP:Textures.BlockIcons.GRASSES_SIDE)[aMeta % 16]).getIcon(0);}
 	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, ST.make(Blocks.dirt, 1, 0));}
-	@Override public boolean doesPistonPush  (short aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(int   aMeta) {return F;}
-	@Override public boolean isSealable      (int   aMeta, byte aSide) {return F;}
-	@Override public String getHarvestTool   (int   aMeta) {return TOOL_shovel;}
-	@Override public int getHarvestLevel     (int   aMeta) {return 0;}
+	@Override public boolean doesPistonPush  (byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
+	@Override public boolean isSealable      (byte aMeta, byte aSide) {return F;}
+	@Override public String getHarvestTool   (int  aMeta) {return TOOL_shovel;}
+	@Override public int getHarvestLevel     (int  aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.grass.getBlockHardness(aWorld, aX, aY, aZ);}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.grass.getExplosionResistance(null);}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.grass.getExplosionResistance(null);}
 }

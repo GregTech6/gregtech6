@@ -32,6 +32,7 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
@@ -39,27 +40,37 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 /**
  * @author Gregorius Techneticies
  * 
- * Here is basically everything that I want to change to something better later.
+ * Here is basically everything that I want to change to some better location later.
  */
 public class Loader_Recipes_Temporary implements Runnable {
 	@Override public void run() {
+		ItemStack tStack = null;
+		
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
 		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod.get(0), OP.stick.mat(MT.Graphite, 1));
 		
 		
+		// TODO: I will keep this antiquated shit for now.
+		OM.data(CR.get(tStack = OP.ingot.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
+		OM.data(CR.get(tStack = OP.plate.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
+		
+		
 		// TODO: Better Coolant Item than Lapis.
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
-		
-		RM.Injector.addRecipe1(T, 64, 32, OM.dust(MT.Th, 1*U), FL.amount(MT.LiCl.mLiquid, 10000), FL.Thorium_Salt.make(10000), ZL_IS);
 		
 		
 		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
@@ -84,24 +95,24 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlack", 1, W), OP.plateGem.mat(MT.HexoriumBlack,  8));
 			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithWhite", 1, W), OP.plateGem.mat(MT.HexoriumWhite,  8));
 			
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumRed"      , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumRed"      , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumGreen"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumGreen"    , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumBlue"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumBlue"     , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumBlack"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumBlack"    , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumWhite"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumWhite"    , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumDarkGray" , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumDarkGray" , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumGray"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumGray"     , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumLightGray", 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumLightGray", 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumOrange"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumOrange"   , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumYellow"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumYellow"   , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumLime"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumLime"     , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumTurquoise", 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumTurquoise", 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumCyan"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumCyan"     , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumSkyBlue"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumSkyBlue"  , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumPurple"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumPurple"   , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMagenta"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumMagenta"  , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumPink"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumPink"     , 1, 0));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumRainbow"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumRainbow"  , 1, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumRed"      , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumRed"      , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumGreen"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumGreen"    , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumBlue"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumBlue"     , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumBlack"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumBlack"    , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumWhite"    , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumWhite"    , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumDarkGray" , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumDarkGray" , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumGray"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumGray"     , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumLightGray", 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumLightGray", 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumOrange"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumOrange"   , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumYellow"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumYellow"   , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumLime"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumLime"     , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumTurquoise", 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumTurquoise", 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumCyan"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumCyan"     , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumSkyBlue"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumSkyBlue"  , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumPurple"   , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumPurple"   , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMagenta"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumMagenta"  , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumPink"     , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumPink"     , 8, 0));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumRainbow"  , 1, W), ST.make(MD.HEX, "blockMiniEnergizedHexoriumRainbow"  , 8, 0));
 			
 			RM.compact(ST.make(MD.HEX, "blockMiniEnergizedHexoriumRed"      , 8, W), ST.make(MD.HEX, "blockEnergizedHexoriumRed"      , 1, 0));
 			RM.compact(ST.make(MD.HEX, "blockMiniEnergizedHexoriumGreen"    , 8, W), ST.make(MD.HEX, "blockEnergizedHexoriumGreen"    , 1, 0));
@@ -142,6 +153,27 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}};
 		}
 		
+		if (MD.HEE.mLoaded) {
+			RM.biomass(ST.make(MD.HEE, "crossed_decoration", 8, W));
+			RM.biomass(ST.make(MD.HEE, "death_flower"      , 8, W));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "death_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], ST.make(Items.dye, 2, DYE_INDEX_Magenta));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "death_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], ST.make(Items.dye, 2, DYE_INDEX_Magenta));
+			RM.ic2_extractor(ST.make(MD.HEE, "death_flower", 1, 0), ST.make(Items.dye, 3, DYE_INDEX_Magenta));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "death_flower", 1,15), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Gray], ST.make(Items.dye, 2, DYE_INDEX_Gray));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "death_flower", 1,15), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Gray], ST.make(Items.dye, 2, DYE_INDEX_Gray));
+			RM.ic2_extractor(ST.make(MD.HEE, "death_flower", 1,15), ST.make(Items.dye, 3, DYE_INDEX_Gray));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Orange], ST.make(Items.dye, 2, DYE_INDEX_Orange));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Orange], ST.make(Items.dye, 2, DYE_INDEX_Orange));
+			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1, 6), ST.make(Items.dye, 3, DYE_INDEX_Orange));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1,13), ST.make(Items.dye, 3, DYE_INDEX_Purple));
+		}
+		
 		
 		if (MD.HBM.mLoaded) {
 			CR.delate(MD.HBM, "item.apple_lead", "item.apple_schrabidium", "item.apple_euphemium");
@@ -160,18 +192,208 @@ public class Loader_Recipes_Temporary implements Runnable {
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener("cropApple", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				if (OM.is("cropAppleWhite", aEvent.mStack) || OM.is("cropCrabapple", aEvent.mStack)) return;
-				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.Pb.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 0));
+				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.Pb                .liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_lead"       , 1, 0));
 				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Schrabidium.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 0));
-				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Euphemium.liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_euphemium", 1, 0));
+				RM.Bath.addRecipe1(T, 0, 128, aEvent.mStack, MT.UNUSED.Euphemium  .liquid(8*U9, T), NF, ST.make(MD.HBM, "item.apple_euphemium"  , 1, 0));
 			}});
 			}};
 		}
 		
+		if (MD.NeLi.mLoaded) {
+			CR.delate(IL.NeLi_Bread.get(1));
+			CR.delate(IL.NeLi_Cookie.get(1));
+			CR.delate(IL.NeLi_Torch_Fox.get(1));
+			CR.delate(IL.NeLi_Torch_Soul.get(1));
+			CR.delate(IL.NeLi_Torch_Shadow.get(1));
+			CR.delate(IL.NeLi_Foxfire_Powder.get(1));
+			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
+			CR.delate(MD.NeLi, "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
+			
+			CR.remove(IL.NeLi_Reed.get(1));
+			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
+			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
+			
+			CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'X', IL.NeLi_ShroomLight, 'S', OD.stickAnyWood);
+			
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(4), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(4), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(3), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(3), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(2), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(2), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(1), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(1), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox   .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow.get(4), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow.get(3), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow.get(2), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow.get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch});
+			
+			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor"         , 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
+			
+			CR.shaped(ST.make(MD.NeLi, "EmptyLantern"          , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ));
+			CR.shaped(ST.make(MD.NeLi, "EmptyLanternGold"      , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ));
+			CR.shaped(ST.make(MD.NeLi, "EmptyLanternEfrine"    , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine));
+			CR.shaped(ST.make(MD.NeLi, "Lantern"               , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ), 'X', OD.blockTorch);
+			CR.shaped(ST.make(MD.NeLi, "LanternGold"           , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ), 'X', OD.blockTorch);
+			CR.shaped(ST.make(MD.NeLi, "LanternEfrine"         , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine), 'X', OD.blockTorch);
+			CR.shaped(ST.make(MD.NeLi, "GlowstoneLantern"      , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ), 'X', OD.glowstone);
+			CR.shaped(ST.make(MD.NeLi, "GlowstoneLanternGold"  , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ), 'X', OD.glowstone);
+			CR.shaped(ST.make(MD.NeLi, "GlowstoneLanternEfrine", 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine), 'X', OD.glowstone);
+			CR.shaped(ST.make(MD.NeLi, "FoxfireLantern"        , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ), 'X', OD.blockFoxfireTorch);
+			CR.shaped(ST.make(MD.NeLi, "FoxfireLanternGold"    , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ), 'X', OD.blockFoxfireTorch);
+			CR.shaped(ST.make(MD.NeLi, "FoxfireLanternEfrine"  , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine), 'X', OD.blockFoxfireTorch);
+			CR.shaped(ST.make(MD.NeLi, "SoulLantern"           , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ), 'X', OD.blockSoulTorch);
+			CR.shaped(ST.make(MD.NeLi, "SoulLanternGold"       , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ), 'X', OD.blockSoulTorch);
+			CR.shaped(ST.make(MD.NeLi, "SoulLanternEfrine"     , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine), 'X', OD.blockSoulTorch);
+			CR.shaped(ST.make(MD.NeLi, "ShadowLantern"         , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ), 'X', OD.blockShadowTorch);
+			CR.shaped(ST.make(MD.NeLi, "ShadowLanternGold"     , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ), 'X', OD.blockShadowTorch);
+			CR.shaped(ST.make(MD.NeLi, "ShadowLanternEfrine"   , 1, 0), DEF_REV_NCC, "PTP", "PXP", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine), 'X', OD.blockShadowTorch);
+			CR.shaped(ST.make(MD.NeLi, "RedstoneLantern"       , 1, 0), DEF_REV_NCC, "R", "L", 'L', ST.make(MD.NeLi, "GlowstoneLantern"      , 1, 0), 'R', OD.itemRedstone);
+			CR.shaped(ST.make(MD.NeLi, "RedstoneLanternGold"   , 1, 0), DEF_REV_NCC, "R", "L", 'L', ST.make(MD.NeLi, "GlowstoneLanternGold"  , 1, 0), 'R', OD.itemRedstone);
+			CR.shaped(ST.make(MD.NeLi, "RedstoneLanternEfrine" , 1, 0), DEF_REV_NCC, "R", "L", 'L', ST.make(MD.NeLi, "GlowstoneLanternEfrine", 1, 0), 'R', OD.itemRedstone);
+			
+			CR.shapeless(ST.make(MD.NeLi, "Lantern"               , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLantern"      , 1, 0), OD.blockTorch});
+			CR.shapeless(ST.make(MD.NeLi, "LanternGold"           , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.blockTorch});
+			CR.shapeless(ST.make(MD.NeLi, "LanternEfrine"         , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.blockTorch});
+			CR.shapeless(ST.make(MD.NeLi, "GlowstoneLantern"      , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLantern"      , 1, 0), OD.glowstone});
+			CR.shapeless(ST.make(MD.NeLi, "GlowstoneLanternGold"  , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.glowstone});
+			CR.shapeless(ST.make(MD.NeLi, "GlowstoneLanternEfrine", 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.glowstone});
+			CR.shapeless(ST.make(MD.NeLi, "FoxfireLantern"        , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLantern"      , 1, 0), OD.blockFoxfireTorch});
+			CR.shapeless(ST.make(MD.NeLi, "FoxfireLanternGold"    , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.blockFoxfireTorch});
+			CR.shapeless(ST.make(MD.NeLi, "FoxfireLanternEfrine"  , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.blockFoxfireTorch});
+			CR.shapeless(ST.make(MD.NeLi, "SoulLantern"           , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLantern"      , 1, 0), OD.blockSoulTorch});
+			CR.shapeless(ST.make(MD.NeLi, "SoulLanternGold"       , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.blockSoulTorch});
+			CR.shapeless(ST.make(MD.NeLi, "SoulLanternEfrine"     , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.blockSoulTorch});
+			CR.shapeless(ST.make(MD.NeLi, "ShadowLantern"         , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLantern"      , 1, 0), OD.blockShadowTorch});
+			CR.shapeless(ST.make(MD.NeLi, "ShadowLanternGold"     , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.blockShadowTorch});
+			CR.shapeless(ST.make(MD.NeLi, "ShadowLanternEfrine"   , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.blockShadowTorch});
+			
+			for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100)))
+			RM.Bath    .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tWater, NF, ST.make(Items.paper, 1, 0));
+			RM.Loom    .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
+			RM.Squeezer.addRecipe1(T, 16, 16,      4000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make(10), IL.Remains_Plant.get(1));
+			RM.Juicer  .addRecipe1(T, 16, 16,      5000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make( 5), IL.Remains_Plant.get(1));
+			RM.Shredder.addRecipe1(T, 16, 16           , IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1));
+			RM.pulverizing(IL.NeLi_Reed.get(1), IL.Remains_Plant.get(1), T);
+			
+			RM.Mixer.addRecipe2(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), OP.dustTiny .mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(1));
+			RM.Mixer.addRecipe2(T, 16,144, IL.NeLi_Foxfire_Lily.get(9), OP.dust     .mat(MT.Blaze, 1), IL.NeLi_Foxfire_Powder.get(9));
+			
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Crimson  .get(1), FL.DistW         .make(500), FL.Potion_Awkward         .make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Warped   .get(1), FL.DistW         .make(500), FL.Potion_Thick           .make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Warped   .get(1), FL.Potion_Awkward.make(500), FL.Potion_NightVision_1   .make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy    .get(1), FL.DistW         .make(500), FL.Potion_Mundane         .make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy    .get(1), FL.Potion_Awkward.make(500), FL.Potion_FireResistance_1.make(500), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Wither_Rose   .get(1), FL.Potion_Thick  .make(750), FL.Potion_Harm_2          .make(750), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Foxfire_Powder.get(1), FL.Potion_Mundane.make(750), FL.Potion_Strength_2      .make(750), ZL_IS);
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 1, DYE_INDEX_Purple));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 1, DYE_INDEX_Purple));
+			RM.ic2_extractor(IL.NeLi_Foxfire_Lily.get(1), ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
+			
+			RM.glowstone(IL.NeLi_Gloomstone.get(1), MT.Gloomstone);
+			
+			RM.compactsmash(OP.gem.mat(MT.FluoriteWhite  , 1), 4, IL.NeLi_Crystal_White  .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteBlue   , 1), 4, IL.NeLi_Crystal_Blue   .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteGreen  , 1), 4, IL.NeLi_Crystal_Green  .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteYellow , 1), 4, IL.NeLi_Crystal_Yellow .get(1));
+			RM.compactsmash(OP.gem.mat(MT.FluoriteMagenta, 1), 4, IL.NeLi_Crystal_Magenta.get(1));
+			
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_White  .get(1), OP.plateGem.mat(MT.FluoriteWhite  , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Blue   .get(1), OP.plateGem.mat(MT.FluoriteBlue   , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Green  .get(1), OP.plateGem.mat(MT.FluoriteGreen  , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Yellow .get(1), OP.plateGem.mat(MT.FluoriteYellow , 4));
+			RM.sawing(16, 64, F, 25, IL.NeLi_Crystal_Magenta.get(1), OP.plateGem.mat(MT.FluoriteMagenta, 4));
+			
+			RM.lathing(16, 64, IL.NeLi_Crystal_White  .get(1), OP.stickLong.mat(MT.FluoriteWhite  , 2), OM.dust(MT.FluoriteWhite  , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Blue   .get(1), OP.stickLong.mat(MT.FluoriteBlue   , 2), OM.dust(MT.FluoriteBlue   , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Green  .get(1), OP.stickLong.mat(MT.FluoriteGreen  , 2), OM.dust(MT.FluoriteGreen  , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Yellow .get(1), OP.stickLong.mat(MT.FluoriteYellow , 2), OM.dust(MT.FluoriteYellow , 2*U));
+			RM.lathing(16, 64, IL.NeLi_Crystal_Magenta.get(1), OP.stickLong.mat(MT.FluoriteMagenta, 2), OM.dust(MT.FluoriteMagenta, 2*U));
+			
+			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));
+			RM.biomass(ST.make(MD.NeLi, "Roots"        , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Plants"       , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "TwistingVines", 8, W));
+			RM.biomass(ST.make(MD.NeLi, "WeepingVines" , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Sprouts"      , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "RoastedWart"  , 8, W));
+			RM.biomass(IL.NeLi_Wart_Crimson           .wild(8));
+			RM.biomass(IL.NeLi_Reed                    .get(8));
+			RM.biomass(IL.NeLi_Wither_Rose             .get(8));
+			RM.biomass(IL.NeLi_Foxfire_Lily            .get(8));
+			
+			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(IL.NeLi_Wart_Crimson     .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
+			RM.compact(IL.NeLi_Wart_Warped      .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
+			RM.compact(IL.NeLi_Wart_Soggy       .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_CrimsonStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 0));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_WarpedStew   .get(1), ST.make(MD.NeLi, "Fungus", 2, 1));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_FoxfireStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 2));
+			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_DevilishMaize.get(1), ST.make(MD.NeLi, "DevilishMaizeSeeds", 2, 0));
+			
+			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
+			
+			RM.smash(IL.NeLi_Quartz_Bricks                    .get(1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(IL.NeLi_Quartz_Smooth                    .get(1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(IL.NeLi_Quartz_Chiseled_Pillar           .get(1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(IL.NeLi_Void_Block                       .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(IL.NeLi_Void_Bricks                      .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(IL.NeLi_Void_Smooth                      .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(IL.NeLi_Void_Chiseled                    .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(IL.NeLi_Void_Pillar                      .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(IL.NeLi_Void_Chiseled_Pillar             .get(1), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 2), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 3), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 4), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzWall"            , 1, 5), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzSingleSlab"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 2));
+			RM.smash(ST.make(MD.NeLi, "QuartzSingleSlab"      , 1, 1), OP.gem.mat(MT.NetherQuartz, 2));
+			RM.smash(ST.make(MD.NeLi, "QuartzSingleSlab"      , 1, 2), OP.gem.mat(MT.VoidQuartz, 2));
+			RM.smash(ST.make(MD.NeLi, "QuartzSingleSlab"      , 1, 3), OP.gem.mat(MT.VoidQuartz, 2));
+			RM.smash(ST.make(MD.NeLi, "QuartzSingleSlab"      , 1, 4), OP.gem.mat(MT.VoidQuartz, 2));
+			RM.smash(ST.make(MD.NeLi, "QuartzDoubleSlab"      , 1, 0), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzDoubleSlab"      , 1, 1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzDoubleSlab"      , 1, 2), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzDoubleSlab"      , 1, 3), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzDoubleSlab"      , 1, 4), OP.gem.mat(MT.VoidQuartz, 4));
+			RM.smash(ST.make(MD.NeLi, "QuartzSmoothStairs"    , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
+			RM.smash(ST.make(MD.NeLi, "QuartzBrickStairs"     , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
+			RM.smash(ST.make(MD.NeLi, "QuartzVoidSmoothStairs", 1, W), OP.gem.mat(MT.VoidQuartz, 6));
+			RM.smash(ST.make(MD.NeLi, "QuartzVoidBrickStairs" , 1, W), OP.gem.mat(MT.VoidQuartz, 6));
+			RM.smash(ST.make(MD.NeLi, "QuartzVoidStairs"      , 1, W), OP.gem.mat(MT.VoidQuartz, 6));
+			
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Crimson     .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 2));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Warped      .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Roots" , 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 5));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), IL.NeLi_Wart_Soggy       .get(2), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(MD.NeLi, "Plants", 2, 1), ST.make(MD.NeLi, "Netherbricks", 1, 8));
+			
+			RM.pack(rockGt.mat(MT.Basalt    , 4), IL.NeLi_Basalt.get(1));
+			RM.pack(rockGt.mat(MT.Blackstone, 4), IL.NeLi_Blackstone.get(1));
+			CR.shaped(IL.NeLi_Basalt    .get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Basalt));
+			CR.shaped(IL.NeLi_Blackstone.get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Blackstone));
+		}
 		
 		if (MD.NePl.mLoaded) {
 			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
-			
-			CR.shaped(IL.NePl_Torch.get(4), DEF_NAC, "X", "S", 'X', OD.soulsand, 'S', OP.stick.dat(ANY.Wood));
 			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.NePl, "ItemNetheriteSword" , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.NePl, "NetheritePickaxe"   , 1, 0));
@@ -183,13 +405,27 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.NePl, "NetheriteLegg"      , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.NePl, "NetheriteBoots"     , 1, 0));
 			
-			RM.biomass(ST.make(MD.NePl, "WarpedFungus" , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "CrimsonFungus", 8, 0));
-			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, 0));
-			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, 0));
+			RM.biomass(ST.make(MD.NePl, "WarpedFungus" , 8, W));
+			RM.biomass(ST.make(MD.NePl, "CrimsonFungus", 8, W));
+			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, W));
+			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, W));
+			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, W));
 			
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
+			RM.smash(IL.NePl_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4), 4);
+			
+			if (!MD.NeLi.mLoaded) {
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
+				
+				RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
+				
+				RM.pack(rockGt.mat(MT.Basalt    , 4), IL.NePl_Basalt.get(1));
+				RM.pack(rockGt.mat(MT.Blackstone, 4), IL.NePl_Blackstone.get(1));
+				CR.shaped(IL.NePl_Basalt    .get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Basalt));
+				CR.shaped(IL.NePl_Blackstone.get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Blackstone));
+			}
 		}
 		
 		
@@ -210,64 +446,49 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.
-		RM.generify(FL.make("molten.meteoriciron"         , 1), FL.make("molten.iron", 1));
-		RM.generify(FL.make("molten.wroughtiron"          , 1), FL.make("molten.iron", 1));
-		RM.generify(FL.make("molten.osmiumelemental"      , 1), FL.make("molten.osmium", 1));
-		RM.generify(FL.make("deuterium"                   , 5), FL.make("rc deuterium", 1));
-		RM.generify(FL.make("tritium"                     , 5), FL.make("rc tritium", 1));
-		RM.generify(FL.make("carbondioxide"               , 5), FL.make("rc co2", 1));
-		RM.generify(FL.make("chlorine"                    , 5), FL.make("rc chlorine", 1));
-		RM.generify(FL.make("heavywater"                  , 1), FL.Heavy_Reiker.make(1));
-		RM.generify(FL.Redstone_TE                   .make(25), FL.Redstone.make(36));
-		RM.generify(FL.Redstone                      .make(36), FL.Redstone_TE.make(25));
-		RM.generify(FL.Lubricant                     .make( 1), FL.LubRoCant.make(1));
-		RM.generify(FL.LubRoCant                     .make( 1), FL.Lubricant.make(1));
-		RM.generify(FL.make("ethanol"                     , 1), FL.Reikanol.make(1));
-		RM.generify(FL.BioEthanol                    .make( 1), FL.Reikanol.make(1));
-		RM.generify(FL.Reikanol                      .make( 1), FL.BioEthanol.make(1));
-		RM.generify(FL.Oxygen                        .make( 1), FL.Reikygen.make(1));
-		RM.generify(FL.Reikygen                      .make( 1), FL.Oxygen.make(1));
-		RM.generify(FL.Liquid_Oxygen                 .make( 1), FL.Liquid_Reikygen.make(1));
-		RM.generify(FL.Liquid_Reikygen               .make( 1), FL.Liquid_Oxygen.make(1));
-		RM.generify(FL.Oil_Canola                    .make( 2), FL.lube(1));
-		RM.generify(FL.make("molten.latex"                , 1), FL.Latex.make(1));
-		RM.generify(FL.Latex                         .make( 1), FL.make("molten.latex", 1));
-		RM.generify(FL.Slime_Pink                    .make( 1), FL.Slime_Green.make(1));
-		RM.generify(FL.RoyalJelly                    .make( 1), FL.Honey.make(10));
-		RM.generify(FL.Honey                         .make( 1), FL.HoneyGrC.make(1));
-		RM.generify(FL.HoneyGrC                      .make( 1), FL.HoneyBoP.make(1));
-		RM.generify(FL.HoneyBoP                      .make( 1), FL.Honey.make(1));
-		RM.generify(FL.Milk                          .make( 1), FL.MilkGrC.make(1));
-		RM.generify(FL.MilkGrC                       .make( 1), FL.Milk.make(1));
-		RM.generify(FL.make("for.honeydew"                , 1), FL.Honeydew.make(1));
-		RM.generify(FL.make("spruceresin"                 , 1), FL.make("resin", 1));
-		RM.generify(FL.make("resin"                       , 1), FL.make("spruceresin", 1));
-		RM.generify(FL.make("sulfuricacid"                , 1), FL.make("acid", 1));
-		RM.generify(FL.make("acid"                        , 1), FL.make("sulfuricacid", 1));
-		RM.generify(FL.Oil_Plant                     .make( 2), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Seed                      .make( 1), FL.Oil_Plant.make(2));
-		RM.generify(FL.make("biomass"                     , 1), FL.make("ic2biomass", 1));
-		RM.generify(FL.make("ic2biomass"                  , 1), FL.make("biomass", 1));
-		RM.generify(FL.Methane                       .make( 1), FL.make("ic2biogas", 4));
-		RM.generify(FL.make("ic2biogas"                   , 4), FL.Methane.make(1));
-		RM.generify(FL.make("gas_natural_gas"             , 1), FL.Methane.make(1));
-		RM.generify(FL.make("naturalgas"                  , 1), FL.Methane.make(1));
-		RM.generify(FL.make("gas.natural"                 , 1), FL.Methane.make(1));
-		RM.generify(FL.Liquid_Methane                .make( 1), FL.Methane.make(643));
-		RM.generify(FL.make("kerosine"                    , 1), FL.make("kerosene", 1));
-		RM.generify(FL.make("kerosene"                    , 1), FL.make("kerosine", 1));
-		RM.generify(FL.make("petrol"                      , 1), FL.make("gasoline", 1));
-		RM.generify(FL.make("gasoline"                    , 1), FL.make("petrol", 1));
-		RM.generify(FL.make("fuel"                        , 1), FL.make("fueloil", 1));
-		RM.generify(FL.make("fueloil"                     , 1), FL.make("fuel", 1));
-		RM.generify(FL.Steam_IC2_Superheated         .make( 1), FL.Steam.make(3));
-		RM.generify(FL.Steam_IC2                     .make( 1), FL.Steam.make(1));
-		RM.generify(FL.DistW                         .make( 1), FL.Water.make(1));
-		RM.generify(FL.Oil_Lin                       .make( 1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Hemp                      .make( 1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Olive                     .make( 1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Sunflower                 .make( 1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Nut                       .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.make("molten.meteoriciron"   , 1), FL.make("molten.iron", 1));
+		RM.generify   (FL.make("molten.wroughtiron"    , 1), FL.make("molten.iron", 1));
+		RM.generify   (FL.make("molten.osmiumelemental", 1), FL.make("molten.osmium", 1));
+		RM.generify   (FL.make("deuterium"             , 5), FL.make("rc deuterium", 1));
+		RM.generify   (FL.make("tritium"               , 5), FL.make("rc tritium", 1));
+		RM.generify   (FL.make("carbondioxide"         , 5), FL.make("rc co2", 1));
+		RM.generify   (FL.make("chlorine"              , 5), FL.make("rc chlorine", 1));
+		RM.generify   (FL.make("heavywater"            , 1), FL.Heavy_Reiker.make(1));
+		RM.genericycle(FL.XP                      .make( 3), FL.Mob.make(10));
+		RM.genericycle(FL.Redstone_TE             .make(25), FL.Redstone.make(36));
+		RM.genericycle(FL.Lubricant               .make( 1), FL.LubRoCant.make(1));
+		RM.generify   (FL.Oil_Canola              .make( 2), FL.lube(1));
+		RM.generify   (FL.make("ethanol"               , 1), FL.BioEthanol.make(1));
+		RM.genericycle(FL.BioEthanol              .make( 1), FL.Reikanol.make(1));
+		RM.genericycle(FL.Oxygen                  .make( 1), FL.Reikygen.make(1));
+		RM.genericycle(FL.Liquid_Oxygen           .make( 1), FL.Liquid_Reikygen.make(1));
+		RM.genericycle(FL.make("molten.latex"          , 1), FL.Latex.make(1));
+		RM.generify   (FL.Slime_Pink              .make( 1), FL.Slime_Green.make(1));
+		RM.generify   (FL.RoyalJelly              .make( 1), FL.Honey.make(10));
+		RM.genericycle(FL.Honey                   .make( 1), FL.HoneyGrC.make(1), FL.HoneyBoP.make(1));
+		RM.genericycle(FL.Milk                    .make( 1), FL.MilkGrC.make(1));
+		RM.genericycle(FL.make("for.honeydew"          , 1), FL.Honeydew.make(1));
+		RM.genericycle(FL.Resin_Spruce            .make( 1), FL.Resin.make(1));
+		RM.genericycle(FL.make("sulfuricacid"          , 1), FL.make("acid", 1));
+		RM.genericycle(FL.Oil_Plant               .make( 2), FL.Oil_Seed.make(1));
+		RM.genericycle(FL.Biomass                 .make( 1), FL.BiomassIC2.make(1));
+		RM.genericycle(FL.Methane                 .make( 1), FL.make("ic2biogas", 4));
+		RM.generify   (FL.make("gas_natural_gas"       , 1), FL.Methane.make(1));
+		RM.generify   (FL.make("naturalgas"            , 1), FL.Methane.make(1));
+		RM.generify   (FL.make("gas.natural"           , 1), FL.Methane.make(1));
+		RM.generify   (FL.Liquid_Methane          .make( 1), FL.Methane.make(643));
+		RM.genericycle(FL.make("kerosine"              , 1), FL.make("kerosene", 1));
+		RM.genericycle(FL.make("petrol"                , 1), FL.make("gasoline", 1));
+		RM.genericycle(FL.make("fuel"                  , 1), FL.make("fueloil", 1));
+		RM.generify   (FL.Steam_IC2_Superheated   .make( 1), FL.Steam.make(3));
+		RM.generify   (FL.Steam_IC2               .make( 1), FL.Steam.make(1));
+		RM.generify   (FL.DistW                   .make( 1), FL.Water.make(1));
+		RM.generify   (FL.SpDew                   .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Sunflower           .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Nut                 .make( 1), FL.Oil_Seed.make(1));
 		
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 	}

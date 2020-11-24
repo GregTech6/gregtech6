@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -113,9 +113,9 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnBlockClicked                     extends IMultiTileEntity {public void onBlockClicked(EntityPlayer aPlayer);}
 	public static interface IMTE_VelocityToAddToEntity              extends IMultiTileEntity {public void velocityToAddToEntity(Entity aEntity, Vec3 aVector);}
 	public static interface IMTE_SetBlockBoundsBasedOnState         extends IMultiTileEntity {public void setBlockBoundsBasedOnState(Block aBlock);}
-	public static interface IMTE_IsProvidingWeakPower               extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */public int isProvidingWeakPower(byte aSide);}
-	public static interface IMTE_IsProvidingStrongPower             extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */public int isProvidingStrongPower(byte aSide);}
-	public static interface IMTE_OnEntityCollidedWithBlock          extends IMultiTileEntity {public void onEntityCollidedWithBlock(Entity aEntity);}
+	public static interface IMTE_IsProvidingWeakPower               extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */ public int isProvidingWeakPower(byte aOppositeSide);}
+	public static interface IMTE_IsProvidingStrongPower             extends IMultiTileEntity {/** Remember that it passes the opposite Side due to the way vanilla works! */ public int isProvidingStrongPower(byte aOppositeSide);}
+	public static interface IMTE_OnEntityCollidedWithBlock          extends IMultiTileEntity {/** This Function has been named wrong. It should be onEntityOverlapWithBlock */ public void onEntityCollidedWithBlock(Entity aEntity);}
 	public static interface IMTE_CanBlockStay                       extends IMultiTileEntity {public boolean canBlockStay();}
 	public static interface IMTE_OnFallenUpon                       extends IMultiTileEntity {public void onFallenUpon(Entity aEntity, float aFallDistance);}
 	public static interface IMTE_OnBlockHarvested                   extends IMultiTileEntity {public void onBlockHarvested(int aMetaData, EntityPlayer aPlayer);}
@@ -304,6 +304,11 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnlyPlaceableWhenSneaking extends IMultiTileEntity {
 		/** Return true to prevent placing this Block without Sneaking. */
 		public boolean onlyPlaceableWhenSneaking();
+	}
+	
+	public static interface IMTE_IgnorePlayerCollisionWhenPlacing extends IMultiTileEntity {
+		/** Return true to ignore the Player standing in the way of placing this Block. */
+		public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ);
 	}
 	
 	public static interface IMTE_OnItemRightClick extends IMultiTileEntity {

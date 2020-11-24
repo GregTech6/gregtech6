@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,6 @@ import gregapi.item.IItemUpdatable;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -37,9 +36,6 @@ import net.minecraft.world.World;
 public class ItemBlockMetaType extends ItemBlockBase implements IItemUpdatable {
 	public ItemBlockMetaType(Block aBlock) {
 		super(aBlock);
-		setMaxDamage(0);
-		setHasSubtypes(T);
-		setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override

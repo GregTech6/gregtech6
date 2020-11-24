@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.data.LH;
@@ -49,7 +50,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SyncDataShort {
+public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SyncDataShort {
 	protected byte mMode = 0;
 	protected int mDisplayedNumber = 0, oDisplayedNumber = 0, mSetNumber = 0;
 	protected byte mRedstone = 0;
@@ -259,4 +260,5 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return aSide==OPPOSITES[mFacing];}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return aSide==OPPOSITES[mFacing];}
 	@Override public boolean[] getValidSecondSides() {return SIDES_ANY_BUT[mFacing];}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 }

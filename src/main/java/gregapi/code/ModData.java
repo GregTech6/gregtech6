@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,21 @@
 
 package gregapi.code;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import cpw.mods.fml.common.Loader;
+import gregapi.util.ST;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 
 /**
  * @author Gregorius Techneticies
  */
 public final class ModData implements ICondition<ITagDataContainer<?>> {
-	public static final Set<ModData> MODS = new HashSetNoNulls<>();
+	public static final Map<String, ModData> MODS = new HashMap<>();
 	
 	public boolean mLoaded;
 	
@@ -37,13 +43,26 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 		mID = aID;
 		mName = aName;
 		mLoaded = Loader.isModLoaded(mID);
-		MODS.add(this);
+		MODS.put(aID, this);
 	}
 	
 	public ModData setLoaded(boolean aLoaded) {
 		mLoaded = aLoaded;
 		return this;
 	}
+	
+	public boolean owns (IBlockAccess aWorld, int aX, int aY, int aZ) {return mLoaded && owns_(ST.regName(aWorld.getBlock(aX, aY, aZ)));}
+	public boolean owns (Block        aBlock                        ) {return mLoaded && owns_(ST.regName(aBlock));}
+	public boolean owns (Item         aItem                         ) {return mLoaded && owns_(ST.regName(aItem));}
+	public boolean owns (ItemStack    aStack                        ) {return mLoaded && owns_(ST.regName(aStack));}
+	public boolean owns (String       aRegName                      ) {return mLoaded && owns_(aRegName);}
+	public boolean owns_(String       aRegName                      ) {return aRegName != null && aRegName.startsWith(mID);}
+	public boolean owns (IBlockAccess aWorld, int aX, int aY, int aZ, String aContains) {return mLoaded && owns_(ST.regName(aWorld.getBlock(aX, aY, aZ)), aContains);}
+	public boolean owns (Block        aBlock                        , String aContains) {return mLoaded && owns_(ST.regName(aBlock), aContains);}
+	public boolean owns (Item         aItem                         , String aContains) {return mLoaded && owns_(ST.regName(aItem), aContains);}
+	public boolean owns (ItemStack    aStack                        , String aContains) {return mLoaded && owns_(ST.regName(aStack), aContains);}
+	public boolean owns (String       aRegName                      , String aContains) {return mLoaded && owns_(aRegName, aContains);}
+	public boolean owns_(String       aRegName                      , String aContains) {return aRegName != null && aRegName.startsWith(mID) && aRegName.contains(aContains);}
 	
 	@Override
 	public String toString() {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
@@ -61,11 +62,6 @@ public class WorldgenHives extends WorldgenObject {
 		
 		
 		switch (aDimType) {
-		case DIM_TWILIGHT:
-			tY =  8+aRandom.nextInt(24);
-			if (!WD.stone(WD.block(aWorld, tX, tY, tZ), WD.meta(aWorld, tX, tY, tZ))) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Yellow      , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
 		case DIM_EREBUS:
 			tY = 16+aRandom.nextInt(96);
 			if (!IL.ERE_Umberstone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
@@ -92,7 +88,7 @@ public class WorldgenHives extends WorldgenObject {
 			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Cyan        ,     0, aRandom)) || rResult;
 		case DIM_NETHER:
-			tY = 16+aRandom.nextInt(96);
+			tY = 16+aRandom.nextInt(WD.bedrock(aWorld, tX, 255, tZ) ? 224 : 96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
 			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, 0xaa0000            ,   300, aRandom)) || rResult;
@@ -107,7 +103,7 @@ public class WorldgenHives extends WorldgenObject {
 				tCount = 0;
 			}
 			return rResult;
-		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN:
+		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN: case DIM_TWILIGHT:
 			for (tY = 8; tY < 28; tY++) {
 				Block tBlock = WD.block(aWorld, tX, tY, tZ);
 				if (tBlock.getMaterial() == Material.rock && WD.opq(tBlock) && WD.stone(tBlock, WD.meta(aWorld, tX, tY, tZ))) {
@@ -120,12 +116,12 @@ public class WorldgenHives extends WorldgenObject {
 				}
 			}
 			
-			for (tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 1; tY--) {
+			for (tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 2; tY--) {
 				Block tContact = aWorld.getBlock(tX, tY, tZ);
 				if (tContact.getMaterial().isLiquid()) return rResult;
-				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ) || tContact.getMaterial() == Material.wood || (tContact.getMaterial() == Material.rock && !WD.stone(tContact, WD.meta(aWorld, tX, tY, tZ))) || tContact.isLeaves(aWorld, tX, tY, tZ) || tContact.isWood(aWorld, tX, tY, tZ)) continue;
+				if (tContact instanceof BlockStones && WD.meta(aWorld, tX, tY, tZ) != 0) return rResult;
+				if (!tContact.isOpaqueCube() || tContact.isLeaves(aWorld, tX, tY, tZ) || tContact.isWood(aWorld, tX, tY, tZ) || tContact.getMaterial() == Material.ice) continue;
 				
-				if (!tContact.isOpaqueCube()) continue;
 				for (byte tSide : ALL_SIDES_HORIZONTAL_DOWN) {
 					Block tBlock = aWorld.getBlock(tX+OFFSETS_X[tSide], tY-1+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide]);
 					if (WD.hasCollide(aWorld, tX+OFFSETS_X[tSide], tY-1+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], tBlock)) continue;
@@ -137,13 +133,15 @@ public class WorldgenHives extends WorldgenObject {
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_MAGICAL.contains(tName) && (aDimType != DIM_ALFHEIM || aRandom.nextBoolean()))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
+					for (String tName : aBiomeNames) if (BIOMES_VOLCANIC.contains(tName))
+					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Black     ,   300, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_END.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0x00aaaa          ,   400, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_NETHER.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0xaa0000          ,   300, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_SHROOM.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Pink      ,   800, aRandom) || rResult;
-					for (String tName : aBiomeNames) if (BIOMES_OCEAN_BEACH.contains(tName))
+					for (String tName : aBiomeNames) if (BIOMES_OCEAN_BEACH.contains(tName) || BIOMES_LAKE.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Green     ,   600, aRandom) || rResult;

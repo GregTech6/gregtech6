@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,9 +41,12 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalCandyCraft extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalCandyCraft>
+	public static List<MultiTileEntityMiniPortal>
 	sListCandySide = new ArrayListNoNulls<>(),
 	sListWorldSide = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListCandySide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.candy.tooltip.1", "Only works between the Candy Dimension and the Overworld!");
@@ -64,7 +67,7 @@ public class MultiTileEntityMiniPortalCandyCraft extends MultiTileEntityMiniPort
 		if (MD.CANDY.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalCandyCraft tTarget : sListCandySide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListCandySide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +79,7 @@ public class MultiTileEntityMiniPortalCandyCraft extends MultiTileEntityMiniPort
 				}
 			} else if (WD.dimCANDY(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalCandyCraft tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -95,22 +98,16 @@ public class MultiTileEntityMiniPortalCandyCraft extends MultiTileEntityMiniPort
 		if (MD.CANDY.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalCandyCraft tPortal : sListCandySide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListCandySide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimCANDY(worldObj)) {
 				if (!sListCandySide.contains(this)) sListCandySide.add(this);
-				for (MultiTileEntityMiniPortalCandyCraft tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListCandySide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListCandySide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

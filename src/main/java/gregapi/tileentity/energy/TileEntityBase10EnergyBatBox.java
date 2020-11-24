@@ -49,7 +49,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
-	public long mEnergy = 0, mInput = 32, mOutput = 32;
+	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mReceivablePower = 0;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
@@ -104,33 +104,38 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
-				switch(UT.Code.bind3(mEnergy / (mInput * getSizeInventory() * 2))) {
-				case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack) && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 2, this, worldObj, xCoord, yCoord, zCoord, T); break;
-				case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack) && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 1, this, worldObj, xCoord, yCoord, zCoord, T); break;
-				case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack) && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 1, this, worldObj, xCoord, yCoord, zCoord, T); break;
-				case 7: for (ItemStack tStack : getInventory()) if (ST.valid(tStack) && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 2, this, worldObj, xCoord, yCoord, zCoord, T); break;
-				}
-			} else {
-				switch(UT.Code.bind3(mEnergy / (mInput * getSizeInventory() * 2))) {
-				case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 2, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)  && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput    / 2, mOutput    * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput    * 2, T);} break;
-				case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 1, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)  && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput    / 2, mOutput    * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput       , T);} break;
-				case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 1, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack)                                     && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mInput     / 2, mInput     * 2)) mEnergy -= COMPAT_EU_ITEM.charge  (tStack, mInput        , T);} break;
-				case 7: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 2, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack)                                     && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mInput     / 2, mInput     * 2)) mEnergy -= COMPAT_EU_ITEM.charge  (tStack, mInput     * 2, T);} break;
+			// Do only once per second because the Item Callback can be slightly laggy. Even for GT6 Items.
+			if (SERVER_TIME % 20 == 1) {
+				if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
+					switch(UT.Code.bind3(mEnergy / (mInput * 40 * getSizeInventory()))) {
+					case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 40, this, worldObj, xCoord, yCoord, zCoord, T); break;
+					case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 20, this, worldObj, xCoord, yCoord, zCoord, T); break;
+					case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 20, this, worldObj, xCoord, yCoord, zCoord, T); break;
+					case 7: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 40, this, worldObj, xCoord, yCoord, zCoord, T); break;
+					}
+				} else {
+					switch(UT.Code.bind3(mEnergy / (mInput * 40 * getSizeInventory()))) {
+					case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 40, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack) && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput / 2, mOutput * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput * 40, T);} break;
+					case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 20, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack) && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput / 2, mOutput * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput * 20, T);} break;
+					case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 20, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack)                                    && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mInput  / 2, mInput  * 2)) mEnergy -= COMPAT_EU_ITEM.charge  (tStack, mInput  * 20, T);} break;
+					case 7: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 40, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack)                                    && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mInput  / 2, mInput  * 2)) mEnergy -= COMPAT_EU_ITEM.charge  (tStack, mInput  * 40, T);} break;
+					}
 				}
 			}
 			
 			mActive = (mEnergy >= mOutput);
 			
-			if (mActive) {
-				long tOutput = 0;
-				
+			if (mBatteryCount < 0 || mInventoryChanged) {
+				mBatteryCount = 0;
 				if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
-					for (ItemStack tStack : getInventory()) if (ST.valid(tStack) && tStack.getItem() instanceof IItemEnergy && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) tOutput++;
+					for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy    && ((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;
 				} else {
-					for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) tOutput++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) tOutput++;}
+					for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) {if (((IItemEnergy)tStack.getItem()).canEnergyExtraction(mEnergyType, tStack, mOutput)) mBatteryCount++;} else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack)) mBatteryCount++;}
 				}
-				
+			}
+			
+			if (mActive) {
+				long tOutput = mBatteryCount;
 				if (mMode != 0) tOutput = Math.min(mMode, tOutput);
 				if (!mStopped && tOutput > 0) {
 					long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeOut, mOutput, tOutput, this);
@@ -140,6 +145,8 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 				
 				if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			}
+			
+			mReceivablePower = mBatteryCount * mInput * 2;
 		}
 	}
 	
@@ -149,7 +156,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		byte tActiveState = mActiveState;
 		if (mEnergy < mOutput) {
 			mActiveState = 0;
-		} else if (mEnergy >= mInput * getSizeInventory() * 15) {
+		} else if (mEnergy >= mInput * 300 * getSizeInventory()) {
 			mActiveState = 1;
 		} else {
 			mActiveState = 2;
@@ -165,14 +172,19 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
+		if (mReceivablePower <= 0) return 0;
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
 			return aAmount;
 		}
-		if (mEnergy >= mInput * getSizeInventory() * 16) return 0;
-		long tInput = Math.min(mInput * getSizeInventory() * 16 - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
-		if (aDoInject) mEnergy += tConsumed * aSize;
+		if (mEnergy >= mInput * 320 * getSizeInventory()) return 0;
+		long tInput = Math.min(mInput * 320 * getSizeInventory() - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
+		while (tConsumed > 1 && (tConsumed-1) * aSize > mReceivablePower) tConsumed--;
+		if (aDoInject) {
+			mReceivablePower -= tConsumed * aSize;
+			mEnergy += tConsumed * aSize;
+		}
 		return tConsumed;
 	}
 	
@@ -197,7 +209,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public long getProgressValue(byte aSide) {return mEnergy;}
-	@Override public long getProgressMax(byte aSide) {return mInput * getSizeInventory() * 16;}
+	@Override public long getProgressMax(byte aSide) {return mInput * 320 * getSizeInventory();}
 	
 	@Override public int getInventoryStackLimit() {return 1;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

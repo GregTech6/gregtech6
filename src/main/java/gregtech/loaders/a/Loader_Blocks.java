@@ -44,6 +44,9 @@ import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.plants.BlockFlowersA;
 import gregtech.blocks.plants.BlockFlowersB;
 import gregtech.blocks.plants.BlockGlowtus;
+import gregtech.blocks.stone.BlockCrystalOres;
+import gregtech.blocks.stone.BlockRockOres;
+import gregtech.blocks.stone.BlockVanillaOresA;
 import gregtech.blocks.tool.*;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagList;
@@ -86,6 +89,8 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Paths, 1, W), F, TC.stack(TC.TERRA, 2));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.RockOres                            = new BlockRockOres             ("gt.block.rockores"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.CrystalOres                         = new BlockCrystalOres          ("gt.block.crystalores"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.VanillaOresA                        = new BlockVanillaOresA         ("gt.block.vanillaores.a"));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Sands                               = new BlockSands                ("gt.block.sands"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Sands, 1, W), F, TC.stack(TC.TERRA, 1));
@@ -137,8 +142,8 @@ public class Loader_Blocks implements Runnable {
 		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.Ocean)));
 		FMLInterModComms.sendMessage(MD.IC2C.mID, "watergen", UT.NBT.make("blocks", tNBTList));
 		
-		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy.fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);
-		BlocksGT.OilHeavy                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.heavy"         , FL.Oil_Heavy     .fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);
+		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy.fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1).setWeb();
+		BlocksGT.OilHeavy                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.heavy"         , FL.Oil_Heavy     .fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1).setWeb();
 		BlocksGT.OilMedium                                                      = new BlockBaseFluid            ("gt.block.fluid.oil.medium"        , FL.Oil_Medium    .fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);
 		BlocksGT.OilLight                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.light"         , FL.Oil_Light     .fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);
 		BlocksGT.GasNatural                                                     = new BlockBaseFluid            ("gt.block.fluid.gas.natural"       , FL.Gas_Natural   .fluid(), 1000, MaterialGas.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);

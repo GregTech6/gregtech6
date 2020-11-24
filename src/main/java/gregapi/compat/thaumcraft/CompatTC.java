@@ -78,7 +78,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		TC.ARBOR            .mAspect = Aspect.TREE;
 		TC.AURAM            .mAspect = Aspect.AURA;
 		TC.BESTIA           .mAspect = Aspect.BEAST;
-		TC.COGNITO          .mAspect = Aspect.MIND;
+		TC.COGNITIO         .mAspect = Aspect.MIND;
 		TC.CORPUS           .mAspect = Aspect.FLESH;
 		TC.EXAMINIS         .mAspect = Aspect.UNDEAD;
 		TC.FABRICO          .mAspect = Aspect.CRAFT;
@@ -235,17 +235,13 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		return ThaumcraftApi.addCrucibleRecipe(aResearch, ST.copy_(aOutput), aInput instanceof ItemStack || aInput instanceof ArrayList ? aInput : aInput.toString(), (AspectList)getAspectList(aAspects));
 	}
 	
-	@Override
+	@Override @SuppressWarnings("deprecation")
 	public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, List<TC_AspectStack> aAspects, String aOreDict) {
-		if (aAspects.isEmpty()) return F;
-		ThaumcraftApi.registerObjectTag(aOreDict, (AspectList)getAspectList(aAspects));
-		return T;
+		return F;
 	}
-	@Override
-	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, String aOreDict, TC_AspectStack... aAspects) {
-		if (aAspects.length <= 0) return F;
-		ThaumcraftApi.registerObjectTag(aOreDict, (AspectList)getAspectList(aAspects));
-		return T;
+	@Override @SuppressWarnings("deprecation")
+	public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, String aOreDict, TC_AspectStack... aAspects) {
+		return F;
 	}
 	
 	@Override
@@ -255,10 +251,9 @@ public class CompatTC extends CompatBase implements ICompatTC {
 			ThaumcraftApi.registerComplexObjectTag(aStack, (AspectList)getAspectList(aAspects));
 			return T;
 		}
-		AspectList tAlreadyRegisteredAspects = ThaumcraftApiHelper.getObjectAspects(aStack);
-		if (tAlreadyRegisteredAspects == null || tAlreadyRegisteredAspects.size() <= 0) {
-			ThaumcraftApi.registerObjectTag(aStack, (AspectList)getAspectList(aAspects));
-		}
+		@SuppressWarnings("rawtypes")
+		List aKey = Arrays.asList(aStack.getItem(), Integer.valueOf(ST.meta(aStack)));
+		if (!ThaumcraftApi.objectTags.containsKey(aKey)) ThaumcraftApi.objectTags.put(aKey, (AspectList)getAspectList(aAspects));
 		return T;
 	}
 	@Override
@@ -268,10 +263,9 @@ public class CompatTC extends CompatBase implements ICompatTC {
 			ThaumcraftApi.registerComplexObjectTag(aStack, (AspectList)getAspectList(aAspects));
 			return T;
 		}
-		AspectList tAlreadyRegisteredAspects = ThaumcraftApiHelper.getObjectAspects(aStack);
-		if (tAlreadyRegisteredAspects == null || tAlreadyRegisteredAspects.size() <= 0) {
-			ThaumcraftApi.registerObjectTag(aStack, (AspectList)getAspectList(aAspects));
-		}
+		@SuppressWarnings("rawtypes")
+		List aKey = Arrays.asList(aStack.getItem(), Integer.valueOf(ST.meta(aStack)));
+		if (!ThaumcraftApi.objectTags.containsKey(aKey)) ThaumcraftApi.objectTags.put(aKey, (AspectList)getAspectList(aAspects));
 		return T;
 	}
 	

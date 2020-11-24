@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.UUID;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.IconsGT;
@@ -51,7 +54,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness {
+public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public float mDiameter = 1.0F;
 	public boolean mTransparent = F, mIsGlowing = F, mContactDamage = F, mFoam = F, mFoamDried = F, mOwnable = F;
 	
@@ -142,6 +145,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass == 0 || aRenderPass == 7 || connected((byte)(aRenderPass-1));}
 	
 	@Override public int getLightOpacity() {return mFoamDried ? LIGHT_OPACITY_MAX : mTransparent ? mDiameter >= 1.0F ? LIGHT_OPACITY_WATER : mDiameter > 0.5F ? LIGHT_OPACITY_LEAVES : LIGHT_OPACITY_NONE : mDiameter >= 1.0F ? LIGHT_OPACITY_MAX : mDiameter > 0.5F ? LIGHT_OPACITY_WATER : LIGHT_OPACITY_LEAVES;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return !mFoam && mDiameter < 1.0F;}
 	
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
@@ -218,14 +222,21 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override
 	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (!addDefaultCollisionBoxToList()) {
-			byte tSide;                                                                                                                                                                                                                 box(aAABB, aList,   (1.0F-mDiameter)/2.0F   ,   (1.0F-mDiameter)/2.0F   ,   (1.0F-mDiameter)/2.0F   , 1-(1.0F-mDiameter)/2.0F   , 1-(1.0F-mDiameter)/2.0F   , 1-(1.0F-mDiameter)/2.0F   );
-			if (connected(tSide = SIDE_X_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList, 0-tLength                 ,   (1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   );}
-			if (connected(tSide = SIDE_Y_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList,   (1.0F-tDiameter)/2.0F   , 0-tLength                 ,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   );}
-			if (connected(tSide = SIDE_Z_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList,   (1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 0-tLength                 , 1-(1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   );}
-			if (connected(tSide = SIDE_X_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList, 1-(1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 1+tLength                 , 1-(1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   );}
-			if (connected(tSide = SIDE_Y_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   , 1+tLength                 , 1-(1.0F-tDiameter)/2.0F   );}
-			if (connected(tSide = SIDE_Z_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;    box(aAABB, aList,   (1.0F-tDiameter)/2.0F   ,   (1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   , 1-(1.0F-tDiameter)/2.0F   , 1+tLength                 );}
+			byte tSide;                                                                                                                                                                                                              box(aAABB, aList,   (1.0F-mDiameter)/2.0F,   (1.0F-mDiameter)/2.0F,   (1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F);
+			if (connected(tSide = SIDE_X_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList, 0-tLength              ,   (1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F);}
+			if (connected(tSide = SIDE_Y_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList,   (1.0F-tDiameter)/2.0F, 0-tLength              ,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F);}
+			if (connected(tSide = SIDE_Z_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList,   (1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 0-tLength              , 1-(1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F);}
+			if (connected(tSide = SIDE_X_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList, 1-(1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 1+tLength              , 1-(1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F);}
+			if (connected(tSide = SIDE_Y_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F, 1+tLength              , 1-(1.0F-tDiameter)/2.0F);}
+			if (connected(tSide = SIDE_Z_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0; box(aAABB, aList,   (1.0F-tDiameter)/2.0F,   (1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F, 1-(1.0F-tDiameter)/2.0F, 1+tLength              );}
 		}
+	}
+	
+	@Override
+	public float[] shrunkBox() {
+		if (mFoam || mDiameter >= 1.0F || hasCovers()) return PX_BOX;
+		float tDiameter = (1.0F-mDiameter)/2.0F;
+		return new float[] {connected(SIDE_X_NEG) ? 0 : tDiameter, connected(SIDE_Y_NEG) ? 0 : tDiameter, connected(SIDE_Z_NEG) ? 0 : tDiameter, connected(SIDE_X_POS) ? 1 : 1-tDiameter, connected(SIDE_Y_POS) ? 1 : 1-tDiameter, connected(SIDE_Z_POS) ? 1 : 1-tDiameter};
 	}
 	
 	public float getConnectorLength(byte aConnectorSide, DelegatorTileEntity<TileEntity> aDelegator) {

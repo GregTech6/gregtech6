@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.GT_API_Proxy;
 import gregapi.block.IBlockSyncData;
 import gregapi.block.IBlockToolable;
@@ -33,8 +32,6 @@ import gregapi.block.IPrefixBlock;
 import gregapi.block.ToolCompat;
 import gregapi.block.behaviors.Drops;
 import gregapi.code.ModData;
-import gregapi.data.CS.SFX;
-import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -214,14 +211,11 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		opaque = mOpaque;
 		lightOpacity = mOpaque ? 255 : 0;
 		
-		GameRegistry.registerBlock(this, aItemClass==null?PrefixBlockItem.class:aItemClass, mNameInternal);
+		ST.register(this, mNameInternal, aItemClass==null?PrefixBlockItem.class:aItemClass);
 		
 		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
-		if (COMPAT_IC2 != null) {
-			COMPAT_IC2.addToExplosionWhitelist(this);
-			if (mPrefix.contains(TD.Prefix.ORE)) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
-		}
+		if (COMPAT_IC2 != null && mPrefix.contains(TD.Prefix.ORE) && mBaseHardness >= 0) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
 		
 		if (mOpaque) VISUALLY_OPAQUE_BLOCKS.add(this);
 		mDrops = aDrops==null?new Drops(this, this):aDrops;
@@ -376,13 +370,13 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		if (aTileEntity != null) LAST_BROKEN_TILEENTITY.set(aTileEntity);
 		OreDictMaterial aMaterial = getMetaMaterial(aTileEntity);
 		aWorld.setBlockToAir(aX, aY, aZ);
-		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.mFamiliarPrefixes.contains(OP.dust)))) try {ExplosionGT.explode(aWorld, null, aX+0.5, aY+0.5, aZ+0.5, ((mPrefix.mAmount>0?mPrefix.mAmount:U)*0.7F)/U, T, T);} catch(StackOverflowError e) {ERR.println("WARNING: StackOverflow during Explosion has been prevented at: " + aX +" ; "+ aY +" ; "+ aZ);}
+		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.contains(TD.Prefix.DUST_BASED)))) try {ExplosionGT.explode(aWorld, null, aX+0.5, aY+0.5, aZ+0.5, ((mPrefix.mAmount>0?mPrefix.mAmount:U)*0.7F)/U, T, T);} catch(StackOverflowError e) {ERR.println("WARNING: StackOverflow during Explosion has been prevented at: " + aX +" ; "+ aY +" ; "+ aZ);}
 	}
 	
 	@Override
 	public float getExplosionResistance(Entity par1Entity, World aWorld, int aX, int aY, int aZ, double explosionX, double explosionY, double explosionZ)       {
 		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
-		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.mFamiliarPrefixes.contains(OP.dust)))) return 0;
+		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.contains(TD.Prefix.DUST_BASED)))) return 0;
 		return mBaseResistance * (1+getHarvestLevel(aWorld.getBlockMetadata(aX, aY, aZ)));
 	}
 	
@@ -432,13 +426,13 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {
 		OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, UT.Code.side(aSide));
-		return aMaterial == null || !mCanBurn ? 0 : (aMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)?100:0) + (aMaterial.mMaterial.contains(TD.Properties.BURNING)?200:0);
+		return aMaterial == null || !mCanBurn || aMaterial.mMaterial.contains(TD.Properties.UNBURNABLE) ? 0 : (aMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)?100:0) + (aMaterial.mMaterial.contains(TD.Properties.BURNING)?200:0);
 	}
 	
 	@Override
 	public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {
 		OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, UT.Code.side(aSide));
-		return aMaterial == null || !mCanBurn ? 0 : (aMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)?100:0) + (aMaterial.mMaterial.contains(TD.Properties.BURNING)?200:0);
+		return aMaterial == null || !mCanBurn || aMaterial.mMaterial.contains(TD.Properties.UNBURNABLE) ? 0 : (aMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)?100:0) + (aMaterial.mMaterial.contains(TD.Properties.BURNING)?200:0);
 	}
 	
 	@Override
@@ -464,86 +458,13 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
-		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry. And I did not fix it when adding the 5 better Crates.
 		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
-		if (!aWorld.isRemote && (aTool.equals(TOOL_screwdriver) || aTool.equals(TOOL_crowbar))) {
-			if (mPrefix == OP.crateGt64Gem) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 64));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGt64Dust) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 64));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGt64Ingot) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 64));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGt64Plate) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 64));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGt64PlateGem) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 64));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGtGem) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 16));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGtDust) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 16));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGtIngot) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 16));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGtPlate) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 16));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-			if (mPrefix == OP.crateGtPlateGem) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
-				aWorld.setBlockToAir(aX, aY, aZ);
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 16));
-				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
-				return 2000;
-			}
-		}
 		if (!aWorld.isRemote && aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) aChatReturn.add("This is " + getLocalName(mPrefix, aMaterial));
 			return 1;
 		}
 		if (!aWorld.isRemote && aTool.equals(TOOL_prospector) && mPrefix.contains(TD.Prefix.ORE)) {
-			if (aChatReturn != null) aChatReturn.add(aMaterial.getLocal() + " Ore!");
+			if (aChatReturn != null) aChatReturn.add(getLocalName(OP.ore, aMaterial)+"!");
 			return 100;
 		}
 		// Proceed with the regular onToolClick of the ToolCompat Class, because it has important Code in it.
@@ -588,7 +509,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 		OreDictMaterial aMaterial = getMetaMaterial(aTileEntity);
 		if (aMaterial != null) {
-			if (mCanBurn && (mPrefix.mFamiliarPrefixes.contains(OP.dust) || (mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE))) && aMaterial.contains(TD.Properties.FLAMMABLE) && WD.temperature(aWorld, aX, aY, aZ) > C + 100) {
+			if (mCanBurn && (mPrefix.contains(TD.Prefix.DUST_BASED) || (mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE))) && aMaterial.contains(TD.Properties.FLAMMABLE) && WD.temperature(aWorld, aX, aY, aZ) > C + 100) {
 				aWorld.setBlockToAir(aX, aY, aZ);
 				try {ExplosionGT.explode(aWorld, null, aX+0.5, aY+0.5, aZ+0.5, (aMaterial.contains(TD.Properties.EXPLOSIVE)?(mPrefix.mAmount>0?mPrefix.mAmount:U)*0.5F:(mPrefix.mAmount>0?mPrefix.mAmount:U)*0.33F)/U, T, T);} catch(StackOverflowError e) {ERR.println("WARNING: StackOverflow during Explosion has been prevented at: " + aX +" ; "+ aY +" ; "+ aZ);}
 				return;

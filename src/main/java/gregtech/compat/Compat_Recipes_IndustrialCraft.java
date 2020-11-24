@@ -93,8 +93,10 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(IL.Cell_Empty.get(1));
 		CR.delate(IL.Cell_Universal_Fluid.get(1));
 		
-		CR.remove(ST.make(Items.lava_bucket, 1, 0), IL.Cell_Empty.get(1));
+		CR.remove(ST.make(Items.lava_bucket , 1, 0), IL.Cell_Empty.get(1));
 		CR.remove(ST.make(Items.water_bucket, 1, 0), IL.Cell_Empty.get(1));
+		
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(Blocks.bedrock);
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) {
 			ItemStack tStack = OP.casingMachine.mat(tMat, 1);
@@ -175,10 +177,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1)), FL.Potion_Poison_2.make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer",  3, 0));
 		RM.Mixer        .addRecipeX(T, 16,  192, ST.array(IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)        ), FL.Potion_Poison_2.make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer", 12, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.Water          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.DistW          .make(1000), NF, ST.make(MD.IC2, "constructionFoam"          ,  3, 0));
+		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.Water.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.SpDew.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.DistW.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(MD.IC2, "item.itemScrapMetal", 8, 0), ST.make(MD.IC2, "item.scrapMetalChunk", 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, IL.IC2_Plantball.get(1), ST.make(MD.IC2, "item.itemFuelPlantCmpr", 1, 0));
@@ -325,12 +328,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		CR.shaped(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0), CR.DEF_REV_NCC, "PSP", "SPS", "PSP", 'P', OP.plate.dat(MT.Pb), 'S', OP.stone);
 		CR.shaped(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0), CR.DEF_REV_NCC, "XXX", "XCX", "XXX", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockreactorvessel", 1, 0));
-		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'P', OP.casingSmall.dat(ANY.Iron), 'S', IL.IC2_ShaftIron);
 		CR.shaped(ST.make(MD.IC2, "blockMachine3"           , 1, 3), CR.DEF_REV_NCC, "GGG", "G G", "CXC", 'C', OP.cell.dat(MT.Empty), 'X', IL.IC2_Machine, 'G', OP.plateGem.dat(MT.Glass));
-		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron), 'R', OD.itemRedstone);
+		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1));
+		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5));
+		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'S', IL.IC2_ShaftIron);
+		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', OD_CIRCUITS[1]);
+		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron), 'X', OD_CIRCUITS[1], 'R', OD.itemRedstone);
 		CR.shaped(ST.make(MD.IC2, "itemFoamSprayer"         , 1, 0), CR.DEF_REV_NCC, "P  ", " P ", " CP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron));
 		
 		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrap       .get(36), NF, FL.UUM.make(1), ZL_IS);
@@ -342,8 +345,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) if (tMat != MT.Enori)
 		RM.RollFormer   .addRecipe1(T,256,   16, OP.blockSolid.mat(tMat, 1)                         , IL.IC2_ShaftIron.get(1));
 		
-		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
-		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, FL.CFoam.make(1000), ZL_IS);
+		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
+		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tWater, FL.CFoam.make(1000), ZL_IS);
 		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.U_238)                                  , ST.mkic("Uran238", 1));
@@ -414,7 +417,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.pulverizing(ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay, U));
 		RM.pulverizing(ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));
 		RM.pulverizing(IL.Clay_Ball_Brown.get(1), OM.dust(MT.ClayBrown, U));
+		RM.pulverizing(IL.Clay_Ball_Red.get(1), OM.dust(MT.ClayRed, U));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
+		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
 		
 		if (IL.IC2_Sapling_Rubber.exists())
 		RM.ic2_extractor(IL.IC2_Sapling_Rubber.get(1), OM.ingot(MT.Rubber, 2*U9));
@@ -492,6 +497,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Electrolyzer     .addRecipe2(T, 16, 1000, ST.tag(0), IL.Cell_Water.get(1)                    , ST.mkic("electrolyzedWaterCell", 1));
 		
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.Water.make(1000)          , NF, ST.mkic("hydratingCell", 1));
+		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.SpDew.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.DistW.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		
 		RM.generify(IL.Circuit_Basic.get(1)     , ST.mkic("electronicCircuit", 1));
@@ -500,60 +506,61 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));
 		
-		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
+		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250)))
+		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
 		
-		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , FL.mul(tFluid, 1, 4, T), FL.Potion_Poison_2.make(250), ZL_IS);
-		
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.SoylentGreen  ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRaw       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishRaw       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatCooked    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishCooked    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRotten    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishRotten    ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.CaCO3                   ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                   ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(1));
-		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                   ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(1));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                      ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Ca                      ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                      ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                      ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                      ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Apatite                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.SoylentGreen  ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatRaw       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishRaw       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatCooked    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishCooked    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.MeatRotten    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1               ), OM.dust(MT.FishRotten    ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.CaCO3                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(1));
+		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.CaCO3                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(1));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                    ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Ca                    ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Ca                    ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                    ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Ca                    ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite               ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Apatite               ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.Apatite               ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
 		if (!MD.FR.mLoaded) {
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite               ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Apatite               ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
 		}
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite      ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand  ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                  ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.NaHSO4                  ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                  ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                  ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                  ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                   ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.KHSO4                   ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                   ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                   ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                   ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		}
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.NaHSO4                ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.NaHSO4                ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                 ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.KHSO4                 ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
+		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.KHSO4                 ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                 ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.KHSO4                 ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
+		
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (tMat != MT.Enori) {
-		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
-		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(tMat, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat   , 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(tMat   , 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
 		}
+		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(MT.HSLA, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(MT.HSLA, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("blockSolidObsidian", "blockDustObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -594,25 +601,25 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		new GT_BaseCrop("Oil Berries"           , "Spacetoad"               , OP.plantGtBerry.mat(MT.Oil, 1)                    , null                                                                                                                                                                  , null                                              , 9, 4, 27000, 1, 4, 6, 1, 2, 1,12, new String[] {"Reed"        , "Fire", "Dark", "Rotten", "Coal", "Oil", "Berry"});
 		new GT_BaseCrop("Bobsyeruncle Ranks"    , "GenerikB"                , OP.plantGtBerry.mat(MT.Emerald, 1)                , null                                                                                                                                                                  , null                                              ,11, 4, 16500, 1, 4, 4, 0, 8, 2, 9, new String[] {"Vine"        , "Shiny", "Emerald", "Berylium", "Crystal"});
 		new GT_BaseCrop("Diareed"               , "Direwolf20"              , OP.dustTiny.mat(MT.Diamond ,1)                    , null                                                                                                                                                                  , null                                              ,12, 4, 36000, 1, 4, 5, 0,10, 2,10, new String[] {"Reed"        , "Fire", "Shiny", "Coal", "Diamond", "Crystal"});
-		new GT_BaseCrop("Withereed"             , "CovertJaguar"            , OP.dust.mat(MT.Coal, 1)                           , ST.array(ST.make(Items.coal, 1, 0), ST.make(Items.coal, 1, 0))                                                                                                , null                                              , 8, 4, 24000, 1, 4, 2, 0, 4, 1, 6, new String[] {"Reed"        , "Fire", "Undead", "Coal", "Rotten", "Wither"});
-		new GT_BaseCrop("Blaze Reed"            , "Mr. Brain"               , ST.make(Items.blaze_powder, 1, 0)                 , ST.array(ST.make(Items.blaze_rod, 1, 0))                                                                                                                      , null                                              ,10, 4,  9000, 1, 4, 4, 0, 8, 2,10, new String[] {"Reed"        , "Fire", "Blaze", "Sulfur"});
-		new GT_BaseCrop("Eggplant"              , "Link"                    , ST.make(Items.egg, 1, 0)                          , ST.array(ST.make(Items.chicken, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0))                              , null                                              , 6, 3,   900, 2, 3, 0, 4, 1, 0, 0, new String[] {"Flower"      , "Food", "Chicken", "Egg", "Feather", "Addictive"});
+		new GT_BaseCrop("Withereed"             , "CovertJaguar"            , OP.dust.mat(MT.Coal, 1)                           , ST.array(ST.make(Items.coal, 1, 0), ST.make(Items.coal, 1, 0))                                                                                                        , null                                              , 8, 4, 24000, 1, 4, 2, 0, 4, 1, 6, new String[] {"Reed"        , "Fire", "Undead", "Coal", "Rotten", "Wither"});
+		new GT_BaseCrop("Blaze Reed"            , "Mr. Brain"               , ST.make(Items.blaze_powder, 1, 0)                 , ST.array(ST.make(Items.blaze_rod, 1, 0))                                                                                                                              , null                                              ,10, 4,  9000, 1, 4, 4, 0, 8, 2,10, new String[] {"Reed"        , "Fire", "Blaze", "Sulfur"});
+		new GT_BaseCrop("Eggplant"              , "Link"                    , ST.make(Items.egg, 1, 0)                          , ST.array(ST.make(Items.chicken, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0))                                      , null                                              , 6, 3,   900, 2, 3, 0, 4, 1, 0, 0, new String[] {"Flower"      , "Food", "Chicken", "Egg", "Feather", "Addictive"});
 		new GT_BaseCrop("Corium"                , "Gregorius Techneticies"  , ST.make(Items.leather, 1, 0)                      , null                                                                                                                                                                  , null                                              , 6, 4,     0, 1, 4, 0, 2, 3, 1, 0, new String[] {"Vine"        , "Cow", "Silk"});
-		new GT_BaseCrop("Corpse Plant"          , "Mr. Kenny"               , ST.make(Items.rotten_flesh, 1, 0)                 , ST.array(IL.Dye_Bonemeal.get(1), IL.Dye_Bonemeal.get(1), ST.make(Items.bone, 1, 0))                                                                           , null                                              , 5, 4,     0, 1, 4, 0, 2, 1, 0, 3, new String[] {"Vine"        , "Food", "Toxic", "Undead", "Rotten"});
+		new GT_BaseCrop("Corpse Plant"          , "Mr. Kenny"               , ST.make(Items.rotten_flesh, 1, 0)                 , ST.array(IL.Dye_Bonemeal.get(1), IL.Dye_Bonemeal.get(1), ST.make(Items.bone, 1, 0))                                                                                   , null                                              , 5, 4,     0, 1, 4, 0, 2, 1, 0, 3, new String[] {"Vine"        , "Food", "Toxic", "Undead", "Rotten"});
 		new GT_BaseCrop("Creeper Weed"          , "General Spaz"            , OP.dust.mat(MT.Gunpowder, 1)                      , null                                                                                                                                                                  , null                                              , 7, 4,     0, 1, 4, 3, 0, 5, 1, 3, new String[] {"Vine"        , "Creeper", "Explosive", "Fire", "Sulfur", "Saltpeter", "Coal"});
-		new GT_BaseCrop("Ender Bloom"           , "RichardG"                , OP.dust.mat(MT.EnderPearl, 1)                     , ST.array(ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_eye, 1, 0))                                                  , null                                              ,10, 4, 15000, 1, 4, 5, 0, 2, 1, 6, new String[] {"Flower"      , "Shiny", "Ender"});
-		new GT_BaseCrop("Meat Rose"             , "VintageBeef"             , ST.make(Items.dye, 1, 9)                          , ST.array(ST.make(Items.beef, 1, 0), ST.make(Items.porkchop, 1, 0), ST.make(Items.chicken, 1, 0), ST.make(Items.fish, 1, 0))                                   , null                                              , 7, 4,  1500, 1, 4, 0, 4, 1, 3, 0, new String[] {"Flower"      , "Food", "Cow", "Fish", "Chicken", "Pig"});
+		new GT_BaseCrop("Ender Bloom"           , "RichardG"                , OP.dust.mat(MT.EnderPearl, 1)                     , ST.array(ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_eye, 1, 0))                                                          , null                                              ,10, 4, 15000, 1, 4, 5, 0, 2, 1, 6, new String[] {"Flower"      , "Shiny", "Ender"});
+		new GT_BaseCrop("Meat Rose"             , "VintageBeef"             , ST.make(Items.dye, 1, 9)                          , ST.array(ST.make(Items.beef, 1, 0), ST.make(Items.porkchop, 1, 0), ST.make(Items.chicken, 1, 0), ST.make(Items.fish, 1, 0))                                           , null                                              , 7, 4,  1500, 1, 4, 0, 4, 1, 3, 0, new String[] {"Flower"      , "Food", "Cow", "Fish", "Chicken", "Pig"});
 		new GT_BaseCrop("Milkwart"              , "Mr. Brain"               , OP.plantGtWart.mat(MT.Milk, 1)                    , null                                                                                                                                                                  , OP.plantGtWart.mat(MT.Milk, 1)                    , 6, 3,   900, 1, 3, 0, 3, 0, 1, 0, new String[] {"Wart"        , "Food", "Milk", "Cow", "Ingredient"});
 		new GT_BaseCrop("Glowshrooms"           , "Speiger"                 , OP.plantGtWart.mat(MT.Glowstone, 1)               , null                                                                                                                                                                  , OP.plantGtWart.mat(MT.Glowstone, 1)               , 6, 3,  2400, 1, 3, 5, 0, 0, 2, 0, new String[] {"Wart"        , "Shiny", "Ingredient"});
 		new GT_BaseCrop("Slime Plant"           , "Neowulf"                 , ST.make(Items.slime_ball, 1, 0)                   , null                                                                                                                                                                  , null                                              , 6, 4,     0, 3, 4, 3, 0, 0, 0, 2, new String[] {"Bush"        , "Slime", "Bouncy", "Sticky"});
-		new GT_BaseCrop("Spidernip"             , "Ms. Muffet"              , ST.make(Items.string, 1, 0)                       , ST.array(ST.make(Items.spider_eye, 1, 0), ST.make(Blocks.web, 1, 0))                                                                                          , null                                              , 4, 4,   600, 1, 4, 2, 1, 4, 1, 3, new String[] {"Flower"      , "Toxic", "Silk", "Spider", "Ingredient", "Addictive"});
+		new GT_BaseCrop("Spidernip"             , "Ms. Muffet"              , ST.make(Items.string, 1, 0)                       , ST.array(ST.make(Items.spider_eye, 1, 0), ST.make(Blocks.web, 1, 0))                                                                                                  , null                                              , 4, 4,   600, 1, 4, 2, 1, 4, 1, 3, new String[] {"Flower"      , "Toxic", "Silk", "Spider", "Ingredient", "Addictive"});
 		new GT_BaseCrop("Tear Stalks"           , "Neowulf"                 , ST.make(Items.ghast_tear, 1, 0)                   , null                                                                                                                                                                  , null                                              , 8, 4,  2400, 1, 4, 1, 2, 0, 0, 0, new String[] {"Reed"        , "Healing", "Nether", "Ingredient", "Ghast"});
 		new GT_BaseCrop("Tine"                  , "Gregorius Techneticies"  , OP.plantGtTwig.mat(MT.Sn, 1)                      , null                                                                                                                                                                  , null                                              , 5, 3, 15000, 2, 3, 2, 0, 3, 0, 0, new String[] {"Bush"        , "Shiny", "Metal", "Pine", "Tin"});
 		new GT_BaseCrop("Coppon"                , "Mr. Brain"               , OP.plantGtFiber.mat(MT.Cu, 1)                     , null                                                                                                                                                                  , null                                              , 6, 3, 18000, 2, 3, 2, 0, 1, 1, 1, new String[] {"Bush"        , "Shiny", "Metal", "Cotton", "Copper"});
 		new GT_BaseCrop("Argentia"              , "Eloraam"                 , OP.plantGtBlossom.mat(MT.Ag, 1)                   , null                                                                                                                                                                  , null                                              , 7, 4, 21000, 3, 4, 2, 0, 1, 0, 0, new String[] {"Reed"        , "Shiny", "Metal", "Silver"});
 		new GT_BaseCrop("Plumbilia"             , "KingLemming"             , OP.plantGtBlossom.mat(MT.Pb, 1)                   , null                                                                                                                                                                  , null                                              , 6, 4, 18000, 3, 4, 2, 0, 3, 1, 1, new String[] {"Reed"        , "Heavy", "Metal", "Lead"});
-		new GT_BaseCrop("Steeleaf Ranks"        , "Benimatic"               , OP.nugget.mat(MT.Steeleaf, 1)                     , ST.array(OP.ingot.mat(MT.Steeleaf, 1))                                                                                                                        , null                                              ,10, 4, 30000, 1, 4, 3, 0, 7, 2, 8, new String[] {"Vine"        , "Metal", "Iron"});
-		new GT_BaseCrop("Liveroots"             , "Benimatic"               , OP.dust.mat(MT.LiveRoot, 1)                       , ST.array(IL.TF_LiveRoot.get(1))                                                                                                                               , null                                              , 8, 4,     0, 1, 4, 2, 0, 5, 2, 6, new String[] {"Vine"        , "Wood"});
+		new GT_BaseCrop("Steeleaf Ranks"        , "Benimatic"               , OP.nugget.mat(MT.Steeleaf, 1)                     , ST.array(OP.ingot.mat(MT.Steeleaf, 1))                                                                                                                                , null                                              ,10, 4, 30000, 1, 4, 3, 0, 7, 2, 8, new String[] {"Vine"        , "Metal", "Iron"});
+		new GT_BaseCrop("Liveroots"             , "Benimatic"               , OP.dust.mat(MT.LiveRoot, 1)                       , ST.array(IL.TF_LiveRoot.get(1))                                                                                                                                       , null                                              , 8, 4,     0, 1, 4, 2, 0, 5, 2, 6, new String[] {"Vine"        , "Wood"});
 		//                                                                                                                                                                                                                                                                                                                                                 TIER,SIZE,    ,AH,HA,CH,FD,DF,CO,WD
 		new GT_BaseCrop("Rye"                   , "Binnie"                  , IL.Crop_Rye.get(1)                                , null                                                                                                                                                                  , IL.Crop_Rye.get(1)                                , 1, 7,     0, 2, 7, 0, 4, 0, 0, 2, new String[] {"Wheat"       , "Food", "Grain"});
 		new GT_BaseCrop("Barley"                , "Glitchfiend"             , IL.Crop_Barley.get(1)                             , null                                                                                                                                                                  , IL.Crop_Barley.get(1)                             , 1, 7,     0, 2, 7, 0, 4, 0, 0, 2, new String[] {"Wheat"       , "Food", "Grain"});
@@ -647,7 +654,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		new GT_BaseCrop("Peanuts"               , "Snoopy"                  , IL.Food_Peanut.get(1)                             , null                                                                                                                                                                  , IL.Food_Peanut.get(4)                             , 3, 4,     0, 1, 4, 1, 4, 0, 2, 4, new String[] {"Bush"        , "Food", "Nut"});
 		new GT_BaseCrop("Ananas"                , "Spongebob"               , IL.Food_Ananas.get(1)                             , null                                                                                                                                                                  , IL.Food_Ananas.get(4)                             , 4, 3,     0, 1, 3, 3, 3, 5, 1, 1, new String[] {"Bush"        , "Food", "Fruit", "Pine", "Apple"});
 		//                                                                                                                                                                                                                                                                                                                                                 TIER,SIZE,    ,AH,HA,CH,FD,DF,CO,WD
-		new GT_BaseCrop("Desert Nova"           , "Mithion"                 , IL.ARS_DesertNova.get(1, IL.DesertNova.get(1))    , null                                                                                                                                                                  , IL.ARS_DesertNova.get(4, IL.DesertNova.get(4))    , 6, 4,     0, 1, 4, 5, 1, 7, 4,10, new String[] {"Cactus"      , "Magic", "Fire", "Explosive"});
+		new GT_BaseCrop("Desert Nova"           , "Mithion"                 , IL.ARS_DesertNova .get(1, IL.DesertNova .get(1))  , null                                                                                                                                                                  , IL.ARS_DesertNova.get(4, IL.DesertNova.get(4))    , 6, 4,     0, 1, 4, 5, 1, 7, 4,10, new String[] {"Cactus"      , "Magic", "Fire", "Explosive"});
 		new GT_BaseCrop("Cerublossom"           , "Mithion"                 , IL.ARS_Cerublossom.get(1, IL.Cerublossom.get(1))  , null                                                                                                                                                                  , IL.ARS_Cerublossom.get(4, IL.Cerublossom.get(4))  , 6, 4,     0, 1, 4, 1, 1, 2, 4,10, new String[] {"Flower"      , "Magic", "Shiny"});
 		new GT_BaseCrop("Shimmerleaf"           , "Azanor"                  , OP.nugget.mat(MT.Hg, 1)                           , null                                                                                                                                                                  , IL.TC_Shimmerleaf.get(4)                          ,11, 4,     0, 1, 4, 5, 1, 4, 1, 8, new String[] {"Flower"      , "Magic", "Shiny", "Metal", "Mercury"});
 		new GT_BaseCrop("Cinderpearl"           , "Azanor"                  , ST.make(Items.blaze_powder, 1, 0)                 , null                                                                                                                                                                  , IL.TC_Cinderpearl.get(4)                          , 8, 4,     0, 1, 4, 3, 1, 8, 2, 8, new String[] {"Flower"      , "Magic", "Fire", "Blaze", "Sulfur", "Ingredient"});

@@ -231,12 +231,16 @@ public class TD {
 		public static final TagData MATERIAL_BASED                          = TagData.createTagData("PREFIX.MATERIAL_BASED", "Material Based");
 		/** If this Prefix is normally used for Blocks */
 		public static final TagData BLOCK_BASED                             = TagData.createTagData("PREFIX.BLOCK_BASED", "Block Based");
+		/** If this Prefix is Storage Based */
+		public static final TagData STORAGE_BASED                           = TagData.createTagData("PREFIX.STORAGE_BASED", "Storage Based");
 		/** If this Prefix is normally used for Crop Drops */
 		public static final TagData PLANT_DROP                              = TagData.createTagData("PREFIX.PLANT_DROP", "Plant Drop");
 		/** If this Prefix is Unificatable in Inventory */
 		public static final TagData UNIFICATABLE                            = TagData.createTagData("PREFIX.UNIFICATABLE", "Unificatable");
 		/** If this Prefix has the Material Tooltip */
 		public static final TagData TOOLTIP_MATERIAL                        = TagData.createTagData("PREFIX.TOOLTIP_MATERIAL", "Material Tooltip");
+		/** If this Prefix has the Enchantment Tooltip */
+		public static final TagData TOOLTIP_ENCHANTS                        = TagData.createTagData("PREFIX.TOOLTIP_ENCHANTS", "Enchantment Tooltip");
 		/** If this Prefix is not Filterable inside the Prefix Filter */
 		public static final TagData NO_PREFIX_FILTERING                     = TagData.createTagData("PREFIX.NO_PREFIX_FILTERING", "Not Prefix Filterable");
 		/** If this Prefix is Gem based */
@@ -257,11 +261,11 @@ public class TD {
 		public static final TagData DUST_ORE                                = TagData.createTagData("PREFIX.DUST_ORE", "Dust Ore");
 		/** If this Prefix is for Dense Ores */
 		public static final TagData DENSE_ORE                               = TagData.createTagData("PREFIX.DENSE_ORE", "Dense Ore");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_DIRTY                    = TagData.createTagData("PREFIX.ORE_PROCESSING_DIRTY", "Ore Processing Dirty");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_CLEAN                    = TagData.createTagData("PREFIX.ORE_PROCESSING_CLEAN", "Ore Processing Clean");
-		/** If this Prefix is used for Ore Processing, like "crushed" for example */
+		/** If this Prefix is used for Ore Processing */
 		public static final TagData ORE_PROCESSING_REFINED                  = TagData.createTagData("PREFIX.ORE_PROCESSING_REFINED", "Ore Processing Refined");
 		/** If this Prefix is used for Ore Processing, like "crushed" for example */
 		public static final TagData ORE_PROCESSING_BASED                    = TagData.createTagData("PREFIX.ORE_PROCESSING_BASED", "Ore Processing Based");
@@ -400,6 +404,8 @@ public class TD {
 		public static final TagData MAGICAL                                 = TagData.createTagData("PROPERTIES.MAGICAL", "Magical");
 		/** If this Material is useable in the Betweenlands */
 		public static final TagData BETWEENLANDS                            = TagData.createTagData("PROPERTIES.BETWEENLANDS", "Betweenlands");
+		/** If this Material can break Twilight Mazes */
+		public static final TagData MAZEBREAKER                             = TagData.createTagData("PROPERTIES.MAZEBREAKER", "Maze Breaker");
 		/** If this Material is having a constantly burning Aura (like Blaze Rods) */
 		public static final TagData BURNING                                 = TagData.createTagData("PROPERTIES.BURNING", "Burning Aura");
 		/** If this Material is some kind of flammable */
@@ -430,7 +436,7 @@ public class TD {
 		public static final TagData ENDER_DRAGON_PROOF                      = TagData.createTagData("PROPERTIES.ENDER_DRAGON_PROOF", "Ender Dragon Proof");
 		/** If this Material is Wither Proof. */
 		public static final TagData WITHER_PROOF                            = TagData.createTagData("PROPERTIES.WITHER_PROOF", "Wither Proof");
-		/** If this Material has Tool Stats. */
+		/** Unused, there is Tool Type checks instead. */
 		public static final TagData NO_ADVANCED_TOOLS                       = TagData.createTagData("PROPERTIES.NO_ADVANCED_TOOLS", "No Advanced Tools");
 		/** If this Material has Tool Stats. */
 		public static final TagData HAS_TOOL_STATS                          = TagData.createTagData("PROPERTIES.HAS_TOOL_STATS", "Has Tool Stats");
@@ -481,6 +487,8 @@ public class TD {
 		public static final TagData CENTRIFUGE                              = TagData.createTagData("PROCESSING.CENTRIFUGABLE", "Centrifugable");
 		/** If this Material is decomposable by an Electrolyser. Requires Compounds.DECOMPOSABLE too */
 		public static final TagData ELECTROLYSER                            = TagData.createTagData("PROCESSING.ELECTROLYSABLE", "Electrolysable");
+		/** If this Material can be alloyed in a Crucible. */
+		public static final TagData CRUCIBLE_ALLOY                          = TagData.createTagData("PROCESSING.CRUCIBLE_ALLOY", "Crucible Alloyable");
 		/** If this Material can be used in an Extruder. */
 		public static final TagData EXTRUDER                                = TagData.createTagData("PROCESSING.EXTRUDABLE", "Extrudable");
 		/** If this Material can be used in a low Tech Extruder. */
@@ -510,9 +518,9 @@ public class TD {
 		
 		public static final TagData WASHING_PERSULFATE                      = TagData.createTagData("PROCESSING.WASHING_PERSULFATE", "Persulfate Washable"), WASHING_SODIUMPERSULFATE = WASHING_PERSULFATE;
 		public static final TagData WASHING_MERCURY                         = TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
-		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Pulverisation Byproduct");
+		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Crystal from Pulverisation");
 		
-		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
+		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
 		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	

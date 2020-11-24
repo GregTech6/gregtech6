@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -82,8 +82,8 @@ public class MultiTileEntitySapHoleMaple extends MultiTileEntityTreeHole {
 	
 	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogA, 1, 1));}
 	@Override public ItemStack getResinItem(byte aSide) {return null;}
-	@Override public FluidStack getResinFluid(byte aSide) {return FL.make("maplesap", 250);}
+	@Override public FluidStack getResinFluid(byte aSide) {return FL.Sap_Maple.make(250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogA, SIDE_ANY, 1) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_SAP_MAPLE:Textures.BlockIcons.LOG_HOLE_MAPLE) : null;}
-	@Override public float getExplosionResistance2() {return BlocksGT.LogA.getExplosionResistance(1);}
+	@Override public float getExplosionResistance2() {return BlocksGT.LogA.getExplosionResistance((byte)1);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.tree.maple.saphole";}
 }

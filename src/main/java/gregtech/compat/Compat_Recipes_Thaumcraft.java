@@ -42,7 +42,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
@@ -63,7 +62,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		FoodsGT.put(IL.TC_Triple_Meat_Treat .wild(1), 0, 0, 0,30,10);
 		
 		CR.delate(IL.TC_Phial.get(1));
-		CR.shaped(IL.TC_Phial.get(8), CR.DEF_NCC, " C ", "G G", " G ", 'C', "itemClay", 'G', ST.make(Blocks.glass, 1, W));
+		CR.shaped(IL.TC_Phial.get(8), CR.DEF_NCC, " C ", "G G", " G ", 'C', OD.itemClay, 'G', OD.blockGlassColorless);
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.string, 1, W), MT.Tallow.liquid(U*2, T), NF, ST.make(MD.TC, "blockCandle", 1, 0), ST.make(MD.TC, "blockCandle", 1, 0), ST.make(MD.TC, "blockCandle", 1, 0));
 		
@@ -92,7 +91,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		
 		Item tCrystal = ST.item(MD.TC, "blockCrystal"), tShard = ST.item(MD.TC, "ItemShard");
 		for (int i = 0; i < 6; i++) {
-		RM.compact(ST.make(tShard, 6, i), 6, ST.make(tCrystal, 1, i));
+		RM.compactsmash(ST.make(tShard, 6, i), 6, ST.make(tCrystal, 1, i));
 		RM.unpack(ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
 		}
 		RM.Unboxinator.addRecipe1(T, 16, 16, ST.make(tCrystal, 1, 6), ST.make(tShard, 1, 0), ST.make(tShard, 1, 1), ST.make(tShard, 1, 2), ST.make(tShard, 1, 3), ST.make(tShard, 1, 4), ST.make(tShard, 1, 5));
@@ -127,6 +126,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass          .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Brass          .get(1), F, F), TC.stack(TC.AQUA, 4))
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze         .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze         .get(1), F, F), TC.stack(TC.AQUA, 4))
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze  .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze  .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Au             .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Au             .get(1), F, F), TC.stack(TC.AQUA, 4))
 		);
 		tMat = MT.Zn;
 		COMPAT_TC.addResearch(tKey = TRANSZINC
@@ -235,7 +235,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		//
 		COMPAT_TC.addResearch(tKey = ADVANCEDMETALLURGY
 			, "Advanced Metallurgic Transmutation", "Mastering the basic Metals", new String[] {TRANSBISMUTH, IRON_TO_STEEL, TRANSSOLDERINGALLOY, TRANSBATTERYALLOY, TRANSBRASS, TRANSELECTRUM, TRANSCONSTANTAN, TRANSINVAR}, CATEGORY_ALCHEMY, OP.ingot.mat(MT.Fe, 1), 4, RESEARCH_TYPE_HIDDEN, 16, 14
-			, Arrays.asList(TC.stack(TC.METALLUM, 50), TC.stack(TC.PERMUTATIO, 20), TC.stack(TC.COGNITO, 20), TC.stack(TC.PRAECANTIO, 20), TC.stack(TC.NEBRISUM, 20), TC.stack(TC.MAGNETO, 20))
+			, Arrays.asList(TC.stack(TC.METALLUM, 50), TC.stack(TC.PERMUTATIO, 20), TC.stack(TC.COGNITIO, 20), TC.stack(TC.PRAECANTIO, 20), TC.stack(TC.NEBRISUM, 20), TC.stack(TC.MAGNETO, 20))
 			, null
 			, LH.add("gt.research.page.1." + tKey, "Now that you have discovered all the basic Metals, you can finally move on to the next Level of Magic Metallurgy and create more advanced Metals")
 		);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,10 @@ import java.util.Set;
 
 import gregapi.block.tree.BlockBaseSapling;
 import gregapi.data.CS.BlocksGT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -35,17 +38,23 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenTreeRainbowood extends WorldgenObject {
+public class WorldgenTreeRainbowood extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenTreeRainbowood(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenTreeRainbowood(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (!(aBiomeNames.contains("Enchanted Forest") || aRandom.nextInt(32768) == 0) || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableTrees.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)7, aRandom);
-		return F;
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		if (aBiomeNames.contains("Enchanted Forest")) return mAmount;
+		return aRandom.nextInt(8192) == 0 ? mAmount : 0;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (!BlocksGT.plantableTrees.contains(aContact)) return F;
+		if (!WD.easyRep(aWorld, aX, aY+1, aZ)) return F;
+		return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aX, aY+1, aZ, (byte)7, aRandom);
 	}
 }

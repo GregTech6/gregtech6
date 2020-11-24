@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,11 @@
 
 package gregapi.block;
 
+import gregapi.item.IItemGT;
 
 /**
  * @author Gregorius Techneticies
  */
-public interface IPrefixBlock extends IBlockExtendedMetaData, IBlockPlacable, IBlockRetrievable, IBlockMaterial, IBlock {
+public interface IPrefixBlock extends IBlockExtendedMetaData, IBlockPlacable, IBlockRetrievable, IBlockMaterial, IBlock, IItemGT {
 	/** Empty Compound Interface flagging an Item as GregTech Prefix Block. */
 }

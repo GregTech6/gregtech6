@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,16 +21,10 @@ package gregtech.tileentity.portals;
 
 import static gregapi.data.CS.*;
 
+import java.io.File;
 import java.util.List;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetComparatorInputOverride;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsProvidingWeakPower;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnToolClick;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByte;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -62,7 +56,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * 
  * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
-public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTileEntities implements ITileEntitySurface, ITileEntityDelegating, IFluidHandler, ISidedInventory, IMTE_OnToolClick, IMTE_IsProvidingWeakPower, IMTE_GetComparatorInputOverride, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_SyncDataByte {
+public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTileEntities implements ITileEntitySurface, ITileEntityDelegating, IFluidHandler, ISidedInventory, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_OnToolClick, IMTE_IsProvidingWeakPower, IMTE_GetComparatorInputOverride, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_SyncDataByte {
 	protected boolean mActive = F, oActive = F;
 	
 	public MultiTileEntityMiniPortal mTarget = null;
@@ -70,7 +64,8 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	
 	public abstract void findTargetPortal();
 	public abstract void addThisPortalToLists();
-	public abstract void removeThisPortalFromLists();
+	public abstract List<MultiTileEntityMiniPortal> getPortalListA();
+	public abstract List<MultiTileEntityMiniPortal> getPortalListB();
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -188,6 +183,11 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	public void setPortalActive() {if (!mActive) {mActive = T; addThisPortalToLists(); causeBlockUpdate();}}
 	public void setPortalInactive() {if (mActive) {disableThisPortal(); causeBlockUpdate();}}
 	
+	public void removeThisPortalFromLists() {
+		if (getPortalListA().remove(this)) for (MultiTileEntityMiniPortal tPortal : getPortalListB()) if (tPortal.mTarget == this) tPortal.findTargetPortal();
+		if (getPortalListB().remove(this)) for (MultiTileEntityMiniPortal tPortal : getPortalListA()) if (tPortal.mTarget == this) tPortal.findTargetPortal();
+	}
+	
 	@Override
 	public boolean onTickCheck(long aTimer) {
 		return mActive != oActive || super.onTickCheck(aTimer);
@@ -216,6 +216,9 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 		disableThisPortal();
 		super.onChunkUnload();
 	}
+	
+	@Override public void onServerLoad(File aSaveLocation) {getPortalListA().clear(); getPortalListB().clear();}
+	@Override public void onServerSave(File aSaveLocation) {getPortalListA().clear(); getPortalListB().clear();}
 	
 	public void disableThisPortal() {
 		mActive = F;
@@ -350,8 +353,8 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	}
 	
 	@Override
-	public int isProvidingWeakPower(byte aSide) {
-		return mRedstone[OPPOSITES[aSide]];
+	public int isProvidingWeakPower(byte aOppositeSide) {
+		return mRedstone[OPPOSITES[aOppositeSide]];
 	}
 	
 	// Relay Inventories

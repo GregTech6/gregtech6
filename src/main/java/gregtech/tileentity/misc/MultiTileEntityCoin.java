@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -65,7 +65,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities implements IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_GetSubItems, IMTE_OnRegistration, IMTE_OnRegistrationClient, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SetBlockBoundsBasedOnState, IMTE_AddCollisionBoxesToList, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataByteArray {
+public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities implements IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_GetSubItems, IMTE_OnRegistration, IMTE_OnRegistrationClient, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SetBlockBoundsBasedOnState, IMTE_AddCollisionBoxesToList, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataByteArray {
 	protected boolean mIsUnique = F;
 	protected boolean[][][] mShape = new boolean[2][16][16];
 	protected final byte[] mCoinStackSizes = new byte[16];
@@ -458,6 +458,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	
 	@Override public float getBlockHardness() {return 1;}
 	@Override public float getExplosionResistance2() {return 0;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	public static boolean ALLOW_3D_COINS = T, ALLOW_3D_COINS_INV = T;
 	

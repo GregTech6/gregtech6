@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,12 +29,19 @@ import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.tileentity.base.TileEntityBase06Covers;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -49,7 +56,7 @@ public class WorldgenTesting extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenTesting(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
+		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_TESTING = mEnabled;
 	}
 	
@@ -179,7 +186,87 @@ public class WorldgenTesting extends WorldgenObject {
 			WD.set                     (aWorld, 38, mHeight+2, -18, Blocks.crafting_table, 0, 3);
 			tRegistry.mBlock.placeBlock(aWorld, 38, mHeight+3, -18, SIDE_UNKNOWN, (short)32744, null, T, T);
 			
-			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			// Lots of Items I want to have ready whenever I generate a new Test World.
+			ItemStack[] tInventory = {
+			  ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SWORD                 , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE               , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL                , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE                   , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE                   , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SAW                   , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER            , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER            , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH                , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MONKEY_WRENCH         , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FILE                  , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CROWBAR               , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SCREWDRIVER           , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB                  , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WIRECUTTER            , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SCOOP                 , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BRANCHCUTTER          , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.UNIVERSALSPADE        , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE                 , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BUTCHERYKNIFE         , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PLOW                  , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN           , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CHISEL                , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER      , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BENDING_CYLINDER      , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BENDING_CYLINDER_SMALL, MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.DOUBLE_AXE            , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CONSTRUCTION_PICK     , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SCISSORS              , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PINCERS               , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SPADE                 , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HAND_DRILL            , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SENSE                 , MT.NetherizedDiamond, MT.LightBlue)
+			, NI//ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SICKLE            , MT.NetherizedDiamond, MT.LightBlue)
+			, NI
+			, NI
+			
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.POCKET_MULTITOOL      , MT.Vibramantium, MT.Vibramantium)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PLUNGER               , MT.Greatwood, MT.Greatwood)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MAGNIFYING_GLASS      , MT.DiamondPink, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.GEM_PICK              , MT.DiamondPink, MT.LightBlue)
+			, ST.make(Items.wooden_pickaxe , 1, 0)
+			, ST.make(Items.stone_pickaxe  , 1, 0)
+			, ST.make(Items.golden_pickaxe , 1, 0)
+			, ST.make(Items.iron_pickaxe   , 1, 0)
+			, ST.make(Items.diamond_pickaxe, 1, 0)
+			
+			, IL.Thermometer_Quicksilver.get(1)
+			, IL.Tool_Worldgen_Debugger.get(1)
+			, IL.Tool_Cheat.get(1)
+			, IL.IC2_Debug.get(1)
+			, IL.Pill_Cure_All.get(64)
+			, IL.Brain_Tape.get(64)
+			, IL.Circuit_Selector.getWithDamage(1, 0)
+			, IL.Circuit_Selector.getWithDamage(1, 1)
+			, IL.Circuit_Selector.getWithDamage(1, 2)
+			
+			, IL.TC_Thaumometer.get(1)
+			, IL.TC_Crimson_Rites.get(1)
+			, IL.TC_Thaumonomicon.get(1)
+			, ST.make(MD.TC, "ItemThaumonomicon", 1, 42)
+			, ST.make(Items.item_frame, 1, 0)
+			, ST.make(Items.bucket, 1, 0)
+			, ST.make(Items.water_bucket, 1, 0)
+			, ST.make(Items.lava_bucket, 1, 0)
+			, ST.make(Items.milk_bucket, 1, 0)
+			
+			, ST.make(Blocks.stone_button, 1, 0)
+			, ST.make(Blocks.lever, 1, 0)
+			, ST.make(Items.redstone, 1, 0)
+			, ST.make(Blocks.redstone_torch, 1, 0)
+			, ST.make(Items.repeater, 1, 0)
+			, ST.make(Items.comparator, 1, 0)
+			, ST.make(Blocks.redstone_lamp, 1, 0)
+			, OP.cableGt01.mat(MT.Signalum, 1)
+			, OP.wireGt01.mat(MT.Lumium, 1)
+			};
+			
+			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, UT.NBT.makeInv(tInventory)), T, T);
 			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+3, -18, SIDE_UNKNOWN, (short)32722, null, T, T);
 			
 			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);

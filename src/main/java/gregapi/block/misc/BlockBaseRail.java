@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,15 +24,16 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockBase;
+import gregapi.block.IBlockToolable;
 import gregapi.block.ItemBlockBase;
+import gregapi.block.ToolCompat;
 import gregapi.compat.galacticraft.IBlockSealable;
-import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
+import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -58,10 +59,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 /**
  * @author Gregorius Techneticies
  */
-@Optional.InterfaceList(value = {
-	@Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock", modid = ModIDs.GC)
-})
-public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSealable {
+public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSealable, IBlockToolable {
 	public final String mNameInternal;
 	public final float mSpeed, mExplosionResistance;
 	public final IIconContainer mIconPrimary, mIconSecondary;
@@ -72,8 +70,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	public BlockBaseRail(Class<? extends ItemBlockBase> aItemClass, String aNameInternal, String aLocalName, boolean aPowerRail, boolean aDetectorRail, float aSpeed, float aExplosionResistance, int aHarvestLevel, IIconContainer aIconPrimary, IIconContainer aIconSecondary) {
 		super(aPowerRail || aDetectorRail);
 		setBlockName(mNameInternal = aNameInternal);
-		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		setCreativeTab(CreativeTabs.tabTransport);
+		ST.register(this, mNameInternal, aItemClass);
 		LH.add(mNameInternal+".name", aLocalName);
 		mExplosionResistance = aExplosionResistance;
 		mHarvestLevel = aHarvestLevel;
@@ -86,20 +84,22 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + (mSpeed/0.4F) + "x");
 	}
 	
 	@Override public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {return mSpeed;}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
-	@Override public String name(int aMeta) {return mNameInternal;}
+	@Override public String name(byte aMeta) {return mNameInternal;}
 	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.rail.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return mExplosionResistance;}
 	@Override public float getExplosionResistance(Entity aEntity) {return mExplosionResistance;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_crowbar;}
 	@Override public int getHarvestLevel(int aMeta) {return mHarvestLevel;}
+	@Override public boolean canSilkHarvest() {return canSilkHarvest((byte)0);}
+	@Override public boolean canSilkHarvest(World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {return canSilkHarvest(UT.Code.bind4(aMeta));}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return getHarvestTool(aMeta).equals(aType);}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
@@ -113,20 +113,44 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(this);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {return canCreatureSpawn(aWorld.getBlockMetadata(aX, aY, aZ));}
+	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {return canCreatureSpawn(WD.meta(aWorld, aX, aY, aZ));}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0));}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return ((mPowerRail||mDetectorRail?(aMeta&8)!=0:aMeta>=6)?mIconSecondary:mIconPrimary).getIcon(0);}
 	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public Block getBlock() {return this;}
+	@Override public byte maxMeta() {return 1;}
 	
-	@Override public float getExplosionResistance(int aMeta) {return mExplosionResistance;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public float getExplosionResistance(byte aMeta) {return mExplosionResistance;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}
-	@Override public boolean useGravity(int aMeta) {return F;}
-	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
+	@Override public boolean useGravity(byte aMeta) {return F;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public int getFlammability(byte aMeta) {return 0;}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
+	
+	@Override
+	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
+		if (!aWorld.isRemote) {
+			if (aTool.equals(TOOL_softhammer) && mPowerRail) {
+				aWorld.isRemote = T;
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0);
+				aWorld.isRemote = F;
+				return tResult?10000:0;
+			}
+			if (aTool.equals(TOOL_crowbar)) {
+				byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+				aWorld.isRemote = T;
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, isPowered() ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
+				aWorld.isRemote = F;
+				return tResult?2000:0;
+			}
+		}
+		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+	}
 	
 	protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {
 		if (p_150058_7_ >= 8) return F;
@@ -145,7 +169,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	protected boolean func_150057_a(World aWorld, int aX, int aY, int aZ, boolean p_150057_5_, int p_150057_6_, int p_150057_7_) {
 		if (aWorld.getBlock(aX, aY, aZ) == this) {
-			int j1 = aWorld.getBlockMetadata(aX, aY, aZ);
+			int j1 = WD.meta(aWorld, aX, aY, aZ);
 			int k1 = j1 & 7;
 			
 			if (p_150057_7_ == 1 && (k1 == 0 || k1 == 4 || k1 == 5)) return F;
@@ -187,7 +211,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		if (mDetectorRail && !aWorld.isRemote) {
-			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			int l = WD.meta(aWorld, aX, aY, aZ);
 			if ((l & 8) == 0) func_150054_a(aWorld, aX, aY, aZ, l);
 		}
 	}
@@ -195,13 +219,13 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		if (mDetectorRail && !aWorld.isRemote) {
-			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			int l = WD.meta(aWorld, aX, aY, aZ);
 			if ((l & 8) != 0) func_150054_a(aWorld, aX, aY, aZ, l);
 		}
 	}
 	
-	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
-	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
+	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
+	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
 	
 	private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
 		boolean flag = (aMetaData & 8) != 0;
@@ -236,7 +260,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	public int getComparatorInputOverride(World aWorld, int aX, int aY, int aZ, int aSide) {
-		if (mDetectorRail && (aWorld.getBlockMetadata(aX, aY, aZ) & 8) > 0) {
+		if (mDetectorRail && (WD.meta(aWorld, aX, aY, aZ) & 8) > 0) {
 			@SuppressWarnings("unchecked")
 			List<EntityMinecartCommandBlock> list = aWorld.getEntitiesWithinAABB(EntityMinecartCommandBlock.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
 			if (list.size() > 0) return list.get(0).func_145822_e().func_145760_g();
@@ -250,7 +274,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		if (mPowerRail) {
-			int tRailMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+			byte tRailMeta = WD.meta(aWorld, aX, aY, aZ);
 			double tMotion = Math.sqrt(aCart.motionX * aCart.motionX + aCart.motionZ * aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
@@ -287,7 +311,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		if (aStack.stackSize == 0) return F;
 		
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		if (tBlock == Blocks.snow_layer && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 1) {
+		if (tBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (tBlock != Blocks.vine && tBlock != Blocks.tallgrass && tBlock != Blocks.deadbush && !tBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];

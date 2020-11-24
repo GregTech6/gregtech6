@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,12 +44,12 @@ public class Loader_Items implements Runnable {
 	public void run() {
 		PrefixItem tItem;
 		
-		ItemsGT.TECH = new MultiItemTechnological();
-		ItemsGT.TOOLS = new MultiItemRandomTools();
-		ItemsGT.CANS = new MultiItemCans();
-		ItemsGT.FOOD = new MultiItemFood();
-		ItemsGT.BOTTLES = new MultiItemBottles();
-		ItemsGT.BOOKS = new MultiItemBooks();
+		ItemsGT.TECH       = new MultiItemTechnological();
+		ItemsGT.TOOLS      = new MultiItemRandomTools();
+		ItemsGT.CANS       = new MultiItemCans();
+		ItemsGT.FOOD       = new MultiItemFood();
+		ItemsGT.BOTTLES    = new MultiItemBottles();
+		ItemsGT.BOOKS      = new MultiItemBooks();
 		ItemsGT.BUMBLEBEES = new MultiItemBumbles();
 		
 		ItemsGT.ALL_MULTI_ITEMS[0] = ItemsGT.TECH;

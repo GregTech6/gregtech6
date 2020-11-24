@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,9 +45,9 @@ public abstract class BlockBasePlanks extends BlockMetaType {
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_axe;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.planks.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier;}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.planks.getExplosionResistance(null) * mResistanceMultiplier;}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.planks.getExplosionResistance(null) * mResistanceMultiplier;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.plank.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
-	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
 }

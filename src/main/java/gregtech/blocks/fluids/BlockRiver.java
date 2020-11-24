@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -86,7 +86,7 @@ public class BlockRiver extends BlockWaterlike {
 			PLACEMENT_ALLOWED = F;
 			return;
 		}
-		if (aWorld.getBlockMetadata(aX, aY, aZ) != 0) {
+		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
 			byte tRiverCounter = 0;
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (WD.block(aWorld, aX, aY, aZ, tSide) == this && WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tRiverCounter++;
 			if (tRiverCounter >= 2) aWorld.setBlock(aX, aY, aZ, this, 0, 2);

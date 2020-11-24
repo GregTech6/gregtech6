@@ -27,10 +27,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import gregapi.block.ItemBlockBase;
 import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
@@ -59,6 +61,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
@@ -67,6 +70,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -122,6 +127,7 @@ public class ST {
 	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return item_(aStack1) == item_(aStack2) && equal(meta_(aStack1), meta_(aStack2)) && (aIgnoreNBT || item_(aStack1) instanceof IItemGTContainerTool || (((nbt_(aStack1) == null) == (nbt_(aStack2) == null)) && (nbt_(aStack1) == null || nbt_(aStack1).equals(nbt_(aStack2)))));}
 	
 	public static boolean isGT (Item aItem) {return aItem instanceof IItemGT;}
+	public static boolean isGT (Block aBlock) {return aBlock instanceof IItemGT;}
 	public static boolean isGT (ItemStack aStack) {return aStack != null && isGT_(aStack);}
 	public static boolean isGT_(ItemStack aStack) {return isGT(aStack.getItem());}
 	
@@ -216,6 +222,15 @@ public class ST {
 	public static boolean ownedBy (String  aMod, Item         aItem                         ) {return ownedBy(aMod, regName(aItem));}
 	public static boolean ownedBy (String  aMod, String       aRegName                      ) {return aRegName != null && aMod != null && ownedBy_(aMod, aRegName);}
 	public static boolean ownedBy_(String  aMod, String       aRegName                      ) {return aRegName.startsWith(aMod);}
+	
+	public static void register(Item aItem, String aRegistryName) {
+		GameRegistry.registerItem(aItem, aRegistryName);
+	}
+	public static void register(Block aBlock, String aRegistryName) {register(aBlock, aRegistryName, null);}
+	public static void register(Block aBlock, String aRegistryName, Class<? extends ItemBlock> aItemClass) {
+		GameRegistry.registerBlock(aBlock, aItemClass == null ? ItemBlockBase.class : aItemClass, aRegistryName);
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(aBlock);
+	}
 	
 	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack) {
 		return set(aSetStack, aToStack, T, T);
@@ -399,7 +414,7 @@ public class ST {
 	public static EntityItem entity (Entity aEntity, Block aBlock, long aSize, long aMeta                ) {ItemStack rStack = make(aBlock, aSize, aMeta)       ; if (invalid(rStack)) return null; return               entity_(aEntity, rStack);}
 	public static EntityItem entity (Entity aEntity, ItemStackContainer aStack                           ) {ItemStack rStack = aStack.toStack()                 ; if (invalid(rStack)) return null; return               entity_(aEntity, rStack);}
 	public static EntityItem entity (Entity aEntity, ItemStack aStack                                    ) {ItemStack rStack = aStack                           ; if (invalid(rStack)) return null; return               entity_(aEntity, rStack);}
-	public static EntityItem entity_(Entity aEntity, ItemStack aStack                                    ) {return new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ)));}
+	public static EntityItem entity_(Entity aEntity, ItemStack aStack                                    ) {return new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(aStack, aEntity));}
 	
 	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aSize, long aMeta) {ItemStack rStack = make(aModID, aItem, aSize, aMeta); if (invalid(rStack)) return null; EntityItem rEntity = entity_(aWorld, aCoords, rStack); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
 	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, Item aItem, long aSize, long aMeta                  ) {ItemStack rStack = make(aItem, aSize, aMeta)        ; if (invalid(rStack)) return null; EntityItem rEntity = entity_(aWorld, aCoords, rStack); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
@@ -423,8 +438,10 @@ public class ST {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		for (int aSlotFrom : aSlotsFrom) {
@@ -447,8 +464,10 @@ public class ST {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int moveAll(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		int rMoved = 0;
@@ -475,8 +494,10 @@ public class ST {
 	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotFrom < 0) return 0;
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, new int[] {aSlotFrom}, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
@@ -497,8 +518,10 @@ public class ST {
 	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotTo < 0) return 0;
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
 		
 		for (int aSlotFrom : aSlotsFrom) {
@@ -519,8 +542,10 @@ public class ST {
 	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotFrom < 0 || aSlotTo < 0) return 0;
 		if (aFrom.mTileEntity instanceof IInventory) {
+			aFrom = getPotentialDoubleChest(aFrom);
 			if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
 			if (aTo.mTileEntity instanceof IInventory) {
+				aTo = getPotentialDoubleChest(aTo);
 				if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
 				ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
 				if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && aFilter.contains(aStackFrom, T) == aInvertFilter) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
@@ -566,6 +591,7 @@ public class ST {
 		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aFrom, aTo, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
 	}
 	public static int move_(IInventory aFrom, IInventory aTo, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		if (aStackFrom == aStackTo) return 0;
 		if (aFrom == aTo && aSlotFrom == aSlotTo) return 0;
 		ItemStack tStack = aFrom.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
@@ -574,6 +600,30 @@ public class ST {
 		aFrom.markDirty();
 		aTo.markDirty();
 		return aCount;
+	}
+	
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static DelegatorTileEntity getPotentialDoubleChest(DelegatorTileEntity aPotentialChest) {
+		if (aPotentialChest.mTileEntity instanceof TileEntityChest) {
+			Block aChestBlock = aPotentialChest.getBlock();
+			if (aPotentialChest.getBlockAtSide(SIDE_X_NEG) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_X_NEG, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)tAdjacentChest, (IInventory)aPotentialChest.mTileEntity), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_X_POS) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_X_POS, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)aPotentialChest.mTileEntity, (IInventory)tAdjacentChest), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_Z_NEG) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_Z_NEG, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)tAdjacentChest, (IInventory)aPotentialChest.mTileEntity), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_Z_POS) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_Z_POS, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)aPotentialChest.mTileEntity, (IInventory)tAdjacentChest), aPotentialChest);
+			}
+		}
+		return aPotentialChest;
 	}
 	
 	public static boolean canConnect(@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator) {
@@ -709,11 +759,18 @@ public class ST {
 		return ItemsGT.DEBUG_ITEMS.contains(aStack, T);
 	}
 	
+	public static boolean instaharvest(Block aBlock) {
+		return torch(aBlock) || BlocksGT.instaharvest.contains(aBlock);
+	}
+	public static boolean instaharvest(Block aBlock, long aMeta) {
+		return torch(aBlock, aMeta) || BlocksGT.instaharvest.contains(aBlock);
+	}
+	
 	public static boolean torch(Block aBlock) {
-		return torch(aBlock, 1); // that 1 is totally not hacky at all. XD
+		return torch(aBlock, 1); // that "1" is totally not hacky at all. XD
 	}
 	public static boolean torch(Block aBlock, long aMeta) {
-		if (IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;
+		if (IL.TFC_Torch.equal(aBlock) || IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;
 		return aBlock instanceof BlockTorch && !(aBlock instanceof BlockRedstoneTorch);
 	}
 	public static boolean torch(ItemStack aStack) {
@@ -747,7 +804,10 @@ public class ST {
 		if (invalid(aStack)) return NI;
 		if (item_(aStack).hasContainerItem(aStack)) return copy(item_(aStack).getContainerItem(aStack));
 		/** These are all special Cases, in which it is intended to have only GT Blocks outputting those Container Items */
-		if (IL.Cell_Empty.equal(aStack, F, T)) return NI;
+		if (IL.Cell_Empty.exists()) {
+			if (IL.Cell_Empty.equal(aStack, F, T)) return NI;
+			if (IL.Cell_Empty.equal(aStack, T, T)) return IL.Cell_Empty.get(1);
+		}
 		
 		if (aCheckIFluidContainerItems && item_(aStack) instanceof IFluidContainerItem && ((IFluidContainerItem)item_(aStack)).getCapacity(aStack) > 0) {
 			ItemStack tStack = amount(1, aStack);
@@ -803,20 +863,18 @@ public class ST {
 		long rFuelValue = GameRegistry.getFuelValue(aStack);
 		if (rFuelValue > 0) return rFuelValue;
 		Item tItem = item_(aStack);
-		if (tItem instanceof ItemBlock && Block.getBlockFromItem(tItem) != NB) {
-			Block tBlock = Block.getBlockFromItem(tItem);
-			if (tBlock == Blocks.sapling) return 100;
-			if (tBlock == Blocks.wooden_slab) return 150;
-			if (tBlock == Blocks.coal_block) return 16000;
-			if (tBlock.getMaterial() == Material.wood) return 300;
-		}
-		if (tItem instanceof ItemTool && ((ItemTool)tItem).getToolMaterialName().equals("WOOD")) return 200;
+		if (tItem instanceof ItemTool  && ((ItemTool )tItem).getToolMaterialName().equals("WOOD")) return 200;
 		if (tItem instanceof ItemSword && ((ItemSword)tItem).getToolMaterialName().equals("WOOD")) return 200;
-		if (tItem instanceof ItemHoe && ((ItemHoe)tItem).getToolMaterialName().equals("WOOD")) return 200;
+		if (tItem instanceof ItemHoe   && ((ItemHoe  )tItem).getToolMaterialName().equals("WOOD")) return 200;
 		if (tItem == Items.stick) return 100;
 		if (tItem == Items.coal) return 1600;
 		if (tItem == Items.blaze_rod) return 2400;
 		if (tItem == Items.lava_bucket) return 20000;
+		Block tBlock = ST.block_(tItem);
+		if (tBlock == Blocks.sapling) return 100;
+		if (tBlock == Blocks.wooden_slab) return 150;
+		if (tBlock == Blocks.coal_block) return 16000;
+		if (tBlock.getMaterial() == Material.wood) return 300;
 		return 0;
 	}
 	
@@ -856,12 +914,14 @@ public class ST {
 	}
 	
 	public static void hide(Item aItem) {
+		for (int i = 0; i < 16; i++) hide(aItem, i);
 		hide(aItem, W);
 	}
 	public static void hide(Item aItem, long aMeta) {
 		hide(make(aItem, 1, aMeta));
 	}
 	public static void hide(Block aBlock) {
+		for (int i = 0; i < 16; i++) hide(aBlock, i);
 		hide(aBlock, W);
 	}
 	public static void hide(Block aBlock, long aMeta) {
@@ -887,16 +947,111 @@ public class ST {
 	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT, ItemStack aDefault) {
 		if (aNBT == null || aNBT.hasNoTags()) return null;
-		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"), aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
+		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"));
 		if (rStack == null) if (aNBT.hasKey("od")) {
 			rStack = OreDictManager.INSTANCE.getStack(aNBT.getString("od"), aNBT.getInteger("Count"));
 			if (rStack == null) return aDefault == null ? null : update_(OM.get_(aDefault));
 		} else return aDefault == null ? null : update_(OM.get_(aDefault));
+		// Has to use setTagCompound instead of putting it into make()
+		// because it would delete certain Tags on load, making stuff like unscanned Forestry Bees unstackable.
+		// But update_() will still delete a completely empty NBT later on.
+		rStack.setTagCompound(aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
 		// Does anyone even migrate IC2exp Items anymore? This is only used when updating from IC2-Non-Exp to IC2-Exp.
-		if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F);
+	//  if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F); // I do not think this could possibly happen anymore
 		return update_(OM.get_(rStack));
 	}
-	
+
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Block aBlock) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize, long aMeta) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Item aItem) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize, long aMeta) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(String aTagName, ItemStack aStack) {
+		NBTTagCompound aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(aStack);
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize, long aMeta) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
+	/** Saves an ItemStack properly. */
+	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize, long aMeta) {
+		if (aNBT == null) aNBT = UT.NBT.make();
+		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
+		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		return aNBT;
+	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, ItemStack aStack) {
 		if (aNBT == null) aNBT = UT.NBT.make();
@@ -904,15 +1059,12 @@ public class ST {
 		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
-	
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(ItemStack aStack) {
-		if (aStack == null || aStack.stackSize < 0) return null;
-		Item tItem = item_(aStack);
-		if (tItem == null) return null;
+		if (aStack == null || item_(aStack) == null || aStack.stackSize < 0) return null;
 		NBTTagCompound rNBT = UT.NBT.make();
 		aStack = OM.get_(aStack);
-		rNBT.setShort("id", (short)Item.getIdFromItem(tItem));
+		rNBT.setShort("id", id(aStack));
 		UT.NBT.setNumber(rNBT, "Count", aStack.stackSize);
 		rNBT.setShort("Damage", meta_(aStack));
 		if (aStack.hasTagCompound()) rNBT.setTag("tag", aStack.getTagCompound());

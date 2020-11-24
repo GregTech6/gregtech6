@@ -34,7 +34,7 @@ import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
-import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -53,6 +53,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -123,6 +124,8 @@ public class Loader_Recipes_Replace implements Runnable {
 		NON_REPLACEABLE.add(ST.make(MD.GC, "item.sensorGlasses"                 , 1, W));
 		NON_REPLACEABLE.add(ST.make(MD.NC, "ItemToolThermometer"                , 1, W));
 		
+		
+		List<ItemStack> tStickList = OreDictionary.getOres(OD.stickWood.toString());
 		HashSetNoNulls<Object> tAlreadyScannedItems = new HashSetNoNulls<>();
 		ArrayListNoNulls<RecipeReplacement> tList = new ArrayListNoNulls<>();
 		List<IRecipe> tRecipeList = CR.list();
@@ -166,12 +169,17 @@ public class Loader_Recipes_Replace implements Runnable {
 				if (!tAlreadyScannedItems.add(tObject)) continue;
 				OreDictItemData tData = null;
 				if (tObject instanceof ItemStack) {
+					if (IL.Stick.equal(tObject)) {tRod = ANY.Wood; continue;}
 					tData = OM.anyassociation((ItemStack)tObject);
 				} else if (MD.IC2.mLoaded && tObject instanceof ic2.api.recipe.RecipeInputItemStack) {
+					if (IL.Stick.equal(((ic2.api.recipe.RecipeInputItemStack)tObject).input)) {tRod = ANY.Wood; continue;}
 					tData = OM.anyassociation(((ic2.api.recipe.RecipeInputItemStack)tObject).input);
 				} else if (MD.IC2.mLoaded && tObject instanceof ic2.api.recipe.RecipeInputOreDict) {
+					if (OD.stickWood   .toString().equals(((ic2.api.recipe.RecipeInputOreDict)tObject).input)) {tRod = ANY.Wood; continue;}
+					if (OD.stickAnyWood.toString().equals(((ic2.api.recipe.RecipeInputOreDict)tObject).input)) {tRod = ANY.Wood; continue;}
 					tData = OM.data(((ic2.api.recipe.RecipeInputOreDict)tObject).input);
 				} else if (tObject instanceof List) {
+					if (tStickList == tObject) {tRod = ANY.Wood; continue;}
 					switch(((List)tObject).size()) {
 					case  0:
 						temp = F;
@@ -230,8 +238,7 @@ public class Loader_Recipes_Replace implements Runnable {
 			ST.meta_(INGT, ST.meta_(tMat));
 			RecipeReplacer[] tReplacer = sRecipesMat;
 			if (aRecipe.mRod != null) {
-				if (aRecipe.mRod == MT.Wood) aRecipe.mRod = ANY.Wood;
-				ItemStack tRod = (aRecipe.mRod == ANY.Wood ? ST.make(Items.stick, 1, 0) : OP.stick.mat(aRecipe.mRod, 1));
+				ItemStack tRod = (aRecipe.mRod == ANY.Wood ? IL.Stick.get(1) : OP.stick.mat(aRecipe.mRod, 1));
 				if (tRod == null) continue;
 				STCK.func_150996_a(tRod.getItem());
 				STCK.stackSize = 1;

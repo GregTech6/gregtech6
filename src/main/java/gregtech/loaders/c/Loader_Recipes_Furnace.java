@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,12 +24,14 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -38,7 +40,6 @@ public class Loader_Recipes_Furnace implements Runnable {
 	public static boolean RUNNING = F;
 	
 	@Override public void run() {
-		// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
 		@SuppressWarnings("unchecked")
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
 		while (tIterator.hasNext()) {
@@ -47,7 +48,49 @@ public class Loader_Recipes_Furnace implements Runnable {
 			if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
 				OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+					// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
 					tIterator.remove();
+				} else {
+					tEntry.setValue(OM.get(tEntry.getValue()));
+				}
+			} else {
+				tEntry.setValue(OM.get(tEntry.getValue()));
+				// Lots of RotaryCraft balance fixes and more Recipe Compat.
+				if (MD.RoC.owns(tEntry.getKey(), "extracts")) {
+					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
+					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+						ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
+						if (ST.invalid(tDust) && tDust.stackSize <= 0) tDust = null;
+						
+						if (tDust == null) {
+							// Output the random Items.
+							RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+						} else {
+							// Just making sure that things like Aluminium get a Dust Replacement too.
+							if (tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial != tData2.mMaterial.mMaterial) tEntry.setValue(tDust);
+							
+							RM.pulverizing(tEntry.getKey(), tDust);
+							RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+							
+							if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							} else if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+								// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
+								if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							} else {
+								// Output Gems and the other random Items.
+								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+							}
+						}
+					} else {
+						// Output unknown Items.
+						RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+						RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+					}
 				}
 			}
 		}
@@ -66,6 +109,10 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.rubble                .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.cluster               .addListener(new Listener_Furnace_Smelting(U*2, T));
+		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.crystalline           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.reduced               .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushed               .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedTiny           .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedPurified       .addListener(new Listener_Furnace_Smelting( -1, T));
@@ -86,7 +133,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Processing.FURNACE)) {
+			if (aEvent.mMaterial.contains(TD.Processing.FURNACE) && !aEvent.mMaterial.contains(TD.Properties.UNUSED_MATERIAL)) {
 				long aTargetAmount = UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F);
 				RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, aTargetAmount), mExp ? UT.Code.units(aTargetAmount, U, aEvent.mMaterial.mToolQuality+1, T) : 0, !RUNNING);
 			}

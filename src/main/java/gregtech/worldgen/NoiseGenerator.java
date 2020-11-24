@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,9 +23,7 @@ import net.minecraft.world.World;
 
 public class NoiseGenerator {
 	public int mSeed = 42;
-	private float mFrequencyX = 0.009F;
-	private float mFrequencyY = 0.075F;
-	private float mFrequencyZ = 0.009F;
+	private float mFrequencyX = 0.009F, mFrequencyY = 0.075F, mFrequencyZ = 0.009F;
 	
 	public NoiseGenerator(long aSeed) {
 		mSeed = (int)aSeed;
@@ -45,17 +43,17 @@ public class NoiseGenerator {
 		mFrequencyZ = aZ;
 		return this;
 	}
+	
+	/** @return a Number between 0 and aOptionCount-1. */
+	public int get(float aX, float aY, float aZ, int aOptionCount) {
+		return Math.min(aOptionCount-1, (int)(((get(aX, aY, aZ)+1)/2.0F) * aOptionCount));
+	}
+	
+	/** @return a Number between -1.0F and +1.0F. Hitting exactly +-1.0F is extremely unlikely, but possible. */
 	public float get(float aX, float aY, float aZ) {
-		aX *= mFrequencyX;
-		aY *= mFrequencyY;
-		aZ *= mFrequencyZ;
-		
-		int xr = Math.round(aX);
-		int yr = Math.round(aY);
-		int zr = Math.round(aZ);
-		
+		aX *= mFrequencyX; aY *= mFrequencyY; aZ *= mFrequencyZ;
+		int xr = Math.round(aX), yr = Math.round(aY), zr = Math.round(aZ), xc = 0, yc = 0, zc = 0;
 		float distance = 999999;
-		int xc = 0, yc = 0, zc = 0;
 		
 		for (int xi = xr - 1; xi <= xr + 1; xi++) {
 			for (int yi = yr - 1; yi <= yr + 1; yi++) {
@@ -79,9 +77,7 @@ public class NoiseGenerator {
 		return (n * n * n * 60493) / (float) 2147483648.0;
 	}
 	
-	private final static int X_PRIME = 1619;
-	private final static int Y_PRIME = 31337;
-	private final static int Z_PRIME = 6971;
+	private static final int X_PRIME = 1619, Y_PRIME = 31337, Z_PRIME = 6971;
 	
 	private static int Hash3D(int seed, int x, int y, int z) {
 		int hash = seed;

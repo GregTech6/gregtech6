@@ -30,6 +30,7 @@ import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -170,6 +171,7 @@ public class LH {
 	, TOOLTIP_LIQUIDPROOF = "gt.lang.proof.liquid"
 	, TOOLTIP_PLASMAPROOF = "gt.lang.proof.plasma"
 	, TOOLTIP_HEATPROOF = "gt.lang.proof.heat"
+	, TOOLTIP_ONLY_SIMPLE = "gt.lang.only.simple"
 	, TOOLTIP_REMINDER_EXTENDERS = "gt.lang.reminder.extenders"
 	, TOOLTIP_SEALABLE_ANY = "gt.lang.sealable.any"
 	, TOOLTIP_SEALABLE_SOME = "gt.lang.sealable.some"
@@ -194,6 +196,7 @@ public class LH {
 	, TOOLTIP_AUTOCOLLECT = "gt.lang.autocollect"
 	, TOOLTIP_BEACON_PAYMENT = "gt.lang.beacon.payment"
 	, TOOLTIP_SHELFABLE = "gt.lang.shelfable"
+	, TOOLTIP_AMMO_ENCHANTS = "gt.lang.ammo.enchants"
 	, TOOLTIP_POSSIBLE_TOOL_ENCHANTS = "gt.lang.tool.enchants"
 	, TOOLTIP_POSSIBLE_ARMOR_ENCHANTS = "gt.lang.armor.enchants"
 	, TOOLTIP_TOO_MANY_TOOL_ENCHANTS = "gt.lang.tool.enchants.too.many"
@@ -202,6 +205,7 @@ public class LH {
 	, TOOLTIP_FLAMMABLE_AND_EXPLOSIVE = "gt.lang.flammable.explosive"
 	, TOOLTIP_FLAMMABLE = "gt.lang.flammable"
 	, TOOLTIP_EXPLOSIVE = "gt.lang.explosive"
+	, TOOLTIP_UNBURNABLE = "gt.lang.unburnable"
 	, TOOLTIP_BLAST_RESISTANCE_TERRIBLE = "gt.lang.blast.resist.terrible"
 	, TOOLTIP_BLAST_RESISTANCE_GHAST = "gt.lang.blast.resist.ghast.proof"
 	, TOOLTIP_BLAST_RESISTANCE_CREEPER = "gt.lang.blast.resist.creeper.proof"
@@ -209,6 +213,9 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_DYNAMITE = "gt.lang.blast.resist.dynamite.proof"
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
 	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
+	, TOOLTIP_TWILIGHT_MAZE_BREAKING = "gt.lang.twilightforest.mazebreaking"
+	, TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING = "gt.lang.twilightforest.mazehedgebreaking"
+	, TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING = "gt.lang.twilightforest.mazestonebreaking"
 	, PROSPECTING_LAVA = "gt.lang.prospecting.lava"
 	, PROSPECTING_LIQUID = "gt.lang.prospecting.liquid"
 	, PROSPECTING_AIR = "gt.lang.prospecting.air"
@@ -241,10 +248,46 @@ public class LH {
 	public static final String get(String aKey) {return LanguageHandler.translate(aKey);}
 	public static final String get(String aKey, String aDefault) {return LanguageHandler.translate(aKey, aDefault);}
 	
-	
 	public static final String percent(long aNumber) {return (aNumber/100) + ((aNumber%100)>9?"."+aNumber%100:".0"+(aNumber%100));}
 	
-	public static final String getToolTipBlastResistance(Block aBlock, double aResistance) {return Chat.WHITE + get(LH.TOOLTIP_BLASTRESISTANCE) + Chat.ORANGE + ((int)aResistance) + "." + (((int)(aResistance * 10)) % 10) + (aResistance < 4 ? Chat.BLINKING_RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TERRIBLE) : aResistance < 12 ? Chat.RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_GHAST) : aResistance < 16 ? Chat.YELLOW + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_CREEPER) : aResistance <= 40 ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TNT) : aResistance < 3330 || (aBlock != NB && aBlock != null && COMPAT_IC2 != null && COMPAT_IC2.isExplosionWhitelisted(aBlock)) ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_DYNAMITE) : Chat.BLINKING_CYAN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_NOT_NUKE));}
+	public static final String getToolTipBlastResistance(Block aBlock, double aResistance) {return Chat.WHITE + get(LH.TOOLTIP_BLASTRESISTANCE) + Chat.ORANGE + ((int)aResistance) + "." + (((int)(aResistance * 10)) % 10) + (aResistance < 4 ? Chat.BLINKING_RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TERRIBLE) : aResistance < 12 ? Chat.RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_GHAST) : aResistance < 16 ? Chat.YELLOW + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_CREEPER) : aResistance <= 40 ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TNT) : aResistance < 3330 || COMPAT_IC2 == null || COMPAT_IC2.isExplosionWhitelisted(aBlock) ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_DYNAMITE) : Chat.BLINKING_CYAN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_NOT_NUKE));}
+	
+	public static final String getToolTipHarvest(Material aMaterial, String aHarvestTool, int aHarvestLevel) {
+		if (aMaterial.isAdventureModeExempt()) {
+			if (UT.Code.stringValid(aHarvestTool))
+			return LH.Chat.DGRAY + "Hand-Harvestable, but " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + LH.Chat.DGRAY + " is faster";
+			return LH.Chat.DGRAY + "Hand-Harvestable";
+		}
+		if (UT.Code.stringValid(aHarvestTool)) {
+			if (aHarvestLevel > 1) switch (aHarvestLevel) {
+			case  1: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Stone.getLocal()+")";
+			case  2: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Fe.getLocal()+")";
+			case  3: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Diamond.getLocal()+")";
+			case  4: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Netherite.getLocal()+")";
+			case  5: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Ad.getLocal()+")";
+			case  6: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case  7: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case  8: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case  9: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case 10: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case 11: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case 12: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case 13: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			case 14: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			default: return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+", "+MT.Infinity.getLocal()+")";
+			}
+			return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool));
+		}
+		if (aMaterial == Material.rock || aMaterial == Material.iron || aMaterial == Material.anvil || aMaterial == Material.glass)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "pickaxe") + "?";
+		if (aMaterial == Material.craftedSnow || aMaterial == Material.snow || aMaterial == Material.sand || aMaterial == Material.grass || aMaterial == Material.ground || aMaterial == Material.clay)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "shovel") + "?";
+		if (aMaterial == Material.wood || aMaterial == Material.plants || aMaterial == Material.vine || aMaterial == Material.gourd || aMaterial == Material.cactus)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "axe") + "?";
+		if (aMaterial == Material.leaves || aMaterial == Material.cloth || aMaterial == Material.carpet || aMaterial == Material.web)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "sword") + "?";
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + "Unknown";
+	}
 	
 	public static final String getToolTipEfficiency(long aEfficiency) {aEfficiency = Math.abs(aEfficiency); return Chat.YELLOW + get(EFFICIENCY) + ": " + Chat.WHITE + percent(aEfficiency) + "%";}
 	
@@ -393,7 +436,7 @@ public class LH {
 		add(TOOL_TO_TOGGLE_SCREWDRIVER                  , "Use Screwdriver to toggle Modes");
 		add(TOOL_TO_TOGGLE_MONKEY_WRENCH                , "Use Monkey Wrench to toggle Modes");
 		add(TOOL_TO_TOGGLE_CUTTER                       , "Use Cutter to toggle Modes");
-		add(TOOL_TO_OPEN_CROWBAR                        , "Use Crowbar to open this");
+		add(TOOL_TO_OPEN_CROWBAR                        , "Use Crowbar to open this by harvesting");
 		add(TOOL_TO_UNCOVER_CROWBAR                     , "Use Crowbar to remove Covers");
 		add(TOOL_TO_DECALCIFY_CHISEL                    , "Use Chisel to decalcify");
 		add(TOOL_TO_DETAIL_MAGNIFYINGGLASS              , "Use Magnifying Glass to see Details");
@@ -407,7 +450,7 @@ public class LH {
 		add(TOOL_TO_TOGGLE_SOFT_HAMMER                  , "Use Soft Hammer to toggle States");
 		add(TOOL_TO_RESET_SOFT_HAMMER                   , "Use Soft Hammer to Reset");
 		add(TOOL_TO_TAPE                                , "Use Duct Tape to do anything Duct Tape can do!");
-		add(TOOL_TO_UNTAPE                              , "Use Scissors or Knives to remove Tape");
+		add(TOOL_TO_UNTAPE                              , "Use Scissors or a Knife to remove Tape");
 		add(TOOL_TO_SET_INPUT_MONKEY_WRENCH             , "Use Monkey Wrench to set Input Side");
 		add(TOOL_TO_SET_OUTPUT_MONKEY_WRENCH            , "Use Monkey Wrench to set Output Side");
 		add(TOOL_TO_SET_DIRECTION_MONKEY_WRENCH         , "Use Monkey Wrench to set Direction");
@@ -441,6 +484,7 @@ public class LH {
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");
 		add(TOOLTIP_HEATPROOF                           , "Can handle Temperatures up to: ");
+		add(TOOLTIP_ONLY_SIMPLE                         , "Only accepts simple Fluids!");
 		add(TOOLTIP_REMINDER_EXTENDERS                  , "Remember to use Universal Extenders if you need to literally cut Corners");
 		add(TOOLTIP_SEALABLE_ANY                        , "This Block can seal Air at any Side");
 		add(TOOLTIP_SEALABLE_SOME                       , "This Block can seal Air at some Sides");
@@ -465,6 +509,7 @@ public class LH {
 		add(TOOLTIP_AUTOCOLLECT                         , "Can Auto-Collect Items when harvesting Block");
 		add(TOOLTIP_BEACON_PAYMENT                      , "Can be used as a Beacon Payment");
 		add(TOOLTIP_SHELFABLE                           , "Can be placed inside a GT Bookshelf");
+		add(TOOLTIP_AMMO_ENCHANTS                       , "Ammo Enchantments:");
 		add(TOOLTIP_POSSIBLE_TOOL_ENCHANTS              , "Possible Tool Enchantments:");
 		add(TOOLTIP_POSSIBLE_ARMOR_ENCHANTS             , "Possible Armor Enchantments:");
 		add(TOOLTIP_TOO_MANY_TOOL_ENCHANTS              , "Too Many Tool Enchantments to List");
@@ -473,19 +518,23 @@ public class LH {
 		add(TOOLTIP_FLAMMABLE_AND_EXPLOSIVE             , "Flammable and Explosive!");
 		add(TOOLTIP_FLAMMABLE                           , "Flammable!");
 		add(TOOLTIP_EXPLOSIVE                           , "Explosive!");
+		add(TOOLTIP_UNBURNABLE                          , "Unburnable!");
 		add(TOOLTIP_BLAST_RESISTANCE_TERRIBLE           , "(Terrible)");
 		add(TOOLTIP_BLAST_RESISTANCE_GHAST              , "(Ghast Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_CREEPER            , "(Creeper Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_TNT                , "(TNT Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
-		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes still go right through!)");
-		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
-		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock.");
-		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock.");
-		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock.");
-		add(PROSPECTING_CHANGE                          , "Material is changing behind this Rock.");
+		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes can still go through!)");
+		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the rotting Effects of the Betweenlands");
+		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Tools made of this can break Twilight Forest Mazes");
+		add(TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING        , "Can break Twilight Forest Maze Hedges");
+		add(TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING        , "Can break Twilight Forest Mazestone");
+		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock");
+		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock");
+		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock");
+		add(PROSPECTING_CHANGE                          , "Material is changing behind this Rock");
 		add(PROSPECTING_TRACES                          , "Found traces of ");
-		add(PROSPECTING_NOTHING                         , "No traces of Ore found.");
+		add(PROSPECTING_NOTHING                         , "No traces of Ore found");
 		add(AUTOCRAFTING_INSERT_BLUEPRINT               , "Insert an autocraftable Blueprint here");
 		add(ADVCRAFTING_INSERT_BLUEPRINT                , "Insert a Blueprint here");
 		add(ADVCRAFTING_PUT_TO_STORAGE                  , "Move Crafting Grid content to Storage Slots");

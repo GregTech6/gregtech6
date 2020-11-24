@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,6 +30,7 @@ import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.world.World;
@@ -37,6 +38,7 @@ import net.minecraft.world.World;
 public class BlockAsphalt extends BlockColored implements IBlockOnWalkOver {
 	public BlockAsphalt(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.rock, soundTypeStone, aUnlocalised, "Asphalt", MT.Asphalt, 1.0F, 1.0F, 1, Textures.BlockIcons.ASPHALTS);
+		setCreativeTab(CreativeTabs.tabTransport);
 	}
 	
 	@Override
@@ -46,6 +48,7 @@ public class BlockAsphalt extends BlockColored implements IBlockOnWalkOver {
 	
 	protected BlockAsphalt(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
+		setCreativeTab(CreativeTabs.tabTransport);
 	}
 	
 	@Override
@@ -56,5 +59,5 @@ public class BlockAsphalt extends BlockColored implements IBlockOnWalkOver {
 		}
 	}
 	
-	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return T;}
 }

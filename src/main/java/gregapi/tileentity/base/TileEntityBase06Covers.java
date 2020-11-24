@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -234,8 +234,8 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	public void checkCoverValidity() {
 		if (worldObj != null && isServerSide() && hasCovers()) for (byte tSide : ALL_SIDES_VALID) if (!allowCovers(tSide)) {
 			ItemStack tStack = getCoverItem(tSide);
-			if (tStack != null && setCoverItem(tSide, null, null, T, T)) {
-				ST.place(worldObj, getOffsetX(tSide)+0.5, getOffsetY(tSide)+0.5, getOffsetZ(tSide)+0.5, tStack);
+			if (setCoverItem(tSide, null, null, T, T)) {
+				ST.place(worldObj, getOffset(tSide, 1), tStack);
 				UT.Sounds.send(worldObj, SFX.MC_BREAK, 1.0F, -1.0F, getCoords());
 			}
 		}
@@ -305,7 +305,8 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	
 	@Override
 	public boolean setCoverItem(byte aSide, ItemStack aStack, Entity aPlayer, boolean aForce, boolean aBlockUpdate) {
-		if (SIDES_INVALID[aSide] || !allowCovers(aSide)) return F;
+		if (SIDES_INVALID[aSide] || (!allowCovers(aSide) && aStack != null)) return F;
+		if (aStack == null && getCoverItem(aSide) == null) return F;
 		
 		if (mCovers == null) mCovers = CoverRegistry.coverdata(this, null);
 		
@@ -418,17 +419,17 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	}
 	
 	@Override
-	public final int isProvidingWeakPower(byte aSide) {
-		byte tActualSide = OPPOSITES[aSide];
-		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutWeak(tActualSide, mCovers, isProvidingWeakPower2(aSide));
-		return isProvidingWeakPower2(aSide);
+	public final int isProvidingWeakPower(byte aOppositeSide) {
+		byte tActualSide = OPPOSITES[aOppositeSide];
+		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutWeak(tActualSide, mCovers, isProvidingWeakPower2(aOppositeSide));
+		return isProvidingWeakPower2(aOppositeSide);
 	}
 	
 	@Override
-	public final int isProvidingStrongPower(byte aSide) {
-		byte tActualSide = OPPOSITES[aSide];
-		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutStrong(tActualSide, mCovers, isProvidingStrongPower2(aSide));
-		return isProvidingStrongPower2(aSide);
+	public final int isProvidingStrongPower(byte aOppositeSide) {
+		byte tActualSide = OPPOSITES[aOppositeSide];
+		if (hasCovers() && SIDES_VALID[tActualSide] && mCovers.mBehaviours[tActualSide] != null) return mCovers.mBehaviours[tActualSide].getRedstoneOutStrong(tActualSide, mCovers, isProvidingStrongPower2(aOppositeSide));
+		return isProvidingStrongPower2(aOppositeSide);
 	}
 	
 	public byte isProvidingWeakPower2(byte aSide) {return 0;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,11 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.item.IItemGT;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -54,7 +55,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class BlockWaterlike extends BlockFluidClassic implements IBlockOnHeadInside {
+public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock, IItemGT, IBlockOnHeadInside {
 	public final Fluid mFluid;
 	
 	public BlockWaterlike(String aName, Fluid aFluid) {
@@ -62,8 +63,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		mFluid = aFluid;
 		setResistance(30);
 		setBlockName(aName);
-		GameRegistry.registerBlock(this, ItemBlock.class, aName);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, aName, ItemBlock.class);
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());
@@ -80,11 +80,11 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	@Override
 	public boolean canDrain(World aWorld, int aX, int aY, int aZ) {
-		return aWorld.getBlockMetadata(aX, aY, aZ) == 0;
+		return WD.meta(aWorld, aX, aY, aZ) == 0;
 	}
 	
 	public void updateFlow(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		int quantaRemaining = quantaPerBlock - aWorld.getBlockMetadata(aX, aY, aZ);
+		int quantaRemaining = quantaPerBlock - WD.meta(aWorld, aX, aY, aZ);
 		int expQuanta = -101;
 		// check adjacent block levels if non-source
 		if (quantaRemaining < quantaPerBlock) {
@@ -189,6 +189,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	}
 	
 	@Override public boolean isSourceBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ) instanceof BlockWaterlike && aWorld.getBlockMetadata(aX, aY, aZ) == 0;}
+	@Override public Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
 	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
@@ -197,6 +198,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	@Override public boolean isOpaqueCube() {return F;}
+	@Override public boolean func_149730_j() {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 	public BlockWaterlike addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {

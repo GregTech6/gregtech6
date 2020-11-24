@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -58,8 +58,8 @@ public interface ICompatTC extends ICompat {
 	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_AspectStack> aAspects, boolean aAdditive);
 	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, boolean aAdditive, TC_AspectStack... aAspects);
 	
-	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_AspectStack> aAspects, String aOreDict);
-	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, String aOreDict, TC_AspectStack... aAspects);
+	/** Just dont use this anymore, it does not work properly. */ @Deprecated public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, List<TC_AspectStack> aAspects, String aOreDict);
+	/** Just dont use this anymore, it does not work properly. */ @Deprecated public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, String aOreDict, TC_AspectStack... aAspects);
 	
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<TC_AspectStack> aAspects);
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, TC_AspectStack... aAspects);

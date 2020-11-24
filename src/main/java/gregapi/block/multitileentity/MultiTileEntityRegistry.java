@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationClient;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirst;
@@ -98,8 +97,7 @@ public class MultiTileEntityRegistry {
 	public final MultiTileEntityBlockInternal mBlock;
 	
 	private static final MultiTileEntityBlockInternal regblock(String aNameInternal, MultiTileEntityBlockInternal aBlock, Class<? extends ItemBlock> aItemClass) {
-		GameRegistry.registerBlock(aBlock, aItemClass, aNameInternal);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(aBlock);
+		ST.register(aBlock, aNameInternal, aItemClass);
 		return aBlock;
 	}
 	

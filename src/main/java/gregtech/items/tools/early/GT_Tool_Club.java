@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,11 +24,13 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -56,24 +58,41 @@ public class GT_Tool_Club extends GT_Tool_HardHammer {
 	
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
-		if (aBlock == Blocks.stone || aBlock == Blocks.cobblestone || aBlock == Blocks.mossy_cobblestone || aBlock == Blocks.stonebrick || aBlock == Blocks.stone_brick_stairs || aBlock == Blocks.cobblestone_wall || aBlock == Blocks.stone_button || aBlock == Blocks.stone_pressure_plate) {
+		Block aDrop = aDrops.size() == 1 ? ST.block(aDrops.get(0)) : NB;
+		if (aDrop == NB) aDrop = aBlock;
+		if (aDrop == Blocks.stone || aDrop == Blocks.cobblestone || aDrop == Blocks.mossy_cobblestone || aDrop == Blocks.stonebrick || aDrop == Blocks.stone_brick_stairs || aDrop == Blocks.cobblestone_wall || aDrop == Blocks.stone_button || aDrop == Blocks.stone_pressure_plate) {
 			aDrops.clear();
 			aDrops.add(OP.rockGt.mat(MT.Stone, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
-		if (aBlock == Blocks.netherrack) {
-			aDrops.clear();
-			aDrops.add(OP.rockGt.mat(MT.Netherrack, 1+RNGSUS.nextInt(4)));
-			return 0;
-		}
-		if (aBlock == Blocks.nether_brick || aBlock == Blocks.nether_brick_stairs || aBlock == Blocks.nether_brick_fence) {
+		if (aDrop == Blocks.nether_brick || aDrop == Blocks.nether_brick_stairs || aDrop == Blocks.nether_brick_fence) {
 			aDrops.clear();
 			aDrops.add(OP.rockGt.mat(MT.NetherBrick, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
-		if (aBlock == Blocks.end_stone) {
+		if (aDrop == Blocks.netherrack) {
+			aDrops.clear();
+			aDrops.add(OP.rockGt.mat(MT.Netherrack, 1+RNGSUS.nextInt(4)));
+			return 0;
+		}
+		if (aDrop == Blocks.end_stone) {
 			aDrops.clear();
 			aDrops.add(OP.rockGt.mat(MT.Endstone, 1+RNGSUS.nextInt(4)));
+			return 0;
+		}
+		if (aDrop == Blocks.obsidian || IL.NeLi_Obsidian.equal(aDrop) || IL.NePl_Obsidian.equal(aDrop) || IL.EtFu_Obsidian.equal(aDrop)) {
+			aDrops.clear();
+			aDrops.add(OP.rockGt.mat(MT.Obsidian, 1+RNGSUS.nextInt(8))); // Yep this is a huge waste to do it that way instead of using the Crucible!
+			return 0;
+		}
+		if (IL.NeLi_Basalt.equal(aDrop) || IL.NeLi_Basalt_Polished.equal(aDrop) || IL.NePl_Basalt.equal(aDrop) || IL.NePl_Basalt_Polished.equal(aDrop) || IL.GaSu_Basalt.equal(aDrop) || IL.GaSu_Basalt_Smooth.equal(aDrop) || IL.BOTA_Basalt.equal(aDrop) || IL.BOTA_Basalt_Bricks.equal(aDrop) || IL.BOTA_Basalt_Chiseled.equal(aDrop) || IL.BOTA_Basalt_Smooth.equal(aDrop)) {
+			aDrops.clear();
+			aDrops.add(OP.rockGt.mat(MT.Basalt, 1+RNGSUS.nextInt(4)));
+			return 0;
+		}
+		if (IL.NeLi_Blackstone.equal(aDrop) || IL.NeLi_Blackstone_Bricks.equal(aDrop) || IL.NeLi_Blackstone_Chiseled.equal(aDrop) || IL.NeLi_Blackstone_Cracked.equal(aDrop) || IL.NeLi_Blackstone_Polished.equal(aDrop) || IL.NePl_Blackstone.equal(aDrop) || IL.NePl_Blackstone_Bricks.equal(aDrop) || IL.NePl_Blackstone_Chiseled.equal(aDrop) || IL.NePl_Blackstone_Cracked.equal(aDrop) || IL.NePl_Blackstone_Polished.equal(aDrop)) {
+			aDrops.clear();
+			aDrops.add(OP.rockGt.mat(MT.Blackstone, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
 		return super.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);

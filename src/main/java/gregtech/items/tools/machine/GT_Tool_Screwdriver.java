@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -110,7 +110,7 @@ public class GT_Tool_Screwdriver extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_screwdriver) || aBlock.getMaterial() == Material.circuits;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_screwdriver)) || aBlock.getMaterial() == Material.circuits;
 	}
 	
 	@Override
@@ -120,12 +120,12 @@ public class GT_Tool_Screwdriver extends ToolStats {
 	
 	@Override
 	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
-		return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mRGBaSolid;
+		return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mRGBaSolid;
 	}
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.GT_SCREWDRIVER, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.GT_SCREWDRIVER, 100, !canBlock(), T));
 	}
 	
 	@Override

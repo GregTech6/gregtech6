@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,13 @@
 
 package gregtech.tileentity.multiblocks;
 
-import gregapi.data.FL;
-import net.minecraftforge.fluids.FluidStack;
+import static gregapi.data.CS.*;
 
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityTank3x3x3Wood extends MultiTileEntityTank3x3x3 {
-	@Override
-	public boolean allowFluid(FluidStack aFluid) {
-		return super.allowFluid(aFluid) && FL.simple(aFluid);
-	}
-	
+	@Override public boolean onlySimple() {return T;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.tank.wooden";}
 }

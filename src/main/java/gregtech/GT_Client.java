@@ -21,8 +21,6 @@ package gregtech;
 
 import static gregapi.data.CS.*;
 
-import java.util.Date;
-
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -195,7 +193,6 @@ public class GT_Client extends GT_Proxy {
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;
 	
 	@SubscribeEvent
-	@SuppressWarnings("deprecation")
 	public void onPlayerTickEventClient(PlayerTickEvent aEvent) {
 		if (!aEvent.player.isDead && aEvent.phase == Phase.END && aEvent.side.isClient() && CLIENT_TIME > 20) {
 			for (int i = 0; i < UT.Sounds.sPlayedSounds.size(); i++) if (UT.Sounds.sPlayedSounds.get(i).mTimer-- < 0) UT.Sounds.sPlayedSounds.remove(i--);
@@ -207,7 +204,7 @@ public class GT_Client extends GT_Proxy {
 					if (mMessage.length() > 5 && ConfigsGT.CLIENT.get(ConfigCategories.news, mMessage, T)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(mMessage));
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.DGRAY + ""));
-						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable message in the clientside GregTech.cfg");
+						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable message in the clientside gregtech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
 						aEvent.player.addChatComponentMessage(tLink);
 					}
@@ -216,7 +213,7 @@ public class GT_Client extends GT_Proxy {
 						tLink = new ChatComponentText(LH.Chat.BLUE + "https://gregtech.mechaenetia.com/1.7.10");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://gregtech.mechaenetia.com/1.7.10"));
 						aEvent.player.addChatComponentMessage(tLink);
-						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable checker in the clientside GregTech.cfg");
+						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable checker in the clientside gregtech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
 						aEvent.player.addChatComponentMessage(tLink);
 					}
@@ -232,15 +229,25 @@ public class GT_Client extends GT_Proxy {
 							}
 						} catch(Throwable e) {/**/}
 					}
+					if (MD.TC.mLoaded) {
+						try {
+							if (Class.forName("com.chocohead.patcher.ThaumicFixer") != null) {
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! Chocoheads ThaumicFixer needs to be uninstalled!"));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "Not uninstalling it can lead to crashes when viewing Aspects."));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "Lag is already fixed with a better Version of the ASM Code,"));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "that doesn't obliterate the Thaumcraft API for no reason."));
+							}
+						} catch(Throwable e) {/**/}
+					}
 					if (MD.COG.mLoaded && !MD.PFAA.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "warnings_customoregen", T)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! CustomOreGen will screw up all GregTech Worldgen with its Default Configs!"));
-						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "If you don't even use CustomOreGen, I would highly recommend you to remove it!"));
-						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable warning in the clientside GregTech.cfg");
+						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "If you don't even use CustomOreGen, I would highly recommend you to remove it."));
+						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable warning in the clientside gregtech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
 						aEvent.player.addChatComponentMessage(tLink);
 					}
-					if (new Date().getMonth() == 3 && new Date().getDate() <= 3) {
-						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + " Watch your Calendar!"));
+					if (APRIL_FOOLS) {
+						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + "Watch your Calendar!"));
 					}
 				}
 			}

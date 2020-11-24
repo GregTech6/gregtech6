@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,8 @@ import java.util.Set;
 import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
-import net.minecraft.block.material.Material;
+import gregapi.worldgen.WorldgenOnSurface;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -36,25 +37,21 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenGlowtus extends WorldgenObject {
+public class WorldgenGlowtus extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenGlowtus(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenGlowtus(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(2) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName)) {temp = F; break;}
-		if (temp) return F;
-		for (int i = 0; i < 16; i++) {
-			int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-			for (int tY = 70; tY > 0; tY--) if (aChunk.getBlock(tX, tY, tZ).getMaterial() == Material.water) {
-				WD.set(aChunk, tX, tY+1, tZ, BlocksGT.Glowtus, i);
-				break;
-			}
-		}
-		return T;
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName) || "Fire Swamp".equalsIgnoreCase(tName)) return mAmount;
+		return 0;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		return WD.anywater(aWorld, aX, aY, aZ, aContact) && WD.air(aWorld, aX, aY+1, aZ) && WD.set(aWorld, aX, aY+1, aZ, BlocksGT.Glowtus, aRandom.nextInt(16), 2);
 	}
 }

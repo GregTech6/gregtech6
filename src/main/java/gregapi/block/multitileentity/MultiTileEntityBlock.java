@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Random;
 
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
+import gregapi.block.IBlock;
 import gregapi.block.IBlockDebugable;
 import gregapi.block.IBlockErrorable;
 import gregapi.block.IBlockMaterial;
@@ -41,6 +41,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.IL;
+import gregapi.item.IItemGT;
 import gregapi.network.INetworkHandler;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterialStack;
@@ -98,7 +99,7 @@ import vazkii.botania.api.mana.IManaTrigger;
 , @Optional.Interface(iface = "vazkii.botania.api.mana.IManaTrigger", modid = ModIDs.BOTA)
 })
 @SuppressWarnings("deprecation")
-public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, IManaTrigger {
+public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlockDebugable, IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, IManaTrigger {
 	private static final Map<String, MultiTileEntityBlock> MULTITILEENTITYBLOCKMAP = new HashMap<>();
 	
 	private final int mHarvestLevelOffset, mHarvestLevelMinimum, mHarvestLevelMaximum;
@@ -143,8 +144,7 @@ public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlo
 		if (GAPI.mStartedInit) throw new IllegalStateException("Blocks can only be initialised within preInit!");
 		
 		mNameInternal = getName(aNameOfVanillaMaterialField, aVanillaMaterial, aSoundType, aTool, aHarvestLevelOffset, aHarvestLevelMinimum, aHarvestLevelMaximum, aOpaque, aNormalCube);
-		GameRegistry.registerBlock(this, ItemBlock.class, mNameInternal);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, mNameInternal, ItemBlock.class);
 		
 		MULTITILEENTITYBLOCKMAP.put(aModID + ":" + mNameInternal, this);
 		
@@ -160,7 +160,6 @@ public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlo
 		opaque = isOpaqueCube();
 		lightOpacity = isOpaqueCube() ? 255 : 0;
 		
-		try {ic2.api.tile.ExplosionWhitelist.addWhitelistedBlock(this);} catch(Throwable e) {/**/}
 		ST.hide(this);
 	}
 	
@@ -292,6 +291,7 @@ public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlo
 	@Override public final boolean renderAsNormalBlock() {return mOpaque || mNormalCube;}
 	@Override public final boolean isNormalCube()  {return mNormalCube;}
 	@Override public final boolean canProvidePower() {return !mNormalCube;}
+	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal + ".name");}
 	@Override public final String getHarvestTool(int aMeta) {return mTool;}

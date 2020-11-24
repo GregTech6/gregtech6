@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,8 @@ import gregapi.item.multiitem.behaviors.Behavior_TripwireCutting;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
@@ -77,6 +79,11 @@ public class GT_Tool_WireCutter extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
+		if (!ST.isGT(aBlock)) {
+			// Just a simple way to detect various Wires from Mods I don't know of.
+			String tClass = UT.Reflection.getLowercaseClass(aBlock);
+			if (tClass.contains("cable") || tClass.contains("wire")) return T;
+		}
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		return tTool != null && tTool.equalsIgnoreCase(TOOL_cutter);
 	}
@@ -93,7 +100,7 @@ public class GT_Tool_WireCutter extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_cutter, SFX.MISSING, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_cutter, SFX.MISSING, 100, !canBlock(), T));
 		aItem.addItemBehavior(aID, new Behavior_TripwireCutting(100));
 	}
 	

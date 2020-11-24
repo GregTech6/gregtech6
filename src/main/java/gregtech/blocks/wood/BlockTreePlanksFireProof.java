@@ -22,8 +22,8 @@ package gregtech.blocks.wood;
 import gregapi.block.metatype.BlockBasePlanks;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
+import gregapi.data.ANY;
 import gregapi.data.LH;
-import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
@@ -32,7 +32,7 @@ import net.minecraft.item.ItemBlock;
 
 public class BlockTreePlanksFireProof extends BlockBasePlanks {
 	public BlockTreePlanksFireProof(String aName) {
-		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", MT.Wood, 1, 1, 0, 16, Textures.BlockIcons.PLANKS);
+		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", ANY.Wood, 1, 1, 0, 16, Textures.BlockIcons.PLANKS);
 		LH.add(getUnlocalizedName()+ ".0.name", "Rubberwood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".1.name", "Maple Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".2.name", "Willow Planks (Fireproof)");
@@ -44,7 +44,7 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".10.name", "Treated Planks (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Empty Crate (Fireproof)");
+		LH.add(getUnlocalizedName()+".11.name", "Crate (Fireproof)");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Planks (Fireproof)");
@@ -64,12 +64,12 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Slab (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Slab (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".10.name", "Treated Slab (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Empty Crate Slab (Fireproof)");
+		LH.add(getUnlocalizedName()+".11.name", "Crate Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Slab (Fireproof)");

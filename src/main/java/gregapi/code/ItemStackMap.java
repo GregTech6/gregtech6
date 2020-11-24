@@ -58,6 +58,12 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 		return containsKey(new ItemStackContainer(aStack)) || (aWildcard && containsKey(new ItemStackContainer(aStack, W)));
 	}
 	
+	public V get(IItemContainer aStack) {
+		return get(new ItemStackContainer(aStack.get(1)));
+	}
+	public V get(ItemStack aStack) {
+		return get(new ItemStackContainer(aStack));
+	}
 	public V get(long aID, long aMeta) {
 		return get(new ItemStackContainer(aID, 1, aMeta));
 	}

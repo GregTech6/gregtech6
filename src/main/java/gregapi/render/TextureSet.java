@@ -187,6 +187,7 @@ public class TextureSet {
 	public static final TextureSet[]
 	  SET_NONE                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "NONE")          , addTextureSet(MD.GT.mID, T, "NONE")          }
 	, SET_DULL                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "DULL")          , addTextureSet(MD.GT.mID, T, "DULL")          }
+	, SET_RAD                       = new TextureSet[] {addTextureSet(MD.GT.mID, F, "RAD")           , addTextureSet(MD.GT.mID, T, "RAD")           }
 	, SET_HEX                       = new TextureSet[] {addTextureSet(MD.GT.mID, F, "HEX")           , addTextureSet(MD.GT.mID, T, "HEX")           }
 	, SET_RUBY                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "RUBY")          , addTextureSet(MD.GT.mID, T, "RUBY")          }
 	, SET_OPAL                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "OPAL")          , addTextureSet(MD.GT.mID, T, "OPAL")          }

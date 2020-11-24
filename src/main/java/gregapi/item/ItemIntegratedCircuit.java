@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,13 +45,13 @@ import net.minecraft.util.IIcon;
  * @author Gregorius Techneticies
  */
 public class ItemIntegratedCircuit extends ItemBase {
-	public ItemIntegratedCircuit(String aUnlocalized) {
-		super(MD.GAPI.mID, aUnlocalized, "Selector Tag", "");
+	public ItemIntegratedCircuit() {
+		super(MD.GAPI.mID, "gt.integrated_circuit", "Selector Tag", "");
 		setHasSubtypes(T);
 		setMaxDamage(0);
 		
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
-		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, W)});
+		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {this});
 		
 		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "   ", 'P', ST.make(this, 1, W));
 		CR.shaped(ST.make(this, 1, 2), CR.DEF, " d ", " P ", "   ", 'P', ST.make(this, 1, W));

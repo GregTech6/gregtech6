@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,13 +37,25 @@ import net.minecraft.world.World;
 public class Behavior_Tool extends AbstractBehaviorDefault {
 	public final String mToolName, mSoundName;
 	public final long mDamage;
-	public final boolean mOnItemUseReturn;
+	public final boolean mOnItemUseReturn, mRandomPitch;
+	public final float mPitch;
 	
-	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn) {
+	/** Certain Sounds need a bit of pitch variation to them, so I decided to put a <tt>High Quality Video Game Rip</tt> into my Tools. */
+	public static final float[] _7_GRAND_DAD_ = {1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.8F, 0.9F, 1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.9F, 0.7F};
+	public int PITCH_INDEX = -1;
+	
+	public Behavior_Tool(String aToolName) {this(aToolName, null, 0, T, F, 1.0F);}
+	public Behavior_Tool(String aToolName, boolean aOnItemUseReturn) {this(aToolName, null, 0, aOnItemUseReturn, F, 1.0F);}
+	public Behavior_Tool(String aToolName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, null, aDamage, aOnItemUseReturn, F, 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, F, 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, boolean aRandomPitch) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, aRandomPitch, 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, boolean aRandomPitch, float aPitch) {
 		mToolName = aToolName;
 		mSoundName = aSoundName;
 		mDamage = aDamage;
 		mOnItemUseReturn = aOnItemUseReturn;
+		mRandomPitch = aRandomPitch;
+		mPitch = aPitch;
 	}
 	
 	@Override
@@ -54,7 +66,7 @@ public class Behavior_Tool extends AbstractBehaviorDefault {
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (tDamage > 0) {
 			if (mDamage > 0) if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer);
-			if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, 1.0F, aX, aY, aZ);
+			if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, mRandomPitch ? _7_GRAND_DAD_[PITCH_INDEX = ((PITCH_INDEX + 1) % _7_GRAND_DAD_.length)] : mPitch, aX, aY, aZ);
 			return !aWorld.isRemote;
 		}
 		return F;

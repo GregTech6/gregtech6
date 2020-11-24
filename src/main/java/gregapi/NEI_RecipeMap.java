@@ -376,8 +376,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				break;
 			}
 
-			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
-			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F, mRecipeMap.mUseBucketSizeIn ),  53 - (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F, mRecipeMap.mUseBucketSizeOut), 107 + (i%3)*18, 63 - (i/3)*18));
 		}
 	}
 
@@ -412,7 +412,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 
 		private boolean transferRect(GuiContainer gui, boolean usage) {
-			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]));
+			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI));
 		}
 
 		@Override
@@ -504,12 +504,12 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	}
 	
 	@Override
-	public void loadCraftingRecipes(String outputId, Object... results) {
-		if (outputId.equals(getOverlayIdentifier())) {
+	public void loadCraftingRecipes(String aID, Object... aResults) {
+		if (aID.equals(getOverlayIdentifier())) {
 			for (Recipe tRecipe : mRecipeMap.getNEIAllRecipes()) arecipes.add(new CachedDefaultRecipe(tRecipe));
 			sortRecipes();
 		} else {
-			super.loadCraftingRecipes(outputId, results);
+			super.loadCraftingRecipes(aID, aResults);
 		}
 	}
 
@@ -659,7 +659,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		long tGUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;
 		long tDuration  = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mDuration;
 		if (tGUt == 0) {
-			drawText(10, 93, "Tier: unspecified", 0xFF000000);
+			if (mRecipeMap.mShowVoltageAmperageInNEI) {
+				drawText(10, 93, "Tier: unspecified", 0xFF000000);
+			}
 		} else {
 			if (tGUt > 0) {
 				drawText    (10, 73, "Costs: "  + (tDuration*tGUt) + " GU"        , 0xFF000000);

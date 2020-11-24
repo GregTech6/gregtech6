@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -105,8 +105,7 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 				UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
 				UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
 			}
-			if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
-			if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+			ST.use(aPlayer, aStack);
 			return F;
 		}
 		return F;

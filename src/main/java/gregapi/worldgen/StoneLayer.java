@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,7 +23,9 @@ import static gregapi.data.CS.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import gregapi.block.BlockBase;
@@ -32,7 +34,6 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackMap;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
@@ -80,34 +81,31 @@ public class StoneLayer {
 	/** List of generateable Stone Layers, via ItemStack of the Stone Block, so that MetaData is usable. */
 	public static final List<StoneLayer> LAYERS = new ArrayList<>();
 	/** Whenever two Rock Types hit each other in WorldGen an Ore from the returned List will spawn. The first ones mentioned inside the List can override the chances for others by spawning before, so insert the lowest chances first and then the high chances. */
-	public static final ItemStackMap<ItemStackContainer, ItemStackMap<ItemStackContainer, List<StoneLayerOres>>> MAP = new ItemStackMap<>();
+	public static final Map<OreDictMaterial, Map<OreDictMaterial, List<StoneLayerOres>>> MAP = new HashMap<>();
 	
-	public static boolean put(Block aTop, Block aBottom, StoneLayerOres... aOreChances) {
-		return put(new ItemStackContainer(aTop, 1, 0), new ItemStackContainer(aBottom, 1, 0), aOreChances);
+	public static boolean bothsides(OreDictMaterial aMaterialA, OreDictMaterial aMaterialB, StoneLayerOres... aOreChances) {
+		return topbottom(aMaterialA, aMaterialB, aOreChances) && topbottom(aMaterialB, aMaterialA, aOreChances);
 	}
-	public static boolean put(Block aTop, long aMetaTop, Block aBottom, long aMetaBottom, StoneLayerOres... aOreChances) {
-		return put(new ItemStackContainer(aTop, 1, aMetaTop), new ItemStackContainer(aBottom, 1, aMetaBottom), aOreChances);
-	}
-	public static boolean put(ItemStackContainer aTop, ItemStackContainer aBottom, StoneLayerOres... aOreChances) {
+	public static boolean topbottom(OreDictMaterial aTop, OreDictMaterial aBottom, StoneLayerOres... aOreChances) {
 		if (aOreChances.length <= 0) return F;
-		ItemStackMap<ItemStackContainer, List<StoneLayerOres>> tMap = MAP.get(aTop);
-		if (tMap == null) MAP.put(aTop, tMap = new ItemStackMap<>());
+		Map<OreDictMaterial, List<StoneLayerOres>> tMap = MAP.get(aTop);
+		if (tMap == null) MAP.put(aTop, tMap = new HashMap<>());
 		List<StoneLayerOres> tList = tMap.get(aBottom);
 		if (tList == null) tMap.put(aBottom, tList = new ArrayList<>(aOreChances.length));
 		for (StoneLayerOres tMat : aOreChances) if (tMat != null) tList.add(tMat);
 		return T;
 	}
 	
-	public static ItemStackContainer oTop = null, oBottom = null;
+	public static OreDictMaterial oTop = null, oBottom = null;
 	public static List<StoneLayerOres> oList = Collections.emptyList();
 	
 	public static List<StoneLayerOres> get(StoneLayer aTop, StoneLayer aBottom) {
-		return get(aTop.mStack, aBottom.mStack);
+		return get(aTop.mMaterial, aBottom.mMaterial);
 	}
-	public static List<StoneLayerOres> get(ItemStackContainer aTop, ItemStackContainer aBottom) {
+	public static List<StoneLayerOres> get(OreDictMaterial aTop, OreDictMaterial aBottom) {
 		if (aTop == oTop && aBottom == oBottom) return oList;
 		oTop = aTop; oBottom = aBottom;
-		ItemStackMap<ItemStackContainer, List<StoneLayerOres>> tMap = MAP.get(aTop);
+		Map<OreDictMaterial, List<StoneLayerOres>> tMap = MAP.get(aTop);
 		if (tMap == null) return oList = Collections.emptyList();
 		List<StoneLayerOres> tList = tMap.get(aBottom);
 		if (tList == null) return oList = Collections.emptyList();

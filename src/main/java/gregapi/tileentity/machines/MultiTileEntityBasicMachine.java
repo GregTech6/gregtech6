@@ -29,6 +29,7 @@ import cpw.mods.fml.common.Optional;
 import gregapi.GT_API;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.TagData;
+import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.CS.SFX;
@@ -164,17 +165,15 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getLong(NBT_INPUT_EU);
 		
-		
-		int tCapacity = getDefaultTankCapacity();
+		long tCapacity = 1000;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTanksInput = new FluidTankGT[mRecipes.mInputFluidCount];
-		for (int i = 0; i < mTanksInput.length; i++) mTanksInput[i] = new FluidTankGT(tCapacity).readFromNBT(aNBT, NBT_TANK+".in."+i);
+		for (int i = 0; i < mTanksInput.length; i++) mTanksInput[i] = new FluidTankGT(tCapacity).setCapacity(mRecipes, mParallel * 2L).readFromNBT(aNBT, NBT_TANK+".in."+i);
 		mTanksOutput = new FluidTankGT[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(Long.MAX_VALUE).readFromNBT(aNBT, NBT_TANK+".out."+i);
 		
 		mOutputFluids = new FluidStack[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = FL.load(aNBT, NBT_TANK_OUT+"."+i);
-		
 		mOutputItems = new ItemStack[mRecipes.mOutputItemsCount];
 		for (int i = 0; i < mOutputItems.length; i++) mOutputItems[i] = ST.load(aNBT, NBT_INV_OUT+"."+i);
 		
@@ -269,10 +268,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		return aNBT;
 	}
 	
-	public int getDefaultTankCapacity() {
-		return UT.Code.bindInt(Math.max(1000, mRecipes.mMaxFluidInputSize * 2L * mParallel));
-	}
-	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " (up to "+mParallel+"x processed per run)" : ""));
@@ -314,32 +309,48 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			LH.addEnergyToolTips(this, aList, mEnergyTypeCharged, null, tSideNames, null);
 			tSideNames = "";
 		}
-		if (mItemInputs != 127) {
-			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs  ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput  ?" (auto)":"");}
-			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
-			tSideNames = "";
-		} else if (SIDES_VALID[mItemAutoInput]) {
-			aList.add(Chat.GREEN + LH.get(LH.ITEM_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoInput]) + " (auto, otherwise any)");
+		if (mRecipes.mInputItemsCount > 0) {
+			if (mItemInputs != 127) {
+				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs  ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput  ?" (auto)":"");}
+				if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
+				tSideNames = "";
+			} else if (SIDES_VALID[mItemAutoInput]) {
+				aList.add(Chat.GREEN + LH.get(LH.ITEM_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoInput]) + " (auto, otherwise any)");
+			} else {
+				aList.add(Chat.GREEN + LH.get(LH.ITEM_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACE_ANY) + " (no auto)");
+			}
 		}
-		if (mItemOutputs != 127) {
-			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoOutput ?" (auto)":"");}
-			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
-			tSideNames = "";
-		} else if (SIDES_VALID[mItemAutoOutput]) {
-			aList.add(Chat.RED + LH.get(LH.ITEM_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoOutput]) + " (auto, otherwise any)");
+		if (mRecipes.mOutputItemsCount > 0) {
+			if (mItemOutputs != 127) {
+				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoOutput ?" (auto)":"");}
+				if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
+				tSideNames = "";
+			} else if (SIDES_VALID[mItemAutoOutput]) {
+				aList.add(Chat.RED + LH.get(LH.ITEM_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoOutput]) + " (auto, otherwise any)");
+			} else {
+				aList.add(Chat.RED + LH.get(LH.ITEM_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACE_ANY) + " (no auto)");
+			}
 		}
-		if (mFluidInputs != 127) {
-			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoInput ?" (auto)":"");}
-			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
-			tSideNames = "";
-		} else if (SIDES_VALID[mFluidAutoInput]) {
-			aList.add(Chat.GREEN + LH.get(LH.FLUID_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoInput]) + " (auto, otherwise any)");
+		if (mRecipes.mInputFluidCount > 0) {
+			if (mFluidInputs != 127) {
+				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoInput ?" (auto)":"");}
+				if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
+				tSideNames = "";
+			} else if (SIDES_VALID[mFluidAutoInput]) {
+				aList.add(Chat.GREEN + LH.get(LH.FLUID_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoInput]) + " (auto, otherwise any)");
+			} else {
+				aList.add(Chat.GREEN + LH.get(LH.FLUID_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACE_ANY) + " (no auto)");
+			}
 		}
-		if (mFluidOutputs != 127) {
-			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoOutput?" (auto)":"");}
-			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
-		} else if (SIDES_VALID[mFluidAutoOutput]) {
-			aList.add(Chat.RED + LH.get(LH.FLUID_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoOutput]) + " (auto, otherwise any)");
+		if (mRecipes.mOutputFluidCount > 0) {
+			if (mFluidOutputs != 127) {
+				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoOutput?" (auto)":"");}
+				if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
+			} else if (SIDES_VALID[mFluidAutoOutput]) {
+				aList.add(Chat.RED + LH.get(LH.FLUID_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoOutput]) + " (auto, otherwise any)");
+			} else {
+				aList.add(Chat.RED + LH.get(LH.FLUID_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACE_ANY) + " (no auto)");
+			}
 		}
 	}
 	
@@ -355,8 +366,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (isClientSide()) return 0;
 		
 		if (aTool.equals(TOOL_screwdriver)) {
-			mMode = (byte)((mMode + 1) % 2);
+			mMode = (byte)((mMode + 1) % 4);
+			aChatReturn.add("========================================");
 			aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
+			aChatReturn.add((mMode & 2) != 0 ?"Only accept Input on empty Input Slots":"Accept Input on all Input Slots");
 			updateInventory();
 			return 10000;
 		}
@@ -415,6 +428,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void onMagnifyingGlass(List<String> aChatReturn) {
 		aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
+		aChatReturn.add((mMode & 2) != 0 ?"Only accept Input on empty Input Slots":"Accept Input on all Input Slots");
 		if (SIDES_VALID[mItemAutoInput  ]) aChatReturn.add(mDisabledItemInput  ?"Auto Item Input Disabled"  :"Auto Item Input Enabled"  );
 		if (SIDES_VALID[mItemAutoOutput ]) aChatReturn.add(mDisabledItemOutput ?"Auto Item Output Disabled" :"Auto Item Output Enabled" );
 		if (SIDES_VALID[mFluidAutoInput ]) aChatReturn.add(mDisabledFluidInput ?"Auto Fluid Input Disabled" :"Auto Fluid Input Enabled" );
@@ -545,6 +559,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		if (aSlot >= mRecipes.mInputItemsCount) return F;
+		if ((mMode & 2) != 0 && slotHas(aSlot)) return F;
 		for (int i = 0; i < mRecipes.mInputItemsCount; i++) if (ST.equal(aStack, slot(i), T)) return i == aSlot;
 		return mRecipes.containsInput(aStack, this, slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount));
 	}
@@ -644,7 +659,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				if (aRecipe.mFluidOutputs[j] == null) {
 					tRequiredEmptyTanks--;
 				} else for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aRecipe.mFluidOutputs[j])) {
-					if (mTanksOutput[i].has(Math.max(16000, 1+aRecipe.mFluidOutputs[j].amount*mParallel))) return 0;
+					if (mTanksOutput[i].has(Math.max(16000, 1+aRecipe.mFluidOutputs[j].amount*mParallel)) && !FluidsGT.VOID_OVERFLOW.contains(aRecipe.mFluidOutputs[j].getFluid().getName())) return 0;
 					tRequiredEmptyTanks--;
 					break;
 				}
@@ -796,7 +811,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				mProgress += aEnergy;
 			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
-				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
+				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mIgnited = 40; mOutputItems[i] = null; continue;}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
@@ -872,7 +887,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public boolean doInactive(long aTimer) {
 		if (mActive) {
 			doSoundInterrupt();
-			doOutputItems();
+			if (!mDisabledItemOutput) doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
 		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer%1200 == 5) {
@@ -968,10 +983,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void doOutputFluids() {
-		for (IFluidTank tCheck : mTanksOutput) {
-			FluidStack tFluid = tCheck.getFluid();
-			if (tFluid != null && tFluid.getFluid() != null) {if (FL.move(mTanksOutput, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tFluid.getFluid())) > 0) updateInventory(); return;}
-		}
+		for (FluidTankGT tCheck : mTanksOutput) if (tCheck.has()) {if (FL.move(tCheck, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tCheck.fluid())) > 0) updateInventory();}
 	}
 	
 	public void doOutputEnergy() {

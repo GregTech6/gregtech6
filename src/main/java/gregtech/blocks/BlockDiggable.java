@@ -30,11 +30,13 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import gregapi.util.WD;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -48,24 +50,29 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	public BlockDiggable(String aUnlocalised) {
-		super(null, aUnlocalised, Material.ground, soundTypeGravel, 3, Textures.BlockIcons.DIGGABLES);
+		super(null, aUnlocalised, Material.ground, soundTypeGravel, 4, Textures.BlockIcons.DIGGABLES);
 		LH.add(getUnlocalizedName()+ ".0.name", "Mud");
 		LH.add(getUnlocalizedName()+ ".1.name", "Brown Clay");
 		LH.add(getUnlocalizedName()+ ".2.name", "Turf");
+		LH.add(getUnlocalizedName()+ ".3.name", "Red Clay");
 		
 		RM.generify(ST.make(this, 1, 1), ST.make(Blocks.clay, 1, 0));
+		RM.generify(ST.make(this, 1, 3), ST.make(Blocks.clay, 1, 0));
 		RM.add_smelting(ST.make(this, 1, 0), ST.make(Blocks.dirt, 1, 1));
 		RM.add_smelting(ST.make(this, 1, 1), ST.make(Blocks.hardened_clay, 1, 0));
+		RM.add_smelting(ST.make(this, 1, 3), ST.make(Blocks.hardened_clay, 1, 0));
 		OM.data(ST.make(this, 1, 1), MT.ClayBrown, U*4);
 		OM.data(ST.make(this, 1, 2), MT.Peat, U);
-		OM.reg(ST.make(this, 1, 1), "blockClay");
+		OM.data(ST.make(this, 1, 3), MT.ClayRed, U*4);
+		OM.reg(ST.make(this, 1, 1), OD.blockClay);
+		OM.reg(ST.make(this, 1, 3), OD.blockClay);
 		
 		BlocksGT.harvestableSpade.add(this);
 	}
 	
 	@Override
 	public boolean canSustainPlant(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide, IPlantable aPlant) {
-		if (aWorld.getBlockMetadata(aX, aY, aZ) == 1) return F;
+		if (WD.meta(aWorld, aX, aY, aZ) == 1) return F;
 		if (aPlant == Blocks.reeds || aPlant instanceof BlockBush) return T;
 		EnumPlantType tType = aPlant.getPlantType(aWorld, aX+aSide.offsetX, aY+aSide.offsetY, aZ+aSide.offsetZ);
 		return tType == EnumPlantType.Plains || tType == EnumPlantType.Water || tType == EnumPlantType.Desert || tType == EnumPlantType.Beach;
@@ -77,22 +84,23 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		case  0: return new ArrayListNoNulls<>(F, IL.Mud_Ball.get(4));
 		case  1: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
 		case  2: return new ArrayListNoNulls<>(F, OP.ingot.mat(MT.Peat, 1));
+		case  3: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Red.get(4));
 		default: return new ArrayListNoNulls<>(F, ST.make(this, 1, aMeta));
 		}
 	}
 	
 	@Override
 	public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (aWorld.getBlockMetadata(aX, aY, aZ) != 1) {aEntity.motionX *= 0.5; aEntity.motionZ *= 0.5;}
+		if (doesWalkSpeed(WD.meta(aWorld, aX, aY, aZ))) {aEntity.motionX *= 0.5; aEntity.motionZ *= 0.5;}
 	}
 	
-	@Override public boolean useGravity      (int   aMeta) {return aMeta != 1;}
-	@Override public boolean doesWalkSpeed   (short aMeta) {return aMeta != 1;}
-	@Override public boolean doesPistonPush  (short aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(int   aMeta) {return aMeta < 3;}
-	@Override public boolean isSealable      (int   aMeta, byte aSide) {return F;}
-	@Override public String getHarvestTool   (int   aMeta) {return TOOL_shovel;}
-	@Override public int getHarvestLevel     (int   aMeta) {return 0;}
+	@Override public boolean useGravity      (byte aMeta) {return aMeta == 0 || aMeta == 2;}
+	@Override public boolean doesWalkSpeed   (byte aMeta) {return aMeta == 0 || aMeta == 2;}
+	@Override public boolean doesPistonPush  (byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return aMeta < 4;}
+	@Override public boolean isSealable      (byte aMeta, byte aSide) {return F;}
+	@Override public String getHarvestTool   (int  aMeta) {return TOOL_shovel;}
+	@Override public int getHarvestLevel     (int  aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.dirt.getBlockHardness(aWorld, aX, aY, aZ);}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.dirt.getExplosionResistance(null);}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.dirt.getExplosionResistance(null);}
 }

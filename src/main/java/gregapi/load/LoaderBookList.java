@@ -32,21 +32,21 @@ public class LoaderBookList implements Runnable {
 	public void run() {
 		BooksGT.BOOK_REGISTER.put(IL.Circuit_Selector.wild(1), (byte) 43);
 		
-		BooksGT.BOOK_REGISTER.put(Items.paper           ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.name_tag        ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.map             ,   W, (byte) 25);
-		BooksGT.BOOK_REGISTER.put(Items.filled_map      ,   W, (byte) 26);
-		BooksGT.BOOK_REGISTER.put(Items.book            ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.writable_book   ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.written_book    ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Items.enchanted_book  ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Items.item_frame      ,   W, (byte) 34);
-		BooksGT.BOOK_REGISTER.put(Items.painting        ,   W, (byte) 34);
-		BooksGT.BOOK_REGISTER.put(Blocks.wooden_button  ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Blocks.stone_button   ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Blocks.lever          ,   W, (byte)  1);
-		BooksGT.BOOK_REGISTER.put(Blocks.redstone_torch ,   W, (byte)  2);
-		BooksGT.BOOK_REGISTER.put(Blocks.cobblestone    ,   W, (byte)255);
+		BooksGT.BOOK_REGISTER.put(Items.paper          , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.name_tag       , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.map            , W, (byte) 25);
+		BooksGT.BOOK_REGISTER.put(Items.filled_map     , W, (byte) 26);
+		BooksGT.BOOK_REGISTER.put(Items.book           , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.writable_book  , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.written_book   , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Items.enchanted_book , W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Items.item_frame     , W, (byte) 34);
+		BooksGT.BOOK_REGISTER.put(Items.painting       , W, (byte) 34);
+		BooksGT.BOOK_REGISTER.put(Blocks.wooden_button , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Blocks.stone_button  , W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Blocks.lever         , W, (byte)  1);
+		BooksGT.BOOK_REGISTER.put(Blocks.redstone_torch, W, (byte)  2);
+		BooksGT.BOOK_REGISTER.put(Blocks.cobblestone   , W, (byte)255);
 		
 		if (MD.FR.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.FR, "catalogue"                            ,   W, (byte) 32);
@@ -162,6 +162,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.TC, "ItemResource"                         ,   9, (byte) 25);
 			BooksGT.BOOK_REGISTER.put(MD.TC, "ArcaneDoorKey"                        ,   W, (byte)  1);
 		}
+		if (MD.TECHNOM.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.TECHNOM, "ritualTome"                      ,   W, (byte) 10);
+		}
 		if (MD.PE.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.PE, "item.pe_manual"                       ,   W, (byte)  3);
 			BooksGT.BOOK_REGISTER.put(MD.PE, "item.pe_tome"                         ,   W, (byte)  6);
@@ -215,6 +218,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.ABYSSAL, "necronomicon_dre"                ,   W, (byte)  5);
 			BooksGT.BOOK_REGISTER.put(MD.ABYSSAL, "necronomicon_cor"                ,   W, (byte)  6);
 		}
+		if (MD.AETHER.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.AETHER, "bronzeKey"                        ,   W, (byte)  1);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.IHL, "guidebook"                           ,   W, (byte) 48);
 		}
@@ -224,6 +230,12 @@ public class LoaderBookList implements Runnable {
 		}
 		if (MD.AA.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.AA, "itemBooklet"                          ,   W, (byte)  7);
+		}
+		if (MD.SD.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.SD, "shroudKey"                            ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "upgradeLock"                          ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "personalKey"                          ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "tape"                                 ,   W, (byte) 57);
 		}
 		if (MD.RC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.RC, "routing.table"                        ,   W, (byte) 19);
@@ -254,6 +266,10 @@ public class LoaderBookList implements Runnable {
 		if (MD.IE.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.IE, "blueprint"                            ,   W, (byte) 28);
 			BooksGT.BOOK_REGISTER.put(MD.IE, "tool"                                 ,   3, (byte) 41);
+		}
+		if (MD.ExS.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.ExS, "scanner"                             ,   W, (byte) 43);
+			BooksGT.BOOK_REGISTER.put(MD.ExS, "divisionSigil"                       ,   W, (byte) 50);
 		}
 		if (MD.ExU.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.ExU, "scanner"                             ,   W, (byte) 43);

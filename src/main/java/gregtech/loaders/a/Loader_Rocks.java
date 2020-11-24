@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,7 +38,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
 import gregapi.util.CR;
 import gregapi.util.ST;
-import gregtech.blocks.BlockStonesGT;
+import gregtech.blocks.stone.BlockStonesGT;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

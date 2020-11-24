@@ -42,13 +42,11 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 			aData.set(tX, 1, tZ, Blocks.carpet, aData.mColorInversed, 2);
 		}
 		for (int tY = 1; tY <=  6; tY++) {
-			for (int tX = 1; tX <= 14; tX++) if (tX <= 3 || tX >= 12) {
-				aData.bricks(tX, tY,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
-				aData.bricks(tX, tY, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
-			}
-			for (int tZ = 1; tZ <= 14; tZ++) if (tZ <= 3 || tZ >= 12) {
-				aData.bricks( 5, tY, tZ, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
-				aData.bricks(10, tY, tZ, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+			for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 3 || tCoord >= 12) {
+				aData.bricks(tCoord, tY,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+				aData.bricks(tCoord, tY, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+				aData.bricks( 5, tY, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+				aData.bricks(10, tY, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
 			aData.smooth( 4, tY,  5);
@@ -100,38 +98,38 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		tHexoriumColor  = ST.block(MD.HEX, UT.Code.select(aData.mColor, "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS)),
 		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
-		aData.cup( 1, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-		aData.cup( 1, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-		aData.cup(14, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-		aData.cup(14, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup( 1, 2,  4, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup( 1, 2, 11, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup(14, 2,  4, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup(14, 2, 11, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
 		
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
 		
 		NBTTagList
 		tList = new NBTTagList();
-		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", (short)aData.mRandom.nextInt(28)));}
+		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", (short)aData.next(28)));}
 		aData.set( 4, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
 		aData.set( 3, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		if (aData.mRandom.nextBoolean()) aData.coins( 4, 2,  1);
+		if (aData.next1in2()) aData.coins( 4, 2,  1);
 		
 		tList = new NBTTagList();
-		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", (short)aData.mRandom.nextInt(28)));}
+		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", (short)aData.next(28)));}
 		aData.set( 4, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
 		aData.set( 3, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
-		if (aData.mRandom.nextBoolean()) aData.coins( 4, 2, 14);
+		if (aData.next1in2()) aData.coins( 4, 2, 14);
 		
 		tList = new NBTTagList();
-		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", (short)aData.mRandom.nextInt(28)));}
+		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", (short)aData.next(28)));}
 		aData.set(11, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
 		aData.set(12, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		if (aData.mRandom.nextBoolean()) aData.coins(11, 2,  1);
+		if (aData.next1in2()) aData.coins(11, 2,  1);
 		
 		tList = new NBTTagList();
-		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", (short)aData.mRandom.nextInt(28)));}
+		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", (short)aData.next(28)));}
 		aData.set(11, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
 		aData.set(12, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
-		if (aData.mRandom.nextBoolean()) aData.coins(11, 2, 14);
+		if (aData.next1in2()) aData.coins(11, 2, 14);
 		
 		return T;
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,16 +21,23 @@ package gregtech.items.tools.machine;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
+import gregapi.data.RM;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.IToolStats;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
+import gregapi.recipes.Recipe;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
@@ -38,6 +45,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Crowbar extends ToolStats {
 	@Override
@@ -102,7 +110,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock)) return T;
+		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TC_Block_Air.equal(aBlock) || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock) || BlocksGT.openableCrowbar.contains(aBlock)) return T;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		if (UT.Code.stringValid(tTool)) return TOOL_crowbar.equalsIgnoreCase(tTool);
 		for (IToolStats tStat : ToolsGT.sMetaTool.mToolStats.values()) if (!(tStat instanceof GT_Tool_Crowbar) && tStat.isMinableBlock(aBlock, aMetaData)) return F;
@@ -112,6 +120,26 @@ public class GT_Tool_Crowbar extends ToolStats {
 	@Override
 	public float getMiningSpeed(Block aBlock, byte aMetaData, float aDefault, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
 		return IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock) ? Float.MAX_VALUE : super.getMiningSpeed(aBlock, aMetaData, aDefault, aPlayer, aWorld, aX, aY, aZ);
+	}
+	
+	@Override
+	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+		if (BlocksGT.openableCrowbar.contains(aBlock)) {
+			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			for (int i = 0; i < aDrops.size(); i++) {
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));
+				if (tRecipe != null) {
+					int tStackSize = aDrops.get(i).stackSize;
+					aDrops.remove(i--);
+					if (tRecipe.mOutputs.length > 0) for (int j = 0; j < tStackSize; j++) {
+						ItemStack[] tOutput = tRecipe.getOutputs();
+						for (int k = 0; k < tOutput.length; k++) tDrops.add(tOutput[k]);
+					}
+				}
+			}
+			aDrops.addAll(tDrops);
+		}
+		return 0;
 	}
 	
 	@Override
@@ -126,7 +154,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 100, !canBlock(), T));
 	}
 	
 	@Override

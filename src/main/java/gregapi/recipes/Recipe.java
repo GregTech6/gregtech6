@@ -69,6 +69,8 @@ public class Recipe {
 		public final ItemStackMap<ItemStackContainer, Collection<Recipe>> mRecipeItemMap = new ItemStackMap<>();
 		/** HashMap of Recipes based on their Fluids */
 		public final Map<String, Collection<Recipe>> mRecipeFluidMap = new HashMap<>();
+		/** HashMap of Minimum Tank Sizes based on the Input Fluids */
+		public final Map<String, Long> mMinInputTankSizes = new HashMap<>();
 		/** The List of all Recipes */
 		public final Collection<Recipe> mRecipeList;
 		/** Used to detect if MineTweaker fucked with the Recipe List without also fixing the HashMaps. */
@@ -85,7 +87,7 @@ public class Recipe {
 		public final byte mProgressBarDirection, mProgressBarAmount;
 		public final int mInputItemsCount, mOutputItemsCount, mInputFluidCount, mOutputFluidCount, mMinimalInputItems, mMinimalInputFluids, mMinimalInputs;
 		public final long mNEISpecialValueMultiplier, mPower;
-		public final boolean mNEIAllowed, mShowVoltageAmperageInNEI, mNeedsOutputs, mCombinePower;
+		public final boolean mNEIAllowed, mShowVoltageAmperageInNEI, mNeedsOutputs, mCombinePower, mUseBucketSizeIn, mUseBucketSizeOut;
 		public boolean mLogErrors = T;
 		/** Used to determine Input Tank Size. Contains the size of the largest FluidStack Input, but is almost always at least 1000. */
 		public int mMaxFluidInputSize  = 1000;
@@ -107,15 +109,23 @@ public class Recipe {
 		 * @param aNEISpecialValuePost the String after the Special Value. Usually for a Unit or something.
 		 * @param aNEIAllowed if NEI is allowed to display this Recipe Handler in general.
 		 */
-		public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower) {
+		public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower, boolean aUseBucketSizeIn, boolean aUseBucketSizeOut) {
 			mNEIAllowed = aNEIAllowed;
 			mShowVoltageAmperageInNEI = aShowVoltageAmperageInNEI;
 			mNeedsOutputs = aNeedsOutputs;
 			mCombinePower = aCombinePower;
+			mUseBucketSizeIn = aUseBucketSizeIn;
+			mUseBucketSizeOut = aUseBucketSizeOut;
 			mRecipeList = (aRecipeList == null ? new HashSetNoNulls<Recipe>() : aRecipeList);
 			mNameInternal = aNameInternal;
 			mNameLocal = aNameLocal;
-			mNameLocalUnderscored = mNameLocal.replaceAll(" ", "_");
+			// TODO proper String sanitizer
+			StringBuilder tBuilder = new StringBuilder(mNameLocal.length());
+			for (char tChar : mNameLocal.toCharArray()) {
+				if (tChar == '(' || tChar == ')' || tChar == '[' || tChar == ']' || tChar == '{' || tChar == '}' || tChar == '"' || tChar == '\'' || tChar == '<' || tChar == '>' || tChar == '°' || tChar == '~' || tChar == '$' || tChar == '%' || tChar == '#' || tChar == '+' || tChar == '*' || tChar == '§' || tChar == '!' || tChar == '?' || tChar == '.' || tChar == ',' || tChar == ':' || tChar == ';') continue;
+				if (tChar == ' ' || tChar == '-' || tChar == '=' || tChar == '&' || tChar == '^' || tChar == '|' || tChar == '/' || tChar == '\\') tBuilder.append('_'); else tBuilder.append(tChar);
+			}
+			mNameLocalUnderscored = tBuilder.toString();
 			mNameNEI = aNameNEI == null ? mNameInternal : aNameNEI;
 			mGUIPath = aNEIGUIPath.endsWith(".png")?aNEIGUIPath:aNEIGUIPath + ".png";
 			mNEISpecialValuePre = aNEISpecialValuePre;
@@ -138,13 +148,14 @@ public class Recipe {
 		}
 		
 		public RecipeMap() {
-			this(null, "", "", "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", F, F, F, F, F);
+			this(null, "", "", "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", F, F, F, F, F, T, T);
 			mLogErrors = F;
 		}
 		
 		@Override public String toString() {return mNameInternal;}
 		@Override public void run() {mConfigFile = new Config(DirectoriesGT.CONFIG_RECIPES, mNameLocalUnderscored+".cfg");}
 		
+		@Deprecated public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower) {this(aRecipeList, aNameInternal, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, aCombinePower, T, T);}
 		@Deprecated public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs) {this(aRecipeList, aNameInternal, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, F);}
 		@Deprecated public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs) {this(aRecipeList, aNameInternal, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, 0, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs);}
 		@Deprecated public RecipeMap(Collection<Recipe> aRecipeList, String aNameInternal, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed) {this(aRecipeList, aNameInternal, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, 0, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, T);}
@@ -362,10 +373,13 @@ public class Recipe {
 			mRecipeListSize++;
 			
 			for (FluidStack aFluid : aRecipe.mFluidInputs) if (aFluid != null) {
+				String aFluidName = aFluid.getFluid().getName();
 				mMaxFluidInputSize = Math.max(mMaxFluidInputSize, aFluid.amount);
-				Collection<Recipe> tList = mRecipeFluidMap.get(aFluid.getFluid().getName());
-				if (tList == null) mRecipeFluidMap.put(aFluid.getFluid().getName(), tList = new HashSet<>(1));
+				Collection<Recipe> tList = mRecipeFluidMap.get(aFluidName);
+				if (tList == null) mRecipeFluidMap.put(aFluidName, tList = new HashSet<>(1));
 				tList.add(aRecipe);
+				Long tSize = mMinInputTankSizes.get(aFluidName);
+				if (tSize == null || tSize < aFluid.amount) mMinInputTankSizes.put(aFluidName, (long)aFluid.amount);
 			}
 			for (FluidStack aFluid : aRecipe.mFluidOutputs) if (aFluid != null) {
 				mMaxFluidOutputSize = Math.max(mMaxFluidOutputSize, aFluid.amount);
@@ -413,6 +427,13 @@ public class Recipe {
 			if (mRecipeMapHandlers.isEmpty()) return F;
 			for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.containsInput(this, aFluid)) return T;
 			return F;
+		}
+		
+		/** @return the Tank Size that is the Minimum for this Fluid Input.*/
+		public long minTankSize(Fluid aFluid) {
+			if (aFluid == null) return 1000;
+			Object tSize = mMinInputTankSizes.get(aFluid.getName());
+			return tSize == null ? 1000 : Math.max(1000, (long)tSize);
 		}
 		
 		private Recipe oRecipe = null;
@@ -514,10 +535,10 @@ public class Recipe {
 					aLoop = F;
 					for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
 						OreDictItemData tData = OM.data_(tInput);
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, tInput, tData)) aLoop = T;
+						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput, tData)) aLoop = T;
 					}
 					for (FluidStack tInput : aFluids) if (tInput != null) {
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, tInput.getFluid())) aLoop = T;
+						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput.getFluid())) aLoop = T;
 					}
 					if (aLoop) return findRecipeInternal(aTileEntity, aRecipe, F, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 				}
@@ -544,10 +565,10 @@ public class Recipe {
 			for (ItemStack aOutput : aOutputs) if (ST.valid(aOutput)) {
 				if (IL.Display_Fluid.equal(aOutput, T, T)) {
 					Fluid tFluid = FL.fluid(ST.meta_(aOutput));
-					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, tFluid);
+					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, T, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aOutput);
-					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, aOutput, tData);
+					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, T, aOutput, tData);
 				}
 			}
 			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
@@ -577,10 +598,10 @@ public class Recipe {
 			for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 				if (IL.Display_Fluid.equal(aInput, T, T)) {
 					Fluid tFluid = FL.fluid(ST.meta_(aInput));
-					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, tFluid);
+					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, T, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aInput);
-					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, aInput, tData);
+					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, T, aInput, tData);
 				}
 			}
 			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
@@ -616,14 +637,21 @@ public class Recipe {
 			return aRecipe;
 		}
 		
-		public boolean openNEI() {
-			try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI, new Object[0]); return T;} catch(Throwable e) {/**/}
-			return F;
-		}
+		public boolean openNEI   (                  ) {try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI          ); return T;} catch(Throwable e) {/**/} return F;}
+		public boolean guiRecipes(Object... aOutputs) {try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI, aOutputs); return T;} catch(Throwable e) {/**/} return F;}
+		public boolean guiUsesNEI(Object... aInputs ) {try {codechicken.nei.recipe.GuiUsageRecipe   .openRecipeGui(mNameNEI, aInputs ); return T;} catch(Throwable e) {/**/} return F;}
 		
 		/** Old position for the Recipe Maps, please refer to gregapi.data.RM and gregapi.data.FM in the future. */
-		@Deprecated
-		public static RecipeMap sMaceratorRecipes = new RecipeMap(), sFurnaceRecipes = RM.Furnace, sMicrowaveRecipes = RM.Microwave, sFurnaceFuel = FM.Furnace, sByProductList = RM.ByProductList, sCrucibleSmelting = RM.CrucibleSmelting, sCrucibleAlloying = RM.CrucibleAlloying, sGenerifierRecipes = RM.Generifier, sSharpeningRecipes = RM.Sharpening, sSifterRecipes = RM.Sifting, sHammerRecipes = RM.Hammer, sChiselRecipes = RM.Chisel, sShredderRecipes = RM.Shredder, sCrusherRecipes = RM.Crusher, sLatheRecipes = RM.Lathe, sCutterRecipes = RM.Cutter, sCoagulatorRecipes = RM.Coagulator, sSqueezerRecipes = RM.Squeezer, sJuicerRecipes = RM.Juicer, sMortarRecipes = RM.Mortar, sCompressorRecipes = RM.Compressor, sCentrifugeRecipes = RM.Centrifuge, sElectrolyzerRecipes = RM.Electrolyzer, sRollingMillRecipes = RM.RollingMill, sRollBenderRecipes = RM.RollBender, sRollFormerRecipes = RM.RollFormer, sClusterMillRecipes = RM.ClusterMill, sWiremillRecipes = RM.Wiremill, sMixerRecipes = RM.Mixer, sCannerRecipes = RM.Canner, sInjectorRecipes = RM.Injector, sRoastingRecipes = RM.Roasting, sDryingRecipes = RM.Drying, sFermenterRecipes = RM.Fermenter, sDistilleryRecipes = RM.Distillery, sExtruderRecipes = RM.Extruder, sPolarizerRecipes = RM.Polarizer, sLoomRecipes = RM.Loom, sCookingRecipes = RM.Cooking, sPressRecipes = RM.Press, sBathRecipes = RM.Bath, sSmelterRecipes = RM.Smelter, sLaserEngraverRecipes = RM.LaserEngraver, sWelderRecipes = RM.Welder, sCrystallisationCrucibleRecipes = RM.CrystallisationCrucible, sScannerVisualsRecipes = RM.ScannerVisuals, sPrinterRecipes = RM.Printer, sSluiceRecipes = RM.Sluice, sMagneticSeparatorRecipes = RM.MagneticSeparator, sAutocrafterRecipes = RM.Autocrafter, sMassfabRecipes = RM.Massfab, sScannerMolecularRecipes = RM.ScannerMolecular, sReplicatorRecipes = RM.Replicator, sSlicerRecipes = RM.Slicer, sCokeOvenRecipes = RM.CokeOven, sDistillationTowerRecipes = RM.DistillationTower, sAutoclaveRecipes = RM.Autoclave, sBoxinatorRecipes = RM.Boxinator, sUnboxinatorRecipes = RM.Unboxinator, sFusionRecipes = RM.Fusion, sBlastRecipes = RM.BlastFurnace, sImplosionRecipes = RM.ImplosionCompressor, sVacuumRecipes = RM.VacuumFreezer, sAssemblerRecipes = RM.Assembler, sCNCRecipes = RM.CNC, sFuelsBurn = FM.Burn, sFuelsGas = FM.Gas, sFuelsHot = FM.Hot, sFuelsPlasma = FM.Plasma, sFuelsEngine = FM.Engine, sFuelsTurbine = FM.Turbine, sFuelsMagic = FM.Magic;
+		@Deprecated public static RecipeMap sMaceratorRecipes = new RecipeMap(), sFurnaceRecipes = RM.Furnace, sMicrowaveRecipes = RM.Microwave, sFurnaceFuel = FM.Furnace, sByProductList = RM.ByProductList, sCrucibleSmelting = RM.CrucibleSmelting,
+		sCrucibleAlloying = RM.CrucibleAlloying, sGenerifierRecipes = RM.Generifier, sSharpeningRecipes = RM.Sharpening, sSifterRecipes = RM.Sifting, sHammerRecipes = RM.Hammer, sChiselRecipes = RM.Chisel, sShredderRecipes = RM.Shredder,
+		sCrusherRecipes = RM.Crusher, sLatheRecipes = RM.Lathe, sCutterRecipes = RM.Cutter, sCoagulatorRecipes = RM.Coagulator, sSqueezerRecipes = RM.Squeezer, sJuicerRecipes = RM.Juicer, sMortarRecipes = RM.Mortar, sCompressorRecipes = RM.Compressor,
+		sCentrifugeRecipes = RM.Centrifuge, sElectrolyzerRecipes = RM.Electrolyzer, sRollingMillRecipes = RM.RollingMill, sRollBenderRecipes = RM.RollBender, sRollFormerRecipes = RM.RollFormer, sClusterMillRecipes = RM.ClusterMill,
+		sWiremillRecipes = RM.Wiremill, sMixerRecipes = RM.Mixer, sCannerRecipes = RM.Canner, sInjectorRecipes = RM.Injector, sRoastingRecipes = RM.Roasting, sDryingRecipes = RM.Drying, sFermenterRecipes = RM.Fermenter, sDistilleryRecipes = RM.Distillery,
+		sExtruderRecipes = RM.Extruder, sPolarizerRecipes = RM.Polarizer, sLoomRecipes = RM.Loom, sCookingRecipes = RM.Cooking, sPressRecipes = RM.Press, sBathRecipes = RM.Bath, sSmelterRecipes = RM.Smelter, sLaserEngraverRecipes = RM.LaserEngraver,
+		sWelderRecipes = RM.Welder, sCrystallisationCrucibleRecipes = RM.CrystallisationCrucible, sScannerVisualsRecipes = RM.ScannerVisuals, sPrinterRecipes = RM.Printer, sSluiceRecipes = RM.Sluice, sMagneticSeparatorRecipes = RM.MagneticSeparator,
+		sAutocrafterRecipes = RM.Autocrafter, sMassfabRecipes = RM.Massfab, sScannerMolecularRecipes = RM.ScannerMolecular, sReplicatorRecipes = RM.Replicator, sSlicerRecipes = RM.Slicer, sCokeOvenRecipes = RM.CokeOven, sDistillationTowerRecipes = RM.DistillationTower,
+		sAutoclaveRecipes = RM.Autoclave, sBoxinatorRecipes = RM.Boxinator, sUnboxinatorRecipes = RM.Unboxinator, sFusionRecipes = RM.Fusion, sBlastRecipes = RM.BlastFurnace, sImplosionRecipes = RM.ImplosionCompressor, sVacuumRecipes = RM.VacuumFreezer,
+		sAssemblerRecipes = RM.Assembler, sCNCRecipes = RM.CNC, sFuelsBurn = FM.Burn, sFuelsGas = FM.Gas, sFuelsHot = FM.Hot, sFuelsPlasma = FM.Plasma, sFuelsEngine = FM.Engine, sFuelsTurbine = FM.Turbine, sFuelsMagic = FM.Magic;
 	}
 	
 	public static void reInit() {for (RecipeMap tMapEntry : RecipeMap.RECIPE_MAPS.values()) tMapEntry.reInit();}

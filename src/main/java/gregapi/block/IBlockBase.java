@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregapi.block;
 
 import java.util.List;
 
+import gregapi.item.IItemGT;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -28,16 +29,20 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public interface IBlockBase extends IBlock {
-	// TODO Change all the aMeta s into short for 6.11.00
-	public String name(int aMeta);
-	public boolean useGravity(int aMeta);
-	public boolean doesWalkSpeed(short aMeta);
-	public boolean doesPistonPush(short aMeta);
-	public boolean canCreatureSpawn(int aMeta);
-	public boolean isSealable(int aMeta, byte aSide);
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H);
-	public float getExplosionResistance(int aMeta);
+public interface IBlockBase extends IBlock, IItemGT {
+	/** @returns A number between 1 and 16, the Maximum Metadata for this Block in Item form for things like Creative Tabs. Pillar Blocks like Logs and Beams should return 4. */
+	public byte maxMeta();
+	public String name(byte aMeta);
+	public boolean useGravity(byte aMeta);
+	public boolean doesWalkSpeed(byte aMeta);
+	public boolean doesPistonPush(byte aMeta);
+	public boolean canSilkHarvest(byte aMeta);
+	public boolean canCreatureSpawn(byte aMeta);
+	public boolean isSealable(byte aMeta, byte aSide);
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H);
+	public float getExplosionResistance(byte aMeta);
+	public int getFlammability(byte aMeta);
+	public int getFireSpreadSpeed(byte aMeta);
 	public int getItemStackLimit(ItemStack aStack);
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer);
 	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,5 +46,5 @@ public class BlockBarsSteel extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".15.name", "Steel Bars");
 	}
 	
-	@Override public float getExplosionResistance(int aMeta) {return 8;}
+	@Override public float getExplosionResistance(byte aMeta) {return 8;}
 }

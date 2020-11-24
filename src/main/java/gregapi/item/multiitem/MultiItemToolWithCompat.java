@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,7 +62,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	@Override
 	public float getSaplingModifier(ItemStack aStack, World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ) {
 		IToolStats tStats = getToolStats(aStack);
-		return tStats != null && tStats.isGrafter() ? Math.min(100.0F, (1+getHarvestLevel(aStack, "")) * 20.0F) : 0.0F;
+		return tStats != null && tStats.isGrafter() ? Math.min(100.0F, (1+UT.Code.bind4(getHarvestLevel(aStack, ""))) * 20.0F) : 0.0F;
 	}
 	
 	@Override
@@ -120,7 +120,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	}
 	
 	@Override
-	public boolean canBeStoredInToolbox(ItemStack itemstack) {
+	public boolean canBeStoredInToolbox(ItemStack aStack) {
 		return T;
 	}
 	

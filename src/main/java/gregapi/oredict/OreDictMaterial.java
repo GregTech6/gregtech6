@@ -384,7 +384,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return put(TD.Processing.ELECTROLYSER).alloySimple();
 	}
 	public OreDictMaterial alloySimple() {
-		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE).addAlloyingRecipe(mComponents);
+		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY);
 	}
 	
 	public OreDictMaterial alloyCentrifuge(long aMelt) {
@@ -394,7 +394,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt);
 	}
 	public OreDictMaterial alloySimple(long aMelt) {
-		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE).heat(aMelt).addAlloyingRecipe(mComponents);
+		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY).heat(aMelt);
 	}
 	
 	public OreDictMaterial alloyCentrifuge(long aMelt, long aBoil) {
@@ -404,7 +404,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt, aBoil);
 	}
 	public OreDictMaterial alloySimple(long aMelt, long aBoil) {
-		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE).heat(aMelt, aBoil).addAlloyingRecipe(mComponents);
+		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY).heat(aMelt, aBoil);
 	}
 	
 	public OreDictMaterial alloyCentrifuge(OreDictMaterial aHeat) {
@@ -414,7 +414,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return put(TD.Processing.ELECTROLYSER).alloySimple(aHeat);
 	}
 	public OreDictMaterial alloySimple(OreDictMaterial aHeat) {
-		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE).heat(aHeat).addAlloyingRecipe(mComponents);
+		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY).heat(aHeat);
 	}
 	
 	public OreDictMaterial addAlloyingRecipe(IOreDictConfigurationComponent aConfiguration) {
@@ -558,7 +558,6 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		} else {
 			ERR.println("WARNING: " + mNameInternal + " has a UUM Config with impossible Materials.");
 		}
-		put(TD.Processing.UUM);
 		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2);
 	}
 	public OreDictMaterial uumMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3) {
@@ -602,8 +601,61 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7);
 	}
 	
-	public OreDictMaterial setTooltip(String aTooltip) {
+	// Yes it is spelled Aloy because of being Four Letters long, for alignment reasons.
+	
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7).alloyCentrifuge();
+	}
+	
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7).alloyCentrifuge();
+	}
+	
+	@Deprecated public OreDictMaterial setTooltip(String aTooltip) {mTooltipChemical = aTooltip; return this;}
+	
+	public OreDictMaterial tooltip(String aTooltip) {
 		mTooltipChemical = aTooltip;
+		return this;
+	}
+	
+	public OreDictMaterial handle(OreDictMaterial aHandle) {
+		mHandleMaterial = aHandle;
 		return this;
 	}
 	
@@ -1052,7 +1104,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 */
 	public OreDictMaterial setPriorityPrefix(int aIndex) {
 		mPriorityPrefixIndex = aIndex;
-		if (!mNameInternal.startsWith("Clay")) switch (mPriorityPrefixIndex) {
+		if (!mNameInternal.startsWith("Clay") && !"Gravel".equalsIgnoreCase(mNameInternal)) switch (mPriorityPrefixIndex) {
 		case 0: break;
 		case 1: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
 		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;

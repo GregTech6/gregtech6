@@ -132,29 +132,29 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	}
 	
 	@Override
-	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
-		if (ST.equal(aStack, mAdditionalInput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		if (ST.equal(aStack, mAdditionalInput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 		return aData != null && aData.hasValidMaterialData() && UT.Code.contains(aData.mPrefix, mInputPrefixes) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
 	}
 	
 	@Override
-	public boolean addRecipesProducing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
-		if (ST.equal(aStack, mAdditionalOutput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		if (ST.equal(aStack, mAdditionalOutput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 		return aData != null && aData.hasValidMaterialData() && (UT.Code.contains(aData.mPrefix, mOutputPrefixes) || (mOutputPulverizedRemains && aData.mPrefix == OP.dust)) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
 	}
 	
 	@Override
-	public boolean addRecipesUsing(RecipeMap aMap, Fluid aFluid) {
+	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mAllowToGenerateAllRecipesAtOnce && mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && addAllRecipesInternal(aMap);
 	}
 	
 	@Override
-	public boolean addRecipesProducing(RecipeMap aMap, Fluid aFluid) {
+	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mAllowToGenerateAllRecipesAtOnce && mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && addAllRecipesInternal(aMap);
 	}
 	
 	@Override
@@ -189,8 +189,14 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	
 	@Override
 	public boolean onAddedToMap(RecipeMap aMap) {
-		if (mFluidInputPerUnit  != null) aMap.mMaxFluidInputSize  = Math.max(mFlatFluidCosts ? mFluidInputPerUnit.amount : mFluidInputPerUnit.amount * 4, aMap.mMaxFluidInputSize);
-		if (mFluidOutputPerUnit != null) aMap.mMaxFluidOutputSize = Math.max(mFluidOutputPerUnit.amount * 16, aMap.mMaxFluidOutputSize);
+		if (mFluidInputPerUnit != null) {
+			aMap.mMaxFluidInputSize = Math.max(mFlatFluidCosts ? mFluidInputPerUnit.amount : mFluidInputPerUnit.amount * 4, aMap.mMaxFluidInputSize);
+			Long tSize = aMap.mMinInputTankSizes.get(mFluidInputPerUnit.getFluid().getName());
+			if (tSize == null || tSize < mFluidInputPerUnit.amount) aMap.mMinInputTankSizes.put(mFluidInputPerUnit.getFluid().getName(), (long)mFluidInputPerUnit.amount);
+		}
+		if (mFluidOutputPerUnit != null) {
+			aMap.mMaxFluidOutputSize = Math.max(mFluidOutputPerUnit.amount * 16, aMap.mMaxFluidOutputSize);
+		}
 		return T;
 	}
 	
