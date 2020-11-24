@@ -445,7 +445,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					RM.Furnace.addFakeRecipe(F, RM.Furnace.findRecipe(null, null, F, Long.MAX_VALUE, NI, ZL_FS, ST.array((ItemStack)tObject)));
 				}
 				// Now for hiding stuff from NEI that should have never been there in the first place.
-				if (!SHOW_MICROBLOCKS && NEI) for (Item aItem : new Item[] {ST.item(MD.FMB, "microblock"), ST.item(MD.ExU, "microblocks"), ST.item(MD.AE, "item.ItemFacade")}) if (aItem != null) {
+				if (!SHOW_MICROBLOCKS && NEI) for (Item aItem : new Item[] {ST.item(MD.FMB, "microblock"), ST.item(MD.ExU, "microblocks"), ST.item(MD.ExS, "microblocks"), ST.item(MD.AE, "item.ItemFacade")}) if (aItem != null) {
 					ST.hide(aItem);
 					List<ItemStack> tList = new ArrayListNoNulls<>();
 					aItem.getSubItems(aItem, CreativeTabs.tabAllSearch, tList);

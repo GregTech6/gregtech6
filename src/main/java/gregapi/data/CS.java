@@ -1750,25 +1750,25 @@ public class CS {
 		@SuppressWarnings("hiding")
 		public static final String
 		  MC                = "minecraft"
-
+		
 		, GT                = "gregtech"
 		, GAPI              = "gregapi"
 		, GAPI_POST         = "gregapi_post"
-
+		
 		, QT                = "qwertech"
-
+		
 		, WAILA             = "Waila"
-
+		
 		, IC2               = "IC2"
 		, IC2C              = "IC2-Classic-Spmod"
-
+		
 		, NC                = "IC2NuclearControl"
 		, IHL               = "ihl"
-
+		
 		, FMB               = "ForgeMicroblock"
 		, FUNK              = "funkylocomotion"
 		, BAUBLES           = "Baubles"
-
+		
 		, TC                = "Thaumcraft"
 		, TCFM              = "ForbiddenMagic"
 		, TECHNOM           = "technom"
@@ -1789,9 +1789,9 @@ public class CS {
 		, CANDY             = "candycraftmod"
 		, ABYSSAL           = "abyssalcraft"
 		, SOULFOREST        = "soulforest"
-
+		
 		, RC                = "Railcraft"
-
+		
 		, IE                = "ImmersiveEngineering"
 		
 		, TE                = "ThermalExpansion"
@@ -1821,13 +1821,13 @@ public class CS {
 		, LOSTBOOKS         = "LostBooks"
 		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
-
+		
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"
 		, PFAA              = "PFAAGeologica"
 		, MIN               = "mineralogy"
 		, RH                = "globbypotato_rockhounding"
-
+		
 		, FR                = "Forestry"
 		, FRMB              = "MagicBees"
 		, BINNIE            = "BinnieCore"
@@ -1836,7 +1836,7 @@ public class CS {
 		, BINNIE_GENETICS   = "Genetics"
 		, BINNIE_BOTANY     = "Botany"
 		, BINNIE_PATCHER    = "BinniePatcher"
-
+		
 		, MFR               = "MineFactoryReloaded"
 		, PnC               = "PneumaticCraft"
 		, ExU               = "ExtraUtilities"
@@ -1851,25 +1851,25 @@ public class CS {
 		, BR                = "BigReactors"
 		, HBM               = "hbm"
 		, ELN               = "Eln"
-
+		
 		, DRGN              = "DragonAPI"
 		, RoC               = "RotaryCraft"
 		, ReC               = "ReactorCraft"
 		, ElC               = "ElectriCraft"
 		, CrC               = "ChromatiCraft"
-
+		
 		, VOLTZ             = "voltzengine"
 		, MFFS              = "mffs"
 		, ICBM              = "icbmclassic"
 		, ATSCI             = "atomicscience"
-
+		
 		, Mek               = "Mekanism"
 		, Mek_Tools         = "MekanismTools"
 		, Mek_Generators    = "MekanismGenerators"
-
+		
 		, OC                = "OpenComputers"
 		, CC                = "ComputerCraft"
-
+		
 		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
 		, CookBook          = "cookingbook"
@@ -1931,7 +1931,7 @@ public class CS {
 		, LycM_Inferno      = "infernomobs"
 		, LycM_Demon        = "demonmobs"
 		, LycM_Shadow       = "shadowmobs"
-
+		
 		, BC                = "BuildCraft|Core"
 		, BC_SILICON        = "BuildCraft|Silicon"
 		, BC_TRANSPORT      = "BuildCraft|Transport"
@@ -1939,7 +1939,7 @@ public class CS {
 		, BC_ENERGY         = "BuildCraft|Energy"
 		, BC_BUILDERS       = "BuildCraft|Builders"
 		, BC_ROBOTICS       = "BuildCraft|Robotics"
-
+		
 		, RP                = "Redpower"
 		, BP                = "bluepower"
 		, PR                = "ProjRed|Core"
@@ -1951,15 +1951,15 @@ public class CS {
 		, PR_COMPATIBILITY  = "ProjRed|Compatibility"
 		, PR_FABRICATION    = "ProjRed|Fabrication"
 		, PR_ILLUMINATION   = "ProjRed|Illumination"
-
+		
 		, WR_CBE_C          = "WR-CBE|Core"
 		, WR_CBE_A          = "WR-CBE|Addons"
 		, WR_CBE_L          = "WR-CBE|Logic"
-
+		
 		, COFH_API          = "CoFHAPI"
 		, COFH_API_ENERGY   = "CoFHAPI|energy"
 		, COFH_CORE         = "CoFHCore"
-
+		
 		, OB                = "OpenBlocks"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
@@ -1969,7 +1969,7 @@ public class CS {
 		, BWM               = "weaponmod"
 		, OMT               = "openmodularturrets"
 		, TG                = "Techguns"
-
+		
 		, FM                = "meteors"
 		, GC                = "GalacticraftCore"
 		, GC_PLANETS        = "GalacticraftMars"

@@ -318,6 +318,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Mauftrium              , ST.make(MD.ALF, "ElvenItems", 1, 7));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Iffesal                , ST.make(MD.ALF, "ElvenItems", 1, 10));
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Ag                     , ST.make(MD.WTCH, "ingredient", 1, 157));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Bedrockium             , ST.make(MD.ExS, "block_bedrockium", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Bedrockium             , ST.make(MD.ExS, "bedrockiumIngot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Bedrockium             , ST.make(MD.ExU, "block_bedrockium", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Bedrockium             , ST.make(MD.ExU, "bedrockiumIngot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Chocolate              , ST.make(MD.AA, "itemFood", 1, 9));

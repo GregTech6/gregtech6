@@ -267,6 +267,10 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.IE, "blueprint"                            ,   W, (byte) 28);
 			BooksGT.BOOK_REGISTER.put(MD.IE, "tool"                                 ,   3, (byte) 41);
 		}
+		if (MD.ExS.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.ExS, "scanner"                             ,   W, (byte) 43);
+			BooksGT.BOOK_REGISTER.put(MD.ExS, "divisionSigil"                       ,   W, (byte) 50);
+		}
 		if (MD.ExU.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.ExU, "scanner"                             ,   W, (byte) 43);
 			BooksGT.BOOK_REGISTER.put(MD.ExU, "divisionSigil"                       ,   W, (byte) 50);

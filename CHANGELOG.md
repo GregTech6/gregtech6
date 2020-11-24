@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [IMPROVED] Basic Machine Input Tanks now have Capacities based off the actual Recipe Inputs. That way a single huge Recipe wont mess up automation of the many smaller ones.
 [FIXED] Some minor Inconsistencies.
 [FIXED] Insanely large Capacity Pipes had Integer Overflow Issues.
+[FIXED] Miniature Portals for the ExtraSimple fork of ExtraUtilities.
 
 
 6.14.03:

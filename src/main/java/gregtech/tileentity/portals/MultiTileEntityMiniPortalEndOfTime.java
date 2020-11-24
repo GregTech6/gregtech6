@@ -64,7 +64,7 @@ public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPorta
 	@Override
 	public void findTargetPortal() {
 		mTarget = null;
-		if (MD.ExU.mLoaded && worldObj != null && isServerSide()) {
+		if ((MD.ExU.mLoaded || MD.ExS.mLoaded) && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 512*512;
 				for (MultiTileEntityMiniPortal tTarget : sListEndOfTimeSide) if (tTarget != this && !tTarget.isDead()) {
@@ -95,7 +95,7 @@ public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPorta
 	
 	@Override
 	public void addThisPortalToLists() {
-		if (MD.ExU.mLoaded && worldObj != null && isServerSide()) {
+		if ((MD.ExU.mLoaded || MD.ExS.mLoaded) && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
 				for (MultiTileEntityMiniPortal tPortal : sListEndOfTimeSide) tPortal.findTargetPortal();

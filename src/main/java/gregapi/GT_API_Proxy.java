@@ -636,7 +636,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							}
 							if (tHungerEffect) tCount+=(tStack.stackSize * 64) / Math.max(1, tStack.getMaxStackSize());
 							if (INVENTORY_UNIFICATION) OM.set_(tStack);
-							ST.update(tStack, aEvent.player.worldObj, UT.Code.roundDown(aEvent.player.posX), UT.Code.roundDown(aEvent.player.posY), UT.Code.roundDown(aEvent.player.posZ));
+							ST.update(tStack, aEvent.player);
 							if (tStack.hasTagCompound() && tStack.getTagCompound().hasNoTags()) tStack.setTagCompound(null);
 						}
 					}
@@ -1148,7 +1148,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
-			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity.worldObj, UT.Code.roundDown(aEvent.entity.posX), UT.Code.roundDown(aEvent.entity.posY), UT.Code.roundDown(aEvent.entity.posZ));
+			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
 			if (ST.valid(aStack) && aStack.stackSize > 0) {
 				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
 				if (((EntityItem)aEvent.entity).lifespan > 1200) {
