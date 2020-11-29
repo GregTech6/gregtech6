@@ -65,6 +65,7 @@ import gregtech.blocks.fluids.BlockWaterlike;
 import gregtech.entities.Override_Drops;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.tileentity.misc.MultiTileEntityCertificate;
+import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -95,7 +96,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public final HashSetNoNulls<String> mSupporterListSilver = new HashSetNoNulls<>();
 	public final HashSetNoNulls<String> mSupporterListGold = new HashSetNoNulls<>();
 	
-	public String mMessage = "";
+	public String mMessage = Strings.EMPTY;
 	
 	public boolean mDisableVanillaOres = T, mVersionOutdated = F;
 	public int mSkeletonsShootGTArrows = 16, mFlintChance = 30;
@@ -112,44 +113,70 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		super.onProxyBeforePreInit(aMod, aEvent);
 		new Thread(new Runnable() {@Override public void run() {
 		
-		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
-			// Using http because Java screws up https on Windows at times.
-			String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
-			// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
-			// And just ignore the first Versions of each Major Release, since that one is usually the buggiest or a quickfix.
-			mVersionOutdated = !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
-			
-			OUT.println("GT_Download_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
-		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed Downloading Version Number of the latest Major Version!");}
-		
-		if (downloadSupporterListSilverFromMain()) {
-			OUT.println("GT_Download_Thread: Downloaded Silver Supporter List!");
+		List<String>
+		tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlist.txt", T);
+		if (tTextFile != null && tTextFile.size() > 3) {
+			mSupporterListSilver.addAll(tTextFile);
 		} else try {
 			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlist.txt"));
 			while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
-			OUT.println("GT_Download_Thread: Failed downloading Silver Supporter List, using interal List!");
+			OUT.println("GT_DL_Thread: Failed downloading Silver Supporter List, using interal List!");
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		if (downloadSupporterListGoldFromMain()) {
-			OUT.println("GT_Download_Thread: Downloaded Gold Supporter List!");
+		tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlistgold.txt", T);
+		if (tTextFile != null && tTextFile.size() > 3) {
+			mSupporterListGold.addAll(tTextFile);
 		} else try {
 			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlistgold.txt"));
 			while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
-			OUT.println("GT_Download_Thread: Failed downloading Gold Supporter List, using interal List!");
+			OUT.println("GT_DL_Thread: Failed downloading Gold Supporter List, using interal List!");
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		try {
-			// Using http because Java screws up https on Windows at times.
-			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt").openStream());
-			while (tScanner.hasNextLine()) mMessage += tScanner.nextLine() + " ";
-			tScanner.close();
-			if (mMessage.length() > 5) OUT.println("GT_Download_Thread: Downloaded News.");
-		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed downloading News!");}
-		
 		mSupporterListSilver.removeAll(mSupporterListGold);
+		
+		if (CODE_CLIENT) {
+			tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt", F);
+			if (tTextFile != null) {
+				for (String tLine : tTextFile) mMessage += tLine + " ";
+				if (mMessage.length() <= 5) mMessage = Strings.EMPTY;
+			}
+			
+			if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
+				// Using http because Java screws up https on Windows at times.
+				String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("http://updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
+				// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
+				// And just ignore the first Versions of each Major Release, since that one is usually the buggiest or a quickfix.
+				mVersionOutdated = !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
+				
+				OUT.println("GT_DL_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
+			} catch(Throwable e) {OUT.println("GT_DL_Thread: Failed Downloading Version Number of the latest Major Version!");}
+		}
+		
 		}}).start();
+	}
+	
+	protected List<String> downloadTextFile(String aURL, boolean aLowercase) {
+		List<String> rList = new ArrayListNoNulls<>();
+		try {
+			Scanner tScanner = new Scanner(new URL("https://"+aURL).openStream());
+			while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
+			tScanner.close();
+			return rList;
+		} catch(Throwable f) {
+			OUT.println("GT_DL_Thread: Failed HTTPS Connection, trying HTTP...");
+			try {
+				Scanner tScanner = new Scanner(new URL("http://"+aURL).openStream());
+				while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
+				tScanner.close();
+				return rList;
+			} catch(Throwable e) {
+				OUT.println("GT_DL_Thread: Failed HTTP Connection too. Client might be disconnected from the Internet.");
+				e.printStackTrace(DEB);
+			}
+		}
+		return null;
 	}
 	
 	@SubscribeEvent
@@ -489,26 +516,4 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SafeVarargs public final Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, Set<String>... aFluidList) {return FL.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFluidList);}    
 	@SafeVarargs public final Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return FL.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
 	@SafeVarargs public final Fluid addFluid(String aName, IIconContainer aTexture, String aLocalized, OreDictMaterial aMaterial, short[] aRGBa, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return FL.create(aName, aTexture, aLocalized, aMaterial, aRGBa, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
-	
-	public boolean downloadSupporterListSilverFromMain() {
-		try {
-			// Using http because Java screws up https on Windows at times.
-			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlist.txt").openStream());
-			while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
-			tScanner.close();
-			return mSupporterListSilver.size() > 3;
-		} catch(Throwable e) {e.printStackTrace(DEB);}
-		return F;
-	}
-	
-	public boolean downloadSupporterListGoldFromMain() {
-		try {
-			// Using http because Java screws up https on Windows at times.
-			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlistgold.txt").openStream());
-			while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
-			tScanner.close();
-			return mSupporterListGold.size() > 3;
-		} catch(Throwable e) {e.printStackTrace(DEB);}
-		return F;
-	}
 }

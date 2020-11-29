@@ -60,8 +60,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
-	public boolean mCheckNextTick = T, mMovedLastTick = T;
-	public byte mMode = 64;
+	public byte mMode = 64, mCheck = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -153,10 +152,9 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			int tMovedItems = 0;
-			if (mMovedLastTick) {
-				mMovedLastTick = F;
-			} else if ((mInventoryChanged || mCheckNextTick || mBlockUpdated || aTimer % 64 == 32) && !hasRedstoneIncoming()) {
-				mCheckNextTick = F;
+			if (mCheck > 0) {
+				mCheck--;
+			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated) && !hasRedstoneIncoming()) {
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
@@ -191,7 +189,9 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					}
 				}
 				if (tMovedItems > 0) {
-					mMovedLastTick = T;
+					mCheck =  3;
+				} else {
+					mCheck = -1;
 				}
 			}
 			if (mInventoryChanged) {
@@ -204,7 +204,6 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 				}
 			}
 			if (tMovedItems > 0) {
-				mCheckNextTick = T;
 				for (byte tSide : ALL_SIDES_BUT_TOP) if (tSide != mFacing) {
 					DelegatorTileEntity<TileEntity> tDelegatorUpdate = getAdjacentTileEntity(tSide);
 					if (tDelegatorUpdate.mTileEntity instanceof ITileEntityAdjacentInventoryUpdatable) {
@@ -230,7 +229,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return mMode;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_TOP[aSide] || aSide == mFacing) mCheckNextTick = T;}
+	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_TOP[aSide] || aSide == mFacing) if (mCheck < 0) mCheck = 0;}
 	
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}

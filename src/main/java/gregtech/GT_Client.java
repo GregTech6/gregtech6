@@ -201,7 +201,7 @@ public class GT_Client extends GT_Proxy {
 				if (FIRST_CLIENT_PLAYER_TICK) {
 					FIRST_CLIENT_PLAYER_TICK = F;
 					ChatComponentText tLink;
-					if (mMessage.length() > 5 && ConfigsGT.CLIENT.get(ConfigCategories.news, mMessage, T)) {
+					if (!mMessage.isEmpty() && ConfigsGT.CLIENT.get(ConfigCategories.news, mMessage, T)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(mMessage));
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.DGRAY + ""));
 						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable message in the clientside gregtech.cfg");

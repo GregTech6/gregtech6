@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Life and things)
 [IMPROVED] Ores that generate between two Stone Layers are now no longer stopped by other Mods equal Blocks (like comparing GT Marble with Chisel Marble, both should obviously count as Marble, which they did not before)
 [IMPROVED] Basic Machine Input Tanks now have Capacities based off the actual Recipe Inputs. That way a single huge Recipe wont mess up automation of the many smaller ones.
+[IMPROVED] The URL leading to the Supporter Lists to something that runs on a different Subdomain, so that it is easier to distinguish the traffic when using something like Pi-Hole as your DNS and Adblocker, as I happen to do since last Release.
 [FIXED] Some minor Inconsistencies.
 [FIXED] Insanely large Capacity Pipes had Integer Overflow Issues.
 [FIXED] Miniature Portals for the ExtraSimple fork of ExtraUtilities.

@@ -60,8 +60,8 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
-	public byte mMode = 0;
-	public boolean mCheckNextTick = T, mExactMode = F, mMovedLastTick = T;
+	public boolean mExactMode = F;
+	public byte mMode = 0, mCheck = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -166,10 +166,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			int tMovedItems = 0;
-			if (mMovedLastTick) {
-				mMovedLastTick = F;
-			} else if ((mInventoryChanged || mCheckNextTick || mBlockUpdated || aTimer % 64 == 32) && !hasRedstoneIncoming()) {
-				mCheckNextTick = F;
+			if (mCheck > 0) {
+				mCheck--;
+			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated) && !hasRedstoneIncoming()) {
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
@@ -204,7 +203,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					}
 				}
 				if (tMovedItems > 0) {
-					mMovedLastTick = T;
+					mCheck =  3;
+				} else {
+					mCheck = -1;
 				}
 				if (mInventoryChanged) {
 					for (int i = 0, k = getSizeInventory(), l = getInventoryStackLimit(); i < k; i++) for (int j = i+1; j < k; j++) if (slotHas(j)) {
@@ -221,7 +222,6 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					}
 				}
 				if (tMovedItems > 0) {
-					mCheckNextTick = T;
 					for (byte tSide : ALL_SIDES_BUT_TOP) if (tSide != mFacing) {
 						DelegatorTileEntity<TileEntity> tDelegatorUpdate = getAdjacentTileEntity(tSide);
 						if (tDelegatorUpdate.mTileEntity instanceof ITileEntityAdjacentInventoryUpdatable) {
@@ -248,7 +248,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return mMode<=0?64:mMode*Math.max(1, 64/mMode);}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_TOP[aSide] || aSide == mFacing) mCheckNextTick = T;}
+	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_TOP[aSide] || aSide == mFacing) if (mCheck < 0) mCheck = 0;}
 	
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
