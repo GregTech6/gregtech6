@@ -653,6 +653,14 @@ public class Loader_Recipes_Replace implements Runnable {
 				, PLT+ROD+PLT
 				, FIL+ROD+HAM)
 		, new RecipeReplacer(ST.array
+				(INGT, null, INGT
+				,INGT, STCK, INGT
+				,null, STCK, null)
+				, "WarAxe"
+				, PLT+___+PLT
+				, PLT+ROD+PLT
+				, FIL+ROD+HAM)
+		, new RecipeReplacer(ST.array
 				(INGT, INGT, null
 				,INGT, STCK, STCK
 				,INGT, INGT, null))
