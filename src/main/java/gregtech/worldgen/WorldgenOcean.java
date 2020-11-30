@@ -62,16 +62,16 @@ public class WorldgenOcean extends WorldgenObject {
 				if (tStorage == null) continue;
 				final Block tBlock = tStorage.getBlockByExtId(tX, tY & 15, tZ);
 				if (tBlock.isOpaqueCube()) break;
-				if (tBlock == NB || tBlock == BlocksGT.Ocean || tBlock.isAir(aWorld, aMinX+tX, tY, aMinZ+tZ)) continue;
-				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water) continue;
+				
+				if (tPlacedNone) {
+					aWorld.setBlock(tX, tY, tZ, BlocksGT.Ocean);
+					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Ocean, 10+RNGSUS.nextInt(90));
+					tPlacedNone = F;
+				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Ocean);
-					tStorage.setExtBlockMetadata(tX, tY & 15, tZ, 0);
-					if (tPlacedNone) {
-						aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Ocean, 10+RNGSUS.nextInt(90));
-						tPlacedNone = F;
-					}
-					temp = T;
 				}
+				temp = T;
 			}
 		}
 		return temp;

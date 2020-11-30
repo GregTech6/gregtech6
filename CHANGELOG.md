@@ -1181,7 +1181,7 @@ And I need certain things to be fixed before I can work properly again, otherwis
 
 
 6.09.00:
-[NOTE] GregTech-6 is now OpenSource (LGPLv3) and on git.gregtech.overminddl1.com. Don't worry, I will still be working on GT6 myself, this is just an upgrade. ;D
+[NOTE] GregTech-6 is now OpenSource (LGPLv3) and on https://github.com/GregTech6/gregtech6 . Don't worry, I will still be working on GT6 myself, this is just an upgrade. ;D
 [NOTE] Some GT6 Addons like QwerTech or GT Weapons Works will need to be recompiled in order to work with this Version.
 [BROKEN] IC2 Sounds are currently not available due to going OpenSource, and IC2 obviously not being OpenSource. (I had to copy their Sound Files to make shit work, because they clearly didn't care to make things proper)
 [BROKEN AND FIXED LATER] WAILA is somehow no longer able to display the Name of my Blocks. I wonder if it is because the WAILA API is inside the new Dev Environment, because I never did WAILA Compatibility at all.
@@ -1191,7 +1191,7 @@ And I need certain things to be fixed before I can work properly again, otherwis
 [ADDED] My own selfmade Wrench and Screwdriver Sounds.
 
 
-//=== Version Number Jump because of going OpenSource at git.gregtech.overminddl1.com and some resulting refactoring - Don't worry, I will still be working on GT6 myself. ;D ===//
+//=== Version Number Jump because of going OpenSource at https://github.com/GregTech6/gregtech6 and some resulting refactoring - Don't worry, I will still be working on GT6 myself. ;D ===//
 
 
 6.08.04:

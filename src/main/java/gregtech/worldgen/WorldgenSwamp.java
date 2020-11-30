@@ -63,16 +63,16 @@ public class WorldgenSwamp extends WorldgenObject {
 				if (tStorage == null) continue;
 				final Block tBlock = tStorage.getBlockByExtId(tX, tY & 15, tZ);
 				if (tBlock.isOpaqueCube()) break;
-				if (tBlock == NB || tBlock == BlocksGT.Swamp || tBlock.isAir(aWorld, aMinX+tX, tY, aMinZ+tZ)) continue;
-				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water || (tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) {
+				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water && !(tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) continue;
+				
+				if (tPlacedNone) {
+					aWorld.setBlock(tX, tY, tZ, BlocksGT.Swamp);
+					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 10+RNGSUS.nextInt(90));
+					tPlacedNone = F;
+				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Swamp);
-					tStorage.setExtBlockMetadata(tX, tY & 15, tZ, 0);
-					if (tPlacedNone) {
-						aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 10+RNGSUS.nextInt(90));
-						tPlacedNone = F;
-					}
-					temp = T;
 				}
+				temp = T;
 			}
 		}
 		return temp;
