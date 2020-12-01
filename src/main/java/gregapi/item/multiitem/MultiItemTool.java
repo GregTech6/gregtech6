@@ -89,6 +89,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public MultiItemTool(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setMaxStackSize(1);
+		
+		if (MD.BG2.mLoaded) try {UT.Reflection.callPublicMethod(Class.forName("mods.battlegear2.api.weapons.WeaponRegistry"), "addTwoHanded", make(W));} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	/**

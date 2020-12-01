@@ -153,7 +153,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				OUT.println("GT_DL_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
 			} catch(Throwable e) {
 				OUT.println("GT_DL_Thread: Failed Downloading Version Number of the latest Major Version!");
-				e.printStackTrace(DEB);
+				e.printStackTrace(ERR);
 			}
 		}
 		

@@ -249,6 +249,7 @@ public class MD {
 	, MF2               = new ModData(ModIDs.MF2                , "MineFantasy II")
 	, FZ                = new ModData(ModIDs.FZ                 , "Factorization")
 	, BWM               = new ModData(ModIDs.BWM                , "Balkon's Weapon Mod")
+	, BG2               = new ModData(ModIDs.BG2                , "Battlegear 2")
 	, OMT               = new ModData(ModIDs.OMT                , "Open Modular Turrets")
 	, TG                = new ModData(ModIDs.TG                 , "Tech Guns")
 	

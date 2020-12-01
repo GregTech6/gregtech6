@@ -1967,6 +1967,7 @@ public class CS {
 		, MF2               = "minefantasy2"
 		, FZ                = "factorization"
 		, BWM               = "weaponmod"
+		, BG2               = "battlegear2"
 		, OMT               = "openmodularturrets"
 		, TG                = "Techguns"
 		
