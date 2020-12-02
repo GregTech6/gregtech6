@@ -38,6 +38,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityWolf;
@@ -54,7 +55,9 @@ public class Override_Drops {
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
 		
-		if ("ZombieFarmer".equalsIgnoreCase(aClass)) {
+		if (aDead instanceof EntityAnimal && aDead.isChild()) {
+			tReplaceIron = T;
+		} else if ("ZombieFarmer".equalsIgnoreCase(aClass)) {
 			tReplaceIron = T;
 			
 			if (aPlayerKill) {
@@ -431,6 +434,10 @@ public class Override_Drops {
 			}
 			
 			}
+		} else if (aClass.equalsIgnoreCase("EntityHoglin")) {
+			tReplaceIron = T;
+		} else if (aClass.equalsIgnoreCase("EntityZoglin")) {
+			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityStrider")) {
 			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
@@ -470,7 +477,7 @@ public class Override_Drops {
 			int tAmount = 1+RNGSUS.nextInt(4);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_DogMeat_Cooked.get(1):IL.Food_DogMeat_Raw.get(1)));
-		} else if (aDead instanceof EntityHorse && !((EntityHorse)aDead).isChild()) {
+		} else if (aDead instanceof EntityHorse) {
 			tReplaceIron = T;
 			int tAmount = 1+RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
@@ -483,7 +490,7 @@ public class Override_Drops {
 			case 3: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.rotten_flesh, 1, 0))); break;
 			case 4: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.bone, 1, 0))); break;
 			}
-		} else if (aDead instanceof EntityWolf && !((EntityWolf)aDead).isChild()) {
+		} else if (aDead instanceof EntityWolf) {
 			tReplaceIron = T;
 			int tAmount = RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
@@ -495,7 +502,7 @@ public class Override_Drops {
 			int tAmount = RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
-		} else if (aDead instanceof EntitySheep && !((EntitySheep)aDead).isChild()) {
+		} else if (aDead instanceof EntitySheep) {
 			tReplaceIron = T;
 			if (!MD.EtFu.mLoaded && !MD.GaSu.mLoaded) {
 			int tAmount = RNGSUS.nextInt(3);
@@ -508,6 +515,9 @@ public class Override_Drops {
 		for (EntityItem tEntity : aDrops) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
 			// Replace Iron and Steel with Lead
 			if (tReplaceIron) {
+				if (OM.is("plateAnyIronOrSteel", tStack)) {
+					ST.set(tStack, OP.plate.mat(MT.Pb, 1), F, F);
+				} else
 				if (OM.is("ingotAnyIronOrSteel", tStack)) {
 					ST.set(tStack, OP.ingot.mat(MT.Pb, 1), F, F);
 				} else
