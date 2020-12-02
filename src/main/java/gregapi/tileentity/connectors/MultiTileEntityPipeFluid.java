@@ -57,8 +57,10 @@ import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import gregapi.util.CR;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -208,14 +210,22 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		mTransferredAmount = 0;
 		
 		@SuppressWarnings("rawtypes")
-		DelegatorTileEntity[] tAdjacentTanks = {
-		canEmitFluidsTo((byte)0) ? getAdjacentTank((byte)0) : null,
-		canEmitFluidsTo((byte)1) ? getAdjacentTank((byte)1) : null,
-		canEmitFluidsTo((byte)2) ? getAdjacentTank((byte)2) : null,
-		canEmitFluidsTo((byte)3) ? getAdjacentTank((byte)3) : null,
-		canEmitFluidsTo((byte)4) ? getAdjacentTank((byte)4) : null,
-		canEmitFluidsTo((byte)5) ? getAdjacentTank((byte)5) : null
-		};
+		DelegatorTileEntity<MultiTileEntityPipeFluid>[] tAdjacentPipes = new DelegatorTileEntity[6];
+		DelegatorTileEntity<IFluidHandler>[] tAdjacentTanks = new DelegatorTileEntity[6];
+		DelegatorTileEntity<TileEntity>[] tAdjacentOther = new DelegatorTileEntity[6];
+		
+		for (byte tSide : ALL_SIDES_VALID) if (canEmitFluidsTo(tSide)) {
+			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(tSide);
+			if (tTileEntity != null) {
+				if (tTileEntity.mTileEntity instanceof MultiTileEntityPipeFluid) {
+					tAdjacentPipes[tSide] = new DelegatorTileEntity<>((MultiTileEntityPipeFluid)tTileEntity.mTileEntity, tTileEntity);
+				} else if (tTileEntity.mTileEntity instanceof IFluidHandler) {
+					tAdjacentTanks[tSide] = new DelegatorTileEntity<>((IFluidHandler)tTileEntity.mTileEntity, tTileEntity);
+				} else {
+					tAdjacentOther[tSide] = tTileEntity;
+				}
+			}
+		}
 		
 		for (FluidTankGT tTank : mTanks) {
 			FluidStack tFluid = tTank.get();
@@ -258,93 +268,108 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				}
 			}
 			
-			distribute(tTank, tAdjacentTanks);
+			if (tTank.has()) distribute(tTank, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
 		}
 		
 		mLastReceivedFrom = 0;
 	}
 	
-	public void distribute(FluidTankGT aTank, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks) {
-		ArrayListNoNulls<DelegatorTileEntity<IFluidHandler>> tAdjacentTanks = new ArrayListNoNulls<>(), tAdjacentPipes = new ArrayListNoNulls<>();
-		DelegatorTileEntity<IFluidHandler> tTank;
-		
-		long tAmount = aTank.amount();
-		if (tAmount <= 0) return;
-		byte tPipeCount = 1;
-		
-		for (byte aSide : ALL_SIDES_VALID) if (aAdjacentTanks[aSide] != null && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
-			tTank = aAdjacentTanks[aSide];
-			if (tTank.mTileEntity == null) {
-				if (tTank.getBlock() instanceof BlockCauldron && aTank.has(334) && FL.water(aTank.get())) {
-					switch(tTank.getMetaData()) {
+	public void distribute(FluidTankGT aTank, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
+		// Top Priority is filling Cauldrons and other specialties.
+		for (byte tSide : ALL_SIDES_VALID_ORDER[(int)(mTimer%6)]) if (aAdjacentOther[tSide] != null) {
+			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
+				// Cover says no.
+				continue;
+			}
+			if (aAdjacentOther[tSide].mTileEntity == null) {
+				Block tBlock = aAdjacentOther[tSide].getBlock();
+				// Filling up Cauldrons from Vanilla. Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
+				if ((tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) && aTank.has(334) && FL.water(aTank.get())) {
+					switch(aAdjacentOther[tSide].getMetaData()) {
 					case 0:
-						if (aTank.drainAll(1000)) {tTank.setMetaData(3); break;}
-						if (aTank.drainAll( 667)) {tTank.setMetaData(2); break;}
-						if (aTank.drainAll( 334)) {tTank.setMetaData(1); break;}
+						if (aTank.drainAll(1000)) {aAdjacentOther[tSide].setMetaData(3); break;}
+						if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(2); break;}
+						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(1); break;}
 						break;
 					case 1:
-						if (aTank.drainAll( 667)) {tTank.setMetaData(3); break;}
-						if (aTank.drainAll( 334)) {tTank.setMetaData(2); break;}
+						if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(3); break;}
+						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(2); break;}
 						break;
 					case 2:
-						if (aTank.drainAll( 334)) {tTank.setMetaData(3); break;}
+						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(3); break;}
 						break;
 					}
 				}
-			} else {
-				if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
-					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
-					if (tTarget != null && tTarget.amount() < aTank.amount()) {
-						tAmount += tTarget.amount();
-						tPipeCount++;
-						tAdjacentTanks.add(tTank);
-					}
-				} else if (FL.fill_(tTank, aTank.get(), F) > 0) {
-					tAdjacentTanks.add(tTank);
-				}
 			}
 		}
 		
-		if (tAmount % tPipeCount == 0) {
-			tAmount /= tPipeCount;
-		} else {
-			tAmount /= tPipeCount;
-			tAmount++;
-		}
+		// Check if we are empty.
+		if (aTank.isEmpty()) return;
 		
-		if (tAmount > 0) for (int i = tAdjacentTanks.size(); i > 0 && aTank.amount() > 0;) {
-			tTank = tAdjacentTanks.get(--i);
-			if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
-				tAdjacentTanks.remove(i);
-				if (!((MultiTileEntityPipeFluid)tTank.mTileEntity).hasCovers() || ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity] == null || !((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity].interceptFluidFill(tTank.mSideOfTileEntity, ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers, tTank.mSideOfTileEntity, aTank.get())) {
-					tAdjacentPipes.add(tTank);
-					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
-					if (tTarget != null) mTransferredAmount += aTank.remove(tTarget.add(Math.min(aTank.amount(), tAmount-tTarget.amount()), aTank.get()));
-				}
+		// Compile all possible Targets into one List.
+		@SuppressWarnings("rawtypes")
+		List<DelegatorTileEntity> tTargets = new ArrayListNoNulls<>();
+		
+		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
+		int tTargetCount = 1, tAdjacentTankCount = 0, tAdjacentPipeCount = 0;
+		
+		for (byte tSide : ALL_SIDES_VALID_ORDER[(int)(mTimer%6)]) if (aAdjacentTanks[tSide] != null) {
+			if (FACE_CONNECTED[aAdjacentTanks[tSide].mSideOfTileEntity][mLastReceivedFrom]) {
+				// Do not return to Sender.
+			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
+				// Cover says no.
+			} else if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
+				tTargets.add(aAdjacentTanks[tSide]);
+				tAdjacentTankCount++;
+				tTargetCount++;
+			}
+		}
+		for (byte tSide : ALL_SIDES_VALID_ORDER[(int)(mTimer%6)]) if (aAdjacentPipes[tSide] != null) {
+			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom]) {
+				// Do not return to Sender.
+			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
+				// Cover says no.
+			} else if (aAdjacentPipes[tSide].mTileEntity.fill(aAdjacentPipes[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
+				tTargets.add(aAdjacentPipes[tSide]);
+				tAdjacentPipeCount++;
+				tTargetCount++;
 			}
 		}
 		
-		if (!tAdjacentTanks.isEmpty()) {
-			tAmount = aTank.amount() / tAdjacentTanks.size();
-			if (tAmount <= 0) {
-				while (aTank.amount() > 0 && !tAdjacentTanks.isEmpty()) {
-					tAdjacentTanks.remove(tTank = tAdjacentTanks.get(rng(tAdjacentTanks.size())));
-					mTransferredAmount += aTank.remove(FL.fill_(tTank, aTank.get(1), T));
-				}
-			} else {
-				for (DelegatorTileEntity<IFluidHandler> tTank2 : tAdjacentTanks) {
-					mTransferredAmount += aTank.remove(FL.fill_(tTank2, aTank.get(tAmount), T));
-				}
+		// No Targets, nothing to do.
+		if (tTargets.isEmpty()) return;
+		
+		// Distribute to Pipes first.
+		if (tAdjacentPipeCount > 0) {
+			long tAmount = aTank.amount();
+			if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
+			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
+				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
+				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount-tTank.amount()), aTank.get()));
 			}
 		}
 		
-		if (!tAdjacentPipes.isEmpty() && aTank.amount() > mCapacity / 2) {
-			tAmount = (aTank.amount() - mCapacity / 2) / tAdjacentPipes.size();
-			if (tAmount > 0) {
-				for (DelegatorTileEntity<IFluidHandler> tPipe : tAdjacentPipes) {
-					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tPipe.mTileEntity).getFluidTankFillable2(tPipe.mSideOfTileEntity, aTank.get());
-					if (tTarget != null) mTransferredAmount += aTank.remove(tTarget.add(Math.min(aTank.amount(), tAmount), aTank.get()));
-				}
+		// Check if we are empty.
+		if (aTank.isEmpty()) return;
+		
+		// Distribute to Tanks afterwards.
+		if (tAdjacentTankCount > 0) {
+			long tAmount = aTank.amount();
+			if (tAmount % tAdjacentTankCount == 0) tAmount /= tAdjacentTankCount; else {tAmount /= tAdjacentTankCount; tAmount++;}
+			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (!(tTarget.mTileEntity instanceof MultiTileEntityPipeFluid)) {
+				mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
+			}
+		}
+		
+		// Check if we are empty.
+		if (aTank.isEmpty()) return;
+		
+		// And then if there still is pressure, distribute to Pipes again.
+		if (tAdjacentPipeCount > 0 && aTank.amount() > mCapacity/2) {
+			long tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
+			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
+				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
+				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount), aTank.get()));
 			}
 		}
 	}

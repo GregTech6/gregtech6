@@ -309,6 +309,8 @@ public class FluidTankGT implements IFluidTank {
 	
 	public Fluid fluid() {return mFluid == null ? null : mFluid.getFluid();}
 	
+	public FluidStack make(int aAmount) {return FL.make(fluid(), aAmount);}
+	
 	public FluidStack get() {return mFluid;}
 	public FluidStack get(long aMax) {return isEmpty() || aMax <= 0 ? null : new FluidStack(mFluid, UT.Code.bindInt(mAmount < aMax ? mAmount : aMax));}
 	
