@@ -344,7 +344,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount-tTank.amount()), aTank.get()));
+				if (tTank != null) {
+					long tMoved = aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount-tTank.amount()), aTank.get()));
+					if (tMoved > 0) {
+						mTransferredAmount += tMoved;
+						if (tMoved < 6) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+					}
+				}
 			}
 		}
 		
@@ -368,7 +374,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			long tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount), aTank.get()));
+				if (tTank != null) {
+					long tMoved = aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount), aTank.get()));
+					if (tMoved > 0) {
+						mTransferredAmount += tMoved;
+						if (tMoved < 6) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+					}
+				}
 			}
 		}
 	}
