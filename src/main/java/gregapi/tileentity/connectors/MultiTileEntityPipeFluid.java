@@ -275,7 +275,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	public void distribute(FluidTankGT aTank, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
 		// Top Priority is filling Cauldrons and other specialties.
-		for (byte tSide : ALL_SIDES_VALID_ORDER[rng(6)]) if (aAdjacentOther[tSide] != null) {
+		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentOther[tSide] != null) {
 			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
 				continue;
@@ -312,7 +312,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
 		int tTargetCount = 1, tAdjacentTankCount = 0, tAdjacentPipeCount = 0;
 		
-		for (byte tSide : ALL_SIDES_VALID_ORDER[rng(6)]) if (aAdjacentTanks[tSide] != null) {
+		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentTanks[tSide] != null) {
 			if (FACE_CONNECTED[aAdjacentTanks[tSide].mSideOfTileEntity][mLastReceivedFrom]) {
 				// Do not return to Sender.
 			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
@@ -323,15 +323,18 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				tTargetCount++;
 			}
 		}
-		for (byte tSide : ALL_SIDES_VALID_ORDER[rng(6)]) if (aAdjacentPipes[tSide] != null) {
+		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentPipes[tSide] != null) {
 			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom] && aTank.amount() < 6) {
 				// Do not return to Sender, if there is not much Fluid inside.
 			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
-			} else if (aAdjacentPipes[tSide].mTileEntity.fill(aAdjacentPipes[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
-				tTargets.add(aAdjacentPipes[tSide]);
-				tAdjacentPipeCount++;
-				tTargetCount++;
+			} else {
+				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
+				if (tTank != null && tTank.amount() < aTank.amount()) {
+					tTargets.add(aAdjacentPipes[tSide]);
+					tAdjacentPipeCount++;
+					tTargetCount++;
+				}
 			}
 		}
 		
@@ -425,9 +428,15 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
-		int rReturn = super.fill(aDirection, aFluid, aDoFill);
-		if (aDoFill && rReturn > 0) mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)];
-		return rReturn;
+		if (aFluid == null || aFluid.amount <= 0) return 0;
+		IFluidTank tTank = getFluidTankFillable(UT.Code.side(aDirection), aFluid);
+		if (tTank == null) return 0;
+		int rFilledAmount = tTank.fill(aFluid, aDoFill);
+		if (rFilledAmount > 0 && aDoFill) {
+			mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)];
+			updateInventory();
+		}
+		return rFilledAmount;
 	}
 	
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
