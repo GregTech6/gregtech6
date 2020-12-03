@@ -324,7 +324,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentPipes[tSide] != null) {
-			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom] && aTank.amount() < 6) {
+			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom] && aTank.amount() < 2) {
 				// Do not return to Sender, if there is not much Fluid inside.
 			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
@@ -351,7 +351,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 					long tMoved = aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount), aTank.get()));
 					if (tMoved > 0) {
 						mTransferredAmount += tMoved;
-						if (tMoved < 6) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+						if (tMoved < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
 					}
 				}
 			}
@@ -381,7 +381,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 					long tMoved = aTank.remove(tTank.add(Math.min(aTank.amount(), tAmount), aTank.get()));
 					if (tMoved > 0) {
 						mTransferredAmount += tMoved;
-						if (tMoved < 6) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+						if (tMoved < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
 					}
 				}
 			}
