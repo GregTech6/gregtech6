@@ -209,7 +209,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	public void onServerTickPre(boolean aFirst) {
 		mTransferredAmount = 0;
 		
-		@SuppressWarnings("rawtypes")
 		DelegatorTileEntity<MultiTileEntityPipeFluid>[] tAdjacentPipes = new DelegatorTileEntity[6];
 		DelegatorTileEntity<IFluidHandler>[] tAdjacentTanks = new DelegatorTileEntity[6];
 		DelegatorTileEntity<TileEntity>[] tAdjacentOther = new DelegatorTileEntity[6];
@@ -325,9 +324,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		for (byte tSide : ALL_SIDES_VALID_ORDER[(int)(mTimer%6)]) if (aAdjacentPipes[tSide] != null) {
-			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom]) {
-				// Do not return to Sender.
-			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
+			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
 			} else if (aAdjacentPipes[tSide].mTileEntity.fill(aAdjacentPipes[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
 				tTargets.add(aAdjacentPipes[tSide]);
