@@ -324,7 +324,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		for (byte tSide : ALL_SIDES_VALID_ORDER[(int)(mTimer%6)]) if (aAdjacentPipes[tSide] != null) {
-			if (FACE_CONNECTED[aAdjacentTanks[tSide].mSideOfTileEntity][mLastReceivedFrom] && aTank.amount() < 6) {
+			if (FACE_CONNECTED[aAdjacentPipes[tSide].mSideOfTileEntity][mLastReceivedFrom] && aTank.amount() < 6) {
 				// Do not return to Sender, if there is not much Fluid inside.
 			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
@@ -410,7 +410,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	}
 	
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
-	@Override public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {if (aDoFill) mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)]; return super.fill(aDirection, aFluid, aDoFill);}
+	
+	@Override
+	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
+		int rReturn = super.fill(aDirection, aFluid, aDoFill);
+		if (aDoFill && rReturn > 0) mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)];
+		return rReturn;
+	}
 	
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptFluidsFrom                      (byte aSide) {return connected(aSide);}
