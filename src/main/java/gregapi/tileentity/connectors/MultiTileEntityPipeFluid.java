@@ -368,7 +368,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
 			}
 		}
-		
+		/*
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
 		
@@ -382,7 +382,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 					if (tTank.amount() < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
 				}
 			}
-		}
+		}*/
 	}
 	
 	@Override
