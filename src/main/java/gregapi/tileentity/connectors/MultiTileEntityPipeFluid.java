@@ -316,7 +316,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		int tTargetCount = 1, tAdjacentTankCount = 0, tAdjacentPipeCount = 0;
 		
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentTanks[tSide] != null) {
-			if (FACE_CONNECTED[aAdjacentTanks[tSide].mSideOfTileEntity][mLastReceivedFrom]) {
+			if (FACE_CONNECTED[tSide][mLastReceivedFrom]) {
 				// Do not return to Sender.
 			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
@@ -327,7 +327,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		for (byte tSide : (rng()?ALL_SIDES_VALID_FIRST:ALL_SIDES_VALID_ORDER)[rng(6)]) if (aAdjacentPipes[tSide] != null) {
-			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
+			if (FACE_CONNECTED[tSide][mLastReceivedFrom] && aTank.amount() < 2) {
+				// Do not return to Sender, if there is not much Fluid inside.
+			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
 			} else {
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
@@ -350,7 +352,10 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (tAdjacentPipeCount > 0) {
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount/*-tTank.amount()*/), aTank.get()));
+				if (tTank != null) {
+					mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount-tTank.amount()), aTank.get()));
+					if (tTank.amount() < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+				}
 			}
 		}
 		
@@ -372,7 +377,10 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
 			if (tAmount > 0) for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount), aTank.get()));
+				if (tTank != null) {
+					mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount), aTank.get()));
+					if (tTank.amount() < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
+				}
 			}
 		}
 	}
