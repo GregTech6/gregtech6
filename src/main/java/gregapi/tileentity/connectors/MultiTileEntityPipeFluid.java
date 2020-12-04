@@ -323,12 +323,12 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				tTargetCount++;
 			}
 		}
-		for (byte tSide : ALL_SIDES_VALID_FIRST[rng(6)]) if (aAdjacentPipes[tSide] != null) {
+		for (byte tSide : (rng() ? ALL_SIDES_VALID_FIRST[rng(6)] : ALL_SIDES_VALID_ORDER[rng(6)])) if (aAdjacentPipes[tSide] != null) {
 			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
 			} else {
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
-				if (tTank != null && tTank.amount() < aTank.amount()) {
+				if (tTank != null/* && tTank.amount() < aTank.amount()*/) {
 					tTargets.add(aAdjacentPipes[tSide]);
 					tAdjacentPipeCount++;
 					tTargetCount++;

@@ -157,6 +157,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public boolean openGUI(EntityPlayer aPlayer, int aID) {if (aPlayer == null) return F; aPlayer.openGui(GAPI, aID, worldObj, xCoord, yCoord, zCoord); return T;}
 	@Override public int getRandomNumber(int aRange) {return RNGSUS.nextInt(aRange);}
 	@Override public int rng(int aRange) {return RNGSUS.nextInt(aRange);}
+	public boolean rng() {return RNGSUS.nextBoolean();}
 	@Override public BiomeGenBase getBiome(ChunkCoordinates aCoords) {return worldObj==null?BiomeGenBase.plains:worldObj.getBiomeGenForCoords(aCoords.posX, aCoords.posZ);}
 	@Override public BiomeGenBase getBiome(int aX, int aZ) {return worldObj==null?BiomeGenBase.plains:worldObj.getBiomeGenForCoords(aX, aZ);}
 	@Override public BiomeGenBase getBiome() {return getBiome(xCoord, zCoord);}
