@@ -323,7 +323,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				tTargetCount++;
 			}
 		}
-		for (byte tSide : (rng() ? ALL_SIDES_VALID_FIRST[rng(6)] : ALL_SIDES_VALID_ORDER[rng(6)])) if (aAdjacentPipes[tSide] != null) {
+		for (byte tSide : (rng()?ALL_SIDES_VALID_FIRST:ALL_SIDES_VALID_ORDER)[rng(6)]) if (aAdjacentPipes[tSide] != null) {
 			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
 				// Cover says no.
 			} else {
@@ -339,10 +339,12 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// No Targets, nothing to do.
 		if (tTargets.isEmpty()) return;
 		
+		// Amount to distribute normally.
+		long tAmount = aTank.amount();
+		if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
+		
 		// Distribute to Pipes first.
 		if (tAdjacentPipeCount > 0) {
-			long tAmount = aTank.amount();
-			if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
 				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount-tTank.amount()), aTank.get()));
@@ -354,8 +356,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		
 		// Distribute to Tanks afterwards.
 		if (tAdjacentTankCount > 0) {
-			long tAmount = aTank.amount();
-			if (tAmount % tAdjacentTankCount == 0) tAmount /= tAdjacentTankCount; else {tAmount /= tAdjacentTankCount; tAmount++;}
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (!(tTarget.mTileEntity instanceof MultiTileEntityPipeFluid)) {
 				mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
 			}
@@ -366,7 +366,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		
 		// And then if there still is pressure, distribute to Pipes again.
 		if (tAdjacentPipeCount > 0 && aTank.amount() > mCapacity/2) {
-			long tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
+			tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
 				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount), aTank.get()));
