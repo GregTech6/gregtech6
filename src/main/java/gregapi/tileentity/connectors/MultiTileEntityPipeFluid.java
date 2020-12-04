@@ -309,6 +309,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		@SuppressWarnings("rawtypes")
 		List<DelegatorTileEntity> tTargets = new ArrayListNoNulls<>();
 		
+		// Amount to check for Distribution
+		long tAmount = aTank.amount();
+		
 		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
 		int tTargetCount = 1, tAdjacentTankCount = 0, tAdjacentPipeCount = 0;
 		
@@ -330,6 +333,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
 				if (tTank != null && tTank.amount() < aTank.amount()) {
 					tTargets.add(aAdjacentPipes[tSide]);
+					tAmount += tTank.amount();
 					tAdjacentPipeCount++;
 					tTargetCount++;
 				}
@@ -340,7 +344,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (tTargets.isEmpty()) return;
 		
 		// Amount to distribute normally.
-		long tAmount = aTank.amount();
 		if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
 		
 		// Distribute to Pipes first.
