@@ -328,7 +328,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				// Cover says no.
 			} else {
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
-				if (tTank != null/* && tTank.amount() < aTank.amount()*/) {
+				if (tTank != null && tTank.amount() < aTank.amount()) {
 					tTargets.add(aAdjacentPipes[tSide]);
 					tAdjacentPipeCount++;
 					tTargetCount++;
