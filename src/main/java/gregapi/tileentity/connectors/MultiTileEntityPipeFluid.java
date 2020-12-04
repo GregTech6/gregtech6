@@ -308,12 +308,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Compile all possible Targets into one List.
 		@SuppressWarnings("rawtypes")
 		List<DelegatorTileEntity> tTargets = new ArrayListNoNulls<>();
+		List<FluidTankGT> tPipes = new ArrayListNoNulls<>();
 		
 		// Amount to check for Distribution
 		long tAmount = aTank.amount();
 		
 		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
-		int tTargetCount = 1, tAdjacentTankCount = 0, tAdjacentPipeCount = 0;
+		int tTargetCount = 1;
 		
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentTanks[tSide] != null) {
 			if (FACE_CONNECTED[tSide][mLastReceivedFrom]) {
@@ -322,7 +323,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				// Cover says no.
 			} else if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
 				tTargets.add(rng(tTargets.size()+1), aAdjacentTanks[tSide]);
-				tAdjacentTankCount++;
 				tTargetCount++;
 			}
 		}
@@ -334,70 +334,40 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			} else {
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
 				if (tTank != null && tTank.amount() < aTank.amount()) {
-					tTargets.add(rng(tTargets.size()+1), aAdjacentPipes[tSide]);
+					tPipes.add(rng(tPipes.size()+1), tTank);
 					tAmount += tTank.amount();
-					tAdjacentPipeCount++;
 					tTargetCount++;
 				}
 			}
 		}
 		
 		// No Targets, nothing to do.
-		if (tTargets.isEmpty()) return;
-		
-		DEB.println("==========");
-		DEB.println("Content: " + aTank.amount());
-		DEB.println("Targets: " + (tTargetCount-1));
-		DEB.println("Tanks: " + tAdjacentTankCount);
-		DEB.println("Pipes: " + tAdjacentPipeCount);
-		DEB.println("Amount 1: " + tAmount);
+		if (tTargetCount <= 1) return;
 		
 		// Amount to distribute normally.
 		if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
 		
-		DEB.println("Amount 2: " + tAmount);
-		DEB.println("TEST 01: " + mTransferredAmount);
-		
 		// Distribute to Pipes first.
-		if (tAdjacentPipeCount > 0) {
-			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
-				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) {
-					mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount-tTank.amount()), aTank.get()));
-					if (tTank.amount() < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
-					DEB.println("Content: " + aTank.amount());
-					DEB.println("TEST 02: " + mTransferredAmount);
-				}
-			}
+		for (FluidTankGT tPipe : tPipes) {
+			mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
 		}
-		
-		DEB.println("Content: " + aTank.amount());
-		DEB.println("==========");
 		
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
 		
 		// Distribute to Tanks afterwards.
-		if (tAdjacentTankCount > 0) {
-			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (!(tTarget.mTileEntity instanceof MultiTileEntityPipeFluid)) {
-				mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
-			}
+		for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) {
+			mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
 		}
-		/*
+		
 		// Check if we are empty.
-		if (aTank.isEmpty()) return;
+		if (aTank.isEmpty() || tPipes.isEmpty()) return;
 		
 		// And then if there still is pressure, distribute to Pipes again.
-		if (tAdjacentPipeCount > 0) {
-			tAmount = (aTank.amount() - mCapacity/2) / tAdjacentPipeCount;
-			if (tAmount > 0) for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
-				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) {
-					mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount), aTank.get()));
-					if (tTank.amount() < 2) ((MultiTileEntityPipeFluid)tTarget.mTileEntity).mLastReceivedFrom |= SBIT[tTarget.mSideOfTileEntity];
-				}
-			}
-		}*/
+		tAmount = (aTank.amount() - mCapacity/2) / tPipes.size();
+		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) {
+			mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
+		}
 	}
 	
 	@Override
