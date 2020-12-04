@@ -345,7 +345,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
 			for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) if (tTarget.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				FluidTankGT tTank = (FluidTankGT)((MultiTileEntityPipeFluid)tTarget.mTileEntity).getFluidTankFillable2(tTarget.mSideOfTileEntity, aTank.get());
-				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount), aTank.get()));
+				if (tTank != null) mTransferredAmount += aTank.remove(tTank.add(aTank.amount(tAmount-tTank.amount()), aTank.get()));
 			}
 		}
 		
