@@ -44,10 +44,12 @@ public class FluidTankGT implements IFluidTank {
 	
 	public FluidTankGT(FluidStack aFluid) {mFluid = aFluid; if (aFluid != null) {mCapacity = aFluid.amount; mAmount = aFluid.amount;}}
 	public FluidTankGT(FluidStack aFluid, long aCapacity) {mFluid = aFluid; mCapacity = aCapacity; mAmount = (aFluid == null ? 0 : aFluid.amount);}
+	public FluidTankGT(FluidStack aFluid, long aAmount, long aCapacity) {mFluid = aFluid; mCapacity = aCapacity; mAmount = (aFluid == null ? 0 : aAmount);}
 	public FluidTankGT(long aCapacity) {mCapacity = aCapacity;}
 	public FluidTankGT(Fluid aFluid, long aAmount) {this(FL.make(aFluid, aAmount)); mAmount = aAmount;}
 	public FluidTankGT(Fluid aFluid, long aAmount, long aCapacity) {this(FL.make(aFluid, aAmount), aCapacity); mAmount = aAmount;}
 	public FluidTankGT(NBTTagCompound aNBT, long aCapacity) {mCapacity = aCapacity; if (aNBT != null && !aNBT.hasNoTags()) {mFluid = FL.load_(aNBT); mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);}}
+	public FluidTankGT(NBTTagCompound aNBT, String aKey, long aCapacity) {this(aNBT.hasKey(aKey) ? aNBT.getCompoundTag(aKey) : null, aCapacity);}
 	
 	public FluidTankGT readFromNBT(NBTTagCompound aNBT, String aKey) {
 		if (aNBT.hasKey(aKey)) {

@@ -74,7 +74,7 @@ import net.minecraftforge.fluids.IFluidTank;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	public byte mLastReceivedFrom = 0, mRenderType = 0;
+	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mBlocking = T;
 	public FluidTankGT[] mTanks = ZL_FT;
@@ -107,7 +107,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey("gt.mlast")) mLastReceivedFrom = aNBT.getByte("gt.mlast");
 		if (aNBT.hasKey("gt.mtransfer")) mTransferredAmount = aNBT.getLong("gt.mtransfer");
 		if (aNBT.hasKey(NBT_PIPERENDER)) mRenderType = aNBT.getByte(NBT_PIPERENDER);
 		if (aNBT.hasKey(NBT_OPAQUE)) mBlocking = aNBT.getBoolean(NBT_OPAQUE);
@@ -117,12 +116,16 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) mCapacity = aNBT.getLong(NBT_TANK_CAPACITY);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mMaxTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TANK_COUNT)) {
-			mTanks = new FluidTankGT[aNBT.getInteger(NBT_TANK_COUNT)];
-			for (int i = 0; i < mTanks.length; i++) mTanks[i] = new FluidTankGT(mCapacity);
+			mTanks = new FluidTankGT[Math.max(1, aNBT.getInteger(NBT_TANK_COUNT))];
+			mLastReceivedFrom = new byte[mTanks.length];
+			for (int i = 0; i < mTanks.length; i++) {
+				mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity);
+				mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
+			}
 		} else {
-			mTanks = new FluidTankGT(mCapacity).AS_ARRAY;
+			mTanks = new FluidTankGT(aNBT, NBT_TANK+"."+0, mCapacity).AS_ARRAY;
+			mLastReceivedFrom = new byte[] {aNBT.getByte("gt.mlast.0")};
 		}
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
 		
 		if (worldObj != null && isServerSide() && mHasToAddTimer) {
 			if (WD.even(this)) {
@@ -137,8 +140,10 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
-		aNBT.setByte("gt.mlast", mLastReceivedFrom);
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+			aNBT.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
+		}
 		UT.NBT.setNumber(aNBT, "gt.mtransfer", mTransferredAmount);
 	}
 	
@@ -226,25 +231,25 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		
-		for (FluidTankGT tTank : mTanks) {
-			FluidStack tFluid = tTank.get();
+		for (int i = 0; i < mTanks.length; i++) {
+			FluidStack tFluid = mTanks[i].get();
 			if (tFluid != null && tFluid.amount > 0) {
 				mTemperature = FL.temperature(tFluid);
 				if (!mGasProof && FL.gas(tFluid)) {
-					mTransferredAmount += Math.min(8, tTank.amount());
-					GarbageGT.trash(tTank, 8);
+					mTransferredAmount += Math.min(8, mTanks[i].amount());
+					GarbageGT.trash(mTanks[i], 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
-					mTransferredAmount += Math.min(64, tTank.amount());
-					GarbageGT.trash(tTank, 64);
+					mTransferredAmount += Math.min(64, mTanks[i].amount());
+					GarbageGT.trash(mTanks[i], 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
 				if (!mAcidProof && FL.acid(tFluid)) {
-					mTransferredAmount += Math.min(16, tTank.amount());
-					GarbageGT.trash(tTank, 16);
+					mTransferredAmount += Math.min(16, mTanks[i].amount());
+					GarbageGT.trash(mTanks[i], 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
@@ -267,108 +272,102 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				}
 			}
 			
-			if (tTank.has()) distribute(tTank, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
+			if (mTanks[i].has()) distribute(mTanks[i], i, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
+			
+			mLastReceivedFrom[i] = 0;
 		}
-		
-		mLastReceivedFrom = 0;
 	}
 	
-	public void distribute(FluidTankGT aTank, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
+	@SuppressWarnings("rawtypes")
+	public void distribute(FluidTankGT aTank, int aIndex, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
 		// Top Priority is filling Cauldrons and other specialties.
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentOther[tSide] != null) {
-			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
-				// Cover says no.
-				continue;
-			}
-			if (aAdjacentOther[tSide].mTileEntity == null) {
-				Block tBlock = aAdjacentOther[tSide].getBlock();
-				// Filling up Cauldrons from Vanilla. Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
-				if ((tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) && aTank.has(334) && FL.water(aTank.get())) {
-					switch(aAdjacentOther[tSide].getMetaData()) {
-					case 0:
-						if (aTank.drainAll(1000)) {aAdjacentOther[tSide].setMetaData(3); break;}
-						if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(2); break;}
-						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(1); break;}
-						break;
-					case 1:
-						if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(3); break;}
-						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(2); break;}
-						break;
-					case 2:
-						if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(3); break;}
-						break;
-					}
+			// Covers let distribution happen, right?
+			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
+			
+			Block tBlock = aAdjacentOther[tSide].getBlock();
+			// Filling up Cauldrons from Vanilla. Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
+			if ((tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) && aTank.has(334) && FL.water(aTank.get())) {
+				switch(aAdjacentOther[tSide].getMetaData()) {
+				case 0:
+					if (aTank.drainAll(1000)) {aAdjacentOther[tSide].setMetaData(3); break;}
+					if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(2); break;}
+					if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(1); break;}
+					break;
+				case 1:
+					if (aTank.drainAll( 667)) {aAdjacentOther[tSide].setMetaData(3); break;}
+					if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(2); break;}
+					break;
+				case 2:
+					if (aTank.drainAll( 334)) {aAdjacentOther[tSide].setMetaData(3); break;}
+					break;
 				}
 			}
 		}
-		
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
-		
 		// Compile all possible Targets into one List.
-		@SuppressWarnings("rawtypes")
-		List<DelegatorTileEntity> tTargets = new ArrayListNoNulls<>();
+		List<DelegatorTileEntity> tTanks = new ArrayListNoNulls<>();
 		List<FluidTankGT> tPipes = new ArrayListNoNulls<>();
-		
 		// Amount to check for Distribution
 		long tAmount = aTank.amount();
-		
 		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
 		int tTargetCount = 1;
-		
-		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentTanks[tSide] != null) {
-			if (FACE_CONNECTED[tSide][mLastReceivedFrom]) {
-				// Do not return to Sender.
-			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
-				// Cover says no.
-			} else if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
-				tTargets.add(rng(tTargets.size()+1), aAdjacentTanks[tSide]);
+		// Put Targets into Lists.
+		for (byte tSide : ALL_SIDES_VALID) {
+			// Don't you dare flow backwards!
+			if (FACE_CONNECTED[tSide][mLastReceivedFrom[aIndex]]) continue;
+			// Are we even connected to this Side? (Only gets checked due to the Cover check being slightly expensive)
+			if (!canEmitFluidsTo(tSide)) continue;
+			// Covers let distribution happen, right?
+			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
+			// Is it a Pipe?
+			if (aAdjacentPipes[tSide] != null) {
+				// Check if the Pipe can be filled with this Fluid.
+				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
+				if (tTank != null && tTank.amount() < aTank.amount()) {
+					// Gah, I need to do reverse Indexing to make this work with the Parameters I have, because Cover Support...
+					for (int i = 0; i < aAdjacentPipes[tSide].mTileEntity.mTanks.length; i++) if (aAdjacentPipes[tSide].mTileEntity.mTanks[i] == tTank) {
+						aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom[i] |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
+						break;
+					}
+					// Add to a random Position in the List.
+					tPipes.add(rng(tPipes.size()+1), tTank);
+					// For Balancing the Pipe Output.
+					tAmount += tTank.amount();
+					// One more Target.
+					tTargetCount++;
+				}
+				// Done everything.
+				continue;
+			}
+			// No Tank? Nothing to do then.
+			if (aAdjacentTanks[tSide] == null) continue;
+			// Check if the Tank can be filled with this Fluid.
+			if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0) {
+				// Add to a random Position in the List.
+				tTanks.add(rng(tTanks.size()+1), aAdjacentTanks[tSide]);
+				// One more Target.
 				tTargetCount++;
 			}
 		}
-		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentPipes[tSide] != null) {
-			if (FACE_CONNECTED[tSide][mLastReceivedFrom]) {
-				// Do not return to Sender, if there is not much Fluid inside.
-			} else if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) {
-				// Cover says no.
-			} else {
-				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
-				if (tTank != null && tTank.amount() < aTank.amount()) {
-					aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
-					tPipes.add(rng(tPipes.size()+1), tTank);
-					tAmount += tTank.amount();
-					tTargetCount++;
-				}
-			}
-		}
-		
-		// No Targets, nothing to do.
+		// No Targets? Nothing to do then.
 		if (tTargetCount <= 1) return;
-		
 		// Amount to distribute normally.
 		if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
-		
 		// Distribute to Pipes first.
-		for (FluidTankGT tPipe : tPipes) {
-			mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
-		}
-		
+		for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
-		
 		// Distribute to Tanks afterwards.
-		for (@SuppressWarnings("rawtypes") DelegatorTileEntity tTarget : tTargets) {
-			mTransferredAmount += aTank.remove(FL.fill_(tTarget, aTank.get(tAmount), T));
-		}
-		
+		for (DelegatorTileEntity tTank : tTanks) mTransferredAmount += aTank.remove(FL.fill_(tTank, aTank.get(tAmount), T));
 		// Check if we are empty.
-		if (aTank.isEmpty() || tPipes.isEmpty()) return;
-		
+		if (aTank.isEmpty()) return;
+		// No Targets? Nothing to do then.
+		if (tPipes.isEmpty()) return;
 		// And then if there still is pressure, distribute to Pipes again.
 		tAmount = (aTank.amount() - mCapacity/2) / tPipes.size();
-		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) {
-			mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
-		}
+		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
 	}
 	
 	@Override
@@ -416,16 +415,33 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
 		if (aDoFill) {
-			mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)];
 			if (rFilledAmount > 0) updateInventory();
+			// Gah, I need to do reverse Indexing to make this work with the Parameters I have, because Cover Support...
+			for (int i = 0; i < mTanks.length; i++) if (mTanks[i] == tTank) {mLastReceivedFrom[i] |= SBIT[UT.Code.side(aDirection)]; break;}
 		}
 		return rFilledAmount;
 	}
 	
+	@Override
+	public boolean canConnect(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {
+		if (aDelegator.mTileEntity instanceof IFluidHandler) {
+			// Extenders should always be connectable.
+			if (aDelegator.mTileEntity instanceof ITileEntityCanDelegate) return T;
+			// Make sure at least one Tank exists at this Side to connect to.
+			if (UT.Code.exists(0, ((IFluidHandler)aDelegator.mTileEntity).getTankInfo(aDelegator.getForgeSideOfTileEntity()))) return T;
+			// Okay, nothing to do here.
+			return F;
+		}
+		if (mCapacity >= 334) {
+			Block tBlock = aDelegator.getBlock();
+			// Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
+			if (tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) return T;
+		}
+		return F;
+	}
+	
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptFluidsFrom                      (byte aSide) {return connected(aSide);}
-	
-	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return (aDelegator.mTileEntity instanceof IFluidHandler ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || UT.Code.exists(0, ((IFluidHandler)aDelegator.mTileEntity).getTankInfo(aDelegator.getForgeSideOfTileEntity())) : mCapacity >= 334 && aDelegator.getBlock() instanceof BlockCauldron);}
 	
 	@Override public long getGibblValue                     (byte aSide) {long rAmount = 0; for (FluidTankGT tTank : mTanks) rAmount += tTank.amount(); return rAmount;}
 	@Override public long getGibblMax                       (byte aSide) {return mCapacity * mTanks.length;}

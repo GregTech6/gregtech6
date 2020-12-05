@@ -1293,10 +1293,7 @@ public class CS {
 		public static long trash(ItemStack[] aInventory) {
 			if (aInventory == null) return 0;
 			long rTrashed = 0;
-			for (int i = 0; i < aInventory.length; i++) {
-				rTrashed += trash(aInventory[i]);
-				aInventory[i] = NI;
-			}
+			for (int i = 0; i < aInventory.length; i++) {rTrashed += trash(aInventory[i]); aInventory[i] = NI;}
 			return rTrashed;
 		}
 		public static int trash(ItemStack[] aInventory, int aIndex) {
@@ -1305,40 +1302,40 @@ public class CS {
 			aInventory[aIndex] = NI;
 			return rTrashed;
 		}
-		public static int trash(FluidStack aFluid) {
-			if (aFluid == null || aFluid.amount <= 0) return 0;
-			for (FluidTankGT tGarbage : GARBAGE_FLUIDS) if (tGarbage.contains(aFluid)) {
-				tGarbage.add(aFluid.amount);
-				return aFluid.amount;
-			}
-			GARBAGE_FLUIDS.add(new FluidTankGT(aFluid.copy(), Long.MAX_VALUE).setPreventDraining().setVoidExcess());
-			return aFluid.amount;
+		
+		public static int trash(OreDictMaterialStack aMaterial) {
+			if (aMaterial == null || aMaterial.mAmount < OP.scrapGt.mAmount) return 0;
+			return trash(OP.scrapGt.mat(aMaterial.mMaterial, aMaterial.mAmount / OP.scrapGt.mAmount));
 		}
-		public static int trash(IFluidTank aTank) {
+		
+		public static long trash(FluidStack aFluid) {
+			return aFluid == null ? 0 : trash(aFluid, aFluid.amount);
+		}
+		public static long trash(FluidStack aFluid, long aAmount) {
+			if (aFluid == null || aAmount <= 0) return 0;
+			for (FluidTankGT tGarbage : GARBAGE_FLUIDS) if (tGarbage.contains(aFluid)) {
+				tGarbage.add(aAmount);
+				return aAmount;
+			}
+			GARBAGE_FLUIDS.add(new FluidTankGT(aFluid, aAmount, Long.MAX_VALUE).setPreventDraining().setVoidExcess());
+			return aAmount;
+		}
+		public static long trash(IFluidTank aTank) {
 			return trash(aTank, Long.MAX_VALUE);
 		}
-		public static int trash(IFluidTank aTank, long aTrashed) {
+		public static long trash(IFluidTank aTank, long aTrashed) {
 			if (aTank == null || aTrashed <= 0) return 0;
-			FluidStack tFluid = aTank.drain(UT.Code.bindInt(aTrashed), T);
-			if (tFluid == null || tFluid.amount <= 0) return 0;
-			trash(tFluid);
-			return tFluid.amount;
+			return aTank instanceof FluidTankGT ? trash(aTank.getFluid(), ((FluidTankGT)aTank).remove(aTrashed)) : trash(aTank.drain(UT.Code.bindInt(aTrashed), T));
 		}
 		public static long trash(IFluidTank[] aTanks) {
 			if (aTanks == null) return 0;
 			long rTrashed = 0;
-			for (int i = 0; i < aTanks.length; i++) {
-				rTrashed += trash(aTanks[i]);
-			}
+			for (int i = 0; i < aTanks.length; i++) rTrashed += trash(aTanks[i]);
 			return rTrashed;
 		}
-		public static int trash(IFluidTank[] aTanks, int aIndex) {
+		public static long trash(IFluidTank[] aTanks, int aIndex) {
 			if (aTanks == null || aIndex < 0 || aIndex >= aTanks.length) return 0;
 			return trash(aTanks[aIndex]);
-		}
-		public static int trash(OreDictMaterialStack aMaterial) {
-			if (aMaterial == null || aMaterial.mAmount < OP.scrapGt.mAmount) return 0;
-			return trash(OP.scrapGt.mat(aMaterial.mMaterial, aMaterial.mAmount / OP.scrapGt.mAmount));
 		}
 
 
