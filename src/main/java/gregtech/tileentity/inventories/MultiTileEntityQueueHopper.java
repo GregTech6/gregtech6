@@ -60,7 +60,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
-	public byte mMode = 64, mCheck = 0;
+	public byte mMode = 64, mCheck = 3;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {

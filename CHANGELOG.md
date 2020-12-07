@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Some minor Inconsistencies.
 [FIXED] Insanely large Capacity Pipes had Integer Overflow Issues.
 [FIXED] 1 Liter of Fluid sometimes remaining in Pipes.
+[FIXED] Quadruple and Nonuple Pipes had flow direction Issues, because flow direction was per Block and not per Sub-Pipe.
 [FIXED] Miniature Portals for the ExtraSimple fork of ExtraUtilities.
 
 

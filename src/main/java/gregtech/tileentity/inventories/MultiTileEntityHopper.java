@@ -61,7 +61,7 @@ import net.minecraft.world.World;
  */
 public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
 	public boolean mExactMode = F;
-	public byte mMode = 0, mCheck = 0;
+	public byte mMode = 0, mCheck = 3;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
