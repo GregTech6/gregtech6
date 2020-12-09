@@ -393,10 +393,10 @@ public class OP {
 	 * Ultimate (Tier 8) : Data Orb and Lapotronic Energy Orb
 	 * Infinite (Cheaty)
 	 */
-	batterySingleuse            = create("batterySingleuse"             , "Single Use Batteries"            ).add(MATERIAL_BASED).aspects(TC.ELECTRUM, 2),
-	battery                     = create("battery"                      , "Reusable Batteries"              ).add(MATERIAL_BASED).aspects(TC.ELECTRUM, 1), // Introduced by Calclavia
-	circuit                     = create("circuit"                      , "Circuits"                        ).add(MATERIAL_BASED).aspects(TC.COGNITIO, 1), // Introduced by Calclavia
-	computer                    = create("computer"                     , "Computers"                       ).add(MATERIAL_BASED).aspects(TC.COGNITIO, 4), // A whole Computer.
+	batterySingleuse            = create("batterySingleuse"             , "Single Use Batteries"            ).aspects(TC.ELECTRUM, 2),
+	battery                     = create("battery"                      , "Reusable Batteries"              ).aspects(TC.ELECTRUM, 1), // Introduced by Calclavia
+	circuit                     = create("circuit"                      , "Circuits"                        ).aspects(TC.COGNITIO, 1), // Introduced by Calclavia
+	computer                    = create("computer"                     , "Computers"                       ).aspects(TC.COGNITIO, 4), // A whole Computer.
 	
 	// random known prefixes without special abilities.
 	shard                       = unused("shard"                        ).setCategoryName("Crystallised Shards"             ), // Introduced by Mekanism, abused too much to be used...

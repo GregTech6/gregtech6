@@ -44,13 +44,14 @@ public enum IL implements IItemContainer {
 	Circuit_Selector, // <-- this is the Circuit that has the adjustable Numbers on it, renamed to Selector Tag later on.
 	Empty_Slot,       // <-- Marker for Slots to be left Empty, used in the Anvil.
 	
-	TE_Slag, TE_Slag_Rich, TE_Cinnabar,
-	TE_Phyto_Gro, TE_Phyto_Gro_Rich,
+	TE_Slag, TE_Slag_Rich, TE_Cinnabar, TE_Phyto_Gro, TE_Phyto_Gro_Rich,
 	TE_Rod_Blizz, TE_Rod_Blitz, TE_Rod_Basalz,
 	TE_Rockwool, TE_ObsidiGlass, TE_LumiumGlass,
-	FR_Planks_Fireproof, FR_Planks,
-	FR_Slabs_Fireproof, FR_Slabs,
-	FR_Logs_Fireproof, FR_Logs,
+	TE_Wrench, TE_Wrench_Battle,
+	BC_Wrench,
+	AE_Wrench_Certus, AE_Wrench_Quartz,
+	FR_Wrench,
+	FR_Planks_Fireproof, FR_Planks, FR_Slabs_Fireproof, FR_Slabs, FR_Logs_Fireproof, FR_Logs,
 	FR_Ice_Shard,
 	FR_Iodine_Capsule, FR_Dissipation_Capsule,
 	FR_Propolis, FR_Propolis_Silky, FR_Propolis_Sticky, FR_Propolis_Pulsating,

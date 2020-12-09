@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] 1 Liter of Fluid sometimes remaining in Pipes.
 [FIXED] Quadruple and Nonuple Pipes had flow direction Issues, because flow direction was per Block and not per Sub-Pipe.
 [FIXED] Miniature Portals for the ExtraSimple fork of ExtraUtilities.
+[CHANGED] Wrenches from Buildcraft and similar Mods can now be crafted again, but if you use them for anything GT related they will instantly break without refunds.
 
 
 6.14.03:

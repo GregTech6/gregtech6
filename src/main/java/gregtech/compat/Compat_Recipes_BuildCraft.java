@@ -50,8 +50,6 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 	public Compat_Recipes_BuildCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing BC Recipes.");
-		CR.delate(MD.BC, "wrenchItem");
-		
 		long tBits = DEF | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
 		
 		CR.shaped(ST.make(MD.BC, "woodenGearItem" , 1, 0), tBits, " X ", "X X", " X ", 'X', OP.stick.dat(ANY.Wood));

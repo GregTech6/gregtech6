@@ -869,6 +869,30 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						return;
 					}
+					// Instant breaking for those Wrenches.
+					if (IL.BC_Wrench.equal(aStack, T, T) || IL.FR_Wrench.equal(aStack, T, T) || IL.AE_Wrench_Certus.equal(aStack, T, T) || IL.AE_Wrench_Quartz.equal(aStack, T, T) || IL.TE_Wrench.equal(aStack, T, T) || IL.TE_Wrench_Battle.equal(aStack, T, T)) {
+						List<String> tChatReturn = new ArrayListNoNulls<>();
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_wrench, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
+						if (tDamage > 0) {
+							ST.use(aEvent.entityPlayer, aStack);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							aEvent.setCanceled(T);
+						}
+						return;
+					}
+					// Instant breaking for those Hammers.
+					if (IL.IE_Hammer.equal(aStack, T, T)) {
+						List<String> tChatReturn = new ArrayListNoNulls<>();
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_hammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
+						if (tDamage > 0) {
+							ST.use(aEvent.entityPlayer, aStack);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							aEvent.setCanceled(T);
+						}
+						return;
+					}
 					// Make Railcrafts Crowbars work on GT6 Stuff.
 					if (IL.RC_Crowbar_Iron.equal(aStack, T, T) || IL.RC_Crowbar_Steel.equal(aStack, T, T) || IL.RC_Crowbar_Thaumium.equal(aStack, T, T) || IL.RC_Crowbar_Voidmetal.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();

@@ -53,8 +53,6 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 	public Compat_Recipes_ThermalExpansion(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Thermal Foundation Recipes.");
-		CR.delate(MD.TE, "wrench", "tool.battleWrenchInvar");
-		
 		CR.remove(IL.TE_Rod_Blizz .get(1));
 		CR.remove(IL.TE_Rod_Blitz .get(1));
 		CR.remove(IL.TE_Rod_Basalz.get(1));

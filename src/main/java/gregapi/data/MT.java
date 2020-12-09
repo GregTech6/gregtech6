@@ -49,7 +49,7 @@ public class MT {
 	public static final HashSetNoNulls<OreDictMaterial> ALL_MATERIALS_REGISTERED_HERE = new HashSetNoNulls<>();
 	
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
-	protected static OreDictMaterial tier         (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT, IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1);}
+	protected static OreDictMaterial tier         (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT, IGNORE_IN_COLOR_LOG, MD.GAPI).setAllToTheOutputOf(null, 0, 1);}
 	protected static OreDictMaterial unused       (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial depricated   (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial invalid      (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT, INVALID_MATERIAL);}
@@ -1414,7 +1414,7 @@ public class MT {
 //  HexoriumRainbow         = hexorium      ( 9242, 224, 224, 224, DYE_INDEX_White    ),
 	
 	
-	Bedrock                 = create        ( 8599, "Bedrock"               , SET_STONE             ,  64,  64,  64, 255, G_STONE, DIRTY_DUSTS, STONE, BRITTLE, MELTING, UNBURNABLE)                                                                                                                                                                                                                                            .aspects(TC.TERRA       , 5).qual(1, 8.0, 2048, 5).heat(4000).setRGBaLiquid(128,  96,  64, 255).visDefault(),
+	Bedrock                 = create        ( 8599, "Bedrock"               , SET_STONE             ,  64,  64,  64, 255, G_STONE, DIRTY_DUSTS, STONE, BRITTLE, MELTING, UNBURNABLE)                                                                                                                                                                                                                                            .aspects(TC.TERRA       , 5).qual(1, 8.0, 2048, 5).heat(4000).setRGBaLiquid(128,  96,  64, 255),
 	
 	
 	Stone                   = stone         ( 8500, "Stone"                                         , 205, 205, 205, 255, MELTING, MOLTEN, UNRECYCLABLE)                                                                                                                                                                                                                                                                        .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1).heat(1100).setRGBaLiquid(192,  96,  64, 255),

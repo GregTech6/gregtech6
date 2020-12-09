@@ -624,7 +624,8 @@ public class LoaderItemList implements Runnable {
 		OP.cell.mContainerItem =                     ST.mkic("cell"                                         , 1   , OreDictManager.INSTANCE.getFirstOre("cellEmpty", 1));
 		
 		
-		
+		IL.TE_Wrench                            .set(ST.make(MD.TE, "wrench"                                , 1, 0));
+		IL.TE_Wrench_Battle                     .set(ST.make(MD.TE, "tool.battleWrenchInvar"                , 1, 0));
 		IL.TE_Cinnabar                          .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,  20));
 		IL.TE_Rod_Blizz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1024));
 		IL.TE_Rod_Blitz                         .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,1026));
@@ -1360,6 +1361,14 @@ public class LoaderItemList implements Runnable {
 		IL.ICBM_Concrete                        .set(ST.make(MD.ICBM, "icbmCConcrete"                       , 1, 0));
 		
 		
+		IL.BC_Wrench                            .set(ST.make(MD.BC, "wrenchItem"                            , 1, 0));
+		
+		
+		IL.AE_Wrench_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzWrench"           , 1, 0));
+		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0));
+		
+		
+		IL.FR_Wrench                            .set(ST.make(MD.FR, "wrench"                                , 1, 0));
 		IL.FR_Planks_Fireproof                  .set(ST.make(MD.FR, "planksFireproof"                       , 1, 0));
 		IL.FR_Planks                            .set(ST.make(MD.FR, "planks"                                , 1, 0));
 		IL.FR_Slabs_Fireproof                   .set(ST.make(MD.FR, "slabsFireproof"                        , 1, 0));

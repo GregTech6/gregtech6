@@ -35,7 +35,6 @@ import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
-import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
@@ -44,8 +43,6 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 	public Compat_Recipes_AppliedEnergistics(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing AE Recipes.");
-		CR.delate(MD.AE, "item.ToolCertusQuartzWrench", "item.ToolNetherQuartzWrench");
-		
 		RM.ae_grinder(5, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10), OP.dustSmall.mat(MT.CertusQuartz, 2));
 		RM.ae_grinder(5, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11), OP.dustSmall.mat(MT.NetherQuartz, 2));
 		RM.ae_grinder(5, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 12), OP.dustSmall.mat(MT.Fluix, 2));

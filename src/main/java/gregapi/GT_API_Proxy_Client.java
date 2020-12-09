@@ -425,12 +425,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (ST.isGT(aItem) && tData.hasValidPrefixMaterialData()) {
 				if (tData.mMaterial.mMaterial.mOriginalMod == null) {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unknown (But definitely not GregTech)");
+				} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.GAPI) {
+					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unspecified (Handled by Greg API)");
+				} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
+					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: None (Vanilla Material)");
 				} else {
-					if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Mod: None (Vanilla Material)");
-					} else {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Mod: " + tData.mMaterial.mMaterial.mOriginalMod.mName);
-					}
+					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: " + tData.mMaterial.mMaterial.mOriginalMod.mName);
 				}
 			}
 		}
