@@ -141,7 +141,7 @@ public class GT6_Main extends Abstract_Mod {
 		}
 		
 		gt_proxy.mSkeletonsShootGTArrows = ConfigsGT.GREGTECH.get("general", "SkeletonsShootGTArrows", 16);
-		gt_proxy.mFlintChance            = ConfigsGT.GREGTECH.get("general", "FlintAndSteelChance"   , 30);
+		gt_proxy.mFlintChance            = (int)UT.Code.bind(1, 100, ConfigsGT.GREGTECH.get("general", "FlintAndSteelChance", 30));
 		gt_proxy.mDisableVanillaOres     = ConfigsGT.GREGTECH.get("general", "DisableVanillaOres"    , T);
 		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
 		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);

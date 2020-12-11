@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import gregapi.block.IBlockToolable;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
+import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -45,8 +46,14 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aPlayer != null && SIDES_VALID[aSide] && !(aPlayer instanceof FakePlayer) && WD.obstructed(aWorld, aX, aY, aZ, aSide)) return F;
 		List<String> tChatReturn = new ArrayListNoNulls<>();
-		long tDamage = 10000;
-		if (RNGSUS.nextInt(100)<GT6_Main.gt_proxy.mFlintChance) tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+		long tDamage = 5000;
+		if (MultiItemTool.getPrimaryMaterial(aStack).mToolDurability <= 1) {
+			tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+		} else if (MultiItemTool.getPrimaryMaterial(aStack).containsAny(TD.Properties.FLAMMABLE, TD.Properties.BURNING) && RNGSUS.nextInt(100) < UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance+(100-GT6_Main.gt_proxy.mFlintChance)/2)) {
+			tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+		} else if (RNGSUS.nextInt(100) < UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance)) {
+			tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+		}
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (aWorld.isRemote) return F;
 		if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(Math.max(10000, tDamage), 10000, 100, T), aPlayer);
@@ -77,7 +84,13 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add(LH.get("gt.behaviour.flintandtinder") + GT6_Main.gt_proxy.mFlintChance + "%");
+		if (MultiItemTool.getPrimaryMaterial(aStack).mToolDurability <= 1) {
+			aList.add(LH.get("gt.behaviour.flintandtinder") + "100%");
+		} else if (MultiItemTool.getPrimaryMaterial(aStack).containsAny(TD.Properties.FLAMMABLE, TD.Properties.BURNING) && RNGSUS.nextInt(100) < GT6_Main.gt_proxy.mFlintChance*2) {
+			aList.add(LH.get("gt.behaviour.flintandtinder") + UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance+(100-GT6_Main.gt_proxy.mFlintChance)/2) + "%");
+		} else if (RNGSUS.nextInt(100) < GT6_Main.gt_proxy.mFlintChance) {
+			aList.add(LH.get("gt.behaviour.flintandtinder") + UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance) + "%");
+		}
 		return aList;
 	}
 }
