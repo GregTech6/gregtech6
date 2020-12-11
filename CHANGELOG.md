@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] 1 Liter of Fluid sometimes remaining in Pipes.
 [FIXED] Quadruple and Nonuple Pipes had flow direction Issues, because flow direction was per Block and not per Sub-Pipe.
 [FIXED] Miniature Portals for the ExtraSimple fork of ExtraUtilities.
+[FIXED] Durability Loss when Treecapitating using the GT6 Axe, which was using way wrong calculations.
 [CHANGED] Wrenches from Buildcraft and similar Mods can now be crafted again, but if you use them for anything GT related they will instantly break without refunds.
 [CHANGED] Flint and Tinder now has a higher chance of success in certain cases, where there is a specific Material used to craft it.
 
