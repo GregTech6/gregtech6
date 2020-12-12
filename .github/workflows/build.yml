@@ -72,6 +72,10 @@ jobs:
     needs: [build, regenerate-website]
     steps:
     - uses: actions/checkout@v2
+    #- name: Fetch git tags to know if this is a release
+    #  run: git fetch --prune --unshallow --tags
+    - name: Pull full tag information if any so `git describe` works in gradle
+      run: git fetch -uf origin ${{ github.ref }}:${{ github.ref }}
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
