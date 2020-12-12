@@ -4,9 +4,8 @@ name: build
 on:
   workflow_dispatch:
   push:
-    # Gregorius sends the tag *with* the commit, so don't trigger on tag to not run release twice, does mean that can't use the github website to do a release now though.
-    #tags:
-    #- 'v[6]+.[0-9]+.[0-9]+*'
+    tags:
+    - 'v[6]+.[0-9]+.[0-9]+*'
     branches: [ master ]
 
 jobs:
