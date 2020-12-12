@@ -556,6 +556,8 @@ if (!hasProperty("mavenURL")) {
 }
 
 if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
+	task testIfUploadable {}
+
 	uploadArchives {
 		repositories {
 			mavenDeployer {
