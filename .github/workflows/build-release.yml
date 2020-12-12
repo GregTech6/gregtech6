@@ -37,7 +37,7 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
       #run: ./gradlew setupCIWorkspace build uploadArchives
-      run: git describe
+      run: git describe --match 'v6.[0-9]*' --abbrev=0 --exact-match --dirty
   #- name: Workflow Dispatch
     #uses: benc-uk/workflow-dispatch@v1
     #with:
