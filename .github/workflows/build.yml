@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     #- name: Fetch git tags to know if this is a release
     #  run: git fetch --prune --unshallow --tags
     - name: Pull full tag information if any so `git describe` works in gradle
