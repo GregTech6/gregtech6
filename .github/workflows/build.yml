@@ -33,18 +33,20 @@ jobs:
         key: .gradle
     - name: Build SNAPSHOT with Gradle
       env:
+        REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ARTIFACT_VERSION: SNAPSHOT
-      run: ./gradlew setupCIWorkspace build uploadArchives
+      run: if [ "$REF" == "refs/heads/master" ]; then ./gradlew setupCIWorkspace build uploadArchives; fi
     - name: Build RELEASE with Gradle
       env:
+        REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
-      run: ./gradlew testIfUploadable setupCIWorkspace build uploadArchives || true
+      run: if [ "$REF" == "refs/tags/v"* ]; then ./gradlew testIfUploadable setupCIWorkspace build uploadArchives fi
   #- name: Workflow Dispatch
     #uses: benc-uk/workflow-dispatch@v1
     #with:
