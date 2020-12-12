@@ -54,7 +54,7 @@ public class GT_Tool_Axe extends ToolStats {
 	
 	@Override
 	public int getToolDamagePerDropConversion() {
-		return 5;
+		return 1;
 	}
 	
 	@Override

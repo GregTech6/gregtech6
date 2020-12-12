@@ -86,9 +86,9 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		if (MultiItemTool.getPrimaryMaterial(aStack).mToolDurability <= 1) {
 			aList.add(LH.get("gt.behaviour.flintandtinder") + "100%");
-		} else if (MultiItemTool.getPrimaryMaterial(aStack).containsAny(TD.Properties.FLAMMABLE, TD.Properties.BURNING) && RNGSUS.nextInt(100) < GT6_Main.gt_proxy.mFlintChance*2) {
+		} else if (MultiItemTool.getPrimaryMaterial(aStack).containsAny(TD.Properties.FLAMMABLE, TD.Properties.BURNING)) {
 			aList.add(LH.get("gt.behaviour.flintandtinder") + UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance+(100-GT6_Main.gt_proxy.mFlintChance)/2) + "%");
-		} else if (RNGSUS.nextInt(100) < GT6_Main.gt_proxy.mFlintChance) {
+		} else {
 			aList.add(LH.get("gt.behaviour.flintandtinder") + UT.Code.bind(1, 100, GT6_Main.gt_proxy.mFlintChance) + "%");
 		}
 		return aList;
