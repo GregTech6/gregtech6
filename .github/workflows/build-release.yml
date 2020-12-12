@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Pull full tag information so `git describe` works in gradle
-      run: git fetch -f origin ${{ github.ref }}:${{ github.ref }}
+      run: git fetch -uf origin ${{ github.ref }}:${{ github.ref }}
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
