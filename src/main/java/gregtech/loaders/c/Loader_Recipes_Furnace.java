@@ -103,6 +103,12 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.dustImpure            .addListener(new Listener_Furnace_Smelting( -1, F));
 		OP.dustPure              .addListener(new Listener_Furnace_Smelting( -1, F));
 		OP.dustRefined           .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gemChipped            .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gemFlawed             .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gem                   .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gemFlawless           .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gemExquisite          .addListener(new Listener_Furnace_Smelting( -1, F));
+		OP.gemLegendary          .addListener(new Listener_Furnace_Smelting( -1, F));
 		OP.rockGt                .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.rawOreChunk           .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U*2, T));
