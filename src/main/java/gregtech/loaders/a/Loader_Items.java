@@ -138,8 +138,9 @@ public class Loader_Items implements Runnable {
 		new PrefixItem(MD.GT, "gt.meta.toolHeadSword"               , OP.toolHeadSword                  );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadRawPickaxe"          , OP.toolHeadRawPickaxe             );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxe"             , OP.toolHeadPickaxe                );
-		new PrefixItem(MD.GT, "gt.meta.toolHeadConstructionPickaxe" , OP.toolHeadConstructionPickaxe    );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxeGem"          , OP.toolHeadPickaxeGem             );
+		new PrefixItem(MD.GT, "gt.meta.toolHeadConstructionPickaxe" , OP.toolHeadConstructionPickaxe    );
+		new PrefixItem(MD.GT, "gt.meta.toolHeadBuilderwand"         , OP.toolHeadBuilderwand            );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadRawShovel"           , OP.toolHeadRawShovel              );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadShovel"              , OP.toolHeadShovel                 );
 		new PrefixItem(MD.GT, "gt.meta.toolHeadRawSpade"            , OP.toolHeadRawSpade               );

@@ -1,0 +1,62 @@
+/**
+ * Copyright (c) 2020 GregTech-6 Team
+ *
+ * This file is part of GregTech.
+ *
+ * GregTech is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * GregTech is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package gregtech.items.behaviors;
+
+import static gregapi.data.CS.*;
+
+import gregapi.item.multiitem.MultiItem;
+import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
+import gregapi.util.ST;
+import gregapi.util.UT;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class Behavior_Builderwand extends AbstractBehaviorDefault {
+	@Override
+	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		
+		
+		// Scan Inventory for equal Blocks.
+		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
+			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+			
+			// TODO Check for equality with the Block that was clicked on.
+			if (ST.invalid(tStack)) continue;
+			
+			
+			int tOldSize = tStack.stackSize;
+			if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
+				if (UT.Entities.hasInfiniteItems(aPlayer)) {
+					tStack.stackSize = tOldSize;
+				} else {
+					ST.use(aPlayer, tIndex, tStack, 0);
+					((MultiItemTool)aItem).doDamage(aStack, 1, aPlayer);
+				}
+				return T;
+			}
+			return F;
+		}
+		return F;
+	}
+}
