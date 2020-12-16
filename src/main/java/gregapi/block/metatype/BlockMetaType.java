@@ -50,6 +50,7 @@ public class BlockMetaType extends BlockBaseMeta {
 	public final float mHardnessMultiplier, mResistanceMultiplier;
 	public final int mHarvestLevel;
 	public final byte mSide;
+	public final boolean mIsWall, mIsSlab, mIsStair;
 	public final BlockMetaType mBlock;
 	public final BlockMetaType[] mSlabs;
 	
@@ -60,6 +61,9 @@ public class BlockMetaType extends BlockBaseMeta {
 		setHardness(aHardnessMultiplier * 1.5F);
 		setResistance(aResistanceMultiplier * 10.0F);
 		setCreativeTab(CreativeTabs.tabBlock);
+		mIsWall = F;
+		mIsSlab = F;
+		mIsStair = F;
 		mBlock = this;
 		mSide = SIDE_UNKNOWN;
 		mHarvestLevel = aHarvestLevel;
@@ -96,12 +100,15 @@ public class BlockMetaType extends BlockBaseMeta {
 		onSlabCreation(aItemClass, aVanillaMaterial, aSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
 		setHardness(aHardnessMultiplier * 1.5F);
 		setResistance(aResistanceMultiplier * 10.0F);
-		mSlabs = null;
+		mIsWall = F;
+		mIsSlab = T;
+		mIsStair = F;
 		mBlock = aBlock;
 		mSide = aSlabType;
 		mHarvestLevel = aHarvestLevel;
 		mHardnessMultiplier = aHardnessMultiplier;
 		mResistanceMultiplier = aResistanceMultiplier;
+		mSlabs = null;
 		setBlockBounds(
 		mSide == SIDE_X_POS ? 0.5F : 0.0F,
 		mSide == SIDE_Y_POS ? 0.5F : 0.0F,

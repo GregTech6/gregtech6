@@ -593,6 +593,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("ingotAlumite"                    , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotAluminium"                  , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotAluminiumAlloy"             , OD.craftingPistonIngot);
+		OreDictManager.INSTANCE.addReRegistration("ingotBronze"                     , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotNickel"                     , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotInvar"                      , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotTitanium"                   , OD.craftingPistonIngot);
