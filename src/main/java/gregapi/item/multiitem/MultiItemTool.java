@@ -171,7 +171,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			NBTTagCompound tMainNBT = UT.NBT.make(), tToolNBT = UT.NBT.make();
 			if (aPrimaryMaterial != null) {
 				if (aPrimaryMaterial.mID > 0) tToolNBT.setShort("a", aPrimaryMaterial.mID); else tToolNBT.setString("b", aPrimaryMaterial.toString());
-				UT.NBT.setNumber(tToolNBT, "j", 100L*(long)(aPrimaryMaterial.mToolDurability * tToolStats.getMaxDurabilityMultiplier()));
+				UT.NBT.setNumber(tToolNBT, "j", (long)((aPrimaryMaterial.mToolDurability * 100L) * tToolStats.getMaxDurabilityMultiplier()));
 			}
 			if (aSecondaryMaterial != null) {
 				if (aSecondaryMaterial.mID > 0) tToolNBT.setShort("c", aSecondaryMaterial.mID); else tToolNBT.setString("d", aSecondaryMaterial.toString());
