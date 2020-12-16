@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -110,6 +110,6 @@ public class GT_Tool_Wrench_LV extends GT_Tool_Wrench {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		super.onStatsAddedToTool(aItem, aID);
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
 	}
 }

@@ -50,7 +50,7 @@ public class GT_Tool_Pocket_Multitool extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
 	}
 	
 	@Override

@@ -139,7 +139,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
 		super.onStatsAddedToTool(aItem, aID);
 	}
 	

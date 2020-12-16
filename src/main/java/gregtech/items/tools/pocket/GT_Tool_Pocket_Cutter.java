@@ -19,6 +19,8 @@
 
 package gregtech.items.tools.pocket;
 
+import static gregapi.data.CS.*;
+
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Switch_Metadata;
@@ -48,6 +50,6 @@ public class GT_Tool_Pocket_Cutter extends GT_Tool_WireCutter {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		super.onStatsAddedToTool(aItem, aID);
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
 	}
 }

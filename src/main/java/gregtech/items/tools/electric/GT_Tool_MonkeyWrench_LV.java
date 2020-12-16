@@ -35,6 +35,6 @@ public class GT_Tool_MonkeyWrench_LV extends GT_Tool_Wrench_LV {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_monkeywrench, SFX.GT_WRENCH, 100, !canBlock(), T));
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
 	}
 }
