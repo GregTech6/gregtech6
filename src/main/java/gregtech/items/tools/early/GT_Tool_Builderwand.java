@@ -43,12 +43,12 @@ public class GT_Tool_Builderwand extends ToolStats {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Heliodor).mTextureSetsItems.get(OP.toolHeadBuilderwand.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mTextureSetsItems.get(OP.stick.mIconIndexItem);
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.YellowSapphire).mTextureSetsItems.get(OP.toolHeadBuilderwand.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Ebony).mTextureSetsItems.get(OP.stick.mIconIndexItem);
 	}
 	
 	@Override
 	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Heliodor).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.Black).mRGBaSolid;
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.YellowSapphire).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Ebony).mRGBaSolid;
 	}
 	
 	@Override

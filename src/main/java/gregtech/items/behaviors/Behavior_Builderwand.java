@@ -74,7 +74,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 				if (!aPlayer.canPlayerEdit(aX+tX+OFFSETS_X[aSide], aY+tY+OFFSETS_Y[aSide], aZ+tZ+OFFSETS_Z[aSide], aSide, tStack)) continue;
 				
 				int tOldSize = tStack.stackSize;
-				if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {
+				if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX+tX, aY+tY, aZ+tZ, aSide, aHitX, aHitY, aHitZ)) {
 					if (UT.Entities.hasInfiniteItems(aPlayer)) {
 						tStack.stackSize = tOldSize;
 					} else {
