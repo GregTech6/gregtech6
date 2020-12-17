@@ -418,6 +418,34 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Ad;                   aRegistry.add("Mold (" + aMat.getLocal() + ")"                      , "Molds"                               ,  1099,  1072, aClass, aMat.mToolQuality, 16, aUtilMetal       , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   1.0F, NBT_RESISTANCE,   6.0F, NBT_ACIDPROOF, T), "h y", "P P", "PPP", 'P', OP.plate.dat(aMat));
 		
 		
+		RM.add_smelting(IL.Ceramic_Ingot_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_01110_01110_01110_01110)));
+		RM.add_smelting(IL.Ceramic_Chunk_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11000_11000_00000_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Plate_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11111_11111_11111_11111_11111)));
+		RM.add_smelting(IL.Ceramic_Tiny_Plate_Mold_Raw     .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01110_01110_01110_00000)));
+		RM.add_smelting(IL.Ceramic_Bolt_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00000_00100_00100_00000)));
+		RM.add_smelting(IL.Ceramic_Rod_Mold_Raw            .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00000_11111_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Long_Rod_Mold_Raw       .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_10000_01000_00100_00010_00001)));
+		RM.add_smelting(IL.Ceramic_Item_Casing_Mold_Raw    .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11101_11101_11101_00001_11100)));
+		RM.add_smelting(IL.Ceramic_Ring_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01110_01010_01110_00000)));
+		RM.add_smelting(IL.Ceramic_Gear_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_10101_01110_11011_01110_10101)));
+		RM.add_smelting(IL.Ceramic_Small_Gear_Mold_Raw     .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01010_11111_01010_11111_01010)));
+		RM.add_smelting(IL.Ceramic_Sword_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00100_01110_01110_01110_01110)));
+		RM.add_smelting(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01110_10001_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Spade_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_01110_01110_01010_00000)));
+		RM.add_smelting(IL.Ceramic_Shovel_Mold_Raw         .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00100_01110_01110_01110_00000)));
+		RM.add_smelting(IL.Ceramic_Universal_Spade_Mold_Raw.get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00100_01110_01100_01110_00000)));
+		RM.add_smelting(IL.Ceramic_Axe_Mold_Raw            .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01110_01110_01000_00000)));
+		RM.add_smelting(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_11111_11111_10001_00000)));
+		RM.add_smelting(IL.Ceramic_Saw_Mold_Raw            .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_11111_11111_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Hammer_Mold_Raw         .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_01110_01010_01110_01110)));
+		RM.add_smelting(IL.Ceramic_File_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_01110_01110_00100_00100)));
+		RM.add_smelting(IL.Ceramic_Screwdriver_Mold_Raw    .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00100_00100_00100_00100)));
+		RM.add_smelting(IL.Ceramic_Chisel_Mold_Raw         .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_00100_00100_00100_00100)));
+		RM.add_smelting(IL.Ceramic_Arrow_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00100_00100_01110_00000)));
+		RM.add_smelting(IL.Ceramic_Hoe_Mold_Raw            .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00110_01110_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Sense_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01111_11111_00000_00000)));
+		RM.add_smelting(IL.Ceramic_Plow_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11111_11111_11111_11111_00100)));
+		
 		
 		// Basins
 		aClass = MultiTileEntityBasin.class;

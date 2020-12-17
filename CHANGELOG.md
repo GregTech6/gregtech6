@@ -11,7 +11,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Life and things)
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
+[FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
 [ADDED] Builders Wand. Pretty much is doing what the ones of other Mods do too. It places Blocks!
+[ADDED] Clay Molds for everything that is mentioned in the Molds Book, that way you can actually craft them without having to magically know all the Chiseling Shapes for Molds.
 
 
 6.14.04:

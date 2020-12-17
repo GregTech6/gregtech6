@@ -126,7 +126,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass          .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Brass          .get(1), F, F), TC.stack(TC.AQUA, 4))
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze         .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze         .get(1), F, F), TC.stack(TC.AQUA, 4))
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze  .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze  .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Au             .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Au             .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Gold           .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Gold           .get(1), F, F), TC.stack(TC.AQUA, 4))
 		);
 		tMat = MT.Zn;
 		COMPAT_TC.addResearch(tKey = TRANSZINC
