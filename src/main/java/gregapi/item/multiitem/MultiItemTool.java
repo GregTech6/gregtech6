@@ -209,6 +209,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	public float onBlockBreakSpeedEvent(float aDefault, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, int aX, int aY, int aZ, byte aMeta, PlayerEvent.BreakSpeed aEvent) {
+		if (aBlock == NB || WD.bedrock(aBlock)) return aDefault;
 		if (ST.instaharvest(aBlock, aMeta)) return Float.MAX_VALUE;
 		IToolStats tStats = getToolStats(aStack);
 		return tStats == null ? aDefault : tStats.getMiningSpeed(aBlock, aMeta, aDefault, aPlayer, aPlayer.worldObj, aX, aY, aZ);

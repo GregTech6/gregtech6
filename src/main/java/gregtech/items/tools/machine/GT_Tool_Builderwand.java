@@ -17,11 +17,12 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.items.tools.early;
+package gregtech.items.tools.machine;
 
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -32,6 +33,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Builderwand extends ToolStats {
+	@Override public int getToolDamagePerBlockBreak()                                       {return 1;}
+	@Override public int getToolDamagePerDropConversion()                                   {return 100;}
+	@Override public int getToolDamagePerContainerCraft()                                   {return 100;}
+	@Override public int getToolDamagePerEntityAttack()                                     {return 100;}
 	@Override public float getBaseDamage()                                                  {return 1.0F;}
 	@Override public float getMaxDurabilityMultiplier()                                     {return 0.1F;}
 	@Override public String getMiningSound()                                                {return SFX.MC_XP;}
@@ -39,7 +44,7 @@ public class GT_Tool_Builderwand extends ToolStats {
 	@Override public String getEntityHitSound()                                             {return SFX.MC_XP;}
 	@Override public boolean canCollect()                                                   {return T;}
 	@Override public boolean isMiningTool()                                                 {return F;}
-	@Override public boolean isMinableBlock(Block aBlock, byte aMetaData)                   {return F;}
+	@Override public boolean isMinableBlock(Block aBlock, byte aMetaData)                   {return IL.TC_Block_Air.equal(aBlock);}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
