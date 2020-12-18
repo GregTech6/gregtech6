@@ -378,11 +378,16 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Oh look, Matter Overdrive does this shit too...
 		if (MD.MO.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.gem    , MT.Dilithium     , ST.make(MD.MO, "dilithium_crystal", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_dust", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.nugget , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_nugget", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_ingot", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_plate", 1, 0));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MO, "dilithium_ore", null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MO, "tritanium_ore", null));
+			
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Dolamide                , ST.make(MD.MO, "dilithium_ore"    , 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.TritaniumDioxide, ST.make(MD.MO, "tritanium_ore"    , 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Dilithium               , ST.make(MD.MO, "dilithium_crystal", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.TritaniumAlloy          , ST.make(MD.MO, "tritanium_dust"   , 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.TritaniumAlloy          , ST.make(MD.MO, "tritanium_nugget" , 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.TritaniumAlloy          , ST.make(MD.MO, "tritanium_ingot"  , 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TritaniumAlloy          , ST.make(MD.MO, "tritanium_plate"  , 1, 0));
 		}
 		
 		// ThermalExpansion gets on this ShitList too I guess...

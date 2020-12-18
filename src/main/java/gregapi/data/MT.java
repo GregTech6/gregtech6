@@ -516,7 +516,7 @@ public class MT {
 	Ubb     = unknown( 1220,  184),
 	Ubt     = unknown( 1230,  186),
 	Ubq     = unknown( 1240,  188),
-	Tn      = element( 1250, "TritaniumElemental"    , "Tn"      , 125, 198, 1500, 2500, 25.0     , SET_DULL     ,  55, 155, 155, 255, G_DUST_ORES, UUM, METAL, SMITHABLE, MELTING, MOLTEN, EXTRUDER, "Unbipentium").aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.VITREUS, 1).setLocal("Elemental Tritanium"), Ubp = Tn,
+	Tn      = element( 1250, "TritaniumElemental"    , "Tn"      , 125, 198, 2000, 3138, 25.0     , SET_DULL     ,  55, 155, 155, 255, G_DUST_ORES, UUM, METAL, SMITHABLE, MELTING, MOLTEN, EXTRUDER, "Unbipentium").aspects(TC.METALLUM, 2, TC.TUTAMEN, 2, TC.VITREUS, 1).setLocal("Elemental Tritanium"), Ubp = Tn,
 	Ke      = element( 1260, "Trinium"               , "Ke"      , 126, 192, 2645, 4523,  1.06874 , SET_METALLIC , 234, 234, 234, 255, G_INGOT_MACHINE_ORES, UUM, METAL, SMITHABLE, MELTING, MOLTEN, EXTRUDER, "Unbihexium").aspects(TC.METALLUM, 3, TC.TUTAMEN, 1, TC.VITREUS, 1).qual(3, 12.0, 2560, 4), Ubh = Ke,
 	Ubs     = unknown( 1270,  194),
 	Ubo     = unknown( 1280,  196),
@@ -536,7 +536,7 @@ public class MT {
 	Uqb     = unknown( 1420,  236),
 	Uqt     = unknown( 1430,  239),
 	Uqq     = unknown( 1440,  242),
-	Dn      = element( 1450, "DuraniumElemental"     , "Dn"      , 145, 190,  1200, 2100, 20.0, SET_DULL,  75, 175, 175, 255, G_DUST_ORES, UUM, METAL, SMITHABLE, MELTING, MOLTEN, EXTRUDER, "Unquadpentium").aspects(TC.METALLUM, 2, TC.TUTAMEN, 1).setLocal("Elemental Duranium"), Uqp = Dn, // material refined from dolamide ore
+	Dn      = element( 1450, "DuraniumElemental"     , "Dn"      , 145, 190,  1200, 2491, 20.0, SET_DULL,  75, 175, 175, 255, G_DUST_ORES, UUM, METAL, SMITHABLE, MELTING, MOLTEN, EXTRUDER, "Unquadpentium").aspects(TC.METALLUM, 2, TC.TUTAMEN, 1).setLocal("Elemental Duranium"), Uqp = Dn, // material refined from dolamide ore
 	Uqh     = unknown( 1460,  248),
 	Uqs     = unknown( 1470,  251),
 	Uqo     = unknown( 1480,  254),
@@ -1291,7 +1291,7 @@ public class MT {
 	RedMeteor               = create        ( 8392, "Red Meteor"            , SET_RUBY              , 255,  60,  60, 255, G_GEM, MAGICAL, GLOWING, UNBURNABLE)                                                                                                                                                                                                                                                                  .aspects(TC.VITREUS, 3, TC.ALIENIS, 3).qual(3, 8.0, 512, 3),
 	
 	
-	Dilithium               = crystal       ( 8317, "Dilithium"             , SET_DIAMOND           , 153, 255, 255, 127, CRYSTALLISABLE, QUARTZ, MD.MO).lens(DYE_INDEX_White)                                                                                                                                                                                                                                                  .setSmelting(null, 0),
+	Dilithium               = crystal       ( 8317, "Dilithium"             , SET_DIAMOND           , 153, 255, 255, 127, CRYSTALLISABLE, QUARTZ).lens(DYE_INDEX_White)                                                                                                                                                                                                                                                         .setSmelting(null, 0),
 	
 	
 	Zircon                  = valgemelec    ( 8419, "Zircon"                , SET_EMERALD           ,  99,  24,  29, 255).lens(DYE_INDEX_Red        )                                                                                                               .uumMcfg( 0, Zr             , 1*U, SiO2             , 3*U, O                , 2*U)                                                                          .aspects(TC.VITREUS, 4).setSmelting(Zr, U9).qual(3, 8.0, 384, 2),
@@ -1634,8 +1634,8 @@ public class MT {
 	
 	
 	Desh                    = metalmachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  4.0,   1280,  3)                                                                                                                                                                                                                                                                             .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1).heat(Steel),
-	DuraniumAlloy           = alloymachine  ( 8751, "Duranium"                                      ,  75, 175, 175     ).qual(3,  8.0,   1280,  4)                                                                                                                 .uumAloy( 0, Dn             , 7*U, Mg               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2).setOriginalMod(MD.MO).setLocal("Duranium Alloy"), // That Info with Magnesium/Magnesite was pretty hard to find, but I found it!
-	TritaniumAlloy          = alloymachine  ( 8752, "Tritanium"                                     ,  55, 155, 155     ).qual(3, 12.0,   2560,  5)                                                                                                                 .uumAloy( 0, Tn             , 3*U, Dn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 3, TC.VITREUS, 1).setOriginalMod(MD.MO).setLocal("Tritanium Alloy"),
+	DuraniumAlloy           = alloymachine  ( 8751, "Duranium"                                      ,  75, 175, 175     ).qual(3,  8.0,   1280,  4)                                                                                                                 .uumAloy( 0, Dn             , 7*U, Mg               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2).setLocal("Duranium Alloy"), // That Info with Magnesium/Magnesite was pretty hard to find, but I found it!
+	TritaniumAlloy          = alloymachine  ( 8752, "Tritanium"                                     ,  55, 155, 155     ).qual(3, 12.0,   2560,  5)                                                                                                                 .uumAloy( 0, Tn             , 3*U, Dn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 3, TC.VITREUS, 1).setLocal("Tritanium Alloy"),
 	Dolamide                = oredust       ( 8753, "Dolamide"              , SET_METALLIC          , 188, 100, 122, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.POTENTIA, 3, TC.RADIO, 2),
 	Oriharukon              = metalmachore  ( 8754, "Oriharukon"                                    , 220, 220, 240     ).qual(3,  8.0,   2560,  2)                                                                                                                                                                                                                                                                             .aspects(TC.METALLUM, 2, TC.MACHINA, 2),
 	Adamantite              = metalmachore  ( 8755, "Adamantite"                                    , 255, 255, 190     ).qual(3,  6.0,   2560,  3)                                                                                                                                                                                                                                                                             .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2),
@@ -1750,6 +1750,8 @@ public class MT {
 			Sunstone                .setOreMultiplier( 4);
 			Chimerite               .setOreMultiplier( 3);
 			
+			
+			Empty                   .put(MD.MC);
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);
 			Fe                      .put(MD.MC, COMMON_ORE);
@@ -2008,7 +2010,7 @@ public class MT {
 			IronCompressed          .put(MD.PnC).visDefault();
 			
 			
-			Al                      .put(MD.TiC);
+			Al                      .put(MD.TiC); // don't COMMON_ORE this!
 			Co                      .put(MD.TiC, COMMON_ORE);
 			Ardite                  .put(MD.TiC, COMMON_ORE).visDefault();
 			Alumite                 .put(MD.TiC);
@@ -2098,7 +2100,7 @@ public class MT {
 			FishRaw                 .put(MD.MaCu);
 			FishRotten              .put(MD.MaCu);
 			TiO2                    .put(MD.MaCu, COMMON_ORE);
-			Ti                      .put(MD.MaCu);
+			Ti                      .put(MD.MaCu); // don't COMMON_ORE this!
 			
 			
 			An                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
@@ -2147,12 +2149,12 @@ public class MT {
 			
 			
 			Desh                    .put(MD.GC, COMMON_ORE).visDefault();
+			Cheese                  .put(MD.GC, COMMON_ORE);
 			MoonTurf                .put(MD.GC).visDefault();
 			MoonRock                .put(MD.GC).visDefault();
 			MarsSand                .put(MD.GC).visDefault();
 			MarsRock                .put(MD.GC).visDefault();
 			SpaceRock               .put(MD.GC).visDefault();
-			Cheese                  .put(MD.GC);
 			
 			
 			Duralumin               .put(MD.GC_GALAXYSPACE, COMMON_ORE);
@@ -2163,6 +2165,11 @@ public class MT {
 			GlowstoneEnceladus      .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstoneProteus        .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstonePluto          .put(MD.GC_GALAXYSPACE).visDefault();
+			
+			
+			Tn                      .put(MD.MO); // don't COMMON_ORE this!
+			TritaniumAlloy          .put(MD.MO, COMMON_ORE);
+			Dilithium               .put(MD.MO, COMMON_ORE);
 			
 			
 			SpectreIron             .put(MD.RT);
@@ -2193,7 +2200,7 @@ public class MT {
 			Continuum               .put(MD.AETHER, COMMON_ORE).visDefault();
 			
 			
-			W                       .put(MD.RP);
+			W                       .put(MD.RP); // don't COMMON_ORE this!
 			Ag                      .put(MD.RP, COMMON_ORE);
 			Indigo                  .put(MD.RP);
 			Sapphire                .put(MD.RP);
@@ -2485,279 +2492,294 @@ public class MT {
 			RedMatter               .addEnchantmentForArmors(Enchantment.blastProtection, 5);
 			Infinity                .addEnchantmentForArmors(Enchantment.blastProtection,10);
 			
-			/*
+			/* TODO ?
 			FryingOilHot            .setHeatDamage(1.0);
 			Lava                    .setHeatDamage(3.0);
 			Firestone               .setHeatDamage(5.0);
 			Pyrotheum               .setHeatDamage(5.0);
 			*/
 			
-			Yellorite                       .addOreByProducts(Pb                    , Cyanite                   , Yellorium             , Ra                    , RareEarth             );
-			Yellorium                       .addOreByProducts(Pb                    , Cyanite                   , Blutonium             , Am                    );
-			Blutonium                       .addOreByProducts(Pb                    , Yellorium                 , Am                    );
-			Ludicrite                       .addOreByProducts(Pb                    , Blutonium                 , Yellorium             );
+			Yellorite                       .addOreByProducts(Pb                        , Cyanite                   , Yellorium             , Ra                    , RareEarth             );
+			Yellorium                       .addOreByProducts(Pb                        , Cyanite                   , Blutonium             , Am                    );
+			Blutonium                       .addOreByProducts(Pb                        , Yellorium                 , Am                    );
+			Ludicrite                       .addOreByProducts(Pb                        , Blutonium                 , Yellorium             );
 			
-			OREMATS.Pitchblende             .addOreByProducts(Pb                    , Th                        , U_238                 , Ra                    , RareEarth             );
-			OREMATS.Uraninite               .addOreByProducts(Pb                    , Th                        , U_238                 , Ra                    , RareEarth             );
-			U_238                           .addOreByProducts(Pb                    , Th                        , Pu                    , Am                    );
-			Am                              .addOreByProducts(Pb                    , U_238                     , Pu                    );
-			Pu                              .addOreByProducts(Pb                    , U_238                     , Am                    );
-			Th                              .addOreByProducts(Pb                    , U_238                     );
+			OREMATS.Pitchblende             .addOreByProducts(Pb                        , Th                        , U_238                 , Ra                    , RareEarth             );
+			OREMATS.Uraninite               .addOreByProducts(Pb                        , Th                        , U_238                 , Ra                    , RareEarth             );
+			U_238                           .addOreByProducts(Pb                        , Th                        , Pu                    , Am                    );
+			Am                              .addOreByProducts(Pb                        , U_238                     , Pu                    );
+			Pu                              .addOreByProducts(Pb                        , U_238                     , Am                    );
+			Th                              .addOreByProducts(Pb                        , U_238                     );
 			
 			for (OreDictMaterial tMat : ANY.CaF2.mToThis)
-			tMat                            .addOreByProducts(OREMATS.Huebnerite    , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );
+			tMat                            .addOreByProducts(OREMATS.Huebnerite        , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );
+			CaF2                            .addOreByProducts(FluoriteGreen             , FluoriteOrange            );
+			FluoriteRed                     .addOreByProducts(FluoritePink              , FluoriteMagenta           );
+			FluoritePink                    .addOreByProducts(FluoriteWhite             , FluoriteRed               );
+			FluoriteBlue                    .addOreByProducts(FluoriteMagenta           , FluoriteBlack             );
+			FluoriteGreen                   .addOreByProducts(FluoriteYellow            , FluoriteBlue              );
+			FluoriteBlack                   .addOreByProducts(FluoriteWhite             , CaF2                      );
+			FluoriteWhite                   .addOreByProducts(FluoriteBlack             , CaF2                      );
+			FluoriteYellow                  .addOreByProducts(FluoriteGreen             , FluoriteOrange            );
+			FluoriteOrange                  .addOreByProducts(FluoriteYellow            , FluoriteRed               );
+			FluoriteMagenta                 .addOreByProducts(FluoritePink              , FluoriteBlue              );
 			
-			S                               .addOreByProducts(Pyrite                , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      , OREMATS.Gypsum);
-			Se                              .addOreByProducts(Pyrite                , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
-			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
-			OREMATS.Sperrylite              .addOreByProducts(Sb                    , Cu                        , Fe2O3                 , Rh                    , Pt                    );
-			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                 , S                         , Co                    , OREMATS.Sperrylite    , OREMATS.Gypsum        );
-			OREMATS.Sphalerite              .addOreByProducts(Cd                    , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
-			OREMATS.Tetrahedrite            .addOreByProducts(Cu                    , Sb                        , Zn                    , OREMATS.Kesterite     );
-			Pyrite                          .addOreByProducts(S                     , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
-			Sn                              .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
-			OREMATS.Cassiterite             .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
-			OREMATS.Bauxite                 .addOreByProducts(OREMATS.Kaolinite     , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 , AlO3H3                );
-			AlO3H3                          .addOreByProducts(OREMATS.Bauxite       , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
-			OREMATS.Ilmenite                .addOreByProducts(TiO2                  , Fe2O3                     , Mg                    , MnO2                  );
-			TiO2                            .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
-			OREMATS.Arsenopyrite            .addOreByProducts(Au                    , CaF2                      , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
-			Ti                              .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
-			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite      , OREMATS.Magnetite         , MnO2                  , ClayRed               );
-			OREMATS.Zeolite                 .addOreByProducts(Na                    , K                         , Ca                    , Mg                    );
-			OREMATS.YellowLimonite          .addOreByProducts(Ni                    , OREMATS.BrownLimonite     , Co                    );
-			Cu                              .addOreByProducts(Co                    , Au                        , Ni                    );
-			Ni                              .addOreByProducts(Co                    , Pt                        , Fe2O3                 );
-			OREMATS.Stannite                .addOreByProducts(Ge                    , Pyrite                    , OREMATS.Kesterite     );
-			OREMATS.Kesterite               .addOreByProducts(Ge                    , Pyrite                    , OREMATS.Stannite      );
-			OREMATS.GlauconiteSand          .addOreByProducts(Na                    , Al2O3                     , Fe2O3                 );
-			OREMATS.Glauconite              .addOreByProducts(Na                    , Al2O3                     , Fe2O3                 );
-			OREMATS.Vermiculite             .addOreByProducts(Fe2O3                 , Al2O3                     , Mg                    );
-			OREMATS.FullersEarth            .addOreByProducts(Al2O3                 , SiO2                      , Mg                    );
-			OREMATS.Bentonite               .addOreByProducts(Al2O3                 , Ca                        , Mg                    );
-			OREMATS.Galena                  .addOreByProducts(S                     , Ag                        , Pb                    , Se                    );
-			Lapis                           .addOreByProducts(Lazurite              , Sodalite                  , Pyrite                );
-			OREMATS.Cooperite               .addOreByProducts(Pd                    , Ni                        , Ir                    );
-			OREMATS.Cinnabar                .addOreByProducts(Redstone              , S                         , Glowstone             , Se                    );
-			OREMATS.Tantalite               .addOreByProducts(MnO2                  , Nb                        , Ta                    );
-			Mn                              .addOreByProducts(MnO2                  , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
-			MnO2                            .addOreByProducts(OREMATS.Bromargyrite  , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
-			OREMATS.Chromite                .addOreByProducts(MnO2                  , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
-			OREMATS.Bromargyrite            .addOreByProducts(MnO2                  , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
-			OREMATS.Pollucite               .addOreByProducts(Cs                    , Al2O3                     , Rb                    );
-			Asbestos                        .addOreByProducts(SiO2                  , Mg                        , Soapstone             , Talc                  );
-			Phosphorus                      .addOreByProducts(Phosphorite           , Apatite                   , CaF2                  , PO4                   );
-			Apatite                         .addOreByProducts(Phosphorite           , Phosphorus                , CaF2                  , PO4                   );
-			Sapphire                        .addOreByProducts(Ruby                  , PurpleSapphire            , GreenSapphire         );
-			BlueSapphire                    .addOreByProducts(Ruby                  , PurpleSapphire            , GreenSapphire         );
-			GreenSapphire                   .addOreByProducts(Ruby                  , BlueSapphire              , YellowSapphire        );
-			YellowSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
-			OrangeSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
-			PurpleSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
-			Ruby                            .addOreByProducts(OrangeSapphire        , BlueSapphire              , GreenSapphire         );
-			HexoriumRed                     .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
-			HexoriumGreen                   .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
-			HexoriumBlue                    .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
-			HexoriumBlack                   .addOreByProducts(HexoriumRed           , HexoriumGreen             , HexoriumBlue          );
-			HexoriumWhite                   .addOreByProducts(HexoriumRed           , HexoriumGreen             , HexoriumBlue          );
-			OREMATS.Kaolinite               .addOreByProducts(OREMATS.Bauxite       , ClayBrown                 , Al2O3                 );
-			OREMATS.Barite                  .addOreByProducts(CertusQuartz          , Quartzite                 );
-			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
-			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                 , Mg                        , MnO2                  );
-			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
-			Nikolite                        .addOreByProducts(Cu                    , RareEarth                 );
-			Teslatite                       .addOreByProducts(Cu                    , RareEarth                 );
-			Electrotine                     .addOreByProducts(Cu                    , RareEarth                 );
-			Os                              .addOreByProducts(Ir                    , Pt                        , Ru                    );
-			Ir                              .addOreByProducts(Pt                    , Os                        , Rh                    );
-			Pt                              .addOreByProducts(Ni                    , Ir                        , Pd                    );
-			MeteoricIron                    .addOreByProducts(Ni                    , Ir                        , Pt                    );
-			Au                              .addOreByProducts(Cu                    , Ni                        , OREMATS.Cinnabar      );
-			Ag                              .addOreByProducts(Pb                    , S                         , OREMATS.Bromargyrite  );
-			Ke                              .addOreByProducts(Sn                    , TiO2                      , Fe2O3                 );
-			Monazite                        .addOreByProducts(Th                    , Nd                        , RareEarth             );
-			Forcicium                       .addOreByProducts(Th                    , Nd                        , RareEarth             );
-			Forcillium                      .addOreByProducts(Th                    , Nd                        , RareEarth             );
-			FakeOsmium                      .addOreByProducts(Fe2O3                 , Sn                        , Cr                    );
-			Cd                              .addOreByProducts(OREMATS.Chalcopyrite  , OREMATS.Sphalerite        , Se                    );
-			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Scheelite         );
-			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite     , OREMATS.Scheelite         , Re                    , Os);
-			OREMATS.Malachite               .addOreByProducts(Cu                    , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
-			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite     , OREMATS.YellowLimonite    );
-			OREMATS.Garnierite              .addOreByProducts(Ni                    , OREMATS.Sperrylite        );
-			OREMATS.Tungstate               .addOreByProducts(MnO2                  , Ag                        , LiCl                  );
-			OREMATS.Scheelite               .addOreByProducts(MnO2                  , Mo                        , Ca                    );
-			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Wolframite    , OREMATS.Molybdenite       , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
-			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     , OREMATS.Stannite      , OREMATS.Magnesite);
-			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate     , Fe2O3                     );
-			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate     , Bi                        );
-			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
-			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
-			Nd                              .addOreByProducts(Monazite              , RareEarth                 );
-			OREMATS.Bastnasite              .addOreByProducts(Monazite              , RareEarth                 , Nd                    );
-			NaCl                            .addOreByProducts(KCl                   , KIO3                      , OREMATS.Borax         );
-			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
-			KIO3                            .addOreByProducts(NaCl                  , KCl                       );
-			Endstone                        .addOreByProducts(He_3                  , Be                        );
-			Endium                          .addOreByProducts(OREMATS.Wolframite    , OREMATS.Sperrylite        , OREMATS.Tantalite     , Ke);
-			Glowstone                       .addOreByProducts(Redstone              , Au                        , Gloomstone            );
-			GlowstoneCeres                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			GlowstoneIo                     .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			GlowstoneEnceladus              .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			GlowstoneProteus                .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			GlowstonePluto                  .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			Gloomstone                      .addOreByProducts(Redstone              , Au                        , Glowstone             );
-			Efrine                          .addOreByProducts(SoulSand              , Be                        , OREMATS.Pentlandite   , Zircon);
-			AncientDebris                   .addOreByProducts(SoulSand              , Efrine                    , OREMATS.Huebnerite    );
-			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 , Gloomstone);
-			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            , Efrine                , VoidQuartz);
-			VoidQuartz                      .addOreByProducts(Netherrack            , OREMATS.Barite            , Efrine                , NetherQuartz);
-			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3                 );
-			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
-			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			Syrmorite                       .addOreByProducts(OREMATS.Stannite      , OREMATS.Tetrahedrite      , Be                    );
-			Octine                          .addOreByProducts(OREMATS.Pentlandite   , OREMATS.Huebnerite        , Zircon                );
-			Ga                              .addOreByProducts(Zn                    , Se                        );
-			Zn                              .addOreByProducts(Sn                    , Ga                        );
-			W                               .addOreByProducts(MnO2                  , Mo                        );
-			OREMATS.Diatomite               .addOreByProducts(Fe2O3                 , BlueSapphire              );
-			Jasper                          .addOreByProducts(BalasRuby             , Spinel                    );
-			BalasRuby                       .addOreByProducts(Jasper                , Spinel                    );
-			Spinel                          .addOreByProducts(Jasper                , BalasRuby                 );
-			Fe                              .addOreByProducts(Ni                    , Sn                        );
-			OREMATS.Lepidolite              .addOreByProducts(LiCl                  , Cs                        );
-			Sb                              .addOreByProducts(Zn                    , Fe2O3                     );
-			OREMATS.Smithsonite             .addOreByProducts(Zn                    , OREMATS.Bromargyrite      );
-			Pb                              .addOreByProducts(Ag                    , S                         );
-			Electrum                        .addOreByProducts(Au                    , Ag                        );
-			Bronze                          .addOreByProducts(Cu                    , Sn                        );
-			Brass                           .addOreByProducts(Cu                    , Zn                        );
-			Coal                            .addOreByProducts(Lignite               , S                         );
-			Lignite                         .addOreByProducts(Coal                  , S                         , Ge                    );
-			Emerald                         .addOreByProducts(Be                    , Al2O3                     , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Aquamarine                      .addOreByProducts(Be                    , Al2O3                     , Emerald               , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Morganite                       .addOreByProducts(Be                    , Al2O3                     , Emerald               , Aquamarine            , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Goshenite                       .addOreByProducts(Be                    , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Bixbite               , Heliodor              , Maxixe    );
-			Bixbite                         .addOreByProducts(Be                    , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Heliodor              , Maxixe    );
-			Heliodor                        .addOreByProducts(Be                    , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Maxixe    );
-			Maxixe                          .addOreByProducts(Be                    , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor  );
-			Be                              .addOreByProducts(Emerald               , Aquamarine                , Morganite             );
-			Al                              .addOreByProducts(OREMATS.Bauxite       , Al2O3                     , AlO3H3                );
-			Al2O3                           .addOreByProducts(OREMATS.Bauxite       , Al2O3                     , AlO3H3                );
-			Cr                              .addOreByProducts(Fe2O3                 , Mg                        );
-			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite     , VanadiumPentoxide         );
-			OREMATS.Magnetite               .addOreByProducts(Fe2O3                 , Au                        );
-			OREMATS.GraniticMineralSand     .addOreByProducts(Granite               , OREMATS.Magnetite         );
-			OREMATS.BasalticMineralSand     .addOreByProducts(Basalt                , OREMATS.Magnetite         );
-			Basalt                          .addOreByProducts(Olivine               , VolcanicAsh               );
-			OREMATS.Celestine               .addOreByProducts(Sr                    , S                         );
-			Lazurite                        .addOreByProducts(Sodalite              , Lapis                     );
-			Sodalite                        .addOreByProducts(Lazurite              , Lapis                     );
-			OREMATS.Spodumene               .addOreByProducts(Al2O3                 , LiCl                      );
-			Co_60                           .addOreByProducts(OREMATS.Cobaltite     , Co                        );
-			Zr                              .addOreByProducts(TiO2                  , Hf                        );
-			Zircon                          .addOreByProducts(TiO2                  , Hf                        , OREMATS.Uraninite     );
-			Eudialyte                       .addOreByProducts(Zircon                , RareEarth                 , Hf                    , Ta                    , Nb                    , Pb                    );
-			Azurite                         .addOreByProducts(Zircon                , OREMATS.Malachite         , Hf                    ); // TODO: Niccolite
-			OREMATS.DiduraniumTrioxide      .addOreByProducts(Dn                    , Tn                        );
-			OREMATS.DuraniumHexafluoride    .addOreByProducts(Dn                    );
-			OREMATS.DuraniumHexachloride    .addOreByProducts(Dn                    );
-			OREMATS.DuraniumHexabromide     .addOreByProducts(Dn                    );
-			OREMATS.DuraniumHexaiodide      .addOreByProducts(Dn                    , I                         );
-			OREMATS.DuraniumHexaastatide    .addOreByProducts(Dn                    , At                        );
-			OREMATS.TritaniumDioxide        .addOreByProducts(Tn                    , Dn                        );
-			OREMATS.TritaniumHexafluoride   .addOreByProducts(Tn                    );
-			OREMATS.TritaniumHexachloride   .addOreByProducts(Tn                    );
-			OREMATS.TritaniumHexabromide    .addOreByProducts(Tn                    );
-			OREMATS.TritaniumHexaiodide     .addOreByProducts(Tn                    , I                         );
-			OREMATS.TritaniumHexaastatide   .addOreByProducts(Tn                    , At                        );
-			Nq_528                          .addOreByProducts(Nq                    , Nq_522                    );
-			Nq_522                          .addOreByProducts(Nq                    , Nq_528                    );
-			Nq                              .addOreByProducts(Nq_528                );
-			Ad                              .addOreByProducts(OREMATS.Magnetite     , Adamantine                );
-			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
-			OREMATS.Stibnite                .addOreByProducts(Sb                    );
-			Diamond                         .addOreByProducts(Graphite              , DiamondPink               );
-			DiamondPink                     .addOreByProducts(Graphite              , Diamond                   );
-			ManaDiamond                     .addOreByProducts(Graphite              , Diamond                   );
-			ElvenDragonstone                .addOreByProducts(Graphite              );
-			Pyrope                          .addOreByProducts(Mg                    );
-			Almandine                       .addOreByProducts(Al2O3                 );
-			Spessartine                     .addOreByProducts(MnO2                  );
-			Andradite                       .addOreByProducts(Fe2O3                 );
-			Grossular                       .addOreByProducts(Ca                    );
-			Uvarovite                       .addOreByProducts(Cr                    );
-			Olivine                         .addOreByProducts(Mg                    );
-			OREMATS.Magnesite               .addOreByProducts(Mg                    );
-			PigIron                         .addOreByProducts(Fe2O3                 );
-			DarkIron                        .addOreByProducts(Fe2O3                 );
-			Steel                           .addOreByProducts(Fe2O3                 );
-			MeteoricSteel                   .addOreByProducts(Fe2O3                 );
-			Graphite                        .addOreByProducts(C                     );
-			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
-			OREMATS.Gypsum                  .addOreByProducts(S                     , Asbestos                  , Soapstone             , Talc);
-			OREMATS.Borax                   .addOreByProducts(B                     , NaCl                      );
-			Netherrack                      .addOreByProducts(S                     );
-			Flint                           .addOreByProducts(Obsidian              );
-			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );
-			KNO3                            .addOreByProducts(NaNO3                 , Niter                     );
-			Niter                           .addOreByProducts(KNO3                  , NaNO3                     );
-			Hf                              .addOreByProducts(Zircon                );
-			Mg                              .addOreByProducts(Olivine               );
-			OREMATS.Cobaltite               .addOreByProducts(Co                    );
-			Co                              .addOreByProducts(OREMATS.Cobaltite     );
-			Ardite                          .addOreByProducts(Co                    );
-			Obsidian                        .addOreByProducts(Olivine               );
-			Redrock                         .addOreByProducts(ClayBrown             );
-			Limestone                       .addOreByProducts(CaCO3                 );
-			Marble                          .addOreByProducts(CaCO3                 );
-			Clay                            .addOreByProducts(ClayBrown             , ClayRed                   );
-			ClayBrown                       .addOreByProducts(Clay                  , ClayRed                   );
-			ClayRed                         .addOreByProducts(Clay                  , ClayBrown                 );
-			GraniteBlack                    .addOreByProducts(Biotite               );
-			GraniteRed                      .addOreByProducts(PotassiumFeldspar     );
-			Granite                         .addOreByProducts(PotassiumFeldspar     );
-			Eclogite                        .addOreByProducts(TiO2                  );
-			Limestone                       .addOreByProducts(Phosphorite           );
-			PO4                             .addOreByProducts(P                     );
-			P                               .addOreByProducts(PO4                   );
-			Tanzanite                       .addOreByProducts(Opal                  );
-			Opal                            .addOreByProducts(Tanzanite             );
-			Topaz                           .addOreByProducts(BlueTopaz             );
-			BlueTopaz                       .addOreByProducts(Topaz                 );
-			Si                              .addOreByProducts(SiO2                  );
-			In                              .addOreByProducts(Se                    );
-			Li                              .addOreByProducts(LiCl                  );
-			LiCl                            .addOreByProducts(Li                    );
+			S                               .addOreByProducts(Pyrite                    , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      , OREMATS.Gypsum);
+			Se                              .addOreByProducts(Pyrite                    , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
+			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                    , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
+			OREMATS.Sperrylite              .addOreByProducts(Sb                        , Cu                        , Fe2O3                 , Rh                    , Pt                    );
+			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                     , S                         , Co                    , OREMATS.Sperrylite    , OREMATS.Gypsum        );
+			OREMATS.Sphalerite              .addOreByProducts(Cd                        , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
+			OREMATS.Tetrahedrite            .addOreByProducts(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     );
+			Pyrite                          .addOreByProducts(S                         , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
+			Sn                              .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteBlack         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
+			OREMATS.Cassiterite             .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteWhite         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
+			OREMATS.Bauxite                 .addOreByProducts(OREMATS.Kaolinite         , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 , AlO3H3                );
+			AlO3H3                          .addOreByProducts(OREMATS.Bauxite           , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
+			OREMATS.Ilmenite                .addOreByProducts(TiO2                      , Fe2O3                     , Mg                    , MnO2                  );
+			TiO2                            .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
+			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , FluoriteOrange            , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
+			Ti                              .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
+			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.Magnetite         , MnO2                  , ClayRed               );
+			OREMATS.Zeolite                 .addOreByProducts(Na                        , K                         , Ca                    , Mg                    );
+			OREMATS.YellowLimonite          .addOreByProducts(Ni                        , OREMATS.BrownLimonite     , Co                    );
+			Cu                              .addOreByProducts(Co                        , Au                        , Ni                    );
+			Ni                              .addOreByProducts(Co                        , Pt                        , Fe2O3                 );
+			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
+			OREMATS.Kesterite               .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Stannite      );
+			OREMATS.GlauconiteSand          .addOreByProducts(Na                        , Al2O3                     , Fe2O3                 );
+			OREMATS.Glauconite              .addOreByProducts(Na                        , Al2O3                     , Fe2O3                 );
+			OREMATS.Vermiculite             .addOreByProducts(Fe2O3                     , Al2O3                     , Mg                    );
+			OREMATS.FullersEarth            .addOreByProducts(Al2O3                     , SiO2                      , Mg                    );
+			OREMATS.Bentonite               .addOreByProducts(Al2O3                     , Ca                        , Mg                    );
+			OREMATS.Galena                  .addOreByProducts(S                         , Ag                        , Pb                    , Se                    );
+			Lapis                           .addOreByProducts(Lazurite                  , Sodalite                  , Pyrite                );
+			OREMATS.Cooperite               .addOreByProducts(Pd                        , Ni                        , Ir                    );
+			OREMATS.Cinnabar                .addOreByProducts(Redstone                  , S                         , Glowstone             , Se                    );
+			OREMATS.Tantalite               .addOreByProducts(MnO2                      , Nb                        , Ta                    );
+			Mn                              .addOreByProducts(MnO2                      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
+			MnO2                            .addOreByProducts(OREMATS.Bromargyrite      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
+			OREMATS.Chromite                .addOreByProducts(MnO2                      , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
+			OREMATS.Bromargyrite            .addOreByProducts(MnO2                      , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
+			OREMATS.Pollucite               .addOreByProducts(Cs                        , Al2O3                     , Rb                    );
+			Asbestos                        .addOreByProducts(SiO2                      , Mg                        , Soapstone             , Talc                  );
+			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   );
+			Apatite                         .addOreByProducts(Phosphorite               , Phosphorus                , FluoriteBlue          , PO4                   );
+			Sapphire                        .addOreByProducts(Ruby                      , PurpleSapphire            , GreenSapphire         );
+			BlueSapphire                    .addOreByProducts(Ruby                      , PurpleSapphire            , GreenSapphire         );
+			GreenSapphire                   .addOreByProducts(Ruby                      , BlueSapphire              , YellowSapphire        );
+			YellowSapphire                  .addOreByProducts(Ruby                      , BlueSapphire              , GreenSapphire         );
+			OrangeSapphire                  .addOreByProducts(Ruby                      , BlueSapphire              , GreenSapphire         );
+			PurpleSapphire                  .addOreByProducts(Ruby                      , BlueSapphire              , GreenSapphire         );
+			Ruby                            .addOreByProducts(OrangeSapphire            , BlueSapphire              , GreenSapphire         );
+			HexoriumRed                     .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
+			HexoriumGreen                   .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
+			HexoriumBlue                    .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
+			HexoriumBlack                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
+			HexoriumWhite                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
+			OREMATS.Kaolinite               .addOreByProducts(OREMATS.Bauxite           , ClayBrown                 , Al2O3                 );
+			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , Quartzite                 );
+			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , Quartzite                 , OREMATS.Barite        );
+			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , Mg                        , MnO2                  );
+			Redstone                        .addOreByProducts(OREMATS.Cinnabar          , RareEarth                 , Glowstone             );
+			Nikolite                        .addOreByProducts(Cu                        , RareEarth                 );
+			Teslatite                       .addOreByProducts(Cu                        , RareEarth                 );
+			Electrotine                     .addOreByProducts(Cu                        , RareEarth                 );
+			Os                              .addOreByProducts(Ir                        , Pt                        , Ru                    );
+			Ir                              .addOreByProducts(Pt                        , Os                        , Rh                    );
+			Pt                              .addOreByProducts(Ni                        , Ir                        , Pd                    );
+			MeteoricIron                    .addOreByProducts(Ni                        , Ir                        , Pt                    );
+			Au                              .addOreByProducts(Cu                        , Ni                        , OREMATS.Cinnabar      );
+			Ag                              .addOreByProducts(Pb                        , S                         , OREMATS.Bromargyrite  );
+			Monazite                        .addOreByProducts(Th                        , Nd                        , RareEarth             );
+			Forcicium                       .addOreByProducts(Th                        , Nd                        , RareEarth             );
+			Forcillium                      .addOreByProducts(Th                        , Nd                        , RareEarth             );
+			FakeOsmium                      .addOreByProducts(Fe2O3                     , Sn                        , Cr                    );
+			Cd                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Sphalerite        , Se                    );
+			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Scheelite         );
+			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , Os);
+			OREMATS.Malachite               .addOreByProducts(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
+			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite         , OREMATS.YellowLimonite    );
+			OREMATS.Garnierite              .addOreByProducts(Ni                        , OREMATS.Sperrylite        );
+			OREMATS.Tungstate               .addOreByProducts(MnO2                      , Ag                        , LiCl                  );
+			OREMATS.Scheelite               .addOreByProducts(MnO2                      , Mo                        , Ca                    );
+			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Wolframite        , OREMATS.Molybdenite       , FluoriteGreen         , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
+			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     , OREMATS.Stannite      , OREMATS.Magnesite);
+			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     );
+			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate         , Bi                        );
+			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate         , Pb                        );
+			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate         , Pb                        );
+			Nd                              .addOreByProducts(Monazite                  , RareEarth                 );
+			OREMATS.Bastnasite              .addOreByProducts(Monazite                  , RareEarth                 , Nd                    );
+			NaCl                            .addOreByProducts(KCl                       , KIO3                      , OREMATS.Borax         );
+			KCl                             .addOreByProducts(KIO3                      , NaCl                      );
+			KIO3                            .addOreByProducts(NaCl                      , KCl                       );
+			Endstone                        .addOreByProducts(He_3                      , Be                        );
+			Endium                          .addOreByProducts(OREMATS.Wolframite        , OREMATS.Sperrylite        , OREMATS.Tantalite     , Ke);
+			Glowstone                       .addOreByProducts(Redstone                  , Au                        , Gloomstone            );
+			GlowstoneCeres                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			GlowstoneIo                     .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			GlowstoneEnceladus              .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			GlowstoneProteus                .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			GlowstonePluto                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             );
+			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon);
+			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    );
+			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone);
+			NetherQuartz                    .addOreByProducts(Netherrack                , OREMATS.Barite            , Efrine                , VoidQuartz);
+			VoidQuartz                      .addOreByProducts(Netherrack                , OREMATS.Barite            , Efrine                , NetherQuartz);
+			Quartzite                       .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
+			MilkyQuartz                     .addOreByProducts(CertusQuartz              , OREMATS.Barite            );
+			CertusQuartz                    .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
+			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
+			BlackQuartz                     .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
+			Syrmorite                       .addOreByProducts(OREMATS.Stannite          , OREMATS.Tetrahedrite      , Be                    );
+			Octine                          .addOreByProducts(OREMATS.Pentlandite       , OREMATS.Huebnerite        , Zircon                );
+			Ga                              .addOreByProducts(Zn                        , Se                        );
+			Zn                              .addOreByProducts(Sn                        , Ga                        );
+			W                               .addOreByProducts(MnO2                      , Mo                        );
+			OREMATS.Diatomite               .addOreByProducts(Fe2O3                     , BlueSapphire              );
+			Jasper                          .addOreByProducts(BalasRuby                 , Spinel                    );
+			BalasRuby                       .addOreByProducts(Jasper                    , Spinel                    );
+			Spinel                          .addOreByProducts(Jasper                    , BalasRuby                 );
+			Fe                              .addOreByProducts(Ni                        , Sn                        );
+			OREMATS.Lepidolite              .addOreByProducts(LiCl                      , Cs                        );
+			Sb                              .addOreByProducts(Zn                        , Fe2O3                     );
+			OREMATS.Smithsonite             .addOreByProducts(Zn                        , OREMATS.Bromargyrite      );
+			Pb                              .addOreByProducts(Ag                        , S                         );
+			Electrum                        .addOreByProducts(Au                        , Ag                        );
+			Bronze                          .addOreByProducts(Cu                        , Sn                        );
+			Brass                           .addOreByProducts(Cu                        , Zn                        );
+			Coal                            .addOreByProducts(Lignite                   , S                         );
+			Lignite                         .addOreByProducts(Coal                      , S                         , Ge                    );
+			Emerald                         .addOreByProducts(Be                        , Al2O3                     , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Aquamarine                      .addOreByProducts(Be                        , Al2O3                     , Emerald               , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Morganite                       .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Goshenite                       .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Bixbite               , Heliodor              , Maxixe    );
+			Bixbite                         .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Heliodor              , Maxixe    );
+			Heliodor                        .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Maxixe    );
+			Maxixe                          .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor  );
+			Be                              .addOreByProducts(Emerald                   , Aquamarine                , Morganite             );
+			Al                              .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
+			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
+			Cr                              .addOreByProducts(Fe2O3                     , Mg                        );
+			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
+			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        );
+			OREMATS.GraniticMineralSand     .addOreByProducts(Granite                   , OREMATS.Magnetite         );
+			OREMATS.BasalticMineralSand     .addOreByProducts(Basalt                    , OREMATS.Magnetite         );
+			Basalt                          .addOreByProducts(Olivine                   , VolcanicAsh               );
+			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
+			Lazurite                        .addOreByProducts(Sodalite                  , Lapis                     );
+			Sodalite                        .addOreByProducts(Lazurite                  , Lapis                     );
+			OREMATS.Spodumene               .addOreByProducts(Al2O3                     , LiCl                      );
+			Co_60                           .addOreByProducts(OREMATS.Cobaltite         , Co                        );
+			Zr                              .addOreByProducts(TiO2                      , Hf                        );
+			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
+			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , Ta                    , Nb                    , Pb                    );
+			Azurite                         .addOreByProducts(Zircon                    , OREMATS.Malachite         , Hf                    ); // TODO: Niccolite
+			Ad                              .addOreByProducts(OREMATS.Magnetite         , Adamantine                );
+			Adamantine                      .addOreByProducts(OREMATS.Magnetite         , Ad                        );
+			OREMATS.Stibnite                .addOreByProducts(Sb                        );
+			Diamond                         .addOreByProducts(Graphite                  , DiamondPink               );
+			DiamondPink                     .addOreByProducts(Graphite                  , Diamond                   );
+			ManaDiamond                     .addOreByProducts(Graphite                  , Diamond                   );
+			ElvenDragonstone                .addOreByProducts(Graphite                  );
+			Pyrope                          .addOreByProducts(Mg                        );
+			Almandine                       .addOreByProducts(Al2O3                     );
+			Spessartine                     .addOreByProducts(MnO2                      );
+			Andradite                       .addOreByProducts(Fe2O3                     );
+			Grossular                       .addOreByProducts(Ca                        );
+			Uvarovite                       .addOreByProducts(Cr                        );
+			Olivine                         .addOreByProducts(Mg                        );
+			OREMATS.Magnesite               .addOreByProducts(Mg                        );
+			PigIron                         .addOreByProducts(Fe2O3                     );
+			DarkIron                        .addOreByProducts(Fe2O3                     );
+			Steel                           .addOreByProducts(Fe2O3                     );
+			MeteoricSteel                   .addOreByProducts(Fe2O3                     );
+			Graphite                        .addOreByProducts(C                         );
+			CaCO3                           .addOreByProducts(OREMATS.Malachite         );
+			OREMATS.Gypsum                  .addOreByProducts(S                         , Asbestos                  , Soapstone             , Talc);
+			OREMATS.Borax                   .addOreByProducts(B                         , NaCl                      );
+			Netherrack                      .addOreByProducts(S                         );
+			Flint                           .addOreByProducts(Obsidian                  );
+			NaNO3                           .addOreByProducts(KNO3                      , Niter                     );
+			KNO3                            .addOreByProducts(NaNO3                     , Niter                     );
+			Niter                           .addOreByProducts(KNO3                      , NaNO3                     );
+			Hf                              .addOreByProducts(Zircon                    );
+			Mg                              .addOreByProducts(Olivine                   );
+			OREMATS.Cobaltite               .addOreByProducts(Co                        );
+			Co                              .addOreByProducts(OREMATS.Cobaltite         );
+			Ardite                          .addOreByProducts(Co                        );
+			Obsidian                        .addOreByProducts(Olivine                   );
+			Redrock                         .addOreByProducts(ClayBrown                 );
+			Limestone                       .addOreByProducts(CaCO3                     );
+			Marble                          .addOreByProducts(CaCO3                     );
+			Clay                            .addOreByProducts(ClayBrown                 , ClayRed                   );
+			ClayBrown                       .addOreByProducts(Clay                      , ClayRed                   );
+			ClayRed                         .addOreByProducts(Clay                      , ClayBrown                 );
+			GraniteBlack                    .addOreByProducts(Biotite                   );
+			GraniteRed                      .addOreByProducts(PotassiumFeldspar         );
+			Granite                         .addOreByProducts(PotassiumFeldspar         );
+			Eclogite                        .addOreByProducts(TiO2                      );
+			Limestone                       .addOreByProducts(Phosphorite               );
+			PO4                             .addOreByProducts(P                         );
+			P                               .addOreByProducts(PO4                       );
+			Tanzanite                       .addOreByProducts(Opal                      );
+			Opal                            .addOreByProducts(Tanzanite                 );
+			Topaz                           .addOreByProducts(BlueTopaz                 );
+			BlueTopaz                       .addOreByProducts(Topaz                     );
+			Si                              .addOreByProducts(SiO2                      );
+			In                              .addOreByProducts(Se                        );
+			Li                              .addOreByProducts(LiCl                      );
+			LiCl                            .addOreByProducts(Li                        );
 			
-			Dn                              .addOreByProducts(Tn                    );
-			Tn                              .addOreByProducts(Dn                    );
-			Dolamide                        .addOreByProducts(Dilithium             , OREMATS.DiduraniumTrioxide, OREMATS.DuraniumHexafluoride, OREMATS.DuraniumHexaastatide, OREMATS.DuraniumHexabromide);
 			
-			Alduorite                       .addOreByProducts(Cd                    );
-			Infuscolium                     .addOreByProducts(Cu                    );
-			Rubracium                       .addOreByProducts(Cr                    );
-			Meutoite                        .addOreByProducts(VanadiumPentoxide     );
-			Lemurite                        .addOreByProducts(Mg                    );
-			Ceruclase                       .addOreByProducts(Sb                    );
-			Atl                             .addOreByProducts(TiO2                  );
-			Oureclase                       .addOreByProducts(Ni                    );
-			Kalendrite                      .addOreByProducts(Os                    );
-			Orichalcum                      .addOreByProducts(Cs                    );
-			Carmot                          .addOreByProducts(Zn                    );
-			Sanguinite                      .addOreByProducts(Hg                    );
-			Vyroxeres                       .addOreByProducts(Ir                    );
-			Eximite                         .addOreByProducts(Pd                    );
-			Prometheum                      .addOreByProducts(Co                    );
-			Ignatius                        .addOreByProducts(Se                    , In);
-			Vulcanite                       .addOreByProducts(OREMATS.Wolframite    );
-			DeepIron                        .addOreByProducts(Fe2O3                 );
-			ShadowIron                      .addOreByProducts(Fe2O3                 );
-			AstralSilver                    .addOreByProducts(Ag                    );
-			Midasium                        .addOreByProducts(Au                    );
-			Mithril                         .addOreByProducts(Pt                    );
+			Nq_528                          .addOreByProducts(Nq                        , Nq_522                      , OREMATS.DuraniumHexafluoride);
+			Nq_522                          .addOreByProducts(Nq                        , Nq_528                      , OREMATS.TritaniumHexafluoride);
+			Nq                              .addOreByProducts(Nq_528                    , OREMATS.DuraniumHexachloride);
+			Ke                              .addOreByProducts(Sn                        , TiO2                        , Fe2O3, OREMATS.DuraniumHexaiodide);
+			Dn                              .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
+			DuraniumAlloy                   .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
+			OREMATS.DiduraniumTrioxide      .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
+			Tn                              .addOreByProducts(OREMATS.DiduraniumTrioxide, Ke                          );
+			TritaniumAlloy                  .addOreByProducts(OREMATS.DiduraniumTrioxide, Ke                          );
+			OREMATS.TritaniumDioxide        .addOreByProducts(OREMATS.DiduraniumTrioxide, Ke                          );
+			Dolamide                        .addOreByProducts(Dilithium                 , OREMATS.DiduraniumTrioxide  , OREMATS.DuraniumHexafluoride, OREMATS.DuraniumHexabromide);
+			Desh                            .addOreByProducts(Dolamide                  , OREMATS.DuraniumHexaiodide  , OREMATS.DuraniumHexachloride, OREMATS.DuraniumHexaastatide);
+			OREMATS.DuraniumHexafluoride    .addOreByProducts(OREMATS.DiduraniumTrioxide, FluoritePink                );
+			OREMATS.DuraniumHexachloride    .addOreByProducts(OREMATS.DiduraniumTrioxide, NaCl                        , KCl);
+			OREMATS.DuraniumHexabromide     .addOreByProducts(OREMATS.DiduraniumTrioxide, OREMATS.Bromargyrite        );
+			OREMATS.DuraniumHexaiodide      .addOreByProducts(OREMATS.DiduraniumTrioxide, KIO3                        );
+			OREMATS.DuraniumHexaastatide    .addOreByProducts(OREMATS.DiduraniumTrioxide, At                          );
+			OREMATS.TritaniumHexafluoride   .addOreByProducts(OREMATS.TritaniumDioxide  , FluoriteMagenta             );
+			OREMATS.TritaniumHexachloride   .addOreByProducts(OREMATS.TritaniumDioxide  , NaCl                        , KCl);
+			OREMATS.TritaniumHexabromide    .addOreByProducts(OREMATS.TritaniumDioxide  , OREMATS.Bromargyrite        );
+			OREMATS.TritaniumHexaiodide     .addOreByProducts(OREMATS.TritaniumDioxide  , KIO3                        );
+			OREMATS.TritaniumHexaastatide   .addOreByProducts(OREMATS.TritaniumDioxide  , At                          );
+			
+			
+			Alduorite                       .addOreByProducts(Cd                        );
+			Infuscolium                     .addOreByProducts(Cu                        );
+			Rubracium                       .addOreByProducts(Cr                        );
+			Meutoite                        .addOreByProducts(VanadiumPentoxide         );
+			Lemurite                        .addOreByProducts(Mg                        );
+			Ceruclase                       .addOreByProducts(Sb                        );
+			Atl                             .addOreByProducts(TiO2                      );
+			Oureclase                       .addOreByProducts(Ni                        );
+			Kalendrite                      .addOreByProducts(Os                        );
+			Orichalcum                      .addOreByProducts(Cs                        );
+			Carmot                          .addOreByProducts(Zn                        );
+			Sanguinite                      .addOreByProducts(Hg                        );
+			Vyroxeres                       .addOreByProducts(Ir                        );
+			Eximite                         .addOreByProducts(Pd                        );
+			Prometheum                      .addOreByProducts(Co                        );
+			Ignatius                        .addOreByProducts(Se                        , In);
+			Vulcanite                       .addOreByProducts(OREMATS.Wolframite        );
+			DeepIron                        .addOreByProducts(Fe2O3                     );
+			ShadowIron                      .addOreByProducts(Fe2O3                     );
+			AstralSilver                    .addOreByProducts(Ag                        );
+			Midasium                        .addOreByProducts(Au                        );
+			Mithril                         .addOreByProducts(Pt                        );
 			
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.YellowLimonite        , 8*U), OM.stack(C                  , 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.BrownLimonite         , 8*U), OM.stack(C                  , 1*U)));

@@ -5,13 +5,15 @@ This is the most recent Changelog. It also contains some of the changes inside t
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.06: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.14.06: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on my Life and things)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Life and things)
+6.14.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on some of my Backlog)
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
 [FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
+[CHANGED] All Fluorite Byproducts to use the more colorful Versions of Fluorite.
+[CHANGED] Also changed the Byproducts of Duranium, Tritanium and Dilithium containing Ores. Desh has related Byproducts to those three now.
 [ADDED] Builders Wand. Pretty much is doing what the ones of other Mods do too. It places Blocks! It can also destroy Thaumcraft Nodes like the Crowbar does. Why? Because it's a neat Easter Egg, and if a Node happens to be in the way while building, you can just go smack it with the Wand.
 [ADDED] Clay Molds for everything that is mentioned in the Molds Book, that way you can actually craft them without having to magically know all the Chiseling Shapes for Molds.
 

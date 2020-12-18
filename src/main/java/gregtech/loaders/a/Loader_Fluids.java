@@ -162,6 +162,11 @@ public class Loader_Fluids implements Runnable {
 			tFluid.getFluid().setTemperature((int)MT.Glowstone.mBoilingPoint);
 			MT.Glowstone.gas(tFluid);
 		}
+		tFluid = FL.make("molten_tritanium", 144);
+		if (tFluid != null) {
+			tFluid.getFluid().setTemperature((int)MT.TritaniumAlloy.mMeltingPoint);
+			MT.TritaniumAlloy.liquid(tFluid);
+		}
 		
 		FL.create("plastic"                  , "Molten Plastic"      , MT.Plastic        , 1, 1000,   423);
 		FL.create("glass"                    , "Molten Glass"        , MT.Glass          , 1, 1000,  1200);

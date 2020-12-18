@@ -424,13 +424,17 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 			if (ST.isGT(aItem) && tData.hasValidPrefixMaterialData()) {
 				if (tData.mMaterial.mMaterial.mOriginalMod == null) {
-					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unknown (But definitely not GregTech)");
-				} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.GAPI) {
-					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unspecified (Handled by Greg API)");
+					aEvent.toolTip.add(LH.Chat.BLUE + "Material from an Unknown Mod");
 				} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
-					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: None (Vanilla Material)");
+					aEvent.toolTip.add(LH.Chat.BLUE + "Vanilla Material");
+				} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.GAPI) {
+					if (tData.mMaterial.mMaterial.mID > 0 && tData.mMaterial.mMaterial.mID < 8000) {
+						aEvent.toolTip.add(LH.Chat.BLUE + "Material from the Periodic Table of Elements");
+					} else {
+						aEvent.toolTip.add(LH.Chat.BLUE + "Random Material handeled by Greg API");
+					}
 				} else {
-					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: " + tData.mMaterial.mMaterial.mOriginalMod.mName);
+					aEvent.toolTip.add(LH.Chat.BLUE + "Material from " + tData.mMaterial.mMaterial.mOriginalMod.mName);
 				}
 			}
 		}
