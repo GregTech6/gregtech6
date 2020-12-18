@@ -1838,6 +1838,7 @@ public class MT {
 			PepperBlack             .put(MD.HaC);
 			Curry                   .put(MD.HaC);
 			ButterSalted            .put(MD.HaC);
+			OliveOil                .put(MD.HaC);
 			
 			
 			Butter                  .put(MD.GrC);
@@ -1863,6 +1864,7 @@ public class MT {
 			
 			
 			Zn                      .put(MD.GT, COMMON_ORE);
+			Li                      .put(MD.GT);
 			Craponite               .put(MD.GT);
 			NitroCarbon             .put(MD.GT);
 			NitroFuel               .put(MD.GT);
@@ -1871,8 +1873,17 @@ public class MT {
 			ClayRed                 .put(MD.GT);
 			Ceramic                 .put(MD.GT);
 			SluiceSand              .put(MD.GT);
+			SunflowerOil            .put(MD.GT);
+			NutOil                  .put(MD.GT);
+			LinOil                  .put(MD.GT);
+			HempOil                 .put(MD.GT);
+			Glue                    .put(MD.GT);
+			HolyWater               .put(MD.GT);
 			Nichrome                .put(MD.GT);
 			Kanthal                 .put(MD.GT);
+			VanadiumGallium         .put(MD.GT);
+			YttriumBariumCuprate    .put(MD.GT);
+			Graphene                .put(MD.GT);
 			Magnalium               .put(MD.GT);
 			BatteryAlloy            .put(MD.GT);
 			SolderingAlloy          .put(MD.GT);
@@ -1880,16 +1891,43 @@ public class MT {
 			IronMagnetic            .put(MD.GT);
 			SteelMagnetic           .put(MD.GT);
 			NeodymiumMagnetic       .put(MD.GT);
+			CobaltBrass             .put(MD.GT);
+			Ultimet                 .put(MD.GT);
+			SteelGalvanized         .put(MD.GT);
 			StainlessSteel          .put(MD.GT);
 			TungstenSteel           .put(MD.GT);
+			NiobiumTitanium         .put(MD.GT);
 			Ta4HfC5                 .put(MD.GT);
+			Osmiridium              .put(MD.GT);
 			UUAmplifier             .put(MD.GT);
+			Alumina                 .put(MD.GT);
+			EnergiumCyan            .put(MD.GT);
+			Primitive               .put(MD.GT);
+			Good                    .put(MD.GT);
+			Data                    .put(MD.GT);
+			Master                  .put(MD.GT);
+			
+			
+			Vb                      .put(MD.GT);
+			VibraniumSilver         .put(MD.GT);
+			Ad                      .put(MD.GT);
+			Vibramantium            .put(MD.GT);
+			Dn                      .put(MD.GT);
+			DuraniumAlloy           .put(MD.GT);
+			Ke                      .put(MD.GT);
+			Trinitanium             .put(MD.GT);
+			Nq                      .put(MD.GT);
+			Nq_522                  .put(MD.GT);
+			Nq_528                  .put(MD.GT);
 			
 			
 			HSSG                    .put(MD.GT5U);
 			HSSE                    .put(MD.GT5U);
 			HSSS                    .put(MD.GT5U);
 			PlatinumGroupSludge     .put(MD.GT5U);
+			
+			
+			Superconductor          .put(COMMON_ORE).setOriginalMod("rocketscience", "Rocket Science (Old IC2 Addon)");
 			
 			
 			Os                      .put(COMMON_ORE).setOriginalMod("gravisuite", "Gravisuite (Old IC2 Addon)");
@@ -1905,12 +1943,14 @@ public class MT {
 			Pu                      .put(MD.IC2);
 			DistWater               .put(MD.IC2);
 			SiO2                    .put(MD.IC2);
+			EnergiumRed             .put(MD.IC2);
 			ConstructionFoam        .put(MD.IC2);
 			UUMatter                .put(MD.IC2);
 			HydratedCoal            .put(MD.IC2);
 			Coffee                  .put(MD.IC2);
 			Rubber                  .put(MD.IC2);
 			WoodRubber              .put(MD.IC2);
+			Advanced                .put(MD.IC2);
 			
 			
 			SiC                     .put(MD.IHL);
@@ -1928,6 +1968,7 @@ public class MT {
 			Fuel                    .put(MD.BC);
 			
 			
+			I                       .put(MD.FR);
 			Ash                     .put(MD.FR);
 			Peat                    .put(MD.FR);
 			PeatBituminous          .put(MD.FR);
@@ -1939,6 +1980,7 @@ public class MT {
 			SeedOil                 .put(MD.FR);
 			Honey                   .put(MD.FR);
 			Honeydew                .put(MD.FR);
+			Wax                     .put(MD.FR);
 			WaxBee                  .put(MD.FR);
 			WaxRefractory           .put(MD.FR);
 			
@@ -1972,6 +2014,7 @@ public class MT {
 			FierySteel              .put(MD.TF, MAZEBREAKER);
 			
 			
+			K                       .put(MD.RC);
 			S                       .put(MD.RC, COMMON_ORE);
 			KNO3                    .put(MD.RC, COMMON_ORE);
 			Firestone               .put(MD.RC, COMMON_ORE).visDefault();
@@ -1982,6 +2025,7 @@ public class MT {
 			
 			
 			Constantan              .put(MD.IE);
+			WoodSealed              .put(MD.IE);
 			
 			
 			Ni                      .put(MD.TE, COMMON_ORE);
@@ -2002,6 +2046,7 @@ public class MT {
 			Cryotheum               .put(MD.TE);
 			
 			
+			Si                      .put(MD.AE); // don't COMMON_ORE this!
 			CertusQuartz            .put(MD.AE, COMMON_ORE);
 			ChargedCertusQuartz     .put(MD.AE, COMMON_ORE);
 			Fluix                   .put(MD.AE, COMMON_ORE);
@@ -2024,12 +2069,15 @@ public class MT {
 			EnderiumBase            .put(MD.EIO);
 			
 			
+			In                      .put(MD.ReC);
 			TungstenCarbide         .put(MD.ReC);
 			
 			
 			Anthracite              .put(MD.RoC, COMMON_ORE).visDefault();
 			Prismane                .put(MD.RoC).visDefault();
 			Lonsdaleite             .put(MD.RoC).visDefault();
+			Lubricant               .put(MD.RoC);
+			F                       .put(MD.RoC);
 			CaF2                    .put(MD.RoC);
 			AgI                     .put(MD.RoC);
 			InductiveAlloy          .put(MD.RoC);
@@ -2047,8 +2095,10 @@ public class MT {
 			RefinedGlowstone        .put(MD.Mek).visDefault();
 			RefinedObsidian         .put(MD.Mek).visDefault();
 			FakeOsmium              .put(MD.Mek, COMMON_ORE).visDefault();
+			Basic                   .put(MD.Mek);
+			Elite                   .put(MD.Mek);
 			
-
+			
 			InfusedVis              .put(MD.TC).visDefault();
 			Silverwood              .put(MD.TC).visDefault();
 			Greatwood               .put(MD.TC).visDefault();
@@ -2096,11 +2146,12 @@ public class MT {
 			OREMATS.Sphalerite      .put(MD.HEE, COMMON_ORE);
 			
 			
+			Ti                      .put(MD.MaCu); // don't COMMON_ORE this!
+			TiO2                    .put(MD.MaCu, COMMON_ORE);
 			FishCooked              .put(MD.MaCu);
 			FishRaw                 .put(MD.MaCu);
 			FishRotten              .put(MD.MaCu);
-			TiO2                    .put(MD.MaCu, COMMON_ORE);
-			Ti                      .put(MD.MaCu); // don't COMMON_ORE this!
+			FishOil                 .put(MD.MaCu);
 			
 			
 			An                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
@@ -2123,6 +2174,12 @@ public class MT {
 			
 			DarkMatter              .put(MD.PE).visDefault();
 			RedMatter               .put(MD.PE).visDefault();
+			
+			
+			Zr                      .put(MD.TROPIC);
+			Zircon                  .put(MD.TROPIC);
+			Azurite                 .put(MD.TROPIC);
+			Eudialyte               .put(MD.TROPIC);
 			
 			
 			Topaz                   .put(MD.BoP, COMMON_ORE);
@@ -2155,6 +2212,7 @@ public class MT {
 			MarsSand                .put(MD.GC).visDefault();
 			MarsRock                .put(MD.GC).visDefault();
 			SpaceRock               .put(MD.GC).visDefault();
+			Ultimate                .put(MD.GC);
 			
 			
 			Duralumin               .put(MD.GC_GALAXYSPACE, COMMON_ORE);
