@@ -1914,6 +1914,7 @@ public class MT {
 			Vibramantium            .put(MD.GT);
 			Dn                      .put(MD.GT);
 			DuraniumAlloy           .put(MD.GT);
+			Dolamide                .put(MD.GT);
 			Ke                      .put(MD.GT);
 			Trinitanium             .put(MD.GT);
 			Nq                      .put(MD.GT);
