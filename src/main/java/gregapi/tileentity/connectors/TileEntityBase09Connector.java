@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -137,7 +137,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 				return T;
 			}
-		} else if (WD.air(tDelegator.mWorld, tDelegator.mX, tDelegator.mY, tDelegator.mZ) || canConnect(aSide, tDelegator)) {
+		} else if (WD.air(tDelegator.mWorld, tDelegator.mX, tDelegator.mY, tDelegator.mZ) || WD.liquid(tDelegator.mWorld, tDelegator.mX, tDelegator.mY, tDelegator.mZ) || canConnect(aSide, tDelegator)) {
 			byte oConnections = mConnections;
 			mConnections |= SBIT[aSide];
 			updateClientData();
