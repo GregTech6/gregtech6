@@ -314,6 +314,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							for (int k : SLOTS_INPUT) {
 								if (!slotHas(k)) {
 									slot(k, tContainer);
+									updateInventory();
 									break;
 								}
 								if (ST.equal(tContainer, slot(k))) {
@@ -368,11 +369,13 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 						decrStackSize(j, 1);
 					} else if (slot(j).stackSize == 1) {
 						slot(j, tContainer2);
+						updateInventory();
 					} else {
 						decrStackSize(j, 1);
 						for (int k : SLOTS_INPUT) {
 							if (!slotHas(k)) {
 								slot(k, tContainer2);
+								updateInventory();
 								break;
 							}
 							if (ST.equal(tContainer2, slot(k))) {
@@ -462,22 +465,24 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		for (int i : SLOTS_TOOLS) {
 			ItemStack tOutput = FL.fill(aFluid, slot(i), F, T, F, T);
 			if (tOutput != null) {
-				if (slot(i).stackSize == 1) {
-					if (aDoFill) slot(i, tOutput);
-					return FL.getFluid(tOutput, T).amount * tOutput.stackSize;
-				}
-				for (int j : SLOTS_TOOLS) {
-					if (!slotHas(j) || (ST.equal(tOutput, slot(j)) && slot(j).stackSize + tOutput.stackSize <= tOutput.getMaxStackSize())) {
+				FluidStack tFluid = FL.getFluid(tOutput, T);
+				if (tFluid != null) {
+					if (slot(i).stackSize == 1) {
 						if (aDoFill) {
-							decrStackSize(i, 1);
-							if (slotHas(j)) {
-								slot(j).stackSize++;
-								updateInventory();
-							} else {
-								slot(j, tOutput);
-							}
+							slot(i, tOutput);
+							updateInventory();
 						}
-						return FL.getFluid(tOutput, T).amount * tOutput.stackSize;
+						return tFluid.amount * tOutput.stackSize;
+					}
+					for (int j : SLOTS_TOOLS) {
+						if (!slotHas(j) || (ST.equal(tOutput, slot(j)) && slot(j).stackSize + tOutput.stackSize <= tOutput.getMaxStackSize())) {
+							if (aDoFill) {
+								decrStackSize(i, 1);
+								if (slotHas(j)) slot(j).stackSize++; else slot(j, tOutput);
+								updateInventory();
+							}
+							return tFluid.amount * tOutput.stackSize;
+						}
 					}
 				}
 			}

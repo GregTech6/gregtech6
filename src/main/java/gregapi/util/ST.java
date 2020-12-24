@@ -126,6 +126,9 @@ public class ST {
 	public static boolean equalTools (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);}
 	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return item_(aStack1) == item_(aStack2) && equal(meta_(aStack1), meta_(aStack2)) && (aIgnoreNBT || item_(aStack1) instanceof IItemGTContainerTool || (((nbt_(aStack1) == null) == (nbt_(aStack2) == null)) && (nbt_(aStack1) == null || nbt_(aStack1).equals(nbt_(aStack2)))));}
 	
+	public static boolean identical (ItemStack aStack1, ItemStack aStack2) {return aStack1 == aStack2 || (aStack1 != null && identical_(aStack1, aStack2));}
+	public static boolean identical_(ItemStack aStack1, ItemStack aStack2) {return aStack1.stackSize == aStack2.stackSize && equal_(aStack1, aStack2, F);}
+	
 	public static boolean isGT (Item aItem) {return aItem instanceof IItemGT;}
 	public static boolean isGT (Block aBlock) {return aBlock instanceof IItemGT;}
 	public static boolean isGT (ItemStack aStack) {return aStack != null && isGT_(aStack);}
