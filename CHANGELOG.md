@@ -13,6 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
 [FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
 [FIXED] You know how you can open Pipes to Air Blocks? Well I added that functionality for Liquid and Gas Blocks too, so that is now fixed.
+[FIXED] A few random Bugs.
 [CHANGED] All Fluorite Byproducts to use the more colorful Versions of Fluorite.
 [CHANGED] Also changed the Byproducts of Duranium, Tritanium and Dilithium containing Ores. Desh has related Byproducts to those three now.
 [ADDED] one more Icon to the Warning Sign Cover. It's that Checkerboard-ish Circle that is usually on Crashtest Dummies.

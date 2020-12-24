@@ -287,15 +287,15 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 			);
 		}
 		
-		IL.Wooden_Bucket_Copper         .set(this, 2000);
-		IL.Wooden_Bucket_Tin            .set(this, 2100);
-		IL.Wooden_Bucket_Zinc           .set(this, 2200);
-		IL.Wooden_Bucket_Lead           .set(this, 2300);
-		IL.Wooden_Bucket_Bismuth        .set(this, 2400);
-		IL.Wooden_Bucket_Brass          .set(this, 2500);
-		IL.Wooden_Bucket_Bronze         .set(this, 2600);
-		IL.Wooden_Bucket_BismuthBronze  .set(this, 2700);
-		IL.Wooden_Bucket_Gold           .set(this, 2800);
+		IL.Wooden_Bucket_Copper       .set(this, 2000);
+		IL.Wooden_Bucket_Tin          .set(this, 2100);
+		IL.Wooden_Bucket_Zinc         .set(this, 2200);
+		IL.Wooden_Bucket_Lead         .set(this, 2300);
+		IL.Wooden_Bucket_Bismuth      .set(this, 2400);
+		IL.Wooden_Bucket_Brass        .set(this, 2500);
+		IL.Wooden_Bucket_Bronze       .set(this, 2600);
+		IL.Wooden_Bucket_BismuthBronze.set(this, 2700);
+		IL.Wooden_Bucket_Gold         .set(this, 2800);
 		
 		
 		
