@@ -455,8 +455,8 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		IL.Tool_Remote_Activator           .set(addItem(9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Tool_Cheat                      .set(addItem(9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
-		IL.Tool_Scanner                    .set(addItem(9002, "Portable Scanner"         , "", Behavior_Cropnalyzer.INSTANCE, new Behavior_Scanner(2), EnergyStat.makeTool(TD.Energy.EU, V[3]*8000, V[3], 64, last()), TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
-		IL.Tool_Cropnalyzer                .set(addItem(9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 64, last()), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
+		IL.Tool_Scanner                    .set(addItem(9002, "Portable Scanner"         , "", Behavior_Cropnalyzer.INSTANCE, new Behavior_Scanner(2), EnergyStat.makeTool(TD.Energy.EU, V[3]*8000, V[3], 64, next()), TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
+		IL.Tool_Cropnalyzer                .set(addItem(9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 64, next()), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
 		IL.Tool_Worldgen_Debugger          .set(addItem(9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
 		
 		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', OD.button);
@@ -484,7 +484,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Compass_Center                  .set(addItem(11003, "Compass (CENTER)"     , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11004, T), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.TERRA   , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {last()});
 		IL.Compass_Death                   .set(addItem(11004, "Compass (DEATH)"      , "Sneak Rightclick to switch Mode", OD.itemCompass, new Behavior_Switch_Metadata(11000, T), OM.data(ST.make(Items.compass, 1, 0)), TD.Creative.HIDDEN, TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO, 1), TC.stack(TC.MORTUUS , 1))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {last()});
 		ItemsGT.addNEIRedirects(IL.Compass_North.get(1), IL.Compass_Face.get(1), IL.Compass_Spawn.get(1), IL.Compass_Center.get(1), IL.Compass_Death.get(1));
-		CR.shapeless(IL.Compass_North.get(1), CR.DEF, new Object[] {ST.make(Items.compass, 1, W)});
+		CR.shapeless(IL.Compass_North.get(1), CR.DEF, new Object[] {Items.compass});
 		
 		
 		IL.Tape                            .set(addItem(12000, "Tape", "Full Roll", TC.stack(TC.PANNUS, 1), TC.stack(TC.LIMUS, 1)));

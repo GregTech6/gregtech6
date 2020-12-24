@@ -128,6 +128,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	protected short mLastID = W;
 	public ItemStack last() {return ST.make(this, 1, mLastID);}
+	public ItemStack next() {return ST.make(this, 1, mLastID+1);}
 	
 	/**
 	 * This adds a Custom Item.
