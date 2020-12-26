@@ -615,6 +615,13 @@ public class ContainerCommon extends Container {
 	public void detectAndSendChanges() {
 		try {
 			for (int i = 0; i < inventorySlots.size(); ++i) {
+//              ItemStack tStack1 = ((Slot)inventorySlots.get(i)).getStack();
+//              ItemStack tStack2 = (ItemStack)inventoryItemStacks.get(i);
+//              if (!ItemStack.areItemStacksEqual(tStack2, tStack1)) {
+//                  tStack2 = tStack1 == null ? null : tStack1.copy();
+//                  inventoryItemStacks.set(i, tStack2);
+//                  for (int j = 0; j < crafters.size(); ++j) ((ICrafting)crafters.get(j)).sendSlotContents(this, i, tStack2);
+//              }
 				ItemStack tStack = ((Slot)inventorySlots.get(i)).getStack();
 				if (!ST.identical(tStack, (ItemStack)inventoryItemStacks.get(i))) {
 					inventoryItemStacks.set(i, tStack = ST.copy(tStack));
