@@ -617,8 +617,8 @@ public class ContainerCommon extends Container {
 			for (int i = 0; i < inventorySlots.size(); ++i) {
 				ItemStack tStack = ((Slot)inventorySlots.get(i)).getStack();
 				if (!ST.identical(tStack, (ItemStack)inventoryItemStacks.get(i))) {
-					inventoryItemStacks.set(i, ST.copy(tStack));
-					for (int j = 0; j < crafters.size(); ++j) ((ICrafting)crafters.get(j)).sendSlotContents(this, i, ST.copy(tStack));
+					inventoryItemStacks.set(i, tStack = ST.copy(tStack));
+					for (int j = 0; j < crafters.size(); ++j) ((ICrafting)crafters.get(j)).sendSlotContents(this, i, tStack);
 				}
 			}
 		} catch(Throwable e) {
