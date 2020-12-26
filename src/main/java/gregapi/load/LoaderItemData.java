@@ -647,6 +647,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.ingot.dat(MT.Butter)              , ST.make(MD.GrC_Milk, "grcmilk.Butter", 1, 0));
 		OM.reg(OP.ingot.dat(MT.ButterSalted)        , ST.make(MD.GrC_Milk, "grcmilk.Butter", 1, 1));
 		OM.reg(OP.ingot.dat(MT.ButterSalted)        , ST.make(MD.HaC, "butterItem", 1, 0));
+		OM.reg(OP.ingot.dat(MT.Cheese)              , ST.make(MD.HaC, "cheeseItem", 1, 0));
 		OM.reg(OP.blockSolid, MT.Obsidian           , ST.make(MD.TC, "blockCosmeticSolid", 1, 0));
 		OM.reg(OP.blockSolid, MT.Obsidian           , ST.make(MD.TC, "blockCosmeticSolid", 1, 1));
 		OM.reg(OP.circuit.dat(MT.Basic)             , ST.mkic("electronicCircuit", 1));
