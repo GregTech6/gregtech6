@@ -15,8 +15,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] You know how you can open Pipes to Air Blocks? Well I added that functionality for Liquid and Gas Blocks too, so that is now fixed.
 [FIXED] A few random Bugs.
 [CHANGED] All Fluorite Byproducts to use the more colorful Versions of Fluorite.
-[CHANGED] Also changed the Byproducts of Duranium, Tritanium and Dilithium containing Ores. Desh has related Byproducts to those three now.
-[ADDED] one more Icon to the Warning Sign Cover. It's that Checkerboard-ish Circle that is usually on Crashtest Dummies.
+[CHANGED] Also changed the Byproducts of Naquadah, Trinium, Duranium, Tritanium and Dilithium containing Ores. Desh has related Byproducts to those three now.
+[ADDED] A few more Recipes for Wooden Stuff.
+[ADDED] One more Icon to the Warning Sign Cover. It's that Checkerboard-ish Circle that is usually on Crashtest Dummies.
 [ADDED] Builders Wand. Pretty much is doing what the ones of other Mods do too. It places Blocks! It can also destroy Thaumcraft Nodes like the Crowbar does. Why? Because it's a neat Easter Egg, and if a Node happens to be in the way while building, you can just go smack it with the Wand.
 [ADDED] Clay Molds for everything that is mentioned in the Molds Book, that way you can actually craft them without having to magically know all the Chiseling Shapes for Molds.
 

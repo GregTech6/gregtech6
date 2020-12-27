@@ -21,6 +21,7 @@ package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
+import static gregapi.util.CR.*;
 
 import java.util.Arrays;
 
@@ -45,7 +46,7 @@ import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -120,8 +121,27 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple        ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood   ), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
-		CR.shaped(IL.Stick      .get(1), CR.DEF_NAC_NCC, "  ", " S", 'S', stick.dat(ANY.WoodDefault));
-		CR.shaped(gearGt.mat(MT.Wood,1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));
+		CR.shaped(ST.make(Items.bowl, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankWood);
+		
+		CR.shaped(IL.Stick.get(1), CR.DEF_NAC_NCC, "  ", " S", 'S', stick.dat(ANY.WoodDefault));
+		
+		// Generic Wooden Stuff made mostly from Buttons.
+		CR.shaped(gearGt            .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "BPB", "PsP", "BPB", 'P', OD.plankAnyWood, 'B', OD.buttonWood);
+		CR.shaped(gearGtSmall       .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " s"       , 'P', OD.buttonWood);
+		CR.shaped(casingSmall       .mat(MT.Wood, 2), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  " P",  "s "       , 'P', OD.buttonWood);
+		CR.shaped(plateTiny         .mat(MT.Wood, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "s ",  " P"       , 'P', OD.buttonWood);
+		CR.shaped(ring              .mat(MT.Wood, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " k"       , 'P', OD.buttonWood);
+		CR.shaped(round             .mat(MT.Wood, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  "fk"       , 'P', OD.buttonWood);
+		CR.shaped(toolHeadHammer    .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PP ", "PP ", "PPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawArrow  .mat(MT.Wood, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "  P", "r v", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawSword  .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "rPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawPickaxe.mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "PPP", "r v", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawShovel .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,               "rPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawSpade  .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "r v", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawAxe    .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "rPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawHoe    .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "r v", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawSense  .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "   ", "r v", 'P', OD.buttonWood);
+		CR.shaped(toolHeadRawPlow   .mat(MT.Wood, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "PPP", "r v", 'P', OD.buttonWood);
 		
 		// Railcraft related Recipes
 		if (IL.RC_Tie_Wood.exists()) {
@@ -186,9 +206,13 @@ public class Loader_Recipes_Woods implements Runnable {
 			
 			CR.shaped(gearGt            .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "BPB", "PsP", "BPB", 'P', aPlank, 'B', bolt.dat(aEntry.mMaterialPlank));
 			CR.shaped(gearGtSmall       .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " s"       , 'P', aPlank);
+			CR.shaped(casingSmall       .mat(aEntry.mMaterialPlank, 2), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  " P",  "s "       , 'P', aPlank);
 			CR.shaped(plateTiny         .mat(aEntry.mMaterialPlank, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "s ",  " P"       , 'P', aPlank);
+			CR.shaped(ring              .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  " k"       , 'P', aPlank);
+			CR.shaped(round             .mat(aEntry.mMaterialPlank, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,  "P ",  "fk"       , 'P', aPlank);
 			CR.shaped(toolHeadHammer    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PP ", "PP ", "PPv", 'P', aPlank);
 			if (!aEntry.mMaterialPlank.contains(TD.Compounds.COATED)) {
+			CR.shaped(toolHeadRawArrow  .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "  P", "r v", 'P', aPlank);
 			CR.shaped(toolHeadRawSword  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " P ", "rPv", 'P', aPlank);
 			CR.shaped(toolHeadRawPickaxe.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "PPP", "r v", 'P', aPlank);
 			CR.shaped(toolHeadRawShovel .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,               "rPv", 'P', aPlank);
@@ -197,7 +221,6 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shaped(toolHeadRawHoe    .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        " PP", "r v", 'P', aPlank);
 			CR.shaped(toolHeadRawSense  .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "   ", "r v", 'P', aPlank);
 			CR.shaped(toolHeadRawPlow   .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "PPP", "PPP", "r v", 'P', aPlank);
-			CR.shaped(toolHeadRawArrow  .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC,        "  P", "r v", 'P', aPlank);
 			}
 			
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN, aEntry.mMaterialPlank, MT.Wood), CR.DEF_MIR, "  S", " P ", "S f", 'P', aPlank, 'S', OD.stickAnyWood);

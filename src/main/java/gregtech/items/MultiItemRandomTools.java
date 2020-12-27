@@ -175,7 +175,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Chunk_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.chunkGt.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chunk_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.rockGt.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Plate_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Plate_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plateGem.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Tiny_Plate_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plateTiny.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Tiny_Plate_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plateGemTiny.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Bolt_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.bolt.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Rod_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.stick.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Long_Rod_Mold_Raw       .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.stick.dat(tMat), OP.stick.dat(tMat)});

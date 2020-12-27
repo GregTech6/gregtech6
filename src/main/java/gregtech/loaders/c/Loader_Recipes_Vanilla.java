@@ -411,8 +411,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		CR.shapeless(ST.make(Items.arrow, 1, 0), DEF_NCC, new Object[] {OD.itemFlint, OP.arrowGtWood.dat(MT.Empty)});
 		
+		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(ANY.Wood), 'F', OD.craftingFeather);
+		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(MT.Plastic), 'F', OD.craftingFeather);
+		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(ANY.Wood), 'P', plateTiny.dat(MT.Plastic));
+		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(MT.Plastic), 'P', plateTiny.dat(MT.Plastic));
+		
 		CR.shaped(ST.make(Blocks.stained_glass, 8, 0), DEF, "GGG", "GDG", "GGG", 'G', Blocks.glass, 'D', DYE_OREDICTS[15]);
-		CR.shaped(ST.make(Items.bowl, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankWood);
 		CR.shaped(ST.make(Items.speckled_melon, 1, 0), DEF_NAC | DEL_OTHER_SHAPED_RECIPES, "GGG", "GMG", "GGG", 'M', "cropMelon", 'G', OP.nugget.dat(MT.Au));
 		
 		CR.remove(ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 4));
@@ -525,20 +529,20 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  40, F, 100, ST.make(Blocks.ladder                    , 1, W), IL.Stick.get(2), OM.dust(MT.Wood, OP.stick.mAmount / 3));
 		RM.sawing(16,  16, T,  50, ST.make(Blocks.melon_block               , 1, W), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
-		CR.shapeless(IL.Plank.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.wooden_button          , 1, W)});
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.wooden_pressure_plate  , 1, W)});
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Items.sign                    , 1, W)});
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Items.wooden_door             , 1, W)});
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.fence_gate             , 1, W)});
-		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.trapdoor               , 1, W)});
-		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Items.bed                     , 1, W)});
-		CR.shapeless(IL.Plank.get(4), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.crafting_table         , 1, W)});
-		CR.shapeless(IL.Plank.get(5), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Items.boat                    , 1, W)});
-		CR.shapeless(IL.Plank.get(6), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.bookshelf              , 1, W)});
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.chest                  , 1, W)});
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.trapped_chest          , 1, W)});
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.noteblock              , 1, W)});
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.jukebox                , 1, W)});
+		CR.shapeless(IL.Plank.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_button        });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_pressure_plate});
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.sign                  });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.wooden_door           });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.fence_gate           });
+		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapdoor             });
+		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.bed                   });
+		CR.shapeless(IL.Plank.get(4), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.crafting_table       });
+		CR.shapeless(IL.Plank.get(5), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.boat                  });
+		CR.shapeless(IL.Plank.get(6), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.bookshelf            });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.chest                });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapped_chest        });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.noteblock            });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.jukebox              });
 		
 		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block, 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
