@@ -672,6 +672,9 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	static {
 		Map<Integer, OreDictPrefix> TEMP_MOLD_RECIPES = new HashMap<>();
 		
+		TEMP_MOLD_RECIPES.put(0b0_00100_11111_01110_01010_00000, OP.toolHeadBuilderwand);
+		TEMP_MOLD_RECIPES.put(0b0_00000_00100_11111_01110_01010, OP.toolHeadBuilderwand);
+		
 		TEMP_MOLD_RECIPES.put(
 		B[ 0]|B[ 1]|B[ 2]|B[ 3]|
 		B[ 5]|B[ 6]|B[ 7]|B[ 8]|

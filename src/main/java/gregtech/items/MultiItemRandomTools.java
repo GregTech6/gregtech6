@@ -108,6 +108,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Ceramic_Hoe_Mold_Raw            .set(addItem(924, "Clay Hoe Mold"            , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Sense_Mold_Raw          .set(addItem(925, "Clay Sense Mold"          , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Plow_Mold_Raw           .set(addItem(926, "Clay Plow Mold"           , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
+		IL.Ceramic_Builderwand_Mold_Raw    .set(addItem(927, "Clay Builder's Wand Mold" , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		
 		IL.Ceramic_Tap_Raw                 .set(addItem(987, "Clay Tap"                 , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Funnel_Raw              .set(addItem(988, "Clay Funnel"              , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
@@ -169,6 +170,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.HOE)});
 		CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.SENSE)});
 		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.PLOW)});
+		CR.shapeless(IL.Ceramic_Builderwand_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.BUILDERWAND)});
 		
 		for (OreDictMaterial tMat : new OreDictMaterial[] {ANY.WoodPlastic, ANY.Stone, ANY.Iron, ANY.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.BismuthBronze, MT.Au}) {
 		CR.shapeless(IL.Ceramic_Ingot_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.ingot.dat(tMat)});
@@ -217,6 +219,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSense.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadPlow.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawPlow.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Builderwand_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadBuilderwand.dat(tMat)});
 		}
 		
 		
