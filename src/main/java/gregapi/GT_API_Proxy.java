@@ -1088,7 +1088,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}
 				
-				if (tCanCollect) {
+				if (tCanCollect && !aEvent.drops.isEmpty()) {
+					UT.Sounds.send(SFX.MC_COLLECT, aEvent.harvester);
 					aDrops = aEvent.drops.iterator();
 					while (aDrops.hasNext()) if (UT.Inventories.addStackToPlayerInventory(aEvent.harvester, ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z))) aDrops.remove();
 				}
