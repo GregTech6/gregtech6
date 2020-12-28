@@ -41,7 +41,7 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  * @author Gregorius Techneticies
  */
 public class WorldgenSwamp extends WorldgenObject {
-	public int mHeight = 62;
+	public int mHeight = WD.waterLevel();
 	
 	@SafeVarargs
 	public WorldgenSwamp(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
@@ -66,7 +66,7 @@ public class WorldgenSwamp extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water && !(tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) continue;
 				
 				if (tPlacedNone) {
-					aWorld.setBlock(tX, tY, tZ, BlocksGT.Swamp);
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp);
 					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 10+RNGSUS.nextInt(90));
 					tPlacedNone = F;
 				} else {

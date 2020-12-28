@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
 [FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
 [FIXED] You know how you can open Pipes to Air Blocks? Well I added that functionality for Liquid and Gas Blocks too, so that is now fixed.
-[FIXED] A few random Bugs.
+[FIXED] Rivers, Oceans and Swamps generated partially at XZ 0,0 to XZ 15,15 because I forgot an Offset. This also caused the first layer of those Waters to be at the wrong height.
 [CHANGED] All Fluorite Byproducts to use the more colorful Versions of Fluorite.
 [CHANGED] Also changed the Byproducts of Naquadah, Trinium, Duranium, Tritanium and Dilithium containing Ores. Desh has related Byproducts to those three now.
 [ADDED] A few more Recipes for Wooden Stuff.

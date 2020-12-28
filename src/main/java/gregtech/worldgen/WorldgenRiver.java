@@ -40,7 +40,7 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  * @author Gregorius Techneticies
  */
 public class WorldgenRiver extends WorldgenObject {
-	public int mHeight = 62;
+	public int mHeight = WD.waterLevel();
 	
 	@SafeVarargs
 	public WorldgenRiver(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
@@ -65,7 +65,7 @@ public class WorldgenRiver extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water) continue;
 				
 				if (tPlacedNone) {
-					aWorld.setBlock(tX, tY, tZ, BlocksGT.River);
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River);
 					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 10+RNGSUS.nextInt(90));
 					tPlacedNone = F;
 				} else {

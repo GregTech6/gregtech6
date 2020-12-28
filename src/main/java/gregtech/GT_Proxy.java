@@ -140,7 +140,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt", F);
 			if (tTextFile != null) {
 				for (String tLine : tTextFile) mMessage += tLine + " ";
-				if (mMessage.length() <= 5) mMessage = Strings.EMPTY;
+				if (mMessage.length() <= 5 || mMessage.contains("a href")) mMessage = Strings.EMPTY;
 			}
 			
 			if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
