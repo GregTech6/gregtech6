@@ -182,20 +182,27 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else {
 					if ((mMode & B[1]) != 0) {
-						if (mMaxSealedTime == 0) {
+						if (mMaxSealedTime <= 0) {
 							mRecipe = RM.Fermenter.findRecipe(this, mRecipe, T, Long.MAX_VALUE, NI, FL.array(mTank.getFluid()), ST.tag(0));
 							if (mRecipe != null && mRecipe.mFluidInputs.length > 0 && mRecipe.mFluidOutputs.length > 0 && !FL.gas(mRecipe.mFluidInputs[0]) && !FL.gas(mRecipe.mFluidOutputs[0])) {
-								mMaxSealedTime = (mRecipe.mDuration * mRecipe.mEUt * mTank.amount()) / mRecipe.mFluidInputs[0].amount;
+								mMaxSealedTime = UT.Code.divup(Math.max(1, mRecipe.mDuration) * Math.max(1, mRecipe.mEUt) * Math.max(1, mTank.amount()), Math.max(1, mRecipe.mFluidInputs[0].amount));
+								mSealedTime = 0;
 							} else {
+								mMaxSealedTime = 0;
+								mSealedTime = 0;
 								mRecipe = null;
 							}
-						}
-						mSealedTime++;
-						if (mRecipe != null && mMaxSealedTime > 0 && mSealedTime >= mMaxSealedTime) {
-							mTank.setFluid(FL.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
-							mMaxSealedTime = 0;
-							mSealedTime = 0;
-							mRecipe = null;
+						} else {
+							if (mSealedTime < mMaxSealedTime) {
+								mSealedTime++;
+							} else {
+								if (mRecipe != null) {
+									mTank.setFluid(FL.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
+									mRecipe = null;
+								}
+								mMaxSealedTime = 0;
+								mSealedTime = 0;
+							}
 						}
 					} else {
 						if ((mMode & B[0]) != 0) {
@@ -280,7 +287,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return (mMode & B[1]) != 0 ? null : mTank;}
+	@Override protected IFluidTank getFluidTankFillable2 (byte aSide, FluidStack aFluidToFill ) {return (mMode & B[1]) != 0 ? null : mTank;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return (mMode & B[1]) != 0 ? null : mTank;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 	

@@ -140,15 +140,14 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt", F);
 			if (tTextFile != null) {
 				for (String tLine : tTextFile) mMessage += tLine + " ";
-				if (mMessage.length() <= 5 || mMessage.contains("a href")) mMessage = Strings.EMPTY;
+				if (mMessage.length() <= 5) mMessage = Strings.EMPTY;
 			}
 			
 			if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
-				// Using http because Java screws up https on Windows at times.
 				String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("https://updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
 				// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
 				// And just ignore the first Versions of each Major Release, since that one is usually the buggiest or a quickfix.
-				mVersionOutdated = !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
+				mVersionOutdated = !tVersion.startsWith("6") && !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
 				
 				OUT.println("GT_DL_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
 			} catch(Throwable e) {
@@ -163,21 +162,16 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	protected List<String> downloadTextFile(String aURL, boolean aLowercase) {
 		List<String> rList = new ArrayListNoNulls<>();
 		try {
-			Scanner tScanner = new Scanner(new URL("https://"+aURL).openStream());
+			Scanner tScanner = new Scanner(new URL(aURL.startsWith("http")?aURL:"https://"+aURL).openStream());
 			while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
 			tScanner.close();
+			for (String tLine : rList) if (tLine.contains("a href")) {
+				OUT.println("GT_DL_Thread: Your Internet Connection has Issues, you should probably go check that your ISP or Network don't do stupid Stuff.");
+				return new ArrayListNoNulls<>();
+			}
 			return rList;
 		} catch(Throwable f) {
-			OUT.println("GT_DL_Thread: Failed HTTPS Connection, trying HTTP...");
-			try {
-				Scanner tScanner = new Scanner(new URL("http://"+aURL).openStream());
-				while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
-				tScanner.close();
-				return rList;
-			} catch(Throwable e) {
-				OUT.println("GT_DL_Thread: Failed HTTP Connection too. Client might be disconnected from the Internet.");
-				e.printStackTrace(DEB);
-			}
+			OUT.println("GT_DL_Thread: Failed to Connect.");
 		}
 		return null;
 	}
