@@ -497,6 +497,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public void killGUIs() {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) ((EntityPlayer)tPlayer).closeScreen();}
 	public void rebootGUIs(int aGUIID) {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) {((EntityPlayer)tPlayer).closeScreen(); openGUI((EntityPlayer)tPlayer, aGUIID);}}
 	public long getOpenGUIs() {long rGUIs = 0; for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) rGUIs++; return rGUIs;}
+	public boolean needsToSyncEverything() {return F;}
 	
 	public boolean shouldSideBeRendered(byte aSide) {
 		TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, 1);

@@ -29,12 +29,12 @@ import net.minecraft.item.ItemStack;
  */
 public interface ITileEntityInventoryGUI extends ITileEntityUnloadable {
 	/**
-	 * Returns the number of slots in the inventory.
+	 * @return the number of slots in the inventory.
 	 */
 	public int getSizeInventoryGUI();
 	
 	/**
-	 * Returns the stack in slot i
+	 * @return the stack in slot i
 	 */
 	public ItemStack getStackInSlotGUI(int aSlot);
 	
@@ -96,12 +96,17 @@ public interface ITileEntityInventoryGUI extends ITileEntityUnloadable {
 	public void closeInventoryGUI();
 	
 	/**
-	 * Returns true if GUI is allowed to insert the given stack (ignoring stack size) into the given slot.
+	 * @return true if GUI is allowed to insert the given stack (ignoring stack size) into the given slot.
 	 */
 	public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack);
 	
 	/**
-	 * Returns true if you can take an Item out of this Slot.
+	 * @return true if you can take an Item out of this Slot.
 	 */
 	public boolean canTakeOutOfSlotGUI(int aSlot);
+	
+	/**
+	 * @return true if all Slots are compromised and need resync.
+	 */
+	public boolean needsToSyncEverything();
 }

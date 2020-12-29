@@ -77,7 +77,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible {
-	public boolean mFlushMode = F, mBlocked16 = F, mBlocked36 = F, mFilter16 = F, mFilter36 = F, mDoSound = T, mUpdatedGrid = T;
+	public boolean mSyncGUI = F, mFlushMode = F, mBlocked16 = F, mBlocked36 = F, mFilter16 = F, mFilter36 = F, mDoSound = T, mUpdatedGrid = T;
 	public String mGUITexture = RES_PATH_GUI + "machines/AdvancedCraftingTable.png";
 	
 	@Override
@@ -296,7 +296,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 				if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
 					if (((ITileEntityConnectedInventory)tDelegator.mTileEntity).removeStackFromConnectedInventory(tDelegator.mSideOfTileEntity, ST.amount(1, slot(i)), T) >= 1) {
-						tNeeds = F;
+						tNeeds = F; mSyncGUI = T;
 						// Try to put empty Containers into adjacent connectable Inventories.
 						if (tContainer != null) for (byte tSide2 : ALL_SIDES_VALID) {
 							tDelegator = getAdjacentTileEntity(tSide2);
@@ -344,6 +344,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 								for (byte tSide : ALL_SIDES_VALID) {
 									DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 									if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
+										mSyncGUI = T;
 										tContainer2 = null;
 										break;
 									}
@@ -356,6 +357,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 							if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
 								int tRemoved = ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer2), T);
+								if (tRemoved > 0) mSyncGUI = T;
 								tContainer2.stackSize -= tRemoved;
 								if (tContainer2.stackSize < 1) {
 									tContainer2 = null;
@@ -370,18 +372,21 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 					} else if (slot(j).stackSize == 1) {
 						slot(j, tContainer2);
 						updateInventory();
+						mSyncGUI = T;
 					} else {
 						decrStackSize(j, 1);
 						for (int k : SLOTS_INPUT) {
 							if (!slotHas(k)) {
 								slot(k, tContainer2);
 								updateInventory();
+								mSyncGUI = T;
 								break;
 							}
 							if (ST.equal(tContainer2, slot(k))) {
 								if (tContainer2.stackSize + slot(k).stackSize <= slot(k).getMaxStackSize()) {
 									slot(k).stackSize += tContainer2.stackSize;
 									updateInventory();
+									mSyncGUI = T;
 									break;
 								}
 							}
@@ -471,6 +476,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 						if (aDoFill) {
 							slot(i, tOutput);
 							updateInventory();
+							mSyncGUI = T;
 						}
 						return tFluid.amount * tOutput.stackSize;
 					}
@@ -480,6 +486,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 								decrStackSize(i, 1);
 								if (slotHas(j)) slot(j).stackSize++; else slot(j, tOutput);
 								updateInventory();
+								mSyncGUI = T;
 							}
 							return tFluid.amount * tOutput.stackSize;
 						}
@@ -503,6 +510,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@SideOnly(Side.CLIENT)
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new ContainerClientDefault(   new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, 35, 36)) : new MultiTileEntityGUIClientAdvancedCraftingTable(aPlayer.inventory, this, aGUIID);}
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?                               new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this, aGUIID);}
+	
+	@Override public boolean needsToSyncEverything() {if (mSyncGUI) {mSyncGUI = F; return T;} return F;}
 	
 	@Override
 	public boolean interceptClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
