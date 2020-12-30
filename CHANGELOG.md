@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.08: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.07: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.05: (Not released yet, gonna be the last release of 2020, lets hope 2020 doesn't continue, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on some of my Backlog)
+6.14.05:
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
 [FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
 [FIXED] You know how you can open Pipes to Air Blocks? Well I added that functionality for Liquid and Gas Blocks too, so that is now fixed.
