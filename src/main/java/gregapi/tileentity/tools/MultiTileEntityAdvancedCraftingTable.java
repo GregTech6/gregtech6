@@ -195,15 +195,15 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		if (aStack == null) aStack = slot(30);
 		if (!IL.Paper_Blueprint_Empty.equal(aStack, F, T)) return;
 		UT.NBT.setBlueprintCrafting(aStack,
-		  slotHas(21) ? slot(21).getItem() instanceof IItemGTContainerTool ? ST.make(slot(21), null, null) : slot(21) : null
-		, slotHas(22) ? slot(22).getItem() instanceof IItemGTContainerTool ? ST.make(slot(22), null, null) : slot(22) : null
-		, slotHas(23) ? slot(23).getItem() instanceof IItemGTContainerTool ? ST.make(slot(23), null, null) : slot(23) : null
-		, slotHas(24) ? slot(24).getItem() instanceof IItemGTContainerTool ? ST.make(slot(24), null, null) : slot(24) : null
-		, slotHas(25) ? slot(25).getItem() instanceof IItemGTContainerTool ? ST.make(slot(25), null, null) : slot(25) : null
-		, slotHas(26) ? slot(26).getItem() instanceof IItemGTContainerTool ? ST.make(slot(26), null, null) : slot(26) : null
-		, slotHas(27) ? slot(27).getItem() instanceof IItemGTContainerTool ? ST.make(slot(27), null, null) : slot(27) : null
-		, slotHas(28) ? slot(28).getItem() instanceof IItemGTContainerTool ? ST.make(slot(28), null, null) : slot(28) : null
-		, slotHas(29) ? slot(29).getItem() instanceof IItemGTContainerTool ? ST.make(slot(29), null, null) : slot(29) : null
+		  slotHas(21) ? slot(21).getItem() instanceof IItemGTContainerTool ? ST.make(slot(21), (NBTTagCompound)null) : slot(21) : null
+		, slotHas(22) ? slot(22).getItem() instanceof IItemGTContainerTool ? ST.make(slot(22), (NBTTagCompound)null) : slot(22) : null
+		, slotHas(23) ? slot(23).getItem() instanceof IItemGTContainerTool ? ST.make(slot(23), (NBTTagCompound)null) : slot(23) : null
+		, slotHas(24) ? slot(24).getItem() instanceof IItemGTContainerTool ? ST.make(slot(24), (NBTTagCompound)null) : slot(24) : null
+		, slotHas(25) ? slot(25).getItem() instanceof IItemGTContainerTool ? ST.make(slot(25), (NBTTagCompound)null) : slot(25) : null
+		, slotHas(26) ? slot(26).getItem() instanceof IItemGTContainerTool ? ST.make(slot(26), (NBTTagCompound)null) : slot(26) : null
+		, slotHas(27) ? slot(27).getItem() instanceof IItemGTContainerTool ? ST.make(slot(27), (NBTTagCompound)null) : slot(27) : null
+		, slotHas(28) ? slot(28).getItem() instanceof IItemGTContainerTool ? ST.make(slot(28), (NBTTagCompound)null) : slot(28) : null
+		, slotHas(29) ? slot(29).getItem() instanceof IItemGTContainerTool ? ST.make(slot(29), (NBTTagCompound)null) : slot(29) : null
 		);
 		if (slotHas(31)) aStack.setStackDisplayName(slot(31).getDisplayName());
 		ST.set(aStack, IL.Paper_Blueprint_Used.get(1), F, F);
@@ -284,19 +284,19 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		boolean tOldToolSounds = TOOL_SOUNDS;
 		
-		for (int i : SLOTS_CRAFTING) if (slotHas(i)) {
+		for (ItemStack tRecipeStack : new ItemStack[] {ST.amount(1, slot(21)), ST.amount(1, slot(22)), ST.amount(1, slot(23)), ST.amount(1, slot(24)), ST.amount(1, slot(25)), ST.amount(1, slot(26)), ST.amount(1, slot(27)), ST.amount(1, slot(28)), ST.amount(1, slot(29))}) if (ST.valid(tRecipeStack)) {
 			boolean tNeeds = T;
 			TOOL_SOUNDS = isClientSide() && tOldToolSounds && !aSubsequentClick && mDoSound;
-			ItemStack tContainer = ST.container(slot(i), F);
+			ItemStack tContainer = ST.container(tRecipeStack, F);
 			TOOL_SOUNDS = F;
 			// Contains itself, so it's an infinite use Container Item anyways.
-			if (ST.equal(slot(i), tContainer, F)) continue;
+			if (ST.equal(tRecipeStack, tContainer, F)) continue;
 			
 			if (isServerSide()) for (byte tSide : ALL_SIDES_VALID) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 				if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
-					if (((ITileEntityConnectedInventory)tDelegator.mTileEntity).removeStackFromConnectedInventory(tDelegator.mSideOfTileEntity, ST.amount(1, slot(i)), T) >= 1) {
-						tNeeds = F; mSyncGUI = T;
+					if (((ITileEntityConnectedInventory)tDelegator.mTileEntity).removeStackFromConnectedInventory(tDelegator.mSideOfTileEntity, ST.amount(1, tRecipeStack), T) >= 1) {
+						tNeeds = F;
 						// Try to put empty Containers into adjacent connectable Inventories.
 						if (tContainer != null) for (byte tSide2 : ALL_SIDES_VALID) {
 							tDelegator = getAdjacentTileEntity(tSide2);
@@ -314,13 +314,11 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							for (int k : SLOTS_INPUT) {
 								if (!slotHas(k)) {
 									slot(k, tContainer);
-									updateInventory();
 									break;
 								}
 								if (ST.equal(tContainer, slot(k))) {
 									if (tContainer.stackSize + slot(k).stackSize <= slot(k).getMaxStackSize()) {
 										slot(k).stackSize += tContainer.stackSize;
-										updateInventory();
 										break;
 									}
 								}
@@ -330,21 +328,21 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 					}
 				}
 			}
-			if (tNeeds) for (int j : SLOTS_CONSUMPTION) if (j < 21 || j >= 30 || j == i) {
-				if (ST.equalTools(slot(i), slot(j), F) && slot(j).stackSize > 0) {
+			
+			if (tNeeds) for (int i : SLOTS_CONSUMPTION) {
+				if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0) {
 					tNeeds = F;
 					TOOL_SOUNDS = F;
-					ItemStack tContainer2 = ST.container(slot(j), F);
+					ItemStack tContainer2 = ST.container(slot(i), F);
 					TOOL_SOUNDS = F;
 					if (isServerSide()) {
 						// Try to draw from adjacent connectable Tanks to refill Container Item.
 						if (tContainer2 != null) {
-							FluidStack tFluidContained = FL.getFluid(slot(j), T);
-							if (tFluidContained != null && ST.equal(slot(j), FL.fill(tFluidContained, tContainer2, F, T, F, T), F)) {
+							FluidStack tFluidContained = FL.getFluid(slot(i), T);
+							if (tFluidContained != null && ST.equal(slot(i), FL.fill(tFluidContained, tContainer2, F, T, F, T), F)) {
 								for (byte tSide : ALL_SIDES_VALID) {
 									DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 									if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
-										mSyncGUI = T;
 										tContainer2 = null;
 										break;
 									}
@@ -357,7 +355,6 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 							if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
 								int tRemoved = ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer2), T);
-								if (tRemoved > 0) mSyncGUI = T;
 								tContainer2.stackSize -= tRemoved;
 								if (tContainer2.stackSize < 1) {
 									tContainer2 = null;
@@ -368,25 +365,19 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 					}
 					// Consume the Item.
 					if (tContainer2 == null || (tContainer2.isItemStackDamageable() && tContainer2.getItemDamage() >= tContainer2.getMaxDamage())) {
-						decrStackSize(j, 1);
-					} else if (slot(j).stackSize == 1) {
-						slot(j, tContainer2);
-						updateInventory();
-						mSyncGUI = T;
+						decrStackSize(i, 1);
+					} else if (slot(i).stackSize == 1) {
+						slot(i, tContainer2);
 					} else {
-						decrStackSize(j, 1);
-						for (int k : SLOTS_INPUT) {
-							if (!slotHas(k)) {
-								slot(k, tContainer2);
-								updateInventory();
-								mSyncGUI = T;
+						decrStackSize(i, 1);
+						for (int j : SLOTS_INPUT) {
+							if (!slotHas(j)) {
+								slot(j, tContainer2);
 								break;
 							}
-							if (ST.equal(tContainer2, slot(k))) {
-								if (tContainer2.stackSize + slot(k).stackSize <= slot(k).getMaxStackSize()) {
-									slot(k).stackSize += tContainer2.stackSize;
-									updateInventory();
-									mSyncGUI = T;
+							if (ST.equal(tContainer2, slot(j))) {
+								if (tContainer2.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
+									slot(j).stackSize += tContainer2.stackSize;
 									break;
 								}
 							}
@@ -408,6 +399,10 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		MultiItemTool.LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
 		
 		TOOL_SOUNDS = tOldToolSounds;
+		
+		updateInventory();
+		
+		mSyncGUI = T;
 		
 		return aHoldStack;
 	}

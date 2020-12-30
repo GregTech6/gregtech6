@@ -1901,7 +1901,7 @@ public class UT {
 			NBTTagCompound tList = make();
 			boolean temp = F;
 			for (int i = 0; i < aBlueprint.length; i++) if (ST.valid(aBlueprint[i])) {
-				ST.save(tList, ""+i, aBlueprint[i]);
+				ST.save(tList, ""+i, ST.amount(1, aBlueprint[i]));
 				temp = T;
 			}
 			if (temp) aNBT.setTag("gt.blueprint.craft", tList);
