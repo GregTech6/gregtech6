@@ -9,7 +9,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.06: (To be released very soon)
+6.14.06:
+[NOTE] Hindsight is 2020, and I did fuckup my fix for the Water Generation Bug last year, so here we go with the first Release of 2021. XD
 [FIXED] Rivers, Oceans and Swamps generated partially at XZ 0,0 to XZ 15,15 because I forgot an Offset. This also caused the first layer of those Waters to be at the wrong height.
 
 
