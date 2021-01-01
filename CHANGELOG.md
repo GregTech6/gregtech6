@@ -1,12 +1,16 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.09: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.08: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.07: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on my Life and things)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[IMPROVED] Advanced Crafting Table now consumes Items in a better order. Also fixed a brand new Bug I caused earlier.
 
 
 6.14.06:
@@ -15,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.05:
+[BROKEN] DO NOT USE!
 [FIXED] The Explosion Sound does no longer spam for Machines in the Rain and similar if you turned off those Explosions. Instead it waits a bit before it sends that Sound again.
 [FIXED] Buildcraft Wrench Stuff can now be Sneak Rightclicked with an Electric GT6 Wrench without switching Modes, as long as the target is a TileEntity.
 [FIXED] You know how you can open Pipes to Air Blocks? Well I added that functionality for Liquid and Gas Blocks too, so that is now fixed.
@@ -27,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.04:
+[BROKEN] DO NOT USE!
 [NOTE] Released a tiny bit early due to testing GitHub Actions to Release GT6 instead of using a Solution on our own Server.
 [NOTE] The URL leading to the Supporter Lists links to something that runs on a different Subdomain, so that it is easier to distinguish the traffic when using something like Pi-Hole as your DNS and Adblocker, as I happen to do since last Release. This probably doesn't matter to you though. The old Link is ofcourse still usable.
 [IMPROVED] Ores that generate between two Stone Layers are now no longer stopped by other Mods equal Blocks (like comparing GT Marble with Chisel Marble, both should obviously count as Marble, which they did not before)

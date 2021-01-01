@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -225,6 +225,10 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	protected int getAmountOf(ItemStack aStack) {
 		int tAmount = 0;
+		for (int i : SLOTS_CRAFTING) if (ST.equalTools(aStack, slot(i), F)) {
+			tAmount+=slot(i).stackSize;
+			if (tAmount >= SLOTS_CRAFTING.length) return tAmount;
+		}
 		for (int i : SLOTS_CONSUMPTION) if (ST.equalTools(aStack, slot(i), F)) {
 			tAmount+=slot(i).stackSize;
 			if (tAmount >= SLOTS_CRAFTING.length) return tAmount;
@@ -311,14 +315,14 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 						}
 						// Put empty Container Items away.
 						if (tContainer != null) {
-							for (int k : SLOTS_INPUT) {
-								if (!slotHas(k)) {
-									slot(k, tContainer);
+							for (int j : SLOTS_INPUT) {
+								if (!slotHas(j)) {
+									slot(j, tContainer);
 									break;
 								}
-								if (ST.equal(tContainer, slot(k))) {
-									if (tContainer.stackSize + slot(k).stackSize <= slot(k).getMaxStackSize()) {
-										slot(k).stackSize += tContainer.stackSize;
+								if (ST.equal(tContainer, slot(j))) {
+									if (tContainer.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
+										slot(j).stackSize += tContainer.stackSize;
 										break;
 									}
 								}
@@ -329,63 +333,12 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 				}
 			}
 			
-			if (tNeeds) for (int i : SLOTS_CONSUMPTION) {
-				if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0) {
-					tNeeds = F;
-					TOOL_SOUNDS = F;
-					ItemStack tContainer2 = ST.container(slot(i), F);
-					TOOL_SOUNDS = F;
-					if (isServerSide()) {
-						// Try to draw from adjacent connectable Tanks to refill Container Item.
-						if (tContainer2 != null) {
-							FluidStack tFluidContained = FL.getFluid(slot(i), T);
-							if (tFluidContained != null && ST.equal(slot(i), FL.fill(tFluidContained, tContainer2, F, T, F, T), F)) {
-								for (byte tSide : ALL_SIDES_VALID) {
-									DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-									if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
-										tContainer2 = null;
-										break;
-									}
-								}
-								if (tContainer2 == null) break;
-							}
-						}
-						// Try to put empty Containers into adjacent connectable Inventories.
-						if (tContainer2 != null) for (byte tSide : ALL_SIDES_VALID) {
-							DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-							if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
-								int tRemoved = ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer2), T);
-								tContainer2.stackSize -= tRemoved;
-								if (tContainer2.stackSize < 1) {
-									tContainer2 = null;
-									break;
-								}
-							}
-						}
-					}
-					// Consume the Item.
-					if (tContainer2 == null || (tContainer2.isItemStackDamageable() && tContainer2.getItemDamage() >= tContainer2.getMaxDamage())) {
-						decrStackSize(i, 1);
-					} else if (slot(i).stackSize == 1) {
-						slot(i, tContainer2);
-					} else {
-						decrStackSize(i, 1);
-						for (int j : SLOTS_INPUT) {
-							if (!slotHas(j)) {
-								slot(j, tContainer2);
-								break;
-							}
-							if (ST.equal(tContainer2, slot(j))) {
-								if (tContainer2.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
-									slot(j).stackSize += tContainer2.stackSize;
-									break;
-								}
-							}
-						}
-					}
-					break;
-				}
-			}
+			// First take from the Grid but always leave one in each Slot.
+			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 1 && consumeSlot(i)) {tNeeds = F; break;}
+			// Then draw from the ready Slots, that way you do not have to refill them all the time, after crafting things you already have the Stuff ready for.
+			if (tNeeds) for (int i : SLOTS_CONSUMPTION) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; break;}
+			// And then pull from the Crafting Slots if needed.
+			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; break;}
 		}
 		
 		if (aHoldStack == null) aHoldStack = ST.copy(slot(31)); else aHoldStack.stackSize += slot(31).stackSize;
@@ -407,6 +360,62 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		return aHoldStack;
 	}
 	
+	public boolean consumeSlot(int aSlot) {
+		ItemStack tContainer = ST.container(slot(aSlot), F);
+		
+		if (isServerSide()) {
+			// Try to draw from adjacent connectable Tanks to refill Container Item.
+			if (tContainer != null) {
+				FluidStack tFluidContained = FL.getFluid(slot(aSlot), T);
+				if (tFluidContained != null && ST.equal(slot(aSlot), FL.fill(tFluidContained, tContainer, F, T, F, T), F)) {
+					for (byte tSide : ALL_SIDES_VALID) {
+						DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+						if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
+							tContainer = null;
+							break;
+						}
+					}
+				}
+			}
+			// Try to put empty Containers into adjacent connectable Inventories.
+			if (tContainer != null) for (byte tSide : ALL_SIDES_VALID) {
+				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+				if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
+					int tRemoved = ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer), T);
+					tContainer.stackSize -= tRemoved;
+					if (tContainer.stackSize < 1) {
+						tContainer = null;
+						break;
+					}
+				}
+			}
+		}
+		
+		// Consume the Item.
+		if (tContainer == null || (tContainer.isItemStackDamageable() && tContainer.getItemDamage() >= tContainer.getMaxDamage())) {
+			decrStackSize(aSlot, 1);
+			return T;
+		}
+		if (slot(aSlot).stackSize == 1) {
+			slot(aSlot, tContainer);
+			return T;
+		} 
+		decrStackSize(aSlot, 1);
+		for (int j : SLOTS_INPUT) {
+			if (!slotHas(j)) {
+				slot(j, tContainer);
+				return T;
+			}
+			if (ST.equal(tContainer, slot(j))) {
+				if (tContainer.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
+					slot(j).stackSize += tContainer.stackSize;
+					return T;
+				}
+			}
+		}
+		return T;
+	}
+	
 	// Inventory Stuff
 	public static final int[] SLOTS              = new int[] {33};
 	public static final int[] SLOTS_FLUSHING     = new int[] {33, 21, 22, 23, 24, 25, 26, 27, 28, 29};
@@ -417,7 +426,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	public static final int[] SLOTS_ALL          = new int[] {33,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 64, 63, 65, 66, 67, 68, 69, 70};
 	public static final int[] SLOTS_ALL_FLUSHING = new int[] {33, 21, 22, 23, 24, 25, 26, 27, 28, 29,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70};
 	
-	public static final int[] SLOTS_CONSUMPTION  = new int[] {70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10,  9,  8,  7,  6,  5,  4,  3,  2,  1,  0, 21, 22, 23, 24, 25, 26, 27, 28, 29, 33};
+	public static final int[] SLOTS_CONSUMPTION  = new int[] {70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10,  9,  8,  7,  6,  5,  4,  3,  2,  1,  0};
 	public static final int[] SLOTS_INPUT        = new int[] { 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70};
 	public static final int[] SLOTS_STORAGE      = new int[] { 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70};
 	public static final int[] SLOTS_CRAFTING     = new int[] {21, 22, 23, 24, 25, 26, 27, 28, 29};
