@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregtech.blocks.fluids.BlockRiver;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -65,8 +66,9 @@ public class WorldgenRiver extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water) continue;
 				
 				if (tPlacedNone) {
+					BlockRiver.PLACEMENT_ALLOWED = T;
 					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River);
-					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 10+RNGSUS.nextInt(90));
+					BlockRiver.PLACEMENT_ALLOWED = T;
 					tPlacedNone = F;
 				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.River);

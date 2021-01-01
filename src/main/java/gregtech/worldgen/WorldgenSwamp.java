@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -66,8 +67,9 @@ public class WorldgenSwamp extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water && !(tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) continue;
 				
 				if (tPlacedNone) {
+					BlockSwamp.PLACEMENT_ALLOWED = T;
 					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp);
-					aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 10+RNGSUS.nextInt(90));
+					BlockSwamp.PLACEMENT_ALLOWED = F;
 					tPlacedNone = F;
 				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Swamp);

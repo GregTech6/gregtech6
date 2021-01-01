@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,7 +51,7 @@ public class BlockSwamp extends BlockWaterlike {
 	@Override
 	public void onBlockAdded(World aWorld, int aX, int aY, int aZ) {
 		if (PLACEMENT_ALLOWED) {
-			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate);
+			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 10+RNGSUS.nextInt(90));
 		} else {
 			aWorld.setBlockToAir(aX, aY, aZ);
 		}
