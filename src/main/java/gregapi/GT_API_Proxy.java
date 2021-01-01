@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1089,9 +1089,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				}
 				
 				if (tCanCollect && !aEvent.drops.isEmpty()) {
-					UT.Sounds.send(SFX.MC_COLLECT, aEvent.harvester);
+					boolean aCollectSound = T;
 					aDrops = aEvent.drops.iterator();
-					while (aDrops.hasNext()) if (UT.Inventories.addStackToPlayerInventory(aEvent.harvester, ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z))) aDrops.remove();
+					while (aDrops.hasNext()) if (UT.Inventories.addStackToPlayerInventory(aEvent.harvester, ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z))) {
+						aDrops.remove();
+						if (aCollectSound) {
+							UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
+							aCollectSound = F;
+						}
+					}
 				}
 			}
 			UT.Inventories.removeNullStacksFromInventory(aEvent.harvester.inventory);

@@ -288,18 +288,20 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		boolean tOldToolSounds = TOOL_SOUNDS;
 		
-		for (ItemStack tRecipeStack : new ItemStack[] {ST.amount(1, slot(21)), ST.amount(1, slot(22)), ST.amount(1, slot(23)), ST.amount(1, slot(24)), ST.amount(1, slot(25)), ST.amount(1, slot(26)), ST.amount(1, slot(27)), ST.amount(1, slot(28)), ST.amount(1, slot(29))}) if (ST.valid(tRecipeStack)) {
+		ItemStack[] tRecipeStacks = {ST.amount(1, slot(21)), ST.amount(1, slot(22)), ST.amount(1, slot(23)), ST.amount(1, slot(24)), ST.amount(1, slot(25)), ST.amount(1, slot(26)), ST.amount(1, slot(27)), ST.amount(1, slot(28)), ST.amount(1, slot(29))};
+		
+		for (int j = 0; j < tRecipeStacks.length; j++) if (ST.valid(tRecipeStacks[j])) {
 			boolean tNeeds = T;
 			TOOL_SOUNDS = isClientSide() && tOldToolSounds && !aSubsequentClick && mDoSound;
-			ItemStack tContainer = ST.container(tRecipeStack, F);
+			ItemStack tContainer = ST.container(tRecipeStacks[j], F);
 			TOOL_SOUNDS = F;
 			// Contains itself, so it's an infinite use Container Item anyways.
-			if (ST.equal(tRecipeStack, tContainer, F)) continue;
+			if (ST.equal(tRecipeStacks[j], tContainer, F)) continue;
 			
 			if (isServerSide()) for (byte tSide : ALL_SIDES_VALID) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 				if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
-					if (((ITileEntityConnectedInventory)tDelegator.mTileEntity).removeStackFromConnectedInventory(tDelegator.mSideOfTileEntity, ST.amount(1, tRecipeStack), T) >= 1) {
+					if (((ITileEntityConnectedInventory)tDelegator.mTileEntity).removeStackFromConnectedInventory(tDelegator.mSideOfTileEntity, ST.amount(1, tRecipeStacks[j]), T) >= 1) {
 						tNeeds = F;
 						// Try to put empty Containers into adjacent connectable Inventories.
 						if (tContainer != null) for (byte tSide2 : ALL_SIDES_VALID) {
@@ -315,14 +317,14 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 						}
 						// Put empty Container Items away.
 						if (tContainer != null) {
-							for (int j : SLOTS_INPUT) {
-								if (!slotHas(j)) {
-									slot(j, tContainer);
+							for (int i : SLOTS_INPUT) {
+								if (!slotHas(i)) {
+									slot(i, tContainer);
 									break;
 								}
-								if (ST.equal(tContainer, slot(j))) {
-									if (tContainer.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
-										slot(j).stackSize += tContainer.stackSize;
+								if (ST.equal(tContainer, slot(i))) {
+									if (tContainer.stackSize + slot(i).stackSize <= slot(i).getMaxStackSize()) {
+										slot(i).stackSize += tContainer.stackSize;
 										break;
 									}
 								}
@@ -333,12 +335,14 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 				}
 			}
 			
-			// First take from the Grid but always leave one in each Slot.
-			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 1 && consumeSlot(i)) {tNeeds = F; break;}
+			// First take from the Slot that actually indicates the Item.
+			if (tNeeds) if (ST.equalTools(tRecipeStacks[j], slot(SLOTS_CRAFTING[j]), F) && slot(SLOTS_CRAFTING[j]).stackSize > 1 && consumeSlot(SLOTS_CRAFTING[j])) {tNeeds = F; break;}
+			// Then take from the Grid but always leave one in each Slot.
+			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStacks[j], slot(i), F) && slot(i).stackSize > 1 && consumeSlot(i)) {tNeeds = F; break;}
 			// Then draw from the ready Slots, that way you do not have to refill them all the time, after crafting things you already have the Stuff ready for.
-			if (tNeeds) for (int i : SLOTS_CONSUMPTION) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; break;}
-			// And then pull from the Crafting Slots if needed.
-			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStack, slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; break;}
+			if (tNeeds) for (int i : SLOTS_CONSUMPTION) if (ST.equalTools(tRecipeStacks[j], slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; break;}
+			// And then pull from the Crafting Slots if needed, and mark the Grid as changed.
+			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStacks[j], slot(i), F) && slot(i).stackSize > 0 && consumeSlot(i)) {tNeeds = F; mUpdatedGrid = T; break;}
 		}
 		
 		if (aHoldStack == null) aHoldStack = ST.copy(slot(31)); else aHoldStack.stackSize += slot(31).stackSize;
@@ -401,14 +405,14 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			return T;
 		} 
 		decrStackSize(aSlot, 1);
-		for (int j : SLOTS_INPUT) {
-			if (!slotHas(j)) {
-				slot(j, tContainer);
+		for (int i : SLOTS_INPUT) {
+			if (!slotHas(i)) {
+				slot(i, tContainer);
 				return T;
 			}
-			if (ST.equal(tContainer, slot(j))) {
-				if (tContainer.stackSize + slot(j).stackSize <= slot(j).getMaxStackSize()) {
-					slot(j).stackSize += tContainer.stackSize;
+			if (ST.equal(tContainer, slot(i))) {
+				if (tContainer.stackSize + slot(i).stackSize <= slot(i).getMaxStackSize()) {
+					slot(i).stackSize += tContainer.stackSize;
 					return T;
 				}
 			}
