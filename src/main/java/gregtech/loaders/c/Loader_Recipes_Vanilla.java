@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -820,6 +820,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.Water.make(50), FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.SpDew.make(50), FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.DistW.make(50), FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.Water.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.SpDew.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.DistW.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.Water.make(3000), NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.SpDew.make(3000), NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.DistW.make(3000), NF, IL.Clay_Ball_Red.get(4));
