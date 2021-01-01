@@ -98,4 +98,4 @@ jobs:
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
         FORUM_SECRETS: ${{ secrets.FORUM_SECRETS }}
-      run: ./gradlew testIfUploadable && .meta/ci/post_forum_post.sh || true
+      run: if [[ "$REF" == "refs/tags/v"* ]]; then ./gradlew testIfUploadable && .meta/ci/post_forum_post.sh || true; fi
