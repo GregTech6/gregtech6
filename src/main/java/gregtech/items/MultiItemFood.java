@@ -177,7 +177,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Comb_Tera    .set(addItem(tLastID = 30203, "Tera Comb"    , "", OD.beeComb, OD.beeCombCrossbred, TC.stack(TC.TERRA, 2)));
 		
 		
-		                                                                                                                                                                  
+																																										  
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Honey   .get(1), NF   , FL.Honey                                .make( 100), OM.dust(MT.WaxBee)                , IL.FR_Propolis.get(1));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Water   .get(1), NF   , FL.Water                                .make(1000), OM.dust(MT.WaxBee)                );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}              , IL.Comb_Magic   .get(1), NF   , FL.Ambrosia                             .make( 100), OM.dust(MT.WaxMagic)              );

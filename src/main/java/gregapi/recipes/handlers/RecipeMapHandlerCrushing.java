@@ -71,7 +71,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			return F;
 		}
 		ItemStack[] tOutputs = new ItemStack[aMap.mOutputItemsCount];
-		                         tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+								 tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
 		if (tOutputs[0] == null) tOutputs[0] = OP.dust   .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
 		if (tOutputs[0] == null) tOutputs[0] = OP.gem    .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
 		if (tOutputs[0] == null) return F;

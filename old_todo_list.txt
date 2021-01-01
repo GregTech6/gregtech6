@@ -3,12 +3,25 @@ My old List of random shit I wanted to do. Quite a big one, most of the full sen
 -----
 
 Forge Bugs to fix, which would make things much easier:
-Lava ignores actual flammability when placing Fire.
 Ice Blocks harvesting Event Order is wrong and therefore cannot be modified.
 FMLProxyPacket Bug for literally any larger Modpacks
 Usage of after:* and before:* will cause crashes when used for Mod Loading Order.
 
 -----
+
+Reactor Raytrace for Radiation
+In reality, the treatment of chloroauric acid/chloroplatinic acid is not reduced by zinc and decomposed by heating
+AE Processors more expensive
+Redstone Graphing Device.
+Sunflower duplication for Bumblebees?
+MC Sponge prevents spreading of Waterlike Blocks.
+Silicon to SiO2 use Steam instead of Water
+Strength and Resistance Potion Buff whenever you respawn
+Pams alike Hazelnuts and Coconuts hanging from the Tree Leaves.
+Axle/Gearbox -> Rotate Entities standing on it
+Axle -> Move Entities standing on it Sideways
+Saw Blades on Axles
+Luminosensor => Light Update Bug?
 
 Yeah,the first step is electrolyzing (NH4)2SO4 solution containing H2SO4 to prepare (NH4)2S2O8.There is also a saying that 60% sulfuric acid can be used for electrolysis to directly prepare H2S2O8.
 Then stepwise hydrolysis in normal water and 1atm.
@@ -16,25 +29,6 @@ The reaction mechanism is as follows.
 H2S2O8+H2O—→H2SO4+H2SO5
 H2SO5+H2O—→H2SO4+H2O2
 If you want to extract hydrogen peroxide, you can use a vacuum distillation method.
-
-Reactor Raytrace for Radiation
-Neutron Count Measurements for Sensors
-+1 Total Neutron per tick on Rods or RNG Neutron counts
-In reality, the treatment of chloroauric acid/chloroplatinic acid is not reduced by zinc and decomposed by heating
-
-AE Processors more expensive
-Redstone Graphing Device.
-Sunflower duplication for Bumblebees?
-MC Sponge prevents spreading of Waterlike Blocks.
-Silicon to SiO2 use Steam instead of Water
-
-Strength and Resistance Potion Buff whenever you respawn
-
-Pams alike Hazelnuts and Coconuts hanging fro mthe Tree Leaves.
-
-Axle/Gearbox -> Rotate Entities standing on it
-Axle -> Move Entities standing on it Sideways
-Luminosensor => Light Update Bug?
 
 Hydrogen Peroxide. It can be made by electrolyzing ammonium persulfate in sulfuric acid to get ammonium peroxydisulfate. Mixing that with water gives hydrogen peroxide and the ammonium persulfate back.
 Why is there no way to break potassium bisulfate back down into sulfur, oxygen, and potassium? I'm trying to make some nicads and this seems to be where my potassium us.
@@ -80,8 +74,6 @@ TEST OCEAN LIGHT OPACITY (I kinda did and nobody reported anything so might be f
 Grass Blocks grow under Ocean Water for some reason.
 
 Geostrata -> Rock Types
-
-Saw Blades on Axles
 
 KCl + Green Vitriol
 
@@ -377,7 +369,7 @@ COMPAT:
 Pneumaticraft
 Magneticraft
 Forestry Impregnated Casing and similar Stuff
-Certain Machines heating up nearby players, such as the heater/burning box
+Certain Machines warming up nearby players, such as the heater/burning box
 Geostrata Lava Rocks, Centrifuge?
 
 TFC:
@@ -489,10 +481,6 @@ Although the surface of Mars today is inhospitable for life as we know it, plane
 "Because borates may play an important role in making RNA — one of the building blocks of life — finding boron on Mars further opens the possibility that life could have once arisen on the planet," Patrick Gasda, a postdoctoral researcher at Los Alamos National Laboratory in Los Alamos, New Mexico and lead author of the study, said in a statement.
 
 "Essentially, this tells us that the conditions from which life could have potentially grown may have existed on ancient Mars, independent from Earth."
-
-
-
-
 
 
 
@@ -710,12 +698,8 @@ dustTough
 ingotTough
 
 ingotMana
-ingotInfinity
 ingotRunicSteel
-ingotCrystalMatrix
-ingotCosmicNeutronium
 
-ingotFiery
 ingotDemonic
 
 dustInfusedTeslatite
@@ -868,19 +852,6 @@ dustCalciumCarbide
 cellTrichlorosilane
 cellSulfuricAnhydride
 cellCablingColophony
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
