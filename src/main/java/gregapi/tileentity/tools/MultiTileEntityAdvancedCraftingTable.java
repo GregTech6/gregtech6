@@ -336,7 +336,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			}
 			
 			// First take from the Slot that actually indicates the Item.
-			if (tNeeds) if (ST.equalTools(tRecipeStacks[j], slot(SLOTS_CRAFTING[j]), F) && slot(SLOTS_CRAFTING[j]).stackSize > 1 && consumeSlot(SLOTS_CRAFTING[j])) {tNeeds = F; break;}
+			if (tNeeds) if (ST.equalTools(tRecipeStacks[j], slot(SLOTS_CRAFTING[j]), F) && slot(SLOTS_CRAFTING[j]).stackSize > 1 && consumeSlot(SLOTS_CRAFTING[j])) continue;
 			// Then take from the Grid but always leave one in each Slot.
 			if (tNeeds) for (int i : SLOTS_CRAFTING   ) if (ST.equalTools(tRecipeStacks[j], slot(i), F) && slot(i).stackSize > 1 && consumeSlot(i)) {tNeeds = F; break;}
 			// Then draw from the ready Slots, that way you do not have to refill them all the time, after crafting things you already have the Stuff ready for.
