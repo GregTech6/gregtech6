@@ -245,19 +245,15 @@ public interface ITexture {
 		}
 		/** Side = 0 */
 		public static boolean doRenderYNeg(IIcon aIcon, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, boolean aChangedBlockBounds) {
-			if (aChangedBlockBounds) {aRenderer.field_152631_f = T;}
 			if (aBlock.getRenderBlockPass() > 0) {
 				double tOldValue = aRenderer.renderMinY;
 				aRenderer.renderMinY -= (aRenderer.renderFromInside?-1:+1)*OFFSET_Y_NEG;
-			//  renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
-				aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
+				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
 				aRenderer.renderMinY = tOldValue;
 				OFFSET_Y_NEG += OFFSET_ADD;
 			} else {
-			//  renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
-				aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
+				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
 			}
-			if (aChangedBlockBounds) {aRenderer.field_152631_f = F;}
 			return T;
 		}
 		/** Side = 3 */

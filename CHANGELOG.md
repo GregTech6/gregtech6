@@ -12,7 +12,6 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.07: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on my Life and things)
 [FIXED] The Collect Sound for autocollecting Tools is now matching the vanilla Sound in Pitch and Volume.
 [FIXED] Battery Boxes were not able to charge Tools unless a Battery was inside of them to make them able to accept Power. (their internal buffer would eventually reach zero when charging tools only)
-[FIXED] The Bottom Side of Non-Full GT6 Blocks such as Pipes and certain Covers like the Pressure Valve should now render more properly.
 [IMPROVED] Advanced Crafting Table now consumes Items in a better order. Also fixed a brand new Bug I caused earlier.
 
 
