@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -245,15 +245,19 @@ public interface ITexture {
 		}
 		/** Side = 0 */
 		public static boolean doRenderYNeg(IIcon aIcon, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, boolean aChangedBlockBounds) {
+			if (aChangedBlockBounds) {aRenderer.flipTexture = !aRenderer.flipTexture; aRenderer.field_152631_f = T;}
 			if (aBlock.getRenderBlockPass() > 0) {
 				double tOldValue = aRenderer.renderMinY;
 				aRenderer.renderMinY -= (aRenderer.renderFromInside?-1:+1)*OFFSET_Y_NEG;
-				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+			//  renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+				aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
 				aRenderer.renderMinY = tOldValue;
 				OFFSET_Y_NEG += OFFSET_ADD;
 			} else {
-				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+			//  renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+				aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
 			}
+			if (aChangedBlockBounds) {aRenderer.flipTexture = !aRenderer.flipTexture; aRenderer.field_152631_f = F;}
 			return T;
 		}
 		/** Side = 3 */
