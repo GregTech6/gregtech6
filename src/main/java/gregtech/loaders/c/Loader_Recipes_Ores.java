@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -98,7 +98,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge       .addRecipe1(T, 64,  128, new long[] {9000, 5000, 4000, 3000, 1000,  500}, OM.dust(MT.MoonRock           ), NF, NF, dustSmall.mat(MT.Basalt, 3), dustTiny.mat(MT.SiO2, 1), dustTiny.mat(MT.Al2O3, 1), dustTiny.mat(OREMATS.Ilmenite, 1), dustTiny.mat(MT.RareEarth, 1), dustTiny.mat(MT.Pt, 1));
 		// TODO MARS ROCKS AND SAND => Ice
 		
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Mg, MT.Pyrope, MT.Olivine, MT.OREMATS.Magnesite}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Mg, MT.Pyrope, MT.Olivine, MT.MgCO3}) {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(tMat, 1), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.PinkVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(tMat, 9), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.PinkVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		}

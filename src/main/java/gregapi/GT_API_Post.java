@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -128,7 +128,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Chalcopyrite .addOreByProducts(MT.Infuscolium    );
 			MT.OREMATS.Scheelite    .addOreByProducts(MT.Rubracium      );
 			MT.OREMATS.Pentlandite  .addOreByProducts(MT.Meutoite       );
-			MT.OREMATS.Magnesite    .addOreByProducts(MT.Lemurite       );
+			MT.MgCO3                .addOreByProducts(MT.Lemurite       );
 			MT.OREMATS.Stibnite     .addOreByProducts(MT.Ceruclase      );
 			MT.OREMATS.Garnierite   .addOreByProducts(MT.Oureclase      );
 			MT.OREMATS.Cooperite    .addOreByProducts(MT.Kalendrite     );
@@ -440,7 +440,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 4), OP.oreVanillastone.dat(MT.Zn));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 5), OP.oreVanillastone.dat(MT.Ni));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 6), OP.oreVanillastone.dat(MT.OREMATS.Bauxite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 7), OP.oreVanillastone.dat(MT.OREMATS.Magnesite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 7), OP.oreVanillastone.dat(MT.MgCO3));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 8), OP.oreVanillastone.dat(MT.OREMATS.Uraninite));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 9), OP.oreVanillastone.dat(MT.Pt));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 0), OP.oreVanillastone.dat(MT.Amazonite));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -845,7 +845,7 @@ public class MT {
 	
 	CO                      = gaschemelec   ( 9838, "Carbon Monoxide"                               ,  10,  10,  10,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
 	CO2                     = gaschemelec   ( 9836, "Carbon Dioxide"                                ,  40,  40,  40,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
-	CO3                     = gaschemelec   ( 9843, "Carbon Trioxide"                               ,  45,  45,  45,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
+	CO3                     = gaschemelec   ( 9843, "Carbon Trioxide"                               ,  45,  45,  45,  15, GASSES, ACID)                                                                                                                             .uumMcfg( 0, C              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
 	NO                      = gaschemelec   ( 9837, "Nitrogen Monoxide"                             , 100, 175, 255,  15, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
 	NO2                     = gaschemelec   ( 9831, "Nitrogen Dioxide"                              , 120, 190, 255,  15, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
 	SO2                     = gaschemdcmp   ( 9834, "Sulfur Dioxide"                                , 255, 200,   0, 120, GASSES, "SulphurDioxide")                                                                                                                 .uumMcfg( 0, S              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
@@ -1716,6 +1716,7 @@ public class MT {
 		
 		protected static void init() {
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
+			OreDictMaterial.MATERIAL_ARRAY[9121] = MT.MgCO3;
 			
 			Ad                      .visDefault(Adamantine);
 			
@@ -2663,7 +2664,7 @@ public class MT {
 			OREMATS.Tungstate               .addOreByProducts(MnO2                      , Ag                        , LiCl                  );
 			OREMATS.Scheelite               .addOreByProducts(MnO2                      , Mo                        , Ca                    );
 			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Wolframite        , OREMATS.Molybdenite       , FluoriteGreen         , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
-			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     , OREMATS.Stannite      , OREMATS.Magnesite);
+			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     , OREMATS.Stannite      , MgCO3);
 			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     );
 			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate         , Bi                        );
 			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate         , Pb                        );
@@ -2750,7 +2751,6 @@ public class MT {
 			Grossular                       .addOreByProducts(Ca                        );
 			Uvarovite                       .addOreByProducts(Cr                        );
 			Olivine                         .addOreByProducts(Mg                        );
-			OREMATS.Magnesite               .addOreByProducts(Mg                        );
 			PigIron                         .addOreByProducts(Fe2O3                     );
 			DarkIron                        .addOreByProducts(Fe2O3                     );
 			Steel                           .addOreByProducts(Fe2O3                     );
@@ -3197,6 +3197,7 @@ public class MT {
 		Pyrolusite              = MnO2,
 		Rutile                  = TiO2,
 		Hematite                = Fe2O3,
+		Magnesite               = MgCO3,
 		
 		Cinnabar                = oredustcent   ( 9114, "Cinnabar"                  , SET_REDSTONE          , 150,   0,   0, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, PULVERIZING_CINNABAR, CRYSTAL).setSmelting(Hg,   U3)     .uumMcfg( 0, Hg             , 1*U, S                , 1*U)                                                                                                  ,
 		Molybdenite             = oredustdcmp   ( 9123, "Molybdenite"               , SET_METALLIC          ,  25,  25,  25, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Mo,   U4)     .uumMcfg( 0, Mo             , 1*U, S                , 2*U)                                                                                                  ,
@@ -3231,7 +3232,6 @@ public class MT {
 		BrownLimonite           = oredustelec   ( 9106, "Brown Limonite"            , SET_METALLIC          , 200, 100,   0, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                           .setMcfg( 0, Fe             , 1*U, H                , 1*U, O                , 2*U)                                                                          .qual(0).heat(2 * Fe.mMeltingPoint / 3), // FeO(OH)
 		YellowLimonite          = oredustelec   ( 9137, "Yellow Limonite"           , SET_METALLIC          , 200, 200,   0, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                           .setMcfg( 0, Fe             , 1*U, H                , 1*U, O                , 2*U)                                                                          .qual(0).heat(2 * Fe.mMeltingPoint / 3), // FeO(OH) + a bit Ni and Co
 		Chromite                = oredustelec   ( 9113, "Chromite"                  , SET_METALLIC          ,  35,  20,  15, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Cr, 2*U9)     .setMcfg( 0, Fe             , 1*U, Cr               , 2*U, O                , 4*U)                                                                          .qual(0),
-		Magnesite               = oredustelec   ( 9121, "Magnesite"                 , SET_METALLIC          , 250, 250, 180, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Mg,   U5)     .setMcfg( 0, Mg             , 1*U, C                , 1*U, O                , 3*U)                                                                          ,
 		Powellite               = oredustcent   ( 9124, "Powellite"                 , SET_DULL              , 255, 255,   0, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Mo,   U9)     .setMcfg( 0, Ca             , 1*U, Mo               , 1*U, O                , 4*U)                                                                          ,
 		Wulfenite               = oredustcent   ( 9136, "Wulfenite"                 , SET_DULL              , 255, 128,   0, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Mo,   U9)     .setMcfg( 0, Pb             , 1*U, Mo               , 1*U, O                , 4*U)                                                                          ,
 		Perlite                 = oredustcent   ( 9138, "Perlite"                   , SET_DULL              ,  30,  20,  30, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                           .setMcfg( 0, Obsidian       , 2*U, H2O              , 1*U)                                                                                                  ,
