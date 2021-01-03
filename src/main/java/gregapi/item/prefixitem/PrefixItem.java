@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -188,7 +188,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		int aMeta = ST.meta_(aStack);
 		if (UT.Code.exists(aMeta, mMaterialList)) {
 			OreDictMaterial aMaterial = mMaterialList[aMeta];
-			if (aMaterial != aMaterial.mTargetRegistration) ST.meta_(aStack, aMaterial.mTargetRegistration.mID);
+			if (aMeta != aMaterial.mTargetRegistration.mID) ST.meta_(aStack, aMaterial.mTargetRegistration.mID);
 			if (!mPrefix.isGeneratingItem(aMaterial.mTargetRegistration)) ST.set(aStack, mPrefix.mat(aMaterial.mTargetRegistration, 1), F, F);
 		}
 	}

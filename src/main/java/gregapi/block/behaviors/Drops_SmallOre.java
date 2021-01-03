@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,19 +53,19 @@ public class Drops_SmallOre extends Drops {
 		if (aMaterial != null) aMaterial = aMaterial.mTargetCrushing.mMaterial;
 		
 		if (aWorld.isRemote) {
-			rList.add(aBlock.getItemStackFromBlock(aWorld, aX, aY, aZ, SIDE_ANY));
+			rList.add(ST.update(aBlock.getItemStackFromBlock(aWorld, aX, aY, aZ, SIDE_ANY)));
 		} else if (aMaterial != null) {
 			Random tRandom = new Random(aX ^ aY ^ aZ);
 			for (int i = 0; i < 16; i++) tRandom.nextInt(10000);
 			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
 				ItemStack tStack = OP.rockGt.mat(aMaterial, 1);
 				for (int i = 0, j = Math.max(1, aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier+(aFortune>0?(tRandom.nextInt((1+aFortune)*aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier)):0)/2+tRandom.nextInt(2)); i < j; i++) {
-					rList.add(ST.copy(tStack));
+					rList.add(ST.update(ST.copy(tStack)));
 				}
 			} else {
 				ItemStack tStack = OP.gemLegendary.mat(aMaterial, 1);
 				if (tStack != null && tRandom.nextInt(aSilkTouch?5000:10000) <= aFortune) {
-					rList.add(tStack);
+					rList.add(ST.update(tStack));
 				} else {
 					ArrayList<ItemStack> tSelector = new ArrayListNoNulls<>();
 					tStack = OP.gemExquisite.mat(aMaterial, OP.gem.mat(aMaterial, 1), 1);
@@ -95,12 +95,12 @@ public class Drops_SmallOre extends Drops {
 					
 					if (tSelector.size() > 0) {
 						for (int i = 0, j = Math.max(1, aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier+(aFortune>0?(tRandom.nextInt((1+aFortune)*aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier)):0)/2); i < j; i++) {
-							rList.add(ST.copy(tSelector.get(tRandom.nextInt(tSelector.size()))));
+							rList.add(ST.update(ST.copy(tSelector.get(tRandom.nextInt(tSelector.size())))));
 						}
 					}
 				}
 			}
-			if (mSecondaryDrop != null && tRandom.nextInt(3+aFortune)>1) rList.add(OP.dust.mat(mSecondaryDrop.mTargetCrushing.mMaterial, 1));
+			if (mSecondaryDrop != null && tRandom.nextInt(3+aFortune)>1) rList.add(ST.update(OP.dust.mat(mSecondaryDrop.mTargetCrushing.mMaterial, 1)));
 		}
 		return rList;
 	}

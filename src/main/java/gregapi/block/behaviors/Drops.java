@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -59,7 +59,7 @@ public class Drops {
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
 		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
-		rList.add(ST.make(aSilkTouch?mDropSilkTouch:mDropNormal, 1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null));
+		rList.add(ST.update(ST.make(aSilkTouch?mDropSilkTouch:mDropNormal, 1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null)));
 		return rList;
 	}
 }
