@@ -82,7 +82,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 		if (!mBlock.mHidden && (SHOW_HIDDEN_PREFIXES || !mBlock.mPrefix.contains(TD.Creative.HIDDEN)) && (SHOW_ORE_BLOCK_PREFIXES || mBlock == BlocksGT.ore || !mBlock.mPrefix.contains(TD.Prefix.ORE))) for (int i = 0; i < mBlock.mMaterialList.length; i++) if (mBlock.mPrefix.isGeneratingItem(mBlock.mMaterialList[i])) if (SHOW_HIDDEN_MATERIALS || !mBlock.mMaterialList[i].mHidden) {
 			ItemStack tStack = ST.make(this, 1, i);
 			updateItemStack(tStack);
-			aList.add(tStack);
+			if (ST.meta_(tStack) == i) aList.add(tStack);
 		}
 		if (aList.isEmpty()) ST.hide(this);
 	}

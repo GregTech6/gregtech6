@@ -124,7 +124,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 			ItemStack tStack = OM.get_(ST.make(this, 1, i));
 			if (tStack.getItem() == this) {
 				updateItemStack(tStack);
-				aList.add(tStack);
+				if (ST.meta_(tStack) == i) aList.add(tStack);
 			}
 		}
 		if (aList.isEmpty()) ST.hide(this);
