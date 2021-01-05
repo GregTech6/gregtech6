@@ -14,7 +14,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Magnesite and Magnesium Carbonate are now the same Material, like they should have been.
 [FIXED] The Collect Sound for autocollecting Tools is now matching the vanilla Sound in Pitch and Volume.
 [FIXED] Battery Boxes were not able to charge Tools unless a Battery was inside of them to make them able to accept Power. (their internal buffer would eventually reach zero when charging tools only)
-[CHANGED] Air Vents now do 256000L per 329 ticks at a time, instead of only 16000.
+[CHANGED] Air Vents now do 256000L per 360 ticks at a time, instead of only 16000. They have an Offset for ticking too now, so you can use multiple Vents on one Pipe/Drum/etc now.
+[ADDED] Iron and Hydrochloric Acid now have a few more Chemical Reactions. This might make Iron Extraction from Hematite and Limonite easier.
 
 
 6.14.06:

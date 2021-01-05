@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -330,7 +330,6 @@ public class Loader_Tools implements Runnable {
 		toolHeadHammer             .addListener(new OreProcessing_Tool(HARDHAMMER            , tCategory + "HardHammer"          ,T,F,0,0, null, null                                                                                , new String[][] {{"II ", "IIh", "II "}, {"GG ", "GGf", "GG "}                       }, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, new Nor(WOOD, BOUNCY, STRETCHY))));
 		toolHeadHammer             .addListener(new OreProcessing_Tool(SOFTHAMMER            , tCategory + "SoftHammer"          ,T,F,0,0, null, null                                                                                , new String[][] {{"II ", "IIr", "II "}, {"GG ", "GGr", "GG "}                       }, null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, COATED.NOT, new Or (WOOD, BOUNCY, STRETCHY))));
 		toolHeadHammer             .addListener(new OreProcessing_Tool(CLUB                  , tCategory + "Club"                ,T,F,0,0, null, new String[][] {{" II", "III", "HI "}, {" GG", "GGG", "HG "}, {" RR", "RRR", "HR "}}, null                                                                                , null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT)));
-		lens                       .addListener(new OreProcessing_Tool(MAGNIFYING_GLASS      , tCategory + "MagnifyingGlass"     ,T,F,0,0, null, null                                                                                , null                                                                                , null         , null, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, typemin(1))));
 		toolHeadArrow              .addListener(new OreProcessing_Tool(HAND_DRILL            , tCategory + "HandDrill"           ,T,F,0,0, null, new String[][] {{"  X", "HYH", "YH "}}                                              , null                                                                                , toolHeadArrow, bolt, null, null                              , null, new And(ANTIMATTER.NOT, MT.Wood.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2), qualmin(2))));
 		
 		GameRegistry.addRecipe(new AdvancedCraftingTool(MAGNIFYING_GLASS , lens                       , typemin(1), MT.Glass));
