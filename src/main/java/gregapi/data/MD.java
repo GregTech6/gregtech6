@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -244,6 +244,7 @@ public class MD {
 	, COFH_CORE         = new ModData(ModIDs.COFH_CORE          , "CoFH-Core")
 	
 	, OB                = new ModData(ModIDs.OB                 , "Open Blocks")
+	, PA                = new ModData(ModIDs.PA                 , "Progressive Automation")
 	, MNTL              = new ModData(ModIDs.MNTL               , "Mantle")
 	, TiC               = new ModData(ModIDs.TiC                , "Tinkers Construct")
 	, Natura            = new ModData(ModIDs.Natura             , "Natura")

@@ -339,6 +339,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Propylene.make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
 		
 		
+		RM.Injector         .addRecipe1(T, 64, 256, OM.dust(MT.Th), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(9216), ZL_IS);
+		
+		
 		for (OreDictMaterial tMat : ANY.C.mToThis) if (tMat != MT.Graphene)
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), MT.CO2.gas( 3*U  , T), MT.CO .gas( 4*U  , F), ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Charcoal                ), MT.CO2.gas( 3*U  , T), MT.CO .gas( 4*U  , F), ZL_IS);
@@ -377,10 +380,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.CoalCoke                ), FL.make(tOxygen,  4000), MT.CO2.gas( 6*U  , F), ZL_IS);
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), FL.make(tOxygen,  8000), MT.CO2.gas(12*U  , F), ZL_IS);
-		
 		}
-		
-		RM.Injector.addRecipe1(T, 64, 256, OM.dust(MT.Th), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(9216), ZL_IS);
 		
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		
@@ -409,7 +409,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water      .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.HDO        .liquid(U, T)), FL.array(MT.D2O.liquid(U10, F), MT.T2O.liquid(U100, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O        .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
-		
 		
 		
 		RM.Drying       .addRecipe0(T, 16,   16, FL.Water.make(10), FL.DistW.make(8), ZL_IS);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1958,6 +1958,7 @@ public class CS {
 		, COFH_CORE         = "CoFHCore"
 		
 		, OB                = "OpenBlocks"
+		, PA                = "progressiveautomation"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
 		, Natura            = "Natura"

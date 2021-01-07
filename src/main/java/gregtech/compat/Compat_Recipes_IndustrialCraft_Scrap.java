@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -118,9 +118,9 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.scrapbox(4.00F, OP.scrapGt.mat(MT.Flint              , 1));
 			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.Pt                 , 1));
 			COMPAT_IC2.scrapbox(0.10F, OP.scrapGt.mat(MT.WO3                , 1));
-			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.Cr                 , 1));
+			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.CrO2               , 1));
 			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.TiO2               , 1));
-			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.Mg                 , 1));
+			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.MgCO3              , 1));
 			COMPAT_IC2.scrapbox(0.03F, OP.scrapGt.mat(MT.Endstone           , 1));
 			COMPAT_IC2.scrapbox(0.15F, OP.scrapGt.mat(MT.Pyrope             , 1));
 			COMPAT_IC2.scrapbox(0.20F, OP.scrapGt.mat(MT.Almandine          , 1));

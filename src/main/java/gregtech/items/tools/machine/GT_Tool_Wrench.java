@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -71,7 +71,7 @@ public class GT_Tool_Wrench extends ToolStats {
 		if (tString != null && tString.equals(TOOL_wrench)) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;
 		tString = ST.regName(aBlock);
-		return tString != null && tString.startsWith("BuildCraft|");
+		return tString != null && (tString.startsWith("BuildCraft|") || tString.startsWith("progressiveautomation"));
 	}
 	
 	@Override

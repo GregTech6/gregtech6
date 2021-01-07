@@ -376,7 +376,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 						DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 						if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
 							tContainer = null;
-							break;
+							return T;
 						}
 					}
 				}
