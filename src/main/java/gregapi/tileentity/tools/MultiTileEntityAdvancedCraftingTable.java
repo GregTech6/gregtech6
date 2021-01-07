@@ -366,27 +366,25 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	public boolean consumeSlot(int aSlot) {
 		ItemStack tContainer = ST.container(slot(aSlot), F);
+		if (tContainer != null && tContainer.stackSize < 1) tContainer = null;
 		
-		if (isServerSide()) {
-			// Try to draw from adjacent connectable Tanks to refill Container Item.
-			if (tContainer != null) {
-				FluidStack tFluidContained = FL.getFluid(slot(aSlot), T);
-				if (tFluidContained != null && ST.equal(slot(aSlot), FL.fill(tFluidContained, tContainer, F, T, F, T), F)) {
-					for (byte tSide : ALL_SIDES_VALID) {
-						DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-						if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
-							tContainer = null;
-							return T;
-						}
+		if (isServerSide() && tContainer != null) {
+			// Try to draw from adjacent connectable Tanks to refill Container Items.
+			FluidStack tFluidContained = FL.getFluid(slot(aSlot), T);
+			if (tFluidContained != null && ST.equal(slot(aSlot), FL.fill(tFluidContained, tContainer, F, T, F, T), F)) {
+				for (byte tSide : ALL_SIDES_VALID) {
+					DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+					if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
+						// Yay, we wont need to change anything inside the Slot!
+						return T;
 					}
 				}
 			}
 			// Try to put empty Containers into adjacent connectable Inventories.
-			if (tContainer != null) for (byte tSide : ALL_SIDES_VALID) {
+			for (byte tSide : ALL_SIDES_VALID) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 				if (tDelegator.mTileEntity instanceof ITileEntityConnectedInventory) {
-					int tRemoved = ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer), T);
-					tContainer.stackSize -= tRemoved;
+					tContainer.stackSize -= ((ITileEntityConnectedInventory)tDelegator.mTileEntity).addStackToConnectedInventory(tDelegator.mSideOfTileEntity, ST.copy(tContainer), T);
 					if (tContainer.stackSize < 1) {
 						tContainer = null;
 						break;
