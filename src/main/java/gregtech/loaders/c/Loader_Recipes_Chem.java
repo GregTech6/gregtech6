@@ -48,8 +48,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.K ), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.KOH , U*3));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Li), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.LiOH, U*3));
 		
-		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Ca), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U * 2, F), OM.dust(MT.CaCO3, U*5));
-		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mg), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U * 2, F), OM.dust(MT.MgCO3, U*5));
+		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Ca), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U*2, F), OM.dust(MT.CaCO3, U*5));
+		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mg), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U*2, F), OM.dust(MT.MgCO3, U*5));
 		
 		RM.Mixer        .addRecipe1(T, 16,  272, OM.dust(MT.FeCl3, U*8), FL.array(FL.mul(tFluid, 6), MT.SO2.gas(U*3, T)), FL.array(MT.H2SO4.liquid(U*7, F), MT.HCl.fluid (U*4, F)), OM.dust(MT.FeCl2, U*6));
 		
@@ -181,7 +181,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.YellowLimonite, U*4), MT.HCl   .fluid(U* 6, T), MT.H2O.liquid(U*6, F), OM.dust(MT.FeCl3, U*4));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.BrownLimonite , U*4), MT.HCl   .fluid(U* 6, T), MT.H2O.liquid(U*6, F), OM.dust(MT.FeCl3, U*4));
 		
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.FeCl3, U * 4), FL.Steam.make(9000*STEAM_PER_WATER), MT.HCl.fluid(U * 6, T), OM.dust(MT.FeO3H3, U*7));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.FeCl3, U*4), FL.Steam.make(9000*STEAM_PER_WATER), MT.HCl.fluid(U*6, T), OM.dust(MT.FeO3H3, U*7));
 		
 		
 		
@@ -190,30 +190,30 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(1), FL.make(tOxygen, 1000), FL.Liquid_Reikygen.make(1000), ZL_IS);
 		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(0), FL.make(tOxygen, 1000), FL.Liquid_Oxygen.make(1000), ZL_IS);
 		
-		RM.Lightning    .addRecipe1(T,256,   16, ST.tag(2), FL.array(MT.N.gas(U100, T), FL.make(tOxygen, 10)), MT.NO.gas(U100 * 2, F), ZL_IS);
-		RM.Lightning    .addRecipe2(T,256,  512, ST.tag(2), OM.dust(MT.K2S , U * 3), FL.make(tOxygen, 4000), NF, OM.dust(MT.K2SO4 , U*7));
-		RM.Lightning    .addRecipe2(T,256,  512, ST.tag(2), OM.dust(MT.Na2S, U * 3), FL.make(tOxygen, 4000), NF, OM.dust(MT.Na2SO4, U*7));
+		RM.Lightning    .addRecipe1(T,256,   16, ST.tag(2), FL.array(MT.N.gas(U100, T), FL.make(tOxygen, 10)), MT.NO.gas(U100*2, F), ZL_IS);
+		RM.Lightning    .addRecipe2(T,256,  512, ST.tag(2), OM.dust(MT.K2S , U*3), FL.make(tOxygen, 4000), NF, OM.dust(MT.K2SO4 , U*7));
+		RM.Lightning    .addRecipe2(T,256,  512, ST.tag(2), OM.dust(MT.Na2S, U*3), FL.make(tOxygen, 4000), NF, OM.dust(MT.Na2SO4, U*7));
 		
 		RM.BurnMixer    .addRecipe0(T, 16,   24, FL.array(MT.H.gas(U, T), FL.make(tOxygen, 500)), FL.DistW.make(1500), ZL_IS);
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.Pt  , 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tOxygen,  250)), FL.array(MT.SO3.gas(U, F)), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.V2O5, 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tOxygen,  250)), FL.array(MT.SO3.gas(U, F)), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.NaCl   ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tOxygen, 1000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U * 4, F), OM.dust(MT.Na2SO4, U*7));
-		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.KCl    ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tOxygen, 1000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U * 4, F), OM.dust(MT.K2SO4 , U*7));
+		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.NaCl   ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tOxygen, 1000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U*4, F), OM.dust(MT.Na2SO4, U*7));
+		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.KCl    ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tOxygen, 1000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U*4, F), OM.dust(MT.K2SO4 , U*7));
 		}
 		for (String tAir : FluidsGT.AIR) if (FL.exists(tAir)) {
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.Pt  , 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tAir, 1000)), FL.array(MT.SO3.gas(U, F)), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.V2O5, 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tAir, 1000)), FL.array(MT.SO3.gas(U, F)), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.NaCl   ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tAir, 4000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U * 4, F), OM.dust(MT.Na2SO4, U*7));
-		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.KCl    ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tAir, 4000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U * 4, F), OM.dust(MT.K2SO4 , U*7));
+		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.NaCl   ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tAir, 4000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U*4, F), OM.dust(MT.Na2SO4, U*7));
+		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.KCl    ,3*U), FL.array(MT.SO2.gas(3*U , T), FL.make(tAir, 4000) , MT.SaltWater.liquid(U*4, T)), MT.HCl.fluid(U*4, F), OM.dust(MT.K2SO4 , U*7));
 		}
 		
 		
 		for (OreDictMaterial tMat : ANY.Coal.mToThis) if (tMat != MT.Graphene) {
-		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.Na2SO4, U*7), OM.dust(tMat, U*2), NF                                                                    , MT.CO2            .gas  (U * 6, F), OM.dust(MT.Na2S, U*3));
-		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.K2SO4 , U*7), OM.dust(tMat, U*2), NF                                                                    , MT.CO2            .gas  (U * 6, F), OM.dust(MT.K2S, U*3));
-		RM.BurnMixer    .addRecipe1(T, 16,  128, OM.dust(tMat     , U*2), MT.Na2CO3.liquid(U*6, T)                                                                   , MT.CO             .gas  (U * 6, F), OM.dust(MT.Na, U*2));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(tMat     , U*3), MT.HNO3.liquid(20*U, T)                                                                    , MT.CO2            .gas  (U * 9, F), MT.NO.gas(U * 8, T), MT.H2O.fluid(U * 6, F));
+		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.Na2SO4, U*7), OM.dust(tMat, U*2), NF  , MT.CO2.gas(U*6, F), OM.dust(MT.Na2S, U*3));
+		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.K2SO4 , U*7), OM.dust(tMat, U*2), NF  , MT.CO2.gas(U*6, F), OM.dust(MT.K2S, U*3));
+		RM.BurnMixer    .addRecipe1(T, 16,  128, OM.dust(tMat     , U*2), MT.Na2CO3.liquid(U*6, T), MT.CO .gas(U*6, F), OM.dust(MT.Na, U*2));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(tMat     , U*3), MT.HNO3.liquid(20*U, T) , MT.CO2.gas(U*9, F), MT.NO.gas(U*8, T), MT.H2O.fluid(U*6, F));
 		}
 		
 		

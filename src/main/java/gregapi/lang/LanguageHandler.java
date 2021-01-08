@@ -379,6 +379,9 @@ public class LanguageHandler {
 		if (aMaterial == MT.Asbestos) {
 			if (aPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) return aPrefix.mMaterialPre + "Chrysotile" + aPrefix.mMaterialPost;
 		} else
+		if (aMaterial == MT.AlO3H3) {
+			if (aPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) return aPrefix.mMaterialPre + "Gibbsite" + aPrefix.mMaterialPost;
+		} else
 		if (aMaterial == MT.Au) {
 			if (aPrefix == OP.plantGtBlossom)                               return "Aurelia Leaf";
 		} else

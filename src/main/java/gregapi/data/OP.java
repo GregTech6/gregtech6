@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -582,7 +582,6 @@ public class OP {
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			switch (tMaterial.mPriorityPrefixIndex) {
-			case 0: tMaterial.mPriorityPrefix = null; break;
 			case 1: tMaterial.mPriorityPrefix = gem; break;
 			case 2: tMaterial.mPriorityPrefix = dust; break;
 			case 3: tMaterial.mPriorityPrefix = ingot; break;
