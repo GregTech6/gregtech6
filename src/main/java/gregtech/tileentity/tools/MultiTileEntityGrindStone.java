@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -135,6 +135,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
 							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
 							aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
+							mStone--;
 						}
 					}
 				}
