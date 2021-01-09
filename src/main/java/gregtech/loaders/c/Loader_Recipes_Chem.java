@@ -67,7 +67,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, OP.dustSmall   .mat(MT.LiCl, 1), FL.array(FL.mul(tFluid, 3, 4, T)), FL.array(MT.Cl.gas(U8, F), MT.H.gas(3*U8, F), MT.O.gas(U8, F)), OM.dust(MT.LiOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16, 5120, OP.dust        .mat(MT.LiCl, 1), FL.array(FL.mul(tFluid, 3      )), FL.array(MT.Cl.gas(U2, F), MT.H.gas(3*U2, F), MT.O.gas(U2, F)), OM.dust(MT.LiOH, 3*U2));
 		
-		
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.BlueVitriol       .liquid(U * 6, T), FL.mul(tFluid, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Cu));
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.GreenVitriol      .liquid(U * 6, T), FL.mul(tFluid, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Fe));
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.RedVitriol        .liquid(U * 6, T), FL.mul(tFluid, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Co));
@@ -240,8 +239,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(MT.Fuel.liquid(2*U5, T), MT.Glyceryl.fluid(U10, T))                                                              , MT.NitroFuel      .liquid(U2, F), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(MT.He.gas(U200, T), MT.Ne.gas(U200, T))                                                                          , MT.HeNe           .gas(U100, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(MT.HNO3.liquid(U*5, T), MT.HCl.fluid(U*8, T))                                                                    , MT.AquaRegia      .fluid(U*13, F), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(MT.He.gas(U200, T), MT.Ne.gas(U200, T))                                                                          , MT.HeNe           .gas(U100, F), ZL_IS);
 		
 		
 		RM.Autoclave    .addRecipe2(T,  0, 1500, new long[] {10000, 5000, 5000}, OP.dust     .mat(MT.OREMATS.Bauxite, 1), OP.dustSmall.mat(MT.KOH , 6), FL.Steam.make(48000), FL.DistW.make(300+ 750/*+2175*/), OP.dust.mat(MT.KAlO2 , 2), OP.crushedCentrifugedTiny.mat(MT.OREMATS.Ilmenite, 2), OP.crushedCentrifugedTiny.mat(MT.TiO2, 1));
