@@ -52,6 +52,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mg), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U*2, F), OM.dust(MT.MgCO3, U*5));
 		
 		RM.Mixer        .addRecipe1(T, 16,  272, OM.dust(MT.FeCl3, U*8), FL.array(FL.mul(tFluid, 6), MT.SO2.gas(U*3, T)), FL.array(MT.H2SO4.liquid(U*7, F), MT.HCl.fluid (U*4, F)), OM.dust(MT.FeCl2, U*6));
+		RM.Mixer        .addRecipe2(T, 16,  208, OM.dust(MT.FeCl3, U*4), OM.dust(MT.NaOH, U*9), FL.mul(tFluid, 18), MT.SaltWater.liquid(U*24, F), OP.dust.mat(MT.FeO3H3, 7));
 		
 		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.Cl .gas(U*2, T)), MT.HCl  .fluid (U* 4, F), MT.O.gas(U, F));
 		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.SO3.gas(U*4, T)), MT.H2SO4.liquid(U* 7, F), ZL_IS);

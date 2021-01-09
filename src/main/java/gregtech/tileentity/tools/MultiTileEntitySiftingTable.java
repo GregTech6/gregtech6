@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -283,7 +283,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mState |= B[2];
 				} else {
 					mClickCount = 0;
-					ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
+					if (canInsertItem2(0, aPlayer.inventory.getCurrentItem(), aSide)) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 				}
 			} else {
 				for (int i = 1; i < 13; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slotTake(i), F, worldObj, xCoord+0.5, yCoord+1, zCoord+0.5);

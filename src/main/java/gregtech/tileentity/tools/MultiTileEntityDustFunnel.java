@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,7 +129,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isServerSide() && SIDES_TOP[aSide] && !slotHas(0)) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
+		if (isServerSide() && SIDES_TOP[aSide] && canInsertItem2(0, aPlayer.inventory.getCurrentItem(), aSide)) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 		return T;
 	}
 	
