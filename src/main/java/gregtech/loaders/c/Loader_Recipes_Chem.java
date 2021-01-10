@@ -430,5 +430,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4, 7), NF, FL.DistW.make(3000), OP.dust.mat(MT.WO3, 4));
 		RM.Drying       .addRecipe1(T, 16,12000, OP.dust.mat(MT.OREMATS.Bischofite, 1), NF, FL.DistW.make(6000), OP.dust.mat(MT.MgCl2, 1));
+		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Perlite, 1), NF, FL.DistW.make(1000), OP.dust.mat(MT.Obsidian, 9));
 	}
 }

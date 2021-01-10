@@ -234,7 +234,8 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Arsenopyrite    , U16,  0, 20)
 		, new StoneLayerOres(MT.OREMATS.Galena          , U8 ,  5, 25)
 		, new StoneLayerOres(MT.OREMATS.Stibnite        , U24, 10, 30)
-		, new StoneLayerOres(MT.OREMATS.Powellite       , U24, 30, 50)
+		, new StoneLayerOres(MT.OREMATS.Wulfenite       , U32, 30, 45)
+		, new StoneLayerOres(MT.OREMATS.Powellite       , U32, 35, 50)
 		, new StoneLayerOres(MT.OREMATS.Molybdenite     ,U128, 30, 50)
 		, new StoneLayerOres(MT.OREMATS.Tetrahedrite    , U8 , 40, 80)
 		, new StoneLayerOres(MT.Cu                      , U16, 40, 80)
@@ -385,7 +386,7 @@ public class Loader_Worldgen implements Runnable {
 		
 		if (MD.UB.mLoaded) {
 		Block tStone = ST.block(MD.UB, "igneousStone"), tCobble = ST.block(MD.UB, "igneousCobblestone");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, MT.GraniteRed  ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, MT.Granite     ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1+8, tCobble, 1, MT.GraniteBlack));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2+8, tCobble, 2, MT.Rhyolite    ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3+8, tCobble, 3, MT.Andesite    ));
@@ -418,9 +419,6 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Ilmenite        , U8 ,  0, 32)
 		, new StoneLayerOres(MT.TiO2                    , U12,  0, 32)
 		);
-		StoneLayer.bothsides(MT.Basalt, MT.NaCl
-		, new StoneLayerOres(MT.OREMATS.Zeolite         , U8 , 16, 48)
-		);
 		StoneLayer.bothsides(MT.Basalt, MT.KCl
 		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U12, 16, 48)
 		, new StoneLayerOres(MT.OREMATS.Spodumene       , U12, 32, 64)
@@ -436,6 +434,12 @@ public class Loader_Worldgen implements Runnable {
 		);
 		StoneLayer.bothsides(MT.Limestone, MT.KCl
 		, new StoneLayerOres(MT.KIO3                    , U12, 32, 64)
+		);
+		StoneLayer.bothsides(MT.Granite, MT.NaCl
+		, new StoneLayerOres(MT.OREMATS.Zeolite         , U8 , 16, 48)
+		);
+		StoneLayer.bothsides(MT.Granite, MT.KCl
+		, new StoneLayerOres(MT.OREMATS.Pollucite       , U8 , 16, 48)
 		);
 		StoneLayer.bothsides(MT.GraniteBlack, MT.Marble
 		, new StoneLayerOres(MT.Lapis                   , U8 ,  0, 48)
@@ -677,6 +681,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.eudialyte"        , T,  20,  40,   4, MT.Eudialyte           , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
 		new WorldgenOresSmall("ore.small.azurite"          , T,  20,  40,   4, MT.Azurite             , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
 		new WorldgenOresSmall("ore.small.zeolite"          , T,   1, 250,   1, MT.OREMATS.Zeolite     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM            , GEN_NETHER);
+		new WorldgenOresSmall("ore.small.pollucite"        , T,   1, 250,   1, MT.OREMATS.Pollucite   , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.lapis"            , T,  20,  40,   8, MT.Lapis               , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.redstone"         , T,   5,  20,  16, MT.Redstone            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER         , GEN_MARS                         , GEN_PLANETS);
 		new WorldgenOresSmall("ore.small.graphite"         , T,   5,  10,   2, MT.Graphite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER         , GEN_MARS, GEN_ASTEROIDS          , GEN_PLANETS);
