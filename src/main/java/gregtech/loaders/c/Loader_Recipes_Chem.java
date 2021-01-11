@@ -38,21 +38,24 @@ import net.minecraftforge.fluids.FluidStack;
 public class Loader_Recipes_Chem implements Runnable {
 	@Override public void run() {
 		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl, U4), FL.mul(tFluid, 3, 4, T), MT.SaltWater.liquid(U*1, F), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl    ), FL.mul(tFluid, 3      ), MT.SaltWater.liquid(U*4, F), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.MgCl2   ), FL.mul(tFluid, 6      ), NF, OP.dust.mat(MT.OREMATS.Bischofite, 1));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl   , U4), FL.mul(tFluid, 3, 4, T), MT.SaltWater.liquid(U*1, F), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl       ), FL.mul(tFluid, 3      ), MT.SaltWater.liquid(U*4, F), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.MgCl2      ), FL.mul(tFluid, 2      ), NF, OM.dust(MT.OREMATS.Bischofite, U*1));
+		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Na2SO4, U*7), FL.mul(tFluid, 30     ), NF, OM.dust(MT.OREMATS.Mirabilite, U*7));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Na2CO3     ),        tFluid          , NF, OM.dust(MT.OREMATS.Trona));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.CaSO4      ),        tFluid          , NF, OM.dust(MT.Gypsum));
 		
-		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Si), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*3));
-		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Mn), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
-		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Na), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.NaOH, U*3));
-		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.K ), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.KOH , U*3));
-		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Li), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.LiOH, U*3));
+		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Si), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*3));
+		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mn), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
+		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Na), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.NaOH, U*3));
+		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.K ), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.KOH , U*3));
+		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Li), FL.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.LiOH, U*3));
 		
 		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Ca), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U*2, F), OM.dust(MT.CaCO3, U*5));
 		RM.Mixer        .addRecipe1(T, 16,  112, OM.dust(MT.Mg), FL.array(MT.CO2.gas(U*3, T), FL.mul(tFluid, 3)), MT.H.gas(U*2, F), OM.dust(MT.MgCO3, U*5));
 		
 		RM.Mixer        .addRecipe1(T, 16,  272, OM.dust(MT.FeCl3, U*8), FL.array(FL.mul(tFluid, 6), MT.SO2.gas(U*3, T)), FL.array(MT.H2SO4.liquid(U*7, F), MT.HCl.fluid (U*4, F)), OM.dust(MT.FeCl2, U*6));
-		RM.Mixer        .addRecipe2(T, 16,  208, OM.dust(MT.FeCl3, U*4), OM.dust(MT.NaOH, U*9), FL.mul(tFluid, 18), MT.SaltWater.liquid(U*24, F), OP.dust.mat(MT.FeO3H3, 7));
+		RM.Mixer        .addRecipe2(T, 16,  208, OM.dust(MT.FeCl3, U*4), OM.dust(MT.NaOH, U*9), FL.mul(tFluid, 18), MT.SaltWater.liquid(U*24, F), OM.dust(MT.FeO3H3, U*7));
 		
 		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.Cl .gas(U*2, T)), MT.HCl  .fluid (U* 4, F), MT.O.gas(U, F));
 		RM.Mixer        .addRecipe0(T, 16,   64, FL.array(FL.mul(tFluid, 3), MT.SO3.gas(U*4, T)), MT.H2SO4.liquid(U* 7, F), ZL_IS);
@@ -428,8 +431,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		if (FL.Stagnant_Water.exists())
 		RM.Drying       .addRecipe0(T, 16,   16, FL.Stagnant_Water.make(10)     , FL.DistW.make(5), ZL_IS);
 		
-		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4, 7), NF, FL.DistW.make(3000), OP.dust.mat(MT.WO3, 4));
-		RM.Drying       .addRecipe1(T, 16,12000, OP.dust.mat(MT.OREMATS.Bischofite, 1), NF, FL.DistW.make(6000), OP.dust.mat(MT.MgCl2, 1));
-		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Perlite, 1), NF, FL.DistW.make(1000), OP.dust.mat(MT.Obsidian, 9));
+		RM.Drying       .addRecipe1(T, 16,60000, OP.dust.mat(MT.OREMATS.Mirabilite,  7), NF, FL.DistW.make(30000), OP.dust.mat(MT.Na2SO4  , 7));
+		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4             ,  7), NF, FL.DistW.make( 3000), OP.dust.mat(MT.WO3     , 4));
+		RM.Drying       .addRecipe1(T, 16, 4000, OP.dust.mat(MT.OREMATS.Bischofite,  1), NF, FL.DistW.make( 2000), OP.dust.mat(MT.MgCl2   , 1));
+		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Perlite   ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.Obsidian, 9));
+		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Trona     ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.Na2CO3  , 1));
+		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.Gypsum            ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.CaSO4   , 1));
 	}
 }

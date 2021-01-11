@@ -144,6 +144,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Magnetite    .addOreByProducts(MT.ShadowIron     );
 		}
 		if (MD.Mek.mLoaded) {
+			MT.Pb.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Galena.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Magnetite.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Ferrovanadium.addOreByProducts(MT.FakeOsmium);

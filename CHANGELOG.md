@@ -17,7 +17,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Battery Boxes were not able to charge Tools unless a Battery was inside of them to make them able to accept Power. (their internal buffer would eventually reach zero when charging tools only)
 [FIXED] Aqua Regia Processing Ores emitted too much Water, effectively turning Oxygen into Hydrogen.
 [CHANGED] Air Vents now do 256000L per 360 ticks at a time, instead of only 16000. They have an Offset for ticking too now, so you can use multiple Vents on one Pipe/Drum/etc now.
+[CHANGED] A bunch of Ores, that I deemed way too useless years ago, has been added back. None of them are required for anything, old Worlds are safe as always. ;)
+[ADDED] Crushed Purified Biotite can now be heated in the Dryer to make Argon Gas from it. It is mostly a Byproduct of other Ores like Asbestos though,
+[ADDED] Gypsum, Trona and Mirabilite now have Recipes to create them by mixing some Chemicals with Water (They can be dried back too). Perlite now has a drying Recipe that turns it into Obsidian aswell.
 [ADDED] Iron and Hydrochloric Acid now have a few more Chemical Reactions. This will improve Hematite extraction from Limonite. Oh and Limonite now smelts into Hematite, like it does in real Life, so it is no longer an easy Shortcut, like it was before.
+[ADDED] Vanadiumsteel Fluid Pipe that can handle Acids and otherwise has the same Stats as Tungstensteel (which cannot handle Acids).
 
 
 6.14.06:
@@ -1076,7 +1080,7 @@ And no you cant just spawn Lightning using other Mods to power this thing, that 
 [COMPAT]
 Fixed a few Parts of the Trainwreck that is Tropicraft. It is the shittiest Mod I have ever seen so far, and that says something...
 I originally did not even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
-But I mostly got through adding Material Data and Stuff to it, and ended up adding a few Minerals because ofthat as well.
+But I mostly got through adding Material Data and Stuff to it, and ended up adding a few Minerals because of that as well.
 [CHANGED] Zirconium Ore now exists as Zircon, meaning I nerfed that Stuff. :P
 [CHANGED] Chainsaws now use Chains instead of Plates or Gem Plates for Crafting.
 [CHANGED] Juice and Honey when used to make Biomass got buffed in order to be even remotely profitable to be used.

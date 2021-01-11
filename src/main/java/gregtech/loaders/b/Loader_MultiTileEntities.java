@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1829,6 +1829,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeFluid.addFluidPipes(26180, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ti);
 		MultiTileEntityPipeFluid.addFluidPipes(26660, 26142,        300, T, F, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Netherite);
 		MultiTileEntityPipeFluid.addFluidPipes(26200, 26142,        350, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.W);
+		MultiTileEntityPipeFluid.addFluidPipes(26740, 26142,        400, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.VanadiumSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26220, 26142,        400, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26240, 26142,        450, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenCarbide);
 		MultiTileEntityPipeFluid.addFluidPipes(26440, 26142,        500, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ir);

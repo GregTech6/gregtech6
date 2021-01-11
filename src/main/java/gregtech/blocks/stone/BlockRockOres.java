@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -57,7 +57,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		OM.reg(ST.make(this, 1, 3), OP.oreDense.dat(MT.KCl));
 		OM.reg(ST.make(this, 1, 4), OP.oreDense.dat(MT.OREMATS.Bauxite));
 		OM.reg(ST.make(this, 1, 5), OP.oreDense.dat(MT.Oilshale));
-		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.OREMATS.Gypsum));
+		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.Gypsum));
 		OM.reg(ST.make(this, 1, 7), OP.oreDense.dat(MT.MilkyQuartz));
 		OM.reg(ST.make(this, 1, 8), OP.oreDense.dat(MT.NetherQuartz));
 		
@@ -86,7 +86,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		StoneLayer.LAYERS.add(new StoneLayer(this, 3, MT.KCl));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 4, MT.OREMATS.Bauxite));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 5, MT.Oilshale));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.OREMATS.Gypsum));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.Gypsum));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
 	//  StoneLayer.LAYERS.add(new StoneLayer(this, 8, MT.NetherQuartz)); Nope, that is not for the Overworld.
 	}

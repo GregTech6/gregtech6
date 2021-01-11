@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -394,7 +394,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag                     , ST.make(MD.IE, "ore", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ni                     , ST.make(MD.IE, "ore", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.oreLimestone   , MT.Phosphorus             , ST.make(MD.MIN, "phosphorous_ore", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.OREMATS.Gypsum         , ST.make(MD.MIN, "gypsum", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Gypsum                 , ST.make(MD.MIN, "gypsum", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.S                      , ST.make(MD.MIN, "sulfur_ore", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Niter                  , ST.make(MD.MIN, "nitrate_ore", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.ChargedCertusQuartz    , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));

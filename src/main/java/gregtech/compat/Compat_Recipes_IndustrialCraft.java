@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -538,11 +538,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
 		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.Glauconite    ), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
-		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.Ash       ,3*U), IL.IC2_Fertilizer.get(2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.OREMATS.GlauconiteSand), OM.dust(MT.DarkAsh       ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(3));
 		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.NaHSO4                ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(4));
 		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.NaHSO4                ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(3));

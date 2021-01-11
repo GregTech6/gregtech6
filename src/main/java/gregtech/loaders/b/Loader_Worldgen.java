@@ -419,15 +419,27 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Ilmenite        , U8 ,  0, 32)
 		, new StoneLayerOres(MT.TiO2                    , U12,  0, 32)
 		);
+		StoneLayer.bothsides(MT.Basalt, MT.Komatiite
+		, new StoneLayerOres(MT.OREMATS.Perlite         , U4 ,  0, 16)
+		);
 		StoneLayer.bothsides(MT.Basalt, MT.KCl
 		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U12, 16, 48)
 		, new StoneLayerOres(MT.OREMATS.Spodumene       , U12, 32, 64)
 		);
 		StoneLayer.topbottom(MT.Diorite, MT.Limestone
 		, new StoneLayerOres(MT.Opal                    , U64, 48, 64)
+		, new StoneLayerOres(MT.OREMATS.Diatomite       , U16, 16, 64)
+		);
+		StoneLayer.bothsides(MT.Limestone, MT.MilkyQuartz
+		, new StoneLayerOres(MT.OREMATS.FullersEarth    , U3 , 64, 96)
+		, new StoneLayerOres(MT.OREMATS.Kaolinite       , U3 , 40, 72)
+		, new StoneLayerOres(MT.OREMATS.Bentonite       , U3 , 16, 48)
 		);
 		StoneLayer.bothsides(MT.Marble, MT.MilkyQuartz
 		, new StoneLayerOres(MT.Asbestos                , U4 ,  0, 48)
+		, new StoneLayerOres(MT.Soapstone               , U4 ,  0, 80)
+		, new StoneLayerOres(MT.Talc                    , U4 , 16, 64)
+		, new StoneLayerOres(MT.OREMATS.Glauconite      , U4 , 32, 80)
 		);
 		StoneLayer.bothsides(MT.Limestone, MT.NaCl
 		, new StoneLayerOres(MT.OREMATS.Borax           , U8 , 16, 48)
@@ -435,11 +447,55 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.bothsides(MT.Limestone, MT.KCl
 		, new StoneLayerOres(MT.KIO3                    , U12, 32, 64)
 		);
+		StoneLayer.bothsides(MT.Greenschist, MT.Gypsum
+		, new StoneLayerOres(MT.OREMATS.Mirabilite      , U8 , 16, 64)
+		, new StoneLayerOres(MT.OREMATS.Trona           , U8 , 16, 64)
+		);
+		StoneLayer.bothsides(MT.Blueschist, MT.Gypsum
+		, new StoneLayerOres(MT.OREMATS.Mirabilite      , U8 , 16, 64)
+		, new StoneLayerOres(MT.OREMATS.Trona           , U8 , 16, 64)
+		);
 		StoneLayer.bothsides(MT.Granite, MT.NaCl
 		, new StoneLayerOres(MT.OREMATS.Zeolite         , U8 , 16, 48)
 		);
 		StoneLayer.bothsides(MT.Granite, MT.KCl
 		, new StoneLayerOres(MT.OREMATS.Pollucite       , U8 , 16, 48)
+		);
+		StoneLayer.bothsides(MT.Granite, MT.Greenschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
+		);
+		StoneLayer.bothsides(MT.Granite, MT.Blueschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
+		);
+		StoneLayer.bothsides(MT.GraniteRed, MT.Greenschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
+		);
+		StoneLayer.bothsides(MT.GraniteRed, MT.Blueschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
+		);
+		StoneLayer.bothsides(MT.GraniteBlack, MT.Greenschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
+		);
+		StoneLayer.bothsides(MT.GraniteBlack, MT.Blueschist
+		, new StoneLayerOres(MT.OREMATS.Mica            , U8 , 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Vermiculite     , U8 , 48, 80)
+		, new StoneLayerOres(MT.Biotite                 , U16, 16, 48)
+		, new StoneLayerOres(MT.Asbestos                , U64, 16, 48)
 		);
 		StoneLayer.bothsides(MT.GraniteBlack, MT.Marble
 		, new StoneLayerOres(MT.Lapis                   , U8 ,  0, 48)
@@ -451,6 +507,9 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Diamond                 , U64,  0, 32)
 		, new StoneLayerOres(MT.DiamondPink             , U48,  0, 32, BIOMES_JUNGLE)
 		, new StoneLayerOres(MT.Graphite                , U8 ,  0, 32)
+		);
+		StoneLayer.bothsides(MT.GraniteBlack, MT.Granite
+		, new StoneLayerOres(MT.Zircon                  , U24,  0, 32)
 		);
 		StoneLayer.bothsides(MT.GraniteBlack, MT.GraniteRed
 		, new StoneLayerOres(MT.Zircon                  , U24,  0, 32)
@@ -680,6 +739,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.asbestos"         , T,  20,  40,   8, MT.Asbestos            , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.eudialyte"        , T,  20,  40,   4, MT.Eudialyte           , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
 		new WorldgenOresSmall("ore.small.azurite"          , T,  20,  40,   4, MT.Azurite             , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.tantalite"        , T,   1, 250,   1, MT.OREMATS.Tantalite   , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.zeolite"          , T,   1, 250,   1, MT.OREMATS.Zeolite     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.pollucite"        , T,   1, 250,   1, MT.OREMATS.Pollucite   , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.lapis"            , T,  20,  40,   8, MT.Lapis               , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
@@ -725,7 +785,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.bischofite"       , MD.IHL .mLoaded,  40,  80,   1, MT.OREMATS.Bischofite, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.datolite"         , MD.IHL .mLoaded,  40,  80,   1, MT.Datolite          , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.mica"             , MD.IHL .mLoaded,  40,  80,   1, MT.OREMATS.Mica      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.gypsum"           , MD.IHL .mLoaded,  40,  80,   1, MT.OREMATS.Gypsum    , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.gypsum"           , MD.IHL .mLoaded,  40,  80,   1, MT.Gypsum            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.potassiumfeldspar", MD.IHL .mLoaded,  40,  80,   1, MT.PotassiumFeldspar , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.trona"            , MD.IHL .mLoaded,  40,  80,   1, MT.OREMATS.Trona     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		
@@ -791,8 +851,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.bauxite"     , T, T, 50,  90,  80, 4, 24, MT.OREMATS.Bauxite              , MT.OREMATS.Bauxite             , MT.OREMATS.Bauxite             , MT.OREMATS.Ilmenite            , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.iodinesalt"  , T, T, 50,  60,  30, 3, 24, MT.KIO3                         , MT.NaCl                        , MT.OREMATS.Borax               , MT.OREMATS.Zeolite             , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.rocksalt"    , T, T, 50,  60,  30, 3, 24, MT.KCl                          , MT.NaCl                        , MT.OREMATS.Lepidolite          , MT.OREMATS.Spodumene           , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
-		new WorldgenOresLarge("ore.large.soapstone"   , T, T, 10,  40,  10, 3, 16, MT.Soapstone                    , MT.Talc                        , MT.OREMATS.Glauconite          , MT.OREMATS.Pentlandite         , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
-		new WorldgenOresLarge("ore.large.asbestos"    , T, T, 10,  40,  30, 3, 16, MT.Soapstone                    , MT.Talc                        , MT.OREMATS.Gypsum              , MT.Asbestos                    , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
+		new WorldgenOresLarge("ore.large.asbestos"    , T, T, 10,  40,  30, 3, 16, MT.Soapstone                    , MT.Talc                        , MT.Gypsum                      , MT.Asbestos                    , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.sapphire"    , T, T, 10,  40,  30, 3, 16, MT.BlueSapphire                 , MT.OrangeSapphire              , MT.YellowSapphire              , MT.Ruby                        , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.sapphire2"   , T, T, 10,  40,  30, 3, 16, MT.GreenSapphire                , MT.Ruby                        , MT.BlueSapphire                , MT.PurpleSapphire              , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.garnet"      , T, T, 10,  40,  60, 3, 16, MT.Almandine                    , MT.Pyrope                      , MT.Andradite                   , MT.Uvarovite                   , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
