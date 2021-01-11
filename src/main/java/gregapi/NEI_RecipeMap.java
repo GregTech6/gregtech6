@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -664,27 +664,27 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 		} else {
 			if (tGUt > 0) {
-				drawText    (10, 73, "Costs: "  + (tDuration*tGUt) + " GU"        , 0xFF000000);
+				drawText    (10, 73, "Costs: "  + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
 				if (mRecipeMap.mShowVoltageAmperageInNEI) {
 					if (!mRecipeMap.mCombinePower)
-					drawText(10, 83, "Usage: "  + tGUt + " GU/t"                  , 0xFF000000);
-					drawText(10, 93, "Tier: "   + tGUt / mRecipeMap.mPower + " GU", 0xFF000000);
-					drawText(10,103, "Power: "  + mRecipeMap.mPower               , 0xFF000000);
+					drawText(10, 83, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
+					drawText(10, 93, "Tier: "   + UT.Code.makeString(tGUt / mRecipeMap.mPower) + " GU"  , 0xFF000000);
+					drawText(10,103, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
 				} else {
 					if (tGUt != 1 && !mRecipeMap.mCombinePower)
-					drawText(10, 83, "Usage: "  + tGUt + " GU/t"                  , 0xFF000000);
+					drawText(10, 83, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
 				}
 			} else {
 				tGUt *= -1;
-				drawText    (10, 73, "Gain: "   + (tDuration*tGUt) + " GU"        , 0xFF000000);
+				drawText    (10, 73, "Gain: "   + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
 				if (mRecipeMap.mShowVoltageAmperageInNEI) {
 					if (!mRecipeMap.mCombinePower)
-					drawText(10, 83, "Output: " + tGUt + " GU/t"                  , 0xFF000000);
-					drawText(10, 93, "Tier: "   + tGUt / mRecipeMap.mPower + " GU", 0xFF000000);
-					drawText(10,103, "Power: "  + mRecipeMap.mPower               , 0xFF000000);
+					drawText(10, 83, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
+					drawText(10, 93, "Tier: "   + UT.Code.makeString(tGUt / mRecipeMap.mPower) + " GU"  , 0xFF000000);
+					drawText(10,103, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
 				} else {
 					if (tGUt != 1 && !mRecipeMap.mCombinePower)
-					drawText(10, 83, "Output: " + tGUt + " GU/t"                  , 0xFF000000);
+					drawText(10, 83, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
 				}
 			}
 		}

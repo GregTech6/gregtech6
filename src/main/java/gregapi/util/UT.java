@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1154,28 +1154,24 @@ public class UT {
 			return rData;
 		}
 		
-		/** Converts a Number to a String */
+		/** Converts a Number to a String with Underscores as Decimal Separators. Ignores Numbers with 4 Digits or less. */
 		public static String makeString(long aNumber) {
-			String tString = "";
-			boolean temp = T, negative = F;
-			
-			if (aNumber<0) {
+			if (aNumber > -10000 && aNumber < 10000) return "" + aNumber;
+			StringBuilder rString = new StringBuilder();
+			if (aNumber < 0) {
 				aNumber *= -1;
-				negative = T;
+				rString.append('-');
 			}
-			
+			boolean temp = T;
 			for (long i = 1000000000000000000L; i > 0; i /= 10) {
-				long tDigit = (aNumber/i)%10;
+				long tDigit = (aNumber / i) % 10;
 				if ( temp && tDigit != 0) temp = F;
 				if (!temp) {
-					tString += tDigit;
-					if (i != 1) for (long j = i; j > 0; j /= 1000) if (j == 1) tString += ",";
+					rString.append(tDigit);
+					if (i != 1) for (long j = i; j > 0; j /= 1000) if (j == 1) rString.append('_');
 				}
 			}
-			
-			if (tString.equals("")) tString = "0";
-			
-			return negative?"-"+tString:tString;
+			return rString.toString();
 		}
 		
 		@SafeVarargs
