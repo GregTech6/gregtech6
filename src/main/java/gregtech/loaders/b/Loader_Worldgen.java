@@ -228,12 +228,16 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.Limestone));
 		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone
+		, new StoneLayerOres(MT.OREMATS.Stibnite        , U24, 10, 30)
+		, new StoneLayerOres(MT.OREMATS.Galena          , U8 , 30,120)
+		, new StoneLayerOres(MT.Pb                      , U16, 50, 70)
+		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone
 		, new StoneLayerOres(MT.Pyrite                  , U16,  0, 30)
 		, new StoneLayerOres(MT.OREMATS.Arsenopyrite    , U16,  0, 20)
 		, new StoneLayerOres(MT.OREMATS.Galena          , U8 ,  5, 25)
-		, new StoneLayerOres(MT.OREMATS.Stibnite        , U24, 10, 30)
+		, new StoneLayerOres(MT.OREMATS.Galena          , U8 , 80,120)
 		, new StoneLayerOres(MT.OREMATS.Wulfenite       , U32, 30, 45)
 		, new StoneLayerOres(MT.OREMATS.Powellite       , U32, 35, 50)
 		, new StoneLayerOres(MT.OREMATS.Molybdenite     ,U128, 30, 50)
@@ -430,12 +434,12 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Opal                    , U64, 48, 64)
 		, new StoneLayerOres(MT.OREMATS.Diatomite       , U16, 16, 64)
 		);
-		StoneLayer.bothsides(MT.Limestone, MT.MilkyQuartz
+		StoneLayer.bothsides(MT.Limestone, MT.Quartzite
 		, new StoneLayerOres(MT.OREMATS.FullersEarth    , U3 , 64, 96)
 		, new StoneLayerOres(MT.OREMATS.Kaolinite       , U3 , 40, 72)
 		, new StoneLayerOres(MT.OREMATS.Bentonite       , U3 , 16, 48)
 		);
-		StoneLayer.bothsides(MT.Marble, MT.MilkyQuartz
+		StoneLayer.bothsides(MT.Marble, MT.Quartzite
 		, new StoneLayerOres(MT.Asbestos                , U4 ,  0, 48)
 		, new StoneLayerOres(MT.Soapstone               , U4 ,  0, 80)
 		, new StoneLayerOres(MT.Talc                    , U4 , 16, 64)

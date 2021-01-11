@@ -2615,9 +2615,10 @@ public class MT {
 			AlO3H3                          .addOreByProducts(OREMATS.Bauxite           , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
 			OREMATS.Ilmenite                .addOreByProducts(TiO2                      , Fe2O3                     , Mg                    , MnO2                  );
 			TiO2                            .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
-			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , FluoriteOrange            , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
 			Ti                              .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.Magnetite         , MnO2                  , ClayRed               );
+			OREMATS.Galena                  .addOreByProducts(OREMATS.Sphalerite        , Ag                        , Pb                    , Se                    , FluoriteRed, CaCO3);
+			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , FluoriteOrange            , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
 			Cu                              .addOreByProducts(Co                        , Au                        , Ni                    );
 			Ni                              .addOreByProducts(Co                        , Pt                        , Fe2O3                 );
 			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
@@ -2632,7 +2633,6 @@ public class MT {
 			Gypsum                          .addOreByProducts(OREMATS.Trona             , OREMATS.Mirabilite        , Asbestos              , Talc                  , S, Soapstone);
 			OREMATS.Mirabilite              .addOreByProducts(OREMATS.Trona             , Gypsum                    );
 			OREMATS.Trona                   .addOreByProducts(OREMATS.Mirabilite        , Gypsum                    );
-			OREMATS.Galena                  .addOreByProducts(S                         , Ag                        , Pb                    , Se                    );
 			Lapis                           .addOreByProducts(Lazurite                  , Sodalite                  , Pyrite                );
 			OREMATS.Cooperite               .addOreByProducts(Pd                        , Ni                        , Ir                    );
 			OREMATS.Cinnabar                .addOreByProducts(Redstone                  , S                         , Glowstone             , Se                    );
