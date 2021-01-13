@@ -1088,17 +1088,23 @@ public class MT {
 	Blaze                   = blaze         ( 8211, "Blaze"                                         , 255, 200,   0     , UNBURNABLE, BURNING, MELTING)                                                                                                                                                                                                                                                                         .aspects(TC.IGNIS, 4).heat(4000),
 	
 	
+	Ceramic                 = dust          ( 8225, "Ceramic"               , SET_ROUGH             , 220, 130,  70, 255, MORTAR, PLATES, BRITTLE)                                                                                                                  .uumMcfg(18                      , Al2O3            , 5*U, SiO2             ,12*U)                                                                          .heat(2000).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
+	Clay                    = oredustelec   ( 8215, "Clay"                  , SET_ROUGH             , 200, 200, 220, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg(18                      , Al2O3            , 5*U, SiO2             ,12*U, H2O              , 9*U)                                                  .heat(2000).setSmelting(Ceramic, U),
+	ClayBrown               = oredustelec   ( 8276, "ClayBrown"             , SET_ROUGH             , 230, 140,  75, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg(18, Li             , 1*U, Al2O3            , 5*U, SiO2             ,12*U, H2O              , 9*U)                                                  .heat(2000).setSmelting(Ceramic, U).setLocal("Brown Clay"),
+	ClayRed                 = oredustelec   ( 8455, "ClayRed"               , SET_ROUGH             , 230,  40,  25, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg(18, K              , 1*U, Al2O3            , 5*U, SiO2             ,12*U, H2O              , 9*U)                                                  .heat(2000).setSmelting(Ceramic, U).setLocal("Red Clay"),
+	Bentonite               = oredustelec   ( 9153, "Bentonite"             , SET_ROUGH             , 255, 192,   4, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg(18, Na             , 1*U, Al2O3            , 5*U, SiO2             ,12*U, H2O              , 9*U)                                                  .heat(2000).setSmelting(Ceramic, U), // (Na,Ca)0.33(Al,Mg)2(Si4O10)(OH)2 + n(H2O) please do note that I had to make it easier to generify Clays without causing too much transmutation, so it is no longer accurate.
+	Palygorskite            = oredustelec   ( 9154, "Palygorskite"          , SET_ROUGH             , 114, 157, 179, 255, MORTAR, PLATES, "FullersEarth")                                                                                                           .uumMcfg(18, Ca             , 1*U, Al2O3            , 5*U, SiO2             ,12*U, H2O              , 9*U)                                                  .heat(2000).setSmelting(Ceramic, U), //            (Al,Mg)2(Si4O10)(OH)  + 4(H2O)
+	
+	
+	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 195, 195, 222, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Ceramic        , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
+	
+	
 	Graphite                = oredustdcmp   ( 9174, "Graphite"              , SET_DULL              , 128, 128, 128, 255, BLACKLISTED_SMELTER, BRITTLE, MORTAR, STICKS)                                                                                             .uumMcfg( 0, C              , 1*U)                                                                                                                          .qual(1, 5.0, 32, 2).setSmelting(C, U2).setBurning(Ash, U4).heat(1700, C.mBoilingPoint),
 	Niter                   = oredustcent   ( 8206, "Niter"                 , SET_FLINT             , 255, 200, 200, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, "Nitre")                                                                                 .uumMcfg( 0, KNO3           , 1*U, NaNO3            , 1*U)                                                                                                  .heat(607),
 	Phosphorus              = cent          ( 8208, "Phosphorus"            , SET_FLINT             , 255, 255,   0, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE, "Phosphorous")                                                                         .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
 	Apatite                 = elec          ( 8209, "Apatite"               , SET_DIAMOND           , 120, 180, 250, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE)                                                                          .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, Cl               , 1*U)                                                                          .aspects(TC.MESSIS, 2),
 	Phosphorite             = elec          ( 8226, "Phosphorite"           , SET_DIAMOND           ,  50,  50,  65, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE)                                                                          .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, F                , 1*U)                                                                          .aspects(TC.MESSIS, 2),
 	Obsidian                = elec          ( 8214, "Obsidian"              , SET_STONE             ,  80,  50, 100, 255, G_STONE, STONE, BRITTLE, MORTAR, UNBURNABLE)                                                                                              .setMcfg(64, Mg             , 1*U, Fe               , 1*U, SiO2             , 6*U, O                , 4*U)                                                  .aspects(TC.TENEBRAE, 1, TC.IGNIS, 2, TC.TERRA, 2).setSmelting(Lava, U).heat(1300, 4000).qual(1, 3.0, 32, 3),
-	Clay                    = oredustelec   ( 8215, "Clay"                  , SET_ROUGH             , 200, 200, 220, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, Na               , 2*U)                                                  .heat(2000),
-	ClayBrown               = oredustelec   ( 8276, "ClayBrown"             , SET_ROUGH             , 230, 140,  75, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, K                , 2*U)                                                  .heat(2000).setLocal("Brown Clay"),
-	ClayRed                 = oredustelec   ( 8455, "ClayRed"               , SET_ROUGH             , 230,  40,  25, 255, MORTAR)                                                                                                                                   .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U, K                , 2*U)                                                  .heat(2000).setLocal("Red Clay"),
-	Ceramic                 = dust          ( 8225, "Ceramic"               , SET_ROUGH             , 220, 130,  70, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 7, Li             , 1*U, Al2O3            , 2*U, SiO2             , 2*U)                                                                          .steal(Clay).heat(2000).setPulver(Clay, U2).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
-	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 195, 195, 222, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Clay           , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
 	Paper                   = dust          ( 8216, "Paper"                 , SET_PAPER             , 250, 250, 250, 255, TICKS_PER_SMELT/ 8, MULTIPLATES, MORTAR)                                                                                                                                                                                                                                                              .aspects(TC.COGNITIO, 1).setBurning(Ash, U9),
 	Rubber                  = create        ( 8217, "Rubber"                , SET_RUBBER            ,  20,  20,  20, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, STRETCHY, FURNACE)                             .uumMcfg( 0, C              , 5*U, H                , 8*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(410).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 1.5, 16, 0),
 	Plastic                 = create        ( 8218, "Plastic"               , SET_DULL              , 200, 200, 200, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, MD.MFR)                      .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 32, 1),
@@ -1690,11 +1696,7 @@ public class MT {
 	static {
 		H2O.setSolidifying(Ice, U);
 		Lava.setSolidifying(Obsidian, U).setDensity(Obsidian.mGramPerCubicCentimeter);
-		Clay.setSmelting(Ceramic, U);
-		ClayBrown.setSmelting(Ceramic, U);
-		ClayRed.setSmelting(Ceramic, U);
 		Netherrack.setSmelting(NetherBrick, U);
-		
 	}
 	
 	private static boolean INITIALIZED = false;
@@ -2316,6 +2318,10 @@ public class MT {
 			DarkIron                .put(MD.FZ).visDefault();
 			
 			
+			Bentonite               .put(MD.PFAA);
+			Palygorskite            .put(MD.PFAA);
+			
+			
 			Angmallen               .put(MD.MET);
 			Hepatizon               .put(MD.MET);
 			Alduorite               .put(MD.MET).visDefault();
@@ -2351,9 +2357,9 @@ public class MT {
 			Amordrine               .put(MD.MET).visDefault();
 			
 			
-			Force                   .put(COMMON_ORE).visDefault();
-			Forcicium               .put(COMMON_ORE).visDefault();
-			Forcillium              .put(COMMON_ORE).visDefault();
+			Force                   .put(COMMON_ORE).visDefault(); // Was this one DartCraft?
+			Forcicium               .put(COMMON_ORE).visDefault(); // This was one of the Force Field Mods.
+			Forcillium              .put(COMMON_ORE).visDefault(); // And this was ANOTHER Force Field Mod.
 			
 			
 			Plastic                 .addEnchantmentForTools(Enchantment.knockback, 1);
@@ -2657,8 +2663,8 @@ public class MT {
 			HexoriumBlue                    .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
 			HexoriumBlack                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
 			HexoriumWhite                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
-			OREMATS.Bentonite               .addOreByProducts(OREMATS.Kaolinite         , Clay                      , OREMATS.Bauxite       );
-			OREMATS.Kaolinite               .addOreByProducts(OREMATS.Bentonite         , ClayBrown                 , OREMATS.Bauxite       );
+			Bentonite                       .addOreByProducts(OREMATS.Kaolinite         , Clay                      , OREMATS.Bauxite       );
+			OREMATS.Kaolinite               .addOreByProducts(Bentonite                 , ClayBrown                 , OREMATS.Bauxite       );
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , Mg                        , MnO2                  );
@@ -3203,7 +3209,7 @@ public class MT {
 	/** The Section where I place regular Ores that are only used in advanced processing anyways due to complexity. */
 	public static class OREMATS {
 		@Deprecated @SuppressWarnings("hiding")
-		public static final OreDictMaterial Pyrolusite = MnO2, Rutile = TiO2, Hematite = Fe2O3, Magnesite = MgCO3, Gypsum = MT.Gypsum;
+		public static final OreDictMaterial Pyrolusite = MnO2, Rutile = TiO2, Hematite = Fe2O3, Magnesite = MgCO3, Gypsum = MT.Gypsum, Bentonite = MT.Bentonite, FullersEarth = Palygorskite;
 		
 		public static final OreDictMaterial
 		Magnetite               = oredustelec( 9122, "Magnetite"                 , SET_METALLIC  ,  30,  30,  30, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .uumMcfg( 0, Fe             , 3*U, O                , 4*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
@@ -3267,8 +3273,7 @@ public class MT {
 		
 		Borax                   = oredustdcmp( 9139, "Borax"                     , SET_FINE      , 250, 250, 250, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Na             , 2*U, B                , 4*U, H2O              ,30*U, O                , 7*U)                                                ,
 		Diatomite               = oredustcent( 9001, "Diatomite"                 , SET_DULL      , 225, 225, 225, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Flint          , 8*U, Fe2O3            , 1*U, Sapphire         , 1*U)                                                                        ,
-		Bentonite               = oredustelec( 9153, "Bentonite"                 , SET_ROUGH     , 245, 215, 210, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg(33, Na             , 1*U, Mg               , 6*U, SiO2             ,36*U, H2O              ,14*U, O                , 9*U)                        , // (Na,Ca)0.33(Al,Mg)2(Si4O10)(OH)2 nH2O
-		FullersEarth            = oredustelec( 9154, "Fullers Earth"             , SET_FINE      , 160, 160, 120, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Mg             , 1*U, SiO2             ,12*U, H                , 1*U, H2O              ,12*U, O                , 3*U)                        , // (Mg,Al)2Si4O10(OH) 4(H2O)
+		
 		Spodumene               = oredustelec( 9146, "Spodumene"                 , SET_DULL      , 190, 170, 170, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          , 5*U, Li               , 2*U, SiO2             ,12*U, O                , 1*U)                                                , // LiAl(SiO3)2
 		Lepidolite              = oredustelec( 9149, "Lepidolite"                , SET_FINE      , 240,  50, 140, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,10*U, K                , 1*U, Li               , 3*U, F                , 2*U, O                , 6*U)                        , // K(Li,Al,Rb)3(Al,Si)4O10(F,OH)2
 		Glauconite              = oredustelec( 9150, "Glauconite"                , SET_DULL      , 130, 180,  60, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,10*U, K                , 1*U, Mg               , 2*U, H2O              , 3*U, O                , 7*U)                        , GlauconiteSand = Glauconite, // (K,Na)(Fe3+,Al,Mg)2(Si,Al)4O10(OH)2

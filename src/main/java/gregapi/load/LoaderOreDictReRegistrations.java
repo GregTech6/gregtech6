@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1395,10 +1395,10 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.SoulSand ), new OreDictItemData(MT.SoulSand , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock  ), new OreDictItemData(MT.Bedrock  , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint    ), new OreDictItemData(MT.Flint    , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock  ), new OreDictItemData(MT.Redrock  , U, MT.ClayRed, U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Shale    ), new OreDictItemData(MT.Shale    , U, MT.Clay   , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite ), new OreDictItemData(MT.Dolomite , U, MT.Bone   , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite ), new OreDictItemData(MT.Eclogite , U, MT.TiO2   , U72));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock  ), new OreDictItemData(MT.Redrock  , U, MT.ClayRed     , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Shale    ), new OreDictItemData(MT.Shale    , U, MT.Palygorskite, U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite ), new OreDictItemData(MT.Dolomite , U, MT.Bone        , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite ), new OreDictItemData(MT.Eclogite , U, MT.TiO2        , U72));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3    ), new OreDictItemData(MT.CaCO3    , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Soapstone), new OreDictItemData(MT.Soapstone, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk    ), new OreDictItemData(MT.Chalk    , U));

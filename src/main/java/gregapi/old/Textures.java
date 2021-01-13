@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -43,7 +43,7 @@ public class Textures {
 		, ZPM_TOP, ZPM_SIDES, ZPM_BOTTOM
 		, DUCT_TAPE
 		
-		, MUD, CLAY_BROWN, TURF, CLAY_RED
+		, MUD, CLAY_BROWN, TURF, CLAY_RED, CLAY_YELLOW, CLAY_BLUE
 		, SAND_MAGNETITE
 		
 		, PATH_TOP, PATH_SIDE
@@ -407,8 +407,8 @@ public class Textures {
 			CLAY_BROWN,
 			TURF,
 			CLAY_RED,
-			CLAY_BROWN,
-			CLAY_BROWN,
+			CLAY_YELLOW,
+			CLAY_BLUE,
 			CLAY_BROWN,
 			CLAY_BROWN,
 			CLAY_BROWN,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,11 +60,11 @@ public class Compat_Recipes_MagicBees extends CompatMods {
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  6000}                     , ST.make(MD.FRMB, "comb", 1,11), NF, NF, OM.dust(MT.WaxMagic), ST.make(Items.feather, 1, 0));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  6000}                     , ST.make(MD.FRMB, "comb", 1,12), NF, NF, OM.dust(MT.WaxMagic), OM.dust(MT.Blaze, U9));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  6000}                     , ST.make(MD.FRMB, "comb", 1,13), NF, NF, OM.dust(MT.WaxMagic), IL.Dye_SquidInk.get(1));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  2000,  2000,  2000}       , ST.make(MD.FRMB, "comb", 1,14), NF, NF, OM.dust(MT.WaxMagic), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  2000,2000,2000,2000,2000} , ST.make(MD.FRMB, "comb", 1,14), NF, NF, OM.dust(MT.WaxMagic), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1), IL.Clay_Ball_Yellow.get(1), IL.Clay_Ball_Blue.get(1));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,15), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Breezey.get(1), ST.make(Items.feather, 1, 0));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,16), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Burning.get(1), OM.dust(MT.Blaze, U9));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,17), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Flowing.get(1), IL.Dye_SquidInk.get(1));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  2000,  2000,  2000}, ST.make(MD.FRMB, "comb", 1,18), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Stony  .get(1), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,18), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Stony  .get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,19), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Ordered.get(1), OM.dust(MT.Redstone));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  8000,  6000}              , ST.make(MD.FRMB, "comb", 1,20), NF, NF, OM.dust(MT.WaxMagic), IL.FRMB_Propolis_Chaotic.get(1), OM.dust(MT.Gunpowder));
 	}

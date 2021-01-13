@@ -557,12 +557,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Compressor   .addRecipe1(T, 16,   16, ST.make(Items.quartz, 4, 0), ST.make(Blocks.quartz_block, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   16, IL.Crop_Wheat.get(9), IL.Bale_Wheat.get(1));
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(Blocks.sand, 4, 0), ST.make(Blocks.sandstone, 1, 0));
-		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(Items.clay_ball, 4, W), ST.make(Blocks.clay, 1, 0));
-		RM.Compressor   .addRecipe1(T, 16,   32, IL.Clay_Ball_Brown.get(4), ST.make(BlocksGT.Diggables, 1, 1));
-		RM.Compressor   .addRecipe1(T, 16,   32, IL.Clay_Ball_Red.get(4), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Clay, 4*U), ST.make(Blocks.clay, 1, 0));
-		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayBrown, 4*U), ST.make(BlocksGT.Diggables, 1, 1));
-		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.ClayRed, 4*U), ST.make(BlocksGT.Diggables, 1, 3));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lapis), OP.plateGem.mat(MT.Lapis, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Asbestos), OP.plate.mat(MT.Asbestos, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lazurite), OP.plateGem.mat(MT.Lazurite, 1));
@@ -606,12 +600,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, 3*U8));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, 3*U8));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
-		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay));
-		RM.Mortar       .addRecipe1(T, 16, 16, IL.Clay_Ball_Brown.get(1), OM.dust(MT.ClayBrown));
-		RM.Mortar       .addRecipe1(T, 16, 16, IL.Clay_Ball_Red.get(1), OM.dust(MT.ClayRed));
-		RM.Mortar       .addRecipe1(T, 16, 64, ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));
-		RM.Mortar       .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
-		RM.Mortar       .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dustSmall.mat(MT.Flint, 1));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.gravel, 1, W), ST.make(Items.flint, 1, 0));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 0), OM.dust(MT.Coal));
@@ -671,10 +659,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100))) {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.reeds, 1, W)             , tWater, NF, ST.make(Items.paper, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Paper)                      , tWater, NF, ST.make(Items.paper, 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Ceramic)                    , tWater, NF, ST.make(Items.clay_ball, 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Clay)                       , tWater, NF, ST.make(Items.clay_ball, 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.ClayRed)                    , tWater, NF, IL.Clay_Ball_Red.get(1));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.ClayBrown)                  , tWater, NF, IL.Clay_Ball_Brown.get(1));
 		}
 		
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_hardened_clay   , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.hardened_clay  , 1, 0));

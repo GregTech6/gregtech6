@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -361,7 +361,7 @@ public enum IL implements IItemContainer {
 	Bale_Wheat, Bale_Barley, Bale_Rye, Bale_Oats, Bale_AbyssalOats, Bale_Rice,
 	Grass, Grass_Dry, Grass_Moldy, Grass_Rotten, Bale, Bale_Dry, Bale_Moldy, Bale_Rotten,
 	Bark_Dry, Beam, Plank, Plank_Slab, Plank_Stairs, Treated_Planks, Treated_Planks_Slab,
-	Mud_Ball, Clay_Ball_Brown, Clay_Ball_Red,
+	Mud_Ball, Clay_Ball_Brown, Clay_Ball_Red, Clay_Ball_Yellow, Clay_Ball_Blue,
 	Remains_Plant, Remains_Fruit, Remains_Veggie, Remains_Nut,
 	Schematic, Schematic_Crafting, Schematic_1by1, Schematic_2by2, Schematic_3by3,
 	Electrode_FR_Copper, Electrode_FR_Tin, Electrode_FR_Bronze, Electrode_FR_Iron, Electrode_FR_Gold, Electrode_FR_Diamond, Electrode_FR_Obsidian, Electrode_FR_Blaze, Electrode_FR_Rubber, Electrode_FR_Emerald, Electrode_FR_Apatite, Electrode_FR_Lapis, Electrode_FR_Ender,
