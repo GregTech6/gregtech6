@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,15 +24,19 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import gregapi.data.ANY;
 import gregapi.data.MD;
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
@@ -125,6 +129,17 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.crushedPurifiedTiny   .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedCentrifuged    .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.crushedCentrifugedTiny.addListener(new Listener_Furnace_Smelting( -1, T));
+		
+		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
+			RM.add_smelting(OP.dust     .mat(tMat, 1), OP.dust     .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustSmall.mat(tMat, 1), OP.dustSmall.mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustTiny .mat(tMat, 1), OP.dustTiny .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustDiv72.mat(tMat, 1), OP.dustDiv72.mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.plate    .mat(tMat, 1), OP.plate    .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.plateTiny.mat(tMat, 1), OP.plateTiny.mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.ingot    .mat(tMat, 1), ST.make(Items.brick, 1, 0));
+		}
+		
 		RUNNING = F;
 	}
 	

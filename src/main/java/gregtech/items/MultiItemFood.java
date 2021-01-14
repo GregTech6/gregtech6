@@ -133,8 +133,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Mud_Ball        .set(addItem(tLastID = 12300, "Mud"              , ""                                       , OD.itemMud , TC.stack(TC.TERRA, 1)));
-		IL.Clay_Ball_Brown .set(addItem(tLastID = 12310, "Brown Clay"       , "Perfectly Balanced With No Exploits!"   , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
-		IL.Clay_Ball_Red   .set(addItem(tLastID = 12311, "Red Clay"         , "Clay ONLY Challenge Is Broken!"         , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
+		IL.Clay_Ball_Brown .set(addItem(tLastID = 12310, "Brown Clay"       , "Contains small amounts of Lithium"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
+		IL.Clay_Ball_Red   .set(addItem(tLastID = 12311, "Red Clay"         , "Perfectly Balanced With No Exploits!"   , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
 		IL.Clay_Ball_Yellow.set(addItem(tLastID = 12312, "Yellow Clay"      , "Bentonite Clay"                         , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Bentonite, U)));
 		IL.Clay_Ball_Blue  .set(addItem(tLastID = 12313, "Blue Clay"        , "Palygorskite Clay / Fullers Earth"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Palygorskite, U)));
 		CR.remove(ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0), NI, ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0));
@@ -146,16 +146,6 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.add_smelting(IL.Clay_Ball_Red   .get(1), ST.make(Items.brick, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Yellow.get(1), ST.make(Items.brick, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Blue  .get(1), ST.make(Items.brick, 1, 0));
-		RM.add_smelting(OP.dust .mat(MT.Clay        , 1), OP.dust .mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.dust .mat(MT.ClayBrown   , 1), OP.dust .mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.dust .mat(MT.ClayRed     , 1), OP.dust .mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.dust .mat(MT.Bentonite   , 1), OP.dust .mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.dust .mat(MT.Palygorskite, 1), OP.dust .mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.plate.mat(MT.Clay        , 1), OP.plate.mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.plate.mat(MT.ClayBrown   , 1), OP.plate.mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.plate.mat(MT.ClayRed     , 1), OP.plate.mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.plate.mat(MT.Bentonite   , 1), OP.plate.mat(MT.Ceramic, 1));
-		RM.add_smelting(OP.plate.mat(MT.Palygorskite, 1), OP.plate.mat(MT.Ceramic, 1));
 		CR.shaped   (OP.plate.mat(MT.Clay         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', Items.clay_ball);
 		CR.shaped   (OP.plate.mat(MT.ClayBrown    , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', IL.Clay_Ball_Brown);
 		CR.shaped   (OP.plate.mat(MT.ClayRed      , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', IL.Clay_Ball_Red);
