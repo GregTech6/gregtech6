@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -218,7 +218,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			oCPU_Storage = 0;
 			oCPU_Conversion = 0;
 			
-			if (checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
+			if (checkStructure(F) && mEnergy >= 128L + mCPU_Logic * 64L * mCPU_Conversion) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
@@ -668,7 +668,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (isServerSide() && aPlayer != null && checkStructure(F)) {
 			List<String> tChat = new ArrayListNoNulls<>();
 			tChat.add("Power: " + mEnergy + " EU");
-			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t");
+			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + "+ EU/t");
 			tChat.add(mCPU_Logic + " Logic Processors");
 			tChat.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 			tChat.add(mCPU_Storage + " Storage Processors (Note: For now useless)");
@@ -683,7 +683,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
-		if (mEnergy > mCPU_Logic * mCPU_Conversion * 256) return 0;
+		if (mEnergy > 128L + mCPU_Logic * 256L * mCPU_Conversion) return 0;
 		aSize = Math.abs(aSize);
 		if (!aDoInject) return aAmount;
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {explode(6); return aAmount;}
@@ -701,7 +701,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 512;}
 	@Override public long getEnergySizeInputMin        (TagData aEnergyType, byte aSide) {return 256;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
-	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mCPU_Logic * mCPU_Conversion * 256 : 0;}
+	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? 128L + mCPU_Logic * 256L * mCPU_Conversion : 0;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
