@@ -131,13 +131,14 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.crushedCentrifugedTiny.addListener(new Listener_Furnace_Smelting( -1, T));
 		
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-			RM.add_smelting(OP.dust     .mat(tMat, 1), OP.dust     .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustSmall.mat(tMat, 1), OP.dustSmall.mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustTiny .mat(tMat, 1), OP.dustTiny .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustDiv72.mat(tMat, 1), OP.dustDiv72.mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.plate    .mat(tMat, 1), OP.plate    .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.plateTiny.mat(tMat, 1), OP.plateTiny.mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.ingot    .mat(tMat, 1), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(OP.dust       .mat(tMat, 1), OP.dust       .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustSmall  .mat(tMat, 1), OP.dustSmall  .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustTiny   .mat(tMat, 1), OP.dustTiny   .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.dustDiv72  .mat(tMat, 1), OP.dustDiv72  .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.plate      .mat(tMat, 1), OP.plate      .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.plateTiny  .mat(tMat, 1), OP.plateTiny  .mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.plateCurved.mat(tMat, 1), OP.plateCurved.mat(MT.Ceramic, 1));
+			RM.add_smelting(OP.ingot      .mat(tMat, 1), ST.make(Items.brick, 1, 0));
 		}
 		
 		RUNNING = F;

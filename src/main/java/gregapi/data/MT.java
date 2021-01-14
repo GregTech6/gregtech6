@@ -1093,8 +1093,8 @@ public class MT {
 	Clay                    = oredustdcmp   ( 8215, "Clay"                  , SET_ROUGH             , 200, 200, 220, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg( 2, Ceramic        , 2*U, H2O              , 1*U)                                                                                                  .heat(2000).setSmelting(Ceramic, U),
 	ClayBrown               = clay          ( 8276, "ClayBrown"                                     , 230, 140,  75, Li )                                                                                                                                                                                                                                                                                                       .setLocal("Brown Clay"),
 	ClayRed                 = clay          ( 8455, "ClayRed"                                       , 230,  40,  25, K  )                                                                                                                                                                                                                                                                                                       .setLocal("Red Clay"),
-	Bentonite               = clay          ( 9153, "Bentonite"                                     , 255, 192,   4, Na )                                                                                                                                                                                                                                                                                                       , // (Na,Ca)0.33(Al,Mg)2(Si4O10)(OH)2 + n(H2O) please do note that I had to make it easier to generify Clays without causing too much transmutation, so it is no longer accurate.
-	Palygorskite            = clay          ( 9154, "Palygorskite"                                  , 114, 157, 179, Ca , "FullersEarth")                                                                                                                                                                                                                                                                                       , //            (Al,Mg)2(Si4O10)(OH)  + 4(H2O)
+	Bentonite               = clay          ( 9153, "Bentonite"                                     , 255, 192,   4, Na )                                                                                                                                                                                                                                                                                                       .setLocal("Bentonite Clay"),    // (Na,Ca)0.33(Al,Mg)2(Si4O10)(OH)2 + n(H2O) please do note that I had to make it easier to generify Clays without causing too much transmutation, so it is no longer accurate.
+	Palygorskite            = clay          ( 9154, "Palygorskite"                                  , 114, 157, 179, Ca , "FullersEarth")                                                                                                                                                                                                                                                                                       .setLocal("Palygorskite Clay"), //            (Al,Mg)2(Si4O10)(OH)  + 4(H2O)
 	
 	
 	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 195, 195, 222, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Ceramic        , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
@@ -2631,7 +2631,6 @@ public class MT {
 			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
 			OREMATS.Kesterite               .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Stannite      );
 			OREMATS.Glauconite              .addOreByProducts(Na                        , Al2O3                     , Fe2O3                 );
-			OREMATS.FullersEarth            .addOreByProducts(Al2O3                     , SiO2                      , Mg                    );
 			OREMATS.Diatomite               .addOreByProducts(OREMATS.Mica              , Opal                      , Biotite               , OREMATS.Perlite       , Sapphire);
 			OREMATS.Mica                    .addOreByProducts(OREMATS.Vermiculite       , Asbestos                  , Biotite               , OREMATS.Perlite       );
 			OREMATS.Vermiculite             .addOreByProducts(OREMATS.Mica              , Asbestos                  , Biotite               , OREMATS.Diatomite     );
@@ -2664,8 +2663,12 @@ public class MT {
 			HexoriumBlue                    .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
 			HexoriumBlack                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
 			HexoriumWhite                   .addOreByProducts(HexoriumRed               , HexoriumGreen             , HexoriumBlue          );
-			Bentonite                       .addOreByProducts(OREMATS.Kaolinite         , Clay                      , OREMATS.Bauxite       );
-			OREMATS.Kaolinite               .addOreByProducts(Bentonite                 , ClayBrown                 , OREMATS.Bauxite       );
+			Clay                            .addOreByProducts(OREMATS.Kaolinite         , Palygorskite              );
+			ClayBrown                       .addOreByProducts(Clay                      , ClayRed                   );
+			ClayRed                         .addOreByProducts(Bentonite                 , ClayBrown                 );
+			Bentonite                       .addOreByProducts(ClayRed                   , Palygorskite              );
+			Palygorskite                    .addOreByProducts(OREMATS.Kaolinite         , Bentonite                 );
+			OREMATS.Kaolinite               .addOreByProducts(ClayBrown                 , Clay                      );
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , Mg                        , MnO2                  );
@@ -2799,9 +2802,6 @@ public class MT {
 			Redrock                         .addOreByProducts(ClayBrown                 );
 			Limestone                       .addOreByProducts(CaCO3                     );
 			Marble                          .addOreByProducts(CaCO3                     );
-			Clay                            .addOreByProducts(ClayBrown                 , ClayRed                   );
-			ClayBrown                       .addOreByProducts(Clay                      , ClayRed                   );
-			ClayRed                         .addOreByProducts(Clay                      , ClayBrown                 );
 			Eclogite                        .addOreByProducts(TiO2                      );
 			Limestone                       .addOreByProducts(Phosphorite               );
 			PO4                             .addOreByProducts(P                         );
@@ -3282,7 +3282,7 @@ public class MT {
 		Vermiculite             = oredustelec( 9152, "Vermiculite"               , SET_METALLIC  , 200, 180,  15, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,10*U, Fe               , 3*U, SiO2             ,12*U, H2O              ,12*U, H                , 2*U)                        , // (Mg+2, Fe+2, Fe+3)3 [(AlSi)4O10] (OH)2 4H2O)
 		Mica                    = oredustelec( 9158, "Mica"                      , SET_FINE      , 195, 195, 205, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,15*U, K                , 2*U, SiO2             ,18*U, F                , 4*U)                                                , // KAl2(AlSi3O10)(F,OH)2
 		Kaolinite               = oredustelec( 9167, "Kaolinite"                 , SET_DULL      , 245, 235, 235, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          , 5*U, SiO2             , 6*U, H2O              , 6*U)                                                                        , // Al2Si2O5(OH)4
-		Alunite                 = oredustelec( 9162, "Alunite"                   , SET_METALLIC  , 225, 180,  65, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,15*U, K                , 2*U, SiO2             ,12*U, H2O              ,18*U, O                , 5*U)                        , // KAl3(SO4)2(OH)6
+		Alunite                 = oredustelec( 9162, "Alunite"                   , SET_METALLIC  , 225, 180,  65, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,15*U, KOH              , 6*U, SO3              ,16*U, H2O              ,15*U, O                , 9*U)                        , // KAl3(SO4)2(OH)6
 		Kyanite                 = oredustelec( 9166, "Kyanite"                   , SET_FLINT     , 110, 110, 250, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          , 5*U, SiO2             , 3*U)                                                                                                , // Al2SiO5
 		
 		BasalticMineralSand     = oredustcent( 9003, "Basaltic Mineral Sand"     , SET_SAND      ,  40,  50,  40, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 0, Magnetite      , 1*U, Gabbro           , 1*U)                                                                                                .aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
