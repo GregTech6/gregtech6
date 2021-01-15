@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,7 +52,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 		for (String tName : aBiomeNames) if (BIOMES_RIVER.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		
-		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12;
+		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12, aMeta = aRandom.nextInt(3);
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 64, tZ+j);
 			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {
@@ -68,7 +68,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 						continue;
 					}
 				}
-				aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.Sands, 0, 3);
+				aWorld.setBlock(tX+i, tY, tZ+j, BlocksGT.Sands, aMeta, 3);
 				tGenerated++;
 			}
 		}

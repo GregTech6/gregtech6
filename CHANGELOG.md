@@ -24,6 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Iron and Hydrochloric Acid now have a few more Chemical Reactions. This will improve Hematite extraction from Limonite. Oh and Limonite now smelts into Hematite, like it does in real Life, so it is no longer an easy Shortcut, like it was before.
 [ADDED] Vanadiumsteel Fluid Pipe that can handle Acids and otherwise has the same Stats as Tungstensteel (which cannot handle Acids).
 [ADDED] Porcelain Cup Recipe. Now you dont need to rely on Loot anymore to get those small Cups.
+[ADDED] Two more variants of Black Sand. They are essentially identical in function when it comes to getting Iron, Vanadium and Gold, so it is not much of a change. They also came from PFAA and were dormant and only somewhat compatible until now.
 [ADDED]
 Bentonite Clay, Kaolinite Clay and Palygorskite Clay (try to say that 3 times fast), which are Yellow, White and Blue Clay.
 The only reason I did this, is because I noticed PFAA added those, and they were long dormant in my Ore Materials Section (I did not think of them as Clays back then), so now I gave them Life!

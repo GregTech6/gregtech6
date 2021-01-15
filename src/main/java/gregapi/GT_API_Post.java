@@ -124,24 +124,28 @@ public class GT_API_Post extends Abstract_Mod {
 		new LoaderUnificationTargets().run();
 		
 		if (MD.MET.mLoaded) {
-			MT.OREMATS.Bauxite      .addOreByProducts(MT.Alduorite      );
-			MT.OREMATS.Chalcopyrite .addOreByProducts(MT.Infuscolium    );
-			MT.OREMATS.Scheelite    .addOreByProducts(MT.Rubracium      );
-			MT.OREMATS.Pentlandite  .addOreByProducts(MT.Meutoite       );
-			MT.MgCO3                .addOreByProducts(MT.Lemurite       );
-			MT.OREMATS.Stibnite     .addOreByProducts(MT.Ceruclase      );
-			MT.OREMATS.Garnierite   .addOreByProducts(MT.Oureclase      );
-			MT.OREMATS.Cooperite    .addOreByProducts(MT.Kalendrite     );
-			MT.OREMATS.Ilmenite     .addOreByProducts(MT.Orichalcum     );
-			MT.OREMATS.Sphalerite   .addOreByProducts(MT.Carmot         );
-			MT.OREMATS.Cinnabar     .addOreByProducts(MT.Sanguinite     );
-			MT.OREMATS.Malachite    .addOreByProducts(MT.Vyroxeres      );
-			MT.MnO2                 .addOreByProducts(MT.Eximite        );
-			MT.OREMATS.Cobaltite    .addOreByProducts(MT.Prometheum     );
-			MT.OREMATS.Cassiterite  .addOreByProducts(MT.Ignatius       );
-			MT.OREMATS.Wolframite   .addOreByProducts(MT.Vulcanite      );
-			MT.Fe2O3                .addOreByProducts(MT.DeepIron       );
-			MT.OREMATS.Magnetite    .addOreByProducts(MT.ShadowIron     );
+			MT.OREMATS.Bauxite            .addOreByProducts(MT.Alduorite      );
+			MT.OREMATS.Chalcopyrite       .addOreByProducts(MT.Infuscolium    );
+			MT.OREMATS.Scheelite          .addOreByProducts(MT.Rubracium      );
+			MT.OREMATS.Pentlandite        .addOreByProducts(MT.Meutoite       );
+			MT.MgCO3                      .addOreByProducts(MT.Lemurite       );
+			MT.OREMATS.Stibnite           .addOreByProducts(MT.Ceruclase      );
+			MT.OREMATS.Garnierite         .addOreByProducts(MT.Oureclase      );
+			MT.OREMATS.Cooperite          .addOreByProducts(MT.Kalendrite     );
+			MT.OREMATS.Ilmenite           .addOreByProducts(MT.Orichalcum     );
+			MT.OREMATS.Sphalerite         .addOreByProducts(MT.Carmot         );
+			MT.OREMATS.Cinnabar           .addOreByProducts(MT.Sanguinite     );
+			MT.OREMATS.Malachite          .addOreByProducts(MT.Vyroxeres      );
+			MT.MnO2                       .addOreByProducts(MT.Eximite        );
+			MT.OREMATS.Cobaltite          .addOreByProducts(MT.Prometheum     );
+			MT.OREMATS.Cassiterite        .addOreByProducts(MT.Ignatius       );
+			MT.OREMATS.Wolframite         .addOreByProducts(MT.Vulcanite      );
+			MT.Fe2O3                      .addOreByProducts(MT.DeepIron       );
+			MT.OREMATS.BrownLimonite      .addOreByProducts(MT.DeepIron       );
+			MT.OREMATS.YellowLimonite     .addOreByProducts(MT.DeepIron       );
+			MT.OREMATS.Magnetite          .addOreByProducts(MT.ShadowIron     );
+			MT.OREMATS.BasalticMineralSand.addOreByProducts(MT.ShadowIron     );
+			MT.OREMATS.GraniticMineralSand.addOreByProducts(MT.ShadowIron     );
 		}
 		if (MD.Mek.mLoaded) {
 			MT.Pb.addOreByProducts(MT.FakeOsmium);

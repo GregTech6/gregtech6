@@ -1098,7 +1098,7 @@ public class MT {
 	Kaolinite               = clay          ( 9167, "Kaolinite"                                     , 245, 235, 235, Ca )                                                                                                                                                                                                                                                                                                       .setLocal("Kaolinite Clay"),    // Al2Si2O5(OH)4
 	
 	
-	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 195, 195, 222, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Ceramic        , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
+	Porcelain               = mixdust       ( 8273, "Porcelain"             , SET_ROUGH             , 235, 235, 245, 255, PLATES, BRITTLE, MORTAR)                                                                                                                  .uumMcfg( 0, Ceramic        , 2*U, SiO2             , 1*U, PotassiumFeldspar, 1*U)                                                                          .heat(1800).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
 	
 	
 	Graphite                = oredustdcmp   ( 9174, "Graphite"              , SET_DULL              , 128, 128, 128, 255, BLACKLISTED_SMELTER, BRITTLE, MORTAR, STICKS)                                                                                             .uumMcfg( 0, C              , 1*U)                                                                                                                          .qual(1, 5.0, 32, 2).setSmelting(C, U2).setBurning(Ash, U4).heat(1700, C.mBoilingPoint),
@@ -2320,9 +2320,11 @@ public class MT {
 			DarkIron                .put(MD.FZ).visDefault();
 			
 			
-			Bentonite               .put(MD.PFAA);
-			Palygorskite            .put(MD.PFAA);
-			Kaolinite               .put(MD.PFAA);
+			Bentonite                  .put(MD.PFAA);
+			Palygorskite               .put(MD.PFAA);
+			Kaolinite                  .put(MD.PFAA);
+			OREMATS.BasalticMineralSand.put(MD.PFAA);
+			OREMATS.GraniticMineralSand.put(MD.PFAA);
 			
 			
 			Angmallen               .put(MD.MET);
@@ -2625,7 +2627,7 @@ public class MT {
 			OREMATS.Ilmenite                .addOreByProducts(TiO2                      , Fe2O3                     , Mg                    , MnO2                  );
 			TiO2                            .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Ti                              .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
-			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.Magnetite         , MnO2                  , ClayRed               );
+			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.GraniticMineralSand, MnO2                 , ClayRed               );
 			OREMATS.Galena                  .addOreByProducts(OREMATS.Sphalerite        , Ag                        , Pb                    , Se                    , FluoriteRed, CaCO3);
 			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , FluoriteOrange            , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
 			Cu                              .addOreByProducts(Co                        , Au                        , Ni                    );
@@ -2767,9 +2769,9 @@ public class MT {
 			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
 			Cr                              .addOreByProducts(Fe2O3                     , Mg                        );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
-			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        );
-			OREMATS.GraniticMineralSand     .addOreByProducts(Granite                   , OREMATS.Magnetite         );
-			OREMATS.BasalticMineralSand     .addOreByProducts(Gabbro                    , OREMATS.Magnetite         );
+			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);
+			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , GraniteBlack);
+			OREMATS.BasalticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , Basalt);
 			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
 			Lazurite                        .addOreByProducts(Sodalite                  , Lapis                     );
 			Sodalite                        .addOreByProducts(Lazurite                  , Lapis                     );
@@ -2779,8 +2781,8 @@ public class MT {
 			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
 			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , Ta                    , Nb                    , Pb                    );
 			Azurite                         .addOreByProducts(Zircon                    , OREMATS.Malachite         , Hf                    ); // TODO: Niccolite
-			Ad                              .addOreByProducts(OREMATS.Magnetite         , Adamantine                );
-			Adamantine                      .addOreByProducts(OREMATS.Magnetite         , Ad                        );
+			Ad                              .addOreByProducts(OREMATS.GraniticMineralSand, Adamantine               );
+			Adamantine                      .addOreByProducts(OREMATS.GraniticMineralSand, Ad                       );
 			OREMATS.Stibnite                .addOreByProducts(Sb                        );
 			Diamond                         .addOreByProducts(Graphite                  , DiamondPink               );
 			DiamondPink                     .addOreByProducts(Graphite                  , Diamond                   );
@@ -2878,9 +2880,9 @@ public class MT {
 // TODO     Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.Chalcopyrite          , 8*U), OM.stack(C                  , 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(Fe2O3                         , 5*U), OM.stack(C                  , 1*U), OM.stack(CaCO3, 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.Magnetite             ,14*U), OM.stack(C                  , 3*U)));
+			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.BasalticMineralSand   ,14*U), OM.stack(C                  , 3*U)));
+			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.GraniticMineralSand   ,14*U), OM.stack(C                  , 3*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.Ferrovanadium         ,28*U), OM.stack(C                  , 3*U)));
-			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.BasalticMineralSand   ,28*U), OM.stack(C                  , 3*U)));
-			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.GraniticMineralSand   ,28*U), OM.stack(C                  , 3*U)));
 			
 			Si                      .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(SiO2                          , 3*U), OM.stack(C                  , 1*U)));
 			
@@ -3225,11 +3227,13 @@ public class MT {
 		public static final OreDictMaterial Pyrolusite = MnO2, Rutile = TiO2, Hematite = Fe2O3, Magnesite = MgCO3, Gypsum = MT.Gypsum, Bentonite = MT.Bentonite, FullersEarth = Palygorskite, Kaolinite = MT.Kaolinite;
 		
 		public static final OreDictMaterial
-		Magnetite               = oredustelec( 9122, "Magnetite"                 , SET_METALLIC  ,  30,  30,  30, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .uumMcfg( 0, Fe             , 3*U, O                , 4*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		Cassiterite             = oredustelec( 9108, "Cassiterite"               , SET_METALLIC  , 220, 220, 220, 255, MORTAR, FURNACE, "CassiteriteSand"                                             ).setSmelting(Sn   , 3*U4).uumMcfg( 1, Sn             , 1*U, O                , 2*U)                                                                                                .heat(3 * Sn.mMeltingPoint / 2), CassiteriteSand = Cassiterite,
 //      CassiteriteSand         = oredustelec( 9109, "Cassiterite Sand"          , SET_SAND      , 220, 220, 220, 255, MORTAR, FURNACE                                                                ).setSmelting(Sn   , 3*U4).uumMcfg( 1, Sn             , 1*U, O                , 2*U)                                                                                                .heat(3 * Sn.mMeltingPoint / 2),
 		Garnierite              = oredustelec( 9118, "Garnierite"                , SET_METALLIC  ,  50, 200,  70, 255, MORTAR, BLACKLISTED_SMELTER, MAGNETIC_PASSIVE, WASHING_PERSULFATE              ).setSmelting(Ni   , 3*U4).uumMcfg( 1, Ni             , 1*U, O                , 1*U)                                                                                                .qual(0),
 		Uraninite               = oredustelec( 9134, "Uraninite"                 , SET_RAD       ,  35,  35,  35, 255, BLACKLISTED_SMELTER                                                            ).setSmelting(U_238,   U3).setMcfg( 1, U_238          , 1*U, O                , 2*U)                                                                                                ,
+		Magnetite               = oredustelec( 9122, "Magnetite"                 , SET_METALLIC  ,  30,  30,  30, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .uumMcfg( 0, Fe             , 3*U, O                , 4*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
+		BasalticMineralSand     = oredustcent( 9003, "Basaltic Mineral Sand"     , SET_METALLIC  ,  40,  50,  40, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 1, Magnetite      , 1*U, Gabbro           , 1*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
+		GraniticMineralSand     = oredustcent( 9004, "Granitic Mineral Sand"     , SET_METALLIC  ,  40,  60,  60, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 1, Magnetite      , 1*U, Granite          , 1*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		
 		Cinnabar                = oredustcent( 9114, "Cinnabar"                  , SET_REDSTONE  , 150,   0,   0, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, PULVERIZING_CINNABAR, CRYSTAL).setSmelting(Hg   ,   U3).uumMcfg( 0, Hg             , 1*U, S                , 1*U)                                                                                                ,
 		Molybdenite             = oredustdcmp( 9123, "Molybdenite"               , SET_METALLIC  ,  25,  25,  25, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Mo   ,   U4).uumMcfg( 0, Mo             , 1*U, S                , 2*U)                                                                                                ,
@@ -3296,8 +3300,6 @@ public class MT {
 		Kyanite                 = oredustelec( 9166, "Kyanite"                   , SET_FLINT     , 110, 110, 250, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          , 5*U, SiO2             , 3*U)                                                                                                , // Al2SiO5
 		Alunite                 = oredustelec( 9162, "Alunite"                   , SET_METALLIC  , 225, 180,  65, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Al2O3          ,15*U, KOH              , 6*U, SO3              ,16*U, H2O              ,15*U, O                , 9*U)                        , // KAl3(SO4)2(OH)6
 		
-		BasalticMineralSand     = oredustcent( 9003, "Basaltic Mineral Sand"     , SET_SAND      ,  40,  50,  40, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 0, Magnetite      , 1*U, Gabbro           , 1*U)                                                                                                .aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
-		GraniticMineralSand     = oredustcent( 9004, "Granitic Mineral Sand"     , SET_SAND      ,  40,  60,  60, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 0, Magnetite      , 1*U, Granite          , 1*U)                                                                                                .aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		GarnetSand              = oredustcent( 9005, "Garnet Sand"               , SET_SAND      , 200, 100,   0, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                         .setMcfg( 0, Almandine      , 2*U, Andradite        , 2*U, Grossular        , 2*U, Pyrope           , 2*U, Spessartine      , 2*U, Uvarovite        , 1*U),
 		QuartzSand              = oredustcent( 9006, "Quartz Sand"               , SET_SAND      , 200, 200, 200, 255, MORTAR, BLACKLISTED_SMELTER, QUARTZ                                            ).setSmelting(SiO2 ,   U3).setMcfg( 0, CertusQuartz   , 1*U, MilkyQuartz      , 1*U)                                                                                                ,
 		

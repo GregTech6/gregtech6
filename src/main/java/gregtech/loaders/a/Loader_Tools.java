@@ -251,7 +251,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', stone.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Pyrite, MT.Fe2O3, MT.OREMATS.Cobaltite, MT.OREMATS.Garnierite, MT.OREMATS.Pentlandite, MT.OREMATS.Chromite, MT.OREMATS.Ilmenite, MT.OREMATS.BrownLimonite, MT.OREMATS.YellowLimonite, MT.OREMATS.Magnetite, MT.OREMATS.Arsenopyrite, MT.OREMATS.Chalcopyrite}) {
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Pyrite, MT.Fe2O3, MT.OREMATS.Cobaltite, MT.OREMATS.Garnierite, MT.OREMATS.Pentlandite, MT.OREMATS.Chromite, MT.OREMATS.Ilmenite, MT.OREMATS.BrownLimonite, MT.OREMATS.YellowLimonite, MT.OREMATS.Magnetite, MT.OREMATS.BasalticMineralSand, MT.OREMATS.GraniticMineralSand, MT.OREMATS.Arsenopyrite, MT.OREMATS.Chalcopyrite}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		

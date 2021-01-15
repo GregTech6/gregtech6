@@ -113,7 +113,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(tMat, 1), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GrayVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(tMat, 9), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GrayVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		}
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Cr, MT.Ad, MT.Pyrite, MT.Andradite, MT.PigIron, MT.Steel, MT.DarkIron, MT.DeepIron, MT.ShadowIron, MT.MeteoricIron, MT.OREMATS.Ilmenite, MT.OREMATS.Wolframite, MT.OREMATS.Chromite, MT.OREMATS.Magnetite}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Cr, MT.Ad, MT.Pyrite, MT.Andradite, MT.PigIron, MT.Steel, MT.DarkIron, MT.DeepIron, MT.ShadowIron, MT.MeteoricIron, MT.OREMATS.Ilmenite, MT.OREMATS.Wolframite, MT.OREMATS.Chromite, MT.OREMATS.Magnetite, MT.OREMATS.BasalticMineralSand, MT.OREMATS.GraniticMineralSand}) {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(tMat, 1), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(tMat, 9), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		}
@@ -231,10 +231,15 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurifiedTiny.mat(MT.Fluix              , 9), gem.mat(MT.Fluix              , 1), dust.mat(MT.Fluix, 1));
 		
 		
-		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite, 1), dust.mat(MT.V2O5, 1));
-		
+		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), dust.mat(MT.V2O5, 1));
+		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), dust.mat(MT.V2O5, 1));
+		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 2), dust.mat(MT.OREMATS.GraniticMineralSand, 1), rockGt.mat(MT.GraniteBlack, 1), nugget.mat(MT.Au, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 2), dust.mat(MT.OREMATS.GraniticMineralSand, 1), rockGt.mat(MT.GraniteBlack, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 2), dust.mat(MT.OREMATS.GraniticMineralSand, 1), dust.mat(MT.V2O5, 1));
 		
 		
 		RM.Smelter      .addRecipe1(T, 64, 1440, 5000, OM.dust(MT.Monazite     ), NF, MT.He.gas(U2 , F), OM.dust(MT.RareEarth     ));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -33,10 +33,14 @@ import net.minecraft.world.World;
 
 public class BlockSands extends BlockBaseMeta {
 	public BlockSands(String aUnlocalised) {
-		super(null, aUnlocalised, Material.sand, soundTypeSand, 1, Textures.BlockIcons.SANDS);
+		super(null, aUnlocalised, Material.sand, soundTypeSand, 3, Textures.BlockIcons.SANDS);
 		LH.add(getUnlocalizedName()+ ".0.name", "Black Sand");
+		LH.add(getUnlocalizedName()+ ".1.name", "Basaltic Black Sand");
+		LH.add(getUnlocalizedName()+ ".2.name", "Granitic Black Sand");
 		
 		OM.data(ST.make(this, 1, 0), MT.OREMATS.Magnetite, U);
+		OM.data(ST.make(this, 1, 1), MT.OREMATS.BasalticMineralSand, U);
+		OM.data(ST.make(this, 1, 2), MT.OREMATS.GraniticMineralSand, U);
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return T;}
