@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -56,6 +56,6 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 		
 		if (tIngots.isEmpty()) return null;
-		return RM.CrucibleSmelting.addFakeRecipe(F, ST.array(aInput), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
+		return RM.CrucibleSmelting.addFakeRecipe(F, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
 	}
 }

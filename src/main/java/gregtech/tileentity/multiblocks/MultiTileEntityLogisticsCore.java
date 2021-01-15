@@ -668,7 +668,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (isServerSide() && aPlayer != null && checkStructure(F)) {
 			List<String> tChat = new ArrayListNoNulls<>();
 			tChat.add("Power: " + mEnergy + " EU");
-			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + "+ EU/t");
+			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t, plus more per moved Item/Fluid");
 			tChat.add(mCPU_Logic + " Logic Processors");
 			tChat.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 			tChat.add(mCPU_Storage + " Storage Processors (Note: For now useless)");
