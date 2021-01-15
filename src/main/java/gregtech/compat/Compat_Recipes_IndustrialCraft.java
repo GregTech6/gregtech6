@@ -420,10 +420,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.pulverizing(IL.Clay_Ball_Red   .get(1), OM.dust(MT.ClayRed, U));
 		RM.pulverizing(IL.Clay_Ball_Yellow.get(1), OM.dust(MT.Bentonite, U));
 		RM.pulverizing(IL.Clay_Ball_Blue  .get(1), OM.dust(MT.Palygorskite, U));
+		RM.pulverizing(IL.Clay_Ball_White .get(1), OM.dust(MT.Kaolinite, U));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 4), OM.dust(MT.Bentonite, U*4));
 		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 5), OM.dust(MT.Palygorskite, U*4));
+		RM.pulverizing(ST.make(BlocksGT.Diggables, 1, 6), OM.dust(MT.Kaolinite, U*4));
 		
 		if (IL.IC2_Sapling_Rubber.exists())
 		RM.ic2_extractor(IL.IC2_Sapling_Rubber.get(1), OM.ingot(MT.Rubber, 2*U9));

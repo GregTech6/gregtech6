@@ -482,11 +482,12 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) {
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
-		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(tClay         ,U*2), OM.dust(tMat    ), OM.dust(MT.PotassiumFeldspar    )), OM.dust(MT.Porcelain, U*4));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(tClay         , U2), OM.dust(tMat, U4), OM.dust(MT.PotassiumFeldspar, U4)), OM.dust(MT.Porcelain     ));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone), OM.dust(MT.Basalz, U9), OM.dust(tClay), OM.dust(MT.Obsidian)), OM.dust(MT.Petrotheum, 2*U));
 		}
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Basalz, U9), OM.dust(tClay), OM.dust(MT.Obsidian)), OM.dust(MT.Petrotheum, 2*U));
+		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(IL.Clay_Ball_White.get(2), OM.dust(tMat    ), OM.dust(MT.PotassiumFeldspar    )), OM.dust(MT.Porcelain, U*4));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Kaolinite,U*2), OM.dust(tMat    ), OM.dust(MT.PotassiumFeldspar    )), OM.dust(MT.Porcelain, U*4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Kaolinite, U2), OM.dust(tMat, U4), OM.dust(MT.PotassiumFeldspar, U4)), OM.dust(MT.Porcelain     ));
 		}
 		for (OreDictMaterial tGlowstone : ANY.Glowstone.mToThis) {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Stone          ), OM.dust(MT.Netherrack    ), OM.dust(MT.Redstone    ), OM.dust(tGlowstone   )), OM.dust(MT.ArcaneCompound, U2));

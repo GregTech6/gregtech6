@@ -48,7 +48,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag                     , ST.make(MD.MF2, "oreSilver", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.W                      , ST.make(MD.MF2, "oreTungsten", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Borax          , ST.make(MD.MF2, "oreBorax", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Kaolinite      , ST.make(MD.MF2, "oreKaolinite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Kaolinite              , ST.make(MD.MF2, "oreKaolinite", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.EnderPearl             , ST.make(MD.MF2, "ender_block", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Ad                     , ST.make(MD.MF2, "adamantium_block", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Mithril                , ST.make(MD.MF2, "mithril_block", 1, 0));
@@ -63,7 +63,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.PigIron                , ST.make(MD.MF2, "pigiron_block", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.S                      , ST.make(MD.MF2, "MF_Com_sulfur", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Niter                  , ST.make(MD.MF2, "MF_Com_nitre", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.OREMATS.Kaolinite      , ST.make(MD.MF2, "MF_Com_kaolinite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Kaolinite              , ST.make(MD.MF2, "MF_Com_kaolinite", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.OREMATS.Borax          , ST.make(MD.MF2, "MF_Com_flux_strong", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Limestone              , ST.make(MD.MF2, "MF_Com_flux", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Meteorite              , ST.make(MD.FM, "MeteoriteIngot", 1, 0));

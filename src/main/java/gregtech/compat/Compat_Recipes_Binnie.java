@@ -129,7 +129,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Lapis      .get(1), NF, FL.Honey.make(20), OP.gem.mat(MT.Lapis, 9));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Sodalite   .get(1), NF, FL.Honey.make(20), OP.gem.mat(MT.Sodalite, 9));
 			
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {1250,1250,1250,1250,1250,1250} , IL.BINNIE_Comb_Emerald    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Maxixe, 1), OP.gemChipped.mat(MT.Aquamarine, 1), OP.gemChipped.mat(MT.Morganite, 1), OP.gemChipped.mat(MT.Heliodor, 1), OP.gemChipped.mat(MT.Goshenite, 1), OP.gemChipped.mat(MT.Bixbite, 1));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 1250,1250,1250,1250,1250,1250}, IL.BINNIE_Comb_Emerald    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Maxixe, 1), OP.gemChipped.mat(MT.Aquamarine, 1), OP.gemChipped.mat(MT.Morganite, 1), OP.gemChipped.mat(MT.Heliodor, 1), OP.gemChipped.mat(MT.Goshenite, 1), OP.gemChipped.mat(MT.Bixbite, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Ruby       .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Ruby, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 1500, 1500, 1500, 1500, 1500} , IL.BINNIE_Comb_Sapphire   .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.BlueSapphire, 1), OP.gemChipped.mat(MT.GreenSapphire, 1), OP.gemChipped.mat(MT.YellowSapphire, 1), OP.gemChipped.mat(MT.OrangeSapphire, 1), OP.gemChipped.mat(MT.PurpleSapphire, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Olivine    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Olivine, 1));
@@ -139,7 +139,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Blaze      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Blaze, U9*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Shimmering .get(1), NF, FL.Honey.make(20), OM.dust(MT.EnderPearl, U2));
 			
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 3000, 3000, 3000, 3000, 3000} , IL.BINNIE_Comb_Clay       .get(1), NF, FL.Honey.make(20), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1), IL.Clay_Ball_Yellow.get(1), IL.Clay_Ball_Blue.get(1));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 2500,2500,2500,2500,2500,2500}, IL.BINNIE_Comb_Clay       .get(1), NF, FL.Honey.make(20), ST.make(Items.clay_ball, 1, 0), IL.Clay_Ball_Brown.get(1), IL.Clay_Ball_Red.get(1), IL.Clay_Ball_Yellow.get(1), IL.Clay_Ball_Blue.get(1), IL.Clay_Ball_White.get(1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Fossil     .get(1), NF, FL.Honey.make(20), OM.dust(MT.Coal, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Brimstone  .get(1), NF, MT.H2SO4.liquid(U10,F), OM.dust(MT.S, U*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500,  7500}                  , IL.BINNIE_Comb_Unstable   .get(1), NF, MT.HNO3 .liquid(U10,F), OM.dust(MT.KNO3), OM.dust(MT.NaNO3));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,6 +42,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregtech.blocks.BlockDiggable;
 import gregtech.tileentity.plants.MultiTileEntityResinHoleRubber;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -319,7 +320,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case 100:
 			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
 				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
-				if (tBlock == Blocks.clay || (tBlock == BlocksGT.Diggables && WD.meta(aWorld, aX+i, aY+j, aZ+k) % 2 == 1)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == Blocks.clay || (tBlock == BlocksGT.Diggables && BlockDiggable.IS_CLAY[WD.meta(aWorld, aX+i, aY+j, aZ+k)])) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 			}
 			return null;
 		case 101:
