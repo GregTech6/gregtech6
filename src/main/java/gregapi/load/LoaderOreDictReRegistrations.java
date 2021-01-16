@@ -1399,7 +1399,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite ), new OreDictItemData(MT.Dolomite , U, MT.Bone        , U9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite ), new OreDictItemData(MT.Eclogite , U, MT.TiO2        , U72));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3    ), new OreDictItemData(MT.CaCO3    , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Soapstone), new OreDictItemData(MT.Soapstone, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Talc     ), new OreDictItemData(MT.Talc     , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk    ), new OreDictItemData(MT.Chalk    , U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Lignite  ), new OreDictItemData(MT.Lignite  , U));
 	}

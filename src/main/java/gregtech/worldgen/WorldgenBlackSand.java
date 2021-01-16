@@ -54,12 +54,14 @@ public class WorldgenBlackSand extends WorldgenObject {
 		
 		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12, aMeta = aRandom.nextInt(3);
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
-			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 64, tZ+j);
+			Block tBlock = NB, tLastBlock = WD.block(aWorld, tX+i, tUpperBound+1, tZ+j);
 			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {
-				tBlock = aWorld.getBlock(tX+i, tY, tZ+j);
-				if (tBlock == BlocksGT.Sands && 0 == aWorld.getBlockMetadata(tX+i, tY, tZ+j)) {tGenerated++; continue;}
+				tBlock = WD.block(aWorld, tX+i, tY, tZ+j);
+				byte tMeta = WD.meta(aWorld, tX+i, tY, tZ+j);
+				if (tBlock == BlocksGT.Sands && tMeta == aMeta) {tGenerated++; continue;}
 				if (!tBlock.isOpaqueCube()) {if (tGenerated > 0) break; continue;}
-				if (tBlock == Blocks.dirt || tBlock == Blocks.gravel || tBlock == Blocks.sand || tBlock == Blocks.clay || tBlock == BlocksGT.oreSmallGravel || tBlock == BlocksGT.oreGravel || tBlock == BlocksGT.oreSmallSand || tBlock == BlocksGT.oreSand || tBlock == BlocksGT.oreSmallRedSand || tBlock == BlocksGT.oreRedSand) {
+				if ((tBlock == Blocks.dirt && tMeta < 2) || tBlock == Blocks.gravel || tBlock == Blocks.sand || tBlock == Blocks.clay || tBlock == BlocksGT.oreSmallGravel || tBlock == BlocksGT.oreGravel || tBlock == BlocksGT.oreSmallSand || tBlock == BlocksGT.oreSand || tBlock == BlocksGT.oreSmallRedSand || tBlock == BlocksGT.oreRedSand) {
+					// Don't take away the Dirt Block below Trees, Bushes and other Plants.
 					if (tGenerated <= 0 && (tLastBlock.getMaterial() == Material.wood || tLastBlock.getMaterial() == Material.gourd)) continue;
 				} else {
 					if (tGenerated > 0) {

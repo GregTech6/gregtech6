@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -166,7 +166,7 @@ public class Loader_Ores implements Runnable {
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "igneousStone", i, i+8, "igneousCobblestone", i, "ub.igneous."+i, tPrefix[i], tDrops[i]);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Gneiss, MT.Eclogite, MT.Marble, MT.Quartzite, MT.Blueschist, MT.Greenschist, MT.Soapstone, MT.Migmatite};
+		tDrops  = new OreDictMaterial[] {MT.Gneiss, MT.Eclogite, MT.Marble, MT.Quartzite, MT.Blueschist, MT.Greenschist, MT.Talc, MT.Migmatite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "metamorphicStone", i, i+8, "metamorphicCobblestone", i, "ub.metamorphic."+i, tPrefix[i], tDrops[i]);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreShale, OP.oreSiltstone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};

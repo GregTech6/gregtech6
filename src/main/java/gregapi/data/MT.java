@@ -1046,8 +1046,7 @@ public class MT {
 	Chalk                   = oredustelec   ( 9112, "Chalk"                 , SET_FINE              , 250, 250, 250, 255, FURNACE, MORTAR).setSmelting(CaCO3, 2*U3)                                                                                                 .setMcfg( 0, CaCO3          , 1*U)                                                                                                                          ,
 	Dolomite                = oredustcent   ( 9163, "Dolomite"              , SET_FLINT             , 225, 205, 205, 255, FURNACE, MORTAR).setSmelting(CaCO3, U2)                                                                                                   .setMcfg( 0, CaCO3          , 1*U, MgCO3            , 1*U)                                                                                                  , // CaMg(CO3)2
 	Asbestos                = oredustelec   ( 9103, "Asbestos"              , SET_LAPIS             , 230, 230, 230, 255, PLATES, "Chrysotile")                                                                                                                     .uumMcfg( 0, Mg             , 3*U, SiO2             , 6*U, H2O              , 6*U, O                , 3*U)                                                  , // Mg3Si2O5(OH)4
-	Talc                    = oredustelec   ( 9168, "Talc"                  , SET_DULL              ,  90, 180,  90, 255)                                                                                                                                           .uumMcfg( 0, Mg             , 3*U, SiO2             ,12*U, H2O              , 3*U, O                , 3*U)                                                  , // H2Mg3(SiO3)4
-	Soapstone               = oredustelec   ( 9169, "Soapstone"             , SET_DULL              ,  95, 145,  95, 255)                                                                                                                                           .uumMcfg( 0, Mg             , 3*U, SiO2             ,12*U, H2O              , 3*U, O                , 3*U)                                                  , // H2Mg3(SiO3)4
+	Talc                    = oredustelec   ( 9169, "Talc"                  , SET_DULL              ,  95, 145,  95, 255, "Soapstone")                                                                                                                              .uumMcfg( 0, Mg             , 3*U, SiO2             ,12*U, H2O              , 3*U, O                , 3*U)                                                  , // H2Mg3(SiO3)4
 	Pyrite                  = oredustdcmp   ( 9125, "Pyrite"                , SET_SHINY             , 255, 230,  80, 255, G_GEM_ORES, BLACKLISTED_SMELTER, MORTAR, MAGNETIC_PASSIVE)                                                                                .uumMcfg( 0, Fe             , 1*U, S                , 2*U)                                                                                                  .qual(0),
 	PotassiumFeldspar       = oredustelec   ( 9140, "Potassium Feldspar"    , SET_FINE              , 120,  40,  40, 255)                                                                                                                                           .uumMcfg( 0, K              , 2*U, Al2O3            , 5*U, SiO2             ,18*U, O                , 1*U)                                                  ,
 	Biotite                 = oredustelec   ( 9141, "Biotite"               , SET_METALLIC          ,  20,  30,  20, 255)                                                                                                                                           .setMcfg( 0, K              , 2*U, Mg               , 6*U, Al2O3            ,15*U, F                , 4*U, SiO2             ,18*U)                          , // releases Argon when heated.
@@ -1718,7 +1717,7 @@ public class MT {
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
-	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3,Fluorite = CaF2;
+	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3, Fluorite = CaF2, Soapstone = Talc;
 	
 	/** Technical Materials, which are only there for Recipes and such. */
 	public static class TECH {
@@ -1738,6 +1737,7 @@ public class MT {
 			OreDictMaterial.MATERIAL_ARRAY[9151] = MT.OREMATS.Glauconite;
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
 			OreDictMaterial.MATERIAL_ARRAY[9121] = MT.MgCO3;
+			OreDictMaterial.MATERIAL_ARRAY[9168] = MT.Talc;
 			
 			Ad                      .visDefault(Adamantine);
 			
@@ -2640,8 +2640,8 @@ public class MT {
 			OREMATS.Mica                    .addOreByProducts(OREMATS.Vermiculite       , Asbestos                  , Biotite               , OREMATS.Perlite       );
 			OREMATS.Vermiculite             .addOreByProducts(OREMATS.Mica              , Asbestos                  , Biotite               , OREMATS.Diatomite     );
 			Biotite                         .addOreByProducts(OREMATS.Mica              , OREMATS.Vermiculite       , Asbestos              , OREMATS.Perlite       );
-			Asbestos                        .addOreByProducts(OREMATS.Mica              , Biotite                   , Soapstone             , Talc                  );
-			Gypsum                          .addOreByProducts(OREMATS.Trona             , OREMATS.Mirabilite        , Asbestos              , Talc                  , S, Soapstone);
+			Asbestos                        .addOreByProducts(OREMATS.Mica              , Biotite                   , Talc                  );
+			Gypsum                          .addOreByProducts(OREMATS.Trona             , OREMATS.Mirabilite        , Asbestos              , Talc                  , S);
 			OREMATS.Mirabilite              .addOreByProducts(OREMATS.Trona             , Gypsum                    );
 			OREMATS.Trona                   .addOreByProducts(OREMATS.Mirabilite        , Gypsum                    );
 			

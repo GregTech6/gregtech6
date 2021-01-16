@@ -876,7 +876,7 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.UB, tName, 1,  3));
 				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.UB, tName, 1,  4));
 				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.UB, tName, 1,  5));
-				OM.reg(OP.stone, MT.Soapstone                   , ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.Talc                        , ST.make(MD.UB, tName, 1,  6));
 				OM.reg(OP.stone, MT.Migmatite                   , ST.make(MD.UB, tName, 1,  7));
 				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.UB, tName, 1,  8));
 				OM.reg(OP.stone, MT.Eclogite                    , ST.make(MD.UB, tName, 1,  9));
@@ -884,7 +884,7 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.UB, tName, 1, 11));
 				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.UB, tName, 1, 12));
 				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.UB, tName, 1, 13));
-				OM.reg(OP.stone, MT.Soapstone                   , ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.Talc                        , ST.make(MD.UB, tName, 1, 14));
 				OM.reg(OP.stone, MT.Migmatite                   , ST.make(MD.UB, tName, 1, 15));
 			}
 		}

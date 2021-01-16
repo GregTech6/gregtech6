@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,13 +87,10 @@ public class Loader_MachineRecipes implements Runnable {
 
 
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Talc, 1)     , FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
-		RA.addBrewingRecipe(OM.get(OP.dust, MT.Soapstone, 1), FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Redstone, 1) , FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Talc, 1)     , FluidRegistry.getFluid("creosote"), FluidRegistry.getFluid("lubricant"), F);
-		RA.addBrewingRecipe(OM.get(OP.dust, MT.Soapstone, 1), FluidRegistry.getFluid("creosote"), FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Redstone, 1) , FluidRegistry.getFluid("creosote"), FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Talc, 1)     , FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
-		RA.addBrewingRecipe(OM.get(OP.dust, MT.Soapstone, 1), FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Redstone, 1) , FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
 
 

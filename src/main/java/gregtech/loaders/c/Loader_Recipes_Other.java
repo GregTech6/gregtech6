@@ -213,7 +213,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.ConstructionFoam), FL.mul(tWater, 1,10, T), FL.CFoam.make(100), ZL_IS);
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) {
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Soapstone, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert, MT.Asbestos}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Talc, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert, MT.Asbestos}) {
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tMat        , U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tMat        , U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
@@ -339,7 +339,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Drying           .addRecipe1(T, 16,   16, ST.tag(0)           , FL.Concrete.make(L), FL.DistW.make(8), ST.make(BlocksGT.Concrete              , 1, DYE_INDEX_LightGray));
 		
 		// Asphalt
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Soapstone, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert})
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Talc, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Gray));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Diorite, MT.Marble, MT.Chalk, MT.CaCO3, MT.Livingrock, MT.Holystone})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_White));
