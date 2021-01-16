@@ -324,7 +324,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("oreGreenMiddleGem"       , "oreGreenMiddle");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("oreCrimsonMiddleGem"     , "oreCrimsonMiddle");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("oreEndium"               , "oreEndEndium");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("oreBasalticMineralSand"  , "oreSandBasalticMineralSand");
 		
 		
 		
