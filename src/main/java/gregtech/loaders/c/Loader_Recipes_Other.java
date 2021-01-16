@@ -615,21 +615,21 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), FL.array(FL.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.NikolineAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), FL.array(FL.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U , T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
 			
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Al2O3          ,  U9), FL.array(       tFluid    , MT.Al2O3         .liquid(29*U9, T)), NF, bouleGt.mat(MT.Sapphire        , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128, 156000, OM.dust(MT.Al2O3               ), FL.array(FL.mul(tFluid, 9), MT.Al2O3         .liquid(29*U , T)), NF, bouleGt.mat(MT.Sapphire        , 9));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Al2O3          ,  U9), FL.array(       tFluid    , MT.Al2O3         .liquid(29*U9, T)), NF, bouleGt.mat(MT.Sapphire        , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256, 156000, OM.dust(MT.Al2O3               ), FL.array(FL.mul(tFluid, 9), MT.Al2O3         .liquid(29*U , T)), NF, bouleGt.mat(MT.Sapphire        , 9));
 			
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Mg             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.GreenSapphire   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Ti             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.YellowSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Cu             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.OrangeSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Fe             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.BlueSapphire    , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.V              ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.PurpleSapphire  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  18000, OM.dust(MT.Cr             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.Ruby            , 1));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.Mg             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.GreenSapphire   , 3));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.Ti             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.YellowSapphire  , 3));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.Cu             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.OrangeSapphire  , 3));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.Fe             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.BlueSapphire    , 3));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.V              ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.PurpleSapphire  , 3));
-			RM.CrystallisationCrucible.addRecipe1(T,128,  52000, OM.dust(MT.Cr             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.Ruby            , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Mg             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.GreenSapphire   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Ti             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.YellowSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Cu             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.OrangeSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Fe             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.BlueSapphire    , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.V              ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.PurpleSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Cr             ,2*U3), FL.array(       tFluid    , MT.Al2O3         .liquid(10*U3, T)), NF, bouleGt.mat(MT.Ruby            , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Mg             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.GreenSapphire   , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Ti             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.YellowSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Cu             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.OrangeSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Fe             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.BlueSapphire    , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.V              ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.PurpleSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Cr             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.Ruby            , 3));
 		}
 		
 		for (ItemStack tTNT : ST.array(ST.make(Blocks.tnt, 8, W), IL.IC2_ITNT.get(4), IL.Dynamite.get(2), IL.Dynamite_Strong.get(1))) if (ST.valid(tTNT)) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -46,7 +47,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aInput, OreDictItemData aData) {
-		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.contains(TD.Prefix.DUST_ORE) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) return F;
+		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.contains(TD.Prefix.DUST_ORE) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER) || IL.PFAA_Sands.equal(aInput, T, T)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		

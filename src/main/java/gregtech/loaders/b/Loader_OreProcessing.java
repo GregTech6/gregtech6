@@ -293,11 +293,11 @@ public class Loader_OreProcessing implements Runnable {
 				registerStandardOreRecipes(aEvent.mPrefix, aEvent.mMaterial, aEvent.mStack, aEvent.mMaterial.mOreProcessingMultiplier * (tIsRich?2:1));
 			}
 		}
-
+		
 		private ArrayList<OreDictMaterial> mAlreadyListedOres = new ArrayListNoNulls<>(1000);
-
+		
 		private boolean registerStandardOreRecipes(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aOreStack, int aMultiplier) {
-			if (aOreStack == null || aMaterial == null) return F;
+			if (aOreStack == null || aMaterial == null || IL.PFAA_Sands.equal(aOreStack, T, T)) return F;
 			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IItemGT)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta_(aOreStack), 2);
 			aMaterial = aMaterial.mTargetCrushing.mMaterial;
 			if (aMaterial == null) return F;
