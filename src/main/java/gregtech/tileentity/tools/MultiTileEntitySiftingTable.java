@@ -92,7 +92,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_SIFTER_USAGE));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
-
+	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
@@ -119,6 +119,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedInput =- 5;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, T, T)) {mDisplayedInput = -5;} else
+				if (IL.PFAA_Sands                   .equal(tStack, T, T)) {mDisplayedInput =-11;} else
 				if (IL.NePl_SoulSoil                .equal(tStack, F, T)) {mDisplayedInput = -9;} else
 				if (IL.NeLi_SoulSoil                .equal(tStack, F, T)) {mDisplayedInput = -9;} else
 				if (IL.NeLi_Gravel                  .equal(tStack, F, T)) {mDisplayedInput =-11;} else
@@ -186,6 +187,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
+				if (IL.PFAA_Sands                   .equal(tStack, T, T)) {mDisplayedOutput =-11;} else
 				if (IL.NePl_SoulSoil                .equal(tStack, F, T)) {mDisplayedOutput = -9;} else
 				if (IL.NeLi_SoulSoil                .equal(tStack, F, T)) {mDisplayedOutput = -9;} else
 				if (IL.NeLi_Gravel                  .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
@@ -234,17 +236,17 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				}
 				break;
 			}
-
+			
 			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
 				mState &= ~B[2];
 				for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
 					if (getCoords().equals(tEntry.getValue()) && tEntry.getKey().getDistanceSq(xCoord+0.5, yCoord+0.5, zCoord+0.5) <= 64) {
 						mState |= B[2];
-
+						
 						boolean temp = T;
 						for (int i = 1; i < 13; i++) if (slotHas(i)) {temp = F; break;}
 						ItemStack aStack = slot(0);
-
+						
 						if (temp && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
 							mClickCount = 0;
 							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
@@ -270,9 +272,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 			}
 		}
 	}
-
+	
 	@Override public boolean attachCoversFirst(byte aSide) {return F;}
-
+	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
@@ -299,12 +301,12 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		}
 		return T;
 	}
-
+	
 	@Override
 	public boolean onTickCheck(long aTimer) {
 		return super.onTickCheck(aTimer) || mState != oState || mDisplayedOutput != oDisplayedOutput || mDisplayedInput != oDisplayedInput;
 	}
-
+	
 	@Override
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
@@ -312,7 +314,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		oDisplayedInput  = mDisplayedInput;
 		oDisplayedOutput = mDisplayedOutput;
 	}
-
+	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll)                             return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
@@ -320,7 +322,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		if (mDisplayedOutput != oDisplayedOutput) return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
 		return getClientDataPacketByte(aSendAll, mState);
 	}
-
+	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mState = aData[0];
@@ -329,24 +331,24 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		if (aData.length > 7) mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[5]), UT.Code.unsignB(aData[6]), UT.Code.unsignB(aData[7])});
 		return T;
 	}
-
+	
 	@Override
 	public void setVisualData(byte aData) {
 		mState = aData;
 	}
-
+	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
-
+		
 		mTextureLegs   = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
 		mTextureGrid   = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
 		mTextureBorder = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
 		mTexturePlate  = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
-
+		
 		mTextureInput  = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
 		mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
-
+		
 		if (mDisplayedInput != 0) {
 			if (UT.Code.exists(mDisplayedInput, OreDictMaterial.MATERIAL_ARRAY)) {
 				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedInput];
@@ -387,10 +389,10 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				}
 			}
 		}
-
+		
 		return 9;
 	}
-
+	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
@@ -406,7 +408,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		}
 		return F;
 	}
-
+	
 	public static IIconContainer
 	sTextureLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/legs"),
 	sTextureGrid    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/grid"),
@@ -416,9 +418,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	sOverlayGrid    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/grid"),
 	sOverlayBorder  = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/border"),
 	sOverlayPlate   = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/plate");
-
+	
 	private ITexture mTextureLegs, mTextureGrid, mTextureBorder, mTexturePlate, mTextureInput, mTextureOutput;
-
+	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (aRenderPass == 0) return SIDES_TOP[aSide]?BlockTextureMulti.get(mTextureLegs, BI.nei()):mTextureLegs;

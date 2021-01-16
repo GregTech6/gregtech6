@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 import static gregapi.util.CR.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
@@ -636,33 +635,33 @@ public class GT6_Main extends Abstract_Mod {
 			ORD.println("*");
 			ORD.println("TagData:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
+			
 			for (TagData tData : TagData.TAGS) ORD.println(tData.mName);
-
+			
 			ORD.println("*");
 			ORD.println("ItemRegistry:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
-			Object[] tList = Item.itemRegistry.getKeys().toArray();
-
-			Arrays.sort(tList);
-			for (Object tItemName : tList) ORD.println(tItemName);
-
+			
+			List<String> tList = UT.Code.getWithoutNulls((String[])Item.itemRegistry.getKeys().toArray());
+			
+			Collections.sort(tList);
+			for (String tItemName : tList) ORD.println(tItemName);
+			
 			ORD.println("*");
 			ORD.println("OreDictionary:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
-			tList = OreDictionary.getOreNames();
-			Arrays.sort(tList);
-			for (Object tOreName : tList) {
+			
+			tList = UT.Code.getWithoutNulls(OreDictionary.getOreNames());
+			Collections.sort(tList);
+			for (String tOreName : tList) {
 				int tAmount = OreDictionary.getOres(tOreName.toString()).size();
 				if (tAmount > 0) ORD.println((tAmount<10?" ":"") + tAmount + "x " + tOreName);
 			}
-
+			
 			ORD.println("*");
 			ORD.println("Materials:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
+			
 			for (int i = 0; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) {
 				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[i];
 				if (tMaterial == null) {
@@ -677,31 +676,31 @@ public class GT6_Main extends Abstract_Mod {
 					}
 				}
 			}
-
+			
 			ORD.println("*");
 			ORD.println("Fluids:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
-			tList = FluidRegistry.getRegisteredFluids().keySet().toArray(ZL_STRING);
-			Arrays.sort(tList);
-			for (Object tFluidName : tList) ORD.println(tFluidName);
-
+			
+			tList = UT.Code.getWithoutNulls(FluidRegistry.getRegisteredFluids().keySet().toArray(ZL_STRING));
+			Collections.sort(tList);
+			for (String tFluidName : tList) ORD.println(tFluidName);
+			
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			ORD.println("Biomes:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
+			
 			for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
 				if (BiomeGenBase.getBiomeGenArray()[i] != null) ORD.println(BiomeGenBase.getBiomeGenArray()[i].biomeID + " = " + BiomeGenBase.getBiomeGenArray()[i].biomeName);
 			}
-
+			
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			ORD.println("Enchantments:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
-
+			
 			for (int i = 0; i < Enchantment.enchantmentsList.length; i++) {
 				if (Enchantment.enchantmentsList[i] != null) ORD.println(i + " = " + Enchantment.enchantmentsList[i].getName());
 			}
-
+			
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			ORD.println("END GregTech-Debug");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");

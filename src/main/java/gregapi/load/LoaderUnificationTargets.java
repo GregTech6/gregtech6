@@ -36,6 +36,12 @@ public class LoaderUnificationTargets implements Runnable {
 	@Override
 	public void run() {
 		// Because most Mods (and vanilla MC) are not OreDict Compatible and need to be set as Target manually.
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Oilshale               , ST.make(MD.PFAA, "crudeLump", 1, 31));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Coal                   , ST.make(MD.PFAA, "crudeLump", 1, 32));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Lignite                , ST.make(MD.PFAA, "crudeLump", 1, 33));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Anthracite             , ST.make(MD.PFAA, "crudeLump", 1, 34));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CoalCoke               , ST.make(MD.PFAA, "crudeLump", 1, 35));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Peat                   , ST.make(MD.PFAA, "earthyClump", 1, 36));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Bone                   , ST.make(MD.Fossil, "fossil", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Amber                  , ST.make(MD.Fossil, "amberOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Amber                  , ST.make(MD.Fossil, "amber", 1, 0));

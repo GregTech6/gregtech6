@@ -828,6 +828,9 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		
+		IL.PFAA_Sands                           .set(ST.make(MD.PFAA, "weakOreSand"                         , 1, 0));
+		
+		
 		IL.RH_Sand_Magnetite                    .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 0), new OreDictItemData(MT.OREMATS.GraniticMineralSand, U));
 		IL.RH_Sand_Olivine                      .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 1), new OreDictItemData(MT.Olivine, U));
 		IL.RH_Sand_Coral                        .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 2), new OreDictItemData(MT.Sand, U));

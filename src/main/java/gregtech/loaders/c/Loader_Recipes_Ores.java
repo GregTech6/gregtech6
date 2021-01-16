@@ -234,8 +234,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
 		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
 		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite          , 1), dust.mat(MT.V2O5, 1));
-		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Gabbro, 1), nugget.mat(MT.Au, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), rockGt.mat(MT.Gabbro, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
 		RM.Centrifuge       .addRecipe1(T, 16,  256, new long[] {9000, 1000}         , ST.make(BlocksGT.Sands, 1, 1), dust.mat(MT.OREMATS.BasalticMineralSand, 1), dust.mat(MT.V2O5, 1));
 		RM.Sifting          .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}     , ST.make(BlocksGT.Sands, 1, 2), dust.mat(MT.OREMATS.GraniticMineralSand, 1), rockGt.mat(MT.GraniteBlack, 1), nugget.mat(MT.Au, 1));
 		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}, ST.make(BlocksGT.Sands, 1, 2), dust.mat(MT.OREMATS.GraniticMineralSand, 1), rockGt.mat(MT.GraniteBlack, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));

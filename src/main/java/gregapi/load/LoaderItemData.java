@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -811,7 +811,24 @@ public class LoaderItemData implements Runnable {
 		
 		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));
 		
-		OM.reg(OP.stone, MT.GraniteBlack                        , ST.make(MD.PFAA, "strongStone", 1,  3)); // actually Gray
+		if (MD.PFAA.mLoaded) {
+			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 45));
+			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 47));
+			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 48));
+			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 49));
+			
+			OM.reg(OP.stone, MT.GraniteBlack, ST.make(MD.PFAA, "strongStone", 1,  3)); // actually Gray
+			
+			OM.data(MD.PFAA, "earthyClump", 1,  37, MT.OREMATS.YellowLimonite, U);
+			OM.data(MD.PFAA, "earthyClump", 1,  45, MT.ClayBrown             , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  46, MT.OREMATS.Bauxite       , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  47, MT.Bentonite             , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  48, MT.Palygorskite          , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  49, MT.Kaolinite             , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  50, MT.OREMATS.BrownLimonite , U);
+			OM.data(MD.PFAA, "earthyClump", 1,  51, MT.OREMATS.YellowLimonite, U);
+			OM.data(MD.PFAA, "earthyClump", 1,  52, MT.OREMATS.Vermiculite   , U);
+		}
 		
 		if (MD.UB.mLoaded) {
 			for (String tName : new String [] {"sedimentaryStone"}) {
