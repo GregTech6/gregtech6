@@ -625,10 +625,11 @@ public class GT6_Main extends Abstract_Mod {
 			for (ItemStackContainer tStack : OP.ore.mRegisteredItems) CR.remove(tStack.toStack(), tPyrotheum);
 		}
 	}
-
+	
 	public boolean mDisableIC2Ores = T;
-
+	
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onModServerStopping2(FMLServerStoppingEvent aEvent) {
 		try {
 		if (D1 || ORD != System.out) {
@@ -642,10 +643,10 @@ public class GT6_Main extends Abstract_Mod {
 			ORD.println("ItemRegistry:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			
-			List<String> tList = UT.Code.getWithoutNulls((String[])Item.itemRegistry.getKeys().toArray());
+			List tList = UT.Code.getWithoutNulls(Item.itemRegistry.getKeys().toArray(ZL_STRING));
 			
 			Collections.sort(tList);
-			for (String tItemName : tList) ORD.println(tItemName);
+			for (Object tItemName : tList) ORD.println(tItemName);
 			
 			ORD.println("*");
 			ORD.println("OreDictionary:");
@@ -653,7 +654,7 @@ public class GT6_Main extends Abstract_Mod {
 			
 			tList = UT.Code.getWithoutNulls(OreDictionary.getOreNames());
 			Collections.sort(tList);
-			for (String tOreName : tList) {
+			for (Object tOreName : tList) {
 				int tAmount = OreDictionary.getOres(tOreName.toString()).size();
 				if (tAmount > 0) ORD.println((tAmount<10?" ":"") + tAmount + "x " + tOreName);
 			}
@@ -683,7 +684,7 @@ public class GT6_Main extends Abstract_Mod {
 			
 			tList = UT.Code.getWithoutNulls(FluidRegistry.getRegisteredFluids().keySet().toArray(ZL_STRING));
 			Collections.sort(tList);
-			for (String tFluidName : tList) ORD.println(tFluidName);
+			for (Object tFluidName : tList) ORD.println(tFluidName);
 			
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			ORD.println("Biomes:");
