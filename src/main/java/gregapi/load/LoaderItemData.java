@@ -817,8 +817,6 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 48));
 			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 49));
 			
-			OM.reg(OP.stone, MT.GraniteBlack, ST.make(MD.PFAA, "strongStone", 1,  3)); // actually Gray
-			
 			OM.data(MD.PFAA, "earthyClump", 1,  37, MT.OREMATS.YellowLimonite, U);
 			OM.data(MD.PFAA, "earthyClump", 1,  45, MT.ClayBrown             , U);
 			OM.data(MD.PFAA, "earthyClump", 1,  46, MT.OREMATS.Bauxite       , U);
@@ -828,6 +826,40 @@ public class LoaderItemData implements Runnable {
 			OM.data(MD.PFAA, "earthyClump", 1,  50, MT.OREMATS.BrownLimonite , U);
 			OM.data(MD.PFAA, "earthyClump", 1,  51, MT.OREMATS.YellowLimonite, U);
 			OM.data(MD.PFAA, "earthyClump", 1,  52, MT.OREMATS.Vermiculite   , U);
+			
+			for (String tName : new String [] {"weakStone", "weakRubble"}) {
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.PFAA, tName, 1,  4));
+			}
+			for (String tName : new String [] {"mediumStone", "mediumCobble"}) {
+				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  4));
+			}
+			for (String tName : new String [] {"strongStone", "strongCobble"}) {
+				OM.reg(OP.stone, MT.Andesite                    , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.PFAA, tName, 1,  2));
+				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.PFAA, tName, 1,  3)); // actually Gray
+				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.PFAA, tName, 1,  4)); // actually some sort of pink/gray?
+				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.PFAA, tName, 1,  5));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  6));
+				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.PFAA, tName, 1,  7));
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8));
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  9));
+			}
+			for (String tName : new String [] {"veryStrongStone", "veryStrongCobble"}) {
+				OM.reg(OP.stone, MT.Diorite                     , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.PFAA, tName, 1,  4));
+			}
 		}
 		
 		if (MD.UB.mLoaded) {
