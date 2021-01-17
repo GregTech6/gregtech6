@@ -388,6 +388,39 @@ public class Loader_Worldgen implements Runnable {
 		}
 		
 		
+		if (MD.PFAA.mLoaded) {
+		Block tStone = ST.block(MD.PFAA, "weakStone"), tCobble = ST.block(MD.PFAA, "weakRubble");
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.Shale       ));
+		tStone = ST.block(MD.PFAA, "mediumStone"); tCobble = ST.block(MD.PFAA, "mediumCobble");
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.Limestone   ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.Slate       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.Stone       ));
+		tStone = ST.block(MD.PFAA, "strongStone"); tCobble = ST.block(MD.PFAA, "strongCobble");
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.Andesite    ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Basalt      ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Gneiss      ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.GraniteBlack));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.Greenschist ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  5, tCobble,  5, MT.Marble      ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  6, tCobble,  6, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  7, tCobble,  7, MT.Rhyolite    ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  8, tCobble,  8, MT.Sand        ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  9, tCobble,  9, MT.Sand        ));
+		tStone = ST.block(MD.PFAA, "veryStrongStone"); tCobble = ST.block(MD.PFAA, "veryStrongCobble");
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.Diorite     ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Gabbro      ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.Stone       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.Quartzite   ));
+		}
+		
+		
 		if (MD.UB.mLoaded) {
 		Block tStone = ST.block(MD.UB, "igneousStone"), tCobble = ST.block(MD.UB, "igneousCobblestone");
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, MT.Granite     ));
