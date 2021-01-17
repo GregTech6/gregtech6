@@ -1733,7 +1733,6 @@ public class MT {
 		RefinedIron = invalid("RefinedIron").stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
 		protected static void init() {
-			OreDictMaterial.MATERIAL_ARRAY[9109] = MT.OREMATS.Cassiterite;
 			OreDictMaterial.MATERIAL_ARRAY[9151] = MT.OREMATS.Glauconite;
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
 			OreDictMaterial.MATERIAL_ARRAY[9121] = MT.MgCO3;
@@ -2616,7 +2615,7 @@ public class MT {
 			Se                              .addOreByProducts(Pyrite                    , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
 			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                    , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
 			OREMATS.Sperrylite              .addOreByProducts(Sb                        , Cu                        , Fe2O3                 , Rh                    , Pt                    );
-			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                     , S                         , Co                    , OREMATS.Sperrylite    , Gypsum        );
+			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                     , S                         , Co                    , OREMATS.Sperrylite    , Gypsum                );
 			OREMATS.Sphalerite              .addOreByProducts(Cd                        , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
 			OREMATS.Tetrahedrite            .addOreByProducts(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     );
 			Pyrite                          .addOreByProducts(S                         , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
@@ -2628,8 +2627,10 @@ public class MT {
 			TiO2                            .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Ti                              .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.GraniticMineralSand, MnO2                 , ClayRed               );
-			OREMATS.Galena                  .addOreByProducts(OREMATS.Sphalerite        , Ag                        , Pb                    , Se                    , FluoriteRed, CaCO3);
-			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , FluoriteOrange            , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
+			OREMATS.Galena                  .addOreByProducts(OREMATS.Sphalerite        , Ag                        , Pb                    , Se                    , FluoriteRed           , CaCO3);
+			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
+			OREMATS.Cobaltite               .addOreByProducts(Co                        , OREMATS.Realgar           , FluoriteOrange        );
+			OREMATS.Realgar                 .addOreByProducts(OREMATS.Arsenopyrite      , OREMATS.Cobaltite         );
 			Cu                              .addOreByProducts(Co                        , Au                        , Ni                    );
 			Ni                              .addOreByProducts(Co                        , Pt                        , Fe2O3                 );
 			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
@@ -2777,6 +2778,7 @@ public class MT {
 			Sodalite                        .addOreByProducts(Lazurite                  , Lapis                     );
 			OREMATS.Spodumene               .addOreByProducts(Al2O3                     , LiCl                      );
 			Co_60                           .addOreByProducts(OREMATS.Cobaltite         , Co                        );
+			Co                              .addOreByProducts(OREMATS.Cobaltite         );
 			Zr                              .addOreByProducts(TiO2                      , Hf                        );
 			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
 			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , Ta                    , Nb                    , Pb                    );
@@ -2809,8 +2811,6 @@ public class MT {
 			Niter                           .addOreByProducts(KNO3                      , NaNO3                     );
 			Hf                              .addOreByProducts(Zircon                    );
 			Mg                              .addOreByProducts(Olivine                   );
-			OREMATS.Cobaltite               .addOreByProducts(Co                        );
-			Co                              .addOreByProducts(OREMATS.Cobaltite         );
 			Ardite                          .addOreByProducts(Co                        );
 			Obsidian                        .addOreByProducts(Olivine                   );
 			Redrock                         .addOreByProducts(ClayBrown                 );
@@ -3228,14 +3228,13 @@ public class MT {
 		
 		public static final OreDictMaterial
 		Cassiterite             = oredustelec( 9108, "Cassiterite"               , SET_METALLIC  , 220, 220, 220, 255, MORTAR, FURNACE, "CassiteriteSand"                                             ).setSmelting(Sn   , 3*U4).uumMcfg( 1, Sn             , 1*U, O                , 2*U)                                                                                                .heat(3 * Sn.mMeltingPoint / 2), CassiteriteSand = Cassiterite,
-//      CassiteriteSand         = oredustelec( 9109, "Cassiterite Sand"          , SET_SAND      , 220, 220, 220, 255, MORTAR, FURNACE                                                                ).setSmelting(Sn   , 3*U4).uumMcfg( 1, Sn             , 1*U, O                , 2*U)                                                                                                .heat(3 * Sn.mMeltingPoint / 2),
 		Garnierite              = oredustelec( 9118, "Garnierite"                , SET_METALLIC  ,  50, 200,  70, 255, MORTAR, BLACKLISTED_SMELTER, MAGNETIC_PASSIVE, WASHING_PERSULFATE              ).setSmelting(Ni   , 3*U4).uumMcfg( 1, Ni             , 1*U, O                , 1*U)                                                                                                .qual(0),
 		Uraninite               = oredustelec( 9134, "Uraninite"                 , SET_RAD       ,  35,  35,  35, 255, BLACKLISTED_SMELTER                                                            ).setSmelting(U_238,   U3).setMcfg( 1, U_238          , 1*U, O                , 2*U)                                                                                                ,
 		Magnetite               = oredustelec( 9122, "Magnetite"                 , SET_METALLIC  ,  30,  30,  30, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .uumMcfg( 0, Fe             , 3*U, O                , 4*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		BasalticMineralSand     = oredustcent( 9003, "Basaltic Mineral Sand"     , SET_METALLIC  ,  40,  50,  40, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 1, Magnetite      , 1*U, Gabbro           , 1*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		GraniticMineralSand     = oredustcent( 9004, "Granitic Mineral Sand"     , SET_METALLIC  ,  40,  60,  60, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                      )                         .setMcfg( 1, Magnetite      , 1*U, GraniteBlack     , 1*U)                                                                                                .qual(0).heat(Fe.mMeltingPoint).aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		
-		Realgar                 = oredustelec(    0, "Realgar"                   , SET_EMERALD   , 157,  33,  35, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, CRYSTAL                      ).setSmelting(As   ,   U3).uumMcfg( 0, As             , 1*U, S                , 1*U)                                                                                                .qual(0).lens(DYE_INDEX_Red),
+		Realgar                 = oredustelec( 9109, "Realgar"                   , SET_EMERALD   , 157,  33,  35, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, CRYSTAL                      ).setSmelting(As   ,   U3).uumMcfg( 0, As             , 1*U, S                , 1*U)                                                                                                .qual(0).lens(DYE_INDEX_Red),
 		Cinnabar                = oredustcent( 9114, "Cinnabar"                  , SET_REDSTONE  , 150,   0,   0, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, CRYSTAL, PULVERIZING_CINNABAR).setSmelting(Hg   ,   U3).uumMcfg( 0, Hg             , 1*U, S                , 1*U)                                                                                                ,
 		Molybdenite             = oredustdcmp( 9123, "Molybdenite"               , SET_METALLIC  ,  25,  25,  25, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Mo   ,   U4).uumMcfg( 0, Mo             , 1*U, S                , 2*U)                                                                                                ,
 		Sphalerite              = oredustdcmp( 9130, "Sphalerite"                , SET_DULL      , 222, 222,   0, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, WASHING_PERSULFATE                    ).setSmelting(Zn   ,   U3).uumMcfg( 0, Zn             , 1*U, S                , 1*U)                                                                                                ,
