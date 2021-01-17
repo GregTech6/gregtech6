@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,6 +62,12 @@ public class Loader_Recipes_Potions implements Runnable {
 		RM.Distillery.addRecipe1(T, 16, 48, ST.make(Items.ghast_tear    , 1, W), FL.Potion_Awkward.make(750), FL.Potion_Regen_1         .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, ST.make(Items.ghast_tear    , 1, W), FL.Potion_Thick  .make(250), FL.Potion_Regen_2         .make(250), ZL_IS);
 		
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.As, 1), OP.dustSmall.mat(MT.As, 4), OP.dustTiny.mat(MT.As, 9))) if (tStack != null) {
+		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Harm_1           .make(750), ZL_IS);
+		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Mundane.make(750), FL.Potion_Harm_1           .make(750), ZL_IS);
+		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Poison_1         .make(750), ZL_IS);
+		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_Harm_2           .make(250), ZL_IS);
+		}
 		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Sugar, 1), OP.dustSmall.mat(MT.Sugar, 4), OP.dustTiny.mat(MT.Sugar, 9), gemChipped.mat(MT.Sugar, 4))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Mundane          .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Mundane.make(750), FL.Purple_Drink            .make(750), ZL_IS);

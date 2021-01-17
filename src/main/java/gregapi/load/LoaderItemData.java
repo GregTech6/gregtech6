@@ -828,36 +828,36 @@ public class LoaderItemData implements Runnable {
 			OM.data(MD.PFAA, "earthyClump", 1,  52, MT.OREMATS.Vermiculite   , U);
 			
 			for (String tName : new String [] {"weakStone", "weakRubble"}) {
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  0));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  0)); // Breccia
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1)); // Claystone
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Carbonatite
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3)); // Conglomerate
 				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.PFAA, tName, 1,  4));
 			}
-			for (String tName : new String [] {"mediumStone", "mediumCobble"}) {
+			for (String tName : new String [] {"mediumStone", "mediumCobble", "mediumStoneBrick"}) {
 				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.PFAA, tName, 1,  0));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  4));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1)); // Light Red/Pink Schist
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Serpentite
+				OM.reg(OP.stone, MT.Slate                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  4)); // Skarn
 			}
-			for (String tName : new String [] {"strongStone", "strongCobble"}) {
+			for (String tName : new String [] {"strongStone", "strongCobble", "strongStoneBrick"}) {
 				OM.reg(OP.stone, MT.Andesite                    , ST.make(MD.PFAA, tName, 1,  0));
 				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.PFAA, tName, 1,  1));
 				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.PFAA, tName, 1,  2));
 				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.PFAA, tName, 1,  3)); // actually Gray
-				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.PFAA, tName, 1,  4)); // actually some sort of pink/gray?
+				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.PFAA, tName, 1,  4));
 				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.PFAA, tName, 1,  5));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  6));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  6)); // Pegmatite
 				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.PFAA, tName, 1,  7));
-				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8));
-				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  9));
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8)); // Normal Sandstone
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  9)); // Red Sandstone
 			}
-			for (String tName : new String [] {"veryStrongStone", "veryStrongCobble"}) {
+			for (String tName : new String [] {"veryStrongStone", "veryStrongCobble", "veryStrongStoneBrick"}) {
 				OM.reg(OP.stone, MT.Diorite                     , ST.make(MD.PFAA, tName, 1,  0));
 				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.PFAA, tName, 1,  1));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Hornfels
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3)); // Peridotite
 				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.PFAA, tName, 1,  4));
 			}
 		}
