@@ -426,16 +426,15 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.bothsides(MT.Basalt, MT.Komatiite
 		, new StoneLayerOres(MT.OREMATS.Perlite         , U4 ,  0, 16)
 		);
-		StoneLayer.bothsides(MT.Basalt, MT.KCl
-		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U12, 16, 48)
-		, new StoneLayerOres(MT.OREMATS.Spodumene       , U12, 32, 64)
-		);
 		StoneLayer.topbottom(MT.Diorite, MT.Limestone
 		, new StoneLayerOres(MT.Opal                    , U64, 48, 64)
 		, new StoneLayerOres(MT.OREMATS.Diatomite       , U16, 16, 64)
 		);
 		StoneLayer.bothsides(MT.Limestone, MT.Quartzite
-		, new StoneLayerOres(MT.OREMATS.Kyanite       , U3 , 32, 72)
+		, new StoneLayerOres(MT.OREMATS.Kyanite         , U3 , 32, 72)
+		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U12, 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Spodumene       , U12, 32, 64)
+		, new StoneLayerOres(MT.OREMATS.Tantalite       , U32,  8, 56)
 		);
 		StoneLayer.bothsides(MT.Marble, MT.Quartzite
 		, new StoneLayerOres(MT.Asbestos                , U4 ,  0, 48)
@@ -854,7 +853,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.lapis"       , T, T, 20,  50,  40, 5, 16, MT.Lazurite                     , MT.Sodalite                    , MT.Lapis                       , MT.Azurite                     , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.bauxite"     , T, T, 50,  90,  80, 4, 24, MT.OREMATS.Bauxite              , MT.OREMATS.Bauxite             , MT.OREMATS.Bauxite             , MT.OREMATS.Ilmenite            , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.iodinesalt"  , T, T, 50,  60,  30, 3, 24, MT.KIO3                         , MT.NaCl                        , MT.OREMATS.Borax               , MT.OREMATS.Zeolite             , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
-		new WorldgenOresLarge("ore.large.rocksalt"    , T, T, 50,  60,  30, 3, 24, MT.KCl                          , MT.NaCl                        , MT.OREMATS.Lepidolite          , MT.OREMATS.Spodumene           , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
+		new WorldgenOresLarge("ore.large.rocksalt"    , T, T, 50,  60,  30, 3, 24, MT.KCl                          , MT.OREMATS.Tantalite           , MT.OREMATS.Lepidolite          , MT.OREMATS.Spodumene           , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.asbestos"    , T, T, 10,  40,  30, 3, 16, MT.OREMATS.Chromite             , MT.Talc                        , MT.Gypsum                      , MT.Asbestos                    , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.sapphire"    , T, T, 10,  40,  30, 3, 16, MT.BlueSapphire                 , MT.OrangeSapphire              , MT.YellowSapphire              , MT.Ruby                        , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.sapphire2"   , T, T, 10,  40,  30, 3, 16, MT.GreenSapphire                , MT.Ruby                        , MT.BlueSapphire                , MT.PurpleSapphire              , ORE_OVERWORLD, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
