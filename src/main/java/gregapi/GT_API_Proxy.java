@@ -239,6 +239,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SuppressWarnings("unchecked")
 	public void onServerTick(ServerTickEvent aEvent) {
 		if (aEvent.side.isServer()) {
+			TICK_LOCK = T;
 			
 			// Making sure it is being free'd up in order to prevent exploits or Garbage Collection mishaps.
 			LAST_BROKEN_TILEENTITY.set(null);
@@ -437,6 +438,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}
 				EntityFoodTracker.tick();
+				TICK_LOCK = F;
 			}
 		}
 	}

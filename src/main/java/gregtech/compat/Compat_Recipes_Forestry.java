@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -391,7 +391,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), ST.make(Blocks.sand, 2, W), IL.FR_Fertilizer.get(8));
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.Ash, U*8), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));
-		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.VolcanicAsh, U*4), IL.FR_Fertilizer.get(16));
+		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.VolcanicAsh, U*2), IL.FR_Fertilizer.get(16));
 		
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.SoylentGreen  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.SoylentGreen  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
@@ -420,7 +420,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), ST.make(Blocks.sand, 2, W), IL.FR_Fertilizer.get(8));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.Ash, U*8), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));
-		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.VolcanicAsh, U*4), IL.FR_Fertilizer.get(16));
+		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.VolcanicAsh, U*2), IL.FR_Fertilizer.get(16));
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)), ST.make(MD.FR, "soil", 8, 1));
 		

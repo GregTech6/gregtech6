@@ -301,6 +301,8 @@ public class CS {
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
+	/** Is true whenever updateEntities and similar are running on the tick. */
+	public static volatile boolean TICK_LOCK = F;
 	
 	/** If I ever need to talk in Chat. XD */
 	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+"> ";
