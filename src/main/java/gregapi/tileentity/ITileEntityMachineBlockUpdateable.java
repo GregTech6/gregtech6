@@ -125,8 +125,9 @@ public interface ITileEntityMachineBlockUpdateable {
 			
 			private void stepToUpdateMachine(World aWorld, ChunkCoordinates aCoords, HashSetNoNulls<ChunkCoordinates> aSet) {
 				// Wait for the updateEntities Thread to be done because fucking Mojang and race conditions in loading Chunks.
-				while (TICK_LOCK) try {Thread.sleep(1);} catch (InterruptedException e) {/**/}
+				TICK_LOCK.lock();
 				TileEntity tTileEntity = WD.te(aWorld, aCoords, T);
+				TICK_LOCK.unlock();
 				if (tTileEntity instanceof ITileEntityMachineBlockUpdateable) ((ITileEntityMachineBlockUpdateable)tTileEntity).onMachineBlockUpdate(mCoords, mBlock, mMeta, mRemoved);
 				if (aSet.size() < 5 || tTileEntity instanceof ITileEntityMachineBlockUpdateable || isMachineBlock(aWorld.getBlock(aCoords.posX, aCoords.posY, aCoords.posZ), aWorld.getBlockMetadata(aCoords.posX, aCoords.posY, aCoords.posZ))) {
 					ChunkCoordinates tCoords;

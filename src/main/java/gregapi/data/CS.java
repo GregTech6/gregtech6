@@ -22,6 +22,7 @@ package gregapi.data;
 import java.io.File;
 import java.io.PrintStream;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 import gregapi.api.Abstract_Mod;
 import gregapi.block.BlockBase;
@@ -301,8 +302,8 @@ public class CS {
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
-	/** Is true whenever updateEntities and similar are running on the tick. */
-	public static volatile boolean TICK_LOCK = F;
+	/** Is locked updateEntities and similar are running on the tick. */
+	public static final ReentrantLock TICK_LOCK = new ReentrantLock();
 	
 	/** If I ever need to talk in Chat. XD */
 	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+"> ";
