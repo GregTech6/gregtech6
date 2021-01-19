@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,7 +77,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.packunpack(IL.RC_Tie_Stone.get(4), IL.RC_Bed_Stone.get(1));
 		
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8,  0), tBits | DEL_IF_NO_DYES                                , tHammer+"PP"   , tWrench+"PP"                            , 'P', OP.plate.dat(ANY.Fe)                     );
-		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8,  1), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Fe)                     , 'G', Blocks.glass_pane);
+		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8,  1), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Fe)                     , 'G', OD.paneGlassColorless);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8,  2), tBits | DEL_IF_NO_DYES                                , "BPB"          , "PLP"              , "BPB"              , 'P', OP.plate.dat(ANY.Fe)                     , 'B', Blocks.iron_bars, 'L', OD.lever);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1,  3), tBits | DEL_IF_NO_DYES                                , tWrench+"P"    , tHammer+"P"                             , 'P', OP.plate.dat(ANY.Fe)                     );
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1,  4), tBits | DEL_IF_NO_DYES                                , tWrench+"P"    , tHammer+"P"                             , 'P', OP.plate.dat(ANY.Steel)                  );
@@ -90,7 +90,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1, 11), tBits                                                 , "OOO"          , "OEO"              , "OOO"              , 'E', OP.gem.dat(MT.EnderPearl)                , 'O', OP.blockSolid.dat(MT.Obsidian));
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1, 12), tBits                                                 , "GPG"          , "PAP"              , "GPG"              , 'P', OD.craftingPiston                        , 'A', OD.craftingAnvil, 'G', ST.make(MD.RC, "part.gear", 1, 2));
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 13), tBits | DEL_IF_NO_DYES                                , tHammer+"PP"   , tWrench+"PP"                            , 'P', OP.plate.dat(ANY.Steel)                  );
-		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 14), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Steel)                  , 'G', Blocks.glass_pane);
+		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 14), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Steel)                  , 'G', OD.paneGlassColorless);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 15), tBits | DEL_IF_NO_DYES                                , "BPB"          , "PLP"              , "BPB"              , 'P', OP.plate.dat(ANY.Steel)                  , 'B', Blocks.iron_bars, 'L', OD.lever);
 		
 		CR.shaped(IL.RC_ShuntingWireFrame.get(6)                  , tBits                                                 , "PPP"          , "R"+tWrench+"R"    , "RRR"              , 'P', OP.plate.dat(ANY.Fe)                     , 'R', IL.RC_Rebar.get(1));
@@ -100,7 +100,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  2), tBits                                                 , "IOI"          , "GEG"              , "IOI"              , 'I', tIngot.dat(MT.Au)                        , 'G', OP.gem.dat(ANY.Emerald), 'E', OP.gem.dat(MT.EnderPearl), 'O', OP.blockSolid.dat(MT.Obsidian));
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 4,  3), tBits                                                 , "PPP"          , "PFP"              , "PPP"              , 'P', OP.plate.dat(ANY.Steel)                  , 'F', OD.craftingFurnace);
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  5), tBits                                                 , " N "          , "RCR"                                   , 'R', OD.itemRedstone                          , 'N', OP.stone.dat(MT.Netherrack), 'C', Items.cauldron);
-		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  6), tBits                                                 , "PGP"          , "EDE"              , "PGP"              , 'E', OP.gem.dat(ANY.Emerald)                  , 'P', OP.plate.dat(ANY.Steel), 'G', Blocks.glass_pane, 'D', Blocks.dispenser);
+		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  6), tBits                                                 , "PGP"          , "EDE"              , "PGP"              , 'E', OP.gem.dat(ANY.Emerald)                  , 'P', OP.plate.dat(ANY.Steel), 'G', OD.paneGlassColorless, 'D', Blocks.dispenser);
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  8), tBits                                                 , "IPI"          , "PCP"              , "IPI"              , 'P', OD.craftingPiston                        , 'I', tIngot.dat(ANY.Fe), 'C', Blocks.crafting_table);
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  9), tBits                                                 , " I "          , " T "              , " D "              , 'I', Blocks.iron_bars                         , 'T', ST.make(MD.RC, "machine.beta", 1, 4), 'D', Blocks.dispenser);
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1, 10), tBits                                                 , " I "          , "RTR"              , " D "              , 'I', Blocks.iron_bars                         , 'T', ST.make(MD.RC, "machine.beta", 1, 4), 'D', Blocks.dispenser, 'R', OD.itemRedstone);

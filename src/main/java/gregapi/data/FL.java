@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -382,26 +382,26 @@ public enum FL {
 	, Tequila                   ("binnie.tequila"           , "tequila"                     , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Alcopops                  ("potion.alcopops"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 
+	, Oil_Frying                ("hotfryingoil"                                             , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
+	, Oil_Seed                  ("seedoil"                                                  , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
+	, Oil_Plant                 ("plantoil"                                                 , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Sunflower             ("sunfloweroil"                                             , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Olive                 ("binnie.juiceolive"        , "oliveoil"                    , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Nut                   ("nutoil"                                                   , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Lin                   ("linoil"                   , "linseedoil"                  , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Hemp                  ("hempoil"                  , "hempseedoil"                 , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
-	, Oil_Seed                  ("seedoil"                                                  , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Fish                  ("fishoil"                                                  , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
-	, Oil_Frying                ("hotfryingoil"                                             , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Canola                ("canolaoil"                                                , SIMPLE, LIQUID)
-	, Oil_Plant                 ("plantoil"                                                 , SIMPLE, LIQUID)
 	, Oil_Creosote              ("creosote"                                                 , SIMPLE, LIQUID, BATH)
 	, Oil_Soulsand              ("soulsandoil"                                              , SIMPLE, LIQUID)
-	, Oil_Normal                ("oil"                      , "oilgc"                       , SIMPLE, LIQUID)
 	, Oil_Light                 ("liquid_light_oil"                                         , SIMPLE, LIQUID)
-	, Oil_Medium                ("liquid_medium_oil"                                        , SIMPLE, LIQUID)
-	, Oil_Heavy                 ("liquid_heavy_oil"                                         , SIMPLE, LIQUID)
-	, Oil_ExtraHeavy            ("liquid_extra_heavy_oil"                                   , SIMPLE, LIQUID)
 	, Oil_Light2                ("lightoil"                                                 , SIMPLE, LIQUID)
-	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
+	, Oil_Normal                ("oil"                      , "oilgc"                       , SIMPLE, LIQUID)
+	, Oil_Medium                ("liquid_medium_oil"                                        , SIMPLE, LIQUID)
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
+	, Oil_Heavy                 ("liquid_heavy_oil"                                         , SIMPLE, LIQUID)
+	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
+	, Oil_ExtraHeavy            ("liquid_extra_heavy_oil"                                   , SIMPLE, LIQUID)
 	
 	, Gas_Natural               ("gas_natural_gas"          , "naturalgas", "gas.natural"   , SIMPLE, GAS)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)

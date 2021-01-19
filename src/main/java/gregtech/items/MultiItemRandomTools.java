@@ -81,7 +81,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		IL.Porcelain_Cup_Raw               .set(addItem(899, "Modeled Porcelain Cup"    , "Put in Furnace to harden", new OreDictItemData(MT.Porcelain, U), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS, 1))); CR.shapeless(OP.dust.mat(MT.Porcelain, 1), CR.DEF_NCC, new Object[] {last()});
 		
-		CR.shaped(IL.Porcelain_Cup_Raw   .get(1), CR.DEF_NCC    , "kPR"              , 'P', OP.dust.dat(MT.Porcelain), 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Porcelain_Cup_Raw   .get(1), CR.DEF_NCC, "kPR"              , 'P', OP.dust.dat(MT.Porcelain), 'R', OreDictToolNames.rollingpin);
 		
 		IL.Ceramic_Ingot_Mold_Raw          .set(addItem(900, "Clay Ingot Mold"          , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Chunk_Mold_Raw          .set(addItem(901, "Clay Chunk Mold"          , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
@@ -111,6 +111,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Ceramic_Sense_Mold_Raw          .set(addItem(925, "Clay Sense Mold"          , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Plow_Mold_Raw           .set(addItem(926, "Clay Plow Mold"           , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Builderwand_Mold_Raw    .set(addItem(927, "Clay Builder's Wand Mold" , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
+		IL.Ceramic_Nugget_Mold_Raw         .set(addItem(928, "Clay Nugget Mold"         , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		
 		IL.Ceramic_Tap_Raw                 .set(addItem(987, "Clay Tap"                 , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Funnel_Raw              .set(addItem(988, "Clay Funnel"              , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
@@ -124,17 +125,17 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Ceramic_Jug_Raw                 .set(addItem(996, "Clay Jug"                 , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*6), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS    , 1))); CR.shapeless(ST.make(Items.clay_ball, 6, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Measuring_Pot_Raw               .set(addItem(997, "Clay Measuring Pot"       , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*4), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS    , 1))); CR.shapeless(ST.make(Items.clay_ball, 4, 0), CR.DEF_NCC, new Object[] {last()});
 		
-		CR.shaped(IL.Ceramic_Tap_Raw     .get(1), CR.DEF_NCC    , "CCR", "kC "       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Funnel_Raw  .get(1), CR.DEF_NCC    , "CRC", "kC "       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Crucible_Raw.get(1), CR.DEF_NCC    , "CkC", "CRC", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Basin_Raw   .get(1), CR.DEF_NCC    , "CkC", "CRC", " C ", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Mold_Raw    .get(1), CR.DEF_NCC    , "C C", "CCC", "k R", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Faucet_Raw  .get(1), CR.DEF_NCC    , "C C", "kCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Crossing_Raw.get(1), CR.DEF_NCC    , "kCR", "CCC", " C ", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Juicer_Raw          .get(1), CR.DEF_NCC    , "kCR", "CCC"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Bowl_Raw    .get(1), CR.DEF_NCC    , "k R", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Ceramic_Jug_Raw     .get(1), CR.DEF_NCC    , "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
-		CR.shaped(IL.Measuring_Pot_Raw   .get(1), CR.DEF_NCC    , "CkC", "CCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Tap_Raw     .get(1), CR.DEF_NCC, "CCR", "kC "       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Funnel_Raw  .get(1), CR.DEF_NCC, "CRC", "kC "       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Crucible_Raw.get(1), CR.DEF_NCC, "CkC", "CRC", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Basin_Raw   .get(1), CR.DEF_NCC, "CkC", "CRC", " C ", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Mold_Raw    .get(1), CR.DEF_NCC, "C C", "CCC", "k R", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Faucet_Raw  .get(1), CR.DEF_NCC, "C C", "kCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Crossing_Raw.get(1), CR.DEF_NCC, "kCR", "CCC", " C ", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Juicer_Raw          .get(1), CR.DEF_NCC, "kCR", "CCC"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Bowl_Raw    .get(1), CR.DEF_NCC, "k R", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Jug_Raw     .get(1), CR.DEF_NCC, "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Measuring_Pot_Raw   .get(1), CR.DEF_NCC, "CkC", "CCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		
 		CR.shapeless(IL.Ceramic_Ingot_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.ingot.dat(MT.TECH.Brick)});
 		CR.shapeless(IL.Ceramic_Plate_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.paneGlass});

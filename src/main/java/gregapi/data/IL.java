@@ -224,7 +224,7 @@ public enum IL implements IItemContainer {
 	Ceramic_Funnel, Ceramic_Funnel_Raw,
 	Ceramic_Crucible, Ceramic_Crucible_Raw,
 	Ceramic_Basin, Ceramic_Basin_Raw,
-	Ceramic_Mold, Ceramic_Mold_Raw, Ceramic_Ingot_Mold_Raw, Ceramic_Chunk_Mold_Raw, Ceramic_Plate_Mold_Raw, Ceramic_Tiny_Plate_Mold_Raw, Ceramic_Bolt_Mold_Raw, Ceramic_Rod_Mold_Raw, Ceramic_Long_Rod_Mold_Raw, Ceramic_Item_Casing_Mold_Raw, Ceramic_Ring_Mold_Raw, Ceramic_Gear_Mold_Raw, Ceramic_Small_Gear_Mold_Raw, Ceramic_Sword_Mold_Raw, Ceramic_Pickaxe_Mold_Raw, Ceramic_Spade_Mold_Raw, Ceramic_Shovel_Mold_Raw, Ceramic_Universal_Spade_Mold_Raw, Ceramic_Axe_Mold_Raw, Ceramic_Double_Axe_Mold_Raw, Ceramic_Saw_Mold_Raw, Ceramic_Hammer_Mold_Raw, Ceramic_File_Mold_Raw, Ceramic_Screwdriver_Mold_Raw, Ceramic_Chisel_Mold_Raw, Ceramic_Arrow_Mold_Raw, Ceramic_Hoe_Mold_Raw, Ceramic_Sense_Mold_Raw, Ceramic_Plow_Mold_Raw, Ceramic_Builderwand_Mold_Raw,
+	Ceramic_Mold, Ceramic_Mold_Raw, Ceramic_Ingot_Mold_Raw, Ceramic_Chunk_Mold_Raw, Ceramic_Nugget_Mold_Raw, Ceramic_Plate_Mold_Raw, Ceramic_Tiny_Plate_Mold_Raw, Ceramic_Bolt_Mold_Raw, Ceramic_Rod_Mold_Raw, Ceramic_Long_Rod_Mold_Raw, Ceramic_Item_Casing_Mold_Raw, Ceramic_Ring_Mold_Raw, Ceramic_Gear_Mold_Raw, Ceramic_Small_Gear_Mold_Raw, Ceramic_Sword_Mold_Raw, Ceramic_Pickaxe_Mold_Raw, Ceramic_Spade_Mold_Raw, Ceramic_Shovel_Mold_Raw, Ceramic_Universal_Spade_Mold_Raw, Ceramic_Axe_Mold_Raw, Ceramic_Double_Axe_Mold_Raw, Ceramic_Saw_Mold_Raw, Ceramic_Hammer_Mold_Raw, Ceramic_File_Mold_Raw, Ceramic_Screwdriver_Mold_Raw, Ceramic_Chisel_Mold_Raw, Ceramic_Arrow_Mold_Raw, Ceramic_Hoe_Mold_Raw, Ceramic_Sense_Mold_Raw, Ceramic_Plow_Mold_Raw, Ceramic_Builderwand_Mold_Raw,
 	Ceramic_Faucet, Ceramic_Faucet_Raw,
 	Ceramic_Crossing, Ceramic_Crossing_Raw,
 	Juicer, Juicer_Raw,

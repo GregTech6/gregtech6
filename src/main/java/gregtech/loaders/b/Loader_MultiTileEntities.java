@@ -446,6 +446,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		RM.add_smelting(IL.Ceramic_Sense_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01111_11111_00000_00000)));
 		RM.add_smelting(IL.Ceramic_Plow_Mold_Raw           .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11111_11111_11111_11111_00100)));
 		RM.add_smelting(IL.Ceramic_Builderwand_Mold_Raw    .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00100_11111_01110_01010)));
+		RM.add_smelting(IL.Ceramic_Nugget_Mold_Raw         .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_00000_00100_00000_00000)));
 		
 		
 		// Basins

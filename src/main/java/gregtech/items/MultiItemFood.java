@@ -651,7 +651,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Bun_Raw.get(1), CR.DEF_NAC, new Object[] {"foodDough"});
 		CR.shapeless(IL.Food_Buns_Sliced.get(1), CR.DEF_NAC, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced});
 		CR.shapeless(IL.Food_Bun_Sliced.get(2), CR.DEF_NAC, new Object[] {IL.Food_Buns_Sliced});
-		RM.Slicer.addRecipe2(T, 16,   16, IL.Food_Bun.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bun_Sliced.get(2));
+		RM.packunpack(IL.Food_Bun_Sliced.get(2), IL.Food_Buns_Sliced.get(1));
+		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Bun.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bun_Sliced.get(2));
 		
 		IL.Food_Burger_Veggie                  .set(addItem(tLastID =  5010, "Veggie Burger"                            , "No matter how you call this, this is NOT a Burger!"          , new FoodStat( 4, 1.200F,   0, C+35,  0.30F,   0,   0,   0,  12,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 2), TC.stack(TC.FAMES, 1)));
 		IL.Food_Burger_Cheese                  .set(addItem(tLastID =  5011, "Cheese Burger"                            , "Cheesy!"                                                     , new FoodStat( 4, 1.400F,   0, C+38,  0.50F,   0,   0,   8,   0,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 2)));
@@ -689,7 +690,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Bread_Raw.get(1), CR.DEF_NAC, new Object[] {"foodDough", "foodDough"});
 		CR.shapeless(IL.Food_Breads_Sliced.get(1), CR.DEF_NAC, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced});
 		CR.shapeless(IL.Food_Bread_Sliced.get(2), CR.DEF_NAC, new Object[] {IL.Food_Breads_Sliced});
-		RM.Slicer.addRecipe2(T, 16,   16, IL.Food_Bread.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bread_Sliced.get(2));
+		RM.packunpack(IL.Food_Bread_Sliced.get(2), IL.Food_Breads_Sliced.get(1));
+		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Bread.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Bread_Sliced.get(2));
 		
 		IL.Food_Sandwich_Veggie                .set(addItem(tLastID =  6010, "Veggie Sandwich"                          , "It's Canon, Guys! Season 4, Vegan Morty!"                    , new FoodStat( 7, 1.200F,   0, C+35,  0.30F,   0,   0,   0,  24,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 2), TC.stack(TC.FAMES, 1)));                                                  setFluidContainerStats(tLastID, 0, 32);
 		IL.Food_Sandwich_Cheese                .set(addItem(tLastID =  6011, "Cheese Sandwich"                          , "Say Cheese!"                                                 , new FoodStat( 7, 1.400F,   0, C+38,  0.50F,   0,   0,  16,   0,  16, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 2)));                                                  setFluidContainerStats(tLastID, 0, 32);
@@ -718,8 +720,9 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Baguette_Raw.get(1), CR.DEF_NAC, new Object[] {"foodDough", "foodDough", "foodDough"});
 		CR.shapeless(IL.Food_Baguettes_Sliced.get(1), CR.DEF_NAC, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced});
 		CR.shapeless(IL.Food_Baguette_Sliced.get(2), CR.DEF_NAC, new Object[] {IL.Food_Baguettes_Sliced});
-		RM.Slicer.addRecipe2(T, 16,   16, IL.Food_Baguette.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Baguette_Sliced.get(2));
-
+		RM.packunpack(IL.Food_Baguette_Sliced.get(2), IL.Food_Baguette_Sliced.get(1));
+		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Baguette.get(1), IL.Shape_Slicer_Split.get(0), IL.Food_Baguette_Sliced.get(2));
+		
 		IL.Food_Large_Sandwich_Veggie          .set(addItem(tLastID =  7010, "Large Veggie Sandwich"                    , "Meatless"                                                    , new FoodStat(15, 2.200F,   0, C+35,  0.30F,   0,   0,   0,  36,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 3), TC.stack(TC.FAMES, 1)));                                                  setFluidContainerStats(tLastID, 0, 16);
 		IL.Food_Large_Sandwich_Cheese          .set(addItem(tLastID =  7011, "Large Cheese Sandwich"                    , "I need another cheesy tooltip for this"                      , new FoodStat(15, 2.400F,   0, C+38,  0.50F,   0,   0,  24,   0,  24, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 3)));                                                  setFluidContainerStats(tLastID, 0, 16);
 		IL.Food_Large_Sandwich_Bacon           .set(addItem(tLastID =  7014, "Large Bacon Sandwich"                     , "For Men! (and manly Women)"                                  , new FoodStat(20, 2.800F,   0, C+38,  0.50F,   0,   0,  16,   0,  36, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 2), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 2)));                          setFluidContainerStats(tLastID, 0, 16);
