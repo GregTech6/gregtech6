@@ -334,7 +334,7 @@ public class Loader_Tools implements Runnable {
 		
 		GameRegistry.addRecipe(new AdvancedCraftingTool(MAGNIFYING_GLASS , lens                       , typemin(1), MT.Glass));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(HARDHAMMER       , toolHeadHammer             , new Nor(WOOD, BOUNCY, STRETCHY)));
-		GameRegistry.addRecipe(new AdvancedCraftingTool(SOFTHAMMER       , toolHeadHammer             , new Or (WOOD, BOUNCY, STRETCHY), MT.Rubber));
+		GameRegistry.addRecipe(new AdvancedCraftingTool(SOFTHAMMER       , toolHeadHammer             , new Or (WOOD, BOUNCY, STRETCHY), ANY.Wood));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SWORD            , toolHeadSword              ));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(BUILDERWAND      , toolHeadBuilderwand        , MT.YellowSapphire)); // Suggests using Gems for those Wands since you usually only have one workable Gem per Type.
 		GameRegistry.addRecipe(new AdvancedCraftingTool(CONSTRUCTION_PICK, toolHeadConstructionPickaxe));
@@ -344,7 +344,7 @@ public class Loader_Tools implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SPADE            , toolHeadSpade              ));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(AXE              , toolHeadAxe                , MT.Bronze)); // Suggests Bronze for early Tools.
 		GameRegistry.addRecipe(new AdvancedCraftingTool(DOUBLE_AXE       , toolHeadAxeDouble          ));
-		GameRegistry.addRecipe(new AdvancedCraftingTool(HOE              , toolHeadHoe                , MT.WOODS.Birch)); // Suggests Wood for Hoes.
+		GameRegistry.addRecipe(new AdvancedCraftingTool(HOE              , toolHeadHoe                , MT.WOODS.Birch)); // Suggests Wood for Hoes. Surely no particular reason to chose Birch there.
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SENSE            , toolHeadSense              ));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(PLOW             , toolHeadPlow               , MT.WOODS.Spruce)); // Suggests Wood for Plows.
 		GameRegistry.addRecipe(new AdvancedCraftingTool(FILE             , toolHeadFile               , MT.Pb)); // Lead, to make it easier to see for Beginners.
