@@ -3215,10 +3215,10 @@ public class MT {
 		public static final OreDictMaterial
 		Dye_Materials[]             = {Black, Red, Green, Brown, Blue, Purple, Cyan, LightGray, Gray, Pink, Lime, Yellow, LightBlue, Magenta, Orange, White},
 		
-		Heat_T[]                    = {ANY.Stone    , ANY.Steel         , Invar     , Ti                , TungstenCarbide   , ANY.W     , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             , ANY.W             },
-		Kinetic_T[]                 = {ANY.Wood     , Bronze            , ANY.Steel , Ti                , TungstenSteel     , Ir        , Os                , Os                , Os                , Os                , Os                , Os                , Os                , Os                , Os                , Os                },
-		Electric_T[]                = {TinAlloy     , SteelGalvanized   , Al        , StainlessSteel    , Cr                , Ti        , Ir                , Os                , Trinitanium       , Trinaquadalloy    , Neutronium        , Neutronium        , Neutronium        , Neutronium        , Neutronium        , Neutronium        },
-		Flux_T[]                    = {Sn           , Pb                , Invar     , Electrum          , EnderiumBase      , Enderium  , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   , TungstenCarbide   };
+		Heat_T[]                    = {ANY.Stone, ANY.Steel      , Invar    , Ti            , TungstenCarbide, ANY.W   , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          },
+		Kinetic_T[]                 = {ANY.Wood , Bronze         , ANY.Steel, Ti            , TungstenSteel  , Ir      , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             },
+		Electric_T[]                = {TinAlloy , SteelGalvanized, Al       , StainlessSteel, Cr             , Ti      , Ir             , Os             , Trinitanium    , Trinaquadalloy , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     },
+		Flux_T[]                    = {Sn       , Pb             , Invar    , Electrum      , EnderiumBase   , Enderium, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide};
 	}
 	
 	/** The Section where I place regular Ores that are only used in advanced processing anyways due to complexity. */

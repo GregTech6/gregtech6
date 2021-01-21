@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -134,6 +134,8 @@ public class ST {
 	public static boolean isGT (ItemStack aStack) {return aStack != null && isGT_(aStack);}
 	public static boolean isGT_(ItemStack aStack) {return isGT(aStack.getItem());}
 	
+	public static boolean   valid(Block aBlock) {return aBlock != null && aBlock != NB;}
+	public static boolean invalid(Block aBlock) {return aBlock == null || aBlock == NB;}
 	public static boolean   valid(ItemStack aStack) {return aStack != null && aStack.stackSize >= 0 && item_(aStack) != null;}
 	public static boolean invalid(ItemStack aStack) {return aStack == null || aStack.stackSize <  0 || item_(aStack) == null;}
 	
@@ -717,7 +719,7 @@ public class ST {
 		Block aBlock = aTo.getBlock();
 		if (aBlock instanceof BlockRailBase) {
 			// Do not eject shit onto Rails directly.
-		} else if (aBlock.getMaterial() == Material.lava || aBlock instanceof BlockFire || (aBlock == NB && aTo.mY < 1)) {
+		} else if (aBlock.getMaterial() == Material.lava || aBlock instanceof BlockFire || (invalid(aBlock) && aTo.mY < 1)) {
 			for (int aSlotFrom : aSlotsFrom) {
 				ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotFrom);
 				if (aStackFrom != null && aMinMove <= aStackFrom.stackSize && (aFilter == null || aFilter.contains(aStackFrom, T) != aInvertFilter) && canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) {

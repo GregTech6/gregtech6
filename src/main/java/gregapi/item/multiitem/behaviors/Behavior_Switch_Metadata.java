@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,8 @@ package gregapi.item.multiitem.behaviors;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.item.IItemGT;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -33,14 +35,24 @@ import net.minecraft.world.World;
 
 public class Behavior_Switch_Metadata extends AbstractBehaviorDefault {
 	public final int mSwitchIndex;
-	public final boolean mCheckTarget;
+	public final boolean mCheckTarget, mShowModeSwitchTooltip;
 	
 	public Behavior_Switch_Metadata(int aSwitchIndex) {
 		this(aSwitchIndex, F);
 	}
 	public Behavior_Switch_Metadata(int aSwitchIndex, boolean aCheckTarget) {
+		this(aSwitchIndex, aCheckTarget, F);
+	}
+	public Behavior_Switch_Metadata(int aSwitchIndex, boolean aCheckTarget, boolean aShowModeSwitchTooltip) {
 		mSwitchIndex = aSwitchIndex;
 		mCheckTarget = aCheckTarget;
+		mShowModeSwitchTooltip = aShowModeSwitchTooltip;
+	}
+	
+	@Override
+	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
+		if (mShowModeSwitchTooltip) aList.add("Sneak Rightclick to switch Mode");
+		return aList;
 	}
 	
 	@Override

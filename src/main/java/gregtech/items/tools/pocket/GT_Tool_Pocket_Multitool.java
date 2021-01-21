@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ public class GT_Tool_Pocket_Multitool extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T));
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex, T, T));
 	}
 	
 	@Override

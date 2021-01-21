@@ -576,8 +576,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Lin       .make(1000), FL.lube(1000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Hemp      .make(1000), FL.lube(1000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Fish      .make(1000), FL.lube(1000), ZL_IS);
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Seed      .make(1000), FL.lube(1000), ZL_IS);
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Plant     .make(1000), FL.lube(1000), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Seed      .make(1000), FL.lube(1000), ZL_IS); if (FL.Oil_Plant.exists())
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Plant     .make(1000), FL.lube(1000), ZL_IS); if (FL.Oil_Canola.exists())
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Canola    .make(1000), FL.lube(2000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Creosote  .make(1000), FL.lube(2000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Soulsand  .make(1000), FL.lube(3000), ZL_IS);

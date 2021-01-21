@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,6 +41,9 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ, T);
 		byte aMeta = WD.meta(aWorld, aX, aY, aZ, T);
+		
+		if (ST.invalid(aBlock)) return F;
+		
 		int tDist = (MultiItemTool.getPrimaryMaterial(aStack).mToolQuality+1);
 		boolean rReturn = F;
 		
@@ -55,10 +58,15 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 			for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 				int tIndex = aPlayer.inventory.mainInventory.length-i-1;
 				ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
-				
 				if (ST.invalid(tStack)) continue;
-				Block tBlock = (tStack.getItem() instanceof ItemBlock ? ((ItemBlock)tStack.getItem()).field_150939_a : ST.block(tStack));
-				if (tBlock == null || tBlock == NB) continue;
+				Block tBlock = ST.block(tStack);
+				if (ST.invalid(tBlock)) {
+					if (tStack.getItem() instanceof ItemBlock) {
+						tBlock = ((ItemBlock)tStack.getItem()).field_150939_a;
+						if (ST.invalid(tBlock)) continue;
+					} else continue;
+				}
+				
 				if (aBlock == tBlock) {
 					if (aMeta != ST.meta(tStack)) continue;
 				} else if (aBlock instanceof BlockMetaType && tBlock instanceof BlockMetaType) {
