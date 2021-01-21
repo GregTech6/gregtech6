@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -177,18 +177,22 @@ public abstract class TileEntityBase04MultiTileEntities extends TileEntityBase03
 		return rList;
 	}
 	public void popOff() {
+		if (getBlockOffset(0,0,0) == NB) return;
 		for (ItemStack tStack : getDrops(0, F)) ST.drop(worldObj, xCoord, yCoord, zCoord, tStack);
 		setToAir();
 	}
 	public void popOff(Entity aEntity) {
+		if (getBlockOffset(0,0,0) == NB) return;
 		for (ItemStack tStack : getDrops(0, F)) ST.drop(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, tStack);
 		setToAir();
 	}
 	public void popOff(World aWorld, double aX, double aY, double aZ) {
+		if (getBlockOffset(0,0,0) == NB) return;
 		for (ItemStack tStack : getDrops(0, F)) ST.drop(aWorld, aX, aY, aZ, tStack);
 		setToAir();
 	}
 	public void popOff(World aWorld, ChunkCoordinates aCoords) {
+		if (getBlockOffset(0,0,0) == NB) return;
 		for (ItemStack tStack : getDrops(0, F)) ST.drop(aWorld, aCoords, tStack);
 		setToAir();
 	}
