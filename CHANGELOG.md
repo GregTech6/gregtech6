@@ -23,6 +23,7 @@ I made sure all Ores actually work. Realgar (Red Gem Ore made of Arsenic + Sulfu
 [CHANGED] Air Vents now do 256000L per 360 ticks at a time, instead of only 16000. They have an Offset for ticking too now, so you can use multiple Vents on one Pipe/Drum/etc now.
 [CHANGED] There is now more Galena Veins in the World, and visible on the Surface in Mountains.
 [CHANGED] A bunch of Ores, that I deemed way too useless years ago, has been added back. None of them are required for anything, old Worlds are safe as always. ;)
+[ADDED] NEI Handler for putting Toolheads on Handles. I used the Machine Recipe Handler and Fake Recipes for that one.
 [ADDED] Arsenic can now be used to make Poison and Harming Potions.
 [ADDED] Crushed Purified Biotite can now be heated in the Dryer to make Argon Gas from it. It is mostly a Byproduct of other Ores like Asbestos though,
 [ADDED] Gypsum, Trona and Mirabilite now have Recipes to create them by mixing some Chemicals with Water (They can be dried back too). Perlite now has a drying Recipe that turns it into Obsidian aswell.

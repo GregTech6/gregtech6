@@ -65,7 +65,7 @@ public class RM {
 	, BumbleQueens              = new RecipeMap                     (null, "gt.recipe.bumblequeen"                  , "Bumblebee Queen"                 , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 2, 6, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, T, F, T, T)
 	, Trees                     = new RecipeMap                     (null, "gt.recipe.trees"                        , "Family Tree"                     , null, 0, 1, RES_PATH_GUI+"machines/FamilyTree"                ,/*IN-OUT-MIN-ITEM=*/ 2,12, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, F, F, T, T)
 	, Other                     = new RecipeMap                     (null, "gt.recipe.other"                        , "Other Relations"                 , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 0,/*IN-OUT-MIN-FLUID=*/ 3, 3, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, F, F, F, F)
-	, ToolHeads                 = new RecipeMap                     (null, "gt.recipe.toolhead"                     , "Craft Toolhead onto Handle"      , null, 0, 1, RES_PATH_GUI+"machines/Crafting2By2"              ,/*IN-OUT-MIN-ITEM=*/ 4, 1, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 0, ""                    ,    1, ""      , F, T, F, F, F, F, F)
+	, ToolHeads                 = new RecipeMap                     (null, "gt.recipe.toolhead"                     , "Craft Toolhead on Handle"        , null, 0, 1, RES_PATH_GUI+"machines/Crafting2By2"              ,/*IN-OUT-MIN-ITEM=*/ 4, 1, 0,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 0, ""                    ,    1, ""      , F, T, F, F, F, F, F)
 	
 	, Generifier                = new RecipeMap                     (null, "gt.recipe.generifier"                   , "Generifier"                      , null, 0, 1, RES_PATH_GUI+"machines/Generifier"                ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 0,/*IN-OUT-MIN-FLUID=*/ 1, 1, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, F, F)
 	, Boxinator                 = new RecipeMap                     (null, "gt.recipe.boxinator"                    , "Boxinator"                       , null, 0, 1, RES_PATH_GUI+"machines/Boxinator"                 ,/*IN-OUT-MIN-ITEM=*/ 2, 1, 2,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
@@ -155,6 +155,10 @@ public class RM {
 		RecipeMap.sSluiceRecipes=Sluice;RecipeMap.sMagneticSeparatorRecipes=MagneticSeparator;RecipeMap.sAutocrafterRecipes=Autocrafter;RecipeMap.sMassfabRecipes=Massfab;RecipeMap.sScannerMolecularRecipes=ScannerMolecular;RecipeMap.sReplicatorRecipes=Replicator;RecipeMap.sSlicerRecipes=Slicer;RecipeMap.sCokeOvenRecipes=CokeOven;
 		RecipeMap.sDistillationTowerRecipes=DistillationTower;RecipeMap.sAutoclaveRecipes=Autoclave;RecipeMap.sBoxinatorRecipes=Boxinator;RecipeMap.sUnboxinatorRecipes=Unboxinator;RecipeMap.sFusionRecipes=Fusion;RecipeMap.sBlastRecipes=BlastFurnace;RecipeMap.sImplosionRecipes=ImplosionCompressor;RecipeMap.sVacuumRecipes=VacuumFreezer;
 		RecipeMap.sAssemblerRecipes=Assembler;RecipeMap.sCNCRecipes=CNC;RecipeMap.sFuelsBurn=FM.Burn;RecipeMap.sFuelsGas=FM.Gas;RecipeMap.sFuelsHot=FM.Hot;RecipeMap.sFuelsPlasma=FM.Plasma;RecipeMap.sFuelsEngine=FM.Engine;RecipeMap.sFuelsTurbine=FM.Turbine;RecipeMap.sFuelsMagic=FM.Magic;
+		
+		Furnace.mRecipeMachineList.add(ST.make(Blocks.furnace, 1, W));
+		Furnace.mRecipeMachineList.add(ST.make(Blocks.lit_furnace, 1, W));
+		ToolHeads.mRecipeMachineList.add(ST.make(Blocks.crafting_table, 1, W));
 	}
 	
 	public static boolean generify(ItemStack aStack1, ItemStack aStack2) {

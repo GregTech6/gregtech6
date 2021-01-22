@@ -22,7 +22,9 @@ package gregapi.recipes;
 import static gregapi.data.CS.*;
 
 import gregapi.code.ICondition;
+import gregapi.data.ANY;
 import gregapi.data.CS.ToolsGT;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -70,14 +72,18 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 	@Override
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (mCondition.isTrue(aEvent.mMaterial)) {
-			if (!aEvent.mMaterial.mHandleMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
-				ItemStack tHandle = OP.stick.mat(aEvent.mMaterial.mHandleMaterial, 1);
-				if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
-			}
-			for (OreDictMaterial tHandleMaterial : aEvent.mMaterial.mHandleMaterial.mToThis)
-			if (!tHandleMaterial                 .contains(TD.Properties.INVALID_MATERIAL)) {
-				ItemStack tHandle = OP.stick.mat(tHandleMaterial                 , 1);
-				if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, tHandleMaterial));
+			if (aEvent.mMaterial.mHandleMaterial == ANY.Wood) {
+				RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, IL.Stick.get(1)), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
+			} else {
+				if (!aEvent.mMaterial.mHandleMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+					ItemStack tHandle = OP.stick.mat(aEvent.mMaterial.mHandleMaterial, 1);
+					if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
+				}
+				for (OreDictMaterial tHandleMaterial : aEvent.mMaterial.mHandleMaterial.mToThis)
+				if (!tHandleMaterial                 .contains(TD.Properties.INVALID_MATERIAL)) {
+					ItemStack tHandle = OP.stick.mat(tHandleMaterial                 , 1);
+					if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, tHandleMaterial));
+				}
 			}
 		}
 	}
