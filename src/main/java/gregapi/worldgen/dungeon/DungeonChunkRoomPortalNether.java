@@ -52,7 +52,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
 				aData.set(tX, 0, tZ, Blocks.glowstone, 0);
 			} else {
-				aData.set(tX, 0, tZ, Blocks.nether_brick, 0);
+				aData.set(tX, 0, tZ, Blocks.netherrack, 0);
 			}
 		}
 		

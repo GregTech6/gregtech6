@@ -47,7 +47,16 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		
 		if (ST.valid(tPurpurBlock) && ST.valid(tPurpurPillar)) {
 			for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
-				if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
+				if ((tX == 1 || tX == 2 || tX == 13 || tX == 14) && (tZ == 1 || tZ == 1 || tZ == 13 || tZ == 14)) {
+					aData.set  (tX, 0, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 1, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 2, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 3, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 4, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 5, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 6, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 7, tZ, tPurpurPillar, 0);
+				} else if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
 					aData.set  (tX, 0, tZ, tPurpurPillar, 0);
 					aData.set  (tX, 7, tZ, Blocks.glowstone);
 					aData.tiles(tX, 8, tZ);
