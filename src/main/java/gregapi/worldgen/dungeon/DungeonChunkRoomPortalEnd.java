@@ -35,6 +35,14 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_PORTAL_END) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_END);
 		
+		for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
+			if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
+				aData.set(tX, 0, tZ, Blocks.glowstone, 0);
+			} else {
+				aData.set(tX, 0, tZ, Blocks.end_stone, 0);
+			}
+		}
+		
 		Block tPurpurBlock = ST.block(MD.EtFu, "purpur_block"), tPurpurPillar = ST.block(MD.EtFu, "purpur_pillar");
 		
 		if (ST.valid(tPurpurBlock) && ST.valid(tPurpurPillar)) {
@@ -62,8 +70,6 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 				} else {
 					aData.set(tX, 2, tZ, Blocks.glowstone, 0, 3);
 				}
-			} else {
-				aData.set(tX, 0, tZ, Blocks.end_stone, 0);
 			}
 		}
 		aData.set     ( 7,  0,  6, Blocks.end_portal_frame, 4);
