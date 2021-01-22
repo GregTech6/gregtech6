@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,7 +51,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 		Block tShroomLight = IL.NeLi_ShroomLight.block(), tWartBlock = ST.block(MD.NeLi, "Wartblock");
 		int tMeta = aData.next(3);
 		
-		if (tShroomLight != NB && tWartBlock != NB) {
+		if (ST.valid(tShroomLight) && ST.valid(tWartBlock)) {
 			for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
 				if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
 					aData.set  (tX, 7, tZ, tShroomLight);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,13 +35,29 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_PORTAL_END) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_END);
 		
+		Block tPurpurBlock = ST.block(MD.EtFu, "purpur_block"), tPurpurPillar = ST.block(MD.EtFu, "purpur_pillar");
+		
+		if (ST.valid(tPurpurBlock) && ST.valid(tPurpurPillar)) {
+			for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
+				if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
+					aData.set  (tX, 0, tZ, tPurpurPillar, 0);
+					aData.set  (tX, 7, tZ, Blocks.glowstone);
+					aData.tiles(tX, 8, tZ);
+				} else {
+					aData.set  (tX, 0, tZ, tPurpurBlock, 0);
+					aData.set  (tX, 7, tZ, tPurpurBlock, 0);
+					aData.tiles(tX, 8, tZ);
+				}
+			}
+		}
+		
 		Block tHexorium = ST.block(MD.HEX, "blockEnergizedHexoriumMonolithRainbow");
 		
 		for (int tX = 5; tX <= 10; tX++) for (int tZ = 5; tZ <= 10; tZ++) {
 			if ((tX == 5 || tX == 10) && (tZ == 5 || tZ == 10)) {
 				aData.obsidian(tX,  0, tZ, T);
 				aData.obsidian(tX,  1, tZ, T);
-				if (tHexorium != NB && tHexorium != null) {
+				if (ST.valid(tHexorium)) {
 					aData.set(tX, 2, tZ, tHexorium, 9, 3);
 				} else {
 					aData.set(tX, 2, tZ, Blocks.glowstone, 0, 3);
