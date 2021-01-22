@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,10 +25,13 @@ import gregapi.code.ICondition;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.MT;
 import gregapi.data.OP;
+import gregapi.data.RM;
+import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -41,7 +44,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  * @author Gregorius Techneticies
  */
 @SuppressWarnings({"unchecked", "rawtypes"})
-public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftingRecipeGT {
+public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftingRecipeGT, IOreDictListenerEvent {
 	public final ICondition mCondition;
 	public final OreDictPrefix mToolHead;
 	public final short mToolID;
@@ -60,6 +63,23 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 		mCondition = aCondition;
 		mToolHead = aToolHead;
 		mToolID = UT.Code.bind15(aToolID);
+		
+		aToolHead.addListener(this);
+	}
+	
+	@Override
+	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		if (mCondition.isTrue(aEvent.mMaterial)) {
+			if (!aEvent.mMaterial.mHandleMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+				ItemStack tHandle = OP.stick.mat(aEvent.mMaterial.mHandleMaterial, 1);
+				if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
+			}
+			for (OreDictMaterial tHandleMaterial : aEvent.mMaterial.mHandleMaterial.mToThis)
+			if (!tHandleMaterial                 .contains(TD.Properties.INVALID_MATERIAL)) {
+				ItemStack tHandle = OP.stick.mat(tHandleMaterial                 , 1);
+				if (ST.valid(tHandle)) RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, tHandle), mTool.getToolWithStats(mToolID, aEvent.mMaterial, tHandleMaterial));
+			}
+		}
 	}
 	
 	@Override

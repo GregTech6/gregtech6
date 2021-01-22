@@ -812,19 +812,19 @@ public class LoaderItemData implements Runnable {
 		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));
 		
 		if (MD.PFAA.mLoaded) {
-			OM.reg(OD.blockClay             , ST.make(MD.PFAA, "weakClay"   , 1,  0));
-			OM.reg(OD.blockClay             , ST.make(MD.PFAA, "weakOreClay", 1,  1));
-			OM.reg(OD.blockClay             , ST.make(MD.PFAA, "weakOreClay", 1,  2));
-			OM.reg(OD.blockClay             , ST.make(MD.PFAA, "weakOreClay", 1,  3));
+			OM.reg(OD.blockClay, ST.make(MD.PFAA, "weakClay"   , 1,  0));
+			OM.reg(OD.blockClay, ST.make(MD.PFAA, "weakOreClay", 1,  1));
+			OM.reg(OD.blockClay, ST.make(MD.PFAA, "weakOreClay", 1,  2));
+			OM.reg(OD.blockClay, ST.make(MD.PFAA, "weakOreClay", 1,  3));
 			OM.data(MD.PFAA, "weakClay"   , 1,  0, MT.ClayBrown             , U*4);
 			OM.data(MD.PFAA, "weakOreClay", 1,  1, MT.Bentonite             , U*4);
 			OM.data(MD.PFAA, "weakOreClay", 1,  2, MT.Palygorskite          , U*4);
 			OM.data(MD.PFAA, "weakOreClay", 1,  3, MT.Kaolinite             , U*4);
 			
-			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 45));
-			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 47));
-			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 48));
-			OM.reg(OD.itemClay              , ST.make(MD.PFAA, "earthyClump", 1, 49));
+			OM.reg(OD.itemClay , ST.make(MD.PFAA, "earthyClump", 1, 45));
+			OM.reg(OD.itemClay , ST.make(MD.PFAA, "earthyClump", 1, 47));
+			OM.reg(OD.itemClay , ST.make(MD.PFAA, "earthyClump", 1, 48));
+			OM.reg(OD.itemClay , ST.make(MD.PFAA, "earthyClump", 1, 49));
 			OM.data(MD.PFAA, "earthyClump", 1, 37, MT.OREMATS.YellowLimonite, U);
 			OM.data(MD.PFAA, "earthyClump", 1, 45, MT.ClayBrown             , U);
 			OM.data(MD.PFAA, "earthyClump", 1, 46, MT.OREMATS.Bauxite       , U);

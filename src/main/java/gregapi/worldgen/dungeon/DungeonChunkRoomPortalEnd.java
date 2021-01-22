@@ -47,7 +47,7 @@ public class DungeonChunkRoomPortalEnd extends DungeonChunkRoomVault {
 		
 		if (ST.valid(tPurpurBlock) && ST.valid(tPurpurPillar)) {
 			for (int tX = 1; tX < 15; tX++) for (int tZ = 1; tZ < 15; tZ++) {
-				if ((tX == 1 || tX == 2 || tX == 13 || tX == 14) && (tZ == 1 || tZ == 1 || tZ == 13 || tZ == 14)) {
+				if ((tX == 1 || tX == 2 || tX == 13 || tX == 14) && (tZ == 1 || tZ == 2 || tZ == 13 || tZ == 14)) {
 					aData.set  (tX, 0, tZ, tPurpurPillar, 0);
 					aData.set  (tX, 1, tZ, tPurpurPillar, 0);
 					aData.set  (tX, 2, tZ, tPurpurPillar, 0);

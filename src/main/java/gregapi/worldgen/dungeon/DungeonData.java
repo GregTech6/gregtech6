@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -231,7 +231,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean obsidian(int aX, int aY, int aZ, boolean aGravity) {
-		return set(aX, aY, aZ, Blocks.obsidian, 0, IL.NeLi_Obsidian.exists() ? IL.NeLi_Obsidian.block() : IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, aGravity ? IL.RC_Crushed_Obsidian.block() : Blocks.obsidian, aGravity ? 4 : 0);
+		return set(aX, aY, aZ, Blocks.obsidian, 0, IL.NeLi_Obsidian.exists() ? IL.NeLi_Obsidian.block() : IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, aGravity && IL.RC_Crushed_Obsidian.exists() ? IL.RC_Crushed_Obsidian.block() : Blocks.obsidian, aGravity && IL.RC_Crushed_Obsidian.exists() ? 4 : 0);
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {
