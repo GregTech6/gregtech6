@@ -559,12 +559,20 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenBlackSand       ("river.magnetite"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenTurf            ("swamp.turf"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
 		
-		new WorldgenPit             ("pit.clay.vanilla"        , T, Blocks.clay       , 0, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.brown"          , T, BlocksGT.Diggables, 1, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.red"            , F, BlocksGT.Diggables, 3, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM); // Disabled by default because it's supposed to be only in the Nether
-		new WorldgenPit             ("pit.clay.yellow"         , T, BlocksGT.Diggables, 4, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.blue"           , T, BlocksGT.Diggables, 5, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.white"          , T, BlocksGT.Diggables, 6, 1, 320, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		int tChance = 320;
+		if (MD.PFAA.mLoaded) {
+		tChance = 512;
+		new WorldgenPit             ("pit.clay.pfaa.lateric"   , T, ST.block(MD.PFAA, "weakClay"   ), 0, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.pfaa.bentonite" , T, ST.block(MD.PFAA, "weakOreClay"), 1, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.pfaa.fullers"   , T, ST.block(MD.PFAA, "weakOreClay"), 2, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.pfaa.kaolinite" , T, ST.block(MD.PFAA, "weakOreClay"), 3, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		}
+		new WorldgenPit             ("pit.clay.vanilla"        , T, Blocks.clay                     , 0, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.brown"          , T, BlocksGT.Diggables              , 1, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.red"            , F, BlocksGT.Diggables              , 3, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM); // Disabled by default because it's supposed to be only in the Nether
+		new WorldgenPit             ("pit.clay.yellow"         , T, BlocksGT.Diggables              , 4, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.blue"           , T, BlocksGT.Diggables              , 5, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.white"          , T, BlocksGT.Diggables              , 6, 1, tChance, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
 		new WorldgenNetherClay      ("nether.clay.red"         , T, GEN_NETHER);
 		new WorldgenNetherQuartz    ("nether.netherquartz"     , T, GEN_NETHER);

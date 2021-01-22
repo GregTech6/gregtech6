@@ -25,6 +25,7 @@ import static gregapi.util.CR.*;
 
 import gregapi.data.ANY;
 import gregapi.data.CS.FluidsGT;
+import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -33,6 +34,7 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
@@ -153,6 +155,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}};
 		}
 		
+		
 		if (MD.HEE.mLoaded) {
 			RM.biomass(ST.make(MD.HEE, "crossed_decoration", 8, W));
 			RM.biomass(ST.make(MD.HEE, "death_flower"      , 8, W));
@@ -172,6 +175,15 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
 			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HEE, "crossed_decoration", 1,13), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
 			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1,13), ST.make(Items.dye, 3, DYE_INDEX_Purple));
+		}
+		
+		
+		if (MD.MO.mLoaded) {
+			RM.LaserEngraver.addRecipe2(T, 16, 1000, ST.make(MD.MO, "isolinear_circuit", 1, 0), OP.plate.mat(MT.Au, 1), ST.make(MD.MO, "isolinear_circuit", 1, 1));
+			for (OreDictMaterial tMat : ANY.Diamond.mToThis)
+			RM.LaserEngraver.addRecipe2(T, 32, 1000, ST.make(MD.MO, "isolinear_circuit", 1, 1), OP.plateGem.mat(tMat, 1), ST.make(MD.MO, "isolinear_circuit", 1, 2));
+			for (OreDictMaterial tMat : ANY.Emerald.mToThis)
+			RM.LaserEngraver.addRecipe2(T, 64, 1000, ST.make(MD.MO, "isolinear_circuit", 1, 2), OP.plateGem.mat(tMat, 1), ST.make(MD.MO, "isolinear_circuit", 1, 3));
 		}
 		
 		
@@ -198,6 +210,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}});
 			}};
 		}
+		
 		
 		if (MD.NeLi.mLoaded) {
 			CR.delate(IL.NeLi_Bread.get(1));
@@ -392,6 +405,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shaped(IL.NeLi_Blackstone.get(1), DEF, "XX", "XX", 'X', rockGt.dat(MT.Blackstone));
 		}
 		
+		
 		if (MD.NePl.mLoaded) {
 			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
 			
@@ -430,6 +444,46 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		if (MD.PFAA.mLoaded) {
+			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 45), ST.make(Items.clay_ball, 1, 0));
+			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.clay_ball, 1, 0));
+			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.clay_ball, 1, 0));
+			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.clay_ball, 1, 0));
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 45), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.brick, 1, 0));
+			CR.shaped    (OP.plate.mat(MT.ClayBrown         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 45));
+			CR.shaped    (OP.plate.mat(MT.Bentonite         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 47));
+			CR.shaped    (OP.plate.mat(MT.Palygorskite      , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 48));
+			CR.shaped    (OP.plate.mat(MT.Kaolinite         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 49));
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 45), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakClay"   , 1,  0)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 47), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  1)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 48), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  2)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 49), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  3)});
+			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
+			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
+			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
+			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
+			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 45), OP.plate.mat(MT.ClayBrown   , 1));
+			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 47), OP.plate.mat(MT.Bentonite   , 1));
+			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 48), OP.plate.mat(MT.Palygorskite, 1));
+			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 49), OP.plate.mat(MT.Kaolinite   , 1));
+			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
+			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
+			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
+			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
+			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 45), OM.dust(MT.ClayBrown));
+			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 47), OM.dust(MT.Bentonite));
+			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 48), OM.dust(MT.Palygorskite));
+			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 49), OM.dust(MT.Kaolinite));
+			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakClay"   , 1,  0), OM.dust(MT.ClayBrown, U*4));
+			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  1), OM.dust(MT.Bentonite, U*4));
+			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  2), OM.dust(MT.Palygorskite, U*4));
+			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  3), OM.dust(MT.Kaolinite, U*4));
+			
+			
+			
+			
 			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}                    , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
 			RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}               , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
 			RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}                        , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), dust.mat(MT.V2O5, 2));
