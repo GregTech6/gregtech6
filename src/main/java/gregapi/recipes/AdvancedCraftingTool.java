@@ -72,7 +72,7 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 	@Override
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (mCondition.isTrue(aEvent.mMaterial)) {
-			if (aEvent.mMaterial.mHandleMaterial == ANY.Wood) {
+			if (aEvent.mMaterial.mHandleMaterial == ANY.Wood || aEvent.mMaterial.mHandleMaterial == ANY.WoodPlastic) {
 				RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, IL.Stick.get(1)), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
 			} else {
 				if (!aEvent.mMaterial.mHandleMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
