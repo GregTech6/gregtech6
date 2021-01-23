@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.WHITE + Math.min(mCapacity, mEnergy) + " / " + mCapacity + " " + mType.getChatFormat() + mType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + mSizeRec + EnumChatFormatting.GRAY);
+		aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(mCapacity, mEnergy)) + " / " + UT.Code.makeString(mCapacity) + " " + mType.getChatFormat() + mType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + mSizeRec + EnumChatFormatting.GRAY);
 	}
 	
 	@Override
@@ -123,7 +123,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) aChatReturn.add(mEnergy + " of " + mCapacity + " " + mType.getLocalisedNameShort());
+			if (aChatReturn != null) aChatReturn.add(UT.Code.makeString(mEnergy) + " of " + UT.Code.makeString(mCapacity) + " " + mType.getLocalisedNameShort());
 			return 1;
 		}
 		return 0;

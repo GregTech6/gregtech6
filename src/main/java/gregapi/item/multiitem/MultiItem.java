@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -252,7 +252,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 			} else {
 				for (TagData tEnergyType : tEnergyStats.getEnergyTypes(aStack)) {
 					long tCapacity = tEnergyStats.getEnergyCapacity(tEnergyType, aStack);
-					aList.add(LH.Chat.WHITE + Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack)) + " / " + tCapacity + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack) + EnumChatFormatting.GRAY);
+					aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack) + EnumChatFormatting.GRAY);
 				}
 			}
 		}

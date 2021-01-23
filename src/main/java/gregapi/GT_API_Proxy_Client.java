@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -431,7 +431,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tData.mMaterial.mMaterial.mID > 0 && tData.mMaterial.mMaterial.mID < 8000) {
 						aEvent.toolTip.add(LH.Chat.BLUE + "Material from the Periodic Table of Elements");
 					} else {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Random Material handeled by Greg API");
+						aEvent.toolTip.add(LH.Chat.BLUE + "Random Material handled by Greg API");
 					}
 				} else {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Material from " + tData.mMaterial.mMaterial.mOriginalMod.mName);

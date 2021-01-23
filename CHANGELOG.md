@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.07: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6 even though he cant Stream at the moment, while I'm working on my Life and things)
+6.14.07: (Not released yet, but soon)
 [NOTE] I've been indirectly asked through bear, to make GT6 Tools compatible with "Progressive Automation", but it only accepts Vanilla alike Tools, meaning that will never really work. But my Wrench can harvest all of its Machines now at the very least.
 [COMPAT] Per Fabrica Ad Astra (PFAA)
 If CustomOreGen is not installed, PFAA still works, this means PFAA Blocks exist but they wont generate. Because of this likely intended thing, I will now generate the 25 PFAA Rock Types with my own Stone Layer System alongside the other Stuff, if PFAA is installed without CustomOreGen.
