@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -500,20 +500,20 @@ public class Recipe {
 			// Now look for the Recipes inside the Item HashMaps, but only when the Recipes usually have Items.
 			if (mInputItemsCount > 0) for (ItemStack tStack1 : aInputs) if (tStack1 != null) {
 				Collection<Recipe>
-				tRecipes = mRecipeItemMap.get(new ItemStackContainer(tStack1));
+				tRecipes = mRecipeItemMap.get(tStack1);
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				
-				tRecipes = mRecipeItemMap.get(new ItemStackContainer(tStack1, W));
+				tRecipes = mRecipeItemMap.get(tStack1, W);
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				
 				ItemStack tStack2 = OreDictManager.INSTANCE.getStack_(F, tStack1);
 				
 				if (!ST.equal(tStack1, tStack2, T)) {
-				tRecipes = mRecipeItemMap.get(new ItemStackContainer(tStack2));
+				tRecipes = mRecipeItemMap.get(tStack2);
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				}
 				if (tStack1.getItem() != tStack2.getItem()) {
-				tRecipes = mRecipeItemMap.get(new ItemStackContainer(tStack2, W));
+				tRecipes = mRecipeItemMap.get(tStack2, W);
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				}
 			}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -63,6 +63,9 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 	}
 	public V get(ItemStack aStack) {
 		return get(new ItemStackContainer(aStack));
+	}
+	public V get(ItemStack aStack, long aMeta) {
+		return get(new ItemStackContainer(aStack, aMeta));
 	}
 	public V get(long aID, long aMeta) {
 		return get(new ItemStackContainer(aID, 1, aMeta));
