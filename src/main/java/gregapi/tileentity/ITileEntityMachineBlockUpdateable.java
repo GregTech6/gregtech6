@@ -120,7 +120,7 @@ public interface ITileEntityMachineBlockUpdateable {
 			
 			@Override
 			public void run() {
-				try {stepToUpdateMachine(mWorld, mCoords, new HashSetNoNulls<>(F, mCoords));} catch(Throwable e) {/**/}
+				try {stepToUpdateMachine(mWorld, mCoords, new HashSetNoNulls<>(F, mCoords));} catch(Throwable e) {/**/} finally {if (TICK_LOCK.isHeldByCurrentThread()) TICK_LOCK.unlock();}
 			}
 			
 			private void stepToUpdateMachine(World aWorld, ChunkCoordinates aCoords, HashSetNoNulls<ChunkCoordinates> aSet) {

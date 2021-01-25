@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
@@ -239,7 +240,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SuppressWarnings("unchecked")
 	public void onServerTick(ServerTickEvent aEvent) {
 		if (aEvent.side.isServer()) {
-			//TICK_LOCK.lock();
+			// Try acquiring the Lock within 10 Milliseconds. Otherwise fuck anyone who locks it up for too long, or any other faulty reason MC doesn't work.
+			try {TICK_LOCK.tryLock(10, TimeUnit.MILLISECONDS);} catch (Throwable e) {e.printStackTrace(ERR);} finally {if (TICK_LOCK.isHeldByCurrentThread()) TICK_LOCK.unlock();}
 			
 			// Making sure it is being free'd up in order to prevent exploits or Garbage Collection mishaps.
 			LAST_BROKEN_TILEENTITY.set(null);
@@ -438,7 +440,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}
 				EntityFoodTracker.tick();
-				//TICK_LOCK.unlock();
+				if (TICK_LOCK.isHeldByCurrentThread()) TICK_LOCK.unlock();
 			}
 		}
 	}
