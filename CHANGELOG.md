@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.08: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+[FIXED] Some Issue where the World somehow doesn't load.
 [ADDED] HSS-based Recipes for Railcraft Rails.
 
 
