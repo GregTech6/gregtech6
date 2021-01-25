@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.11: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.10: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,12 +13,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.08: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.14.08:
 [FIXED] Some Issue where the World somehow doesn't load.
 [ADDED] HSS-based Recipes for Railcraft Rails.
 
 
 6.14.07:
+[BROKEN] You might not be able to actually launch the Game on certain Computers. Nothing corrupting. ^^
 [NOTE] I've been indirectly asked through bear, to make GT6 Tools compatible with "Progressive Automation", but it only accepts Vanilla alike Tools, meaning that will never really work. But my Wrench can harvest all of its Machines now at the very least.
 [COMPAT] Per Fabrica Ad Astra (PFAA)
 If CustomOreGen is not installed, PFAA still works, this means PFAA Blocks exist but they wont generate. Because of this likely intended thing, I will now generate the 25 PFAA Rock Types with my own Stone Layer System alongside the other Stuff, if PFAA is installed without CustomOreGen.
