@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,46 +26,12 @@ import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import net.minecraft.item.ItemStack;
 
-public class GT_Tool_Chainsaw_HV extends GT_Tool_Chainsaw_LV {
-	@Override
-	public int getToolDamagePerBlockBreak() {
-		return 800;
-	}
-	
-	@Override
-	public int getToolDamagePerDropConversion() {
-		return 20;
-	}
-	
-	@Override
-	public int getToolDamagePerContainerCraft() {
-		return 3200;
-	}
-	
-	@Override
-	public int getToolDamagePerEntityAttack() {
-		return 3200;
-	}
-	
-	@Override
-	public int getBaseQuality() {
-		return 1;
-	}
-	
-	@Override
-	public float getBaseDamage() {
-		return 4.0F;
-	}
-	
-	@Override
-	public float getSpeedMultiplier() {
-		return 4.0F;
-	}
-	
-	@Override
-	public float getMaxDurabilityMultiplier() {
-		return 4.0F;
-	}
+public class GT_Tool_Chainsaw_HV extends GT_Tool_Chainsaw_MV {
+	@Override public int getToolDamagePerBlockBreak     () {return super.getToolDamagePerBlockBreak  () * 4;}
+	@Override public int getToolDamagePerEntityAttack   () {return super.getToolDamagePerEntityAttack() * 4;}
+	@Override public float getBaseDamage                () {return 4.0F;}
+	@Override public float getSpeedMultiplier           () {return 4.0F;}
+	@Override public float getMaxDurabilityMultiplier   () {return 4.0F;}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

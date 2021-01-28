@@ -49,15 +49,13 @@ import net.minecraftforge.common.IShearable;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
-	@Override
-	public int getToolDamagePerContainerCraft() {
-		return 200;
-	}
-	
-	@Override
-	public int getToolDamagePerEntityAttack() {
-		return 200;
-	}
+	@Override public int getBaseQuality                () {return 1;}
+	@Override public int getToolDamagePerContainerCraft() {return 200;}
+	@Override public int getToolDamagePerEntityAttack  () {return super.getToolDamagePerEntityAttack() * 4;}
+	@Override public float getSpeedMultiplier          () {return 2.0F;}
+	@Override public String getCraftingSound           () {return SFX.IC_CHAINSAW_01;}
+	@Override public String getEntityHitSound          () {return SFX.IC_CHAINSAW_02;}
+	@Override public String getMiningSound             () {return SFX.IC_CHAINSAW_01;}
 	
 	@Override
 	public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {
@@ -81,26 +79,6 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "killCreeperChainsaw");
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		return super.getDamageSource(aPlayer, aEntity);
-	}
-	
-	@Override
-	public float getSpeedMultiplier() {
-		return 2.0F;
-	}
-	
-	@Override
-	public String getCraftingSound() {
-		return SFX.IC_CHAINSAW_01;
-	}
-	
-	@Override
-	public String getEntityHitSound() {
-		return SFX.IC_CHAINSAW_02;
-	}
-	
-	@Override
-	public String getMiningSound() {
-		return SFX.IC_CHAINSAW_01;
 	}
 	
 	@Override

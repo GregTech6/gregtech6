@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,8 +53,8 @@ public class GT_Tool_Axe extends ToolStats {
 	}
 	
 	@Override
-	public int getToolDamagePerDropConversion() {
-		return 1;
+	public int getToolDamagePerEntityAttack() {
+		return 200;
 	}
 	
 	@Override
@@ -63,8 +63,8 @@ public class GT_Tool_Axe extends ToolStats {
 	}
 	
 	@Override
-	public int getToolDamagePerEntityAttack() {
-		return 200;
+	public int getToolDamagePerDropConversion() {
+		return 1;
 	}
 	
 	@Override
