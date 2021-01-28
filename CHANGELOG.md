@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.09: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Chainsaws used WAY too much durability for Treecapitation!
 
 
 6.14.08:

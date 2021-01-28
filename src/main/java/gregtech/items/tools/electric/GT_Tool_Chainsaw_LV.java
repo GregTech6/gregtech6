@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,16 +50,6 @@ import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	@Override
-	public int getToolDamagePerBlockBreak() {
-		return 50;
-	}
-	
-	@Override
-	public int getToolDamagePerDropConversion() {
-		return 5;
-	}
-	
-	@Override
 	public int getToolDamagePerContainerCraft() {
 		return 200;
 	}
@@ -94,23 +84,8 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	}
 	
 	@Override
-	public int getBaseQuality() {
-		return 0;
-	}
-	
-	@Override
-	public float getBaseDamage() {
-		return 3.0F;
-	}
-	
-	@Override
 	public float getSpeedMultiplier() {
 		return 2.0F;
-	}
-	
-	@Override
-	public float getMaxDurabilityMultiplier() {
-		return 1.0F;
 	}
 	
 	@Override
