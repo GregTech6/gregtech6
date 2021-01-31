@@ -270,7 +270,7 @@ public class CS {
 	, BIOMES_FOREST         = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Dark Forest", "Dark Forest Center", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest")
 	, BIOMES_MAPLE          = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Maple Woods", "Firefly Forest")
 	, BIOMES_DARK_FOREST    = new BiomeNameSet(BiomeGenBase.roofedForest, "Dark Forest", "Dark Forest Center")
-	, BIOMES_PLAINS         = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Rainforest Plains", "Tropics", "Highlands", "Bald Hill", "Tundra", "Low Hills")
+	, BIOMES_PLAINS         = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Rainforest Plains", "Tropics", "Highlands", "Bald Hill", "Tundra", "Low Hills", "Mining Biome")
 	, BIOMES_HAZEL          = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim")
 	, BIOMES_COCONUT        = new BiomeNameSet(BiomeGenBase.beach, "Tropical Ocean", "Tropical Beach", "Tropical River", "Tropical Lake", "Tropical Archipelago", "Tropical Islands", "Tropics", "Oasis")
 	, BIOMES_MOUNTAINS      = new BiomeNameSet(BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.extremeHillsPlus, BiomeGenBase.stoneBeach, "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Twilight Highlands", "Thornlands", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
@@ -841,6 +841,7 @@ public class CS {
 	, DIM_NETHER = -1
 	, DIM_END = 1
 	, DIM_ENVM = -2
+	, DIM_AROMA = -3 // TODO look it up
 	, DIM_MOON = 2
 	, DIM_MARS = 3
 	, DIM_ASTEROIDS = 4
@@ -879,12 +880,13 @@ public class CS {
 	, GEN_ATUM          = new ArrayListNoNulls<>()
 	, GEN_DEEPDARK      = new ArrayListNoNulls<>()
 	, GEN_ENVM          = new ArrayListNoNulls<>()
+	, GEN_AROMA         = new ArrayListNoNulls<>()
 	, GEN_ALFHEIM       = new ArrayListNoNulls<>()
 	, GEN_TROPICS       = new ArrayListNoNulls<>()
 	, GEN_CANDY         = new ArrayListNoNulls<>()
-	, GEN_GEMS[]        = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
-	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY}
-	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
+	, GEN_GEMS[]        = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_AROMA, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
+	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_AROMA, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY}
+	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_AROMA, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
 	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
@@ -906,11 +908,12 @@ public class CS {
 	, ORE_ATUM          = new ArrayListNoNulls<>()
 	, ORE_DEEPDARK      = new ArrayListNoNulls<>()
 	, ORE_ENVM          = new ArrayListNoNulls<>()
+	, ORE_AROMA         = new ArrayListNoNulls<>()
 	, ORE_ALFHEIM       = new ArrayListNoNulls<>()
 	, ORE_TROPICS       = new ArrayListNoNulls<>()
 	, ORE_CANDY         = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
-	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
+	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_AROMA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
+	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_AROMA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
 	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */
@@ -1910,6 +1913,8 @@ public class CS {
 		, ATG               = "ATG"
 		, RTG               = "RTG"
 		, RWG               = "RWG"
+		
+		, AROMA_MINING      = "Aroma1997sDimension"
 		
 		, GaSu              = "ganyssurface"
 		, GaNe              = "ganysnether"

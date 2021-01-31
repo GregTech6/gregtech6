@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -124,6 +124,7 @@ public class GT6WorldGenerator {
 		if (WD.dimALF   (aWorld.provider)) {generate(new WorldGenContainer(GEN_ALFHEIM     , ORE_ALFHEIM     , DIM_ALFHEIM     , aWorld, aX, aZ)); return;}
 		if (WD.dimDD    (aWorld.provider)) {generate(new WorldGenContainer(GEN_DEEPDARK    , ORE_DEEPDARK    , DIM_DEEPDARK    , aWorld, aX, aZ)); return;}
 		if (WD.dimENVM  (aWorld.provider)) {generate(new WorldGenContainer(GEN_ENVM        , ORE_ENVM        , DIM_ENVM        , aWorld, aX, aZ)); return;}
+		if (WD.dimAROMA (aWorld.provider)) {generate(new WorldGenContainer(GEN_AROMA       , ORE_AROMA       , DIM_AROMA       , aWorld, aX, aZ)); return;}
 		if (WD.dimTROPIC(aWorld.provider)) {generate(new WorldGenContainer(GEN_TROPICS     , ORE_TROPICS     , DIM_TROPICS     , aWorld, aX, aZ)); return;}
 		if (WD.dimCANDY (aWorld.provider)) {generate(new WorldGenContainer(GEN_CANDY       , ORE_CANDY       , DIM_CANDY       , aWorld, aX, aZ)); return;}
 		

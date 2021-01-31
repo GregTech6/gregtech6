@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -57,7 +57,7 @@ public class WorldgenPit extends WorldgenObject {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		if (aRandom.nextInt(mDivider) > mChance || !(BIOMES_PLAINS.contains(aBiomes[7][7].biomeName) || BIOMES_SAVANNA.contains(aBiomes[7][7].biomeName))) return F;
 		
-		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+8, tLowerBound = WD.waterLevel(aWorld)-8;
+		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+16, tLowerBound = WD.waterLevel(aWorld)-8;
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 71, tZ+j);
 			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 7; tY--, tLastBlock = tBlock) {

@@ -194,6 +194,8 @@ public class MD {
 	, RTG               = new ModData(ModIDs.RTG                , "Realistic Terrain Generation")
 	, RWG               = new ModData(ModIDs.RWG                , "Realistic World Generation")
 	
+	, AROMA_MINING      = new ModData(ModIDs.AROMA_MINING       , "Aroma1997's Mining Dimension")
+	
 	, GaSu              = new ModData(ModIDs.GaSu               , "Ganys Surface")
 	, GaNe              = new ModData(ModIDs.GaNe               , "Ganys Nether")
 	, GaEn              = new ModData(ModIDs.GaEn               , "Ganys End")
