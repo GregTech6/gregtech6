@@ -841,7 +841,7 @@ public class CS {
 	, DIM_NETHER = -1
 	, DIM_END = 1
 	, DIM_ENVM = -2
-	, DIM_AROMA = -3 // TODO look it up
+	, DIM_AROMA = 6 // Collides with Aether by default
 	, DIM_MOON = 2
 	, DIM_MARS = 3
 	, DIM_ASTEROIDS = 4
