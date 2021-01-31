@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -185,6 +185,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 		aList.add(LH.Chat.DGREEN + "Will collect XP Orbs to make Mob Essence");
 		if (MD.OB.mLoaded)
 		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain your XP");
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
 	}
 	
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}

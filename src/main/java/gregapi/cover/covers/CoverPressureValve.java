@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,6 +69,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 		aList.add(LH.Chat.CYAN + "Releases Fluids when Pipe is full.");
 		aList.add(LH.Chat.ORANGE + "Liquids require Tank in front!");
 		aList.add(LH.Chat.ORANGE + "Gasses require Air or Tank in front!");
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
 	}
 	
 	@Override public float[] getCoverBounds (byte aCoverSide, CoverData aData) {return BOXES_VALVES[aCoverSide];}

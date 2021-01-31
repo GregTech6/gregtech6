@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,6 +129,7 @@ public class LH {
 	, TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH = "gt.lang.use.monkey.wrench.to.toggle.outputs"
 	, TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH = "gt.lang.use.monkey.wrench.to.toggle.auto.inputs"
 	, TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH = "gt.lang.use.monkey.wrench.to.toggle.auto.outputs"
+	, TOOL_TO_TOGGLE_CONTROLLER_COVER = "gt.lang.use.controlcover.to.toggle"
 	, TOOL_TO_TOGGLE_SCREWDRIVER = "gt.lang.use.screwdriver.to.toggle"
 	, TOOL_TO_TOGGLE_MONKEY_WRENCH = "gt.lang.use.monkey.wrench.to.toggle"
 	, TOOL_TO_TOGGLE_CUTTER = "gt.lang.use.cutter.to.toggle"
@@ -433,6 +434,7 @@ public class LH {
 		add(COVER_TOOLTIP                               , "This Item can be used as Cover");
 		add(TOOL_TO_REMOVE_SHOVEL                       , "Use Shovel to empty this");
 		add(TOOL_TO_CHANGE_DESIGN_CHISEL                , "Use Chisel to change Design");
+		add(TOOL_TO_TOGGLE_CONTROLLER_COVER             , "Use Cover Controller Cover to toggle ON/OFF");
 		add(TOOL_TO_TOGGLE_SCREWDRIVER                  , "Use Screwdriver to toggle Modes");
 		add(TOOL_TO_TOGGLE_MONKEY_WRENCH                , "Use Monkey Wrench to toggle Modes");
 		add(TOOL_TO_TOGGLE_CUTTER                       , "Use Cutter to toggle Modes");

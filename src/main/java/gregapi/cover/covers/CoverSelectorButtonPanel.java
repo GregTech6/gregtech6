@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -95,8 +95,9 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));
-		aList.add(LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase[(aData.mVisuals[aSide] >> 4) & 7], sTextures[UT.Code.bind4(aData.mVisuals[aSide] & 15)]);}
