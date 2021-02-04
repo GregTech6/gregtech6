@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -234,6 +234,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   1, 1, 4, OP.ingot.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   2, 1, 4, OP.ingot.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   2, 1, 4, OP.ingot.mat(MT.Bronze, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   1, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   1, 1, 4, OP.gemFlawless.mat(MT.BlueSapphire, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   1, 1, 4, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        ,   1, 1, 4, OP.gemFlawless.mat(MT.YellowSapphire, 1));

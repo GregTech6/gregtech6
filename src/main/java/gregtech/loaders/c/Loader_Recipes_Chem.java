@@ -89,7 +89,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		}
 		
 		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Mn), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
-		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Si), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*1));
+		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Si), FL.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*3));
 		
 		RM.Bath         .addRecipe1(T,  0, 2048, OP.dust.mat(MT.KAlO2 , 4), FL.mul(tFluid, 6), NF, OP.dust.mat(MT.AlO3H3, 7), OP.dust.mat(MT.KOH , 3));
 		RM.Bath         .addRecipe1(T,  0, 2048, OP.dust.mat(MT.NaAlO2, 4), FL.mul(tFluid, 6), NF, OP.dust.mat(MT.AlO3H3, 7), OP.dust.mat(MT.NaOH, 3));
