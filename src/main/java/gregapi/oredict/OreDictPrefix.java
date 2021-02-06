@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -496,7 +496,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	/** This is used to determine if any of the ItemStacks belongs to this Prefix. */
 	public boolean contains(ItemStack... aStacks) {
 		if (aStacks == null) return F;
-		for (ItemStack aStack : aStacks) if (mRegisteredItems.contains(aStack, T)) return T;
+		for (ItemStack aStack : aStacks) if (ST.valid(aStack) && mRegisteredItems.contains(aStack, T)) return T;
 		return F;
 	}
 	

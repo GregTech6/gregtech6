@@ -29,6 +29,7 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Place_Sapling;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Workbench;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.old.Textures;
@@ -141,6 +142,7 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_saw, SFX.MC_DIG_WOOD, getToolDamagePerContainerCraft(), F, T));
+		aItem.addItemBehavior(aID, Behavior_Place_Sapling.INSTANCE);
 		aItem.addItemBehavior(aID, Behavior_Place_Workbench.INSTANCE);
 	}
 	
