@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ public class NoiseGenerator {
 		mSeed = (int)aSeed;
 	}
 	public NoiseGenerator(World aWorld) {
-		mSeed = (int)aWorld.getSeed();
+		mSeed = (int)(aWorld.getSeed() ^ aWorld.provider.dimensionId);
 	}
 	public NoiseGenerator setFrequency(float aFrequency) {
 		mFrequencyX = aFrequency;
