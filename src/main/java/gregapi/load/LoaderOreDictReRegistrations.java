@@ -169,6 +169,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodPineapplecider"      , "foodAnanascider");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodPineapplewine"       , "foodAnanaswine");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodGrapefruitsmoothie"  , "foodGrapefruitjellysmoothie");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodBarbecuesauce"       , "foodBBQsauce");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodBarbecuesauce"       , "foodBbqsauce");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("leafTobacco"             , "cropTobacco");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("leafCoca"                , "cropCoca");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("foodCoffeeBeans"         , "cropCoffee");
@@ -835,6 +837,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodWhiskey"                     , "listAllbeverage");
 		OreDictManager.INSTANCE.addReRegistration("foodWine"                        , "listAllbeverage");
 		OreDictManager.INSTANCE.addReRegistration("bottleHoneydew"                  , "listAllbeverage");
+		OreDictManager.INSTANCE.addReRegistration("foodBarbecuesauce"               , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("foodHotsauce"                    , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("foodMayo"                        , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("foodKetchup"                     , "listAllcondiment");

@@ -262,35 +262,38 @@ public enum FL {
 	, Cream_Chocolate           ("chocolatecream"                                           , SIMPLE, LIQUID, FOOD)
 	, Cream_Coconut             ("coconutcream"                                             , SIMPLE, LIQUID, FOOD)
 	, Cream_Nutella             ("nutella"                                                  , SIMPLE, LIQUID, FOOD)
-
+	
+	, Ketchup                   ("ketchup"                                                  , SIMPLE, LIQUID, FOOD)
+	
 	, Mayo                      ("mayo"                                                     , SIMPLE, LIQUID, FOOD)
 	, Dressing                  ("potion.dressing"                                          , SIMPLE, LIQUID, FOOD)
-
+	
 	, Soup_Mushroom             ("mushroomsoup"                                             , SIMPLE, LIQUID, FOOD)
-
+	
 	, Sauce_Chili               ("chillysauce"              , "potion.chillysauce"          , SIMPLE, LIQUID, FOOD)
 	, Sauce_Hot                 ("potion.hotsauce"                                          , SIMPLE, LIQUID, FOOD)
 	, Sauce_Diabolo             ("potion.diabolosauce"                                      , SIMPLE, LIQUID, FOOD)
 	, Sauce_Diablo              ("potion.diablosauce"                                       , SIMPLE, LIQUID, FOOD)
 	, Sauce_Snitches            ("potion.diablosauce.strong"                                , SIMPLE, LIQUID, FOOD)
-
+	, Sauce_BBQ                 ("bbqsauce"                                                 , SIMPLE, LIQUID, FOOD)
+	
 	, Slime_Pink                ("pinkslime"                                                , SIMPLE, LIQUID, FOOD, SLIME)
 	, Slime_Green               ("slime"                                                    , SIMPLE, LIQUID, FOOD, SLIME)
 	, BAWLS                     ("bawls"                                                    , SIMPLE, LIQUID, FOOD)
-
+	
 	, Tea                       ("tea"                      , "potion.tea"                  , SIMPLE, LIQUID, FOOD, THERMOS, TEA)
 	, Tea_Sweet                 ("sweettea"                 , "potion.sweettea"             , SIMPLE, LIQUID, FOOD, THERMOS, TEA)
 	, Tea_Ice                   ("icetea"                   , "potion.icetea"               , SIMPLE, LIQUID, FOOD, THERMOS, TEA)
-
+	
 	, Purple_Drink              ("purpledrink"              , "potion.purpledrink"          , SIMPLE, LIQUID, FOOD)
 	, Lemonade                  ("potion.lemonade"                                          , SIMPLE, LIQUID, FOOD)
 	, Grenade_Juice             ("potion.cavejohnsonsgrenadejuice"                          , SIMPLE, LIQUID, FOOD)
-
+	
 	, Vinegar_Grape             ("vinegar"                  , "potion.vinegar"              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
 	, Vinegar_Apple             ("applevinegar"                                             , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
 	, Vinegar_Cane              ("canevinegar"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
 	, Vinegar_Rice              ("ricevinegar"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
-
+	
 	, Wine_Fruit                ("binnie.juice"                                             , SIMPLE, LIQUID, FOOD, ALCOHOLIC, WINE)
 	, Wine_Lemon                ("limoncello"               , "potion.limoncello"           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, WINE)
 	, Wine_Agave                ("binnie.wineagave"                                         , SIMPLE, LIQUID, FOOD, ALCOHOLIC, WINE)
