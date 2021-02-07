@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,8 +53,8 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 		MT.Electrum         .addEnchantmentForTools(this, 3);
 		MT.BlackBronze      .addEnchantmentForTools(this, 2);
 		MT.BlackSteel       .addEnchantmentForTools(this, 2);
-		MT.RedSteel         .addEnchantmentForTools(this, 3);
-		MT.BlueSteel        .addEnchantmentForTools(this, 1);
+		MT.RedSteel         .addEnchantmentForTools(this, 1);
+		MT.BlueSteel        .addEnchantmentForTools(this, 3);
 		MT.SterlingSilver   .addEnchantmentForTools(this, 4);
 		MT.AstralSilver     .addEnchantmentForTools(this, 5);
 		MT.VibraniumSilver  .addEnchantmentForTools(this,10);
