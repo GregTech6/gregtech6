@@ -35,7 +35,7 @@ public class Behavior_Place_Sapling extends AbstractBehaviorDefault {
 	
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || SIDES_BOTTOM_HORIZONTAL[aSide]) return F;
 		
 		// Scan Inventory for suitable Saplings.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {

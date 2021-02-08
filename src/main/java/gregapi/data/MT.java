@@ -2877,7 +2877,7 @@ public class MT {
 			Midasium                        .addOreByProducts(Au                        );
 			Mithril                         .addOreByProducts(Pt                        );
 			
-// TODO     Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.Chalcopyrite          , 8*U), OM.stack(C                  , 1*U)));
+//          Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.Chalcopyrite          , 8*U), OM.stack(C                  , 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(Fe2O3                         , 5*U), OM.stack(C                  , 1*U), OM.stack(CaCO3, 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.Magnetite             ,14*U), OM.stack(C                  , 3*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(OREMATS.BasalticMineralSand   ,14*U), OM.stack(C                  , 3*U)));

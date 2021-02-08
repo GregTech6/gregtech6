@@ -22,6 +22,7 @@ package gregapi.recipes.handlers;
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
+import gregapi.block.IPrefixBlock;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -130,6 +131,11 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			}
 		}
 		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));
+	}
+	
+	@Override
+	public boolean containsInput(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+		return (aData != null && ST.block(aStack) instanceof IPrefixBlock && aData.mPrefix.contains(TD.Prefix.STANDARD_ORE)) || super.containsInput(aMap, aStack, aData);
 	}
 	
 	@Override
