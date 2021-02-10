@@ -135,6 +135,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean containsInput(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+		// For some Reason it requires this to let Items in, even if it should actually be able to find the Recipe.
 		return (aData != null && ST.block(aStack) instanceof IPrefixBlock && aData.mPrefix.contains(TD.Prefix.STANDARD_ORE)) || super.containsInput(aMap, aStack, aData);
 	}
 	

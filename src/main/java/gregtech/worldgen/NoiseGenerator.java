@@ -22,14 +22,15 @@ package gregtech.worldgen;
 import net.minecraft.world.World;
 
 public class NoiseGenerator {
-	public int mSeed = 42;
+	public int mSeed = 42, mOffsetY = 0;
 	private float mFrequencyX = 0.009F, mFrequencyY = 0.075F, mFrequencyZ = 0.009F;
 	
 	public NoiseGenerator(long aSeed) {
 		mSeed = (int)aSeed;
 	}
 	public NoiseGenerator(World aWorld) {
-		mSeed = (int)(aWorld.getSeed() ^ aWorld.provider.dimensionId);
+		mOffsetY = 512 * aWorld.provider.dimensionId;
+		mSeed = (int)aWorld.getSeed();
 	}
 	public NoiseGenerator setFrequency(float aFrequency) {
 		mFrequencyX = aFrequency;
@@ -51,7 +52,11 @@ public class NoiseGenerator {
 	
 	/** @return a Number between -1.0F and +1.0F. Hitting exactly +-1.0F is extremely unlikely, but possible. */
 	public float get(float aX, float aY, float aZ) {
-		aX *= mFrequencyX; aY *= mFrequencyY; aZ *= mFrequencyZ;
+		aY += mOffsetY;
+		aX *= mFrequencyX;
+		aY *= mFrequencyY;
+		aZ *= mFrequencyZ;
+		
 		int xr = Math.round(aX), yr = Math.round(aY), zr = Math.round(aZ), xc = 0, yc = 0, zc = 0;
 		float distance = 999999;
 		
