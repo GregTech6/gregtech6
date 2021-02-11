@@ -146,6 +146,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -634,8 +635,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									aEvent.player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3));
 								}
 								if (tCrazyJ1984 && !tStack.hasTagCompound() && tData.hasValidPrefixData() && tData.mPrefix.mNameInternal.startsWith("gem")) {
-									if (tData.mMaterial.mMaterial == MT.Diamond  ) ST.name_(tStack, tData.mPrefix.mMaterialPre + MT.Craponite.mNameLocal + tData.mPrefix.mMaterialPost);
-									if (tData.mMaterial.mMaterial == MT.Craponite) ST.name_(tStack, tData.mPrefix.mMaterialPre + MT.Diamond  .mNameLocal + tData.mPrefix.mMaterialPost);
+									if (tData.mMaterial.mMaterial == MT.Diamond    ) ST.name_(tStack, tData.mPrefix.mMaterialPre + MT.Craponite.mNameLocal + tData.mPrefix.mMaterialPost);
+									if (tData.mMaterial.mMaterial == MT.DiamondPink) ST.name_(tStack, tData.mPrefix.mMaterialPre + MT.Craponite.mNameLocal + tData.mPrefix.mMaterialPost);
+									if (tData.mMaterial.mMaterial == MT.Craponite  ) ST.name_(tStack, tData.mPrefix.mMaterialPre + MT.Diamond  .mNameLocal + tData.mPrefix.mMaterialPost);
 								}
 							}
 							if (tHungerEffect) tCount+=(tStack.stackSize * 64) / Math.max(1, tStack.getMaxStackSize());
@@ -1014,9 +1016,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();
 		while (aDrops.hasNext()) {
-			ItemStack tDrop = aDrops.next();
-			if (ST.invalid(tDrop) || ItemsGT.ILLEGAL_DROPS.contains(tDrop, T)) {aDrops.remove(); continue;}
-			if (ST.item_(tDrop) == Items.gold_nugget) ST.meta_(tDrop, 0);
+			ItemStack aDrop = aDrops.next();
+			if (ST.invalid(aDrop) || ItemsGT.ILLEGAL_DROPS.contains(aDrop, T)) {aDrops.remove(); continue;}
+			if (ST.item_(aDrop) == Items.gold_nugget) ST.meta_(aDrop, 0);
 		}
 		
 		if (aEvent.block == Blocks.dirt && aEvent.blockMetadata == 1) for (int i = 0, j = aEvent.drops.size(); i < j; i++) if (ST.block(aEvent.drops.get(0)) == Blocks.dirt) {
@@ -1095,11 +1097,20 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (tCanCollect && !aEvent.drops.isEmpty()) {
 					boolean aCollectSound = T;
 					aDrops = aEvent.drops.iterator();
-					while (aDrops.hasNext()) if (UT.Inventories.addStackToPlayerInventory(aEvent.harvester, ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z))) {
-						aDrops.remove();
-						if (aCollectSound) {
-							UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
-							aCollectSound = F;
+					while (aDrops.hasNext()) {
+						ItemStack aDrop = ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z);
+						
+						EntityItem tEntity = ST.entity(aEvent.harvester, aDrop);
+						EntityItemPickupEvent tEvent = new EntityItemPickupEvent(aEvent.harvester, tEntity);
+						ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
+						if (MinecraftForge.EVENT_BUS.post(tEvent)) continue;
+						
+						if (tEvent.getResult() == Result.ALLOW || aDrop.stackSize <= 0 || UT.Inventories.addStackToPlayerInventory(aEvent.harvester, aDrop)) {
+							aDrops.remove();
+							if (aCollectSound) {
+								UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
+								aCollectSound = F;
+							}
 						}
 					}
 				}

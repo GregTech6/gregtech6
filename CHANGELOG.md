@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.09: (Not released yet, released whenever it needs to be)
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
+[FIXED] Forestry Backpacks didn't work with Autocollecting Tools, because the Magnetic Autocollect did not throw an Item Collect Event.
 [FIXED] Chainsaws used WAY too much durability for Treecapitation!
 [FIXED] Worldgeneration in different Dimensions had the same RNG as on the Overworld. Now the Seed is being XOR-ed with the Dimension ID to prevent that. This has the convenient Side Effect of the Overworld staying the same as before, because it's ID is Zero.
 [CHANGED] Blue Steel is Red Steel now and vice versa. This should fix my ages old fuckup of the Recipes. Everything should still be the same as before when it comes to Stats, just the Color of the Material changed. If you used Matter Fabricators to make Red/Blue Steel for some reason, you may need to check the USB Stick with the Recipe.
