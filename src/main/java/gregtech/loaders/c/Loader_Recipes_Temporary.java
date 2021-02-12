@@ -464,22 +464,22 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
-			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 45), OP.plate.mat(MT.ClayBrown   , 1));
-			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 47), OP.plate.mat(MT.Bentonite   , 1));
-			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 48), OP.plate.mat(MT.Palygorskite, 1));
-			RM.RollBender.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 49), OP.plate.mat(MT.Kaolinite   , 1));
-			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
-			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
-			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
-			RM.Compressor.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
-			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 45), OM.dust(MT.ClayBrown));
-			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 47), OM.dust(MT.Bentonite));
-			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 48), OM.dust(MT.Palygorskite));
-			RM.Mortar    .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 49), OM.dust(MT.Kaolinite));
-			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakClay"   , 1,  0), OM.dust(MT.ClayBrown, U*4));
-			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  1), OM.dust(MT.Bentonite, U*4));
-			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  2), OM.dust(MT.Palygorskite, U*4));
-			RM.Mortar    .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  3), OM.dust(MT.Kaolinite, U*4));
+			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 45), OP.plate.mat(MT.ClayBrown   , 1));
+			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 47), OP.plate.mat(MT.Bentonite   , 1));
+			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 48), OP.plate.mat(MT.Palygorskite, 1));
+			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 49), OP.plate.mat(MT.Kaolinite   , 1));
+			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
+			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
+			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
+			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
+			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 45), OM.dust(MT.ClayBrown));
+			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 47), OM.dust(MT.Bentonite));
+			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 48), OM.dust(MT.Palygorskite));
+			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 49), OM.dust(MT.Kaolinite));
+			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakClay"   , 1,  0), OM.dust(MT.ClayBrown, U*4));
+			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  1), OM.dust(MT.Bentonite, U*4));
+			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  2), OM.dust(MT.Palygorskite, U*4));
+			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  3), OM.dust(MT.Kaolinite, U*4));
 			
 			
 			

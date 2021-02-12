@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -221,14 +221,14 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 2, NF,  16,32,     0, NF, bulletGtMedium  , 1, OP.bulletGtMedium  .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 3, NF,  16,64,     0, NF, bulletGtLarge   , 1, OP.bulletGtLarge   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
-		RM.RollingMill          .add(new RecipeMapHandlerPrefix(compressed                      , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		RM.RollingMill          .add(new RecipeMapHandlerPrefix(plateCurved                     , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotDouble                     , 1, NF,  16, 0,   256, NF, plateDouble     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotTriple                     , 1, NF,  16, 0,   256, NF, plateTriple     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotQuadruple                  , 1, NF,  16, 0,   256, NF, plateQuadruple  , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotQuintuple                  , 1, NF,  16, 0,   256, NF, plateQuintuple  , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(blockSolid                      , 1, NF,  16, 0,   256, NF, plateDense      , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		RM.RollingMill          .add(new RecipeMapHandlerPrefix(compressed                      , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		RM.RollingMill          .add(new RecipeMapHandlerPrefix(plateCurved                     , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, sheetGt         , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
 		RM.Wiremill             .add(new RecipeMapHandlerPrefix(stick                           , 1, NF,  16, 0,   128, NF, wireFine        , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
@@ -236,10 +236,10 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Wiremill             .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16, 0,   128, NF, wireGt01        , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.Wiremill             .add(new RecipeMapHandlerPrefix(compressed                      , 1, NF,  16, 0,   128, NF, wireGt01        , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
-		RM.RollBender           .add(new RecipeMapHandlerPrefix(wireFine                        , 2, NF,  16, 0,   256, NF, springSmall     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
+		RM.RollBender           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, plateCurved     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
 		RM.RollBender           .add(new RecipeMapHandlerPrefix(stick                           , 1, NF,  16, 0,   256, NF, ring            , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
 		RM.RollBender           .add(new RecipeMapHandlerPrefix(stickLong                       , 1, NF,  16, 0,   256, NF, spring          , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
-		RM.RollBender           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, plateCurved     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
+		RM.RollBender           .add(new RecipeMapHandlerPrefix(wireFine                        , 2, NF,  16, 0,   256, NF, springSmall     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
 		
 		RM.ClusterMill          .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, foil            , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
 		
