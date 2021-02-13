@@ -628,7 +628,7 @@ public class WD {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ), tStone = (aWorld.provider.dimensionId == DIM_NETHER ? Blocks.netherrack : Blocks.stone);
 		
 		if (tBlock == NB || bedrock(tBlock)) {
-			for (int i = 1; i < 7; i++) for (byte tSide : ALL_SIDES_BUT_BOTTOM) {
+			for (byte tSide : ALL_SIDES_BUT_BOTTOM) for (int i = 1; i < 7; i++) {
 				tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide]*i, aY+OFFSETS_Y[tSide]*i, aZ+OFFSETS_Z[tSide]*i);
 				if (tBlock != NB && tBlock != tStone && !bedrock(tBlock)) {
 					int tMetaData = aWorld.getBlockMetadata(aX+OFFSETS_X[tSide]*i, aY+OFFSETS_Y[tSide]*i, aZ+OFFSETS_Z[tSide]*i);

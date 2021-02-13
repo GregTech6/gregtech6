@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -141,48 +141,61 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
-				ItemStack tRock = OP.rockGt.mat(mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial, 1);
-				if (ST.valid(tRock)) {
-					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
-					if (tRegistry != null) {
-						int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
-						,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
-						for (int i = 0; i < 32; i++) {
-							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
-							for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
-								Block tContact = aWorld.getBlock(tX, tY, tZ);
-								if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
-								if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
-								if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
-								if (mIndicatorFlowers && (tContact != Blocks.dirt || !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)) && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
-									WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);
-									if (mFlower.canBlockStay(aWorld, tX, tY+1, tZ)) break;
-									WD.set(aWorld, tX, tY+1, tZ, NB, 0, 0);
-								}
-								if (mIndicatorRocks && (tContact.getMaterial() == Material.grass || tContact.getMaterial() == Material.ground || tContact.getMaterial() == Material.sand || tContact.getMaterial() == Material.rock)) {
-									tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tRock), F, T);
-									break;
-								}
-								break;
-							}
-						}
+			
+			try {
+				for (int tX = -2; tX <= 2; tX++) for (int tZ = -2; tZ <= 2; tZ++) {
+					switch(aRandom.nextInt(6)) {
+					case 0:         BlocksGT.oreBedrock         .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
+					case 1: case 2: BlocksGT.oreSmallBedrock    .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
 					}
 				}
+			} catch(Throwable e) {
+				e.printStackTrace(ERR);
 			}
 			
-			int[] tDistances = new int[] {0, 3, 6, 8, 9, 7, 4};
-			for (int tY = 1; tY < 7; tY++) for (int tX = -tDistances[tY]; tX <= tDistances[tY]; tX++) for (int tZ = -tDistances[tY]; tZ <= tDistances[tY]; tZ++) {
-				WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
-				switch(aRandom.nextInt(6)) {
-				case 0:         WD.setOre     (aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
-				case 1: case 2: WD.setSmallOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
+			try {
+				// Keep Distances within the Chunk for this important step.
+				int[] tD = new int[] {0, 3, 5, 6, 7, 6, 4};
+				for (int tY = 1; tY < tD.length; tY++) for (int tX = -tD[tY]; tX <= tD[tY]; tX++) for (int tZ = -tD[tY]; tZ <= tD[tY]; tZ++) {
+					WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
+					switch(aRandom.nextInt(6)) {
+					case 0:         WD.setOre     (aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
+					case 1: case 2: WD.setSmallOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
+					}
 				}
+			} catch(Throwable e) {
+				e.printStackTrace(ERR);
 			}
-			for (int tX = -2; tX <= 2; tX++) for (int tZ = -2; tZ <= 2; tZ++) {
-				switch(aRandom.nextInt(6)) {
-				case 0:         BlocksGT.oreBedrock         .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
-				case 1: case 2: BlocksGT.oreSmallBedrock    .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
+			
+			if ((mIndicatorRocks || mIndicatorFlowers) && (!GENERATE_STREETS || aWorld.provider.dimensionId != 0 || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) { 
+				MultiTileEntityRegistry tRegistry = (mIndicatorRocks ? MultiTileEntityRegistry.getRegistry("gt.multitileentity") : null);
+				ItemStack tRock = (tRegistry == null ? null : OP.rockGt.mat(mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial, 1));
+				boolean tFlowers = (mIndicatorFlowers && !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)), tRocks = ST.valid(tRock);
+				
+				int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
+				,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
+				// Generate first an 8x8 of 4, then a 16x16 of 8, and at the end a 32x32 of 16 Rocks/Flowers. That way the Pattern gets denser in the middle, and Chunk Boundary Issues of GalactiCraft wont be as terrible.
+				for (int tD = 4; tD <= 16; tD *= 2) try {for (int i = 0; i < tD; i++) {
+					int tX = aMinX+aRandom.nextInt(tD*2)+8-tD, tZ = aMinZ+aRandom.nextInt(tD*2)+8-tD;
+					for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
+						Block tContact = aWorld.getBlock(tX, tY, tZ);
+						if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+						if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
+						if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
+						if (tFlowers && tContact != Blocks.dirt && (!tRocks || aRandom.nextInt(4) > 0)) {
+							WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);
+							if (mFlower.canBlockStay(aWorld, tX, tY+1, tZ)) break;
+							WD.set(aWorld, tX, tY+1, tZ, NB, 0, 0);
+						}
+						if (tRocks && (tContact.getMaterial() == Material.grass || tContact.getMaterial() == Material.ground || tContact.getMaterial() == Material.sand || tContact.getMaterial() == Material.rock)) {
+							tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tRock), F, T);
+							break;
+						}
+						break;
+					}
+				}} catch(Throwable e) {
+					ERR.println(tD);
+					e.printStackTrace(ERR);
 				}
 			}
 			// At least one Ore Block must be there. So place a large one in the Center.
