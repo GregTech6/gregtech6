@@ -1371,8 +1371,8 @@ public class LoaderItemList implements Runnable {
 		
 		IL.AE_Wrench_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzWrench"           , 1, 0));
 		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0));
-		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0));
-		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0));
+		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Certus.wild(1));
+		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Quartz.wild(1));
 		
 		
 		IL.FR_Wrench                            .set(ST.make(MD.FR, "wrench"                                , 1, 0));
@@ -1698,7 +1698,7 @@ public class LoaderItemList implements Runnable {
 		IL.IC2_Biochaff                         .set(ST.mkic("biochaff"                                     , 1   ));
 		IL.IC2_ShaftIron                        .set(ST.mkic("ironshaft"                                    , 1   ), new OreDictItemData(ANY.Fe, U*9));
 		IL.IC2_ShaftSteel                       .set(ST.mkic("steelshaft"                                   , 1   ), new OreDictItemData(ANY.Steel, U*9));
-		IL.IC2_ForgeHammer                      .set(ST.mkic("ForgeHammer"                                  , 1   ));
+		IL.IC2_ForgeHammer                      .set(ST.mkic("ForgeHammer"                                  , 1   )); ItemsGT.CONTAINER_DURABILITY.add(IL.IC2_ForgeHammer.wild(1));
 		IL.IC2_Debug                            .set(ST.mkic("debug"                                        , 1   )); ItemsGT.DEBUG_ITEMS.add(IL.IC2_Debug.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.IC2_Debug.wild(1));
 		IL.IC2_AdvBattery                       .set(ST.mkic("advBattery"                                   , 1   ));
 		IL.Cell_Universal_Fluid                 .set(ST.mkic("FluidCell"                                    , 1   ), new OreDictItemData(MT.Sn, U*2, OM.stack(MT.Glass, 3*U8)));
@@ -1755,7 +1755,7 @@ public class LoaderItemList implements Runnable {
 		IL.Tool_Shovel_Bronze                   .set(ST.mkic("bronzeShovel"                                 , 1, 0), new OreDictItemData(MT.Bronze, OP.toolHeadShovel , ANY.Wood, U ).setUseVanillaDamage());
 		IL.Tool_Axe_Bronze                      .set(ST.mkic("bronzeAxe"                                    , 1, 0), new OreDictItemData(MT.Bronze, OP.toolHeadAxe    , ANY.Wood, U ).setUseVanillaDamage());
 		IL.Tool_Hoe_Bronze                      .set(ST.mkic("bronzeHoe"                                    , 1, 0), new OreDictItemData(MT.Bronze, OP.toolHeadHoe    , ANY.Wood, U ).setUseVanillaDamage());
-		IL.IC2_WireCutter                       .set(ST.mkic("cutter"                                       , 1   ));
+		IL.IC2_WireCutter                       .set(ST.mkic("cutter"                                       , 1   )); ItemsGT.CONTAINER_DURABILITY.add(IL.IC2_WireCutter.wild(1));
 		
 		IL.Credit_Iron                          .set(ST.mkic("coin"                                         , 1   ));
 		
