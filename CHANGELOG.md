@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.09: (Not released yet, released whenever it needs to be)
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
+[FIXED] Applied Energistics Quartz Cutter in Advanced Crafting Tables.
 [FIXED] Forestry Backpacks didn't work with Autocollecting Tools, because the Magnetic Autocollect did not throw an Item Collect Event.
 [FIXED] Chainsaws used WAY too much durability for Treecapitation!
 [FIXED] Worldgeneration in different Dimensions had the same RNG as on the Overworld. Now the Seed is being XOR-ed with the Dimension ID to prevent that. This has the convenient Side Effect of the Overworld staying the same as before, because it's ID is Zero.
@@ -134,7 +135,7 @@ Please take note that I changed the Electrolyzation Output of Clay, and that Van
 [ADDED] Lumium Shelves and Stuff. Now there actually is a proper Glow in the Dark Material available. (remember it can be painted)
 [ADDED] Gloomstone from Netherlicious as a Material, which can do pretty much anything Glowstone can do. Similar to GalaxySpace Glowstone Variants.
 [ADDED] Netherquartz now generates in large flat Layers in the Nether. The old GT5 Veins and the Small Ores for Netherquartz wont generate anymore.
-[ADDED] Sulfide Ore Crystals now generate on the Nether ceiling so that it is now possible to actually live in the Nether with most of GT6s Features.
+[ADDED] Sulfide Ore Crystals now generate on the Nether ceiling so that it is now possible to actually live in the Nether with most of GT6s Features. This is enough Resources and Byproducts for removing the old GT5 Style Veins from the Nether.
 [ADDED] Netherite Version of the Mortar, because most usable Mortar Materials, including Iron, are too hard to come by in the Nether.
 [ADDED] Magnalium Rail Set. Same Cart Speed and Explosion Resistance as the Steel Rail Set. Big Upgrade from Aluminium, which is basically garbage Tier.
 [ADDED] Mining Tools which can place Torches, now can plug leaking Liquids like Lava with mostly non-valuable mined Blocks from your Inventory. Just rightclick either next to or into the Liquid Block that is coming at you.

@@ -49,7 +49,7 @@ public enum IL implements IItemContainer {
 	TE_Rockwool, TE_ObsidiGlass, TE_LumiumGlass,
 	TE_Wrench, TE_Wrench_Battle,
 	BC_Wrench,
-	AE_Wrench_Certus, AE_Wrench_Quartz,
+	AE_Wrench_Certus, AE_Wrench_Quartz, AE_Cutter_Certus, AE_Cutter_Quartz,
 	FR_Wrench,
 	FR_Planks_Fireproof, FR_Planks, FR_Slabs_Fireproof, FR_Slabs, FR_Logs_Fireproof, FR_Logs,
 	FR_Ice_Shard,

@@ -823,7 +823,7 @@ public class ST {
 			return tStack;
 		}
 		
-		if (IL.IC2_ForgeHammer.equal(aStack, T, T) || IL.IC2_WireCutter.equal(aStack, T, T)) return copyMeta(meta_(aStack) + 1, aStack);
+		if (IL.IC2_ForgeHammer.equal(aStack, T, T) || IL.IC2_WireCutter.equal(aStack, T, T) || IL.AE_Cutter_Quartz.equal(aStack, T, T) || IL.AE_Cutter_Certus.equal(aStack, T, T)) return copyMeta(meta_(aStack) + 1, aStack);
 		return NI;
 	}
 	
