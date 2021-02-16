@@ -887,7 +887,19 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						return;
 					}
-					// Instant breaking for those Hammers.
+					// Instant breaking for those Soft Hammers.
+					if (IL.MFR_Hammer.equal(aStack, T, T)) {
+						List<String> tChatReturn = new ArrayListNoNulls<>();
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_softhammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
+						if (tDamage > 0) {
+							ST.use(aEvent.entityPlayer, aStack);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							aEvent.setCanceled(T);
+						}
+						return;
+					}
+					// Instant breaking for those Hard Hammers.
 					if (IL.IE_Hammer.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_hammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);

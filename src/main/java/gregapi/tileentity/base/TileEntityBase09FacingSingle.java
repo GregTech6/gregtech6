@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.ITileEntityMachineBlockUpdateable;
@@ -81,7 +82,7 @@ public abstract class TileEntityBase09FacingSingle extends TileEntityBase08Direc
 	@Override public String getFacingTool() {return TOOL_wrench;}
 	@Override public short getFacing() {return mFacing;}
 	@Override public void setFacing(short aFacing) {setPrimaryFacing(UT.Code.side(aFacing));}
-	@Override public boolean wrenchCanSetFacing(EntityPlayer aPlayer, int aSide) {return TOOL_wrench.equals(getFacingTool()) && getValidSides()[aSide];}
+	@Override public boolean wrenchCanSetFacing(EntityPlayer aPlayer, int aSide) {return TOOL_wrench.equals(getFacingTool()) && getValidSides()[aSide] && (aPlayer == null || !ItemsGT.SPECIAL_CASE_TOOLS.contains(aPlayer.getHeldItem(), T));}
 	@Override public boolean isConnectedWrenchingOverlay(ItemStack aStack, byte aSide) {return aSide == mFacing;}
 	
 	public void setPrimaryFacing(byte aFacing) {if (isClientSide() || aFacing == mFacing) return; byte oFacing = mFacing; mFacing = aFacing; updateClientData(); causeBlockUpdate(); onFacingChange(oFacing); checkCoverValidity(); doEnetUpdate(); if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);}

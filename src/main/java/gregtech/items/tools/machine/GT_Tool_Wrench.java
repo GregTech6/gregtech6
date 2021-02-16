@@ -71,7 +71,7 @@ public class GT_Tool_Wrench extends ToolStats {
 		if (tString != null && tString.equals(TOOL_wrench)) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;
 		tString = ST.regName(aBlock);
-		return tString != null && (tString.startsWith("BuildCraft|") || tString.startsWith("progressiveautomation"));
+		return tString != null && (tString.startsWith("BuildCraft|") || tString.startsWith("progressiveautomation") || tString.startsWith("MineFactoryReloaded:machine") || tString.startsWith("MineFactoryReloaded:rednet"));
 	}
 	
 	@Override

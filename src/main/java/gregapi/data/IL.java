@@ -97,6 +97,7 @@ public enum IL implements IItemContainer {
 	CHSL_Granite, CHSL_Diorite, CHSL_Andesite, CHSL_Granite_Smooth, CHSL_Diorite_Smooth, CHSL_Andesite_Smooth,
 	CHSL_Present,
 	TG_Ore_Cluster_1, TG_Ore_Cluster_2, TG_Spawner_Zombie, TG_Spawner_Bug,
+	MFR_Hammer,
 	MFR_Fertilizer,
 	MFR_Log_Rubber, MFR_Leaves_Rubber, MFR_Leaves_Rubber_Dry, MFR_Sapling_Rubber, MFR_Sapling_Rubber_Sacred, MFR_Sapling_Rubber_Mega, MFR_Sapling_Rubber_Sacred_Mega,
 	RoC_Propolis_Slippery,

@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.09: (Not released yet, released whenever it needs to be)
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
+[FIXED] Railcraft Crowbars should now be able to remove Covers again, even if they dont use the overlay for technical reasons.
 [FIXED] Applied Energistics Quartz Cutter in Advanced Crafting Tables.
 [FIXED] Forestry Backpacks didn't work with Autocollecting Tools, because the Magnetic Autocollect did not throw an Item Collect Event.
 [FIXED] Chainsaws used WAY too much durability for Treecapitation!
