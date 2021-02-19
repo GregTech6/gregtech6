@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,6 +35,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.UT;
@@ -62,18 +63,19 @@ public class StoneLayer {
 		this(aStone, aMetaStone, aCobble, aMetaCobble, aCobble, aMetaCobble, aMaterial, aOres);
 	}
 	public StoneLayer(Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, OreDictMaterial aMaterial, StoneLayerOres... aOres) {
-		mStone  = (aStone  == null || aStone  == NB ? Blocks.stone : aStone);
-		mMossy  = (aMossy  == null || aMossy  == NB ? mStone : aMossy);
-		mCobble = (aCobble == null || aCobble == NB ? mStone : aCobble);
-		mMetaStone = UT.Code.bind4(aMetaStone);
-		mMetaMossy = UT.Code.bind4(aMetaMossy);
-		mMetaCobble = UT.Code.bind4(aMetaCobble);
-		mMaterial = (aMaterial == null ? MT.Stone : aMaterial);
-		mStack = new ItemStackContainer(mStone, 1, mMetaStone);
-		mOre = BlocksGT.stoneToNormalOres.get(mStack);
-		mOreSmall = BlocksGT.stoneToSmallOres.get(mStack);
-		mOreBroken = BlocksGT.stoneToBrokenOres.get(mStack);
-		mOres = new ArrayListNoNulls<>(F, aOres);
+		mStone      = (aStone  == null || aStone  == NB ?                                 Blocks.stone                       : aStone );
+		mCobble     = (aCobble == null || aCobble == NB ? Blocks.stone       == mStone  ? Blocks.cobblestone       : mStone  : aCobble);
+		mMossy      = (aMossy  == null || aMossy  == NB ? Blocks.cobblestone == mCobble ? Blocks.mossy_cobblestone : mCobble : aMossy );
+		mMetaStone  = (Blocks.stone             == mStone  ? 0 : UT.Code.bind4(aMetaStone ));
+		mMetaCobble = (Blocks.cobblestone       == mCobble ? 0 : UT.Code.bind4(aMetaCobble));
+		mMetaMossy  = (Blocks.mossy_cobblestone == mMossy  ? 0 : UT.Code.bind4(aMetaMossy ));
+		mMaterial   = (aMaterial == null ? MT.Stone : aMaterial);
+		mStack      = new ItemStackContainer(mStone, 1, mMetaStone);
+		mOre        = BlocksGT.stoneToNormalOres.get(mStack);
+		mOreBroken  = BlocksGT.stoneToBrokenOres.get(mStack);
+		mOreSmall   = BlocksGT.stoneToSmallOres .get(mStack);
+		mOres       = new ArrayListNoNulls<>(8);
+		for (StoneLayerOres tOre : aOres) if (tOre.mMaterial != MT.Empty && ConfigsGT.WORLDGEN.get("stonelayers."+mMaterial.mNameInternal, tOre.mMaterial.mNameInternal, T)) mOres.add(tOre);
 	}
 	
 	/** List of Stone and Ore Blocks, that can simply be replaced by the Stone Layers. */

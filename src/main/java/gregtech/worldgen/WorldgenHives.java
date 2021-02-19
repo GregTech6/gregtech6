@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -103,7 +103,7 @@ public class WorldgenHives extends WorldgenObject {
 				tCount = 0;
 			}
 			return rResult;
-		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN: case DIM_TWILIGHT:
+		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN: case DIM_TWILIGHT: case DIM_AROMA:
 			for (tY = 8; tY < 28; tY++) {
 				Block tBlock = WD.block(aWorld, tX, tY, tZ);
 				if (tBlock.getMaterial() == Material.rock && WD.opq(tBlock) && WD.stone(tBlock, WD.meta(aWorld, tX, tY, tZ))) {

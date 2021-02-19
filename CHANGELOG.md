@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Barbecue Sauce (BBQ Sauce), because why not.
 [ADDED] Axes, Saws and Chainsaws can now place Saplings too. They will still place Workbenches if Saplings cant be placed.
 [ADDED] Tooltip for Covers that can be controlled with the Cover Controller Cover. In case of Covers where the Cover Controller Cover is required (such as Shutter Cover), it will be Cyan instead of Dark Gray to make it easier to see.
+[ADDED] Config to make it possible to disable specific Ores in Stone Layers from generating.
 
 
 6.14.08:

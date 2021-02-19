@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -97,13 +97,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = T;
 					boolean temp = T;
 					if (tScan[5] == tScan[1]) {
-						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
+						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
 							tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
 					} else {
-						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
+						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
 							tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
@@ -141,13 +141,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = T;
 					boolean temp = T;
 					if (tScan[5] == tScan[1]) {
-						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
+						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
 							tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
 					} else {
-						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
+						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
 							tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
