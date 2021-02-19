@@ -75,7 +75,7 @@ public class StoneLayer {
 		mOreBroken  = BlocksGT.stoneToBrokenOres.get(mStack);
 		mOreSmall   = BlocksGT.stoneToSmallOres .get(mStack);
 		mOres       = new ArrayListNoNulls<>(8);
-		for (StoneLayerOres tOre : aOres) if (tOre.mMaterial != MT.Empty && ConfigsGT.WORLDGEN.get("stonelayers."+mMaterial.mNameInternal, tOre.mMaterial.mNameInternal, T)) mOres.add(tOre);
+		for (StoneLayerOres tOre : aOres) if (tOre != null && tOre.mMaterial != MT.Empty && ConfigsGT.WORLDGEN.get("stonelayers."+mMaterial.mNameInternal, tOre.mMaterial.mNameInternal, T)) mOres.add(tOre);
 	}
 	
 	/** List of Stone and Ore Blocks, that can simply be replaced by the Stone Layers. */

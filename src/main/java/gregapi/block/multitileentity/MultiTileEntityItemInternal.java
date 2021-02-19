@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -598,16 +598,14 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	}
 	
 	@Override
-	public double charge(ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aSimulate) {
-		aTier = UT.Code.bind4(aTier);
-		if (aCharge < V[aTier]) return 0;
-		return V[aTier] * doEnergyInjection(TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
+	public double charge   (ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aSimulate) {
+		if (aCharge < V[aTier = UT.Code.bind4(aTier)]) return 0;
+		return V[aTier] * doEnergyInjection (TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
 	}
 	
 	@Override
 	public double discharge(ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aBatteryAlike, boolean aSimulate) {
-		aTier = UT.Code.bind4(aTier);
-		if (aCharge < V[aTier]) return 0;
+		if (aCharge < V[aTier = UT.Code.bind4(aTier)]) return 0;
 		return V[aTier] * doEnergyExtraction(TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
 	}
 	

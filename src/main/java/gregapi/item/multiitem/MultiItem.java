@@ -276,18 +276,6 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) tBehavior.onUpdate(this, aStack, aWorld, aPlayer, aTimer, aIsInHand);
 	}
 	
-	public double charge(ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aSimulate) {
-		aTier = UT.Code.bind4(aTier);
-		if (aCharge < V[aTier]) return 0;
-		return V[aTier] * doEnergyInjection(TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
-	}
-	
-	public double discharge(ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aBatteryAlike, boolean aSimulate) {
-		aTier = UT.Code.bind4(aTier);
-		if (aCharge < V[aTier]) return 0;
-		return V[aTier] * doEnergyExtraction(TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
-	}
-	
 	public FluidStack getFluid(ItemStack aStack) {return getFluidContent(aStack);}
 	
 	public int getCapacity(ItemStack aStack) {
@@ -402,6 +390,16 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	public int getDefaultStackLimit(ItemStack aStack) {return 64;}
 	
+	public double charge   (ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aSimulate) {
+		if (aCharge < V[aTier = UT.Code.bind4(aTier)]) return 0;
+		return V[aTier] * doEnergyInjection (TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
+	}
+	
+	public double discharge(ItemStack aStack, double aCharge, int aTier, boolean aIgnoreTransferLimit, boolean aBatteryAlike, boolean aSimulate) {
+		if (aCharge < V[aTier = UT.Code.bind4(aTier)]) return 0;
+		return V[aTier] * doEnergyExtraction(TD.Energy.EU, aStack, V[aTier], (long)(aCharge / V[aTier]), null, null, 0, 0, 0, !aSimulate);
+	}
+	
 	@Override
 	public boolean isEnergyType(TagData aEnergyType, ItemStack aStack, boolean aEmitting) {
 		IItemEnergy tStats = getEnergyStats(aStack);
@@ -410,10 +408,10 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	}
 	
 	@Override
-	public long doEnergyInjection(TagData aEnergyType, ItemStack aStack, long aSize, long aAmount, IInventory aInventory, World aWorld, int aX, int aY, int aZ, boolean aDoInject) {
+	public long doEnergyInjection (TagData aEnergyType, ItemStack aStack, long aSize, long aAmount, IInventory aInventory, World aWorld, int aX, int aY, int aZ, boolean aDoInject) {
 		IItemEnergy tStats = getEnergyStats(aStack);
 		if (tStats == null) return 0;
-		return tStats.doEnergyInjection(aEnergyType, aStack, aSize, aAmount, aInventory, aWorld, aX, aY, aZ, aDoInject);
+		return tStats.doEnergyInjection (aEnergyType, aStack, aSize, aAmount, aInventory, aWorld, aX, aY, aZ, aDoInject);
 	}
 	
 	@Override
