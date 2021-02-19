@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -126,6 +126,7 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	@Override public boolean allowCovers(byte aSide) {return F;}
 	@Override public byte getDefaultSide() {return SIDE_BACK;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return F;}
 	@Override public boolean showInCreative() {return F;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -200,6 +200,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return F;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public byte getVisualData() {return (byte)(mFull ? 1 : 0);}
 	@Override public void setVisualData(byte aData) {mFull = (aData != 0);}

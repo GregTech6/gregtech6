@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -166,7 +166,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	
 	@Override public void onExploded(Explosion aExplosion) {mDontDrop = T; super.onExploded(aExplosion); explode();}
 	@Override public boolean remoteActivate() {if (mCountDown > 20 || mCountDown == 0) {mCountDown = 20; updateClientData();} return F;}

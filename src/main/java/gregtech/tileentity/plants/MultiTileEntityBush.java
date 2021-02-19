@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -344,6 +344,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	@Override public String getFacingTool() {return null;}
 	@Override public byte getDefaultSide() {return SIDE_UNDEFINED;}
 	@Override public boolean[] getValidSides() {return SIDES_ALL;}
+	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return F;}
 	@Override public float getExplosionResistance2() {return 0.2F;}
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 300;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 300;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -182,6 +182,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_Y_NEG;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
+	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return F;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public String getFacingTool() {return null;}
 	
