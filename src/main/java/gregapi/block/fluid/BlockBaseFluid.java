@@ -186,6 +186,18 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
 		if (aY <= 0 || aY+1 >= aWorld.getHeight()) return aWorld.setBlockToAir(aX, aY, aZ) ? 0 : aAmount;
 		
+		// First do the Water specific check.
+		if (mLighterThanWater) {
+			int tY = aY + 1;
+			Block tBlock = aWorld.getBlock(aX, tY, aZ);
+			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return 0;
+			}
+		}
+		
 		// Compressed Fluid Blocks behave a little bit "jumpier" than normal ones. ;)
 		if (aAmount > 8) {
 			int tY = aY - densityDir;
@@ -259,16 +271,6 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
 		}
-		if (mLighterThanWater) {
-			tY = aY + 1;
-			tBlock = aWorld.getBlock(aX, tY, aZ);
-			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
-				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-				return 0;
-			}
-		}
 		return aAmount;
 	}
 	
@@ -296,8 +298,11 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
+	@Override public boolean isNormalCube() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean func_149730_j() {return F;}
+	@Override public boolean renderAsNormalBlock() {return F;}
+	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 
