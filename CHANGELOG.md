@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.09: (Not released yet, released whenever it needs to be)
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
+[FIXED] Infinite Worldgen Loop with Oceans, because I forgot to set the Block Update Flag to 2 during Worldgen, because ofcourse I left it to default when I fixed another Ocean related Bug...
 [FIXED] Railcraft Crowbars should now be able to remove Covers again, even if they dont use the overlay for technical reasons.
 [FIXED] Applied Energistics Quartz Cutter in Advanced Crafting Tables.
 [FIXED] Forestry Backpacks didn't work with Autocollecting Tools, because the Magnetic Autocollect did not throw an Item Collect Event.

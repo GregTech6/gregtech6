@@ -38,11 +38,13 @@ import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -198,6 +200,13 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;
 			}
+			// Swap with GT6 Water Blocks.
+			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return 0;
+			}
 			// Lets just jump up! Make a Fountain!
 			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
 				// The Block left behind should stay for a bit.
@@ -250,6 +259,16 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
 		}
+		if (mLighterThanWater) {
+			tY = aY + 1;
+			tBlock = aWorld.getBlock(aX, tY, aZ);
+			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return 0;
+			}
+		}
 		return aAmount;
 	}
 	
@@ -281,12 +300,19 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public boolean func_149730_j() {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
+
+	public boolean mLighterThanWater = F;
+	public BlockBaseFluid setLighterThanWater() {
+		mLighterThanWater = T;
+		return this;
+	}
 	
 	public boolean mActLikeWeb = F;
 	public BlockBaseFluid setWeb() {
 		mActLikeWeb = T;
 		return this;
 	}
+	
 	/** This Function has been named wrong. It should be onEntityOverlapWithBlock */
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {

@@ -67,7 +67,7 @@ public class WorldgenRiver extends WorldgenObject {
 				
 				if (tPlacedNone) {
 					BlockRiver.PLACEMENT_ALLOWED = T;
-					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River);
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 0, 2);
 					BlockRiver.PLACEMENT_ALLOWED = T;
 					tPlacedNone = F;
 				} else {
