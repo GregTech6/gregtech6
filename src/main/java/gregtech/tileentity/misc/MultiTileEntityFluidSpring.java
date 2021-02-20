@@ -105,7 +105,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 				if (tBlock instanceof BlockFluidFinite) {
 					if (tAbove == tBlock) {
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
-					} else if (tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+					} else if (tAbove instanceof BlockWaterlike || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
 					}
 				} else {
