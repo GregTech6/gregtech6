@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -118,21 +118,17 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		
 		
 		if (canDisplace(aWorld, aX, aY+densityDir, aZ)) {
-			flowIntoBlock(aWorld, aX, aY+densityDir, aZ, 1);
+			if (displaceIfPossible(aWorld, aX, aY+densityDir, aZ)) aWorld.setBlock(aX, aY+densityDir, aZ, this, 1, 3);
 			return;
 		}
 		
-		int flowMeta = quantaPerBlock - quantaRemaining + 1;
-		if (flowMeta >= quantaPerBlock) return;
+		int tFlowMeta  = (aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
+		if (tFlowMeta >= quantaPerBlock) return;
 		
-		if (isSourceBlock(aWorld, aX, aY, aZ) || !isFlowingVertically(aWorld, aX, aY, aZ)) {
-			if (aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike) flowMeta = 1;
-			boolean flowTo[] = getOptimalFlowDirections(aWorld, aX, aY, aZ);
-			if (flowTo[0]) flowIntoBlock(aWorld, aX-1, aY, aZ  , flowMeta);
-			if (flowTo[1]) flowIntoBlock(aWorld, aX+1, aY, aZ  , flowMeta);
-			if (flowTo[2]) flowIntoBlock(aWorld, aX  , aY, aZ-1, flowMeta);
-			if (flowTo[3]) flowIntoBlock(aWorld, aX  , aY, aZ+1, flowMeta);
-		}
+		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, this, tFlowMeta, 3);
+		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, this, tFlowMeta, 3);
+		if (aWorld.blockExists(aX-1, aY, aZ  ) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlock(aX-1, aY, aZ  , this, tFlowMeta, 3);
+		if (aWorld.blockExists(aX+1, aY, aZ  ) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlock(aX+1, aY, aZ  , this, tFlowMeta, 3);
 	}
 	
 	@Override
