@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,7 +44,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
 public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implements IFluidHandler {
-	public FluidTankGT mTank = new FluidTankGT(Integer.MAX_VALUE);
+	public FluidTankGT mTank = new FluidTankGT();
 	public long mSteamCounter = 0, mEnergyProducedNextTick = 0;
 	public static final int STEAM_PER_WATER = 200;
 	

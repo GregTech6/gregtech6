@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,7 +77,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < GarbageGT.GARBAGE_FLUIDS.size(); i++) if (GarbageGT.GARBAGE_FLUIDS.get(i).contains(aFluidToFill)) return GarbageGT.GARBAGE_FLUIDS.get(i);
-		FluidTankGT tTank = new FluidTankGT(Long.MAX_VALUE).setPreventDraining().setVoidExcess();
+		FluidTankGT tTank = new FluidTankGT().setPreventDraining().setVoidExcess();
 		GarbageGT.GARBAGE_FLUIDS.add(tTank);
 		return tTank;
 	}
@@ -89,7 +89,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	
 	@Override
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
-		return GarbageGT.GARBAGE_FLUIDS.isEmpty() ? new FluidTankGT(Long.MAX_VALUE).AS_ARRAY : GarbageGT.GARBAGE_FLUIDS.toArray(ZL_FT);
+		return GarbageGT.GARBAGE_FLUIDS.isEmpty() ? new FluidTankGT().AS_ARRAY : GarbageGT.GARBAGE_FLUIDS.toArray(ZL_FT);
 	}
 	
 	@Override

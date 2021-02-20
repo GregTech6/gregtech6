@@ -1380,7 +1380,7 @@ public class CS {
 				try {aNBT = CompressedStreamTools.read(aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
 				for (int i = 0; i < Integer.MAX_VALUE; i++) {
 					if (!aNBT.hasKey(""+i)) break;
-					FluidTankGT tTank = new FluidTankGT(Long.MAX_VALUE).setPreventDraining().setVoidExcess();
+					FluidTankGT tTank = new FluidTankGT().setPreventDraining().setVoidExcess();
 					tTank.readFromNBT(aNBT, ""+i);
 					if (!tTank.has()) continue;
 					GARBAGE_FLUIDS.add(tTank);

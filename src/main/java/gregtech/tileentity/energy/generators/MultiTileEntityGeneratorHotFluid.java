@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,7 +69,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	public TagData mEnergyTypeEmitted = TD.Energy.HU;
 	public RecipeMap mRecipes = FM.Hot;
 	public Recipe mLastRecipe = null;
-	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(Long.MAX_VALUE)};
+	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT()};
 	public TE_Behavior_Active_Trinary mActivity = null;
 	
 	@Override

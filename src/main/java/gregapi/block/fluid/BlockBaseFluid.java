@@ -131,10 +131,10 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			return;
 		}
 		
-		if (displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlockToAir(aX  , aY, aZ-1);
-		if (displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlockToAir(aX  , aY, aZ+1);
-		if (displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlockToAir(aX-1, aY, aZ  );
-		if (displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlockToAir(aX+1, aY, aZ  );
+		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlockToAir(aX  , aY, aZ-1);
+		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlockToAir(aX  , aY, aZ+1);
+		if (aWorld.blockExists(aX-1, aY, aZ  ) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlockToAir(aX-1, aY, aZ  );
+		if (aWorld.blockExists(aX+1, aY, aZ  ) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlockToAir(aX+1, aY, aZ  );
 		
 		int tTotal = tRemainingQuanta, tCount = 1;
 		

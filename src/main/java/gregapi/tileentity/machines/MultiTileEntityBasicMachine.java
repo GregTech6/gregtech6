@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -170,7 +170,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		mTanksInput = new FluidTankGT[mRecipes.mInputFluidCount];
 		for (int i = 0; i < mTanksInput.length; i++) mTanksInput[i] = new FluidTankGT(tCapacity).setCapacity(mRecipes, mParallel * 2L).readFromNBT(aNBT, NBT_TANK+".in."+i);
 		mTanksOutput = new FluidTankGT[mRecipes.mOutputFluidCount];
-		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(Long.MAX_VALUE).readFromNBT(aNBT, NBT_TANK+".out."+i);
+		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT().readFromNBT(aNBT, NBT_TANK+".out."+i);
 		
 		mOutputFluids = new FluidStack[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = FL.load(aNBT, NBT_TANK_OUT+"."+i);
