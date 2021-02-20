@@ -190,7 +190,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
 	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public int getLightOpacity() {return 16;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
 	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}

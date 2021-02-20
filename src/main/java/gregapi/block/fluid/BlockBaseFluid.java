@@ -305,7 +305,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
-
+	
 	public boolean mLighterThanWater = F;
 	public BlockBaseFluid setLighterThanWater() {
 		mLighterThanWater = T;
@@ -317,6 +317,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		mActLikeWeb = T;
 		return this;
 	}
+	
 	
 	/** This Function has been named wrong. It should be onEntityOverlapWithBlock */
 	@Override
