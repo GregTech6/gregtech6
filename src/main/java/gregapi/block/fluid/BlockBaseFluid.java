@@ -229,7 +229,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				return 0;
 			}
 			// Swap with GT6 Water Blocks.
-			if (WD.anywater(tBlock)) {
+			if (!mLighterThanWater && WD.anywater(tBlock)) {
 				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
