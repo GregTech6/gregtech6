@@ -289,22 +289,26 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public final String getUnlocalizedName() {return mFluid.getUnlocalizedName();}
 	@Override public String getLocalizedName() {return LH.get(mFluid.getUnlocalizedName());}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return SIDES_VERTICAL[aSide]?mFluid.getStillIcon():mFluid.getFlowingIcon();}
 	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return mFluid.getColor();}
 	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return mFluid.getColor();}
-	@Override public boolean isAir(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
-	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
-	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
+	@Override public int getRenderBlockPass() {return 1;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
+	
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
-	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
+	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
+	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	@Override public boolean canCollideCheck(int aMeta, boolean aFullHit) {return aFullHit && aMeta >= 7;}
+	@Override public boolean getBlocksMovement(IBlockAccess aWorld, int aX, int aY, int aZ) {return mActLikeWeb || !mEffects.isEmpty();}
 	@Override public boolean isNormalCube() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean func_149730_j() {return F;}
+	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
+	@Override public boolean isAir(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 	
 	public boolean mLighterThanWater = F;

@@ -69,7 +69,6 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());
 		setFluidStack(FL.make(aFluid, 1000));
-		setTickRandomly(F);
 		ST.hide(this);
 	}
 	
@@ -191,17 +190,24 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
 	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
-	@Override public boolean getTickRandomly() {return F;}
+	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
+	@Override public int getRenderBlockPass() {return 1;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
+	
+	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
+	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	@Override public boolean canCollideCheck(int aMeta, boolean aFullHit) {return aFullHit && aMeta == 0;}
+	@Override public boolean getBlocksMovement(IBlockAccess aWorld, int aX, int aY, int aZ) {return !mEffects.isEmpty();}
 	@Override public boolean isNormalCube() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean func_149730_j() {return F;}
+	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
+	@Override public boolean isAir(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 	public BlockWaterlike addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});

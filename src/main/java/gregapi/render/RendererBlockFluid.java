@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import gregapi.data.FL;
-import gregapi.old.Textures;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -95,20 +94,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			aFluid.shouldSideBeRendered(aWorld, aX + 1, aY, aZ, 5)
 		};
 		
-		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) {
-			IIcon tIcon = Textures.BlockIcons.VOID.getIcon(0);
-			double
-			u2 = tIcon.getInterpolatedU(0), v2 = tIcon.getInterpolatedV(0),
-			u1 = u2, v1 = tIcon.getInterpolatedV(16),
-			u4 = tIcon.getInterpolatedU(16), v4 = v1,
-			u3 = u4, v3 = v2;
-			
-			tTesselator.addVertexWithUV(0, -128, 0, u3, v3);
-			tTesselator.addVertexWithUV(0, -128, 0, u4, v4);
-			tTesselator.addVertexWithUV(0, -128, 0, u1, v1);
-			tTesselator.addVertexWithUV(0, -128, 0, u2, v2);
-			return T;
-		}
+		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return F;
 		
 		double heightNW, heightSW, heightSE, heightNE;
 		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid, aFluid);
