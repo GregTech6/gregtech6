@@ -281,7 +281,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (aBlock == this || aBlock.getMaterial() == Material.water || WD.visOpq(aBlock)) return F;
 		if (aBlock.isAir(aWorld, aX, aY, aZ)) return T;
 		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		return !(tTileEntity instanceof ITileEntitySurface && !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]));
+		if (tTileEntity instanceof ITileEntitySurface) return !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]);
+		return T;
 	}
 	
 	@Override public Block getBlock() {return this;}

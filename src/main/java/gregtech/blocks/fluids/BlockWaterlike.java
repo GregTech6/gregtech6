@@ -182,7 +182,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		if (aBlock.getMaterial() == Material.water || WD.visOpq(aBlock)) return F;
 		if (aBlock.isAir(aWorld, aX, aY, aZ)) return T;
 		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		return !(tTileEntity instanceof ITileEntitySurface && !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]));
+		if (tTileEntity instanceof ITileEntitySurface) return !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]);
+		return T;
 	}
 	
 	@Override public boolean isSourceBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ) instanceof BlockWaterlike && aWorld.getBlockMetadata(aX, aY, aZ) == 0;}
