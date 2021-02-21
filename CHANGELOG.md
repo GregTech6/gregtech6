@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.09: (Not released yet, released whenever it needs to be)
+[NOTE] The Default Config Pack updated to disable Fastcrafts Chunk Culling, so that Ocean Floors are now rendering properly again. Set "enableCullingTweaks" to false in the "config/fastcraft.ini" File, if you experience this Issue.
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
 [FIXED] Infinite Worldgen Loop with Oceans, because I forgot to set the Block Update Flag to 2 during Worldgen, because ofcourse I left it to default when I fixed another Ocean related Bug...
 [FIXED] Railcraft Crowbars should now be able to remove Covers again, even if they dont use the overlay for technical reasons.
@@ -18,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Chainsaws used WAY too much durability for Treecapitation!
 [FIXED] Worldgeneration in different Dimensions had the same RNG as on the Overworld. Now the Seed is being XOR-ed with the Dimension ID to prevent that. This has the convenient Side Effect of the Overworld staying the same as before, because it's ID is Zero.
 [CHANGED] Blue Steel is Red Steel now and vice versa. This should fix my ages old fuckup of the Recipes. Everything should still be the same as before when it comes to Stats, just the Color of the Material changed. If you used Matter Fabricators to make Red/Blue Steel for some reason, you may need to check the USB Stick with the Recipe.
+[CHANGED] Oil and Natural Gas can now pass through Water. In the case of Oil this will result in Buildcraft alike Oil Fountains or puddles in the Ocean, should you be super lucky. If not, just dig a tunnel down and it happens too. XD
 [ADDED] Barbecue Sauce (BBQ Sauce), because why not.
 [ADDED] Axes, Saws and Chainsaws can now place Saplings too. They will still place Workbenches if Saplings cant be placed.
 [ADDED] Tooltip for Covers that can be controlled with the Cover Controller Cover. In case of Covers where the Cover Controller Cover is required (such as Shutter Cover), it will be Cyan instead of Dark Gray to make it easier to see.

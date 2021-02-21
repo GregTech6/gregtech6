@@ -38,13 +38,11 @@ import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -188,13 +186,31 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		// First do the Water specific check.
 		if (mLighterThanWater) {
-			int tY = aY + 1;
-			Block tBlock = aWorld.getBlock(aX, tY, aZ);
-			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
-				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-				return 0;
+			int tY = aY;
+			while (++tY < aWorld.getHeight() && WD.anywater(aWorld, aX, tY, aZ));
+			if (tY-1 > aY) {
+				Block tBlock = aWorld.getBlock(aX, tY, aZ);
+				if (tBlock == this) {
+					int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
+					if (tAmount > 16) {
+						aWorld.setBlock(aX, tY, aZ, this, 16 - 1, 3);
+						aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+						return tAmount - 16;
+					}
+					if (tAmount > 0) {
+						aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
+						// Called by the Block Update caused by setBlockToAir
+						// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+						aWorld.setBlockToAir(aX, aY, aZ);
+						return 0;
+					}
+					return aAmount;
+				}
+				if (WD.air(aWorld, aX, tY, aZ, tBlock) || displaceIfPossible(aWorld, aX, tY, aZ)) {
+					aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					return 0;
+				}
 			}
 		}
 		
@@ -213,14 +229,14 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				return 0;
 			}
 			// Swap with GT6 Water Blocks.
-			if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+			if (WD.anywater(tBlock)) {
 				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;
 			}
 			// Lets just jump up! Make a Fountain!
-			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+			if (WD.air(aWorld, aX, tY, aZ, tBlock) || displaceIfPossible(aWorld, aX, tY, aZ)) {
 				// The Block left behind should stay for a bit.
 				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 128 - aAmount * 4);
 				// All but one Quanta will move up!
@@ -264,7 +280,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			}
 			return aAmount;
 		}
-		if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+		if (WD.air(aWorld, aX, tY, aZ, tBlock) || displaceIfPossible(aWorld, aX, tY, aZ)) {
 			aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
 			// Called by the Block Update caused by setBlockToAir
 			// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
