@@ -68,7 +68,7 @@ public class WorldgenSwamp extends WorldgenObject {
 				
 				if (tPlacedNone) {
 					BlockSwamp.PLACEMENT_ALLOWED = T;
-					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 2);
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0);
 					BlockSwamp.PLACEMENT_ALLOWED = F;
 					tPlacedNone = F;
 				} else {

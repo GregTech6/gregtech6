@@ -31,10 +31,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.IFluidBlock;
 
 public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
-	public static int RENDER_ID = 0;
+	public static int RENDER_ID = FluidRegistry.renderIdFluid;
 	public static RendererBlockFluid INSTANCE;
 	
 	public RendererBlockFluid(int aRenderID) {

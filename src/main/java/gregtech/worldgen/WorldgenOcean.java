@@ -67,8 +67,8 @@ public class WorldgenOcean extends WorldgenObject {
 				
 				if (tPlacedNone) {
 					BlockOcean.PLACEMENT_ALLOWED = T;
-					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Ocean, 0, 2);
-					BlockOcean.PLACEMENT_ALLOWED = T;
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Ocean, 0, 0);
+					BlockOcean.PLACEMENT_ALLOWED = F;
 					tPlacedNone = F;
 				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Ocean);
