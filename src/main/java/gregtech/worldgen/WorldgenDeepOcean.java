@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,10 +50,10 @@ public class WorldgenDeepOcean extends WorldgenObject {
 			default:
 				// Keep Deep Ocean Normal.
 				return F;
-			case  5: case  6: case  7: case  8: case  9:
+			case  8: case  9: case 10: case 11:
 				// Corals maybe?
 				return F;
-			case 10: case 11: case 12:
+			case 12: case 13:
 				// Add Dark Prismarine Pylons.
 				for (int l =  8; l < 11; l++) {
 					WD.set(aChunk, i  , j+l, k  , BlocksGT.PrismarineDark, 0);
@@ -72,7 +72,7 @@ public class WorldgenDeepOcean extends WorldgenObject {
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineDark, 0);
 				}
 				return T;
-			case 13: case 14: case 15:
+			case 14: case 15:
 				// Add Light Prismarine Pylons.
 				for (int l =  8; l < 11; l++) {
 					WD.set(aChunk, i  , j+l, k  , BlocksGT.PrismarineLight, 0);
