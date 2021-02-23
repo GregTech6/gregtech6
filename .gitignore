@@ -25,6 +25,7 @@
 !/gradlew.bat
 !/gradle/wrapper/gradle-wrapper.jar
 !/gradle/wrapper/gradle-wrapper.properties
+!/.tool-versions
 
 # Meta Project Files
 !/.meta/**/*
