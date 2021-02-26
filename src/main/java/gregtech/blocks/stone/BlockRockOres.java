@@ -99,7 +99,7 @@ public class BlockRockOres extends BlockBaseMeta {
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return HARVEST_LEVELS[aMeta];}
 	@Override public int getFlammability(byte aMeta) {return BURN_LEVELS[aMeta];}
-	@Override public int getFireSpreadSpeed(byte aMeta) {return BURN_LEVELS[aMeta];}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * HARDNESS_LEVELS[WD.meta(aWorld, aX, aY, aZ)];}
 	@Override public float getExplosionResistance(byte aMeta) {return Blocks.stone.getExplosionResistance(null);}
 }
