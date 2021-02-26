@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,8 +50,9 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tIron                   ,  1, "molten.aluminium"      ,  1, "molten.chromium"       ,  1                              , "molten.kanthal"          ,  3);
 		mix(tIron                   ,  1, "molten.tin"            ,  1                                                            , "molten.tinalloy"         ,  2);
 		mix(tIron                   ,  1, "molten.gold"           ,  1                                                            , "molten.angmallen"        ,  2);
-		mix(tIron                   ,  4, "molten.invar"          ,  3, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
 		mix(tIron                   ,  6, "molten.nickel"         ,  1, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
+		mix(tIron                   ,  4, "molten.invar"          ,  3, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
+		mix(tIron                   , 24, "molten.nichrome"       ,  5, "molten.chromium"       ,  3, "molten.manganese"      ,  4, "molten.stainlesssteel"   , 36);
 		mix(tIron                   ,  1, "molten.electrotine"    ,  8                                                            , "molten.electrotinealloy" ,  1);
 		}
 		for (String tSteel : new String[] {"molten.steel", "molten.meteoricsteel", "molten hsla", "molten.knightmetal"}) {
