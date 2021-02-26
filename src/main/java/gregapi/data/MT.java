@@ -2901,6 +2901,7 @@ public class MT {
 			EnergeticAlloy          .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(InductiveAlloy                , 2*U), OM.stack(tMat               , 1*U)));
 			Lumium                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(Sn                            , 3*U), OM.stack(Ag                 , 1*U), OM.stack(tMat, 4*U)));
 			}
+			StainlessSteel          .addAlloyingRecipe(new OreDictConfigurationComponent(36, OM.stack(WroughtIron                   ,24*U), OM.stack(Nichrome           , 5*U), OM.stack(Cr, 3*U), OM.stack(Mn, 4*U)));
 			BlackSteel              .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Ni                            , 1*U), OM.stack(BlackBronze        , 1*U), OM.stack(MeteoricSteel, 3*U)));
 			BlueSteel               .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(SterlingSilver                , 1*U), OM.stack(BismuthBronze      , 1*U), OM.stack(MeteoricSteel, 2*U), OM.stack(BlackSteel , 4*U)));
 			RedSteel                .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(RoseGold                      , 1*U), OM.stack(Brass              , 1*U), OM.stack(MeteoricSteel, 2*U), OM.stack(BlackSteel , 4*U)));
