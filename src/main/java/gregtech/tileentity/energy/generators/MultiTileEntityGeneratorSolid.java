@@ -119,12 +119,22 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 					if (mOutput1 == null && slotHas(0) && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 						if (IL.RC_Firestone_Refined.equal(slot(0), T, T)) {
 							mEnergy += 800 * EU_PER_LAVA;
-							slot(0, ST.container(slot(0), F));
-							removeAllDroppableNullStacks();
+							ItemStack tStack = ST.container(slot(0), F);
+							if (ST.invalid(ST.container(tStack, F))) {
+								slot(0, NI);
+								mOutput1 = tStack;
+							} else {
+								slot(0, tStack);
+							}
 						} else if (IL.RC_Firestone_Cracked.equal(slot(0), T, T)) {
 							mEnergy += 600 * EU_PER_LAVA;
-							slot(0, ST.container(slot(0), F));
-							removeAllDroppableNullStacks();
+							ItemStack tStack = ST.container(slot(0), F);
+							if (ST.invalid(ST.container(tStack, F))) {
+								slot(0, NI);
+								mOutput1 = tStack;
+							} else {
+								slot(0, tStack);
+							}
 						} else {
 							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, null, ZL_FS, slot(0));
 							if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FS, slot(0))) {
