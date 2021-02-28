@@ -23,7 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Barrels and Drums did not have the same Melting Points that Pipes have. I fixed that. Metal Drums now have 1.25 times more Heat Resistance, while Wooden Barrels and Plastic Cans got a properly assigned fixed Value, which in most cases should not make them burn up.
 [CHANGED] Blue Steel is Red Steel now and vice versa. This should fix my ages old fuckup of the Recipes. Everything should still be the same as before when it comes to Stats, just the Color of the Material changed. If you used Matter Fabricators to make Red/Blue Steel for some reason, you may need to check the USB Stick with the Recipe.
 [CHANGED] Oil and Natural Gas can now pass through Water. In the case of Oil this will result in Buildcraft alike Oil Fountains or puddles in the Ocean, should you be super lucky. If not, just dig a tunnel down and it happens too. XD
-[ADDED] Railcrafts Firestones now work as Fuel in Solid Burning Boxes and can also light TNT, Burning Boxes, Coke Ovens and the likes.
+[ADDED] Railcrafts Firestones now work as Fuel in Solid Burning Boxes and can also light TNT, Burning Boxes, Coke Ovens and the likes. Please be aware that Burning Boxes need the Firestone to he hoppered in to work, since they otherwise work like Flint and Steel.
 [ADDED] In a potentially failing attempt of fixing the Nichrome Issue in Stainless Steel, I added a Version of the Recipe that takes Nichrome instead of Invar, which is ofcourse in the proper ratios. I do not know how well that will work for people using the Crucible, but better than nothing. I did the same for Ultimet and Signalum too.
 [ADDED] Barbecue Sauce (BBQ Sauce), because why not.
 [ADDED] Axes, Saws and Chainsaws can now place Saplings too. They will still place Workbenches if Saplings cant be placed.
@@ -1352,7 +1352,7 @@ Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT
 [CHANGED] Thaumcraft Aluminium Duplication now costs Lucrum instead of Ignis.
 [CHANGED] The "Auto Redstone Machine Switch" Cover can now use Redstone Pulse Inputs as "produce one Process" Signal. A constant Redstone Signal will be "produce until Redstone turns off, but finish the last Process at least". Remember that certain Machines do multiple things in parallel, and they will still do that with this Cover regardless.
 [CHANGED] When Railcraft is not installed, all Rails cost Treated Sticks instead of Regular Wooden Sticks.
-[ADDED] Materials that can be used for Flint & Tinder. Mainly Gold, Cobalt, Nickel and Arsenic.
+[ADDED] Materials that can be used for Flint and Tinder. Mainly Gold, Cobalt, Nickel and Arsenic.
 
 
 6.07.22:
