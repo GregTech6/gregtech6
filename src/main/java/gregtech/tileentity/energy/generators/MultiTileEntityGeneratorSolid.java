@@ -194,8 +194,8 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; return 10000;}
-		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {if (aSneaking && canInsertItem(0, aStack, SIDE_INSIDE)) return 0; mBurning = T; return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {if (aSneaking && canInsertItem(0, aStack, SIDE_INSIDE)) return 0; mBurning = F; return 10000;}
 		if (aTool.equals(TOOL_shovel        ) &&  aSide == mFacing && slotHas(1)) {
 			long rDamage = 1000 * slot(1).stackSize;
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, slot(1), worldObj, xCoord, yCoord, zCoord);
