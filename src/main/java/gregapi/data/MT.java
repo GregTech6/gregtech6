@@ -2896,7 +2896,6 @@ public class MT {
 			Steel                   .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(WroughtIron                   , 1*U), OM.stack(Air                , 1*U)));
 			MeteoricSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(MeteoricIron                  , 1*U), OM.stack(Air                , 1*U)));
 			
-			
 			for (OreDictMaterial tMat : ANY.Glowstone.mToThis) if (tMat != Glowstone) {
 			EnergeticAlloy          .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(InductiveAlloy                , 2*U), OM.stack(tMat               , 1*U)));
 			Lumium                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(Sn                            , 3*U), OM.stack(Ag                 , 1*U), OM.stack(tMat, 4*U)));
@@ -2923,6 +2922,8 @@ public class MT {
 			Bronze                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(Sn                 , 1*U)));
 			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 3*U), OM.stack(Electrum           , 2*U)));
 			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 2*U), OM.stack(RedAlloy, 5*U)));
+			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent(16, OM.stack(Cu                            , 1*U), OM.stack(SterlingSilver     , 5*U), OM.stack(RedAlloy,10*U)));
+			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent(16, OM.stack(AnnealedCopper                , 1*U), OM.stack(SterlingSilver     , 5*U), OM.stack(RedAlloy,10*U)));
 			Constantan              .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ni                 , 1*U)));
 			YttriumBariumCuprate    .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(AnnealedCopper                , 3*U), OM.stack(Ba                 , 2*U), OM.stack(Y, U)));
 			YttriumBariumCuprate    .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(Cu                            , 3*U), OM.stack(Ba                 , 2*U), OM.stack(Y, U)));

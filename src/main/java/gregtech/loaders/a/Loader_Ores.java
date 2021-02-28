@@ -232,7 +232,7 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.MIN, "gneiss"                        , 0, "min.gneiss"           , OP.oreVanillastone        , MT.Gneiss);
 		rockset(MD.MIN, "dolomite"                      , 0, "min.dolomite"         , OP.oreVanillastone        , MT.Dolomite);
 		rockset(MD.MIN, "rhyolite"                      , 0, "min.rhyolite"         , OP.oreVanillastone        , MT.Rhyolite);
-		rockset(MD.MIN, "pumice"                        , 0, "min.pumice"           , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "pumice"                        , 0, "min.pumice"           , OP.oreVanillastone        , MT.Pumice);
 		rockset(MD.MIN, "conglomerate"                  , 0, "min.conglomerate"     , OP.oreVanillastone        , MT.Stone);
 		rockset(MD.MIN, "pegmatite"                     , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
 		rockset(MD.MIN, "chert"                         , 0, "min.chert"            , OP.oreVanillastone        , MT.Chert);
