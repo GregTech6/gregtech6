@@ -118,22 +118,40 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 					if (addStackToSlot(1, mOutput1)) mOutput1 = null;
 					if (mOutput1 == null && slotHas(0) && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 						if (IL.RC_Firestone_Refined.equal(slot(0), T, T)) {
-							mEnergy += 800 * EU_PER_LAVA;
 							ItemStack tStack = ST.container(slot(0), F);
-							if (ST.invalid(ST.container(tStack, F))) {
-								slot(0, NI);
+							if (ST.invalid(tStack)) {
+								// Just dump the empty Firestone to the Output. This should not happen, unless you insert an empty Firestone.
+								if (addStackToSlot(1, slot(0))) slotKill(0);
+							} else if (ST.invalid(ST.container(tStack, F))) {
+								// 80% of whatever Heat Energy you get from Lava. This is over 10 times the normal Firestone Furnace burn Value.
+								mEnergy += 800 * EU_PER_LAVA;
+								// Prevent using up the Firestone entirely.
+								slotKill(0);
 								mOutput1 = tStack;
 							} else {
+								// 80% of whatever Heat Energy you get from Lava. This is over 10 times the normal Firestone Furnace burn Value.
+								mEnergy += 800 * EU_PER_LAVA;
+								// Continue using the Firestone.
 								slot(0, tStack);
 							}
 						} else if (IL.RC_Firestone_Cracked.equal(slot(0), T, T)) {
-							mEnergy += 600 * EU_PER_LAVA;
 							ItemStack tStack = ST.container(slot(0), F);
-							if (ST.invalid(ST.container(tStack, F))) {
-								slot(0, NI);
+							if (ST.invalid(tStack)) {
+								// Just dump the empty Firestone to the Output. This should not happen, unless you insert an empty Firestone.
+								if (addStackToSlot(1, slot(0))) slotKill(0);
+							} else if (ST.invalid(ST.container(tStack, F))) {
+								// Less Power for the broken Firestone, so 60%.
+								mEnergy += 600 * EU_PER_LAVA;
+								// Prevent using up the Firestone entirely.
+								slotKill(0);
 								mOutput1 = tStack;
 							} else {
+								// Less Power for the broken Firestone, so 60%.
+								mEnergy += 600 * EU_PER_LAVA;
+								// Continue using the Firestone.
 								slot(0, tStack);
+								// Cracked Firestones cause Fire to be released way more often.
+								WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), T);
 							}
 						} else {
 							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, null, ZL_FS, slot(0));
