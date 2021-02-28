@@ -305,9 +305,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
 			} else {
-				if (IL.TF_Pick_Giant     .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
-				if (IL.TF_Sword_Giant    .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
-				if (IL.TF_Lamp_of_Cinders.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
+				if (IL.RC_Firestone_Refined.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Works in Burning Boxes ("+(800*EU_PER_LAVA)+" HU per Lava Block)"); else
+				if (IL.RC_Firestone_Cracked.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Works in Burning Boxes ("+(600*EU_PER_LAVA)+" HU per Lava Block)"); else
+				if (IL.TF_Pick_Giant       .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
+				if (IL.TF_Sword_Giant      .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
+				if (IL.TF_Lamp_of_Cinders  .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
 			}
 			if (tData.hasValidMaterialData()) {
 				boolean tUnburnable = F;

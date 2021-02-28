@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Barrels and Drums did not have the same Melting Points that Pipes have. I fixed that. Metal Drums now have 1.25 times more Heat Resistance, while Wooden Barrels and Plastic Cans got a properly assigned fixed Value, which in most cases should not make them burn up.
 [CHANGED] Blue Steel is Red Steel now and vice versa. This should fix my ages old fuckup of the Recipes. Everything should still be the same as before when it comes to Stats, just the Color of the Material changed. If you used Matter Fabricators to make Red/Blue Steel for some reason, you may need to check the USB Stick with the Recipe.
 [CHANGED] Oil and Natural Gas can now pass through Water. In the case of Oil this will result in Buildcraft alike Oil Fountains or puddles in the Ocean, should you be super lucky. If not, just dig a tunnel down and it happens too. XD
+[ADDED] Railcrafts Firestones now work as Fuel in Solid Burning Boxes and can also light TNT, Burning Boxes, Coke Ovens and the likes.
 [ADDED] In a potentially failing attempt of fixing the Nichrome Issue in Stainless Steel, I added a Version of the Recipe that takes Nichrome instead of Invar, which is ofcourse in the proper ratios. I do not know how well that will work for people using the Crucible, but better than nothing. I did the same for Ultimet and Signalum too.
 [ADDED] Barbecue Sauce (BBQ Sauce), because why not.
 [ADDED] Axes, Saws and Chainsaws can now place Saplings too. They will still place Workbenches if Saplings cant be placed.

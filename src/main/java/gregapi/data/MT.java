@@ -2655,8 +2655,11 @@ public class MT {
 			OREMATS.Chromite                .addOreByProducts(MnO2                      , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
 			OREMATS.Bromargyrite            .addOreByProducts(MnO2                      , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
 			
-			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   );
 			Apatite                         .addOreByProducts(Phosphorite               , Phosphorus                , FluoriteBlue          , PO4                   );
+			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   );
+			Phosphorite                     .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   );
+			P                               .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   );
+			PO4                             .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , Phosphorite           );
 			
 			OREMATS.Zeolite                 .addOreByProducts(OREMATS.Pollucite         , NaCl                      );
 			OREMATS.Pollucite               .addOreByProducts(OREMATS.Zeolite           , Cs                        , Rb                    );
@@ -2818,8 +2821,6 @@ public class MT {
 			Marble                          .addOreByProducts(CaCO3                     );
 			Eclogite                        .addOreByProducts(TiO2                      );
 			Limestone                       .addOreByProducts(Phosphorite               );
-			PO4                             .addOreByProducts(P                         );
-			P                               .addOreByProducts(PO4                       );
 			Tanzanite                       .addOreByProducts(Opal                      );
 			Opal                            .addOreByProducts(Tanzanite                 );
 			Topaz                           .addOreByProducts(BlueTopaz                 );

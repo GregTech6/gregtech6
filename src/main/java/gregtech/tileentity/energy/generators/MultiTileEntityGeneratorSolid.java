@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
 import gregapi.data.FM;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
@@ -115,14 +116,24 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 				if (mEnergy < mRate * 2) {
 					WD.fire(worldObj, getOffset(mFacing, 1), T);
 					if (addStackToSlot(1, mOutput1)) mOutput1 = null;
-					if (mOutput1 == null && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
-						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, null, ZL_FS, slot(0));
-						if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FS, slot(0))) {
-							mLastRecipe = tRecipe;
-							ItemStack[] tOutputs = tRecipe.getOutputs();
-							if (tOutputs.length > 0) mOutput1 = ST.copy(tOutputs[0]);
-							mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+					if (mOutput1 == null && slotHas(0) && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
+						if (IL.RC_Firestone_Refined.equal(slot(0), T, T)) {
+							mEnergy += 800 * EU_PER_LAVA;
+							slot(0, ST.container(slot(0), F));
 							removeAllDroppableNullStacks();
+						} else if (IL.RC_Firestone_Cracked.equal(slot(0), T, T)) {
+							mEnergy += 600 * EU_PER_LAVA;
+							slot(0, ST.container(slot(0), F));
+							removeAllDroppableNullStacks();
+						} else {
+							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, null, ZL_FS, slot(0));
+							if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FS, slot(0))) {
+								mLastRecipe = tRecipe;
+								ItemStack[] tOutputs = tRecipe.getOutputs();
+								if (tOutputs.length > 0) mOutput1 = ST.copy(tOutputs[0]);
+								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+								removeAllDroppableNullStacks();
+							}
 						}
 					}
 				}
@@ -223,7 +234,7 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 	// Inventory Stuff
 	private static final int[] ACCESSABLE_SLOTS = new int[] {0, 1};
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == mFacing ? ZL_INTEGER : ACCESSABLE_SLOTS;}
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aSlot == 0 && aSide != mFacing && mRecipes.containsInput(aStack, this, NI);}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aSlot == 0 && aSide != mFacing && (mRecipes.containsInput(aStack, this, NI) || IL.RC_Firestone_Refined.equal(aStack, T, T) || IL.RC_Firestone_Cracked.equal(aStack, T, T));}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aSlot == 1 && aSide != mFacing;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
