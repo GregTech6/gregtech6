@@ -229,13 +229,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'X', IL.NeLi_ShroomLight, 'S', OD.stickAnyWood);
 			
 			CR.shapeless(IL.NeLi_Torch_Soul  .get(4), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul  .get(4), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(4), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul  .get(3), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul  .get(3), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(3), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul  .get(2), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul  .get(2), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(2), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul  .get(1), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul  .get(1), DEF_NCC, new Object[] {IL.NeLi_Wither_Rose      , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul  .get(1), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Fox   .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch});

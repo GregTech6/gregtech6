@@ -53,12 +53,6 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.slime_ball, 9, W), ST.tag(9), ST.make(MD.EtFu, "slime", 1, 0));
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
-			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
-			RM.Juicer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
-			RM.ic2_extractor(                       ST.make(MD.EtFu, "rose", 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
-			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "cornflower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
-			RM.Juicer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "cornflower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
-			RM.ic2_extractor(                       ST.make(MD.EtFu, "cornflower", 1, 0), ST.make(MD.EtFu, "dye", 2, 1));
 			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.Drying.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.smash(                               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
@@ -79,12 +73,31 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			CR.shapeless(                           IL.Plank.get(7), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, IL.EtFu_Barrel});
 			RM.sawing(16, 112, F, 100,              IL.EtFu_Barrel.get(1), IL.Plank.get(7));
 			
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose"              , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
+			RM.Juicer  .addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose"              , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
+			RM.ic2_extractor(                       ST.make(MD.EtFu, "rose"              , 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "lily_of_the_valley", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.EtFu, "dye", 1, 0));
+			RM.Juicer  .addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "lily_of_the_valley", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.EtFu, "dye", 1, 0));
+			RM.ic2_extractor(                       ST.make(MD.EtFu, "lily_of_the_valley", 1, 0), ST.make(MD.EtFu, "dye", 2, 0));
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "cornflower"        , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
+			RM.Juicer  .addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "cornflower"        , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
+			RM.ic2_extractor(                       ST.make(MD.EtFu, "cornflower"        , 1, 0), ST.make(MD.EtFu, "dye", 2, 1));
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "wither_rose"       , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
+			RM.Juicer  .addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "wither_rose"       , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
+			RM.ic2_extractor(                       ST.make(MD.EtFu, "wither_rose"       , 1, 0), ST.make(MD.EtFu, "dye", 2, 3));
+			
+			RM.Distillery.addRecipe1(T, 16, 48, IL.EtFu_Wither_Rose   .get(1), FL.Potion_Thick  .make(750), FL.Potion_Harm_2          .make(750), ZL_IS);
+			
 			RM.smash(ST.make(MD.EtFu, "brown_mushroom", 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
 			RM.smash(ST.make(MD.EtFu, "red_mushroom"  , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
-			RM.biomass(ST.make(MD.EtFu, "brown_mushroom", 1, W));
-			RM.biomass(ST.make(MD.EtFu, "red_mushroom"  , 1, W));
+			RM.biomass(ST.make(MD.EtFu, "brown_mushroom"    , 8, W));
+			RM.biomass(ST.make(MD.EtFu, "red_mushroom"      , 8, W));
+			RM.biomass(ST.make(MD.EtFu, "rose"              , 8, W));
+			RM.biomass(ST.make(MD.EtFu, "wither_rose"       , 8, W));
+			RM.biomass(ST.make(MD.EtFu, "cornflower"        , 8, W));
+			RM.biomass(ST.make(MD.EtFu, "lily_of_the_valley", 8, W));
 			
-			CR.delate(MD.EtFu, "netherite_sword", "netherite_pickaxe", "netherite_spade", "netherite_axe", "netherite_hoe", "netherite_helmet", "netherite_chestplate", "netherite_leggins", "netherite_boots");
+			CR.delate(MD.EtFu, "netherite_ingot", "netherite_sword", "netherite_pickaxe", "netherite_spade", "netherite_axe", "netherite_hoe", "netherite_helmet", "netherite_chestplate", "netherite_leggings", "netherite_boots");
 			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.EtFu, "netherite_sword"     , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.EtFu, "netherite_pickaxe"   , 1, 0));
@@ -93,7 +106,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_hoe       , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.EtFu, "netherite_hoe"       , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_helmet    , 1, 0), MT.Netherite.liquid(5*U4, T), NF, ST.make(MD.EtFu, "netherite_helmet"    , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_chestplate, 1, 0), MT.Netherite.liquid(8*U4, T), NF, ST.make(MD.EtFu, "netherite_chestplate", 1, 0));
-			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.EtFu, "netherite_leggins"   , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.EtFu, "netherite_leggings"  , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.EtFu, "netherite_boots"     , 1, 0));
 			
 			CR.delate(IL.EtFu_Granite.get(1));

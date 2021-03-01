@@ -245,11 +245,12 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
 				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
 				if (tBlock == NB) continue;
-				if (tBlock == Blocks.nether_wart    ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
-				if (tBlock == tWartCrimson          ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
-				if (tBlock == tWartWarped           ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
-				if (tBlock == tWartSoggy            ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == Blocks.nether_wart     ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == tWartCrimson           ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == tWartWarped            ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == tWartSoggy             ) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 				if (IL.NeLi_Wither_Rose.equal(tBlock)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (IL.EtFu_Wither_Rose.equal(tBlock)) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 				if (tBlock == tFireFlower) {
 					if (WD.meta(aWorld, aX+i, aY+j, aZ+k) == 2) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 					continue;

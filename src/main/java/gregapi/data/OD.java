@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -117,6 +117,7 @@ public enum OD {
 	, woodLog
 	, woodRubber
 	, flower
+	, flowerWither
 	, bamboo
 	, record
 	, beeComb

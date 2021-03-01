@@ -551,31 +551,32 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		
 		if (MD.EtFu.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "rose"));
-			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "cornflower"));
+			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "rose"              ));
+			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "cornflower"        ));
+			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "lily_of_the_valley"));
 		}
 		if (MD.BoP.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers"));
-			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers2"));
+			BlocksGT.FLOWERS.add(ST.block(MD.BoP , "flowers"           ));
+			BlocksGT.FLOWERS.add(ST.block(MD.BoP , "flowers2"          ));
 		}
 		if (MD.EBXL.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower1"));
-			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower2"));
-			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower3"));
+			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower1"           ));
+			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower2"           ));
+			BlocksGT.FLOWERS.add(ST.block(MD.EBXL, "flower3"           ));
 		}
 		if (MD.TCFM.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.TCFM, "InkFlower"));
-			BlocksGT.FLOWERS.add(ST.block(MD.TCFM, "UmbralBush"));
+			BlocksGT.FLOWERS.add(ST.block(MD.TCFM, "InkFlower"         ));
+			BlocksGT.FLOWERS.add(ST.block(MD.TCFM, "UmbralBush"        ));
 		}
 		if (MD.BP.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.BP, "indigo_flower"));
+			BlocksGT.FLOWERS.add(ST.block(MD.BP  , "indigo_flower"     ));
 		}
 		if (MD.ARS.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.ARS, "blueOrchid"));
+			BlocksGT.FLOWERS.add(ST.block(MD.ARS , "blueOrchid"        ));
 		}
 		if (MD.BOTA.mLoaded) {
-			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "flower"));
-			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "shinyFlower"));
+			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "flower"            ));
+			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "shinyFlower"       ));
 		}
 		
 		for (Enchantment tEnchant : Enchantment.enchantmentsList) if (tEnchant != null) {
