@@ -139,6 +139,10 @@ public class LoaderItemData implements Runnable {
 		}
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.TCFM, "FMResource", 1, 1));
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], ST.make(MD.EtFu, "dye", 1, 0));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue ], ST.make(MD.EtFu, "dye", 1, 1));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown], ST.make(MD.EtFu, "dye", 1, 2));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
 		OM.reg("foodCookie"                         , ST.make(Items.cookie, 1, 0));
 		OM.reg("foodCookie"                         , ST.make(MD.BOTA, "manaCookie", 1, 0));
 		OM.reg("cropAppleRed"                       , ST.make(Items.apple, 1, 0));

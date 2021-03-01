@@ -550,6 +550,10 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.compressed, MT.Netherite     , ST.make(MD.NePl, "CompressedNetherite", 1, 0), T, T, T);
 		}
 		
+		if (MD.EtFu.mLoaded) {
+			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "rose"));
+			BlocksGT.FLOWERS.add(ST.block(MD.EtFu, "cornflower"));
+		}
 		if (MD.BoP.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers"));
 			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers2"));

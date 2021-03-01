@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -52,14 +53,18 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.slime_ball, 9, W), ST.tag(9), ST.make(MD.EtFu, "slime", 1, 0));
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
-			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ZL_IS);
-			RM.Juicer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ZL_IS);
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
+			RM.Juicer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "rose", 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "cornflower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
+			RM.Juicer.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "cornflower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.EtFu, "dye", 1, 1));
+			RM.ic2_extractor(                       ST.make(MD.EtFu, "cornflower", 1, 0), ST.make(MD.EtFu, "dye", 2, 1));
 			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.Drying.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.smash(                               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
 			RM.sawing(16, 16, F, 100,               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(MD.EtFu, "red_sandstone_slab", 2, 0));
 			RM.Compressor.addRecipe1(T, 16, 32,     ST.make(Blocks.sand, 4, 1), ST.make(MD.EtFu, "red_sandstone", 1, 0));
+			RM.smash(                               IL.EtFu_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4));
 			RM.generify(                            ST.make(Blocks.sponge, 1, W), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.generify(                            ST.make(MD.EtFu, "sponge", 1, 0), ST.make(Blocks.sponge, 1, 0));
 			RM.generify(                            ST.make(Blocks.double_plant, 1, 4), ST.make(MD.EtFu, "rose", 6, 0));
@@ -71,7 +76,25 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LS.make(125), FL.Dragon_Breath.make(125), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1D .make(125), FL.Dragon_Breath.make(125), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LD.make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			CR.shapeless(                           IL.Plank.get(7), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, IL.EtFu_Barrel});
+			RM.sawing(16, 112, F, 100,              IL.EtFu_Barrel.get(1), IL.Plank.get(7));
 			
+			RM.smash(ST.make(MD.EtFu, "brown_mushroom", 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
+			RM.smash(ST.make(MD.EtFu, "red_mushroom"  , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
+			RM.biomass(ST.make(MD.EtFu, "brown_mushroom", 1, W));
+			RM.biomass(ST.make(MD.EtFu, "red_mushroom"  , 1, W));
+			
+			CR.delate(MD.EtFu, "netherite_sword", "netherite_pickaxe", "netherite_spade", "netherite_axe", "netherite_hoe", "netherite_helmet", "netherite_chestplate", "netherite_leggins", "netherite_boots");
+			
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.EtFu, "netherite_sword"     , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.EtFu, "netherite_pickaxe"   , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_shovel    , 1, 0), MT.Netherite.liquid(1*U4, T), NF, ST.make(MD.EtFu, "netherite_spade"     , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_axe       , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.EtFu, "netherite_axe"       , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_hoe       , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.EtFu, "netherite_hoe"       , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_helmet    , 1, 0), MT.Netherite.liquid(5*U4, T), NF, ST.make(MD.EtFu, "netherite_helmet"    , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_chestplate, 1, 0), MT.Netherite.liquid(8*U4, T), NF, ST.make(MD.EtFu, "netherite_chestplate", 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.EtFu, "netherite_leggins"   , 1, 0));
+			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.EtFu, "netherite_boots"     , 1, 0));
 			
 			CR.delate(IL.EtFu_Granite.get(1));
 			CR.delate(IL.EtFu_Diorite.get(1));
@@ -79,7 +102,6 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			CR.delate(IL.EtFu_Granite_Smooth.get(1));
 			CR.delate(IL.EtFu_Diorite_Smooth.get(1));
 			CR.delate(IL.EtFu_Andesite_Smooth.get(1));
-			
 			
 			if (MD.CHSL.mLoaded) {
 				ItemStack tChiselPurpur = ST.make(MD.CHSL, "purpur", 1, 0);

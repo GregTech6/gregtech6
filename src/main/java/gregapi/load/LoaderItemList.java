@@ -1137,7 +1137,10 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Beet_Seeds                      .set(ST.make(MD.EtFu, "beetroot_seeds"                      , 1, 0), null, "seedBeet");
 		IL.EtFu_Dragon_Breath                   .set(ST.make(MD.EtFu, "dragon_breath"                       , 1, 0));
 		IL.EtFu_Lingering_Potion                .set(ST.make(MD.EtFu, "lingering_potion"                    , 1, 0));
+		IL.EtFu_Barrel                          .set(ST.make(MD.EtFu, "barrel"                              , 1, 0), new OreDictItemData(ANY.Wood, 7*U), OD.craftingChest);
 		IL.EtFu_Obsidian                        .set(ST.make(MD.EtFu, "crying_obsidian"                     , 1, 0), new OreDictItemData(MT.Obsidian, U*9, MT.Lapis, U), OD.cryingObsidian);
+		IL.EtFu_Quartz_Bricks                   .set(ST.make(MD.EtFu, "quartz_bricks"                       , 1, 0), new OreDictItemData(MT.NetherQuartz   , U*4));
+		IL.EtFu_Magmatic_Netherrack             .set(ST.make(MD.EtFu, "magma"                               , 1, 1), new OreDictItemData(MT.Netherrack, U));
 		IL.EtFu_Sandstone                       .set(ST.make(MD.EtFu, "red_sandstone"                       , 1, 0));
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));

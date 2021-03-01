@@ -739,6 +739,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , ST.make(MD.NeLi, "ChainGold", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , ST.make(MD.NeLi, "ChainEfrine", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , ST.make(MD.NeLi, "BoneBlock", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , ST.make(MD.EtFu, "bone", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Netherite              , ST.make(MD.EtFu, "netherite_ingot", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Netherite              , ST.make(MD.EtFu, "netherite_block", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.AncientDebris          , ST.make(MD.EtFu, "netherite_scrap", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.EtFu, "nether_gold_ore", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

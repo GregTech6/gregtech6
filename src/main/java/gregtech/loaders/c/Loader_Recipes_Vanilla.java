@@ -100,7 +100,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "X X", "XhX", "XXX", 'X', OP.plate.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Fe));
 		}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Hopper", T))           if (null != (tStack = CR.remove(tMat, null, tMat, tMat, ST.make(Blocks.chest, 1, 0), tMat, null, tMat, null))) {
-			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "XwX", "XCX", " X ", 'X', OP.plate.dat(ANY.Iron), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Iron), 'C', "craftingChest");
+			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "XwX", "XCX", " X ", 'X', OP.plate.dat(ANY.Iron), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Iron), 'C', OD.craftingChest);
 		}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Bars", T)) CR.remove(tMat, tMat, tMat, tMat, tMat, tMat, null, null, null);
 		CR.shaped(ST.make(Blocks.iron_bars, 8, 0), DEF, " w ", "XXX", "XXX", 'X', OP.stick.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Fe));
@@ -858,6 +858,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.pulverizing(ST.make(Items.reeds, 1, W), IL.Remains_Plant.get(1), T);
 		
+		RM.biomass(ST.make(Blocks.brown_mushroom_block, 8, W));
+		RM.biomass(ST.make(Blocks.red_mushroom_block, 8, W));
 		RM.biomass(ST.make(Blocks.brown_mushroom, 8, W));
 		RM.biomass(ST.make(Blocks.red_mushroom, 8, W));
 		RM.biomass(ST.make(Blocks.red_flower, 8, W));

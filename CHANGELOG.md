@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.09: (Not released yet, released whenever it needs to be)
 [NOTE] The Default Config Pack updated to disable Fastcrafts Chunk Culling, so that Ocean Floors are now rendering properly again. Set "enableCullingTweaks" to false in the "config/fastcraft.ini" File, if you experience this Issue.
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
+[COMPAT] Et Futurum Requiem is now supported properly and up to date. Its Netherite Items are preferred over the ones of Netherite Plus.
 [FIXED] Infinite Worldgen Loop with Oceans, because I forgot to set the Block Update Flag to 2 during Worldgen, because ofcourse I left it to default when I fixed another Ocean related Bug...
 [FIXED] Coal and Oil Shale Stone Layer Ore Blocks were flammable t othe point of burning up way too much. Now they are still flammable but Fire wont spread to them.
 [FIXED] Railcraft Crowbars should now be able to remove Covers again, even if they dont use the overlay for technical reasons.

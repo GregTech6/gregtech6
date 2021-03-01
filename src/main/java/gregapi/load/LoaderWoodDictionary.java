@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -794,6 +794,34 @@ public class LoaderWoodDictionary implements Runnable {
 				new SaplingEntry(ST.make(MD.NePl, "WarpedFungus" , 1, W), new WoodEntry(ST.make(MD.NePl, "WarpedStem" , 1, W), new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234)));
 				new WoodEntry   (ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
 			}
+		}
+		// Et Futurum Logs/Beams
+		if (MD.EtFu.mLoaded) {
+			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "log_stripped", 1, W));
+			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "log2_stripped", 1, W));
+			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "wood_stripped", 1, W));
+			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "wood2_stripped", 1, W));
+			
+			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 0), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 0));
+			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1));
+			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 2), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2));
+			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 3), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3));
+			new WoodEntry(ST.make(MD.EtFu, "bark2"         , 1, 0), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 0));
+			new WoodEntry(ST.make(MD.EtFu, "bark2"         , 1, 1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 1));
+			
+			new BeamEntry(ST.make(MD.EtFu, "log_stripped"  , 1, 0), WoodDictionary.PLANKS.get(Blocks.planks, 0));
+			new BeamEntry(ST.make(MD.EtFu, "log_stripped"  , 1, 1), WoodDictionary.PLANKS.get(Blocks.planks, 1));
+			new BeamEntry(ST.make(MD.EtFu, "log_stripped"  , 1, 2), WoodDictionary.PLANKS.get(Blocks.planks, 2));
+			new BeamEntry(ST.make(MD.EtFu, "log_stripped"  , 1, 3), WoodDictionary.PLANKS.get(Blocks.planks, 3));
+			new BeamEntry(ST.make(MD.EtFu, "log2_stripped" , 1, 0), WoodDictionary.PLANKS.get(Blocks.planks, 4));
+			new BeamEntry(ST.make(MD.EtFu, "log2_stripped" , 1, 1), WoodDictionary.PLANKS.get(Blocks.planks, 5));
+			
+			new BeamEntry(ST.make(MD.EtFu, "wood_stripped" , 1, 0), WoodDictionary.PLANKS.get(Blocks.planks, 0));
+			new BeamEntry(ST.make(MD.EtFu, "wood_stripped" , 1, 1), WoodDictionary.PLANKS.get(Blocks.planks, 1));
+			new BeamEntry(ST.make(MD.EtFu, "wood_stripped" , 1, 2), WoodDictionary.PLANKS.get(Blocks.planks, 2));
+			new BeamEntry(ST.make(MD.EtFu, "wood_stripped" , 1, 3), WoodDictionary.PLANKS.get(Blocks.planks, 3));
+			new BeamEntry(ST.make(MD.EtFu, "wood2_stripped", 1, 0), WoodDictionary.PLANKS.get(Blocks.planks, 4));
+			new BeamEntry(ST.make(MD.EtFu, "wood2_stripped", 1, 1), WoodDictionary.PLANKS.get(Blocks.planks, 5));
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {
