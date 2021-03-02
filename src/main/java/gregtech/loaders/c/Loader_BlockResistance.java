@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,5 +49,6 @@ public class Loader_BlockResistance implements Runnable {
 		tBlock = IL.NeLi_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
 		tBlock = IL.NePl_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
 		tBlock = IL.NePl_Ancient_Debris.block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
+		tBlock = IL.EtFu_Ancient_Debris.block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
 	}
 }

@@ -31,6 +31,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
 import gregapi.worldgen.StoneLayerOres;
@@ -109,6 +110,11 @@ public class WorldgenStoneLayers extends WorldgenObject {
 							break;
 						}
 					}
+					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(128) == 0) {
+						if (tScan[3].mOreSmall.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, UT.Code.select(MT.Emerald, StoneLayer.RANDOM_SMALL_GEM_ORES).mID, null, F, T)) {
+							temp = F;
+						}
+					}
 					if (temp) {
 						tLastRock = tScan[3].mMaterial;
 						if (aBlock != tScan[3].mStone) {
@@ -151,6 +157,11 @@ public class WorldgenStoneLayers extends WorldgenObject {
 							tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
+						}
+					}
+					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(128) == 0) {
+						if (tScan[3].mOreSmall.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, UT.Code.select(MT.Emerald, StoneLayer.RANDOM_SMALL_GEM_ORES).mID, null, F, T)) {
+							temp = F;
 						}
 					}
 					if (temp) {

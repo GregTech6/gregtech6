@@ -430,10 +430,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.smash(IL.NePl_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4), 4);
 			
 			if (!MD.NeLi.mLoaded) {
-				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch});
 				
 				RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
 				

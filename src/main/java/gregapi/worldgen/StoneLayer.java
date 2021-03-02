@@ -81,9 +81,11 @@ public class StoneLayer {
 	/** List of Stone and Ore Blocks, that can simply be replaced by the Stone Layers. */
 	public static final Set<Block> REPLACEABLE_BLOCKS = new HashSetNoNulls<>(F, Blocks.stone, Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.diamond_ore, Blocks.emerald_ore, Blocks.lapis_ore, Blocks.redstone_ore, Blocks.lit_redstone_ore);
 	/** List of generateable Stone Layers, via ItemStack of the Stone Block, so that MetaData is usable. */
-	public static final List<StoneLayer> LAYERS = new ArrayList<>();
+	public static final List<StoneLayer> LAYERS = new ArrayListNoNulls<>();
 	/** Whenever two Rock Types hit each other in WorldGen an Ore from the returned List will spawn. The first ones mentioned inside the List can override the chances for others by spawning before, so insert the lowest chances first and then the high chances. */
 	public static final Map<OreDictMaterial, Map<OreDictMaterial, List<StoneLayerOres>>> MAP = new HashMap<>();
+	/** List of random Small Ore Materials that can generate between Layers. */
+	public static final List<OreDictMaterial> RANDOM_SMALL_GEM_ORES = new ArrayListNoNulls<>();
 	
 	public static boolean bothsides(OreDictMaterial aMaterialA, OreDictMaterial aMaterialB, StoneLayerOres... aOreChances) {
 		return topbottom(aMaterialA, aMaterialB, aOreChances) && topbottom(aMaterialB, aMaterialA, aOreChances);

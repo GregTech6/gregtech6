@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -444,6 +444,8 @@ public class TD {
 		public static final TagData HAS_COLOR                               = TagData.createTagData("PROPERTIES.HAS_COLOR", "Has Color");
 		/** If this Material is typically used by Mods or Vanilla Minecraft, and where the "ore" Prefix is important. */
 		public static final TagData COMMON_ORE                              = TagData.createTagData("PROPERTIES.COMMON_ORE", "Common Ore");
+		/** If this Material is generated among the random small Gem Ores. */
+		public static final TagData RANDOM_SMALL_GEM_ORE                    = TagData.createTagData("PROPERTIES.RANDOM_SMALL_GEM_ORE", "Random Small Gem Ore");
 		/** If this Material is only Unificatable in Recipes (for example Wood, which has many variations depending on from which Tree it comes from) */
 		public static final TagData AUTO_BLACKLIST                          = TagData.createTagData("PROPERTIES.AUTO_BLACKLIST", "Auto Blacklist");
 		/** If this Material is not a valid Material Name and therefore doesn't get unificated at all. This mainly gets used for technical Materials. */

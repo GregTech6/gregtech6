@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -126,7 +126,7 @@ public class ToolCompat {
 				}
 			}
 			if (!rReturn && BlocksGT.Beam1 != null) {
-				if (aBlock == Blocks.log) {
+				if (aBlock == Blocks.log || IL.EtFu_Bark_Oak.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Darkwood.equal(aBlock) && (aMeta & 3) != 3) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
@@ -149,7 +149,7 @@ public class ToolCompat {
 				}
 			}
 			if (!rReturn && BlocksGT.Beam2 != null) {
-				if (aBlock == Blocks.log2) {
+				if (aBlock == Blocks.log2 || IL.EtFu_Bark_Acacia.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, aMeta, 3);
 				} else if (IL.IC2_Log_Rubber.equal(aBlock) || IL.MFR_Log_Rubber.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, 2, 3);

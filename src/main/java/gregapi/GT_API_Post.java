@@ -196,26 +196,26 @@ public class GT_API_Post extends Abstract_Mod {
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
 		new LoaderWoodDictionary().run();
-
+		
 		// Atum violates the "Items have to be created in preInit" Rule...
 		if (MD.ATUM.mLoaded) {
 			IL.ATUM_Scarab      .set(ST.make(MD.ATUM, "item.scarab" , 1, 0), new OreDictItemData(MT.Au, 4*U, MT.Diamond, U));
 			IL.ATUM_Limestone   .set(ST.make(MD.ATUM, "tile.stone"  , 1, 0), OP.stone.dat(MT.Limestone));
 			IL.ATUM_Limecobble  .set(ST.make(MD.ATUM, "tile.cobble" , 1, 0), OP.stone.dat(MT.Limestone));
-
+			
 			OM.reg("cropDate"               , ST.make(MD.ATUM, "item.date", 1, 0));
 			OM.reg("cropFlax"               , ST.make(MD.ATUM, "item.flax", 1, 0));
 			OM.reg("seedFlax"               , ST.make(MD.ATUM, "item.flaxSeeds", 1, 0));
 			OM.reg("itemPelt"               , ST.make(MD.ATUM, "item.wolfPelt", 1, 0));
 			OM.reg(OP.dust, MT.Ectoplasm    , ST.make(MD.ATUM, "item.ectoplasm", 1, 0));
-
+			
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.ironOre"        , 1, 0), OP.oreLimestone.dat(MT.Fe          ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.goldOre"        , 1, 0), OP.oreLimestone.dat(MT.Au          ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.redstoneOre"    , 1, 0), OP.oreLimestone.dat(MT.Redstone    ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.lapisOre"       , 1, 0), OP.oreLimestone.dat(MT.Lapis       ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.coalOre"        , 1, 0), OP.oreLimestone.dat(MT.Coal        ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.diamondOre"     , 1, 0), OP.oreLimestone.dat(MT.Diamond     ));
-
+			
 			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.Limestone, U);
 			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U);
 			OM.data(MD.ATUM, "tile.framedGlass", 1, W, MT.Glass, U);
@@ -226,7 +226,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.ATUM, "tile.thinCrystalGlass", 1, W, MT.Glass, 3*U8);
 			OM.data(MD.ATUM, "tile.thinFramedStainedGlass", 1, W, MT.Glass, 3*U8);
 			OM.data(MD.ATUM, "tile.thinCrystalStainedGlass", 1, W, MT.Glass, 3*U8);
-
+			
 			OM.data(MD.ATUM, "item.loot", 1,  2, MT.Ag  , 2*U);
 			OM.data(MD.ATUM, "item.loot", 1,  3, MT.Ag  , 2*U);
 			OM.data(MD.ATUM, "item.loot", 1,  4, MT.Au  , 2*U);
@@ -288,13 +288,13 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.ATUM, "item.loot", 1,140, MT.Au  , 2*U, MT.Diamond       , 2*U);
 			OM.data(MD.ATUM, "item.loot", 1,141, MT.Au  , 2*U, MT.Diamond       , 2*U);
 		}
-
+		
 		// And Project Red violates that Rule aswell...
 		if (MD.PR.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , ST.make(MD.PR, "projectred.core.part", 1, 10));
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , ST.make(MD.PR, "projectred.core.part", 1, 55));
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Electrotine                , ST.make(MD.PR, "projectred.core.part", 1, 56));
-
+			
 			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
 			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
 			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
@@ -307,9 +307,9 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.PR, "projectred.core.part", 1, 16, ANY.Cu, U);
 			OM.data(MD.PR, "projectred.core.part", 1, 17, ANY.Fe, U);
 			OM.data(MD.PR, "projectred.core.part", 1, 18, MT .Au, U);
-
+			
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.PR_EXPLORATION, "projectred.exploration.ore", null));
-
+			
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 0), OP.oreVanillastone.dat(MT.Ruby));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 1), OP.oreVanillastone.dat(MT.BlueSapphire));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 2), OP.oreVanillastone.dat(MT.Olivine));
@@ -318,7 +318,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 5), OP.oreVanillastone.dat(MT.Ag));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Electrotine));
 		}
-
+		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
 		if (MD.BP.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , ST.make(MD.BP, "red_alloy_ingot", 1, 0));
@@ -326,7 +326,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.PurpleAlloy                , ST.make(MD.BP, "purple_alloy_ingot", 1, 0));
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Teslatite                  , ST.make(MD.BP, "teslatite_dust", 1, 0));
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , ST.make(MD.BP, "infused_teslatite_dust", 1, 0));
-
+			
 			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
 			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 			OM.reg("cropIndigo"                          , ST.make(MD.BP, "indigo_flower", 1, 0));
@@ -348,12 +348,12 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_brick_small", 1, 0));
 			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_paver", 1, 0));
 			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_tile", 1, 0));
-
+			
 			OM.data(MD.BP, "zincplate", 1, 0, ANY.Fe,   U2, MT.Zn,   U4);
 			OM.data(MD.BP, "paint_can", 1, W, ANY.Fe, 7*U2, MT.Zn, 7*U4);
 			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
 			OM.data(MD.BP, "tiles", 1, 0, MT.Marble, U2, MT.Basalt, U2);
-
+			
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"     , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore" , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore" , null));
@@ -362,7 +362,7 @@ public class GT_API_Post extends Abstract_Mod {
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore" , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"     , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"   , null));
-
+			
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "ruby_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Ruby));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "sapphire_ore" , 1, 0), OP.oreVanillastone.dat(MT.BlueSapphire));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "amethyst_ore" , 1, 0), OP.oreVanillastone.dat(MT.Amethyst));
@@ -372,7 +372,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "zinc_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Zn));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "copper_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Cu));
 		}
-
+		
 		// Yay for Chickenbones doing it wrong, I guess...
 		if (MD.WR_CBE_C.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.stick  , MT.Obsidian      , ST.make(MD.WR_CBE_C, "obsidianStick", 1, 0));
@@ -417,7 +417,7 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.CookBook.mLoaded) {
 			OM.data(MD.CookBook, "recipebook", 1, W, MT.Paper, U*3);
 		}
-
+		
 		// Grimoire of Gaia... though I did not expect them to have done a good job with that...
 		if (MD.GoG.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.chunkGt, MT.Fe, ST.make(MD.GoG, "item.GrimoireOfGaia.Shard", 1, 0));
@@ -429,13 +429,13 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"   , 1, 6, MT.Blaze     , U8);
 			OM.data(MD.GoG, "item.GrimoireOfGaia.Fragment", 1, 0, MT.Emerald   , U8);
 		}
-
+		
 		// Seems like it isn't "better" in all aspects.
 		if (MD.BETTER_RECORDS.mLoaded) {
 			OM.reg(OD.record, ST.make(MD.BETTER_RECORDS, "urlrecord", 1, 0));
 			OM.reg(OD.record, ST.make(MD.BETTER_RECORDS, "urlmultirecord", 1, 0));
 		}
-
+		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 0), OP.oreVanillastone.dat(MT.Sn));
@@ -476,7 +476,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.VOLTZ, "veSheetMetal", 1,  16, ANY.Steel ,  U8);
 			OM.data(MD.VOLTZ, "veSheetMetal", 1,  17, ANY.Steel ,  U4);
 			OM.data(MD.VOLTZ, "veSheetMetal", 1,  18, ANY.Steel ,  3*U2);
-
+			
 			OM.data(MD.VOLTZ, "veGear"      , 1,   1, ANY.Cu    ,  U);
 			OM.data(MD.VOLTZ, "veGear"      , 1,   2, MT.Sn     ,  U);
 			OM.data(MD.VOLTZ, "veGear"      , 1,   3, MT.Bronze ,  U);
@@ -494,7 +494,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.VOLTZ, "veGear"      , 1,  16, ANY.Wood  ,  U);
 			OM.data(MD.VOLTZ, "veGear"      , 1,  17, MT.Diamond,  U);
 			OM.data(MD.VOLTZ, "veGear"      , 1,  18, MT.Pt     ,  U);
-
+			
 			OM.data(MD.VOLTZ, "veRod"       , 1,   1, ANY.Cu    ,  U2);
 			OM.data(MD.VOLTZ, "veRod"       , 1,   2, MT.Sn     ,  U2);
 			OM.data(MD.VOLTZ, "veRod"       , 1,   3, MT.Bronze ,  U2);
@@ -512,7 +512,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.VOLTZ, "veRod"       , 1,  16, ANY.Wood  ,  U2);
 			OM.data(MD.VOLTZ, "veRod"       , 1,  17, MT.Diamond,  U2);
 			OM.data(MD.VOLTZ, "veRod"       , 1,  18, MT.Pt     ,  U2);
-
+			
 			OM.data(MD.VOLTZ, "veWire"      , 1,   1, ANY.Cu    ,  U9);
 			OM.data(MD.VOLTZ, "veWire"      , 1,   2, MT.Sn     ,  U9);
 			OM.data(MD.VOLTZ, "veWire"      , 1,   3, MT.Bronze ,  U9);
@@ -532,7 +532,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.VOLTZ, "veWire"      , 1,  18, MT.Pt     ,  U9);
 		}
 	}
-
+	
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
 		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
