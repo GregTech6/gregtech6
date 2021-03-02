@@ -36,7 +36,7 @@ import net.minecraft.world.World;
 
 public class BlockRockOres extends BlockBaseMeta {
 	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0};
-	public static int[] BURN_LEVELS = {100, 100, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	public static int[] BURN_LEVELS = {30, 30, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
 	
 	public BlockRockOres(String aUnlocalised) {

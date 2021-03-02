@@ -110,7 +110,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 							break;
 						}
 					}
-					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(128) == 0) {
+					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(100) == 0) {
 						if (tScan[3].mOreSmall.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, UT.Code.select(MT.Emerald, StoneLayer.RANDOM_SMALL_GEM_ORES).mID, null, F, T)) {
 							temp = F;
 						}
@@ -159,7 +159,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 							break;
 						}
 					}
-					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(128) == 0) {
+					if (temp && tScan[4] != tScan[2] && tScan[3].mOreSmall != null && !StoneLayer.RANDOM_SMALL_GEM_ORES.isEmpty() && aRandom.nextInt(100) == 0) {
 						if (tScan[3].mOreSmall.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, UT.Code.select(MT.Emerald, StoneLayer.RANDOM_SMALL_GEM_ORES).mID, null, F, T)) {
 							temp = F;
 						}

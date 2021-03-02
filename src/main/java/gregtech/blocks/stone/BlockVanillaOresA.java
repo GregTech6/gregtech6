@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,7 +41,7 @@ import net.minecraft.world.World;
 
 public class BlockVanillaOresA extends BlockBaseMeta {
 	public static byte[] HARVEST_LEVELS = {0, 0, 2, 1, 2, 1, 1, 1, 2, 1, 2, 2, 2, 0, 3, 0};
-	public static int[] BURN_LEVELS = {100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0};
+	public static int[] BURN_LEVELS = {30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 0};
 	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.5F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.5F, 1.0F, 1.5F, 1.5F, 1.5F, 0.5F, 2.0F, 0.5F};
 	public static OreDictMaterial[] ORE_MATERIALS = {MT.S, MT.Apatite, MT.Ruby, MT.Amber, MT.Amethyst, MT.OREMATS.Galena, MT.OREMATS.Tetrahedrite, MT.OREMATS.Cassiterite, MT.OREMATS.Cooperite, MT.OREMATS.Pentlandite, MT.OREMATS.Scheelite, MT.TiO2, MT.OREMATS.Bastnasite, MT.Graphite, MT.OREMATS.Pitchblende, MT.OREMATS.Borax};
 	
@@ -121,7 +121,7 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return HARVEST_LEVELS[aMeta];}
 	@Override public int getFlammability(byte aMeta) {return BURN_LEVELS[aMeta];}
-	@Override public int getFireSpreadSpeed(byte aMeta) {return BURN_LEVELS[aMeta];}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * HARDNESS_LEVELS[WD.meta(aWorld, aX, aY, aZ)];}
 	@Override public float getExplosionResistance(byte aMeta) {return Blocks.stone.getExplosionResistance(null);}
 }
