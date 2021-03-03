@@ -456,15 +456,18 @@ public class Loader_Worldgen implements Runnable {
 		
 		StoneLayer.bothsides(MT.Coal, MT.Stone
 		, new StoneLayerOres(MT.Amber                   , U4 , 30, 70, BIOMES_OCEAN_BEACH)
-		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.Amber                   , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_SHROOM)
 		);
 		StoneLayer.bothsides(MT.Lignite, MT.Stone
 		, new StoneLayerOres(MT.Amber                   , U4 , 30, 70, BIOMES_OCEAN_BEACH)
-		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.Amber                   , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_SHROOM)
 		);
 		StoneLayer.bothsides(MT.Oilshale, MT.Stone
 		, new StoneLayerOres(MT.Amber                   , U4 , 30, 70, BIOMES_OCEAN_BEACH)
-		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.Amber                   , U8 , 30, 70, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_SHROOM)
 		);
 		StoneLayer.bothsides(MT.Komatiite, MT.Stone
 		, new StoneLayerOres(MT.Redstone                , U8 ,  0, 30)
