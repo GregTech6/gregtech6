@@ -2152,10 +2152,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.stone_slab, 1, 9)                    , MT.Sand               ,  U2);
 		OM.data(ST.make(Blocks.double_stone_slab, 1, 1)             , MT.Sand               ,  U * 1);
 		OM.data(ST.make(Blocks.double_stone_slab, 1, 9)             , MT.Sand               ,  U * 1);
-		OM.data(ST.make(Blocks.stone_slab, 1,  2)                   , ANY.Wood              ,  U2);
-		OM.data(ST.make(Blocks.stone_slab, 1, 10)                   , ANY.Wood              ,  U2);
-		OM.data(ST.make(Blocks.double_stone_slab, 1,  2)            , ANY.Wood              ,  U * 1);
-		OM.data(ST.make(Blocks.double_stone_slab, 1, 10)            , ANY.Wood              ,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1,  2)                   , MT.PetrifiedWood      ,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 10)                   , MT.PetrifiedWood      ,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1,  2)            , MT.PetrifiedWood      ,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 10)            , MT.PetrifiedWood      ,  U * 1);
 		OM.data(ST.make(Blocks.stone_slab, 1,  3)                   , ANY.Stone             ,  U2);
 		OM.data(ST.make(Blocks.stone_slab, 1, 11)                   , ANY.Stone             ,  U2);
 		OM.data(ST.make(Blocks.double_stone_slab, 1,  3)            , ANY.Stone             ,  U * 1);

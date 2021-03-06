@@ -25,11 +25,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Barrels and Drums did not have the same Melting Points that Pipes have. I fixed that. Metal Drums now have 1.25 times more Heat Resistance, while Wooden Barrels and Plastic Cans got a properly assigned fixed Value, which in most cases should not make them burn up.
 [CHANGED] Blue Steel is Red Steel now and vice versa. This should fix my ages old fuckup of the Recipes. Everything should still be the same as before when it comes to Stats, just the Color of the Material changed. If you used Matter Fabricators to make Red/Blue Steel for some reason, you may need to check the USB Stick with the Recipe.
 [CHANGED] Oil and Natural Gas can now pass through Water. In the case of Oil this will result in Buildcraft alike Oil Fountains or puddles in the Ocean, should you be super lucky. If not, just dig a tunnel down and it happens too. XD
-[ADDED] Railcrafts Firestones now work as Fuel in Solid Burning Boxes and can also light TNT, Burning Boxes, Coke Ovens and the likes. Please be aware that Burning Boxes need the Firestone to he hoppered in to work, since they otherwise work like Flint and Steel.
+[ADDED] Railcrafts Firestones now work as Fuel in Solid Burning Boxes and can also light TNT, Burning Boxes, Coke Ovens and the likes. Please be aware that Burning Boxes need the Firestone to he hoppered in to work, since they otherwise work like Flint and Steel. Firestones are not "used up 100%" when in a Burning Box, and will always leave with 1 Durability left. Carving Firestones in the Laser is now doable in lower Tiers too.
 [ADDED] In a potentially failing attempt of fixing the Nichrome Issue in Stainless Steel, I added a Version of the Recipe that takes Nichrome instead of Invar, which is ofcourse in the proper ratios. I do not know how well that will work for people using the Crucible, but better than nothing. I did the same for Ultimet and Signalum too.
 [ADDED] Barbecue Sauce (BBQ Sauce), because why not.
 [ADDED] Axes, Saws and Chainsaws can now place Saplings too. They will still place Workbenches if Saplings cant be placed.
 [ADDED] Tooltip for Covers that can be controlled with the Cover Controller Cover. In case of Covers where the Cover Controller Cover is required (such as Shutter Cover), it will be Cyan instead of Dark Gray to make it easier to see.
+[ADDED] Petrified Wood is now craftable into the old "made of Stone" Vanilla Slabs. The Injector also has a Recipe to turn regular Wood into Petrified Wood now.
 [ADDED] Config to make it possible to disable specific Ores in Stone Layers from generating.
 
 

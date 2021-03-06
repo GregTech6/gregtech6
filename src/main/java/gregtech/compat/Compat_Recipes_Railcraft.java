@@ -147,7 +147,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 			RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OM.dust(MT.Bone, U*3), ST.make(MD.RC, "part.bleached.clay", 1, 0));
 		}});
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_Cyan], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.LaserEngraver.addRecipe2(T,512,512, OP.gem.mat(MT.Firestone, 1), ST.amount(0, aEvent.mStack), IL.RC_Firestone_Cut.get(1));
+			RM.LaserEngraver.addRecipe2(T, 16, 2048, OP.gem.mat(MT.Firestone, 1), ST.amount(0, aEvent.mStack), IL.RC_Firestone_Cut.get(1));
 		}});
 		}};
 		

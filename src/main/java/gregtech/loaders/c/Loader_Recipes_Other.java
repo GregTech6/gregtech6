@@ -393,6 +393,7 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
 		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(ST.make(Blocks.stone_slab          , 1,  2), CR.DEF_NAC, "XX"      , 'X', rockGt.dat(MT.PetrifiedWood));
 		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "b ", " X", 'X', plate.dat(MT.Paper));
 		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "q ", " X", 'X', plate.dat(MT.Paper));
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {
