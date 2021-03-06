@@ -21,6 +21,7 @@ package gregapi.worldgen;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
 
@@ -36,7 +37,9 @@ public class StoneLayerOres {
 	public OreDictMaterial mMaterial;
 	/** The Material Amount will determine the chance in the form of an X of U Chance. */
 	public long mChance;
-	public BiomeNameSet mBiomes = new BiomeNameSet();
+	public BiomeNameSet mTargetBiomes = new BiomeNameSet();
+	/** No longer in use, did not work before anyways. */
+	@Deprecated public ArrayList<String> mBiomes = new ArrayList<>();
 	
 	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY) {
 		mMaterial = (aMaterial != null && aMaterial.mID > 0 ? aMaterial : MT.Empty);
@@ -45,20 +48,20 @@ public class StoneLayerOres {
 	}
 	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY, Collection<String> aBiomes) {
 		this(aMaterial, aChance, aMinY, aMaxY);
-		mBiomes.addAll(aBiomes);
+		mTargetBiomes.addAll(aBiomes);
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean check(StoneLayer aLayer, World aWorld, int aX, int aY, int aZ, BiomeGenBase aBiome, int aRandomNumber) {
-		return aY >= mMinY && aY <= mMaxY && aRandomNumber           < mChance && (mBiomes.isEmpty() || mBiomes.contains(aBiome));
+		return aY >= mMinY && aY <= mMaxY && aRandomNumber           < mChance && (mTargetBiomes.isEmpty() || mTargetBiomes.contains(aBiome));
 	}
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean check(StoneLayer aLayer, World aWorld, int aX, int aY, int aZ, BiomeGenBase aBiome, Random aRandom) {
-		return aY >= mMinY && aY <= mMaxY && aRandom.nextInt((int)U) < mChance && (mBiomes.isEmpty() || mBiomes.contains(aBiome));
+		return aY >= mMinY && aY <= mMaxY && aRandom.nextInt((int)U) < mChance && (mTargetBiomes.isEmpty() || mTargetBiomes.contains(aBiome));
 	}
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean check(StoneLayer aLayer, World aWorld, int aX, int aY, int aZ, BiomeGenBase aBiome) {
-		return aY >= mMinY && aY <= mMaxY && RNGSUS .nextInt((int)U) < mChance && (mBiomes.isEmpty() || mBiomes.contains(aBiome));
+		return aY >= mMinY && aY <= mMaxY && RNGSUS .nextInt((int)U) < mChance && (mTargetBiomes.isEmpty() || mTargetBiomes.contains(aBiome));
 	}
 	
 	public boolean set(StoneLayer aLayer, World aWorld, int aX, int aY, int aZ, BiomeGenBase aBiome, Random aRandom) {
