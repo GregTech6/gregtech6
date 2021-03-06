@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -165,7 +165,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Cover_Controller               .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', Items.comparator);
 		CR.shaped(IL.Cover_Shutter                  .get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
 		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', OD.button, 'X', IL.Circuit_Selector.wild(1));
-		CR.shaped(IL.Cover_Warning                  .get(1), CR.DEF_REV, "GB" , "YQ"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench, 'G', OD.itemGlue);
+		CR.shaped(IL.Cover_Warning                  .get(1), CR.DEF_REV, "GB" , "YQ"        , 'Q', IL.Cover_Blank, 'Y', DYE_OREDICTS[DYE_INDEX_Yellow], 'G', OD.itemGlue);
 		CR.shaped(IL.Cover_Redstone_Conductor_IN    .get(1), CR.DEF_REV,  "R" ,  "Q"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Redstone_Conductor_OUT   .get(1), CR.DEF_REV,  "Q" ,  "R"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Retriever_Item           .get(1), CR.DEF_REV, "RPR", "CQC"       , 'Q', IL.Cover_Filter_Item, 'P', IL.PISTONS[1], 'C', OD_CIRCUITS[3], 'R', OP.plateCurved.dat(MT.Electrum));
