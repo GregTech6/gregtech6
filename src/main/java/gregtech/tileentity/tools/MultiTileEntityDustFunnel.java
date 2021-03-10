@@ -94,9 +94,11 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			boolean temp = F;
+			boolean temp = (mInventoryChanged || aTimer % 100 == 0);
 			
 			slotNull(0);
+			
+			if (temp && !slotHas(0)) ST.move(getAdjacentInventory(SIDE_TOP), delegator(SIDE_TOP));
 			
 			if (slotHas(0) && (mContent == null || mContent.mAmount < DUST_TYPES[mMode].mAmount)) {
 				OreDictItemData tData = OM.anydata(slot(0));
@@ -120,10 +122,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 				}
 			}
 			
-			if (temp || mInventoryChanged || aTimer % 100 == 0) {
-				if ( slotHas(1)) ST.move(delegator(SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM));
-				if (!slotHas(0)) ST.move(getAdjacentInventory(SIDE_TOP), delegator(SIDE_TOP));
-			}
+			if (temp && slotHas(1)) ST.move(delegator(SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM));
 		}
 	}
 	
