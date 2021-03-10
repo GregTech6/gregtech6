@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.09: (Not released yet, released whenever it needs to be)
+6.14.09:
 [NOTE] The Default Config Pack updated to disable Fastcrafts Chunk Culling, so that Ocean Floors are now rendering properly again. Set "enableCullingTweaks" to false in the "config/fastcraft.ini" File, if you experience this Issue.
 [COMPAT] Aroma1997's Mining Dimension is now Compatible with my Worldgen.
 [COMPAT] Et Futurum Requiem is now supported properly and up to date. Its Netherite Items and Ore Blocks are preferred over the ones of Netherite Plus. https://www.curseforge.com/minecraft/mc-mods/et-futurum-requiem/files
