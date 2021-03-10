@@ -882,7 +882,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -894,7 +894,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -906,7 +906,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(SFX.MC_BREAK, aEvent.entityPlayer);
+							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -943,6 +943,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
+							UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
