@@ -93,6 +93,7 @@ jobs:
         key: .gradle
     - name: Post RELEASE to forum
       env:
+        REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
