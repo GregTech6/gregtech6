@@ -26,8 +26,11 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.recipes.Recipe;
 import gregapi.util.OM;
@@ -41,6 +44,24 @@ import net.minecraft.item.ItemStack;
 public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 	public RecipeMapCrucible(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower, boolean aUseBucketSizeIn, boolean aUseBucketSizeOut) {
 		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, aCombinePower, aUseBucketSizeIn, aUseBucketSizeOut);
+	}
+	
+	@Override
+	public List<Recipe> getNEIRecipes(ItemStack... aOutputs) {
+		List<Recipe> rList = super.getNEIRecipes(aOutputs);
+		for (ItemStack aOutput : aOutputs) {
+			OreDictItemData aData = OM.anydata(aOutput);
+			if (aData == null || !aData.hasValidPrefixMaterialData() || !aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) continue;
+			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null && tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) {
+				rList.add(getRecipeFor(OP.dust      .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.blockDust .mat(tMat, 1)));
+				if (tMat != aData.mMaterial.mMaterial) {
+				rList.add(getRecipeFor(OP.ingot     .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.blockIngot.mat(tMat, 1)));
+				}
+			}
+		}
+		return rList;
 	}
 	
 	@Override
