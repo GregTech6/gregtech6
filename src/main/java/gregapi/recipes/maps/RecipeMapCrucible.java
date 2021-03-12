@@ -53,12 +53,25 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 			OreDictItemData aData = OM.anydata(aOutput);
 			if (aData == null || !aData.hasValidPrefixMaterialData() || !aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) continue;
 			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null && tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) {
-				rList.add(getRecipeFor(OP.dust      .mat(tMat, 1)));
-				rList.add(getRecipeFor(OP.blockDust .mat(tMat, 1)));
 				if (tMat != aData.mMaterial.mMaterial) {
-				rList.add(getRecipeFor(OP.ingot     .mat(tMat, 1)));
-				rList.add(getRecipeFor(OP.blockIngot.mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.ingot             .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.blockIngot        .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.gem               .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.blockGem          .mat(tMat, 1)));
 				}
+				rList.add(getRecipeFor(OP.dust              .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.blockDust         .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.crushed           .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.crushedPurified   .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.crushedCentrifuged.mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.chunk             .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.rubble            .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.pebbles           .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.cluster           .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.cleanGravel       .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.dirtyGravel       .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.crystalline       .mat(tMat, 1)));
+				rList.add(getRecipeFor(OP.reduced           .mat(tMat, 1)));
 			}
 		}
 		return rList;

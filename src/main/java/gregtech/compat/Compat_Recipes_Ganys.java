@@ -86,7 +86,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Juicer  .addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "wither_rose"       , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "wither_rose"       , 1, 0), ST.make(MD.EtFu, "dye", 2, 3));
 			
-			RM.Distillery.addRecipe1(T, 16, 48, IL.EtFu_Wither_Rose   .get(1), FL.Potion_Thick  .make(750), FL.Potion_Harm_2          .make(750), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 48, IL.EtFu_Wither_Rose.get(1), FL.Potion_Thick  .make(750), FL.Potion_Harm_2.make(750), ZL_IS);
 			
 			RM.smash(ST.make(MD.EtFu, "brown_mushroom", 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
 			RM.smash(ST.make(MD.EtFu, "red_mushroom"  , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
