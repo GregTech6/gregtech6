@@ -641,29 +641,30 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.wool, 1, i), DEF, "XX", "XX", 'X', OP.plantGtFiber.dat(MT.DATA.Dye_Materials[15-i]));
 		
 		if (i != DYE_INDEX_White) {
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool    , 1, 15-i), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.wool    , 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet  , 1, 15-i), MT.Cl.fluid(U40, T), NF, ST.make(Blocks.carpet  , 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool  , 1, 15-i), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.wool  , 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet, 1, 15-i), MT.Cl.fluid(U40, T), NF, ST.make(Blocks.carpet, 1, 0));
 		}
 		
 		for (FluidStack tDye : DYE_FLUIDS[i]) {
 		if (i != DYE_INDEX_White) {
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool, 1, 0)             , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.wool                     , 1, 15-i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet, 1, 0)           , FL.mul(tDye, 1,32, T), NF, ST.make(Blocks.carpet                   , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool         , 1, 0), FL.mul(tDye, 1, 16, T), NF, ST.make(Blocks.wool                 , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet       , 1, 0), FL.mul(tDye, 1, 32, T), NF, ST.make(Blocks.carpet               , 1, 15-i));
 		}
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass, 1, 0)            , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_glass            , 1, 15-i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.hardened_clay, 1, 0)    , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_hardened_clay    , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.hardened_clay, 1, 0), FL.mul(tDye, 1, 16, T), NF, ST.make(Blocks.stained_hardened_clay, 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass        , 1, 0), FL.mul(tDye, 1, 16, T), NF, ST.make(Blocks.stained_glass        , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass_pane   , 1, 0), FL.mul(tDye, 3,128, T), NF, ST.make(Blocks.stained_glass_pane   , 1, 15-i));
 		}
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4), ST.make(Blocks.wool, 1, i));
 		}
 		
 		for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100))) {
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.reeds, 1, W)             , tWater, NF, ST.make(Items.paper, 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Paper)                      , tWater, NF, ST.make(Items.paper, 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.reeds, 1, W), tWater, NF, ST.make(Items.paper, 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Paper)         , tWater, NF, ST.make(Items.paper, 1, 0));
 		}
 		
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_hardened_clay   , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.hardened_clay  , 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_glass           , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.glass          , 1, 0));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_glass_pane      , 1, W), MT.Cl.fluid(U50, T), NF, ST.make(Blocks.glass_pane     , 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_hardened_clay, 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.hardened_clay, 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_glass        , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(Blocks.glass        , 1, 0));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.stained_glass_pane   , 1, W), MT.Cl.fluid(U50, T), NF, ST.make(Blocks.glass_pane   , 1, 0));
 		
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), OP.plantGtFiber.mat(MT.Cu, 4), ST.make(Blocks.wool, 1, 1, "ORANGE WOOOOOOL!!!"));
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), ST.make(Items.string, 4, W), ST.make(Blocks.wool, 1, 0));
@@ -671,9 +672,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), ST.make(Items.reeds, 1, W), ST.make(Items.paper, 1, 0));
 		
 		for (OreDictMaterial tMat2 : ANY.Iron.mToThis)
-		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), (tMat2==MT.Enori?OP.plateGem:OP.plate)   .mat(tMat2      , 8), ST.make(Items.iron_horse_armor, 1, 0));
-		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plate                                 .mat(MT.Au      , 8), ST.make(Items.golden_horse_armor, 1, 0));
-		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plateGem                              .mat(MT.Diamond , 8), ST.make(Items.diamond_horse_armor, 1, 0));
+		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), (tMat2==MT.Enori?OP.plateGem:OP.plate).mat(tMat2     , 8), ST.make(Items.iron_horse_armor, 1, 0));
+		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plate                              .mat(MT.Au     , 8), ST.make(Items.golden_horse_armor, 1, 0));
+		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plateGem                           .mat(MT.Diamond, 8), ST.make(Items.diamond_horse_armor, 1, 0));
 		for (OreDictMaterial tMat2 : ANY.Steel.mToThis)
 		RM.Loom         .addRecipeX(T, 64,  128, ST.array(ST.make(Items.leather, 6, W), OP.ring.mat(tMat2, 2), OP.stick.mat(tMat2, 3)), ST.make(Items.saddle, 1, 0));
 		
