@@ -526,7 +526,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	}
 	
 	public boolean shouldCheckWeakPower(byte aSide) {
-		return T;
+		return F;
 	}
 	
 	@Override
