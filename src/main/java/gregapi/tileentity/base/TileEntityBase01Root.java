@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -523,6 +523,10 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 			worldObj.setLightValue(EnumSkyBlock.Block, xCoord, yCoord, zCoord, ((IMTE_GetLightValue)this).getLightValue());
 			for (byte tSide : ALL_SIDES_MIDDLE) worldObj.updateLightByType(EnumSkyBlock.Block, xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide]);
 		}
+	}
+	
+	public boolean shouldCheckWeakPower(byte aSide) {
+		return T;
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,6 +38,7 @@ import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.MD;
+import gregapi.data.OP;
 import gregapi.fluid.FluidGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -136,7 +137,8 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			} else if (tGas) {
 				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.CYAN + "Gas" + (!aFluid.isGaseous(tFluid) ? LH.Chat.RED + " (Warning: Considered a Liquid by Mods other than GT!)" : "") + LH.Chat.GRAY);
 			} else {
-				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.BLUE + "Liquid" + (aFluid.isGaseous(tFluid) ? LH.Chat.RED + " (Warning: Considered a Gas by Mods other than GT!)" : "") + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.BLUE + "Liquid" + (tMaterial != null && ST.valid(OP.ingot.mat(tMaterial.mMaterial, 1)) ? LH.Chat.CYAN + " (Might able to cast into Molds)" : "")  + LH.Chat.GRAY);
+				if (aFluid.isGaseous(tFluid)) aList.add(LH.Chat.BLINKING_RED + " (Warning: Considered a Gas by Mods other than GT!)");
 			}
 			
 			float tDensity = aFluid.getDensity(tFluid);

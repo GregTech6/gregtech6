@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,6 +32,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSealable;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnToolClick;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnWalkOver;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_ShouldCheckWeakPower;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataCovers;
 import gregapi.cover.CoverData;
 import gregapi.cover.CoverRegistry;
@@ -86,7 +87,7 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories implements ITileEntityCoverable, ISidedInventory, ITileEntitySurface, ITileEntityOnDrawBlockHighlight, IMTE_IsSealable, IMTE_OnWalkOver, IMTE_IsSideSolid, IMTE_SyncDataCovers, IMTE_OnToolClick, IMTE_AddCollisionBoxesToList, IMTE_IsProvidingWeakPower, IMTE_IsProvidingStrongPower {
+public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories implements ITileEntityCoverable, ISidedInventory, ITileEntitySurface, ITileEntityOnDrawBlockHighlight, IMTE_ShouldCheckWeakPower, IMTE_IsSealable, IMTE_OnWalkOver, IMTE_IsSideSolid, IMTE_SyncDataCovers, IMTE_OnToolClick, IMTE_AddCollisionBoxesToList, IMTE_IsProvidingWeakPower, IMTE_IsProvidingStrongPower {
 	public CoverData mCovers = null;
 	
 	@Override
