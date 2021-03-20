@@ -263,7 +263,7 @@ public enum IL implements IItemContainer {
 	Food_Can_Chum_1, Food_Can_Chum_2, Food_Can_Chum_3, Food_Can_Chum_4, Food_Can_Chum_5, Food_Can_Chum_6,
 	Food_PotatoChips_Raw, Food_PotatoChips, Food_PotatoChips_Packaged, Food_ChiliChips, Food_ChiliChips_Packaged,
 	Food_Cheese, Food_Cheese_Bar, Food_Cheese_Sliced,
-	Food_Rib_Raw, Food_Rib_Cooked,
+	Food_Rib_Raw, Food_Rib_Cooked, Food_Rib_BBQ,
 	Food_RibEyeSteak_Raw, Food_RibEyeSteak_Cooked,
 	Food_DogMeat_Raw, Food_DogMeat_Cooked,
 	Food_Horse_Raw, Food_Horse_Cooked,
