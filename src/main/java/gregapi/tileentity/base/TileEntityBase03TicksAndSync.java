@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -124,7 +124,6 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 				onTickResetChecks(mTimer, tIsServerSide);
 			}
 			if (!isDead()) onTickEnd(mTimer, tIsServerSide);
-			mBlockUpdated = F;
 		} catch(Throwable e1) {
 			e1.printStackTrace(ERR);
 			setError((tIsServerSide?"Serverside: ":"Clientside: ") + e1);
@@ -139,7 +138,7 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 	}
 	
 	/** Used to reset all Variables which have something to do with the detection of Changes. A super Call is important for this one! */
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {/**/}
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {mBlockUpdated = F;}
 	
 	/** The very first Tick happening to this TileEntity */
 	public void onTickFirst(boolean aIsServerSide) {/**/}

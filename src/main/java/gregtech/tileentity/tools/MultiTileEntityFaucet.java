@@ -144,6 +144,11 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (aTool.equals(TOOL_softhammer)) {
+			mAutoPull = F;
+			if (aChatReturn != null) aChatReturn.add("Crucible Auto-Input: REDSTONE");
+			return 10000;
+		}
 		if (aTool.equals(TOOL_monkeywrench)) {
 			mAutoPull = !mAutoPull;
 			if (aChatReturn != null) aChatReturn.add(mAutoPull ? "Crucible Auto-Input: AUTOMATIC" : "Crucible Auto-Input: REDSTONE");

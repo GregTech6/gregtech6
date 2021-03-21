@@ -214,6 +214,12 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 			return;
 		}
+		
+		// Moved from onTickResetChecks
+		if (hasCovers()) mCovers.resetSync();
+		oDisplayedFluid = mDisplayedFluid;
+		mInventoryChanged = F;
+		mBlockUpdated = F;
 	}
 	
 	@Override
@@ -427,10 +433,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	}
 	
 	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oDisplayedFluid = mDisplayedFluid;
-	}
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {/* Needed to be delayed. */}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
