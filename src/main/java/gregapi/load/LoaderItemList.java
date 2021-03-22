@@ -686,10 +686,10 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Blueprint_Projectiles_Common      .set(ST.make(MD.IE, "blueprint"                             , 1, 0), new OreDictItemData(MT.Paper, 3*U));
 		IL.IE_Blueprint_Projectiles_Specialized .set(ST.make(MD.IE, "blueprint"                             , 1, 1), new OreDictItemData(MT.Paper, 3*U));
 		IL.IE_Blueprint_Projectiles_Electrodes  .set(ST.make(MD.IE, "blueprint"                             , 1, 2), new OreDictItemData(MT.Paper, 3*U));
-		IL.IE_Treated_Planks                    .set(ST.make(MD.IE, "treatedWood"                           , 1, 0), new OreDictItemData(MT.WoodSealed, U));
-		IL.IE_Treated_Slab                      .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodSealed, U2));
-		IL.IE_Treated_Stairs                    .set(ST.make(MD.IE, "woodenStairs"                          , 1, 0), new OreDictItemData(MT.WoodSealed, 3*U4));
-		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodSealed, 8*U), OD.craftingChest);
+		IL.IE_Treated_Planks                    .set(ST.make(MD.IE, "treatedWood"                           , 1, 0), new OreDictItemData(MT.WoodTreated, U));
+		IL.IE_Treated_Slab                      .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodTreated, U2));
+		IL.IE_Treated_Stairs                    .set(ST.make(MD.IE, "woodenStairs"                          , 1, 0), new OreDictItemData(MT.WoodTreated, 3*U4));
+		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodTreated, 8*U), OD.craftingChest);
 		
 		
 		IL.FZ_Sludge                            .set(ST.make(MD.FZ, "sludge"                                , 1, 0), null, OD.itemSlag);

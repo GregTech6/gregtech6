@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -82,9 +82,9 @@ public class Loader_Woods implements Runnable {
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.Iron));
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.WoodPlastic));
 		
-		OM.reg(OP.plate, MT.WoodSealed, ST.make(BlocksGT.PlanksFireProof, 1, 10));
-		OreDictManager.INSTANCE.setTarget(OP.plate, MT.Wood      , IL.Plank.get(1));
-		OreDictManager.INSTANCE.setTarget(OP.plate, MT.WoodSealed, ST.make(BlocksGT.Planks, 1, 10));
+		OM.reg(OP.plate, MT.WoodTreated, ST.make(BlocksGT.PlanksFireProof, 1, 10));
+		OreDictManager.INSTANCE.setTarget(OP.plate, MT.Wood       , IL.Plank.get(1));
+		OreDictManager.INSTANCE.setTarget(OP.plate, MT.WoodTreated, ST.make(BlocksGT.Planks, 1, 10));
 		
 		for (int i = 0; i < 16; i++) {
 			if (i != 10) {

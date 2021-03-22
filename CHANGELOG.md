@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.10: (Not released yet, released whenever it needs to be)
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.
 [FIXED] Rightclicking a Path Block with a Shovel should no longer prompt other Shovel Placer Features like Torches.
+[FIXED] A bunch of Issues with Crusible Molds/Basins. Lets hope this mini rewrite solves everything.
 
 
 6.14.09:

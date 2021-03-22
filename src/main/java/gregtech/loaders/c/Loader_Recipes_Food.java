@@ -528,11 +528,11 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Centrifuge       .addRecipe0(T, 16,   16, FL.Juice_Coconut.make(50), FL.Cream_Coconut.make(50), ZL_IS);
 		RM.Centrifuge       .addRecipe0(T, 16,   64, FL.Cream.make(250), NF, IL.Food_Butter.get(1));
 		
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodSealed, 0), FL.MilkSoy.make(50), FL.Cream.make(50), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodSealed, 0), FL.Milk.make(50), FL.Cream.make(50), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodSealed, 0), FL.MilkGrC.make(50), FL.Cream.make(50), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodSealed, 0), FL.Juice_Coconut.make(50), FL.Cream_Coconut.make(50), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   64, OP.stick.mat(MT.WoodSealed, 0), FL.Cream.make(250), NF, IL.Food_Butter.get(1));
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodTreated, 0), FL.MilkSoy.make(50), FL.Cream.make(50), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodTreated, 0), FL.Milk.make(50), FL.Cream.make(50), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodTreated, 0), FL.MilkGrC.make(50), FL.Cream.make(50), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.stick.mat(MT.WoodTreated, 0), FL.Juice_Coconut.make(50), FL.Cream_Coconut.make(50), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   64, OP.stick.mat(MT.WoodTreated, 0), FL.Cream.make(250), NF, IL.Food_Butter.get(1));
 		
 		ItemStack
 		tOutput = OreDictManager.INSTANCE.getFirstOre("dropHoney", 1); if (ST.valid(tOutput)) {

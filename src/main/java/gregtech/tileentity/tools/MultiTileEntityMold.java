@@ -34,7 +34,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
@@ -86,7 +85,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
+public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
@@ -99,7 +98,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	
 	protected boolean mAcidProof = F, mUseRedstone = F;
 	protected byte mAutoPullDirections = 0;
-	protected short mDisplayedFluid = -1, oDisplayedFluid = -1;
+	protected short mDisplay = 0;
 	protected int mShape = 0;
 	protected long mTemperature = DEF_ENV_TEMP;
 	protected OreDictMaterialStack mContent = null;
@@ -170,34 +169,38 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	@Override
 	public void onServerTickPost(boolean aFirst) {
 		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
+		short tDisplay = mDisplay;
 		
 		if (mTemperature > tTemperature) mTemperature -= Math.min(5, mTemperature-tTemperature); else if (mTemperature < tTemperature) mTemperature += Math.min(5, tTemperature-mTemperature);
 		
-		if (!slotHas(0)) {
-			if (mContent != null && mContent.mAmount <= 0) {
-				mContent = null;
-				mTemperature = tTemperature;
-			}
-			
-			if ((mInventoryChanged || SERVER_TIME % 50 == 5 || (mBlockUpdated && mUseRedstone)) && (!mUseRedstone || hasRedstoneIncoming()) && mContent == null && mAutoPullDirections != 0) for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mAutoPullDirections]) {
-				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-				if (tDelegator.mTileEntity instanceof ITileEntityCrucible) ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
-			}
-		}
-		
-		if (mContent != null && mTemperature > mContent.mMaterial.mBoilingPoint) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
+		if (mContent != null && mContent.mAmount <= 0 && !slotHas(0)) {
 			mContent = null;
+			mDisplay = 0;
+			mTemperature = tTemperature;
+			mInventoryChanged = T;
 		}
 		
 		if (mContent == null) {
-			mDisplayedFluid = 0;
-		} else {
-			mDisplayedFluid = mContent.mMaterial.mID;
-			if (mDisplayedFluid < 0) mDisplayedFluid = MT.Tc.mID;
+			if (mAutoPullDirections != 0 && (mInventoryChanged || SERVER_TIME % 50 == 5 || (mBlockUpdated && mUseRedstone)) && (!mUseRedstone || hasRedstoneIncoming())) for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mAutoPullDirections]) {
+				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+				if (tDelegator.mTileEntity instanceof ITileEntityCrucible && ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide)) break;
+			}
+		}
+		
+		if (mContent != null) {
+			if (mTemperature > mContent.mMaterial.mBoilingPoint || mTemperature > getMoldMaxTemperature()) {
+				UT.Sounds.send(SFX.MC_FIZZ, this);
+				mContent = null;
+				mDisplay = 0;
+				slotTrash(0);
+				worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
+				return;
+			}
+			mDisplay = mContent.mMaterial.mID;
+			if (mDisplay < 0) mDisplay = MT.Tc.mID;
 			if (mTemperature < mContent.mMaterial.mMeltingPoint) {
 				mContent.mMaterial = mContent.mMaterial.mTargetSolidifying.mMaterial;
-				mDisplayedFluid = (short)~mDisplayedFluid;
+				mDisplay = (short)~mDisplay;
 				if (mContent.mAmount > 0 && !slotHas(0)) {
 					OreDictPrefix tPrefix = getMoldRecipe(mShape);
 					if (tPrefix == OP.plate && mContent.mMaterial == MT.Glass) tPrefix = OP.plateGem;
@@ -209,17 +212,11 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 			}
 		}
 		
-		if (mTemperature > getMoldMaxTemperature()) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
-			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
-			return;
-		}
+		if (tDisplay != mDisplay) updateClientData();
 		
 		// Moved from onTickResetChecks
 		if (hasCovers()) mCovers.resetSync();
-		oDisplayedFluid = mDisplayedFluid;
-		mInventoryChanged = F;
-		mBlockUpdated = F;
+		mInventoryChanged = mBlockUpdated = F;
 	}
 	
 	@Override
@@ -428,44 +425,32 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	}
 	
 	@Override
-	public boolean onTickCheck(long aTimer) {
-		return super.onTickCheck(aTimer) || mDisplayedFluid != oDisplayedFluid;
-	}
-	
-	@Override
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {/* Needed to be delayed. */}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(T, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), UT.Code.toByteI(mShape, 0), UT.Code.toByteI(mShape, 1), UT.Code.toByteI(mShape, 2), UT.Code.toByteI(mShape, 3));
-		return getClientDataPacketShort(F, mDisplayedFluid);
+		return getClientDataPacketByteArray(T, UT.Code.toByteS(mDisplay, 0), UT.Code.toByteS(mDisplay, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), UT.Code.toByteI(mShape, 0), UT.Code.toByteI(mShape, 1), UT.Code.toByteI(mShape, 2), UT.Code.toByteI(mShape, 3));
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mDisplayedFluid = UT.Code.combine(aData[0], aData[1]);
+		mDisplay = UT.Code.combine(aData[0], aData[1]);
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[2]), UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4])});
-		mShape = UT.Code.combine(aData[5], aData[6], aData[7], aData[8]);
-		return T;
-	}
-	
-	@Override
-	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
-		mDisplayedFluid = aData;
+		if (aData.length >= 5) mShape = UT.Code.combine(aData[5], aData[6], aData[7], aData[8]);
 		return T;
 	}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
-		short tDisplayedFluid = (short)(mDisplayedFluid<0 ? ~mDisplayedFluid : mDisplayedFluid);
-		if (tDisplayedFluid != 0 && UT.Code.exists(tDisplayedFluid, OreDictMaterial.MATERIAL_ARRAY)) {
-			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[tDisplayedFluid];
+		short tDisplay = (short)(mDisplay<0 ? ~mDisplay : mDisplay);
+		if (tDisplay != 0 && UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)) {
+			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[tDisplay];
 			if (tMaterial == MT.Lava) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.lava);
 			} else if (tMaterial == MT.H2O) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.water);
-			} else if (mDisplayedFluid < 0) {
+			} else if (mDisplay < 0) {
 				if (tMaterial == MT.Stone) {
 					mTextureMolten = BlockTextureCopied.get(Blocks.stone);
 				} else if (tMaterial == MT.Glass) {
@@ -499,7 +484,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		if (aRenderPass == 0) {
-			box(aBlock, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[mDisplayedFluid<0?14:13]-0.005F, PX_N[ 1]);
+			box(aBlock, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[mDisplay<0?14:13]-0.005F, PX_N[ 1]);
 		} else {
 			box(aBlock, MOLD_BOUNDS[aRenderPass][0], MOLD_BOUNDS[aRenderPass][1], MOLD_BOUNDS[aRenderPass][2], MOLD_BOUNDS[aRenderPass][3], MOLD_BOUNDS[aRenderPass][4], MOLD_BOUNDS[aRenderPass][5]); return T;
 		}

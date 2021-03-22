@@ -392,8 +392,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.FishRaw                , ST.make(MD.MaCu, "materials", 1, 14));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WoodPolished           , ST.make(MD.MaCu, "crafting", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.WoodPolished           , ST.make(MD.MaCu, "woods", 1, 1));
-//      OreDictManager.INSTANCE.setTarget(OP.plate          , MT.WoodSealed             , ST.make(MD.IE, "treatedWood", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WoodSealed             , ST.make(MD.IE, "material", 1, 0));
+//      OreDictManager.INSTANCE.setTarget(OP.plate          , MT.WoodTreated            , ST.make(MD.IE, "treatedWood", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WoodTreated            , ST.make(MD.IE, "material", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CoalCoke               , ST.make(MD.IE, "material", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.CoalCoke               , ST.make(MD.IE, "metal", 1, 17));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NetherQuartz           , ST.make(MD.IE, "metal", 1, 18));

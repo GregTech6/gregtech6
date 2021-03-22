@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,21 +23,16 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
 import gregapi.data.OP;
-import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.render.ITexture;
 import gregapi.util.UT;
-import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
@@ -59,46 +54,6 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
-	}
-	
-	@Override
-	public void onServerTickPost(boolean aFirst) {
-		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
-		
-		if (mTemperature > tTemperature) mTemperature -= Math.min(5, mTemperature-tTemperature); else if (mTemperature < tTemperature) mTemperature += Math.min(5, tTemperature-mTemperature);
-		
-		if (!slotHas(0)) {
-			if (mContent != null && mContent.mAmount <= 0) {
-				mContent = null;
-				mTemperature = tTemperature;
-			}
-		}
-		
-		if (mContent != null && mTemperature > mContent.mMaterial.mBoilingPoint) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
-			mContent = null;
-		}
-		
-		if (mContent == null) {
-			mDisplayedFluid = 0;
-		} else {
-			mDisplayedFluid = mContent.mMaterial.mID;
-			if (mDisplayedFluid < 0) mDisplayedFluid = MT.Tc.mID;
-			if (mTemperature < mContent.mMaterial.mMeltingPoint) {
-				mContent.mMaterial = mContent.mMaterial.mTargetSolidifying.mMaterial;
-				mDisplayedFluid = (short)~mDisplayedFluid;
-				if (mContent.mAmount > 0 && !slotHas(0)) {
-					slot(0, OP.blockSolid.mat(mContent.mMaterial, mContent.mAmount / OP.blockSolid.mAmount));
-					mContent.mAmount = 0;
-				}
-			}
-		}
-		
-		if (mTemperature > getMoldMaxTemperature()) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
-			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
-			return;
-		}
 	}
 	
 	@Override
@@ -124,20 +79,15 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 				return 2000;
 			}
 		}
+		if (aTool.equals(TOOL_chisel) || aTool.equals(TOOL_softhammer) || aTool.equals(TOOL_magnifyingglass) || aTool.equals(TOOL_wrench) || aTool.equals(TOOL_monkeywrench) || aTool.equals(TOOL_screwdriver) || aTool.equals(TOOL_rotator)) {
+			return 0;
+		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(T, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		return getClientDataPacketShort(F, mDisplayedFluid);
-	}
-	
-	@Override
-	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mDisplayedFluid = UT.Code.combine(aData[0], aData[1]);
-		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[2]), UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4])});
-		return T;
+		return getClientDataPacketByteArray(T, UT.Code.toByteS(mDisplay, 0), UT.Code.toByteS(mDisplay, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
 	}
 	
 	@Override

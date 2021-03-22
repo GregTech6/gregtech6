@@ -439,8 +439,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(ST.mkic("crop", 1));
 		CR.delate(IL.IC2_Scaffold.get(1));
 		
-		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SsS", 'S', OP.stick.dat(MT.WoodSealed));
-		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SkS", 'S', OP.stick.dat(MT.WoodSealed));
+		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SsS", 'S', OP.stick.dat(MT.WoodTreated));
+		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SkS", 'S', OP.stick.dat(MT.WoodTreated));
 		CR.shaped(IL.IC2_Scaffold.get(4), CR.DEF, "WWW", " S ", "S S", 'W', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		
 		RM.Autoclave        .addRecipe2(T,  0, 3000, OM.dust(MT.EnergiumRed, U*9), ST.tag(9), FL.Steam.make(96000), FL.DistW.make(450), IL.IC2_EnergyCrystal.get(1));

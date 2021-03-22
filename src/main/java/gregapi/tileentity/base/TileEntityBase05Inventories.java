@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,6 +81,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	@Override public final ItemStack slot(int aIndex, ItemStack aStack) {return mInventory[aIndex] = aStack;}
 	@Override public final ItemStack slot(int aIndex) {return mInventory[aIndex];}
 	@Override public final ItemStack slotTake(int aIndex) {ItemStack rStack = mInventory[aIndex]; mInventory[aIndex] = null; return rStack;}
+	@Override public final boolean slotTrash(int aIndex) {return GarbageGT.trash(slotTake(aIndex)) > 0;}
 	@Override public final boolean slotNull(int aIndex) {if (mInventory[aIndex] != null && mInventory[aIndex].stackSize <= 0) return slotKill(aIndex); return F;}
 	@Override public final boolean slotKill(int aIndex) {mInventory[aIndex] = null; return T;}
 	@Override public final boolean slotHas(int aIndex) {return mInventory[aIndex] != null;}

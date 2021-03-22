@@ -657,8 +657,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.circuit.dat(MT.Basic)             , ST.mkic("electronicCircuit", 1));
 		OM.reg(OP.circuit.dat(MT.Advanced)          , ST.mkic("advancedCircuit", 1));
 		OM.reg("cropHemp"                           , ST.make(MD.IE, "material", 1, 3));
-		OM.reg(OP.plate.dat(MT.WoodSealed)          , ST.make(MD.IE, "treatedWood", 1, 1));
-		OM.reg(OP.plate.dat(MT.WoodSealed)          , ST.make(MD.IE, "treatedWood", 1, 2));
+		OM.reg(OP.plate.dat(MT.WoodTreated)         , ST.make(MD.IE, "treatedWood", 1, 1));
+		OM.reg(OP.plate.dat(MT.WoodTreated)         , ST.make(MD.IE, "treatedWood", 1, 2));
 		OM.reg(OP.dust.dat(MT.NaCl)                 , ST.make(MD.MaCu, "materials", 1, 12));
 		OM.reg(OP.dust.dat(MT.Obsidian)             , ST.make(MD.IC2, "item.itemObsidianDust", 1, 0));
 		OM.reg(OP.dust.dat(MT.Wheat)                , ST.make(MD.IC2, "item.itemFlour", 1, 0));
@@ -1472,19 +1472,19 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.JABBA, "barrel"                          , 1,   W, ANY.Wood              ,129* U2);
 		
 		
-		OM.data(MD.IE, "woodenDevice"                       , 1,   6, MT.WoodSealed         , 13* U2);
+		OM.data(MD.IE, "woodenDevice"                       , 1,   6, MT.WoodTreated        , 13* U2);
 		OM.data(MD.IE, "metalDevice2"                       , 1,   7, ANY.Fe                ,  U * 8);
 		OM.data(MD.IE, "metalDecoration2"                   , 1,   0, MT.Al                 ,  U * 1);
 		OM.data(MD.IE, "metalDecoration2"                   , 1,   1, MT.Pb                 ,  U * 1);
 		OM.data(MD.IE, "metalDecoration2"                   , 1,   2, ANY.Steel             ,  U * 1);
 		OM.data(MD.IE, "metalDecoration2"                   , 1,  10, ANY.Fe                ,  U * 1);
-		OM.data(MD.IE, "woodenStairs"                       , 1,   0, MT.WoodSealed         ,  2* U3);
-		OM.data(MD.IE, "woodenStairs1"                      , 1,   0, MT.WoodSealed         ,  2* U3);
-		OM.data(MD.IE, "woodenStairs2"                      , 1,   0, MT.WoodSealed         ,  2* U3);
-		OM.data(MD.IE, "woodenDecoration"                   , 1,   1, MT.WoodSealed         ,  3* U2);
-		OM.data(MD.IE, "woodenDecoration"                   , 1,   2, MT.WoodSealed         ,  U2);
-		OM.data(MD.IE, "woodenDecoration"                   , 1,   4, MT.WoodSealed         ,  U * 1);
-		OM.data(MD.IE, "woodenDecoration"                   , 1,   5, MT.WoodSealed         ,  5* U4);
+		OM.data(MD.IE, "woodenStairs"                       , 1,   0, MT.WoodTreated        ,  2* U3);
+		OM.data(MD.IE, "woodenStairs1"                      , 1,   0, MT.WoodTreated        ,  2* U3);
+		OM.data(MD.IE, "woodenStairs2"                      , 1,   0, MT.WoodTreated        ,  2* U3);
+		OM.data(MD.IE, "woodenDecoration"                   , 1,   1, MT.WoodTreated        ,  3* U2);
+		OM.data(MD.IE, "woodenDecoration"                   , 1,   2, MT.WoodTreated        ,  U2);
+		OM.data(MD.IE, "woodenDecoration"                   , 1,   4, MT.WoodTreated        ,  U * 1);
+		OM.data(MD.IE, "woodenDecoration"                   , 1,   5, MT.WoodTreated        ,  5* U4);
 		OM.data(MD.IE, "storageSlab"                        , 1,   0, MT.Cu                 ,  9* U2);
 		OM.data(MD.IE, "storageSlab"                        , 1,   1, MT.Al                 ,  9* U2);
 		OM.data(MD.IE, "storageSlab"                        , 1,   2, MT.Pb                 ,  9* U2);

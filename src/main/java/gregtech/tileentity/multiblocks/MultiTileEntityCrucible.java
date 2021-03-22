@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -214,7 +214,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		if (ST.valid(tStack)) {
 			OreDictItemData tData = OM.anydata_(tStack);
 			if (tData == null) {
-				GarbageGT.trash(decrStackSize(0, 1));
+				slotTrash(0);
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 			} else {
 				List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();

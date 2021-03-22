@@ -337,7 +337,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.gem)                                          return "Large Ice Cube";
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Crushed Ice";
 		} else
-		if (aMaterial == MT.WoodSealed) {
+		if (aMaterial == MT.WoodTreated) {
 			if (aPrefix == OP.rockGt)                                       return aMaterial.mNameLocal;
 			if (aPrefix == OP.scrapGt)                                      return aMaterial.mNameLocal + " Splinters";
 			if (aPrefix.mNameInternal.startsWith("bolt"))                   return "Short Treated Stick";
