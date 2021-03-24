@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -189,7 +189,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	}};
 	
 	static {
-		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Construction Instructions read the Manual or the GUI.");
+		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Assembly Instructions read the Manual in the GUI.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.2", "144 Iridium Coils, 576 Regular Tungstensteel Walls, 50 Ventilation Units.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.3", "36 Regular Stainless Steel Walls, 53 Galvanized Steel Walls.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.4", "3 Versatile, 12 Logic and 12 Control Quadcore Processing Units.");

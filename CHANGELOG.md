@@ -13,6 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.
 [FIXED] Rightclicking a Path Block with a Shovel should no longer prompt other Shovel Placer Features like Torches.
 [FIXED] A bunch of Issues with Crusible Molds/Basins. Lets hope this mini rewrite solves everything.
+[FIXED] Radioactive Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
 
 
 6.14.09:
