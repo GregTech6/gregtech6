@@ -335,6 +335,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (!AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63]) return 0;
 		if (!aDoInject) return mIgnorePower == 0 ? aPower : 0;
 		
+		// Received Input from this Side.
+		mInputtedSides |= B[aSide];
+		
 		long tSpeed = Math.abs(aSpeed);
 		
 		if (tSpeed > mMaxThroughPut) {
@@ -351,9 +354,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			mGearsWork = checkGears();
 			return aPower;
 		}
-		
-		// Received Input from this Side.
-		mInputtedSides |= B[aSide];
 		
 		// Free Axle means it is always a Passthrough.
 		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63] && !FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
