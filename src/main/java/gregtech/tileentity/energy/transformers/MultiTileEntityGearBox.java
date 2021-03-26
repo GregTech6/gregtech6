@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -173,6 +173,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			mTransferredLast = Math.abs(mCurrentPower * mCurrentSpeed);
+			if (mJammed || !mGearsWork) mCurrentPower = 0;
 			if (mUsedGear && mCurrentPower > 0) {
 				boolean temp = T;
 				while (temp) {
@@ -351,6 +352,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			return aPower;
 		}
 		
+		// Received Input from this Side.
+		mInputtedSides |= B[aSide];
+		
 		// Free Axle means it is always a Passthrough.
 		if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide] && !FACE_CONNECTED[aSide][mAxleGear & 63] && !FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 			return ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, aSpeed, aPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
@@ -374,8 +378,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			// Just take the lowest Speed available. Gives a different Type of Loss Mechanic that somewhat makes sense.
 			mCurrentSpeed = Math.min(tSpeed, mCurrentSpeed);
 			mCurrentPower += aPower;
-			// Received Input from this Side successfully.
-			mInputtedSides |= B[aSide];
 			return aPower;
 		}
 		// There was no Input during this Tick yet.
@@ -388,8 +390,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			// Set Maximum Speed and current Power.
 			mCurrentSpeed = tSpeed;
 			mCurrentPower = aPower;
-			// Received Input from this Side successfully.
-			mInputtedSides |= B[aSide];
 			return aPower;
 		}
 		return 0;
