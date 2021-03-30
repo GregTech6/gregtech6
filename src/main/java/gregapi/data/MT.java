@@ -2579,13 +2579,6 @@ public class MT {
 			RedMatter               .addEnchantmentForArmors(Enchantment.blastProtection, 5);
 			Infinity                .addEnchantmentForArmors(Enchantment.blastProtection,10);
 			
-			/* TODO ?
-			FryingOilHot            .setHeatDamage(1.0);
-			Lava                    .setHeatDamage(3.0);
-			Firestone               .setHeatDamage(5.0);
-			Pyrotheum               .setHeatDamage(5.0);
-			*/
-			
 			Yellorite                       .addOreByProducts(Pb                        , Cyanite                   , Yellorium             , Ra                    , RareEarth             );
 			Yellorium                       .addOreByProducts(Pb                        , Cyanite                   , Blutonium             , Am                    );
 			Blutonium                       .addOreByProducts(Pb                        , Yellorium                 , Am                    );
@@ -2623,7 +2616,7 @@ public class MT {
 			OREMATS.Cassiterite             .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteWhite         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
 			OREMATS.Bauxite                 .addOreByProducts(Kaolinite                 , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 , AlO3H3                );
 			AlO3H3                          .addOreByProducts(OREMATS.Bauxite           , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
-			OREMATS.Ilmenite                .addOreByProducts(TiO2                      , Fe2O3                     , Mg                    , MnO2                  );
+			OREMATS.Ilmenite                .addOreByProducts(TiO2                      , Fe2O3                     , MgCO3                 , MnO2                  );
 			TiO2                            .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Ti                              .addOreByProducts(Fe2O3                     , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.GraniticMineralSand, MnO2                 , ClayRed               );
@@ -2652,7 +2645,7 @@ public class MT {
 			OREMATS.Tantalite               .addOreByProducts(MnO2                      , Nb                        , Ta                    );
 			Mn                              .addOreByProducts(MnO2                      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
 			MnO2                            .addOreByProducts(OREMATS.Bromargyrite      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
-			OREMATS.Chromite                .addOreByProducts(MnO2                      , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
+			OREMATS.Chromite                .addOreByProducts(MnO2                      , Fe2O3                     , MgCO3                 , OREMATS.Bromargyrite  );
 			OREMATS.Bromargyrite            .addOreByProducts(MnO2                      , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
 			
 			Apatite                         .addOreByProducts(Phosphorite               , Phosphorus                , FluoriteBlue          , PO4                   );
@@ -2664,6 +2657,15 @@ public class MT {
 			OREMATS.Zeolite                 .addOreByProducts(OREMATS.Pollucite         , NaCl                      );
 			OREMATS.Pollucite               .addOreByProducts(OREMATS.Zeolite           , Cs                        , Rb                    );
 			
+			Be                              .addOreByProducts(Al2O3                     , Emerald                   , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Emerald                         .addOreByProducts(Al2O3                     , Be                        , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Aquamarine                      .addOreByProducts(Al2O3                     , Be                        , Emerald               , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Morganite                       .addOreByProducts(Al2O3                     , Be                        , Emerald               , Aquamarine            , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
+			Goshenite                       .addOreByProducts(Al2O3                     , Be                        , Emerald               , Aquamarine            , Morganite             , Bixbite               , Heliodor              , Maxixe    );
+			Bixbite                         .addOreByProducts(Al2O3                     , Be                        , Emerald               , Aquamarine            , Morganite             , Goshenite             , Heliodor              , Maxixe    );
+			Heliodor                        .addOreByProducts(Al2O3                     , Be                        , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Maxixe    );
+			Maxixe                          .addOreByProducts(Al2O3                     , Be                        , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor  );
+			
 			Sapphire                        .addOreByProducts(Ruby                      , PurpleSapphire            , GreenSapphire         );
 			BlueSapphire                    .addOreByProducts(Ruby                      , PurpleSapphire            , GreenSapphire         );
 			GreenSapphire                   .addOreByProducts(Ruby                      , BlueSapphire              , YellowSapphire        );
@@ -2671,6 +2673,37 @@ public class MT {
 			OrangeSapphire                  .addOreByProducts(Ruby                      , BlueSapphire              , GreenSapphire         );
 			PurpleSapphire                  .addOreByProducts(Ruby                      , BlueSapphire              , GreenSapphire         );
 			Ruby                            .addOreByProducts(OrangeSapphire            , BlueSapphire              , GreenSapphire         );
+			
+			Almandine                       .addOreByProducts(Grossular                 , Pyrope                    , Spessartine           , Andradite             , Uvarovite             );
+			Grossular                       .addOreByProducts(Almandine                 , Pyrope                    , Spessartine           , Andradite             , Uvarovite             );
+			Pyrope                          .addOreByProducts(Almandine                 , Grossular                 , Spessartine           , Andradite             , Uvarovite             );
+			Spessartine                     .addOreByProducts(Almandine                 , Grossular                 , Pyrope                , Andradite             , Uvarovite             );
+			Andradite                       .addOreByProducts(Almandine                 , Grossular                 , Pyrope                , Spessartine           , Uvarovite             );
+			Uvarovite                       .addOreByProducts(Almandine                 , Grossular                 , Pyrope                , Spessartine           , Andradite             );
+			
+			Jasper                          .addOreByProducts(JasperOcean               , JasperRainforest          , JasperBlue            , JasperGreen           , JasperYellow          );
+			JasperOcean                     .addOreByProducts(Jasper                    , JasperRainforest          , JasperBlue            , JasperGreen           , JasperYellow          );
+			JasperRainforest                .addOreByProducts(Jasper                    , JasperOcean               , JasperBlue            , JasperGreen           , JasperYellow          );
+			JasperBlue                      .addOreByProducts(Jasper                    , JasperOcean               , JasperRainforest      , JasperGreen           , JasperYellow          );
+			JasperGreen                     .addOreByProducts(Jasper                    , JasperOcean               , JasperRainforest      , JasperBlue            , JasperYellow          );
+			JasperYellow                    .addOreByProducts(Jasper                    , JasperOcean               , JasperRainforest      , JasperBlue            , JasperGreen           );
+			
+			TigerEyeYellow                  .addOreByProducts(Fe2O3                     , TigerEyeGreen             , TigerEyeRed           , TigerEyeBlue          , TigerEyeBlack         , TigerIron             );
+			TigerEyeGreen                   .addOreByProducts(Fe2O3                     , TigerEyeYellow            , TigerEyeRed           , TigerEyeBlue          , TigerEyeBlack         , TigerIron             );
+			TigerEyeRed                     .addOreByProducts(Fe2O3                     , TigerEyeYellow            , TigerEyeGreen         , TigerEyeBlue          , TigerEyeBlack         , TigerIron             );
+			TigerEyeBlue                    .addOreByProducts(Fe2O3                     , TigerEyeYellow            , TigerEyeGreen         , TigerEyeRed           , TigerEyeBlack         , TigerIron             );
+			TigerEyeBlack                   .addOreByProducts(Fe2O3                     , TigerEyeYellow            , TigerEyeGreen         , TigerEyeRed           , TigerEyeBlue          , TigerIron             );
+			TigerIron                       .addOreByProducts(Fe2O3                     , TigerEyeYellow            , TigerEyeGreen         , TigerEyeRed           , TigerEyeBlue          , TigerEyeBlack         );
+			
+			AventurineGreen                 .addOreByProducts(AventurineBrown           , AventurineYellow          , AventurineBlack       , AventurineBlue        , AventurineRed         );
+			AventurineBrown                 .addOreByProducts(AventurineGreen           , AventurineYellow          , AventurineBlack       , AventurineBlue        , AventurineRed         );
+			AventurineYellow                .addOreByProducts(AventurineGreen           , AventurineBrown           , AventurineBlack       , AventurineBlue        , AventurineRed         );
+			AventurineBlack                 .addOreByProducts(AventurineGreen           , AventurineBrown           , AventurineYellow      , AventurineBlue        , AventurineRed         );
+			AventurineBlue                  .addOreByProducts(AventurineGreen           , AventurineBrown           , AventurineYellow      , AventurineBlack       , AventurineRed         );
+			AventurineRed                   .addOreByProducts(AventurineGreen           , AventurineBrown           , AventurineYellow      , AventurineBlack       , AventurineBlue        );
+			
+			Spinel                          .addOreByProducts(Al2O3                     , BalasRuby                 );
+			BalasRuby                       .addOreByProducts(OREMATS.Chromite          , Spinel                    );
 			
 			HexoriumRed                     .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
 			HexoriumGreen                   .addOreByProducts(HexoriumWhite             , HexoriumBlack             );
@@ -2687,7 +2720,7 @@ public class MT {
 			
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , Quartzite                 , OREMATS.Barite        );
-			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , Mg                        , MnO2                  );
+			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , MgCO3                     , MnO2                  );
 			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar          , RareEarth                 , Glowstone             );
 			Nikolite                        .addOreByProducts(Cu                        , RareEarth                 );
@@ -2703,7 +2736,7 @@ public class MT {
 			Monazite                        .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcicium                       .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcillium                      .addOreByProducts(Th                        , Nd                        , RareEarth             );
-			FakeOsmium                      .addOreByProducts(Fe2O3                     , Sn                        , Cr                    );
+			FakeOsmium                      .addOreByProducts(Fe2O3                     , Sn                        , OREMATS.Chromite      );
 			Cd                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Sphalerite        , Se                    );
 			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Scheelite         );
 			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , Os);
@@ -2748,9 +2781,6 @@ public class MT {
 			Ga                              .addOreByProducts(Zn                        , Se                        );
 			Zn                              .addOreByProducts(Sn                        , Ga                        );
 			W                               .addOreByProducts(MnO2                      , Mo                        );
-			Jasper                          .addOreByProducts(BalasRuby                 , Spinel                    );
-			BalasRuby                       .addOreByProducts(Jasper                    , Spinel                    );
-			Spinel                          .addOreByProducts(Jasper                    , BalasRuby                 );
 			Fe                              .addOreByProducts(Ni                        , Sn                        );
 			OREMATS.Lepidolite              .addOreByProducts(LiCl                      , Cs                        , Rb                    );
 			Sb                              .addOreByProducts(Zn                        , Fe2O3                     );
@@ -2761,17 +2791,10 @@ public class MT {
 			Brass                           .addOreByProducts(Cu                        , Zn                        );
 			Coal                            .addOreByProducts(Lignite                   , S                         );
 			Lignite                         .addOreByProducts(Coal                      , S                         , Ge                    );
-			Emerald                         .addOreByProducts(Be                        , Al2O3                     , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Aquamarine                      .addOreByProducts(Be                        , Al2O3                     , Emerald               , Morganite             , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Morganite                       .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Goshenite             , Bixbite               , Heliodor              , Maxixe    );
-			Goshenite                       .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Bixbite               , Heliodor              , Maxixe    );
-			Bixbite                         .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Heliodor              , Maxixe    );
-			Heliodor                        .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Maxixe    );
-			Maxixe                          .addOreByProducts(Be                        , Al2O3                     , Emerald               , Aquamarine            , Morganite             , Goshenite             , Bixbite               , Heliodor  );
-			Be                              .addOreByProducts(Emerald                   , Aquamarine                , Morganite             );
+			
 			Al                              .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
 			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
-			Cr                              .addOreByProducts(Fe2O3                     , Mg                        );
+			Cr                              .addOreByProducts(OREMATS.Chromite          , Fe2O3                     , MgCO3                 );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
 			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);
 			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , GraniteBlack);
@@ -2785,7 +2808,7 @@ public class MT {
 			Zr                              .addOreByProducts(TiO2                      , Hf                        );
 			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
 			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , Ta                    , Nb                    , Pb                    );
-			Azurite                         .addOreByProducts(Zircon                    , OREMATS.Malachite         , Hf                    ); // TODO: Niccolite
+			Azurite                         .addOreByProducts(Zircon                    , OREMATS.Malachite         , Hf                    ); // Niccolite byproduct?
 			Ad                              .addOreByProducts(OREMATS.GraniticMineralSand, Adamantine               );
 			Adamantine                      .addOreByProducts(OREMATS.GraniticMineralSand, Ad                       );
 			OREMATS.Stibnite                .addOreByProducts(Sb                        );
@@ -2793,13 +2816,7 @@ public class MT {
 			DiamondPink                     .addOreByProducts(Graphite                  , Diamond                   );
 			ManaDiamond                     .addOreByProducts(Graphite                  , Diamond                   );
 			ElvenDragonstone                .addOreByProducts(Graphite                  );
-			Pyrope                          .addOreByProducts(Mg                        );
-			Almandine                       .addOreByProducts(Al2O3                     );
-			Spessartine                     .addOreByProducts(MnO2                      );
-			Andradite                       .addOreByProducts(Fe2O3                     );
-			Grossular                       .addOreByProducts(Ca                        );
-			Uvarovite                       .addOreByProducts(Cr                        );
-			Olivine                         .addOreByProducts(Mg                        );
+			Olivine                         .addOreByProducts(Obsidian                  );
 			PigIron                         .addOreByProducts(Fe2O3                     );
 			DarkIron                        .addOreByProducts(Fe2O3                     );
 			Steel                           .addOreByProducts(Fe2O3                     );
@@ -2813,7 +2830,7 @@ public class MT {
 			KNO3                            .addOreByProducts(NaNO3                     , Niter                     );
 			Niter                           .addOreByProducts(KNO3                      , NaNO3                     );
 			Hf                              .addOreByProducts(Zircon                    );
-			Mg                              .addOreByProducts(Olivine                   );
+			Mg                              .addOreByProducts(Olivine                   , MgCO3                     );
 			Ardite                          .addOreByProducts(Co                        );
 			Obsidian                        .addOreByProducts(Olivine                   );
 			Redrock                         .addOreByProducts(ClayBrown                 );
@@ -2857,9 +2874,9 @@ public class MT {
 			
 			Alduorite                       .addOreByProducts(Cd                        );
 			Infuscolium                     .addOreByProducts(Cu                        );
-			Rubracium                       .addOreByProducts(Cr                        );
+			Rubracium                       .addOreByProducts(OREMATS.Chromite          );
 			Meutoite                        .addOreByProducts(VanadiumPentoxide         );
-			Lemurite                        .addOreByProducts(Mg                        );
+			Lemurite                        .addOreByProducts(MgCO3                     );
 			Ceruclase                       .addOreByProducts(Sb                        );
 			Atl                             .addOreByProducts(TiO2                      );
 			Oureclase                       .addOreByProducts(Ni                        );
@@ -2877,6 +2894,13 @@ public class MT {
 			AstralSilver                    .addOreByProducts(Ag                        );
 			Midasium                        .addOreByProducts(Au                        );
 			Mithril                         .addOreByProducts(Pt                        );
+			
+			/* TODO ?
+			FryingOilHot            .setHeatDamage(1.0);
+			Lava                    .setHeatDamage(3.0);
+			Firestone               .setHeatDamage(5.0);
+			Pyrotheum               .setHeatDamage(5.0);
+			*/
 			
 //          Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.Chalcopyrite          , 8*U), OM.stack(C                  , 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(Fe2O3                         , 5*U), OM.stack(C                  , 1*U), OM.stack(CaCO3, 1*U)));

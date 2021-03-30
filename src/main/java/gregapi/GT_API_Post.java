@@ -161,14 +161,17 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.FakeOsmium.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded) {
+			MT.Azurite.addOreByProducts(MT.Nikolite);
 			MT.Monazite.addOreByProducts(MT.Nikolite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Nikolite);
 		}
 		if (MD.PR.mLoaded) {
+			MT.Azurite.addOreByProducts(MT.Electrotine);
 			MT.Monazite.addOreByProducts(MT.Electrotine);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Electrotine);
 		}
 		if (MD.BP.mLoaded) {
+			MT.Azurite.addOreByProducts(MT.Teslatite);
 			MT.Monazite.addOreByProducts(MT.Teslatite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Teslatite);
 		}

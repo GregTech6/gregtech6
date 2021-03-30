@@ -172,8 +172,10 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			mTransferredLast = Math.abs(mCurrentPower * mCurrentSpeed);
 			if (mJammed || !mGearsWork) mCurrentPower = 0;
+			
+			mTransferredLast = Math.abs(mCurrentPower * mCurrentSpeed);
+			
 			if (mUsedGear && mCurrentPower > 0) {
 				boolean temp = T;
 				while (temp) {
