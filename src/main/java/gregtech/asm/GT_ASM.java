@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,7 +81,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
-            transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
+			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
 			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
 			transformers.put(Thaumcraft_AspectLagFix.class.getName(), true);
