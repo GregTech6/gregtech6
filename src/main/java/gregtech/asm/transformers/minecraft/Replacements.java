@@ -19,24 +19,24 @@
 
 package gregtech.asm.transformers.minecraft;
 
+import static gregapi.data.CS.*;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 /* This is a separate file so it class loads *while* minecraft loads,
    if we accessed world in the main transformer then we can miss out
@@ -44,48 +44,29 @@ import java.util.Random;
    while transforming other mods though.
  */
 public class Replacements {
-	public static void BlockIce_harvestBlock(BlockIce self, World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_)
-	{
-		p_149636_2_.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(self)], 1);
-		p_149636_2_.addExhaustion(0.025F);
-
-		if (self.canSilkHarvest(p_149636_1_, p_149636_2_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_) && EnchantmentHelper.getSilkTouchModifier(p_149636_2_))
-		{
-			ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = (ItemStack)UT.Reflection.callPrivateMethod(Block.class, "createStackedBlock", p_149636_6_);
-			//ItemStack itemstack = self.createStackedBlock(p_149636_6_);
-
-			if (itemstack != null) items.add(itemstack);
-
-			ForgeEventFactory.fireBlockHarvesting(items, p_149636_1_, self, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, 0, 1.0f, true, p_149636_2_);
-			for (ItemStack is : items) {
-				UT.Reflection.callPrivateMethod(Block.class, "dropBlocksAsItem", p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, is);
-				//self.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, is);
+	public static void BlockIce_harvestBlock(BlockIce aBlock, World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {
+		aPlayer.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(aBlock)], 1);
+		aPlayer.addExhaustion(0.025F);
+		
+		if (aBlock.canSilkHarvest(aWorld, aPlayer, aX, aY, aZ, aMeta) && EnchantmentHelper.getSilkTouchModifier(aPlayer)) {
+			ArrayList<ItemStack> tDrops = new ArrayList<>();
+			tDrops.add(new ItemStack(aBlock, 1, 0));
+			ForgeEventFactory.fireBlockHarvesting(tDrops, aWorld, aBlock, aX, aY, aZ, aMeta, 0, 1.0F, T, aPlayer);
+			for (ItemStack tStack : tDrops) {
+				UT.Reflection.callMethod(aBlock, new String[] {"dropBlockAsItem", "a"}, T, F, T, aWorld, aX, aY, aZ, tStack);
 			}
-		}
-		else
-		{
-			if (p_149636_1_.provider.isHellWorld)
-			{
-				p_149636_1_.setBlockToAir(p_149636_3_, p_149636_4_, p_149636_5_);
-				return;
-			}
-
-			Material material = p_149636_1_.getBlock(p_149636_3_, p_149636_4_ - 1, p_149636_5_).getMaterial();
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				p_149636_1_.setBlock(p_149636_3_, p_149636_4_, p_149636_5_, Blocks.flowing_water);
-			}
-
-			int i1 = EnchantmentHelper.getFortuneModifier(p_149636_2_);
+		} else {
+			if (aWorld.provider.isHellWorld) {aWorld.setBlockToAir(aX, aY, aZ); return;}
+			Material tMaterial = aWorld.getBlock(aX, aY - 1, aZ).getMaterial();
+			if (tMaterial.blocksMovement() || tMaterial.isLiquid()) aWorld.setBlock(aX, aY, aZ, Blocks.flowing_water);
 			@SuppressWarnings("unchecked")
-			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(Block.class, "harvesters");
-			harvesters.set(p_149636_2_);
-			self.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, i1);
+			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters");
+			harvesters.set(aPlayer);
+			aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, EnchantmentHelper.getFortuneModifier(aPlayer));
 			harvesters.set(null);
 		}
 	}
-
+	
 	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid self, World world, int x, int y, int z, Random rand) {
 		if (self.getMaterial() == Material.lava)
 		{

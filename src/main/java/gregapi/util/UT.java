@@ -2296,8 +2296,10 @@ public class UT {
 		public static Object callPrivateMethod(Object aObject, String aMethod, Object... aParameters) {
 			return callMethod(aObject, aMethod, T, F, T, aParameters);
 		}
-		
 		public static Object callMethod(Object aObject, String aMethod, boolean aPrivate, boolean aUseUpperCasedDataTypes, boolean aLogErrors, Object... aParameters) {
+			return callMethod(aObject, new String[] {aMethod}, aPrivate, aUseUpperCasedDataTypes, aLogErrors, aParameters);
+		}
+		public static Object callMethod(Object aObject, String[] aMethods, boolean aPrivate, boolean aUseUpperCasedDataTypes, boolean aLogErrors, Object... aParameters) {
 			try {
 				Class<?>[] tParameterTypes = new Class<?>[aParameters.length];
 				for (byte i = 0; i < aParameters.length; i++) {
@@ -2317,12 +2319,17 @@ public class UT {
 						if (tParameterTypes[i] == Double.class ) tParameterTypes[i] = double.class;
 					}
 				}
-				
-				Method tMethod = aPrivate?
-				(aObject instanceof Class)?((Class<?>)aObject).getDeclaredMethod(aMethod, tParameterTypes):aObject.getClass().getDeclaredMethod(aMethod, tParameterTypes):
-				(aObject instanceof Class)?((Class<?>)aObject).getMethod        (aMethod, tParameterTypes):aObject.getClass().getMethod        (aMethod, tParameterTypes);
-				if (aPrivate) tMethod.setAccessible(T);
-				return tMethod.invoke(aObject, aParameters);
+				for (String aMethod : aMethods) {
+					try {
+						Method tMethod = aPrivate?
+						(aObject instanceof Class)?((Class<?>)aObject).getDeclaredMethod(aMethod, tParameterTypes):aObject.getClass().getDeclaredMethod(aMethod, tParameterTypes):
+						(aObject instanceof Class)?((Class<?>)aObject).getMethod        (aMethod, tParameterTypes):aObject.getClass().getMethod        (aMethod, tParameterTypes);
+						if (aPrivate) tMethod.setAccessible(T);
+						return tMethod.invoke(aObject, aParameters);
+					} catch(Throwable e) {
+						if (aLogErrors) e.printStackTrace(ERR);
+					}
+				}
 			} catch (Throwable e) {
 				if (aLogErrors) e.printStackTrace(ERR);
 			}
@@ -2896,7 +2903,7 @@ public class UT {
 				if ("Bear989Sr".equalsIgnoreCase(aEntity.getCommandSenderName())) return T;
 				IExtendedEntityProperties tWerewolfProperty = aEntity.getExtendedProperties("WerewolfPlayer");
 				if (tWerewolfProperty == null) return F;
-				Object tReturned = UT.Reflection.callMethod(tWerewolfProperty, "getWerewolf", F, F, T);
+				Object tReturned = UT.Reflection.callPublicMethod(tWerewolfProperty, "getWerewolf");
 				return tReturned instanceof Boolean && (Boolean)tReturned;
 			}
 			if (aEntity.getClass().getName().indexOf(".") < 0) return F;

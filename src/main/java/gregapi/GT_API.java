@@ -252,8 +252,7 @@ public class GT_API extends Abstract_Mod {
 			// The Access Transformer should make this work
 			Material.tnt.setAdventureModeExempt();
 		} catch(Throwable e) {
-			UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
-			UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+			UT.Reflection.callMethod(Material.tnt, new String[] {"func_85158_p", "setAdventureModeExempt"}, T, F, F);
 			e.printStackTrace(DEB);
 		}
 		
