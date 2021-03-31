@@ -50,7 +50,7 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4)); // Load y
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 5)); // Load z
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 6)); // Load metadata
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockIce_harvestBlock", "(Lnet/minecraft/block/BlockIce;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)Z", false));
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockIce_harvestBlock", "(Lnet/minecraft/block/BlockIce;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)V", false));
 				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
