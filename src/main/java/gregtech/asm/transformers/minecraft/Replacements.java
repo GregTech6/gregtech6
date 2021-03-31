@@ -60,7 +60,7 @@ public class Replacements {
 			Material tMaterial = aWorld.getBlock(aX, aY - 1, aZ).getMaterial();
 			if (tMaterial.blocksMovement() || tMaterial.isLiquid()) aWorld.setBlock(aX, aY, aZ, Blocks.flowing_water);
 			@SuppressWarnings("unchecked")
-			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters");
+			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters", T, T);
 			harvesters.set(aPlayer);
 			aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, EnchantmentHelper.getFortuneModifier(aPlayer));
 			harvesters.set(null);
