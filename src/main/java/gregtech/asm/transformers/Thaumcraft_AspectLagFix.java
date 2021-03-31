@@ -22,6 +22,7 @@ package gregtech.asm.transformers;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -55,6 +56,7 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 
 			for (MethodNode m : classNode.methods) {
 				if (m.name.equals("generateItemHash")) { // First most costly thing
+					GT_ASM.logger.info("Transforming thaumcraft.common.lib.research.ScanManager.generateItemHash");
 					LabelNode first = (LabelNode) m.instructions.get(0);
 					m.instructions.insertBefore(first, new VarInsnNode(Opcodes.ALOAD, 0)); // Load item
 					m.instructions.insertBefore(first, new VarInsnNode(Opcodes.ILOAD, 1)); // load meta
@@ -87,6 +89,7 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 
 			for (MethodNode m : classNode.methods) {
 				if (m.name.equals("getObjectTags")) { // Second most costly thing
+					GT_ASM.logger.info("Transforming thaumcraft.common.lib.crafting.ThaumcraftCraftingManager.getObjectTags");
 					LabelNode first = (LabelNode) m.instructions.get(0);
 					m.instructions.insertBefore(first, new VarInsnNode(Opcodes.ALOAD, 0)); // Load item
 					m.instructions.insertBefore(first, new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/Thaumcraft_AspectLagFix", "getCachedAspectTags", "(Lnet/minecraft/item/ItemStack;)Lthaumcraft/api/aspects/AspectList;", false));

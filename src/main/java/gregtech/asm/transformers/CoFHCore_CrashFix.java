@@ -19,6 +19,7 @@
 
 package gregtech.asm.transformers;
 
+import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -41,7 +42,8 @@ public class CoFHCore_CrashFix implements IClassTransformer {
 		classReader.accept(classNode, 0);
 		
 		outer: for (MethodNode m: classNode.methods) {
-			if (m.name.equals("serverStarting") || m.name.equals("handleIdMappingEvent")) { // Should check `desc` too but no ambiguity here anyway
+			if (m.name.equals("serverStarting") || m.name.equals("handleIdMappingEvent")) {
+				GT_ASM.logger.info("Transforming " + transformedName + "." + m.name);
 				for (int i=0; i<m.instructions.size(); i++) {
 					AbstractInsnNode insn = m.instructions.get(i);
 					if (insn instanceof MethodInsnNode) {

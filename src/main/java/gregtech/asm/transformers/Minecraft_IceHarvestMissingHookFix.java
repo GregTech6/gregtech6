@@ -19,14 +19,11 @@
 
 package gregtech.asm.transformers;
 
+import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.LabelNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.*;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 
@@ -36,35 +33,25 @@ import net.minecraft.launchwrapper.IClassTransformer;
 public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
-		if (!name.equals("alp") && !name.equals("net.minecraft.block.BlockIce")) return basicClass;
+		if (!transformedName.equals("net.minecraft.block.BlockIce")) return basicClass;
 
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
 
 		for (MethodNode m: classNode.methods) {
-			if (m.name.equals("harvestBlock")) {
-				AbstractInsnNode end = m.instructions.getLast();
-				while(end.getOpcode() != Opcodes.ACONST_NULL) end = end.getPrevious();
-				end = end.getNext(); // Include the actual harvesters.set(null) call
-
-				AbstractInsnNode start = end.getPrevious();
-				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
-				start = start.getPrevious(); // Skip the second harvesters call to get the first one
-				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
-				start = start.getPrevious(); // Include the player argument passed to the harvesters.set(...) call
-
-				AbstractInsnNode label = m.instructions.getLast().getPrevious(); // Skip last-most LabelNode
-				while(!(label instanceof LabelNode)) label = label.getPrevious();
-
-				while(start != end) {
-					AbstractInsnNode next = start.getNext();
-					m.instructions.remove(start);
-					m.instructions.insertBefore(label, start);
-					start = next;
-				}
-				m.instructions.remove(end);
-				m.instructions.insertBefore(label, end);
+			if (m.name.equals("harvestBlock") || (m.name.equals("a") && m.desc.equals("(Lahb;Lyz;IIII)V"))) {
+				GT_ASM.logger.info("Transforming net.minecraft.block.BlockIce.harvestBlock");
+				m.instructions.clear();
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 2)); // Load player
+				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3)); // Load x
+				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4)); // Load y
+				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 5)); // Load z
+				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 6)); // Load metadata
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockIce_harvestBlock", "(Lnet/minecraft/block/BlockIce;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)Z", false));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 

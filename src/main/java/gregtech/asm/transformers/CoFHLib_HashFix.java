@@ -19,6 +19,7 @@
 
 package gregtech.asm.transformers;
 
+import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -54,7 +55,9 @@ public class CoFHLib_HashFix implements IClassTransformer {
 		// And yes the getId() part violates the Hash Rule of Java since Item IDs constantly change when you load Worlds or join Servers.
 		
 		for (MethodNode m: classNode.methods) if (m.name.equals("hashcode")) {
-			// TODO Put an Identity Hash for the Item instance, but DO NOT combine it with the metadata due to Wildcard Issues!
+			GT_ASM.logger.info("Transforming " + transformedName + ".hashcode");
+			// TODO: Put an Identity Hash for the Item instance, but DO NOT combine it with the metadata due to Wildcard Issues!
+			// TODO: Maybe just hash the name of it and be done with it...
 			m.instructions.clear();
 			m.instructions.insert(new InsnNode(Opcodes.ICONST_0));
 			m.instructions.insert(new InsnNode(Opcodes.IRETURN));

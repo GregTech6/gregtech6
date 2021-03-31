@@ -19,6 +19,7 @@
 
 package gregtech.asm.transformers;
 
+import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -53,6 +54,7 @@ public class Technomancy_ExtremelySlowLoadFix implements IClassTransformer {
 
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("init") && m.desc.equals("()V")) {
+				GT_ASM.logger.info("Transforming theflogat.technomancy.util.Ore.init");
 				m.instructions.clear();
 				m.instructions.insert(new InsnNode(Opcodes.RETURN));
 			}
