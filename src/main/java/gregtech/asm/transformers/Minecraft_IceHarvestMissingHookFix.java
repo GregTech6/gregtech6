@@ -19,12 +19,16 @@
 
 package gregtech.asm.transformers;
 
-import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
 
+import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 /**
@@ -34,11 +38,11 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!transformedName.equals("net.minecraft.block.BlockIce")) return basicClass;
-
+		
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
-
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("harvestBlock") || (m.name.equals("a") && m.desc.equals("(Lahb;Lyz;IIII)V"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.block.BlockIce.harvestBlock");
@@ -54,7 +58,7 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
-
+		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
 		classNode.accept(writer);
 		return writer.toByteArray();
