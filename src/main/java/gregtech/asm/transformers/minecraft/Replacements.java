@@ -47,7 +47,6 @@ public class Replacements {
 	public static void BlockIce_harvestBlock(BlockIce aBlock, World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {
 		aPlayer.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(aBlock)], 1);
 		aPlayer.addExhaustion(0.025F);
-		
 		if (aBlock.canSilkHarvest(aWorld, aPlayer, aX, aY, aZ, aMeta) && EnchantmentHelper.getSilkTouchModifier(aPlayer)) {
 			ArrayList<ItemStack> tDrops = new ArrayList<>();
 			tDrops.add(new ItemStack(aBlock, 1, 0));
@@ -59,11 +58,11 @@ public class Replacements {
 			if (aWorld.provider.isHellWorld) {aWorld.setBlockToAir(aX, aY, aZ); return;}
 			Material tMaterial = aWorld.getBlock(aX, aY - 1, aZ).getMaterial();
 			if (tMaterial.blocksMovement() || tMaterial.isLiquid()) aWorld.setBlock(aX, aY, aZ, Blocks.flowing_water);
-			@SuppressWarnings("unchecked")
-			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters", T, T);
-			harvesters.set(aPlayer);
+			//@SuppressWarnings("unchecked")
+			//ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters", T, T);
+			//harvesters.set(aPlayer);
 			aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, EnchantmentHelper.getFortuneModifier(aPlayer));
-			harvesters.set(null);
+			//harvesters.set(null);
 		}
 	}
 	
