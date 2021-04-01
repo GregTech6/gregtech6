@@ -19,29 +19,27 @@
 
 package gregtech.asm;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
+import cpw.mods.fml.relauncher.IFMLCallHook;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.CoFHCore_CrashFix;
-import gregtech.asm.transformers.CoFHLib_HashFix;
-import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
-import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
-import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
+import gregtech.asm.transformers.*;
 import net.minecraft.launchwrapper.LaunchClassLoader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.util.Printer;
+import org.objectweb.asm.util.Textifier;
+import org.objectweb.asm.util.TraceMethodVisitor;
 
 @Name("Greg-ASM®")
 @MCVersion("1.7.10")
@@ -49,6 +47,7 @@ import net.minecraft.launchwrapper.LaunchClassLoader;
 @TransformerExclusions({"gregtech.asm"}) // Array of strings of package or class names to ignore for this coremod
 public class GT_ASM implements IFMLLoadingPlugin {
 	public static File location; // Useful to get the path to the coremod to grab other files if needed
+	public static ClassLoader classLoader;
 	final public static Logger logger = Logger.getLogger(GT_ASM.class.getName());
 	
 	public GT_ASM() {}
@@ -71,8 +70,20 @@ public class GT_ASM implements IFMLLoadingPlugin {
 	
 	@Override public String[] getASMTransformerClass() {return null;}
 	@Override public String getModContainerClass() {return GT_ASM_Dummy.class.getName();}
-	@Override public String getSetupClass() {return null;}
+	@Override public String getSetupClass() {return GT_ASM.Setup.class.getName();}
 	@Override public String getAccessTransformerClass() {return null;}
+
+	public static class Setup implements IFMLCallHook {
+		@Override
+		public void injectData(Map<String, Object> data) {
+			GT_ASM.classLoader = (ClassLoader)data.get("classLoader");
+		}
+
+		@Override
+		public Void call() throws Exception {
+			return null;
+		}
+	}
 
 	private static class ASMConfig {
 		private boolean dirty;
@@ -85,7 +96,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
-			//transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
+			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
 			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
 			transformers.put(Thaumcraft_AspectLagFix.class.getName(), true);
@@ -156,5 +167,32 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			}
 			if (transformersInserted != transformers.size()) dirty = true;
 		}
+	}
+
+	static class PrinterClassVisitor extends ClassVisitor {
+		public StringWriter out_writer = new StringWriter();
+		public PrinterClassVisitor() {
+			super(Opcodes.ASM5);
+		}
+
+		@Override
+		public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+			//MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
+			out_writer.write("Method: " + name + desc + "\n");
+			Printer p = new Textifier(Opcodes.ASM5) {
+				@Override
+				public void visitMethodEnd() {
+					print(new PrintWriter(out_writer)); // print it after it has been visited
+				}
+			};
+			//return new TraceMethodVisitor(mv, p);
+			return new TraceMethodVisitor(p);
+		}
+	}
+
+	public static String getPrettyPrintedOpCodes(ClassNode classNode) {
+		PrinterClassVisitor printer = new PrinterClassVisitor();
+		classNode.accept(printer);
+		return printer.out_writer.toString();
 	}
 }

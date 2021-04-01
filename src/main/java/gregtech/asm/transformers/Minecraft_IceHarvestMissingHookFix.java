@@ -19,14 +19,8 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
+import org.objectweb.asm.*;
+import org.objectweb.asm.tree.*;
 
 import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -42,24 +36,75 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
-		
+
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("harvestBlock") || (m.name.equals("a") && m.desc.equals("(Lahb;Lyz;IIII)V"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.block.BlockIce.harvestBlock");
-				m.instructions.clear();
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 2)); // Load player
-				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3)); // Load x
-				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4)); // Load y
-				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 5)); // Load z
-				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 6)); // Load metadata
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockIce_harvestBlock", "(Lnet/minecraft/block/BlockIce;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)V", false));
-				m.instructions.add(new InsnNode(Opcodes.RETURN));
+
+				String ops=""; for(AbstractInsnNode node = m.instructions.getFirst(); node != m.instructions.getLast(); node = node.getNext()) ops += node.toString() + "\n";GT_ASM.logger.warning(ops + m.instructions.getLast().toString());
+
+				AbstractInsnNode end = m.instructions.getLast();
+				while(end.getOpcode() != Opcodes.ACONST_NULL) end = end.getPrevious();
+				end = end.getNext(); // Include the actual harvesters.set(null) call
+
+				AbstractInsnNode start = end.getPrevious();
+				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
+				start = start.getPrevious(); // Skip the second harvesters call to get the first one
+				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
+				start = start.getPrevious(); // Include the player argument passed to the harvesters.set(...) call
+
+				AbstractInsnNode label = m.instructions.getLast().getPrevious(); // Skip last-most LabelNode
+				while(!(label instanceof LabelNode)) label = label.getPrevious();
+
+				while(start != end) {
+					AbstractInsnNode next = start.getNext();
+					m.instructions.remove(start);
+					m.instructions.insertBefore(label, start);
+					start = next;
+				}
+				m.instructions.remove(end);
+				m.instructions.insertBefore(label, end);
+
+				ops=""; for(AbstractInsnNode node = m.instructions.getFirst(); node != m.instructions.getLast(); node = node.getNext()) ops += node.toString() + "\n";GT_ASM.logger.warning(ops + m.instructions.getLast().toString());
+
 			}
 		}
-		
-		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+
+		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
+			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..
+			// And can't even use the correct classloader here because the forge remapping hadn't been done yet.
+			// Forge's classloader doesn't seem to like loading and transforming a type while transforming another...
+			// Which wouldn't be an issue if ItemStack loaded first, but meh...
+			@Override
+			protected String getCommonSuperClass(String type1, String type2) {
+				Class<?> c, d;
+				ClassLoader classLoader = GT_ASM.classLoader;
+				GT_ASM.logger.warning("Names: " + type1 + " " + type2);
+				try {
+					c = Class.forName(type1.replace('/', '.'), false, classLoader);
+					d = Class.forName(type2.replace('/', '.'), false, classLoader);
+				} catch (Exception e) {
+					// We can't really unify this at this point because it's not loaded yet,
+					// but for this class its fine to return `"java/lang/Object"` for anything that is not loadable.
+					//throw new RuntimeException(e.toString());
+					return "java/lang/Object";
+				}
+				if (c.isAssignableFrom(d)) {
+					return type1;
+				}
+				if (d.isAssignableFrom(c)) {
+					return type2;
+				}
+				if (c.isInterface() || d.isInterface()) {
+					return "java/lang/Object";
+				} else {
+					do {
+						c = c.getSuperclass();
+					} while (!c.isAssignableFrom(d));
+					return c.getName().replace('.', '/');
+				}
+			}
+		};
 		classNode.accept(writer);
 		return writer.toByteArray();
 	}
