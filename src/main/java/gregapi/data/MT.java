@@ -2769,8 +2769,8 @@ public class MT {
 			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon);
 			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    );
 			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone);
-			NetherQuartz                    .addOreByProducts(Netherrack                , OREMATS.Barite            , Efrine                , VoidQuartz);
-			VoidQuartz                      .addOreByProducts(Netherrack                , OREMATS.Barite            , Efrine                , NetherQuartz);
+			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz);
+			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz);
 			Quartzite                       .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
 			MilkyQuartz                     .addOreByProducts(CertusQuartz              , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
@@ -2796,7 +2796,7 @@ public class MT {
 			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
 			Cr                              .addOreByProducts(OREMATS.Chromite          , Fe2O3                     , MgCO3                 );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
-			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);
+			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , St+one);
 			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , GraniteBlack);
 			OREMATS.BasalticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , Basalt);
 			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
