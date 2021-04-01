@@ -2796,7 +2796,7 @@ public class MT {
 			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
 			Cr                              .addOreByProducts(OREMATS.Chromite          , Fe2O3                     , MgCO3                 );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
-			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , St+one);
+			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);
 			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , GraniteBlack);
 			OREMATS.BasalticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , Basalt);
 			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
