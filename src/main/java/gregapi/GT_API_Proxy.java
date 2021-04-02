@@ -200,10 +200,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onProxyBeforeServerStarting(Abstract_Mod aMod, FMLServerStartingEvent aEvent) {
-		OUT.println("GT_Server: Running Unification of Recipes");
+		OUT.println("GT_Server: Potentially Preventing Race Condition that may cause the 'Dumping back to Main Menu'-Bug.");
+		// TODO This is a Test! It needs to be removed once proven wrong.
+		try {Thread.sleep(3000);} catch (InterruptedException e) {e.printStackTrace();}
 		
-		// TODO This is a Test!
-		try {Thread.sleep(60000);} catch (InterruptedException e) {e.printStackTrace();}
+		OUT.println("GT_Server: Running Unification of Recipes");
 		
 		HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
 		
