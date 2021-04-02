@@ -35,6 +35,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -197,6 +198,107 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public File mSaveLocation = null;
 	
 	@Override
+	@SuppressWarnings("unchecked")
+	public void onProxyBeforeServerStarting(Abstract_Mod aMod, FMLServerStartingEvent aEvent) {
+		OUT.println("GT_Server: Running Unification of Recipes");
+		
+		// TODO This is a Test!
+		try {Thread.sleep(60000);} catch (InterruptedException e) {e.printStackTrace();}
+		
+		HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
+		
+		if (MD.IC2.mLoaded) try {
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle        .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge          .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor          .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor           .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator           .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting  .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling  .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier     .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing          .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		
+		if (MD.RC.mLoaded) {
+		try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.blastFurnace  .getRecipes   ()) tStacks.add((ItemStack)UT.Reflection.getFieldContent(tRecipe, "output"));} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.cokeOven      .getRecipes   ()) tStacks.add((ItemStack)UT.Reflection.getFieldContent(tRecipe, "output"));} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rockCrusher   .getRecipes   ()) for (Map.Entry<ItemStack, Float> tEntry : (List<Map.Entry<ItemStack, Float>>)UT.Reflection.getFieldContent(tRecipe, "outputs")) tStacks.add(tEntry.getKey());} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {for (IRecipe tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rollingMachine.getRecipeList()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());} catch(Throwable e) {e.printStackTrace(ERR);}
+		}
+		
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST           ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST             ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST    ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+		
+		for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+		
+		for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());
+		
+		for (ItemStack tOutput : tStacks) {
+			if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
+				ERR.println("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
+				FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
+				if (CS.CODE_CLIENT) {
+					FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
+					FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
+					FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
+					FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
+					FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
+					FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
+					FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
+					FMLLog.severe("And speaking of failed Reports:");
+					FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
+					FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
+					FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
+					FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
+					FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
+					FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to seriously post this Text. We all know about its existence.");
+					
+					tOutput.setStackDisplayName("ERROR!");
+					UT.NBT.setBoolean(UT.NBT.getNBT(tOutput), "gt.err.oredict.output", T);
+				}
+			} else {
+				OM.set(tOutput);
+			}
+		}
+		
+		OUT.println("GT_Server: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
+		List<IRecipe> tList = CR.list();
+		for (int i = 0; i < tList.size(); i++) {
+			Object tRecipe = tList.get(i);
+			if (tRecipe instanceof ShapedOreRecipe) {
+				Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
+				for (int j = 0; j < tInput.length; j++) {
+					if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
+//                      DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+						tList.remove(i--);
+						break;
+					}
+				}
+			} else if (tRecipe instanceof ShapelessOreRecipe) {
+				ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
+				for (int j = 0; j < tInput.size(); j++) {
+					if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
+//                      DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+						tList.remove(i--);
+						break;
+					}
+				}
+			}
+		}
+		
+		OreDictManager.INSTANCE.fixStacksizes();
+	}
+	
+	@Override
 	public void onProxyBeforeServerStarted(Abstract_Mod aMod, FMLServerStartedEvent aEvent) {
 		SERVER_TIME = 0;
 		
@@ -249,101 +351,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
-					// Test!
-					try {Thread.sleep(60000);} catch (InterruptedException e) {e.printStackTrace();}
-					
-					
-					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
-					
-					if (MD.IC2.mLoaded) try {
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle              .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor                 .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator                 .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting        .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding      .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling        .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier           .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					} catch(Throwable e) {e.printStackTrace(ERR);}
-					
-					if (MD.RC.mLoaded) {
-					try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.blastFurnace  .getRecipes   ()) tStacks.add((ItemStack)UT.Reflection.getFieldContent(tRecipe, "output"));} catch(Throwable e) {e.printStackTrace(ERR);}
-					try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.cokeOven      .getRecipes   ()) tStacks.add((ItemStack)UT.Reflection.getFieldContent(tRecipe, "output"));} catch(Throwable e) {e.printStackTrace(ERR);}
-					try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rockCrusher   .getRecipes   ()) for (Map.Entry<ItemStack, Float> tEntry : (List<Map.Entry<ItemStack, Float>>)UT.Reflection.getFieldContent(tRecipe, "outputs")) tStacks.add(tEntry.getKey());} catch(Throwable e) {e.printStackTrace(ERR);}
-					try {for (IRecipe tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rollingMachine.getRecipeList()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());} catch(Throwable e) {e.printStackTrace(ERR);}
-					}
-					
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST            ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST              ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					
-					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-					
-					for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());
-					
-					for (ItemStack tOutput : tStacks) {
-						if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
-							ERR.println("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
-							FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
-							if (CS.CODE_CLIENT) {
-								FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
-								FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
-								FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
-								FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
-								FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
-								FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
-								FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
-								FMLLog.severe("And speaking of failed Reports:");
-								FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
-								FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
-								FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
-								FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
-								FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
-								FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to seriously post this Text. We all know about its existence.");
-								
-								tOutput.setStackDisplayName("ERROR!");
-								UT.NBT.setBoolean(UT.NBT.getNBT(tOutput), "gt.err.oredict.output", T);
-							}
-						} else {
-							OM.set(tOutput);
-						}
-					}
-					
-					OUT.println("GT_API: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
-					List<IRecipe> tList = CR.list();
-					for (int i = 0; i < tList.size(); i++) {
-						Object tRecipe = tList.get(i);
-						if (tRecipe instanceof ShapedOreRecipe) {
-							Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
-							for (int j = 0; j < tInput.length; j++) {
-								if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
-//                                  DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
-									tList.remove(i--);
-									break;
-								}
-							}
-						} else if (tRecipe instanceof ShapelessOreRecipe) {
-							ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
-							for (int j = 0; j < tInput.size(); j++) {
-								if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
-//                                  DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
-									tList.remove(i--);
-									break;
-								}
-							}
-						}
-					}
-					
-					OreDictManager.INSTANCE.fixStacksizes();
+					// Nothing, at least right now.
 				}
 				
 				for (int i = 0; i < SERVER_TICK_PRE.size(); i++) {
