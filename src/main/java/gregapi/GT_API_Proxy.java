@@ -249,6 +249,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
+					// Test!
+					try {Thread.sleep(60000);} catch (InterruptedException e) {e.printStackTrace();}
+					
+					
 					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
 					
 					if (MD.IC2.mLoaded) try {
