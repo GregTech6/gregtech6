@@ -19,8 +19,14 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.*;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.LabelNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -36,26 +42,26 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
-
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("harvestBlock") || (m.name.equals("a") && m.desc.equals("(Lahb;Lyz;IIII)V"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.block.BlockIce.harvestBlock");
-
+				
 				String ops=""; for(AbstractInsnNode node = m.instructions.getFirst(); node != m.instructions.getLast(); node = node.getNext()) ops += node.toString() + "\n";GT_ASM.logger.warning(ops + m.instructions.getLast().toString());
-
+				
 				AbstractInsnNode end = m.instructions.getLast();
 				while(end.getOpcode() != Opcodes.ACONST_NULL) end = end.getPrevious();
 				end = end.getNext(); // Include the actual harvesters.set(null) call
-
+				
 				AbstractInsnNode start = end.getPrevious();
 				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
 				start = start.getPrevious(); // Skip the second harvesters call to get the first one
 				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
 				start = start.getPrevious(); // Include the player argument passed to the harvesters.set(...) call
-
+				
 				AbstractInsnNode label = m.instructions.getLast().getPrevious(); // Skip last-most LabelNode
 				while(!(label instanceof LabelNode)) label = label.getPrevious();
-
+				
 				while(start != end) {
 					AbstractInsnNode next = start.getNext();
 					m.instructions.remove(start);
@@ -64,12 +70,11 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 				}
 				m.instructions.remove(end);
 				m.instructions.insertBefore(label, end);
-
+				
 				ops=""; for(AbstractInsnNode node = m.instructions.getFirst(); node != m.instructions.getLast(); node = node.getNext()) ops += node.toString() + "\n";GT_ASM.logger.warning(ops + m.instructions.getLast().toString());
-
 			}
 		}
-
+		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
 			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..
 			// And can't even use the correct classloader here because the forge remapping hadn't been done yet.
@@ -97,12 +102,11 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 				}
 				if (c.isInterface() || d.isInterface()) {
 					return "java/lang/Object";
-				} else {
-					do {
-						c = c.getSuperclass();
-					} while (!c.isAssignableFrom(d));
-					return c.getName().replace('.', '/');
 				}
+				do {
+					c = c.getSuperclass();
+				} while (!c.isAssignableFrom(d));
+				return c.getName().replace('.', '/');
 			}
 		};
 		classNode.accept(writer);

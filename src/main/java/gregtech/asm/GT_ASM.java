@@ -19,20 +19,18 @@
 
 package gregtech.asm;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import cpw.mods.fml.relauncher.FMLRelaunchLog;
-import cpw.mods.fml.relauncher.IFMLCallHook;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.*;
-import net.minecraft.launchwrapper.LaunchClassLoader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -41,6 +39,21 @@ import org.objectweb.asm.util.Printer;
 import org.objectweb.asm.util.Textifier;
 import org.objectweb.asm.util.TraceMethodVisitor;
 
+import cpw.mods.fml.relauncher.FMLRelaunchLog;
+import cpw.mods.fml.relauncher.IFMLCallHook;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
+import gregtech.asm.transformers.CoFHCore_CrashFix;
+import gregtech.asm.transformers.CoFHLib_HashFix;
+import gregtech.asm.transformers.Minecraft_IceHarvestMissingHookFix;
+import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
+import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
+import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
+import net.minecraft.launchwrapper.LaunchClassLoader;
+
 @Name("Greg-ASM®")
 @MCVersion("1.7.10")
 @SortingIndex(1000) // Sorting index with other coremods, for example DragonAPI is 1001
@@ -48,7 +61,7 @@ import org.objectweb.asm.util.TraceMethodVisitor;
 public class GT_ASM implements IFMLLoadingPlugin {
 	public static File location; // Useful to get the path to the coremod to grab other files if needed
 	public static ClassLoader classLoader;
-	final public static Logger logger = Logger.getLogger(GT_ASM.class.getName());
+	public static final Logger logger = Logger.getLogger(GT_ASM.class.getName());
 	
 	public GT_ASM() {}
 	
@@ -57,13 +70,13 @@ public class GT_ASM implements IFMLLoadingPlugin {
 		location = (File)data.get("coremodLocation"); // Location of the gt6 jar
 		ASMConfig config = new ASMConfig((File)data.get("mcLocation"));
 		// If it's not LaunchClassLoader then a lot of other things will already be dying too
-		final LaunchClassLoader classLoader = (LaunchClassLoader)Thread.currentThread().getContextClassLoader();
+		final LaunchClassLoader tClassLoader = (LaunchClassLoader)Thread.currentThread().getContextClassLoader();
 		
 		for (Map.Entry<String, Boolean> entry : config.transformers.entrySet()) {
 			if (entry.getValue()) {
 				String transformer = entry.getKey();
 				FMLRelaunchLog.finer("Registering transformer %s", transformer);
-				classLoader.registerTransformer(transformer);
+				tClassLoader.registerTransformer(transformer);
 			}
 		}
 	}

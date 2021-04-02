@@ -19,24 +19,14 @@
 
 package gregtech.asm.transformers.minecraft;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
 import java.util.Random;
 
-import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.event.ForgeEventFactory;
 
 /* This is a separate file so it class loads *while* minecraft loads,
    if we accessed world in the main transformer then we can miss out
@@ -44,31 +34,6 @@ import net.minecraftforge.event.ForgeEventFactory;
    while transforming other mods though.
  */
 public class Replacements {
-	
-	// ALL that this fix is supposed to do is move the setting to flowing water BEFORE dropBlockAsItem is called for non-silk-touching stuff. Nothing else.
-	// This clearly needs to be redone from scratch, and without this helper function!
-	// TODO uncomment the hook again from GT_ASM.
-	public static void BlockIce_harvestBlock(BlockIce aBlock, World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {
-		aPlayer.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(aBlock)], 1);
-		aPlayer.addExhaustion(0.025F);
-		if (aBlock.canSilkHarvest(aWorld, aPlayer, aX, aY, aZ, aMeta) && EnchantmentHelper.getSilkTouchModifier(aPlayer)) {
-			ArrayList<ItemStack> tDrops = new ArrayList<>();
-			tDrops.add(new ItemStack(aBlock, 1, 0));
-			ForgeEventFactory.fireBlockHarvesting(tDrops, aWorld, aBlock, aX, aY, aZ, aMeta, 0, 1.0F, T, aPlayer);
-			for (ItemStack tStack : tDrops) {
-				UT.Reflection.callMethod(aBlock, new String[] {"j", "dropBlockAsItem"}, T, F, T, aWorld, aX, aY, aZ, tStack); // this is just kinda messed up
-			}
-		} else {
-			if (aWorld.provider.isHellWorld) {aWorld.setBlockToAir(aX, aY, aZ); return;}
-			Material tMaterial = aWorld.getBlock(aX, aY - 1, aZ).getMaterial();
-			if (tMaterial.blocksMovement() || tMaterial.isLiquid()) aWorld.setBlock(aX, aY, aZ, Blocks.flowing_water);
-			@SuppressWarnings("unchecked")
-			ThreadLocal<EntityPlayer> harvesters = (ThreadLocal<EntityPlayer>)UT.Reflection.getFieldContent(aBlock, "harvesters", T, T); // this always gives a null, maybe wrong variable name
-			harvesters.set(aPlayer);
-			aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, EnchantmentHelper.getFortuneModifier(aPlayer));
-			harvesters.set(null);
-		}
-	}
 	
 	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid self, World world, int x, int y, int z, Random rand) {
 		if (self.getMaterial() == Material.lava)
