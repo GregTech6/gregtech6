@@ -19,13 +19,18 @@
 
 package gregtech.asm.transformers;
 
-		import org.objectweb.asm.ClassReader;
-		import org.objectweb.asm.ClassWriter;
-		import org.objectweb.asm.Opcodes;
-		import org.objectweb.asm.tree.*;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.LineNumberNode;
+import org.objectweb.asm.tree.MethodNode;
 
-		import gregtech.asm.GT_ASM;
-		import net.minecraft.launchwrapper.IClassTransformer;
+import gregtech.asm.GT_ASM;
+import net.minecraft.launchwrapper.IClassTransformer;
 
 /**
  * @author OvermindDL1
@@ -34,32 +39,32 @@ public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix impleme
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!transformedName.equals("net.minecraft.server.MinecraftServer")) return basicClass;
-
+		
 		ClassNode classNode = new ClassNode();
 		ClassReader classReader = new ClassReader(basicClass);
 		classReader.accept(classNode, 0);
-
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("run")) { // Not obfuscated nicely enough
 				GT_ASM.logger.info("Transforming net.minecraft.server.MinecraftServer.run");
-
+				
 				AbstractInsnNode node = m.instructions.getFirst();
 				// Line 391 is obfuscated, line 449 is not/in-dev, there's no overlap in their ranges so this is fine
 				while (!(node instanceof LineNumberNode) || (((LineNumberNode) node).line != 391 && ((LineNumberNode) node).line != 449))
 				{
 					node = node.getNext();
 				}
-
+				
 				AbstractInsnNode constNode = node.getNext(); // Skip LineNumberNode
 				if (!(constNode instanceof InsnNode) || ((InsnNode)constNode).getOpcode() != Opcodes.LCONST_0) {
 					GT_ASM.logger.warning("Node is apparently already altered?");
 					return basicClass;
 				}
-
+				
 				m.instructions.remove(constNode);
 				// I'd almost prefer 2001 so we could get a message of if its actually working or not...
-				m.instructions.insert(node, new LdcInsnNode(new Long(250)));
-
+				m.instructions.insert(node, new LdcInsnNode(new Long(2001)));
+				
 				// TODO: Figure out if it might be better to just zero out the initial `getSystemTimeMillis` call, the ASM is:
 				/*
 				   L30
@@ -73,7 +78,7 @@ public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix impleme
 				 */
 			}
 		}
-
+		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
 			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..
 			// And can't even use the correct classloader here because the forge remapping hadn't been done yet.
