@@ -221,14 +221,14 @@ public class GT_API extends Abstract_Mod {
 		OP.foil             .addTextureSet(MD.GT, F);
 		
 		// It is VERY important that those are registered first. Otherwise GregTech would output its own Storage Blocks.
-		OreDictManager.INSTANCE.setTarget_(OP.blockSolid    , MT.Obsidian   , ST.make(Blocks.obsidian       , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockIngot    , MT.Fe         , ST.make(Blocks.iron_block     , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockIngot    , MT.Au         , ST.make(Blocks.gold_block     , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockGem      , MT.Diamond    , ST.make(Blocks.diamond_block  , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockGem      , MT.Emerald    , ST.make(Blocks.emerald_block  , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockGem      , MT.Lapis      , ST.make(Blocks.lapis_block    , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockGem      , MT.Coal       , ST.make(Blocks.coal_block     , 1, 0), T, F, T);
-		OreDictManager.INSTANCE.setTarget_(OP.blockDust     , MT.Redstone   , ST.make(Blocks.redstone_block , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockSolid, MT.Obsidian, ST.make(Blocks.obsidian      , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockIngot, MT.Fe      , ST.make(Blocks.iron_block    , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockIngot, MT.Au      , ST.make(Blocks.gold_block    , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem  , MT.Diamond , ST.make(Blocks.diamond_block , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem  , MT.Emerald , ST.make(Blocks.emerald_block , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem  , MT.Lapis   , ST.make(Blocks.lapis_block   , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem  , MT.Coal    , ST.make(Blocks.coal_block    , 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockDust , MT.Redstone, ST.make(Blocks.redstone_block, 1, 0), T, F, T);
 		
 		// Fixing missing Container Items.
 		Items.mushroom_stew.setContainerItem(Items.bowl);
@@ -526,6 +526,7 @@ public class GT_API extends Abstract_Mod {
 		DRINKS_ALWAYS_DRINKABLE                 = ConfigsGT.GREGTECH.get("general", "drinks_always_drinkable"          , F);
 		EMIT_EU_AS_RF                           = ConfigsGT.GREGTECH.get("general", "Emit_EU_as_RF_from_Blocks"        , F);
 		NERFED_WOOD                             = ConfigsGT.GREGTECH.get("general", "WoodNeedsSawForCrafting"          , T);
+		FORCE_GRAVEL_NO_FLINT                   = ConfigsGT.GREGTECH.get("general", "GravelWontDropFlint"              , F);
 		FAST_LEAF_DECAY                         = ConfigsGT.GREGTECH.get("general", "FastLeafDecay"                    , T);
 		CONSTANT_ENERGY                         = ConfigsGT.GREGTECH.get("general", "UninterruptedEnergyRequirement"   , T);
 		FOOD_OVERDOSE_DEATH                     = ConfigsGT.GREGTECH.get("general", "DeathByOverdosingCertainFoods"    , T);

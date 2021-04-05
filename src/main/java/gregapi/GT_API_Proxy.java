@@ -1053,6 +1053,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			ItemStack aDrop = aDrops.next();
 			if (ST.invalid(aDrop) || ItemsGT.ILLEGAL_DROPS.contains(aDrop, T)) {aDrops.remove(); continue;}
 			if (ST.item_(aDrop) == Items.gold_nugget) ST.meta_(aDrop, 0);
+			if (FORCE_GRAVEL_NO_FLINT && aEvent.block == Blocks.gravel && ST.item_(aDrop) == Items.flint) ST.set(aDrop, ST.make(Blocks.gravel, 1, 0), T, F);
 		}
 		
 		if (aEvent.block == Blocks.dirt && aEvent.blockMetadata == 1) for (int i = 0, j = aEvent.drops.size(); i < j; i++) if (ST.block(aEvent.drops.get(0)) == Blocks.dirt) {
