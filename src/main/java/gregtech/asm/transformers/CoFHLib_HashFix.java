@@ -55,7 +55,7 @@ public class CoFHLib_HashFix implements IClassTransformer {
 			GT_ASM.logger.info("Transforming " + transformedName + ".hashcode");
 			// Just use the system identityHashCode, but DO NOT combine it with the metadata due to Wildcard Issues!
 			m.instructions.clear();
-			m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
+			m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load `this`
 			m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/System", "identityHashCode", "(Ljava/lang/Object;)I", false));
 			m.instructions.add(new InsnNode(Opcodes.IRETURN));
 			break;
