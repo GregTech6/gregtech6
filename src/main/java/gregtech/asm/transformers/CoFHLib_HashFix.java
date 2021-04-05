@@ -23,9 +23,7 @@ import gregtech.asm.GT_ASM;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.*;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 
@@ -42,8 +40,7 @@ public class CoFHLib_HashFix implements IClassTransformer {
 		classReader.accept(classNode, 0);
 		
 		// Screw that improperly coded Hashcode Function that violates Java Standards and crashes the Game.
-		// I'm gonna return 0 for it no matter what. It was broken before anyways, so I don't hurt anything.
-		// Also here have some comedy right from the Javadocs of the Class I am fixing with this ASM.
+		// Here have some comedy right from the Javadocs of the Class I am fixing with this ASM.
 		
 		// Description of the cofh.lib.util.ComparableItem Class:
 		// "Wrapper for an Item/Metadata combination post 1.7. Quick and dirty, allows for Integer-based Hashes without collisions."
@@ -56,11 +53,11 @@ public class CoFHLib_HashFix implements IClassTransformer {
 		
 		for (MethodNode m: classNode.methods) if (m.name.equals("hashcode")) {
 			GT_ASM.logger.info("Transforming " + transformedName + ".hashcode");
-			// TODO: Put an Identity Hash for the Item instance, but DO NOT combine it with the metadata due to Wildcard Issues!
-			// TODO: Maybe just hash the name of it and be done with it...
+			// Just use the system identityHashCode, but DO NOT combine it with the metadata due to Wildcard Issues!
 			m.instructions.clear();
-			m.instructions.insert(new InsnNode(Opcodes.ICONST_0));
-			m.instructions.insert(new InsnNode(Opcodes.IRETURN));
+			m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
+			m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/System", "identityHashCode", "(Ljava/lang/Object;)I", false));
+			m.instructions.add(new InsnNode(Opcodes.IRETURN));
 			break;
 		}
 		
