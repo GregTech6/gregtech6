@@ -2822,6 +2822,7 @@ public class MT {
 			Steel                           .addOreByProducts(Fe2O3                     );
 			MeteoricSteel                   .addOreByProducts(Fe2O3                     );
 			Graphite                        .addOreByProducts(C                         );
+			MgCO3                           .addOreByProducts(OREMATS.Cobaltite         , MnO2                      );
 			CaCO3                           .addOreByProducts(OREMATS.Malachite         );
 			OREMATS.Borax                   .addOreByProducts(B                         , NaCl                      );
 			Netherrack                      .addOreByProducts(S                         );

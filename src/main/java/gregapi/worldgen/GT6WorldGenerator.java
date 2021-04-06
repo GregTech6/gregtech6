@@ -51,7 +51,7 @@ public class GT6WorldGenerator {
 			mWorld = aWorld;
 			mGenNormal = aGenNormal;
 			mGenLargeOres = aGenLargeOres;
-			mRandom = WD.random(aWorld, aX >> 4, aZ >> 4);
+			mRandom = WD.random(aWorld, aX, aZ);
 		}
 		
 		@Override @SuppressWarnings("unchecked")
@@ -83,7 +83,7 @@ public class GT6WorldGenerator {
 					if (tMaxWeight > 0 && !tList.isEmpty()) for (int tX=-32; tX<=32; tX+=16) for (int tZ=-32; tZ<=32; tZ+=16) {
 						int tChunkX = mMinX+tX, tChunkZ = mMinZ+tZ;
 						if (((tChunkX >> 4)+402653184) % 3 == 1 && ((tChunkZ >> 4)+402653184) % 3 == 1) {
-							Random aRandom = WD.random(mWorld, tChunkX >> 4, tChunkZ >> 4);
+							Random aRandom = WD.random(mWorld, tChunkX, tChunkZ);
 							int tRandomWeight = aRandom.nextInt(tMaxWeight);
 							for (WorldgenOresLarge tWorldGen : tList) {
 								tRandomWeight -= tWorldGen.mWeight;

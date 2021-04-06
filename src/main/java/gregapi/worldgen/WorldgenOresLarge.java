@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -88,7 +88,7 @@ public class WorldgenOresLarge extends WorldgenObject {
 		if (GENERATE_BIOMES && aWorld.provider.dimensionId == 0 && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
 		if (mDistance > 0 && Math.abs(aMinX) <= mDistance && Math.abs(aMinZ) <= mDistance) return F;
 		
-		int tMinY = mMinY + WD.random(aWorld, aOriginChunkX >> 4, aOriginChunkZ >> 4).nextInt(mMaxY - mMinY - 5);
+		int tMinY = mMinY + WD.random(aWorld, aOriginChunkX, aOriginChunkZ).nextInt(mMaxY - mMinY - 5);
 		
 		if (mIndicatorRocks && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");

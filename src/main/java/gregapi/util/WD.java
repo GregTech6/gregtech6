@@ -426,7 +426,7 @@ public class WD {
 		return T;
 	}
 	
-	public static Random random(World aWorld, long aChunkX, long aChunkZ) {return random(aChunkX, aChunkZ, aWorld.getSeed() ^ aWorld.provider.dimensionId);}
+	public static Random random(World aWorld, long aChunkX, long aChunkZ) {return random(aChunkX >> 4, aChunkZ >> 4, aWorld.getSeed() ^ aWorld.provider.dimensionId);}
 	public static Random random(long aSeed, long aChunkX, long aChunkZ) {
 		Random rRandom = new Random(aSeed);
 		for (int i = 0; i < 50; i++) rRandom.nextInt(0x00ffffff);
@@ -437,7 +437,7 @@ public class WD {
 	
 	public static int random(World aWorld, int aX, int aY, int aZ, int aBound) {return random(aWorld.getSeed() ^ aWorld.provider.dimensionId, aX, aY, aZ, aBound);}
 	public static int random(long aSeed, int aX, int aY, int aZ, int aBound) {
-		Random rRandom = new Random(aSeed);
+		Random rRandom = new Random(aSeed ^ aY);
 		for (int i = 0; i < 10; i++) rRandom.nextInt(0x00ffffff);
 		rRandom = new Random(aSeed ^ ((rRandom.nextLong() >> 2 + 1L) * aX + (rRandom.nextLong() >> 2 + 1L) * aZ));
 		for (int i = 0; i < 10; i++) rRandom.nextInt(0x00ffffff);
