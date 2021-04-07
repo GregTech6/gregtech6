@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -86,38 +86,51 @@ public class MultiTileEntityBlockInternal extends Block implements IBlock, IItem
 	
 	@Override
 	public boolean placeBlock(World aWorld, int aX, int aY, int aZ, byte aSide, short aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
-		Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 		MultiTileEntityContainer aMTEContainer = mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aMetaData, aNBT);
-		if (aMTEContainer != null && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
-			
-			// That is some complicated Bullshit I have to do to make my MTEs work right.
-			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
-			WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
-			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
-			
-			try {
-				if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
-					if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
-				}
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			try {
-				if (!aWorld.isRemote && aCauseBlockUpdates) {
-					aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
-					aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
-				}
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			try {
-				if (aMTEContainer.mTileEntity instanceof ITileEntity) {
-					((ITileEntity)aMTEContainer.mTileEntity).onTileEntityPlaced();
-				}
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			try {
-				aWorld.func_147451_t(aX, aY, aZ);
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			return T;
-		}
-		return F;
+		if (aMTEContainer == null) return F;
+		
+		Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
+		
+		
+		// That is some complicated Bullshit I have to do to make my MTEs work right.
+		// Set Block with reverse MetaData first.
+		aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2);
+		// Make sure the Block has been set, yes I know setBlock has a true/false return value, but guess what, it is not reliable in 0.0001% of cases!
+		if (aWorld.getBlock(aX, aY, aZ) != aMTEContainer.mBlock) {aWorld.setBlock(aX, aY, aZ, NB, 0, 0); return F;}
+		// TileEntity should not refresh yet!
+		((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
+		// Fake-Set the TileEntity first, bypassing a lot of checks.
+		WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+		// Now set the Block with the REAL MetaData.
+		WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
+		// When the TileEntity is set now it SHOULD refresh!
+		((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
+		// But make sure again that the Block we have set was actually set properly, because 0.0001%!
+		if (aWorld.getBlock(aX, aY, aZ) != aMTEContainer.mBlock) {aWorld.setBlock(aX, aY, aZ, NB, 0, 0); return F;}
+		// And finally properly set the TileEntity for real!
+		WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+		// Yep, all this just to set one Block and its TileEntity properly...
+		
+		
+		try {
+			if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
+				if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {
+			if (!aWorld.isRemote && aCauseBlockUpdates) {
+				aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
+				aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {
+			if (aMTEContainer.mTileEntity instanceof ITileEntity) {
+				((ITileEntity)aMTEContainer.mTileEntity).onTileEntityPlaced();
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {
+			aWorld.func_147451_t(aX, aY, aZ);
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return T;
 	}
 }
