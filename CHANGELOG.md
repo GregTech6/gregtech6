@@ -15,12 +15,14 @@ The Vanilla "getting kicked back to Main Menu, when launching Singleplayer"-Bug 
 It wasn't my fault, but hey fixed is fixed.
 Please test for yourself if it actually works, since it is random and my dozen Tests might have been a fluke.
 The Fix also has the side effect of loading Singleplayer Worlds without having that initial Lagspike, so getting into the World feels a bit smoother.
+[FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus.
 [FIXED] Ice Harvesting with the Saw now actually works properly and does no longer spawn Water Blocks.
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.
 [FIXED] Rightclicking a Path Block with a Shovel should no longer prompt other Shovel Placer Features like Torches.
 [FIXED] A bunch of Issues with Crusible Molds/Basins. There was more than one, that this mini rewrite solved.
 [FIXED] Radioactive Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
 [FIXED] Byproducts for several Gem Ores, along with some other Ores.
+[CHANGED] Texture of the Generifier. Bear so definitely needs to test if it looks right, because he sure loves crafting this Machine! ;P
 [ADDED] Config to make Gravel never drop Flint when harvested by a Player. (This was added because another Mod does it, but very badly, so I needed to replace that Feature using GT6, ofcourse Flint will still drop by Default)
 
 

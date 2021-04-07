@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -145,7 +146,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			}
 			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTank.drainAll(100)) {
 				mEnergy -= 32768;
-				// Switch Stone Type randomly.
+				// Switch Stone Type randomly. The plus 1 is for the Vanilla Stone case.
 				if (rng(1000) == 0) mType = rng(BlocksGT.stones.length+1);
 				// a 0-18 of 128 Chance to be an Ore.
 				int tSelector = rng(128);
@@ -167,19 +168,22 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
 					} else if (WD.dimERE(worldObj)) {
 						// Erebus Umberstone Ore.
-						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID)); // TODO actually get the right Ore Block.
+						Object tBlock = BlocksGT.stoneToBrokenOres.get(new ItemStackContainer(IL.ERE_Umberstone.get(1)));
+						slot(0, ST.make((Block)(tBlock instanceof Block ? tBlock : BlocksGT.oreBroken), 1, tMaterial.mID));
 					} else if (WD.dimATUM(worldObj)) {
 						// Atum Limestone Ore.
 						slot(0, ST.make((Block)BlocksGT.oreBrokenAtumLimestone, 1, tMaterial.mID));
 					} else if (WD.dimBTL(worldObj)) {
 						// Betweenlands Stone Ores.
-						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID)); // TODO actually get the right Ore Block.
-					} else if (mType <= 0 || mType > BlocksGT.stones.length) {
-						// Index is 0 or there is a Boundary Error for some reason? Well use Vanilla Stone Ore in that case. 
-						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
-					} else {
+						Object tBlock = BlocksGT.stoneToBrokenOres.get(new ItemStackContainer((mType%2==0?IL.BTL_Pitstone:IL.BTL_Betweenstone).get(1)));
+						slot(0, ST.make((Block)(tBlock instanceof Block ? tBlock : BlocksGT.oreBroken), 1, tMaterial.mID));
+					} else if (mType < BlocksGT.stones.length) {
 						// This might be the Overworld or some Overworld alike Dimension.
-						slot(0, ST.make((Block)BlocksGT.ores_broken[mType-1], 1, tMaterial.mID));
+						slot(0, ST.make((Block)BlocksGT.ores_broken[mType], 1, tMaterial.mID));
+					}
+					if (ST.invalid(slot(0))) {
+						// Make Vanilla Stone Ore, if nothing else applies.
+						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
 					}
 				} else {
 					// Select a Stone to generate.
@@ -193,17 +197,18 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						// Erebus Umberstone.
 						slot(0, IL.ERE_Umbercobble.get(1));
 					} else if (WD.dimATUM(worldObj)) {
-						// Yep, it makes GT6 Limestone, not Atums.
-						slot(0, ST.make(BlocksGT.Limestone, 1, 1));
+						// Atum Limestone.
+						slot(0, IL.ATUM_Limecobble.get(1));
 					} else if (WD.dimBTL(worldObj)) {
 						// Betweenlands Stones.
 						slot(0, (mType%2==0?IL.BTL_Pitstone:IL.BTL_Betweenstone).get(1));
-					} else if (mType <= 0 || mType > BlocksGT.stones.length) {
-						// Index is 0 or there is a Boundary Error for some reason? Well use Vanilla Stone in that case. 
-						slot(0, ST.make(Blocks.cobblestone, 1, 0));
-					} else {
+					} else if (mType < BlocksGT.stones.length) {
 						// This might be the Overworld or some Overworld alike Dimension.
-						slot(0, ST.make(BlocksGT.stones[mType-1], 1, 1));
+						slot(0, ST.make(BlocksGT.stones[mType], 1, 1));
+					}
+					if (ST.invalid(slot(0))) {
+						// Make Cobble, if nothing else applies.
+						slot(0, ST.make(Blocks.cobblestone, 1, 0));
 					}
 				}
 			}
