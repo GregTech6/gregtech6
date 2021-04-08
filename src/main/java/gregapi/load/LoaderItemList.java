@@ -1702,6 +1702,8 @@ public class LoaderItemList implements Runnable {
 		IL.BINNIE_Dye_Black                     .set(ST.make(MD.BINNIE_BEE, "misc"                          , 1,24), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.BINNIE_Dye_Brown                     .set(ST.make(MD.BINNIE_BEE, "misc"                          , 1,25), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown]);
 		
+		IL.Ancient_Debris.set((IL.EtFu_Ancient_Debris.exists() ? IL.EtFu_Ancient_Debris : IL.NePl_Ancient_Debris).get(1));
+		
 		ST.item(MD.BINNIE, "containerGlass", Items.potionitem).setContainerItem(Items.glass_bottle);
 		
 		if (MD.IC2C.mLoaded) {

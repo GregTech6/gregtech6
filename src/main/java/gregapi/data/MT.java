@@ -2606,9 +2606,9 @@ public class MT {
 			
 			S                               .addOreByProducts(Pyrite                    , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      , Gypsum);
 			Se                              .addOreByProducts(Pyrite                    , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
-			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                    , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
-			OREMATS.Sperrylite              .addOreByProducts(Sb                        , Cu                        , Fe2O3                 , Rh                    , Pt                    );
-			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                     , S                         , Co                    , OREMATS.Sperrylite    , Gypsum                );
+			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                    , OREMATS.Cobaltite         , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
+			OREMATS.Sperrylite              .addOreByProducts(Sb                        , Cu                        , Fe2O3                 , Rh                    , OREMATS.Cooperite     );
+			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                     , S                         , OREMATS.Cobaltite     , OREMATS.Sperrylite    , Gypsum                );
 			OREMATS.Sphalerite              .addOreByProducts(Cd                        , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
 			OREMATS.Tetrahedrite            .addOreByProducts(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     );
 			Pyrite                          .addOreByProducts(S                         , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
@@ -2624,8 +2624,8 @@ public class MT {
 			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
 			OREMATS.Cobaltite               .addOreByProducts(Co                        , OREMATS.Realgar           , FluoriteOrange        );
 			OREMATS.Realgar                 .addOreByProducts(OREMATS.Arsenopyrite      , OREMATS.Cobaltite         );
-			Cu                              .addOreByProducts(Co                        , Au                        , Ni                    );
-			Ni                              .addOreByProducts(Co                        , Pt                        , Fe2O3                 );
+			Cu                              .addOreByProducts(OREMATS.Cobaltite         , Au                        , Ni                    , OREMATS.Malachite     );
+			Ni                              .addOreByProducts(OREMATS.Cobaltite         , OREMATS.Cooperite         , Fe2O3                 , OREMATS.Pentlandite   );
 			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
 			OREMATS.Kesterite               .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Stannite      );
 			
@@ -2742,7 +2742,7 @@ public class MT {
 			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , Os);
 			OREMATS.Malachite               .addOreByProducts(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
 			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite         , OREMATS.YellowLimonite    );
-			OREMATS.YellowLimonite          .addOreByProducts(Ni                        , OREMATS.BrownLimonite     , Co                    );
+			OREMATS.YellowLimonite          .addOreByProducts(Ni                        , OREMATS.BrownLimonite     , OREMATS.Cobaltite     );
 			OREMATS.Garnierite              .addOreByProducts(Ni                        , OREMATS.Sperrylite        );
 			OREMATS.Tungstate               .addOreByProducts(MnO2                      , Ag                        , LiCl                  );
 			OREMATS.Scheelite               .addOreByProducts(MnO2                      , Mo                        , Ca                    );
@@ -2832,7 +2832,7 @@ public class MT {
 			Niter                           .addOreByProducts(KNO3                      , NaNO3                     );
 			Hf                              .addOreByProducts(Zircon                    );
 			Mg                              .addOreByProducts(Olivine                   , MgCO3                     );
-			Ardite                          .addOreByProducts(Co                        );
+			Ardite                          .addOreByProducts(OREMATS.Cobaltite         );
 			Obsidian                        .addOreByProducts(Olivine                   );
 			Redrock                         .addOreByProducts(ClayBrown                 );
 			Limestone                       .addOreByProducts(CaCO3                     );
@@ -2874,20 +2874,20 @@ public class MT {
 			
 			
 			Alduorite                       .addOreByProducts(Cd                        );
-			Infuscolium                     .addOreByProducts(Cu                        );
+			Infuscolium                     .addOreByProducts(OREMATS.Malachite         );
 			Rubracium                       .addOreByProducts(OREMATS.Chromite          );
 			Meutoite                        .addOreByProducts(VanadiumPentoxide         );
 			Lemurite                        .addOreByProducts(MgCO3                     );
-			Ceruclase                       .addOreByProducts(Sb                        );
+			Ceruclase                       .addOreByProducts(OREMATS.Stibnite          );
 			Atl                             .addOreByProducts(TiO2                      );
-			Oureclase                       .addOreByProducts(Ni                        );
+			Oureclase                       .addOreByProducts(OREMATS.Pentlandite       );
 			Kalendrite                      .addOreByProducts(Os                        );
 			Orichalcum                      .addOreByProducts(Cs                        );
 			Carmot                          .addOreByProducts(Zn                        );
 			Sanguinite                      .addOreByProducts(Hg                        );
 			Vyroxeres                       .addOreByProducts(Ir                        );
 			Eximite                         .addOreByProducts(Pd                        );
-			Prometheum                      .addOreByProducts(Co                        );
+			Prometheum                      .addOreByProducts(OREMATS.Cobaltite         );
 			Ignatius                        .addOreByProducts(Se                        , In);
 			Vulcanite                       .addOreByProducts(OREMATS.Wolframite        );
 			DeepIron                        .addOreByProducts(Fe2O3                     );
@@ -3266,7 +3266,7 @@ public class MT {
 		Realgar                 = oredustelec( 9109, "Realgar"                   , SET_EMERALD   , 157,  33,  35, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, CRYSTAL                      ).setSmelting(As   ,   U3).uumMcfg( 0, As             , 1*U, S                , 1*U)                                                                                                .qual(0).lens(DYE_INDEX_Red),
 		Cinnabar                = oredustcent( 9114, "Cinnabar"                  , SET_REDSTONE  , 150,   0,   0, 255, G_GEM_ORES_TRANSPARENT, MORTAR, BRITTLE, FURNACE, CRYSTAL, PULVERIZING_CINNABAR).setSmelting(Hg   ,   U3).uumMcfg( 0, Hg             , 1*U, S                , 1*U)                                                                                                ,
 		Molybdenite             = oredustdcmp( 9123, "Molybdenite"               , SET_METALLIC  ,  25,  25,  25, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Mo   ,   U4).uumMcfg( 0, Mo             , 1*U, S                , 2*U)                                                                                                ,
-		Sphalerite              = oredustdcmp( 9130, "Sphalerite"                , SET_DULL      , 222, 222,   0, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, WASHING_PERSULFATE                    ).setSmelting(Zn   ,   U3).uumMcfg( 0, Zn             , 1*U, S                , 1*U)                                                                                                ,
+		Sphalerite              = oredustdcmp( 9130, "Sphalerite"                , SET_DULL      , 222, 222,   0, 255, G_GEM_ORES, MORTAR, FURNACE, WASHING_PERSULFATE                                ).setSmelting(Zn   ,   U3).uumMcfg( 0, Zn             , 1*U, S                , 1*U)                                                                                                ,
 		Stibnite                = oredustdcmp( 9131, "Stibnite"                  , SET_METALLIC  ,  70,  70,  70, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Sb   ,   U4).uumMcfg( 0, Sb             , 2*U, S                , 3*U)                                                                                                ,
 		Pentlandite             = oredustdcmp( 9145, "Pentlandite"               , SET_DULL      , 165, 150,   5, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, MAGNETIC_PASSIVE, WASHING_PERSULFATE  ).setSmelting(Ni   ,   U3).uumMcfg( 0, Ni             , 9*U, S                , 8*U)                                                                                                .qual(0), // (Fe,Ni)9S8
 		Chalcopyrite            = oredustdcmp( 9111, "Chalcopyrite"              , SET_DULL      , 160, 120,  40, 255, G_GEM_ORES, MORTAR, FURNACE                                                    ).setSmelting(Cu   , 2*U9).uumMcfg( 0, Cu             , 1*U, Fe               , 1*U, S                , 2*U)                                                                        .qual(0),

@@ -200,7 +200,7 @@ public enum IL implements IItemContainer {
 	GC_Torch_Glowstone, GC_Canister, GC_OxyTank_1, GC_OxyTank_2, GC_OxyTank_3, GC_OxyTank_4, GC_OxyTank_5, GC_OxyTank_6, GC_OxyTank_7, GC_OxyTank_Env,
 	GC_Schematic_1, GC_Schematic_2, GC_Schematic_3,
 	TFC_Torch, TFC_Stick,
-	Torch, Stick,
+	Torch, Stick, Ancient_Debris,
 	Arrow_Head_Glass_Empty, Arrow_Head_Glass_Poison, Arrow_Head_Glass_Poison_Long, Arrow_Head_Glass_Poison_Strong, Arrow_Head_Glass_Slowness, Arrow_Head_Glass_Slowness_Long, Arrow_Head_Glass_Weakness, Arrow_Head_Glass_Weakness_Long, Arrow_Head_Glass_Holy_Water,
 	Arrow_Wooden_Glass_Empty, Arrow_Wooden_Glass_Poison, Arrow_Wooden_Glass_Poison_Long, Arrow_Wooden_Glass_Poison_Strong, Arrow_Wooden_Glass_Slowness, Arrow_Wooden_Glass_Slowness_Long, Arrow_Wooden_Glass_Weakness, Arrow_Wooden_Glass_Weakness_Long, Arrow_Wooden_Glass_Holy_Water,
 	Arrow_Plastic_Glass_Empty, Arrow_Plastic_Glass_Poison, Arrow_Plastic_Glass_Poison_Long, Arrow_Plastic_Glass_Poison_Strong, Arrow_Plastic_Glass_Slowness, Arrow_Plastic_Glass_Slowness_Long, Arrow_Plastic_Glass_Weakness, Arrow_Plastic_Glass_Weakness_Long, Arrow_Plastic_Glass_Holy_Water,

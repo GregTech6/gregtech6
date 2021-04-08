@@ -23,6 +23,7 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [FIXED] Radioactive Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
 [FIXED] Byproducts for several Gem Ores, along with some other Ores.
 [CHANGED] Texture of the Generifier. Bear so definitely needs to test if it looks right, because he sure loves crafting this Machine! ;P
+[ADDED] Small Malachite Ore near the Surface.
 [ADDED] Config to make Gravel never drop Flint when harvested by a Player. (This was added because another Mod does it, but very badly, so I needed to replace that Feature using GT6, ofcourse Flint will still drop by Default)
 
 
