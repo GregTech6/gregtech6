@@ -384,7 +384,6 @@ task generateBuildInfo(type: Copy) {
 	def templateContext = [
 		version: project.buildInfo.tag,
 		mcversion: project.minecraft.version,
-		builddate: new Date().toString(),
 	]
 	inputs.properties templateContext
 	from 'src/template/java'
