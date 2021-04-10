@@ -652,10 +652,8 @@ public class UT {
 			if (Code.stringInvalid(aMapping)) return null;
 			ItemStack rStack = BOOK_MAP.get(aMapping);
 			if (rStack == null) rStack = aDefaultBook==null?ST.make(Items.written_book, 1, 0):ST.amount(1, aDefaultBook);
-			NBTTagCompound rNBT = rStack.getTagCompound();
-			if (rNBT != null) return ST.copy(rStack);
 			if (Code.stringInvalid(aTitle) || Code.stringInvalid(aAuthor) || aPages.length <= 0) return null;
-			rNBT = NBT.make();
+			NBTTagCompound rNBT = NBT.make();
 			rNBT.setString("title", aTitle);
 			rNBT.setString("author", aAuthor);
 			NBTTagList tNBTList = new NBTTagList();
