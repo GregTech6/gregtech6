@@ -10,11 +10,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.10: (Not released yet, released whenever it needs to be)
-[FIXED]
+[IMPROVED]
 The Vanilla "getting kicked back to Main Menu, when launching Singleplayer"-Bug should be fixed.
 It wasn't my fault, but hey fixed is fixed.
 Please test for yourself if it actually works, since it is random and my dozen Tests might have been a fluke.
 The Fix also has the side effect of loading Singleplayer Worlds without having that initial Lagspike, so getting into the World feels a bit smoother.
+[IMPROVED] Creating Material Dictionaries no longer happens on Startup and is now done on the fly.
 [FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus.
 [FIXED] Ice Harvesting with the Saw now actually works properly and does no longer spawn Water Blocks.
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.

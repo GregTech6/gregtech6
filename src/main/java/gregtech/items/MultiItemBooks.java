@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,6 +36,7 @@ import gregapi.data.TD;
 import gregapi.item.CreativeTab;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -118,6 +119,7 @@ public class MultiItemBooks extends MultiItemRandom {
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		String aMapping = UT.NBT.getBookMapping(aStack);
 		if (UT.Code.stringValid(aMapping)) {
+			if (aMapping.startsWith("Material_Dictionary_")) UT.Books.createMaterialDictionary(OreDictMaterial.MATERIAL_MAP.get(aMapping.replaceFirst("Material_Dictionary_", "")), NI, NI);
 			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
 		} else {
 			if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));

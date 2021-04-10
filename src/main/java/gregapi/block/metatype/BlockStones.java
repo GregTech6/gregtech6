@@ -152,8 +152,8 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			OM.reg_(OP.stone, mMaterial, ST.make(this, 1, QBRIK));
 		}
 		
-		OM.reg_(OP.cobblestone  , ST.make(this, 1, COBBL));
-		OM.reg_(OP.stone        , ST.make(this, 1, STONE));
+		OM.reg_(OP.cobblestone, ST.make(this, 1, COBBL));
+		OM.reg_(OP.stone      , ST.make(this, 1, STONE));
 		
 		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 	}

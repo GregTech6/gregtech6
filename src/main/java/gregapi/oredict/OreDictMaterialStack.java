@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -73,13 +73,16 @@ public final class OreDictMaterialStack implements Cloneable {
 		return mMaterial.getWeight(mAmount);
 	}
 	
+	public boolean has(OreDictMaterial aMaterial) {
+		return mMaterial == aMaterial && mAmount > 0;
+	}
+	
 	@Override
 	public boolean equals(Object aObject) {
-		if (aObject == this) return T;
+		if (aObject == this || aObject == mMaterial) return T;
 		if (aObject == null) return F;
-		if (aObject instanceof OreDictMaterial) return aObject == mMaterial;
 		if (aObject instanceof OreDictMaterialStack) return ((OreDictMaterialStack)aObject).mMaterial == mMaterial && (mAmount < 0 || ((OreDictMaterialStack)aObject).mAmount < 0 || ((OreDictMaterialStack)aObject).mAmount == mAmount);
-		return false;
+		return F;
 	}
 	
 	@Override

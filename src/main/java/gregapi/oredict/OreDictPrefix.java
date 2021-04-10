@@ -458,7 +458,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 					tListener.onOreRegistration(aEvent);
 				}
 				mRegistrations.add(aEvent);
-				if (!mRegisteredItems.contains(new ItemStackContainer(aEvent.mStack, W))) mRegisteredItems.add(new ItemStackContainer(aEvent.mStack));
+				if (!mRegisteredItems.contains(new ItemStackContainer(aEvent.mStack, W))) mRegisteredItems.add(aEvent.mStack);
 			}
 		} else {
 			if (!mIgnoredRegistrations.contains(aEvent.mMaterial)) {
@@ -484,7 +484,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 				}
 				aEvent.mMaterial.mRegisteredItems.add(new ItemStackContainer(aEvent.mStack));
 				mRegisteredMaterials.add(aEvent.mMaterial);
-				if (!mRegisteredItems.contains(new ItemStackContainer(aEvent.mStack, W))) mRegisteredItems.add(new ItemStackContainer(aEvent.mStack));
+				if (!mRegisteredItems.contains(new ItemStackContainer(aEvent.mStack, W))) mRegisteredItems.add(aEvent.mStack);
 			}
 		}
 	}
