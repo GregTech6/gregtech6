@@ -1129,9 +1129,7 @@ public class UT {
 			
 			//----------
 			
-			MATERIAL_DICTIONARIES.add("Material_Dictionary_"+aMat.mNameInternal);
-			
-			return ST.copy(aMat.mDictionaryBook = createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", tBook.size()<=50?(aDefaultBook!=null?aDefaultBook:ItemsGT.BOOKS==null?NI:ST.make(ItemsGT.BOOKS, 1, 32002)):(aDefaultLargeBook!=null?aDefaultLargeBook:ItemsGT.BOOKS==null?NI:ST.make(ItemsGT.BOOKS, 1, 32003)), F, tBook.toArray(ZL_STRING)));
+			return ST.copy(aMat.mDictionaryBook = createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", tBook.size()<=50?(ST.valid(aDefaultBook)?ST.amount(1, aDefaultBook):ST.make(ItemsGT.BOOKS, 1, 32002)):(ST.valid(aDefaultLargeBook)?ST.amount(1, aDefaultLargeBook):ST.make(ItemsGT.BOOKS, 1, 32003)), F, tBook.toArray(ZL_STRING)));
 		}
 	}
 	

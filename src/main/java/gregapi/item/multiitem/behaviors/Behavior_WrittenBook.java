@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,7 +41,7 @@ public class Behavior_WrittenBook extends AbstractBehaviorDefault {
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		String aMapping = UT.NBT.getBookMapping(aStack);
 		if (UT.Code.stringValid(aMapping)) {
-			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
+			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping));
 		} else {
 			if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
 		}

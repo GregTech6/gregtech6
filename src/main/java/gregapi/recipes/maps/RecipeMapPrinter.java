@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -127,7 +127,7 @@ public class RecipeMapPrinter extends RecipeMap {
 					if (tPages == null || tPages.tagCount() < 1) {
 						String aMapping = UT.NBT.getBookMapping(tData);
 						if (UT.Code.stringValid(aMapping)) {
-							ItemStack tBook = UT.Books.getWrittenBook(aMapping, NI);
+							ItemStack tBook = UT.Books.getWrittenBook(aMapping);
 							if (tBook != null && tBook.hasTagCompound()) tPages = tBook.getTagCompound().getTagList("pages", 8);
 						}
 					}

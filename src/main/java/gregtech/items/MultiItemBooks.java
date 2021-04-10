@@ -119,8 +119,11 @@ public class MultiItemBooks extends MultiItemRandom {
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		String aMapping = UT.NBT.getBookMapping(aStack);
 		if (UT.Code.stringValid(aMapping)) {
+			DEB.println(aMapping);
+			DEB.println(aMapping.replaceFirst("Material_Dictionary_", ""));
+			DEB.println(OreDictMaterial.MATERIAL_MAP.get(aMapping.replaceFirst("Material_Dictionary_", "")).mNameInternal);
 			if (aMapping.startsWith("Material_Dictionary_")) UT.Books.createMaterialDictionary(OreDictMaterial.MATERIAL_MAP.get(aMapping.replaceFirst("Material_Dictionary_", "")), NI, NI);
-			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
+			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping));
 		} else {
 			if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
 		}
