@@ -127,7 +127,7 @@ public class RecipeMapPrinter extends RecipeMap {
 					if (tPages == null || tPages.tagCount() < 1) {
 						String aMapping = UT.NBT.getBookMapping(tData);
 						if (UT.Code.stringValid(aMapping)) {
-							ItemStack tBook = UT.Books.getWrittenBook(aMapping);
+							ItemStack tBook = UT.Books.getWrittenBook(aMapping, T);
 							if (tBook != null && tBook.hasTagCompound()) tPages = tBook.getTagCompound().getTagList("pages", 8);
 						}
 					}

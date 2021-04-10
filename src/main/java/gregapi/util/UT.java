@@ -622,11 +622,31 @@ public class UT {
 		public static final List<String> BOOK_LIST = new ArrayListNoNulls<>();
 		public static final List<String> MATERIAL_DICTIONARIES = new ArrayListNoNulls<>();
 		
-		public static ItemStack getWrittenBook(String aMapping) {
-			return getWrittenBook(aMapping, null);
+		public static void display(EntityPlayer aPlayer, ItemStack aStack) {
+			String aMapping = NBT.getBookMapping(aStack);
+			if (Code.stringValid(aMapping)) display(aPlayer, aMapping); else display(aPlayer, F, aStack);
+		}
+		public static void display(EntityPlayer aPlayer, String aMapping) {
+			aPlayer.displayGUIBook(getWrittenBook(aMapping, T, ST.make(Items.written_book, 1, 0)));
+		}
+		public static void display(EntityPlayer aPlayer, boolean aWritable, ItemStack aStack) {
+			if (ST.invalid(aStack)) return;
+			display(aPlayer, aWritable, aStack.getTagCompound());
+		}
+		public static void display(EntityPlayer aPlayer, boolean aWritable, NBTTagCompound aNBT) {
+			if (aNBT == null || UT.Code.stringInvalid(UT.NBT.getBookTitle(aNBT))) return;
+			aPlayer.displayGUIBook(ST.make(aWritable?Items.writable_book:Items.written_book, 1, 0, aNBT));
 		}
 		
-		public static ItemStack getWrittenBook(String aMapping, ItemStack aStackToPutNBT) {
+		@Deprecated public static ItemStack getWrittenBook(String aMapping) {return getWrittenBook(aMapping, F, null);}
+		@Deprecated public static ItemStack getWrittenBook(String aMapping, ItemStack aStackToPutNBT) {return getWrittenBook(aMapping, F, aStackToPutNBT);}
+		
+		public static ItemStack getWrittenBook(String aMapping, boolean aForceRecreation) {
+			return getWrittenBook(aMapping, aForceRecreation, null);
+		}
+		public static ItemStack getWrittenBook(String aMapping, boolean aForceRecreation, ItemStack aStackToPutNBT) {
+			if (Code.stringInvalid(aMapping)) return null;
+			if (aForceRecreation && aMapping.startsWith("Material_Dictionary_")) UT.Books.createMaterialDictionary(OreDictMaterial.MATERIAL_MAP.get(aMapping.replaceFirst("Material_Dictionary_", "")), NI, NI);
 			ItemStack tStack = BOOK_MAP.get(aMapping);
 			if (tStack == null) return aStackToPutNBT==null?ST.make(Items.written_book, 1, 0):aStackToPutNBT;
 			if (aStackToPutNBT == null) aStackToPutNBT = ST.copy(tStack);
@@ -636,7 +656,6 @@ public class UT {
 		public static ItemStack getBookWithTitle(String aMapping) {
 			return getBookWithTitle(aMapping, null);
 		}
-		
 		public static ItemStack getBookWithTitle(String aMapping, ItemStack aStackToPutNBT) {
 			ItemStack tStack = BOOK_MAP.get(aMapping);
 			if (tStack == null) return aStackToPutNBT==null?ST.make(Items.written_book, 1, 0):aStackToPutNBT;
@@ -647,7 +666,6 @@ public class UT {
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, String... aPages) {
 			return createWrittenBook(aMapping, aTitle, aAuthor, aDefaultBook, T, aPages);
 		}
-		
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, boolean aLogging, String... aPages) {
 			if (Code.stringInvalid(aMapping)) return null;
 			ItemStack rStack = BOOK_MAP.get(aMapping);
@@ -778,12 +796,12 @@ public class UT {
 			}
 			
 			MATERIAL_DICTIONARIES.add("Material_Dictionary_"+aMat.mNameInternal);
-			
-			return ST.copy(aMat.mDictionaryBook = createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", ST.make(ItemsGT.BOOKS, 1, tPages<=50?32002:32003), F, "If you can read this in a legitimate Material Dictionary, even if it is old, then this is a Bug, please report this to me!\n\nGregorius\nTechneticies\n\n2021"));
+			createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", ST.make(ItemsGT.BOOKS, 1, tPages<=50?32002:32003), F, "If you can read this in a legitimate Material Dictionary, even if it is old, then this is a Bug, please report this to me!\n\nGregorius\nTechneticies\n\n2021");
+			return ST.copy(aMat.mDictionaryBook = ST.book("Material_Dictionary_"+aMat.mNameInternal));
 		}
 		
-		public static ItemStack createMaterialDictionary(OreDictMaterial aMat, ItemStack aDefaultBook, ItemStack aDefaultLargeBook) {
-			if (aMat == null) return null;
+		public static boolean createMaterialDictionary(OreDictMaterial aMat, ItemStack aDefaultBook, ItemStack aDefaultLargeBook) {
+			if (aMat == null) return F;
 			
 			String tPage = "";
 			List<String> tBook = new ArrayListNoNulls<>();
@@ -1129,7 +1147,7 @@ public class UT {
 			
 			//----------
 			
-			return ST.copy(aMat.mDictionaryBook = createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", tBook.size()<=50?(ST.valid(aDefaultBook)?ST.amount(1, aDefaultBook):ST.make(ItemsGT.BOOKS, 1, 32002)):(ST.valid(aDefaultLargeBook)?ST.amount(1, aDefaultLargeBook):ST.make(ItemsGT.BOOKS, 1, 32003)), F, tBook.toArray(ZL_STRING)));
+			return null != createWrittenBook("Material_Dictionary_"+aMat.mNameInternal, aMat.getLocal(), "Material Dictionary Foundation", tBook.size()<=50?(ST.valid(aDefaultBook)?ST.amount(1, aDefaultBook):ST.make(ItemsGT.BOOKS, 1, 32002)):(ST.valid(aDefaultLargeBook)?ST.amount(1, aDefaultLargeBook):ST.make(ItemsGT.BOOKS, 1, 32003)), F, tBook.toArray(ZL_STRING));
 		}
 	}
 	
