@@ -708,80 +708,87 @@ public class UT {
 					break;
 				}
 			}
-			if (temp) {tPages++; temp = F;}
+			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
 			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mByProducts.contains(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
-			if (temp) {tPages++; temp = F;}
+			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedSmelting) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedSolidifying) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSolidifying.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedBurning) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedPulver) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedBending) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedCompressing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedCrushing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedCutting) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedForging) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
 			if (temp) {tPages++; temp=F;}
 			
 			tCounter = 0;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking.has(aMat)) {
+			for (OreDictMaterial tMat : aMat.mTargetedSmashing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing.has(aMat)) {
+				temp=!(tCounter++%6==5);
+				if (!temp) tPages++;
+			}
+			if (temp) {tPages++; temp=F;}
+			
+			tCounter = 0;
+			for (OreDictMaterial tMat : aMat.mTargetedWorking) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking.has(aMat)) {
 				temp=!(tCounter++%6==5);
 				if (!temp) tPages++;
 			}
@@ -950,7 +957,7 @@ public class UT {
 			
 			Map<OreDictMaterial, Long> tMap;
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting.has(aMat)) tMap.put(tMat, tMat.mTargetSmelting.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedSmelting) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting.has(aMat)) tMap.put(tMat, tMat.mTargetSmelting.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to smelt for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -967,7 +974,24 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning.has(aMat)) tMap.put(tMat, tMat.mTargetBurning.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedSolidifying) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSolidifying.has(aMat)) tMap.put(tMat, tMat.mTargetSolidifying.mAmount);
+			tMap = Code.sortByValuesDescending(tMap);
+			tPage = "Resources to smelt and solidify for getting "+aMat.getLocal()+"\n===================\n";
+			tCounter = 0;
+			for (Entry<OreDictMaterial, Long> tEntry : tMap.entrySet()) {
+				temp=!(tCounter++%6==5);
+				tPage+=(tEntry.getValue() / U) + "." + ((int)(((double)(tEntry.getValue() % U) / (double)U) * 1000))+" from 1 "+tEntry.getKey().getLocal()+"\n";
+				if (!temp) {
+					tBook.add(tPage);
+					tPage = "Resources to smelt and solidify for getting "+aMat.getLocal()+"\n===================\n";
+				}
+			}
+			
+			if (temp) {tBook.add(tPage); temp=F;}
+			
+			//----------
+			
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedBurning) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning.has(aMat)) tMap.put(tMat, tMat.mTargetBurning.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to burn for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -984,7 +1008,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver.has(aMat)) tMap.put(tMat, tMat.mTargetPulver.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedPulver) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver.has(aMat)) tMap.put(tMat, tMat.mTargetPulver.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to pulverise for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1001,7 +1025,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending.has(aMat)) tMap.put(tMat, tMat.mTargetBending.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedBending) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending.has(aMat)) tMap.put(tMat, tMat.mTargetBending.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to bend for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1018,7 +1042,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing.has(aMat)) tMap.put(tMat, tMat.mTargetCompressing.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedCompressing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing.has(aMat)) tMap.put(tMat, tMat.mTargetCompressing.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to compress for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1035,7 +1059,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing.has(aMat)) tMap.put(tMat, tMat.mTargetCrushing.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedCrushing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing.has(aMat)) tMap.put(tMat, tMat.mTargetCrushing.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to crush for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1052,7 +1076,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting.has(aMat)) tMap.put(tMat, tMat.mTargetCutting.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedCutting) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting.has(aMat)) tMap.put(tMat, tMat.mTargetCutting.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to cut for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1069,7 +1093,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging.has(aMat)) tMap.put(tMat, tMat.mTargetForging.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedForging) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging.has(aMat)) tMap.put(tMat, tMat.mTargetForging.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to forge for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1086,7 +1110,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing.has(aMat)) tMap.put(tMat, tMat.mTargetSmashing.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedSmashing) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing.has(aMat)) tMap.put(tMat, tMat.mTargetSmashing.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to smash for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1103,7 +1127,7 @@ public class UT {
 			
 			//----------
 			
-			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking.has(aMat)) tMap.put(tMat, tMat.mTargetWorking.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : aMat.mTargetedWorking) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking.has(aMat)) tMap.put(tMat, tMat.mTargetWorking.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to use in other ways for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;

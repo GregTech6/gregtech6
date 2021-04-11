@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -263,8 +263,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** The Material which is the target for selecting the preferred Tool Handle. */
 	public OreDictMaterial mHandleMaterial = this;
 	
-	
-	/** The Targets for certain kinds of Processing for this Material */
+	/** The Targets for certain kinds of Processing for this Material. */
 	public OreDictMaterialStack
 	mTargetCrushing     = OM.stack(this, U),
 	mTargetPulver       = OM.stack(this, U),
@@ -277,6 +276,21 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	mTargetBurning      = OM.stack(this, 0), // The remaining Material when being burned. Used for getting the Ashes.
 	mTargetBending      = OM.stack(this, U),
 	mTargetCompressing  = OM.stack(this, U);
+	
+	/** The Materials targetting this for certain kinds of Processing. */
+	public final Set<OreDictMaterial>
+	mTargetedCrushing     = new HashSetNoNulls<>(F, this),
+	mTargetedPulver       = new HashSetNoNulls<>(F, this),
+	mTargetedSmelting     = new HashSetNoNulls<>(F, this),
+	mTargetedSolidifying  = new HashSetNoNulls<>(F, this),
+	mTargetedSmashing     = new HashSetNoNulls<>(F, this),
+	mTargetedCutting      = new HashSetNoNulls<>(F, this),
+	mTargetedWorking      = new HashSetNoNulls<>(F, this),
+	mTargetedForging      = new HashSetNoNulls<>(F, this),
+	mTargetedBurning      = new HashSetNoNulls<>(F, this),
+	mTargetedBending      = new HashSetNoNulls<>(F, this),
+	mTargetedCompressing  = new HashSetNoNulls<>(F, this);
+	
 	/**  */
 	public long mLiquidUnit = U, mGasUnit = U, mPlasmaUnit = U;
 	/** References to this Materials Fluid States. The amount of the FluidStack equals one Material Unit. It is usually either 144 or 1000, but other amounts are possible. Use "Util.translateUnits" for easy Math. */
@@ -661,99 +675,121 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	public OreDictMaterial setAllToTheOutputOf(OreDictMaterial aMaterial) {
 		if (aMaterial == null) aMaterial = this;
-		setPulver       (aMaterial.mTargetPulver        .mMaterial, aMaterial.mTargetPulver         .mAmount);
-		setSmelting     (aMaterial.mTargetSmelting      .mMaterial, aMaterial.mTargetSmelting       .mAmount);
-		setSolidifying  (aMaterial.mTargetSolidifying   .mMaterial, aMaterial.mTargetSolidifying    .mAmount);
-		setSmashing     (aMaterial.mTargetSmashing      .mMaterial, aMaterial.mTargetSmashing       .mAmount);
-		setCutting      (aMaterial.mTargetCutting       .mMaterial, aMaterial.mTargetCutting        .mAmount);
-		setWorking      (aMaterial.mTargetWorking       .mMaterial, aMaterial.mTargetWorking        .mAmount);
-		setForging      (aMaterial.mTargetForging       .mMaterial, aMaterial.mTargetForging        .mAmount);
-		setBurning      (aMaterial.mTargetBurning       .mMaterial, aMaterial.mTargetBurning        .mAmount);
-		setBending      (aMaterial.mTargetBending       .mMaterial, aMaterial.mTargetBending        .mAmount);
-		setCompressing  (aMaterial.mTargetCompressing   .mMaterial, aMaterial.mTargetCompressing    .mAmount);
+		setPulver     (aMaterial.mTargetPulver     .mMaterial, aMaterial.mTargetPulver     .mAmount);
+		setSmelting   (aMaterial.mTargetSmelting   .mMaterial, aMaterial.mTargetSmelting   .mAmount);
+		setSolidifying(aMaterial.mTargetSolidifying.mMaterial, aMaterial.mTargetSolidifying.mAmount);
+		setSmashing   (aMaterial.mTargetSmashing   .mMaterial, aMaterial.mTargetSmashing   .mAmount);
+		setCutting    (aMaterial.mTargetCutting    .mMaterial, aMaterial.mTargetCutting    .mAmount);
+		setWorking    (aMaterial.mTargetWorking    .mMaterial, aMaterial.mTargetWorking    .mAmount);
+		setForging    (aMaterial.mTargetForging    .mMaterial, aMaterial.mTargetForging    .mAmount);
+		setBurning    (aMaterial.mTargetBurning    .mMaterial, aMaterial.mTargetBurning    .mAmount);
+		setBending    (aMaterial.mTargetBending    .mMaterial, aMaterial.mTargetBending    .mAmount);
+		setCompressing(aMaterial.mTargetCompressing.mMaterial, aMaterial.mTargetCompressing.mAmount);
 		return this;
 	}
 	
 	public OreDictMaterial setAllToTheOutputOf(OreDictMaterial aMaterial, long aMultiplier, long aDivider) {
 		if (aMaterial == null) aMaterial = this;
-		setPulver       (aMaterial.mTargetPulver        .mMaterial, (aMaterial.mTargetPulver        .mAmount * aMultiplier) / aDivider);
-		setSmelting     (aMaterial.mTargetSmelting      .mMaterial, (aMaterial.mTargetSmelting      .mAmount * aMultiplier) / aDivider);
-		setSolidifying  (aMaterial.mTargetSolidifying   .mMaterial, (aMaterial.mTargetSolidifying   .mAmount * aMultiplier) / aDivider);
-		setSmashing     (aMaterial.mTargetSmashing      .mMaterial, (aMaterial.mTargetSmashing      .mAmount * aMultiplier) / aDivider);
-		setCutting      (aMaterial.mTargetCutting       .mMaterial, (aMaterial.mTargetCutting       .mAmount * aMultiplier) / aDivider);
-		setWorking      (aMaterial.mTargetWorking       .mMaterial, (aMaterial.mTargetWorking       .mAmount * aMultiplier) / aDivider);
-		setForging      (aMaterial.mTargetForging       .mMaterial, (aMaterial.mTargetForging       .mAmount * aMultiplier) / aDivider);
-		setBurning      (aMaterial.mTargetBurning       .mMaterial, (aMaterial.mTargetBurning       .mAmount * aMultiplier) / aDivider);
-		setBending      (aMaterial.mTargetBending       .mMaterial, (aMaterial.mTargetBending       .mAmount * aMultiplier) / aDivider);
-		setCompressing  (aMaterial.mTargetCompressing   .mMaterial, (aMaterial.mTargetCompressing   .mAmount * aMultiplier) / aDivider);
-		setCrushing     (aMaterial.mTargetCrushing      .mMaterial, (aMaterial.mTargetCrushing      .mAmount * aMultiplier) / aDivider);
+		setPulver     (aMaterial.mTargetPulver     .mMaterial,(aMaterial.mTargetPulver     .mAmount * aMultiplier) / aDivider);
+		setSmelting   (aMaterial.mTargetSmelting   .mMaterial,(aMaterial.mTargetSmelting   .mAmount * aMultiplier) / aDivider);
+		setSolidifying(aMaterial.mTargetSolidifying.mMaterial,(aMaterial.mTargetSolidifying.mAmount * aMultiplier) / aDivider);
+		setSmashing   (aMaterial.mTargetSmashing   .mMaterial,(aMaterial.mTargetSmashing   .mAmount * aMultiplier) / aDivider);
+		setCutting    (aMaterial.mTargetCutting    .mMaterial,(aMaterial.mTargetCutting    .mAmount * aMultiplier) / aDivider);
+		setWorking    (aMaterial.mTargetWorking    .mMaterial,(aMaterial.mTargetWorking    .mAmount * aMultiplier) / aDivider);
+		setForging    (aMaterial.mTargetForging    .mMaterial,(aMaterial.mTargetForging    .mAmount * aMultiplier) / aDivider);
+		setBurning    (aMaterial.mTargetBurning    .mMaterial,(aMaterial.mTargetBurning    .mAmount * aMultiplier) / aDivider);
+		setBending    (aMaterial.mTargetBending    .mMaterial,(aMaterial.mTargetBending    .mAmount * aMultiplier) / aDivider);
+		setCompressing(aMaterial.mTargetCompressing.mMaterial,(aMaterial.mTargetCompressing.mAmount * aMultiplier) / aDivider);
+		setCrushing   (aMaterial.mTargetCrushing   .mMaterial,(aMaterial.mTargetCrushing   .mAmount * aMultiplier) / aDivider);
 		return this;
 	}
 	
 	/** The result of trying to ore process it, if you want to disable ore processing, then set the Amount to 0. If aMaterial == null it will choose the previous Material instead, which is usually "this". */
 	public OreDictMaterial setCrushing(OreDictMaterial aMaterial, long aAmount) {
+		mTargetCrushing.mMaterial.mTargetedCrushing.remove(this);
 		mTargetCrushing = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedCrushing.add(this);
 		return this;
 	}
 	
 	/** The result of trying to pulverise it, if you want to disable pulverising, then set the Amount to 0. If aMaterial == null it will choose the previous Material instead, which is usually "this". */
 	public OreDictMaterial setPulver(OreDictMaterial aMaterial, long aAmount) {
+		mTargetPulver.mMaterial.mTargetedPulver.remove(this);
 		mTargetPulver = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedPulver.add(this);
 		return this;
 	}
 	
 	/** The result of trying to smelt it, if you want to disable smelting, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setSmelting(OreDictMaterial aMaterial, long aAmount) {
+		mTargetSmelting.mMaterial.mTargetedSmelting.remove(this);
 		mTargetSmelting = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedSmelting.add(this);
 		if (aAmount > 0) put(TD.Processing.MELTING);
 		return this;
 	}
 	
 	/** The result of cooling it down, if you want to disable cooling down, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setSolidifying(OreDictMaterial aMaterial, long aAmount) {
+		mTargetSolidifying.mMaterial.mTargetedSolidifying.remove(this);
 		mTargetSolidifying = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedSolidifying.add(this);
 		return this;
 	}
 	
 	/** The result of trying to smash it, if you want to disable smashing, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setSmashing(OreDictMaterial aMaterial, long aAmount) {
+		mTargetSmashing.mMaterial.mTargetedSmashing.remove(this);
 		mTargetSmashing = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedSmashing.add(this);
 		return this;
 	}
 	
 	/** The result of trying to cut it, if you want to disable cutting, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setCutting(OreDictMaterial aMaterial, long aAmount) {
+		mTargetCutting.mMaterial.mTargetedCutting.remove(this);
 		mTargetCutting = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
-		return this;
-	}
-	
-	/** The result of trying to forge it, if you want to disable forging, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
-	public OreDictMaterial setForging(OreDictMaterial aMaterial, long aAmount) {
-		mTargetForging = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedCutting.add(this);
 		return this;
 	}
 	
 	/** The result of trying to craft with it, if you want to disable working, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setWorking(OreDictMaterial aMaterial, long aAmount) {
+		mTargetWorking.mMaterial.mTargetedWorking.remove(this);
 		mTargetWorking = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedWorking.add(this);
+		return this;
+	}
+	
+	/** The result of trying to forge it, if you want to disable forging, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
+	public OreDictMaterial setForging(OreDictMaterial aMaterial, long aAmount) {
+		mTargetForging.mMaterial.mTargetedForging.remove(this);
+		mTargetForging = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedForging.add(this);
 		return this;
 	}
 	
 	/** The result of trying to burn it (Ashes for example), if you want to disable burning, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setBurning(OreDictMaterial aMaterial, long aAmount) {
+		mTargetBurning.mMaterial.mTargetedBurning.remove(this);
 		mTargetBurning = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedBurning.add(this);
 		return this;
 	}
 	
 	/** The result of trying to bend it, if you want to disable bending, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setBending(OreDictMaterial aMaterial, long aAmount) {
+		mTargetBending.mMaterial.mTargetedBending.remove(this);
 		mTargetBending = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedBending.add(this);
 		return this;
 	}
 	
 	/** The result of trying to compress it, if you want to disable compressing, then set the Amount to 0. If aMaterial == null it will choose previous Material instead, which is usually "this". */
 	public OreDictMaterial setCompressing(OreDictMaterial aMaterial, long aAmount) {
+		mTargetCompressing.mMaterial.mTargetedCompressing.remove(this);
 		mTargetCompressing = OM.stack(aMaterial == null ? this : aMaterial, aAmount);
+		aMaterial.mTargetedCompressing.add(this);
 		return this;
 	}
 	

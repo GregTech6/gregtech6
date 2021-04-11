@@ -52,7 +52,7 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (ItemStack aOutput : aOutputs) {
 			OreDictItemData aData = OM.anydata(aOutput);
 			if (aData == null || !aData.hasValidPrefixMaterialData() || !aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) continue;
-			for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null && tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) {
+			for (OreDictMaterial tMat : aData.mMaterial.mMaterial.mTargetedSmelting) if (tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) {
 				if (tMat != aData.mMaterial.mMaterial) {
 				rList.add(getRecipeFor(OP.ingot             .mat(tMat, 1)));
 				rList.add(getRecipeFor(OP.blockIngot        .mat(tMat, 1)));

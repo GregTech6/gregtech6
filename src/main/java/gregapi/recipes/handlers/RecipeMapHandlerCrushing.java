@@ -143,7 +143,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (BlocksGT.ore != null && aData != null && aData.hasValidPrefixMaterialData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
 			boolean temp = F;
-			for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreVanillastone.isGeneratingItem(aData.mMaterial.mMaterial)) {
+			for (OreDictMaterial tMaterial : aData.mMaterial.mMaterial.mTargetedCrushing) if (tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreVanillastone.isGeneratingItem(aData.mMaterial.mMaterial)) {
 				if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore, 1, aData.mMaterial.mMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
 			}
 			return temp;
