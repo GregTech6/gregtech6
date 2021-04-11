@@ -682,7 +682,7 @@ public class UT {
 			if (aLogging) DEB.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");
 			NBT.set(rStack, rNBT);
 			BOOK_MAP.put(aMapping, ST.copy(rStack));
-			BOOK_LIST.add(aMapping);
+			if (!BOOK_LIST.contains(aMapping)) BOOK_LIST.add(aMapping);
 			return ST.copy(rStack);
 		}
 		

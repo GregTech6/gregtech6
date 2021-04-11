@@ -2955,8 +2955,6 @@ public class MT {
 			YttriumBariumCuprate    .addAlloyingRecipe(new OreDictConfigurationComponent( 6, OM.stack(Cu                            , 3*U), OM.stack(Ba                 , 2*U), OM.stack(Y, U)));
 			Li2Fe2O4                .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(Fe2O3                         , 5*U), OM.stack(Li2O               , 3*U)));
 			
-			String tMakeSignalum =
-			  "The Alloy Signalum can be a little bit hard to produce as you could end up with unwanted Sterling Silver in the Process. To prevent that, insert the Copper last, and always in small amounts at a time.";
 			String tMakeSteel =
 			  "In order to make Steel you just need to melt Iron or Wrought Iron in a Smelting Crucible and apply Air to it using an Engine.";
 			String tMakeWroughtIron =
@@ -2971,29 +2969,15 @@ public class MT {
 			  "Somehow this Material dissolves Slimey substances and therefore causes severe damage to Slimes and similar Creatures!";
 			
 			
-			Signalum.mDescription = new String[] {
-			// ========================================================================================================================================================================================================
-			  ""
-			, tMakeSignalum
-			};
-			
 			Redstone.mDescription = new String[] {
 			// ========================================================================================================================================================================================================
 			  "Redstone consists out of many things and has a lot in common with Cinnabar, even though containing much more than just Mercury and Sulfur. Redstone is usually found at places with Rare Earths."
-			, tMakeSignalum
-			};
-			
-			RedAlloy.mDescription = new String[] {
-			// ========================================================================================================================================================================================================
-			  ""
-			, tMakeSignalum
 			};
 			
 			Ag.mDescription = new String[] {
 			// ========================================================================================================================================================================================================
 			  "Silver, the Material Endermen fear the most. Somehow this Material can interfere with the ability of Endermen to teleport, and even damages them dramatically, as if it were poisonous to them."
 			, tKillWerewolf
-			, tMakeSignalum
 			};
 			
 			Cu.mDescription = new String[] {
@@ -3001,7 +2985,6 @@ public class MT {
 			  "Copper is a Material, which is needed in almost every electrical Device. But not only that, it is also used to make Bronze, Brass, Cupronickel and some other Alloys."
 			, tKillSlime
 			, tMakeAnnealedCopper
-			, tMakeSignalum
 			};
 			
 			AnnealedCopper.mDescription = new String[] {
@@ -3009,7 +2992,6 @@ public class MT {
 			  "Annealed Copper is just Copper cleaned from impurities. Therefore some of Coppers natural properties are better than in unpurified Copper."
 			, tKillSlime
 			, tMakeAnnealedCopper
-			, tMakeSignalum
 			};
 			
 			Al.mDescription = new String[] {
