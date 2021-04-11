@@ -282,6 +282,7 @@ public class Recipe {
 		public Recipe addRecipeX(boolean aOptimize, boolean aCheckForCollisions, boolean aFakeRecipe, boolean aHidden, boolean aLogErrors, long aEUt, long aDuration, long[] aChances, ItemStack[] aInputs                 , FluidStack[] aFluidInputs, FluidStack[]  aFluidOutputs, ItemStack... aOutputs) {return addRecipe(new Recipe(aOptimize, T, T, aInputs                   , aOutputs         , NI, aChances            , aFluidInputs         , aFluidOutputs         , aDuration, aEUt, 0), aCheckForCollisions, aFakeRecipe, aHidden, aLogErrors);}
 		
 		public Recipe addRecipe(Recipe aRecipe, boolean aCheckForCollisions, boolean aFakeRecipe, boolean aHidden, boolean aLogErrors) {
+			if (aRecipe == null) return null;
 			aRecipe.mHidden = aHidden;
 			aRecipe.mFakeRecipe = aFakeRecipe;
 			if (aCheckForCollisions && findRecipeInternal(null, null, F, F, Long.MAX_VALUE, null, aRecipe.mFluidInputs, aRecipe.mInputs) != null) return null;
