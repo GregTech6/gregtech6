@@ -29,6 +29,7 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -3396,36 +3397,37 @@ public class UT {
 		public static boolean mEnabled = T;
 		public static Object mBar = null;
 		public static int mSize = 0, mCount = 0;
+		public static Field mMessage = null, mStep = null;
 		
 		@SuppressWarnings("deprecation")
 		public static boolean start(String aName, int aSize) {
 			if (mBar == null && mEnabled && aSize > 0) {
 				try {
 					mBar = cpw.mods.fml.common.ProgressManager.push(aName, aSize);
+					mMessage = UT.Reflection.getField(mBar, "message", T, T);
+					mStep = UT.Reflection.getField(mBar, "step", T, T);
 					mSize = aSize;
 					mCount = 0;
 					return T;
 				} catch(NoClassDefFoundError e) {
 					mEnabled = F;
-				} catch(Throwable e) {/**/}
+				} catch(Throwable e) {e.printStackTrace(ERR);}
 			}
 			return F;
 		}
 		
-		@SuppressWarnings("deprecation")
 		public static boolean step(Object aStep) {
 			if (mBar != null && mEnabled) {
 				if (mCount++ < mSize) {
 					try {
-						String tStepName = (aStep == null ? "null" : aStep.toString());
-						((cpw.mods.fml.common.ProgressManager.ProgressBar)mBar).step(tStepName);
+						mMessage.set(mBar, aStep == null ? "null" : aStep.toString());
+						mStep.setInt(mBar, mCount);
+			            FMLCommonHandler.instance().processWindowMessages();
 						return T;
-					} catch(NoClassDefFoundError e) {
-						mEnabled = F;
-					} catch(Throwable e) {/**/}
+					} catch(Throwable e) {e.printStackTrace(ERR);}
 					return F;
 				}
-				ERR.println("WARNING: Progress Bar needed forced Finish, because of too many Steps.");
+				ERR.println("ERROR: Progress Bar needed a forced Finish, because of too many Steps.");
 				finish();
 				return F;
 			}
@@ -3435,7 +3437,7 @@ public class UT {
 		@SuppressWarnings("deprecation")
 		public static boolean finish() {
 			if (mBar != null && mEnabled) {
-				if (mCount != mSize) ERR.println("WARNING: Progress Bar needed forced Finish, because of too few Steps.");
+				if (mCount != mSize) ERR.println("ERROR: Progress Bar needed a forced Finish, because of too few Steps.");
 				try {
 					cpw.mods.fml.common.ProgressManager.pop((cpw.mods.fml.common.ProgressManager.ProgressBar)mBar);
 					mBar = null;
@@ -3444,7 +3446,7 @@ public class UT {
 					return T;
 				} catch(NoClassDefFoundError e) {
 					mEnabled = F;
-				} catch(Throwable e) {/**/}
+				} catch(Throwable e) {e.printStackTrace(ERR);}
 				mBar = null;
 				mSize = 0;
 				mCount = 0;
