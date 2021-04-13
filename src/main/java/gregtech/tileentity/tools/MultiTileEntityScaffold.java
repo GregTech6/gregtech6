@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,11 +77,13 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public void onFacingChange(byte aPreviousFacing) {
-		if (isConnectedVertically()) {
-			setDesign(getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold ? 2 : getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold ? 1 : 3);
-		} else {
-			setDesign(0);
-			if (!isConnectedToGround()) {popOff(); return;}
+		if (isServerSide()) {
+			if (isConnectedVertically()) {
+				setDesign(getAdjacentTileEntity(SIDE_UP).mTileEntity instanceof MultiTileEntityScaffold ? 2 : getAdjacentTileEntity(SIDE_DOWN).mTileEntity instanceof MultiTileEntityScaffold ? 1 : 3);
+			} else {
+				setDesign(0);
+				if (!isConnectedToGround()) {popOff(); return;}
+			}
 		}
 	}
 	
