@@ -29,6 +29,7 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [CHANGED] Texture of the Generifier. Bear so definitely needs to test if it looks right, because he sure loves crafting this Machine! ;P
 [ADDED] Small Malachite Ore near the Surface.
 [ADDED] Config to make Gravel never drop Flint when harvested by a Player. (This was added because another Mod does it, but very badly, so I needed to replace that Feature using GT6, ofcourse Flint will still drop by Default)
+[ADDED] Miniature Portal to Aroma1997's Mining Dimension.
 
 
 6.14.09:

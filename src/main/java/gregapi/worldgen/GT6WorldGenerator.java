@@ -116,7 +116,7 @@ public class GT6WorldGenerator {
 		}
 		
 		if (WD.dimENVM  (aWorld.provider)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_ENVM_GT  : GEN_ENVM , GENERATE_STONE ? null : ORE_ENVM , DIM_ENVM , aWorld, aX, aZ)); return;}
-		if (WD.dimAROMA (aWorld.provider)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_AROMA_GT : GEN_AROMA, GENERATE_STONE ? null : ORE_AROMA, DIM_AROMA, aWorld, aX, aZ)); return;}
+		if (WD.dimA97 (aWorld.provider)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_AROMA_GT : GEN_AROMA, GENERATE_STONE ? null : ORE_AROMA, DIM_AROMA, aWorld, aX, aZ)); return;}
 		
 		if (WD.dimMYST  (aWorld.provider)) {generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ)); return;}
 		

@@ -624,6 +624,7 @@ public class LoaderItemList implements Runnable {
 		OP.cell.mContainerItem =                     ST.mkic("cell"                                         , 1   , OreDictManager.INSTANCE.getFirstOre("cellEmpty", 1));
 		
 		
+		
 		IL.TE_Wrench                            .set(ST.make(MD.TE, "wrench"                                , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.TE_Wrench.wild(1));
 		IL.TE_Wrench_Battle                     .set(ST.make(MD.TE, "tool.battleWrenchInvar"                , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.TE_Wrench_Battle.wild(1));
 		IL.TE_Cinnabar                          .set(ST.make(MD.TE_FOUNDATION, "material"                   , 1,  20));
@@ -690,6 +691,9 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Treated_Slab                      .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodTreated, U2));
 		IL.IE_Treated_Stairs                    .set(ST.make(MD.IE, "woodenStairs"                          , 1, 0), new OreDictItemData(MT.WoodTreated, 3*U4));
 		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodTreated, 8*U), OD.craftingChest);
+		
+		
+		IL.A97_Hammer                           .set(ST.make(MD.A97, "wrench"                               , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.A97_Hammer.wild(1));
 		
 		
 		IL.FZ_Sludge                            .set(ST.make(MD.FZ, "sludge"                                , 1, 0), null, OD.itemSlag);

@@ -1919,7 +1919,8 @@ public class CS {
 		, RTG               = "RTG"
 		, RWG               = "RWG"
 		
-		, AROMA_MINING      = "Aroma1997sDimension"
+		, A97               = "Aroma1997Core"
+		, A97_MINING        = "Aroma1997sDimension"
 		
 		, GaSu              = "ganyssurface"
 		, GaNe              = "ganysnether"

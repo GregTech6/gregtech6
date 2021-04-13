@@ -196,8 +196,8 @@ public class WD {
 	public static boolean dimENVM(World aWorld) {return aWorld != null && dimENVM(aWorld.provider);}
 	public static boolean dimENVM(WorldProvider aProvider) {return MD.ENVM.mLoaded && "WorldProviderCaves".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimAROMA(World aWorld) {return aWorld != null && dimAROMA(aWorld.provider);}
-	public static boolean dimAROMA(WorldProvider aProvider) {return MD.AROMA_MINING.mLoaded && "WorldProviderMiner".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimA97(World aWorld) {return aWorld != null && dimA97(aWorld.provider);}
+	public static boolean dimA97(WorldProvider aProvider) {return MD.A97_MINING.mLoaded && "WorldProviderMiner".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
 	public static boolean dimAETHER(World aWorld) {return aWorld != null && dimAETHER(aWorld.provider);}
 	public static boolean dimAETHER(WorldProvider aProvider) {return MD.AETHER.mLoaded && "WorldProviderAether".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
