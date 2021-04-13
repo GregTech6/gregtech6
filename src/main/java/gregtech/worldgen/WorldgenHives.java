@@ -103,7 +103,7 @@ public class WorldgenHives extends WorldgenObject {
 				tCount = 0;
 			}
 			return rResult;
-		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN: case DIM_TWILIGHT: case DIM_AROMA:
+		case DIM_OVERWORLD: case DIM_ALFHEIM: case DIM_TROPICS: case DIM_UNKNOWN: case DIM_TWILIGHT: case DIM_A97:
 			for (tY = 8; tY < 28; tY++) {
 				Block tBlock = WD.block(aWorld, tX, tY, tZ);
 				if (tBlock.getMaterial() == Material.rock && WD.opq(tBlock) && WD.stone(tBlock, WD.meta(aWorld, tX, tY, tZ))) {

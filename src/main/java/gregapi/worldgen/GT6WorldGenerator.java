@@ -115,20 +115,20 @@ public class GT6WorldGenerator {
 		case DIM_END      : generate(new WorldGenContainer(GEN_END   , ORE_END   , DIM_END   , aWorld, aX, aZ)); return;
 		}
 		
-		if (WD.dimENVM  (aWorld.provider)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_ENVM_GT  : GEN_ENVM , GENERATE_STONE ? null : ORE_ENVM , DIM_ENVM , aWorld, aX, aZ)); return;}
-		if (WD.dimA97 (aWorld.provider)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_AROMA_GT : GEN_AROMA, GENERATE_STONE ? null : ORE_AROMA, DIM_AROMA, aWorld, aX, aZ)); return;}
+		if (WD.dimENVM  (aWorld)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_ENVM_GT : GEN_ENVM, GENERATE_STONE ? null : ORE_ENVM, DIM_ENVM, aWorld, aX, aZ)); return;}
+		if (WD.dimA97   (aWorld)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_A97_GT  : GEN_A97 , GENERATE_STONE ? null : ORE_A97 , DIM_A97 , aWorld, aX, aZ)); return;}
 		
-		if (WD.dimMYST  (aWorld.provider)) {generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ)); return;}
+		if (WD.dimMYST  (aWorld)) {generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ)); return;}
 		
-		if (WD.dimTF    (aWorld.provider)) {generate(new WorldGenContainer(GEN_TWILIGHT    , ORE_TWILIGHT    , DIM_TWILIGHT    , aWorld, aX, aZ)); return;}
-		if (WD.dimAETHER(aWorld.provider)) {generate(new WorldGenContainer(GEN_AETHER      , ORE_AETHER      , DIM_AETHER      , aWorld, aX, aZ)); return;}
-		if (WD.dimERE   (aWorld.provider)) {generate(new WorldGenContainer(GEN_EREBUS      , ORE_EREBUS      , DIM_EREBUS      , aWorld, aX, aZ)); return;}
-		if (WD.dimBTL   (aWorld.provider)) {generate(new WorldGenContainer(GEN_BETWEENLANDS, ORE_BETWEENLANDS, DIM_BETWEENLANDS, aWorld, aX, aZ)); return;}
-		if (WD.dimATUM  (aWorld.provider)) {generate(new WorldGenContainer(GEN_ATUM        , ORE_ATUM        , DIM_ATUM        , aWorld, aX, aZ)); return;}
-		if (WD.dimALF   (aWorld.provider)) {generate(new WorldGenContainer(GEN_ALFHEIM     , ORE_ALFHEIM     , DIM_ALFHEIM     , aWorld, aX, aZ)); return;}
-		if (WD.dimDD    (aWorld.provider)) {generate(new WorldGenContainer(GEN_DEEPDARK    , ORE_DEEPDARK    , DIM_DEEPDARK    , aWorld, aX, aZ)); return;}
-		if (WD.dimTROPIC(aWorld.provider)) {generate(new WorldGenContainer(GEN_TROPICS     , ORE_TROPICS     , DIM_TROPICS     , aWorld, aX, aZ)); return;}
-		if (WD.dimCANDY (aWorld.provider)) {generate(new WorldGenContainer(GEN_CANDY       , ORE_CANDY       , DIM_CANDY       , aWorld, aX, aZ)); return;}
+		if (WD.dimTF    (aWorld)) {generate(new WorldGenContainer(GEN_TWILIGHT    , ORE_TWILIGHT    , DIM_TWILIGHT    , aWorld, aX, aZ)); return;}
+		if (WD.dimAETHER(aWorld)) {generate(new WorldGenContainer(GEN_AETHER      , ORE_AETHER      , DIM_AETHER      , aWorld, aX, aZ)); return;}
+		if (WD.dimERE   (aWorld)) {generate(new WorldGenContainer(GEN_EREBUS      , ORE_EREBUS      , DIM_EREBUS      , aWorld, aX, aZ)); return;}
+		if (WD.dimBTL   (aWorld)) {generate(new WorldGenContainer(GEN_BETWEENLANDS, ORE_BETWEENLANDS, DIM_BETWEENLANDS, aWorld, aX, aZ)); return;}
+		if (WD.dimATUM  (aWorld)) {generate(new WorldGenContainer(GEN_ATUM        , ORE_ATUM        , DIM_ATUM        , aWorld, aX, aZ)); return;}
+		if (WD.dimALF   (aWorld)) {generate(new WorldGenContainer(GEN_ALFHEIM     , ORE_ALFHEIM     , DIM_ALFHEIM     , aWorld, aX, aZ)); return;}
+		if (WD.dimDD    (aWorld)) {generate(new WorldGenContainer(GEN_DEEPDARK    , ORE_DEEPDARK    , DIM_DEEPDARK    , aWorld, aX, aZ)); return;}
+		if (WD.dimTROPIC(aWorld)) {generate(new WorldGenContainer(GEN_TROPICS     , ORE_TROPICS     , DIM_TROPICS     , aWorld, aX, aZ)); return;}
+		if (WD.dimCANDY (aWorld)) {generate(new WorldGenContainer(GEN_CANDY       , ORE_CANDY       , DIM_CANDY       , aWorld, aX, aZ)); return;}
 		
 		BiomeGenBase aBiome = aWorld.getBiomeGenForCoords(aX+7, aZ+7);
 		if (aBiome == null || BIOMES_VOID.contains(aBiome.biomeName)) return;
