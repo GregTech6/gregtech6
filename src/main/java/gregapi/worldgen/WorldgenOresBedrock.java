@@ -137,7 +137,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (!CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
-		if (GENERATE_BIOMES && aWorld.provider.dimensionId == 0 && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
+		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
 		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
