@@ -576,11 +576,11 @@ public class UT {
 			for (Set<String> tSet : aFluidList) tSet.add(aName);
 			
 			switch (aState) {
-			case STATE_SOLID:           rFluid.setViscosity(10000); break;
-			case STATE_LIQUID:          rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
-			case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
-			case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
-			case 4:                     rFluid.setViscosity( 1000); break;
+			case STATE_SOLID:   rFluid.setViscosity(10000); break;
+			case STATE_LIQUID:  rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
+			case STATE_GASEOUS: rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
+			case STATE_PLASMA:  rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
+			case 4:             rFluid.setViscosity( 1000); break;
 			}
 			
 			if (!FluidRegistry.registerFluid(rFluid)) {

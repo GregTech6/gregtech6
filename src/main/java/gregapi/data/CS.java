@@ -1404,6 +1404,7 @@ public class CS {
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()
 		, PLASMA = new HashSetNoNulls<>(F, "rc fusion plasma")
+		, HIDDEN = new HashSetNoNulls<>(F, "heliumplasma", "nitrogenplasma")
 		, AIR = new HashSetNoNulls<>()
 		, OXYGEN = new HashSetNoNulls<>()
 		, LIQUID_OXYGEN = new HashSetNoNulls<>()

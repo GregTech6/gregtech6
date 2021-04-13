@@ -300,7 +300,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	public void getSubItems(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {
 		for (int i = 0, j = FluidRegistry.getMaxID(); i <= j; i++) {
 			Fluid tFluid = FL.fluid(i);
-			if (tFluid != null && !FluidsGT.FLUID_RENAMINGS.containsKey(tFluid.getName()) && !FL.Error.is(tFluid)) {
+			if (tFluid != null && !FluidsGT.HIDDEN.contains(tFluid.getName())) {
 				ItemStack tStack = FL.display(tFluid);
 				if (tStack != null) aList.add(tStack);
 			}

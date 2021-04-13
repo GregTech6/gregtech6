@@ -23,7 +23,7 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [FIXED] A Crash when Furnace Recipes with Liquid XP were added to NEI.
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.
 [FIXED] Rightclicking a Path Block with a Shovel should no longer prompt other Shovel Placer Features like Torches.
-[FIXED] A bunch of Issues with Crusible Molds/Basins. There was more than one, that this mini rewrite solved.
+[FIXED] A bunch of Issues with Crucible Molds/Basins. There was more than one, that this mini rewrite solved.
 [FIXED] Radioactive Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
 [FIXED] Byproducts for several Gem Ores, along with some other Ores.
 [CHANGED] Texture of the Generifier. Bear so definitely needs to test if it looks right, because he sure loves crafting this Machine! ;P

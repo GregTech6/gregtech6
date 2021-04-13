@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.IFluidTank;
  */
 @SuppressWarnings("unchecked")
 public enum FL {
-	  Error                     ("error")
+	  Error                     ("error"                                                    , HIDDEN)
 	  
 	, UUM                       ("ic2uumatter"                                              , LIQUID, ENCHANTED_EFFECT)
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
@@ -563,12 +563,15 @@ public enum FL {
 	}
 	private FL(String aName, String aOldName, Collection<String>... aFluidSets) {
 		mName = aName;
+		FluidsGT.HIDDEN.add(aOldName);
 		FluidsGT.NONSTANDARD.add(aOldName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName, mName);
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName);}
 	}
 	private FL(String aName, String aOldName1, String aOldName2, Collection<String>... aFluidSets) {
 		mName = aName;
+		FluidsGT.HIDDEN.add(aOldName1);
+		FluidsGT.HIDDEN.add(aOldName2);
 		FluidsGT.NONSTANDARD.add(aOldName1);
 		FluidsGT.NONSTANDARD.add(aOldName2);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName1, mName);
