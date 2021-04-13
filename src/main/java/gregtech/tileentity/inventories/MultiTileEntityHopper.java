@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,7 +60,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
-	public boolean mExactMode = F;
+	public boolean mExactMode = F, mLock = F;
 	public byte mMode = 0, mCheck = 3;
 	
 	@Override
@@ -93,7 +93,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.1") + getSizeInventory());
+		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.1") + invsize());
 		if (mMode > 0)
 		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.2") + mMode);
 		if (mExactMode)
@@ -156,7 +156,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
 		if (isServerSide() && (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity)))) {
-			int i = getSizeInventory(); while (--i>=0) if (addStackToSlot(i, ST.make(Items.snowball, 1, 0))) break;
+			int i = invsize(); while (--i>=0) if (addStackToSlot(i, ST.make(Items.snowball, 1, 0))) break;
 		}
 	}
 	
@@ -176,7 +176,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems + (mMode<=0?1:mMode) <= 64) {
+						mLock = T;
 						int tMoved = ST.move(delegator(mFacing), tDelegator, null, F, F, F, T, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
+						mLock = F;
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 						if (mExactMode) break;
@@ -191,7 +193,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
-						int i = getSizeInventory();
+						int i = invsize();
 						while (i-->0) if (!slotHas(i)) {
 							slot(i, WD.suck(tDelegator));
 							if (slotHas(i)) {
@@ -208,7 +210,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					mCheck = -1;
 				}
 				if (mInventoryChanged) {
-					for (int i = 0, k = getSizeInventory(), l = getInventoryStackLimit(); i < k; i++) for (int j = i+1; j < k; j++) if (slotHas(j)) {
+					for (int i = 0, k = invsize(), l = getInventoryStackLimit(); i < k; i++) for (int j = i+1; j < k; j++) if (slotHas(j)) {
 						int tMaxSize = Math.min(l, slot(j).getMaxStackSize());
 						if (slotHas(i)) {
 							if (slot(i).stackSize < tMaxSize && ST.equal(slot(i), slot(j))) {
@@ -241,9 +243,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean allowCovers            (byte aSide) {return SIDES_TOP[aSide];}
 	
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(invsize());}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSide != mFacing;}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return mLock || aSide != mFacing;}
 	@Override public int getInventoryStackLimit() {return mMode<=0?64:mMode*Math.max(1, 64/mMode);}
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return mMode<=0?64:mMode*Math.max(1, 64/mMode);}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

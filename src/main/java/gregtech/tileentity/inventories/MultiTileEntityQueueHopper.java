@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,6 +60,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
+	public boolean mLock = F;
 	public byte mMode = 64, mCheck = 3;
 	
 	@Override
@@ -89,7 +90,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.1") + getSizeInventory());
+		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.1") + invsize());
 		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.2") + mMode);
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
@@ -142,7 +143,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
 		if (isServerSide() && (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity)))) {
-			addStackToSlot(getSizeInventory()-1, ST.make(Items.snowball, 1, 0));
+			addStackToSlot(invsize()-1, ST.make(Items.snowball, 1, 0));
 		}
 	}
 	
@@ -162,7 +163,9 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems < mMode) {
+						mLock = T;
 						int tMoved = ST.move(delegator(mFacing), tDelegator, null, F, F, F, T, mMode, 1, mMode-tMovedItems, 1);
+						mLock = F;
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 						
@@ -177,7 +180,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
-						int i = getSizeInventory()-1;
+						int i = invsize()-1;
 						if (!slotHas(i)) {
 							slot(i, WD.suck(tDelegator));
 							if (slotHas(i)) {
@@ -198,7 +201,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 				int oMovedItems = -1;
 				while (oMovedItems != tMovedItems) {
 					oMovedItems = tMovedItems;
-					for (int i = 1, j = getSizeInventory(); i < j; i++) {
+					for (int i = 1, j = invsize(); i < j; i++) {
 						tMovedItems += ST.move(this, i-1, i);
 					}
 				}
@@ -222,9 +225,9 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean allowCovers            (byte aSide) {return SIDES_TOP[aSide];}
 	
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return new int[] {0, getSizeInventory() - 1};}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return new int[] {0, invsize() - 1};}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0;}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == getSizeInventory() - 1;}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == invsize() - 1 && (mLock || aSide != mFacing);}
 	@Override public int getInventoryStackLimit() {return mMode;}
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return mMode;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
