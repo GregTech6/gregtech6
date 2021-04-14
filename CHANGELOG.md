@@ -10,11 +10,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.10: (Not released yet, released whenever it needs to be)
-[COMPAT] Et Futurum Requiem's Deepslate will generate near Bedrock now. Also Default Config Pack updated for Et Futurum Requiem.
+[COMPAT] Et Futurum Requiem
+Default Config Pack updated for Et Futurum Requiem.
+Deepslate will generate near Bedrock now. It will generate 1 Block higher in Slime Chunks specifically.
 [IMPROVED]
-The Vanilla "getting kicked back to Main Menu, when launching Singleplayer"-Bug should be fixed.
-It wasn't my fault, but hey fixed is fixed.
-Please test for yourself if it actually works, since it is random and my dozen Tests might have been a fluke.
+The Vanilla "getting kicked back to Main Menu, when launching Singleplayer"-Bug should be mostly fixed. (it happened to me a few days after we fixed it sooooo, maybe it is not properly fixed)
+It wasn't my fault, but hey mostly fixed is mostly fixed.
+Please test for yourself if it actually works, since it is random and my dozen Tests have definitely been a fluke. (though it might be less likely!)
 The Fix also has the side effect of loading Singleplayer Worlds without having that initial Lagspike, so getting into the World feels a bit smoother.
 [IMPROVED] Creating Material Dictionaries no longer happens on Startup and is now done on the fly.
 [FIXED] Button Panel was resetting its Chiseled Design whenever a Block Update or similar happened.

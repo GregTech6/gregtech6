@@ -58,10 +58,11 @@ public class WorldgenStoneLayers extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
 		
+		final boolean tSlime = (aChunk.getRandomWithSeed(987234911L).nextInt(10) == 0);
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
-		final StoneLayer[] tScan = new StoneLayer[7];
+		final StoneLayer[] tScan = new StoneLayer[9];
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
@@ -70,7 +71,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
 			if (StoneLayer.DEEPSLATE != null) {
-				// The first 5 Layers are Deepslate if possible.
+				// The first Layers are Deepslate if possible.
 				tScan[0] = StoneLayer.DEEPSLATE;
 				tScan[1] = StoneLayer.DEEPSLATE;
 				tScan[2] = StoneLayer.DEEPSLATE;
@@ -78,6 +79,8 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				tScan[4] = StoneLayer.DEEPSLATE;
 				tScan[5] = StoneLayer.DEEPSLATE;
 				tScan[6] = StoneLayer.DEEPSLATE;
+				tScan[7] = StoneLayer.DEEPSLATE;
+				tScan[8] = (tSlime ? StoneLayer.DEEPSLATE : StoneLayer.LAYERS.get(tNoise.get(tX,  6, tZ, tListSize)));
 			} else {
 				tScan[0] = StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize));
 				tScan[1] = StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize));
@@ -86,6 +89,8 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				tScan[4] = StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize));
 				tScan[5] = StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize));
 				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize));
+				tScan[7] = StoneLayer.LAYERS.get(tNoise.get(tX,  5, tZ, tListSize));
+				tScan[8] = StoneLayer.LAYERS.get(tNoise.get(tX,  6, tZ, tListSize));
 			}
 			
 			boolean tCanPlaceRocks = F;
@@ -203,7 +208,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				
 				// And scan for next Block on the Stone Layer Type.
 				for (int t = 1; t < tScan.length; t++) tScan[t-1] = tScan[t];
-				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX, tY+4, tZ, tListSize));
+				tScan[tScan.length-1] = StoneLayer.LAYERS.get(tNoise.get(tX, tY-3+tScan.length, tZ, tListSize));
 			}
 		}
 		return T;

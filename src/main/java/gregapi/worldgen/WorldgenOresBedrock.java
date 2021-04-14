@@ -144,10 +144,10 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			CAN_GENERATE_BEDROCK_ORE = F;
 			
 			try {
-				for (int tX = -2; tX <= 2; tX++) for (int tZ = -2; tZ <= 2; tZ++) {
+				for (int tX = 5; tX < 11; tX++) for (int tZ = 5; tZ < 11; tZ++) {
 					switch(aRandom.nextInt(6)) {
-					case 0:         BlocksGT.oreBedrock         .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
-					case 1: case 2: BlocksGT.oreSmallBedrock    .placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
+					case 0:         BlocksGT.oreBedrock     .placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
+					case 1: case 2: BlocksGT.oreSmallBedrock.placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
 					}
 				}
 			} catch(Throwable e) {
@@ -158,21 +158,26 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				// Use Deepslate if available, except in the Nether.
 				Block tStone = (aWorld.provider.dimensionId == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
 				// Keep Distances within the Chunk for this important step.
-				int[] tD = new int[] {0, 3, 5, 6, 7, 6, 4};
-				for (int tY = 1; tY < tD.length; tY++) for (int tX = -tD[tY]; tX <= tD[tY]; tX++) for (int tZ = -tD[tY]; tZ <= tD[tY]; tZ++) {
+				int[] tD1 = new int[] { 5,  4,  2,  1,  0,  1,  5};
+				int[] tD2 = new int[] {11, 12, 14, 15, 16, 15, 11};
+				
+				for (int tY = 1; tY < tD1.length; tY++) for (int tX = tD1[tY]; tX < tD2[tY]; tX++) for (int tZ = tD1[tY]; tZ < tD2[tY]; tZ++) {
 					if (tStone != NB) {
-						aWorld.setBlock(aMinX+8+tX, tY, aMinZ+8+tZ, tStone, 0, 0);
+						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, tStone, 0, 0);
 					} else {
-						WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
+						WD.removeBedrock(aWorld, aMinX+tX, tY, aMinZ+tZ);
 					}
 					switch(aRandom.nextInt(6)) {
-					case 0:         WD.setOre     (aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
-					case 1: case 2: WD.setSmallOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
+					case 0:         WD.setOre     (aWorld, aMinX+tX, tY, aMinZ+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
+					case 1: case 2: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
 					}
 				}
 			} catch(Throwable e) {
 				e.printStackTrace(ERR);
 			}
+			
+			// At least one Ore Block must be there. So force place a large one in the Center.
+			BlocksGT.oreBedrock.placeBlock(aWorld, aMinX+8, 0, aMinZ+8, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T);
 			
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!GENERATE_STREETS || aWorld.provider.dimensionId != 0 || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) { 
 				MultiTileEntityRegistry tRegistry = (mIndicatorRocks ? MultiTileEntityRegistry.getRegistry("gt.multitileentity") : null);
@@ -205,8 +210,6 @@ public class WorldgenOresBedrock extends WorldgenObject {
 					e.printStackTrace(ERR);
 				}
 			}
-			// At least one Ore Block must be there. So place a large one in the Center.
-			BlocksGT.oreBedrock.placeBlock(aWorld, aMinX+8, 0, aMinZ+8, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T);
 		}
 		return T;
 	}
