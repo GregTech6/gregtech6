@@ -58,6 +58,7 @@ public class OP {
 	oreVanillagranite           = create("oreVanillagranite"            , "Granite Ores"                    , "Granite "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreAndesite                 = create("oreAndesite"                  , "Andesite Ores"                   , "Andesite "                       , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreDiorite                  = create("oreDiorite"                   , "Diorite Ores"                    , "Diorite "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
+	oreDeepslate                = create("oreDeepslate"                 , "Deepslate Ores"                  , "Deepslate "                      , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreBlackstone               = create("oreBlackstone"                , "Blackstone Ores"                 , "Blackstone "                     , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TENEBRAE   , 1).setTextureSetName("ore"),
 	oreMoon                     = create("oreMoon"                      , "Moon Ores"                       , "Moon "                           , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
 	oreMars                     = create("oreMars"                      , "Mars Ores"                       , "Mars "                           , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, UNIFICATABLE_RECIPES, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
@@ -614,6 +615,7 @@ public class OP {
 		oreBlackgranite         .mByProducts.add(OM.stack(MT.GraniteBlack       , dust.mAmount));
 		oreVanillagranite       .mByProducts.add(OM.stack(MT.Granite            , dust.mAmount));
 		oreVanillastone         .mByProducts.add(OM.stack(MT.Stone              , dust.mAmount));
+		oreDeepslate            .mByProducts.add(OM.stack(MT.Slate              , dust.mAmount));
 		oreMoon                 .mByProducts.add(OM.stack(MT.MoonRock           , dust.mAmount));
 		oreMars                 .mByProducts.add(OM.stack(MT.MarsRock           , dust.mAmount));
 		oreHolystone            .mByProducts.add(OM.stack(MT.Holystone          , dust.mAmount));

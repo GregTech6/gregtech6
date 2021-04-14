@@ -745,6 +745,16 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.AncientDebris          , ST.make(MD.EtFu, "netherite_scrap", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.AncientDebris          , ST.make(MD.EtFu, "ancient_debris", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , ST.make(MD.EtFu, "nether_gold_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.EtFu, "copper_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Coal                   , ST.make(MD.EtFu, "deepslate_coal_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Fe2O3                  , ST.make(MD.EtFu, "deepslate_iron_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Au                     , ST.make(MD.EtFu, "deepslate_gold_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Cu                     , ST.make(MD.EtFu, "deepslate_copper_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Diamond                , ST.make(MD.EtFu, "deepslate_diamond_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Lapis                  , ST.make(MD.EtFu, "deepslate_lapis_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , ST.make(MD.EtFu, "deepslate_redstone_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , ST.make(MD.EtFu, "deepslate_lit_redstone_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Emerald                , ST.make(MD.EtFu, "deepslate_emerald_ore", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

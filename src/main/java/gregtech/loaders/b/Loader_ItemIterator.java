@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,8 @@ import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -55,6 +57,11 @@ public class Loader_ItemIterator implements Runnable {
 		
 		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !ST.isGT((Item)tObject)) {
 			Item tItem = (Item)tObject;
+			Block tBlock = ST.block(tItem);
+			
+			// Hide all those stupid Double Slabs from NEI...
+			if (tBlock instanceof BlockSlab && tBlock.isOpaqueCube()) ST.hide(tBlock);
+			
 			if ((tName = tItem.getUnlocalizedName()) != null) {
 				if (tCheckCans && tItem instanceof ItemFood && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
 					int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
