@@ -30,6 +30,7 @@ import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -154,10 +155,16 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			}
 			
 			try {
+				// Use Deepslate if available, except in the Nether.
+				Block tStone = (aWorld.provider.dimensionId == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
 				// Keep Distances within the Chunk for this important step.
 				int[] tD = new int[] {0, 3, 5, 6, 7, 6, 4};
 				for (int tY = 1; tY < tD.length; tY++) for (int tX = -tD[tY]; tX <= tD[tY]; tX++) for (int tZ = -tD[tY]; tZ <= tD[tY]; tZ++) {
-					WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
+					if (tStone != NB) {
+						aWorld.setBlock(aMinX+8+tX, tY, aMinZ+8+tZ, tStone, 0, 0);
+					} else {
+						WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
+					}
 					switch(aRandom.nextInt(6)) {
 					case 0:         WD.setOre     (aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
 					case 1: case 2: WD.setSmallOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;

@@ -61,6 +61,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
+		final StoneLayer[] tScan = new StoneLayer[7];
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
@@ -68,15 +69,24 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final int tX = aMinX+i, tZ = aMinZ+j;
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
-			StoneLayer[] tScan = new StoneLayer[] {
-			  StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX,  0, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX,  1, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize))
-			, StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize))
-			};
+			if (StoneLayer.DEEPSLATE != null) {
+				// The first 5 Layers are Deepslate if possible.
+				tScan[0] = StoneLayer.DEEPSLATE;
+				tScan[1] = StoneLayer.DEEPSLATE;
+				tScan[2] = StoneLayer.DEEPSLATE;
+				tScan[3] = StoneLayer.DEEPSLATE;
+				tScan[4] = StoneLayer.DEEPSLATE;
+				tScan[5] = StoneLayer.DEEPSLATE;
+				tScan[6] = StoneLayer.DEEPSLATE;
+			} else {
+				tScan[0] = StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize));
+				tScan[1] = StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize));
+				tScan[2] = StoneLayer.LAYERS.get(tNoise.get(tX,  0, tZ, tListSize));
+				tScan[3] = StoneLayer.LAYERS.get(tNoise.get(tX,  1, tZ, tListSize));
+				tScan[4] = StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize));
+				tScan[5] = StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize));
+				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize));
+			}
 			
 			boolean tCanPlaceRocks = F;
 			OreDictMaterial tLastRock = MT.Stone, tLastOre = null;

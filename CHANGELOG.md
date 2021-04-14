@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.10: (Not released yet, released whenever it needs to be)
+[COMPAT] Et Futurum Requiem's Deepslate will generate near Bedrock now. Also Default Config Pack updated for Et Futurum Requiem.
 [IMPROVED]
 The Vanilla "getting kicked back to Main Menu, when launching Singleplayer"-Bug should be fixed.
 It wasn't my fault, but hey fixed is fixed.

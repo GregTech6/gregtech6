@@ -75,7 +75,29 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenStoneLayers("stonelayers", T, GEN_GT, GEN_ENVM_GT, GEN_A97_GT); // MUST BE FIRST
 		
-		
+		Block tDeepslate = IL.EtFu_Deepslate.block();
+		if (ST.valid(tDeepslate)) {
+			Block tDeepcobble = IL.EtFu_Deepslate_Cobble.block();
+			if (ST.valid(tDeepcobble)) {
+				StoneLayer.DEEPSLATE = new StoneLayer(tDeepslate, 0, tDeepcobble, 0, tDeepcobble, 0, MT.Slate
+				, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumBlack         ,U256,  0,  5) : null
+				, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumWhite         ,U256,  0,  5) : null
+				, MD.RP  .mLoaded ? new StoneLayerOres(MT.Nikolite              ,U256,  0,  5) : null
+				, MD.BP  .mLoaded ? new StoneLayerOres(MT.Teslatite             ,U256,  0,  5) : null
+				, MD.PR  .mLoaded ? new StoneLayerOres(MT.Electrotine           ,U256,  0,  5) : null
+				, new StoneLayerOres(MT.Redstone                                ,U128,  0,  5)
+				);
+			} else {
+				StoneLayer.DEEPSLATE = new StoneLayer(tDeepslate, 0, tDeepslate, 0, tDeepslate, 0, MT.Slate
+				, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumBlack         ,U256,  0,  5) : null
+				, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumWhite         ,U256,  0,  5) : null
+				, MD.RP  .mLoaded ? new StoneLayerOres(MT.Nikolite              ,U256,  0,  5) : null
+				, MD.BP  .mLoaded ? new StoneLayerOres(MT.Teslatite             ,U256,  0,  5) : null
+				, MD.PR  .mLoaded ? new StoneLayerOres(MT.Electrotine           ,U256,  0,  5) : null
+				, new StoneLayerOres(MT.Redstone                                ,U128,  0,  5)
+				);
+			}
+		}
 		
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone));
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone));

@@ -93,7 +93,7 @@ public enum IL implements IItemContainer {
 	NeLi_Stem_Crimson, NeLi_Stem_Warped, NeLi_Stem_FoxFire, NeLi_Beam1_Crimson, NeLi_Beam1_Warped, NeLi_Beam1_FoxFire, NeLi_Hyphae_Crimson, NeLi_Hyphae_Warped, NeLi_Hyphae_FoxFire, NeLi_Beam2_Crimson, NeLi_Beam2_Warped, NeLi_Beam2_FoxFire,
 	EtFu_Chorus_Fruit, EtFu_Chorus_Popped, EtFu_Rabbit_Foot, EtFu_Beet_Seeds, EtFu_Dragon_Breath, EtFu_Lingering_Potion, EtFu_Path, EtFu_Dirt, EtFu_Gravel, EtFu_Sandstone, EtFu_Obsidian, EtFu_Ancient_Debris, EtFu_Quartz_Bricks, EtFu_Magmatic_Netherrack, EtFu_Barrel, EtFu_Wither_Rose,
 	EtFu_Bark_Oak, EtFu_Bark_Spruce, EtFu_Bark_Birch, EtFu_Bark_Jungle, EtFu_Bark_Acacia, EtFu_Bark_DarkOak, EtFu_Beam1_Oak, EtFu_Beam1_Spruce, EtFu_Beam1_Birch, EtFu_Beam1_Jungle, EtFu_Beam1_Acacia, EtFu_Beam1_DarkOak, EtFu_Beam2_Oak, EtFu_Beam2_Spruce, EtFu_Beam2_Birch, EtFu_Beam2_Jungle, EtFu_Beam2_Acacia, EtFu_Beam2_DarkOak,
-	EtFu_Granite, EtFu_Diorite, EtFu_Andesite, EtFu_Granite_Smooth, EtFu_Diorite_Smooth, EtFu_Andesite_Smooth,
+	EtFu_Granite, EtFu_Diorite, EtFu_Andesite, EtFu_Granite_Smooth, EtFu_Diorite_Smooth, EtFu_Andesite_Smooth, EtFu_Deepslate, EtFu_Deepslate_Cobble, EtFu_Deepslate_Smooth, EtFu_Tuff,
 	GaSu_Granite, GaSu_Diorite, GaSu_Andesite, GaSu_Granite_Smooth, GaSu_Diorite_Smooth, GaSu_Andesite_Smooth, GaSu_Basalt, GaSu_Basalt_Smooth, GaSu_Beet_Seeds,
 	CHSL_Granite, CHSL_Diorite, CHSL_Andesite, CHSL_Granite_Smooth, CHSL_Diorite_Smooth, CHSL_Andesite_Smooth,
 	CHSL_Present,

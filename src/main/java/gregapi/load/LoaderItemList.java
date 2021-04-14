@@ -318,6 +318,9 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.brick_block                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.obsidian                     , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.bedrock                      , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "tuff"                     , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "deepslate"                , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "cobbled_deepslate"        , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "crying_obsidian"          , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.NeLi, "CryingObsidian"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.NePl, "CryingObsidian"           , 1, W));
@@ -508,6 +511,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.CHSL, "marble"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.CHSL, "limestone"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "stone"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "tuff"                           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "18Stones"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "basalt"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BOTA, "stone"                          , null));
@@ -1169,6 +1174,10 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));
 		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0), null, OD.gravel);
+		IL.EtFu_Tuff                            .set(ST.make(MD.EtFu, "tuff"                                , 1, 0), new OreDictItemData(MT.Stone   , U), OP.stone.dat(MT.Stone   ));
+		IL.EtFu_Deepslate                       .set(ST.make(MD.EtFu, "deepslate"                           , 1, 0), new OreDictItemData(MT.Slate   , U), OP.stone.dat(MT.Slate   ));
+		IL.EtFu_Deepslate_Cobble                .set(ST.make(MD.EtFu, "cobbled_deepslate"                   , 1, 0), new OreDictItemData(MT.Slate   , U), OP.stone.dat(MT.Slate   ));
+		IL.EtFu_Deepslate_Smooth                .set(ST.make(MD.EtFu, "polished_deepslate"                  , 1, 0), new OreDictItemData(MT.Slate   , U), OP.stone.dat(MT.Slate   ));
 		IL.EtFu_Granite                         .set(ST.make(MD.EtFu, "stone"                               , 1, 1), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
 		IL.EtFu_Granite_Smooth                  .set(ST.make(MD.EtFu, "stone"                               , 1, 2), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
 		IL.EtFu_Diorite                         .set(ST.make(MD.EtFu, "stone"                               , 1, 3), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
