@@ -96,7 +96,7 @@ public class LanguageHandler {
 		aKey = aKey.trim();
 		if (aKey.length() <= 0) return "";
 		String rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
-		if (UT.Code.stringValid(rTranslation)) return rTranslation;
+		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;
 		rTranslation = StatCollector.translateToLocal(aKey);
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;
 		if (aKey.endsWith(".name")) {
