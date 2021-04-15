@@ -239,19 +239,19 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 					mTransferredAmount += Math.min(8, mTanks[i].amount());
 					GarbageGT.trash(mTanks[i], 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
-					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
 					mTransferredAmount += Math.min(64, mTanks[i].amount());
 					GarbageGT.trash(mTanks[i], 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
-					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				if (!mAcidProof && FL.acid(tFluid)) {
 					mTransferredAmount += Math.min(16, mTanks[i].amount());
 					GarbageGT.trash(mTanks[i], 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
-					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
 						GarbageGT.trash(mTanks);
 						setToAir();

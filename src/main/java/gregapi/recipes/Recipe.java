@@ -348,14 +348,12 @@ public class Recipe {
 			}
 			
 			for (FluidStack tFluid : aRecipe.mFluidInputs) if (FL.Error.is(tFluid)) {
-				if (D1) {
-					DEB.println("Compat: The Fluid for a Recipe has not been found! This might just be for a Mod that is not installed!");
-					DEB.println("Input Items:  " + ST.names(aRecipe.mInputs));
-					DEB.println("Input Fluid:  " + FL.configNames(aRecipe.mFluidInputs));
-					DEB.println("Output Items: " + ST.names(aRecipe.mOutputs));
-					DEB.println("Output Fluid: " + FL.configNames(aRecipe.mFluidOutputs));
-					int i = 0; for (StackTraceElement tElement : new Exception().getStackTrace()) if (!tElement.getClassName().equals(RecipeMap.class.getName())) if (i++<5 && !tElement.getClassName().startsWith("sun")) DEB.println("\tat " + tElement); else break;
-				}
+				DEB.println("Compat: The Fluid for a Recipe has not been found! This might just be for a Mod that is not installed!");
+				DEB.println("Input Items:  " + ST.names(aRecipe.mInputs));
+				DEB.println("Input Fluid:  " + FL.configNames(aRecipe.mFluidInputs));
+				DEB.println("Output Items: " + ST.names(aRecipe.mOutputs));
+				DEB.println("Output Fluid: " + FL.configNames(aRecipe.mFluidOutputs));
+				int i = 0; for (StackTraceElement tElement : new Exception().getStackTrace()) if (!tElement.getClassName().equals(RecipeMap.class.getName())) if (i++<5 && !tElement.getClassName().startsWith("sun")) DEB.println("\tat " + tElement); else break;
 				return null;
 			}
 			

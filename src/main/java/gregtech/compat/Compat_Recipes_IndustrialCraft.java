@@ -118,7 +118,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			UT.removeSimpleIC2MachineRecipe(ST.make(Blocks.ice       , 1, W), ic2.api.recipe.Recipes.compressor.getRecipes(), NI);
 			UT.removeSimpleIC2MachineRecipe(ST.make(Blocks.packed_ice, 1, W), ic2.api.recipe.Recipes.compressor.getRecipes(), NI);
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
 		RM.ic2_compressor(ST.make(Items.snowball, 4, 0), ST.make(Blocks.snow, 1, 0));
@@ -136,7 +136,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		try {
 			UT.removeSimpleIC2MachineRecipe(NI, ic2.api.recipe.Recipes.compressor.getRecipes(), ST.make(MD.IC2, "item.itemPartDCP", 1, 0));
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
 		RM.ic2_compressor(OP.ingot          .mat(MT.Cu, 9), OP.plateDense.mat(MT.Cu, 1));
@@ -291,7 +291,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			UT.Reflection.getField(tCrop = Crops.instance.getCropList()[13], "mDrop").set(tCrop, OP.plantGtBlossom.mat(MT.Fe, 1));
 			UT.Reflection.getField(tCrop = Crops.instance.getCropList()[14], "mDrop").set(tCrop, OP.plantGtBlossom.mat(MT.Au, 1));
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
 		CR.delate(ST.mkic("MOXFuel", 1));

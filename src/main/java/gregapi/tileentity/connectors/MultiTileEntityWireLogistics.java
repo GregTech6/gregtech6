@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,7 +22,6 @@ package gregapi.tileentity.connectors;
 import static gregapi.data.CS.*;
 
 import java.util.Collection;
-import java.util.List;
 
 import gregapi.code.TagData;
 import gregapi.data.TD;
@@ -33,18 +32,12 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.logistics.ITileEntityLogistics;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityWireLogistics extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityLogistics {
-	@Override
-	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		super.addToolTips(aList, aStack, aF3_H);
-	}
-	
 	@Override
 	public boolean canConnect(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {
 		if (aDelegator.mTileEntity instanceof ITileEntityLogistics) return ((ITileEntityLogistics)aDelegator.mTileEntity).canLogistics(aDelegator.mSideOfTileEntity);

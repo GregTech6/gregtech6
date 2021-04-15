@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
+import gregapi.data.MT;
 import gregapi.gui.ContainerClientDefault;
 import gregapi.gui.ContainerCommonDefault;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -60,7 +61,7 @@ public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle i
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (aStack.getTagCompound() != null && aStack.getTagCompound().hasKey("gt.dungeonloot")) aList.add("Dungeon Loot: "+aStack.getTagCompound().getString("gt.dungeonloot"));
+		if (UT.Code.stringValid(mDungeonLootName)) aList.add("Dungeon Loot: "+mDungeonLootName);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -90,7 +91,7 @@ public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle i
 	@Override
 	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		if (showInCreative()) {
-			if (D1) for (String tLoot : new String[] {"mineshaftCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "strongholdCorridor", "strongholdLibrary", "strongholdCrossing", "villageBlacksmith", "bonusChest", "dungeonChest"}) aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID, UT.NBT.makeString("gt.dungeonloot", tLoot)));
+			if (mMaterial == MT.Au) for (String tLoot : new String[] {"mineshaftCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "strongholdCorridor", "strongholdLibrary", "strongholdCrossing", "villageBlacksmith", "bonusChest", "dungeonChest"}) aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID, UT.NBT.makeString("gt.dungeonloot", tLoot)));
 			return T;
 		}
 		return F;

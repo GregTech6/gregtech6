@@ -377,10 +377,8 @@ public class CR {
 			
 			for (; idx < aRecipe.length; idx += 2) {
 				if (aRecipe[idx] == null || aRecipe[idx + 1] == null) {
-					if (D1) {
-						ERR.println("WARNING: Missing Item for shaped Recipe: " + (aResult==null?"null":aResult.getDisplayName()));
-						for (Object tContent : aRecipe) ERR.println(tContent);
-					}
+					ERR.println("WARNING: Missing Item for shaped Recipe: " + (aResult==null?"null":aResult.getDisplayName()));
+					for (Object tContent : aRecipe) ERR.println(tContent);
 					return F;
 				}
 				
@@ -483,7 +481,7 @@ public class CR {
 			int i = 0;
 			for (Object tObject : aRecipe) {
 				if (tObject == null) {
-					if (D1) ERR.println("WARNING: Missing Item for shapeless Recipe: " + (aResult==null?"null":aResult.getDisplayName()));
+					ERR.println("WARNING: Missing Item for shapeless Recipe: " + (aResult==null?"null":aResult.getDisplayName()));
 					for (Object tContent : aRecipe) ERR.println(tContent);
 					return F;
 				}

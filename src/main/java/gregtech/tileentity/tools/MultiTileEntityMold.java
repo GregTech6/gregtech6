@@ -137,7 +137,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (mShape == 0)
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_MOLD_SELECT));
 		else
-		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_MOLD) + " " + getMoldRecipe(mShape).mNameLocal + " " + Chat.WHITE + UT.Code.displayUnits(getMoldRequiredMaterialUnits()) + " Units");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_MOLD) + " " + getMoldRecipe(mShape).mNameLocal + Chat._WHITE + UT.Code.displayUnits(getMoldRequiredMaterialUnits()) + " Units");
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");

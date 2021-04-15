@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -124,7 +124,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 				}
 				return 0;
 			}
-		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		
 		if (IL.IC2_Scaffold     .equal(aBlock)) return aUses >= 10 && MultiTileEntityCFoam.setBlock(aWorld, aX, aY, aZ, aDelegator.mSideOfTileEntity, aPlayer, aStack, DYES[mColor], mOwned) ? 10 : 0;

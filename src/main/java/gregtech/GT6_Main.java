@@ -134,7 +134,7 @@ public class GT6_Main extends Abstract_Mod {
 			if (tGregTech != null) tNewModsList.add(tGregTech);
 			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
 		gt_proxy.mSkeletonsShootGTArrows = ConfigsGT.GREGTECH.get("general", "SkeletonsShootGTArrows", 16);
@@ -192,7 +192,7 @@ public class GT6_Main extends Abstract_Mod {
 				UT.Reflection.getField("ic2.core.item.ItemScrapbox$Drop", "topChance", T, T).set(null, 0);
 				((List<?>)UT.Reflection.getFieldContent(UT.Reflection.getFieldContent("ic2.api.recipe.Recipes", "scrapboxDrops", T, T), "drops", T, T)).clear();
 			} catch(Throwable e) {
-				if (D1) e.printStackTrace(ERR);
+				e.printStackTrace(ERR);
 			}
 
 			OUT.println(getModNameForLog() + ": Adding Scrap with a Weight of 200.0F to the Scrapbox Drops.");
@@ -686,7 +686,7 @@ public class GT6_Main extends Abstract_Mod {
 			ORD.println("END GregTech-Debug");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 		}
-		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 
 	@Override public void onModServerStarted2(FMLServerStartedEvent aEvent) {/**/}

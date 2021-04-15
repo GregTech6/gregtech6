@@ -49,6 +49,7 @@ import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregapi.worldgen.StoneLayer;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -181,6 +182,10 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						// This might be the Overworld or some Overworld alike Dimension.
 						slot(0, ST.make((Block)BlocksGT.ores_broken[mType], 1, tMaterial.mID));
 					}
+					if (ST.invalid(slot(0)) && StoneLayer.DEEPSLATE != null) {
+						// Make Deepslate Ore before Cobblestone.
+						slot(0, ST.make((Block)StoneLayer.DEEPSLATE.mOreBroken, 1, tMaterial.mID));
+					}
 					if (ST.invalid(slot(0))) {
 						// Make Vanilla Stone Ore, if nothing else applies.
 						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
@@ -205,6 +210,10 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 					} else if (mType < BlocksGT.stones.length) {
 						// This might be the Overworld or some Overworld alike Dimension.
 						slot(0, ST.make(BlocksGT.stones[mType], 1, 1));
+					}
+					if (ST.invalid(slot(0)) && StoneLayer.DEEPSLATE != null) {
+						// Make Deepslate before Cobblestone.
+						slot(0, ST.make(StoneLayer.DEEPSLATE.mCobble, 1, StoneLayer.DEEPSLATE.mMetaCobble));
 					}
 					if (ST.invalid(slot(0))) {
 						// Make Cobble, if nothing else applies.

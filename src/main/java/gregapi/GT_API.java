@@ -754,10 +754,10 @@ public class GT_API extends Abstract_Mod {
 			if (tGregTech != null) tNewModsList.add(0, tGregTech);
 			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPreLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPreLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
@@ -767,7 +767,7 @@ public class GT_API extends Abstract_Mod {
 		OUT.println(getModNameForLog() + ": If the Loading Bar somehow Freezes at this Point, then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
 		OreDictManager.INSTANCE.enableRegistrations();
 		
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
@@ -821,7 +821,7 @@ public class GT_API extends Abstract_Mod {
 		
 		if (mPlayerLogger != null) new Thread(mPlayerLogger).start();
 		
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 			if (tMaterial.mID < 10000) MAT_LOG.print(" ");
@@ -837,23 +837,23 @@ public class GT_API extends Abstract_Mod {
 	
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarting(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarting(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
 	public void onModServerStarted2(FMLServerStartedEvent aEvent) {
 		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarted(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarted(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
 	public void onModServerStopping2(FMLServerStoppingEvent aEvent) {
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopping(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopping(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
 	public void onModServerStopped2(FMLServerStoppedEvent aEvent) {
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopped(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopped(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Mod.EventHandler
@@ -888,6 +888,6 @@ public class GT_API extends Abstract_Mod {
 		OUT.println(getModNameForLog() + ": Remapping ItemStackMaps due to ID Map change. Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
 		
 		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 }

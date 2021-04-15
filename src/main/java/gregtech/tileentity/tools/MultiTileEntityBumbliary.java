@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -161,7 +161,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 							}
 						} else {
 							if (mLife %  300 == 150 && rng(10000) < Util.getAggressiveness(tRoyalTag)) {
-								try {for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-4, -4, -4, +5, +5, +5))) attackEntity(tEntity);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+								try {for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-4, -4, -4, +5, +5, +5))) attackEntity(tEntity);} catch(Throwable e) {e.printStackTrace(ERR);}
 							}
 							if (mLife % 1200 == 600 && rng(10000) < Util.getWorkForce(tRoyalTag) && checkWork(tRoyalTag)) {
 								if (null != tRoyalItem.bumbleCanProduce(worldObj, xCoord, yCoord, zCoord, tRoyalStack, tRoyalMeta, 3)) {

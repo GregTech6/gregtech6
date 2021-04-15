@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -106,7 +106,7 @@ public class PlayerModelRenderer extends RenderPlayer {
 				GL11.glPopMatrix();
 			}
 		} catch (Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 	}
 }

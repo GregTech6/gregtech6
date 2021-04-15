@@ -21,7 +21,7 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [IMPROVED] Creating Material Dictionaries no longer happens on Startup and is now done on the fly.
 [FIXED] Button Panel was resetting its Chiseled Design whenever a Block Update or similar happened.
 [FIXED] Hoppers and Queue Hoppers will no longer let other thigns pull from their Output Facing.
-[FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus.
+[FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus. IT will also output Deepslate instead of Vanilla Stone in the Overworld if applicable. (ofcourse other Stone Layer Stones will still be outputted)
 [FIXED] Ice Harvesting with the Saw now actually works properly and does no longer spawn Water Blocks.
 [FIXED] A Crash when Furnace Recipes with Liquid XP were added to NEI.
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.

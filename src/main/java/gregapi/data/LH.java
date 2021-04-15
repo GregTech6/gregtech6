@@ -561,30 +561,57 @@ public class LH {
 	
 	public static class Chat {
 		public static final String
-		  BLACK = EnumChatFormatting.BLACK.toString()
-		, DBLUE = EnumChatFormatting.DARK_BLUE.toString()
-		, DGREEN = EnumChatFormatting.DARK_GREEN.toString()
-		, DCYAN = EnumChatFormatting.DARK_AQUA.toString()
-		, DRED = EnumChatFormatting.DARK_RED.toString()
-		, PURPLE = EnumChatFormatting.DARK_PURPLE.toString()
-		, ORANGE = EnumChatFormatting.GOLD.toString()
-		, GOLD = EnumChatFormatting.GOLD.toString()
-		, GRAY = EnumChatFormatting.GRAY.toString()
-		, DGRAY = EnumChatFormatting.DARK_GRAY.toString()
-		, BLUE = EnumChatFormatting.BLUE.toString()
-		, GREEN = EnumChatFormatting.GREEN.toString()
-		, CYAN = EnumChatFormatting.AQUA.toString()
-		, RED = EnumChatFormatting.RED.toString()
-		, PINK = EnumChatFormatting.LIGHT_PURPLE.toString()
-		, YELLOW = EnumChatFormatting.YELLOW.toString()
-		, WHITE = EnumChatFormatting.WHITE.toString()
-		, OBFUSCATED = EnumChatFormatting.OBFUSCATED.toString()
-		, BOLD = EnumChatFormatting.BOLD.toString()
-		, STRIKETHROUGH = EnumChatFormatting.STRIKETHROUGH.toString()
-		, UNDERLINE = EnumChatFormatting.UNDERLINE.toString()
-		, ITALIC = EnumChatFormatting.ITALIC.toString()
-		, RESET = EnumChatFormatting.RESET.toString()
-		, RESET_TOOLTIP = RESET + GRAY
+		   BLACK          = EnumChatFormatting.BLACK.toString()
+		,  DBLUE          = EnumChatFormatting.DARK_BLUE.toString()
+		,  DGREEN         = EnumChatFormatting.DARK_GREEN.toString()
+		,  DCYAN          = EnumChatFormatting.DARK_AQUA.toString()
+		,  DRED           = EnumChatFormatting.DARK_RED.toString()
+		,  PURPLE         = EnumChatFormatting.DARK_PURPLE.toString()
+		,  ORANGE         = EnumChatFormatting.GOLD.toString()
+		,  GOLD           = EnumChatFormatting.GOLD.toString()
+		,  GRAY           = EnumChatFormatting.GRAY.toString()
+		,  DGRAY          = EnumChatFormatting.DARK_GRAY.toString()
+		,  BLUE           = EnumChatFormatting.BLUE.toString()
+		,  GREEN          = EnumChatFormatting.GREEN.toString()
+		,  CYAN           = EnumChatFormatting.AQUA.toString()
+		,  RED            = EnumChatFormatting.RED.toString()
+		,  PINK           = EnumChatFormatting.LIGHT_PURPLE.toString()
+		,  YELLOW         = EnumChatFormatting.YELLOW.toString()
+		,  WHITE          = EnumChatFormatting.WHITE.toString()
+		,  OBFUSCATED     = EnumChatFormatting.OBFUSCATED.toString()
+		,  BOLD           = EnumChatFormatting.BOLD.toString()
+		,  STRIKETHROUGH  = EnumChatFormatting.STRIKETHROUGH.toString()
+		,  UNDERLINE      = EnumChatFormatting.UNDERLINE.toString()
+		,  ITALIC         = EnumChatFormatting.ITALIC.toString()
+		,  RESET          = EnumChatFormatting.RESET.toString()
+		,  RESET_TOOLTIP  = RESET + GRAY
+		;
+		
+		public static final String
+		  _BLACK          = " " + BLACK
+		, _DBLUE          = " " + DBLUE
+		, _DGREEN         = " " + DGREEN
+		, _DCYAN          = " " + DCYAN
+		, _DRED           = " " + DRED
+		, _PURPLE         = " " + PURPLE
+		, _ORANGE         = " " + ORANGE
+		, _GOLD           = " " + GOLD
+		, _GRAY           = " " + GRAY
+		, _DGRAY          = " " + DGRAY
+		, _BLUE           = " " + BLUE
+		, _GREEN          = " " + GREEN
+		, _CYAN           = " " + CYAN
+		, _RED            = " " + RED
+		, _PINK           = " " + PINK
+		, _YELLOW         = " " + YELLOW
+		, _WHITE          = " " + WHITE
+		, _OBFUSCATED     = " " + OBFUSCATED
+		, _BOLD           = " " + BOLD
+		, _STRIKETHROUGH  = " " + STRIKETHROUGH
+		, _UNDERLINE      = " " + UNDERLINE
+		, _ITALIC         = " " + ITALIC
+		, _RESET          = " " + RESET
+		, _RESET_TOOLTIP  = " " + RESET_TOOLTIP
 		;
 		
 		public static String

@@ -157,7 +157,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				return F;
 			}
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		return F;
 	}
@@ -177,7 +177,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				return F;
 			}
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		return F;
 	}
@@ -198,7 +198,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				return F;
 			}
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		return F;
 	}
@@ -219,7 +219,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				return F;
 			}
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		return F;
 	}
@@ -232,7 +232,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			aStack = tBehavior.onItemRightClick(this, aStack, aWorld, aPlayer);
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		return aStack;
 	}

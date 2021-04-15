@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public class Behavior_Spray_Foam_Remover extends AbstractBehaviorDefault {
 				}
 				return 0;
 			}
-		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		if (IL.IC2_Foam.block() == aBlock || IL.IC2_Wall.block() == aBlock) return aUses >= 10 && aWorld.setBlock(aX, aY, aZ, NB, 0, 3) ? 10 : 0;
 		return 0;

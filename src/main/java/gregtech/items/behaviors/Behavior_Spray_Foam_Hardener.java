@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public class Behavior_Spray_Foam_Hardener extends AbstractBehaviorDefault {
 				}
 				return 0;
 			}
-		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		if (IL.IC2_Foam           .block() == aBlock) return aUses >= 10 && aWorld.setBlock(aX, aY, aZ, IL.IC2_Wall           .block(), 7, 3) ? 10 : 0;
 		if (IL.IC2_Foam_Reinforced.block() == aBlock) return aUses >= 10 && aWorld.setBlock(aX, aY, aZ, IL.IC2_Wall_Reinforced.block(), 0, 3) ? 10 : 0;

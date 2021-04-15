@@ -667,24 +667,24 @@ public class WD {
 			rList.add(tHarvestLevel == 0 && aBlock.getMaterial().isAdventureModeExempt() ? "Hand-Harvestable, but " + (Code.stringValid(tHarvestTool)?Code.capitalise(tHarvestTool):"None") + " is faster" : "Tool to Harvest: " + (Code.stringValid(tHarvestTool)?Code.capitalise(tHarvestTool):"None") + " (" + tHarvestLevel + ")");
 			if (aBlock.isBeaconBase(aWorld, aX, aY, aZ, aX, aY+1, aZ)) rList.add("Is usable for Beacon Pyramids");
 			if (MD.GC.mLoaded && aBlock instanceof IPartialSealableBlock) rList.add(((IPartialSealableBlock)aBlock).isSealed(aWorld, aX, aY, aZ, FORGE_DIR[aSide ^ 1]) ? "Is Sealable on this Side" : "Is not Sealable on this Side");
-		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (aTileEntity != null) {
 			try {if (aTileEntity instanceof ITileEntityWeight && ((ITileEntityWeight)aTileEntity).getWeightValue(aSide) > 0) {
 				rEUAmount+=V[3];
 				rList.add("Weight: " + ((ITileEntityWeight)aTileEntity).getWeightValue(aSide) + " kg");
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntityTemperature && ((ITileEntityTemperature)aTileEntity).getTemperatureMax(aSide) > 0) {
 				rEUAmount+=V[3];
 				rList.add("Temperature: " + ((ITileEntityTemperature)aTileEntity).getTemperatureValue(aSide) + " / " + ((ITileEntityTemperature)aTileEntity).getTemperatureMax(aSide) + " K");
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntityGibbl && ((ITileEntityGibbl)aTileEntity).getGibblMax(aSide) > 0) {
 				rEUAmount+=V[3];
 				rList.add("Pressure: " + ((ITileEntityGibbl)aTileEntity).getGibblValue(aSide) + " / " + ((ITileEntityGibbl)aTileEntity).getGibblMax(aSide) + " Gibbl");
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntityProgress && ((ITileEntityProgress)aTileEntity).getProgressMax(aSide) > 0) {
 				rEUAmount+=V[3];
 				rList.add("Progress: " + ((ITileEntityProgress)aTileEntity).getProgressValue(aSide) + " / " + ((ITileEntityProgress)aTileEntity).getProgressMax(aSide));
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			
 			
 			String rState = "";
@@ -692,12 +692,12 @@ public class WD {
 				if (Code.stringValid(rState)) rState += " --- ";
 				rEUAmount+=V[3];
 				rState += ("State: " + (((ITileEntitySwitchableOnOff)aTileEntity).getStateOnOff()?"ON":"OFF"));
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntitySwitchableMode) {
 				if (Code.stringValid(rState)) rState += " --- ";
 				rEUAmount+=V[3];
 				rState += ("Mode: " + (((ITileEntitySwitchableMode)aTileEntity).getStateMode()));
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntityRunningSuccessfully) {
 				if (Code.stringValid(rState)) rState += " --- ";
 				rEUAmount+=V[3];
@@ -714,7 +714,7 @@ public class WD {
 				if (Code.stringValid(rState)) rState += " --- ";
 				rEUAmount+=V[3];
 				rState += ("Running: " + (((ITileEntityRunningPossible)aTileEntity).getStateRunningPossible()?"Possible":"Not Possible"));
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			if (Code.stringValid(rState)) rList.add(rState);
 			
 			
@@ -724,13 +724,13 @@ public class WD {
 					rList.add("Input: " + ((ITileEntityEnergy)aTileEntity).getEnergySizeInputMin(tEnergyType, aSide) + " to " + ((ITileEntityEnergy)aTileEntity).getEnergySizeInputMax(tEnergyType, aSide) + tEnergyType.getLocalisedNameShort());
 					rList.add("Output: " + ((ITileEntityEnergy)aTileEntity).getEnergySizeOutputMin(tEnergyType, aSide) + " to " + ((ITileEntityEnergy)aTileEntity).getEnergySizeOutputMax(tEnergyType, aSide) + tEnergyType.getLocalisedNameShort());
 				}
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {if (aTileEntity instanceof ITileEntityEnergyDataCapacitor) {
 				rEUAmount+=V[3];
 				for (TagData tEnergyType : ((ITileEntityEnergyDataCapacitor)aTileEntity).getEnergyCapacitorTypes(aSide)) {
 					rList.add("Stored: " + ((ITileEntityEnergyDataCapacitor)aTileEntity).getEnergyStored(tEnergyType, aSide) + " of " + ((ITileEntityEnergyDataCapacitor)aTileEntity).getEnergyCapacity(tEnergyType, aSide) + tEnergyType.getLocalisedNameShort());
 				}
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			
 			
 			try {if (aTileEntity instanceof IFluidHandler) {
@@ -739,47 +739,47 @@ public class WD {
 				if (tTanks != null) for (byte i = 0; i < tTanks.length; i++) {
 					rList.add("Tank " + i + ": " + (tTanks[i].fluid==null?0:tTanks[i].fluid.amount) + " / " + tTanks[i].capacity + " " + FL.name(tTanks[i].fluid, T));
 				}
-			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			}} catch(Throwable e) {e.printStackTrace(ERR);}
 			
 			if (!(aTileEntity instanceof ITileEntity)) {
 				try {if (aTileEntity instanceof ic2.api.reactor.IReactorChamber) {
 					rEUAmount+=V[4];
 					aTileEntity = (TileEntity)(((ic2.api.reactor.IReactorChamber)aTileEntity).getReactor());
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.reactor.IReactor) {
 					rEUAmount+=V[4];
 					rList.add( "Heat: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeat() + "/" + ((ic2.api.reactor.IReactor)aTileEntity).getMaxHeat()
 							+ "  HEM: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeatEffectModifier() + "  Base IC2-EU Output: " + ((ic2.api.reactor.IReactor)aTileEntity).getReactorEUEnergyOutput());
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.tile.IWrenchable) {
 					rEUAmount+=V[3];
 					rList.add("Facing: " + ((ic2.api.tile.IWrenchable)aTileEntity).getFacing() + " / IC2 Wrench Drop Chance: " + (((ic2.api.tile.IWrenchable)aTileEntity).wrenchCanRemove(aPlayer)?(((ic2.api.tile.IWrenchable)aTileEntity).getWrenchDropRate()*100):0) + "%");
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergySink) {
 					rEUAmount+=V[3];
 					rList.add("Demanded Energy: " + ((ic2.api.energy.tile.IEnergySink)aTileEntity).getDemandedEnergy() + " IC2-EU");
 					rList.add("Max Safe Input: " + V[((ic2.api.energy.tile.IEnergySink)aTileEntity).getSinkTier()] + " IC2-EU/t");
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergySource) {
 					rEUAmount+=V[3];
 					rList.add("Max Energy Output: " + V[((ic2.api.energy.tile.IEnergySource)aTileEntity).getSourceTier()] + " IC2-EU/t");
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergyConductor) {
 					rEUAmount+=V[3];
 					rList.add("Conduction Loss: " + ((ic2.api.energy.tile.IEnergyConductor)aTileEntity).getConductionLoss() + " IC2-EU/m");
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.tile.IEnergyStorage) {
 					rEUAmount+=V[3];
 					rList.add("Contained Energy: " + ((ic2.api.tile.IEnergyStorage)aTileEntity).getStored() + " of " + ((ic2.api.tile.IEnergyStorage)aTileEntity).getCapacity() + " IC2-EU");
 					rList.add(((ic2.api.tile.IEnergyStorage)aTileEntity).isTeleporterCompatible(FORGE_DIR[aSide])?"Teleporter Compatible":"Not Teleporter Compatible");
-				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {e.printStackTrace(ERR);}
 			}
 		}
 		try {if (aBlock instanceof IBlockDebugable) {
 			rEUAmount+=V[3];
 			ArrayList<String> temp = ((IBlockDebugable)aBlock).getDebugInfo(aPlayer, aX, aY, aZ, aScanLevel);
 			if (temp != null) rList.addAll(temp);
-		}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		}} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		BlockScanningEvent tEvent = new BlockScanningEvent(aWorld, aPlayer, aX, aY, aZ, aSide, aScanLevel, aBlock, aTileEntity, rList, aClickX, aClickY, aClickZ);
 		tEvent.mEUCost = rEUAmount;

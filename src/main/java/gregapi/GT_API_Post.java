@@ -101,7 +101,7 @@ public class GT_API_Post extends Abstract_Mod {
 			if (tGregTech != null) tNewModsList.add(tGregTech);
 			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
 		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
+			e.printStackTrace(ERR);
 		}
 		
 		// Fixing Items of certain Mods.
