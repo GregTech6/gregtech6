@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -107,7 +107,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (slotHas(1)) aList.add(Chat.YELLOW + slot(1).getDisplayName() + Chat.GRAY + ": " + Chat.WHITE + slot(1).stackSize);
-		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.1") + mMaxStorage);
+		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.1") + UT.Code.makeString(mMaxStorage));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.2"));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));

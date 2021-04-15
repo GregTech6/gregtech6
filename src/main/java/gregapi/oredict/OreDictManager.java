@@ -316,13 +316,11 @@ public final class OreDictManager {
 		String aRegName = ST.regName(aEvent.Ore);
 		
 		// Yeah this definitely can happen, and I want to see it if any Mod fucks that one up, so I can potentially fix that..
-		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block as: " + aEvent.Name); return;}
-		
-		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
-		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
-		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
+		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block with: " + aEvent.Name); return;}
 		
 		if (GT != null) {
+			// Et Futurum Copper Blocks do not follow the 9 Ingots = 1 Block convention.
+			if (MD.EtFu.owns(aRegName) &&  aEvent.Name.equals("blockCopper")) return;
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
 			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
@@ -350,6 +348,10 @@ public final class OreDictManager {
 				return;
 			}
 		}
+		
+		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
+		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
+		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
 		
 		//ORD.println(aModID + " → " + aRegName + " → " + aEvent.Name);
 		
