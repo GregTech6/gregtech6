@@ -158,8 +158,8 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			// Use Deepslate if available, except in the Nether.
 			Block tStone = (aWorld.provider.dimensionId == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
 			// Keep Distances within the Chunk for this important step.
-			int[] tD1 = new int[] { 5,  4,  2,  1,  0,  1,  5};
-			int[] tD2 = new int[] {11, 12, 14, 15, 16, 15, 11};
+			int[] tD1 = new int[] { 5,  4,  2,  1,  0,  2,  5};
+			int[] tD2 = new int[] {11, 12, 14, 15, 16, 14, 11};
 			
 			for (int tY = 1; tY < tD1.length; tY++) for (int tX = tD1[tY]; tX < tD2[tY]; tX++) for (int tZ = tD1[tY]; tZ < tD2[tY]; tZ++) {
 				if (GENERATED_NO_BEDROCK_ORE) if (tStone != NB) {
