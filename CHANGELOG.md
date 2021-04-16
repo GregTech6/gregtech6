@@ -19,6 +19,7 @@ It wasn't my fault, but hey mostly fixed is mostly fixed.
 Please test for yourself if it actually works, since it is random and my dozen Tests have definitely been a fluke. (though it might be less likely!)
 The Fix also has the side effect of loading Singleplayer Worlds without having that initial Lagspike, so getting into the World feels a bit smoother.
 [IMPROVED] Creating Material Dictionaries no longer happens on Startup and is now done on the fly.
+[IMPROVED] When you break Fluid Pipes, they will try to move their content to connected adjacent Blocks/Pipes in order to not waste it. Keyword being TRY, because if there is nowhere to go they will still send it to the Garbage Dump.
 [FIXED] Button Panel was resetting its Chiseled Design whenever a Block Update or similar happened.
 [FIXED] Hoppers and Queue Hoppers will no longer let other thigns pull from their Output Facing.
 [FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus. IT will also output Deepslate instead of Vanilla Stone in the Overworld if applicable. (ofcourse other Stone Layer Stones will still be outputted)

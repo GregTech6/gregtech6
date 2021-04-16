@@ -283,7 +283,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Top Priority is filling Cauldrons and other specialties.
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentOther[tSide] != null) {
 			// Covers let distribution happen, right?
-			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
+			if (isCovered(tSide) && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
 			
 			Block tBlock = aAdjacentOther[tSide].getBlock();
 			// Filling up Cauldrons from Vanilla. Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
@@ -320,7 +320,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			// Are we even connected to this Side? (Only gets checked due to the Cover check being slightly expensive)
 			if (!canEmitFluidsTo(tSide)) continue;
 			// Covers let distribution happen, right?
-			if (hasCovers() && mCovers.mBehaviours[tSide] != null && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
+			if (isCovered(tSide) && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
 			// Is it a Pipe?
 			if (aAdjacentPipes[tSide] != null) {
 				// Check if the Pipe can be filled with this Fluid.
@@ -374,7 +374,17 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override
 	public boolean breakBlock() {
+		// Do the same thing Factorio does and just dump Fluid to adjacent connected things.
+		for (byte tSide : ALL_SIDES_VALID) if (canEmitFluidsTo(tSide)) {
+			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+			for (FluidTankGT tTank : mTanks) if (tTank.has()) {
+				if (isCovered(tSide) && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, tTank.get())) continue;
+				mTransferredAmount += FL.move(tTank, tDelegator);
+			}
+		}
+		// And if that doesn't work, go to the trash!
 		GarbageGT.trash(mTanks);
+		// Drop, uh Inventory? Eh, it is a super Call that is needed regardless, just in case. 
 		return super.breakBlock();
 	}
 	
