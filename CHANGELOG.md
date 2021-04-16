@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.10: (Not released yet, released whenever it needs to be)
+6.14.10: (Not released yet, released in a bit)
 [COMPAT] Et Futurum Requiem
 Default Config Pack updated for Et Futurum Requiem.
 Deepslate will generate near Bedrock now. It will generate 1 Block higher in Slime Chunks specifically.
@@ -28,9 +28,9 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [FIXED] Dust Funnel is now slightly smarter when pulling and pushing Items.
 [FIXED] Rightclicking a Path Block with a Shovel should no longer prompt other Shovel Placer Features like Torches.
 [FIXED] A bunch of Issues with Crucible Molds/Basins. There was more than one, that this mini rewrite solved.
-[FIXED] Radioactive Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
+[FIXED] Radioactive and Rare Earth Centrifuging requires Refined Ores only now instead of also allowing Purified Ores. The Recipe overwrote the regular Centrifuging of Purified Ores, resulting in Recipe inconsistencies.
 [FIXED] Byproducts for several Gem Ores, along with some other Ores.
-[CHANGED] Texture of the Generifier. Bear so definitely needs to test if it looks right, because he sure loves crafting this Machine! ;P
+[CHANGED] Texture of the Generifier. It now looks much more like "sucking the specialness out of Items", instead of an Epileptic Rave Machine.
 [ADDED] Small Malachite Ore near the Surface.
 [ADDED] Config to make Gravel never drop Flint when harvested by a Player. (This was added because another Mod does it, but very badly, so I needed to replace that Feature using GT6, ofcourse Flint will still drop by Default)
 [ADDED] Miniature Portal to Aroma1997's Mining Dimension.
