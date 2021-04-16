@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -84,9 +84,9 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/overlay/out"),
 				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/overlay/side")};
 			} else {
-				if (getMultiTileEntityRegistryID() != W && getMultiTileEntityID() != W) {
-					MultiTileEntityExtender tCanonicalTileEntity = (MultiTileEntityExtender)MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID()).getClassContainer(getMultiTileEntityID()).mCanonicalTileEntity;
-					mTextures = tCanonicalTileEntity.mTextures;
+				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
+				if (tCanonicalTileEntity instanceof MultiTileEntityExtender) {
+					mTextures = ((MultiTileEntityExtender)tCanonicalTileEntity).mTextures;
 				}
 			}
 		}

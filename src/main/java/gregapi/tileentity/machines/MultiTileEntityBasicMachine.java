@@ -213,12 +213,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/right"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/back")};
 			} else {
-				if (getMultiTileEntityRegistryID() != W && getMultiTileEntityID() != W) {
-					MultiTileEntityBasicMachine tCanonicalTileEntity = (MultiTileEntityBasicMachine)MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID()).getClassContainer(getMultiTileEntityID()).mCanonicalTileEntity;
-					mTexturesMaterial = tCanonicalTileEntity.mTexturesMaterial;
-					mTexturesInactive = tCanonicalTileEntity.mTexturesInactive;
-					mTexturesRunning  = tCanonicalTileEntity.mTexturesRunning;
-					mTexturesActive   = tCanonicalTileEntity.mTexturesActive;
+				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
+				if (tCanonicalTileEntity instanceof MultiTileEntityBasicMachine) {
+					mTexturesMaterial = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesMaterial;
+					mTexturesInactive = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesInactive;
+					mTexturesRunning  = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesRunning;
+					mTexturesActive   = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesActive;
 				} else {
 					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive = L6_IICONCONTAINER;
 				}

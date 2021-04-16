@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,6 +129,22 @@ public class MultiTileEntityRegistry {
 	/** Whatever you do, DO NOT GET THE UTTERLY RETARDED IDEA OF ADDING YOUR MULTITILEENTITIES TO MY OWN REGISTRY!!! Create your own instance! */
 	public static MultiTileEntityRegistry getRegistry(String aRegistryName) {
 		return NAMED_REGISTRIES.get(aRegistryName);
+	}
+	
+	public static TileEntity getCanonicalTileEntity(int aRegistryID, int aMultiTileEntityID) {
+		MultiTileEntityRegistry tRegistry = getRegistry(aRegistryID);
+		if (tRegistry == null) return null;
+		MultiTileEntityClassContainer tClassContainer = tRegistry.getClassContainer(aMultiTileEntityID);
+		if (tClassContainer == null) return null;
+		return tClassContainer.mCanonicalTileEntity;
+	}
+	
+	public static TileEntity getCanonicalTileEntity(String aRegistryName, int aMultiTileEntityID) {
+		MultiTileEntityRegistry tRegistry = getRegistry(aRegistryName);
+		if (tRegistry == null) return null;
+		MultiTileEntityClassContainer tClassContainer = tRegistry.getClassContainer(aMultiTileEntityID);
+		if (tClassContainer == null) return null;
+		return tClassContainer.mCanonicalTileEntity;
 	}
 	
 	/** Adds a new MultiTileEntity. It is highly recommended to do this in either the PreInit or the Init Phase. PostInit might not work well.*/

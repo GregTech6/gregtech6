@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,6 +40,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
@@ -79,10 +80,10 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 				new Textures.BlockIcons.CustomIcon("machines/multiblockmains/"+tTextureName+"/overlay_front/side")
 				};
 			} else {
-				if (getMultiTileEntityRegistryID() != W && getMultiTileEntityID() != W) {
-					TileEntityBase10MultiBlockBase tCanonicalTileEntity = (TileEntityBase10MultiBlockBase)MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID()).getClassContainer(getMultiTileEntityID()).mCanonicalTileEntity;
-					mTextures = tCanonicalTileEntity.mTextures;
-					mTexturesFront = tCanonicalTileEntity.mTexturesFront;
+				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
+				if (tCanonicalTileEntity instanceof TileEntityBase10MultiBlockBase) {
+					mTextures = ((TileEntityBase10MultiBlockBase)tCanonicalTileEntity).mTextures;
+					mTexturesFront = ((TileEntityBase10MultiBlockBase)tCanonicalTileEntity).mTexturesFront;
 				}
 			}
 		}
