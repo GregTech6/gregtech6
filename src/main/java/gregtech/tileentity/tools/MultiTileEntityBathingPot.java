@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -214,7 +214,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 						FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 						for (int i = 0; i < mRecipes.mOutputItemsCount && i < tOutputItems .length; i++) addStackToSlot(i+6, tOutputItems[i]);
 						for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
-						aPlayer.addExhaustion((Math.max(1, tRecipe.mEUt) * tRecipe.mDuration) / 1000.0F);
+						aPlayer.addExhaustion(Math.max(1, tRecipe.getAbsoluteTotalPower()) / 1000.0F);
 						removeAllDroppableNullStacks();
 						return T;
 					}

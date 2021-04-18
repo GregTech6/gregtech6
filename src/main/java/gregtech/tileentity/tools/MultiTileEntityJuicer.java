@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -144,7 +144,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
-					aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
+					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
 					UT.Sounds.send(worldObj, SFX.MC_SLIME_BIG, 1.0F, 1.0F, getCoords());
 					return T;
 				}

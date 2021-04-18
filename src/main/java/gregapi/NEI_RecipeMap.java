@@ -461,7 +461,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 	}
 	
-	/** Thanks to codewarrior for doing most of this, because Greg was way too lazy to do it, but not lazy enough to not fix it. XD */
+	/** Thanks to codewarrior0 for doing most of this, because Greg was way too lazy to do it, but not lazy enough to not fix it. XD */
 	public void sortRecipes() {
 		if (arecipes.size() > 1000) return;
 		Collections.sort(arecipes, new Comparator<CachedRecipe>() {@Override public int compare(CachedRecipe aRecipe1, CachedRecipe aRecipe2) {

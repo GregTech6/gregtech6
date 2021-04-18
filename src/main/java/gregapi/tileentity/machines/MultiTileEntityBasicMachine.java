@@ -628,8 +628,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public int canOutput(Recipe aRecipe) {
 		int rMaxTimes = mParallel;
 		
-		// Don't do more than 1-4 Minutes worth of Input at a time, when doing the Chain Processing.
-		if (mParallelDuration) rMaxTimes = (int)Math.max(1, rMaxTimes-Math.abs((aRecipe.mEUt * aRecipe.mDuration * rMaxTimes) / (mInputMax * 1200)));
+		// Don't do more than 1 Minute worth of Input at a time, when doing the Chain Processing.
+		if (mParallelDuration) {
+			// Ugh, I do not feel like Maths right now, but the previous incarnation of this seemed a tiny bit wrong, so I will make sure it works properly.
+			while (rMaxTimes > 1 && aRecipe.getAbsoluteTotalPower() * rMaxTimes > mInputMax * 1200) rMaxTimes--;
+		}
 		
 		for (int i = 0, j = mRecipes.mInputItemsCount; i < mRecipes.mOutputItemsCount && i < aRecipe.mOutputs.length; i++, j++) if (ST.valid(aRecipe.mOutputs[i])) {
 			if (slotHas(j)) {

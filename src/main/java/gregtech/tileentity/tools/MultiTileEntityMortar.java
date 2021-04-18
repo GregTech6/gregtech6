@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -92,7 +92,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
 					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
-					aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 250.0F);
+					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 250.0F);
 					UT.Sounds.send(worldObj, SFX.MC_DIG_ROCK, 1.0F, 1.0F, getCoords());
 					return T;
 				}

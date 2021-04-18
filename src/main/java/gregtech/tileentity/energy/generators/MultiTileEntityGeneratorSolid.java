@@ -159,7 +159,7 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 								mLastRecipe = tRecipe;
 								ItemStack[] tOutputs = tRecipe.getOutputs();
 								if (tOutputs.length > 0) mOutput1 = ST.copy(tOutputs[0]);
-								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+								mEnergy += UT.Code.units(tRecipe.getAbsoluteTotalPower(), 10000, mEfficiency, F);
 								removeAllDroppableNullStacks();
 							}
 						}

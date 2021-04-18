@@ -168,7 +168,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				tRecipes = FM.Burn.mRecipeFluidMap.get(aName);
 				if (tRecipes != null && !tRecipes.isEmpty()) {
 					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.mDuration * -tRecipe.mEUt * U) / tRecipe.mFluidInputs[0].amount);
+					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
 							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
@@ -180,7 +180,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				tRecipes = FM.Engine.mRecipeFluidMap.get(aName);
 				if (tRecipes != null && !tRecipes.isEmpty()) {
 					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.mDuration * -tRecipe.mEUt * U) / tRecipe.mFluidInputs[0].amount);
+					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
 							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
@@ -192,7 +192,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				tRecipes = FM.Gas.mRecipeFluidMap.get(aName);
 				if (tRecipes != null && !tRecipes.isEmpty()) {
 					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.mDuration * -tRecipe.mEUt * U) / tRecipe.mFluidInputs[0].amount);
+					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
 							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
@@ -204,7 +204,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				tRecipes = FM.Hot.mRecipeFluidMap.get(aName);
 				if (tRecipes != null && !tRecipes.isEmpty()) {
 					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.mDuration * -tRecipe.mEUt * U) / tRecipe.mFluidInputs[0].amount);
+					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
 							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);

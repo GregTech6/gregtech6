@@ -709,6 +709,10 @@ public class Recipe {
 		return mInputs.length == 1 && mOutputs.length == 1 && mFluidInputs.length == 0 && mFluidOutputs.length == 0 && ST.block(mInputs[0]) != NB && ST.block(mOutputs[0]) != NB && mInputs[0].stackSize == 1 && mOutputs[0].stackSize == 1;
 	}
 	
+	public long getAbsoluteTotalPower() {
+		return Math.abs(mEUt * mDuration);
+	}
+	
 	public FluidStack[] getFluidOutputs() {
 		return getFluidOutputs(RNGSUS, 1);
 	}

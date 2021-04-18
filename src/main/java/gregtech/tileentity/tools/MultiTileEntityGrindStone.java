@@ -134,7 +134,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						mLastRecipe = tRecipe;
 						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
 							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
-							aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
+							aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
 							mStone--;
 						}
 					}
