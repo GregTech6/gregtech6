@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
@@ -30,6 +31,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithB
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
@@ -156,12 +158,55 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (!isCovered(UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ))) {
 				if (aChatReturn != null) {
-					boolean temp = T;
+					boolean tPipeEmpty = T;
 					for (FluidTankGT tTank : mTanks) if (!tTank.isEmpty()) {
-						temp = F;
 						aChatReturn.add(tTank.content());
+						tPipeEmpty = F;
 					}
-					if (temp) aChatReturn.add("Pipe is empty");
+					
+					Set<MultiTileEntityPipeFluid>
+					tDone = new HashSetNoNulls<>(F, this),
+					tNow  = new HashSetNoNulls<>(F, this),
+					tNext = new HashSetNoNulls<>(),
+					tSwap;
+					
+					List<FluidTankGT> tFluids = new ArrayListNoNulls<>();
+					
+					while (T) {
+						for (MultiTileEntityPipeFluid tPipe : tNow) {
+							for (FluidTankGT tTank : tPipe.mTanks) if (!tTank.isEmpty()) {
+								boolean temp = T;
+								for (FluidTankGT tFluid : tFluids) if (tFluid.contains(tTank.get())) {
+									tFluid.add(tTank.amount());
+									temp = F;
+									break;
+								}
+								if (temp) tFluids.add(new FluidTankGT().setFluid(tTank));
+							}
+							
+							for (byte tSide : ALL_SIDES_VALID) if (tPipe.connected(tSide)) {
+								DelegatorTileEntity<TileEntity> tDelegator = tPipe.getAdjacentTileEntity(tSide);
+								if (tDelegator.mTileEntity instanceof MultiTileEntityPipeFluid) {
+									if (tDone.add((MultiTileEntityPipeFluid)tDelegator.mTileEntity)) {
+										tNext.add((MultiTileEntityPipeFluid)tDelegator.mTileEntity);
+									}
+								}
+							}
+						}
+						if (tNext.isEmpty()) break;
+						tSwap = tNow;
+						tNow  = tNext;
+						tNext = tSwap;
+						tNext.clear();
+					}
+					
+					if (tFluids.isEmpty()) {
+						aChatReturn.add("=== This Fluid Pipe Network is empty ===");
+					} else {
+						if (tPipeEmpty) aChatReturn.add("This particular Pipe Segment is currently empty");
+						aChatReturn.add("=== This Fluid Pipe Network contains: ===");
+						for (FluidTankGT tFluid : tFluids) aChatReturn.add(tFluid.content());
+					}
 				}
 				return mTanks.length;
 			}
@@ -171,8 +216,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_BANDWIDTH) + (mCapacity/2) + " L/t");
-		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_CAPACITY) + mCapacity + " L");
+		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_BANDWIDTH) + UT.Code.makeString(mCapacity/2) + " L/t");
+		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_CAPACITY) + UT.Code.makeString(mCapacity) + " L");
 		if (mTanks.length > 1)
 		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_AMOUNT) + mTanks.length);
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + mMaxTemperature + " K)");

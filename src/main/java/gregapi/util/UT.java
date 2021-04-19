@@ -1310,7 +1310,7 @@ public class UT {
 		
 		/** Converts a Number to a String with Underscores as Decimal Separators. Ignores Numbers with 4 Digits or less. */
 		public static String makeString(long aNumber) {
-			if (aNumber > -10000 && aNumber < 10000) return "" + aNumber;
+			if (aNumber > -10000 && aNumber < 10000) return Long.toString(aNumber);
 			StringBuilder rString = new StringBuilder();
 			if (aNumber < 0) {
 				aNumber *= -1;

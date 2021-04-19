@@ -117,8 +117,8 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_STEPSIZE) + mStepSize);
-		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_BANDWIDTH) + Chat.WHITE + getPipeCapacity() + "/s");
+		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_STEPSIZE) + UT.Code.makeString(mStepSize));
+		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_BANDWIDTH) + Chat.WHITE + UT.Code.makeString(getPipeCapacity()) + "/s");
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_SET_INPUT_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_SET_OUTPUT_MONKEY_WRENCH));
