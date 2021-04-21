@@ -366,8 +366,8 @@ public class LH {
 		add(RECIPES_MORTAR_USAGE                        , "Rightclick with the Item you want to turn into Dust");
 		add(RECIPES_JUICER_USAGE                        , "Rightclick with the Item you want to get Juice from");
 		add(RECIPES_SIFTER_USAGE                        , "Place Input on Top and rightclick it");
-		add(RECIPES_MIXINGBOWL_USAGE                    , "Place Input on Top and rightclick it");
-		add(RECIPES_BATHINGPOT_USAGE                    , "Place Input on Top and rightclick it");
+		add(RECIPES_MIXINGBOWL_USAGE                    , "Place Input in Center, Fill with Fluid on the Rim, then rightclick it");
+		add(RECIPES_BATHINGPOT_USAGE                    , "Place Input in Center, Fill with Fluid on the Rim, then rightclick it");
 		add(RECIPES_GRINDSTONE_USAGE                    , "Click multiple times with the Object you want to sharpen");
 		add(RECIPES_GRINDSTONE_INIT                     , "Add Sandstone Block in order to be able to use this");
 		add(RECIPES_DUSTFUNNEL                          , "Turns all differently sized Dusts into the specified Size");
