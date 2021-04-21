@@ -142,7 +142,12 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) aChatReturn.add("Outputs in the Size of " + DUST_TYPES[mMode].mNameLocal);
+			if (aChatReturn != null) {
+				aChatReturn.add("Outputs in the Size of " + DUST_TYPES[mMode].mNameLocal);
+				if (mContent != null && mContent.mAmount > 0) {
+					aChatReturn.add("Contains a Fraction of " + mContent.mMaterial.mNameLocal);
+				}
+			}
 			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
