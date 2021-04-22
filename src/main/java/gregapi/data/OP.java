@@ -527,7 +527,8 @@ public class OP {
 	bars                        = unused("bars"                         ).setCategoryName("Bars"),
 	bar                         = unused("bar"                          ).setCategoryName("Bars");
 	
-	public static final OreDictPrefix wireGt[] = {wireGt01, wireGt02, wireGt03, wireGt04, wireGt05, wireGt06, wireGt07, wireGt08, wireGt09, wireGt10, wireGt11, wireGt12, wireGt13, wireGt14, wireGt15, wireGt16};
+	public static final OreDictPrefix[] wireGt = {wireGt01, wireGt02, wireGt03, wireGt04, wireGt05, wireGt06, wireGt07, wireGt08, wireGt09, wireGt10, wireGt11, wireGt12, wireGt13, wireGt14, wireGt15, wireGt16};
+	public static final OreDictPrefix[] array_dust_ingot = {dust, ingot}, array_dust_ingot_plate = {dust, ingot, plate}, array_dust_ingot_plate_gem = {dust, ingot, plate, gem}, array_ingot_plate = {ingot, plate}, array_ingot_plate_gem = {ingot, plate, gem}, array_ingot_gem = {ingot, gem};
 	
 	static {
 		MT.init();

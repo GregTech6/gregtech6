@@ -309,16 +309,18 @@ public final class OreDictManager {
 		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
 		
 		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
-		if (aEvent.Ore == null) {ERR.println("ERROR: A NULL STACK from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		if (aEvent.Ore == null) {ERR.println("ERROR: A NULL STACK from the Mod '" + aModID + "' has been registered to the OreDict as: " + aEvent.Name); return;}
 		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
-		if (aEvent.Ore.getItem() == null) {ERR.println("ERROR: A NULL ITEM from the Mod " + aModID + " has been registered to the OreDict as: " + aEvent.Name); return;}
+		if (aEvent.Ore.getItem() == null) {ERR.println("ERROR: A NULL ITEM from the Mod '" + aModID + "' has been registered to the OreDict as: " + aEvent.Name); return;}
 		
 		String aRegName = ST.regName(aEvent.Ore);
 		
 		// Yeah this definitely can happen, and I want to see it if any Mod fucks that one up, so I can potentially fix that..
-		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod " + aModID + " has been registered to the OreDict before being registered as an Item/Block with: " + aEvent.Name); return;}
+		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod '" + aModID + "' has been registered to the OreDict before being registered as an Item/Block with: " + aEvent.Name); return;}
 		
 		if (GT != null) {
+			// Preventing Blizz, Blitz and Basalz Stuff from being registered wrongly to GT6.
+			if (MD.TE_FOUNDATION.owns(aRegName, "material") && UT.Code.inside(1024, 1029, ST.meta_(aEvent.Ore)) && MD.TE_FOUNDATION.mID.equalsIgnoreCase(aModID)) return;
 			// Et Futurum Copper Blocks do not follow the 9 Ingots = 1 Block convention.
 			if (MD.EtFu.owns(aRegName) &&  aEvent.Name.equals("blockCopper")) return;
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
@@ -361,19 +363,17 @@ public final class OreDictManager {
 		
 		if (!ST.isGT(aEvent.Ore)) triggerVisibility(aEvent.Name);
 		
-		if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains(" ") || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
-			if (mBufferedRegistrations == null) {
-				onOreRegistration2(aModID, aRegName, aEvent);
-			} else {
-				mBufferedRegistrations.add(new OreDictEventContainer(aModID, aRegName, aEvent));
-			}
-		}
-		
-		aEvent.Ore.stackSize = 1;
-		
 		if (aEvent.Name.contains(" ")) {
 			registerOreSafe(aEvent.Name.replaceAll(" ", ""), aEvent.Ore);
 		} else {
+			if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
+				if (mBufferedRegistrations == null) {
+					onOreRegistration2(aModID, aRegName, aEvent);
+				} else {
+					mBufferedRegistrations.add(new OreDictEventContainer(aModID, aRegName, aEvent));
+				}
+			}
+			
 			Collection<String> tReRegistrations = mReRegistrationMappings.get(aEvent.Name);
 			if (tReRegistrations != null) for (String tName : tReRegistrations) registerOreSafe(tName, aEvent.Ore);
 		}

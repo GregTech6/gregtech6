@@ -56,6 +56,7 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		CR.remove(IL.TE_Rod_Blizz .get(1));
 		CR.remove(IL.TE_Rod_Blitz .get(1));
 		CR.remove(IL.TE_Rod_Basalz.get(1));
+		CR.delate(MD.TE_FOUNDATION, "material", 512, 513, 514, 515);
 		
 		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 1, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
 		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 1, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
@@ -103,8 +104,8 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Desh         , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Desh         , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
 		}
 		
-		FL.set(new FluidContainerData(FL.Redstone  .make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
-		FL.set(new FluidContainerData(FL.Ender     .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
+		FL.set(new FluidContainerData(FL.Redstone.make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
+		FL.set(new FluidContainerData(FL.Ender   .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
 		
 		for (FluidStack tRedstone : FL.array(FL.Redstone.make(L), FL.Redstone_TE.make(100))) {
 			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Items.snowball, 1, W), FL.mul(tRedstone, 2), NF, OP.dustTiny.mat(MT.Blizz, 1));
