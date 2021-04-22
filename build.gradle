@@ -273,6 +273,7 @@ dependencies {
 	//compileOnly "extracells:ExtraCells:1.7.10-2.3.14b200:deobf"
 	//compileOnly "ic2:IC2Classic:1.2.1.8:dev"
 	//compileOnly "io.netty-opis:Netty-opis:4.0.23" // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly "inventorytweaks:InventoryTweaks:1.59-dev:deobf"
 	//compileOnly "java.moze_intel:ProjectE:1.7.10-PE1.10.1:dev"
 	//compileOnly "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
 	//compileOnly "mcp.mobius.opis:Opis:1.2.5_1.7.10:dev"
@@ -303,6 +304,8 @@ dependencies {
 	//compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
 	//compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
 	//compileOnly "thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev"
+	//compileOnly "thermalexpansion:ThermalExpansion:1.7.10R4.0.3:dev"
+	//compileOnly "thermalfoundation:ThermalFoundation:1.7.10R1.2.0:dev"
 	//compileOnly "ttftcuts.atg:ATG:1.7.10-0.12.0:DEV"
 	//compileOnly "twilightforest:twilightforest:1.7.10-2.3.8dev:dev"
 	//compileOnly "vazkii.botania:Botania:r1.8-250:deobf"
