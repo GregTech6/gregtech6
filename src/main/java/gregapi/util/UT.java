@@ -1434,6 +1434,15 @@ public class UT {
 			return aMap;
 		}
 		
+		/** re-maps all Keys of a (Hash)-Set after the Keys were weakened. */
+		public static <X> Set<X> reMap(Set<X> aSet) {
+			Set<X> tSet = new HashSet<>();
+			tSet.addAll(aSet);
+			aSet.clear();
+			aSet.addAll(aSet);
+			return aSet;
+		}
+		
 		/** Why the fuck do neither Java nor Guava have a Function to do this? */
 		@SuppressWarnings("rawtypes")
 		public static <X, Y extends Comparable> LinkedHashMap<X,Y> sortByValuesAcending(Map<X,Y> aMap) {

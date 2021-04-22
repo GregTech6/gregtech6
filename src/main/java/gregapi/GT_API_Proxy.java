@@ -28,8 +28,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import cofh.lib.util.ComparableItem;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IFuelHandler;
@@ -198,7 +200,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public File mSaveLocation = null;
 	
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onProxyBeforeServerStarting(Abstract_Mod aMod, FMLServerStartingEvent aEvent) {
 		OUT.println("GT_Server: Running Unification of Recipes");
 		
@@ -222,6 +224,48 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.cokeOven      .getRecipes   ()) tStacks.add((ItemStack)UT.Reflection.getFieldContent(tRecipe, "output"));} catch(Throwable e) {e.printStackTrace(ERR);}
 		try {for (Object  tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rockCrusher   .getRecipes   ()) for (Map.Entry<ItemStack, Float> tEntry : (List<Map.Entry<ItemStack, Float>>)UT.Reflection.getFieldContent(tRecipe, "outputs")) tStacks.add(tEntry.getKey());} catch(Throwable e) {e.printStackTrace(ERR);}
 		try {for (IRecipe tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rollingMachine.getRecipeList()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());} catch(Throwable e) {e.printStackTrace(ERR);}
+		}
+		
+		if (MD.TE.mLoaded) {
+			List<Map> tMaps = new ArrayListNoNulls<>();
+			List<Set> tSets = new ArrayListNoNulls<>();
+			
+			for (String tClassName : new String[] {"cofh.thermalexpansion.util.crafting.InsolatorManager", "cofh.thermalexpansion.util.crafting.ChargerManager", "cofh.thermalexpansion.util.crafting.ExtruderManager", "cofh.thermalexpansion.util.crafting.PrecipitatorManager", "cofh.thermalexpansion.util.crafting.TransposerManager", "cofh.thermalexpansion.util.crafting.CrucibleManager", "cofh.thermalexpansion.util.crafting.SmelterManager", "cofh.thermalexpansion.util.crafting.SawmillManager", "cofh.thermalexpansion.util.crafting.PulverizerManager", "cofh.thermalexpansion.util.crafting.FurnaceManager"}) {try {
+				Class tClass = Class.forName(tClassName);
+				Object
+				tObject = UT.Reflection.getFieldContent(tClass, "recipeMap", T, F);
+				if (tObject instanceof Map) tMaps.add((Map)tObject);
+				tObject = UT.Reflection.getFieldContent(tClass, "recipeMapFill", T, F);
+				if (tObject instanceof Map) tMaps.add((Map)tObject);
+				tObject = UT.Reflection.getFieldContent(tClass, "recipeMapExtraction", T, F);
+				if (tObject instanceof Map) tMaps.add((Map)tObject);
+				tObject = UT.Reflection.getFieldContent(tClass, "validationSet", T, F);
+				if (tObject instanceof Set) tSets.add((Set)tObject);
+				tObject = UT.Reflection.getFieldContent(tClass, "lockSet", T, F);
+				if (tObject instanceof Set) tSets.add((Set)tObject);
+			} catch(Throwable e) {e.printStackTrace(ERR);}}
+			
+			for (Map tMap : tMaps) {
+				try {for (Object tCompStack : tMap.keySet()) if (tCompStack instanceof ComparableItem) {
+					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+					if (ST.valid(tStack)) {
+						((ComparableItem)tCompStack).item     = ST.item(tStack);
+						((ComparableItem)tCompStack).metadata = ST.meta(tStack);
+					}
+				}} catch(Throwable e) {e.printStackTrace(ERR);}
+				UT.Code.reMap(tMap);
+			}
+			
+			for (Set tSet : tSets) {
+				try {for (Object tCompStack : tSet) if (tCompStack instanceof ComparableItem) {
+					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+					if (ST.valid(tStack)) {
+						((ComparableItem)tCompStack).item     = ST.item(tStack);
+						((ComparableItem)tCompStack).metadata = ST.meta(tStack);
+					}
+				}} catch(Throwable e) {e.printStackTrace(ERR);}
+				UT.Code.reMap(tSet);
+			}
 		}
 		
 		for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST           ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
