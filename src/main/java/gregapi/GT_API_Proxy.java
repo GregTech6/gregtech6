@@ -31,7 +31,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import cofh.lib.util.ComparableItem;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IFuelHandler;
@@ -246,25 +245,27 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			} catch(Throwable e) {e.printStackTrace(ERR);}}
 			
 			for (Map tMap : tMaps) {
-				try {for (Object tCompStack : tMap.keySet()) if (tCompStack instanceof ComparableItem) {
-					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
-					if (ST.valid(tStack)) {
-						((ComparableItem)tCompStack).item     = ST.item(tStack);
-						((ComparableItem)tCompStack).metadata = ST.meta(tStack);
-					}
-				}} catch(Throwable e) {e.printStackTrace(ERR);}
-				UT.Code.reMap(tMap);
+				tMap.clear();
+			//  try {for (Object tCompStack : tMap.keySet()) if (tCompStack instanceof ComparableItem) {
+			//      ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+			//      if (ST.valid(tStack)) {
+			//          ((ComparableItem)tCompStack).item     = ST.item_(tStack);
+			//          ((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
+			//      }
+			//  }} catch(Throwable e) {e.printStackTrace(ERR);}
+			//  UT.Code.reMap(tMap);
 			}
 			
 			for (Set tSet : tSets) {
-				try {for (Object tCompStack : tSet) if (tCompStack instanceof ComparableItem) {
-					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
-					if (ST.valid(tStack)) {
-						((ComparableItem)tCompStack).item     = ST.item(tStack);
-						((ComparableItem)tCompStack).metadata = ST.meta(tStack);
-					}
-				}} catch(Throwable e) {e.printStackTrace(ERR);}
-				UT.Code.reMap(tSet);
+				tSet.clear();
+			//  try {for (Object tCompStack : tSet) if (tCompStack instanceof ComparableItem) {
+			//      ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+			//      if (ST.valid(tStack)) {
+			//          ((ComparableItem)tCompStack).item     = ST.item_(tStack);
+			//          ((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
+			//      }
+			//  }} catch(Throwable e) {e.printStackTrace(ERR);}
+			//  UT.Code.reMap(tSet);
 			}
 		}
 		
