@@ -123,7 +123,7 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 					}
 				}
 				if (mEnergy < mRate * 2) {
-					WD.fire(worldObj, getOffset(mFacing, 1), T);
+					WD.burn(worldObj, getOffset(mFacing, 1), T, T);
 					if (addStackToSlot(1, mOutput1)) mOutput1 = null;
 					if (mOutput1 == null && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTank.AS_ARRAY, slot(0));

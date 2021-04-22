@@ -127,7 +127,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 					// Will be set back to true if the Recipe finds enough Fuel.
 					mBurning = F;
 					// Burn whatever Block is in front of the Burning Box, if it is flammable.
-					WD.fire(worldObj, getOffset(mFacing, 1), T);
+					WD.burn(worldObj, getOffset(mFacing, 1), T, T);
 					// Check for Air, because Fire needs Oxygen.
 					if (!WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 						// Find and apply fitting Recipe.

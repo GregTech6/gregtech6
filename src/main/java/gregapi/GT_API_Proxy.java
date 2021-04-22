@@ -31,6 +31,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import cofh.lib.util.ComparableItem;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IFuelHandler;
@@ -225,7 +226,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		try {for (IRecipe tRecipe : mods.railcraft.api.crafting.RailcraftCraftingManager.rollingMachine.getRecipeList()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());} catch(Throwable e) {e.printStackTrace(ERR);}
 		}
 		
-		if (MD.TE.mLoaded) {
+		if (MD.TE.mLoaded && ALWAYS_FALSE) {
 			List<Map> tMaps = new ArrayListNoNulls<>();
 			List<Set> tSets = new ArrayListNoNulls<>();
 			
@@ -245,27 +246,25 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			} catch(Throwable e) {e.printStackTrace(ERR);}}
 			
 			for (Map tMap : tMaps) {
-				tMap.clear();
-			//  try {for (Object tCompStack : tMap.keySet()) if (tCompStack instanceof ComparableItem) {
-			//      ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
-			//      if (ST.valid(tStack)) {
-			//          ((ComparableItem)tCompStack).item     = ST.item_(tStack);
-			//          ((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
-			//      }
-			//  }} catch(Throwable e) {e.printStackTrace(ERR);}
-			//  UT.Code.reMap(tMap);
+				try {for (Object tCompStack : tMap.keySet()) if (tCompStack instanceof ComparableItem) {
+					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+					if (ST.valid(tStack)) {
+						((ComparableItem)tCompStack).item     = ST.item_(tStack);
+						((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
+					}
+				}} catch(Throwable e) {e.printStackTrace(ERR);}
+				UT.Code.reMap(tMap);
 			}
 			
 			for (Set tSet : tSets) {
-				tSet.clear();
-			//  try {for (Object tCompStack : tSet) if (tCompStack instanceof ComparableItem) {
-			//      ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
-			//      if (ST.valid(tStack)) {
-			//          ((ComparableItem)tCompStack).item     = ST.item_(tStack);
-			//          ((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
-			//      }
-			//  }} catch(Throwable e) {e.printStackTrace(ERR);}
-			//  UT.Code.reMap(tSet);
+				try {for (Object tCompStack : tSet) if (tCompStack instanceof ComparableItem) {
+					ItemStack tStack = OM.get(ST.make(((ComparableItem)tCompStack).item, 1, ((ComparableItem)tCompStack).metadata));
+					if (ST.valid(tStack)) {
+						((ComparableItem)tCompStack).item     = ST.item_(tStack);
+						((ComparableItem)tCompStack).metadata = ST.meta_(tStack);
+					}
+				}} catch(Throwable e) {e.printStackTrace(ERR);}
+				UT.Code.reMap(tSet);
 			}
 		}
 		
