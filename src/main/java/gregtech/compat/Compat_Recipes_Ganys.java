@@ -122,9 +122,13 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			CR.shaped(IL.EtFu_Stair_Copper_Cut.get(1), CR.DEF_MIR, " X", "XX", 'X', OP.ingot.dat(ANY.Cu));
 			CR.shaped(IL.EtFu_Block_Copper_Cut.get(1), CR.DEF_MIR,  "X",  "X", 'X', IL.EtFu_Slabs_Copper_Cut);
 			CR.shapeless(IL.EtFu_Block_Copper.get(1), new Object[] {IL.EtFu_Block_Copper_Cut});
+			CR.shapeless(IL.EtFu_Block_Copper.get(1), new Object[] {IL.EtFu_Block_Copper_Cut_Waxed});
 			CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut});
+			CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut_Waxed});
 			CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut});
+			CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut_Waxed});
 			CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut});
+			CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut_Waxed});
 			CR.shaped(IL.EtFu_Slabs_Copper_Cut                .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut                );
 			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Exposed        .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Exposed        );
 			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Weathered      .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Weathered      );
