@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -83,7 +83,7 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 
 	@Override public boolean  isReactorRod(ItemStack aStack) {return T;}
 	@Override public boolean  isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return false;}
-	@Override public void	  updateModeration(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {}
+	@Override public void     updateModeration(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {}
 	@Override public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}
 	@Override public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
 	@Override public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {return 0;}
