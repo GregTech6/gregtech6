@@ -465,8 +465,8 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Override
 	public void updateModeration(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).updateModeration(aReactor, aSlot, aStack);
-		return false;
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod)
+			((IItemReactorRod)tTileEntityContainer.mTileEntity).updateModeration(aReactor, aSlot, aStack);
 	}
 
 	@Override
