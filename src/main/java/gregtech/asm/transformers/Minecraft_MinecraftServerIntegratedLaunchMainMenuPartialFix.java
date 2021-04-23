@@ -45,14 +45,19 @@ public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix impleme
 		classReader.accept(classNode, 0);
 		
 		for (MethodNode m: classNode.methods) {
-			if (m.name.equals("run")) { // Not obfuscated nicely enough
+			if (m.name.equals("run")) { // Not obfuscated, nicely enough
 				GT_ASM.logger.info("Transforming net.minecraft.server.MinecraftServer.run");
 				
 				AbstractInsnNode node = m.instructions.getFirst();
 				// Line 391 is obfuscated, line 449 is not/in-dev, there's no overlap in their ranges so this is fine
-				while (!(node instanceof LineNumberNode) || (((LineNumberNode) node).line != 391 && ((LineNumberNode) node).line != 449))
-				{
+				while (node != null && (!(node instanceof LineNumberNode) || (((LineNumberNode) node).line != 391 && ((LineNumberNode) node).line != 449))) {
 					node = node.getNext();
+				}
+
+				// Something really screwed up the MinecraftServer class file, bail!
+				if (node == null) {
+					GT_ASM.logger.info("net.minecraft.server.MinecraftServer.run appears to be corrupt!  Ignoring and not touching!");
+					return basicClass;
 				}
 				
 				AbstractInsnNode constNode = node.getNext(); // Skip LineNumberNode
