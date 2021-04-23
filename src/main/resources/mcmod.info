@@ -8,7 +8,7 @@
   "url": "https://gregtech.mechaenetia.com/",
   "updateUrl": "https://gregtech.mechaenetia.com/1.7.10",
   "authors": ["Gregorius Techneticies"],
-  "credits": "OvermindDL1 for Code and Website Hosting; Estebes and codewarrior for some Code; Mr. Brain for some Crop Textures; Bear989 and codewarrior for Testing; and ofcourse all the Contributors who got their Pull Requests accepted",
+  "credits": "OvermindDL1 for Code and Website Hosting; Estebes and codewarrior for some Code; Mr. Brain for some Crop Textures; Zerrens for the Crate Texture; Bear989 and codewarrior for Testing; and ofcourse all the Contributors who got their Pull Requests accepted",
   "parent": "",
   "screenshots": ["https://gregtech.mechaenetia.com/gallery"],
   "dependencies": []
