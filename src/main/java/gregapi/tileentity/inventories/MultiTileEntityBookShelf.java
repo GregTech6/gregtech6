@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,9 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BooksGT;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MD;
@@ -149,8 +151,13 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	public float getEnchantPowerBonus() {
 		int tNormalBooks = 0, tEnchantedBooks = 0;
 		for (int i = 0; i < 28; i++) if (slotHas(i)) {
-			if (slot(i).getItem() == Items.book) {tNormalBooks++; continue;}
-			if (slot(i).getItem() == Items.enchanted_book) {tEnchantedBooks++; continue;}
+			if (ST.item(slot(i)) == Items.book          ) {tNormalBooks++; continue;}
+			if (ST.item(slot(i)) == Items.writable_book ) {tNormalBooks++; continue;}
+			if (ST.item(slot(i)) == Items.written_book  ) {tNormalBooks++; continue;}
+			if (ST.item(slot(i)) == ItemsGT.BOOKS       ) {tNormalBooks++; continue;}
+			if (ST.item(slot(i)) == Items.enchanted_book) {tEnchantedBooks++; continue;}
+			if (IL.TC_Thaumonomicon.equal(slot(i), T, T)) {tEnchantedBooks++; continue;}
+			if (IL.TC_Crimson_Rites.equal(slot(i), F, T)) {tEnchantedBooks++; continue;}
 		}
 		return (tNormalBooks+tEnchantedBooks*2)/12;
 	}
