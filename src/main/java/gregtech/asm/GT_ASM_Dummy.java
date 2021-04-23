@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -34,7 +34,7 @@ public class GT_ASM_Dummy extends DummyModContainer {
 		ModMetadata meta = this.getMetadata();
 		meta.modId = "GT_ASM";
 		meta.name = "Greg-ASM®";
-		meta.version = "6.14.01";
+		meta.version = "6.14.11";
 		meta.credits = "";
 		meta.authorList = Arrays.asList("GregoriusTechneticies", "OvermindDL1");
 		meta.description = "";
