@@ -217,7 +217,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	}
 
 	@Override
-	public boolean updateReactorRodModeration(int aSlot) {
+	public void updateReactorRodModeration(int aSlot) {
 		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) {
 			((IItemReactorRod) ST.item(slot(0))).updateModeration(this, 0, slot(0));
 		}
