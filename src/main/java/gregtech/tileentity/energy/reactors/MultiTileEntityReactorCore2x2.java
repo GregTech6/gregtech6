@@ -111,6 +111,13 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				}
 			}
 		} else {
+			if (SERVER_TIME % 20 == 19) {
+				updateReactorRodModeration(0);
+				updateReactorRodModeration(1);
+				updateReactorRodModeration(2);
+				updateReactorRodModeration(3);
+			}
+
 			long tCalc = UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 
 			// TODO Raycasting through Lead, Water and similar Blocks.
@@ -234,6 +241,14 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			boolean isModerated = ((IItemReactorRod) ST.item(slot(aSlot))).isModerated(this, aSlot, slot(aSlot));
 			if (mStopped || (mMode & B[aSlot]) != 0) return false;
 			return isModerated;
+		}
+		return false;
+	}
+
+	@Override
+	public void updateReactorRodModeration(int aSlot) {
+		if (slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) {
+			((IItemReactorRod) ST.item(slot(aSlot))).updateModeration(this, aSlot, slot(aSlot));
 		}
 		return false;
 	}

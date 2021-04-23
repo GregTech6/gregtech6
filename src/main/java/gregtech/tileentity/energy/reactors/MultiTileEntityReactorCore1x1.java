@@ -88,6 +88,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 				// Fuse all 4 Values together since it is only 1 Rod.
 				mNeutronCounts[0] += mNeutronCounts[1] + mNeutronCounts[2] + mNeutronCounts[3];
 				mNeutronCounts[1] = mNeutronCounts[2] = mNeutronCounts[3] = oNeutronCounts[1] = oNeutronCounts[2] = oNeutronCounts[3] = 0;
+				updateReactorRodModeration(0);
 			}
 
 			long tCalc = UT.Code.divup(oNeutronCounts[0] = mNeutronCounts[0], 256);
@@ -213,6 +214,13 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			return isModerated;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean updateReactorRodModeration(int aSlot) {
+		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) {
+			((IItemReactorRod) ST.item(slot(0))).updateModeration(this, 0, slot(0));
+		}
 	}
 
 	@Override
