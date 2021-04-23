@@ -510,6 +510,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodRabbitraw"                      , ST.make(MD.EtFu, "rabbit_raw", 1, 0));
 		OM.reg("foodRabbitcooked"                   , ST.make(MD.EtFu, "rabbit_cooked", 1, 0));
 		OM.reg(OD.sandstone                         , ST.make(MD.EtFu, "red_sandstone", 1, W));
+		OM.reg("cropBerry"                          , ST.make(MD.EtFu, "sweet_berries", 1, 0));
 		OM.reg(OD.container250poison                , ST.make(Items.potionitem, 1,  8196));
 		OM.reg(OD.container250poison                , ST.make(Items.potionitem, 1,  8228));
 		OM.reg(OD.container250poison                , ST.make(Items.potionitem, 1,  8260));

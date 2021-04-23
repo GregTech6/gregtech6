@@ -167,9 +167,11 @@ public class Compat_Recipes_Ganys extends CompatMods {
 				CR.shapeless(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
 			}
 			
-			RM.pack(OP.ingot.mat(MT.Cu, 2), IL.EtFu_Slabs_Copper_Cut.get(1));
-			RM.pack(OP.ingot.mat(MT.Cu, 3), IL.EtFu_Stair_Copper_Cut.get(1));
-			RM.pack(OP.ingot.mat(MT.Cu, 4), IL.EtFu_Block_Copper_Cut.get(1));
+			for (OreDictMaterial tMat : ANY.Cu.mToThis) {
+				RM.pack(OP.ingot.mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut.get(1));
+				RM.pack(OP.ingot.mat(tMat, 3), IL.EtFu_Stair_Copper_Cut.get(1));
+				RM.pack(OP.ingot.mat(tMat, 4), IL.EtFu_Block_Copper_Cut.get(1));
+			}
 			
 			RM.unpack(IL.EtFu_Slabs_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 2));
 			RM.unpack(IL.EtFu_Block_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 4));
