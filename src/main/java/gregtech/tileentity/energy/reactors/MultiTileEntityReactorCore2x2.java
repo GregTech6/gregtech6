@@ -250,7 +250,6 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		if (slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) {
 			((IItemReactorRod) ST.item(slot(aSlot))).updateModeration(this, aSlot, slot(aSlot));
 		}
-		return false;
 	}
 
 	@Override
