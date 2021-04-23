@@ -59,13 +59,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		if (aFirst) {
 			// It is == 19 because the Sensors react to == 0, so this is the realistic fastest a Sensor can display.
 			if (SERVER_TIME % 20 == 19) {
-				if (mStopped) {
-					// Calls isReactorRodModerated to update moderation states
-					isReactorRodModerated(0);
-					isReactorRodModerated(1);
-					isReactorRodModerated(2);
-					isReactorRodModerated(3);
-				} else {
+				if (!mStopped) {
 					DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
 					DelegatorTileEntity
 					tAdjacentTE = getAdjacentTileEntity(SIDE_Z_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[0] = tAdjacentTE;
@@ -111,6 +105,13 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				}
 			}
 		} else {
+			if (SERVER_TIME % 20 == 19) {
+				updateReactorRodModeration(0);
+				updateReactorRodModeration(1);
+				updateReactorRodModeration(2);
+				updateReactorRodModeration(3);
+			}
+
 			long tCalc = UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 
 			// TODO Raycasting through Lead, Water and similar Blocks.
@@ -236,6 +237,13 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			return isModerated;
 		}
 		return false;
+	}
+
+	@Override
+	public void updateReactorRodModeration(int aSlot) {
+		if (slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) {
+			((IItemReactorRod) ST.item(slot(aSlot))).updateModeration(this, aSlot, slot(aSlot));
+		}
 	}
 
 	@Override

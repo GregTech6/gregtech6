@@ -216,10 +216,14 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 
 	@Override
 	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		return oModerated;
+	}
+
+	@Override
+	public void updateModeration(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		oModerated = mModerated;
 		mModerated = F;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-		return oModerated;
 	}
 
 	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, T), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}

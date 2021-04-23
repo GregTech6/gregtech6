@@ -31,6 +31,8 @@ public interface IItemReactorRod {
 	public boolean  isReactorRod(ItemStack aStack);
 	/** @return is a Reactor Rod is moderated and thus isn't usable for breeding */
 	public boolean  isModerated (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
+	/** Updates the moderation status of the reactor rod */
+	public void     updateModeration (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** @return the amount of Neutrons emitted by the Rod to each of the 4 surrounding Rods. Only called once every 20 ticks. */
 	public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** @return if the Reactor would be considered "Active" after calculating the Ticking of the Rod itself. */
