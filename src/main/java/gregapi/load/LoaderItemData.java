@@ -1470,6 +1470,11 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.FZ, "FzBlock"                            , 1,  27, MT.DarkIron           ,  U8   , MT.Pb                 ,  U4);
 		
 		
+		OM.data(MD.BTRS, "lock"                             , 1,   W, MT.Au                 ,  U * 5, ANY.Fe                ,  U);
+		OM.data(MD.BTRS, "key"                              , 1,   W, MT.Au                 ,  29*U9);
+		OM.data(MD.BTRS, "keyring"                          , 1,   W, MT.Au                 ,   8*U9);
+		
+		
 		OM.data(MD.JABBA, "barrel"                          , 1,   W, ANY.Wood              ,129* U2);
 		
 		
