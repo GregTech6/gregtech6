@@ -12,7 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.11: (Not released yet, released whenever it needs to be)
 [NOTE] Erik3003 changed a tiny bit of the Internals of the Moderated Reactors, everything should still work as usual though.
 [COMPAT] Better Storage has some things been done to, but not much. I could not assign Material Data to its Chests and Stuff due to them using NBT instead of MetaData...
-[COMPAT] Et Futurum Requiems Copper Blocks and their Variants are now properly supported.
+[COMPAT] Et Futurum Requiems Copper Blocks and their Variants are now properly supported and not exploitable anymore.
 [CHANGED] Bookshelves now count Writable Books and Written Books for Levels on the Enchanting Table. Same goes for GT Books and also the two Thaumcraft Books (the latter count as Enchanted Books).
 [CHANGED] Burner and Cryo Mixers now have Parallel Processing like the Normal and Electric Mixers.
 [CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it.

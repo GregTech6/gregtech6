@@ -114,138 +114,169 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.EtFu, "netherite_boots"     , 1, 0));
 			
 			
-			
-			CR.remove(IL.EtFu_Block_Copper.get(1));
-			CR.remove(IL.EtFu_Block_Copper_Waxed.get(1));
-			CR.shaped(IL.EtFu_Block_Copper_Cut.get(1), CR.DEF_MIR, "XX", "XX", 'X', OP.ingot.dat(ANY.Cu));
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut.get(1), CR.DEF_MIR,       "XX", 'X', OP.ingot.dat(ANY.Cu));
-			CR.shaped(IL.EtFu_Stair_Copper_Cut.get(1), CR.DEF_MIR, " X", "XX", 'X', OP.ingot.dat(ANY.Cu));
-			CR.shaped(IL.EtFu_Block_Copper_Cut.get(1), CR.DEF_MIR,  "X",  "X", 'X', IL.EtFu_Slabs_Copper_Cut);
-			CR.shapeless(IL.EtFu_Block_Copper.get(1), new Object[] {IL.EtFu_Block_Copper_Cut});
-			CR.shapeless(IL.EtFu_Block_Copper.get(1), new Object[] {IL.EtFu_Block_Copper_Cut_Waxed});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut_Waxed});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut_Waxed});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut});
-			CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut_Waxed});
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut                .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut                );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Exposed        .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Exposed        );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Weathered      .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Weathered      );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Oxidized       .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Oxidized       );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Waxed          );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Exposed_Waxed  );
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Weathered_Waxed);
-			CR.shaped(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Oxidized_Waxed );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut                .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut                );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Exposed        .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Exposed        );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Weathered      .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Weathered      );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Oxidized       .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Oxidized       );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Waxed          .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Waxed          );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Exposed_Waxed  );
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Weathered_Waxed);
-			if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
-			CR.shaped(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Oxidized_Waxed );
-			
-			for (OreDictPrefix tPrefix : OP.array_dust_ingot_plate) {
-				CR.shapeless(IL.EtFu_Block_Copper_Waxed              .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper              , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Exposed_Waxed      .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Exposed      , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Weathered_Waxed    .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Weathered    , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Oxidized     , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Stair_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-				CR.shapeless(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+			if (IL.EtFu_Block_Copper.exists()) {
+				CR.remove(IL.EtFu_Block_Copper.get(1));
+				CR.remove(IL.EtFu_Block_Copper_Waxed.get(1));
+				CR.shaped(IL.EtFu_Block_Copper_Cut.get(1), CR.DEF_MIR,  "X",  "X", 'X', IL.EtFu_Slabs_Copper_Cut);
+				CR.shaped(IL.EtFu_Block_Copper_Cut.get(1), CR.DEF_MIR, "XX", "XX", 'X', OP.ingot.dat(ANY.Cu));
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut.get(1), CR.DEF_MIR,       "XX", 'X', OP.ingot.dat(ANY.Cu));
+				CR.shaped(IL.EtFu_Stair_Copper_Cut.get(1), CR.DEF_MIR, " X", "XX", 'X', OP.ingot.dat(ANY.Cu));
+				CR.shapeless(OP.ingot.mat(MT.Cu, 9), new Object[] {IL.EtFu_Block_Copper});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 9), new Object[] {IL.EtFu_Block_Copper_Waxed});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 4), new Object[] {IL.EtFu_Block_Copper_Cut_Waxed});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 2), new Object[] {IL.EtFu_Slabs_Copper_Cut_Waxed});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut});
+				CR.shapeless(OP.ingot.mat(MT.Cu, 3), new Object[] {IL.EtFu_Stair_Copper_Cut_Waxed});
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut                .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut                );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Exposed        .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Exposed        );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Weathered      .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Weathered      );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Oxidized       .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Oxidized       );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Waxed          );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Exposed_Waxed  );
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Weathered_Waxed);
+				CR.shaped(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(2), CR.DEF_MIR, "sX"      , 'X', IL.EtFu_Block_Copper_Cut_Oxidized_Waxed );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut                .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut                );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Exposed        .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Exposed        );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Weathered      .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Weathered      );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Oxidized       .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Oxidized       );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Waxed          .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Waxed          );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Exposed_Waxed  );
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Weathered_Waxed);
 				if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
-				CR.shapeless(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
-			}
-			
-			for (OreDictMaterial tMat : ANY.Cu.mToThis) {
-				RM.pack(OP.ingot.mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut.get(1));
-				RM.pack(OP.ingot.mat(tMat, 3), IL.EtFu_Stair_Copper_Cut.get(1));
-				RM.pack(OP.ingot.mat(tMat, 4), IL.EtFu_Block_Copper_Cut.get(1));
-			}
-			
-			RM.unpack(IL.EtFu_Slabs_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 2));
-			RM.unpack(IL.EtFu_Block_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 4));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Exposed        .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Weathered      .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Oxidized       .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Waxed          .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.unpack(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .wild(1), OP.ingot.mat(MT.Cu, 3));
-			
-			RM.add_smelting(IL.EtFu_Slabs_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 2));
-			RM.add_smelting(IL.EtFu_Block_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 4));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Exposed        .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Weathered      .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Oxidized       .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Waxed          .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.wild(1), OP.ingot.mat(MT.Cu, 3));
-			RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .wild(1), OP.ingot.mat(MT.Cu, 3));
-			
-			for (FluidStack tWater : FL.array(FL.Water.make(100), FL.SpDew.make(100), FL.DistW.make(100))) {
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper              .get(1), tWater, NF, IL.EtFu_Block_Copper_Exposed      .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Exposed      .get(1), tWater, NF, IL.EtFu_Block_Copper_Weathered    .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Weathered    .get(1), tWater, NF, IL.EtFu_Block_Copper_Oxidized     .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Exposed  .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Weathered.get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Oxidized .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Exposed  .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Weathered.get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Oxidized .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Weathered.get(1));
-				RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Oxidized .get(1));
-			}
-			
-			for (OreDictMaterial tMat : ANY.Wax.mToThis) {
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper              .get(1), IL.EtFu_Block_Copper_Waxed              .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Exposed      .get(1), IL.EtFu_Block_Copper_Exposed_Waxed      .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Weathered    .get(1), IL.EtFu_Block_Copper_Weathered_Waxed    .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Oxidized     .get(1), IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut          .get(1), IL.EtFu_Block_Copper_Cut_Waxed          .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Exposed  .get(1), IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Weathered.get(1), IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Oxidized .get(1), IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut          .get(2), IL.EtFu_Slabs_Copper_Cut_Waxed          .get(2));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Exposed  .get(2), IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(2));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Weathered.get(2), IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(2));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Oxidized .get(2), IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(2));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut          .get(1), IL.EtFu_Stair_Copper_Cut_Waxed          .get(1));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Weathered.get(1), IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1));
-				if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
-				RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Oxidized .get(1), IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1));
+				CR.shaped(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Oxidized_Waxed );
 				
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper              .get(1), IL.EtFu_Block_Copper_Waxed              .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Exposed      .get(1), IL.EtFu_Block_Copper_Exposed_Waxed      .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Weathered    .get(1), IL.EtFu_Block_Copper_Weathered_Waxed    .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Oxidized     .get(1), IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut          .get(1), IL.EtFu_Block_Copper_Cut_Waxed          .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Exposed  .get(1), IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Weathered.get(1), IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1));
-				RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Oxidized .get(1), IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1));
-				RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut          .get(1), IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1));
-				RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1), IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1));
-				RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Weathered.get(1), IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1));
-				RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Oxidized .get(1), IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut          .get(1), IL.EtFu_Stair_Copper_Cut_Waxed          .get(1));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1));
-				RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Weathered.get(1), IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1));
-				if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
-				RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Oxidized .get(1), IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1));
+				for (OreDictPrefix tPrefix : OP.array_dust_ingot_plate) {
+					CR.shapeless(IL.EtFu_Block_Copper_Waxed              .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper              , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Exposed_Waxed      .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Exposed      , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Weathered_Waxed    .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Weathered    , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Oxidized     , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+				}
+				
+				for (OreDictMaterial tMat : ANY.Cu.mToThis) {
+					RM.pack(OP.ingot.mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut.get(1));
+					RM.pack(OP.ingot.mat(tMat, 3), IL.EtFu_Stair_Copper_Cut.get(1));
+					RM.pack(OP.ingot.mat(tMat, 4), IL.EtFu_Block_Copper_Cut.get(1));
+				}
+				
+				RM.unpack(IL.EtFu_Block_Copper                     .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Exposed             .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Weathered           .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Oxidized            .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Waxed               .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Exposed_Waxed       .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Weathered_Waxed     .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Oxidized_Waxed      .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.unpack(IL.EtFu_Block_Copper_Cut                 .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Exposed         .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Weathered       .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Oxidized        .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Waxed           .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Exposed_Waxed   .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Weathered_Waxed .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed  .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.unpack(IL.EtFu_Slabs_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 2));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Exposed        .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Weathered      .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Oxidized       .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Waxed          .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.unpack(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .wild(1), OP.ingot.mat(MT.Cu, 3));
+				
+				RM.add_smelting(IL.EtFu_Block_Copper                     .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Exposed             .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Weathered           .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Oxidized            .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Waxed               .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Exposed_Waxed       .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Weathered_Waxed     .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Oxidized_Waxed      .get(1), OP.ingot.mat(MT.Cu, 9));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut                 .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Exposed         .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Weathered       .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Oxidized        .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Waxed           .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Exposed_Waxed   .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Weathered_Waxed .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed  .get(1), OP.ingot.mat(MT.Cu, 4));
+				RM.add_smelting(IL.EtFu_Slabs_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 2));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut                .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Exposed        .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Weathered      .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Oxidized       .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Waxed          .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.wild(1), OP.ingot.mat(MT.Cu, 3));
+				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .wild(1), OP.ingot.mat(MT.Cu, 3));
+				
+				for (FluidStack tWater : FL.array(FL.Water.make(100), FL.SpDew.make(100), FL.DistW.make(100))) {
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper              .get(1), tWater, NF, IL.EtFu_Block_Copper_Exposed      .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Exposed      .get(1), tWater, NF, IL.EtFu_Block_Copper_Weathered    .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Weathered    .get(1), tWater, NF, IL.EtFu_Block_Copper_Oxidized     .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Exposed  .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Weathered.get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Block_Copper_Cut_Oxidized .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Exposed  .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Weathered.get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Stair_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Stair_Copper_Cut_Oxidized .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut          .get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Weathered.get(1));
+					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Slabs_Copper_Cut_Weathered.get(1), tWater, NF, IL.EtFu_Slabs_Copper_Cut_Oxidized .get(1));
+				}
+				
+				for (OreDictMaterial tMat : ANY.Wax.mToThis) {
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper              .get(1), IL.EtFu_Block_Copper_Waxed              .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Exposed      .get(1), IL.EtFu_Block_Copper_Exposed_Waxed      .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Weathered    .get(1), IL.EtFu_Block_Copper_Weathered_Waxed    .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Oxidized     .get(1), IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut          .get(1), IL.EtFu_Block_Copper_Cut_Waxed          .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Exposed  .get(1), IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Weathered.get(1), IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Block_Copper_Cut_Oxidized .get(1), IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut          .get(2), IL.EtFu_Slabs_Copper_Cut_Waxed          .get(2));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Exposed  .get(2), IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(2));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Weathered.get(2), IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(2));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 1), IL.EtFu_Slabs_Copper_Cut_Oxidized .get(2), IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(2));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut          .get(1), IL.EtFu_Stair_Copper_Cut_Waxed          .get(1));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Weathered.get(1), IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1));
+					if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
+					RM.Laminator.addRecipe2(T, 16, 24, OP.plate.mat(tMat, 1), IL.EtFu_Stair_Copper_Cut_Oxidized .get(1), IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1));
+					
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper              .get(1), IL.EtFu_Block_Copper_Waxed              .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Exposed      .get(1), IL.EtFu_Block_Copper_Exposed_Waxed      .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Weathered    .get(1), IL.EtFu_Block_Copper_Weathered_Waxed    .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Oxidized     .get(1), IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut          .get(1), IL.EtFu_Block_Copper_Cut_Waxed          .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Exposed  .get(1), IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Weathered.get(1), IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1));
+					RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 4), IL.EtFu_Block_Copper_Cut_Oxidized .get(1), IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1));
+					RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut          .get(1), IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1));
+					RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Exposed  .get(1), IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1));
+					RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Weathered.get(1), IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1));
+					RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 2), IL.EtFu_Slabs_Copper_Cut_Oxidized .get(1), IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut          .get(1), IL.EtFu_Stair_Copper_Cut_Waxed          .get(1));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Exposed  .get(1), IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1));
+					RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Weathered.get(1), IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1));
+					if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
+					RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Oxidized .get(1), IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1));
+				}
 			}
 			
 			CR.delate(IL.EtFu_Granite.get(1));
