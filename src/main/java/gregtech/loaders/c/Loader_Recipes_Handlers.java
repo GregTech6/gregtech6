@@ -515,6 +515,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Mithril                , NF                                ,   0,   1, NF, MT.Pt                   , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.TungstenSintered       , NF                                ,   0,   1, NF, MT.W                    , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Os                     , NF                                ,   0,   1, NF, MT.FakeOsmium           , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Aredrite               , NF                                ,   0,   1, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Chimerite              , NF                                ,   0,   1, NF, MT.Vinteum              , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.BlueTopaz              , NF                                ,   0,   1, NF, MT.Topaz                , NI, T, tConditionP));
 		

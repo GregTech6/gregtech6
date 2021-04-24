@@ -129,6 +129,9 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Scheelite          .addOreByProducts(MT.Rubracium      );
 			MT.OREMATS.Pentlandite        .addOreByProducts(MT.Meutoite       );
 			MT.MgCO3                      .addOreByProducts(MT.Lemurite       );
+			MT.Ardite                     .addOreByProducts(MT.Aredrite       );
+			MT.Co                         .addOreByProducts(MT.Aredrite       );
+			MT.OREMATS.Cobaltite          .addOreByProducts(MT.Aredrite       );
 			MT.OREMATS.Stibnite           .addOreByProducts(MT.Ceruclase      );
 			MT.OREMATS.Garnierite         .addOreByProducts(MT.Oureclase      );
 			MT.OREMATS.Cooperite          .addOreByProducts(MT.Kalendrite     );
@@ -140,6 +143,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Cobaltite          .addOreByProducts(MT.Prometheum     );
 			MT.OREMATS.Cassiterite        .addOreByProducts(MT.Ignatius       );
 			MT.OREMATS.Wolframite         .addOreByProducts(MT.Vulcanite      );
+			MT.FakeOsmium                 .addOreByProducts(MT.DeepIron       );
 			MT.Fe2O3                      .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.BrownLimonite      .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.YellowLimonite     .addOreByProducts(MT.DeepIron       );
@@ -149,6 +153,7 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		if (MD.Mek.mLoaded) {
 			MT.Pb.addOreByProducts(MT.FakeOsmium);
+			MT.DeepIron.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Galena.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Magnetite.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Ferrovanadium.addOreByProducts(MT.FakeOsmium);
@@ -159,6 +164,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Co.addOreByProducts(MT.Ardite);
 			MT.OREMATS.Cobaltite.addOreByProducts(MT.Ardite);
 			MT.FakeOsmium.addOreByProducts(MT.Ardite);
+			MT.Aredrite.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded) {
 			MT.Azurite.addOreByProducts(MT.Nikolite);
@@ -191,11 +197,12 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.MilkyQuartz.addOreByProducts(MT.BlackQuartz);
 		}
 		if (MD.AE.mLoaded) {
+			// Because Applied Energistics would not create its own Items if I also added them, which leads to it getting Issues with its own shit.
 			OP.gem .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 			OP.dust.disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 		}
 	}
-
+	
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
 		new LoaderWoodDictionary().run();

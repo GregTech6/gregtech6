@@ -169,21 +169,21 @@ public class GT6_Main extends Abstract_Mod {
 			Items.stone_shovel   .setMaxDamage( 16);
 			Items.stone_axe      .setMaxDamage( 16);
 			Items.stone_hoe      .setMaxDamage( 16);
-			Items.iron_sword     .setMaxDamage( 80);
-			Items.iron_pickaxe   .setMaxDamage( 80);
-			Items.iron_shovel    .setMaxDamage( 80);
-			Items.iron_axe       .setMaxDamage( 80);
-			Items.iron_hoe       .setMaxDamage( 80);
+			Items.iron_sword     .setMaxDamage( 64);
+			Items.iron_pickaxe   .setMaxDamage( 64);
+			Items.iron_shovel    .setMaxDamage( 64);
+			Items.iron_axe       .setMaxDamage( 64);
+			Items.iron_hoe       .setMaxDamage( 64);
 			Items.golden_sword   .setMaxDamage(  8);
 			Items.golden_pickaxe .setMaxDamage(  8);
 			Items.golden_shovel  .setMaxDamage(  8);
 			Items.golden_axe     .setMaxDamage(  8);
 			Items.golden_hoe     .setMaxDamage(  8);
-			Items.diamond_sword  .setMaxDamage(240);
-			Items.diamond_pickaxe.setMaxDamage(240);
-			Items.diamond_shovel .setMaxDamage(240);
-			Items.diamond_axe    .setMaxDamage(240);
-			Items.diamond_hoe    .setMaxDamage(240);
+			Items.diamond_sword  .setMaxDamage(256);
+			Items.diamond_pickaxe.setMaxDamage(256);
+			Items.diamond_shovel .setMaxDamage(256);
+			Items.diamond_axe    .setMaxDamage(256);
+			Items.diamond_hoe    .setMaxDamage(256);
 		}
 		
 		if (COMPAT_IC2 != null && !MD.IC2C.mLoaded) {
@@ -199,29 +199,29 @@ public class GT6_Main extends Abstract_Mod {
 			COMPAT_IC2.scrapbox(200.0F, IL.IC2_Scrap.get(1));
 		}
 
-		EntityRegistry.registerModEntity(EntityArrow_Material.class , "GT_Entity_Arrow"         , 1, GT, 160, 1, T);
-		EntityRegistry.registerModEntity(EntityArrow_Potion.class   , "GT_Entity_Arrow_Potion"  , 2, GT, 160, 1, T);
+		EntityRegistry.registerModEntity(EntityArrow_Material.class, "GT_Entity_Arrow"       , 1, GT, 160, 1, T);
+		EntityRegistry.registerModEntity(EntityArrow_Potion.class  , "GT_Entity_Arrow_Potion", 2, GT, 160, 1, T);
 
 		for (OreDictMaterial tWood : ANY.Wood.mToThis) OP.plate.disableItemGeneration(tWood);
-		OP.ingot        .disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
-		OP.gemChipped   .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemFlawed    .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gem          .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemFlawless  .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemExquisite .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemLegendary .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.ingot       .disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
+		OP.gemChipped  .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemFlawed   .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gem         .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemFlawless .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemExquisite.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemLegendary.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 
 
-		RM.pulverizing(ST.make(Blocks.cobblestone   , 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.stone         , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.gravel        , 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
-		RM.pulverizing(ST.make(Blocks.furnace       , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.lit_furnace   , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
-		RM.pulverizing(ST.make(Items.bone           , 1, W), IL.Dye_Bonemeal.get(2), IL.Dye_Bonemeal.get(1), 50, T);
-		RM.pulverizing(ST.make(Items.blaze_rod      , 1, W), ST.make(Items.blaze_powder, 3, 0), ST.make(Items.blaze_powder, 1, 0), 50, T);
-		RM.pulverizing(ST.make(Blocks.pumpkin       , 1, W), ST.make(Items.pumpkin_seeds, 4, 0), null, 0, F);
-		RM.pulverizing(ST.make(Items.melon          , 1, W), ST.make(Items.melon_seeds, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.wool          , 1, W), ST.make(Items.string, 2, 0), ST.make(Items.string, 1, 0), 50, F);
+		RM.pulverizing(ST.make(Blocks.cobblestone, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.stone      , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.gravel     , 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
+		RM.pulverizing(ST.make(Blocks.furnace    , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.lit_furnace, 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
+		RM.pulverizing(ST.make(Items.bone        , 1, W), IL.Dye_Bonemeal.get(2), IL.Dye_Bonemeal.get(1), 50, T);
+		RM.pulverizing(ST.make(Items.blaze_rod   , 1, W), ST.make(Items.blaze_powder, 3, 0), ST.make(Items.blaze_powder, 1, 0), 50, T);
+		RM.pulverizing(ST.make(Blocks.pumpkin    , 1, W), ST.make(Items.pumpkin_seeds, 4, 0), null, 0, F);
+		RM.pulverizing(ST.make(Items.melon       , 1, W), ST.make(Items.melon_seeds, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.wool       , 1, W), ST.make(Items.string, 2, 0), ST.make(Items.string, 1, 0), 50, F);
 		
 		new Loader_Fluids().run();
 		new Loader_Tools().run();

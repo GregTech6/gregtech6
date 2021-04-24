@@ -100,7 +100,6 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Mithril      , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Mithril      , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Cheese       , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Cheese       , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ardite       , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ardite       , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Aredrite     , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Aredrite     , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Desh         , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Desh         , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
 		}
 		

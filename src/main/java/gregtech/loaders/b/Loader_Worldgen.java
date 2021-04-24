@@ -85,6 +85,7 @@ public class Loader_Worldgen implements Runnable {
 		, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumBlack         , U64,  0,  5) : null
 		, MD.HEX .mLoaded ? new StoneLayerOres(MT.HexoriumWhite         , U64,  0,  5) : null
 		, MD.Mek .mLoaded ? new StoneLayerOres(MT.FakeOsmium            , U32,  0,  5) : null
+		, MD.MET .mLoaded ? new StoneLayerOres(MT.DeepIron              , U16,  0,  5) : null
 		);
 		}
 		

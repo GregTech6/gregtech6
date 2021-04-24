@@ -1503,6 +1503,7 @@ public class MT {
 	Rubracium               = metalore      ( 8762, "Rubracium"                                     , 151,  45,  45     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.LUCRUM                              , 1).heat(1847),
 	Meutoite                = metalore      ( 8763, "Meutoite"                                      ,  95,  82, 105     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.ALIENIS                             , 1).heat(1837),
 	Lemurite                = metalore      ( 8764, "Lemurite"                                      , 219, 219, 219     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.MOTUS                               , 1).heat(1179),
+	Aredrite                = metalore      ( 8701, "Aredrite"                                      , 255, 255,   0     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.STRONTIO                            , 1).qual(3,  6.0, 1440, 3).heat(2240),
 	Ceruclase               = metalore      ( 8765, "Ceruclase"                                     , 140, 189, 208     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.TEMPESTAS                           , 1).qual(3,  6.0, 1280, 2).heat(1867),
 	Oureclase               = metalore      ( 8767, "Oureclase"                                     , 183,  98,  21     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.AER                                 , 1).qual(3,  6.0, 1920, 3).heat(2789),
 	Kalendrite              = metalore      ( 8768, "Kalendrite"                                    , 170,  91, 189     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.ORDO                                , 1).qual(3,  5.0, 2560, 3).heat(2679),
@@ -1604,8 +1605,7 @@ public class MT {
 	NiobiumNitride          = alloy         ( 8688, "Niobium Nitride"       , SET_DULL              ,  29,  41,  29     , BRITTLE, ELECTROLYSER)                                                                                                                    .uumMcfg( 0, Nb             , 1*U, N                , 1*U)                                                                                                  .heat(2573), // Anti-Reflective Material
 	NiobiumTitanium         = alloy         ( 8689, "Niobium Titanium"      , SET_DULL              ,  29,  29,  41     , BRITTLE)                                                                                                                                  .uumAloy( 0, Nb             , 1*U, Ti               , 1*U)                                                                                                  ,
 	AluminiumBrass          = alloymachine  ( 8700, "Aluminium Brass"                               , 220, 220, 130     , FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN, "AluminumBrass").qual(2, 6.0,  64,  2)                                                          .uumAloy( 0, Al             , 3*U, Cu               , 1*U)                                                                                                  .aspects(TC.STRONTIO, 1),
-	Ardite                  = metalore      ( 8707, "Ardite"                                        , 200, 120,  20     ).qual(2, 6.0,  64,  2)                                                                                                                                                                                                                                                                                 .aspects(TC.STRONTIO, 1),
-	Aredrite                = metalore      ( 8701, "Aredrite"                                      , 255, 255,   0     , MOLTEN).qual(2, 6.0,   64,  2)                                                                                                                                                                                                                                                                        .aspects(TC.STRONTIO, 1).visDefault(),
+	Ardite                  = metalore      ( 8707, "Ardite"                                        , 200, 120,  20     , MOLTEN).qual(2, 6.0,  64,  2)                                                                                                                                                                                                                                                                         .aspects(TC.STRONTIO, 1),
 	Alumite                 = alloymachine  ( 8702, "Alumite"                                       , 230, 100, 230     , MOLTEN).qual(2, 1.5,   64,  0)                                                                                                            .setAloy( 9, Al             , 5*U, WroughtIron      , 2*U, Obsidian         ,18*U)                                                                          .aspects(TC.STRONTIO, 2),
 	Manyullyn               = alloymachine  ( 8703, "Manyullyn"                                     , 175, 100, 175     , MOLTEN).qual(2, 2.0,   96,  1)                                                                                                            .setAloy( 0, Co             , 1*U, Ardite           , 1*U)                                                                                                  .aspects(TC.STRONTIO, 2),
 	VibraniumSteel          = slloymachine  ( 8704, "Vibranium Steel"                               ,  40,  24,  50     , CENTRIFUGE, UNBURNABLE, MAGNETIC_PASSIVE).qual(3,   50.0, 2048, 10)                                                                       .uumAloy( 0, Vb             , 1*U, Steel            , 3*U)                                                                                                  .aspects(TC.SENSUS, 1, TC.VITREUS, 1, TC.METALLUM, 1),
@@ -2333,6 +2333,7 @@ public class MT {
 			Rubracium               .put(MD.MET).visDefault();
 			Meutoite                .put(MD.MET).visDefault();
 			Lemurite                .put(MD.MET).visDefault();
+			Aredrite                .put(MD.MET).visDefault();
 			Ceruclase               .put(MD.MET).visDefault();
 			Atl                     .put(MD.MET);
 			Oureclase               .put(MD.MET).visDefault();
@@ -2473,6 +2474,7 @@ public class MT {
 			Nichrome                .addEnchantmentForTools(Enchantment.baneOfArthropods, 2);
 			Invar                   .addEnchantmentForTools(Enchantment.baneOfArthropods, 3);
 			Sb                      .addEnchantmentForTools(Enchantment.baneOfArthropods, 3);
+			Aredrite                .addEnchantmentForTools(Enchantment.baneOfArthropods, 3);
 			BatteryAlloy            .addEnchantmentForTools(Enchantment.baneOfArthropods, 4);
 			Bi                      .addEnchantmentForTools(Enchantment.baneOfArthropods, 4);
 			Orichalcum              .addEnchantmentForTools(Enchantment.baneOfArthropods, 4);
@@ -2500,7 +2502,6 @@ public class MT {
 			Syrmorite               .addEnchantmentForTools(Enchantment.sharpness, 2);
 			WroughtIron             .addEnchantmentForTools(Enchantment.sharpness, 2);
 			PigIron                 .addEnchantmentForTools(Enchantment.sharpness, 2);
-			DeepIron                .addEnchantmentForTools(Enchantment.sharpness, 2);
 			Meteorite               .addEnchantmentForTools(Enchantment.sharpness, 2);
 			FierySteel              .addEnchantmentForTools(Enchantment.sharpness, 2);
 			FrozenIron              .addEnchantmentForTools(Enchantment.sharpness, 2);
@@ -2509,6 +2510,7 @@ public class MT {
 			VanadiumSteel           .addEnchantmentForTools(Enchantment.sharpness, 3);
 			StainlessSteel          .addEnchantmentForTools(Enchantment.sharpness, 3);
 			Knightmetal             .addEnchantmentForTools(Enchantment.sharpness, 3);
+			DeepIron                .addEnchantmentForTools(Enchantment.sharpness, 3);
 			ShadowIron              .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlackSteel              .addEnchantmentForTools(Enchantment.sharpness, 3);
 			RedSteel                .addEnchantmentForTools(Enchantment.sharpness, 3);
@@ -2556,6 +2558,7 @@ public class MT {
 			Ad                      .addEnchantmentForArmors(Enchantment.protection,10);
 			Infinity                .addEnchantmentForArmors(Enchantment.protection,10);
 			
+			Aredrite                .addEnchantmentForArmors(Enchantment.fireProtection, 3);
 			Efrine                  .addEnchantmentForArmors(Enchantment.fireProtection, 3);
 			Netherite               .addEnchantmentForArmors(Enchantment.fireProtection, 3);
 			NetherizedDiamond       .addEnchantmentForArmors(Enchantment.fireProtection, 5);
