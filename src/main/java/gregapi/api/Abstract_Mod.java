@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -112,9 +112,9 @@ public abstract class Abstract_Mod {
 	public abstract void onModInit2(FMLInitializationEvent aEvent);
 	/** Called on PostInit */
 	public abstract void onModPostInit2(FMLPostInitializationEvent aEvent);
-	/** Called on Server Start */
+	/** Called on Server Start, NEVER DO ANYTHING LAGGY HERE!!! */
 	public abstract void onModServerStarting2(FMLServerStartingEvent aEvent);
-	/** Called after Server Start */
+	/** Called after Server Start, NEVER DO ANYTHING LAGGY HERE!!! */
 	public abstract void onModServerStarted2(FMLServerStartedEvent aEvent);
 	/** Called on Server Stop */
 	public abstract void onModServerStopping2(FMLServerStoppingEvent aEvent);
