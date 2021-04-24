@@ -1852,7 +1852,9 @@ public class CS {
 		, EIO               = "EnderIO"
 		, RT                = "RandomThings"
 		, AA                = "ActuallyAdditions"
+		
 		, SD                = "StorageDrawers"
+		, BTRS              = "betterstorage"
 		, JABBA             = "JABBA"
 		
 		, MgC               = "Magneticraft"

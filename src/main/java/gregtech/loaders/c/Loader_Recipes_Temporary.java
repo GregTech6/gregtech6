@@ -80,6 +80,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		
+		if (MD.BTRS.mLoaded) {
+			RM.packunpack(ST.make(Items.flint, 9, 0), ST.make(MD.BTRS, "flintBlock", 1, 0));
+		}
+		
+		
 		if (MD.HEX.mLoaded) {
 			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithRed"           , 1, W), OP.plateGem.mat(MT.HexoriumRed  , 16));
 			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithGreen"         , 1, W), OP.plateGem.mat(MT.HexoriumGreen, 16));

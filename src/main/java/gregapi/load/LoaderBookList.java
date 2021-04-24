@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -236,6 +236,12 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.SD, "upgradeLock"                          ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.SD, "personalKey"                          ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.SD, "tape"                                 ,   W, (byte) 57);
+		}
+		if (MD.BTRS.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.BTRS, "lock"                               ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.BTRS, "key"                                ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.BTRS, "masterKey"                          ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.BTRS, "keyring"                            ,   W, (byte)  1);
 		}
 		if (MD.RC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.RC, "routing.table"                        ,   W, (byte) 19);

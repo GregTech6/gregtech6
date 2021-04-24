@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -48,7 +48,7 @@ public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
-		if (!FL.simple(aFluidToFill) || FL.temperature(aFluidToFill) > mMaterial.mMeltingPoint || FL.gas(aFluidToFill) || FL.acid(aFluidToFill)) return null;
+		if (FL.temperature(aFluidToFill) > mMaterial.mMeltingPoint || !FL.heavier(aFluidToFill) || !FL.simple(aFluidToFill) || FL.gas(aFluidToFill) || FL.acid(aFluidToFill)) return null;
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].isEmpty()) return mTanksInput[i];
 		return null;
 	}
