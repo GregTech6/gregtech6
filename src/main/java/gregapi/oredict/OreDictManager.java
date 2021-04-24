@@ -321,8 +321,8 @@ public final class OreDictManager {
 		if (GT != null) {
 			// Preventing Blizz, Blitz and Basalz Stuff from being registered wrongly to GT6.
 			if (MD.TE_FOUNDATION.owns(aRegName, "material") && UT.Code.inside(1024, 1029, ST.meta_(aEvent.Ore)) && MD.TE_FOUNDATION.mID.equalsIgnoreCase(aModID)) return;
-			// Et Futurum Copper Blocks do not follow the 9 Ingots = 1 Block convention.
-			if (MD.EtFu.owns(aRegName) &&  aEvent.Name.equals("blockCopper")) return;
+			// Et Futurum Copper Blocks do not follow the 9 Ingots = 1 Block convention. So lets just change its Meta, so that should be fine.
+			if (MD.EtFu.owns(aRegName) &&  aEvent.Name.equals("blockCopper")) ST.meta_(aEvent.Ore, 16);
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
 			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
