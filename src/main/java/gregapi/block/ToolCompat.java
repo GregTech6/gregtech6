@@ -29,7 +29,6 @@ import java.util.Random;
 import cpw.mods.fml.common.FMLLog;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
-import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -380,21 +379,23 @@ public class ToolCompat {
 			tY -= OFFSETS_Y[aSide];
 			tZ -= OFFSETS_Z[aSide];
 			
+			// The Strings in this do not want to be localized, and not even Backup Lang wants to work.
+			
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA));
+				if (aChatReturn != null) aChatReturn.add("There is Lava behind this Rock");
 				break;
 			}
 			if (tBlock instanceof BlockLiquid || tBlock instanceof IFluidBlock) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID));
+				if (aChatReturn != null) aChatReturn.add("There is a Fluid behind this Rock");
 				break;
 			}
 			if (tBlock instanceof BlockSilverfish || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR));
+				if (aChatReturn != null) aChatReturn.add("There is an Air Pocket behind this Rock");
 				break;
 			}
 			if (i < 4) if (tBlock != aBlock || aMeta != aWorld.getBlockMetadata(tX, tY, tZ)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE));
+				if (aChatReturn != null) aChatReturn.add("Material is changing behind this Rock");
 				break;
 			}
 		}
@@ -409,12 +410,12 @@ public class ToolCompat {
 			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {
 				OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
 				if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
-					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal());
+					if (aChatReturn != null) aChatReturn.add("Found traces of " + tAssotiation.mMaterial.mMaterial.getLocal());
 					return T;
 				}
 			}
 		}
-		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING));
+		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add("No traces of Ore found");
 		return T;
 	}
 }

@@ -532,7 +532,7 @@ public class LH {
 		add(TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING        , "Can break Twilight Forest Maze Hedges");
 		add(TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING        , "Can break Twilight Forest Mazestone");
 		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock");
-		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock");
+		add(PROSPECTING_LIQUID                          , "There is a Fluid behind this Rock");
 		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock");
 		add(PROSPECTING_CHANGE                          , "Material is changing behind this Rock");
 		add(PROSPECTING_TRACES                          , "Found traces of ");
