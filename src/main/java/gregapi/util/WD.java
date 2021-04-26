@@ -469,10 +469,10 @@ public class WD {
 	public static boolean leafdecay(World aWorld, int aX, int aY, int aZ, Block aBlock, boolean aOnlyTopArea) {return leafdecay(aWorld, aX, aY, aZ, aBlock, aOnlyTopArea, F);}
 	public static boolean leafdecay(World aWorld, int aX, int aY, int aZ, Block aBlock, boolean aOnlyTopArea, boolean aTreeCapitator) {
 		if (aBlock == null || aBlock.canSustainLeaves(aWorld, aX, aY, aZ)) {
-			for (int j = (aOnlyTopArea ? 7 : -7); j <= 7; ++j) for (int i = -7; i <= 7; ++i) for (int k = -7; k <= 7; ++k) {
+			for (int j = (aOnlyTopArea ? 0 : -7); j <= 7; ++j) for (int i = -7; i <= 7; ++i) for (int k = -7; k <= 7; ++k) {
 				Block tBlock = aWorld.getBlock(aX+i, aY+j, aZ+k);
 				if (tBlock != NB) {
-					if (IL.NeLi_Wart_Block_Crimson.equal(tBlock)) {
+					if (IL.NeLi_Wart_Block_Crimson.equal(tBlock) || IL.NeLi_ShroomLight.equal(tBlock)) {
 						if (aTreeCapitator && Math.abs(i) <= 4 && Math.abs(k) <= 4) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
 					} else {
 						if (tBlock.isLeaves(aWorld, aX+i, aY+j, aZ+k)) aWorld.scheduleBlockUpdate(aX+i, aY+j, aZ+k, tBlock, 1+RNGSUS.nextInt(100));
