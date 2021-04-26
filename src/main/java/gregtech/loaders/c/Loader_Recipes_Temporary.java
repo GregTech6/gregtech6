@@ -354,10 +354,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(IL.NeLi_Wither_Rose             .get(8));
 			RM.biomass(IL.NeLi_Foxfire_Lily            .get(8));
 			
-			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
-			RM.compact(IL.NeLi_Wart_Crimson     .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 0));
-			RM.compact(IL.NeLi_Wart_Warped      .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 1));
-			RM.compact(IL.NeLi_Wart_Soggy       .get(1), 9, ST.make(MD.NeLi, "Wartblock", 1, 2));
+			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, IL.NeLi_Wart_Block_Crimson.get(1));
+			RM.compact(IL.NeLi_Wart_Crimson     .get(1), 9, IL.NeLi_Wart_Block_Crimson.get(1));
+			RM.compact(IL.NeLi_Wart_Warped      .get(1), 9, IL.NeLi_Wart_Block_Warped .get(1));
+			RM.compact(IL.NeLi_Wart_Soggy       .get(1), 9, IL.NeLi_Wart_Block_Soggy  .get(1));
 			
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_CrimsonStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 0));
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_WarpedStew   .get(1), ST.make(MD.NeLi, "Fungus", 2, 1));

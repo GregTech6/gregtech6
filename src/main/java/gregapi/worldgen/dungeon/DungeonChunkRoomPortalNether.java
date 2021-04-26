@@ -22,7 +22,6 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.IL;
-import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -56,7 +55,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			}
 		}
 		
-		Block tShroomLight = IL.NeLi_ShroomLight.block(), tWartBlock = ST.block(MD.NeLi, "Wartblock");
+		Block tShroomLight = IL.NeLi_ShroomLight.block(), tWartBlock = IL.NeLi_Wart_Block_Crimson.block();
 		int tMeta = aData.next(3);
 		
 		if (ST.valid(tShroomLight) && ST.valid(tWartBlock)) {

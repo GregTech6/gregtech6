@@ -1129,6 +1129,9 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Wart_Crimson                    .set(ST.make(MD.NeLi, "WartItem"                            , 1, 0));
 		IL.NeLi_Wart_Warped                     .set(ST.make(MD.NeLi, "WartItem"                            , 1, 1));
 		IL.NeLi_Wart_Soggy                      .set(ST.make(MD.NeLi, "WartItem"                            , 1, 2));
+		IL.NeLi_Wart_Block_Crimson              .set(ST.make(MD.NeLi, "Wartblock"                           , 1, 0));
+		IL.NeLi_Wart_Block_Warped               .set(ST.make(MD.NeLi, "Wartblock"                           , 1, 1));
+		IL.NeLi_Wart_Block_Soggy                .set(ST.make(MD.NeLi, "Wartblock"                           , 1, 2));
 		IL.NeLi_Foxfire_Powder                  .set(ST.make(MD.NeLi, "FoxfirePowder"                       , 1, 0));
 		
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
