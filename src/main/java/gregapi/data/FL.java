@@ -190,7 +190,7 @@ public enum FL {
 	, Juice_Fig                 ("figjuice"                                                 , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Coconut             ("coconutmilk"                                              , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Date                ("datejuice"                                                , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
-
+	
 	, Smoothie_Fruit            ("fruitsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
 	, Smoothie_Melon            ("melonsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
 	, Smoothie_Kiwi             ("kiwismoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
@@ -225,7 +225,7 @@ public enum FL {
 	, Smoothie_Papaya           ("papayasmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
 	, Smoothie_Fig              ("figsmoothie"                                              , SIMPLE, LIQUID, FOOD, THERMOS)
 	, Smoothie_Coconut          ("coconutsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
-
+	
 	, Juice_Carrot              ("binnie.juicecarrot"       , "carrotjuice"                 , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Tomato              ("binnie.juicetomato"       , "tomatojuice"                 , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Beet                ("beetjuice"                                                , SIMPLE, LIQUID, FOOD, JUICE)
@@ -235,7 +235,7 @@ public enum FL {
 	, Juice_Potato              ("potatojuice"              , "potion.potatojuice"          , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Reed                ("reedwater"                , "potion.reedwater"            , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Cactus              ("cactuswater"                                              , SIMPLE, LIQUID, FOOD, JUICE)
-
+	
 	, Mash_Rice                 ("ricewater"                , "potion.ricewater"            , SIMPLE, LIQUID, FOOD)
 	, Mash_Hops                 ("hopsmash"                 , "potion.hopsjuice"            , SIMPLE, LIQUID, FOOD)
 	, Mash_WheatHops            ("wheathopsmash"            , "potion.wheatyhopsjuice"      , SIMPLE, LIQUID, FOOD)
@@ -243,7 +243,7 @@ public enum FL {
 	, Mash_Corn                 ("binnie.mashcorn"                                          , SIMPLE, LIQUID, FOOD)
 	, Mash_Rye                  ("binnie.mashrye"                                           , SIMPLE, LIQUID, FOOD)
 	, Mash_Grain                ("binnie.mashgrain"                                         , SIMPLE, LIQUID, FOOD)
-
+	
 	, Resin                     ("resin"                                                    , SIMPLE, LIQUID)
 	, Resin_Spruce              ("spruceresin"                                              , SIMPLE, LIQUID)
 	, Resin_Rubber              ("fluidrubbertreesap"                                       , SIMPLE, LIQUID)
@@ -253,11 +253,11 @@ public enum FL {
 	, Sap                       ("sap"                                                      , SIMPLE, LIQUID, FOOD)
 	, Sap_Rainbow               ("rainbowsap"                                               , SIMPLE, LIQUID, FOOD)
 	, Sap_Maple                 ("maplesap"                                                 , SIMPLE, LIQUID, FOOD)
-
+	
 	, Syrup_Maple               ("maplesyrup"                                               , SIMPLE, LIQUID, FOOD)
-
+	
 	, Nutbutter_Peanut          ("peanutbutter"                                             , SIMPLE, LIQUID, FOOD)
-
+	
 	, Cream                     ("grcmilk.cream"            , "cream"                       , SIMPLE, LIQUID, FOOD)
 	, Cream_Chocolate           ("chocolatecream"                                           , SIMPLE, LIQUID, FOOD)
 	, Cream_Coconut             ("coconutcream"                                             , SIMPLE, LIQUID, FOOD)

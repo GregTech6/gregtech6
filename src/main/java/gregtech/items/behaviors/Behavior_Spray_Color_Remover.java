@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.block.IBlockDecolorable;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -99,6 +100,7 @@ public class Behavior_Spray_Color_Remover extends AbstractBehaviorDefault {
 		if (aBlock == Blocks.stained_hardened_clay) return aDelegator.setBlock(Blocks.hardened_clay);
 		if (aBlock == Blocks.stained_glass_pane) return aDelegator.setBlock(Blocks.glass_pane);
 		if (aBlock == Blocks.stained_glass) return aDelegator.setBlock(Blocks.glass);
+		if (aBlock == BlocksGT.Grass) return aDelegator.setBlock(Blocks.grass);
 		return F;
 	}
 	

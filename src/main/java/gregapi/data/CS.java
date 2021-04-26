@@ -294,10 +294,10 @@ public class CS {
 	
 	/** Stores the Coordinates that any given Player last interacted with. */
 	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new IdentityHashMap<>();
-
+	
 	/** a Random generator so I don't need to instantiate a new one all the time. */
 	public static final Random RNGSUS = new Random(), RANDOM = RNGSUS;
-
+	
 	/** Current Time on the Server, since the last Reboot. */
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
@@ -339,7 +339,7 @@ public class CS {
 		0xff0080,
 		0xff0040,
 	};
-
+	
 	/** Some Colour Arrays */
 	public static final short[]
 	  CA_WHITE              = {255, 255, 255, 255}
@@ -383,7 +383,7 @@ public class CS {
 	, CA_LIGHT_YELLOW_64    = { 64,  64,  32, 255}
 	, CA_LIGHT_YELLOW_32    = { 32,  32,  16, 255}
 	;
-
+	
 	public static final short[]
 	  DYE_None              = {255, 255, 255, 255}
 	, DYE_Black             = { 32,  32,  32, 255}
@@ -403,7 +403,7 @@ public class CS {
 	, DYE_Orange            = {255, 128,   0, 255}
 	, DYE_White             = {255, 255, 255, 255}
 	;
-
+	
 	public static final int
 	  DYE_INT_None            = UT.Code.getRGBInt(DYE_None)
 	, DYE_INT_Black           = UT.Code.getRGBInt(DYE_Black)
@@ -423,7 +423,7 @@ public class CS {
 	, DYE_INT_Orange          = UT.Code.getRGBInt(DYE_Orange)
 	, DYE_INT_White           = UT.Code.getRGBInt(DYE_White)
 	;
-
+	
 	public static final byte
 	DYE_INDEX_Black         =  0,
 	DYE_INDEX_Red           =  1,
@@ -441,7 +441,7 @@ public class CS {
 	DYE_INDEX_Magenta       = 13,
 	DYE_INDEX_Orange        = 14,
 	DYE_INDEX_White         = 15;
-
+	
 	public static final String[] DYE_NAMES                  = {"Black", "Red", "Green", "Brown", "Blue", "Purple", "Cyan", "Light Gray", "Gray", "Pink", "Lime", "Yellow", "Light Blue", "Magenta", "Orange", "White"};
 	public static final String[] DYE_OREDICTS               = {"dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan", "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange", "dyeWhite"};
 	public static final String[] DYE_OREDICTS_CERAMIC       = {"dyeCeramicBlack", "dyeCeramicRed", "dyeCeramicGreen", "dyeCeramicBrown", "dyeCeramicBlue", "dyeCeramicPurple", "dyeCeramicCyan", "dyeCeramicLightGray", "dyeCeramicGray", "dyeCeramicPink", "dyeCeramicLime", "dyeCeramicYellow", "dyeCeramicLightBlue", "dyeCeramicMagenta", "dyeCeramicOrange", "dyeCeramicWhite"};
@@ -452,22 +452,22 @@ public class CS {
 	
 	public static final short[][] DYES                      = {DYE_Black, DYE_Red, DYE_Green, DYE_Brown, DYE_Blue, DYE_Purple, DYE_Cyan, DYE_LightGray, DYE_Gray, DYE_Pink, DYE_Lime, DYE_Yellow, DYE_LightBlue, DYE_Magenta, DYE_Orange, DYE_White};
 	public static final short[][] DYES_INVERTED             = {DYES[15], DYES[14], DYES[13], DYES[12], DYES[11], DYES[10], DYES[ 9], DYES[ 8], DYES[ 7], DYES[ 6], DYES[ 5], DYES[ 4], DYES[ 3], DYES[ 2], DYES[ 1], DYES[ 0]};
-
+	
 	public static final int[] DYES_INT                      = {DYE_INT_Black, DYE_INT_Red, DYE_INT_Green, DYE_INT_Brown, DYE_INT_Blue, DYE_INT_Purple, DYE_INT_Cyan, DYE_INT_LightGray, DYE_INT_Gray, DYE_INT_Pink, DYE_INT_Lime, DYE_INT_Yellow, DYE_INT_LightBlue, DYE_INT_Magenta, DYE_INT_Orange, DYE_INT_White};
 	public static final int[] DYES_INT_INVERTED             = {DYES_INT[15], DYES_INT[14], DYES_INT[13], DYES_INT[12], DYES_INT[11], DYES_INT[10], DYES_INT[ 9], DYES_INT[ 8], DYES_INT[ 7], DYES_INT[ 6], DYES_INT[ 5], DYES_INT[ 4], DYES_INT[ 3], DYES_INT[ 2], DYES_INT[ 1], DYES_INT[ 0]};
-
+	
 	public static final FluidStack[] DYED_C_FOAMS           = new FluidStack[16];
 	public static final FluidStack[] DYED_C_FOAMS_OWNED     = new FluidStack[16];
-
+	
 	public static final FluidStack[] DYE_FLUIDS_WATER       = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_FLOWER      = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_CHEMICAL    = new FluidStack[16];
 	public static final FluidStack[][] DYE_FLUIDCATEGORIES  = {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL};
-
-
+	
+	
 	@SuppressWarnings("unchecked")
 	public static final ArrayListNoNulls<FluidStack>[] DYE_FLUIDS = new ArrayListNoNulls[] {new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>()};
-
+	
 	/** Offset for Rendering Text on Surfaces. */
 	public static final float PX_OFFSET = 0.005F;
 	
@@ -485,7 +485,7 @@ public class CS {
 		, 1.5000F, 1.5625F, 1.6250F, 1.6875F
 		, 1.7500F, 1.8125F, 1.8750F, 1.9375F
 		, 2.0000F}, PIXELS_POS = PX_P;
-
+	
 	/** Array with length 17 containing the Coordinates of Pixels from 16/16 to 0/16 */
 	public static final float[] PX_N = {
 		  1.0000F, 0.9375F, 0.8750F, 0.8125F
@@ -497,7 +497,7 @@ public class CS {
 		,-0.5000F,-0.5625F,-0.6250F,-0.6875F
 		,-0.7500F,-0.8125F,-0.8750F,-0.9375F
 		,-1.0000F}, PIXELS_NEG = PX_N;
-
+	
 	/** Different Side Variables for easier comprehension. */
 	public static final byte        SIDE_Y_NEG  = 0, SIDE_BOTTOM    = 0, SIDE_DOWN      = 0,
 									SIDE_Y_POS  = 1, SIDE_TOP       = 1, SIDE_UP        = 1,
@@ -506,7 +506,7 @@ public class CS {
 									SIDE_X_NEG  = 4, SIDE_WEST      = 4,
 									SIDE_X_POS  = 5, SIDE_EAST      = 5, // Also a Side with a stupidly mirrored Texture
 									SIDE_ANY    = 6, SIDE_UNKNOWN   = 6, SIDE_INVALID = 6, SIDE_INSIDE = 6, SIDE_UNDEFINED = 6;
-
+	
 	/**
 	 * [Facing,Side]->Side Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
@@ -520,7 +520,7 @@ public class CS {
 		{0,1,4,2,5,3,6},
 		{0,1,2,3,4,5,6}
 	};
-
+	
 	/**
 	 * [Facing,Side]->Orientation Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.

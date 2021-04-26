@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -93,17 +94,24 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 		return rOutput;
 	}
 	
-	private final Collection<Block> mAllowedVanillaBlocks = Arrays.asList(Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane, Blocks.carpet, Blocks.hardened_clay, Blocks.stained_hardened_clay);
+	private final Collection<Block> mAllowedVanillaBlocks = Arrays.asList(Blocks.grass, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane, Blocks.carpet, Blocks.hardened_clay, Blocks.stained_hardened_clay);
 	
 	private boolean colorize(World aWorld, int aX, int aY, int aZ, byte aSide) {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock != NB && (mAllowedVanillaBlocks.contains(aBlock) || aBlock instanceof BlockColored || IL.TE_Rockwool.block() == aBlock)) {
-			if (aBlock == Blocks.hardened_clay  ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay , ~mColor & 15, 3); return T;}
-			if (aBlock == Blocks.glass_pane     ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane    , ~mColor & 15, 3); return T;}
-			if (aBlock == Blocks.glass          ) {aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass         , ~mColor & 15, 3); return T;}
-			if (aWorld.getBlockMetadata(aX, aY, aZ) == (~mColor & 15)) return F;
-			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ~mColor & 15, 3);
-			return T;
+			if (aBlock == Blocks.hardened_clay  ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay, ~mColor & 15, 3);
+			if (aBlock == Blocks.glass_pane     ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane   , ~mColor & 15, 3);
+			if (aBlock == Blocks.glass          ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass        , ~mColor & 15, 3);
+			if (aBlock == Blocks.grass          ) {
+				switch(mColor) {
+				case DYE_INDEX_Green    : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 0, 3);
+				case DYE_INDEX_Lime     : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 1, 3);
+				case DYE_INDEX_Black    : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 2, 3);
+				case DYE_INDEX_LightGray: return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 3, 3);
+				default: return F;
+				}
+			}
+			return aWorld.getBlockMetadata(aX, aY, aZ) != (~mColor & 15) && aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ~mColor & 15, 3);
 		}
 		return aBlock.recolourBlock(aWorld, aX, aY, aZ, FORGE_DIR[aSide], ~mColor & 15);
 	}
