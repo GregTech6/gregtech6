@@ -373,14 +373,14 @@ public class ToolCompat {
 	
 	public static boolean prospectStone(Block aBlock, byte aMeta, long aQuality, List<String> aChatReturn, World aWorld, byte aSide, int aX, int aY, int aZ) {
 		Block tBlock;
-		int tX = aX, tY = aY, tZ = aZ;
-		for (int i = 0, j = (int)(4 + aQuality); i < j; i++) {
+		int tX = aX, tY = aY, tZ = aZ, tQuality = (int)UT.Code.bind(1, 20, aQuality + 4);
+		
+		for (int i = 0, j = tQuality; i < j; i++) {
 			tX -= OFFSETS_X[aSide];
 			tY -= OFFSETS_Y[aSide];
 			tZ -= OFFSETS_Z[aSide];
 			
 			// The Strings in this do not want to be localized, and not even Backup Lang wants to work.
-			
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
 				if (aChatReturn != null) aChatReturn.add("There is Lava behind this Rock");
@@ -401,10 +401,10 @@ public class ToolCompat {
 		}
 		
 		Random tRandom = new Random(aX^aY^aZ^aSide);
-		for (int i = 0, j = (int)(9+2*aQuality); i < j * (1+aQuality); i++) {
-			tX = (int) (aX-4-aQuality+tRandom.nextInt(j));
-			tY = (int) (aY-4-aQuality+tRandom.nextInt(j));
-			tZ = (int) (aZ-4-aQuality+tRandom.nextInt(j));
+		for (int i = 0, j = 1+2*tQuality, k = tQuality * tQuality; i < k; i++) {
+			tX = aX-tQuality+tRandom.nextInt(j);
+			tY = aY-tQuality+tRandom.nextInt(j);
+			tZ = aZ-tQuality+tRandom.nextInt(j);
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			
 			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {

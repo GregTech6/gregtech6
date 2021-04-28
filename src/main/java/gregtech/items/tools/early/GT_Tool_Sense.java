@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,7 +53,7 @@ public class GT_Tool_Sense extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null &&( tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || IL.TF_Mazehedge.equal(aBlock);
+		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || IL.TF_Mazehedge.equal(aBlock) || IL.NeLi_Wart_Block_Crimson.equal(aBlock);
 	}
 	
 	@Override
