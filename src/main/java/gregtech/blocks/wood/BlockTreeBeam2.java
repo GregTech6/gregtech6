@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,7 @@ import net.minecraft.block.material.Material;
 
 public class BlockTreeBeam2 extends BlockBaseBeamFlammable {
 	public BlockTreeBeam2(String aUnlocalised) {
-		super(null, aUnlocalised, Material.wood, soundTypeWood, Textures.BlockIcons.BEAMS_2);
+		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.BEAMS_2);
 		
 		LH.add(getUnlocalizedName()+ ".0.name", "Acacia Beam");
 		LH.add(getUnlocalizedName()+ ".4.name", "Acacia Beam");

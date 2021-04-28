@@ -507,6 +507,14 @@ public class GT6_Main extends Abstract_Mod {
 		, IL.Bag_Sap_Resin.getWithName(1, "Place Sap Bag at the drilled Hole")
 		), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sap_Rainbow.make(250)), 0, 0, 0);
 		
+		RM.Other.addFakeRecipe(F, ST.array(
+		  ST.make(BlocksGT.Saplings_CD, 1, 0, "Find a Blue Spruce Tree in the Mountains")
+		, ST.make(BlocksGT.Leaves_CD, 1, 0, "Nothing special about its Leaves")
+		, ST.make(BlocksGT.LogC, 1, 0, "Nothing special about its Logs")
+		, NI
+		, NI
+		, NI
+		), ZL_IS, null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		
 		if (CODE_CLIENT) {

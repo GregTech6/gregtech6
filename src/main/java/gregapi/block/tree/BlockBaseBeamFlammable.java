@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,8 +31,8 @@ import net.minecraftforge.common.util.ForgeDirection;
  * @author Gregorius Techneticies
  */
 public abstract class BlockBaseBeamFlammable extends BlockBaseBeam {
-	public BlockBaseBeamFlammable(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, IIconContainer[] aIcons) {
-		super(aItemClass, aNameInternal, aMaterial, aSoundType, 4, aIcons);
+	public BlockBaseBeamFlammable(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
+		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
 	}
 	
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,22 @@
 
 package gregtech.blocks.wood;
 
+import static gregapi.data.CS.*;
+
 import gregapi.block.metatype.BlockBasePlanks;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
 import gregapi.data.ANY;
 import gregapi.data.LH;
+import gregapi.data.OD;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.OM;
+import gregapi.util.ST;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.world.World;
 
 public class BlockTreePlanksFireProof extends BlockBasePlanks {
 	public BlockTreePlanksFireProof(String aName) {
@@ -49,6 +55,11 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".15.name", "Frozen Planks (Fireproof)");
+		
+		for (int i = 0; i < maxMeta(); i++) {
+			if (i != 10) OM.reg(ST.make(this, 1, i), OD.plankWood);
+			for (byte tSide : ALL_SIDES_VALID) OM.reg(ST.make(mSlabs[tSide], 1, i), OD.slabWood);
+		}
 	}
 	
 	@Override
@@ -75,4 +86,6 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+".14.name", "Mossy Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".15.name", "Frozen Slab (Fireproof)");
 	}
+	
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return (aWorld.getBlockMetadata(aX, aY, aZ) < 12 ? 1.0F : 0.5F) * super.getBlockHardness(aWorld, aX, aY, aZ);}
 }

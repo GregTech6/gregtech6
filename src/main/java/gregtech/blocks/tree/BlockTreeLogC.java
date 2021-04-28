@@ -25,7 +25,8 @@ import java.util.List;
 
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
-import gregapi.block.tree.BlockBaseLog;
+import gregapi.block.tree.BlockBaseLeaves;
+import gregapi.block.tree.BlockBaseLogFlammable;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
@@ -42,57 +43,57 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class BlockTreeLogAFireProof extends BlockBaseLog implements IBlockToolable {
-	public BlockTreeLogAFireProof(String aUnlocalised) {
-		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_A);
+public class BlockTreeLogC extends BlockBaseLogFlammable implements IBlockToolable {
+	public BlockTreeLogC(String aUnlocalised) {
+		super(null, aUnlocalised, Material.wood, soundTypeWood, 1, Textures.BlockIcons.LOGS_C);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Rubber Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Rubber Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 0), OD.logRubber);
-		OM.reg(ST.make(this, 1, 4), OD.logRubber);
-		OM.reg(ST.make(this, 1, 8), OD.logRubber);
-		OM.reg(ST.make(this, 1,12), OD.logRubber);
+		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Log");
+		LH.add(getUnlocalizedName()+ ".4.name", "Blue Spruce Log");
+		LH.add(getUnlocalizedName()+ ".8.name", "Blue Spruce Log");
+		LH.add(getUnlocalizedName()+".12.name", "Blue Spruce Log");
+		OM.reg(ST.make(this, 1, 0), OD.logWood);
+		OM.reg(ST.make(this, 1, 4), OD.logWood);
+		OM.reg(ST.make(this, 1, 8), OD.logWood);
+		OM.reg(ST.make(this, 1,12), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".5.name", "Maple Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".9.name", "Maple Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".13.name", "Maple Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".1.name", " Log");
+		LH.add(getUnlocalizedName()+ ".5.name", " Log");
+		LH.add(getUnlocalizedName()+ ".9.name", " Log");
+		LH.add(getUnlocalizedName()+".13.name", " Log");
 		OM.reg(ST.make(this, 1, 1), OD.logWood);
 		OM.reg(ST.make(this, 1, 5), OD.logWood);
 		OM.reg(ST.make(this, 1, 9), OD.logWood);
 		OM.reg(ST.make(this, 1,13), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Willow Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Willow Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Willow Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2.name", " Log");
+		LH.add(getUnlocalizedName()+ ".6.name", " Log");
+		LH.add(getUnlocalizedName()+".10.name", " Log");
+		LH.add(getUnlocalizedName()+".14.name", " Log");
 		OM.reg(ST.make(this, 1, 2), OD.logWood);
 		OM.reg(ST.make(this, 1, 6), OD.logWood);
 		OM.reg(ST.make(this, 1,10), OD.logWood);
 		OM.reg(ST.make(this, 1,14), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".7.name", "Blue Mahoe Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".15.name", "Blue Mahoe Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".3.name", " Log");
+		LH.add(getUnlocalizedName()+ ".7.name", " Log");
+		LH.add(getUnlocalizedName()+".11.name", " Log");
+		LH.add(getUnlocalizedName()+".15.name", " Log");
 		OM.reg(ST.make(this, 1, 3), OD.logWood);
 		OM.reg(ST.make(this, 1, 7), OD.logWood);
 		OM.reg(ST.make(this, 1,11), OD.logWood);
 		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
-	@Override public int getLeavesRangeSide(byte aMetaData) {return 0;}
-	@Override public int getLeavesRangeYPos(byte aMetaData) {return 0;}
-	@Override public int getLeavesRangeYNeg(byte aMetaData) {return 0;}
+	@Override public int getLeavesRangeSide(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_CD).getLeavesRangeSide((byte)(aMeta & 3));}
+	@Override public int getLeavesRangeYPos(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_CD).getLeavesRangeYNeg((byte)(aMeta & 3));} // Yes it has to be the Negative Range of the Leaves here
+	@Override public int getLeavesRangeYNeg(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_CD).getLeavesRangeYPos((byte)(aMeta & 3));} // Yes it has to be the Positive Range of the Leaves here
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			if (aWorld.isRemote) return 0;
 			byte aMeta = WD.meta(aWorld, aX, aY, aZ);
-			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, aMeta, 3);
+			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamC, aMeta, 3);
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Bark), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
 			return aTool.equals(TOOL_axe) ? 500 : 1000;
 		}

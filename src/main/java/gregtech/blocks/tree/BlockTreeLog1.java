@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,7 +42,7 @@ import net.minecraft.world.World;
 
 public class BlockTreeLog1 extends BlockBaseBeamFlammable implements IBlockToolable {
 	public BlockTreeLog1(String aUnlocalised) {
-		super(null, aUnlocalised, Material.wood, soundTypeWood, Textures.BlockIcons.LOGS_1);
+		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_1);
 		
 		LH.add(getUnlocalizedName()+ ".0.name", "Dead Log");
 		LH.add(getUnlocalizedName()+ ".4.name", "Dead Log");

@@ -33,41 +33,46 @@ import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregtech.blocks.tree.BlockTreeLeavesAB;
-import gregtech.blocks.tree.BlockTreeLog1;
-import gregtech.blocks.tree.BlockTreeLog1FireProof;
-import gregtech.blocks.tree.BlockTreeLogA;
-import gregtech.blocks.tree.BlockTreeLogAFireProof;
-import gregtech.blocks.tree.BlockTreeLogB;
-import gregtech.blocks.tree.BlockTreeLogBFireProof;
-import gregtech.blocks.tree.BlockTreeSaplingAB;
+import gregtech.blocks.tree.*;
 import gregtech.blocks.wood.*;
 import net.minecraft.init.Blocks;
 
 public class Loader_Woods implements Runnable {
 	@Override
 	public void run() {
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1            = new BlockTreeLog1             ("gt.block.log.1"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1FireProof   = new BlockTreeLog1FireProof    ("gt.block.log.1.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogA            = new BlockTreeLogA             ("gt.block.log.a"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogAFireProof   = new BlockTreeLogAFireProof    ("gt.block.log.a.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogB            = new BlockTreeLogB             ("gt.block.log.b"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogBFireProof   = new BlockTreeLogBFireProof    ("gt.block.log.b.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamA           = new BlockTreeBeamA            ("gt.block.beam.a"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamAFireProof  = new BlockTreeBeamAFireProof   ("gt.block.beam.a.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamB           = new BlockTreeBeamB            ("gt.block.beam.b"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamBFireProof  = new BlockTreeBeamBFireProof   ("gt.block.beam.b.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam1           = new BlockTreeBeam1            ("gt.block.beam.1"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam1FireProof  = new BlockTreeBeam1FireProof   ("gt.block.beam.1.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam2           = new BlockTreeBeam2            ("gt.block.beam.2"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam2FireProof  = new BlockTreeBeam2FireProof   ("gt.block.beam.2.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam3           = new BlockTreeBeam3            ("gt.block.beam.3"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam3FireProof  = new BlockTreeBeam3FireProof   ("gt.block.beam.3.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks          = new BlockTreePlanks           ("gt.block.planks"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.PlanksFireProof = new BlockTreePlanksFireProof  ("gt.block.planks.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1             = new BlockTreeLog1             ("gt.block.log.1"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1FireProof    = new BlockTreeLog1FireProof    ("gt.block.log.1.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogA             = new BlockTreeLogA             ("gt.block.log.a"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogAFireProof    = new BlockTreeLogAFireProof    ("gt.block.log.a.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogB             = new BlockTreeLogB             ("gt.block.log.b"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogBFireProof    = new BlockTreeLogBFireProof    ("gt.block.log.b.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogC             = new BlockTreeLogC             ("gt.block.log.c"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogCFireProof    = new BlockTreeLogCFireProof    ("gt.block.log.c.fireproof"));
+	//  VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogD             = new BlockTreeLogD             ("gt.block.log.d"));
+	//  VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogDFireProof    = new BlockTreeLogDFireProof    ("gt.block.log.d.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamA            = new BlockTreeBeamA            ("gt.block.beam.a"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamAFireProof   = new BlockTreeBeamAFireProof   ("gt.block.beam.a.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamB            = new BlockTreeBeamB            ("gt.block.beam.b"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamBFireProof   = new BlockTreeBeamBFireProof   ("gt.block.beam.b.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamC            = new BlockTreeBeamC            ("gt.block.beam.c"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamCFireProof   = new BlockTreeBeamCFireProof   ("gt.block.beam.c.fireproof"));
+	//  VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamD            = new BlockTreeBeamD            ("gt.block.beam.d"));
+	//  VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BeamDFireProof   = new BlockTreeBeamDFireProof   ("gt.block.beam.d.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam1            = new BlockTreeBeam1            ("gt.block.beam.1"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam1FireProof   = new BlockTreeBeam1FireProof   ("gt.block.beam.1.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam2            = new BlockTreeBeam2            ("gt.block.beam.2"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam2FireProof   = new BlockTreeBeam2FireProof   ("gt.block.beam.2.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam3            = new BlockTreeBeam3            ("gt.block.beam.3"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam3FireProof   = new BlockTreeBeam3FireProof   ("gt.block.beam.3.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks           = new BlockTreePlanks           ("gt.block.planks"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.PlanksFireProof  = new BlockTreePlanksFireProof  ("gt.block.planks.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2          = new BlockTreePlanks           ("gt.block.planks2"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2FireProof = new BlockTreePlanksFireProof  ("gt.block.planks2.fireproof"));
 		
 		BlocksGT.Saplings_AB = new BlockTreeSaplingAB("gt.block.sapling");
+		BlocksGT.Saplings_CD = new BlockTreeSaplingCD("gt.block.sapling.cd");
 		BlocksGT.Leaves_AB   = new BlockTreeLeavesAB ("gt.block.leaves", BlocksGT.Saplings_AB);
+		BlocksGT.Leaves_CD   = new BlockTreeLeavesCD ("gt.block.leaves.cd", BlocksGT.Saplings_CD);
 		
 		IL.Plank_Stairs       .set(ST.make(Blocks.oak_stairs, 1, 0));
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
@@ -86,17 +91,6 @@ public class Loader_Woods implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.plate, MT.Wood       , IL.Plank.get(1));
 		OreDictManager.INSTANCE.setTarget(OP.plate, MT.WoodTreated, ST.make(BlocksGT.Planks, 1, 10));
 		
-		for (int i = 0; i < 16; i++) {
-			if (i != 10) {
-				OM.reg(ST.make(BlocksGT.Planks          , 1, i), OD.plankWood);
-				OM.reg(ST.make(BlocksGT.PlanksFireProof , 1, i), OD.plankWood);
-			}
-			for (byte tSide : ALL_SIDES_VALID) {
-				OM.reg(ST.make(((BlockMetaType)BlocksGT.Planks          ).mSlabs[tSide], 1, i), OD.slabWood);
-				OM.reg(ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[tSide], 1, i), OD.slabWood);
-			}
-		}
-		
 		if (COMPAT_TC != null) {
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Log1             , 1, W), F, TC.stack(TC.ARBOR, 2));
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Log1FireProof    , 1, W), F, TC.stack(TC.ARBOR, 2), TC.stack(TC.GELUM, 1));
@@ -110,6 +104,10 @@ public class Loader_Woods implements Runnable {
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamAFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamB            , 1, W), F, TC.stack(TC.ARBOR, 4));
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamBFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamC            , 1, W), F, TC.stack(TC.ARBOR, 4));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamCFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamD            , 1, W), F, TC.stack(TC.ARBOR, 4));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamDFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		}
 		
 		// Those typically get overridden, but in case of a fuck up it is at least worth some Wood.
@@ -125,5 +123,9 @@ public class Loader_Woods implements Runnable {
 		OM.data(ST.make(BlocksGT.BeamAFireProof , 1, W), ANY.Wood, U*8);
 		OM.data(ST.make(BlocksGT.BeamB          , 1, W), ANY.Wood, U*8);
 		OM.data(ST.make(BlocksGT.BeamBFireProof , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamC          , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamCFireProof , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamD          , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamDFireProof , 1, W), ANY.Wood, U*8);
 	}
 }

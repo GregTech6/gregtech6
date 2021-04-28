@@ -3361,7 +3361,8 @@ public class MT {
 		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175, 2.5, 16, MD.BINNIE),
 		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192, 1.5, 16, MD.HaC),
 		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0, 3.0, 16, MD.TROPIC),
-		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245, 4.0, 64, MD.GT, MAGICAL, UNBURNABLE),
+		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbowood"          , 200,  64, 245, 4.0, 64, MD.GT, MAGICAL, UNBURNABLE),
+		BlueSpruce          = woodnormal( 9409, "BlueSpruce"              , "Blue Spruce"         , 213, 213, 217, 3.0, 24, MD.GT),
 		
 		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58, 4.0, 64, MD.TF),
 		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142, 3.5, 48, MD.ARS),

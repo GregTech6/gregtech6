@@ -58,20 +58,28 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Log1 , 1, i), ST.make(BlocksGT.Log1FireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogA , 1, i), ST.make(BlocksGT.LogAFireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogB , 1, i), ST.make(BlocksGT.LogBFireProof , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogC , 1, i), ST.make(BlocksGT.LogCFireProof , 1, i));
+	//  RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogD , 1, i), ST.make(BlocksGT.LogDFireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Beam1, 1, i), ST.make(BlocksGT.Beam1FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Beam2, 1, i), ST.make(BlocksGT.Beam2FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Beam3, 1, i), ST.make(BlocksGT.Beam3FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.BeamA, 1, i), ST.make(BlocksGT.BeamAFireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.BeamB, 1, i), ST.make(BlocksGT.BeamBFireProof, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.BeamC, 1, i), ST.make(BlocksGT.BeamCFireProof, 1, i));
+	//  RM.Laminator    .addRecipe2(T, 16,  192, plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.BeamD, 1, i), ST.make(BlocksGT.BeamDFireProof, 1, i));
 		
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.Log1 , 1, i), ST.make(BlocksGT.Log1FireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.LogA , 1, i), ST.make(BlocksGT.LogAFireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.LogB , 1, i), ST.make(BlocksGT.LogBFireProof , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.LogC , 1, i), ST.make(BlocksGT.LogCFireProof , 1, i));
+	//  RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.LogD , 1, i), ST.make(BlocksGT.LogDFireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.Beam1, 1, i), ST.make(BlocksGT.Beam1FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.Beam2, 1, i), ST.make(BlocksGT.Beam2FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.Beam3, 1, i), ST.make(BlocksGT.Beam3FireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.BeamA, 1, i), ST.make(BlocksGT.BeamAFireProof, 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.BeamB, 1, i), ST.make(BlocksGT.BeamBFireProof, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.BeamC, 1, i), ST.make(BlocksGT.BeamCFireProof, 1, i));
+	//  RM.Laminator    .addRecipe2(T, 16,  192, foil.mat(MT.WaxRefractory, 24), ST.make(BlocksGT.BeamD, 1, i), ST.make(BlocksGT.BeamDFireProof, 1, i));
 		
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.Log1 , 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.Log1FireProof , 1, i));
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.LogA , 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.LogAFireProof , 1, i));
@@ -81,16 +89,24 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.Beam3, 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.Beam3FireProof, 1, i));
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.BeamA, 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.BeamAFireProof, 1, i));
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.BeamB, 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.BeamBFireProof, 1, i));
+		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.BeamC, 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.BeamCFireProof, 1, i));
+	//  RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.BeamD, 1, i), FL.Potion_FireResistance_1L.make(100), NF, ST.make(BlocksGT.BeamDFireProof, 1, i));
 		}
 		for (int i = 0; i < 16; i++) {
-		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(BlocksGT.Planks                           , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
-		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 2, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(BlocksGT.Planks                            , 1, i), ST.make(BlocksGT.PlanksFireProof                            , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(((BlockMetaType)BlocksGT.Planks ).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[0], 2, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(BlocksGT.Planks2                           , 1, i), ST.make(BlocksGT.Planks2FireProof                           , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, plate.mat(MT.WaxRefractory,  1), ST.make(((BlockMetaType)BlocksGT.Planks2).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof).mSlabs[0], 2, i));
 		
-		RM.Laminator    .addRecipe2(T, 16,   32, foil .mat(MT.WaxRefractory,  4), ST.make(BlocksGT.Planks                           , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
-		RM.Laminator    .addRecipe2(T, 16,   16, foil .mat(MT.WaxRefractory,  2), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, foil .mat(MT.WaxRefractory,  4), ST.make(BlocksGT.Planks                            , 1, i), ST.make(BlocksGT.PlanksFireProof                            , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   16, foil .mat(MT.WaxRefractory,  2), ST.make(((BlockMetaType)BlocksGT.Planks ).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[0], 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, foil .mat(MT.WaxRefractory,  4), ST.make(BlocksGT.Planks2                           , 1, i), ST.make(BlocksGT.Planks2FireProof                           , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   16, foil .mat(MT.WaxRefractory,  2), ST.make(((BlockMetaType)BlocksGT.Planks2).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof).mSlabs[0], 1, i));
 		
-		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                           , 1, i), FL.Potion_FireResistance_1L.make(20), NF, ST.make(BlocksGT.PlanksFireProof                           , 1, i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, i), FL.Potion_FireResistance_1L.make(10), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
+		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                            , 1, i), FL.Potion_FireResistance_1L.make(20), NF, ST.make(BlocksGT.PlanksFireProof                            , 1, i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks ).mSlabs[0], 1, i), FL.Potion_FireResistance_1L.make(10), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[0], 1, i));
+		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks2                           , 1, i), FL.Potion_FireResistance_1L.make(20), NF, ST.make(BlocksGT.Planks2FireProof                           , 1, i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks2).mSlabs[0], 1, i), FL.Potion_FireResistance_1L.make(10), NF, ST.make(((BlockMetaType)BlocksGT.Planks2FireProof).mSlabs[0], 1, i));
 		}
 		if (MD.FR.mLoaded) {
 		Block tPlank1 = ST.block(MD.FR, "planks"), tLog1 = ST.block(MD.FR, "logs"), tSlab1 = ST.block(MD.FR, "slabs"), tStair1 = ST.block(MD.FR, "stairs"), tPlank2 = ST.block(MD.FR, "planksFireproof"), tLog2 = ST.block(MD.FR, "logsFireproof"), tSlab2 = ST.block(MD.FR, "slabsFireproof"), tStair2 = ST.block(MD.FR, "stairsFireproof");
@@ -119,6 +135,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Saplings_AB, 1, 8), NF, FL.Latex.make(L/ 4), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WoodRubber         ), NF, FL.Latex       .make(L/9)        , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Spruce       ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.BlueSpruce   ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple        ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood   ), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		

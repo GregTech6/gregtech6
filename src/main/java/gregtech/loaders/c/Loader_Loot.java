@@ -76,6 +76,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 4));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 5));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 6));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_CD, 1, 0));
 		
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Ice.get(1));
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Pepper.get(1));
@@ -165,6 +166,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 5));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 6));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 7));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_CD, 1, 0));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));

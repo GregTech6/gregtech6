@@ -47,7 +47,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 239 is next! There is no Gaps in this List!
+		// 240 is next! There is no Gaps in this List!
 		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Vanilla Trees
@@ -75,32 +75,60 @@ public class LoaderWoodDictionary implements Runnable {
 			WoodDictionary.DEFAULT_BEAM = new BeamEntry(IL.Beam.get(1), WoodDictionary.DEFAULT_PLANK = new PlankEntry(IL.Plank.get(1), IL.Plank_Slab.get(1), 55));
 			new BeamEntry(ST.make(BlocksGT.Beam2FireProof, 1, 3), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 9), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, 9)));
 			
-			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 0), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 0), MT.WoodRubber      ,  6), 1, 300), 1, 350);
-			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 0), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 0), MT.WoodRubber      ,  0), 1, 300), 1, 350);
-			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 1), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 1), MT.WOODS.Maple     ,  7), 1, 350), 1, 400);
-			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 1), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 1), MT.WOODS.Maple     ,  0), 1, 350), 1, 400);
-			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 2), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 2), MT.WOODS.Willow    , 37), 2, 400), 2, 500);
-			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 2), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 2), MT.WOODS.Willow    ,  0), 2, 400), 2, 500);
-			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 3), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 3), MT.WOODS.BlueMahoe , 38)));
-			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 3), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 3), MT.WOODS.BlueMahoe ,  0)));
+			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 0), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 0), MT.WoodRubber      ,  6), 1, 300), 1, 350);
+			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 0), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 0), MT.WoodRubber      ,  0), 1, 300), 1, 350);
+			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 1), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 1), MT.WOODS.Maple     ,  7), 1, 350), 1, 400);
+			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 1), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 1), MT.WOODS.Maple     ,  0), 1, 350), 1, 400);
+			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 2), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 2), MT.WOODS.Willow    , 37), 2, 400), 2, 500);
+			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 2), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 2), MT.WOODS.Willow    ,  0), 2, 400), 2, 500);
+			new WoodEntry(ST.make(BlocksGT.LogA         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamA           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 3), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 3), MT.WOODS.BlueMahoe , 38)));
+			new WoodEntry(ST.make(BlocksGT.LogAFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamAFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 3), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 3), MT.WOODS.BlueMahoe ,  0)));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 0), WoodDictionary.WOODS.get(BlocksGT.LogA, 0), ST.make(BlocksGT.Leaves_AB, 1, 0));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 1), WoodDictionary.WOODS.get(BlocksGT.LogA, 1), ST.make(BlocksGT.Leaves_AB, 1, 1));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 2), WoodDictionary.WOODS.get(BlocksGT.LogA, 2), ST.make(BlocksGT.Leaves_AB, 1, 2));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 3), WoodDictionary.WOODS.get(BlocksGT.LogA, 3), ST.make(BlocksGT.Leaves_AB, 1, 3));
 			
 			
-			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 4), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 4), MT.WOODS.Hazel     , 39)));
-			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 4), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 4), MT.WOODS.Hazel     ,  0)));
-			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  , 97)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
-			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 5), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  ,  0)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
-			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 6), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 6), MT.WOODS.Coconut   , 98)));
-			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 6), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 6), MT.WOODS.Coconut   ,  0)));
-			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 7), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 7), MT.WOODS.Rainbowood, 99), 1, 400), 1, 500);
-			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 7), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 7), MT.WOODS.Rainbowood,  0), 1, 400), 1, 500);
+			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 4), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 4), MT.WOODS.Hazel     , 39)));
+			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 4), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 4), MT.WOODS.Hazel     ,  0)));
+			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  , 97)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
+			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 5), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  ,  0)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
+			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 6), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 6), MT.WOODS.Coconut   , 98)));
+			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 6), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 6), MT.WOODS.Coconut   ,  0)));
+			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks          , 1, 7), ST.make(((BlockMetaType)BlocksGT.Planks             ).mSlabs[0], 1, 7), MT.WOODS.Rainbowood, 99), 1, 400), 1, 500);
+			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.PlanksFireProof , 1, 7), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof    ).mSlabs[0], 1, 7), MT.WOODS.Rainbowood,  0), 1, 400), 1, 500);
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 4), WoodDictionary.WOODS.get(BlocksGT.LogB, 0), ST.make(BlocksGT.Leaves_AB, 1, 4));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 5), WoodDictionary.WOODS.get(BlocksGT.LogB, 1), ST.make(BlocksGT.Leaves_AB, 1, 5));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 6), WoodDictionary.WOODS.get(BlocksGT.LogB, 2), ST.make(BlocksGT.Leaves_AB, 1, 6));
 			new SaplingEntry(ST.make(BlocksGT.Saplings_AB, 1, 7), WoodDictionary.WOODS.get(BlocksGT.LogB, 3), ST.make(BlocksGT.Leaves_AB, 1, 7));
+			
+			
+			new WoodEntry(ST.make(BlocksGT.LogC         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamC           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 0), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 0), MT.WOODS.BlueSpruce,239)));
+			new WoodEntry(ST.make(BlocksGT.LogCFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamCFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 0), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 0), MT.WOODS.BlueSpruce,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogC         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamC           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 1), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 1), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogCFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamCFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 1), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 1), MT.WOODS.          ,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogC         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamC           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 2), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 2), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogCFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamCFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 2), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 2), MT.WOODS.          ,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogC         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamC           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 3), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 3), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogCFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamCFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 3), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 3), MT.WOODS.          ,  0)));
+			new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 0), WoodDictionary.WOODS.get(BlocksGT.LogC, 0), ST.make(BlocksGT.Leaves_CD, 1, 0));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 1), WoodDictionary.WOODS.get(BlocksGT.LogC, 1), ST.make(BlocksGT.Leaves_CD, 1, 1));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 2), WoodDictionary.WOODS.get(BlocksGT.LogC, 2), ST.make(BlocksGT.Leaves_CD, 1, 2));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 3), WoodDictionary.WOODS.get(BlocksGT.LogC, 3), ST.make(BlocksGT.Leaves_CD, 1, 3));
+			
+			
+		//  new WoodEntry(ST.make(BlocksGT.LogD         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamD           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 4), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 4), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogDFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamDFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 4), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 4), MT.WOODS.          ,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogD         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamD           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 5), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogDFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamDFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 5), MT.WOODS.          ,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogD         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamD           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 6), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 6), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogDFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamDFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 6), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 6), MT.WOODS.          ,  0)));
+		//  new WoodEntry(ST.make(BlocksGT.LogD         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamD           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks2         , 1, 7), ST.make(((BlockMetaType)BlocksGT.Planks2            ).mSlabs[0], 1, 7), MT.WOODS.          ,XXX)));
+		//  new WoodEntry(ST.make(BlocksGT.LogDFireProof, 1, 3), new BeamEntry(ST.make(BlocksGT.BeamDFireProof  , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks2FireProof, 1, 7), ST.make(((BlockMetaType)BlocksGT.Planks2FireProof   ).mSlabs[0], 1, 7), MT.WOODS.          ,  0)));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 4), WoodDictionary.WOODS.get(BlocksGT.LogD, 0), ST.make(BlocksGT.Leaves_CD, 1, 4));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 5), WoodDictionary.WOODS.get(BlocksGT.LogD, 1), ST.make(BlocksGT.Leaves_CD, 1, 5));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 6), WoodDictionary.WOODS.get(BlocksGT.LogD, 2), ST.make(BlocksGT.Leaves_CD, 1, 6));
+		//  new SaplingEntry(ST.make(BlocksGT.Saplings_CD, 1, 7), WoodDictionary.WOODS.get(BlocksGT.LogD, 3), ST.make(BlocksGT.Leaves_CD, 1, 7));
 			
 			
 			new PlankEntry(ST.make(BlocksGT.Planks          , 1, 8), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 8), MT.WOODS.Compressed, 54, NI);

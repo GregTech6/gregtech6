@@ -60,7 +60,10 @@ public class BlockTreeSaplingAB extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+".14.name", "Coconut Sapling");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Sapling");
 		
-		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeSapling);
+		for (int i = 0; i < maxMeta(); i++) {
+			OM.reg(ST.make(this, 1, i), OP.treeSapling);
+			OM.reg(ST.make(this, 1, i+8), OP.treeSapling);
+		}
 	}
 	
 	@Override

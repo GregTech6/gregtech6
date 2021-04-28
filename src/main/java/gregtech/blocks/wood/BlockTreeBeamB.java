@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,7 @@ import net.minecraft.block.material.Material;
 
 public class BlockTreeBeamB extends BlockBaseBeamFlammable {
 	public BlockTreeBeamB(String aUnlocalised) {
-		super(null, aUnlocalised, Material.wood, soundTypeWood, Textures.BlockIcons.BEAMS_B);
+		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.BEAMS_B);
 		
 		LH.add(getUnlocalizedName()+ ".0.name", "Hazel Beam");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Beam");

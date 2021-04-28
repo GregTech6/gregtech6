@@ -98,11 +98,12 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 	
 	private boolean colorize(World aWorld, int aX, int aY, int aZ, byte aSide) {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
-		if (aBlock != NB && (mAllowedVanillaBlocks.contains(aBlock) || aBlock instanceof BlockColored || IL.TE_Rockwool.block() == aBlock)) {
+		if (aBlock != NB && (mAllowedVanillaBlocks.contains(aBlock) || aBlock instanceof BlockColored || IL.TE_Rockwool.block() == aBlock || aBlock == BlocksGT.Grass)) {
 			if (aBlock == Blocks.hardened_clay  ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay, ~mColor & 15, 3);
 			if (aBlock == Blocks.glass_pane     ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane   , ~mColor & 15, 3);
 			if (aBlock == Blocks.glass          ) return aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass        , ~mColor & 15, 3);
-			if (aBlock == Blocks.grass          ) {
+			
+			if (aBlock == Blocks.grass || aBlock == BlocksGT.Grass) {
 				switch(mColor) {
 				case DYE_INDEX_Green    : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 0, 3);
 				case DYE_INDEX_Lime     : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 1, 3);
