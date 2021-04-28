@@ -84,7 +84,7 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			placeTree(aWorld, aX  , tMaxHeight-1, aZ-1, BlocksGT.Leaves_CD, 8);
 			
 			for (int i = -6; i <= 6; i++) for (int j = -6; j <= 6; j++) if (i != 0 || j != 0) {
-				for (int k = 1; k <= 14; k++) if (i*i + j*j < k*k*0.2) {
+				for (int k = 1; k <= 14; k++) if (i*i+j*j < k*k*0.2) {
 					placeTree(aWorld, aX+i, tMaxHeight+1-k, aZ+j, BlocksGT.Leaves_CD, 8);
 				}
 				
