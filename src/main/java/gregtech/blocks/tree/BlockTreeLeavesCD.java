@@ -54,13 +54,16 @@ public class BlockTreeLeavesCD extends BlockBaseLeaves {
 	//  LH.add(getUnlocalizedName()+".14.name", " Leaves");
 	//  LH.add(getUnlocalizedName()+".15.name", " Leaves");
 		
-		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeLeaves);
+		for (int i = 0; i < maxMeta(); i++) {
+			OM.reg(ST.make(this, 1, i), OP.treeLeaves);
+			OM.reg(ST.make(this, 1, i+8), OP.treeLeaves);
+		}
 	}
 	
 	@Override
 	public int getLeavesRangeSide(byte aMeta) {
 		switch(aMeta) {
-		case  0: case  8: return 5;
+		case  0: case  8: return 6;
 		default:          return 3;
 		}
 	}

@@ -61,7 +61,10 @@ public class BlockTreeLeavesAB extends BlockBaseLeaves implements Runnable {
 		LH.add(getUnlocalizedName()+".14.name", "Coconut Leaves");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbow Leaves");
 		
-		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeLeaves);
+		for (int i = 0; i < maxMeta(); i++) {
+			OM.reg(ST.make(this, 1, i), OP.treeLeaves);
+			OM.reg(ST.make(this, 1, i+8), OP.treeLeaves);
+		}
 		
 		GAPI.mAfterPostInit.add(this);
 	}

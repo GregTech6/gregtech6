@@ -82,15 +82,13 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			placeTree(aWorld, aX-1, tMaxHeight-1, aZ  , BlocksGT.Leaves_CD, 8);
 			placeTree(aWorld, aX  , tMaxHeight-1, aZ+1, BlocksGT.Leaves_CD, 8);
 			placeTree(aWorld, aX  , tMaxHeight-1, aZ-1, BlocksGT.Leaves_CD, 8);
-			placeTree(aWorld, aX+1, tMaxHeight-2, aZ  , BlocksGT.Leaves_CD, 8);
-			placeTree(aWorld, aX-1, tMaxHeight-2, aZ  , BlocksGT.Leaves_CD, 8);
-			placeTree(aWorld, aX  , tMaxHeight-2, aZ+1, BlocksGT.Leaves_CD, 8);
-			placeTree(aWorld, aX  , tMaxHeight-2, aZ-1, BlocksGT.Leaves_CD, 8);
 			
-			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) {
-				for (int k = 1; k <= 13; k++) if (i*i + j*j < k*k*0.2) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
+			for (int i = -6; i <= 6; i++) for (int j = -6; j <= 6; j++) if (i != 0 || j != 0) {
+				for (int k = 1; k <= 14; k++) if (i*i + j*j < k*k*0.2) {
+					placeTree(aWorld, aX+i, tMaxHeight+1-k, aZ+j, BlocksGT.Leaves_CD, 8);
+				}
 				
-				if (i*i + j*j <= 25) for (int k = 1; k <= 3; k++) {
+				if (i*i + j*j <= 30) for (int k = 1; k <= 3; k++) {
 					Block tBlock = WD.block(aWorld, aX+i, aY-k, aZ+j, T);
 					if (WD.air(aWorld, aX+i, aY-k, aZ+j, tBlock)) continue;
 					if (tBlock == Blocks.dirt || tBlock == Blocks.grass) WD.set(aWorld, aX+i, aY-k, aZ+j, Blocks.dirt, 2, 3, F);
