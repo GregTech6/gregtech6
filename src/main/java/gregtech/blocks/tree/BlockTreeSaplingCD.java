@@ -65,20 +65,24 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 		int tMaxHeight = 0;
 		switch(aMeta & 7) {
 		case 0:
-			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 11);
-			if (tMaxHeight < 11) return F;
-			tMaxHeight = aY+7+aRandom.nextInt(tMaxHeight-6);
+			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 14);
+			if (tMaxHeight < 14) return F;
+			tMaxHeight = aY+tMaxHeight-aRandom.nextInt(3);
 			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-5, aZ+j)) return F;
 			if (aWorld.isRemote) return T;
 			WD.set(aWorld, aX, aY, aZ, BlocksGT.LogC, 0, 3);
 			
 			for (int tY = aY+1; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogC, 0);
 			
-			placeTree(aWorld, aX, tMaxHeight  , aZ, BlocksGT.Leaves_CD, 8);
-			placeTree(aWorld, aX, tMaxHeight+1, aZ, BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX  , tMaxHeight  , aZ  , BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX  , tMaxHeight+1, aZ  , BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX+1, tMaxHeight-1, aZ  , BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX-1, tMaxHeight-1, aZ  , BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX  , tMaxHeight-1, aZ+1, BlocksGT.Leaves_CD, 8);
+			placeTree(aWorld, aX  , tMaxHeight-1, aZ-1, BlocksGT.Leaves_CD, 8);
 			
-			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) for (int k = 1; k <= 9; k++) {
-				if (i*i + j*j < k*k*0.5) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
+			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) for (int k = 1; k+3 <= tMaxHeight; k++) {
+				if (i*i + j*j < k*k*0.4) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
 			}
 			return T;
 		}

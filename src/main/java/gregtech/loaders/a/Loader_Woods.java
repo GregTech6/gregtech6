@@ -66,8 +66,8 @@ public class Loader_Woods implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Beam3FireProof   = new BlockTreeBeam3FireProof   ("gt.block.beam.3.fireproof"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks           = new BlockTreePlanks           ("gt.block.planks"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.PlanksFireProof  = new BlockTreePlanksFireProof  ("gt.block.planks.fireproof"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2          = new BlockTreePlanks           ("gt.block.planks2"));
-		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2FireProof = new BlockTreePlanksFireProof  ("gt.block.planks2.fireproof"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2          = new BlockTreePlanks2          ("gt.block.planks2"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2FireProof = new BlockTreePlanks2FireProof ("gt.block.planks2.fireproof"));
 		
 		BlocksGT.Saplings_AB = new BlockTreeSaplingAB("gt.block.sapling");
 		BlocksGT.Saplings_CD = new BlockTreeSaplingCD("gt.block.sapling.cd");

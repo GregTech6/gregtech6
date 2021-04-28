@@ -285,7 +285,8 @@ public final class OreDictManager {
 		if (GAPI.mStartedInit) {
 			List<OreDictEventContainer> tBufferedRegistrations = mBufferedRegistrations;
 			mBufferedRegistrations = null;
-			UT.LoadingBar.start("OreDict", tBufferedRegistrations.size());
+			// Yep, I used a Sampler to see why the hell this part lags so much, figures Mariculture eats most of the CPU in that.
+			UT.LoadingBar.start(MD.MaCu.mLoaded ? "(Lags because Mariculture) OreDict" : "OreDict", tBufferedRegistrations.size());
 			for (OreDictEventContainer tContainer : tBufferedRegistrations) {
 				UT.LoadingBar.step(tContainer.mEvent.Name);
 				onOreRegistration2(tContainer.mModID, tContainer.mRegName, tContainer.mEvent);
