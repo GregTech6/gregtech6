@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -156,10 +156,10 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   (14,  3,  9, Blocks.log, 11); aData.set(13,  3,  9, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_X_NEG]+aData.next(3)*4);
 			aData.smooth(14,  3, 10, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 			
-			aData.set   (14,  1,  6, 32065); aData.set(14,  2,  6, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   (14,  1,  7, 32065); aData.set(14,  2,  7, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   (14,  1,  8, 32065); aData.set(14,  2,  8, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   (14,  1,  9, 32065); aData.set(14,  2,  9, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set   (14,  1,  6, 32065); aData.set(14,  2,  6, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   (14,  1,  7, 32065); aData.set(14,  2,  7, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   (14,  1,  8, 32065); aData.set(14,  2,  8, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   (14,  1,  9, 32065); aData.set(14,  2,  9, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
 			
 			aData.set   (14,  4,  6, 32065); aData.flower(14,  5,  6);
 			aData.set   (14,  4,  7, 32065); aData.set   (14,  5,  7, Blocks.double_plant, 1); aData.set(14,  6,  7, Blocks.double_plant, 9);
@@ -175,10 +175,10 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   ( 1,  3,  9, Blocks.log, 11); aData.set( 2,  3,  9, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_X_POS]+aData.next(3)*4);
 			aData.smooth( 1,  3, 10, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 			
-			aData.set   ( 1,  1,  6, 32065); aData.set( 1,  2,  6, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 1,  1,  7, 32065); aData.set( 1,  2,  7, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 1,  1,  8, 32065); aData.set( 1,  2,  8, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 1,  1,  9, 32065); aData.set( 1,  2,  9, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set   ( 1,  1,  6, 32065); aData.set( 1,  2,  6, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 1,  1,  7, 32065); aData.set( 1,  2,  7, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 1,  1,  8, 32065); aData.set( 1,  2,  8, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 1,  1,  9, 32065); aData.set( 1,  2,  9, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
 			
 			aData.set   ( 1,  4,  6, 32065); aData.flower( 1,  5,  6);
 			aData.set   ( 1,  4,  7, 32065); aData.flower( 1,  5,  7);
@@ -194,10 +194,10 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   ( 9,  3, 14, Blocks.log,  7); aData.set( 9,  3, 13, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_Z_NEG]+aData.next(3)*4);
 			aData.smooth(10,  3, 14, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 			
-			aData.set   ( 6,  1, 14, 32065); aData.set( 6,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 7,  1, 14, 32065); aData.set( 7,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 8,  1, 14, 32065); aData.set( 8,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 9,  1, 14, 32065); aData.set( 9,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set   ( 6,  1, 14, 32065); aData.set( 6,  2, 14, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 7,  1, 14, 32065); aData.set( 7,  2, 14, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 8,  1, 14, 32065); aData.set( 8,  2, 14, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 9,  1, 14, 32065); aData.set( 9,  2, 14, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
 			
 			aData.set   ( 6,  4, 14, 32065); aData.flower( 6,  5, 14);
 			aData.set   ( 7,  4, 14, 32065); aData.set   ( 7,  5, 14, Blocks.double_plant, 4); aData.set( 7,  6, 14, Blocks.double_plant, 9);
@@ -213,10 +213,10 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   ( 9,  3,  1, Blocks.log,  7); aData.set( 9,  3,  2, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_Z_POS]+aData.next(3)*4);
 			aData.smooth(10,  3,  1, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 			
-			aData.set   ( 6,  1,  1, 32065); aData.set( 6,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 7,  1,  1, 32065); aData.set( 7,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 8,  1,  1, 32065); aData.set( 8,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
-			aData.set   ( 9,  1,  1, 32065); aData.set( 9,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set   ( 6,  1,  1, 32065); aData.set( 6,  2,  1, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 7,  1,  1, 32065); aData.set( 7,  2,  1, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 8,  1,  1, 32065); aData.set( 8,  2,  1, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
+			aData.set   ( 9,  1,  1, 32065); aData.set( 9,  2,  1, BlocksGT.Saplings_AB, aData.next(BlocksGT.Saplings_AB.maxMeta()), BlocksGT.Saplings_CD, aData.next(BlocksGT.Saplings_CD.maxMeta()), Blocks.sapling, aData.next(6));
 			
 			aData.set   ( 6,  4,  1, 32065); aData.flower( 6,  5,  1);
 			aData.set   ( 7,  4,  1, 32065); aData.flower( 7,  5,  1);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -75,7 +75,7 @@ public class MultiTileEntitySapHoleRainbowood extends MultiTileEntityTreeHole {
 		}
 	}
 	
-	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves && getMetaData(aX, aY, aZ) == 15;}
+	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves_AB && getMetaData(aX, aY, aZ) == 15;}
 	
 	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogB, 1, 1));}
 	@Override public ItemStack getResinItem(byte aSide) {return null;}

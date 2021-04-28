@@ -33,14 +33,14 @@ import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregtech.blocks.tree.BlockTreeLeaves;
+import gregtech.blocks.tree.BlockTreeLeavesAB;
 import gregtech.blocks.tree.BlockTreeLog1;
 import gregtech.blocks.tree.BlockTreeLog1FireProof;
 import gregtech.blocks.tree.BlockTreeLogA;
 import gregtech.blocks.tree.BlockTreeLogAFireProof;
 import gregtech.blocks.tree.BlockTreeLogB;
 import gregtech.blocks.tree.BlockTreeLogBFireProof;
-import gregtech.blocks.tree.BlockTreeSapling;
+import gregtech.blocks.tree.BlockTreeSaplingAB;
 import gregtech.blocks.wood.*;
 import net.minecraft.init.Blocks;
 
@@ -66,8 +66,8 @@ public class Loader_Woods implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks          = new BlockTreePlanks           ("gt.block.planks"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.PlanksFireProof = new BlockTreePlanksFireProof  ("gt.block.planks.fireproof"));
 		
-		BlocksGT.Sapling    = new BlockTreeSapling  ("gt.block.sapling");
-		BlocksGT.Leaves     = new BlockTreeLeaves   ("gt.block.leaves", BlocksGT.Sapling);
+		BlocksGT.Saplings_AB = new BlockTreeSaplingAB("gt.block.sapling");
+		BlocksGT.Leaves_AB   = new BlockTreeLeavesAB ("gt.block.leaves", BlocksGT.Saplings_AB);
 		
 		IL.Plank_Stairs       .set(ST.make(Blocks.oak_stairs, 1, 0));
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));

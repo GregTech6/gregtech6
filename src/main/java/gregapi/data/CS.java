@@ -1505,9 +1505,9 @@ public class CS {
 		
 		/** Ore Blocks */
 		public static IPrefixBlock
-		ore         , oreSandstone          , oreNetherrack         , oreEndstone       , oreAtumLimestone          , oreAtumSand, oreGravel, oreMud, oreSand, oreRedSand, oreBedrock,
-		oreBroken   , oreBrokenSandstone    , oreBrokenNetherrack   , oreBrokenEndstone , oreBrokenAtumLimestone    ,
-		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
+		ore      , oreSandstone      , oreNetherrack      , oreEndstone      , oreAtumLimestone      , oreAtumSand, oreGravel, oreMud, oreSand, oreRedSand, oreBedrock,
+		oreBroken, oreBrokenSandstone, oreBrokenNetherrack, oreBrokenEndstone, oreBrokenAtumLimestone,
+		oreSmall , oreSmallSandstone , oreSmallNetherrack , oreSmallEndstone , oreSmallAtumLimestone , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
 		
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
@@ -1515,8 +1515,8 @@ public class CS {
 		public static BlockBase Sands, Diggables, Grass, Paths, RockOres, CrystalOres, VanillaOresA;
 		
 		public static IBlockBase FlowersA, FlowersB;
-		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
-		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof;
+		public static BlockBase Glowtus, Saplings_AB, Saplings_CD, Leaves_AB, Leaves_CD, BalesGrass, BalesCrop;
+		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, LogC, LogCFireProof, LogD, LogDFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, BeamC, BeamCFireProof, BeamD, BeamDFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof, Planks2, Planks2FireProof;
 		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;

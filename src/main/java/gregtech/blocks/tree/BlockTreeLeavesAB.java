@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,9 +41,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
-	public BlockTreeLeaves(String aUnlocalised, Block aSaplings) {
-		super(null, aUnlocalised, Material.leaves, soundTypeGrass, 8, Textures.BlockIcons.LEAVES, aSaplings, new Block[] {BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB}, new byte[] {0, 1, 2, 3, 0, 1, 2, 3});
+public class BlockTreeLeavesAB extends BlockBaseLeaves implements Runnable {
+	public BlockTreeLeavesAB(String aUnlocalised, Block aSaplings) {
+		super(null, aUnlocalised, Material.leaves, soundTypeGrass, 8, Textures.BlockIcons.LEAVES_AB, aSaplings, new Block[] {BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB}, new byte[] {0, 1, 2, 3, 0, 1, 2, 3});
 		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Leaves");
 		LH.add(getUnlocalizedName()+ ".1.name", "Maple Leaves");
 		LH.add(getUnlocalizedName()+ ".2.name", "Willow Leaves");

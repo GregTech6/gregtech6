@@ -113,10 +113,10 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		// Other Recipes
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 0), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 8), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/ 4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/ 4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves_AB  , 1, 0), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves_AB  , 1, 8), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Saplings_AB, 1, 0), NF, FL.Latex.make(L/ 4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Saplings_AB, 1, 8), NF, FL.Latex.make(L/ 4), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WoodRubber         ), NF, FL.Latex       .make(L/9)        , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Spruce       ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple        ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -86,9 +86,9 @@ public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolab
 		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
-	@Override public int getLeavesRangeSide(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeSide((byte)((aMeta & 3)|4));}
-	@Override public int getLeavesRangeYPos(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeYNeg((byte)((aMeta & 3)|4));} // Yes it has to be the Negative Range of the Leaves here
-	@Override public int getLeavesRangeYNeg(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves).getLeavesRangeYPos((byte)((aMeta & 3)|4));} // Yes it has to be the Positive Range of the Leaves here
+	@Override public int getLeavesRangeSide(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_AB).getLeavesRangeSide((byte)((aMeta & 3)|4));}
+	@Override public int getLeavesRangeYPos(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_AB).getLeavesRangeYNeg((byte)((aMeta & 3)|4));} // Yes it has to be the Negative Range of the Leaves here
+	@Override public int getLeavesRangeYNeg(byte aMeta) {return ((BlockBaseLeaves)BlocksGT.Leaves_AB).getLeavesRangeYPos((byte)((aMeta & 3)|4));} // Yes it has to be the Positive Range of the Leaves here
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {

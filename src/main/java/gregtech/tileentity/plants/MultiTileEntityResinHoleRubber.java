@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,7 +69,7 @@ public class MultiTileEntityResinHoleRubber extends MultiTileEntityTreeHole {
 		}
 	}
 	
-	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves && getMetaData(aX, aY, aZ) == 8;}
+	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves_AB && getMetaData(aX, aY, aZ) == 8;}
 	
 	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogA, 1, 0));}
 	@Override public ItemStack getResinItem(byte aSide) {return IL.IC2_Resin.get(1, IL.Resin.get(1));}

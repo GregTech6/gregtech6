@@ -145,20 +145,20 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		
 		switch (new Date().getMonth()) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
 		case  8:
-			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_YELLOW;
-			Textures.BlockIcons.LEAVES[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_YELLOW;
+			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_YELLOW;
+			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_YELLOW;
 			break;
 		case  9:
-			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_ORANGE;
-			Textures.BlockIcons.LEAVES[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_ORANGE;
+			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_ORANGE;
+			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_ORANGE;
 			break;
 		case 10:
-			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_RED;
-			Textures.BlockIcons.LEAVES[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_RED;
+			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_RED;
+			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_RED;
 			break;
 		case 11: case 0:
-			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_BROWN;
-			Textures.BlockIcons.LEAVES[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
+			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_BROWN;
+			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
 			break;
 		}
 	}
