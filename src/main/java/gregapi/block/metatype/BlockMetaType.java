@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -84,9 +84,12 @@ public class BlockMetaType extends BlockBaseMeta {
 		ST.hide(mSlabs[SIDE_WEST]);
 		ST.hide(mSlabs[SIDE_EAST]);
 		for (byte i = 0; i < 16; i++) {
-			RM.sawing(16, 16, F, 5, ST.make(this, 1, i), ST.make(mSlabs[0], 2, i));
-			CR.shaped(ST.make(mSlabs[0], 2, i), CR.DEF_NAC, "sX", 'X', ST.make(this, 1, i));
 			CR.shaped(ST.make(this, 1, i), CR.DEF_NAC, "X", "X", 'X', ST.make(mSlabs[0], 1, i));
+			// Avoid duplicating Recipes that are added by the Wood Dictionary anyways.
+			if (!(this instanceof BlockBasePlanks)) {
+				RM.sawing(16, 16, F, 5, ST.make(this, 1, i), ST.make(mSlabs[0], 2, i));
+				CR.shaped(ST.make(mSlabs[0], 2, i), CR.DEF_NAC, "sX", 'X', ST.make(this, 1, i));
+			}
 		}
 	}
 	
