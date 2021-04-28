@@ -89,10 +89,11 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			
 			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) {
 				for (int k = 1; k <= 13; k++) if (i*i + j*j < k*k*0.2) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
-				if (i*i + j*j < 25) for (int k = 1; k <= 3; k++) {
-					Block tBlock = WD.block(aWorld, aX, aY+k, aZ, T);
-					if (WD.air(tBlock)) continue;
-					if (tBlock == Blocks.dirt || tBlock == Blocks.grass) WD.set(aWorld, aX, aY+k, aZ, Blocks.dirt, 2, 3);
+				
+				if (i*i + j*j <= 25) for (int k = 1; k <= 3; k++) {
+					Block tBlock = WD.block(aWorld, aX+i, aY-k, aZ+j, T);
+					if (WD.air(aWorld, aX+i, aY-k, aZ+j, tBlock)) continue;
+					if (tBlock == Blocks.dirt || tBlock == Blocks.grass) WD.set(aWorld, aX+i, aY-k, aZ+j, Blocks.dirt, 2, 3, F);
 					break;
 				}
 			}
