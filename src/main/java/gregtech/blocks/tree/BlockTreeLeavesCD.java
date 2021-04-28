@@ -19,6 +19,10 @@
 
 package gregtech.blocks.tree;
 
+import static gregapi.data.CS.*;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.tree.BlockBaseLeaves;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
@@ -28,6 +32,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockTreeLeavesCD extends BlockBaseLeaves {
 	public BlockTreeLeavesCD(String aUnlocalised, Block aSaplings) {
@@ -68,4 +73,16 @@ public class BlockTreeLeavesCD extends BlockBaseLeaves {
 	}
 	
 	@Override public int getLeavesRangeYPos(byte aMeta) {return 0;} // There is no instance where Leaves are below the Logs for these Trees.
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getRenderColor(int aMeta) {
+		return UNCOLORED;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		return UNCOLORED;
+	}
 }
