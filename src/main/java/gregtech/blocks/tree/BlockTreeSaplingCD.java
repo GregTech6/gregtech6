@@ -68,7 +68,7 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 14);
 			if (tMaxHeight < 14) return F;
 			tMaxHeight = aY+tMaxHeight-aRandom.nextInt(3);
-			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight, aZ+j)) return F;
+			for (int i = -3; i <= 3; i++) for (int j = -3; j <= 3; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-3, aZ+j)) return F;
 			if (aWorld.isRemote) return T;
 			WD.set(aWorld, aX, aY, aZ, BlocksGT.LogC, 0, 3);
 			
@@ -81,8 +81,8 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			placeTree(aWorld, aX  , tMaxHeight-1, aZ+1, BlocksGT.Leaves_CD, 8);
 			placeTree(aWorld, aX  , tMaxHeight-1, aZ-1, BlocksGT.Leaves_CD, 8);
 			
-			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) for (int k = 1; aY+k+4 <= tMaxHeight; k++) {
-				if (i*i + j*j < k*k*0.3) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
+			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) for (int k = 1; k <= 11; k++) {
+				if (i*i + j*j < k*k*0.2) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
 			}
 			return T;
 		}

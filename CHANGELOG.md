@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it.
 [CHANGED] Fluid Pipes will now show all Fluids that are currently somewhere within all connected Pipes, when hit with a Magnifying Glass.
 [ADDED] Spray Cans can now be used to dye Grass, if their Color is applicable. So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants.
+[ADDED] "Blue Spruce" to Mountain Biomes. Its Planks are White, and the Tree is quite tall on average.
 
 
 6.14.10:
