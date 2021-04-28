@@ -31,7 +31,9 @@ import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 public class BlockTreeSaplingCD extends BlockBaseSapling {
@@ -85,9 +87,16 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			placeTree(aWorld, aX  , tMaxHeight-2, aZ+1, BlocksGT.Leaves_CD, 8);
 			placeTree(aWorld, aX  , tMaxHeight-2, aZ-1, BlocksGT.Leaves_CD, 8);
 			
-			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) for (int k = 1; k <= 13; k++) {
-				if (i*i + j*j < k*k*0.2) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
+			for (int i = -5; i <= 5; i++) for (int j = -5; j <= 5; j++) if (i != 0 || j != 0) {
+				for (int k = 1; k <= 13; k++) if (i*i + j*j < k*k*0.2) placeTree(aWorld, aX+i, tMaxHeight-k, aZ+j, BlocksGT.Leaves_CD, 8);
+				if (i*i + j*j < 25) for (int k = 1; k <= 3; k++) {
+					Block tBlock = WD.block(aWorld, aX, aY+k, aZ, T);
+					if (WD.air(tBlock)) continue;
+					if (tBlock == Blocks.dirt || tBlock == Blocks.grass) WD.set(aWorld, aX, aY+k, aZ, Blocks.dirt, 2, 3);
+					break;
+				}
 			}
+			
 			return T;
 		}
 		return F;
