@@ -1927,6 +1927,8 @@ public class CS {
 		, A97               = "Aroma1997Core"
 		, A97_MINING        = "Aroma1997sDimension"
 		
+		, CW2               = "caveworld"
+		
 		, GaSu              = "ganyssurface"
 		, GaNe              = "ganysnether"
 		, GaEn              = "ganysend"

@@ -464,6 +464,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Ash                    , ST.make(MD.BINNIE_BOTANY, "misc", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Wood                   , ST.make(MD.BINNIE_BOTANY, "misc", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.S                      , ST.make(MD.BINNIE_BOTANY, "misc", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Aquamarine             , ST.make(MD.CW2, "gem_ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Aquamarine             , ST.make(MD.CW2, "gem_ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Aquamarine             , ST.make(MD.CW2, "gem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gemOre         , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1,   10));
 		OreDictManager.INSTANCE.setTarget(OP.gemRaw         , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 1010));
 		OreDictManager.INSTANCE.setTarget(OP.gemUncut       , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 2010));

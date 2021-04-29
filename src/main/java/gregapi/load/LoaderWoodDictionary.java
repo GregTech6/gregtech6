@@ -192,6 +192,13 @@ public class LoaderWoodDictionary implements Runnable {
 		if (MD.Bamboo.mLoaded) {
 			new SaplingEntry(ST.make(MD.Bamboo, "sakuraSapling", 1, W), new WoodEntry(ST.make(MD.Bamboo, "sakuraLog", 1, W), new PlankEntry(ST.make(MD.Bamboo, "twoDirDeco", 1, 2), ST.make(MD.Bamboo, "halfTwoDirDeco", 1, 2), MT.WOODS.Sakura, 161), 1, 350), ST.make(MD.Bamboo, "sakuraLeaves", 1, W));
 		}
+		// Caveworld 2 has copied Vanilla Trees for whatever reason.
+		if (MD.CW2.mLoaded) {
+			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 0), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 0), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 0)), ST.make(MD.CW2, "perverted_leaves", 1, 0));
+			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 1), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1)), ST.make(MD.CW2, "perverted_leaves", 1, 1));
+			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 2), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 2), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.CW2, "perverted_leaves", 1, 2));
+			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 3), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 3), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), ST.make(MD.CW2, "perverted_leaves", 1, 3));
+		}
 		// Thaumcraft Trees
 		if (MD.TC.mLoaded) {
 			new SaplingEntry(ST.make(MD.TC, "blockCustomPlant", 1, 0), new WoodEntry(IL.TC_Greatwood_Log .get(1), new BeamEntry(ST.make(BlocksGT.Beam3, 1, 0), new PlankEntry(IL.TC_Greatwood_Planks .get(1), ST.make(MD.TC, "blockCosmeticSlabWood", 1, 0), ST.make(MD.TC, "blockStairsGreatwood" , 1, 0), MT.Greatwood , 46), 2,  450), 2,  500), ST.make(MD.TC, "blockMagicalLeaves", 1, 0));

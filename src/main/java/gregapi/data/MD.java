@@ -199,6 +199,8 @@ public class MD {
 	, A97               = new ModData(ModIDs.A97                , "Aroma1997 Core")
 	, A97_MINING        = new ModData(ModIDs.A97_MINING         , "Aroma1997's Mining Dimension")
 	
+	, CW2               = new ModData(ModIDs.CW2                , "Cave World 2")
+	
 	, GaSu              = new ModData(ModIDs.GaSu               , "Ganys Surface")
 	, GaNe              = new ModData(ModIDs.GaNe               , "Ganys Nether")
 	, GaEn              = new ModData(ModIDs.GaEn               , "Ganys End")
