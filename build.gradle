@@ -271,6 +271,7 @@ dependencies {
 	//compileOnly "dan200.computercraft:ComputerCraft:1.75" // Hack
 	//compileOnly "delvr.streams:Streams:1.7.10-0.3.4:deobf"
 	//compileOnly "enviromine:EnviroMine:1.3.124:deobf"
+	//compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.1.2:dev"
 	//compileOnly "extracells:ExtraCells:1.7.10-2.3.14b200:deobf"
 	//compileOnly "ic2:IC2Classic:1.2.1.8:dev"
 	//compileOnly "io.netty-opis:Netty-opis:4.0.23" // Needed for dev opis because it doesn't know how to specify dependencies properly
