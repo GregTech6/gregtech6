@@ -200,6 +200,21 @@ public class WD {
 	public static boolean dimA97(World aWorld) {return aWorld != null && dimA97(aWorld.provider);}
 	public static boolean dimA97(WorldProvider aProvider) {return MD.A97_MINING.mLoaded && "WorldProviderMiner".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
+	public static boolean dimCW2AquaCavern(World aWorld) {return aWorld != null && dimCW2AquaCavern(aWorld.provider);}
+	public static boolean dimCW2AquaCavern(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderAquaCavern".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
+	public static boolean dimCW2Caveland(World aWorld) {return aWorld != null && dimCW2Caveland(aWorld.provider);}
+	public static boolean dimCW2Caveland(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderCaveland".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
+	public static boolean dimCW2Cavenia(World aWorld) {return aWorld != null && dimCW2Cavenia(aWorld.provider);}
+	public static boolean dimCW2Cavenia(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderCavenia".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
+	public static boolean dimCW2Cavern(World aWorld) {return aWorld != null && dimCW2Cavern(aWorld.provider);}
+	public static boolean dimCW2Cavern(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderCavern".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
+	public static boolean dimCW2Caveworld(World aWorld) {return aWorld != null && dimCW2Caveworld(aWorld.provider);}
+	public static boolean dimCW2Caveworld(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderCaveworld".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
 	public static boolean dimAETHER(World aWorld) {return aWorld != null && dimAETHER(aWorld.provider);}
 	public static boolean dimAETHER(WorldProvider aProvider) {return MD.AETHER.mLoaded && "WorldProviderAether".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
