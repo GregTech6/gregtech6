@@ -39,6 +39,7 @@ import net.minecraft.init.Blocks;
 
 public class Loader_Woods implements Runnable {
 	@Override
+	@SuppressWarnings("deprecation")
 	public void run() {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1             = new BlockTreeLog1            ("gt.block.log.1"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1FireProof    = new BlockTreeLog1FireProof   ("gt.block.log.1.fireproof"));
@@ -73,6 +74,9 @@ public class Loader_Woods implements Runnable {
 		BlocksGT.Saplings_CD = new BlockTreeSaplingCD("gt.block.sapling.cd");
 		BlocksGT.Leaves_AB   = new BlockTreeLeavesAB ("gt.block.leaves", BlocksGT.Saplings_AB);
 		BlocksGT.Leaves_CD   = new BlockTreeLeavesCD ("gt.block.leaves.cd", BlocksGT.Saplings_CD);
+		
+		BlocksGT.Sapling = BlocksGT.Saplings_AB;
+		BlocksGT.Leaves  = BlocksGT.Leaves_AB;
 		
 		IL.Plank_Stairs       .set(ST.make(Blocks.oak_stairs, 1, 0));
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));

@@ -1517,6 +1517,9 @@ public class CS {
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Saplings_AB, Saplings_CD, Leaves_AB, Leaves_CD, BalesGrass, BalesCrop;
 		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, LogC, LogCFireProof, LogD, LogDFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, BeamC, BeamCFireProof, BeamD, BeamDFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof, Planks2, Planks2FireProof;
+		@Deprecated
+		public static BlockBase Sapling = Saplings_AB, Leaves = Leaves_AB;
+		
 		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
