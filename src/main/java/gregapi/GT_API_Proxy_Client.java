@@ -155,7 +155,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
 			break;
 		case  7:
-			// Christmas in July, because why not!
+			// Christmas in July! Go look it up, it is an actual thing!
 			if (tDate.getDate() >= 24) {
 				Textures.BlockIcons.LEAVES_CD[0] = Textures.BlockIcons.LEAVES_BLUESPRUCE_XMAS;
 				Textures.BlockIcons.LEAVES_CD[8] = Textures.BlockIcons.LEAVES_OPAQUE_BLUESPRUCE_XMAS;
