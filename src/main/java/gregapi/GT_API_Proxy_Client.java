@@ -143,22 +143,44 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		// Check if OptiFine is loaded in order to disable some GT Render Hooks to fix Glitches.
 		ITexture.Util.OPTIFINE_LOADED = FMLClientHandler.instance().hasOptifine();
 		
-		switch (new Date().getMonth()) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
-		case  8:
+		Date tDate = new Date();
+		
+		// TODO REMOVE THIS TEST BEFORE RELEASE!!!
+		Textures.BlockIcons.LEAVES_CD[0] = Textures.BlockIcons.LEAVES_BLUESPRUCE_XMAS;
+		Textures.BlockIcons.LEAVES_CD[8] = Textures.BlockIcons.LEAVES_OPAQUE_BLUESPRUCE_XMAS;
+		
+		switch (tDate.getMonth()+1) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
+		case  1:
+			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_BROWN;
+			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
+			break;
+		case  7:
+			// Christmas in July, because why not!
+			if (tDate.getDate() >= 24) {
+				Textures.BlockIcons.LEAVES_CD[0] = Textures.BlockIcons.LEAVES_BLUESPRUCE_XMAS;
+				Textures.BlockIcons.LEAVES_CD[8] = Textures.BlockIcons.LEAVES_OPAQUE_BLUESPRUCE_XMAS;
+			}
+			break;
+		case  9:
 			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_YELLOW;
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_YELLOW;
 			break;
-		case  9:
+		case 10:
 			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_ORANGE;
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_ORANGE;
 			break;
-		case 10:
+		case 11:
 			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_RED;
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_RED;
 			break;
-		case 11: case 0:
+		case 12:
 			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_BROWN;
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
+			// Normal Holiday Season!
+			if (tDate.getDate() >= 24) {
+				Textures.BlockIcons.LEAVES_CD[0] = Textures.BlockIcons.LEAVES_BLUESPRUCE_XMAS;
+				Textures.BlockIcons.LEAVES_CD[8] = Textures.BlockIcons.LEAVES_OPAQUE_BLUESPRUCE_XMAS;
+			}
 			break;
 		}
 	}
