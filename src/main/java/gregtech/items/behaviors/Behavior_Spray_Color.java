@@ -35,6 +35,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -63,8 +65,7 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 		
 		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		
-		NBTTagCompound tNBT = aStack.getTagCompound();
-		if (tNBT == null) tNBT = UT.NBT.make();
+		NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
 		long tUses = tNBT.getLong("gt.remaining");
 		
 		if (ST.equal(aStack, mFull, T)) {
@@ -79,9 +80,8 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 				rOutput = T;
 			}
 		}
-		tNBT.removeTag("gt.remaining");
-		if (tUses > 0) UT.NBT.setNumber(tNBT, "gt.remaining", tUses);
-		UT.NBT.set(aStack, tNBT);
+		
+		UT.NBT.set(aStack, UT.NBT.setPosNum(tNBT, "gt.remaining", tUses));
 		
 		if (tUses <= 0) {
 			if (mEmpty == null) {
@@ -92,6 +92,39 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 			}
 		}
 		return rOutput;
+	}
+	
+	@Override
+	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
+		if (aEntity instanceof EntitySheep) {
+			if (!((EntitySheep)aEntity).getSheared() && ((EntitySheep)aEntity).getFleeceColor() != DYES_INT_INVERTED[mColor]) {
+				((EntitySheep)aEntity).setFleeceColor(DYES_INT_INVERTED[mColor]);
+				
+				NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
+				long tUses = tNBT.getLong("gt.remaining");
+				
+				if (ST.equal(aStack, mFull, T)) {
+					aStack.func_150996_a(mUsed.getItem());
+					ST.meta_(aStack, ST.meta_(mUsed));
+					tUses = mUses;
+				}
+				if (ST.equal(aStack, mUsed, T) && !UT.Entities.hasInfiniteItems(aPlayer)) tUses-=50;
+				
+				UT.NBT.set(aStack, UT.NBT.setPosNum(tNBT, "gt.remaining", tUses));
+				
+				if (tUses <= 0) {
+					if (mEmpty == null) {
+						aStack.stackSize--;
+					} else {
+						aStack.func_150996_a(mEmpty.getItem());
+						ST.meta_(aStack, ST.meta_(mEmpty));
+					}
+				}
+				
+				return T;
+			}
+		}
+		return F;
 	}
 	
 	private final Collection<Block> mAllowedVanillaBlocks = Arrays.asList(Blocks.grass, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane, Blocks.carpet, Blocks.hardened_clay, Blocks.stained_hardened_clay);

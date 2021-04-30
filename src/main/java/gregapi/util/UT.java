@@ -2006,6 +2006,16 @@ public class UT {
 			return aNBT;
 		}
 		
+		/** Saves on Data Size by choosing the smallest possible Data Type, and by also not adding zeros or negative Numbers. The regular getLong() Function can also get the other Number Types. */
+		public static NBTTagCompound setPosNum(NBTTagCompound aNBT, Object aTag, long aValue) {
+			if (aValue <= 0) {aNBT.removeTag(aTag.toString()); return aNBT;}
+			if (aValue > Integer.MAX_VALUE || aValue < Integer.MIN_VALUE) {aNBT.setLong(aTag.toString(), aValue); return aNBT;}
+			if (aValue > Short.MAX_VALUE || aValue < Short.MIN_VALUE) {aNBT.setInteger(aTag.toString(), (int)aValue); return aNBT;}
+			if (aValue > Byte.MAX_VALUE || aValue < Byte.MIN_VALUE) {aNBT.setShort(aTag.toString(), (short)aValue); return aNBT;}
+			aNBT.setByte(aTag.toString(), (byte)aValue);
+			return aNBT;
+		}
+		
 		public static ItemStack set(ItemStack aStack, NBTTagCompound aNBT) {
 			if (aNBT == null || aNBT.hasNoTags()) {aStack.setTagCompound(null); return aStack;}
 			ArrayList<String> tTagsToRemove = new ArrayListNoNulls<>();
