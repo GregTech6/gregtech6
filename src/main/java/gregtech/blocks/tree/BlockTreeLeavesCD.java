@@ -21,10 +21,14 @@ package gregtech.blocks.tree;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.tree.BlockBaseLeaves;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -32,9 +36,11 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
-public class BlockTreeLeavesCD extends BlockBaseLeaves {
+public class BlockTreeLeavesCD extends BlockBaseLeaves implements Runnable {
 	public BlockTreeLeavesCD(String aUnlocalised, Block aSaplings) {
 		super(null, aUnlocalised, Material.leaves, soundTypeGrass, 1, Textures.BlockIcons.LEAVES_CD, aSaplings, new Block[] {BlocksGT.LogC, BlocksGT.LogC, BlocksGT.LogC, BlocksGT.LogC, BlocksGT.LogD, BlocksGT.LogD, BlocksGT.LogD, BlocksGT.LogD}, new byte[] {0, 1, 2, 3, 0, 1, 2, 3});
 		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Leaves");
@@ -58,6 +64,15 @@ public class BlockTreeLeavesCD extends BlockBaseLeaves {
 			OM.reg(ST.make(this, 1, i), OP.treeLeaves);
 			OM.reg(ST.make(this, 1, i+8), OP.treeLeaves);
 		}
+		
+		GAPI.mAfterPostInit.add(this);
+	}
+	
+	@Override
+	public void run() {
+		if (COMPAT_FR != null) {
+			COMPAT_FR.addWindfall(IL.BoP_Pinecone.get(1));
+		}
 	}
 	
 	@Override
@@ -76,6 +91,24 @@ public class BlockTreeLeavesCD extends BlockBaseLeaves {
 	}
 	
 	@Override public int getLeavesRangeYPos(byte aMeta) {return 0;} // There is no instance where Leaves are below the Logs for these Trees.
+	
+	@Override
+	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
+		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
+		int tChance = 50;
+		if (aFortune > 0) {
+			tChance -= 5 << aFortune;
+			if (tChance < 5) tChance = 5;
+		}
+		if (RNGSUS.nextInt(tChance) == 0 && ((aMeta & 7) != 0 || RNGSUS.nextInt(3) == 0)) {
+			rDrops.add(ST.make(getItemDropped(aMeta, RNGSUS, aFortune), 1, damageDropped(aMeta)));
+		} else {
+			switch(aMeta & 7) {
+			case 0: if (RNGSUS.nextInt(tChance) < 2) rDrops.add(IL.BoP_Pinecone.get(1)); break;
+			}
+		}
+		return rDrops;
+	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

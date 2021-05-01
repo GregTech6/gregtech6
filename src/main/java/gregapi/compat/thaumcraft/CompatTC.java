@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -246,7 +246,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	
 	@Override
 	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_AspectStack> aAspects, boolean aAdditive) {
-		if (aAspects.isEmpty()) return F;
+		if (aAspects.isEmpty() || ST.invalid(aStack)) return F;
 		if (aAdditive) {
 			ThaumcraftApi.registerComplexObjectTag(aStack, (AspectList)getAspectList(aAspects));
 			return T;
@@ -258,7 +258,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	}
 	@Override
 	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, boolean aAdditive, TC_AspectStack... aAspects) {
-		if (aAspects.length <= 0) return F;
+		if (aAspects.length <= 0 || ST.invalid(aStack)) return F;
 		if (aAdditive) {
 			ThaumcraftApi.registerComplexObjectTag(aStack, (AspectList)getAspectList(aAspects));
 			return T;

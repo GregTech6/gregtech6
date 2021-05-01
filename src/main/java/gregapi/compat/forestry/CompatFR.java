@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,6 +32,7 @@ import gregapi.block.tree.BlockBaseSapling;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.compat.CompatBase;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -47,7 +48,7 @@ public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
 	
 	@Override
 	public void addWindfall(ItemStack aStack) {
-		mWindfalls.add(aStack);
+		if (ST.valid(aStack)) mWindfalls.add(aStack);
 	}
 	
 	@Override
