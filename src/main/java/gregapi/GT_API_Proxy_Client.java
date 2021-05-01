@@ -145,10 +145,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		
 		Date tDate = new Date();
 		
-		// TODO REMOVE THIS TEST BEFORE RELEASE!!!
-		Textures.BlockIcons.LEAVES_CD[0] = Textures.BlockIcons.LEAVES_BLUESPRUCE_XMAS;
-		Textures.BlockIcons.LEAVES_CD[8] = Textures.BlockIcons.LEAVES_OPAQUE_BLUESPRUCE_XMAS;
-		
 		switch (tDate.getMonth()+1) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
 		case  1:
 			Textures.BlockIcons.LEAVES_AB[1] = Textures.BlockIcons.LEAVES_MAPLE_BROWN;

@@ -1080,6 +1080,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropStarfruit"                   , "listAllfruit");
 		OreDictManager.INSTANCE.addReRegistration("cropPomelo"                      , "listAllfruit");
 		OreDictManager.INSTANCE.addReRegistration("cropAllspice"                    , "listAllfruit");
+		OreDictManager.INSTANCE.addReRegistration("cropCandleberry"                 , "listAllfruit");
+		OreDictManager.INSTANCE.addReRegistration("fruitsAcresia"                   , "listAllfruit");
 		OreDictManager.INSTANCE.addReRegistration("cropRowanberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropWyndberry"                   , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropJuniper"                     , "listAllberry");
@@ -1098,6 +1100,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropBerry"                       , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropAllspice"                    , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropCandleberry"                 , "listAllberry");
+		OreDictManager.INSTANCE.addReRegistration("fruitsAcresia"                   , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("foodGrapejelly"                  , "listAlljelly");
 		OreDictManager.INSTANCE.addReRegistration("foodBlackberryjelly"             , "listAlljelly");
 		OreDictManager.INSTANCE.addReRegistration("foodMangojelly"                  , "listAlljelly");
@@ -1230,6 +1233,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropGingkoNut"                   , "listAllnut");
 		OreDictManager.INSTANCE.addReRegistration("cropCandlenut"                   , "listAllnut");
 		OreDictManager.INSTANCE.addReRegistration("seedMisc"                        , "listAllseed");
+		OreDictManager.INSTANCE.addReRegistration("seedsAcresia"                    , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedAspectrus"                   , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedPurplePear"                  , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedCamellia"                    , "listAllseed");

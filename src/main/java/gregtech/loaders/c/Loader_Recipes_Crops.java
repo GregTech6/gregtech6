@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -249,7 +249,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(20), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(20), ZL_IS);
 		}});
-		addListener(new String[] {"seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", "seedCorn", "seedMisc"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", "seedCorn", "seedsAcresia", "seedMisc"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
@@ -531,6 +531,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("cropStrawberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Strawberry, 100, 4000, "Canned Strawberries", 0, 0, 0, 8, 0);
+		}});
+		addListener("fruitsAcresia", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.crop_fruit(aEvent.mStack, FL.Juice, 100, 4000, "Canned Acresias", 0, 0, 0, 8, 0);
 		}});
 		addListener("cropWyndberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice, 100, 4000, "Canned Wyndberries", 0, 0, 0, 8, 0);

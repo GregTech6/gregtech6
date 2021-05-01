@@ -103,14 +103,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	@Override
 	public boolean hasProjectile(TagData aProjectileType, ItemStack aStack) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) if (tBehavior.hasProjectile(this, aProjectileType, aStack)) return T;
 		return super.hasProjectile(aProjectileType, aStack);
 	}
 	
 	@Override
 	public EntityProjectile getProjectile(TagData aProjectileType, ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) {
 			EntityProjectile rArrow = tBehavior.getProjectile(this, aProjectileType, aStack, aWorld, aX, aY, aZ);
 			if (rArrow != null) return rArrow;
@@ -120,7 +120,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	@Override
 	public EntityProjectile getProjectile(TagData aProjectileType, ItemStack aStack, World aWorld, EntityLivingBase aEntity, float aSpeed) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) {
 			EntityProjectile rArrow = tBehavior.getProjectile(this, aProjectileType, aStack, aWorld, aEntity, aSpeed);
 			if (rArrow != null) return rArrow;
@@ -130,14 +130,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	@Override
 	public ItemStack onDispense(IBlockSource aSource, ItemStack aStack) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) if (tBehavior.canDispense(this, aSource, aStack)) return tBehavior.onDispense(this, aSource, aStack);
 		return super.onDispense(aSource, aStack);
 	}
 	
 	@Override
 	public boolean isItemStackUsable(ItemStack aStack) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) if (!tBehavior.isItemStackUsable(this, aStack)) return F;
 		return super.isItemStackUsable(aStack);
 	}
@@ -146,7 +146,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public boolean itemInteractionForEntity(ItemStack aStack, EntityPlayer aPlayer, EntityLivingBase aEntity) {
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onRightClickEntity(this, aStack, aPlayer, aEntity)) {
 				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
@@ -166,7 +166,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onLeftClickEntity(this, aStack, aPlayer, aEntity)) {
 				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
@@ -187,7 +187,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (MD.BbLC.owns(aWorld, aX, aY, aZ)) return F;
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onItemUse(this, aStack, aPlayer, aWorld, aX, aY, aZ, UT.Code.side(aSide), hitX, hitY, hitZ)) {
 				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
@@ -208,7 +208,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (MD.BbLC.owns(aWorld, aX, aY, aZ)) return F;
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onItemUseFirst(this, aStack, aPlayer, aWorld, aX, aY, aZ, UT.Code.side(aSide), hitX, hitY, hitZ)) {
 				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
@@ -228,7 +228,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			aStack = tBehavior.onItemRightClick(this, aStack, aWorld, aPlayer);
 		} catch(Throwable e) {
@@ -266,13 +266,13 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		
 		addAdditionalToolTips(aList, aStack, aF3_H);
 		
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) aList = tBehavior.getAdditionalToolTips(this, aList, aStack);
 	}
 	
 	@Override
 	public void onUpdate(ItemStack aStack, World aWorld, Entity aPlayer, int aTimer, boolean aIsInHand) {
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) tBehavior.onUpdate(this, aStack, aWorld, aPlayer, aTimer, aIsInHand);
 	}
 	
