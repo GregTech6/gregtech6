@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,6 +62,7 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.biomass(ST.make(MD.BoP, "coral1", 16, W));
 		RM.biomass(ST.make(MD.BoP, "coral2", 16, W));
 		RM.biomass(ST.make(MD.BoP, "lilyBop", 8, W));
+		RM.biomass(IL.BoP_Pinecone.get(16));
 		
 		CR.remove(IL.BoP_Bone_Small.get(1));
 		CR.remove(IL.BoP_Bone_Medium.get(1));

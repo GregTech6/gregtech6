@@ -88,7 +88,7 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 					placeTree(aWorld, aX+i, tMaxHeight+1-k, aZ+j, BlocksGT.Leaves_CD, 8);
 				}
 				
-				if (i*i + j*j <= 30) for (int k = 1; k <= 3; k++) {
+				if (i*i + j*j <= 30) for (int k = 0; k <= 3; k++) {
 					Block tBlock = WD.block(aWorld, aX+i, aY-k, aZ+j, T);
 					if (WD.air(aWorld, aX+i, aY-k, aZ+j, tBlock)) continue;
 					if (tBlock == Blocks.dirt || tBlock == Blocks.grass) WD.set(aWorld, aX+i, aY-k, aZ+j, Blocks.dirt, 2, 3, F);

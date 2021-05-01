@@ -19,8 +19,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Burner and Cryo Mixers now have Parallel Processing like the Normal and Electric Mixers.
 [CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it.
 [CHANGED] Fluid Pipes will now show all Fluids that are currently somewhere within all connected Pipes, when hit with a Magnifying Glass.
-[ADDED] Spray Cans can now be used to dye Grass, if their Color is applicable. So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants. They can also dye Sheep now too.
-[ADDED] "Blue Spruce" to Mountain Biomes. Its Planks are White, and the Tree is quite tall on average. It also turns Dirt and Grass to Podzol below.
+[ADDED] Spray Cans can now be used to dye Sheep and Grass (if their Color is applicable). So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants, and it is easier to spawnproof your Lawn that way.
+[ADDED]
+Blue Spruce
+Can be found in Mountainous Biomes.
+Its Planks are White, and the Tree is quite tall on average, making it a very good Wood Source.
+It also turns Dirt and Grass to Podzol below, making it far easier to get that Stuff renewably now, similar to how it works in later Versions of Vanilla Minecraft. (remember: Spades are super easy to use for digging Stuff like Podzol)
+When Biomes o'Plenty is installed it will drop Pinecones, that are now registered as Windfall to Forestry, and they also finally got a Biomass Recipe assigned to them that I originally forgot about.
+During certain periods of time it will turn into a Christmas Tree.
 
 
 6.14.10:
@@ -35,7 +41,7 @@ The Fix also has the side effect of loading Singleplayer Worlds without having t
 [IMPROVED] Creating Material Dictionaries no longer happens on Startup and is now done on the fly.
 [IMPROVED] When you break Fluid Pipes, they will try to move their content to connected adjacent Blocks/Pipes in order to not waste it. Keyword being TRY, because if there is nowhere to go they will still send it to the Garbage Dump.
 [FIXED] Button Panel was resetting its Chiseled Design whenever a Block Update or similar happened.
-[FIXED] Hoppers and Queue Hoppers will no longer let other thigns pull from their Output Facing.
+[FIXED] Hoppers and Queue Hoppers will no longer let other things pull from their Output Facing.
 [FIXED] Bedrock Drill will actually output the right Ores and Stones in Atum, Betweenlands and Erebus. IT will also output Deepslate instead of Vanilla Stone in the Overworld if applicable. (ofcourse other Stone Layer Stones will still be outputted)
 [FIXED] Ice Harvesting with the Saw now actually works properly and does no longer spawn Water Blocks.
 [FIXED] A Crash when Furnace Recipes with Liquid XP were added to NEI.
