@@ -96,11 +96,12 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 	
 	@Override
 	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-		if (aEntity.worldObj.isRemote || aStack.stackSize != 1) return F;
+		if (aStack.stackSize != 1) return F;
 		
 		if (aEntity instanceof EntitySheep) {
-			if (!((EntitySheep)aEntity).getSheared() && ((EntitySheep)aEntity).getFleeceColor() != DYES_INT_INVERTED[mColor]) {
-				((EntitySheep)aEntity).setFleeceColor(DYES_INT_INVERTED[mColor]);
+			if (!((EntitySheep)aEntity).getSheared() && ((EntitySheep)aEntity).getFleeceColor() != (~mColor & 15)) {
+				((EntitySheep)aEntity).setFleeceColor(~mColor & 15);
+				if (aEntity.worldObj.isRemote) return T;
 				
 				NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
 				long tUses = tNBT.getLong("gt.remaining");
