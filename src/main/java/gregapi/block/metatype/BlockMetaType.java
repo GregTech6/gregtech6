@@ -49,7 +49,7 @@ import net.minecraft.world.World;
 public class BlockMetaType extends BlockBaseMeta {
 	public final float mHardnessMultiplier, mResistanceMultiplier;
 	public final int mHarvestLevel;
-	public final byte mSide;
+	public final byte mSide, mOctantcount;
 	public final boolean mIsWall, mIsSlab, mIsStair;
 	public final BlockMetaType mBlock;
 	public final BlockMetaType[] mSlabs;
@@ -65,6 +65,7 @@ public class BlockMetaType extends BlockBaseMeta {
 		mIsSlab = F;
 		mIsStair = F;
 		mBlock = this;
+		mOctantcount = 8;
 		mSide = SIDE_UNKNOWN;
 		mHarvestLevel = aHarvestLevel;
 		mHardnessMultiplier = aHardnessMultiplier;
@@ -107,6 +108,7 @@ public class BlockMetaType extends BlockBaseMeta {
 		mIsSlab = T;
 		mIsStair = F;
 		mBlock = aBlock;
+		mOctantcount = 4;
 		mSide = aSlabType;
 		mHarvestLevel = aHarvestLevel;
 		mHardnessMultiplier = aHardnessMultiplier;

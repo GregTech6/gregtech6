@@ -1026,6 +1026,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stoneSmooth                                   , ST.make(Blocks.stone                  , 1, W));
 		OM.reg(OP.stoneBricks                                   , ST.make(Blocks.stonebrick             , 1, W));
 		OM.reg(OP.stoneMossy                                    , ST.make(Blocks.stonebrick             , 1, 1));
+		OM.reg(OP.stoneMossyBricks                              , ST.make(Blocks.stonebrick             , 1, 1));
 		OM.reg(OP.stoneCracked                                  , ST.make(Blocks.stonebrick             , 1, 2));
 		OM.reg(OP.stoneChiseled                                 , ST.make(Blocks.stonebrick             , 1, 3));
 		OM.reg(OP.stone, MT.Sand                                , ST.make(Blocks.sandstone              , 1, W));

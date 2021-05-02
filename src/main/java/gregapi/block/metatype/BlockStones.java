@@ -66,8 +66,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockStones extends BlockMetaType implements IOreDictListenerEvent, IBlockToolable, Runnable {
 	public static final boolean[]
-	  MOSSY = {F,F,T,F,F,T,F,F,F,F,F,F,F,F,F,F}
-	, SEALABLE = {F,F,F,T,F,T,T,T,T,T,T,T,T,T,T,T}
+	  MOSSY     = {F,F,T,F,F,T,F,F,F,F,F,F,F,F,F,F}
+	, SEALABLE  = {F,F,F,T,F,T,T,T,T,T,T,T,T,T,T,T}
 	, SPAWNABLE = {T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F}
 	, PLANTABLE = {T,T,T,F,T,T,F,F,F,F,F,F,F,F,F,F}
 	;
@@ -150,10 +150,45 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			OM.reg_(OP.stone, mMaterial, ST.make(this, 1, WINDA));
 			OM.reg_(OP.stone, mMaterial, ST.make(this, 1, WINDB));
 			OM.reg_(OP.stone, mMaterial, ST.make(this, 1, QBRIK));
+			
+			OM.reg_(OP.stoneSmooth  , mMaterial, ST.make(this, 1, STONE));
+			OM.reg_(OP.stoneCobble  , mMaterial, ST.make(this, 1, COBBL));
+			OM.reg_(OP.stoneMossy   , mMaterial, ST.make(this, 1, MCOBL));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, BRICK));
+			OM.reg_(OP.stoneCracked , mMaterial, ST.make(this, 1, CRACK));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, MBRIK));
+			OM.reg_(OP.stoneChiseled, mMaterial, ST.make(this, 1, CHISL));
+			OM.reg_(OP.stonePolished, mMaterial, ST.make(this, 1, SMOTH));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, TILES));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, STILE));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, SBRIK));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, WINDA));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, WINDB));
+			OM.reg_(OP.stoneBricks  , mMaterial, ST.make(this, 1, QBRIK));
 		}
 		
-		OM.reg_(OP.cobblestone, ST.make(this, 1, COBBL));
-		OM.reg_(OP.stone      , ST.make(this, 1, STONE));
+		OM.reg_(OP.stoneSmooth     , ST.make(this, 1, STONE));
+		OM.reg_(OP.stoneCobble     , ST.make(this, 1, COBBL));
+		OM.reg_(OP.stoneCobble     , ST.make(this, 1, MCOBL));
+		OM.reg_(OP.stoneMossy      , ST.make(this, 1, MCOBL));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, BRICK));
+		OM.reg_(OP.stoneCracked    , ST.make(this, 1, CRACK));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, CRACK));
+		OM.reg_(OP.stoneMossyBricks, ST.make(this, 1, MBRIK));
+		OM.reg_(OP.stoneMossy      , ST.make(this, 1, MBRIK));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, MBRIK));
+		OM.reg_(OP.stoneChiseled   , ST.make(this, 1, CHISL));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, CHISL));
+		OM.reg_(OP.stonePolished   , ST.make(this, 1, SMOTH));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, TILES));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, STILE));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, SBRIK));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, WINDA));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, WINDB));
+		OM.reg_(OP.stoneBricks     , ST.make(this, 1, QBRIK));
+		
+		OM.reg_(OP.cobblestone     , ST.make(this, 1, COBBL));
+		OM.reg_(OP.stone           , ST.make(this, 1, STONE));
 		
 		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 	}
@@ -495,16 +530,16 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		if (aTool.equals(TOOL_prospector)) return aMeta == STONE && ToolCompat.prospectStone(this, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ) ? 10000 : 0;
 		if (aTool.equals(TOOL_chisel) && !aSneaking && CHISEL_MAPPINGS[aMeta & 15] != aMeta) {
 			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CHISEL_MAPPINGS[aMeta & 15], 3);
-			return mBlock == this ? 10000 : 5000;
+			return mOctantcount * 1250;
 		}
 		if (aTool.equals(TOOL_file) && !aSneaking) {
 			switch(aMeta) {
-			case STONE: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SMOTH, 3); return mBlock == this ? 10000 : 5000; // Stone to Smooth
-			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SBRIK, 3); return mBlock == this ? 10000 : 5000; // Bricks to Small Bricks
-			case TILES: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mBlock == this ? 10000 : 5000; // Tile to Small Tile
-			case SBRIK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mBlock == this ? 10000 : 5000; // Small Bricks to Small Tile
-			case WINDA: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDB, 3); return mBlock == this ? 10000 : 5000;
-			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mBlock == this ? 10000 : 5000;
+			case STONE: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SMOTH, 3); return mOctantcount * 1250; // Stone to Smooth
+			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SBRIK, 3); return mOctantcount * 1250; // Bricks to Small Bricks
+			case TILES: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mOctantcount * 1250; // Tile to Small Tile
+			case SBRIK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mOctantcount * 1250; // Small Bricks to Small Tile
+			case WINDA: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDB, 3); return mOctantcount * 1250;
+			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mOctantcount * 1250;
 			}
 		}
 		if (aTool.equals(TOOL_drill) && !aSneaking) {
@@ -515,7 +550,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 					if (OM.is("stickAnyIronOrSteel", tStack)) {
 						if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, RNFBR, 3)) {
 							ST.use(aPlayer, tIndex, tStack);
-							return 10000;
+							return mOctantcount * 1250;
 						}
 						break;
 					}
