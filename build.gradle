@@ -303,6 +303,7 @@ dependencies {
 	//compileOnly "powercrystals:MineFactoryReloaded:[1.7.10]2.8.2B1-201:dev"
 	//compileOnly "qmunity:QmunityLib:0.2.118:deobf"
 	//compileOnly "santa:hairy-spice:0.1:dev"
+	//compileOnly "train:Traincraft:5.0.2:dev"
 	//compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
 	//compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
 	//compileOnly "thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev"
