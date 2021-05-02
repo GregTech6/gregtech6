@@ -159,7 +159,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			if (IL.TC_Thaumonomicon.equal(slot(i), T, T)) {tEnchantedBooks++; continue;}
 			if (IL.TC_Crimson_Rites.equal(slot(i), F, T)) {tEnchantedBooks++; continue;}
 		}
-		return (tNormalBooks+tEnchantedBooks*2)/12;
+		return (mMaterial.contains(TD.Properties.MAGICAL) ? 1 : 0) + (tNormalBooks+tEnchantedBooks*2)/12;
 	}
 	
 	@Override
