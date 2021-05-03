@@ -321,8 +321,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
 			if (aNBT != null) {
-				if (aNBT.hasKey("a")) return OreDictMaterial.MATERIAL_ARRAY[aNBT.getShort("a")];
-				if (aNBT.hasKey("b")) return OreDictMaterial.get(aNBT.getString("b"));
+				if (aNBT.hasKey("a")) return OreDictMaterial.get(aNBT.getShort ("a"), aDefault);
+				if (aNBT.hasKey("b")) return OreDictMaterial.get(aNBT.getString("b"), aDefault);
 			}
 		}
 		return aDefault;
@@ -334,8 +334,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
 			if (aNBT != null) {
-				if (aNBT.hasKey("c")) return OreDictMaterial.MATERIAL_ARRAY[aNBT.getShort("c")];
-				if (aNBT.hasKey("d")) return OreDictMaterial.get(aNBT.getString("d"));
+				if (aNBT.hasKey("c")) return OreDictMaterial.get(aNBT.getShort ("c"), aDefault);
+				if (aNBT.hasKey("d")) return OreDictMaterial.get(aNBT.getString("d"), aDefault);
 			}
 		}
 		return aDefault;

@@ -195,6 +195,26 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return rMaterial;
 	}
 	
+	public static OreDictMaterial get(String aMaterialName, OreDictMaterial aDefault) {
+		OreDictMaterial rMaterial = MATERIAL_MAP.get(aMaterialName);
+		return rMaterial == null ? aDefault : get(rMaterial);
+	}
+	public static OreDictMaterial get(String aMaterialName) {
+		return get(aMaterialName, MT.NULL);
+	}
+	public static OreDictMaterial get(long aMaterialID, OreDictMaterial aDefault) {
+		if (aMaterialID < 0 || aMaterialID >= MATERIAL_ARRAY.length || aMaterialID == W) return aDefault;
+		OreDictMaterial rMaterial = MATERIAL_ARRAY[(int)aMaterialID];
+		return rMaterial == null ? aDefault : get(rMaterial);
+	}
+	public static OreDictMaterial get(long aMaterialID) {
+		return get(aMaterialID, MT.NULL);
+	}
+	public static OreDictMaterial get(OreDictMaterial aMaterial) {
+		while (aMaterial != aMaterial.mTargetRegistration) aMaterial = aMaterial.mTargetRegistration;
+		return aMaterial;
+	}
+	
 	/** The Index of this Material inside the Array. Negative for "Not in the Array" and therefore also for "Not Unificatable", 0 is the NULL Material so a > 0 check could be useful for you. */
 	public final short mID;
 	/** The HashCode for this Material. Fully independent from any ID this Material would be assigned to, UNLIKE ITEMS. */
@@ -1217,13 +1237,6 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		// (kg/ m^3 * aAmount              ) / (Material-Unit * 9       )
 		// (kg/ m^3 * aAmount * 0.111111111) /  Material-Unit
 		return (mGramPerCubicCentimeter * 111.111111 * aAmount) / U;
-	}
-	
-	public static OreDictMaterial get(String aMaterial) {
-		OreDictMaterial tMaterial = MATERIAL_MAP.get(aMaterial);
-		if (tMaterial == null) return MT.NULL;
-		while (tMaterial != tMaterial.mTargetRegistration) tMaterial = tMaterial.mTargetRegistration;
-		return tMaterial;
 	}
 	
 	@Override
