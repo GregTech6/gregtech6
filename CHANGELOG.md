@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Bookshelves made of Magical Materials will give an additional Bonus to Enchantment Power.
 [CHANGED] Burner and Cryo Mixers now have Parallel Processing like the Normal and Electric Mixers.
 [CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it.
+[CHANGED] Bedrock Lava Springs in the Nether got nerfed to 500 times less Output (so still twice as good as Overworld Lava Springs). Only applies to newly generated ones though!
 [CHANGED] Fluid Pipes will now show all Fluids that are currently somewhere within all connected Pipes, when hit with a Magnifying Glass.
 [ADDED] Spray Cans can now be used to dye Sheep and Grass (if their Color is applicable). So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants, and it is easier to spawnproof your Lawn that way.
 [ADDED]

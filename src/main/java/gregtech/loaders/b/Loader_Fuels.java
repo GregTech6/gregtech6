@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -207,7 +207,7 @@ public class Loader_Fuels implements Runnable {
 
 
 
-		FM.Magic        .addRecipe0(T, - 64, 64, FL.make("mercury", 1));
+//      FM.Magic        .addRecipe0(T, - 64, 64, FL.make("mercury", 1));
 
 
 //      new Recipe(new ItemStack(Items.lava_bucket), new ItemStack(Blocks.obsidian), OM.get(OP.ingot, MT.Copper, 1), OM.get(OP.ingot, MT.Tin, 1), OM.get(OP.ingot, MT.Electrum, 1), 30, 2);
