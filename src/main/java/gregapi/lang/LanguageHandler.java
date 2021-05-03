@@ -94,19 +94,25 @@ public class LanguageHandler {
 	public static String translate(String aKey, String aDefault) {
 		if (aKey == null) return "";
 		aKey = aKey.trim();
-		if (aKey.length() <= 0) return "";
-		String rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
+		if (aKey.isEmpty()) return "";
+		String
+		rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;
 		rTranslation = StatCollector.translateToLocal(aKey);
+		if (UT.Code.stringValid(rTranslation) && aKey != rTranslation) return rTranslation;
+		rTranslation = BACKUPMAP.get(aKey);
+		if (UT.Code.stringValid(rTranslation)) return rTranslation;
+		
+		aKey = (aKey.endsWith(".name") ? aKey.substring(0, aKey.length() - 5) : aKey + ".name");
+		
+		rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;
-		if (aKey.endsWith(".name")) {
-			rTranslation = StatCollector.translateToLocal(aKey = aKey.substring(0, aKey.length() - 5));
-			if (UT.Code.stringInvalid(rTranslation) || aKey.equals(rTranslation)) rTranslation = BACKUPMAP.get(aKey);
-			return rTranslation == null ? aDefault : rTranslation;
-		}
-		rTranslation = StatCollector.translateToLocal(aKey = aKey + ".name");
-		if (UT.Code.stringInvalid(rTranslation) || aKey.equals(rTranslation)) rTranslation = BACKUPMAP.get(aKey);
-		return rTranslation == null ? aDefault : rTranslation;
+		rTranslation = StatCollector.translateToLocal(aKey);
+		if (UT.Code.stringValid(rTranslation) && aKey != rTranslation) return rTranslation;
+		rTranslation = BACKUPMAP.get(aKey);
+		if (UT.Code.stringValid(rTranslation)) return rTranslation;
+		
+		return aDefault;
 	}
 	
 	public static String separate(String aKey, String aSeparator) {
