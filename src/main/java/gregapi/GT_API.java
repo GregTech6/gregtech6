@@ -189,6 +189,8 @@ public class GT_API extends Abstract_Mod {
 		Textures.BlockIcons.VOID.toString();
 		Textures.ItemIcons .VOID.toString();
 		ErrorRenderer.INSTANCE.toString();
+		// Guess what, I got a Crash from that one not being loaded...
+		UT.Entities.class.toString();
 		
 		try {
 			DW = new DummyWorld();
