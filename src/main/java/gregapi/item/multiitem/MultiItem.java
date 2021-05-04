@@ -240,34 +240,38 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	@Override
 	@SuppressWarnings("unchecked")
 	public final void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
-		isItemStackUsable(aStack);
-		
-		String tKey = getUnlocalizedName(aStack) + ".tooltip", tString = LanguageHandler.translate(tKey, tKey);
-		if (UT.Code.stringValid(tString) && !tKey.equals(tString)) aList.add(tString);
-		
-		IItemEnergy tEnergyStats = getEnergyStats(aStack);
-		if (tEnergyStats != null) {
-			if (tEnergyStats instanceof EnergyStatDebug) {
-				aList.add(LH.Chat.RAINBOW_SLOW + "Works as Infinite Energy Battery" + EnumChatFormatting.GRAY);
-			} else {
-				for (TagData tEnergyType : tEnergyStats.getEnergyTypes(aStack)) {
-					long tCapacity = tEnergyStats.getEnergyCapacity(tEnergyType, aStack);
-					aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack) + EnumChatFormatting.GRAY);
+		try {
+			isItemStackUsable(aStack);
+			
+			String tKey = getUnlocalizedName(aStack) + ".tooltip", tString = LanguageHandler.translate(tKey, tKey);
+			if (UT.Code.stringValid(tString) && !tKey.equals(tString)) aList.add(tString);
+			
+			IItemEnergy tEnergyStats = getEnergyStats(aStack);
+			if (tEnergyStats != null) {
+				if (tEnergyStats instanceof EnergyStatDebug) {
+					aList.add(LH.Chat.RAINBOW_SLOW + "Works as Infinite Energy Battery" + EnumChatFormatting.GRAY);
+				} else {
+					for (TagData tEnergyType : tEnergyStats.getEnergyTypes(aStack)) {
+						long tCapacity = tEnergyStats.getEnergyCapacity(tEnergyType, aStack);
+						aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack) + EnumChatFormatting.GRAY);
+					}
 				}
 			}
+			
+			Long[] tStats = getFluidContainerStats(aStack);
+			if (tStats != null && tStats[0] > 0) {
+				FluidStack tFluid = getFluidContent(aStack);
+				aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":FL.name(tFluid, T))) + LH.Chat.GRAY);
+				aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L") + LH.Chat.GRAY);
+			}
+			
+			addAdditionalToolTips(aList, aStack, aF3_H);
+			
+			ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
+			if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) aList = tBehavior.getAdditionalToolTips(this, aList, aStack);
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
 		}
-		
-		Long[] tStats = getFluidContainerStats(aStack);
-		if (tStats != null && tStats[0] > 0) {
-			FluidStack tFluid = getFluidContent(aStack);
-			aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":FL.name(tFluid, T))) + LH.Chat.GRAY);
-			aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L") + LH.Chat.GRAY);
-		}
-		
-		addAdditionalToolTips(aList, aStack, aF3_H);
-		
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
-		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) aList = tBehavior.getAdditionalToolTips(this, aList, aStack);
 	}
 	
 	@Override

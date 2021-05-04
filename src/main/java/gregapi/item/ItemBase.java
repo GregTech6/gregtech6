@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -70,9 +70,13 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
-		if (getMaxDamage() > 0 && !getHasSubtypes()) aList.add((aStack.getMaxDamage() - getDamage(aStack)) + " / " + aStack.getMaxDamage());
-		if (mTooltip != null) aList.add(LanguageHandler.translate(mTooltip, mTooltip));
-		addAdditionalToolTips(aList, aStack, aF3_H);
+		try {
+			if (getMaxDamage() > 0 && !getHasSubtypes()) aList.add((aStack.getMaxDamage() - getDamage(aStack)) + " / " + aStack.getMaxDamage());
+			if (mTooltip != null) aList.add(LanguageHandler.translate(mTooltip, mTooltip));
+			addAdditionalToolTips(aList, aStack, aF3_H);
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
 	}
 	
 	protected void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {

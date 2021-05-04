@@ -31,6 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ObjectStack;
+import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -165,6 +166,17 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	 * @param aSecondaryMaterial Secondary (Rod/Handle) Material of this Tool
 	 */
 	public final ItemStack getToolWithStats(int aToolID, int aAmount, OreDictMaterial aPrimaryMaterial, OreDictMaterial aSecondaryMaterial, long aMaxCharge, long aVoltage) {
+		return getToolWithStats(aToolID, aAmount, aPrimaryMaterial, aSecondaryMaterial, aMaxCharge, aVoltage, 0);
+	}
+	
+	/**
+	 * This Function gets an ItemStack Version of this Tool
+	 * @param aToolID the ID of the Tool Class
+	 * @param aAmount Amount of Items (well normally you only need 1)
+	 * @param aPrimaryMaterial Primary Material of this Tool
+	 * @param aSecondaryMaterial Secondary (Rod/Handle) Material of this Tool
+	 */
+	public final ItemStack getToolWithStats(int aToolID, int aAmount, OreDictMaterial aPrimaryMaterial, OreDictMaterial aSecondaryMaterial, long aMaxCharge, long aVoltage, long aCharge) {
 		ItemStack rStack = ST.make(this, aAmount, aToolID);
 		IToolStats tToolStats = getToolStats(rStack);
 		if (tToolStats != null) {
@@ -180,6 +192,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				tToolNBT.setBoolean("e", T);
 				UT.NBT.setNumber(tToolNBT, "f", aMaxCharge);
 				UT.NBT.setNumber(tToolNBT, "g", aVoltage);
+				if (aCharge != 0) for (TagData tEnergyType : getEnergyTypes(rStack)) setEnergyStored(tEnergyType, rStack, Math.min(aCharge, aMaxCharge));
 			}
 			tMainNBT.setTag("GT.ToolStats", tToolNBT);
 			UT.NBT.set(rStack, tMainNBT);
@@ -303,7 +316,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				float tCombat = getToolCombatDamage(aStack);
 				aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * TFC_DAMAGE_MULTIPLIER : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"))  + LH.Chat.GRAY);
 				aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMat1.mToolSpeed) + LH.Chat.GRAY);
-				aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : getEnergyStored(TD.Energy.EU, aStack), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
+				aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : Math.min(getEnergyStored(TD.Energy.EU, aStack), getEnergyCapacity(TD.Energy.EU, aStack)), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
 				if (MD.BTL.mLoaded && tMat1.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 				if ((IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tMat1.contains(TD.Properties.MAZEBREAKER)) {
 					if (canHarvestBlock(IL.TF_Mazestone.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING));

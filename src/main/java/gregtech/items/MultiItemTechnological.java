@@ -535,8 +535,8 @@ public class MultiItemTechnological extends MultiItemRandom {
 		
 		
 		
-		IL.Battery_Lead_Acid_Cell_Empty    .set(addItem(tLastID = 20000, "Lead Acid Cell (Empty)"           , "Battery Part (doesn't require Canning Machine!)" , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.METALLUM, 2), TC.stack(TC.VACUOS , 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U)));
-		IL.Battery_Lead_Acid_Cell_Filled   .set(addItem(tLastID = 20001, "Lead Acid Cell (Filled)"          , "Battery Part"                                    , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.ELECTRUM, 2), TC.stack(TC.VENENUM, 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U, MT.H2SO4, 2*U), new FluidContainerData(MT.H2SO4.liquid(2*U, T), ST.make(this, 1, 20001), ST.make(this, 1, 20000), F)));
+		IL.Battery_Lead_Acid_Cell_Empty    .set(addItem(tLastID = 20000, "Lead-Acid Cell (Empty)"           , "Battery Part (doesn't require Canning Machine!)" , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.METALLUM, 2), TC.stack(TC.VACUOS , 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U)));
+		IL.Battery_Lead_Acid_Cell_Filled   .set(addItem(tLastID = 20001, "Lead-Acid Cell (Filled)"          , "Battery Part"                                    , ItemsGT.NEI_DONT_SHOW_FLUIDS, TC.stack(TC.ELECTRUM, 2), TC.stack(TC.VENENUM, 2), new OreDictItemData(MT.Pb, U, MT.BatteryAlloy, U, MT.H2SO4, 2*U), new FluidContainerData(MT.H2SO4.liquid(2*U, T), ST.make(this, 1, 20001), ST.make(this, 1, 20000), F)));
 		ItemsGT.addNEIRedirects(IL.Battery_Lead_Acid_Cell_Empty.get(1), IL.Battery_Lead_Acid_Cell_Filled.get(1));
 		CR.shaped(IL.Battery_Lead_Acid_Cell_Empty.get(1), CR.DEF_NCC, " Fh", "FPF", "xF ", 'P', OP.plateCurved.dat(MT.BatteryAlloy), 'F', OP.foil.dat(MT.Pb));
 
