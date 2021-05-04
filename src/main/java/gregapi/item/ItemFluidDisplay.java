@@ -116,7 +116,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			}
 			
 			if (tAmount > 0) {
-				aList.add(LH.Chat.BLUE + "Amount: " + tAmount + " L" + LH.Chat.GRAY);
+				aList.add(LH.Chat.BLUE + "Amount: " + UT.Code.makeString(tAmount) + " L" + LH.Chat.GRAY);
 			}
 			OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(aName);
 			if (tMaterial != null) {
@@ -171,9 +171,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
-							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
 						} else {
-							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
 						}
 					}
 				}
@@ -183,9 +183,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
-							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
 						} else {
-							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
 						}
 					}
 				}
@@ -195,9 +195,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
-							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
 						} else {
-							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
 						}
 					}
 				}
@@ -207,9 +207,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
 						if (tAmount > 0) {
-							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + ((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total" + LH.Chat.GRAY);
 						} else {
-							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + (tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
+							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L " + LH.Chat.GRAY);
 						}
 					}
 				}

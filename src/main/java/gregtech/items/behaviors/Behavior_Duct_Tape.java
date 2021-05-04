@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -109,7 +109,7 @@ public class Behavior_Duct_Tape extends AbstractBehaviorDefault {
 		aList.add(LH.get("gt.behaviour.ducttape.tooltip"));
 		NBTTagCompound tNBT = aStack.getTagCompound();
 		long tRemaining = (ST.equal(aStack, mFull, T)?mUses:tNBT==null?0:tNBT.getLong("gt.remaining"));
-		aList.add(LH.get("gt.behaviour.ducttape.uses") + " " + tRemaining);
+		aList.add(LH.get("gt.behaviour.ducttape.uses") + " " + UT.Code.makeString(tRemaining));
 		aList.add(LH.get("gt.behaviour.unstackable"));
 		return aList;
 	}

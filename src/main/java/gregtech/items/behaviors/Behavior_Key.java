@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -61,7 +61,7 @@ public class Behavior_Key extends AbstractBehaviorDefault {
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.get("gt.behaviour.key"));
 		NBTTagCompound tNBT = aStack.getTagCompound();
-		if (tNBT != null && tNBT.hasKey(NBT_KEY)) aList.add("Key ID: " + tNBT.getLong(NBT_KEY)); else aList.add("*BLANK*");
+		if (tNBT != null && tNBT.hasKey(NBT_KEY)) aList.add("Key ID: " + UT.Code.makeString(tNBT.getLong(NBT_KEY))); else aList.add("*BLANK*");
 		return aList;
 	}
 }

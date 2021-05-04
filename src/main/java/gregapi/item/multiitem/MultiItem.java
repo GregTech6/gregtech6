@@ -241,8 +241,6 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	@SuppressWarnings("unchecked")
 	public final void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		try {
-			isItemStackUsable(aStack);
-			
 			String tKey = getUnlocalizedName(aStack) + ".tooltip", tString = LanguageHandler.translate(tKey, tKey);
 			if (UT.Code.stringValid(tString) && !tKey.equals(tString)) aList.add(tString);
 			

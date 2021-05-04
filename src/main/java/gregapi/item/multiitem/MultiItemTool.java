@@ -356,6 +356,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public IItemEnergy getEnergyStats(ItemStack aStack) {
+		// TODO REMOVE THIS TEST!!!
+		if (ALWAYS_TRUE) return null;
+		
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
@@ -530,7 +533,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public boolean isItemStackUsable(ItemStack aStack) {
 		if (aStack == null || aStack.stackSize <= 0) return F;
 		IToolStats tStats = getToolStatsInternal(aStack);
-		if (ST.meta_(aStack) % 2 == 1 || tStats == null) {
+		if (ST.meta_(aStack) % 2 == 1 || tStats == null || !super.isItemStackUsable(aStack)) {
 			NBTTagCompound aNBT = aStack.getTagCompound();
 			if (aNBT != null) aNBT.removeTag("ench");
 			return F;
