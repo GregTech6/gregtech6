@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -264,6 +264,46 @@ public class WorldgenTesting extends WorldgenObject {
 			, ST.make(Blocks.redstone_lamp, 1, 0)
 			, OP.cableGt01.mat(MT.Signalum, 1)
 			, OP.wireGt01.mat(MT.Lumium, 1)
+			
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_LV     , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MININGDRILL_LV, 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CHAINSAW_LV   , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, NI
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MIXER_LV      , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.DRILL_LV      , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SCREWDRIVER_LV, 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BUZZSAW_LV    , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.TRIMMER_LV    , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 2000, V[1])
+			
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_MV     , 1, MT.NetherizedDiamond, MT.Magenta, V[2] * 2000, V[2])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MININGDRILL_MV, 1, MT.NetherizedDiamond, MT.Magenta, V[2] * 2000, V[2])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CHAINSAW_MV   , 1, MT.NetherizedDiamond, MT.Magenta, V[2] * 2000, V[2])
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_HV     , 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 2000, V[3])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MININGDRILL_HV, 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 2000, V[3])
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CHAINSAW_HV   , 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 2000, V[3])
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
 			};
 			
 			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, UT.NBT.makeInv(tInventory)), T, T);
