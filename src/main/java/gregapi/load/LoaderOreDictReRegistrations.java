@@ -130,6 +130,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("pulpWood"                , "dustWood");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustBrick"               , "dustCeramic");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustWaxBee"              , "itemBeeswax");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustWaxBee"              , OD.materialWax);
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("dustWaxPlant"            , OD.materialWax);
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("hambone"                 , "foodHamraw");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("bacon"                   , "foodBaconraw");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemBacon"               , "foodBaconraw");

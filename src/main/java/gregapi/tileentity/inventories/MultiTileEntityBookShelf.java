@@ -28,9 +28,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BooksGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
-import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MD;
@@ -149,17 +147,12 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	@Override
 	public float getEnchantPowerBonus() {
-		int tNormalBooks = 0, tEnchantedBooks = 0;
+		int tPoints = 0;
 		for (int i = 0; i < 28; i++) if (slotHas(i)) {
-			if (ST.item(slot(i)) == Items.book          ) {tNormalBooks++; continue;}
-			if (ST.item(slot(i)) == Items.writable_book ) {tNormalBooks++; continue;}
-			if (ST.item(slot(i)) == Items.written_book  ) {tNormalBooks++; continue;}
-			if (ST.item(slot(i)) == ItemsGT.BOOKS       ) {tNormalBooks++; continue;}
-			if (ST.item(slot(i)) == Items.enchanted_book) {tEnchantedBooks++; continue;}
-			if (IL.TC_Thaumonomicon.equal(slot(i), T, T)) {tEnchantedBooks++; continue;}
-			if (IL.TC_Crimson_Rites.equal(slot(i), F, T)) {tEnchantedBooks++; continue;}
+			if (BooksGT.BOOKS_ENCHANTED.contains(slot(i), T)) {tPoints += 2; continue;}
+			if (BooksGT.BOOKS_NORMAL   .contains(slot(i), T)) {tPoints += 1; continue;}
 		}
-		return (mMaterial.contains(TD.Properties.MAGICAL) ? 1 : 0) + (tNormalBooks+tEnchantedBooks*2)/12;
+		return (mMaterial.contains(TD.Properties.MAGICAL) ? 1 : 0) + tPoints/12;
 	}
 	
 	@Override

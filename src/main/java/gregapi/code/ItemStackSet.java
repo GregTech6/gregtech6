@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -93,6 +93,9 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 		return map.containsKey(                       aObject ) || (aWildCard && map.containsKey(new ItemStackContainer(aObject.mItem, 1, W)));
 	}
 	
+	public boolean add(ModData aMod, String aName, long aMeta) {
+		return add(ST.make(aMod, aName, 1, aMeta));
+	}
 	public boolean add(ItemStack aStack) {
 		return ST.valid(aStack) && map.put(new ItemStackContainer(aStack), OBJECT) == null;
 	}

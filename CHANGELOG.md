@@ -15,10 +15,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Better Storage has some things been done to, but not much. I could not assign Material Data to its Chests and Stuff due to them using NBT instead of MetaData...
 [COMPAT] Et Futurum Requiems Copper Blocks and their Variants are now properly supported and not exploitable anymore.
 [FIXED] I messed up Ardite and Aredrite. That should be fixed now.
-[CHANGED] Bookshelves now count Writable Books and Written Books for Levels on the Enchanting Table. Same goes for GT Books and also the two Thaumcraft Books (the latter count as Enchanted Books).
-[CHANGED] Bookshelves made of Magical Materials will give an additional Bonus to Enchantment Power.
+[CHANGED] Bookshelves now count Writable Books and Written Books for Levels on the Enchanting Table. Same goes for GT Books and most other things that look enough like Books, some of which even count as Enchanted Books.
+[CHANGED] Bookshelves made of Magical Materials will give an additional Bonus to Enchantment Power. Greatwood and Livingwood would be a good example of ones that you can get for cheap.
 [CHANGED] Burner and Cryo Mixers now have Parallel Processing like the Normal and Electric Mixers.
-[CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it.
+[CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it. However this is insanely rare, so do not try to go search for it! (I had to x10 the Bedrock Ore Probability in order to find just one of this in Superflat)
 [CHANGED] Bedrock Lava Springs in the Nether got nerfed to 500 times less Output (so still twice as good as Overworld Lava Springs). Only applies to newly generated ones though!
 [CHANGED] Fluid Pipes will now show all Fluids that are currently somewhere within all connected Pipes, when hit with a Magnifying Glass.
 [ADDED] Spray Cans can now be used to dye Sheep and Grass (if their Color is applicable). So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants, and it is easier to spawnproof your Lawn that way.

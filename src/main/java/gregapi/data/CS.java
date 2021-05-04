@@ -1698,6 +1698,9 @@ public class CS {
 		public static final ITexture[] BOOK_TEXTURES_SIDE = new ITexture[256];
 		
 		public static final ItemStackMap<ItemStackContainer, Byte> BOOK_REGISTER = new ItemStackMap<>();
+		
+		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = new ItemStackSet<>();
 	}
 
 	/** Contains typical Tool OreDict Names. */
