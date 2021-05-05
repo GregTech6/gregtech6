@@ -356,9 +356,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public IItemEnergy getEnergyStats(ItemStack aStack) {
-		// TODO REMOVE THIS TEST!!!
-		if (ALWAYS_TRUE) return null;
-		
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
