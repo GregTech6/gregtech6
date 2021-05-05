@@ -51,7 +51,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -247,11 +246,11 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 			IItemEnergy tEnergyStats = getEnergyStats(aStack);
 			if (tEnergyStats != null) {
 				if (tEnergyStats instanceof EnergyStatDebug) {
-					aList.add(LH.Chat.RAINBOW_SLOW + "Works as Infinite Energy Battery" + EnumChatFormatting.GRAY);
+					aList.add(LH.Chat.RAINBOW_SLOW + "Works as Infinite Energy Battery");
 				} else {
 					for (TagData tEnergyType : tEnergyStats.getEnergyTypes(aStack)) {
 						long tCapacity = tEnergyStats.getEnergyCapacity(tEnergyType, aStack);
-						aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack) + EnumChatFormatting.GRAY);
+						aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack));
 					}
 				}
 			}
@@ -259,8 +258,8 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 			Long[] tStats = getFluidContainerStats(aStack);
 			if (tStats != null && tStats[0] > 0) {
 				FluidStack tFluid = getFluidContent(aStack);
-				aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":FL.name(tFluid, T))) + LH.Chat.GRAY);
-				aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L") + LH.Chat.GRAY);
+				aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":FL.name(tFluid, T))));
+				aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L"));
 			}
 			
 			addAdditionalToolTips(aList, aStack, aF3_H);

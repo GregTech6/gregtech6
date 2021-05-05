@@ -123,8 +123,8 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(mBlock, tResistance));
 		}
 		aList.add(LH.getToolTipHarvest(tTileEntityContainer.mBlock.getMaterial(), tTileEntityContainer.mBlock.getHarvestTool(tTileEntityContainer.mBlockMetaData), tTileEntityContainer.mBlock.getHarvestLevel(tTileEntityContainer.mBlockMetaData)));
-		// Remove all Nulls and fix eventual Formatting mistakes.
-		for (int i = 0, j = aList.size(); i < j; i++) if (aList.get(i) == null) {aList.remove(i--); j--;} else aList.set(i, LH.Chat.GRAY + aList.get(i) + LH.Chat.RESET);
+		// Remove all Nulls and fix eventual Formatting mistakes. No longer needed because the Tooltip Event fixes it
+		//for (int i = 0, j = aList.size(); i < j; i++) if (aList.get(i) == null) {aList.remove(i--); j--;} else aList.set(i, LH.Chat.GRAY + aList.get(i) + LH.Chat.RESET_TOOLTIP);
 	}
 	
 	public int onDespawn(EntityItem aEntity, ItemStack aStack) {
