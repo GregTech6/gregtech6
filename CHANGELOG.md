@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.14: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.13: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.11: (Not released yet, released whenever it needs to be)
+6.14.11:
 [NOTE] Erik3003 changed a tiny bit of the Internals of the Moderated Reactors, everything should still work as usual though.
 [COMPAT] Caveworld 2 now generates Stone Layers too. Its Ore Blocks will not be replaced though, so you get its Vanilla-alike Ores inside my Stone Layers. by the way did you know its "Universal Chest" is an Enderchest that goes across Savegames? Neat, isn't it?
 [COMPAT] Better Storage has some things been done to, but not much. I could not assign Material Data to its Chests and Stuff due to them using NBT instead of MetaData...
