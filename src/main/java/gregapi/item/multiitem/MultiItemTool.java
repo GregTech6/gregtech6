@@ -360,7 +360,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
 			if (aNBT != null) {
-				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 64, ST.make(aStack.getItem(), 1, getEmptyMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)), ST.make(aStack.getItem(), 1, getChargedMetaData(aStack)));
+				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 64, ST.make(this, 1, getEmptyMetaData(aStack)), ST.make(this, 1, getChargedMetaData(aStack)), ST.make(this, 1, getChargedMetaData(aStack)));
 			}
 		}
 		return null;
@@ -615,8 +615,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	public short getEmptyMetaData(ItemStack aStack) {
-		NBTTagCompound aNBT = aStack.getTagCompound();
-		if (aNBT != null) aNBT.removeTag("ench");
 		return (short)(ST.meta_(aStack)+1-(ST.meta_(aStack) % 2));
 	}
 	
