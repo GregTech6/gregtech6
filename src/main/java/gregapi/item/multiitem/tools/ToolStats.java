@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -215,6 +215,10 @@ public abstract class ToolStats implements IToolStats {
 	}
 	
 	@Override
+	public int[] getEnchantmentLevels(ItemStack aStack, OreDictMaterial aMaterial) {
+		return getEnchantmentLevels(aStack);
+	}
+	@Deprecated
 	public int[] getEnchantmentLevels(ItemStack aStack) {
 		return ZL_INTEGER;
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -110,7 +110,7 @@ public interface IToolStats {
 	public String getBreakingSound();
 	
 	public Enchantment[] getEnchantments(ItemStack aStack, OreDictMaterial aMaterial);
-	public int[] getEnchantmentLevels(ItemStack aStack);
+	public int[] getEnchantmentLevels(ItemStack aStack, OreDictMaterial aMaterial);
 	
 	/**
 	 * @return If this Tool can instant collect Items.

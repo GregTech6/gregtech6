@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -528,36 +527,83 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public boolean isItemStackUsable(ItemStack aStack) {
-		if (aStack == null || aStack.stackSize <= 0) return F;
-		IToolStats tStats = getToolStatsInternal(aStack);
-		if (ST.meta_(aStack) % 2 == 1 || tStats == null || !super.isItemStackUsable(aStack)) {
-			NBTTagCompound aNBT = aStack.getTagCompound();
-			if (aNBT != null) aNBT.removeTag("ench");
+		if (ST.invalid(aStack) || aStack.stackSize <= 0) return F;
+		
+		if (getEnergyStats(aStack) != null) DEB.println("TEST: 0 Tool is Electric");
+		
+		NBTTagCompound aNBT = aStack.getTagCompound();
+		if (aNBT == null) return T;
+		
+		if (getEnergyStats(aStack) != null) DEB.println("TEST: 1 Tool has NBT");
+		
+		short aMeta = ST.meta_(aStack);
+		if (aMeta % 2 == 1) {
+			aNBT.removeTag("ench");
 			return F;
 		}
+
+		if (getEnergyStats(aStack) != null) DEB.println("TEST: 2 Tool is charged");
+		
+		IToolStats tStats = getToolStatsInternal(aMeta);
+		if (tStats == null || getToolDamage(aStack) > getToolMaxDamage(aStack) || !super.isItemStackUsable(aStack)) {
+			aNBT.removeTag("ench");
+			return F;
+		}
+		
+		if (getEnergyStats(aStack) != null) DEB.println("TEST: 3 Tool is valid");
+		
+		if (aNBT.hasKey("ench")) return T;
+		
+		if (getEnergyStats(aStack) != null) DEB.println("TEST: 4 Tool was not already enchanted");
+		
 		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
-		HashMap<Integer, Integer> tMap = new HashMap<>(), tResult = new HashMap<>();
+		
+		List<ObjectStack<Enchantment>> tEnchantments = new ArrayListNoNulls<>();
+		
 		for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools) {
-			tMap.put(tEnchantment.mObject.effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.fortune   ) tMap.put(Enchantment.looting.effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.knockback ) tMap.put(Enchantment.punch  .effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.fireAspect) tMap.put(Enchantment.flame  .effectId, tEnchantment.amountInt());
+			tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
+			if (tEnchantment.mObject == Enchantment.fortune   ) tEnchantments.add(new ObjectStack<>(Enchantment.looting, tEnchantment.mAmount));
+			if (tEnchantment.mObject == Enchantment.knockback ) tEnchantments.add(new ObjectStack<>(Enchantment.punch  , tEnchantment.mAmount));
+			if (tEnchantment.mObject == Enchantment.fireAspect) tEnchantments.add(new ObjectStack<>(Enchantment.flame  , tEnchantment.mAmount));
 		}
+		
 		Enchantment[] tEnchants = tStats.getEnchantments(aStack, aMaterial);
-		int[] tLevels = tStats.getEnchantmentLevels(aStack);
+		int[] tLevels = tStats.getEnchantmentLevels(aStack, aMaterial);
+		
 		for (int i = 0; i < tEnchants.length; i++) if (tLevels[i] > 0) {
-			Integer tLevel = tMap.get(tEnchants[i].effectId);
-			tMap.put(tEnchants[i].effectId, tLevel == null ? tLevels[i] : tLevel == tLevels[i] ? tLevel+1 : Math.max(tLevel, tLevels[i]));
+			boolean temp = T;
+			for (ObjectStack<Enchantment> tEnchantment : tEnchantments) if (tEnchantment.mObject == tEnchants[i]) {
+				if (tEnchantment.mAmount == tLevels[i]) {
+					tEnchantment.mAmount++;
+				} else if (tEnchantment.mAmount < tLevels[i]) {
+					tEnchantment.mAmount = tLevels[i];
+				}
+				temp = F;
+				break;
+			}
+			if (temp) tEnchantments.add(new ObjectStack<>(tEnchants[i], tLevels[i]));
 		}
-		for (Entry<Integer, Integer> tEntry : tMap.entrySet()) {
-			if (tEntry.getKey() == 33 || (tEntry.getKey() == 20 && tEntry.getValue() > 2) || tEntry.getKey() == Enchantment_Radioactivity.INSTANCE.effectId) tResult.put(tEntry.getKey(), tEntry.getValue()); else
-			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(Enchantment.enchantmentsList[tEntry.getKey()].getName())) {
-				if (tStats.isWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue());
-			} else switch(Enchantment.enchantmentsList[tEntry.getKey()].type) {
-			case all        :                              tResult.put(tEntry.getKey(), tEntry.getValue()); break;
-			case weapon     : if (tStats.isWeapon      ()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
-			case bow        : if (tStats.isRangedWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
-			case digger     : if (tStats.isMiningTool  ()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
+		
+		for (ObjectStack<Enchantment> tEnchantment : tEnchantments) {
+			if (tEnchantment.mObject == Enchantment.silkTouch || tEnchantment.mObject == Enchantment_Radioactivity.INSTANCE) {
+				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
+				continue;
+			}
+			if (tEnchantment.mObject == Enchantment.fireAspect) {
+				if (tEnchantment.mAmount > 2 || tStats.isWeapon())
+				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
+				continue;
+			}
+			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchantment.mObject.getName())) {
+				if (tStats.isWeapon())
+				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
+				continue;
+			}
+			switch(tEnchantment.mObject.type) {
+			case all        :                              aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
+			case weapon     : if (tStats.isWeapon      ()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
+			case bow        : if (tStats.isRangedWeapon()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
+			case digger     : if (tStats.isMiningTool  ()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
 			case armor      : break;
 			case armor_feet : break;
 			case armor_head : break;
@@ -567,8 +613,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			case fishing_rod: break;
 			}
 		}
-		EnchantmentHelper.setEnchantments(tResult, aStack);
-		return getToolDamage(aStack) <= getToolMaxDamage(aStack);
+		return T;
 	}
 	
 	public short getChargedMetaData(ItemStack aStack) {
