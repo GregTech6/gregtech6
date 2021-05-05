@@ -37,6 +37,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -98,35 +99,46 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		if (aStack.stackSize != 1) return F;
 		
-		if (aEntity instanceof EntitySheep) {
-			if (!((EntitySheep)aEntity).getSheared() && ((EntitySheep)aEntity).getFleeceColor() != (~mColor & 15)) {
+		boolean rUsed = F;
+		
+		if (aEntity instanceof EntitySheep && !((EntitySheep)aEntity).getSheared() ) {
+			if (((EntitySheep)aEntity).getFleeceColor() != (~mColor & 15)) {
 				((EntitySheep)aEntity).setFleeceColor(~mColor & 15);
 				if (aEntity.worldObj.isRemote) return T;
-				
-				NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
-				long tUses = tNBT.getLong("gt.remaining");
-				
-				if (ST.equal(aStack, mFull, T)) {
-					aStack.func_150996_a(mUsed.getItem());
-					ST.meta_(aStack, ST.meta_(mUsed));
-					tUses = mUses;
-				}
-				if (ST.equal(aStack, mUsed, T) && !UT.Entities.hasInfiniteItems(aPlayer)) tUses-=50;
-				
-				UT.NBT.set(aStack, UT.NBT.setPosNum(tNBT, "gt.remaining", tUses));
-				
-				if (tUses <= 0) {
-					if (mEmpty == null) {
-						aStack.stackSize--;
-					} else {
-						aStack.func_150996_a(mEmpty.getItem());
-						ST.meta_(aStack, ST.meta_(mEmpty));
-					}
-				}
-				
-				return T;
+				rUsed = T;
 			}
-			return F;
+		}
+		if (aEntity instanceof EntityWolf && ((EntityWolf)aEntity).isTamed()) {
+			if (((EntityWolf)aEntity).getCollarColor() != (~mColor & 15)) {
+				((EntityWolf)aEntity).setCollarColor(~mColor & 15);
+				if (aEntity.worldObj.isRemote) return T;
+				rUsed = T;
+			}
+		}
+		
+		if (rUsed) {
+			NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
+			long tUses = tNBT.getLong("gt.remaining");
+			
+			if (ST.equal(aStack, mFull, T)) {
+				aStack.func_150996_a(mUsed.getItem());
+				ST.meta_(aStack, ST.meta_(mUsed));
+				tUses = mUses;
+			}
+			if (ST.equal(aStack, mUsed, T) && !UT.Entities.hasInfiniteItems(aPlayer)) tUses-=50;
+			
+			UT.NBT.set(aStack, UT.NBT.setPosNum(tNBT, "gt.remaining", tUses));
+			
+			if (tUses <= 0) {
+				if (mEmpty == null) {
+					aStack.stackSize--;
+				} else {
+					aStack.func_150996_a(mEmpty.getItem());
+					ST.meta_(aStack, ST.meta_(mEmpty));
+				}
+			}
+			
+			return T;
 		}
 		return F;
 	}

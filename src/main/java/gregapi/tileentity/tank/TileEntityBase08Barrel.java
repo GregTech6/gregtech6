@@ -142,7 +142,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				aChatReturn.add((mMode & B[0]) == 0 ? "Won't fill vertically adjacent Tanks" : "Will fill vertically adjacent Tanks (depending on Gravity and State of Matter)");
-				aChatReturn.add(mTank.content());
+				aChatReturn.add(mTank.contentcap());
 				if (!mTank.isEmpty() && (mMode & B[1]) != 0) {
 					if (mMaxSealedTime > 0) {
 						aChatReturn.add("Sealed (" + mSealedTime + " / " + mMaxSealedTime + ")");

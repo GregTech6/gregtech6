@@ -40,13 +40,21 @@ import gregapi.code.ModData;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
 import gregapi.damage.DamageSources;
-import gregapi.data.*;
+import gregapi.data.ANY;
 import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PotionsGT;
+import gregapi.data.FL;
+import gregapi.data.IL;
+import gregapi.data.LH;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.RM;
 import gregapi.data.TC.TC_AspectStack;
+import gregapi.data.TD;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
@@ -2276,7 +2284,7 @@ public class UT {
 			if (!tNBT.hasKey("ench", 9)) tNBT.setTag("ench", new NBTTagList());
 			NBTTagList tList = tNBT.getTagList("ench", 10);
 			
-			boolean temp = CS.T;
+			boolean temp = T;
 			
 			for (int i = 0; i < tList.tagCount(); i++) {
 				tEnchantmentTag = tList.getCompoundTagAt(i);

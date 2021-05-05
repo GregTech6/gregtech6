@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -68,7 +68,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + "Max: " + mTank.capacity() + " L");
+		aList.add(Chat.CYAN     + mTank.contentcap());
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
 		if (onlySimple()) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ONLY_SIMPLE));
@@ -92,11 +92,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		if (mTank.isEmpty()) {
-			aChatReturn.add("Tank is empty");
-		} else {
-			aChatReturn.add(mTank.content());
-		}
+		aChatReturn.add(mTank.content("Tank is empty"));
 	}
 	
 	public boolean allowFluid(FluidStack aFluid) {

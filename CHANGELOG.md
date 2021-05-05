@@ -21,7 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Bedrock Ores can now overlap, so you can get a Bedrock Ore Spot with two or more different Bedrock Ores generating in it. However this is insanely rare, so do not try to go search for it! (I had to x10 the Bedrock Ore Probability in order to find just one of this in Superflat)
 [CHANGED] Bedrock Lava Springs in the Nether got nerfed to 500 times less Output (so still twice as good as Overworld Lava Springs). Only applies to newly generated ones though!
 [CHANGED] Fluid Pipes will now show all Fluids that are currently somewhere within all connected Pipes, when hit with a Magnifying Glass.
-[ADDED] Spray Cans can now be used to dye Sheep and Grass (if their Color is applicable). So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants, and it is easier to spawnproof your Lawn that way.
+[ADDED] Spray Cans can now be used to dye Sheep, Wolf Collars and Grass (if their Color is applicable). So you no longer need to Silk/Spade Harvest Grass to Bath/Craft it into one of the the 4 dyed Variants, and it is easier to spawnproof your Lawn that way.
 [ADDED]
 Blue Spruce
 Can be found in Mountainous Biomes.

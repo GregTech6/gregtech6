@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -137,7 +137,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			return GarbageGT.trash(mTank, 1000);
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) aChatReturn.add(mTank.content());
+			if (aChatReturn != null) aChatReturn.add(mTank.contentcap());
 			return 1;
 		}
 		return 0;
