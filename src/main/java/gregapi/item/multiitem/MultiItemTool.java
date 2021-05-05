@@ -63,6 +63,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
@@ -529,32 +530,25 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public boolean isItemStackUsable(ItemStack aStack) {
 		if (ST.invalid(aStack) || aStack.stackSize <= 0) return F;
 		
-		if (getEnergyStats(aStack) != null) DEB.println("TEST: 0 Tool is Electric");
-		
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT == null) return T;
 		
-		if (getEnergyStats(aStack) != null) DEB.println("TEST: 1 Tool has NBT");
-		
 		short aMeta = ST.meta_(aStack);
 		if (aMeta % 2 == 1) {
-			aNBT.removeTag("ench");
+		//  aNBT.removeTag("ench");
 			return F;
 		}
-
-		if (getEnergyStats(aStack) != null) DEB.println("TEST: 2 Tool is charged");
 		
 		IToolStats tStats = getToolStatsInternal(aMeta);
 		if (tStats == null || getToolDamage(aStack) > getToolMaxDamage(aStack) || !super.isItemStackUsable(aStack)) {
-			aNBT.removeTag("ench");
+		//  aNBT.removeTag("ench");
 			return F;
 		}
 		
-		if (getEnergyStats(aStack) != null) DEB.println("TEST: 3 Tool is valid");
-		
 		if (aNBT.hasKey("ench")) return T;
 		
-		if (getEnergyStats(aStack) != null) DEB.println("TEST: 4 Tool was not already enchanted");
+		// Abuse an Empty List as a boolean to see if a Tool already has enchants or not.
+		aNBT.setTag("ench", new NBTTagList());
 		
 		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
 		

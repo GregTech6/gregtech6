@@ -206,7 +206,7 @@ public abstract class ToolStats implements IToolStats {
 	
 	@Override
 	public ItemStack getBrokenItem(ItemStack aStack) {
-		return mMaterialAmount < U4 ? null : OP.scrapGt.mat(MultiItemTool.getPrimaryMaterial(aStack, MT.NULL), 1+RNGSUS.nextInt(1+(int)(4*mMaterialAmount/U)));
+		return mMaterialAmount < U4 ? null : OP.scrapGt.mat(MultiItemTool.getPrimaryMaterial(aStack), 1+RNGSUS.nextInt(1+(int)(4*mMaterialAmount/U)));
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -92,11 +92,11 @@ public class PacketItemStackChat implements IPacket {
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {
 		DISPLAY_TEMP_TOOLTIP = F;
 		List<String> tList = mStack.getTooltip(GT_API.api_proxy.getThePlayer(), F);
+		DISPLAY_TEMP_TOOLTIP = T;
 		if (tList != null && !tList.isEmpty()) {
 			UT.Entities.chat(GT_API.api_proxy.getThePlayer(), tList, F);
 		} else {
 			UT.Entities.chat(GT_API.api_proxy.getThePlayer(), mStack.func_151000_E());
 		}
-		DISPLAY_TEMP_TOOLTIP = T;
 	}
 }

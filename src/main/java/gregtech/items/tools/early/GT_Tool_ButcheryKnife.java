@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -89,8 +89,8 @@ public class GT_Tool_ButcheryKnife extends ToolStats {
 	}
 	
 	@Override
-	public int[] getEnchantmentLevels(ItemStack aStack) {
-		return new int[] {(2+MultiItemTool.getPrimaryMaterial(aStack, MT.NULL).mToolQuality) / 2};
+	public int[] getEnchantmentLevels(ItemStack aStack, OreDictMaterial aMaterial) {
+		return new int[] {aMaterial.mToolQuality / 2 + 1};
 	}
 	
 	@Override
