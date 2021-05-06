@@ -480,8 +480,8 @@ public class LH {
 		add(HAZARD_EXPLOSION_STEAM                      , "Explodes when Steam Pressure is too high!");
 		add(HAZARD_MELTDOWN                             , "Melts down when stored Heat is too much!");
 		add(HAZARD_CONTACT                              , "Causes Damage when touched while active!");
-		add(HAZARD_LEAKING_GAS                          , "Leaks when used with Gasses!");
-		add(TOOLTIP_GASPROOF                            , "Can handle Gasses");
+		add(HAZARD_LEAKING_GAS                          , "Leaks when used with Gases!");
+		add(TOOLTIP_GASPROOF                            , "Can handle Gases");
 		add(TOOLTIP_ACIDPROOF                           , "Can handle Acids");
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");

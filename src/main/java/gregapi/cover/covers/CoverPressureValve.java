@@ -68,7 +68,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Releases Fluids when Pipe is full.");
 		aList.add(LH.Chat.ORANGE + "Liquids require Tank in front!");
-		aList.add(LH.Chat.ORANGE + "Gasses require Air or Tank in front!");
+		aList.add(LH.Chat.ORANGE + "Gases require Air or Tank in front!");
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
 	}
 	

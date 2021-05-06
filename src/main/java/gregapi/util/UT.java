@@ -3109,7 +3109,7 @@ public class UT {
 			return Code.bindInt(rLevel);
 		}
 		
-		public static boolean isImmuneToBreathingGasses(EntityLivingBase aEntity) {
+		public static boolean isImmuneToBreathingGases(EntityLivingBase aEntity) {
 			return isWearingFullGasHazmat(aEntity);
 		}
 		

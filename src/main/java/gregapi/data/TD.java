@@ -532,7 +532,7 @@ public class TD {
 		public static final TagData
 		LIQUID                                                              = TagData.createTagData("ITEMGENERATOR.LIQUID"),
 		MOLTEN                                                              = TagData.createTagData("ITEMGENERATOR.MOLTEN"),
-		GASSES                                                              = TagData.createTagData("ITEMGENERATOR.GASSES"),
+		GASES                                                               = TagData.createTagData("ITEMGENERATOR.GASES"), GASSES = GASES,
 		VAPORS                                                              = TagData.createTagData("ITEMGENERATOR.VAPORS"),
 		PLASMA                                                              = TagData.createTagData("ITEMGENERATOR.PLASMA"),
 		

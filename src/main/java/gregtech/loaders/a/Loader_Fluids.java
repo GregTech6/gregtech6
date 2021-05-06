@@ -613,7 +613,7 @@ public class Loader_Fluids implements Runnable {
 		for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
 			if (tMaterial.contains(TD.ItemGenerator.LIQUID)) FL.createLiquid(tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.MOLTEN)) FL.createMolten(tMaterial);
-			if (tMaterial.contains(TD.ItemGenerator.GASSES)) FL.createGas   (tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.GASES )) FL.createGas   (tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.VAPORS)) FL.createVapour(tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.PLASMA)) FL.createPlasma(tMaterial);
 		}

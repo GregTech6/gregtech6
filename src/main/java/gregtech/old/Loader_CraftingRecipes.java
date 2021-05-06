@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -279,7 +279,7 @@ public class Loader_CraftingRecipes implements Runnable {
 		tStack = GT_Utility.getWrittenBook("Turbine Manual", "Gregorius Techneticies", new String[] {
 				  "This Book explains how to set up and run your advanced Gas or Steam Turbine. We are not responsible for any Damage done by this Book itself nor its content."
 				, "First you need to craft the following things for a normal Turbine to Function: The Main Turbine Block, 28 Machine Casings (Gas = Reinforced, Steam = Standard), a Dynamo Hatch, an Input Hatch, an Output Hatch, a Turbine Rotor, "
-				, "a bunch of different Tools, in case of the Gas Turbine (not needed for Steam Turbine) a Muffler Hatch, as every Machine, which burns things causes some unwanted Gasses and finally a Maintenance Hatch"
+				, "a bunch of different Tools, in case of the Gas Turbine (not needed for Steam Turbine) a Muffler Hatch, as every Machine, which burns things causes some unwanted Gases and finally a Maintenance Hatch"
 				, "To begin the building, lay out the first 3x4 layer of Machine Casings on the ground, then place the Turbine Block facing outward in the middle of one of the two 3m wide Sides. Now 3 of the Casings should look like Rotors."
 				, "Now grab your Dynamo Hatch and place it on the opposite 3m wide Side also facing outwards. And now the four corners of the Machine need also a Machine Casing. You should have a 2x3 inbetween the two 'Walls' you just created left by now."
 				, "So, now place a 3x4 of Machine Casings ontop, at the 3rd Layer. The Turbine should now look like connected. There are 4 Spots left, place the Input, Output, Muffler (or another Machine Casing) and the Maintenance Hatch in the Spots facing outwards."
