@@ -158,7 +158,7 @@ import thaumcraft.api.ThaumcraftApi;
 /**
  * @author Gregorius Techneticies
  * 
- * This loads before the compatible Mods, except Micdoodlecore. GT_API_Post loads after all compatible Mods.
+ * This loads before compatible Mods, except Micdoodlecore. GT_API_Post loads after all compatible Mods.
  */
 @Mod(modid=ModIDs.GAPI, name="Greg-API", version="GT6-MC1710", dependencies="required-before:"+ModIDs.GAPI_POST+"; after:"+ModIDs.MD8+"; before:"+ModIDs.IC2+"; before:"+ModIDs.IC2C+"; before:"+ModIDs.NC+"; before:"+ModIDs.IHL+"; before:"+ModIDs.FUNK+"; before:"+ModIDs.BAUBLES+"; before:"+ModIDs.HEE+"; before:"+ModIDs.GaSu+"; before:"+ModIDs.GaNe+"; before:"+ModIDs.GaEn+"; before:"+ModIDs.WdSt+"; before:"+ModIDs.CrGu+"; before:"+ModIDs.COFH_API+"; before:"+ModIDs.COFH_API_ENERGY+"; before:"+ModIDs.COFH_CORE+"; before:"+ModIDs.CC+"; before:"+ModIDs.OC+"; before:"+ModIDs.HEX+"; before:"+ModIDs.DE+"; before:"+ModIDs.AV+"; before:"+ModIDs.FR+"; before:"+ModIDs.FRMB+"; before:"+ModIDs.BINNIE+"; before:"+ModIDs.BINNIE_BEE+"; before:"+ModIDs.BINNIE_TREE+"; before:"+ModIDs.BINNIE_GENETICS+"; before:"+ModIDs.BINNIE_BOTANY+"; before:"+ModIDs.IE+"; before:"+ModIDs.UB+"; before:"+ModIDs.COG+"; before:"+ModIDs.PFAA+"; before:"+ModIDs.MIN+"; before:"+ModIDs.RH+"; before:"+ModIDs.CANDY+"; before:"+ModIDs.ABYSSAL+"; before:"+ModIDs.SOULFOREST+"; before:"+ModIDs.ARS+"; before:"+ModIDs.TC+"; before:"+ModIDs.TCFM+"; before:"+ModIDs.BOTA+"; before:"+ModIDs.ALF+"; before:"+ModIDs.WTCH+"; before:"+ModIDs.HOWL+"; before:"+ModIDs.MoCr+"; before:"+ModIDs.GoG+"; before:"+ModIDs.LycM+"; before:"+ModIDs.LycM_Arctic+"; before:"+ModIDs.LycM_Demon+"; before:"+ModIDs.LycM_Desert+"; before:"+ModIDs.LycM_Forest+"; before:"+ModIDs.LycM_Fresh+"; before:"+ModIDs.LycM_Inferno+"; before:"+ModIDs.LycM_Jungle+"; before:"+ModIDs.LycM_Mountain+"; before:"+ModIDs.LycM_Plains+"; before:"+ModIDs.LycM_Salt+"; before:"+ModIDs.LycM_Shadow+"; before:"+ModIDs.LycM_Swamp+"; before:"+ModIDs.RC+"; before:"+ModIDs.BP+"; before:"+ModIDs.PR+"; before:"+ModIDs.PR_EXPANSION+"; before:"+ModIDs.PR_INTEGRATION+"; before:"+ModIDs.PR_TRANSMISSION+"; before:"+ModIDs.PR_TRANSPORT+"; before:"+ModIDs.PR_EXPLORATION+"; before:"+ModIDs.PR_COMPATIBILITY+"; before:"+ModIDs.PR_FABRICATION+"; before:"+ModIDs.PR_ILLUMINATION+"; before:"+ModIDs.PE+"; before:"+ModIDs.AE+"; before:"+ModIDs.MO+"; before:"+ModIDs.TE_FOUNDATION+"; before:"+ModIDs.TE_DYNAMICS+"; before:"+ModIDs.TE+"; before:"+ModIDs.ZTONES+"; before:"+ModIDs.CHSL+"; before:"+ModIDs.NePl+"; before:"+ModIDs.NeLi+"; before:"+ModIDs.EtFu+"; before:"+ModIDs.BB+"; before:"+ModIDs.DYNAMIC_TREES+"; before:"+ModIDs.BbLC+"; before:"+ModIDs.CARP+"; before:"+ModIDs.BETTER_RECORDS+"; before:"+ModIDs.TF+"; before:"+ModIDs.ERE+"; before:"+ModIDs.MFR+"; before:"+ModIDs.PnC+"; before:"+ModIDs.ExU+"; before:"+ModIDs.ExS+"; before:"+ModIDs.EIO+"; before:"+ModIDs.RT+"; before:"+ModIDs.AA+"; before:"+ModIDs.TreeCap+"; before:"+ModIDs.HaC+"; before:"+ModIDs.CookBook+"; before:"+ModIDs.APC+"; before:"+ModIDs.ENVM+"; before:"+ModIDs.MaCr+"; before:"+ModIDs.BC_TRANSPORT+"; before:"+ModIDs.BC_SILICON+"; before:"+ModIDs.BC_FACTORY+"; before:"+ModIDs.BC_ENERGY+"; before:"+ModIDs.BC_ROBOTICS+"; before:"+ModIDs.BC+"; before:"+ModIDs.BC_BUILDERS+"; before:"+ModIDs.MgC+"; before:"+ModIDs.BR+"; before:"+ModIDs.HBM+"; before:"+ModIDs.ELN+"; before:"+ModIDs.DRGN+"; before:"+ModIDs.ElC+"; before:"+ModIDs.CrC+"; before:"+ModIDs.ReC+"; before:"+ModIDs.RoC+"; before:"+ModIDs.Mek+"; before:"+ModIDs.Mek_Tools+"; before:"+ModIDs.Mek_Generators+"; before:"+ModIDs.GC+"; before:"+ModIDs.GC_PLANETS+"; before:"+ModIDs.GC_GALAXYSPACE+"; before:"+ModIDs.VULPES+"; before:"+ModIDs.GC_ADV_ROCKETRY+"; before:"+ModIDs.BTL+"; before:"+ModIDs.AETHER+"; before:"+ModIDs.TROPIC+"; before:"+ModIDs.ATUM+"; before:"+ModIDs.EB+"; before:"+ModIDs.EBXL+"; before:"+ModIDs.BoP+"; before:"+ModIDs.HiL+"; before:"+ModIDs.ATG+"; before:"+ModIDs.RTG+"; before:"+ModIDs.RWG+"; before:"+ModIDs.CW2+"; before:"+ModIDs.A97_MINING+"; before:"+ModIDs.MYST+"; before:"+ModIDs.WARPBOOK+"; before:"+ModIDs.LOSTBOOKS+"; before:"+ModIDs.LOOTBAGS+"; before:"+ModIDs.EUREKA+"; before:"+ModIDs.ENCHIRIDION+"; before:"+ModIDs.ENCHIRIDION2+"; before:"+ModIDs.SmAc+"; before:"+ModIDs.HQM+"; before:"+ModIDs.SD+"; before:"+ModIDs.BTRS+"; before:"+ModIDs.JABBA+"; before:"+ModIDs.MaCu+"; before:"+ModIDs.PdC+"; before:"+ModIDs.Bamboo+"; before:"+ModIDs.PMP+"; before:"+ModIDs.Fossil+"; before:"+ModIDs.GrC+"; before:"+ModIDs.GrC_Apples+"; before:"+ModIDs.GrC_Bamboo+"; before:"+ModIDs.GrC_Bees+"; before:"+ModIDs.GrC_Cellar+"; before:"+ModIDs.GrC_Fish+"; before:"+ModIDs.GrC_Grapes+"; before:"+ModIDs.GrC_Hops+"; before:"+ModIDs.GrC_Milk+"; before:"+ModIDs.GrC_Rice+"; before:"+ModIDs.BG2+"; before:"+ModIDs.BWM+"; before:"+ModIDs.OMT+"; before:"+ModIDs.TG+"; before:"+ModIDs.FM+"; before:"+ModIDs.FZ+"; before:"+ModIDs.MNTL+"; before:"+ModIDs.OB+"; before:"+ModIDs.PA+"; before:"+ModIDs.TiC+"; before:"+ModIDs.MF2+"; before:"+ModIDs.WR_CBE_C+"; before:"+ModIDs.WR_CBE_A+"; before:"+ModIDs.WR_CBE_L+"; before:"+ModIDs.VOLTZ+"; before:"+ModIDs.MFFS+"; before:"+ModIDs.ICBM+"; before:"+ModIDs.ATSCI+"; before:inventorytweaks; before:ironbackpacks; before:journeymap; before:LogisticsPipes; before:LunatriusCore; before:NEIAddons; before:NEIAddons|Developer; before:NEIAddons|AppEng; before:NEIAddons|Botany; before:NEIAddons|Forestry; before:NEIAddons|CraftingTables; before:NEIAddons|ExNihilo; before:neiintegration; before:openglasses; before:simplyjetpacks; before:Stackie; before:StevesCarts; before:TiCTooltips; before:worldedit; before:McMultipart; before:OpenPeripheralCore; before:OpenPeripheralIntegration; before:OpenPeripheral; ")
 public class GT_API extends Abstract_Mod {
@@ -189,7 +189,7 @@ public class GT_API extends Abstract_Mod {
 		Textures.BlockIcons.VOID.toString();
 		Textures.ItemIcons .VOID.toString();
 		ErrorRenderer.INSTANCE.toString();
-		// Guess what, I got a Crash from that one not being loaded...
+		// Guess what, I once got a random Crash from that one not being classloaded...
 		UT.Entities.class.toString();
 		
 		try {
@@ -256,7 +256,7 @@ public class GT_API extends Abstract_Mod {
 			Material.tnt.setAdventureModeExempt();
 		} catch(Throwable e) {
 			UT.Reflection.callMethod(Material.tnt, new String[] {"func_85158_p", "setAdventureModeExempt"}, T, F, F);
-			e.printStackTrace(DEB);
+			e.printStackTrace(ERR);
 		}
 		
 		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
@@ -319,7 +319,7 @@ public class GT_API extends Abstract_Mod {
 	@Mod.EventHandler public void onServerStopped   (FMLServerStoppedEvent      aEvent) {onModServerStopped(aEvent);}
 	
 	@Override
-	@SuppressWarnings("resource")
+	@SuppressWarnings({ "resource", "deprecation" })
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
 		File
 		tFile = new File(DirectoriesGT.CONFIG_GT, "IDs.cfg");
@@ -340,7 +340,7 @@ public class GT_API extends Abstract_Mod {
 		Configuration tStackConfig = new Configuration(tFile);
 		
 		tFile = new File(DirectoriesGT.LOGS, "gregtech.log");
-		if (!tFile.exists()) try {tFile.createNewFile();} catch(Throwable e) {/*Do nothing*/}
+		if (!tFile.exists()) try {tFile.createNewFile();} catch(Throwable e) {/**/}
 		
 		List<String>
 		tList = ((LogBuffer)OUT).mBufferedLog;
@@ -363,37 +363,29 @@ public class GT_API extends Abstract_Mod {
 		}
 		
 		tFile = new File(DirectoriesGT.CONFIG_GT, "materiallist.log");
-		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
+		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/**/}}
 		try {
 			MAT_LOG = new PrintStream(tFile);
 			MAT_LOG.println("**********************************************************************");
 			MAT_LOG.println("* This is the complete List of usable GregTech Materials             *");
 			MAT_LOG.println("**********************************************************************");
-		} catch (Throwable e) {/*Do nothing*/}
+		} catch (Throwable e) {/**/}
 		
 		tFile = new File(DirectoriesGT.LOGS, "oredict.log");
-		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
+		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/**/}}
 		try {
 			tList = ((LogBuffer)ORD).mBufferedLog;
 			ORD = new PrintStream(tFile);
 			ORD.println("**********************************************************************");
-			ORD.println("* This is the complete Log of the GregTech OreDictionary Handler     *");/*
-			ORD.println("* Everything in the OreDict goes through it sometimes causing Errors *");
-			ORD.println("* These Errors are getting logged aswell as properly registered Ores *");
-			ORD.println("* If you see something fishy going on in this Log, such as improper  *");
-			ORD.println("* Items being registered, then mention it to the corresponding Mod   *");
-			ORD.println("* In case it mentions GregTech itself improperly registering Stuff   *");
-			ORD.println("* then please contact me about that immediatly                       *");
-			ORD.println("*                                                                    *");
-			ORD.println("* In case of something being 'ignored properly', that one isnt a Bug *");*/
+			ORD.println("* This is the complete Log of the GregTech OreDictionary Handler     *");
 			ORD.println("**********************************************************************");
 			for (String tString : tList) ORD.println(tString);
-		} catch (Throwable e) {/*Do nothing*/}
+		} catch (Throwable e) {/**/}
 		
 		if (ConfigsGT.GREGTECH.get("general", "LoggingPlayerActivity", !CODE_CLIENT)) {
 			tFile = new File(DirectoriesGT.LOGS, "playeractivity_"+(System.currentTimeMillis()/60000)+".log");
-			if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
-			try {mPlayerLogger = new LoggerPlayerActivity(new PrintStream(tFile));} catch (Throwable e) {/*Do nothing*/}
+			if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/**/}}
+			try {mPlayerLogger = new LoggerPlayerActivity(new PrintStream(tFile));} catch (Throwable e) {/**/}
 		}
 		
 		ConfigsGT.CLIENT = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");

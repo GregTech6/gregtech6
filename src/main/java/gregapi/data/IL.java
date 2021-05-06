@@ -552,7 +552,7 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public Item item() {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return null;
 		return mStack.getItem();
 	}
@@ -584,7 +584,7 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public ItemStack get(long aAmount, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.amount(aAmount, OM.get_(mStack));
 	}
@@ -592,28 +592,28 @@ public enum IL implements IItemContainer {
 	@Override
 	@SuppressWarnings("deprecation")
 	public ItemStack getWildcard(long aAmount, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, W, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack wild(long aAmount, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, W, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getUndamaged(long aAmount, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, 0, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getAlmostBroken(long aAmount, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, mStack.getMaxDamage()-1, OM.get_(mStack));
 	}
@@ -645,21 +645,21 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public ItemStack getWithMeta(long aAmount, long aMetaValue, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, aMetaValue, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getWithDamage(long aAmount, long aMetaValue, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, aMetaValue, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getWithNBT(long aAmount, NBTTagCompound aNBT, Object... aReplacements) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		ItemStack rStack = ST.amount(aAmount, OM.get_(mStack));
 		UT.NBT.set(rStack, aNBT);
@@ -668,14 +668,14 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public IItemContainer registerOre(Object... aOreNames) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		for (Object tOreName : aOreNames) OM.reg(tOreName, get(1));
 		return this;
 	}
 	
 	@Override
 	public IItemContainer registerWildcardAsOre(Object... aOreNames) {
-		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
+		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) ERR.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		for (Object tOreName : aOreNames) OM.reg(tOreName, wild(1));
 		return this;
 	}

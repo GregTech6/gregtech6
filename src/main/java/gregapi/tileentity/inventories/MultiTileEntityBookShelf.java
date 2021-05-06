@@ -147,12 +147,12 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	@Override
 	public float getEnchantPowerBonus() {
-		int tPoints = 0;
+		float tPoints = 0;
 		for (int i = 0; i < 28; i++) if (slotHas(i)) {
 			if (BooksGT.BOOKS_ENCHANTED.contains(slot(i), T)) {tPoints += 2; continue;}
 			if (BooksGT.BOOKS_NORMAL   .contains(slot(i), T)) {tPoints += 1; continue;}
 		}
-		return (mMaterial.contains(TD.Properties.MAGICAL) ? 1 : 0) + tPoints/12;
+		return (mMaterial.contains(TD.Properties.MAGICAL) ? 1 : 0) + tPoints/12.0F;
 	}
 	
 	@Override

@@ -214,8 +214,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					Block tBlock = aFluid.getBlock();
 					aFluid.setIcons((tBlock != null && tBlock != NB ? tBlock : Blocks.water).getIcon(0, 0));
 				} catch(Throwable e) {
-					e.printStackTrace(DEB);
-					try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(DEB);}
+					e.printStackTrace(ERR);
+					try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(ERR);}
 				}
 			}
 		}

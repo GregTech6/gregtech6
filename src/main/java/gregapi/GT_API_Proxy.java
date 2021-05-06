@@ -203,7 +203,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		SERVER_TIME = 0;
 		
 		if (mSaveLocation == null) {
-			OUT.println("WARNING: World Specific Save Files could not be loaded!");
+			ERR.println("WARNING: World Specific Save Files could not be loaded!");
 		} else {
 			new File(mSaveLocation, "gregtech").mkdirs();
 			
@@ -216,7 +216,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
 		if (mSaveLocation == null) {
-			OUT.println("WARNING: World Specific Save Files could not be saved!");
+			ERR.println("WARNING: World Specific Save Files could not be saved!");
 		} else {
 			new File(mSaveLocation, "gregtech").mkdirs();
 			

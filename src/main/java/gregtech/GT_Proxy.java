@@ -166,7 +166,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
 			tScanner.close();
 			for (String tLine : rList) if (tLine.contains("a href")) {
-				OUT.println("GT_DL_Thread: Your Internet Connection has Issues, you should probably go check that your ISP or Network don't do stupid Stuff.");
+				ERR.println("GT_DL_Thread: Your Internet Connection has Issues, you should probably go check that your ISP or Network don't do stupid Stuff.");
 				return new ArrayListNoNulls<>();
 			}
 			return rList;

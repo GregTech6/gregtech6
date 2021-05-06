@@ -1767,15 +1767,14 @@ public class CS {
 	/** Configs */
 	public static class ConfigsGT {
 		public static Config
-		CLIENT = null,
-		SPECIAL = null,
-		RECIPES = null,
-		GREGTECH = null,
-		MACHINES = null,
-		WORLDGEN = null,
-		MATERIAL = null,
-		OVERPOWERED = null,
-		OREPROCESSING = null;
+		CLIENT,
+		RECIPES,
+		GREGTECH,
+		WORLDGEN,
+		MATERIAL,
+		OREPROCESSING;
+		
+		@Deprecated public static Config SPECIAL, MACHINES, OVERPOWERED;
 	}
 
 	/** Class Containing MOD ID Strings used in GT, since they are very common Parameters. */

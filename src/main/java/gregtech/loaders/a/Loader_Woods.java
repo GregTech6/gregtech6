@@ -70,13 +70,10 @@ public class Loader_Woods implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2          = new BlockTreePlanks2         ("gt.block.planks2"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Planks2FireProof = new BlockTreePlanks2FireProof("gt.block.planks2.fireproof"));
 		
-		BlocksGT.Saplings_AB = new BlockTreeSaplingAB("gt.block.sapling");
+		BlocksGT.Saplings_AB = new BlockTreeSaplingAB("gt.block.sapling"); BlocksGT.Sapling = BlocksGT.Saplings_AB;
 		BlocksGT.Saplings_CD = new BlockTreeSaplingCD("gt.block.sapling.cd");
-		BlocksGT.Leaves_AB   = new BlockTreeLeavesAB ("gt.block.leaves", BlocksGT.Saplings_AB);
+		BlocksGT.Leaves_AB   = new BlockTreeLeavesAB ("gt.block.leaves", BlocksGT.Saplings_AB); BlocksGT.Leaves  = BlocksGT.Leaves_AB;
 		BlocksGT.Leaves_CD   = new BlockTreeLeavesCD ("gt.block.leaves.cd", BlocksGT.Saplings_CD);
-		
-		BlocksGT.Sapling = BlocksGT.Saplings_AB;
-		BlocksGT.Leaves  = BlocksGT.Leaves_AB;
 		
 		IL.Plank_Stairs       .set(ST.make(Blocks.oak_stairs, 1, 0));
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
@@ -115,21 +112,21 @@ public class Loader_Woods implements Runnable {
 		}
 		
 		// Those typically get overridden, but in case of a fuck up it is at least worth some Wood.
-		OM.data(ST.make(BlocksGT.Log1           , 1, W), ANY.Wood, U*4);
-		OM.data(ST.make(BlocksGT.Log1FireProof  , 1, W), ANY.Wood, U*4);
-		OM.data(ST.make(BlocksGT.Beam1          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.Beam1FireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.Beam2          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.Beam2FireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.Beam3          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.Beam3FireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamA          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamAFireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamB          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamBFireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamC          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamCFireProof , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamD          , 1, W), ANY.Wood, U*8);
-		OM.data(ST.make(BlocksGT.BeamDFireProof , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Log1          , 1, W), ANY.Wood, U*4);
+		OM.data(ST.make(BlocksGT.Log1FireProof , 1, W), ANY.Wood, U*4);
+		OM.data(ST.make(BlocksGT.Beam1         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Beam1FireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Beam2         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Beam2FireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Beam3         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.Beam3FireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamA         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamAFireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamB         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamBFireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamC         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamCFireProof, 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamD         , 1, W), ANY.Wood, U*8);
+		OM.data(ST.make(BlocksGT.BeamDFireProof, 1, W), ANY.Wood, U*8);
 	}
 }

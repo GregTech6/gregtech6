@@ -688,7 +688,6 @@ public class UT {
 				if (aPages[i].length() < 256) tNBTList.appendTag(new NBTTagString(aPages[i])); else if (aLogging) ERR.println("WARNING: String for Page of written Book too long! ->\n" + aPages[i]);
 			}
 			rNBT.setTag("pages", tNBTList);
-			if (aLogging) DEB.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");
 			NBT.set(rStack, rNBT);
 			BOOK_MAP.put(aMapping, ST.copy(rStack));
 			if (!BOOK_LIST.contains(aMapping)) BOOK_LIST.add(aMapping);
@@ -2407,7 +2406,7 @@ public class UT {
 				rField = aClass.getDeclaredField(aField);
 				rField.setAccessible(T);
 				rField.set(aObject, aValue);
-			} catch (Throwable e) {if (aLogErrors) e.printStackTrace(DEB);}
+			} catch (Throwable e) {if (aLogErrors) e.printStackTrace(ERR);}
 			return rField;
 		}
 		
