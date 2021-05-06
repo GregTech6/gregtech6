@@ -2899,12 +2899,8 @@ public class MT {
 			Midasium                        .addOreByProducts(Au                        );
 			Mithril                         .addOreByProducts(Pt                        );
 			
-			/* TODO ?
-			FryingOilHot            .setHeatDamage(1.0);
-			Lava                    .setHeatDamage(3.0);
-			Firestone               .setHeatDamage(5.0);
-			Pyrotheum               .setHeatDamage(5.0);
-			*/
+			
+			
 			
 //          Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(OREMATS.Chalcopyrite          , 8*U), OM.stack(C                  , 1*U)));
 			Fe                      .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(Fe2O3                         , 5*U), OM.stack(C                  , 1*U), OM.stack(CaCO3, 1*U)));

@@ -526,7 +526,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						
 						boolean tBreak = F, tFireProof = F;
 						
-						// TODO make a case for Armor too whenever I decide to ever add Armor.
+						// TODO make a case for Armor too whenever I decide to even add Armor.
 						if (rStack.getItem() instanceof MultiItemTool) {
 							if (MultiItemTool.getPrimaryMaterial  (aStack).contains(TD.Properties.UNBURNABLE)) tFireProof = T;
 							if (MultiItemTool.getSecondaryMaterial(aStack).contains(TD.Properties.UNBURNABLE)) tFireProof = T;

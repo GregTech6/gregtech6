@@ -42,6 +42,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.monster.EntityMagmaCube;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -160,12 +162,27 @@ public class CoverDrain extends AbstractCoverAttachment {
 				} catch(Throwable e) {e.printStackTrace(ERR);}
 				return T;
 			}
-			if (SERVER_TIME % 20 == 5 && aEntity instanceof IAnimals && !(aEntity instanceof EntityGolem) && FL.Sewage.exists()) {
+			if (SERVER_TIME % 20 == 5 && aEntity instanceof IAnimals && !(aEntity instanceof EntityGolem || aEntity instanceof EntitySlime) && FL.Sewage.exists()) {
 				if (!(aEntity instanceof EntityAgeable) || !((EntityAgeable)aEntity).isChild()) {
 					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Sewage.make(Math.max(1, (long)(20 * aEntity.width * aEntity.width * aEntity.height))), T);
 				}
 			}
-			// TODO Slime Liquid from Slimes? Do Slimes even count as Walking on those Drains?
+			if (aEntity instanceof EntitySlime) {
+				// TODO Slime Liquid from Slimes? Do Slimes even count as Walking on those Drains?
+				if (aEntity.getClass() == EntitySlime.class) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Green.make(((EntitySlime)aEntity).getSlimeSize()), T);
+				}
+				if (aEntity.getClass() == EntityMagmaCube.class) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Blaze.make(((EntitySlime)aEntity).getSlimeSize()), T);
+				}
+				String tClass = UT.Reflection.getLowercaseClass(aEntity);
+				if (tClass.equalsIgnoreCase("EntityTFMazeSlime")) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Green.make(((EntitySlime)aEntity).getSlimeSize()), T);
+				}
+				if (tClass.equalsIgnoreCase("EntityPinkSlime")) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Pink.make(1), T);
+				}
+			}
 			return T;
 		}
 		return F;
