@@ -101,6 +101,10 @@ public enum OD {
 	, plankWood
 	, stickAnyWood
 	, stickWood
+	, pressurePlateWood
+	, pressurePlateStone
+	, pressurePlateIron
+	, pressurePlateGold
 	, paperMap
 	, paperEmpty
 	, paperWritten

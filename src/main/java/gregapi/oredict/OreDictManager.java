@@ -105,7 +105,7 @@ public final class OreDictManager {
 	, "snowLayer", "ice", "cloud"
 	, "antiBlock", "transdimBlock"
 	, "carpet", "pendant"
-	, "tyrian", "redstoneCrystal", "arcaneAsh", "camoPaste", "burntQuartz", "KangarooPaw", "redstoneRoot", "pigment", "diamondShard", "eternalLifeEssence", "honeyDrop", "grubBee", "salmonRaw", "stringFluxed", "aquaRegia", "sludge", "lexicaBotania", "resourceTaint", "chainLink", "sulfuricAcid", "scribingTools", "bacon", "redalloyBundled", "bluestoneInsulated", "infusedteslatiteInsulated", "bluestoneBundled", "redalloyInsulated", "infusedteslatiteBundled", "universalCable", "laserReceptor", "laserEmitter", "laserFocus", "laserMirror", "mobEgg"
+	, "tyrian", "arcaneAsh", "camoPaste", "burntQuartz", "KangarooPaw", "redstoneRoot", "pigment", "diamondShard", "eternalLifeEssence", "honeyDrop", "grubBee", "salmonRaw", "stringFluxed", "aquaRegia", "sludge", "lexicaBotania", "resourceTaint", "chainLink", "sulfuricAcid", "scribingTools", "bacon", "redalloyBundled", "bluestoneInsulated", "infusedteslatiteInsulated", "bluestoneBundled", "redalloyInsulated", "infusedteslatiteBundled", "universalCable", "laserReceptor", "laserEmitter", "laserFocus", "laserMirror", "mobEgg"
 //  , "torchRedstoneActive"
 	, "awesomeiteHammer", "awesomeCore"
 	, "bPlaceholder", "bVial", "bRedString", "bEnderAirBottle", "bFlask", "brDeviceCyaniteProcessor", "prbackpack"
