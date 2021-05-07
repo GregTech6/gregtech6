@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,11 +40,11 @@ public abstract class BlockBaseMeta extends BlockBaseSealable {
 	
 	public BlockBaseMeta(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType);
-		mMaxMeta = (byte)(UT.Code.bind4(aMaxMeta-1)+1);
+		mMaxMeta = (byte)UT.Code.bind(1, 16, aMaxMeta);
 		mIcons = aIcons;
 	}
 	
 	@Override public byte maxMeta() {return mMaxMeta;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[aMeta % mIcons.length].getIcon(0);}
-	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {for (int i = 0; i < mMaxMeta; i++) aList.add(ST.make(aItem, 1, i));}
+	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {for (int i = 0; i < maxMeta(); i++) aList.add(ST.make(aItem, 1, i));}
 }

@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.12: (Not released yet, released whenever it needs to be)
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
+[ADDED] GT6 Logs can now be crafted into their All-Bark Variant, when placed in the bottom right corner of the Crafting Grid. For Non-GT6 Logs you will still have to use the Soft Hammer after placing the Log though.
 
 
 6.14.11:

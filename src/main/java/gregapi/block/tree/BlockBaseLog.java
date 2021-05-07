@@ -21,6 +21,8 @@ package gregapi.block.tree;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
 import gregapi.util.CR;
@@ -28,7 +30,9 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -65,4 +69,5 @@ public abstract class BlockBaseLog extends BlockBaseTree {
 	@Override public int onBlockPlaced(World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ, int aMeta) {return PILLAR_DATA_SIDE[aMeta][aSide];}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[2*(aMeta&PILLAR_DATA)+(PILLAR_TO_AXIS[aMeta][aSide]?0:1)].getIcon(0);}
 	@Override public boolean isWood(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
+	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {for (int i = 0; i < maxMeta(); i++) {aList.add(ST.make(aItem, 1, i)); aList.add(ST.make(aItem, 1, i|12));}}
 }
