@@ -1564,6 +1564,12 @@ public class CS {
 		, stoneToSmallOres  = new ItemStackMap<>()
 		;
 		
+		/** Mappings for changing Drops of Blocks. */
+		public static ItemStackMap<ItemStackContainer, ItemStack>
+		  blockToDrop = new ItemStackMap<>()
+		, blockToSilk = new ItemStackMap<>()
+		;
+		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
 		public static final Set<Object> instaharvest     = new HashSetNoNulls<Object>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);

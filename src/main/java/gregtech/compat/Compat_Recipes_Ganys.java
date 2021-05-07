@@ -26,6 +26,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -278,6 +279,9 @@ public class Compat_Recipes_Ganys extends CompatMods {
 					RM.Laminator.addRecipe2(T, 16, 24, OP.foil .mat(tMat, 3), IL.EtFu_Stair_Copper_Cut_Oxidized .get(1), IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1));
 				}
 			}
+			
+			BlocksGT.blockToDrop.put(IL.EtFu_Ancient_Debris     , IL.Ancient_Debris          .get(1));
+			BlocksGT.blockToSilk.put(IL.EtFu_Ancient_Debris     , IL.Ancient_Debris          .get(1));
 			
 			CR.delate(IL.EtFu_Granite.get(1));
 			CR.delate(IL.EtFu_Diorite.get(1));

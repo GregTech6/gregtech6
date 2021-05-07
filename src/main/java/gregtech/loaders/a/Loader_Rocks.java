@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -135,12 +135,12 @@ public class Loader_Rocks implements Runnable {
 		}
 		
 		if (MD.CHSL.mLoaded) {
-		CR.shapeless(IL.CHSL_Granite            .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 0)});
-		CR.shapeless(IL.CHSL_Diorite            .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 0)});
-		CR.shapeless(IL.CHSL_Andesite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 0)});
-		CR.shapeless(IL.CHSL_Granite_Smooth     .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 7)});
-		CR.shapeless(IL.CHSL_Diorite_Smooth     .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 7)});
-		CR.shapeless(IL.CHSL_Andesite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 7)});
+		CR.shapeless(IL.CHSL_Granite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 0)});
+		CR.shapeless(IL.CHSL_Diorite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 0)});
+		CR.shapeless(IL.CHSL_Andesite          .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 0)});
+		CR.shapeless(IL.CHSL_Granite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 7)});
+		CR.shapeless(IL.CHSL_Diorite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 7)});
+		CR.shapeless(IL.CHSL_Andesite_Smooth   .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 7)});
 		CR.shapeless(ST.make(BlocksGT.stones[5], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Granite           .get(1)});
 		CR.shapeless(ST.make(BlocksGT.stones[6], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Diorite           .get(1)});
 		CR.shapeless(ST.make(BlocksGT.stones[7], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Andesite          .get(1)});
@@ -232,5 +232,67 @@ public class Loader_Rocks implements Runnable {
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 0].add(IL.BOTA_Prismarine        .get(1));
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 3].add(IL.BOTA_Prismarine_Bricks .get(1));
 		((BlockStones)BlocksGT.stones[14]).mEqualBlocks[11].add(IL.BOTA_Prismarine_Dark   .get(1));
+
+		BlocksGT.blockToDrop.put(IL.CHSL_Granite            , ST.make(BlocksGT.Granite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.EtFu_Granite            , ST.make(BlocksGT.Granite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.GaSu_Granite            , ST.make(BlocksGT.Granite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.BOTA_Granite            , ST.make(BlocksGT.Granite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.CHSL_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.EtFu_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.GaSu_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Granite_Bricks     , ST.make(BlocksGT.Granite , 1, 3));
+		BlocksGT.blockToDrop.put(IL.BOTA_Granite_Chiseled   , ST.make(BlocksGT.Granite , 1, 6));
+		BlocksGT.blockToDrop.put(IL.CHSL_Diorite            , ST.make(BlocksGT.Diorite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.EtFu_Diorite            , ST.make(BlocksGT.Diorite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.GaSu_Diorite            , ST.make(BlocksGT.Diorite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.BOTA_Diorite            , ST.make(BlocksGT.Diorite , 1, 1));
+		BlocksGT.blockToDrop.put(IL.CHSL_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.EtFu_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.GaSu_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Diorite_Bricks     , ST.make(BlocksGT.Diorite , 1, 3));
+		BlocksGT.blockToDrop.put(IL.BOTA_Diorite_Chiseled   , ST.make(BlocksGT.Diorite , 1, 6));
+		BlocksGT.blockToDrop.put(IL.CHSL_Andesite           , ST.make(BlocksGT.Andesite, 1, 1));
+		BlocksGT.blockToDrop.put(IL.EtFu_Andesite           , ST.make(BlocksGT.Andesite, 1, 1));
+		BlocksGT.blockToDrop.put(IL.GaSu_Andesite           , ST.make(BlocksGT.Andesite, 1, 1));
+		BlocksGT.blockToDrop.put(IL.BOTA_Andesite           , ST.make(BlocksGT.Andesite, 1, 1));
+		BlocksGT.blockToDrop.put(IL.CHSL_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToDrop.put(IL.EtFu_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToDrop.put(IL.GaSu_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToDrop.put(IL.BOTA_Andesite_Bricks    , ST.make(BlocksGT.Andesite, 1, 3));
+		BlocksGT.blockToDrop.put(IL.BOTA_Andesite_Chiseled  , ST.make(BlocksGT.Andesite, 1, 6));
+		
+		BlocksGT.blockToSilk.put(IL.CHSL_Granite            , ST.make(BlocksGT.Granite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.EtFu_Granite            , ST.make(BlocksGT.Granite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.GaSu_Granite            , ST.make(BlocksGT.Granite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.BOTA_Granite            , ST.make(BlocksGT.Granite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.CHSL_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.EtFu_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.GaSu_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Granite_Smooth     , ST.make(BlocksGT.Granite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Granite_Bricks     , ST.make(BlocksGT.Granite , 1, 3));
+		BlocksGT.blockToSilk.put(IL.BOTA_Granite_Chiseled   , ST.make(BlocksGT.Granite , 1, 6));
+		BlocksGT.blockToSilk.put(IL.CHSL_Diorite            , ST.make(BlocksGT.Diorite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.EtFu_Diorite            , ST.make(BlocksGT.Diorite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.GaSu_Diorite            , ST.make(BlocksGT.Diorite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.BOTA_Diorite            , ST.make(BlocksGT.Diorite , 1, 0));
+		BlocksGT.blockToSilk.put(IL.CHSL_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.EtFu_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.GaSu_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Diorite_Smooth     , ST.make(BlocksGT.Diorite , 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Diorite_Bricks     , ST.make(BlocksGT.Diorite , 1, 3));
+		BlocksGT.blockToSilk.put(IL.BOTA_Diorite_Chiseled   , ST.make(BlocksGT.Diorite , 1, 6));
+		BlocksGT.blockToSilk.put(IL.CHSL_Andesite           , ST.make(BlocksGT.Andesite, 1, 0));
+		BlocksGT.blockToSilk.put(IL.EtFu_Andesite           , ST.make(BlocksGT.Andesite, 1, 0));
+		BlocksGT.blockToSilk.put(IL.GaSu_Andesite           , ST.make(BlocksGT.Andesite, 1, 0));
+		BlocksGT.blockToSilk.put(IL.BOTA_Andesite           , ST.make(BlocksGT.Andesite, 1, 0));
+		BlocksGT.blockToSilk.put(IL.CHSL_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToSilk.put(IL.EtFu_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToSilk.put(IL.GaSu_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Andesite_Smooth    , ST.make(BlocksGT.Andesite, 1, 7));
+		BlocksGT.blockToSilk.put(IL.BOTA_Andesite_Bricks    , ST.make(BlocksGT.Andesite, 1, 3));
+		BlocksGT.blockToSilk.put(IL.BOTA_Andesite_Chiseled  , ST.make(BlocksGT.Andesite, 1, 6));
 	}
 }
