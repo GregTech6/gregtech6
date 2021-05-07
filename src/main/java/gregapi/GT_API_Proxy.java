@@ -1098,31 +1098,34 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (aEvent.harvester != null) {
 			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.block, F, F);
-			ItemStack aStack = aEvent.harvester.getCurrentEquippedItem();
-			if (aStack != null) {
-				boolean tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aStack) >= 3), tCanCollect = (aStack.getItem() instanceof MultiItemTool && ((MultiItemTool)aStack.getItem()).canCollectDropsDirectly(aStack, aEvent.block, (byte)aEvent.blockMetadata));
-				if (aStack.getItem() instanceof MultiItemTool) {
-					((MultiItemTool)aStack.getItem()).onHarvestBlockEvent(aEvent.drops, aStack, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
-				}
+			ItemStack aTool = aEvent.harvester.getCurrentEquippedItem();
+			if (aTool != null) {
+				boolean
+				tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aTool) >= 3),
+				tCanCollect = (aTool.getItem() instanceof MultiItemTool && ((MultiItemTool)aTool.getItem()).canCollectDropsDirectly(aTool, aEvent.block, (byte)aEvent.blockMetadata));
 				
-				if (tFireAspect) {
-				//  if (aEvent.world.isRemote) for (int i = 0; i < 4; i++) {
-				//      double tX = RNGSUS.nextGaussian()/50, tY = RNGSUS.nextGaussian()/50, tZ = RNGSUS.nextGaussian()/50;
-				//      aEvent.world.spawnParticle("flame", aEvent.x+0.5+tX*20, aEvent.y+0.5+tY*20, aEvent.z+0.5+tZ*20,-tX,-tY,-tZ);
-				//  }
-					for (ItemStack tDrop : aEvent.drops) {
-						ItemStack tSmeltingOutput = RM.get_smelting(tDrop, F, null);
-						if (tSmeltingOutput != null) {
-							tDrop.stackSize *= tSmeltingOutput.stackSize;
-							ST.set(tDrop, tSmeltingOutput, F, T);
-						}
-					}
+				if (aTool.getItem() instanceof MultiItemTool) {
+					((MultiItemTool)aTool.getItem()).onHarvestBlockEvent(aEvent.drops, aTool, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
 				
 				for (ItemStack tDrop : aEvent.drops) {
 					OM.set(tDrop);
-					ItemStack tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
-					if (ST.valid(tTarget)) ST.set(tDrop, tTarget, F, F);
+					
+					ItemStack
+					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
+					if (ST.invalid(tTarget)) continue;
+					OM.set(ST.set(tDrop, tTarget, F, F));
+					
+					if (!tFireAspect) continue;
+					
+					tTarget = RM.get_smelting(tDrop, F, null);
+					if (ST.invalid(tTarget)) continue;
+					tDrop.stackSize *= tTarget.stackSize;
+					OM.set(ST.set(tDrop, tTarget, F, T));
+					
+					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
+					if (ST.invalid(tTarget)) continue;
+					OM.set(ST.set(tDrop, tTarget, F, F));
 				}
 				
 				if (tCanCollect && !aEvent.drops.isEmpty()) {
