@@ -719,7 +719,11 @@ public class CS {
 	  {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
 	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
 	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
+	// Pillar Blocks that are fully covered in "Bark" (if they were Logs)
+	, {12,12,12,12,12,12,12}
+	, {13,13,13,13,13,13,13}
+	, {14,14,14,14,14,14,14}
+	, {15,15,15,15,15,15,15}
 	};
 	/** Pillar Axis Stuff for more understandable references. */
 	public static final boolean[][] PILLAR_TO_AXIS = {
@@ -729,6 +733,7 @@ public class CS {
 		SIDES_NONE  , SIDES_NONE  , SIDES_NONE  , SIDES_NONE  ,
 	};
 	
+	/** Used for Networking Covers, for the most Part. */
 	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
 	
 	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */

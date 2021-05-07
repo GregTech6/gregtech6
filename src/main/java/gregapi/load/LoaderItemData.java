@@ -573,6 +573,11 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.pressurePlateWood                 , ST.make(MD.NeLi, "pressurePlateCrimson", 1, W));
 		OM.reg(OD.pressurePlateWood                 , ST.make(MD.NeLi, "pressurePlateWarped", 1, W));
 		OM.reg(OD.pressurePlateWood                 , ST.make(MD.NeLi, "pressurePlateFoxfire", 1, W));
+		OM.reg(OD.pressurePlateWood                 , ST.make(MD.EtFu, "pressure_plate_spruce", 1, W));
+		OM.reg(OD.pressurePlateWood                 , ST.make(MD.EtFu, "pressure_plate_birch", 1, W));
+		OM.reg(OD.pressurePlateWood                 , ST.make(MD.EtFu, "pressure_plate_jungle", 1, W));
+		OM.reg(OD.pressurePlateWood                 , ST.make(MD.EtFu, "pressure_plate_dark_oak", 1, W));
+		OM.reg(OD.pressurePlateWood                 , ST.make(MD.EtFu, "pressure_plate_acacia", 1, W));
 		OM.reg(OD.pressurePlateStone                , ST.make(MD.NeLi, "pressurePlateBlackstone", 1, W));
 		OM.reg(OD.lever                             , ST.make(Blocks.lever, 1, W));
 		OM.reg(OD.craftingRedstoneTorch             , ST.make(Blocks.redstone_torch, 1, W));

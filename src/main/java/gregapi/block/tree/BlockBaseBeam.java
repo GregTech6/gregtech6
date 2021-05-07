@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,7 +45,7 @@ public abstract class BlockBaseBeam extends BlockBaseMeta {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OD.beamWood);
 	}
-
+	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_axe;}
 	@Override public int damageDropped(int aMeta) {return aMeta & PILLAR_DATA;}
 	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ) & PILLAR_DATA;}

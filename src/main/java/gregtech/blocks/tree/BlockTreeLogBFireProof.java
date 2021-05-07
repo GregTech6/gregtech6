@@ -30,6 +30,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -50,37 +51,37 @@ public class BlockTreeLogBFireProof extends BlockBaseLog implements IBlockToolab
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Log (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".8.name", "Hazel Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 0), "logWood");
-		OM.reg(ST.make(this, 1, 4), "logWood");
-		OM.reg(ST.make(this, 1, 8), "logWood");
-		OM.reg(ST.make(this, 1,12), "logWood");
+		OM.reg(ST.make(this, 1, 0), OD.logWood);
+		OM.reg(ST.make(this, 1, 4), OD.logWood);
+		OM.reg(ST.make(this, 1, 8), OD.logWood);
+		OM.reg(ST.make(this, 1,12), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".1.name", "Cinnamon Log (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Log (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 1), "logWood");
-		OM.reg(ST.make(this, 1, 5), "logWood");
-		OM.reg(ST.make(this, 1, 9), "logWood");
-		OM.reg(ST.make(this, 1,13), "logWood");
+		OM.reg(ST.make(this, 1, 1), OD.logWood);
+		OM.reg(ST.make(this, 1, 5), OD.logWood);
+		OM.reg(ST.make(this, 1, 9), OD.logWood);
+		OM.reg(ST.make(this, 1,13), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Log (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".10.name", "Coconut Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".14.name", "Coconut Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 2), "logWood");
-		OM.reg(ST.make(this, 1, 6), "logWood");
-		OM.reg(ST.make(this, 1,10), "logWood");
-		OM.reg(ST.make(this, 1,14), "logWood");
+		OM.reg(ST.make(this, 1, 2), OD.logWood);
+		OM.reg(ST.make(this, 1, 6), OD.logWood);
+		OM.reg(ST.make(this, 1,10), OD.logWood);
+		OM.reg(ST.make(this, 1,14), OD.logWood);
 		
 		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Log (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".11.name", "Rainbowood Log (Fireproof)");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 3), "logWood");
-		OM.reg(ST.make(this, 1, 7), "logWood");
-		OM.reg(ST.make(this, 1,11), "logWood");
-		OM.reg(ST.make(this, 1,15), "logWood");
+		OM.reg(ST.make(this, 1, 3), OD.logWood);
+		OM.reg(ST.make(this, 1, 7), OD.logWood);
+		OM.reg(ST.make(this, 1,11), OD.logWood);
+		OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
 	@Override public int getLeavesRangeSide(byte aMetaData) {return 0;}

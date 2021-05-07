@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,8 @@ import static gregapi.data.CS.*;
 
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
+import gregapi.util.CR;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
@@ -40,6 +42,12 @@ import net.minecraftforge.common.util.ForgeDirection;
 public abstract class BlockBaseLog extends BlockBaseTree {
 	public BlockBaseLog(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
+		
+		// To make All-Bark Logs.
+		for (byte tMeta = 0; tMeta < maxMeta(); tMeta++) {
+			CR.shaped(ST.make(this, 1, tMeta|12), CR.DEF_NCC, "  ", " L", 'L', ST.make(this, 1, tMeta   ));
+			CR.shaped(ST.make(this, 1, tMeta   ), CR.DEF_NCC, "  ", " L", 'L', ST.make(this, 1, tMeta|12));
+		}
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_axe;}
