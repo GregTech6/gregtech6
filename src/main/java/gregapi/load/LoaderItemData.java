@@ -558,6 +558,16 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingWorkBench                 , ST.make(Blocks.crafting_table, 1, W));
 		OM.reg(OD.craftingWorkBench                 , ST.make(MD.BC_FACTORY, "autoWorkbenchBlock", 1, 0));
 		OM.reg(OD.buttonWood                        , ST.make(Blocks.wooden_button, 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.TFC, "ButtonWood", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.TFCP, "ButtonWood", 1, W)); // This Item Name is speculation!
+		OM.reg(OD.buttonWood                        , ST.make(MD.NeLi, "crimsonButton", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.NeLi, "warpedButton", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.NeLi, "foxfireButton", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_spruce", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_birch", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_jungle", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_dark_oak", 1, W));
+		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_acacia", 1, W));
 		OM.reg(OD.buttonStone                       , ST.make(Blocks.stone_button, 1, W));
 		OM.reg(OD.buttonStone                       , ST.make(MD.NeLi, "blackstoneButton", 1, W));
 		OM.reg(OD.pressurePlateWood                 , ST.make(MD.NeLi, "pressurePlateCrimson", 1, W));
