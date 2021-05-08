@@ -740,7 +740,6 @@ public class GT_API extends Abstract_Mod {
 		RM.Canner.addRecipe1(T, 16, 16, ST.make(Items.potionitem, 1, 0), ST.make(Items.glass_bottle, 1, 0));
 		
 		try {
-			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
 			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
 			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
 			ModContainer tGregTech = null;

@@ -301,17 +301,25 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		}
 		
 		
+		// Charcoal Brick-ification
+		CR.shaped(ST.make(Items.coal, 1, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Charcoal));
+		CR.shaped(OP.ingot.mat(MT.Charcoal, 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 1));
+		RM.generify(OP.ingot.mat(MT.Charcoal, 1), ST.make(Items.coal, 1, 1));
+		RM.generify(ST.make(Items.coal, 1, 1), OP.ingot.mat(MT.Charcoal, 1));
+		
 		// Coal Brick-ification
 		CR.shaped(ST.make(Items.coal, 1, 0), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Coal));
 		CR.shaped(OP.ingot.mat(MT.Coal, 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 0));
 		RM.generify(OP.ingot.mat(MT.Coal, 1), ST.make(Items.coal, 1, 0));
 		RM.generify(ST.make(Items.coal, 1, 0), OP.ingot.mat(MT.Coal, 1));
 		
-		// Charcoal Brick-ification
-		CR.shaped(ST.make(Items.coal, 1, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.Charcoal));
-		CR.shaped(OP.ingot.mat(MT.Charcoal, 1), DEF, "  ", " X", 'X', ST.make(Items.coal, 1, 1));
-		RM.generify(OP.ingot.mat(MT.Charcoal, 1), ST.make(Items.coal, 1, 1));
-		RM.generify(ST.make(Items.coal, 1, 1), OP.ingot.mat(MT.Charcoal, 1));
+		// Other Coal Brick-ification
+		for (OreDictMaterial tCoal : new OreDictMaterial[] {MT.CoalCoke, MT.Lignite, MT.LigniteCoke, MT.PetCoke, MT.Anthracite, MT.Prismane, MT.Lonsdaleite}) {
+			CR.shaped(OP.gem.mat(tCoal, 1), DEF, "  ", " X", 'X', OP.ingot.dat(tCoal));
+			CR.shaped(OP.ingot.mat(tCoal, 1), DEF, "  ", " X", 'X', OP.gem.dat(tCoal));
+			RM.generify(OP.ingot.mat(tCoal, 1), OP.gem.mat(tCoal, 1));
+			RM.generify(OP.gem.mat(tCoal, 1), OP.ingot.mat(tCoal, 1));
+		}
 		
 		// Netherite Interchange.
 		CR.shaped(OP.gem  .mat(MT.NetherizedDiamond, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.NetherizedDiamond));

@@ -90,7 +90,6 @@ public class GT_API_Post extends Abstract_Mod {
 	@Override
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
 		try {
-			OUT.println(getModNameForLog() + ": Sorting Greg-API-Post to the end of the Mod List for further processing.");
 			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
 			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
 			ModContainer tGregTech = null;
