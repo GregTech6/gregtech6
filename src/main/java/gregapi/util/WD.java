@@ -487,7 +487,9 @@ public class WD {
 			for (int j = (aOnlyTopArea ? 0 : -7); j <= 7; ++j) for (int i = -7; i <= 7; ++i) for (int k = -7; k <= 7; ++k) {
 				Block tBlock = aWorld.getBlock(aX+i, aY+j, aZ+k);
 				if (tBlock != NB) {
-					if (IL.NeLi_Wart_Block_Crimson.equal(tBlock) || IL.NeLi_ShroomLight.equal(tBlock)) {
+					if (tBlock == Blocks.brown_mushroom_block || tBlock == Blocks.red_mushroom_block) {
+						if (aTreeCapitator && j == 0 && Math.abs(i) <= 5 && Math.abs(k) <= 5) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
+					} else if (IL.NeLi_Wart_Block_Crimson.equal(tBlock) || IL.NeLi_ShroomLight.equal(tBlock)) {
 						if (aTreeCapitator && Math.abs(i) <= 4 && Math.abs(k) <= 4) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
 					} else {
 						if (tBlock.isLeaves(aWorld, aX+i, aY+j, aZ+k)) aWorld.scheduleBlockUpdate(aX+i, aY+j, aZ+k, tBlock, 1+RNGSUS.nextInt(100));
