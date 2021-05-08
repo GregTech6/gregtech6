@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregapi.item.multiitem.behaviors;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.OD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.ST;
@@ -29,7 +30,6 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -48,10 +48,7 @@ public class Behavior_Place_Workbench extends AbstractBehaviorDefault {
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
 			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
-			if (ST.invalid(tStack)) continue;
-			Block tBlock = ST.block(tStack);
-			// Right now only supports vanilla Workbenches.
-			if (tBlock != Blocks.crafting_table) continue;
+			if (!OD.craftingWorkBench.is(tStack)) continue;
 			
 			int tOldSize = tStack.stackSize;
 			if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {

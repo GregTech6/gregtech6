@@ -136,6 +136,11 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 						}
 					}
 				}
+			} else {
+				// Something burning in front of it? Lets ignite!
+				if (rng(200) == 0 && WD.burning(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
+					mBurning = T;
+				}
 			}
 			if (mEnergy <     0) mEnergy = 0;
 			if (mEnergy < mRate) mBurning = F;
