@@ -488,7 +488,7 @@ public class WD {
 				Block tBlock = aWorld.getBlock(aX+i, aY+j, aZ+k);
 				if (tBlock != NB) {
 					if (tBlock == Blocks.brown_mushroom_block || tBlock == Blocks.red_mushroom_block) {
-						if (aTreeCapitator && Math.abs(i) <= 4 && Math.abs(k) <= 4 && j >= 0 && j <= 2) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
+						if (aTreeCapitator && Math.abs(i) <= 4 && Math.abs(k) <= 4 && j <= 0 && j >= -2) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
 					} else if (IL.NeLi_Wart_Block_Crimson.equal(tBlock) || IL.NeLi_ShroomLight.equal(tBlock)) {
 						if (aTreeCapitator && Math.abs(i) <= 4 && Math.abs(k) <= 4) aWorld.func_147480_a(aX+i, aY+j, aZ+k, T);
 					} else {
