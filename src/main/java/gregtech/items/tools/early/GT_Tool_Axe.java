@@ -125,7 +125,7 @@ public class GT_Tool_Axe extends ToolStats {
 	public float getMiningSpeed(Block aBlock, byte aMeta, float aDefault, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
 		if (aBlock instanceof BlockBaseBeam) return 2 * aDefault;
 		if (aBlock.getClass().getName().startsWith("com.ferreusveritas.dynamictrees")) return aDefault;
-		if (aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMeta)) || WoodDictionary.WOODS.containsKey(aBlock, aMeta, T)) {
+		if (aBlock == Blocks.brown_mushroom_block || aBlock == Blocks.red_mushroom_block || aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMeta)) || WoodDictionary.WOODS.containsKey(aBlock, aMeta, T)) {
 			float rAmount = 1.0F, tIncrement = 1.0F;
 			if (!aPlayer.isSneaking() && !MD.TreeCap.mLoaded) for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH; tY++) if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock) {tIncrement+=0.1F; rAmount+=tIncrement;} else break;
 			return 2 * aDefault / rAmount;
