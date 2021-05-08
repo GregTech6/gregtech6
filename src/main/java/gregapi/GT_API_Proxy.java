@@ -106,6 +106,7 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.GT6WorldGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHugeMushroom;
 import net.minecraft.block.BlockJukebox.TileEntityJukebox;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
@@ -1305,7 +1306,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (ST.invalid(aFuel) || FL.getFluid(aFuel, T) != null) return 0;
 		Block aBlock = ST.block(aFuel);
 		if (aBlock instanceof BlockRailBase) return 0;
-		if (aBlock == Blocks.red_mushroom_block || aBlock == Blocks.brown_mushroom_block) return (3 * TICKS_PER_SMELT) / 2;
+		if (aBlock instanceof BlockHugeMushroom) return (3 * TICKS_PER_SMELT) / 2;
 		if (aBlock == BlocksGT.BalesGrass) return (9 * TICKS_PER_SMELT) / ((ST.meta_(aFuel) & 3) == 1 ? 2 : 4);
 		if (aBlock instanceof BlockBaseBale) return (9 * TICKS_PER_SMELT) / 4;
 		if (aBlock instanceof BlockBasePlanks) return (3 * TICKS_PER_SMELT) / 2;
@@ -1317,7 +1318,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (tFuelValue != null) rFuelValue = Math.max(rFuelValue, tFuelValue);
 		} else {
 			if (OD.logWood.is_(aFuel)) return TICKS_PER_SMELT * 6;
-			if (IL.IC2_Resin.equal(aFuel, F, T)) return TICKS_PER_SMELT / 2;
+			if (OD.itemResin.is_(aFuel)) return TICKS_PER_SMELT / 2;
 		}
 		NBTTagCompound tNBT = aFuel.getTagCompound();
 		if (tNBT != null) {

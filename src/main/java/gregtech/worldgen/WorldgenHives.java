@@ -120,7 +120,7 @@ public class WorldgenHives extends WorldgenObject {
 				Block tContact = aWorld.getBlock(tX, tY, tZ);
 				if (tContact.getMaterial().isLiquid()) return rResult;
 				if (tContact instanceof BlockStones && WD.meta(aWorld, tX, tY, tZ) != 0) return rResult;
-				if (!tContact.isOpaqueCube() || tContact.isLeaves(aWorld, tX, tY, tZ) || tContact.isWood(aWorld, tX, tY, tZ) || tContact.getMaterial() == Material.ice) continue;
+				if (!tContact.isOpaqueCube() || tContact.isLeaves(aWorld, tX, tY, tZ) || tContact.isWood(aWorld, tX, tY, tZ) || tContact.getMaterial() == Material.ice || tContact.getMaterial() == Material.wood || tContact.getMaterial() == Material.leaves) continue;
 				
 				for (byte tSide : ALL_SIDES_HORIZONTAL_DOWN) {
 					Block tBlock = aWorld.getBlock(tX+OFFSETS_X[tSide], tY-1+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide]);
@@ -159,8 +159,8 @@ public class WorldgenHives extends WorldgenObject {
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0xffdd99          ,     0, aRandom) || rResult;
 					if (tContact == Blocks.dirt || tContact.getMaterial() == Material.ground)
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Brown     ,     0, aRandom) || rResult;
-					
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Gray      ,     0, aRandom) || rResult;
+					// Lets make the magical Bumbles the Default if all else fails, so technically they are obtainable, even though I literally just made sure they can't spawn under the big Mushrooms. XD
+					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
 				}
 				return rResult;
 			}
