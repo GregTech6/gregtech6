@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregapi.item.multiitem.behaviors;
 
 import static gregapi.data.CS.*;
 
+import cofh.core.util.fluid.BucketHandler;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.item.multiitem.MultiItem;
@@ -30,6 +31,8 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
+import net.minecraft.block.BlockDispenser;
+import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityMooshroom;
@@ -37,6 +40,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -52,15 +56,17 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
+	public ItemStack onDispense(MultiItem aItem, IBlockSource aSource, ItemStack aStack) {
+		if (aStack.stackSize > 1) return super.onDispense(aItem, aSource, aStack);
 		FluidStack mFluid = FL.getFluid(aStack, T);
-		MovingObjectPosition tTarget = WD.getMOP(aWorld, aPlayer, mFluid == null);
-		if (tTarget == null || tTarget.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) return aStack;
-		int tX = tTarget.blockX, tY = tTarget.blockY, tZ = tTarget.blockZ;
 		ItemStack tBucket = ST.make(Items.bucket, 1, 0);
 		
+		EnumFacing aFacing = BlockDispenser.func_149937_b(aSource.getBlockMetadata());
+		World aWorld = aSource.getWorld();
+		int aX = aSource.getXInt() + aFacing.getFrontOffsetX(), aY = aSource.getYInt() + aFacing.getFrontOffsetY(), aZ = aSource.getZInt() + aFacing.getFrontOffsetZ();
+		
 		if (mFluid == null) {
-			Block tFluidBlock = aWorld.getBlock(tX, tY, tZ);
+			Block tFluidBlock = aWorld.getBlock(aX, aY, aZ);
 			if (tFluidBlock == BlocksGT.River) {
 				tBucket = FL.fill(FL.Water.make(1000), aStack, F, T, F, T);
 				return tBucket == null ? aStack : tBucket;
@@ -74,10 +80,55 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 				return tBucket == null ? aStack : tBucket;
 			}
 			if (tFluidBlock == Blocks.lava || tFluidBlock == Blocks.flowing_lava || tFluidBlock == Blocks.water || tFluidBlock == Blocks.flowing_water) {
-				if (aWorld.getBlockMetadata(tX, tY, tZ) == 0) tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
+				if (aWorld.getBlockMetadata(aX, aY, aZ) == 0) tBucket = BucketHandler.fillBucket(aWorld, aX, aY, aZ);
 			} else
 			if (tFluidBlock instanceof IFluidBlock) {
-				FluidStack tFluid = ((IFluidBlock)tFluidBlock).drain(aWorld, tX, tY, tZ, F);
+				FluidStack tFluid = ((IFluidBlock)tFluidBlock).drain(aWorld, aX, aY, aZ, F);
+				if (tFluid != null) {
+					if (FL.fill(tFluid, aStack, F, T, F, T) != null) tBucket = BucketHandler.fillBucket(aWorld, aX, aY, aZ);
+					if (FL.milk(tFluid) && tFluid.amount >= 1000) tBucket = ST.make(Items.milk_bucket, 1, 0);
+				}
+			}
+		} else {
+			if (ST.valid(mDefaultFullBucket)) {
+				tBucket = ST.copy(mDefaultFullBucket);
+			} else {
+				if ((tBucket = FL.fill(mFluid, tBucket, F, T, F, T)) == null) return super.onDispense(aItem, aSource, aStack);
+			}
+			if (!aWorld.isAirBlock(aX, aY, aZ) && aWorld.getBlock(aX, aY, aZ).getMaterial().isSolid()) return aStack;
+			BucketHandler.emptyBucket(aSource.getWorld(), aX, aY, aZ, tBucket);
+		}
+		
+		return processBucket(tBucket, aStack, mFluid != null);
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
+		FluidStack mFluid = FL.getFluid(aStack, T);
+		MovingObjectPosition aTarget = WD.getMOP(aWorld, aPlayer, mFluid == null);
+		if (aTarget == null || aTarget.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) return aStack;
+		int aX = aTarget.blockX, aY = aTarget.blockY, aZ = aTarget.blockZ;
+		ItemStack tBucket = ST.make(Items.bucket, 1, 0);
+		
+		if (mFluid == null) {
+			Block tFluidBlock = aWorld.getBlock(aX, aY, aZ);
+			if (tFluidBlock == BlocksGT.River) {
+				tBucket = FL.fill(FL.Water.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : tBucket;
+			}
+			if (tFluidBlock == BlocksGT.Ocean) {
+				tBucket = FL.fill(FL.Ocean.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : tBucket;
+			}
+			if (tFluidBlock == BlocksGT.Swamp) {
+				tBucket = FL.fill(FL.Dirty_Water.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : tBucket;
+			}
+			if (tFluidBlock == Blocks.lava || tFluidBlock == Blocks.flowing_lava || tFluidBlock == Blocks.water || tFluidBlock == Blocks.flowing_water) {
+				if (aWorld.getBlockMetadata(aX, aY, aZ) == 0) tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
+			} else
+			if (tFluidBlock instanceof IFluidBlock) {
+				FluidStack tFluid = ((IFluidBlock)tFluidBlock).drain(aWorld, aX, aY, aZ, F);
 				if (tFluid != null) {
 					if (FL.fill(tFluid, aStack, F, T, F, T) != null) tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
 					if (FL.milk(tFluid) && tFluid.amount >= 1000) tBucket = ST.make(Items.milk_bucket, 1, 0);
