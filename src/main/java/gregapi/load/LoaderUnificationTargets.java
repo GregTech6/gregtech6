@@ -19,8 +19,6 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -429,7 +427,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Netherrack             , ST.make(MD.FZ, "nether_powder"  , 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DarkIron               , ST.make(MD.FZ, "dark_iron_ingot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gemFlawed      , MT.Diamond                , ST.make(MD.FZ, "diamond_shard"  , 1, 0));
-		if (OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Diamond                , ST.make(MD.TRANSLOCATOR, "diamondNugget", 1, 0))) DEB.println("Was Registered!"); else DEB.println("Was NOT Registered!"); 
 		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , ST.make(MD.RT, "ingredient", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.SpectreIron            , ST.make(MD.RT, "ingredient", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , ST.make(MD.RT, "ingredient", 1, 3));

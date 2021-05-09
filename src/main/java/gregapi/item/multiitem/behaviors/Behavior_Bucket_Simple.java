@@ -21,7 +21,6 @@ package gregapi.item.multiitem.behaviors;
 
 import static gregapi.data.CS.*;
 
-import cofh.core.util.fluid.BucketHandler;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.item.multiitem.MultiItem;
@@ -39,6 +38,7 @@ import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
@@ -81,27 +81,38 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 				tBucket = FL.fill(FL.Dirty_Water.make(1000), aStack, F, T, F, T);
 				return tBucket == null ? aStack : tBucket;
 			}
-			if (tFluidBlock == Blocks.lava || tFluidBlock == Blocks.flowing_lava || tFluidBlock == Blocks.water || tFluidBlock == Blocks.flowing_water) {
-				if (aWorld.getBlockMetadata(aX, aY, aZ) == 0) tBucket = BucketHandler.fillBucket(aWorld, aX, aY, aZ);
-			} else
+			if (tFluidBlock == Blocks.lava || tFluidBlock == Blocks.flowing_lava) {
+				if (aWorld.getBlockMetadata(aX, aY, aZ) != 0) return super.onDispense(aItem, aSource, aStack);
+				tBucket = FL.fill(FL.Lava.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : aWorld.setBlockToAir(aX, aY, aZ) ? tBucket : aStack;
+			}
+			if (tFluidBlock == Blocks.water || tFluidBlock == Blocks.flowing_water) {
+				if (aWorld.getBlockMetadata(aX, aY, aZ) != 0) return super.onDispense(aItem, aSource, aStack);
+				tBucket = FL.fill(FL.Water.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : aWorld.setBlockToAir(aX, aY, aZ) ? tBucket : aStack;
+			}
 			if (tFluidBlock instanceof IFluidBlock) {
 				FluidStack tFluid = ((IFluidBlock)tFluidBlock).drain(aWorld, aX, aY, aZ, F);
 				if (tFluid != null) {
-					if (FL.fill(tFluid, aStack, F, T, F, T) != null) tBucket = BucketHandler.fillBucket(aWorld, aX, aY, aZ);
-					if (FL.milk(tFluid) && tFluid.amount >= 1000) tBucket = ST.make(Items.milk_bucket, 1, 0);
+					tBucket = FL.fill(tFluid, aStack, F, T, F, T);
+					if (ST.valid(tBucket)) {
+						((IFluidBlock)tFluidBlock).drain(aWorld, aX, aY, aZ, T);
+						return tBucket == null ? aStack : tBucket;
+					}
+					return super.onDispense(aItem, aSource, aStack);
 				}
 			}
 		} else {
 			if (ST.valid(mDefaultFullBucket)) {
 				tBucket = ST.copy(mDefaultFullBucket);
 			} else {
-				if ((tBucket = FL.fill(mFluid, tBucket, F, T, F, T)) == null) return super.onDispense(aItem, aSource, aStack);
+				if (ST.invalid(tBucket = FL.fill(mFluid, tBucket, F, T, F, T))) return super.onDispense(aItem, aSource, aStack);
 			}
-			if (!aWorld.isAirBlock(aX, aY, aZ) && aWorld.getBlock(aX, aY, aZ).getMaterial().isSolid()) return aStack;
-			BucketHandler.emptyBucket(aSource.getWorld(), aX, aY, aZ, tBucket);
+			if (ST.item_(tBucket) instanceof ItemBucket && ((ItemBucket)ST.item_(tBucket)).tryPlaceContainedLiquid(aWorld, aX, aY, aZ)) {
+				return processBucket(ST.make(Items.bucket, 1, 0), aStack, T);
+			}
 		}
-		
-		return processBucket(tBucket, aStack, mFluid != null);
+		return super.onDispense(aItem, aSource, aStack);
 	}
 	
 	@Override
@@ -132,7 +143,7 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 			if (tFluidBlock instanceof IFluidBlock) {
 				FluidStack tFluid = ((IFluidBlock)tFluidBlock).drain(aWorld, aX, aY, aZ, F);
 				if (tFluid != null) {
-					if (FL.fill(tFluid, aStack, F, T, F, T) != null) tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
+					if (ST.valid(FL.fill(tFluid, aStack, F, T, F, T))) tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
 					if (FL.milk(tFluid) && tFluid.amount >= 1000) tBucket = ST.make(Items.milk_bucket, 1, 0);
 				}
 			}
@@ -141,7 +152,7 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 				tBucket = ST.copy(mDefaultFullBucket);
 				tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
 			} else {
-				if ((tBucket = FL.fill(mFluid, tBucket, F, T, F, T)) == null) return aStack;
+				if (ST.invalid(tBucket = FL.fill(mFluid, tBucket, F, T, F, T))) return aStack;
 				tBucket = tBucket.getItem().onItemRightClick(tBucket, aWorld, aPlayer);
 			}
 		}

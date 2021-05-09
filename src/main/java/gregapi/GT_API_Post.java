@@ -382,13 +382,17 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "copper_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Cu));
 		}
 		
-		// Yay for Chickenbones doing it wrong, I guess...
+		// Yay for ChickenBones ALWAYS doing it wrong...
 		if (MD.WR_CBE_C.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.stick, MT.Obsidian, ST.make(MD.WR_CBE_C, "obsidianStick", 1, 0));
 		}
 		if (MD.FMB.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.stick, MT.Stone   , ST.make(MD.FMB, "stoneRod", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.stick, MT.Stone, ST.make(MD.FMB, "stoneRod", 1, 0));
 		}
+		if (MD.TRANSLOCATOR.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.nugget, MT.Diamond, ST.make(MD.TRANSLOCATOR, "diamondNugget", 1, 0));
+		}
+		
 		
 		// Oh look, Matter Overdrive does this shit too...
 		if (MD.MO.mLoaded) {
