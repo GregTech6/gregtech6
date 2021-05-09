@@ -55,6 +55,8 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 		mDefaultFullBucket = aDefault;
 	}
 	
+	@Override public boolean canDispense(MultiItem aItem, IBlockSource aSource, ItemStack aStack) {return T;}
+	
 	@Override
 	public ItemStack onDispense(MultiItem aItem, IBlockSource aSource, ItemStack aStack) {
 		if (aStack.stackSize > 1) return super.onDispense(aItem, aSource, aStack);

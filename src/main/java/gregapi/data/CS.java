@@ -1810,6 +1810,7 @@ public class CS {
 		, IHL               = "ihl"
 		
 		, FMB               = "ForgeMicroblock"
+		, TRANSLOCATOR      = "Translocator"
 		, FUNK              = "funkylocomotion"
 		, BAUBLES           = "Baubles"
 		
