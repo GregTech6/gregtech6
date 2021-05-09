@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,9 +25,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -38,7 +40,8 @@ public class Compat_Recipes_Witchery extends CompatMods {
 	public Compat_Recipes_Witchery(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Witchery Recipes.");
-		CR.shaped(ST.make(MD.WTCH, "ingredient", 1, 7), CR.DEF_NCC, "B  ", "   ", "  k", 'B', Items.bone);
+		CR.shaped(ST.make(MD.WTCH, "ingredient", 1,  7), CR.DEF_NCC, "B  ", "   ", "  k", 'B', Items.bone);
+		CR.shaped(ST.make(MD.WTCH, "ingredient", 1, 26), CR.DEF_NCC, " C ", "   ", "k R", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		
 		RM.smash(ST.make(MD.WTCH, "perpetualice", 1, 0), OM.dust(MT.Ice, U));
 		RM.Squeezer     .addRecipe1(T, 16, 128, ST.make(MD.WTCH, "perpetualice", 1, 0), NF, FL.Ice.make(1000), NI);

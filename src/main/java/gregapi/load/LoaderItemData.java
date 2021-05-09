@@ -1930,6 +1930,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.WTCH, "iceslab"                          , 1,   W, MT.Ice                ,  U2);
 		OM.data(MD.WTCH, "shadedglass"                      , 1,   W, MT.Glass              ,  U);
 		OM.data(MD.WTCH, "shadedglass_active"               , 1,   W, MT.Glass              ,  U);
+		OM.data(MD.WTCH, "ingredient"                       , 1,  26, ANY.Clay              ,  U);
+		OM.data(MD.WTCH, "ingredient"                       , 1,  27, MT.Ceramic            ,  U);
 		
 		
 //      OM.data(MD.TCFM, "WandCaps"                         , 1,   0, MT.Alchemical         ,  5* U9);

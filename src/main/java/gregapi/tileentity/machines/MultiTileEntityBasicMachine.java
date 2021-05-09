@@ -1005,7 +1005,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override public void setVisualData(byte aData) {mRunning=((aData&2)!=0); mActive=((aData&1)!=0);}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public boolean[] getValidSides() {return mActive ? SIDES_THIS[mFacing] : SIDES_HORIZONTAL;}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive)[FACING_ROTATIONS[mFacing][aSide]])) : null;}
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}

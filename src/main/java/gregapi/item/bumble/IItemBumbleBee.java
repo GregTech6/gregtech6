@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,10 +129,10 @@ public interface IItemBumbleBee {
 		public static NBTTagCompound getBumbleGenes(Random aRandom) {return getBumbleGenes(WD.envTemp(BiomeGenBase.plains), BiomeGenBase.plains, T, aRandom);}
 		public static NBTTagCompound getBumbleGenes(long aTemperature, BiomeGenBase aBiome, boolean aHasSky, Random aRandom) {
 			NBTTagCompound rBumbleTag = UT.NBT.make();
-			setHumidityMin(rBumbleTag, aBiome.rainfall - 0.05F - aRandom.nextInt(21)/100.0F);
-			setHumidityMax(rBumbleTag, aBiome.rainfall + 0.05F + aRandom.nextInt(21)/100.0F);
-			setTemperatureMin(rBumbleTag, aTemperature - 5 - aRandom.nextInt(11));
-			setTemperatureMax(rBumbleTag, aTemperature + 5 + aRandom.nextInt(11));
+			setHumidityMin(rBumbleTag, aBiome.rainfall - 0.10F - aRandom.nextInt(41)/100.0F);
+			setHumidityMax(rBumbleTag, aBiome.rainfall + 0.10F + aRandom.nextInt(41)/100.0F);
+			setTemperatureMin(rBumbleTag, aTemperature - 15 - aRandom.nextInt(31));
+			setTemperatureMax(rBumbleTag, aTemperature + 15 + aRandom.nextInt(31));
 			setOffspring     (rBumbleTag,    1+aRandom.nextInt(     4));
 			setWorkForce     (rBumbleTag,    1+aRandom.nextInt( 10000));
 			setAggressiveness(rBumbleTag,  100+aRandom.nextInt(  9901));

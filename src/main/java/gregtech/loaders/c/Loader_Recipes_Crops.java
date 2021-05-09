@@ -502,6 +502,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropBerry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice, 100, 4000, "Canned Berries", 0, 0, 0, 8, 0);
 		}});
+		addListener("cropRowanberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.crop_fruit(aEvent.mStack, FL.Juice, 150, 3000, "Canned Rowan Berries", 0, 0, 0, 8, 0);
+		}});
 		addListener("cropSwampberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice, 150, 3000, "Canned Swampberries", 0, 0, 0, 8, 0);
 		}});
