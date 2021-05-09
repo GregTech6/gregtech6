@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -472,7 +472,7 @@ public class Override_Drops {
 			int tAmount = 24+RNGSUS.nextInt(8);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting*8+1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
-		} else if (aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
+		} else if (aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("EntityHellhound") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
 			tReplaceIron = T;
 			int tAmount = 1+RNGSUS.nextInt(4);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
