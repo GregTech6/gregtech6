@@ -37,8 +37,6 @@ import net.minecraft.item.ItemFood;
 public class Loader_ItemIterator implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Scanning Food for the Canning Machine.");
-		
 		boolean tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
 		
 		if (tCheckCans) {

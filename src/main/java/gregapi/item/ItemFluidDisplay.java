@@ -232,7 +232,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	public void registerIcons(IIconRegister aIconRegister) {
 		// Useful hack to register Block Icons. That is why the Fluid Display Item has to always exist.
 		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI) {
-			OUT.println("GT_Client: Setting up and loading Icon Register for Blocks");
+			// Setting up and loading Icon Register for Blocks
 			GT_API.sBlockIcons = aIconRegister;
 			for (Runnable tRunnable : GT_API.sBlockIconload) {
 				try {

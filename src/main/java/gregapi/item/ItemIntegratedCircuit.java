@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -113,7 +113,7 @@ public class ItemIntegratedCircuit extends ItemBase {
 		for (int i = 0; i < 25/*TODO mIcons.length*/; i++) mIcons[i] = aIconRegister.registerIcon(mModID + ":" + mName + "/" + (byte)(i&255));
 		// Useful hack to register Item Icons. That is why the Selector Tag Item has to always exist.
 		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI) {
-			OUT.println("GT_Client: Setting up and loading Icon Register for Items");
+			// Setting up and loading Icon Register for Items
 			GT_API.sItemIcons = aIconRegister;
 			for (Runnable tRunnable : GT_API.sItemIconload) {
 				try {

@@ -210,7 +210,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			
 			GarbageGT.onServerLoad(mSaveLocation);
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
-			OUT.println("GT_Server: Loaded Special Save Files");
 		}
 	}
 	
@@ -223,7 +222,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
-			OUT.println("GT_Server: Saved Special Save Files");
 		}
 		
 		mSaveLocation = null;
@@ -252,8 +250,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
-					OUT.println("GT_Server: Running Unification of Recipes");
-					
+					// Unification Stuff
 					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
 					
 					if (MD.IC2.mLoaded) try {
@@ -361,7 +358,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 					}
 					
-					OUT.println("GT_Server: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
+					// Cleaning up Recipes with Empty OreDict Lists, since they are never craftable.
 					List<IRecipe> tList = CR.list();
 					for (int i = 0; i < tList.size(); i++) {
 						Object tRecipe = tList.get(i);

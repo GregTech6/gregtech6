@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,7 +39,6 @@ import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 
 public class Loader_Recipes_Copy implements Runnable {
 	@Override public void run() {
-		OUT.println("GT_Mod: Copying the Fluid Registry to GT Machines.");
 		for (Map<String, FluidContainerData> tMap : FL.EMPTY_TO_FLUID_TO_DATA.values()) for (FluidContainerData tData : tMap.values()) {
 			ItemStack tEmpty = (tData.emptyContainer.getItem() == Items.bucket || tData.emptyContainer.stackSize < 1 ? ST.container(tData.filledContainer, F) : tData.emptyContainer);
 			if (ST.valid(tEmpty)) RM.Canner.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), tEmpty, tData.fluid, NF, tData.filledContainer);

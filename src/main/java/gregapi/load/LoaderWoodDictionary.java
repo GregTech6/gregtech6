@@ -48,7 +48,6 @@ public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
 		// 247 is next! There is no Gaps in this List!
-		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));

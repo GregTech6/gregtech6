@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.12: (Not released yet, released whenever it needs to be)
-[FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before.
+[FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [ADDED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
