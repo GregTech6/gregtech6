@@ -215,6 +215,9 @@ public class WD {
 	public static boolean dimCW2Caveworld(World aWorld) {return aWorld != null && dimCW2Caveworld(aWorld.provider);}
 	public static boolean dimCW2Caveworld(WorldProvider aProvider) {return MD.CW2.mLoaded && "WorldProviderCaveworld".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
+	public static boolean dimWTCH(World aWorld) {return aWorld != null && dimWTCH(aWorld.provider);}
+	public static boolean dimWTCH(WorldProvider aProvider) {return MD.WTCH.mLoaded && "WorldProviderDreamWorld".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
 	public static boolean dimAETHER(World aWorld) {return aWorld != null && dimAETHER(aWorld.provider);}
 	public static boolean dimAETHER(WorldProvider aProvider) {return MD.AETHER.mLoaded && "WorldProviderAether".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	

@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.12: (Not released yet, released whenever it needs to be)
+[COMPAT] Witchery now has a little bit more Compat. The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
 [FIXED] Burning Boxes and Basic Machines can no longer be rotated while they are lit or actively processing something.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
