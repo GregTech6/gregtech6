@@ -907,7 +907,7 @@ public class MT {
 	TiCl4                   = lqudaciddcmp  ( 8413, "Titanium Tetrachloride"                        , 233, 244, 222, 255, LIQUID)                                                                                                                                   .uumMcfg( 0, Ti             , 1*U, Cl               , 4*U)                                                                                                  .heat( 249,  409), TitaniumTetrachloride = TiCl4,
 	
 	
-	MnO2                    = oredustdcmp   ( 9126, "Pyrolusite"            , SET_DULL              ,  50,  50,  70, 255, MELTING, MOLTEN, INGOTS, MORTAR, MAGNETIC_PASSIVE).setSmelting(Mn, 3*U4)                                                                  .uumMcfg( 1, Mn             , 1*U, O                , 2*U)                                                                                                  .heat( 808, 2334),
+	MnO2                    = oredustdcmp   ( 9126, "Pyrolusite"            , SET_DULL              ,  50,  50,  70, 255, MELTING, INGOTS, MORTAR, MAGNETIC_PASSIVE).setSmelting(Mn, 3*U4)                                                                          .uumMcfg( 1, Mn             , 1*U, O                , 2*U)                                                                                                  .heat( 808, 2334),
 	MnCl2                   = dustelec      ( 8031, "Manganese Chloride"    , SET_CUBE              , 255, 213, 213, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, Mn             , 1*U, Cl               , 2*U)                                                                                                  .heat( 927, 1498),
 	
 	
@@ -2650,6 +2650,7 @@ public class MT {
 			MnO2                            .addOreByProducts(OREMATS.Bromargyrite      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
 			OREMATS.Chromite                .addOreByProducts(MnO2                      , Fe2O3                     , MgCO3                 , OREMATS.Bromargyrite  );
 			OREMATS.Bromargyrite            .addOreByProducts(MnO2                      , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
+			Nb                              .addOreByProducts(OREMATS.Tantalite         , TiO2                      );
 			
 			Apatite                         .addOreByProducts(Phosphorite               , Phosphorus                , FluoriteBlue          , PO4                   );
 			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   );
@@ -2730,6 +2731,7 @@ public class MT {
 			Teslatite                       .addOreByProducts(Cu                        , RareEarth                 );
 			Electrotine                     .addOreByProducts(Cu                        , RareEarth                 );
 			
+			Re                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Molybdenite       );
 			Os                              .addOreByProducts(Ir                        , Pt                        , Ru                    );
 			Ir                              .addOreByProducts(Pt                        , Os                        , Rh                    );
 			Pt                              .addOreByProducts(Ni                        , Ir                        , Pd                    );
@@ -2748,7 +2750,7 @@ public class MT {
 			OREMATS.YellowLimonite          .addOreByProducts(Ni                        , OREMATS.BrownLimonite     , OREMATS.Cobaltite     );
 			OREMATS.Garnierite              .addOreByProducts(Ni                        , OREMATS.Sperrylite        );
 			OREMATS.Tungstate               .addOreByProducts(MnO2                      , Ag                        , LiCl                  );
-			OREMATS.Scheelite               .addOreByProducts(MnO2                      , Mo                        , Ca                    );
+			OREMATS.Scheelite               .addOreByProducts(MnO2                      , Mo                        , CaCO3                 );
 			OREMATS.Huebnerite              .addOreByProducts(OREMATS.Wolframite        , OREMATS.Molybdenite       , FluoriteGreen         , OREMATS.Arsenopyrite  , OREMATS.Cassiterite   , Topaz                 ); // Tourmaline, Rhodochrosite
 			OREMATS.Wolframite              .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     , OREMATS.Stannite      , MgCO3);
 			OREMATS.Ferberite               .addOreByProducts(OREMATS.Tungstate         , Fe2O3                     );
@@ -2797,6 +2799,7 @@ public class MT {
 			
 			Al                              .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
 			Al2O3                           .addOreByProducts(OREMATS.Bauxite           , Al2O3                     , AlO3H3                );
+			Bi                              .addOreByProducts(OREMATS.Russellite        , OREMATS.Galena            , OREMATS.Kesterite     );
 			Cr                              .addOreByProducts(OREMATS.Chromite          , Fe2O3                     , MgCO3                 );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
 			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);

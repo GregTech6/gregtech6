@@ -575,7 +575,7 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrolloffreedom"                    ,   W, (byte) 18);
 		}
 		if (MD.HOWL.mLoaded) {
-			BooksGT.BOOKS_ENCHANTED.add(MD.HOWL, "lycanthropeBook"                    ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.HOWL, "lycanthropeBook"                    ,   W);
 			BooksGT.BOOK_REGISTER  .put(MD.HOWL, "lycanthropeBook"                    ,   W, (byte) 20);
 		}
 		if (MD.WTCH.mLoaded) {
