@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,8 @@ package gregtech.tileentity.misc;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanEntityDestroy;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -28,10 +30,12 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -48,6 +52,16 @@ public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable impleme
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/overlay/top"),
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/overlay/side")
 	};
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (aTool.equals(TOOL_thermometer)) {
+			if (aChatReturn != null) aChatReturn.add("Temperature: " + WD.envTemp(worldObj, xCoord, yCoord, zCoord) + "K - Humidity: " + getBiome().rainfall);
+			return 1000;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+	}
 	
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]])) : null;}
 	
