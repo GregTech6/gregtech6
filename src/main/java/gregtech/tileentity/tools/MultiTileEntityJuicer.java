@@ -93,6 +93,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_JUICER_USAGE));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
 	@Override
@@ -102,6 +103,10 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 		if (aTool.equals(TOOL_plunger)) {
 			updateInventory();
 			for (FluidTankGT tTank : mTanks) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null) for (FluidTankGT tTank : mTanks) {aChatReturn.add(tTank.content());}
+			return mTanks.length;
 		}
 		return 0;
 	}
