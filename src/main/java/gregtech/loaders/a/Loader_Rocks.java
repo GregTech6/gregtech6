@@ -239,11 +239,11 @@ public class Loader_Rocks implements Runnable {
 		
 		try {
 			for (int i = 0; i < 16; i++) if (BlockStones.JUSTSTONE[i]) {
-				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 5]).mEqualBlocks[i]))
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 5]).mEqualBlocks[i])) if (!MD.CHSL.owns(tStack.toStack()))
 				Carving.chisel.getGroup(IL.CHSL_Granite .block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
-				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 6]).mEqualBlocks[i]))
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 6]).mEqualBlocks[i])) if (!MD.CHSL.owns(tStack.toStack()))
 				Carving.chisel.getGroup(IL.CHSL_Diorite .block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
-				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 7]).mEqualBlocks[i]))
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 7]).mEqualBlocks[i])) if (!MD.CHSL.owns(tStack.toStack()))
 				Carving.chisel.getGroup(IL.CHSL_Andesite.block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
 			}
 		} catch(Throwable e) {
