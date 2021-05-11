@@ -476,6 +476,16 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_yellow", 1, W));
 		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "glass2", 1, W));
 		OM.reg(OD.blockGlass                        , ST.make(MD.CHSL, "stained_glass_forestry", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch1", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch2", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch3", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch4", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch5", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch6", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch7", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch8", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch9", 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(MD.CHSL, "torch10", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_philosophers_stone", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
 		OM.reg(OD.container1000water                , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));

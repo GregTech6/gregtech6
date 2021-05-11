@@ -232,7 +232,7 @@ public class Loader_Rocks implements Runnable {
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 0].add(IL.BOTA_Prismarine        .get(1));
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 3].add(IL.BOTA_Prismarine_Bricks .get(1));
 		((BlockStones)BlocksGT.stones[14]).mEqualBlocks[11].add(IL.BOTA_Prismarine_Dark   .get(1));
-
+		
 		BlocksGT.blockToDrop.put(IL.CHSL_Granite            , ST.make(BlocksGT.Granite , 1, 1));
 		BlocksGT.blockToDrop.put(IL.EtFu_Granite            , ST.make(BlocksGT.Granite , 1, 1));
 		BlocksGT.blockToDrop.put(IL.GaSu_Granite            , ST.make(BlocksGT.Granite , 1, 1));

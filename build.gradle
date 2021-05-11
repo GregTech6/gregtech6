@@ -226,7 +226,8 @@ dependencies {
 	compileOnly "com.builtbroken:VoltzEngine:1.7.10-1.11.0b466:deobf"
 	compileOnly "com.hbm:hbm:1.0.27:dev"
 	compileOnly "com.celestek.hexcraft:HEXCraft:1.7.10-0.13.1:dev"
-
+	compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
+	
 	// List of potentially useful mods that may or may not be linked in here:
 	//compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
 	//compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
