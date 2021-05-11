@@ -21,12 +21,15 @@ package gregtech.loaders.a;
 
 import static gregapi.data.CS.*;
 
+import com.cricketcraft.chisel.api.carving.CarvingUtils;
+
 import gregapi.block.behaviors.Drops;
 import gregapi.block.behaviors.Drops_SmallOre;
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlock_;
 import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
@@ -41,9 +44,11 @@ import gregapi.util.ST;
 import gregtech.blocks.stone.BlockStonesGT;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import team.chisel.carving.Carving;
 
 public class Loader_Rocks implements Runnable {
 	@Override
+	@SuppressWarnings("unchecked")
 	public void run() {
 		BlockStones tStone;
 		
@@ -134,21 +139,6 @@ public class Loader_Rocks implements Runnable {
 			BlocksGT.stoneOverridable.add(BlocksGT.ores_small [i]);
 		}
 		
-		if (MD.CHSL.mLoaded) {
-		CR.shapeless(IL.CHSL_Granite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 0)});
-		CR.shapeless(IL.CHSL_Diorite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 0)});
-		CR.shapeless(IL.CHSL_Andesite          .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 0)});
-		CR.shapeless(IL.CHSL_Granite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 7)});
-		CR.shapeless(IL.CHSL_Diorite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 7)});
-		CR.shapeless(IL.CHSL_Andesite_Smooth   .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 7)});
-		CR.shapeless(ST.make(BlocksGT.stones[5], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Granite           .get(1)});
-		CR.shapeless(ST.make(BlocksGT.stones[6], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Diorite           .get(1)});
-		CR.shapeless(ST.make(BlocksGT.stones[7], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Andesite          .get(1)});
-		CR.shapeless(ST.make(BlocksGT.stones[5], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Granite_Smooth    .get(1)});
-		CR.shapeless(ST.make(BlocksGT.stones[6], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Diorite_Smooth    .get(1)});
-		CR.shapeless(ST.make(BlocksGT.stones[7], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Andesite_Smooth   .get(1)});
-		}
-		
 		RM.generify(IL.CHSL_Granite             .get(1), ST.make(BlocksGT.stones[ 5], 1, 0));
 		RM.generify(IL.CHSL_Diorite             .get(1), ST.make(BlocksGT.stones[ 6], 1, 0));
 		RM.generify(IL.CHSL_Andesite            .get(1), ST.make(BlocksGT.stones[ 7], 1, 0));
@@ -232,6 +222,35 @@ public class Loader_Rocks implements Runnable {
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 0].add(IL.BOTA_Prismarine        .get(1));
 		((BlockStones)BlocksGT.stones[13]).mEqualBlocks[ 3].add(IL.BOTA_Prismarine_Bricks .get(1));
 		((BlockStones)BlocksGT.stones[14]).mEqualBlocks[11].add(IL.BOTA_Prismarine_Dark   .get(1));
+		
+		if (MD.CHSL.mLoaded) {
+		CR.shapeless(IL.CHSL_Granite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 0)});
+		CR.shapeless(IL.CHSL_Diorite           .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 0)});
+		CR.shapeless(IL.CHSL_Andesite          .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 0)});
+		CR.shapeless(IL.CHSL_Granite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[5], 1, 7)});
+		CR.shapeless(IL.CHSL_Diorite_Smooth    .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[6], 1, 7)});
+		CR.shapeless(IL.CHSL_Andesite_Smooth   .get(1), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.stones[7], 1, 7)});
+		CR.shapeless(ST.make(BlocksGT.stones[5], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Granite           .get(1)});
+		CR.shapeless(ST.make(BlocksGT.stones[6], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Diorite           .get(1)});
+		CR.shapeless(ST.make(BlocksGT.stones[7], 1, 0), CR.DEF_NCC, new Object[] {IL.CHSL_Andesite          .get(1)});
+		CR.shapeless(ST.make(BlocksGT.stones[5], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Granite_Smooth    .get(1)});
+		CR.shapeless(ST.make(BlocksGT.stones[6], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Diorite_Smooth    .get(1)});
+		CR.shapeless(ST.make(BlocksGT.stones[7], 1, 7), CR.DEF_NCC, new Object[] {IL.CHSL_Andesite_Smooth   .get(1)});
+		
+		try {
+			for (int i = 0; i < 16; i++) if (BlockStones.JUSTSTONE[i]) {
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 5]).mEqualBlocks[i]))
+				Carving.chisel.getGroup(IL.CHSL_Granite .block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 6]).mEqualBlocks[i]))
+				Carving.chisel.getGroup(IL.CHSL_Diorite .block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
+				for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)(((BlockStones)BlocksGT.stones[ 7]).mEqualBlocks[i]))
+				Carving.chisel.getGroup(IL.CHSL_Andesite.block(), 0).addVariation(CarvingUtils.getDefaultVariationFor(tStack.mBlock, tStack.mMetaData, 1111+i));
+			}
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
+		
+		}
 		
 		BlocksGT.blockToDrop.put(IL.CHSL_Granite            , ST.make(BlocksGT.Granite , 1, 1));
 		BlocksGT.blockToDrop.put(IL.EtFu_Granite            , ST.make(BlocksGT.Granite , 1, 1));

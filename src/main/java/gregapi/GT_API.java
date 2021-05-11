@@ -153,6 +153,7 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.RecipeSorter;
+import team.chisel.carving.Carving;
 import thaumcraft.api.ThaumcraftApi;
 
 /**
@@ -758,7 +759,7 @@ public class GT_API extends Abstract_Mod {
 	
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
-// TODO team.chisel.carving.Carving.chisel.getGroup("cobblestone").setOreName(null);
+		if (MD.CHSL.mLoaded) try {Carving.chisel.getGroup("cobblestone").setOreName(null);} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		OUT.println(getModNameForLog() + ": If the Loading Bar somehow Freezes at this Point, then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
 		OreDictManager.INSTANCE.enableRegistrations();
