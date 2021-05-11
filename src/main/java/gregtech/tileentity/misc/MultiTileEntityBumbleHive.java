@@ -23,7 +23,10 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanEntityDestroy;
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -42,7 +45,7 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable implements IMTE_CanEntityDestroy {
+public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable implements IMTE_AddToolTips, IMTE_CanEntityDestroy {
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/colored/bottom"),
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/colored/top"),
@@ -52,6 +55,11 @@ public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable impleme
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/overlay/top"),
 		new Textures.BlockIcons.CustomIcon("nature/bumblehive/overlay/side")
 	};
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_THERMOMETER));
+	}
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
