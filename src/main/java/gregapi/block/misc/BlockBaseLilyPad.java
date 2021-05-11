@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import java.util.Random;
 
 import gregapi.block.BlockBaseMeta;
 import gregapi.block.ItemBlockBase;
+import gregapi.data.RM;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
 import gregapi.render.IRenderedBlock;
@@ -58,6 +59,7 @@ public class BlockBaseLilyPad extends BlockBaseMeta implements IPlantable, IRend
 		super(ItemBlockBase.class, aNameInternal, Material.plants, soundTypeGrass, aMaxMeta, aIcons);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.015625F, 1.0F);
 		setCreativeTab(CreativeTabs.tabDecorations);
+		RM.chisel(aNameInternal, ST.make(this, 1, W));
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}

@@ -24,6 +24,8 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import com.cricketcraft.chisel.api.carving.CarvingUtils;
+
 import appeng.api.AEApi;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.ArrayListNoNulls;
@@ -41,11 +43,13 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
+import team.chisel.carving.Carving;
 
 /**
  * @author Gregorius Techneticies
@@ -417,6 +421,28 @@ public class RM {
 			}
 		}
 		return temp;
+	}
+	
+	public static boolean chisel(String aName, ItemStack... aStacks) {
+		if (!MD.CHSL.mLoaded || UT.Code.stringInvalid(aName) || aStacks == null || aStacks.length < 1 || ST.invalid(aStacks[0])) return F;
+		try {
+			boolean temp = T;
+			for (int i = 0; i < aStacks.length; i++) if (ST.valid(aStacks[i])) {
+				Block tBlock = ST.block_(aStacks[i]);
+				if (tBlock == NB) continue;
+				short tMeta = ST.meta_(aStacks[i]);
+				if (tMeta == W) {
+					if (temp) {Carving.chisel.addGroup(CarvingUtils.getDefaultGroupFor(aName)); temp = F;}
+					for (int j = 0; j < 16; j++)
+					Carving.chisel.getGroup(aName).addVariation(CarvingUtils.getDefaultVariationFor(tBlock, j, i*16+j));
+				} else if (UT.Code.inside(0, 15, tMeta)) {
+					if (temp) {Carving.chisel.addGroup(CarvingUtils.getDefaultGroupFor(aName)); temp = F;}
+					Carving.chisel.getGroup(aName).addVariation(CarvingUtils.getDefaultVariationFor(tBlock, tMeta, i*16));
+				}
+			}
+			return T;
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return F;
 	}
 	
 	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
