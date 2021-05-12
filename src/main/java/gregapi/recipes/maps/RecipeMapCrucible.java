@@ -90,6 +90,6 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 		
 		if (tIngots.isEmpty()) return null;
-		return RM.CrucibleSmelting.addFakeRecipe(F, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
+		return RM.CrucibleSmelting.addFakeRecipe(T, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
 	}
 }
