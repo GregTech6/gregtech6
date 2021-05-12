@@ -1745,6 +1745,7 @@ public class MT {
 			Ti                      .setOreMultiplier( 2).setCrushing(TiO2, U);
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
 			U_238                   .setOreMultiplier( 2).setCrushing(OREMATS.Uraninite, U);
+			F                       .setOreMultiplier( 2).setCrushing(CaF2, U);
 			Amber                   .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
@@ -2594,8 +2595,10 @@ public class MT {
 			Pu                              .addOreByProducts(Pb                        , U_238                     , Am                    );
 			Th                              .addOreByProducts(Pb                        , U_238                     );
 			
-			for (OreDictMaterial tMat : ANY.CaF2.mToThis)
-			tMat                            .addOreByProducts(OREMATS.Huebnerite        , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );
+			for (OreDictMaterial tMat : ANY.CaF2.mToThis) {
+				if (tMat != MT.CaF2) F.addOreByProducts(tMat);
+				tMat.addOreByProducts(OREMATS.Huebnerite, Y, Ce, Fe2O3, Na, Ba);
+			}
 			CaF2                            .addOreByProducts(FluoriteGreen             , FluoriteOrange            );
 			FluoriteRed                     .addOreByProducts(FluoritePink              , FluoriteMagenta           );
 			FluoritePink                    .addOreByProducts(FluoriteWhite             , FluoriteRed               );
