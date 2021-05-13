@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -158,6 +158,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 		
 		if (isClientSide()) return 0;
 		
+		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks[0]);
 		if (aTool.equals(TOOL_chisel)) {
 			int rResult = 10000 - mEfficiency;
 			if (rResult > 0) {

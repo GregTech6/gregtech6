@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.render.IIconContainer;
@@ -52,8 +53,11 @@ public abstract class BlockBaseLog extends BlockBaseTree {
 		for (byte tMeta = 0; tMeta < maxMeta(); tMeta++) {
 			RM.chisel(aNameInternal+"."+tMeta, ST.make(this, 1, tMeta), ST.make(this, 1, tMeta|12));
 			
-			CR.shaped(ST.make(this, 1, tMeta|12), CR.DEF_NCC, "  ", " L", 'L', ST.make(this, 1, tMeta   ));
-			CR.shaped(ST.make(this, 1, tMeta   ), CR.DEF_NCC, "  ", " L", 'L', ST.make(this, 1, tMeta|12));
+			CR.shapeless(ST.make(this, 4, tMeta|12), CR.DEF_NCC, new Object[] {OP.dust.dat(MT.Bark), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta)});
+			CR.shapeless(ST.make(this, 3, tMeta|12), CR.DEF_NCC, new Object[] {OP.dust.dat(MT.Bark), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta)});
+			CR.shapeless(ST.make(this, 2, tMeta|12), CR.DEF_NCC, new Object[] {OP.dust.dat(MT.Bark), ST.make(this, 1, tMeta), ST.make(this, 1, tMeta)});
+			CR.shapeless(ST.make(this, 1, tMeta|12), CR.DEF_NCC, new Object[] {OP.dust.dat(MT.Bark), ST.make(this, 1, tMeta)});
+			CR.shapeless(ST.make(this, 1, tMeta|12), CR.DEF_NCC, new Object[] {OP.dustSmall.dat(MT.Bark), ST.make(this, 1, tMeta)});
 		}
 	}
 	
