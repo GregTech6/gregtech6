@@ -107,8 +107,8 @@ public class Loader_Woods implements Runnable {
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamBFireProof, 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamC         , 1, W), F, TC.stack(TC.ARBOR, 4));
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamCFireProof, 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
-	    COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamD         , 1, W), F, TC.stack(TC.ARBOR, 4));
-	    COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamDFireProof, 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamD         , 1, W), F, TC.stack(TC.ARBOR, 4));
+		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamDFireProof, 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		}
 		
 		// Those typically get overridden, but in case of a fuck up it is at least worth some Wood.

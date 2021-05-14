@@ -3448,7 +3448,7 @@ public class UT {
 					try {
 						mMessage.set(mBar, aStep == null ? "null" : aStep.toString());
 						mStep.setInt(mBar, mCount);
-			            FMLCommonHandler.instance().processWindowMessages();
+						FMLCommonHandler.instance().processWindowMessages();
 						return T;
 					} catch(Throwable e) {e.printStackTrace(ERR);}
 					return F;
