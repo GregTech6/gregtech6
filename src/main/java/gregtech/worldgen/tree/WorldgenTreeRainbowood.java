@@ -47,7 +47,7 @@ public class WorldgenTreeRainbowood extends WorldgenOnSurface {
 	@Override
 	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
-		if (aBiomeNames.contains("Enchanted Forest")) return mAmount;
+		for (String tName : aBiomeNames) if (BIOMES_RAINBOWOOD.contains(tName)) return mAmount;
 		return aRandom.nextInt(8192) == 0 ? mAmount : 0;
 	}
 	

@@ -259,30 +259,50 @@ public class CS {
 	, BIOMES_OCEAN          = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean")
 	, BIOMES_OCEAN_BEACH    = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, BiomeGenBase.beach, BiomeGenBase.coldBeach, BiomeGenBase.stoneBeach, BiomeGenBase.mushroomIslandShore, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach")
 	, BIOMES_INFINITE_WATER = new BiomeNameSet(BiomeGenBase.ocean, BiomeGenBase.frozenOcean, BiomeGenBase.deepOcean, BiomeGenBase.beach, BiomeGenBase.coldBeach, BiomeGenBase.stoneBeach, BiomeGenBase.mushroomIslandShore, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach", BiomeGenBase.river, BiomeGenBase.frozenRiver, "Lush River", "Estuary", "Twilight Stream", "Riparian Zone", "Sandstone Canyon", "Sandstone Canyon 2", "Creek Bed", "Tropical River", "Tropical Lake", "Twilight Lake", "Lake", "Oasis", "Woodland Lake", "Woodland Lake Edge")
+	
 	, BIOMES_JUNGLE         = new BiomeNameSet(BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.jungleEdge, "Undergound Jungle", "Jungle Island", "Extreme Jungle", "Mini Jungle", "Rainforest Hills")
+	, BIOMES_CINNAMON       = new BiomeNameSet(BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.jungleEdge, "Undergound Jungle", "Jungle Island", "Extreme Jungle", "Mini Jungle", "Rainforest Hills")
+	, BIOMES_BLUEMAHOE      = new BiomeNameSet(BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.jungleEdge, "Undergound Jungle", "Jungle Island", "Extreme Jungle", "Mini Jungle", "Rainforest Hills")
+	
 	, BIOMES_DESERT         = new BiomeNameSet(BiomeGenBase.desert, BiomeGenBase.desertHills, "Sahara", "Red Desert", "Desert Archipelago", "Oasis", "Sandstone Canyon", "Sandstone Canyon 2", "Sandstone Ranges", "Sahel", "Lush Desert", "Desert Oil Field", "Desert Island", "Mountainous Desert", "Desert Mountains", "Volcanic Desert", "Ulterior Outback")
 	, BIOMES_MESA           = new BiomeNameSet(BiomeGenBase.mesa, BiomeGenBase.mesaPlateau, BiomeGenBase.mesaPlateau_F, "Canyon", "Mesa (Bryce)", "Mesa", "Clay Hills")
 	, BIOMES_SAVANNA        = new BiomeNameSet(BiomeGenBase.savanna, BiomeGenBase.savannaPlateau, "Steppe", "Subterranean Savannah", "Oak Savanna", "Savannah", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie")
+	
 	, BIOMES_SWAMP          = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
+	, BIOMES_WILLOW         = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
+	
 	, BIOMES_TAIGA          = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands")
+	, BIOMES_RUBBER         = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands")
+	
 	, BIOMES_FROZEN         = new BiomeNameSet(BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, "Snow Island", "Ice Plains Spikes", "Ice Wasteland", "Frost Forest", "Snowy Rainforest", "Snow Forest", "Snowy Forest", "Twilight Glacier", "Alpine", "Glacier", "Tundra", "Snowy Desert", "Snowy Plateau", "Snowy Ranges", "Snowy Wastelands", "Polar Desert", "Ice Sheet", "Frozen Archipelago", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra")
+	
 	, BIOMES_WOODS          = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Dark Forest", "Dark Forest Center", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest", "Maple Woods", BiomeGenBase.roofedForest, BiomeGenBase.birchForest, BiomeGenBase.birchForestHills, "Pine Forest", "Rainforest", "Rainforest Valley", "Redwood Forest", "Lush Redwoods", "Spruce Woods", "Autumn Woods", "Flower Forest", "Birch Hills", "Woodlands", "Temperate Rainforest", "Pinelands", "Tall Pine Forest", "Shield", "Mystic Grove", "Ominous Woods", "Blossom Hills", "Blossom Woods", "Aspen Forest", "Aspen Hills", "Cypress Forest", "Silver Pine Forest", "Silver Pine Hills", "Fir Forest", "Flowery Archipelago", "Oak Forest", "Pine Forest", "Pine Forest Archipelago", "Rainforest Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
 	, BIOMES_FOREST         = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Dark Forest", "Dark Forest Center", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest")
 	, BIOMES_MAPLE          = new BiomeNameSet(BiomeGenBase.forest, BiomeGenBase.forestHills, "Autumn Forest", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Maple Woods", "Firefly Forest")
 	, BIOMES_DARK_FOREST    = new BiomeNameSet(BiomeGenBase.roofedForest, "Dark Forest", "Dark Forest Center")
+	
 	, BIOMES_PLAINS         = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Rainforest Plains", "Tropics", "Highlands", "Bald Hill", "Tundra", "Low Hills", "Mining Biome")
 	, BIOMES_HAZEL          = new BiomeNameSet(BiomeGenBase.plains, "Meadow", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim")
+	
 	, BIOMES_COCONUT        = new BiomeNameSet(BiomeGenBase.beach, "Tropical Ocean", "Tropical Beach", "Tropical River", "Tropical Lake", "Tropical Archipelago", "Tropical Islands", "Tropics", "Oasis")
+	
 	, BIOMES_MOUNTAINS      = new BiomeNameSet(BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.extremeHillsPlus, BiomeGenBase.stoneBeach, "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Twilight Highlands", "Thornlands", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
-	, BIOMES_NETHER         = new BiomeNameSet(BiomeGenBase.hell, "Ruptured Chasm", "Abyssal Shadowland", "Crystalline Crag", "Basalt Deltas", "Crimson Forest", "Soul Sand Valley", "Warped Forest", "Foxfire Swamp")
-	, BIOMES_END            = new BiomeNameSet(BiomeGenBase.sky)
+	, BIOMES_BLUESPRUCE     = new BiomeNameSet(BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.extremeHillsPlus, BiomeGenBase.stoneBeach, "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Twilight Highlands", "Thornlands", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills", "Rainforest Mountains", "Extreme Rainforest Mountains")
+	
 	, BIOMES_VOLCANIC       = new BiomeNameSet("Fire Swamp", "Volcano", "Volcano Island", "Volcanic Desert")
-	, BIOMES_WASTELANDS     = new BiomeNameSet("Wasteland", "Wastelands", "Wasteland Mountains", "Wasteland Forest", "Radioactive Wasteland")
-	, BIOMES_RADIOACTIVE    = new BiomeNameSet("Radioactive Wasteland")
+	
 	, BIOMES_SHROOM         = new BiomeNameSet(BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, "Fungal Forest", "Mushroom Forest", "Deep Mushroom Forest")
+	
 	, BIOMES_MAGICAL        = new BiomeNameSet("Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim", "Tainted Land", "Eerie", "WyvernBiome", "Ominous Woods")
+	, BIOMES_RAINBOWOOD     = new BiomeNameSet("Enchanted Forest")
 	, BIOMES_MAGICAL_GOOD   = new BiomeNameSet("Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove", "Alfheim")
 	, BIOMES_MAGICAL_BAD    = new BiomeNameSet("Tainted Land", "Eerie", "WyvernBiome", "Ominous Woods")
+	
+	, BIOMES_WASTELANDS     = new BiomeNameSet("Wasteland", "Wastelands", "Wasteland Mountains", "Wasteland Forest", "Radioactive Wasteland")
+	, BIOMES_RADIOACTIVE    = new BiomeNameSet("Radioactive Wasteland")
+	
+	, BIOMES_NETHER         = new BiomeNameSet(BiomeGenBase.hell, "Ruptured Chasm", "Abyssal Shadowland", "Crystalline Crag", "Basalt Deltas", "Crimson Forest", "Soul Sand Valley", "Warped Forest", "Foxfire Swamp")
+	, BIOMES_END            = new BiomeNameSet(BiomeGenBase.sky)
 	, BIOMES_EREBUS         = new BiomeNameSet("Undergound Jungle", "Volcanic Desert", "Subterranean Savannah", "Elysian Fields", "Ulterior Outback", "Fungal Forest", "Submerged Swamp", "Elysian Forest")
 	, BIOMES_VOID           = new BiomeNameSet("Space", "space")
 	, BIOMES_MOON           = new BiomeNameSet("Moon", "moon")

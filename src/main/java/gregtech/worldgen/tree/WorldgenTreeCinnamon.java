@@ -47,7 +47,7 @@ public class WorldgenTreeCinnamon extends WorldgenOnSurface {
 	@Override
 	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
-		for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName)) return mAmount;
+		for (String tName : aBiomeNames) if (BIOMES_CINNAMON.contains(tName)) return mAmount;
 		return 0;
 	}
 	
