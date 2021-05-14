@@ -207,6 +207,7 @@ dependencies {
 	compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
 	compileOnly "cofh:CoFHCore:1.7.10R3.0.4:dev"
 	compileOnly "cofh:CoFHLib:1.7.10R3.0.3:dev"
+	// This one does not give any Sourcecode View!
 	compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	compileOnly "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
 	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not right...  This only works because of CodeChickenCore Magic being included up above...
@@ -230,6 +231,7 @@ dependencies {
 	
 	// List of potentially useful mods that may or may not be linked in here:
 	//compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
+	// This one does not give any Sourcecode View!
 	//compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	//compileOnly "binnie:binnie-mods:1.7.10-2.0.22:dev"
 	//compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"

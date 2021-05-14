@@ -168,8 +168,8 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 				case eat: UT.Sounds.send(worldObj, SFX.MC_EAT  , 1.0F, 1.0F, getCoords()); break;
 				default : UT.Sounds.send(worldObj, SFX.MC_DRINK, 1.0F, 1.0F, getCoords()); break;
 				}
-				aStack.getItem().onEaten(aStack, worldObj, aPlayer);
 				mTank.remove(250);
+				aStack.getItem().onEaten(aStack, worldObj, aPlayer);
 			}
 		}
 		return T;

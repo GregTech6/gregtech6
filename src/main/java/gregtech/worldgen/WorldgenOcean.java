@@ -66,9 +66,9 @@ public class WorldgenOcean extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water) continue;
 				
 				if (tPlacedNone) {
+					BlockOcean.UPDATE_TICK = (aBiomeNames.size() > 1);
 					BlockOcean.PLACEMENT_ALLOWED = T;
 					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Ocean, 0, 0);
-					BlockOcean.PLACEMENT_ALLOWED = F;
 					tPlacedNone = F;
 				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Ocean);

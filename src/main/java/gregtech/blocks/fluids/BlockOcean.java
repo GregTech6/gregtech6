@@ -41,7 +41,7 @@ import net.minecraftforge.fluids.Fluid;
  * @author Gregorius Techneticies
  */
 public class BlockOcean extends BlockWaterlike {
-	public static boolean PLACEMENT_ALLOWED = F, SPREAD_TO_AIR = T;
+	public static boolean PLACEMENT_ALLOWED = F, SPREAD_TO_AIR = T, UPDATE_TICK = T;
 	
 	public BlockOcean(String aName, Fluid aFluid) {
 		super(aName, aFluid);
@@ -51,7 +51,12 @@ public class BlockOcean extends BlockWaterlike {
 	@Override
 	public void onBlockAdded(World aWorld, int aX, int aY, int aZ) {
 		if (PLACEMENT_ALLOWED) {
-			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 10+RNGSUS.nextInt(90));
+			PLACEMENT_ALLOWED = F;
+			if (UPDATE_TICK) {
+				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 10+RNGSUS.nextInt(90));
+			} else {
+				UPDATE_TICK = T;
+			}
 		} else {
 			aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
 		}

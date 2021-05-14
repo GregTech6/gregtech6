@@ -2767,7 +2767,7 @@ public class UT {
 				}
 			} catch(Throwable e) {e.printStackTrace(ERR);}
 			
-			if (tData != null) {
+			if (tData != null && !tData.mPrefix.containsAny(TD.Prefix.ORE_PROCESSING_BASED, TD.Prefix.ORE)) {
 				if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
 					aPlayer.triggerAchievement(AchievementList.openInventory);
 					aPlayer.triggerAchievement(AchievementList.mineWood);
