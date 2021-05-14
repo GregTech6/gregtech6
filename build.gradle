@@ -264,6 +264,7 @@ dependencies {
 	//compileOnly "com.creativemd:craftingmanager:0.7.6:dev"
 	//compileOnly "com.creativemd:creativecore:1.3.24:dev"
 	//compileOnly "com.enderio:EnderIO/1.7.10-2.3.0.430_beta:dev"
+	//compileOnly "com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.7.10-2.1.0.1465:deobf"
 	//compileOnly "com.gregoriust.gregtech:gregtech_1.7.10:6.09.00:dev"
 	//compileOnly "com.hbm:hbm:1.0.27:dev"
 	//compileOnly "com.mod-buildcraft:buildcraft:7.1.23:dev"
@@ -277,6 +278,7 @@ dependencies {
 	//compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.1.2:dev"
 	//compileOnly "extracells:ExtraCells:1.7.10-2.3.14b200:deobf"
 	//compileOnly "ic2:IC2Classic:1.2.1.8:dev"
+	//compileOnly "iguanaman:HungerOverhaul:1.7.10-1.0.0-basic:deobf"
 	//compileOnly "io.netty-opis:Netty-opis:4.0.23" // Needed for dev opis because it doesn't know how to specify dependencies properly
 	//compileOnly "inventorytweaks:InventoryTweaks:1.59-dev:deobf"
 	//compileOnly "java.moze_intel:ProjectE:1.7.10-PE1.10.1:dev"
