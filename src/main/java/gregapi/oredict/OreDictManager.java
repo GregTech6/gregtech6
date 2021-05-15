@@ -36,6 +36,7 @@ import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.code.ItemStackSet;
+import gregapi.code.ModData;
 import gregapi.config.Config;
 import gregapi.data.ANY;
 import gregapi.data.FL;
@@ -486,6 +487,11 @@ public final class OreDictManager {
 		return setTarget_(aPrefix, aMaterial, aStack, F, F, F);
 	}
 	
+	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ModData aMod, Object aName, long aMeta) {
+		ItemStack aStack = ST.make(aMod, aName.toString(), 1, aMeta);
+		if (aMod.mLoaded && aStack == null) DEB.println("Item does not exist for Unification Target despite being loaded: " + aMod.mID + ":" + aName);
+		return setTarget(aPrefix, aMaterial, aStack, T, F, T);
+	}
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 		return setTarget(aPrefix, aMaterial, aStack, T, F, T);
 	}
