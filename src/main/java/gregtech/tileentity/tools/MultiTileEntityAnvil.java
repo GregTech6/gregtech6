@@ -141,6 +141,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) aChatReturn.add("Remaining Durability: " + UT.Code.makeString(UT.Code.divup(mDurability, 10000)));
+			return 1;
 		}
 		return 0;
 	}
