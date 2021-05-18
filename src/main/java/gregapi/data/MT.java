@@ -2641,6 +2641,7 @@ public class MT {
 			OREMATS.Vermiculite             .addOreByProducts(OREMATS.Mica              , Asbestos                  , Biotite               , OREMATS.Diatomite     );
 			Biotite                         .addOreByProducts(OREMATS.Mica              , OREMATS.Vermiculite       , Asbestos              , OREMATS.Perlite       );
 			Asbestos                        .addOreByProducts(OREMATS.Mica              , Biotite                   , Talc                  , Jade                  );
+			Jade                            .addOreByProducts(OREMATS.Mica              , Biotite                   , Talc                  , Asbestos              );
 			Gypsum                          .addOreByProducts(OREMATS.Trona             , OREMATS.Mirabilite        , Asbestos              , Talc                  , S);
 			OREMATS.Mirabilite              .addOreByProducts(OREMATS.Trona             , Gypsum                    );
 			OREMATS.Trona                   .addOreByProducts(OREMATS.Mirabilite        , Gypsum                    );

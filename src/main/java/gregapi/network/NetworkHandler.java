@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -79,7 +79,7 @@ public final class NetworkHandler extends MessageToMessageCodec<FMLProxyPacket, 
 	
 	@Override
 	protected void encode(ChannelHandlerContext aContext, IPacket aPacket, List<Object> aOutput) throws Exception {
-		aOutput.add(new FMLProxyPacket(Unpooled.buffer().writeByte(aPacket.getPacketID()).writeBytes(aPacket.encode().toByteArray()).copy(), aContext.channel().attr(NetworkRegistry.FML_CHANNEL).get()));
+		aOutput.add(new FMLProxyPacket(Unpooled.buffer().writeByte(aPacket.getPacketID()).writeBytes(aPacket.encode().toByteArray()), aContext.channel().attr(NetworkRegistry.FML_CHANNEL).get()));
 	}
 	
 	@Override
