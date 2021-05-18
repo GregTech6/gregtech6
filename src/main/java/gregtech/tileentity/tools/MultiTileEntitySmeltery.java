@@ -169,6 +169,8 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			if (tData == null) {
 				slotTrash(0);
 				UT.Sounds.send(SFX.MC_FIZZ, this);
+			} else if (tData.mPrefix == OP.oreRaw) {
+				if (addMaterialStacks(Arrays.asList(OM.stack(tData.mMaterial.mMaterial, U * tData.mMaterial.mMaterial.mOreMultiplier)), tTemperature)) decrStackSize(0, 1);
 			} else {
 				List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) if (tMaterial.mAmount > 0) tList.add(tMaterial.clone());

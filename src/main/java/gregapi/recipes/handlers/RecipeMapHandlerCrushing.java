@@ -52,7 +52,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
-		if (aData.mPrefix == oreNetherrack || aData.mPrefix == oreNether || aData.mPrefix == oreBasalt || aData.mPrefix == oreKomatiite) {
+		if (aData.mPrefix == oreNetherrack || aData.mPrefix == oreNether || aData.mPrefix == oreBasalt || aData.mPrefix == oreKomatiite || aData.mPrefix == oreDeepslate) {
 			if (aData.mMaterial.mMaterial == MT.HexoriumBlack || aData.mMaterial.mMaterial == MT.HexoriumWhite) {
 				aMultiplier *= (aData.mMaterial.mMaterial.mOreMultiplier + 1);
 			} else if (aData.mMaterial.mMaterial == MT.HexoriumRed || aData.mMaterial.mMaterial == MT.HexoriumGreen || aData.mMaterial.mMaterial == MT.HexoriumBlue) {
@@ -130,7 +130,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 				}
 			}
 		}
-		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));
+		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, aData.mPrefix == oreRaw ? tDuration / 2 : tDuration), 16, 0));
 	}
 	
 	@Override
@@ -141,10 +141,12 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
-		if (BlocksGT.ore != null && aData != null && aData.hasValidPrefixMaterialData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
+		if (aData != null && aData.hasValidPrefixMaterialData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
 			boolean temp = F;
-			for (OreDictMaterial tMaterial : aData.mMaterial.mMaterial.mTargetedCrushing) if (tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreVanillastone.isGeneratingItem(aData.mMaterial.mMaterial)) {
-				if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore, 1, aData.mMaterial.mMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
+			for (OreDictMaterial tMaterial : aData.mMaterial.mMaterial.mTargetedCrushing) if (tMaterial.mID > 0 && tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreRaw.isGeneratingItem(aData.mMaterial.mMaterial)) {
+				if (BlocksGT.ore       != null) if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore      , 1, tMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
+				if (BlocksGT.oreBroken != null) if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
+				if (addRecipesUsing(aMap, aNEI, OP.oreRaw.mat(tMaterial, 1), OP.oreRaw.dat(tMaterial))) temp = T;
 			}
 			return temp;
 		}

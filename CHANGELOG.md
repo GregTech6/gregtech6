@@ -25,6 +25,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
 [ADDED] GT6 Logs can now be crafted into their All-Bark Variant using some Bark. For Non-GT6 Logs you will still have to use the Soft Hammer after placing the Log though.
+[ADDED] Raw Ore Items similar to the ones in the latest Minecraft Snapshots. They will only be dropped if you use a Fortune Tool to harvest the GT6 Ore Blocks.
 
 
 6.14.11:

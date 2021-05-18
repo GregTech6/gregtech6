@@ -120,15 +120,15 @@ public class Loader_OreProcessing implements Runnable {
 		
 		}};
 
-		plate                       .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
-		plateDouble                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust));
-		plateTriple                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust));
-		plateQuadruple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust));
-		plateQuintuple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust));
-		plateDense                  .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust));
-		plateCurved                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust));
-		plateGem                    .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockGem, blockPlateGem, blockDust));
-		sheetGt                     .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
+		plate                       .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust, blockRaw));
+		plateDouble                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust, blockRaw));
+		plateTriple                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust, blockRaw));
+		plateQuadruple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust, blockRaw));
+		plateQuintuple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust, blockRaw));
+		plateDense                  .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust, blockRaw));
+		plateCurved                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust, blockRaw));
+		plateGem                    .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockGem, blockPlateGem, blockDust, blockRaw));
+		sheetGt                     .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust, blockRaw));
 		foil                        .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
 		
 		rawOreChunk                 .addListener(new OreProcessing_Maceration(crushedTiny   , 3, ANTIMATTER.NOT));
@@ -326,7 +326,7 @@ public class Loader_OreProcessing implements Runnable {
 			
 			if (!tByProductStacks.isEmpty() && !mAlreadyListedOres.contains(aMaterial)) {
 				mAlreadyListedOres.add(aMaterial);
-				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), rockGt.mat(aMaterial, 1), dustImpure.mat(aMaterial, 1, dust.mat(aMaterial, 1)), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
+				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), oreRaw.mat(aMaterial, 1), rockGt.mat(aMaterial, 1), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
 			}
 			
 			if (tPrimaryByProductTiny == null) tPrimaryByProductTiny = OM.dustOrIngot(aMaterial, U9);

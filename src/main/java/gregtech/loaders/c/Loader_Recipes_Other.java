@@ -725,10 +725,12 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.CokeOven.addRecipe1(T,  0,  3600, chunkGt               .mat(MT.Coal    , 4), NF, MT.Creosote.liquid(   U2, F), ingot     .mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, ingot                 .mat(MT.Coal    , 1), NF, MT.Creosote.liquid(   U2, F), ingot     .mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, gem                   .mat(MT.Coal    , 1), NF, MT.Creosote.liquid(   U2, F), gem       .mat(MT.CoalCoke, 1));
+		RM.CokeOven.addRecipe1(T,  0,  3600, oreRaw                .mat(MT.Coal    , 1), NF, MT.Creosote.liquid(   U2, F), gem       .mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedPurified       .mat(MT.Coal    , 1), NF, MT.Creosote.liquid(   U2, F), chunkGt   .mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedPurifiedTiny   .mat(MT.Coal    , 9), NF, MT.Creosote.liquid(   U2, F), chunkGt   .mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedCentrifuged    .mat(MT.Coal    , 1), NF, MT.Creosote.liquid(   U2, F), chunkGt   .mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedCentrifugedTiny.mat(MT.Coal    , 9), NF, MT.Creosote.liquid(   U2, F), chunkGt   .mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1), chunkGt.mat(MT.CoalCoke, 1));
+		RM.CokeOven.addRecipe1(T,  0, 32400, blockRaw              .mat(MT.Coal    , 1), NF, MT.Creosote.liquid( 9*U2, F), blockGem  .mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0, 32400, blockGem              .mat(MT.Coal    , 1), NF, MT.Creosote.liquid( 9*U2, F), blockGem  .mat(MT.CoalCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0, 32400, blockIngot            .mat(MT.Coal    , 1), NF, MT.Creosote.liquid( 9*U2, F), blockIngot.mat(MT.CoalCoke, 1));
 		
@@ -736,10 +738,12 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.CokeOven.addRecipe1(T,  0,  3600, chunkGt               .mat(MT.Lignite , 4), NF, MT.Creosote.liquid( 3*U4, F), ingot     .mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, ingot                 .mat(MT.Lignite , 1), NF, MT.Creosote.liquid( 3*U4, F), ingot     .mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, gem                   .mat(MT.Lignite , 1), NF, MT.Creosote.liquid( 3*U4, F), gem       .mat(MT.LigniteCoke, 1));
+		RM.CokeOven.addRecipe1(T,  0,  3600, oreRaw                .mat(MT.Lignite , 1), NF, MT.Creosote.liquid( 3*U4, F), gem       .mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedPurified       .mat(MT.Lignite , 1), NF, MT.Creosote.liquid( 3*U4, F), chunkGt   .mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedPurifiedTiny   .mat(MT.Lignite , 9), NF, MT.Creosote.liquid( 3*U4, F), chunkGt   .mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedCentrifuged    .mat(MT.Lignite , 1), NF, MT.Creosote.liquid( 3*U4, F), chunkGt   .mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0,  3600, crushedCentrifugedTiny.mat(MT.Lignite , 9), NF, MT.Creosote.liquid( 3*U4, F), chunkGt   .mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1), chunkGt.mat(MT.LigniteCoke, 1));
+		RM.CokeOven.addRecipe1(T,  0, 32400, blockRaw              .mat(MT.Lignite , 1), NF, MT.Creosote.liquid(27*U4, F), blockGem  .mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0, 32400, blockGem              .mat(MT.Lignite , 1), NF, MT.Creosote.liquid(27*U4, F), blockGem  .mat(MT.LigniteCoke, 1));
 		RM.CokeOven.addRecipe1(T,  0, 32400, blockIngot            .mat(MT.Lignite , 1), NF, MT.Creosote.liquid(27*U4, F), blockIngot.mat(MT.LigniteCoke, 1));
 		

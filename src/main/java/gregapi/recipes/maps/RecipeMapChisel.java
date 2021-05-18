@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,7 +49,7 @@ public class RecipeMapChisel extends RecipeMap {
 		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) {
 			OreDictItemData tData = OM.anyassociation(aInputs[0]);
-			if (tData != null && (tData.mPrefix == OP.blockDust || tData.mPrefix == OP.blockIngot || tData.mPrefix == OP.blockGem || tData.mPrefix == OP.blockPlate || tData.mPrefix == OP.blockPlateGem || tData.mPrefix == OP.blockSolid)) {
+			if (tData != null && (tData.mPrefix == OP.blockRaw || tData.mPrefix == OP.blockDust || tData.mPrefix == OP.blockIngot || tData.mPrefix == OP.blockGem || tData.mPrefix == OP.blockPlate || tData.mPrefix == OP.blockPlateGem || tData.mPrefix == OP.blockSolid)) {
 				List<ItemStack> tList = OreDictManager.getOres(tData.toString(), T);
 				int tSize = tList.size();
 				if (tSize > 0) {

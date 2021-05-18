@@ -138,6 +138,7 @@ public class LanguageHandler {
 	
 	public static String getLocalName(OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
 		// Certain Materials have slightly different default Localisations.
+		if (aPrefix == OP.crateGtRaw      || aPrefix == OP.crateGt64Raw      || aPrefix == OP.blockRaw     ) return aPrefix.mMaterialPre + getLocalName(OP.ore     , aMaterial);
 		if (aPrefix == OP.crateGtGem      || aPrefix == OP.crateGt64Gem      || aPrefix == OP.blockGem     ) return aPrefix.mMaterialPre + getLocalName(OP.gem     , aMaterial);
 		if (aPrefix == OP.crateGtDust     || aPrefix == OP.crateGt64Dust     || aPrefix == OP.blockDust    ) return aPrefix.mMaterialPre + getLocalName(OP.dust    , aMaterial);
 		if (aPrefix == OP.crateGtIngot    || aPrefix == OP.crateGt64Ingot    || aPrefix == OP.blockIngot   ) return aPrefix.mMaterialPre + getLocalName(OP.ingot   , aMaterial);

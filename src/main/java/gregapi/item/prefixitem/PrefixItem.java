@@ -28,7 +28,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ModData;
 import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -120,7 +119,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override
 	@SuppressWarnings("unchecked")
 	public void getSubItems(Item var1, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {
-		if ((SHOW_HIDDEN_PREFIXES || !mPrefix.contains(TD.Creative.HIDDEN)) && (SHOW_ORE_BLOCK_PREFIXES || this == BlocksGT.ore || !mPrefix.contains(TD.Prefix.ORE))) for (int i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) if (SHOW_HIDDEN_MATERIALS || !mMaterialList[i].mHidden) {
+		if ((SHOW_HIDDEN_PREFIXES || !mPrefix.contains(TD.Creative.HIDDEN))) for (int i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) if (SHOW_HIDDEN_MATERIALS || !mMaterialList[i].mHidden) {
 			ItemStack tStack = OM.get_(ST.make(this, 1, i));
 			if (tStack.getItem() == this) {
 				updateItemStack(tStack);
