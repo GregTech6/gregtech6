@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -103,6 +103,7 @@ public class Loader_Items implements Runnable {
 		
 		new PrefixItem(MD.GT, "gt.meta.scrapGt"                     , OP.scrapGt                        );
 		new PrefixItem(MD.GT, "gt.meta.rockGt"                      , OP.rockGt                         );
+		new PrefixItem(MD.GT, "gt.meta.oreRaw"                      , OP.oreRaw                         );
 		
 		new PrefixItem(MD.GT, "gt.meta.gearGtSmall"                 , OP.gearGtSmall                    );
 		new PrefixItem(MD.GT, "gt.meta.gearGt"                      , OP.gearGt                         );

@@ -115,6 +115,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.gemLegendary          .addListener(new Listener_Furnace_Smelting( -1, F));
 		OP.rockGt                .addListener(new Listener_Furnace_Smelting( -1, T));
 		OP.rawOreChunk           .addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.oreRaw                .addListener(new Listener_Furnace_Smelting(U  , T));
 		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.rubble                .addListener(new Listener_Furnace_Smelting(U*2, T));
 		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U*2, T));

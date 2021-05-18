@@ -1317,7 +1317,6 @@ public class CS {
 
 
 	public static class GarbageGT {
-		/** The List of Hazmat Armors */
 		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
@@ -1539,14 +1538,14 @@ public class CS {
 		public static boolean addNEIRedirects(ItemStack... aRedirects) {for (ItemStack tStack : aRedirects) if (ST.valid(tStack)) {ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(tStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(tStack), tList = new ArrayListNoNulls<>()); tList.addAll(Arrays.asList(aRedirects));} return T;}
 		public static final Map<ItemStackContainer, ArrayListNoNulls<ItemStack>> sNEIRedirects = new ItemStackMap<>();
 	}
-
+	
 	/** Contains GT Blocks and Block related References. */
 	public static class BlocksGT {
 		public static IPrefixBlock
 		casingMachine, casingMachineDouble, casingMachineQuadruple, casingMachineDense,
-		blockGem, blockDust, blockIngot, blockSolid, blockPlate, blockPlateGem,
-		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem,
-		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem;
+		blockGem    , blockDust    , blockIngot    , blockPlate    , blockPlateGem    , blockRaw    , blockSolid,
+		crateGtGem  , crateGtDust  , crateGtIngot  , crateGtPlate  , crateGtPlateGem  , crateGtRaw  ,
+		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem, crateGt64Raw;
 		
 		/** Ore Blocks */
 		public static IPrefixBlock
@@ -1560,13 +1559,15 @@ public class CS {
 		public static BlockBase Sands, Diggables, Grass, Paths, RockOres, CrystalOres, VanillaOresA;
 		
 		public static IBlockBase FlowersA, FlowersB;
-		public static BlockBase Glowtus, Saplings_AB, Saplings_CD, Leaves_AB, Leaves_CD, BalesGrass, BalesCrop;
-		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, LogC, LogCFireProof, LogD, LogDFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, BeamC, BeamCFireProof, BeamD, BeamDFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof, Planks2, Planks2FireProof;
-		@Deprecated
-		public static BlockBase Sapling = Saplings_AB, Leaves = Leaves_AB;
+		public static BlockBase Glowtus, BalesGrass, BalesCrop;
+		public static BlockBase Saplings_AB, Saplings_CD, Leaves_AB, Leaves_CD;
+		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, LogC, LogCFireProof, LogD, LogDFireProof;
+		public static BlockBase Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, BeamC, BeamCFireProof, BeamD, BeamDFireProof;
+		public static BlockBase Planks, PlanksFireProof, Planks2, Planks2FireProof;
 		
-		
-		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
+		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass;
+		public static BlockBase Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium;
+		public static BlockBase Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
 		
 		public static IBlockBase
@@ -1614,6 +1615,8 @@ public class CS {
 		
 		public static final Block[] FLOWER_TILES = {Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] FLOWER_METAS = {0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
+		
+		@Deprecated public static BlockBase Sapling = Saplings_AB, Leaves = Leaves_AB;
 	}
 
 	public static class ArmorsGT {

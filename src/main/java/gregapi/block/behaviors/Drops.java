@@ -38,17 +38,24 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class Drops {
-	private final Item mDropNormal, mDropSilkTouch;
+	private final Item mDropNormal, mDropSilkTouch, mDropFortune, mDropSilkFortune;
+	private final boolean mFortunable, mPreferSilk;
 	
-	public Drops(Item  aDropNormal) {this(aDropNormal, aDropNormal);}
-	public Drops(Block aDropNormal) {this(Item.getItemFromBlock(aDropNormal));}
-	public Drops(Block aDropNormal, Block aDropSilkTouch) {this(Item.getItemFromBlock(aDropNormal), Item.getItemFromBlock(aDropSilkTouch));}
-	public Drops(Item  aDropNormal, Block aDropSilkTouch) {this(aDropNormal, Item.getItemFromBlock(aDropSilkTouch));}
-	public Drops(Block aDropNormal, Item  aDropSilkTouch) {this(Item.getItemFromBlock(aDropNormal), aDropSilkTouch);}
+	public Drops(Item  aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F);}
+	public Drops(Block aDropNormal) {this(ST.item(aDropNormal), ST.item(aDropNormal), ST.item(aDropNormal), ST.item(aDropNormal), F, F);}
+	public Drops(Block aDropNormal, Block aDropSilkTouch) {this(ST.item(aDropNormal), ST.item(aDropSilkTouch), ST.item(aDropNormal), ST.item(aDropSilkTouch), F, F);}
+	public Drops(Item  aDropNormal, Block aDropSilkTouch) {this(aDropNormal, ST.item(aDropSilkTouch), aDropNormal, ST.item(aDropSilkTouch), F, F);}
+	public Drops(Block aDropNormal, Item  aDropSilkTouch) {this(ST.item(aDropNormal), aDropSilkTouch, ST.item(aDropNormal), aDropSilkTouch, F, F);}
+	public Drops(Item  aDropNormal, Item  aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F);}
 	
-	public Drops(Item aDropNormal, Item aDropSilkTouch) {
-		mDropNormal = aDropNormal;
-		mDropSilkTouch = aDropSilkTouch;
+	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune) {this(aDropNormal, aDropSilkTouch, aDropFortune, aDropFortune, T, F);}
+	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune, Object aDropSilkFortune, boolean aFortunable, boolean aPreferSilk) {
+		mDropNormal      = aDropNormal      instanceof Block ? ST.item((Block)aDropNormal     ) : (Item)aDropNormal     ;
+		mDropSilkTouch   = aDropSilkTouch   instanceof Block ? ST.item((Block)aDropSilkTouch  ) : (Item)aDropSilkTouch  ;
+		mDropFortune     = aDropFortune     instanceof Block ? ST.item((Block)aDropFortune    ) : (Item)aDropFortune    ;
+		mDropSilkFortune = aDropSilkFortune instanceof Block ? ST.item((Block)aDropSilkFortune) : (Item)aDropSilkFortune;
+		mFortunable      = aFortunable;
+		mPreferSilk      = aPreferSilk;
 	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, int aFortune, boolean aSilkTouch) {
@@ -59,7 +66,7 @@ public class Drops {
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
 		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
-		rList.add(ST.update(ST.make(aSilkTouch?mDropSilkTouch:mDropNormal, 1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null)));
+		rList.add(ST.update(ST.make(aFortune>0?aSilkTouch?mDropFortune:mDropSilkFortune:aSilkTouch?mDropSilkTouch:mDropNormal, mPreferSilk&&aSilkTouch?1:mFortunable?1+RNGSUS.nextInt(aFortune+1):1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null)));
 		return rList;
 	}
 }

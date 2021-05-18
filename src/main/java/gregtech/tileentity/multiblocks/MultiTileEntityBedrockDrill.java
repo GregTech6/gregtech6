@@ -173,7 +173,8 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						slot(0, ST.make((Block)(tBlock instanceof Block ? tBlock : BlocksGT.oreBroken), 1, tMaterial.mID));
 					} else if (WD.dimATUM(worldObj)) {
 						// Atum Limestone Ore.
-						slot(0, ST.make((Block)BlocksGT.oreBrokenAtumLimestone, 1, tMaterial.mID));
+						Object tBlock = BlocksGT.stoneToBrokenOres.get(new ItemStackContainer(IL.ATUM_Limestone.get(1)));
+						slot(0, ST.make((Block)(tBlock instanceof Block ? tBlock : BlocksGT.oreBroken), 1, tMaterial.mID));
 					} else if (WD.dimBTL(worldObj)) {
 						// Betweenlands Stone Ores.
 						Object tBlock = BlocksGT.stoneToBrokenOres.get(new ItemStackContainer((mType%2==0?IL.BTL_Pitstone:IL.BTL_Betweenstone).get(1)));
