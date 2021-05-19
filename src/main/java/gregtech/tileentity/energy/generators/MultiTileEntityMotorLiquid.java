@@ -208,9 +208,9 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		if (aSide == mFacing)              return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[0]));
-		if (aSide == OPPOSITES[mFacing])   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[1]));
-										   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[2]));
+		if (aSide == mFacing)              return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[0]));
+		if (aSide == OPPOSITES[mFacing])   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[1]));
+										   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[2]));
 	}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}

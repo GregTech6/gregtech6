@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,6 +31,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -81,11 +82,11 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		
 		CR.delate(MD.ERE, "mirbrick");
 		if (IL.BoP_Mud_Brick.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', "itemClay");
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', "itemClay");
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', OD.itemClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', OD.itemClay);
 		if (IL.BoP_Mud_Bricks.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Bricks, 'Y', "blockClay");
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', "blockClay");
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Bricks, 'Y', OD.blockClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', OD.blockClay);
 		
 		
 		CR.delate(IL.ERE_Spray_Repellant.get(1));
