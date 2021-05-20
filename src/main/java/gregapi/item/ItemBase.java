@@ -77,6 +77,7 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
+		aList.removeAll(null);
 	}
 	
 	protected void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {

@@ -269,6 +269,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
+		aList.removeAll(null);
 	}
 	
 	@Override

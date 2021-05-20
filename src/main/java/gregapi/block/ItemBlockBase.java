@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -89,6 +89,7 @@ public class ItemBlockBase extends ItemBlock implements IBlock, IItemGT {
 		float tResistance = mPlaceable.getExplosionResistance(aMeta);
 		if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(field_150939_a, tResistance));
 		aList.add(LH.getToolTipHarvest(field_150939_a.getMaterial(), field_150939_a.getHarvestTool(aMeta), field_150939_a.getHarvestLevel(aMeta)));
+		aList.removeAll(null);
 	}
 	
 	@Override @SideOnly(Side.CLIENT) public CreativeTabs getCreativeTab() {return field_150939_a.getCreativeTabToDisplayOn();}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -105,6 +105,7 @@ public class ItemArmorBase extends ItemArmor implements IItemUpdatable, IItemGT,
 		if (getMaxDamage() > 0 && !getHasSubtypes()) aList.add((aStack.getMaxDamage() - getDamage(aStack)) + " / " + aStack.getMaxDamage());
 		if (mTooltip != null) aList.add(LanguageHandler.translate(mTooltip, mTooltip));
 		addAdditionalToolTips(aList, aStack, aF3_H);
+		aList.removeAll(null);
 	}
 	
 	protected void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {

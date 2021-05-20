@@ -200,7 +200,6 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public String toString() {return mNameInternal;}
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
-	@Override public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {/**/}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}
@@ -213,6 +212,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public OreDictPrefix getPrefix(int aMetaData) {return mPrefix;}
 	@Override @SuppressWarnings("deprecation") public boolean hasEffect(ItemStack aStack) {return F;}
 	@Override public boolean hasEffect(ItemStack aStack, int aRenderPass) {return F;}
+	@Override @SuppressWarnings("unchecked") public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {aList.removeAll(null);}
 	
 	/*
 	@Override @Optional.Method(modid = ModIDs.TC) public void setAspects(ItemStack aStack, AspectList aAspectList) {}
