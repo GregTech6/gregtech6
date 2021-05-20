@@ -25,7 +25,6 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanPlace;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsLeaves;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnOxygenRemoved;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
@@ -62,7 +61,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IsLeaves, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public ItemStack mBerry;
 	public byte oStage = 0, mStage = 0, mGrowth = 0, mSpeed = 0;
 	
@@ -328,7 +327,6 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return SIDES_INVALID[mFacing];}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
-	@Override public boolean isLeaves() {return T;}
 	
 	@Override public int getLightOpacity() {return SIDES_INVALID[mFacing] ? LIGHT_OPACITY_LEAVES : LIGHT_OPACITY_NONE;}
 	@Override public byte getVisualData() {return mStage;}

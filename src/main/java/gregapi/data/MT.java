@@ -2389,14 +2389,6 @@ public class MT {
 			Skyroot                 .addEnchantmentForTools(Enchantment.fortune, 1);
 			IronWood                .addEnchantmentForTools(Enchantment.fortune, 1);
 			Steeleaf                .addEnchantmentForTools(Enchantment.fortune, 2);
-			Olivine                 .addEnchantmentForTools(Enchantment.fortune, 1);
-			Alexandrite             .addEnchantmentForTools(Enchantment.fortune, 2);
-			Amazonite               .addEnchantmentForTools(Enchantment.fortune, 2);
-			Tanzanite               .addEnchantmentForTools(Enchantment.fortune, 2);
-			Topaz                   .addEnchantmentForTools(Enchantment.fortune, 2);
-			BlueTopaz               .addEnchantmentForTools(Enchantment.fortune, 3);
-			Amethyst                .addEnchantmentForTools(Enchantment.fortune, 2);
-			EnderAmethyst           .addEnchantmentForTools(Enchantment.fortune, 3);
 			Efrine                  .addEnchantmentForTools(Enchantment.fortune, 2);
 			Soularium               .addEnchantmentForTools(Enchantment.fortune, 2);
 			Midasium                .addEnchantmentForTools(Enchantment.fortune, 2);
@@ -2410,6 +2402,7 @@ public class MT {
 			DarkMatter              .addEnchantmentForTools(Enchantment.fortune, 3);
 			RedMatter               .addEnchantmentForTools(Enchantment.fortune, 3);
 			Jade                    .addEnchantmentForTools(Enchantment.fortune, 3);
+			EnderAmethyst           .addEnchantmentForTools(Enchantment.fortune, 3);
 			Continuum               .addEnchantmentForTools(Enchantment.fortune, 3);
 			Basalz                  .addEnchantmentForTools(Enchantment.fortune, 4);
 			Ma                      .addEnchantmentForTools(Enchantment.fortune, 4);

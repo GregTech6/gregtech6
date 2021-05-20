@@ -644,10 +644,10 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Alexandrite          .addEnchantmentForTools(tEnchant, 5);
 				MT.Opal                 .addEnchantmentForTools(tEnchant, 4);
 				MT.Olivine              .addEnchantmentForTools(tEnchant, 2);
-				MT.Amethyst             .addEnchantmentForTools(tEnchant, 3);
 				MT.Dioptase             .addEnchantmentForTools(tEnchant, 3);
-				MT.Jade                 .addEnchantmentForTools(tEnchant, 7);
+				MT.Jade                 .addEnchantmentForTools(tEnchant, 3);
 				MT.Craponite            .addEnchantmentForTools(tEnchant, 1);
+				MT.Amethyst             .addEnchantmentForTools(tEnchant, 3);
 				MT.EnderAmethyst        .addEnchantmentForTools(tEnchant, 5);
 			}
 		}

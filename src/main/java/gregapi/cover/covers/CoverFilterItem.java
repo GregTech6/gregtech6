@@ -29,6 +29,7 @@ import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
+import gregapi.tileentity.connectors.ITileEntityItemPipe;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
@@ -113,6 +114,14 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 		if (aData.mStopped) return T;
 		if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.item")) return aData.mVisuals[aCoverSide] == 0;
 		return (aData.mVisuals[aCoverSide] == 0) != ST.equal(ST.load(aData.mNBTs[aCoverSide], "gt.filter.item"), aStack, T);
+	}
+	@Override
+	public boolean interceptConnect(byte aCoverSide, CoverData aData) {
+		return aData.mTileEntity instanceof ITileEntityItemPipe && aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof ITileEntityItemPipe;
+	}
+	@Override
+	public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {
+		return aData.mTileEntity instanceof ITileEntityItemPipe && aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof ITileEntityItemPipe;
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return aData.mVisuals[aCoverSide]==0?sTextureNormal:sTextureInverted;}
