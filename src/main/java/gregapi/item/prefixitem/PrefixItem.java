@@ -212,7 +212,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public OreDictPrefix getPrefix(int aMetaData) {return mPrefix;}
 	@Override @SuppressWarnings("deprecation") public boolean hasEffect(ItemStack aStack) {return F;}
 	@Override public boolean hasEffect(ItemStack aStack, int aRenderPass) {return F;}
-	@Override @SuppressWarnings("unchecked") public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {aList.removeAll(null);}
+	@Override @SuppressWarnings("unchecked") public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {while (aList.remove(null));}
 	
 	/*
 	@Override @Optional.Method(modid = ModIDs.TC) public void setAspects(ItemStack aStack, AspectList aAspectList) {}

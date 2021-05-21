@@ -134,7 +134,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 		if (mBlock.mGravity) aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_GRAVITY));
 		OreDictMaterial aMaterial = mBlock.getMetaMaterial(getDamage(aStack));
 		aList.add(LH.getToolTipBlastResistance(field_150939_a, mBlock.mBaseResistance * (1+mBlock.getHarvestLevel(aMaterial==null?0:aMaterial.mToolQuality))));
-		aList.removeAll(null);
+		while (aList.remove(null));
 	}
 	
 	@Override

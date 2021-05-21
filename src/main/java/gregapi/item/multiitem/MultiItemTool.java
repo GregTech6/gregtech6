@@ -280,10 +280,17 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
-	public final EnumAction getItemUseAction(ItemStack aStack) {
+	public EnumAction getItemUseAction(ItemStack aStack) {
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats != null && tStats.canBlock()) return EnumAction.block;
 		return EnumAction.none;
+	}
+	@Override
+	public int getMaxItemUseDuration(ItemStack aStack) {
+		if (D1) return 72000; // TODO REMOVE THIS TEST LINE AFTER ASM-ING THE CRAFTING MANAGER!!!
+		IToolStats tStats = getToolStats(aStack);
+		if (tStats != null && tStats.canBlock()) return 72000;
+		return 0;
 	}
 	
 	@Override
@@ -668,7 +675,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public IToolStats getToolStats(ItemStack aStack) {isItemStackUsable(aStack); return getToolStatsInternal(aStack);}
 	public IToolStats getToolStatsInternal(ItemStack aStack) {return aStack == null ? null : getToolStatsInternal(ST.meta_(aStack));}
 	public IToolStats getToolStatsInternal(int aDamage) {return mToolStats.get((short)aDamage);}
-	@Override public final int getMaxItemUseDuration(ItemStack aStack) {return 72000;}
 	@Override public final boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public final int getItemStackLimit(ItemStack aStack) {return 1;}
 	@Override public boolean isFull3D() {return T;}
