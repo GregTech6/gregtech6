@@ -1065,6 +1065,10 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Torch_Soul                      .set(ST.make(MD.NeLi, "SoulTorch"                           , 1, 0), null, OD.blockSoulTorch);
 		IL.NeLi_Torch_Shadow                    .set(ST.make(MD.NeLi, "ShadowTorch"                         , 1, 0), null, OD.blockShadowTorch);
 		IL.NeLi_Torch_Fox                       .set(ST.make(MD.NeLi, "FoxfireTorch"                        , 1, 0), null, OD.blockFoxfireTorch);
+		IL.NeLi_Bonetorch                       .set(ST.make(MD.NeLi, "BoneTorch"                           , 1, 0), null, OD.blockTorch);
+		IL.NeLi_Bonetorch_Soul                  .set(ST.make(MD.NeLi, "SoulBoneTorch"                       , 1, 0), null, OD.blockSoulTorch);
+		IL.NeLi_Bonetorch_Shadow                .set(ST.make(MD.NeLi, "ShadowBoneTorch"                     , 1, 0), null, OD.blockShadowTorch);
+		IL.NeLi_Bonetorch_Fox                   .set(ST.make(MD.NeLi, "FoxfireBoneTorch"                    , 1, 0), null, OD.blockFoxfireTorch);
 		IL.Crop_AbyssalOats                     .set(ST.make(MD.NeLi, "AbyssalOatItem"                      , 1, 0), new OreDictItemData(MT.OatAbyssal, U), "cropAbyssalOats");
 		IL.NeLi_Obsidian                        .set(ST.make(MD.NeLi, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U*9), OD.cryingObsidian);
 		IL.NeLi_Quartz_Bricks                   .set(ST.make(MD.NeLi, "QuartzBricks"                        , 1, 0), new OreDictItemData(MT.NetherQuartz   , U*4));
