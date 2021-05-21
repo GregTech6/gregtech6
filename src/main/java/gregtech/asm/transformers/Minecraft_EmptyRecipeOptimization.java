@@ -66,7 +66,7 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 				// Need a label to jump to if it is not zero
 				LabelNode after = new LabelNode();
 				// And test if it is not zero and jump to that label if so
-				insert.add(new JumpInsnNode(Opcodes.IFEQ, after));
+				insert.add(new JumpInsnNode(Opcodes.IFNE, after));
 				// If we didn't jump then it is zero, so return null by first pushing a null onto the stack:
 				insert.add(new InsnNode(Opcodes.ACONST_NULL));
 				// Then returning...
