@@ -47,18 +47,14 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 			if (m.name.equals("findMatchingRecipe") || (m.name.equals("a") && m.desc.equals("(Laae;Lahb;)Ladd;"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.item.crafting.CraftingManager.findMatchingRecipe");
 				AbstractInsnNode at = m.instructions.getFirst();
-				// Get the `LINENUMBER 308` bytecode
-				for(;at != null && !(at instanceof LineNumberNode && ((LineNumberNode)at).line == 308); at = at.getNext());
+				// Skip to the ICONST_2
+				for(;at != null && at.getOpcode() != Opcodes.ICONST_2; at = at.getNext());
 				if(at == null) {
 					GT_ASM.logger.warn("Reached `null` in `at` too soon!  No changes made, bailing!");
 					return basicClass;
 				}
-				// Then jump over the `FRAME SAME` bytecode
-				at = at.getNext();
-				if(at == null) {
-					GT_ASM.logger.warn("Reached `null` at `at` too soon!  No changes made, bailing!");
-					return basicClass;
-				}
+				// Then back up once.
+				at = at.getPrevious();
 				// Now build the instructions to insert:
 				InsnList insert = new InsnList();
 				// Need to load `i` to the stack
@@ -73,8 +69,8 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 				insert.add(new InsnNode(Opcodes.ARETURN));
 				// And now put in the LabelNode that we jump to if it was not zero to continue the rest of the function after this:
 				insert.add(after);
-				// And lastly insert the new instructions right before the next `for` loop
-				m.instructions.insert(at, insert);
+				// And lastly insert the new instructions right before the next `if` conditional
+				m.instructions.insertBefore(at, insert);
 				// This basically turned this:
 				//   if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable())
 				// Into this:
