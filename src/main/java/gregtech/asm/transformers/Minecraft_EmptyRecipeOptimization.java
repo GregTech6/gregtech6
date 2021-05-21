@@ -44,7 +44,7 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 		classReader.accept(classNode, 0);
 
 		for (MethodNode m: classNode.methods) {
-			if (m.name.equals("findMatchingRecipe") || m.name.equals("a")) {
+			if (m.name.equals("findMatchingRecipe") || (m.name.equals("a") && m.desc.equals("(Laae;Lahb;)Ladd;"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.item.crafting.CraftingManager.findMatchingRecipe");
 				AbstractInsnNode at = m.instructions.getFirst();
 				// Get the `LINENUMBER 308` bytecode
