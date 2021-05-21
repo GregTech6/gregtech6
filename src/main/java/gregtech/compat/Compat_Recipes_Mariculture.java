@@ -41,8 +41,6 @@ public class Compat_Recipes_Mariculture extends CompatMods {
 	public Compat_Recipes_Mariculture(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Mariculture Recipes.");
-		CR.delate(IL.MaCu_Polished_Logs.get(1));
-		CR.delate(IL.MaCu_Polished_Planks.get(1));
 		CR.remove(IL.MaCu_Polished_Planks.get(1), null, null, IL.MaCu_Polished_Planks.get(1));
 		
 		RM.generify(ST.make(ItemsGT.BUMBLEBEES, 1, W), IL.MaCu_Bait_Bee.get(1));

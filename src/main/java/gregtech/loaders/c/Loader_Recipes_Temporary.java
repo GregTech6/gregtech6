@@ -219,17 +219,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		if (MD.NeLi.mLoaded) {
-			CR.delate(IL.NeLi_Bread.get(1));
-			CR.delate(IL.NeLi_Cookie.get(1));
-			CR.delate(IL.NeLi_Torch_Fox.get(1));
-			CR.delate(IL.NeLi_Torch_Soul.get(1));
-			CR.delate(IL.NeLi_Torch_Shadow.get(1));
-			CR.delate(IL.NeLi_Bonetorch.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Fox.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Soul.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Shadow.get(1));
-			CR.delate(IL.NeLi_Foxfire_Powder.get(1));
-			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
 			CR.delate(MD.NeLi, "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
 			
 			CR.remove(IL.NeLi_Reed.get(1));

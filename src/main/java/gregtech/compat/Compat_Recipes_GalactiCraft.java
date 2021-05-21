@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -189,7 +189,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				RM.glowstone(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"    , 1, 0), MT.GlowstonePluto    );
 			}
 			
-			CR.delate(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, W));
+			CR.delate(MD.GC_GALAXYSPACE, "futureglasses", W);
 			for (byte i = 0; i < 16; i++){
 				CR.shaped(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i), CR.DEF_NAC_NCC, "GGG", "GDG", "GGG", 'G', ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), 'D', DYE_OREDICTS[i]);
 				for (FluidStack tDye : DYE_FLUIDS[i])

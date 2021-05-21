@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,7 +45,7 @@ public class Compat_Recipes_Botania extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		OUT.println("GT_Mod: Doing Botania Recipes.");
-		for (int i = 0; i < 16; i++) if ((i & 3) != 1) CR.delate(ST.make(MD.BOTA, "stone", 1, i));
+		CR.delate(MD.BOTA, "stone", 0, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15);
 		
 		CR.shaped(ST.make(MD.BOTA, "openBucket", 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "XhX", " Y ", 'Y', OP.plate.dat(MT.ElvenElementium), 'X', OP.plateCurved.dat(MT.ElvenElementium));
 		

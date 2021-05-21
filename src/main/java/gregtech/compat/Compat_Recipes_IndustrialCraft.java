@@ -81,18 +81,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "mfeUnit"         ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "BCB", "BXB", "BMB", 'M', IL.IC2_Machine    , 'X', aRegistry.getItem(10083), 'B', "gt:re-battery3", 'C', OD_CIRCUITS[3]);}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "mfsUnit"         ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "BCB", "BXB", "BMB", 'M', IL.IC2_Machine_Adv, 'X', aRegistry.getItem(10043), 'B', ST.mkic("mfeUnit", 1), 'C', OD_CIRCUITS[4]);}
 		
-		CR.delate(IL.IC2_Carbon_Mesh.get(1));
-		CR.delate(IL.IC2_Carbon_Fiber.get(1));
-		CR.delate(IL.IC2_Machine.get(1));
-		CR.delate(IL.IC2_EnergyCrystal.get(1));
-		CR.delate(IL.IC2_ITNT.get(1));
-		CR.delate(IL.IC2_Mixed_Metal_Ingot.get(1));
-		CR.delate(IL.IC2_Fertilizer.get(1));
-		CR.delate(IL.IC2_Spray_WeedEx.get(1));
-		CR.delate(IL.IC2_Food_Can_Empty.get(1));
-		CR.delate(IL.Cell_Empty.get(1));
-		CR.delate(IL.Cell_Universal_Fluid.get(1));
-		
 		CR.remove(ST.make(Items.lava_bucket , 1, 0), IL.Cell_Empty.get(1));
 		CR.remove(ST.make(Items.water_bucket, 1, 0), IL.Cell_Empty.get(1));
 		
@@ -297,7 +285,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(ST.mkic("MOXFuel", 1));
 		CR.delate(ST.mkic("UranFuel", 1));
 		CR.delate(ST.mkic("RTGPellets", 1));
-		CR.delate(IL.IC2_Energium_Dust.get(1));
 		
 		CR.shaped(IL.IC2_Iridium_Ore.get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', IL.IC2_Iridium_Shard);
 		
@@ -437,7 +424,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.shaped(ST.mkic("tinCableItem"    , 3), CR.DEF, "xP", 'P', OP.plate.dat(MT.Sn));
 		
 		CR.delate(ST.mkic("crop", 1));
-		CR.delate(IL.IC2_Scaffold.get(1));
 		
 		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SsS", 'S', OP.stick.dat(MT.WoodTreated));
 		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SkS", 'S', OP.stick.dat(MT.WoodTreated));

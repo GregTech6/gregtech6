@@ -138,7 +138,6 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.pulverizing(ST.make(MD.RC, "cube.crushed.obsidian", 1), OP.dust.mat(MT.Obsidian, 7), OP.dust.mat(MT.Obsidian, 1), 25, T);
 		
 		CR.delate(MD.RC, "part.bleached.clay");
-		CR.delate(IL.RC_Concrete.get(1));
 		
 		RM.Drying.addRecipe1(T, 16,  16, IL.RC_Rebar.get(1), FL.Concrete.make(L), FL.DistW.make(8), IL.RC_Concrete.get(2));
 		

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,15 +25,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.IL;
-import gregapi.util.CR;
 
 public class Compat_Recipes_Enviromine extends CompatMods {
 	public Compat_Recipes_Enviromine(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Enviromine Recipes.");
-		CR.delate(IL.ENVM_Bottle_Water_Cold.get(1));
-		CR.delate(IL.ENVM_Bottle_Water_Dirty.get(1));
-		CR.delate(IL.ENVM_Bottle_Water_Salty.get(1));
 	}
 }

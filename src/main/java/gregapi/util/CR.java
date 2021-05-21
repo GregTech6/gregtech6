@@ -134,6 +134,8 @@ public class CR {
 		BUFFER.clear();
 	}
 	
+	public static final String DELATE = "gt:delate";
+	
 	public static final long NONE = 0;
 	/** Mirrors the Recipe */
 	public static final long MIR = B[0];

@@ -193,32 +193,34 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Stick.get(1), DEF, "s", "X", 'X', OP.treeSapling);
 		CR.shaped(IL.Stick.get(1), DEF, "k", "X", 'X', OP.treeSapling);
 		
-		IL[] tItems = new IL[] {IL.Torch, IL.NeLi_Bonetorch};
-		Object[] tSticks = new Object[] {OD.stickAnyWood, Items.bone};
+		// Normal Torches need to be the absolute last in this Array!
+		IL[] tItems = new IL[] {IL.NeLi_Bonetorch, IL.Torch};
+		Object[] tSticks = new Object[] {Items.bone, OD.stickAnyWood};
 		
 		for (int i = 0; i < tItems.length; i++) if (tItems[i].exists()) {
 			// Torches, lots and lots of Torches.
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.S)                     );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.S)                        );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.S)                       );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.S)                    );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.S)            );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.S)         );
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dustTiny.dat(MT.Blaze)               );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.P)                     );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.P)                        );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.P)                       );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.P)                    );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.P)            );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.P)         );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.Phosphorus)            );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.Phosphorus)               );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.Phosphorus)              );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.Phosphorus)           );
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.Phosphorus)   );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.S));
+			
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dustTiny          .dat(MT.Blaze));
+			
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.P));
+			
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Phosphorus));
 			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemResin                            );
-			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry                         );
 			
 			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Peat));
@@ -239,6 +241,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.PeatBituminous));
 			
 			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', IL.NeLi_ShroomLight);
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemResin);
+			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry);
 			
 			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', Blocks.wool);
 			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', Blocks.wool);
@@ -429,7 +433,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (int i = 1; i < 16; i++)
 		CR.shapeless(ST.make(Blocks.wool, 1, i), DEF_NAC, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
 		
-		CR.delate(IL.Food_Bread.get(1));
 		CR.delate(ST.make(Items.arrow, 1, 0));
 		CR.delate(ST.make(Items.cookie, 1, 0));
 		CR.delate(ST.make(Items.golden_apple, 1, 0));
