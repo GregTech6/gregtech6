@@ -51,6 +51,7 @@ import gregapi.oredict.event.IOreDictListenerEvent.OreDictRegistrationContainer;
 import gregapi.oredict.event.IOreDictListenerRecyclable;
 import gregapi.oredict.event.IOreDictListenerRecyclable.OreDictRecyclingContainer;
 import gregapi.recipes.Recipe;
+import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -738,6 +739,7 @@ public final class OreDictManager {
 		return registerOre_(aName, aStack);
 	}
 	public boolean registerOre_(Object aName, ItemStack aStack) {
+		if (CR.DELATE == aName) {if (MD.GT.mLoaded) CR.delate(aStack); return MD.GT.mLoaded;}
 		if (Abstract_Mod.sStartedPostInit > 0) throw new IllegalStateException("Late OreDict Registration using GT OreDict Utility. Only @Init and @PreInit are allowed for this when you use this Function instead of the Forge one.");
 		String tName = aName.toString();
 		if (UT.Code.stringInvalid(tName)) return F;

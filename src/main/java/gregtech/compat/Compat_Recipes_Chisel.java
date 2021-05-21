@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,9 +25,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.IL;
 import gregapi.data.RM;
-import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 
@@ -36,12 +34,5 @@ public class Compat_Recipes_Chisel extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Chisel Mod Recipes.");
 		RM.rem_smelting(ST.make(Blocks.gravel, 1, 0));
-		
-		CR.delate(IL.CHSL_Granite.get(1));
-		CR.delate(IL.CHSL_Diorite.get(1));
-		CR.delate(IL.CHSL_Andesite.get(1));
-		CR.delate(IL.CHSL_Granite_Smooth.get(1));
-		CR.delate(IL.CHSL_Diorite_Smooth.get(1));
-		CR.delate(IL.CHSL_Andesite_Smooth.get(1));
 	}
 }

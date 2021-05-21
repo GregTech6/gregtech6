@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,17 +26,13 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.FL;
-import gregapi.data.IL;
 import gregapi.data.RM;
-import gregapi.util.CR;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Mystcraft extends CompatMods {
 	public Compat_Recipes_Mystcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Mystcraft Recipes.");
-		CR.delate(IL.Myst_Ink_Vial.get(1));
-		
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black]) {
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.Water.make(125)), FL.Myst_Ink.make(500), ZL_IS);
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.SpDew.make(100)), FL.Myst_Ink.make(500), ZL_IS);

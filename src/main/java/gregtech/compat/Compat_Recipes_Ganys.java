@@ -283,13 +283,6 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			BlocksGT.blockToDrop.put(IL.EtFu_Ancient_Debris     , IL.Ancient_Debris          .get(1));
 			BlocksGT.blockToSilk.put(IL.EtFu_Ancient_Debris     , IL.Ancient_Debris          .get(1));
 			
-			CR.delate(IL.EtFu_Granite.get(1));
-			CR.delate(IL.EtFu_Diorite.get(1));
-			CR.delate(IL.EtFu_Andesite.get(1));
-			CR.delate(IL.EtFu_Granite_Smooth.get(1));
-			CR.delate(IL.EtFu_Diorite_Smooth.get(1));
-			CR.delate(IL.EtFu_Andesite_Smooth.get(1));
-			
 			if (MD.CHSL.mLoaded) {
 				ItemStack tChiselPurpur = ST.make(MD.CHSL, "purpur", 1, 0);
 				CR.delate(tChiselPurpur);
@@ -322,13 +315,6 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.carrot, 9, W), ST.tag(9), ST.make(MD.GaSu, "storage", 1, 1));
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
 			RM.ic2_extractor(                       ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
-			
-			CR.delate(IL.GaSu_Granite.get(1));
-			CR.delate(IL.GaSu_Diorite.get(1));
-			CR.delate(IL.GaSu_Andesite.get(1));
-			CR.delate(IL.GaSu_Granite_Smooth.get(1));
-			CR.delate(IL.GaSu_Diorite_Smooth.get(1));
-			CR.delate(IL.GaSu_Andesite_Smooth.get(1));
 		}
 		if (MD.GaNe.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Nether.");
 			RM.pulverizing(ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,7 +35,7 @@ public class Compat_Recipes_OpenComputers extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Open Computers Recipes.");
 		RM.rem_smelting(ST.make(MD.OC, "item", 1, 30));
-		CR.delate(ST.make(MD.OC, "item", 1, 30));
+		CR.delate(MD.OC, "item", 30);
 		CR.delate(MD.OC, "wrench");
 		CR.shapeless(ST.make(MD.OC, "item", 1, 32), new Object[] {OD_CIRCUITS[3]});
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,19 +41,6 @@ public class Compat_Recipes_GrowthCraft extends CompatMods {
 	public Compat_Recipes_GrowthCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing GrowthCraft Recipes.");
-		CR.delate(IL.GrC_Honey_Jar          .get(1));
-		CR.delate(IL.GrC_Honey_Bucket       .get(1));
-		CR.delate(IL.GrC_Honey_Bottle       .get(1));
-		CR.delate(IL.GrC_Milk_Bucket        .get(1));
-		CR.delate(IL.GrC_Milk_Bottle        .get(1));
-		CR.delate(IL.GrC_Applecore          .get(1));
-		CR.delate(IL.GrC_Ice_Cream          .get(1));
-		CR.delate(IL.GrC_Ice_Cream_Chocolate.get(1));
-		CR.delate(IL.GrC_Ice_Cream_Grape    .get(1));
-		CR.delate(IL.GrC_Ice_Cream_Apple    .get(1));
-		CR.delate(IL.GrC_Ice_Cream_Honey    .get(1));
-		CR.delate(IL.GrC_Ice_Cream_Melon    .get(1));
-		
 		RM.rem_smelting(ST.make(MD.GrC, "grccore.BottleFluidSaltWater", 1, 0));
 		RM.rem_smelting(ST.make(MD.GrC, "grccore.BucketFluidSaltWater", 1, 0));
 		

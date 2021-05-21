@@ -219,44 +219,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		if (MD.NeLi.mLoaded) {
-			CR.delate(IL.NeLi_Bread.get(1));
-			CR.delate(IL.NeLi_Cookie.get(1));
-			CR.delate(IL.NeLi_Torch_Fox.get(1));
-			CR.delate(IL.NeLi_Torch_Soul.get(1));
-			CR.delate(IL.NeLi_Torch_Shadow.get(1));
-			CR.delate(IL.NeLi_Bonetorch.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Fox.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Soul.get(1));
-			CR.delate(IL.NeLi_Bonetorch_Shadow.get(1));
-			CR.delate(IL.NeLi_Foxfire_Powder.get(1));
-			CR.delate(IL.NeLi_Bottle_Hellderberryjuice.get(1));
 			CR.delate(MD.NeLi, "Chain", "ChainEfrine", "ChainGold", "ChainPowered", "ChainPoweredEfrine", "ChainPoweredGold", "EmptyLantern", "EmptyLanternEfrine", "EmptyLanternGold", "Lantern", "LanternEfrine", "LanternGold", "GlowstoneLantern", "GlowstoneLanternEfrine", "GlowstoneLanternGold", "FoxfireLantern", "FoxfireLanternEfrine", "FoxfireLanternGold", "SoulLantern", "SoulLanternEfrine", "SoulLanternGold", "RedstoneLantern", "RedstoneLanternEfrine", "RedstoneLanternGold", "RedstoneLanternOn", "RedstoneLanternEfrineOn", "RedstoneLanternGoldOn");
 			
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
 			
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Fox       .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Shadow    .get(4), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Shadow    .get(3), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Shadow    .get(2), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Shadow    .get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch});
-			
+			// HAS TO BE BEFORE REGULAR TORCHES!!!
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OD.flowerWither          , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(3), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
@@ -277,6 +246,28 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shapeless(IL.NeLi_Bonetorch_Shadow.get(3), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Shadow.get(2), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Shadow.get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, IL.NeLi_Bonetorch});
+			
+			// HAS TO BE BEFORE SPECIAL TORCHES!!!
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(3), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(2), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Fox       .get(1), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow    .get(4), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow    .get(3), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow    .get(2), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Shadow    .get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch});
 			
 			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor"         , 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
 			

@@ -89,8 +89,6 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', OD.blockClay);
 		
 		
-		CR.delate(IL.ERE_Spray_Repellant.get(1));
-		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));
 		
 		for (FluidStack tFluid : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250)))
