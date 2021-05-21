@@ -287,7 +287,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	@Override
 	public int getMaxItemUseDuration(ItemStack aStack) {
-		if (D1) return 72000; // TODO REMOVE THIS TEST LINE AFTER ASM-ING THE CRAFTING MANAGER!!!
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats != null && tStats.canBlock()) return 72000;
 		return 0;

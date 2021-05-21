@@ -20,6 +20,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
 [FIXED] Burning Boxes and Basic Machines can no longer be rotated while they are lit or actively processing something.
 [FIXED] Item Filter Covers no longer go inbetween two Item Pipes, which was causing confusion as to why they are "not working" since you were able to place them in such a way.
+[FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
