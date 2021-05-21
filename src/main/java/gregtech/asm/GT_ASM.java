@@ -19,14 +19,7 @@
 
 package gregtech.asm;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -104,6 +97,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
+			transformers.put(Minecraft_EmptyRecipeOptimization.class.getName(), true);
 			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
 			transformers.put(Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix.class.getName(), true);
@@ -203,5 +197,13 @@ public class GT_ASM implements IFMLLoadingPlugin {
 		PrinterClassVisitor printer = new PrinterClassVisitor();
 		classNode.accept(printer);
 		return printer.out_writer.toString();
+	}
+
+	public static void writePrettyPrintedOpCodesToFile(ClassNode classNode, String fileName) {
+		try {
+			(new BufferedWriter(new FileWriter(fileName, true))).append(getPrettyPrintedOpCodes(classNode)).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
