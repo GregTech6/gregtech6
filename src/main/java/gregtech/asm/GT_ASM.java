@@ -22,8 +22,9 @@ package gregtech.asm;
 import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -49,7 +50,7 @@ import net.minecraft.launchwrapper.LaunchClassLoader;
 public class GT_ASM implements IFMLLoadingPlugin {
 	public static File location; // Useful to get the path to the coremod to grab other files if needed
 	public static ClassLoader classLoader;
-	public static final Logger logger = Logger.getLogger(GT_ASM.class.getName());
+	public static final Logger logger = LogManager.getLogger(GT_ASM.class.getSimpleName());
 	
 	public GT_ASM() {}
 	

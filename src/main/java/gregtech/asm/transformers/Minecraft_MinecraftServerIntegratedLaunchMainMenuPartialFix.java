@@ -62,7 +62,7 @@ public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix impleme
 				
 				AbstractInsnNode constNode = node.getNext(); // Skip LineNumberNode
 				if (!(constNode instanceof InsnNode) || ((InsnNode)constNode).getOpcode() != Opcodes.LCONST_0) {
-					GT_ASM.logger.warning("Node is apparently already altered?");
+					GT_ASM.logger.warn("Node is apparently already altered?");
 					return basicClass;
 				}
 				

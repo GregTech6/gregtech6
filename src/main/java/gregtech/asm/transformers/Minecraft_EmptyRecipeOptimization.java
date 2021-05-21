@@ -50,13 +50,13 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 				// Get the `LINENUMBER 308` bytecode
 				for(;at != null && !(at instanceof LineNumberNode && ((LineNumberNode)at).line == 308); at = at.getNext());
 				if(at == null) {
-					GT_ASM.logger.warning("Reached `null` in `at` too soon!  No changes made, bailing!");
+					GT_ASM.logger.warn("Reached `null` in `at` too soon!  No changes made, bailing!");
 					return basicClass;
 				}
 				// Then jump over the `FRAME SAME` bytecode
 				at = at.getNext();
 				if(at == null) {
-					GT_ASM.logger.warning("Reached `null` at `at` too soon!  No changes made, bailing!");
+					GT_ASM.logger.warn("Reached `null` at `at` too soon!  No changes made, bailing!");
 					return basicClass;
 				}
 				// Now build the instructions to insert:
