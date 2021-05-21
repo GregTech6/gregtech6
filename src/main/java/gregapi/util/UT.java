@@ -2803,7 +2803,7 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(i);
 					if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					}
 				}
@@ -2811,11 +2811,11 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
 						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					}
 				}
@@ -2823,7 +2823,7 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(i);
 					if (tStack == null || tStack.stackSize <= 0) {
 						aInventory.setInventorySlotContents(i, aStack);
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					}
 				}
@@ -2831,11 +2831,11 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
 						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.update(aPlayer);
 						return T;
 					}
 				}

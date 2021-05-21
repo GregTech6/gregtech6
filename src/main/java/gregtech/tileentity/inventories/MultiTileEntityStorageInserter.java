@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,7 +64,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 			if (tOnlyHand && aPlayer.inventory.getCurrentItem() == null) break;
 			tryInsert(aPlayer, tTileEntity, tOnlyHand);
 		}
-		if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+		ST.update(aPlayer);
 		return T;
 	}
 	

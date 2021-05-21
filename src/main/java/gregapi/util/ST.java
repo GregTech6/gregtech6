@@ -272,6 +272,11 @@ public class ST {
 		return update_(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
 	}
 	
+	public static boolean update(Entity aPlayer) {
+		if (aPlayer instanceof EntityPlayer && !aPlayer.worldObj.isRemote && ((EntityPlayer)aPlayer).openContainer != null) ((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
+		return T;
+	}
+	
 	public static boolean use(Entity aPlayer, ItemStack aStack) {
 		return use(aPlayer, -1, aStack, 1);
 	}
@@ -292,9 +297,7 @@ public class ST {
 						((EntityPlayer)aPlayer).inventory.mainInventory[aIndex] = null;
 					}
 				}
-				if (!aPlayer.worldObj.isRemote && ((EntityPlayer)aPlayer).openContainer != null) {
-					((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
-				}
+				ST.update(aPlayer);
 			}
 			return T;
 		}

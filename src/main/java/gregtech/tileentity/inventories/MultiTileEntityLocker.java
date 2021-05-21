@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,7 +67,7 @@ public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implemen
 				}
 			}
 			if (temp) {
-				if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+				ST.update(aPlayer);
 				updateInventory();
 				UT.Sounds.send(SFX.MC_CLICK, aPlayer);
 			}

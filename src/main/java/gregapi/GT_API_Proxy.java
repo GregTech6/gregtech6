@@ -786,21 +786,21 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (ST.equal(tCompare, tInv[tSlot+27], T)) {
 				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
 				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
-				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
-				tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
+				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
+				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
+				tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; ST.update(aEvent.entityPlayer); return;}
 				return;
 			}
 			if (tSlot < 18) {
 				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
 				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
-				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
+				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
+				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
 				return;
 			}
 			if (tSlot < 27) {
 				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
+				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
 				return;
 			}
 		}

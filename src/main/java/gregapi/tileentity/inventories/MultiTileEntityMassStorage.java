@@ -280,7 +280,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 								break;
 							}
 							if (temp) {
-								if (aPlayer.inventoryContainer != null) aPlayer.inventoryContainer.detectAndSendChanges();
+								ST.update(aPlayer);
 								playCollect();
 							}
 						}

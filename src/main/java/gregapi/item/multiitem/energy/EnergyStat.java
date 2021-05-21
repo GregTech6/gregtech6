@@ -91,16 +91,16 @@ public class EnergyStat implements IItemEnergy {
 	public ItemStack rechargeFromPlayer(TagData aEnergyType, ItemStack aStack, EntityLivingBase aPlayer, IInventory aInventory, World aWorld, int aX, int aY, int aZ) {
 		if (COMPAT_EU_ITEM == null || !mCanCharge || aPlayer == null || aPlayer.worldObj.isRemote || aEnergyType != mType || aEnergyType != TD.Energy.EU) return aStack;
 		long tMinInput = getEnergySizeInputMin(aEnergyType, aStack), tCapacity = getEnergyCapacity(aEnergyType, aStack);
+		boolean temp = F;
 		try {for (int i = 1; i < 5; i++) {
 			long tContent = getEnergyStored(aEnergyType, aStack);
 			if (tContent >= tCapacity) return aStack;
 			ItemStack tArmor = aPlayer.getEquipmentInSlot(i);
 			if (tArmor == aStack || ST.invalid(tArmor) || !COMPAT_EU_ITEM.is(tArmor) || VMAX[COMPAT_EU_ITEM.tier(tArmor)] < tMinInput || !COMPAT_EU_ITEM.provider(tArmor)) continue;
 			setEnergyStored(aEnergyType, aStack, tContent+COMPAT_EU_ITEM.decharge(tArmor, tCapacity-tContent, T));
+			temp = T;
 		}} catch(Throwable e) {e.printStackTrace(ERR);}
-		if (aPlayer instanceof EntityPlayer) {
-			if (((EntityPlayer)aPlayer).openContainer != null) ((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
-		}
+		if (temp) ST.update(aPlayer);
 		return aStack;
 	}
 	
