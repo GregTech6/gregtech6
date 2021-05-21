@@ -390,6 +390,12 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(crushedPurifiedTiny             , 9, NF,  16,16,     0, NF, crushedPurified         , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny          , 9, NF,  16,16,     0, NF, crushedCentrifuged      , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix != OP.oreRaw) {
+			if (tPrefix.contains(STANDARD_ORE))
+			GameRegistry.addRecipe(new AdvancedCrafting1ToY(tPrefix                 , oreRaw                    , 1, F));
+			if (tPrefix.contains(DENSE_ORE))
+			GameRegistry.addRecipe(new AdvancedCrafting1ToY(tPrefix                 , oreRaw                    , 2, F));
+		}
 		
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushed                     , crushedTiny               , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedPurified             , crushedPurifiedTiny       , 9, F));
