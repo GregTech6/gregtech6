@@ -130,7 +130,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 				}
 			}
 		}
-		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, aData.mPrefix == oreRaw ? tDuration / 2 : tDuration), 16, 0));
+		return null != aMap.addRecipe(new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, NI, tChances, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));
 	}
 	
 	@Override
