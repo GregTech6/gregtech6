@@ -193,112 +193,131 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Stick.get(1), DEF, "s", "X", 'X', OP.treeSapling);
 		CR.shaped(IL.Stick.get(1), DEF, "k", "X", 'X', OP.treeSapling);
 		
-		// Torches, lots and lots of Torches.
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem.dat(MT.S)                        );
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust.dat(MT.S)                       );
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.S)                    );
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified.dat(MT.S)            );
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.S)         );
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dustTiny.dat(MT.Blaze)               );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem.dat(MT.P)                        );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust.dat(MT.P)                       );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.P)                    );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified.dat(MT.P)            );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.P)         );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem.dat(MT.Phosphorus)               );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust.dat(MT.Phosphorus)              );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed.dat(MT.Phosphorus)           );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified.dat(MT.Phosphorus)   );
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OD.itemResin                            );
-		CR.shaped(IL.Torch.get(1), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OD.itemGrassDry                         );
+		IL[] tItems = new IL[] {IL.Torch, IL.NeLi_Bonetorch};
+		Object[] tSticks = new Object[] {OD.stickAnyWood, Items.bone};
 		
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.Peat));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Peat));
-		
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.PeatBituminous));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.PeatBituminous));
-		
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container1000rubbertreesap, 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container250rubbertreesap , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container1000spruceresin  , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container250spruceresin   , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container1000maplesap     , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container250maplesap      , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(8), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container1000rainbowsap   , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(4), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container250rainbowsap    , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(6), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container1000creosote     , 'W', Blocks.wool);
-		CR.shaped(IL.Torch.get(2), DEF_NAC,  "WC",  "S ", 'S', OD.stickAnyWood, 'C', OD.container250creosote      , 'W', Blocks.wool);
-		
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container1000rubbertreesap, 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container250rubbertreesap , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container1000spruceresin  , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container250spruceresin   , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container1000maplesap     , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container250maplesap      , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container1000rainbowsap   , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container250rainbowsap    , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container1000creosote     , 'W', OD.itemString);
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "WCW", "WSW", 'S', OD.stickAnyWood, 'C', OD.container250creosote      , 'W', OD.itemString);
-		
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F)) {
-		CR.remove(ST.make(Items.coal, 1, 0), NI, NI, ST.make(Items.stick, 1, 0));
-		CR.remove(ST.make(Items.coal, 1, 1), NI, NI, ST.make(Items.stick, 1, 0));
-		} else {
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.Charcoal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.Charcoal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.Charcoal));
-		
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.Coal));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Coal));
-		
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.CoalCoke));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.CoalCoke));
-		
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.Anthracite));
-		CR.shaped(IL.Torch.get(8), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Anthracite));
-		
-		CR.shaped(IL.Torch.get(1), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.Lignite));
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.Lignite));
-		
-		CR.shaped(IL.Torch.get(2), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.rockGt            .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.ingot             .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.gem               .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.dust              .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushed           .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
-		CR.shaped(IL.Torch.get(4), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
+		for (int i = 0; i < tItems.length; i++) if (tItems[i].exists()) {
+			// Torches, lots and lots of Torches.
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.S)                     );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.S)                        );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.S)                       );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.S)                    );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.S)            );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.S)         );
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dustTiny.dat(MT.Blaze)               );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.P)                     );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.P)                        );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.P)                       );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.P)                    );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.P)            );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.P)         );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw.dat(MT.Phosphorus)            );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem.dat(MT.Phosphorus)               );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust.dat(MT.Phosphorus)              );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed.dat(MT.Phosphorus)           );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified.dat(MT.Phosphorus)   );
+			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemResin                            );
+			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry                         );
+			
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Peat));
+			
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.PeatBituminous));
+			
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', IL.NeLi_ShroomLight);
+			
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(2), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(8), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(4), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(2), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', Blocks.wool);
+			
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(2), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(8), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(4), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(2), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', OD.itemString);
+			
+			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F)) {
+			CR.remove(ST.make(Items.coal, 1, 0), NI, NI, ST.make(Items.stick, 1, 0));
+			CR.remove(ST.make(Items.coal, 1, 1), NI, NI, ST.make(Items.stick, 1, 0));
+			} else {
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Charcoal));
+			
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Coal));
+			
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.CoalCoke));
+			
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Anthracite));
+			
+			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Lignite));
+			
+			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
+			}
 		}
+		
 		
 		
 		// Charcoal Brick-ification
