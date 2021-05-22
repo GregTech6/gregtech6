@@ -156,31 +156,31 @@ public class GT6_Main extends Abstract_Mod {
 			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY      ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
 		}
 		if (ConfigsGT.GREGTECH.get("general", "SmallerVanillaToolDurability", T)) {
-			Items.wooden_sword   .setMaxDamage(  4);
-			Items.wooden_pickaxe .setMaxDamage(  4);
-			Items.wooden_shovel  .setMaxDamage(  4);
-			Items.wooden_axe     .setMaxDamage(  4);
-			Items.wooden_hoe     .setMaxDamage(  4);
+			Items.wooden_sword   .setMaxDamage(  8);
+			Items.wooden_pickaxe .setMaxDamage(  8);
+			Items.wooden_shovel  .setMaxDamage(  8);
+			Items.wooden_axe     .setMaxDamage(  8);
+			Items.wooden_hoe     .setMaxDamage(  8);
 			Items.stone_sword    .setMaxDamage( 16);
 			Items.stone_pickaxe  .setMaxDamage( 16);
 			Items.stone_shovel   .setMaxDamage( 16);
 			Items.stone_axe      .setMaxDamage( 16);
 			Items.stone_hoe      .setMaxDamage( 16);
-			Items.iron_sword     .setMaxDamage( 64);
-			Items.iron_pickaxe   .setMaxDamage( 64);
-			Items.iron_shovel    .setMaxDamage( 64);
-			Items.iron_axe       .setMaxDamage( 64);
-			Items.iron_hoe       .setMaxDamage( 64);
-			Items.golden_sword   .setMaxDamage(  8);
-			Items.golden_pickaxe .setMaxDamage(  8);
-			Items.golden_shovel  .setMaxDamage(  8);
-			Items.golden_axe     .setMaxDamage(  8);
-			Items.golden_hoe     .setMaxDamage(  8);
-			Items.diamond_sword  .setMaxDamage(256);
-			Items.diamond_pickaxe.setMaxDamage(256);
-			Items.diamond_shovel .setMaxDamage(256);
-			Items.diamond_axe    .setMaxDamage(256);
-			Items.diamond_hoe    .setMaxDamage(256);
+			Items.golden_sword   .setMaxDamage( 32);
+			Items.golden_pickaxe .setMaxDamage( 32);
+			Items.golden_shovel  .setMaxDamage( 32);
+			Items.golden_axe     .setMaxDamage( 32);
+			Items.golden_hoe     .setMaxDamage( 32);
+			Items.iron_sword     .setMaxDamage(128);
+			Items.iron_pickaxe   .setMaxDamage(128);
+			Items.iron_shovel    .setMaxDamage(128);
+			Items.iron_axe       .setMaxDamage(128);
+			Items.iron_hoe       .setMaxDamage(128);
+			Items.diamond_sword  .setMaxDamage(512);
+			Items.diamond_pickaxe.setMaxDamage(512);
+			Items.diamond_shovel .setMaxDamage(512);
+			Items.diamond_axe    .setMaxDamage(512);
+			Items.diamond_hoe    .setMaxDamage(512);
 		}
 		
 		if (COMPAT_IC2 != null && !MD.IC2C.mLoaded) {

@@ -40,7 +40,14 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.*;
+import gregtech.asm.transformers.CoFHCore_CrashFix;
+import gregtech.asm.transformers.CoFHLib_HashFix;
+import gregtech.asm.transformers.Minecraft_EmptyRecipeOptimization;
+import gregtech.asm.transformers.Minecraft_IceHarvestMissingHookFix;
+import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
+import gregtech.asm.transformers.Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix;
+import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
+import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
 @Name("Greg-ASM®")
@@ -200,6 +207,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 		return printer.out_writer.toString();
 	}
 
+	@SuppressWarnings("resource")
 	public static void writePrettyPrintedOpCodesToFile(ClassNode classNode, String fileName) {
 		try {
 			(new BufferedWriter(new FileWriter(fileName, true))).append(getPrettyPrintedOpCodes(classNode)).close();
