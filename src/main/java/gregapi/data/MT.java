@@ -1095,7 +1095,7 @@ public class MT {
 	
 	
 	Ceramic                 = dustelec      ( 8225, "Ceramic"               , SET_ROUGH             , 220, 130,  70, 255, MORTAR, PLATES, BRITTLE)                                                                                                                  .uumMcfg(18, Al2O3          , 5*U, SiO2             ,12*U)                                                                                                  .heat(2000).setCompressing(null, 0).setBending(null, 0).setForging(null, 0).setSmashing(null, 0),
-	Brick                   = create        ( 9243, "Brick"                 , SET_ROUGH             , 183,  90,  64, 255, MORTAR, BRITTLE)                                                                                                                          .uumMcfg( 1, Ceramic        , 1*U)                                                                                                                          .heat(2000).steal(Ceramic).setAllToTheOutputOf(Ceramic),
+	Brick                   = create        ( 9243, "Clay Brick"            , SET_ROUGH             , 183,  90,  64, 255, MORTAR, BRITTLE)                                                                                                                          .uumMcfg( 1, Ceramic        , 1*U)                                                                                                                          .heat(2000).steal(Ceramic).setAllToTheOutputOf(Ceramic),
 	Clay                    = oredustdcmp   ( 8215, "Clay"                  , SET_ROUGH             , 200, 200, 220, 255, MORTAR, PLATES)                                                                                                                           .uumMcfg( 2, Ceramic        , 2*U, H2O              , 1*U)                                                                                                  .heat(2000).setSmelting(Ceramic, U), // please do note that I had to make it easier to generify Clays without causing too much transmutation, so the Clays are no longer accurate.
 	ClayBrown               = clay          ( 8276, "ClayBrown"                                     , 230, 140,  75, LiOH )                                                                                                                                                                                                                                                                                                     .setLocal("Brown Clay"),
 	ClayRed                 = clay          ( 8455, "ClayRed"                                       , 230,  40,  25, KOH  )                                                                                                                                                                                                                                                                                                     .setLocal("Red Clay"),
@@ -1732,11 +1732,9 @@ public class MT {
 	
 	/** Technical Materials, which are only there for Recipes and such. */
 	public static class TECH {
-		@Deprecated public static final OreDictMaterial AnyGlowstone = ANY.Glowstone, AnyWax = ANY.Wax, AnyWood = ANY.Wood, AnyStone = ANY.Stone, AnyClay = ANY.Clay, AnyIron = ANY.Fe, AnyIronSteel = ANY.Steel, AnyCopper = ANY.Cu, AnySilicon = ANY.Si, AnyTungsten = ANY.W, AnyThaumicCrystal = ANY.ThaumCrystal, AnySalt = ANY.Salt, AnySteel = ANY._Steel, AnyBronze = ANY._Bronze, AnyMetal = ANY._Metal;
+		@SuppressWarnings("hiding") @Deprecated public static final OreDictMaterial Brick = MT.Brick, AnyGlowstone = ANY.Glowstone, AnyWax = ANY.Wax, AnyWood = ANY.Wood, AnyStone = ANY.Stone, AnyClay = ANY.Clay, AnyIron = ANY.Fe, AnyIronSteel = ANY.Steel, AnyCopper = ANY.Cu, AnySilicon = ANY.Si, AnyTungsten = ANY.W, AnyThaumicCrystal = ANY.ThaumCrystal, AnySalt = ANY.Salt, AnySteel = ANY._Steel, AnyBronze = ANY._Bronze, AnyMetal = ANY._Metal;
 		
-		@SuppressWarnings("hiding")
 		public static final OreDictMaterial
-		Brick       = MT.Brick,
 		Organic     = invalid("Organic"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
 		Crystal     = invalid("Crystal"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT, BRITTLE, CRYSTAL),
 		Unknown     = invalid("Unknown"    ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
