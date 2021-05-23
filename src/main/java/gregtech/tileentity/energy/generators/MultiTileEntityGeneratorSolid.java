@@ -32,20 +32,14 @@ import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
-import gregapi.old.Textures;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -56,7 +50,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	private static int FLAME_RANGE = 3;
 	
 	protected short mEfficiency = 10000;
@@ -259,8 +253,6 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return mBurning ? SIDES_THIS[mFacing] : SIDES_HORIZONTAL;}
 	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
-	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mBurning) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
 	
@@ -288,30 +280,4 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 		worldObj.spawnParticle("smoke", aX, aY, aZ, 0, 0, 0);
 		worldObj.spawnParticle("flame", aX, aY, aZ, 0, 0, 0);
 	}
-	
-	// Icons
-	public static IIconContainer[] sColoreds = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/left"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/right"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/colored/back")
-	}, sOverlays = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/left"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/right"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay/back")
-	}, sOverlaysActive = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/left"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/right"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/burning_solid/overlay_active/back")
-	};
-	
-	@Override public String getTileEntityName() {return "gt.multitileentity.generator.burning_solid";}
 }

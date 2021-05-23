@@ -25,6 +25,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
+[ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] Asbestos now has Jade as a Byproduct, making Fortune III Tools more available.
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
 [ADDED] GT6 Logs can now be crafted into their All-Bark Variant using some Bark. For Non-GT6 Logs you will still have to use the Soft Hammer after placing the Log though.

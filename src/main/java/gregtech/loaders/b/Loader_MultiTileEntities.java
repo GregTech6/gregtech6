@@ -73,11 +73,12 @@ import gregtech.tileentity.batteries.qu.MultiTileEntityZPM;
 import gregtech.tileentity.computer.MultiTileEntityHDDSwitch;
 import gregtech.tileentity.computer.MultiTileEntityUSBSwitch;
 import gregtech.tileentity.energy.converters.*;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorBrick;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorFluidBed;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorGas;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorHotFluid;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorLiquid;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorSolid;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorMetal;
 import gregtech.tileentity.energy.generators.MultiTileEntityMotorLiquid;
 import gregtech.tileentity.energy.generators.MultiTileEntitySolarPanelElectric;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore1x1;
@@ -544,7 +545,10 @@ public class Loader_MultiTileEntities implements Runnable {
 	
 	private static void unsorted1(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {
 		// Burning Boxes
-		aClass = MultiTileEntityGeneratorSolid.class;
+		aClass = MultiTileEntityGeneratorBrick.class;
+		aMat = MT.Ceramic;              aRegistry.add("Brick Burning Box (Solid)"                           , "Burning Boxes"                       ,  1199,  1104, aClass, aMat.mToolQuality, 16, aStone       , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   6.0F, NBT_RESISTANCE,   6.0F, NBT_FUELMAP, FM.Furnace, NBT_EFFICIENCY,  2500, NBT_OUTPUT,   8, NBT_ENERGY_EMITTED, TD.Energy.HU), "BBB", "BBB", "BFB", 'B', Items.brick, 'F', OD.craftingFirestarter);
+		
+		aClass = MultiTileEntityGeneratorMetal.class;
 		aMat = MT.Pb;                   aRegistry.add("Burning Box (Solid, " + aMat.getLocal() + ")"        , "Burning Boxes"                       ,  1100,  1104, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_FUELMAP, FM.Furnace, NBT_EFFICIENCY,  5000, NBT_OUTPUT,  16, NBT_ENERGY_EMITTED, TD.Energy.HU), "PCP", "PwP", "BBB", 'B', Blocks.brick_block, 'P', OP.plate.dat(aMat), 'C', OP.plateDouble.dat(ANY.Cu));
 		aMat = MT.Bi;                   aRegistry.add("Burning Box (Solid, " + aMat.getLocal() + ")"        , "Burning Boxes"                       ,  1101,  1104, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_FUELMAP, FM.Furnace, NBT_EFFICIENCY,  4500, NBT_OUTPUT,  20, NBT_ENERGY_EMITTED, TD.Energy.HU), "PCP", "PwP", "BBB", 'B', Blocks.brick_block, 'P', OP.plate.dat(aMat), 'C', OP.plateDouble.dat(ANY.Cu));
 		aMat = MT.Bronze;               aRegistry.add("Burning Box (Solid, " + aMat.getLocal() + ")"        , "Burning Boxes"                       ,  1102,  1104, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   7.0F, NBT_RESISTANCE,   7.0F, NBT_FUELMAP, FM.Furnace, NBT_EFFICIENCY,  7500, NBT_OUTPUT,  24, NBT_ENERGY_EMITTED, TD.Energy.HU), "PCP", "PwP", "BBB", 'B', Blocks.brick_block, 'P', OP.plate.dat(aMat), 'C', OP.plateDouble.dat(ANY.Cu));
