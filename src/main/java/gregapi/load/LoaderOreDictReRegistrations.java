@@ -1393,23 +1393,23 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("conglomerate", new OreDictItemData(MT.Stone, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("slate", new OreDictItemData(MT.Stone, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("phyllite", new OreDictItemData(MT.Stone, U*1));
-		OreDictManager.INSTANCE.setAutomaticItemData("schist", new OreDictItemData(MT.Blueschist, U*1));
-		OreDictManager.INSTANCE.setAutomaticItemData("diorite", new OreDictItemData(MT.Diorite, U*1));
+		OreDictManager.INSTANCE.setAutomaticItemData("schist", new OreDictItemData(MT.STONES.Blueschist, U*1));
+		OreDictManager.INSTANCE.setAutomaticItemData("diorite", new OreDictItemData(MT.STONES.Diorite, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData("ingotRefinedIron", new OreDictItemData(MT.Fe, U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.obsidian, new OreDictItemData(MT.Obsidian, U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.cryingObsidian, new OreDictItemData(MT.Obsidian, U*9));
 		
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand     ), new OreDictItemData(MT.Sand     , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.SoulSand ), new OreDictItemData(MT.SoulSand , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock  ), new OreDictItemData(MT.Bedrock  , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint    ), new OreDictItemData(MT.Flint    , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Redrock  ), new OreDictItemData(MT.Redrock  , U, MT.ClayRed     , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Shale    ), new OreDictItemData(MT.Shale    , U, MT.Palygorskite, U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite ), new OreDictItemData(MT.Dolomite , U, MT.Bone        , U9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Eclogite ), new OreDictItemData(MT.Eclogite , U, MT.TiO2        , U72));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3    ), new OreDictItemData(MT.CaCO3    , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Talc     ), new OreDictItemData(MT.Talc     , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk    ), new OreDictItemData(MT.Chalk    , U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Lignite  ), new OreDictItemData(MT.Lignite  , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand            ), new OreDictItemData(MT.Sand            , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.SoulSand        ), new OreDictItemData(MT.SoulSand        , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock         ), new OreDictItemData(MT.Bedrock         , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint           ), new OreDictItemData(MT.Flint           , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.STONES.Redrock  ), new OreDictItemData(MT.STONES.Redrock  , U, MT.ClayRed     , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.STONES.Shale    ), new OreDictItemData(MT.STONES.Shale    , U, MT.Palygorskite, U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Dolomite        ), new OreDictItemData(MT.Dolomite        , U, MT.Bone        , U9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.STONES.Eclogite ), new OreDictItemData(MT.STONES.Eclogite , U, MT.TiO2        , U72));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3           ), new OreDictItemData(MT.CaCO3           , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Talc            ), new OreDictItemData(MT.Talc            , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Chalk           ), new OreDictItemData(MT.Chalk           , U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Lignite         ), new OreDictItemData(MT.Lignite         , U));
 	}
 }

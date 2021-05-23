@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -68,7 +68,7 @@ public class Compat_Recipes_Atum extends CompatMods {
 		
 		RM.generify(ST.make(MD.ATUM, "tile.sand", 1, W), ST.make(Blocks.sand, 1, 0));
 		
-		RM.Mortar.addRecipe1(T, 16, 64, ST.make(MD.ATUM, "item.stoneChunk", 1, W), OM.dust(MT.Limestone, U));
+		RM.Mortar.addRecipe1(T, 16, 64, ST.make(MD.ATUM, "item.stoneChunk", 1, W), OM.dust(MT.STONES.Limestone, U));
 		
 		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  6), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.BlueSapphire, 2));
 		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  8), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.Ruby, 2));

@@ -247,7 +247,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Chert}) {
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.STONES.Chert}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', stone.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, tMaterial, MT.Flint), CR.DEF_MIR, "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}

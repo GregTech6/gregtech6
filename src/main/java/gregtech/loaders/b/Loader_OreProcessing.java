@@ -309,7 +309,7 @@ public class Loader_OreProcessing implements Runnable {
 			tSecondaryByProductTiny = null,
 			tTertiaryByProductTiny  = null;
 			
-			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
+			if (aMaterial == MT.STONES.Gneiss || aMaterial == MT.PetrifiedWood) {
 				RM.Crusher.addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 4)));
 				RM.Hammer .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 3)));
 			}

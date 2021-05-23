@@ -185,38 +185,38 @@ public class LanguageHandler {
 		if (aMaterial == MT.MeteoricIron || aMaterial == MT.Meteorite) {
 			if (aPrefix == OP.rockGt)                                       return "Meteorite";
 		} else
-		if (aMaterial == MT.SpaceRock) {
+		if (aMaterial == MT.STONES.SpaceRock) {
 			if (aPrefix == OP.rockGt)                                       return "Space Rock";
 		} else
-		if (aMaterial == MT.MoonRock) {
+		if (aMaterial == MT.STONES.MoonRock) {
 			if (aPrefix == OP.rockGt)                                       return "Moon Rock";
 		} else
-		if (aMaterial == MT.MarsRock) {
+		if (aMaterial == MT.STONES.MarsRock) {
 			if (aPrefix == OP.rockGt)                                       return "Mars Rock";
 		} else
-		if (aMaterial == MT.MoonTurf) {
+		if (aMaterial == MT.STONES.MoonTurf) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Moon Turf";
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + "Moon Turf";
 			if (aPrefix == OP.rockGt)                                       return "Moon Surface Rock";
 		} else
-		if (aMaterial == MT.MarsSand) {
+		if (aMaterial == MT.STONES.MarsSand) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Mars Turf";
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + "Mars Turf";
 			if (aPrefix == OP.rockGt)                                       return "Mars Surface Rock";
 		} else
-		if (aMaterial == MT.Holystone) {
+		if (aMaterial == MT.STONES.Holystone) {
 			if (aPrefix == OP.rockGt)                                       return "Holy Rock";
 		} else
-		if (aMaterial == MT.Umber) {
+		if (aMaterial == MT.STONES.Umber) {
 			if (aPrefix == OP.rockGt)                                       return "Umber Rock";
 		} else
-		if (aMaterial == MT.Betweenstone) {
+		if (aMaterial == MT.STONES.Betweenstone) {
 			if (aPrefix == OP.rockGt)                                       return "Betweenrock";
 		} else
-		if (aMaterial == MT.Pitstone) {
+		if (aMaterial == MT.STONES.Pitstone) {
 			if (aPrefix == OP.rockGt)                                       return "Pit Rock";
 		} else
-		if (aMaterial == MT.Gneiss) {
+		if (aMaterial == MT.STONES.Gneiss) {
 			if (aPrefix == OP.rockGt)                                       return "Gneiss";
 		} else
 		if (aMaterial == MT.Glass) {

@@ -74,7 +74,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Niter                  , MD.MF2, "MF_Com_nitre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Kaolinite              , MD.MF2, "MF_Com_kaolinite", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.OREMATS.Borax          , MD.MF2, "MF_Com_flux_strong", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Limestone              , MD.MF2, "MF_Com_flux", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.STONES.Limestone       , MD.MF2, "MF_Com_flux", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Meteorite              , MD.FM, "MeteoriteIngot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.FrozenIron             , MD.FM, "FrozenIron", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Kreknorite             , MD.FM, "KreknoriteIngot", 0);
@@ -184,11 +184,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Jade                   , MD.ERE, "blockJade", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Jade                   , MD.ERE, "materials", 1);
 		OreDictManager.INSTANCE.setTarget(OP.gemFlawless    , MT.Redstone               , MD.ERE, "materials",12);
-		OreDictManager.INSTANCE.setTarget(OP.rockGt         , MT.Gneiss                 , MD.ERE, "materials",48);
+		OreDictManager.INSTANCE.setTarget(OP.rockGt         , MT.STONES.Gneiss          , MD.ERE, "materials",48);
 		OreDictManager.INSTANCE.setTarget(OP.rockGt         , MT.PetrifiedWood          , MD.ERE, "materials", 7);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.PetrifiedWood          , MD.ERE, "petrifiedWoodPlanks", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.PetrifiedWood          , MD.ERE, "orePetrifiedWood", 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Gneiss                 , MD.ERE, "oreGneiss", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.STONES.Gneiss          , MD.ERE, "oreGneiss", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Bone                   , MD.ERE, "oreFossil", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Fe                     , MD.ERE, "oreIron", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Au                     , MD.ERE, "oreGold", 0);
@@ -581,13 +581,13 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Stone                  , MD.RoC, "rotarycraft_item_borecraft", 13);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Diamond                , MD.RoC, "rotarycraft_item_borecraft", 14);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , MD.RoC, "rotarycraft_item_modinterface", 17);
-		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingrock             , MD.RoC, "rotarycraft_item_modinterface", 18);
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.STONES.Livingrock      , MD.RoC, "rotarycraft_item_modinterface", 18);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.HSLA                   , MD.RoC, "rotarycraft_item_gearcraft",  0);
 //      OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Wood                   , MD.RoC, "rotarycraft_item_gearcraft", 16); // This one does not really exist!
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Stone                  , MD.RoC, "rotarycraft_item_gearcraft", 32);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Diamond                , MD.RoC, "rotarycraft_item_gearcraft", 48); // 64 would be Bedrock
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , MD.RoC, "rotarycraft_item_gearcraft", 80);
-		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingrock             , MD.RoC, "rotarycraft_item_gearcraft", 96);
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.STONES.Livingrock      , MD.RoC, "rotarycraft_item_gearcraft", 96);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.TungstenAlloy          , MD.RoC, "rotarycraft_item_gearcraft",112);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nutmeg                 , MD.HaC, "groundnutmegItem", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cinnamon               , MD.HaC, "groundcinnamonItem", 0);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -75,18 +75,18 @@ public class WorldgenRacks extends WorldgenObject {
 					case  9: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.NetherQuartz, 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case 10: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.NetherQuartz, 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case 11: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.NetherQuartz, 1) : ST.make(Items.flint, 1, 0)), F, T); break;
-					case 12: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.Obsidian, 1)), F, T); break;
-					case 13: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.Basalt  , 1)), F, T); break;
-					case 14: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.Basalt  , 1)), F, T); break;
-					case 15: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.Basalt  , 1)), F, T); break;
-					case 16: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 17: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 18: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 19: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 20: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 21: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 22: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
-					case 23: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.Blackstone, 1)), F, T); break;
+					case 12: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.Obsidian     , 1)), F, T); break;
+					case 13: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.STONES.Basalt, 1)), F, T); break;
+					case 14: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.STONES.Basalt, 1)), F, T); break;
+					case 15: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.STONES.Basalt, 1)), F, T); break;
+					case 16: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 17: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 18: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 19: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 20: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 21: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 22: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
+					case 23: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.gravel || IL.NeLi_Gravel.equal(tContact) ? ST.make(Items.flint, 1, 0) : OP.rockGt.mat(MT.STONES.Blackstone, 1)), F, T); break;
 					default: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, null, F, T); break;
 					}
 				}

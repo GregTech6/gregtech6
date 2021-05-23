@@ -244,7 +244,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	@Override
 	@SuppressWarnings("unchecked")
 	public void run() {
-		if ((!MD.NePl.mLoaded && !MD.NeLi.mLoaded) || (mMaterial != MT.Basalt && mMaterial != MT.Blackstone)) {
+		if ((!MD.NePl.mLoaded && !MD.NeLi.mLoaded) || (mMaterial != MT.STONES.Basalt && mMaterial != MT.STONES.Blackstone)) {
 			RM.pack(rockGt.mat(mMaterial, 4), ST.make(this, 1, COBBL));
 			CR.shaped(ST.make(this, 1, COBBL), CR.DEF, "XX", "XX", 'X', OP.rockGt.dat(mMaterial));
 		}

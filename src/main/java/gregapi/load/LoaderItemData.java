@@ -888,180 +888,180 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1)); // Claystone
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Carbonatite
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3)); // Conglomerate
-				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.PFAA, tName, 1,  4));
+				OM.reg(OP.stone, MT.STONES.Shale                , ST.make(MD.PFAA, tName, 1,  4));
 			}
 			for (String tName : new String [] {"mediumStone", "mediumCobble", "mediumStoneBrick"}) {
-				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Limestone            , ST.make(MD.PFAA, tName, 1,  0));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1)); // Light Red/Pink Schist
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Serpentite
-				OM.reg(OP.stone, MT.Slate                       , ST.make(MD.PFAA, tName, 1,  3));
+				OM.reg(OP.stone, MT.STONES.Slate                , ST.make(MD.PFAA, tName, 1,  3));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  4)); // Skarn
 			}
 			for (String tName : new String [] {"strongStone", "strongCobble", "strongStoneBrick"}) {
-				OM.reg(OP.stone, MT.Andesite                    , ST.make(MD.PFAA, tName, 1,  0));
-				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.PFAA, tName, 1,  1));
-				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.PFAA, tName, 1,  2));
-				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.PFAA, tName, 1,  3)); // actually Gray
-				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.PFAA, tName, 1,  4));
-				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.PFAA, tName, 1,  5));
+				OM.reg(OP.stone, MT.STONES.Andesite             , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Basalt               , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.STONES.Gneiss               , ST.make(MD.PFAA, tName, 1,  2));
+				OM.reg(OP.stone, MT.STONES.GraniteBlack         , ST.make(MD.PFAA, tName, 1,  3)); // actually Gray
+				OM.reg(OP.stone, MT.STONES.Greenschist          , ST.make(MD.PFAA, tName, 1,  4));
+				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.PFAA, tName, 1,  5));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  6)); // Pegmatite
-				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.PFAA, tName, 1,  7));
+				OM.reg(OP.stone, MT.STONES.Rhyolite             , ST.make(MD.PFAA, tName, 1,  7));
 				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8)); // Normal Sandstone
 				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  9)); // Red Sandstone
 			}
 			for (String tName : new String [] {"veryStrongStone", "veryStrongCobble", "veryStrongStoneBrick"}) {
-				OM.reg(OP.stone, MT.Diorite                     , ST.make(MD.PFAA, tName, 1,  0));
-				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.PFAA, tName, 1,  1));
+				OM.reg(OP.stone, MT.STONES.Diorite              , ST.make(MD.PFAA, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Gabbro               , ST.make(MD.PFAA, tName, 1,  1));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Hornfels
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  3)); // Peridotite
-				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.PFAA, tName, 1,  4));
+				OM.reg(OP.stone, MT.STONES.Quartzite            , ST.make(MD.PFAA, tName, 1,  4));
 			}
 		}
 		
 		if (MD.UB.mLoaded) {
 			for (String tName : new String [] {"sedimentaryStone"}) {
-				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Limestone                   , ST.make(MD.UB, tName, 1,  0));
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.UB, tName, 1,  1));
-				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.UB, tName, 1,  2));
-				OM.reg(OP.stone, MT.Siltstone                   , ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.STONES.Shale                       , ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.STONES.Siltstone                   , ST.make(MD.UB, tName, 1,  3));
 				OM.reg(OP.stone, MT.Lignite                     , ST.make(MD.UB, tName, 1,  4));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.UB, tName, 1,  5));
-				OM.reg(OP.stone, MT.Greywacke                   , ST.make(MD.UB, tName, 1,  6));
-				OM.reg(OP.stone, MT.Chert                       , ST.make(MD.UB, tName, 1,  7));
-				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.STONES.Greywacke                   , ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.STONES.Chert                       , ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.STONES.Limestone                   , ST.make(MD.UB, tName, 1,  8));
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.UB, tName, 1,  9));
-				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.UB, tName, 1, 10));
-				OM.reg(OP.stone, MT.Siltstone                   , ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.STONES.Shale                       , ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.STONES.Siltstone                   , ST.make(MD.UB, tName, 1, 11));
 				OM.reg(OP.stone, MT.Lignite                     , ST.make(MD.UB, tName, 1, 12));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.UB, tName, 1, 13));
-				OM.reg(OP.stone, MT.Greywacke                   , ST.make(MD.UB, tName, 1, 14));
-				OM.reg(OP.stone, MT.Chert                       , ST.make(MD.UB, tName, 1, 15));
+				OM.reg(OP.stone, MT.STONES.Greywacke            , ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.STONES.Chert                , ST.make(MD.UB, tName, 1, 15));
 			}
 			
 			for (String tName : new String [] {"igneousStone", "igneousCobblestone", "igneousStoneBrick"}) {
-				OM.reg(OP.stone, MT.GraniteRed                  , ST.make(MD.UB, tName, 1,  0));
-				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.UB, tName, 1,  1));
-				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.UB, tName, 1,  2));
-				OM.reg(OP.stone, MT.Andesite                    , ST.make(MD.UB, tName, 1,  3));
-				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.UB, tName, 1,  4));
-				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.UB, tName, 1,  5));
-				OM.reg(OP.stone, MT.Komatiite                   , ST.make(MD.UB, tName, 1,  6));
-				OM.reg(OP.stone, MT.Dacite                      , ST.make(MD.UB, tName, 1,  7));
-				OM.reg(OP.stone, MT.GraniteRed                  , ST.make(MD.UB, tName, 1,  8));
-				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.UB, tName, 1,  9));
-				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.UB, tName, 1, 10));
-				OM.reg(OP.stone, MT.Andesite                    , ST.make(MD.UB, tName, 1, 11));
-				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.UB, tName, 1, 12));
-				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.UB, tName, 1, 13));
-				OM.reg(OP.stone, MT.Komatiite                   , ST.make(MD.UB, tName, 1, 14));
-				OM.reg(OP.stone, MT.Dacite                      , ST.make(MD.UB, tName, 1, 15));
+				OM.reg(OP.stone, MT.STONES.GraniteRed           , ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.GraniteBlack         , ST.make(MD.UB, tName, 1,  1));
+				OM.reg(OP.stone, MT.STONES.Rhyolite             , ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.STONES.Andesite             , ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.STONES.Gabbro               , ST.make(MD.UB, tName, 1,  4));
+				OM.reg(OP.stone, MT.STONES.Basalt               , ST.make(MD.UB, tName, 1,  5));
+				OM.reg(OP.stone, MT.STONES.Komatiite            , ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.STONES.Dacite               , ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.STONES.GraniteRed           , ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.STONES.GraniteBlack         , ST.make(MD.UB, tName, 1,  9));
+				OM.reg(OP.stone, MT.STONES.Rhyolite             , ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.STONES.Andesite             , ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.STONES.Gabbro               , ST.make(MD.UB, tName, 1, 12));
+				OM.reg(OP.stone, MT.STONES.Basalt               , ST.make(MD.UB, tName, 1, 13));
+				OM.reg(OP.stone, MT.STONES.Komatiite            , ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.STONES.Dacite               , ST.make(MD.UB, tName, 1, 15));
 			}
 			
 			for (String tName : new String [] {"metamorphicStone", "metamorphicCobblestone", "metamorphicStoneBrick"}) {
-				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.UB, tName, 1,  0));
-				OM.reg(OP.stone, MT.Eclogite                    , ST.make(MD.UB, tName, 1,  1));
-				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.UB, tName, 1,  2));
-				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.UB, tName, 1,  3));
-				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.UB, tName, 1,  4));
-				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.UB, tName, 1,  5));
+				OM.reg(OP.stone, MT.STONES.Gneiss               , ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Eclogite             , ST.make(MD.UB, tName, 1,  1));
+				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.STONES.Quartzite            , ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.STONES.Blueschist           , ST.make(MD.UB, tName, 1,  4));
+				OM.reg(OP.stone, MT.STONES.Greenschist          , ST.make(MD.UB, tName, 1,  5));
 				OM.reg(OP.stone, MT.Talc                        , ST.make(MD.UB, tName, 1,  6));
-				OM.reg(OP.stone, MT.Migmatite                   , ST.make(MD.UB, tName, 1,  7));
-				OM.reg(OP.stone, MT.Gneiss                      , ST.make(MD.UB, tName, 1,  8));
-				OM.reg(OP.stone, MT.Eclogite                    , ST.make(MD.UB, tName, 1,  9));
-				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.UB, tName, 1, 10));
-				OM.reg(OP.stone, MT.Quartzite                   , ST.make(MD.UB, tName, 1, 11));
-				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.UB, tName, 1, 12));
-				OM.reg(OP.stone, MT.Greenschist                 , ST.make(MD.UB, tName, 1, 13));
+				OM.reg(OP.stone, MT.STONES.Migmatite            , ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.STONES.Gneiss               , ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.STONES.Eclogite             , ST.make(MD.UB, tName, 1,  9));
+				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.STONES.Quartzite            , ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.STONES.Blueschist           , ST.make(MD.UB, tName, 1, 12));
+				OM.reg(OP.stone, MT.STONES.Greenschist          , ST.make(MD.UB, tName, 1, 13));
 				OM.reg(OP.stone, MT.Talc                        , ST.make(MD.UB, tName, 1, 14));
-				OM.reg(OP.stone, MT.Migmatite                   , ST.make(MD.UB, tName, 1, 15));
+				OM.reg(OP.stone, MT.STONES.Migmatite            , ST.make(MD.UB, tName, 1, 15));
 			}
 		}
 		
 		if (MD.EB.mLoaded) {
 			for (String tName : new String [] {"enhancedbiomes.tile.stoneEB", "enhancedbiomes.tile.stoneCobbleEB", "enhancedbiomes.tile.stoneBrickEB"}) {
-				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.EB, tName, 1, 0));
-				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.EB, tName, 1, 1));
+				OM.reg(OP.stone, MT.STONES.Basalt               , ST.make(MD.EB, tName, 1, 0));
+				OM.reg(OP.stone, MT.STONES.Shale                , ST.make(MD.EB, tName, 1, 1));
 				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.EB, tName, 1, 2));
-				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.EB, tName, 1, 3));
+				OM.reg(OP.stone, MT.STONES.Limestone            , ST.make(MD.EB, tName, 1, 3));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.EB, tName, 1, 4)); // Slate
-				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.EB, tName, 1, 5));
+				OM.reg(OP.stone, MT.STONES.Rhyolite             , ST.make(MD.EB, tName, 1, 5));
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.EB, tName, 1, 6));
-				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.EB, tName, 1, 7));
+				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.EB, tName, 1, 7));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.EB, tName, 1, 8));
-				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.EB, tName, 1, 9)); // More of a Neutral Gray
-				OM.reg(OP.stone, MT.Chert                       , ST.make(MD.EB, tName, 1,10));
-				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.EB, tName, 1,11));
-				OM.reg(OP.stone, MT.Dacite                      , ST.make(MD.EB, tName, 1,12));
+				OM.reg(OP.stone, MT.STONES.Blueschist           , ST.make(MD.EB, tName, 1, 9)); // More of a Neutral Gray
+				OM.reg(OP.stone, MT.STONES.Chert                , ST.make(MD.EB, tName, 1,10));
+				OM.reg(OP.stone, MT.STONES.Gabbro               , ST.make(MD.EB, tName, 1,11));
+				OM.reg(OP.stone, MT.STONES.Dacite               , ST.make(MD.EB, tName, 1,12));
 			}
 		}
 		
 		if (MD.ERE.mLoaded) {
-			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 2));
-			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 3));
-			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 4));
-			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 5));
-			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 6));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 0));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 1));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 2));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 3));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 4));
-			OM.reg(OP.stone, MT.Gneiss                          , ST.make(MD.ERE, "gneiss"                      , 1, 5));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 4));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 5));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 6));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 4));
+			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 5));
 		}
 		
 		if (MD.AETHER.mLoaded) {
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystone"                , 1, 0));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystone"                , 1, 1));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystone"                , 1, 2));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystone"                , 1, 3));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystoneBrick"           , 1, 0));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystoneKeystone"        , 1, 0));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystoneHeadstone"       , 1, 0));
-			OM.reg(OP.stone, MT.Holystone                       , ST.make(MD.AETHER, "holystoneHighlight"       , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystone"                , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystone"                , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystone"                , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystone"                , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneBrick"           , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneKeystone"        , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneHeadstone"       , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneHighlight"       , 1, 0));
 		}
 		
 		if (MD.GC.mLoaded) {
 			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.GC, "tile.moonBlock", 1, 5));
 			
-			OM.reg(OP.stone, MT.MoonRock                        , ST.make(MD.GC, "tile.moonBlock"               , 1, 4));
-			OM.reg(OP.stone, MT.MoonTurf                        , ST.make(MD.GC, "tile.moonBlock"               , 1, 5));
+			OM.reg(OP.stone, MT.STONES.MoonRock                 , ST.make(MD.GC, "tile.moonBlock"               , 1, 4));
+			OM.reg(OP.stone, MT.STONES.MoonTurf                 , ST.make(MD.GC, "tile.moonBlock"               , 1, 5));
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.GC_PLANETS, "tile.mars", 1, 5));
 			
-			OM.reg(OP.stone, MT.MarsRock                        , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 4));
-			OM.reg(OP.stone, MT.MarsSand                        , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 5));
-			OM.reg(OP.stone, MT.MarsRock                        , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 6));
-			OM.reg(OP.stone, MT.MarsRock                        , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 9));
+			OM.reg(OP.stone, MT.STONES.MarsRock                 , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 4));
+			OM.reg(OP.stone, MT.STONES.MarsSand                 , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 5));
+			OM.reg(OP.stone, MT.STONES.MarsRock                 , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 6));
+			OM.reg(OP.stone, MT.STONES.MarsRock                 , ST.make(MD.GC_PLANETS, "tile.mars"            , 1, 9));
 			
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 0));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 1));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 0));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"  , 1, 2));
 		}
 		if (MD.GC_GALAXYSPACE.mLoaded) {
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "mercuryblocks"    , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ceresblocks"      , 1, 1));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "deimosblocks"     , 1, 1));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ioblocks"         , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "oberonblocks"     , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "proteusblocks"    , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "tritonblocks"     , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "mirandablocks"    , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "venusblocks"      , 1, 1));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "phobosblocks"     , 1, 2));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "ganymedeblocks"   , 1, 1));
-			OM.reg(OP.stone, MT.SpaceRock                       , ST.make(MD.GC_GALAXYSPACE, "barnardaEsubgrunt", 1, 0));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "mercuryblocks"    , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "ceresblocks"      , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "deimosblocks"     , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "ioblocks"         , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "oberonblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "proteusblocks"    , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "tritonblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "mirandablocks"    , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "venusblocks"      , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "phobosblocks"     , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "ganymedeblocks"   , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "barnardaEsubgrunt", 1, 0));
 		}
 		
-		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 0));
-		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
-		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 2));
+		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 0));
+		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
+		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 2));
 //      OM.reg(OP.stone, MT.CrackedSand                         , ST.make(MD.EBXL, "terrain_blocks2"    , 1, 0));
-		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.TROPIC, "tile.chunk"       , 1, W));
-		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.IC2, "blockBasalt"         , 1, 0));
-		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.RC, "brick.abyssal"        , 1, W));
-		OM.reg(OP.stone, MT.Marble                              , ST.make(MD.RC, "brick.quarried"       , 1, W));
-		OM.reg(OP.stone, MT.Limestone                           , ST.make(MD.MF2, "limestone"           , 1, W));
+		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.TROPIC, "tile.chunk"       , 1, W));
+		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.IC2, "blockBasalt"         , 1, 0));
+		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.RC, "brick.abyssal"        , 1, W));
+		OM.reg(OP.stone, MT.STONES.Marble                       , ST.make(MD.RC, "brick.quarried"       , 1, W));
+		OM.reg(OP.stone, MT.STONES.Limestone                    , ST.make(MD.MF2, "limestone"           , 1, W));
 		OM.reg(OP.blockSolid, MT.Obsidian                       , ST.make(Blocks.obsidian               , 1, W));
 		OM.reg(OP.stoneMossy                                    , ST.make(Blocks.mossy_cobblestone      , 1, W));
 		OM.reg(OP.stoneCobble                                   , ST.make(Blocks.mossy_cobblestone      , 1, W));
@@ -1268,13 +1268,13 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  85, MT.Livingwood         ,  U *47); // 16x Livingwood Gear
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  86, MT.Livingwood         ,  U * 1); // Livingwood Bearing
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  87, MT.Livingwood         ,  U * 3); // Livingwood Shaft Core
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  97, MT.Livingrock         ,  5* U2); // Livingrock Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  98, MT.Livingrock         ,  U * 7); // 2x Livingrock Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  99, MT.Livingrock         ,  U *16); // 4x Livingrock Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 100, MT.Livingrock         ,  U *25); // 8x Livingrock Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 101, MT.Livingrock         ,  U *34); // 16x Livingrock Gear
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 102, MT.Livingrock         ,  U * 1); // Livingrock Bearing
-		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 103, MT.Livingrock         ,  U * 3); // Livingrock Shaft Core
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  97, MT.STONES.Livingrock  ,  5* U2); // Livingrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  98, MT.STONES.Livingrock  ,  U * 7); // 2x Livingrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1,  99, MT.STONES.Livingrock  ,  U *16); // 4x Livingrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 100, MT.STONES.Livingrock  ,  U *25); // 8x Livingrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 101, MT.STONES.Livingrock  ,  U *34); // 16x Livingrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 102, MT.STONES.Livingrock  ,  U * 1); // Livingrock Bearing
+		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 103, MT.STONES.Livingrock  ,  U * 3); // Livingrock Shaft Core
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 113, MT.TungstenAlloy      ,  U    ); // Tungsten Alloy Gear
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 114, MT.TungstenAlloy      ,  U * 2, MT.HSLA               ,  U * 2); // 2x Tungsten Alloy Gear
 		OM.data(MD.RoC, "rotarycraft_item_gearcraft"        , 1, 115, MT.TungstenAlloy      ,  U * 4, MT.HSLA               ,  U * 6); // 4x Tungsten Alloy Gear
@@ -1922,16 +1922,16 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "quartzSlabSunnyFull"              , 1,   W, MT.SunnyQuartz        ,  U * 4);
 		OM.data(MD.BOTA, "quartzTypeSunny"                  , 1,   W, MT.SunnyQuartz        ,  U * 4);
 		OM.data(MD.BOTA, "quartzStairsSunny"                , 1,   W, MT.SunnyQuartz        ,  U * 6);
-		OM.data(MD.BOTA, "livingrock"                       , 1,   W, MT.Livingrock         ,  U * 1);
-		OM.data(MD.BOTA, "livingrock0SlabFull"              , 1,   W, MT.Livingrock         ,  U * 1);
-		OM.data(MD.BOTA, "livingrock1SlabFull"              , 1,   W, MT.Livingrock         ,  U * 1);
-		OM.data(MD.BOTA, "livingrock0Wall"                  , 1,   W, MT.Livingrock         ,  U * 1);
-		OM.data(MD.BOTA, "livingrock0Stairs"                , 1,   W, MT.Livingrock         ,  U2* 3);
-		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.Livingrock         ,  U2* 3);
-		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.Livingrock         ,  U2);
-		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.Livingrock         ,  U2);
+		OM.data(MD.BOTA, "livingrock"                       , 1,   W, MT.STONES.Livingrock  ,  U * 1);
+		OM.data(MD.BOTA, "livingrock0SlabFull"              , 1,   W, MT.STONES.Livingrock  ,  U * 1);
+		OM.data(MD.BOTA, "livingrock1SlabFull"              , 1,   W, MT.STONES.Livingrock  ,  U * 1);
+		OM.data(MD.BOTA, "livingrock0Wall"                  , 1,   W, MT.STONES.Livingrock  ,  U * 1);
+		OM.data(MD.BOTA, "livingrock0Stairs"                , 1,   W, MT.STONES.Livingrock  ,  U2* 3);
+		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.STONES.Livingrock  ,  U2* 3);
+		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
+		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
 		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(ANY.Glowstone, U * 4));
-		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Livingrock, U * 8));
+		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.STONES.Livingrock, U * 8));
 		OM.dat2(MD.BOTA, "glassPick"                        , 1     , MT.Manasteel          ,  U * 1, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glass, U * 2));
 		
 		

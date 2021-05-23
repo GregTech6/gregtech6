@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -78,8 +78,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Crusher      .addRecipe1(T, 16,  16, new long[] {10000, 500}, aEvent.mStack, OP.dustImpure.mat(MT.Endstone, 1), OM.dust(MT.EnderPearl));
 		}});
 		addListener("stoneRedrock", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Hammer       .addRecipe1(T, 16,  16, aEvent.mStack, OP.dustImpure.mat(MT.Redrock, 1));
-			RM.Crusher      .addRecipe1(T, 16,  16, new long[] {10000, 1000}, aEvent.mStack, OP.dustImpure.mat(MT.Redrock, 1), OM.dust(MT.ClayRed));
+			RM.Hammer       .addRecipe1(T, 16,  16, aEvent.mStack, OP.dustImpure.mat(MT.STONES.Redrock, 1));
+			RM.Crusher      .addRecipe1(T, 16,  16, new long[] {10000, 1000}, aEvent.mStack, OP.dustImpure.mat(MT.STONES.Redrock, 1), OM.dust(MT.ClayRed));
 		}});
 		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));

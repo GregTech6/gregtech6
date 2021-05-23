@@ -61,8 +61,8 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "oreEncrustedDiamond" , 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0), OM.dust(MT.VolcanicAsh));
 		RM.Hammer       .addRecipe1(T, 16, 16,  7500, ST.make(MD.ERE, "oreEncrustedDiamond" , 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0));
 		
-		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.Umber, 4));
-		RM.Hammer       .addRecipe1(T, 16, 16,  7000, ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.Umber, 4));
+		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.STONES.Umber, 4));
+		RM.Hammer       .addRecipe1(T, 16, 16,  7000, ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.STONES.Umber, 4));
 		
 		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "volcanicRock"        , 1, 0), OM.dust(MT.VolcanicAsh));
 		RM.Hammer       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "volcanicRock"        , 1, 0), OM.dust(MT.VolcanicAsh));
@@ -70,14 +70,14 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		
 		RM.Sharpening   .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "encrustedDiamond"    , 1, W), ST.make(Items.diamond, 1, 0), OM.dust(MT.VolcanicAsh, U2));
 		
-		RM.pack(rockGt.mat(MT.Umber     , 4), ST.make(MD.ERE, "umberstone", 1, 1));
-		RM.pack(rockGt.mat(MT.Gneiss    , 4), ST.make(MD.ERE, "gneiss", 1, 0));
+		RM.pack(rockGt.mat(MT.STONES.Umber     , 4), ST.make(MD.ERE, "umberstone", 1, 1));
+		RM.pack(rockGt.mat(MT.STONES.Gneiss    , 4), ST.make(MD.ERE, "gneiss", 1, 0));
 		
 		RM.pack(ST.make(Items.string, 9, 0), ST.make(MD.ERE, "blockSilk", 1, 0));
 		RM.unpack(ST.make(MD.ERE, "blockSilk", 1, 0), ST.make(Items.string, 9, 0));
 		
-		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.Umber));
-		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.Gneiss));
+		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
+		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
 		
 		
 		CR.delate(MD.ERE, "mirbrick");
@@ -120,8 +120,8 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("stoneGneiss", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Crusher  .addRecipe1(T, 16, 64       , aEvent.mStack, OP.rockGt.mat(MT.Gneiss, 4));
-			RM.Hammer   .addRecipe1(T, 16, 64,  7000, aEvent.mStack, OP.rockGt.mat(MT.Gneiss, 4));
+			RM.Crusher  .addRecipe1(T, 16, 64       , aEvent.mStack, OP.rockGt.mat(MT.STONES.Gneiss, 4));
+			RM.Hammer   .addRecipe1(T, 16, 64,  7000, aEvent.mStack, OP.rockGt.mat(MT.STONES.Gneiss, 4));
 		}});
 		}};
 	}

@@ -2561,7 +2561,21 @@ public class UT {
 		}
 		
 		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
-			if (aPlayer == null || ST.invalid(aStack)) return F;
+			if (aPlayer == null) return F;
+			
+			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
+				aPlayer.triggerAchievement(AchievementList.openInventory);
+				aPlayer.triggerAchievement(AchievementList.mineWood);
+				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
+				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
+				aPlayer.triggerAchievement(AchievementList.buildFurnace);
+				aPlayer.triggerAchievement(AchievementList.acquireIron);
+				aPlayer.triggerAchievement(AchievementList.diamonds);
+				aPlayer.triggerAchievement(AchievementList.portal);
+			}
+			
+			if (ST.invalid(aStack)) return F;
+			
 			OreDictItemData tData = OM.association_(aStack);
 			Item aItem = ST.item(aStack);
 			Block aBlock = ST.block(aItem);

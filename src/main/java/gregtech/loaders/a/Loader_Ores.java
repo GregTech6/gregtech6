@@ -161,21 +161,21 @@ public class Loader_Ores implements Runnable {
 		OreDictMaterial[] tDrops;
 		
 		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreSlate, OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreBlueschist, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Basalt, MT.Shale, MT.Sand, MT.Limestone, MT.Slate, MT.Rhyolite, MT.Chalk, MT.Marble, MT.Dolomite, MT.Blueschist/* More of a Neutral Gray */, MT.Chert, MT.Gabbro, MT.Dacite};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Basalt, MT.STONES.Shale, MT.Sand, MT.STONES.Limestone, MT.STONES.Slate, MT.STONES.Rhyolite, MT.Chalk, MT.STONES.Marble, MT.Dolomite, MT.STONES.Blueschist/* More of a Neutral Gray */, MT.STONES.Chert, MT.STONES.Gabbro, MT.STONES.Dacite};
 		for (int i = 0; i < 13; i++) rockset(MD.EB, "enhancedbiomes.tile.stoneEB", i, i, "enhancedbiomes.tile.stoneCobbleEB", i, "eb.stone."+i, tPrefix[i], tDrops[i]);
 		
 		
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillagranite, OP.oreBlackgranite, OP.oreVanillastone, OP.oreAndesite, OP.oreVanillastone, OP.oreBasalt, OP.oreKomatiite, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Granite, MT.GraniteBlack, MT.Rhyolite, MT.Andesite, MT.Gabbro, MT.Basalt, MT.Komatiite, MT.Dacite};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Granite, MT.STONES.GraniteBlack, MT.STONES.Rhyolite, MT.STONES.Andesite, MT.STONES.Gabbro, MT.STONES.Basalt, MT.STONES.Komatiite, MT.STONES.Dacite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "igneousStone", i, i+8, "igneousCobblestone", i, "ub.igneous."+i, tPrefix[i], tDrops[i]);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Gneiss, MT.Eclogite, MT.Marble, MT.Quartzite, MT.Blueschist, MT.Greenschist, MT.Talc, MT.Migmatite};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Gneiss, MT.STONES.Eclogite, MT.STONES.Marble, MT.STONES.Quartzite, MT.STONES.Blueschist, MT.STONES.Greenschist, MT.Talc, MT.STONES.Migmatite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "metamorphicStone", i, i+8, "metamorphicCobblestone", i, "ub.metamorphic."+i, tPrefix[i], tDrops[i]);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreShale, OP.oreSiltstone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Limestone, MT.Chalk, MT.Shale, MT.Siltstone, MT.Lignite, MT.Dolomite, MT.Greywacke, MT.Chert};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Limestone, MT.Chalk, MT.STONES.Shale, MT.STONES.Siltstone, MT.Lignite, MT.Dolomite, MT.STONES.Greywacke, MT.STONES.Chert};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "sedimentaryStone", i, i+8, "sedimentaryStone", i, "ub.sedimentary."+i, tPrefix[i], tDrops[i]);
 		
 		if (MD.PFAA.mLoaded) {
@@ -190,95 +190,95 @@ public class Loader_Ores implements Runnable {
 		}
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreShale};
-		tDrops  = new OreDictMaterial[] {MT.Stone, MT.Stone, MT.Stone, MT.Stone, MT.Shale};
+		tDrops  = new OreDictMaterial[] {MT.Stone, MT.Stone, MT.Stone, MT.Stone, MT.STONES.Shale};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "weakStone", i, i, "weakRubble", i, "pfaa.weak."+i, tPrefix[i], tDrops[i], 0.5F, 0.5F, 0, F, F, T);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Limestone, MT.Stone, MT.Stone, MT.Slate, MT.Stone};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Limestone, MT.Stone, MT.Stone, MT.STONES.Slate, MT.Stone};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "mediumStone", i, i, "mediumCobble", i, "pfaa.medium."+i, tPrefix[i], tDrops[i], 1.0F, 1.0F, 0, F, F, T);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreVanillastone, OP.oreBlackgranite, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreVanillastone, OP.oreSandstone, OP.oreSandstone};
-		tDrops  = new OreDictMaterial[] {MT.Andesite, MT.Basalt, MT.Gneiss, MT.GraniteBlack, MT.Greenschist, MT.Marble, MT.Stone, MT.Rhyolite, MT.Sand, MT.Sand};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Basalt, MT.STONES.Gneiss, MT.STONES.GraniteBlack, MT.STONES.Greenschist, MT.STONES.Marble, MT.Stone, MT.STONES.Rhyolite, MT.Sand, MT.Sand};
 		for (int i = 0; i <10; i++) rockset(MD.PFAA, "strongStone", i, i, "strongCobble", i, "pfaa.strong."+i, tPrefix[i], tDrops[i], 1.5F, 1.5F, 1, F, F, T);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreDiorite, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreQuartzite};
-		tDrops  = new OreDictMaterial[] {MT.Diorite, MT.Gabbro, MT.Stone, MT.Stone, MT.Quartzite};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Gabbro, MT.Stone, MT.Stone, MT.STONES.Quartzite};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "veryStrongStone", i, i, "veryStrongCobble", i, "pfaa.verystrong."+i, tPrefix[i], tDrops[i], 2.0F, 2.0F, 2, F, F, T);
 		
 		
-		rockset(MD.CHSL, "granite"                             , 0, "chisel.granite"       , OP.oreVanillagranite      , MT.Granite);
-		rockset(MD.CHSL, "diorite"                             , 0, "chisel.diorite"       , OP.oreDiorite             , MT.Diorite);
-		rockset(MD.CHSL, "andesite"                            , 0, "chisel.andesite"      , OP.oreAndesite            , MT.Andesite);
+		rockset(MD.CHSL, "granite"                             , 0, "chisel.granite"       , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.CHSL, "diorite"                             , 0, "chisel.diorite"       , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.CHSL, "andesite"                            , 0, "chisel.andesite"      , OP.oreAndesite            , MT.STONES.Andesite);
 		
-		rockset(MD.CHSL, "marble"                              , 0, "chisel.marble"        , OP.oreMarble              , MT.Marble);
-		rockset(MD.CHSL, "limestone"                           , 0, "chisel.limestone"     , OP.oreLimestone           , MT.Limestone);
+		rockset(MD.CHSL, "marble"                              , 0, "chisel.marble"        , OP.oreMarble              , MT.STONES.Marble);
+		rockset(MD.CHSL, "limestone"                           , 0, "chisel.limestone"     , OP.oreLimestone           , MT.STONES.Limestone);
 		
-		rockset(MD.EtFu, "stone"                               , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.Granite);
-		rockset(MD.EtFu, "stone"                               , 3, "etfu.diorite"         , OP.oreDiorite             , MT.Diorite);
-		rockset(MD.EtFu, "stone"                               , 5, "etfu.andesite"        , OP.oreAndesite            , MT.Andesite);
-		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate", 0, "etfu.deepslate"       , OP.oreDeepslate           , MT.Slate);
+		rockset(MD.EtFu, "stone"                               , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.EtFu, "stone"                               , 3, "etfu.diorite"         , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.EtFu, "stone"                               , 5, "etfu.andesite"        , OP.oreAndesite            , MT.STONES.Andesite);
+		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate", 0, "etfu.deepslate"       , OP.oreDeepslate           , MT.STONES.Slate);
 		
-		rockset(MD.BoP, "rocks"                                , 0, "bop.limestone"        , OP.oreLimestone           , MT.Limestone);
-		rockset(MD.BoP, "rocks"                                , 2, "bop.siltstone"        , OP.oreSiltstone           , MT.Siltstone);
-		rockset(MD.BoP, "rocks"                                , 4, "bop.shale"            , OP.oreShale               , MT.Shale);
+		rockset(MD.BoP, "rocks"                                , 0, "bop.limestone"        , OP.oreLimestone           , MT.STONES.Limestone);
+		rockset(MD.BoP, "rocks"                                , 2, "bop.siltstone"        , OP.oreSiltstone           , MT.STONES.Siltstone);
+		rockset(MD.BoP, "rocks"                                , 4, "bop.shale"            , OP.oreShale               , MT.STONES.Shale);
 		
-		rockset(MD.GaSu, "basalt"                              , 0, "gasu.basalt"          , OP.oreBasalt              , MT.Basalt);
+		rockset(MD.GaSu, "basalt"                              , 0, "gasu.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
 		
-		rockset(MD.RC, "cube"                                  , 6, "rc.abyssal"           , OP.oreBasalt              , MT.Basalt);
-		rockset(MD.RC, "cube"                                  , 7, "rc.quarried"          , OP.oreMarble              , MT.Marble);
+		rockset(MD.RC, "cube"                                  , 6, "rc.abyssal"           , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.RC, "cube"                                  , 7, "rc.quarried"          , OP.oreMarble              , MT.STONES.Marble);
 		
-		rockset(MD.MIN, "basalt"                               , 0, "min.basalt"           , OP.oreBasalt              , MT.Basalt);
-		rockset(MD.MIN, "granite"                              , 0, "min.granite"          , OP.oreVanillagranite      , MT.Granite);
-		rockset(MD.MIN, "andesite"                             , 0, "min.andesite"         , OP.oreAndesite            , MT.Andesite);
-		rockset(MD.MIN, "diorite"                              , 0, "min.diorite"          , OP.oreDiorite             , MT.Diorite);
-		rockset(MD.MIN, "limestone"                            , 0, "min.limestone"        , OP.oreLimestone           , MT.Limestone);
-		rockset(MD.MIN, "shale"                                , 0, "min.shale"            , OP.oreShale               , MT.Shale);
-		rockset(MD.MIN, "slate"                                , 0, "min.slate"            , OP.oreSlate               , MT.Slate);
-		rockset(MD.MIN, "schist"                               , 0, "min.schist"           , OP.oreBlueschist          , MT.Blueschist);
-		rockset(MD.MIN, "gneiss"                               , 0, "min.gneiss"           , OP.oreVanillastone        , MT.Gneiss);
+		rockset(MD.MIN, "basalt"                               , 0, "min.basalt"           , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.MIN, "granite"                              , 0, "min.granite"          , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.MIN, "andesite"                             , 0, "min.andesite"         , OP.oreAndesite            , MT.STONES.Andesite);
+		rockset(MD.MIN, "diorite"                              , 0, "min.diorite"          , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.MIN, "limestone"                            , 0, "min.limestone"        , OP.oreLimestone           , MT.STONES.Limestone);
+		rockset(MD.MIN, "shale"                                , 0, "min.shale"            , OP.oreShale               , MT.STONES.Shale);
+		rockset(MD.MIN, "slate"                                , 0, "min.slate"            , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.MIN, "schist"                               , 0, "min.schist"           , OP.oreBlueschist          , MT.STONES.Blueschist);
+		rockset(MD.MIN, "gneiss"                               , 0, "min.gneiss"           , OP.oreVanillastone        , MT.STONES.Gneiss);
 		rockset(MD.MIN, "dolomite"                             , 0, "min.dolomite"         , OP.oreVanillastone        , MT.Dolomite);
-		rockset(MD.MIN, "rhyolite"                             , 0, "min.rhyolite"         , OP.oreVanillastone        , MT.Rhyolite);
-		rockset(MD.MIN, "pumice"                               , 0, "min.pumice"           , OP.oreVanillastone        , MT.Pumice);
+		rockset(MD.MIN, "rhyolite"                             , 0, "min.rhyolite"         , OP.oreVanillastone        , MT.STONES.Rhyolite);
+		rockset(MD.MIN, "pumice"                               , 0, "min.pumice"           , OP.oreVanillastone        , MT.STONES.Pumice);
 		rockset(MD.MIN, "conglomerate"                         , 0, "min.conglomerate"     , OP.oreVanillastone        , MT.Stone);
 		rockset(MD.MIN, "pegmatite"                            , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
-		rockset(MD.MIN, "chert"                                , 0, "min.chert"            , OP.oreVanillastone        , MT.Chert);
+		rockset(MD.MIN, "chert"                                , 0, "min.chert"            , OP.oreVanillastone        , MT.STONES.Chert);
 		
 		if (MD.NePl.mLoaded) {
-		rockset(MD.NePl, "Blackstone"                          , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
-		rockset(MD.NePl, "Basalt"                              , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
+		rockset(MD.NePl, "Blackstone"                          , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.STONES.Blackstone);
+		rockset(MD.NePl, "Basalt"                              , 0, "nepl.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
 		}
 		if (MD.NeLi.mLoaded) {
-		rockset(MD.NeLi, "Blackstone"                          , 0, "neli.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
-		rockset(MD.NeLi, "Basalt"                              , 0, "neli.basalt"          , OP.oreBasalt              , MT.Basalt);
+		rockset(MD.NeLi, "Blackstone"                          , 0, "neli.blackstone"      , OP.oreBlackstone          , MT.STONES.Blackstone);
+		rockset(MD.NeLi, "Basalt"                              , 0, "neli.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
 		}
 		if (MD.BOTA.mLoaded) {
-		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
+		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.STONES.Livingrock, 1.0F, 1.0F, 0, F, F, T);
 		}
 		if (MD.TF.mLoaded) {
-		rockset(MD.TF, "tile.TFDeadrock"                       , 2, "twilight.deadrock"    , OP.oreDeadrock            , MT.Deadrock);
+		rockset(MD.TF, "tile.TFDeadrock"                       , 2, "twilight.deadrock"    , OP.oreDeadrock            , MT.STONES.Deadrock);
 		}
 		if (MD.AETHER.mLoaded) {
-		rockset(MD.AETHER, "holystone"                         , 1, "aether.holystone"     , OP.oreHolystone           , MT.Holystone);
+		rockset(MD.AETHER, "holystone"                         , 1, "aether.holystone"     , OP.oreHolystone           , MT.STONES.Holystone);
 		}
 		if (MD.ERE.mLoaded) {
-		rockset(MD.ERE, "umberstone", 0, 0, "umberstone"       , 1, "erebus.umberstone"    , OP.oreUmberstone          , MT.Umber);
-		rockset(MD.ERE, "umberGravel"                          , 0, "erebus.umbergravel"   , OP.oreUmberstone          , MT.Umber, 1, 1, 0, T, F, F);
+		rockset(MD.ERE, "umberstone", 0, 0, "umberstone"       , 1, "erebus.umberstone"    , OP.oreUmberstone          , MT.STONES.Umber);
+		rockset(MD.ERE, "umberGravel"                          , 0, "erebus.umbergravel"   , OP.oreUmberstone          , MT.STONES.Umber, 1, 1, 0, T, F, F);
 		}
 		if (MD.BTL.mLoaded) {
-		rockset(MD.BTL, "betweenstone"                         , 0, "btl.betweenstone"     , OP.oreBetweenstone        , MT.Betweenstone);
-		rockset(MD.BTL, "pitstone"                             , 0, "btl.pitstone"         , OP.orePitstone            , MT.Pitstone);
+		rockset(MD.BTL, "betweenstone"                         , 0, "btl.betweenstone"     , OP.oreBetweenstone        , MT.STONES.Betweenstone);
+		rockset(MD.BTL, "pitstone"                             , 0, "btl.pitstone"         , OP.orePitstone            , MT.STONES.Pitstone);
 		}
 		if (MD.GC.mLoaded) {
-		rockset(MD.GC, "tile.moonBlock"                        , 3, "gc.moon.dirt"         , OP.oreMoon                , MT.MoonRock);
-		rockset(MD.GC, "tile.moonBlock"                        , 4, "gc.moon.rock"         , OP.oreMoon                , MT.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                        , 3, "gc.moon.dirt"         , OP.oreMoon                , MT.STONES.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                        , 4, "gc.moon.rock"         , OP.oreMoon                , MT.STONES.MoonRock);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
-		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars"  , 4, "gc.mars.rock"         , OP.oreMars                , MT.MarsRock);
-		rockset(MD.GC_PLANETS, "tile.mars"                     , 6, "gc.mars.dirt"         , OP.oreMars                , MT.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars"  , 4, "gc.mars.rock"         , OP.oreMars                , MT.STONES.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars"                     , 6, "gc.mars.dirt"         , OP.oreMars                , MT.STONES.MarsRock);
 		
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 0, "gc.asteroids.dark"    , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 1, "gc.asteroids.gray"    , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 2, "gc.asteroids.light"   , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 0, "gc.asteroids.dark"    , OP.oreSpace               , MT.STONES.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 1, "gc.asteroids.gray"    , OP.oreSpace               , MT.STONES.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"           , 2, "gc.asteroids.light"   , OP.oreSpace               , MT.STONES.SpaceRock);
 		}
 		
 		/* Doesn't work so I won't waste Block IDs until I get it to work.

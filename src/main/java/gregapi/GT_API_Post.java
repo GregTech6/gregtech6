@@ -209,8 +209,8 @@ public class GT_API_Post extends Abstract_Mod {
 		// Atum violates the "Items have to be created in preInit" Rule...
 		if (MD.ATUM.mLoaded) {
 			IL.ATUM_Scarab      .set(ST.make(MD.ATUM, "item.scarab" , 1, 0), new OreDictItemData(MT.Au, 4*U, MT.Diamond, U));
-			IL.ATUM_Limestone   .set(ST.make(MD.ATUM, "tile.stone"  , 1, 0), OP.stone.dat(MT.Limestone));
-			IL.ATUM_Limecobble  .set(ST.make(MD.ATUM, "tile.cobble" , 1, 0), OP.stone.dat(MT.Limestone));
+			IL.ATUM_Limestone   .set(ST.make(MD.ATUM, "tile.stone"  , 1, 0), OP.stone.dat(MT.STONES.Limestone));
+			IL.ATUM_Limecobble  .set(ST.make(MD.ATUM, "tile.cobble" , 1, 0), OP.stone.dat(MT.STONES.Limestone));
 			
 			OM.reg("cropDate"               , ST.make(MD.ATUM, "item.date", 1, 0));
 			OM.reg("cropFlax"               , ST.make(MD.ATUM, "item.flax", 1, 0));
@@ -225,7 +225,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.coalOre"        , 1, 0), OP.oreLimestone.dat(MT.Coal        ));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.diamondOre"     , 1, 0), OP.oreLimestone.dat(MT.Diamond     ));
 			
-			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.Limestone, U);
+			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.STONES.Limestone, U);
 			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U);
 			OM.data(MD.ATUM, "tile.framedGlass", 1, W, MT.Glass, U);
 			OM.data(MD.ATUM, "tile.crystalGlass", 1, W, MT.Glass, U);
@@ -304,11 +304,11 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , MD.PR, "projectred.core.part", 55);
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Electrotine                , MD.PR, "projectred.core.part", 56);
 			
-			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
-			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
-			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3));
-			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4));
+			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4));
 			for (int i = 0; i < 16; i++) {
 			OM.reg(DYE_OREDICTS_MIXABLE[i], ST.make(MD.PR_EXPLORATION, "projectred.exploration.lilyseed", 1, 15-i));
 			OM.data(MD.PR, "projectred.core.part", 1, i+19, ANY.Glowstone, 2*U);
@@ -343,25 +343,25 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg(OP.crushed.dat(MT.Zn)                 , ST.make(MD.BP, "zinc_ore_crushed", 1, 0));
 			OM.reg(OP.crushedPurified.dat(MT.Zn)         , ST.make(MD.BP, "zinc_ore_purified", 1, 0));
 			OM.reg(OP.boule.dat(MT.Si)                   , ST.make(MD.BP, "silicon_boule", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_cobble", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_brick", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "fancy_basalt", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_brick_small", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basaltbrick_cracked", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_paver", 1, 0));
-			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_tile", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_brick", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "fancy_marble", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_brick_small", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_paver", 1, 0));
-			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_tile", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt_cobble", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt_brick", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "fancy_basalt", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt_brick_small", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basaltbrick_cracked", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt_paver", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt)        , ST.make(MD.BP, "basalt_tile", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "marble", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "marble_brick", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "fancy_marble", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "marble_brick_small", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "marble_paver", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble)        , ST.make(MD.BP, "marble_tile", 1, 0));
 			
 			OM.data(MD.BP, "zincplate", 1, 0, ANY.Fe,   U2, MT.Zn,   U4);
 			OM.data(MD.BP, "paint_can", 1, W, ANY.Fe, 7*U2, MT.Zn, 7*U4);
 			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
-			OM.data(MD.BP, "tiles", 1, 0, MT.Marble, U2, MT.Basalt, U2);
+			OM.data(MD.BP, "tiles", 1, 0, MT.STONES.Marble, U2, MT.STONES.Basalt, U2);
 			
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"     , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore" , null));

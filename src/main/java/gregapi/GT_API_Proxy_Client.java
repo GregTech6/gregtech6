@@ -412,7 +412,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 							}
 						}
 					}
-					if (tUnburnable) aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
+					if (tUnburnable && !MD.MC.owns(aRegName)) aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
 				}
 				
 				if (aEvent.showAdvancedItemTooltips) {

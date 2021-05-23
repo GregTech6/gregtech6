@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,67 +42,67 @@ public class Loader_Recipes_Extruder implements Runnable {
 	@Override
 	@SuppressWarnings("unused")
 	public void run() {
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(MT.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(MT.STONES.Blackstone, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Ingot       .get(0), IL.NeLi_Blackstone_Bricks.get(1, IL.NePl_Blackstone_Bricks.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Block       .get(0), IL.NeLi_Blackstone_Polished.get(1, IL.NePl_Blackstone_Polished.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE))));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(MT.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(MT.STONES.Blackstone, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Ingot       .get(0), IL.NeLi_Blackstone_Bricks.get(1, IL.NePl_Blackstone_Bricks.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Block       .get(0), IL.NeLi_Blackstone_Polished.get(1, IL.NePl_Blackstone_Polished.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE))));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Blackstone, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.STONES.Blackstone, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Blackstone_Generator.get(0), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.STONES.Blackstone, 1));
 		
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(MT.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(MT.STONES.Basalt, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Ingot       .get(0), IL.NeLi_Basalt_Polished.get(1, IL.NePl_Basalt_Polished.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Block       .get(0), IL.NeLi_Basalt.get(1, IL.NePl_Basalt.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE))));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(MT.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Basalt_Generator.get(0), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  16, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(MT.STONES.Basalt, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Ingot       .get(0), IL.NeLi_Basalt_Polished.get(1, IL.NePl_Basalt_Polished.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.BRICK))));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Block       .get(0), IL.NeLi_Basalt.get(1, IL.NePl_Basalt.get(1, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE))));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Basalt, 1));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 128, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 256, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.STONES.Basalt, 1));
+		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 384, IL.Module_Basalt_Generator.get(0), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.STONES.Basalt, 1));
 		
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Stone_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.Stone, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Stone_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.Stone, 1));

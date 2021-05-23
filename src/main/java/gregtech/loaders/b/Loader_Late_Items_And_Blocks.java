@@ -46,9 +46,9 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 			OUT.println("GT_Mod: Register Late Bullshit for Atum.");
 			Block tAtumStone = ST.block(MD.ATUM, "tile.stone"), tAtumCobble = ST.block(MD.ATUM, "tile.cobble"), tAtumSand = ST.block(MD.ATUM, "tile.sand");
 			if (tAtumCobble != NB && tAtumStone != NB) {
-				BlocksGT.oreAtumLimestone       = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.atum"         , OP.oreLimestone   , null, null, null                              , BlockTextureCopied.get(tAtumStone , 6, 0) , tAtumStone.getMaterial()  , tAtumStone.stepSound  , TOOL_pickaxe  , 2.0F, 2.0F,   0,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
-				BlocksGT.oreBrokenAtumLimestone = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.atum"         , OP.oreLimestone   , null, null, null                              , BlockTextureCopied.get(tAtumCobble, 6, 0) , tAtumCobble.getMaterial() , tAtumCobble.stepSound , TOOL_pickaxe  , 1.0F, 1.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, T,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
-				BlocksGT.oreSmallAtumLimestone  = new PrefixBlock_(MD.GT, "gt.meta.ore.small.atum"          , OP.oreSmall       , null, null, new Drops_SmallOre(MT.Limestone)  , BlockTextureCopied.get(tAtumStone , 6, 0) , tAtumStone.getMaterial()  , tAtumStone.stepSound  , TOOL_pickaxe  , 2.0F, 2.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
+				BlocksGT.oreAtumLimestone       = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.atum"         , OP.oreLimestone   , null, null, null                                   , BlockTextureCopied.get(tAtumStone , 6, 0) , tAtumStone.getMaterial()  , tAtumStone.stepSound  , TOOL_pickaxe  , 2.0F, 2.0F,   0,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
+				BlocksGT.oreBrokenAtumLimestone = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.atum"         , OP.oreLimestone   , null, null, null                                   , BlockTextureCopied.get(tAtumCobble, 6, 0) , tAtumCobble.getMaterial() , tAtumCobble.stepSound , TOOL_pickaxe  , 1.0F, 1.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, T,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
+				BlocksGT.oreSmallAtumLimestone  = new PrefixBlock_(MD.GT, "gt.meta.ore.small.atum"          , OP.oreSmall       , null, null, new Drops_SmallOre(MT.STONES.Limestone), BlockTextureCopied.get(tAtumStone , 6, 0) , tAtumStone.getMaterial()  , tAtumStone.stepSound  , TOOL_pickaxe  , 2.0F, 2.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
 				((PrefixBlock)BlocksGT.oreAtumLimestone).mDrops = new Drops(BlocksGT.oreBrokenAtumLimestone, BlocksGT.oreAtumLimestone, OP.oreRaw.mRegisteredPrefixItems.get(0));
 				for (byte i = 0; i < 16; i++) {
 					BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(tAtumStone, 1, i), BlocksGT.oreBrokenAtumLimestone);
@@ -65,8 +65,8 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 				}
 			}
 			if (tAtumSand != NB) {
-				BlocksGT.oreAtumSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sand.atum"    , OP.oreStrangesand , null, null, null                              , BlockTextureCopied.get(tAtumSand  , 6, 0) , tAtumSand.getMaterial()   , tAtumSand.stepSound   , TOOL_shovel   , 2.0F, 2.0F,   0,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
-				BlocksGT.oreSmallAtumSand       = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand.atum"     , OP.oreSmall       , null, null, new Drops_SmallOre(MT.Limestone)  , BlockTextureCopied.get(tAtumSand  , 6, 0) , tAtumSand.getMaterial()   , tAtumSand.stepSound   , TOOL_shovel   , 2.0F, 2.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
+				BlocksGT.oreAtumSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sand.atum"    , OP.oreStrangesand , null, null, null                                   , BlockTextureCopied.get(tAtumSand  , 6, 0) , tAtumSand.getMaterial()   , tAtumSand.stepSound   , TOOL_shovel   , 2.0F, 2.0F,   0,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
+				BlocksGT.oreSmallAtumSand       = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand.atum"     , OP.oreSmall       , null, null, new Drops_SmallOre(MT.STONES.Limestone), BlockTextureCopied.get(tAtumSand  , 6, 0) , tAtumSand.getMaterial()   , tAtumSand.stepSound   , TOOL_shovel   , 2.0F, 2.0F,  -1,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
 				for (byte i = 0; i < 16; i++) {
 					BlocksGT.stoneToNormalOres.put(new ItemStackContainer(tAtumSand, 1, i), BlocksGT.oreAtumSand);
 					BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(tAtumSand, 1, i), BlocksGT.oreAtumSand);
@@ -81,10 +81,10 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 			}
 		}
 		
-		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone", 3, 3, "projectred.exploration.stone", 2, "pr.basalt", OP.oreBasalt, MT.Basalt);
-		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone"                                      , 0, "pr.marble", OP.oreMarble, MT.Marble);
+		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone", 3, 3, "projectred.exploration.stone", 2, "pr.basalt", OP.oreBasalt, MT.STONES.Basalt);
+		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone"                                      , 0, "pr.marble", OP.oreMarble, MT.STONES.Marble);
 		
-		Loader_Ores.rockset(MD.BP, "basalt", 0, 0, "basalt_cobble", 0, "bp.basalt", OP.oreBasalt, MT.Basalt);
-		Loader_Ores.rockset(MD.BP, "marble"                       , 0, "bp.marble", OP.oreMarble, MT.Marble);
+		Loader_Ores.rockset(MD.BP, "basalt", 0, 0, "basalt_cobble", 0, "bp.basalt", OP.oreBasalt, MT.STONES.Basalt);
+		Loader_Ores.rockset(MD.BP, "marble"                       , 0, "bp.marble", OP.oreMarble, MT.STONES.Marble);
 	}
 }

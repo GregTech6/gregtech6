@@ -52,7 +52,7 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		
 		RM.add_smelting(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45), ST.make(MD.AE, "tile.BlockSkyStone", 1, 0));
 		
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Olivine), OM.dust(MT.RareEarth), OM.dust(MT.Basalt), OM.dust(MT.Obsidian)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Olivine), OM.dust(MT.RareEarth), OM.dust(MT.STONES.Basalt), OM.dust(MT.Obsidian)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
 		
 		RM.Shredder     .addRecipe1(T, 64,   16, ST.make(MD.AE, "tile.BlockSkyStone", 1, W), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
 		RM.Shredder     .addRecipe1(T, 64,  128, ST.make(MD.AE, "tile.BlockSkyChest", 1, W), ST.make(MD.AE, "item.ItemMultiMaterial", 8, 45));
@@ -98,7 +98,7 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		RM.Compressor   .addRecipe1(T, 16,   16, ST.make(MD.AE, "item.ItemMultiMaterial", 8, 12), ST.make(MD.AE, "tile.BlockFluix", 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   16, ST.make(MD.AE, "item.ItemMultiMaterial", 8, 11), ST.make(Blocks.quartz_block, 1, 0));
 		
-		RM.Centrifuge   .addRecipe1(T, 64,   16, new long[] {2000, 2000, 2000, 2000, 2000, 2000}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45), OP.dustSmall.mat(MT.OREMATS.BasalticMineralSand, 1), OP.dustSmall.mat(MT.Olivine, 1), OP.dustSmall.mat(MT.Obsidian, 1), OP.dustSmall.mat(MT.Basalt, 1), OP.dustSmall.mat(MT.Flint, 1), OP.dustSmall.mat(MT.RareEarth, 1));
+		RM.Centrifuge   .addRecipe1(T, 64,   16, new long[] {2000, 2000, 2000, 2000, 2000, 2000}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45), OP.dustSmall.mat(MT.OREMATS.BasalticMineralSand, 1), OP.dustSmall.mat(MT.Olivine, 1), OP.dustSmall.mat(MT.Obsidian, 1), OP.dustSmall.mat(MT.STONES.Basalt, 1), OP.dustSmall.mat(MT.Flint, 1), OP.dustSmall.mat(MT.RareEarth, 1));
 		
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.CertusQuartz), ST.make(Blocks.sand, 1, W), ST.make(MD.AE, "item.ItemCrystalSeed", 2,    0));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.NetherQuartz), ST.make(Blocks.sand, 1, W), ST.make(MD.AE, "item.ItemCrystalSeed", 2,  600));

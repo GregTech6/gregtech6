@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -165,16 +165,16 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		if (worldObj.provider.dimensionId == -1) return OP.rockGt.mat(MT.Netherrack, aAmount);
 		if (worldObj.provider.dimensionId ==  0) return OP.rockGt.mat(MT.Stone, aAmount);
 		if (worldObj.provider.dimensionId == +1) return OP.rockGt.mat(MT.Endstone, aAmount);
-		if (WD.dimAETHER(worldObj)) return OP.rockGt.mat(MT.Holystone, aAmount);
-		if (WD.dimERE   (worldObj)) return OP.rockGt.mat(MT.Umber, aAmount);
-		if (WD.dimBTL   (worldObj)) return OP.rockGt.mat(MT.Betweenstone, aAmount);
-		if (WD.dimATUM  (worldObj)) return OP.rockGt.mat(MT.Limestone, aAmount);
-		if (WD.dimTROPIC(worldObj)) return OP.rockGt.mat(MT.Basalt, aAmount);
-		if (WD.dimALF   (worldObj)) return OP.rockGt.mat(MT.Livingrock, aAmount);
+		if (WD.dimAETHER(worldObj)) return OP.rockGt.mat(MT.STONES.Holystone, aAmount);
+		if (WD.dimERE   (worldObj)) return OP.rockGt.mat(MT.STONES.Umber, aAmount);
+		if (WD.dimBTL   (worldObj)) return OP.rockGt.mat(MT.STONES.Betweenstone, aAmount);
+		if (WD.dimATUM  (worldObj)) return OP.rockGt.mat(MT.STONES.Limestone, aAmount);
+		if (WD.dimTROPIC(worldObj)) return OP.rockGt.mat(MT.STONES.Basalt, aAmount);
+		if (WD.dimALF   (worldObj)) return OP.rockGt.mat(MT.STONES.Livingrock, aAmount);
 		if (WD.dimTF    (worldObj)) return OP.rockGt.mat(MT.Stone, aAmount);
-		if (BIOMES_MOON .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MoonRock, aAmount);
-		if (BIOMES_MARS .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MarsRock, aAmount);
-		if (BIOMES_SPACE.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.SpaceRock, aAmount);
+		if (BIOMES_MOON .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.STONES.MoonRock, aAmount);
+		if (BIOMES_MARS .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.STONES.MarsRock, aAmount);
+		if (BIOMES_SPACE.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.STONES.SpaceRock, aAmount);
 		return OP.rockGt.mat(MT.Stone, aAmount);
 	}
 	

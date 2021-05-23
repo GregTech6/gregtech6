@@ -57,8 +57,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', Items.reeds);
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
-		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone         , 'F', OD.craftingFirestarter);
-		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.stone.dat(MT.Basalt), 'F', OD.craftingFirestarter);
+		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone                , 'F', OD.craftingFirestarter);
+		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.stone.dat(MT.STONES.Basalt), 'F', OD.craftingFirestarter);
 		
 		CR.delate(ST.make(Blocks.enchanting_table, 1, 0));
 		CR.delate(ST.make(Blocks.ender_chest, 1, 0));
@@ -482,8 +482,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.glass, 1, W), OP.lens.mat(MT.Glass, 1), OP.dustSmall.mat(MT.Glass, 1));
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.stone, 1, W), OP.stickLong.mat(MT.Stone, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Stone_Generator     .get(0), OP.stickLong.mat(MT.Stone, 1));
-		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), OP.stickLong.mat(MT.Basalt, 1));
-		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(0), OP.stickLong.mat(MT.Blackstone, 1));
+		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), OP.stickLong.mat(MT.STONES.Basalt, 1));
+		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(0), OP.stickLong.mat(MT.STONES.Blackstone, 1));
 		
 		RM.smash(ST.make(Blocks.brown_mushroom_block , 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
 		RM.smash(ST.make(Blocks.red_mushroom_block   , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
@@ -644,8 +644,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.cobblestone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.stone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Stone_Generator.get(0), OM.dust(MT.Stone));
-		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Basalt_Generator.get(0), OM.dust(MT.Basalt));
-		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.Blackstone));
+		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Basalt_Generator.get(0), OM.dust(MT.STONES.Basalt));
+		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.STONES.Blackstone));
 		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(4));
 		RM.Shredder     .addRecipe1(T, 16,128,  6000, ST.make(Blocks.melon_block, 1, W), IL.Remains_Fruit.get(9));
 		
@@ -838,9 +838,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.Water.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.SpDew.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.DistW.make(50), FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.Water.make(3000), NF, IL.Clay_Ball_Red.get(4));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.SpDew.make(3000), NF, IL.Clay_Ball_Red.get(4));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.DistW.make(3000), NF, IL.Clay_Ball_Red.get(4));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.STONES.Redrock), FL.Water.make(3000), NF, IL.Clay_Ball_Red.get(4));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.STONES.Redrock), FL.SpDew.make(3000), NF, IL.Clay_Ball_Red.get(4));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.STONES.Redrock), FL.DistW.make(3000), NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.EnderPearl     ), OM.dust(MT.Blaze, U9), OM.dust(MT.EnderEye     ));
 		RM.Mixer        .addRecipe2(T, 16,  144, OM.dust(MT.EnderPearl, U*9), OM.dust(MT.Blaze    ), OM.dust(MT.EnderEye, U*9));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Sugar              ), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)), ST.make(Items.fermented_spider_eye, 1, 0));

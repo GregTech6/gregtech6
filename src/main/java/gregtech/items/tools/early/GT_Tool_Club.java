@@ -87,12 +87,12 @@ public class GT_Tool_Club extends GT_Tool_HardHammer {
 		}
 		if (IL.NeLi_Basalt.equal(aDrop) || IL.NeLi_Basalt_Polished.equal(aDrop) || IL.NePl_Basalt.equal(aDrop) || IL.NePl_Basalt_Polished.equal(aDrop) || IL.GaSu_Basalt.equal(aDrop) || IL.GaSu_Basalt_Smooth.equal(aDrop) || IL.BOTA_Basalt.equal(aDrop) || IL.BOTA_Basalt_Bricks.equal(aDrop) || IL.BOTA_Basalt_Chiseled.equal(aDrop) || IL.BOTA_Basalt_Smooth.equal(aDrop)) {
 			aDrops.clear();
-			aDrops.add(OP.rockGt.mat(MT.Basalt, 1+RNGSUS.nextInt(4)));
+			aDrops.add(OP.rockGt.mat(MT.STONES.Basalt, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
 		if (IL.NeLi_Blackstone.equal(aDrop) || IL.NeLi_Blackstone_Bricks.equal(aDrop) || IL.NeLi_Blackstone_Chiseled.equal(aDrop) || IL.NeLi_Blackstone_Cracked.equal(aDrop) || IL.NeLi_Blackstone_Polished.equal(aDrop) || IL.NePl_Blackstone.equal(aDrop) || IL.NePl_Blackstone_Bricks.equal(aDrop) || IL.NePl_Blackstone_Chiseled.equal(aDrop) || IL.NePl_Blackstone_Cracked.equal(aDrop) || IL.NePl_Blackstone_Polished.equal(aDrop)) {
 			aDrops.clear();
-			aDrops.add(OP.rockGt.mat(MT.Blackstone, 1+RNGSUS.nextInt(4)));
+			aDrops.add(OP.rockGt.mat(MT.STONES.Blackstone, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
 		return super.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);

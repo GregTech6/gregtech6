@@ -57,7 +57,7 @@ public class Drops_SmallOre extends Drops {
 		} else if (aMaterial != null) {
 			Random tRandom = new Random(aX ^ aY ^ aZ);
 			for (int i = 0; i < 16; i++) tRandom.nextInt(10000);
-			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
+			if (aMaterial == MT.STONES.Gneiss || aMaterial == MT.PetrifiedWood) {
 				ItemStack tStack = OP.rockGt.mat(aMaterial, 1);
 				for (int i = 0, j = Math.max(1, aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier+(aFortune>0?(tRandom.nextInt((1+aFortune)*aMaterial.mOreMultiplier*aMaterial.mOreProcessingMultiplier)):0)/2+tRandom.nextInt(2)); i < j; i++) {
 					rList.add(ST.update(ST.copy(tStack)));
