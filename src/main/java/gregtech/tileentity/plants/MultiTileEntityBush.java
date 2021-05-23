@@ -108,34 +108,40 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			if (SERVER_TIME % 128 == 0) {
-				if (WD.oxygen(worldObj, xCoord, yCoord, zCoord)) {
-					if (SIDES_VALID[mFacing]) {
-						TileEntity tTileEntity = getTileEntityAtSideAndDistance(mFacing, 1);
-						if (tTileEntity instanceof MultiTileEntityBush) {
-							if (!ST.equal(((MultiTileEntityBush)tTileEntity).mBerry, mBerry, F)) {
-								mBerry = ((MultiTileEntityBush)tTileEntity).mBerry;
-								updateClientData();
-							}
-							mSpeed = ((MultiTileEntityBush)tTileEntity).mSpeed;
-						} else {
-							mSpeed = 0;
+			if (mBlockUpdated || SERVER_TIME % 128 == 0) {
+				if (!WD.oxygen(worldObj, xCoord, yCoord, zCoord)) {
+					setToAir();
+					return;
+				}
+				
+				if (getBlockAtSide(SIDE_UP) == Blocks.snow_layer) worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
+				
+				if (SIDES_VALID[mFacing]) {
+					TileEntity tTileEntity = getTileEntityAtSideAndDistance(mFacing, 1);
+					if (tTileEntity instanceof MultiTileEntityBush) {
+						if (!ST.equal(((MultiTileEntityBush)tTileEntity).mBerry, mBerry, F)) {
+							mBerry = ((MultiTileEntityBush)tTileEntity).mBerry;
+							updateClientData();
 						}
+						mSpeed = ((MultiTileEntityBush)tTileEntity).mSpeed;
 					} else {
-						Block tBlock = getBlockAtSide(SIDE_BOTTOM);
-						mSpeed = (byte)(IL.AETHER_Grass_Enchanted.equal(tBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(tBlock) ? 2 : BlocksGT.plantableGreens.contains(tBlock) || tBlock.canSustainPlant(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_UP], Blocks.yellow_flower) ? 1 : 0);
-					}
-					if (mSpeed > 0 && mStage < 3 && ST.valid(mBerry)) {
-						// Yes I know I should have chosen a better type of Timer than a byte overflow Timer.
-						if (getSkyOffset(0, 1, 0)) {
-							for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
-							if (worldObj.isRaining() && getRainOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing])) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
-						} else {
-							if (getLightLevelOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing]) > 9) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
-						}
+						mSpeed = 0;
+						popOff();
+						return;
 					}
 				} else {
-					setToAir();
+					Block tBlock = getBlockAtSide(SIDE_BOTTOM);
+					mSpeed = (byte)(IL.AETHER_Grass_Enchanted.equal(tBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(tBlock) ? 2 : BlocksGT.plantableGreens.contains(tBlock) || tBlock.canSustainPlant(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_UP], Blocks.yellow_flower) ? 1 : 0);
+				}
+			}
+			
+			if (mStage < 3 && mSpeed > 0 && SERVER_TIME % 128 == 0 && ST.valid(mBerry)) {
+				// Yes I know I should have chosen a better type of Timer than a byte overflow Timer.
+				if (getSkyOffset(0, 1, 0)) {
+					for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
+					if (worldObj.isRaining() && getRainOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing])) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
+				} else {
+					if (getLightLevelOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing]) > 9) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
 				}
 			}
 		}
