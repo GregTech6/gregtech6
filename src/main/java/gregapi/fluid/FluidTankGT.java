@@ -41,6 +41,8 @@ public class FluidTankGT implements IFluidTank {
 	/** HashMap of adjustable Tank Sizes based on Fluids if needed. */
 	private Map<String, Long> mAdjustableCapacity = null;
 	private long mAdjustableMultiplier = 1;
+	/** Gives you a Tank Index in case there is multiple Tanks on a TileEntity that cares. */
+	public int mIndex = 0;
 	
 	public FluidTankGT() {mCapacity = Long.MAX_VALUE;}
 	public FluidTankGT(long aCapacity) {mCapacity = aCapacity;}
@@ -114,11 +116,11 @@ public class FluidTankGT implements IFluidTank {
 		if (aDoDrain) {
 			mAmount -= aDrained;
 			if (mAmount <= 0) {
-				if (!mPreventDraining) {
-					mFluid = null;
-					mChangedFluids = T;
+				if (mPreventDraining) {
+					mAmount = 0;
+				} else {
+					setEmpty();
 				}
-				mAmount = 0;
 			}
 		}
 		return rFluid;
@@ -128,11 +130,11 @@ public class FluidTankGT implements IFluidTank {
 		if (isEmpty() || mAmount < aDrained) return F;
 		mAmount -= aDrained;
 		if (mAmount <= 0) {
-			if (!mPreventDraining) {
-				mFluid = null;
-				mChangedFluids = T;
+			if (mPreventDraining) {
+				mAmount = 0;
+			} else {
+				setEmpty();
 			}
-			mAmount = 0;
 		}
 		return T;
 	}
@@ -142,11 +144,11 @@ public class FluidTankGT implements IFluidTank {
 		if (mAmount < aDrained) aDrained = mAmount;
 		mAmount -= aDrained;
 		if (mAmount <= 0) {
-			if (!mPreventDraining) {
-				mFluid = null;
-				mChangedFluids = T;
+			if (mPreventDraining) {
+				mAmount = 0;
+			} else {
+				setEmpty();
 			}
-			mAmount = 0;
 		}
 		return aDrained;
 	}
@@ -253,7 +255,7 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
-	/** Resets the Tank Contents entirely */
+	/** Resets Tank Contents entirely */
 	public FluidTankGT setEmpty() {mFluid = null; mChangedFluids = T; mAmount = 0; return this;}
 	/** Sets Fluid Content, taking Amount from the Fluid Parameter  */
 	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
@@ -261,6 +263,8 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aAmount); return this;}
 	/** Sets Fluid Content, taking Amount from the Tank Parameter  */
 	public FluidTankGT setFluid(FluidTankGT aTank) {mFluid = FL.amount(aTank.mFluid, aTank.mAmount); mChangedFluids = T; mAmount = aTank.mAmount; return this;}
+	/** Sets the Tank Index for easier Reverse Mapping. */
+	public FluidTankGT setIndex(int aIndex) {mIndex = aIndex; return this;}
 	/** Sets the Capacity, and yes it accepts 63 Bit Numbers */
 	public FluidTankGT setCapacity(long aCapacity) {if (aCapacity >= 0) mCapacity = aCapacity; return this;}
 	/** Always keeps at least 0 Liters of Fluid instead of setting it to null */

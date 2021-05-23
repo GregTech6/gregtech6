@@ -121,7 +121,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			mTanks = new FluidTankGT[Math.max(1, aNBT.getInteger(NBT_TANK_COUNT))];
 			mLastReceivedFrom = new byte[mTanks.length];
 			for (int i = 0; i < mTanks.length; i++) {
-				mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity);
+				mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity).setIndex(i);
 				mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
 			}
 		} else {
@@ -276,25 +276,22 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		
-		for (int i = 0; i < mTanks.length; i++) {
-			FluidStack tFluid = mTanks[i].get();
+		for (FluidTankGT tTank : mTanks) {
+			FluidStack tFluid = tTank.get();
 			if (tFluid != null && tFluid.amount > 0) {
 				mTemperature = FL.temperature(tFluid);
 				if (!mGasProof && FL.gas(tFluid)) {
-					mTransferredAmount += Math.min(8, mTanks[i].amount());
-					GarbageGT.trash(mTanks[i], 8);
+					mTransferredAmount += GarbageGT.trash(tTank, 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
-					mTransferredAmount += Math.min(64, mTanks[i].amount());
-					GarbageGT.trash(mTanks[i], 64);
+					mTransferredAmount += GarbageGT.trash(tTank, 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				if (!mAcidProof && FL.acid(tFluid)) {
-					mTransferredAmount += Math.min(16, mTanks[i].amount());
-					GarbageGT.trash(mTanks[i], 16);
+					mTransferredAmount += GarbageGT.trash(tTank, 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
@@ -317,14 +314,14 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				}
 			}
 			
-			if (mTanks[i].has()) distribute(mTanks[i], i, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
+			if (tTank.has()) distribute(tTank, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
 			
-			mLastReceivedFrom[i] = 0;
+			mLastReceivedFrom[tTank.mIndex] = 0;
 		}
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void distribute(FluidTankGT aTank, int aIndex, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
+	public void distribute(FluidTankGT aTank, DelegatorTileEntity<MultiTileEntityPipeFluid>[] aAdjacentPipes, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks, DelegatorTileEntity<TileEntity>[] aAdjacentOther) {
 		// Top Priority is filling Cauldrons and other specialties.
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentOther[tSide] != null) {
 			// Covers let distribution happen, right?
@@ -361,7 +358,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Put Targets into Lists.
 		for (byte tSide : ALL_SIDES_VALID) {
 			// Don't you dare flow backwards!
-			if (FACE_CONNECTED[tSide][mLastReceivedFrom[aIndex]]) continue;
+			if (FACE_CONNECTED[tSide][mLastReceivedFrom[aTank.mIndex]]) continue;
 			// Are we even connected to this Side? (Only gets checked due to the Cover check being slightly expensive)
 			if (!canEmitFluidsTo(tSide)) continue;
 			// Covers let distribution happen, right?
@@ -371,11 +368,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				// Check if the Pipe can be filled with this Fluid.
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
 				if (tTank != null && tTank.amount() < aTank.amount()) {
-					// Gah, I need to do reverse Indexing to make this work with the Parameters I have, because Cover Support...
-					for (int i = 0; i < aAdjacentPipes[tSide].mTileEntity.mTanks.length; i++) if (aAdjacentPipes[tSide].mTileEntity.mTanks[i] == tTank) {
-						aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom[i] |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
-						break;
-					}
+					// Setting Last Side Received From.
+					aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom[tTank.mIndex] |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
 					// Add to a random Position in the List.
 					tPipes.add(rng(tPipes.size()+1), tTank);
 					// For Balancing the Pipe Output.
@@ -401,7 +395,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// No Targets? Nothing to do then.
 		if (tTargetCount <= 1) return;
 		// Amount to distribute normally.
-		if (tAmount % tTargetCount == 0) tAmount /= tTargetCount; else {tAmount /= tTargetCount; tAmount++;}
+		tAmount = UT.Code.divup(tAmount, tTargetCount);
 		// Distribute to Pipes first.
 		for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
 		// Check if we are empty.
@@ -468,13 +462,12 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
 		if (aFluid == null || aFluid.amount <= 0) return 0;
-		IFluidTank tTank = getFluidTankFillable(UT.Code.side(aDirection), aFluid);
+		FluidTankGT tTank = (FluidTankGT)getFluidTankFillable(UT.Code.side(aDirection), aFluid);
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
 		if (aDoFill) {
 			if (rFilledAmount > 0) updateInventory();
-			// Gah, I need to do reverse Indexing to make this work with the Parameters I have, because Cover Support...
-			for (int i = 0; i < mTanks.length; i++) if (mTanks[i] == tTank) {mLastReceivedFrom[i] |= SBIT[UT.Code.side(aDirection)]; break;}
+			mLastReceivedFrom[tTank.mIndex] |= SBIT[UT.Code.side(aDirection)];
 		}
 		return rFilledAmount;
 	}

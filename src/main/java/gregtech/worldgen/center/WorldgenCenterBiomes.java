@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -161,10 +161,10 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight  , j, Blocks.grass, 0);
 							WD.set(aChunk, i, mHeight-1, j, Blocks.dirt, 0);
 							WD.set(aChunk, i, mHeight-2, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 1);
-							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 3);
-							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 3);
+							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 3);
+							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 4);
+							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 5);
+							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 6);
 							for (int k = 1; k < mHeight-6; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.Limestone : BlocksGT.Marble, aRandom.nextBoolean()?2:0);
 							switch(aRandom.nextInt(60)) {
 							case  0: case  1: case  2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;
