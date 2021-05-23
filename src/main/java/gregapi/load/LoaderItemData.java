@@ -2146,8 +2146,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.clay                     , 1, W)     , MT.Clay               ,  U * 4);
 		OM.data(ST.make(Blocks.hardened_clay            , 1, W)     , MT.Ceramic            ,  U * 4);
 		OM.data(ST.make(Blocks.stained_hardened_clay    , 1, W)     , MT.Ceramic            ,  U * 4);
-		OM.data(ST.make(Blocks.flower_pot               , 1, W)     , MT.Ceramic            ,  U * 3);
-		OM.data(ST.make(Items.flower_pot                , 1, W)     , MT.Ceramic            ,  U * 3);
+		OM.data(ST.make(Blocks.flower_pot               , 1, W)     , MT.Brick              ,  U * 3);
+		OM.data(ST.make(Items.flower_pot                , 1, W)     , MT.Brick              ,  U * 3);
 		OM.data(ST.make(Blocks.brick_block              , 1, W)     , MT.Brick              ,  U * 4);
 		OM.data(ST.make(Blocks.double_stone_slab        , 1, 4)     , MT.Brick              ,  U * 4);
 		OM.data(ST.make(Blocks.brick_stairs             , 1, W)     , MT.Brick              ,  U * 6);

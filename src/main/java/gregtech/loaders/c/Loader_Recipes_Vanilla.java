@@ -181,7 +181,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.planks                     , 1, 7), DEF, "B", "B", 'B', ST.make(Blocks.wooden_slab, 1, 7));
 		
 		// Other Slab Stuff
-		CR.shaped(ST.make(Blocks.stone_slab                 , 1, 4), DEF, "BB", 'B', ST.make(Items.brick, 1, 0));
+		CR.shaped(ST.make(Blocks.stone_slab                 , 1, 4), DEF, "BB", 'B', OP.ingot.dat(MT.Brick));
 		CR.shapeless(ST.make(Blocks.double_stone_slab       , 1, 8), DEF, new Object[] {ST.make(Blocks.double_stone_slab, 1, 0)});
 		CR.shapeless(ST.make(Blocks.double_stone_slab       , 1, 0), DEF, new Object[] {ST.make(Blocks.double_stone_slab, 1, 8)});
 		
