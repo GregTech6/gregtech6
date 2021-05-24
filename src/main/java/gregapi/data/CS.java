@@ -1944,6 +1944,7 @@ public class CS {
 		, HaC               = "harvestcraft"
 		, CookBook          = "cookingbook"
 		, APC               = "AppleCore"
+		, HO                = "HungerOverhaul"
 		, ENVM              = "enviromine"
 		, MaCr              = "magicalcrops"
 		, MaCu              = "Mariculture"

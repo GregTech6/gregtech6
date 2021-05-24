@@ -160,6 +160,7 @@ public class MD {
 	, HaC               = new ModData(ModIDs.HaC                , "HarvestCraft")
 	, CookBook          = new ModData(ModIDs.CookBook           , "Cooking for Blockheads")
 	, APC               = new ModData(ModIDs.APC                , "AppleCore")
+	, HO                = new ModData(ModIDs.HO                 , "Hunger Overhaul")
 	, ENVM              = new ModData(ModIDs.ENVM               , "Enviromine")
 	, MaCr              = new ModData(ModIDs.MaCr               , "Magical Crops")
 	, MaCu              = new ModData(ModIDs.MaCu               , "Mariculture")

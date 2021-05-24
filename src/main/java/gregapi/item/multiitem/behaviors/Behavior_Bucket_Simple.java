@@ -23,16 +23,19 @@ import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
+import gregapi.data.MD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import iguanaman.hungeroverhaul.config.IguanaConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,6 +43,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -162,8 +166,16 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 	
 	@Override
 	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-		if (FL.getFluid(aStack, T) == null && (aEntity.getClass() == EntityCow.class || aEntity.getClass() == EntityMooshroom.class) && !((EntityCow)aEntity).isChild()) {
-			if (!aPlayer.worldObj.isRemote || UT.Entities.hasInfiniteItems(aPlayer)) ST.set(aStack, FL.fill(FL.Milk.make(Integer.MAX_VALUE), aStack, F, T, T, T));
+		if (FL.getFluid(aStack, T) == null && aEntity instanceof EntityLivingBase && !((EntityLivingBase)aEntity).isChild()) {
+			if (aPlayer.worldObj.isRemote) return T;
+			if (aEntity.getClass() == EntityCow.class || aEntity.getClass() == EntityMooshroom.class) {
+				if (MD.HO.mLoaded && IguanaConfig.milkedTimeout > 0 && !UT.Entities.hasInfiniteItems(aPlayer)) {
+					NBTTagCompound tNBT = aEntity.getEntityData();
+					if (tNBT.hasKey("Milked")) return T;
+					tNBT.setInteger("Milked", IguanaConfig.milkedTimeout * 60);
+				}
+				ST.set(aStack, FL.fill(FL.Milk.make(Integer.MAX_VALUE), aStack, F, T, T, T));
+			}
 			return T;
 		}
 		return F;
