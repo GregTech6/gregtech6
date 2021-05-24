@@ -1114,9 +1114,9 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Blackstone_Chiseled             .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 2), OP.stone.dat(MT.STONES.Blackstone), OP.stoneChiseled);
 		IL.NeLi_Blackstone_Bricks               .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 3), OP.stone.dat(MT.STONES.Blackstone), OP.stoneBricks);
 		IL.NeLi_Blackstone_Cracked              .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 4), OP.stone.dat(MT.STONES.Blackstone), OP.stoneBricks, OP.stoneCracked);
-		IL.NeLi_Blackstone_Tiles                .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 4), OP.stone.dat(MT.STONES.Blackstone));
-		IL.NeLi_Blackstone_Cross                .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 4), OP.stone.dat(MT.STONES.Blackstone));
-		IL.NeLi_Blackstone_Path                 .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 4), OP.stone.dat(MT.STONES.Blackstone));
+		IL.NeLi_Blackstone_Tiles                .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 6), OP.stone.dat(MT.STONES.Blackstone));
+		IL.NeLi_Blackstone_Cross                .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 7), OP.stone.dat(MT.STONES.Blackstone));
+		IL.NeLi_Blackstone_Path                 .set(ST.make(MD.NeLi, "Blackstone"                          , 1, 8), OP.stone.dat(MT.STONES.Blackstone));
 		IL.NeLi_Basalt                          .set(ST.make(MD.NeLi, "Basalt"                              , 1, 0), OP.stone.dat(MT.STONES.Basalt));
 		IL.NeLi_Basalt_Polished                 .set(ST.make(MD.NeLi, "Basalt"                              , 1, 1), OP.stone.dat(MT.STONES.Basalt));
 		IL.NeLi_Stem_Crimson                    .set(ST.make(MD.NeLi, "Stem"                                , 1, 0), null, OD.logWood);
@@ -1137,11 +1137,13 @@ public class LoaderItemList implements Runnable {
 	//  IL.NeLi_Beam2_                          .set(ST.make(MD.NeLi, "FullWood"                            , 1, 7), null, OD.beamWood);
 		IL.NeLi_SoulSoil                        .set(ST.make(MD.NeLi, "SoulSoil"                            , 1, W), null, OD.soulsand);
 		IL.NeLi_SoulFarm                        .set(ST.make(MD.NeLi, "SoulFarmland"                        , 1, 0), null, OD.soulsand);
+		IL.NeLi_Ash                             .set(ST.make(MD.NeLi, "Ash"                                 , 1, 0));
 		IL.NeLi_Gravel                          .set(ST.make(MD.NeLi, "Nether_Gravel"                       , 1, 0), null, OD.gravel);
 		IL.NeLi_Foxfire_Lily                    .set(ST.make(MD.NeLi, "FoxfireLily"                         , 1, 0), null, OD.flower);
 		IL.NeLi_Wither_Rose                     .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 0), null, OD.flower, OD.flowerWither);
 		IL.NeLi_Bone_Rose                       .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 1), null, OD.flower);
 		IL.NeLi_Soul_Rose                       .set(ST.make(MD.NeLi, "WitherRose"                          , 1, 2), null, OD.flower);
+		IL.NeLi_Gloom_Hibiscus                  .set(ST.make(MD.NeLi, "GloomHibiscus"                       , 1, 0), null, OD.flower);
 		IL.NeLi_Strider_Flank_Raw               .set(ST.make(MD.NeLi, "StriderFlankRaw"                     , 1, 0), new OreDictItemData(MT.MeatRaw   , U*2, MT.Bone, U9), "listAllmeatraw");
 		IL.NeLi_Strider_Flank_Cooked            .set(ST.make(MD.NeLi, "StriderFlankCooked"                  , 1, 0), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U9), "listAllmeatcooked");
 		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, CR.DELATE, "foodBread");

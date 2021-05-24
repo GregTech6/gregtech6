@@ -359,13 +359,17 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
 			
-			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 1));
-			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 1));
-			RM.ic2_extractor(IL.NeLi_Bone_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 1));
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Gloom_Hibiscus.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.NeLi, "dye", 1, 1));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Gloom_Hibiscus.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.NeLi, "dye", 1, 1));
+			RM.ic2_extractor(IL.NeLi_Gloom_Hibiscus.get(1), ST.make(MD.NeLi, "dye", 2, 1));
 			
-			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(MD.NeLi, "dye", 1, 2));
-			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(MD.NeLi, "dye", 1, 2));
-			RM.ic2_extractor(IL.NeLi_Soul_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 2));
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 2));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 2));
+			RM.ic2_extractor(IL.NeLi_Bone_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 2));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 1, DYE_INDEX_LightBlue));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 1, DYE_INDEX_LightBlue));
+			RM.ic2_extractor(IL.NeLi_Soul_Rose.get(1), ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
 			
 			RM.glowstone(IL.NeLi_Gloomstone.get(1), MT.Gloomstone);
 			
