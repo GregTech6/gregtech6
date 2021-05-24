@@ -120,9 +120,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, T, T)) {mDisplayedInput = -5;} else
 				if (IL.PFAA_Sands                   .equal(tStack, T, T)) {mDisplayedInput =-11;} else
-				if (IL.NePl_SoulSoil                .equal(tStack, F, T)) {mDisplayedInput = -9;} else
-				if (IL.NeLi_SoulSoil                .equal(tStack, F, T)) {mDisplayedInput = -9;} else
-				if (IL.NeLi_Gravel                  .equal(tStack, F, T)) {mDisplayedInput =-11;} else
+				if (IL.NePl_SoulSoil                .equal(tStack, T, T)) {mDisplayedInput = -9;} else
+				if (IL.NeLi_SoulSoil                .equal(tStack, T, T)) {mDisplayedInput = -9;} else
+				if (IL.NeLi_Gravel                  .equal(tStack, T, T)) {mDisplayedInput =-11;} else
 				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedInput = -1;} else
 				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedInput = -3;} else
 				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedInput =-10;} else
@@ -188,9 +188,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
 				if (IL.TROPIC_Sand_Black            .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
 				if (IL.PFAA_Sands                   .equal(tStack, T, T)) {mDisplayedOutput =-11;} else
-				if (IL.NePl_SoulSoil                .equal(tStack, F, T)) {mDisplayedOutput = -9;} else
-				if (IL.NeLi_SoulSoil                .equal(tStack, F, T)) {mDisplayedOutput = -9;} else
-				if (IL.NeLi_Gravel                  .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
+				if (IL.NePl_SoulSoil                .equal(tStack, T, T)) {mDisplayedOutput = -9;} else
+				if (IL.NeLi_SoulSoil                .equal(tStack, T, T)) {mDisplayedOutput = -9;} else
+				if (IL.NeLi_Gravel                  .equal(tStack, T, T)) {mDisplayedOutput =-11;} else
 				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedOutput = -1;} else
 				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
 				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedOutput =-10;} else

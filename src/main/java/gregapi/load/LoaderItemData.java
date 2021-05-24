@@ -139,6 +139,8 @@ public class LoaderItemData implements Runnable {
 		}
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.TCFM, "FMResource", 1, 1));
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue ], ST.make(MD.NeLi, "dye", 1, 1));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 2));
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], ST.make(MD.EtFu, "dye", 1, 0));
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue ], ST.make(MD.EtFu, "dye", 1, 1));
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown], ST.make(MD.EtFu, "dye", 1, 2));
@@ -727,8 +729,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.dustSmall.dat(MT.Ni)              , ST.make(MD.BINNIE_BEE, "misc", 1,12));
 		OM.reg(OP.dustSmall.dat(MT.Pb)              , ST.make(MD.BINNIE_BEE, "misc", 1,13));
 		OM.reg(OP.dustSmall.dat(MT.Zn)              , ST.make(MD.BINNIE_BEE, "misc", 1,14));
-		OM.reg(OP.dustSmall.dat(MT.Ti)              , ST.make(MD.BINNIE_BEE, "misc", 1,15));
-		OM.reg(OP.dustSmall.dat(MT.W)               , ST.make(MD.BINNIE_BEE, "misc", 1,16));
+		OM.reg(OP.dustSmall.dat(MT.TiO2)            , ST.make(MD.BINNIE_BEE, "misc", 1,15));
+		OM.reg(OP.dustSmall.dat(MT.OREMATS.Tungstate),ST.make(MD.BINNIE_BEE, "misc", 1,16));
 		OM.reg(OP.dustSmall.dat(MT.U_238)           , ST.make(MD.BINNIE_BEE, "misc", 1,17));
 		OM.reg(OP.dustSmall.dat(MT.Coal)            , ST.make(MD.BINNIE_BEE, "misc", 1,18));
 		OM.reg(OP.dustSmall.dat(MT.Clay)            , ST.make(MD.BINNIE_BEE, "misc", 1,26));

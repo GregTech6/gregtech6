@@ -608,7 +608,9 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("medicine.laxative"                          , "Laxative"                                , null                  , 1, 1000, 300)                                                                                         , "Removes 10 Hunger/Saturation"                                    ,  0, 0.0F  ,   0, C+37,  0.00F,  0,  0,  0,  0,  0, EnumAction.drink, T, F, F, Potion.hunger                   .id, 300,10, 100);
 		
 		
-		DYE_FLUIDS[4].add(FL.make("blueberryjuice", 250));
+		DYE_FLUIDS[DYE_INDEX_Blue].add(FL.make("blueberryjuice", 250));
+		DYE_FLUIDS[DYE_INDEX_Red ].add(FL.make("binnie.juicecranberry", 250));
+		
 		
 		for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
 			if (tMaterial.contains(TD.ItemGenerator.LIQUID)) FL.createLiquid(tMaterial);
@@ -618,9 +620,11 @@ public class Loader_Fluids implements Runnable {
 			if (tMaterial.contains(TD.ItemGenerator.PLASMA)) FL.createPlasma(tMaterial);
 		}
 		
+		
 		FL.Air       .fluid().setDensity(0);
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
+		
 		
 		FL.reg(FL.Air               .make(1000), IL.Cell_Air                     .get(1), IL.Cell_Empty.get(1), F, T, T);
 		FL.reg(FL.Air_Nether        .make(1000), IL.Cell_Air                     .get(1), IL.Cell_Empty.get(1), F, T, F);

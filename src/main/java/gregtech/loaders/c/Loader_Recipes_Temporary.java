@@ -269,8 +269,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shapeless(IL.NeLi_Torch_Shadow    .get(2), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Shadow    .get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, OD.blockTorch});
 			
-			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor"         , 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
-			
 			CR.shaped(ST.make(MD.NeLi, "EmptyLantern"          , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(ANY.Iron ), 'T', OP.screw.dat(ANY.Iron ));
 			CR.shaped(ST.make(MD.NeLi, "EmptyLanternGold"      , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(MT.Au    ), 'T', OP.screw.dat(MT.Au    ));
 			CR.shaped(ST.make(MD.NeLi, "EmptyLanternEfrine"    , 1, 0), DEF_REV_NCC, "PTP", "P P", "PPP", 'P', OP.plateTiny.dat(MT.Efrine), 'T', OP.screw.dat(MT.Efrine));
@@ -309,6 +307,29 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shapeless(ST.make(MD.NeLi, "ShadowLanternGold"     , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternGold"  , 1, 0), OD.blockShadowTorch});
 			CR.shapeless(ST.make(MD.NeLi, "ShadowLanternEfrine"   , 1, 0), DEF_NCC, new Object[] {ST.make(MD.NeLi, "EmptyLanternEfrine", 1, 0), OD.blockShadowTorch});
 			
+			CR.shaped(ST.make(MD.NeLi, "RespawnAnchor"         , 1, 0), DEF_REM_REV, "OOO", "GGG", "OOO", 'O', OD.cryingObsidian, 'G', OD.glowstone);
+			
+			CR.shaped(IL.NeLi_Lamp_White           .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteWhite  ), 'G', OD.glowstone);
+			CR.shaped(IL.NeLi_Lamp_Blue            .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteBlue   ), 'G', OD.glowstone);
+			CR.shaped(IL.NeLi_Lamp_Green           .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteGreen  ), 'G', OD.glowstone);
+			CR.shaped(IL.NeLi_Lamp_Yellow          .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteYellow ), 'G', OD.glowstone);
+			CR.shaped(IL.NeLi_Lamp_Magenta         .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteMagenta), 'G', OD.glowstone);
+			CR.shaped(IL.NeLi_Redstone_Lamp_White  .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteWhite  ), 'G', Blocks.redstone_lamp);
+			CR.shaped(IL.NeLi_Redstone_Lamp_Blue   .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteBlue   ), 'G', Blocks.redstone_lamp);
+			CR.shaped(IL.NeLi_Redstone_Lamp_Green  .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteGreen  ), 'G', Blocks.redstone_lamp);
+			CR.shaped(IL.NeLi_Redstone_Lamp_Yellow .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteYellow ), 'G', Blocks.redstone_lamp);
+			CR.shaped(IL.NeLi_Redstone_Lamp_Magenta.get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteMagenta), 'G', Blocks.redstone_lamp);
+			CR.shaped(IL.NeLi_Redstone_Lamp_White  .get(1), DEF_NCC, " R ", "RGR", " R ", 'R', OD.itemRedstone, 'G', IL.NeLi_Lamp_White  );
+			CR.shaped(IL.NeLi_Redstone_Lamp_Blue   .get(1), DEF_NCC, " R ", "RGR", " R ", 'R', OD.itemRedstone, 'G', IL.NeLi_Lamp_Blue   );
+			CR.shaped(IL.NeLi_Redstone_Lamp_Green  .get(1), DEF_NCC, " R ", "RGR", " R ", 'R', OD.itemRedstone, 'G', IL.NeLi_Lamp_Green  );
+			CR.shaped(IL.NeLi_Redstone_Lamp_Yellow .get(1), DEF_NCC, " R ", "RGR", " R ", 'R', OD.itemRedstone, 'G', IL.NeLi_Lamp_Yellow );
+			CR.shaped(IL.NeLi_Redstone_Lamp_Magenta.get(1), DEF_NCC, " R ", "RGR", " R ", 'R', OD.itemRedstone, 'G', IL.NeLi_Lamp_Magenta);
+			CR.shaped(IL.NeLi_Glass_White          .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteWhite  ), 'G', OD.blockGlassColorless);
+			CR.shaped(IL.NeLi_Glass_Blue           .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteBlue   ), 'G', OD.blockGlassColorless);
+			CR.shaped(IL.NeLi_Glass_Green          .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteGreen  ), 'G', OD.blockGlassColorless);
+			CR.shaped(IL.NeLi_Glass_Yellow         .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteYellow ), 'G', OD.blockGlassColorless);
+			CR.shaped(IL.NeLi_Glass_Magenta        .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteMagenta), 'G', OD.blockGlassColorless);
+			
 			for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100)))
 			RM.Bath    .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tWater, NF, ST.make(Items.paper, 1, 0));
 			RM.Loom    .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
@@ -326,6 +347,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy    .get(1), FL.DistW         .make(500), FL.Potion_Mundane         .make(500), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 32, IL.NeLi_Wart_Soggy    .get(1), FL.Potion_Awkward.make(500), FL.Potion_FireResistance_1.make(500), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Wither_Rose   .get(1), FL.Potion_Thick  .make(750), FL.Potion_Harm_2          .make(750), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Bone_Rose     .get(1), FL.Potion_Mundane.make(750), FL.Potion_Jump_1          .make(750), ZL_IS);
+			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Soul_Rose     .get(1), FL.Potion_Awkward.make(250), FL.Potion_Invisibility_1  .make(250), ZL_IS);
 			RM.Distillery.addRecipe1(T, 16, 48, IL.NeLi_Foxfire_Powder.get(1), FL.Potion_Mundane.make(750), FL.Potion_Strength_2      .make(750), ZL_IS);
 			
 			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Foxfire_Lily.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 1, DYE_INDEX_Purple));
@@ -335,6 +358,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Wither_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Black], ST.make(MD.NeLi, "dye", 1, 0));
 			RM.ic2_extractor(IL.NeLi_Wither_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 0));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 1));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Bone_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], ST.make(MD.NeLi, "dye", 1, 1));
+			RM.ic2_extractor(IL.NeLi_Bone_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 1));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(MD.NeLi, "dye", 1, 2));
+			RM.Juicer  .addRecipe1(T, 16, 16, IL.NeLi_Soul_Rose.get(1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(MD.NeLi, "dye", 1, 2));
+			RM.ic2_extractor(IL.NeLi_Soul_Rose.get(1), ST.make(MD.NeLi, "dye", 2, 2));
 			
 			RM.glowstone(IL.NeLi_Gloomstone.get(1), MT.Gloomstone);
 			
@@ -356,20 +387,27 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.lathing(16, 64, IL.NeLi_Crystal_Yellow .get(1), OP.stickLong.mat(MT.FluoriteYellow , 2), OM.dust(MT.FluoriteYellow , 2*U));
 			RM.lathing(16, 64, IL.NeLi_Crystal_Magenta.get(1), OP.stickLong.mat(MT.FluoriteMagenta, 2), OM.dust(MT.FluoriteMagenta, 2*U));
 			
-			RM.biomass(ST.make(MD.NeLi, "Fungus"       , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "Wartblock"    , 1, W));
-			RM.biomass(ST.make(MD.NeLi, "Roots"        , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "Plants"       , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "TwistingVines", 8, W));
-			RM.biomass(ST.make(MD.NeLi, "WeepingVines" , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "Sprouts"      , 8, W));
-			RM.biomass(ST.make(MD.NeLi, "RoastedWart"  , 8, W));
-			RM.biomass(IL.NeLi_Wart_Crimson           .wild(8));
-			RM.biomass(IL.NeLi_Reed                    .get(8));
-			RM.biomass(IL.NeLi_Wither_Rose             .get(8));
-			RM.biomass(IL.NeLi_Foxfire_Lily            .get(8));
+			RM.biomass(ST.make(MD.NeLi, "Fungus"           , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Wartblock"        , 1, W));
+			RM.biomass(ST.make(MD.NeLi, "Roots"            , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "NetherGrass"      , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "NetherFlowerShrub", 8, W));
+			RM.biomass(ST.make(MD.NeLi, "DoublePlants"     , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "GroundCover"      , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "PotPlants"        , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Plants"           , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Plants2"          , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "TwistingVines"    , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "WeepingVines"     , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "Sprouts"          , 8, W));
+			RM.biomass(ST.make(MD.NeLi, "RoastedWart"      , 8, W));
+			RM.biomass(IL.NeLi_Wart_Crimson               .wild(8));
+			RM.biomass(IL.NeLi_Reed                       .wild(8));
+			RM.biomass(IL.NeLi_Wither_Rose                .wild(8));
+			RM.biomass(IL.NeLi_Foxfire_Lily               .wild(8));
 			
-			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, IL.NeLi_Wart_Block_Crimson.get(1));
+			if (!IL.EtFu_Wart_Block_Nether.exists())
+			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, IL.NeLi_Wart_Block_Nether .get(1));
 			RM.compact(IL.NeLi_Wart_Crimson     .get(1), 9, IL.NeLi_Wart_Block_Crimson.get(1));
 			RM.compact(IL.NeLi_Wart_Warped      .get(1), 9, IL.NeLi_Wart_Block_Warped .get(1));
 			RM.compact(IL.NeLi_Wart_Soggy       .get(1), 9, IL.NeLi_Wart_Block_Soggy  .get(1));

@@ -101,6 +101,9 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.biomass(ST.make(MD.EtFu, "wither_rose"       , 8, W));
 			RM.biomass(ST.make(MD.EtFu, "cornflower"        , 8, W));
 			RM.biomass(ST.make(MD.EtFu, "lily_of_the_valley", 8, W));
+			RM.biomass(IL.EtFu_Wart_Block_Nether.wild(1));
+			
+			RM.compact(ST.make(Items.nether_wart, 1, 0), 9, IL.EtFu_Wart_Block_Nether.get(1));
 			
 			CR.delate(MD.EtFu, "netherite_ingot", "netherite_sword", "netherite_pickaxe", "netherite_spade", "netherite_axe", "netherite_hoe", "netherite_helmet", "netherite_chestplate", "netherite_leggings", "netherite_boots", "copper_block", "cut_copper_slab", "cut_copper_stairs", "exposed_cut_copper_stairs", "weathered_cut_copper_stairs", "oxidized_cut_copper_stairs", "waxed_cut_copper_stairs", "waxed_exposed_cut_copper_stairs", "waxed_weathered_cut_copper_stairs", "waxed_oxidized_cut_copper_stairs");
 			
