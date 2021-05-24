@@ -19,6 +19,7 @@ Witchery now has a little bit more Compat.
 The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Bricks and nether Bricks were not palceable on the Floor like Ingots.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
+[FIXED] The Cow Cooldown of Hunger Overhaul is now respected by Wooden Buckets.
 [FIXED] Burning Boxes and Basic Machines can no longer be rotated while they are lit or actively processing something.
 [FIXED] Item Filter Covers no longer go inbetween two Item Pipes, which was causing confusion as to why they are "not working" since you were able to place them in such a way.
 [FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.

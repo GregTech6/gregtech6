@@ -2603,7 +2603,8 @@ public class UT {
 				aPlayer.triggerAchievement(AchievementList.mineWood);
 				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
 				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-				if (aItem != Items.wooden_pickaxe) aPlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
+				if (aItem != Items.wooden_pickaxe)
+				aPlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
 			}
 			
 			if (MD.MC.owns(aRegName)) {
@@ -2622,7 +2623,7 @@ public class UT {
 					aPlayer.triggerAchievement(AchievementList.buildHoe);
 					aPlayer.triggerAchievement(AchievementList.makeBread);
 				} else
-				if (aItem == Items.leather || aItem == Items.saddle) {
+				if (aItem == Items.leather || aItem == Items.beef || aItem == Items.cooked_beef || aItem == Items.saddle) {
 					aPlayer.triggerAchievement(AchievementList.openInventory);
 					aPlayer.triggerAchievement(AchievementList.mineWood);
 					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
