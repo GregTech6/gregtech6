@@ -207,7 +207,7 @@ public class MT {
 	static OreDictMaterial aventurine   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200, aRandomData).lens(aColor).put(ANY.Aventurine, MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.POTENTIA, 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 1*U);}
 	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255, aRandomData)             .put(ANY.CaF2      , COMMON_ORE, MD.ReC , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .uumMcfg( 0, Ca, 1*U, F, 2*U).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MORTAR, BRITTLE, CRYSTALLISABLE).setSmelting("Fluorite".equals(aNameOreDict) ? null : MT.CaF2, U);}
 	static OreDictMaterial blaze        (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return create          (aID, aNameOreDict, SET_POWDER      , aR, aG, aB,255, aRandomData)             .put(ANY.Blaze     , COMMON_ORE                               )         .aspects(TC.PRAECANTIO, 2                            ).qual(1, 2.0,  16, 1).handle(ANY.Blaze).put(G_BLAZE, GLOWING, MAGICAL, BRITTLE, MORTAR);}
-	static OreDictMaterial clay         (int aID, String aNameOreDict         , long aR, long aG, long aB, OreDictMaterial aTrace, Object... aRandomData)  {return oredustelec     (aID, aNameOreDict, SET_ROUGH       , aR, aG, aB,255, aRandomData)             .put(ANY.Clay      , MORTAR, PLATES                           )         .aspects(TC.TERRA, 1                                 ).uumMcfg(18, aTrace, 1*U, Clay, 18*U).heat(2000).setSmelting(MT.Ceramic, U);}
+	static OreDictMaterial clay         (int aID, String aNameOreDict         , long aR, long aG, long aB, OreDictMaterial aTrace, Object... aRandomData)  {return oredustelec     (aID, aNameOreDict, SET_ROUGH       , aR, aG, aB,255, aRandomData)             .put(ANY.Clay      , MORTAR, PLATES                           )         .aspects(TC.TERRA, 1                                 ).uumMcfg(18, aTrace, 1*U, Clay, 18*U).heat(2000).setSmelting(Ceramic, U);}
 	static OreDictMaterial mix          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dcmp            (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
 	static OreDictMaterial mixdust      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dustcent        (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData);}
 	static OreDictMaterial oredust      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return create          (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(G_DUST_ORES);}
@@ -1586,8 +1586,8 @@ public class MT {
 	Enderium                = alloymachine  ( 8710, "Enderium"                                      ,  60, 125, 115     , MAGICAL, MOLTEN).qual(3,  8.0, 256, 3)                                                                                                    .setAloy( 1, EnderiumBase   , 1*U, EnderPearl       , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ALIENIS, 1),
 //  InfusedGold             = slloymachore  ( 8712, "Infused Gold"                                  , 255, 200,  60     ).qual(2, 12.0, 64, 3)                                                                                                                                                                                                                                                                                  ,
 	FakeOsmium              = alloy         ( 8719, "Osmium"                                        , 160, 160, 255     , G_INGOT_MACHINE_ORES, MOLTEN, FURNACE, EXTRUDER_SIMPLE).setLocal("'Osmium'").steal(Os).qual(2, 6.0, 256, 2)                               .uumMcfg( 0, Os             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MACHINA, 2),
-	RefinedGlowstone        = alloy         ( 8713, "GlowstoneRefined"      , SET_REDSTONE          , 255, 240, 100     , "RefinedGlowstone", GLOWING).setLocal("Refined Glowstone").qual(2, 8.0, 256, 2)                                                           .setMcfg( 1, Glowstone      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 4, TC.LUX, 4).setPulver(MT.Glowstone, U).setSmelting(MT.Glowstone, U),
-	RefinedObsidian         = alloy         ( 8714, "ObsidianRefined"       , SET_REDSTONE          , 120,  90, 140     , "RefinedObsidian").setLocal("Refined Obsidian").qual(2, 8.0, 512, 3)                                                                      .setMcfg( 1, Obsidian       , 1*U)                                                                                                                          .aspects(TC.VITREUS, 4, TC.IGNIS, 4).setPulver(MT.Obsidian, U).setSmelting(MT.Obsidian, U),
+	RefinedGlowstone        = alloy         ( 8713, "GlowstoneRefined"      , SET_REDSTONE          , 255, 240, 100     , "RefinedGlowstone", GLOWING).setLocal("Refined Glowstone").qual(2, 8.0, 256, 2)                                                           .setMcfg( 1, Glowstone      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 4, TC.LUX, 4).setPulver(Glowstone, U).setSmelting(Glowstone, U),
+	RefinedObsidian         = alloy         ( 8714, "ObsidianRefined"       , SET_REDSTONE          , 120,  90, 140     , "RefinedObsidian").setLocal("Refined Obsidian").qual(2, 8.0, 512, 3)                                                                      .setMcfg( 1, Obsidian       , 1*U)                                                                                                                          .aspects(TC.VITREUS, 4, TC.IGNIS, 4).setPulver(Obsidian, U).setSmelting(Obsidian, U),
 	Yellorium               = setalore      ( 8715, "Yellorium"                                     , 140, 130,  20     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 2),
 	Blutonium               = setalore      ( 8716, "Blutonium"                                     ,  60,  60, 180     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 3),
 	Cyanite                 = setalore      ( 8717, "Cyanite"                                       ,  50, 110, 150     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 1),
@@ -1743,10 +1743,10 @@ public class MT {
 		RefinedIron = invalid("RefinedIron").stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
 		static void init() {
-			OreDictMaterial.MATERIAL_ARRAY[9151] = MT.OREMATS.Glauconite;
-			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
-			OreDictMaterial.MATERIAL_ARRAY[9121] = MT.MgCO3;
-			OreDictMaterial.MATERIAL_ARRAY[9168] = MT.Talc;
+			OreDictMaterial.MATERIAL_ARRAY[9151] = OREMATS.Glauconite;
+			OreDictMaterial.MATERIAL_ARRAY[9142] = Asbestos;
+			OreDictMaterial.MATERIAL_ARRAY[9121] = MgCO3;
+			OreDictMaterial.MATERIAL_ARRAY[9168] = Talc;
 			
 			Ad                      .visDefault(Adamantine);
 			
@@ -1841,9 +1841,9 @@ public class MT {
 			White                   .put(MD.MC);
 			
 			
-			Granite                 .put(MD.EtFu);
-			Diorite                 .put(MD.EtFu);
-			Andesite                .put(MD.EtFu);
+			STONES.Granite          .put(MD.EtFu);
+			STONES.Diorite          .put(MD.EtFu);
+			STONES.Andesite         .put(MD.EtFu);
 			PrismarineLight         .put(MD.EtFu);
 			PrismarineDark          .put(MD.EtFu);
 			
@@ -1887,8 +1887,8 @@ public class MT {
 			VoidCrystal             .put(MD.NeLi, COMMON_ORE);
 			Gloomstone              .put(MD.NeLi, COMMON_ORE);
 			OatAbyssal              .put(MD.NeLi);
-			Basalt                  .put(MD.NeLi);
-			Blackstone              .put(MD.NeLi);
+			STONES.Basalt           .put(MD.NeLi);
+			STONES.Blackstone       .put(MD.NeLi);
 			
 			
 			Zn                      .put(MD.GT, COMMON_ORE);
@@ -1928,7 +1928,7 @@ public class MT {
 			Ta4HfC5                 .put(MD.GT);
 			Osmiridium              .put(MD.GT);
 			UUAmplifier             .put(MD.GT);
-			Alumina                 .put(MD.GT);
+			Al2O3                   .put(MD.GT);
 			EnergiumCyan            .put(MD.GT);
 			Primitive               .put(MD.GT);
 			Good                    .put(MD.GT);
@@ -2035,7 +2035,7 @@ public class MT {
 			BlueSteel               .put(MD.TFC);
 			
 			
-			Deadrock                .put(MD.TF);
+			STONES.Deadrock         .put(MD.TF);
 			LiveRoot                .put(MD.TF);
 			IronWood                .put(MD.TF);
 			Steeleaf                .put(MD.TF);
@@ -2153,7 +2153,7 @@ public class MT {
 			
 			
 			Livingwood              .put(MD.BOTA).visDefault();
-			Livingrock              .put(MD.BOTA).visDefault();
+			STONES.Livingrock       .put(MD.BOTA).visDefault();
 			Dreamwood               .put(MD.BOTA).visDefault();
 			Shimmerwood             .put(MD.BOTA).visDefault();
 			Manasteel               .put(MD.BOTA).visDefault();
@@ -2247,11 +2247,11 @@ public class MT {
 			
 			Desh                    .put(MD.GC, COMMON_ORE).visDefault();
 			Cheese                  .put(MD.GC, COMMON_ORE);
-			MoonTurf                .put(MD.GC).visDefault();
-			MoonRock                .put(MD.GC).visDefault();
-			MarsSand                .put(MD.GC).visDefault();
-			MarsRock                .put(MD.GC).visDefault();
-			SpaceRock               .put(MD.GC).visDefault();
+			STONES.MoonTurf         .put(MD.GC).visDefault();
+			STONES.MoonRock         .put(MD.GC).visDefault();
+			STONES.MarsSand         .put(MD.GC).visDefault();
+			STONES.MarsRock         .put(MD.GC).visDefault();
+			STONES.SpaceRock        .put(MD.GC).visDefault();
 			Ultimate                .put(MD.GC);
 			
 			
@@ -2283,15 +2283,15 @@ public class MT {
 			Valonite                .put(MD.BTL, BETWEENLANDS).visDefault();
 			Scabyst                 .put(MD.BTL, BETWEENLANDS).visDefault();
 			SlimyBone               .put(MD.BTL, BETWEENLANDS).visDefault();
-			Betweenstone            .put(MD.BTL, BETWEENLANDS).visDefault();
-			Pitstone                .put(MD.BTL, BETWEENLANDS).visDefault();
+			STONES.Betweenstone     .put(MD.BTL, BETWEENLANDS).visDefault();
+			STONES.Pitstone         .put(MD.BTL, BETWEENLANDS).visDefault();
 			Weedwood                .put(MD.BTL, BETWEENLANDS).visDefault();
 			Syrmorite               .put(MD.BTL, BETWEENLANDS, COMMON_ORE).visDefault();
 			Octine                  .put(MD.BTL, BETWEENLANDS, COMMON_ORE).visDefault();
 			
 			
 			Skyroot                 .put(MD.AETHER).visDefault();
-			Holystone               .put(MD.AETHER).visDefault();
+			STONES.Holystone        .put(MD.AETHER).visDefault();
 			Zanite                  .put(MD.AETHER, COMMON_ORE).visDefault();
 			Ambrosium               .put(MD.AETHER, COMMON_ORE).visDefault();
 			Gravitite               .put(MD.AETHER, COMMON_ORE).visDefault();
@@ -2306,7 +2306,7 @@ public class MT {
 			BlueSapphire            .put(MD.RP);
 			Ruby                    .put(MD.RP);
 			BalasRuby               .put(MD.RP);
-			Marble                  .put(MD.RP);
+			STONES.Marble           .put(MD.RP);
 			Brass                   .put(MD.RP);
 			RedAlloy                .put(MD.RP);
 			Nikolite                .put(MD.RP, COMMON_ORE).visDefault();
@@ -2418,7 +2418,7 @@ public class MT {
 			Flint                   .addEnchantmentForTools(Enchantment.fireAspect, 1);
 			Netherrack              .addEnchantmentForTools(Enchantment.fireAspect, 1);
 			Obsidian                .addEnchantmentForTools(Enchantment.fireAspect, 1);
-			Gneiss                  .addEnchantmentForTools(Enchantment.fireAspect, 2);
+			STONES.Gneiss           .addEnchantmentForTools(Enchantment.fireAspect, 2);
 			NetherBrick             .addEnchantmentForTools(Enchantment.fireAspect, 2);
 			ObsidianSteel           .addEnchantmentForTools(Enchantment.fireAspect, 2);
 			Ignatius                .addEnchantmentForTools(Enchantment.fireAspect, 2);
@@ -2468,7 +2468,7 @@ public class MT {
 			TitaniumGold            .addEnchantmentForTools(Enchantment.smite, 3);
 			Electrum                .addEnchantmentForTools(Enchantment.smite, 3);
 			GildedIron              .addEnchantmentForTools(Enchantment.smite, 3);
-			Holystone               .addEnchantmentForTools(Enchantment.smite, 3);
+			STONES.Holystone        .addEnchantmentForTools(Enchantment.smite, 3);
 			RoseGold                .addEnchantmentForTools(Enchantment.smite, 4);
 			EnergeticAlloy          .addEnchantmentForTools(Enchantment.smite, 4);
 			SpectreIron             .addEnchantmentForTools(Enchantment.smite, 5);
@@ -2607,7 +2607,7 @@ public class MT {
 			Th                              .addOreByProducts(Pb                        , U_238                     );
 			
 			for (OreDictMaterial tMat : ANY.CaF2.mToThis) {
-				if (tMat != MT.CaF2) F.addOreByProducts(tMat);
+				if (tMat != CaF2) F.addOreByProducts(tMat);
 				tMat.addOreByProducts(OREMATS.Huebnerite, Y, Ce, Fe2O3, Na, Ba);
 			}
 			CaF2                            .addOreByProducts(FluoriteGreen             , FluoriteOrange            );
@@ -2621,7 +2621,7 @@ public class MT {
 			FluoriteOrange                  .addOreByProducts(FluoriteYellow            , FluoriteRed               );
 			FluoriteMagenta                 .addOreByProducts(FluoritePink              , FluoriteBlue              );
 			
-			S                               .addOreByProducts(Pyrite                    , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      , Gypsum);
+			S                               .addOreByProducts(Pyrite                    , OREMATS.Sphalerite        , OREMATS.Cinnabar      , OREMATS.Chalcopyrite  , OREMATS.Arsenopyrite  , OREMATS.Galena        , OREMATS.Stibnite      , Gypsum);
 			Se                              .addOreByProducts(Pyrite                    , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
 			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                    , OREMATS.Cobaltite         , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
 			OREMATS.Sperrylite              .addOreByProducts(Sb                        , Cu                        , Fe2O3                 , Rh                    , OREMATS.Cooperite     );
@@ -2737,8 +2737,8 @@ public class MT {
 			Palygorskite                    .addOreByProducts(Kaolinite                 , Bentonite                 );
 			Kaolinite                       .addOreByProducts(ClayBrown                 , Clay                      );
 			
-			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , Quartzite                 );
-			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , Quartzite                 , OREMATS.Barite        );
+			OREMATS.Barite                  .addOreByProducts(CertusQuartz              , STONES.Quartzite          );
+			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz              , STONES.Quartzite          , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                     , MgCO3                     , MnO2                  );
 			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar          , RareEarth                 , Glowstone             );
@@ -2760,7 +2760,7 @@ public class MT {
 			Cd                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Sphalerite        , Se                    );
 			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Scheelite         );
 			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , Os);
-			OREMATS.Malachite               .addOreByProducts(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
+			OREMATS.Malachite               .addOreByProducts(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , Azurite);
 			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite         , OREMATS.YellowLimonite    );
 			OREMATS.YellowLimonite          .addOreByProducts(Ni                        , OREMATS.BrownLimonite     , OREMATS.Cobaltite     );
 			OREMATS.Garnierite              .addOreByProducts(Ni                        , OREMATS.Sperrylite        );
@@ -2791,7 +2791,7 @@ public class MT {
 			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone);
 			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz);
 			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz);
-			Quartzite                       .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
+			STONES.Quartzite                .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
 			MilkyQuartz                     .addOreByProducts(CertusQuartz              , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
@@ -2803,6 +2803,9 @@ public class MT {
 			W                               .addOreByProducts(MnO2                      , Mo                        );
 			Fe                              .addOreByProducts(Ni                        , Sn                        );
 			OREMATS.Lepidolite              .addOreByProducts(LiCl                      , Cs                        , Rb                    );
+			OREMATS.Spodumene               .addOreByProducts(Al2O3                     , LiCl                      );
+			OREMATS.Kyanite                 .addOreByProducts(STONES.Quartzite          , OREMATS.Lepidolite        , OREMATS.Spodumene      , OREMATS.Tantalite);
+			OREMATS.Alunite                 .addOreByProducts(STONES.Quartzite          );
 			Sb                              .addOreByProducts(Zn                        , Fe2O3                     );
 			OREMATS.Smithsonite             .addOreByProducts(Zn                        , OREMATS.Bromargyrite      );
 			Pb                              .addOreByProducts(Ag                        , S                         );
@@ -2818,12 +2821,11 @@ public class MT {
 			Cr                              .addOreByProducts(OREMATS.Chromite          , Fe2O3                     , MgCO3                 );
 			OREMATS.Ferrovanadium           .addOreByProducts(OREMATS.Magnetite         , VanadiumPentoxide         );
 			OREMATS.Magnetite               .addOreByProducts(Fe2O3                     , Au                        , Stone);
-			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , GraniteBlack);
-			OREMATS.BasalticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , Basalt);
+			OREMATS.GraniticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , STONES.GraniteBlack);
+			OREMATS.BasalticMineralSand     .addOreByProducts(Fe2O3                     , Au                        , STONES.Basalt);
 			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
 			Lazurite                        .addOreByProducts(Sodalite                  , Lapis                     );
 			Sodalite                        .addOreByProducts(Lazurite                  , Lapis                     );
-			OREMATS.Spodumene               .addOreByProducts(Al2O3                     , LiCl                      );
 			Co_60                           .addOreByProducts(OREMATS.Cobaltite         , Co                        );
 			Co                              .addOreByProducts(OREMATS.Cobaltite         );
 			Zr                              .addOreByProducts(TiO2                      , Hf                        );
@@ -2855,11 +2857,11 @@ public class MT {
 			Mg                              .addOreByProducts(Olivine                   , MgCO3                     );
 			Ardite                          .addOreByProducts(OREMATS.Cobaltite         );
 			Obsidian                        .addOreByProducts(Olivine                   );
-			Redrock                         .addOreByProducts(ClayBrown                 );
-			Limestone                       .addOreByProducts(CaCO3                     );
-			Marble                          .addOreByProducts(CaCO3                     );
-			Eclogite                        .addOreByProducts(TiO2                      );
-			Limestone                       .addOreByProducts(Phosphorite               );
+			STONES.Redrock                  .addOreByProducts(ClayBrown                 );
+			STONES.Limestone                .addOreByProducts(CaCO3                     );
+			STONES.Marble                   .addOreByProducts(CaCO3                     );
+			STONES.Eclogite                 .addOreByProducts(TiO2                      );
+			STONES.Limestone                .addOreByProducts(Phosphorite               );
 			Tanzanite                       .addOreByProducts(Opal                      );
 			Opal                            .addOreByProducts(Tanzanite                 );
 			Topaz                           .addOreByProducts(BlueTopaz                 );
@@ -3130,7 +3132,7 @@ public class MT {
 			};
 			
 			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = Thaumium.mHandleMaterial = ANY.WoodMagical;
-			GaiaSpirit.mHandleMaterial = MT.ElvenElementium;
+			GaiaSpirit.mHandleMaterial = ElvenElementium;
 			FierySteel.mHandleMaterial = Firestone.mHandleMaterial = ANY.Blaze;
 			Endium.mHandleMaterial = Endstone;
 			SpectreIron.mHandleMaterial = Obsidian;

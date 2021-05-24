@@ -512,6 +512,9 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Talc                    , U4 ,  0, 80)
 		, new StoneLayerOres(MT.OREMATS.Glauconite      , U4 , 32, 80)
 		);
+		StoneLayer.bothsides(MT.STONES.Rhyolite, MT.STONES.Quartzite
+		, new StoneLayerOres(MT.OREMATS.Alunite         , U4 , 32, 80)
+		);
 		StoneLayer.bothsides(MT.STONES.Greenschist, MT.Gypsum
 		, new StoneLayerOres(MT.OREMATS.Mirabilite      , U8 , 16, 64)
 		, new StoneLayerOres(MT.OREMATS.Trona           , U8 , 16, 64)
