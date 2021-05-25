@@ -225,12 +225,12 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		if (!FACE_CONNECTED[aSide][mDisabledOutputs] && canEmitItemsTo(aSide, aSender)) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 			if (ST.canConnect(tDelegator) && !(tDelegator.mTileEntity instanceof TileEntityBase09Connector)) {
-				if ((!(tDelegator.mTileEntity instanceof TileEntityHopper) && !(tDelegator.mTileEntity instanceof TileEntityDispenser)) || getMetaDataAtSide(aSide) != tDelegator.mSideOfTileEntity) {
+				if (!(tDelegator.mTileEntity instanceof TileEntityHopper || tDelegator.mTileEntity instanceof TileEntityDispenser) || getMetaDataAtSide(aSide) != tDelegator.mSideOfTileEntity) {
 					// special cases for the win...
 					CoverData tCovers = getCoverData();
 					if (tCovers != null && tCovers.mBehaviours[aSide] instanceof CoverFilterItem && tCovers.mNBTs[aSide] != null) {
 						ItemStack tStack = ST.load(tCovers.mNBTs[aSide], "gt.filter.item");
-						if (ST.valid(tStack)) return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, new ItemStackSet<>(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
+						return ST.valid(tStack) && ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, new ItemStackSet<>(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
 					}
 					// well normal case is this.
 					return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator) > 0;
