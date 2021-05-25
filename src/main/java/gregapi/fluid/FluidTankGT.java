@@ -27,10 +27,8 @@ import gregapi.data.FL;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.UT;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.*;
 
 public class FluidTankGT implements IFluidTank {
 	public final FluidTankGT[] AS_ARRAY = new FluidTankGT[] {this};
@@ -43,6 +41,8 @@ public class FluidTankGT implements IFluidTank {
 	private long mAdjustableMultiplier = 1;
 	/** Gives you a Tank Index in case there is multiple Tanks on a TileEntity that cares. */
 	public int mIndex = 0;
+	/** Pressure in this tank, mostly ignored except for pipes and whatever wants to know or mess with it */
+	public int mPressure = 0;
 	
 	public FluidTankGT() {mCapacity = Long.MAX_VALUE;}
 	public FluidTankGT(long aCapacity) {mCapacity = aCapacity;}
@@ -60,6 +60,7 @@ public class FluidTankGT implements IFluidTank {
 			if (aNBT != null && !aNBT.hasNoTags()) {
 				mFluid = FL.load_(aNBT);
 				mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);
+				mPressure = aNBT.hasKey("TPressure") ? aNBT.getInteger("TPressure") : 0;
 			}
 		}
 		return this;
@@ -71,6 +72,7 @@ public class FluidTankGT implements IFluidTank {
 			mFluid.amount = UT.Code.bindInt(mAmount);
 			aNBT.setTag(aKey, mFluid.writeToNBT(tNBT));
 			if (mAmount > Integer.MAX_VALUE) tNBT.setLong("LAmount", mAmount);
+			if (mPressure != 0) tNBT.setInteger("TPressure", mPressure);
 		} else {
 			aNBT.removeTag(aKey);
 		}
@@ -84,6 +86,7 @@ public class FluidTankGT implements IFluidTank {
 			mFluid.amount = UT.Code.bindInt(mAmount);
 			aNBT.setTag(aKey, mFluid.writeToNBT(tNBT));
 			if (mAmount > Integer.MAX_VALUE) tNBT.setLong("LAmount", mAmount);
+			if (mPressure != 0) tNBT.setInteger("TPressure", mPressure);
 		} else {
 			aNBT.removeTag(aKey);
 		}
@@ -313,8 +316,8 @@ public class FluidTankGT implements IFluidTank {
 	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
 	
 	public String content() {return content("Empty");}
-	public String content(String aEmptyMessage) {return  mFluid == null ? aEmptyMessage : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
-	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+UT.Code.makeString(capacity())+" L)";}
+	public String content(String aEmptyMessage) {return  mFluid == null ? aEmptyMessage : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")" + (mPressure == 0 ? "" : (" ("+mPressure+"Pa)"));}
+	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+UT.Code.makeString(capacity())+" L)" + (mPressure == 0 ? "" : (" ("+mPressure+"Pa)"));}
 	
 	public Fluid fluid() {return mFluid == null ? null : mFluid.getFluid();}
 	
@@ -327,4 +330,72 @@ public class FluidTankGT implements IFluidTank {
 	@Override public int getFluidAmount() {return UT.Code.bindInt(mAmount);}
 	@Override public int getCapacity() {return UT.Code.bindInt(capacity());}
 	@Override public FluidTankInfo getInfo() {return new FluidTankInfo(isEmpty() ? null : mFluid.copy(), UT.Code.bindInt(capacity()));}
+
+	public int capacityRemaining() {return getCapacity() - getFluidAmount();}
+
+	public int pressure() {return mPressure;}
+
+	public int fillFrom(ForgeDirection from, IFluidHandler fh, int maxFill) {
+		if (fh == null) return 0;
+		if (maxFill <= 0) return 0;
+		// Empty and untagged, accept any fluid
+		if (mFluid == null) {
+			FluidStack fluidStack = fh.drain(from, Math.min(getCapacity(), maxFill), false);
+			if (fluidStack == null || fluidStack.amount == 0) return 0;
+			int canTake = fill(fluidStack, false);
+			fluidStack.amount = canTake;
+			fluidStack = fh.drain(from, fluidStack, true);
+			if (fill(fluidStack, true) != fluidStack.amount) {
+				// TODO:  Exception or log because broken logic?
+			}
+			return fluidStack.amount;
+		}
+		// Else get a specific fluid type
+		else {
+			FluidStack fluidStack = make(Math.min(getCapacity() - getFluidAmount(), maxFill));
+			fluidStack = fh.drain(from, fluidStack, true);
+			if (fill(fluidStack, true) != fluidStack.amount) {
+				// TODO:  Exception or log because broken logic?
+			}
+			return fluidStack.amount;
+		}
+	}
+	public int fillFrom(ForgeDirection from, IFluidHandler fh) {
+		return fillFrom(from, fh, Integer.MAX_VALUE);
+	}
+
+	public int drainInto(ForgeDirection from, IFluidHandler fh, int maxDrain) {
+		if (fh == null) return 0;
+		if (maxDrain <= 0) return 0;
+		if (mFluid == null) return 0;
+		FluidStack fluidStack = get(maxDrain);
+		int drained = fh.fill(from, fluidStack, true);
+		if (!drainAll(drained)) {
+			// TODO:  Exception or log because broken logic?
+		}
+		return drained;
+	}
+	public int drainInto(ForgeDirection from, IFluidHandler fh) {
+		return drainInto(from, fh, Integer.MAX_VALUE);
+	}
+
+	public int transferTo(FluidTankGT to, int max) {
+		if (to == null) return 0;
+		if (max <= 0) return 0;
+		if (mFluid == null) return 0;
+		if (getFluidAmount() <= 0) return 0;
+		if (to.fluid() != null && !contains(to.fluid())) return 0;
+		int transfer = Math.min(max, Math.min(getFluidAmount(), to.capacityRemaining()));
+		FluidStack fluidStack = make(transfer);
+		if (!drainAll(transfer)) {
+			// TODO:  Exception or log because broken logic?
+		}
+		if (!to.fillAll(fluidStack)) {
+			// TODO:  Exception or log because broken logic?
+		}
+		return transfer;
+	}
+	public int transferTo(FluidTankGT to) {
+		return transferTo(to, Integer.MAX_VALUE);
+	}
 }

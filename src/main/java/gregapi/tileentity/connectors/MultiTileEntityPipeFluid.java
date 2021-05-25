@@ -21,9 +21,7 @@ package gregapi.tileentity.connectors;
 
 import static gregapi.data.CS.*;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
@@ -68,9 +66,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
 
 /**
  * @author Gregorius Techneticies
@@ -154,7 +150,10 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
-		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks);
+		if (aTool.equals(TOOL_plunger)) {
+			for (FluidTankGT tTank : mTanks) tTank.mPressure -= 10;
+			return GarbageGT.trash(mTanks);
+		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (!isCovered(UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ))) {
 				if (aChatReturn != null) {
@@ -346,19 +345,18 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				}
 			}
 		}
-		// Check if we are empty.
-		if (aTank.isEmpty()) return;
-		// Compile all possible Targets into one List.
-		List<DelegatorTileEntity> tTanks = new ArrayListNoNulls<>();
-		List<FluidTankGT> tPipes = new ArrayListNoNulls<>();
-		// Amount to check for Distribution
-		long tAmount = aTank.amount();
-		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
-		int tTargetCount = 1;
-		// Put Targets into Lists.
+		// This early return prevents consuming pressure updates
+		//// Check if we are empty.
+		//if (aTank.isEmpty()) return;
+		int aTankPressure = aTank.pressure();
+		// Compile all possible Targets
+		List<DelegatorTileEntity<IFluidHandler>> tDrainOnlyTanks = new ArrayListNoNulls<>();
+		List<DelegatorTileEntity<IFluidHandler>> tFillableTanks = new ArrayListNoNulls<>();
+		List<FluidTankGT> tHigherPipes = new ArrayListNoNulls<>();
+		List<FluidTankGT> tLowerPipes = new ArrayListNoNulls<>();
+		int lowestUpperPressure = Integer.MAX_VALUE;
+		// Put Targets into Lists
 		for (byte tSide : ALL_SIDES_VALID) {
-			// Don't you dare flow backwards!
-			if (FACE_CONNECTED[tSide][mLastReceivedFrom[aTank.mIndex]]) continue;
 			// Are we even connected to this Side? (Only gets checked due to the Cover check being slightly expensive)
 			if (!canEmitFluidsTo(tSide)) continue;
 			// Covers let distribution happen, right?
@@ -366,49 +364,84 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			// Is it a Pipe?
 			if (aAdjacentPipes[tSide] != null) {
 				// Check if the Pipe can be filled with this Fluid.
-				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
-				if (tTank != null && tTank.amount() < aTank.amount()) {
-					// Setting Last Side Received From.
-					aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom[tTank.mIndex] |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
-					// Add to a random Position in the List.
-					tPipes.add(rng(tPipes.size()+1), tTank);
-					// For Balancing the Pipe Output.
-					tAmount += tTank.amount();
-					// One more Target.
-					tTargetCount++;
+				DelegatorTileEntity<MultiTileEntityPipeFluid> tPipe = aAdjacentPipes[tSide];
+				FluidTankGT tTank = (FluidTankGT)tPipe.mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
+				if (tTank != null && tTank.capacityRemaining() > 0) {
+					if (tTank.pressure() > aTankPressure) {
+						lowestUpperPressure = Math.min(lowestUpperPressure,  tTank.pressure());
+						MultiTileEntityPipeFluid tTE = tPipe.mTileEntity;
+						byte opFace = tPipe.mSideOfTileEntity;
+						if (tTE.canEmitFluidsTo(opFace) && tTE.isCovered(opFace) && tTE.mCovers.mBehaviours[tSide].interceptFluidDrain(opFace, tTE.mCovers, opFace, aTank.get())) {
+							tHigherPipes.add(tTank);
+						} else {
+							// Can't pull from that pipe
+						}
+					} else {
+						tLowerPipes.add(tTank);
+					}
 				}
-				// Done everything.
-				continue;
 			}
-			// No Tank? Nothing to do then.
-			if (aAdjacentTanks[tSide] == null) continue;
-			// Check if the Tank can be filled with this Fluid.
-			if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0 || aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.get(Long.MAX_VALUE), F) > 0) {
-				// Add to a random Position in the List.
-				tTanks.add(rng(tTanks.size()+1), aAdjacentTanks[tSide]);
-				// One more Target.
-				tTargetCount++;
-				// Done everything.
-				continue;
+			// Otherwise is it some other generic IFluidHandler?
+			else if (aAdjacentTanks[tSide] != null) {
+				// Check if the Tank can interact with this Fluid, even if full/empty it still will have pressure
+				IFluidHandler fh = aAdjacentTanks[tSide].mTileEntity;
+				ForgeDirection from = aAdjacentTanks[tSide].getForgeSideOfTileEntity();
+				// If it can be filled then put it on the fillable list
+				if (!FACE_CONNECTED[tSide][mLastReceivedFrom[aTank.mIndex]] && fh.canFill(from, aTank.fluid())) {
+					tFillableTanks.add(aAdjacentTanks[tSide]);
+				}
+				// Else put it on the drain-only list if it can only be drained, I.E. actively drain from it
+				else if (fh.canDrain(from, aTank.fluid())) {
+					tDrainOnlyTanks.add(aAdjacentTanks[tSide]);
+				}
 			}
 		}
-		// No Targets? Nothing to do then.
-		if (tTargetCount <= 1) return;
-		// Amount to distribute normally.
-		tAmount = UT.Code.divup(tAmount, tTargetCount);
-		// Distribute to Pipes first.
-		for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
-		// Check if we are empty.
-		if (aTank.isEmpty()) return;
-		// Distribute to Tanks afterwards.
-		for (DelegatorTileEntity tTank : tTanks) mTransferredAmount += aTank.remove(FL.fill(tTank, aTank.get(tAmount), T));
-		// Check if we are empty.
-		if (aTank.isEmpty()) return;
-		// No Targets? Nothing to do then.
-		if (tPipes.isEmpty()) return;
-		// And then if there still is pressure, distribute to Pipes again.
-		tAmount = (aTank.amount() - mCapacity/2) / tPipes.size();
-		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
+		if (tDrainOnlyTanks.size() > 0) {
+			// Start on a random index of the drain-only tanks to drain from as much as we can
+			int offset = rng(tDrainOnlyTanks.size());
+			// Actively pull from drain-only tanks first evenly if there is space
+			for (int i = 0; i < tDrainOnlyTanks.size() && aTank.capacityRemaining() > 0; i++) {
+				DelegatorTileEntity<IFluidHandler> tTank = tDrainOnlyTanks.get((i + offset) % tDrainOnlyTanks.size());
+				IFluidHandler fh = tTank.mTileEntity;
+				ForgeDirection from = tTank.getForgeSideOfTileEntity();
+				aTank.fillFrom(from, fh);
+			}
+		}
+		if (tFillableTanks.size() > 0) {
+			// Pick a random index to start filling in full next
+			int offset = rng(tFillableTanks.size());
+			// Then prioritize putting fluids into tanks that can be filled as they conceptually have infinite vacuum
+			for (int i = 0; i < tFillableTanks.size() && aTank.getFluidAmount() > 0; i++) {
+				DelegatorTileEntity<IFluidHandler> tTank = tFillableTanks.get((i + offset) % tFillableTanks.size());
+				IFluidHandler fh = tTank.mTileEntity;
+				ForgeDirection from = tTank.getForgeSideOfTileEntity();
+				aTank.drainInto(from, fh);
+			}
+		}
+		if (tHigherPipes.size() > 0) {
+			// Pick a random index to start draining from in full
+			int offset = rng(tHigherPipes.size());
+			// Move from higher pipes into self starting at the offset, as much as is possible
+			for (int i = 0; i < tHigherPipes.size(); i++) {
+				FluidTankGT tPipe = tHigherPipes.get((i + offset) % tHigherPipes.size());
+				if (aTank.capacityRemaining() > 0) {
+					tPipe.transferTo(aTank);
+				}
+			}
+		}
+		if (tLowerPipes.size() > 0) {
+			// And when draining to lower then evenly distribute
+			// Pick a random index to start draining from in full
+			int offset = rng(tLowerPipes.size());
+			// Move from higher pipes into self starting at the offset, as much as is possible
+			for (int i = 0; i < tLowerPipes.size() && aTank.getFluidAmount() > 0; i++) {
+				FluidTankGT tPipe = tLowerPipes.get((i + offset) % tLowerPipes.size());
+				aTank.transferTo(tPipe);
+			}
+		}
+		if (lowestUpperPressure < Integer.MAX_VALUE) aTank.mPressure = Math.max(aTank.mPressure, lowestUpperPressure);
+		aTank.mPressure -= 1; // degrade
+		aTank.mPressure = Math.max(Math.min(aTank.getFluidAmount(), aTank.mPressure), 0);
 	}
 	
 	@Override
@@ -466,6 +499,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
 		if (aDoFill) {
+			// When injected then max out pressure and a bit extra
+			tTank.mPressure = tTank.getCapacity() + 2;
 			if (rFilledAmount > 0) updateInventory();
 			mLastReceivedFrom[tTank.mIndex] |= SBIT[UT.Code.side(aDirection)];
 		}
