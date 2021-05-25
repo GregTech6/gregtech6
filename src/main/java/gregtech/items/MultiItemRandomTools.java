@@ -356,7 +356,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		IL.Tool_Lighter_Invar_Empty        .set(addItem(5004, "Lighter (Empty)"                  , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1)));
+		IL.Tool_Lighter_Invar_Empty        .set(addItem(5004, "Lighter (Empty)"                  , "Requires Canning Machine to be filled"       , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Tool_Lighter_Invar_Used         .set(addItem(5005, "Lighter"                          , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Invar_Full         .set(addItem(5006, "Lighter (Full)"                   , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1), 100, 10000);
@@ -367,7 +367,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		IL.Tool_Lighter_Platinum_Empty     .set(addItem(5007, "Shiny Lighter (Empty)"            , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.VACUOS, 1)));
+		IL.Tool_Lighter_Platinum_Empty     .set(addItem(5007, "Shiny Lighter (Empty)"            , "Requires Canning Machine to be filled"       , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Tool_Lighter_Platinum_Used      .set(addItem(5008, "Shiny Lighter"                    , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Platinum_Full      .set(addItem(5009, "Shiny Lighter (Full)"             , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1), 1000, 10000);
@@ -378,7 +378,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		IL.Tool_Lighter_Plastic_Empty      .set(addItem(5010, "Plastic Lighter (Empty)"          , ""                                            , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1)));
+		IL.Tool_Lighter_Plastic_Empty      .set(addItem(5010, "Plastic Lighter (Empty)"          , "Requires Canning Machine to be filled"       , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Tool_Lighter_Plastic_Used       .set(addItem(5011, "Plastic Lighter"                  , ""                                            , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 2), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Plastic_Full       .set(addItem(5012, "Plastic Lighter (Full)"           , ""                                            , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		IL.Tool_Lighter_Plastic_Broken     .set(addItem(5013, "Plastic Lighter (Broken)"         , ""                                            , new OreDictItemData(MT.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.PERDITIO, 1), TD.Creative.HIDDEN));
