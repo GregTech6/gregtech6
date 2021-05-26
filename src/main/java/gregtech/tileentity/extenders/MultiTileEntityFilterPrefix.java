@@ -162,7 +162,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
-		DEB.println(SERVER_TIME + " INSERT LAST SIDE: " + mLastSide);
+		DEB.println(SERVER_TIME + " INSERT SIDE: " + mLastSide);
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
 			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canInsertItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
@@ -174,7 +174,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
-		DEB.println(SERVER_TIME + " EXTRACT LAST SIDE: " + mLastSide);
+		DEB.println(SERVER_TIME + " EXTRACT SIDE: " + mLastSide);
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
 			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canExtractItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
@@ -184,10 +184,16 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	}
 	
 	@Override // TODO REMOVE!
+	public int[] getAccessibleSlotsFromSide2(byte aSide) {
+		DEB.println(SERVER_TIME + " SLOT ARRAY PREV: " + mLastSide);
+		mLastSide = aSide;
+		DEB.println(SERVER_TIME + " SLOT ARRAY POST: " + mLastSide);
+		return super.getAccessibleSlotsFromSide2(aSide);
+	}
+	
+	@Override // TODO REMOVE!
 	public byte getExtenderTargetSide(byte aSide) {
-		DEB.println(SERVER_TIME + " PARAMETER: " + aSide);
 		DEB.println(SERVER_TIME + " LAST SIDE: " + mLastSide);
-		DEB.println(SERVER_TIME + " RESULTING: " + super.getExtenderTargetSide(aSide));
 		return super.getExtenderTargetSide(aSide);
 	}
 	
