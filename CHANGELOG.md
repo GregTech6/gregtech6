@@ -17,6 +17,7 @@ Glowtus can now be chiseled into different Colors and GT6 Logs can now be chisel
 [COMPAT]
 Witchery now has a little bit more Compat.
 The Spirit World now generates GT6 Stuff properly just like the Overworld.
+[FIXED] Filter Blocks were kinda broken, so that needed a change. This may break your Setups in some cases.
 [FIXED] Bricks and nether Bricks were not palceable on the Floor like Ingots.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
 [FIXED] The Cow Cooldown of Hunger Overhaul is now respected by Wooden Buckets.
