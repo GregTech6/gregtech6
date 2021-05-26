@@ -184,7 +184,12 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	}
 	
 	@Override // TODO REMOVE!
-	public byte getExtenderTargetSide(byte aSide) {DEB.println(SERVER_TIME + " TARGET SIDE: " + mLastSide); return mFacing;}
+	public byte getExtenderTargetSide(byte aSide) {
+		DEB.println(SERVER_TIME + " PARAMETER: " + aSide);
+		DEB.println(SERVER_TIME + " LAST SIDE: " + mLastSide);
+		DEB.println(SERVER_TIME + " RESULTING: " + super.getExtenderTargetSide(aSide));
+		return super.getExtenderTargetSide(aSide);
+	}
 	
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
