@@ -48,7 +48,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -154,8 +153,8 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean isItemValidForSlot(int aSlot, ItemStack aStack) {
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
-			if (tTileEntity.mTileEntity instanceof IInventory) return ((IInventory)tTileEntity.mTileEntity).isItemValidForSlot(aSlot, aStack);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
+			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.isItemValidForSlot(aSlot, aStack);
 		}
 		return F;
 	}
@@ -163,10 +162,11 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
+		DEB.println(SERVER_TIME + " INSERT LAST SIDE: " + mLastSide);
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canInsertItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
-			if (tTileEntity.mTileEntity instanceof IInventory) return T;
+			if (tTileEntity.mTileEntity != null) return T;
 		}
 		return F;
 	}
@@ -174,13 +174,17 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
+		DEB.println(SERVER_TIME + " EXTRACT LAST SIDE: " + mLastSide);
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canExtractItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
-			if (tTileEntity.mTileEntity instanceof IInventory) return T;
+			if (tTileEntity.mTileEntity != null) return T;
 		}
 		return F;
 	}
+	
+	@Override // TODO REMOVE!
+	public byte getExtenderTargetSide(byte aSide) {DEB.println(SERVER_TIME + " TARGET SIDE: " + mLastSide); return mFacing;}
 	
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
