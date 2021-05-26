@@ -100,7 +100,6 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 		}
 		return T;
 	}
-	
 	@Override
 	public boolean interceptItemInsert(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {
 		if (aCoverSide != aSide) return F;

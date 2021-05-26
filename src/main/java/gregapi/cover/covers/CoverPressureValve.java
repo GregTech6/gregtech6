@@ -43,13 +43,15 @@ import net.minecraftforge.fluids.IFluidHandler;
  * @author Gregorius Techneticies
  */
 public class CoverPressureValve extends AbstractCoverAttachment {
-	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof MultiTileEntityPipeFluid) || ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks.length != 1;}
+	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof MultiTileEntityPipeFluid) || ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks.length != 1 || aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof MultiTileEntityPipeFluid;}
+	@Override public boolean interceptConnect(byte aCoverSide, CoverData aData) {return aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof MultiTileEntityPipeFluid;}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aTimer > 2 && aData.mTileEntity instanceof MultiTileEntityPipeFluid) {
 			FluidTankGT tTank = ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks[0];
+			((MultiTileEntityPipeFluid)aData.mTileEntity).disconnect(aSide, T);
 			if (tTank.isFull()) {
 				DelegatorTileEntity<IFluidHandler> tDelegator = aData.mTileEntity.getAdjacentTank(aSide);
 				if (tDelegator.mTileEntity != null) {

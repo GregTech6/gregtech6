@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -109,7 +109,8 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 	
 	@Override
 	public boolean connect(byte aSide, boolean aNotify) {
-		if (SIDES_INVALID[aSide]) return connected(aSide);
+		if (SIDES_INVALID[aSide]) return F;
+		if (connected(aSide)) return T;
 		if (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptConnect(aSide, mCovers)) return F;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (tDelegator.mTileEntity instanceof ITileEntityConnector) {
@@ -153,7 +154,8 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 	
 	@Override
 	public boolean disconnect(byte aSide, boolean aNotify) {
-		if (SIDES_INVALID[aSide]) return !connected(aSide);
+		if (SIDES_INVALID[aSide]) return F;
+		if (!connected(aSide)) return T;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptDisconnect(aSide, mCovers)) return F;
 		if (tDelegator.mTileEntity instanceof ITileEntityCoverable && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData() != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity] != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity].interceptDisconnect(tDelegator.mSideOfTileEntity, mCovers)) return F;
