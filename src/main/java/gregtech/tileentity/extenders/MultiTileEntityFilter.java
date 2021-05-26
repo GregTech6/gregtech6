@@ -49,7 +49,6 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -145,8 +144,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 	@Override
 	public boolean isItemValidForSlot(int aSlot, ItemStack aStack) {
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
-			if (tTileEntity.mTileEntity instanceof IInventory) return ((IInventory)tTileEntity.mTileEntity).isItemValidForSlot(aSlot, aStack);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
+			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.isItemValidForSlot(aSlot, aStack);
 		}
 		return F;
 	}
@@ -155,9 +154,9 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canInsertItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
-			if (tTileEntity.mTileEntity instanceof IInventory) return T;
+			if (tTileEntity.mTileEntity != null) return T;
 		}
 		return F;
 	}
@@ -166,9 +165,9 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
 		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
-			DelegatorTileEntity<TileEntity> tTileEntity = getAdjacentTileEntity(getExtenderTargetSide(mLastSide), F, T);
+			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canExtractItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
-			if (tTileEntity.mTileEntity instanceof IInventory) return T;
+			if (tTileEntity.mTileEntity != null) return T;
 		}
 		return F;
 	}
