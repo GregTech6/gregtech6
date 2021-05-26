@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -43,11 +43,20 @@ import net.minecraft.util.AxisAlignedBB;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityCrossing extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetSelectedBoundingBoxFromPool {
-	public boolean mLock = F;
+	public boolean mLock = F, mRedstone = F;
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide) mLock = F;
+		if (aIsServerSide) {
+			mLock = F;
+			if (mBlockUpdated || SERVER_TIME % 50 == 0) {
+				if (getRedstoneIncoming(SIDE_TOP) > 0 || getRedstoneIncoming(SIDE_BOTTOM) > 0) {
+					if (!mRedstone) {mRedstone = T; causeBlockUpdate();}
+				} else {
+					if ( mRedstone) {mRedstone = F; causeBlockUpdate();}
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -98,6 +107,8 @@ public class MultiTileEntityCrossing extends TileEntityBase07Paintable implement
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 0], PX_P[ 1], PX_P[ 0], PX_N[ 0], PX_N[10], PX_N[ 0]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 0], PX_P[ 1], PX_P[ 0], PX_N[ 0], PX_N[10], PX_N[ 0]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[ 0], PX_P[ 1], PX_P[ 0], PX_N[ 0], PX_N[10], PX_N[ 0]);}
+	
+	@Override public byte isProvidingWeakPower2(byte aSide) {return (byte)(mRedstone && SIDES_HORIZONTAL[aSide] ? 1 : 0);}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return 0;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0;}
