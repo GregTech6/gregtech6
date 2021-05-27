@@ -82,7 +82,10 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	TILES = 10, STILE = 11;
 	
 	public static final byte[]
+	//NO_MAPPINGS     = {STONE, COBBL, MCOBL, BRICK, CRACK, MBRIK, CHISL, SMOTH, RNFBR, RSTBR, TILES, STILE, SBRIK, WINDA, WINDB, QBRIK}
 	  CHISEL_MAPPINGS = {SMOTH, COBBL, MCOBL, CRACK, COBBL, MCOBL, CHISL, CHISL, RNFBR, RSTBR, STILE, STILE, STILE, WINDB, WINDA, STILE}
+	, FILE_MAPPINGS   = {SMOTH, COBBL, MCOBL, SBRIK, CRACK, MBRIK, CHISL, SMOTH, RNFBR, RSTBR, STILE, STILE, STILE, WINDB, WINDA, STILE}
+	, HAMMER_MAPPINGS = {STONE, COBBL, MCOBL, CRACK, COBBL, CRACK, CRACK, COBBL, RNFBR, RSTBR, CRACK, CRACK, CRACK, CRACK, CRACK, CRACK} // Has to Map Stone to itself for prospecting Compatibility
 	;
 	
 	public final OreDictMaterial mMaterial;
@@ -533,15 +536,13 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CHISEL_MAPPINGS[aMeta & 15], 3);
 			return mOctantcount * 1250;
 		}
-		if (aTool.equals(TOOL_file) && !aSneaking) {
-			switch(aMeta) {
-			case STONE: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SMOTH, 3); return mOctantcount * 1250; // Stone to Smooth
-			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SBRIK, 3); return mOctantcount * 1250; // Bricks to Small Bricks
-			case TILES: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mOctantcount * 1250; // Tile to Small Tile
-			case SBRIK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mOctantcount * 1250; // Small Bricks to Small Tile
-			case WINDA: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDB, 3); return mOctantcount * 1250;
-			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mOctantcount * 1250;
-			}
+		if (aTool.equals(TOOL_file) && !aSneaking && FILE_MAPPINGS[aMeta & 15] != aMeta) {
+			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, FILE_MAPPINGS[aMeta & 15], 3);
+			return mOctantcount * 1250;
+		}
+		if (aTool.equals(TOOL_hammer) && !aSneaking && HAMMER_MAPPINGS[aMeta & 15] != aMeta) {
+			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, HAMMER_MAPPINGS[aMeta & 15], 3);
+			return mOctantcount * 125;
 		}
 		if (aTool.equals(TOOL_drill) && !aSneaking) {
 			if (mBlock == this && aPlayer instanceof EntityPlayer && aMeta == BRICK) {
