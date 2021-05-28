@@ -40,14 +40,14 @@ import net.minecraftforge.common.ChestGenHooks;
 public class Loader_Loot implements Runnable {
 	@Override
 	public void run() {
-		new ChestGenHooksChestReplacer(ChestGenHooks.DUNGEON_CHEST);
-		new ChestGenHooksChestReplacer(ChestGenHooks.MINESHAFT_CORRIDOR);
-		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH);
-		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_LIBRARY);
-		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CORRIDOR);
-		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CROSSING);
-		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_DESERT_CHEST);
-		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
+		new ChestGenHooksChestReplacer(ChestGenHooks.DUNGEON_CHEST       , 32745);
+		new ChestGenHooksChestReplacer(ChestGenHooks.MINESHAFT_CORRIDOR  ,   500);
+		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH  ,    10);
+		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_LIBRARY  ,   508);
+		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CROSSING ,   509);
+		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CORRIDOR ,   510);
+		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_DESERT_CHEST,     2);
+		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_JUNGLE_CHEST,   502);
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Glue.get(1));

@@ -185,7 +185,7 @@ public class Loader_MultiTileEntities implements Runnable {
 	}
 	
 	private static void storages(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<?> aClass) {
-		OM.data(aRegistry.add("Loot Chest", "Chests", 32745, 32745, MultiTileEntityChest.class, 0, 16, aStone, UT.NBT.make(NBT_MATERIAL, MT.Stone, NBT_HARDNESS, 5.0F, NBT_RESISTANCE, 14.0F, NBT_INV_SIZE, 54, NBT_TEXTURE, "lootchest")), MT.Stone, U*8);
+		OM.data(aRegistry.add("Mossy Stone Chest", "Chests", 32745, 32745, MultiTileEntityChest.class, 0, 16, aStone, UT.NBT.make(NBT_MATERIAL, MT.Stone, NBT_HARDNESS, 5.0F, NBT_RESISTANCE, 14.0F, NBT_INV_SIZE, 54, NBT_TEXTURE, "lootchest")), MT.Stone, U*8);
 		
 		aMat = ANY.Steel;           aRegistry.add("Storage Inserter"          , "Storage", 32751, 32751, MultiTileEntityStorageInserter.class  , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F), "PhP", "SDE", "PwP", 'P', OP.pipeQuadruple.dat(aMat), 'S', OP.gem.dat(ANY.Sapphire), 'E', OP.gem.dat(ANY.Emerald), 'D', OP.gem.dat(ANY.Diamond));
 		

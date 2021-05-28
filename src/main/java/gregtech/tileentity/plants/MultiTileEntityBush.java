@@ -83,9 +83,8 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		super.writeItemNBT2(aNBT);
 		ST.save(aNBT, NBT_VALUE, mBerry);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	@Override

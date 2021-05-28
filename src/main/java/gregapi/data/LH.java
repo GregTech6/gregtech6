@@ -356,6 +356,16 @@ public class LH {
 	}
 	
 	static {
+		add("loot.mineshaftCorridor"                    , "Mineshaft");
+		add("loot.pyramidDesertyChest"                  , "Desert Pyramid");
+		add("loot.pyramidJungleChest"                   , "Jungle Temple");
+		add("loot.pyramidJungleDispenser"               , "Dispenser");
+		add("loot.strongholdCorridor"                   , "Corridor");
+		add("loot.strongholdLibrary"                    , "Library");
+		add("loot.strongholdCrossing"                   , "Storage");
+		add("loot.villageBlacksmith"                    , "Blacksmith");
+		add("loot.bonusChest"                           , "Bonus Chest");
+		add("loot.dungeonChest"                         , "Dungeon");
 		add(EFFICIENCY                                  , "Efficiency");
 		add(RECIPE                                      , "Recipe");
 		add(RECIPES                                     , "Recipes");

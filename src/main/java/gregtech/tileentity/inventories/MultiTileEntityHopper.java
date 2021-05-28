@@ -79,10 +79,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		aNBT = super.writeItemNBT2(aNBT);
 		if (mMode != 0) aNBT.setByte(NBT_MODE, mMode);
 		UT.NBT.setBoolean(aNBT, NBT_MODE+".a", mExactMode);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	static {

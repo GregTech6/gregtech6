@@ -43,15 +43,18 @@ import net.minecraftforge.common.ChestGenHooks;
 public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	public final ChestGenHooks mHookToReplaceChestsOf;
 	public final String mCategory;
+	public final short mChestID;
 	
 	// MineTweaker does Reflection the wrong way...
 	@SuppressWarnings("rawtypes")
 	public ArrayList contents;
 	
+	public ChestGenHooksChestReplacer(String aCategory) {this(aCategory, (short)32745);}
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public ChestGenHooksChestReplacer(String aCategory) {
+	public ChestGenHooksChestReplacer(String aCategory, long aChestID) {
 		super(aCategory);
 		mCategory = aCategory;
+		mChestID = (short)aChestID;
 		mHookToReplaceChestsOf = ChestGenHooks.getInfo(aCategory);
 		super.setMin(mHookToReplaceChestsOf.getMin());
 		super.setMax(mHookToReplaceChestsOf.getMax());
@@ -71,7 +74,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	public WeightedRandomChestContent[] getItems(Random aRandom) {
 		WeightedRandomChestContent[] rReturn = mHookToReplaceChestsOf.getItems(aRandom);
 		if (GAPI.mStartedServerStarted < 1 || aRandom == RNGSUS) return rReturn;
-		for (int i = 0; i < rReturn.length; i++) rReturn[i] = new WeightedRandomChestContentChestReplacer(rReturn[i], mCategory);
+		for (int i = 0; i < rReturn.length; i++) rReturn[i] = new WeightedRandomChestContentChestReplacer(rReturn[i], mCategory, mChestID);
 		return rReturn;
 	}
 	
@@ -87,11 +90,13 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	public static class WeightedRandomChestContentChestReplacer extends WeightedRandomChestContent {
 		public final WeightedRandomChestContent mContent;
 		public final String mCategory;
+		public final short mChestID;
 		
-		public WeightedRandomChestContentChestReplacer(WeightedRandomChestContent aContent, String aCategory) {
+		public WeightedRandomChestContentChestReplacer(WeightedRandomChestContent aContent, String aCategory, short aChestID) {
 			super(aContent.theItemId, aContent.theMinimumChanceToGenerateItem, aContent.theMaximumChanceToGenerateItem, aContent.itemWeight);
 			mCategory = aCategory;
 			mContent = aContent;
+			mChestID = aChestID;
 		}
 		
 		@Override
@@ -114,7 +119,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 			// Erase it again just to fucking make sure!
 			aWorld.setBlock(aX, aY, aZ, NB, 0, 1);
 			// Place the better Loot Chest.
-			tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32745, UT.NBT.make(NBT_FACING, tFacing, "gt.dungeonloot", mCategory), F, T);
+			tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, tFacing, "gt.dungeonloot", mCategory), F, T);
 			// Loot wont need to be generated anymore in that case.
 			return ZL_IS;
 		}

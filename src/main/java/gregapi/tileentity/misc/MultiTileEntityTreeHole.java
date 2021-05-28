@@ -59,9 +59,8 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		super.writeItemNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mHasResin);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	@Override

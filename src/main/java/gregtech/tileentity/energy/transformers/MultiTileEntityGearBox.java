@@ -81,9 +81,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		super.writeItemNBT2(aNBT);
 		aNBT.setByte(NBT_CONNECTION, (byte)mAxleGear);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	static {

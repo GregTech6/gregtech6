@@ -259,13 +259,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		super.writeItemNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_IN, mDisabledItemInput);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_OUT, mDisabledItemOutput);
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_IN, mDisabledFluidInput);
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_OUT, mDisabledFluidOutput);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	@Override

@@ -111,6 +111,13 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	}
 	
 	@Override
+	public NBTTagCompound writeItemNBT(NBTTagCompound aNBT) {
+		aNBT = super.writeItemNBT(aNBT);
+		if (UT.Code.stringValid(mDungeonLootName)) aNBT.setString("gt.dungeonloot", mDungeonLootName);
+		return aNBT;
+	}
+	
+	@Override
 	public boolean onTickCheck(long aTimer) {
 		return mUsingPlayers != oUsingPlayers || super.onTickCheck(aTimer);
 	}
@@ -171,13 +178,13 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 		}
 		return T;
 	}
-	
-	@Override
-	public boolean breakBlock() {
-		// Only auto-generate Loot if a second has passed since its original placement. Prevents Item spillage during Worldgen in most cases.
-		if (mTimer > 20) generateDungeonLoot();
-		return super.breakBlock();
-	}
+	// No longer generate Loot when harvested, instead pick up the Chest including the Loot it contains!
+	//@Override
+	//public boolean breakBlock() {
+	//  // Only auto-generate Loot if a second has passed since its original placement. Prevents Item spillage during Worldgen in most cases.
+	//  if (mTimer > 20) generateDungeonLoot();
+	//  return super.breakBlock();
+	//}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.chest";}
@@ -206,7 +213,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (UT.Code.stringValid(mDungeonLootName)) aList.add(LH.Chat.GRAY + "Dungeon Loot: " + LH.Chat.CYAN + mDungeonLootName);
+		if (UT.Code.stringValid(mDungeonLootName)) aList.add(LH.Chat.BLINKING_CYAN + "Contains Loot of " + LH.Chat.WHITE + LH.get("loot." + mDungeonLootName));
 	}
 	
 	@Override public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {mUsingPlayers = aData; return T;}

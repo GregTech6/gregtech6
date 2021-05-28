@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -82,11 +82,10 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		super.writeItemNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMED, mFoam);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMDRIED, mFoamDried);
 		UT.NBT.setBoolean(aNBT, NBT_OWNABLE, mOwnable);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	@Override
