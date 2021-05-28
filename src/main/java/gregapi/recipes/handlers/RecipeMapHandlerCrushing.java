@@ -150,7 +150,8 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			for (OreDictMaterial tMaterial : aData.mMaterial.mMaterial.mTargetedCrushing) if (tMaterial.mID > 0 && tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreRaw.isGeneratingItem(aData.mMaterial.mMaterial)) {
 				if (BlocksGT.ore       != null) if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore      , 1, tMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
 				if (BlocksGT.oreBroken != null) if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
-				if (addRecipesUsing(aMap, aNEI, OP.oreRaw.mat(tMaterial, 1), OP.oreRaw.dat(tMaterial))) temp = T;
+				if (addRecipesUsing(aMap, aNEI, OP.oreRaw  .mat(tMaterial, 1), OP.oreRaw  .dat(tMaterial))) temp = T;
+				if (addRecipesUsing(aMap, aNEI, OP.blockRaw.mat(tMaterial, 1), OP.blockRaw.dat(tMaterial))) temp = T;
 			}
 			return temp;
 		}
