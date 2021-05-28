@@ -124,7 +124,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 			}
 		}
 		sPrefixes.put(mNameInternal, this);
-		addFamiliarPrefix(this);
+		mFamiliarPrefixes.add(this);
 	}
 	
 	public static OreDictPrefix get(String aOre) {
@@ -151,6 +151,9 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	public OreDictPrefix addFamiliarPrefix(OreDictPrefix aPrefix) {
 		mFamiliarPrefixes.add(aPrefix);
 		return this;
+	}
+	public OreDictPrefix addFamiliarPrefixWithReversal(OreDictPrefix aPrefix) {
+		return addFamiliarPrefix(aPrefix.addFamiliarPrefix(this));
 	}
 	
 	/** The Re-Registration for the Ore Dictionary for invalid Prefixes */

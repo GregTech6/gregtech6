@@ -390,6 +390,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(crushedPurifiedTiny             , 9, NF,  16,16,     0, NF, crushedPurified         , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny          , 9, NF,  16,16,     0, NF, crushedCentrifuged      , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(oreRaw                      , rawOreChunk               , 3, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushed                     , crushedTiny               , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedPurified             , crushedPurifiedTiny       , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedCentrifuged          , crushedCentrifugedTiny    , 9, F));
@@ -408,6 +409,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(blockPlate                  , plate                     , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(blockPlateGem               , plateGem                  , 9, F));
 		
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(rawOreChunk             ,  3, oreRaw                    , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedTiny             ,  9, crushed                   , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedPurifiedTiny     ,  9, crushedPurified           , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedCentrifugedTiny  ,  9, crushedCentrifuged        , 1, F));
