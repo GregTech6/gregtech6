@@ -363,14 +363,16 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
 			OM.data(MD.BP, "tiles", 1, 0, MT.STONES.Marble, U2, MT.STONES.Basalt, U2);
 			
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"     , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore" , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore" , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "silver_ore"   , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "teslatite_ore", null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore" , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"     , null));
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"   , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"      , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore"  , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore"  , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "silver_ore"    , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "teslatite_ore" , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore"  , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"      , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"    , null));
+			// That should replace that stupid Tungsten Block in Volcanoes
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_block", null));
 			
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "ruby_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Ruby));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "sapphire_ore" , 1, 0), OP.oreVanillastone.dat(MT.BlueSapphire));

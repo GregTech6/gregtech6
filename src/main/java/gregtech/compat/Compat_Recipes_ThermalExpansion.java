@@ -154,8 +154,6 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 			OUT.println("GT_Mod: Doing Thermal Expansion Recipes.");
 			
 			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Pb    .liquid(U2, T), NF, IL.TE_ObsidiGlass.get(1));
-			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Pb    .liquid(U2, T), NF, IL.TE_ObsidiGlass.get(1));
-			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Lumium.liquid(U2, T), NF, IL.TE_LumiumGlass.get(1));
 			RM.Mixer            .addRecipe1(T, 16,   16, OP.dust.mat(MT.Obsidian, 2), MT.Lumium.liquid(U2, T), NF, IL.TE_LumiumGlass.get(1));
 			
 			for (FluidStack tEnder : FL.array(FL.Ender.make(L), FL.Ender_TE.make(250))) {
