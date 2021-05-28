@@ -60,8 +60,10 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			} else {
 				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
 			}
+		} else if (aData.mPrefix == blockRaw) {
+				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier * 2; // Multiply by 2, but fill out 4.5 times more Slots
 		} else {
-				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
+			    aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
 		}
 		if (aData.mPrefix == orePoor) {
 			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));
@@ -81,45 +83,47 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 		int i = 1, tDuration = 128*tOutputs[0].stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1);
 		tChances[i  ] = 10000;
 		tOutputs[i++] = tOutputs[0];
+		if (aData.mPrefix == blockRaw) {
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tChances[i  ] = 10000;
+			tOutputs[i++] = tOutputs[0];
+			tDuration *= 9;
+			tDuration /= 2;
+		}
 		if (aData.mPrefix.contains(TD.Prefix.DENSE_ORE)) {
 			tChances[i  ] = 10000;
 			tOutputs[i++] = tOutputs[0];
 			tChances[i  ] = 10000;
 			tOutputs[i++] = tOutputs[0];
 			tDuration *= 2;
-			
-			if (aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
-				tChances[i  ] += 5000;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Hg)) {
-				tChances[i  ] += 2000;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.OREMATS.Cinnabar)) {
-				tChances[i  ] += 1000;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Redstone)) {
-				tChances[i  ] += 1000;
-			}
-			if (tChances[i  ] > 0) {
-				tOutputs[i++] = OP.gem.mat(MT.OREMATS.Cinnabar, 1);
-			}
-		} else {
-			if (aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
-				tChances[i  ] += 2500;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Hg)) {
-				tChances[i  ] += 1000;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.OREMATS.Cinnabar)) {
-				tChances[i  ] +=  500;
-			}
-			if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Redstone)) {
-				tChances[i  ] +=  500;
-			}
-			if (tChances[i  ] > 0) {
-				tOutputs[i++] = OP.gem.mat(MT.OREMATS.Cinnabar, 1);
-			}
 		}
+		if (aData.mMaterial.mMaterial.contains(TD.Processing.PULVERIZING_CINNABAR)) {
+			tChances[i  ] += 2500;
+		}
+		if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Hg)) {
+			tChances[i  ] += 1000;
+		}
+		if (aData.mMaterial.mMaterial.mByProducts.contains(MT.OREMATS.Cinnabar)) {
+			tChances[i  ] +=  500;
+		}
+		if (aData.mMaterial.mMaterial.mByProducts.contains(MT.Redstone)) {
+			tChances[i  ] +=  500;
+		}
+		if (tChances[i  ] > 0) {
+			tOutputs[i++] = OP.gem.mat(MT.OREMATS.Cinnabar, aData.mPrefix == blockRaw ? 9 : aData.mPrefix.contains(TD.Prefix.DENSE_ORE) ? 2 : 1);
+		}
+		
 		for (OreDictMaterialStack tMaterial : aData.mPrefix.mByProducts) {
 			tDuration += UT.Code.units(tMaterial.mAmount, U, 64*Math.max(1, tMaterial.mMaterial.mToolQuality+1), T);
 			if (i < tOutputs.length) {

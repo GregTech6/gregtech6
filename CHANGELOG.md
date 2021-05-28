@@ -30,6 +30,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
+[CHANGED] The Crusher now has 12 Output Slots instead of 6. Because the Block of Raw Ore can be crushed now, and that means more throughput is needed.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] Asbestos now has Jade as a Byproduct, making Fortune III Tools more available.
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.

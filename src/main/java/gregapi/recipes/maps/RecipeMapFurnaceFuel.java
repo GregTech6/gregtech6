@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 
 import gregapi.data.FL;
+import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterialStack;
@@ -56,11 +57,16 @@ public class RecipeMapFurnaceFuel extends RecipeMap {
 				if (tContainer == null) {
 					OreDictMaterialStack tMaterial = null;
 					if (tData != null) {
-						for (OreDictMaterialStack aMaterial : tData.getAllMaterialStacks()) {
-							if (tMaterial == null || tMaterial.mAmount <= 0)
+						if (tData.mPrefix == OP.oreRaw) {
+							tMaterial = OM.stack(tData.mMaterial.mMaterial.mTargetBurning.mMaterial, tData.mMaterial.mMaterial.mTargetBurning.mAmount * tData.mMaterial.mMaterial.mOreMultiplier * tData.mMaterial.mMaterial.mOreProcessingMultiplier * 2);
+						} else if (tData.mPrefix == OP.blockRaw) {
+							tMaterial = OM.stack(tData.mMaterial.mMaterial.mTargetBurning.mMaterial, tData.mMaterial.mMaterial.mTargetBurning.mAmount * tData.mMaterial.mMaterial.mOreMultiplier * tData.mMaterial.mMaterial.mOreProcessingMultiplier * 20);
+						} else for (OreDictMaterialStack aMaterial : tData.getAllMaterialStacks()) {
+							if (tMaterial == null || tMaterial.mAmount <= 0) {
 								tMaterial = OM.stack(aMaterial.mMaterial.mTargetBurning.mMaterial, UT.Code.units(aMaterial.mAmount, U, aMaterial.mMaterial.mTargetBurning.mAmount, F));
-							else if (tMaterial.mMaterial == aMaterial.mMaterial.mTargetBurning.mMaterial)
+							} else if (tMaterial.mMaterial == aMaterial.mMaterial.mTargetBurning.mMaterial) {
 								tMaterial.mAmount += UT.Code.units(aMaterial.mAmount, U, aMaterial.mMaterial.mTargetBurning.mAmount, F);
+							}
 						}
 					}
 					rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(OM.dust(tMaterial)), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
