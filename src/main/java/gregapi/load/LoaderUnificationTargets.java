@@ -413,6 +413,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.S                      , MD.MIN, "sulfur_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Niter                  , MD.MIN, "nitrate_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.ChargedCertusQuartz    , MD.AE, "item.ItemMultiMaterial", 1);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.ChargedCertusQuartz    , MD.AE, "tile.OreQuartzCharged" , 1);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.CertusQuartz           , MD.AE, "tile.OreQuartz"        , 1);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Draconium              , MD.DE, "draconiumDust", 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Draconium              , MD.DE, "nugget", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Draconium              , MD.DE, "draconiumIngot", 0);

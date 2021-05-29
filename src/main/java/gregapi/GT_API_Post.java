@@ -400,12 +400,6 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TritaniumAlloy          , MD.MO, "tritanium_plate"  , 0);
 		}
 		
-		// So why does AE do this to SOME things but not others...
-		if (MD.AE.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.CertusQuartz       , MD.AE, "tile.oreQuartz"       , 1);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.ChargedCertusQuartz, MD.AE, "tile.oreQuartzCharged", 1);
-		}
-		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
 			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TE, "Glass", 1, W));
