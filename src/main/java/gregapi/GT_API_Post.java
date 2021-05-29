@@ -165,20 +165,10 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.FakeOsmium.addOreByProducts(MT.Ardite);
 			MT.Aredrite.addOreByProducts(MT.Ardite);
 		}
-		if (MD.RP.mLoaded) {
+		if (MD.RP.mLoaded || MD.PR.mLoaded || MD.BP.mLoaded) {
 			MT.Azurite.addOreByProducts(MT.Nikolite);
 			MT.Monazite.addOreByProducts(MT.Nikolite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Nikolite);
-		}
-		if (MD.PR.mLoaded) {
-			MT.Azurite.addOreByProducts(MT.Electrotine);
-			MT.Monazite.addOreByProducts(MT.Electrotine);
-			MT.OREMATS.Bastnasite.addOreByProducts(MT.Electrotine);
-		}
-		if (MD.BP.mLoaded) {
-			MT.Azurite.addOreByProducts(MT.Teslatite);
-			MT.Monazite.addOreByProducts(MT.Teslatite);
-			MT.OREMATS.Bastnasite.addOreByProducts(MT.Teslatite);
 		}
 		if (MD.BR.mLoaded) {
 			MT.Th.addOreByProducts(MT.Cyanite);
@@ -302,7 +292,7 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.PR.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.PR, "projectred.core.part", 10);
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , MD.PR, "projectred.core.part", 55);
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Electrotine                , MD.PR, "projectred.core.part", 56);
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.PR, "projectred.core.part", 56);
 			
 			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
 			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
@@ -325,7 +315,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 3), OP.oreVanillastone.dat(MT.Cu));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 4), OP.oreVanillastone.dat(MT.Sn));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 5), OP.oreVanillastone.dat(MT.Ag));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Electrotine));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Nikolite));
 		}
 		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
@@ -333,7 +323,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.BP, "red_alloy_ingot", 0);
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.BlueAlloy                  , MD.BP, "blue_alloy_ingot", 0);
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.PurpleAlloy                , MD.BP, "purple_alloy_ingot", 0);
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Teslatite                  , MD.BP, "teslatite_dust", 0);
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.BP, "teslatite_dust", 0);
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , MD.BP, "infused_teslatite_dust", 0);
 			
 			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
@@ -371,14 +361,12 @@ public class GT_API_Post extends Abstract_Mod {
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore"  , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"      , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"    , null));
-			// That should replace that stupid Tungsten Block in Volcanoes
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_block", null));
 			
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "ruby_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Ruby));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "sapphire_ore" , 1, 0), OP.oreVanillastone.dat(MT.BlueSapphire));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "amethyst_ore" , 1, 0), OP.oreVanillastone.dat(MT.Amethyst));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "silver_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Ag));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "teslatite_ore", 1, 0), OP.oreVanillastone.dat(MT.Teslatite));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "teslatite_ore", 1, 0), OP.oreVanillastone.dat(MT.Nikolite));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "tungsten_ore" , 1, 0), OP.oreVanillastone.dat(MT.OREMATS.Tungstate));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "zinc_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Zn));
 			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "copper_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Cu));

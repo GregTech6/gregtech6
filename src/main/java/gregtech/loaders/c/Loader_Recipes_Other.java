@@ -97,10 +97,6 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone   , 5*U9), OM.dust(MT.EnergiumRed ,   U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Nikolite   , 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Nikolite   , 5*U9), OM.dust(MT.EnergiumCyan,   U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Teslatite  , 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Teslatite  , 5*U9), OM.dust(MT.EnergiumCyan,   U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Electrotine, 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Electrotine, 5*U9), OM.dust(MT.EnergiumCyan,   U));
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
@@ -388,7 +384,7 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(x = dust.mat(MT.Fe, 1), x, y);
 		CR.remove(dust.mat(MT.Au, 1), dust.mat(MT.Ag, 1));
 		CR.remove(x = dust.mat(MT.Clay, 1), x, dust.mat(MT.PotassiumFeldspar, 1), dust.mat(MT.SiO2, 1));
-		CR.remove(dust.mat(MT.Redstone, 1), dust.mat(MT.Teslatite, 1));
+		CR.remove(dust.mat(MT.Redstone, 1), dust.mat(MT.Nikolite, 1));
 		
 		//----------------------------------------------------------------------------
 		
@@ -635,12 +631,10 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Ge             ,  U9), FL.array(       tFluid    , MT.Ge            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Ge              , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), FL.array(       tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), FL.array(       tFluid    , MT.NikolineAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.NikolineAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy ,  U9), FL.array(       tFluid    , MT.TeslatineAlloy.liquid(35*U9, T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), FL.array(FL.mul(tFluid, 9), MT.Si            .liquid(35*U , T)), NF, bouleGt.mat(MT.Si              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Ge                  ), FL.array(FL.mul(tFluid, 9), MT.Ge            .liquid(35*U , T)), NF, bouleGt.mat(MT.Ge              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), FL.array(FL.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), FL.array(FL.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.NikolineAlloy   , 9));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), FL.array(FL.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U , T)), NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
 			
 			RM.CrystallisationCrucible.addRecipe1(T,256,  18000, OM.dust(MT.Al2O3          ,  U9), FL.array(       tFluid    , MT.Al2O3         .liquid(29*U9, T)), NF, bouleGt.mat(MT.Sapphire        , 1));
 			RM.CrystallisationCrucible.addRecipe1(T,256, 156000, OM.dust(MT.Al2O3               ), FL.array(FL.mul(tFluid, 9), MT.Al2O3         .liquid(29*U , T)), NF, bouleGt.mat(MT.Sapphire        , 9));

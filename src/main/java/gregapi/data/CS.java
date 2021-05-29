@@ -1489,9 +1489,12 @@ public class CS {
 		, LIQUEUR = new HashSetNoNulls<>()
 		, WHISKEY = new HashSetNoNulls<>()
 		;
-
+		
 		static {
 			SIMPLE.addAll(FOOD);
+			FLUID_RENAMINGS.put("molten.teslatite", "molten.nikolite");
+			FLUID_RENAMINGS.put("molten.electrotine", "molten.nikolite");
+			FLUID_RENAMINGS.put("molten.teslatinealloy", "molten.nikolinealloy");
 		}
 	}
 	

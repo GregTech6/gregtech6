@@ -517,8 +517,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , NF                                ,   0,   1, NF, MT.MilkyQuartz          , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.CertusQuartz           , NF                                ,   0,   1, NF, MT.MilkyQuartz          , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.ChargedCertusQuartz    , NF                                ,   0,   1, NF, MT.CertusQuartz         , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Teslatite              , NF                                ,   0,   1, NF, MT.Nikolite             , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Nikolite               , NF                                ,   0,   1, NF, MT.Teslatite            , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Redstonia              , NF                                ,   0,   1, NF, MT.Redstone             , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Palis                  , NF                                ,   0,   1, NF, MT.Lapis                , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.VoidCrystal            , NF                                ,   0,   1, NF, MT.Coal                 , NI, T, tConditionP));

@@ -1358,9 +1358,7 @@ public class MT {
 	
 	
 	Redstone                = redstone      ( 8333, "Redstone"              , SET_REDSTONE          , 200,   0,   0, 255, PULVERIZING_CINNABAR).lens(DYE_INDEX_Red)                                                                                                 .uumMcfg( 0, Pyrite         , 5*U, Hg               , 3*U, SiO2             , 1*U, Ruby             , 1*U)                                                  .aspects(TC.MACHINA, 1, TC.POTENTIA, 2).heat(500, 1500).qual(0),
-	Teslatite               = redstone      ( 8339, "Teslatite"             , SET_REDSTONE          ,  60, 180, 200, 255, MOLTEN).lens(DYE_INDEX_Cyan)                                                                                                              .uumMcfg( 0, Sodalite       , 5*U, Cu               , 3*U, SiO2             , 1*U, Ar               , 1*U)                                                  .aspects(TC.ELECTRUM, 2).heat(1500, 3000).qual(0),
-	Nikolite                = redstone      ( 8340, "Nikolite"              , SET_REDSTONE          ,  60, 180, 200, 255, MOLTEN).lens(DYE_INDEX_Cyan)                                                                                                              .uumMcfg( 0, Sodalite       , 5*U, Cu               , 3*U, SiO2             , 1*U, Ar               , 1*U)                                                  .aspects(TC.ELECTRUM, 2).heat(1500, 3000).qual(0),
-	Electrotine             = redstone      ( 8359, "Electrotine"           , SET_REDSTONE          ,  60, 160, 230, 255, MOLTEN).lens(DYE_INDEX_Cyan)                                                                                                              .uumMcfg( 0, Sodalite       , 5*U, Cu               , 3*U, SiO2             , 1*U, Ar               , 1*U)                                                  .aspects(TC.ELECTRUM, 2).heat(1500, 3000).qual(0),
+	Nikolite                = redstone      ( 8340, "Nikolite"              , SET_REDSTONE          ,  60, 180, 200, 255, MOLTEN, "Electrotine", "Teslatite").lens(DYE_INDEX_Cyan)                                                                                  .uumMcfg( 0, Sodalite       , 5*U, Cu               , 3*U, SiO2             , 1*U, Ar               , 1*U)                                                  .aspects(TC.ELECTRUM, 2).heat(1500, 3000).qual(0),
 	
 	
 	Glowstone               = glowstone     ( 8341, "Glowstone"             , SET_REDSTONE          , 255, 255,   0, 255)                                                                                                                                           .uumMcfg( 0, Phosphorite    , 5*U, Au               , 3*U, SiO2             , 1*U, He               , 1*U)                                                  .aspects(TC.LUX, 2, TC.SENSUS, 1).heat(500, 600),
@@ -1407,7 +1405,7 @@ public class MT {
 	
 	
 	EnergiumRed             = crystalcent   ( 8298, "EnergiumRed"           , SET_DIAMOND           , 255,   0,   0, 255, CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, Sapphire       , 4*U, Redstone         , 5*U)                                                                                                  .aspects(TC.LUX, 2, TC.POTENTIA, 2).setLocal("Red Energium"),
-	EnergiumCyan            = crystalcent   ( 8299, "EnergiumCyan"          , SET_DIAMOND           ,   0, 255, 255, 255, CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, Sapphire       , 4*U, Teslatite        , 5*U)                                                                                                  .aspects(TC.LUX, 2, TC.POTENTIA, 4).setLocal("Cyan Energium"),
+	EnergiumCyan            = crystalcent   ( 8299, "EnergiumCyan"          , SET_DIAMOND           ,   0, 255, 255, 255, CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, Sapphire       , 4*U, Nikolite         , 5*U)                                                                                                  .aspects(TC.LUX, 2, TC.POTENTIA, 4).setLocal("Cyan Energium"),
 	
 	
 	InfusedDull             = crystal_tc    ( 8350, "Infused Dull"                                  , 100, 100, 100, DYE_INDEX_Gray        )                                                                                                                                                                                                                                                                                    .aspects(TC.PRAECANTIO, 1, TC.VACUOS  , 2).qual(3, 32.0,   64,  3),
@@ -1545,10 +1543,12 @@ public class MT {
 	Ta4HfC5                 = alloymachine  ( 8802, "Tantalum Hafnium Carbide"                      ,  32, 128,  32     , UNBURNABLE)                                                                                                                               .uumAloy( 0, Ta             , 4*U, Hf               , 1*U, C                , 5*U)                                                                          .aspects(TC.METALLUM, 2, TC.GELUM, 2).qual(2).heat(4263),
 	
 	
-	ElectrotineAlloy        = alloy         ( 8658, "Electrotine Alloy"     , SET_DULL              , 100, 180, 255     , MORTAR, WIRES, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                          .uumAloy( 1, WroughtIron    , 1*U, Electrotine      , 8*U)                                                                                                  .aspects(TC.ELECTRUM, 3).heat(1400, Fe.mBoilingPoint),
 	RedAlloy                = alloy         ( 8660, "Red Alloy"             , SET_DULL              , 200,   0,   0     , MORTAR, WIRES, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                          .uumAloy( 1, Cu             , 1*U, Redstone         , 4*U)                                                                                                  .aspects(TC.MACHINA, 3).heat(1400, Cu.mBoilingPoint),
 	BlueAlloy               = alloy         ( 8659, "Blue Alloy"            , SET_DULL              , 100, 180, 255     , MORTAR, WIRES, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                          .uumAloy( 1, Ag             , 1*U, Nikolite         , 4*U)                                                                                                  .aspects(TC.ELECTRUM, 3).heat(1400, Ag.mBoilingPoint),
 	PurpleAlloy             = alloy         ( 8657, "Purple Alloy"          , SET_DULL              , 255, 120, 255     , MORTAR, WIRES, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                          .uumAloy( 1, RedAlloy       , 1*U, BlueAlloy        , 1*U)                                                                                                  .aspects(TC.MACHINA, 3, TC.ELECTRUM, 3).heat(1400, Ag.mBoilingPoint),
+	RedstoneAlloy           = alloy         ( 8733, "Redstone Alloy"                                , 140,  50,  50     , MOLTEN)                                                                                                                                   .uumAloy( 1, Si             , 1*U, Redstone         , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.MACHINA, 1).setOriginalMod(MD.EIO).setPriorityPrefix(5),
+	NikolineAlloy           = alloy         ( 8737, "Nikoline Alloy"                                ,  50,  90, 140     , MOLTEN, "TeslatineAlloy")                                                                                                                 .uumAloy( 1, Si             , 1*U, Nikolite         , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.POTENTIA, 1).setPriorityPrefix(5),
+	ElectrotineAlloy        = alloy         ( 8658, "Electrotine Alloy"     , SET_DULL              , 100, 180, 255     , MORTAR, WIRES, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                          .uumAloy( 1, WroughtIron    , 1*U, Nikolite         , 8*U)                                                                                                  .aspects(TC.ELECTRUM, 3).heat(1400, Fe.mBoilingPoint),
 	Invar                   = alloymachine  ( 8661, "Invar"                                         , 220, 220, 150     , MORTAR, MAGNETIC_PASSIVE, MOLTEN).qual(3,  6.0,    256,  2)                                                                               .uumAloy( 0, WroughtIron    , 2*U, Ni               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.GELUM, 1),
 	Constantan              = alloymachine  ( 8662, "Constantan"                                    , 227, 150, 128     , MORTAR, MAGNETIC_PASSIVE, MOLTEN, "Cupronickel").qual(3,  6.0,  64,  1)                                                                   .uumAloy( 0, Cu             , 1*U, Ni               , 1*U)                                                                                                  , Cupronickel = Constantan,
 	Nichrome                = alloymachine  ( 8663, "Nichrome"                                      , 205, 206, 246     , MOLTEN).qual(3,  6.0,   64,  2)                                                                                                           .uumAloy( 0, Ni             , 4*U, Cr               , 1*U)                                                                                                  ,
@@ -1602,9 +1602,6 @@ public class MT {
 	ElectricalSteel         = alloy         ( 8730, "Electrical Steel"                              , 140, 140, 140     , MAGNETIC_PASSIVE).qual(Steel)                                                                                                             .uumAloy( 1, Steel          , 1*U, Si               , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ELECTRUM, 1).setOriginalMod(MD.EIO),
 	ObsidianSteel           = alloy         ( 8731, "Obsidian Steel"                                ,  60,  60,  60     , MAGNETIC_PASSIVE, RAILS, UNBURNABLE, "DarkSteel").qual(Steel)                                                                             .setAloy( 1, Steel          , 1*U, Obsidian         , 9*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.TENEBRAE, 1).setOriginalMod(MD.TG),
 	Soularium               = alloy         ( 8732, "Soularium"             , SET_DULL              ,  90,  70,  50     ).qual(Au)                                                                                                                                  .setAloy( 1, SoulSand       , 1*U, Au               , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.SPIRITUS, 1).setOriginalMod(MD.EIO),
-	RedstoneAlloy           = alloy         ( 8733, "Redstone Alloy"                                , 140,  50,  50     , MOLTEN)                                                                                                                                   .uumAloy( 1, Si             , 1*U, Redstone         , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.MACHINA, 1).setOriginalMod(MD.EIO).setPriorityPrefix(5),
-	NikolineAlloy           = alloy         ( 8737, "Nikoline Alloy"                                ,  50,  90, 140     , MOLTEN)                                                                                                                                   .uumAloy( 1, Si             , 1*U, Nikolite         , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.POTENTIA, 1).setPriorityPrefix(5),
-	TeslatineAlloy          = alloy         ( 8738, "Teslatine Alloy"                               ,  50,  90, 140     , MOLTEN)                                                                                                                                   .uumAloy( 1, Si             , 1*U, Teslatite        , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.POTENTIA, 1).setPriorityPrefix(5),
 	SpectreIron             = slloymachine_ ( 8734, "Spectre Iron"                                  , 150, 200, 200, 200, MAGNETIC_PASSIVE, MAGICAL, MOLTEN, GLOWING).qual(3,  8.5, 768, 2)                                                                         .setAloy( 1, WroughtIron    , 1*U, Ectoplasm        , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.SPIRITUS, 3).heat(Fe),
 	Manasteel               = slloymachine  ( 8720, "Manasteel"                                     , 110, 200, 250     , MAGICAL)                                                                                                                                                                                                                                                                                              .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).steal(Steel).qual(3, 12.0, 256, 3).heat(Fe.mMeltingPoint+ 500, Fe.mBoilingPoint+1000),
 	Terrasteel              = slloymachine  ( 8721, "Terrasteel"                                    , 110, 200,  50     , MAGICAL, UNBURNABLE)                                                                                                                                                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).steal(Steel).qual(3, 16.0,2048, 4).heat(Fe.mMeltingPoint+ 750, Fe.mBoilingPoint+1500),
@@ -1686,7 +1683,7 @@ public class MT {
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
-	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3, Fluorite = CaF2, Soapstone = Talc, WoodSealed = WoodTreated;
+	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3, Fluorite = CaF2, Soapstone = Talc, WoodSealed = WoodTreated, TeslatineAlloy = NikolineAlloy, Teslatite = Nikolite, Electrotine = Nikolite;
 	
 	/** Moved most Stones to their own Class. */
 	@Deprecated public static final OreDictMaterial 
@@ -1747,6 +1744,13 @@ public class MT {
 			OreDictMaterial.MATERIAL_ARRAY[9142] = Asbestos;
 			OreDictMaterial.MATERIAL_ARRAY[9121] = MgCO3;
 			OreDictMaterial.MATERIAL_ARRAY[9168] = Talc;
+			
+			OreDictMaterial.MATERIAL_ARRAY[8738] = NikolineAlloy;
+			OreDictMaterial.MATERIAL_ARRAY[8339] = Nikolite;
+			OreDictMaterial.MATERIAL_ARRAY[8359] = Nikolite;
+			
+			
+			
 			
 			Ad                      .visDefault(Adamantine);
 			
@@ -2311,16 +2315,13 @@ public class MT {
 			RedAlloy                .put(MD.RP);
 			Nikolite                .put(MD.RP, COMMON_ORE).visDefault();
 			NikolineAlloy           .put(MD.RP).visDefault(Nikolite);
-			BlueAlloy               .put(MD.RP).visDefault(Nikolite, Teslatite);
+			BlueAlloy               .put(MD.RP).visDefault(Nikolite);
 			
 			
-			Electrotine             .put(MD.PR, COMMON_ORE).visDefault();
-			ElectrotineAlloy        .put(MD.PR).visDefault(Electrotine);
+			ElectrotineAlloy        .put(MD.PR).visDefault(Nikolite);
 			
 			
-			Teslatite               .put(MD.BP, COMMON_ORE).visDefault();
-			TeslatineAlloy          .put(MD.BP).visDefault(Teslatite);
-			PurpleAlloy             .put(MD.BP).visDefault(Teslatite, Nikolite);
+			PurpleAlloy             .put(MD.BP).visDefault(Nikolite);
 			
 			
 			Pb                      .put(MD.FZ, COMMON_ORE);
@@ -2743,8 +2744,6 @@ public class MT {
 			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar          , RareEarth                 , Glowstone             );
 			Nikolite                        .addOreByProducts(Cu                        , RareEarth                 );
-			Teslatite                       .addOreByProducts(Cu                        , RareEarth                 );
-			Electrotine                     .addOreByProducts(Cu                        , RareEarth                 );
 			
 			Re                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Molybdenite       );
 			Os                              .addOreByProducts(Ir                        , Pt                        , Ru                    );
@@ -2958,7 +2957,6 @@ public class MT {
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(MeteoricSteel                 , 1*U), OM.stack(Lava               , 9*U)));
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Steel                         , 1*U), OM.stack(Lava               , 9*U)));
 			Alumite                 .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Al                            , 5*U), OM.stack(WroughtIron        , 2*U), OM.stack(Lava,18*U)));
-			BlueAlloy               .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Ag                            , 1*U), OM.stack(Teslatite          , 4*U)));
 			RedAlloy                .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(AnnealedCopper                , 1*U), OM.stack(Redstone           , 4*U)));
 			SterlingSilver          .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 4*U)));
 			RoseGold                .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Au                 , 4*U)));
@@ -3538,7 +3536,7 @@ public class MT {
 		Thyrium                     = unused    ("Thyrium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Zectium                     = unused    ("Zectium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Draconic                    = depricated("Draconic"                   ).setPriorityPrefix(2).put(G_DUST),
-		InfusedTeslatite            = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST), // 1 Redstone + 1 Teslatite = 1 Infused
+		InfusedTeslatite            = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST), // 1 Redstone + 1 Teslatite/Nikolite = 1 Infused
 		IrridantUranium             = unused    ("Irridant Uranium"           ).setPriorityPrefix(3).put(G_INGOT),
 		IrridantReinforced          = unused    ("IrridantReinforced"         ).setPriorityPrefix(3).put(G_INGOT),
 		IronSharp                   = unused    ("IronSharp"                  ).setPriorityPrefix(3).put(G_INGOT).setLocal("Sharp Iron"),

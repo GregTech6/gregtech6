@@ -581,7 +581,7 @@ public class OP {
 		gemChipped .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
 		gemFlawed  .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
 		gem        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
-		bouleGt    .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
+		bouleGt    .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy);
 		plateTiny  .forceItemGeneration(MT.Paper);
 		
 		for (OreDictMaterial tMat : ANY.Sapphire.mToThis) bouleGt.forceItemGeneration(tMat);

@@ -123,7 +123,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Shadow     .get(1), NF, FL.Honey.make(50), OM.dust(MT.Obsidian, U*4));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Energetic  .get(1), NF, FL.Honey.make(50), OM.dust(MT.Redstone, U*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500,  7500}                  , IL.BINNIE_Comb_Glowing    .get(1), NF, FL.Honey.make(30), OM.dust(MT.Glowstone, U), OM.dust(MT.Gloomstone, U));
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 2500,  2500,  2500}           , IL.BINNIE_Comb_Static     .get(1), NF, FL.Honey.make(50), OM.dust(MT.Nikolite, U*4), OM.dust(MT.Teslatite, U*4), OM.dust(MT.Electrotine, U*4));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Static     .get(1), NF, FL.Honey.make(50), OM.dust(MT.Nikolite, U*4));
 			
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 4000,  3000,  3000}           , IL.BINNIE_Comb_Certus     .get(1), NF, FL.Honey.make(20), OP.gem.mat(MT.CertusQuartz, 1), OP.gem.mat(MT.NetherQuartz, 1), OP.gem.mat(MT.MilkyQuartz, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Lapis      .get(1), NF, FL.Honey.make(20), OP.gem.mat(MT.Lapis, 9));

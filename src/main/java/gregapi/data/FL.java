@@ -554,9 +554,9 @@ public enum FL {
 	, Potion_Invisibility_1D    ("potion.invisibility.lingering"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
 	, Potion_Invisibility_1LD   ("potion.invisibility.long.lingering"                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
 	;
-
+	
 	public final String mName;
-
+	
 	private FL(String aName, Collection<String>... aFluidSets) {
 		mName = aName;
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName);}

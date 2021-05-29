@@ -45,7 +45,6 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 		CR.shaped(ST.make(MD.BP, "copper_wire"      , 1, 0), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.wireFine.dat(ANY.Cu));
 		CR.shaped(ST.make(MD.BP, "silicon_wafer"    , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(ANY.Si));
 		CR.shaped(ST.make(MD.BP, "red_doped_wafer"  , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
-		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.TeslatineAlloy));
 		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.NikolineAlloy));
 		
 		RM.biomass(ST.make(MD.BP, "indigo_flower", 16, 0));

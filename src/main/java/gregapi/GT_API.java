@@ -472,11 +472,9 @@ public class GT_API extends Abstract_Mod {
 			MT.Lubricant.setLocal("Lube");
 			MT.H2SO4.setLocal("Sulphuric Acid");
 			MT.H2S2O7.setLocal("Disulphuric Acid");
-			MT.Greenschist.setLocal("Green Shit");
-			MT.Blueschist.setLocal("Blue Shit");
+			MT.STONES.Greenschist.setLocal("Green Shit");
+			MT.STONES.Blueschist.setLocal("Blue Shit");
 			MT.Nikolite.setLocal("Bluestone");
-			MT.Teslatite.setLocal("Bluestone");
-			MT.Electrotine.setLocal("Bluestone");
 			MT.PigIron.setLocal("Ferrobacon");
 			MT.TinAlloy.setLocal("Tin*");
 			MT.Bronze.setLocal("Tinkerers Alloy");

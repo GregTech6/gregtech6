@@ -39,7 +39,6 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tCopper                 ,  3, "molten.zinc"           ,  1                                                            , "molten.brass"            ,  4);
 		mix(tCopper                 ,  1, "molten.aluminium"      ,  3                                                            , "molten.aluminiumbrass"   ,  4);
 		mix(tCopper                 ,  1, "molten.redstone"       ,  4                                                            , "molten.redalloy"         ,  1);
-		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  4, "molten.teslatite"      ,  4, "molten.purplealloy"      ,  2);
 		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  4, "molten.nikolite"       ,  4, "molten.purplealloy"      ,  2);
 		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.redstone"       , 10                              , "molten.signalum"         ,  4);
 		mix(tCopper                 ,  1, "molten.silver"         ,  2, "molten.redalloy"       ,  5                              , "molten.signalum"         ,  8);
@@ -53,7 +52,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tIron                   ,  6, "molten.nickel"         ,  1, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
 		mix(tIron                   ,  4, "molten.invar"          ,  3, "molten.chromium"       ,  1, "molten.manganese"      ,  1, "molten.stainlesssteel"   ,  9);
 		mix(tIron                   , 24, "molten.nichrome"       ,  5, "molten.chromium"       ,  3, "molten.manganese"      ,  4, "molten.stainlesssteel"   , 36);
-		mix(tIron                   ,  1, "molten.electrotine"    ,  8                                                            , "molten.electrotinealloy" ,  1);
+		mix(tIron                   ,  1, "molten.nikolite"       ,  8                                                            , "molten.electrotinealloy" ,  1);
 		}
 		for (String tSteel : new String[] {"molten.steel", "molten.meteoricsteel", "molten hsla", "molten.knightmetal"}) {
 		mix(tSteel                  ,  1, "molten.tungsten"       ,  1                                                            , "molten.tungstensteel"    ,  2);
@@ -61,12 +60,10 @@ public class Loader_Recipes_Alloys implements Runnable {
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {
 		mix("molten.tin"            ,  3, "molten.silver"         ,  1, "molten."+tMat.mNameInternal.toLowerCase(), 4             , "molten.lumium"           ,  4);
 		}
-		mix("molten.teslatite"      ,  4, "molten.silver"         ,  1                                                            , "molten.bluealloy"        ,  1);
 		mix("molten.nikolite"       ,  4, "molten.silver"         ,  1                                                            , "molten.bluealloy"        ,  1);
 		mix("molten.redalloy"       ,  1, "molten.bluealloy"      ,  1                                                            , "molten.purplealloy"      ,  1);
 		mix("molten.silicon"        ,  1, "molten.redstone"       ,  1                                                            , "molten.redstonealloy"    ,  1);
 		mix("molten.silicon"        ,  1, "molten.nikolite"       ,  1                                                            , "molten.nikolinealloy"    ,  1);
-		mix("molten.silicon"        ,  1, "molten.teslatite"      ,  1                                                            , "molten.teslatinealloy"   ,  1);
 		mix("molten.chromium"       ,  1, "molten.nickel"         ,  4                                                            , "molten.nichrome"         ,  5);
 		mix("molten.gold"           ,  4, "molten.ancientdebris"  ,  4                                                            , "molten.netherite"        ,  1);
 		mix("molten.gold"           ,  1, "molten.titanium"       ,  3                                                            , "molten.titaniumgold"     ,  4);

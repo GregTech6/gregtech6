@@ -27,6 +27,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
+[CHANGED] Eletrotine and Teslatite are now the same Material. I will name them both Nikolite by default, and they will be interchangeable between Blue Power and Project Red.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
