@@ -468,6 +468,8 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_forestry"      , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AETHER, "quicksoilGlass"            , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AETHER, "quicksoilGlassPane"        , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.AE, "tile.BlockQuartzGlass"         , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.AE, "tile.BlockQuartzLamp"          , null));
 		
 		
 		BlocksGT.instaharvest.add(ST.block(MD.NeLi, "EmptyLantern"                  , null));
@@ -524,6 +526,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "copperOre"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "tinOre"                          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "uraniumOre"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.AE, "tile.oreQuartz"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.AE, "tile.oreQuartzCharged"            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TG, "oreTitanIron"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BR, "YelloriteOre"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "gemOre"                          , null));

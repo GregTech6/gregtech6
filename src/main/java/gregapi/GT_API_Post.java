@@ -353,6 +353,9 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
 			OM.data(MD.BP, "tiles", 1, 0, MT.STONES.Marble, U2, MT.STONES.Basalt, U2);
 			
+			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BP, "sapphire_glass", 1, 0));
+			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BP, "reinforced_sapphire_glass", 1, 0));
+			
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"      , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore"  , null));
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore"  , null));
