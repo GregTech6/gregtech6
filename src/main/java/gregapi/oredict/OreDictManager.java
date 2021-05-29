@@ -499,7 +499,6 @@ public final class OreDictManager {
 	public boolean setTarget_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 		return setTarget_(aPrefix, aMaterial, aStack, T, F, T);
 	}
-
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, boolean aOverwrite, boolean aAlreadyRegistered) {
 		return setTarget(aPrefix, aMaterial, aStack, aOverwrite, aAlreadyRegistered, T);
 	}
