@@ -747,7 +747,7 @@ public class GT_API extends Abstract_Mod {
 				if (tMod.getModId().equalsIgnoreCase(MD.GAPI.mID)) tGregTech = tMod; else tNewModsList.add(tMod);
 			}
 			if (tGregTech != null) tNewModsList.add(0, tGregTech);
-			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
+			UT.Reflection.setFieldContent(tLoadController, "activeModList", tNewModsList);
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}

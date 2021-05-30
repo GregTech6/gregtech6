@@ -2436,7 +2436,7 @@ public class UT {
 			} catch (Throwable e) {/*Do nothing*/}
 			return rMethod;
 		}
-
+		
 		public static Method getMethod(Object aObject, String aMethod, Class<?>... aParameterTypes) {
 			Method rMethod = null;
 			try {
@@ -2445,7 +2445,7 @@ public class UT {
 			} catch (Throwable e) {/*Do nothing*/}
 			return rMethod;
 		}
-
+		
 		public static Field getField(Object aObject, String aField, boolean aPrivate, boolean aLogErrors) {
 			try {
 				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
@@ -2467,6 +2467,19 @@ public class UT {
 				if (aLogErrors) e.printStackTrace(ERR);
 			}
 			return null;
+		}
+		
+		public static boolean setFieldContent(Object aObject, String aField, Object aValue) {return setFieldContent(aObject, aField, aValue, T, T);}
+		public static boolean setFieldContent(Object aObject, String aField, Object aValue, boolean aPrivate, boolean aLogErrors) {
+			try {
+				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
+				if (aPrivate) tField.setAccessible(T);
+				tField.set(aObject instanceof Class || aObject instanceof String ? null : aObject, aValue);
+				return T;
+			} catch (Throwable e) {
+				if (aLogErrors) e.printStackTrace(ERR);
+			}
+			return F;
 		}
 		
 		public static Object callPublicMethod(Object aObject, String aMethod, Object... aParameters) {

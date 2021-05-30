@@ -34,6 +34,9 @@ import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import gregapi.util.UT;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 public class Compat_Recipes_Bluepower extends CompatMods {
 	public Compat_Recipes_Bluepower(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -58,5 +61,14 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 		RM.ic2_extractor(ST.make(MD.BP, "indigo_flower", 1, 0), ST.make(MD.BP, "indigo_dye", 1, 0));
 		
 		RM.sawing(64, 64, F, 1000, ST.make(MD.BP, "silicon_boule", 1, 0), ST.make(MD.BP, "silicon_wafer", 16, 0));
+		
+		try {
+			// Remove Tungsten Block from Volcanos
+			((Object[])UT.Reflection.getFieldContent("com.bluepowermod.world.WorldGenVolcano", "ALTAR_BLOCKS"))[3] = Blocks.gold_block;
+			// Make sure the Chest in those Volcanos cannot spawn any Tungsten Ingots.
+			UT.Reflection.setFieldContent("com.bluepowermod.init.BPItems", "tungsten_ingot", Items.gold_ingot);
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
 	}
 }

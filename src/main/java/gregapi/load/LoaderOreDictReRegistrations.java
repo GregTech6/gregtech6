@@ -224,6 +224,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockGranite"            , "stoneGranite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockDiorite"            , "stoneDiorite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAndesite"           , "stoneAndesite");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockNikolite"           , "blockDustNikolite");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockTeslatite"          , "blockDustTeslatite");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockElectrotine"        , "blockDustElectrotine");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockVinteum"            , "blockDustVinteum");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockVinteumPurified"    , "blockDustVinteumPurified");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockLapis"              , "blockGemLapis");

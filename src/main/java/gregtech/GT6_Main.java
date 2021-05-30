@@ -131,7 +131,7 @@ public class GT6_Main extends Abstract_Mod {
 				if (tMod.getModId().equalsIgnoreCase(MD.GT.mID)) tGregTech = tMod; else tNewModsList.add(tMod);
 			}
 			if (tGregTech != null) tNewModsList.add(tGregTech);
-			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
+			UT.Reflection.setFieldContent(tLoadController, "activeModList", tNewModsList);
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
