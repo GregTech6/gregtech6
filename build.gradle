@@ -230,9 +230,9 @@ dependencies {
 	compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
 	compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
 	
+	
 	// List of potentially useful mods that may or may not be linked in here:
 	//compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
-	// This one does not give any Sourcecode View!
 	//compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	//compileOnly "binnie:binnie-mods:1.7.10-2.0.22:dev"
 	//compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"

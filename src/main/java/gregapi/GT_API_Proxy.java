@@ -326,6 +326,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST    ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					
+					if (MD.IE.mLoaded) try {
+						for (WeightedRandomChestContent tContent : ((ChestGenHooks)UT.Reflection.getFieldContent("blusunrize.immersiveengineering.common.world.VillageEngineersHouse", "crateContents")).getItems(RNGSUS)) {
+							if (OM.is("ingotAluminium", tContent.theItemId)) {
+								ST.set(tContent.theItemId, OP.ingot.mat(MT.Brass, 1));
+							} else {
+								tStacks.add(tContent.theItemId);
+							}
+						}
+					} catch(Throwable e) {
+						e.printStackTrace(ERR);
+					}
+					
 					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 					
 					for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());
