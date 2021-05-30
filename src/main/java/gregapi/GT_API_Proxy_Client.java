@@ -37,6 +37,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import gregapi.api.Abstract_Mod;
 import gregapi.block.IBlockBase;
 import gregapi.block.ToolCompat;
+import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
 import gregapi.code.ArrayListNoNulls;
@@ -549,7 +550,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tNB) tArray[2] = UT.Code.bind8(tArray[2] - 1);
 			}
 			
-			
 			tNR = UT.Code.inside( 0,  9, (CLIENT_TIME/2) % 30); tNG = UT.Code.inside( 5, 14, (CLIENT_TIME/2) % 30); tNB = UT.Code.inside(10, 19, (CLIENT_TIME/2) % 30);
 			tPR = UT.Code.inside(10, 19, (CLIENT_TIME/2) % 30); tPG = UT.Code.inside(15, 24, (CLIENT_TIME/2) % 30); tPB = UT.Code.inside(20, 29, (CLIENT_TIME/2) % 30);
 			
@@ -565,10 +565,16 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			CLIENT_TIME++;
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
-		Block aBlock = aEvent.player.worldObj.getBlock(aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ);
+		Block
+		aBlock = ST.block(aEvent.player.getCurrentEquippedItem());
+		if (aBlock instanceof BlockMetaType && ((BlockMetaType)aBlock).mIsSlab) {
+			RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, (byte)0, (byte)aEvent.target.sideHit, aEvent.partialTicks);
+			return;
+		}
+		aBlock = aEvent.player.worldObj.getBlock(aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ);
 		TileEntity aTileEntity = WD.te(aEvent.player.worldObj, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, T);
 		if (!(aTileEntity instanceof ITileEntityOnDrawBlockHighlight) || !((ITileEntityOnDrawBlockHighlight)aTileEntity).onDrawBlockHighlight(aEvent)) {
 			if ((ROTATABLE_VANILLA_BLOCKS.contains(aBlock) || (ToolCompat.IC_WRENCHABLE && aTileEntity instanceof ic2.api.tile.IWrenchable)) && ST.valid(aEvent.currentItem) && ToolsGT.contains(TOOL_wrench, aEvent.currentItem)) {
@@ -577,6 +583,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-
+	
 	private static List<Block> ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper, Blocks.pumpkin, Blocks.lit_pumpkin);
 }
