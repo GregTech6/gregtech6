@@ -25,6 +25,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Item Filter Covers no longer go inbetween two Item Pipes, which was causing confusion as to why they are "not working" since you were able to place them in such a way.
 [FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.
 [FIXED] The Boxinator somehow did not have Recipes for Nugget->Ingot, Chunk->Ingot or Dust piling. This was a really big oversight.
+[FIXED] Bluepower Volcanos and Immersive Engineering Village Houses no longer let you skip to Tungsten and aluminium anymore.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.

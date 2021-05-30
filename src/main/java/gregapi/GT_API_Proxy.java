@@ -329,7 +329,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if (MD.IE.mLoaded) try {
 						for (WeightedRandomChestContent tContent : ((ChestGenHooks)UT.Reflection.getFieldContent("blusunrize.immersiveengineering.common.world.VillageEngineersHouse", "crateContents")).getItems(RNGSUS)) {
 							if (OM.is("ingotAluminium", tContent.theItemId)) {
-								ST.set(tContent.theItemId, OP.ingot.mat(MT.Brass, 1));
+								ST.set(tContent.theItemId, OP.ingot.mat(MT.Constantan, 1));
 							} else {
 								tStacks.add(tContent.theItemId);
 							}
