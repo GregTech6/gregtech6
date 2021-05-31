@@ -111,7 +111,11 @@ public class GT_Tool_Axe extends ToolStats {
 				LOCK = F;
 				for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH && rAmount <= aAvailableDurability; tY++) {
 					if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock && aPlayer.worldObj.func_147480_a(aX, tY, aZ, T)) {
-						if (FAST_LEAF_DECAY) WD.leafdecay(aPlayer.worldObj, aX, tY, aZ, null, T, T);
+						if (FAST_LEAF_DECAY) {
+							if (tY == aY+1)
+							WD.leafdecay(aPlayer.worldObj, aX, aY, aZ, null, T, T);
+							WD.leafdecay(aPlayer.worldObj, aX, tY, aZ, null, T, T);
+						}
 						rAmount+= ++tIncrement;
 					} else break;
 				}

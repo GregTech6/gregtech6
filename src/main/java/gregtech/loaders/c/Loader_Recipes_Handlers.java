@@ -324,6 +324,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Autoclave    .add(new RecipeMapHandlerPrefix(dust                            , 4, FL.Steam.make(  409600), 0,  12800, 0, FL.DistW.make(1920), gemExquisite           , 1, ST.tag(4), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		RM.Autoclave    .add(new RecipeMapHandlerPrefix(dust                            , 8, FL.Steam.make(  819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary           , 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		
+		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtWood                     , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtWood    .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtPlastic                  , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtPlastic .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtSmall                   , 1, NF,  16,16,     0, NF, round                   , 1, NI, bulletGtSmall  .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
@@ -356,6 +357,12 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushed                         , 1, NF,  16,16,     0, NF, crushedTiny             , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, NF,  16,16,     0, NF, crushedPurifiedTiny     , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, NF,  16,16,     0, NF, crushedCentrifugedTiny  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16,16,     0, NF, nugget                  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dust                            , 1, NF,  16,16,     0, NF, dustTiny                , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dustSmall                       , 1, NF,  16,16,     0, NF, dustDiv72               ,18, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dustTiny                        , 1, NF,  16,16,     0, NF, dustDiv72               , 8, NI, NI, F, F, F, ANTIMATTER.NOT));
+		
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(pipeMedium                      , 4, NF,  16,16,     0, NF, pipeQuadruple           , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(pipeSmall                       , 9, NF,  16,16,     0, NF, pipeNonuple             , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));

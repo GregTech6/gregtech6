@@ -18,7 +18,7 @@ Glowtus can now be chiseled into different Colors and GT6 Logs can now be chisel
 Witchery now has a little bit more Compat.
 The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Filter Blocks were kinda broken, so that needed a change. This may break your Setups in some cases.
-[FIXED] Bricks and nether Bricks were not palceable on the Floor like Ingots.
+[FIXED] Bricks and nether Bricks were not placeable on the Floor like Ingots.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
 [FIXED] The Cow Cooldown of Hunger Overhaul is now respected by Wooden Buckets.
 [FIXED] Burning Boxes and Basic Machines can no longer be rotated while they are lit or actively processing something.
@@ -26,7 +26,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.
 [FIXED] The Boxinator somehow did not have Recipes for Nugget->Ingot, Chunk->Ingot or Dust piling. This was a really big oversight.
 [FIXED] Bluepower Volcanos and Immersive Engineering Village Houses no longer let you skip to Tungsten and aluminium anymore.
-[CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories.
+[CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories, until they are home.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
 [CHANGED] Eletrotine and Teslatite are now the same Material. I will name them both Nikolite by default, and they will be interchangeable between Blue Power and Project Red.

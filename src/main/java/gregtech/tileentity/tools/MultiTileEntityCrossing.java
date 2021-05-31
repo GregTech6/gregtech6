@@ -112,7 +112,7 @@ public class MultiTileEntityCrossing extends TileEntityBase07Paintable implement
 	
 	@Override public float getSurfaceSize           (byte aSide) {return 0;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0;}
-	@Override public float getSurfaceDistance       (byte aSide) {return 0;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?PX_P[10]:0.0F;}
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
 	@Override public boolean isSideSolid2           (byte aSide) {return F;}

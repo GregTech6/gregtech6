@@ -143,6 +143,16 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 		return null;
 	}
 	
+	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
+	@Override public void updateItemStack(ItemStack aStack) {
+		if (mBlock.mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return;
+		int aMeta = ST.meta_(aStack);
+		if (UT.Code.exists(aMeta, mBlock.mMaterialList)) {
+			OreDictMaterial aMaterial = mBlock.mMaterialList[aMeta];
+			if (aMeta != aMaterial.mTargetRegistration.mID) ST.meta_(aStack, aMaterial.mTargetRegistration.mID);
+		}
+	}
+	
 	@Optional.Method(modid = ModIDs.BOTA) @Override public Block getBlockToPlaceByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {return null;}
 	@Optional.Method(modid = ModIDs.BOTA) @Override public void onBlockPlacedByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {/**/}
 	
@@ -150,8 +160,6 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
 	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
-	@Override public void updateItemStack(ItemStack aStack) {if (mBlock.mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return; int aMeta = ST.meta_(aStack); if (UT.Code.exists(aMeta, mBlock.mMaterialList)) {OreDictMaterial aMaterial = mBlock.mMaterialList[aMeta]; if (aMeta != aMaterial.mTargetRegistration.mID) ST.meta_(aStack, aMaterial.mTargetRegistration.mID);}}
-	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}

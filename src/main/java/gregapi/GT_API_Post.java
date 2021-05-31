@@ -288,36 +288,6 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.ATUM, "item.loot", 1,141, MT.Au  , 2*U, MT.Diamond       , 2*U);
 		}
 		
-		// And Project Red violates that Rule aswell...
-		if (MD.PR.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.PR, "projectred.core.part", 10);
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , MD.PR, "projectred.core.part", 55);
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.PR, "projectred.core.part", 56);
-			
-			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
-			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
-			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
-			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3));
-			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4));
-			for (int i = 0; i < 16; i++) {
-			OM.reg(DYE_OREDICTS_MIXABLE[i], ST.make(MD.PR_EXPLORATION, "projectred.exploration.lilyseed", 1, 15-i));
-			OM.data(MD.PR, "projectred.core.part", 1, i+19, ANY.Glowstone, 2*U);
-			}
-			OM.data(MD.PR, "projectred.core.part", 1, 16, ANY.Cu, U);
-			OM.data(MD.PR, "projectred.core.part", 1, 17, ANY.Fe, U);
-			OM.data(MD.PR, "projectred.core.part", 1, 18, MT .Au, U);
-			
-			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.PR_EXPLORATION, "projectred.exploration.ore", null));
-			
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ruby        , MD.PR_EXPLORATION, "projectred.exploration.ore", 0);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueSapphire, MD.PR_EXPLORATION, "projectred.exploration.ore", 1);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Olivine     , MD.PR_EXPLORATION, "projectred.exploration.ore", 2);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu          , MD.PR_EXPLORATION, "projectred.exploration.ore", 3);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn          , MD.PR_EXPLORATION, "projectred.exploration.ore", 4);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag          , MD.PR_EXPLORATION, "projectred.exploration.ore", 5);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Nikolite    , MD.PR_EXPLORATION, "projectred.exploration.ore", 6);
-		}
-		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
 		if (MD.BP.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.BP, "red_alloy_ingot", 0);
@@ -373,6 +343,36 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Tungstate, MD.BP, "tungsten_ore" , 0);
 			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Zn               , MD.BP, "zinc_ore"     , 0);
 			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu               , MD.BP, "copper_ore"   , 0);
+		}
+		
+		// And Project Red violates that Rule aswell...
+		if (MD.PR.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.PR, "projectred.core.part", 10);
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , MD.PR, "projectred.core.part", 55);
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.PR, "projectred.core.part", 56);
+			
+			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
+			OM.reg(OP.stone.dat(MT.STONES.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3));
+			OM.reg(OP.stone.dat(MT.STONES.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4));
+			for (int i = 0; i < 16; i++) {
+			OM.reg(DYE_OREDICTS_MIXABLE[i], ST.make(MD.PR_EXPLORATION, "projectred.exploration.lilyseed", 1, 15-i));
+			OM.data(MD.PR, "projectred.core.part", 1, i+19, ANY.Glowstone, 2*U);
+			}
+			OM.data(MD.PR, "projectred.core.part", 1, 16, ANY.Cu, U);
+			OM.data(MD.PR, "projectred.core.part", 1, 17, ANY.Fe, U);
+			OM.data(MD.PR, "projectred.core.part", 1, 18, MT .Au, U);
+			
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.PR_EXPLORATION, "projectred.exploration.ore", null));
+			
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ruby        , MD.PR_EXPLORATION, "projectred.exploration.ore", 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueSapphire, MD.PR_EXPLORATION, "projectred.exploration.ore", 1);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Olivine     , MD.PR_EXPLORATION, "projectred.exploration.ore", 2);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu          , MD.PR_EXPLORATION, "projectred.exploration.ore", 3);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn          , MD.PR_EXPLORATION, "projectred.exploration.ore", 4);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag          , MD.PR_EXPLORATION, "projectred.exploration.ore", 5);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Nikolite    , MD.PR_EXPLORATION, "projectred.exploration.ore", 6);
 		}
 		
 		// Yay for ChickenBones ALWAYS doing it wrong...

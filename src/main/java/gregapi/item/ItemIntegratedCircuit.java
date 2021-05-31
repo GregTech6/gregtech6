@@ -34,6 +34,7 @@ import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.lang.LanguageHandler;
 import gregapi.util.CR;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -50,7 +51,9 @@ public class ItemIntegratedCircuit extends ItemBase {
 		setHasSubtypes(T);
 		setMaxDamage(0);
 		
-		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
+		OM.data(ST.make(this, 1, W), ANY.Iron, U2*11);
+		
+		CR.shaped(ST.make(this, 1, 0), CR.DEF_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
 		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {this});
 		
 		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "   ", 'P', ST.make(this, 1, W));
