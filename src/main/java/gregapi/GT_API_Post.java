@@ -208,7 +208,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg("itemPelt"               , ST.make(MD.ATUM, "item.wolfPelt", 1, 0));
 			OM.reg(OP.dust, MT.Ectoplasm    , ST.make(MD.ATUM, "item.ectoplasm", 1, 0));
 			
-			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Fe      , MD.ATUM, "tile.ironOre"    , 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Fe2O3   , MD.ATUM, "tile.ironOre"    , 0);
 			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Au      , MD.ATUM, "tile.goldOre"    , 0);
 			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Redstone, MD.ATUM, "tile.redstoneOre", 0);
 			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Lapis   , MD.ATUM, "tile.lapisOre"   , 0);

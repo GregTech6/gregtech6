@@ -83,12 +83,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   6, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  24, 1, 6, OP.dust.mat(MT.Ag, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   6, 1, 6, OP.dust.mat(MT.Pb, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 1, 6, OP.dust.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 1, 6, OP.dust.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 1, 6, OP.dust.mat(MT.Brass, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   2, 1, 6, OP.dust.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  24, 1, 6, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   6, 1, 6, OP.ingot.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 1, 6, OP.ingot.mat(MT.Steel, 1));
@@ -129,8 +123,8 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 6, OP.gemFlawless.mat(MT.Olivine, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.gemFlawless.mat(MT.Almandine, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.gemFlawless.mat(MT.Andradite, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.dust.mat(MT.Nd, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.dust.mat(MT.Cr, 1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.ingot.mat(MT.Nd, 1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Cr, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Creeper"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Skeleton"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Zombie"));
@@ -168,8 +162,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.dust.mat(MT.Ag, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.dust.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.ingot.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.plate.mat(MT.Ag, 1));
@@ -192,7 +184,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
 		
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.dust.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Bronze, 1));
@@ -265,25 +256,21 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   1, 1, 4, IL.Pill_Cure_All.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   1, 1, 1, OP.chemtube.mat(MT.Mcg, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 1, 4, OP.dust.mat(MT.Cr, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 2, 8, OP.dust.mat(MT.Nd, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 2, 8, OP.dust.mat(MT.Mn, 1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 1, 4, OP.ingot.mat(MT.Cr, 1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 2, 8, OP.ingot.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 2, 8, OP.ingot.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 2, 8, OP.plate.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 8, 8, OP.toolHeadArrow.mat(MT.Mn, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.dust.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.ingot.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.plate.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 8,24, OP.stick.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.gearGtSmall.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2,16,48, OP.toolHeadArrow.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.dust.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.ingot.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.plate.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 8,24, OP.stick.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.gearGtSmall.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2,16,48, OP.toolHeadArrow.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.dust.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.ingot.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.plate.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 8,24, OP.stick.mat(MT.Brass, 1));

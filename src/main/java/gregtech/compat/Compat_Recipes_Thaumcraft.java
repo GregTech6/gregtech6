@@ -174,6 +174,8 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 			, null
 			, LH.add("gt.research.page.1." + tKey, "You have discovered a way of making "+MT.Fe.mNameLocal+" harder by just re-ordering its components.<BR><BR>This Method can be used to create a Material called "+tMat.mNameLocal+", which is used in many non-Thaumaturgic applications.")
 			, COMPAT_TC.addCrucibleRecipe(tKey, OP.nugget.dat(MT.Fe), OP.nugget.mat(tMat, 1), TC.stack(TC.ORDO, 1))
+			, COMPAT_TC.addCrucibleRecipe(tKey, OP.nugget.dat(MT.WroughtIron), OP.nugget.mat(tMat, 1), TC.stack(TC.ORDO, 1))
+			, COMPAT_TC.addCrucibleRecipe(tKey, OP.nugget.dat(MT.MeteoricIron), OP.nugget.mat(MT.MeteoricSteel, 1), TC.stack(TC.ORDO, 1))
 		);
 		tMat = MT.Bronze;
 		COMPAT_TC.addResearch(tKey = TRANSBRONZE

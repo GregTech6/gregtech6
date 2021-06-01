@@ -44,6 +44,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 	, sWoods     = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Crimson, MT.WOODS.Warped, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood, MT.WOODS.BlueSpruce, MT.Livingwood, MT.Greatwood, MT.Silverwood, MT.WoodTreated, MT.Weedwood, MT.Skyroot}
 	, sGems      = {MT.EnderPearl, MT.EnderPearl, MT.EnderEye, MT.Diamond, MT.DiamondPink, MT.Emerald, MT.Aquamarine, MT.Ruby, MT.GreenSapphire, MT.BlueSapphire, MT.Amethyst, MT.Craponite, MT.Amber, MT.WaxBee, MT.WaxRefractory, MT.VoidQuartz, MT.NetherQuartz, MT.NetherQuartz, MT.MilkyQuartz, MT.MilkyQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Lapis, MT.Lapis, MT.Lapis, MT.Redstone, MT.Redstone, MT.Redstone, MT.Glowstone, MT.Glowstone, MT.Gloomstone, MT.Apatite, MT.Apatite, MT.Apatite, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite}
 	, sMetals    = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel}
+	, sOres      = {MT.TiO2, MT.TiO2, MT.MnO2, MT.MnO2, MT.MnO2, MT.Fe2O3, MT.Fe2O3, MT.Fe2O3, MT.Fe2O3, MT.Fe2O3, MT.OREMATS.Cassiterite, MT.OREMATS.Cassiterite, MT.OREMATS.Cassiterite, MT.OREMATS.Cassiterite, MT.OREMATS.Cassiterite, MT.OREMATS.Zeolite, MT.OREMATS.Pollucite, MT.OREMATS.Borax, MT.OREMATS.BrownLimonite, MT.OREMATS.YellowLimonite, MT.OREMATS.Garnierite, MT.OREMATS.Scheelite, MT.OREMATS.Wolframite, MT.OREMATS.Ferberite, MT.OREMATS.Huebnerite, MT.OREMATS.Tungstate, MT.OREMATS.Realgar, MT.OREMATS.Cinnabar, MT.OREMATS.Molybdenite, MT.OREMATS.Sphalerite, MT.OREMATS.Stibnite, MT.OREMATS.Pentlandite, MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, MT.OREMATS.Cobaltite, MT.OREMATS.Galena, MT.OREMATS.Cooperite, MT.OREMATS.Tetrahedrite, MT.OREMATS.Kesterite, MT.OREMATS.Stannite, MT.OREMATS.Barite, MT.OREMATS.Celestine, MT.OREMATS.Ilmenite, MT.OREMATS.Bauxite, MT.OREMATS.Chromite, MT.OREMATS.Powellite, MT.OREMATS.Wulfenite, MT.OREMATS.Ferrovanadium, MT.OREMATS.Bastnasite, MT.OREMATS.Tantalite, MT.OREMATS.Malachite, MT.OREMATS.Bromargyrite, MT.OREMATS.Smithsonite, MT.OREMATS.Sperrylite}
 	;
 	
 	@Override
@@ -135,7 +136,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		IPrefixBlock[] tMetalCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtDust, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtPlate, BlocksGT.crateGtPlate, BlocksGT.crateGt64Dust, BlocksGT.crateGt64Plate, BlocksGT.crateGt64Ingot, BlocksGT.crateGt64Ingot};
 		int[] tStart = {1, 12}, tEnd = {3, 14};
 		for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {
-			switch(aData.next(6 + (MD.HEX.mLoaded ? 1 : 0) + (MD.TC.mLoaded ? 1 : 0))) {
+			switch(aData.next(7 + (MD.HEX.mLoaded ? 1 : 0) + (MD.TC.mLoaded ? 1 : 0))) {
 			case  0:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
 					if (aData.next3in4()) {aData.set(tMetalCrates, i, 1, j, sMetals);
@@ -172,6 +173,17 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 				}
 				break;
 			case  4:
+				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
+					if (aData.next3in4()) {aData.set(aData.next1in2() ? BlocksGT.crateGt64Raw : BlocksGT.crateGtRaw, i, 1, j, sOres);
+					if (aData.next2in3()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Raw : BlocksGT.crateGtRaw, i, 2, j, sOres);
+					if (aData.next1in2()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Raw : BlocksGT.crateGtRaw, i, 3, j, sOres);
+							if (aData.next1in4()) aData.set(BlocksGT.blockRaw, i, 4, j, sOres);
+					} else  if (aData.next1in4()) aData.set(BlocksGT.blockRaw, i, 3, j, sOres);
+					} else  if (aData.next1in4()) aData.set(BlocksGT.blockRaw, i, 2, j, sOres);
+					} else  if (aData.next1in4()) aData.set(BlocksGT.blockRaw, i, 1, j, sOres);
+				}
+				break;
+			case  5:
 				if (MD.HEX.mLoaded) for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
 					if (aData.next1in2()) {aData.set(aData.next1in2() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
 					if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
@@ -182,7 +194,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 					} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
 				}
 				break;
-			case  5:
+			case  6:
 				if (MD.TC.mLoaded) for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
 					if (aData.next1in2()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sInfused);
 					if (aData.next1in2()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sInfused);

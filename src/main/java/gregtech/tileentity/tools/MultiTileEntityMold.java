@@ -40,6 +40,7 @@ import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
@@ -457,10 +458,16 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 					mTextureMolten = BlockTextureCopied.get(Blocks.stone);
 				} else if (tMaterial == MT.Glass) {
 					mTextureMolten = BlockTextureCopied.get(Blocks.glass);
+				} else if (tMaterial == MT.Ceramic) {
+					mTextureMolten = BlockTextureCopied.get(Blocks.hardened_clay);
 				} else if (tMaterial == MT.Au) {
 					mTextureMolten = BlockTextureCopied.get(Blocks.gold_block);
 				} else if (tMaterial == MT.Fe) {
 					mTextureMolten = BlockTextureCopied.get(Blocks.iron_block);
+				} else if (tMaterial == MT.Cu && IL.EtFu_Block_Copper.exists()) {
+					mTextureMolten = BlockTextureCopied.get(IL.EtFu_Block_Copper.block());
+				} else if (tMaterial == MT.AnnealedCopper && IL.EtFu_Block_Copper_Cut.exists()) {
+					mTextureMolten = BlockTextureCopied.get(IL.EtFu_Block_Copper_Cut.block(), 4);
 				} else if (tMaterial == MT.Redstone) {
 					mTextureMolten = BlockTextureCopied.get(Blocks.redstone_block);
 				} else if (tMaterial == MT.Obsidian) {

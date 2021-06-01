@@ -52,11 +52,11 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.SluiceSand    ), FL.mul(tWater, 9,10, T), FL.Sluice.make(900), ZL_IS);
 		}
 		RM.Drying           .addRecipe0(T, 16,  100, FL.Sluice.make(100), FL.DistW.make(50), OM.dust(MT.SluiceSand,  U9));
-		RM.Centrifuge       .addRecipe0(T, 64,   16, new long[] { 9640, 100, 100, 100, 100, 100}, FL.Sluice.make(100), FL.Water.make(50), dustTiny .mat(MT.Stone, 1), dustTiny.mat(MT.Fe, 1), dustTiny.mat(MT.Cu, 1), dustTiny.mat(MT.Sn, 1), dustTiny.mat(MT.Zn, 1), dustTiny.mat(MT.Cr, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,   16, new long[] { 9640,  72,  72,  72,  72,  72}, dustTiny  .mat(MT.SluiceSand, 1)      , dustTiny .mat(MT.Stone, 1), dustTiny.mat(MT.Fe, 2), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,   36, new long[] { 9640, 162, 162, 162, 162, 162}, dustSmall .mat(MT.SluiceSand, 1)      , dustSmall.mat(MT.Stone, 1), dustTiny.mat(MT.Fe, 2), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] { 9640, 648, 648, 648, 648, 648}, dust      .mat(MT.SluiceSand, 1)      , dust     .mat(MT.Stone, 1), dustTiny.mat(MT.Fe, 2), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16, 1296, new long[] { 9640,5832,5832,5832,5832,5832}, blockDust .mat(MT.SluiceSand, 1)      , dust     .mat(MT.Stone, 9), dustTiny.mat(MT.Fe, 2), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
+		RM.Centrifuge       .addRecipe0(T, 64,   16, new long[] { 9640, 100, 100, 100, 100, 100}, FL.Sluice.make(100), FL.Water.make(50), dustTiny .mat(MT.Stone, 1), dustTiny.mat(MT.Fe2O3, 3), dustTiny.mat(MT.Cu, 1), dustTiny.mat(MT.Sn, 1), dustTiny.mat(MT.Zn, 1), dustTiny.mat(MT.Cr, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,   16, new long[] { 9640,  72,  72,  72,  72,  72}, dustTiny  .mat(MT.SluiceSand, 1)      , dustTiny .mat(MT.Stone, 1), dustTiny.mat(MT.Fe2O3, 5), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,   36, new long[] { 9640, 162, 162, 162, 162, 162}, dustSmall .mat(MT.SluiceSand, 1)      , dustSmall.mat(MT.Stone, 1), dustTiny.mat(MT.Fe2O3, 5), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] { 9640, 648, 648, 648, 648, 648}, dust      .mat(MT.SluiceSand, 1)      , dust     .mat(MT.Stone, 1), dustTiny.mat(MT.Fe2O3, 5), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16, 1296, new long[] { 9640,5832,5832,5832,5832,5832}, blockDust .mat(MT.SluiceSand, 1)      , dust     .mat(MT.Stone, 9), dustTiny.mat(MT.Fe2O3, 5), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
 		
 		RM.MagneticSeparator.addRecipe1(T, 64,  144, new long[] { 7000,3000,3000,3000,3000,3000}, dustImpure.mat(MT.Bedrock, 1)         , dust     .mat(MT.Bedrock, 1), dustTiny.mat(MT.Adamantine, 1), dustTiny.mat(MT.Atl, 1), dustTiny.mat(MT.RareEarth, 2), dustTiny.mat(MT.Nd, 3), dustTiny.mat(MT.V2O5, 3));
 		
@@ -81,9 +81,9 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge       .addRecipe1(T, 64,   16, new long[] {   80,  80,  80,  80,  80,  80}, crushedCentrifugedTiny.mat(MT.PlatinumGroupSludge, 1), dustTiny.mat(MT.Ru, 8), dustTiny.mat(MT.Rh, 8), dustTiny.mat(MT.Pd, 8), dustTiny.mat(MT.Os, 8), dustTiny.mat(MT.Ir, 8), dustTiny.mat(MT.Pt, 8));
 		RM.Centrifuge       .addRecipe1(T, 64,  144, new long[] {  720, 720, 720, 720, 720, 720}, crushedCentrifuged    .mat(MT.PlatinumGroupSludge, 1), dustTiny.mat(MT.Ru, 8), dustTiny.mat(MT.Rh, 8), dustTiny.mat(MT.Pd, 8), dustTiny.mat(MT.Os, 8), dustTiny.mat(MT.Ir, 8), dustTiny.mat(MT.Pt, 8));
 		
-		RM.Centrifuge       .addRecipe0(T, 64,  128, new long[] {8000,  250,  250,  250,  250,  250}, FL.Lava           .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Fe, 4), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
-		RM.Centrifuge       .addRecipe0(T, 64,  192, new long[] {9000,  300,  300,  300,  300,  300}, FL.Lava_Pahoehoe  .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Fe, 4), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
-		RM.Centrifuge       .addRecipe1(T, 64,   16, new long[] {9000,10000, 1000                  }, ST.make(Blocks.sand, 1, 1), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Fe, 1), dustDiv72.mat(MT.Diamond, 1));
+		RM.Centrifuge       .addRecipe0(T, 64,  128, new long[] {8000,  250,  250,  250,  250,  250}, FL.Lava           .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
+		RM.Centrifuge       .addRecipe0(T, 64,  192, new long[] {9000,  300,  300,  300,  300,  300}, FL.Lava_Pahoehoe  .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
+		RM.Centrifuge       .addRecipe1(T, 64,   16, new long[] {9000,10000, 1000                  }, ST.make(Blocks.sand, 1, 1), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Fe2O3, 3), dustDiv72.mat(MT.Diamond, 1));
 		if (IL.NePl_SoulSoil.exists())
 		RM.Centrifuge       .addRecipe1(T, 64,  128, new long[] {9000, 8000, 2000, 2000            }, IL.NePl_SoulSoil       .wild(1), NF, FL.Oil_Soulsand.make(50), ST.make(Blocks.sand, 1, 0), dustSmall.mat(MT.Niter, 1), dustTiny.mat(MT.Coal, 1), dustTiny.mat(MT.Bone, 1));
 		if (IL.NeLi_SoulSoil.exists())

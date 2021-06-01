@@ -356,20 +356,20 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		for (String tOxygen : FluidsGT.OXYGEN) if (FL.exists(tOxygen)) {
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.Pyrite                  ), FL.make(tOxygen,  1334), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Realgar         ), FL.make(tOxygen,  1000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.As,   U2 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Sphalerite      ), FL.make(tOxygen,  1000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn,   U2 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Molybdenite     ), FL.make(tOxygen,  1334), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Mo,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Stibnite        ), FL.make(tOxygen,  1200), MT.SO2.gas( 9*U5 , F), OM.dust(MT.Sb, 2*U5 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Pentlandite     ), FL.make(tOxygen,   942), MT.SO2.gas(24*U17, F), OM.dust(MT.Ni, 9*U17));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Chalcopyrite    ), FL.make(tOxygen,  1000), MT.SO2.gas( 6*U4 , F), OM.dust(MT.Fe,   U4 ), OM.dust(MT.Cu,   U4));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Arsenopyrite    ), FL.make(tOxygen,   667), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Fe,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Cobaltite       ), FL.make(tOxygen,   667), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Co,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Galena          ), FL.make(tOxygen,   500), MT.SO2.gas( 6*U8 , F), OM.dust(MT.Ag, 3*U8 ), OM.dust(MT.Pb, 3*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Cooperite       ), FL.make(tOxygen,   334), MT.SO2.gas( 3*U6 , F), OM.dust(MT.Pt, 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd, 1*U6));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Tetrahedrite    ), FL.make(tOxygen,   750), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu, 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Stannite        ), FL.make(tOxygen,  1000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Fe, 1*U8), OM.dust(MT.Sn, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Kesterite       ), FL.make(tOxygen,  1000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn, 1*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.Pyrite                  ), FL.make(tOxygen,  1834), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe2O3, 5*U6 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Realgar         ), FL.make(tOxygen,  1000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.As   ,   U2 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Sphalerite      ), FL.make(tOxygen,  1000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn   ,   U2 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Molybdenite     ), FL.make(tOxygen,  1334), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Mo   ,   U3 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Stibnite        ), FL.make(tOxygen,  1200), MT.SO2.gas( 9*U5 , F), OM.dust(MT.Sb   , 2*U5 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Pentlandite     ), FL.make(tOxygen,   942), MT.SO2.gas(24*U17, F), OM.dust(MT.Ni   , 9*U17));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Chalcopyrite    ), FL.make(tOxygen,  1375), MT.SO2.gas( 6*U4 , F), OM.dust(MT.Fe2O3, 5*U8 ), OM.dust(MT.Cu,   U4));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Arsenopyrite    ), FL.make(tOxygen,  1167), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Fe2O3, 5*U6 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Cobaltite       ), FL.make(tOxygen,   667), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Co   ,   U3 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Galena          ), FL.make(tOxygen,   500), MT.SO2.gas( 6*U8 , F), OM.dust(MT.Ag   , 3*U8 ), OM.dust(MT.Pb, 3*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Cooperite       ), FL.make(tOxygen,   334), MT.SO2.gas( 3*U6 , F), OM.dust(MT.Pt   , 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd   , 1*U6));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Tetrahedrite    ), FL.make(tOxygen,   938), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu   , 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Stannite        ), FL.make(tOxygen,  1188), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Sn, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
+		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Kesterite       ), FL.make(tOxygen,  1000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn   , 1*U8));
 		
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Li                      ), FL.make(tOxygen,   500), NF                   , OM.dust(MT.Li2O, 3*U2));
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.V2O5, 7*U2));
@@ -389,20 +389,20 @@ public class Loader_Recipes_Chem implements Runnable {
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		
 		for (String tAir : FluidsGT.AIR) if (FL.exists(tAir)) {
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.Pyrite              ), FL.make(tAir, 6000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Realgar     ), FL.make(tAir, 4000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.As,   U2 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Sphalerite  ), FL.make(tAir, 4000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn,   U2 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Molybdenite ), FL.make(tAir, 6000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Mo,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stibnite    ), FL.make(tAir, 5000), MT.SO2.gas( 9*U5 , F), OM.dust(MT.Sb, 2*U5 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Pentlandite ), FL.make(tAir, 8000), MT.SO2.gas(24*U17, F), OM.dust(MT.Ni, 9*U17));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Chalcopyrite), FL.make(tAir, 4000), MT.SO2.gas( 6*U4 , F), OM.dust(MT.Fe,   U4 ), OM.dust(MT.Cu,   U4));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Arsenopyrite), FL.make(tAir, 3000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Fe,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cobaltite   ), FL.make(tAir, 3000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Co,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Galena      ), FL.make(tAir, 2000), MT.SO2.gas( 6*U8 , F), OM.dust(MT.Ag, 3*U8 ), OM.dust(MT.Pb, 3*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cooperite   ), FL.make(tAir, 2000), MT.SO2.gas( 3*U6 , F), OM.dust(MT.Pt, 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd, 1*U6));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite), FL.make(tAir, 3000), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu, 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite    ), FL.make(tAir, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Fe, 1*U8), OM.dust(MT.Sn, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite   ), FL.make(tAir, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn, 1*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.Pyrite              ), FL.make(tAir, 8000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe2O3, 5*U6 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Realgar     ), FL.make(tAir, 4000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.As   ,   U2 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Sphalerite  ), FL.make(tAir, 4000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn   ,   U2 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Molybdenite ), FL.make(tAir, 6000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Mo   ,   U3 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stibnite    ), FL.make(tAir, 5000), MT.SO2.gas( 9*U5 , F), OM.dust(MT.Sb   , 2*U5 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Pentlandite ), FL.make(tAir, 4000), MT.SO2.gas(24*U17, F), OM.dust(MT.Ni   , 9*U17));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Chalcopyrite), FL.make(tAir, 6000), MT.SO2.gas( 6*U4 , F), OM.dust(MT.Fe2O3, 5*U8 ), OM.dust(MT.Cu,   U4));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Arsenopyrite), FL.make(tAir, 5000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Fe2O3, 5*U6 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cobaltite   ), FL.make(tAir, 3000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Co   ,   U3 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Galena      ), FL.make(tAir, 2000), MT.SO2.gas( 6*U8 , F), OM.dust(MT.Ag   , 3*U8 ), OM.dust(MT.Pb, 3*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cooperite   ), FL.make(tAir, 2000), MT.SO2.gas( 3*U6 , F), OM.dust(MT.Pt   , 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd   , 1*U6));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite), FL.make(tAir, 4000), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu   , 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite    ), FL.make(tAir, 5000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Sn, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite   ), FL.make(tAir, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn   , 1*U8));
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S        ), FL.make(tAir, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Blaze, U9), FL.make(tAir, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		}

@@ -14,9 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Granite, Andesite and Diorite of other Mods such as Botania, Ganys Surface, Et Futurum and GregTech-6 now work with Chisel.
 I removed the damn Cobblestone and Glowstone OreDict equivalencies.
 Glowtus can now be chiseled into different Colors and GT6 Logs can now be chiseled into their All-Bark Variants.
-[COMPAT]
-Witchery now has a little bit more Compat.
-The Spirit World now generates GT6 Stuff properly just like the Overworld.
+[COMPAT] The Witchery Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Filter Blocks were kinda broken, so that needed a change. This may break your Setups in some cases.
 [FIXED] Bricks and nether Bricks were not placeable on the Floor like Ingots.
 [FIXED] Other Types of Coal could not be made into "Bricks"/"Ingots" before, now they can.
@@ -26,6 +24,12 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.
 [FIXED] The Boxinator somehow did not have Recipes for Nugget->Ingot, Chunk->Ingot or Dust piling. This was a really big oversight.
 [FIXED] Bluepower Volcanos and Immersive Engineering Village Houses no longer let you skip to Tungsten and aluminium anymore.
+[CHANGED]
+A bunch of Recipes that previously outputted Iron, now output something else, usually Hematite.
+I try to make people either process Hematite properly or dig up Black Sand. Looting it from places is okay too.
+The Roaster now outputs Hematite instead of Regular Iron, because ofcourse if you blow Air onto Iron while heating it up, it rusts! And yes, Roasting was too easy for this...
+Centrifuging Red Sand or the Sluice Stuff gives Hematite too now.
+Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories, until they are home.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
@@ -35,6 +39,7 @@ The Spirit World now generates GT6 Stuff properly just like the Overworld.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
 [CHANGED] The Crusher now has 12 Output Slots instead of 6. Because the Block of Raw Ore can be crushed now, and that means more throughput is needed.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
+[ADDED] GT6 Dungeons now have Ore Blocks and Ore Crates in their Storage Rooms.
 [ADDED] Asbestos now has Jade as a Byproduct, making Fortune III Tools more available.
 [ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
 [ADDED] GT6 Logs can now be crafted into their All-Bark Variant using some Bark. For Non-GT6 Logs you will still have to use the Soft Hammer after placing the Log though.
