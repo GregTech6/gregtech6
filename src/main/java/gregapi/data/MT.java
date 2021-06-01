@@ -3017,7 +3017,7 @@ public class MT {
 			, tMakeAluminium
 			};
 			
-			Alumina.mDescription = new String[] {
+			Al2O3.mDescription = new String[] {
 			// ========================================================================================================================================================================================================
 			  "Aluminas are the Materials used to create Aluminium out of. It is basically corroded Aluminium and removing said corrosion can be quite difficult and even requires electricity."
 			, tMakeAluminium

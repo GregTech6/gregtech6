@@ -378,7 +378,8 @@ public class Loader_Books implements Runnable {
 		tBook.clear();
 		tBook.add("This is the Manual of the Smelting Crucible and related Objects. It will explain how to use the Smelting Crucible and the Molds properly, so that you can start smelting things which cannot me molten inside a regular Furnace.");
 		tBook.add("If you need to know how heavy an Object is or what Materials it consists out of, just use the good old vanilla F3+H Method to enable advanced Tooltips, so you can see the most relevant Data about the Object.");
-		tBook.add("Step 1: Heat Source" +"\n===================\nYou need a Heat Source in order to heat up your Crucible to the desired Temperature. Possible Heat Sources include Burning Boxes, Electric Heaters, Laser Heaters and Arc Heaters.");
+		tBook.add("Step 1: Heat Source" +"\n===================\nYou need a Heat Source in order to heat up your Crucible to the desired Temperature. Possible Heat Sources may include Burning Boxes, Electric Heaters, Laser Heaters and Arc Heaters.");
+		tBook.add("Optional: Air Source"+"\n===================\nIn case you have to supply Air for the Crucible (for Steel), you need to point an Engine into it, which will act as a Fan. For Multiblock Crucibles the Engine has to be at the Bottom Row.");
 		tBook.add("Step 2: Crucible"    +"\n===================\nThe choice of Crucible Material is very important. The Crucible can melt too at a certain Temperature, which is usually higher than the actual Melting Point of the Crucible itself.");
 		tBook.add("Step 2: Crucible"    +"\n===================\nNow place the Crucible of your choice at the Output Facing of the Heat Source. The Burning Box for example only emits to its Top Side, so you need to place the Crucible above it.");
 		tBook.add("Step 3: The Molds"   +"\n===================\nYou probably want to cast the molten Metal into a Shape, so you need to place a Mold horizontally adjacent to the Crucible. As you may have noticed the Mold itself doesn't have a Shape.");
@@ -425,6 +426,7 @@ public class Loader_Books implements Runnable {
 		tBook.clear();
 		tBook.add("This Book Contains Information about every Alloy, which can be created by using a Smelting Crucible.\n===================\nIn order to make an Alloy you need to reach the Melting Point of the Alloy itself.");
 		tBook.add("And you need to reach the Melting Point of all but one of its Components. You can ofcourse also melt all of the Components, but you are free to 'not melt' one of the Components.");
+		tBook.add("In case you have to supply Air for the Crucible (for Steel), you need to point an Engine into it, which will act as a Fan. For Multiblock Crucibles the Engine has to be at the Bottom Row.");
 		
 		for (OreDictMaterial tMat : OreDictMaterial.ALLOYS) {
 			for (IOreDictConfigurationComponent tComponents : tMat.mAlloyCreationRecipes) {

@@ -521,14 +521,15 @@ public class GT6_Main extends Abstract_Mod {
 					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls<>(), tIngots = new ArrayListNoNulls<>();
 					ArrayListNoNulls<Long> tMeltingPoints = new ArrayListNoNulls<>();
 					for (OreDictMaterialStack tMaterial : tAlloy.getUndividedComponents()) {
+						if (tMaterial.mMaterial.mHidden) {temp = F; break;}
 						if (tMaterial.mMaterial == MT.Air) {
-							if (!tDusts.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)))) {temp = F; break;}
+							tDusts .add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
 							tIngots.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
-						} else {
-							tMeltingPoints.add(tMaterial.mMaterial.mMeltingPoint);
-							if (!tDusts.add(OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount))) {temp = F; break;}
-							tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
+							continue;
 						}
+						tMeltingPoints.add(tMaterial.mMaterial.mMeltingPoint);
+						if (!tDusts.add(OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount))) {temp = F; break;}
+						tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 					}
 					Collections.sort(tMeltingPoints);
 					if (temp) {
