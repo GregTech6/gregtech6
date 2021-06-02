@@ -39,7 +39,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -325,7 +324,17 @@ public class DungeonData extends WorldAndCoords {
 		int tIndex = next(BlocksGT.POT_FLOWER_TILES.length);
 		set(aX, aY, aZ, Blocks.flower_pot, 0, 2);
 		TileEntity tTileEntity = mWorld.getTileEntity(mX+aX, mY+aY, mZ+aZ);
-		if (tTileEntity instanceof TileEntityFlowerPot) ((TileEntityFlowerPot)tTileEntity).func_145964_a(Item.getItemFromBlock(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
+		if (tTileEntity instanceof TileEntityFlowerPot) {
+			if (next1in2()) {
+				((TileEntityFlowerPot)tTileEntity).func_145964_a(ST.item(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
+			} else {
+				if (next1in2()) {
+					((TileEntityFlowerPot)tTileEntity).func_145964_a(ST.item((Block)BlocksGT.FlowersA), next(BlocksGT.FlowersA.maxMeta()));
+				} else {
+					((TileEntityFlowerPot)tTileEntity).func_145964_a(ST.item((Block)BlocksGT.FlowersB), next(BlocksGT.FlowersB.maxMeta()));
+				}
+			}
+		}
 		return T;
 	}
 	public boolean pot(int aX, int aY, int aZ, Block aBlock, int aMeta) {
