@@ -27,8 +27,9 @@ Glowtus can now be chiseled into different Colors and GT6 Logs can now be chisel
 [CHANGED]
 A bunch of Recipes that previously outputted Iron, now output something else, usually Hematite.
 I try to make people either process Hematite properly or dig up Black Sand. Looting it from places is okay too.
-The Roaster now outputs Hematite instead of Regular Iron, because ofcourse if you blow Air onto Iron while heating it up, it rusts! And yes, Roasting was too easy for this...
-Centrifuging Red Sand or the Sluice Stuff gives Hematite too now.
+The Roaster now outputs Hematite instead of pure Iron. And yes, Roasting was too easy for this...
+Centrifuging Red Sand gives Hematite.
+Centrifuging Sluice Juice gives Antimony instead of Iron.
 Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories, until they are home.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
