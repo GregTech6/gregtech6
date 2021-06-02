@@ -31,6 +31,7 @@ The Roaster now outputs Hematite instead of pure Iron. And yes, Roasting was too
 Centrifuging Red Sand gives Hematite.
 Centrifuging Sluice Juice gives Antimony instead of Iron.
 Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
+[CHANGED] Ores now give 4 times the Stone Dust when crushed. That should fix Limestone shortages in many cases.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories, until they are home.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
