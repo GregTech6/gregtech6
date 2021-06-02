@@ -30,7 +30,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOn
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
-import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -79,12 +78,12 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTPOWER) + Chat.WHITE + mMaxExplosionResistance);
-		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTRANGE) + Chat.WHITE + "3x3x3");
+		aList.add(LH.Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTPOWER) + LH.Chat.WHITE + mMaxExplosionResistance);
+		aList.add(LH.Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTRANGE) + LH.Chat.WHITE + "3x3x3");
 		if (mFortune > 0)
-		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTFORTUNE) + Chat.WHITE + mFortune);
-		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
-		aList.add(Chat.RED      + LH.get(LH.TOOLTIP_EXPLOSIVE));
+		aList.add(LH.Chat.PINK     + LH.get(LH.TOOLTIP_BLASTFORTUNE) + LH.Chat.WHITE + mFortune);
+		aList.add(LH.Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(LH.Chat.RED      + LH.get(LH.TOOLTIP_EXPLOSIVE));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

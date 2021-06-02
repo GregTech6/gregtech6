@@ -32,6 +32,7 @@ Centrifuging Red Sand gives Hematite.
 Centrifuging Sluice Juice gives Antimony instead of Iron.
 Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Ores now give 4 times the Stone Dust when crushed. That should fix Limestone shortages in many cases.
+[CHANGED] The Crusher now has 12 Output Slots instead of 6. Because the Block of Raw Ore can be crushed now, and that means more throughput is needed.
 [CHANGED] GT6 Loot Chests can now be picked up with their Loot inside, as long as you did not open them beforehand! This should spare explorers of Dungeon Loot cluttering their Inventories, until they are home.
 [CHANGED] If there is a Fire Block in front of a Burning Box, it will randomly ignite. This technically makes automation using the Dispenser possible, but still cumbersome and dangerous enough so you want an Igniter.
 [CHANGED] Dispensers now work on my Wooden Buckets too.
@@ -39,7 +40,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
-[CHANGED] The Crusher now has 12 Output Slots instead of 6. Because the Block of Raw Ore can be crushed now, and that means more throughput is needed.
+[CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
 [ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] GT6 Dungeons now have Ore Blocks and Ore Crates in their Storage Rooms.
@@ -2640,7 +2641,7 @@ The T-Intersections in Corridors now have a few Coins and a Cup with a random Dr
 [CHANGED] Fermenter Recipes that don't need an Item Input now require a Selector Tag in order to work. Barrel based Fermenting will pretend a Selector Tag with value 0 exists. Most of Binnies Wines now have Recipes, including the generic Fruit Wine (since Selector Tags make it possible).
 [CHANGED] IC2 Ores are disabled by Default now. (doesn't apply to IC2 Rubber Trees, doesn't work for IC2-Classic)
 [CHANGED] price of Large Coil Blocks to only use 4x Annealed Copper Wires instead of 16x Wires.
-[ADDED] GT Dynamite Sticks now automatically have Fortune II on them, meaning their Explosions will drop more Items.
+[ADDED] GT Dynamite Sticks now automatically have Fortune II on them, meaning their Explosions will drop more Items. (Later Versions buffed it to Fortune V)
 [ADDED] Fireproof GT Planks and Logs can now be made using the Bath and Stretched Fire Resistance Brew. (at least until I add something equivalent to Refractory Wax)
 [ADDED] Dense Versions of the Small Metal Tanks, that cost 9 times more Metal and have 4 times more Capacity.
 [ADDED]
