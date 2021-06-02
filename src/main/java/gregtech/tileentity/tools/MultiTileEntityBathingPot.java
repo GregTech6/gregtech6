@@ -117,6 +117,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			updateInventory();
 			for (FluidTankGT tTank : mTanksOutput) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
 			for (FluidTankGT tTank : mTanksInput ) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
+			updateAdjacentInventories();
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
@@ -216,6 +217,8 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 						for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
 						aPlayer.addExhaustion(Math.max(1, tRecipe.getAbsoluteTotalPower()) / 1000.0F);
 						removeAllDroppableNullStacks();
+						updateInventory();
+						updateAdjacentInventories();
 						return T;
 					}
 				}

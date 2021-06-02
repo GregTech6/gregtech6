@@ -125,6 +125,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 					for (int i = 0; i < mRecipes.mOutputItemsCount && i < tOutputItems.length; i++) addStackToSlot(i+6, tOutputItems[i]);
 					for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
 					removeAllDroppableNullStacks();
+					updateInventory();
+					updateAdjacentInventories();
 					return Math.max(1, UT.Code.divup(Math.max(1, tRecipe.getAbsoluteTotalPower()), 4));
 				}
 				return 0;
@@ -134,6 +136,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 			updateInventory();
 			for (FluidTankGT tTank : mTanksOutput) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
 			for (FluidTankGT tTank : mTanksInput ) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
+			updateAdjacentInventories();
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
@@ -251,6 +254,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 			if (aStack != null && tFluid != null && FL.fillAll_(this, SIDE_ANY, tFluid, T)) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+				updateInventory();
+				updateAdjacentInventories();
 				return T;
 			}
 			if (SIDES_TOP[aSide] && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {

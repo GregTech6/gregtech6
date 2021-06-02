@@ -103,6 +103,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 		if (aTool.equals(TOOL_plunger)) {
 			updateInventory();
 			for (FluidTankGT tTank : mTanks) {long rAmount = GarbageGT.trash(tTank, 1000); if (rAmount > 0) return rAmount;}
+			updateAdjacentInventories();
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) for (FluidTankGT tTank : mTanks) {aChatReturn.add(tTank.content());}
@@ -151,6 +152,8 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
 					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
 					UT.Sounds.send(worldObj, SFX.MC_SLIME_BIG, 1.0F, 1.0F, getCoords());
+					updateInventory();
+					updateAdjacentInventories();
 					return T;
 				}
 			}

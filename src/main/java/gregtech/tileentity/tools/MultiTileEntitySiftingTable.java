@@ -260,6 +260,8 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 									for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
 									tEntry.getKey().addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
 									tEntry.getKey().swingItem();
+									updateInventory();
+									updateAdjacentInventories();
 								}
 							}
 						}
