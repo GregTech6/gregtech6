@@ -44,9 +44,9 @@ public class Compat_Recipes_Mariculture extends CompatMods {
 		CR.remove(IL.MaCu_Polished_Planks.get(1), null, null, IL.MaCu_Polished_Planks.get(1));
 		
 		RM.generify(ST.make(ItemsGT.BUMBLEBEES, 1, W), IL.MaCu_Bait_Bee.get(1));
-		CR.shapeless(IL.MaCu_Bait_Bee.get(1), CR.DEF_NAC_NCC, new Object[] {ItemsGT.BUMBLEBEES});
+		CR.shapeless(IL.MaCu_Bait_Bee.get(1), CR.DEF_NCC, new Object[] {ItemsGT.BUMBLEBEES});
 		
-		CR.shaped(ST.make(MD.MaCu, "crafting", 1,19), CR.DEF_NAC_REV_NCC, "h R", " R ", "R f", 'R', OP.stickLong.dat(MT.Ti));
+		CR.shaped(ST.make(MD.MaCu, "crafting", 1,19), CR.DEF_REV_NCC, "h R", " R ", "R f", 'R', OP.stickLong.dat(MT.Ti));
 		
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.string           , 1, W), MT.Au       .liquid(4*U, T), NF, ST.make(MD.MaCu, "crafting", 1, 0));
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(MD.MaCu, "crafting"    , 1,19), FL.Oil_Fish     .make(6500), NF, ST.make(MD.MaCu, "crafting", 1, 2));

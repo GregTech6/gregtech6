@@ -176,8 +176,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
 					RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), OM.dust(MT.Bark, U2));
 					CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
-					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
-					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
+					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
+					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
 				}
 			} else {
 				ItemStack tPlank = CR.get(ST.array(aEvent.mStack));
@@ -186,8 +186,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
 					RM.sawing(16, 128, F, 5, aEvent.mStack, ST.copy(tPlanks), dust.mat(tWood, 1), OM.dust(MT.Bark, U2));
 					CR.remove(aEvent.mStack);
-					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', aEvent.mStack);
-					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {aEvent.mStack});
+					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', aEvent.mStack);
+					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {aEvent.mStack});
 				}
 			}
 		}});

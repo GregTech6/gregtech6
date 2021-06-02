@@ -31,7 +31,6 @@ import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
-import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -46,8 +45,6 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing TF Recipes.");
 		CR.shaped(IL.Stick.get(2), DEF, "s", "X", 'X', IL.TF_Dry_Bush);
 		CR.shaped(IL.Stick.get(2), DEF, "k", "X", 'X', IL.TF_Dry_Bush);
-		
-		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'S', OD.stickAnyWood, 'X', IL.TF_Torchberries);
 		
 		// Since the Cube gives all Progress related TF Achievements with GT6, it is not that bad that you use up the 5 Trophies in co-op Multiplayer. Oh and yes I know the Lamp of Cinders has itself as Container Item, that is intended as you just need to "have" it.
 		CR.shapeless(IL.TF_Cube_of_Annihilation.get(1), new Object[] {IL.TF_Lamp_of_Cinders, ST.make(MD.TF, "tile.TFTowerDevice", 1, 12), IL.TF_Transformation_Powder, IL.TF_Giant_Obsidian, IL.TF_Trophy_Hydra, IL.TF_Trophy_Urghast, IL.TF_Trophy_Naga, IL.TF_Trophy_Lich, IL.TF_Trophy_Snowqueen});

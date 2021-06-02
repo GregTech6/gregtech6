@@ -196,7 +196,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		if (MD.HBM.mLoaded) {
 			CR.delate(MD.HBM, "item.apple_lead", "item.apple_schrabidium", "item.apple_euphemium");
 			
-			CR.shapeless(IL.HBM_Mercury_Drop.get(8), CR.DEF_NAC_NCC, new Object[] {IL.Bottle_Mercury});
+			CR.shapeless(IL.HBM_Mercury_Drop.get(8), CR.DEF_NCC, new Object[] {IL.Bottle_Mercury});
 			RM.generify(IL.HBM_Mercury_Bottle.get(1), IL.Bottle_Mercury.get(1));
 			RM.generify(IL.Bottle_Mercury.get(1), IL.HBM_Mercury_Bottle.get(1));
 			
@@ -223,7 +223,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			CR.remove(IL.NeLi_Reed.get(1));
 			CR.remove(IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1), IL.NeLi_Reed.get(1));
-			CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', IL.NeLi_Reed);
+			CR.shaped(ST.make(Items.paper, 1, 0), DEF, "XXX", 'X', IL.NeLi_Reed);
 			
 			// HAS TO BE BEFORE REGULAR TORCHES!!!
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
@@ -538,14 +538,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.brick, 1, 0));
 			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.brick, 1, 0));
 			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.brick, 1, 0));
-			CR.shaped    (OP.plate.mat(MT.ClayBrown         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 45));
-			CR.shaped    (OP.plate.mat(MT.Bentonite         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 47));
-			CR.shaped    (OP.plate.mat(MT.Palygorskite      , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 48));
-			CR.shaped    (OP.plate.mat(MT.Kaolinite         , 1), CR.DEF_NAC_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 49));
-			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 45), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakClay"   , 1,  0)});
-			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 47), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  1)});
-			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 48), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  2)});
-			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 49), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  3)});
+			CR.shaped    (OP.plate.mat(MT.ClayBrown         , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 45));
+			CR.shaped    (OP.plate.mat(MT.Bentonite         , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 47));
+			CR.shaped    (OP.plate.mat(MT.Palygorskite      , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 48));
+			CR.shaped    (OP.plate.mat(MT.Kaolinite         , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 49));
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 45), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakClay"   , 1,  0)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 47), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  1)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 48), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  2)});
+			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 49), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  3)});
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
 			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));

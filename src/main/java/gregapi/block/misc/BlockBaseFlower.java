@@ -142,12 +142,13 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		if (aStack.stackSize == 0) return F;
 		
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		TileEntity tTileEntity = WD.te(aWorld, aX, aY, aZ, T);
 		
-		if (tBlock == Blocks.flower_pot) {
-			TileEntity tFlowerPot = WD.te(aWorld, aX, aY, aZ, T);
-			if (tFlowerPot instanceof TileEntityFlowerPot && ((TileEntityFlowerPot)tFlowerPot).getFlowerPotItem() == null) {
-				((TileEntityFlowerPot)tFlowerPot).func_145964_a(aItem, ST.meta(aStack));
-				tFlowerPot.markDirty();
+		if (tTileEntity instanceof TileEntityFlowerPot) {
+			if (((TileEntityFlowerPot)tTileEntity).getFlowerPotItem() == null) {
+				((TileEntityFlowerPot)tTileEntity).func_145964_a(aItem, ST.meta(aStack));
+				tTileEntity.markDirty();
+				if (!aWorld.setBlockMetadataWithNotify(aX, aY, aZ, ST.meta(aStack), 2)) aWorld.markBlockForUpdate(aX, aY, aZ);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 			}
 			return T;

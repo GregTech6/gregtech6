@@ -286,7 +286,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(ST.mkic("UranFuel", 1));
 		CR.delate(ST.mkic("RTGPellets", 1));
 		
-		CR.shaped(IL.IC2_Iridium_Ore.get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', IL.IC2_Iridium_Shard);
+		CR.shaped(IL.IC2_Iridium_Ore.get(1), CR.DEF_NCC, "XXX", "XXX", "XXX", 'X', IL.IC2_Iridium_Shard);
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "windMill"       ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "PwP", "IMI", "PCP", 'M', IL.IC2_Generator  , 'C', OD_CIRCUITS[1], 'P', OP.plateCurved.dat(MT.Magnalium), 'I', OP.plateDouble.dat(ANY.Steel));}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "waterMill"      ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "P P", "wMh", "PCP", 'M', IL.IC2_Generator  , 'C', OD_CIRCUITS[1], 'P', OP.plateCurved.dat(MT.Al));}

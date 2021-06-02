@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -114,20 +114,20 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, FL.Juice_Cactus.make( 75), IL.Dye_Cactus.get(2));
 		
-		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 0));
-		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
-		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
-		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 1));
-		CR.shaped   (OP.stick.mat(MT.WOODS.Palm  , 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 6));
-		CR.shaped   (OP.stick.mat(MT.WOODS.Palm  , 2, IL.Stick.get(2)), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 6));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NCC, "s", "X", 'X', ST.make(this, 1, 0));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NCC, "k", "X", 'X', ST.make(this, 1, 0));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NCC, "s", "X", 'X', ST.make(this, 1, 1));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)), CR.DEF_NCC, "k", "X", 'X', ST.make(this, 1, 1));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Palm  , 2, IL.Stick.get(2)), CR.DEF_NCC, "s", "X", 'X', ST.make(this, 1, 6));
+		CR.shaped   (OP.stick.mat(MT.WOODS.Palm  , 2, IL.Stick.get(2)), CR.DEF_NCC, "k", "X", 'X', ST.make(this, 1, 6));
 		
-		CR.shapeless(OP.stick.mat(MT.WOODS.Acacia, 1, IL.Stick.get(1)), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
-		CR.shapeless(OP.stick.mat(MT.WOODS.Acacia, 1, IL.Stick.get(1)), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
-		CR.shapeless(OM.dust(MT.Yellow                               ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 2)});
-		CR.shapeless(OM.dust(MT.Pink                                 ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
-		CR.shapeless(OM.dust(MT.Yellow                               ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
-		CR.shapeless(OM.dust(MT.Purple                               ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
-		CR.shapeless(OP.stick.mat(MT.WOODS.Palm  , 1, IL.Stick.get(1)), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
+		CR.shapeless(OP.stick.mat(MT.WOODS.Acacia, 1, IL.Stick.get(1)), CR.DEF_NCC, new Object[] {ST.make(this, 1, 0)});
+		CR.shapeless(OP.stick.mat(MT.WOODS.Acacia, 1, IL.Stick.get(1)), CR.DEF_NCC, new Object[] {ST.make(this, 1, 1)});
+		CR.shapeless(OM.dust(MT.Yellow                               ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 2)});
+		CR.shapeless(OM.dust(MT.Pink                                 ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 3)});
+		CR.shapeless(OM.dust(MT.Yellow                               ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 4)});
+		CR.shapeless(OM.dust(MT.Purple                               ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 5)});
+		CR.shapeless(OP.stick.mat(MT.WOODS.Palm  , 1, IL.Stick.get(1)), CR.DEF_NCC, new Object[] {ST.make(this, 1, 6)});
 		
 		RM.add_smelting(ST.make(this, 1, 7), IL.Dye_Cactus.get(1));
 		

@@ -312,7 +312,7 @@ public class Loader_Recipes_Ores implements Runnable {
 			
 			ItemStack tCrushed = crushed.mat(aMat, 1), tCrushedTiny = crushedTiny.mat(aMat, 1);
 			if (ST.valid(tCrushed) && ST.valid(tCrushedTiny)) {
-				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushed.dat(aMat)});
+				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushed.dat(aMat)});
 				
 				ItemStack tByProductMercury = null, tByproductPersulfate = null;
 				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY) && ST.valid(tByProductMercury = OP.crushedPurifiedTiny.mat(tByProduct, OM.dust(tByProduct, U9), 1))) break;
@@ -361,7 +361,7 @@ public class Loader_Recipes_Ores implements Runnable {
 			
 			ItemStack tPurified = crushedPurified.mat(aMat, 1), tPurifiedTiny = crushedPurifiedTiny.mat(aMat, 1);
 			if (ST.valid(tPurified) && ST.valid(tPurifiedTiny)) {
-				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushedPurified.dat(aMat)});
+				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushedPurified.dat(aMat)});
 				
 				if (ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES) {
 				RM.ic2_centrifuge(tPurified                     , (int)Math.min(5000, Math.abs(aMat.getMass() * 20))    , crushedCentrifuged    .mat(aMat, 1), crushedCentrifugedTiny   .mat(UT.Code.select(1, aMat, aMat.mByProducts), 1));

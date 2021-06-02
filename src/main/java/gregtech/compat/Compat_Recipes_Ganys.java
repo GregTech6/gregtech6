@@ -75,7 +75,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LS.make(125), FL.Dragon_Breath.make(125), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1D .make(125), FL.Dragon_Breath.make(125), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LD.make(125), FL.Dragon_Breath.make(125), ZL_IS);
-			CR.shapeless(                           IL.Plank.get(7), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, IL.EtFu_Barrel});
+			CR.shapeless(                           IL.Plank.get(7), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, IL.EtFu_Barrel});
 			RM.sawing(16, 112, F, 100,              IL.EtFu_Barrel.get(1), IL.Plank.get(7));
 			
 			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "rose"              , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
@@ -152,23 +152,23 @@ public class Compat_Recipes_Ganys extends CompatMods {
 				CR.shaped(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(4), CR.DEF_MIR, "sX", "XX", 'X', IL.EtFu_Block_Copper_Cut_Oxidized_Waxed );
 				
 				for (OreDictPrefix tPrefix : OP.array_dust_ingot_plate) {
-					CR.shapeless(IL.EtFu_Block_Copper_Waxed              .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper              , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Exposed_Waxed      .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Exposed      , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Weathered_Waxed    .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Weathered    , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Oxidized     , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Waxed          .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut          , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
-					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Waxed              .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper              , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Exposed_Waxed      .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Exposed      , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Weathered_Waxed    .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Weathered    , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Oxidized_Waxed     .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Oxidized     , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Waxed          .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Block_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Block_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Waxed          .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Slabs_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Slabs_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Waxed          .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut          , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Exposed_Waxed  .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Exposed  , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Weathered, tPrefix.dat(ANY.Wax)});
 					if (IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed.exists())
-					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NAC_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
+					CR.shapeless(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .get(1), CR.DEF_NCC, new Object[] {IL.EtFu_Stair_Copper_Cut_Oxidized , tPrefix.dat(ANY.Wax)});
 				}
 				
 				for (OreDictMaterial tMat : ANY.Cu.mToThis) {

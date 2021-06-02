@@ -53,8 +53,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
 		
-		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {Items.bone});
-		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', Items.reeds);
+		CR.shapeless(OP.dust.mat(MT.White, 1), DEF, new Object[] {Items.bone});
+		CR.shaped(ST.make(Items.paper, 1, 0), DEF, "XXX", 'X', Items.reeds);
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone                , 'F', OD.craftingFirestarter);
@@ -78,9 +78,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(ST.make(Blocks.ender_chest, 1, 0), CR.DEF_NCC, "OOO", "OEO", "OOO", 'O', OP.blockSolid.dat(MT.Obsidian), 'E', OP.gem.dat(MT.EnderEye));
 		}
 		
-		CR.shaped(ST.make(Items.bucket, 1, 0), DEF_NAC | DEL_OTHER_SHAPED_RECIPES, "XhX", " Y ", 'Y', OP.plate.dat(ANY.Fe), 'X', OP.plateCurved.dat(ANY.Fe));
+		CR.shaped(ST.make(Items.bucket, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "XhX", " Y ", 'Y', OP.plate.dat(ANY.Fe), 'X', OP.plateCurved.dat(ANY.Fe));
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Bucket", T))
-		CR.shaped(ST.make(Items.bucket, 1, 0), DEF_NAC | DEL_OTHER_SHAPED_RECIPES, "X X", " X ", 'X', OP.ingot.dat(ANY.Fe));
+		CR.shaped(ST.make(Items.bucket, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "X X", " X ", 'X', OP.ingot.dat(ANY.Fe));
 		
 		ItemStack tMat = ST.make(Items.iron_ingot, 1, 0), tStack;
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.PressurePlate", T))    if (null != (tStack = CR.remove(tMat, tMat, null, null, null, null, null, null, null))) {
@@ -128,8 +128,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.stone_pressure_plate, 1, 0)    , DEF, "SS", 'S', Blocks.stone);
 		CR.shaped(ST.make(Blocks.stone_pressure_plate, 1, 0)    , DEF, "SS", 'S', OP.stone);
 		
-		CR.shapeless(stick    .mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {stick    .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
-		CR.shapeless(stickLong.mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {stickLong.dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
+		CR.shapeless(stick    .mat(MT.IronMagnetic, 1), DEF, new Object[] {stick    .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
+		CR.shapeless(stickLong.mat(MT.IronMagnetic, 1), DEF, new Object[] {stickLong.dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
 		
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', Items.bone);
 		
@@ -199,126 +199,127 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		for (int i = 0; i < tItems.length; i++) if (tItems[i].exists()) {
 			// Torches, lots and lots of Torches.
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.S));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.S));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.S));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.S));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.S));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.S));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.S));
 			
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dustTiny          .dat(MT.Blaze));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dustTiny          .dat(MT.Blaze));
 			
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.P));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.P));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.P));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.P));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.P));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.P));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.P));
 			
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
 			
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Peat));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Peat));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Peat));
 			
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.PeatBituminous));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.PeatBituminous));
 			
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', IL.NeLi_ShroomLight);
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemResin);
-			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry);
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', IL.TF_Torchberries);
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', IL.NeLi_ShroomLight);
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OD.itemResin);
+			CR.shaped(tItems[i].get(1), DEF, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry);
 			
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(2), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(8), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(4), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(6), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', Blocks.wool);
-			CR.shaped(tItems[i].get(2), DEF_NAC,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(2), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(8), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(4), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(6), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', Blocks.wool);
+			CR.shaped(tItems[i].get(2), DEF,  "WC",  "S ", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', Blocks.wool);
 			
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', OD.itemString);
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(2), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(8), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(4), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(6), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', OD.itemString);
-			CR.shaped(tItems[i].get(2), DEF_NAC, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rubbertreesap, 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rubbertreesap , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000spruceresin  , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250spruceresin   , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000maplesap     , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(2), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250maplesap      , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(8), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000rainbowsap   , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(4), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250rainbowsap    , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(6), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container1000creosote     , 'W', OD.itemString);
+			CR.shaped(tItems[i].get(2), DEF, "WCW", "WSW", 'S', tSticks[i], 'C', OD.container250creosote      , 'W', OD.itemString);
 			
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F)) {
 			CR.remove(ST.make(Items.coal, 1, 0), NI, NI, ST.make(Items.stick, 1, 0));
 			CR.remove(ST.make(Items.coal, 1, 1), NI, NI, ST.make(Items.stick, 1, 0));
 			} else {
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Charcoal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Charcoal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Charcoal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Charcoal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Charcoal));
 			
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Coal));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Coal));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Coal));
 			
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.CoalCoke));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.CoalCoke));
 			
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Anthracite));
-			CR.shaped(tItems[i].get(8), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Anthracite));
 			
-			CR.shaped(tItems[i].get(1), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Lignite));
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Lignite));
+			CR.shaped(tItems[i].get(1), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Lignite));
 			
-			CR.shaped(tItems[i].get(2), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
-			CR.shaped(tItems[i].get(4), DEF_NAC, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
 			}
 		}
 		
@@ -351,9 +352,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(OP.ingot.mat(MT.NetherizedDiamond, 1), OP.gem  .mat(MT.NetherizedDiamond, 1));
 		
 		
-		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
-		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
-		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);
+		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
+		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
+		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);
 		
 		CR.shaped(ST.make(Blocks.lever                  , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "W" ,  "S" , 'W', OD.stickAnyWood, 'S', OP.cobblestone);
 		CR.shaped(ST.make(Blocks.redstone_torch         , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "D" ,  "W" , 'W', OD.stickAnyWood, 'D', OD.itemRedstone);
@@ -431,7 +432,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.chainmail_boots         , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "R R", "RhR"       , 'R', OP.ring.dat(ANY.Steel));
 		
 		for (int i = 1; i < 16; i++)
-		CR.shapeless(ST.make(Blocks.wool, 1, i), DEF_NAC, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
+		CR.shapeless(ST.make(Blocks.wool, 1, i), DEF, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
 		
 		CR.delate(ST.make(Items.arrow, 1, 0));
 		CR.delate(ST.make(Items.cookie, 1, 0));
@@ -447,7 +448,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(MT.Plastic), 'P', plateTiny.dat(MT.Plastic));
 		
 		CR.shaped(ST.make(Blocks.stained_glass, 8, 0), DEF, "GGG", "GDG", "GGG", 'G', Blocks.glass, 'D', DYE_OREDICTS[15]);
-		CR.shaped(ST.make(Items.speckled_melon, 1, 0), DEF_NAC | DEL_OTHER_SHAPED_RECIPES, "GGG", "GMG", "GGG", 'M', "cropMelon", 'G', OP.nugget.dat(MT.Au));
+		CR.shaped(ST.make(Items.speckled_melon, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "GGG", "GMG", "GGG", 'M', "cropMelon", 'G', OP.nugget.dat(MT.Au));
 		
 		CR.remove(ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 4));
 		CR.remove(ST.make(Items.dye, 1, 2), ST.make(Items.dye, 1, 4));
@@ -462,18 +463,18 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 4), ST.make(Items.dye, 1, 9));
 		CR.remove(ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 4), ST.make(Items.dye, 1,15));
 		
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Purple     ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue  ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Cyan       ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Green  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue  ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Pink       ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Lime       ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Green  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_LightBlue  ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Magenta    ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink  ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Orange     ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Yellow]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Gray       ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Black  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
-		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_LightGray  ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
-		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_LightGray  ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Black  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
-		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
-		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF_NAC, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Purple     ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue  ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Cyan       ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Green  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue  ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Pink       ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Lime       ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Green  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_LightBlue  ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink  ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Orange     ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Red    ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Yellow]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_Gray       ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Black  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
+		CR.shapeless(ST.make(Items.dye, 2, DYE_INDEX_LightGray  ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ]});
+		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_LightGray  ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Black  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
+		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
+		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
 		
 		CR.shaped(OP.toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', "itemFlint");
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), OP.toolHeadArrow.mat(MT.Flint, 1));
@@ -559,20 +560,20 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  40, F, 100, ST.make(Blocks.ladder                    , 1, W), IL.Stick.get(2), OM.dust(MT.Wood, OP.stick.mAmount / 3));
 		RM.sawing(16,  16, T,  50, ST.make(Blocks.melon_block               , 1, W), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
-		CR.shapeless(IL.Plank.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_button        });
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_pressure_plate});
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.sign                  });
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.wooden_door           });
-		CR.shapeless(IL.Plank.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.fence_gate           });
-		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapdoor             });
-		CR.shapeless(IL.Plank.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.bed                   });
-		CR.shapeless(IL.Plank.get(4), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.crafting_table       });
-		CR.shapeless(IL.Plank.get(5), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Items.boat                  });
-		CR.shapeless(IL.Plank.get(6), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.bookshelf            });
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.chest                });
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapped_chest        });
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.noteblock            });
-		CR.shapeless(IL.Plank.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, Blocks.jukebox              });
+		CR.shapeless(IL.Plank.get(1), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_button        });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.wooden_pressure_plate});
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Items.sign                  });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Items.wooden_door           });
+		CR.shapeless(IL.Plank.get(2), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.fence_gate           });
+		CR.shapeless(IL.Plank.get(3), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapdoor             });
+		CR.shapeless(IL.Plank.get(3), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Items.bed                   });
+		CR.shapeless(IL.Plank.get(4), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.crafting_table       });
+		CR.shapeless(IL.Plank.get(5), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Items.boat                  });
+		CR.shapeless(IL.Plank.get(6), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.bookshelf            });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.chest                });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.trapped_chest        });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.noteblock            });
+		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.jukebox              });
 		
 		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block, 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
@@ -651,8 +652,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		
 		for (OreDictMaterial tBlaze : ANY.Blaze.mToThis) {
-		CR.shapeless(OP.dustTiny.mat(tBlaze, 2), CR.DEF_NAC, new Object[] {OP.stick.dat(tBlaze)});
-		CR.shapeless(OP.dustTiny.mat(tBlaze, 4), CR.DEF_NAC, new Object[] {OP.stickLong.dat(tBlaze)});
+		CR.shapeless(OP.dustTiny.mat(tBlaze, 2), CR.DEF, new Object[] {OP.stick.dat(tBlaze)});
+		CR.shapeless(OP.dustTiny.mat(tBlaze, 4), CR.DEF, new Object[] {OP.stickLong.dat(tBlaze)});
 		RM.Mortar    .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 3));
 		RM.Mortar    .addRecipe1(T, 16, 64, OP.stickLong.mat(tBlaze, 1), OP.dustTiny .mat(tBlaze, 6));
 		RM.Shredder  .addRecipe1(T, 16, 32, OP.stick    .mat(tBlaze, 1), OP.dustSmall.mat(tBlaze, 2));

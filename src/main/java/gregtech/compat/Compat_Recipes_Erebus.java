@@ -76,17 +76,17 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.pack(ST.make(Items.string, 9, 0), ST.make(MD.ERE, "blockSilk", 1, 0));
 		RM.unpack(ST.make(MD.ERE, "blockSilk", 1, 0), ST.make(Items.string, 9, 0));
 		
-		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
-		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
+		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
+		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
 		
 		
 		CR.delate(MD.ERE, "mirbrick");
 		if (IL.BoP_Mud_Brick.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', OD.itemClay);
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', OD.itemClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', OD.itemClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', OD.itemClay);
 		if (IL.BoP_Mud_Bricks.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Bricks, 'Y', OD.blockClay);
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', OD.blockClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.BoP_Mud_Bricks, 'Y', OD.blockClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', OD.blockClay);
 		
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));

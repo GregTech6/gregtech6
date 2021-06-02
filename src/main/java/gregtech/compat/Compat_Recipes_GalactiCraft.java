@@ -149,13 +149,13 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 		}
 		if (MD.VULPES.mLoaded) {
 			OUT.println("GT_Mod: Doing LibVulpes Recipes.");
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 2), CR.DEF_NAC_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Au));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 4), CR.DEF_NAC_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(ANY.Cu));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 7), CR.DEF_NAC_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Ti));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 9), CR.DEF_NAC_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Al));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1,10), CR.DEF_NAC_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Ir));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 7), CR.DEF_NAC_REV_NCC, "XXX", "X X", "XXX", 'X', OP.stickLong.dat(MT.Ti));
-			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1,10), CR.DEF_NAC_REV_NCC, "XXX", "X X", "XXX", 'X', OP.stickLong.dat(MT.Ir));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 2), CR.DEF_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Au));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 4), CR.DEF_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(ANY.Cu));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 7), CR.DEF_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Ti));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 9), CR.DEF_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Al));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1,10), CR.DEF_REV_NCC | CR.DEL_OTHER_SHAPED_RECIPES, "XXX", "X X", "XXX", 'X', OP.wireGt02.dat(MT.Ir));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1, 7), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.stickLong.dat(MT.Ti));
+			CR.shaped(ST.make(MD.VULPES, "libVulpescoil0", 1,10), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.stickLong.dat(MT.Ir));
 		}
 		if (MD.GC_ADV_ROCKETRY.mLoaded) {
 			OUT.println("GT_Mod: Doing Advanced Rocketry Recipes.");
@@ -191,7 +191,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			
 			CR.delate(MD.GC_GALAXYSPACE, "futureglasses", W);
 			for (byte i = 0; i < 16; i++){
-				CR.shaped(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i), CR.DEF_NAC_NCC, "GGG", "GDG", "GGG", 'G', ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), 'D', DYE_OREDICTS[i]);
+				CR.shaped(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i), CR.DEF_NCC, "GGG", "GDG", "GGG", 'G', ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), 'D', DYE_OREDICTS[i]);
 				for (FluidStack tDye : DYE_FLUIDS[i])
 				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}

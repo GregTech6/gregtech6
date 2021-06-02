@@ -342,42 +342,6 @@ public class DungeonData extends WorldAndCoords {
 		return pot(aX, aY, aZ);
 	}
 	
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2) {
-		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, 2);
-	}
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, int aFlags) {
-		if (aBlock1 != NB && aBlock1 != null) return aBlock2 != NB && aBlock2 != null && next1in2() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
-		if (aBlock2 != NB && aBlock2 != null) return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
-		return F;
-	}
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3) {
-		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3, 2);
-	}
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, int aFlags) {
-		if (aBlock1 == NB && aBlock1 == null) return set(aX, aY, aZ                 , aBlock2, aMeta2, aBlock3, aMeta3, aFlags);
-		if (aBlock2 == NB && aBlock2 == null) return set(aX, aY, aZ, aBlock1, aMeta1                 , aBlock3, aMeta3, aFlags);
-		if (aBlock3 == NB && aBlock3 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2                 , aFlags);
-		switch(next(3)) {
-		case  0: return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
-		case  1: return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
-		default: return set(aX, aY, aZ, aBlock3, aMeta3, aFlags);
-		}
-	}
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, Block aBlock4, int aMeta4) {
-		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3, aBlock4, aMeta4, 2);
-	}
-	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, Block aBlock4, int aMeta4, int aFlags) {
-		if (aBlock1 == NB && aBlock1 == null) return set(aX, aY, aZ                 , aBlock2, aMeta2, aBlock3, aMeta3, aBlock4, aMeta4, aFlags);
-		if (aBlock2 == NB && aBlock2 == null) return set(aX, aY, aZ, aBlock1, aMeta1                 , aBlock3, aMeta3, aBlock4, aMeta4, aFlags);
-		if (aBlock3 == NB && aBlock3 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2                 , aBlock4, aMeta4, aFlags);
-		if (aBlock4 == NB && aBlock4 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3                 , aFlags);
-		switch(next(4)) {
-		case  0: return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
-		case  1: return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
-		case  2: return set(aX, aY, aZ, aBlock3, aMeta3, aFlags);
-		default: return set(aX, aY, aZ, aBlock4, aMeta4, aFlags);
-		}
-	}
 	public boolean set(int aX, int aY, int aZ, Block aBlock) {
 		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, 0, 2);
 	}
@@ -391,5 +355,44 @@ public class DungeonData extends WorldAndCoords {
 		if (!set(aX, aY, aZ, aBlock, aMeta, aFlags)) return F;
 		while (aRotationCount-->0) aBlock.rotateBlock(mWorld, mX+aX, mY+aY, mZ+aZ, FORGE_DIR[SIDE_Y_POS]);
 		return T;
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2) {
+		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, 2);
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, int aFlags) {
+		if (aBlock1 == NB || aBlock1 == null) return set(aX, aY, aZ                 , aBlock2, aMeta2, aFlags);
+		if (aBlock2 == NB || aBlock2 == null) return set(aX, aY, aZ, aBlock1, aMeta1                 , aFlags);
+		switch(next(2)) {
+		case  0: return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
+		default: return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+		}
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3) {
+		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3, 2);
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, int aFlags) {
+		if (aBlock1 == NB || aBlock1 == null) return set(aX, aY, aZ                 , aBlock2, aMeta2, aBlock3, aMeta3, aFlags);
+		if (aBlock2 == NB || aBlock2 == null) return set(aX, aY, aZ, aBlock1, aMeta1                 , aBlock3, aMeta3, aFlags);
+		if (aBlock3 == NB || aBlock3 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2                 , aFlags);
+		switch(next(3)) {
+		case  0: return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
+		case  1: return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+		default: return set(aX, aY, aZ, aBlock3, aMeta3, aFlags);
+		}
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, Block aBlock4, int aMeta4) {
+		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3, aBlock4, aMeta4, 2);
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, Block aBlock3, int aMeta3, Block aBlock4, int aMeta4, int aFlags) {
+		if (aBlock1 == NB || aBlock1 == null) return set(aX, aY, aZ                 , aBlock2, aMeta2, aBlock3, aMeta3, aBlock4, aMeta4, aFlags);
+		if (aBlock2 == NB || aBlock2 == null) return set(aX, aY, aZ, aBlock1, aMeta1                 , aBlock3, aMeta3, aBlock4, aMeta4, aFlags);
+		if (aBlock3 == NB || aBlock3 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2                 , aBlock4, aMeta4, aFlags);
+		if (aBlock4 == NB || aBlock4 == null) return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, aBlock3, aMeta3                 , aFlags);
+		switch(next(4)) {
+		case  0: return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
+		case  1: return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+		case  2: return set(aX, aY, aZ, aBlock3, aMeta3, aFlags);
+		default: return set(aX, aY, aZ, aBlock4, aMeta4, aFlags);
+		}
 	}
 }

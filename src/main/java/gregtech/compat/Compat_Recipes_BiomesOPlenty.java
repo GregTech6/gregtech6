@@ -70,9 +70,9 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', IL.BoP_Bone_Small);
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', IL.BoP_Bone_Medium);
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', IL.BoP_Bone_Large);
-		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {IL.BoP_Bone_Small});
-		CR.shapeless(OP.dust.mat(MT.White, 2), DEF_NAC, new Object[] {IL.BoP_Bone_Medium});
-		CR.shapeless(OP.dust.mat(MT.White, 4), DEF_NAC, new Object[] {IL.BoP_Bone_Large});
+		CR.shapeless(OP.dust.mat(MT.White, 1), DEF, new Object[] {IL.BoP_Bone_Small});
+		CR.shapeless(OP.dust.mat(MT.White, 2), DEF, new Object[] {IL.BoP_Bone_Medium});
+		CR.shapeless(OP.dust.mat(MT.White, 4), DEF, new Object[] {IL.BoP_Bone_Large});
 		RM.Mortar       .addRecipe1(T, 16, 16, IL.BoP_Bone_Small.get(1), IL.Dye_Bonemeal.get(2));
 		RM.Mortar       .addRecipe1(T, 16, 32, IL.BoP_Bone_Medium.get(1), IL.Dye_Bonemeal.get(4));
 		RM.Mortar       .addRecipe1(T, 16, 64, IL.BoP_Bone_Large.get(1), IL.Dye_Bonemeal.get(8));

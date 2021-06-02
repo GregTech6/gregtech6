@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,9 +53,9 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		RM.rem_smelting(ST.make(MD.TG, "TechgunsAmmo", 1, 71), ST.make(MD.TG, "TechgunsAmmo", 1, 72));
 		
 		
-		CR.shapeless(ST.make(MD.TG, "TechgunsAmmo", 4, 0), CR.DEF_NAC_NCC, new Object[] {OP.dustSmall.dat(MT.Gunpowder), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone)});
+		CR.shapeless(ST.make(MD.TG, "TechgunsAmmo", 4, 0), CR.DEF_NCC, new Object[] {OP.dustSmall.dat(MT.Gunpowder), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone)});
 		
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NAC_NCC, new Object[] {"X  ", "  x", 'X', OP.wireGt01.dat(ANY.Cu)});
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NCC, new Object[] {"X  ", "  x", 'X', OP.wireGt01.dat(ANY.Cu)});
 		
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.Pb));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.HSLA));

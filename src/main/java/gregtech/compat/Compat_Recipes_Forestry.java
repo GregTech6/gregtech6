@@ -66,12 +66,12 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		CR.shapeless(ST.make(MD.FR, "gearBronze", 1, 0), new Object[] {OP.gearGt.dat(MT.Bronze)});
 		
 		
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassMoldy, OD.itemGrassMoldy});
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassRotten});
-		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_NAC_NCC, new Object[] {IL.Food_Bread_Sliced, OP.bottle.dat(MT.Honey)});
-		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NAC_NCC, "G", "P", 'P', "paperEmpty", 'G', OD.itemGlue);
-		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NAC_NCC, "G", "P", 'P', "paperEmpty", 'G', "listAllpropolis");
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemGrassMoldy, OD.itemGrassMoldy});
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemGrassRotten});
+		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_NCC, new Object[] {IL.Food_Bread_Sliced, OP.bottle.dat(MT.Honey)});
+		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NCC, "G", "P", 'P', OD.paperEmpty, 'G', OD.itemGlue);
+		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NCC, "G", "P", 'P', OD.paperEmpty, 'G', "listAllpropolis");
 		
 		RM.Printer.addRecipe2(F, 16,128, ST.make(Items.paper, 1, W), ST.tag(0), FL.Glue.make(200), NF, ST.make(MD.FR, "letters", 1, 0));
 		

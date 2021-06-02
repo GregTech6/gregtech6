@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -111,14 +111,14 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown    ], OM.dust(MT.Brown));
 		
-		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
-		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
-		CR.shapeless(OM.dust(MT.Magenta  ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 2)});
-		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
-		CR.shapeless(OM.dust(MT.Pink     ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
-		CR.shapeless(OM.dust(MT.White    ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
-		CR.shapeless(OM.dust(MT.LightBlue), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
-		CR.shapeless(OM.dust(MT.Brown    ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 7)});
+		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 0)});
+		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 1)});
+		CR.shapeless(OM.dust(MT.Magenta  ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 2)});
+		CR.shapeless(OM.dust(MT.Yellow   ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 3)});
+		CR.shapeless(OM.dust(MT.Pink     ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 4)});
+		CR.shapeless(OM.dust(MT.White    ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 5)});
+		CR.shapeless(OM.dust(MT.LightBlue), CR.DEF_NCC, new Object[] {ST.make(this, 1, 6)});
+		CR.shapeless(OM.dust(MT.Brown    ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 7)});
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow   ));

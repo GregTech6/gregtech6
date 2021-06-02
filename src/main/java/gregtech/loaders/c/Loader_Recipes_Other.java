@@ -388,24 +388,24 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		//----------------------------------------------------------------------------
 		
-		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
-		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
-		CR.shaped(ST.make(Blocks.stone_slab          , 1,  2), CR.DEF_NAC, "XX"      , 'X', rockGt.dat(MT.PetrifiedWood));
-		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "b ", " X", 'X', plate.dat(MT.Paper));
-		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "q ", " X", 'X', plate.dat(MT.Paper));
+		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF, "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(ST.make(Blocks.stone_slab          , 1,  2), CR.DEF, "XX"      , 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF, "b ", " X", 'X', plate.dat(MT.Paper));
+		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF, "q ", " X", 'X', plate.dat(MT.Paper));
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {
-		CR.shaped(ring          .mat(tWax               ,  1), CR.DEF_NAC, "k", "X", 'X', plate.dat(tWax));
-		CR.shaped(casingSmall   .mat(tWax               ,  1), CR.DEF_NAC, "X", "k", 'X', plate.dat(tWax));
+		CR.shaped(ring          .mat(tWax               ,  1), CR.DEF, "k", "X", 'X', plate.dat(tWax));
+		CR.shaped(casingSmall   .mat(tWax               ,  1), CR.DEF, "X", "k", 'X', plate.dat(tWax));
 		}
-		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF_NAC, "k", "X", 'X', plate.dat(MT.Rubber));
-		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF_NAC, "X", "k", 'X', plate.dat(MT.Rubber));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', OD.buttonStone);
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
-		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF_NAC, "P ", " f", 'P', stoneSmooth);
+		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF, "k", "X", 'X', plate.dat(MT.Rubber));
+		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF, "X", "k", 'X', plate.dat(MT.Rubber));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', OD.buttonStone);
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
+		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF, "P ", " f", 'P', stoneSmooth);
 		
 		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (!tMat.containsAny(TD.Properties.INVALID_MATERIAL, TD.Compounds.COATED, TD.Properties.WOOD) && tMat.mTargetRegistration == tMat)
-		CR.shaped(gearGtSmall.mat(tMat, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "P ", tMat.contains(TD.Properties.STONE)?" f":" h", 'P', plate.dat(tMat));
+		CR.shaped(gearGtSmall.mat(tMat, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "P ", tMat.contains(TD.Properties.STONE)?" f":" h", 'P', plate.dat(tMat));
 		
 		
 		RM.Slicer           .addRecipe2(T, 16,   16, ST.make(Items.paper, 1, W), IL.Shape_Slicer_Grid.get(0), plateTiny.mat(MT.Paper, 9));

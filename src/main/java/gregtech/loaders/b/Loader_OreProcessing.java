@@ -74,7 +74,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_OreProcessing implements Runnable {
-	static final long RECIPE_BITS = CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT;
+	static final long RECIPE_BITS = CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT;
 
 	@Override
 	@SuppressWarnings({"unchecked", "rawtypes"})

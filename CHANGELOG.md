@@ -38,6 +38,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
 [CHANGED] The Crusher now has 12 Output Slots instead of 6. Because the Block of Raw Ore can be crushed now, and that means more throughput is needed.
+[ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] GT6 Dungeons now have Ore Blocks and Ore Crates in their Storage Rooms.
 [ADDED] Asbestos now has Jade as a Byproduct, making Fortune III Tools more available.
