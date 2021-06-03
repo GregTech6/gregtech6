@@ -317,6 +317,9 @@ public class LanguageHandler {
 			if (aPrefix == OP.chemtube)                                     return aPrefix.mMaterialPre + "Entropy infused Powder";
 			return aPrefix.mMaterialPre + "Entropy infused" + aPrefix.mMaterialPost;
 		} else
+		if (aMaterial == MT.Craponite) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Flavourite";
+		} else
 		if (aMaterial == MT.Wheat) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Flour";
 		} else

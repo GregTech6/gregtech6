@@ -40,6 +40,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Bumblehives in the wild can now be measured with a Thermometer. This should help finding a proper new Home for a Hive.
 [CHANGED] Axes and such are now able to chop down whole vanilla Mushrooms in one go.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
+[CHANGED] Craponite Dust is now the new Main Component of Purple Drink instead of Sugar.
 [CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
 [ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.

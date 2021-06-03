@@ -68,9 +68,11 @@ public class Loader_Recipes_Potions implements Runnable {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Poison_1         .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_Harm_2           .make(250), ZL_IS);
 		}
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Craponite, 1), OP.dustSmall.mat(MT.Craponite, 4), OP.dustTiny.mat(MT.Craponite, 9))) if (tStack != null) {
+		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Mundane.make(750), FL.Purple_Drink            .make(750), ZL_IS);
+		}
 		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Sugar, 1), OP.dustSmall.mat(MT.Sugar, 4), OP.dustTiny.mat(MT.Sugar, 9), gemChipped.mat(MT.Sugar, 4))) if (tStack != null) {
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.DistW         .make(750), FL.Potion_Mundane          .make(750), ZL_IS);
-		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Mundane.make(750), FL.Purple_Drink            .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 48, tStack, FL.Potion_Awkward.make(750), FL.Potion_Speed_1          .make(750), ZL_IS);
 		RM.Distillery.addRecipe1(T, 16, 16, tStack, FL.Potion_Thick  .make(250), FL.Potion_Speed_2          .make(250), ZL_IS);
 		}
