@@ -24,7 +24,9 @@ import static gregapi.data.CS.*;
 import gregapi.block.BlockBaseMeta;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.RM;
 import gregapi.old.Textures;
+import gregapi.recipes.maps.RecipeMapCrucible;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.block.material.Material;
@@ -41,6 +43,10 @@ public class BlockSands extends BlockBaseMeta {
 		OM.data(ST.make(this, 1, 0), MT.OREMATS.Magnetite, U);
 		OM.data(ST.make(this, 1, 1), MT.OREMATS.BasalticMineralSand, U);
 		OM.data(ST.make(this, 1, 2), MT.OREMATS.GraniticMineralSand, U);
+		
+		for (byte i = 0; i < maxMeta(); i++) {
+			((RecipeMapCrucible)RM.CrucibleSmelting).getRecipeFor(ST.make(this, 1, i));
+		}
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return T;}

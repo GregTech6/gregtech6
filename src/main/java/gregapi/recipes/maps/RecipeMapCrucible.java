@@ -78,7 +78,7 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 	}
 	
 	@Override
-	protected Recipe getRecipeFor(ItemStack aInput) {
+	public Recipe getRecipeFor(ItemStack aInput) {
 		OreDictItemData aData = OM.anydata(aInput);
 		if (aData == null) return null;
 		

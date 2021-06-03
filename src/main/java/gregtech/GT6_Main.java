@@ -517,24 +517,34 @@ public class GT6_Main extends Abstract_Mod {
 		if (CODE_CLIENT) {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
-					boolean temp = T;
-					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls<>(), tIngots = new ArrayListNoNulls<>();
+					boolean temp = T, tAddSpecial = F;
+					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls<>(), tIngots = new ArrayListNoNulls<>(), tSpecial = new ArrayListNoNulls<>();
 					ArrayListNoNulls<Long> tMeltingPoints = new ArrayListNoNulls<>();
 					for (OreDictMaterialStack tMaterial : tAlloy.getUndividedComponents()) {
+						boolean tAddedSpecial = F;
 						if (tMaterial.mMaterial.mHidden) {temp = F; break;}
 						if (tMaterial.mMaterial == MT.Air) {
 							tDusts .add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
 							tIngots.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
 							continue;
 						}
+						if (tMaterial.mMaterial == MT.OREMATS.Magnetite          ) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 0));} else
+						if (tMaterial.mMaterial == MT.OREMATS.BasalticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 1));} else
+						if (tMaterial.mMaterial == MT.OREMATS.GraniticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 2));} else
+						if (tMaterial.mMaterial == MT.C                          ) {tAddedSpecial = tSpecial.add(OM.dustOrIngot(MT.Coal, tMaterial.mAmount * 2));}
+						
 						tMeltingPoints.add(tMaterial.mMaterial.mMeltingPoint);
-						if (!tDusts.add(OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount))) {temp = F; break;}
+						ItemStack tDust = OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount);
+						if (!tDusts.add(tDust)) {temp = F; break;}
 						tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
+						if (tAddedSpecial) tAddSpecial = T; else tSpecial.add(tDust);
 					}
 					Collections.sort(tMeltingPoints);
 					if (temp) {
-						RM.CrucibleAlloying.addFakeRecipe(F, tDusts .toArray(ZL_IS), ST.array(OM.ingotOrDust(aMaterial, tAlloy.getCommonDivider() * U)), null, null, null, null, 0, 0, tMeltingPoints.size()>1?Math.max(tMeltingPoints.get(tMeltingPoints.size()-2), aMaterial.mMeltingPoint):aMaterial.mMeltingPoint);
-						RM.CrucibleAlloying.addFakeRecipe(F, tIngots.toArray(ZL_IS), ST.array(OM.ingotOrDust(aMaterial, tAlloy.getCommonDivider() * U)), null, null, null, null, 0, 0, tMeltingPoints.size()>1?Math.max(tMeltingPoints.get(tMeltingPoints.size()-2), aMaterial.mMeltingPoint):aMaterial.mMeltingPoint);
+						RM.CrucibleAlloying.addFakeRecipe(F, tDusts  .toArray(ZL_IS), ST.array(OM.ingotOrDust(aMaterial, tAlloy.getCommonDivider() * U)), null, null, null, null, 0, 0, tMeltingPoints.size()>1?Math.max(tMeltingPoints.get(tMeltingPoints.size()-2), aMaterial.mMeltingPoint):aMaterial.mMeltingPoint);
+						RM.CrucibleAlloying.addFakeRecipe(F, tIngots .toArray(ZL_IS), ST.array(OM.ingotOrDust(aMaterial, tAlloy.getCommonDivider() * U)), null, null, null, null, 0, 0, tMeltingPoints.size()>1?Math.max(tMeltingPoints.get(tMeltingPoints.size()-2), aMaterial.mMeltingPoint):aMaterial.mMeltingPoint);
+						if (tAddSpecial)
+						RM.CrucibleAlloying.addFakeRecipe(F, tSpecial.toArray(ZL_IS), ST.array(OM.ingotOrDust(aMaterial, tAlloy.getCommonDivider() * U)), null, null, null, null, 0, 0, tMeltingPoints.size()>1?Math.max(tMeltingPoints.get(tMeltingPoints.size()-2), aMaterial.mMeltingPoint):aMaterial.mMeltingPoint);
 					}
 				}
 			}

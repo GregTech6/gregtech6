@@ -42,6 +42,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
 [CHANGED] Craponite Dust is now the new Main Component of Purple Drink instead of Sugar.
 [CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
+[ADDED] NEI now additionally shows a Version with Black Sand Blocks and Coal whenever an Alloying Recipe for when Magnetite or Carbon is shown.
 [ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] GT6 Dungeons now have Ore Blocks and Ore Crates in their Storage Rooms.

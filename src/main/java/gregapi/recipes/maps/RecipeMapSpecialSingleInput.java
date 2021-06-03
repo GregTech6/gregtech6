@@ -57,5 +57,5 @@ public abstract class RecipeMapSpecialSingleInput extends RecipeMap {
 		return rList;
 	}
 	
-	protected abstract Recipe getRecipeFor(ItemStack aInput);
+	public abstract Recipe getRecipeFor(ItemStack aInput);
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,7 +44,7 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 	}
 	
 	@Override
-	protected Recipe getRecipeFor(ItemStack aInput) {
+	public Recipe getRecipeFor(ItemStack aInput) {
 		OreDictItemData aData = OM.anydata(aInput);
 		if (aData == null || (aData.mPrefix != null && (!aData.mPrefix.contains(TD.Prefix.RECYCLABLE) || aData.mPrefix.containsAny(TD.Prefix.DUST_BASED, TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED))) || (aData.mMaterial != null && aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) || FL.getFluid(aInput, T) != null) return null;
 		List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
