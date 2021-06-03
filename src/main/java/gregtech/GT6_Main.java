@@ -528,10 +528,11 @@ public class GT6_Main extends Abstract_Mod {
 							tIngots.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
 							continue;
 						}
-						if (tMaterial.mMaterial == MT.OREMATS.Magnetite          ) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 0));} else
-						if (tMaterial.mMaterial == MT.OREMATS.BasalticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 1));} else
-						if (tMaterial.mMaterial == MT.OREMATS.GraniticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, 1, 2));} else
+						if (tMaterial.mMaterial == MT.OREMATS.Magnetite          ) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, UT.Code.divup(tMaterial.mAmount, U), 0));} else
+						if (tMaterial.mMaterial == MT.OREMATS.BasalticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, UT.Code.divup(tMaterial.mAmount, U), 1));} else
+						if (tMaterial.mMaterial == MT.OREMATS.GraniticMineralSand) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, UT.Code.divup(tMaterial.mAmount, U), 2));} else
 						if (tMaterial.mMaterial == MT.C                          ) {tAddedSpecial = tSpecial.add(OM.dustOrIngot(MT.Coal, tMaterial.mAmount * 2));}
+						if (tMaterial.mMaterial == MT.CaCO3                      ) {tAddedSpecial = tSpecial.add(OM.dustOrIngot(MT.STONES.Limestone, tMaterial.mAmount * 2));}
 						
 						tMeltingPoints.add(tMaterial.mMaterial.mMeltingPoint);
 						ItemStack tDust = OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount);
