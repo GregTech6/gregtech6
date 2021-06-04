@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -171,10 +171,12 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			mPumpedFluids.add(Blocks.flowing_lava);
 			mDir = +1;
 		} else
-		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River) {
+		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.Swamp) {
 			mPumpedFluids.add(Blocks.water);
 			mPumpedFluids.add(Blocks.flowing_water);
 			mPumpedFluids.add(BlocksGT.River);
+			mPumpedFluids.add(BlocksGT.Ocean);
+			mPumpedFluids.add(BlocksGT.Swamp);
 			mDir = +1;
 		} else
 		if (aBlock instanceof IFluidBlock) {

@@ -24,6 +24,7 @@ Glowtus can now be chiseled into different Colors and GT6 Logs can now be chisel
 [FIXED] Clientside FPS Lag when holding Rightclick with GT6 Tools is now gone for good.
 [FIXED] The Boxinator somehow did not have Recipes for Nugget->Ingot, Chunk->Ingot or Dust piling. This was a really big oversight.
 [FIXED] Bluepower Volcanos and Immersive Engineering Village Houses no longer let you skip to Tungsten and aluminium anymore.
+[FIXED] Coke Bricks were not considered "fuelCoke", "coke" and "coalCoke" for the OreDict.
 [CHANGED]
 A bunch of Recipes that previously outputted Iron, now output something else, usually Hematite.
 I try to make people either process Hematite properly or dig up Black Sand. Looting it from places is okay too.
@@ -42,6 +43,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
 [CHANGED] Craponite Dust is now the new Main Component of Purple Drink instead of Sugar.
 [CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
+[CHANGED] Rotational Pumps no longer distinguish between the 4 different Types of Water, and just consider them the same when scanning the Area. This should make Areas where Rivers and Oceans mix much easier to drain.
 [ADDED] NEI now additionally shows a Version with Black Sand Blocks and Coal whenever an Alloying Recipe for when Magnetite or Carbon is shown.
 [ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
