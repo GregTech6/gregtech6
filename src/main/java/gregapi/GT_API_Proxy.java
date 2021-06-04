@@ -1342,14 +1342,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				tBurnTime = tData.mMaterial.mMaterial.mFurnaceBurnTime * 10;
 			} else if (tData.mPrefix == null || tData.mPrefix.contains(TD.Prefix.BURNABLE)) {
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += (tData.mPrefix == OP.oreRaw ? tMaterial.mMaterial.mFurnaceBurnTime : tData.mPrefix == OP.blockRaw ? tMaterial.mMaterial.mFurnaceBurnTime * 10 : UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F));
-				if (tData.mPrefix == OP.stick          && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max( TICKS_PER_SMELT     /2, tBurnTime));
-				if (tData.mPrefix == OP.stickLong      && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max( TICKS_PER_SMELT       , tBurnTime));
-				if (tData.mPrefix == OP.blockPlate     && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT* 27)/2, tBurnTime));
-				if (tData.mPrefix == OP.crateGtPlate   && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT* 51)/2, tBurnTime));
-				if (tData.mPrefix == OP.crateGt64Plate && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return UT.Code.bind15(Math.max((TICKS_PER_SMELT*195)/2, tBurnTime));
+				if (tData.mPrefix == OP.stick          && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT     /2, tBurnTime));
+				if (tData.mPrefix == OP.stickLong      && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT       , tBurnTime));
+				if (tData.mPrefix == OP.blockPlate     && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 27)/2, tBurnTime));
+				if (tData.mPrefix == OP.crateGtPlate   && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 51)/2, tBurnTime));
+				if (tData.mPrefix == OP.crateGt64Plate && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT*195)/2, tBurnTime));
 			}
 			rFuelValue = Math.max(rFuelValue, tBurnTime);
 		}
-		return UT.Code.bind15(rFuelValue);
+		// return at most 160 Smelts, without any fraction smelts.
+		return (int)UT.Code.bind(0, 32000, rFuelValue);
 	}
 }
