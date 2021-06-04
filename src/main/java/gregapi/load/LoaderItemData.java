@@ -922,18 +922,18 @@ public class LoaderItemData implements Runnable {
 		
 		if (MD.UB.mLoaded) {
 			for (String tName : new String [] {"sedimentaryStone"}) {
-				OM.reg(OP.stone, MT.STONES.Limestone                   , ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.STONES.Limestone            , ST.make(MD.UB, tName, 1,  0));
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.UB, tName, 1,  1));
-				OM.reg(OP.stone, MT.STONES.Shale                       , ST.make(MD.UB, tName, 1,  2));
-				OM.reg(OP.stone, MT.STONES.Siltstone                   , ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.STONES.Shale                , ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.STONES.Siltstone            , ST.make(MD.UB, tName, 1,  3));
 				OM.reg(OP.stone, MT.Lignite                     , ST.make(MD.UB, tName, 1,  4));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.UB, tName, 1,  5));
-				OM.reg(OP.stone, MT.STONES.Greywacke                   , ST.make(MD.UB, tName, 1,  6));
-				OM.reg(OP.stone, MT.STONES.Chert                       , ST.make(MD.UB, tName, 1,  7));
-				OM.reg(OP.stone, MT.STONES.Limestone                   , ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.STONES.Greywacke            , ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.STONES.Chert                , ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.STONES.Limestone            , ST.make(MD.UB, tName, 1,  8));
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.UB, tName, 1,  9));
-				OM.reg(OP.stone, MT.STONES.Shale                       , ST.make(MD.UB, tName, 1, 10));
-				OM.reg(OP.stone, MT.STONES.Siltstone                   , ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.STONES.Shale                , ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.STONES.Siltstone            , ST.make(MD.UB, tName, 1, 11));
 				OM.reg(OP.stone, MT.Lignite                     , ST.make(MD.UB, tName, 1, 12));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.UB, tName, 1, 13));
 				OM.reg(OP.stone, MT.STONES.Greywacke            , ST.make(MD.UB, tName, 1, 14));

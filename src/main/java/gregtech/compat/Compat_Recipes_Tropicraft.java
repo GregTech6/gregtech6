@@ -84,10 +84,14 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1,12), ST.make(Items.dye, 3, DYE_INDEX_Green    ));
 		}
 		
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Charcoal)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Charcoal)                    , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Charcoal)                      , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Charcoal)                     , 'S', OP.stick.dat(MT.Bamboo));
 		
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Coal)                        , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Coal)                          , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Coal)                         , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.Coal)                      , 'S', OP.stick.dat(MT.Bamboo));
@@ -95,13 +99,26 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Coal)           , 'S', OP.stick.dat(MT.Bamboo));
 		
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.CoalCoke)                    , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.CoalCoke)                      , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.CoalCoke)                     , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.CoalCoke)                  , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.CoalCoke)          , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.CoalCoke)       , 'S', OP.stick.dat(MT.Bamboo));
 		
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Anthracite)                 , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Anthracite)                 , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Anthracite)                  , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Anthracite)                    , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Anthracite)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.Anthracite)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.Anthracite)        , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Anthracite)     , 'S', OP.stick.dat(MT.Bamboo));
+		
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, " X ", " SX", "S  ", 'X', OP.rockGt.dat(MT.Lignite)                    , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Lignite)                    , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Lignite)                     , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Lignite)                       , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Lignite)                      , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.Lignite)                   , 'S', OP.stick.dat(MT.Bamboo));
@@ -109,6 +126,8 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Lignite)        , 'S', OP.stick.dat(MT.Bamboo));
 		
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.LigniteCoke)                 , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.LigniteCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.LigniteCoke)                  , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.LigniteCoke)               , 'S', OP.stick.dat(MT.Bamboo));
