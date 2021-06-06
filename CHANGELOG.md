@@ -53,7 +53,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
 [ADDED] GT6 Dungeons now have Ore Blocks and Ore Crates in their Storage Rooms.
 [ADDED] Asbestos now has Jade as a Byproduct, making Fortune III Tools more available.
-[ADDED] The Drain can now also produce liquid Slime should a Slime be ontop of it. Works with Green, Magma, Maze and Pink Slimes.
+[ADDED] The Drain can now produce liquid Slime should a Slime be ontop of it, and Squid Ink when there is a Squid ontop (good luck figuring out how to do that, I know a way). Slime works with Green, Magma, Maze and Pink Slimes.
 [ADDED] GT6 Logs can now be crafted into their All-Bark Variant using some Bark. For Non-GT6 Logs you will still have to use the Soft Hammer after placing the Log though.
 [ADDED] Raw Ore Items similar to the ones in the latest Minecraft Snapshots. They will only be dropped if you use a Fortune Tool to harvest the GT6 Ore Blocks.
 

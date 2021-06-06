@@ -83,7 +83,7 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 					WD.set(aChunk, i, mHeight-4, j, BlocksGT.River, 0);
 					WD.set(aChunk, i, mHeight-5, j, BlocksGT.River, 0);
 					WD.set(aChunk, i, mHeight-6, j, BlocksGT.River, 0);
-					WD.set(aChunk, i, mHeight-7, j, BlocksGT.Sands, 0);
+					WD.set(aChunk, i, mHeight-7, j, BlocksGT.Sands, aMinX < 0 ? aMinZ < 0 ? 0 : 1 : aMinZ < 0 ? 2 : 0);
 					WD.set(aChunk, i, mHeight-8, j, Blocks.gravel, 1);
 					WD.set(aChunk, i, mHeight-9, j, Blocks.clay, 0);
 					WD.set(aChunk, i, mHeight-10, j, Blocks.clay, 0);
