@@ -52,8 +52,8 @@ public class MultiTileEntityScrap extends MultiTileEntityPlaceable {
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, 0, 0, 1, PX_P[1], 1);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
 	
-	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget) {return OP.scrapGt.mat(mMaterial, 9);}
-	@Override public ItemStack getStackFromBlock(byte aSide) {return OP.scrapGt.mat(mMaterial, 9);}
+	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget) {return OP.scrapGt.mat(mMaterial, 1);}
+	@Override public ItemStack getStackFromBlock(byte aSide) {return OP.scrapGt.mat(mMaterial, 1);}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.scrap";}
 }

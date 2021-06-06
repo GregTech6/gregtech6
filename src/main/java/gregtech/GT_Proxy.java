@@ -350,7 +350,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && ST.block(aStack) == NB) {
 						OreDictItemData tData = OM.anyassociation_(aStack);
 						if (tData != null) {
-							if (tData.mPrefix == OP.rockGt) {
+							if (tData.mPrefix == OP.rockGt || tData.mPrefix == OP.oreRaw) {
 								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
 									ST.use(aEvent.entityPlayer, aStack); aEvent.setCanceled(T);
 								}

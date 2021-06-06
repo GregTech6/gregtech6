@@ -1209,35 +1209,37 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					return;
 				}
 			}
-			OreDictItemData tData = OM.anydata(aStack);
-			if (tData != null) {
-				if (tData.mPrefix == OP.rockGt) {
-					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
-						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+			if (tRegistry != null) {
+				OreDictItemData tData = OM.anydata(aStack);
+				if (tData != null) {
+					if (tData.mPrefix == OP.rockGt || tData.mPrefix == OP.oreRaw) {
+						for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (WD.air(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]) && tRegistry.mBlock.placeBlock(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, (short)32074, ST.save(NBT_VALUE, aStack), T, F)) {
+							aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+						}
 					}
-				}
-				if (tData.mPrefix == OP.ingot) {
-					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32084, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
-						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					if (tData.mPrefix == OP.ingot) {
+						for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (WD.air(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]) && tRegistry.mBlock.placeBlock(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, (short)32084, ST.save(NBT_VALUE, aStack), T, F)) {
+							aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+						}
 					}
-				}
-				if (tData.mPrefix == OP.plate) {
-					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32085, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
-						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					if (tData.mPrefix == OP.plate) {
+						for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (WD.air(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]) && tRegistry.mBlock.placeBlock(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, (short)32085, ST.save(NBT_VALUE, aStack), T, F)) {
+							aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+						}
 					}
-				}
-				if (tData.mPrefix == OP.plateGem) {
-					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32086, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
-						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					if (tData.mPrefix == OP.plateGem) {
+						for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (WD.air(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]) && tRegistry.mBlock.placeBlock(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, (short)32086, ST.save(NBT_VALUE, aStack), T, F)) {
+							aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+						}
 					}
-				}
-				if (tData.mPrefix == OP.scrapGt) {
-					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32103, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
-						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					if (tData.mPrefix == OP.scrapGt) {
+						for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (WD.air(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]) && tRegistry.mBlock.placeBlock(aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, (short)32103, ST.save(NBT_VALUE, aStack), T, F)) {
+							aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+						}
 					}
 				}
 			}
-			
 			GarbageGT.trash(aStack);
 			aStack.stackSize = 0;
 			aEvent.extraLife = 0;
