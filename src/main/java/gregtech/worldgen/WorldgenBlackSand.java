@@ -52,7 +52,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 		for (String tName : aBiomeNames) if (BIOMES_RIVER.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		
-		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12, aMeta = aRandom.nextInt(3);
+		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12, aMeta = new NoiseGenerator(aWorld).get(aMinX/4, 360, aMinZ/4, 3);
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = WD.block(aWorld, tX+i, tUpperBound+1, tZ+j);
 			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {

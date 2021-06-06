@@ -91,26 +91,14 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 	public static boolean addCoords(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
 		NBTTagCompound aNBT = UT.NBT.getNBT(aStack);
 		ArrayListNoNulls<ChunkCoordinates> tList = getCoords(aNBT, aWorld.provider.dimensionId);
+		if (tList.size() >= 64) return F;
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
-		if (tList.contains(tCoords)) {
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
-			return T;
-		}
-		if (tList.size() >= 64) {
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
-			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
-			return F;
-		}
-		TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
-		if (tTileEntity instanceof ITileEntityRemoteActivateable) {
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
-			tList.add(tCoords);
-			setCoords(aNBT, aWorld.provider.dimensionId, tList);
-			UT.NBT.set(aStack, aNBT);
-			return T;
-		}
-		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
-		return F;
+		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+		if (tList.contains(tCoords)) return T;
+		tList.add(tCoords);
+		setCoords(aNBT, aWorld.provider.dimensionId, tList);
+		UT.NBT.set(aStack, aNBT);
+		return T;
 	}
 	
 	public static ArrayListNoNulls<ChunkCoordinates> getCoords(NBTTagCompound aNBT, int aDimension) {

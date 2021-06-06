@@ -67,8 +67,7 @@ public class WorldgenBushes extends WorldgenOnSurface {
 		if (aContact == Blocks.grass) WD.set(aWorld, aX, aY, aZ, Blocks.dirt, 0, 3);
 		
 		int tStage = aRandom.nextInt(4);
-		NoiseGenerator tNoise = new NoiseGenerator(aWorld);
-		ItemStack tBerry = UT.Code.select(tNoise.get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
+		ItemStack tBerry = UT.Code.select(new NoiseGenerator(aWorld).get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
 		
 		tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
 		if (WD.easyRep(aWorld, aX+1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX+1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
