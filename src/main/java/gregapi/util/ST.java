@@ -582,6 +582,7 @@ public class ST {
 		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInventory, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
 	}
 	public static int move_(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		aCount = Math.min(aCount, aStackFrom.stackSize);
 		ItemStack tStack = aInventory.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
 		aCount = Math.min(aCount, tStack.stackSize);
@@ -602,6 +603,7 @@ public class ST {
 	public static int move_(IInventory aFrom, IInventory aTo, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
 		if (aStackFrom == aStackTo) return 0;
 		if (aFrom == aTo && aSlotFrom == aSlotTo) return 0;
+		aCount = Math.min(aCount, aStackFrom.stackSize);
 		ItemStack tStack = aFrom.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
 		aCount = Math.min(aCount, tStack.stackSize);
