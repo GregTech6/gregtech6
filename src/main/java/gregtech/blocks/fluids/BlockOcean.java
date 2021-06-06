@@ -95,7 +95,7 @@ public class BlockOcean extends BlockWaterlike {
 		BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(aX, aZ);
 		
 		boolean tHasNoOceanAround = T;
-		byte tOceanCounter = 0, tOceanBlockCount = 0;
+		byte tOceanCounter = 0;
 		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
 		for (byte tSide : ALL_SIDES_HORIZONTAL) {
 			tBlock = WD.block(aWorld, aX, aY, aZ, tSide);

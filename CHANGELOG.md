@@ -11,7 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.12: (Not released yet, released whenever it needs to be)
 [COMPAT] Chisel
-Granite, Andesite and Diorite of other Mods such as Botania, Ganys Surface, Et Futurum and GregTech-6 now work with Chisel.
+Granite, Andesite and Diorite of other Mods such as Botania, Ganys Surface, Et Futurum and GregTech-6 now work with Chisel, but apparently only one way...
 I removed the damn Cobblestone and Glowstone OreDict equivalencies.
 Glowtus can now be chiseled into different Colors and GT6 Logs can now be chiseled into their All-Bark Variants.
 [COMPAT] The Witchery Spirit World now generates GT6 Stuff properly just like the Overworld.
