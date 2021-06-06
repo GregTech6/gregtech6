@@ -192,10 +192,10 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				tToolNBT.setBoolean("e", T);
 				UT.NBT.setNumber(tToolNBT, "f", aMaxCharge);
 				UT.NBT.setNumber(tToolNBT, "g", aVoltage);
-				if (aCharge != 0) for (TagData tEnergyType : getEnergyTypes(rStack)) setEnergyStored(tEnergyType, rStack, Math.min(aCharge, aMaxCharge));
 			}
 			tMainNBT.setTag("GT.ToolStats", tToolNBT);
 			UT.NBT.set(rStack, tMainNBT);
+			if (aCharge > 0 && aMaxCharge > 0) for (TagData tEnergyType : getEnergyTypes(rStack)) setEnergyStored(tEnergyType, rStack, Math.min(aCharge, aMaxCharge));
 		}
 		isItemStackUsable(rStack);
 		return rStack;

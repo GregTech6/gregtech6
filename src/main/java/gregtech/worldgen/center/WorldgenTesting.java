@@ -270,10 +270,10 @@ public class WorldgenTesting extends WorldgenObject {
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CHAINSAW_LV   , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
 			, NI
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MIXER_LV      , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
-			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.DRILL_LV      , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SCREWDRIVER_LV, 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BUZZSAW_LV    , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.TRIMMER_LV    , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.DRILL_LV      , 1, MT.NetherizedDiamond, MT.Magenta, V[1] * 1000, V[1], Long.MAX_VALUE)
 			
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_MV     , 1, MT.NetherizedDiamond, MT.Magenta, V[2] * 1000, V[2], Long.MAX_VALUE)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MININGDRILL_MV, 1, MT.NetherizedDiamond, MT.Magenta, V[2] * 1000, V[2], Long.MAX_VALUE)
@@ -283,7 +283,7 @@ public class WorldgenTesting extends WorldgenObject {
 			, NI
 			, NI
 			, NI
-			, NI
+			, IL.Dynamite_Strong.get(64)
 			
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_HV     , 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 1000, V[3], Long.MAX_VALUE)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.MININGDRILL_HV, 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 1000, V[3], Long.MAX_VALUE)
@@ -293,7 +293,7 @@ public class WorldgenTesting extends WorldgenObject {
 			, NI
 			, NI
 			, NI
-			, NI
+			, IL.Tool_Remote_Activator.get(1)
 			
 			, IL.Battery_Lead_Acid_LV.getWithCharge(1, Long.MAX_VALUE)
 			, IL.Battery_Lead_Acid_MV.getWithCharge(1, Long.MAX_VALUE)

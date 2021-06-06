@@ -50,18 +50,20 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
 		if (tList.contains(tCoords)) {
 			UT.Entities.sendchat(aPlayer, "Coordinates removed!");
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
 			tList.remove(tCoords);
 		} else if (tList.size() >= 64) {
 			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
 		} else {
 			TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 			if (tTileEntity instanceof ITileEntityRemoteActivateable) {
 				UT.Entities.sendchat(aPlayer, "Coordinates added!");
-				UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
+				UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
 				tList.add(tCoords);
 			} else {
 				UT.Entities.sendchat(aPlayer, "This cannot be added!");
+				UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
 			}
 		}
 		setCoords(aNBT, aWorld.provider.dimensionId, tList);
@@ -90,19 +92,24 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		NBTTagCompound aNBT = UT.NBT.getNBT(aStack);
 		ArrayListNoNulls<ChunkCoordinates> tList = getCoords(aNBT, aWorld.provider.dimensionId);
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
-		if (tList.contains(tCoords)) return T;
+		if (tList.contains(tCoords)) {
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+			return T;
+		}
 		if (tList.size() >= 64) {
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
 			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
 			return F;
 		}
 		TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 		if (tTileEntity instanceof ITileEntityRemoteActivateable) {
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
 			tList.add(tCoords);
 			setCoords(aNBT, aWorld.provider.dimensionId, tList);
 			UT.NBT.set(aStack, aNBT);
 			return T;
 		}
+		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
 		return F;
 	}
 	
