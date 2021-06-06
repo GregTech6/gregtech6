@@ -1099,7 +1099,7 @@ public class CS {
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_shears            , "");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_scissors          , "");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_screwdriver       , "Adjusts Covers, Machines and Redstone Diodes");
-		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_drill             , "Places Dynamite Sticks and reinforces Bricks");
+		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_drill             , "Drills Holes and reinforces Bricks");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_chisel            , "Chisels Storage Blocks and chiselable Blocks");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_sense             , "Used to mass harvest Crops and Leaves");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_scythe            , "Used to mass harvest Crops and Leaves");

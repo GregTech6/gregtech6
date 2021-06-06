@@ -44,6 +44,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Crucible Crossings will take Vertical Redstone Signals and emit a weak Signal Horizontally, making it easier to Redstone Molds and Faucets.
 [CHANGED] Craponite Dust is now the new Main Component of Purple Drink instead of Sugar.
 [CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
+[CHANGED] Placing Dynamite with the Hand Drill will automatically link it to Remote Activators in your Hotbar.
 [CHANGED] Lignite now has twice the Furnace Burn Value, meaning it is now half as good as Coal. (It was a quarter before, and yes the Fluidized Bed Burning Box takes it into account too)
 [CHANGED] Rotational Pumps no longer distinguish between the 4 different Types of Water, and just consider them the same when scanning the Area. This should make Areas where Rivers and Oceans mix much easier to drain.
 [ADDED] Scraps can now be placed on the Floor like Ingots and Plates. Though they wont stack tall. They just are on the Floor and look all Dusty and such.

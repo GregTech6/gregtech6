@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,27 +45,27 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.isSneaking() || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-		if (!aStack.hasTagCompound()) aStack.setTagCompound(UT.NBT.make());
-		ArrayListNoNulls<ChunkCoordinates> tList = getCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId);
+		NBTTagCompound aNBT = UT.NBT.getNBT(aStack);
+		ArrayListNoNulls<ChunkCoordinates> tList = getCoords(aNBT, aWorld.provider.dimensionId);
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
 		if (tList.contains(tCoords)) {
 			UT.Entities.sendchat(aPlayer, "Coordinates removed!");
-			UT.Sounds.send(aWorld, SFX.IC_SCANNER, 1.0F, 1.0F, tCoords);
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
 			tList.remove(tCoords);
-		} else if (tList.size() >= 16) {
-			UT.Entities.sendchat(aPlayer, "Cant hold more than 16 Coordinates per Dimension!");
+		} else if (tList.size() >= 64) {
+			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
 		} else {
 			TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 			if (tTileEntity instanceof ITileEntityRemoteActivateable) {
 				UT.Entities.sendchat(aPlayer, "Coordinates added!");
-				UT.Sounds.send(aWorld, SFX.IC_SCANNER, 1.0F, 1.0F, tCoords);
+				UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
 				tList.add(tCoords);
 			} else {
 				UT.Entities.sendchat(aPlayer, "This cannot be added!");
 			}
 		}
-		setCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId, tList);
-		if (aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
+		setCoords(aNBT, aWorld.provider.dimensionId, tList);
+		UT.NBT.set(aStack, aNBT);
 		return T;
 	}
 	
@@ -73,7 +73,7 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		if (aWorld.isRemote || aPlayer.isSneaking() || !aStack.hasTagCompound()) return aStack;
 		ArrayListNoNulls<ChunkCoordinates> tToBeKept = new ArrayListNoNulls<>();
-		for (ChunkCoordinates tCoords : getCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId)) {
+		for (ChunkCoordinates tCoords : getCoords(aStack.getTagCompound(), aWorld.provider.dimensionId)) {
 			if (Math.abs(tCoords.posX - aPlayer.posX) <= 128 && Math.abs(tCoords.posY - aPlayer.posY) <= 128 && Math.abs(tCoords.posZ - aPlayer.posZ) <= 128) {
 				TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 				if (tTileEntity instanceof ITileEntityRemoteActivateable && ((ITileEntityRemoteActivateable)tTileEntity).remoteActivate()) tToBeKept.add(tCoords);
@@ -81,37 +81,60 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 				tToBeKept.add(tCoords);
 			}
 		}
-		setCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId, tToBeKept);
+		setCoords(aStack.getTagCompound(), aWorld.provider.dimensionId, tToBeKept);
 		UT.Sounds.send(aWorld, SFX.MC_CLICK, 1.0F, 1.0F, aPlayer);
 		return aStack;
 	}
 	
-	public ArrayListNoNulls<ChunkCoordinates> getCoordinateList(NBTTagCompound aNBT, int aDimension) {
+	public static boolean addCoords(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
+		NBTTagCompound aNBT = UT.NBT.getNBT(aStack);
+		ArrayListNoNulls<ChunkCoordinates> tList = getCoords(aNBT, aWorld.provider.dimensionId);
+		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
+		if (tList.contains(tCoords)) return T;
+		if (tList.size() >= 64) {
+			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
+			return F;
+		}
+		TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
+		if (tTileEntity instanceof ITileEntityRemoteActivateable) {
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 1.0F, 1.0F, tCoords);
+			tList.add(tCoords);
+			setCoords(aNBT, aWorld.provider.dimensionId, tList);
+			UT.NBT.set(aStack, aNBT);
+			return T;
+		}
+		return F;
+	}
+	
+	public static ArrayListNoNulls<ChunkCoordinates> getCoords(NBTTagCompound aNBT, int aDimension) {
 		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls<>();
 		if (aNBT == null) return rList;
 		NBTTagCompound tNBT = aNBT.getCompoundTag("gt.remote.dim."+aDimension);
 		if (tNBT.hasNoTags()) return rList;
-		int i = -1; while (++i < 16) {
-			if (!tNBT.hasKey("x"+i)) break;
+		int i = -1; while (tNBT.hasKey("c"+(++i))) {
 			rList.add(new ChunkCoordinates(tNBT.getInteger("x"+i), tNBT.getInteger("y"+i), tNBT.getInteger("z"+i)));
 		}
 		return rList;
 	}
 	
-	public void setCoordinateList(NBTTagCompound aNBT, int aDimension, ArrayListNoNulls<ChunkCoordinates> aList) {
-		NBTTagCompound tNBT = UT.NBT.make();
-		for (int i = 0, j = aList.size(); i < j; i++) {
-			ChunkCoordinates tCoords = aList.get(i);
-			tNBT.setInteger("x"+i, tCoords.posX);
-			tNBT.setInteger("y"+i, tCoords.posY);
-			tNBT.setInteger("z"+i, tCoords.posZ);
+	public static void setCoords(NBTTagCompound aNBT, int aDimension, ArrayListNoNulls<ChunkCoordinates> aList) {
+		if (aList.isEmpty()) {
+			aNBT.removeTag("gt.remote.dim."+aDimension);
+		} else {
+			NBTTagCompound tNBT = UT.NBT.make();
+			for (int i = 0, j = aList.size(); i < j; i++) {
+				ChunkCoordinates tCoords = aList.get(i);
+				UT.NBT.setBoolean(tNBT, "c"+i, T);
+				UT.NBT.setNumber (tNBT, "x"+i, tCoords.posX);
+				UT.NBT.setNumber (tNBT, "y"+i, tCoords.posY);
+				UT.NBT.setNumber (tNBT, "z"+i, tCoords.posZ);
+			}
+			aNBT.setTag("gt.remote.dim."+aDimension, tNBT);
 		}
-		aNBT.setTag("gt.remote.dim."+aDimension, tNBT);
-		if (tNBT.hasNoTags()) aNBT.removeTag("gt.remote.dim."+aDimension);
 	}
 	
 	static {
-		LH.add("gt.behaviour.remote", "Activates up to 16 Blocks within a Range of 128m");
+		LH.add("gt.behaviour.remote", "Activates up to 64 Blocks within a Range of 128m");
 	}
 	
 	@Override
