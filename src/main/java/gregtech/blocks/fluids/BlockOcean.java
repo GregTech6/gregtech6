@@ -120,6 +120,12 @@ public class BlockOcean extends BlockWaterlike {
 			}
 		}
 		
+		if (tOceanCounter == 0) {
+			aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
+			PLACEMENT_ALLOWED = F;
+			return;
+		}
+		
 		if (BIOMES_RIVER_LAKE.contains(tBiome.biomeName)) {
 			tOceanCounter = 0;
 			for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) if (i != 0 && j != 0) {
