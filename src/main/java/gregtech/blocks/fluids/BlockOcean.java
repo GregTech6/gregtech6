@@ -51,14 +51,9 @@ public class BlockOcean extends BlockWaterlike {
 	@Override
 	public void onBlockAdded(World aWorld, int aX, int aY, int aZ) {
 		if (PLACEMENT_ALLOWED) {
-			PLACEMENT_ALLOWED = F;
-			if (UPDATE_TICK) {
-				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 10+RNGSUS.nextInt(90));
-			} else {
-				UPDATE_TICK = T;
-			}
+			if (UPDATE_TICK) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 10+RNGSUS.nextInt(90));
 		} else {
-			//aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
+			aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
 		}
 	}
 	
@@ -116,7 +111,7 @@ public class BlockOcean extends BlockWaterlike {
 			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		} else if (WD.anywater(tBlock)) {
 			aWorld.setBlock(aX, aY-1, aZ, this, 0, 2);
-			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
+			tOceanCounter++;
 		}
 		
 		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
