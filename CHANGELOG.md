@@ -25,6 +25,7 @@ Glowtus can now be chiseled into different Colors and GT6 Logs can now be chisel
 [FIXED] The Boxinator somehow did not have Recipes for Nugget->Ingot, Chunk->Ingot or Dust piling. This was a really big oversight.
 [FIXED] Bluepower Volcanos and Immersive Engineering Village Houses no longer let you skip to Tungsten and aluminium anymore.
 [FIXED] Coke "Ingots" were not considered "fuelCoke", "coke" and "coalCoke" for the OreDict, like Coke "Gems" are.
+[FIXED] Burning Boxes were permitting the use of tiniest Piles of Dust to "not generate Ashes", which was a Bug. Now it will require a minimum amount of Material to at least give a 72nd Pile of Ashes (if the Material you use would give Ashes in the first place).
 [CHANGED]
 A bunch of Recipes that previously outputted Iron, now output something else, usually Hematite.
 I try to make people either process Hematite properly or dig up Black Sand. Looting it from places is okay too.

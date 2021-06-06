@@ -69,7 +69,18 @@ public class RecipeMapFurnaceFuel extends RecipeMap {
 							}
 						}
 					}
-					rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(OM.dust(tMaterial)), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+					
+					if (tMaterial == null || tMaterial.mAmount <= 0) {
+						rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), null, null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+					} else {
+						for (int i = 1; i < 64; i++) {
+							ItemStack tAshes = OM.dust(tMaterial.mMaterial, tMaterial.mAmount * i);
+							if (ST.valid(tAshes)) {
+								rRecipe = new Recipe(F, F, T, ST.array(ST.amount(i, aInputs[0])), ST.array(tAshes), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+								break;
+							}
+						}
+					}
 				} else {
 					rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tContainer), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
 				}
