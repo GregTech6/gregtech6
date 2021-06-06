@@ -70,7 +70,7 @@ public class BlockOcean extends BlockWaterlike {
 	
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		PLACEMENT_ALLOWED = T;
+		PLACEMENT_ALLOWED = UPDATE_TICK = T;
 		
 		if (aWorld.doChunksNearChunkExist(aX, aY, aZ, 33)) {
 			aWorld.func_147451_t(aX, aY, aZ);
@@ -119,14 +119,8 @@ public class BlockOcean extends BlockWaterlike {
 			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		}
 		
-		if (WD.meta(aWorld, aX, aY, aZ) == 0) {
-			if (tOceanCounter <= 0 && !(aWorld.getBlock(aX, aY+1, aZ) instanceof BlockOcean)) {
-				aWorld.setBlockToAir(aX, aY, aZ);
-				PLACEMENT_ALLOWED = F;
-				return;
-			}
-		} else {
-			if (tOceanCounter >= 2 || (SPREAD_TO_AIR && (BIOMES_OCEAN_BEACH.contains(tBiome.biomeName) || (aWorld.getBlock(aX, aY+1, aZ) instanceof BlockOcean && WD.meta(aWorld, aX, aY+1, aZ) == 0)))) {
+		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
+			if (tOceanCounter >= 2 || (SPREAD_TO_AIR && BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) || (aWorld.getBlock(aX, aY+1, aZ) == this && WD.meta(aWorld, aX, aY+1, aZ) == 0)) {
 				aWorld.setBlock(aX, aY, aZ, this, 0, 2);
 			}
 		}
@@ -134,7 +128,7 @@ public class BlockOcean extends BlockWaterlike {
 		if (BIOMES_RIVER_LAKE.contains(tBiome.biomeName)) {
 			tOceanCounter = 0;
 			for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) if (i != 0 && j != 0) {
-				if (aWorld.getBlock(aX+i, aY, aZ+j) instanceof BlockOcean && WD.meta(aWorld, aX+i, aY, aZ+j) == 0) {
+				if (aWorld.getBlock(aX+i, aY, aZ+j) == this && WD.meta(aWorld, aX+i, aY, aZ+j) == 0) {
 					tOceanCounter++;
 				}
 			}
@@ -149,7 +143,7 @@ public class BlockOcean extends BlockWaterlike {
 			if (aWorld.setBlock(tCoords.posX, tCoords.posY, tCoords.posZ, this, 0, 2)) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
 				if (aWorld.blockExists(tCoords.posX+i, tCoords.posY, tCoords.posZ+j)) {
 					tBlock = aWorld.getBlock(tCoords.posX+i, tCoords.posY, tCoords.posZ+j);
-					if (tBlock instanceof BlockOcean) aWorld.scheduleBlockUpdate(tCoords.posX+i, tCoords.posY, tCoords.posZ+j, this, tickRate);
+					if (tBlock == this) aWorld.scheduleBlockUpdate(tCoords.posX+i, tCoords.posY, tCoords.posZ+j, this, tickRate);
 				}
 			}
 		}

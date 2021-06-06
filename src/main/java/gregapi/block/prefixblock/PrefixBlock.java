@@ -218,7 +218,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		if (COMPAT_IC2 != null && mPrefix.contains(TD.Prefix.ORE) && mBaseHardness >= 0) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
 		
 		if (mOpaque) VISUALLY_OPAQUE_BLOCKS.add(this);
-		mDrops = aDrops==null?new Drops(this, this):aDrops;
+		mDrops = aDrops==null?new Drops(this):aDrops;
 		
 		if (CODE_CLIENT) MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(this), RendererBlockTextured.INSTANCE);
 		
