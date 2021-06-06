@@ -65,7 +65,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 					tStack.setTagCompound(tOldTag);
 					// Add Dynamite Coords to Remote Activator if in Hotbar.
 					for (int j = 0; j < InventoryPlayer.getHotbarSize(); j++) if (IL.Tool_Remote_Activator.equal(aPlayer.inventory.mainInventory[j], F, T)) {
-						if (Behavior_Remote.addCoords(aPlayer.inventory.mainInventory[j], aPlayer, aWorld, aX, aY, aZ)) {
+						if (Behavior_Remote.addCoords(aPlayer.inventory.mainInventory[j], aPlayer, aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
 							break;
 						}
 					}

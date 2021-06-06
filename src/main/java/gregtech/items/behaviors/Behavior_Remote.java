@@ -93,12 +93,17 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		ArrayListNoNulls<ChunkCoordinates> tList = getCoords(aNBT, aWorld.provider.dimensionId);
 		if (tList.size() >= 64) return F;
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
-		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
 		if (tList.contains(tCoords)) return T;
-		tList.add(tCoords);
-		setCoords(aNBT, aWorld.provider.dimensionId, tList);
-		UT.NBT.set(aStack, aNBT);
-		return T;
+		TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
+		if (tTileEntity instanceof ITileEntityRemoteActivateable) {
+			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+			tList.add(tCoords);
+			setCoords(aNBT, aWorld.provider.dimensionId, tList);
+			UT.NBT.set(aStack, aNBT);
+			return T;
+		}
+		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
+		return F;
 	}
 	
 	public static ArrayListNoNulls<ChunkCoordinates> getCoords(NBTTagCompound aNBT, int aDimension) {
