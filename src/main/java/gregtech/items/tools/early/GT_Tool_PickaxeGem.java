@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,7 @@ import gregapi.render.IIconContainer;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_PickaxeGem extends GT_Tool_Pickaxe {
-	@Override public float getMaxDurabilityMultiplier() {return super.getMaxDurabilityMultiplier() / 4;}
+	@Override public float getMaxDurabilityMultiplier() {return super.getMaxDurabilityMultiplier() / 2;}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

@@ -1190,8 +1190,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent aEvent) {
-		if (aEvent.entityItem.worldObj.isRemote) return;
+		if (aEvent.entity.worldObj.isRemote) return;
 		ItemStack aStack = aEvent.entityItem.getEntityItem();
+		int aX = UT.Code.roundDown(aEvent.entity.posX), aY = UT.Code.roundDown(aEvent.entity.posY), aZ = UT.Code.roundDown(aEvent.entity.posZ);
 		if (ST.valid(aStack)) {
 			if (aStack.getItem() instanceof MultiTileEntityItemInternal) {
 				long tExtraLife = ((MultiTileEntityItemInternal)aStack.getItem()).onDespawn(aEvent.entityItem, aStack);
@@ -1208,6 +1209,35 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					return;
 				}
 			}
+			OreDictItemData tData = OM.anydata(aStack);
+			if (tData != null) {
+				if (tData.mPrefix == OP.rockGt) {
+					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
+						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					}
+				}
+				if (tData.mPrefix == OP.ingot) {
+					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32084, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
+						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					}
+				}
+				if (tData.mPrefix == OP.plate) {
+					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32085, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
+						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					}
+				}
+				if (tData.mPrefix == OP.plateGem) {
+					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32086, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
+						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					}
+				}
+				if (tData.mPrefix == OP.scrapGt) {
+					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32103, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(null, aEvent.entity.worldObj, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], SIDE_TOP, 0.5F, 0.5F, 0.5F)) {
+						aStack.stackSize = 0; aEvent.extraLife = 0; aEvent.entityItem.setDead(); aEvent.setCanceled(T); return;
+					}
+				}
+			}
+			
 			GarbageGT.trash(aStack);
 			aStack.stackSize = 0;
 			aEvent.extraLife = 0;

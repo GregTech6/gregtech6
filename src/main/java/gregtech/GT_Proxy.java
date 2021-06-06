@@ -352,26 +352,27 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						if (tData != null) {
 							if (tData.mPrefix == OP.rockGt) {
 								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-									ST.use(aEvent.entityPlayer, aStack);
-									aEvent.setCanceled(T);
+									ST.use(aEvent.entityPlayer, aStack); aEvent.setCanceled(T);
 								}
 							}
 							if (tData.mPrefix == OP.ingot) if (!MD.BOTA.mLoaded || tData.mMaterial.mMaterial.mOriginalMod != MD.BOTA || Blocks.beacon != aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z)) {
-								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32084, ST.save(NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
-									aEvent.setCanceled(T);
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32084, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize); aEvent.setCanceled(T);
 								}
 							}
 							if (tData.mPrefix == OP.plate) {
-								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32085, ST.save(NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
-									aEvent.setCanceled(T);
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32085, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize); aEvent.setCanceled(T);
 								}
 							}
 							if (tData.mPrefix == OP.plateGem) {
-								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32086, ST.save(NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
-									aEvent.setCanceled(T);
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32086, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize); aEvent.setCanceled(T);
+								}
+							}
+							if (tData.mPrefix == OP.scrapGt) {
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32103, ST.save(NBT_VALUE, aStack)).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize); aEvent.setCanceled(T);
 								}
 							}
 						}

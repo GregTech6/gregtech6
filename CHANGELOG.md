@@ -46,6 +46,7 @@ Centrifuging Lava or Pahoehoe gives Lead instead of Iron now.
 [CHANGED] Dynamite now has Fortune V instead of Fortune II, making it better than most Hand Tools.
 [CHANGED] Lignite now has twice the Furnace Burn Value, meaning it is now half as good as Coal. (It was a quarter before, and yes the Fluidized Bed Burning Box takes it into account too)
 [CHANGED] Rotational Pumps no longer distinguish between the 4 different Types of Water, and just consider them the same when scanning the Area. This should make Areas where Rivers and Oceans mix much easier to drain.
+[ADDED] Scraps can now be placed on the Floor like Ingots and Plates. Though they wont stack tall. They just are on the Floor and look all Dusty and such.
 [ADDED] NEI now additionally shows a Version with Black Sand Blocks and Coal whenever an Alloying Recipe for when Magnetite or Carbon is shown.
 [ADDED] GT6 Flowers now work in Flower Pots, I hope. Slightly glitchy for sure.
 [ADDED] Brick Burning Box. Very inefficient and Earlygame.
