@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -232,7 +232,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				if (temp) {
 					temp = F;
 					aData.set  (14, 1,  5, tInkMixer    , 0, 2, 1);
-					aData.set  (14, 1,  6, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
+					aData.set  (14, 1,  6, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.InkMyst.make(1000+1000*aData.next(8))));
 					aData.set  (14, 1,  7, tWritingTable, 0);
 					aData.set  (14, 1,  8, tWritingTable, 8);
 					aData.shelf(14, 1,  9, tShelf, SIDE_X_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
@@ -260,7 +260,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 					aData.shelf( 1, 1,  6, tShelf, SIDE_X_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 					aData.set  ( 1, 1,  7, tWritingTable,10);
 					aData.set  ( 1, 1,  8, tWritingTable, 2);
-					aData.set  ( 1, 1,  9, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
+					aData.set  ( 1, 1,  9, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.InkMyst.make(1000+1000*aData.next(8))));
 					aData.set  ( 1, 1, 10, tInkMixer    , 0, 2, 3);
 					
 					aData.set  ( 1, 2,  6, tLectern     , 0, 2, 3);
@@ -285,7 +285,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 					aData.shelf( 6, 1, 14, tShelf, SIDE_Z_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 					aData.set  ( 7, 1, 14, tWritingTable, 9);
 					aData.set  ( 8, 1, 14, tWritingTable, 1);
-					aData.set  ( 9, 1, 14, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
+					aData.set  ( 9, 1, 14, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.InkMyst.make(1000+1000*aData.next(8))));
 					aData.set  (10, 1, 14, tInkMixer    , 0, 2, 2);
 					
 					aData.set  ( 6, 2, 14, tLectern     , 0, 2, 2);
@@ -307,7 +307,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				if (temp) {
 					temp = F;
 					aData.set  ( 5, 1,  1, tInkMixer    , 0, 2, 0);
-					aData.set  ( 6, 1,  1, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
+					aData.set  ( 6, 1,  1, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.InkMyst.make(1000+1000*aData.next(8))));
 					aData.set  ( 7, 1,  1, tWritingTable, 3);
 					aData.set  ( 8, 1,  1, tWritingTable,11);
 					aData.shelf( 9, 1,  1, tShelf, SIDE_Z_POS, ChestGenHooks.STRONGHOLD_LIBRARY);

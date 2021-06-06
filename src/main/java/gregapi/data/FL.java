@@ -434,7 +434,10 @@ public enum FL {
 	, Glass                     ("glass"                    , "molten.glass"                , SIMPLE, LIQUID)
 	, Sluice                    ("sluicejuice"                                              , SIMPLE, LIQUID)
 	
-	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
+	, Indigo                    ("indigo"                                                   , SIMPLE, LIQUID, DYE)
+	
+	, InkSquid                  ("squidink"                                                 , SIMPLE, LIQUID, DYE)
+	, InkMyst                   ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
 	
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit

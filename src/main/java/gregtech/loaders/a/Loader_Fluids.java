@@ -118,8 +118,8 @@ public class Loader_Fluids implements Runnable {
 		FL.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500).setLuminosity(10);
 		FL.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500).setLuminosity(10);
 		
-		DYE_FLUIDS[0].add(FL.make(FL.create("squidink"    , "Squid Ink"       , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
-		DYE_FLUIDS[4].add(FL.make(FL.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+		DYE_FLUIDS[0].add(FL.make(FL.create("squidink"    , "Squid Ink"       , null, 1, L, 300), L));
+		DYE_FLUIDS[4].add(FL.make(FL.create("indigo"      , "Indigo Dye"      , null, 1, L, 300), L));
 		
 		IIconContainer
 		tDyeWaterMixed  = new Textures.BlockIcons.CustomIcon("fluids/dyes.water"),
@@ -128,11 +128,11 @@ public class Loader_Fluids implements Runnable {
 		tDyedCFoam      = new Textures.BlockIcons.CustomIcon("fluids/cfoam");
 		
 		for (byte i = 0; i < 16; i++) {
-			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER      [i] = FL.make(FL.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed    , "Water Mixed " + DYE_NAMES[i] + " Dye"    , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
-			DYE_FLUIDS[i].add(DYE_FLUIDS_FLOWER     [i] = FL.make(FL.create("dye.flower."     + DYE_OREDICTS_POST[i].toLowerCase(), tDyeFlower        , DYE_NAMES[i] + " Flower Dye"              , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
-			DYE_FLUIDS[i].add(DYE_FLUIDS_CHEMICAL   [i] = FL.make(FL.create("dye.chemical."   + DYE_OREDICTS_POST[i].toLowerCase(), tDyeChemical      , "Chemical " + DYE_NAMES[i] + " Dye"       , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
-			DYED_C_FOAMS                            [i] = FL.make(FL.create("cfoam."          + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , DYE_NAMES[i] + " C-Foam"                  , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
-			DYED_C_FOAMS_OWNED                      [i] = FL.make(FL.create("cfoam.owned."    + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , "Advanced " + DYE_NAMES[i] + " C-Foam"    , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
+			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER   [i] = FL.make(FL.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed, "Water Mixed " + DYE_NAMES[i] + " Dye", null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+			DYE_FLUIDS[i].add(DYE_FLUIDS_FLOWER  [i] = FL.make(FL.create("dye.flower."     + DYE_OREDICTS_POST[i].toLowerCase(), tDyeFlower    , DYE_NAMES[i] + " Flower Dye"          , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+			DYE_FLUIDS[i].add(DYE_FLUIDS_CHEMICAL[i] = FL.make(FL.create("dye.chemical."   + DYE_OREDICTS_POST[i].toLowerCase(), tDyeChemical  , "Chemical " + DYE_NAMES[i] + " Dye"   , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+			DYED_C_FOAMS                         [i] = FL.make(FL.create("cfoam."          + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam    , DYE_NAMES[i] + " C-Foam"              , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
+			DYED_C_FOAMS_OWNED                   [i] = FL.make(FL.create("cfoam.owned."    + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam    , "Advanced " + DYE_NAMES[i] + " C-Foam", null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
 		}
 		
 		//-----

@@ -44,6 +44,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -166,8 +167,11 @@ public class CoverDrain extends AbstractCoverAttachment {
 				if (aEntity instanceof EntityGolem) {
 					return F;
 				}
+				if (aEntity.getClass() == EntitySquid.class) {
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.InkSquid.make(1), T);
+					return T;
+				}
 				if (aEntity instanceof EntitySlime) {
-					// TODO Slime Liquid from Slimes? Do Slimes even count as Walking on those Drains?
 					if (aEntity.getClass() == EntitySlime.class) {
 						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Green.make(Math.max(1, ((EntitySlime)aEntity).getSlimeSize())), T);
 						return T;
