@@ -88,12 +88,11 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		int expQuanta = -101;
 		// check adjacent block levels if non-source
 		if (quantaRemaining < quantaPerBlock) {
-			int y2 = aY - densityDir;
-			if (aWorld.getBlock(aX  , y2, aZ  ) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX-1, y2, aZ  ) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX+1, y2, aZ  ) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX  , y2, aZ-1) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX  , y2, aZ+1) instanceof BlockWaterlike) {
+			if (aWorld.getBlock(aX  , aY-densityDir, aZ  ) instanceof BlockWaterlike ||
+				aWorld.getBlock(aX-1, aY-densityDir, aZ  ) instanceof BlockWaterlike ||
+				aWorld.getBlock(aX+1, aY-densityDir, aZ  ) instanceof BlockWaterlike ||
+				aWorld.getBlock(aX  , aY-densityDir, aZ-1) instanceof BlockWaterlike ||
+				aWorld.getBlock(aX  , aY-densityDir, aZ+1) instanceof BlockWaterlike) {
 				expQuanta = quantaPerBlock - 1;
 			} else {
 				int maxQuanta = -100;

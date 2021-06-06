@@ -58,7 +58,7 @@ public class BlockOcean extends BlockWaterlike {
 				UPDATE_TICK = T;
 			}
 		} else {
-			aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
+			//aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
 		}
 	}
 	

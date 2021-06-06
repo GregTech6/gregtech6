@@ -57,7 +57,7 @@ public class BlockRiver extends BlockWaterlike {
 	
 	@Override
 	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
-		if (aBlock == Blocks.dirt && aWorld.getBlock(aX, aY-1, aZ) == Blocks.grass) aWorld.setBlock(aX, aY-1, aZ, Blocks.dirt, 1, 2);
+		if (aWorld.getBlock(aX, aY-1, aZ) == Blocks.grass) aWorld.setBlock(aX, aY-1, aZ, Blocks.dirt, 1, 2);
 		super.onNeighborBlockChange(aWorld, aX, aY, aZ, aBlock);
 	}
 	
