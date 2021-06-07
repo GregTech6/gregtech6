@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.12: (Not released yet, released whenever it needs to be)
+6.14.12:
 [COMPAT] Chisel
 Granite, Andesite and Diorite of other Mods such as Botania, Ganys Surface, Et Futurum and GregTech-6 now work with Chisel, but apparently only one way...
 I removed the damn Cobblestone and Glowstone OreDict equivalencies.
