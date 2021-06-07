@@ -218,7 +218,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		if (COMPAT_IC2 != null && mPrefix.contains(TD.Prefix.ORE) && mBaseHardness >= 0) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
 		
 		if (mOpaque) VISUALLY_OPAQUE_BLOCKS.add(this);
-		mDrops = aDrops==null?new Drops(this):aDrops;
+		mDrops = aDrops==null?new Drops(this, this, this, this, F, F, 0, 0):aDrops;
 		
 		if (CODE_CLIENT) MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(this), RendererBlockTextured.INSTANCE);
 		
@@ -550,8 +550,9 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		for (ItemStack tStack : tList) if (RNGSUS.nextFloat() <= aChance) dropBlockAsItem(aWorld, aX, aY, aZ, tStack);
 	}
 	
-	@Override public int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public final ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aUnusableMetaData, int aFortune) {return mDrops.getDrops(this, aWorld, aX, aY, aZ, aFortune, F);}
+	@Override public int getExpDrop(IBlockAccess aWorld, int aMeta, int aFortune) {return mDrops.getExp(this);}
+	@Override public int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public void getSubBlocks(Item aItem, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {aItem.getSubItems(aItem, aCreativeTab, aList);}
 	/** Where I come from, we set the TileEntities ourselves instead of letting a Handler do it. */
 	@Override public final TileEntity createNewTileEntity(World aWorld, int aMeta) {return null;}

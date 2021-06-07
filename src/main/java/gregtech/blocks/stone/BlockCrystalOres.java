@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,7 +64,7 @@ public class BlockCrystalOres extends BlockBaseMeta {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		return new ArrayListNoNulls<>(F, OP.gem.mat(ORE_MATERIALS[aMeta], ORE_MATERIALS[aMeta].mOreMultiplier + (aFortune>0?(RNGSUS.nextInt((1+aFortune)*3*ORE_MATERIALS[aMeta].mOreMultiplier)):0)));
+		return new ArrayListNoNulls<>(F, OP.oreRaw.mat(ORE_MATERIALS[aMeta], aFortune>0?2+RNGSUS.nextInt(aFortune*2+2):2));
 	}
 	
 	@Override

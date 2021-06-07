@@ -40,22 +40,27 @@ import net.minecraft.world.World;
 public class Drops {
 	private final Item mDropNormal, mDropSilkTouch, mDropFortune, mDropSilkFortune;
 	private final boolean mFortunable, mPreferSilk;
+	private final int mExpBase, mExpRandom;
 	
-	public Drops(Item  aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F);}
-	public Drops(Block aDropNormal) {this(ST.item(aDropNormal), ST.item(aDropNormal), ST.item(aDropNormal), ST.item(aDropNormal), F, F);}
-	public Drops(Block aDropNormal, Block aDropSilkTouch) {this(ST.item(aDropNormal), ST.item(aDropSilkTouch), ST.item(aDropNormal), ST.item(aDropSilkTouch), F, F);}
-	public Drops(Item  aDropNormal, Block aDropSilkTouch) {this(aDropNormal, ST.item(aDropSilkTouch), aDropNormal, ST.item(aDropSilkTouch), F, F);}
-	public Drops(Block aDropNormal, Item  aDropSilkTouch) {this(ST.item(aDropNormal), aDropSilkTouch, ST.item(aDropNormal), aDropSilkTouch, F, F);}
-	public Drops(Item  aDropNormal, Item  aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F);}
+	@Deprecated public Drops(Item  aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F, 0, 0);}
+	@Deprecated public Drops(Block aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F, 0, 0);}
+	@Deprecated public Drops(Block aDropNormal, Block aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F, 0, 0);}
+	@Deprecated public Drops(Item  aDropNormal, Block aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F, 0, 0);}
+	@Deprecated public Drops(Block aDropNormal, Item  aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F, 0, 0);}
+	@Deprecated public Drops(Item  aDropNormal, Item  aDropSilkTouch) {this(aDropNormal, aDropSilkTouch, aDropNormal, aDropSilkTouch, F, F, 0, 0);}
 	
-	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune) {this(aDropNormal, aDropSilkTouch, aDropFortune, aDropFortune, T, F);}
-	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune, Object aDropSilkFortune, boolean aFortunable, boolean aPreferSilk) {
+	public Drops(int aExpBase, int aExpRandom) {this(null, null, null, null, F, F, aExpBase, aExpRandom);}
+	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune) {this(aDropNormal, aDropSilkTouch, aDropFortune, aDropFortune, T, F, 0, 0);}
+	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune, int aExpBase, int aExpRandom) {this(aDropNormal, aDropSilkTouch, aDropFortune, aDropFortune, T, F, aExpBase, aExpRandom);}
+	public Drops(Object aDropNormal, Object aDropSilkTouch, Object aDropFortune, Object aDropSilkFortune, boolean aFortunable, boolean aPreferSilk, int aExpBase, int aExpRandom) {
 		mDropNormal      = aDropNormal      instanceof Block ? ST.item((Block)aDropNormal     ) : (Item)aDropNormal     ;
 		mDropSilkTouch   = aDropSilkTouch   instanceof Block ? ST.item((Block)aDropSilkTouch  ) : (Item)aDropSilkTouch  ;
 		mDropFortune     = aDropFortune     instanceof Block ? ST.item((Block)aDropFortune    ) : (Item)aDropFortune    ;
 		mDropSilkFortune = aDropSilkFortune instanceof Block ? ST.item((Block)aDropSilkFortune) : (Item)aDropSilkFortune;
 		mFortunable      = aFortunable;
 		mPreferSilk      = aPreferSilk;
+		mExpBase         = Math.max(0, aExpBase);
+		mExpRandom       = Math.max(0, aExpRandom);
 	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, int aFortune, boolean aSilkTouch) {
@@ -68,5 +73,9 @@ public class Drops {
 		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
 		rList.add(ST.update(ST.make(aFortune>0?aSilkTouch?mDropFortune:mDropSilkFortune:aSilkTouch?mDropSilkTouch:mDropNormal, mPreferSilk&&aSilkTouch?1:mFortunable?1+RNGSUS.nextInt(aFortune+1):1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null)));
 		return rList;
+	}
+	
+	public int getExp(PrefixBlock aBlock) {
+		return mExpBase + RNGSUS.nextInt(1+mExpRandom);
 	}
 }

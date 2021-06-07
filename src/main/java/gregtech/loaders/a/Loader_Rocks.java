@@ -130,7 +130,7 @@ public class Loader_Rocks implements Runnable {
 		
 		for (int i = 0; i < BlocksGT.stones.length; i++) {
 			VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.stones[i]);
-			((PrefixBlock)BlocksGT.ores_normal[i]).mDrops = new Drops(BlocksGT.ores_broken[i], BlocksGT.ores_normal[i], OP.oreRaw.mRegisteredPrefixItems.get(0));
+			((PrefixBlock)BlocksGT.ores_normal[i]).mDrops = new Drops(BlocksGT.ores_broken[i], BlocksGT.ores_normal[i], OP.oreRaw.mRegisteredPrefixItems.get(0), 0, Math.max(1, BlocksGT.stones[n].getHarvestLevel(0)));
 			BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_normal[i]);
 			BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_broken[i]);
 			BlocksGT.stoneToSmallOres .put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_small [i]);

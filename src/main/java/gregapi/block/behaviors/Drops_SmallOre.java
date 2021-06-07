@@ -30,7 +30,6 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -42,7 +41,7 @@ public class Drops_SmallOre extends Drops {
 	private final OreDictMaterial mSecondaryDrop;
 	
 	public Drops_SmallOre(OreDictMaterial aSecondaryDrop) {
-		super((Item)null);
+		super(1, 2);
 		mSecondaryDrop = aSecondaryDrop;
 	}
 	
