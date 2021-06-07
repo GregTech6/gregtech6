@@ -52,6 +52,7 @@ import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.IBlockOnWalkOver;
 import gregapi.block.IBlockPlacable;
 import gregapi.block.IBlockToolable;
+import gregapi.block.IPrefixBlock;
 import gregapi.block.metatype.BlockBasePlanks;
 import gregapi.block.misc.BlockBaseBale;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
@@ -1085,6 +1086,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				}
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onBlockHarvestingEvent(BlockEvent.BreakEvent aEvent) {
+		if (aEvent.block instanceof IPrefixBlock && EnchantmentHelper.getSilkTouchModifier(aEvent.getPlayer())) aEvent.setExpToDrop(0);
 	}
 	
 	@SubscribeEvent

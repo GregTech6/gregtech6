@@ -38,9 +38,9 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class Drops {
-	private final Item mDropNormal, mDropSilkTouch, mDropFortune, mDropSilkFortune;
-	private final boolean mFortunable, mPreferSilk;
-	private final int mExpBase, mExpRandom;
+	public final Item mDropNormal, mDropSilkTouch, mDropFortune, mDropSilkFortune;
+	public final boolean mFortunable, mPreferSilk;
+	public final int mExpBase, mExpRandom;
 	
 	@Deprecated public Drops(Item  aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F, 0, 0);}
 	@Deprecated public Drops(Block aDropNormal) {this(aDropNormal, aDropNormal, aDropNormal, aDropNormal, F, F, 0, 0);}
