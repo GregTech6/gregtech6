@@ -1,12 +1,21 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.16: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.14.15: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.14: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.13: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.14.13:
+[FIXED] Crash Bug with Washing Stuff in Cauldron on Servers.
+[CHANGED] The Big Layer Ores like Coal and Salt now give an 8th of an EXP instead of half an EXP.
 
 
 6.14.12:

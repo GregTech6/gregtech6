@@ -98,7 +98,7 @@ public class BlockRockOres extends BlockBaseMeta {
 	
 	@Override
 	public int getExpDrop(IBlockAccess aWorld, int aMeta, int aFortune) {
-		return RNGSUS.nextInt(2);
+		return RNGSUS.nextInt(8) == 0 ? 1 : 0;
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return F;}

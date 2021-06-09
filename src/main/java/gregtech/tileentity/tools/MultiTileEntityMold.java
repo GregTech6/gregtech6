@@ -615,7 +615,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == TD.Energy.CU;}
 	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == TD.Energy.CU;}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aEnergyType == TD.Energy.CU;}
-	@Override public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {if (aDoInject) {mTemperature = Math.max(mTemperature - Math.abs(aAmount * aSize), Math.min(200, WD.envTemp(worldObj, xCoord, yCoord, zCoord)));} return aAmount;}
+	@Override public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {if (aDoInject) {mTemperature = Math.max(1, mTemperature - Math.abs(aAmount * aSize));} return aAmount;}
 	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return mTemperature - 200;}
 	@Override public long getEnergySizeInputMin(TagData aEnergyType, byte aSide) {return 16;}
 	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 2048;}
