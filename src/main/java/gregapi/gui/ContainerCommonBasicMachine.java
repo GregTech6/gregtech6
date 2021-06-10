@@ -45,7 +45,8 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 	public int addSlots(InventoryPlayer aPlayerInventory) {
 		mRecipes = ((MultiTileEntityBasicMachine)mTileEntity).mRecipes;
 		
-		int tIndex = addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, 0, 80, 43)) != null ? 1 : 0;
+		boolean aHasSpecial = (addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount, 80, 43)) != null);
+		int tIndex = 0;
 		
 		switch (mRecipes.mInputItemsCount) {
 		case  0:
@@ -260,6 +261,8 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 61).setCanPut(F));
 			break;
 		}
+		
+		if (aHasSpecial) tIndex++;
 		
 		for (int i = 0; i < mRecipes.mInputFluidCount ; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++,  53 - (i%3)*18, 63 - (i/3)*18).setTooltip("Extract using a Tap or Nozzle", LH.Chat.WHITE));
 		for (int i = 0; i < mRecipes.mOutputFluidCount; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++, 107 + (i%3)*18, 63 - (i/3)*18).setTooltip("Extract using a Tap or Nozzle", LH.Chat.WHITE));
