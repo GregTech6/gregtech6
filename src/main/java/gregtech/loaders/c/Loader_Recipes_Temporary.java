@@ -76,12 +76,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		
 		
-		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
-		CR.delate(MD.EIO, "itemYetaWrench");
-		
-		
-		
 		if (MD.BTRS.mLoaded) {
+			CR.delate(IL.BTRS_Backpack.wild(1));
+			CR.shaped(IL.BTRS_Backpack .get(1), DEF_REV_NCC, "LqL", "SCS", "LPL", 'L', OD.craftingLeather, 'S', OD.itemString, 'P', OP.plate.dat(MT.Au), 'C', OD.craftingChest);
+			CR.shaped(IL.BTRS_Enderpack.get(1), DEF_REV_NCC, "LqL", "SCS", "LPL", 'L', OD.craftingLeather, 'S', OD.itemString, 'P', OP.plate.dat(MT.Au), 'C', OD.enderChest);
+			
 			RM.packunpack(ST.make(Items.flint, 9, 0), ST.make(MD.BTRS, "flintBlock", 1, 0));
 		}
 		

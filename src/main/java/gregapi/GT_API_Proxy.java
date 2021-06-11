@@ -744,7 +744,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 					}
 					
-					for (int i = 0; i < 4; i++) if ((tStack = aEvent.player.inventory.armorInventory[i]) != null) {
+					for (int i = 0; i < 4; i++) if (ST.valid(tStack = aEvent.player.inventory.armorInventory[i])) {
+						// The Better Storage Backpack would dupe Items when destroyed while worn, so this will prevent that.
+						// A Backpack already is hindrance enough if you want full Armor, so Durability should not matter here anyways.
+						// I also like this Backpack implementation, so I cant just leave the dupe exploit easy to pull off.
+						if (MD.BTRS.mLoaded && (IL.BTRS_Backpack.equal(tStack, T, T) || IL.BTRS_Thaumpack.equal(tStack, T, T) || IL.BTRS_Enderpack.equal(tStack, T, T))) {
+							ST.meta(tStack, 0);
+						}
+						
 						if (!UT.Entities.isInvincible(aEvent.player)) {
 							UT.Entities.applyRadioactivity(aEvent.player, UT.Entities.getRadioactivityLevel(tStack), tStack.stackSize);
 							float tHeat = UT.Entities.getHeatDamageFromItem(tStack);

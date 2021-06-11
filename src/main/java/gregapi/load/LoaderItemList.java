@@ -1428,6 +1428,11 @@ public class LoaderItemList implements Runnable {
 		IL.RoC_Ethanol_Crystal                  .set(ST.make(MD.RoC, "rotarycraft_item_ethanol"             , 1, 0), new OreDictItemData(MT.Ethanol, U));
 		
 		
+		IL.BTRS_Backpack                        .set(ST.make(MD.BTRS, "backpack"                            , 1, 0));
+		IL.BTRS_Enderpack                       .set(ST.make(MD.BTRS, "enderBackpack"                       , 1, 0));
+		IL.BTRS_Thaumpack                       .set(ST.make(MD.BTRS, "thaumcraftBackpack"                  , 1, 0));
+		
+		
 		IL.JABBA_Dolly                          .set(ST.make(MD.JABBA, "mover"                              , 1, 0));
 		IL.JABBA_Dolly_Diamond                  .set(ST.make(MD.JABBA, "moverDiamond"                       , 1, 0));
 		
@@ -1489,6 +1494,9 @@ public class LoaderItemList implements Runnable {
 		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.AE_Wrench_Quartz.wild(1));
 		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Certus.wild(1));
 		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Quartz.wild(1));
+		
+		
+		IL.EIO_Wrench                           .set(ST.make(MD.EIO, "itemYetaWrench"                       , 1, 0), null, CR.DELATE); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.EIO_Wrench.wild(1));
 		
 		
 		IL.FR_Wrench                            .set(ST.make(MD.FR, "wrench"                                , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.FR_Wrench.wild(1));
