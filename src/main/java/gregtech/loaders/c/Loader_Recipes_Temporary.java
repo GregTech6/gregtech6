@@ -79,7 +79,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 		if (MD.BTRS.mLoaded) {
 			CR.delate(IL.BTRS_Backpack.wild(1));
 			CR.shaped(IL.BTRS_Backpack .get(1), DEF_REV_NCC, "LqL", "SCS", "LPL", 'L', OD.craftingLeather, 'S', OD.itemString, 'P', OP.plate.dat(MT.Au), 'C', OD.craftingChest);
-			CR.shaped(IL.BTRS_Enderpack.get(1), DEF_REV_NCC, "LqL", "SCS", "LPL", 'L', OD.craftingLeather, 'S', OD.itemString, 'P', OP.plate.dat(MT.Au), 'C', OD.enderChest);
 			
 			RM.packunpack(ST.make(Items.flint, 9, 0), ST.make(MD.BTRS, "flintBlock", 1, 0));
 		}
