@@ -146,7 +146,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			
 			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
 			if (mEnergy > mCapacity || mTanks[1].isFull()) {
-				explode();
+				explode(F);
 			}
 		}
 	}
@@ -163,7 +163,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			int rResult = 10000 - mEfficiency;
 			if (rResult > 0) {
 				if (mBarometer > 15) {
-					explode();
+					explode(F);
 				} else {
 					if (mEnergy+mTanks[1].amount()/STEAM_PER_EU > 2000) UT.Entities.applyHeatDamage(aPlayer, (mEnergy+mTanks[1].amount()/2) / 2000.0F);
 					mTanks[1].setEmpty();
@@ -197,24 +197,19 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	
 	@Override
 	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
-		DEB.println("TEST");
-		DEB.println(isServerSide());
-		DEB.println(UT.Entities.isCreative(aPlayer));
-		DEB.println(mBarometer);
-		
-		if (isServerSide() && !UT.Entities.isCreative(aPlayer) && mBarometer > 4) explode();
+		if (mBarometer > 4 && isServerSide() && !UT.Entities.isCreative(aPlayer)) explode(T);
 		return worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void onExploded(Explosion aExplosion) {
 		super.onExploded(aExplosion);
-		if (isServerSide() && mBarometer > 4) explode();
+		if (isServerSide() && mBarometer > 4) explode(T);
 	}
 	
 	@Override
-	public void explode() {
-		explode(Math.max(1, Math.sqrt(mTanks[1].amount()) / 100.0));
+	public void explode(boolean aInstant) {
+		explode(aInstant, Math.max(1, Math.sqrt(mTanks[1].amount()) / 100.0));
 	}
 	
 	@Override

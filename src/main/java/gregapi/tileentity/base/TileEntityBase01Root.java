@@ -449,14 +449,15 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public float mExplosionStrength = 0;
 	
-	public void explode() {
-		// Seems to be a reasonable Default Explosion. This Function can of course be overridden.
-		explode(4);
-	}
+	public final void explode() {explode(!mIsTicking);}
+	public final void explode(double aStrength) {explode(!mIsTicking, aStrength);}
 	
-	public void explode(double aStrength) {
+	public void explode(boolean aInstant) {
+		explode(aInstant, 4); // Seems to be a reasonable Default Explosion. This Function can of course be overridden.
+	}
+	public void explode(boolean aInstant, double aStrength) {
 		mExplosionStrength = (float)Math.max(aStrength, mExplosionStrength);
-		if (!mIsTicking) {
+		if (aInstant) {
 			setToAir();
 			mExplodeSpamCooldown = 0;
 			if (mExplosionStrength < 1) {

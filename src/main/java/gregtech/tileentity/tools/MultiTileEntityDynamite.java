@@ -106,7 +106,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 				if (hasRedstoneIncoming() || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
 				if (mSunk && !WD.ore_stone(getBlockAtSide(OPPOSITES[mFacing]), getMetaDataAtSide(OPPOSITES[mFacing]))) {mSunk = F; updateClientData();}
 			}
-			if (mCountDown > 0 && --mCountDown <= 0) explode();
+			if (mCountDown > 0 && --mCountDown <= 0) explode(F);
 		}
 	}
 	
@@ -121,7 +121,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	private boolean mDontDrop = F;
 	
 	@Override
-	public void explode() {
+	public void explode(boolean aInstant) {
 		mDontDrop = T;
 		worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 		Explosion tExplosion = mSunk ? new DynamiteExplosion(worldObj, getOffsetXN(mFacing)+0.5, getOffsetYN(mFacing)+0.5, getOffsetZN(mFacing)+0.5, mMaxExplosionResistance, mFortune) : new DynamiteExplosion(worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5, mMaxExplosionResistance, mFortune);
@@ -167,7 +167,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	
-	@Override public void onExploded(Explosion aExplosion) {mDontDrop = T; super.onExploded(aExplosion); explode();}
+	@Override public void onExploded(Explosion aExplosion) {mDontDrop = T; super.onExploded(aExplosion); explode(T);}
 	@Override public boolean remoteActivate() {if (mCountDown > 20 || mCountDown == 0) {mCountDown = 20; updateClientData();} return F;}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return 0.0F;}

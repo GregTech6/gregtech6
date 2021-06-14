@@ -10,7 +10,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.14: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Boilers somehow did not explode when they were pressurized while you harvested them with a Wrench.
+[CHANGED] Centrifuges and Sifters now have better Recipes for processing Tiny Purified Crushed Ores.
 
 
 6.14.13:
