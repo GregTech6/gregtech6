@@ -53,7 +53,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 		if (aBlock == BlocksGT.Paths || IL.EtFu_Path.equal(aBlock)) {
 			return T;
 		}
-		if (aBlock == Blocks.grass || aBlock == BlocksGT.Grass || IL.BoP_Grass_Long.equal(aBlock) || IL.BoP_Grass_Origin.equal(aBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(aBlock)) {
+		if (aBlock == Blocks.grass || aBlock == Blocks.dirt || aBlock == Blocks.mycelium || aBlock == BlocksGT.Grass || IL.BoP_Grass_Long.equal(aBlock) || IL.BoP_Grass_Origin.equal(aBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(aBlock)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -71,7 +71,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.AETHER_Grass.equal(aBlock) || IL.AETHER_Grass_Enchanted.equal(aBlock)) {
+		if (IL.AETHER_Dirt.equal(aBlock) || IL.AETHER_Grass.equal(aBlock) || IL.AETHER_Grass_Enchanted.equal(aBlock)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -84,7 +84,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 		
 		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		
-		if (IL.BoP_Grass_Loamy.equal(aBlock) && aMeta == 0) {
+		if ((IL.BoP_Grass_Loamy.equal(aBlock) && aMeta == 0) || (IL.BoP_Dirt_Loamy.equal(aBlock) && aMeta == 0) || (IL.BoP_Coarse_Loamy.equal(aBlock) && aMeta == 1)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -94,7 +94,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.BoP_Grass_Sandy.equal(aBlock) && aMeta == 1) {
+		if ((IL.BoP_Grass_Sandy.equal(aBlock) && aMeta == 1) || (IL.BoP_Dirt_Sandy.equal(aBlock) && aMeta == 2) || (IL.BoP_Coarse_Sandy.equal(aBlock) && aMeta == 3)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -104,7 +104,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.BoP_Grass_Silty.equal(aBlock) && aMeta == 2) {
+		if ((IL.BoP_Grass_Silty.equal(aBlock) && aMeta == 2) || (IL.BoP_Dirt_Silty.equal(aBlock) && aMeta == 4) || (IL.BoP_Coarse_Silty.equal(aBlock) && aMeta == 5)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -114,7 +114,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Alfisol.equal(aBlock) && aMeta == 0) {
+		if ((IL.EB_Dirt_Alfisol.equal(aBlock) || IL.EB_Grass_Alfisol.equal(aBlock)) && aMeta == 0) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -124,7 +124,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Andisol.equal(aBlock) && aMeta == 1) {
+		if ((IL.EB_Dirt_Andisol.equal(aBlock) || IL.EB_Grass_Andisol.equal(aBlock)) && aMeta == 1) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -134,7 +134,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Gelisol.equal(aBlock) && aMeta == 3) {
+		if ((IL.EB_Dirt_Gelisol.equal(aBlock) || IL.EB_Grass_Gelisol.equal(aBlock)) && aMeta == 3) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -144,7 +144,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Histosol.equal(aBlock) && aMeta == 4) {
+		if ((IL.EB_Dirt_Histosol.equal(aBlock) || IL.EB_Grass_Histosol.equal(aBlock)) && aMeta == 4) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -154,7 +154,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Inceptisol.equal(aBlock) && aMeta == 5) {
+		if ((IL.EB_Dirt_Inceptisol.equal(aBlock) || IL.EB_Grass_Inceptisol.equal(aBlock)) && aMeta == 5) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -164,7 +164,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Mollisol.equal(aBlock) && aMeta == 6) {
+		if ((IL.EB_Dirt_Mollisol.equal(aBlock) || IL.EB_Grass_Mollisol.equal(aBlock)) && aMeta == 6) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -174,7 +174,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
-		if (IL.EB_Grass_Oxisol.equal(aBlock) && aMeta == 7) {
+		if ((IL.EB_Dirt_Oxisol.equal(aBlock) || IL.EB_Grass_Oxisol.equal(aBlock)) && aMeta == 7) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
@@ -188,7 +188,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 	}
 	
 	static {
-		LH.add("gt.behaviour.path", "Creates Paths in Grass on Rightclick");
+		LH.add("gt.behaviour.path", "Creates Dirt Paths on Rightclick");
 	}
 	
 	@Override

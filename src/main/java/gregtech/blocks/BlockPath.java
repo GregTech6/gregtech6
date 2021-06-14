@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,22 +52,22 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	public BlockPath(String aUnlocalised) {
 		super(null, aUnlocalised, Material.grass, soundTypeGrass, 12, Textures.BlockIcons.DIRTS);
 		setCreativeTab(CreativeTabs.tabTransport);
-		LH.add(getUnlocalizedName()+  ".0.name", "Grass Path");
-		LH.add(getUnlocalizedName()+  ".1.name", "Aether Grass Path");
-		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Grass Path");
-		LH.add(getUnlocalizedName()+  ".3.name", "Sandy Grass Path");
-		LH.add(getUnlocalizedName()+  ".4.name", "Silty Grass Path");
-		LH.add(getUnlocalizedName()+  ".5.name", "Alfisol Grass Path");
-		LH.add(getUnlocalizedName()+  ".6.name", "Andisol Grass Path");
-		LH.add(getUnlocalizedName()+  ".7.name", "Gelisol Grass Path");
-		LH.add(getUnlocalizedName()+  ".8.name", "Histosol Grass Path");
-		LH.add(getUnlocalizedName()+  ".9.name", "Inceptisol Grass Path");
-		LH.add(getUnlocalizedName()+ ".10.name", "Mollisol Grass Path");
-		LH.add(getUnlocalizedName()+ ".11.name", "Oxisol Grass Path");
-		LH.add(getUnlocalizedName()+ ".12.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".13.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".14.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".15.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".0.name", "Path");
+		LH.add(getUnlocalizedName()+  ".1.name", "Aether Path");
+		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Path");
+		LH.add(getUnlocalizedName()+  ".3.name", "Sandy Path");
+		LH.add(getUnlocalizedName()+  ".4.name", "Silty Path");
+		LH.add(getUnlocalizedName()+  ".5.name", "Alfisol Path");
+		LH.add(getUnlocalizedName()+  ".6.name", "Andisol Path");
+		LH.add(getUnlocalizedName()+  ".7.name", "Gelisol Path");
+		LH.add(getUnlocalizedName()+  ".8.name", "Histosol Path");
+		LH.add(getUnlocalizedName()+  ".9.name", "Inceptisol Path");
+		LH.add(getUnlocalizedName()+ ".10.name", "Mollisol Path");
+		LH.add(getUnlocalizedName()+ ".11.name", "Oxisol Path");
+		LH.add(getUnlocalizedName()+ ".12.name", "Path");
+		LH.add(getUnlocalizedName()+ ".13.name", "Path");
+		LH.add(getUnlocalizedName()+ ".14.name", "Path");
+		LH.add(getUnlocalizedName()+ ".15.name", "Path");
 		setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1);
 	}
 	
