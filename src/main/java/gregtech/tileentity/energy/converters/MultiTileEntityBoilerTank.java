@@ -197,6 +197,11 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	
 	@Override
 	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
+		DEB.println("TEST");
+		DEB.println(isServerSide());
+		DEB.println(UT.Entities.isCreative(aPlayer));
+		DEB.println(mBarometer);
+		
 		if (isServerSide() && !UT.Entities.isCreative(aPlayer) && mBarometer > 4) explode();
 		return worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 	}

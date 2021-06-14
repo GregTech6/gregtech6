@@ -92,7 +92,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add(mTank.content("Tank is empty"));
+		aChatReturn.add(mTank.contentcap());
 	}
 	
 	public boolean allowFluid(FluidStack aFluid) {

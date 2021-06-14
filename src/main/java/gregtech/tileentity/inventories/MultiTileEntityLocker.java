@@ -22,6 +22,7 @@ package gregtech.tileentity.inventories;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.IL;
 import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -61,9 +62,11 @@ public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implemen
 			for (int i = 0; i < 4; i++) {
 				ItemStack tStack = slot(i);
 				if (tStack == null || tStack.getItem().isValidArmor(tStack, 3-i, aPlayer)) {
-					slot(i, aPlayer.inventory.armorInventory[i]);
-					aPlayer.inventory.armorInventory[i] = tStack;
-					temp = T;
+					if (!IL.BTRS_Backpack.equal(aPlayer.inventory.armorInventory[i], T, T) && !IL.BTRS_Thaumpack.equal(aPlayer.inventory.armorInventory[i], T, T)) {
+						slot(i, aPlayer.inventory.armorInventory[i]);
+						aPlayer.inventory.armorInventory[i] = tStack;
+						temp = T;
+					}
 				}
 			}
 			if (temp) {

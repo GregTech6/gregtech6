@@ -51,6 +51,7 @@ import enviromine.EnviroPotion;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.block.ToolCompat;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanConnectRedstone;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
 import gregapi.block.prefixblock.PrefixBlockTileEntity;
 import gregapi.code.ArrayListNoNulls;
@@ -187,11 +188,14 @@ public class GT_API extends Abstract_Mod {
 		BI.BAROMETER.toString();
 		OP.ore.toString();
 		
+		// Make sure Icons are initialized.
 		Textures.BlockIcons.VOID.toString();
 		Textures.ItemIcons .VOID.toString();
 		ErrorRenderer.INSTANCE.toString();
-		// Guess what, I once got a random Crash from that one not being classloaded...
+		
+		// Guess what, I got a random Crash from one of those not being classloaded...
 		UT.Entities.class.toString();
+		IMTE_CanConnectRedstone.class.toString();
 		
 		try {
 			DW = new DummyWorld();

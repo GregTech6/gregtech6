@@ -364,8 +364,8 @@ public class Loader_Recipes_Ores implements Runnable {
 				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushedPurified.dat(aMat)});
 				
 				if (ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES) {
-				RM.ic2_centrifuge(tPurified                     , (int)Math.min(5000, Math.abs(aMat.getMass() * 20))    , crushedCentrifuged    .mat(aMat, 1), crushedCentrifugedTiny   .mat(UT.Code.select(1, aMat, aMat.mByProducts), 1));
-				RM.ic2_centrifuge(ST.amount(9,tPurifiedTiny)    , (int)Math.min(5000, Math.abs(aMat.getMass() * 20))    , crushedCentrifuged    .mat(aMat, 1), crushedCentrifugedTiny   .mat(UT.Code.select(1, aMat, aMat.mByProducts), 1));
+				RM.ic2_centrifuge(tPurified                 , (int)Math.min(5000, Math.abs(aMat.getMass() * 20)), crushedCentrifuged.mat(aMat, 1), crushedCentrifugedTiny.mat(UT.Code.select(1, aMat, aMat.mByProducts), 1));
+				RM.ic2_centrifuge(ST.amount(9,tPurifiedTiny), (int)Math.min(5000, Math.abs(aMat.getMass() * 20)), crushedCentrifuged.mat(aMat, 1), crushedCentrifugedTiny.mat(UT.Code.select(1, aMat, aMat.mByProducts), 1));
 				}
 				if (!tMagnetList.isEmpty()) {
 				RM.MagneticSeparator.addRecipe1(T, 16, 144, tMagnet, tPurified    , crushedCentrifuged    .mat(aMat, 1), crushedCentrifugedTiny.mat(tMagnetList.get(0),18, dustTiny.mat(tMagnetList.get(0),18)), tMagnetList.size()<=1?null:crushedCentrifugedTiny.mat(tMagnetList.get(1),18, dustTiny.mat(tMagnetList.get(1),18)), tMagnetList.size()<=2?null:crushedCentrifugedTiny.mat(tMagnetList.get(2),18, dustTiny.mat(tMagnetList.get(2),18)), tMagnetList.size()<=3?null:crushedCentrifugedTiny.mat(tMagnetList.get(3),18, dustTiny.mat(tMagnetList.get(3),18)), tMagnetList.size()<=4?null:crushedCentrifugedTiny.mat(tMagnetList.get(4),18, dustTiny.mat(tMagnetList.get(4),18)), tMagnetList.size()<=5?null:crushedCentrifugedTiny.mat(tMagnetList.get(5),18, dustTiny.mat(tMagnetList.get(5),18)));
@@ -373,17 +373,17 @@ public class Loader_Recipes_Ores implements Runnable {
 				}
 				ItemStack tGem = gem.mat(aMat, 1);
 				if (tGem != null) {
-				RM.Sifting.addRecipe1(T, 16, 128, new long[] {1, 100, 400, 1500, 2000, 4000, 5000}, tPurified                   , gemLegendary.mat(aMat, tGem, 1), gemExquisite.mat(aMat, tGem, 1), gemFlawless.mat(aMat, tGem, 1), tGem, gemFlawed.mat(aMat, tGem, 1), gemChipped.mat(aMat, tGem, 1), tDust);
-				RM.Sifting.addRecipe1(T, 16, 128, new long[] {1, 100, 400, 1500, 2000, 4000, 5000}, ST.amount(9,tPurifiedTiny)  , gemLegendary.mat(aMat, tGem, 1), gemExquisite.mat(aMat, tGem, 1), gemFlawless.mat(aMat, tGem, 1), tGem, gemFlawed.mat(aMat, tGem, 1), gemChipped.mat(aMat, tGem, 1), tDust);
+				RM.Sifting.addRecipe1(T, 16, 144, new long[] {9,  90, 360, 1350, 1800, 3600, 4500}, tPurified    , gemLegendary.mat(aMat, ST.amount(8, tGem), 1), gemExquisite.mat(aMat, ST.amount(4, tGem), 1), gemFlawless.mat(aMat, ST.amount(2, tGem), 1), tGem, gemFlawed.mat(aMat, tGem, 2), gemChipped.mat(aMat, tGem, 4), tDust);
+				RM.Sifting.addRecipe1(T, 16,  16, new long[] {1,  10,  40,  150,  200,  400,  500}, tPurifiedTiny, gemLegendary.mat(aMat, ST.amount(8, tGem), 1), gemExquisite.mat(aMat, ST.amount(4, tGem), 1), gemFlawless.mat(aMat, ST.amount(2, tGem), 1), tGem, gemFlawed.mat(aMat, tGem, 2), gemChipped.mat(aMat, tGem, 4), tDust);
 				}
 				
 				OreDictMaterial tMat1 = UT.Code.select(0, aMat, aMat.mByProducts), tMat2 = UT.Code.select(1, aMat, aMat.mByProducts), tMat3 = UT.Code.select(2, aMat, aMat.mByProducts);
-				FluidStack tFluid1 = tMat1.fluid(DEF_ENV_TEMP, U9, F), tFluid2 = tMat2.fluid(DEF_ENV_TEMP, U9, F), tFluid3 = tMat3.fluid(DEF_ENV_TEMP, U9, F);
+				FluidStack tFluid1 = tMat1.fluid(DEF_ENV_TEMP, U72, T), tFluid2 = tMat2.fluid(DEF_ENV_TEMP, U72, T), tFluid3 = tMat3.fluid(DEF_ENV_TEMP, U72, T);
 				if (FL.Error.is(tFluid1)) tFluid1 = null;
 				if (FL.Error.is(tFluid2)) tFluid2 = null;
 				if (FL.Error.is(tFluid3)) tFluid3 = null;
-				RM.Centrifuge   .addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, tPurified                     , ZL_FS, FL.array(tFluid1, tFluid2, tFluid3), dust    .mat(aMat, 1), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 1, dustTiny.mat(tMat1, 1)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 1, dustTiny.mat(tMat2, 1)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 1, dustTiny.mat(tMat3, 1)):null);
-				RM.Centrifuge   .addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, ST.amount(9,tPurifiedTiny)    , ZL_FS, FL.array(tFluid1, tFluid2, tFluid3), dustTiny.mat(aMat, 9), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 1, dustTiny.mat(tMat1, 1)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 1, dustTiny.mat(tMat2, 1)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 1, dustTiny.mat(tMat3, 1)):null);
+				RM.Centrifuge.addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, new long[] {10000, 1000, 1000, 1000}, tPurified    , ZL_FS, FL.array(FL.mul(tFluid1, 9), FL.mul(tFluid2, 9), FL.mul(tFluid3, 9)), crushedCentrifugedTiny.mat(aMat, 9, dustTiny.mat(tMat1, 9)), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 9, dustTiny.mat(tMat1, 9)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 9, dustTiny.mat(tMat2, 9)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 9, dustTiny.mat(tMat3, 9)):null);
+				RM.Centrifuge.addRecipe1(T, 16, 144 +  16 * aMat.mToolQuality, new long[] {10000, 1000, 1000, 1000}, tPurifiedTiny, ZL_FS, FL.array(       tFluid1    ,        tFluid2    ,        tFluid3    ), crushedCentrifugedTiny.mat(aMat, 1, dustTiny.mat(tMat1, 1)), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 1, dustTiny.mat(tMat1, 1)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 1, dustTiny.mat(tMat2, 1)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 1, dustTiny.mat(tMat3, 1)):null);
 			}
 			
 			
