@@ -310,8 +310,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], mShapeA==6?OP.blockGem:mShapeA==7?OP.ore:OP.blockSolid)));
-		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], mShapeB==6?OP.blockGem:mShapeB==7?OP.ore:OP.blockSolid)));
+		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], mShapeA==6?OP.blockGem:mShapeA==7?OP.blockRaw:OP.blockSolid)));
+		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], mShapeB==6?OP.blockGem:mShapeB==7?OP.blockRaw:OP.blockSolid)));
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	

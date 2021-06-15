@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -175,7 +175,7 @@ public class EntityArrow_Material extends EntityProjectile {
 					
 					float
 					tMagicDamage = tHitEntity instanceof EntityLivingBase?EnchantmentHelper.func_152377_a(mArrow, ((EntityLivingBase)tHitEntity).getCreatureAttribute()):0,
-					tDamage = MathHelper.ceiling_double_int(MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ) * (getDamage() + (tData != null && tData.mMaterial != null ? (tData.mMaterial.mMaterial.mToolQuality / 2.0F) - 1: 0)));
+					tDamage = UT.Code.roundUp(MathHelper.sqrt_double(motionX*motionX + motionY*motionY + motionZ*motionZ) * (getDamage() + Math.max(0, tData != null && tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mToolQuality-1 : 0)));
 					
 					if (getIsCritical()) tDamage += rand.nextInt((int)(tDamage / 2.0 + 2.0));
 					

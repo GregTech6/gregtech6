@@ -457,7 +457,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		return ACCESSIBLE_SLOTS;
 	}
 
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 && mRecipes != null && mRecipes.containsInput(aStack, this, NI) && !OP.crushedPurifiedTiny.contains(aStack);}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 && mRecipes != null && mRecipes.containsInput(aStack, this, NI);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot != 0;}
 
 	@Override public String getTileEntityName() {return "gt.multitileentity.sifter.table";}

@@ -47,7 +47,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 	
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || WD.block(aWorld, aX, aY+1, aZ).isOpaqueCube()) return F;
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
 		
 		if (aBlock == BlocksGT.Paths || IL.EtFu_Path.equal(aBlock)) {

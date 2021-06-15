@@ -464,6 +464,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("gemDiamondIndustrial"            , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamond"                      , "diamond");
 		OreDictManager.INSTANCE.addReRegistration("dustAnyGlowstone"                , "dustGlowstone");
+		OreDictManager.INSTANCE.addReRegistration("oreRawRedstone"                  , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("gemFlawlessRedstone"             , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("gemRedstone"                     , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("gemRedstonia"                    , OD.itemRedstone);
@@ -482,6 +483,11 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OD.cryingObsidian                 , OD.obsidian);
 		OreDictManager.INSTANCE.addReRegistration("stoneSand"                       , OD.sandstone);
 		OreDictManager.INSTANCE.addReRegistration("stoneSoulSand"                   , OD.sandstone);
+		OreDictManager.INSTANCE.addReRegistration("oreRawCoalCoke"                  , "fuelCoke");
+		OreDictManager.INSTANCE.addReRegistration("oreRawCoalCoke"                  , "coalCoke");
+		OreDictManager.INSTANCE.addReRegistration("oreRawCoalCoke"                  , "coke");
+		OreDictManager.INSTANCE.addReRegistration("oreRawCoal"                      , "coal");
+		OreDictManager.INSTANCE.addReRegistration("oreRawCharcoal"                  , "charcoal");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "fuelCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coalCoke");
 		OreDictManager.INSTANCE.addReRegistration("gemCoalCoke"                     , "coke");
@@ -495,9 +501,10 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("gemChargedCertusQuartz"          , OD.itemCertusQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemCertusQuartz"                 , OD.itemCertusQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemNetherQuartz"                 , OD.itemNetherQuartz);
+		OreDictManager.INSTANCE.addReRegistration("oreRawQuartz"                    , OD.craftingQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemQuartz"                       , OD.craftingQuartz);
-		OreDictManager.INSTANCE.addReRegistration("itemCertusQuartz"                , OD.craftingQuartz);
-		OreDictManager.INSTANCE.addReRegistration("itemNetherQuartz"                , OD.craftingQuartz);
+		OreDictManager.INSTANCE.addReRegistration(OD.itemCertusQuartz               , OD.craftingQuartz);
+		OreDictManager.INSTANCE.addReRegistration(OD.itemNetherQuartz               , OD.craftingQuartz);
 		OreDictManager.INSTANCE.addReRegistration("gemMalachite"                    , "dyeMixableGreen");
 		OreDictManager.INSTANCE.addReRegistration("gemLazurite"                     , "dyeMixableCyan");
 		OreDictManager.INSTANCE.addReRegistration("gemLapis"                        , "dyeMixableBlue");

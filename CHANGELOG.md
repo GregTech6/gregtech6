@@ -13,6 +13,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Boilers somehow did not explode when they were pressurized while you harvested them with a Wrench.
 [CHANGED] Centrifuges and Sifters now have better Recipes for processing Tiny Purified Crushed Ores.
 [CHANGED] Grass Paths are now Dirt Paths, just like in most recent Vanilla Minecraft Versions. That means you can now actually place them on Dirt, Mycelium, Podzol and Coarse Dirt.
+[CHANGED] Wrenches and Monkey Wrenches now only cost 4 Units instead of 6 units of Material to make.
+[ADDED] A little bit of NEI info on Mercury Bottles and making Steel in a Crucible.
 
 
 6.14.13:

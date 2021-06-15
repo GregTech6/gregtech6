@@ -212,7 +212,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_Extruder_Gear_Small       .set(addItem(tLastID = 10026, "Extruder Shape (Small Gear)"              , "Extruder Shape for making small Gears"               , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_Rod              .set(addItem(tLastID = 10027, "Extruder Shape (Rod)"                     , "Extruder Shape for making Rods"                      , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_CCC              .set(addItem(tLastID = 10028, "Extruder Shape (Capsule-Cell-Container)"  , "Extruder Shape for making Capsule-Cell-Containers"   , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
-		IL.Shape_Extruder_Foil             .set(addItem(tLastID = 10029, "Extruder Shape (Foil)"                    , "Extruder Shape for making Foils"                     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
+		IL.Shape_Extruder_Foil             .set(addItem(tLastID = 10029, "Extruder Shape (Foil)"                    , "Extruder Shape for making Foils from Non-Metals"     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_Plate_Tiny       .set(addItem(tLastID = 10030, "Extruder Shape (Tiny Plate)"              , "Extruder Shape for making Tiny Plates"               , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 
 		CR.shaped(IL.Shape_Extruder_Ingot           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
@@ -318,7 +318,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_SimpleEx_Gear_Small       .set(addItem(tLastID = 10226, "Low Heat Extruder Shape (Small Gear)"             , "Extruder Shape for making small Gears"               , TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_Rod              .set(addItem(tLastID = 10227, "Low Heat Extruder Shape (Rod)"                    , "Extruder Shape for making Rods"                      , TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_CCC              .set(addItem(tLastID = 10228, "Low Heat Extruder Shape (Capsule-Cell-Container)" , "Extruder Shape for making Capsule-Cell-Containers"   , TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
-		IL.Shape_SimpleEx_Foil             .set(addItem(tLastID = 10229, "Low Heat Extruder Shape (Foil)"                   , "Extruder Shape for making Foils"                     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
+		IL.Shape_SimpleEx_Foil             .set(addItem(tLastID = 10229, "Low Heat Extruder Shape (Foil)"                   , "Extruder Shape for making Foils from Non-Metals"     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_Plate_Tiny       .set(addItem(tLastID = 10230, "Low Heat Extruder Shape (Tiny Plate)"             , "Extruder Shape for making Tiny Plates"               , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 
 		CR.shaped(IL.Shape_SimpleEx_Ingot           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
