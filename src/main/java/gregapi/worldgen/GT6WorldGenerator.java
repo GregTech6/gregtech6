@@ -72,7 +72,17 @@ public class GT6WorldGenerator {
 				
 				// Yes, it has to be looped twice in a row, this cannot be optimized into one Loop!
 				for (WorldgenObject tWorldGen : mGenNormal) tWorldGen.reset(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);
-				for (WorldgenObject tWorldGen : mGenNormal) try {if (tWorldGen.enabled(mWorld, mDimType)) tWorldGen.generate(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);} catch (Throwable e) {e.printStackTrace(ERR);}
+				for (WorldgenObject tWorldGen : mGenNormal) if (tWorldGen.enabled(mWorld, mDimType)) {
+					try {
+						tWorldGen.generate(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);
+					} catch (Throwable e) {
+						e.printStackTrace(ERR);
+					}
+					if (tChunk.lastSaveTime == Long.MAX_VALUE) {
+						tChunk.hasEntities = tChunk.isModified = F;
+						throw new RuntimeException("A corrupted Chunk was found while generating at (X: " + mMinX + " Z: " + mMinZ + "), please try loading the World again to see if this specific Chunk consistently corrupts, and >>>ONLY<<< if it does so, please report this to Greg.");
+					}
+				}
 				
 				if (mGenLargeOres != null && !mGenLargeOres.isEmpty()) {
 					int tMaxWeight = 0;

@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Grass Paths are now Dirt Paths, just like in most recent Vanilla Minecraft Versions. That means you can now actually place them on Dirt, Mycelium, Podzol and Coarse Dirt.
 [CHANGED] Wrenches and Monkey Wrenches now only cost 4 Units instead of 6 units of Material to make.
 [ADDED] A little bit of NEI info on Mercury Bottles and making Steel in a Crucible.
+[ADDED] Detection of Corrupted Chunks to the Ocean World Generator. This should probably help reduce the amount randomly corrupted Chunks because of Minecraft being stupid. If this turns out to be too obnoxious, I will remove parts of this Feature again.
 
 
 6.14.13:

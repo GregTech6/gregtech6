@@ -67,10 +67,15 @@ public class WorldgenSwamp extends WorldgenObject {
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water && !(tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) continue;
 				
 				if (tPlacedNone) {
-					BlockSwamp.PLACEMENT_ALLOWED = T;
-					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0);
-					BlockSwamp.PLACEMENT_ALLOWED = F;
 					tPlacedNone = F;
+					
+					BlockSwamp.PLACEMENT_ALLOWED = T;
+					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0)) {
+						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
+						aChunk.lastSaveTime = Long.MAX_VALUE;
+						return F;
+					}
+					BlockSwamp.PLACEMENT_ALLOWED = F;
 				} else {
 					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Swamp);
 				}
