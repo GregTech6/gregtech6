@@ -63,11 +63,17 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.blocks.fluids.BlockWaterlike;
 import gregtech.entities.Override_Drops;
+import gregtech.entities.ai.EntityAIBetterAttackOnCollide;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.tileentity.misc.MultiTileEntityCertificate;
 import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
@@ -393,9 +399,13 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			}
 		}
 	}
-	
+
+	public Boolean mBetterAITasks = null;
+
+	@SuppressWarnings("unchecked")
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
+		if (mBetterAITasks == null) mBetterAITasks = ConfigsGT.GREGTECH.get("mobs", "BetterAITasks", T);
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
 			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
@@ -416,6 +426,18 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					if (ST.valid(tArrow)) {
 						aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, tArrow));
 						aEvent.entity.setDead();
+					}
+				}
+			}
+		}
+		if (aEvent.entity != null) {
+			if (mBetterAITasks && aEvent.entity instanceof EntityLiving) {
+				EntityLiving living = (EntityLiving) aEvent.entity;
+				for (int i = 0; i < living.tasks.taskEntries.size(); i++) {
+					EntityAITasks.EntityAITaskEntry aiTask = (EntityAITasks.EntityAITaskEntry)living.tasks.taskEntries.get(i);
+					Class aiTaskClass = aiTask.action.getClass();
+					if (aiTaskClass == EntityAIAttackOnCollide.class) {
+						aiTask.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)aiTask.action);
 					}
 				}
 			}
@@ -441,8 +463,19 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public void onEntityConstructingEvent(EntityConstructing aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) return;
 		if (aEvent.entity instanceof EntityOcelot) mOcelots.add(((EntityOcelot)aEvent.entity));
+
+		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
+			if (aEvent.entity instanceof EntityZombie) {
+				EntityZombie zombie = (EntityZombie) aEvent.entity;
+				if (!zombie.isChild() && zombie.getHeldItem() == null) {
+					int chances = RNGSUS.nextInt(100);
+					if (chances < 2) zombie.setCurrentItemOrArmor(0, ST.make(Blocks.tnt, 1, 0));
+					else if (chances < 6) zombie.setCurrentItemOrArmor(0, ST.make(Items.stone_pickaxe, 1, 0));
+				}
+			}
+		}
 	}
-	
+
 	@SubscribeEvent
 	public void onServerTickEvent(ServerTickEvent aEvent) {
 		if (aEvent.side.isServer() && aEvent.phase == Phase.START && SERVER_TIME > 20) {
