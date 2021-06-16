@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import java.net.URL;
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -32,8 +31,6 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
@@ -67,6 +64,8 @@ import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.tileentity.misc.MultiTileEntityCertificate;
 import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -79,7 +78,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -397,7 +395,13 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
-			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
+			if (aEvent.entity instanceof EntityLiving) {
+				if (((EntityLiving)aEvent.entity).tasks != null) {
+					if (aEvent.entity instanceof EntityOcelot) {
+						if (ItemsGT.CANS != null) ((EntityLiving)aEvent.entity).tasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
+					}
+				}
+			} else if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
 					OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
 					switch(RNGSUS.nextInt(10)) {
@@ -407,7 +411,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					case 3: tMaterial = MT.BismuthBronze; break; // Bane of Arthropods 4
 					case 4: tMaterial = MT.Pt; break; // Smite 5
 					case 5: tMaterial = MT.Netherite; break; // Fire Aspect 3
-					case 6: tMaterial = MT.Thaumium; break; // Fortune/Looting 2
+					case 6: tMaterial = MT.Efrine; break; // Fortune/Looting 2
 					case 7: tMaterial = MT.Rubber; break; // Knockback 2
 					case 8: tMaterial = MT.DamascusSteel; break; // Sharpness 5
 					case 9: tMaterial = MT.Craponite; break; // Werebane 10
@@ -432,31 +436,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public void onEntityLivingFallEvent(LivingFallEvent aEvent) {
 		if (!aEvent.entity.worldObj.isRemote && aEvent.entity instanceof EntityPlayer) {
 			if (ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ToolsGT.sMetaTool, ToolsGT.SCISSORS) || ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ToolsGT.sMetaTool, ToolsGT.POCKET_SCISSORS)) aEvent.distance *= 2;
-		}
-	}
-	
-	public ArrayListNoNulls<EntityOcelot> mOcelots = new ArrayListNoNulls<>();
-	
-	@SubscribeEvent
-	public void onEntityConstructingEvent(EntityConstructing aEvent) {
-		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) return;
-		if (aEvent.entity instanceof EntityOcelot) mOcelots.add(((EntityOcelot)aEvent.entity));
-	}
-	
-	@SubscribeEvent
-	public void onServerTickEvent(ServerTickEvent aEvent) {
-		if (aEvent.side.isServer() && aEvent.phase == Phase.START && SERVER_TIME > 20) {
-			try {
-				Iterator<EntityOcelot> tIterator = mOcelots.iterator();
-				while (tIterator.hasNext()) {
-					EntityOcelot tOcelot = tIterator.next();
-					if (tOcelot != null && tOcelot.tasks != null) tOcelot.tasks.addTask(3, new EntityAITempt(tOcelot, 0.6D, ItemsGT.CANS, T));
-					tIterator.remove();
-				}
-				mOcelots.clear();
-			} catch(Throwable e) {
-				e.printStackTrace(ERR);
-			}
 		}
 	}
 	

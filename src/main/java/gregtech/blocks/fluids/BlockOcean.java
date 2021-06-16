@@ -94,17 +94,23 @@ public class BlockOcean extends BlockWaterlike {
 		
 		BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(aX, aZ);
 		
-		boolean tHasNoOceanAround = T;
+		boolean tHasNoOceanAround = T, tHasOceanBiome = BIOMES_OCEAN_BEACH.contains(tBiome.biomeName);
 		byte tOceanCounter = 0;
 		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
 		for (byte tSide : ALL_SIDES_HORIZONTAL) {
 			tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
 			if (tBlock == this) {
 				tHasNoOceanAround = F;
-				if (WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
-			} else if (WD.anywater(tBlock)) {
-				if (!(tBlock instanceof BlockWaterlike && tBlock != BlocksGT.River) || BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
-				if (WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
+				if (tHasOceanBiome || WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
+			} else if (tBlock == BlocksGT.River) {
+				tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
+				tOceanCounter++;
+			} else if (WD.water(tBlock)) {
+				tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
+				if (tHasOceanBiome || WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
+			} else if (tHasOceanBiome && tBlock instanceof BlockWaterlike) {
+				tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
+				tOceanCounter++;
 			}
 		}
 		
@@ -124,7 +130,7 @@ public class BlockOcean extends BlockWaterlike {
 		}
 		
 		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
-			if (tOceanCounter >= 2 || (SPREAD_TO_AIR && BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) || (aWorld.getBlock(aX, aY+1, aZ) == this && WD.meta(aWorld, aX, aY+1, aZ) == 0)) {
+			if (tOceanCounter >= 2 || (SPREAD_TO_AIR && tHasOceanBiome) || (aWorld.getBlock(aX, aY+1, aZ) == this && WD.meta(aWorld, aX, aY+1, aZ) == 0)) {
 				aWorld.setBlock(aX, aY, aZ, this, 0, 2);
 			}
 		}
@@ -157,7 +163,7 @@ public class BlockOcean extends BlockWaterlike {
 		return;
 	}
 	
-	@Override public int getLightOpacity(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ) == 0 && WD.air(aWorld.getBlock(aX, aY+1, aZ)) && WD.air(aWorld.getBlock(aX, aY+2, aZ)) ? 16 : LIGHT_OPACITY_NONE;}
+	@Override public int getLightOpacity(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ) == 0 && WD.air(aWorld.getBlock(aX, aY+1, aZ)) && WD.air(aWorld.getBlock(aX, aY+2, aZ)) && aWorld.getBlock(aX, aY-1, aZ).getLightOpacity(aWorld, aX, aY-1, aZ) < LIGHT_OPACITY_MAX ? 16 : LIGHT_OPACITY_NONE;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
 	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return 0x00c0c0c0;}
 	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00c0c0c0;}
