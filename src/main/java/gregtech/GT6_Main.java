@@ -440,7 +440,7 @@ public class GT6_Main extends Abstract_Mod {
 		, ST.make(aRegistry.getItem(1302), "Point a running Engine into the Crucible to blow Air")
 		, ST.make(OP.dust.mat(MT.Fe, 1), "Throw Iron into Crucible")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
-		, ST.make(OP.dust.mat(MT.WroughtIron, 1), "Or throw Wrought Iron into Crucible, either works")
+		, ST.make(OP.dust.mat(MT.WroughtIron, 1), "Or throw Wrought Iron into the Crucible, either works")
 		), ST.array(OP.ingot.mat(MT.Steel, 1)), null, ZL_LONG, FL.array(FL.Air.make(1000), FL.Air_Nether.make(1000), FL.Air_End.make(1000)), ZL_FS, 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(

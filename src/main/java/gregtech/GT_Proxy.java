@@ -422,50 +422,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 	
-// Not gonna do that one due to exploitiness.
-//  @SubscribeEvent
-//  public void onItemExpireEvent(ItemExpireEvent aEvent) {
-//      ItemStack aStack = aEvent.entityItem.getEntityItem();
-//      if (aStack != null) {
-//          if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
-//          
-//          if (!aEvent.entityItem.worldObj.isRemote && aEvent.entityItem.onGround) {
-//              if (aStack.getItem() == Items.stick) {
-//                  MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
-//                  for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
-//                      if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
-//                          if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32756, null, T, F)) {
-//                              aStack.stackSize--;
-//                              if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
-//                          }
-//                      }
-//                  }
-//                  aEvent.entityItem.setEntityItemStack(aStack);
-//                  aEvent.extraLife = 200;
-//                  aEvent.setCanceled(T);
-//                  return;
-//              }
-//              OreDictItemData tData = OM.data(aStack);
-//              if (tData != null && tData.mPrefix == OP.rockGt) {
-//                  MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
-//                  for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
-//                      if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
-//                          if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32757, ST.save(null, NBT_VALUE, aStack), T, F)) {
-//                              aStack.stackSize = 0;
-//                              aEvent.entityItem.setDead();
-//                              return;
-//                          }
-//                      }
-//                  }
-//                  aEvent.entityItem.setEntityItemStack(aStack);
-//                  aEvent.extraLife = 200;
-//                  aEvent.setCanceled(T);
-//                  return;
-//              }
-//          }
-//      }
-//  }
-	
 	@SubscribeEvent
 	public void onEntityLivingDropsEventEvent(LivingDropsEvent aEvent) {
 		if (aEvent.entity.worldObj.isRemote || aEvent.entity instanceof EntityPlayer || aEvent.entityLiving == null) return;
