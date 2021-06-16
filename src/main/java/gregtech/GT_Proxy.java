@@ -28,7 +28,6 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
@@ -398,57 +397,59 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SuppressWarnings("unchecked")
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
-		if (aEvent.entity != null) {
-			if (aEvent.entity instanceof EntityLiving) {
-				// Add AI Tasks to Entities
-				EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
-				if (tTasks != null) try {
-					if (aEvent.entity instanceof EntityOcelot) {
-						if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
-					}
-					// Now replace old AI tasks with new ones on all types
-					for (int i = 0; i < tTasks.taskEntries.size(); i++) {
-						EntityAITasks.EntityAITaskEntry aiTask = (EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i);
-						Class aiTaskClass = aiTask.action.getClass();
-						if (aiTaskClass == EntityAIAttackOnCollide.class) {
-							aiTask.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)aiTask.action);
-						} // else if (aiTaskClass == EntityAIFutureStuff.class) {}
-					}
-				} catch(Throwable e) {e.printStackTrace(ERR);}
-				if (!aEvent.entity.worldObj.isRemote) {
-					// Check if this Entity was already spawned, and not just unloaded and reloaded.
-					if (!aEvent.entity.getEntityData().hasKey("gt.spawned")) {
-						if (aEvent.entity instanceof EntityZombie && !((EntityZombie) aEvent.entity).isChild() && ST.invalid(((EntityZombie) aEvent.entity).getEquipmentInSlot(0))) {
-							if (ZOMBIES_HOLD_TNT && RNGSUS.nextInt(250) == 0) {
-								((EntityZombie) aEvent.entity).setCurrentItemOrArmor(0, ST.make(Blocks.tnt, 1 + RNGSUS.nextInt(2), 0));
-							} else if (ZOMBIES_HOLD_PICKAXES && RNGSUS.nextInt(100) == 0) {
-								((EntityZombie) aEvent.entity).setCurrentItemOrArmor(0, ST.make(Items.iron_pickaxe, 1, Items.iron_pickaxe.getMaxDamage() < 5 ? 0 : 1 + RNGSUS.nextInt(Items.iron_pickaxe.getMaxDamage() - 2)));
-							}
-						}
+		if (aEvent.entity == null) return;
+
+		if (aEvent.entity instanceof EntityLiving) {
+			// AI Tasks for Entities
+			EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
+			if (tTasks != null) {
+				if (aEvent.entity instanceof EntityOcelot) {
+					if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
+				}
+				for (int i = 0; i < tTasks.taskEntries.size(); i++) {
+					EntityAITasks.EntityAITaskEntry tEntry = (EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i);
+					Class aiTaskClass = tEntry.action.getClass();
+					if (aiTaskClass == EntityAIAttackOnCollide.class) {
+					} // else if (aiTaskClass == EntityAIFutureStuff.class) {}
+				}
+			}
+
+			// Check if this Entity was already spawned, and not just unloaded and reloaded.
+			if (!aEvent.entity.worldObj.isRemote && !aEvent.entity.getEntityData().hasKey("gt.spawned")) {
+				if (aEvent.entity instanceof EntityZombie && !((EntityZombie)aEvent.entity).isChild() && ST.invalid(((EntityZombie)aEvent.entity).getEquipmentInSlot(0))) {
+					if (ZOMBIES_HOLD_TNT && RNGSUS.nextInt(250) == 0) {
+						((EntityZombie)aEvent.entity).setCurrentItemOrArmor(0, ST.make(Blocks.tnt, 1+RNGSUS.nextInt(2), 0));
+					} else if (ZOMBIES_HOLD_PICKAXES && RNGSUS.nextInt(100) == 0) {
+						((EntityZombie)aEvent.entity).setCurrentItemOrArmor(0, ST.make(Items.iron_pickaxe, 1, Items.iron_pickaxe.getMaxDamage() < 5 ? 0 : 1+RNGSUS.nextInt(Items.iron_pickaxe.getMaxDamage()-2)));
 					}
 				}
 				// Mark Entity as has been spawned
 				aEvent.entity.getEntityData().setBoolean("gt.spawned", T);
-			} else if (mSkeletonsShootGTArrows > 0 && !aEvent.entity.worldObj.isRemote && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
-				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
-					OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
-					switch(RNGSUS.nextInt(10)) {
-					case 0: tMaterial = MT.Steel; break; // Sharpness 2
-					case 1: tMaterial = MT.AnnealedCopper; break; // Dissolving 5
-					case 2: tMaterial = MT.AstralSilver; break; // Disjunction 5 and Werebane 5
-					case 3: tMaterial = MT.BismuthBronze; break; // Bane of Arthropods 4
-					case 4: tMaterial = MT.Pt; break; // Smite 5
-					case 5: tMaterial = MT.Netherite; break; // Fire Aspect 3
-					case 6: tMaterial = MT.Efrine; break; // Fortune/Looting 2
-					case 7: tMaterial = MT.Rubber; break; // Knockback 2
-					case 8: tMaterial = MT.DamascusSteel; break; // Sharpness 5
-					case 9: tMaterial = MT.Craponite; break; // Werebane 10
-					}
-					ItemStack tArrow = OP.arrowGtWood.mat(tMaterial, 1);
-					if (ST.valid(tArrow)) {
-						aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, tArrow));
-						aEvent.entity.setDead();
-					}
+			}
+			return;
+		}
+		
+		if (aEvent.entity.worldObj.isRemote) return;
+		
+		if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
+			if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
+				OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
+				switch(RNGSUS.nextInt(10)) {
+				case 0: tMaterial = MT.Steel; break; // Sharpness 2
+				case 1: tMaterial = MT.AnnealedCopper; break; // Dissolving 5
+				case 2: tMaterial = MT.AstralSilver; break; // Disjunction 5 and Werebane 5
+				case 3: tMaterial = MT.BismuthBronze; break; // Bane of Arthropods 4
+				case 4: tMaterial = MT.Pt; break; // Smite 5
+				case 5: tMaterial = MT.Netherite; break; // Fire Aspect 3
+				case 6: tMaterial = MT.Efrine; break; // Fortune/Looting 2
+				case 7: tMaterial = MT.Rubber; break; // Knockback 2
+				case 8: tMaterial = MT.DamascusSteel; break; // Sharpness 5
+				case 9: tMaterial = MT.Craponite; break; // Werebane 10
+				}
+				ItemStack tArrow = OP.arrowGtWood.mat(tMaterial, 1);
+				if (ST.valid(tArrow)) {
+					aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, tArrow));
+					aEvent.entity.setDead();
 				}
 			}
 		}
