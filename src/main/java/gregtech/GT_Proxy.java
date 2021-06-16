@@ -22,18 +22,13 @@ package gregtech;
 import static gregapi.data.CS.*;
 
 import java.net.URL;
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
@@ -68,14 +63,14 @@ import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.tileentity.misc.MultiTileEntityCertificate;
 import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAITasks;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -85,7 +80,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -400,14 +395,41 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 
-	public Boolean mBetterAITasks = null;
-
 	@SuppressWarnings("unchecked")
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
-		if (mBetterAITasks == null) mBetterAITasks = ConfigsGT.GREGTECH.get("mobs", "BetterAITasks", T);
-		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
-			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
+		if (aEvent.entity != null) {
+			if (aEvent.entity instanceof EntityLiving) {
+				// Add AI Tasks to Entities
+				EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
+				if (tTasks != null) try {
+					if (aEvent.entity instanceof EntityOcelot) {
+						if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
+					}
+					// Now replace old AI tasks with new ones on all types
+					for (int i = 0; i < tTasks.taskEntries.size(); i++) {
+						EntityAITasks.EntityAITaskEntry aiTask = (EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i);
+						Class aiTaskClass = aiTask.action.getClass();
+						if (aiTaskClass == EntityAIAttackOnCollide.class) {
+							aiTask.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)aiTask.action);
+						} // else if (aiTaskClass == EntityAIFutureStuff.class) {}
+					}
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				if (!aEvent.entity.worldObj.isRemote) {
+					// Check if this Entity was already spawned, and not just unloaded and reloaded.
+					if (!aEvent.entity.getEntityData().hasKey("gt.spawned")) {
+						if (aEvent.entity instanceof EntityZombie && !((EntityZombie) aEvent.entity).isChild() && ST.invalid(((EntityZombie) aEvent.entity).getEquipmentInSlot(0))) {
+							if (ZOMBIES_HOLD_TNT && RNGSUS.nextInt(250) == 0) {
+								((EntityZombie) aEvent.entity).setCurrentItemOrArmor(0, ST.make(Blocks.tnt, 1 + RNGSUS.nextInt(2), 0));
+							} else if (ZOMBIES_HOLD_PICKAXES && RNGSUS.nextInt(100) == 0) {
+								((EntityZombie) aEvent.entity).setCurrentItemOrArmor(0, ST.make(Items.iron_pickaxe, 1, Items.iron_pickaxe.getMaxDamage() < 5 ? 0 : 1 + RNGSUS.nextInt(Items.iron_pickaxe.getMaxDamage() - 2)));
+							}
+						}
+					}
+				}
+				// Mark Entity as has been spawned
+				aEvent.entity.getEntityData().setBoolean("gt.spawned", T);
+			} else if (mSkeletonsShootGTArrows > 0 && !aEvent.entity.worldObj.isRemote && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
 					OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
 					switch(RNGSUS.nextInt(10)) {
@@ -417,7 +439,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					case 3: tMaterial = MT.BismuthBronze; break; // Bane of Arthropods 4
 					case 4: tMaterial = MT.Pt; break; // Smite 5
 					case 5: tMaterial = MT.Netherite; break; // Fire Aspect 3
-					case 6: tMaterial = MT.Thaumium; break; // Fortune/Looting 2
+					case 6: tMaterial = MT.Efrine; break; // Fortune/Looting 2
 					case 7: tMaterial = MT.Rubber; break; // Knockback 2
 					case 8: tMaterial = MT.DamascusSteel; break; // Sharpness 5
 					case 9: tMaterial = MT.Craponite; break; // Werebane 10
@@ -426,18 +448,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					if (ST.valid(tArrow)) {
 						aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, tArrow));
 						aEvent.entity.setDead();
-					}
-				}
-			}
-		}
-		if (aEvent.entity != null) {
-			if (mBetterAITasks && aEvent.entity instanceof EntityLiving) {
-				EntityLiving living = (EntityLiving) aEvent.entity;
-				for (int i = 0; i < living.tasks.taskEntries.size(); i++) {
-					EntityAITasks.EntityAITaskEntry aiTask = (EntityAITasks.EntityAITaskEntry)living.tasks.taskEntries.get(i);
-					Class aiTaskClass = aiTask.action.getClass();
-					if (aiTaskClass == EntityAIAttackOnCollide.class) {
-						aiTask.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)aiTask.action);
 					}
 				}
 			}
@@ -457,12 +467,9 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 	
-	public ArrayListNoNulls<EntityOcelot> mOcelots = new ArrayListNoNulls<>();
-	
 	@SubscribeEvent
-	public void onEntityConstructingEvent(EntityConstructing aEvent) {
+	public void onEntityConstructingEvent(EntityEvent.EntityConstructing aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) return;
-		if (aEvent.entity instanceof EntityOcelot) mOcelots.add(((EntityOcelot)aEvent.entity));
 
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
 			if (aEvent.entity instanceof EntityZombie) {
@@ -476,23 +483,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 
-	@SubscribeEvent
-	public void onServerTickEvent(ServerTickEvent aEvent) {
-		if (aEvent.side.isServer() && aEvent.phase == Phase.START && SERVER_TIME > 20) {
-			try {
-				Iterator<EntityOcelot> tIterator = mOcelots.iterator();
-				while (tIterator.hasNext()) {
-					EntityOcelot tOcelot = tIterator.next();
-					if (tOcelot != null && tOcelot.tasks != null) tOcelot.tasks.addTask(3, new EntityAITempt(tOcelot, 0.6D, ItemsGT.CANS, T));
-					tIterator.remove();
-				}
-				mOcelots.clear();
-			} catch(Throwable e) {
-				e.printStackTrace(ERR);
-			}
-		}
-	}
-	
 	@SafeVarargs public final Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, Set<String>... aFluidList) {return FL.createLiquid(aMaterial, aFluidList);}
 	@SafeVarargs public final Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return FL.createPlasma(aMaterial, aTexture, aFluidList);}
 	@SafeVarargs public final Fluid addAutogeneratedGas(OreDictMaterial aMaterial, Set<String>... aFluidList) {return FL.createGas(aMaterial, aFluidList);}

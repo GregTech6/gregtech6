@@ -1,5 +1,6 @@
 package gregtech.entities.ai;
 
+import gregapi.data.CS;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,6 +14,8 @@ import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.ZOMBIES_DIG_TILEENTITIES;
 
 // Most a copy of `EntityAIAttackOnCollide`
 public class EntityAIBetterAttackOnCollide extends EntityAIBase {
@@ -120,7 +123,7 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 			if (this.attacker.getHeldItem() != null) {
 				this.attacker.swingItem();
 				ItemStack held = this.attacker.getHeldItem();
-				if (held.stackSize > 0 && held.getItem() == Item.getItemFromBlock(Blocks.tnt)) {
+				if (held.stackSize > 0 && CS.ZOMBIES_IGNITE_HELD_TNT && held.getItem() == Item.getItemFromBlock(Blocks.tnt)) {
 					this.attackTick = 20;
 					doAttack = false;
 					held.stackSize -= 1;
@@ -130,17 +133,17 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 						worldObj.spawnEntityInWorld(entitytntprimed);
 						worldObj.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
 					}
-				} else if (held.stackSize > 0) {
+				} else if (held.stackSize > 0 && CS.ZOMBIES_DIG_WITH_TOOLS) {
 					// TODO: Handle tools to break things
 					// 1. figure out what the `held` item can work on.
-					// 2. Get nearby block that the tool works on adjust up/down or even if the target is high or low in comparison, skip TE's and such.
+					// 2. Get nearby block that the tool works on adjust up/down or even if the target is high or low in comparison, skip TE's and such perhaps with CS.ZOMBIES_DIG_TILEENTITIES.
 					// 3. Use up some of the `held` tool and break that block then set `attackTick` to something hig based on toughness of that block or so (or add another counter to take 'time' to break something?)
 				}
 			}
 
 			if (doAttack) this.attacker.attackEntityAsMob(entitylivingbase);
 		}
-		// TODO:  this.playSound("creeper.primed", 1.0F, 0.5F);
+		// TODO?:  this.playSound("creeper.primed", 1.0F, 0.5F);
 
 	}
 }
