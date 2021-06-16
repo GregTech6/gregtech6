@@ -30,7 +30,6 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 	private double field_151497_i;
 	private double field_151495_j;
 	private double field_151496_k;
-	private static final String __OBFID = "CL_00001595";
 	private int failedPathFindingPenalty;
 
 	public EntityAIBetterAttackOnCollide(EntityAIAttackOnCollide orig) {
