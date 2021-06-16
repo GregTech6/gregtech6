@@ -1,21 +1,37 @@
+/**
+ * Copyright (c) 2021 GregTech-6 Team
+ *
+ * This file is part of GregTech.
+ *
+ * GregTech is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * GregTech is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package gregtech.entities.ai;
 
 import gregapi.data.CS;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import static gregapi.data.CS.ZOMBIES_DIG_TILEENTITIES;
 
 // Most a copy of `EntityAIAttackOnCollide`
 public class EntityAIBetterAttackOnCollide extends EntityAIBase {
@@ -25,7 +41,7 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 	double speedTowardsTarget;
 	boolean longMemory;
 	PathEntity entityPathEntity;
-	Class classTarget;
+	Class<?> classTarget;
 	private int field_75445_i;
 	private double field_151497_i;
 	private double field_151495_j;
@@ -36,7 +52,7 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 		this(orig.attacker, orig.classTarget, orig.speedTowardsTarget, orig.longMemory);
 	}
 
-	public EntityAIBetterAttackOnCollide(EntityCreature p_i1635_1_, Class p_i1635_2_, double p_i1635_3_, boolean p_i1635_5_) {
+	public EntityAIBetterAttackOnCollide(EntityCreature p_i1635_1_, Class<?> p_i1635_2_, double p_i1635_3_, boolean p_i1635_5_) {
 		this(p_i1635_1_, p_i1635_3_, p_i1635_5_);
 		this.classTarget = p_i1635_2_;
 	}
@@ -49,7 +65,7 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 		this.setMutexBits(3);
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public boolean shouldExecute() {
 		EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 		if (entitylivingbase == null) {
@@ -67,25 +83,29 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 		}
 	}
 
+	@Override
 	public boolean continueExecuting() {
 		EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 		return entitylivingbase == null ? false : (!entitylivingbase.isEntityAlive() ? false : (!this.longMemory ? !this.attacker.getNavigator().noPath() : this.attacker.isWithinHomeDistance(MathHelper.floor_double(entitylivingbase.posX), MathHelper.floor_double(entitylivingbase.posY), MathHelper.floor_double(entitylivingbase.posZ))));
 	}
 
+	@Override
 	public void startExecuting() {
 		this.attacker.getNavigator().setPath(this.entityPathEntity, this.speedTowardsTarget);
 		this.field_75445_i = 0;
 	}
 
+	@Override
 	public void resetTask() {
 		this.attacker.getNavigator().clearPathEntity();
 	}
 
+	@Override
 	public void updateTask() {
 		EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 		this.attacker.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
 		double d0 = this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.boundingBox.minY, entitylivingbase.posZ);
-		double d1 = (double)(this.attacker.width * 2.0F * this.attacker.width * 2.0F + entitylivingbase.width);
+		double d1 = this.attacker.width * 2.0F * this.attacker.width * 2.0F + entitylivingbase.width;
 		--this.field_75445_i;
 		if ((this.longMemory || this.attacker.getEntitySenses().canSee(entitylivingbase)) && this.field_75445_i <= 0 && (this.field_151497_i == 0.0D && this.field_151495_j == 0.0D && this.field_151496_k == 0.0D || entitylivingbase.getDistanceSq(this.field_151497_i, this.field_151495_j, this.field_151496_k) >= 1.0D || this.attacker.getRNG().nextFloat() < 0.05F)) {
 			this.field_151497_i = entitylivingbase.posX;
@@ -94,7 +114,7 @@ public class EntityAIBetterAttackOnCollide extends EntityAIBase {
 			this.field_75445_i = this.failedPathFindingPenalty + 4 + this.attacker.getRNG().nextInt(7);
 			if (this.attacker.getNavigator().getPath() != null) {
 				PathPoint finalPathPoint = this.attacker.getNavigator().getPath().getFinalPathPoint();
-				if (finalPathPoint != null && entitylivingbase.getDistanceSq((double)finalPathPoint.xCoord, (double)finalPathPoint.yCoord, (double)finalPathPoint.zCoord) < 1.0D) {
+				if (finalPathPoint != null && entitylivingbase.getDistanceSq(finalPathPoint.xCoord, finalPathPoint.yCoord, finalPathPoint.zCoord) < 1.0D) {
 					this.failedPathFindingPenalty = 0;
 				} else {
 					this.failedPathFindingPenalty += 10;
