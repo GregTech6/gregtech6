@@ -66,9 +66,12 @@ import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -396,11 +399,36 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
 			if (aEvent.entity instanceof EntityLiving) {
-				if (((EntityLiving)aEvent.entity).tasks != null) {
+				// Add AI Tasks to Entities
+				EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
+				if (tTasks != null) try {
 					if (aEvent.entity instanceof EntityOcelot) {
-						if (ItemsGT.CANS != null) ((EntityLiving)aEvent.entity).tasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
+						if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
+					}
+					if (aEvent.entity instanceof EntityZombie) {
+						if (ZOMBIES_IGNITE_HELD_TNT || ZOMBIES_DIG_WITH_TOOLS || ZOMBIES_DIG_TILEENTITIES) {
+							for (int i = 0; i < tTasks.taskEntries.size(); i++) {
+								if (((EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i)).action.getClass() == EntityAIAttackOnCollide.class) {
+									
+									// TODO Add OvermindDL1s AI Task here
+									
+								}
+							}
+						}
+					}
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				// Check if this Entity was already spawned, and not just unloaded and reloaded.
+				if (!aEvent.entity.getEntityData().hasKey("gt.spawned")) {
+					if (aEvent.entity instanceof EntityZombie && !((EntityZombie)aEvent.entity).isChild() && ST.invalid(((EntityZombie)aEvent.entity).getEquipmentInSlot(0))) {
+						if (ZOMBIES_HOLD_TNT && RNGSUS.nextInt(250) == 0) {
+							((EntityZombie)aEvent.entity).setCurrentItemOrArmor(0, ST.make(Blocks.tnt, 1+RNGSUS.nextInt(2), 0));
+						} else if (ZOMBIES_HOLD_PICKAXES && RNGSUS.nextInt(100) == 0) {
+							((EntityZombie)aEvent.entity).setCurrentItemOrArmor(0, ST.make(Items.iron_pickaxe, 1, Items.iron_pickaxe.getMaxDamage() < 5 ? 0 : 1+RNGSUS.nextInt(Items.iron_pickaxe.getMaxDamage()-2)));
+						}
 					}
 				}
+				// Mark Entity as has been spawned
+				aEvent.entity.getEntityData().setBoolean("gt.spawned", T);
 			} else if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
 					OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
