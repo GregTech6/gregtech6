@@ -399,7 +399,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity == null) return;
-
+		
 		if (aEvent.entity instanceof EntityLiving) {
 			// AI Tasks for Entities
 			EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
