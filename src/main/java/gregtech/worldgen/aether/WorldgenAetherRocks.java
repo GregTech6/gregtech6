@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,7 +60,7 @@ public class WorldgenAetherRocks extends WorldgenOnSurface {
 		if (aContact.getMaterial() != Material.grass && aContact.getMaterial() != Material.ground && aContact.getMaterial() != Material.sand) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
-		if (WD.easyRep(aWorld, aX, aY+1, aZ)) return tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(NBT_VALUE, UT.Code.select(null, OP.gem.mat(MT.Ambrosium, 1), ST.make(Items.flint, 1, 0), ST.make(Items.flint, 1, 0), OP.rockGt.mat(MT.MeteoricIron, 1))):null, F, T);
+		if (WD.easyRep(aWorld, aX, aY+1, aZ)) return tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(NBT_VALUE, UT.Code.select(null, OP.gem.mat(MT.Ambrosium, 1), ST.make(Items.flint, 1, 0), ST.make(Items.flint, 1, 0), (aRandom.nextInt(4)==0?OP.oreRaw:OP.rockGt).mat(MT.MeteoricIron, 1))):null, F, T);
 		return F;
 	}
 }

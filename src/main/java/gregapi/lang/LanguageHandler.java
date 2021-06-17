@@ -159,6 +159,7 @@ public class LanguageHandler {
 		} else
 		if (aMaterial == MT.AncientDebris) {
 			if (aPrefix == OP.rockGt)                                       return aMaterial.mNameLocal;
+			if (aPrefix == OP.oreRaw)                                       return "Big Chunks of " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushed)                                      return "Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.nugget)                                       return "Tiny Piece of Netherite Scrap";
@@ -184,6 +185,7 @@ public class LanguageHandler {
 		} else
 		if (aMaterial == MT.MeteoricIron || aMaterial == MT.Meteorite) {
 			if (aPrefix == OP.rockGt)                                       return "Meteorite";
+			if (aPrefix == OP.oreRaw)                                       return "Big Meteorite";
 		} else
 		if (aMaterial == MT.STONES.SpaceRock) {
 			if (aPrefix == OP.rockGt)                                       return "Space Rock";

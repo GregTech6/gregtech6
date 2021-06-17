@@ -63,12 +63,12 @@ public class WorldgenRacks extends WorldgenObject {
 				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand && tContact.getMaterial() != Material.rock) continue;
 				if (WD.easyRep(aWorld, tX, tY+1, tZ)) {
 					switch(aRandom.nextInt(24)) {
-					case  0: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.gem   .mat(MT.NetherQuartz , 1)), F, T); break;
-					case  1: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.gem   .mat(MT.Glowstone    , 1)), F, T); break;
-					case  2: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(MT.AncientDebris, 1)), F, T); break;
-					case  3: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? OP.rockGt.mat(MT.AncientDebris, 1) : OP.gem   .mat(MT.NetherQuartz, 1)), F, T); break;
-					case  4: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? OP.rockGt.mat(MT.AncientDebris, 1) : OP.gem   .mat(MT.Glowstone   , 1)), F, T); break;
-					case  5: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? OP.rockGt.mat(MT.AncientDebris, 1) : OP.rockGt.mat(MT.Obsidian    , 1)), F, T); break;
+					case  0: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.gem.mat(MT.NetherQuartz, 1)), F, T); break;
+					case  1: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.gem.mat(MT.Glowstone   , 1)), F, T); break;
+					case  2: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, (aRandom.nextInt(4)==0?OP.oreRaw:OP.rockGt).mat(MT.AncientDebris, 1)), F, T); break;
+					case  3: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? (aRandom.nextInt(4)==0?OP.oreRaw:OP.rockGt).mat(MT.AncientDebris, 1) : OP.gem   .mat(MT.NetherQuartz, 1)), F, T); break;
+					case  4: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? (aRandom.nextInt(4)==0?OP.oreRaw:OP.rockGt).mat(MT.AncientDebris, 1) : OP.gem   .mat(MT.Glowstone   , 1)), F, T); break;
+					case  5: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.nether_brick ? (aRandom.nextInt(4)==0?OP.oreRaw:OP.rockGt).mat(MT.AncientDebris, 1) : OP.rockGt.mat(MT.Obsidian    , 1)), F, T); break;
 					case  6: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.Gloomstone  , 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case  7: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.Gloomstone  , 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case  8: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tContact == Blocks.soul_sand || IL.NeLi_SoulSoil.equal(tContact) || IL.NePl_SoulSoil.equal(tContact) ? OP.gem.mat(MT.NetherQuartz, 1) : ST.make(Items.flint, 1, 0)), F, T); break;
