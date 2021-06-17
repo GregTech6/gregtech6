@@ -63,7 +63,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	protected long mEnergy = 0, mInput = 32, mActiveData = 0, mNextCheck = 0;
 	protected byte mActiveState = 0, mExplosionPrevention = 0, mDir = 0;
 	protected TagData mEnergyType = TD.Energy.RU;
-	protected FluidTankGT mTank = new FluidTankGT(16000);
+	protected FluidTankGT mTank = new FluidTankGT();
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -110,25 +110,34 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (!mTank.isEmpty()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
+			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (mTank.has()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
 			
-			if (mEnergy < 2048 || mStopped) {
+			if (mStopped || mEnergy < 8192 || mTank.has()) {
 				mActive = F;
 			} else {
 				mActive = T;
 				if (mCheckList.isEmpty()) {
-					if (--mNextCheck < 0 || (mPumpList.isEmpty() && aTimer % 200 == 10)) {
+					if (--mNextCheck < 0) {
+						// Reset everything and add the Fluid Block in front of the Pump to the Lists.
 						scanForFluid(getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing));
+						// Next Reset should only happen in two and a half Minutes or so.
+						mNextCheck = 3000;
 					} else {
-						if (mTank.isEmpty()) {
-							mIgnoreUnloadedChunks = F;
-							while (!mPumpList.isEmpty() && !drainFluid(mPumpList.removeLast())) {/*Do nothing*/}
-							mIgnoreUnloadedChunks = T;
-							if (mPumpList.isEmpty()) mNextCheck = 10;
+						mIgnoreUnloadedChunks = F;
+						if (mPumpList.isEmpty()) {
+							// We are done with this Y-Level, lets scan again in a second!
+							if (mNextCheck > 20) mNextCheck = 20;
+						} else if (!drainFluid(mPumpList.removeLast())) {
+							// Something changed for some reason, lets scan again right away!
+							mNextCheck = 0;
 						}
+						mIgnoreUnloadedChunks = T;
 					}
 				} else {
+					// If the List still contains Elements, then scan the next Y Level for more Fluids.
 					scanForFluid(getOffsetX(mFacing), getOffsetZ(mFacing));
+					// Next Reset should only happen in two and a half Minutes or so.
+					mNextCheck = 3000;
 				}
 			}
 			
@@ -145,7 +154,6 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 				mPumpList = new LinkedList<>();
 				mCheckList.clear();
 				mChecked.clear();
-				mNextCheck = 1000;
 				addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
 				return;
 			}
@@ -154,24 +162,21 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			if (tPos.posZ < aZ + 64) addToList(tPos.posX, tPos.posY, tPos.posZ + 1);
 			if (tPos.posZ > aZ - 64) addToList(tPos.posX, tPos.posY, tPos.posZ - 1);
 		}
-		
-		mNextCheck = mPumpList.size() * 256;
 	}
 	
 	private void scanForFluid(int aX, int aY, int aZ) {
 		mPumpList = new LinkedList<>();
 		mCheckList.clear();
 		mChecked.clear();
-		mNextCheck = 1000;
 		
 		mPumpedFluids.clear();
 		Block aBlock = getBlockAtSide(mFacing);
-		if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
+		if (WD.lava(aBlock)) {
 			mPumpedFluids.add(Blocks.lava);
 			mPumpedFluids.add(Blocks.flowing_lava);
 			mDir = +1;
 		} else
-		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.Swamp) {
+		if (WD.water(aBlock) || aBlock == BlocksGT.River || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.Swamp) {
 			mPumpedFluids.add(Blocks.water);
 			mPumpedFluids.add(Blocks.flowing_water);
 			mPumpedFluids.add(BlocksGT.River);
@@ -201,87 +206,16 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	
 	private boolean drainFluid(ChunkCoordinates aCoords) {
 		Block aBlock = getBlock(aCoords);
-		byte aMeta = getMetaData(aCoords);
-		if (mPumpedFluids.contains(aBlock)) {
-			if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River) {
-				if (aMeta == 0) {
-					if (mTank.fillAll(FL.Water.make(1000))) {
-						mEnergy -= 2048;
-						worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX+1, aCoords.posY  , aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX+1, aCoords.posY  , aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX+1, aCoords.posY  , aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY+1, aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY+1, aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY+1, aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ+1))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY  , aCoords.posZ+1) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ+1, NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX-1, aCoords.posY  , aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX-1, aCoords.posY  , aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX-1, aCoords.posY  , aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY-1, aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY-1, aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY-1, aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ-1))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY  , aCoords.posZ-1) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ-1, NB, 0, 2);
-						return T;
-					}
-					return F;
-				}
-				mEnergy -= 128;
-				worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-				return T;
-			}
-			if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
-				if (aMeta == 0) {
-					if (mTank.fillAll(FL.Lava.make(1000))) {
-						mEnergy -= 2048;
-						worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX+1, aCoords.posY  , aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX+1, aCoords.posY  , aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX+1, aCoords.posY  , aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY+1, aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY+1, aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY+1, aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ+1))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY  , aCoords.posZ+1) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ+1, NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX-1, aCoords.posY  , aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX-1, aCoords.posY  , aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX-1, aCoords.posY  , aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY-1, aCoords.posZ  ))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY-1, aCoords.posZ  ) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY-1, aCoords.posZ  , NB, 0, 2);
-						if (mPumpedFluids.contains(worldObj.getBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ-1))
-										&& worldObj.getBlockMetadata(aCoords.posX  , aCoords.posY  , aCoords.posZ-1) > 0)
-												   worldObj.setBlock(aCoords.posX  , aCoords.posY  , aCoords.posZ-1, NB, 0, 2);
-						return T;
-					}
-					return F;
-				}
-				mEnergy -= 128;
-				worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-				return T;
-			}
-			if (aBlock instanceof IFluidBlock) {
-				FluidStack tDrained = ((IFluidBlock)aBlock).drain(worldObj, aCoords.posX, aCoords.posY, aCoords.posZ, F);
-				if (tDrained == null) {
-					mEnergy -= 128;
-					worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-					return T;
-				}
-				mEnergy -= UT.Code.units(tDrained.amount, 1000, 2048, T);
-				mTank.fill(tDrained, T);
-				worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-				return T;
-			}
-			mEnergy -= 128;
-			worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
-			return T;
+		if (!mPumpedFluids.contains(aBlock)) return F;
+		if (WD.water(aBlock) || aBlock == BlocksGT.River) {
+			if (getMetaData(aCoords) == 0) mTank.setFluid(FL.Water.make(1000));
+		} else if (WD.lava(aBlock)) {
+			if (getMetaData(aCoords) == 0) mTank.setFluid(FL.Lava.make(1000));
+		} else if (aBlock instanceof IFluidBlock) {
+			mTank.setFluid(((IFluidBlock)aBlock).drain(worldObj, aCoords.posX, aCoords.posY, aCoords.posZ, F));
 		}
-		return F;
+		mEnergy -= mTank.isEmpty() ? 128 : UT.Code.units(mTank.amount(), 1000, 2048, T);
+		return worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
 	}
 	
 	@Override
@@ -337,7 +271,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
-	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 20; mChecked.clear(); mCheckList.clear(); mPumpList.clear(); mPumpedFluids.clear();}
+	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 1; mChecked.clear(); mCheckList.clear(); mPumpList.clear(); mPumpedFluids.clear();}
 	
 	@Override public boolean getStateRunningPossible() {return !mPumpList.isEmpty() || WD.liquid(getBlockAtSide(mFacing));}
 	@Override public boolean getStateRunningPassively() {return mActiveData != 0;}
