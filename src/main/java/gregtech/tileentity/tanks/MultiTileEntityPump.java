@@ -208,7 +208,9 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	
 	private boolean drainFluid(ChunkCoordinates aCoords) {
 		Block aBlock = getBlock(aCoords);
+		// Seems like someone removed or replaced a Fluid Block! Scan again!
 		if (!mPumpedFluids.contains(aBlock)) return F;
+		// Determine the Fluid that is produced.
 		if (WD.water(aBlock) || aBlock == BlocksGT.River) {
 			if (getMetaData(aCoords) == 0) mTank.setFluid(FL.Water.make(1000));
 		} else if (WD.lava(aBlock)) {
@@ -216,8 +218,14 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		} else if (aBlock instanceof IFluidBlock) {
 			mTank.setFluid(((IFluidBlock)aBlock).drain(worldObj, aCoords.posX, aCoords.posY, aCoords.posZ, F));
 		}
-		mEnergy -= mTank.isEmpty() ? 128 : UT.Code.units(mTank.amount(), 1000, 2048, T);
-		return worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2) && !(
+		// Consume Energy based on Fluid Amount absorbed.
+		mEnergy -= Math.max(16, UT.Code.units(mTank.amount(), 1000, 2048, T));
+		// something prevented the setBlock Function! Scan again!
+		if (!worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2)) return F;
+		// If there is a Fluid Block above this one, clearly the Y-Level is off due to a recent Blockchange! Scan again!
+		if (mPumpedFluids.contains(getBlock(aCoords.posX, aCoords.posY+mDir, aCoords.posZ))) return F;
+		// Somehow this Block is completely surrounded by pumpable Fluid, this should not be possible unless it is the literal Cornercase! Scan again!
+		return !(
 		mPumpedFluids.contains(getBlock(aCoords.posX+1, aCoords.posY, aCoords.posZ  )) &&
 		mPumpedFluids.contains(getBlock(aCoords.posX-1, aCoords.posY, aCoords.posZ  )) &&
 		mPumpedFluids.contains(getBlock(aCoords.posX  , aCoords.posY, aCoords.posZ+1)) &&

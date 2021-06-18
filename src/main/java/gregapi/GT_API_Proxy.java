@@ -661,7 +661,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				final boolean tHungerEffect = (HUNGER_BY_INVENTORY_WEIGHT && aEvent.player.ticksExisted % 2400 == 1200), tBetweenlands = WD.dimBTL(aEvent.player.worldObj.provider);//, tCrazyJ1984 = "CrazyJ1984".equalsIgnoreCase(aEvent.player.getCommandSenderName());
 				if (aEvent.player.ticksExisted % 120 == 0) {
 					ItemStack tStack;
-					int tCount = 64, tEmptySlots = 36;
+					int tCount = 64, tEmptySlots = 36, tCraponite = 0;
 					for (int i = 0; i < 36; i++) {
 						if (ST.valid(tStack = aEvent.player.inventory.getStackInSlot(i))) {
 							tEmptySlots--;
@@ -690,6 +690,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									PotionEffect tEffect = null;
 									aEvent.player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3));
 								}
+								if (tData.mMaterial.mMaterial == MT.Craponite) {
+									tCraponite++;
+								}
 							}
 							if (tHungerEffect) tCount+=(tStack.stackSize * 64) / Math.max(1, tStack.getMaxStackSize());
 							if (INVENTORY_UNIFICATION) OM.set_(tStack);
@@ -700,6 +703,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					
 					// This Code is to tell Bear and all the people around him that he should clean up his always cluttered Inventory.
 					if ("Bear989Sr".equalsIgnoreCase(aEvent.player.getCommandSenderName())) {
+						if (tCraponite > 0) {
+							// Crazy started to give Bear her Craponite Arrows, lets not let him have those.
+							aEvent.player.addPotionEffect(new PotionEffect(Potion.hunger.id, 140, tCraponite-1, T));
+						}
 						if (--BEAR_INVENTORY_COOL_DOWN < 0 && tEmptySlots < 4) {
 							BEAR_INVENTORY_COOL_DOWN = 100;
 							UT.Sounds.send(SFX.MC_HMM, aEvent.player);
