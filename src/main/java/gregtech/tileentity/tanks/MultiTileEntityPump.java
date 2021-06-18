@@ -217,7 +217,11 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			mTank.setFluid(((IFluidBlock)aBlock).drain(worldObj, aCoords.posX, aCoords.posY, aCoords.posZ, F));
 		}
 		mEnergy -= mTank.isEmpty() ? 128 : UT.Code.units(mTank.amount(), 1000, 2048, T);
-		return worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2);
+		return worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, NB, 0, 2) && !(
+		mPumpedFluids.contains(getBlock(aCoords.posX+1, aCoords.posY, aCoords.posZ  )) &&
+		mPumpedFluids.contains(getBlock(aCoords.posX-1, aCoords.posY, aCoords.posZ  )) &&
+		mPumpedFluids.contains(getBlock(aCoords.posX  , aCoords.posY, aCoords.posZ+1)) &&
+		mPumpedFluids.contains(getBlock(aCoords.posX  , aCoords.posY, aCoords.posZ-1)));
 	}
 	
 	@Override
