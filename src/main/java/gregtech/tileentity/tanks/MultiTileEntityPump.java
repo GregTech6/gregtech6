@@ -112,12 +112,14 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		if (aIsServerSide) {
 			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (mTank.has()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
 			
+			mNextCheck--;
+			
 			if (mStopped || mEnergy < 8192 || mTank.has()) {
 				mActive = F;
 			} else {
 				mActive = T;
 				if (mCheckList.isEmpty()) {
-					if (--mNextCheck < 0) {
+					if (mNextCheck < 0) {
 						// Reset everything and add the Fluid Block in front of the Pump to the Lists.
 						scanForFluid(getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing));
 						// Next Reset should only happen in two and a half Minutes or so.

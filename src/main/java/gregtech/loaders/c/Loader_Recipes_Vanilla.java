@@ -352,6 +352,13 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(OP.ingot.mat(MT.NetherizedDiamond, 1), OP.gem  .mat(MT.NetherizedDiamond, 1));
 		
 		
+		CR.delate(OP.plateDouble.mat(MT.Paper, 1));
+		CR.shapeless(OP.plateDouble.mat(MT.Paper, 1), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
+		CR.shapeless(OP.plateDouble.mat(MT.Paper, 2), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
+		CR.shapeless(OP.plateDouble.mat(MT.Paper, 3), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
+		CR.shapeless(OP.plateDouble.mat(MT.Paper, 4), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
+		
+		
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);
