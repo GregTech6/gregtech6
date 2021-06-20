@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.14: (Not released yet, released whenever it needs to be)
+[FIXED] Bronze Drums were somehow allowing Acids to be contained... (was a copypaste error)
 [FIXED] Boilers somehow did not explode when they were pressurized while you harvested them with a Wrench.
 [FIXED] Ocean somehow displaced Swampwater even when it was not supposed to.
 [FIXED] Several Issues with the Rotational Pump, it should be smarter now.

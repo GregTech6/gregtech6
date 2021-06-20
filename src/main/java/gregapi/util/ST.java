@@ -588,6 +588,7 @@ public class ST {
 		aCount = Math.min(aCount, tStack.stackSize);
 		if (aStackTo == null) aInventory.setInventorySlotContents(aSlotTo, amount(aCount, aStackFrom)); else aStackTo.stackSize += aCount;
 		aInventory.markDirty();
+		WD.mark(aInventory);
 		return aCount;
 	}
 	public static int move(IInventory aFrom, IInventory aTo, int aSlotFrom, int aSlotTo) {
@@ -609,7 +610,9 @@ public class ST {
 		aCount = Math.min(aCount, tStack.stackSize);
 		if (aStackTo == null) aTo.setInventorySlotContents(aSlotTo, amount(aCount, aStackFrom)); else aStackTo.stackSize += aCount;
 		aFrom.markDirty();
-		aTo.markDirty();
+		aTo  .markDirty();
+		WD.mark(aFrom);
+		WD.mark(aTo);
 		return aCount;
 	}
 	
@@ -697,6 +700,8 @@ public class ST {
 						if (rMoved > 0) {
 							aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
 							aFrom.mTileEntity.markDirty();
+							WD.mark(aFrom);
+							WD.mark(aTo);
 							return rMoved;
 						}
 					}
@@ -714,6 +719,8 @@ public class ST {
 							rMoved = (((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(amount(rMoved, tStackMoved), T, aTo.getForgeSideOfTileEntity(), null));
 							aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
 							aFrom.mTileEntity.markDirty();
+							WD.mark(aFrom);
+							WD.mark(aTo);
 							return rMoved;
 						}
 					}
@@ -733,6 +740,7 @@ public class ST {
 					int rMoved = GarbageGT.trash(amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom));
 					aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
 					aFrom.mTileEntity.markDirty();
+					WD.mark(aFrom);
 					return rMoved;
 				}
 			}
@@ -745,6 +753,7 @@ public class ST {
 					place(aTo.mWorld, aTo.mX+0.5, aTo.mY+0.5, aTo.mZ+0.5, tStack);
 					aFrom.mTileEntity.decrStackSize(aSlotFrom, tStack.stackSize);
 					aFrom.mTileEntity.markDirty();
+					WD.mark(aFrom);
 					return tStack.stackSize;
 				}
 			}

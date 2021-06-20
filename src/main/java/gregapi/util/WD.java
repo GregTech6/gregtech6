@@ -47,6 +47,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
+import gregapi.tileentity.ITileEntityUnloadable;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.data.ITileEntityTemperature;
@@ -279,35 +280,38 @@ public class WD {
 		return F;
 	}
 	
-	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
-	public static DelegatorTileEntity<TileEntity> te(World aWorld, ChunkCoordinates aCoords, byte aSide, boolean aLoadUnloadedChunks) {
-		TileEntity aTileEntity = te(aWorld, aCoords, aLoadUnloadedChunks);
-		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity<>(aTileEntity, aWorld, aCoords, aSide);
+	
+	/** Marks a Chunk dirty so it is saved */
+	public static boolean mark(World aWorld, int aX, int aZ) {
+		Chunk aChunk = aWorld.getChunkFromBlockCoords(aX, aZ);
+		if (aChunk == null) return F;
+		aChunk.setChunkModified();
+		return T;
+	}
+	/** Marks a Chunk dirty so it is saved */
+	public static boolean mark(Object aTileEntity) {
+		return aTileEntity instanceof TileEntity && mark(((TileEntity)aTileEntity).getWorldObj(), ((TileEntity)aTileEntity).xCoord, ((TileEntity)aTileEntity).zCoord);
 	}
 	
+	
+	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
+	public static DelegatorTileEntity<TileEntity> te(World aWorld, ChunkCoordinates aCoords, byte aSide, boolean aLoadUnloadedChunks) {
+		return te(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ, aSide, aLoadUnloadedChunks);
+	}
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
 	public static DelegatorTileEntity<TileEntity> te(World aWorld, int aX, int aY, int aZ, byte aSide, boolean aLoadUnloadedChunks) {
 		TileEntity aTileEntity = te(aWorld, aX, aY, aZ, aLoadUnloadedChunks);
 		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity<>(aTileEntity, aWorld, aX, aY, aZ, aSide);
 	}
-	
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
 	public static TileEntity te(World aWorld, ChunkCoordinates aCoords, boolean aLoadUnloadedChunks) {
-		if (aLoadUnloadedChunks || aWorld.blockExists(aCoords.posX, aCoords.posY, aCoords.posZ)) {
-			TileEntity rTileEntity = aWorld.getTileEntity(aCoords.posX, aCoords.posY, aCoords.posZ);
-			if (rTileEntity != null) return rTileEntity;
-			rTileEntity = LAST_BROKEN_TILEENTITY.get();
-			if (rTileEntity != null && rTileEntity.xCoord == aCoords.posX && rTileEntity.yCoord == aCoords.posY && rTileEntity.zCoord == aCoords.posZ) return rTileEntity;
-			Block tBlock = aWorld.getBlock(aCoords.posX, aCoords.posY, aCoords.posZ);
-			return tBlock instanceof IBlockTileEntity ? ((IBlockTileEntity)tBlock).getTileEntity(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ) : null;
-		}
-		return null;
+		return te(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ, aLoadUnloadedChunks);
 	}
-	
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
 	public static TileEntity te(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {
 		if (aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ)) {
 			TileEntity rTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+			if (rTileEntity instanceof ITileEntityUnloadable && ((ITileEntityUnloadable)rTileEntity).isDead()) return null;
 			if (rTileEntity != null) return rTileEntity;
 			rTileEntity = LAST_BROKEN_TILEENTITY.get();
 			if (rTileEntity != null && rTileEntity.xCoord == aX && rTileEntity.yCoord == aY && rTileEntity.zCoord == aZ) return rTileEntity;
@@ -316,6 +320,7 @@ public class WD {
 		}
 		return null;
 	}
+	
 	
 	/** Sets the TileEntity at the passed position, with the option of turning adjacent TileEntity updates off. */
 	public static TileEntity te(World aWorld, int aX, int aY, int aZ, TileEntity aTileEntity, boolean aCauseTileEntityUpdates) {
@@ -329,6 +334,7 @@ public class WD {
 		}
 		return aTileEntity;
 	}
+	
 	
 	public static boolean oxygen(World aWorld, int aX, int aY, int aZ) {
 		return  !MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider) || OxygenUtil.checkTorchHasOxygen(aWorld, NB, aX, aY, aZ);

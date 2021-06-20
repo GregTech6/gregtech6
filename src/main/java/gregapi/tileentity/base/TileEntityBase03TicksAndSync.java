@@ -26,6 +26,7 @@ import java.util.UUID;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.tileentity.ITileEntitySynchronising;
+import gregapi.util.WD;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -113,6 +114,7 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 		try {
 			if (mTimer == 0) {
 				markDirty();
+				WD.mark(this);
 				onTickFirst(tIsServerSide);
 			}
 			if (!isDead()) onTickStart(mTimer, tIsServerSide);

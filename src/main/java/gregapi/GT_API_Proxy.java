@@ -611,7 +611,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
-					if (aTileEntity instanceof ITileEntityNeedsSaving) aTileEntity.getWorldObj().getChunkFromBlockCoords(aTileEntity.xCoord, aTileEntity.zCoord).setChunkModified();
+					if (aTileEntity instanceof ITileEntityNeedsSaving) WD.mark(aTileEntity);
 				}
 			}
 		}

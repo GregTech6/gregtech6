@@ -331,7 +331,7 @@ public class GT6_Main extends Abstract_Mod {
 			for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 		}};
 	}
-
+	
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
 		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
@@ -349,7 +349,7 @@ public class GT6_Main extends Abstract_Mod {
 		);
 		for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
-
+	
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
 		ItemStack tLignite = ST.make(MD.UB, "ligniteCoal", 1, 0);
