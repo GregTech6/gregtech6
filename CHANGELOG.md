@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.18: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.14.17: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.16: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,7 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.14: (Not released yet, released whenever it needs to be)
+6.14.14: (VERY SOON)
 [FIXED] Bronze Drums were somehow allowing Acids to be contained... (was a copypaste error)
 [FIXED] Boilers somehow did not explode when they were pressurized while you harvested them with a Wrench.
 [FIXED] Ocean somehow displaced Swampwater even when it was not supposed to.
