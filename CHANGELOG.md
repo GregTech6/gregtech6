@@ -17,7 +17,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.14: (VERY SOON)
+6.14.14:
+[FIXED] Crucibles crashing when certain Items are inserted.
 [FIXED] Bronze Drums were somehow allowing Acids to be contained... (was a copypaste error)
 [FIXED] Boilers somehow did not explode when they were pressurized while you harvested them with a Wrench.
 [FIXED] Ocean somehow displaced Swampwater even when it was not supposed to.
