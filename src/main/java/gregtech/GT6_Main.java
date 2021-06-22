@@ -444,7 +444,7 @@ public class GT6_Main extends Abstract_Mod {
 		), ST.array(OP.dust.mat(MT.Steel, 1), OP.ingot.mat(MT.Steel, 1), OP.plate.mat(MT.Steel, 1), OP.scrapGt.mat(MT.Steel, 1), OP.stick.mat(MT.Steel, 1), OP.gearGt.mat(MT.Steel, 1)), null, ZL_LONG, FL.array(FL.Air.make(1), FL.Air_Nether.make(1), FL.Air_End.make(1)), ZL_FS, 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
-		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 2), "Throw two Units of Cinnabar into Crucible")
+		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")
 		, IL.Ceramic_Crucible.getWithName(1, "Wait until it melts into Mercury")
 		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
 		, NI

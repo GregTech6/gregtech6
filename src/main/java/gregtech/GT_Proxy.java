@@ -407,10 +407,12 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				if (aEvent.entity instanceof EntityOcelot) {
 					if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
 				}
-				for (int i = 0; i < tTasks.taskEntries.size(); i++) {
-					EntityAITasks.EntityAITaskEntry tEntry = (EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i);
-					if (tEntry.action.getClass() == EntityAIAttackOnCollide.class) {
-						tEntry.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)tEntry.action);
+				if (aEvent.entity instanceof EntityZombie) {
+					for (int i = 0; i < tTasks.taskEntries.size(); i++) {
+						EntityAITasks.EntityAITaskEntry tEntry = (EntityAITasks.EntityAITaskEntry)tTasks.taskEntries.get(i);
+						if (tEntry.action.getClass() == EntityAIAttackOnCollide.class) {
+							tEntry.action = new EntityAIBetterAttackOnCollide((EntityAIAttackOnCollide)tEntry.action);
+						}
 					}
 				}
 			}
