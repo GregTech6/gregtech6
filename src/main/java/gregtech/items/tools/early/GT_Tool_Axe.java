@@ -106,20 +106,22 @@ public class GT_Tool_Axe extends ToolStats {
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMeta, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		int rAmount = 0;
 		if (LOCK && !MD.TreeCap.mLoaded && !aPlayer.worldObj.isRemote && !aPlayer.isSneaking() && !aBlock.getClass().getName().startsWith("com.ferreusveritas.dynamictrees") && (aBlock instanceof BlockHugeMushroom || aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMeta)) || WoodDictionary.WOODS.containsKey(aBlock, aMeta, T))) {
+			LOCK = F;
 			try {
-				int tIncrement = UT.Code.roundUp(aBlock.getBlockHardness(aPlayer.worldObj, aX, aY, aZ) * getToolDamagePerBlockBreak());
-				LOCK = F;
-				for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH && rAmount <= aAvailableDurability; tY++) {
-					if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock && aPlayer.worldObj.func_147480_a(aX, tY, aZ, T)) {
-						if (FAST_LEAF_DECAY) {
-							if (tY == aY+1)
-							WD.leafdecay(aPlayer.worldObj, aX, aY, aZ, null, T, T);
-							WD.leafdecay(aPlayer.worldObj, aX, tY, aZ, null, T, T);
-						}
-						rAmount+= ++tIncrement;
-					} else break;
+				int tY = aY+1, tDurabilityPerBlock = UT.Code.roundUp(aBlock.getBlockHardness(aPlayer.worldObj, aX, aY, aZ) * getToolDamagePerBlockBreak()), tIncrement = tDurabilityPerBlock;
+				aAvailableDurability -= tDurabilityPerBlock;
+				// Checking...
+				for (int tH = aPlayer.worldObj.getHeight(); tY < tH && rAmount < aAvailableDurability; tY++) {
+					if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock) {rAmount+= ++tIncrement;} else break;
 				}
-			} catch(Throwable e) {/**/}
+				// Harvesting...
+				while (--tY > aY && aPlayer.worldObj.func_147480_a(aX, tY, aZ, T)) {
+					if (FAST_LEAF_DECAY) {
+						WD.leafdecay(aPlayer.worldObj, aX, tY, aZ, null, T, T);
+					}
+				}
+				WD.leafdecay(aPlayer.worldObj, aX, aY, aZ, null, T, T);
+			} catch(Throwable e) {e.printStackTrace(ERR);}
 			LOCK = T;
 		}
 		harvestStick(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMeta, aFortune, aSilkTouch, aEvent);

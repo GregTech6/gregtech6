@@ -789,43 +789,75 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onPlayerDestroyItem(PlayerDestroyItemEvent aEvent) {
-		if (!UT.Entities.isPlayer(aEvent.entityPlayer) || aEvent.original == null || UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) return;
+		// Uhh, why is this null? Must be a Bug somewhere else.
+		if (aEvent.original == null) return;
+		// Only for real Players!
+		if (!UT.Entities.isPlayer(aEvent.entityPlayer)) return;
+		// No Creative Mode Refill!
+		if (UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) return;
+		// 
 		ItemStack[] tInv = aEvent.entityPlayer.inventory.mainInventory;
+		// Only work on Vanilla-Sized Player Inventories!
 		if (tInv.length != 36) return;
+		// 
 		int tSlot = aEvent.entityPlayer.inventory.currentItem;
+		// There cant be any Inventory Row above this one.
+		if (tSlot >= 27) return;
+		// Refill, but only if the Slot in the Hotbar is Empty.
+		boolean tRefill = (tInv[tSlot] == null || tInv[tSlot].stackSize == 0);
+		// Grab a Copy of the Stack to compare with, just in case any of the called Stuff mutates the Stack.
 		ItemStack tCompare = ST.amount(1, aEvent.original);
-		if (tCompare == null || OP.scrapGt.contains(tCompare)) tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
+		// Do not refill Foods!
+		if (ST.food(tCompare) > 0) tRefill = F;
+		// Do not refill Edibles!
+		if (tCompare.getItemUseAction() == EnumAction.eat) tRefill = F;
+		// Do not refill Drinkables!
+		if (tCompare.getItemUseAction() == EnumAction.drink) tRefill = F;
 		
+		if (OP.scrapGt.contains(tCompare)) {
+			// Only GT6 Tools do the thing with turning into Scrap.
+			tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
+			// Refill, but only if the Slot in the Hotbar is Empty.
+			tRefill = (tInv[tSlot] == null || tInv[tSlot].stackSize == 0);
+		}
 		if (OP.scrapGt.contains(tInv[tSlot])) {
+			// Only GT6 Tools do the thing with turning into Scrap.
+			tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
+			// Yes definitely Refill!
+			tRefill = T;
+			// Grabbing the Scrap.
 			ItemStack tScrap = ST.copy(tInv[tSlot]);
+			// Reserving the Slot.
 			tInv[tSlot] = ST.make(Blocks.cobblestone, 0, 0);
+			// Moving the Scrap away.
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tScrap, F);
+			// And the Slot is Empty now.
 			tInv[tSlot] = null;
 		}
-		
-		if (ST.food(tCompare) <= 0 && aEvent.original.getItemUseAction() != EnumAction.eat && aEvent.original.getItemUseAction() != EnumAction.drink && (tInv[tSlot] == null || tInv[tSlot].stackSize == 0)) {
-			if (tSlot < 9) {
-				if (ST.equal(tCompare, tInv[tSlot+27], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
-				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
-				tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; ST.update(aEvent.entityPlayer); return;}
-				return;
-			}
-			if (tSlot < 18) {
-				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
-				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
-				return;
-			}
-			if (tSlot < 27) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
-				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
-				return;
-			}
+		// Check if we can refill, to move Items around.
+		if (!tRefill) return;
+		// Move into First Row.
+		if (tSlot < 9) {
+			if (ST.equal(tCompare, tInv[tSlot+27], T)) {
+			if (ST.equal(tCompare, tInv[tSlot+18], T)) {
+			if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+			tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
+			tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
+			tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; ST.update(aEvent.entityPlayer); return;}
+			return;
 		}
+		// Move into Second Row. Usually only with the Double Hotbars Mod.
+		if (tSlot < 18) {
+			if (ST.equal(tCompare, tInv[tSlot+18], T)) {
+			if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+			tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
+			tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
+			return;
+		}
+		// Move into Third Row. Unsure if a Triple Hotbar Mod exists, but if it does, well then it is supported.
+		if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+		tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
+		return;
 	}
 	
 	@SubscribeEvent
@@ -1103,7 +1135,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	}
 	
 	@SubscribeEvent
-	public void onBlockHarvestingEvent(BlockEvent.BreakEvent aEvent) {
+	public void onBlockBreakingEvent(BlockEvent.BreakEvent aEvent) {
 		if (aEvent.block instanceof IPrefixBlock && EnchantmentHelper.getSilkTouchModifier(aEvent.getPlayer())) aEvent.setExpToDrop(0);
 	}
 	
