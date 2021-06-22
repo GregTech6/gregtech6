@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.15: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Treecapitation now works Top Down instead of Bottom Up
 
 
 6.14.14:
