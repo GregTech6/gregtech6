@@ -233,12 +233,13 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 			, LH.add("gt.research.page.1." + tKey, "Your discovery of "+MT.Bronze.mNameLocal+" Transmutation has lead you to the conclusion it works with other Alloys such as "+tMat.mNameLocal+" as well.")
 			, COMPAT_TC.addCrucibleRecipe(tKey, OP.nugget.dat(tMat), OP.nugget.mat(tMat, 3), TC.stack(TC.METALLUM, 2), TC.stack(TC.AQUA, 1), TC.stack(TC.VITREUS, 1))
 		);
-		//
+		tMat = MT.DamascusSteel;
 		COMPAT_TC.addResearch(tKey = ADVANCEDMETALLURGY
-			, "Advanced Metallurgic Transmutation", "Mastering the basic Metals", new String[] {TRANSBISMUTH, IRON_TO_STEEL, TRANSSOLDERINGALLOY, TRANSBATTERYALLOY, TRANSBRASS, TRANSELECTRUM, TRANSCONSTANTAN, TRANSINVAR}, CATEGORY_ALCHEMY, OP.ingot.mat(MT.Fe, 1), 4, RESEARCH_TYPE_HIDDEN, 16, 14
-			, Arrays.asList(TC.stack(TC.METALLUM, 5), TC.stack(TC.PERMUTATIO, 2), TC.stack(TC.COGNITIO, 2), TC.stack(TC.PRAECANTIO, 2), TC.stack(TC.NEBRISUM, 2), TC.stack(TC.MAGNETO, 2))
-			, null
-			, LH.add("gt.research.page.1." + tKey, "Now that you have discovered all the basic Metals, you can finally move on to the next Level of Magic Metallurgy and create more advanced Metals")
+			, "Advanced Metallurgic Transmutation", "Mastering the basic Metals", new String[] {TRANSBISMUTH, IRON_TO_STEEL, TRANSSOLDERINGALLOY, TRANSBATTERYALLOY, TRANSBRASS, TRANSELECTRUM, TRANSCONSTANTAN, TRANSINVAR}, CATEGORY_ALCHEMY, OP.ingot.mat(tMat, 1), 4, RESEARCH_TYPE_HIDDEN, 16, 14
+			, Arrays.asList(TC.stack(TC.METALLUM, 50), TC.stack(TC.PERMUTATIO, 20), TC.stack(TC.COGNITIO, 20), TC.stack(TC.PRAECANTIO, 20), TC.stack(TC.NEBRISUM, 20), TC.stack(TC.MAGNETO, 20))
+			, ST.array(OP.dust.mat(tMat, 1), OP.ingot.mat(tMat, 1), OP.plate.mat(tMat, 1))
+			, LH.add("gt.research.page.1." + tKey, "Now that you have discovered all basic Metals and found out about "+tMat.mNameLocal+", you can finally move on to the next Level of Magic Metallurgy and create more advanced Metals!")
+			, COMPAT_TC.addCrucibleRecipe(tKey, OP.nugget.dat(MT.Steel), OP.nugget.mat(tMat, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.INSTRUMENTUM, 1), TC.stack(TC.TELUM, 1))
 		);
 		tMat = MT.Al;
 		COMPAT_TC.addResearch(tKey = TRANSALUMINIUM

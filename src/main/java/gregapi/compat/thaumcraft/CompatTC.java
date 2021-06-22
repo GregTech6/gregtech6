@@ -207,6 +207,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		if ((aType & RESEARCH_TYPE_HIDDEN       ) != 0) rResearch.setHidden();
 		if ((aType & RESEARCH_TYPE_ROUND        ) != 0) rResearch.setRound();
 		if ((aType & RESEARCH_TYPE_FREE         ) != 0) rResearch.setStub();
+		if ((aType & RESEARCH_TYPE_LOST         ) != 0) rResearch.setLost();
 		
 		if (aParentResearches != null) {
 			ArrayList<String> tParentResearches = new ArrayListNoNulls<>();

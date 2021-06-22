@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 public interface ICompatTC extends ICompat {
-	public static final int RESEARCH_TYPE_NORMAL = 0, RESEARCH_TYPE_SECONDARY = 1, RESEARCH_TYPE_FREE = 2, RESEARCH_TYPE_HIDDEN = 4, RESEARCH_TYPE_VIRTUAL = 8, RESEARCH_TYPE_ROUND = 16, RESEARCH_TYPE_SPECIAL = 32, RESEARCH_TYPE_AUTOUNLOCK = 64;
+	public static final int RESEARCH_TYPE_NORMAL = 0, RESEARCH_TYPE_SECONDARY = 1, RESEARCH_TYPE_FREE = 2, RESEARCH_TYPE_HIDDEN = 4, RESEARCH_TYPE_VIRTUAL = 8, RESEARCH_TYPE_ROUND = 16, RESEARCH_TYPE_SPECIAL = 32, RESEARCH_TYPE_AUTOUNLOCK = 64, RESEARCH_TYPE_LOST = 128;
 	public static final String CATEGORY_ALCHEMY = "ALCHEMY";
 	
 	/** The Research Keys of GT */
