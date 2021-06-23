@@ -383,7 +383,7 @@ public class Loader_Recipes_Ores implements Runnable {
 				if (FL.Error.is(tFluid2)) tFluid2 = null;
 				if (FL.Error.is(tFluid3)) tFluid3 = null;
 				RM.Centrifuge.addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, new long[] {10000, 1000, 1000, 1000}, tPurified    , ZL_FS, FL.array(FL.mul(tFluid1, 9), FL.mul(tFluid2, 9), FL.mul(tFluid3, 9)), crushedCentrifugedTiny.mat(aMat, 9, dustTiny.mat(tMat1, 9)), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 9, dustTiny.mat(tMat1, 9)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 9, dustTiny.mat(tMat2, 9)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 9, dustTiny.mat(tMat3, 9)):null);
-				RM.Centrifuge.addRecipe1(T, 16, 144 +  16 * aMat.mToolQuality, new long[] {10000, 1000, 1000, 1000}, tPurifiedTiny, ZL_FS, FL.array(       tFluid1    ,        tFluid2    ,        tFluid3    ), crushedCentrifugedTiny.mat(aMat, 1, dustTiny.mat(tMat1, 1)), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 1, dustTiny.mat(tMat1, 1)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 1, dustTiny.mat(tMat2, 1)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 1, dustTiny.mat(tMat3, 1)):null);
+				RM.Centrifuge.addRecipe1(T, 16,  16 +  16 * aMat.mToolQuality, new long[] {10000, 1000, 1000, 1000}, tPurifiedTiny, ZL_FS, FL.array(       tFluid1    ,        tFluid2    ,        tFluid3    ), crushedCentrifugedTiny.mat(aMat, 1, dustTiny.mat(tMat1, 1)), tFluid1==null?crushedCentrifugedTiny.mat(tMat1, 1, dustTiny.mat(tMat1, 1)):null, tFluid2==null?crushedCentrifugedTiny.mat(tMat2, 1, dustTiny.mat(tMat2, 1)):null, tFluid3==null?crushedCentrifugedTiny.mat(tMat3, 1, dustTiny.mat(tMat3, 1)):null);
 			}
 			
 			
