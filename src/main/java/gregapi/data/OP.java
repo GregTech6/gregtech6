@@ -539,9 +539,9 @@ public class OP {
 		MT.init();
 		
 		crushed    .addListener(new OreDictListenerItem_Washing(crushedPurified, 2, crushedPurifiedTiny));
-		dustImpure .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));
-		dustPure   .addListener(new OreDictListenerItem_Washing(dust, 4, dustTiny));
-		dustRefined.addListener(new OreDictListenerItem_Washing(dust, 5, dustTiny));
+		dustImpure .addListener(new OreDictListenerItem_Washing(dust, 1));
+		dustPure   .addListener(new OreDictListenerItem_Washing(dust, 1));
+		dustRefined.addListener(new OreDictListenerItem_Washing(dust, 1));
 		rockGt     .addListener(new OreDictListenerItem_Rocks());
 		
 		bottle.mContainerItem = ST.make(Items.glass_bottle, 1, 0);

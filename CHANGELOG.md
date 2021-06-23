@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.15: (Not released yet, released whenever it needs to be)
+[REMOVED] Legacy Recipes for processing Inpure/Pure/Refined Piles of Dust have been removed. You can still throw them into a Cauldron or put them into a Shredder though. Impure Bedrock Dust is unaffected by this.
 [CHANGED] Treecapitation now works Top Down instead of Bottom Up
 
 
