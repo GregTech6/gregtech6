@@ -75,6 +75,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		
+
+		if (MD.MET.mLoaded) {
+			CR.delate(MD.MET, "alloyer");
+		}
+		
 		
 		if (MD.BTRS.mLoaded) {
 			CR.delate(IL.BTRS_Backpack.wild(1));

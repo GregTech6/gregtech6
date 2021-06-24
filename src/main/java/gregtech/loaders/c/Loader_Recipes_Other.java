@@ -382,7 +382,21 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(x, x, x, dust.mat(MT.Zn, 1));
 		CR.remove(x, y = dust.mat(MT.Ni, 1));
 		CR.remove(x = dust.mat(MT.Fe, 1), x, y);
-		CR.remove(dust.mat(MT.Au, 1), dust.mat(MT.Ag, 1));
+		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Sn        , 1));
+		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Zn        , 1));
+		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Mn        , 1));
+		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Bronze    , 1));
+		CR.remove(dust.mat(MT.Au         , 1), dust.mat(MT.Bronze    , 1));
+		CR.remove(dust.mat(MT.Au         , 1), dust.mat(MT.Ag        , 1));
+		CR.remove(dust.mat(MT.Au         , 1), dust.mat(MT.Fe        , 1));
+		CR.remove(dust.mat(MT.Infuscolium, 1), dust.mat(MT.DeepIron  , 1));
+		CR.remove(dust.mat(MT.ShadowIron , 1), dust.mat(MT.Lemurite  , 1));
+		CR.remove(dust.mat(MT.Alduorite  , 1), dust.mat(MT.Ceruclase , 1));
+		CR.remove(dust.mat(MT.Mithril    , 1), dust.mat(MT.Rubracium , 1));
+		CR.remove(dust.mat(MT.Pt         , 1), dust.mat(MT.Orichalcum, 1));
+		CR.remove(dust.mat(MT.Eximite    , 1), dust.mat(MT.Meutoite  , 1));
+		CR.remove(dust.mat(MT.Adamantine , 1), dust.mat(MT.Atl       , 1));
+		CR.remove(dust.mat(MT.Prometheum , 1), dust.mat(MT.Kalendrite, 1));
 		CR.remove(x = dust.mat(MT.Clay, 1), x, dust.mat(MT.PotassiumFeldspar, 1), dust.mat(MT.SiO2, 1));
 		CR.remove(dust.mat(MT.Redstone, 1), dust.mat(MT.Nikolite, 1));
 		
