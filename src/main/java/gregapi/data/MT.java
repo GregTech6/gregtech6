@@ -1465,11 +1465,11 @@ public class MT {
 	WroughtIron             = metalmachnd   ( 8643, "Wrought Iron"          , SET_METALLIC          , 200, 180, 180     , RAILS, MORTAR, MAGNETIC_PASSIVE, MOLTEN, "WrougtIron")                                                                                    .uumAloy( 0, Fe             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1).setPulver(Fe, U).steal(Fe).qual(3,  6.0,  384,  2).setRGBaLiquid(255, 80, 40, 255).heat(Fe.mMeltingPoint + 200, Fe.mBoilingPoint),
 	
 	
-	Alduorite               = setalore      ( 8760, "Alduorite"                                     , 159, 180, 180     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.PERMUTATIO                          , 1).heat(1567),
-	Infuscolium             = metalore      ( 8761, "Infuscolium"                                   , 146,  33,  86     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.PRAECANTIO                          , 1).heat(1828),
-	Rubracium               = metalore      ( 8762, "Rubracium"                                     , 151,  45,  45     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.LUCRUM                              , 1).heat(1847),
-	Meutoite                = metalore      ( 8763, "Meutoite"                                      ,  95,  82, 105     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.ALIENIS                             , 1).heat(1837),
-	Lemurite                = metalore      ( 8764, "Lemurite"                                      , 219, 219, 219     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.MOTUS                               , 1).heat(1179),
+	Alduorite               = setalore      ( 8760, "Alduorite"                                     , 159, 180, 180     , "Adluorite")                                                                                                                                                                                                                                                                                          .aspects(TC.METALLUM, 2, TC.PERMUTATIO                          , 1).qual(3,  5.0,  256, 2).heat(1567),
+	Infuscolium             = metalore      ( 8761, "Infuscolium"                                   , 146,  33,  86     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.PRAECANTIO                          , 1).qual(3,  5.0,  256, 2).heat(1828),
+	Rubracium               = metalore      ( 8762, "Rubracium"                                     , 151,  45,  45     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.LUCRUM                              , 1).qual(3,  5.0,  256, 2).heat(1847),
+	Meutoite                = metalore      ( 8763, "Meutoite"                                      ,  95,  82, 105     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.ALIENIS                             , 1).qual(3,  5.0,  256, 2).heat(1837),
+	Lemurite                = metalore      ( 8764, "Lemurite"                                      , 219, 219, 219     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.MOTUS                               , 1).qual(3,  5.0,  256, 2).heat(1179),
 	Aredrite                = metalore      ( 8701, "Aredrite"                                      , 255, 255,   0     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.STRONTIO                            , 1).qual(3,  6.0, 1440, 3).heat(2240),
 	Ceruclase               = metalore      ( 8765, "Ceruclase"                                     , 140, 189, 208     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.TEMPESTAS                           , 1).qual(3,  6.0, 1280, 2).heat(1867),
 	Oureclase               = metalore      ( 8767, "Oureclase"                                     , 183,  98,  21     )                                                                                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 2, TC.AER                                 , 1).qual(3,  6.0, 1920, 3).heat(2789),
@@ -2340,38 +2340,38 @@ public class MT {
 			
 			Angmallen               .put(MD.MET);
 			Hepatizon               .put(MD.MET);
-			Alduorite               .put(MD.MET).visDefault();
-			Infuscolium             .put(MD.MET).visDefault();
-			Rubracium               .put(MD.MET).visDefault();
-			Meutoite                .put(MD.MET).visDefault();
-			Lemurite                .put(MD.MET).visDefault();
-			Aredrite                .put(MD.MET).visDefault();
-			Ceruclase               .put(MD.MET).visDefault();
-			Atl                     .put(MD.MET);
-			Oureclase               .put(MD.MET).visDefault();
-			Kalendrite              .put(MD.MET).visDefault();
-			Orichalcum              .put(MD.MET).visDefault();
-			Carmot                  .put(MD.MET).visDefault();
-			Sanguinite              .put(MD.MET).visDefault();
-			Vyroxeres               .put(MD.MET).visDefault();
-			Eximite                 .put(MD.MET).visDefault();
-			Prometheum              .put(MD.MET).visDefault();
-			Ignatius                .put(MD.MET).visDefault();
-			Vulcanite               .put(MD.MET).visDefault();
-			DeepIron                .put(MD.MET).visDefault();
-			ShadowIron              .put(MD.MET).visDefault();
 			DamascusSteel           .put(MD.MET);
-			Adamantine              .put(MD.MET);
-			AstralSilver            .put(MD.MET);
-			Midasium                .put(MD.MET);
-			Mithril                 .put(MD.MET);
-			ShadowSteel             .put(MD.MET).visDefault();
-			Inolashite              .put(MD.MET).visDefault();
-			Haderoth                .put(MD.MET).visDefault();
-			Celenegil               .put(MD.MET).visDefault();
-			Desichalkos             .put(MD.MET).visDefault();
-			Tartarite               .put(MD.MET);
-			Amordrine               .put(MD.MET).visDefault();
+			Aredrite                .put(MD.MET); // Fantasy
+			Atl                     .put(MD.MET); // Fantasy
+			Tartarite               .put(MD.MET); // Fantasy
+			Adamantine              .put(MD.MET); // Fantasy
+			AstralSilver            .put(MD.MET); // Fantasy
+			Mithril                 .put(MD.MET); // Fantasy
+			Infuscolium             .put(MD.MET).visDefault(); // Fantasy
+			Rubracium               .put(MD.MET).visDefault(); // Fantasy
+			Oureclase               .put(MD.MET).visDefault(); // Fantasy
+			Orichalcum              .put(MD.MET).visDefault(); // Fantasy
+			Carmot                  .put(MD.MET).visDefault(); // Fantasy
+			Prometheum              .put(MD.MET).visDefault(); // Fantasy
+			DeepIron                .put(MD.MET).visDefault(); // Fantasy
+			Haderoth                .put(MD.MET).visDefault(); // Fantasy
+			Celenegil               .put(MD.MET).visDefault(); // Fantasy
+			Meutoite                .put(MD.MET).visDefault(); // Ender
+			Eximite                 .put(MD.MET).visDefault(); // Ender
+			Desichalkos             .put(MD.MET).visDefault(); // Ender
+			Midasium                .put(MD.MET); // Nether
+			Alduorite               .put(MD.MET).visDefault(); // Nether
+			Lemurite                .put(MD.MET).visDefault(); // Nether
+			Ceruclase               .put(MD.MET).visDefault(); // Nether
+			Kalendrite              .put(MD.MET).visDefault(); // Nether
+			Sanguinite              .put(MD.MET).visDefault(); // Nether
+			Vyroxeres               .put(MD.MET).visDefault(); // Nether
+			Ignatius                .put(MD.MET).visDefault(); // Nether
+			Vulcanite               .put(MD.MET).visDefault(); // Nether
+			ShadowIron              .put(MD.MET).visDefault(); // Nether
+			ShadowSteel             .put(MD.MET).visDefault(); // Nether
+			Inolashite              .put(MD.MET).visDefault(); // Nether
+			Amordrine               .put(MD.MET).visDefault(); // Nether
 			
 			
 			Force                   .put(COMMON_ORE).visDefault(); // Was this one DartCraft?

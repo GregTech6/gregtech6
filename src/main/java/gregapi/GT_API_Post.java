@@ -143,12 +143,12 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Cassiterite        .addOreByProducts(MT.Ignatius       );
 			MT.OREMATS.Wolframite         .addOreByProducts(MT.Vulcanite      );
 			MT.FakeOsmium                 .addOreByProducts(MT.DeepIron       );
-			MT.Fe2O3                      .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.BrownLimonite      .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.YellowLimonite     .addOreByProducts(MT.DeepIron       );
-			MT.OREMATS.Magnetite          .addOreByProducts(MT.ShadowIron     );
-			MT.OREMATS.BasalticMineralSand.addOreByProducts(MT.ShadowIron     );
-			MT.OREMATS.GraniticMineralSand.addOreByProducts(MT.ShadowIron     );
+			MT.Fe2O3                      .addOreByProducts(MT.DeepIron       );
+			MT.AncientDebris              .addOreByProducts(MT.ShadowIron     );
+			MT.Netherite                  .addOreByProducts(MT.ShadowIron     );
+			MT.Efrine                     .addOreByProducts(MT.ShadowIron     );
 		}
 		if (MD.Mek.mLoaded) {
 			MT.Pb.addOreByProducts(MT.FakeOsmium);
