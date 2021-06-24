@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -48,6 +48,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Gregorius Techneticies
@@ -103,10 +104,18 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 			return T;
 		}
 		if (UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, mStack), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5)) {
-			playCollect();
-			if (--mStack.stackSize <= 0) return setToAir();
-			mSize = ST.size(mStack);
-			updateClientData();
+			MultiTileEntityPlaceable tSelected = this;
+			for (int i = 1; i < 255; i++) {
+				TileEntity tTileEntity = getTileEntityAtSideAndDistance(SIDE_UP, i);
+				if (tTileEntity instanceof MultiTileEntityPlaceable && ST.equal(mStack, ((MultiTileEntityPlaceable)tTileEntity).mStack)) {
+					tSelected = (MultiTileEntityPlaceable)tTileEntity;
+				} else break;
+			}
+			tSelected.playCollect();
+			if (--tSelected.mStack.stackSize <= 0) return tSelected.setToAir();
+			tSelected.mSize = ST.size(tSelected.mStack);
+			tSelected.updateClientData();
+			return T;
 		};
 		return T;
 	}
