@@ -100,46 +100,46 @@ public class Loader_Recipes_Furnace implements Runnable {
 		}
 		
 		RUNNING = T;
-		OP.scrapGt               .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dust                  .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dustSmall             .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dustTiny              .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dustImpure            .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dustPure              .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.dustRefined           .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gemChipped            .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gemFlawed             .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gem                   .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gemFlawless           .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gemExquisite          .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.gemLegendary          .addListener(new Listener_Furnace_Smelting( -1, F));
-		OP.rockGt                .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.rawOreChunk           .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.oreRaw                .addListener(new Listener_Furnace_Smelting(U  , T));
-		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U*2, T));
-		OP.rubble                .addListener(new Listener_Furnace_Smelting(U*2, T));
-		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U*2, T));
-		OP.cluster               .addListener(new Listener_Furnace_Smelting(U*2, T));
-		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crystalline           .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.reduced               .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushed               .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushedTiny           .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushedPurified       .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushedPurifiedTiny   .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushedCentrifuged    .addListener(new Listener_Furnace_Smelting( -1, T));
-		OP.crushedCentrifugedTiny.addListener(new Listener_Furnace_Smelting( -1, T));
+		OP.scrapGt               .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dust                  .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dustSmall             .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dustTiny              .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dustImpure            .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dustPure              .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.dustRefined           .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gemChipped            .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gemFlawed             .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gem                   .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gemFlawless           .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gemExquisite          .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.gemLegendary          .addListener(new Listener_Furnace_Smelting(   -1, F));
+		OP.rockGt                .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.rawOreChunk           .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.oreRaw                .addListener(new Listener_Furnace_Smelting(U    , T));
+		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.rubble                .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.cluster               .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crystalline           .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.reduced               .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushed               .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushedTiny           .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushedPurified       .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushedPurifiedTiny   .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushedCentrifuged    .addListener(new Listener_Furnace_Smelting(   -1, T));
+		OP.crushedCentrifugedTiny.addListener(new Listener_Furnace_Smelting(   -1, T));
 		
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-			RM.add_smelting(OP.dust       .mat(tMat, 1), OP.dust       .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustSmall  .mat(tMat, 1), OP.dustSmall  .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustTiny   .mat(tMat, 1), OP.dustTiny   .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.dustDiv72  .mat(tMat, 1), OP.dustDiv72  .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.plate      .mat(tMat, 1), OP.plate      .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.plateTiny  .mat(tMat, 1), OP.plateTiny  .mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.plateCurved.mat(tMat, 1), OP.plateCurved.mat(MT.Ceramic, 1));
-			RM.add_smelting(OP.ingot      .mat(tMat, 1), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(OP.dust       .mat(tMat, 1), OP.dust       .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.dustSmall  .mat(tMat, 1), OP.dustSmall  .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.dustTiny   .mat(tMat, 1), OP.dustTiny   .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.dustDiv72  .mat(tMat, 1), OP.dustDiv72  .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.plate      .mat(tMat, 1), OP.plate      .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.plateTiny  .mat(tMat, 1), OP.plateTiny  .mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.plateCurved.mat(tMat, 1), OP.plateCurved.mat(MT.Ceramic, 1), F, F, T);
+			RM.add_smelting(OP.ingot      .mat(tMat, 1), ST.make(Items.brick, 1, 0)       , F, F, T);
 		}
 		
 		RUNNING = F;
@@ -158,7 +158,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (aEvent.mMaterial.contains(TD.Processing.FURNACE) && !aEvent.mMaterial.contains(TD.Properties.UNUSED_MATERIAL)) {
 				long aTargetAmount = UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F);
-				RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, aTargetAmount), mExp ? UT.Code.units(aTargetAmount, U, aEvent.mMaterial.mToolQuality+1, T) : 0, !RUNNING);
+				RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, aTargetAmount), mExp ? UT.Code.units(aTargetAmount, U, aEvent.mMaterial.mToolQuality+1, T) : 0, !RUNNING, F, T);
 			}
 		}
 	}

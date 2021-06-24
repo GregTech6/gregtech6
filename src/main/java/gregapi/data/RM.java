@@ -28,6 +28,8 @@ import com.cricketcraft.chisel.api.carving.CarvingUtils;
 
 import appeng.api.AEApi;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import ganymedes01.etfuturum.recipes.BlastFurnaceRecipes;
+import ganymedes01.etfuturum.recipes.SmokerRecipes;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
@@ -195,8 +197,8 @@ public class RM {
 	}
 	public static boolean boxunbox(ItemStack aEmpty, ItemStack aFull, ItemStack aContent) {
 		if (ST.invalid(aEmpty) || ST.invalid(aFull) || ST.invalid(aContent)) return F;
-		Boxinator  .addRecipe2(T, 16, 16, aContent, aEmpty, aFull);
 		Unboxinator.addRecipe1(T, 16, 16, aFull, aContent, aEmpty);
+		Boxinator  .addRecipe2(T, 16, 16, aContent, aEmpty, aFull);
 		return T;
 	}
 	
@@ -384,43 +386,83 @@ public class RM {
 	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, boolean aRemoveOthers) {
 		return add_smelting(aInput, aOutput, 0, aRemoveOthers);
 	}
+	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, boolean aRemoveOthers, boolean aSmoker, boolean aBlast) {
+		return add_smelting(aInput, aOutput, 0, aRemoveOthers, aSmoker, aBlast);
+	}
 	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, float aEXP) {
 		return add_smelting(aInput, aOutput, aEXP, T);
 	}
 	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, float aEXP, boolean aRemoveOthers) {
+		return add_smelting(aInput, aOutput, aEXP, aRemoveOthers, F, F);
+	}
+	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, float aEXP, boolean aRemoveOthers, boolean aSmoker, boolean aBlast) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		if (aRemoveOthers) rem_smelting(aInput);
 		aOutput = OM.get_(aOutput);
 		if (ST.container(aInput, F) != null || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
+		if (MD.EtFu.mLoaded) try {
+			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+			if (aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		return T;
 	}
+	@SuppressWarnings("unchecked")
 	public static boolean rem_smelting(ItemStack aInput) {
 		if (ST.invalid(aInput)) return F;
 		ItemStack tPyrotheum = OP.dust.mat(MT.Pyrotheum, 1);
 		if (ST.valid(tPyrotheum)) CR.remove(aInput, tPyrotheum);
-		@SuppressWarnings("unchecked")
+		boolean rReturn = F;
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-		boolean temp = F;
 		while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
 			tIterator.remove();
-			temp = T;
+			rReturn = T;
 		}
-		return temp;
+		if (MD.EtFu.mLoaded) try {
+			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
+			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+				tIterator.remove();
+				rReturn = T;
+			}
+			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
+			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+				tIterator.remove();
+				rReturn = T;
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return rReturn;
 	}
+	@SuppressWarnings("unchecked")
 	public static boolean rem_smelting(ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		@SuppressWarnings("unchecked")
+		boolean rReturn = F;
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-		boolean temp = F;
 		while (tIterator.hasNext()) {
 			Entry<ItemStack, ItemStack> tEntry = tIterator.next();
 			if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
 				tIterator.remove();
-				temp = T;
+				rReturn = T;
 			}
 		}
-		return temp;
+		if (MD.EtFu.mLoaded) try {
+			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
+			while (tIterator.hasNext()) {
+				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+					tIterator.remove();
+					rReturn = T;
+				}
+			}
+			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
+			while (tIterator.hasNext()) {
+				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+					tIterator.remove();
+					rReturn = T;
+				}
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return rReturn;
 	}
 	
 	public static boolean chisel(String aName, ItemStack... aStacks) {

@@ -89,9 +89,9 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		FoodsGT.put(ST.make(MD.HaC, "citrussaladItem"   , 1), 0, 0, 0, 10, 0);
 		FoodsGT.put(ST.make(MD.HaC, "springsaladItem"   , 1), 0, 0, 0, 10, 0);
 		
-		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem"     , 1), ST.make(MD.HaC, "turkeycookedItem"    , 1));
-		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem"     , 1), ST.make(MD.HaC, "rabbitcookedItem"    , 1));
-		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem"    , 1), ST.make(MD.HaC, "venisoncookedItem"   , 1));
+		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem"     , 1), ST.make(MD.HaC, "turkeycookedItem"    , 1), F, T, F);
+		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem"     , 1), ST.make(MD.HaC, "rabbitcookedItem"    , 1), F, T, F);
+		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem"    , 1), ST.make(MD.HaC, "venisoncookedItem"   , 1), F, T, F);
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
 		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), (tMat==MT.Enori?OP.plateGem:OP.plate)   .mat(tMat           , 8), ST.make(Items.iron_horse_armor, 1, 0));
@@ -215,7 +215,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "toastedcoconutItem", 1));
+			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "toastedcoconutItem", 1), F, T, F);
 		}});
 		addListener("cropStrawberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatestrawberryItem", 1));
@@ -323,10 +323,10 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			CR.remove(ST.make(MD.HaC, "potItem", 1), aEvent.mStack);
 		}});
 		addListener("dustSugar", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", 1));
+			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", 1), F, T, F);
 		}});
 		addListener("dustRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "ricecakeItem", 1));
+			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "ricecakeItem", 1), F, T, F);
 		}});
 		addListener(OP.stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom.addRecipe2(T, 16,   16, ST.make(MD.HaC, "hardenedleatherItem", 1), ST.amount(8, aEvent.mStack), ST.make(Items.item_frame, 1, 0));

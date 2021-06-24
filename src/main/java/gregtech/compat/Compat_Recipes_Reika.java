@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -113,7 +113,7 @@ public class Compat_Recipes_Reika extends CompatMods {
 			final ItemStack tQuicklime = ST.make(MD.ReC, "reactorcraft_item_raw", 1, 4);
 			new OreDictListenerEvent_Names(OP.seed) {@Override public void addAllListeners() {
 			addListener("gemAnyCalcite", "dustAnyCalcite", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, tQuicklime);
+			RM.add_smelting(aEvent.mStack, tQuicklime, F, F, T);
 			}});
 			}};
 		}

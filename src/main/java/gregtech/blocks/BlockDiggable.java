@@ -66,12 +66,12 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		RM.generify(ST.make(this, 1, 4), ST.make(Blocks.clay, 1, 0));
 		RM.generify(ST.make(this, 1, 5), ST.make(Blocks.clay, 1, 0));
 		RM.generify(ST.make(this, 1, 6), ST.make(Blocks.clay, 1, 0));
-		RM.add_smelting(ST.make(this, 1, 0), ST.make(Blocks.dirt, 1, 1));
-		RM.add_smelting(ST.make(this, 1, 1), ST.make(Blocks.hardened_clay, 1, 0));
-		RM.add_smelting(ST.make(this, 1, 3), ST.make(Blocks.hardened_clay, 1, 0));
-		RM.add_smelting(ST.make(this, 1, 4), ST.make(Blocks.hardened_clay, 1, 0));
-		RM.add_smelting(ST.make(this, 1, 5), ST.make(Blocks.hardened_clay, 1, 0));
-		RM.add_smelting(ST.make(this, 1, 6), ST.make(Blocks.hardened_clay, 1, 0));
+		RM.add_smelting(ST.make(this, 1, 0), ST.make(Blocks.dirt         , 1, 1), F, F, F);
+		RM.add_smelting(ST.make(this, 1, 1), ST.make(Blocks.hardened_clay, 1, 0), F, F, T);
+		RM.add_smelting(ST.make(this, 1, 3), ST.make(Blocks.hardened_clay, 1, 0), F, F, T);
+		RM.add_smelting(ST.make(this, 1, 4), ST.make(Blocks.hardened_clay, 1, 0), F, F, T);
+		RM.add_smelting(ST.make(this, 1, 5), ST.make(Blocks.hardened_clay, 1, 0), F, F, T);
+		RM.add_smelting(ST.make(this, 1, 6), ST.make(Blocks.hardened_clay, 1, 0), F, F, T);
 		OM.data(ST.make(this, 1, 1), MT.ClayBrown, U*4);
 		OM.data(ST.make(this, 1, 2), MT.Peat, U*4);
 		OM.data(ST.make(this, 1, 3), MT.ClayRed, U*4);

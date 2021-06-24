@@ -22,6 +22,7 @@ package gregapi.item.multiitem.behaviors;
 import static gregapi.data.CS.*;
 
 import gregapi.block.IPrefixBlock;
+import gregapi.data.MD;
 import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -54,12 +55,16 @@ public class Behavior_Plug_Leak extends AbstractBehaviorDefault {
 				Block tBlock = ST.block(tStack);
 				// The Block has to be Opaque to ensure the Leak is plugged.
 				if (tBlock == NB || !tBlock.isOpaqueCube()) continue;
+				// No Bedrock, Obsidian or Black Granite!
+				if (WD.bedrock(tBlock) || tBlock.getHarvestLevel(ST.meta(tStack) & 15) >= 3) continue;
 				// Don't use any PrefixBlocks, TileEntities or Silverfish Blocks.
 				if (tBlock instanceof IPrefixBlock || tBlock instanceof ITileEntityProvider || tBlock instanceof BlockSilverfish) continue;
 				// Only use Blocks that are typically mined.
 				if (tBlock.getMaterial() != Material.rock && tBlock.getMaterial() != Material.ground && tBlock.getMaterial() != Material.sand && tBlock.getMaterial() != Material.clay) continue;
 				// Don't use frikkin Ore Blocks or Storage Blocks for this!
 				if (OM.prefixcontainsany(OM.anydata(tStack), TD.Prefix.ORE, TD.Prefix.STORAGE_BASED)) continue;
+				// No Thaumcraft Blocks!
+				if (MD.TC.owns(tBlock)) continue;
 				
 				int tOldSize = tStack.stackSize;
 				if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ)) {

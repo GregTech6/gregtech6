@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,7 +40,7 @@ public class GT_ModHandler {
 	@Deprecated public static boolean addCraftingRecipe(ItemStack aResult, long aBitMask, Object[] aRecipe) {return CR.shaped(aResult, aBitMask, aRecipe);}
 	@Deprecated public static boolean addShapelessCraftingRecipe(ItemStack aResult, Object[] aRecipe) {return CR.shapeless(aResult, CR.DEF, aRecipe);}
 	@Deprecated public static boolean addShapelessCraftingRecipe(ItemStack aResult, long aBitMask, Object[] aRecipe) {return CR.shapeless(aResult, aBitMask, aRecipe);}
-	@Deprecated public static boolean addSmeltingRecipe(ItemStack aInput, ItemStack aOutput) {return RM.add_smelting(aInput, aOutput, 0);}
+	@Deprecated public static boolean addSmeltingRecipe(ItemStack aInput, ItemStack aOutput) {return RM.add_smelting(aInput, aOutput, 0, F, F, F);}
 	@Deprecated public static class RecipeBits {public static long MIRRORED = B[0], BUFFERED = B[1], KEEPNBT = B[2], DISMANTLEABLE = B[3], NOT_REMOVABLE = B[4], REVERSIBLE = B[5], DELETE_ALL_OTHER_RECIPES = B[6], DELETE_ALL_OTHER_RECIPES_IF_SAME_NBT = B[7], DELETE_ALL_OTHER_SHAPED_RECIPES = B[8], DELETE_ALL_OTHER_NATIVE_RECIPES = B[9], DO_NOT_CHECK_FOR_COLLISIONS = B[10], ONLY_ADD_IF_THERE_IS_ANOTHER_RECIPE_FOR_IT = B[11], ONLY_ADD_IF_RESULT_IS_NOT_NULL = B[12], DELETE_ONLY_IF_NO_DYE_IS_INVOLVED = B[13], NOT_AUTOCRAFTABLE = B[14], DEFAULT = BUFFERED|NOT_REMOVABLE, DEFAULT_REV = DEFAULT|REVERSIBLE, DEFAULT_NCC = DEFAULT|DO_NOT_CHECK_FOR_COLLISIONS, DEFAULT_REV_NCC = DEFAULT_REV|DO_NOT_CHECK_FOR_COLLISIONS, DEFAULT_NAC = DEFAULT|NOT_AUTOCRAFTABLE, DEFAULT_NAC_NCC = DEFAULT_NCC|NOT_AUTOCRAFTABLE, DEFAULT_NAC_REV = DEFAULT_REV|NOT_AUTOCRAFTABLE, DEFAULT_NAC_REV_NCC = DEFAULT_REV_NCC|NOT_AUTOCRAFTABLE;}
 	
 	

@@ -151,10 +151,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumWhite, 1), ST.make(MD.HEX, "itemHexoriumDyeWhite", 16, 0));
 			}});
 			addListener(OP.plateGem.dat(MT.HexoriumBlack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemBlackHexoriumWafer", 1, 0));
+				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemBlackHexoriumWafer", 1, 0), F, F, F);
 			}});
 			addListener(OP.plateGem.dat(MT.HexoriumWhite), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemWhiteHexoriumWafer", 1, 0));
+				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemWhiteHexoriumWafer", 1, 0), F, F, F);
 			}});
 			}};
 		}
@@ -419,7 +419,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_FoxfireStew  .get(1), ST.make(MD.NeLi, "Fungus", 2, 2));
 			RM.box(ST.make(Items.bowl, 1, W), IL.NeLi_Bowl_DevilishMaize.get(1), ST.make(MD.NeLi, "DevilishMaizeSeeds", 2, 0));
 			
-			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F);
+			RM.add_smelting(ST.make(Items.nether_wart, 1, 0), ST.make(MD.NeLi, "RoastedWart", 1, 0), 0.05F, F, T, F);
 			
 			RM.smash(IL.NeLi_Quartz_Bricks                    .get(1), OP.gem.mat(MT.NetherQuartz, 4));
 			RM.smash(IL.NeLi_Quartz_Smooth                    .get(1), OP.gem.mat(MT.NetherQuartz, 4));
@@ -532,10 +532,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.clay_ball, 1, 0));
 			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.clay_ball, 1, 0));
 			RM.generify(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.clay_ball, 1, 0));
-			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 45), ST.make(Items.brick, 1, 0));
-			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.brick, 1, 0));
-			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.brick, 1, 0));
-			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.brick, 1, 0));
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 45), ST.make(Items.brick, 1, 0), F, F, T);
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 47), ST.make(Items.brick, 1, 0), F, F, T);
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 48), ST.make(Items.brick, 1, 0), F, F, T);
+			RM.add_smelting(ST.make(MD.PFAA, "earthyClump", 1, 49), ST.make(Items.brick, 1, 0), F, F, T);
 			CR.shaped    (OP.plate.mat(MT.ClayBrown         , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 45));
 			CR.shaped    (OP.plate.mat(MT.Bentonite         , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 47));
 			CR.shaped    (OP.plate.mat(MT.Palygorskite      , 1), CR.DEF_NCC, "R", "C", 'R', OreDictToolNames.rollingpin, 'C', ST.make(MD.PFAA, "earthyClump", 4, 48));

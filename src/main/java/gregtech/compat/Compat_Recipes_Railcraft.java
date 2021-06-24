@@ -62,14 +62,17 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shaped(ST.make(MD.RC, "part.gear"   , 2,  3), tBits | MIR, tHammer+""+tFile, "XX" , "XX", 'X', tIngot.dat(MT.Sn));
 		
 		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  0), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', OP.nugget.dat(MT.Au) , 'G', ST.make(MD.RC, "part.gear", 1, 3));
-		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  1), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Fe)   , 'G', ST.make(MD.RC, "part.gear", 1, 3));
+		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  1), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Fe   ), 'G', ST.make(MD.RC, "part.gear", 1, 3));
 		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  2), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Steel), 'G', ST.make(MD.RC, "part.gear", 1, 3));
 		
 		CR.shaped(ST.make(MD.RC, "part.circuit", 1,  0), tBits, "dCW", "GAR", "WRL", 'W', ST.make(Blocks.wool, 1, 14), 'L', OP.gem.dat(MT.Lapis), 'A', tIngot.dat(MT.Au), 'C', Items.repeater, 'R', OD.itemRedstone, 'G', OD.itemGlue);
 		CR.shaped(ST.make(MD.RC, "part.circuit", 1,  1), tBits, "dCW", "GAR", "WRL", 'W', ST.make(Blocks.wool, 1, 13), 'L', OP.gem.dat(MT.Lapis), 'A', tIngot.dat(MT.Au), 'C', Items.repeater, 'R', OD.itemRedstone, 'G', OD.itemGlue);
 		CR.shaped(ST.make(MD.RC, "part.circuit", 1,  2), tBits, "dCW", "GAR", "WRL", 'W', ST.make(Blocks.wool, 1,  4), 'L', OP.gem.dat(MT.Lapis), 'A', tIngot.dat(MT.Au), 'C', Items.repeater, 'R', OD.itemRedstone, 'G', OD.itemGlue);
 		
-		CR.shapeless(ST.make(MD.RC, "part.gear", 1,  1), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Fe), ST.make(MD.RC, "part.gear", 1, 3)});
+		CR.shapeless(ST.make(Blocks.tnt, 1, 0), DEF, new Object[] {ST.make(MD.RC, "cart.tnt.wood", 1, 0)});
+		RM.unbox(IL.Plank_Slab.get(5), ST.make(MD.RC, "cart.tnt.wood", 1, 0), ST.make(Blocks.tnt, 1, 0));
+		
+		CR.shapeless(ST.make(MD.RC, "part.gear", 1,  1), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Fe   ), ST.make(MD.RC, "part.gear", 1, 3)});
 		CR.shapeless(ST.make(MD.RC, "part.gear", 1,  2), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Steel), ST.make(MD.RC, "part.gear", 1, 3)});
 		CR.shapeless(IL.RC_Tie_Wood .get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Wood});
 		CR.shapeless(IL.RC_Tie_Stone.get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Stone});

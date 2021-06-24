@@ -65,7 +65,6 @@ public class Loader_Items implements Runnable {
 		new PrefixItem(MD.GT, "gt.meta.dustTiny"                    , OP.dustTiny                       );
 		new PrefixItem(MD.GT, "gt.meta.dustDiv72"                   , OP.dustDiv72                      );
 		new PrefixItem(MD.GT, "gt.meta.dustImpure"                  , OP.dustImpure                     );
-		new PrefixItem(MD.GT, "gt.meta.dustPure"                    , OP.dustPure                       );
 		new PrefixItem(MD.GT, "gt.meta.crushed"                     , OP.crushed                        );
 		new PrefixItem(MD.GT, "gt.meta.crushedTiny"                 , OP.crushedTiny                    );
 		new PrefixItem(MD.GT, "gt.meta.crushedPurified"             , OP.crushedPurified                );

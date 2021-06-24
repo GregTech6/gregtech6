@@ -129,7 +129,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.Purple                               ), CR.DEF_NCC, new Object[] {ST.make(this, 1, 5)});
 		CR.shapeless(OP.stick.mat(MT.WOODS.Palm  , 1, IL.Stick.get(1)), CR.DEF_NCC, new Object[] {ST.make(this, 1, 6)});
 		
-		RM.add_smelting(ST.make(this, 1, 7), IL.Dye_Cactus.get(1));
+		RM.add_smelting(ST.make(this, 1, 7), IL.Dye_Cactus.get(1), F, T, F);
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OP.stick.mat(MT.WOODS.Acacia, 2, IL.Stick.get(2)));

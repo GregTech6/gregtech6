@@ -2856,7 +2856,7 @@ public class MT {
 			Mg                              .addOreByProducts(Olivine                   , MgCO3                     );
 			Ardite                          .addOreByProducts(OREMATS.Cobaltite         );
 			Obsidian                        .addOreByProducts(Olivine                   );
-			STONES.Redrock                  .addOreByProducts(ClayBrown                 );
+			STONES.Redrock                  .addOreByProducts(ClayRed                   );
 			STONES.Limestone                .addOreByProducts(CaCO3                     );
 			STONES.Marble                   .addOreByProducts(CaCO3                     );
 			STONES.Eclogite                 .addOreByProducts(TiO2                      );

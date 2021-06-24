@@ -333,7 +333,12 @@ public class Loader_OreProcessing implements Runnable {
 			if (tSecondaryByProductTiny == null) tSecondaryByProductTiny = tPrimaryByProductTiny;
 			if (tTertiaryByProductTiny == null) tTertiaryByProductTiny = tSecondaryByProductTiny;
 			
-			if (aMaterial.contains(FURNACE)) if (!RM.add_smelting(aOreStack, OM.ingot(aMaterial.mTargetSmelting))) RM.add_smelting(aOreStack, OM.gem(aMaterial.mTargetSmelting));
+			if (aMaterial.contains(FURNACE)) {
+				boolean tIsFood = aMaterial.mTargetSmelting.mMaterial.contains(TD.Properties.FOOD);
+				if(!RM.add_smelting(aOreStack, OM.ingot(aMaterial.mTargetSmelting), F, tIsFood, !tIsFood)) {
+					RM.add_smelting(aOreStack, OM.gem  (aMaterial.mTargetSmelting), F, tIsFood, !tIsFood);
+				}
+			}
 			if (aPrefix.contains(DUST_ORE)) RM.Sifting.addRecipe1(T, 16, 256, new long[] {10000, 10000, 1500, 1000, 500}, aOreStack, crushedPurified.mat(aMaterial, aMultiplier), crushedPurified.mat(aMaterial, aMultiplier), ST.amount(aMultiplier, tPrimaryByProductTiny), ST.amount(aMultiplier, tSecondaryByProductTiny), ST.amount(aMultiplier, tTertiaryByProductTiny));
 			return T;
 		}

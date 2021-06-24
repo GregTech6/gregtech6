@@ -128,9 +128,9 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		gregapi.util.CR.shapeless(gregapi.data.OP.dust.mat(tExamplium, 1), gregapi.util.CR.DEF, new Object[] {gregapi.data.OP.dustSmall.dat(tExamplium), gregapi.data.OP.dustSmall.dat(tExamplium), gregapi.data.OP.dustSmall.dat(tExamplium), gregapi.data.OP.dustSmall.dat(tExamplium)});
 		
 		// Smelting the Dusts into Ingots/Nuggets
-		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 0), gregapi.util.ST.make(this, 1, 3));
-		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 1), gregapi.util.ST.make(this, 1, 4));
-		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 2), gregapi.util.ST.make(this, 1, 5));
+		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 0), gregapi.util.ST.make(this, 1, 3), 0.1F, false, false, true);
+		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 1), gregapi.util.ST.make(this, 1, 4), 0.1F, false, false, true);
+		gregapi.data.RM.add_smelting(gregapi.util.ST.make(this, 1, 2), gregapi.util.ST.make(this, 1, 5), 0.1F, false, false, true);
 		}};
 		
 		// This gives you your very own 32767 Machine IDs.

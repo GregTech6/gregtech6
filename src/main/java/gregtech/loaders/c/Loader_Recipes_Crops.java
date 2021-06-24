@@ -704,7 +704,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropPomegranate", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Pomegranate, 100, 9000, "Canned Pomegranates", 0, 0, 0, 8, 0);
 			RM.Drying.addRecipe1(T, 16, 100, aEvent.mStack, NF, FL.DistW.make(50), IL.Food_Pomeraisins.get(1));
-			RM.add_smelting(aEvent.mStack, IL.Food_Pomeraisins.get(1));
+			RM.add_smelting(aEvent.mStack, IL.Food_Pomeraisins.get(1), F, T, F);
 		}});
 		
 		
@@ -734,27 +734,27 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropGrapeRed", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Grape_Red, 125, 8000, "Canned Grapes", 0, 0, 0,12, 0);
 			RM.Drying.addRecipe1(T, 16, 100, aEvent.mStack, NF, FL.DistW.make(50), IL.Food_Raisins_Red.get(1));
-			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Red.get(1));
+			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Red.get(1), F, T, F);
 		}});
 		addListener("cropGrapePurple", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Grape_Purple, 125, 8000, "Canned Grapes", 0, 0, 0,12, 0);
 			RM.Drying.addRecipe1(T, 16, 100, aEvent.mStack, NF, FL.DistW.make(50), IL.Food_Raisins_Purple.get(1));
-			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Purple.get(1));
+			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Purple.get(1), F, T, F);
 		}});
 		addListener("cropGrapeWhite", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Grape_White, 125, 8000, "Canned Grapes", 0, 0, 0,12, 0);
 			RM.Drying.addRecipe1(T, 16, 100, aEvent.mStack, NF, FL.DistW.make(50), IL.Food_Raisins_White.get(1));
-			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_White.get(1));
+			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_White.get(1), F, T, F);
 		}});
 		addListener("cropGrapeGreen", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Grape_Green, 125, 8000, "Canned Grapes", 0, 0, 0,12, 0);
 			RM.Drying.addRecipe1(T, 16, 100, aEvent.mStack, NF, FL.DistW.make(50), IL.Food_Raisins_Green.get(1));
-			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Green.get(1));
+			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Green.get(1), F, T, F);
 		}});
 		addListener("cropGrape", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OM.is("cropGrapeWhite", aEvent.mStack) || OM.is("cropGrapeGreen", aEvent.mStack) || OM.is("cropGrapeRed", aEvent.mStack) || OM.is("cropGrapePurple", aEvent.mStack)) return;
 			RM.crop_fruit(aEvent.mStack, FL.Juice_Grape_Green, 125, 8000, "Canned Grapes", 0, 0, 0,12, 0);
-			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Green.get(1));
+			if (!OM.is("foodRaisins", RM.get_smelting(aEvent.mStack, F, NI))) RM.add_smelting(aEvent.mStack, IL.Food_Raisins_Green.get(1), F, T, F);
 		}});
 		
 		
