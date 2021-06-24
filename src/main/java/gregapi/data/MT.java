@@ -2778,23 +2778,25 @@ public class MT {
 			KIO3                            .addOreByProducts(NaCl                      , KCl                       );
 			Endstone                        .addOreByProducts(He_3                      , Be                        );
 			Endium                          .addOreByProducts(OREMATS.Wolframite        , OREMATS.Sperrylite        , OREMATS.Tantalite     , Ke);
-			Glowstone                       .addOreByProducts(Redstone                  , Au                        , Gloomstone            );
+			
+			Glowstone                       .addOreByProducts(Redstone                  , Au                        , Gloomstone            , MT.FluoriteYellow     );
 			GlowstoneCeres                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneIo                     .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneEnceladus              .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneProteus                .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstonePluto                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
-			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             );
-			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon);
+			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             , MT.FluoriteBlue       );
+			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon                , MT.FluoriteGreen);
 			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    );
-			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone);
-			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz);
-			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz);
+			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone            );
+			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz            , MT.FluoriteWhite      );
+			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz          , MT.FluoriteMagenta    );
 			STONES.Quartzite                .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
 			MilkyQuartz                     .addOreByProducts(CertusQuartz              , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
 			BlackQuartz                     .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
+			
 			Syrmorite                       .addOreByProducts(OREMATS.Stannite          , OREMATS.Tetrahedrite      , Be                    );
 			Octine                          .addOreByProducts(OREMATS.Pentlandite       , OREMATS.Huebnerite        , Zircon                );
 			Ga                              .addOreByProducts(Zn                        , Se                        );
