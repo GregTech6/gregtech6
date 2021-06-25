@@ -78,6 +78,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 
 		if (MD.MET.mLoaded) {
 			CR.delate(MD.MET, "alloyer");
+			CR.delate(OP.dust.mat(MT.Au, 1));
 		}
 		
 		

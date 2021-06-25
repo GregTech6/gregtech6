@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -139,10 +139,10 @@ public class RecipeMapBath extends RecipeMap {
 				if (!tNBT.hasKey(NBT_EFFECTS)) {
 					if (FL.Med_Heal                .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.regeneration  .id, "time",  120, "lvl", 4, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
 					if (FL.Med_Laxative            .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.hunger        .id, "time",  300, "lvl",10, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
-					if (FL.Potion_Harm_1           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.harm          .id, "time",    0, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
-					if (FL.Potion_Harm_2           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.harm          .id, "time",    0, "lvl", 1, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
-					if (FL.Potion_Heal_1           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.heal          .id, "time",    0, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
-					if (FL.Potion_Heal_2           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.heal          .id, "time",    0, "lvl", 1, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
+					if (FL.Potion_Harm_1           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.harm          .id, "time",    1, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
+					if (FL.Potion_Harm_2           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.harm          .id, "time",    1, "lvl", 1, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
+					if (FL.Potion_Heal_1           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.heal          .id, "time",    1, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
+					if (FL.Potion_Heal_2           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.heal          .id, "time",    1, "lvl", 1, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
 					if (FL.Potion_Jump_1           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.jump          .id, "time", 3600, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
 					if (FL.Potion_Jump_2           .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.jump          .id, "time", 1800, "lvl", 1, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}
 					if (FL.Potion_Speed_1          .is(aFluids[0])) {tNBT.setTag(NBT_EFFECTS, UT.NBT.make("id", Potion.moveSpeed     .id, "time", 3600, "lvl", 0, "chance", 90)); return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.amount(aFluids[0], 250)), ZL_FS, 512, 0, 0);}

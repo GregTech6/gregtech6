@@ -515,7 +515,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Food_Rib_Raw                        .set(addItem(tLastID =  1200, "Raw Ribs"                                 , "Dropped by large Animals"        , "foodRibraw"              , new FoodStat( 3, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,  24, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 2), new OreDictItemData(MT.MeatRaw, U*2, MT.Bone, U), Behavior_FeedDog.INSTANCE));
 		IL.Food_Rib_Cooked                     .set(addItem(tLastID =  1201, "Grilled Ribs"                             , ""                                , "foodRibcooked"           , new FoodStat(10, 1.600F,   0, C+38,  0.50F,   0,   0,   0,   0,  24, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 2), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U)));
-		IL.Food_Rib_BBQ                        .set(addItem(tLastID =  1202, "Barbecue Ribs"                            , "High Quality Video Game Ribs"    , "foodRibbbq"              , new FoodStat(10, 1.600F,   0, C+38,  0.50F,   0,   0,   0,  30,  24, EnumAction.eat, null                                 , F, T, F, T, Potion.heal.id, 0, 0, 10, Potion.moveSpeed.id, 200, 0, 20), TC.stack(TC.FAMES, 2), TC.stack(TC.CORPUS, 2), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U)));
+		IL.Food_Rib_BBQ                        .set(addItem(tLastID =  1202, "Barbecue Ribs"                            , "High Quality Video Game Ribs"    , "foodRibbbq"              , new FoodStat(10, 1.600F,   0, C+38,  0.50F,   0,   0,   0,  30,  24, EnumAction.eat, null                                 , F, T, F, T, Potion.heal.id, 1, 0, 10, Potion.moveSpeed.id, 200, 0, 20), TC.stack(TC.FAMES, 2), TC.stack(TC.CORPUS, 2), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U)));
 		RM.add_smelting(IL.Food_Rib_Raw.get(1), IL.Food_Rib_Cooked.get(1), F, T, F);
 		CR.shapeless(IL.Food_Rib_BBQ.get(1), CR.DEF_NCC, new Object[] {"foodRibcooked", "foodBarbecuesauce"});
 		
@@ -828,7 +828,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Cream_Nutella           .make( 50), NF, IL.Food_Ice_Cream_Nutella.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Nutbutter_Peanut        .make( 50), NF, IL.Food_Ice_Cream_Peanut_Butter.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Ice_Cream.get(1), FL.Sap_Rainbow             .make( 50), NF, IL.Food_Ice_Cream_Rainbow.get(1));
-
+		
 		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Ice_Cream.get(1), OM.dust(MT.Chocolate   , U4), IL.Food_Ice_Cream_Stracciatella.get(1));
 		RM.Mixer.addRecipe2(T, 16, 64, IL.Food_Ice_Cream.get(4), OM.dust(MT.Chocolate   , U ), IL.Food_Ice_Cream_Stracciatella.get(4));
 		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Ice_Cream.get(1), OM.dust(MT.Vanilla     , U4), IL.Food_Ice_Cream_Vanilla.get(1));
@@ -841,24 +841,24 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Mixer.addRecipe2(T, 16, 64, IL.Food_Ice_Cream.get(4), OM.dust(MT.Pistachio   , U ), IL.Food_Ice_Cream_Pistachio.get(4));
 		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Ice_Cream.get(1), OM.dust(MT.MeatCooked  , U4), IL.Food_Ice_Cream_Bear.get(1));
 		RM.Mixer.addRecipe2(T, 16, 64, IL.Food_Ice_Cream.get(4), OM.dust(MT.MeatCooked  , U ), IL.Food_Ice_Cream_Bear.get(4));
-
+		
 		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Ice_Cream_Mint.get(1), OM.dust(MT.Chocolate  , U4), IL.Food_Ice_Cream_Mint_Chocolate_Chip.get(1));
 		RM.Mixer.addRecipe2(T, 16, 64, IL.Food_Ice_Cream_Mint.get(4), OM.dust(MT.Chocolate  , U ), IL.Food_Ice_Cream_Mint_Chocolate_Chip.get(4));
-
+		
 		RM.Mixer.addRecipeX(T, 16, 48, ST.array(IL.Food_Ice_Cream_Strawberry.get(1), IL.Food_Ice_Cream_Vanilla  .get(1), IL.Food_Ice_Cream_Chocolate.get(1)), IL.Food_Ice_Cream_Neapolitan.get(3));
 		RM.Mixer.addRecipeX(T, 16, 48, ST.array(IL.Food_Ice_Cream_Cherry    .get(1), IL.Food_Ice_Cream_Pistachio.get(1), IL.Food_Ice_Cream_Vanilla  .get(1)), IL.Food_Ice_Cream_Spumoni_Vanilla.get(3));
 		RM.Mixer.addRecipeX(T, 16, 48, ST.array(IL.Food_Ice_Cream_Cherry    .get(1), IL.Food_Ice_Cream_Pistachio.get(1), IL.Food_Ice_Cream_Chocolate.get(1)), IL.Food_Ice_Cream_Spumoni_Chocolate.get(3));
 		RM.Mixer.addRecipeX(T, 16, 48, ST.array(IL.Food_Ice_Cream_Cherry    .get(1), IL.Food_Ice_Cream_Blueberry.get(1), IL.Food_Ice_Cream_Lemon    .get(1)), IL.Food_Ice_Cream_Superman.get(3));
-
-
-
-
-
-
-
-
-
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		IL.Pill_Empty                          .set(addItem(tLastID = 31000, "Empty Wax Pill"                           , "Placebo"                                                     , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T), TC.stack(TC.SANO, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Pill_Iodine                         .set(addItem(tLastID = 31001, "Radaway"                                  , "Pill that cures Effects of Radiation"                        , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, CS.PotionsGT.ID_RADIATION, -1, -1, 100), TC.stack(TC.SANO, 3), TD.Creative.HIDDEN));
 		IL.Pill_Mint                           .set(addItem(tLastID = 31002, "Peppermint"                               , "Take a fresh energetic Breath"                               , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, Potion.moveSlowdown.id, -1, -1, 100), TC.stack(TC.SANO, 1), TC.stack(TC.HERBA, 1)));
@@ -868,11 +868,11 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Boxinator    .addRecipe2(T, 16,   16, OM.dust(MT.I)                          , IL.Pill_Empty.get(1), IL.Pill_Iodine.get(1));
 		RM.Boxinator    .addRecipe2(T, 16,   16, OM.dust(MT.Mint)                       , IL.Pill_Empty.get(1), IL.Pill_Mint.get(1));
 		RM.Boxinator    .addRecipe2(T, 16,   16, ST.make(Blocks.brown_mushroom, 1, W)   , IL.Pill_Empty.get(1), IL.Pill_Antidote.get(1));
-
+		
 		IL.Pill_Cure_All                       .set(addItem(tLastID = 31999, "Cure All"                                 , "Cures everything you could imagine*"                         , new FoodStat( 0, 0.000F,   0, C+37,  1.00F,-999,-999,-999,-999,-999, EnumAction.eat, null                                 , T, F, F, T, CS.PotionsGT.ID_RADIATION, -1, -1, 100, CS.PotionsGT.ID_HYPOTHERMIA, -1, -1, 100, CS.PotionsGT.ID_HEATSTROKE, -1, -1, 100, CS.PotionsGT.ID_FROSTBITE, -1, -1, 100, CS.PotionsGT.ID_DEHYDRATION, -1, -1, 100, CS.PotionsGT.ID_INSANITY, -1, -1, 100, Potion.digSlowdown.id, -1, -1, 100, Potion.moveSlowdown.id, -1, -1, 100, Potion.hunger.id, -1, -1, 100, Potion.harm.id, -1, -1, 100, Potion.confusion.id, -1, -1, 100, Potion.blindness.id, -1, -1, 100, Potion.weakness.id, -1, -1, 100, Potion.poison.id, -1, -1, 100, Potion.wither.id, -1, -1, 100, Potion.regeneration.id, 100, 100, 100, Potion.field_76443_y.id, 100, 100, 100).setMilk().setExtinguish(), new Behavior_CureZombie(500, F), TC.stack(TC.SANO, 10), TD.Creative.HIDDEN));
-
-
-
+		
+		
+		
 		IL.Food_Tofu                           .set(addItem(tLastID = 32101, "Tofu Bar"                                 , "Alternative for Meat"                , OP.ingot.dat(MT.Tofu)         , new FoodStat( 2, 1.400F,   0, C+37,  0.10F,   0,   0,   4,   4,   0, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_SoylentGreen                   .set(addItem(tLastID = 32103, "Emerald Green Bar"                        , "Emerald Green is Villagers!"         , OP.ingot.dat(MT.SoylentGreen) , new FoodStat( 3, 1.400F,   0, C+37,  0.10F,   0,   0,   4,   0,  12, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.CORPUS, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Meat_Raw                       .set(addItem(tLastID = 32105, "Raw Meat Bar"                             , "Don't eat raw Mince Meat"            , OP.ingot.dat(MT.MeatRaw)      , new FoodStat( 2, 0.600F,   0, C+37,  0.10F,   0,   0,   4,   0,  12, EnumAction.eat, null                         , F, T, F, T, Potion.hunger.id, 300, 0, 50), TC.stack(TC.CORPUS, 1), TC.stack(TC.FAMES, 1)));
