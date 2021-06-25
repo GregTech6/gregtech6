@@ -522,18 +522,18 @@ public class CR {
 	}
 	
 	public static IRecipe sLastRecipe = null;
-	
-	/**
-	 * Checks all Crafting Handlers for Recipe Output
-	 */
-	public static ItemStack getany(World aWorld, ItemStack... aRecipe) {
+
+	/** Checks all Crafting Handlers for Recipe Output */
+	public static ItemStack getany(World aWorld, ItemStack... aRecipe) {return getany(aWorld, T, aRecipe);}
+	/** Checks all Crafting Handlers for Recipe Output */
+	public static ItemStack getany(World aWorld, boolean aAllowCache, ItemStack... aRecipe) {
 		if (!ST.hasValid(aRecipe)) return null;
 		
 		if (aWorld == null) aWorld = CS.DW;
 		
 		InventoryCrafting aCrafting = crafting(aRecipe);
 		
-		if (sLastRecipe != null && sLastRecipe.matches(aCrafting, aWorld)) return sLastRecipe.getCraftingResult(aCrafting);
+		if (aAllowCache && sLastRecipe != null && sLastRecipe.matches(aCrafting, aWorld)) return sLastRecipe.getCraftingResult(aCrafting);
 		
 		List<IRecipe> tList = list();
 		for (int i = 0; i < tList.size(); i++) if (tList.get(i).matches(aCrafting, aWorld)) return (sLastRecipe = tList.get(i)).getCraftingResult(aCrafting);
