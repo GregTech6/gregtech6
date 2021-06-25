@@ -320,6 +320,15 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
+			
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushed           .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Oilshale));
 			}
 		}
 		

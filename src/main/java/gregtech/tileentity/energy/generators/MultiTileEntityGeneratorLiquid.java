@@ -246,6 +246,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	@Override public boolean getStateRunningPossible() {return mBurning;}
 	@Override public boolean getStateRunningActively() {return mBurning;}
 	
+	@Override public float getBlockHardness() {return mBurning ? super.getBlockHardness() * 16 : super.getBlockHardness();}
+	
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {
 		worldObj.spawnParticle("smoke", aX, aY, aZ, 0, 0, 0);
 		worldObj.spawnParticle("flame", aX, aY, aZ, 0, 0, 0);

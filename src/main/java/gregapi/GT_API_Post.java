@@ -152,12 +152,12 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		if (MD.Mek.mLoaded) {
 			MT.Pb.addOreByProducts(MT.FakeOsmium);
+			MT.Os.addOreByProducts(MT.FakeOsmium);
 			MT.DeepIron.addOreByProducts(MT.FakeOsmium);
 			MT.OREMATS.Galena.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.Magnetite.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.Ferrovanadium.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.BasalticMineralSand.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.GraniticMineralSand.addOreByProducts(MT.FakeOsmium);
+			MT.OREMATS.BrownLimonite.addOreByProducts(MT.FakeOsmium);
+			MT.OREMATS.YellowLimonite.addOreByProducts(MT.FakeOsmium);
+			MT.Fe2O3.addOreByProducts(MT.FakeOsmium);
 		}
 		if (MD.TiC.mLoaded) {
 			MT.Co.addOreByProducts(MT.Ardite);
