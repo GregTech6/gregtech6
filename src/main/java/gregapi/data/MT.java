@@ -2661,6 +2661,7 @@ public class MT {
 			Lapis                           .addOreByProducts(Lazurite                  , Sodalite                  , Pyrite                );
 			OREMATS.Cooperite               .addOreByProducts(Pd                        , Ni                        , Ir                    );
 			OREMATS.Cinnabar                .addOreByProducts(Redstone                  , S                         , Glowstone             , Se                    );
+			Ta                              .addOreByProducts(MnO2                      , Nb                        , OREMATS.Tantalite     );
 			OREMATS.Tantalite               .addOreByProducts(MnO2                      , Nb                        , Ta                    );
 			Mn                              .addOreByProducts(MnO2                      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
 			MnO2                            .addOreByProducts(OREMATS.Bromargyrite      , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
