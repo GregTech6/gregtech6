@@ -75,7 +75,6 @@ import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
 import gregapi.enchants.Enchantment_WerewolfDamage;
 import gregapi.item.IItemNoGTOverride;
 import gregapi.item.IItemProjectile;
@@ -811,43 +810,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		// There cant be any Inventory Row above this one.
 		if (tSlot >= 27) return;
 		// Refill, but only if the Slot in the Hotbar is Empty.
-		boolean tRefill = (tInv[tSlot] == null || tInv[tSlot].stackSize == 0);
-		// Grab a Copy of the Stack to compare with, just in case any of the called Stuff mutates the Stack.
-		ItemStack tCompare = ST.amount(1, aEvent.original);
+		if (tInv[tSlot] != null && tInv[tSlot].stackSize > 0) return;
 		// Do not refill Foods!
-		if (ST.food(tCompare) > 0) tRefill = F;
+		if (ST.food(aEvent.original) > 0) return;
 		// Do not refill Edibles!
-		if (tCompare.getItemUseAction() == EnumAction.eat) tRefill = F;
+		if (aEvent.original.getItemUseAction() == EnumAction.eat) return;
 		// Do not refill Drinkables!
-		if (tCompare.getItemUseAction() == EnumAction.drink) tRefill = F;
-		
-		if (OP.scrapGt.contains(tCompare)) {
-			// Only GT6 Tools do the thing with turning into Scrap.
-			tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
-			// Refill, but only if the Slot in the Hotbar is Empty.
-			tRefill = (tInv[tSlot] == null || tInv[tSlot].stackSize == 0);
-		}
-		if (OP.scrapGt.contains(tInv[tSlot])) {
-			// Only GT6 Tools do the thing with turning into Scrap.
-			tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
-			// Yes definitely Refill!
-			tRefill = T;
-			// Grabbing the Scrap.
-			ItemStack tScrap = ST.copy(tInv[tSlot]);
-			// Reserving the Slot.
-			tInv[tSlot] = ST.make(Blocks.cobblestone, 0, 0);
-			// Moving the Scrap away.
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tScrap, F);
-			// And the Slot is Empty now.
-			tInv[tSlot] = null;
-		}
-		// Check if we can refill, to move Items around.
-		if (!tRefill) return;
+		if (aEvent.original.getItemUseAction() == EnumAction.drink) return;
 		// Move into First Row.
 		if (tSlot < 9) {
-			if (ST.equal(tCompare, tInv[tSlot+27], T)) {
-			if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-			if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+			if (ST.equal(aEvent.original, tInv[tSlot+27], T)) {
+			if (ST.equal(aEvent.original, tInv[tSlot+18], T)) {
+			if (ST.equal(aEvent.original, tInv[tSlot+ 9], T)) {
 			tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
 			tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
 			tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; ST.update(aEvent.entityPlayer); return;}
@@ -855,14 +829,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		// Move into Second Row. Usually only with the Double Hotbars Mod.
 		if (tSlot < 18) {
-			if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-			if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+			if (ST.equal(aEvent.original, tInv[tSlot+18], T)) {
+			if (ST.equal(aEvent.original, tInv[tSlot+ 9], T)) {
 			tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
 			tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; ST.update(aEvent.entityPlayer); return;}
 			return;
 		}
 		// Move into Third Row. Unsure if a Triple Hotbar Mod exists, but if it does, well then it is supported.
-		if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+		if (ST.equal(aEvent.original, tInv[tSlot+ 9], T)) {
 		tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; ST.update(aEvent.entityPlayer); return;}
 		return;
 	}

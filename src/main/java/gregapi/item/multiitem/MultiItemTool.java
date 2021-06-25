@@ -415,7 +415,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if (tNewDamage >= getToolMaxDamage(aStack)) {
 				IToolStats tStats = getToolStats(aStack);
 				if (tStats == null) {
-					ST.use(aPlayer, aStack);
+					ST.use(null, aStack);
 				} else {
 					if (TOOL_SOUNDS) {
 						if (aPlayer == null) {
@@ -432,11 +432,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 					}
 					ItemStack tBroken = tStats.getBrokenItem(aStack);
 					if (ST.invalid(tBroken) || tBroken.stackSize <= 0) {
-						ST.use(aPlayer, aStack);
+						ST.use(null, aStack);
 					} else if (aPlayer instanceof EntityPlayer) {
 						if (tBroken.stackSize > 64) tBroken.stackSize = 64;
 						if (!aPlayer.worldObj.isRemote) UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, tBroken, F);
-						ST.use(aPlayer, aStack);
+						ST.use(null, aStack);
 					} else {
 						if (tBroken.stackSize > 64) tBroken.stackSize = 64;
 						ST.set(aStack, tBroken);
