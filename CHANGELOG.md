@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Advanced Crafting Table was caching Recipes too aggressively.
 [FIXED] Instant Health and Instant Damage Potions not properly working in GT6 Drinkable Fluid Containers or "poisoned" Food Items fro mthe Bathing Pot.
 [REMOVED] Legacy Recipes for processing Inpure/Pure/Refined Piles of Dust have been removed. You can still throw them into a Cauldron or put them into a Shredder though. Impure Bedrock Dust is unaffected by this.
+[CHANGED] Many of the Metallic Utility Blocks are much cheaper now, including the Mass Storages. Now most of them require Screws to be made though, giving people incentive to actually make Screws.
 [CHANGED] Treecapitation now works Top Down instead of Bottom Up
 [CHANGED] The Sluice now outputs less Byproducts and more of the Main Product, if the Byproduct List is too short to fill the entire Output.
 
