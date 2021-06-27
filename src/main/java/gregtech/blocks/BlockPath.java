@@ -134,6 +134,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean canSilkHarvest() {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_shovel;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.grass.getBlockHardness(aWorld, aX, aY, aZ) * 2;}

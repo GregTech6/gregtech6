@@ -50,7 +50,7 @@ public class BlockMetaType extends BlockBaseMeta {
 	public final float mHardnessMultiplier, mResistanceMultiplier;
 	public final int mHarvestLevel;
 	public final byte mSide, mOctantcount;
-	public final boolean mIsWall, mIsSlab, mIsStair;
+	public final boolean mIsWall, mIsSlab, mIsStair, mIsPrimary;
 	public final BlockMetaType mBlock;
 	public final BlockMetaType[] mSlabs;
 	
@@ -64,6 +64,7 @@ public class BlockMetaType extends BlockBaseMeta {
 		mIsWall = F;
 		mIsSlab = F;
 		mIsStair = F;
+		mIsPrimary = T;
 		mBlock = this;
 		mOctantcount = 8;
 		mSide = SIDE_UNKNOWN;
@@ -107,6 +108,7 @@ public class BlockMetaType extends BlockBaseMeta {
 		mIsWall = F;
 		mIsSlab = T;
 		mIsStair = F;
+		mIsPrimary = (aSlabType == 0);
 		mBlock = aBlock;
 		mOctantcount = 4;
 		mSide = aSlabType;
@@ -169,7 +171,7 @@ public class BlockMetaType extends BlockBaseMeta {
 	@Override public boolean doesPistonPush(byte aMeta) {return T;}
 	@Override public int getLightOpacity() {return mBlock == this ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.stone.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
-	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}
-	@Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {if (mBlock == this || mBlock.mSlabs[0] == this) super.getSubBlocks(aItem, aTab, aList);}
-	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}
+	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(mIsSlab ? mBlock.mSlabs[0] : mBlock);}
+	@Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {if (mIsPrimary) super.getSubBlocks(aItem, aTab, aList);}
+	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(mIsSlab ? mBlock.mSlabs[0] : mBlock);}
 }

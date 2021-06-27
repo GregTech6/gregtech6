@@ -441,7 +441,7 @@ public class GT6_Main extends Abstract_Mod {
 		, ST.make(OP.ingot.mat(MT.Fe, 1), "Throw Iron into Crucible")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
 		, ST.make(OP.ingot.mat(MT.WroughtIron, 1), "Or throw Wrought Iron into the Crucible, either works")
-		), ST.array(OP.dust.mat(MT.Steel, 1), OP.ingot.mat(MT.Steel, 1), OP.plate.mat(MT.Steel, 1), OP.scrapGt.mat(MT.Steel, 1), OP.stick.mat(MT.Steel, 1), OP.gearGt.mat(MT.Steel, 1)), null, ZL_LONG, FL.array(FL.Air.make(1), FL.Air_Nether.make(1), FL.Air_End.make(1)), ZL_FS, 0, 0, 0);
+		), ST.array(OP.dust.mat(MT.Steel, 1), OP.ingot.mat(MT.Steel, 1), OP.plate.mat(MT.Steel, 1), OP.scrapGt.mat(MT.Steel, 1), OP.stick.mat(MT.Steel, 1), OP.gearGt.mat(MT.Steel, 1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
 		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")

@@ -48,18 +48,17 @@ public class Behavior_Key extends AbstractBehaviorDefault {
 		if (aTileEntity.mTileEntity instanceof ITileEntityKeyInteractable) {
 			NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
 			long tKeyID = tNBT.getLong(NBT_KEY);
+			if (tKeyID != 0) return ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).useKey(aPlayer, aSide, hitX, hitY, hitZ, tKeyID);
+			tKeyID = ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).getKeyID();
 			if (tKeyID == 0) {
-				long tLockID = ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).getKeyID();
-				if (tLockID == 0) {
-					tKeyID = 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime());
-				} else {
-					if (((ITileEntityKeyInteractable)aTileEntity.mTileEntity).canCloneKey(aPlayer, aSide, hitX, hitY, hitZ)) {
-						tKeyID = tLockID;
-					}
-				}
+				tKeyID = 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime());
+				UT.NBT.set(aStack, UT.NBT.setNumber(tNBT, NBT_KEY, tKeyID));
+				return ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).useKey(aPlayer, aSide, hitX, hitY, hitZ, tKeyID);
 			}
-			UT.NBT.set(aStack, UT.NBT.setNumber(tNBT, NBT_KEY, tKeyID));
-			return ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).useKey(aPlayer, aSide, hitX, hitY, hitZ, tKeyID);
+			if (((ITileEntityKeyInteractable)aTileEntity.mTileEntity).canCloneKey(aPlayer, aSide, hitX, hitY, hitZ)) {
+				UT.NBT.set(aStack, UT.NBT.setNumber(tNBT, NBT_KEY, tKeyID));
+				return T;
+			}
 		}
 		return F;
 	}
