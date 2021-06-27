@@ -93,7 +93,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {
 		if (SIDES_TOP[aSide]) return T;
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		return tBlock != this && tBlock != Blocks.farmland && !WD.visOpq(tBlock);
+		return tBlock != Blocks.farmland && !WD.visOpq(tBlock);
 	}
 	
 	@Override public int getRenderType() {return RendererBlockTextured.INSTANCE==null?0:RendererBlockTextured.INSTANCE.mRenderID;}
@@ -107,9 +107,9 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	
 	@Override
 	public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {
-		if (SIDES_TOP[aSide] || isHalfBlock(aWorld, aX, aY, aZ)) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
-		ITexture tDirt = BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]);
-		return SIDES_BOTTOM[aSide]?tDirt:BlockTextureMulti.get(tDirt, BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
+		if (SIDES_BOTTOM[aSide]) return BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]);
+		if (SIDES_TOP[aSide] || isHalfBlock(aWorld, aX, aY, aZ) || aWorld.getBlock(aX+OFFSETS_X[aSide], aY, aZ+OFFSETS_Z[aSide]) == this) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
+		return BlockTextureMulti.get(BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]), BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
 	}
 	
 	public boolean isHalfBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {
