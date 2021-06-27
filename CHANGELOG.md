@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Many of the Metallic Utility Blocks are much cheaper now, including the Mass Storages. Now most of them require Screws to be made though, giving people incentive to actually make Screws.
 [CHANGED] Treecapitation now works Top Down instead of Bottom Up
 [CHANGED] The Sluice now outputs less Byproducts and more of the Main Product, if the Byproduct List is too short to fill the entire Output.
+[ADDED] By rightclicking an already OPEN Keybased Safe with a Blank Key, you can now copy that Safe's Key ID.
 
 
 6.14.14:

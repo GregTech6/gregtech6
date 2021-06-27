@@ -46,9 +46,14 @@ public class Behavior_Key extends AbstractBehaviorDefault {
 		
 		DelegatorTileEntity<TileEntity> aTileEntity = WD.te(aWorld, aX, aY, aZ, aSide, T);
 		if (aTileEntity.mTileEntity instanceof ITileEntityKeyInteractable) {
-			NBTTagCompound tNBT = aStack.getTagCompound();
-			if (tNBT == null) tNBT = UT.NBT.make();
-			if (!tNBT.hasKey(NBT_KEY)) tNBT.setLong(NBT_KEY, System.nanoTime());
+			NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
+			if (!tNBT.hasKey(NBT_KEY)) {
+				if (((ITileEntityKeyInteractable)aTileEntity.mTileEntity).canCloneKey(aPlayer, aSide, hitX, hitY, hitZ)) {
+					tNBT.setLong(NBT_KEY, ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).getKeyID());
+				} else {
+					tNBT.setLong(NBT_KEY, 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime()));
+				}
+			}
 			UT.NBT.set(aStack, tNBT);
 			return ((ITileEntityKeyInteractable)aTileEntity.mTileEntity).useKey(aPlayer, aSide, hitX, hitY, hitZ, tNBT.getLong(NBT_KEY));
 		}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,4 +28,8 @@ import net.minecraft.entity.player.EntityPlayer;
 public interface ITileEntityKeyInteractable extends ITileEntityUnloadable {
 	/** @return if it got opened successfully. aKeys is the List of IDs the Key has (if you have a key bundle of some sort, for example) */
 	public boolean useKey(EntityPlayer aPlayer, byte aSide, float hitX, float hitY, float hitZ, long... aKeys);
+	/** @return if you can clone the ID of this Lock. */
+	public boolean canCloneKey(EntityPlayer aPlayer, byte aSide, float hitX, float hitY, float hitZ);
+	/** @return the ID of the Key belonging to this Lock. 0 means there is no ID. */
+	public long getKeyID();
 }

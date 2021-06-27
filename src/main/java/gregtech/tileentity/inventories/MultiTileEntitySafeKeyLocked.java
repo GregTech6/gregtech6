@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -88,6 +88,16 @@ public class MultiTileEntitySafeKeyLocked extends MultiTileEntitySafe implements
 			}
 		}
 		return F;
+	}
+	
+	@Override
+	public boolean canCloneKey(EntityPlayer aPlayer, byte aSide, float hitX, float hitY, float hitZ) {
+		return mOpened;
+	}
+	
+	@Override
+	public long getKeyID() {
+		return mID;
 	}
 	
 	@Override
