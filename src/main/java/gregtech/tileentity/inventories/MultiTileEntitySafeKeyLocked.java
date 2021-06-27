@@ -92,7 +92,7 @@ public class MultiTileEntitySafeKeyLocked extends MultiTileEntitySafe implements
 	
 	@Override
 	public boolean canCloneKey(EntityPlayer aPlayer, byte aSide, float hitX, float hitY, float hitZ) {
-		return mOpened;
+		return mOpened && mID != 0;
 	}
 	
 	@Override
