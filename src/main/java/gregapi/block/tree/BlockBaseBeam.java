@@ -22,6 +22,7 @@ package gregapi.block.tree;
 import static gregapi.data.CS.*;
 
 import gregapi.block.BlockBaseMeta;
+import gregapi.data.MD;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
@@ -29,6 +30,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
@@ -44,6 +46,7 @@ public abstract class BlockBaseBeam extends BlockBaseMeta {
 	public BlockBaseBeam(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OD.beamWood);
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_axe;}

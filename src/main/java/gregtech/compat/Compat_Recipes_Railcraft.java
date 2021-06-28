@@ -159,7 +159,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		}});
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
-		addListener(new Object[] {OP.stone, OP.cobblestone, OP.treeSapling, OP.treeLeaves, OP.log}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new Object[] {OP.stone, OP.cobblestone, OP.treeSapling, OP.treeLeaves, OP.tree, OP.log, OP.plank, OP.beam}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.isGT(aEvent.mStack)) return;
 			Block tBlock = ST.block(aEvent.mStack);
 			if (tBlock != NB) try {

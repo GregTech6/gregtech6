@@ -108,8 +108,8 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override
 	public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {
 		if (SIDES_BOTTOM[aSide]) return BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]);
-		if (SIDES_TOP[aSide] || isHalfBlock(aWorld, aX, aY, aZ) || aWorld.getBlock(aX+OFFSETS_X[aSide], aY, aZ+OFFSETS_Z[aSide]) == this) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
-		return BlockTextureMulti.get(BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]), BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
+		if (SIDES_TOP   [aSide]) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
+		return BlockTextureMulti.get(   BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]), BlockTextureDefault.get(isHalfBlock(aWorld, aX, aY, aZ) ? Textures.BlockIcons.PATH_SLAB : Textures.BlockIcons.PATH_SIDE));
 	}
 	
 	public boolean isHalfBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {
