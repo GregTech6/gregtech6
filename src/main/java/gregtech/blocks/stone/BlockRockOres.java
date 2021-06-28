@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import gregapi.block.BlockBaseMeta;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -34,6 +35,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -89,6 +91,8 @@ public class BlockRockOres extends BlockBaseMeta {
 		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.Gypsum));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
 	//  StoneLayer.LAYERS.add(new StoneLayer(this, 8, MT.NetherQuartz)); Nope, that is not for the Overworld.
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override

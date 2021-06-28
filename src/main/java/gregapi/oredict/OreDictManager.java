@@ -55,6 +55,7 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -354,7 +355,7 @@ public final class OreDictManager {
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
 		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
-		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
+		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe(OD.woodLog, ST.copyMeta(i, aEvent.Ore)); else registerOreSafe(OD.woodLog, aEvent.Ore);
 		
 		//ORD.println(aModID + " → " + aRegName + " → " + aEvent.Name);
 		
@@ -362,7 +363,12 @@ public final class OreDictManager {
 		
 		mAllRegisteredOres.add(aEvent.Ore);
 		
-		if (!ST.isGT(aEvent.Ore)) triggerVisibility(aEvent.Name);
+		if (!ST.isGT(aEvent.Ore)) {
+			// Another Mod registered something, maybe that makes a Material visible!
+			triggerVisibility(aEvent.Name);
+			// Railcraft Bore Registration.
+			if (MD.RC.mLoaded && aEvent.Name.startsWith("ore") && ST.block(aEvent.Ore) != NB) try {EntityTunnelBore.addMineableBlock(ST.block(aEvent.Ore));} catch(Throwable e) {e.printStackTrace(ERR);}
+		}
 		
 		if (aEvent.Name.contains(" ")) {
 			registerOreSafe(aEvent.Name.replaceAll(" ", ""), aEvent.Ore);

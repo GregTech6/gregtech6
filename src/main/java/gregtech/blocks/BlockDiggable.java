@@ -29,6 +29,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -37,6 +38,7 @@ import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -85,6 +87,8 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		OM.reg(ST.make(this, 1, 6), OD.blockClay);
 		
 		BlocksGT.harvestableSpade.add(this);
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override

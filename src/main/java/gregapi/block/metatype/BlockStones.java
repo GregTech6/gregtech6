@@ -50,6 +50,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -195,6 +196,12 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		OM.reg_(OP.stone           , ST.make(this, 1, STONE));
 		
 		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
+		
+		if (MD.RC.mLoaded) try {
+			EntityTunnelBore.addMineableBlock(this, COBBL);
+			EntityTunnelBore.addMineableBlock(this, STONE);
+			EntityTunnelBore.addMineableBlock(this, MCOBL);
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override

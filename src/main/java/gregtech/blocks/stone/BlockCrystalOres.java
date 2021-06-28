@@ -26,12 +26,14 @@ import java.util.ArrayList;
 import gregapi.block.BlockBaseMeta;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -60,6 +62,8 @@ public class BlockCrystalOres extends BlockBaseMeta {
 			OM.reg(ST.make(this, 1, i), OP.oreDense.dat(ORE_MATERIALS[i]));
 			if (COMPAT_IC2 != null) COMPAT_IC2.valuable(this, i, 2);
 		}
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override

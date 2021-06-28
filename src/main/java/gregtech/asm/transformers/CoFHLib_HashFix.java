@@ -19,12 +19,14 @@
 
 package gregtech.asm.transformers;
 
-import gregtech.asm.GT_ASM;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
 
+import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 /**
@@ -34,10 +36,7 @@ public class CoFHLib_HashFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!name.equals("cofh.lib.util.ComparableItem") && !name.equals("cofh.lib.util.ItemWrapper")) return basicClass;
-		
-		ClassNode classNode = new ClassNode();
-		ClassReader classReader = new ClassReader(basicClass);
-		classReader.accept(classNode, 0);
+		ClassNode classNode = GT_ASM.makeNodes(basicClass);
 		
 		// Screw that improperly coded Hashcode Function that violates Java Standards and crashes the Game.
 		// Here have some comedy right from the Javadocs of the Class I am fixing with this ASM.
@@ -61,8 +60,6 @@ public class CoFHLib_HashFix implements IClassTransformer {
 			break;
 		}
 		
-		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-		classNode.accept(writer);
-		return writer.toByteArray();
+		return GT_ASM.writeByteArray(classNode);
 	}
 }

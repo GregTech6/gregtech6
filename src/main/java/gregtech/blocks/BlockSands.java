@@ -23,12 +23,14 @@ import static gregapi.data.CS.*;
 
 import gregapi.block.BlockBaseMeta;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.recipes.maps.RecipeMapCrucible;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -47,6 +49,8 @@ public class BlockSands extends BlockBaseMeta {
 		for (byte i = 0; i < maxMeta(); i++) {
 			((RecipeMapCrucible)RM.CrucibleSmelting).getRecipeFor(ST.make(this, 1, i));
 		}
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return T;}

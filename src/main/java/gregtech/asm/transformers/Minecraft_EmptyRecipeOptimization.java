@@ -19,8 +19,6 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -41,11 +39,8 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!transformedName.equals("net.minecraft.item.crafting.CraftingManager")) return basicClass;
-
-		ClassNode classNode = new ClassNode();
-		ClassReader classReader = new ClassReader(basicClass);
-		classReader.accept(classNode, 0);
-
+		ClassNode classNode = GT_ASM.makeNodes(basicClass);
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("findMatchingRecipe") || (m.name.equals("a") && m.desc.equals("(Laae;Lahb;)Ladd;"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.item.crafting.CraftingManager.findMatchingRecipe");
@@ -80,9 +75,7 @@ public class Minecraft_EmptyRecipeOptimization implements IClassTransformer  {
 				//    if(i==0) return null; if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable())
 			}
 		}
-
-		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-		classNode.accept(writer);
-		return writer.toByteArray();
+		
+		return GT_ASM.writeByteArray(classNode);
 	}
 }

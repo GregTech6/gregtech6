@@ -19,9 +19,7 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import gregtech.asm.GT_ASM;
@@ -30,26 +28,16 @@ import net.minecraft.launchwrapper.IClassTransformer;
 /**
  * @author OvermindDL1
  */
-public class CoFHCore_CrashFix implements IClassTransformer {
+public class Railcraft_RemoveBoreSpam implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
-		if (!name.equals("cofh.CoFHCore") && !name.equals("cofh.core.util.FMLEventHandler")) return basicClass;
+		if (!transformedName.equals("mods.railcraft.common.modules.orehandlers.BoreOreHandler")) return basicClass;
 		ClassNode classNode = GT_ASM.makeNodes(basicClass);
 		
-		outer: for (MethodNode m: classNode.methods) {
-//          if (m.name.equals("serverStarting") || m.name.equals("handleIdMappingEvent")) {
-			if (m.name.equals("handleIdMappingEvent")) {
-				GT_ASM.logger.info("Transforming " + transformedName + "." + m.name);
-				for (int i=0; i<m.instructions.size(); i++) {
-					AbstractInsnNode insn = m.instructions.get(i);
-					if (insn instanceof MethodInsnNode) {
-						MethodInsnNode methcall = (MethodInsnNode)insn;
-						if (methcall.owner.equals("cofh/core/util/oredict/OreDictionaryArbiter") && methcall.name.equals("initialize") && methcall.desc.equals("()V")) {
-							m.instructions.remove(methcall);
-							break outer;
-						}
-					}
-				}
+		for (MethodNode m: classNode.methods) {
+			if (m.name.equals("onOreEvent")) {
+				GT_ASM.logger.info("Transforming mods.railcraft.common.modules.orehandlers.BoreOreHandler.onOreEvent");
+				m.instructions.clear();
 			}
 		}
 		

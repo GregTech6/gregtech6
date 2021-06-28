@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import gregapi.block.BlockBaseMeta;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -33,6 +34,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -85,6 +87,8 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 		COMPAT_IC2.valuable(this, 14, 5);
 		COMPAT_IC2.valuable(this, 15, 1);
 		}
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override

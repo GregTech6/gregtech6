@@ -22,9 +22,6 @@ package gregtech.asm.transformers;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import gregtech.asm.GT_ASM;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -35,6 +32,7 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
+import gregtech.asm.GT_ASM;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -50,10 +48,8 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (name.equals("thaumcraft.common.lib.research.ScanManager")) {
-			ClassNode classNode = new ClassNode();
-			ClassReader classReader = new ClassReader(basicClass);
-			classReader.accept(classNode, 0);
-
+			ClassNode classNode = GT_ASM.makeNodes(basicClass);
+			
 			for (MethodNode m : classNode.methods) {
 				if (m.name.equals("generateItemHash")) { // First most costly thing
 					GT_ASM.logger.info("Transforming thaumcraft.common.lib.research.ScanManager.generateItemHash");
@@ -65,7 +61,7 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 					m.instructions.insertBefore(first, new JumpInsnNode(Opcodes.IFEQ, first)); // If 0 jump to label0
 					m.instructions.insertBefore(first, new InsnNode(Opcodes.IRETURN));
 					m.instructions.insert(first, new InsnNode(Opcodes.POP)); // Pop the duplicate possible return value that's actually now 0
-
+					
 					for (AbstractInsnNode node = first.getNext(); node != null; node = node.getNext()) {
 						if (node instanceof InsnNode) {
 							InsnNode ret = (InsnNode) node;
@@ -78,15 +74,12 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 					}
 				}
 			}
-
-			ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-			classNode.accept(writer);
-			return writer.toByteArray();
-		} else if (name.equals("thaumcraft.common.lib.crafting.ThaumcraftCraftingManager")) {
-			ClassNode classNode = new ClassNode();
-			ClassReader classReader = new ClassReader(basicClass);
-			classReader.accept(classNode, 0);
-
+			
+			return GT_ASM.writeByteArray(classNode);
+		}
+		if (name.equals("thaumcraft.common.lib.crafting.ThaumcraftCraftingManager")) {
+			ClassNode classNode = GT_ASM.makeNodes(basicClass);
+			
 			for (MethodNode m : classNode.methods) {
 				if (m.name.equals("getObjectTags")) { // Second most costly thing
 					GT_ASM.logger.info("Transforming thaumcraft.common.lib.crafting.ThaumcraftCraftingManager.getObjectTags");
@@ -97,7 +90,7 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 					m.instructions.insertBefore(first, new JumpInsnNode(Opcodes.IFNULL, first)); // If 0 jump to label0
 					m.instructions.insertBefore(first, new InsnNode(Opcodes.ARETURN));
 					m.instructions.insert(first, new InsnNode(Opcodes.POP)); // Pop the duplicate possible return value that's actually now 0
-
+					
 					for (AbstractInsnNode node = first.getNext(); node != null; node = node.getNext()) {
 						if (node instanceof InsnNode) {
 							InsnNode ret = (InsnNode) node;
@@ -109,13 +102,10 @@ public class Thaumcraft_AspectLagFix implements IClassTransformer {
 					}
 				}
 			}
-
-			ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-			classNode.accept(writer);
-			return writer.toByteArray();
-		} else {
-			return basicClass;
+			
+			return GT_ASM.writeByteArray(classNode);
 		}
+		return basicClass;
 	}
 
 	private static HashMap<Item, IntHashMap> cacheItemHash = new HashMap<>();

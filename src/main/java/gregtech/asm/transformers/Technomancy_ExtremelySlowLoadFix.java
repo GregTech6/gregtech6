@@ -19,14 +19,12 @@
 
 package gregtech.asm.transformers;
 
-import gregtech.asm.GT_ASM;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
+import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 /* Technomancy's ore dict processing step takes like 20 minutes on my computer to load with my modpack because it
@@ -47,11 +45,8 @@ public class Technomancy_ExtremelySlowLoadFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!name.equals("theflogat.technomancy.util.Ore")) return basicClass;
-
-		ClassNode classNode = new ClassNode();
-		ClassReader classReader = new ClassReader(basicClass);
-		classReader.accept(classNode, 0);
-
+		ClassNode classNode = GT_ASM.makeNodes(basicClass);
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("init") && m.desc.equals("()V")) {
 				GT_ASM.logger.info("Transforming theflogat.technomancy.util.Ore.init");
@@ -59,9 +54,7 @@ public class Technomancy_ExtremelySlowLoadFix implements IClassTransformer {
 				m.instructions.insert(new InsnNode(Opcodes.RETURN));
 			}
 		}
-
-		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-		classNode.accept(writer);
-		return writer.toByteArray();
+		
+		return GT_ASM.writeByteArray(classNode);
 	}
 }

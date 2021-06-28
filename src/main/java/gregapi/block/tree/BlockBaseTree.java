@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,12 @@
 
 package gregapi.block.tree;
 
+import static gregapi.data.CS.*;
+
 import gregapi.block.BlockBaseMeta;
+import gregapi.data.MD;
 import gregapi.render.IIconContainer;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -32,6 +36,7 @@ import net.minecraft.world.World;
 public abstract class BlockBaseTree extends BlockBaseMeta {
 	public BlockBaseTree(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, aMaxMeta, aIcons);
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	public abstract int getLeavesRangeSide(byte aMeta);

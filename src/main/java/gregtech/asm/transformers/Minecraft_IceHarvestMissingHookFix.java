@@ -19,7 +19,6 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -38,11 +37,8 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!transformedName.equals("net.minecraft.block.BlockIce")) return basicClass;
-
-		ClassNode classNode = new ClassNode();
-		ClassReader classReader = new ClassReader(basicClass);
-		classReader.accept(classNode, 0);
-
+		ClassNode classNode = GT_ASM.makeNodes(basicClass);
+		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("harvestBlock") || (m.name.equals("a") && m.desc.equals("(Lahb;Lyz;IIII)V"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.block.BlockIce.harvestBlock");
@@ -70,7 +66,7 @@ public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
 				m.instructions.insertBefore(label, end);
 			}
 		}
-
+		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
 			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..
 			// And can't even use the correct classloader here because the forge remapping hadn't been done yet.

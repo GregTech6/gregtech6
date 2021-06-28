@@ -33,6 +33,7 @@ import gregapi.block.ToolCompat;
 import gregapi.block.behaviors.Drops;
 import gregapi.code.ModData;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -54,6 +55,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.ITileEntityProvider;
@@ -216,6 +218,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
 		if (COMPAT_IC2 != null && mPrefix.contains(TD.Prefix.ORE) && mBaseHardness >= 0) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
+		
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		if (mOpaque) VISUALLY_OPAQUE_BLOCKS.add(this);
 		mDrops = aDrops==null?new Drops(this, this, this, this, F, F, 0, 0):aDrops;

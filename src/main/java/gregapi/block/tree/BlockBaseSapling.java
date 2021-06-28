@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,11 +27,13 @@ import java.util.Random;
 import cpw.mods.fml.common.Optional;
 import gregapi.block.BlockBaseMeta;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.BlockTallGrass;
@@ -63,6 +65,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setTickRandomly(T);
 		setHardness(0);
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	public abstract boolean grow(World aWorld, int aX, int aY, int aZ, byte aMeta, Random aRandom);

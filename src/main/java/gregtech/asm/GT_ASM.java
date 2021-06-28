@@ -25,7 +25,9 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
@@ -46,6 +48,7 @@ import gregtech.asm.transformers.Minecraft_EmptyRecipeOptimization;
 import gregtech.asm.transformers.Minecraft_IceHarvestMissingHookFix;
 import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
 import gregtech.asm.transformers.Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix;
+import gregtech.asm.transformers.Railcraft_RemoveBoreSpam;
 import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
 import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
 import net.minecraft.launchwrapper.LaunchClassLoader;
@@ -105,6 +108,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
+			transformers.put(Railcraft_RemoveBoreSpam.class.getName(), true);
 			transformers.put(Minecraft_EmptyRecipeOptimization.class.getName(), true);
 			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
@@ -214,5 +218,18 @@ public class GT_ASM implements IFMLLoadingPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static byte[] writeByteArray(ClassNode aClassNode) {
+		ClassWriter rWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+		aClassNode.accept(rWriter);
+		return rWriter.toByteArray();
+	}
+	
+	public static ClassNode makeNodes(byte[] aBasicClass) {
+		ClassNode rClassNode = new ClassNode();
+		ClassReader classReader = new ClassReader(aBasicClass);
+		classReader.accept(rClassNode, 0);
+		return rClassNode;
 	}
 }

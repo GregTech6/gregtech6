@@ -29,11 +29,13 @@ import gregapi.block.IBlockBase;
 import gregapi.block.ItemBlockBase;
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.MD;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
+import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.IGrowable;
@@ -75,6 +77,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		setBlockName(mNameInternal = aNameInternal);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		ST.register(this, mNameInternal, aItemClass);
+		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}

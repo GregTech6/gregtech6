@@ -183,7 +183,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			long tConversions = Math.min(mTanks[1].capacity() / 2560, Math.min(mEnergy / 80, mTanks[0].amount()));
 			if (tConversions > 0) {
 				mTanks[0].remove(tConversions);
-				if (rng(10) == 0 && mEfficiency > 5000 && !FL.distw(mTanks[0])) {
+				if (rng(10) == 0 && mEfficiency > 5000 && mTanks[0].has() && !FL.distw(mTanks[0])) {
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
