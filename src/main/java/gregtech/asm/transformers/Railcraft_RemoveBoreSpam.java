@@ -19,7 +19,9 @@
 
 package gregtech.asm.transformers;
 
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import gregtech.asm.GT_ASM;
@@ -38,6 +40,7 @@ public class Railcraft_RemoveBoreSpam implements IClassTransformer  {
 			if (m.name.equals("onOreEvent")) {
 				GT_ASM.logger.info("Transforming mods.railcraft.common.modules.orehandlers.BoreOreHandler.onOreEvent");
 				m.instructions.clear();
+				m.instructions.insert(new InsnNode(Opcodes.RETURN));
 			}
 		}
 		
