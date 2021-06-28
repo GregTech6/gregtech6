@@ -109,7 +109,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.glass_pane, 8, 0), DEF, "XXX", 'X', OP.plateGem.dat(MT.Glass));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Gold.Clock", T)) {
-			CR.shaped(ST.make(Items.clock, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "sGr", "CRC", "dPh", 'P', OP.plate.dat(MT.Au), 'C', OP.plateCurved.dat(MT.Au), 'R', OP.gem.dat(MT.Redstone), 'G', OP.gearGtSmall.dat(MT.Au));
+			CR.shaped(ST.make(Items.clock, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "sGr", "CQC", "dPR", 'P', OP.plate.dat(MT.Au), 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Au), 'Q', OD.craftingQuartz, 'G', OP.gearGtSmall.dat(MT.Au));
 		} else {
 			CR.shaped(ST.make(Items.clock, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, " X ", "XRX", " X ", 'X', OP.ingot.dat(MT.Au), 'R', OD.itemRedstone);
 		}
