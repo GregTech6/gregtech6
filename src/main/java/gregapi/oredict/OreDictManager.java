@@ -355,7 +355,7 @@ public final class OreDictManager {
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
 		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
-		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe(OD.woodLog, ST.copyMeta(i, aEvent.Ore)); else registerOreSafe(OD.woodLog, aEvent.Ore);
+		if (aEvent.Name.startsWith("log") && ST.block(aEvent.Ore) != NB) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
 		
 		//ORD.println(aModID + " → " + aRegName + " → " + aEvent.Name);
 		
