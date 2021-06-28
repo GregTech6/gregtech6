@@ -55,7 +55,6 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -366,8 +365,6 @@ public final class OreDictManager {
 		if (!ST.isGT(aEvent.Ore)) {
 			// Another Mod registered something, maybe that makes a Material visible!
 			triggerVisibility(aEvent.Name);
-			// Railcraft Bore Registration.
-			if (MD.RC.mLoaded && aEvent.Name.startsWith("ore") && ST.block(aEvent.Ore) != NB) try {EntityTunnelBore.addMineableBlock(ST.block(aEvent.Ore));} catch(Throwable e) {e.printStackTrace(ERR);}
 		}
 		
 		if (aEvent.Name.contains(" ")) {

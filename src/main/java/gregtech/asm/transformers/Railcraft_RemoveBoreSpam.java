@@ -28,7 +28,7 @@ import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 /**
- * @author OvermindDL1
+ * @author Gregorius Techneticies
  */
 public class Railcraft_RemoveBoreSpam implements IClassTransformer  {
 	@Override

@@ -38,6 +38,7 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -148,6 +149,14 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		
 		
 		
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(TD.Prefix.ORE)) tPrefix.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.isGT(aEvent.mStack)) return;
+			Block tBlock = ST.block(aEvent.mStack);
+			if (tBlock != NB) try {
+				short tMeta = ST.meta(aEvent.mStack);
+				EntityTunnelBore.addMineableBlock(tBlock, tMeta >= 16 ? -1 : tMeta);
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+		}});
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener(new Object[] {OP.stone, OP.cobblestone, OP.treeSapling, OP.treeLeaves, OP.log}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -155,7 +164,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 			Block tBlock = ST.block(aEvent.mStack);
 			if (tBlock != NB) try {
 				short tMeta = ST.meta(aEvent.mStack);
-				EntityTunnelBore.addMineableBlock(tBlock, tMeta == W || tMeta >= 16 ? -1 : tMeta);
+				EntityTunnelBore.addMineableBlock(tBlock, tMeta >= 16 ? -1 : tMeta);
 			} catch(Throwable e) {e.printStackTrace(ERR);}
 		}});
 		addListener(OD.itemClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -165,6 +174,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 			RM.LaserEngraver.addRecipe2(T, 16, 2048, OP.gem.mat(MT.Firestone, 1), ST.amount(0, aEvent.mStack), IL.RC_Firestone_Cut.get(1));
 		}});
 		}};
+		
 		
 		
 		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Ag      , 4), OP.dust     .mat(MT.Redstone, 1)), IL.RC_Rail_Adv.get(4));

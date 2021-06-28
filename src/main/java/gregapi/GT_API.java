@@ -81,7 +81,6 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
-import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -185,7 +184,6 @@ public class GT_API extends Abstract_Mod {
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
-		OD.stickWood.toString();
 		MT.init();
 		BI.BAROMETER.toString();
 		OP.ore.toString();
