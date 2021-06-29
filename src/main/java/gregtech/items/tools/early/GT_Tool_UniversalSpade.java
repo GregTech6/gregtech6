@@ -88,20 +88,10 @@ public class GT_Tool_UniversalSpade extends ToolStats {
 		return 1.0F;
 	}
 	
-	@Override
-	public boolean canBlock() {
-		return T;
-	}
-	
-	@Override
-	public boolean isCrowbar() {
-		return T;
-	}
-	
-	@Override
-	public boolean isWeapon() {
-		return T;
-	}
+	@Override public boolean canCollect()                                                   {return T;}
+	@Override public boolean canBlock()                                                     {return T;}
+	@Override public boolean isCrowbar()                                                    {return T;}
+	@Override public boolean isWeapon()                                                     {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

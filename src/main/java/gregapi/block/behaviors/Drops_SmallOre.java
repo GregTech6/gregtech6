@@ -67,9 +67,9 @@ public class Drops_SmallOre extends Drops {
 					rList.add(ST.update(tStack));
 				} else {
 					ArrayList<ItemStack> tSelector = new ArrayListNoNulls<>();
-					tStack = OP.gemExquisite.mat(aMaterial, OP.gem.mat(aMaterial, 1), 1);
+					tStack = OP.gemExquisite.mat(aMaterial, OP.gem.mat(aMaterial, 4), 1);
 					if (tStack != null) for (int i = 0, j = (aSilkTouch? 3: 1); i < j; i++) tSelector.add(tStack);
-					tStack = OP.gemFlawless.mat(aMaterial, OP.gem.mat(aMaterial, 1), 1);
+					tStack = OP.gemFlawless.mat(aMaterial, OP.gem.mat(aMaterial, 2), 1);
 					if (tStack != null) for (int i = 0, j = (aSilkTouch? 6: 2); i < j; i++) tSelector.add(tStack);
 					tStack = OP.gem.mat(aMaterial, 1);
 					if (tStack != null) for (int i = 0, j = (aSilkTouch? 6:12); i < j; i++) tSelector.add(tStack);

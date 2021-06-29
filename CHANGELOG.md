@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Treecapitation now works Top Down instead of Bottom Up
 [CHANGED] The Sluice now outputs less Byproducts and more of the Main Product, if the Byproduct List is too short to fill the entire Output.
 [CHANGED] Path Blocks will get a Slab Shape when you go downhill.
+[CHANGED] Meteoric Iron/Steel has far better Durability now, comparable to Blue Steel and Damascus Steel. This enables both, a way to use the new Big Meteorites, and having the Magnetic ability on more Tools.
 [ADDED] By rightclicking an already OPEN Keybased Safe with a Blank Key, you can now copy that Safe's Key ID.
 [ADDED] Niter Veins can now spawn in Deserts near the Surface.
 

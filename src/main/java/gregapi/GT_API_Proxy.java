@@ -711,7 +711,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if ("Bear989Sr".equalsIgnoreCase(aEvent.player.getCommandSenderName())) {
 						if (tCraponite > 0) {
 							// Crazy started to give Bear her Craponite Arrows, lets not let him have those.
-							aEvent.player.addPotionEffect(new PotionEffect(Potion.hunger.id, 140, tCraponite-1, T));
+							aEvent.player.addPotionEffect(new PotionEffect(Potion.jump.id, 1400, Math.max(10, tCraponite*5-1), T));
 						}
 						if (--BEAR_INVENTORY_COOL_DOWN < 0 && tEmptySlots < 4) {
 							BEAR_INVENTORY_COOL_DOWN = 100;
