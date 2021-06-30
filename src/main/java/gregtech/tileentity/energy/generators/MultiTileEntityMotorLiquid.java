@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.TagData;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -152,6 +153,11 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		if (rReturn > 0) return rReturn;
 		
 		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_plunger)) {
+			if (mTanks[1].has()) return GarbageGT.trash(mTanks[1]);
+			return GarbageGT.trash(mTanks[0]);
+		}
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {

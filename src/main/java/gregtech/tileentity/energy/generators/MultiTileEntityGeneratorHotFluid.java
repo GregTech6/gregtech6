@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -164,6 +165,11 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		if (rReturn > 0) return rReturn;
 		
 		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_plunger)) {
+			if (mTanks[1].has()) return GarbageGT.trash(mTanks[1]);
+			return GarbageGT.trash(mTanks[0]);
+		}
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {

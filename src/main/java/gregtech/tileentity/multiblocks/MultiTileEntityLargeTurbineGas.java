@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -30,6 +31,8 @@ import gregapi.fluid.FluidTankGT;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -81,6 +84,23 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	@Override
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		mEnergyOUT.addToolTips(aList, aStack, aF3_H, null, T);
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0) return rReturn;
+		
+		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_plunger)) {
+			if (mTanksOutput[0].has()) return GarbageGT.trash(mTanksOutput[0]);
+			if (mTanksOutput[1].has()) return GarbageGT.trash(mTanksOutput[1]);
+			if (mTanksOutput[2].has()) return GarbageGT.trash(mTanksOutput[2]);
+			return GarbageGT.trash(mInputTank);
+		}
+		
+		return 0;
 	}
 	
 	@Override

@@ -25,11 +25,14 @@ import java.util.List;
 
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -117,6 +120,21 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTipsEnergy(aList, aStack, aF3_H);
 		aList.add(Chat.ORANGE   + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 95%)");
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0) return rReturn;
+		
+		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_plunger)) {
+			if (mTanks[0].has()) return GarbageGT.trash(mTanks[0]);
+			return GarbageGT.trash(mTanks[1]);
+		}
+		
+		return 0;
 	}
 	
 	@Override

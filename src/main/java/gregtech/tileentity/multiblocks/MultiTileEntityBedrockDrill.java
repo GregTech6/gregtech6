@@ -30,6 +30,7 @@ import gregapi.code.TagData;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.FluidsGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -51,7 +52,9 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -223,6 +226,18 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				}
 			}
 		}
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0) return rReturn;
+		
+		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTank);
+		
+		return 0;
 	}
 	
 	@Override

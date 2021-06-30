@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -177,6 +178,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		
 		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; mCooldown = 100; return 10000;}
 		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; mCooldown =   0; return 10000;}
+		
+		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTank);
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) aChatReturn.add(mTank.content());

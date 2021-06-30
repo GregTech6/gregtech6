@@ -158,7 +158,10 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks[0]);
+		if (aTool.equals(TOOL_plunger)) {
+			if (mTanks[0].has()) return GarbageGT.trash(mTanks[0]);
+			return GarbageGT.trash(mTanks[1]);
+		}
 		if (aTool.equals(TOOL_chisel)) {
 			int rResult = 10000 - mEfficiency;
 			if (rResult > 0) {
