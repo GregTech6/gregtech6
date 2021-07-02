@@ -2944,6 +2944,9 @@ public class UT {
 		public static boolean send(World aWorld, String aSoundName, float aSoundStrength, float aSoundModulation, int aX, int aY, int aZ) {
 			return send(aWorld, aSoundName, aSoundStrength, aSoundModulation, new ChunkCoordinates(aX, aY, aZ));
 		}
+		public static boolean send(String aSoundName, World aWorld, ChunkCoordinates aCoords) {
+			return send(aWorld, aSoundName, 1.0F, 1.0F, aCoords);
+		}
 		public static boolean send(String aSoundName, TileEntity aTileEntity) {
 			return send(aTileEntity.getWorldObj(), aSoundName, 1.0F, 1.0F, aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);
 		}

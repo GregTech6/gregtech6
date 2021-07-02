@@ -113,7 +113,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	 */
 	public final ItemStack addTool(int aID, String aEnglish, String aToolTip, IToolStats aToolStats, Object... aRandomParameters) {
 		if (aToolTip == null) aToolTip = "";
-		if (aID >= 0 && aID < 32766 && aID % 2 == 0) {
+		if (aID >= 0 && aID < 32766 && isUsableMeta((short)aID)) {
 			LH.add(getUnlocalizedName() + "." +  aID    + ".name"       , aEnglish);
 			LH.add(getUnlocalizedName() + "." +  aID    + ".tooltip"    , aToolTip);
 			LH.add(getUnlocalizedName() + "." + (aID+1) + ".name"       , aEnglish + " (Empty)");
@@ -366,7 +366,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aNBT != null) {
 			aNBT = aNBT.getCompoundTag("GT.ToolStats");
 			if (aNBT != null) {
-				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 64, ST.make(this, 1, getEmptyMetaData(aStack)), ST.make(this, 1, getChargedMetaData(aStack)), ST.make(this, 1, getChargedMetaData(aStack)));
+				if (aNBT.getBoolean("e")) return EnergyStat.makeTool(TD.Energy.EU, aNBT.getLong("f"), aNBT.getLong("g"), 64, ST.make(this, 1, getUnusableMeta(aStack)), ST.make(this, 1, getUsableMeta(aStack)), ST.make(this, 1, getUsableMeta(aStack)));
 			}
 		}
 		return null;
@@ -411,7 +411,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
 		if (!isItemStackUsable(aStack)) return F;
 		IItemEnergy tElectric = getEnergyStats(aStack);
-		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack).mToolQuality * 20)) == 0) {
+		if (tElectric == null || RNGSUS.nextInt(Math.max(10, getPrimaryMaterial(aStack).mToolQuality * 20)) == 0) {
 			long tNewDamage = getToolDamage(aStack) + aAmount;
 			setToolDamage(aStack, tNewDamage);
 			if (aAllowBreaking && tNewDamage >= getToolMaxDamage(aStack)) {
@@ -421,17 +421,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				} else {
 					if (TOOL_SOUNDS) {
 						if (aPlayer == null) {
-							if (LAST_TOOL_COORDS_BEFORE_DAMAGE == null) {
-								UT.Sounds.play(tStats.getBreakingSound(), 200, 1);
-							} else {
-								UT.Sounds.play(tStats.getBreakingSound(), 200, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
-								LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
-							}
+							UT.Sounds.play(tStats.getBreakingSound(), 200, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
 						} else {
 							UT.Sounds.play(tStats.getBreakingSound(), 200, 1, aPlayer);
-							LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
 						}
 					}
+					LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
 					ItemStack tBroken = tStats.getBrokenItem(aStack);
 					if (ST.invalid(tBroken) || tBroken.stackSize <= 0) {
 						ST.use(aPlayer, T, aStack);
@@ -505,22 +500,21 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public ItemStack getContainerItem(ItemStack aStack) {
-		if (!isItemStackUsable(aStack)) return null;
-		aStack = ST.amount(1, aStack);
+		if (!isUsableMeta(aStack)) return null;
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return null;
+		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getCraftingSound(), 200, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
+		aStack = ST.amount(1, aStack);
 		doDamage(aStack, tStats.getToolDamagePerContainerCraft(), null, T);
-		aStack = aStack.stackSize > 0 ? aStack : null;
-		if (TOOL_SOUNDS && aStack != null && LAST_TOOL_COORDS_BEFORE_DAMAGE != null) UT.Sounds.play(tStats.getCraftingSound(), 200, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
-		return aStack;
+		return aStack.stackSize > 0 ? aStack : null;
 	}
 	
 	@Override
 	public boolean hasContainerItem(ItemStack aStack) {
-		if (!isItemStackUsable(aStack)) return F;
-		aStack = ST.amount(1, aStack);
+		if (!isUsableMeta(aStack)) return F;
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return F;
+		aStack = ST.amount(1, aStack);
 		doDamage(aStack, tStats.getToolDamagePerContainerCraft(), null, T);
 		return aStack.stackSize > 0;
 	}
@@ -539,13 +533,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT == null) return T;
 		
-		short aMeta = ST.meta_(aStack);
-		if (aMeta % 2 == 1) {
+		if (!isUsableMeta(aStack)) {
 			aNBT.removeTag("ench");
 			return F;
 		}
 		
-		IToolStats tStats = getToolStatsInternal(aMeta);
+		IToolStats tStats = getToolStatsInternal(aStack);
 		if (tStats == null || !super.isItemStackUsable(aStack)) {
 			aNBT.removeTag("ench");
 			return F;
@@ -616,12 +609,23 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return T;
 	}
 	
-	public short getChargedMetaData(ItemStack aStack) {
-		return (short)(ST.meta_(aStack) - (ST.meta_(aStack) % 2));
+	public boolean isUsableMeta(short aMeta) {
+		return aMeta % 2 == 0;
 	}
-	
-	public short getEmptyMetaData(ItemStack aStack) {
-		return (short)(ST.meta_(aStack)+1-(ST.meta_(aStack) % 2));
+	public boolean isUsableMeta(ItemStack aStack) {
+		return isUsableMeta(ST.meta(aStack));
+	}
+	public short getUsableMeta(short aMeta) {
+		return (short)(aMeta  -(aMeta % 2));
+	}
+	public short getUsableMeta(ItemStack aStack) {
+		return getUsableMeta(ST.meta(aStack));
+	}
+	public short getUnusableMeta(short aMeta) {
+		return (short)(aMeta+1-(aMeta % 2));
+	}
+	public short getUnusableMeta(ItemStack aStack) {
+		return getUnusableMeta(ST.meta(aStack));
 	}
 	
 	@Override

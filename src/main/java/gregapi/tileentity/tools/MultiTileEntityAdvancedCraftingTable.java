@@ -113,6 +113,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		mUpdatedGrid = T; // Just in case someone like Greg used NEI or something to delete all Slots or so.
 		if (aPlayer != null) {
 			aPlayer.triggerAchievement(AchievementList.openInventory);
 			aPlayer.triggerAchievement(AchievementList.mineWood);
@@ -125,6 +126,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		mUpdatedGrid = T; // Just in case someone like Greg used NEI or something to delete all Slots or so.
 		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (aTool.equals(TOOL_monkeywrench)) {
 			if (SIDES_TOP[aSide]) {
