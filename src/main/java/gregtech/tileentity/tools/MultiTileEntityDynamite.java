@@ -82,7 +82,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		aList.add(LH.Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTRANGE) + LH.Chat.WHITE + "3x3x3");
 		if (mFortune > 0)
 		aList.add(LH.Chat.PINK     + LH.get(LH.TOOLTIP_BLASTFORTUNE) + LH.Chat.WHITE + mFortune);
-		aList.add(LH.Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(LH.Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE));
 		aList.add(LH.Chat.RED      + LH.get(LH.TOOLTIP_EXPLOSIVE));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
