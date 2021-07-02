@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,11 +67,10 @@ public class BlockConcrete extends BlockColored implements IBlockToolable {
 		if (aTool.equals(TOOL_drill)) {
 			if (mBlock == this && aPlayer instanceof EntityPlayer) {
 				for (int i = 0; i < ((EntityPlayer)aPlayer).inventory.mainInventory.length; i++) {
-					int tIndex = ((EntityPlayer)aPlayer).inventory.mainInventory.length-i-1;
-					ItemStack tStack = ((EntityPlayer)aPlayer).inventory.mainInventory[tIndex];
+					ItemStack tStack = ((EntityPlayer)aPlayer).inventory.mainInventory[((EntityPlayer)aPlayer).inventory.mainInventory.length-i-1];
 					if (OM.is("stickAnyIronOrSteel", tStack)) {
 						if (WD.set(aWorld, aX, aY, aZ, BlocksGT.ConcreteReinforced, WD.meta(aWorld, aX, aY, aZ), 3)) {
-							ST.use(aPlayer, tIndex, tStack);
+							ST.use(aPlayer, T, tStack);
 							return 10000;
 						}
 						break;

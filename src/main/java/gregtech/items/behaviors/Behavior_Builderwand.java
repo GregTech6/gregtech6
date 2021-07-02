@@ -56,8 +56,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 			if (!aPlayer.canPlayerEdit(aX+tX+OFFSETS_X[aSide], aY+tY+OFFSETS_Y[aSide], aZ+tZ+OFFSETS_Z[aSide], aSide, aStack)) continue;
 			// Scan Inventory for equal Blocks.
 			for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-				int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-				ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+				ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 				if (ST.invalid(tStack)) continue;
 				Block tBlock = ST.block(tStack);
 				if (ST.invalid(tBlock)) {
@@ -86,7 +85,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 					if (UT.Entities.hasInfiniteItems(aPlayer)) {
 						tStack.stackSize = tOldSize;
 					} else {
-						ST.use(aPlayer, tIndex, tStack, 0);
+						ST.use(aPlayer, T, tStack, 0);
 						((MultiItemTool)aItem).doDamage(aStack, 1, aPlayer);
 					}
 					rReturn = T;

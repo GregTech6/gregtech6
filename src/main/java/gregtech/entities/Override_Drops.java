@@ -112,7 +112,7 @@ public class Override_Drops {
 			, IL.Food_Can_Meat_5.get(1+RNGSUS.nextInt(2))
 			, IL.Food_Can_Fish_4.get(1+RNGSUS.nextInt(2))
 			, IL.Food_Can_Chum_4.get(1+RNGSUS.nextInt(2))
-			, IL.Dynamite.get(1+RNGSUS.nextInt(2))
+			, IL.Dynamite.get(1+RNGSUS.nextInt(6))
 			)));
 			}
 			
@@ -330,7 +330,7 @@ public class Override_Drops {
 			if (RNGSUS.nextInt( 2) == 0) aDrops.add(ST.entity(aDead, ST.make(Items.flint, 1, 0)));
 			if (RNGSUS.nextInt( 3) == 0) aDrops.add(ST.entity(aDead, IL.Stick.get(1)));
 			if (RNGSUS.nextInt( 5) == 0) aDrops.add(ST.entity(aDead, IL.Tool_Matches.get(1+RNGSUS.nextInt(4))));
-			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, IL.Dynamite.get(1+RNGSUS.nextInt(4))));
+			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, IL.Dynamite.get(1+RNGSUS.nextInt(8))));
 			
 			if (tRandomNumber == 0) {
 			aDrops.add(ST.entity(aDead, UT.Code.select(ST.make(Items.name_tag, 1, 0)

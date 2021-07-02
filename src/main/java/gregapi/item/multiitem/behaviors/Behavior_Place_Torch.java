@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,8 +40,7 @@ public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 		if (WD.liquid(WD.block(aWorld, aX, aY, aZ, aSide))) return F;
 		// Scan Inventory for suitable Torches.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 			if (ST.invalid(tStack) || !ST.torch(tStack)) continue;
 			if (WD.grass(aWorld, aX, aY, aZ)) {aSide = SIDE_TOP; aWorld.setBlockToAir(aX, aY--, aZ);}
 			
@@ -50,7 +49,7 @@ public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 				if (UT.Entities.hasInfiniteItems(aPlayer)) {
 					tStack.stackSize = tOldSize;
 				} else {
-					ST.use(aPlayer, tIndex, tStack, 0);
+					ST.use(aPlayer, T, tStack, 0);
 				}
 				return T;
 			}

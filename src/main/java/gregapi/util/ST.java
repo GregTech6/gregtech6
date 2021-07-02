@@ -279,30 +279,30 @@ public class ST {
 	}
 	
 	public static boolean use(Entity aPlayer, ItemStack aStack) {
-		return use(aPlayer, -1, aStack, 1);
+		return use(aPlayer, F, aStack, 1);
 	}
 	public static boolean use(Entity aPlayer, ItemStack aStack, long aAmount) {
-		return use(aPlayer, -1, aStack, aAmount);
+		return use(aPlayer, F, aStack, aAmount);
 	}
-	public static boolean use(Entity aPlayer, int aIndex, ItemStack aStack) {
-		return use(aPlayer, aIndex, aStack, 1);
+	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack) {
+		return use(aPlayer, aRemove, aStack, 1);
 	}
-	public static boolean use(Entity aPlayer, int aIndex, ItemStack aStack, long aAmount) {
+	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
-		if (aStack.stackSize >= aAmount) {
-			aStack.stackSize -= aAmount;
-			if (aPlayer instanceof EntityPlayer) {
-				if (aStack.stackSize <= 0) {
-					ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
-					if (aIndex >= 0 && aIndex < ((EntityPlayer)aPlayer).inventory.mainInventory.length) {
-						((EntityPlayer)aPlayer).inventory.mainInventory[aIndex] = null;
-					}
+		if (aStack.stackSize < aAmount) return F;
+		aStack.stackSize -= aAmount;
+		if (!(aPlayer instanceof EntityPlayer)) return T;
+		if (aStack.stackSize <= 0) {
+			ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
+			if (aRemove) for (int i = 0; i < ((EntityPlayer)aPlayer).inventory.mainInventory.length; i++) {
+				if (((EntityPlayer)aPlayer).inventory.mainInventory[i] == aStack) {
+					((EntityPlayer)aPlayer).inventory.mainInventory[i] = null;
+					break;
 				}
-				ST.update(aPlayer);
 			}
-			return T;
 		}
-		return F;
+		ST.update(aPlayer);
+		return T;
 	}
 	
 	public static ItemStack[] copyArray(ItemStack... aStacks) {

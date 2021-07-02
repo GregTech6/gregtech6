@@ -438,7 +438,7 @@ public class GT6_Main extends Abstract_Mod {
 		  IL.Ceramic_Mold.getWithName(1, "Don't forget to shape the Mold to pour it")
 		, IL.Ceramic_Crucible.getWithName(1, "Wait until it all turns into Steel")
 		, ST.make(aRegistry.getItem(1302), "Point a running Engine into the Crucible to blow Air")
-		, ST.make(OP.ingot.mat(MT.Fe, 1), "Throw Iron into Crucible")
+		, ST.make(OP.ingot.mat(MT.Fe, 1), "Throw some Iron into Crucible. Do not forget to leave space for Air!")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
 		, ST.make(OP.ingot.mat(MT.WroughtIron, 1), "Or throw Wrought Iron into the Crucible, either works")
 		), ST.array(OP.dust.mat(MT.Steel, 1), OP.ingot.mat(MT.Steel, 1), OP.plate.mat(MT.Steel, 1), OP.scrapGt.mat(MT.Steel, 1), OP.stick.mat(MT.Steel, 1), OP.gearGt.mat(MT.Steel, 1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);

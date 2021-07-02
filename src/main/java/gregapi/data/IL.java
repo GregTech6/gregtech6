@@ -435,7 +435,7 @@ public enum IL implements IItemContainer {
 	Ingot_IridiumAlloy,
 	Dye_SquidInk, Dye_Bonemeal, Dye_Cactus, Dye_Cocoa,
 	Tape,Tape_Used, Duct_Tape, Duct_Tape_Used, Brain_Tape, Brain_Tape_Used,
-	Dynamite, Dynamite_Strong,
+	Gunpowder_Stick, Dynamite, Dynamite_Strong,
 	Paper_Blueprint_Empty, Paper_Blueprint_Used,
 	Paper_Printed_Pages, Paper_Printed_Pages_Many,
 	Paper_Magic_Empty, Paper_Magic_Page, Paper_Magic_Pages,

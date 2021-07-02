@@ -39,8 +39,7 @@ public class Behavior_Place_Sapling extends AbstractBehaviorDefault {
 		
 		// Scan Inventory for suitable Saplings.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 			// Any OreDict Saplings.
 			if (!OP.treeSapling.contains(tStack)) continue;
 			
@@ -49,7 +48,7 @@ public class Behavior_Place_Sapling extends AbstractBehaviorDefault {
 				if (UT.Entities.hasInfiniteItems(aPlayer)) {
 					tStack.stackSize = tOldSize;
 				} else {
-					ST.use(aPlayer, tIndex, tStack, 0);
+					ST.use(aPlayer, T, tStack, 0);
 				}
 				return T;
 			}

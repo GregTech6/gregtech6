@@ -46,8 +46,7 @@ public class Behavior_Place_Workbench extends AbstractBehaviorDefault {
 		if (aBlock.isWood(aWorld, aX, aY, aZ) || aBlock.isLeaves(aWorld, aX, aY, aZ)) return F;
 		// Scan Inventory for suitable Workbenches.
 		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 			if (!OD.craftingWorkBench.is(tStack)) continue;
 			
 			int tOldSize = tStack.stackSize;
@@ -55,7 +54,7 @@ public class Behavior_Place_Workbench extends AbstractBehaviorDefault {
 				if (UT.Entities.hasInfiniteItems(aPlayer)) {
 					tStack.stackSize = tOldSize;
 				} else {
-					ST.use(aPlayer, tIndex, tStack, 0);
+					ST.use(aPlayer, T, tStack, 0);
 				}
 				return T;
 			}

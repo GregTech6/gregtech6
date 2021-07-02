@@ -49,8 +49,7 @@ public class Behavior_Plug_Leak extends AbstractBehaviorDefault {
 			if (!WD.liquid(WD.block(aWorld, aX+OFFSETS_X[aSide]+OFFSETS_X[tSide], aY+OFFSETS_Y[aSide]+OFFSETS_Y[tSide], aZ+OFFSETS_Z[aSide]+OFFSETS_Z[tSide]))) continue;
 			// Scan Inventory for suitable Items.
 			for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-				int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-				ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
+				ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 				if (ST.invalid(tStack)) continue;
 				Block tBlock = ST.block(tStack);
 				// The Block has to be Opaque to ensure the Leak is plugged.
@@ -71,7 +70,7 @@ public class Behavior_Plug_Leak extends AbstractBehaviorDefault {
 					if (UT.Entities.hasInfiniteItems(aPlayer)) {
 						tStack.stackSize = tOldSize;
 					} else {
-						ST.use(aPlayer, tIndex, tStack, 0);
+						ST.use(aPlayer, T, tStack, 0);
 					}
 					return T;
 				}

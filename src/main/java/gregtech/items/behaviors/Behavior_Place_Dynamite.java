@@ -44,9 +44,8 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		if (WD.ore_stone(aWorld.getBlock(aX, aY, aZ), (short)aWorld.getBlockMetadata(aX, aY, aZ))) for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-			int tIndex = aPlayer.inventory.mainInventory.length-i-1;
-			ItemStack tStack = aPlayer.inventory.mainInventory[tIndex];
-			if (IL.Dynamite.equal(tStack, F, T) || IL.Dynamite_Strong.equal(tStack, F, T)) {
+			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
+			if (IL.Gunpowder_Stick.equal(tStack, F, T) || IL.Dynamite.equal(tStack, F, T) || IL.Dynamite_Strong.equal(tStack, F, T)) {
 				NBTTagCompound tOldTag = tStack.getTagCompound();
 				if (tStack.hasTagCompound()) {
 					tStack.setTagCompound((NBTTagCompound)tStack.getTagCompound().copy());
@@ -60,7 +59,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 						tStack.stackSize = tOldSize;
 					} else {
 						((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer);
-						ST.use(aPlayer, tIndex, tStack, 0);
+						ST.use(aPlayer, T, tStack, 0);
 					}
 					tStack.setTagCompound(tOldTag);
 					// Add Dynamite Coords to Remote Activator if in Hotbar.

@@ -120,6 +120,8 @@ public class LH {
 	, COVER_TOOLTIP = "gt.lang.cover.tooltip"
 	, TOOL_TO_SET_FACING_PRE = "gt.lang.use.x.to.toggle.facing.pre"
 	, TOOL_TO_SET_FACING_POST = "gt.lang.use.x.to.toggle.facing.post"
+	, TOOL_TO_SET_FACING2_PRE = "gt.lang.use.x.to.toggle.facing2.pre"
+	, TOOL_TO_SET_FACING2_POST = "gt.lang.use.x.to.toggle.facing2.post"
 	, TOOL_TO_SET_CONNECTIONS_PRE = "gt.lang.use.x.to.toggle.connection.pre"
 	, TOOL_TO_SET_CONNECTIONS_POST = "gt.lang.use.x.to.toggle.connection.post"
 	, TOOL_TO_SET_DIRECTION_MONKEY_WRENCH = "gt.lang.use.monkey.wrench.to.toggle.direction"
@@ -468,6 +470,8 @@ public class LH {
 		add(TOOL_TO_SET_DIRECTION_MONKEY_WRENCH         , "Use Monkey Wrench to set Direction");
 		add(TOOL_TO_SET_FACING_PRE                      , "Use ");
 		add(TOOL_TO_SET_FACING_POST                     , " to set Facing");
+		add(TOOL_TO_SET_FACING2_PRE                     , "Use ");
+		add(TOOL_TO_SET_FACING2_POST                    , " to set secondary Facing");
 		add(TOOL_TO_SET_CONNECTIONS_PRE                 , "Use ");
 		add(TOOL_TO_SET_CONNECTIONS_POST                , " to set Connections");
 		add(TOOL_TO_HARVEST                             , "Tool to Harvest");

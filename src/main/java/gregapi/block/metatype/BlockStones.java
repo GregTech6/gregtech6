@@ -558,7 +558,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 					ItemStack tStack = ((EntityPlayer)aPlayer).inventory.mainInventory[tIndex];
 					if (OM.is("stickAnyIronOrSteel", tStack)) {
 						if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, RNFBR, 3)) {
-							ST.use(aPlayer, tIndex, tStack);
+							ST.use(aPlayer, T, tStack);
 							return mOctantcount * 1250;
 						}
 						break;
