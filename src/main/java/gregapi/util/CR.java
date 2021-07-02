@@ -270,6 +270,7 @@ public class CR {
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
 	 * , 'f' = OreDictToolNames.file
+	 * , 'g' = OreDictToolNames.handdrill
 	 * , 'h' = OreDictToolNames.hammer
 	 * , 'i' = OreDictToolNames.solderingiron
 	 * , 'j' = OreDictToolNames.solderingmetal
@@ -351,6 +352,7 @@ public class CR {
 					case 'd': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.screwdriver              ); break;
 					case 'e': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.drill                    ); break;
 					case 'f': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.file                     ); break;
+					case 'g': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.handdrill                ); break;
 					case 'h': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.hammer                   ); break;
 					case 'i': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingiron            ); break;
 					case 'j': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingmetal           ); break;

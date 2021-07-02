@@ -2961,12 +2961,16 @@ public class MT {
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Steel                         , 1*U), OM.stack(Lava               , 9*U)));
 			Alumite                 .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Al                            , 5*U), OM.stack(WroughtIron        , 2*U), OM.stack(Lava,18*U)));
 			RedAlloy                .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(AnnealedCopper                , 1*U), OM.stack(Redstone           , 4*U)));
-			SterlingSilver          .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 4*U)));
 			RoseGold                .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Au                 , 4*U)));
+			SterlingSilver          .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 4*U)));
 			AluminiumBrass          .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 1*U), OM.stack(Al                 , 3*U)));
 			Brass                   .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(Zn                 , 1*U)));
 			Bronze                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(Sn                 , 1*U)));
 			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 3*U), OM.stack(Electrum           , 2*U)));
+			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(Cu                            ,11*U), OM.stack(RoseGold           , 5*U), OM.stack(Ag, 4*U)));
+			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(AnnealedCopper                ,11*U), OM.stack(RoseGold           , 5*U), OM.stack(Ag, 4*U)));
+			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(Cu                            ,11*U), OM.stack(SterlingSilver     , 5*U), OM.stack(Au, 4*U)));
+			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(AnnealedCopper                ,11*U), OM.stack(SterlingSilver     , 5*U), OM.stack(Au, 4*U)));
 			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 2*U), OM.stack(RedAlloy, 5*U)));
 			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent(16, OM.stack(Cu                            , 1*U), OM.stack(SterlingSilver     , 5*U), OM.stack(RedAlloy,10*U)));
 			Signalum                .addAlloyingRecipe(new OreDictConfigurationComponent(16, OM.stack(AnnealedCopper                , 1*U), OM.stack(SterlingSilver     , 5*U), OM.stack(RedAlloy,10*U)));
