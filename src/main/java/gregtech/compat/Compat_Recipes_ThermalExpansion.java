@@ -58,8 +58,8 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		CR.remove(IL.TE_Rod_Basalz.get(1));
 		CR.delate(MD.TE_FOUNDATION, "material", 512, 513, 514, 515);
 		
-		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 1, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
-		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 1, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
+		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 2, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
+		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 2, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
 		
 		RM.Bath.addRecipe1(T,  0,  128, OP.crushed    .mat(MT.OREMATS.Cinnabar, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
 		RM.Bath.addRecipe1(T,  0,  128, OP.crushedTiny.mat(MT.OREMATS.Cinnabar, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));

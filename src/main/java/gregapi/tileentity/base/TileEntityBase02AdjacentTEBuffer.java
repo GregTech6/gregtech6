@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -90,13 +90,15 @@ public abstract class TileEntityBase02AdjacentTEBuffer extends TileEntityBase01R
 		if (aDistance != 1) return super.getTileEntityAtSideAndDistance(aSide, aDistance);
 		if (SIDES_INVALID[aSide] || mBufferedTileEntities[aSide] == this) return null;
 		ChunkCoordinates tCoords = getOffset(aSide, 1);
-		if (crossedChunkBorder(tCoords) && (!(mBufferedTileEntities[aSide] instanceof ITileEntityUnloadable) || ((ITileEntityUnloadable)mBufferedTileEntities[aSide]).isDead())) {
+		boolean tChunksCrossed = crossedChunkBorder(tCoords);
+		if (tChunksCrossed && (!(mBufferedTileEntities[aSide] instanceof ITileEntityUnloadable) || ((ITileEntityUnloadable)mBufferedTileEntities[aSide]).isDead())) {
 			mBufferedTileEntities[aSide] = null;
 			if (mIgnoreUnloadedChunks && !worldObj.blockExists(tCoords.posX, tCoords.posY, tCoords.posZ)) return null;
 		}
 		if (mBufferedTileEntities[aSide] == null) {
 			TileEntity tTileEntity = WD.te(worldObj, tCoords.posX, tCoords.posY, tCoords.posZ, T);
 			if (tTileEntity == null) {mBufferedTileEntities[aSide] = this; return null;}
+			if (tChunksCrossed) WD.mark(tTileEntity);
 			if (tTileEntity.xCoord == tCoords.posX && tTileEntity.yCoord == tCoords.posY && tTileEntity.zCoord == tCoords.posZ) return mBufferedTileEntities[aSide] = tTileEntity;
 			mBufferedTileEntities[aSide] = null;
 			return tTileEntity;
@@ -114,6 +116,7 @@ public abstract class TileEntityBase02AdjacentTEBuffer extends TileEntityBase01R
 			mBufferedTileEntities[aSide] = null;
 			return getTileEntityAtSideAndDistance(aSide, aDistance);
 		}
+		if (tChunksCrossed) WD.mark(mBufferedTileEntities[aSide]);
 		return mBufferedTileEntities[aSide];
 	}
 	

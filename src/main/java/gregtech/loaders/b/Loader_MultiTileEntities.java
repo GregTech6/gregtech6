@@ -776,12 +776,12 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Co_60;                aRegistry.add("Depleted Cobalt-60 Fuel Rod"                   , "Reactors",  9350,  9200, MultiTileEntityReactorRodDepleted.class , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F)); RM.Centrifuge.addRecipe1(F, 64, 256, aRegistry.getItem(), ZL_FS, ZL_FS, OP.scrapGt.mat(MT.Zr, 9), OP.dustTiny.mat(aMat, 1), OP.dustDiv72.mat(MT.U_238, 12));
 		aMat = MT.Nq_528;               aRegistry.add("Depleted Enriched Naquadah Fuel Rod"           , "Reactors",  9360,  9200, MultiTileEntityReactorRodDepleted.class , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F)); RM.Centrifuge.addRecipe1(F, 64, 256, aRegistry.getItem(), ZL_FS, ZL_FS, OP.scrapGt.mat(MT.Zr, 9), OP.dustTiny.mat(aMat, 1), OP.dustDiv72.mat(MT.Nq_522, 12));
 		aMat = MT.Nq_522;               aRegistry.add("Depleted Naquadria Fuel Rod"                   , "Reactors",  9361,  9200, MultiTileEntityReactorRodDepleted.class , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F)); RM.Centrifuge.addRecipe1(F, 64, 256, aRegistry.getItem(), ZL_FS, ZL_FS, OP.scrapGt.mat(MT.Zr, 9), OP.dustTiny.mat(aMat, 1), OP.dustDiv72.mat(MT.Th, 12));
-
+		
 		aMat = MT.Th;                   aRegistry.add("Thorium-232 Breeder Rod"                       , "Reactors",  9410,  9200, MultiTileEntityReactorRodBreeder.class  , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_MAXDURABILITY, 144000000L, NBT_VALUE, 9222)); RM.Canner.addRecipe2(F, 16, 16, OP.bolt.mat(aMat, 4), IL.Reactor_Rod_Empty.get(1), aRegistry.getItem());
 		aMat = MT.U_238;                aRegistry.add("Uranium-238 Breeder Rod"                       , "Reactors",  9420,  9200, MultiTileEntityReactorRodBreeder.class  , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_MAXDURABILITY, 288000000L, NBT_VALUE, 9233)); RM.Canner.addRecipe2(F, 16, 16, OP.bolt.mat(aMat, 4), IL.Reactor_Rod_Empty.get(1), aRegistry.getItem());
-
-
-
+		
+		
+		
 		// Steam Turbines
 		aClass = MultiTileEntityTurbineSteam.class;
 		aMat = MT.DATA.Kinetic_T[1];    aRegistry.add("Steam Turbine ("+MT.Bronze       .getLocal()+")" , "Turbines"                            ,  1512,  1538, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_INPUT,   24*STEAM_PER_EU, NBT_OUTPUT,   16, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.STEAM, NBT_ENERGY_EMITTED, TD.Energy.RU), "TwT", "GSG", "TMT", 'S', OP.stickLong.dat(aMat), 'M', OP.casingMachineDouble.dat(aMat), 'G', OP.gearGt.dat(aMat), 'T', OP.rotor.dat(MT.Bronze           ));

@@ -283,8 +283,16 @@ public class WD {
 	
 	/** Marks a Chunk dirty so it is saved */
 	public static boolean mark(World aWorld, int aX, int aZ) {
+		if (aWorld == null || aWorld.isRemote) return F;
 		Chunk aChunk = aWorld.getChunkFromBlockCoords(aX, aZ);
-		if (aChunk == null) return F;
+		if (aChunk == null) {
+			aWorld.getBlockMetadata(aX, 0, aZ);
+			aChunk = aWorld.getChunkFromBlockCoords(aX, aZ);
+			if (aChunk == null) {
+				ERR.println("Some important Chunk does not exist for some reason at Coordinates X: " + aX + " and Z: " + aZ);
+				return F;
+			}
+		}
 		aChunk.setChunkModified();
 		return T;
 	}

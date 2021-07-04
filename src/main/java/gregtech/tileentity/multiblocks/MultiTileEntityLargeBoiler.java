@@ -195,8 +195,8 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			// Remove Steam and Heat during the process of cooling down.
 			if (mCoolDownResetTimer-- <= 0) {
 				mCoolDownResetTimer = 0;
-				mEnergy -= (mOutput * 4) / STEAM_PER_EU;
-				GarbageGT.trash(mTanks[1], mOutput * 4);
+				mEnergy -= (mOutput * 64) / STEAM_PER_EU;
+				GarbageGT.trash(mTanks[1], mOutput * 64);
 				if (mEnergy <= 0) {
 					mEnergy = 0;
 					mCoolDownResetTimer = 128;
