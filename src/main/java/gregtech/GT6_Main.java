@@ -435,6 +435,15 @@ public class GT6_Main extends Abstract_Mod {
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
 		RM.Other.addFakeRecipe(F, ST.array(
+		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")
+		, IL.Ceramic_Crucible.getWithName(1, "Wait until it melts into Mercury")
+		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
+		, NI
+		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
+		, NI
+		), ST.array(IL.Bottle_Mercury.get(1)), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
+		
+		RM.Other.addFakeRecipe(F, ST.array(
 		  IL.Ceramic_Mold.getWithName(1, "Don't forget to shape the Mold to pour it")
 		, IL.Ceramic_Crucible.getWithName(1, "Wait until it all turns into Steel")
 		, ST.make(aRegistry.getItem(1302), "Point a running Engine into the Crucible to blow Air")
@@ -444,13 +453,13 @@ public class GT6_Main extends Abstract_Mod {
 		), ST.array(OP.dust.mat(MT.Steel, 1), OP.ingot.mat(MT.Steel, 1), OP.plate.mat(MT.Steel, 1), OP.scrapGt.mat(MT.Steel, 1), OP.stick.mat(MT.Steel, 1), OP.gearGt.mat(MT.Steel, 1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
-		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")
-		, IL.Ceramic_Crucible.getWithName(1, "Wait until it melts into Mercury")
-		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
-		, NI
+		  ST.make(OP.ingot.mat(MT.Zn, 1), "Dump some Zinc into the Crucible")
+		, IL.Ceramic_Faucet.getWithName(1, "Pour Zinc using a Faucet attached to the Crucible")
+		, IL.Ceramic_Crucible.getWithName(1, "Wait until the Zinc is molten")
+		, ST.make(OP.plate.mat(MT.Steel, 1), "Put your Steel Object into the Bathing Pot")
+		, ST.make(aRegistry.getItem(32707), "Place the Bathing Pot (Table) below the Faucet")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
-		, NI
-		), ST.array(IL.Bottle_Mercury.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		), ST.array(OP.plate.mat(MT.SteelGalvanized, 1), OP.plateCurved.mat(MT.SteelGalvanized, 1), OP.stick.mat(MT.SteelGalvanized, 1), OP.casingSmall.mat(MT.SteelGalvanized, 1), OP.gearGt.mat(MT.SteelGalvanized, 1), OP.screw.mat(MT.SteelGalvanized, 1)), null, ZL_LONG, FL.array(MT.Zn.liquid(1, T)), FL.array(MT.Zn.liquid(1, T)), 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
 		  ST.make(BlocksGT.Saplings_AB, 1, 0, "Find a Rubber Tree in a Taiga Biome or similar")
