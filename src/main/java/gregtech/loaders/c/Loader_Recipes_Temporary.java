@@ -230,13 +230,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shaped(ST.make(Items.paper, 1, 0), DEF, "XXX", 'X', IL.NeLi_Reed);
 			
 			// HAS TO BE BEFORE REGULAR TORCHES!!!
-			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
+			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(4), DEF_NCC, new Object[] {OD.flowerWither          , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
-			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(3), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
+			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(3), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(3), DEF_NCC, new Object[] {OD.flowerWither          , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
-			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(2), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
+			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(2), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(2), DEF_NCC, new Object[] {OD.flowerWither          , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
-			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(1), DEF_NCC, new Object[] {OD.soulsand              , IL.NeLi_Bonetorch});
+			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(1), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Soul  .get(1), DEF_NCC, new Object[] {OD.flowerWither          , IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
 			CR.shapeless(IL.NeLi_Bonetorch_Fox   .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch, IL.NeLi_Bonetorch});
@@ -252,13 +252,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shapeless(IL.NeLi_Bonetorch_Shadow.get(1), DEF_NCC, new Object[] {IL.NeLi_Blackstone_Crying, IL.NeLi_Bonetorch});
 			
 			// HAS TO BE BEFORE SPECIAL TORCHES!!!
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul      .get(4), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul      .get(3), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch, OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul      .get(2), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch, OD.blockTorch});
-			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.soulsand              , OD.blockTorch});
+			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand) , OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Soul      .get(1), DEF_NCC, new Object[] {OD.flowerWither          , OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Powder   , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
 			CR.shapeless(IL.NeLi_Torch_Fox       .get(4), DEF_NCC, new Object[] {IL.NeLi_Foxfire_Lily     , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
@@ -514,14 +514,14 @@ public class Loader_Recipes_Temporary implements Runnable {
 				BlocksGT.blockToSilk.put(IL.NePl_Basalt_Polished    , IL.NeLi_Basalt_Polished    .get(1));
 				BlocksGT.blockToSilk.put(IL.NePl_Ancient_Debris     , IL.Ancient_Debris          .get(1));
 			} else {
-				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch, OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.soulsand    , OD.blockTorch});
-				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.flowerWither, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand), OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(4), DEF_NCC, new Object[] {OD.flowerWither         , OD.blockTorch, OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand), OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(3), DEF_NCC, new Object[] {OD.flowerWither         , OD.blockTorch, OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand), OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(2), DEF_NCC, new Object[] {OD.flowerWither         , OD.blockTorch, OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OP.dust.dat(MT.SoulSand), OD.blockTorch});
+				CR.shapeless(IL.NePl_Torch.get(1), DEF_NCC, new Object[] {OD.flowerWither         , OD.blockTorch});
 				
 				RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
 				

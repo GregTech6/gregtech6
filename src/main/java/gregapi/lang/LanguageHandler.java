@@ -170,12 +170,12 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Netherite Scrap Powder";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + "Netherite Scrap";
 		} else
-		if (aMaterial == MT.SoulSand) {
+		if (aMaterial == MT.Sand || aMaterial == MT.RedSand || aMaterial == MT.SoulSand) {
 			if (aPrefix == OP.crushed)                                      return "Ground " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Ground " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal;
-			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Fine " + aMaterial.mNameLocal;
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
 		if (aMaterial == MT.Netherrack) {
 			if (aPrefix == OP.rockGt)                                       return "Nether Rock";

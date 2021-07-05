@@ -108,6 +108,11 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 							mClickCount = 0;
 							mStone = 16;
 						}
+					} else if (OM.is(OP.stone.dat(MT.RedSand), aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone =  8;
+						}
 					} else if (OM.is(OP.stone.dat(MT.Sand), aStack)) {
 						if (ST.use(aPlayer, aStack)) {
 							mClickCount = 0;

@@ -908,8 +908,8 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.PFAA, tName, 1,  5));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  6)); // Pegmatite
 				OM.reg(OP.stone, MT.STONES.Rhyolite             , ST.make(MD.PFAA, tName, 1,  7));
-				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8)); // Normal Sandstone
-				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  9)); // Red Sandstone
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.PFAA, tName, 1,  8));
+				OM.reg(OP.stone, MT.RedSand                     , ST.make(MD.PFAA, tName, 1,  9));
 			}
 			for (String tName : new String [] {"veryStrongStone", "veryStrongCobble", "veryStrongStoneBrick"}) {
 				OM.reg(OP.stone, MT.STONES.Diorite              , ST.make(MD.PFAA, tName, 1,  0));
@@ -1635,8 +1635,8 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.BB, "boneShard"                          , 1,   W, MT.Bone               ,  U * 2);
 		
-		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.Sand               ,  9*U2);
-		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.Sand               ,  U * 9);
+		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.RedSand            ,  U2* 9);
+		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.RedSand            ,  U * 9);
 		OM.data(MD.EtFu, "rabbit_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "rabbit_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "mutton_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);

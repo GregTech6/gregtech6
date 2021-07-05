@@ -79,7 +79,7 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.oreSmallEndstone           = new PrefixBlock_(MD.GT, "gt.meta.ore.small.endstone"          , OP.oreSmall               , new Drops_SmallOre(MT.Endstone)       , BlockTextureCopied.get(Blocks.end_stone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 1.00F, 2.00F,  -1,   0, F,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallGravel             = new PrefixBlock_(MD.GT, "gt.meta.ore.small.gravel"            , OP.oreSmall               , new Drops_SmallOre(MT.Gravel)         , BlockTextureCopied.get(Blocks.gravel          , 0), Material.sand, Block.soundTypeGravel  , TOOL_shovel   , 0.60F, 0.80F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallSand               = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand"              , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 0), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallRedSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.redsand"           , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 1), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallRedSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.redsand"           , OP.oreSmall               , new Drops_SmallOre(MT.RedSand)        , BlockTextureCopied.get(Blocks.sand            , 1), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
 		((PrefixBlock)BlocksGT.ore          ).mDrops = new Drops(BlocksGT.oreBroken          , BlocksGT.ore          , OP.oreRaw.mRegisteredPrefixItems.get(0), 0, 1);
 		((PrefixBlock)BlocksGT.oreSandstone ).mDrops = new Drops(BlocksGT.oreBrokenSandstone , BlocksGT.oreSandstone , OP.oreRaw.mRegisteredPrefixItems.get(0), 0, 1);
@@ -198,7 +198,7 @@ public class Loader_Ores implements Runnable {
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "mediumStone", i, i, "mediumCobble", i, "pfaa.medium."+i, tPrefix[i], tDrops[i], 1.0F, 1.0F, 0, F, F, T);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreVanillastone, OP.oreBlackgranite, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreVanillastone, OP.oreSandstone, OP.oreSandstone};
-		tDrops  = new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Basalt, MT.STONES.Gneiss, MT.STONES.GraniteBlack, MT.STONES.Greenschist, MT.STONES.Marble, MT.Stone, MT.STONES.Rhyolite, MT.Sand, MT.Sand};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Basalt, MT.STONES.Gneiss, MT.STONES.GraniteBlack, MT.STONES.Greenschist, MT.STONES.Marble, MT.Stone, MT.STONES.Rhyolite, MT.Sand, MT.RedSand};
 		for (int i = 0; i <10; i++) rockset(MD.PFAA, "strongStone", i, i, "strongCobble", i, "pfaa.strong."+i, tPrefix[i], tDrops[i], 1.5F, 1.5F, 1, F, F, T);
 		
 		tPrefix = new OreDictPrefix[] {OP.oreDiorite, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreQuartzite};

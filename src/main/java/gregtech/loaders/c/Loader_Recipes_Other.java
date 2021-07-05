@@ -49,8 +49,6 @@ public class Loader_Recipes_Other implements Runnable {
 	@Override public void run() {
 		dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (aEvent.mMaterial.mReRegistrations.contains(ANY.Wax) && !ST.isGT_(aEvent.mStack)) CR.remove(aEvent.mStack);}});
 		
-		RM.Compressor.addRecipe1(T, 16, 16, OM.dust(MT.SoulSand, U), ST.make(Blocks.soul_sand, 1, 0));
-		
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {
 		RM.Compressor.addRecipe1(T, 16, 16, OM.dust(tWax, U ), plate.mat(tWax, 1));
 		RM.Compressor.addRecipe1(T, 16, 16, OM.dust(tWax, U4), foil .mat(tWax, 1));

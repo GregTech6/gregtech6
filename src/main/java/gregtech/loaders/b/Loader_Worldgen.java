@@ -422,7 +422,7 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,  6, tCobble,  6, MT.Stone              ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,  7, tCobble,  7, MT.STONES.Rhyolite    ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,  8, tCobble,  8, MT.Sand               ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  9, tCobble,  9, MT.Sand               ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,  9, tCobble,  9, MT.RedSand            ));
 		tStone = ST.block(MD.PFAA, "veryStrongStone"); tCobble = ST.block(MD.PFAA, "veryStrongCobble");
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.STONES.Diorite     ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.STONES.Gabbro      ));
