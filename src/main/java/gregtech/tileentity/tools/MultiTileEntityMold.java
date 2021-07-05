@@ -444,7 +444,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		mTexture = mMaterial.getTextureSmooth(mRGBa, F);
 		short tDisplay = (short)(mDisplay<0 ? ~mDisplay : mDisplay);
 		if (tDisplay != 0 && UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)) {
-			mTextureMolten = (mDisplay < 0 ? OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureSolid() : OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten());
+			mTextureMolten = (mDisplay < 0 ? OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureSmooth() : OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten());
 		} else {
 			mTextureMolten = null;
 		}
