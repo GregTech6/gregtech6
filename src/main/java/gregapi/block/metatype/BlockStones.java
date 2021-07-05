@@ -139,6 +139,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			LH.add(getUnlocalizedName()+".15.name", aDefaultLocalised+" Square Bricks");
 		}
 		
+		OP.blockSolid.disableItemGeneration(mMaterial);
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid, aMaterial, ST.make(this, 1, SMOTH));
 		
 		OM.data(ST.make(this, 1, RNFBR), new OreDictItemData(mMaterial, U*9, ANY.Iron, OP.stick.mAmount));

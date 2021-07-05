@@ -204,7 +204,7 @@ public class Loader_OreProcessing implements Runnable {
 		CR.shaped(OP.bolt.mat(MT.Wood, 2), RECIPE_BITS, "s " , " S", 'S', IL.Stick);
 		
 		IOreDictListenerEvent tProcessor = new OreProcessing_Ore();
-		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(ORE) && tPrefix != oreBedrock && tPrefix != orePoor && tPrefix != oreSmall && tPrefix != oreRich && tPrefix != oreNormal) tPrefix.addListener(tProcessor);
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(ORE) && !tPrefix.contains(IS_CONTAINER) && tPrefix != oreBedrock && tPrefix != orePoor && tPrefix != oreSmall && tPrefix != oreRich && tPrefix != oreNormal) tPrefix.addListener(tProcessor);
 		
 		OreDictManager.INSTANCE.addListener(new RecyclingProcessing());
 	}

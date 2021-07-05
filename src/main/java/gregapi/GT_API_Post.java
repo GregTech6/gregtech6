@@ -216,7 +216,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.oreLimestone, MT.Diamond , MD.ATUM, "tile.diamondOre" , 0);
 			
 			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.STONES.Limestone, U);
-			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U);
+			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U*9);
 			OM.data(MD.ATUM, "tile.framedGlass", 1, W, MT.Glass, U*9);
 			OM.data(MD.ATUM, "tile.crystalGlass", 1, W, MT.Glass, U*9);
 			OM.data(MD.ATUM, "tile.framedStainedGlass", 1, W, MT.Glass, U*9);

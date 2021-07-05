@@ -1635,8 +1635,8 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.BB, "boneShard"                          , 1,   W, MT.Bone               ,  U * 2);
 		
-		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.Sand               ,  U2);
-		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.Sand               ,  U * 1);
+		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.Sand               ,  9*U2);
+		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.Sand               ,  U * 9);
 		OM.data(MD.EtFu, "rabbit_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "rabbit_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "mutton_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
@@ -2031,8 +2031,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   7, MT.Pt                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   8, MT.W                  ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   9, MT.Cu                 ,    U4, ANY.Stone,   U4);
-		OM.data(MD.GC_GALAXYSPACE, "futureglass"            , 1,   W, MT.Glass              ,    U , MT.Desh, U16);
-		OM.data(MD.GC_GALAXYSPACE, "futureglasses"          , 1,   W, MT.Glass              ,    U , MT.Desh, U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglass"            , 1,   W, MT.Glass              ,  9*U , MT.Desh, U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglasses"          , 1,   W, MT.Glass              ,  9*U , MT.Desh, U16);
 		}
 		
 		OM.data(MD.GC, "tile.gcBlockCore"                   , 1,   3, MT.Sn                 ,    U4, ANY.Stone,   U4);
@@ -2044,7 +2044,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC, "slabGCHalf"                         , 1,   0, MT.Sn                 ,    U8, ANY.Stone,   U8);
 		OM.data(MD.GC, "slabGCHalf"                         , 1,   1, MT.Sn                 ,    U8, ANY.Stone,   U8);
 		
-		OM.data(MD.GC, "item.oilCanisterPartial"            , 1,   W, MT.Sn                 , 19*U2, ANY.Steel, U, MT.Glass, U);
+		OM.data(MD.GC, "item.oilCanisterPartial"            , 1,   W, MT.Sn                 , 19*U2, ANY.Steel, U, MT.Glass, 9*U);
 		OM.data(MD.GC, "item.canister"                      , 1,   0, MT.Sn                 ,  7*U2);
 		OM.data(MD.GC, "item.canister"                      , 1,   1, ANY.Cu                ,  7*U2);
 		OM.data(MD.GC, "item.meteoricIronRaw"               , 1,   W, MT.MeteoricIron       ,  U * 1);
@@ -2194,17 +2194,17 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.ender_chest, 1, W)                   , MT.EnderEye           ,  U * 1, MT.Obsidian, U *72);
 		OM.data(ST.make(Blocks.bookshelf, 1, W)                     , MT.Paper              ,  U * 9, ANY.Wood, U * 6);
 		OM.data(ST.make(Blocks.lever, 1, W)                         , ANY.Stone             ,  U * 1, ANY.Wood, U2);
-		OM.data(ST.make(Blocks.sand, 1, 0)                          , MT.Sand               ,  U * 1);
-		OM.data(ST.make(Blocks.sand, 1, 1)                          , MT.Sand               ,  2* U3, MT.Fe2O3, U3);
-		OM.data(ST.make(Blocks.sandstone, 1, W)                     , MT.Sand               ,  U * 1);
+		OM.data(ST.make(Blocks.sand, 1, 0)                          , MT.Sand               ,  U * 9);
+		OM.data(ST.make(Blocks.sand, 1, 1)                          , MT.Sand               ,  U * 9, MT.Fe2O3, U);
+		OM.data(ST.make(Blocks.sandstone, 1, W)                     , MT.Sand               ,  U * 9);
 		OM.data(ST.make(Blocks.stone_slab, 1, 0)                    , ANY.Stone             ,  U2* 9);
 		OM.data(ST.make(Blocks.stone_slab, 1, 8)                    , ANY.Stone             ,  U2* 9);
 		OM.data(ST.make(Blocks.double_stone_slab, 1, 0)             , ANY.Stone             ,  U * 9);
 		OM.data(ST.make(Blocks.double_stone_slab, 1, 8)             , ANY.Stone             ,  U * 9);
-		OM.data(ST.make(Blocks.stone_slab, 1, 1)                    , MT.Sand               ,  U2);
-		OM.data(ST.make(Blocks.stone_slab, 1, 9)                    , MT.Sand               ,  U2);
-		OM.data(ST.make(Blocks.double_stone_slab, 1, 1)             , MT.Sand               ,  U * 1);
-		OM.data(ST.make(Blocks.double_stone_slab, 1, 9)             , MT.Sand               ,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1, 1)                    , MT.Sand               ,  U2* 9);
+		OM.data(ST.make(Blocks.stone_slab, 1, 9)                    , MT.Sand               ,  U2* 9);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 1)             , MT.Sand               ,  U * 9);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 9)             , MT.Sand               ,  U * 9);
 		OM.data(ST.make(Blocks.stone_slab, 1,  2)                   , MT.PetrifiedWood      ,  U2);
 		OM.data(ST.make(Blocks.stone_slab, 1, 10)                   , MT.PetrifiedWood      ,  U2);
 		OM.data(ST.make(Blocks.double_stone_slab, 1,  2)            , MT.PetrifiedWood      ,  U * 1);

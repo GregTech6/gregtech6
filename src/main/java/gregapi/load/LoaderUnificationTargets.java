@@ -849,6 +849,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Blaze                  , ST.make(Items.blaze_powder, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Blaze                  , ST.make(Items.blaze_rod, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Wood                   , ST.make(Items.stick, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Gravel                 , ST.make(Blocks.gravel, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Sand                   , ST.make(Blocks.sand, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Sand                   , ST.make(Blocks.sandstone, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Glass                  , ST.make(Blocks.glass, 1, 0));

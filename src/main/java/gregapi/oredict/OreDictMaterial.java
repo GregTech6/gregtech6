@@ -908,6 +908,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public ITexture getTextureSmooth() {
+		if (mTextureSmooth == null) mTextureSmooth = mTextureSolid;
 		if (mTextureSmooth == null) mTextureSmooth = getTextureSmooth(mRGBaSolid, F);
 		return mTextureSmooth;
 	}

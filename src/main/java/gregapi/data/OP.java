@@ -574,7 +574,8 @@ public class OP {
 		stick      .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
 		ingot      .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);
 		nugget     .disableItemGeneration(MT.Au);
-		plate      .disableItemGeneration(MT.Paper);
+		plate      .disableItemGeneration(MT.Paper, MT.Glass);
+		plateGem   .disableItemGeneration(MT.Glass);
 		bucket     .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
 		bottle     .disableItemGeneration(MT.Empty, MT.H2O);
 		

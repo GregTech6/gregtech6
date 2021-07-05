@@ -105,9 +105,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Bars", T)) CR.remove(tMat, tMat, tMat, tMat, tMat, tMat, null, null, null);
 		CR.shaped(ST.make(Blocks.iron_bars, 8, 0), DEF, " w ", "XXX", "XXX", 'X', OP.stick.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Fe));
 		
-		CR.shaped(ST.make(Blocks.glass_pane, 1, 0), DEF, " X", 'X', OP.plate.dat(MT.Glass));
-		CR.shaped(ST.make(Blocks.glass_pane, 1, 0), DEF, " X", 'X', OP.plateGem.dat(MT.Glass));
-		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Gold.Clock", T)) {
 			CR.shaped(ST.make(Items.clock, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "sGr", "CQC", "dPR", 'P', OP.plate.dat(MT.Au), 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Au), 'Q', OD.craftingQuartz, 'G', OP.gearGtSmall.dat(MT.Au));
 		} else {
@@ -766,9 +763,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.tnt, 1, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.tnt, 1, 0));
 		}
-		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
 		
 		
 		RM.Squeezer     .addRecipe1(T, 16,  128,  6000, ST.make(Blocks.melon_block      , 1, W), NF, FL.Juice_Melon.make(2250), IL.Remains_Fruit.get(9));
@@ -871,7 +865,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 3200, ST.tag(0), FL.Water.make(3000), MT.H.gas(2*U, F), MT.O.gas(U, F));
 		RM.Electrolyzer .addRecipe1(T, 16, 3200, ST.tag(0), FL.SpDew.make(3000), MT.H.gas(2*U, F), MT.O.gas(U, F));
 		RM.Electrolyzer .addRecipe1(T, 16, 3000, ST.tag(0), FL.DistW.make(3000), MT.H.gas(2*U, F), MT.O.gas(U, F));
-		RM.Electrolyzer .addRecipe2(T, 64,   64, ST.tag(0), ST.make(Blocks.sand, 1, 0), OM.dust(MT.SiO2));
+		RM.Electrolyzer .addRecipe2(T, 64,  576, ST.tag(0), ST.make(Blocks.sand, 1, 0), OM.dust(MT.SiO2, U*9));
+		RM.Electrolyzer .addRecipe2(T, 64,   64, ST.tag(0), OM.dust(MT.Sand), OM.dust(MT.SiO2));
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   16, OM.dust(MT.SlimyBone), NF, FL.Slime_Green.make(250), OM.dust(MT.Bone));
 		RM.Centrifuge   .addRecipe1(T, 16,   16, ST.make(Items.magma_cream, 1, W), NF, FL.Slime_Green.make(250), ST.make(Items.blaze_powder, 1, 0));

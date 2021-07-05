@@ -116,7 +116,6 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 			for (OreDictMaterial tMat : ANY.SiO2.mToThis)
 			RM.Injector     .addRecipe1(T, 16, 16, OM.dust(tMat)                , FL.mul(tRedstone, 2), NF, OP.dustTiny.mat(MT.Blitz, 1));
 			RM.Injector     .addRecipe1(T, 16, 16, OP.dust.mat(MT.Stone, 1)     , FL.mul(tRedstone, 2), NF, OP.dustTiny.mat(MT.Blitz, 1));
-			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Blocks.sand, 1, W)   , FL.mul(tRedstone, 2), NF, OP.dustTiny.mat(MT.Blitz, 1));
 			if (IL.AETHER_Sand.exists())
 			RM.Injector     .addRecipe1(T, 16, 16, IL.AETHER_Sand.get(1)        , FL.mul(tRedstone, 2), NF, OP.dustTiny.mat(MT.Blitz, 1));
 			
