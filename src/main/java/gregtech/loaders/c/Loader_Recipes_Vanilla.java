@@ -222,7 +222,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Phosphorus));
 			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
 			
-			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Peat));
@@ -231,7 +231,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Peat));
 			
-			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.PeatBituminous));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.PeatBituminous));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.PeatBituminous));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.PeatBituminous));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.PeatBituminous));
@@ -276,7 +276,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Charcoal));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.dust              .dat(MT.Charcoal));
 			
-			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Coal));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Coal));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Coal));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Coal));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Coal));
@@ -285,7 +285,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Coal));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Coal));
 			
-			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.CoalCoke));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.CoalCoke));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.CoalCoke));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.CoalCoke));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.CoalCoke));
@@ -294,7 +294,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.CoalCoke));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.CoalCoke));
 			
-			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Anthracite));
+			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Anthracite));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Anthracite));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Anthracite));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Anthracite));
@@ -303,7 +303,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Anthracite));
 			CR.shaped(tItems[i].get(8), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Anthracite));
 			
-			CR.shaped(tItems[i].get(1), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Lignite));
+			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Lignite));
 			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Lignite));
 			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Lignite));
 			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Lignite));
@@ -312,7 +312,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.Lignite));
 			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.Lignite));
 			
-			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.LigniteCoke));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.LigniteCoke));
@@ -321,7 +321,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedPurified   .dat(MT.LigniteCoke));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke));
 			
-			CR.shaped(tItems[i].get(2), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Oilshale));
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.rockGt            .dat(MT.Oilshale));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.oreRaw            .dat(MT.Oilshale));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.ingot             .dat(MT.Oilshale));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OP.gem               .dat(MT.Oilshale));

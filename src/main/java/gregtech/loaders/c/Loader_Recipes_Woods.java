@@ -223,7 +223,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.pulverizing(aEntry.mPlank, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 1));
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 128, aEntry.mPlank, FL.Mineralwater.make(1000), NF, OP.rockGt.mat(MT.PetrifiedWood, 4));
+			RM.Injector.addRecipe1(T, 16, 128, ST.amount(9, aEntry.mPlank), FL.Mineralwater.make(1000), NF, OP.rockGt.mat(MT.PetrifiedWood, 4));
 			
 			CR.shaped(gearGt             .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "BPB", "PsP", "BPB", 'P', aEntry.mPlank, 'B', bolt.dat(aEntry.mMaterialPlank));
 			CR.shaped(gearGtSmall        .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  " s"       , 'P', aEntry.mPlank);
@@ -286,12 +286,13 @@ public class Loader_Recipes_Woods implements Runnable {
 		for (PlankEntry aEntry : WoodDictionary.LIST_STAIRS) {
 			RM.generify(aEntry.mStair, IL.Plank_Stairs.get(1));
 			RM.pulverizing(aEntry.mStair, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 3, 4));
+			
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			CR.remove(NI, NI, aPlank, NI, aPlank, aPlank, aPlank, aPlank, aPlank);
 			CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 96, aEntry.mPlank, FL.Mineralwater.make(750), NF, OP.rockGt.mat(MT.PetrifiedWood, 3));
+			RM.Injector.addRecipe1(T, 16, 96, ST.amount(9, aEntry.mStair), FL.Mineralwater.make(750), NF, OP.rockGt.mat(MT.PetrifiedWood, 3));
 			
 			if (ST.valid(aEntry.mSlab)) {
 				CR.shaped(ST.validMeta_(1, aEntry.mSlab ), CR.DEF_NCC_MIR, "vP", 'P', aEntry.mStair);
@@ -303,11 +304,12 @@ public class Loader_Recipes_Woods implements Runnable {
 		for (PlankEntry aEntry : WoodDictionary.LIST_SLABS) {
 			RM.generify(aEntry.mSlab, IL.Plank_Slab.get(1));
 			RM.pulverizing(aEntry.mSlab, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 2));
+			
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			CR.remove(aPlank, aPlank, aPlank);
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 64, aEntry.mPlank, FL.Mineralwater.make(500), NF, OP.rockGt.mat(MT.PetrifiedWood, 2));
+			RM.Injector.addRecipe1(T, 16, 64, ST.amount(9, aEntry.mSlab), FL.Mineralwater.make(500), NF, OP.rockGt.mat(MT.PetrifiedWood, 2));
 			
 			if (ST.valid(aEntry.mStair)) {
 				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mSlab);

@@ -155,7 +155,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		}
 		
-		RM.Anvil                .add(new RecipeMapHandlerPrefixShredding(rockGt                 , 1, null           , 0, NF,  16, 0,    16, NF, dustSmall               , 1, null       , 0, ST.emptySlot(), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Anvil                .add(new RecipeMapHandlerPrefixShredding(rockGt                 , 1, null           , 0, NF,  16, 0,    16, NF, dustSmall               , 9, null       , 0, ST.emptySlot(), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Anvil                .add(new RecipeMapHandlerPrefixShredding(chunk                  , 1, null           , 0, NF,  16, 0,    16, NF, dust                    , 2, dustTiny   , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Anvil                .add(new RecipeMapHandlerPrefixShredding(rubble                 , 1, null           , 0, NF,  16, 0,    16, NF, dust                    , 2, dustTiny   , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Anvil                .add(new RecipeMapHandlerPrefixShredding(pebbles                , 1, null           , 0, NF,  16, 0,    16, NF, dust                    , 2, dustTiny   , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));

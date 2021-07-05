@@ -173,7 +173,6 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		for (OreDictMaterial tMat : new OreDictMaterial[] {ANY.WoodPlastic, ANY.Stone, ANY.Wax, ANY.Iron, ANY.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.BismuthBronze, MT.Au}) {
 		CR.shapeless(IL.Ceramic_Ingot_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.ingot.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chunk_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.chunkGt.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Chunk_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.rockGt.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Nugget_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.nugget.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Plate_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Plate_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plateGem.dat(tMat)});

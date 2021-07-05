@@ -301,8 +301,7 @@ public class MT {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData, G_STONE, ANY.Stone, STONE, BRITTLE, MORTAR, FURNACE, EXTRUDER, EXTRUDER_SIMPLE);
 		String tStone = "stone"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tStone);
-		if (!aNameOreDict.equalsIgnoreCase("Shale") && !aNameOreDict.equalsIgnoreCase("Redrock") && !aNameOreDict.equalsIgnoreCase("Dolomite") && !aNameOreDict.equalsIgnoreCase("Eclogite"))
-		OreDictManager.INSTANCE.setAutomaticItemData(tStone, new OreDictItemData(rMaterial, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(tStone, new OreDictItemData(rMaterial, U*9));
 		return rMaterial;
 	}
 	
@@ -1760,6 +1759,9 @@ public class MT {
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
 			U_238                   .setOreMultiplier( 2).setCrushing(OREMATS.Uraninite, U);
 			F                       .setOreMultiplier( 2).setCrushing(CaF2, U);
+			Meteorite               .setOreMultiplier( 2);
+			MeteoricIron            .setOreMultiplier( 2);
+			MeteoricSteel           .setOreMultiplier( 2);
 			Amber                   .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);

@@ -96,16 +96,16 @@ public class Loader_OreProcessing implements Runnable {
 			CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(T, F, SFX.MC_DIG_ROCK, tStoneTextures));
 		}});
 		addListener(OP.plate.dat(MT.Netherrack).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.netherrack, 0), SFX.MC_DIG_ROCK));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(MT.Netherrack.getTextureSolid(), SFX.MC_DIG_ROCK));
 		}});
 		addListener(OP.plate.dat(MT.NetherBrick).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.nether_brick, 0), SFX.MC_DIG_ROCK));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(MT.NetherBrick.getTextureSolid(), SFX.MC_DIG_ROCK));
 		}});
 		addListener(OP.plate.dat(MT.Endstone).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.end_stone, 0), SFX.MC_DIG_ROCK));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(MT.Endstone.getTextureSolid(), SFX.MC_DIG_ROCK));
 		}});
 		addListener(OP.plate.dat(MT.Obsidian).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.obsidian, 0), SFX.MC_DIG_ROCK));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(MT.Obsidian.getTextureSolid(), SFX.MC_DIG_ROCK));
 		}});
 		
 		for (BlockBase tBlock : BlocksGT.stones) {

@@ -89,7 +89,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Charcoal)                      , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Charcoal)                     , 'S', OP.stick.dat(MT.Bamboo));
 		
-		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Coal)                        , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Coal)                          , 'S', OP.stick.dat(MT.Bamboo));
@@ -98,7 +98,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.Coal)              , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Coal)           , 'S', OP.stick.dat(MT.Bamboo));
 		
-		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.CoalCoke)                    , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.CoalCoke)                      , 'S', OP.stick.dat(MT.Bamboo));
@@ -107,7 +107,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.CoalCoke)          , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.CoalCoke)       , 'S', OP.stick.dat(MT.Bamboo));
 		
-		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Anthracite)                 , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Anthracite)                 , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.Anthracite)                 , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.Anthracite)                  , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 4, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Anthracite)                    , 'S', OP.stick.dat(MT.Bamboo));
@@ -125,7 +125,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.Lignite)           , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Lignite)        , 'S', OP.stick.dat(MT.Bamboo));
 		
-		CR.shaped(ST.make(tTorch, 1, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.oreRaw.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.ingot.dat(MT.LigniteCoke)                 , 'S', OP.stick.dat(MT.Bamboo));
 		CR.shaped(ST.make(tTorch, 2, 0), DEF, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.LigniteCoke)                   , 'S', OP.stick.dat(MT.Bamboo));

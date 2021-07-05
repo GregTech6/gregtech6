@@ -25,6 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Large Wooden Tanks now take Lead instead of Iron for their Walls and Valve.
 [CHANGED] Meteoric Iron/Steel has far better Durability now, comparable to Blue Steel and Damascus Steel. This enables both, a way to use the new Big Meteorites, and having the Magnetic ability on more Tools.
 [CHANGED] Crucibles, Anvils, Sifting Tables and Molds/Basins should now handle the copying of certain Textures better.
+[CHANGED] The Material value of Stone Blocks of most Rock Types is now 9 Units instead of 1 Unit. Do note that most things made of Stone will stay their original Value. This also changes the Material Value of small Rocks to be 2.25 Units instead of 0.25 Units, which is an intended Buff.
 [ADDED] By rightclicking an already OPEN Keybased Safe with a Blank Key, you can now copy that Safe's Key ID.
 [ADDED] Niter Veins can now spawn in Deserts near the Surface.
 [ADDED] Gunpowder Sticks, which work like Dynamite Sticks, but only with Fortune III instead of V.
