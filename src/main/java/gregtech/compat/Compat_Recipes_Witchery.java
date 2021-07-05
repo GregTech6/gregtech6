@@ -55,7 +55,7 @@ public class Compat_Recipes_Witchery extends CompatMods {
 		RM.Squeezer     .addRecipe1(T, 16,  64, ST.make(MD.WTCH, "iceslab", 1, 0), NF, FL.Ice.make(500), NI);
 		RM.Juicer       .addRecipe1(T, 16,  64, ST.make(MD.WTCH, "iceslab", 1, 0), NF, FL.Ice.make(500), NI);
 		
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(MD.WTCH, "shadedglass", 1, W), OM.dust(MT.Glass));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(MD.WTCH, "shadedglass_active", 1, W), OM.dust(MT.Glass));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(MD.WTCH, "shadedglass", 1, W), OM.dust(MT.Glass, U*9));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(MD.WTCH, "shadedglass_active", 1, W), OM.dust(MT.Glass, U*9));
 	}
 }

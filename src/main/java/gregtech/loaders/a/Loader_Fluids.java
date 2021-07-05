@@ -169,7 +169,7 @@ public class Loader_Fluids implements Runnable {
 		}
 		
 		FL.create("plastic"                  , "Molten Plastic"      , MT.Plastic        , 1, 1000,   423);
-		FL.create("glass"                    , "Molten Glass"        , MT.Glass          , 1, 1000,  1200);
+		FL.create("glass"                    , "Molten Glass"        , MT.Glass          , 1,    L,  1200);
 		FL.create("molten.enderpearl"        , "Molten Enderpearls"  , MT.EnderPearl     , 1,    L,  2723).setLuminosity( 5);
 		FL.create("molten.redstone"          , "Molten Redstone"     , MT.Redstone       , 1,    L,   500).setLuminosity( 5);
 		FL.create("blaze"                    , "Blazing Goo"         , MT.Blaze          , 1,  9*L,  4000).setLuminosity(15);

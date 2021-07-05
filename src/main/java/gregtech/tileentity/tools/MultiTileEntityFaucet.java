@@ -122,7 +122,11 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 		}
 		if (tDelegator.mTileEntity instanceof ITileEntityMold) return ((ITileEntityMold)tDelegator.mTileEntity).fillMold(aMaterial, aTemperature, tDelegator.mSideOfTileEntity);
 		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl) {
-			if (aMaterial.mAmount >= U) {
+			if (aMaterial.mAmount < U) {
+				FluidStack tFluid = aMaterial.mMaterial.liquid(aMaterial.mAmount, F);
+				if (FL.Error.is(tFluid)) return 0;
+				if (FL.fillAll(tDelegator, tFluid, T)) return aMaterial.mAmount;
+			} else {
 				FluidStack tFluid = aMaterial.mMaterial.liquid(U, F);
 				if (FL.Error.is(tFluid)) return 0;
 				if (FL.fillAll(tDelegator, tFluid, T)) return U;

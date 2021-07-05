@@ -1940,8 +1940,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.WTCH, "perpetualice"                     , 1,   W, MT.Ice                ,  U);
 		OM.data(MD.WTCH, "icestairs"                        , 1,   W, MT.Ice                ,  3* U4);
 		OM.data(MD.WTCH, "iceslab"                          , 1,   W, MT.Ice                ,  U2);
-		OM.data(MD.WTCH, "shadedglass"                      , 1,   W, MT.Glass              ,  U);
-		OM.data(MD.WTCH, "shadedglass_active"               , 1,   W, MT.Glass              ,  U);
+		OM.data(MD.WTCH, "shadedglass"                      , 1,   W, MT.Glass              ,  U*9);
+		OM.data(MD.WTCH, "shadedglass_active"               , 1,   W, MT.Glass              ,  U*9);
 		OM.data(MD.WTCH, "ingredient"                       , 1,  26, ANY.Clay              ,  U);
 		OM.data(MD.WTCH, "ingredient"                       , 1,  27, MT.Ceramic            ,  U);
 		
@@ -2009,8 +2009,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   1, MT.Mg                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   2, MT.Ni                 ,    U4, ANY.Stone,   U4);
 		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"        , 1,   3, MT.Cu                 ,    U4, ANY.Stone,   U4);
-		OM.data(MD.GC_GALAXYSPACE, "futureglass"            , 1,   W, MT.Glass              ,    U , ANY.Steel,3*U16);
-		OM.data(MD.GC_GALAXYSPACE, "futureglasses"          , 1,   W, MT.Glass              ,    U , ANY.Steel,3*U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglass"            , 1,   W, MT.Glass              ,  9*U , ANY.Steel,3*U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglasses"          , 1,   W, MT.Glass              ,  9*U , ANY.Steel,3*U16);
 		OM.data(MD.GC_GALAXYSPACE, "item.steelPole"         , 1,   W, ANY.Steel             ,  3*U2);
 		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"        , 1,   4, MT.Dolomite           ,  6*U );
 		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"        , 1,   8, MT.Fe2O3              ,  5*U );
@@ -2182,10 +2182,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.anvil, 1, 2)                         , ANY.Fe                ,  U *20);
 		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 5);
 		OM.data(ST.make(Blocks.tripwire_hook, 1, W)                 , ANY.Fe                ,  OP.ring.mAmount * 2, ANY.Wood, U);
-		OM.data(ST.make(Blocks.stained_glass        , 1, W)         , MT.Glass              ,  U);
-		OM.data(ST.make(Blocks.glass                , 1, W)         , MT.Glass              ,  U);
-		OM.data(ST.make(Blocks.stained_glass_pane   , 1, W)         , MT.Glass              ,  3*U8);
-		OM.data(ST.make(Blocks.glass_pane           , 1, W)         , MT.Glass              ,  3*U8);
+		OM.data(ST.make(Blocks.stained_glass        , 1, W)         , MT.Glass              ,  U*9);
+		OM.data(ST.make(Blocks.glass                , 1, W)         , MT.Glass              ,  U*9);
+		OM.data(ST.make(Blocks.stained_glass_pane   , 1, W)         , MT.Glass              ,  U);
+		OM.data(ST.make(Blocks.glass_pane           , 1, W)         , MT.Glass              ,  U);
 		OM.data(ST.make(Items.clock, 1, W)                          , MT.Au                 ,  U * 4, MT.Redstone, U);
 		OM.data(ST.make(Items.compass, 1, W)                        , ANY.Fe                ,  U * 4, MT.Redstone, U);
 		OM.data(ST.make(Items.leather, 1, W)                        , MT.Leather            ,  U * 1);

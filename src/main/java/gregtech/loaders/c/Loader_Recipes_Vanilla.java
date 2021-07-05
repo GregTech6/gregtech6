@@ -105,8 +105,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Bars", T)) CR.remove(tMat, tMat, tMat, tMat, tMat, tMat, null, null, null);
 		CR.shaped(ST.make(Blocks.iron_bars, 8, 0), DEF, " w ", "XXX", "XXX", 'X', OP.stick.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', OP.ingot.dat(ANY.Fe));
 		
-		CR.shaped(ST.make(Blocks.glass_pane, 8, 0), DEF, "XXX", 'X', OP.plate.dat(MT.Glass));
-		CR.shaped(ST.make(Blocks.glass_pane, 8, 0), DEF, "XXX", 'X', OP.plateGem.dat(MT.Glass));
+		CR.shaped(ST.make(Blocks.glass_pane, 1, 0), DEF, " X", 'X', OP.plate.dat(MT.Glass));
+		CR.shaped(ST.make(Blocks.glass_pane, 1, 0), DEF, " X", 'X', OP.plateGem.dat(MT.Glass));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Gold.Clock", T)) {
 			CR.shaped(ST.make(Items.clock, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "sGr", "CQC", "dPR", 'P', OP.plate.dat(MT.Au), 'R', OD.itemRedstone, 'C', OP.plateCurved.dat(MT.Au), 'Q', OD.craftingQuartz, 'G', OP.gearGtSmall.dat(MT.Au));
@@ -494,9 +494,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		CR.shaped(OP.toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', "itemFlint");
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), OP.toolHeadArrow.mat(MT.Flint, 1));
-		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Blocks.glass, 1, W), OP.lens.mat(MT.Glass, 1));
+		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Blocks.glass_pane, 1, W), OP.lens.mat(MT.Glass, 1));
 		
-		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.glass, 1, W), OP.lens.mat(MT.Glass, 1), OP.dustSmall.mat(MT.Glass, 1));
+		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.glass_pane, 1, W), OP.lens.mat(MT.Glass, 1), OP.dustSmall.mat(MT.Glass, 1));
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.stone, 1, W), OP.stickLong.mat(MT.Stone, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Stone_Generator     .get(0), OP.stickLong.mat(MT.Stone, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), OP.stickLong.mat(MT.STONES.Basalt, 1));
@@ -522,10 +522,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.smash(ST.make(Blocks.packed_ice           , 1, W), OM.dust(MT.Ice, 2*U));
 		RM.smash(ST.make(Blocks.hardened_clay        , 1, W), OM.dust(MT.Clay, 2*U));
 		RM.smash(ST.make(Blocks.stained_hardened_clay, 1, W), OM.dust(MT.Clay, 2*U));
-		RM.smash(ST.make(Blocks.glass                , 1, W), OM.dust(MT.Glass));
-		RM.smash(ST.make(Blocks.stained_glass        , 1, W), OM.dust(MT.Glass));
-		RM.smash(ST.make(Blocks.glass_pane           , 1, W), OM.dust(MT.Glass, 3*U8));
-		RM.smash(ST.make(Blocks.stained_glass_pane   , 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.smash(ST.make(Blocks.glass                , 1, W), OM.dust(MT.Glass, U*9));
+		RM.smash(ST.make(Blocks.stained_glass        , 1, W), OM.dust(MT.Glass, U*9));
+		RM.smash(ST.make(Blocks.glass_pane           , 1, W), OM.dust(MT.Glass, U));
+		RM.smash(ST.make(Blocks.stained_glass_pane   , 1, W), OM.dust(MT.Glass, U));
 		
 		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.brick_block      , 1, W), ST.make(Items.brick, 3, 0));
 		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab, 1, 4), ST.make(Items.brick, 3, 0));
@@ -546,7 +546,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.stained_glass             , 3, i), ST.make(Blocks.stained_glass_pane, 8, i));
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.wool                      , 2, i), ST.make(Blocks.carpet, 3, i));
 		}
-		RM.sawing(16,  32, F,  50, ST.make(Blocks.glass                     , 3, 0), ST.make(Blocks.glass_pane, 8, 0));
+		RM.sawing(16,  32, F,  50, ST.make(Blocks.glass                     , 1, 0), ST.make(Blocks.glass_pane, 9, 0));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.stone                     , 1, 0), ST.make(Blocks.stone_slab, 2, 0));
 		RM.sawing(16,  16, F, 100, IL.Module_Stone_Generator.get(                0), ST.make(Blocks.stone_slab, 1, 0));
 		RM.sawing(16,  16, F, 100, IL.Module_Basalt_Generator.get(               0), ST.make(Blocks.stone_slab, 1, 0)); // TODO Basalt Slabs
@@ -642,10 +642,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.DistW.make(1000), NF, OP.dust.mat(MT.Snow, 1));
 		
 		
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass             , 1, W), OM.dust(MT.Glass));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, 3*U8));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass             , 1, W), OM.dust(MT.Glass, U*9));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass, U*9));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, U));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, U));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dustSmall.mat(MT.Flint, 1));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.gravel, 1, W), ST.make(Items.flint, 1, 0));
@@ -658,11 +658,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.gravel, 1, W), ST.make(Blocks.sand, 1, 0));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.web, 1, W), ST.make(Items.string, 1, 0));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Items.reeds, 1, W), IL.Remains_Plant.get(1));
-		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.cobblestone, 1, W), OM.dust(MT.Stone));
-		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.stone, 1, W), OM.dust(MT.Stone));
-		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Stone_Generator.get(0), OM.dust(MT.Stone));
-		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Basalt_Generator.get(0), OM.dust(MT.STONES.Basalt));
-		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.STONES.Blackstone));
+		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.cobblestone, 1, W), OM.dust(MT.Stone, U*9));
+		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.stone, 1, W), OM.dust(MT.Stone, U*9));
+		RM.Shredder     .addRecipe1(T, 16, 16, IL.Module_Stone_Generator.get(0), OM.dust(MT.Stone));
+		RM.Shredder     .addRecipe1(T, 16, 16, IL.Module_Basalt_Generator.get(0), OM.dust(MT.STONES.Basalt));
+		RM.Shredder     .addRecipe1(T, 16, 16, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.STONES.Blackstone));
 		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(4));
 		RM.Shredder     .addRecipe1(T, 16,128,  6000, ST.make(Blocks.melon_block, 1, W), IL.Remains_Fruit.get(9));
 		
@@ -926,8 +926,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.biomass(IL.Dye_Cactus.get(16));
 		RM.biomass(IL.Dye_Cocoa.get(16));
 		
-		RM.add_smelting(ST.make(Blocks.sticky_piston, 1, W), ST.make(Blocks.piston, 1, 0), F, T, F);
-		RM.add_smelting(ST.make(Items.glass_bottle  , 1, W), ST.make(Blocks.glass , 1, 0), F, F, F);
+		RM.add_smelting(ST.make(Blocks.sticky_piston, 1, W), ST.make(Blocks.piston    , 1, 0), F, T, F);
+		RM.add_smelting(ST.make(Items.glass_bottle  , 1, W), ST.make(Blocks.glass_pane, 1, 0), F, F, F);
 		
 		RM.unbox(IL.Plank.get(3), ST.make(Blocks.bookshelf, 1, W), ST.make(Items.book, 3, 0));
 		

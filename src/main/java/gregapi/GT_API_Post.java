@@ -217,14 +217,14 @@ public class GT_API_Post extends Abstract_Mod {
 			
 			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.STONES.Limestone, U);
 			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U);
-			OM.data(MD.ATUM, "tile.framedGlass", 1, W, MT.Glass, U);
-			OM.data(MD.ATUM, "tile.crystalGlass", 1, W, MT.Glass, U);
-			OM.data(MD.ATUM, "tile.framedStainedGlass", 1, W, MT.Glass, U);
-			OM.data(MD.ATUM, "tile.crystalStainedGlass", 1, W, MT.Glass, U);
-			OM.data(MD.ATUM, "tile.thinFramedGlass", 1, W, MT.Glass, 3*U8);
-			OM.data(MD.ATUM, "tile.thinCrystalGlass", 1, W, MT.Glass, 3*U8);
-			OM.data(MD.ATUM, "tile.thinFramedStainedGlass", 1, W, MT.Glass, 3*U8);
-			OM.data(MD.ATUM, "tile.thinCrystalStainedGlass", 1, W, MT.Glass, 3*U8);
+			OM.data(MD.ATUM, "tile.framedGlass", 1, W, MT.Glass, U*9);
+			OM.data(MD.ATUM, "tile.crystalGlass", 1, W, MT.Glass, U*9);
+			OM.data(MD.ATUM, "tile.framedStainedGlass", 1, W, MT.Glass, U*9);
+			OM.data(MD.ATUM, "tile.crystalStainedGlass", 1, W, MT.Glass, U*9);
+			OM.data(MD.ATUM, "tile.thinFramedGlass", 1, W, MT.Glass, U);
+			OM.data(MD.ATUM, "tile.thinCrystalGlass", 1, W, MT.Glass, U);
+			OM.data(MD.ATUM, "tile.thinFramedStainedGlass", 1, W, MT.Glass, U);
+			OM.data(MD.ATUM, "tile.thinCrystalStainedGlass", 1, W, MT.Glass, U);
 			
 			OM.data(MD.ATUM, "item.loot", 1,  2, MT.Ag  , 2*U);
 			OM.data(MD.ATUM, "item.loot", 1,  3, MT.Ag  , 2*U);

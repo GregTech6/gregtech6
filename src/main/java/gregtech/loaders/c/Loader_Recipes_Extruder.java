@@ -197,66 +197,6 @@ public class Loader_Recipes_Extruder implements Runnable {
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  32, ST.make(Blocks.cobblestone, 1, W), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Stone, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16, 192, ST.make(Blocks.cobblestone, 6, W), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Stone, 1));
 		
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.make(Blocks.sand, 1, W), IL.Shape_Extruder_Block.get(0), ST.make(Blocks.glass, 1, 0));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.make(Blocks.sand, 1, W), IL.Shape_SimpleEx_Block.get(0), ST.make(Blocks.glass, 1, 0));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.make(Blocks.sand, 1, W), IL.Shape_Extruder_Ingot.get(0), ST.make(Blocks.glass, 1, 0));
-		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, ST.make(Blocks.sand, 1, W), IL.Shape_SimpleEx_Ingot.get(0), ST.make(Blocks.glass, 1, 0));
-		
-		for (ItemStack tStack : new ArrayListNoNulls<ItemStack>(F, ST.make(Blocks.glass, 1, W), ST.make(Blocks.sand, 1, W))) {
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Plate       .get(0), OP.plateGem.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(MT.Glass, 8));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Ring        .get(0), OP.ring.mat(MT.Glass, 4));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_Extruder_Wire        .get(0), OP.wireGt01.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Casing      .get(0), OP.casingSmall.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_Extruder_Pipe_Tiny   .get(0), OP.pipeTiny.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_Extruder_Pipe_Small  .get(0), OP.pipeSmall.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Cell        .get(0), OP.chemtube.mat(MT.Empty, 3));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Bottle      .get(0), IL.Bottle_Empty.get(1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_Extruder_Saw         .get(0), OP.toolHeadRawSaw.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_Extruder_File        .get(0), OP.toolHeadFile.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_Extruder_Pipe_Medium .get(0), OP.pipeMedium.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 4, ST.mul_( 4,tStack), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 6, ST.mul_( 6,tStack), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 6, ST.mul_( 6,tStack), IL.Shape_Extruder_Pipe_Large  .get(0), OP.pipeLarge.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 9, ST.mul_( 9,tStack), IL.Shape_Extruder_Block       .get(0), OP.blockSolid.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64*12, ST.mul_(12,tStack), IL.Shape_Extruder_Pipe_Huge   .get(0), OP.pipeHuge.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Plate       .get(0), OP.plateGem.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(MT.Glass, 8));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Ring        .get(0), OP.ring.mat(MT.Glass, 4));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_SimpleEx_Wire        .get(0), OP.wireGt01.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Casing      .get(0), OP.casingSmall.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_SimpleEx_Pipe_Tiny   .get(0), OP.pipeTiny.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64   ,            tStack , IL.Shape_SimpleEx_Pipe_Small  .get(0), OP.pipeSmall.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Cell        .get(0), OP.chemtube.mat(MT.Empty, 3));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Bottle      .get(0), IL.Bottle_Empty.get(1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 2, ST.mul_( 2,tStack), IL.Shape_SimpleEx_Saw         .get(0), OP.toolHeadRawSaw.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_SimpleEx_File        .get(0), OP.toolHeadFile.mat(MT.Glass, 2));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 3, ST.mul_( 3,tStack), IL.Shape_SimpleEx_Pipe_Medium .get(0), OP.pipeMedium.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64* 4, ST.mul_( 4,tStack), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, T, 16, 64   ,            tStack , IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 6, ST.mul_( 6,tStack), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 6, ST.mul_( 6,tStack), IL.Shape_SimpleEx_Pipe_Large  .get(0), OP.pipeLarge.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64* 9, ST.mul_( 9,tStack), IL.Shape_SimpleEx_Block       .get(0), OP.blockSolid.mat(MT.Glass, 1));
-			RM.Extruder.addRecipe2(T, F, F, F, F, 16, 64*12, ST.mul_(12,tStack), IL.Shape_SimpleEx_Pipe_Huge   .get(0), OP.pipeHuge.mat(MT.Glass, 1));
-		}
-		
 		
 		// Iterate over all possible Extruder Fodder that, for simplicity sake, is not too big or small.
 		ArrayListNoNulls<OreDictPrefix> tPrefixList = new ArrayListNoNulls<>();
@@ -316,8 +256,6 @@ public class Loader_Recipes_Extruder implements Runnable {
 					RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerUnit   ,            tStack , IL.Shape_SimpleEx_Cell  .get(0), OP.chemtube.mat(MT.Empty, 3));
 					RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerUnit   ,            tStack , IL.Shape_Extruder_Bottle.get(0), IL.Bottle_Empty.get(1));
 					RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerUnit   ,            tStack , IL.Shape_SimpleEx_Bottle.get(0), IL.Bottle_Empty.get(1));
-					RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerUnit   ,            tStack , IL.Shape_Extruder_Block .get(0), ST.make(Blocks.glass, 1, 0));
-					RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerUnit   ,            tStack , IL.Shape_SimpleEx_Block .get(0), ST.make(Blocks.glass, 1, 0));
 				}
 			}
 			for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Plastic}) {

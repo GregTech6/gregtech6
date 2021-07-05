@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -33,8 +33,11 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
+import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -46,8 +49,7 @@ import net.minecraft.world.World;
 public class BlockGlassClear extends BlockColored {
 	public BlockGlassClear(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.glass, soundTypeGlass, aUnlocalised, "Glass", MT.Glass, 0.5F, 0.5F, 0, Textures.BlockIcons.GLASSES_CLEAR);
-		
-		
+		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U*9));
 		BlocksGT.breakableGlass.add(this);
 	}
 	
@@ -58,8 +60,7 @@ public class BlockGlassClear extends BlockColored {
 	
 	protected BlockGlassClear(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
-		
-		
+		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U2*9));
 		BlocksGT.breakableGlass.add(this);
 	}
 	
@@ -69,7 +70,7 @@ public class BlockGlassClear extends BlockColored {
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
 	@Override public boolean isBlockSolid(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return F;}
-	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 9 : 4));}
+	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 80 : 40));}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

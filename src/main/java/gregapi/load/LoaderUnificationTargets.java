@@ -839,6 +839,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Brick                  , ST.make(Items.brick, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.NetherBrick            , ST.make(Items.netherbrick, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Paper                  , ST.make(Items.paper, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Glass                  , ST.make(Blocks.glass_pane, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.Glass                  , ST.make(Blocks.glass_pane, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Sugar                  , ST.make(Items.sugar, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Bone                   , ST.make(Items.dye, 1, 15));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Redstone               , ST.make(Items.redstone, 1, 0));
@@ -847,7 +849,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Blaze                  , ST.make(Items.blaze_powder, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Blaze                  , ST.make(Items.blaze_rod, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Wood                   , ST.make(Items.stick, 1, 0));
-//      OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Sand                   , ST.make(Blocks.sandstone, 1, 0)); // TODO
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Sand                   , ST.make(Blocks.sand, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Sand                   , ST.make(Blocks.sandstone, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Glass                  , ST.make(Blocks.glass, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Stone                  , ST.make(Blocks.double_stone_slab, 1, 8));
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Netherrack             , ST.make(Blocks.netherrack, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.Endstone               , ST.make(Blocks.end_stone, 1, 0));
