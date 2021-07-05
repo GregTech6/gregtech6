@@ -37,10 +37,8 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOn
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
-import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
@@ -52,8 +50,6 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
-import gregapi.render.BlockTextureCopied;
-import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
@@ -445,45 +441,10 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING), F);
+		mTexture = mMaterial.getTextureSmooth(mRGBa, F);
 		short tDisplay = (short)(mDisplay<0 ? ~mDisplay : mDisplay);
 		if (tDisplay != 0 && UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)) {
-			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[tDisplay];
-			if (tMaterial == MT.Lava) {
-				mTextureMolten = BlockTextureCopied.get(Blocks.lava);
-			} else if (tMaterial == MT.H2O) {
-				mTextureMolten = BlockTextureCopied.get(Blocks.water);
-			} else if (mDisplay < 0) {
-				if (tMaterial == MT.Stone) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.stone);
-				} else if (tMaterial == MT.Glass) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.glass);
-				} else if (tMaterial == MT.Ceramic) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.hardened_clay);
-				} else if (tMaterial == MT.Au) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.gold_block);
-				} else if (tMaterial == MT.Fe) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.iron_block);
-				} else if (tMaterial == MT.Cu && IL.EtFu_Block_Copper.exists()) {
-					mTextureMolten = BlockTextureCopied.get(IL.EtFu_Block_Copper.block());
-				} else if (tMaterial == MT.AnnealedCopper && IL.EtFu_Block_Copper_Cut.exists()) {
-					mTextureMolten = BlockTextureCopied.get(IL.EtFu_Block_Copper_Cut.block(), 4);
-				} else if (tMaterial == MT.Redstone) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.redstone_block);
-				} else if (tMaterial == MT.Obsidian) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.obsidian);
-				} else if (tMaterial == MT.Glowstone) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.glowstone);
-				} else if (tMaterial == MT.Ice) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.packed_ice);
-				} else if (tMaterial == MT.Snow) {
-					mTextureMolten = BlockTextureCopied.get(Blocks.snow);
-				} else {
-					mTextureMolten = BlockTextureDefault.get(tMaterial, OP.blockSolid.mIconIndexBlock, STATE_SOLID, tMaterial.contains(TD.Properties.GLOWING));
-				}
-			} else {
-				mTextureMolten = BlockTextureDefault.get(tMaterial, IconsGT.INDEX_BLOCK_MOLTEN, STATE_LIQUID, T, F);
-			}
+			mTextureMolten = (mDisplay < 0 ? OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureSolid() : OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten());
 		} else {
 			mTextureMolten = null;
 		}

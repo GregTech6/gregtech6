@@ -47,7 +47,6 @@ import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.machines.ITileEntityAnvil;
@@ -309,9 +308,20 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], mShapeA==6?OP.blockGem:mShapeA==7?OP.blockRaw:OP.blockSolid)));
-		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], mShapeB==6?OP.blockGem:mShapeB==7?OP.blockRaw:OP.blockSolid)));
+		mTextureAnvil = mMaterial.getTextureSmooth(mRGBa, T);
+		
+		if (mMaterialA <= 0) mTextureA = null; else if (UT.Code.exists(mMaterialA, OreDictMaterial.MATERIAL_ARRAY)) switch(mShapeA) {
+		case  6: mTextureA = OreDictMaterial.MATERIAL_ARRAY[mMaterialA].getTextureGem(); break;
+		case  7: mTextureA = BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], OP.blockRaw); break;
+		default: mTextureA = OreDictMaterial.MATERIAL_ARRAY[mMaterialA].getTextureSolid(); break;
+		} else mTextureA = BlockTextureCopied.get(Blocks.iron_block);
+		
+		if (mMaterialB <= 0) mTextureB = null; else if (UT.Code.exists(mMaterialB, OreDictMaterial.MATERIAL_ARRAY)) switch(mShapeB) {
+		case  6: mTextureB = OreDictMaterial.MATERIAL_ARRAY[mMaterialB].getTextureGem(); break;
+		case  7: mTextureB = BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], OP.blockRaw); break;
+		default: mTextureB = OreDictMaterial.MATERIAL_ARRAY[mMaterialB].getTextureSolid(); break;
+		} else mTextureB = BlockTextureCopied.get(Blocks.iron_block);
+		
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	

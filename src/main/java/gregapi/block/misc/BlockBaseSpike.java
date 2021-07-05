@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -185,7 +185,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	
 	public static abstract class SpikeRendererBase implements IRenderedBlockObject {
 		public ITexture mTextureNormal, mTextureUsed;
-		public SpikeRendererBase(OreDictMaterial aMat) {mTextureUsed = mTextureNormal = BlockTextureDefault.get(aMat, OP.blockSolid);}
+		public SpikeRendererBase(OreDictMaterial aMat) {mTextureUsed = mTextureNormal = aMat.getTextureSmooth();}
 		
 		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return APRIL_FOOLS ? 5 : 13;}
 		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTextureUsed;}

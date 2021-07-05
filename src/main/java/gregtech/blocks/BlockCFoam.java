@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import gregapi.block.metatype.ItemBlockMetaType;
 import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -36,6 +37,7 @@ import net.minecraft.world.World;
 public class BlockCFoam extends BlockColored implements IBlockFoamable {
 	public BlockCFoam(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.rock, soundTypeStone, aUnlocalised, "C-Foam", MT.ConstructionFoam, 4.0F, 1.5F, 1, Textures.BlockIcons.CFOAMS);
+		MT.ConstructionFoam.mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, DYE_INDEX_LightGray);
 	}
 	
 	@Override

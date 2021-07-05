@@ -44,6 +44,7 @@ import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.IIconContainer;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -196,6 +197,9 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		OM.reg_(OP.stone           , ST.make(this, 1, STONE));
 		
 		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
+		
+		aMaterial.mTextureSolid  = BlockTextureCopied.get(this, SIDE_TOP, STONE);
+		aMaterial.mTextureSmooth = BlockTextureCopied.get(this, SIDE_TOP, SMOTH);
 		
 		if (MD.RC.mLoaded) try {
 			EntityTunnelBore.addMineableBlock(this, COBBL);

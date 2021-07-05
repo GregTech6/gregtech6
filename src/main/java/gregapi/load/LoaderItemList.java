@@ -35,6 +35,7 @@ import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.IconContainerCopied;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -606,6 +607,42 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreWhite"           , null));
 		
 		
+		
+		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
+		MT.H2O.mTextureMolten = MT.Steam.mTextureMolten = MT.FreshWater.mTextureMolten = MT.DistWater.mTextureMolten = MT.Ice.mTextureMolten = MT.Snow.mTextureMolten = BlockTextureCopied.get(Blocks.water);
+		MT.H2O.mTextureSolid  = MT.Steam.mTextureSolid  = MT.FreshWater.mTextureSolid  = MT.DistWater.mTextureSolid  = MT.Ice.mTextureSolid  = BlockTextureCopied.get(Blocks.packed_ice);
+		MT.Glowstone.mTextureSolid  = MT.Glowstone.mTextureGem = MT.Glowstone.mTextureMolten = BlockTextureCopied.get(Blocks.glowstone);
+		
+		MT.Lava.mTextureMolten        = MT.Obsidian.mTextureMolten  = BlockTextureCopied.get(Blocks.lava);
+		MT.Lava.mTextureSolid         = MT.Obsidian.mTextureSolid   = BlockTextureCopied.get(Blocks.obsidian);
+		MT.Coal.mTextureSolid         = MT.Coal.mTextureGem         = BlockTextureCopied.get(Blocks.coal_block);
+		MT.Charcoal.mTextureSolid     = MT.Charcoal.mTextureGem     = BlockTextureCopied.get(Blocks.coal_block);
+		MT.Lapis.mTextureSolid        = MT.Lapis.mTextureGem        = BlockTextureCopied.get(Blocks.lapis_block);
+		MT.Diamond.mTextureSolid      = MT.Diamond.mTextureGem      = BlockTextureCopied.get(Blocks.diamond_block);
+		MT.Emerald.mTextureSolid      = MT.Emerald.mTextureGem      = BlockTextureCopied.get(Blocks.emerald_block);
+		MT.Gravel.mTextureSolid       = MT.Gravel.mTextureDust      = BlockTextureCopied.get(Blocks.gravel);
+		MT.Sand.mTextureSolid         = MT.Sand.mTextureDust        = BlockTextureCopied.get(Blocks.sand);
+		MT.SoulSand.mTextureSolid     = MT.SoulSand.mTextureDust    = BlockTextureCopied.get(Blocks.soul_sand);
+		
+		MT.Stone.mTextureDust         = BlockTextureCopied.get(Blocks.gravel);
+		MT.Stone.mTextureSolid        = BlockTextureCopied.get(Blocks.stone);
+		MT.Stone.mTextureSmooth       = BlockTextureCopied.get(Blocks.double_stone_slab, SIDE_TOP, 0);
+		MT.Glass.mTextureSolid        = BlockTextureCopied.get(Blocks.glass);
+		MT.Ceramic.mTextureSolid      = BlockTextureCopied.get(Blocks.hardened_clay);
+		MT.Au.mTextureSolid           = BlockTextureCopied.get(Blocks.gold_block);
+		MT.Fe.mTextureSolid           = BlockTextureCopied.get(Blocks.iron_block);
+		MT.Redstone.mTextureSolid     = BlockTextureCopied.get(Blocks.redstone_block);
+		MT.Endstone.mTextureSolid     = BlockTextureCopied.get(Blocks.end_stone);
+		MT.Netherrack.mTextureSolid   = BlockTextureCopied.get(Blocks.netherrack);
+		MT.NetherBrick.mTextureSolid  = BlockTextureCopied.get(Blocks.nether_brick);
+		MT.NetherQuartz.mTextureSolid = BlockTextureCopied.get(Blocks.quartz_block);
+		MT.Bedrock.mTextureSolid      = BlockTextureCopied.get(Blocks.bedrock);
+		MT.Clay.mTextureSolid         = BlockTextureCopied.get(Blocks.clay);
+		MT.Brick.mTextureSolid        = BlockTextureCopied.get(Blocks.brick_block);
+		
+		
+		
+		
 		IL.Bottle_Empty                         .set(ST.make(Items.glass_bottle, 1, 0));
 		
 		IL.Dye_Bonemeal                         .set(ST.make(Items.dye, 1, 15));
@@ -1171,6 +1208,10 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Wart_Block_Nether               .set(ST.make(MD.NeLi, "Wartblock"                           , 1, 3));
 		IL.NeLi_Foxfire_Powder                  .set(ST.make(MD.NeLi, "FoxfirePowder"                       , 1, 0), null, CR.DELATE);
 		
+		
+		if (IL.NeLi_Gloomstone              .exists()) MT.Gloomstone.mTextureSolid  = MT.Gloomstone.mTextureGem = MT.Gloomstone.mTextureMolten = BlockTextureCopied.get(IL.NeLi_Gloomstone.block(), 0);
+		if (IL.NeLi_Blackstone              .exists()) MT.STONES.Blackstone.mTextureSolid  = BlockTextureCopied.get(IL.NeLi_Blackstone.block(), 0);
+		if (IL.NeLi_Blackstone_Polished     .exists()) MT.STONES.Blackstone.mTextureSmooth = BlockTextureCopied.get(IL.NeLi_Blackstone_Polished.block(), 1);
 		if (IL.NeLi_Bowl_DevilishMaize      .exists()) IL.NeLi_Bowl_DevilishMaize      .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_DevilishPopcorn    .exists()) IL.NeLi_Bowl_DevilishPopcorn    .item().setContainerItem(Items.bowl);
 		if (IL.NeLi_Bowl_CrimsonStew        .exists()) IL.NeLi_Bowl_CrimsonStew        .item().setContainerItem(Items.bowl);
@@ -1258,10 +1299,8 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.set(ST.make(MD.EtFu, "waxed_weathered_cut_copper_stairs"   , 1, 0), new OreDictItemData(ANY.Cu, U*3));
 		IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .set(ST.make(MD.EtFu, "waxed_oxidized_cut_copper_stairs"    , 1, 0), new OreDictItemData(ANY.Cu, U*3));
 		
-		
-		
-		
-		
+		if (IL.EtFu_Block_Copper    .exists()) MT.Cu            .mTextureSolid = BlockTextureCopied.get(IL.EtFu_Block_Copper    .block(), 0);
+		if (IL.EtFu_Block_Copper_Cut.exists()) MT.AnnealedCopper.mTextureSolid = BlockTextureCopied.get(IL.EtFu_Block_Copper_Cut.block(), 4);
 		if (IL.EtFu_Lingering_Potion.exists()) IL.EtFu_Lingering_Potion.item().setContainerItem(Items.glass_bottle);
 		
 		

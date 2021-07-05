@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,6 @@ import gregapi.block.BlockBaseSealable;
 import gregapi.block.ItemBlockBase;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.render.BlockTextureDefault;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
@@ -217,7 +216,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	public static abstract class BarRendererBase implements IRenderedBlockObject {
 		public ITexture mTexture;
-		public BarRendererBase(OreDictMaterial aMat) {mTexture = BlockTextureDefault.get(aMat, OP.blockSolid);}
+		public BarRendererBase(OreDictMaterial aMat) {mTexture = aMat.getTextureSmooth();}
 		
 		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 20;}
 		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTexture;}

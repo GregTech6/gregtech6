@@ -36,7 +36,6 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -50,7 +49,6 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
-import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
@@ -576,18 +574,9 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, tRGBaArray, tGlow);
 		
 		if (UT.Code.exists(mDisplayedFluid, OreDictMaterial.MATERIAL_ARRAY)) {
-			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid];
-			if (tMaterial == MT.Lava) {
-				mTextureMolten = BlockTextureCopied.get(Blocks.lava);
-			} else if (tMaterial == MT.H2O) {
-				mTextureMolten = BlockTextureCopied.get(Blocks.water);
-			} else if (tMaterial == MT.Glowstone) {
-				mTextureMolten = BlockTextureCopied.get(Blocks.glowstone);
+			mTextureMolten = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid].getTextureMolten();
 			} else {
-				mTextureMolten = BlockTextureDefault.get(tMaterial, IconsGT.INDEX_BLOCK_MOLTEN, STATE_LIQUID, T, F);
-			}
-		} else {
-			mTextureMolten = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
+			mTextureMolten = BlockTextureDefault.get(MT.NULL, OP.blockRaw, CA_GRAY_64, F);
 		}
 		return 6;
 	}

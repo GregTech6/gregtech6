@@ -35,6 +35,7 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.Textures;
+import gregapi.render.BlockTextureCopied;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
@@ -62,6 +63,14 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		LH.add(getUnlocalizedName()+ ".4.name", "Yellow Clay");
 		LH.add(getUnlocalizedName()+ ".5.name", "Blue Clay");
 		LH.add(getUnlocalizedName()+ ".6.name", "White Clay");
+		
+		MT.UNUSED.Mud  .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 0);
+		MT.ClayBrown   .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 1);
+		MT.Peat        .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 2);
+		MT.ClayRed     .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 3);
+		MT.Bentonite   .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 4);
+		MT.Palygorskite.mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 5);
+		MT.Kaolinite   .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 6);
 		
 		RM.generify(ST.make(this, 1, 1), ST.make(Blocks.clay, 1, 0));
 		RM.generify(ST.make(this, 1, 3), ST.make(Blocks.clay, 1, 0));

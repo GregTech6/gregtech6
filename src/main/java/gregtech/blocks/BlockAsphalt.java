@@ -28,6 +28,7 @@ import gregapi.block.metatype.ItemBlockMetaType;
 import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,6 +40,7 @@ public class BlockAsphalt extends BlockColored implements IBlockOnWalkOver {
 	public BlockAsphalt(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.rock, soundTypeStone, aUnlocalised, "Asphalt", MT.Asphalt, 1.0F, 1.0F, 1, Textures.BlockIcons.ASPHALTS);
 		setCreativeTab(CreativeTabs.tabTransport);
+		MT.Asphalt.mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, DYE_INDEX_Black);
 	}
 	
 	@Override

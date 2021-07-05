@@ -37,9 +37,11 @@ import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
+import gregapi.data.CS.IconsGT;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
 import gregapi.data.TD;
@@ -47,7 +49,9 @@ import gregapi.lang.LanguageHandler;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
 import gregapi.oredict.configurations.OreDictConfigurationComponent;
 import gregapi.oredict.listeners.IOreDictListenerItem;
+import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
+import gregapi.render.ITexture;
 import gregapi.render.TextureSet;
 import gregapi.util.OM;
 import gregapi.util.UT;
@@ -260,6 +264,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public long mNeutrons = 55, mProtons = 43, mElectrons = 43, mMass = mNeutrons + mProtons;
 	/** The Texture Sets for the Materials. */
 	public List<IIconContainer> mTextureSetsBlock = TextureSet.SET_NONE[0].mList, mTextureSetsItems = TextureSet.SET_NONE[1].mList;
+	/** The Texture used for placing in Molds, Basins and Anvils. Overridden by Stone, Lava, Glass and the likes. */
+	public ITexture mTextureSolid = null, mTextureSmooth = null, mTextureMolten = null, mTextureDust = null, mTextureGem = null;
 	/** List of ThaumCraft Aspects. */
 	public final List<TC_AspectStack> mAspects = new ArrayListNoNulls<>(1);
 	/** The List of Components this Material is made of */
@@ -888,6 +894,61 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		mMass = aProtons + aNeutrons + aAdditionalMass;
 		mGramPerCubicCentimeter = aGramPerCubicCentimeter;
 		return this;
+	}
+	
+	public ITexture getTextureSolid() {
+		if (mTextureSolid == null) mTextureSolid = getTextureSolid(mRGBaSolid, F);;
+		return mTextureSolid;
+	}
+	public ITexture getTextureSolid(int aRGBA, boolean aEnableAO) {
+		return getTextureSolid(UT.Code.getRGBaArray(aRGBA), aEnableAO);
+	}
+	public ITexture getTextureSolid(short[] aRGBA, boolean aEnableAO) {
+		return BlockTextureDefault.get(this, OP.blockSolid, aRGBA, contains(TD.Properties.GLOWING), aEnableAO);
+	}
+	
+	public ITexture getTextureSmooth() {
+		if (mTextureSmooth == null) mTextureSmooth = getTextureSmooth(mRGBaSolid, F);
+		return mTextureSmooth;
+	}
+	public ITexture getTextureSmooth(int aRGBA, boolean aEnableAO) {
+		return getTextureSmooth(UT.Code.getRGBaArray(aRGBA), aEnableAO);
+	}
+	public ITexture getTextureSmooth(short[] aRGBA, boolean aEnableAO) {
+		return getTextureSolid(aRGBA, aEnableAO);
+	}
+	
+	public ITexture getTextureMolten() {
+		if (mTextureMolten == null) mTextureMolten = getTextureMolten(mRGBaLiquid, F);;
+		return mTextureMolten;
+	}
+	public ITexture getTextureMolten(int aRGBA, boolean aEnableAO) {
+		return getTextureMolten(UT.Code.getRGBaArray(aRGBA), aEnableAO);
+	}
+	public ITexture getTextureMolten(short[] aRGBA, boolean aEnableAO) {
+		return BlockTextureDefault.get(this, IconsGT.INDEX_BLOCK_MOLTEN, aRGBA, T, aEnableAO);
+	}
+	
+	public ITexture getTextureDust() {
+		if (mTextureDust == null) mTextureDust = getTextureDust(mRGBaSolid, F);;
+		return mTextureDust;
+	}
+	public ITexture getTextureDust(int aRGBA, boolean aEnableAO) {
+		return getTextureDust(UT.Code.getRGBaArray(aRGBA), aEnableAO);
+	}
+	public ITexture getTextureDust(short[] aRGBA, boolean aEnableAO) {
+		return BlockTextureDefault.get(this, OP.blockDust, aRGBA, contains(TD.Properties.GLOWING), aEnableAO);
+	}
+	
+	public ITexture getTextureGem() {
+		if (mTextureGem == null) mTextureGem = getTextureGem(mRGBaSolid, F);
+		return mTextureGem;
+	}
+	public ITexture getTextureGem(int aRGBA, boolean aEnableAO) {
+		return getTextureGem(UT.Code.getRGBaArray(aRGBA), aEnableAO);
+	}
+	public ITexture getTextureGem(short[] aRGBA, boolean aEnableAO) {
+		return BlockTextureDefault.get(this, OP.blockGem, aRGBA, contains(TD.Properties.GLOWING), aEnableAO);
 	}
 	
 	/** Sets the TextureSets for this Material, first Parameter = Block Icons, second Parameter = Item Icons. */

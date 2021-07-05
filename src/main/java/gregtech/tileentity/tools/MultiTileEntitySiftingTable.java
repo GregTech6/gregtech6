@@ -35,7 +35,6 @@ import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
-import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.network.INetworkHandler;
@@ -112,8 +111,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, BlocksGT.Grass     , W)) {mDisplayedInput = -7;} else
 				if (ST.equal(tStack, Blocks.mycelium    , W)) {mDisplayedInput = -8;} else
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedInput = -9;} else
-				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedInput =-10;} else
-				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedInput =-11;} else
+				if (ST.equal(tStack, BlocksGT.Diggables , 0)) {mDisplayedInput =-10;} else
 				if (IL.AETHER_Sand                  .equal(tStack, T, T)) {mDisplayedInput = -5;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedInput =- 5;} else
@@ -180,8 +178,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, BlocksGT.Grass     , W)) {mDisplayedOutput = -7;} else
 				if (ST.equal(tStack, Blocks.mycelium    , W)) {mDisplayedOutput = -8;} else
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedOutput = -9;} else
-				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedOutput =-10;} else
-				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedOutput =-11;} else
+				if (ST.equal(tStack, BlocksGT.Diggables , 0)) {mDisplayedOutput =-10;} else
 				if (IL.AETHER_Sand                  .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
 				if (IL.RH_Sand_Magnetite            .equal(tStack, T, T)) {mDisplayedOutput = -5;} else
@@ -348,13 +345,12 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		mTextureBorder = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
 		mTexturePlate  = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
 		
-		mTextureInput  = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
-		mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
+		mTextureInput  = MT.NULL.getTextureDust();
+		mTextureOutput = MT.NULL.getTextureDust();
 		
 		if (mDisplayedInput != 0) {
 			if (UT.Code.exists(mDisplayedInput, OreDictMaterial.MATERIAL_ARRAY)) {
-				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedInput];
-				mTextureInput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
+				mTextureInput = OreDictMaterial.MATERIAL_ARRAY[mDisplayedInput].getTextureDust();
 			} else if (mDisplayedInput < 0) {
 				switch(mDisplayedInput) {
 				case  -1: mTextureInput  = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
@@ -373,8 +369,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		}
 		if (mDisplayedOutput != 0) {
 			if (UT.Code.exists(mDisplayedOutput, OreDictMaterial.MATERIAL_ARRAY)) {
-				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedOutput];
-				mTextureOutput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
+				mTextureOutput = OreDictMaterial.MATERIAL_ARRAY[mDisplayedOutput].getTextureDust();
 			} else if (mDisplayedOutput < 0) {
 				switch(mDisplayedOutput) {
 				case  -1: mTextureOutput = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;

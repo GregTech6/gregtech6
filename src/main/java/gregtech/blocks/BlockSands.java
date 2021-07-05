@@ -28,6 +28,7 @@ import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.recipes.maps.RecipeMapCrucible;
+import gregapi.render.BlockTextureCopied;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import mods.railcraft.common.carts.EntityTunnelBore;
@@ -41,6 +42,10 @@ public class BlockSands extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".0.name", "Black Sand");
 		LH.add(getUnlocalizedName()+ ".1.name", "Basaltic Black Sand");
 		LH.add(getUnlocalizedName()+ ".2.name", "Granitic Black Sand");
+		
+		MT.OREMATS.Magnetite          .mTextureDust = BlockTextureCopied.get(this, SIDE_TOP, 0);
+		MT.OREMATS.BasalticMineralSand.mTextureDust = BlockTextureCopied.get(this, SIDE_TOP, 1);
+		MT.OREMATS.GraniticMineralSand.mTextureDust = BlockTextureCopied.get(this, SIDE_TOP, 2);
 		
 		OM.data(ST.make(this, 1, 0), MT.OREMATS.Magnetite, U);
 		OM.data(ST.make(this, 1, 1), MT.OREMATS.BasalticMineralSand, U);
