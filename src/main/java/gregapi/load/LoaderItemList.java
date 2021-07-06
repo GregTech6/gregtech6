@@ -620,7 +620,6 @@ public class LoaderItemList implements Runnable {
 		MT.Lapis.mTextureSolid        = MT.Lapis.mTextureGem        = BlockTextureCopied.get(Blocks.lapis_block);
 		MT.Diamond.mTextureSolid      = MT.Diamond.mTextureGem      = BlockTextureCopied.get(Blocks.diamond_block);
 		MT.Emerald.mTextureSolid      = MT.Emerald.mTextureGem      = BlockTextureCopied.get(Blocks.emerald_block);
-		MT.Gravel.mTextureSolid       = MT.Gravel.mTextureDust      = BlockTextureCopied.get(Blocks.gravel);
 		MT.Sand.mTextureSolid         = MT.Sand.mTextureDust        = BlockTextureCopied.get(Blocks.sand);
 		MT.RedSand.mTextureSolid      = MT.RedSand.mTextureDust     = BlockTextureCopied.get(Blocks.sand, 1);
 		MT.SoulSand.mTextureSolid     = MT.SoulSand.mTextureDust    = BlockTextureCopied.get(Blocks.soul_sand);

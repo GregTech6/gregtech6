@@ -25,14 +25,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.RM;
-import gregapi.util.ST;
-import net.minecraft.init.Blocks;
 
 public class Compat_Recipes_Chisel extends CompatMods {
 	public Compat_Recipes_Chisel(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Chisel Mod Recipes.");
-		RM.rem_smelting(ST.make(Blocks.gravel, 1, 0));
+		//RM.rem_smelting(ST.make(Blocks.gravel, 1, 0));
 	}
 }

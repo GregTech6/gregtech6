@@ -69,11 +69,9 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				RM.Mixer.addRecipe2(T, 16,   96, ST.amount(4, aEvent.mStack), ST.make(Blocks.gravel, 1, W)  , ST.make(MD.BINNIE_BOTANY, "misc", 6, 6));
-				RM.Mixer.addRecipe2(T, 16,   96, ST.amount(4, aEvent.mStack), OM.dust(MT.Gravel)            , ST.make(MD.BINNIE_BOTANY, "misc", 6, 6));
 			}});
 			addListener("blockClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				RM.Mixer.addRecipe2(T, 16,   96, aEvent.mStack              , ST.make(Blocks.gravel, 1, W)  , ST.make(MD.BINNIE_BOTANY, "misc", 6, 6));
-				RM.Mixer.addRecipe2(T, 16,   96, aEvent.mStack              , OM.dust(MT.Gravel)            , ST.make(MD.BINNIE_BOTANY, "misc", 6, 6));
 			}});
 			}};
 			
