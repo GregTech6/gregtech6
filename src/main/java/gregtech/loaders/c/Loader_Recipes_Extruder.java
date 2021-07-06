@@ -40,7 +40,6 @@ import net.minecraft.item.ItemStack;
  */
 public class Loader_Recipes_Extruder implements Runnable {
 	@Override
-	@SuppressWarnings("unused")
 	public void run() {
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(MT.STONES.Blackstone, 1));
 		RM.Extruder.addRecipe2(T, F, F, F, T, 16,  64, IL.Module_Blackstone_Generator.get(0), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(MT.STONES.Blackstone, 1));

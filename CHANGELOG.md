@@ -25,6 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Large Wooden Tanks now take Lead instead of Iron for their Walls and Valve.
 [CHANGED] Meteoric Iron/Steel has far better Durability now, comparable to Blue Steel and Damascus Steel. This enables both, a way to use the new Big Meteorites, and having the Magnetic ability on more Tools.
 [CHANGED] Crucibles, Anvils, Sifting Tables and Molds/Basins should now handle the copying of certain Textures better.
+[CHANGED] Things outputting Impure Bedrock Dust are now outputting normal Bedrock Dust. Magnetic Separator Recipe got adjusted for that ofcourse. You should get rid of all the Impure Bedrock Dust you still have, since that may be removed in later Updates.
 [CHANGED]
 The Material value of Stone Blocks of most Rock Types, along with Sand, Soulsand and Glass, is now 9 Units instead of 1 Unit.
 Do note that most things made of these Materials will stay at their original Value, since not all Stone is equally affected.
@@ -35,7 +36,7 @@ Gravel is now considered the Block of Stone Dust. Existing Stone Dust Blocks in 
 Sand, Red Sand and Soulsand are now "Block of ..." of their respective Types, with 9 Dusts being one Block.
 [ADDED] By rightclicking an already OPEN Keybased Safe with a Blank Key, you can now copy that Safe's Key ID.
 [ADDED] Niter Veins can now spawn in Deserts near the Surface.
-[ADDED] Gunpowder Sticks, which work like Dynamite Sticks, but only with Fortune III instead of V.
+[ADDED] Gunpowder Sticks, aptly named "Boomsticks", which work like Dynamite Sticks, but only with Fortune III instead of V.
 
 
 6.14.14:

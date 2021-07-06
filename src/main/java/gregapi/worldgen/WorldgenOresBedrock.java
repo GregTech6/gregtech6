@@ -93,7 +93,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			tOres[2] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumRed  .mID);
 			tOres[3] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumGreen.mID);
 			tOres[4] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumBlue .mID);
-			tOres[5] = OP.dustImpure.mat(MT.Bedrock, 1);
+			tOres[5] = OP.dust.mat(MT.Bedrock, 1);
 			
 			long[] tChances = new long[tOres.length];
 			tChances[0] = 5000;
@@ -114,7 +114,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		} else {
 			ItemStack[] tOres = new ItemStack[mMaterial.mByProducts.size() + 2];
 			tOres[0] = ST.make((Block)BlocksGT.oreBroken, 1, mMaterial.mID);
-			tOres[tOres.length-1] = OP.dustImpure.mat(MT.Bedrock, 1);
+			tOres[tOres.length-1] = OP.dust.mat(MT.Bedrock, 1);
 			
 			long[] tChances = new long[tOres.length];
 			tChances[0] = (tChances.length > 2 ? 9687 : 10000);

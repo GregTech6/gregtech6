@@ -549,16 +549,17 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Lightning    .addRecipe2(T, 16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
 		
 		for (byte i = 0; i < 16; i++) {
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Gunpowder_Stick.get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite_Strong.get(1));
+		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(OM.dust(tMat, U*2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Boomstick      .get(1));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite       .get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite_Strong.get(1));
 		}
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Gunpowder_Stick.get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite_Strong.get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Gunpowder, U*2), ST.make(Items.string, 1, W)), IL.Gunpowder_Stick.get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), OM.dust(MT.Dynamite , U*1), ST.make(Items.string, 1, W)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag(2), OM.dust(MT.Dynamite , U*2), ST.make(Items.string, 1, W)), IL.Dynamite_Strong.get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Boomstick      .get(1));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite       .get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite_Strong.get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Gunpowder, U*2), ST.make(Items.string, 1, W)), IL.Boomstick      .get(1));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), ST.make(Items.string, 1, W)), IL.Dynamite       .get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), ST.make(Items.string, 1, W)), IL.Dynamite_Strong.get(1));
 		
 		
 		
@@ -612,7 +613,7 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.CrystallisationCrucible.addRecipe1(T,256,  52000, OM.dust(MT.Cr             ,2*U ), FL.array(FL.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)), NF, bouleGt.mat(MT.Ruby            , 3));
 		}
 		
-		for (ItemStack tTNT : ST.array(ST.make(Blocks.tnt, 8, W), IL.IC2_ITNT.get(4), IL.Gunpowder_Stick.get(16), IL.Dynamite.get(2), IL.Dynamite_Strong.get(1))) if (ST.valid(tTNT)) {
+		for (ItemStack tTNT : ST.array(ST.make(Blocks.tnt, 8, W), IL.IC2_ITNT.get(4), IL.Boomstick.get(12), IL.Dynamite.get(2), IL.Dynamite_Strong.get(1))) if (ST.valid(tTNT)) {
 			for (OreDictMaterial tMat : ANY.Diamond.mToThis) {OreDictMaterial tOutput = MT.DiamondIndustrial;
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, ST.array(dust.mat(tMat, 1),           tTNT , ST.tag(0)), plateGem    .mat(tOutput, 1));
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, ST.array(dust.mat(tMat, 1),           tTNT , ST.tag(1)), gem         .mat(tOutput, 1));

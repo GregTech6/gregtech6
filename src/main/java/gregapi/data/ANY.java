@@ -64,6 +64,7 @@ public class ANY {
 	Si              = any("Any Silicon"         ),
 	SiO2            = any("Any Silicon Dioxide" ),
 	Quartz          = any("Quartz"              ),
+	Sand            = any("Any Sand"            ),
 	W               = any("Any Tungsten"        ),
 	ThaumCrystal    = any("Any Thaumic Crystal" ),
 	Hexorium        = any("Hexorium"            ),
@@ -113,6 +114,7 @@ public class ANY {
 		Si              .stealLooks(MT.Si             ).steal(MT.Si             ).setLocal("Silicon"            ).setAllToTheOutputOf(MT.Si             ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.Si);
 		SiO2            .stealLooks(MT.SiO2           ).steal(MT.SiO2           ).setLocal("Silicon Dioxide"    ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING                       ).addReRegistrationToThis(MT.STONES.Quartzite, MT.SiO2, MT.Sand, MT.RedSand, MT.Glass, MT.Flint);
 		Quartz          .stealLooks(MT.MilkyQuartz    ).steal(MT.MilkyQuartz    ).setLocal("Quartz"             ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING, QUARTZ               ).addReRegistrationToThis(MT.STONES.Quartzite);
+		Sand            .stealLooks(MT.Sand           ).steal(MT.Sand           ).setLocal("Sand"               ).setAllToTheOutputOf(MT.Sand           ).put(BRITTLE, MELTING                       ).addReRegistrationToThis(MT.Sand, MT.RedSand);
 		W               .stealLooks(MT.W              ).steal(MT.W              ).setLocal("Tungsten"           ).setAllToTheOutputOf(MT.W              ).put(SMITHABLE, MELTING, UNBURNABLE         ).addReRegistrationToThis(MT.W, MT.TungstenSintered);
 		ThaumCrystal    .stealLooks(MT.InfusedBalance ).steal(MT.InfusedDull                                                                            ).put(DONT_SHOW_THIS_COMPONENT               );
 		Hexorium        .stealLooks(MT.HexoriumWhite  ).steal(MT.HexoriumWhite                                                                          ).put(DONT_SHOW_THIS_COMPONENT               );

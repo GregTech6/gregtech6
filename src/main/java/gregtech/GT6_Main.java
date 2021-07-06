@@ -428,8 +428,8 @@ public class GT6_Main extends Abstract_Mod {
 		if (IL.LOOTBAGS_Bag_3.exists())     RM.Unboxinator.addFakeRecipe(F, ST.array(IL.LOOTBAGS_Bag_3.get(1)), ST.array(IL.LOOTBAGS_Bag_3.getWithName(1, "Random Drops depending on Config")), null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
 		if (IL.LOOTBAGS_Bag_4.exists())     RM.Unboxinator.addFakeRecipe(F, ST.array(IL.LOOTBAGS_Bag_4.get(1)), ST.array(IL.LOOTBAGS_Bag_4.getWithName(1, "Random Drops depending on Config")), null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
 		
-											RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make(Blocks.bedrock, 1, W)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dustImpure.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
-		if (IL.BTL_Bedrock.exists())        RM.BedrockOreList.addFakeRecipe(F, ST.array(IL.BTL_Bedrock        .get(1)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dustImpure.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
+											RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make(Blocks.bedrock, 1, W)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dust.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
+		if (IL.BTL_Bedrock.exists())        RM.BedrockOreList.addFakeRecipe(F, ST.array(IL.BTL_Bedrock        .get(1)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dust.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
 		
 		
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");

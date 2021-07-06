@@ -198,7 +198,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 					// Select a Stone to generate.
 					if (rng(1000) == 0) {
 						// 0.1% Chance to get Bedrock Dust. Only really useful for the Byproducts it has, and Rotarycraft.
-						slot(0, OP.dustImpure.mat(MT.Bedrock, 1));
+						slot(0, OP.dust.mat(MT.Bedrock, 1));
 					} else if (worldObj.provider.dimensionId == DIM_NETHER) {
 						// Netherrack.
 						slot(0, ST.make(Blocks.netherrack, 1, 0));

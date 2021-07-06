@@ -45,7 +45,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		if (WD.ore_stone(aWorld.getBlock(aX, aY, aZ), (short)aWorld.getBlockMetadata(aX, aY, aZ))) for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
-			if (IL.Gunpowder_Stick.equal(tStack, F, T) || IL.Dynamite.equal(tStack, F, T) || IL.Dynamite_Strong.equal(tStack, F, T)) {
+			if (IL.Boomstick.equal(tStack, F, T) || IL.Dynamite.equal(tStack, F, T) || IL.Dynamite_Strong.equal(tStack, F, T)) {
 				NBTTagCompound tOldTag = tStack.getTagCompound();
 				if (tStack.hasTagCompound()) {
 					tStack.setTagCompound((NBTTagCompound)tStack.getTagCompound().copy());

@@ -475,7 +475,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.CrystalMatrix          , MD.AV, "Crystal_Matrix", 0);
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2SO4                  , MD.FZ, "acid"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.AquaRegia              , MD.FZ, "acid"           , 1);
-		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Netherrack             , MD.FZ, "nether_powder"  , 1);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Netherrack             , MD.FZ, "nether_powder"  , 1);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DarkIron               , MD.FZ, "dark_iron_ingot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gemFlawed      , MT.Diamond                , MD.FZ, "diamond_shard"  , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , MD.RT, "ingredient", 2);
