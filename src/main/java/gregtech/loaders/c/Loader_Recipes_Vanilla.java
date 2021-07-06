@@ -388,6 +388,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.name_tag                , 1, 0), DEF_MIR                        , " S" ,  "Pq"       , 'S', OD.itemString, 'P', OD.paperEmpty);
 		
 		CR.shaped(ST.make(Blocks.tnt                    , 1, 0), DEF                            , "GSG", "SGS", "GSG", 'G', OP.dust.dat(MT.Gunpowder), 'S', OP.dust.dat(ANY.SiO2));
+		CR.shaped(ST.make(Blocks.tnt                    , 9, 0), DEF                            , "GSG", "SGS", "GSG", 'G', OP.blockDust.dat(MT.Gunpowder), 'S', OP.blockDust.dat(ANY.SiO2));
 		
 		CR.shaped(ST.make(Items.minecart                , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , " h ", "PwP", "WPW", 'P', OP.plate.dat(ANY.Iron), 'W', OP.minecartWheels.dat(ANY.Iron));
 		
@@ -745,6 +746,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		
 		for (OreDictMaterial tMat2 : ANY.Glowstone.mToThis) {
+		RM.Press        .addRecipe2(T, 16,  144, OP.blockDust.mat(MT.Redstone ,  4), OP.blockDust.mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 9, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone ,  4), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 16), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 36), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
@@ -756,6 +758,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 36), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.redstone_lamp, 1, 0));
 		}
 		for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) {
+		RM.Press        .addRecipe2(T, 16,  144, OP.blockDust.mat(MT.Gunpowder,  4), OP.blockDust.mat(tMat2,  4), ST.make(Blocks.tnt, 9, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));
 		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));

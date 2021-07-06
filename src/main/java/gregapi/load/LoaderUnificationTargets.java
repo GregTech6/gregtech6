@@ -813,6 +813,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , MD.EtFu, "deepslate_redstone_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , MD.EtFu, "deepslate_lit_redstone_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Emerald                , MD.EtFu, "deepslate_emerald_ore", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Deepslate       , MD.EtFu, "polished_deepslate", 0);
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

@@ -36,7 +36,7 @@ Gravel is now considered the Block of Stone Dust. Existing Stone Dust Blocks in 
 Sand, Red Sand and Soulsand are now "Block of ..." of their respective Types, with 9 Dusts being one Block.
 [ADDED] By rightclicking an already OPEN Keybased Safe with a Blank Key, you can now copy that Safe's Key ID.
 [ADDED] Niter Veins can now spawn in Deserts near the Surface.
-[ADDED] Gunpowder Sticks, aptly named "Boomsticks", which work like Dynamite Sticks, but only with Fortune III instead of V.
+[ADDED] Gunpowder Sticks, aptly named "Boomsticks", which work like Dynamite Sticks, but only with Fortune III instead of V. And yes Boomstick is usually the name for a Gun.
 
 
 6.14.14:

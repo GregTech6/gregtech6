@@ -621,7 +621,7 @@ public class OP {
 		oreBlackgranite         .mByProducts.add(OM.stack(MT.STONES.GraniteBlack, dust.mAmount * 4));
 		oreVanillagranite       .mByProducts.add(OM.stack(MT.STONES.Granite     , dust.mAmount * 4));
 		oreVanillastone         .mByProducts.add(OM.stack(MT.Stone              , dust.mAmount * 4));
-		oreDeepslate            .mByProducts.add(OM.stack(MT.STONES.Slate       , dust.mAmount * 4));
+		oreDeepslate            .mByProducts.add(OM.stack(MT.STONES.Deepslate   , dust.mAmount * 4));
 		oreMoon                 .mByProducts.add(OM.stack(MT.STONES.MoonRock    , dust.mAmount * 4));
 		oreMars                 .mByProducts.add(OM.stack(MT.STONES.MarsRock    , dust.mAmount * 4));
 		oreHolystone            .mByProducts.add(OM.stack(MT.STONES.Holystone   , dust.mAmount * 4));

@@ -216,7 +216,7 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.EtFu, "stone"                               , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.STONES.Granite);
 		rockset(MD.EtFu, "stone"                               , 3, "etfu.diorite"         , OP.oreDiorite             , MT.STONES.Diorite);
 		rockset(MD.EtFu, "stone"                               , 5, "etfu.andesite"        , OP.oreAndesite            , MT.STONES.Andesite);
-		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate", 0, "etfu.deepslate"       , OP.oreDeepslate           , MT.STONES.Slate);
+		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate", 0, "etfu.deepslate"       , OP.oreDeepslate           , MT.STONES.Deepslate);
 		
 		rockset(MD.BoP, "rocks"                                , 0, "bop.limestone"        , OP.oreLimestone           , MT.STONES.Limestone);
 		rockset(MD.BoP, "rocks"                                , 2, "bop.siltstone"        , OP.oreSiltstone           , MT.STONES.Siltstone);
