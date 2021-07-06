@@ -273,6 +273,11 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		CR.shaped(ST.make(Blocks.stone_stairs, 1, 0), CR.DEF_MIR, " X", "XX", 'X', OP.rockGt.dat(mMaterial)); // TODO Stairs
 		CR.shaped(ST.make(mSlabs[0]      , 1, COBBL), CR.DEF    , "  ", "XX", 'X', OP.rockGt.dat(mMaterial));
 		
+		for (int i = 0; i < maxMeta(); i++) if (JUSTSTONE[i]) {
+			RM.sawing(16, 16, F, 50, ST.make(mSlabs[0], 1, i), OP.plate.mat(mMaterial, 4), OP.dustSmall.mat(mMaterial, 2));
+		}
+		RM.sawing(16, 16, F, 50, ST.make(mSlabs[0], 1, RSTBR), OP.plate.mat(mMaterial, 4), OP.dustSmall.mat(mMaterial, 2), OP.dustSmall.mat(MT.Redstone, 2));
+		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[STONE]) {
 		if (FL.Mana_TE.exists())
 		RM.Bath         .addRecipe1(T,  0, 16                  , tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, CHISL));

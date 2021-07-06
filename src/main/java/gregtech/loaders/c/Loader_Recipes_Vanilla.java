@@ -544,6 +544,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.wool                      , 2, i), ST.make(Blocks.carpet, 3, i));
 		}
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.glass                     , 1, 0), ST.make(Blocks.glass_pane, 9, 0));
+		RM.sawing(16,  16, F, 100, ST.make(Blocks.double_stone_slab         , 1, 0), OP.plate.mat(MT.Stone, 8), OP.dust.mat(MT.Stone, 1));
+		RM.sawing(16,  16, F, 100, ST.make(Blocks.double_stone_slab         , 1, 8), OP.plate.mat(MT.Stone, 8), OP.dust.mat(MT.Stone, 1));
+		RM.sawing(16,  16, F,  50, ST.make(Blocks.stone_slab                , 1, 0), OP.plate.mat(MT.Stone, 4), OP.dustSmall.mat(MT.Stone, 2));
 		RM.sawing(16,  16, F, 100, ST.make(Blocks.stone                     , 1, 0), ST.make(Blocks.stone_slab, 2, 0));
 		RM.sawing(16,  16, F, 100, IL.Module_Stone_Generator.get(                0), ST.make(Blocks.stone_slab, 1, 0));
 		RM.sawing(16,  16, F, 100, IL.Module_Basalt_Generator.get(               0), ST.make(Blocks.stone_slab, 1, 0)); // TODO Basalt Slabs
