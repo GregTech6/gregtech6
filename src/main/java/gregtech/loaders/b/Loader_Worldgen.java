@@ -352,10 +352,11 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
 		, new StoneLayerOres(MT.OREMATS.Bromargyrite    , U8 ,  0, 20)
+		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
 		, new StoneLayerOres(MT.Au                      , U32,  0, 20)
-		, new StoneLayerOres(MT.Niter                   , U6 , 60, 70, BIOMES_DESERT)
+		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
 		));
 		
 		
