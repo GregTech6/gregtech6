@@ -420,10 +420,10 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 					ST.use(aPlayer, T, aStack);
 				} else {
 					if (TOOL_SOUNDS) {
-						if (aPlayer == null) {
-							UT.Sounds.play(tStats.getBreakingSound(), 200, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
+						if (aPlayer != null) {
+							UT.Sounds.send(tStats.getBreakingSound(), aPlayer);
 						} else {
-							UT.Sounds.play(tStats.getBreakingSound(), 200, 1, aPlayer);
+							UT.Sounds.play(tStats.getBreakingSound(), 100, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
 						}
 					}
 					LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
