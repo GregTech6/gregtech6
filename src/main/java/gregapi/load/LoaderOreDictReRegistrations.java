@@ -458,8 +458,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("ingotPlutonium242"               , "Pu242");
 		OreDictManager.INSTANCE.addReRegistration("ingotPlutonium243"               , "Pu243");
 		OreDictManager.INSTANCE.addReRegistration("ingotPlutonium244"               , "Pu244");
-		OreDictManager.INSTANCE.addReRegistration("ingotMercury"                    , "quicksilver");
-		OreDictManager.INSTANCE.addReRegistration("gemMercury"                      , "quicksilver");
 		OreDictManager.INSTANCE.addReRegistration("gemPinkDiamond"                  , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamondIndustrial"            , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamond"                      , "diamond");
@@ -476,6 +474,15 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateGemRedstonia"               , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("crystalRedstone"                 , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("redstoneCrystal"                 , OD.itemRedstone);
+		OreDictManager.INSTANCE.addReRegistration("oreRawMercury"                   , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("gemFlawlessMercury"              , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("gemMercury"                      , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("dustMercury"                     , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("ingotMercury"                    , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("plateMercury"                    , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("plateGemMercury"                 , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration("crystalMercury"                  , OD.itemQuicksilver);
+		OreDictManager.INSTANCE.addReRegistration(OD.itemQuicksilver                , "quicksilver");
 		OreDictManager.INSTANCE.addReRegistration(OD.buttonWood                     , OD.button);
 		OreDictManager.INSTANCE.addReRegistration(OD.buttonStone                    , OD.button);
 		OreDictManager.INSTANCE.addReRegistration("blockSolidObsidian"              , OD.obsidian);

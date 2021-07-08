@@ -796,7 +796,7 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Silverwood_Planks                 .set(ST.make(MD.TC, "blockWoodenDevice"                     , 1, 7), new OreDictItemData(MT.Silverwood, U), OP.plank.dat(MT.Silverwood));
 		IL.TC_Greatwood_Sapling                 .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 0), new OreDictItemData(MT.Greatwood , U2), OP.treeSapling);
 		IL.TC_Silverwood_Sapling                .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 1), new OreDictItemData(MT.Silverwood, U2), OP.treeSapling);
-		IL.TC_Shimmerleaf                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 2), new OreDictItemData(MT.Hg, U), "flowerShimmerleaf");
+		IL.TC_Shimmerleaf                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 2), new OreDictItemData(MT.Hg, U), "flowerShimmerleaf", OD.itemQuicksilver);
 		IL.TC_Cinderpearl                       .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 3), new OreDictItemData(MT.Blaze, U9), "flowerCinderpearl");
 		IL.TC_Vishroom                          .set(ST.make(MD.TC, "blockCustomPlant"                      , 1, 5));
 		IL.TC_Block_Amber                       .set(ST.make(MD.TC, "blockCosmeticOpaque"                   , 1, 0), new OreDictItemData(MT.Amber, 4*U));

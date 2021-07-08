@@ -441,7 +441,7 @@ public class GT6_Main extends Abstract_Mod {
 		, NI
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
 		, NI
-		), ST.array(IL.Bottle_Mercury.get(1)), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
+		), ST.array(IL.Bottle_Mercury.get(1), ST.make(OP.ingot.mat(MT.Hg, 1), "Pouring this into Molds only works in very cold Biomes!")), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
 		
 		RM.Other.addFakeRecipe(F, ST.array(
 		  IL.Ceramic_Mold.getWithName(1, "Don't forget to shape the Mold to pour it")
