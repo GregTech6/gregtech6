@@ -29,7 +29,6 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -3457,10 +3456,10 @@ public class UT {
 		public static Field mMessage = null, mStep = null;
 		
 		@SuppressWarnings("deprecation")
-		public static boolean start(String aName, int aSize) {
+		public static boolean start(String aTitle, int aSize) {
 			if (mBar == null && mEnabled && aSize > 0) {
 				try {
-					mBar = cpw.mods.fml.common.ProgressManager.push(aName, aSize);
+					mBar = cpw.mods.fml.common.ProgressManager.push(aTitle, aSize);
 					mMessage = UT.Reflection.getField(mBar, "message", T, T);
 					mStep = UT.Reflection.getField(mBar, "step", T, T);
 					mSize = aSize;
@@ -3473,13 +3472,13 @@ public class UT {
 			return F;
 		}
 		
-		public static boolean step(Object aStep) {
+		public static boolean step(Object aStepName) {
 			if (mBar != null && mEnabled) {
 				if (mCount++ < mSize) {
 					try {
-						mMessage.set(mBar, aStep == null ? "null" : aStep.toString());
+						mMessage.set(mBar, aStepName == null ? "Error: NULL" : aStepName.toString());
 						mStep.setInt(mBar, mCount);
-						FMLCommonHandler.instance().processWindowMessages();
+						//FMLCommonHandler.instance().processWindowMessages();
 						return T;
 					} catch(Throwable e) {e.printStackTrace(ERR);}
 					return F;
