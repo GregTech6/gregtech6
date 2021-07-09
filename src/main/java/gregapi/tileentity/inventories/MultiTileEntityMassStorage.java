@@ -42,6 +42,7 @@ import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
+import gregapi.oredict.OreDictPrefix;
 import gregapi.render.RenderHelper;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.ITileEntityConnectedInventory;
@@ -556,46 +557,40 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		}
 		return NI;
 	}
+
+	public long getUnitAmount(OreDictPrefix aPrefix) {
+		return aPrefix == OP.oreRaw ? U : aPrefix == OP.blockRaw ? U * 9 : aPrefix.mAmount;
+	}
 	
 	public long getUnitAmount(ItemStack aStack) {
 		OreDictItemData mData = OM.data_(slot(1)), aData = OM.data_(aStack);
-		if (mData != null && aData != null && mData.hasValidPrefixData() && aData.hasValidPrefixData() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < mData.mPrefix.mAmount) {
+		if (mData != null && aData != null && mData.hasValidPrefixData() && aData.hasValidPrefixData() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
 			if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
-				if (aData.mPrefix.contains(TD.Prefix.DUST_BASED)) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix.contains(TD.Prefix.DUST_BASED) ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
-				if (aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.gem || mData.mPrefix == OP.blockGem) {
-				if (aData.mPrefix == OP.gem || aData.mPrefix == OP.blockGem) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.gem || aData.mPrefix == OP.blockGem ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.plate || mData.mPrefix == OP.blockPlate) {
-				if (aData.mPrefix == OP.plate || aData.mPrefix == OP.blockPlate) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.plate || aData.mPrefix == OP.blockPlate ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.plateGem || mData.mPrefix == OP.blockPlateGem) {
-				if (aData.mPrefix == OP.plateGem || aData.mPrefix == OP.blockPlateGem) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.plateGem || aData.mPrefix == OP.blockPlateGem ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.crushed || mData.mPrefix == OP.crushedTiny) {
-				if (aData.mPrefix == OP.crushed || aData.mPrefix == OP.crushedTiny) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.crushed || aData.mPrefix == OP.crushedTiny ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.crushedPurified || mData.mPrefix == OP.crushedPurifiedTiny) {
-				if (aData.mPrefix == OP.crushedPurified || aData.mPrefix == OP.crushedPurifiedTiny) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.crushedPurified || aData.mPrefix == OP.crushedPurifiedTiny ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.crushedCentrifuged || mData.mPrefix == OP.crushedCentrifugedTiny) {
-				if (aData.mPrefix == OP.crushedCentrifuged || aData.mPrefix == OP.crushedCentrifugedTiny) return aData.mPrefix.mAmount;
-				return 0;
+				return aData.mPrefix == OP.crushedCentrifuged || aData.mPrefix == OP.crushedCentrifugedTiny ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.oreRaw || mData.mPrefix == OP.blockRaw) {
-				if (aData.mPrefix == OP.oreRaw  ) return U;
-				if (aData.mPrefix == OP.blockRaw) return U * 9;
-				return 0;
+				return aData.mPrefix == OP.oreRaw ? U : aData.mPrefix == OP.blockRaw ? U * 9 : 0;
 			}
 		}
 		return 0;
@@ -615,7 +610,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
 			OreDictItemData mData = OM.data_(tContent);
 			if (mData != null && mData.hasValidPrefixData()) {
-				long tTargetAmount = (mData.mPrefix == OP.oreRaw ? U : mData.mPrefix == OP.blockRaw ? U * 9 : mData.mPrefix.mAmount);
+				long tTargetAmount = getUnitAmount(mData.mPrefix);
 				if (mPartialUnits >= tTargetAmount) {
 					ItemStack tStack = ST.amount(mPartialUnits / tTargetAmount, tContent);
 					if (tStack.stackSize > 0) {
