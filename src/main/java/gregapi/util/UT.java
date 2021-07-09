@@ -3459,7 +3459,7 @@ public class UT {
 		public static boolean start(String aTitle, int aSize) {
 			if (mBar == null && mEnabled && aSize > 0) {
 				try {
-					mBar = cpw.mods.fml.common.ProgressManager.push(aTitle, aSize);
+					mBar = cpw.mods.fml.common.ProgressManager.push(aTitle, aSize, F);
 					mMessage = UT.Reflection.getField(mBar, "message", T, T);
 					mStep = UT.Reflection.getField(mBar, "step", T, T);
 					mSize = aSize;
@@ -3478,7 +3478,6 @@ public class UT {
 					try {
 						mMessage.set(mBar, aStepName == null ? "Error: NULL" : aStepName.toString());
 						mStep.setInt(mBar, mCount);
-						//FMLCommonHandler.instance().processWindowMessages();
 						return T;
 					} catch(Throwable e) {e.printStackTrace(ERR);}
 					return F;

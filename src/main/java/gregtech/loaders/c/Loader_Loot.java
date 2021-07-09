@@ -107,6 +107,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   2, 4,24, OP.toolHeadArrow.mat(MT.DamascusSteel, 1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Amethyst, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Diamond, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Ruby, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.BlueSapphire, 1));
@@ -184,6 +185,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Ke, 1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Amethyst, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Diamond, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.DiamondPink, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Ruby, 1));
@@ -221,6 +223,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.ingot.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.ingot.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Amethyst, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Diamond, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Ruby, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.BlueSapphire, 1));

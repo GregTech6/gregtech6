@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.16: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Mass Storages and Item Barrels now accept a greater variety of Storage Blocks for packaging similar to Dusts and Ingots. Examples of such include: Plates, Gems, Crushed Ores and Raw Ores.
 
 
 6.14.15:

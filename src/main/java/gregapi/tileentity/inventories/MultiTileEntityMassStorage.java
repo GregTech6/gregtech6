@@ -141,8 +141,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 					slot(1).stackSize -= Math.max(1, slot(1).getMaxStackSize());
 				}
 				if (mPartialUnits > 0) {
-					OreDictItemData tData = OM.data(slot(1));
-					if (tData != null && tData.hasValidPrefixData()) ST.drop(worldObj, getCoords(), tData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? OM.ingot(tData.mMaterial.mMaterial, mPartialUnits) : OM.dust(tData.mMaterial.mMaterial, mPartialUnits));
+					ST.drop(worldObj, getCoords(), getPartialStack());
 					mPartialUnits = 0;
 				}
 				if (slot(1).stackSize > 0) {
@@ -394,34 +393,11 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			return rStack;
 		}
 		
-		OreDictItemData tData = OM.data_(tContent), aData = OM.data_(aStack);
-		if (tData != null && aData != null && tData.hasValidPrefixData() && aData.hasValidPrefixData() && tData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < tData.mPrefix.mAmount) {
-			if ((tData.mPrefix.contains(TD.Prefix.DUST_BASED) && aData.mPrefix.contains(TD.Prefix.DUST_BASED)) || (tData.mPrefix.contains(TD.Prefix.INGOT_BASED) && aData.mPrefix.contains(TD.Prefix.INGOT_BASED))) {
-				updatePartialContent(aData.mPrefix.mAmount * aStack.stackSize);
-				if ((mMode & B[2]) != 0 && tContent.stackSize > mMaxStorage) emitOverflow();
-				return null;
-			}
+		if (updatePartialContent(getUnitAmount(aStack) * aStack.stackSize)) {
+			if ((mMode & B[2]) != 0 && tContent.stackSize > mMaxStorage) emitOverflow();
+			return null;
 		}
-		
 		return aStack;
-	}
-	
-	public void updatePartialContent(long aAmountAdded) {
-		mPartialUnits += aAmountAdded;
-		int tMaxStorage = getMaxContent();
-		ItemStack tContent = slot(1);
-		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
-			OreDictItemData tData = OM.data_(tContent);
-			if (tData != null && tData.hasValidPrefixData() && mPartialUnits >= tData.mPrefix.mAmount) {
-				ItemStack tStack = ST.amount(mPartialUnits / tData.mPrefix.mAmount, tContent);
-				if (tStack.stackSize > 0) {
-					mPartialUnits -= tData.mPrefix.mAmount * tStack.stackSize;
-					if (tStack.stackSize + tContent.stackSize > tMaxStorage) mPartialUnits += tData.mPrefix.mAmount * (tStack.stackSize + tContent.stackSize - tMaxStorage);
-					tContent.stackSize = Math.min(tMaxStorage, tContent.stackSize + tStack.stackSize);
-					updateInventory();
-				}
-			}
-		}
 	}
 	
 	public void emitOverflow() {
@@ -430,16 +406,6 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			int tToBeMoved = UT.Code.bindStack(slot(1).stackSize - mMaxStorage);
 			if (ST.move(delegator(SIDE_BOTTOM), tTileEntity, null, F, F, F, T, tToBeMoved, 1, tToBeMoved, 1) <= 0) break;
 		}
-	}
-	
-	public boolean allowInsertion(ItemStack aStack) {
-		if ((mMode & B[3]) != 0) return F;
-		if (ST.equal(slot(1), aStack)) return T;
-		OreDictItemData tData = OM.data_(slot(1)), aData = OM.data_(aStack);
-		if (tData != null && aData != null && tData.hasValidPrefixData() && aData.hasValidPrefixData() && tData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < tData.mPrefix.mAmount) {
-			return (tData.mPrefix.contains(TD.Prefix.DUST_BASED) && aData.mPrefix.contains(TD.Prefix.DUST_BASED)) || (tData.mPrefix.contains(TD.Prefix.INGOT_BASED) && aData.mPrefix.contains(TD.Prefix.INGOT_BASED));
-		}
-		return F;
 	}
 	
 	private ItemStackSet<ItemStackContainer> mLogisticsCache = null;
@@ -528,8 +494,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override
 	public boolean breakBlock() {
 		if (isServerSide() && mPartialUnits > 0) {
-			OreDictItemData tData = OM.data(slot(1));
-			if (tData != null && tData.hasValidPrefixData()) ST.drop(worldObj, getCoords(), tData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? OM.ingot(tData.mMaterial.mMaterial, mPartialUnits) : OM.dust(tData.mMaterial.mMaterial, mPartialUnits));
+			ST.drop(worldObj, getCoords(), getPartialStack());
 			mPartialUnits = 0;
 		}
 		return super.breakBlock();
@@ -558,6 +523,111 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			return tAmount;
 		}
 		return 0;
+	}
+	
+	public ItemStack getPartialStack() {
+		if (mPartialUnits <= 0) return NI;
+		OreDictItemData mData = OM.data(slot(1));
+		if (mData == null || !mData.hasValidPrefixData()) return NI;
+		
+		if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) return OM.dust(mData.mMaterial.mMaterial, mPartialUnits);
+		if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) return OM.ingot(mData.mMaterial.mMaterial, mPartialUnits);
+		
+		if (mData.mPrefix == OP.gem || mData.mPrefix == OP.blockGem) {
+			return OP.gem.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.gem.mAmount);
+		}
+		if (mData.mPrefix == OP.plate || mData.mPrefix == OP.blockPlate) {
+			return OP.plate.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.plate.mAmount);
+		}
+		if (mData.mPrefix == OP.plateGem || mData.mPrefix == OP.blockPlateGem) {
+			return OP.plateGem.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.plateGem.mAmount);
+		}
+		if (mData.mPrefix == OP.crushed || mData.mPrefix == OP.crushedTiny) {
+			return OP.crushedTiny.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.crushedTiny.mAmount);
+		}
+		if (mData.mPrefix == OP.crushedPurified || mData.mPrefix == OP.crushedPurifiedTiny) {
+			return OP.crushedPurifiedTiny.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.crushedPurifiedTiny.mAmount);
+		}
+		if (mData.mPrefix == OP.crushedCentrifuged || mData.mPrefix == OP.crushedCentrifugedTiny) {
+			return OP.crushedCentrifugedTiny.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.crushedCentrifugedTiny.mAmount);
+		}
+		if (mData.mPrefix == OP.oreRaw || mData.mPrefix == OP.blockRaw) {
+			return OP.oreRaw.mat(mData.mMaterial.mMaterial, mPartialUnits / U);
+		}
+		return NI;
+	}
+	
+	public long getUnitAmount(ItemStack aStack) {
+		OreDictItemData mData = OM.data_(slot(1)), aData = OM.data_(aStack);
+		if (mData != null && aData != null && mData.hasValidPrefixData() && aData.hasValidPrefixData() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < mData.mPrefix.mAmount) {
+			if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
+				if (aData.mPrefix.contains(TD.Prefix.DUST_BASED)) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+				if (aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.gem || mData.mPrefix == OP.blockGem) {
+				if (aData.mPrefix == OP.gem || aData.mPrefix == OP.blockGem) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.plate || mData.mPrefix == OP.blockPlate) {
+				if (aData.mPrefix == OP.plate || aData.mPrefix == OP.blockPlate) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.plateGem || mData.mPrefix == OP.blockPlateGem) {
+				if (aData.mPrefix == OP.plateGem || aData.mPrefix == OP.blockPlateGem) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.crushed || mData.mPrefix == OP.crushedTiny) {
+				if (aData.mPrefix == OP.crushed || aData.mPrefix == OP.crushedTiny) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.crushedPurified || mData.mPrefix == OP.crushedPurifiedTiny) {
+				if (aData.mPrefix == OP.crushedPurified || aData.mPrefix == OP.crushedPurifiedTiny) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.crushedCentrifuged || mData.mPrefix == OP.crushedCentrifugedTiny) {
+				if (aData.mPrefix == OP.crushedCentrifuged || aData.mPrefix == OP.crushedCentrifugedTiny) return aData.mPrefix.mAmount;
+				return 0;
+			}
+			if (mData.mPrefix == OP.oreRaw || mData.mPrefix == OP.blockRaw) {
+				if (aData.mPrefix == OP.oreRaw  ) return U;
+				if (aData.mPrefix == OP.blockRaw) return U * 9;
+				return 0;
+			}
+		}
+		return 0;
+	}
+	
+	public boolean allowInsertion(ItemStack aStack) {
+		if ((mMode & B[3]) != 0) return F;
+		if (ST.equal(slot(1), aStack)) return T;
+		return getUnitAmount(aStack) > 0;
+	}
+	
+	public boolean updatePartialContent(long aAmountAdded) {
+		if (aAmountAdded <= 0) return F;
+		mPartialUnits += aAmountAdded;
+		int tMaxStorage = getMaxContent();
+		ItemStack tContent = slot(1);
+		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
+			OreDictItemData mData = OM.data_(tContent);
+			if (mData != null && mData.hasValidPrefixData()) {
+				long tTargetAmount = (mData.mPrefix == OP.oreRaw ? U : mData.mPrefix == OP.blockRaw ? U * 9 : mData.mPrefix.mAmount);
+				if (mPartialUnits >= tTargetAmount) {
+					ItemStack tStack = ST.amount(mPartialUnits / tTargetAmount, tContent);
+					if (tStack.stackSize > 0) {
+						mPartialUnits -= tTargetAmount * tStack.stackSize;
+						if (tStack.stackSize + tContent.stackSize > tMaxStorage) mPartialUnits += tTargetAmount * (tStack.stackSize + tContent.stackSize - tMaxStorage);
+						tContent.stackSize = Math.min(tMaxStorage, tContent.stackSize + tStack.stackSize);
+						updateInventory();
+					}
+				}
+			}
+		}
+		return T;
 	}
 	
 	@Override
