@@ -65,7 +65,7 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.gasturbine.1", "3x3x4 of the Block you crafted this one with");
+		LH.add("gt.tooltip.multiblock.gasturbine.1", "3x3x4 of the Walls you crafted this with");
 		LH.add("gt.tooltip.multiblock.gasturbine.2", "Main centered on the 3x3 facing outwards");
 		LH.add("gt.tooltip.multiblock.gasturbine.3", "Input only possible at frontal 3x3");
 		LH.add("gt.tooltip.multiblock.gasturbine.4", "Exhaust Gas has to be removed!");
