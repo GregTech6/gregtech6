@@ -89,6 +89,7 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -100,7 +101,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	public String mMessage = Strings.EMPTY;
 	
-	public boolean mDisableVanillaOres = T, mVersionOutdated = F;
+	public boolean mDisableVanillaOres = T, mDisableVanillaLakes = T, mVersionOutdated = F;
 	public int mSkeletonsShootGTArrows = 16, mFlintChance = 30;
 	
 	public GT_Proxy() {
@@ -196,13 +197,14 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(DecorateBiomeEvent.Decorate aEvent) {
+		if (mDisableVanillaLakes && aEvent.type == Decorate.EventType.LAKE) {aEvent.setResult(Result.DENY); return;}
 		if (aEvent.world.provider.dimensionId == 0) {
 			if (MD.RTG.mLoaded) {
 				String tClassName = UT.Reflection.getLowercaseClass(aEvent.world.provider.terrainType);
 				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
 			}
-			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
-			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
+			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) {aEvent.setResult(Result.DENY); return;}
+			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) {aEvent.setResult(Result.DENY); return;}
 		}
 	}
 	@SubscribeEvent

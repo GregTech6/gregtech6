@@ -1339,8 +1339,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetComp"     , new OreDictItemData(MT.Redstone, U*4));
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetEmerald"  , new OreDictItemData(MT.Redstone, U, ANY.Emerald, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("ForciciumItem", new OreDictItemData(MT.Forcicium, U));
-		OreDictManager.INSTANCE.setAutomaticItemData(OD.itemFlint, new OreDictItemData(MT.Flint, U2));
-		OreDictManager.INSTANCE.setAutomaticItemData("flint", new OreDictItemData(MT.Flint, U2));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.itemFlint, new OreDictItemData(MT.Flint, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("flint", new OreDictItemData(MT.Flint, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.itemLeather, new OreDictItemData(MT.Leather, 1*U));
 		OreDictManager.INSTANCE.setAutomaticItemData("leather", new OreDictItemData(MT.Leather, 1*U));
 		OreDictManager.INSTANCE.setAutomaticItemData("bone", new OreDictItemData(MT.Bone, 3*U));

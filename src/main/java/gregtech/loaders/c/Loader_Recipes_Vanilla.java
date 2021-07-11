@@ -490,7 +490,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
 		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
 		
-		CR.shaped(OP.toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', "itemFlint");
+		CR.shaped(OP.toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', OD.itemFlint);
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), OP.toolHeadArrow.mat(MT.Flint, 1));
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Blocks.glass_pane, 1, W), OP.lens.mat(MT.Glass, 1));
 		
@@ -648,14 +648,14 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, U));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, U));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
-		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dustSmall.mat(MT.Flint, 1));
+		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dust.mat(MT.Flint, 1));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.gravel, 1, W), ST.make(Items.flint, 1, 0));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 0), OM.dust(MT.Coal));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 1), OM.dust(MT.Charcoal));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.rotten_flesh, 1, W), OP.dust.mat(MT.MeatRotten, 1));
 		
 		
-		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dustSmall.mat(MT.Flint, 2));
+		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), OP.dust.mat(MT.Flint, 1));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.gravel, 1, W), ST.make(Blocks.sand, 1, 0));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.web, 1, W), ST.make(Items.string, 1, 0));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Items.reeds, 1, W), IL.Remains_Plant.get(1));

@@ -140,6 +140,7 @@ public class GT6_Main extends Abstract_Mod {
 		gt_proxy.mSkeletonsShootGTArrows = ConfigsGT.GREGTECH.get("general", "SkeletonsShootGTArrows", 16);
 		gt_proxy.mFlintChance            = (int)UT.Code.bind(1, 100, ConfigsGT.GREGTECH.get("general", "FlintAndSteelChance", 30));
 		gt_proxy.mDisableVanillaOres     = ConfigsGT.GREGTECH.get("general", "DisableVanillaOres"    , T);
+		gt_proxy.mDisableVanillaLakes    = ConfigsGT.GREGTECH.get("general", "DisableVanillaLakes"   , T);
 		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
 		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);
 		
@@ -212,7 +213,7 @@ public class GT6_Main extends Abstract_Mod {
 
 		RM.pulverizing(ST.make(Blocks.cobblestone, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.stone      , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.gravel     , 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
+		RM.pulverizing(ST.make(Blocks.gravel     , 1, W), ST.make(Items.flint, 2, 0), OP.dust.mat(MT.Flint, 1), 10, F);
 		RM.pulverizing(ST.make(Blocks.furnace    , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.lit_furnace, 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
 		RM.pulverizing(ST.make(Items.bone        , 1, W), IL.Dye_Bonemeal.get(2), IL.Dye_Bonemeal.get(1), 50, T);

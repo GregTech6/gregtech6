@@ -1749,7 +1749,7 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  25, ANY.Stone             ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  27, ANY.Iron              ,  U * 6);
-		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U2   , MT.Flint,  U2);
+		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U2   , MT.Flint, U);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  33, MT.ObsidianSteel      ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  34, MT.ObsidianSteel      ,  U * 1, ANY.Quartz,  U * 1);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  37, MT.C                  ,  U2   , MT.Blaze,  U18);
@@ -2135,10 +2135,10 @@ public class LoaderItemData implements Runnable {
 		OM.dat2(ST.make(Items.iron_horse_armor, 1, W)               , ANY.Fe                ,  U * 8, MT.Leather, U * 6);
 		OM.dat2(ST.make(Items.golden_horse_armor, 1, W)             , MT.Au                 ,  U * 8, MT.Leather, U * 6);
 		OM.dat2(ST.make(Items.diamond_horse_armor, 1, W)            , ANY.Diamond           ,  U * 8, MT.Leather, U * 6);
-		OM.data(ST.make(Items.flint, 1, W)                          , MT.Flint              ,  U2);
+		OM.data(ST.make(Items.flint, 1, W)                          , MT.Flint              ,  U * 1);
 		OM.data(ST.make(Blocks.ice, 1, W)                           , MT.Ice                ,  U * 1);
 		OM.data(ST.make(Blocks.packed_ice, 1, W)                    , MT.Ice                ,  U * 2);
-		OM.data(ST.make(Items.snowball, 1, W)                       , MT.Snow               ,  U4);
+		OM.data(ST.make(Items.snowball, 1, W)                       , MT.Snow               ,  U4   );
 		OM.data(ST.make(Blocks.snow, 1, W)                          , MT.Snow               ,  U * 1);
 		OM.data(ST.make(Blocks.snow_layer, 1, W)                    , MT.Snow               ,     -1);
 		OM.data(ST.make(Blocks.redstone_lamp, 1, W)                 , ANY.Glowstone         ,  U * 4, MT.Redstone, U * 4);
