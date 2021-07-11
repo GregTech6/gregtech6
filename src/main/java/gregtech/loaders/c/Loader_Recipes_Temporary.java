@@ -82,6 +82,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 		}
 		
 		
+		if (MD.BbLC.mLoaded) {
+			CR.delate(MD.BbLC, "item.BiblioClipboard");
+			CR.shaped(ST.make(MD.BbLC, "item.BiblioClipboard", 1, 0), DEF_REV_NCC, "I F", "PPP", " W ", 'F', OD.craftingFeather, 'W', OD.pressurePlateWood, 'P', OD.paperEmpty, 'I', DYE_OREDICTS[DYE_INDEX_Black]);
+		}
+		
+		
 		if (MD.BTRS.mLoaded) {
 			CR.delate(IL.BTRS_Backpack.wild(1));
 			CR.shaped(IL.BTRS_Backpack .get(1), DEF_REV_NCC, "LqL", "SCS", "LPL", 'L', OD.craftingLeather, 'S', OD.itemString, 'P', OP.plate.dat(MT.Au), 'C', OD.craftingChest);
