@@ -480,10 +480,14 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemExquisite        , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 96, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, F, T, F, tConditionM));
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemLegendary        , 1, FL.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 96, tMultiplier[i] * 7 * 16, 0, NF, plateGem      , 8, NI, NI, F, T, F, tConditionM));
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(bouleGt             , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, T, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotDouble         , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, ingot         , 2, NI, NI, T, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotDouble         , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, ingot         , 2, NI, NI, F, T, F, tConditionM));
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotTriple         , 1, FL.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, ingot         , 3, NI, NI, F, T, F, tConditionM));
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuadruple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, ingot         , 4, NI, NI, F, T, F, tConditionM));
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuintuple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot         , 5, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateDouble         , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, plate         , 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateTriple         , 1, FL.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, plate         , 3, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateQuadruple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, plate         , 4, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateQuintuple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plate         , 5, NI, NI, F, T, F, tConditionM));
 		}
 		
 		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt, ingotHot);

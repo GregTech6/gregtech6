@@ -296,6 +296,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.BP, "teslatite_dust", 0);
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , MD.BP, "infused_teslatite_dust", 0);
 			
+			OM.reg(OD.craftingWorkBench                  , ST.make(MD.BP, "project_table", 1, 0));
 			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
 			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 			OM.reg("cropIndigo"                          , ST.make(MD.BP, "indigo_flower", 1, 0));

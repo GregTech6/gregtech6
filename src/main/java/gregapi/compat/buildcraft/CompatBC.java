@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,21 @@
 
 package gregapi.compat.buildcraft;
 
+import static gregapi.data.CS.*;
+
+import buildcraft.api.core.BuildCraftAPI;
+import buildcraft.core.properties.WorldPropertyIsWood;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import gregapi.code.TagData;
 import gregapi.compat.CompatBase;
+import gregapi.data.OP;
 import gregapi.data.TD;
+import gregapi.util.ST;
+import gregapi.wooddict.WoodDictionary;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockHugeMushroom;
+import net.minecraft.world.IBlockAccess;
 
 
 public class CompatBC extends CompatBase implements ICompatBC {
@@ -40,6 +51,18 @@ public class CompatBC extends CompatBase implements ICompatBC {
 			new TriggerBC_Energy_Capacity_Partial(tEnergyType);
 			new TriggerBC_Energy_Capacity_NotFull(tEnergyType);
 			new TriggerBC_Energy_Capacity_Full(tEnergyType);
+		}
+	}
+	
+	@Override
+	public void onServerStarting(FMLServerStartingEvent aEvent) {
+		BuildCraftAPI.registerWorldProperty("wood", new WorldPropertyIsLog());
+	}
+	
+	public static class WorldPropertyIsLog extends WorldPropertyIsWood {
+		@Override
+		public boolean get(IBlockAccess aWorld, Block aBlock, int aMeta, int aX, int aY, int aZ) {
+			return aBlock instanceof BlockHugeMushroom || aBlock.isWood(aWorld, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMeta)) || WoodDictionary.WOODS.containsKey(aBlock, aMeta, T);
 		}
 	}
 }

@@ -44,6 +44,9 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing BP Recipes.");
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) RM.Press.addRecipeX(T, 16, 256, ST.array((tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat, 1), OP.foil.mat(MT.Zn, 2)), ST.make(MD.BP, "zincplate", 2, 0));
 		
+		// This Table is a liability more than a useful thing. Use a less laggy Table like the one from Better Storage if you need to.
+		CR.remout(MD.BP, "project_table");
+		
 		CR.shaped(ST.make(MD.BP, "iron_wire"        , 1, 0), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.wireFine.dat(ANY.Fe));
 		CR.shaped(ST.make(MD.BP, "copper_wire"      , 1, 0), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.wireFine.dat(ANY.Cu));
 		CR.shaped(ST.make(MD.BP, "silicon_wafer"    , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(ANY.Si));

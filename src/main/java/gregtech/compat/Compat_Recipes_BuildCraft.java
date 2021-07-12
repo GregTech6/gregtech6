@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,7 +69,7 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 			RM.Press            .addRecipe2(T, 64,  256, (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat, 1) , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 1, 1));
 			RM.Press            .addRecipe2(T, 64,  512, OP.plate.mat(MT.Au, 1)                             , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 1, 2));
 			for (OreDictMaterial tMat : ANY.Diamond.mToThis)
-			RM.Press            .addRecipe2(T,256,  256, OP.plateGem.mat(tMat, 1)                           , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 1, 3));
+			RM.Press            .addRecipe2(T,128,  512, OP.plateGem.mat(tMat, 1)                           , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 1, 3));
 			RM.Press            .addRecipe2(T, 64,  512, OP.plateGem.mat(MT.EnderPearl, 1)                  , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 2, 4));
 			for (OreDictMaterial tMat : ANY.SiO2.mToThis) {ItemStack tQuartzPlate = OP.plateGem.mat(tMat, 1); if (ST.valid(tQuartzPlate))
 			RM.Press            .addRecipe2(T, 64,  768, tQuartzPlate                                       , ST.make(MD.BC_SILICON, "redstoneChipset", 1, 0), ST.make(MD.BC_SILICON, "redstoneChipset", 1, 5));}
