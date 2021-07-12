@@ -31,6 +31,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
@@ -87,7 +88,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
+public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_RemovedByPlayer, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
 	private static int GAS_RANGE = 3, FLAME_RANGE = 3;
 	private static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
@@ -106,7 +107,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
 		mContent = OreDictMaterialStack.loadList(NBT_MATERIALS, aNBT);
-		mMeltDown = (mTemperature+100 > getTemperatureMax(SIDE_ANY));
+		mMeltDown = (mTemperature+100 > getTemperatureMax(SIDE_INSIDE));
 	}
 	
 	@Override
@@ -126,7 +127,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X) + " 1 " + TD.Energy.HU.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(TD.Energy.HU, SIDE_ANY)+" Units per Tick required!)");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.crucible.1"));
-		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_ANY) + " K)");
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_INSIDE) + " K)");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_FIRE) + " ("+(FLAME_RANGE+1)+"m)");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
@@ -153,8 +154,8 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onServerTickPost(boolean aFirst) {
 		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord+PX_P[2], yCoord+PX_P[2], zCoord+PX_P[2], PX_N[4], 1, PX_N[4]));
 		
@@ -317,13 +318,14 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
+			GarbageGT.trash(mContent);
 			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (mTemperature - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 			return;
 		}
 		
-		if (mMeltDown != (mTemperature+100 > getTemperatureMax(SIDE_ANY))) {
+		if (mMeltDown != (mTemperature+100 > getTemperatureMax(SIDE_INSIDE))) {
 			mMeltDown = !mMeltDown;
 			updateClientData();
 		}
@@ -390,8 +392,21 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public double getWeightValue(byte aSide) {return OM.weight(mContent);}
 	
 	@Override
+	@SuppressWarnings("unchecked")
+	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
+		if (mTemperature >= 1300 && isServerSide() && !UT.Entities.isCreative(aPlayer)) {
+			UT.Sounds.send(SFX.MC_FIZZ, this);
+			GarbageGT.trash(mContent);
+			try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, mTemperature / 20.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
+			return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
+		}
+		return worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+	}
+	
+	@Override
 	public boolean breakBlock() {
-		while (!mContent.isEmpty()) GarbageGT.trash(mContent.remove(0));
+		GarbageGT.trash(mContent);
 		return super.breakBlock();
 	}
 	

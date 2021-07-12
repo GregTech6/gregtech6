@@ -55,32 +55,32 @@ public class BlockTreeLogCFireProof extends BlockBaseLog implements IBlockToolab
 		OM.reg(ST.make(this, 1, 8), OD.logWood);
 		OM.reg(ST.make(this, 1,12), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".1.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".5.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".9.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".13.name", " Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 1), OD.logWood);
-		OM.reg(ST.make(this, 1, 5), OD.logWood);
-		OM.reg(ST.make(this, 1, 9), OD.logWood);
-		OM.reg(ST.make(this, 1,13), OD.logWood);
+	//  LH.add(getUnlocalizedName()+ ".1.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".5.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".9.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".13.name", " Log (Fireproof)");
+	//  OM.reg(ST.make(this, 1, 1), OD.logWood);
+	//  OM.reg(ST.make(this, 1, 5), OD.logWood);
+	//  OM.reg(ST.make(this, 1, 9), OD.logWood);
+	//  OM.reg(ST.make(this, 1,13), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".2.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", " Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 2), OD.logWood);
-		OM.reg(ST.make(this, 1, 6), OD.logWood);
-		OM.reg(ST.make(this, 1,10), OD.logWood);
-		OM.reg(ST.make(this, 1,14), OD.logWood);
+	//  LH.add(getUnlocalizedName()+ ".2.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".6.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".10.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".14.name", " Log (Fireproof)");
+	//  OM.reg(ST.make(this, 1, 2), OD.logWood);
+	//  OM.reg(ST.make(this, 1, 6), OD.logWood);
+	//  OM.reg(ST.make(this, 1,10), OD.logWood);
+	//  OM.reg(ST.make(this, 1,14), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".3.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".7.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", " Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".15.name", " Log (Fireproof)");
-		OM.reg(ST.make(this, 1, 3), OD.logWood);
-		OM.reg(ST.make(this, 1, 7), OD.logWood);
-		OM.reg(ST.make(this, 1,11), OD.logWood);
-		OM.reg(ST.make(this, 1,15), OD.logWood);
+	//  LH.add(getUnlocalizedName()+ ".3.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".7.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".11.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".15.name", " Log (Fireproof)");
+	//  OM.reg(ST.make(this, 1, 3), OD.logWood);
+	//  OM.reg(ST.make(this, 1, 7), OD.logWood);
+	//  OM.reg(ST.make(this, 1,11), OD.logWood);
+	//  OM.reg(ST.make(this, 1,15), OD.logWood);
 	}
 	
 	@Override public int getLeavesRangeSide(byte aMetaData) {return 0;}

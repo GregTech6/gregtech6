@@ -1359,6 +1359,13 @@ public class CS {
 			if (aMaterial == null || aMaterial.mAmount < OP.scrapGt.mAmount) return 0;
 			return trash(OP.scrapGt.mat(aMaterial.mMaterial, aMaterial.mAmount / OP.scrapGt.mAmount));
 		}
+		public static long trash(Iterable<OreDictMaterialStack> aMaterials) {
+			if (aMaterials == null) return 0;
+			long rTrashed = 0;
+			Iterator<OreDictMaterialStack> tIterator = aMaterials.iterator();
+			while (tIterator.hasNext()) {rTrashed += trash(tIterator.next()); tIterator.remove();};
+			return rTrashed;
+		}
 		
 		public static long trash(FluidStack aFluid) {
 			return aFluid == null ? 0 : trash(aFluid, aFluid.amount);
