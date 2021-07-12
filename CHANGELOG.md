@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.16: (Not released yet, released whenever it needs to be)
 [FIXED] The Buildcraft Lumberjack should now work on all GT6 Trees, and some of the other Mod Trees it did not work on before either.
 [CHANGED] Mass Storages and Item Barrels now accept a greater variety of Storage Blocks for packaging similar to Dusts and Ingots. Examples of such include: Plates, Gems, Crushed Ores and Raw Ores.
+[ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
 
 
 6.14.15:

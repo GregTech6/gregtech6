@@ -380,8 +380,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Li                      ), FL.make(tOxygen,   500), NF                   , OM.dust(MT.Li2O, 3*U2));
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.V2O5, 7*U2));
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Cr                      ), FL.make(tOxygen,  2000), NF                   , OM.dust(MT.CrO2,   U ));
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S                       ), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Blaze               , U9), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OP.dust.mat(MT.S                , 1), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,  144, OP.blockDust.mat(MT.S           , 1), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OP.dustTiny.mat(MT.Blaze        , 1), FL.make(tOxygen, 18000), MT.SO2.gas(27*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,  144, OP.dust.mat(MT.Blaze            , 1), FL.make(tOxygen, 18000), MT.SO2.gas(27*U  , F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16, 1296, OP.blockDust.mat(MT.Blaze       , 1), FL.make(tOxygen,162000), MT.SO2.gas(243*U , F), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.C.mToThis) if (tMat != MT.Graphene)
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), FL.make(tOxygen,  2000), MT.CO2.gas( 3*U  , F), ZL_IS);
@@ -409,8 +412,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite), FL.make(tAir, 4000), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu   , 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite    ), FL.make(tAir, 5000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Sn, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
 		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite   ), FL.make(tAir, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn   , 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S        ), FL.make(tAir, 8000), MT.SO2.gas(3*U, F), ZL_IS);
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Blaze, U9), FL.make(tAir, 8000), MT.SO2.gas(3*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OP.dust.mat(MT.S         , 1), FL.make(tAir,  8000), MT.SO2.gas(  3*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,  144, OP.blockDust.mat(MT.S    , 1), FL.make(tAir,  8000), MT.SO2.gas(  3*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,   16, OP.dustTiny.mat(MT.Blaze , 1), FL.make(tAir, 92000), MT.SO2.gas( 27*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16,  144, OP.dust.mat(MT.Blaze     , 1), FL.make(tAir, 92000), MT.SO2.gas( 27*U, F), ZL_IS);
+		RM.Roasting     .addRecipe1(T, 16, 1296, OP.blockDust.mat(MT.Blaze, 1), FL.make(tAir,648000), MT.SO2.gas(243*U, F), ZL_IS);
 		}
 		
 		if (FL.Heavy_Reiker.exists())

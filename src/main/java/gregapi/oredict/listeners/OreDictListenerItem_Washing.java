@@ -66,7 +66,7 @@ public class OreDictListenerItem_Washing extends OreDictListenerItem {
 					((BlockCauldron)tBlock).func_150024_a(aItem.worldObj, tX, tY, tZ, tMetaData-1);
 					if (mByProductPrefixes.length > 0 && RNGSUS.nextInt(mChance) > 0) {
 						ArrayListNoNulls<ItemStack> tStacks = new ArrayListNoNulls<>();
-						for (OreDictPrefix tPrefix : mByProductPrefixes) tStacks.add(tPrefix.mat(aMaterial.mByProducts.size()>0?UT.Code.select(RNGSUS.nextInt(aMaterial.mByProducts.size()), aMaterial, aMaterial.mByProducts):aMaterial, 1));
+						for (OreDictPrefix tPrefix : mByProductPrefixes) tStacks.add(tPrefix.mat(UT.Code.select(aMaterial, aMaterial.mByProducts), 1));
 						if (tStacks.size() > 0) ST.drop(aItem.worldObj, aItem.posX, aItem.posY, aItem.posZ, tStacks.get(RNGSUS.nextInt(tStacks.size())));
 					}
 					ST.drop(aItem.worldObj, aItem.posX, aItem.posY, aItem.posZ, tStack);

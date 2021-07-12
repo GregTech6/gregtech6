@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -330,6 +330,33 @@ public class OM {
 		for (OreDictMaterialStack tStack : aList) if (tStack != null && tStack.mMaterial != MT.NULL) rWeight += tStack.weight();
 		return rWeight;
 	}
+	
+	
+	public static ItemStack crushed(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushed.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : crushedPurified(aMaterial, aStackSize);
+	}
+	public static ItemStack crushedTiny(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushedTiny.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : crushedPurifiedTiny(aMaterial, aStackSize);
+	}
+	public static ItemStack crushedPurified(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushedPurified.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : crushedCentrifuged(aMaterial, aStackSize);
+	}
+	public static ItemStack crushedPurifiedTiny(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushedPurifiedTiny.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : crushedCentrifugedTiny(aMaterial, aStackSize);
+	}
+	public static ItemStack crushedCentrifuged(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushedCentrifuged.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : OP.dust.mat(aMaterial, aStackSize);
+	}
+	public static ItemStack crushedCentrifugedTiny(OreDictMaterial aMaterial, long aStackSize) {
+		ItemStack rStack = OP.crushedCentrifugedTiny.mat(aMaterial, aStackSize);
+		return ST.valid(rStack) ? rStack : OP.dustTiny.mat(aMaterial, aStackSize);
+	}
+	
 	
 	public static ItemStack gem(OreDictMaterialStack aMaterial) {
 		return aMaterial==null?null:gem(aMaterial.mMaterial, aMaterial.mAmount);

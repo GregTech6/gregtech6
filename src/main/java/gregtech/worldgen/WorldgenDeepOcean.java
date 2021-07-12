@@ -26,6 +26,7 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.MT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.world.World;
@@ -44,7 +45,7 @@ public class WorldgenDeepOcean extends WorldgenObject {
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (!aBiomeNames.contains(BiomeGenBase.deepOcean.biomeName)) return F;
-		int i = 3 + aRandom.nextInt(9), j = 30 + aRandom.nextInt(9), k = 3 + aRandom.nextInt(9);
+		int i = 3 + aRandom.nextInt(9), j = 30 + aRandom.nextInt(9), k = 3 + aRandom.nextInt(9), m = 0, n = 0;
 		if (WD.anywater(aChunk.getBlock(i, j, k))) {
 			switch (new NoiseGenerator(aWorld).get(aMinX+8, 32, aMinZ+8, 16)) {
 			default:
@@ -58,18 +59,22 @@ public class WorldgenDeepOcean extends WorldgenObject {
 				for (int l =  8; l < 11; l++) {
 					WD.set(aChunk, i  , j+l, k  , BlocksGT.PrismarineDark, 0);
 					WD.set(aChunk, i  , j-l, k  , BlocksGT.PrismarineDark, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[14].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.OREMATS.Garnierite.mID, null, F, T);
 				}
-				for (int l =  5; l <  8; l++) for (int m = -1; m <= 1; m++) for (int n = -1; n <= 1; n++) {
+				for (int l =  5; l <  8; l++) for (m = -1; m <= 1; m++) for (n = -1; n <= 1; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineDark, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineDark, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[14].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.OREMATS.Garnierite.mID, null, F, T);
 				}
-				for (int l =  2; l <  5; l++) for (int m = -2; m <= 2; m++) for (int n = -2; n <= 2; n++) {
+				for (int l =  2; l <  5; l++) for (m = -2; m <= 2; m++) for (n = -2; n <= 2; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineDark, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineDark, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[14].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.OREMATS.Garnierite.mID, null, F, T);
 				}
-				for (int l =  0; l <  2; l++) for (int m = -3; m <= 3; m++) for (int n = -3; n <= 3; n++) {
+				for (int l =  0; l <  2; l++) for (m = -3; m <= 3; m++) for (n = -3; n <= 3; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineDark, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineDark, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[14].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.OREMATS.Garnierite.mID, null, F, T);
 				}
 				return T;
 			case 14: case 15:
@@ -77,18 +82,22 @@ public class WorldgenDeepOcean extends WorldgenObject {
 				for (int l =  8; l < 11; l++) {
 					WD.set(aChunk, i  , j+l, k  , BlocksGT.PrismarineLight, 0);
 					WD.set(aChunk, i  , j-l, k  , BlocksGT.PrismarineLight, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[13].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.MnO2.mID, null, F, T);
 				}
-				for (int l =  5; l <  8; l++) for (int m = -1; m <= 1; m++) for (int n = -1; n <= 1; n++) {
+				for (int l =  5; l <  8; l++) for (m = -1; m <= 1; m++) for (n = -1; n <= 1; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineLight, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineLight, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[13].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.MnO2.mID, null, F, T);
 				}
-				for (int l =  2; l <  5; l++) for (int m = -2; m <= 2; m++) for (int n = -2; n <= 2; n++) {
+				for (int l =  2; l <  5; l++) for (m = -2; m <= 2; m++) for (n = -2; n <= 2; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineLight, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineLight, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[13].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.MnO2.mID, null, F, T);
 				}
-				for (int l =  0; l <  2; l++) for (int m = -3; m <= 3; m++) for (int n = -3; n <= 3; n++) {
+				for (int l =  0; l <  2; l++) for (m = -3; m <= 3; m++) for (n = -3; n <= 3; n++) {
 					WD.set(aChunk, i+m, j+l, k+n, BlocksGT.PrismarineLight, 0);
 					WD.set(aChunk, i+m, j-l, k+n, BlocksGT.PrismarineLight, 0);
+					if (aRandom.nextInt(8) == 0) BlocksGT.ores_normal[13].placeBlock(aWorld, aMinX+i+m, j+l, aMinZ+k+n, SIDE_UNKNOWN, MT.MnO2.mID, null, F, T);
 				}
 				return T;
 			}

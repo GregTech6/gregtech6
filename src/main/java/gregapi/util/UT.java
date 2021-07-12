@@ -1471,8 +1471,8 @@ public class UT {
 		
 		public static <E> E select(long aIndex, E aReplacement, List<E> aList) {
 			if (aList == null || aList.isEmpty()) return aReplacement;
-			if (aList.size() <= aIndex) return aList.get(aList.size() - 1);
-			if (aIndex < 0) return aList.get(0);
+			if (aIndex >= aList.size()          ) return aReplacement == null ? aList.get(aList.size() - 1) : aReplacement;
+			if (aIndex <  0                     ) return aReplacement == null ? aList.get(               0) : aReplacement;
 			return aList.get((int)aIndex);
 		}
 		
