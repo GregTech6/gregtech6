@@ -27,6 +27,7 @@ import gregapi.data.CS.BushesGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.OreDictToolNames;
+import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.ToolsGT;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
@@ -264,8 +265,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}                  , IL.Comb_Tera    .get(1), NF   , FL.Concrete                             .make(   L), OM.dust(MT.Basalz, U9)            , OP.stick.mat(MT.Basalz, 1));
 		
 		
-		IL.Food_Lemon                          .set(addItem(tLastID =     0, "Lemon"                                    , "Don't make Lemonade"         , "cropLemon"                   , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Lemon_Sliced                   .set(addItem(tLastID =     1, "Lemon Slice"                              , "Ideal to put on your Drink"                                  , new FoodStat( 0, 0.150F,   0, C+36,  0.30F,   0,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1)));
+		IL.Food_Lemon                          .set(addItem(tLastID =     0, "Lemon"                                    , "Don't make Lemonade"         , "cropLemon"                   , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_CONDUCTIVE, 300, 0, 70), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Lemon_Sliced                   .set(addItem(tLastID =     1, "Lemon Slice"                              , "Ideal to put on your Drink"                                  , new FoodStat( 0, 0.150F,   0, C+36,  0.30F,   0,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_CONDUCTIVE, 300, 0, 70), TC.stack(TC.HERBA, 1)));
 		RM.replicateOrganic( 3,  4, IL.Food_Lemon.get(1));
 		CR.shaped(IL.Food_Lemon_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropLemon");
 
@@ -287,13 +288,13 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shaped(IL.Food_Onion_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropOnion");
 		
 		
-		IL.Food_Cucumber                       .set(addItem(tLastID =    40, "Cucumber"                                 , "Not a Sea Cucumber!"         , "cropCucumber"                , new FoodStat( 1, 1.200F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cucumber                       .set(addItem(tLastID =    40, "Cucumber"                                 , "Not a Sea Cucumber! Not Rick either!", "cropCucumber"        , new FoodStat( 1, 1.200F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cucumber_Sliced                .set(addItem(tLastID =    41, "Cucumber Slice"                           , "QUEWWWCUMMMBURRR!!!"                                         , new FoodStat( 0, 0.300F,   0, C+36,  0.30F,   0,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1)));
 		RM.replicateOrganic( 4,  8, IL.Food_Cucumber.get(1));
 		CR.shaped(IL.Food_Cucumber_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropCucumber");
 		
 		
-		IL.Food_Chili_Pepper                   .set(addItem(tLastID =    50, "Chili Pepper"                             , "It is red and hot"           , "cropChilipepper"             , new FoodStat( 1, 1.200F, -10, C+40,  0.50F,   0,   0,  10,   0,   0, EnumAction.eat, null                                 , F, T, F, T, Potion.confusion.id, 200, 1, 40), TC.stack(TC.MESSIS, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Chili_Pepper                   .set(addItem(tLastID =    50, "Chili Pepper"                             , "It is red and hot"           , "cropChilipepper"             , new FoodStat( 1, 1.200F, -10, C+40,  0.50F,   0,   0,  10,   0,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_FLAMMABLE, 300, 0, 70, Potion.confusion.id, 200, 1, 40), TC.stack(TC.MESSIS, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.FAMES, 1)));
 		RM.replicateOrganic( 4,  9, IL.Food_Chili_Pepper.get(1));
 		
 		
@@ -360,8 +361,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Unboxinator.addRecipe1(T, 16, 16, IL.Food_PotatoChips_Packaged.get(1), IL.Food_PotatoChips.get(1), OP.scrapGt.mat(MT.Al, 2));
 		
 		
-		IL.Food_ChiliChips                     .set(addItem(tLastID =  9020, "Chili Chips"                              , "Spicy"                                                       , new FoodStat( 7, 1.200F, -10, C+40,  0.30F,   0,   0,  30,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.IGNIS, 1)));             setFluidContainerStats(tLastID, 0, 8);
-		IL.Food_ChiliChips_Packaged            .set(addItem(tLastID =  9021, "Bag of Chili Chips"                       , "Stop making noises Baj!"                                     , new FoodStat( 7, 1.200F, -10, C+40,  0.30F,   0,   0,  30,  10,   0, EnumAction.eat, OP.scrapGt.mat(MT.Al, 2)             , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.IGNIS, 1)));
+		IL.Food_ChiliChips                     .set(addItem(tLastID =  9020, "Chili Chips"                              , "Spicy"                                                       , new FoodStat( 7, 1.200F, -10, C+40,  0.30F,   0,   0,  30,  10,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_FLAMMABLE, 300, 0, 70), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.IGNIS, 1)));             setFluidContainerStats(tLastID, 0, 8);
+		IL.Food_ChiliChips_Packaged            .set(addItem(tLastID =  9021, "Bag of Chili Chips"                       , "Stop making noises Baj!"                                     , new FoodStat( 7, 1.200F, -10, C+40,  0.30F,   0,   0,  30,  10,   0, EnumAction.eat, OP.scrapGt.mat(MT.Al, 2)             , F, T, F, T, PotionsGT.ID_FLAMMABLE, 300, 0, 70), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.IGNIS, 1)));
 		CR.shapeless(IL.Food_ChiliChips_Packaged.get(1), CR.DEF_NCC, new Object[] {OP.foil.dat(MT.Al), IL.Food_ChiliChips});
 		RM.Boxinator.addRecipe2(T, 16, 16, IL.Food_ChiliChips.get(1), OP.foil.mat(MT.Al, 1), IL.Food_ChiliChips_Packaged.get(1));
 		RM.Unboxinator.addRecipe1(T, 16, 16, IL.Food_ChiliChips_Packaged.get(1), IL.Food_ChiliChips.get(1), OP.scrapGt.mat(MT.Al, 2));
@@ -370,8 +371,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.replicateOrganic( 4, 12, ST.make(Blocks.pumpkin, 1, 0));
 		
 		
-		IL.Food_Banana                         .set(addItem(tLastID =    90, "Banana"                                   , "For Scale"                   , "cropBanana"                  , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Banana_Sliced                  .set(addItem(tLastID =    91, "Banana Slice"                             , "Food for Minions"                                            , new FoodStat( 0, 0.150F,   0, C+36,  0.30F,   0,   0,   0,   2,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1)));
+		IL.Food_Banana                         .set(addItem(tLastID =    90, "Banana"                                   , "For Scale"                   , "cropBanana"                  , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_SLIPPERY, 300, 0, 70), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Banana_Sliced                  .set(addItem(tLastID =    91, "Banana Slice"                             , "Food for Minions"                                            , new FoodStat( 0, 0.150F,   0, C+36,  0.30F,   0,   0,   0,   2,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_SLIPPERY, 300, 0, 70), TC.stack(TC.HERBA, 1)));
 		RM.replicateOrganic( 3,  9, IL.Food_Banana.get(1));
 		CR.shaped(IL.Food_Banana_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropBanana");
 		
@@ -389,7 +390,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.replicateOrganic( 5,  7, IL.Food_Gooseberry.get(1));
 		// Grows on Trees
 		
-		IL.Food_Candleberry                    .set(addItem(tLastID =   130, "Candleberry"                              , ""                            , "cropCandleberry"             , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.GELUM, 1)));
+		IL.Food_Candleberry                    .set(addItem(tLastID =   130, "Candleberry"                              , ""                            , "cropCandleberry"             , new FoodStat( 1, 0.600F,   0, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_FLAMMABLE, 300, 0, 30), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.GELUM, 1)));
 		RM.replicateOrganic( 5,  8, IL.Food_Candleberry.get(1));
 		BushesGT.put(IL.Food_Candleberry.get(1), 0x44ff44, 0xccffcc, 0xaaffaa, 0xccffcc);
 		
@@ -744,7 +745,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 
 
-		IL.Food_Chum_On_Stick                  .set(addItem(tLastID = 10010, "Chum on a Stick"                          , "Don't forget to try our Chum-balaya"                         , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, IL.Stick.get(1)                      , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1), new OreDictItemData(ANY.Wood, U2)));
+		IL.Food_Chum_On_Stick                  .set(addItem(tLastID = 10010, "Chum on a Stick"                          , "Don't forget to try our Chum-balaya"                         , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, IL.Stick.get(1)                      , T, F, T, T, PotionsGT.ID_STICKY, 300, 0, 90, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1), new OreDictItemData(ANY.Wood, U2)));
 		CR.shapeless(IL.Food_Chum_On_Stick.get(1), CR.DEF_NCC, new Object[] {OP.stick.dat(ANY.Wood), "foodChum"});
 
 
@@ -860,7 +861,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Pill_Empty                          .set(addItem(tLastID = 31000, "Empty Wax Pill"                           , "Placebo"                                                     , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T), TC.stack(TC.SANO, 1), TC.stack(TC.VACUOS, 1)));
-		IL.Pill_Iodine                         .set(addItem(tLastID = 31001, "Radaway"                                  , "Pill that cures Effects of Radiation"                        , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, CS.PotionsGT.ID_RADIATION, -1, -1, 100), TC.stack(TC.SANO, 3), TD.Creative.HIDDEN));
+		IL.Pill_Iodine                         .set(addItem(tLastID = 31001, "Radaway"                                  , "Pill that cures Effects of Radiation"                        , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, PotionsGT.ID_RADIATION, -1, -1, 100), TC.stack(TC.SANO, 3), TD.Creative.HIDDEN));
 		IL.Pill_Mint                           .set(addItem(tLastID = 31002, "Peppermint"                               , "Take a fresh energetic Breath"                               , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, Potion.moveSlowdown.id, -1, -1, 100), TC.stack(TC.SANO, 1), TC.stack(TC.HERBA, 1)));
 		IL.Pill_Blue                           .set(addItem(tLastID = 31003, "Blue Pill"                                , "Ignore the nauseating Reality"                               , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, Potion.confusion.id, -1, -1, 100), TC.stack(TC.SANO, 1), TC.stack(TC.CORPUS, 1)));
 		IL.Pill_Red                            .set(addItem(tLastID = 31004, "Red Pill"                                 , "Open your Eyes to the Truth"                                 , new FoodStat( 0, 0.000F,   0, C+37,  0.00F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , T, F, F, T, Potion.blindness.id, -1, -1, 100), TC.stack(TC.SANO, 1), TC.stack(TC.SENSUS, 1)));
@@ -869,7 +870,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Boxinator    .addRecipe2(T, 16,   16, OM.dust(MT.Mint)                       , IL.Pill_Empty.get(1), IL.Pill_Mint.get(1));
 		RM.Boxinator    .addRecipe2(T, 16,   16, ST.make(Blocks.brown_mushroom, 1, W)   , IL.Pill_Empty.get(1), IL.Pill_Antidote.get(1));
 		
-		IL.Pill_Cure_All                       .set(addItem(tLastID = 31999, "Cure All"                                 , "Cures everything you could imagine*"                         , new FoodStat( 0, 0.000F,   0, C+37,  1.00F,-999,-999,-999,-999,-999, EnumAction.eat, null                                 , T, F, F, T, CS.PotionsGT.ID_RADIATION, -1, -1, 100, CS.PotionsGT.ID_HYPOTHERMIA, -1, -1, 100, CS.PotionsGT.ID_HEATSTROKE, -1, -1, 100, CS.PotionsGT.ID_FROSTBITE, -1, -1, 100, CS.PotionsGT.ID_DEHYDRATION, -1, -1, 100, CS.PotionsGT.ID_INSANITY, -1, -1, 100, Potion.digSlowdown.id, -1, -1, 100, Potion.moveSlowdown.id, -1, -1, 100, Potion.hunger.id, -1, -1, 100, Potion.harm.id, -1, -1, 100, Potion.confusion.id, -1, -1, 100, Potion.blindness.id, -1, -1, 100, Potion.weakness.id, -1, -1, 100, Potion.poison.id, -1, -1, 100, Potion.wither.id, -1, -1, 100, Potion.regeneration.id, 100, 100, 100, Potion.field_76443_y.id, 100, 100, 100).setMilk().setExtinguish(), new Behavior_CureZombie(500, F), TC.stack(TC.SANO, 10), TD.Creative.HIDDEN));
+		IL.Pill_Cure_All                       .set(addItem(tLastID = 31999, "Cure All"                                 , "Cures everything you could imagine*"                         , new FoodStat( 0, 0.000F,   0, C+37,  1.00F,-999,-999,-999,-999,-999, EnumAction.eat, null                                 , T, F, F, T, PotionsGT.ID_RADIATION, -1, -1, 100, PotionsGT.ID_HYPOTHERMIA, -1, -1, 100, PotionsGT.ID_HEATSTROKE, -1, -1, 100, PotionsGT.ID_FROSTBITE, -1, -1, 100, PotionsGT.ID_DEHYDRATION, -1, -1, 100, PotionsGT.ID_INSANITY, -1, -1, 100, PotionsGT.ID_FLAMMABLE, -1, -1, 100, PotionsGT.ID_SLIPPERY, -1, -1, 100, PotionsGT.ID_CONDUCTIVE, -1, -1, 100, PotionsGT.ID_STICKY, -1, -1, 100, Potion.digSlowdown.id, -1, -1, 100, Potion.moveSlowdown.id, -1, -1, 100, Potion.hunger.id, -1, -1, 100, Potion.harm.id, -1, -1, 100, Potion.confusion.id, -1, -1, 100, Potion.blindness.id, -1, -1, 100, Potion.weakness.id, -1, -1, 100, Potion.poison.id, -1, -1, 100, Potion.wither.id, -1, -1, 100, Potion.regeneration.id, 100, 100, 100, Potion.field_76443_y.id, 100, 100, 100).setMilk().setExtinguish(), new Behavior_CureZombie(500, F), TC.stack(TC.SANO, 10), TD.Creative.HIDDEN));
 		
 		
 		
@@ -881,8 +882,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Cheese_Bar                     .set(addItem(tLastID = 32111, "Cheese Bar"                               , "Compact Cheese"                      , OP.ingot.dat(MT.Cheese)       , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   8,   0,   8, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 2)));
 		IL.Food_Fish_Raw                       .set(addItem(tLastID = 32113, "Raw Fish Bar"                             , "Compressed Fish"                     , OP.ingot.dat(MT.FishRaw)      , new FoodStat( 2, 0.600F,   0, C+37,  0.10F,   0,   0,   3,   0,   8, EnumAction.eat, null                         , F, T, F, T, Potion.hunger.id, 300, 0, 50), TC.stack(TC.CORPUS, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Fish                           .set(addItem(tLastID = 32115, "Cooked Fish Bar"                          , "Like Fish Sticks? You're a gay Fish" , OP.ingot.dat(MT.FishCooked)   , new FoodStat( 2, 1.600F,   0, C+38,  0.50F,   0,   0,   3,   0,   8, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.CORPUS, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Butter                         .set(addItem(tLastID = 32117, "Butter"                                   , "A chunk of pure Fat"                 , OP.ingot.dat(MT.Butter)       , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,   0,   0,  80, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.Butter      , ST.make(this, 1, tLastID));
-		IL.Food_Butter_Salted                  .set(addItem(tLastID = 32119, "Salted Butter"                            , "As if it wasn't unhealthy already"   , OP.ingot.dat(MT.ButterSalted) , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,  40,   0,  80, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.ButterSalted, ST.make(this, 1, tLastID));
+		IL.Food_Butter                         .set(addItem(tLastID = 32117, "Butter"                                   , "A chunk of pure Fat"                 , OP.ingot.dat(MT.Butter)       , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,   0,   0,  80, EnumAction.eat, null                         , F, T, F, T, PotionsGT.ID_SLIPPERY, 300, 0, 90), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.Butter      , ST.make(this, 1, tLastID));
+		IL.Food_Butter_Salted                  .set(addItem(tLastID = 32119, "Salted Butter"                            , "As if it wasn't unhealthy already"   , OP.ingot.dat(MT.ButterSalted) , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,  40,   0,  80, EnumAction.eat, null                         , F, T, F, T, PotionsGT.ID_SLIPPERY, 300, 0, 90), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.ButterSalted, ST.make(this, 1, tLastID));
 		RM.replicateOrganic( 7,  8, IL.Food_Tofu.get(1));
 		RM.replicateOrganic( 7,  9, IL.Food_SoylentGreen.get(1));
 		RM.replicateOrganic( 7, 10, IL.Food_Meat_Raw.get(1));

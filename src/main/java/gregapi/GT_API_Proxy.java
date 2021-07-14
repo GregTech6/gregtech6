@@ -861,12 +861,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			tNBT = tNBT.getCompoundTag(NBT_EFFECTS);
 			int tID = tNBT.getInteger("id"), tTime = tNBT.getInteger("time"), tLevel = tNBT.getInteger("lvl"), tChance = tNBT.getInteger("chance");
 			if (tID < -1) switch(tID) {
-			case -2: tID = PotionsGT.ID_RADIATION; break;
-			case -3: tID = PotionsGT.ID_HYPOTHERMIA; break;
-			case -4: tID = PotionsGT.ID_HEATSTROKE; break;
-			case -5: tID = PotionsGT.ID_FROSTBITE; break;
-			case -6: tID = PotionsGT.ID_DEHYDRATION; break;
-			case -7: tID = PotionsGT.ID_INSANITY; break;
+			case - 2: tID = PotionsGT.ID_RADIATION; break;
+			case - 3: tID = PotionsGT.ID_HYPOTHERMIA; break;
+			case - 4: tID = PotionsGT.ID_HEATSTROKE; break;
+			case - 5: tID = PotionsGT.ID_FROSTBITE; break;
+			case - 6: tID = PotionsGT.ID_DEHYDRATION; break;
+			case - 7: tID = PotionsGT.ID_INSANITY; break;
+			case - 8: tID = PotionsGT.ID_FLAMMABLE; break;
+			case - 9: tID = PotionsGT.ID_SLIPPERY; break;
+			case -10: tID = PotionsGT.ID_CONDUCTIVE; break;
+			case -11: tID = PotionsGT.ID_STICKY; break;
 			}
 			if (tID >= 0 && RNGSUS.nextInt(100) < tChance) {
 				if (tLevel >= 0) {

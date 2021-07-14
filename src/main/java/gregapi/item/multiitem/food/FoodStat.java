@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -140,12 +140,16 @@ public class FoodStat implements IFoodStat {
 			if (mMilk) aPlayer.curePotionEffects(ST.make(Items.milk_bucket, 1, 0));
 			for (int i = 3; i < mPotionEffects.length; i+=4) {
 				if (mPotionEffects[i-3] < -1) switch(mPotionEffects[i-3]) {
-					case -2: mPotionEffects[i-3] = PotionsGT.ID_RADIATION; break;
-					case -3: mPotionEffects[i-3] = PotionsGT.ID_HYPOTHERMIA; break;
-					case -4: mPotionEffects[i-3] = PotionsGT.ID_HEATSTROKE; break;
-					case -5: mPotionEffects[i-3] = PotionsGT.ID_FROSTBITE; break;
-					case -6: mPotionEffects[i-3] = PotionsGT.ID_DEHYDRATION; break;
-					case -7: mPotionEffects[i-3] = PotionsGT.ID_INSANITY; break;
+					case - 2: mPotionEffects[i-3] = PotionsGT.ID_RADIATION; break;
+					case - 3: mPotionEffects[i-3] = PotionsGT.ID_HYPOTHERMIA; break;
+					case - 4: mPotionEffects[i-3] = PotionsGT.ID_HEATSTROKE; break;
+					case - 5: mPotionEffects[i-3] = PotionsGT.ID_FROSTBITE; break;
+					case - 6: mPotionEffects[i-3] = PotionsGT.ID_DEHYDRATION; break;
+					case - 7: mPotionEffects[i-3] = PotionsGT.ID_INSANITY; break;
+					case - 8: mPotionEffects[i-3] = PotionsGT.ID_FLAMMABLE; break;
+					case - 9: mPotionEffects[i-3] = PotionsGT.ID_SLIPPERY; break;
+					case -10: mPotionEffects[i-3] = PotionsGT.ID_CONDUCTIVE; break;
+					case -11: mPotionEffects[i-3] = PotionsGT.ID_STICKY; break;
 				}
 				if (mPotionEffects[i-3] >= 0 && RNGSUS.nextInt(100) < mPotionEffects[i]) {
 					if (mPotionEffects[i-1] >= 0) {

@@ -1505,11 +1505,13 @@ public class CS {
 		}
 	}
 	
-	/** Contains used Potion Effects. IDs are to be set on API postInit. */
+	/** Contains Potion Effects of other Mods. The real IDs are to be set on API postInit, many things such as Food will detect the negative Numbers and replace them on demand. */
 	public static class PotionsGT {
 		public static int
-		ID_RADIATION = -2,
-		ID_HYPOTHERMIA = -3, ID_HEATSTROKE = -4, ID_FROSTBITE = -5, ID_DEHYDRATION = -6, ID_INSANITY = -7;
+		  ID_RADIATION = -2
+		, ID_HYPOTHERMIA = -3, ID_HEATSTROKE = -4, ID_FROSTBITE = -5, ID_DEHYDRATION = -6, ID_INSANITY = -7
+		, ID_FLAMMABLE = -8, ID_SLIPPERY = -9, ID_CONDUCTIVE = -10, ID_STICKY = -11
+		;
 	}
 	
 	public static class BushesGT {

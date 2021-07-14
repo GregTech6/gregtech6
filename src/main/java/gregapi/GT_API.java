@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import blusunrize.immersiveengineering.common.util.IEPotions;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -788,6 +789,12 @@ public class GT_API extends Abstract_Mod {
 			PotionsGT.ID_HEATSTROKE = EnviroPotion.heatstroke.id;
 			PotionsGT.ID_HYPOTHERMIA = EnviroPotion.hypothermia.id;
 			PotionsGT.ID_INSANITY = EnviroPotion.insanity.id;
+		}
+		if (MD.IE.mLoaded) {
+			PotionsGT.ID_FLAMMABLE = IEPotions.flammable.id;
+			PotionsGT.ID_SLIPPERY = IEPotions.slippery.id;
+			PotionsGT.ID_CONDUCTIVE = IEPotions.conductive.id;
+			PotionsGT.ID_STICKY = IEPotions.sticky.id;
 		}
 		
 		EnergyCompat.checkAvailabilities();
