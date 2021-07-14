@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import blusunrize.immersiveengineering.common.util.IEPotions;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -48,7 +47,6 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import enviromine.EnviroPotion;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.block.ToolCompat;
@@ -781,20 +779,20 @@ public class GT_API extends Abstract_Mod {
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
 		if (MD.IC2.mLoaded) {
-			PotionsGT.ID_RADIATION = ic2.api.info.Info.POTION_RADIATION.id;
+			PotionsGT.ID_RADIATION    = ic2.api.info.Info.POTION_RADIATION.id;
 		}
 		if (MD.ENVM.mLoaded) {
-			PotionsGT.ID_DEHYDRATION = EnviroPotion.dehydration.id;
-			PotionsGT.ID_FROSTBITE = EnviroPotion.frostbite.id;
-			PotionsGT.ID_HEATSTROKE = EnviroPotion.heatstroke.id;
-			PotionsGT.ID_HYPOTHERMIA = EnviroPotion.hypothermia.id;
-			PotionsGT.ID_INSANITY = EnviroPotion.insanity.id;
+			PotionsGT.ID_DEHYDRATION  = enviromine.EnviroPotion.dehydration.id;
+			PotionsGT.ID_FROSTBITE    = enviromine.EnviroPotion.frostbite.id;
+			PotionsGT.ID_HEATSTROKE   = enviromine.EnviroPotion.heatstroke.id;
+			PotionsGT.ID_HYPOTHERMIA  = enviromine.EnviroPotion.hypothermia.id;
+			PotionsGT.ID_INSANITY     = enviromine.EnviroPotion.insanity.id;
 		}
 		if (MD.IE.mLoaded) {
-			PotionsGT.ID_FLAMMABLE = IEPotions.flammable.id;
-			PotionsGT.ID_SLIPPERY = IEPotions.slippery.id;
-			PotionsGT.ID_CONDUCTIVE = IEPotions.conductive.id;
-			PotionsGT.ID_STICKY = IEPotions.sticky.id;
+			PotionsGT.ID_FLAMMABLE    = blusunrize.immersiveengineering.common.util.IEPotions.flammable.id;
+			PotionsGT.ID_SLIPPERY     = blusunrize.immersiveengineering.common.util.IEPotions.slippery.id;
+			PotionsGT.ID_CONDUCTIVE   = blusunrize.immersiveengineering.common.util.IEPotions.conductive.id;
+			PotionsGT.ID_STICKY       = blusunrize.immersiveengineering.common.util.IEPotions.sticky.id;
 		}
 		
 		EnergyCompat.checkAvailabilities();

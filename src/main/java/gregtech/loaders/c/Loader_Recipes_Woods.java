@@ -168,8 +168,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Planks_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
 		}
 		if (IL.RC_Creosote_Wood.exists()) {
-			CR.shaped   (IL.Plank.get(NERFED_WOOD?4:5), CR.DEF_NCC, "s", "L", 'L', IL.RC_Creosote_Wood);
-			CR.shapeless(IL.Plank.get(NERFED_WOOD?2:4), CR.DEF_NCC, new Object[] {IL.RC_Creosote_Wood});
+			CR.shapeless(IL.Plank.get(NERFED_WOOD?4:5), CR.DEF_NCC, new Object[] {IL.RC_Creosote_Wood});
 		}
 		
 		// Log related Recipes
