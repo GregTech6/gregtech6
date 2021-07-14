@@ -230,6 +230,7 @@ dependencies {
 	compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
 	compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
 	compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.1.2:dev"
+	compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
 	
 	
 	// List of potentially useful mods that may or may not be linked in here:

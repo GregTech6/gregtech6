@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] If you harvest a normal Crucible, while its Temperature is greater than the Melting Point of Lava (1300K), it will blow up as if it was overheating. This is to stop people from last minute "rescueing" their Crucibles in case of an imminent Meltdown. They are also 16 times harder to harvest in that State, just like Active Burning Boxes are.
 [CHANGED] Mass Storages and Item Barrels now accept a greater variety of Storage Blocks for packaging similar to Dusts and Ingots. Examples of such include: Plates, Gems, Crushed Ores and Raw Ores.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
+[ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
 
 
 6.14.15:

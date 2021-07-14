@@ -1475,24 +1475,19 @@ public class UT {
 			if (aIndex <  0                     ) return aReplacement == null ? aList.get(               0) : aReplacement;
 			return aList.get((int)aIndex);
 		}
-		
 		public static <E> E select(E aReplacement, List<E> aList) {
-			if (aList == null || aList.isEmpty()) return aReplacement;
-			return aList.get(RNGSUS.nextInt(aList.size()));
+			return aList == null ? aReplacement : select(RNGSUS.nextInt(aList.size()), aReplacement, aList);
 		}
-		
 		@SafeVarargs
 		public static <E> E select(long aIndex, E aReplacement, E... aArray) {
 			if (aArray == null || aArray.length <= 0) return aReplacement;
-			if (aArray.length <= aIndex) return aArray[aArray.length - 1];
-			if (aIndex < 0) return aArray[0];
+			if (aIndex >= aArray.length             ) return aReplacement == null ? aArray[aArray.length - 1] : aReplacement;
+			if (aIndex <  0                         ) return aReplacement == null ? aArray[                0] : aReplacement;
 			return aArray[(int)aIndex];
 		}
-		
 		@SafeVarargs
 		public static <E> E select(E aReplacement, E... aArray) {
-			if (aArray == null || aArray.length <= 0) return aReplacement;
-			return aArray[RNGSUS.nextInt(aArray.length)];
+			return aArray == null ? aReplacement : select(RNGSUS.nextInt(aArray.length), aReplacement, aArray);
 		}
 		
 		public static boolean inArray(Object aObject, Object... aObjects) {

@@ -417,9 +417,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, FL.Oil_Creosote.make(25), chunkGt.mat(MT.Charcoal, 1));
 		
 		
-		IL.Module_Stone_Generator          .set(addItem(6000, "Stone Generator Module"           , "Generates Stone for Recipes"                 , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
-		IL.Module_Basalt_Generator         .set(addItem(6001, "Basalt Generator Module"          , "Generates Basalt for Recipes"                , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
-		IL.Module_Blackstone_Generator     .set(addItem(6002, "Blackstone Generator Module"      , "Generates Blackstone for Recipes"            , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
+		IL.Module_Stone_Generator          .set(addItem(6000, "Stone Generator Module"           , "Generates Stone for Recipes, also known as a Cobble Generator", TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
+		IL.Module_Basalt_Generator         .set(addItem(6001, "Basalt Generator Module"          , "Generates Basalt for Recipes"                                 , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
+		IL.Module_Blackstone_Generator     .set(addItem(6002, "Blackstone Generator Module"      , "Generates Blackstone for Recipes"                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));
 		CR.shaped(IL.Module_Stone_Generator     .get(1), CR.DEF_REV_NCC, "CPC", "LMW", "COC", 'M', OP.casingMachine.dat(MT.SteelGalvanized), 'O', IL.Shape_Extruder_Block, 'C', OD_CIRCUITS[4], 'P', OD.craftingPiston, 'L', OD.container1000lava, 'W', OD.container1000water);
 		CR.shaped(IL.Module_Basalt_Generator    .get(1), CR.DEF_REV_NCC, "S", "M", "I", 'M', IL.Module_Stone_Generator, 'S', OD.soulsand, 'I', Blocks.packed_ice);
 		CR.shaped(IL.Module_Blackstone_Generator.get(1), CR.DEF_REV_NCC, "S", "M", "O", 'M', IL.Module_Stone_Generator, 'S', OD.soulsand, 'O', OD.obsidian);

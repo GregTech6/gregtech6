@@ -91,7 +91,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 			if (mFilter == null || mFilter.mRegisteredItems.isEmpty()) {
 				mCycle = null;
 			} else {
-				mCycle = ST.make(UT.Code.select(rng(mFilter.mRegisteredItems.size()), null, mFilter.mRegisteredItems.toArray(new ItemStackContainer[mFilter.mRegisteredItems.size()])), mFilter.mNameInternal, null);
+				mCycle = ST.make(UT.Code.select(null, mFilter.mRegisteredItems.toArray(ZL_ISC)), mFilter.mNameInternal, null);
 				if (mCycle != null && ST.meta_(mCycle) == W) ST.meta_(mCycle, 0);
 			}
 		}
