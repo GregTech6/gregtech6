@@ -237,6 +237,7 @@ dependencies {
 	//compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
 	//compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	//compileOnly "binnie:binnie-mods:1.7.10-2.0.22:dev"
+	//compileOnly "blusunrize:AquaTweaks-1.7.10:1.0:deobf"
 	//compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
 	//compileOnly "climateControl:ClimateControl:0.6.61" // Hack
 	//compileOnly "climateControl:ClimateControl:0.8.2" // Hack

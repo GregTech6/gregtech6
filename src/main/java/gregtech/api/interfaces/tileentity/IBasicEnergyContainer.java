@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,21 +23,21 @@ package gregtech.api.interfaces.tileentity;
 @SuppressWarnings("deprecation")
 /** Required to exist in GT6 because Immersive Engineering crashes otherwise. Also there is that GT5U+GT6 Mod that basically needs this for Compat. */
 public interface IBasicEnergyContainer extends IEnergyConnected {
-	public boolean isUniversalEnergyStored(long aEnergyAmount);
-	public long getUniversalEnergyStored();
-	public long getUniversalEnergyCapacity();
-	public long getOutputAmperage();
-	public long getOutputVoltage();
-	public long getInputAmperage();
-	public long getInputVoltage();
-	public boolean decreaseStoredEnergyUnits(long aEnergy, boolean aIgnoreTooLessEnergy);
-	public boolean increaseStoredEnergyUnits(long aEnergy, boolean aIgnoreTooMuchEnergy);
-	public boolean drainEnergyUnits(byte aSide, long aVoltage, long aAmperage);
-	public long getAverageElectricInput();
-	public long getAverageElectricOutput();
-	public long getStoredEU();
-	public long getEUCapacity();
-	public long getStoredSteam();
-	public long getSteamCapacity();
-	public boolean increaseStoredSteam(long aEnergy, boolean aIgnoreTooMuchEnergy);
+	@Deprecated public boolean isUniversalEnergyStored(long aEnergyAmount);
+	@Deprecated public long getUniversalEnergyStored();
+	@Deprecated public long getUniversalEnergyCapacity();
+	@Deprecated public long getOutputAmperage();
+	@Deprecated public long getOutputVoltage();
+	@Deprecated public long getInputAmperage();
+	@Deprecated public long getInputVoltage();
+	@Deprecated public boolean decreaseStoredEnergyUnits(long aEnergy, boolean aIgnoreTooLessEnergy);
+	@Deprecated public boolean increaseStoredEnergyUnits(long aEnergy, boolean aIgnoreTooMuchEnergy);
+	@Deprecated public boolean drainEnergyUnits(byte aSide, long aVoltage, long aAmperage);
+	@Deprecated public long getAverageElectricInput();
+	@Deprecated public long getAverageElectricOutput();
+	@Deprecated public long getStoredEU();
+	@Deprecated public long getEUCapacity();
+	@Deprecated public long getStoredSteam();
+	@Deprecated public long getSteamCapacity();
+	@Deprecated public boolean increaseStoredSteam(long aEnergy, boolean aIgnoreTooMuchEnergy);
 }
