@@ -30,7 +30,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 @Deprecated
-/** Required to exist in GT6 because Immersive Engineering does not work otherwise. */
+/** Required to exist in GT6 because Immersive Engineering does not work otherwise. This File is likely not in the actual Builds of GT6! */
 public interface IGregTechTileEntity {
 	@Deprecated public int getErrorDisplayID();
 	@Deprecated public void setErrorDisplayID(int aErrorID);
