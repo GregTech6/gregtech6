@@ -21,6 +21,7 @@ package gregapi.worldgen.dungeon;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.CS.BlocksGT;
 import net.minecraft.init.Blocks;
 
 /**
@@ -52,15 +53,33 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 			}
 		}
 		
-		// Hole Punching
+		// Hole Punch!
+		aData.air( 7,  7,  7);
+		aData.air( 7,  7,  8);
+		aData.air( 8,  7,  7);
+		aData.air( 8,  7,  8);
 		aData.air( 7,  8,  7);
 		aData.air( 7,  8,  8);
 		aData.air( 8,  8,  7);
 		aData.air( 8,  8,  8);
-		aData.air( 7,  9,  7);
-		aData.air( 7,  9,  8);
-		aData.air( 8,  9,  7);
-		aData.air( 8,  9,  8);
+		
+		// Spikes!
+		aData.set( 7,  3,  7, BlocksGT.Spikes_Sharp, 0);
+		aData.set( 7,  3,  8, BlocksGT.Spikes_Sharp, 0);
+		aData.set( 8,  3,  7, BlocksGT.Spikes_Sharp, 0);
+		aData.set( 8,  3,  8, BlocksGT.Spikes_Sharp, 0);
+		
+		// Iron Bars to prevent spillage
+		for (int tY = 1; tY < 7; tY++) {
+			aData.set( 6, tY,  7, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_POS]);
+			aData.set( 6, tY,  8, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_POS]);
+			aData.set( 7, tY,  6, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_POS]);
+			aData.set( 7, tY,  9, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_NEG]);
+			aData.set( 8, tY,  6, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_POS]);
+			aData.set( 8, tY,  9, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_NEG]);
+			aData.set( 9, tY,  7, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_NEG]);
+			aData.set( 9, tY,  8, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_NEG]);
+		}
 		
 		// Water Placement
 		aData.smooth( 1,  9,  1); aData.smooth( 2,  9,  1); aData.smooth( 3,  9,  1); aData.smooth( 4,  9,  1);
@@ -85,7 +104,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set(14, 10, 14, Blocks.flowing_water, 0, 3);
 		
 		// Platforms for Mobs to spawn on.
-		final int[] tPlatforms = { 3, 4, 5, 6,12,13,14,15};
+		final int[] tPlatforms = { 3, 4, 5, 6, 9,10,11,12};
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
 			for (int i : tPlatforms) for (int j : tPlatforms) aData.cobbles( i, tY,  j);
 			for (int i : tPlatforms) {

@@ -223,7 +223,7 @@ public class WorldgenTesting extends WorldgenObject {
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SENSE                 , MT.NetherizedDiamond, MT.LightBlue)
 			, NI//ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SICKLE            , MT.NetherizedDiamond, MT.LightBlue)
 			, NI
-			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BUILDERWAND           , MT.Heliodor, MT.WOODS.Scorched)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.BUILDERWAND           , MT.Vibramantium, MT.WOODS.Scorched)
 			
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.POCKET_MULTITOOL      , MT.Vibramantium, MT.Vibramantium)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PLUNGER               , MT.Greatwood, MT.Greatwood)
