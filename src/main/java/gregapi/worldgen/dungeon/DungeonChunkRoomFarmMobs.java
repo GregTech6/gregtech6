@@ -55,35 +55,31 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		}
 		
 		// Hole Punch!
-		aData.air( 7,  7,  7);
-		aData.air( 7,  7,  8);
-		aData.air( 8,  7,  7);
-		aData.air( 8,  7,  8);
-		aData.air( 7,  8,  7);
-		aData.air( 7,  8,  8);
-		aData.air( 8,  8,  7);
-		aData.air( 8,  8,  8);
+		aData.air( 7,  7,  7); aData.air( 7,  7,  8); aData.air( 8,  7,  7); aData.air( 8,  7,  8);
+		aData.air( 7,  8,  7); aData.air( 7,  8,  8); aData.air( 8,  8,  7); aData.air( 8,  8,  8);
 		
-		// Spikes!
-		aData.set( 7,  3,  7, BlocksGT.Spikes_Sharp, 0);
-		aData.set( 7,  3,  8, BlocksGT.Spikes_Sharp, 0);
-		aData.set( 8,  3,  7, BlocksGT.Spikes_Sharp, 0);
-		aData.set( 8,  3,  8, BlocksGT.Spikes_Sharp, 0);
-		aData.set( 7, 2,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
-		aData.set( 7, 2,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
-		aData.set( 8, 2,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
-		aData.set( 8, 2,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
+		// Golden Spikes! (Steel wont work for Skeletons!)
+		aData.set( 7,  4,  7, BlocksGT.Spikes_Fancy, 0);
+		aData.set( 7,  4,  8, BlocksGT.Spikes_Fancy, 0);
+		aData.set( 8,  4,  7, BlocksGT.Spikes_Fancy, 0);
+		aData.set( 8,  4,  8, BlocksGT.Spikes_Fancy, 0);
 		
-		// Iron Bars to prevent spillage
-		for (int tY = 1; tY < 7; tY++) {
-			aData.set( 6, tY,  7, BlocksGT.Bars_Steel, 1);
-			aData.set( 6, tY,  8, BlocksGT.Bars_Steel, 1);
-			aData.set( 9, tY,  7, BlocksGT.Bars_Steel, 2);
-			aData.set( 9, tY,  8, BlocksGT.Bars_Steel, 2);
-			aData.set( 7, tY,  6, BlocksGT.Bars_Steel, 4);
-			aData.set( 8, tY,  6, BlocksGT.Bars_Steel, 4);
-			aData.set( 7, tY,  9, BlocksGT.Bars_Steel, 8);
-			aData.set( 8, tY,  9, BlocksGT.Bars_Steel, 8);
+		// Golden Hoppers! (Because why not match the Spikes?)
+		aData.set( 7,  3,  7, SIDE_UNKNOWN,  8002, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+		aData.set( 7,  3,  8, SIDE_UNKNOWN,  8002, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+		aData.set( 8,  3,  7, SIDE_UNKNOWN,  8002, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+		aData.set( 8,  3,  8, SIDE_UNKNOWN,  8002, UT.NBT.make(NBT_FACING, SIDE_X_NEG), T, T);
+		
+		// Steel Bars to prevent Mob spillage
+		for (int tY = 4; tY < 7; tY++) {
+			aData.set( 6, tY,  7, BlocksGT.Bars_Steel, 8);
+			aData.set( 6, tY,  8, BlocksGT.Bars_Steel, 8);
+			aData.set( 9, tY,  7, BlocksGT.Bars_Steel, 4);
+			aData.set( 9, tY,  8, BlocksGT.Bars_Steel, 4);
+			aData.set( 7, tY,  6, BlocksGT.Bars_Steel, 2);
+			aData.set( 8, tY,  6, BlocksGT.Bars_Steel, 2);
+			aData.set( 7, tY,  9, BlocksGT.Bars_Steel, 1);
+			aData.set( 8, tY,  9, BlocksGT.Bars_Steel, 1);
 		}
 		
 		// Water Placement
