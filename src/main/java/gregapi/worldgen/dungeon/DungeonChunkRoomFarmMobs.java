@@ -39,7 +39,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		super.generate(aData);
 		
 		// Roof
-		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) aData.tiles(tX, 42, tZ);
+		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) aData.smalltiles(tX, 42, tZ);
 		
 		// Outer Walls
 		for (int tY = 9; tY < 42; tY++) {
@@ -48,7 +48,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 					if (tY % 4 == 0) {
 						aData.colored(tX, tY, tZ);
 					} else {
-						aData.smooth(tX, tY, tZ);
+						aData.bricks(tX, tY, tZ);
 					}
 				} else {
 					aData.air(tX, tY, tZ);
@@ -89,7 +89,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set     ( 7,  2,  7, SIDE_UNKNOWN, 25005, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 7,  2,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 7,  2,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.bone        , aData.nextStack(), 0))), T, T);
-		aData.set     ( 8,  2,  6, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.redstone    , aData.nextStack(), 0))), T, T);
+		aData.set     ( 8,  2,  6, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.ender_pearl , aData.nextStack(), 0))), T, T);
 		aData.set     ( 8,  2,  7, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  2,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 62, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  2,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.gunpowder   , aData.nextStack(), 0))), T, T);

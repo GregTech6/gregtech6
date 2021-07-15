@@ -118,6 +118,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -1270,7 +1271,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onCheckSpawnEvent(LivingSpawnEvent.CheckSpawn aEvent) {
-		if (aEvent.getResult() == Result.DENY || aEvent.world.provider.dimensionId != 0 || aEvent.y + 16 < WD.waterLevel(aEvent.world)) return;
+		if (aEvent.getResult() == Result.DENY) return;
+		if (aEvent.entityLiving.getClass() == EntityBat.class && aEvent.world.getBlock(UT.Code.roundDown(aEvent.x), UT.Code.roundDown(aEvent.y)-2, UT.Code.roundDown(aEvent.z)) != Blocks.stone) {aEvent.setResult(Result.DENY); return;}
+		if (aEvent.world.provider.dimensionId != 0 || aEvent.y + 16 < WD.waterLevel(aEvent.world)) return;
 		if (GENERATE_BIOMES) {
 			if (UT.Code.inside(-96,  95, (int)aEvent.x) && UT.Code.inside(-96,  95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		} else if (GENERATE_NEXUS) {
