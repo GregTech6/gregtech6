@@ -22,8 +22,10 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 /**
  * @author Gregorius Techneticies
@@ -54,23 +56,47 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 			}
 		}
 		
+		// Make a solid Pillar, the rest will be carved away when needed.
+		for (int tY = 1; tY < 7; tY++) for (int tX = 6; tX <= 9; tX++) for (int tZ = 6; tZ <= 9; tZ++) aData.bricks(tX, tY, tZ);
+		
 		// Golden Omni-Spikes! (Steel wont work for Skeletons!)
-		aData.set   ( 7,  9,  7, BlocksGT.Spikes_Fancy, 6);
-		aData.set   ( 7,  9,  8, BlocksGT.Spikes_Fancy, 6);
-		aData.set   ( 8,  9,  7, BlocksGT.Spikes_Fancy, 6);
-		aData.set   ( 8,  9,  8, BlocksGT.Spikes_Fancy, 6);
+		aData.set     ( 7,  9,  7, BlocksGT.Spikes_Fancy, 6);
+		aData.set     ( 7,  9,  8, BlocksGT.Spikes_Fancy, 6);
+		aData.set     ( 8,  9,  7, BlocksGT.Spikes_Fancy, 6);
+		aData.set     ( 8,  9,  8, BlocksGT.Spikes_Fancy, 6);
 		
 		// Steel Hoppers!
-		aData.set   ( 7,  8,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
-		aData.set   ( 7,  8,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
-		aData.set   ( 8,  8,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
-		aData.set   ( 8,  8,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_Y_NEG), T, T);
+		aData.set     ( 7,  8,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 7,  8,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  8,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  8,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		
 		// TODO Item Barrels and Item Pipes
-		aData.smooth( 7,  7,  7);
-		aData.smooth( 7,  7,  8);
-		aData.smooth( 8,  7,  7);
-		aData.air   ( 8,  7,  8);
+		aData.chiseled( 7,  7,  7);
+		aData.chiseled( 7,  7,  8);
+		aData.chiseled( 8,  7,  7);
+		aData.set     ( 8,  7,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  6,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  5,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  4,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  3,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		
+		aData.chiseled( 6,  2,  6);
+		aData.smooth  ( 6,  2,  7);
+		aData.set     ( 6,  2,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.rotten_flesh, aData.nextStack(), 0))), T, T);
+		aData.chiseled( 6,  2,  9);
+		aData.set     ( 7,  2,  6, SIDE_UNKNOWN,  4009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 7,  2,  7, SIDE_UNKNOWN, 25005, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 7,  2,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 7,  2,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.bone        , aData.nextStack(), 0))), T, T);
+		aData.set     ( 8,  2,  6, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.redstone    , aData.nextStack(), 0))), T, T);
+		aData.set     ( 8,  2,  7, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  2,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 62, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  2,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.gunpowder   , aData.nextStack(), 0))), T, T);
+		aData.chiseled( 9,  2,  6);
+		aData.set     ( 9,  2,  7, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.string      , aData.nextStack(), 0))), T, T);
+		aData.set     ( 9,  2,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.arrow       , aData.nextStack(), 0))), T, T);
+		aData.chiseled( 9,  2,  9);
 		
 		// Water Placement
 		aData.smooth( 1,  9,  1); aData.smooth( 2,  9,  1); aData.smooth( 3,  9,  1); aData.smooth( 4,  9,  1);
