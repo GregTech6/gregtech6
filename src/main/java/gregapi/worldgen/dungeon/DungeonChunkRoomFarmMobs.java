@@ -112,8 +112,8 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set     ( 8,  2,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 62, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  2,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.sugar         , 1+aData.next(8), 0))), T, T);
 		aData.chiseled( 9,  2,  6);
-		aData.set     ( 9,  2,  7, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(OP.arrowGtWood.mat(MT.Empty , 1+aData.next(8)   ))), T, T);
-		aData.set     ( 9,  2,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.arrow         , 1+aData.next(8), 0))), T, T);
+		aData.set     ( 9,  2,  7, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.arrow         , 1+aData.next(8), 0))), T, T);
+		aData.set     ( 9,  2,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(OP.arrowGtWood.mat(MT.Empty , 1+aData.next(8)   ))), T, T);
 		aData.chiseled( 9,  2,  9);
 		
 		// Water Placement

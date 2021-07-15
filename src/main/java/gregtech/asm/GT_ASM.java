@@ -42,15 +42,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.CoFHCore_CrashFix;
-import gregtech.asm.transformers.CoFHLib_HashFix;
-import gregtech.asm.transformers.Minecraft_EmptyRecipeOptimization;
-import gregtech.asm.transformers.Minecraft_IceHarvestMissingHookFix;
-import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
-import gregtech.asm.transformers.Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix;
-import gregtech.asm.transformers.Railcraft_RemoveBoreSpam;
-import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
-import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
+import gregtech.asm.transformers.*;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
 @Name("Greg-ASM®")
@@ -106,13 +98,14 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			// Shouldn't happen, but sanity, and Java can't enforce this unlike decent programming languages...
 			if (mclocation == null) throw new RuntimeException("Failed to acquire `location` in GT6 CoreMod");
 			
-			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
-			transformers.put(Railcraft_RemoveBoreSpam.class.getName(), true);
+			transformers.put(CoFHLib_HashFix.class.getName(), true);
+			transformers.put(ExtraUtils_FixThaumcraftAspects.class.getName(), true);
 			transformers.put(Minecraft_EmptyRecipeOptimization.class.getName(), true);
 			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
 			transformers.put(Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix.class.getName(), true);
+			transformers.put(Railcraft_RemoveBoreSpam.class.getName(), true);
 			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
 			transformers.put(Thaumcraft_AspectLagFix.class.getName(), true);
 
