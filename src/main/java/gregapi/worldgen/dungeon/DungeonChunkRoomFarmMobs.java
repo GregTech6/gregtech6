@@ -22,6 +22,7 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 
 /**
@@ -68,17 +69,21 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set( 7,  3,  8, BlocksGT.Spikes_Sharp, 0);
 		aData.set( 8,  3,  7, BlocksGT.Spikes_Sharp, 0);
 		aData.set( 8,  3,  8, BlocksGT.Spikes_Sharp, 0);
+		aData.set( 7, 2,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
+		aData.set( 7, 2,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
+		aData.set( 8, 2,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
+		aData.set( 8, 2,  8, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Y_NEG), T, T);
 		
 		// Iron Bars to prevent spillage
 		for (int tY = 1; tY < 7; tY++) {
-			aData.set( 6, tY,  7, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_POS]);
-			aData.set( 6, tY,  8, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_POS]);
-			aData.set( 7, tY,  6, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_POS]);
-			aData.set( 7, tY,  9, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_NEG]);
-			aData.set( 8, tY,  6, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_POS]);
-			aData.set( 8, tY,  9, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_Z_NEG]);
-			aData.set( 9, tY,  7, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_NEG]);
-			aData.set( 9, tY,  8, BlocksGT.Bars_Steel, SIDE_BITS[SIDE_X_NEG]);
+			aData.set( 6, tY,  7, BlocksGT.Bars_Steel, 1);
+			aData.set( 6, tY,  8, BlocksGT.Bars_Steel, 1);
+			aData.set( 9, tY,  7, BlocksGT.Bars_Steel, 2);
+			aData.set( 9, tY,  8, BlocksGT.Bars_Steel, 2);
+			aData.set( 7, tY,  6, BlocksGT.Bars_Steel, 4);
+			aData.set( 8, tY,  6, BlocksGT.Bars_Steel, 4);
+			aData.set( 7, tY,  9, BlocksGT.Bars_Steel, 8);
+			aData.set( 8, tY,  9, BlocksGT.Bars_Steel, 8);
 		}
 		
 		// Water Placement
@@ -108,10 +113,10 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
 			for (int i : tPlatforms) for (int j : tPlatforms) aData.cobbles( i, tY,  j);
 			for (int i : tPlatforms) {
-				aData.set( i, tY,  2, Blocks.trapdoor, 12); aData.set( i, tY,  7, Blocks.trapdoor, 12);
-				aData.set( i, tY, 13, Blocks.trapdoor, 13); aData.set( i, tY,  8, Blocks.trapdoor, 13);
-				aData.set( 2, tY,  i, Blocks.trapdoor, 14); aData.set( 7, tY,  i, Blocks.trapdoor, 14);
-				aData.set(13, tY,  i, Blocks.trapdoor, 15); aData.set( 8, tY,  i, Blocks.trapdoor, 15);
+				aData.set( i, tY,  2, Blocks.trapdoor, 12); aData.set( i, tY,  8, Blocks.trapdoor, 12);
+				aData.set( i, tY, 13, Blocks.trapdoor, 13); aData.set( i, tY,  7, Blocks.trapdoor, 13);
+				aData.set( 2, tY,  i, Blocks.trapdoor, 14); aData.set( 8, tY,  i, Blocks.trapdoor, 14);
+				aData.set(13, tY,  i, Blocks.trapdoor, 15); aData.set( 7, tY,  i, Blocks.trapdoor, 15);
 			}
 		}
 		
