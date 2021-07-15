@@ -67,8 +67,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.MagneticSeparator.addRecipe1(T, 16, 1296, new long[] { 3000, 972, 972, 972, 972, 972}, blockDust .mat(MT.STONES.MoonTurf , 1), dust     .mat(MT.STONES.Basalt, 9), dustTiny.mat(MT.MeteoricIron, 9), dustTiny.mat(MT.Nd, 1), dustTiny.mat(MT.Ni, 1), dustTiny.mat(MT.Co, 1), dustTiny.mat(MT.Mn, 1));
 		// TODO MARS SAND, SPACE DUST
 		
-		RM.Drying           .addRecipe1(T, 16, 4500, OP.crushedPurified    .mat(MT.Biotite, 1), NF, MT.Ar.gas(45*U1000, T), OP.crushedCentrifuged    .mat(MT.Biotite, 1));
-		RM.Drying           .addRecipe1(T, 16,  500, OP.crushedPurifiedTiny.mat(MT.Biotite, 1), NF, MT.Ar.gas( 5*U1000, T), OP.crushedCentrifugedTiny.mat(MT.Biotite, 1));
+		RM.Drying           .addRecipe1(T, 16, 2592, OP.crushedPurified    .mat(MT.Biotite, 1), NF, MT.Ar.gas(90*U1000, T), OP.crushedCentrifuged    .mat(MT.Biotite, 1));
+		RM.Drying           .addRecipe1(T, 16,  288, OP.crushedPurifiedTiny.mat(MT.Biotite, 1), NF, MT.Ar.gas(10*U1000, T), OP.crushedCentrifugedTiny.mat(MT.Biotite, 1));
 		
 		RM.Centrifuge       .addRecipe1(T, 64,   16, new long[] {   72,  72,  72,  72,  72,  72}, dustTiny              .mat(MT.RareEarth, 1), dustTiny.mat(MT.Nd, 8), dustTiny.mat(MT.Y, 8), dustTiny.mat(MT.La, 8), dustTiny.mat(MT.Ce, 8), dustTiny.mat(MT.Cd, 8), dustTiny.mat(MT.Cs, 8));
 		RM.Centrifuge       .addRecipe1(T, 64,   36, new long[] {  162, 162, 162, 162, 162, 162}, dustSmall             .mat(MT.RareEarth, 1), dustTiny.mat(MT.Nd, 8), dustTiny.mat(MT.Y, 8), dustTiny.mat(MT.La, 8), dustTiny.mat(MT.Ce, 8), dustTiny.mat(MT.Cd, 8), dustTiny.mat(MT.Cs, 8));

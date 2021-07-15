@@ -32,9 +32,10 @@ import net.minecraft.init.Blocks;
 /**
  * @author Gregorius Techneticies
  */
-public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
+public class DungeonChunkRoomFarmCrop extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
+		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_CROP);
 		super.generate(aData);
 		
 		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 4 || tCoord >= 11) {

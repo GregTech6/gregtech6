@@ -38,7 +38,10 @@ import net.minecraftforge.common.ChestGenHooks;
 public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
+		aData.mTags.add(WorldgenDungeonGT.TAG_LIBRARY);
+		
 		super.generate(aData);
+		
 		int tPlank = aData.next(6), tSlab = tPlank + 8, tShelf = 7000 + tPlank;
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};

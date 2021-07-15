@@ -70,15 +70,20 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, TAG_PORTAL_END      = TagData.createTagData("gt.dungeon.portal.end")
 	, TAG_PORTAL_TWILIGHT = TagData.createTagData("gt.dungeon.portal.twilight")
 	, TAG_PORTAL_MYST     = TagData.createTagData("gt.dungeon.portal.myst")
+	, TAG_FARM_MOBS       = TagData.createTagData("gt.dungeon.farm.mobs")
+	, TAG_FARM_CROP       = TagData.createTagData("gt.dungeon.farm.crop")
+	, TAG_FARM_FISH       = TagData.createTagData("gt.dungeon.farm.fish")
+	, TAG_LIBRARY         = TagData.createTagData("gt.dungeon.library")
+	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
 	;
 	
 	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F
 	, ROOM_EMPTY
 	, new DungeonChunkRoomWorkshop()
 	, new DungeonChunkRoomLibrary()
-	, new DungeonChunkRoomPool()
-	, new DungeonChunkRoomFarm()
-	, new DungeonChunkRoomStorage()
+	, new DungeonChunkRoomFarmFish()
+	, new DungeonChunkRoomFarmCrop()
+	, new DungeonChunkRoomFarmMobs()
 	);
 	
 	public static final List<IDungeonChunk> DEAD_END = new ArrayListNoNulls<IDungeonChunk>(F
