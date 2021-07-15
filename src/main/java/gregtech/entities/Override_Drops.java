@@ -513,7 +513,11 @@ public class Override_Drops {
 		}
 		
 		for (EntityItem tEntity : aDrops) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
-			// Replace Iron and Steel with Lead
+			// Replace some of the Arrows with Headless Arrows.
+			if (ST.item_(tStack) == Items.arrow && RNGSUS.nextInt(aLooting * 2 + 4) < 3) {
+				ST.set(tStack, OP.arrowGtWood.mat(MT.Empty, 1), F, F);
+			}
+			// Replace Iron and Steel with Lead.
 			if (tReplaceIron) {
 				if (OM.is("plateAnyIronOrSteel", tStack)) {
 					ST.set(tStack, OP.plate.mat(MT.Pb, 1), F, F);
@@ -531,13 +535,13 @@ public class Override_Drops {
 			// Give Meat more variety! :D
 			if (!OD.listAllmeatsubstitute.is(tStack)) {
 				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
-				if (tStack.getItem() == Items.porkchop) {
+				if (ST.item_(tStack) == Items.porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, (aBurn?IL.Food_Ham_Cooked:IL.Food_Ham_Raw).get(1), F, F); break;
 					case 1: ST.set(tStack, (aBurn?IL.Food_Bacon_Cooked:IL.Food_Bacon_Raw).get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
 					}
 				} else
-				if (tStack.getItem() == Items.cooked_porkchop) {
+				if (ST.item_(tStack) == Items.cooked_porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, IL.Food_Ham_Cooked.get(1), F, F); break;
 					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
