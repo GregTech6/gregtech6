@@ -1290,7 +1290,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (!WD.dimOverworldLike(aWorld)) return;
 		if (SPAWN_HOSTILES_ONLY_IN_DARKNESS) try {
-			if (aWorld.getChunkFromBlockCoords(aX, aZ).getBlockStorageArray()[aY >> 4].getExtBlocklightValue(aX, aY & 15, aZ) > 0) {
+			if (aWorld.getChunkFromBlockCoords(aX, aZ).getBlockStorageArray()[aY >> 4].getExtBlocklightValue(aX & 15, aY & 15, aZ & 15) > 0) {
 				// Vanilla Mobs only, just in case.
 				if (aMobClass == EntityCreeper.class || aMobClass == EntityEnderman.class || aMobClass == EntitySkeleton.class || aMobClass == EntityZombie.class || aMobClass == EntitySpider.class || aMobClass == EntityWitch.class || aMobClass == EntityBat.class) {aEvent.setResult(Result.DENY); return;}
 				// TODO Add Drowned and other Et Futurum Requiem Mobs once they are released.
