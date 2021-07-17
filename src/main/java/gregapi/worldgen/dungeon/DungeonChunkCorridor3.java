@@ -53,7 +53,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				
 				aData.coins    (10, 2,  9);
 				return T;
-			case 1:
+			case 1: case 2:
+				// Breakable Wall more likely if Key #3 exists!
+				if (!aData.mGeneratedKeys[2]) return T;
+			case 3:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(13, tY, tZ);
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(12, tY, tZ);
@@ -91,7 +94,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				aData.cup      ( 5, 2,  8, UT.Code.select(null, tDrinks));
 				aData.coins    ( 5, 2,  9);
 				return T;
-			case 1:
+			case 1: case 2:
+				// Breakable Wall more likely if Key #3 exists!
+				if (!aData.mGeneratedKeys[2]) return T;
+			case 3:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 2, tY, tZ);
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 3, tY, tZ);
@@ -129,7 +135,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				
 				aData.coins    ( 9, 2, 10);
 				return T;
-			case 1:
+			case 1: case 2:
+				// Breakable Wall more likely if Key #3 exists!
+				if (!aData.mGeneratedKeys[2]) return T;
+			case 3:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 13);
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 12);
@@ -167,7 +176,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				aData.cup      ( 8, 2,  5, UT.Code.select(null, tDrinks));
 				aData.coins    ( 9, 2,  5);
 				return T;
-			case 1:
+			case 1: case 2:
+				// Breakable Wall more likely if Key #3 exists!
+				if (!aData.mGeneratedKeys[2]) return T;
+			case 3:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  2);
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  3);
