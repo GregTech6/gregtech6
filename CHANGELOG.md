@@ -18,8 +18,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] ExtraUtils will no longer fuck up Thaumcraft Aspects so badly, you cant even properly progress in Thaumcraft anymore... (yeah I nuked its Thaumcraft Helper Class with ASM)
 [CHANGED] If you harvest a normal Crucible, while its Temperature is greater than the Melting Point of Lava (1300K), it will blow up as if it was overheating. This is to stop people from last minute "rescueing" their Crucibles in case of an imminent Meltdown. They are also 16 times harder to harvest in that State, just like Active Burning Boxes are.
 [CHANGED] Mass Storages and Item Barrels now accept a greater variety of Storage Blocks for packaging similar to Dusts and Ingots. Examples of such include: Plates, Gems, Crushed Ores and Raw Ores. Obviously I mean the "9 Items = 1 Block" conversions, who would ever get the Idea that Chipped Gems get combined to Legendary Gems or something dumb like that, right? RIGHT??
-[CHANGED] Vanilla Bats can now only spawn ontop of Vanilla Smoothstone and nothing else. These annoying noisemakers needed to be shut up. Also they fill up Mob Farms too!
 [CHANGED] Skeletons now drop Headless Arrows most of the time. They still sometimes drop regular Arrows.
+[CHANGED] Vanilla Bats can now only spawn ontop of Vanilla Smoothstone and nothing else. These annoying noisemakers needed to be shut up. Also they fill up Mob Farms too!
+[CHANGED] Most Vanilla Hostile Mobs and Some Vanilla alike Hostiles, in the Overworld and Overworld alike Dimensions, will require a BLOCK Light Level of ZERO to spawn as opposed to 7 or less. This is to mirror a change I saw in one of the most recent experimental Snapshots, meaning Torches and other Light Sources have a much bigger range now. This does not affect Sky Light Levels.
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
 [ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
