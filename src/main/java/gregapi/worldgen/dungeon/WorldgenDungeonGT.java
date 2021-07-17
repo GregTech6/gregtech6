@@ -61,6 +61,8 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, ROOM_EMPTY      = new DungeonChunkRoomEmpty()
 	, DOOR_PISTON     = new DungeonChunkDoorPiston()
 	, CORRIDOR        = new DungeonChunkCorridor()
+	, CORRIDOR3       = new DungeonChunkCorridor3()
+	, CORRIDOR4       = new DungeonChunkCorridor4()
 	, ENTRANCE        = new DungeonChunkEntrance()
 	, BARRACKS        = new DungeonChunkBarracks()
 	;
@@ -278,7 +280,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
-			case -128: try {CORRIDOR.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
+			case -128: try {if (tConnectionCount == 4) CORRIDOR4.generate(aData); else if (tConnectionCount == 3) CORRIDOR3.generate(aData); else CORRIDOR.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
 			case   -2: try {ENTRANCE.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
 			case   -1: try {BARRACKS.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
 			}

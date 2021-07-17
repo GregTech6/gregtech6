@@ -40,10 +40,13 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		
 		super.generate(aData);
 		
-		// Roof
-		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) aData.smalltiles(tX, 42, tZ);
+		// Roof, two Blocks thick due to Sunlight glitches.
+		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
+			aData.tiles     (tX, 43, tZ);
+			aData.smalltiles(tX, 42, tZ);
+		}
 		
-		// Outer Walls
+		// Outer Walls.
 		for (int tY = 9; tY < 42; tY++) {
 			for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
 				if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15) {
@@ -59,7 +62,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		}
 		
 		// Make a solid Pillar, the rest will be carved away when needed.
-		for (int tY = 1; tY < 7; tY++) for (int tX = 6; tX <= 9; tX++) for (int tZ = 6; tZ <= 9; tZ++) aData.bricks(tX, tY, tZ);
+		for (int tY = 1; tY < 8; tY++) for (int tX = 6; tX <= 9; tX++) for (int tZ = 6; tZ <= 9; tZ++) aData.bricks(tX, tY, tZ);
 		
 		// Golden Omni-Spikes! (Steel wont work on Skeletons!)
 		aData.set     ( 7,  9,  7, BlocksGT.Spikes_Fancy, 6);
