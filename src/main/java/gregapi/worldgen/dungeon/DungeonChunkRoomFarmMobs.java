@@ -35,10 +35,8 @@ import net.minecraft.init.Items;
 public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_MOBS)) return F;
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_MOBS) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_MOBS);
-		
-		super.generate(aData);
 		
 		// Roof, two Blocks thick due to Sunlight glitches.
 		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {

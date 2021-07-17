@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,8 +27,7 @@ import static gregapi.data.CS.*;
 public class DungeonChunkRoomVault extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		if (aData.mConnectionCount != 1) return F;
-		super.generate(aData);
+		if (aData.mConnectionCount != 1 || !super.generate(aData)) return F;
 		try {WorldgenDungeonGT.DOOR_PISTON.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} // The Vault Door is not important enough to fail the entire Room.
 		return T;
 	}

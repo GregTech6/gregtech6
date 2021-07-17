@@ -76,13 +76,18 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, TAG_FARM_CROP       = TagData.createTagData("gt.dungeon.farm.crop")
 	, TAG_FARM_FISH       = TagData.createTagData("gt.dungeon.farm.fish")
 	, TAG_LIBRARY         = TagData.createTagData("gt.dungeon.library")
+	, TAG_LIBRARY_NORMAL  = TagData.createTagData("gt.dungeon.library.normal")
+	, TAG_LIBRARY_THAUM   = TagData.createTagData("gt.dungeon.library.thaumcraft")
+	, TAG_LIBRARY_MYST    = TagData.createTagData("gt.dungeon.library.mystcraft")
 	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
 	;
 	
 	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F
 	, ROOM_EMPTY
 	, new DungeonChunkRoomWorkshop()
-	, new DungeonChunkRoomLibrary()
+	, new DungeonChunkRoomLibraryNormal()
+	, new DungeonChunkRoomLibraryMystcraft()
+	, new DungeonChunkRoomLibraryThaumcraft()
 	, new DungeonChunkRoomFarmFish()
 	, new DungeonChunkRoomFarmCrop()
 	, new DungeonChunkRoomFarmMobs()

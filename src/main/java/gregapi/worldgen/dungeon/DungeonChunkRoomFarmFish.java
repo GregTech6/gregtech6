@@ -38,10 +38,8 @@ import net.minecraftforge.common.ChestGenHooks;
 public class DungeonChunkRoomFarmFish extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		if (aData.mConnectionCount != 2) return F;
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_FISH) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_FISH);
-		
-		super.generate(aData);
 		
 		for (int tX = 3; tX <= 12; tX++) for (int tZ = 3; tZ <= 12; tZ++) {
 			if ((tX == 3 || tX == 12 || tZ == 3 || tZ == 12)) {

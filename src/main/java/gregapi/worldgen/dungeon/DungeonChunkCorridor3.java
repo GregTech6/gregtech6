@@ -55,9 +55,9 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				return T;
 			case 1:
 				// Breakable Wall with Safe #3 at the unused end.
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks (13, tY, tZ);
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks (12, tY, tZ);
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks (11, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(13, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(12, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(11, tY, tZ);
 				for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.cobbles(10, tY, tZ);
 				for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air    (11, tY, tZ);
 				for (int tY =  1; tY <= 2; tY++) for (int tZ =  7; tZ <=  8; tZ++) aData.air    (12, tY, tZ);
@@ -93,9 +93,9 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				return T;
 			case 1:
 				// Breakable Wall with Safe #3 at the unused end.
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks ( 2, tY, tZ);
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks ( 3, tY, tZ);
-				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.bricks ( 4, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 2, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 3, tY, tZ);
+				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 4, tY, tZ);
 				for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.cobbles( 5, tY, tZ);
 				for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air    ( 4, tY, tZ);
 				for (int tY =  1; tY <= 2; tY++) for (int tZ =  7; tZ <=  8; tZ++) aData.air    ( 3, tY, tZ);
@@ -131,9 +131,9 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				return T;
 			case 1:
 				// Breakable Wall with Safe #3 at the unused end.
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY, 13);
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY, 12);
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY, 11);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 13);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 12);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 11);
 				for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.cobbles(tX, tY, 10);
 				for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air    (tX, tY, 11);
 				for (int tY =  1; tY <= 2; tY++) for (int tX =  7; tX <=  8; tX++) aData.air    (tX, tY, 12);
@@ -169,9 +169,9 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				return T;
 			case 1:
 				// Breakable Wall with Safe #3 at the unused end.
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY,  2);
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY,  3);
-				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.bricks (tX, tY,  4);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  2);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  3);
+				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  4);
 				for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.cobbles(tX, tY,  5);
 				for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air    (tX, tY,  4);
 				for (int tY =  1; tY <= 2; tY++) for (int tX =  7; tX <=  8; tX++) aData.air    (tX, tY,  3);

@@ -45,9 +45,8 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 	
 	@Override
 	public boolean generate(DungeonData aData) {
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_WORKSHOP) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_WORKSHOP);
-		
-		super.generate(aData);
 		
 		aData.set             ( 5, 1,  1, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
 		

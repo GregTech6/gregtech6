@@ -35,8 +35,8 @@ import net.minecraft.init.Blocks;
 public class DungeonChunkRoomFarmCrop extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_CROP) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_CROP);
-		super.generate(aData);
 		
 		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 4 || tCoord >= 11) {
 			aData.smooth(tCoord,  1,      5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);

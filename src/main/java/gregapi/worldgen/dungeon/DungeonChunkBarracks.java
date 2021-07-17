@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,7 +36,7 @@ import net.minecraftforge.common.ChestGenHooks;
 public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		super.generate(aData);
+		if (!super.generate(aData)) return F;
 		
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			aData.set(tX, 1, tZ, Blocks.carpet, aData.mColorInversed, 2);
