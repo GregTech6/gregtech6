@@ -92,7 +92,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set     ( 7,  3,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.redstone      , 1+aData.next(8), 0))), T, T);
 		aData.set     ( 8,  3,  6, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.spider_eye    , 1+aData.next(8), 0))), T, T);
 		aData.set     ( 8,  3,  7, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		aData.set     ( 8,  3,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 62, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     ( 8,  3,  8, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 63, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  3,  9, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.glowstone_dust, 1+aData.next(8), 0))), T, T);
 		aData.chiseled( 9,  3,  6);
 		aData.set     ( 9,  3,  7, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.bone          , 1+aData.next(8), 0))), T, T);
