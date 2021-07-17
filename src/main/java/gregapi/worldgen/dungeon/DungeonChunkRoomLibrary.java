@@ -118,7 +118,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.set( 1, tY, 12, Blocks.planks, tPlank);
 				aData.set( 1, tY, 13, Blocks.planks, tPlank);
 			} else {
-				int tIndex = aData.next(24), tKeyIndex = aData.next(aData.mGeneratedKeys.length * 2);
+				int tIndex = aData.next(24), tKeyIndex = aData.next(3)+aData.next(3);
 				NBTTagList tList = null;
 				if (tKeyIndex < aData.mGeneratedKeys.length) {
 					aData.mGeneratedKeys[tKeyIndex] = T;
