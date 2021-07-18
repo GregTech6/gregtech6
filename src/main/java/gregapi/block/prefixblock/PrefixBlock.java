@@ -521,9 +521,9 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if ((mCanBurn || mCanExplode) && aMaterial.contains(TD.Atomic.ALKALI_METAL)) {
 				boolean tExplode = F;
 				for (byte tSide : ALL_SIDES_VALID) {
-					Block tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
+					Block tBlock = aWorld.getBlock(aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide]);
 					if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-						aWorld.setBlockToAir(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
+						aWorld.setBlockToAir(aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide]);
 						tExplode = T;
 					}
 				}

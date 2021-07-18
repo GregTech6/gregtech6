@@ -103,7 +103,7 @@ public class BlockBaleGrass extends BlockBaseBale {
 		if (aRandom.nextInt(3) > 0 && !(aWorld.isDaytime() && !aWorld.isRaining() && aWorld.canBlockSeeTheSky(aX, aY+2, aZ))) return;
 		BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(aX, aZ);
 		boolean tWet = (tBiome.rainfall > 0.8F);
-		if (!tWet) for (byte tSide : ALL_SIDES_VALID) if (WD.anywater(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {tWet = T; break;}
+		if (!tWet) for (byte tSide : ALL_SIDES_VALID) if (WD.anywater(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {tWet = T; break;}
 		if ((aMeta & PILLAR_DATA) == 0) {
 			if (tWet || (aWorld.isRaining() && tBiome.rainfall > 0 && aWorld.getPrecipitationHeight(aX, aZ) <= aY+2)) {
 				aWorld.setBlock(aX, aY, aZ, this, (aMeta & PILLAR_BITS) | 2, 3);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -105,9 +105,9 @@ public class Behavior_Spray_Extinguisher extends AbstractBehaviorDefault {
 		
 		long rUses = 0;
 		
-		aX += OFFSETS_X[aSide];
-		aY += OFFSETS_Y[aSide];
-		aZ += OFFSETS_Z[aSide];
+		aX += OFFX[aSide];
+		aY += OFFY[aSide];
+		aZ += OFFZ[aSide];
 		
 		for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) {
 			if (rUses + 10 > aUses) return rUses;

@@ -135,7 +135,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		Vec3 rVector = Vec3.createVectorHelper(0, 0, 0);
 		int tDecay = quantaPerBlock - getQuantaValue(aWorld, aX, aY, aZ);
 		for (byte tSide : ALL_SIDES_HORIZONTAL) {
-			int tX = aX+OFFSETS_X[tSide], tZ = aZ+OFFSETS_Z[tSide];
+			int tX = aX+OFFX[tSide], tZ = aZ+OFFZ[tSide];
 			int tOtherDecay = quantaPerBlock - getQuantaValue(aWorld, tX, aY, tZ);
 			if (tOtherDecay >= quantaPerBlock) {
 				if (!aWorld.getBlock(tX, aY, tZ).getMaterial().blocksMovement()) {
@@ -180,7 +180,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		if (aBlock.getMaterial() == Material.water || WD.visOpq(aBlock)) return F;
 		if (aBlock.isAir(aWorld, aX, aY, aZ)) return T;
 		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		if (tTileEntity instanceof ITileEntitySurface) return !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]);
+		if (tTileEntity instanceof ITileEntitySurface) return !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPOS[aSide]);
 		return T;
 	}
 	

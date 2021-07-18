@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -148,7 +148,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (aSide == OPPOSITES[mFacing]) return aShouldSideBeRendered[aSide]?BlockTextureDefault.get(sTextureBack):null;
+		if (aSide == OPOS[mFacing]) return aShouldSideBeRendered[aSide]?BlockTextureDefault.get(sTextureBack):null;
 		return BlockTextureDefault.get(mGold?sTextureGold:mSilver?sTextureSilver:sTextureBack);
 	}
 	

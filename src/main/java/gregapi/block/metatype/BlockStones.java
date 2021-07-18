@@ -623,19 +623,10 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public void func_149853_b(World aWorld, Random aRandom, int aX, int aY, int aZ) {
 		for (byte tSide : ALL_SIDES_VALID_FIRST[aRandom.nextInt(6)]) {
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
-			if (tBlock == Blocks.cobblestone) {
-				WD.set(aWorld, aX, aY, aZ, Blocks.mossy_cobblestone, 0, 3);
-				break;
-			}
+			if (tBlock == Blocks.cobblestone && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], Blocks.mossy_cobblestone, 0, 3)) return;
 			byte tMeta = WD.meta(aWorld, aX, aY, aZ, tSide);
-			if (tBlock == Blocks.stonebrick && (tMeta == 0 || tMeta == 2)) {
-				WD.set(aWorld, aX, aY, aZ, Blocks.stonebrick, 1, 3);
-				break;
-			}
-			if (tBlock instanceof BlockStones && MOSSABLE[tMeta]) {
-				WD.set(aWorld, aX, aY, aZ, tBlock, MOSS_MAPPINGS[tMeta], 3);
-				break;
-			}
+			if (tBlock == Blocks.stonebrick && (tMeta == 0 || tMeta == 2) && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], Blocks.stonebrick, 1, 3)) return;
+			if (tBlock instanceof BlockStones && MOSSABLE[tMeta] && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], tBlock, MOSS_MAPPINGS[tMeta], 3)) return;
 		}
 	}
 	

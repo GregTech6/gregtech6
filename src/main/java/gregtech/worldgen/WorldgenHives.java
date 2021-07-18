@@ -65,37 +65,37 @@ public class WorldgenHives extends WorldgenObject {
 		case DIM_EREBUS:
 			tY = 16+aRandom.nextInt(96);
 			if (!IL.ERE_Umberstone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Brown       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
 		case DIM_BETWEENLANDS:
 			tY = 16+aRandom.nextInt(96);
 			if (!IL.BTL_Betweenstone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Green       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
 		case DIM_ATUM:
 			tY = 16+aRandom.nextInt(64);
 			if (!IL.ATUM_Limestone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Yellow      ,   900, aRandom)) || rResult;
 		case DIM_ENVM: case DIM_CW2_Caveland:
 			tY = 16+aRandom.nextInt(96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_LightGray   ,   500, aRandom)) || rResult;
 		case DIM_AETHER:
 			tY = 16+aRandom.nextInt(96);
 			if (WD.block(aWorld, tX, tY, tZ).getMaterial() == Material.ground) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Cyan        ,     0, aRandom)) || rResult;
 		case DIM_NETHER:
 			tY = 16+aRandom.nextInt(WD.bedrock(aWorld, tX, 255, tZ) ? 224 : 96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
-			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+			for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, 0xaa0000            ,   300, aRandom)) || rResult;
 		case DIM_END:
 			if (aRandom.nextInt(3) > 0) return F;
 			for (tY = 16; tY < 128; tY++) if (WD.block(aWorld, tX, tY, tZ) == Blocks.end_stone) {
-				for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+				for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 				if (tCount == 5) {
 					rResult = placeHive(tRegistry, aWorld, tX, tY, tZ, 0x00aaaa, 400, aRandom) || rResult;
 					break;
@@ -107,7 +107,7 @@ public class WorldgenHives extends WorldgenObject {
 			for (tY = 8; tY < 28; tY++) {
 				Block tBlock = WD.block(aWorld, tX, tY, tZ);
 				if (tBlock.getMaterial() == Material.rock && WD.opq(tBlock) && WD.stone(tBlock, WD.meta(aWorld, tX, tY, tZ))) {
-					for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], F, T)) tCount++;
+					for (byte tSide : ALL_SIDES_VALID) if (WD.opq(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 					if (tCount == 5) {
 						rResult = placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_LightGray,   500, aRandom);
 						break;
@@ -123,8 +123,8 @@ public class WorldgenHives extends WorldgenObject {
 				if (!tContact.isOpaqueCube() || tContact.isLeaves(aWorld, tX, tY, tZ) || tContact.isWood(aWorld, tX, tY, tZ) || tContact.getMaterial() == Material.ice || tContact.getMaterial() == Material.wood || tContact.getMaterial() == Material.leaves) continue;
 				
 				for (byte tSide : ALL_SIDES_HORIZONTAL_DOWN) {
-					Block tBlock = aWorld.getBlock(tX+OFFSETS_X[tSide], tY-1+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide]);
-					if (WD.hasCollide(aWorld, tX+OFFSETS_X[tSide], tY-1+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide], tBlock)) continue;
+					Block tBlock = aWorld.getBlock(tX+OFFX[tSide], tY-1+OFFY[tSide], tZ+OFFZ[tSide]);
+					if (WD.hasCollide(aWorld, tX+OFFX[tSide], tY-1+OFFY[tSide], tZ+OFFZ[tSide], tBlock)) continue;
 					
 					
 				//  for (String tName : aBiomeNames) if (BIOMES_SPACE.contains(tName))

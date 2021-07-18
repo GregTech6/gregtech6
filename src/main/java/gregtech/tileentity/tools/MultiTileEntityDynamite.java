@@ -104,7 +104,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		if (aIsServerSide) {
 			if (mBlockUpdated || aTimer == 2) {
 				if (hasRedstoneIncoming() || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
-				if (mSunk && !WD.ore_stone(getBlockAtSide(OPPOSITES[mFacing]), getMetaDataAtSide(OPPOSITES[mFacing]))) {mSunk = F; updateClientData();}
+				if (mSunk && !WD.ore_stone(getBlockAtSide(OPOS[mFacing]), getMetaDataAtSide(OPOS[mFacing]))) {mSunk = F; updateClientData();}
 			}
 			if (mCountDown > 0 && --mCountDown <= 0) explode(F);
 		}
@@ -157,7 +157,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (aSide == mFacing) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureFrontActive : sTextureFront, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayFrontActive : sOverlayFront));
-		if (aSide == OPPOSITES[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureBackActive : sTextureBack, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayBackActive : sOverlayBack));
+		if (aSide == OPOS[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureBackActive : sTextureBack, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayBackActive : sOverlayBack));
 		return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureSideActive : sTextureSide, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlaySideActive : sOverlaySide));
 	}
 	

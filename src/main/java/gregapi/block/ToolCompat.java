@@ -164,7 +164,7 @@ public class ToolCompat {
 			}
 			if (rReturn) {
 				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null, F, F);
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
+				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 			return 0;
@@ -196,9 +196,9 @@ public class ToolCompat {
 			}
 			// This thing has a special Functionality, which should override spawning Fire Blocks.
 			if (!IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
-				if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aSide, aStack)) {
-					if (aWorld.isAirBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
-						if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], Blocks.fire);
+				if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide], aSide, aStack)) {
+					if (aWorld.isAirBlock(aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide])) {
+						if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide], Blocks.fire);
 						return 10000;
 					}
 				}
@@ -376,9 +376,9 @@ public class ToolCompat {
 		int tX = aX, tY = aY, tZ = aZ, tQuality = (int)UT.Code.bind(1, 20, aQuality + 4);
 		
 		for (int i = 0, j = tQuality; i < j; i++) {
-			tX -= OFFSETS_X[aSide];
-			tY -= OFFSETS_Y[aSide];
-			tZ -= OFFSETS_Z[aSide];
+			tX -= OFFX[aSide];
+			tY -= OFFY[aSide];
+			tZ -= OFFZ[aSide];
 			
 			// The Strings in this do not want to be localized, and not even Backup Lang wants to work.
 			tBlock = aWorld.getBlock(tX, tY, tZ);

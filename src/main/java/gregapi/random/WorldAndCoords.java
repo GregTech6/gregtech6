@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,18 +51,18 @@ public class WorldAndCoords implements IHasWorldAndCoords, Comparable<WorldAndCo
 	@Override public int getX() {return mX;}
 	@Override public int getY() {return mY;}
 	@Override public int getZ() {return mZ;}
-	@Override public int getOffsetX (byte aSide) {return mX + OFFSETS_X[aSide];}
-	@Override public int getOffsetY (byte aSide) {return mY + OFFSETS_Y[aSide];}
-	@Override public int getOffsetZ (byte aSide) {return mZ + OFFSETS_Z[aSide];}
-	@Override public int getOffsetX (byte aSide, int aMultiplier) {return mX + OFFSETS_X[aSide] * aMultiplier;}
-	@Override public int getOffsetY (byte aSide, int aMultiplier) {return mY + OFFSETS_Y[aSide] * aMultiplier;}
-	@Override public int getOffsetZ (byte aSide, int aMultiplier) {return mZ + OFFSETS_Z[aSide] * aMultiplier;}
-	@Override public int getOffsetXN(byte aSide) {return mX - OFFSETS_X[aSide];}
-	@Override public int getOffsetYN(byte aSide) {return mY - OFFSETS_Y[aSide];}
-	@Override public int getOffsetZN(byte aSide) {return mZ - OFFSETS_Z[aSide];}
-	@Override public int getOffsetXN(byte aSide, int aMultiplier) {return mX - OFFSETS_X[aSide] * aMultiplier;}
-	@Override public int getOffsetYN(byte aSide, int aMultiplier) {return mY - OFFSETS_Y[aSide] * aMultiplier;}
-	@Override public int getOffsetZN(byte aSide, int aMultiplier) {return mZ - OFFSETS_Z[aSide] * aMultiplier;}
+	@Override public int getOffsetX (byte aSide) {return mX + OFFX[aSide];}
+	@Override public int getOffsetY (byte aSide) {return mY + OFFY[aSide];}
+	@Override public int getOffsetZ (byte aSide) {return mZ + OFFZ[aSide];}
+	@Override public int getOffsetX (byte aSide, int aMultiplier) {return mX + OFFX[aSide] * aMultiplier;}
+	@Override public int getOffsetY (byte aSide, int aMultiplier) {return mY + OFFY[aSide] * aMultiplier;}
+	@Override public int getOffsetZ (byte aSide, int aMultiplier) {return mZ + OFFZ[aSide] * aMultiplier;}
+	@Override public int getOffsetXN(byte aSide) {return mX - OFFX[aSide];}
+	@Override public int getOffsetYN(byte aSide) {return mY - OFFY[aSide];}
+	@Override public int getOffsetZN(byte aSide) {return mZ - OFFZ[aSide];}
+	@Override public int getOffsetXN(byte aSide, int aMultiplier) {return mX - OFFX[aSide] * aMultiplier;}
+	@Override public int getOffsetYN(byte aSide, int aMultiplier) {return mY - OFFY[aSide] * aMultiplier;}
+	@Override public int getOffsetZN(byte aSide, int aMultiplier) {return mZ - OFFZ[aSide] * aMultiplier;}
 	@Override public ChunkCoordinates getCoords() {return new ChunkCoordinates(mX, mY, mZ);}
 	@Override public ChunkCoordinates getOffset (byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetX (aSide, aMultiplier), getOffsetY (aSide, aMultiplier), getOffsetZ (aSide, aMultiplier));}
 	@Override public ChunkCoordinates getOffsetN(byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetXN(aSide, aMultiplier), getOffsetYN(aSide, aMultiplier), getOffsetZN(aSide, aMultiplier));}
@@ -123,10 +123,10 @@ public class WorldAndCoords implements IHasWorldAndCoords, Comparable<WorldAndCo
 	@Override
 	public DelegatorTileEntity<TileEntity> getAdjacentTileEntity(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {
 		TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, 1);
-		if (tTileEntity == null) return new DelegatorTileEntity<>(null, mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
-		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity<>(null, mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
-		if (aAllowDelegates && tTileEntity instanceof ITileEntityDelegating) return ((ITileEntityDelegating)tTileEntity).getDelegateTileEntity(OPPOSITES[aSide]);
-		return new DelegatorTileEntity<>(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPPOSITES[aSide]);
+		if (tTileEntity == null) return new DelegatorTileEntity<>(null, mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide]);
+		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity<>(null, mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide]);
+		if (aAllowDelegates && tTileEntity instanceof ITileEntityDelegating) return ((ITileEntityDelegating)tTileEntity).getDelegateTileEntity(OPOS[aSide]);
+		return new DelegatorTileEntity<>(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPOS[aSide]);
 	}
 	
 	@Override
@@ -151,7 +151,7 @@ public class WorldAndCoords implements IHasWorldAndCoords, Comparable<WorldAndCo
 	@Override
 	public byte getComparatorIncoming(byte aSide) {
 		Block tBlock = getBlockAtSide(aSide);
-		return tBlock.hasComparatorInputOverride()?UT.Code.bind4(tBlock.getComparatorInputOverride(mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide])):getRedstoneIncoming(aSide);
+		return tBlock.hasComparatorInputOverride()?UT.Code.bind4(tBlock.getComparatorInputOverride(mWorld, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide])):getRedstoneIncoming(aSide);
 	}
 	
 	@Override public boolean equals(Object aObject) {return aObject instanceof WorldAndCoords && ((WorldAndCoords)aObject).mWorld == mWorld && ((WorldAndCoords)aObject).mX == mX && ((WorldAndCoords)aObject).mY == mY && ((WorldAndCoords)aObject).mZ == mZ;}

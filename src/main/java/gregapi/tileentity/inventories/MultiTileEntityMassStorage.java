@@ -131,14 +131,14 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_softhammer)) {
 			if ((mMode & B[3]) != 0) return 0;
 			if (slotHas(0)) {
-				ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.copy(slot(0)));
+				ST.place(worldObj, xCoord+OFFX[mFacing]+0.5, yCoord+OFFY[mFacing]+0.5, zCoord+OFFZ[mFacing]+0.5, ST.copy(slot(0)));
 				slotKill(0);
 				updateInventory();
 				return 10000;
 			}
 			if (slotHas(1)) {
 				for (int i = 0; i < 128 && slot(1).stackSize > Math.max(1, slot(1).getMaxStackSize()); i++) {
-					ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.amount(Math.max(1, slot(1).getMaxStackSize()), slot(1)));
+					ST.place(worldObj, xCoord+OFFX[mFacing]+0.5, yCoord+OFFY[mFacing]+0.5, zCoord+OFFZ[mFacing]+0.5, ST.amount(Math.max(1, slot(1).getMaxStackSize()), slot(1)));
 					slot(1).stackSize -= Math.max(1, slot(1).getMaxStackSize());
 				}
 				if (mPartialUnits > 0) {
@@ -147,7 +147,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				}
 				if (slot(1).stackSize > 0) {
 					if (slot(1).stackSize <= Math.max(1, slot(1).getMaxStackSize())) {
-						ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.copy(slot(1)));
+						ST.place(worldObj, xCoord+OFFX[mFacing]+0.5, yCoord+OFFY[mFacing]+0.5, zCoord+OFFZ[mFacing]+0.5, ST.copy(slot(1)));
 						slotKill(1);
 						updateClientData();
 					}
@@ -649,7 +649,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				
 				glPushMatrix();
 				
-				glTranslated(aX+0.5+OFFSETS_X[tTileEntity.mFacing]*0.502-OFFSETS_Z[tTileEntity.mFacing]*0.25, aY+0.625, aZ+0.5+OFFSETS_Z[tTileEntity.mFacing]*0.502+OFFSETS_X[tTileEntity.mFacing]*0.25);
+				glTranslated(aX+0.5+OFFX[tTileEntity.mFacing]*0.502-OFFZ[tTileEntity.mFacing]*0.25, aY+0.625, aZ+0.5+OFFZ[tTileEntity.mFacing]*0.502+OFFX[tTileEntity.mFacing]*0.25);
 				glRotatef(180, 0, 0, 1);
 				glRotatef(COMPASS_FROM_SIDE[tTileEntity.mFacing] * 90, 0, 1, 0);
 				

@@ -203,7 +203,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
-				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
+				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFX[tSide]][j+OFFZ[tSide]] != 0) tConnectionCount++;
 				
 				if (tConnectionCount <= 1) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				
@@ -221,7 +221,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
-				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
+				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFX[tSide]][j+OFFZ[tSide]] != 0) tConnectionCount++;
 				
 				if (tConnectionCount <= 1) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				
@@ -250,7 +250,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			aWorld.getChunkFromChunkCoords((aMinX >> 4) + i, (aMinZ >> 4) + j).setChunkModified();
 			
 			int tConnectionCount = 0;
-			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
+			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFX[tSide]][j+OFFZ[tSide]] != 0) tConnectionCount++;
 			
 			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
@@ -280,7 +280,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			aWorld.getChunkFromChunkCoords((aMinX >> 4) + i, (aMinZ >> 4) + j).setChunkModified();
 			
 			int tConnectionCount = 0;
-			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
+			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFX[tSide]][j+OFFZ[tSide]] != 0) tConnectionCount++;
 			
 			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
@@ -295,8 +295,8 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		for (ChunkCoordinates tCoords : tLightUpdateCoords) {
 			aWorld.setLightValue(EnumSkyBlock.Block, tCoords.posX, tCoords.posY, tCoords.posZ, 15);
 			for (byte tSide : ALL_SIDES_MIDDLE) {
-				aWorld.func_147451_t(tCoords.posX+OFFSETS_X[tSide], tCoords.posY+OFFSETS_Y[tSide], tCoords.posZ+OFFSETS_Z[tSide]);
-				WD.update(   aWorld, tCoords.posX+OFFSETS_X[tSide], tCoords.posY+OFFSETS_Y[tSide], tCoords.posZ+OFFSETS_Z[tSide]);
+				aWorld.func_147451_t(tCoords.posX+OFFX[tSide], tCoords.posY+OFFY[tSide], tCoords.posZ+OFFZ[tSide]);
+				WD.update(   aWorld, tCoords.posX+OFFX[tSide], tCoords.posY+OFFY[tSide], tCoords.posZ+OFFZ[tSide]);
 			}
 		}
 		return T;

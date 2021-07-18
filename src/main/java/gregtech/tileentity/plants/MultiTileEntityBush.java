@@ -138,9 +138,9 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 				// Yes I know I should have chosen a better type of Timer than a byte overflow Timer.
 				if (getSkyOffset(0, 1, 0)) {
 					for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
-					if (worldObj.isRaining() && getRainOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing])) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
+					if (worldObj.isRaining() && getRainOffset(OFFX[mFacing], SIDES_TOP[mFacing]?1:2, OFFZ[mFacing])) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
 				} else {
-					if (getLightLevelOffset(OFFSETS_X[mFacing], SIDES_TOP[mFacing]?1:2, OFFSETS_Z[mFacing]) > 9) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
+					if (getLightLevelOffset(OFFX[mFacing], SIDES_TOP[mFacing]?1:2, OFFZ[mFacing]) > 9) for (int i = 0; i < mSpeed; i++) if (++mGrowth == 0) mStage++;
 				}
 			}
 		}
@@ -187,9 +187,9 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public boolean canPlace(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		TileEntity tTileEntity = aWorld.getTileEntity(aX-OFFSETS_X[aSide], aY-OFFSETS_Y[aSide], aZ-OFFSETS_Z[aSide]);
+		TileEntity tTileEntity = aWorld.getTileEntity(aX-OFFX[aSide], aY-OFFY[aSide], aZ-OFFZ[aSide]);
 		if (tTileEntity instanceof MultiTileEntityBush && SIDES_INVALID[((MultiTileEntityBush)tTileEntity).mFacing] && (ST.invalid(mBerry) || ST.equal(((MultiTileEntityBush)tTileEntity).mBerry, mBerry, F))) {
-			mFacing = OPPOSITES[aSide];
+			mFacing = OPOS[aSide];
 			mBerry = ((MultiTileEntityBush)tTileEntity).mBerry;
 			updateClientData();
 			return T;

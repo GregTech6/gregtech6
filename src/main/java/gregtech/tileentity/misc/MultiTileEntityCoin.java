@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -193,7 +193,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null && !aEntity.worldObj.isRemote && aEntity.onGround) {
 			if (aStack.stackSize > 0) for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (aStack.stackSize > 0) {
-				TileEntity tTileEntity = WD.te(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFSETS_X[tSide], UT.Code.roundDown(aEntity.posY)+OFFSETS_Y[tSide], UT.Code.roundDown(aEntity.posZ)+OFFSETS_Z[tSide], T);
+				TileEntity tTileEntity = WD.te(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFX[tSide], UT.Code.roundDown(aEntity.posY)+OFFY[tSide], UT.Code.roundDown(aEntity.posZ)+OFFZ[tSide], T);
 				if (tTileEntity instanceof MultiTileEntityCoin) {
 					NBTTagCompound tNBT = ((MultiTileEntityCoin)tTileEntity).writeItemNBT(UT.NBT.make());
 					if (tNBT.equals(aNBT)) {
@@ -210,7 +210,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 			}
 			
 			if (aStack.stackSize > 0) for (byte tSide : ALL_SIDES_MIDDLE_DOWN) if (aStack.stackSize > 0) {
-				if (aEntity.worldObj.canPlaceEntityOnSide(MTE_REGISTRY.mBlock, UT.Code.roundDown(aEntity.posX)+OFFSETS_X[tSide], UT.Code.roundDown(aEntity.posY)+OFFSETS_Y[tSide], UT.Code.roundDown(aEntity.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEntity, aStack)) {
+				if (aEntity.worldObj.canPlaceEntityOnSide(MTE_REGISTRY.mBlock, UT.Code.roundDown(aEntity.posX)+OFFX[tSide], UT.Code.roundDown(aEntity.posY)+OFFY[tSide], UT.Code.roundDown(aEntity.posZ)+OFFZ[tSide], F, SIDE_TOP, aEntity, aStack)) {
 					NBTTagCompound tNBT = (NBTTagCompound)aNBT.copy();
 					int tUsedAmount = 0;
 					for (int i = 0; i < mCoinStackSizes.length; i++) {
@@ -220,9 +220,9 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 							tNBT.setByte("gt.coin.stacksize."+i, (byte)tDifference);
 						}
 					}
-					if (tUsedAmount > 0 && MTE_REGISTRY.mBlock.placeBlock(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFSETS_X[tSide], UT.Code.roundDown(aEntity.posY)+OFFSETS_Y[tSide], UT.Code.roundDown(aEntity.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, INSTANCE.getMultiTileEntityID(), tNBT, T, F)) {
+					if (tUsedAmount > 0 && MTE_REGISTRY.mBlock.placeBlock(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFX[tSide], UT.Code.roundDown(aEntity.posY)+OFFY[tSide], UT.Code.roundDown(aEntity.posZ)+OFFZ[tSide], SIDE_UNKNOWN, INSTANCE.getMultiTileEntityID(), tNBT, T, F)) {
 						aStack.stackSize-=tUsedAmount;
-						TileEntity tTileEntity = WD.te(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFSETS_X[tSide], UT.Code.roundDown(aEntity.posY)+OFFSETS_Y[tSide], UT.Code.roundDown(aEntity.posZ)+OFFSETS_Z[tSide], T);
+						TileEntity tTileEntity = WD.te(aEntity.worldObj, UT.Code.roundDown(aEntity.posX)+OFFX[tSide], UT.Code.roundDown(aEntity.posY)+OFFY[tSide], UT.Code.roundDown(aEntity.posZ)+OFFZ[tSide], T);
 						if (tTileEntity instanceof MultiTileEntityCoin) ((MultiTileEntityCoin)tTileEntity).shuffle();
 					}
 				}

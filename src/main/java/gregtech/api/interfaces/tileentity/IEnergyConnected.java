@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,7 +40,7 @@ public interface IEnergyConnected extends IColoredTileEntity, IHasWorldObjectAnd
 		public static final long emitEnergyToNetwork(long aVoltage, long aAmperage, IEnergyConnected aEmitter) {
 			long rUsedAmperage = 0;
 			for (byte aSideOutOf : ALL_SIDES_VALID) if (aEmitter.outputsEnergyTo(aSideOutOf)) {
-				DelegatorTileEntity<TileEntity> tDelegator = WD.te(aEmitter.getWorld(), aEmitter.getOffsetX(aSideOutOf, 1), aEmitter.getOffsetY(aSideOutOf, 1), aEmitter.getOffsetZ(aSideOutOf, 1), OPPOSITES[aSideOutOf], F);
+				DelegatorTileEntity<TileEntity> tDelegator = WD.te(aEmitter.getWorld(), aEmitter.getOffsetX(aSideOutOf, 1), aEmitter.getOffsetY(aSideOutOf, 1), aEmitter.getOffsetZ(aSideOutOf, 1), OPOS[aSideOutOf], F);
 				if (tDelegator.mTileEntity instanceof IColoredTileEntity && aEmitter.getColorization() >= 0) {
 					byte tColor = ((IColoredTileEntity)tDelegator.mTileEntity).getColorization();
 					if (tColor >= 0 && tColor != aEmitter.getColorization()) continue;

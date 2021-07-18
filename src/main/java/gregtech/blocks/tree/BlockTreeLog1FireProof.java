@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -70,10 +70,10 @@ public class BlockTreeLog1FireProof extends BlockBaseBeam implements IBlockToola
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			if (aWorld.isRemote) return 0;
 			switch (aWorld.getBlockMetadata(aX, aY, aZ) & PILLAR_DATA) {
-			case 0: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.Bark_Dry.get(1), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]); break;
-			case 1: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Rotten)), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]); break;
-			case 2: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Mossy )), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]); break;
-			case 3: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Ice), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]); break;
+			case 0: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.Bark_Dry.get(1), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 1: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Rotten)), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 2: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Mossy )), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 3: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Ice), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
 			}
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 1000;

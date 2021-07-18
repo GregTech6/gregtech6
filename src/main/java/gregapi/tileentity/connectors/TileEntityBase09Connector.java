@@ -81,7 +81,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
-			aSide = OPPOSITES[aSide];
+			aSide = OPOS[aSide];
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 			if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return T;
 			connect(aSide, T);

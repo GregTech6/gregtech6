@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -155,13 +155,13 @@ public class MultiTileEntityFermenter extends TileEntityBase10MultiBlockMachine 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public DelegatorTileEntity<IFluidHandler> getFluidOutputTarget(byte aSide, Fluid aOutput) {
-		DelegatorTileEntity tDelegator = WD.te(worldObj, getOffsetX(OPPOSITES[mFacing], 5), yCoord, getOffsetZ(OPPOSITES[mFacing], 5), OPPOSITES[mFacing], F);
+		DelegatorTileEntity tDelegator = WD.te(worldObj, getOffsetX(OPOS[mFacing], 5), yCoord, getOffsetZ(OPOS[mFacing], 5), OPOS[mFacing], F);
 		return tDelegator.mTileEntity instanceof IFluidHandler ? tDelegator : null;
 	}
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getItemOutputTarget(byte aSide) {
-		return WD.te(worldObj, getOffsetX(OPPOSITES[mFacing], 5), yCoord+1, getOffsetZ(OPPOSITES[mFacing], 5), OPPOSITES[mFacing], F);
+		return WD.te(worldObj, getOffsetX(OPOS[mFacing], 5), yCoord+1, getOffsetZ(OPOS[mFacing], 5), OPOS[mFacing], F);
 	}
 	
 	@Override public DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide) {return null;}

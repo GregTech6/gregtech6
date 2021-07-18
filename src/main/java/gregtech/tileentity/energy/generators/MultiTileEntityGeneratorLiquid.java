@@ -165,7 +165,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 			if (mCooldown > 0) mCooldown--;
 		} else {
 			// Client Burning Particles.
-			if (mBurning && rng(5) == 0) spawnBurningParticles(xCoord+0.5+OFFSETS_X[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3), yCoord+RNGSUS.nextFloat()*0.375, zCoord+0.5+OFFSETS_Z[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3));
+			if (mBurning && rng(5) == 0) spawnBurningParticles(xCoord+0.5+OFFX[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3), yCoord+RNGSUS.nextFloat()*0.375, zCoord+0.5+OFFZ[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3));
 		}
 	}
 	

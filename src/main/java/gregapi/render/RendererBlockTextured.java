@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -113,7 +113,7 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 				if (aBlock instanceof IRenderedBlockObjectSideCheck) {
 					for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = ((IRenderedBlockObjectSideCheck)aBlock).renderFullBlockSide(aBlock, aRenderer, tSide);
 				} else {
-					for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = aBlock.shouldSideBeRendered(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], tSide);
+					for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = aBlock.shouldSideBeRendered(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], tSide);
 				}
 				for (int i = 0, j = ((IRenderedBlock)aBlock).getRenderPasses(aWorld, aX, aY, aZ, tSides); i < j; i++) {
 					if (((IRenderedBlock)aBlock).usesRenderPass(i, aWorld, aX, aY, aZ, tSides)) {
@@ -136,7 +136,7 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 					if (tRenderer instanceof IRenderedBlockObjectSideCheck) {
 						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = ((IRenderedBlockObjectSideCheck)tRenderer).renderFullBlockSide(aBlock, aRenderer, tSide);
 					} else {
-						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = aBlock.shouldSideBeRendered(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], tSide);
+						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = aBlock.shouldSideBeRendered(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], tSide);
 					}
 					for (int i = 0, j = tRenderer.getRenderPasses(aBlock, tSides); i < j; i++) {
 						if (tRenderer.usesRenderPass(i, tSides)) {

@@ -130,7 +130,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 		if (IL.IC2_Scaffold     .equal(aBlock)) return aUses >= 10 && MultiTileEntityCFoam.setBlock(aWorld, aX, aY, aZ, aDelegator.mSideOfTileEntity, aPlayer, aStack, DYES[mColor], mOwned) ? 10 : 0;
 		if (IL.IC2_Scaffold_Iron.equal(aBlock)) return aUses >= 10 && aWorld.setBlock(aX, aY, aZ, IL.IC2_Foam_Reinforced.block(), 0, 3) ? 10 : 0;
 		
-		aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
+		aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];
 		
 		if (BlocksGT.CFoamFresh != null) {
 			byte tSide = UT.Code.getSideForPlayerPlacing(aPlayer);
@@ -141,7 +141,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 			case 1:
 				for (byte i = 0; i < 4; i++) {
 					if (aUses >= 10 && WD.air(aWorld, aX, aY, aZ) && (mOwned?MultiTileEntityCFoam.setBlock(aWorld, aX, aY, aZ, aSide, aPlayer, aStack, DYES[mColor], mOwned):aWorld.setBlock(aX, aY, aZ, BlocksGT.CFoamFresh, mColor, 3))) {aUses-=10; rUses+=10;} else break;
-					aX -= OFFSETS_X[tSide]; aY -= OFFSETS_Y[tSide]; aZ -= OFFSETS_Z[tSide];
+					aX -= OFFX[tSide]; aY -= OFFY[tSide]; aZ -= OFFZ[tSide];
 				}
 				return rUses;
 			case 2:
@@ -158,7 +158,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 				}
 				return rUses;
 			case 3:
-				if (aUses >= 5 && WD.air(aWorld, aX, aY, aZ) && aWorld.setBlock(aX, aY, aZ, ((BlockCFoamFresh)BlocksGT.CFoamFresh).mSlabs[OPPOSITES[aSide]], mColor, 3)) {aUses-=5; rUses+=5;}
+				if (aUses >= 5 && WD.air(aWorld, aX, aY, aZ) && aWorld.setBlock(aX, aY, aZ, ((BlockCFoamFresh)BlocksGT.CFoamFresh).mSlabs[OPOS[aSide]], mColor, 3)) {aUses-=5; rUses+=5;}
 				return rUses;
 			case 4:
 				aX -= (SIDES_AXIS_X[tSide] ? 0 : 1);
@@ -168,7 +168,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 				for (byte i = 0; i < 3; i++) for (byte j = 0; j < 3; j++) {
 					if (aUses >= 5) {
 						if (WD.air(aWorld, aX + (SIDES_AXIS_X[tSide]?0:i), aY + (SIDES_AXIS_X[tSide]?i:0) + (SIDES_AXIS_Z[tSide]?j:0), aZ + (SIDES_AXIS_Z[tSide]?0:j))) {
-							if (aWorld.setBlock(aX + (SIDES_AXIS_X[tSide]?0:i), aY + (SIDES_AXIS_X[tSide]?i:0) + (SIDES_AXIS_Z[tSide]?j:0), aZ + (SIDES_AXIS_Z[tSide]?0:j), ((BlockCFoamFresh)BlocksGT.CFoamFresh).mSlabs[OPPOSITES[tSide]], mColor, 3)) {aUses-=5; rUses+=5;}
+							if (aWorld.setBlock(aX + (SIDES_AXIS_X[tSide]?0:i), aY + (SIDES_AXIS_X[tSide]?i:0) + (SIDES_AXIS_Z[tSide]?j:0), aZ + (SIDES_AXIS_Z[tSide]?0:j), ((BlockCFoamFresh)BlocksGT.CFoamFresh).mSlabs[OPOS[tSide]], mColor, 3)) {aUses-=5; rUses+=5;}
 						}
 					} else break;
 				}

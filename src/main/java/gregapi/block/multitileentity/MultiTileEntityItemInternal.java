@@ -166,7 +166,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			if (tClickedBlock instanceof BlockSnow && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 1) {
 				aSide = SIDE_TOP;
 			} else if (tClickedBlock != Blocks.vine && tClickedBlock != Blocks.tallgrass && tClickedBlock != Blocks.deadbush && !tClickedBlock.isReplaceable(aWorld, aX, aY, aZ)) {
-				aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
+				aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];
 			}
 			Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 			

@@ -217,7 +217,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override
 	public ChunkCoordinates bumbleCanProduce(World aWorld, int aX, int aY, int aZ, ItemStack aBumbleBee, short aMetaData, int aDistance) {
 		boolean temp = T;
-		for (byte tSide : ALL_SIDES_VALID) if (WD.oxygen(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {temp = F; break;}
+		for (byte tSide : ALL_SIDES_VALID) if (WD.oxygen(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {temp = F; break;}
 		if (temp) return null;
 
 		aDistance = Math.abs(aDistance);

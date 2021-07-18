@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,12 +35,12 @@ public class MultiTileEntityTransformerRotation extends TileEntityBase11Bidirect
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide==mFacing?mNegativeInput?0:1:aSide==OPPOSITES[mFacing]?mNegativeInput?1:0:2;
+		int aIndex = aSide==mFacing?mNegativeInput?0:1:aSide==OPOS[mFacing]?mNegativeInput?1:0:2;
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[mActivity.mState == 1 ? 1 : 0][aIndex], mRGBa), BlockTextureDefault.get(sOverlays[mActivity.mState == 1 ? 1 : 0][aIndex]));
 	}
 	
-	@Override public boolean isInput (byte aSide) {return mReversed ? aSide == OPPOSITES[mFacing] : aSide == mFacing;}
-	@Override public boolean isOutput(byte aSide) {return mReversed ? aSide == mFacing : aSide == OPPOSITES[mFacing];}
+	@Override public boolean isInput (byte aSide) {return mReversed ? aSide == OPOS[mFacing] : aSide == mFacing;}
+	@Override public boolean isOutput(byte aSide) {return mReversed ? aSide == mFacing : aSide == OPOS[mFacing];}
 	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_FRONT);}
 	@Override public String getLocalisedOutputSide() {return LH.get(LH.FACE_BACK);}
 	

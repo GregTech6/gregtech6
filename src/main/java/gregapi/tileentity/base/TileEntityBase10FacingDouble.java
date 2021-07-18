@@ -70,7 +70,7 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 				byte oFacing = mFacing, oSecondFacing = mSecondFacing;
 				mFacing = aTargetSide;
 				if (!getValidSecondSides()[mSecondFacing]) {
-					mSecondFacing = OPPOSITES[mFacing];
+					mSecondFacing = OPOS[mFacing];
 					if (!getValidSecondSides()[mSecondFacing]) for (byte tSide : ALL_SIDES_VALID) {
 						mSecondFacing = tSide;
 						if (getValidSecondSides()[mSecondFacing]) break;
@@ -120,6 +120,6 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 	@Override public boolean isConnectedWrenchingOverlay(ItemStack aStack, byte aSide) {return aSide == mFacing || aSide == mSecondFacing;}
 	
 	// Stuff to Override
-	public byte getDefaultSecondSide() {return OPPOSITES[getDefaultSide()];}
+	public byte getDefaultSecondSide() {return OPOS[getDefaultSide()];}
 	public boolean[] getValidSecondSides() {return getValidSides();}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -246,7 +246,7 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 		 * @return the amount of used Energy Packets.
 		 */
 		public static final long emitEnergyToSide(TagData aEnergyType, byte aSideOutOf, long aSize, long aAmount, TileEntity aEmitter) {
-			DelegatorTileEntity<TileEntity> tDelegator = aEmitter instanceof IHasWorldAndCoords ? ((IHasWorldAndCoords)aEmitter).getAdjacentTileEntity(aSideOutOf) : WD.te(aEmitter.getWorldObj(), aEmitter.xCoord+OFFSETS_X[aSideOutOf], aEmitter.yCoord+OFFSETS_Y[aSideOutOf], aEmitter.zCoord+OFFSETS_Z[aSideOutOf], OPPOSITES[aSideOutOf], F);
+			DelegatorTileEntity<TileEntity> tDelegator = aEmitter instanceof IHasWorldAndCoords ? ((IHasWorldAndCoords)aEmitter).getAdjacentTileEntity(aSideOutOf) : WD.te(aEmitter.getWorldObj(), aEmitter.xCoord+OFFX[aSideOutOf], aEmitter.yCoord+OFFY[aSideOutOf], aEmitter.zCoord+OFFZ[aSideOutOf], OPOS[aSideOutOf], F);
 			return insertEnergyInto(aEnergyType, aSize, aAmount, aEmitter, tDelegator);
 		}
 		

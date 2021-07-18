@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,7 +62,7 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doTwinType(aTimer, this, mFacing, OPPOSITES[mFacing], mMode, mEnergyOUT2);
+		mActivity.mActive = mConverter.doTwinType(aTimer, this, mFacing, OPOS[mFacing], mMode, mEnergyOUT2);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
@@ -76,7 +76,7 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	
 	@Override public boolean isInput  (byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isOutput (byte aSide) {return aSide == mFacing;}
-			  public boolean isOutput2(byte aSide) {return aSide == OPPOSITES[mFacing];}
+			  public boolean isOutput2(byte aSide) {return aSide == OPOS[mFacing];}
 	@Override public String getLocalisedInputSide  () {return LH.get(LH.FACE_ANYBUT_FRONT_BACK);}
 	@Override public String getLocalisedOutputSide () {return LH.get(LH.FACE_FRONT);}
 			  public String getLocalisedOutputSide2() {return LH.get(LH.FACE_BACK);}

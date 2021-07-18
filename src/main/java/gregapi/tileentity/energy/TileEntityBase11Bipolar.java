@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,7 +52,7 @@ public abstract class TileEntityBase11Bipolar extends TileEntityBase10EnergyConv
 	
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doBipolar(aTimer, this, mFacing, OPPOSITES[mFacing], mMode);
+		mActivity.mActive = mConverter.doBipolar(aTimer, this, mFacing, OPOS[mFacing], mMode);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;

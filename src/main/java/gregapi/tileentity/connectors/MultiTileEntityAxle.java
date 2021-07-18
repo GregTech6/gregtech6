@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -101,8 +101,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		mRotationDir = (byte)(aSpeed < 0 ? 1+(aSide & 1) : 2-(aSide & 1));
 		if (oRotationDir == 0) return addToEnergyTransferred(aSpeed, aPower, aPower);
 		
-		if (!canEmitEnergyTo(OPPOSITES[aSide])) return addToEnergyTransferred(aSpeed, aPower, 0);
-		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPPOSITES[aSide]);
+		if (!canEmitEnergyTo(OPOS[aSide])) return addToEnergyTransferred(aSpeed, aPower, 0);
+		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPOS[aSide]);
 		return addToEnergyTransferred(aSpeed, aPower, aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed) : 0 : ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, aSpeed, aPower, this, tDelegator) : 0);
 	}
 	

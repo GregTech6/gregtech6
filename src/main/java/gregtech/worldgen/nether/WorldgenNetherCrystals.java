@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -61,7 +61,7 @@ public class WorldgenNetherCrystals extends WorldgenObject {
 			if (WD.air(aWorld, tX, tY, tZ)) {
 				int tCount = 0;
 				for (int tSide : ALL_SIDES_VALID) {
-					Block block = aWorld.getBlock(tX+OFFSETS_X[tSide], tY+OFFSETS_Y[tSide], tZ+OFFSETS_Z[tSide]);
+					Block block = aWorld.getBlock(tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide]);
 					if (block == BlocksGT.CrystalOres) tCount++;
 				}
 				if (tCount == 1) aWorld.setBlock(tX, tY, tZ, BlocksGT.CrystalOres, aMeta, 2);

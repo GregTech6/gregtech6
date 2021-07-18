@@ -1675,7 +1675,7 @@ public class UT {
 		
 		/** @return the opposite facing of this Side of a Block, with a boundary check. */
 		public static byte opposite(int aSide) {
-			return aSide < OPPOSITES.length && aSide >= 0 ? OPPOSITES[aSide] : 6;
+			return aSide < OPOS.length && aSide >= 0 ? OPOS[aSide] : 6;
 		}
 		
 		/** Turns the Amount of Stuff into a more readable String. */
@@ -1773,7 +1773,7 @@ public class UT {
 		public static byte getOppositeSideForPlayerPlacing(Entity aPlayer, byte aDefaultFacing, boolean[] aAllowedFacings) {
 			if (aPlayer.rotationPitch >=  65 && aAllowedFacings[SIDE_DOWN]) return SIDE_DOWN;
 			if (aPlayer.rotationPitch <= -65 && aAllowedFacings[SIDE_UP]) return SIDE_UP;
-			byte rFacing = OPPOSITES[COMPASS_DIRECTIONS[UT.Code.roundDown(0.5+4*aPlayer.rotationYaw/360)&3]];
+			byte rFacing = OPOS[COMPASS_DIRECTIONS[UT.Code.roundDown(0.5+4*aPlayer.rotationYaw/360)&3]];
 			if (aAllowedFacings[rFacing]) return rFacing;
 			for (byte tSide : ALL_SIDES_VALID) if (aAllowedFacings[tSide]) return tSide;
 			return aDefaultFacing;
@@ -1785,20 +1785,20 @@ public class UT {
 		public static byte getSideWrenching(byte aSide, float aHitX, float aHitY, float aHitZ) {
 			switch (aSide) {
 			case  0: case  1:
-				if (aHitX < 0.25) return aHitZ < 0.25 || aHitZ > 0.75 ? OPPOSITES[aSide] : 4;
-				if (aHitX > 0.75) return aHitZ < 0.25 || aHitZ > 0.75 ? OPPOSITES[aSide] : 5;
+				if (aHitX < 0.25) return aHitZ < 0.25 || aHitZ > 0.75 ? OPOS[aSide] : 4;
+				if (aHitX > 0.75) return aHitZ < 0.25 || aHitZ > 0.75 ? OPOS[aSide] : 5;
 				if (aHitZ < 0.25) return 2;
 				if (aHitZ > 0.75) return 3;
 				return aSide;
 			case  2: case  3:
-				if (aHitX < 0.25) return aHitY < 0.25 || aHitY > 0.75 ? OPPOSITES[aSide] : 4;
-				if (aHitX > 0.75) return aHitY < 0.25 || aHitY > 0.75 ? OPPOSITES[aSide] : 5;
+				if (aHitX < 0.25) return aHitY < 0.25 || aHitY > 0.75 ? OPOS[aSide] : 4;
+				if (aHitX > 0.75) return aHitY < 0.25 || aHitY > 0.75 ? OPOS[aSide] : 5;
 				if (aHitY < 0.25) return 0;
 				if (aHitY > 0.75) return 1;
 				return aSide;
 			case  4: case  5:
-				if (aHitZ < 0.25) return aHitY < 0.25 || aHitY > 0.75 ? OPPOSITES[aSide] : 2;
-				if (aHitZ > 0.75) return aHitY < 0.25 || aHitY > 0.75 ? OPPOSITES[aSide] : 3;
+				if (aHitZ < 0.25) return aHitY < 0.25 || aHitY > 0.75 ? OPOS[aSide] : 2;
+				if (aHitZ > 0.75) return aHitY < 0.25 || aHitY > 0.75 ? OPOS[aSide] : 3;
 				if (aHitY < 0.25) return 0;
 				if (aHitY > 0.75) return 1;
 				return aSide;

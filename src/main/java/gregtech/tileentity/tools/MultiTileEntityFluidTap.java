@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -191,7 +191,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass == 1 && (aSide == mFacing ? !aShouldSideBeRendered[aSide] : aSide == OPPOSITES[mFacing]) ? null : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
+		return aRenderPass == 1 && (aSide == mFacing ? !aShouldSideBeRendered[aSide] : aSide == OPOS[mFacing]) ? null : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]]));
 	}
 	
 	// Icons

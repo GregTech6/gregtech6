@@ -33,7 +33,7 @@ import net.minecraft.block.Block;
 public class MultiTileEntityEngineRotation extends TileEntityBase11Bipolar implements ITileEntityEnergyElectricityAcceptor {
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doBipolar(aTimer, this, aTimer % 32 < 16 ? OPPOSITES[mFacing] : mFacing, aTimer % 32 < 16 ? mFacing : OPPOSITES[mFacing], mMode);
+		mActivity.mActive = mConverter.doBipolar(aTimer, this, aTimer % 32 < 16 ? OPOS[mFacing] : mFacing, aTimer % 32 < 16 ? mFacing : OPOS[mFacing], mMode);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
@@ -44,7 +44,7 @@ public class MultiTileEntityEngineRotation extends TileEntityBase11Bipolar imple
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2;
+		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
 		return BlockTextureMulti.get(BlockTextureDefault.get((mActivity.mState>0?sColoredsActive:sColoreds)[aIndex], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[aIndex]));
 	}
 	

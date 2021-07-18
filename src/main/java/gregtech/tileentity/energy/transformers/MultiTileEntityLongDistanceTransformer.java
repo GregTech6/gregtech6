@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -180,8 +180,8 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		mSender = null;
 		mDistance = 0;
 		mThroughput = 0;
-		Block aBlock = getBlockAtSide(OPPOSITES[mFacing]);
-		byte aMetaData = getMetaDataAtSide(OPPOSITES[mFacing]);
+		Block aBlock = getBlockAtSide(OPOS[mFacing]);
+		byte aMetaData = getMetaDataAtSide(OPOS[mFacing]);
 		if (aBlock instanceof BlockLongDistWire) {
 			mThroughput = VMAX[((BlockLongDistWire)aBlock).mTiers[aMetaData]];
 			HashSetNoNulls<ChunkCoordinates>
@@ -282,7 +282,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mOutput;}
 	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	public boolean isInput (byte aSide) {return aSide == mFacing;}
-	public boolean isOutput(byte aSide) {return aSide == OPPOSITES[mFacing];}
+	public boolean isOutput(byte aSide) {return aSide == OPOS[mFacing];}
 	
 	@Override public void onCoordinateChange() {super.onCoordinateChange(); mTargetPos = null; mSender = null;}
 	@Override public void onMachineBlockUpdate(ChunkCoordinates aCoords, Block aBlock, byte aMeta, boolean aRemoved) {if (aBlock instanceof BlockLongDistWire) {mTargetPos = null; mSender = null;}}
@@ -294,7 +294,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2;
+		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[mActiveState][aIndex]));
 	}
 	

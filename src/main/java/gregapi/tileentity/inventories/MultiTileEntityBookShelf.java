@@ -183,7 +183,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			if (tCoords[0] >= PX_P[1] && tCoords[0] <= PX_N[1] && tCoords[1] >= PX_P[1] && tCoords[1] <= PX_N[1]) {
 				int tIndex = -1;
 				if (aSide == mFacing            ) tIndex = (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
-				if (aSide == OPPOSITES[mFacing] ) tIndex = (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
+				if (aSide == OPOS[mFacing] ) tIndex = (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
 				if (tIndex >= 0 && slotHas(tIndex)) {
 					NW_API.sendToPlayer(new PacketItemStackChat(slot(tIndex)), (EntityPlayerMP)aPlayer);
 					return 1;
@@ -202,7 +202,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				if (isServerSide()) switchBooks(aPlayer, (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1]))));
 				return T;
 			}
-			if (aSide == OPPOSITES[mFacing]) {
+			if (aSide == OPOS[mFacing]) {
 				if (isServerSide()) switchBooks(aPlayer, (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1]))));
 				return T;
 			}
@@ -275,7 +275,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	@Override
 	public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {
-		return aRenderPass<7||(mDisplay[aRenderPass-7]!=0&&aShouldSideBeRendered[aRenderPass<21?mFacing:OPPOSITES[mFacing]]);
+		return aRenderPass<7||(mDisplay[aRenderPass-7]!=0&&aShouldSideBeRendered[aRenderPass<21?mFacing:OPOS[mFacing]]);
 	}
 	
 	@Override
@@ -330,7 +330,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			case 6: return ALONG_AXIS[aSide][mFacing] || SIDES_VERTICAL[aSide]         ? BlockTextureDefault.get(mShelfIcon, mRGBa, mMaterial.contains(TD.Properties.GLOWING)) : null;
 			}
 		}
-		if (SIDES_VERTICAL[aSide] || aSide==(aRenderPass<21?OPPOSITES[mFacing]:mFacing)) return null;
+		if (SIDES_VERTICAL[aSide] || aSide==(aRenderPass<21?OPOS[mFacing]:mFacing)) return null;
 		
 		// TODO: optimise more?
 		

@@ -89,7 +89,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		if (aStack.stackSize == 0 || aWorld.isRemote) return F;
 		if (!aPlayer.isSneaking()) {
 			for (int i = 0; i < 2; i++) {
-				if (i == 1) {aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];}
+				if (i == 1) {aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];}
 				if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 				Block aBlock = WD.block(aWorld, aX, aY, aZ);
 				byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
@@ -107,7 +107,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 					if (aMeta != 15) return F;
 				}
 			}
-			aX -= OFFSETS_X[aSide]; aY -= OFFSETS_Y[aSide]; aZ -= OFFSETS_Z[aSide];
+			aX -= OFFX[aSide]; aY -= OFFY[aSide]; aZ -= OFFZ[aSide];
 		}
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
@@ -115,7 +115,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		if (aBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (aBlock != Blocks.vine && aBlock != Blocks.tallgrass && aBlock != Blocks.deadbush && !aBlock.isReplaceable(aWorld, aX, aY, aZ)) {
-			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
+			aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];
 			aBlock = WD.block(aWorld, aX, aY, aZ);
 		}
 		

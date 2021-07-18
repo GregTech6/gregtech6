@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,7 +42,7 @@ public class ItemBlockMetaType extends ItemBlockBase implements IItemUpdatable {
 	public boolean placeBlockAt(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ, int aMetaData) {
 		if (((BlockMetaType)mPlaceable).mBlock == mPlaceable) return aWorld.setBlock(aX, aY, aZ, field_150939_a, aMetaData, 3);
 		byte tSide = UT.Code.getSideWrenching((byte)aSide, aHitX, aHitY, aHitZ);
-		if (tSide == aSide || tSide == OPPOSITES[aSide]) tSide = OPPOSITES[tSide];
+		if (tSide == aSide || tSide == OPOS[aSide]) tSide = OPOS[tSide];
 		return aWorld.setBlock(aX, aY, aZ, ((BlockMetaType)mPlaceable).mBlock.mSlabs[tSide], aMetaData, 3);
 	}
 	

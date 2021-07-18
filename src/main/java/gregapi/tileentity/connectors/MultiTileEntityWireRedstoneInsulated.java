@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -137,16 +137,16 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	
 	@Override
 	public byte isProvidingWeakPower2(byte aSide) {
-		if (!canEmitRedstoneToVanilla(aSide = OPPOSITES[aSide]) || mRedstone <= 0) return 0;
+		if (!canEmitRedstoneToVanilla(aSide = OPOS[aSide]) || mRedstone <= 0) return 0;
 		Block tBlock = getBlockAtSide(aSide);
-		return UT.Code.bind4(UT.Code.divup(mRedstone, MAX_RANGE) - (tBlock instanceof BlockRedstoneWire || tBlock.isNormalCube(worldObj, xCoord+OFFSETS_X[aSide], yCoord+OFFSETS_Y[aSide], zCoord+OFFSETS_Z[aSide]) ? 1 : 0));
+		return UT.Code.bind4(UT.Code.divup(mRedstone, MAX_RANGE) - (tBlock instanceof BlockRedstoneWire || tBlock.isNormalCube(worldObj, xCoord+OFFX[aSide], yCoord+OFFY[aSide], zCoord+OFFZ[aSide]) ? 1 : 0));
 	}
 	
 	@Override
 	public byte isProvidingStrongPower2(byte aSide) {
-		if (!canEmitRedstoneToVanilla(aSide = OPPOSITES[aSide]) || mRedstone <= 0) return 0;
+		if (!canEmitRedstoneToVanilla(aSide = OPOS[aSide]) || mRedstone <= 0) return 0;
 		Block tBlock = getBlockAtSide(aSide);
-		return UT.Code.bind4(UT.Code.divup(mRedstone, MAX_RANGE) - (tBlock instanceof BlockRedstoneWire || tBlock.isNormalCube(worldObj, xCoord+OFFSETS_X[aSide], yCoord+OFFSETS_Y[aSide], zCoord+OFFSETS_Z[aSide]) ? 1 : 0));
+		return UT.Code.bind4(UT.Code.divup(mRedstone, MAX_RANGE) - (tBlock instanceof BlockRedstoneWire || tBlock.isNormalCube(worldObj, xCoord+OFFX[aSide], yCoord+OFFY[aSide], zCoord+OFFZ[aSide]) ? 1 : 0));
 	}
 	
 	@Override

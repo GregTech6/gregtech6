@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -268,7 +268,7 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (!aShouldSideBeRendered[aSide] && aSide==OPPOSITES[mFacing]) return null;
+		if (!aShouldSideBeRendered[aSide] && aSide==OPOS[mFacing]) return null;
 		byte tOffset = (byte)(mActive == mGlowInverted ? 0 : 4);
 		return BlockTextureMulti.get(BlockTextureDefault.get(sTextures[mType][mIndex][tOffset+0], mRGBa), BlockTextureDefault.get(sTextures[mType][mIndex][tOffset+1]), BlockTextureDefault.get(sTextures[mType][mIndex][tOffset+2], mRGBa, F, T, T, F), BlockTextureDefault.get(sTextures[mType][mIndex][tOffset+3], UNCOLOURED, F, T, T, F));
 	}

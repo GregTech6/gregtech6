@@ -138,18 +138,18 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public int getX() {return xCoord;}
 	@Override public int getY() {return yCoord;}
 	@Override public int getZ() {return zCoord;}
-	@Override public int getOffsetX (byte aSide) {return xCoord + OFFSETS_X[aSide];}
-	@Override public int getOffsetY (byte aSide) {return yCoord + OFFSETS_Y[aSide];}
-	@Override public int getOffsetZ (byte aSide) {return zCoord + OFFSETS_Z[aSide];}
-	@Override public int getOffsetX (byte aSide, int aMultiplier) {return xCoord + OFFSETS_X[aSide] * aMultiplier;}
-	@Override public int getOffsetY (byte aSide, int aMultiplier) {return yCoord + OFFSETS_Y[aSide] * aMultiplier;}
-	@Override public int getOffsetZ (byte aSide, int aMultiplier) {return zCoord + OFFSETS_Z[aSide] * aMultiplier;}
-	@Override public int getOffsetXN(byte aSide) {return xCoord - OFFSETS_X[aSide];}
-	@Override public int getOffsetYN(byte aSide) {return yCoord - OFFSETS_Y[aSide];}
-	@Override public int getOffsetZN(byte aSide) {return zCoord - OFFSETS_Z[aSide];}
-	@Override public int getOffsetXN(byte aSide, int aMultiplier) {return xCoord - OFFSETS_X[aSide] * aMultiplier;}
-	@Override public int getOffsetYN(byte aSide, int aMultiplier) {return yCoord - OFFSETS_Y[aSide] * aMultiplier;}
-	@Override public int getOffsetZN(byte aSide, int aMultiplier) {return zCoord - OFFSETS_Z[aSide] * aMultiplier;}
+	@Override public int getOffsetX (byte aSide) {return xCoord + OFFX[aSide];}
+	@Override public int getOffsetY (byte aSide) {return yCoord + OFFY[aSide];}
+	@Override public int getOffsetZ (byte aSide) {return zCoord + OFFZ[aSide];}
+	@Override public int getOffsetX (byte aSide, int aMultiplier) {return xCoord + OFFX[aSide] * aMultiplier;}
+	@Override public int getOffsetY (byte aSide, int aMultiplier) {return yCoord + OFFY[aSide] * aMultiplier;}
+	@Override public int getOffsetZ (byte aSide, int aMultiplier) {return zCoord + OFFZ[aSide] * aMultiplier;}
+	@Override public int getOffsetXN(byte aSide) {return xCoord - OFFX[aSide];}
+	@Override public int getOffsetYN(byte aSide) {return yCoord - OFFY[aSide];}
+	@Override public int getOffsetZN(byte aSide) {return zCoord - OFFZ[aSide];}
+	@Override public int getOffsetXN(byte aSide, int aMultiplier) {return xCoord - OFFX[aSide] * aMultiplier;}
+	@Override public int getOffsetYN(byte aSide, int aMultiplier) {return yCoord - OFFY[aSide] * aMultiplier;}
+	@Override public int getOffsetZN(byte aSide, int aMultiplier) {return zCoord - OFFZ[aSide] * aMultiplier;}
 	@Override public ChunkCoordinates getCoords() {mReturnedCoordinates.posX = xCoord; mReturnedCoordinates.posY = yCoord; mReturnedCoordinates.posZ = zCoord; return mReturnedCoordinates;}
 	@Override public ChunkCoordinates getOffset (byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetX (aSide, aMultiplier), getOffsetY (aSide, aMultiplier), getOffsetZ (aSide, aMultiplier));}
 	@Override public ChunkCoordinates getOffsetN(byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetXN(aSide, aMultiplier), getOffsetYN(aSide, aMultiplier), getOffsetZN(aSide, aMultiplier));}
@@ -197,10 +197,10 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override
 	public DelegatorTileEntity<TileEntity> getAdjacentTileEntity(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {
 		TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, 1);
-		if (tTileEntity == null) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
-		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
-		if (aAllowDelegates && tTileEntity instanceof ITileEntityDelegating) return ((ITileEntityDelegating)tTileEntity).getDelegateTileEntity(OPPOSITES[aSide]);
-		return new DelegatorTileEntity<>(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPPOSITES[aSide]);
+		if (tTileEntity == null) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide]);
+		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide]);
+		if (aAllowDelegates && tTileEntity instanceof ITileEntityDelegating) return ((ITileEntityDelegating)tTileEntity).getDelegateTileEntity(OPOS[aSide]);
+		return new DelegatorTileEntity<>(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPOS[aSide]);
 	}
 	
 	public List<DelegatorTileEntity<TileEntity>> allAdjacentTileEntities(boolean aAllowDelegates, boolean aNotConnectToDelegators) {
@@ -432,8 +432,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		Block tBlock = getBlock(getCoords());
 		worldObj.notifyBlocksOfNeighborChange(xCoord, yCoord, zCoord, tBlock);
 		if (this instanceof IMTE_IsProvidingStrongPower) for (byte tSide : ALL_SIDES_VALID) {
-			if (getBlockAtSide(tSide).isNormalCube(worldObj, xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide])) {
-				worldObj.notifyBlocksOfNeighborChange(xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide], tBlock, OPPOSITES[tSide]);
+			if (getBlockAtSide(tSide).isNormalCube(worldObj, xCoord+OFFX[tSide], yCoord+OFFY[tSide], zCoord+OFFZ[tSide])) {
+				worldObj.notifyBlocksOfNeighborChange(xCoord+OFFX[tSide], yCoord+OFFY[tSide], zCoord+OFFZ[tSide], tBlock, OPOS[tSide]);
 			}
 		}
 		mDoesBlockUpdate = F;
@@ -504,7 +504,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public boolean shouldSideBeRendered(byte aSide) {
 		TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, 1);
-		return tTileEntity instanceof ITileEntitySurface ? !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]) : !WD.visOpq(worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), SIDES_VERTICAL[aSide] || WD.border(xCoord, zCoord, getOffsetX(aSide), getOffsetZ(aSide)), F);
+		return tTileEntity instanceof ITileEntitySurface ? !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPOS[aSide]) : !WD.visOpq(worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), SIDES_VERTICAL[aSide] || WD.border(xCoord, zCoord, getOffsetX(aSide), getOffsetZ(aSide)), F);
 	}
 	
 	@SideOnly(Side.CLIENT) public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
@@ -525,7 +525,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public void updateLightValue() {
 		if (this instanceof IMTE_GetLightValue) {
 			worldObj.setLightValue(EnumSkyBlock.Block, xCoord, yCoord, zCoord, ((IMTE_GetLightValue)this).getLightValue());
-			for (byte tSide : ALL_SIDES_MIDDLE) worldObj.updateLightByType(EnumSkyBlock.Block, xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide]);
+			for (byte tSide : ALL_SIDES_MIDDLE) worldObj.updateLightByType(EnumSkyBlock.Block, xCoord+OFFX[tSide], yCoord+OFFY[tSide], zCoord+OFFZ[tSide]);
 		}
 	}
 	
@@ -557,7 +557,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public byte getComparatorIncoming(byte aSide) {
 		if (worldObj == null) return 0;
 		Block tBlock = getBlockAtSide(aSide);
-		return tBlock.hasComparatorInputOverride()?UT.Code.bind4(tBlock.getComparatorInputOverride(worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide])):getRedstoneIncoming(aSide);
+		return tBlock.hasComparatorInputOverride()?UT.Code.bind4(tBlock.getComparatorInputOverride(worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPOS[aSide])):getRedstoneIncoming(aSide);
 	}
 	
 	// A Default implementation of the Fluid Tank behaviour, so that every TileEntity can use this to simplify its Code.

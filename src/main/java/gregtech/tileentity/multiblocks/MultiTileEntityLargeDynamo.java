@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -96,10 +96,10 @@ public class MultiTileEntityLargeDynamo extends TileEntityBase11MultiBlockConver
 	
 	public ITileEntityUnloadable mEmitter = null;
 	
-	@Override public TileEntity getEmittingTileEntity() {if (mEmitter == null || mEmitter.isDead()) {mEmitter = null; TileEntity tTileEntity = getTileEntityAtSideAndDistance(OPPOSITES[mFacing], 3); if (tTileEntity instanceof ITileEntityUnloadable) mEmitter = (ITileEntityUnloadable)tTileEntity;} return mEmitter == null ? this : (TileEntity)mEmitter;}
-	@Override public byte getEmittingSide() {return OPPOSITES[mFacing];}
+	@Override public TileEntity getEmittingTileEntity() {if (mEmitter == null || mEmitter.isDead()) {mEmitter = null; TileEntity tTileEntity = getTileEntityAtSideAndDistance(OPOS[mFacing], 3); if (tTileEntity instanceof ITileEntityUnloadable) mEmitter = (ITileEntityUnloadable)tTileEntity;} return mEmitter == null ? this : (TileEntity)mEmitter;}
+	@Override public byte getEmittingSide() {return OPOS[mFacing];}
 	@Override public boolean isInput (byte aSide) {return aSide == mFacing;}
-	@Override public boolean isOutput(byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public boolean isOutput(byte aSide) {return aSide == OPOS[mFacing];}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -142,8 +142,8 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 		mTarget = this;
 		mSender = null;
 		mTemperature = 0;
-		Block aBlock = getBlockAtSide(OPPOSITES[mFacing]);
-		byte aMetaData = getMetaDataAtSide(OPPOSITES[mFacing]);
+		Block aBlock = getBlockAtSide(OPOS[mFacing]);
+		byte aMetaData = getMetaDataAtSide(OPOS[mFacing]);
 		if (aBlock instanceof BlockLongDistPipe) {
 			mTemperature = ((BlockLongDistPipe)aBlock).mTemperatures[aMetaData];
 			if (mTemperature <= 0) return;
@@ -198,7 +198,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	@Override
 	public int fill(ForgeDirection aSide, FluidStack aFluid, boolean aDoFill) {
 		if (checkTarget() && FL.temperature(aFluid) <= mTemperature) {
-			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPPOSITES[mTarget.mFacing]);
+			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPOS[mTarget.mFacing]);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.fill(tTileEntity.getForgeSideOfTileEntity(), aFluid, aDoFill);
 		}
 		return 0;
@@ -214,7 +214,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	@Override
 	public boolean canFill(ForgeDirection aSide, Fluid aFluid) {
 		if (checkTarget() && FL.temperature(aFluid) <= mTemperature) {
-			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPPOSITES[mTarget.mFacing]);
+			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPOS[mTarget.mFacing]);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canFill(tTileEntity.getForgeSideOfTileEntity(), aFluid);
 		}
 		return F;
@@ -226,7 +226,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection aSide) {
 		if (checkTarget()) {
-			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPPOSITES[mTarget.mFacing]);
+			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPOS[mTarget.mFacing]);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.getTankInfo(tTileEntity.getForgeSideOfTileEntity());
 		}
 		return ZL_FLUIDTANKINFO;
@@ -235,7 +235,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2;
+		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa, mMaterial.contains(TD.Properties.GLOWING)), BlockTextureDefault.get(sOverlays[aIndex]));
 	}
 	

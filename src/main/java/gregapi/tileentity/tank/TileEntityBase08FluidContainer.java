@@ -315,9 +315,9 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 					return aStack;
 				}
 				
-				tTarget.blockX+=OFFSETS_X[tTarget.sideHit];
-				tTarget.blockY+=OFFSETS_Y[tTarget.sideHit];
-				tTarget.blockZ+=OFFSETS_Z[tTarget.sideHit];
+				tTarget.blockX+=OFFX[tTarget.sideHit];
+				tTarget.blockY+=OFFY[tTarget.sideHit];
+				tTarget.blockZ+=OFFZ[tTarget.sideHit];
 				tBlock = aWorld.getBlock(tTarget.blockX, tTarget.blockY, tTarget.blockZ);
 				
 				if (tBlock instanceof IFluidBlock) {

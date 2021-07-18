@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,21 +81,21 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 	@Override public byte getDefaultSide() {return SIDE_UP;}
 	@Override public boolean[] getValidSides() {return SIDES_BOTTOM;}
 	
-	@Override public boolean isInput (byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public boolean isInput (byte aSide) {return aSide == OPOS[mFacing];}
 	@Override public boolean isOutput(byte aSide) {return aSide == mFacing;}
 	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_BACK);}
 	@Override public String getLocalisedOutputSide() {return LH.get(LH.FACE_FRONT);}
 	
-	@Override public float getSurfaceSize           (byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance       (byte aSide) {return aSide ==           mFacing ?0.5F:0.0F;}
-	@Override public boolean isSideSolid2           (byte aSide) {return aSide == OPPOSITES[mFacing];}
-	@Override public boolean isSurfaceOpaque2       (byte aSide) {return aSide == OPPOSITES[mFacing];}
-	@Override public boolean allowCovers            (byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public float getSurfaceSize           (byte aSide) {return aSide == OPOS[mFacing]?1.0F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return aSide == OPOS[mFacing]?1.0F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return aSide ==      mFacing ?0.5F:0.0F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return aSide == OPOS[mFacing];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return aSide == OPOS[mFacing];}
+	@Override public boolean allowCovers            (byte aSide) {return aSide == OPOS[mFacing];}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(           PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()  {return box(           PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock, PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()  {return box(PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock,PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
@@ -123,8 +123,8 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case  0: int tIndex = aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2; return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[tIndex], mRGBa), BlockTextureDefault.get(sOverlays[tIndex]));
-		case  1: if (aSide!=OPPOSITES[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?3:4], MT.Diamond.fRGBaSolid), BlockTextureDefault.get(sOverlays[aSide==mFacing?3:4]));
+		case  0: int tIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2; return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[tIndex], mRGBa), BlockTextureDefault.get(sOverlays[tIndex]));
+		case  1: if (aSide!=OPOS[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?3:4], MT.Diamond.fRGBaSolid), BlockTextureDefault.get(sOverlays[aSide==mFacing?3:4]));
 		default: if (!ALONG_AXIS[aSide][mFacing]) return BlockTextureDefault.get(sLasers[aRenderPass-2], MT.Diamond.fRGBaSolid);
 		}
 		return null;

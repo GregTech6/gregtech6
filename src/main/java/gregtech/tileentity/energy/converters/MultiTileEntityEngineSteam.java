@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -237,7 +237,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && aSide == OPPOSITES[mFacing] && FL.Steam.is(aFluidToFill) ? mTank : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && aSide == OPOS[mFacing] && FL.Steam.is(aFluidToFill) ? mTank : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 	
@@ -264,10 +264,10 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
 		case 0: return ALONG_AXIS[aSide][mFacing]?null:BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get(sOverlays[3]));
-		case 1: case 2: return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2], mRGBa), BlockTextureDefault.get(sOverlays[aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2]));
+		case 1: case 2: return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?0:aSide==OPOS[mFacing]?1:2], mRGBa), BlockTextureDefault.get(sOverlays[aSide==mFacing?0:aSide==OPOS[mFacing]?1:2]));
 		case 3: return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[ALONG_AXIS_1[aSide][mFacing]?4:5], mRGBa), BlockTextureDefault.get(sOverlays[ALONG_AXIS_1[aSide][mFacing]?4:5]));
 		case 4: return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[ALONG_AXIS_2[aSide][mFacing]?4:5], mRGBa), BlockTextureDefault.get(sOverlays[ALONG_AXIS_2[aSide][mFacing]?4:5]));
-		case 5: return aSide==OPPOSITES [mFacing]?null:BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], sEngineColors[mState]), BlockTextureDefault.get(sOverlays[6]));
+		case 5: return aSide==OPOS [mFacing]?null:BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], sEngineColors[mState]), BlockTextureDefault.get(sOverlays[6]));
 		case 6: return ALONG_AXIS[aSide][mFacing]?null:BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[7], mRGBa), BlockTextureDefault.get(sOverlays[7]));
 		}
 		return null;

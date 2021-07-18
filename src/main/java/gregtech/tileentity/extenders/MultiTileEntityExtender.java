@@ -183,7 +183,7 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	
 	@Override
 	public byte isProvidingWeakPower2(byte aSide) {
-		return OPPOSITES[aSide] == mFacing ? mRedstoneOut : mRedstoneIn;
+		return OPOS[aSide] == mFacing ? mRedstoneOut : mRedstoneIn;
 	}
 	
 	// Relay Inventories
