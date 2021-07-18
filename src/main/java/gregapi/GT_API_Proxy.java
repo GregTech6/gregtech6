@@ -1293,10 +1293,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (aWorld.getChunkFromBlockCoords(aX, aZ).getBlockStorageArray()[aY >> 4].getExtBlocklightValue(aX & 15, aY & 15, aZ & 15) > 0) {
 				// Vanilla Mobs only, just in case.
 				if (aMobClass == EntityCreeper.class || aMobClass == EntityEnderman.class || aMobClass == EntitySkeleton.class || aMobClass == EntityZombie.class || aMobClass == EntitySpider.class || aMobClass == EntityWitch.class || aMobClass == EntityBat.class) {aEvent.setResult(Result.DENY); return;}
-				// TODO Add Drowned and other Et Futurum Requiem Mobs once they are released.
-				if (MD.EtFu.mLoaded) if (aEvent.entityLiving instanceof EntityZombieVillager || aEvent.entityLiving instanceof EntityStray || aEvent.entityLiving instanceof EntityHusk) {aEvent.setResult(Result.DENY); return;}
 				// Well, that Zombie is kindof like Vanilla, so it counts.
 				if (MD.TC.mLoaded) if (aEvent.entityLiving instanceof EntityBrainyZombie) {aEvent.setResult(Result.DENY); return;}
+				// TODO Add Drowned and other Et Futurum Requiem Mobs once they are released.
+				if (MD.EtFu.mLoaded) if (aEvent.entityLiving instanceof EntityZombieVillager || aEvent.entityLiving instanceof EntityStray || aEvent.entityLiving instanceof EntityHusk) {aEvent.setResult(Result.DENY); return;}
 			}
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		

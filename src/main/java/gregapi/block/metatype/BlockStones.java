@@ -54,6 +54,7 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -67,9 +68,10 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockStones extends BlockMetaType implements IOreDictListenerEvent, IBlockToolable, Runnable {
+public class BlockStones extends BlockMetaType implements IOreDictListenerEvent, IBlockToolable, IGrowable, Runnable {
 	public static final boolean[]
 	  MOSSY     = {F,F,T,F,F,T,F,F,F,F,F,F,F,F,F,F}
+	, MOSSABLE  = {F,T,F,T,T,F,F,F,F,F,F,F,F,F,F,F}
 	, SEALABLE  = {F,F,F,T,F,T,T,T,T,T,T,T,T,T,T,T}
 	, SPAWNABLE = {T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F}
 	, PLANTABLE = {T,T,T,F,T,T,F,F,F,F,F,F,F,F,F,F}
@@ -89,6 +91,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	  CHISEL_MAPPINGS = {SMOTH, COBBL, MCOBL, CRACK, COBBL, MCOBL, CHISL, CHISL, RNFBR, RSTBR, STILE, STILE, STILE, WINDB, WINDA, STILE}
 	, FILE_MAPPINGS   = {SMOTH, COBBL, MCOBL, SBRIK, CRACK, MBRIK, CHISL, SMOTH, RNFBR, RSTBR, STILE, STILE, STILE, WINDB, WINDA, STILE}
 	, HAMMER_MAPPINGS = {STONE, COBBL, MCOBL, CRACK, COBBL, CRACK, CRACK, COBBL, RNFBR, RSTBR, CRACK, CRACK, CRACK, CRACK, CRACK, CRACK} // Has to Map Stone to itself for prospecting Compatibility
+	, MOSS_MAPPINGS   = {STONE, MCOBL, MCOBL, MBRIK, MBRIK, MBRIK, CHISL, SMOTH, RNFBR, RSTBR, TILES, STILE, SBRIK, WINDA, WINDB, QBRIK}
 	;
 	
 	public final OreDictMaterial mMaterial;
@@ -613,9 +616,33 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		return PLANTABLE[WD.meta(aWorld, aX, aY, aZ)] && aPlant.getPlantType(aWorld, aX+aSide.offsetX, aY+aSide.offsetY, aZ+aSide.offsetZ) == EnumPlantType.Cave;
 	}
 	
+	@Override public boolean func_149851_a(World aWorld, int aX, int aY, int aZ, boolean aIsRemote) {return MOSSY[WD.meta(aWorld, aX, aY, aZ)];}
+	@Override public boolean func_149852_a(World aWorld, Random aRandom, int aX, int aY, int aZ) {return MOSSY[WD.meta(aWorld, aX, aY, aZ)];}
+	
+	@Override
+	public void func_149853_b(World aWorld, Random aRandom, int aX, int aY, int aZ) {
+		for (byte tSide : ALL_SIDES_VALID_FIRST[aRandom.nextInt(6)]) {
+			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
+			if (tBlock == Blocks.cobblestone) {
+				WD.set(aWorld, aX, aY, aZ, Blocks.mossy_cobblestone, 0, 3);
+				break;
+			}
+			byte tMeta = WD.meta(aWorld, aX, aY, aZ, tSide);
+			if (tBlock == Blocks.stonebrick && (tMeta == 0 || tMeta == 2)) {
+				WD.set(aWorld, aX, aY, aZ, Blocks.stonebrick, 1, 3);
+				break;
+			}
+			if (tBlock instanceof BlockStones && MOSSABLE[tMeta]) {
+				WD.set(aWorld, aX, aY, aZ, tBlock, MOSS_MAPPINGS[tMeta], 3);
+				break;
+			}
+		}
+	}
+	
 	static {
 		LH.add("gt.tooltip.stone.mushroom.yes", "Mushrooms can spread to this rough Stone");
 		LH.add("gt.tooltip.stone.mushroom.no", "Mushrooms cant spread to smooth Stones!");
+		LH.add("gt.tooltip.stone.moss.bonemeal", "Use Bonemeal or similar to spread the Moss");
 	}
 	
 	@Override
@@ -625,6 +652,9 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			aList.add(LH.Chat.GREEN + LH.get("gt.tooltip.stone.mushroom.yes"));
 		} else {
 			aList.add(LH.Chat.ORANGE + LH.get("gt.tooltip.stone.mushroom.no"));
+		}
+		if (MOSSY[aMeta]) {
+			aList.add(LH.Chat.DGREEN + LH.get("gt.tooltip.stone.moss.bonemeal"));
 		}
 	}
 	

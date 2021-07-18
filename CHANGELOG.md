@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Skeletons now drop Headless Arrows most of the time. They still sometimes drop regular Arrows.
 [CHANGED] Vanilla Bats can now only spawn ontop of Vanilla Smoothstone and nothing else. These annoying noisemakers needed to be shut up. Also they fill up Mob Farms too!
 [CHANGED] Most Vanilla Hostile Mobs and Some Vanilla alike Hostiles, in the Overworld and Overworld alike Dimensions, will require a BLOCK Light Level of ZERO to spawn as opposed to 7 or less. This is to mirror a change I saw in one of the most recent experimental Snapshots, meaning Torches and other Light Sources have a much bigger range now. This does not affect Sky Light Levels.
+[ADDED] Mossy GT6 Stones can be bonemealed to spread their Moss to adjacent Cobbles and Bricks. They CAN spread to Vanilla Cobble and Stone Bricks too, even though bonemealing those themselves wont spread. Also screw Bearcore. :P
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
 [ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
