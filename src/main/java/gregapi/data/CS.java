@@ -2117,6 +2117,7 @@ public class CS {
 		, GT_SCREWDRIVER        = MD.GAPI.mID.toLowerCase() + ":" + "gt.screwdriver"
 
 		, IC_WRENCH             = GT_WRENCH
+		, IC_TREETAP            = MD.IC2.mID.toLowerCase() + ":" + "tools.Treetap"
 		, IC_TRAMPOLINE         = MD.IC2.mID.toLowerCase() + ":" + "tools.RubberTrampoline"
 		, IC_PAINT              = MD.IC2.mID.toLowerCase() + ":" + "tools.Painter"
 		, IC_SPRAY              = MD.IC2.mID.toLowerCase() + ":" + "tools.Painter"
