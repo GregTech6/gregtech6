@@ -242,12 +242,13 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	/** This ensures, that all Materials are registered at the time this Item registers to the OreDictionary. */
 	@Override
 	public void run() {
+		for (short i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) {
+			LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString() + ".name", getLocalName(mPrefix, mMaterialList[i]));
+		}
 		if (mRegisterToOreDict) {
 			boolean tUnificationAllowed = (mPrefix.contains(TD.Prefix.UNIFICATABLE) && !mPrefix.contains(TD.Prefix.UNIFICATABLE_RECIPES));
-			for (short i = 0; i < mMaterialList.length; i++) if (mMaterialList[i] != null && mPrefix.isGeneratingItem(mMaterialList[i])) {
-				ItemStack tStack = ST.make(this, 1, i);
-				ST.update_(tStack);
-				LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString() + ".name", getLocalName(mPrefix, mMaterialList[i]));
+			for (short i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) {
+				ItemStack tStack = ST.update_(ST.make(this, 1, i));
 				if (tUnificationAllowed) OreDictManager.INSTANCE.addTarget_(mPrefix, mMaterialList[i], tStack); else OreDictManager.INSTANCE.registerOre_(mPrefix, mMaterialList[i], tStack);
 			}
 		}

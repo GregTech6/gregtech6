@@ -139,46 +139,9 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (aRandom.nextInt(mProbability) != 0) return F;
 		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
-		Block tBlock = WD.block(aWorld, aMinX+8, 0, aMinZ+8);
-		
-		if (tBlock != BlocksGT.oreBedrock && tBlock != BlocksGT.oreSmallBedrock && !WD.bedrock(tBlock)) return F;
-		
-		try {
-			for (int tX = 5; tX < 11; tX++) for (int tZ = 5; tZ < 11; tZ++) {
-				switch(aRandom.nextInt(6)) {
-				case 0:         BlocksGT.oreBedrock     .placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
-				case 1: case 2: BlocksGT.oreSmallBedrock.placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T); break;
-				}
-			}
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
-		}
-		
-		try {
-			// Use Deepslate if available, except in the Nether.
-			Block tStone = (aWorld.provider.dimensionId == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
-			// Keep Distances within the Chunk for this important step.
-			int[] tD1 = new int[] { 5,  4,  2,  1,  0,  2,  5};
-			int[] tD2 = new int[] {11, 12, 14, 15, 16, 14, 11};
-			
-			for (int tY = 1; tY < tD1.length; tY++) for (int tX = tD1[tY]; tX < tD2[tY]; tX++) for (int tZ = tD1[tY]; tZ < tD2[tY]; tZ++) {
-				if (GENERATED_NO_BEDROCK_ORE) if (tStone != NB) {
-					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, tStone, 0, 0);
-				} else {
-					WD.removeBedrock(aWorld, aMinX+tX, tY, aMinZ+tZ);
-				}
-				switch(aRandom.nextInt(6)) {
-				case 0:         WD.setOre     (aWorld, aMinX+tX, tY, aMinZ+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
-				case 1: case 2: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial); break;
-				}
-			}
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
-		}
+		if (!generateVein(mMaterial, aWorld, aDimType, aMinX, aMinZ, aRandom)) return F;
 		
 		GENERATED_NO_BEDROCK_ORE = F;
-		// At least one Ore Block must be there. So force place a large one somewhere in the Center.
-		BlocksGT.oreBedrock.placeBlock(aWorld, aMinX+6+aRandom.nextInt(4), 0, aMinZ+6+aRandom.nextInt(4), SIDE_UNKNOWN, (mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial).mID, null, F, T);
 		
 		if ((mIndicatorRocks || mIndicatorFlowers) && (!GENERATE_STREETS || aWorld.provider.dimensionId != 0 || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) { 
 			MultiTileEntityRegistry tRegistry = (mIndicatorRocks ? MultiTileEntityRegistry.getRegistry("gt.multitileentity") : null);
@@ -212,5 +175,41 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			}
 		}
 		return T;
+	}
+	
+	public static boolean generateVein(OreDictMaterial aMaterial, World aWorld, int aDimType, int aMinX, int aMinZ, Random aRandom) {
+		try {
+			Block tStone = WD.block(aWorld, aMinX+8, 0, aMinZ+8);
+			// Requires existing Bedrock!
+			if (tStone != BlocksGT.oreBedrock && tStone != BlocksGT.oreSmallBedrock && !WD.bedrock(tStone)) return F;
+			// Generate the bedrock Ore Blocks.
+			for (int tX = 5; tX < 11; tX++) for (int tZ = 5; tZ < 11; tZ++) {
+				switch(aRandom.nextInt(6)) {
+				case 0:         BlocksGT.oreBedrock     .placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial).mID, null, F, T); break;
+				case 1: case 2: BlocksGT.oreSmallBedrock.placeBlock(aWorld, aMinX+tX, 0, aMinZ+tZ, SIDE_UNKNOWN, (aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial).mID, null, F, T); break;
+				}
+			}
+			// At least one Ore Block must be there. So force place a large one somewhere in the Center.
+			BlocksGT.oreBedrock.placeBlock(aWorld, aMinX+6+aRandom.nextInt(4), 0, aMinZ+6+aRandom.nextInt(4), SIDE_UNKNOWN, (aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial).mID, null, F, T);
+			// Use Deepslate if available, except in the Nether.
+			tStone = (aDimType == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
+			// Keep Distances within the Chunk for this important step.
+			int[] tD1 = new int[] { 5,  4,  2,  1,  0,  2,  5};
+			int[] tD2 = new int[] {11, 12, 14, 15, 16, 14, 11};
+			// Portion a Muffin shaped Ore Blob around the Bedrock Spot.
+			for (int tY = 1; tY < tD1.length; tY++) for (int tX = tD1[tY]; tX < tD2[tY]; tX++) for (int tZ = tD1[tY]; tZ < tD2[tY]; tZ++) {
+				if (GENERATED_NO_BEDROCK_ORE) if (tStone != NB) {
+					aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, tStone, 0, 0);
+				} else {
+					WD.removeBedrock(aWorld, aMinX+tX, tY, aMinZ+tZ);
+				}
+				switch(aRandom.nextInt(6)) {
+				case 0:         WD.setOre     (aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
+				case 1: case 2: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
+				}
+			}
+			return T;
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return F;
 	}
 }

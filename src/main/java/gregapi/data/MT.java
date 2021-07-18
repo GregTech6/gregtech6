@@ -2804,6 +2804,7 @@ public class MT {
 			
 			Syrmorite                       .addOreByProducts(OREMATS.Stannite          , OREMATS.Tetrahedrite      , Be                    );
 			Octine                          .addOreByProducts(OREMATS.Pentlandite       , OREMATS.Huebnerite        , Zircon                );
+			
 			Ga                              .addOreByProducts(Zn                        , Se                        );
 			Zn                              .addOreByProducts(Sn                        , Ga                        );
 			W                               .addOreByProducts(MnO2                      , OREMATS.Molybdenite       );

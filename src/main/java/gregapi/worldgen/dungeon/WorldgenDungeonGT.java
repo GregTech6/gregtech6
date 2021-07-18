@@ -75,6 +75,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, TAG_FARM_MOBS       = TagData.createTagData("gt.dungeon.farm.mobs")
 	, TAG_FARM_CROP       = TagData.createTagData("gt.dungeon.farm.crop")
 	, TAG_FARM_FISH       = TagData.createTagData("gt.dungeon.farm.fish")
+	, TAG_MINING_BEDROCK  = TagData.createTagData("gt.dungeon.mining.bedrock")
 	, TAG_LIBRARY         = TagData.createTagData("gt.dungeon.library")
 	, TAG_LIBRARY_NORMAL  = TagData.createTagData("gt.dungeon.library.normal")
 	, TAG_LIBRARY_THAUM   = TagData.createTagData("gt.dungeon.library.thaumcraft")
@@ -85,6 +86,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F
 	, ROOM_EMPTY
 	, new DungeonChunkRoomWorkshop()
+	, new DungeonChunkRoomMiningBedrock()
 	, new DungeonChunkRoomLibraryNormal()
 	, new DungeonChunkRoomLibraryMystcraft()
 	, new DungeonChunkRoomLibraryThaumcraft()
