@@ -26,8 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
 [ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
-[ADDED] Mob Farm Room to the GT6 Dungeon.
-[ADDED] Bedrock Vein Room to the GT6 Dungeon.
+[ADDED] Mob Farm Room to the GT6 Dungeon. The Storage Pillar in the Middle of the Room is so nobody should be tempted to actually use this as a normal Storage Room, because that would reduce Mob Spawns due to being too close.
+[ADDED] Bedrock Vein Room to the GT6 Dungeon. It also contains a veriety of Scaffolds and Steel Bars and demostrates their decorative usage.
 
 
 6.14.15:
