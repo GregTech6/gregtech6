@@ -57,6 +57,8 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
 				} else if (tX ==  8 && tZ == 13 && aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ+1] != 0) {
 					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
+				} else if (tY == -1 && (tX == 2 || tX == 13) && (tZ == 2 || tZ == 13)) {
+					aData.bricks(tX, tY, tZ);
 				} else {
 					aData.air   (tX, tY, tZ);
 				}
@@ -68,7 +70,6 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 				if (tZ != 2 && tZ != 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 8);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_POS));
-				aData.bricks(tX, -1, tZ);
 				} else {
 				aData.lamp(tX,  0, tZ, -1);
 				}
@@ -76,18 +77,15 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 				if (tZ != 2 && tZ != 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 4);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
-				aData.bricks(tX, -1, tZ);
 				} else {
 				aData.lamp(tX,  0, tZ, -1);
 				}
 			} else if (tZ ==  2) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 2);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
-				aData.bricks(tX, -1, tZ);
 			} else if (tZ == 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 1);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
-				aData.bricks(tX, -1, tZ);
 			} else {
 				aData.air   (tX,  0, tZ);
 			}
@@ -109,8 +107,7 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 				if (aData.next3in4()) {aData.set(BlocksGT.blockRaw, i, 5-aData.mY, j, tMaterial.mID);
 				if (aData.next2in3()) {aData.set(BlocksGT.blockRaw, i, 6-aData.mY, j, tMaterial.mID);
 				if (aData.next1in2()) {aData.set(BlocksGT.blockRaw, i, 7-aData.mY, j, tMaterial.mID);
-				if (aData.next1in3()) {aData.set(BlocksGT.blockRaw, i, 8-aData.mY, j, tMaterial.mID);
-				}}}}
+				}}}
 			}
 		}
 		

@@ -48,11 +48,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		for (int tY = 9; tY < 42; tY++) {
 			for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
 				if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15) {
-					if (tY % 4 == 0) {
-						aData.colored(tX, tY, tZ);
-					} else {
-						aData.bricks(tX, tY, tZ);
-					}
+					aData.bricks(tX, tY, tZ);
 				} else {
 					aData.air(tX, tY, tZ);
 				}
