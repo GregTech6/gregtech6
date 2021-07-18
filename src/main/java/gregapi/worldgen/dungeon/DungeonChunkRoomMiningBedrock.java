@@ -40,28 +40,28 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 		for (int tY = 6-aData.mY; tY < 0; tY++) {
 			for (int tX =  2; tX <= 13; tX++) for (int tZ =  2; tZ <= 13; tZ++) {
 				if (tX ==  2) {
-					if (tZ ==  8 && aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
+					if (tZ ==  8 && aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
 						aData.set   ( 2, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_POS));
 						aData.bricks( 1, tY, tZ);
 					} else {
 						aData.bricks( 2, tY, tZ);
 					}
 				} else if (tX == 13) {
-					if (tZ ==  7 && aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
+					if (tZ ==  7 && aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 						aData.set   (13, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
 						aData.bricks(14, tY, tZ);
 					} else {
 						aData.bricks(13, tY, tZ);
 					}
 				} else if (tZ ==  2) {
-					if (tX ==  7 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
+					if (tX ==  7 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 						aData.set   (tX, tY,  2,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
 						aData.bricks(tX, tY,  1);
 					} else {
 						aData.bricks(tX, tY,  2);
 					}
 				} else if (tZ == 13) {
-					if (tX ==  8 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
+					if (tX ==  8 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 						aData.set   (tX, tY, 13,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
 						aData.bricks(tX, tY, 14);
 					} else {
