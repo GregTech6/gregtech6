@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
 import gregapi.data.MT.OREMATS;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.util.UT;
 import gregapi.worldgen.WorldgenOresBedrock;
 
@@ -35,38 +36,27 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 	public boolean generate(DungeonData aData) {
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_MINING_BEDROCK) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_MINING_BEDROCK);
-		if (!WorldgenOresBedrock.generateVein(UT.Code.select(MT.Redstone, MT.Redstone, MT.S, MT.Fe2O3, MT.MnO2, MT.Apatite, OREMATS.Molybdenite, MT.OREMATS.Bauxite, MT.OREMATS.Sphalerite, MT.OREMATS.Tetrahedrite, MT.OREMATS.Cassiterite, MT.OREMATS.Garnierite, MT.OREMATS.Galena), aData.mWorld, aData.mWorld.provider.dimensionId, aData.mX, aData.mZ, aData.mRandom)) return F;
+		OreDictMaterial tMaterial = UT.Code.select(MT.Redstone, MT.Redstone, MT.S, MT.Fe2O3, MT.MnO2, MT.Apatite, OREMATS.Molybdenite, MT.OREMATS.Bauxite, MT.OREMATS.Sphalerite, MT.OREMATS.Tetrahedrite, MT.OREMATS.Cassiterite, MT.OREMATS.Garnierite, MT.OREMATS.Galena);
+		if (!WorldgenOresBedrock.generateVein(tMaterial, aData.mWorld, aData.mWorld.provider.dimensionId, aData.mX, aData.mZ, aData.mRandom)) return F;
 		
-		for (int tY = 6-aData.mY; tY < 0; tY++) {
-			for (int tX =  2; tX <= 13; tX++) for (int tZ =  2; tZ <= 13; tZ++) {
-				if (tX ==  2) {
-					if (tZ ==  8 && aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
-						aData.set   ( 2, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_POS));
-						aData.bricks( 1, tY, tZ);
-					} else {
-						aData.bricks( 2, tY, tZ);
-					}
-				} else if (tX == 13) {
-					if (tZ ==  7 && aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
-						aData.set   (13, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
-						aData.bricks(14, tY, tZ);
-					} else {
-						aData.bricks(13, tY, tZ);
-					}
-				} else if (tZ ==  2) {
-					if (tX ==  7 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
-						aData.set   (tX, tY,  2,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
-						aData.bricks(tX, tY,  1);
-					} else {
-						aData.bricks(tX, tY,  2);
-					}
-				} else if (tZ == 13) {
-					if (tX ==  8 && aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
-						aData.set   (tX, tY, 13,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
-						aData.bricks(tX, tY, 14);
-					} else {
-						aData.bricks(tX, tY, 13);
-					}
+		for (int tY = 5-aData.mY; tY < 0; tY++) {
+			for (int tX =  0; tX <= 15; tX++) for (int tZ =  0; tZ <= 15; tZ++) {
+				if (tX ==  0) {
+					aData.bricks(tX, tY, tZ);
+				} else if (tX == 15) {
+					aData.bricks(tX, tY, tZ);
+				} else if (tZ ==  0) {
+					aData.bricks(tX, tY, tZ);
+				} else if (tZ == 15) {
+					aData.bricks(tX, tY, tZ);
+				} else if (tZ ==  8 && tX ==  2 && aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ  ] != 0) {
+					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_POS));
+				} else if (tZ ==  7 && tX == 13 && aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ  ] != 0) {
+					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
+				} else if (tX ==  7 && tZ ==  2 && aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ-1] != 0) {
+					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
+				} else if (tX ==  8 && tZ == 13 && aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ+1] != 0) {
+					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
 				} else {
 					aData.air   (tX, tY, tZ);
 				}
@@ -78,6 +68,7 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 				if (tZ != 2 && tZ != 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 8);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_POS));
+				aData.bricks(tX, -1, tZ);
 				} else {
 				aData.lamp(tX,  0, tZ, -1);
 				}
@@ -85,17 +76,41 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 				if (tZ != 2 && tZ != 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 4);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
+				aData.bricks(tX, -1, tZ);
 				} else {
 				aData.lamp(tX,  0, tZ, -1);
 				}
 			} else if (tZ ==  2) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 2);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
+				aData.bricks(tX, -1, tZ);
 			} else if (tZ == 13) {
 				aData.set   (tX,  1, tZ, BlocksGT.Bars_Steel, 1);
 				aData.set   (tX,  0, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
+				aData.bricks(tX, -1, tZ);
 			} else {
 				aData.air   (tX,  0, tZ);
+			}
+		}
+		
+		for (int tX =  5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) {
+			if ((tX !=  5 && tX != 10) || (tZ !=  5 && tZ != 10)) {
+				aData.air   (tX, 4-aData.mY, tZ);
+			}
+		}
+		
+		for (int tX =  6; tX <=  9; tX++) for (int tZ =  6; tZ <=  9; tZ++) {
+			aData.air   (tX, 3-aData.mY, tZ);
+		}
+		
+		int[] tStart = {1, 11}, tEnd = {4, 14};
+		for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {
+			for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
+				if (aData.next3in4()) {aData.set(BlocksGT.blockRaw, i, 5-aData.mY, j, tMaterial.mID);
+				if (aData.next2in3()) {aData.set(BlocksGT.blockRaw, i, 6-aData.mY, j, tMaterial.mID);
+				if (aData.next1in2()) {aData.set(BlocksGT.blockRaw, i, 7-aData.mY, j, tMaterial.mID);
+				if (aData.next1in3()) {aData.set(BlocksGT.blockRaw, i, 8-aData.mY, j, tMaterial.mID);
+				}}}}
 			}
 		}
 		
