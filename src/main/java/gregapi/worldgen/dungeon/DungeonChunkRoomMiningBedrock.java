@@ -92,8 +92,8 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 		}
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0 && aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
-			aData.air   ( 2,  0,  8);
-			aData.air   (13,  0,  8);
+			aData.air   ( 2,  1,  8);
+			aData.air   (13,  1,  8);
 			for (int tX = 3; tX <= 12; tX++) {
 				aData.set   (tX,  0,  8,  8410, UT.NBT.make(NBT_FACING, SIDE_X_NEG));
 				aData.set   (tX,  1,  8, BlocksGT.Bars_Steel,  3);
