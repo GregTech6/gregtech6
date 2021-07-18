@@ -433,6 +433,8 @@ public class GT6_Main extends Abstract_Mod {
 											RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make(Blocks.bedrock, 1, W)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dust.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
 		if (IL.BTL_Bedrock.exists())        RM.BedrockOreList.addFakeRecipe(F, ST.array(IL.BTL_Bedrock        .get(1)), ST.array(ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types"), OP.dust.mat(MT.Bedrock, 1)), null, new long[] {9990, 10}, FL.array(FL.lube(100)), null, 0, 0, 0);
 		
+		RM.ByProductList.mRecipeMachineList.add(ST.make(Items .cauldron, 1, 0));
+		RM.ByProductList.mRecipeMachineList.add(ST.make(Blocks.cauldron, 1, 0));
 		
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
