@@ -48,11 +48,12 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 		}
 		
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) {
+			aData.set(tX, 7, tZ, Blocks.planks, tPlank);
+			aData.set(tX, 8, tZ, Blocks.wooden_slab, tPlank);
 			if (tX == 1 || tX == 14 || tZ == 1 || tZ == 14) {
 				aData.set(tX, 6, tZ, Blocks.planks, tPlank);
 				aData.set(tX, 5, tZ, Blocks.wooden_slab, tSlab);
 			} else if ((tX == 3 || tX == 6 || tX == 9 || tX == 12) && (tZ == 3 || tZ == 6 || tZ == 9 || tZ == 12)) {
-				aData.smooth(tX, 7, tZ);
 				aData.lamp(tX, 6, tZ, +1);
 			} else {
 				aData.set(tX, 6, tZ, Blocks.wooden_slab, tSlab);
