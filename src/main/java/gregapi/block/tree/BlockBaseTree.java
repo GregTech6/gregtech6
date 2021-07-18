@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.block.BlockBaseMeta;
 import gregapi.data.MD;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -37,6 +38,7 @@ public abstract class BlockBaseTree extends BlockBaseMeta {
 	public BlockBaseTree(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, aMaxMeta, aIcons);
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(this, 1, W));
 	}
 	
 	public abstract int getLeavesRangeSide(byte aMeta);

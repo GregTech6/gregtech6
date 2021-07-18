@@ -21,7 +21,6 @@ package gregtech.loaders.a;
 
 import static gregapi.data.CS.*;
 
-import forestry.api.storage.BackpackManager;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.MD;
@@ -62,55 +61,55 @@ public class Loader_Items implements Runnable {
 		ItemsGT.ALL_MULTI_ITEMS[5] = ItemsGT.BOOKS;
 		ItemsGT.ALL_MULTI_ITEMS[6] = ItemsGT.BUMBLEBEES;
 		
-		tItem = new PrefixItem(MD.GT, "gt.meta.dust"                        , OP.dust                           ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.dustSmall"                   , OP.dustSmall                      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.dustTiny"                    , OP.dustTiny                       ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.dustDiv72"                   , OP.dustDiv72                      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.dustImpure"                  , OP.dustImpure                     ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushed"                     , OP.crushed                        ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushedTiny"                 , OP.crushedTiny                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushedPurified"             , OP.crushedPurified                ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushedPurifiedTiny"         , OP.crushedPurifiedTiny            ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushedCentrifuged"          , OP.crushedCentrifuged             ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.crushedCentrifugedTiny"      , OP.crushedCentrifugedTiny         ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.dust"                        , OP.dust                           ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.dustSmall"                   , OP.dustSmall                      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.dustTiny"                    , OP.dustTiny                       ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.dustDiv72"                   , OP.dustDiv72                      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.dustImpure"                  , OP.dustImpure                     ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushed"                     , OP.crushed                        ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushedTiny"                 , OP.crushedTiny                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushedPurified"             , OP.crushedPurified                ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushedPurifiedTiny"         , OP.crushedPurifiedTiny            ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushedCentrifuged"          , OP.crushedCentrifuged             ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.crushedCentrifugedTiny"      , OP.crushedCentrifugedTiny         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		
-		tItem = new PrefixItem(MD.GT, "gt.meta.gemChipped"                  , OP.gemChipped                     ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.gemFlawed"                   , OP.gemFlawed                      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.gem"                         , OP.gem                            ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.gemFlawless"                 , OP.gemFlawless                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.gemExquisite"                , OP.gemExquisite                   ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.gemLegendary"                , OP.gemLegendary                   ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.gemChipped"                  , OP.gemChipped                     ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.gemFlawed"                   , OP.gemFlawed                      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.gem"                         , OP.gem                            ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.gemFlawless"                 , OP.gemFlawless                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.gemExquisite"                , OP.gemExquisite                   ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.gemLegendary"                , OP.gemLegendary                   ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.boule"                       , OP.bouleGt                        );
 		
-		tItem = new PrefixItem(MD.GT, "gt.meta.nugget"                      , OP.nugget                         ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.chunkGt"                     , OP.chunkGt                        ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.ingot"                       , OP.ingot                          ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.nugget"                      , OP.nugget                         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.chunkGt"                     , OP.chunkGt                        ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.ingot"                       , OP.ingot                          ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotHot"                    , OP.ingotHot                       );
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotDouble"                 , OP.ingotDouble                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotTriple"                 , OP.ingotTriple                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotQuadruple"              , OP.ingotQuadruple                 );
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotQuintuple"              , OP.ingotQuintuple                 );
 		
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateGemTiny"                , OP.plateGemTiny                   ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateGem"                    , OP.plateGem                       ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateTiny"                   , OP.plateTiny                      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plate"                       , OP.plate                          ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateDouble"                 , OP.plateDouble                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateTriple"                 , OP.plateTriple                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateQuadruple"              , OP.plateQuadruple                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateQuintuple"              , OP.plateQuintuple                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateDense"                  , OP.plateDense                     ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.plateCurved"                 , OP.plateCurved                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateGemTiny"                , OP.plateGemTiny                   ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateGem"                    , OP.plateGem                       ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateTiny"                   , OP.plateTiny                      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plate"                       , OP.plate                          ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateDouble"                 , OP.plateDouble                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateTriple"                 , OP.plateTriple                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateQuadruple"              , OP.plateQuadruple                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateQuintuple"              , OP.plateQuintuple                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateDense"                  , OP.plateDense                     ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.plateCurved"                 , OP.plateCurved                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
 		
 		tItem = new PrefixItem(MD.GT, "gt.meta.scrapGt"                     , OP.scrapGt                        );
-		tItem = new PrefixItem(MD.GT, "gt.meta.rockGt"                      , OP.rockGt                         ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.oreRaw"                      , OP.oreRaw                         ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.rockGt"                      , OP.rockGt                         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.oreRaw"                      , OP.oreRaw                         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		
 		tItem = new PrefixItem(MD.GT, "gt.meta.gearGtSmall"                 , OP.gearGtSmall                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.gearGt"                      , OP.gearGt                         );
 		tItem = new PrefixItem(MD.GT, "gt.meta.rotor"                       , OP.rotor                          );
-		tItem = new PrefixItem(MD.GT, "gt.meta.stick"                       , OP.stick                          ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.stickLong"                   , OP.stickLong                      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.stick"                       , OP.stick                          ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.stickLong"                   , OP.stickLong                      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.springSmall"                 , OP.springSmall                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.spring"                      , OP.spring                         );
 		tItem = new PrefixItem(MD.GT, "gt.meta.lens"                        , OP.lens                           );
@@ -119,7 +118,7 @@ public class Loader_Items implements Runnable {
 		tItem = new PrefixItem(MD.GT, "gt.meta.screw"                       , OP.screw                          );
 		tItem = new PrefixItemRing(MD.GT, "gt.meta.ring"                    , OP.ring                           );
 		tItem = new PrefixItem(MD.GT, "gt.meta.chain"                       , OP.chain                          );
-		tItem = new PrefixItem(MD.GT, "gt.meta.foil"                        , OP.foil                           ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.foil"                        , OP.foil                           ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.casingSmall"                 , OP.casingSmall                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.wireFine"                    , OP.wireFine                       );
 		tItem = new PrefixItem(MD.GT, "gt.meta.minecartWheels"              , OP.minecartWheels                 );
@@ -135,46 +134,46 @@ public class Loader_Items implements Runnable {
 		OP.chemtube.mContainerItem = ST.make(tItem, 1, MT.Empty.mID);
 		
 		
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSword"            , OP.toolHeadRawSword               ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSword"               , OP.toolHeadSword                  ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawPickaxe"          , OP.toolHeadRawPickaxe             ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxe"             , OP.toolHeadPickaxe                ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxeGem"          , OP.toolHeadPickaxeGem             ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadConstructionPickaxe" , OP.toolHeadConstructionPickaxe    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadBuilderwand"         , OP.toolHeadBuilderwand            ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawShovel"           , OP.toolHeadRawShovel              ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadShovel"              , OP.toolHeadShovel                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSpade"            , OP.toolHeadRawSpade               ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSpade"               , OP.toolHeadSpade                  ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawAxe"              , OP.toolHeadRawAxe                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadAxe"                 , OP.toolHeadAxe                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawAxeDouble"        , OP.toolHeadRawAxeDouble           ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadAxeDouble"           , OP.toolHeadAxeDouble              ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawHoe"              , OP.toolHeadRawHoe                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadHoe"                 , OP.toolHeadHoe                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadHammer"              , OP.toolHeadHammer                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadFile"                , OP.toolHeadFile                   ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawChisel"           , OP.toolHeadRawChisel              ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadChisel"              , OP.toolHeadChisel                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSaw"              , OP.toolHeadRawSaw                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSaw"                 , OP.toolHeadSaw                    ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadDrill"               , OP.toolHeadDrill                  ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("miner").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadChainsaw"            , OP.toolHeadChainsaw               ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadWrench"              , OP.toolHeadWrench                 ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadScrewdriver"         , OP.toolHeadScrewdriver            ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("builder").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawUniversalSpade"   , OP.toolHeadRawUniversalSpade      ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadUniversalSpade"      , OP.toolHeadUniversalSpade         ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSense"            , OP.toolHeadRawSense               ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSense"               , OP.toolHeadSense                  ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawPlow"             , OP.toolHeadRawPlow                ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPlow"                , OP.toolHeadPlow                   ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("digger").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadBuzzSaw"             , OP.toolHeadBuzzSaw                ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("forester").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawArrow"            , OP.toolHeadRawArrow               ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadArrow"               , OP.toolHeadArrow                  ); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtWood"       , OP.arrowGtWood        , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.00F, 6.00F, T, T); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtPlastic"    , OP.arrowGtPlastic     , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.50F, 6.00F, T, T); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtSmall"     , OP.bulletGtSmall      , TD.Projectiles.BULLET_SMALL   , EntityArrow_Material.class, 1.50F, 3.00F, F, F); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtMedium"    , OP.bulletGtMedium     , TD.Projectiles.BULLET_MEDIUM  , EntityArrow_Material.class, 1.75F, 2.50F, F, F); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtLarge"     , OP.bulletGtLarge      , TD.Projectiles.BULLET_LARGE   , EntityArrow_Material.class, 2.00F, 2.00F, F, F); if (MD.FR.mLoaded) try {BackpackManager.definitions.get("hunter").addValidItem(ST.make(tItem, 1, W));} catch(Throwable e) {e.printStackTrace(ERR);}
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSword"            , OP.toolHeadRawSword               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSword"               , OP.toolHeadSword                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawPickaxe"          , OP.toolHeadRawPickaxe             ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxe"             , OP.toolHeadPickaxe                ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPickaxeGem"          , OP.toolHeadPickaxeGem             ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadConstructionPickaxe" , OP.toolHeadConstructionPickaxe    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadBuilderwand"         , OP.toolHeadBuilderwand            ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawShovel"           , OP.toolHeadRawShovel              ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadShovel"              , OP.toolHeadShovel                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSpade"            , OP.toolHeadRawSpade               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSpade"               , OP.toolHeadSpade                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawAxe"              , OP.toolHeadRawAxe                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadAxe"                 , OP.toolHeadAxe                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawAxeDouble"        , OP.toolHeadRawAxeDouble           ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadAxeDouble"           , OP.toolHeadAxeDouble              ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawHoe"              , OP.toolHeadRawHoe                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadHoe"                 , OP.toolHeadHoe                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadHammer"              , OP.toolHeadHammer                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadFile"                , OP.toolHeadFile                   ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawChisel"           , OP.toolHeadRawChisel              ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadChisel"              , OP.toolHeadChisel                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSaw"              , OP.toolHeadRawSaw                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSaw"                 , OP.toolHeadSaw                    ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadDrill"               , OP.toolHeadDrill                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadChainsaw"            , OP.toolHeadChainsaw               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadWrench"              , OP.toolHeadWrench                 ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadScrewdriver"         , OP.toolHeadScrewdriver            ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawUniversalSpade"   , OP.toolHeadRawUniversalSpade      ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadUniversalSpade"      , OP.toolHeadUniversalSpade         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawSense"            , OP.toolHeadRawSense               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadSense"               , OP.toolHeadSense                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawPlow"             , OP.toolHeadRawPlow                ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadPlow"                , OP.toolHeadPlow                   ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadBuzzSaw"             , OP.toolHeadBuzzSaw                ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawArrow"            , OP.toolHeadRawArrow               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadArrow"               , OP.toolHeadArrow                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtWood"       , OP.arrowGtWood        , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.00F, 6.00F, T, T); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtPlastic"    , OP.arrowGtPlastic     , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.50F, 6.00F, T, T); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtSmall"     , OP.bulletGtSmall      , TD.Projectiles.BULLET_SMALL   , EntityArrow_Material.class, 1.50F, 3.00F, F, F); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtMedium"    , OP.bulletGtMedium     , TD.Projectiles.BULLET_MEDIUM  , EntityArrow_Material.class, 1.75F, 2.50F, F, F); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtLarge"     , OP.bulletGtLarge      , TD.Projectiles.BULLET_LARGE   , EntityArrow_Material.class, 2.00F, 2.00F, F, F); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
 	}
 }

@@ -64,6 +64,7 @@ public class BlockCrystalOres extends BlockBaseMeta {
 		}
 		
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("miner", ST.make(this, 1, W));
 	}
 	
 	@Override

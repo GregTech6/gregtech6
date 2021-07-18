@@ -133,12 +133,12 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.replicateOrganic( 2,  6, IL.Bark_Dry.get(1));
 		
 		
-		IL.Mud_Ball        .set(addItem(tLastID = 12300, "Mud"              , ""                                       , OD.itemMud , TC.stack(TC.TERRA, 1)));
-		IL.Clay_Ball_Brown .set(addItem(tLastID = 12310, "Brown Clay"       , "Contains small amounts of Lithium"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
-		IL.Clay_Ball_Red   .set(addItem(tLastID = 12311, "Red Clay"         , "Perfectly Balanced With No Exploits!"   , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed, U)));
-		IL.Clay_Ball_Yellow.set(addItem(tLastID = 12312, "Yellow Clay"      , "Bentonite Clay"                         , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Bentonite, U)));
-		IL.Clay_Ball_Blue  .set(addItem(tLastID = 12313, "Blue Clay"        , "Palygorskite Clay / Fullers Earth"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Palygorskite, U)));
-		IL.Clay_Ball_White .set(addItem(tLastID = 12314, "White Clay"       , "Kaolinite Clay / Porcelain Clay"        , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Kaolinite, U)));
+		IL.Mud_Ball        .set(addItem(tLastID = 12300, "Mud"              , ""                                       , OD.itemMud , TC.stack(TC.TERRA, 1)                                         )); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
+		IL.Clay_Ball_Brown .set(addItem(tLastID = 12310, "Brown Clay"       , "Contains small amounts of Lithium"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown   , U))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
+		IL.Clay_Ball_Red   .set(addItem(tLastID = 12311, "Red Clay"         , "Perfectly Balanced With No Exploits!"   , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayRed     , U))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
+		IL.Clay_Ball_Yellow.set(addItem(tLastID = 12312, "Yellow Clay"      , "Bentonite Clay"                         , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Bentonite   , U))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
+		IL.Clay_Ball_Blue  .set(addItem(tLastID = 12313, "Blue Clay"        , "Palygorskite Clay / Fullers Earth"      , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Palygorskite, U))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
+		IL.Clay_Ball_White .set(addItem(tLastID = 12314, "White Clay"       , "Kaolinite Clay / Porcelain Clay"        , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.Kaolinite   , U))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("digger", last());
 		CR.remove(ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0), NI, ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0));
 		RM.generify(IL.Clay_Ball_Brown .get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.generify(IL.Clay_Ball_Red   .get(1), ST.make(Items.clay_ball, 1, 0));

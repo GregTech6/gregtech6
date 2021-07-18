@@ -47,6 +47,8 @@ public abstract class BlockBaseBeam extends BlockBaseMeta {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OD.beamWood);
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(this, 1, W));
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(this, 1, W));
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_axe;}

@@ -30,6 +30,7 @@ import gregapi.data.CS.ModIDs;
 import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
@@ -66,6 +67,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 		setTickRandomly(T);
 		setHardness(0);
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(this, 1, W));
 	}
 	
 	public abstract boolean grow(World aWorld, int aX, int aY, int aZ, byte aMeta, Random aRandom);

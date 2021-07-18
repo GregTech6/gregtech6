@@ -69,6 +69,8 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 		LH.add(getUnlocalizedName()+ ".14.name", "Path");
 		LH.add(getUnlocalizedName()+ ".15.name", "Path");
 		setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1);
+		
+		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, W));
 	}
 	
 	@Override

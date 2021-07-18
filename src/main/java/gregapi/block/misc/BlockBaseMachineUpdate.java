@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.block.BlockBaseMeta;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.ITileEntityMachineBlockUpdateable;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -39,6 +40,7 @@ public abstract class BlockBaseMachineUpdate extends BlockBaseMeta {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, aMaxMeta, aIcons);
 		ITileEntityMachineBlockUpdateable.Util.registerMachineBlock(this, aBitMask);
 		setCreativeTab(CreativeTabs.tabRedstone);
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(this, 1, W));
 	}
 	
 	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ)                           {if (ITileEntityMachineBlockUpdateable.Util.isMachineBlock(this, aWorld.getBlockMetadata(aX, aY, aZ))) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, this, UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)), F);}

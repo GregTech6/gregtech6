@@ -80,6 +80,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		mIconPrimary = aIconPrimary;
 		mDetectorRail = aDetectorRail;
 		mPowerRail = aPowerRail;
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(this, 1, W));
 	}
 	
 	@Override

@@ -78,6 +78,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		setCreativeTab(CreativeTabs.tabDecorations);
 		ST.register(this, mNameInternal, aItemClass);
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(this, 1, W));
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}

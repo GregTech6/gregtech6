@@ -213,6 +213,12 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			EntityTunnelBore.addMineableBlock(this, STONE);
 			EntityTunnelBore.addMineableBlock(this, MCOBL);
 		} catch(Throwable e) {e.printStackTrace(ERR);}
+		
+		if (COMPAT_FR != null) {
+			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, COBBL));
+			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, STONE));
+			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, MCOBL));
+		}
 	}
 	
 	@Override

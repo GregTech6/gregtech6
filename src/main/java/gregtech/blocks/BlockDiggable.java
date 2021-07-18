@@ -98,6 +98,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		BlocksGT.harvestableSpade.add(this);
 		
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, W));
 	}
 	
 	@Override

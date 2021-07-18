@@ -104,6 +104,8 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			mRenderers[13] = new SpikeRendererXPos(aMat2);
 			mRenderers[14] = mRenderers[15] = new SpikeRendererOmni(aMat2);
 		}
+		
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(this, 1, W));
 	}
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {if ((WD.meta(aWorld, aX, aY, aZ) & 7) != SIDE_UP) {aEntity.motionX *= 0.1; aEntity.motionZ *= 0.1;}}

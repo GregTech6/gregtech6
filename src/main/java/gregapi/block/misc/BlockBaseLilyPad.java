@@ -63,6 +63,7 @@ public class BlockBaseLilyPad extends BlockBaseMeta implements IPlantable, IRend
 		setCreativeTab(CreativeTabs.tabDecorations);
 		RM.chisel(aNameInternal, ST.make(this, 1, W));
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
+		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(this, 1, W));
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}
