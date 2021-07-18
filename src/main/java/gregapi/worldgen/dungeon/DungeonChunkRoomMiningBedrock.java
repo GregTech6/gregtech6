@@ -57,7 +57,7 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_POS));
 				} else if (tX ==  8 && tZ == 13 && aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ+1] != 0) {
 					aData.set   (tX, tY, tZ,  8410, UT.NBT.make(NBT_FACING, SIDE_Z_NEG));
-				} else if (tY == -1 && (tX == 2 || tX == 13) && (tZ == 2 || tZ == 13)) {
+				} else if (tY == -1 && (tX == 2 || tX == 13 || tZ == 2 || tZ == 13)) {
 					aData.bricks(tX, tY, tZ);
 				} else {
 					aData.air   (tX, tY, tZ);
