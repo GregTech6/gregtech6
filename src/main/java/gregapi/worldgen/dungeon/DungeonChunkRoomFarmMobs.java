@@ -60,7 +60,8 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		}
 		
 		// Make a solid Pillar, the rest will be carved away when needed.
-		for (int tY = 1; tY < 8; tY++) for (int tX = 6; tX <= 9; tX++) for (int tZ = 6; tZ <= 9; tZ++) aData.bricks(tX, tY, tZ);
+		for (int tY =  1; tY <=  6; tY++) for (int tX =  6; tX <=  9; tX++) for (int tZ =  6; tZ <=  9; tZ++) aData.bricks(tX, tY, tZ);
+		for (int tY =  7; tY <=  8; tY++) for (int tX =  1; tX <= 15; tX++) for (int tZ =  1; tZ <= 15; tZ++) aData.smalltiles(tX, tY, tZ);
 		
 		// Golden Omni-Spikes! (Steel wont work on Skeletons!)
 		aData.set     ( 7,  9,  7, BlocksGT.Spikes_Fancy, 6);

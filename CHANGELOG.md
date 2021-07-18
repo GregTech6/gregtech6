@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
 [ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
 [ADDED] Mob Farm Room to the GT6 Dungeon.
+[ADDED] Bedrock Vein Room to the GT6 Dungeon.
 
 
 6.14.15:

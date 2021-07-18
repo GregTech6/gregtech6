@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,6 +20,8 @@
 package gregapi.worldgen.dungeon;
 
 import static gregapi.data.CS.*;
+
+import gregapi.util.WD;
 
 /**
  * @author Gregorius Techneticies
@@ -54,6 +56,18 @@ public class DungeonChunkRoomEmpty extends DungeonChunkPillar {
 				}
 			} else {
 				aData.air(tX, tY, tZ);
+			}
+		}
+		
+		if (WD.liquid(aData.mWorld, aData.mX+8, aData.mY+9, aData.mZ+8) || aData.mWorld.canBlockSeeTheSky(aData.mX+8, aData.mY+9, aData.mZ+8)) {
+			for (int tX = 5; tX <= 10; tX++) for (int tZ = 5; tZ <= 10; tZ++) {
+				if ((tX == 5 || tX == 10) && (tZ == 5 || tZ == 10)) {
+					aData.chiseled (tX, 7, tZ);
+					aData.chiseled (tX, 8, tZ);
+				} else {
+					aData.glassglow(tX, 7, tZ);
+					aData.glassglow(tX, 8, tZ);
+				}
 			}
 		}
 		
