@@ -516,6 +516,15 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Ash                    , MD.BINNIE_BOTANY, "misc", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Wood                   , MD.BINNIE_BOTANY, "misc", 1);
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.S                      , MD.BINNIE_BOTANY, "misc", 3);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nutmeg                 , MD.HaC, "groundnutmegItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cinnamon               , MD.HaC, "groundcinnamonItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cocoa                  , MD.HaC, "cocoapowderItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Curry                  , MD.HaC, "currypowderItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxPlant               , MD.HaC, "waxItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , MD.HaC, "beeswaxItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaCl                   , MD.HaC, "saltItem", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.NaCl                   , MD.HaC, "spamcompressedsaltBlockalt", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.NaCl                   , MD.HaC, "salt", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Aquamarine             , MD.CW2, "gem_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Aquamarine             , MD.CW2, "gem_ore", 1);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Aquamarine             , MD.CW2, "gem", 0);
@@ -640,12 +649,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , MD.RoC, "rotarycraft_item_gearcraft", 80);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.STONES.Livingrock      , MD.RoC, "rotarycraft_item_gearcraft", 96);
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.TungstenAlloy          , MD.RoC, "rotarycraft_item_gearcraft",112);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nutmeg                 , MD.HaC, "groundnutmegItem", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cinnamon               , MD.HaC, "groundcinnamonItem", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cocoa                  , MD.HaC, "cocoapowderItem", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Curry                  , MD.HaC, "currypowderItem", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxPlant               , MD.HaC, "waxItem", 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , MD.HaC, "beeswaxItem", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Corn                   , MD.PMP, "foodCornFlour", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Rice                   , MD.PMP, "foodCookedRice", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Wood                   , MD.FR, "woodPulp", 0);
