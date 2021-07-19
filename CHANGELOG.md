@@ -22,10 +22,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Skeletons now drop Headless Arrows most of the time. They still sometimes drop regular Arrows.
 [CHANGED] Vanilla Bats can now only spawn ontop of Vanilla Smoothstone and nothing else. These annoying noisemakers needed to be shut up. Also they fill up Mob Farms too!
 [CHANGED] Most Vanilla Hostile Mobs and Some Vanilla alike Hostiles, in the Overworld and Overworld alike Dimensions, will require a BLOCK Light Level of ZERO to spawn as opposed to 7 or less. This is to mirror a change I saw in one of the most recent experimental Snapshots, meaning Torches and other Light Sources have a much bigger range now. This does not affect Sky Light Levels.
+[CHANGED] Black Sand is now worth 9 Units and counted as a Block of Magnetite Dust (same for its variants). As a result of this the Centrifuge/MagneticSeparator/Sifter Recipes got changed to no longer output Magnetite, since that would be a loop of diminishing returns now.
 [ADDED] Mossy GT6 Stones can be bonemealed to spread their Moss to adjacent Cobbles and Bricks. They CAN spread to Vanilla Cobble and Stone Bricks too, even though bonemealing those themselves wont spread. Also screw Bearcore. :P
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
-[ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
+[ADDED] Shale (see other Mods liek Underground Biomes or PFAA) can now be Centrifuged for Clay, Quartz and Calcite.
 [ADDED] Mob Farm Room to the GT6 Dungeon. The Storage Pillar in the Middle of the Room is so nobody should be tempted to actually use this as a normal Storage Room, because that would reduce Mob Spawns due to being too close.
 [ADDED] Bedrock Vein Room to the GT6 Dungeon. It also contains a veriety of Scaffolds and Steel Bars and demostrates their decorative usage.
 

@@ -1286,7 +1286,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		World aWorld = aEvent.world;
 		int aX = UT.Code.roundDown(aEvent.x), aY = (int)UT.Code.bind(0, aWorld.getHeight(), UT.Code.roundDown(aEvent.y)), aZ = UT.Code.roundDown(aEvent.z);
 		
-		if (SPAWN_NO_BATS && aMobClass == EntityBat.class && aWorld.getBlock(aX, aY-2, aZ) != Blocks.stone) {aEvent.setResult(Result.DENY); return;}
+		if (SPAWN_NO_BATS && aMobClass == EntityBat.class && aWorld.getBlock(aX, aY-2, aZ) != Blocks.stone && aWorld.getBlock(aX, aY+2, aZ) != Blocks.stone) {aEvent.setResult(Result.DENY); return;}
 		
 		if (!WD.dimOverworldLike(aWorld)) return;
 		if (SPAWN_HOSTILES_ONLY_IN_DARKNESS) try {

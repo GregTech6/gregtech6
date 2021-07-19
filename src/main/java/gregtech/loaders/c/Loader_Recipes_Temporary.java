@@ -580,12 +580,6 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			
 			
-			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}                    , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), rockGt.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Au, 1));
-			RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}               , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), rockGt.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-			RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}                        , IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.OREMATS.BasalticMineralSand, 2), dust.mat(MT.V2O5, 2));
-			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}                    , IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.OREMATS.GraniticMineralSand, 2), rockGt.mat(MT.STONES.Granite, 1), nugget.mat(MT.Au, 1));
-			RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}               , IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.OREMATS.GraniticMineralSand, 2), rockGt.mat(MT.STONES.Granite, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-			RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}                        , IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.OREMATS.GraniticMineralSand, 2), dust.mat(MT.V2O5, 2));
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {10000, 10, 40, 150, 200, 400, 500} , IL.PFAA_Sands.getWithMeta(1, 1), crushedCentrifuged.mat(MT.OREMATS.Cassiterite, 2), gemExquisite.mat(MT.Zircon, 2), gemFlawless.mat(MT.Zircon, 2), gem.mat(MT.Zircon, 2), gemFlawed.mat(MT.Zircon, 2), gemChipped.mat(MT.Zircon, 2), dust.mat(MT.Zircon, 2));
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {10000, 10, 40, 150, 200, 400, 500} , IL.PFAA_Sands.getWithMeta(1, 5), dust.mat(MT.VolcanicAsh, 1), gemExquisite.mat(MT.Olivine, 1), gemFlawless.mat(MT.Olivine, 1), gem.mat(MT.Olivine, 1), gemFlawed.mat(MT.Olivine, 1), gemChipped.mat(MT.Olivine, 1), dust.mat(MT.Olivine, 1));
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {3000, 3000, 3000, 3000, 3000, 3000}, IL.PFAA_Sands.getWithMeta(1, 2), crushedPurifiedTiny.mat(MT.Almandine, 8), crushedPurifiedTiny.mat(MT.Andradite, 8), crushedPurifiedTiny.mat(MT.Grossular, 8), crushedPurifiedTiny.mat(MT.Pyrope, 8), crushedPurifiedTiny.mat(MT.Spessartine, 8), crushedPurifiedTiny.mat(MT.Uvarovite, 8));
