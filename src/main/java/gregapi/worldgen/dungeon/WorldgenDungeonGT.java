@@ -103,8 +103,8 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, new DungeonChunkRoomPortalMyst()
 	);
 	
-	public final int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
-	public final boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
+	public int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
+	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mMiningBedrock, mZPM;
 	
 	@SafeVarargs
 	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
@@ -119,6 +119,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		mPortalEnd          =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"       , aPortalEnd);
 		mPortalTwilight     =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"  , aPortalTwilight);
 		mPortalMyst         =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"      , aPortalMyst);
+		mMiningBedrock      =                       ConfigsGT.WORLDGEN.get(mCategory, "MiningBedrock"   , T);
 		mZPM                =                       ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"            , T);
 	}
 	
@@ -154,6 +155,8 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
 		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
 		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
+		
+		if (!mMiningBedrock) tTags.add(TAG_MINING_BEDROCK);
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
 		tKeyIDs[0] = 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime());

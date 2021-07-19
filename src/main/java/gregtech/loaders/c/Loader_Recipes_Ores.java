@@ -226,26 +226,26 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Sifting      .addRecipe1(T, 16,   16, new long[] {       800, 5000}, crushedPurifiedTiny.mat(MT.Fluix              , 1), gem.mat(MT.Fluix              , 1)                             , dustTiny.mat(MT.Fluix       , 1));
 		
 		
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 4), rockGt.mat(MT.STONES.Deepslate   , 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 4), rockGt.mat(MT.STONES.Deepslate   , 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 8), dust  .mat(MT.V2O5               , 1));
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 4), rockGt.mat(MT.STONES.Gabbro      , 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 4), rockGt.mat(MT.STONES.Gabbro      , 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 8), dust  .mat(MT.V2O5               , 1));
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 4), rockGt.mat(MT.STONES.GraniteBlack, 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 4), rockGt.mat(MT.STONES.GraniteBlack, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 8), dust  .mat(MT.V2O5               , 1));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 4), rockGt  .mat(MT.STONES.Deepslate   , 1), nugget  .mat(MT.Au, 6), nugget  .mat(MT.Sn, 6));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 4), rockGt  .mat(MT.STONES.Deepslate   , 1), dustTiny.mat(MT.Au,12), dustTiny.mat(MT.Sn,12));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 0), dust.mat(MT.STONES.Deepslate   , 8), dustTiny.mat(MT.V2O5               ,12));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 4), rockGt  .mat(MT.STONES.Gabbro      , 1), nugget  .mat(MT.Au, 6), nugget  .mat(MT.Cu, 6));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 4), rockGt  .mat(MT.STONES.Gabbro      , 1), dustTiny.mat(MT.Au,12), dustTiny.mat(MT.Cu,12));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 1), dust.mat(MT.STONES.Gabbro      , 8), dustTiny.mat(MT.V2O5               ,12));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 4), rockGt  .mat(MT.STONES.GraniteBlack, 1), nugget  .mat(MT.Au, 6), nugget  .mat(MT.Pb, 6));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 4), rockGt  .mat(MT.STONES.GraniteBlack, 1), dustTiny.mat(MT.Au,12), dustTiny.mat(MT.Pb,12));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, ST.make(BlocksGT.Sands  , 1, 2), dust.mat(MT.STONES.GraniteBlack, 8), dustTiny.mat(MT.V2O5               ,12));
 		if (IL.PFAA_Sands.exists()) {
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 4), rockGt.mat(MT.STONES.Basalt      , 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 4), rockGt.mat(MT.STONES.Basalt      , 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 8), dust  .mat(MT.V2O5               , 2));
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 4), rockGt.mat(MT.STONES.Granite     , 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 4), rockGt.mat(MT.STONES.Granite     , 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 8), dust  .mat(MT.V2O5               , 2));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 4), rockGt  .mat(MT.STONES.Basalt      , 1), nugget  .mat(MT.Au, 9), nugget  .mat(MT.Cu, 9));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 4), rockGt  .mat(MT.STONES.Basalt      , 1), dustTiny.mat(MT.Au,18), dustTiny.mat(MT.Cu,18));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 0), dust.mat(MT.STONES.Basalt      , 8), dustTiny.mat(MT.V2O5               ,18));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 4), rockGt  .mat(MT.STONES.Granite     , 1), nugget  .mat(MT.Au, 9), nugget  .mat(MT.Pb, 9));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 4), rockGt  .mat(MT.STONES.Granite     , 1), dustTiny.mat(MT.Au,18), dustTiny.mat(MT.Pb,18));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.PFAA_Sands.getWithMeta(1, 3), dust.mat(MT.STONES.Granite     , 8), dustTiny.mat(MT.V2O5               ,18));
 		} if (IL.TROPIC_Sand_Black.exists()) {
-		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 4), rockGt.mat(MT.STONES.Basalt      , 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 1000,  500,  500}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 4), rockGt.mat(MT.STONES.Basalt      , 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
-		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 1000,  500,  500}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 8), dust  .mat(MT.V2O5               , 1));
+		RM.Sifting          .addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 4), rockGt  .mat(MT.STONES.Basalt      , 1), nugget  .mat(MT.Au, 6), nugget  .mat(MT.Cu, 6));
+		RM.MagneticSeparator.addRecipe1(T, 16,  144, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 4), rockGt  .mat(MT.STONES.Basalt      , 1), dustTiny.mat(MT.Au,12), dustTiny.mat(MT.Cu,12));
+		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {9000, 2000, 2000, 2000, 2000, 2000}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 8), dustTiny.mat(MT.V2O5               ,12));
 		}
 		
 		RM.Smelter      .addRecipe1(T, 64, 1440, 5000, OM.dust(MT.Monazite     ), NF, MT.He.gas(U2 , F), OM.dust(MT.RareEarth     ));
