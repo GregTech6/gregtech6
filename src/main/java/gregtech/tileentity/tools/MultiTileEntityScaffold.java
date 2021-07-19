@@ -192,7 +192,7 @@ public class MultiTileEntityScaffold extends TileEntityBase09FacingSingle implem
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {         box(0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock , 0, mDesign == 0 ? PX_P[14] : 0, 0, 1, 1, 1);}
 	@Override public float getSurfaceSize          (byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceSizeAttachable(byte aSide) {return SIDES_TOP[aSide] || mDesign == 3 ? 1 : 0;}
 	@Override public float getSurfaceDistance      (byte aSide) {return 0;}
