@@ -203,6 +203,7 @@ public class GT6_Main extends Abstract_Mod {
 		EntityRegistry.registerModEntity(EntityArrow_Potion.class  , "GT_Entity_Arrow_Potion", 2, GT, 160, 1, T);
 
 		for (OreDictMaterial tWood : ANY.Wood.mToThis) OP.plate.disableItemGeneration(tWood);
+		OP.blockDust   .disableItemGeneration(MT.OREMATS.Magnetite, MT.OREMATS.GraniticMineralSand, MT.OREMATS.BasalticMineralSand);
 		OP.ingot       .disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
 		OP.gemChipped  .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemFlawed   .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
@@ -210,8 +211,8 @@ public class GT6_Main extends Abstract_Mod {
 		OP.gemFlawless .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemExquisite.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemLegendary.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-
-
+		
+		
 		RM.pulverizing(ST.make(Blocks.cobblestone, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.stone      , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.gravel     , 1, W), ST.make(Items.flint, 2, 0), OP.dust.mat(MT.Flint, 1), 10, F);
