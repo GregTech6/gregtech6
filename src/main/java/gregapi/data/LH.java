@@ -555,7 +555,7 @@ public class LH {
 		add(ADVCRAFTING_INSERT_BLUEPRINT                , "Insert a Blueprint here");
 		add(ADVCRAFTING_PUT_TO_STORAGE                  , "Move Crafting Grid content to Storage Slots");
 		add(ADVCRAFTING_AUTOMATION_ACCESS               , "Allow Automation to extract from the Crafting Grid");
-		add(ADVCRAFTING_NEUTRAL_SLOT                    , "This Slot does ABSOLUTELY NOTHING to its content");
+		add(ADVCRAFTING_NEUTRAL_SLOT                    , "This Slot does ABSOLUTELY NOTHING! park Items here!");
 		add(ADVCRAFTING_DROP_SLOT                       , "Automation can extract Items you drop into this Slot");
 		add(TIME_TICK                                   , "Tick");
 		add(TIME_SEC                                    , "Second");

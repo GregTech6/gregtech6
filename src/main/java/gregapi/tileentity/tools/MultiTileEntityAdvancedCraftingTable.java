@@ -623,6 +623,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		@Override
 		public int addSlots(InventoryPlayer aInventoryPlayer) {
+			addSlotToContainer(new Slot_Normal(mTileEntity, 30, 135, 28).setTooltip(LH.ADVCRAFTING_INSERT_BLUEPRINT, LH.Chat.WHITE));
+			
 			addSlotToContainer(new Slot_Normal(mTileEntity,  0,   7,  8));
 			addSlotToContainer(new Slot_Normal(mTileEntity,  1,  25,  8));
 			addSlotToContainer(new Slot_Normal(mTileEntity,  2,  43,  8));
@@ -659,8 +661,6 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			addSlotToContainer(new Slot_Normal(mTileEntity, 33, 153, 28).setTooltip(LH.ADVCRAFTING_DROP_SLOT, LH.Chat.WHITE));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 34, 153, 64).setTooltip(LH.ADVCRAFTING_NEUTRAL_SLOT, LH.Chat.WHITE));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 30, 135, 28).setTooltip(LH.ADVCRAFTING_INSERT_BLUEPRINT, LH.Chat.WHITE));
-			
 			addSlotToContainer(new Slot_Holo(mTileEntity, 31, 135, 64, F, F, 1));
 			addSlotToContainer(new Slot_Holo(mTileEntity, 32, 153, 46, F, F, 1).setTooltip(LH.ADVCRAFTING_AUTOMATION_ACCESS, LH.Chat.WHITE));
 			addSlotToContainer(new Slot_Holo(mTileEntity, 32, 135, 46, F, F, 1).setTooltip(LH.ADVCRAFTING_PUT_TO_STORAGE, LH.Chat.WHITE));
@@ -675,7 +675,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		@Override
 		public int getShiftClickSlotCount() {
-			return 21;
+			return 22;
 		}
 	}
 	
