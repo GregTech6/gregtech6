@@ -53,10 +53,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				
 				aData.coins    (10, 2,  9);
 				return T;
-			case 1: case 2:
+			case 1:
 				// Breakable Wall more likely if Key #3 exists!
 				if (!aData.mGeneratedKeys[2]) return T;
-			case 3:
+			case 2:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(13, tY, tZ);
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles(12, tY, tZ);
@@ -66,7 +66,7 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				for (int tY =  1; tY <= 2; tY++) for (int tZ =  7; tZ <=  8; tZ++) aData.air    (12, tY, tZ);
 				
 				aData.coins    (12, 1,  7);
-				aData.set      (12, 1,  8, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG, NBT_KEY, aData.mKeyIDs[2], NBT_OPEN, !aData.mGeneratedKeys[2]), T, T);
+				aData.set      (12, 1,  8, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG, NBT_KEY, aData.mGeneratedKeys[2] ? aData.mKeyIDs[2] : aData.mKeyIDs[0]), T, T);
 				
 				aData.coins    (12, 2,  8);
 				
@@ -94,10 +94,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				aData.cup      ( 5, 2,  8, UT.Code.select(null, tDrinks));
 				aData.coins    ( 5, 2,  9);
 				return T;
-			case 1: case 2:
+			case 1:
 				// Breakable Wall more likely if Key #3 exists!
 				if (!aData.mGeneratedKeys[2]) return T;
-			case 3:
+			case 2:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 2, tY, tZ);
 				for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.cobbles( 3, tY, tZ);
@@ -106,7 +106,7 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air    ( 4, tY, tZ);
 				for (int tY =  1; tY <= 2; tY++) for (int tZ =  7; tZ <=  8; tZ++) aData.air    ( 3, tY, tZ);
 				
-				aData.set      ( 3, 1,  7, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS, NBT_KEY, aData.mKeyIDs[2], NBT_OPEN, !aData.mGeneratedKeys[2]), T, T);
+				aData.set      ( 3, 1,  7, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS, NBT_KEY, aData.mGeneratedKeys[2] ? aData.mKeyIDs[2] : aData.mKeyIDs[1]), T, T);
 				aData.coins    ( 3, 1,  8);
 				
 				aData.coins    ( 3, 2,  7);
@@ -135,10 +135,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				
 				aData.coins    ( 9, 2, 10);
 				return T;
-			case 1: case 2:
+			case 1:
 				// Breakable Wall more likely if Key #3 exists!
 				if (!aData.mGeneratedKeys[2]) return T;
-			case 3:
+			case 2:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 13);
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY, 12);
@@ -148,7 +148,7 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				for (int tY =  1; tY <= 2; tY++) for (int tX =  7; tX <=  8; tX++) aData.air    (tX, tY, 12);
 				
 				aData.coins    ( 7, 1, 12);
-				aData.set      ( 8, 1, 12, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[2], NBT_OPEN, !aData.mGeneratedKeys[2]), T, T);
+				aData.set      ( 8, 1, 12, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mGeneratedKeys[2] ? aData.mKeyIDs[2] : aData.mKeyIDs[3]), T, T);
 				
 				aData.coins    ( 8, 2, 12);
 				
@@ -176,10 +176,10 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				aData.cup      ( 8, 2,  5, UT.Code.select(null, tDrinks));
 				aData.coins    ( 9, 2,  5);
 				return T;
-			case 1: case 2:
+			case 1:
 				// Breakable Wall more likely if Key #3 exists!
 				if (!aData.mGeneratedKeys[2]) return T;
-			case 3:
+			case 2:
 				// Breakable Wall with Safe #3 at the unused end.
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  2);
 				for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.cobbles(tX, tY,  3);
@@ -188,7 +188,7 @@ public class DungeonChunkCorridor3 extends DungeonChunkCorridor {
 				for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air    (tX, tY,  4);
 				for (int tY =  1; tY <= 2; tY++) for (int tX =  7; tX <=  8; tX++) aData.air    (tX, tY,  3);
 				
-				aData.set      ( 7, 1,  3, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[2], NBT_OPEN, !aData.mGeneratedKeys[2]), T, T);
+				aData.set      ( 7, 1,  3, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mGeneratedKeys[2] ? aData.mKeyIDs[2] : aData.mKeyIDs[4]), T, T);
 				aData.coins    ( 8, 1,  3);
 				
 				aData.coins    ( 7, 2,  3);
