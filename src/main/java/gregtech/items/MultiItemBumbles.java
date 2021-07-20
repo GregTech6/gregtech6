@@ -416,6 +416,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			case    3: return ST.make(this, 1, 10200+aBumbleType);
 			case   63: return ST.make(this, 1, 10500+aBumbleType);
 			}
+			break;
 		case 1053:
 			switch(aMetaDataB / 10) {
 			case   33: return ST.make(this, 1, 20000+aBumbleType);
@@ -427,7 +428,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 		return ST.make(this, 1, (aMetaDataA/10)*10+aBumbleType);
 	}
-
+	
 	@Override
 	public boolean bumbleAttack(ItemStack aBumbleBee, short aMetaData, EntityLivingBase aAttacked) {
 		if (UT.Entities.isWearingFullInsectHazmat(aAttacked)) return F;
