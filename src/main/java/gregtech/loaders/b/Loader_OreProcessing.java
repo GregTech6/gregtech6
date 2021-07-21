@@ -267,13 +267,27 @@ public class Loader_OreProcessing implements Runnable {
 			
 			FluidStack tFluid = null;
 			OreDictMaterialStack tMaterial = null;
-			for (OreDictMaterialStack iMaterial : tList) if (iMaterial.mMaterial.mLiquid != null) {
-				if (tFluid == null) {
-					tMaterial = iMaterial;
-					tFluid = iMaterial.mMaterial.liquid(iMaterial.mAmount, F);
+			for (OreDictMaterialStack iMaterial : tList) {
+				if (iMaterial.mMaterial == MT.Aerotheum) {
+					if (iMaterial.mMaterial.mGas != null)  {
+						if (tFluid == null) {
+							tMaterial = iMaterial;
+							tFluid = iMaterial.mMaterial.gas(iMaterial.mAmount, F);
+						} else {
+							tFluid = null;
+							break;
+						}
+					}
 				} else {
-					tFluid = null;
-					break;
+					if (iMaterial.mMaterial.mLiquid != null)  {
+						if (tFluid == null) {
+							tMaterial = iMaterial;
+							tFluid = iMaterial.mMaterial.liquid(iMaterial.mAmount, F);
+						} else {
+							tFluid = null;
+							break;
+						}
+					}
 				}
 			}
 			if (tFluid != null && tFluid.amount > 0 && tMaterial != null) {

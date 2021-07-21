@@ -163,16 +163,22 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.Loom             .addRecipe2(T, 16,   16, ST.tag(10), ST.amount(7, aEvent.mStack), IL.Rope_Grass.get(1));
 		}});
 		addListener(dustTiny.dat(ANY.Wood), dustTiny.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U9, T), NF, OM.dust(MT.Dynamite,2*U9));
+			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U9,T), NF, OM.dust(MT.Dynamite,2*U9));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(dustSmall.dat(ANY.Wood), dustSmall.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U4, T), NF, OM.dust(MT.Dynamite,  U2));
+			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U4,T), NF, OM.dust(MT.Dynamite,  U2));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U , T), NF, OM.dust(MT.Dynamite,2*U ));
-			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.Water.make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.SpDew.make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.DistW.make(100), NF, ST.make(Items.paper, 1, 0));
+			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U ,T), NF, OM.dust(MT.Dynamite,2*U ));
+			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
+			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom         .addRecipe2(T, 16,   16, ST.make(Blocks.wool  , 1, W), ST.amount(8, aEvent.mStack), ST.make(Items.painting, 1, 0));
@@ -486,6 +492,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone,4*U ), OM.dust(tNiter,4*U ), OM.dust(MT.Blizz, 4*U9), ST.make(Blocks.snow   , 1, W)), OM.dust(MT.Cryotheum, 8*U));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone,4*U ), OM.dust(tNiter,4*U ), OM.dust(MT.Blizz, 4*U9), OM.dust(MT.Snow             )), OM.dust(MT.Cryotheum, 8*U));
 		}
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone), OM.dust(MT.Coal), OM.dust(MT.S)), FL.Blaze.make(L), NF, OM.dust(MT.Pyrotheum, 2*U));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone), OM.dust(MT.Blaze, U9), OM.dust(MT.Coal), OM.dust(MT.S)), OM.dust(MT.Pyrotheum, 2*U));
 		if (FL.Pyrotheum.exists() && FL.Cryotheum.exists() && FL.Petrotheum.exists() && FL.Aerotheum.exists() && FL.Mana_TE.exists())
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(4)), ZL_IS);

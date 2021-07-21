@@ -75,6 +75,8 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shapeless(ST.make(Blocks.tnt, 1, 0), DEF, new Object[] {ST.make(MD.RC, "cart.tnt.wood", 1, 0)});
 		RM.unbox(IL.Plank_Slab.get(5), ST.make(MD.RC, "cart.tnt.wood", 1, 0), ST.make(Blocks.tnt, 1, 0));
 		
+		CR.shapeless(ST.make(MD.RC, "tool.notepad", 1, 0), tBits, new Object[] {OD.itemFeather, DYE_OREDICTS[DYE_INDEX_Black], OD.paperEmpty, ST.make(MD.RC, "tool.magnifying.glass", 1, 0)});
+		
 		CR.shapeless(ST.make(MD.RC, "part.gear", 1,  1), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Fe   ), ST.make(MD.RC, "part.gear", 1, 3)});
 		CR.shapeless(ST.make(MD.RC, "part.gear", 1,  2), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Steel), ST.make(MD.RC, "part.gear", 1, 3)});
 		CR.shapeless(IL.RC_Tie_Wood .get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Wood});

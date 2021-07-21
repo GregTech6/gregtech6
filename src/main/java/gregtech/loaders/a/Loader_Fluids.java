@@ -138,7 +138,7 @@ public class Loader_Fluids implements Runnable {
 		MT.Cryotheum .liquid(FL.make("cryotheum" , 250));
 		MT.Petrotheum.liquid(FL.make("petrotheum", 250));
 		MT.Aerotheum .gas   (FL.make("aerotheum" , 250));
-
+		
 		FluidStack
 		tFluid = FL.make("mana", 250);
 		if (tFluid != null) {
