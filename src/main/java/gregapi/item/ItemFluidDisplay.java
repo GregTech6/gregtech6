@@ -170,7 +170,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					long tFuelValue = 0;
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
-						if (tAmount > 0) {
+						if (tAmount > 1) {
 							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
 						} else {
 							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
@@ -182,7 +182,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					long tFuelValue = 0;
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
-						if (tAmount > 0) {
+						if (tAmount > 1) {
 							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
 						} else {
 							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
@@ -194,7 +194,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					long tFuelValue = 0;
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
-						if (tAmount > 0) {
+						if (tAmount > 1) {
 							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
 						} else {
 							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
@@ -206,7 +206,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 					long tFuelValue = 0;
 					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
 					if (tFuelValue > 0) {
-						if (tAmount > 0) {
+						if (tAmount > 1) {
 							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
 						} else {
 							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
