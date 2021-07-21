@@ -194,9 +194,9 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		//
 	}
 	
-	public void setBluePrint(ItemStack aStack) {
+	public boolean setBluePrint(ItemStack aStack) {
 		if (aStack == null) aStack = slot(30);
-		if (!IL.Paper_Blueprint_Empty.equal(aStack, F, T)) return;
+		if (!IL.Paper_Blueprint_Empty.equal(aStack, F, T)) return F;
 		UT.NBT.setBlueprintCrafting(aStack,
 		  slotHas(21) ? slot(21).getItem() instanceof IItemGTContainerTool ? ST.make(slot(21), (NBTTagCompound)null) : slot(21) : null
 		, slotHas(22) ? slot(22).getItem() instanceof IItemGTContainerTool ? ST.make(slot(22), (NBTTagCompound)null) : slot(22) : null
@@ -210,6 +210,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		);
 		if (slotHas(31)) aStack.setStackDisplayName(slot(31).getDisplayName());
 		ST.set(aStack, IL.Paper_Blueprint_Used.get(1), F, F);
+		return T;
 	}
 	
 	public ItemStack getCraftingOutput(boolean aAllowCache) {
@@ -526,7 +527,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	public boolean interceptClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
 		if (aGUIID != 0) return F;
 		slotNull(aInvSlot);
-		if (aInvSlot == 30 && !aRightclick && aShiftclick) {setBluePrint(null); return T;}
+		if (aInvSlot == 30 && !aRightclick && aShiftclick && setBluePrint(null)) return T;
 		return aInvSlot == 31 || aInvSlot == 32;
 	}
 	
