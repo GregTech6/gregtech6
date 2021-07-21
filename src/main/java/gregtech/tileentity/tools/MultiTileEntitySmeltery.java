@@ -698,7 +698,5 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return ENERGYTYPES;}
 	
-	@Override public float getBlockHardness() {return mTemperature >= 1300 ? super.getBlockHardness() * 16 : super.getBlockHardness();}
-	
 	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery";}
 }

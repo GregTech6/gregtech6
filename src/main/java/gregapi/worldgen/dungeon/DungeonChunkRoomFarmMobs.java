@@ -35,6 +35,8 @@ import net.minecraft.init.Items;
 public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
+		// Not allowed in Slime Chunks, for now.
+		if (aData.mWorld.getChunkFromBlockCoords(aData.mX+8, aData.mZ+8).getRandomWithSeed(987234911L).nextInt(10) == 0) return F;
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_MOBS) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_MOBS);
 		

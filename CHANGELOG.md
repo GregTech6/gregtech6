@@ -13,11 +13,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.16: (Not released yet, released whenever it needs to be)
+6.14.16:
 [FIXED] Forestry Backpacks should work with some of my Items now. Please do note that you HAVE TO delete the Backpacks Config of Forestry or you will not benefit from this.
 [FIXED] The Buildcraft Lumberjack should now work on all GT6 Trees, and some of the other Mod Trees it did not work on before either.
 [FIXED] ExtraUtils will no longer fuck up Thaumcraft Aspects so badly, you cant even properly progress in Thaumcraft anymore... (yeah I nuked its Thaumcraft Helper Class with ASM)
-[CHANGED] If you harvest a normal Crucible, while its Temperature is greater than the Melting Point of Lava (1300K), it will blow up as if it was overheating. This is to stop people from last minute "rescueing" their Crucibles in case of an imminent Meltdown. They are also 16 times harder to harvest in that State, just like Active Burning Boxes are.
+[CHANGED] If you harvest a normal Crucible, while its Temperature is greater than the Melting Point of Lava (1300K), it will blow up as if it was overheating. This is to stop people from last minute "rescueing" their Crucibles in case of an imminent Meltdown.
 [CHANGED] Mass Storages and Item Barrels now accept a greater variety of Storage Blocks for packaging similar to Dusts and Ingots. Examples of such include: Plates, Gems, Crushed Ores and Raw Ores. Obviously I mean the "9 Items = 1 Block" conversions, who would ever get the Idea that Chipped Gems get combined to Legendary Gems or something dumb like that, right? RIGHT??
 [CHANGED] Skeletons now drop Headless Arrows most of the time. They still sometimes drop regular Arrows.
 [CHANGED] Vanilla Bats can now only spawn ontop of Vanilla Smoothstone and nothing else. These annoying noisemakers needed to be shut up. Also they fill up Mob Farms too!
@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Mossy GT6 Stones can be bonemealed to spread their Moss to adjacent Cobbles and Bricks. They CAN spread to Vanilla Cobble and Stone Bricks too, even though bonemealing those themselves wont spread. Also screw Bearcore. :P
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
-[ADDED] Shale (see other Mods liek Underground Biomes or PFAA) can now be Centrifuged for Clay, Quartz and Calcite.
+[ADDED] Shale (see other Mods like Underground Biomes or PFAA) can now be Centrifuged for Clay, Quartz and Calcite.
 [ADDED] Blazing Goo can be used as Heat Exchanger Fuel.
 [ADDED] Mob Farm Room to the GT6 Dungeon. The Storage Pillar in the Middle of the Room is so nobody should be tempted to actually use this as a normal Storage Room, because that would reduce Mob Spawns due to being too close.
 [ADDED] Bedrock Vein Room to the GT6 Dungeon. It also contains a veriety of Scaffolds and Steel Bars and demostrates their decorative usage.

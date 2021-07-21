@@ -522,7 +522,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("dustLazurite"                    , "dyeMixableCyan");
 		OreDictManager.INSTANCE.addReRegistration("dustMalachite"                   , "dyeMixableGreen");
 		OreDictManager.INSTANCE.addReRegistration("dustSalt"                        , OD.itemSalt);
-		OreDictManager.INSTANCE.addReRegistration("dustSalt"                        , "foodSalt");
+		OreDictManager.INSTANCE.addReRegistration(OD.itemSalt                       , "foodSalt");
 		OreDictManager.INSTANCE.addReRegistration("dustWheat"                       , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustBarley"                      , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustRye"                         , "foodFlour");
