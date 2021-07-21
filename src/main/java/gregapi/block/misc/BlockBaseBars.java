@@ -63,7 +63,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(this, 1, W));
 		mMat = aMat;
 		
-		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC_MIR, "BBB", aVanillaMaterial == Material.wood ? "r v" : "h w", "BBB", 'B', OP.stick.dat(mMat));
+		CR.shaped(ST.make(this, 3, 0), CR.DEF_REV_NCC_MIR, "BBB", aVanillaMaterial == Material.wood ? "r v" : "h w", "BBB", 'B', OP.stick.dat(mMat));
 		
 		if (CODE_CLIENT) {
 			mRenderers[ 0] = new BarRendererItem(aMat);
