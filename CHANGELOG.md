@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.17: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] A bunch of tiny Issues.
 
 
 6.14.16:
