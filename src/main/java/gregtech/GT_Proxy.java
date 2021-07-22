@@ -89,10 +89,10 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate;
 import net.minecraftforge.fluids.Fluid;
 
 public abstract class GT_Proxy extends Abstract_Proxy {
@@ -197,7 +197,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(DecorateBiomeEvent.Decorate aEvent) {
-		if (mDisableVanillaLakes && aEvent.type == Decorate.EventType.LAKE) {aEvent.setResult(Result.DENY); return;}
 		if (aEvent.world.provider.dimensionId == 0) {
 			if (MD.RTG.mLoaded) {
 				String tClassName = UT.Reflection.getLowercaseClass(aEvent.world.provider.terrainType);
@@ -210,18 +209,19 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onTerrainGenEvent(PopulateChunkEvent.Populate aEvent) {
 		if (aEvent.world.provider.dimensionId == 0) {
+			if (mDisableVanillaLakes && (aEvent.type == Populate.EventType.LAKE || aEvent.type == Populate.EventType.LAVA)) {aEvent.setResult(Result.DENY); return;}
 			if (MD.RTG.mLoaded) {
 				String tClassName = UT.Reflection.getLowercaseClass(aEvent.world.provider.terrainType);
 				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
 			}
-			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
-			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
+			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) {aEvent.setResult(Result.DENY); return;}
+			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) {aEvent.setResult(Result.DENY); return;}
 		}
 	}
 	@SubscribeEvent
 	public void onGetVillageBlockIDEvent(BiomeEvent.GetVillageBlockID aEvent) {
 		if (aEvent.original == Blocks.cobblestone) {
-			aEvent.replacement = aEvent.biome == null ? BlocksGT.Andesite : BlocksGT.stones[(aEvent.biome.biomeID+6) % BlocksGT.stones.length];
+			aEvent.replacement = (aEvent.biome == null ? BlocksGT.Andesite : BlocksGT.stones[(aEvent.biome.biomeID+6) % BlocksGT.stones.length]);
 			aEvent.setResult(Result.DENY);
 		}
 	}
