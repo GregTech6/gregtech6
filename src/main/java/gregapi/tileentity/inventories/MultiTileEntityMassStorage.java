@@ -528,7 +528,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	public ItemStack getPartialStack() {
 		if (mPartialUnits <= 0) return NI;
-		OreDictItemData mData = OM.data(slot(1));
+		OreDictItemData mData = OM.anydata(slot(1));
 		if (mData == null || !mData.hasValidPrefixData()) return NI;
 		
 		if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) return OM.dust(mData.mMaterial.mMaterial, mPartialUnits);
@@ -563,7 +563,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	}
 	
 	public long getUnitAmount(ItemStack aStack) {
-		OreDictItemData mData = OM.data_(slot(1)), aData = OM.data_(aStack);
+		OreDictItemData mData = OM.anydata_(slot(1)), aData = OM.anydata_(aStack);
 		if (mData != null && aData != null && mData.hasValidPrefixData() && aData.hasValidPrefixData() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
 			if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 				return aData.mPrefix.contains(TD.Prefix.DUST_BASED) ? aData.mPrefix.mAmount : 0;
@@ -608,7 +608,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		int tMaxStorage = getMaxContent();
 		ItemStack tContent = slot(1);
 		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
-			OreDictItemData mData = OM.data_(tContent);
+			OreDictItemData mData = OM.anydata_(tContent);
 			if (mData != null && mData.hasValidPrefixData()) {
 				long tTargetAmount = getUnitAmount(mData.mPrefix);
 				if (mPartialUnits >= tTargetAmount) {
