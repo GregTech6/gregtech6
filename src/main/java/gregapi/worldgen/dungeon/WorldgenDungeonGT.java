@@ -83,8 +83,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
 	;
 	
-	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F
-	, ROOM_EMPTY
+	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<IDungeonChunk>(F
 	, new DungeonChunkRoomWorkshop()
 	, new DungeonChunkRoomMiningBedrock()
 	, new DungeonChunkRoomLibraryNormal()
