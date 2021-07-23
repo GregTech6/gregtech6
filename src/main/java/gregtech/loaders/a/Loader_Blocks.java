@@ -97,13 +97,15 @@ public class Loader_Blocks implements Runnable {
 		
 		
 		BlocksGT.Spikes_Sharp                                                   = new BlockSpikeSharp           ("gt.block.spikes.sharp");
+		BlocksGT.Spikes_Steel                                                   = new BlockSpikeSteel           ("gt.block.spikes.steel");
 		BlocksGT.Spikes_Super                                                   = new BlockSpikeSuper           ("gt.block.spikes.super");
 		BlocksGT.Spikes_Metal                                                   = new BlockSpikeMetal           ("gt.block.spikes.metal");
 		BlocksGT.Spikes_Fancy                                                   = new BlockSpikeFancy           ("gt.block.spikes.fancy");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Sharp, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Super, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 4));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.VENENUM, 4));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Fancy, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.LUCRUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Sharp, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Steel, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Super, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 4), TC.stack(TC.FABRICO, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.VENENUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Fancy, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.LUCRUM, 4));
 		
 		
 		BlocksGT.Bars_Wood                                                      = new BlockBarsWood             ("gt.block.bars.wood");

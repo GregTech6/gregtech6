@@ -11,6 +11,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.17: (Not released yet, released whenever it needs to be)
 [FIXED] A bunch of tiny Issues.
+[CHANGED] Mob farm Room is now compatible with Slimes.
+[ADDED] Red Steel and Blue Steel Spikes. Can deal a little bit more damage than Steel Spikes, while also being able to hurt anything that isn't an Iron Golem.
 
 
 6.14.16:

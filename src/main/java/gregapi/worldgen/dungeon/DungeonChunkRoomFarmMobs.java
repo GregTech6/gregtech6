@@ -35,8 +35,6 @@ import net.minecraft.init.Items;
 public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		// Not allowed in Slime Chunks, for now.
-		if (aData.mWorld.getChunkFromBlockCoords(aData.mX+8, aData.mZ+8).getRandomWithSeed(987234911L).nextInt(10) == 0) return F;
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_MOBS) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_MOBS);
 		
@@ -61,11 +59,12 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		for (int tY =  1; tY <=  6; tY++) for (int tX =  6; tX <=  9; tX++) for (int tZ =  6; tZ <=  9; tZ++) aData.bricks(tX, tY, tZ);
 		for (int tY =  7; tY <=  8; tY++) for (int tX =  5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) aData.smalltiles(tX, tY, tZ);
 		
-		// Golden Omni-Spikes! (Steel wont work on Skeletons!)
-		aData.set     ( 7,  9,  7, BlocksGT.Spikes_Fancy, 6);
-		aData.set     ( 7,  9,  8, BlocksGT.Spikes_Fancy, 6);
-		aData.set     ( 8,  9,  7, BlocksGT.Spikes_Fancy, 6);
-		aData.set     ( 8,  9,  8, BlocksGT.Spikes_Fancy, 6);
+		// Blue or Red Steel Omni-Spikes, so all possible Mobs are taken care of!
+		int tSpike = (aData.next1in2() ? 6 : 14);
+		aData.set     ( 7,  9,  7, BlocksGT.Spikes_Steel, tSpike);
+		aData.set     ( 7,  9,  8, BlocksGT.Spikes_Steel, tSpike);
+		aData.set     ( 8,  9,  7, BlocksGT.Spikes_Steel, tSpike);
+		aData.set     ( 8,  9,  8, BlocksGT.Spikes_Steel, tSpike);
 		
 		// Steel Hoppers!
 		aData.set     ( 7,  8,  7, SIDE_UNKNOWN,  8010, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
@@ -84,7 +83,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		
 		aData.chiseled( 6,  3,  6);
 		aData.set     ( 6,  3,  7, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.glass_bottle  , 1+aData.next(8), 0))), T, T);
-		aData.set     ( 6,  3,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.leather       , 1+aData.next(8), 0))), T, T);
+		aData.set     ( 6,  3,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.slime_ball    , 1+aData.next(8), 0))), T, T);
 		aData.chiseled( 6,  3,  9);
 		aData.set     ( 7,  3,  6, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(ST.make(Items.string        , 1+aData.next(8), 0))), T, T);
 		aData.set     ( 7,  3,  7, SIDE_UNKNOWN, 25002, UT.NBT.make(NBT_CONNECTION    , 60, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,7 +60,7 @@ public class BlockSpikeSharp extends BlockBaseSpike {
 	@Override
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		if (aMeta < 8) {
-			aList.add(LH.Chat.ORANGE + "Deals normal Damage to anything touching it!");
+			aList.add(LH.Chat.ORANGE + "Deals average Damage to anything touching it!");
 			aList.add(LH.Chat.ORANGE + "Doesn't work on Skeletons, Slimes and Iron Golems.");
 		} else {
 			aList.add(LH.Chat.ORANGE + "Deals large Damage to anything touching it!");
