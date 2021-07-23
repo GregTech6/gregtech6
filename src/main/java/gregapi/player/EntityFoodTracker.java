@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,7 +54,7 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 		if (mSugar          != 0) tNBT.setByte("s", mSugar);
 		if (mDehydration    != 0) tNBT.setByte("d", mDehydration);
 		if (mFat            != 0) tNBT.setByte("f", mFat);
-		if (!tNBT.hasNoTags()) aNBT.setTag("gt.properties.food", tNBT);
+		aNBT.setTag("gt.properties.food", tNBT.hasNoTags() ? null : tNBT);
 	}
 	
 	@Override
