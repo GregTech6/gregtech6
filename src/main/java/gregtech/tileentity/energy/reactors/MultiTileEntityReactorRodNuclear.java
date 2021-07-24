@@ -186,10 +186,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	// Gets called every Tick.
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		int tDivider = 1;
-		if (MT.Na.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) tDivider *= 6;
-		else if (MT.Sn.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) tDivider *= 3;
-		aReactor.mEnergy += UT.Code.divup(aReactor.oNeutronCounts[aSlot], tDivider);
+		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
 		if (mDurability <= 0) {
 			ST.meta(aStack, mDepleted);
 			ST.nbt(aStack, null);
