@@ -634,6 +634,7 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Topaz                .addEnchantmentForWeapons(tEnchant, 5);
 				MT.BlueTopaz            .addEnchantmentForWeapons(tEnchant, 5);
 				MT.Tanzanite            .addEnchantmentForWeapons(tEnchant, 4);
+				MT.Amazonite            .addEnchantmentForWeapons(tEnchant, 5);
 				MT.Alexandrite          .addEnchantmentForWeapons(tEnchant, 5);
 				MT.Opal                 .addEnchantmentForWeapons(tEnchant, 4);
 				MT.Olivine              .addEnchantmentForWeapons(tEnchant, 2);

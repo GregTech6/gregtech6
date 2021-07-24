@@ -591,7 +591,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Drying       .addRecipe0(T, 16,   20, FL.mul(DYE_FLUIDS_FLOWER[i], 1, 6, T), FL.DistW.make(10), dustTiny.mat(MT.DATA.Dye_Materials[i], 1));
 		}
 		
-		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.FishOil.liquid( U2, T), MT.Hg.liquid(1, T), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.FishOil.liquid( U8, T), MT.Hg.liquid(1, T), ZL_IS);
 		
 		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
