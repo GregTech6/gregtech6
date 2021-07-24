@@ -94,8 +94,8 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter       ) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord) ) {mCountDown = 100; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE , 1.0F, 0.5F, getCoords()); return 10000;}
-		if (aTool.equals(TOOL_extinguisher  ) && mCountDown != 0                                                ) {mCountDown =   0; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_FIZZ       , 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord) ) {mCountDown = 100; updateClientData(); causeBlockUpdate(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE , 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && mCountDown != 0                                                ) {mCountDown =   0; updateClientData(); causeBlockUpdate(); UT.Sounds.send(worldObj, SFX.MC_FIZZ       , 1.0F, 0.5F, getCoords()); return 10000;}
 		return 0;
 	}
 	
@@ -104,7 +104,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		if (aIsServerSide) {
 			if (mBlockUpdated || aTimer == 2) {
 				if (hasRedstoneIncoming() || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
-				if (mSunk && !WD.ore_stone(getBlockAtSide(OPOS[mFacing]), getMetaDataAtSide(OPOS[mFacing]))) {mSunk = F; updateClientData();}
+				if (mSunk && !WD.ore_stone(getBlockAtSide(OPOS[mFacing]), getMetaDataAtSide(OPOS[mFacing]))) {mSunk = F; updateClientData(); causeBlockUpdate();}
 			}
 			if (mCountDown > 0 && --mCountDown <= 0) explode(F);
 		}
@@ -156,8 +156,8 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (aSide == mFacing) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureFrontActive : sTextureFront, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayFrontActive : sOverlayFront));
-		if (aSide == OPOS[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureBackActive : sTextureBack, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayBackActive : sOverlayBack));
+		if (aSide ==      mFacing ) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureFrontActive : sTextureFront, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayFrontActive : sOverlayFront));
+		if (aSide == OPOS[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureBackActive  : sTextureBack , mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlayBackActive : sOverlayBack));
 		return BlockTextureMulti.get(BlockTextureDefault.get(mCountDown != 0 ? sTextureSideActive : sTextureSide, mRGBa, F, F, F, F), BlockTextureDefault.get(mCountDown != 0 ? sOverlaySideActive : sOverlaySide));
 	}
 	
@@ -167,8 +167,11 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDE_X_NEG==mFacing?mSunk?14:0:SIDE_X_POS==mFacing?0:5], PX_P[SIDE_Y_NEG==mFacing?mSunk?14:0:SIDE_Y_POS==mFacing?0:5], PX_P[SIDE_Z_NEG==mFacing?mSunk?14:0:SIDE_Z_POS==mFacing?0:5], PX_N[SIDE_X_POS==mFacing?mSunk?14:0:SIDE_X_NEG==mFacing?0:5], PX_N[SIDE_Y_POS==mFacing?mSunk?14:0:SIDE_Y_NEG==mFacing?0:5], PX_N[SIDE_Z_POS==mFacing?mSunk?14:0:SIDE_Z_NEG==mFacing?0:5]);}
 	
+	@Override public byte isProvidingWeakPower2(byte aSide) {return (byte)(mCountDown != 0 ? 15 : 0);}
+	@Override public byte isProvidingStrongPower2(byte aSide) {return (byte)(mCountDown != 0 ? 15 : 0);}
+	
 	@Override public void onExploded(Explosion aExplosion) {mDontDrop = T; super.onExploded(aExplosion); explode(T);}
-	@Override public boolean remoteActivate() {if (mCountDown > 20 || mCountDown == 0) {mCountDown = 20; updateClientData();} return F;}
+	@Override public boolean remoteActivate() {if (mCountDown > 20 || mCountDown == 0) {mCountDown = 20; updateClientData(); causeBlockUpdate();} return F;}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return 0.0F;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0.0F;}
