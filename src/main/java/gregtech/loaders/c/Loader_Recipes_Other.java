@@ -42,6 +42,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -555,21 +556,22 @@ public class Loader_Recipes_Other implements Runnable {
 		// Other
 		RM.Lightning    .addRecipe2(T, 16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
 		
-		for (byte i = 0; i < 16; i++) {
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(OM.dust(tMat, U*2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Boomstick      .get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)), IL.Dynamite_Strong.get(1));
-		}
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(OM.dust(tMat, U*2), OM.dust(MT.Gunpowder, U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Boomstick      .get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), plantGtFiber.mat(MT.Cu , 1)), IL.Dynamite_Strong.get(1));
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(OM.dust(tMat, U*2), OM.dust(MT.Gunpowder, U*2), ST.make(Items.string, 1, W)), IL.Boomstick      .get(1));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST         .tag(1), OM.dust(MT.Dynamite , U*1), ST.make(Items.string, 1, W)), IL.Dynamite       .get(1));
-		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST         .tag(2), OM.dust(MT.Dynamite , U*2), ST.make(Items.string, 1, W)), IL.Dynamite_Strong.get(1));
 		
+		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(dust     .mat(tMat, 2), dust     .mat(MT.Gunpowder, 2), ST.make(Items.string                                    , 1, W)), IL.Boomstick      .get(1));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(dust     .mat(tMat, 2), dust     .mat(MT.Gunpowder, 2), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 1, W)), IL.Boomstick      .get(1));
+		RM.Press        .addRecipeX(T, 16,  144, ST.array(blockDust.mat(tMat, 2), blockDust.mat(MT.Gunpowder, 2), ST.make(Items.string                                    , 9, W)), IL.Boomstick      .get(9));
+		RM.Press        .addRecipeX(T, 16,  144, ST.array(blockDust.mat(tMat, 2), blockDust.mat(MT.Gunpowder, 2), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 9, W)), IL.Boomstick      .get(9));
+		}
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag             (1), dust     .mat(MT.Dynamite , 1), ST.make(Items.string                                    , 1, W)), IL.Dynamite       .get(1));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag             (1), dust     .mat(MT.Dynamite , 1), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 1, W)), IL.Dynamite       .get(1));
+		RM.Press        .addRecipeX(T, 16,  144, ST.array(ST.tag             (1), blockDust.mat(MT.Dynamite , 1), ST.make(Items.string                                    , 9, W)), IL.Dynamite       .get(9));
+		RM.Press        .addRecipeX(T, 16,  144, ST.array(ST.tag             (1), blockDust.mat(MT.Dynamite , 1), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 9, W)), IL.Dynamite       .get(9));
+		
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag             (2), dust     .mat(MT.Dynamite , 2), ST.make(Items.string                                    , 1, W)), IL.Dynamite_Strong.get(1));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.tag             (2), dust     .mat(MT.Dynamite , 2), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 1, W)), IL.Dynamite_Strong.get(1));
+		RM.Press        .addRecipeX(T, 16,  576, ST.array(ST.tag             (2), blockDust.mat(MT.Dynamite , 2), ST.make(Items.string                                    , 9, W)), IL.Dynamite_Strong.get(9));
+		RM.Press        .addRecipeX(T, 16,  576, ST.array(ST.tag             (2), blockDust.mat(MT.Dynamite , 2), ST.make((Item)plantGtFiber.mRegisteredPrefixItems.get(0), 9, W)), IL.Dynamite_Strong.get(9));
 		
 		
 		RM.Press        .addRecipeX(T, 16,   16, ST.array(IL.Shape_Press_Bullet_Casing_Small .get(0), dustDiv72.mat(MT.Gunpowder, 8), plateTiny.mat(MT.Brass, 1)), bulletGtSmall .mat(MT.Empty, 1));

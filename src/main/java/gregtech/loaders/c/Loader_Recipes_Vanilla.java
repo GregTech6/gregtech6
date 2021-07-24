@@ -935,23 +935,23 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.pack(ST.make(Items.brick, 4, W), ST.make(Blocks.brick_block, 1, 0));
 		RM.pack(ST.make(Items.netherbrick, 4, W), ST.make(Blocks.nether_brick, 1, 0));
 		
-		RM.generify(plantGtFiber.mat(MT.Black        , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Red          , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Green        , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Brown        , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Blue         , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Purple       , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Cyan         , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.LightGray    , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Gray         , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Pink         , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Lime         , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Yellow       , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.LightBlue    , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Magenta      , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Orange       , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.White        , 1), ST.make(Items.string, 1, 0));
-		RM.generify(plantGtFiber.mat(MT.Cu           , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Black    , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Red      , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Green    , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Brown    , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Blue     , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Purple   , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Cyan     , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.LightGray, 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Gray     , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Pink     , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Lime     , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Yellow   , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.LightBlue, 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Magenta  , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Orange   , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.White    , 1), ST.make(Items.string, 1, 0));
+		RM.generify(plantGtFiber.mat(MT.Cu       , 1), ST.make(Items.string, 1, 0));
 		
 		new Loader_Recipes_Vanilla_OreDict();
 	}

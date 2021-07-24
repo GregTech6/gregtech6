@@ -103,7 +103,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			if (mBlockUpdated || aTimer == 2) {
-				if (hasRedstoneIncoming() || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
+				if ((mCountDown == 0 && hasRedstoneIncoming()) || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
 				if (mSunk && !WD.ore_stone(getBlockAtSide(OPOS[mFacing]), getMetaDataAtSide(OPOS[mFacing]))) {mSunk = F; updateClientData(); causeBlockUpdate();}
 			}
 			if (mCountDown > 0 && --mCountDown <= 0) explode(F);

@@ -43,6 +43,7 @@ import gregapi.util.ST;
 import gregapi.wooddict.WoodDictionary;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
@@ -85,10 +86,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.Water.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
-			for (byte i = 0; i < 16; i++)
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string  , 4, W)), ST.make(Items.lead, 2, 0));
+			
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
 		}});
 		addListener(OD.slimeball, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.itemTar.is_(aEvent.mStack)) return;
@@ -105,10 +105,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.Water.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
-			for (byte i = 0; i < 16; i++)
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string  , 4, W)), ST.make(Items.lead, 2, 0));
+			
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
 		}});
 		addListener(OD.slimeballPink, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Squeezer     .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Slime_Pink.make(250, FL.Slime_Green), ZL_IS);

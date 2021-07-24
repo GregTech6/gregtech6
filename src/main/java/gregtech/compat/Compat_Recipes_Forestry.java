@@ -44,6 +44,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_Forestry extends CompatMods {
@@ -304,10 +305,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Loom         .addRecipe2(T, 16,  128, ST.tag(6), IL.FR_Silk_Woven.get(7)         , ST.make(MD.FR, "apiaristLegs", 1, 0));
 		RM.Loom         .addRecipe2(T, 16,  128, ST.tag(7), IL.FR_Silk_Woven.get(4)         , ST.make(MD.FR, "apiaristBoots", 1, 0));
 		
-		for (byte i = 0; i < 16; i++)
-		RM.Loom         .addRecipe2(T, 16,   16, IL.FR_Stick.get(8)                         , OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)   , ST.make(MD.FR, "frameImpregnated", 1, 0));
-		RM.Loom         .addRecipe2(T, 16,   16, IL.FR_Stick.get(8)                         , OP.plantGtFiber.mat(MT.Cu, 1)                         , ST.make(MD.FR, "frameImpregnated", 1, 0));
-		RM.Loom         .addRecipe2(T, 16,   16, IL.FR_Stick.get(8)                         , ST.make(Items.string, 1, W)                           , ST.make(MD.FR, "frameImpregnated", 1, 0));
+		RM.Loom         .addRecipe2(T, 16,   16, IL.FR_Stick.get(8)                         , ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 1, W), ST.make(MD.FR, "frameImpregnated", 1, 0));
+		RM.Loom         .addRecipe2(T, 16,   16, IL.FR_Stick.get(8)                         , ST.make(Items.string, 1, W)                                       , ST.make(MD.FR, "frameImpregnated", 1, 0));
 		
 		RM.Canner       .addRecipe2(T, 16,   16, OM.dust(MT.I), IL.FR_TinCapsule.get(1), IL.FR_Iodine_Capsule.get(1));
 		RM.Canner       .addRecipe1(T, 16,   16, IL.FR_Iodine_Capsule.get(1), IL.FR_TinCapsule.get(1), OM.dust(MT.I));
@@ -349,10 +348,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.generify(ST.amount(1, aEvent.mStack), IL.FR_Mulch.get(9));
 		}});
 		addListener(OP.stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-		for (byte i = 0; i < 16; i++)
-		RM.Loom         .addRecipe2(T, 16,   16, ST.amount(8, aEvent.mStack), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 1)   , ST.make(MD.FR, "frameUntreated", 1, 0));
-		RM.Loom         .addRecipe2(T, 16,   16, ST.amount(8, aEvent.mStack), OP.plantGtFiber.mat(MT.Cu, 1)                         , ST.make(MD.FR, "frameUntreated", 1, 0));
-		RM.Loom         .addRecipe2(T, 16,   16, ST.amount(8, aEvent.mStack), ST.make(Items.string, 1, W)                           , ST.make(MD.FR, "frameUntreated", 1, 0));
+		RM.Loom         .addRecipe2(T, 16,   16, ST.amount(8, aEvent.mStack), ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 1, W), ST.make(MD.FR, "frameUntreated", 1, 0));
+		RM.Loom         .addRecipe2(T, 16,   16, ST.amount(8, aEvent.mStack), ST.make(Items.string, 1, W)                                       , ST.make(MD.FR, "frameUntreated", 1, 0));
 		}});
 		}};
 		
