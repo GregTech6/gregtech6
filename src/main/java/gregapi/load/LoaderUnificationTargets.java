@@ -524,7 +524,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , MD.HaC, "beeswaxItem", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaCl                   , MD.HaC, "saltItem", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.NaCl                   , MD.HaC, "spamcompressedsaltBlockalt", 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.NaCl                   , MD.HaC, "salt", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreLimestone   , MT.NaCl                   , MD.HaC, "salt", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Aquamarine             , MD.CW2, "gem_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Aquamarine             , MD.CW2, "gem_ore", 1);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Aquamarine             , MD.CW2, "gem", 0);

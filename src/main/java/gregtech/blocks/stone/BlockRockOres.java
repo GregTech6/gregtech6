@@ -82,15 +82,15 @@ public class BlockRockOres extends BlockBaseMeta {
 		COMPAT_IC2.valuable(this, 15, 0);
 		}
 		
-		StoneLayer.LAYERS.add(new StoneLayer(this, 0, MT.Coal));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 1, MT.Lignite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 2, MT.NaCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 3, MT.KCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 4, MT.OREMATS.Bauxite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 5, MT.Oilshale));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.Gypsum));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
-	//  StoneLayer.LAYERS.add(new StoneLayer(this, 8, MT.NetherQuartz)); Nope, that is not for the Overworld.
+		StoneLayer.LAYERS.add(new StoneLayer(this, 0, ORE_MATERIALS[0]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 1, ORE_MATERIALS[1]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 2, ORE_MATERIALS[2]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 3, ORE_MATERIALS[3]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 4, ORE_MATERIALS[4]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 5, ORE_MATERIALS[5]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 6, ORE_MATERIALS[6]));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 7, ORE_MATERIALS[7]));
+	//  StoneLayer.LAYERS.add(new StoneLayer(this, 8, ORE_MATERIALS87])); Nope, Nether Quartz is not for the Overworld.
 		
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("miner", ST.make(this, 1, W));

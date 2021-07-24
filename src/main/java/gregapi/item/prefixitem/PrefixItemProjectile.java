@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,7 +37,6 @@ import net.minecraft.dispenser.BehaviorProjectileDispense;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
@@ -120,12 +119,8 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 			if (!tNBT.getBoolean("gt.u")) {
 				tNBT.setBoolean("gt.u", T);
 				UT.NBT.set(aStack, tNBT);
-				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentTools) {
-					if (tEnchantment.mObject == Enchantment.fortune) {
-						UT.NBT.addEnchantment(aStack, Enchantment.looting, tEnchantment.mAmount);
-					} else if (tEnchantment.mObject.type == EnumEnchantmentType.weapon) {
-						UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mAmount);
-					}
+				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentWeapons) {
+					UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mAmount);
 				}
 			}
 		}

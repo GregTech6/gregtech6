@@ -56,6 +56,7 @@ import gregapi.render.TextureSet;
 import gregapi.util.OM;
 import gregapi.util.UT;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.fluids.FluidStack;
@@ -324,7 +325,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** The Tags for this Material */
 	private final Set<TagData> mTags = new HashSetNoNulls<>();
 	/** Stores the Tool and Armor Enchants */
-	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls<>(1), mEnchantmentArmors = new ArrayListNoNulls<>(1);
+	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls<>(1), mEnchantmentWeapons = new ArrayListNoNulls<>(1), mEnchantmentArmors = new ArrayListNoNulls<>(1);
 	
 	private OreDictMaterial(short aID, String aNameInternal, String aNameLocal) {
 		mID = aID;
@@ -1132,6 +1133,17 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial addEnchantmentForTools(Enchantment aEnchantment, int aEnchantmentLevel) {
+		mEnchantmentTools.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
+		if (aEnchantment == Enchantment.fortune) {
+			mEnchantmentWeapons.add(new ObjectStack<>(Enchantment.looting, aEnchantmentLevel));
+		} else if (aEnchantment.type == EnumEnchantmentType.weapon || aEnchantment.type == EnumEnchantmentType.all) {
+			mEnchantmentWeapons.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
+		}
+		return this;
+	}
+	
+	public OreDictMaterial addEnchantmentForWeapons(Enchantment aEnchantment, int aEnchantmentLevel) {
+		mEnchantmentWeapons.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		mEnchantmentTools.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		return this;
 	}

@@ -595,7 +595,7 @@ public class GT_API_Post extends Abstract_Mod {
 				for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
 					if (tMaterial == MT.NeodymiumMagnetic) {
 						tMaterial.addEnchantmentForTools(tEnchant, 3).addEnchantmentForArmors(tEnchant, 3);
-					} else if (tMaterial == MT.MeteoricSteel || tMaterial == MT.Meteorite) {
+					} else if (tMaterial == MT.SteelMagnetic || tMaterial == MT.MeteoricSteel || tMaterial == MT.Meteorite) {
 						tMaterial.addEnchantmentForTools(tEnchant, 2).addEnchantmentForArmors(tEnchant, 2);
 					} else if (tMaterial.contains(TD.Properties.MAGNETIC_ACTIVE)) {
 						tMaterial.addEnchantmentForTools(tEnchant, 1).addEnchantmentForArmors(tEnchant, 1);
@@ -603,13 +603,13 @@ public class GT_API_Post extends Abstract_Mod {
 				}
 			}
 			if ("enchantment.Cold Touch".equalsIgnoreCase(tEnchant.getName())) {
-				MT.Ice                  .addEnchantmentForTools(tEnchant, 1);
-				MT.Snow                 .addEnchantmentForTools(tEnchant, 1);
-				MT.FrozenIron           .addEnchantmentForTools(tEnchant, 2);
-				MT.Blizz                .addEnchantmentForTools(tEnchant, 3);
-				MT.Frezarite            .addEnchantmentForTools(tEnchant, 4);
-				MT.InfusedWater         .addEnchantmentForTools(tEnchant, 4);
-				MT.Cryotheum            .addEnchantmentForTools(tEnchant, 5);
+				MT.Ice                  .addEnchantmentForWeapons(tEnchant, 1);
+				MT.Snow                 .addEnchantmentForWeapons(tEnchant, 1);
+				MT.FrozenIron           .addEnchantmentForWeapons(tEnchant, 2);
+				MT.Blizz                .addEnchantmentForWeapons(tEnchant, 3);
+				MT.Frezarite            .addEnchantmentForWeapons(tEnchant, 4);
+				MT.InfusedWater         .addEnchantmentForWeapons(tEnchant, 4);
+				MT.Cryotheum            .addEnchantmentForWeapons(tEnchant, 5);
 			}
 			if ("enchantment.frost_walker".equalsIgnoreCase(tEnchant.getName())) {
 				MT.Ice                  .addEnchantmentForArmors(tEnchant, 1);
@@ -621,27 +621,27 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Cryotheum            .addEnchantmentForArmors(tEnchant, 1);
 			}
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchant.getName())) {
-				for (OreDictMaterial tMat : ANY.Emerald   .mToThis) tMat.addEnchantmentForTools(tEnchant, 5);
-				for (OreDictMaterial tMat : ANY.Sapphire  .mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
-				for (OreDictMaterial tMat : ANY.Garnet    .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForTools(tEnchant, 4);
-				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
-				MT.Spinel               .addEnchantmentForTools(tEnchant, 3);
-				MT.BalasRuby            .addEnchantmentForTools(tEnchant, 3);
-				MT.OnyxBlack            .addEnchantmentForTools(tEnchant, 3);
-				MT.OnyxRed              .addEnchantmentForTools(tEnchant, 3);
-				MT.Topaz                .addEnchantmentForTools(tEnchant, 5);
-				MT.BlueTopaz            .addEnchantmentForTools(tEnchant, 5);
-				MT.Tanzanite            .addEnchantmentForTools(tEnchant, 4);
-				MT.Alexandrite          .addEnchantmentForTools(tEnchant, 5);
-				MT.Opal                 .addEnchantmentForTools(tEnchant, 4);
-				MT.Olivine              .addEnchantmentForTools(tEnchant, 2);
-				MT.Dioptase             .addEnchantmentForTools(tEnchant, 3);
-				MT.Jade                 .addEnchantmentForTools(tEnchant, 3);
-				MT.Craponite            .addEnchantmentForTools(tEnchant, 1);
-				MT.Amethyst             .addEnchantmentForTools(tEnchant, 3);
-				MT.EnderAmethyst        .addEnchantmentForTools(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Emerald   .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Sapphire  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3);
+				for (OreDictMaterial tMat : ANY.Garnet    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2);
+				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2);
+				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 4);
+				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3);
+				MT.Spinel               .addEnchantmentForWeapons(tEnchant, 3);
+				MT.BalasRuby            .addEnchantmentForWeapons(tEnchant, 3);
+				MT.OnyxBlack            .addEnchantmentForWeapons(tEnchant, 3);
+				MT.OnyxRed              .addEnchantmentForWeapons(tEnchant, 3);
+				MT.Topaz                .addEnchantmentForWeapons(tEnchant, 5);
+				MT.BlueTopaz            .addEnchantmentForWeapons(tEnchant, 5);
+				MT.Tanzanite            .addEnchantmentForWeapons(tEnchant, 4);
+				MT.Alexandrite          .addEnchantmentForWeapons(tEnchant, 5);
+				MT.Opal                 .addEnchantmentForWeapons(tEnchant, 4);
+				MT.Olivine              .addEnchantmentForWeapons(tEnchant, 2);
+				MT.Dioptase             .addEnchantmentForWeapons(tEnchant, 3);
+				MT.Jade                 .addEnchantmentForWeapons(tEnchant, 3);
+				MT.Craponite            .addEnchantmentForWeapons(tEnchant, 1);
+				MT.Amethyst             .addEnchantmentForWeapons(tEnchant, 3);
+				MT.EnderAmethyst        .addEnchantmentForWeapons(tEnchant, 5);
 			}
 		}
 		

@@ -7,11 +7,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.18: (Not released yet, released whenever it needs to be)
 [FIXED] Food Data not being saved properly when players log out or switch dimensions.
+[FIXED] Arrows did not end up with the Implosion Enchantment of Railcraft when applicable.
 
 
 6.14.17:
 [FIXED] A bunch of tiny Issues.
-[CHANGED] Mob farm Room is now compatible with Slimes.
+[CHANGED] Mob Farm Room is now compatible with Slimes.
 [ADDED] Red Steel and Blue Steel Spikes. Can deal a little bit more damage than Steel Spikes, while also being able to hurt anything that isn't an Iron Golem.
 
 

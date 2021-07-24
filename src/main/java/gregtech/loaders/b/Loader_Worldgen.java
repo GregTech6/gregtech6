@@ -230,7 +230,9 @@ public class Loader_Worldgen implements Runnable {
 		
 		tBlock = ST.block(MD.CHSL, "limestone");
 		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Limestone
+		, new StoneLayerOres(MT.NaCl                    , U16, 40, 80, ST.block(MD.HaC, "salt"))
+		));
 		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone));
 		tBlock = ST.block(MD.BoP, "rocks");
