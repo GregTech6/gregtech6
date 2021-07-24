@@ -132,8 +132,8 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
 
 			int tDivider = 1;
-			if (MT.Na.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider *= 6;
-			else if (MT.Sn.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider *= 3;
+			if (MT.Na.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider = 6;
+			else if (MT.Sn.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider = 3;
 			mEnergy = UT.Code.divup(mEnergy - tEnergy, tDivider) + tEnergy;
 
 			oEnergy = mEnergy - tEnergy;
