@@ -21,6 +21,7 @@ package gregtech.blocks.tree;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
 import java.util.Random;
 
 import gregapi.block.tree.BlockBaseSapling;
@@ -33,7 +34,9 @@ import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class BlockTreeSaplingCD extends BlockBaseSapling {
@@ -99,5 +102,13 @@ public class BlockTreeSaplingCD extends BlockBaseSapling {
 			return T;
 		}
 		return F;
+	}
+	
+	@Override
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
+		if (XMAS_IN_JULY && (aMeta & 7) == 0) {
+			aList.add(LH.Chat.RAINBOW_SLOW + "Save on everything at Christmas in July!");
+		}
 	}
 }

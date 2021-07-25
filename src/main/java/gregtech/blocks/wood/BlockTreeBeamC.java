@@ -19,10 +19,16 @@
 
 package gregtech.blocks.wood;
 
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
 import gregapi.block.tree.BlockBaseBeamFlammable;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 
 public class BlockTreeBeamC extends BlockBaseBeamFlammable {
 	public BlockTreeBeamC(String aUnlocalised) {
@@ -47,5 +53,13 @@ public class BlockTreeBeamC extends BlockBaseBeamFlammable {
 	//  LH.add(getUnlocalizedName()+ ".7.name", " Beam");
 	//  LH.add(getUnlocalizedName()+".11.name", " Beam");
 	//  LH.add(getUnlocalizedName()+".15.name", " Beam");
+	}
+	
+	@Override
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
+		if (XMAS_IN_JULY && (aMeta & 3) == 0) {
+			aList.add(LH.Chat.RAINBOW_SLOW + "Save on everything at Christmas in July!");
+		}
 	}
 }

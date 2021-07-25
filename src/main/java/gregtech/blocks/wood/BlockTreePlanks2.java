@@ -21,6 +21,8 @@ package gregtech.blocks.wood;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.block.metatype.BlockBasePlanksFlammable;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
@@ -33,7 +35,9 @@ import gregapi.render.IIconContainer;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 
 public class BlockTreePlanks2 extends BlockBasePlanksFlammable {
 	public BlockTreePlanks2(String aName) {
@@ -84,5 +88,13 @@ public class BlockTreePlanks2 extends BlockBasePlanksFlammable {
 	//  LH.add(getUnlocalizedName()+".13.name", " Slab");
 	//  LH.add(getUnlocalizedName()+".14.name", " Slab");
 	//  LH.add(getUnlocalizedName()+".15.name", " Slab");
+	}
+	
+	@Override
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
+		if (XMAS_IN_JULY && aMeta == 0) {
+			aList.add(LH.Chat.RAINBOW_SLOW + "Save on everything at Christmas in July!");
+		}
 	}
 }

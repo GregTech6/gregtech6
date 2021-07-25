@@ -110,7 +110,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 				aChatReturn.add(LH.Chat.GRAY + "This definitely is a Rock");
 				return 1;
 			}
-			if (OD.itemFlint.is_(mRock)) {aChatReturn.add(LH.Chat.GRAY + (APRIL_FOOLS||rng(1000)==0?"Flintstones, meet the Flintstones, they're the modern Stone Age family":"It's a Flint")); return 1;}
+			if (OD.itemFlint.is_(mRock)) {aChatReturn.add(LH.Chat.GRAY + (APRIL_FOOLS || rng(WOODMANS_BDAY ? 10 : XMAS_IN_JULY ? 100 : 1000)==0?"Flintstones, meet the Flintstones, they're the modern Stone Age family":"It's a Flint")); return 1;}
 			OreDictItemData tData = OM.anydata_(mRock);
 			if (tData != null && tData.hasValidMaterialData()) {
 				if (tData.mMaterial.mMaterial == MT.MeteoricIron || tData.mMaterial.mMaterial == MT.Meteorite) {
@@ -127,6 +127,9 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 				}
 				if (tData.mMaterial.mMaterial == MT.Endstone) {
 					aChatReturn.add(LH.Chat.GRAY + "There is definitely an End"); return 1;
+				}
+				if (tData.mMaterial.mMaterial == MT.PetrifiedWood) {
+					aChatReturn.add(LH.Chat.GRAY + "Looks like a nice piece of Wood" + LH.Chat._BLACK + ">:]"); return 1;
 				}
 				if (tData.mMaterial.mMaterial.contains(TD.Properties.GLOWING)) {
 					aChatReturn.add(LH.Chat.YELLOW + "Glows a little"); return 1;

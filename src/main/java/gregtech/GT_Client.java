@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -245,6 +245,9 @@ public class GT_Client extends GT_Proxy {
 						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable warning in the clientside gregtech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
 						aEvent.player.addChatComponentMessage(tLink);
+					}
+					if (WOODMANS_BDAY) {
+						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.WHITE+"<"+LH.Chat.GREEN+">:]"+LH.Chat.WHITE+"> Have a nice day!"));
 					}
 					if (APRIL_FOOLS) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + "Watch your Calendar!"));

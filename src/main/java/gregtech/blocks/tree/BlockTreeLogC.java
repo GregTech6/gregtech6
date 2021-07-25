@@ -99,4 +99,12 @@ public class BlockTreeLogC extends BlockBaseLogFlammable implements IBlockToolab
 		}
 		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 	}
+	
+	@Override
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
+		if (XMAS_IN_JULY && (aMeta & 3) == 0) {
+			aList.add(LH.Chat.RAINBOW_SLOW + "Save on everything at Christmas in July!");
+		}
+	}
 }
