@@ -502,9 +502,9 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.KIO3                    , U12, 32, 64)
 		);
 		StoneLayer.bothsides(MT.STONES.Limestone, MT.STONES.Quartzite
-		, new StoneLayerOres(MT.OREMATS.Kyanite         , U3 , 32, 72)
-		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U12, 16, 48)
-		, new StoneLayerOres(MT.OREMATS.Spodumene       , U12, 32, 64)
+		, new StoneLayerOres(MT.OREMATS.Kyanite         , U16, 32, 72)
+		, new StoneLayerOres(MT.OREMATS.Lepidolite      , U32, 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Spodumene       , U32, 32, 64)
 		, new StoneLayerOres(MT.OREMATS.Tantalite       , U32,  8, 56)
 		);
 		StoneLayer.bothsides(MT.STONES.Marble, MT.STONES.Quartzite
