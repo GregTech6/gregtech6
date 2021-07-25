@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.18: (Not released yet, released whenever it needs to be)
 [FIXED] Food Data not being saved properly when players log out or switch dimensions.
 [FIXED] Arrows did not end up with the Implosion Enchantment of Railcraft when applicable.
+[CHANGED] Plastic Cans are now 3 instead of 6 units of Plastic, so they are cheaper to use.
 [CHANGED] Chisels Limestone, which much to the dismay of "many people" generates among the Stone Layers, now will contain Pam's Harvestcrafts Salt Ore, which weirdly fits very well with this Rock Type, as if it was made for it...
 [CHANGED] Dynamite and Boomsticks will now emit a Strong Redstone Signal whenever they are ignited, which makes it probably easier to chain them.
 

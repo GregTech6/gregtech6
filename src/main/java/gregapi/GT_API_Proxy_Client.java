@@ -346,7 +346,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (SHOW_CHEM_FORMULAS && UT.Code.stringValid(tData.mMaterial.mMaterial.mTooltipChemical) && (tData.mPrefix == null ? tData.mByProducts.length == 0 : tData.mPrefix.contains(TD.Prefix.TOOLTIP_MATERIAL))) {
 						aEvent.toolTip.add(LH.Chat.YELLOW + tData.mMaterial.mMaterial.mTooltipChemical);
 					}
-					if ((MD.BP.mLoaded || MD.PR.mLoaded) && tData.mMaterial.mMaterial == MT.Nikolite) {
+					if (tData.mMaterial.mMaterial == MT.Nikolite) {
 						aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("(Teslatite|Electrotine)", "Nikolite"));
 					}
 					if (tData.hasValidPrefixData()) {

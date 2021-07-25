@@ -165,7 +165,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.FakeOsmium.addOreByProducts(MT.Ardite);
 			MT.Aredrite.addOreByProducts(MT.Ardite);
 		}
-		if (MD.RP.mLoaded || MD.PR.mLoaded || MD.BP.mLoaded) {
+		if (MD.RP.mLoaded || MD.PR.mLoaded || MD.BP.mLoaded || !MT.Nikolite.mHidden) {
 			MT.Azurite.addOreByProducts(MT.Nikolite);
 			MT.Monazite.addOreByProducts(MT.Nikolite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Nikolite);

@@ -108,7 +108,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
-
+	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -155,7 +155,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		}
 		return 0;
 	}
-
+	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
@@ -182,11 +182,10 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else {
 					if ((mMode & B[1]) != 0) {
-						if (mMaxSealedTime <= 0) {
+						if (mMaxSealedTime <= 0 || mRecipe == null) {
 							mRecipe = RM.Fermenter.findRecipe(this, mRecipe, T, Long.MAX_VALUE, NI, FL.array(mTank.getFluid()), ST.tag(0));
 							if (mRecipe != null && mRecipe.mFluidInputs.length > 0 && mRecipe.mFluidOutputs.length > 0 && !FL.gas(mRecipe.mFluidInputs[0]) && !FL.gas(mRecipe.mFluidOutputs[0])) {
 								mMaxSealedTime = UT.Code.divup(Math.max(1, mRecipe.getAbsoluteTotalPower()) * Math.max(1, mTank.amount()), Math.max(1, mRecipe.mFluidInputs[0].amount));
-								mSealedTime = 0;
 							} else {
 								mMaxSealedTime = 0;
 								mSealedTime = 0;
@@ -196,12 +195,10 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 							if (mSealedTime < mMaxSealedTime) {
 								mSealedTime++;
 							} else {
-								if (mRecipe != null) {
-									mTank.setFluid(FL.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
-									mRecipe = null;
-								}
+								mTank.setFluid(FL.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
 								mMaxSealedTime = 0;
 								mSealedTime = 0;
+								mRecipe = null;
 							}
 						}
 					} else {
@@ -215,7 +212,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 			}
 		}
 	}
-
+	
 	public boolean meltdown() {
 		if (FL.lava(mTank) && mTank.has(1000)) {
 			mTank.remove(1000);
@@ -228,21 +225,21 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		WD.burn(worldObj, getCoords(), F, F);
 		return T;
 	}
-
+	
 	public boolean allowFluid(FluidStack aFluid) {
 		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMeltingPoint && (!onlySimple() || FL.simple(aFluid));
 	}
-
+	
 	@Override
 	public FluidStack getFluid(ItemStack aStack) {
 		return mTank.getFluid();
 	}
-
+	
 	@Override
 	public int getCapacity(ItemStack aStack) {
 		return mTank.getCapacity();
 	}
-
+	
 	@Override
 	public int fill(ItemStack aStack, FluidStack aFluid, boolean aDoFill) {
 		if ((mMode & B[1]) != 0) return 0;
@@ -254,7 +251,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (tFilled > 0 && aDoFill) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tFilled;
 	}
-
+	
 	@Override
 	public FluidStack drain(ItemStack aStack, int aMaxDrain, boolean aDoDrain) {
 		if ((mMode & B[1]) != 0) return null;
