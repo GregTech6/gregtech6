@@ -490,8 +490,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
 		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
 		
-		CR.shaped(toolHeadArrow.mat(MT.Flint, 1), DEF, "fX", 'X', OD.itemFlint);
-		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), toolHeadArrow.mat(MT.Flint, 1));
+		CR.shaped(toolHeadArrow.mat(MT.Flint, 4), DEF, "fX", 'X', OD.itemFlint);
+		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Items.flint, 1, W), toolHeadArrow.mat(MT.Flint, 4));
 		RM.Sharpening   .addRecipe1(T, 16,  64, ST.make(Blocks.glass_pane, 1, W), lens.mat(MT.Glass, 1));
 		
 		RM.Lathe        .addRecipe1(T, 16,  16, ST.make(Blocks.glass_pane, 1, W), lens.mat(MT.Glass, 1), dustSmall.mat(MT.Glass, 1));
