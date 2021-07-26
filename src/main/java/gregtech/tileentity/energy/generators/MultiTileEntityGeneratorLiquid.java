@@ -152,6 +152,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 						mCooldown = 0;
 					}
 				}
+				// Out of Fuel I guess.
+				if (mEnergy < mRate) mBurning = F;
 			} else {
 				// Something burning in front of it? Lets ignite!
 				if (rng(200) == 0 && WD.burning(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
@@ -159,8 +161,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 				}
 			}
 			// Out of Fuel I guess.
-			if (mEnergy <     0) mEnergy = 0;
-			if (mEnergy < mRate) mBurning = F;
+			if (mEnergy < 0) mEnergy = 0;
 			// Time to auto-re-ignite the Box after loss of Fuel ticks down.
 			if (mCooldown > 0) mCooldown--;
 		} else {

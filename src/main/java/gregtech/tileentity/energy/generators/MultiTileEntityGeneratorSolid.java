@@ -159,14 +159,16 @@ public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09Faci
 						}
 					}
 				}
+				// Out of Fuel I guess.
+				if (mEnergy < mRate) mBurning = F;
 			} else {
 				// Something burning in front of it? Lets ignite!
 				if (rng(200) == 0 && WD.burning(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 					mBurning = T;
 				}
 			}
-			if (mEnergy <     0) mEnergy = 0;
-			if (mEnergy < mRate) mBurning = F;
+			// Out of Fuel I guess.
+			if (mEnergy < 0) mEnergy = 0;
 		} else {
 			if (mBurning && rng(4) == 0) spawnBurningParticles(xCoord+0.5+OFFX[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F), yCoord+RNGSUS.nextFloat()*0.375F, zCoord+0.5+OFFZ[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F));
 		}
