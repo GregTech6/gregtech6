@@ -404,7 +404,11 @@ public class RM {
 		if (MD.EtFu.mLoaded) try {
 			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
 			if (aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
-		} catch(Throwable e) {e.printStackTrace(ERR);}
+		} catch(NoClassDefFoundError e) {
+			// Ignore that one
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
 		return T;
 	}
 	@SuppressWarnings("unchecked")
@@ -429,7 +433,11 @@ public class RM {
 				tIterator.remove();
 				rReturn = T;
 			}
-		} catch(Throwable e) {e.printStackTrace(ERR);}
+		} catch(NoClassDefFoundError e) {
+			// Ignore that one
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
 		return rReturn;
 	}
 	@SuppressWarnings("unchecked")
@@ -461,7 +469,11 @@ public class RM {
 					rReturn = T;
 				}
 			}
-		} catch(Throwable e) {e.printStackTrace(ERR);}
+		} catch(NoClassDefFoundError e) {
+			// Ignore that one
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
 		return rReturn;
 	}
 	

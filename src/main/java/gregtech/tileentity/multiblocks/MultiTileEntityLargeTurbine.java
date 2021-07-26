@@ -73,10 +73,10 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 				if (tX == tOutX && tY == tOutY && tZ == tOutZ) {
 					tBits = MultiTileEntityMultiBlockPart.ONLY_ENERGY_OUT;
 				} else {
-					if (SIDES_AXIS_X[mFacing] && tX == xCoord || SIDES_AXIS_Y[mFacing] && tY == yCoord || SIDES_AXIS_Z[mFacing] && tZ == zCoord) {
-						tBits = (tY == tMinY ? MultiTileEntityMultiBlockPart.ONLY_FLUID : MultiTileEntityMultiBlockPart.ONLY_FLUID_IN);
+					if ((SIDES_AXIS_X[mFacing] && tX == xCoord) || (SIDES_AXIS_Y[mFacing] && tY == yCoord) || (SIDES_AXIS_Z[mFacing] && tZ == zCoord)) {
+						tBits = (tY == tMinY ? MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID     : MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_IN);
 					} else {
-						tBits = MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT;
+						tBits = (tY == tMinY ? MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT : MultiTileEntityMultiBlockPart.NOTHING);
 					}
 				}
 				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, tY, tZ, mTurbineWalls, getMultiTileEntityRegistryID(), tX == tOutX && tY == tOutY && tZ == tOutZ ? 3 : 0, tBits)) tSuccess = F;

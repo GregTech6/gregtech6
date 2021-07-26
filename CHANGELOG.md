@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.20: (Not released yet, released whenever it needs to be)
 [FIXED] Burning Box not being ignitable by Fire Blocks for some reason anymore.
+[FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 
 
 6.14.19:
