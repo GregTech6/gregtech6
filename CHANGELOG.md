@@ -9,17 +9,17 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.19: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
-6.14.18:
+6.14.19:
 [FIXED] Food Data not being saved properly when players log out or switch Dimensions.
 [FIXED] Arrows did not end up with the Implosion Enchantment of Railcraft when applicable.
 [CHANGED] Arrow Heads are now 1 Nugget worth instead of 2 Nuggets. Amounts in Recipes have been adjusted ofcourse.
 [CHANGED] Plastic Cans are now 3 instead of 6 units of Plastic, so they are cheaper to use.
 [CHANGED] Chisels Limestone, which much to the dismay of "many people" generates among the Stone Layers, now will contain Pam's Harvestcrafts Salt Ore, which weirdly fits very well with this Rock Type, as if it was made for that Rock Type instead of the Vanilla Stone it normally generates in...
 [CHANGED] Dynamite and Boomsticks will now emit a Strong Redstone Signal whenever they are ignited, which makes it probably easier to chain them, but not that much easier.
+
+
+6.14.18:
+[BROKEN] DO NOT USE!
 
 
 6.14.17:

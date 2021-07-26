@@ -49,23 +49,23 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 	@Override
 	public void saveNBTData(NBTTagCompound aNBT) {
 		NBTTagCompound tNBT = UT.NBT.make();
-		if (mAlcohol        != 0) tNBT.setByte("a", mAlcohol);
-		if (mCaffeine       != 0) tNBT.setByte("c", mCaffeine);
-		if (mSugar          != 0) tNBT.setByte("s", mSugar);
-		if (mDehydration    != 0) tNBT.setByte("d", mDehydration);
-		if (mFat            != 0) tNBT.setByte("f", mFat);
-		aNBT.setTag("gt.properties.food", tNBT.hasNoTags() ? null : tNBT);
+		if (mAlcohol     != 0) tNBT.setByte("a", mAlcohol    );
+		if (mCaffeine    != 0) tNBT.setByte("c", mCaffeine   );
+		if (mSugar       != 0) tNBT.setByte("s", mSugar      );
+		if (mDehydration != 0) tNBT.setByte("d", mDehydration);
+		if (mFat         != 0) tNBT.setByte("f", mFat        );
+		if (tNBT.hasNoTags()) aNBT.removeTag("gt.props.food"); else aNBT.setTag("gt.props.food", tNBT);
 	}
 	
 	@Override
 	public void loadNBTData(NBTTagCompound aNBT) {
-		if (!aNBT.hasKey("gt.properties.food")) return;
-		NBTTagCompound tNBT = aNBT.getCompoundTag("gt.properties.food");
-		mAlcohol        = tNBT.getByte("a");
-		mCaffeine       = tNBT.getByte("c");
-		mDehydration    = tNBT.getByte("d");
-		mSugar          = tNBT.getByte("s");
-		mFat            = tNBT.getByte("f");
+		NBTTagCompound tNBT = aNBT.getCompoundTag("gt.props.food");
+		if (tNBT == null) return;
+		mAlcohol     = tNBT.getByte("a");
+		mCaffeine    = tNBT.getByte("c");
+		mDehydration = tNBT.getByte("d");
+		mSugar       = tNBT.getByte("s");
+		mFat         = tNBT.getByte("f");
 	}
 	
 	@Override
@@ -176,22 +176,22 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 				}
 			}
 			
-			if (tTracker.mAlcohol       > 0) tTracker.mAlcohol--;
-			if (tTracker.mCaffeine      > 0) tTracker.mCaffeine--;
-			if (tTracker.mDehydration   > 0) tTracker.mDehydration--;
-			if (tTracker.mSugar         > 0) tTracker.mSugar--;
-			if (tTracker.mFat           > 0) tTracker.mFat--;
+			if (tTracker.mAlcohol     > 0) tTracker.mAlcohol--;
+			if (tTracker.mCaffeine    > 0) tTracker.mCaffeine--;
+			if (tTracker.mDehydration > 0) tTracker.mDehydration--;
+			if (tTracker.mSugar       > 0) tTracker.mSugar--;
+			if (tTracker.mFat         > 0) tTracker.mFat--;
 		}
 	}
 	
 	public static void add(EntityLivingBase aEntity) {
 		if (aEntity == null || aEntity.worldObj.isRemote) return;
-		aEntity.registerExtendedProperties("gt.properties.food", new EntityFoodTracker(aEntity));
+		aEntity.registerExtendedProperties("gt.props.food", new EntityFoodTracker(aEntity));
 	}
 	
 	public static EntityFoodTracker get(Entity aEntity) {
 		if (aEntity == null || aEntity.worldObj.isRemote) return null;
-		Object rTracker = aEntity.getExtendedProperties("gt.properties.food");
+		Object rTracker = aEntity.getExtendedProperties("gt.props.food");
 		return rTracker instanceof EntityFoodTracker ? (EntityFoodTracker)rTracker : null;
 	}
 }
