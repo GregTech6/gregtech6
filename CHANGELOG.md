@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Burning Box not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
+[CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
 
 
 6.14.19:
