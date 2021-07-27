@@ -408,7 +408,7 @@ public class Loader_Ores implements Runnable {
 				BlocksGT.stoneOverridable.add(tOre2);
 				BlocksGT.stoneOverridable.add(tOre3);
 			}
-			if (aMetaA != W) {
+			if (aRock != Blocks.stone) if (aMetaA != W) {
 				BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, aMetaA), tOre1);
 				BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, aMetaA), tOre2);
 				BlocksGT.stoneToSmallOres .put(new ItemStackContainer(aRock, 1, aMetaA), tOre3);
@@ -441,21 +441,21 @@ public class Loader_Ores implements Runnable {
 	public static PrefixBlock normal(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix, null, BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, 0, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
-		if (aMeta != W) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, i), rOre);
+		if (aRock != Blocks.stone) if (aMeta != W) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, i), rOre);
 		return rOre;
 	}
 	
 	public static PrefixBlock broken(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.broken."+aName, aPrefix, null, BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, -1, aHarvestLevelMinimum, T, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
-		if (aMeta != W) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, i), rOre);
+		if (aRock != Blocks.stone) if (aMeta != W) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, i), rOre);
 		return rOre;
 	}
 	
 	public static PrefixBlock small(Block aRock, int aMeta, String aName, OreDictMaterial aDrops, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.small."+aName, OP.oreSmall, new Drops_SmallOre(aDrops), BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, -1, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
-		if (aMeta != W) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, i), rOre);
+		if (aRock != Blocks.stone) if (aMeta != W) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, i), rOre);
 		return rOre;
 	}
 }
