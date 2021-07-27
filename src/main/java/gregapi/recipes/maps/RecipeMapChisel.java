@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.data.OP;
+import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.random.IHasWorldAndCoords;
@@ -49,7 +50,7 @@ public class RecipeMapChisel extends RecipeMap {
 		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) {
 			OreDictItemData tData = OM.anyassociation(aInputs[0]);
-			if (tData != null && (tData.mPrefix == OP.blockRaw || tData.mPrefix == OP.blockDust || tData.mPrefix == OP.blockIngot || tData.mPrefix == OP.blockGem || tData.mPrefix == OP.blockPlate || tData.mPrefix == OP.blockPlateGem || tData.mPrefix == OP.blockSolid)) {
+			if (tData != null && (tData.mPrefix == OP.blockSolid || (tData.mPrefix.contains(TD.Prefix.STORAGE_BASED) && !tData.mPrefix.contains(TD.Prefix.IS_CONTAINER)))) {
 				List<ItemStack> tList = OreDictManager.getOres(tData.toString(), T);
 				int tSize = tList.size();
 				if (tSize > 0) {
