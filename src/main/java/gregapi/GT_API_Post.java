@@ -295,6 +295,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.PurpleAlloy                , MD.BP, "purple_alloy_ingot", 0);
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.BP, "teslatite_dust", 0);
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , MD.BP, "infused_teslatite_dust", 0);
+			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.Stone                      , MD.BP, "stone_tile", 0);
 			
 			OM.reg(OD.craftingWorkBench                  , ST.make(MD.BP, "project_table", 1, 0));
 			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
