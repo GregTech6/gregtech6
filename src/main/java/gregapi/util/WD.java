@@ -616,7 +616,8 @@ public class WD {
 	public static boolean hasCollide(World aWorld, ChunkCoordinates aCoords) {return hasCollide(aWorld, aCoords, aWorld.getBlock(aCoords.posX, aCoords.posY, aCoords.posZ));}
 	public static boolean hasCollide(World aWorld, ChunkCoordinates aCoords, Block aBlock) {return aBlock.isOpaqueCube() || aBlock.getCollisionBoundingBoxFromPool(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ) != null;}
 	
-	public static boolean burning(World aWorld, int aX, int aY, int aZ) {return block(aWorld, aX, aY, aZ, F) instanceof BlockFire || block(aWorld, aX+1, aY, aZ, F) instanceof BlockFire || block(aWorld, aX-1, aY, aZ, F) instanceof BlockFire || block(aWorld, aX, aY+1, aZ, F) instanceof BlockFire || block(aWorld, aX, aY-1, aZ, F) instanceof BlockFire || block(aWorld, aX, aY, aZ+1, F) instanceof BlockFire || block(aWorld, aX, aY, aZ-1, F) instanceof BlockFire;}
+	public static boolean flaming(World aWorld, int aX, int aY, int aZ) {return block(aWorld, aX, aY, aZ, F) instanceof BlockFire;}
+	public static boolean burning(World aWorld, int aX, int aY, int aZ) {return flaming(aWorld, aX, aY, aZ) || flaming(aWorld, aX+1, aY, aZ) || flaming(aWorld, aX-1, aY, aZ) || flaming(aWorld, aX, aY+1, aZ) || flaming(aWorld, aX, aY-1, aZ) || flaming(aWorld, aX, aY, aZ+1) || flaming(aWorld, aX, aY, aZ-1);}
 	
 	public static void burn(World aWorld, ChunkCoordinates aCoords, boolean aReplaceCenter, boolean aCheckFlammability) {for (byte tSide : aReplaceCenter?ALL_SIDES_MIDDLE_UP:ALL_SIDES_VALID) fire(aWorld, aCoords.posX+OFFX[tSide], aCoords.posY+OFFY[tSide], aCoords.posZ+OFFZ[tSide], aCheckFlammability);}
 	public static void burn(World aWorld, int aX, int aY, int aZ  , boolean aReplaceCenter, boolean aCheckFlammability) {for (byte tSide : aReplaceCenter?ALL_SIDES_MIDDLE_UP:ALL_SIDES_VALID) fire(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], aCheckFlammability);}

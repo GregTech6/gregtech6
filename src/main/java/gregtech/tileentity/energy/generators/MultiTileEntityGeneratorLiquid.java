@@ -156,7 +156,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 				if (mEnergy < mRate) mBurning = F;
 			} else {
 				// Something burning in front of it? Lets ignite!
-				if (rng(200) == 0 && WD.burning(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
+				if (rng(200) == 0 && WD.flaming(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 					mBurning = T;
 				}
 			}
