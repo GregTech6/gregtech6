@@ -31,6 +31,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OD;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
@@ -97,6 +98,19 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Nikolite, 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Nikolite, 5*U9), OM.dust(MT.EnergiumCyan,   U));
 		}
+		
+		
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis) {
+			RM.Mixer   .addRecipe2(T, 16, 256, OP.dust.mat(tMat, 1), OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(MT.RefinedObsidian, 1));
+			RM.Injector.addRecipe2(T, 16, 256, OP.dust.mat(tMat, 1), OP.dust.mat(MT.Obsidian, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
+		}
+		for (OreDictMaterial tMat : ANY.Glowstone.mToThis)
+		RM.Injector.addRecipe1(T, 16, 256, OP.dust.mat(tMat              , 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedGlowstone, 1));
+		RM.Injector.addRecipe1(T, 16, 256, OP.dust.mat(MT.RefinedObsidian, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
+		
+		RM.Compressor.addRecipe1(T, 16, 256, OP.dust.mat(MT.RefinedObsidian, 1), OP.plate.mat(MT.RefinedObsidian, 1));
+		RM.ic2_compressor(OP.dust.mat(MT.RefinedObsidian, 1), OP.plate.mat(MT.RefinedObsidian, 1));
+		
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		

@@ -1550,7 +1550,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.Mek, "CompressedCarbon"                  , 1,   0, MT.C                  ,  U * 1);
 		OM.data(MD.Mek, "CompressedRedstone"                , 1,   0, MT.Redstone           ,  U * 1); OM.reg(OD.itemRedstone, ST.make(MD.Mek, "CompressedRedstone", 1, 0));
 		OM.data(MD.Mek, "CompressedDiamond"                 , 1,   0, ANY.Diamond           ,  U * 1);
-		OM.data(MD.Mek, "CompressedObsidian"                , 1,   0, MT.RefinedObsidian    ,  U * 1);
 		
 		
 		OM.data(MD.MaCu, "tanks"                            , 1,   0, ANY.Cu                ,  U * 4, ANY.Wood              ,  U * 4, MT.Glass              ,  U * 1);
