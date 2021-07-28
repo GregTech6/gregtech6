@@ -101,8 +101,8 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis) {
-			RM.Mixer   .addRecipe2(T, 16, 256, OP.dust.mat(tMat, 1), OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(MT.RefinedObsidian, 1));
-			RM.Injector.addRecipe2(T, 16, 256, OP.dust.mat(tMat, 1), OP.dust.mat(MT.Obsidian, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
+			RM.Mixer   .addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), OP.dust.mat(MT.RefinedObsidian, 1));
+			RM.Injector.addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
 		}
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis)
 		RM.Injector.addRecipe1(T, 16, 256, OP.dust.mat(tMat              , 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedGlowstone, 1));

@@ -742,16 +742,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHER, "zaniteBlock"   , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Continuum              , MD.AETHER, "continuumBomb" , 0);
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHER, "skyrootStick"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Coffee                 , ST.mkic("coffeePowder", 1));
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.HydratedCoal           , ST.mkic("hydratedCoalDust", 1));
-		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , ST.mkic("industrialDiamond", 1));
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.IC2, "blockOreCopper", 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , MD.IC2, "blockOreLead"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , MD.IC2, "blockOreTin"   , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , MD.IC2, "blockOreUran"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.IC2, "copperOre"     , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , MD.IC2, "tinOre"        , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , MD.IC2, "uraniumOre"    , 0);
 		OreDictManager.INSTANCE.setTarget(OP.cell           , MT.Creosote               , MD.RC, "fluid.creosote.cell", 1);
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , MD.PMP, "bambooAsperPole", 0);
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , MD.PMP, "bambooFargesiaRobustaPole", 0);
@@ -877,6 +867,16 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Lapis                  , ST.make(Blocks.lapis_block, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Coal                   , ST.make(Blocks.coal_block, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Redstone               , ST.make(Blocks.redstone_block, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Coffee                 , ST.mkic("coffeePowder", 1));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.HydratedCoal           , ST.mkic("hydratedCoalDust", 1));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , ST.mkic("industrialDiamond", 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.IC2, "blockOreCopper", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , ST.make(MD.IC2, "blockOreLead"  , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.IC2, "blockOreTin"   , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.IC2, "blockOreUran"  , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.IC2, "copperOre"     , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.IC2, "tinOre"        , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.IC2, "uraniumOre"    , 1, 0));
 		if (MD.IC2C.mLoaded) {
 		OreDictManager.INSTANCE.setTarget(OP.plateDense     , MT.Cu                     , MD.IC2, "item.itemPartDCP", 0);
 		} else {

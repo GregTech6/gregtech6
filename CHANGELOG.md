@@ -18,7 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Mekanisms Osmium, which i previously just named 'Osmium' and treated differently from regular Osmium, is now instead completely overhauled to be the actual Material Germanium.
 That fits with its Circuits at the very least, and makes a lot of internal Mechanics much nicer. Heck these two Materials had a lot of things in common too, before I did this.
 Side Effects of this change include:
-Decorative Fake Osmium based Blocks are now turning into the (newly added) Constantan Decorative Variants.
+Decorative Fake Osmium based Tool Blocks are now turning into the (newly added) Constantan Decorative Variants.
 Fake Osmium based Item Pipes turn into the (newly added) Germanium Item Pipes that now exist.
 Germanium is now attributed to Mekanism, even though it technically did not add it.
 Any mention of "Osmium" inside Mekanism Material Item Names is now turned into "Germanium". (I did the same thing to "Teslatite" and "Electrotine" in an earlier Release, to make them "Nikolite")
