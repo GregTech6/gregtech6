@@ -318,7 +318,7 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
-		// Stuff
+		// Other Stuff
 		
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Shale, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 1, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 1, MT.STONES.Shale));

@@ -132,6 +132,7 @@ public enum FL {
 	, Stagnant_Water            ("stagnantwater"                                            , SIMPLE, LIQUID)
 	, Swampwater                ("swampwater"                                               , SIMPLE, LIQUID)
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)
+	, Brine                     ("brine"                                                    , SIMPLE, LIQUID)
 	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID)
 	
 	, Milk                      ("milk"                                                     , SIMPLE, LIQUID, FOOD, MILK)

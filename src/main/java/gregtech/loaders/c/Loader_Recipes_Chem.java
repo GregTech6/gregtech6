@@ -293,6 +293,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		if (FL.OceanGrC.exists())
 		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), FL.array(FL.OceanGrC.make(16000)     ), FL.array(MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)), OM.dust(MT.NaOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), FL.array(FL.Ocean.make(16000)        ), FL.array(MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)), OM.dust(MT.NaOH, 3*U8));
+		if (FL.Brine.exists())
+		RM.Electrolyzer .addRecipe1(T, 16, 1280, ST.tag(0), FL.array(FL.Brine.make(1000)         ), FL.array(MT.Cl.gas(U8, F), MT.H.gas( 3*U8, F), MT.O.gas(   U8, F)), OM.dust(MT.NaOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, ST.tag(0), FL.array(MT.SaltWater.liquid(U, T)   ), FL.array(MT.Cl.gas(U8, F), MT.H.gas( 3*U8, F), MT.O.gas(   U8, F)), OM.dust(MT.NaOH, 3*U8));
 		
 		
@@ -438,6 +440,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		if (FL.OceanGrC.exists())
 		RM.Drying       .addRecipe0(T, 16,12800, FL.OceanGrC.make(8000)         , FL.DistW.make(7750), OM.dust(MT.NaCl, U4));
 		RM.Drying       .addRecipe0(T, 16,12800, FL.Ocean.make(8000)            , FL.DistW.make(7750), OM.dust(MT.NaCl, U4));
+		if (FL.Brine.exists())
+		RM.Drying       .addRecipe0(T, 16, 1600, FL.Brine.make(8000)            , FL.DistW.make( 750), OM.dust(MT.NaCl, U4));
 		RM.Drying       .addRecipe0(T, 16, 1600, MT.SaltWater.liquid(U, T)      , FL.DistW.make( 750), OM.dust(MT.NaCl, U4));
 		RM.Drying       .addRecipe0(T, 16,16000, FL.Dirty_Water.make(8000)      , FL.DistW.make(7000), ST.make(Blocks.dirt, 1, 0));
 		if (FL.Swampwater.exists())
