@@ -133,6 +133,9 @@ public class Loader_Rocks implements Runnable {
 		BlocksGT.ores_broken[n] = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.slate"            , OP.oreSlate               , null                                  , BlockTextureDefault.get(tStone.mIcons[1]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.25F, 0.37F, -1, tStone.mHarvestLevel-1, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.ores_small [n] = new PrefixBlock_(MD.GT, "gt.meta.ore.small.slate"             , OP.oreSmall               , new Drops_SmallOre(tStone.mMaterial)  , BlockTextureDefault.get(tStone.mIcons[0]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.50F, 0.75F, -1, tStone.mHarvestLevel  , F,F, OreDictMaterial.MATERIAL_ARRAY);
 		
+		// TODO
+		BlocksGT.Shale = BlocksGT.Slate;
+		
 		for (int i = 0; i < BlocksGT.stones.length; i++) {
 			VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.stones[i]);
 			((PrefixBlock)BlocksGT.ores_normal[i]).mDrops = new Drops(BlocksGT.ores_broken[i], BlocksGT.ores_normal[i], OP.oreRaw.mRegisteredPrefixItems.get(0), 0, Math.max(1, BlocksGT.stones[n].getHarvestLevel(0)));
