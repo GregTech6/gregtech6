@@ -663,9 +663,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Sn                     , MD.Mek, "DirtyDust", 4);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Ag                     , MD.Mek, "DirtyDust", 5);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Pb                     , MD.Mek, "DirtyDust", 6);
+		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Graphene               , MD.Mek, "CompressedCarbon", 0);
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.Diamond                , MD.Mek, "CompressedDiamond", 0);
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.Redstone               , MD.Mek, "CompressedRedstone", 0);
+		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.RefinedObsidian        , MD.Mek, "CompressedObsidian", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.RefinedObsidian        , MD.Mek, "OtherDust", 5);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.RefinedObsidian        , MD.Mek, "Ingot", 0);
-		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.RefinedObsidian        , MD.Mek, "CompressedObsidian", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedObsidian        , MD.Mek, "BasicBlock", 2);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.RefinedGlowstone       , MD.Mek, "Ingot", 3);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedGlowstone       , MD.Mek, "BasicBlock", 4);

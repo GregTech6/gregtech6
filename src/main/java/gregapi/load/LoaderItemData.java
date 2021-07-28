@@ -1547,11 +1547,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.IE, "storageSlab"                        , 1,   7, MT.Steel              ,  9* U2);
 		
 		
-		OM.data(MD.Mek, "CompressedCarbon"                  , 1,   0, MT.C                  ,  U * 1);
-		OM.data(MD.Mek, "CompressedRedstone"                , 1,   0, MT.Redstone           ,  U * 1); OM.reg(OD.itemRedstone, ST.make(MD.Mek, "CompressedRedstone", 1, 0));
-		OM.data(MD.Mek, "CompressedDiamond"                 , 1,   0, ANY.Diamond           ,  U * 1);
-		
-		
 		OM.data(MD.MaCu, "tanks"                            , 1,   0, ANY.Cu                ,  U * 4, ANY.Wood              ,  U * 4, MT.Glass              ,  U * 1);
 		OM.data(MD.MaCu, "tanks"                            , 1,   1, MT.Al                 ,  U * 4, MT.Glass              ,  U * 4);
 		OM.data(MD.MaCu, "tanks"                            , 1,   5, MT.Al                 ,  U * 4, ANY.Stone             ,  U * 4);

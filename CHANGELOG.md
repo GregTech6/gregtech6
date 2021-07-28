@@ -23,7 +23,7 @@ Fake Osmium based Item Pipes turn into the (newly added) Germanium Item Pipes th
 Germanium is now attributed to Mekanism, even though it technically did not add it.
 Any mention of "Osmium" inside Mekanism Material Item Names is now turned into "Germanium". (I did the same thing to "Teslatite" and "Electrotine" in an earlier Release, to make them "Nikolite")
 Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
-[FIXED] Burning Box not being ignitable by Fire Blocks for some reason anymore.
+[FIXED] Burning Box were not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
 [CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.

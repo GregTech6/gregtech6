@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,6 +31,7 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregtech.items.behaviors.Behavior_Place_Dynamite;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -112,7 +113,7 @@ public class GT_Tool_Drill_LV extends ToolStats {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return !aIsToolHead ? Textures.ItemIcons.TIP_ELECTRIC_DRILL : Textures.ItemIcons.HANDLE_ELECTRIC_DRILL;
+		return !aIsToolHead ? ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : Textures.ItemIcons.TIP_ELECTRIC_DRILL : Textures.ItemIcons.HANDLE_ELECTRIC_DRILL;
 	}
 	
 	@Override

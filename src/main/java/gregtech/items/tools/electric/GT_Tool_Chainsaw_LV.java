@@ -117,7 +117,7 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_LV : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadChainsaw.mIconIndexItem);
+		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_LV : ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadChainsaw.mIconIndexItem);
 	}
 	
 	@Override

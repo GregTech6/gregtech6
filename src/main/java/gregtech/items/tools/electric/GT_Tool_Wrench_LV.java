@@ -27,6 +27,7 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Switch_Metadata;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregtech.items.tools.machine.GT_Tool_Wrench;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -99,7 +100,7 @@ public class GT_Tool_Wrench_LV extends GT_Tool_Wrench {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_LV : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadWrench.mIconIndexItem);
+		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_LV : ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadWrench.mIconIndexItem);
 	}
 	
 	@Override

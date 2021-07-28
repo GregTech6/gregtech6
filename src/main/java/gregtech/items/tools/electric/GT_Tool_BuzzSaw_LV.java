@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregtech.items.tools.early.GT_Tool_Saw;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
@@ -75,7 +76,7 @@ public class GT_Tool_BuzzSaw_LV extends GT_Tool_Saw {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadBuzzSaw.mIconIndexItem) : Textures.ItemIcons.HANDLE_BUZZSAW;
+		return !aIsToolHead ? ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadBuzzSaw.mIconIndexItem) : Textures.ItemIcons.HANDLE_BUZZSAW;
 	}
 	
 	@Override

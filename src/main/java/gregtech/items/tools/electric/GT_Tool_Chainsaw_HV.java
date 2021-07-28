@@ -24,6 +24,7 @@ import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Chainsaw_HV extends GT_Tool_Chainsaw_MV {
@@ -35,6 +36,6 @@ public class GT_Tool_Chainsaw_HV extends GT_Tool_Chainsaw_MV {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_HV : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadChainsaw.mIconIndexItem);
+		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_HV : ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadChainsaw.mIconIndexItem);
 	}
 }

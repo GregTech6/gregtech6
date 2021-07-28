@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Wrench_HV extends GT_Tool_Wrench_LV {
@@ -81,6 +82,6 @@ public class GT_Tool_Wrench_HV extends GT_Tool_Wrench_LV {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_HV : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadWrench.mIconIndexItem);
+		return aIsToolHead ? Textures.ItemIcons.POWER_UNIT_HV : ST.meta(aStack) % 2 != 0 ? Textures.ItemIcons.VOID : MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadWrench.mIconIndexItem);
 	}
 }
