@@ -75,16 +75,13 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenStoneLayers("stonelayers", T, GEN_GT, GEN_ENVM_GT, GEN_A97_GT, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld_GT); // MUST BE FIRST
 		
-		Block tDeepslate = IL.EtFu_Deepslate.block();
-		if (ST.valid(tDeepslate)) {
-		StoneLayer.DEEPSLATE = new StoneLayer(tDeepslate, 0, IL.EtFu_Deepslate_Cobble.block(), 0, MT.STONES.Deepslate
+		StoneLayer.DEEPSLATE = new StoneLayer(BlocksGT.Slate, IL.EtFu_Deepslate.block(), 0, IL.EtFu_Deepslate_Cobble.block(), 0, MT.STONES.Deepslate
 		, new StoneLayerOres(MT.Redstone                                , U32,  0,  5)
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U64,  0,  5) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U64,  0,  5) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U64,  0,  5) : null
 		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0,  5) : null
 		);
-		}
 		
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone));
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone));
@@ -127,35 +124,13 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack
-		, new StoneLayerOres(MT.OREMATS.Cooperite       , U32,  0, 16)
-		, new StoneLayerOres(MT.OREMATS.Sperrylite      , U32,  0, 16)
-		, new StoneLayerOres(MT.Ir                      , U64,  0,  8)
-		, new StoneLayerOres(MT.Emerald                 , U64, 24, 48, BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Aquamarine              , U64,  8, 32, BIOMES_OCEAN_BEACH)
-		, new StoneLayerOres(MT.Morganite               , U64, 24, 48, BIOMES_JUNGLE)
-		, new StoneLayerOres(MT.Heliodor                , U64, 24, 48, BIOMES_DESERT)
-		, new StoneLayerOres(MT.Goshenite               , U64, 24, 48, BIOMES_FROZEN)
-		, new StoneLayerOres(MT.Bixbite                 , U64, 24, 48, BIOMES_SAVANNA)
-		, new StoneLayerOres(MT.Maxixe                  , U64, 24, 48, BIOMES_TAIGA)
-		));
+		// Basaltic Stuff
 		
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed
-		, new StoneLayerOres(MT.OREMATS.Pitchblende     , U32,  0, 18)
-		, new StoneLayerOres(MT.OREMATS.Uraninite       , U32,  0, 16)
-		, new StoneLayerOres(MT.OREMATS.Tantalite       , U16, 20, 50)
-		));
-		
-		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite, ST.block(MD.UB, "igneousStone"), 6+8, ST.block(MD.UB, "igneousCobblestone"), 6, MT.STONES.Komatiite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite, ST.block(MD.UB, "igneousStone"), 4+8, ST.block(MD.UB, "igneousCobblestone"), 4, MT.STONES.Gabbro));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite, ST.block(MD.PFAA, "veryStrongStone"), 1, ST.block(MD.PFAA, "veryStrongCobble"), 1, MT.STONES.Gabbro));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"),11, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"),11, MT.STONES.Gabbro));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Komatiite
 		, new StoneLayerOres(MT.MgCO3                   , U16, 20, 50)
 		, new StoneLayerOres(MT.OREMATS.Cinnabar        , U12,  0, 32)
@@ -163,24 +138,21 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Pyrite                  , U12,  0, 30)
 		));
 		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite
+		, new StoneLayerOres(MT.Diamond                 ,U128,  0, 12)
+		, new StoneLayerOres(MT.Spinel                  , U64, 24, 48, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.BalasRuby               , U64, 24, 48, BIOMES_JUNGLE)
+		));
 		
-		Block
-		tBlock = ST.block(MD.GaSu, "basalt");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Basalt));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
-		tBlock = ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 3, tBlock, 2, MT.STONES.Basalt));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
-		tBlock = ST.block(MD.BP, "basalt");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Basalt));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.GaSu, "basalt"), MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone"), 3, ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone"), 2, MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.BP, "basalt"), MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.PFAA, "strongStone"), 1, ST.block(MD.PFAA, "strongCobble"), 1, MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.MIN, "basalt"), MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 0, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 0, MT.STONES.Basalt));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.MIN, "rhyolite"), MT.STONES.Rhyolite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, ST.block(MD.UB, "igneousStone"), 5+8, ST.block(MD.UB, "igneousCobblestone"), 5, MT.STONES.Basalt
 		, new StoneLayerOres(MT.OREMATS.Bastnasite      , U24, 24, 32)
 		, new StoneLayerOres(MT.Monazite                , U32, 24, 32)
 		, new StoneLayerOres(MT.MnO2                    , U8 , 16, 48)
@@ -192,28 +164,32 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Chromite        , U8 , 32, 64)
 		));
 		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.UB, "igneousStone"), 2+8, ST.block(MD.UB, "igneousCobblestone"), 2, MT.STONES.Rhyolite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.PFAA, "strongStone"), 7, ST.block(MD.PFAA, "strongCobble"), 7, MT.STONES.Rhyolite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 5, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 5, MT.STONES.Rhyolite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 12, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 12, MT.STONES.Dacite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.MIN, "andesite"), MT.STONES.Andesite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.PFAA, "strongStone"), 0, ST.block(MD.PFAA, "strongCobble"), 0, MT.STONES.Andesite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, ST.block(MD.UB, "igneousStone"), 3+8, ST.block(MD.UB, "igneousCobblestone"), 3, MT.STONES.Andesite
+		, new StoneLayerOres(MT.OREMATS.Bromargyrite    , U8 ,  0, 20)
+		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
+		, new StoneLayerOres(MT.Au                      , U32,  0, 20)
+		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		));
 		
-		tBlock = ST.block(MD.CHSL, "marble");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Marble));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
-		tBlock = ST.block(MD.RC, "cube");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 7, MT.STONES.Marble));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
-		tBlock = ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Marble));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
-		tBlock = ST.block(MD.BP, "marble");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Marble));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble
+		
+		// Chalky Stuff
+		
+		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.CHSL, "marble"), MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.RC, "cube"), 7, MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone"), MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.BP, "marble"), MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 7, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 7, MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.PFAA, "strongStone"), 5, ST.block(MD.PFAA, "strongCobble"), 5, MT.STONES.Marble));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, ST.block(MD.UB, "metamorphicStone"), 2+8, ST.block(MD.UB, "metamorphicCobblestone"), 2, MT.STONES.Marble
 		, new StoneLayerOres(MT.Dioptase                , U64, 24, 48, BIOMES_MOUNTAINS)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble
@@ -225,20 +201,14 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Pyrite                  , U12,  0, 30)
 		));
 		
-		
-		tBlock = ST.block(MD.CHSL, "limestone");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Limestone
-		, new StoneLayerOres(MT.NaCl                    , U8 , 40, 80, ST.block(MD.HaC, "salt"))
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.PFAA, "mediumStone"), 0, ST.block(MD.PFAA, "mediumCobble"), 0, MT.STONES.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.MIN, "limestone"), MT.STONES.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 3, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 3, MT.STONES.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.BoP, "rocks"), MT.STONES.Limestone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.CHSL, "limestone"), MT.STONES.Limestone
+		, new StoneLayerOres(MT.NaCl                    , U8 , 40, 80, ST.block(MD.CHSL, "limestone") == NB ? NB : ST.block(MD.HaC, "salt"))
 		));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone));
-		tBlock = ST.block(MD.BoP, "rocks");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, MT.STONES.Limestone));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Limestone, ST.block(MD.UB, "sedimentaryStone"), 0+8, MT.STONES.Limestone
 		, new StoneLayerOres(MT.OREMATS.Stibnite        , U24, 10, 30)
 		, new StoneLayerOres(MT.OREMATS.Galena          , U8 , 30,120)
 		, new StoneLayerOres(MT.Pb                      , U16, 50, 70)
@@ -267,44 +237,32 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen
-		, new StoneLayerOres(MT.Andradite               , U32,  8, 40)
-		, new StoneLayerOres(MT.Almandine               , U32, 16, 48)
+		// Granites
+		
+		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack, ST.block(MD.PFAA, "strongStone"), 3, ST.block(MD.PFAA, "strongCobble"), 3, MT.STONES.GraniteBlack));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack, ST.block(MD.UB, "igneousStone"), 1+8, ST.block(MD.UB, "igneousCobblestone"), 1, MT.STONES.GraniteBlack));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteBlack
+		, new StoneLayerOres(MT.OREMATS.Cooperite       , U32,  0, 16)
+		, new StoneLayerOres(MT.OREMATS.Sperrylite      , U32,  0, 16)
+		, new StoneLayerOres(MT.Ir                      , U64,  0,  8)
+		, new StoneLayerOres(MT.Emerald                 , U64, 24, 48, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Aquamarine              , U64,  8, 32, BIOMES_OCEAN_BEACH)
+		, new StoneLayerOres(MT.Morganite               , U64, 24, 48, BIOMES_JUNGLE)
+		, new StoneLayerOres(MT.Heliodor                , U64, 24, 48, BIOMES_DESERT)
+		, new StoneLayerOres(MT.Goshenite               , U64, 24, 48, BIOMES_FROZEN)
+		, new StoneLayerOres(MT.Bixbite                 , U64, 24, 48, BIOMES_SAVANNA)
+		, new StoneLayerOres(MT.Maxixe                  , U64, 24, 48, BIOMES_TAIGA)
 		));
 		
-		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue
-		, new StoneLayerOres(MT.Spessartine             , U32,  8, 40)
-		, new StoneLayerOres(MT.Pyrope                  , U32, 16, 48)
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed, ST.block(MD.UB, "igneousStone"), 0+8, ST.block(MD.UB, "igneousCobblestone"), 0, MT.STONES.Granite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed, ST.block(MD.MIN, "granite"), MT.STONES.Granite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.GraniteRed
+		, new StoneLayerOres(MT.OREMATS.Pitchblende     , U32,  0, 18)
+		, new StoneLayerOres(MT.OREMATS.Uraninite       , U32,  0, 16)
+		, new StoneLayerOres(MT.OREMATS.Tantalite       , U16, 20, 50)
 		));
 		
-		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite
-		, new StoneLayerOres(MT.Diamond                 ,U128,  0, 12)
-		, new StoneLayerOres(MT.Spinel                  , U64, 24, 48, BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.BalasRuby               , U64, 24, 48, BIOMES_JUNGLE)
-		));
-		
-		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite
-		, new StoneLayerOres(MT.CertusQuartz            , U16, 16, 48)
-		, new StoneLayerOres(MT.OREMATS.Barite          , U32,  0, 32)
-		));
-		
-		
-		tBlock = ST.block(MD.BoP, "rocks");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 4, MT.STONES.Shale));
-		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite));
@@ -319,13 +277,8 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Phosphorus              , U24, 44, 52)
 		));
 		
-		
-		tBlock = ST.block(MD.BoP, "rocks");
-		if (tBlock != NB)
-		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 2, MT.STONES.Siltstone));
-		else
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite, ST.block(MD.PFAA, "veryStrongStone"), 0, ST.block(MD.PFAA, "veryStrongCobble"), 0, MT.STONES.Diorite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite, ST.block(MD.MIN, "diorite"), MT.STONES.Diorite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Diorite
 		, new StoneLayerOres(MT.Sapphire                , U64, 24, 48, BIOMES_FROZEN)
@@ -346,122 +299,110 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
-		, new StoneLayerOres(MT.OREMATS.Bromargyrite    , U8 ,  0, 20)
-		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		// Schists
+		
+		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen, ST.block(MD.UB, "metamorphicStone"), 5+8, ST.block(MD.UB, "metamorphicCobblestone"), 5, MT.STONES.Greenschist));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen, ST.block(MD.PFAA, "strongStone"), 4, ST.block(MD.PFAA, "strongCobble"), 4, MT.STONES.Greenschist));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistGreen
+		, new StoneLayerOres(MT.Andradite               , U32,  8, 40)
+		, new StoneLayerOres(MT.Almandine               , U32, 16, 48)
 		));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
-		, new StoneLayerOres(MT.Au                      , U32,  0, 20)
-		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 9, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 9, MT.STONES.Blueschist)); // TODO More of a Neutral Gray
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue, ST.block(MD.UB, "metamorphicStone"), 4+8, ST.block(MD.UB, "metamorphicCobblestone"), 4, MT.STONES.Blueschist));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue, ST.block(MD.MIN, "schist"), MT.STONES.Blueschist));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.SchistBlue
+		, new StoneLayerOres(MT.Spessartine             , U32,  8, 40)
+		, new StoneLayerOres(MT.Pyrope                  , U32, 16, 48)
 		));
 		
 		
-		if (MD.EB.mLoaded) {
-		Block tStone = ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), tCobble = ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0, tCobble, 0, MT.STONES.Basalt    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1, tCobble, 1, MT.STONES.Shale     ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2, tCobble, 2, MT.Sand             ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3, tCobble, 3, MT.STONES.Limestone ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 4, tCobble, 4, MT.STONES.Slate     ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 5, tCobble, 5, MT.STONES.Rhyolite  ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 6, tCobble, 6, MT.Chalk            ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 7, tCobble, 7, MT.STONES.Marble    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 8, tCobble, 8, MT.Dolomite         ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 9, tCobble, 9, MT.STONES.Blueschist)); // More of a Neutral Gray
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,10, tCobble,10, MT.STONES.Chert     ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,11, tCobble,11, MT.STONES.Gabbro    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,12, tCobble,12, MT.STONES.Dacite    ));
-		}
+		// Stuff
+		
+		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 1, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 1, MT.STONES.Shale));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.PFAA, "weakStone"), 4, ST.block(MD.PFAA, "weakRubble"), 4, MT.STONES.Shale));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.BoP, "rocks"), 4, MT.STONES.Shale));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.MIN, "shale"), MT.STONES.Shale));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.UB, "sedimentaryStone"), 2+8, MT.STONES.Shale));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.MIN, "slate"), MT.STONES.Slate));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 4, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 4, MT.STONES.Slate));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, ST.block(MD.PFAA, "mediumStone"), 3, ST.block(MD.PFAA, "mediumCobble"), 3, MT.STONES.Slate));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
+		
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, ST.block(MD.BoP, "rocks"), 2, MT.STONES.Siltstone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, ST.block(MD.UB, "sedimentaryStone"), 3+8, MT.STONES.Siltstone));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, ST.block(MD.PFAA, "veryStrongStone"), 4, ST.block(MD.PFAA, "veryStrongCobble"), 4, MT.STONES.Quartzite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, ST.block(MD.UB, "metamorphicStone"), 3+8, ST.block(MD.UB, "metamorphicCobblestone"), 3, MT.STONES.Quartzite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite
+		, new StoneLayerOres(MT.CertusQuartz            , U16, 16, 48)
+		, new StoneLayerOres(MT.OREMATS.Barite          , U32,  0, 32)
+		));
+		
+		
+		// Full Veins
 		
 		
 		if (MD.MIN.mLoaded) {
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "basalt"      ), MT.STONES.Basalt    ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "granite"     ), MT.STONES.Granite   ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "andesite"    ), MT.STONES.Andesite  ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "diorite"     ), MT.STONES.Diorite   ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "limestone"   ), MT.STONES.Limestone ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "shale"       ), MT.STONES.Shale     ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "slate"       ), MT.STONES.Slate     ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "schist"      ), MT.STONES.Blueschist));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "gneiss"      ), MT.STONES.Gneiss    ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "dolomite"    ), MT.Dolomite         ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "rhyolite"    ), MT.STONES.Rhyolite  ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "pumice"      ), MT.STONES.Pumice    ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "conglomerate"), MT.Stone            ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "pegmatite"   ), MT.Stone            ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "chert"       ), MT.STONES.Chert     ));
-		
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "sulfur_ore"  ), MT.S                ));
-		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "nitrate_ore" ), MT.KNO3             ));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "dolomite"    ), MT.Dolomite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "sulfur_ore"  ), MT.S));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "nitrate_ore" ), MT.KNO3));
 		}
-		
-		
-		if (MD.PFAA.mLoaded) {
-		Block tStone = ST.block(MD.PFAA, "weakStone"), tCobble = ST.block(MD.PFAA, "weakRubble");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.STONES.Shale       ));
-		tStone = ST.block(MD.PFAA, "mediumStone"); tCobble = ST.block(MD.PFAA, "mediumCobble");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.STONES.Limestone   ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.STONES.Slate       ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.Stone              ));
-		tStone = ST.block(MD.PFAA, "strongStone"); tCobble = ST.block(MD.PFAA, "strongCobble");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.STONES.Andesite    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.STONES.Basalt      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.STONES.Gneiss      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.STONES.GraniteBlack));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.STONES.Greenschist ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  5, tCobble,  5, MT.STONES.Marble      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  6, tCobble,  6, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  7, tCobble,  7, MT.STONES.Rhyolite    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  8, tCobble,  8, MT.Sand               ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  9, tCobble,  9, MT.RedSand            ));
-		tStone = ST.block(MD.PFAA, "veryStrongStone"); tCobble = ST.block(MD.PFAA, "veryStrongCobble");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  0, tCobble,  0, MT.STONES.Diorite     ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  1, tCobble,  1, MT.STONES.Gabbro      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  2, tCobble,  2, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  3, tCobble,  3, MT.Stone              ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone,  4, tCobble,  4, MT.STONES.Quartzite   ));
-		}
-		
-		
 		if (MD.UB.mLoaded) {
-		Block tStone = ST.block(MD.UB, "igneousStone"), tCobble = ST.block(MD.UB, "igneousCobblestone");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, MT.STONES.Granite     ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1+8, tCobble, 1, MT.STONES.GraniteBlack));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2+8, tCobble, 2, MT.STONES.Rhyolite    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3+8, tCobble, 3, MT.STONES.Andesite    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 4+8, tCobble, 4, MT.STONES.Gabbro      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 5+8, tCobble, 5, MT.STONES.Basalt      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 6+8, tCobble, 6, MT.STONES.Komatiite   ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 7+8, tCobble, 7, MT.STONES.Dacite      ));
-		tStone = ST.block(MD.UB, "metamorphicStone"); tCobble = ST.block(MD.UB, "metamorphicCobblestone");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, MT.STONES.Gneiss      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1+8, tCobble, 1, MT.STONES.Eclogite    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2+8, tCobble, 2, MT.STONES.Marble      ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3+8, tCobble, 3, MT.STONES.Quartzite   ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 4+8, tCobble, 4, MT.STONES.Blueschist  ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 5+8, tCobble, 5, MT.STONES.Greenschist ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 6+8, tCobble, 6, MT.Talc               ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 7+8, tCobble, 7, MT.STONES.Migmatite   ));
-		tStone = ST.block(MD.UB, "sedimentaryStone");
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, MT.STONES.Limestone));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1+8, MT.Chalk           ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2+8, MT.STONES.Shale    ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3+8, MT.STONES.Siltstone));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 4+8, MT.Lignite         ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 5+8, MT.Dolomite        ));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 6+8, MT.STONES.Greywacke));
-		StoneLayer.LAYERS.add(new StoneLayer(tStone, 7+8, MT.STONES.Chert    ));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "sedimentaryStone"), 1+8, MT.Chalk));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "sedimentaryStone"), 4+8, MT.Lignite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "sedimentaryStone"), 5+8, MT.Dolomite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "metamorphicStone"), 6+8, ST.block(MD.UB, "metamorphicCobblestone"), 6, MT.Talc));
 		}
+		if (MD.EB.mLoaded) {
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 2, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 2, MT.Sand));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 6, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 6, MT.Chalk));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 8, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 8, MT.Dolomite));
+		}
+		
+		
+		// The Rest
+		
+		
+		if (MD.MIN.mLoaded) {
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "gneiss"), MT.STONES.Gneiss));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "pumice"), MT.STONES.Pumice));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "conglomerate"), MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "pegmatite"), MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.MIN, "chert"), MT.STONES.Chert));
+		}
+		if (MD.UB.mLoaded) {
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "igneousStone"), 7+8, ST.block(MD.UB, "igneousCobblestone"), 7, MT.STONES.Dacite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "metamorphicStone"), 0+8, ST.block(MD.UB, "metamorphicCobblestone"), 0, MT.STONES.Gneiss));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "metamorphicStone"), 1+8, ST.block(MD.UB, "metamorphicCobblestone"), 1, MT.STONES.Eclogite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "metamorphicStone"), 7+8, ST.block(MD.UB, "metamorphicCobblestone"), 7, MT.STONES.Migmatite));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "sedimentaryStone"), 6+8, MT.STONES.Greywacke));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.UB, "sedimentaryStone"), 7+8, MT.STONES.Chert));
+		}
+		if (MD.EB.mLoaded) {
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"),10, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"),10, MT.STONES.Chert));
+		}
+		if (MD.PFAA.mLoaded) {
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "weakStone"), 0, ST.block(MD.PFAA, "weakRubble"), 0, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "weakStone"), 1, ST.block(MD.PFAA, "weakRubble"), 1, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "weakStone"), 2, ST.block(MD.PFAA, "weakRubble"), 2, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "weakStone"), 3, ST.block(MD.PFAA, "weakRubble"), 3, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "mediumStone"), 1, ST.block(MD.PFAA, "mediumCobble"), 1, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "mediumStone"), 2, ST.block(MD.PFAA, "mediumCobble"), 2, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "mediumStone"), 4, ST.block(MD.PFAA, "mediumCobble"), 4, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "strongStone"), 2, ST.block(MD.PFAA, "strongCobble"), 2, MT.STONES.Gneiss));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "strongStone"), 6, ST.block(MD.PFAA, "strongCobble"), 6, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "strongStone"), 8, ST.block(MD.PFAA, "strongCobble"), 8, MT.Sand));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "strongStone"), 9, ST.block(MD.PFAA, "strongCobble"), 9, MT.RedSand));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "veryStrongStone"), 2, ST.block(MD.PFAA, "veryStrongCobble"), 2, MT.Stone));
+		StoneLayer.LAYERS.add(new StoneLayer(ST.block(MD.PFAA, "veryStrongStone"), 3, ST.block(MD.PFAA, "veryStrongCobble"), 3, MT.Stone));
+		}
+		
+		
+		// --------------------------------
 		
 		
 		StoneLayer.bothsides(MT.Coal, MT.Stone
@@ -482,7 +423,13 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.bothsides(MT.STONES.Komatiite, MT.Stone
 		, new StoneLayerOres(MT.Redstone                , U8 ,  0, 30)
 		);
+		StoneLayer.bothsides(MT.STONES.Gabbro, MT.Stone
+		, new StoneLayerOres(MT.Redstone                , U8 ,  0, 30)
+		);
 		StoneLayer.bothsides(MT.STONES.Komatiite, MT.STONES.Basalt
+		, new StoneLayerOres(MT.OREMATS.Perlite         , U4 ,  0, 16)
+		);
+		StoneLayer.bothsides(MT.STONES.Gabbro, MT.STONES.Basalt
 		, new StoneLayerOres(MT.OREMATS.Perlite         , U4 ,  0, 16)
 		);
 		StoneLayer.bothsides(MT.STONES.Limestone, MT.STONES.Basalt
@@ -680,6 +627,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenStone("tropics.stone."  + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_TROPICS);
 		}
 		
+		Block
 		tBlock = BlocksGT.RockOres;
 		if (tBlock != null && tBlock != NB) {
 		new WorldgenOresVanilla("twilight.ore.anthracite"       , T, tBlock,  0,  1, 50, 100, 16, 32, Blocks.stone          , 0, null               , F, GEN_TWILIGHT);

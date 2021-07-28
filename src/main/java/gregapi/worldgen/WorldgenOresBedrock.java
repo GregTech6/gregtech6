@@ -30,7 +30,6 @@ import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.FL;
-import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -192,7 +191,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			// At least one Ore Block must be there. So force place a large one somewhere in the Center.
 			BlocksGT.oreBedrock.placeBlock(aWorld, aMinX+6+aRandom.nextInt(4), 0, aMinZ+6+aRandom.nextInt(4), SIDE_UNKNOWN, (aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial).mID, null, F, T);
 			// Use Deepslate if available, except in the Nether.
-			tStone = (aDimType == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
+			tStone = (aDimType == DIM_NETHER ? Blocks.netherrack : StoneLayer.DEEPSLATE == null ? NB : StoneLayer.DEEPSLATE.mStone);
 			// Keep Distances within the Chunk for this important step.
 			int[] tD1 = new int[] { 5,  4,  2,  1,  0,  2,  5};
 			int[] tD2 = new int[] {11, 12, 14, 15, 16, 14, 11};

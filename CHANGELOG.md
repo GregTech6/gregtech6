@@ -27,6 +27,7 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
 [CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
+[ADDED] Slate Stone Layer and improved all the "Compat" Stone Layers. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.
 
 
 6.14.19:
