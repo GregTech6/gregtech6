@@ -82,7 +82,6 @@ public class Loader_Worldgen implements Runnable {
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U64,  0,  5) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U64,  0,  5) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U64,  0,  5) : null
-		, MD.Mek     .mLoaded ? new StoneLayerOres(MT.FakeOsmium        , U32,  0,  5) : null
 		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0,  5) : null
 		);
 		}
@@ -98,7 +97,6 @@ public class Loader_Worldgen implements Runnable {
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U64,  0, 20) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone
-		, MD.Mek     .mLoaded ? new StoneLayerOres(MT.FakeOsmium        , U32, 30, 60) : null
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U64,  0, 20) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone

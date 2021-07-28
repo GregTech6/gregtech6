@@ -420,7 +420,7 @@ public class MT {
 	Cu      = noblemetal  ( 290, "Copper"         , "Cu"    ,  29,  34,  1357,  2835,  8.96      , SET_SHINY   , 255, 100,   0     , UUM        , COPPER_GROUP   , G_INGOT_MACHINE_ORES, WASHING_PERSULFATE, FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN, RAILS       ).aspects(TC.METALLUM, 2, TC.PERMUTATIO, 1               ).qual(2,  4.0,   64, 0),
 	Zn      = transmetal  ( 300, "Zinc"           , "Zn"    ,  30,  35,   692,  1180,  7.134     , SET_METALLIC, 250, 240, 240, 255, UUM        , ZINC_GROUP                           , WASHING_PERSULFATE, WASHING_MERCURY, MOLTEN                               ).aspects(TC.METALLUM, 2, TC.SANO, 1                     ),
 	Ga      = posttrans   ( 310, "Gallium"        , "Ga"    ,  31,  39,   302,  2477,  5.907     , SET_DULL    , 220, 220, 255     , UUM        , ICOSAGEN                             , BRITTLE                                                                   ).aspects(TC.METALLUM, 2, TC.ELECTRUM, 1                 ),
-	Ge      = metalloid   ( 320, "Germanium"      , "Ge"    ,  32,  40,  1211,  3106,  5.323     , SET_SHINY   , 212, 212, 212, 255, UUM        , CRYSTALLOGEN   , G_INGOT_MACHINE_ORES, FURNACE, EXTRUDER_SIMPLE, MORTAR                                          ).aspects(TC.METALLUM, 2, TC.ELECTRUM, 1                 ),
+	Ge      = metalloid   ( 320, "Germanium"      , "Ge"    ,  32,  40,  1211,  3106,  5.323     , SET_SHINY   , 212, 212, 212, 255, UUM        , CRYSTALLOGEN   , G_INGOT_MACHINE_ORES, FURNACE, EXTRUDER_SIMPLE, MORTAR, "Osmium"                                ).aspects(TC.METALLUM, 2, TC.ELECTRUM, 1                 ).qual(2,  6.0,  256, 2),
 	As      = metalloid   ( 330, "Arsenic"        , "As"    ,  33,  42,   887,  1090,  5.776     , SET_SHINY   , 103, 103,  86, 255, UUM        , PNICTOGEN                                                                                                        ).aspects(TC.METALLUM, 1, TC.VENENUM, 2                  ),
 	Se      = polyatomic  ( 340, "Selenium"       , "Se"    ,  34,  45,   453,   958,  4.809     , SET_DULL    , 111,  20,  20, 255, UUM        , CHALCOGEN      , G_CRYSTAL_ORES      , BRITTLE                                                                   ).aspects(TC.VITREUS, 1, TC.SPIRITUS, 2                  ),
 	Br      = diatomic    ( 350, "Bromine"        , "Br"    ,  35,  45,   265,   332,  3.122     , SET_FLUID   ,  80,  10,  10, 255, UUM        , HALOGEN        , CONTAINERS_FLUID    , LIQUID                                                                    ).aspects(TC.METALLUM, 1, TC.AQUA, 1, TC.TEMPESTAS, 1    ),
@@ -1584,7 +1584,6 @@ public class MT {
 	EnderiumBase            = alloymachine  ( 8729, "Enderium Base"                                 ,  53,  85, 108     , MOLTEN, MD.EIO)                                                                                                                           .uumAloy( 4, Sn             , 2*U, Ag               , 1*U, Pt               , 1*U)                                                                          .aspects(TC.METALLUM, 3),
 	Enderium                = alloymachine  ( 8710, "Enderium"                                      ,  60, 125, 115     , MAGICAL, MOLTEN).qual(3,  8.0, 256, 3)                                                                                                    .setAloy( 1, EnderiumBase   , 1*U, EnderPearl       , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ALIENIS, 1),
 //  InfusedGold             = slloymachore  ( 8712, "Infused Gold"                                  , 255, 200,  60     ).qual(2, 12.0, 64, 3)                                                                                                                                                                                                                                                                                  ,
-	FakeOsmium              = alloy         ( 8719, "Osmium"                                        , 160, 160, 255     , G_INGOT_MACHINE_ORES, MOLTEN, FURNACE, EXTRUDER_SIMPLE).setLocal("'Osmium'").steal(Os).qual(2, 6.0, 256, 2)                               .uumMcfg( 0, Os             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MACHINA, 2),
 	RefinedGlowstone        = alloy         ( 8713, "GlowstoneRefined"      , SET_REDSTONE          , 255, 240, 100     , "RefinedGlowstone", GLOWING).setLocal("Refined Glowstone").qual(2, 8.0, 256, 2)                                                           .setMcfg( 1, Glowstone      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 4, TC.LUX, 4).setPulver(Glowstone, U).setSmelting(Glowstone, U),
 	RefinedObsidian         = alloy         ( 8714, "ObsidianRefined"       , SET_REDSTONE          , 120,  90, 140     , "RefinedObsidian").setLocal("Refined Obsidian").qual(2, 8.0, 512, 3)                                                                      .setMcfg( 1, Obsidian       , 1*U)                                                                                                                          .aspects(TC.VITREUS, 4, TC.IGNIS, 4).setPulver(Obsidian, U).setSmelting(Obsidian, U),
 	Yellorium               = setalore      ( 8715, "Yellorium"                                     , 140, 130,  20     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 2),
@@ -1682,7 +1681,7 @@ public class MT {
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
-	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3, Fluorite = CaF2, Soapstone = Talc, WoodSealed = WoodTreated, TeslatineAlloy = NikolineAlloy, Teslatite = Nikolite, Electrotine = Nikolite;
+	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, FakeOsmium = Ge, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co_60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, Osmium = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241, Alumina = Al2O3, AluminiumFluoride = AlF3, AluminiumHydroxide = AlO3H3, Gibbsite = AlO3H3, Fluorite = CaF2, Soapstone = Talc, WoodSealed = WoodTreated, TeslatineAlloy = NikolineAlloy, Teslatite = Nikolite, Electrotine = Nikolite;
 	
 	/** Moved most Stones to their own Class. */
 	@Deprecated public static final OreDictMaterial 
@@ -1743,6 +1742,7 @@ public class MT {
 			OreDictMaterial.MATERIAL_ARRAY[9142] = Asbestos;
 			OreDictMaterial.MATERIAL_ARRAY[9121] = MgCO3;
 			OreDictMaterial.MATERIAL_ARRAY[9168] = Talc;
+			OreDictMaterial.MATERIAL_ARRAY[8719] = Ge;
 			OreDictMaterial.MATERIAL_ARRAY[8738] = NikolineAlloy;
 			OreDictMaterial.MATERIAL_ARRAY[8339] = Nikolite;
 			OreDictMaterial.MATERIAL_ARRAY[8359] = Nikolite;
@@ -2140,7 +2140,7 @@ public class MT {
 			
 			RefinedGlowstone        .put(MD.Mek).visDefault();
 			RefinedObsidian         .put(MD.Mek).visDefault();
-			FakeOsmium              .put(MD.Mek, COMMON_ORE).visDefault();
+			Ge                      .put(MD.Mek, COMMON_ORE);
 			Basic                   .put(MD.Mek);
 			Elite                   .put(MD.Mek);
 			
@@ -2758,7 +2758,7 @@ public class MT {
 			Monazite                        .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcicium                       .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcillium                      .addOreByProducts(Th                        , Nd                        , RareEarth             );
-			FakeOsmium                      .addOreByProducts(Fe2O3                     , Sn                        , OREMATS.Chromite      );
+			Ge                              .addOreByProducts(Fe2O3                     , Sn                        , OREMATS.Chromite      );
 			Cd                              .addOreByProducts(OREMATS.Chalcopyrite      , OREMATS.Sphalerite        , Se                    );
 			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite       , OREMATS.Scheelite         );
 			OREMATS.Wulfenite               .addOreByProducts(OREMATS.Powellite         , OREMATS.Scheelite         , OREMATS.Molybdenite   , OREMATS.Galena        );

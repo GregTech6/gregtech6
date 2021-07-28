@@ -224,7 +224,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.FakeOsmium            ,   37,   2.0F,   2.0F,  3);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Constantan            ,   37,   2.0F,   2.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Al                    ,    1,   2.0F,   2.0F,  4);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Brass                 ,    8,   2.5F,   2.5F,  4);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TinAlloy              ,    5,   3.0F,   3.0F,  4);
@@ -1794,7 +1794,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeItem.addItemPipes(25000, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Brass);
 		MultiTileEntityPipeItem.addItemPipes(25025, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Constantan);
 		MultiTileEntityPipeItem.addItemPipes(25050, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.CobaltBrass);
-		MultiTileEntityPipeItem.addItemPipes(25075, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.FakeOsmium);
+		MultiTileEntityPipeItem.addItemPipes(25075, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Ge);
 		MultiTileEntityPipeItem.addItemPipes(25100, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.Electrum);
 		MultiTileEntityPipeItem.addItemPipes(25225, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.SterlingSilver);
 		MultiTileEntityPipeItem.addItemPipes(25250, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.RoseGold);

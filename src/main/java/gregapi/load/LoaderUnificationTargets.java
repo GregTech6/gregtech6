@@ -658,7 +658,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingotDouble    , MT.PeatBituminous         , MD.FR, "bituminousPeat", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Fe                     , MD.Mek, "DirtyDust", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Au                     , MD.Mek, "DirtyDust", 1);
-		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.FakeOsmium             , MD.Mek, "DirtyDust", 2);
+		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Ge                     , MD.Mek, "DirtyDust", 2);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Cu                     , MD.Mek, "DirtyDust", 3);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Sn                     , MD.Mek, "DirtyDust", 4);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Ag                     , MD.Mek, "DirtyDust", 5);
@@ -668,10 +668,10 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedObsidian        , MD.Mek, "BasicBlock", 2);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.RefinedGlowstone       , MD.Mek, "Ingot", 3);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedGlowstone       , MD.Mek, "BasicBlock", 4);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.FakeOsmium             , MD.Mek, "Dust", 2);
-		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.FakeOsmium             , MD.Mek, "Ingot", 1);
-		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.FakeOsmium             , MD.Mek, "BasicBlock", 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.FakeOsmium             , MD.Mek, "OreBlock", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ge                     , MD.Mek, "Dust", 2);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ge                     , MD.Mek, "Ingot", 1);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Ge                     , MD.Mek, "BasicBlock", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ge                     , MD.Mek, "OreBlock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.Mek, "OreBlock", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , MD.Mek, "OreBlock", 2);
 		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Au                     , MD.HBM, "item.wire_gold", 0);

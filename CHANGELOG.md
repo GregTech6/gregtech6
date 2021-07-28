@@ -14,6 +14,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.20: (Not released yet, released whenever it needs to be)
+[COMPAT]
+Mekanisms Osmium, which i previously just named 'Osmium' and treated differently from regular Osmium, is now instead completely overhauled to be the actual Material Germanium.
+That fits with its Circuits at the very least, and makes a lot of internal Mechanics much nicer. Heck these two Materials had a lot of things in common too, before I did this.
+Side Effects of this change include:
+Decorative Fake Osmium based Blocks are now turning into the (newly added) Constantan Decorative Variants.
+Fake Osmium based Item Pipes turn into the (newly added) Germanium Item Pipes that now exist.
+Germanium is now attributed to Mekanism, even though it technically did not add it.
+Any mention of "Osmium" inside Mekanism Material Item Names is now turned into "Germanium". (I did the same thing to "Teslatite" and "Electrotine" in an earlier Release, to make them "Nikolite")
+Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Burning Box not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.

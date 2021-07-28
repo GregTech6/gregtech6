@@ -485,7 +485,7 @@ public class GT_API extends Abstract_Mod {
 			MT.Bronze.setLocal("Tinkerers Alloy");
 			MT.BlackBronze.setLocal("Afroamerican Tinkerers Alloy");
 			MT.Constantan.setLocal("Cupronickel");
-			MT.FakeOsmium.setLocal("Platinum");
+			MT.Ge.setLocal("Platosmium");
 			MT.Amazonite.setLocal("Bezosite");
 			MT.NetherQuartz.setLocal("Weather Quartz");
 			MT.MilkyQuartz.setLocal("Milk Quartz");

@@ -142,7 +142,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Cobaltite          .addOreByProducts(MT.Prometheum     );
 			MT.OREMATS.Cassiterite        .addOreByProducts(MT.Ignatius       );
 			MT.OREMATS.Wolframite         .addOreByProducts(MT.Vulcanite      );
-			MT.FakeOsmium                 .addOreByProducts(MT.DeepIron       );
+			MT.Ge                         .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.BrownLimonite      .addOreByProducts(MT.DeepIron       );
 			MT.OREMATS.YellowLimonite     .addOreByProducts(MT.DeepIron       );
 			MT.Fe2O3                      .addOreByProducts(MT.DeepIron       );
@@ -150,19 +150,10 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Netherite                  .addOreByProducts(MT.ShadowIron     );
 			MT.Efrine                     .addOreByProducts(MT.ShadowIron     );
 		}
-		if (MD.Mek.mLoaded) {
-			MT.Pb.addOreByProducts(MT.FakeOsmium);
-			MT.Os.addOreByProducts(MT.FakeOsmium);
-			MT.DeepIron.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.Galena.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.BrownLimonite.addOreByProducts(MT.FakeOsmium);
-			MT.OREMATS.YellowLimonite.addOreByProducts(MT.FakeOsmium);
-			MT.Fe2O3.addOreByProducts(MT.FakeOsmium);
-		}
 		if (MD.TiC.mLoaded) {
+			MT.Ge.addOreByProducts(MT.Ardite);
 			MT.Co.addOreByProducts(MT.Ardite);
 			MT.OREMATS.Cobaltite.addOreByProducts(MT.Ardite);
-			MT.FakeOsmium.addOreByProducts(MT.Ardite);
 			MT.Aredrite.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded || MD.PR.mLoaded || MD.BP.mLoaded || !MT.Nikolite.mHidden) {
