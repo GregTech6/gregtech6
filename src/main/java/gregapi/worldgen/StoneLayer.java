@@ -51,7 +51,14 @@ public class StoneLayer {
 	public IBlockPlacable mOre, mOreSmall, mOreBroken;
 	
 	public StoneLayer(BlockBase aStoneGT, StoneLayerOres... aOreChances) {
-		this(aStoneGT, 0, aStoneGT, 1, aStoneGT, 2, ((BlockStones)aStoneGT).mMaterial, aOreChances);
+		this(aStoneGT == null ? Blocks.stone             : aStoneGT
+		,    aStoneGT == null ? 0                        : 0
+		,    aStoneGT == null ? Blocks.cobblestone       : aStoneGT
+		,    aStoneGT == null ? 0                        : 1
+		,    aStoneGT == null ? Blocks.mossy_cobblestone : aStoneGT
+		,    aStoneGT == null ? 0                        : 2
+		,    aStoneGT == null ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial
+		, aOreChances);
 	}
 	public StoneLayer(BlockBase aStoneGT, Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
 		this(aStone == NB ? aStoneGT == null ? Blocks.stone             : aStoneGT                          : aStone
