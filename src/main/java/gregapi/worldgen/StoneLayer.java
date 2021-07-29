@@ -54,43 +54,43 @@ public class StoneLayer {
 		this(aStoneGT, 0, aStoneGT, 1, aStoneGT, 2, ((BlockStones)aStoneGT).mMaterial, aOreChances);
 	}
 	public StoneLayer(BlockBase aStoneGT, Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
-		this(aStone == NB ? aStoneGT : aStone
-		,    aStone == NB ? 0 : 0
-		,    aStone == NB ? aStoneGT : Blocks.cobblestone
-		,    aStone == NB ? 1 : 0
-		,    aStone == NB ? aStoneGT : Blocks.mossy_cobblestone
-		,    aStone == NB ? 2 : 0
-		,    aStone == NB ? ((BlockStones)aStoneGT).mMaterial : aMaterial
+		this(aStone == NB ? aStoneGT == null ? Blocks.stone             : aStoneGT                          : aStone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 0                                 : 0
+		,    aStone == NB ? aStoneGT == null ? Blocks.cobblestone       : aStoneGT                          : Blocks.cobblestone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 1                                 : 0
+		,    aStone == NB ? aStoneGT == null ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 2                                 : 0
+		,    aStone == NB ? aStoneGT == null ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
 		, aOreChances);
 	}
 	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
-		this(aStone == NB ? aStoneGT : aStone
-		,    aStone == NB ? 0 : aMetaStone
-		,    aStone == NB ? aStoneGT : Blocks.cobblestone
-		,    aStone == NB ? 1 : 0
-		,    aStone == NB ? aStoneGT : Blocks.mossy_cobblestone
-		,    aStone == NB ? 2 : 0
-		,    aStone == NB ? ((BlockStones)aStoneGT).mMaterial : aMaterial
+		this(aStone == NB ? aStoneGT == null ? Blocks.stone             : aStoneGT                          : aStone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 0                                 : aMetaStone
+		,    aStone == NB ? aStoneGT == null ? Blocks.cobblestone       : aStoneGT                          : Blocks.cobblestone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 1                                 : 0
+		,    aStone == NB ? aStoneGT == null ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 2                                 : 0
+		,    aStone == NB ? aStoneGT == null ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
 		, aOreChances);
 	}
 	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
-		this(aStone == NB ? aStoneGT : aStone
-		,    aStone == NB ? 0 : aMetaStone
-		,    aStone == NB ? aStoneGT : aCobble
-		,    aStone == NB ? 1 : aMetaCobble
-		,    aStone == NB ? aStoneGT : Blocks.mossy_cobblestone
-		,    aStone == NB ? 2 : 0
-		,    aStone == NB ? ((BlockStones)aStoneGT).mMaterial : aMaterial
+		this(aStone == NB ? aStoneGT == null ? Blocks.stone             : aStoneGT                          : aStone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 0                                 : aMetaStone
+		,    aStone == NB ? aStoneGT == null ? Blocks.cobblestone       : aStoneGT                          : aCobble
+		,    aStone == NB ? aStoneGT == null ? 0                        : 1                                 : aMetaCobble
+		,    aStone == NB ? aStoneGT == null ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 2                                 : 0
+		,    aStone == NB ? aStoneGT == null ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
 		, aOreChances);
 	}
 	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
-		this(aStone == NB ? aStoneGT : aStone
-		,    aStone == NB ? 0 : aMetaStone
-		,    aStone == NB ? aStoneGT : aCobble
-		,    aStone == NB ? 1 : aMetaCobble
-		,    aStone == NB ? aStoneGT : aMossy
-		,    aStone == NB ? 2 : aMetaMossy
-		,    aStone == NB ? ((BlockStones)aStoneGT).mMaterial : aMaterial
+		this(aStone == NB ? aStoneGT == null ? Blocks.stone             : aStoneGT                          : aStone
+		,    aStone == NB ? aStoneGT == null ? 0                        : 0                                 : aMetaStone
+		,    aStone == NB ? aStoneGT == null ? Blocks.cobblestone       : aStoneGT                          : aCobble
+		,    aStone == NB ? aStoneGT == null ? 0                        : 1                                 : aMetaCobble
+		,    aStone == NB ? aStoneGT == null ? Blocks.mossy_cobblestone : aStoneGT                          : aMossy
+		,    aStone == NB ? aStoneGT == null ? 0                        : 2                                 : aMetaMossy
+		,    aStone == NB ? aStoneGT == null ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
 		, aOreChances);
 	}
 	public StoneLayer(Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {

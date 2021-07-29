@@ -1602,7 +1602,7 @@ public class CS {
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale;
 		/** Contains all GT6 Stone Types. */
 		// Yes, I know those assignments inside the Array are not actually working, but this gives a good overview of the Content, once it got initialised.
-		public static BlockBase[] stones = {GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate};
+		public static BlockBase[] stones = {GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale};
 		/** Contains the Ore Blocks for all the GT6 Type Stones, corresponding to the Array above. */
 		public static IPrefixBlock[] ores_normal = new IPrefixBlock[stones.length], ores_broken = new IPrefixBlock[stones.length], ores_small = new IPrefixBlock[stones.length];
 		

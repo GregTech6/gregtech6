@@ -132,9 +132,12 @@ public class Loader_Rocks implements Runnable {
 		BlocksGT.ores_normal[n] = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.slate"            , OP.oreSlate               , null                                  , BlockTextureDefault.get(tStone.mIcons[0]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.50F, 0.75F,  0, tStone.mHarvestLevel  , F,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.ores_broken[n] = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.slate"            , OP.oreSlate               , null                                  , BlockTextureDefault.get(tStone.mIcons[1]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.25F, 0.37F, -1, tStone.mHarvestLevel-1, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.ores_small [n] = new PrefixBlock_(MD.GT, "gt.meta.ore.small.slate"             , OP.oreSmall               , new Drops_SmallOre(tStone.mMaterial)  , BlockTextureDefault.get(tStone.mIcons[0]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.50F, 0.75F, -1, tStone.mHarvestLevel  , F,F, OreDictMaterial.MATERIAL_ARRAY);
+		n++;
+		BlocksGT.stones     [n] = BlocksGT.Shale            = tStone = new BlockStonesGT("gt.stone.shale"                   , MT.STONES.Shale                                                                                                                       , 0.75F, 0.50F,  0, F);
+		BlocksGT.ores_normal[n] = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.shale"            , OP.oreShale               , null                                  , BlockTextureDefault.get(tStone.mIcons[0]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.50F, 0.75F,  0, tStone.mHarvestLevel  , F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.ores_broken[n] = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.shale"            , OP.oreShale               , null                                  , BlockTextureDefault.get(tStone.mIcons[1]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.25F, 0.37F, -1, tStone.mHarvestLevel-1, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.ores_small [n] = new PrefixBlock_(MD.GT, "gt.meta.ore.small.shale"             , OP.oreSmall               , new Drops_SmallOre(tStone.mMaterial)  , BlockTextureDefault.get(tStone.mIcons[0]), Material.rock, Block.soundTypeStone, TOOL_pickaxe  , 0.50F, 0.75F, -1, tStone.mHarvestLevel  , F,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		// TODO
-		BlocksGT.Shale = BlocksGT.Slate;
 		
 		for (int i = 0; i < BlocksGT.stones.length; i++) {
 			VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.stones[i]);

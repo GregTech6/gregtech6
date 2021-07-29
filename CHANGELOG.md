@@ -27,7 +27,9 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
 [CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
-[ADDED] Slate Stone Layer and improved all the "Compat" Stone Layers. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.
+[CHANGED] Improved Management of all the "Compat" Stone Layers. Now adding Mods like PFAA, Enchanced Biomes, Mineralogy or Underground Biomes truly wont affect overall Ore bearing Stone Layer distribution. (previously only basic things had no effect like Marble, Limestone and Basalt)
+[ADDED] Slate Stone Layer. Has a nice Shade of Dark Blue, which is not as radiant as Blue Schist. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.
+[ADDED] Shale Stone Layer. Just another Rock Type. Light Blue in color.
 
 
 6.14.19:
