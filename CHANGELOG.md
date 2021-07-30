@@ -25,6 +25,7 @@ Any mention of "Osmium" inside Mekanism Material Item Names is now turned into "
 Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Burning Box were not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
+[CHANGED] Tanks, Drums and Pipes can now have the Thermometer used on them.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
 [CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
 [CHANGED] Improved Management of all the "Compat" Stone Layers. Now adding Mods like PFAA, Enchanced Biomes, Mineralogy or Underground Biomes truly wont affect overall Ore bearing Stone Layer distribution. (previously only basic things had no effect like Marble, Limestone and Basalt)
