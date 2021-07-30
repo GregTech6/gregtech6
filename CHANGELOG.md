@@ -64,7 +64,7 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [ADDED] Mossy GT6 Stones can be bonemealed to spread their Moss to adjacent Cobbles and Bricks. They CAN spread to Vanilla Cobble and Stone Bricks too, even though bonemealing those themselves wont spread.
 [ADDED] When Immersive Engineering is installed, some Foods and Liquids will have additional Potion Effects.
 [ADDED] Prismarine Pylons in the Oceans will now contain Pyrolusite or Garnierite Ore, depending on if it is Light Prismarine or Dark Prismarine.
-[ADDED] Shale (see other Mods like Underground Biomes or PFAA) can now be Centrifuged for Clay, Quartz and Calcite.
+[ADDED] Shale can now be Centrifuged for Clay, Quartz and Calcite.
 [ADDED] Blazing Goo can be used as Heat Exchanger Fuel.
 [ADDED] Mob Farm Room to the GT6 Dungeon. The Storage Pillar in the Middle of the Room is so nobody should be tempted to actually use this as a normal Storage Room, because that would reduce Mob Spawns due to being too close.
 [ADDED] Bedrock Vein Room to the GT6 Dungeon. It also contains a veriety of Scaffolds and Steel Bars and demostrates their decorative usage.

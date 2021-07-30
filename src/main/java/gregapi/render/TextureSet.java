@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -212,6 +212,7 @@ public class TextureSet {
 	, SET_RUBBER                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "RUBBER")        , addTextureSet(MD.GT.mID, T, "RUBBER")        }
 	, SET_SHARDS                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "SHARDS")        , addTextureSet(MD.GT.mID, T, "SHARDS")        }
 	, SET_POWDER                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "POWDER")        , addTextureSet(MD.GT.mID, T, "POWDER")        }
+	, SET_COPPER                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "COPPER")        , addTextureSet(MD.GT.mID, T, "COPPER")        }
 	, SET_QUARTZ                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "QUARTZ")        , addTextureSet(MD.GT.mID, T, "QUARTZ")        }
 	, SET_EMERALD                   = new TextureSet[] {addTextureSet(MD.GT.mID, F, "EMERALD")       , addTextureSet(MD.GT.mID, T, "EMERALD")       }
 	, SET_DIAMOND                   = new TextureSet[] {addTextureSet(MD.GT.mID, F, "DIAMOND")       , addTextureSet(MD.GT.mID, T, "DIAMOND")       }
