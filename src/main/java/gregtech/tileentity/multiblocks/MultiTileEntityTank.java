@@ -86,6 +86,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 		
 		if (isClientSide()) return 0;
 		
+		if (aTool.equals(TOOL_thermometer)) {if (aChatReturn != null) aChatReturn.add("Temperature: " + FL.temperature(mTank) + "K"); return 10000;}
 		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTank, 1000);
 		return 0;
 	}

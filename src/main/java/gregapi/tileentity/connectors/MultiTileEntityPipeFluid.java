@@ -155,6 +155,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks);
+		if (aTool.equals(TOOL_thermometer)) {if (aChatReturn != null) aChatReturn.add("Temperature: " + mTemperature + "K"); return 10000;}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (!isCovered(UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ))) {
 				if (aChatReturn != null) {
@@ -276,20 +277,26 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		
+		boolean tCheckTemperature = T;
+		
 		for (FluidTankGT tTank : mTanks) {
 			FluidStack tFluid = tTank.get();
 			if (tFluid != null && tFluid.amount > 0) {
-				mTemperature = FL.temperature(tFluid);
+				mTemperature = (tCheckTemperature ? FL.temperature(tFluid) : Math.max(mTemperature, FL.temperature(tFluid)));
+				tCheckTemperature = F;
+				
 				if (!mGasProof && FL.gas(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
+				
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
+				
 				if (!mAcidProof && FL.acid(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
@@ -300,9 +307,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 						return;
 					}
 				}
-			} else {
-				long tEnvTemp = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
-				if (mTemperature < tEnvTemp) mTemperature++; else if (mTemperature > tEnvTemp) mTemperature--;
 			}
 			
 			if (mTemperature > mMaxTemperature) {
@@ -317,6 +321,11 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (tTank.has()) distribute(tTank, tAdjacentPipes, tAdjacentTanks, tAdjacentOther);
 			
 			mLastReceivedFrom[tTank.mIndex] = 0;
+		}
+		
+		if (tCheckTemperature) {
+			long tEnvTemp = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
+			if (mTemperature < tEnvTemp) mTemperature++; else if (mTemperature > tEnvTemp) mTemperature--;
 		}
 	}
 	
