@@ -262,6 +262,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			LAST_BROKEN_TILEENTITY.set(null);
 			
 			if (aEvent.phase == Phase.START) {
+				SYNC_SECOND = (SERVER_TIME % 20 == 0);
+				
 				if (SERVER_TIME++ == 0) {
 					// Unification Stuff
 					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);

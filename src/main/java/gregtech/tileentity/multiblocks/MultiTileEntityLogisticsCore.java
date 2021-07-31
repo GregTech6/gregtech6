@@ -211,7 +211,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@SuppressWarnings("unchecked")
 	public void onServerTickPre(boolean aFirst) {
 		// Sync up with other Stuff that happens to check for visual Updates every 20 Ticks to reduce Lag.
-		if (SERVER_TIME % 20 == 0) {
+		if (SYNC_SECOND) {
 			int tCPU_Logic = oCPU_Logic, tCPU_Control = oCPU_Control, tCPU_Storage = oCPU_Storage, tCPU_Conversion = oCPU_Conversion;
 			oCPU_Logic = 0;
 			oCPU_Control = 0;

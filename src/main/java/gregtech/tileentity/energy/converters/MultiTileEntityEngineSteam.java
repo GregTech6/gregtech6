@@ -133,7 +133,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 			}
 			
 			// Set State
-			if (SERVER_TIME % 20 == 0) mState = (byte)Math.min(31, UT.Code.scale(mEnergy, mCapacity, 32, F));
+			if (SYNC_SECOND) mState = (byte)Math.min(31, UT.Code.scale(mEnergy, mCapacity, 32, F));
 			
 			// Set the output depending on how "hot" the state of the Engine is.
 			long tOutput = (mOutput * (mState + 1)) / 16;

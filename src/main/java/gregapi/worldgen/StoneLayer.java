@@ -61,44 +61,44 @@ public class StoneLayer {
 		,    ST.invalid(aStoneGT) ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial
 		, aOreChances);
 	}
-	public StoneLayer(BlockBase aStoneGT, Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
+	public StoneLayer(BlockBase aStoneGT, OreDictMaterial aMaterial, Block aStone, StoneLayerOres... aOreChances) {
 		this(ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.stone             : aStoneGT                          : aStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 0                                 : 0
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.cobblestone       : aStoneGT                          : Blocks.cobblestone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 1                                 : 0
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 2                                 : 0
-		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
+		, aMaterial
 		, aOreChances);
 	}
-	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
+	public StoneLayer(BlockBase aStoneGT, OreDictMaterial aMaterial, Block aStone, long aMetaStone, StoneLayerOres... aOreChances) {
 		this(ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.stone             : aStoneGT                          : aStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 0                                 : aMetaStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.cobblestone       : aStoneGT                          : Blocks.cobblestone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 1                                 : 0
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 2                                 : 0
-		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
+		, aMaterial
 		, aOreChances);
 	}
-	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
+	public StoneLayer(BlockBase aStoneGT, OreDictMaterial aMaterial, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, StoneLayerOres... aOreChances) {
 		this(ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.stone             : aStoneGT                          : aStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 0                                 : aMetaStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.cobblestone       : aStoneGT                          : aCobble
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 1                                 : aMetaCobble
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.mossy_cobblestone : aStoneGT                          : Blocks.mossy_cobblestone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 2                                 : 0
-		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
+		, aMaterial
 		, aOreChances);
 	}
-	public StoneLayer(BlockBase aStoneGT, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
+	public StoneLayer(BlockBase aStoneGT, OreDictMaterial aMaterial, Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, StoneLayerOres... aOreChances) {
 		this(ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.stone             : aStoneGT                          : aStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 0                                 : aMetaStone
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.cobblestone       : aStoneGT                          : aCobble
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 1                                 : aMetaCobble
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? Blocks.mossy_cobblestone : aStoneGT                          : aMossy
 		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? 0                        : 2                                 : aMetaMossy
-		,    ST.invalid(aStone) ? ST.invalid(aStoneGT) ? MT.Stone                 : ((BlockStones)aStoneGT).mMaterial : aMaterial
+		, aMaterial
 		, aOreChances);
 	}
 	public StoneLayer(Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {

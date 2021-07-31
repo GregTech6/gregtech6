@@ -320,6 +320,8 @@ public class CS {
 	
 	/** Current Time on the Server, since the last Reboot. */
 	public static long SERVER_TIME = 0;
+	/** Synchronizes all Server to Client Updates to be at the same time. */
+	public static boolean SYNC_SECOND = T;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
 	/** Is locked updateEntities and similar are running on the tick. */

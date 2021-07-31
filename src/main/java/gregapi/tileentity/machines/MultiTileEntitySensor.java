@@ -107,7 +107,7 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	@Override
 	public boolean onTickCheck(long aTimer) {
 		mDisplayedNumber = UT.Code.bind16(mDisplayedNumber);
-		return super.onTickCheck(aTimer) || Math.abs(mDisplayedNumber - oDisplayedNumber) > (SERVER_TIME % 20 == 0 ? 0 : 49);
+		return super.onTickCheck(aTimer) || Math.abs(mDisplayedNumber - oDisplayedNumber) > (SYNC_SECOND ? 0 : 49);
 	}
 	
 	@Override

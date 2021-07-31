@@ -1620,7 +1620,7 @@ public class LoaderItemData implements Runnable {
 		OM.dat2(MD.EBXL, "extrabiomes.logturner"            , 1     , ANY.Wood      ,  5* U2);
 		
 		
-		OM.data(MD.UB, "fossilPiece"                        , 1,   W, MT.Bone               ,  U * 1);
+		OM.data(MD.UB, "fossilPiece"                        , 1,   W, MT.Bone               ,  U * 1); // Metadata 0 to 7
 		
 		
 		OM.data(MD.Fossil, "skullBlock"                     , 1,   W, MT.Bone               ,  U * 5);
