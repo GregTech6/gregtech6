@@ -24,6 +24,7 @@ import static gregapi.data.OP.*;
 
 import gregapi.data.ANY;
 import gregapi.data.CS.FoodsGT;
+import gregapi.data.CS.Sandwiches;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -31,7 +32,6 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -445,7 +445,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));
 			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn, U2));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Corn));
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
 		}});
 		addListener("cropDevilishMaize", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Devilish Maize", IL.CANS_VEGGIE);
@@ -455,7 +455,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));
 			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn, U2));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Corn));
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
 		}});
 		
 		
@@ -829,6 +829,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropChilipepper", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop(aEvent.mStack, FL.Sauce_Chili, 100, OP.dustSmall.mat(MT.Chili, 4), 8000, "Canned Chilipeppers", IL.CANS_VEGGIE, 0, 0, 4, 4, 0);
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)20);
 		}});
 		addListener("cropCinnamon", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop(aEvent.mStack, null, 0, OP.dustSmall.mat(MT.Cinnamon, 4), 9000, null, null, 0, 0, 0, 4, 0);

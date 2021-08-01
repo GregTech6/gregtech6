@@ -33,7 +33,6 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
-import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -130,7 +129,7 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Shredder         .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese));
 			RM.Mortar           .addRecipe1(T, 16,   16, aEvent.mStack, OM.dust(MT.Cheese, U2));
 			}
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 8, 0, 8);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 8, 0, 8);
 		}});
 		addListener("foodDough", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
@@ -152,24 +151,39 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, IL.Food_Raisins_Chocolate.get(1));
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Raisin.get(1));
 		}});
+		addListener("foodSilkentofu", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)35);
+		}});
+		addListener("foodFirmtofu", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)35);
+		}});
 		addListener("foodCaramel", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Caramel.get(1));
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Brown);
+		}});
+		addListener("foodButter", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Yellow);
+		}});
+		addListener("foodChocolatebar", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)21);
+		}});
+		addListener("foodBaconraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)37);
 		}});
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Bacon.get(1));
 			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)38);
-			}
 		}});
 		addListener("foodChum", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, 4, "SPAM", IL.CANS_CHUM);
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(4), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Chum.get(4));
 			for (OreDictMaterial tMat : ANY.Wood.mToThis) {ItemStack tStick = OP.stick.mat(tMat, 1); if (ST.valid(tStick)) {
 			RM.Boxinator        .addRecipe2(T, 16,   16, aEvent.mStack, tStick, IL.Food_Chum_On_Stick.get(1));
 			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)39);
 			}}
-			}
 		}});
 		
 		
@@ -200,7 +214,7 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		
 		addListener("listAllegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			for (OreDictMaterial tMat : ANY.Flour.mToThis)
 			RM.Mixer.addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(tMat), IL.Food_Dough_Egg.get(1));
 			
@@ -208,8 +222,6 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Mixer.addRecipe1(T, 16,   16, aEvent.mStack, FL.array(FL.make(tCookingOil, 100), FL.make(tFluid, 100)), FL.Mayo.make(250), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16,   16, aEvent.mStack, FL.array(FL.make(tCookingOil, 100), FL.Juice_Lemon.make(100)), FL.Mayo.make(250), ZL_IS);
 			RM.Mixer.addRecipe1(T, 16,   16, aEvent.mStack, FL.array(FL.make(tCookingOil, 100), FL.Juice_Lime.make(100)), FL.Mayo.make(250), ZL_IS);
-			}
-			
 			}
 		}});
 		
@@ -255,7 +267,7 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		
 		addListener("foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 4, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 4, 0,12);
 			
 			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
 			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
@@ -293,106 +305,106 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Juicer   .addRecipe1(T, 16,   32, aEvent.mStack, NF, MT.FishOil.liquid(tFishOilAmount/2, F), OM.dust(tByProduct));
 		}});
 		addListener("listAllfishcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Fish", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_FISH);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)25);
 		}});
 		addListener("listAllribraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Ribs", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
 		}});
 		addListener("listAllribcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Ribs", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
 			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, FL.Sauce_BBQ.make(250), NF, IL.Food_Rib_BBQ.get(1));
 		}});
 		addListener("listAllbeefraw", "listAllbeefcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Beef", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAllchickenraw", "listAllchickencooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Chicken", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("listAllmuttonraw", "listAllmuttoncooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Mutton", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAllporkraw", "listAllporkcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Pork", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAllrabbitraw", "listAllrabbitcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Rabbit", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("listAllturkeyraw", "listAllturkeycooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Turkey", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,20);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,20);
 		}});
 		addListener("listAllcrabyraw", "listAllcrabcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Crab", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("listAllratraw", "listAllratcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Rat", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("listAllturtleraw", "listAllturtlecooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Turtle", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAllostrichraw", "listAllostrichcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Ostrich", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAllvenisonraw", "listAllvenisoncooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Venison", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,16);
 		}});
 		addListener("listAlltitanraw", "listAlltitancooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Titan Meat", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 8, 0, 0, 0,16);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 8, 0, 0, 0,16);
 		}});
 		addListener("listAllhamraw", "listAllhamcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Ham", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,24);
 		}});
 		addListener("listAllhorseraw", "listAllhorsecooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Horse", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("listAlldograw", "listAlldogcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Dog", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
 		}});
 		addListener("foodBaconraw", "foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Bacon", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0, 6);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0, 6);
 		}});
 		addListener("listAllhydraraw", "listAllhydracooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Hydra", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
-			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0,20, 0,40);
+			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0,20, 0,40);
 		}});
 		addListener("listAllmushroom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!ST.equal(aEvent.mStack, Blocks.brown_mushroom))
