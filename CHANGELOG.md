@@ -15,7 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.20: (Not released yet, released whenever it needs to be)
 [COMPAT]
-Mekanisms Osmium, which i previously just named 'Osmium' and treated differently from regular Osmium, is now instead completely overhauled to be the actual Material Germanium.
+Mekanisms Osmium, which I previously just named 'Osmium' and treated differently from regular Osmium, is now instead completely overhauled to be the actual Material Germanium.
 That fits with its Circuits at the very least, and makes a lot of internal Mechanics much nicer. Heck these two Materials had a lot of things in common too, before I did this.
 Side Effects of this change include:
 Decorative Fake Osmium based Tool Blocks are now turning into the (newly added) Constantan Decorative Variants.
@@ -27,7 +27,7 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [CHANGED] Tanks, Drums and Pipes can now have the Thermometer used on them.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
-[CHANGED] Furances, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
+[CHANGED] Furnaces, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
 [CHANGED] Improved Management of all the "Compat" Stone Layers. Now adding Mods like PFAA, Enchanced Biomes, Mineralogy or Underground Biomes truly wont affect overall Ore bearing Stone Layer distribution. (previously only basic things had no effect like Marble, Limestone and Basalt)
 [ADDED] Bone Ore, which usually spawns either in Underground Biomes Dolomite or in GT Limestone. It is one way to get Skeleton Skulls and Bones in Peaceful.
 [ADDED] Slate Stone Layer. Has a nice Shade of Dark Blue, which is not as radiant as Blue Schist. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.

@@ -25,6 +25,7 @@ import static gregapi.data.OP.*;
 import gregapi.data.ANY;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
+import gregapi.data.CS.Sandwiches;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -157,6 +158,7 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Bacon.get(1));
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)38);
 			}
 		}});
 		addListener("foodChum", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -165,6 +167,7 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(4), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Chum.get(4));
 			for (OreDictMaterial tMat : ANY.Wood.mToThis) {ItemStack tStick = OP.stick.mat(tMat, 1); if (ST.valid(tStick)) {
 			RM.Boxinator        .addRecipe2(T, 16,   16, aEvent.mStack, tStick, IL.Food_Chum_On_Stick.get(1));
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)39);
 			}}
 			}
 		}});
@@ -185,12 +188,14 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Squeezer         .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Honey.make(90), OM.dust(MT.WaxBee));
 			RM.Juicer           .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Honey.make(90), OM.dust(MT.WaxBee));
 			RM.Mortar           .addRecipe1(T, 16,   64, aEvent.mStack, OM.dust(MT.WaxBee));
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)22);
 		}});
 		addListener("materialWaxcomb", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, OM.dust(MT.WaxBee));
 			RM.Squeezer         .addRecipe1(T, 16,   64, aEvent.mStack, OM.dust(MT.WaxBee));
 			RM.Juicer           .addRecipe1(T, 16,   64, aEvent.mStack, OM.dust(MT.WaxBee));
 			RM.Mortar           .addRecipe1(T, 16,   64, aEvent.mStack, OM.dust(MT.WaxBee));
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)22);
 		}});
 		
 		
@@ -225,6 +230,7 @@ public class Loader_Recipes_Food implements Runnable {
 				}
 				if (tAmount > 0) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMeat, tAmount));
 			}
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)29);
 		}});
 		
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -244,6 +250,7 @@ public class Loader_Recipes_Food implements Runnable {
 				}
 				if (tAmount > 0) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMeat, tAmount));
 			}
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)24);
 		}});
 		
 		
@@ -289,6 +296,7 @@ public class Loader_Recipes_Food implements Runnable {
 			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Fish", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_FISH);
 			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 0,12);
+			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)25);
 		}});
 		addListener("listAllribraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!OD.listAllmeatsubstitute.is_(aEvent.mStack))

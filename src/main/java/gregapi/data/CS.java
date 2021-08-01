@@ -1702,7 +1702,63 @@ public class CS {
 		}
 	}
 	
-	/** Contains the IDs for my Book Shelf Stuff. */
+	/** Contains the Registry Stuff for my Sandwiches. */
+	public static class Sandwiches {
+		/** 
+		 *  11 = 1 pixel distance from rim, 1 thick
+		 *  12 = 2 pixel distance from rim, 1 thick
+		 *  13 = 3 pixel distance from rim, 1 thick
+		 *  19 = 4 Slices of Stuff, 1 thick
+		 * 
+		 *  21 = 1 pixel distance from rim, 2 thick
+		 *  22 = 2 pixel distance from rim, 2 thick
+		 *  23 = 3 pixel distance from rim, 2 thick
+		 *  29 = 4 Slices of Stuff, 2 thick
+		 * 
+		 *  ... It goes on like this until 14 thick
+		 * 
+		 * 252 = Condiment (copies roughly whatever is below it in shape, 1 thick)
+		 * 253 = Olive/Grape on a Toothpick maybe?
+		 * 254 = Toasted Toast
+		 * 255 = Sandwich Toast
+		 */
+		public static final byte    [] INGREDIENT_MODEL_IDS       = new byte[256];
+		public static final byte    [] INGREDIENT_MODEL_THICKNESS = 
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+		, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+		, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4
+		, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
+		, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6
+		, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
+		, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
+		, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
+		,10,10,10,10,10,10,10,10,10,10
+		,11,11,11,11,11,11,11,11,11,11
+		,12,12,12,12,12,12,12,12,12,12
+		,13,13,13,13,13,13,13,13,13,13
+		,14,14,14,14,14,14,14,14,14,14
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		, 1, 1, 1, 3, 2, 2
+		};
+		
+		public static final ITexture[] INGREDIENT_TEXTURES_TOP   = new ITexture[256];
+		public static final ITexture[] INGREDIENT_TEXTURES_SIDES = new ITexture[256];
+		
+		public static final ItemStackMap<ItemStackContainer, Byte> INGREDIENTS = new ItemStackMap<>();
+	}
+	
+	/** Contains the Registry Stuff for my Book Shelves. */
 	public static class BooksGT {
 		//   0 = null
 		//   1 = Book/Written Book/Writable Book/Default

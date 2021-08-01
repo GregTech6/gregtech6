@@ -199,6 +199,7 @@ public class LH {
 	, TOOLTIP_AUTOCOLLECT = "gt.lang.autocollect"
 	, TOOLTIP_BEACON_PAYMENT = "gt.lang.beacon.payment"
 	, TOOLTIP_SHELFABLE = "gt.lang.shelfable"
+	, TOOLTIP_SANDWICHABLE = "gt.lang.sandwichable"
 	, TOOLTIP_AMMO_ENCHANTS = "gt.lang.ammo.enchants"
 	, TOOLTIP_POSSIBLE_TOOL_ENCHANTS = "gt.lang.tool.enchants"
 	, TOOLTIP_POSSIBLE_ARMOR_ENCHANTS = "gt.lang.armor.enchants"
@@ -525,6 +526,7 @@ public class LH {
 		add(TOOLTIP_AUTOCOLLECT                         , "Can Auto-Collect Items when harvesting Block");
 		add(TOOLTIP_BEACON_PAYMENT                      , "Can be used as a Beacon Payment");
 		add(TOOLTIP_SHELFABLE                           , "Can be placed inside a GT Bookshelf");
+		add(TOOLTIP_SANDWICHABLE                        , "Is a valid Sandwich Ingredient");
 		add(TOOLTIP_AMMO_ENCHANTS                       , "Ammo Enchantments:");
 		add(TOOLTIP_POSSIBLE_TOOL_ENCHANTS              , "Possible Tool Enchantments:");
 		add(TOOLTIP_POSSIBLE_ARMOR_ENCHANTS             , "Possible Armor Enchantments:");

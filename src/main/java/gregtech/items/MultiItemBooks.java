@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BooksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -50,7 +49,7 @@ public class MultiItemBooks extends MultiItemRandom {
 	public MultiItemBooks() {
 		super(MD.GT.mID, "gt.multiitem.books");
 		OM.reg(OD.craftingBook, ST.make(this, 1, W));
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(this, 1, W), (byte)3);
+		BooksGT.BOOK_REGISTER.put(this, W, (byte)3);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Books", this, (short)32000));
 	}
 	

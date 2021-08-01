@@ -49,6 +49,7 @@ import gregapi.data.CS.BooksGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
+import gregapi.data.CS.Sandwiches;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -294,6 +295,10 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			
 			if (BooksGT.BOOK_REGISTER.containsKey(aEvent.itemStack, T)) {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_SHELFABLE));
+			}
+			
+			if (Sandwiches.INGREDIENTS.containsKey(aEvent.itemStack, T)) {
+				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_SANDWICHABLE));
 			}
 			
 			if (aItem.isBeaconPayment(aEvent.itemStack)) {
