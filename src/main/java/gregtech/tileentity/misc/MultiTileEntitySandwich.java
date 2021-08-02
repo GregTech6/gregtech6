@@ -269,7 +269,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		if (tModel == 252 && aRenderPass >= 4) {
 			aRenderPass /= 4;
 			float tOffset = (16-aRenderPass) * PX_OFFSET;
-			switch(UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[UT.Code.unsignB(mDisplay[aRenderPass/4-1])])) {
+			switch(UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[UT.Code.unsignB(mDisplay[aRenderPass-1])])) {
 			case   2: case   3: case  14: case 252:
 			return box(aBlock, PX_P[ 2]-tOffset,                   PX_P[1]/2, PX_P[ 2]-tOffset, PX_N[ 2]+tOffset, PX_P[aRenderPass+tThickness], PX_N[ 2]+tOffset);
 			default :
