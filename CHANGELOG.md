@@ -32,6 +32,16 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [ADDED] Bone Ore, which usually spawns either in Underground Biomes Dolomite or in GT Limestone. It is one way to get Skeleton Skulls and Bones in Peaceful.
 [ADDED] Slate Stone Layer. Has a nice Shade of Dark Blue, which is not as radiant as Blue Schist. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.
 [ADDED] Shale Stone Layer. Just another Rock Type. Light Blue in color.
+[ADDED]
+Modular Sandwiches
+Just shiftclick a piece(s) of Toast on a solid Surface, then rightclick all your favourite Sandwich Ingredients on it, and harvest the final result.
+You can make up to 16 Sandwiches at once, by having a Stack of 16 Toasts in your Hand while placing it. Though you need 16 times the Ingredients at once obviously.
+There is absolutely no Law on how you can make your Sandwich!
+Except for not repeating any Ingredients back to back. (acts as Doubleclick protection)
+And having to have a Toast or Toasted Toast as a Base. (You dont have to have a Toast on top though)
+And being limited to one Block of Space.
+And ofcourse the List of valid Ingredients and Condiments.
+And all the possible Health Hazards you can come up with. (And oh boy is it easy to make a deadly Sandwich)
 
 
 6.14.19:

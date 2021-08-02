@@ -189,7 +189,11 @@ public class GT_Client extends GT_Proxy {
 		BooksGT.BOOK_TEXTURES_SIDE[ 57] = BlockTextureDefault.get("books/TAPE_WHITE_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[ 58] = BlockTextureDefault.get("books/TAPE_GRAY_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[ 59] = BlockTextureDefault.get("books/TAPE_BLACK_SIDE");
-		
+
+		Sandwiches.INGREDIENT_TEXTURES_SIDES [255] = null;
+		Sandwiches.INGREDIENT_TEXTURES_TOP   [255] = null;
+		Sandwiches.INGREDIENT_MODEL_IDS      [255] = (byte)255;
+		Sandwiches.INGREDIENT_MODEL_THICKNESS[255] = (byte)  0;
 		Sandwiches.INGREDIENT_TEXTURES_SIDES [254] = BlockTextureDefault.get("sandwiches/TOAST_SIDES");
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [254] = BlockTextureDefault.get("sandwiches/TOAST_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS      [254] = (byte)254;

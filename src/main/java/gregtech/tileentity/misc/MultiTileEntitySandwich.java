@@ -44,6 +44,7 @@ import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.notick.TileEntityBase03MultiTileEntities;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -57,7 +58,7 @@ import squeek.applecore.api.food.FoodValues;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_OnItemRightClick, IMTE_AddToolTips, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
+public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_CanPlace, IMTE_OnItemRightClick, IMTE_AddToolTips, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
 	public ItemStack[] mStacks = new ItemStack[16];
 	public byte[] mDisplay = {(byte)254, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255};
 	public byte mSize = 2;
@@ -122,7 +123,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	
 	public int getTotalFood() {
 		int rFood = 0;
-		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rFood += ST.food(aStack);
+		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rFood += Math.max(1, ST.food(aStack));
 		return rFood;
 	}
 	public float getTotalSaturation() {
@@ -154,6 +155,11 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 			}
 		}
 		updateClientData();
+	}
+	
+	@Override
+	public boolean canPlace(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		return WD.block(aWorld, aX, aY-1, aZ).isSideSolid(aWorld, aX, aY-1, aZ, FORGE_DIR[SIDE_TOP]);
 	}
 	
 	@Override
@@ -204,6 +210,8 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 			}
 		}
 		
+		aStack.stackSize--;
+		
 		return aStack;
 	}
 	
@@ -243,7 +251,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {
 		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]);
 		if (tID == 255) return F;
-		return aRenderPass % 4 == 0 || tID == 14;
+		return aRenderPass % 4 == 0 || UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[tID]) == 14;
 	}
 	
 	@Override
