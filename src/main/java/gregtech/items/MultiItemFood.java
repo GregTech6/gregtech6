@@ -644,13 +644,13 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		IL.Food_Bun_Raw                        .set(addItem(tLastID =  5000, "Dough (Bun)"                              , "In Bun Shape"                                                , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
-		IL.Food_Bun                            .set(addItem(tLastID =  5001, "Bun"                                      , "Do not teleport Bread!"                                      , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
+		IL.Food_Bun                            .set(addItem(tLastID =  5001, "Bun"                                      , ""                                                            , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Bun_Sliced                     .set(addItem(tLastID =  5002, "Sliced Bun"                               , "Just half a Bun"                                             , new FoodStat( 1, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Buns_Sliced                    .set(addItem(tLastID =  5003, "Buns"                                     , "Pre Sliced"                                                  , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		RM.add_smelting(IL.Food_Bun_Raw.get(1), IL.Food_Bun.get(1), F, T, F);
-		RM.food_can(IL.Food_Bun                 .get(1), 2, "Canned Bread", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Bun_Sliced          .get(2), 2, "Canned Bread", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Buns_Sliced         .get(1), 2, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Bun                .get(1), 2, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Bun_Sliced         .get(2), 2, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Buns_Sliced        .get(1), 2, "Canned Bread", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Bun_Sliced.get(2), CR.DEF_NCC, "kX", 'X', IL.Food_Bun);
 		CR.shapeless(IL.Food_Bun_Raw.get(1), CR.DEF, new Object[] {"foodDough"});
 		CR.shapeless(IL.Food_Buns_Sliced.get(1), CR.DEF, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced});
@@ -684,12 +684,12 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Food_Bread_Raw                      .set(addItem(tLastID =  6000, "Dough (Bread)"                            , "In Bread Shape"                                              , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Bread                          .set(ST.make(Items.bread, 1, 0)); // My OCD told me to do this, it is not my fault! XD                                                   , new FoodStat( 5, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
-		IL.Food_Bread_Sliced                   .set(addItem(tLastID =  6002, "Sliced Bread"                             , "Best thing since sliced Bread, oh wait..."                   , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
+		IL.Food_Bread_Sliced                   .set(addItem(tLastID =  6002, "Sliced Bread"                             , ""                                                            , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Breads_Sliced                  .set(addItem(tLastID =  6003, "Breads"                                   , "Pre Sliced"                                                  , new FoodStat( 5, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		RM.add_smelting(IL.Food_Bread_Raw.get(1), IL.Food_Bread.get(1), F, T, F);
-		RM.food_can(IL.Food_Bread                   .get(1), 4, "Canned Bread", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Bread_Sliced            .get(1), 2, "Canned Bread", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Breads_Sliced           .get(1), 4, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Bread              .get(1), 4, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Bread_Sliced       .get(1), 2, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Breads_Sliced      .get(1), 4, "Canned Bread", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Bread_Sliced.get(2), CR.DEF_NCC, "kX", 'X', IL.Food_Bread);
 		CR.shapeless(IL.Food_Bread_Raw.get(1), CR.DEF, new Object[] {"foodDough", "foodDough"});
 		CR.shapeless(IL.Food_Breads_Sliced.get(1), CR.DEF, new Object[] {IL.Food_Bread_Sliced, IL.Food_Bread_Sliced});
@@ -717,9 +717,9 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Baguette_Sliced                .set(addItem(tLastID =  7002, "Sliced Baguette"                          , "Just half a Baguette"                                        , new FoodStat( 4, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		IL.Food_Baguettes_Sliced               .set(addItem(tLastID =  7003, "Baguettes"                                , "Pre Sliced"                                                  , new FoodStat( 8, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
 		RM.add_smelting(IL.Food_Baguette_Raw.get(1), IL.Food_Baguette.get(1), F, T, F);
-		RM.food_can(IL.Food_Baguette            .get(1), 8, "Canned Pain", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Baguette_Sliced     .get(1), 4, "Canned Pain", IL.CANS_BREAD);
-		RM.food_can(IL.Food_Baguettes_Sliced    .get(1), 8, "Canned Pain", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Baguette           .get(1), 8, "Canned Pain", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Baguette_Sliced    .get(1), 4, "Canned Pain", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Baguettes_Sliced   .get(1), 8, "Canned Pain", IL.CANS_BREAD);
 		CR.shaped(IL.Food_Baguette_Sliced.get(2), CR.DEF_NCC, "kX", 'X', IL.Food_Baguette);
 		CR.shapeless(IL.Food_Baguette_Raw.get(1), CR.DEF, new Object[] {"foodDough", "foodDough", "foodDough"});
 		CR.shapeless(IL.Food_Baguettes_Sliced.get(1), CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced});
@@ -739,6 +739,26 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(IL.Food_Large_Sandwich_Bacon.get(1)    , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked", "foodBaconcooked"});
 		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguettes_Sliced, Items.cooked_beef, Items.cooked_beef});
 		CR.shapeless(IL.Food_Large_Sandwich_Steak.get(1)    , CR.DEF, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced, Items.cooked_beef, Items.cooked_beef});
+		
+		
+		
+		IL.Food_Toast_Raw                       .set(addItem(tLastID = 14000, "Dough (Toast Loaf)"                       , "Shape of a Toast Loaf"                                       , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Toast                           .set(addItem(tLastID = 14001, "Loaf of Toast"                            , "Do not teleport Bread!"                                      , new FoodStat( 8, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
+		IL.Food_Toast_Sliced                    .set(addItem(tLastID = 14002, "Toast"                                    , "Best thing since sliced Bread, oh wait..."                   , new FoodStat( 1, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)255);
+		IL.Food_Toasted_Sliced                  .set(addItem(tLastID = 14003, "Toasted Toast"                            , ""                                                            , new FoodStat( 1, 1.200F,   0, C+39,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 2))); Sandwiches.INGREDIENTS.put(last(), (byte)254);
+		RM.add_smelting(IL.Food_Toast_Raw.get(1), IL.Food_Toast.get(1), F, T, F);
+		RM.add_smelting(IL.Food_Toast_Sliced.get(1), IL.Food_Toasted_Sliced.get(1), F, T, F);
+		RM.food_can(IL.Food_Toast_Raw           .get(1), 8, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Toast               .get(1), 8, "Canned Bread", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Toast_Sliced        .get(1), 1, "Canned Bread", IL.CANS_BREAD);
+		CR.shaped(IL.Food_Toast_Sliced.get(8), CR.DEF_NCC, "kX", 'X', IL.Food_Toast);
+		CR.shapeless(IL.Food_Toast_Raw.get(1), CR.DEF, new Object[] {"foodDough", "foodDough", "foodDough", "foodDough"});
+		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Toast.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Toast_Sliced.get(8));
+		
+		
+		
+		
+		
 		
 		
 		FoodsGT.put(ST.make(Items.mushroom_stew     , 1, W), 0,10, 0, 5, 0);

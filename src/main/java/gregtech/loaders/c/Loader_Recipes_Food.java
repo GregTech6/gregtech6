@@ -140,9 +140,10 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Chocolate            ), IL.Food_Dough_Chocolate.get(2));
 			
 			
-			RM.Press            .addRecipe2(T, 16,   16, ST.amount(1, aEvent.mStack), IL.Shape_Foodmold_Bun.get(0)      , IL.Food_Bun_Raw       .get(1));
-			RM.Press            .addRecipe2(T, 16,   32, ST.amount(2, aEvent.mStack), IL.Shape_Foodmold_Bread.get(0)    , IL.Food_Bread_Raw     .get(1));
-			RM.Press            .addRecipe2(T, 16,   48, ST.amount(3, aEvent.mStack), IL.Shape_Foodmold_Baguette.get(0) , IL.Food_Baguette_Raw  .get(1));
+			RM.Press            .addRecipe2(T, 16,   16, ST.amount(1, aEvent.mStack), IL.Shape_Foodmold_Bun.get(0)     , IL.Food_Bun_Raw     .get(1));
+			RM.Press            .addRecipe2(T, 16,   32, ST.amount(2, aEvent.mStack), IL.Shape_Foodmold_Bread.get(0)   , IL.Food_Bread_Raw   .get(1));
+			RM.Press            .addRecipe2(T, 16,   48, ST.amount(3, aEvent.mStack), IL.Shape_Foodmold_Baguette.get(0), IL.Food_Baguette_Raw.get(1));
+			RM.Press            .addRecipe2(T, 16,   64, ST.amount(4, aEvent.mStack), IL.Shape_Foodmold_Toast.get(0)   , IL.Food_Toast_Raw   .get(1));
 		}});
 		addListener("foodSugarDough", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Press            .addRecipe2(T, 16,   64, ST.amount(4, aEvent.mStack), IL.Shape_Foodmold_Cylinder.get(0), IL.Food_CakeBottom_Raw.get(1));

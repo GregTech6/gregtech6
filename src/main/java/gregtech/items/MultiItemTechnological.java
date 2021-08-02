@@ -398,17 +398,20 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_Foodmold_Bread            .set(addItem(tLastID = 10802, "Food Grade Mold (Bread)"          , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
 		IL.Shape_Foodmold_Baguette         .set(addItem(tLastID = 10803, "Food Grade Mold (Baguette)"       , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
 		IL.Shape_Foodmold_Cylinder         .set(addItem(tLastID = 10804, "Food Grade Mold (Cylinder)"       , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
+		IL.Shape_Foodmold_Toast            .set(addItem(tLastID = 10805, "Food Grade Mold (Toast)"          , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
 		
 		CR.shaped(IL.Shape_Foodmold_Bun             .get(1), CR.DEF_REV, "h  ", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
 		CR.shaped(IL.Shape_Foodmold_Bread           .get(1), CR.DEF_REV, " h ", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
 		CR.shaped(IL.Shape_Foodmold_Baguette        .get(1), CR.DEF_REV, "  h", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
 		CR.shaped(IL.Shape_Foodmold_Cylinder        .get(1), CR.DEF_REV, "   ", " Ph", "   ", 'P', IL.Shape_Foodmold_Empty);
+		CR.shaped(IL.Shape_Foodmold_Toast           .get(1), CR.DEF_REV, "   ", " P ", "  h", 'P', IL.Shape_Foodmold_Empty);
 		
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Empty.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bun.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bread.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Baguette.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Cylinder.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Toast.get(1)), (byte)45);
 		
 		
 		
