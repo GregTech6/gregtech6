@@ -372,7 +372,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			}
 		}
 		
-		FoodStatFluid.INSTANCE.onEaten(aStack.getItem(), aStack, aPlayer, F);
+		FoodStatFluid.INSTANCE.onEaten(aStack.getItem(), aStack, aPlayer, F, T);
 		
 		mTank.remove(250);
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));

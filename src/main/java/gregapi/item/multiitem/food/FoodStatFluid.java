@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -117,12 +117,22 @@ public class FoodStatFluid implements IFoodStat {
 	}
 	
 	@Override
+	@SuppressWarnings("deprecation")
 	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem) {
 		IFoodStat rStats = null;
 		FluidStack tFluid = FL.getFluid(aStack, T);
 		if (tFluid != null) rStats = DrinksGT.REGISTER.get(tFluid.getFluid().getName());
 		if (rStats == null) return;
-		rStats.onEaten(aItem, aStack, aPlayer, aConsumeItem);
+		rStats.onEaten(aItem, aStack, aPlayer, aConsumeItem, T);
+	}
+	
+	@Override
+	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem, boolean aMakeSound) {
+		IFoodStat rStats = null;
+		FluidStack tFluid = FL.getFluid(aStack, T);
+		if (tFluid != null) rStats = DrinksGT.REGISTER.get(tFluid.getFluid().getName());
+		if (rStats == null) return;
+		rStats.onEaten(aItem, aStack, aPlayer, aConsumeItem, aMakeSound);
 	}
 	
 	@Override

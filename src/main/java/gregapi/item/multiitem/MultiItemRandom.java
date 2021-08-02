@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -339,7 +339,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 					e.printStackTrace(ERR);
 				}
 			}
-			tStat.onEaten(this, aStack, aPlayer, T);
+			tStat.onEaten(this, aStack, aPlayer, T, T);
 		}
 		return aStack;
 	}

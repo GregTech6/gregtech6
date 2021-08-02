@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,6 +18,8 @@
  */
 
 package gregapi.item.multiitem.food;
+
+import static gregapi.data.CS.*;
 
 import java.util.List;
 
@@ -91,8 +93,14 @@ public class FoodStatLink implements IFoodStat {
 	}
 	
 	@Override
+	@SuppressWarnings("deprecation")
 	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem) {
-		mStats.onEaten(aItem, aStack, aPlayer, aConsumeItem);
+		mStats.onEaten(aItem, aStack, aPlayer, aConsumeItem, T);
+	}
+	
+	@Override
+	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem, boolean aMakeSound) {
+		mStats.onEaten(aItem, aStack, aPlayer, aConsumeItem, aMakeSound);
 	}
 	
 	@Override

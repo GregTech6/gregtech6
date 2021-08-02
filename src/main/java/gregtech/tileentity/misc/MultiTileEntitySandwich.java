@@ -21,18 +21,22 @@ package gregtech.tileentity.misc;
 
 import static gregapi.data.CS.*;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByteArray;
+import java.util.List;
+
+import enviromine.handlers.EM_StatusManager;
+import enviromine.trackers.EnviroDataTracker;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
+import gregapi.block.multitileentity.MultiTileEntityItemInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.IL;
+import gregapi.data.LH;
+import gregapi.data.MD;
+import gregapi.item.IItemRottable;
+import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.food.FoodStatFluid;
+import gregapi.item.multiitem.food.IFoodStat;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.render.ITexture;
@@ -42,14 +46,18 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+import squeek.applecore.api.food.FoodValues;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_OnItemRightClick, IMTE_AddToolTips, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
 	public ItemStack[] mStacks = new ItemStack[16];
 	public byte[] mDisplay = {(byte)254, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255};
 	public byte mSize = 2;
@@ -75,6 +83,11 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	
 	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		for (ItemStack tStack : mStacks) if (ST.valid(tStack)) aList.add(1, LH.Chat.GRAY + tStack.getDisplayName());
+	}
+	
+	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
 		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
 		int tCount = 0;
@@ -91,7 +104,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
-		if (ST.valid(aStack) && ST.valid(mStacks[0])) {
+		if (ST.valid(aStack) && ST.valid(mStacks[0]) && !ST.equal(getTopIngredient(), aStack)) {
 			int tStackSize = mStacks[0].stackSize;
 			if (aStack.stackSize >= tStackSize) {
 				Byte tID = Sandwiches.INGREDIENTS.get(aStack);
@@ -107,19 +120,106 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		return T;
 	}
 	
+	public int getTotalFood() {
+		int rFood = 0;
+		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rFood += ST.food(aStack);
+		return rFood;
+	}
+	public float getTotalSaturation() {
+		float rSaturation = 0;
+		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rSaturation = Math.max(rSaturation, ST.saturation(aStack));
+		return rSaturation;
+	}
+	public float getTotalHydration() {
+		float rHydration = 0;
+		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rHydration += ST.hydration(aStack);
+		return rHydration;
+	}
+	
+	public ItemStack getTopIngredient() {
+		for (int i = mStacks.length-1; i >= 0; i--) if (ST.valid(mStacks[i])) return mStacks[i];
+		return null;
+	}
+	
 	public void updateSandwich() {
 		mSize = 0;
 		for (int i = 0; i < mStacks.length; i++) {
 			Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]);
 			mDisplay[i] = (tID == null ? (byte)255 : tID);
+			mSize += Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])];
 			if (i == 0 && ST.invalid(mStacks[i])) {
 				mStacks[i] = IL.Food_Toast_Sliced.get(1);
 				mDisplay[i] = (byte)254;
 				mSize = 2;
 			}
-			mSize += Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])];
 		}
 		updateClientData();
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(MultiTileEntityItemInternal aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
+		if (UT.Entities.isCreative(aPlayer) || aPlayer.getFoodStats().needFood()) {
+			aPlayer.setItemInUse(aStack, Math.max(FoodStatFluid.INSTANCE.getFoodLevel(aStack.getItem(), aStack, null) * 8, 32));
+			return aStack;
+		}
+		return aStack;
+	}
+	
+	@Override
+	public int getMaxItemUseDuration(MultiTileEntityItemInternal aItem, ItemStack aStack) {
+		return Math.max(getTotalFood() * 8, 32);
+	}
+	
+	@Override
+	public EnumAction getItemUseAction(MultiTileEntityItemInternal aItem, ItemStack aStack) {
+		return EnumAction.eat;
+	}
+	
+	@Override
+	public ItemStack onEaten(MultiTileEntityItemInternal aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
+		if (MD.APC.mLoaded) {
+			aPlayer.getFoodStats().func_151686_a((ItemFood)UT.Reflection.callConstructor("squeek.applecore.api.food.ItemFoodProxy", 0, null, T, aStack.getItem()), aStack);
+		} else {
+			aPlayer.getFoodStats().addStats(getTotalFood(), getTotalSaturation());
+		}
+		
+		if (!aWorld.isRemote && MD.ENVM.mLoaded) {
+			try {
+				Object tTracker = EM_StatusManager.lookupTracker(aPlayer);
+				if (tTracker != null && ((EnviroDataTracker)tTracker).bodyTemp >= 0) {
+					float tHydration = getTotalHydration();
+					if (tHydration > 0) ((EnviroDataTracker)tTracker).hydrate(tHydration); else if (tHydration < 0) ((EnviroDataTracker)tTracker).dehydrate(-tHydration);
+				}
+			} catch(Throwable e) {
+				e.printStackTrace(ERR);
+			}
+		}
+		
+		boolean temp = T;
+		for (ItemStack tStack : mStacks) if (ST.valid(tStack) && ST.item_(tStack) instanceof MultiItemRandom) {
+			IFoodStat tStat = ((MultiItemRandom)ST.item_(tStack)).mFoodStats.get(ST.meta_(tStack));
+			if (tStat != null) {
+				tStat.onEaten(aItem, tStack, aPlayer, F, temp);
+				temp = F;
+			}
+		}
+		
+		return aStack;
+	}
+	
+	@Override
+	public FoodValues getFoodValues(MultiTileEntityItemInternal aItem, ItemStack aStack) {
+		return new squeek.applecore.api.food.FoodValues(getTotalFood(), getTotalSaturation());
+	}
+	
+	@Override
+	public ItemStack getRotten(ItemStack aStack) {
+		return IL.ENVM_Rotten_Food.get(aStack.stackSize);
+	}
+	
+	@Override
+	public ItemStack getRotten(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
+		return IL.ENVM_Rotten_Food.get(aStack.stackSize);
 	}
 	
 	@Override
@@ -130,6 +230,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mDisplay = aData;
+		mSize = 0; for (int i = 0; i < mDisplay.length; i++) mSize += Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])];
 		return T;
 	}
 	
@@ -155,6 +256,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override
 	public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]);
+		if (tID >= 253) return box(aBlock, PX_P[1]/2, PX_P[aRenderPass/4], PX_P[1]/2, PX_N[1]+PX_P[1]/2, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[1]+PX_P[1]/2);
 		if (tID < 150) {
 			switch (tID % 10) {
 			case  2: return box(aBlock, PX_P[ 2], PX_P[aRenderPass/4], PX_P[ 2], PX_N[ 2], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 2]);
@@ -171,13 +273,13 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 			tID = UT.Code.unsignB(mDisplay[aRenderPass/4-1]);
 			if (tID < 150) {
 				switch (tID % 10) {
-				case  2: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 2]+PX_OFFSET);
-				case  3: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 3]+PX_OFFSET);
+				case  2: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 2]+PX_OFFSET);
+				case  3: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 3]+PX_OFFSET);
 				case  9: switch (aRenderPass % 4) {
-				default: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 1]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
-				case  1: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 9]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
-				case  2: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 1]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
-				case  3: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4], PX_P[ 9]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
+				default: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
+				case  1: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 9]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
+				case  2: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
+				case  3: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 9]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
 				}
 				}
 			}
@@ -196,6 +298,8 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}
 	@Override public boolean isSideSolid            (byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
+	@Override public boolean onlyPlaceableWhenSneaking()         {return T;}
+	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return 16;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
