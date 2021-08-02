@@ -563,7 +563,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		
 		
-		IL.Food_Chum                           .set(addItem(tLastID = 10000, "Chum"                                     , "Chum is Fum!"                            , "foodChum"        , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, null                                 , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1)));Sandwiches.INGREDIENTS.put(last(), (byte)39);
+		IL.Food_Chum                           .set(addItem(tLastID = 10000, "Chum"                                     , "Chum is Fum!"                            , "foodChum"        , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, null                                 , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)39);
 		
 		
 		
@@ -744,8 +744,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		
 		IL.Food_Toast_Raw                       .set(addItem(tLastID = 14000, "Dough (Toast Loaf)"                       , "Shape of a Toast Loaf"                                       , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Toast                           .set(addItem(tLastID = 14001, "Loaf of Toast"                            , "Do not teleport Bread!"                                      , new FoodStat( 8, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1)));
-		IL.Food_Toast_Sliced                    .set(addItem(tLastID = 14002, "Toast"                                    , "Best thing since sliced Bread, oh wait..."                   , new FoodStat( 1, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)255);
-		IL.Food_Toasted_Sliced                  .set(addItem(tLastID = 14003, "Toasted Toast"                            , ""                                                            , new FoodStat( 1, 1.200F,   0, C+39,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 2))); Sandwiches.INGREDIENTS.put(last(), (byte)254);
+		IL.Food_Toast_Sliced                    .set(addItem(tLastID = 14002, "Toast"                                    , "Best thing since sliced Bread, oh wait..."                   , new FoodStat( 1, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)254);
+		IL.Food_Toasted_Sliced                  .set(addItem(tLastID = 14003, "Toasted Toast"                            , ""                                                            , new FoodStat( 1, 1.200F,   0, C+39,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.IGNIS, 2))); Sandwiches.INGREDIENTS.put(last(), (byte)253);
 		RM.add_smelting(IL.Food_Toast_Raw.get(1), IL.Food_Toast.get(1), F, T, F);
 		RM.add_smelting(IL.Food_Toast_Sliced.get(1), IL.Food_Toasted_Sliced.get(1), F, T, F);
 		RM.food_can(IL.Food_Toast_Raw           .get(1), 8, "Canned Bread", IL.CANS_BREAD);

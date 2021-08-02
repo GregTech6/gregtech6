@@ -245,7 +245,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		
 		addItem(tLastID =  3601, "Peanut Butter"                , "", "foodPeanutbutter"                , FL.Nutbutter_Peanut       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS          , 1), TC.stack(TC.FAMES     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Brown);
 		
-		addItem(tLastID =  3700, "Rainbow Sap", "Friendship in a Bottle, definitely not blood of a Tree", FL.Sap_Rainbow            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.AURAM     , 1), FoodStatFluid.INSTANCE, OD.container250rainbowsap, "foodRainbowsap", TD.Creative.HIDDEN);
+		addItem(tLastID =  3700, "Rainbow Sap", "Friendship in a Bottle, definitely not blood of a Tree", FL.Sap_Rainbow            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.AURAM     , 1), FoodStatFluid.INSTANCE, OD.container250rainbowsap, "foodRainbowsap", TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), (byte)40);
 		
 		CR.shapeless(make(4, 3700), CR.DEF, new Object[] {OD.container1000rainbowsap, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(3, 3700), CR.DEF, new Object[] {OD.container1000rainbowsap, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});

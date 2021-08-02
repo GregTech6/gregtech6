@@ -1717,10 +1717,11 @@ public class CS {
 		 * 
 		 *  ... It goes on like this until 14 thick
 		 * 
+		 * 251 = Olive/Grape on a Toothpick maybe?
 		 * 252 = Condiment (copies roughly whatever is below it in shape, 1 thick)
-		 * 253 = Olive/Grape on a Toothpick maybe?
-		 * 254 = Toasted Toast
-		 * 255 = Sandwich Toast
+		 * 253 = Toasted Toast
+		 * 254 = Sandwich Toast
+		 * 255 = NULL
 		 */
 		public static final byte    [] INGREDIENT_MODEL_IDS       = new byte[256];
 		public static final byte    [] INGREDIENT_MODEL_THICKNESS = 
@@ -1749,7 +1750,7 @@ public class CS {
 		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 3, 2, 2
+		, 1, 3, 1, 2, 2, 0
 		};
 		
 		public static final ITexture[] INGREDIENT_TEXTURES_TOP   = new ITexture[256];

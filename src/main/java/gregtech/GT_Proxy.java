@@ -340,15 +340,18 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						}
 						return;
 					}
+				} else if (IL.Food_Toast_Sliced.equal(aStack, F, T) || IL.Food_Toasted_Sliced.equal(aStack, F, T)) {
+					int tUsed = Math.min(16, aStack.stackSize);
+					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32105, ST.save("sandwich.0", ST.amount(tUsed, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+						ST.use(aEvent.entityPlayer, aStack, tUsed); aEvent.setCanceled(T);
+					}
 				} else if (aStack.getItem() == Items.stick || IL.Stick.equal(aStack) || OM.is("stickAnyNormalWood", aStack)) {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-						ST.use(aEvent.entityPlayer, aStack);
-						aEvent.setCanceled(T);
+						ST.use(aEvent.entityPlayer, aStack); aEvent.setCanceled(T);
 					}
 				} else if (aStack.getItem() == Items.flint) {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
-						ST.use(aEvent.entityPlayer, aStack);
-						aEvent.setCanceled(T);
+						ST.use(aEvent.entityPlayer, aStack); aEvent.setCanceled(T);
 					}
 				} else {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && ST.block(aStack) == NB) {

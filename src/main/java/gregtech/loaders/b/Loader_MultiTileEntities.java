@@ -1985,6 +1985,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aRegistry.add("Tapped Rainbowood"                                   , "Untyped"                             , 32760, 32764, MultiTileEntitySapHoleRainbowood.class                  ,                 0,  1, aWooden        , null);
 		aRegistry.add("Berry Bush"                                          , "Untyped"                             , 32759, 32764, MultiTileEntityBush.class                               ,                 0, 64, aBush          , UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 0.3F));
 		aRegistry.add("Greg o'Lantern"                                      , "Untyped"                             , 32758, 32764, MultiTileEntityGregOLantern.class                       ,                 0, 64, aUtilWood      , null, "Pk", "T ", 'P', Blocks.pumpkin, 'T', OD.blockTorch);
+		aRegistry.add("Sandwich"                                            , "Untyped"                             , 32105, 32764, MultiTileEntitySandwich.class                           ,                 0, 64, aUtilWool      , null);
 		aRegistry.add("Rock"                                                , "Untyped"                             , 32757, 32764, MultiTileEntityRock.class                               ,                 0, 64, aUtilStone     , null);
 		aRegistry.add("Rock"                                                , "Untyped"                             , 32074, 32764, MultiTileEntityRockPlaced.class                         ,                 0, 64, aUtilStone     , null);
 		aRegistry.add("Stick"                                               , "Untyped"                             , 32756, 32764, MultiTileEntityStick.class                              ,                 0, 64, aUtilWood      , null);
@@ -2037,7 +2038,7 @@ public class Loader_MultiTileEntities implements Runnable {
 			}
 		}
 		
-		// 32105 is next, up to 32251
+		// 32106 is next, up to 32251
 		
 		aMat = MT.Brown;            aRegistry.add("Rope"                                                , "Ropes"                               , 32011, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_FLAMMABILITY,100),  " S",  "SS",  "Sq", 'S', "cropHemp");                  IL.Rope        .set(aRegistry.getItem(), null, "rope");
 		aMat = MT.White;            aRegistry.add("Silk Rope"                                           , "Ropes"                               , 32012, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F                      ),  " S",  "SS",  "Sq", 'S', Items.string);                IL.Rope_Silk   .set(aRegistry.getItem(), null, "rope");

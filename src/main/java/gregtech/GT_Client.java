@@ -190,12 +190,12 @@ public class GT_Client extends GT_Proxy {
 		BooksGT.BOOK_TEXTURES_SIDE[ 58] = BlockTextureDefault.get("books/TAPE_GRAY_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[ 59] = BlockTextureDefault.get("books/TAPE_BLACK_SIDE");
 		
-		Sandwiches.INGREDIENT_TEXTURES_SIDES[255] = BlockTextureDefault.get("sandwiches/TOAST_SIDES");
-		Sandwiches.INGREDIENT_TEXTURES_TOP  [255] = BlockTextureDefault.get("sandwiches/TOAST_TOP");
-		Sandwiches.INGREDIENT_MODEL_IDS     [255] = (byte)255;
-		Sandwiches.INGREDIENT_TEXTURES_SIDES[254] = BlockTextureDefault.get("sandwiches/TOASTED_SIDES");
-		Sandwiches.INGREDIENT_TEXTURES_TOP  [254] = BlockTextureDefault.get("sandwiches/TOASTED_TOP");
+		Sandwiches.INGREDIENT_TEXTURES_SIDES[254] = BlockTextureDefault.get("sandwiches/TOAST_SIDES");
+		Sandwiches.INGREDIENT_TEXTURES_TOP  [254] = BlockTextureDefault.get("sandwiches/TOAST_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS     [254] = (byte)254;
+		Sandwiches.INGREDIENT_TEXTURES_SIDES[253] = BlockTextureDefault.get("sandwiches/TOASTED_SIDES");
+		Sandwiches.INGREDIENT_TEXTURES_TOP  [253] = BlockTextureDefault.get("sandwiches/TOASTED_TOP");
+		Sandwiches.INGREDIENT_MODEL_IDS     [253] = (byte)253;
 		
 		Sandwiches.INGREDIENT_TEXTURES_SIDES[  0] = BlockTextureDefault.get("sandwiches/CONDIMENT_SIDES", DYES[ 0]);
 		Sandwiches.INGREDIENT_TEXTURES_TOP  [  0] = BlockTextureDefault.get("sandwiches/CONDIMENT_TOP"  , DYES[ 0]);
@@ -317,6 +317,9 @@ public class GT_Client extends GT_Proxy {
 		Sandwiches.INGREDIENT_TEXTURES_SIDES[ 39] = BlockTextureDefault.get("sandwiches/CHUM_SIDES");
 		Sandwiches.INGREDIENT_TEXTURES_TOP  [ 39] = BlockTextureDefault.get("sandwiches/CHUM_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS     [ 39] = (byte) 21;
+		Sandwiches.INGREDIENT_TEXTURES_SIDES[ 40] = BlockTextureDefault.get("sandwiches/RAINBOW_SIDES");
+		Sandwiches.INGREDIENT_TEXTURES_TOP  [ 40] = BlockTextureDefault.get("sandwiches/RAINBOW_TOP");
+		Sandwiches.INGREDIENT_MODEL_IDS     [ 40] = (byte)252;
 	}
 	
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;
