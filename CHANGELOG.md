@@ -41,7 +41,7 @@ Except for not repeating any Ingredients back to back. (acts as Doubleclick prot
 And having to have a Toast or Toasted Toast as a Base. (You dont have to have a Toast on top though)
 And being limited to one Block of Space.
 And ofcourse the List of valid Ingredients and Condiments.
-And all the possible Health Hazards you can come up with. (And oh boy is it easy to make a deadly Sandwich)
+And all the possible Health Hazards you can come up with.
 
 
 6.14.19:

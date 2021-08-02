@@ -85,7 +85,12 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		for (ItemStack tStack : mStacks) if (ST.valid(tStack)) aList.add(1, LH.Chat.GRAY + tStack.getDisplayName());
+		if (MD.APC.mLoaded) {
+			for (ItemStack tStack : mStacks) if (ST.valid(tStack)) aList.add(1, LH.Chat.GRAY + tStack.getDisplayName());
+		} else {
+			aList.add(1, LH.Chat.RED + "Food: " + getTotalFood() + " - Saturation: " + getTotalSaturation());
+			for (ItemStack tStack : mStacks) if (ST.valid(tStack)) aList.add(2, LH.Chat.GRAY + tStack.getDisplayName());
+		}
 	}
 	
 	@Override
@@ -111,7 +116,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 				Byte tID = Sandwiches.INGREDIENTS.get(aStack);
 				if (tID != null && mSize + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)] <= 16) {
 					mStacks[mSize] = ST.amount(tStackSize, aStack);
-					aStack.stackSize -= tStackSize;
+					ST.use(aPlayer, aStack, tStackSize);
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.mul(tStackSize, ST.container(mStacks[mSize], T)));
 					updateSandwich();
 					playCollect();
@@ -129,7 +134,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public float getTotalSaturation() {
 		float rSaturation = 0;
 		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rSaturation = Math.max(rSaturation, ST.saturation(aStack));
-		return rSaturation;
+		return rSaturation + 0.5F;
 	}
 	public float getTotalHydration() {
 		float rHydration = 0;
@@ -210,8 +215,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 			}
 		}
 		
-		aStack.stackSize--;
-		
+		ST.use(aPlayer, aStack, 1);
 		return aStack;
 	}
 	
@@ -263,12 +267,13 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]), tModel = UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[tID]), tThickness = Sandwiches.INGREDIENT_MODEL_THICKNESS[tID];
 		if (tModel == 252 && aRenderPass >= 4) {
+			aRenderPass /= 4;
+			float tOffset = aRenderPass * PX_OFFSET;
 			switch(UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[UT.Code.unsignB(mDisplay[aRenderPass/4-1])])) {
-			default : return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 1]+PX_OFFSET);
-			case   2: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 2]+PX_OFFSET);
-			case  14: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 2]+PX_OFFSET);
-			case   3: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 3]+PX_OFFSET);
-			case 252: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 3]+PX_OFFSET);
+			case   2: case   3: case  14: case 252:
+			return box(aBlock, PX_P[ 2]-tOffset,                   PX_P[1]/2, PX_P[ 2]-tOffset, PX_N[ 2]+tOffset, PX_P[aRenderPass+tThickness], PX_N[ 2]+tOffset);
+			default :
+			return box(aBlock, PX_P[ 1]-tOffset, PX_P[aRenderPass]-PX_P[1]/2, PX_P[ 1]-tOffset, PX_N[ 1]+tOffset, PX_P[aRenderPass+tThickness], PX_N[ 1]+tOffset);
 			}
 		}
 		
