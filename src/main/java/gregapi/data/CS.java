@@ -1705,56 +1705,23 @@ public class CS {
 	/** Contains the Registry Stuff for my Sandwiches. */
 	public static class Sandwiches {
 		/** 
-		 *  11 = 1 pixel distance from rim, 1 thick
-		 *  12 = 2 pixel distance from rim, 1 thick
-		 *  13 = 3 pixel distance from rim, 1 thick
-		 *  19 = 4 Slices of Stuff, 1 thick
+		 *   1 = 1 pixel distance from rim
+		 *   2 = 2 pixel distance from rim
+		 *   3 = 3 pixel distance from rim
+		 *  
+		 *  14 = 4 Slices of Stuff
 		 * 
-		 *  21 = 1 pixel distance from rim, 2 thick
-		 *  22 = 2 pixel distance from rim, 2 thick
-		 *  23 = 3 pixel distance from rim, 2 thick
-		 *  29 = 4 Slices of Stuff, 2 thick
+		 * Olive/Grape on a Toothpick maybe?
 		 * 
-		 *  ... It goes on like this until 14 thick
-		 * 
-		 * 251 = Olive/Grape on a Toothpick maybe?
-		 * 252 = Condiment (copies roughly whatever is below it in shape, 1 thick)
+		 * 252 = Condiment (copies roughly whatever is below it in shape)
 		 * 253 = Toasted Toast
 		 * 254 = Sandwich Toast
 		 * 255 = NULL
 		 */
-		public static final byte    [] INGREDIENT_MODEL_IDS       = new byte[256];
-		public static final byte    [] INGREDIENT_MODEL_THICKNESS = 
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
-		, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-		, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4
-		, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
-		, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6
-		, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
-		, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
-		, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
-		,10,10,10,10,10,10,10,10,10,10
-		,11,11,11,11,11,11,11,11,11,11
-		,12,12,12,12,12,12,12,12,12,12
-		,13,13,13,13,13,13,13,13,13,13
-		,14,14,14,14,14,14,14,14,14,14
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-		, 1, 3, 1, 2, 2, 0
-		};
-		
-		public static final ITexture[] INGREDIENT_TEXTURES_TOP   = new ITexture[256];
-		public static final ITexture[] INGREDIENT_TEXTURES_SIDES = new ITexture[256];
+		public static final byte    [] INGREDIENT_MODEL_IDS       = new byte    [256];
+		public static final byte    [] INGREDIENT_MODEL_THICKNESS = new byte    [256];
+		public static final ITexture[] INGREDIENT_TEXTURES_TOP    = new ITexture[256];
+		public static final ITexture[] INGREDIENT_TEXTURES_SIDES  = new ITexture[256];
 		
 		public static final ItemStackMap<ItemStackContainer, Byte> INGREDIENTS = new ItemStackMap<>();
 	}

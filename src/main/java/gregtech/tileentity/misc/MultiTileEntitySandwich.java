@@ -243,9 +243,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {
 		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]);
 		if (tID == 255) return F;
-		if (aRenderPass % 4 == 0) return T;
-		if (tID < 150) return tID % 10 == 9;
-		return F;
+		return aRenderPass % 4 == 0 || tID == 14;
 	}
 	
 	@Override
@@ -255,39 +253,32 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	
 	@Override
 	public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]);
-		if (tID >= 253) return box(aBlock, PX_P[1]/2, PX_P[aRenderPass/4], PX_P[1]/2, PX_N[1]+PX_P[1]/2, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[1]+PX_P[1]/2);
-		if (tID < 150) {
-			switch (tID % 10) {
-			case  2: return box(aBlock, PX_P[ 2], PX_P[aRenderPass/4], PX_P[ 2], PX_N[ 2], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 2]);
-			case  3: return box(aBlock, PX_P[ 3], PX_P[aRenderPass/4], PX_P[ 3], PX_N[ 3], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 3]);
-			case  9: switch (aRenderPass % 4) {
-			default: return box(aBlock, PX_P[ 1], PX_P[aRenderPass/4], PX_P[ 1], PX_N[ 9], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]);
-			case  1: return box(aBlock, PX_P[ 1], PX_P[aRenderPass/4], PX_P[ 9], PX_N[ 9], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]);
-			case  2: return box(aBlock, PX_P[ 9], PX_P[aRenderPass/4], PX_P[ 1], PX_N[ 1], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]);
-			case  3: return box(aBlock, PX_P[ 9], PX_P[aRenderPass/4], PX_P[ 9], PX_N[ 1], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]);
-			}
+		short tID = UT.Code.unsignB(mDisplay[aRenderPass/4]), tModel = UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[tID]), tThickness = Sandwiches.INGREDIENT_MODEL_THICKNESS[tID];
+		if (tModel == 252 && aRenderPass >= 4) {
+			switch(UT.Code.unsignB(Sandwiches.INGREDIENT_MODEL_IDS[UT.Code.unsignB(mDisplay[aRenderPass/4-1])])) {
+			default : return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 1]+PX_OFFSET);
+			case   2: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 2]+PX_OFFSET);
+			case  14: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 2]+PX_OFFSET);
+			case   3: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 3]+PX_OFFSET);
+			case 252: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4+tThickness], PX_N[ 3]+PX_OFFSET);
 			}
 		}
-		if (tID == 252 && aRenderPass >= 4) {
-			tID = UT.Code.unsignB(mDisplay[aRenderPass/4-1]);
-			if (tID < 150) {
-				switch (tID % 10) {
-				case  2: return box(aBlock, PX_P[ 2]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 2]-PX_OFFSET, PX_N[ 2]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 2]+PX_OFFSET);
-				case  3: return box(aBlock, PX_P[ 3]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 3]-PX_OFFSET, PX_N[ 3]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 3]+PX_OFFSET);
-				case  9: switch (aRenderPass % 4) {
-				default: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
-				case  1: return box(aBlock, PX_P[ 1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 9]-PX_OFFSET, PX_N[ 9]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
-				case  2: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 1]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 9]+PX_OFFSET);
-				case  3: return box(aBlock, PX_P[ 9]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[ 9]-PX_OFFSET, PX_N[ 1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[ 1]+PX_OFFSET);
-				}
-				}
-			}
-			// Default Condiment
-			return box(aBlock, PX_P[1]-PX_OFFSET, PX_P[aRenderPass/4]-PX_P[1]/2, PX_P[1]-PX_OFFSET, PX_N[1]+PX_OFFSET, PX_P[aRenderPass/4]+PX_P[1], PX_N[1]+PX_OFFSET);
+		
+		switch(tModel) {
+		case   1: return box(aBlock, PX_P[ 1]  , PX_P[aRenderPass/4], PX_P[ 1]  , PX_N[ 1]          , PX_P[aRenderPass/4+tThickness], PX_N[ 1]          );
+		case   2: return box(aBlock, PX_P[ 2]  , PX_P[aRenderPass/4], PX_P[ 2]  , PX_N[ 2]          , PX_P[aRenderPass/4+tThickness], PX_N[ 2]          );
+		case   3: return box(aBlock, PX_P[ 3]  , PX_P[aRenderPass/4], PX_P[ 3]  , PX_N[ 3]          , PX_P[aRenderPass/4+tThickness], PX_N[ 3]          );
+		case  14: switch (aRenderPass % 4) {
+		default : return box(aBlock, PX_P[ 1]  , PX_P[aRenderPass/4], PX_P[ 1]  , PX_N[ 9]          , PX_P[aRenderPass/4+tThickness], PX_N[ 9]          );
+		case   1: return box(aBlock, PX_P[ 1]  , PX_P[aRenderPass/4], PX_P[ 9]  , PX_N[ 9]          , PX_P[aRenderPass/4+tThickness], PX_N[ 1]          );
+		case   2: return box(aBlock, PX_P[ 9]  , PX_P[aRenderPass/4], PX_P[ 1]  , PX_N[ 1]          , PX_P[aRenderPass/4+tThickness], PX_N[ 9]          );
+		case   3: return box(aBlock, PX_P[ 9]  , PX_P[aRenderPass/4], PX_P[ 9]  , PX_N[ 1]          , PX_P[aRenderPass/4+tThickness], PX_N[ 1]          );
 		}
-		// Default
-		return box(aBlock, PX_P[1], PX_P[aRenderPass/4], PX_P[1], PX_N[1], PX_P[aRenderPass/4]+PX_P[Sandwiches.INGREDIENT_MODEL_THICKNESS[tID]], PX_N[1]);
+		case 252: return box(aBlock, PX_P[ 1]  , PX_P[aRenderPass/4], PX_P[ 1]  , PX_N[ 1]          , PX_P[aRenderPass/4+tThickness], PX_N[ 1]          );
+		case 253: return box(aBlock, PX_P[ 1]/2, PX_P[aRenderPass/4], PX_P[ 1]/2, PX_N[ 1]+PX_P[1]/2, PX_P[aRenderPass/4+tThickness], PX_N[ 1]+PX_P[1]/2);
+		case 254: return box(aBlock, PX_P[ 1]/2, PX_P[aRenderPass/4], PX_P[ 1]/2, PX_N[ 1]+PX_P[1]/2, PX_P[aRenderPass/4+tThickness], PX_N[ 1]+PX_P[1]/2);
+		default : return box(aBlock, PX_P[ 1]  , PX_P[aRenderPass/4], PX_P[ 1]  , PX_N[ 1]          , PX_P[aRenderPass/4+tThickness], PX_N[ 1]          );
+		}
 	}
 	
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[1], 0, PX_P[1], PX_N[1], PX_P[mSize], PX_N[1]);}
