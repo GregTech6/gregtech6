@@ -817,7 +817,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			for (String tFluid : FluidsGT.VINEGAR) if (FL.exists(tFluid))
 			RM.Bath.addRecipe1(T, 0, 16, aEvent.mStack, FL.make(tFluid, 50), NF, IL.Food_Pickle.get(1));
 		}});
-		addListener("cropPickle", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener("cropPickle", "foodPickles", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_veggie(aEvent.mStack, FL.Juice_Cucumber, 150, 5000, "Canned Pickles", 4, 0, 0, 4, 0);
 			RM.Slicer.addRecipe2(T, 16, 16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Pickle_Sliced.get(4));
 		}});
@@ -836,7 +836,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropChilipepper", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop(aEvent.mStack, FL.Sauce_Chili, 100, OP.dustSmall.mat(MT.Chili, 4), 8000, "Canned Chilipeppers", IL.CANS_VEGGIE, 0, 0, 4, 4, 0);
-			if (!ST.isGT(aEvent.mStack) && ST.food(aEvent.mStack) > 0 && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)20);
+			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)20);
 		}});
 		addListener("cropCinnamon", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop(aEvent.mStack, null, 0, OP.dustSmall.mat(MT.Cinnamon, 4), 9000, null, null, 0, 0, 0, 4, 0);
