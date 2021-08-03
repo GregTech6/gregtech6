@@ -68,6 +68,22 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		for (int i = 0; i < mStacks.length; i++) mStacks[i] = ST.load(aNBT, "sandwich."+i);
+		
+		// Default Sandwich
+		if (!UT.Code.containsSomething(mStacks)) {
+			mStacks[11] = IL.Food_Toast_Sliced.get(1);
+			mStacks[10] = IL.Food_Pickle_Sliced.get(1);
+			mStacks[ 9] = ST.make(ItemsGT.BOTTLES, 1, 1020); // TODO Mustard instead of Mayo
+			mStacks[ 8] = IL.Food_Tomato_Sliced.get(1);
+			mStacks[ 7] = ST.make(ItemsGT.BOTTLES, 1, 3101);
+			mStacks[ 6] = IL.Food_Onion_Sliced.get(1);
+			mStacks[ 5] = IL.Food_Cheese_Sliced.get(1);
+			mStacks[ 4] = IL.Food_Cucumber_Sliced.get(1); // TODO Replace with Lettuce
+			mStacks[ 2] = IL.Food_Meat.get(1);
+			mStacks[ 0] = IL.Food_Toast_Sliced.get(1);
+		}
+		
+		// Form the Sandwich Model
 		updateSandwich();
 	}
 	
@@ -122,6 +138,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.mul(tStackSize, ST.container(mStacks[mSize], T)));
 					updateSandwich();
 					playCollect();
+					return T;
 				}
 			}
 		}
@@ -150,33 +167,19 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	
 	public void updateSandwich() {
-		for (byte i = 0; i < mStacks.length; i++) {
-			Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]);
-			mDisplay[i] = (tID == null ? (byte)255 : tID);
-		}
-		updateSandwichSize();
-		if (mSize == 0) {
-			if (worldObj == null) {
-				mStacks[ 0] = IL.Food_Toast_Sliced.get(1);
-				mStacks[ 2] = IL.Food_Meat.get(1);
-				mStacks[ 4] = IL.Food_Cheese_Sliced.get(1);
-				mStacks[ 5] = IL.Food_Onion_Sliced.get(1);
-				mStacks[ 6] = ST.make(ItemsGT.BOTTLES, 1, 3101);
-				mStacks[ 7] = IL.Food_Tomato_Sliced.get(1);
-				mStacks[ 8] = ST.make(ItemsGT.BOTTLES, 1, 1020); // TODO Mustard instead of Mayo
-				mStacks[ 9] = IL.Food_Pickle_Sliced.get(1);
-				mStacks[10] = IL.Food_Toast_Sliced.get(1);
-			} else {
-				if (isServerSide()) setToAir();
+		if (worldObj == null || isServerSide()) {
+			for (byte i = 0; i < mStacks.length; i++) {
+				Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]);
+				mDisplay[i] = (tID == null ? (byte)255 : tID);
 			}
-			return;
+			updateSandwichSize();
+			updateClientData();
 		}
-		updateClientData();
 	}
 	public void updateSandwichSize() {
 		mSize = 0;
 		for (byte i = 0; i < mDisplay.length; i++) if (mDisplay[i] != (byte)255) {
-			mSize = UT.Code.bind4(i + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]);
+			mSize = (byte)UT.Code.bind(0, 16, i + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]);
 		}
 	}
 	
@@ -312,9 +315,9 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		}
 	}
 	
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[1], 0, PX_P[1], PX_N[1], PX_P[mSize], PX_N[1]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[1], 0, PX_P[1], PX_N[1], PX_P[mSize], PX_N[1]);}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[1], 0, PX_P[1], PX_N[1], PX_P[mSize], PX_N[1]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[1], 0, PX_P[1], PX_N[1], PX_P[Math.max(1, mSize)], PX_N[1]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[1], 0, PX_P[1], PX_N[1], PX_P[Math.max(1, mSize)], PX_N[1]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[1], 0, PX_P[1], PX_N[1], PX_P[Math.max(1, mSize)], PX_N[1]);}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
 	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}

@@ -289,10 +289,14 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shaped(IL.Food_Onion_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropOnion");
 		
 		
-		IL.Food_Cucumber                       .set(addItem(tLastID =    40, "Cucumber"                                 , "Not a Sea Cucumber! Not Rick either!", "cropCucumber"        , new FoodStat( 1, 1.200F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
+		IL.Food_Cucumber                       .set(addItem(tLastID =    40, "Cucumber"                                 , "Not a Sea Cucumber!"         , "cropCucumber"                , new FoodStat( 1, 1.200F,   0, C+36,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cucumber_Sliced                .set(addItem(tLastID =    41, "Cucumber Slice"                           , "QUEWWWCUMMMBURRR!!!"                                         , new FoodStat( 0, 0.300F,   0, C+36,  0.30F,   0,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)23);
+		IL.Food_Pickle                         .set(addItem(tLastID =    42, "Pickle"                                   , "Not a Sea Pickle! Not Rick either!", "cropPickle"            , new FoodStat( 1, 1.200F,   0, C+36,  0.30F,   4,   0,   0,   4,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1), TC.stack(TC.VENENUM, 1)));
+		IL.Food_Pickle_Sliced                  .set(addItem(tLastID =    43, "Pickle Slice"                             , "You seem to be in a Pickle."                                 , new FoodStat( 0, 0.300F,   0, C+36,  0.30F,   1,   0,   0,   1,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)41);
 		RM.replicateOrganic( 4,  8, IL.Food_Cucumber.get(1));
+		RM.replicateOrganic( 4, 13, IL.Food_Pickle.get(1));
 		CR.shaped(IL.Food_Cucumber_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropCucumber");
+		CR.shaped(IL.Food_Pickle_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "cropPickle");
 		
 		
 		IL.Food_Chili_Pepper                   .set(addItem(tLastID =    50, "Chili Pepper"                             , "It is red and hot"           , "cropChilipepper"             , new FoodStat( 1, 1.200F, -10, C+40,  0.50F,   0,   0,  10,   0,   0, EnumAction.eat, null                                 , F, T, F, T, PotionsGT.ID_FLAMMABLE, 300, 0, 70, Potion.confusion.id, 200, 1, 40), TC.stack(TC.MESSIS, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.FAMES, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)20);

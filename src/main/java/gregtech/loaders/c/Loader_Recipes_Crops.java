@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
 import gregapi.data.ANY;
+import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.FL;
@@ -813,6 +814,12 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropCucumber", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_veggie(aEvent.mStack, FL.Juice_Cucumber, 150, 5000, "Canned Cucumbers", 0, 0, 0, 4, 0);
 			RM.Slicer.addRecipe2(T, 16, 16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Cucumber_Sliced.get(4));
+			for (String tFluid : FluidsGT.VINEGAR) if (FL.exists(tFluid))
+			RM.Bath.addRecipe1(T, 0, 16, aEvent.mStack, FL.make(tFluid, 50), NF, IL.Food_Pickle.get(1));
+		}});
+		addListener("cropPickle", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.crop_veggie(aEvent.mStack, FL.Juice_Cucumber, 150, 5000, "Canned Pickles", 4, 0, 0, 4, 0);
+			RM.Slicer.addRecipe2(T, 16, 16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Pickle_Sliced.get(4));
 		}});
 		
 		

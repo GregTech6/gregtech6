@@ -250,7 +250,7 @@ public class GT_Client extends GT_Proxy {
 		Sandwiches.INGREDIENT_TEXTURES_SIDES [ 11] = BlockTextureDefault.get("sandwiches/CONDIMENT_SIDES", DYES[11]);
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 11] = BlockTextureDefault.get("sandwiches/CONDIMENT_TOP"  , DYES[11]);
 		Sandwiches.INGREDIENT_MODEL_IDS      [ 11] = (byte)252;
-		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 11] = (byte)1;
+		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 11] = (byte)  1;
 		Sandwiches.INGREDIENT_TEXTURES_SIDES [ 12] = BlockTextureDefault.get("sandwiches/CONDIMENT_SIDES", DYES[12]);
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 12] = BlockTextureDefault.get("sandwiches/CONDIMENT_TOP"  , DYES[12]);
 		Sandwiches.INGREDIENT_MODEL_IDS      [ 12] = (byte)252;
@@ -367,6 +367,10 @@ public class GT_Client extends GT_Proxy {
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 40] = BlockTextureDefault.get("sandwiches/RAINBOW_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS      [ 40] = (byte)252;
 		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 40] = (byte)  1;
+		Sandwiches.INGREDIENT_TEXTURES_SIDES [ 41] = BlockTextureDefault.get("sandwiches/PICKLE_SIDES");
+		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 41] = BlockTextureDefault.get("sandwiches/PICKLE_TOP");
+		Sandwiches.INGREDIENT_MODEL_IDS      [ 41] = (byte) 14;
+		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 41] = (byte)  1;
 	}
 	
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;
