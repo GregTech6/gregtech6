@@ -29,6 +29,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -98,7 +99,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
 		int tCount = 0;
 		for (int i = 0; i < mStacks.length; i++) if (ST.valid(mStacks[i])) tCount++;
-		if (tCount == 1) for (int i = 0; i < mStacks.length; i++) if (ST.valid(mStacks[i]) && ST.container(mStacks[i], T) == null) rList.add(mStacks[i]);
+		if (tCount == 1) if (ST.valid(mStacks[0]) && ST.container(mStacks[0], T) == null) rList.add(mStacks[0]);
 		if (rList.isEmpty()) {
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID());
 			if (tRegistry != null) rList.add(tRegistry.getItem(getMultiTileEntityID(), mStacks[0].stackSize, writeItemNBT(UT.NBT.make())));
@@ -109,6 +110,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
+		updateSandwich();
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
 		if (ST.valid(aStack) && ST.valid(mStacks[0]) && !ST.equal(getTopIngredient(), aStack)) {
 			int tStackSize = mStacks[0].stackSize;
@@ -148,18 +150,34 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	
 	public void updateSandwich() {
-		mSize = 0;
-		for (int i = 0; i < mStacks.length; i++) {
+		for (byte i = 0; i < mStacks.length; i++) {
 			Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]);
 			mDisplay[i] = (tID == null ? (byte)255 : tID);
-			mSize += Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])];
-			if (i == 0 && ST.invalid(mStacks[i])) {
-				mStacks[i] = IL.Food_Toast_Sliced.get(1);
-				mDisplay[i] = (byte)254;
-				mSize = 2;
+		}
+		updateSandwichSize();
+		if (mSize == 0) {
+			if (worldObj == null) {
+				mStacks[ 0] = IL.Food_Toast_Sliced.get(1);
+				mStacks[ 2] = IL.Food_Meat.get(1);
+				mStacks[ 4] = IL.Food_Cheese_Sliced.get(1);
+				mStacks[ 5] = IL.Food_Onion_Sliced.get(1);
+				mStacks[ 6] = ST.make(ItemsGT.BOTTLES, 1, 3101);
+				mStacks[ 7] = IL.Food_Tomato_Sliced.get(1);
+				mStacks[ 8] = ST.make(ItemsGT.BOTTLES, 1, 1020); // TODO Mustard instead of Mayo
+				mStacks[ 9] = IL.Food_Pickle_Sliced.get(1);
+				mStacks[10] = IL.Food_Toast_Sliced.get(1);
+			} else {
+				setToAir();
 			}
+			return;
 		}
 		updateClientData();
+	}
+	public void updateSandwichSize() {
+		mSize = 0;
+		for (byte i = 0; i < mDisplay.length; i++) if (mDisplay[i] != (byte)255) {
+			mSize = UT.Code.bind4(i + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]);
+		}
 	}
 	
 	@Override
@@ -241,8 +259,8 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mDisplay = aData;
-		mSize = 0; for (int i = 0; i < mDisplay.length; i++) mSize += Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])];
+		System.arraycopy(aData, 0, mDisplay, 0, 16);
+		updateSandwichSize();
 		return T;
 	}
 	

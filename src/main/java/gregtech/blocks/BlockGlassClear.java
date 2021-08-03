@@ -49,7 +49,7 @@ import net.minecraft.world.World;
 public class BlockGlassClear extends BlockColored {
 	public BlockGlassClear(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.glass, soundTypeGlass, aUnlocalised, "Glass", MT.Glass, 0.5F, 0.5F, 0, Textures.BlockIcons.GLASSES_CLEAR);
-		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U*9));
+		OM.data(ST.make(this, 1, W), new OreDictItemData(MT.Glass, U *9));
 		BlocksGT.breakableGlass.add(this);
 	}
 	
@@ -60,7 +60,7 @@ public class BlockGlassClear extends BlockColored {
 	
 	protected BlockGlassClear(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
-		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U2*9));
+		OM.data(ST.make(this, 1, W), new OreDictItemData(MT.Glass, U2*9));
 		BlocksGT.breakableGlass.add(this);
 	}
 	

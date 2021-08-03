@@ -369,7 +369,7 @@ public enum IL implements IItemContainer {
 	Food_Tomato, Food_Tomato_Sliced, Food_MTomato,
 	Food_Grapes_Purple, Food_Grapes_Red, Food_Grapes_Green, Food_Grapes_White, Food_Raisins_Purple, Food_Raisins_Red, Food_Raisins_Green, Food_Raisins_White, Food_Raisins_Chocolate,
 	Food_Pomegranate, Food_Pomeraisins,
-	Food_Cucumber, Food_Cucumber_Sliced,
+	Food_Cucumber, Food_Cucumber_Sliced, Food_Pickle, Food_Pickle_Sliced,
 	Crop_Wheat, Crop_Barley, Crop_Rye, Crop_Oats, Crop_AbyssalOats, Crop_Rice,
 	Bale_Wheat, Bale_Barley, Bale_Rye, Bale_Oats, Bale_AbyssalOats, Bale_Rice,
 	Grass, Grass_Dry, Grass_Moldy, Grass_Rotten, Bale, Bale_Dry, Bale_Moldy, Bale_Rotten,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,7 +39,7 @@ import net.minecraft.item.ItemBlock;
 public class BlockConcreteReinforced extends BlockColored {
 	public BlockConcreteReinforced(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.rock, soundTypeStone, aUnlocalised, "Reinforced Concrete", null, 8.0F, 4.0F, 3, Textures.BlockIcons.CONCRETES_REINFORCED);
-		OM.data(ST.make(this, 1, W), new OreDictItemData(MT.Concrete, U, ANY.Iron, OP.stick.mAmount));
+		OM.data(ST.make(this, 1, W), new OreDictItemData(MT.Concrete, U , ANY.Iron, OP.stick.mAmount  ));
 	}
 	
 	@Override

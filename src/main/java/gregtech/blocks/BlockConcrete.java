@@ -30,7 +30,6 @@ import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
-import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -50,8 +49,8 @@ import net.minecraft.world.World;
 public class BlockConcrete extends BlockColored implements IBlockToolable {
 	public BlockConcrete(String aUnlocalised) {
 		super(ItemBlockMetaType.class, Material.rock, soundTypeStone, aUnlocalised, "Concrete", null, 2.0F, 1.0F, 1, Textures.BlockIcons.CONCRETES);
-		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.stone, MT.Concrete);
 		MT.Concrete.mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, DYE_INDEX_LightGray);
+		OM.data(ST.make(this, 1, W), new OreDictItemData(MT.Concrete, U ));
 	}
 	
 	@Override
