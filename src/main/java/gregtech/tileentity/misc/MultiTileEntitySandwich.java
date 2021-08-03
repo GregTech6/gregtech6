@@ -167,7 +167,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 				mStacks[ 9] = IL.Food_Pickle_Sliced.get(1);
 				mStacks[10] = IL.Food_Toast_Sliced.get(1);
 			} else {
-				setToAir();
+				if (isServerSide()) setToAir();
 			}
 			return;
 		}
