@@ -126,11 +126,11 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
-		updateSandwich();
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
 		if (ST.valid(aStack) && ST.valid(mStacks[0]) && !ST.equal(getTopIngredient(), aStack)) {
 			int tStackSize = mStacks[0].stackSize;
 			if (aStack.stackSize >= tStackSize) {
+				updateSandwich();
 				Byte tID = Sandwiches.INGREDIENTS.get(aStack);
 				if (tID != null && mSize + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)] <= 16) {
 					mStacks[mSize] = ST.amount(tStackSize, aStack);
@@ -177,7 +177,6 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		}
 	}
 	public void updateSandwichSize() {
-		mSize = 0;
 		for (byte i = 0; i < mDisplay.length; i++) if (mDisplay[i] != (byte)255) {
 			mSize = (byte)UT.Code.bind(0, 16, i + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]);
 		}
