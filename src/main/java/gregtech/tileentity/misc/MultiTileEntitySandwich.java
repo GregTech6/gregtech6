@@ -127,24 +127,29 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
-		if (ST.valid(aStack) && ST.valid(mStacks[0]) && !ST.equal(getTopIngredient(), aStack)) {
-			int tStackSize = mStacks[0].stackSize;
-			if (aStack.stackSize >= tStackSize) {
-				updateSandwich();
-				Byte tID = Sandwiches.INGREDIENTS.get(aStack);
-				if (tID != null && mSize + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)] <= 16) {
-					mStacks[mSize] = ST.amount(tStackSize, aStack);
-					ST.use(aPlayer, aStack, tStackSize);
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.mul(tStackSize, ST.container(mStacks[mSize], T)));
-					updateSandwich();
-					playCollect();
-					return T;
-				}
-			}
+		int tStackSize = addIngredient(aStack);
+		if (tStackSize > 0) {
+			ItemStack tContainer = ST.mul(tStackSize, ST.container(aStack, T));
+			ST.use(aPlayer, aStack, tStackSize);
+			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tContainer);
+			return T;
 		}
 		return T;
 	}
 	
+	public int addIngredient(ItemStack aStack) {
+		if (ST.invalid(aStack) || ST.equal(getIngredientTop(), aStack)) return 0;
+		int rStackSize = getIngredientCount();
+		if (IL.Bottle_Empty.equal(ST.container(aStack, T), T, T)) rStackSize = (int)UT.Code.divup(rStackSize, 4);
+		if (aStack.stackSize < rStackSize) return 0;
+		updateSandwich();
+		Byte tID = Sandwiches.INGREDIENTS.get(aStack);
+		if (tID == null || mSize + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)] > 16) return 0;
+		mStacks[mSize] = ST.amount(rStackSize, aStack);
+		updateSandwich();
+		playCollect();
+		return rStackSize;
+	}
 	public int getTotalFood() {
 		int rFood = 0;
 		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rFood += Math.max(1, ST.food(aStack));
@@ -160,10 +165,12 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		for (ItemStack aStack : mStacks) if (ST.valid(aStack)) rHydration += ST.hydration(aStack);
 		return rHydration;
 	}
-	
-	public ItemStack getTopIngredient() {
+	public ItemStack getIngredientTop() {
 		for (int i = mStacks.length-1; i >= 0; i--) if (ST.valid(mStacks[i])) return mStacks[i];
 		return null;
+	}
+	public int getIngredientCount() {
+		return ST.valid(mStacks[0]) ? mStacks[0].stackSize : 1;
 	}
 	
 	public void updateSandwich() {

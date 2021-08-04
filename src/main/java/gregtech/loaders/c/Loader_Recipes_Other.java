@@ -87,11 +87,6 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		}
 		
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U  ), OM.dust(MT.NaNO3, U  ), OM.dust(MT.Niter, 2*U  ));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U4 ), OM.dust(MT.NaNO3, U4 ), OM.dust(MT.Niter, 2*U4 ));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U9 ), OM.dust(MT.NaNO3, U9 ), OM.dust(MT.Niter, 2*U9 ));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U72), OM.dust(MT.NaNO3, U72), OM.dust(MT.Niter, 2*U72));
-		
 		for (OreDictMaterial tSapphire : ANY.Sapphire.mToThis) {
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Redstone, 5*U ), OM.dust(MT.EnergiumRed , 9*U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone, 5*U9), OM.dust(MT.EnergiumRed ,   U));

@@ -118,11 +118,12 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Logistics_Generic_Storage       .set(addItem(tLastID =  1098, "Generic Logistics Storage Bus"         , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericStorage.INSTANCE                      , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITIO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
 		IL.Cover_Logistics_Dump                  .set(addItem(tLastID =  1099, "Logistics Dump Bus (Item)"             , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericDump.INSTANCE                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITIO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
 		
+		// Cycle Logistics Displays
 		CR.shapeless(IL.Cover_Logistics_Display_CPU_Logic     .get(1), new Object[] {IL.Cover_Logistics_Display_CPU_Conversion});
 		CR.shapeless(IL.Cover_Logistics_Display_CPU_Control   .get(1), new Object[] {IL.Cover_Logistics_Display_CPU_Logic     });
 		CR.shapeless(IL.Cover_Logistics_Display_CPU_Storage   .get(1), new Object[] {IL.Cover_Logistics_Display_CPU_Control   });
 		CR.shapeless(IL.Cover_Logistics_Display_CPU_Conversion.get(1), new Object[] {IL.Cover_Logistics_Display_CPU_Storage   });
-		
+		// Cycle Logistics IO
 		CR.shapeless(IL.Cover_Logistics_Fluid_Export          .get(1), new Object[] {IL.Cover_Logistics_Dump                  });
 		CR.shapeless(IL.Cover_Logistics_Fluid_Import          .get(1), new Object[] {IL.Cover_Logistics_Fluid_Export          });
 		CR.shapeless(IL.Cover_Logistics_Fluid_Storage         .get(1), new Object[] {IL.Cover_Logistics_Fluid_Import          });
@@ -133,6 +134,9 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shapeless(IL.Cover_Logistics_Generic_Import        .get(1), new Object[] {IL.Cover_Logistics_Generic_Export        });
 		CR.shapeless(IL.Cover_Logistics_Generic_Storage       .get(1), new Object[] {IL.Cover_Logistics_Generic_Import        });
 		CR.shapeless(IL.Cover_Logistics_Dump                  .get(1), new Object[] {IL.Cover_Logistics_Generic_Storage       });
+		// Reset Filters
+		CR.shapeless(IL.Cover_Filter_Item                     .get(1), new Object[] {IL.Cover_Filter_Item                     });
+		CR.shapeless(IL.Cover_Filter_Fluid                    .get(1), new Object[] {IL.Cover_Filter_Fluid                    });
 		
 		
 		

@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MD;
@@ -41,6 +42,7 @@ import gregapi.tileentity.base.TileEntityBase10Attachment;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregtech.tileentity.misc.MultiTileEntitySandwich;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -108,6 +110,17 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(FL.fill_(tDelegator2, aFluid, T)), T) != null) {
 								UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 								UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
+							}
+							return T;
+						} else if (tDelegator2.mTileEntity instanceof MultiTileEntitySandwich) {
+							ItemStack tStack = FL.fill(aFluid, IL.Bottle_Empty.get(1), F, F);
+							if (ST.valid(tStack)) {
+								FluidStack tFluid = FL.mul(FL.getFluid(tStack, T), ((MultiTileEntitySandwich)tDelegator2.mTileEntity).getIngredientCount(), 4, T);
+								if (tFluid != null && tFluid.amount >= aFluid.amount && ((MultiTileEntitySandwich)tDelegator2.mTileEntity).addIngredient(tStack) > 0) {
+									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tFluid.amount, T);
+									UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
+									return T;
+								}
 							}
 							return T;
 						}
