@@ -116,7 +116,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 							ItemStack tStack = FL.fill(aFluid, IL.Bottle_Empty.get(1), F, F);
 							if (ST.valid(tStack)) {
 								FluidStack tFluid = FL.mul(FL.getFluid(tStack, T), ((MultiTileEntitySandwich)tDelegator2.mTileEntity).getIngredientCount(), 4, T);
-								if (tFluid != null && tFluid.amount >= aFluid.amount && ((MultiTileEntitySandwich)tDelegator2.mTileEntity).addIngredient(tStack) > 0) {
+								if (tFluid != null && tFluid.amount <= aFluid.amount && ((MultiTileEntitySandwich)tDelegator2.mTileEntity).addIngredient(tStack) > 0) {
 									((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tFluid.amount, T);
 									UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 									return T;

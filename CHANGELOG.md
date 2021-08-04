@@ -36,6 +36,7 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 Modular Sandwiches
 Just shiftclick a piece(s) of Toast on a solid Surface, then rightclick all your favourite Sandwich Ingredients on it, and harvest the final result.
 You can make up to 16 Sandwiches at once, by having a Stack of 16 Toasts in your Hand while placing it. Though you need 16 times the Ingredients at once obviously. Ingredients that are inside Glass Bottles will only require a rounded up quarter of the amount.
+It is possible to use the Fluid Tap above a Sandwich to put a Condiment onto it, kindof like a Ketchup Dispenser.
 There is absolutely no Law on how you can make your Sandwich!
 Except for not repeating any Ingredients back to back. (acts as Doubleclick protection)
 And having to have a Toast or Toasted Toast as a Base. (You dont have to have a Toast on top though)
