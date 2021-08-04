@@ -40,6 +40,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.item.IItemGT;
 import gregapi.network.INetworkHandler;
@@ -325,7 +326,7 @@ public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlo
 	@Override public final boolean recolourBlockRGB(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection, int aRGB) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_OnPainting && ((IMTE_OnPainting)aTileEntity).onPainting(UT.Code.side(aDirection), aRGB);}
 	@Override public final boolean usesRenderPass(int aRenderPass, ItemStack aStack) {return T;}
 	@Override public final boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return T;}
-	@Override public final void receiveBlockError(IBlockAccess aWorld, int aX, int aY, int aZ, String aError) {TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (tTileEntity instanceof ITileEntity) {((ITileEntity)tTileEntity).setError(aError); WD.update(aWorld, aX, aY, aZ);}}
+	@Override public final void receiveBlockError(IBlockAccess aWorld, int aX, int aY, int aZ, String aError) {TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (tTileEntity instanceof ITileEntity) {((ITileEntity)tTileEntity).setError(aError); WD.update(aWorld, aX, aY, aZ); UT.Sounds.play(SFX.GT_BEEP, 100, 1.0F, aX, aY, aZ);}}
 	@Override public final void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof IMTE_OnWalkOver) ((IMTE_OnWalkOver)aTileEntity).onWalkOver(aEntity);}
 	@Override public final boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_IsSealable && ((IMTE_IsSealable)aTileEntity).isSealable((byte)(UT.Code.side(aDirection) ^ 1));}
 	@Override public final void onOxygenAdded  (World aWorld, int aX, int aY, int aZ) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof IMTE_OnOxygenAdded  ) ((IMTE_OnOxygenAdded  )aTileEntity).onOxygenAdded  ();}

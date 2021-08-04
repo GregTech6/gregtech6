@@ -138,16 +138,40 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	
 	public int addIngredient(ItemStack aStack) {
+		// Do not allow invalid Stacks or adding the same ingredient twice.
 		if (ST.invalid(aStack) || ST.equal(getIngredientTop(), aStack)) return 0;
+		// Make sure to deduct the proper amount of Stuff.
 		int rStackSize = getIngredientCount();
+		// Bottles coutn as 4 times the value! :D
 		if (IL.Bottle_Empty.equal(ST.container(aStack, T), T, T)) rStackSize = (int)UT.Code.divup(rStackSize, 4);
+		// Check if the Stacksize is correct.
 		if (aStack.stackSize < rStackSize) return 0;
+		// Make sure the Sandwich actually is properly set up before trying to do Stuff to it.
 		updateSandwich();
+		// More than a full Block is not really an option.
+		if (mSize >= 16) return 0;
+		// This should never ever happen, I do not get why it sometimes still happens on dedicated Servers...
+		if (ST.valid(mStacks[mSize]) || mSize == 0) {
+			ERR.println("ERROR: Attempted to add Sandwich Ingredient to already occupied Slot: " + mSize + " ; Clientside: " + worldObj.isRemote);
+			for (byte i = 0; i < mStacks.length; i++) if (ST.valid(mStacks[i])) {
+				ERR.println(i + ": " + ST.regName(mStacks[i]) + ":" + ST.meta(mStacks[i]) + " ; Display: " + mDisplay[i]);
+			} else {
+				ERR.println(i + ": null ; Display: " + mDisplay[i]);
+			}
+			ERR.println("==================================================");
+			return 0;
+		}
+		// Get the ID.
 		Byte tID = Sandwiches.INGREDIENTS.get(aStack);
-		if (tID == null || mSize + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)] > 16) return 0;
+		// Check if the ingredient exists and fits onto the Sandwich.
+		if (tID == null || mSize + Math.max(1, Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)]) > 16) return 0;
+		// Add the Ingredient.
 		mStacks[mSize] = ST.amount(rStackSize, aStack);
+		// Update the Sandwich.
 		updateSandwich();
+		// Play the Sound of Collecting an Item.
 		playCollect();
+		// Return how many of the Ingredient was used.
 		return rStackSize;
 	}
 	public int getTotalFood() {
@@ -185,7 +209,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	public void updateSandwichSize() {
 		for (byte i = 0; i < mDisplay.length; i++) if (mDisplay[i] != (byte)255) {
-			mSize = (byte)UT.Code.bind(0, 16, i + Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]);
+			mSize = (byte)UT.Code.bind(0, 16, i + Math.max(1, Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]));
 		}
 	}
 	
