@@ -162,7 +162,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 			return 0;
 		}
 		// Get the ID.
-		Byte tID = Sandwiches.INGREDIENTS.get(aStack);
+		Byte tID = Sandwiches.INGREDIENTS.get(aStack); if (tID == null) tID = Sandwiches.INGREDIENTS.get(aStack, W);
 		// Check if the ingredient exists and fits onto the Sandwich.
 		if (tID == null || mSize + Math.max(1, Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(tID)]) > 16) return 0;
 		// Add the Ingredient.
@@ -200,7 +200,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	public void updateSandwich() {
 		if (worldObj == null || isServerSide()) {
 			for (byte i = 0; i < mStacks.length; i++) {
-				Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]);
+				Byte tID = Sandwiches.INGREDIENTS.get(mStacks[i]); if (tID == null) tID = Sandwiches.INGREDIENTS.get(mStacks[i], W);
 				mDisplay[i] = (tID == null ? (byte)255 : tID);
 			}
 			updateSandwichSize();
