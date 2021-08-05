@@ -620,11 +620,13 @@ public class CS {
 	/** Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2] */
 	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2};
 	/** Side->Opposite Mappings. */
-	public static final byte[]              OPOS = { 1, 0, 3, 2, 5, 4, 6}, OPPOSITES = { 1, 0, 3, 2, 5, 4, 6};
+	public static final byte[]              OPOS = { 1, 0, 3, 2, 5, 4, 6};
 	/** Side->Offset Mappings. */
-	public static final byte[]              OFFX = { 0, 0, 0, 0,-1,+1, 0}, OFFSETS_X = { 0, 0, 0, 0,-1,+1, 0},
-											OFFY = {-1,+1, 0, 0, 0, 0, 0}, OFFSETS_Y = {-1,+1, 0, 0, 0, 0, 0},
-											OFFZ = { 0, 0,-1,+1, 0, 0, 0}, OFFSETS_Z = { 0, 0,-1,+1, 0, 0, 0};
+	public static final byte[]              OFFX = { 0, 0, 0, 0,-1,+1, 0},
+											OFFY = {-1,+1, 0, 0, 0, 0, 0},
+											OFFZ = { 0, 0,-1,+1, 0, 0, 0};
+	@Deprecated
+	public static final byte[]              OPPOSITES = OPOS, OFFSETS_X = OFFX, OFFSETS_Y = OFFY, OFFSETS_Z = OFFZ;
 	/** 3x3x3 Mappings. */
 	public static final byte[]              CUBE_3_X = {0, 0, 0, 0, 0,-1,+1, 0, 0,-1,+1, 0, 0,-1,+1,-1,+1,+1,-1,-1,+1,+1,-1,-1,+1,+1,-1},
 											CUBE_3_Y = {0,-1,+1, 0, 0, 0, 0,-1,-1,-1,-1,+1,+1,+1,+1, 0, 0, 0, 0,-1,-1,-1,-1,+1,+1,+1,+1},
@@ -1625,7 +1627,7 @@ public class CS {
 		public static final Set<Object> instaharvest     = new HashSetNoNulls<Object>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull, Blocks.monster_egg);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		public static final Set<Object> openableCrowbar  = new HashSetNoNulls<Object>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
-		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
+		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow, Blocks.gravel);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
 		public static final Set<Object> plantableTrees   = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);

@@ -24,10 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.Iterator;
 import java.util.List;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.old.Textures;
@@ -39,10 +41,12 @@ import gregapi.tileentity.ITileEntityRemoteActivateable;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregapi.worldgen.StoneLayer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -104,7 +108,28 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		if (aIsServerSide) {
 			if (mBlockUpdated || aTimer == 2) {
 				if ((mCountDown == 0 && hasRedstoneIncoming()) || WD.burning(worldObj, xCoord, yCoord, zCoord)) remoteActivate();
-				if (mSunk && !WD.ore_stone(getBlockAtSide(OPOS[mFacing]), getMetaDataAtSide(OPOS[mFacing]))) {mSunk = F; updateClientData(); causeBlockUpdate();}
+				
+				while(mSunk) {
+					Block tBlock = getBlockAtSide(OPOS[mFacing]);
+					if (tBlock.getBlockHardness(worldObj, xCoord+OFFX[OPOS[mFacing]], yCoord+OFFY[OPOS[mFacing]], zCoord+OFFZ[OPOS[mFacing]]) >= 0) {
+						if (tBlock instanceof BlockStones) {
+							if (getMetaDataAtSide(OPOS[mFacing]) < 3) break;
+						} else {
+							if (tBlock == Blocks.cobblestone) break;
+							if (BlocksGT.stoneOverridable.contains(tBlock)) break;
+							if (BlocksGT.harvestableSpade.contains(tBlock)) break;
+							if (BlocksGT.plantableGreens.contains(tBlock)) break;
+							if (BlocksGT.plantableGrass.contains(tBlock)) break;
+							if (BlocksGT.plantableTrees.contains(tBlock)) break;
+							if (StoneLayer.REPLACEABLE_BLOCKS.contains(tBlock)) break;
+							if (WD.ore_stone(tBlock, getMetaDataAtSide(OPOS[mFacing]))) break;
+						}
+					}
+					mSunk = F;
+					updateClientData();
+					causeBlockUpdate();
+					break;
+				}
 			}
 			if (mCountDown > 0 && --mCountDown <= 0) explode(F);
 		}
