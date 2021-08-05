@@ -150,7 +150,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		updateSandwich();
 		// More than a full Block is not really an option.
 		if (mSize >= 16) return 0;
-		// This should never ever happen, I do not get why it sometimes still happens on dedicated Servers...
+		// This should never ever happen again...
 		if (ST.valid(mStacks[mSize]) || mSize == 0) {
 			ERR.println("ERROR: Attempted to add Sandwich Ingredient to already occupied Slot: " + mSize + " ; Clientside: " + worldObj.isRemote);
 			for (byte i = 0; i < mStacks.length; i++) if (ST.valid(mStacks[i])) {
