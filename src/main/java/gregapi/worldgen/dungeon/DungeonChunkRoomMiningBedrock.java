@@ -117,10 +117,10 @@ public class DungeonChunkRoomMiningBedrock extends DungeonChunkRoomEmpty {
 			aData.air   (tX, 3-aData.mY, tZ);
 		}
 		
-		aData.set   ( 6, 3-aData.mY,  6, 32104, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_MODE, T));
-		aData.set   ( 6, 3-aData.mY,  9, 32713, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_MODE, T));
-		aData.set   ( 9, 3-aData.mY,  6, 32713, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_MODE, T));
-		aData.set   ( 9, 3-aData.mY,  9, 32712, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_MODE, T));
+		aData.set   ( 6, 3-aData.mY,  6, 32104, UT.NBT.make(NBT_FACING, SIDE_Y_POS, NBT_MODE, T));
+		aData.set   ( 6, 3-aData.mY,  9, 32713, UT.NBT.make(NBT_FACING, SIDE_Y_POS, NBT_MODE, T));
+		aData.set   ( 9, 3-aData.mY,  6, 32713, UT.NBT.make(NBT_FACING, SIDE_Y_POS, NBT_MODE, T));
+		aData.set   ( 9, 3-aData.mY,  9, 32712, UT.NBT.make(NBT_FACING, SIDE_Y_POS, NBT_MODE, T));
 		
 		int[] tStart = {1, 11}, tEnd = {4, 14};
 		for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {
