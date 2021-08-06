@@ -65,6 +65,7 @@ public class BlockGrass extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".14.name", "Grass");
 		LH.add(getUnlocalizedName()+ ".15.name", "Grass");
 		
+		BlocksGT.drillableDynamite.add(this);
 		BlocksGT.harvestableSpade.add(this);
 		BlocksGT.plantableGreens.add(this);
 		BlocksGT.plantableTrees.add(this);

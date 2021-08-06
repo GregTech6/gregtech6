@@ -115,12 +115,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 						if (tBlock instanceof BlockStones) {
 							if (getMetaDataAtSide(OPOS[mFacing]) < 3) break;
 						} else {
-							if (tBlock == Blocks.cobblestone) break;
-							if (BlocksGT.stoneOverridable.contains(tBlock)) break;
-							if (BlocksGT.harvestableSpade.contains(tBlock)) break;
-							if (BlocksGT.plantableGreens.contains(tBlock)) break;
-							if (BlocksGT.plantableGrass.contains(tBlock)) break;
-							if (BlocksGT.plantableTrees.contains(tBlock)) break;
+							if (BlocksGT.drillableDynamite.contains(tBlock)) break;
 							if (StoneLayer.REPLACEABLE_BLOCKS.contains(tBlock)) break;
 							if (WD.ore_stone(tBlock, getMetaDataAtSide(OPOS[mFacing]))) break;
 						}
@@ -229,6 +224,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		public void doExplosionA() {
 			for (int tX = UT.Code.roundDown(explosionX) - 1; tX <= UT.Code.roundDown(explosionX) + 1; tX++) for (int tY = UT.Code.roundDown(explosionY) - 1; tY <= UT.Code.roundDown(explosionY) + 1; tY++) for (int tZ = UT.Code.roundDown(explosionZ) - 1; tZ <= UT.Code.roundDown(explosionZ) + 1; tZ++) {
 				Block tBlock = mWorld.getBlock(tX, tY, tZ);
+				if (tBlock == Blocks.mob_spawner || WD.bedrock(tBlock)) continue;
 				if (tBlock.getExplosionResistance(exploder, mWorld, tX, tY, tZ, explosionX, explosionY, explosionZ) <= mMaxExplosionResistance) affectedBlockPositions.add(new ChunkPosition(tX, tY, tZ));
 			}
 			List tList = mWorld.getEntitiesWithinAABBExcludingEntity(exploder, AxisAlignedBB.getBoundingBox(explosionX - 2, explosionY - 2, explosionZ - 2, explosionX + 2, explosionY + 2, explosionZ + 2));

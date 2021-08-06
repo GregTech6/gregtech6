@@ -145,9 +145,9 @@ public class Loader_Rocks implements Runnable {
 			BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_normal[i]);
 			BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_broken[i]);
 			BlocksGT.stoneToSmallOres .put(new ItemStackContainer(BlocksGT.stones[i], 1, 0), BlocksGT.ores_small [i]);
-			BlocksGT.stoneOverridable.add(BlocksGT.ores_normal[i]);
-			BlocksGT.stoneOverridable.add(BlocksGT.ores_broken[i]);
-			BlocksGT.stoneOverridable.add(BlocksGT.ores_small [i]);
+			BlocksGT.stoneOverridable.add(BlocksGT.ores_normal[i]); BlocksGT.drillableDynamite.add(BlocksGT.ores_normal[i]);
+			BlocksGT.stoneOverridable.add(BlocksGT.ores_broken[i]); BlocksGT.drillableDynamite.add(BlocksGT.ores_broken[i]);
+			BlocksGT.stoneOverridable.add(BlocksGT.ores_small [i]); BlocksGT.drillableDynamite.add(BlocksGT.ores_small [i]);
 		}
 		
 		RM.generify(IL.CHSL_Granite             .get(1), ST.make(BlocksGT.stones[ 5], 1, 0));

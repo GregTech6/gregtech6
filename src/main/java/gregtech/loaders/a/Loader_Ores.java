@@ -113,15 +113,15 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand       , 1, 0), BlocksGT.oreSmallSand       );
 		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand       , 1, 1), BlocksGT.oreSmallRedSand    );
 		
-		BlocksGT.stoneOverridable.add(BlocksGT.ore                );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack      );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone        );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken          );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone  );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall           );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel     );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack );
+		BlocksGT.stoneOverridable.add(BlocksGT.ore                ); BlocksGT.drillableDynamite.add(BlocksGT.ore                );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack      ); BlocksGT.drillableDynamite.add(BlocksGT.oreNetherrack      );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone        ); BlocksGT.drillableDynamite.add(BlocksGT.oreEndstone        );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken          ); BlocksGT.drillableDynamite.add(BlocksGT.oreBroken          );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack); BlocksGT.drillableDynamite.add(BlocksGT.oreBrokenNetherrack);
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone  ); BlocksGT.drillableDynamite.add(BlocksGT.oreBrokenEndstone  );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall           ); BlocksGT.drillableDynamite.add(BlocksGT.oreSmall           );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel     ); BlocksGT.drillableDynamite.add(BlocksGT.oreSmallGravel     );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack ); BlocksGT.drillableDynamite.add(BlocksGT.oreSmallNetherrack );
 		
 		//====================================================================================================//
 		
@@ -407,6 +407,9 @@ public class Loader_Ores implements Runnable {
 				BlocksGT.stoneOverridable.add(tOre1);
 				BlocksGT.stoneOverridable.add(tOre2);
 				BlocksGT.stoneOverridable.add(tOre3);
+				BlocksGT.drillableDynamite.add(tOre1);
+				BlocksGT.drillableDynamite.add(tOre2);
+				BlocksGT.drillableDynamite.add(tOre3);
 			}
 			if (aRock != Blocks.stone) if (aMetaA != W) {
 				BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, aMetaA), tOre1);

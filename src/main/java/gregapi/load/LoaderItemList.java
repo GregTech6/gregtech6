@@ -320,6 +320,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.brick_block                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.obsidian                     , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.bedrock                      , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.mob_spawner                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "tuff"                     , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "deepslate"                , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.EtFu, "cobbled_deepslate"        , 1, W));
@@ -376,6 +377,32 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantCobble"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantObsidian"         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantLog"              , 1, W));
+		
+		
+		BlocksGT.drillableDynamite.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB" , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB", null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.TF, "tile.UberousSoil"           , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "mud"                       , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "driedDirt"                 , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "originGrass"               , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "longGrass"                 , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "bopGrass"                  , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "newBopDirt"                , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "newBopGrass"               , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "overgrownNetherrack"       , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.ERE, "mud"                       , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "mud"                       , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "swampDirt"                 , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "swampGrass"                , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "deadGrass"                 , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "slimyGrass"                , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BOTA, "altGrass"                 , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherDirt"             , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherGrass"            , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "enchantedAetherGrass"   , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "enchantedGrass"         , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.ABYSSAL, "darkgrass"             , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.ABYSSAL, "dreadgrass"            , null));
 		
 		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"  , null));

@@ -95,6 +95,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		OM.reg(ST.make(this, 1, 5), OD.blockClay);
 		OM.reg(ST.make(this, 1, 6), OD.blockClay);
 		
+		BlocksGT.drillableDynamite.add(this);
 		BlocksGT.harvestableSpade.add(this);
 		
 		if (MD.RC.mLoaded) try {EntityTunnelBore.addMineableBlock(this);} catch(Throwable e) {e.printStackTrace(ERR);}
