@@ -34,6 +34,7 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [ADDED] Bone Ore, which usually spawns either in Underground Biomes Dolomite or in GT Limestone. It is one way to get Skeleton Skulls and Bones in Peaceful.
 [ADDED] Slate Stone Layer. Has a nice Shade of Dark Blue, which is not as radiant as Blue Schist. Slate will be used instead of Deepslate in case Et Futurum Requiem is not loaded.
 [ADDED] Shale Stone Layer. Just another Rock Type. Light Blue in color.
+[ADDED] Eudialyte Bathing Recipe, and removed the Electrolization one.
 [ADDED]
 Modular Sandwiches
 Just shiftclick a piece(s) of Toast on a solid Surface, then rightclick all your favourite Sandwich Ingredients on it, and harvest the final result.

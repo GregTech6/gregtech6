@@ -28,6 +28,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -243,11 +244,14 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(aEvent.mStack, OM.dust(MT.PepperBlack), OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon)), ST.make(MD.HaC, "garammasalaItem", 4));
 		}});
 		addListener("cropRadish", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack), FL.make("potion.vinegar",  125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
+			for (String tFluid : FluidsGT.VINEGAR) if (FL.exists(tFluid)) {
+			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack), FL.make(tFluid, 125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Onion_Sliced.get( 3), IL.Food_Pickle_Sliced  .get( 3), aEvent.mStack), FL.make(tFluid,  50), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
+			}
 		}});
 		addListener("cropCabbage", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack), FL.make("mayo",  125), NF, ST.make(MD.HaC, "coleslawItem", 1));
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)), FL.make("mayo",  500), NF, ST.make(MD.HaC, "coleslawItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack), FL.Mayo.make(125), NF, ST.make(MD.HaC, "coleslawItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)), FL.Mayo.make(500), NF, ST.make(MD.HaC, "coleslawItem", 4));
 		}});
 		addListener("cropBean", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(IL.Food_Onion_Sliced.get( 3), OM.dust(MT.FishCooked   ), aEvent.mStack), ST.make(MD.HaC, "chiliItem", 1));
@@ -314,8 +318,8 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
 			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatebaconItem", 1));
-			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
-			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.Syrup_Maple.make(50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.Sap_Rainbow.make(50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
 			}
 		}});
 		addListener("foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
