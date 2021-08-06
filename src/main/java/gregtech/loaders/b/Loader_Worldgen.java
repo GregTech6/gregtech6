@@ -114,30 +114,32 @@ public class Loader_Worldgen implements Runnable {
 		
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Migmatite, ST.block(MD.UB, "metamorphicStone"), 7+8, ST.block(MD.UB, "metamorphicCobblestone"), 7));
 		
-		StoneLayer.LAYERS.add(new StoneLayer(null, MT.Olivine, ST.block(MD.PFAA, "veryStrongStone"), 3, ST.block(MD.PFAA, "veryStrongCobble"), 3
+		StoneLayer.LAYERS.add(new StoneLayer(null, MT.Stone, ST.block(MD.PFAA, "veryStrongStone"), 3, ST.block(MD.PFAA, "veryStrongCobble"), 3
 		, new StoneLayerOres(MT.Olivine                 , U64, 32, 64)
 		));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Dacite, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 12, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 12));
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Dacite, ST.block(MD.UB, "igneousStone"), 7+8, ST.block(MD.UB, "igneousCobblestone"), 7
-		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U64,  0, 20) : null
+		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U32,  0, 20) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, MD.ARS     .mLoaded ? new StoneLayerOres(MT.Vinteum           , U64, 16, 40) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedOrder      , U64, 24, 40, ST.block(MD.TC, "blockCustomOre"), 5, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedWater      , U64, 48, 64, ST.block(MD.TC, "blockCustomOre"), 3, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEarth      , U64,  0, 16, ST.block(MD.TC, "blockCustomOre"), 4, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.OREMATS.Cinnabar  , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 0, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEntropy    , U64, 24, 40, ST.block(MD.TC, "blockCustomOre"), 6, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedAir        , U64, 48, 64, ST.block(MD.TC, "blockCustomOre"), 1, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedFire       , U64,  0, 16, ST.block(MD.TC, "blockCustomOre"), 2, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 7, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Coal                    , U8 , 40, 80, Blocks.coal_ore    , 0)
 		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore    , 0)
-		, new StoneLayerOres(MT.Au                      , U16,  8, 32, Blocks.gold_ore    , 0)
-		, new StoneLayerOres(MT.Lapis                   , U16,  8, 48, Blocks.lapis_ore   , 0)
+		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore    , 0)
+		, new StoneLayerOres(MT.Lapis                   , U24,  8, 48, Blocks.lapis_ore   , 0)
 		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore, 0)
 		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore , 0)
 		, new StoneLayerOres(MT.Emerald                 , U64, 16, 60, Blocks.emerald_ore , 0, BIOMES_MOUNTAINS)
@@ -214,12 +216,10 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, MT.STONES.Andesite, ST.block(MD.MIN, "andesite")));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, MT.STONES.Andesite, ST.block(MD.PFAA, "strongStone"), 0, ST.block(MD.PFAA, "strongCobble"), 0));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite, MT.STONES.Andesite, ST.block(MD.UB, "igneousStone"), 3+8, ST.block(MD.UB, "igneousCobblestone"), 3
-		, new StoneLayerOres(MT.OREMATS.Bromargyrite    , U8 ,  0, 20)
-		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		, new StoneLayerOres(MT.OREMATS.Bromargyrite    , U8 ,  0, 32)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite
-		, new StoneLayerOres(MT.Au                      , U32,  0, 20)
-		, new StoneLayerOres(MT.Niter                   , U6 , 50, 70, BIOMES_DESERT)
+		, new StoneLayerOres(MT.Au                      , U12,  0, 32)
 		));
 		
 		
@@ -378,7 +378,6 @@ public class Loader_Worldgen implements Runnable {
 		// Other Stuff
 		
 		
-		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Shale, MT.STONES.Shale, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 1, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 1));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Shale, MT.STONES.Shale, ST.block(MD.PFAA, "weakStone"), 4, ST.block(MD.PFAA, "weakRubble"), 4));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Shale, MT.STONES.Shale, ST.block(MD.BoP, "rocks"), 4));
@@ -392,9 +391,15 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.RedSand, ST.block(MD.PFAA, "strongStone"), 9, ST.block(MD.PFAA, "strongCobble"), 9));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.Sand, ST.block(MD.PFAA, "strongStone"), 8, ST.block(MD.PFAA, "strongCobble"), 8));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.Sand, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 2, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 2));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.RedSand, ST.block(MD.PFAA, "strongStone"), 9, ST.block(MD.PFAA, "strongCobble"), 9
+		, new StoneLayerOres(MT.Niter                   , U6 , 40, 70, BIOMES_DESERT)
+		));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.Sand, ST.block(MD.PFAA, "strongStone"), 8, ST.block(MD.PFAA, "strongCobble"), 8
+		, new StoneLayerOres(MT.Niter                   , U6 , 40, 70, BIOMES_DESERT)
+		));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.Sand, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 2, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 2
+		, new StoneLayerOres(MT.Niter                   , U6 , 40, 70, BIOMES_DESERT)
+		));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.STONES.Siltstone, ST.block(MD.BoP, "rocks"), 2));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.STONES.Siltstone, ST.block(MD.UB, "sedimentaryStone"), 3+8));

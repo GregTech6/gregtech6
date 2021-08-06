@@ -46,7 +46,7 @@ import net.minecraft.init.Blocks;
 public class StoneLayer {
 	public final Block mStone, mCobble, mMossy;
 	public final byte mMetaStone, mMetaCobble, mMetaMossy;
-	public final OreDictMaterial mMaterial;
+	public final OreDictMaterial mMaterial, mMaterialSurface;
 	public final ItemStackContainer mStack;
 	public final List<StoneLayerOres> mOres;
 	public IBlockPlacable mOre, mOreSmall, mOreBroken;
@@ -111,18 +111,19 @@ public class StoneLayer {
 		this(aStone, aMetaStone, aCobble, aMetaCobble, aCobble, aMetaCobble, aMaterial, aOreChances);
 	}
 	public StoneLayer(Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, OreDictMaterial aMaterial, StoneLayerOres... aOreChances) {
-		mStone      = (ST.invalid(aStone ) ?                                 Blocks.stone                       : aStone );
-		mCobble     = (ST.invalid(aCobble) ? Blocks.stone       == mStone  ? Blocks.cobblestone       : mStone  : aCobble);
-		mMossy      = (ST.invalid(aMossy ) ? Blocks.cobblestone == mCobble ? Blocks.mossy_cobblestone : mCobble : aMossy );
-		mMetaStone  = (Blocks.stone             == mStone  ? 0 : UT.Code.bind4(aMetaStone ));
-		mMetaCobble = (Blocks.cobblestone       == mCobble ? 0 : UT.Code.bind4(aMetaCobble));
-		mMetaMossy  = (Blocks.mossy_cobblestone == mMossy  ? 0 : UT.Code.bind4(aMetaMossy ));
-		mMaterial   = (aMaterial == null ? MT.Stone : aMaterial);
-		mStack      = new ItemStackContainer(mStone, 1, mMetaStone);
-		mOre        = BlocksGT.stoneToNormalOres.get(mStack);
-		mOreBroken  = BlocksGT.stoneToBrokenOres.get(mStack);
-		mOreSmall   = BlocksGT.stoneToSmallOres .get(mStack);
-		mOres       = new ArrayListNoNulls<>(8);
+		mStone           = (ST.invalid(aStone ) ?                                 Blocks.stone                       : aStone );
+		mCobble          = (ST.invalid(aCobble) ? Blocks.stone       == mStone  ? Blocks.cobblestone       : mStone  : aCobble);
+		mMossy           = (ST.invalid(aMossy ) ? Blocks.cobblestone == mCobble ? Blocks.mossy_cobblestone : mCobble : aMossy );
+		mMetaStone       = (Blocks.stone             == mStone  ? 0 : UT.Code.bind4(aMetaStone ));
+		mMetaCobble      = (Blocks.cobblestone       == mCobble ? 0 : UT.Code.bind4(aMetaCobble));
+		mMetaMossy       = (Blocks.mossy_cobblestone == mMossy  ? 0 : UT.Code.bind4(aMetaMossy ));
+		mMaterial        = (aMaterial == null ? MT.Stone : aMaterial);
+		mMaterialSurface = (aStone == Blocks.stone ? MT.Stone : aStone instanceof BlockStones ? ((BlockStones)aStone).mMaterial : mMaterial);
+		mStack           = new ItemStackContainer(mStone, 1, mMetaStone);
+		mOre             = BlocksGT.stoneToNormalOres.get(mStack);
+		mOreBroken       = BlocksGT.stoneToBrokenOres.get(mStack);
+		mOreSmall        = BlocksGT.stoneToSmallOres .get(mStack);
+		mOres            = new ArrayListNoNulls<>(8);
 		for (StoneLayerOres tOre : aOreChances) if (tOre != null && tOre.mMaterial != MT.Empty && ConfigsGT.WORLDGEN.get("stonelayers."+mMaterial.mNameInternal, tOre.mMaterial.mNameInternal, T)) mOres.add(tOre);
 	}
 	

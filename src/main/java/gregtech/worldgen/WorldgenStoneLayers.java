@@ -94,7 +94,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			}
 			
 			boolean tCanPlaceRocks = F;
-			OreDictMaterial tLastRock = MT.Stone, tLastOre = null;
+			OreDictMaterial tLastRock = MT.STONES.Deepslate, tLastOre = null;
 			
 			for (int tY = 1; tY < tMaxHeight; tY++) {
 				final ExtendedBlockStorage aStorage = aStorages[tY >> 4];
@@ -131,7 +131,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 						}
 					}
 					if (temp) {
-						tLastRock = tScan[3].mMaterial;
+						tLastRock = tScan[3].mMaterialSurface;
 						if (aBlock != tScan[3].mStone) {
 							aStorage.func_150818_a(i, tY & 15, j, tScan[3].mStone);
 							aStorage.setExtBlockMetadata(i, tY & 15, j, tScan[3].mMetaStone);
@@ -141,7 +141,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				} else if (aBlock == Blocks.cobblestone) {
 					tCanPlaceRocks = T;
 					if (tScan[3].mCobble != null) {
-						tLastRock = tScan[3].mMaterial;
+						tLastRock = tScan[3].mMaterialSurface;
 						if (aBlock != tScan[3].mCobble) {
 							aStorage.func_150818_a(i, tY & 15, j, tScan[3].mCobble);
 							aStorage.setExtBlockMetadata(i, tY & 15, j, tScan[3].mMetaCobble);
@@ -151,7 +151,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				} else if (aBlock == Blocks.mossy_cobblestone) {
 					tCanPlaceRocks = T;
 					if (tScan[3].mMossy != null) {
-						tLastRock = tScan[3].mMaterial;
+						tLastRock = tScan[3].mMaterialSurface;
 						if (aBlock != tScan[3].mMossy) {
 							aStorage.func_150818_a(i, tY & 15, j, tScan[3].mMossy);
 							aStorage.setExtBlockMetadata(i, tY & 15, j, tScan[3].mMetaMossy);
@@ -180,7 +180,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 						}
 					}
 					if (temp) {
-						tLastRock = tScan[3].mMaterial;
+						tLastRock = tScan[3].mMaterialSurface;
 						if (aBlock != tScan[3].mStone) {
 							aStorage.func_150818_a(i, tY & 15, j, tScan[3].mStone);
 							aStorage.setExtBlockMetadata(i, tY & 15, j, tScan[3].mMetaStone);
