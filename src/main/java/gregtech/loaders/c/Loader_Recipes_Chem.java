@@ -219,7 +219,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.Na2SO4, U*7), OM.dust(tMat, U*2), NF  , MT.CO2.gas(U*6, F), OM.dust(MT.Na2S, U*3));
 		RM.BurnMixer    .addRecipe2(T, 16,  144, OM.dust(MT.K2SO4 , U*7), OM.dust(tMat, U*2), NF  , MT.CO2.gas(U*6, F), OM.dust(MT.K2S, U*3));
 		RM.BurnMixer    .addRecipe1(T, 16,  128, OM.dust(tMat     , U*2), MT.Na2CO3.liquid(U*6, T), MT.CO .gas(U*6, F), OM.dust(MT.Na, U*2));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(tMat     , U*3), MT.HNO3.liquid(20*U, T) , MT.CO2.gas(U*9, F), MT.NO.gas(U*8, T), MT.H2O.fluid(U*6, F));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(tMat     , U*3), MT.HNO3.liquid(20*U, T) , MT.CO2.gas(U*9, F), MT.NO.gas(U*8, T), MT.H2O.liquid(U*6, F));
 		}
 		
 		

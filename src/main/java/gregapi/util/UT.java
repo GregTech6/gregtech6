@@ -1476,7 +1476,7 @@ public class UT {
 			return aList.get((int)aIndex);
 		}
 		public static <E> E select(E aReplacement, List<E> aList) {
-			return aList == null ? aReplacement : select(RNGSUS.nextInt(aList.size()), aReplacement, aList);
+			return aList == null || aList.isEmpty() ? aReplacement : select(RNGSUS.nextInt(aList.size()), aReplacement, aList);
 		}
 		@SafeVarargs
 		public static <E> E select(long aIndex, E aReplacement, E... aArray) {
@@ -1487,7 +1487,7 @@ public class UT {
 		}
 		@SafeVarargs
 		public static <E> E select(E aReplacement, E... aArray) {
-			return aArray == null ? aReplacement : select(RNGSUS.nextInt(aArray.length), aReplacement, aArray);
+			return aArray == null || aArray.length <= 0 ? aReplacement : select(RNGSUS.nextInt(aArray.length), aReplacement, aArray);
 		}
 		
 		public static boolean inArray(Object aObject, Object... aObjects) {
