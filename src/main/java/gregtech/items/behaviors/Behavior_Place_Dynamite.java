@@ -23,6 +23,8 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.metatype.BlockStones;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -31,6 +33,8 @@ import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregapi.worldgen.StoneLayer;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
@@ -43,7 +47,13 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-		if (WD.ore_stone(aWorld.getBlock(aX, aY, aZ), (short)aWorld.getBlockMetadata(aX, aY, aZ))) for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		if (tBlock.getBlockHardness(aWorld, aX, aY, aZ) < 0) return F;
+		byte tMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		if (tBlock instanceof BlockStones) {if (tMeta >= 3) return F;} else
+		if (!BlocksGT.drillableDynamite.contains(tBlock) && !StoneLayer.REPLACEABLE_BLOCKS.contains(tBlock) && !WD.ore_stone(tBlock, tMeta)) return F;
+		
+		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
 			ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length-i-1];
 			if (IL.Boomstick.equal(tStack, F, T) || IL.Dynamite.equal(tStack, F, T) || IL.Dynamite_Strong.equal(tStack, F, T)) {
 				NBTTagCompound tOldTag = tStack.getTagCompound();

@@ -370,6 +370,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);
 		
 		CR.shaped(ST.make(Blocks.lever                  , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "W" ,  "S" , 'W', OD.stickAnyWood         , 'S', cobblestone);
+		CR.shaped(ST.make(Blocks.lever                  , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "W" ,  "S" , 'W', OD.stickAnyWood         , 'S', plate.dat(ANY.Stone));
 		CR.shaped(ST.make(Blocks.lever                  , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "W" ,  "S" , 'W', OD.stickAnyWood         , 'S', rockGt.dat(ANY.Stone));
 		CR.shaped(ST.make(Blocks.redstone_torch         , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,         "D" ,  "W" , 'W', OD.stickAnyWood         , 'D', OD.itemRedstone);
 		CR.shaped(ST.make(Blocks.redstone_torch         , 1, 0), DEF                            ,  "D" ,  "D" ,  "W" , 'W', OD.stickAnyWood         , 'D', gemFlawed  .dat(MT.Redstone));

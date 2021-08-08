@@ -26,11 +26,11 @@ Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
 [FIXED] Burning Box were not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [FIXED] Cauldrons were crashing the Game, when used with Ores that did not have any Byproducts.
-[FIXED] Higher Speed Rails of GT6 did not work on sloped areas because the Minecart would somehow bonk into the wall the track is laid on. This means sloped Rails will cap out at 1x Speed.
+[FIXED] Higher Speed Rails of GT6 did not work on vertically sloped areas because the Minecart would somehow bonk into the wall the track is laid on. This means sloped Rails will cap out at 1x Speed.
 [FIXED] An Infinite Hydrogen Power Conversion Exploit, by making MnCl2, MgCl2 and CaCl2 Electrolyzation into Manganese and Chlorine take enough Power, to undo the Energy benefit you get from burning the Hydrogen you get.
 [CHANGED] Tanks, Drums and Pipes can now have the Thermometer used on them.
 [CHANGED] BluePower Stone Tiles are now considered Stone Plates, so that will fix a few conflicts.
-[CHANGED] Furnaces, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates.
+[CHANGED] Furnaces, Repeaters, Comparators and Levers have additional Recipes now, some of which involve Stone Plates or Rocks.
 [CHANGED] Dynamite can now be drill-placed in a greater variety of things such as Dirt, Cobblestone and Gravel.
 [CHANGED] Improved Management of all the "Compat" Stone Layers. Now adding Mods like PFAA, Enchanced Biomes, Mineralogy or Underground Biomes truly wont affect overall Ore bearing Stone Layer distribution. (previously only basic things had no effect like Marble, Limestone and Basalt)
 [ADDED] A Stone Layer of Vanilla Stone that contains the original Vanilla Ore Blocks (including Silverfish!). Mining Shaft Chests will contain Vanilla Ore Blocks too now. This should help a lot with Mods that are very incompatible.

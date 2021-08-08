@@ -183,21 +183,21 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	}
 	
 	@Override
-	protected void func_150048_a(World aWorld, int aX, int aY, int aZ, int p_150048_5_, int p_150048_6_, Block aBlock) {
+	protected void func_150048_a(World aWorld, int aX, int aY, int aZ, int aMeta, int aData, Block aBlock) {
 		if (mPowerRail) {
 			boolean flag = aWorld.isBlockIndirectlyGettingPowered(aX, aY, aZ);
-			flag = flag || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, T, 0) || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, F, 0);
+			flag = flag || func_150058_a(aWorld, aX, aY, aZ, aMeta, T, 0) || func_150058_a(aWorld, aX, aY, aZ, aMeta, F, 0);
 			boolean flag1 = F;
-			if (flag && (p_150048_5_ & 8) == 0) {
-				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_ | 8, 3);
+			if (flag && (aMeta & 8) == 0) {
+				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aData | 8, 3);
 				flag1 = T;
-			} else if (!flag && (p_150048_5_ & 8) != 0) {
-				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_, 3);
+			} else if (!flag && (aMeta & 8) != 0) {
+				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aData, 3);
 				flag1 = T;
 			}
 			if (flag1) {
 				aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
-				if (p_150048_6_ == 2 || p_150048_6_ == 3 || p_150048_6_ == 4 || p_150048_6_ == 5) {
+				if (aData == 2 || aData == 3 || aData == 4 || aData == 5) {
 					aWorld.notifyBlocksOfNeighborChange(aX, aY + 1, aZ, this);
 				}
 			}
@@ -272,7 +272,16 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
-		return (WD.meta(aWorld, aX, aY, aZ) & 7) > 1 ? Math.min(mSpeed, 0.4F) : mSpeed;
+		switch(WD.meta(aWorld, aX, aY, aZ) & 7) {
+		case  0:
+			if (WD.block(aWorld, aX+1, aY, aZ  ) instanceof BlockRailBase && (WD.meta(aWorld, aX+1, aY, aZ  ) & 7) == 0
+			&&  WD.block(aWorld, aX-1, aY, aZ  ) instanceof BlockRailBase && (WD.meta(aWorld, aX-1, aY, aZ  ) & 7) == 0) return mSpeed;
+		case  1:
+			if (WD.block(aWorld, aX  , aY, aZ+1) instanceof BlockRailBase && (WD.meta(aWorld, aX  , aY, aZ+1) & 7) == 1
+			&&  WD.block(aWorld, aX  , aY, aZ-1) instanceof BlockRailBase && (WD.meta(aWorld, aX  , aY, aZ-1) & 7) == 1) return mSpeed;
+		default:
+			return Math.min(mSpeed, 0.4F);
+		}
 	}
 	
 	@Override
