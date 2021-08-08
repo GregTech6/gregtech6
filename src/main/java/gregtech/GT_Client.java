@@ -371,6 +371,10 @@ public class GT_Client extends GT_Proxy {
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 41] = BlockTextureDefault.get("sandwiches/PICKLE_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS      [ 41] = (byte) 14;
 		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 41] = (byte)  1;
+		Sandwiches.INGREDIENT_TEXTURES_SIDES [ 42] = BlockTextureDefault.get("sandwiches/PILL_SIDES");
+		Sandwiches.INGREDIENT_TEXTURES_TOP   [ 42] = BlockTextureDefault.get("sandwiches/PILL_TOP");
+		Sandwiches.INGREDIENT_MODEL_IDS      [ 42] = (byte) 14;
+		Sandwiches.INGREDIENT_MODEL_THICKNESS[ 42] = (byte)  1;
 	}
 	
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;
