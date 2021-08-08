@@ -136,13 +136,14 @@ public class Loader_Worldgen implements Runnable {
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 7, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
-		, new StoneLayerOres(MT.Coal                    , U8 , 40, 80, Blocks.coal_ore    , 0)
-		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore    , 0)
-		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore    , 0)
-		, new StoneLayerOres(MT.Lapis                   , U24,  8, 48, Blocks.lapis_ore   , 0)
-		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore, 0)
-		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore , 0)
 		, new StoneLayerOres(MT.Emerald                 , U64, 16, 60, Blocks.emerald_ore , 0, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore , 0)
+		, new StoneLayerOres(MT.Lapis                   , U24, 16, 48, Blocks.lapis_ore   , 0)
+		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore, 0)
+		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore    , 0)
+		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore    , 0)
+		, new StoneLayerOres(MT.Coal                    , U8 , 60,100, Blocks.coal_ore    , 0)
+		, new StoneLayerOres(MT.Stone                   , U64,  0,255, Blocks.monster_egg , 0)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Fe2O3                   , U6 , 30, 70)
