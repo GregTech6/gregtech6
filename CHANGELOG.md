@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.20: (Not released yet, released whenever it needs to be)
+6.14.20:
 [COMPAT]
 Mekanisms Osmium, which I previously just named 'Osmium' and treated differently from regular Osmium, is now instead completely overhauled to be the actual Material Germanium.
 That fits with its Circuits at the very least, and makes a lot of internal Mechanics much nicer. Heck these two Materials had a lot of things in common too, before I did this.
