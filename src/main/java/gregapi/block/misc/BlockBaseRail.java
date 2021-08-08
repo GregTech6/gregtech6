@@ -276,11 +276,13 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		if (mPowerRail) {
 			byte tRailMeta = WD.meta(aWorld, aX, aY, aZ);
-			double tMotion = Math.sqrt(aCart.motionX * aCart.motionX + aCart.motionZ * aCart.motionZ);
+			double tMotion = Math.sqrt(aCart.motionX*aCart.motionX + aCart.motionZ*aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
-					aCart.motionX += aCart.motionX / tMotion * 0.06;
-					aCart.motionZ += aCart.motionZ / tMotion * 0.06;
+					tMotion /= mSpeed;
+					tMotion *= 0.15;
+					aCart.motionX += aCart.motionX / tMotion;
+					aCart.motionZ += aCart.motionZ / tMotion;
 				} else {
 					tRailMeta &= 7;
 					if (tRailMeta == 1) {
