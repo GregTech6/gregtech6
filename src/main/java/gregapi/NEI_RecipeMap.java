@@ -505,7 +505,6 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void loadCraftingRecipes(String aID, Object... aResults) {
-		new Throwable().printStackTrace(OUT);
 		if (!CODE_CLIENT) return;
 		if (aID.equals(getOverlayIdentifier())) {
 			for (Recipe tRecipe : mRecipeMap.getNEIAllRecipes()) arecipes.add(new CachedDefaultRecipe(tRecipe));
@@ -517,7 +516,6 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void loadCraftingRecipes(ItemStack aResult) {
-		new Throwable().printStackTrace(OUT);
 		if (!CODE_CLIENT) return;
 		if (ST.invalid(aResult)) return;
 		try {
@@ -564,7 +562,6 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void loadUsageRecipes(ItemStack aInput) {
-		new Throwable().printStackTrace(OUT);
 		if (!CODE_CLIENT) return;
 		if (ST.invalid(aInput)) return;
 		try {
