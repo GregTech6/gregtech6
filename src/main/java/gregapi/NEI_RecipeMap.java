@@ -505,6 +505,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void loadCraftingRecipes(String aID, Object... aResults) {
+		if (!CODE_CLIENT) return;
 		if (aID.equals(getOverlayIdentifier())) {
 			for (Recipe tRecipe : mRecipeMap.getNEIAllRecipes()) arecipes.add(new CachedDefaultRecipe(tRecipe));
 			sortRecipes();
@@ -512,9 +513,10 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			super.loadCraftingRecipes(aID, aResults);
 		}
 	}
-
+	
 	@Override
 	public void loadCraftingRecipes(ItemStack aResult) {
+		if (!CODE_CLIENT) return;
 		if (ST.invalid(aResult)) return;
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
@@ -557,29 +559,30 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			e.printStackTrace(ERR);
 		}
 	}
-
+	
 	@Override
 	public void loadUsageRecipes(ItemStack aInput) {
+		if (!CODE_CLIENT) return;
 		if (ST.invalid(aInput)) return;
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
-
+			
 			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
 			tInputs.add(aInput);
 			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
-
+			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput));
 			if (tRedirects != null) tInputs.addAll(tRedirects);
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput, W));
 			if (tRedirects != null) tInputs.addAll(tRedirects);
-
+			
 			if (tPrefixMaterial != null) {
 				for (OreDictPrefix tPrefix : tPrefixMaterial.mPrefix.mFamiliarPrefixes) {
 					tInputs.add(tPrefix.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
 				}
 			}
-
+			
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aInput, T)) {
 				FluidStack tFluid = FL.getFluid(aInput, T);
 				if (tFluid != null) {
@@ -589,7 +592,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					}
 				}
 			}
-
+			
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIUsages(tInputs.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
@@ -598,7 +601,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			e.printStackTrace(ERR);
 		}
 	}
-
+	
 	@Override
 	public String getOverlayIdentifier() {
 		return mRecipeMap.mNameNEI;
@@ -634,6 +637,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public List<String> handleItemTooltip(GuiRecipe gui, ItemStack aStack, List<String> currenttip, int aRecipeIndex) {
+		if (!CODE_CLIENT) return currenttip;
 		CachedRecipe tObject = arecipes.get(aRecipeIndex);
 		if (tObject instanceof CachedDefaultRecipe) {
 			CachedDefaultRecipe tRecipe = (CachedDefaultRecipe)tObject;

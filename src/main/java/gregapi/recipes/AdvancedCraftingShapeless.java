@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import gregapi.code.TagData;
 import gregapi.item.IItemEnergy;
+import gregapi.item.IItemGTContainerTool;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -90,7 +91,7 @@ public class AdvancedCraftingShapeless extends ShapelessOreRecipe implements ICr
 			if (rStack.getItem() instanceof IItemEnergy) {
 				for (TagData tEnergyType : ((IItemEnergy)rStack.getItem()).getEnergyTypes(rStack)) {
 					long tCharge = 0;
-					for (int i = 0; i < aGrid.getSizeInventory(); i++) if (aGrid.getStackInSlot(i) != null && aGrid.getStackInSlot(i).getItem() instanceof IItemEnergy) {
+					for (int i = 0; i < aGrid.getSizeInventory(); i++) if (aGrid.getStackInSlot(i) != null && aGrid.getStackInSlot(i).getItem() instanceof IItemEnergy && !(aGrid.getStackInSlot(i).getItem() instanceof IItemGTContainerTool)) {
 						tCharge += ((IItemEnergy)aGrid.getStackInSlot(i).getItem()).getEnergyStored(tEnergyType, aGrid.getStackInSlot(i));
 					}
 					((IItemEnergy)rStack.getItem()).setEnergyStored(tEnergyType, rStack, tCharge);

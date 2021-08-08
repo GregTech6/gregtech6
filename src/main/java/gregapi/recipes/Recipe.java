@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -496,53 +497,59 @@ public class Recipe {
 				reInit();
 			}
 			
-			// Now look for the Recipes inside the Item HashMaps, but only when the Recipes usually have Items.
-			if (mInputItemsCount > 0) for (ItemStack tStack1 : aInputs) if (tStack1 != null) {
-				Collection<Recipe>
-				tRecipes = mRecipeItemMap.get(tStack1);
-				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
-				
-				tRecipes = mRecipeItemMap.get(tStack1, W);
-				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
-				
-				ItemStack tStack2 = OreDictManager.INSTANCE.getStack_(F, tStack1);
-				
-				if (!ST.equal(tStack1, tStack2, T)) {
-				tRecipes = mRecipeItemMap.get(tStack2);
-				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
-				}
-				if (tStack1.getItem() != tStack2.getItem()) {
-				tRecipes = mRecipeItemMap.get(tStack2, W);
-				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
-				}
-			}
-			
-			// If the minimal Amount of Items for the Recipe is 0, then it could be a Fluid-Only Recipe, so check that Map too.
-			if (mInputFluidCount > 0 && mMinimalInputItems == 0) for (FluidStack aFluid : aFluids) if (aFluid != null) {
-				Collection<Recipe>
-				tRecipes = mRecipeFluidMap.get(aFluid.getFluid().getName());
-				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
-			}
-			
-			// Apply Recipe Map Handlers to "discover" new Recipes.
-			if (aLoop && !mRecipeMapHandlers.isEmpty()) {
-				for (int i = 0; i < mRecipeMapHandlers.size(); i++) {
-					IRecipeMapHandler tHandler = mRecipeMapHandlers.get(i);
-					if (tHandler.isDone()) mRecipeMapHandlers.remove(tHandler);
-				}
-				if (!mRecipeMapHandlers.isEmpty()) {
-					aLoop = F;
-					for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
-						OreDictItemData tData = OM.data_(tInput);
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput, tData)) aLoop = T;
+			try {
+				// Now look for the Recipes inside the Item HashMaps, but only when the Recipes usually have Items.
+				if (mInputItemsCount > 0) for (ItemStack tStack1 : aInputs) if (tStack1 != null) {
+					Collection<Recipe>
+					tRecipes = mRecipeItemMap.get(tStack1);
+					if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
+					
+					tRecipes = mRecipeItemMap.get(tStack1, W);
+					if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
+					
+					ItemStack tStack2 = OreDictManager.INSTANCE.getStack_(F, tStack1);
+					
+					if (!ST.equal(tStack1, tStack2, T)) {
+					tRecipes = mRecipeItemMap.get(tStack2);
+					if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 					}
-					for (FluidStack tInput : aFluids) if (tInput != null) {
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput.getFluid())) aLoop = T;
+					if (tStack1.getItem() != tStack2.getItem()) {
+					tRecipes = mRecipeItemMap.get(tStack2, W);
+					if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 					}
-					if (aLoop) return findRecipeInternal(aTileEntity, aRecipe, F, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 				}
+				
+				// If the minimal Amount of Items for the Recipe is 0, then it could be a Fluid-Only Recipe, so check that Map too.
+				if (mInputFluidCount > 0 && mMinimalInputItems == 0) for (FluidStack aFluid : aFluids) if (aFluid != null) {
+					Collection<Recipe>
+					tRecipes = mRecipeFluidMap.get(aFluid.getFluid().getName());
+					if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
+				}
+				
+				// Apply Recipe Map Handlers to "discover" new Recipes.
+				if (aLoop && !mRecipeMapHandlers.isEmpty()) {
+					for (int i = 0; i < mRecipeMapHandlers.size(); i++) {
+						IRecipeMapHandler tHandler = mRecipeMapHandlers.get(i);
+						if (tHandler.isDone()) mRecipeMapHandlers.remove(tHandler);
+					}
+					if (!mRecipeMapHandlers.isEmpty()) {
+						aLoop = F;
+						for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
+							OreDictItemData tData = OM.data_(tInput);
+							for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput, tData)) aLoop = T;
+						}
+						for (FluidStack tInput : aFluids) if (tInput != null) {
+							for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput.getFluid())) aLoop = T;
+						}
+						if (aLoop) return findRecipeInternal(aTileEntity, aRecipe, F, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
+					}
+				}
+			} catch(ConcurrentModificationException e) {
+				// Print it to the Logs, just in case.
+				e.printStackTrace(ERR);
+				// Eh, try again, this can't really happen unless something fucks up with external NEI Plugins or Minetweaker.
+				return findRecipeInternal(aTileEntity, null, F, F, aSize, aSpecialSlot, aFluids, aInputs);
 			}
-			
 			// And nothing has been found.
 			return null;
 		}
