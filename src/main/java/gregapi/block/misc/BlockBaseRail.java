@@ -89,8 +89,6 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + (mSpeed/0.4F) + "x");
 	}
 	
-	@Override public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {return mSpeed;}
-	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public String name(byte aMeta) {return mNameInternal;}
 	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
@@ -225,7 +223,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		}
 	}
 	
-	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
+	@Override public int isProvidingWeakPower  (IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
 	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
 	
 	private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
@@ -273,14 +271,18 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	}
 	
 	@Override
+	public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
+		return (WD.meta(aWorld, aX, aY, aZ) & 7) > 1 ? Math.min(mSpeed, 0.4F) : mSpeed;
+	}
+	
+	@Override
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		if (mPowerRail) {
 			byte tRailMeta = WD.meta(aWorld, aX, aY, aZ);
 			double tMotion = Math.sqrt(aCart.motionX*aCart.motionX + aCart.motionZ*aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
-					tMotion /= mSpeed;
-					tMotion *= 0.15;
+					tMotion *= 0.06;
 					aCart.motionX += aCart.motionX / tMotion;
 					aCart.motionZ += aCart.motionZ / tMotion;
 				} else {
