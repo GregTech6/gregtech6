@@ -280,8 +280,10 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe2(T, 16,  512, ST.tag(0), OM.dust(MT.KHSO4 , U*7), NF, MT.H .gas(U  , T), OM.dust(MT.KSO4 , U*6));
 		RM.Electrolyzer .addRecipe2(T, 64,  512, ST.tag(0), OM.dust(MT.CaCl2 , U*3), NF, MT.Cl.gas(U*2, T), OM.dust(MT.Ca   , U));
 		RM.Electrolyzer .addRecipe2(T, 64,  512, ST.tag(0), OM.dust(MT.MgCl2 , U*3), NF, MT.Cl.gas(U*2, T), OM.dust(MT.Mg   , U));
-		RM.Electrolyzer .addRecipe1(T, 16,  128, ST.tag(0), MT.CaCl2.liquid(U*3, T), MT.Cl.gas(U*2, T), OM.dust(MT.Ca, U));
-		RM.Electrolyzer .addRecipe1(T, 16,  128, ST.tag(0), MT.MgCl2.liquid(U*3, T), MT.Cl.gas(U*2, T), OM.dust(MT.Mg, U));
+		RM.Electrolyzer .addRecipe2(T, 64, 2048, ST.tag(0), OM.dust(MT.MnCl2 , U*3), NF, MT.Cl.gas(U*2, T), OM.dust(MT.Mn   , U));
+		RM.Electrolyzer .addRecipe1(T, 16, 1024, ST.tag(0), MT.CaCl2.liquid(U*3, T), MT.Cl.gas(U*2, T), OM.dust(MT.Ca, U));
+		RM.Electrolyzer .addRecipe1(T, 16, 1024, ST.tag(0), MT.MgCl2.liquid(U*3, T), MT.Cl.gas(U*2, T), OM.dust(MT.Mg, U));
+		RM.Electrolyzer .addRecipe1(T, 16, 4096, ST.tag(0), MT.MnCl2.liquid(U*3, T), MT.Cl.gas(U*2, T), OM.dust(MT.Mn, U));
 		
 		RM.Electrolyzer .addRecipe1(T, 16,  256, ST.tag(1), FL.array(MT.LiClO3.liquid(U*5, T), MT.O.gas(U, T)), NF, OM.dust(MT.LiClO4, U*6));
 		
