@@ -30,6 +30,7 @@ import gregapi.block.ItemBlockBase;
 import gregapi.block.ToolCompat;
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.data.LH;
+import gregapi.data.MD;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -86,7 +87,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + Math.min(3, mSpeed/0.4F) + "x");
+		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + Math.min(MD.RC.mLoaded ? 3 : 10, mSpeed/0.4F) + "x");
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}

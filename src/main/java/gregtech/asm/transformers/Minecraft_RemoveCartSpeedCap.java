@@ -34,6 +34,7 @@ import net.minecraft.launchwrapper.IClassTransformer;
  * I am very aware what the original Speed Cap is for,
  * but the Rails themselves already have a Speed Cap,
  * so I will leave the cap to the Rails and not the Carts.
+ * This does not work with Railcraft installed by the way.
  */
 public class Minecraft_RemoveCartSpeedCap implements IClassTransformer  {
 	@Override
