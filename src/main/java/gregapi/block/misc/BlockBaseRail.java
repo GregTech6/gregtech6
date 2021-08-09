@@ -291,7 +291,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 			double tMotion = Math.sqrt(aCart.motionX*aCart.motionX + aCart.motionZ*aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
-					tMotion *= 0.06;
+					tMotion /= mSpeed;
+					tMotion *= 0.15;
 					aCart.motionX += aCart.motionX / tMotion;
 					aCart.motionZ += aCart.motionZ / tMotion;
 				} else {
