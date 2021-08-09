@@ -274,11 +274,11 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		switch(WD.meta(aWorld, aX, aY, aZ) & 7) {
 		case  0:
-			if (WD.block(aWorld, aX  , aY, aZ+1) == this && (WD.meta(aWorld, aX  , aY, aZ+1) & 7) == 0
-			&&  WD.block(aWorld, aX  , aY, aZ-1) == this && (WD.meta(aWorld, aX  , aY, aZ-1) & 7) == 0) return mSpeed;
+			if (WD.block(aWorld, aX  , aY, aZ+1) instanceof BlockBaseRail && (WD.meta(aWorld, aX  , aY, aZ+1) & 7) == 0
+			&&  WD.block(aWorld, aX  , aY, aZ-1) instanceof BlockBaseRail && (WD.meta(aWorld, aX  , aY, aZ-1) & 7) == 0) return aWorld.doChunksNearChunkExist(aX, aY, aZ, 17) ? mSpeed : Math.min(mSpeed, 1.0F);
 		case  1:
-			if (WD.block(aWorld, aX+1, aY, aZ  ) == this && (WD.meta(aWorld, aX+1, aY, aZ  ) & 7) == 1
-			&&  WD.block(aWorld, aX-1, aY, aZ  ) == this && (WD.meta(aWorld, aX-1, aY, aZ  ) & 7) == 1) return mSpeed;
+			if (WD.block(aWorld, aX+1, aY, aZ  ) instanceof BlockBaseRail && (WD.meta(aWorld, aX+1, aY, aZ  ) & 7) == 1
+			&&  WD.block(aWorld, aX-1, aY, aZ  ) instanceof BlockBaseRail && (WD.meta(aWorld, aX-1, aY, aZ  ) & 7) == 1) return aWorld.doChunksNearChunkExist(aX, aY, aZ, 17) ? mSpeed : Math.min(mSpeed, 1.0F);
 		default:
 			return Math.min(mSpeed, 0.4F);
 		}

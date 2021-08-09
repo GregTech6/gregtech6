@@ -19,7 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.21: (Not released yet, released whenever it needs to be)
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
-[ADDED] Adamantium Rails which have the maximum Rail Top Speed (which matches Tungstensteel and Tungsten Carbide, because Minecarts are borken). Osmium is its Booster Material. These Rails are more of a flex than anything. But hey, they are very blast resistant!
+[ADDED] Adamantium Rails which have a Rail Top Speed of 10x (regular Minecarts only go up to 3x however!). Osmium is its Booster Material. They are very blast resistant.
 
 
 6.14.20:
