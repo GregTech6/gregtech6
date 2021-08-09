@@ -40,7 +40,7 @@ public class Railcraft_RemoveBoreSpam implements IClassTransformer  {
 			if (m.name.equals("onOreEvent")) {
 				GT_ASM.logger.info("Transforming mods.railcraft.common.modules.orehandlers.BoreOreHandler.onOreEvent");
 				m.instructions.clear();
-				m.instructions.insert(new InsnNode(Opcodes.RETURN));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 		

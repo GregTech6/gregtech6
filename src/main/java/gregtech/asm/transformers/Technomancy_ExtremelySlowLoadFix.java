@@ -51,7 +51,7 @@ public class Technomancy_ExtremelySlowLoadFix implements IClassTransformer {
 			if (m.name.equals("init") && m.desc.equals("()V")) {
 				GT_ASM.logger.info("Transforming theflogat.technomancy.util.Ore.init");
 				m.instructions.clear();
-				m.instructions.insert(new InsnNode(Opcodes.RETURN));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 		

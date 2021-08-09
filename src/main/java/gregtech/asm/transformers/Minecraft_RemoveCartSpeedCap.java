@@ -45,8 +45,8 @@ public class Minecraft_RemoveCartSpeedCap implements IClassTransformer  {
 			if (m.name.equals("getMaxCartSpeedOnRail")) {
 				GT_ASM.logger.info("Transforming net.minecraft.entity.item.EntityMinecart.getMaxCartSpeedOnRail");
 				m.instructions.clear();
-				m.instructions.insert(new LdcInsnNode(4.0F));
-				m.instructions.insert(new InsnNode(Opcodes.FRETURN));
+				m.instructions.add(new LdcInsnNode(4.0F));
+				m.instructions.add(new InsnNode(Opcodes.FRETURN));
 			}
 		}
 		

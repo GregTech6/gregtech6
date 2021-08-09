@@ -40,7 +40,7 @@ public class ExtraUtils_FixThaumcraftAspects implements IClassTransformer  {
 			if (m.name.equals("registerItems") || m.name.equals("handleQEDRecipes")) {
 				GT_ASM.logger.info("Transforming com.rwtema.extrautils.helper.ThaumcraftHelper");
 				m.instructions.clear();
-				m.instructions.insert(new InsnNode(Opcodes.RETURN));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 		
