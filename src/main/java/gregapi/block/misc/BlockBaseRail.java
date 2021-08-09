@@ -86,7 +86,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + (mSpeed/0.4F) + "x");
+		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + Math.min(3, mSpeed/0.4F) + "x");
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
@@ -291,10 +291,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 			double tMotion = Math.sqrt(aCart.motionX*aCart.motionX + aCart.motionZ*aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
-					tMotion /= mSpeed;
-					tMotion *= 0.15;
-					aCart.motionX += aCart.motionX / tMotion;
-					aCart.motionZ += aCart.motionZ / tMotion;
+					aCart.motionX *= 2;
+					aCart.motionZ *= 2;
 				} else {
 					tRailMeta &= 7;
 					if (tRailMeta == 1) {
