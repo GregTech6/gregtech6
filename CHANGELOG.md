@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.21: (Not released yet, released whenever it needs to be)
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
+[ADDED] Adamantium Rails which have an insane Rail Top Speed. Osmium would be its Booster Material.
 
 
 6.14.20:
