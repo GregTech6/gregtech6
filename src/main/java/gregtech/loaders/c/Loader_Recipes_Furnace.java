@@ -49,7 +49,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		while (tIterator.hasNext()) {
 			Entry<ItemStack, ItemStack> tEntry = tIterator.next();
 			OreDictItemData tData1 = OM.anydata(tEntry.getKey());
-			if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
+			if (MD.HBM.owns(tEntry.getKey()) || (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0)) {
 				OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
 					// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
