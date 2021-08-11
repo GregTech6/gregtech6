@@ -78,6 +78,9 @@ public class OP {
 	oreSlate                    = create("oreSlate"                     , "Slate Ores"                      , "Slate "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreGreenschist              = create("oreGreenschist"               , "Green Schist Ores"               , "Schist "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreBlueschist               = create("oreBlueschist"                , "Blue Schist Ores"                , "Schist "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
+	orePinkschist               = create("orePinkschist"                , "Pink Schist Ores"                , "Schist "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
+	oreGrayschist               = create("oreGrayschist"                , "Gray Schist Ores"                , "Schist "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
+	oreGneiss                   = create("oreGneiss"                    , "Gneiss Ores"                     , "Gneiss "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
 	oreLightprismarine          = create("oreLightprismarine"           , "Light Prismarine Ores"           , "Prismarine "                     , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TEMPESTAS  , 1).setTextureSetName("ore"),
 	oreDarkprismarine           = create("oreDarkprismarine"            , "Dark Prismarine Ores"            , "Prismarine "                     , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TEMPESTAS  , 1).setTextureSetName("ore"),
 	oreKimberlite               = create("oreKimberlite"                , "Kimberlite Ores"                 , "Kimberlite "                     , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.TERRA      , 1).setTextureSetName("ore"),
@@ -640,6 +643,9 @@ public class OP {
 		oreSlate                .mByProducts.add(OM.stack(MT.STONES.Slate       , dust.mAmount * 4));
 		oreGreenschist          .mByProducts.add(OM.stack(MT.STONES.Greenschist , dust.mAmount * 4));
 		oreBlueschist           .mByProducts.add(OM.stack(MT.STONES.Blueschist  , dust.mAmount * 4));
+		orePinkschist           .mByProducts.add(OM.stack(MT.STONES.Pinkschist  , dust.mAmount * 4));
+		oreGrayschist           .mByProducts.add(OM.stack(MT.STONES.Grayschist  , dust.mAmount * 4));
+		oreGneiss               .mByProducts.add(OM.stack(MT.STONES.Gneiss      , dust.mAmount * 4));
 		oreLightprismarine      .mByProducts.add(OM.stack(MT.PrismarineLight    , dust.mAmount * 4));
 		oreDarkprismarine       .mByProducts.add(OM.stack(MT.PrismarineDark     , dust.mAmount * 4));
 		oreKimberlite           .mByProducts.add(OM.stack(MT.STONES.Kimberlite  , dust.mAmount * 4));

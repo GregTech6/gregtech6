@@ -160,8 +160,8 @@ public class Loader_Ores implements Runnable {
 		OreDictPrefix[] tPrefix;
 		OreDictMaterial[] tDrops;
 		
-		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreSlate, OP.oreAndesite, OP.oreMarble, OP.oreMarble, OP.oreLimestone, OP.oreBlueschist, OP.oreVanillastone, OP.oreBasalt, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.STONES.Basalt, MT.STONES.Shale, MT.Sand, MT.STONES.Limestone, MT.STONES.Slate, MT.STONES.Rhyolite, MT.Chalk, MT.STONES.Marble, MT.Dolomite, MT.STONES.Blueschist/* More of a Neutral Gray */, MT.STONES.Chert, MT.STONES.Gabbro, MT.STONES.Dacite};
+		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreSlate, OP.oreAndesite, OP.oreMarble, OP.oreMarble, OP.oreLimestone, OP.oreGrayschist, OP.oreVanillastone, OP.oreBasalt, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Basalt, MT.STONES.Shale, MT.Sand, MT.STONES.Limestone, MT.STONES.Slate, MT.STONES.Rhyolite, MT.Chalk, MT.STONES.Marble, MT.Dolomite, MT.STONES.Grayschist, MT.STONES.Chert, MT.STONES.Gabbro, MT.STONES.Dacite};
 		for (int i = 0; i < 13; i++) rockset(MD.EB, "enhancedbiomes.tile.stoneEB", i, i, "enhancedbiomes.tile.stoneCobbleEB", i, "eb.stone."+i, tPrefix[i], tDrops[i]);
 		
 		
@@ -170,7 +170,7 @@ public class Loader_Ores implements Runnable {
 		tDrops  = new OreDictMaterial[] {MT.STONES.Granite, MT.STONES.GraniteBlack, MT.STONES.Rhyolite, MT.STONES.Andesite, MT.STONES.Gabbro, MT.STONES.Basalt, MT.STONES.Komatiite, MT.STONES.Dacite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "igneousStone", i, i+8, "igneousCobblestone", i, "ub.igneous."+i, tPrefix[i], tDrops[i]);
 		
-		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
+		tPrefix = new OreDictPrefix[] {OP.oreGneiss, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
 		tDrops  = new OreDictMaterial[] {MT.STONES.Gneiss, MT.STONES.Eclogite, MT.STONES.Marble, MT.STONES.Quartzite, MT.STONES.Blueschist, MT.STONES.Greenschist, MT.Talc, MT.STONES.Migmatite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "metamorphicStone", i, i+8, "metamorphicCobblestone", i, "ub.metamorphic."+i, tPrefix[i], tDrops[i]);
 		
@@ -193,11 +193,11 @@ public class Loader_Ores implements Runnable {
 		tDrops  = new OreDictMaterial[] {MT.Stone, MT.Stone, MT.Stone, MT.Stone, MT.STONES.Shale};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "weakStone", i, i, "weakRubble", i, "pfaa.weak."+i, tPrefix[i], tDrops[i], 0.5F, 0.5F, 0, F, F, T);
 		
-		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.STONES.Limestone, MT.Stone, MT.Stone, MT.STONES.Slate, MT.Stone};
+		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.orePinkschist, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.STONES.Limestone, MT.STONES.Pinkschist, MT.Stone, MT.STONES.Slate, MT.Stone};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "mediumStone", i, i, "mediumCobble", i, "pfaa.medium."+i, tPrefix[i], tDrops[i], 1.0F, 1.0F, 0, F, F, T);
 		
-		tPrefix = new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreVanillastone, OP.oreBlackgranite, OP.oreGreenschist, OP.oreMarble, OP.oreVanillastone, OP.oreAndesite, OP.oreSandstone, OP.oreSandstone};
+		tPrefix = new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreGneiss, OP.oreBlackgranite, OP.oreGreenschist, OP.oreMarble, OP.oreVanillastone, OP.oreAndesite, OP.oreSandstone, OP.oreSandstone};
 		tDrops  = new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Basalt, MT.STONES.Gneiss, MT.STONES.GraniteBlack, MT.STONES.Greenschist, MT.STONES.Marble, MT.Stone, MT.STONES.Rhyolite, MT.Sand, MT.RedSand};
 		for (int i = 0; i <10; i++) rockset(MD.PFAA, "strongStone", i, i, "strongCobble", i, "pfaa.strong."+i, tPrefix[i], tDrops[i], 1.5F, 1.5F, 1, F, F, T);
 		
@@ -223,6 +223,9 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.BoP, "rocks"                                , 4, "bop.shale"            , OP.oreShale               , MT.STONES.Shale);
 		
 		rockset(MD.GaSu, "basalt"                              , 0, "gasu.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
+		
+		rockset(MD.HBM, "tile.stone_gneiss"                    , 0, "hbm.gneiss"           , OP.oreGneiss              , MT.STONES.Gneiss);
+		rockset(MD.HBM, "tile.basalt_smooth"                   , 0, "hbm.basalt"           , OP.oreBasalt              , MT.STONES.Basalt);
 		
 		rockset(MD.RC, "cube"                                  , 6, "rc.abyssal"           , OP.oreBasalt              , MT.STONES.Basalt);
 		rockset(MD.RC, "cube"                                  , 7, "rc.quarried"          , OP.oreMarble              , MT.STONES.Marble);

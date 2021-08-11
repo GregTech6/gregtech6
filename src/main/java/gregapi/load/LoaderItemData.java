@@ -894,7 +894,7 @@ public class LoaderItemData implements Runnable {
 			}
 			for (String tName : new String [] {"mediumStone", "mediumCobble", "mediumStoneBrick"}) {
 				OM.reg(OP.stone, MT.STONES.Limestone            , ST.make(MD.PFAA, tName, 1,  0));
-				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  1)); // Light Red/Pink Schist
+				OM.reg(OP.stone, MT.STONES.Pinkschist           , ST.make(MD.PFAA, tName, 1,  1));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  2)); // Serpentite
 				OM.reg(OP.stone, MT.STONES.Slate                , ST.make(MD.PFAA, tName, 1,  3));
 				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.PFAA, tName, 1,  4)); // Skarn
@@ -990,7 +990,7 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.EB, tName, 1, 6));
 				OM.reg(OP.stone, MT.STONES.Marble               , ST.make(MD.EB, tName, 1, 7));
 				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.EB, tName, 1, 8));
-				OM.reg(OP.stone, MT.STONES.Blueschist           , ST.make(MD.EB, tName, 1, 9)); // More of a Neutral Gray
+				OM.reg(OP.stone, MT.STONES.Grayschist           , ST.make(MD.EB, tName, 1, 9));
 				OM.reg(OP.stone, MT.STONES.Chert                , ST.make(MD.EB, tName, 1,10));
 				OM.reg(OP.stone, MT.STONES.Gabbro               , ST.make(MD.EB, tName, 1,11));
 				OM.reg(OP.stone, MT.STONES.Dacite               , ST.make(MD.EB, tName, 1,12));
@@ -1055,6 +1055,8 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "barnardaEsubgrunt", 1, 0));
 		}
 		
+		OM.reg(OP.stone, MT.STONES.Gneiss                       , ST.make(MD.HBM, "tile.stone_gneiss"   , 1, 0));
+		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.HBM, "tile.basalt_smooth"  , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 2));
