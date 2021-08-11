@@ -1057,6 +1057,7 @@ public class LoaderItemData implements Runnable {
 		
 		OM.reg(OP.stone, MT.STONES.Gneiss                       , ST.make(MD.HBM, "tile.stone_gneiss"   , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.HBM, "tile.basalt_smooth"  , 1, 0));
+		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.HBM, "tile.basalt"         , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
 		OM.reg(OP.stone, MT.STONES.Redrock                      , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 2));
