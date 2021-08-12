@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.21: (Not released yet, released whenever it needs to be)
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
+[ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
 
 
 6.14.20:
@@ -2059,13 +2060,6 @@ Its Ammo Items are now recognized as Ammo by the Storage Inserter, meaning you w
 The Undead Mobs of Tech Guns now drop similar GT6 Items as the Vanilla Zombies and Skeletons.
 Boxing Machines can fill/empty Magazines with Bullets and such.
 GT6 Crowbars can be used to break "Ore Clusters", just like the Tech Guns Crowbar. Note that they lose a lot of Durability for that!
-[COMPAT-FAILED] HBM's Nuclear Tech
-Could not be added Compatibility to, because it takes more than half an hour to load, when GregTech is installed (and the Lag is on HBMs Side, even though caused by the enormous amount of GT6 Items).
-Note that I used a "Just GT6 Pack" for this that usually takes 2-3 minutes to load and added HBM to it.
-And also NEI takes Minutes to load Recipes when I look up Recipes, meaning I can't check the Data at all with HBM installed.
-And no, I didn't even run out of Memory, It only used 2 of the assigned 8 GB RAM, so that's not the Lag Source, it's likely the NEI Handler of HBMs that fucked up, or that HBM iterates over its entire Recipe List to find a fitting Recipe, what is utter garbage considering there is a thing called "HashMaps".
-TL;DR; HMBs Nuclear Tech needs MASSIVE optimizations, or else I will simply not be able to add Compatibility for it, even though I want to. I saw that it still did updates 2 weeks ago, so not all hope is lost.
-Edit: Okay I did add at least some Blast Resistance Tooltips to Blocks and compatibility with its Hazmat Suits, because that I can do without looking at Recipes in NEI.
 [FIXED] Berry Bushes didn't work properly for some reason.
 [FIXED] Wires and Pipes didn't properly connect to Non-GT6-Blocks per default when placing them directly against their Side.
 [CHANGED] The Adv Crafting Table will now only craft all Items at once, if you Shift-Rightclick the Crafting Output Slot. That way it cant accidentially happen when you just Shiftclick Items out of the Grid. Also Shift-Leftclick now crafts only a Stack (kinda like regular rightclick) but dumps that one Stack into your Inventory, without it sticking to your Mouse.

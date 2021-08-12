@@ -68,7 +68,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 					if (UT.Entities.hasInfiniteItems(aPlayer)) {
 						tStack.stackSize = tOldSize;
 					} else {
-						((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer);
+						((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer, T);
 						ST.use(aPlayer, T, tStack, 0);
 					}
 					tStack.setTagCompound(tOldTag);

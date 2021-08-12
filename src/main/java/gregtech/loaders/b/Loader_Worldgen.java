@@ -126,6 +126,7 @@ public class Loader_Worldgen implements Runnable {
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.OREMATS.Cinnabar  , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 0, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
+		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.OREMATS.Uraninite , U16,  0, 48, ST.block(MD.HBM, "tile.ore_uranium")) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEntropy    , U64, 24, 40, ST.block(MD.TC, "blockCustomOre"), 6, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedAir        , U64, 48, 64, ST.block(MD.TC, "blockCustomOre"), 1, BIOMES_MAGICAL_GOOD) : null
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedFire       , U64,  0, 16, ST.block(MD.TC, "blockCustomOre"), 2, BIOMES_MAGICAL_GOOD) : null
@@ -194,7 +195,9 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, MT.STONES.Basalt, ST.block(MD.MIN, "basalt")));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, MT.STONES.Basalt, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 0, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 0));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, MT.STONES.Basalt, ST.block(MD.HBM, "tile.basalt_smooth"), 0, ST.block(MD.HBM, "tile.basalt"), 0
-		, new StoneLayerOres(MT.Asbestos                , U16,  0, 48, ST.block(MD.HBM, "tile.basalt_asbestos"))
+		, new StoneLayerOres(MT.Asbestos                , U16, 16, 48, ST.block(MD.HBM, "tile.basalt_asbestos"))
+		, new StoneLayerOres(MT.FluoriteWhite           , U16,  0, 48, ST.block(MD.HBM, "tile.basalt_fluorite"))
+		, new StoneLayerOres(MT.S                       , U8 ,  0, 32, ST.block(MD.HBM, "tile.basalt_sulfur"))
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, MT.STONES.Basalt, ST.block(MD.UB, "igneousStone"), 5+8, ST.block(MD.UB, "igneousCobblestone"), 5
 		, new StoneLayerOres(MT.OREMATS.Bastnasite      , U24, 24, 32)
@@ -367,6 +370,7 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Gneiss, ST.block(MD.HBM, "tile.stone_gneiss")
 		, new StoneLayerOres(MT.Graphite                , U8 ,  0, 64)
 		, new StoneLayerOres(MT.Asbestos                , U8 ,  0, 48, ST.block(MD.HBM, "tile.ore_gneiss_asbestos"))
+		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.OREMATS.Uraninite , U16,  0, 48, ST.block(MD.HBM, "tile.ore_gneiss_uranium")) : null
 		));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Pinkschist, ST.block(MD.PFAA, "mediumStone"), 1, ST.block(MD.PFAA, "mediumCobble"), 1));

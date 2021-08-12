@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,7 +77,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	public void wrenchUsed(EntityPlayer aPlayer, int aX, int aY, int aZ) {
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, 100, aPlayer);
+		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, 100, aPlayer, T);
 	}
 	
 	@Override
@@ -90,7 +90,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	@Override
 	public void onWhack(EntityPlayer aPlayer, ItemStack aStack, int aX, int aY, int aZ) {
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, 100, aPlayer);
+		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, 100, aPlayer, T);
 	}
 	
 	@Override
@@ -103,7 +103,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	@Override
 	public void onLink(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer);
+		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, T);
 	}
 	
 	@Override
@@ -116,7 +116,7 @@ public class MultiItemToolWithCompat extends MultiItemTool implements IToolGraft
 	@Override
 	public void onBoost(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer);
+		if (tStats != null && !UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, T);
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,7 +45,7 @@ public class Behavior_TripwireCutting extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {
 		if (aPlayer.worldObj.isRemote) return F;
 		if (aWorld.getBlock(aX, aY, aZ) == Blocks.tripwire) {
-			if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+			if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, T)) {
 				int aMeta = aWorld.getBlockMetadata(aX, aY, aZ) | 8;
 				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMeta, 4);
 				if (Blocks.tripwire.removedByPlayer(aWorld, aPlayer, aX, aY, aZ, T)) {

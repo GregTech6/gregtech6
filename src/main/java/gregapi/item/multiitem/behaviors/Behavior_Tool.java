@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -65,7 +65,7 @@ public class Behavior_Tool extends AbstractBehaviorDefault {
 		long tDamage = IBlockToolable.Util.onToolClick(mToolName, Long.MAX_VALUE, (aItem instanceof MultiItemTool ? ((MultiItemTool)aItem).getHarvestLevel(aStack, mToolName) : 1), aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer!=null&&aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (tDamage > 0) {
-			if (mDamage > 0) if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer);
+			if (mDamage > 0) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer, T);
 			if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, mRandomPitch ? _7_GRAND_DAD_[PITCH_INDEX = ((PITCH_INDEX + 1) % _7_GRAND_DAD_.length)] : mPitch, aX, aY, aZ);
 			return !aWorld.isRemote;
 		}

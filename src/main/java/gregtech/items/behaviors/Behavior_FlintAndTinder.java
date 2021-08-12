@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -56,7 +56,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 		}
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (aWorld.isRemote) return F;
-		if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(Math.max(10000, tDamage), 10000, 100, T), aPlayer);
+		((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(Math.max(10000, tDamage), 10000, 100, T), aPlayer, T);
 		UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
 		return T;
 	}
@@ -70,7 +70,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	public boolean onLeftClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		if (aPlayer.worldObj.isRemote) return F;
 		if (aEntity instanceof EntityCreeper) {
-			if (!UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer);
+			((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer, T);
 			UT.Sounds.send(aPlayer.worldObj, SFX.MC_IGNITE, 1.0F, 1.0F, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
 			((EntityCreeper)aEntity).func_146079_cb();
 			return T;

@@ -86,7 +86,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 						tStack.stackSize = tOldSize;
 					} else {
 						ST.use(aPlayer, T, tStack, 0);
-						((MultiItemTool)aItem).doDamage(aStack, 1, aPlayer);
+						((MultiItemTool)aItem).doDamage(aStack, 1, aPlayer, T);
 					}
 					rReturn = T;
 				}
