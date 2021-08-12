@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,6 +18,8 @@
  */
 
 package gregtech.blocks.tool;
+
+import static gregapi.data.CS.*;
 
 import java.util.List;
 
@@ -83,14 +85,14 @@ public class BlockSpikeFancy extends BlockBaseSpike {
 		if (aEntity instanceof EntityLivingBase) {
 			if (aMeta < 8) {
 				if (((EntityLivingBase)aEntity).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ? 20.0F : 10.0F));
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ?  2.0F :  1.0F));
 			} else {
 				if (UT.Entities.isEnderCreature((EntityLivingBase)aEntity) || UT.Entities.isWereCreature((EntityLivingBase)aEntity))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ? 20.0F : 10.0F));
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ?  2.0F :  1.0F));
 			}
 		}
 	}

@@ -246,7 +246,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (tDamage + tMagicDamage > 0) {
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
-					float tFullDamage = (MD.TFC.mLoaded || MD.TFCP.mLoaded ? (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER : (tDamage+tMagicDamage));
+					float tFullDamage = (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER;
 					// Avoiding the Betweenlands Damage Cap in a fair way. Only Betweenlands Materials will avoid it. And maybe some super Lategame Items.
 					if (MD.BTL.mLoaded && aEntity.getClass().getName().startsWith("thebetweenlands") && getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) {
 						float tDamageToDeal = tFullDamage;
@@ -313,14 +313,14 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				aList.add(LH.Chat.WHITE + "Durability: x" + LH.Chat.GREEN + tStats.getMaxDurabilityMultiplier());
 				aList.add(LH.Chat.WHITE + "Level: +" + LH.Chat.YELLOW + tStats.getBaseQuality());
 				float tCombat = getToolCombatDamage(aStack);
-				aList.add(LH.Chat.WHITE + "Attack Damage: +" + LH.Chat.BLUE + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * TFC_DAMAGE_MULTIPLIER : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)")));
+				aList.add(LH.Chat.WHITE + "Attack Damage: +" + LH.Chat.BLUE + (tCombat * TFC_DAMAGE_MULTIPLIER) + LH.Chat.RED + " (= " + (TFC_DAMAGE_MULTIPLIER > 1 ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"));
 				aList.add(LH.Chat.WHITE + "Mining Speed: x" + LH.Chat.PINK + tStats.getSpeedMultiplier());
 				if (tStats.canCollect()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
 			} else {
 				aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + UT.Code.makeString(tMaxDamage - tDamage) + " / " + UT.Code.makeString(tMaxDamage));
 				aList.add(LH.Chat.WHITE + tMat1.getLocal() + LH.Chat.YELLOW + " Level: " + (tStats.getBaseQuality() + tMat1.mToolQuality));
 				float tCombat = getToolCombatDamage(aStack);
-				aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * TFC_DAMAGE_MULTIPLIER : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)")));
+				aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (tCombat * TFC_DAMAGE_MULTIPLIER) + LH.Chat.RED + " (= " + (TFC_DAMAGE_MULTIPLIER > 1 ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"));
 				aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMat1.mToolSpeed));
 				aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : Math.min(getEnergyStored(TD.Energy.EU, aStack), getEnergyCapacity(TD.Energy.EU, aStack)), tStats.getToolDamagePerContainerCraft()));
 				if (MD.BTL.mLoaded && tMat1.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));

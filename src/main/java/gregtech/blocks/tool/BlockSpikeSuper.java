@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,6 +18,8 @@
  */
 
 package gregtech.blocks.tool;
+
+import static gregapi.data.CS.*;
 
 import java.util.List;
 
@@ -73,9 +75,9 @@ public class BlockSpikeSuper extends BlockBaseSpike {
 		int aMeta = WD.meta(aWorld, aX, aY, aZ);
 		if (aEntity instanceof EntityLivingBase) {
 			if (aMeta < 8) {
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 15.0F :  7.5F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ? 15.0F :  7.5F));
 			} else {
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 50.0F : 25.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ? 50.0F : 25.0F));
 			}
 		}
 	}

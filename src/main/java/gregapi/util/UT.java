@@ -3146,7 +3146,7 @@ public class UT {
 		
 		public static boolean applyChemDamage(Entity aEntity, float aDamage) {
 			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && aEntity.getClass() != EntitySkeleton.class && !isWearingFullChemHazmat(((EntityLivingBase)aEntity))) {
-				aEntity.attackEntityFrom(DamageSources.getChemDamage(), (MD.TFC.mLoaded || MD.TFCP.mLoaded) ? TFC_DAMAGE_MULTIPLIER * aDamage : aDamage);
+				aEntity.attackEntityFrom(DamageSources.getChemDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				PotionEffect tEffect = null;
 				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.poison.id, Math.max(20, (int)(aDamage * 100 + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.poison))==null?0:tEffect.getDuration())))), 1));
 				return T;
@@ -3156,7 +3156,7 @@ public class UT {
 		
 		public static boolean applyHeatDamage(Entity aEntity, float aDamage) {
 			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && aEntity.getClass() != EntityBlaze.class && ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.fireResistance) == null && !isWearingFullHeatHazmat(((EntityLivingBase)aEntity))) {
-				aEntity.attackEntityFrom(DamageSources.getHeatDamage(), (MD.TFC.mLoaded || MD.TFCP.mLoaded) ? TFC_DAMAGE_MULTIPLIER * aDamage : aDamage);
+				aEntity.attackEntityFrom(DamageSources.getHeatDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
 			return F;
@@ -3164,7 +3164,7 @@ public class UT {
 		
 		public static boolean applyFrostDamage(Entity aEntity, float aDamage) {
 			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullFrostHazmat(((EntityLivingBase)aEntity))) {
-				aEntity.attackEntityFrom(DamageSources.getFrostDamage(), (MD.TFC.mLoaded || MD.TFCP.mLoaded) ? TFC_DAMAGE_MULTIPLIER * aDamage : aDamage);
+				aEntity.attackEntityFrom(DamageSources.getFrostDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
 			return F;
@@ -3173,7 +3173,7 @@ public class UT {
 		public static boolean applyElectricityDamage(Entity aEntity, long aVoltage, long aAmperage) {
 			long aDamage = Code.tierMax(aVoltage) * aAmperage * 4;
 			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
-				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), (MD.TFC.mLoaded || MD.TFCP.mLoaded) ? TFC_DAMAGE_MULTIPLIER * aDamage : aDamage);
+				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
 			return F;
@@ -3182,7 +3182,7 @@ public class UT {
 		public static boolean applyElectricityDamage(Entity aEntity, long aWattage) {
 			long aDamage = Code.tierMax(aWattage) * 4;
 			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
-				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), (MD.TFC.mLoaded || MD.TFCP.mLoaded) ? TFC_DAMAGE_MULTIPLIER * aDamage : aDamage);
+				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
 			return F;

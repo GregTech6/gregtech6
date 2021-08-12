@@ -551,6 +551,8 @@ public class GT_API extends Abstract_Mod {
 		ENABLE_ADDING_IC2_OREWASHER_RECIPES     = ConfigsGT.GREGTECH.get("ic2", "EnableAddingOreWasherRecipes"         , T);
 		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES    = ConfigsGT.GREGTECH.get("ic2", "EnableAddingThermalCentrifugeRecipes" , T);
 		
+		if (!ConfigsGT.GREGTECH.get("general", "UseTFCAttackMultiplierWhenLoaded" , T) || TFC_DAMAGE_MULTIPLIER < 1 || (!MD.TFC.mLoaded && !MD.TFCP.mLoaded)) TFC_DAMAGE_MULTIPLIER = 1;
+		
 		if (MD.IC2C.mLoaded) {
 		DISABLE_ALL_IC2_MACERATOR_RECIPES       = F;
 		ENABLE_ADDING_IC2_MACERATOR_RECIPES     = T;

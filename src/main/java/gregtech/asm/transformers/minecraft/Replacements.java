@@ -19,11 +19,17 @@
 
 package gregtech.asm.transformers.minecraft;
 
+import static gregapi.data.CS.*;
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -34,6 +40,27 @@ import net.minecraftforge.common.util.ForgeDirection;
    while transforming other mods though.
  */
 public class Replacements {
+	
+	/** Zombies convert their Victim. */
+	public void EntityZombie_onKillEntity(EntityZombie aSelf, EntityLivingBase aVictim) {
+		World aWorld = aVictim.worldObj;
+		// Just ALWAYS convert Villagers, not only sometimes or when the stupid Difficulty Setting is right.
+		if (aVictim instanceof EntityVillager) {
+			EntityVillager aVillager = (EntityVillager)aVictim;
+			EntityZombie tZombieVillager = new EntityZombie(aWorld);
+			tZombieVillager.copyLocationAndAnglesFrom(aVillager);
+			tZombieVillager.onSpawnWithEgg((IEntityLivingData)null);
+			tZombieVillager.setCanPickUpLoot(false);
+			tZombieVillager.setVillager(true);
+			tZombieVillager.func_110163_bv();
+			if (aVillager.isChild()) tZombieVillager.setChild(true);
+			if (aVillager.hasCustomNameTag()) tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
+			aWorld.spawnEntityInWorld(tZombieVillager);
+			aWorld.playAuxSFXAtEntity(null, 1016, (int)tZombieVillager.posX, (int)tZombieVillager.posY, (int)tZombieVillager.posZ, 0);
+			aWorld.removeEntity(aVillager);
+			DEB.println("TEST");
+		}
+	}
 	
 	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid self, World world, int x, int y, int z, Random rand) {
 		if (self.getMaterial() == Material.lava)

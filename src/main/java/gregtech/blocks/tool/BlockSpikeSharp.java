@@ -19,6 +19,8 @@
 
 package gregtech.blocks.tool;
 
+import static gregapi.data.CS.*;
+
 import java.util.List;
 
 import gregapi.block.misc.BlockBaseSpike;
@@ -76,9 +78,9 @@ public class BlockSpikeSharp extends BlockBaseSpike {
 		if (aEntity instanceof EntityLivingBase) {
 			if (aMeta < 8) {
 				if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  5.0F :  2.5F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ?  5.0F :  2.5F));
 			} else {
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 10.0F :  5.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), TFC_DAMAGE_MULTIPLIER * ((aMeta & 7) < 6 ? 10.0F :  5.0F));
 			}
 		}
 	}
