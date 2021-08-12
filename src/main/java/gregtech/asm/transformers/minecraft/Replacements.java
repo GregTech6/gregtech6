@@ -41,7 +41,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class Replacements {
 	
 	/** Zombies convert their Victim. */
-	public void EntityZombie_onKillEntity(Object aZombie, Object aVictim) {
+	public static void EntityZombie_onKillEntity(Object aZombie, Object aVictim) {
 		// Just ALWAYS convert Villagers, not only sometimes or when the stupid Difficulty Setting is right.
 		if (aVictim instanceof EntityVillager) {
 			EntityVillager aVillager = (EntityVillager)aVictim;
