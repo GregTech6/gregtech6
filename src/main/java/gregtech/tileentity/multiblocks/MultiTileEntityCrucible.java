@@ -545,7 +545,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public boolean fillMoldAtSide(ITileEntityMold aMold, byte aSide, byte aSideOfMold) {
-		if (checkStructure(F)) for (OreDictMaterialStack tContent : mContent) if (tContent != null && mTemperature >= tContent.mMaterial.mMeltingPoint) {
+		if (checkStructure(F)) for (OreDictMaterialStack tContent : mContent) if (tContent != null && mTemperature >= tContent.mMaterial.mMeltingPoint && tContent.mMaterial.mTargetSmelting.mMaterial == tContent.mMaterial) {
 			long tAmount = aMold.fillMold(tContent, mTemperature, aSideOfMold);
 			if (tAmount > 0) {
 				tContent.mAmount -= tAmount;

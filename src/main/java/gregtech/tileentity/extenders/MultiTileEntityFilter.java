@@ -118,6 +118,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 	}
 	
 	@Override
@@ -127,6 +128,12 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 			mInverted = !mInverted;
 			if (aChatReturn != null) aChatReturn.add(mInverted ? "Blacklist Filter" : "Whitelist Filter");
 			return 2000;
+		}
+		if (aTool.equals(TOOL_softhammer)) {
+			mInverted = F;
+			for (int i = 0; i < mFilter.length; i++) mFilter[i] = null;
+			if (aChatReturn != null) aChatReturn.add("Cleared the Filter");
+			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) aChatReturn.add(mInverted ? "Blacklist Filter" : "Whitelist Filter");
