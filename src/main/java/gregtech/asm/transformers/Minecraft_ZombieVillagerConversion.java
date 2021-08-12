@@ -44,7 +44,7 @@ public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 				m.instructions.clear();
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load victim
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(Lnet.minecraft.entity.monster.EntityZombie;Lnet/minecraft/entity/EntityLivingBase;)V", false));
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
 				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}

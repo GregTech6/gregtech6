@@ -26,7 +26,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
@@ -42,11 +41,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class Replacements {
 	
 	/** Zombies convert their Victim. */
-	public void EntityZombie_onKillEntity(EntityZombie aSelf, EntityLivingBase aVictim) {
-		World aWorld = aVictim.worldObj;
+	public void EntityZombie_onKillEntity(Object aZombie, Object aVictim) {
 		// Just ALWAYS convert Villagers, not only sometimes or when the stupid Difficulty Setting is right.
 		if (aVictim instanceof EntityVillager) {
 			EntityVillager aVillager = (EntityVillager)aVictim;
+			World aWorld = aVillager.worldObj;
 			EntityZombie tZombieVillager = new EntityZombie(aWorld);
 			tZombieVillager.copyLocationAndAnglesFrom(aVillager);
 			tZombieVillager.onSpawnWithEgg((IEntityLivingData)null);
