@@ -19,14 +19,6 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
-
-import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 /**
@@ -34,7 +26,7 @@ import net.minecraft.launchwrapper.IClassTransformer;
  */
 public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 	@Override
-	public byte[] transform(String name, String transformedName, byte[] basicClass) {
+	public byte[] transform(String name, String transformedName, byte[] basicClass) {return basicClass;}/*
 		if (!transformedName.equals("net.minecraft.entity.monster.EntityZombie")) return basicClass;
 		ClassNode classNode = GT_ASM.makeNodes(basicClass);
 		
@@ -44,11 +36,11 @@ public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 				m.instructions.clear();
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load victim
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(L;L;)V", false));
 				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 		
 		return GT_ASM.writeByteArray(classNode);
-	}
+	}*/
 }

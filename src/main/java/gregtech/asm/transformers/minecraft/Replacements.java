@@ -26,6 +26,8 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -41,7 +43,7 @@ public class Replacements {
 	/** Zombies convert their Victim. */
 	public static void EntityZombie_onKillEntity(Object aZombie, Object aVictim) {
 		// Just ALWAYS convert Villagers, not only sometimes or when the stupid Difficulty Setting is right.
-		if (aVictim instanceof EntityVillager) {/*
+		if (aVictim instanceof EntityVillager) {
 			EntityVillager aVillager = (EntityVillager)aVictim;
 			World aWorld = aVillager.worldObj;
 			EntityZombie tZombieVillager = new EntityZombie(aWorld);
@@ -54,7 +56,7 @@ public class Replacements {
 			if (aVillager.hasCustomNameTag()) tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
 			aWorld.spawnEntityInWorld(tZombieVillager);
 			aWorld.playAuxSFXAtEntity(null, 1016, (int)tZombieVillager.posX, (int)tZombieVillager.posY, (int)tZombieVillager.posZ, 0);
-			aWorld.removeEntity(aVillager);*/
+			aWorld.removeEntity(aVillager);
 			DEB.println("TEST");
 		}
 	}
