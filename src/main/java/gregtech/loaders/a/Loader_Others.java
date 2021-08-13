@@ -180,10 +180,6 @@ public class Loader_Others implements Runnable {
 		
 		
 		
-		Sandwiches.INGREDIENT_TEXTURES_SIDES [255] = null;
-		Sandwiches.INGREDIENT_TEXTURES_TOP   [255] = null;
-		Sandwiches.INGREDIENT_MODEL_IDS      [255] = (byte)255;
-		Sandwiches.INGREDIENT_MODEL_THICKNESS[255] = (byte)  0;
 		Sandwiches.INGREDIENT_TEXTURES_SIDES [254] = BlockTextureDefault.get("sandwiches/TOAST_SIDES");
 		Sandwiches.INGREDIENT_TEXTURES_TOP   [254] = BlockTextureDefault.get("sandwiches/TOAST_TOP");
 		Sandwiches.INGREDIENT_MODEL_IDS      [254] = (byte)254;

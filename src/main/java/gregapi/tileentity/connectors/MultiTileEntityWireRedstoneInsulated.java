@@ -110,6 +110,8 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (tDelegator.mTileEntity instanceof ITileEntityRedstoneWire) return canAcceptRedstoneFromWire(aSide, REDSTONE_ID) && ((ITileEntityRedstoneWire)tDelegator.mTileEntity).canEmitRedstoneToWire(tDelegator.mSideOfTileEntity, REDSTONE_ID) ? ((ITileEntityRedstoneWire)tDelegator.mTileEntity).getRedstoneMinusLoss(tDelegator.mSideOfTileEntity, REDSTONE_ID) : 0;
 		if (!canAcceptRedstoneFromVanilla(aSide)) return 0;
+		// Do not accept Redstone coming from any Redstone Sink! (Such as Droppers or Dispensers)
+		if (REDSTONE_SINKS.contains(tDelegator.getBlock())) return 0;
 		// Making sure the Glowstone Illuminators from Thermal Expansion are not flickering due to their weird Redstone emitting Mechanics.
 		if (MD.TE.mLoaded && tDelegator.mTileEntity != null && tDelegator.mTileEntity.getClass().getName().startsWith("cofh.thermalexpansion.block.light")) return 0;
 		if (mVanillaSides[aSide] < 0) mVanillaSides[aSide] = getRedstoneIncoming(aSide);

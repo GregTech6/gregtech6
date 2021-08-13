@@ -1127,7 +1127,7 @@ public class CS {
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_prospector        , "Prospecting for Ores in an Area");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_ducttape          , "");
 	}
-
+	
 	/** A Set of different NBT Keys I use for Stuff. */
 	public static final String
 	  NBT_HIDDEN                    = "gt.hidden"                   // Boolean
@@ -1249,15 +1249,15 @@ public class CS {
 	, NBT_REPLICATOR_DATA           = "gt.replicator.data"          // Short
 	, NBT_REACTOR_SETUP             = "gt.reactor.setup"            // Short
 	, NBT_REACTOR_SETUP_NAME        = "gt.reactor.setup.name"       // String
-
+	
 	, NBT_RECYCLING_COMPS           = "gt.recycling.comps"          // List of Components for the Disassembler.
 	, NBT_RECYCLING_MATS            = "gt.recycling.mats"           // List of Materials this Item recycles into. OM.anydata(ItemStack aStack) will check for this NBT, but only AFTER the Server already started!
 	, NBT_FUEL_VALUE                = "gt.fuelvalue"                // Short
 	, NBT_EFFECTS                   = "gt.effects"                  // Compound
-
+	
 	, NBT_MATERIAL                  = "gt.material"                 // String containing the Material Name.
 	, NBT_MATERIALS                 = "gt.materials"                // Containing the Data of an Array of Material Stacks.
-
+	
 	, NBT_ENERGY_EMITTED            = "gt.energy.emitted"           // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_2          = "gt.energy.emitted.2"         // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_SIDES      = "gt.energy.emitted.sides"     // String containing the Type of emitted Energy.
@@ -1267,7 +1267,7 @@ public class CS {
 	, NBT_ENERGY_EMITTED_BACK       = "gt.energy.emitted.back"      // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_LEFT       = "gt.energy.emitted.left"      // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_RIGHT      = "gt.energy.emitted.right"     // String containing the Type of emitted Energy.
-
+	
 	, NBT_ENERGY_ACCEPTED           = "gt.energy.accepted"          // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_2         = "gt.energy.accepted.2"        // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_SIDES     = "gt.energy.accepted.sides"    // String containing the Type of accepted Energy.
@@ -1277,7 +1277,7 @@ public class CS {
 	, NBT_ENERGY_ACCEPTED_BACK      = "gt.energy.accepted.back"     // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_LEFT      = "gt.energy.accepted.left"     // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_RIGHT     = "gt.energy.accepted.right"    // String containing the Type of accepted Energy.
-
+	
 	, NBT_INPUT                     = "gt.input"                    // Long containing a generic Energy Variable.
 	, NBT_INPUT_MIN                 = "gt.input.min"                // Long containing a generic Energy Variable.
 	, NBT_INPUT_MAX                 = "gt.input.max"                // Long containing a generic Energy Variable.
@@ -1290,7 +1290,7 @@ public class CS {
 	, NBT_INPUT_AU                  = "gt.input.au"                 // Long containing a specified Energy Variable.
 	, NBT_INPUT_MJ                  = "gt.input.mj"                 // Long containing a specified Energy Variable.
 	, NBT_INPUT_RF                  = "gt.input.rf"                 // Long containing a specified Energy Variable.
-
+	
 	, NBT_OUTPUT                    = "gt.output"                   // Long containing a generic Energy Variable.
 	, NBT_OUTPUT_MIN                = "gt.output.min"               // Long containing a generic Energy Variable.
 	, NBT_OUTPUT_MAX                = "gt.output.max"               // Long containing a generic Energy Variable.
@@ -1303,7 +1303,7 @@ public class CS {
 	, NBT_OUTPUT_AU                 = "gt.output.au"                // Long containing a specified Energy Variable.
 	, NBT_OUTPUT_MJ                 = "gt.output.mj"                // Long containing a specified Energy Variable.
 	, NBT_OUTPUT_RF                 = "gt.output.rf"                // Long containing a specified Energy Variable.
-
+	
 	, NBT_ENERGY                    = "gt.energy"                   // Long containing a generic Energy Variable.
 	, NBT_ENERGY_EU                 = "gt.energy.eu"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_RU                 = "gt.energy.ru"                // Long containing a specified Energy Variable.
@@ -1314,7 +1314,7 @@ public class CS {
 	, NBT_ENERGY_AU                 = "gt.energy.au"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_MJ                 = "gt.energy.mj"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_RF                 = "gt.energy.rf"                // Long containing a specified Energy Variable.
-
+	
 	, NBT_CAPACITY                  = "gt.capacity"                 // Long containing a generic Energy Variable as Capacity.
 	, NBT_CAPACITY_EU               = "gt.capacity.eu"              // Long containing a specified Energy Variable as Capacity.
 	, NBT_CAPACITY_RU               = "gt.capacity.ru"              // Long containing a specified Energy Variable as Capacity.
@@ -1326,11 +1326,12 @@ public class CS {
 	, NBT_CAPACITY_MJ               = "gt.capacity.mj"              // Long containing a specified Energy Variable as Capacity.
 	, NBT_CAPACITY_RF               = "gt.capacity.rf"              // Long containing a specified Energy Variable as Capacity.
 	;
-
+	
 	/** List of Visually Full Opaque Blocks. For minor Render optimisations. */
-	public static final HashSetNoNulls<Block> VISUALLY_OPAQUE_BLOCKS = new HashSetNoNulls<>(F, Blocks.bedrock, Blocks.command_block, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.gravel, Blocks.sand, Blocks.sandstone, Blocks.end_stone, Blocks.nether_brick, Blocks.netherrack, Blocks.obsidian, Blocks.planks, Blocks.log, Blocks.log2, Blocks.stone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.grass, Blocks.dirt, Blocks.clay, Blocks.stonebrick, Blocks.redstone_block, Blocks.glowstone, Blocks.redstone_lamp, Blocks.lit_redstone_lamp, Blocks.lit_redstone_ore, Blocks.pumpkin, Blocks.melon_block);
-
-
+	public static final HashSetNoNulls<Block> VISUALLY_OPAQUE_BLOCKS = new HashSetNoNulls<>(F, Blocks.bedrock, Blocks.command_block, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.gravel, Blocks.sand, Blocks.sandstone, Blocks.end_stone, Blocks.nether_brick, Blocks.netherrack, Blocks.obsidian, Blocks.planks, Blocks.log, Blocks.log2, Blocks.stone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.grass, Blocks.dirt, Blocks.clay, Blocks.stonebrick, Blocks.redstone_block, Blocks.glowstone, Blocks.redstone_lamp, Blocks.lit_redstone_lamp, Blocks.lit_redstone_ore, Blocks.pumpkin, Blocks.melon_block, Blocks.dispenser, Blocks.dropper);
+	/** List of Visually Full Opaque Blocks. For minor Render optimisations. */
+	public static final HashSetNoNulls<Block> REDSTONE_SINKS = new HashSetNoNulls<>(F, Blocks.tnt, Blocks.golden_rail, Blocks.noteblock, Blocks.trapdoor, Blocks.wooden_door, Blocks.iron_door, Blocks.piston, Blocks.sticky_piston, Blocks.dispenser, Blocks.dropper, Blocks.redstone_lamp, Blocks.lit_redstone_lamp);
+	
 	public static class GarbageGT {
 		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
@@ -1727,6 +1728,13 @@ public class CS {
 		public static final ITexture[] INGREDIENT_TEXTURES_SIDES  = new ITexture[256];
 		
 		public static final ItemStackMap<ItemStackContainer, Byte> INGREDIENTS = new ItemStackMap<>();
+		
+		static {
+			Arrays.fill(INGREDIENT_MODEL_THICKNESS, (byte)1);
+			
+			Sandwiches.INGREDIENT_MODEL_IDS      [255] = (byte)255;
+			Sandwiches.INGREDIENT_MODEL_THICKNESS[255] = (byte)  0;
+		}
 	}
 	
 	/** Contains the Registry Stuff for my Book Shelves. */
