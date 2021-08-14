@@ -445,7 +445,7 @@ public class MT {
 	Xe      = noblegas    ( 540, "Xenon"          , "Xe"    ,  54,  77,   161,   165,  0.005887  , SET_DULL    ,   0, 255, 255     , UUM                         , CONTAINERS_GAS                                                                                  ).aspects(TC.AER, 3                                      ),
 	Cs      = alkali      ( 550, "Caesium"        , "Cs"    ,  55,  77,   301,   944,  1.873     , SET_SHINY   , 128,  98,  11     , UUM                                                                                                                           ).aspects_met_rad(3, 0                                   ),
 	Ba      = alkaline    ( 560, "Barium"         , "Ba"    ,  56,  81,  1000,  2170,  3.594     , SET_METALLIC, 131, 130,  76     , UUM                                                                                                                           ).aspects(TC.VINCULUM, 3                                 ),
-	La      = lanthanide  ( 570, "Lanthanum"      , "La"    ,  57,  81,  1193,  3737,  6.145     , SET_METALLIC,  93, 117, 117     , UUM                                               , "Lantanum", "Lantanium", "Lanthanium"                                     ).aspects_met_rad(3, 0                                   ),
+	La      = lanthanide  ( 570, "Lanthanium"     , "La"    ,  57,  81,  1193,  3737,  6.145     , SET_METALLIC,  93, 117, 117     , UUM                                               , "Lantanium", "Lantanum", "Lanthanum"                                      ).aspects_met_rad(3, 0                                   ),
 	Ce      = lanthanide  ( 580, "Cerium"         , "Ce"    ,  58,  82,  1068,  3716,  6.77      , SET_SHINY   , 255, 255, 190     , UUM                                                                                                                           ).aspects_met_rad(3, 0                                   ),
 	Pr      = lanthanide  ( 590, "Praseodymium"   , "Pr"    ,  59,  81,  1208,  3793,  6.773     , SET_METALLIC                    , UUM                                                                                                                           ).aspects_met_rad(3, 0                                   ),
 	Nd      = lanthanide  ( 600, "Neodymium"      , "Nd"    ,  60,  84,  1297,  3347,  7.007     , SET_SHINY   , 100, 100, 100     , UUM                                               , MAGNETIC_PASSIVE, MOLTEN                                                  ).aspects(TC.METALLUM, 2, TC.MAGNETO, 2                  ).qual(3, 6.0, 512, 3),
@@ -1898,6 +1898,8 @@ public class MT {
 			
 			
 			Zn                      .put(MD.GT, COMMON_ORE);
+			Be                      .put(MD.GT, COMMON_ORE);
+			Th                      .put(MD.GT, COMMON_ORE);
 			Li                      .put(MD.GT);
 			Craponite               .put(MD.GT);
 			NitroCarbon             .put(MD.GT);
@@ -2115,6 +2117,8 @@ public class MT {
 			Pu_240                  .put(MD.HBM).visDefault();
 			Asbestos                .put(MD.HBM, COMMON_ORE);
 			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
+			Ta                      .put(MD.HBM);
+			Nd                      .put(MD.HBM);
 			
 			
 			In                      .put(MD.ReC);
@@ -2155,6 +2159,7 @@ public class MT {
 			Thaumium                .put(MD.TC, COMMON_ORE).visDefault();
 			Amber                   .put(MD.TC, COMMON_ORE);
 			Hg                      .put(MD.TC, COMMON_ORE);
+			OREMATS.Cinnabar        .put(MD.TC, COMMON_ORE);
 			
 			
 			DarkThaumium            .put(MD.TCFM).visDefault();
@@ -2340,6 +2345,9 @@ public class MT {
 			Kaolinite                  .put(MD.PFAA);
 			OREMATS.BasalticMineralSand.put(MD.PFAA);
 			OREMATS.GraniticMineralSand.put(MD.PFAA);
+			
+			
+			Lignite                 .put(MD.UB, COMMON_ORE);
 			
 			
 			Angmallen               .put(MD.MET);

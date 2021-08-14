@@ -588,6 +588,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_tungsten"               , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_uranium"                , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_uranium_scorched"       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_iron"               , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_titanium"           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_aluminium"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB", null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.FR, "resources"                        , null));
