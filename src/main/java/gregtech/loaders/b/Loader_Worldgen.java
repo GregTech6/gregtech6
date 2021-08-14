@@ -76,13 +76,13 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenStoneLayers("stonelayers", T, GEN_GT, GEN_ENVM_GT, GEN_A97_GT, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld_GT); // MUST BE FIRST
 		
 		StoneLayer.DEEPSLATE = new StoneLayer(BlocksGT.Slate, MT.STONES.Deepslate, IL.EtFu_Deepslate.block(), 0, IL.EtFu_Deepslate_Cobble.block(), 0
-		, new StoneLayerOres(MT.Emerald                                 , U16,  0,  6, ST.block(MD.EtFu, "deepslate_emerald_ore"), BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Au                                      , U16,  0,  6, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
-		, new StoneLayerOres(MT.Redstone                                , U16,  0,  6, ST.block(MD.EtFu, "deepslate_redstone_ore"))
-		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U32,  0,  6) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U32,  0,  6) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U32,  0,  6) : null
-		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0,  6) : null
+		, new StoneLayerOres(MT.Emerald                                 , U16,  0, 32, ST.block(MD.EtFu, "deepslate_emerald_ore"), BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Au                                      , U16,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
+		, new StoneLayerOres(MT.Redstone                                , U16,  0, 20, ST.block(MD.EtFu, "deepslate_redstone_ore"))
+		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U32,  0, 20) : null
+		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U32,  0, 12) : null
+		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U32,  0, 12) : null
+		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0,  8) : null
 		);
 		
 		
@@ -325,11 +325,11 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Coltan          , U16, 20, 50)
 		));
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.S, ST.block(MD.MIN, "sulfur_ore")));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.S, ST.block(MD.MIN, "sulfur_ore")).setNoDeep());
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.KNO3, ST.block(MD.MIN, "nitrate_ore")));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.KNO3, ST.block(MD.MIN, "nitrate_ore")).setNoDeep());
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.Lignite, ST.block(MD.UB, "sedimentaryStone"), 4+8));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite, MT.Lignite, ST.block(MD.UB, "sedimentaryStone"), 4+8).setNoDeep());
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Granite
 		, new StoneLayerOres(MT.BlueTopaz               , U64,  8, 32, BIOMES_OCEAN_BEACH)

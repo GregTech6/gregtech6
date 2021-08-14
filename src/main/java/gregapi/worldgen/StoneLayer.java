@@ -50,6 +50,7 @@ public class StoneLayer {
 	public final ItemStackContainer mStack;
 	public final List<StoneLayerOres> mOres;
 	public IBlockPlacable mOre, mOreSmall, mOreBroken;
+	public boolean mNoDeep = F;
 	
 	public StoneLayer(BlockBase aStoneGT, StoneLayerOres... aOreChances) {
 		this(ST.invalid(aStoneGT) ? Blocks.stone             : aStoneGT
@@ -126,6 +127,8 @@ public class StoneLayer {
 		mOres            = new ArrayListNoNulls<>(8);
 		for (StoneLayerOres tOre : aOreChances) if (tOre != null && tOre.mMaterial != MT.Empty && ConfigsGT.WORLDGEN.get("stonelayers."+mMaterial.mNameInternal, tOre.mMaterial.mNameInternal, T)) mOres.add(tOre);
 	}
+	
+	public StoneLayer setNoDeep() {mNoDeep = T; return this;}
 	
 	/** List of Stone and Ore Blocks, that can simply be replaced by the Stone Layers. */
 	public static final Set<Block> REPLACEABLE_BLOCKS = new HashSetNoNulls<>(F, Blocks.stone, Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.diamond_ore, Blocks.emerald_ore, Blocks.lapis_ore, Blocks.redstone_ore, Blocks.lit_redstone_ore);

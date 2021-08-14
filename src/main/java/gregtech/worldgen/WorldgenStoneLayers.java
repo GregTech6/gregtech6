@@ -63,6 +63,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
 		final StoneLayer[] tScan = new StoneLayer[9];
+		final byte tScanMinusOne = (byte)(tScan.length-1);
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
@@ -204,11 +205,11 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					}
 				}
 				
-				
-				
 				// And scan for next Block on the Stone Layer Type.
-				for (int t = 1; t < tScan.length; t++) tScan[t-1] = tScan[t];
-				tScan[tScan.length-1] = StoneLayer.LAYERS.get(tNoise.get(tX, tY-3+tScan.length, tZ, tListSize));
+				for (int t = 0; t < tScanMinusOne; t++) tScan[t] = tScan[t+1];
+				tScan[tScanMinusOne] = StoneLayer.LAYERS.get(tNoise.get(tX, tY-2+tScanMinusOne, tZ, tListSize));
+				// Ores that should not generate too deeply will be replaced by (Deep)Slate. This prevents flammable Ores near Lava in most cases.
+				if (tY-2+tScanMinusOne < (tSlime ? 25 : 24) && tScan[tScanMinusOne].mNoDeep) tScan[tScanMinusOne] = StoneLayer.DEEPSLATE;
 			}
 		}
 		return T;
