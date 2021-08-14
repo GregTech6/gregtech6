@@ -58,11 +58,11 @@ public class WorldgenStoneLayers extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
 		
-		final boolean tSlime = (aChunk.getRandomWithSeed(987234911L).nextInt(10) == 0);
+		//final boolean tSlime = (aChunk.getRandomWithSeed(987234911L).nextInt(10) == 0);
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
-		final StoneLayer[] tScan = new StoneLayer[9];
+		final StoneLayer[] tScan = new StoneLayer[7];
 		final byte tScanMinusOne = (byte)(tScan.length-1);
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
@@ -71,27 +71,9 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final int tX = aMinX+i, tZ = aMinZ+j;
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
-			if (StoneLayer.DEEPSLATE != null) {
-				// The first Layers are Deepslate if possible.
-				tScan[0] = StoneLayer.DEEPSLATE;
-				tScan[1] = StoneLayer.DEEPSLATE;
-				tScan[2] = StoneLayer.DEEPSLATE;
-				tScan[3] = StoneLayer.DEEPSLATE;
-				tScan[4] = StoneLayer.DEEPSLATE;
-				tScan[5] = StoneLayer.DEEPSLATE;
-				tScan[6] = StoneLayer.DEEPSLATE;
-				tScan[7] = StoneLayer.DEEPSLATE;
-				tScan[8] = (tSlime ? StoneLayer.DEEPSLATE : StoneLayer.LAYERS.get(tNoise.get(tX,  6, tZ, tListSize)));
-			} else {
-				tScan[0] = StoneLayer.LAYERS.get(tNoise.get(tX, -2, tZ, tListSize));
-				tScan[1] = StoneLayer.LAYERS.get(tNoise.get(tX, -1, tZ, tListSize));
-				tScan[2] = StoneLayer.LAYERS.get(tNoise.get(tX,  0, tZ, tListSize));
-				tScan[3] = StoneLayer.LAYERS.get(tNoise.get(tX,  1, tZ, tListSize));
-				tScan[4] = StoneLayer.LAYERS.get(tNoise.get(tX,  2, tZ, tListSize));
-				tScan[5] = StoneLayer.LAYERS.get(tNoise.get(tX,  3, tZ, tListSize));
-				tScan[6] = StoneLayer.LAYERS.get(tNoise.get(tX,  4, tZ, tListSize));
-				tScan[7] = StoneLayer.LAYERS.get(tNoise.get(tX,  5, tZ, tListSize));
-				tScan[8] = StoneLayer.LAYERS.get(tNoise.get(tX,  6, tZ, tListSize));
+			for (int k = 0; k < tScan.length; k++) {
+				tScan[k] = (StoneLayer.LAYERS.get(tNoise.get(tX, k-2, tZ, tListSize)));
+				if (tScan[k].mNoDeep) tScan[k] = StoneLayer.DEEPSLATE;
 			}
 			
 			boolean tCanPlaceRocks = F;
@@ -209,7 +191,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				for (int t = 0; t < tScanMinusOne; t++) tScan[t] = tScan[t+1];
 				tScan[tScanMinusOne] = StoneLayer.LAYERS.get(tNoise.get(tX, tY-2+tScanMinusOne, tZ, tListSize));
 				// Ores that should not generate too deeply will be replaced by (Deep)Slate. This prevents flammable Ores near Lava in most cases.
-				if (tY-2+tScanMinusOne < (tSlime ? 25 : 24) && tScan[tScanMinusOne].mNoDeep) tScan[tScanMinusOne] = StoneLayer.DEEPSLATE;
+				if (tY-2+tScanMinusOne < 24 && tScan[tScanMinusOne].mNoDeep) tScan[tScanMinusOne] = StoneLayer.DEEPSLATE;
 			}
 		}
 		return T;

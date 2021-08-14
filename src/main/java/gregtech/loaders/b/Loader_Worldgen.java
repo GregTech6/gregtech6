@@ -76,8 +76,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenStoneLayers("stonelayers", T, GEN_GT, GEN_ENVM_GT, GEN_A97_GT, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld_GT); // MUST BE FIRST
 		
 		StoneLayer.DEEPSLATE = new StoneLayer(BlocksGT.Slate, MT.STONES.Deepslate, IL.EtFu_Deepslate.block(), 0, IL.EtFu_Deepslate_Cobble.block(), 0
-		, new StoneLayerOres(MT.Emerald                                 , U16,  0, 32, ST.block(MD.EtFu, "deepslate_emerald_ore"), BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Au                                      , U16,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
+		, new StoneLayerOres(MT.Emerald                                 , U64,  0, 32, ST.block(MD.EtFu, "deepslate_emerald_ore"), BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Au                                      , U32,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
 		, new StoneLayerOres(MT.Redstone                                , U16,  0, 20, ST.block(MD.EtFu, "deepslate_redstone_ore"))
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U32,  0, 20) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U32,  0, 12) : null
@@ -447,12 +447,6 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Amber                   , U4 , 30, 70, BIOMES_OCEAN_BEACH)
 		, new StoneLayerOres(MT.Amber                   , U8 , 30, 70, BIOMES_RIVER_LAKE)
 		, new StoneLayerOres(MT.AmberDominican          , U8 , 30, 70, BIOMES_SHROOM)
-		);
-		StoneLayer.bothsides(MT.STONES.Komatiite, MT.Stone
-		, new StoneLayerOres(MT.Redstone                , U8 ,  0, 30)
-		);
-		StoneLayer.bothsides(MT.STONES.Gabbro, MT.Stone
-		, new StoneLayerOres(MT.Redstone                , U8 ,  0, 30)
 		);
 		StoneLayer.bothsides(MT.STONES.Komatiite, MT.STONES.Basalt
 		, new StoneLayerOres(MT.OREMATS.Perlite         , U4 ,  0, 16)
