@@ -77,12 +77,17 @@ public class Loader_Worldgen implements Runnable {
 		
 		StoneLayer.DEEPSLATE = new StoneLayer(BlocksGT.Slate, MT.STONES.Deepslate, IL.EtFu_Deepslate.block(), 0, IL.EtFu_Deepslate_Cobble.block(), 0
 		, new StoneLayerOres(MT.Emerald                                 , U64,  0, 32, ST.block(MD.EtFu, "deepslate_emerald_ore"), BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Au                                      , U32,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
+		, new StoneLayerOres(MT.Diamond                                 , U64,  0, 12, ST.block(MD.EtFu, "deepslate_diamond_ore"), BIOMES_JUNGLE, BIOMES_VOLCANIC)
+		, new StoneLayerOres(MT.Lapis                                   , U12, 16, 24, ST.block(MD.EtFu, "deepslate_lapis_ore"), BIOMES_FROZEN, BIOMES_TAIGA)
 		, new StoneLayerOres(MT.Redstone                                , U16,  0, 20, ST.block(MD.EtFu, "deepslate_redstone_ore"))
+		, new StoneLayerOres(MT.Au                                      , U32,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
+		, new StoneLayerOres(MT.Cu                                      , U16,  0, 32, ST.block(MD.EtFu, "deepslate_copper_ore"), BIOMES_DESERT, BIOMES_SAVANNA)
+		, new StoneLayerOres(MT.Fe                                      , U16,  0, 32, ST.block(MD.EtFu, "deepslate_iron_ore"), BIOMES_SWAMP, BIOMES_WOODS)
+		, new StoneLayerOres(MT.Coal                                    , U16,  0, 32, ST.block(MD.EtFu, "deepslate_coal_ore"), BIOMES_PLAINS, BIOMES_SHROOM)
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , U32,  0, 20) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U32,  0, 12) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U32,  0, 12) : null
-		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0,  8) : null
+		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U32,  0, 16) : null
+		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U32,  0, 16) : null
+		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , U16,  0, 16) : null
 		);
 		
 		
@@ -135,15 +140,16 @@ public class Loader_Worldgen implements Runnable {
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 7, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
-		, new StoneLayerOres(MT.Emerald                 , U64, 16, 60, Blocks.emerald_ore , 0, BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore , 0)
-		, new StoneLayerOres(MT.Lapis                   , U24, 16, 48, Blocks.lapis_ore   , 0)
-		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore, 0)
-		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore    , 0)
-		, new StoneLayerOres(MT.Au                      , U32, 33, 64, Blocks.gold_ore    , 0, BIOMES_MESA)
-		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore    , 0)
-		, new StoneLayerOres(MT.Coal                    , U8 , 60,100, Blocks.coal_ore    , 0)
-		, new StoneLayerOres(MT.Stone                   , U64,  0,255, Blocks.monster_egg , 0)
+		, new StoneLayerOres(MT.Emerald                 , U64, 16, 60, Blocks.emerald_ore, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore)
+		, new StoneLayerOres(MT.Lapis                   , U24, 16, 48, Blocks.lapis_ore)
+		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore)
+		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore)
+		, new StoneLayerOres(MT.Au                      , U32, 33, 64, Blocks.gold_ore, BIOMES_MESA)
+		, new StoneLayerOres(MT.Cu                      , U16, 20, 50, ST.block(MD.EtFu, "copper_ore"), BIOMES_MESA, BIOMES_DESERT, BIOMES_SAVANNA)
+		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore)
+		, new StoneLayerOres(MT.Coal                    , U8 , 60,100, Blocks.coal_ore)
+		, new StoneLayerOres(MT.Stone                   , U64,  0,255, Blocks.monster_egg)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Fe2O3                   , U6 , 30, 70)

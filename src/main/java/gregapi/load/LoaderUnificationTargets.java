@@ -947,7 +947,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Au                     , MD.EtFu, "nether_gold_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.EtFu, "copper_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Coal                   , MD.EtFu, "deepslate_coal_ore", 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Fe2O3                  , MD.EtFu, "deepslate_iron_ore", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Fe                     , MD.EtFu, "deepslate_iron_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Au                     , MD.EtFu, "deepslate_gold_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Cu                     , MD.EtFu, "deepslate_copper_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Diamond                , MD.EtFu, "deepslate_diamond_ore", 0);
