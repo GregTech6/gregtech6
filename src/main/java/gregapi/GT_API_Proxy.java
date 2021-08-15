@@ -603,7 +603,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						Class<? extends Entity> tClass = aEntity.getClass();
 						int aEntityCount = 1;
 						if (tList != null) for (int j = 0; j < tList.size(); j++) if (tList.get(j) != null && tList.get(j).getClass() == tClass) aEntityCount++;
-						if (aEntityCount > ENTITY_CRAMMING) aEntity.attackEntityFrom(DamageSource.inWall, aEntityCount - ENTITY_CRAMMING);
+						if (aEntityCount > ENTITY_CRAMMING) aEntity.attackEntityFrom(DamageSource.inWall, (aEntityCount - ENTITY_CRAMMING) * TFC_DAMAGE_MULTIPLIER);
 					}
 				}
 			}

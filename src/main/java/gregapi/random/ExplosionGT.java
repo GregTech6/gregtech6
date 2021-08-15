@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -130,7 +130,7 @@ public class ExplosionGT extends Explosion {
 					tKnockY /= tDist;
 					tKnockZ /= tDist;
 					double tKnockback = (1 - tEntityDist) * mWorld.getBlockDensity(tVec3, tEntity.boundingBox);
-					tEntity.attackEntityFrom(DamageSource.setExplosionSource(this), ((int)((tKnockback * tKnockback + tKnockback) * 4 * tSize + 1)));
+					tEntity.attackEntityFrom(DamageSource.setExplosionSource(this), ((int)((tKnockback * tKnockback + tKnockback) * 4 * tSize + 1)) * TFC_DAMAGE_MULTIPLIER);
 					double tBlastProtection = EnchantmentProtection.func_92092_a(tEntity, tKnockback);
 					tEntity.motionX += tKnockX * tBlastProtection;
 					tEntity.motionY += tKnockY * tBlastProtection;

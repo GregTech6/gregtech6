@@ -208,7 +208,7 @@ public class EntityArrow_Material extends EntityProjectile {
 						
 						DamageSource tDamageSource = DamageSource.causeArrowDamage(this, tShootingEntity==null?this:tShootingEntity);
 						
-						if (tDamage + tMagicDamage > 0 && tHitEntity.attackEntityFrom(tDamageSource, tDamage + tMagicDamage)) {
+						if (tDamage + tMagicDamage > 0 && tHitEntity.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 							if (tHitEntity instanceof EntityLivingBase) {
 								if (tHitTimer >= 0) tHitEntity.hurtResistantTime = tHitTimer;
 								

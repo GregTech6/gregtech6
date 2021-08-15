@@ -52,7 +52,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 		for (int tZ = (SIDES_AXIS_Z[aSide]?0:-tDist); tZ <= (SIDES_AXIS_Z[aSide]?0:tDist); tZ++)
 		if (aBlock == WD.block(aWorld, aX+tX, aY+tY, aZ+tZ, T) && aMeta == WD.meta(aWorld, aX+tX, aY+tY, aZ+tZ, T)) {
 			// Doublechecking Wand Permissions at that location.
-			if (!aPlayer.canPlayerEdit(aX+tX                 , aY+tY                 , aZ+tZ                 , aSide, aStack)) continue;
+			if (!aPlayer.canPlayerEdit(aX+tX            , aY+tY            , aZ+tZ            , aSide, aStack)) continue;
 			if (!aPlayer.canPlayerEdit(aX+tX+OFFX[aSide], aY+tY+OFFY[aSide], aZ+tZ+OFFZ[aSide], aSide, aStack)) continue;
 			// Scan Inventory for equal Blocks.
 			for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
@@ -77,7 +77,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 					if (((BlockMetaType)aBlock).mIsStair != ((BlockMetaType)tBlock).mIsStair) continue;
 				} else continue;
 				// Doublechecking Block Permissions at that location.
-				if (!aPlayer.canPlayerEdit(aX+tX                 , aY+tY                 , aZ+tZ                 , aSide, tStack)) continue;
+				if (!aPlayer.canPlayerEdit(aX+tX            , aY+tY            , aZ+tZ            , aSide, tStack)) continue;
 				if (!aPlayer.canPlayerEdit(aX+tX+OFFX[aSide], aY+tY+OFFY[aSide], aZ+tZ+OFFZ[aSide], aSide, tStack)) continue;
 				
 				int tOldSize = tStack.stackSize;

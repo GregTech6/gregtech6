@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -99,7 +99,7 @@ public class PrefixBlockFallingEntity extends EntityFallingBlock {
 	protected void fall(float p_70069_1_) {
 		int i = MathHelper.ceiling_float_int(p_70069_1_ - 1.0F);
 		if (i > 0) for (Entity tEntity : new ArrayListNoNulls<Entity>(worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox))) {
-			if (tEntity instanceof EntityLivingBase) tEntity.attackEntityFrom(DamageSource.fallingBlock, Math.min(MathHelper.floor_float((float)i * 2), 40));
+			if (tEntity instanceof EntityLivingBase) tEntity.attackEntityFrom(DamageSource.fallingBlock, TFC_DAMAGE_MULTIPLIER * Math.min(MathHelper.floor_float((float)i * 2), 40));
 		}
 	}
 	
