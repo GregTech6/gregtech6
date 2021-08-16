@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -257,11 +257,11 @@ public class Loader_Recipes_Replace implements Runnable {
 				if (tPlate == null || aReplacer.mShape == null || aReplacer.mShape.length <= 0) continue;
 				if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, aRecipe.mMat+"."+aReplacer.mName, T)) continue;
 				if (!tRecipeList.remove(aRecipe.mRecipe)) continue;
-				
+				OreDictItemData tNamePlate = ST.valid(OP.plateCurved.mat(aRecipe.mMat, 1)) ? OP.plateCurved.dat(aRecipe.mMat) : OP.ingot.dat(aRecipe.mMat), tNameCurve = ST.valid(OP.plateCurved.mat(aRecipe.mMat, 1)) ? OP.plateCurved.dat(aRecipe.mMat) : tNamePlate;
 				switch (aReplacer.mShape.length) {
-				case  1: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0]                                          , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
-				case  2: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1]                     , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
-				default: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1], aReplacer.mShape[2], PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				case  1: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0]                                          , PLT.charAt(0), tNamePlate, CRV.charAt(0), tNameCurve, ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				case  2: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1]                     , PLT.charAt(0), tNamePlate, CRV.charAt(0), tNameCurve, ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				default: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1], aReplacer.mShape[2], PLT.charAt(0), tNamePlate, CRV.charAt(0), tNameCurve, ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
 				}
 			}
 		}

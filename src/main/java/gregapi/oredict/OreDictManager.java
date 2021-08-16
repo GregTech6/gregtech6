@@ -321,17 +321,18 @@ public final class OreDictManager {
 		// Yeah this definitely can happen, and I want to see it if any Mod fucks that one up, so I can potentially fix that..
 		if (UT.Code.stringInvalid(aRegName)) {ERR.println("ERROR: " + aEvent.Ore.getItem().getClass() + " from the Mod '" + aModID + "' has been registered to the OreDict before being registered as an Item/Block with: " + aEvent.Name); return;}
 		
-		if (GT != null) {
+		if (GT != null && isRegisteringOre != 1) {
+			String tLowerCase = aEvent.Name.toLowerCase();
 			// Preventing Blizz, Blitz and Basalz Stuff from being registered wrongly to GT6.
 			if (MD.TE_FOUNDATION.owns(aRegName, "material") && UT.Code.inside(1024, 1029, ST.meta_(aEvent.Ore)) && MD.TE_FOUNDATION.mID.equalsIgnoreCase(aModID)) return;
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
-			if (MD.TC  .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			if (MD.TC .owns(aRegName) &&  tLowerCase.endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
-			if (MD.HBM .owns(aRegName) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
+			if (MD.HBM.owns(aRegName) && (tLowerCase.endsWith("redalloy") || tLowerCase.endsWith("redstonealloy") || tLowerCase.startsWith("platedense"))) return;
 			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
 			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
-			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
+			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && tLowerCase.startsWith("plate")) {
 				if (aRegName.equalsIgnoreCase("GalacticraftMars:item.itemBasicAsteroids")) return;
 				if (aRegName.equalsIgnoreCase("GalaxySpace:item.CompressedPlates")) return;
 				if (aRegName.equalsIgnoreCase("GalacticraftCore:item.basicItem")) return;
@@ -340,7 +341,7 @@ public final class OreDictManager {
 			// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
 			// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
 			// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
-			if (MD.RoC.owns(aRegName) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
+			if (MD.RoC.owns(aRegName) && (tLowerCase.equals("pulpwood") || tLowerCase.equals("dustwood") || tLowerCase.equals("dustwheat"))) {
 				ItemStack tTargetStack = null, tFoundStack = null;
 				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it is supposed to.
 				for (ItemStack tStack : OreDictionary.getOres(aEvent.Name, F)) if (ST.equal(tStack, aEvent.Ore)) tFoundStack = tStack; else tTargetStack = tStack;

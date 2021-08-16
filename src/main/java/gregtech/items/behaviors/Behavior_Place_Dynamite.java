@@ -48,7 +48,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		if (tBlock.getBlockHardness(aWorld, aX, aY, aZ) < 0) return F;
+		if (tBlock.getBlockHardness(aWorld, aX, aY, aZ) < 0 && !BlocksGT.drillableDynamite.contains(tBlock)) return F;
 		byte tMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (tBlock instanceof BlockStones) {if (tMeta >= 3) return F;} else
 		if (!BlocksGT.drillableDynamite.contains(tBlock) && !StoneLayer.REPLACEABLE_BLOCKS.contains(tBlock) && !WD.ore_stone(tBlock, tMeta)) return F;

@@ -86,21 +86,23 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		if (mEnabled) OreDictManager.INSTANCE.triggerVisibility("ore"+mMaterial.mNameInternal);
 		
 		if (mMaterial == ANY.Hexorium) {
-			ItemStack[] tOres = new ItemStack[6];
+			ItemStack[] tOres = new ItemStack[7];
 			tOres[0] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumWhite.mID);
 			tOres[1] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumBlack.mID);
 			tOres[2] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumRed  .mID);
 			tOres[3] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumGreen.mID);
 			tOres[4] = ST.make((Block)BlocksGT.oreBroken, 1, MT.HexoriumBlue .mID);
 			tOres[5] = OP.dust.mat(MT.Bedrock, 1);
+			tOres[6] = ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types");
 			
 			long[] tChances = new long[tOres.length];
-			tChances[0] = 5000;
-			tChances[1] = 3500;
-			tChances[2] =  500;
-			tChances[3] =  500;
-			tChances[4] =  500;
-			tChances[5] =   10;
+			tChances[0] =  5000;
+			tChances[1] =  3500;
+			tChances[2] =   500;
+			tChances[3] =   500;
+			tChances[4] =   500;
+			tChances[5] =    10;
+			tChances[6] = 10000;
 			
 			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumWhite.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
 			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlack.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
@@ -111,13 +113,15 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			ERR.println("The Material is not valid for Ores: " + mMaterial);
 			mInvalid = T;
 		} else {
-			ItemStack[] tOres = new ItemStack[mMaterial.mByProducts.size() + 2];
+			ItemStack[] tOres = new ItemStack[mMaterial.mByProducts.size() + 3];
 			tOres[0] = ST.make((Block)BlocksGT.oreBroken, 1, mMaterial.mID);
-			tOres[tOres.length-1] = OP.dust.mat(MT.Bedrock, 1);
+			tOres[tOres.length-2] = OP.dust.mat(MT.Bedrock, 1);
+			tOres[tOres.length-1] = ST.make(Blocks.cobblestone, 1, 0, "Various Cobblestone Types");
 			
 			long[] tChances = new long[tOres.length];
 			tChances[0] = (tChances.length > 2 ? 9687 : 10000);
-			tChances[tChances.length-1] = 10;
+			tChances[tChances.length-2] = 10;
+			tChances[tChances.length-1] = 10000;
 			
 			for (int i = 0, j = mMaterial.mByProducts.size(); i < j; i++) {
 				OreDictMaterial tByProduct = mMaterial.mByProducts.get(i);
