@@ -47,6 +47,7 @@ import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -537,9 +538,9 @@ public class Loader_OreProcessing implements Runnable {
 		 * H = stick, made of Handle Material
 		 */
 		public OreProcessing_CraftFrom(long aOutputAmount, String aCategoryName, String[][] aRecipes, OreDictPrefix aSpecialPrefix1, OreDictPrefix aSpecialPrefix2, OreDictPrefix aSpecialPrefix3, Object aSpecialObject1, Object aSpecialObject2, ICondition<OreDictMaterial> aCondition) {
-			mSpecialPrefix1 = aSpecialPrefix1;
-			mSpecialPrefix2 = aSpecialPrefix2;
-			mSpecialPrefix3 = aSpecialPrefix3;
+			mSpecialPrefix1 = (aSpecialPrefix1 == null ? plate : aSpecialPrefix1);
+			mSpecialPrefix2 = (aSpecialPrefix2 == null ? plate : aSpecialPrefix2);
+			mSpecialPrefix3 = (aSpecialPrefix3 == null ? plate : aSpecialPrefix3);
 			mSpecialObject1 = aSpecialObject1;
 			mSpecialObject2 = aSpecialObject2;
 			mOutputAmount = aOutputAmount;
@@ -552,12 +553,11 @@ public class Loader_OreProcessing implements Runnable {
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (aEvent.mNotAlreadyRegisteredName && mCondition.isTrue(aEvent.mMaterial) && (mCategoryName == null || ConfigsGT.RECIPES.get(mCategoryName, aEvent.mMaterial.mNameInternal, T))) {
 				for (int i = 0; i < mRecipes.length; i++) if (mRecipes[i] != null && mRecipes[i].length > 0) {
-						 if (mRecipes[i].length == 1) CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0]                                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
-					else if (mRecipes[i].length == 2) CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1]                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
-					else                              CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1], mRecipes[i][2] , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+						 if (mRecipes[i].length == 1) CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0]                                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1 == plateDense && MD.HBM.mLoaded && aEvent.mMaterial == MT.Pb ? mSpecialPrefix1.mat(aEvent.mMaterial, 1) : mSpecialPrefix1.dat(aEvent.mMaterial)), 'Y', mSpecialPrefix2.dat(aEvent.mMaterial), 'Z', mSpecialPrefix3.dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+					else if (mRecipes[i].length == 2) CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1]                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1 == plateDense && MD.HBM.mLoaded && aEvent.mMaterial == MT.Pb ? mSpecialPrefix1.mat(aEvent.mMaterial, 1) : mSpecialPrefix1.dat(aEvent.mMaterial)), 'Y', mSpecialPrefix2.dat(aEvent.mMaterial), 'Z', mSpecialPrefix3.dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+					else                              CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack)), RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1], mRecipes[i][2] , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1 == plateDense && MD.HBM.mLoaded && aEvent.mMaterial == MT.Pb ? mSpecialPrefix1.mat(aEvent.mMaterial, 1) : mSpecialPrefix1.dat(aEvent.mMaterial)), 'Y', mSpecialPrefix2.dat(aEvent.mMaterial), 'Z', mSpecialPrefix3.dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
 				}
 			}
 		}
 	}
-
 }
