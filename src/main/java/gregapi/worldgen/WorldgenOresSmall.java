@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.data.CS.ConfigsGT;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.WD;
@@ -43,10 +42,10 @@ public class WorldgenOresSmall extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenOresSmall(String aName, boolean aDefault, int aMinY, int aMaxY, int aAmount, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mMinY               = (short)                   ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"   , aMinY);
-		mMaxY               = (short)Math.max(mMinY+1,  ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"   , aMaxY));
-		mAmount             = (short)Math.max(1,        ConfigsGT.WORLDGEN.get(mCategory, "Amount"      , aAmount));
-		mMaterial           =                           ConfigsGT.WORLDGEN.get(mCategory, "Ore"         , aPrimary);
+		mMinY               = (short)                   getConfigFile().get(mCategory, "MinHeight"   , aMinY);
+		mMaxY               = (short)Math.max(mMinY+1,  getConfigFile().get(mCategory, "MaxHeight"   , aMaxY));
+		mAmount             = (short)Math.max(1,        getConfigFile().get(mCategory, "Amount"      , aAmount));
+		mMaterial           =                           getConfigFile().get(mCategory, "Ore"         , aPrimary);
 		
 		if (mEnabled && mMaterial.mID > 0) OreDictManager.INSTANCE.triggerVisibility("ore"+mMaterial.mNameInternal);
 		

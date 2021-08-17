@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -42,8 +41,8 @@ public abstract class WorldgenOnSurface extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenOnSurface(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mAmount      = Math.max(1, ConfigsGT.WORLDGEN.get(mCategory, "Amount", aAmount));
-		mProbability = Math.max(1, ConfigsGT.WORLDGEN.get(mCategory, "Probability", aProbability));
+		mAmount      = Math.max(1, getConfigFile().get(mCategory, "Amount", aAmount));
+		mProbability = Math.max(1, getConfigFile().get(mCategory, "Probability", aProbability));
 	}
 	
 	@Override

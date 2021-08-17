@@ -28,7 +28,6 @@ import java.util.Set;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -56,7 +55,7 @@ public class WorldgenTesting extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenTesting(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
+		mHeight = getConfigFile().get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_TESTING = mEnabled;
 	}
 	

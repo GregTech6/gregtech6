@@ -26,7 +26,6 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.blocks.fluids.BlockSwamp;
@@ -47,7 +46,7 @@ public class WorldgenSwamp extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenSwamp(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
+		mHeight = getConfigFile().get(mCategory, "Height", mHeight);
 	}
 	
 	@Override

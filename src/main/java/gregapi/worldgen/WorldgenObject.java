@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import gregapi.config.Config;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import net.minecraft.world.World;
@@ -46,7 +47,7 @@ public abstract class WorldgenObject {
 		if (UT.Code.stringInvalid(aName)) throw new IllegalArgumentException("The Name has to be not null and is also not allowed to be an empty String");
 		mName = aName;
 		mCategory = "worldgenerator."+mName;
-		mEnabled = ConfigsGT.WORLDGEN.get(mCategory, "Enabled", aDefault);
+		mEnabled = getConfigFile().get(mCategory, "Enabled", aDefault);
 		for (List<WorldgenObject> aList : aLists) aList.add(this);
 	}
 	
@@ -59,7 +60,7 @@ public abstract class WorldgenObject {
 		if (mInvalid) return F;
 		Boolean tAllowed = mDimEnabled.get(aWorld.provider.dimensionId);
 		if (tAllowed != null) return tAllowed && mEnabled;
-		boolean tValue = ConfigsGT.WORLDGEN.get(mCategory+".dim", aWorld.provider.getDimensionName().replaceAll(" ", "_"), T);
+		boolean tValue = getConfigFile().get(mCategory+".dim", aWorld.provider.getDimensionName().replaceAll(" ", "_"), T);
 		mDimEnabled.put(aWorld.provider.dimensionId, tValue);
 		return tValue && mEnabled;
 	}
@@ -72,5 +73,9 @@ public abstract class WorldgenObject {
 			if (GENERATE_BIOMES && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return T;
 		}
 		return F;
+	}
+	
+	public Config getConfigFile() {
+		return ConfigsGT.WORLDGEN;
 	}
 }

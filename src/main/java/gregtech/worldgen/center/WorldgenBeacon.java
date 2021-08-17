@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
@@ -47,7 +46,7 @@ public class WorldgenBeacon extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenBeacon(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
+		mHeight = getConfigFile().get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_BEACON = mEnabled;
 	}
 	

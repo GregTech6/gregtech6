@@ -31,7 +31,6 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -108,18 +107,18 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mProbability        = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "Probability"     , aProbability));
-		mMinSize            = Math.max(2,           ConfigsGT.WORLDGEN.get(mCategory, "MinSize"         , aMinSize));
-		mMaxSize            = Math.max(mMinSize,    ConfigsGT.WORLDGEN.get(mCategory, "MaxSize"         , aMaxSize));
-		mMinY               = Math.max(5,           ConfigsGT.WORLDGEN.get(mCategory, "MinY"            , aMinY));
-		mMaxY               = Math.max(mMinY,       ConfigsGT.WORLDGEN.get(mCategory, "MaxY"            , aMaxY));
-		mRoomChance         = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "RoomChance"      , aRoomChance));
-		mPortalNether       =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalNether"    , aPortalNether);
-		mPortalEnd          =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"       , aPortalEnd);
-		mPortalTwilight     =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"  , aPortalTwilight);
-		mPortalMyst         =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"      , aPortalMyst);
-		mMiningBedrock      =                       ConfigsGT.WORLDGEN.get(mCategory, "MiningBedrock"   , T);
-		mZPM                =                       ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"            , T);
+		mProbability        = Math.max(1,           getConfigFile().get(mCategory, "Probability"     , aProbability));
+		mMinSize            = Math.max(2,           getConfigFile().get(mCategory, "MinSize"         , aMinSize));
+		mMaxSize            = Math.max(mMinSize,    getConfigFile().get(mCategory, "MaxSize"         , aMaxSize));
+		mMinY               = Math.max(5,           getConfigFile().get(mCategory, "MinY"            , aMinY));
+		mMaxY               = Math.max(mMinY,       getConfigFile().get(mCategory, "MaxY"            , aMaxY));
+		mRoomChance         = Math.max(1,           getConfigFile().get(mCategory, "RoomChance"      , aRoomChance));
+		mPortalNether       =                       getConfigFile().get(mCategory, "PortalNether"    , aPortalNether);
+		mPortalEnd          =                       getConfigFile().get(mCategory, "PortalEnd"       , aPortalEnd);
+		mPortalTwilight     =                       getConfigFile().get(mCategory, "PortalTwilight"  , aPortalTwilight);
+		mPortalMyst         =                       getConfigFile().get(mCategory, "PortalMyst"      , aPortalMyst);
+		mMiningBedrock      =                       getConfigFile().get(mCategory, "MiningBedrock"   , T);
+		mZPM                =                       getConfigFile().get(mCategory, "ZPMs"            , T);
 	}
 	
 	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}

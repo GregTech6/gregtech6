@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -49,11 +48,11 @@ public abstract class WorldgenBlob extends WorldgenObject {
 		super(aName, aDefault, aLists);
 		mBlock          = aBlock==null?Blocks.cobblestone:aBlock;
 		mBlockMeta      = UT.Code.bind4(aBlockMeta);
-		mProbability    = ConfigsGT.WORLDGEN.get(mCategory, "Probability"   , aProbability);
-		mAmount         = ConfigsGT.WORLDGEN.get(mCategory, "Amount"        , aAmount);
-		mSize           = ConfigsGT.WORLDGEN.get(mCategory, "Size"          , aSize);
-		mMinY           = ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"     , aMinY);
-		mMaxY           = ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"     , aMaxY);
+		mProbability    =                           getConfigFile().get(mCategory, "Probability"   , aProbability);
+		mAmount         = (int)UT.Code.bind(1,  16, getConfigFile().get(mCategory, "Amount"        , aAmount));
+		mSize           = (int)UT.Code.bind(4, 250, getConfigFile().get(mCategory, "Size"          , aSize));
+		mMinY           =                           getConfigFile().get(mCategory, "MinHeight"     , aMinY);
+		mMaxY           =                           getConfigFile().get(mCategory, "MaxHeight"     , aMaxY);
 		mBiomeList = aBiomeList;
 		mAllowToGenerateinVoid = aAllowToGenerateinVoid;
 	}

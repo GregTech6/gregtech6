@@ -27,6 +27,7 @@ import java.util.Random;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.config.Config;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictManager;
@@ -57,17 +58,17 @@ public class WorldgenOresLarge extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenOresLarge(String aName, boolean aDefault, boolean aIndicatorRocks, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mMinY               = (short)Math.max(0,        ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"        , aMinY));
-		mMaxY               = (short)Math.max(mMinY+5,  ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"        , aMaxY));
-		mWeight             =        Math.max(1,        ConfigsGT.WORLDGEN.get(mCategory, "RandomWeight"     , aWeight));
-		mDensity            = (short)Math.max(1,        ConfigsGT.WORLDGEN.get(mCategory, "Density"          , aDensity));
-		mDistance           =        Math.max(0,        ConfigsGT.WORLDGEN.get(mCategory, "DistanceFromSpawn", 0));
-		mSize               = (short)Math.max(1,        ConfigsGT.WORLDGEN.get(mCategory, "Size"             , aSize));
-		mIndicatorRocks     =                           ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"   , aIndicatorRocks);
-		mTop                =                           ConfigsGT.WORLDGEN.get(mCategory, "OreTop"           , aTop);
-		mBottom             =                           ConfigsGT.WORLDGEN.get(mCategory, "OreBottom"        , aBottom);
-		mBetween            =                           ConfigsGT.WORLDGEN.get(mCategory, "OreBetween"       , aBetween);
-		mSpread             =                           ConfigsGT.WORLDGEN.get(mCategory, "OreSpread"        , aSpread);
+		mMinY               = (short)Math.max(0,        getConfigFile().get(mCategory, "MinHeight"        , aMinY));
+		mMaxY               = (short)Math.max(mMinY+5,  getConfigFile().get(mCategory, "MaxHeight"        , aMaxY));
+		mWeight             =        Math.max(1,        getConfigFile().get(mCategory, "RandomWeight"     , aWeight));
+		mDensity            = (short)Math.max(1,        getConfigFile().get(mCategory, "Density"          , aDensity));
+		mDistance           =        Math.max(0,        getConfigFile().get(mCategory, "DistanceFromSpawn", 0));
+		mSize               = (short)Math.max(1,        getConfigFile().get(mCategory, "Size"             , aSize));
+		mIndicatorRocks     =                           getConfigFile().get(mCategory, "IndicatorRocks"   , aIndicatorRocks);
+		mTop                =                           getConfigFile().get(mCategory, "OreTop"           , aTop);
+		mBottom             =                           getConfigFile().get(mCategory, "OreBottom"        , aBottom);
+		mBetween            =                           getConfigFile().get(mCategory, "OreBetween"       , aBetween);
+		mSpread             =                           getConfigFile().get(mCategory, "OreSpread"        , aSpread);
 		
 		if (mEnabled) {
 			if (mTop        .mID > 0) OreDictManager.INSTANCE.triggerVisibility("ore"+mTop      .mNameInternal);
@@ -127,5 +128,10 @@ public class WorldgenOresLarge extends WorldgenObject {
 			}
 		}
 		return T;
+	}
+	
+	@Override
+	public Config getConfigFile() {
+		return ConfigsGT.WORLDGEN_GT5;
 	}
 }

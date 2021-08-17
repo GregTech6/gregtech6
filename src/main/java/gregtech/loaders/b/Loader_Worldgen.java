@@ -866,7 +866,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.syrmorite"   , T, T, 30,  45, 160, 2, 32, MT.Syrmorite                    , MT.Syrmorite                   , MT.Syrmorite                   , MT.Syrmorite          , ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.octine"      , T, T, 10,  25,  40, 1, 32, MT.Octine                       , MT.Octine                      , MT.Octine                      , MT.Octine             , ORE_BETWEENLANDS);
 		
-		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomLargeVeinSlots", 0); i < j; i++) {
+		for (int i = 0, j = ConfigsGT.WORLDGEN_GT5.get(ConfigCategories.general, "AmountOfCustomLargeVeinSlots", 0); i < j; i++) {
 		new WorldgenOresLarge("ore.large.custom"+(i<10?"0":"") + i, F, T, 0, 0, 0, 0, 0, MT.NULL, MT.NULL, MT.NULL, MT.NULL, ORE_ALL);
 		}
 	}

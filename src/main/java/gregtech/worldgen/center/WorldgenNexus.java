@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,6 @@ import java.util.Set;
 
 import gregapi.block.metatype.BlockStones;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.init.Blocks;
@@ -44,7 +43,7 @@ public class WorldgenNexus extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenNexus(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", WD.waterLevel()+4);
+		mHeight = getConfigFile().get(mCategory, "Height", WD.waterLevel()+4);
 		GENERATE_NEXUS = mEnabled;
 	}
 	

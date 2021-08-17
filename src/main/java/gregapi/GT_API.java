@@ -333,6 +333,7 @@ public class GT_API extends Abstract_Mod {
 		ConfigsGT.GREGTECH      = new Config("GregTech.cfg").setUseDefaultInNames(F);
 		ConfigsGT.RECIPES       = new Config("Recipes.cfg");
 		ConfigsGT.WORLDGEN      = new Config("WorldGenerationNew.cfg");
+		ConfigsGT.WORLDGEN_GT5  = new Config("worldgen_old_barely_used_gt5_style_garbage.cfg");
 		ConfigsGT.MATERIAL      = new Config("Materials.cfg");
 		ConfigsGT.OREPROCESSING = new Config("OreProcessing.cfg");
 		// Deprecated Config Files.

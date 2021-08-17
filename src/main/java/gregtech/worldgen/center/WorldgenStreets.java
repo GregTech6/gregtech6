@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -55,7 +55,7 @@ public class WorldgenStreets extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenStreets(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, ConfigsGT.WORLDGEN.get("worldgenerator.streets", "Enabled", aDefault), aLists);
-		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", ConfigsGT.WORLDGEN.get("worldgenerator.streets", "Height", WD.waterLevel()+4));
+		mHeight = getConfigFile().get(mCategory, "Height", getConfigFile().get("worldgenerator.streets", "Height", WD.waterLevel()+4));
 		GENERATE_STREETS = mEnabled;
 	}
 	

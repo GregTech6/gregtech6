@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.21: (Not released yet, released whenever it needs to be)
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
+[CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
 [CHANGED] GT6 Redstone Wires will no longer accept Input from Stuff like Droppers and Dispensers. This should reduce confusion when those Blocks transmit Redstone Signals from other Sources.
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
 [CHANGED] Stone Layers such as Coal, Salt, Bauxite and similar Ores, will now no longer generate below Y=24. They will generate (Deep)Slate instead in such cases. The (Deep)Slate Layer near Bedrock got removed again in favour of this Mechanic.

@@ -28,7 +28,6 @@ import java.util.Set;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -70,10 +69,10 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Object aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		aFlower             = aFlower instanceof Block ? (Block)aFlower : NB;
-		mProbability        = Math.max(1,         ConfigsGT.WORLDGEN.get(mCategory, "Probability"     , aProbability));
-		mMaterial           = OreDictMaterial.get(ConfigsGT.WORLDGEN.get(mCategory, "Ore"             , aPrimary.mNameInternal));
-		mIndicatorRocks     =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"  , aIndicatorRocks);
-		mIndicatorFlowers   =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers", aFlower != NB);
+		mProbability        = Math.max(1,         getConfigFile().get(mCategory, "Probability"     , aProbability));
+		mMaterial           = OreDictMaterial.get(getConfigFile().get(mCategory, "Ore"             , aPrimary.mNameInternal));
+		mIndicatorRocks     =                     getConfigFile().get(mCategory, "IndicatorRocks"  , aIndicatorRocks);
+		mIndicatorFlowers   =                     getConfigFile().get(mCategory, "IndicatorFlowers", aFlower != NB);
 		
 		if (mIndicatorFlowers && aFlower == NB) {
 			mFlower = Blocks.yellow_flower;
