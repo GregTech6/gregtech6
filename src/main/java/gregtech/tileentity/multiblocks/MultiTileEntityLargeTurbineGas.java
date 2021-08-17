@@ -83,7 +83,8 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	
 	@Override
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		mEnergyOUT.addToolTips(aList, aStack, aF3_H, null, T);
+		aList.add((Chat.RED + LH.get(LH.ENERGY_OUTPUT)) + ": " + Chat.WHITE + mEnergyOUT.mMax + " " + mEnergyOUT.mType.getChatFormat() + mEnergyOUT.mType.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(LH.getToolTipRedstoneFluxEmit(mEnergyOUT.mType));
 	}
 	
 	@Override

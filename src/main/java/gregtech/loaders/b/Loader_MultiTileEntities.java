@@ -1832,7 +1832,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeFluid.addFluidPipes(26160, 26142,        250, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.StainlessSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26700, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenAlloy);
 		MultiTileEntityPipeFluid.addFluidPipes(26180, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ti);
-		MultiTileEntityPipeFluid.addFluidPipes(26660, 26142,        300, T, F, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Netherite);
+		MultiTileEntityPipeFluid.addFluidPipes(26660, 26142,        300, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Netherite);
 		MultiTileEntityPipeFluid.addFluidPipes(26200, 26142,        350, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.W);
 		MultiTileEntityPipeFluid.addFluidPipes(26740, 26142,        400, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.VanadiumSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26220, 26142,        400, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenSteel);
