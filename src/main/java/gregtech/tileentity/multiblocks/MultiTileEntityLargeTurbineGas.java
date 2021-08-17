@@ -82,12 +82,6 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	}
 	
 	@Override
-	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add((Chat.RED + LH.get(LH.ENERGY_OUTPUT)) + ": " + Chat.WHITE + mEnergyOUT.mMax + " " + mEnergyOUT.mType.getChatFormat() + mEnergyOUT.mType.getLocalisedNameShort() + Chat.WHITE + "/t");
-		aList.add(LH.getToolTipRedstoneFluxEmit(mEnergyOUT.mType));
-	}
-	
-	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
