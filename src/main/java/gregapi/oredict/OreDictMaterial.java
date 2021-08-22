@@ -584,6 +584,24 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		}
 		return setMoleculeConfiguration(new OreDictConfigurationComponent(aCommonDivider, OM.stack(aMaterial1, aAmount1), OM.stack(aMaterial2, aAmount2), OM.stack(aMaterial3, aAmount3), OM.stack(aMaterial4, aAmount4), OM.stack(aMaterial5, aAmount5), OM.stack(aMaterial6, aAmount6), OM.stack(aMaterial7, aAmount7)));
 	}
+	public OreDictMaterial setMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8) {
+		long tAmount = aAmount1+aAmount2+aAmount3+aAmount4+aAmount5+aAmount6+aAmount7+aAmount8;
+		if (aCommonDivider == 0) {
+			aCommonDivider = tAmount / U;
+			if (tAmount % U != 0) ERR.println("WARNING: Material '"+mNameInternal+"' has an Amount of " + tAmount + " Components and automatically generates a divider, that is leaving a tiny rest after the division, breaking some Material Amounts. Manual setting of Variables is required.");
+		}
+		return setMoleculeConfiguration(new OreDictConfigurationComponent(aCommonDivider, OM.stack(aMaterial1, aAmount1), OM.stack(aMaterial2, aAmount2), OM.stack(aMaterial3, aAmount3), OM.stack(aMaterial4, aAmount4), OM.stack(aMaterial5, aAmount5), OM.stack(aMaterial6, aAmount6), OM.stack(aMaterial7, aAmount7), OM.stack(aMaterial8, aAmount8)));
+	}
+	public OreDictMaterial setMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8, OreDictMaterial aMaterial9, long aAmount9) {
+		long tAmount = aAmount1+aAmount2+aAmount3+aAmount4+aAmount5+aAmount6+aAmount7+aAmount8+aAmount9;
+		if (aCommonDivider == 0) {
+			aCommonDivider = tAmount / U;
+			if (tAmount % U != 0) ERR.println("WARNING: Material '"+mNameInternal+"' has an Amount of " + tAmount + " Components and automatically generates a divider, that is leaving a tiny rest after the division, breaking some Material Amounts. Manual setting of Variables is required.");
+		}
+		return setMoleculeConfiguration(new OreDictConfigurationComponent(aCommonDivider, OM.stack(aMaterial1, aAmount1), OM.stack(aMaterial2, aAmount2), OM.stack(aMaterial3, aAmount3), OM.stack(aMaterial4, aAmount4), OM.stack(aMaterial5, aAmount5), OM.stack(aMaterial6, aAmount6), OM.stack(aMaterial7, aAmount7), OM.stack(aMaterial8, aAmount8), OM.stack(aMaterial9, aAmount9)));
+	}
+	
+	
 	
 	public OreDictMaterial uumMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1) {
 		if (aMaterial1.contains(TD.Processing.UUM)) {
@@ -641,6 +659,22 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		}
 		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7);
 	}
+	public OreDictMaterial uumMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8) {
+		if (aMaterial1.contains(TD.Processing.UUM) && aMaterial2.contains(TD.Processing.UUM) && aMaterial3.contains(TD.Processing.UUM) && aMaterial4.contains(TD.Processing.UUM) && aMaterial5.contains(TD.Processing.UUM) && aMaterial6.contains(TD.Processing.UUM) && aMaterial7.contains(TD.Processing.UUM) && aMaterial8.contains(TD.Processing.UUM)) {
+			put(TD.Processing.UUM);
+		} else {
+			ERR.println("WARNING: " + mNameInternal + " has a UUM Config with impossible Materials.");
+		}
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8);
+	}
+	public OreDictMaterial uumMcfg(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8, OreDictMaterial aMaterial9, long aAmount9) {
+		if (aMaterial1.contains(TD.Processing.UUM) && aMaterial2.contains(TD.Processing.UUM) && aMaterial3.contains(TD.Processing.UUM) && aMaterial4.contains(TD.Processing.UUM) && aMaterial5.contains(TD.Processing.UUM) && aMaterial6.contains(TD.Processing.UUM) && aMaterial7.contains(TD.Processing.UUM) && aMaterial8.contains(TD.Processing.UUM) && aMaterial9.contains(TD.Processing.UUM)) {
+			put(TD.Processing.UUM);
+		} else {
+			ERR.println("WARNING: " + mNameInternal + " has a UUM Config with impossible Materials.");
+		}
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8, aMaterial9, aAmount9);
+	}
 	
 	// Yes it is spelled Aloy because of being Four Letters long, for alignment reasons.
 	
@@ -665,6 +699,14 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7) {
 		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7).alloyCentrifuge();
 	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8).alloyCentrifuge();
+	}
+	public OreDictMaterial setAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8, OreDictMaterial aMaterial9, long aAmount9) {
+		return setMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8, aMaterial9, aAmount9).alloyCentrifuge();
+	}
+	
+	
 	
 	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1) {
 		return uumMcfg(aCommonDivider, aMaterial1, aAmount1).alloyCentrifuge();
@@ -687,6 +729,14 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7) {
 		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7).alloyCentrifuge();
 	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8).alloyCentrifuge();
+	}
+	public OreDictMaterial uumAloy(long aCommonDivider, OreDictMaterial aMaterial1, long aAmount1, OreDictMaterial aMaterial2, long aAmount2, OreDictMaterial aMaterial3, long aAmount3, OreDictMaterial aMaterial4, long aAmount4, OreDictMaterial aMaterial5, long aAmount5, OreDictMaterial aMaterial6, long aAmount6, OreDictMaterial aMaterial7, long aAmount7, OreDictMaterial aMaterial8, long aAmount8, OreDictMaterial aMaterial9, long aAmount9) {
+		return uumMcfg(aCommonDivider, aMaterial1, aAmount1, aMaterial2, aAmount2, aMaterial3, aAmount3, aMaterial4, aAmount4, aMaterial5, aAmount5, aMaterial6, aAmount6, aMaterial7, aAmount7, aMaterial8, aAmount8, aMaterial9, aAmount9).alloyCentrifuge();
+	}
+	
+	
 	
 	@Deprecated public OreDictMaterial setTooltip(String aTooltip) {mTooltipChemical = aTooltip; return this;}
 	
