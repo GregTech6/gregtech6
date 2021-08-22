@@ -43,6 +43,7 @@ import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.TD;
 import gregapi.event.BlockScanningEvent;
+import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.ITileEntity;
@@ -629,6 +630,7 @@ public class WD {
 		if (tBlock.getMaterial() == Material.carpet || tBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ) == null) {
 			if (MD.TC.mLoaded && te(aWorld, aX, aY, aZ, T) instanceof INode) return F;
 			if (tBlock.getFlammability(aWorld, aX, aY, aZ, FORGE_DIR[SIDE_ANY]) > 0) return aWorld.setBlock(aX, aY, aZ, Blocks.fire, 0, 3);
+			if (tBlock instanceof IItemGT) return F;
 			if (aCheckFlammability) {
 				for (byte tSide : ALL_SIDES_VALID) {
 					Block tAdjacent = block(aWorld, aX, aY, aZ, tSide);

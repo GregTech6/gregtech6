@@ -68,12 +68,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
@@ -655,6 +657,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public int getSpriteNumber() {return 0;}
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aRegister) {/**/}
+	@Override @SideOnly(Side.CLIENT) public IIcon getIconFromDamage(int aMeta) {itemIcon = Items.bread.getIconFromDamage(0); return itemIcon; /* Fixes Eating Animation Particles. */}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}
 	@Override public int getItemEnchantability() {return 0;}
