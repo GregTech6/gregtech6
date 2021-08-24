@@ -1619,7 +1619,7 @@ public class MT {
 	Efrine                  = metalore      ( 8747, "Efrine"                                        ,  80, 107,  72     ,            UNBURNABLE, MAGNETIC_PASSIVE, WITHER_PROOF, MOLTEN, WASHING_MERCURY).qual(3, 9.0,  500, 3)                                                                                                                                                                                                 .aspects(TC.METALLUM, 2, TC.GELUM, 2).heat(MeteoricSteel),
 	
 	
-	Desh                    = alloymachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  4.0,   1280,  3)                                                                                                                 .uumAloy(36, C              ,36*U, Hg               , 9*U, B, 8*U, La, 8*U, Li, 4*U, Nd, 4*U, Ce, 4*U, Co, 4*U, Nb, 4*U)                                    .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1),
+	Desh                    = alloymachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  4.0,   1280,  3)                                                                                                                 .uumAloy(36, C              ,36*U, Hg               , 9*U, B, 8*U, La, 8*U, Nd, 4*U, Nb, 4*U, Co, 4*U, Ce, 4*U, Li, 4*U)                                    .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1),
 	DuraniumAlloy           = alloymachine  ( 8751, "Duranium"                                      ,  75, 175, 175     ).qual(3,  8.0,   1280,  4)                                                                                                                 .uumAloy( 0, Dn             , 7*U, Mg               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2).setLocal("Duranium Alloy"), // That Info with Magnesium/Magnesite was pretty hard to find, but I found it!
 	TritaniumAlloy          = alloymachine  ( 8752, "Tritanium"                                     ,  55, 155, 155     ).qual(3, 12.0,   2560,  5)                                                                                                                 .uumAloy( 0, Tn             , 3*U, Dn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 3, TC.VITREUS, 1).setLocal("Tritanium Alloy"),
 	Dolamide                = oredust       ( 8753, "Dolamide"              , SET_METALLIC          , 188, 100, 122, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.POTENTIA, 3, TC.RADIO, 2),
@@ -2654,8 +2654,10 @@ public class MT {
 			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite          , OREMATS.GraniticMineralSand, MnO2                 , ClayRed               );
 			OREMATS.Galena                  .addOreByProducts(OREMATS.Sphalerite        , Ag                        , Pb                    , Se                    , FluoriteRed           , CaCO3);
 			OREMATS.Arsenopyrite            .addOreByProducts(Au                        , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
-			OREMATS.Cobaltite               .addOreByProducts(Co                        , OREMATS.Realgar           , FluoriteOrange        );
-			OREMATS.Realgar                 .addOreByProducts(OREMATS.Arsenopyrite      , OREMATS.Cobaltite         );
+			OREMATS.Cobaltite               .addOreByProducts(Co                        , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Pentlandite   , OREMATS.YellowLimonite);
+			Co_60                           .addOreByProducts(OREMATS.Cobaltite         , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Pentlandite   , OREMATS.YellowLimonite);
+			Co                              .addOreByProducts(OREMATS.Cobaltite         , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Pentlandite   , OREMATS.YellowLimonite);
+			OREMATS.Realgar                 .addOreByProducts(OREMATS.Cobaltite         , OREMATS.Arsenopyrite      );
 			Cu                              .addOreByProducts(OREMATS.Cobaltite         , Au                        , Ni                    , OREMATS.Malachite     );
 			Ni                              .addOreByProducts(OREMATS.Cobaltite         , OREMATS.Cooperite         , Fe2O3                 , OREMATS.Pentlandite   );
 			OREMATS.Stannite                .addOreByProducts(Ge                        , Pyrite                    , OREMATS.Kesterite     );
@@ -2769,6 +2771,8 @@ public class MT {
 			MeteoricIron                    .addOreByProducts(Ni                        , Ir                        , Pt                    );
 			Au                              .addOreByProducts(Cu                        , Ni                        , OREMATS.Cinnabar      );
 			Ag                              .addOreByProducts(Pb                        , S                         , OREMATS.Bromargyrite  );
+			Nd                              .addOreByProducts(Monazite                  , RareEarth                 );
+			OREMATS.Bastnasite              .addOreByProducts(Monazite                  , RareEarth                 , Nd                    );
 			Monazite                        .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcicium                       .addOreByProducts(Th                        , Nd                        , RareEarth             );
 			Forcillium                      .addOreByProducts(Th                        , Nd                        , RareEarth             );
@@ -2790,8 +2794,6 @@ public class MT {
 			OREMATS.Russellite              .addOreByProducts(OREMATS.Tungstate         , Bi                        );
 			OREMATS.Stolzite                .addOreByProducts(OREMATS.Tungstate         , Pb                        );
 			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate         , Pb                        );
-			Nd                              .addOreByProducts(Monazite                  , RareEarth                 );
-			OREMATS.Bastnasite              .addOreByProducts(Monazite                  , RareEarth                 , Nd                    );
 			NaCl                            .addOreByProducts(KCl                       , KIO3                      , OREMATS.Borax         );
 			KCl                             .addOreByProducts(KIO3                      , NaCl                      );
 			KIO3                            .addOreByProducts(NaCl                      , KCl                       );
@@ -2846,8 +2848,6 @@ public class MT {
 			OREMATS.Celestine               .addOreByProducts(Sr                        , S                         );
 			Lazurite                        .addOreByProducts(Sodalite                  , Lapis                     );
 			Sodalite                        .addOreByProducts(Lazurite                  , Lapis                     );
-			Co_60                           .addOreByProducts(OREMATS.Cobaltite         , Co                        );
-			Co                              .addOreByProducts(OREMATS.Cobaltite         );
 			Zr                              .addOreByProducts(TiO2                      , Hf                        );
 			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
 			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , OREMATS.Coltan        , Pb                    );
@@ -2902,7 +2902,7 @@ public class MT {
 			TritaniumAlloy                  .addOreByProducts(OREMATS.DiduraniumTrioxide, Ke                          );
 			OREMATS.TritaniumDioxide        .addOreByProducts(OREMATS.DiduraniumTrioxide, Ke                          );
 			Dolamide                        .addOreByProducts(Dilithium                 , OREMATS.DiduraniumTrioxide  , OREMATS.DuraniumHexafluoride, OREMATS.DuraniumHexabromide);
-			Desh                            .addOreByProducts(Dolamide                  , OREMATS.DuraniumHexaiodide  , OREMATS.DuraniumHexachloride, OREMATS.DuraniumHexaastatide);
+			Desh                            .addOreByProducts(Dolamide                  , OREMATS.DuraniumHexaiodide  , OREMATS.DuraniumHexachloride, OREMATS.DuraniumHexaastatide, OREMATS.Columbite, OREMATS.Cobaltite, Monazite, LiCl);
 			OREMATS.DuraniumHexafluoride    .addOreByProducts(OREMATS.DiduraniumTrioxide, FluoritePink                );
 			OREMATS.DuraniumHexachloride    .addOreByProducts(OREMATS.DiduraniumTrioxide, NaCl                        , KCl);
 			OREMATS.DuraniumHexabromide     .addOreByProducts(OREMATS.DiduraniumTrioxide, OREMATS.Bromargyrite        );
