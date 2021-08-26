@@ -19,28 +19,66 @@
 
 package gregtech.asm.transformers;
 
+import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.*;
 
 /**
  * @author Gregorius Techneticies
  */
 public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 	@Override
-	public byte[] transform(String name, String transformedName, byte[] basicClass) {return basicClass;}/*
+	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (!transformedName.equals("net.minecraft.entity.monster.EntityZombie")) return basicClass;
 		ClassNode classNode = GT_ASM.makeNodes(basicClass);
+
+		//GT_ASM.writePrettyPrintedOpCodesToFile(classNode, "zombie.ops");
 		
 		for (MethodNode m: classNode.methods) {
 			if (m.name.equals("onKillEntity") || (m.name.equals("a") && m.desc.equals("(Lsv;)V"))) {
 				GT_ASM.logger.info("Transforming net.minecraft.entity.monster.EntityZombie.onKillEntity");
-				m.instructions.clear();
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load victim
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
-				m.instructions.add(new InsnNode(Opcodes.RETURN));
+
+				AbstractInsnNode cur = m.instructions.getFirst();
+
+				// Get to first label
+				while(!(cur instanceof LabelNode)) cur = cur.getNext();
+
+				// Skip the super call to the next label
+				cur = cur.getNext();
+				while(!(cur instanceof LabelNode)) cur = cur.getNext();
+
+				// Delete to the next label (this is deleting the `(this.worldObj.difficultySetting == EnumDifficulty.NORMAL || this.worldObj.difficultySetting == EnumDifficulty.HARD) &&` bit)
+				cur = cur.getNext();
+				while(!(cur instanceof LabelNode)) {
+					cur = cur.getNext();
+					m.instructions.remove(cur.getPrevious());
+				}
+
+				// Now in the instanceof EntityVillager check label, skip to the next label
+				cur = cur.getNext();
+				while(!(cur instanceof LabelNode)) cur = cur.getNext();
+
+				// Now in the `if (this.worldObj.difficultySetting != EnumDifficulty.HARD && this.rand.nextBoolean())` test, remove this block
+				cur = cur.getNext();
+				while(!(cur instanceof LabelNode)) {
+					cur = cur.getNext();
+					m.instructions.remove(cur.getPrevious());
+				}
+
+				// And the `return` of if it was successful
+				cur = cur.getNext();
+				while(!(cur instanceof LabelNode)) {
+					cur = cur.getNext();
+					m.instructions.remove(cur.getPrevious());
+				}
+
+				// And now the villager zombification is always run if the target was a villager, no difficulty checks, done
 			}
 		}
+
+		// GT_ASM.writePrettyPrintedOpCodesToFile(classNode, "zombie-post.ops");
 		
-		return GT_ASM.writeByteArray(classNode);
-	}*/
+		return GT_ASM.writeByteArraySelfReferenceFixup(classNode);
+	}
 }

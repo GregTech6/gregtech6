@@ -214,17 +214,55 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			e.printStackTrace();
 		}
 	}
-	
-	public static byte[] writeByteArray(ClassNode aClassNode) {
-		ClassWriter rWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
-		aClassNode.accept(rWriter);
-		return rWriter.toByteArray();
-	}
-	
+
 	public static ClassNode makeNodes(byte[] aBasicClass) {
 		ClassNode rClassNode = new ClassNode();
 		ClassReader classReader = new ClassReader(aBasicClass);
 		classReader.accept(rClassNode, 0);
 		return rClassNode;
 	}
+	
+	public static byte[] writeByteArray(ClassNode aClassNode) {
+		ClassWriter rWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+		aClassNode.accept(rWriter);
+		return rWriter.toByteArray();
+	}
+
+	public static byte[] writeByteArraySelfReferenceFixup(ClassNode aClassNode) {
+		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
+			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..
+			// And can't even use the correct classloader here because the forge remapping hadn't been done yet.
+			// Forge's classloader doesn't seem to like loading and transforming a type while transforming another...
+			// Which wouldn't be an issue if things were loaded in the right order by forge's classloader, but meh...
+			@Override
+			protected String getCommonSuperClass(String type1, String type2) {
+				Class<?> c, d;
+				ClassLoader classLoader = GT_ASM.classLoader;
+				try {
+					c = Class.forName(type1.replace('/', '.'), false, classLoader);
+					d = Class.forName(type2.replace('/', '.'), false, classLoader);
+				} catch (Exception e) {
+					// We can't really unify this at this point because it's not loaded yet,
+					// but for this class its fine to return `"java/lang/Object"` for anything that is not loadable.
+					//throw new RuntimeException(e.toString());
+					return "java/lang/Object";
+				}
+				if (c.isAssignableFrom(d)) {
+					return type1;
+				}
+				if (d.isAssignableFrom(c)) {
+					return type2;
+				}
+				if (c.isInterface() || d.isInterface()) {
+					return "java/lang/Object";
+				}
+				do {
+					c = c.getSuperclass();
+				} while (!c.isAssignableFrom(d));
+				return c.getName().replace('.', '/');
+			}
+		};
+		aClassNode.accept(writer);
+		return writer.toByteArray();
+    }
 }
