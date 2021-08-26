@@ -51,7 +51,10 @@ public class Replacements {
 			tZombieVillager.setVillager(true);
 			tZombieVillager.func_110163_bv();
 			if (aVillager.isChild()) tZombieVillager.setChild(true);
-			if (aVillager.hasCustomNameTag()) tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
+			if (aVillager.hasCustomNameTag()) {
+				tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
+				aVillager.setCustomNameTag("");
+			}
 			aWorld.spawnEntityInWorld(tZombieVillager);
 			aWorld.playAuxSFXAtEntity(null, 1016, (int)tZombieVillager.posX, (int)tZombieVillager.posY, (int)tZombieVillager.posZ, 0);
 			aWorld.removeEntity(aVillager);
