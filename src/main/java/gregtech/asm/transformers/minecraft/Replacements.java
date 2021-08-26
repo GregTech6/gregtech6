@@ -19,8 +19,6 @@
 
 package gregtech.asm.transformers.minecraft;
 
-import static gregapi.data.CS.*;
-
 import java.util.Random;
 
 import net.minecraft.block.Block;

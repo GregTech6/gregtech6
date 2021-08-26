@@ -237,10 +237,9 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			@Override
 			protected String getCommonSuperClass(String type1, String type2) {
 				Class<?> c, d;
-				ClassLoader classLoader = GT_ASM.classLoader;
 				try {
-					c = Class.forName(type1.replace('/', '.'), false, classLoader);
-					d = Class.forName(type2.replace('/', '.'), false, classLoader);
+					c = Class.forName(type1.replace('/', '.'), false, GT_ASM.classLoader);
+					d = Class.forName(type2.replace('/', '.'), false, GT_ASM.classLoader);
 				} catch (Exception e) {
 					// We can't really unify this at this point because it's not loaded yet,
 					// but for this class its fine to return `"java/lang/Object"` for anything that is not loadable.
@@ -264,5 +263,5 @@ public class GT_ASM implements IFMLLoadingPlugin {
 		};
 		aClassNode.accept(writer);
 		return writer.toByteArray();
-    }
+	}
 }
