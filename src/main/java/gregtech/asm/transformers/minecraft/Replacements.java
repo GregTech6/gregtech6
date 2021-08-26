@@ -39,6 +39,26 @@ import net.minecraftforge.common.util.ForgeDirection;
    while transforming other mods though.
  */
 public class Replacements {
+
+	/** Zombies convert their Victim. */
+	public static void EntityZombie_onKillEntity(Object aZombie, Object aVictim) {
+		// Just ALWAYS convert Villagers, not only sometimes or when the stupid Difficulty Setting is right.
+		if (aVictim instanceof EntityVillager) {
+			EntityVillager aVillager = (EntityVillager)aVictim;
+			World aWorld = aVillager.worldObj;
+			EntityZombie tZombieVillager = new EntityZombie(aWorld);
+			tZombieVillager.copyLocationAndAnglesFrom(aVillager);
+			tZombieVillager.onSpawnWithEgg((IEntityLivingData)null);
+			tZombieVillager.setCanPickUpLoot(false);
+			tZombieVillager.setVillager(true);
+			tZombieVillager.func_110163_bv();
+			if (aVillager.isChild()) tZombieVillager.setChild(true);
+			if (aVillager.hasCustomNameTag()) tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
+			aWorld.spawnEntityInWorld(tZombieVillager);
+			aWorld.playAuxSFXAtEntity(null, 1016, (int)tZombieVillager.posX, (int)tZombieVillager.posY, (int)tZombieVillager.posZ, 0);
+			aWorld.removeEntity(aVillager);
+		}
+	}
 	
 	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid self, World world, int x, int y, int z, Random rand) {
 		if (self.getMaterial() == Material.lava)

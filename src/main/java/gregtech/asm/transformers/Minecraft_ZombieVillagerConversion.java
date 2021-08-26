@@ -48,32 +48,19 @@ public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 				cur = cur.getNext();
 				while(!(cur instanceof LabelNode)) cur = cur.getNext();
 
-				// Delete to the next label (this is deleting the `(this.worldObj.difficultySetting == EnumDifficulty.NORMAL || this.worldObj.difficultySetting == EnumDifficulty.HARD) &&` bit)
+				// Now wipe the rest of the function and replace with a static call to the replacement
 				cur = cur.getNext();
-				while(!(cur instanceof LabelNode)) {
+				while(cur != null) {
+					AbstractInsnNode prior = cur;
 					cur = cur.getNext();
-					m.instructions.remove(cur.getPrevious());
+					m.instructions.remove(prior);
 				}
 
-				// Now in the instanceof EntityVillager check label, skip to the next label
-				cur = cur.getNext();
-				while(!(cur instanceof LabelNode)) cur = cur.getNext();
-
-				// Now in the `if (this.worldObj.difficultySetting != EnumDifficulty.HARD && this.rand.nextBoolean())` test, remove this block
-				cur = cur.getNext();
-				while(!(cur instanceof LabelNode)) {
-					cur = cur.getNext();
-					m.instructions.remove(cur.getPrevious());
-				}
-
-				// And the `return` of if it was successful
-				cur = cur.getNext();
-				while(!(cur instanceof LabelNode)) {
-					cur = cur.getNext();
-					m.instructions.remove(cur.getPrevious());
-				}
-
-				// And now the villager zombification is always run if the target was a villager, no difficulty checks, done
+				// The static replacement call
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load victim
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "EntityZombie_onKillEntity", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 
