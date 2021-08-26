@@ -44,19 +44,29 @@ public class Replacements {
 		if (aVictim instanceof EntityVillager) {
 			EntityVillager aVillager = (EntityVillager)aVictim;
 			World aWorld = aVillager.worldObj;
+			// Yep, new Zombie Object.
 			EntityZombie tZombieVillager = new EntityZombie(aWorld);
+			// Location and Head need to point to the right places.
 			tZombieVillager.copyLocationAndAnglesFrom(aVillager);
+			// Do normal spawning Stuff.
 			tZombieVillager.onSpawnWithEgg((IEntityLivingData)null);
+			// Converting Villager Zombies back to Villagers would make it impossible to retrieve the Items, so don't pick up in the first place!
 			tZombieVillager.setCanPickUpLoot(false);
+			// Well yes, he clearly is a Villager Zombie.
 			tZombieVillager.setVillager(true);
+			// STAY THERE! DONT DESPAWN!
 			tZombieVillager.func_110163_bv();
-			if (aVillager.isChild()) tZombieVillager.setChild(true);
-			if (aVillager.hasCustomNameTag()) {
-				tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
-				aVillager.setCustomNameTag("");
-			}
+			// Convert to Child
+			tZombieVillager.setChild(aVillager.isChild());
+			// Transfer Name Tag
+			tZombieVillager.setCustomNameTag(aVillager.getCustomNameTag());
+			// Prevent duping Name Tags
+			aVillager.setCustomNameTag("");
+			// And put the new Zombie into the World!
 			aWorld.spawnEntityInWorld(tZombieVillager);
+			// With Sound ofcourse!
 			aWorld.playAuxSFXAtEntity(null, 1016, (int)tZombieVillager.posX, (int)tZombieVillager.posY, (int)tZombieVillager.posZ, 0);
+			// Villager? What Villager?
 			aWorld.removeEntity(aVillager);
 		}
 	}

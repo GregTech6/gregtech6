@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.21: (Not released yet, released whenever it needs to be)
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
+[CHANGED] Villagers that get converted to Zombies now stay persistent and keep their Name Tags.
 [CHANGED] Desh now has a different Melting and Boiling Point.
 [CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
 [CHANGED] GT6 Redstone Wires will no longer accept Input from Stuff like Droppers and Dispensers. This should reduce confusion when those Blocks transmit Redstone Signals from other Sources.
