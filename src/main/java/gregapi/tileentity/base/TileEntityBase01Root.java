@@ -63,6 +63,7 @@ import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergyTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
+import net.minecraft.block.BlockRailBase;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -535,7 +536,17 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	@Override
 	public boolean hasRedstoneIncoming() {
-		for (byte tSide : ALL_SIDES_VALID) if (getRedstoneIncoming(tSide) > 0) return T;
+		return hasRedstoneIncoming(ALL_SIDES_VALID);
+	}
+	public boolean hasRedstoneIncoming(byte[] aSides) {
+		for (byte tSide : aSides) if (getRedstoneIncoming(tSide) > 0) return T;
+		return F;
+	}
+	public boolean hasRedstoneIncomingFromNonRail() {
+		return hasRedstoneIncomingFromNonRail(ALL_SIDES_VALID);
+	}
+	public boolean hasRedstoneIncomingFromNonRail(byte[] aSides) {
+		for (byte tSide : aSides) if (!(getBlockAtSide(tSide) instanceof BlockRailBase) && getRedstoneIncoming(tSide) > 0) return T;
 		return F;
 	}
 	

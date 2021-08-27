@@ -154,7 +154,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 			int tMovedItems = 0;
 			if (mCheck > 0) {
 				mCheck--;
-			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated || (mCheck < 0 && SYNC_SECOND)) && !hasRedstoneIncoming()) {
+			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated || (mCheck < 0 && SYNC_SECOND)) && !hasRedstoneIncomingFromNonRail()) {
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
