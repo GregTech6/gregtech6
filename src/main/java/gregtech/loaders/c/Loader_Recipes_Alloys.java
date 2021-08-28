@@ -43,6 +43,8 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.redstone"       , 10                              , "molten.signalum"         ,  4);
 		mix(tCopper                 ,  1, "molten.silver"         ,  2, "molten.redalloy"       ,  5                              , "molten.signalum"         ,  8);
 		mix(tCopper                 ,  3, "molten.electrum"       ,  2                                                            , "molten.blackbronze"      ,  5);
+		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.gold"           ,  1                              , "molten.blackbronze"      ,  5);
+		mix(tCopper                 ,  3, "molten.tin"            ,  1, "molten.gold"           ,  4                              , "molten.hepatizon"        ,  8);
 		}
 		for (String tIron : new String[] {"molten.iron", "molten.wroughtiron", "molten.pigiron", "molten.meteoriciron"}) {
 		mix(tIron                   ,  2, "molten.nickel"         ,  1                                                            , "molten.invar"            ,  3);

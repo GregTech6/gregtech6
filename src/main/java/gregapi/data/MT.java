@@ -2979,6 +2979,7 @@ public class MT {
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(MeteoricSteel                 , 1*U), OM.stack(Lava               , 9*U)));
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Steel                         , 1*U), OM.stack(Lava               , 9*U)));
 			Alumite                 .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Al                            , 5*U), OM.stack(WroughtIron        , 2*U), OM.stack(Lava,18*U)));
+			Hepatizon               .addAlloyingRecipe(new OreDictConfigurationComponent(24, OM.stack(Bronze                        , 8*U), OM.stack(Sn                 , 1*U), OM.stack(RoseGold,15*U)));
 			RedAlloy                .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(AnnealedCopper                , 1*U), OM.stack(Redstone           , 4*U)));
 			RoseGold                .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Au                 , 4*U)));
 			SterlingSilver          .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 4*U)));
