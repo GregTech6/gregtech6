@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
 [CHANGED] GT6 Redstone Wires will no longer accept Input from Stuff like Droppers and Dispensers. This should reduce confusion when those Blocks transmit Redstone Signals from other Sources.
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
+[CHANGED] Some Metals (typically the ones that the Furnace can do) were much cheaper to process in the Extruder than in Bending Machines, Wiremills and the likes. This is now fixed by making the other Machines cheaper in Power Usage for such Metals.
 [CHANGED] Stone Layers such as Coal, Salt, Bauxite and similar Ores, will now no longer generate below Y=24. They will generate (Deep)Slate instead in such cases. The (Deep)Slate Layer near Bedrock got removed again in favour of this Mechanic.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
 [ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
