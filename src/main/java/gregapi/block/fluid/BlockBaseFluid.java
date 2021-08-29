@@ -106,6 +106,9 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
 			if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) {
 				WD.burn(aWorld, aX, aY, aZ, T, F);
+				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
+				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
+				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				return;
 			}
 		}

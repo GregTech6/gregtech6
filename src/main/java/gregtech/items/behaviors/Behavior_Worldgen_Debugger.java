@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,7 +38,7 @@ public class Behavior_Worldgen_Debugger extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {
 		if (aWorld.isRemote) return F;
-		for (int tX = (aX&~15)-32, eX = (aX&~15)+16+32; tX < eX; tX++) for (int tZ = (aZ&~15)-32, eZ = (aZ&~15)+16+32; tZ < eZ; tZ++) for (int tY = 1; tY < 250; tY++) WD.set(aWorld, tX, tY, tZ, NB, 0, 2);
+		for (int tX = (aX&~15), eX = (aX&~15)+16; tX < eX; tX++) for (int tZ = (aZ&~15), eZ = (aZ&~15)+16; tZ < eZ; tZ++) for (int tY = 1; tY < 250; tY++) WD.set(aWorld, tX, tY, tZ, NB, 0, 2);
 		return T;
 	}
 	
@@ -49,7 +49,7 @@ public class Behavior_Worldgen_Debugger extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.get("gt.behaviour.worldgendebug"));
-		aList.add("Currently deletes a 5x5 of Chunks, except for bottom most Bedrock");
+		aList.add("Currently deletes a single Chunk, except for bottom most Bedrock");
 		return aList;
 	}
 }

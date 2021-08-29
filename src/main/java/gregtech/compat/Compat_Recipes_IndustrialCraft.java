@@ -429,6 +429,21 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SkS", 'S', OP.stick.dat(MT.WoodTreated));
 		CR.shaped(IL.IC2_Scaffold.get(4), CR.DEF, "WWW", " S ", "S S", 'W', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		
+		CR.remout(ST.mkic("electronicCircuit", 1));
+		CR.remout(ST.mkic("advancedCircuit"  , 1));
+		RM.generify(IL.Circuit_Basic   .get(1), ST.mkic("electronicCircuit", 1));
+		RM.generify(IL.Circuit_Good    .get(1), ST.mkic("electronicCircuit", 1));
+		RM.generify(IL.Circuit_Advanced.get(1), ST.mkic("advancedCircuit"  , 1));
+		RM.generify(IL.Circuit_Elite   .get(1), ST.mkic("advancedCircuit"  , 1));
+		RM.generify(IL.Circuit_Master  .get(1), ST.mkic("advancedCircuit"  , 1));
+		RM.generify(IL.Circuit_Ultimate.get(1), ST.mkic("advancedCircuit"  , 1));
+		CR.shaped(ST.mkic("electronicCircuit", 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Basic   );
+		CR.shaped(ST.mkic("electronicCircuit", 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Good    );
+		CR.shaped(ST.mkic("advancedCircuit"  , 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Advanced);
+		CR.shaped(ST.mkic("advancedCircuit"  , 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Elite   );
+		CR.shaped(ST.mkic("advancedCircuit"  , 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Master  );
+		CR.shaped(ST.mkic("advancedCircuit"  , 1), CR.DEF_NAC_NCC, "  ", " C", 'C', IL.Circuit_Ultimate);
+		
 		RM.Autoclave        .addRecipe2(T,  0, 3000, OM.dust(MT.EnergiumRed, U*9), ST.tag(9), FL.Steam.make(96000), FL.DistW.make(450), IL.IC2_EnergyCrystal.get(1));
 		
 		RM.Boxinator        .addRecipe2(T, 16,   16, IL.IC2_Scrap.get(9), ST.tag(9), IL.IC2_Scrapbox.get(1));
@@ -491,9 +506,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.Water.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.SpDew.make(1000)          , NF, ST.mkic("hydratingCell", 1));
 		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.DistW.make(1000)          , NF, ST.mkic("hydratingCell", 1));
-		
-		RM.generify(IL.Circuit_Basic.get(1)     , ST.mkic("electronicCircuit", 1));
-		RM.generify(IL.Circuit_Advanced.get(1)  , ST.mkic("advancedCircuit", 1));
 		
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));

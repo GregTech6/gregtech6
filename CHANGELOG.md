@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.21: (Not released yet, released whenever it needs to be)
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
+[CHANGED] IC2 Circuits are now made from GT6 Circuits.
 [CHANGED] Villagers that get converted to Zombies now stay persistent and keep their Name Tags.
 [CHANGED] Desh now has a different Melting and Boiling Point.
 [CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
@@ -28,6 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Stone Layers such as Coal, Salt, Bauxite and similar Ores, will now no longer generate below Y=24. They will generate (Deep)Slate instead in such cases. The (Deep)Slate Layer near Bedrock got removed again in favour of this Mechanic.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
 [ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
+[ADDED] A large variety of Dusts can be used as Sandwich Ingredient now. Most will default to having a Food Value of 1, if they dont happen to be normally edible.
 
 
 6.14.20:
