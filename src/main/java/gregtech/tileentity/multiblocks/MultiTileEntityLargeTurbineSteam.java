@@ -54,7 +54,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
 		mTanks[0].setCapacity(mEnergyIN.mMax*4);
-		mTanks[1].setCapacity(mEnergyIN.mMax).setVoidExcess();
+		mTanks[1].setCapacity(mEnergyIN.mMax*4).setVoidExcess();
 	}
 	
 	@Override
