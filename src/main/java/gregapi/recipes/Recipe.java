@@ -773,7 +773,7 @@ public class Recipe {
 			for (int i = 0; i < aInputs.length; i++) if (!tChecked[i]) {
 				ItemStack aInput = aInputs[i];
 				if (ST.valid(aInput)) {
-					if ((aDontCheckStackSizes || aInput.stackSize >= tInput.stackSize) && OreDictManager.INSTANCE.equal_(F, aInput, tInput)) {
+					if ((aDontCheckStackSizes || aInput.stackSize >= tInput.stackSize) && OreDictManager.INSTANCE.equal_(F, aInput, tInput, !tInput.hasTagCompound())) {
 						if (aDecreaseStacksizeBySuccess) aInput.stackSize -= tInput.stackSize;
 						tChecked[i] = T;
 						temp = F;

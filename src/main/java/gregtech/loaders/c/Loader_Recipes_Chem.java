@@ -242,7 +242,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Ilmenite, U*5), FL.array(MT.H2SO4.liquid(7*U, T)), FL.array(MT.GreenVitriol.liquid(6*U, T), FL.Water.make(3000)), OM.dust(MT.TiO2));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Na, U*4), MT.TiCl4.liquid(5*U, T), NF, OM.dust(MT.Ti), OM.dust(MT.NaCl , U*2), OM.dust(MT.NaCl , U*2), OM.dust(MT.NaCl , U*2), OM.dust(MT.NaCl , U*2));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Mg, U*2), MT.TiCl4.liquid(5*U, T), NF, OM.dust(MT.Ti), OM.dust(MT.MgCl2, U*2), OM.dust(MT.MgCl2, U*2), OM.dust(MT.MgCl2, U*2));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Eudialyte, U*32), FL.array(MT.H2SO4.liquid(U*7, T)), FL.array(MT.GrayVitriol.liquid(U * 6, F), FL.Saltwater.make(4000), MT.O.gas(2*U, F)), OM.dust(MT.Zircon, U2*9), OM.dust(MT.SiO2, U*18), OM.dust(MT.Na, U*3), OM.dust(MT.Ca, U2*3));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Eudialyte, U*16), FL.array(MT.H2SO4.liquid(U2*7, T)), FL.array(MT.GrayVitriol.liquid(U*3, F), FL.Saltwater.make(2000), MT.O.gas(U, F)), OM.dust(MT.Zircon, U4*9), OM.dust(MT.SiO2, U*9), OM.dust(MT.Na, U2*3), OM.dust(MT.Ca, U4*3));
 		
 		
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(MT.Fuel.liquid(2*U5, T), MT.Glyceryl.fluid(U10, T))                                                              , MT.NitroFuel      .liquid(U2, F), ZL_IS);

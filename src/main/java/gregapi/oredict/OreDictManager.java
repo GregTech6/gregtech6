@@ -606,15 +606,21 @@ public final class OreDictManager {
 	}
 	
 	public boolean equal(boolean aUseBlackList, ItemStack aUnificatableStack, ItemStack aStackToCheckAgainst) {
-		if (ST.invalid(aUnificatableStack) || ST.invalid(aStackToCheckAgainst)) return F;
-		return equal_(aUseBlackList, aUnificatableStack, aStackToCheckAgainst);
+		return equal(aUseBlackList, aUnificatableStack, aStackToCheckAgainst, T);
 	}
 	public boolean equal_(boolean aUseBlackList, ItemStack aUnificatableStack, ItemStack aStackToCheckAgainst) {
-		if (ST.equal(aUnificatableStack, aStackToCheckAgainst, T)) return T;
+		return equal_(aUseBlackList, aUnificatableStack, aStackToCheckAgainst, T);
+	}
+	public boolean equal(boolean aUseBlackList, ItemStack aUnificatableStack, ItemStack aStackToCheckAgainst, boolean aIgnoreNBT) {
+		if (ST.invalid(aUnificatableStack) || ST.invalid(aStackToCheckAgainst)) return F;
+		return equal_(aUseBlackList, aUnificatableStack, aStackToCheckAgainst, aIgnoreNBT);
+	}
+	public boolean equal_(boolean aUseBlackList, ItemStack aUnificatableStack, ItemStack aStackToCheckAgainst, boolean aIgnoreNBT) {
+		if (ST.equal(aUnificatableStack, aStackToCheckAgainst, aIgnoreNBT)) return T;
 		OreDictItemData tAssociation = getAssociation_(aUnificatableStack, T);
 		if (tAssociation == null || (aUseBlackList && tAssociation.mBlocked)) return F;
 		if (tAssociation.mUnificationTarget == null) tAssociation.mUnificationTarget = sName2StackMap.get(tAssociation.toString());
-		return ST.valid(tAssociation.mUnificationTarget) && ST.equal(tAssociation.mUnificationTarget, aStackToCheckAgainst, T);
+		return ST.valid(tAssociation.mUnificationTarget) && ST.equal(tAssociation.mUnificationTarget, aStackToCheckAgainst, aIgnoreNBT);
 	}
 	
 	public boolean addItemData(ItemStack aStack, OreDictItemData aData) {
