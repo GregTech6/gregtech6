@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,7 @@ import gregapi.code.ICondition;
  * A Collection of Classes, which check for certain Material Conditions.
  */
 public class OreDictMaterialCondition {
+	public static ICondition<OreDictMaterial> selfcrush()                       {return SelfCrush.INSTANCE;}
 	public static ICondition<OreDictMaterial> fullpulver()                      {return FullPulver.INSTANCE;}
 	public static ICondition<OreDictMaterial> fullforge()                       {return FullForge.INSTANCE;}
 	public static ICondition<OreDictMaterial> meltmin   (long aMeltingPoint)    {return new MeltingPointMin(aMeltingPoint);}
@@ -41,6 +42,11 @@ public class OreDictMaterialCondition {
 	public static ICondition<OreDictMaterial> qualmax   (long aMaxQuality)      {return new QualityMax(aMaxQuality);}
 	public static ICondition<OreDictMaterial> typemin   (long aMinQuality)      {return new TypeMin(aMinQuality);}
 	public static ICondition<OreDictMaterial> typemax   (long aMaxQuality)      {return new TypeMax(aMaxQuality);}
+	
+	private static class SelfCrush implements ICondition<OreDictMaterial> {
+		public static final SelfCrush INSTANCE = new SelfCrush();
+		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mTargetCrushing.mMaterial == aMaterial;}
+	}
 	
 	private static class FullPulver implements ICondition<OreDictMaterial> {
 		public static final FullPulver INSTANCE = new FullPulver();
