@@ -275,34 +275,28 @@ public class Loader_Recipes_Food implements Runnable {
 		}});
 		addListener("foodFriedegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
-			
 			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)43);
 		}});
 		addListener("foodBoiledegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
-			
 			RM.Slicer           .addRecipe2(T, 16,   16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Egg_Sliced.get(4));
 		}});
 		addListener("foodScrambledegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
-			
 			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)(200+DYE_INDEX_Yellow));
 		}});
 		addListener(OD.itemEgg, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
-			
 			if (FL.Water_Hot.exists())
-			RM.Bath             .addRecipe1(T,  0,  100, aEvent.mStack, FL.Water_Hot.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
-			RM.Autoclave        .addRecipe2(T,  0,  100, aEvent.mStack, ST.tag(0), FL.Steam.make(800), FL.DistW.make(5), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
-			
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Autoclave        .addRecipe2(T,  0,  128, aEvent.mStack, ST.tag(0), FL.Steam.make(800), FL.DistW.make(5), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OP.stick.mat(MT.WoodTreated, 0), IL.Food_Egg_Scrambled.get(1));
+			RM.Juicer           .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1)); // There not gonna be a Squeezer Recipe!
 			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1));
-			
 			RM.add_smelting(aEvent.mStack, IL.Food_Egg_Fried.get(1));
 		}});
 		addListener(OD.itemEgg, "foodScrambledegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
-			
 			for (OreDictMaterial tMat : ANY.Flour.mToThis)
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(tMat), IL.Food_Dough_Egg.get(1));
 		}});

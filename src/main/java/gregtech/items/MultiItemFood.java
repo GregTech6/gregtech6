@@ -503,9 +503,9 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1), IL.Food_Egg_Scrambled.get(1));
 		for (String tCookingOil : FluidsGT.COOKING_OIL) if (FL.exists(tCookingOil)) {
 		for (String tFluid : FluidsGT.VINEGAR) if (FL.exists(tFluid))
-		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Egg_Yolk.get(1), FL.array(FL.make(tCookingOil, 100), FL.make(tFluid, 100)), FL.Mayo.make(250), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Egg_Yolk.get(1), FL.array(FL.make(tCookingOil, 100), FL.make(tFluid    , 100)), FL.Mayo.make(250), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Egg_Yolk.get(1), FL.array(FL.make(tCookingOil, 100), FL.Juice_Lemon.make(100)), FL.Mayo.make(250), ZL_IS);
-		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Egg_Yolk.get(1), FL.array(FL.make(tCookingOil, 100), FL.Juice_Lime.make(100)), FL.Mayo.make(250), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, 16, IL.Food_Egg_Yolk.get(1), FL.array(FL.make(tCookingOil, 100), FL.Juice_Lime .make(100)), FL.Mayo.make(250), ZL_IS);
 		}
 		
 		FoodsGT.put(ST.make(Items.fish           , 1, W), 0, 0, 0, 0,12); Sandwiches.INGREDIENTS.put(ST.make(Items.fish           , 1, W), (byte)24);
