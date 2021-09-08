@@ -31,7 +31,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
 [ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
 [ADDED] A large variety of Dusts can be used as Sandwich Ingredient now. Most will default to having a Food Value of 1, if they dont happen to be normally edible.
-[ADDED] Some Egg related Food Items, most of which are Sandwich Compatible.
+[ADDED] Some Egg related Food Items, most of which are Sandwich Compatible. Mayo now needs Egg Yolk instead of Egg by the way.
 
 
 6.14.20:
