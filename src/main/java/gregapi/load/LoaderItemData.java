@@ -397,7 +397,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg("seedQuartzBerry"                    , ST.make(MD.GaNe, "quarzBerrySeeds", 1, 0));
 		OM.reg("seedHellBush"                       , ST.make(MD.GaNe, "hellBushSeeds", 1, 0));
 		OM.reg(OD.itemEgg                           , ST.make(Items.egg, 1, 0));
-		OM.reg("listAllegg"                         , ST.make(Items.egg, 1, 0));
 		OM.reg("listAllbeefraw"                     , ST.make(Items.beef, 1, 0));
 		OM.reg("listAllbeefcooked"                  , ST.make(Items.cooked_beef, 1, 0));
 		OM.reg("listAllporkraw"                     , ST.make(Items.porkchop, 1, 0));
@@ -684,7 +683,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropWyndberry"                      , ST.make(MD.AETHER, "wyndberry", 1, 0));
 		OM.reg("cropBlueberry"                      , ST.make(MD.AETHER, "blueBerry", 1, 0));
 		OM.reg("cropOrange"                         , ST.make(MD.AETHER, "orange", 1, 0));
-		OM.reg("listAllegg"                         , ST.make(MD.AETHER, "moaEgg", 1, W));
 		OM.reg(OD.itemEgg                           , ST.make(MD.AETHER, "moaEgg", 1, W));
 		OM.reg(OD.slimeball                         , ST.make(MD.AETHER, "swetJelly", 1, 0));
 		OM.reg(OD.slimeball                         , ST.make(MD.AETHER, "swetJelly", 1, 1));

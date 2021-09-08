@@ -488,6 +488,20 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shaped(IL.Food_Cheese_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "foodCheese");
 		
 		
+		IL.Food_Brown_Egg                      .set(ST.make(Items.egg, 1, 0));
+		IL.Food_White_Egg                      .set(addItem(tLastID =  1051, "Egg"              , "The Egg came before the Chicken!"                    , OD.itemEgg                    , TC.stack(TC.BESTIA, 1), TC.stack(TC.LIMUS, 1), TC.stack(TC.VICTUS, 1)));
+		IL.Food_Brown_Egg_Boiled               .set(addItem(tLastID =  1060, "Boiled Egg"       , "Did you expect this to look different after boiling?", "foodBoiledegg"               , new FoodStat( 2, 1.200F,   0, C+37,  0.50F,   0,   0,   0,   4,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 2)));
+		IL.Food_White_Egg_Boiled               .set(addItem(tLastID =  1061, "Boiled Egg"       , "Did you expect this to look different after boiling?", "foodBoiledegg"               , new FoodStat( 2, 1.200F,   0, C+37,  0.50F,   0,   0,   0,   4,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 2)));
+		IL.Food_Egg_Fried                      .set(addItem(tLastID =  1070, "Fried Egg"        , ""                                                    , "foodFriedegg"                , new FoodStat( 2, 1.200F,   0, C+37,  0.50F,   0,   0,   0,   4,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 2))); Sandwiches.INGREDIENTS.put(last(), (byte)43);
+		IL.Food_Egg_Scrambled                  .set(addItem(tLastID =  1071, "Scrambled Egg"    , ""                                                    , "foodScrambledegg"            , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   0,   4,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 2))); Sandwiches.INGREDIENTS.put(last(), (byte)(200+DYE_INDEX_Yellow));
+		IL.Food_Egg_Sliced                     .set(addItem(tLastID =  1072, "Sliced Egg"       , "Eggcellent!"                                                                         , new FoodStat( 1, 0.600F,   0, C+37,  0.50F,   0,   0,   0,   1,   2, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)44);
+		IL.Food_Egg_Yolk                       .set(addItem(tLastID =  1073, "Egg Yolk"         , "That's all, Yolks!"                                                                  , new FoodStat( 1, 1.200F,   0, C+37,  0.50F,   0,   0,   0,   2,   4, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)(200+DYE_INDEX_Yellow));
+		IL.Food_Egg_White                      .set(addItem(tLastID =  1074, "Egg White"        , ""                                                                                    , new FoodStat( 1, 1.200F,   0, C+37,  0.50F,   0,   0,   0,   2,   4, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1))); Sandwiches.INGREDIENTS.put(last(), (byte)(200+DYE_INDEX_White));
+		CR.shaped(IL.Food_Egg_Sliced.get(4), CR.DEF_NCC, "kX", 'X', "foodBoiledegg");
+		RM.generify(IL.Food_White_Egg.get(1), ST.make(Items.egg, 1, 0));
+		RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Egg_Yolk.get(1), IL.Food_Egg_White.get(1), IL.Food_Egg_Scrambled.get(1));
+		
+		
 		FoodsGT.put(ST.make(Items.fish           , 1, W), 0, 0, 0, 0,12); Sandwiches.INGREDIENTS.put(ST.make(Items.fish           , 1, W), (byte)24);
 		FoodsGT.put(ST.make(Items.cooked_fished  , 1, W), 0, 0, 0, 0,12); Sandwiches.INGREDIENTS.put(ST.make(Items.cooked_fished  , 1, W), (byte)25);
 		
@@ -928,7 +942,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.replicateOrganic( 9, 11, OP.plantGtBlossom.mat(MT.Mint, 1));
 		RM.replicateOrganic( 9, 12, OP.plantGtBlossom.mat(MT.Indigo, 1));
 		
-		RM.replicateOrganic(10, 11, ST.make(Items.egg, 1, 0));
+		RM.replicateOrganic(10, 11, IL.Food_White_Egg.get(1));
 		RM.replicateOrganic(10, 12, ST.make(Items.feather, 1, 0));
 		RM.replicateOrganic(10, 13, ST.make(Items.leather, 1, 0));
 		RM.replicateOrganic(10, 14, ST.make(Blocks.web, 1, 0));
