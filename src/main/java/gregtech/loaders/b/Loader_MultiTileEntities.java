@@ -420,6 +420,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		RM.add_smelting(IL.Ceramic_Ingot_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01110_01110_01110_01110_01110)), F, F, T);
+		RM.add_smelting(IL.Ceramic_Billet_Mold_Raw         .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_01100_11110_11110_01100_00000)), F, F, T);
 		RM.add_smelting(IL.Ceramic_Chunk_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11000_11000_00000_00000_00000)), F, F, T);
 		RM.add_smelting(IL.Ceramic_Plate_Mold_Raw          .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_11111_11111_11111_11111_11111)), F, F, T);
 		RM.add_smelting(IL.Ceramic_Tiny_Plate_Mold_Raw     .get(1), IL.Ceramic_Mold.getWithNBT(1, UT.NBT.make("gt.mold", 0b0_00000_01110_01110_01110_00000)), F, F, T);

@@ -92,6 +92,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(crystal                         , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(clump                           , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(scrapGt                         , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar               .add(new RecipeMapHandlerPrefix(billet                          , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(chunkGt                         , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(nugget                          , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(plateTiny                       , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
@@ -342,6 +343,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 0,    64, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(plateGem                                            , 1, NF,  16, 0,    64, NF, lens                                    , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(ingot                                               , 1, NF,  16, 0,    64, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
+		RM.Lathe                .add(new RecipeMapHandlerPrefix(billet                                              , 1, NF,  16, 0,    64, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(bouleGt                                             , 1, NF,  16, 0,    64, NF, stickLong                               , 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(gemChipped                                          , 1, NF,  16, 0,    64, NF, bolt                                    , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(gemFlawed                                           , 1, NF,  16, 0,    64, NF, bolt                                    , 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE.NOT, LAYERED.NOT)));
@@ -350,6 +352,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 64/ 9, 0, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(plateGem                                            , 1, NF,  16, 64   , 0, NF, lens                                    , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(ingot                                               , 1, NF,  16, 64   , 0, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
+		RM.Lathe                .add(new RecipeMapHandlerPrefix(billet                                              , 1, NF,  16, 64   , 0, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(bouleGt                                             , 1, NF,  16, 64* 4, 0, NF, stickLong                               , 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(gemChipped                                          , 1, NF,  16, 64/ 4, 0, NF, bolt                                    , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(gemFlawed                                           , 1, NF,  16, 64/ 2, 0, NF, bolt                                    , 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, FURNACE, LAYERED.NOT)));
@@ -358,6 +361,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 0,   256, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(plateGem                                            , 1, NF,  16, 0,   256, NF, lens                                    , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(ingot                                               , 1, NF,  16, 0,   256, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
+		RM.Sharpening           .add(new RecipeMapHandlerPrefix(billet                                              , 1, NF,  16, 0,   256, NF, stick                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(gemChipped                                          , 1, NF,  16, 0,   256, NF, toolHeadArrow                           , 2, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(rockGt                                              , 1, NF,  16, 0,    64, NF, toolHeadArrow                           , 8, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, STONE)).chances(10000, 7500));
 		RM.Sharpening           .add(new RecipeMapHandlerPrefix(toolHeadRawArrow                                    , 1, NF,  16, 0,    64, NF, toolHeadArrow                           , 1, NI, NI, T, T, F, ANTIMATTER.NOT));
@@ -376,6 +380,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		lens                    .addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, plateGem                  , null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
 		stick                   .addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, ingot                     , null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                   .addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, billet                    , null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadArrow           .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"X ", " f"}}, gemChipped                , null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadArrow           .addListener(new OreProcessing_CraftFrom( 8, null, new String[][] {{"X ", " f"}}, rockGt                    , null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT, STONE)));
 		toolHeadArrow           .addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, toolHeadRawArrow          , null, null, null, null, ANTIMATTER.NOT));
@@ -441,6 +446,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, NF,  16,16,     0, NF, crushedCentrifugedTiny  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16,16,     0, NF, nugget                  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(billet                          , 1, NF,  16,16,     0, NF, nugget                  , 6, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dust                            , 1, NF,  16,16,     0, NF, dustTiny                , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dustSmall                       , 1, NF,  16,16,     0, NF, dustDiv72               ,18, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(dustTiny                        , 1, NF,  16,16,     0, NF, dustDiv72               , 8, NI, NI, F, F, F, ANTIMATTER.NOT));
@@ -451,6 +457,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,64, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         ,64, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(billet                          ,24, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(oreRaw                          ,64, NF,  16,16,     0, NF, crateGt64Raw            , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,64, NF,  16,16,     0, NF, crateGt64Dust           , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,64, NF,  16,16,     0, NF, crateGt64Gem            , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
@@ -460,6 +467,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,64, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         ,64, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(billet                          ,24, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(oreRaw                          ,64, NF,  16,16,     0, NF, crateGt64Raw            , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,64, NF,  16,16,     0, NF, crateGt64Dust           , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,64, NF,  16,16,     0, NF, crateGt64Gem            , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
@@ -485,6 +493,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       , 4, NF,  16,16,     0, NF, dust                    , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(nugget                          , 9, NF,  16,16,     0, NF, ingot                   , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         , 4, NF,  16,16,     0, NF, ingot                   , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(billet                          , 3, NF,  16,16,     0, NF, ingot                   , 2, ST.tag( 3), NI, F, F, F, ANTIMATTER.NOT));
 		
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(oreRaw                      , gem                       , 1, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(oreRaw                      , rawOreChunk               , 3, F));
@@ -493,6 +502,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedCentrifuged          , crushedCentrifugedTiny    , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(ingot                       , nugget                    , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(ingot                       , chunkGt                   , 4, F));
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(billet                      , nugget                    , 6, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(dust                        , dustTiny                  , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(dust                        , dustSmall                 , 4, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(dustTiny                    , dustDiv72                 , 8, F));
@@ -510,6 +520,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedTiny             ,  9, crushed                   , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedPurifiedTiny     ,  9, crushedPurified           , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedCentrifugedTiny  ,  9, crushedCentrifuged        , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(ingot                   ,  2, billet                    , 3, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(nugget                  ,  6, billet                    , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(nugget                  ,  9, ingot                     , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(chunkGt                 ,  4, ingot                     , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(chunkGt                 ,  8, ingot                     , 2, F));

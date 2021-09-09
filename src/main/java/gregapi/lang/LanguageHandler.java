@@ -164,6 +164,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.nugget)                                       return "Tiny Piece of Netherite Scrap";
 			if (aPrefix == OP.chunkGt)                                      return "Small Piece of Netherite Scrap";
+			if (aPrefix == OP.billet)                                       return "Billet of Netherite Scrap";
 			if (aPrefix == OP.scrap)                                        return "Scrap Piece of Netherite Scrap";
 			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal;

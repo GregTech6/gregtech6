@@ -419,16 +419,38 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		OreDictItemData tData = OM.data_(slot(1));
 		if (tData != null && tData.hasValidPrefixMaterialData()) {
 			if (tData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
-				for (ItemStack tStack : OreDictManager.getOres(OP.blockDust , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.dust      , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.dustSmall , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.dustTiny  , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.dustDiv72 , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockDust             , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dust                  , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustSmall             , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustTiny              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustDiv72             , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 			} else if (tData.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
-				for (ItemStack tStack : OreDictManager.getOres(OP.blockIngot, tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.ingot     , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.chunkGt   , tData.mMaterial, F)) mLogisticsCache.add(tStack);
-				for (ItemStack tStack : OreDictManager.getOres(OP.nugget    , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockIngot            , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.ingot                 , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.billet                , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.chunkGt               , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.nugget                , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.gem || tData.mPrefix == OP.blockGem) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.gem                   , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockGem              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.plate || tData.mPrefix == OP.blockPlate) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.plate                 , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockPlate            , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.plateGem || tData.mPrefix == OP.blockPlateGem) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.plateGem              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockPlateGem         , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.crushed || tData.mPrefix == OP.crushedTiny) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushed               , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushedTiny           , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.crushedPurified || tData.mPrefix == OP.crushedPurifiedTiny) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushedPurified       , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushedPurifiedTiny   , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.crushedCentrifuged || tData.mPrefix == OP.crushedCentrifugedTiny) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushedCentrifuged    , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.crushedCentrifugedTiny, tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix == OP.oreRaw || tData.mPrefix == OP.blockRaw) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.oreRaw                , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockRaw              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 			}
 		}
 		return mLogisticsCache;
