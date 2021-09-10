@@ -54,13 +54,13 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.food_can(ST.make(Items.rotten_flesh  , 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
 		RM.food_can(ST.make(Items.spider_eye    , 1, W), 2, "Canned Spider Eye", IL.CANS_ROTTEN);
 		
-		for (ItemStack tStack : ST.array(dustTiny.mat(MT.FishCooked, 9), dustSmall.mat(MT.FishCooked, 4), dust.mat(MT.FishCooked, 1), nugget.mat(MT.FishCooked, 9), chunkGt.mat(MT.FishCooked, 4), ingot.mat(MT.FishCooked, 1)))
+		for (ItemStack tStack : ST.array(dustTiny.mat(MT.FishCooked, 9), dustSmall.mat(MT.FishCooked, 4), dust.mat(MT.FishCooked, 1), nugget.mat(MT.FishCooked, 9), chunkGt.mat(MT.FishCooked, 4), billet.mat(MT.FishCooked, 2), ingot.mat(MT.FishCooked, 1)))
 		RM.food_can(tStack, 2, "Canned Fish", IL.CANS_FISH);
-		for (ItemStack tStack : ST.array(dustTiny.mat(MT.MeatCooked, 9), dustSmall.mat(MT.MeatCooked, 4), dust.mat(MT.MeatCooked, 1), nugget.mat(MT.MeatCooked, 9), chunkGt.mat(MT.MeatCooked, 4), ingot.mat(MT.MeatCooked, 1)))
+		for (ItemStack tStack : ST.array(dustTiny.mat(MT.MeatCooked, 9), dustSmall.mat(MT.MeatCooked, 4), dust.mat(MT.MeatCooked, 1), nugget.mat(MT.MeatCooked, 9), chunkGt.mat(MT.MeatCooked, 4), billet.mat(MT.MeatCooked, 2), ingot.mat(MT.MeatCooked, 1)))
 		RM.food_can(tStack, 2, "Canned Meat", IL.CANS_MEAT);
-		for (ItemStack tStack : ST.array(dustTiny.mat(MT.Tofu, 9), dustSmall.mat(MT.Tofu, 4), dust.mat(MT.Tofu, 1), nugget.mat(MT.Tofu, 9), chunkGt.mat(MT.Tofu, 4), ingot.mat(MT.Tofu, 1)))
+		for (ItemStack tStack : ST.array(dustTiny.mat(MT.Tofu, 9), dustSmall.mat(MT.Tofu, 4), dust.mat(MT.Tofu, 1), nugget.mat(MT.Tofu, 9), chunkGt.mat(MT.Tofu, 4), billet.mat(MT.Tofu, 2), ingot.mat(MT.Tofu, 1)))
 		RM.food_can(tStack, 2, "Canned Tofu", IL.CANS_VEGGIE);
-		for (ItemStack tStack : ST.array(dustTiny.mat(MT.SoylentGreen, 9), dustSmall.mat(MT.SoylentGreen, 4), dust.mat(MT.SoylentGreen, 1), nugget.mat(MT.SoylentGreen, 9), chunkGt.mat(MT.SoylentGreen, 4), ingot.mat(MT.SoylentGreen, 1)))
+		for (ItemStack tStack : ST.array(dustTiny.mat(MT.SoylentGreen, 9), dustSmall.mat(MT.SoylentGreen, 4), dust.mat(MT.SoylentGreen, 1), nugget.mat(MT.SoylentGreen, 9), chunkGt.mat(MT.SoylentGreen, 4), billet.mat(MT.SoylentGreen, 2), ingot.mat(MT.SoylentGreen, 1)))
 		RM.food_can(tStack, 2, "Canned Emerald Green", IL.CANS_VEGGIE);
 		
 		OreDictPrefix[] tPrefixListA = new OreDictPrefix[] {dustTiny, dustSmall, dust}, tPrefixListB = new OreDictPrefix[] {nugget, chunkGt, ingot};
@@ -76,12 +76,14 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Fermenter.addRecipe1(T, 16, 144, dust     .mat(MT.MeatRaw   , 1), dust      .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, nugget   .mat(MT.MeatRaw   , 1), nugget    .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, chunkGt  .mat(MT.MeatRaw   , 1), chunkGt   .mat(MT.MeatRotten, 1));
+		RM.Fermenter.addRecipe1(T, 16,  96, billet   .mat(MT.MeatRaw   , 1), billet    .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, ingot    .mat(MT.MeatRaw   , 1), ingot     .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, dustTiny .mat(MT.MeatCooked, 1), dustTiny  .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, dustSmall.mat(MT.MeatCooked, 1), dustSmall .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, dust     .mat(MT.MeatCooked, 1), dust      .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, nugget   .mat(MT.MeatCooked, 1), nugget    .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, chunkGt  .mat(MT.MeatCooked, 1), chunkGt   .mat(MT.MeatRotten, 1));
+		RM.Fermenter.addRecipe1(T, 16,  96, billet   .mat(MT.MeatCooked, 1), billet    .mat(MT.MeatRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, ingot    .mat(MT.MeatCooked, 1), ingot     .mat(MT.MeatRotten, 1));
 		
 		RM.Fermenter.addRecipe1(T, 16,  16, dustTiny .mat(MT.FishRaw   , 1), dustTiny  .mat(MT.FishRotten, 1));
@@ -89,12 +91,14 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Fermenter.addRecipe1(T, 16, 144, dust     .mat(MT.FishRaw   , 1), dust      .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, nugget   .mat(MT.FishRaw   , 1), nugget    .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, chunkGt  .mat(MT.FishRaw   , 1), chunkGt   .mat(MT.FishRotten, 1));
+		RM.Fermenter.addRecipe1(T, 16,  96, billet   .mat(MT.FishRaw   , 1), billet    .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, ingot    .mat(MT.FishRaw   , 1), ingot     .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, dustTiny .mat(MT.FishCooked, 1), dustTiny  .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, dustSmall.mat(MT.FishCooked, 1), dustSmall .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, dust     .mat(MT.FishCooked, 1), dust      .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  16, nugget   .mat(MT.FishCooked, 1), nugget    .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16,  36, chunkGt  .mat(MT.FishCooked, 1), chunkGt   .mat(MT.FishRotten, 1));
+		RM.Fermenter.addRecipe1(T, 16,  96, billet   .mat(MT.FishCooked, 1), billet    .mat(MT.FishRotten, 1));
 		RM.Fermenter.addRecipe1(T, 16, 144, ingot    .mat(MT.FishCooked, 1), ingot     .mat(MT.FishRotten, 1));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
@@ -104,6 +108,7 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener(dustTiny .dat(MT.Wheat  ), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.rem_smelting(aEvent.mStack);}});
 		
 		addListener(ingot    .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, ingot    .mat(MT.MeatCooked, 1), F, T, F);}});
+		addListener(billet   .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, billet   .mat(MT.MeatCooked, 1), F, T, F);}});
 		addListener(chunkGt  .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, chunkGt  .mat(MT.MeatCooked, 1), F, T, F);}});
 		addListener(nugget   .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, nugget   .mat(MT.MeatCooked, 1), F, T, F);}});
 		addListener(dust     .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, dust     .mat(MT.MeatCooked, 1), F, T, F);}});
@@ -111,6 +116,7 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener(dustTiny .dat(MT.MeatRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, dustTiny .mat(MT.MeatCooked, 1), F, T, F);}});
 		
 		addListener(ingot    .dat(MT.FishRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, ingot    .mat(MT.FishCooked, 1), F, T, F);}});
+		addListener(billet   .dat(MT.FishRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, billet   .mat(MT.FishCooked, 1), F, T, F);}});
 		addListener(chunkGt  .dat(MT.FishRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, chunkGt  .mat(MT.FishCooked, 1), F, T, F);}});
 		addListener(nugget   .dat(MT.FishRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, nugget   .mat(MT.FishCooked, 1), F, T, F);}});
 		addListener(dust     .dat(MT.FishRaw), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, dust     .mat(MT.FishCooked, 1), F, T, F);}});

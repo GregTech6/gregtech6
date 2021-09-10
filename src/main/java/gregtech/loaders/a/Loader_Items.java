@@ -83,6 +83,7 @@ public class Loader_Items implements Runnable {
 		
 		tItem = new PrefixItem(MD.GT, "gt.meta.nugget"                      , OP.nugget                         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.chunkGt"                     , OP.chunkGt                        ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
+		tItem = new PrefixItem(MD.GT, "gt.meta.billet"                      , OP.billet                         ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingot"                       , OP.ingot                          ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("miner", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotHot"                    , OP.ingotHot                       );
 		tItem = new PrefixItem(MD.GT, "gt.meta.ingotDouble"                 , OP.ingotDouble                    );
