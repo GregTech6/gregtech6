@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -63,6 +63,7 @@ public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 		List<IRecipe> tRecipeList = CR.list();
 		try {for (int i = 0; i < tRecipeList.size(); i++) {
 			IRecipe tRecipe = tRecipeList.get(i);
+			if (tRecipe == null) {tRecipeList.remove(i--); continue;}
 			int tCount = 0;
 			
 			if (tRecipeList.get(i) instanceof ICraftingRecipeGT) {
@@ -158,7 +159,12 @@ public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 				}
 			}
 			
-			if (tCount == 1) tRecipeList.remove(i--);
+			if (tCount == 1) {
+				OreDictItemData tData = OM.data(tRecipe.getRecipeOutput());
+				if (tData != null && tData.mPrefix == mOutput) {
+					tRecipeList.remove(i--);
+				}
+			}
 			
 		}} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
