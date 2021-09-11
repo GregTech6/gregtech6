@@ -98,6 +98,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Amber                  , MD.Fossil, "amberOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Amber                  , MD.Fossil, "amber", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.AmberDominican         , MD.Fossil, "DominicanAmber", 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.IronCompressed         , MD.PnC, "ingotIronCompressed", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.IronCompressed         , MD.PnC, "compressedIronBlock", 0);
+		OreDictManager.INSTANCE.setTarget(OP.gearGt         , MT.IronCompressed         , MD.PnC, "compressedIronGear", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Coal                   , MD.MF2, "oreCoalRich", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Niter                  , MD.MF2, "oreNitre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.S                      , MD.MF2, "oreSulfur", 0);
@@ -459,6 +462,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.ChargedCertusQuartz    , MD.AE, "item.ItemMultiMaterial", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.ChargedCertusQuartz    , MD.AE, "tile.OreQuartzCharged" , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.CertusQuartz           , MD.AE, "tile.OreQuartz"        , 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Draconium              , MD.DE, "draconiumOre", 0);
+		OreDictManager.INSTANCE.setTarget(OP.crushed        , MT.Draconium              , MD.DE, "draconiumBlend", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Draconium              , MD.DE, "draconiumDust", 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Draconium              , MD.DE, "nugget", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Draconium              , MD.DE, "draconiumIngot", 0);

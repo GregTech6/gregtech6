@@ -2218,7 +2218,7 @@ public class MT {
 			AmberDominican          .put(MD.Fossil, COMMON_ORE).visDefault();
 			
 			
-			Draconium               .put(MD.DE, COMMON_ORE).visDefault();
+			Draconium               .put(MD.DE, COMMON_ORE);
 			DraconiumAwakened       .put(MD.DE, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
@@ -2272,7 +2272,7 @@ public class MT {
 			
 			Duralumin               .put(MD.GC_GALAXYSPACE, COMMON_ORE);
 			Oriharukon              .put(MD.GC_GALAXYSPACE, COMMON_ORE).visDefault();
-			Adamantite              .put(MD.GC_GALAXYSPACE, COMMON_ORE).visDefault();
+			Adamantite              .put(MD.GC_GALAXYSPACE, COMMON_ORE);
 			GlowstoneCeres          .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstoneIo             .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstoneEnceladus      .put(MD.GC_GALAXYSPACE).visDefault();

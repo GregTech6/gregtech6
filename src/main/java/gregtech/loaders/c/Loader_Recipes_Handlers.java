@@ -244,6 +244,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 3, NF,  16,64,     0, NF, bulletGtLarge   , 1, OP.bulletGtLarge   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
 		
+		RM.RollingMill          .add(new RecipeMapHandlerPrefix(nugget                          , 1, NF,  16, 0,   256, NF, plateTiny       , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotDouble                     , 1, NF,  16, 0,   256, NF, plateDouble     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotTriple                     , 1, NF,  16, 0,   256, NF, plateTriple     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
@@ -254,6 +255,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(plateCurved                     , 1, NF,  16, 0,   256, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, sheetGt         , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
 		
+		RM.RollingMill          .add(new RecipeMapHandlerPrefix(nugget                          , 1, NF,  16, 64/ 9, 0, NF, plateTiny       , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingot                           , 1, NF,  16, 64   , 0, NF, plate           , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotDouble                     , 1, NF,  16, 64* 2, 0, NF, plateDouble     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE)));
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(ingotTriple                     , 1, NF,  16, 64* 3, 0, NF, plateTriple     , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE)));
