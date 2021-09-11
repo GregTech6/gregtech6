@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,6 +54,7 @@ public class RecipeMapBumblelyzer extends RecipeMap {
 		if (rRecipe == null) {
 			if (FluidsGT.HONEY.contains(aFluids[0].getFluid().getName()) || FL.Honeydew.is(aFluids[0])) {
 				for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
+					aInput = ST.amount(1, aInput);
 					if (aInput.getItem() instanceof IItemBumbleBee) {
 						if (((IItemBumbleBee)aInput.getItem()).bumbleType(aInput) < 5)
 						return new Recipe(F, F, F, ST.array(aInput, OP.plateTiny.mat(MT.Paper, aInput.stackSize)), ST.array(((IItemBumbleBee)aInput.getItem()).bumbleScan(aInput)), null, null, FL.array(FL.amount(aFluids[0], 10)), null, 64, 16, 0);

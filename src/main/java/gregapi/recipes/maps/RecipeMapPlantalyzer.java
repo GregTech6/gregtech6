@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,6 +49,7 @@ public class RecipeMapPlantalyzer extends RecipeMap {
 		if (aInputs == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) {
 			for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
+				aInput = ST.amount(1, aInput);
 				if (IL.IC2_Crop_Seeds.equal(aInput, T, T)) {
 					ItemStack rOutput = ST.copy(aInput);
 					NBTTagCompound tNBT = UT.NBT.getOrCreate(rOutput);
