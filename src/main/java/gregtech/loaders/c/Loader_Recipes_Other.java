@@ -148,7 +148,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(rockGt.dat(MT.Netherrack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, rockGt.mat(MT.NetherBrick, 1), F, F, T);}});
 		
 		
-		addListener(new Object[] {OD.itemRubber, "gemHexorium", "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreBrownLimonite", "oreYellowLimonite", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreRutile", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new Object[] {OD.itemRubber, "crushedDraconium", "gemHexorium", "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreBrownLimonite", "oreYellowLimonite", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreRutile", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -551,6 +551,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Lin       .make(1000), FL.lube(1000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Hemp      .make(1000), FL.lube(1000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Fish      .make(1000), FL.lube(1000), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Whale     .make(1000), FL.lube(1000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Seed      .make(1000), FL.lube(1000), ZL_IS); if (FL.Oil_Plant.exists())
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Plant     .make(1000), FL.lube(1000), ZL_IS); if (FL.Oil_Canola.exists())
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Canola    .make(1000), FL.lube(2000), ZL_IS);
@@ -606,7 +607,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Drying       .addRecipe0(T, 16,   20, FL.mul(DYE_FLUIDS_FLOWER[i], 1, 6, T), FL.DistW.make(10), dustTiny.mat(MT.DATA.Dye_Materials[i], 1));
 		}
 		
-		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.FishOil.liquid( U8, T), MT.Hg.liquid(1, T), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.FishOil .liquid( U8, T), MT.Hg.liquid(1, T), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.WhaleOil.liquid( U8, T), MT.Hg.liquid(1, T), ZL_IS);
 		
 		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		

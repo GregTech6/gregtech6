@@ -65,8 +65,10 @@ public class RecipeMapBath extends RecipeMap {
 			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(aInput);
 			if (aEntry != null && (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank) || MD.MC.owns(aInput))) {
 				if (ST.valid(aEntry.mPlank)) {
-					if (IL.MaCu_Polished_Planks.exists())
-					addRecipe1(F, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));
+					if (IL.MaCu_Polished_Planks.exists()) {
+						addRecipe1(F, 0, 144, aEntry.mPlank, FL.Oil_Fish .make(1000), NF, IL.MaCu_Polished_Planks.get(1));
+						addRecipe1(F, 0, 144, aEntry.mPlank, FL.Oil_Whale.make( 500), NF, IL.MaCu_Polished_Planks.get(1));
+					}
 					
 					if (!IL.Treated_Planks.equal(aEntry.mPlank, F, T) && !IL.IE_Treated_Planks.equal(aEntry.mPlank, F, T)) {
 						ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));

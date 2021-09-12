@@ -51,7 +51,7 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Creosote.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Biomass.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.BiomassIC2.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  4,  1, FL.Glue.make(1)                             , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, -  8,  1, FL.Oil_Whale.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
@@ -69,6 +69,8 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16, 24, FL.Oil_HotCrude.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_Light2.exists())
 		FM.Burn         .addRecipe0(T, - 16, 18, FL.Oil_Light2.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
+		
+		FM.Burn         .addRecipe0(T, -  4,  1, FL.Glue.make(1)                             , FL.CarbonDioxide.make(1), ZL_IS);
 		
 		if (FL.JetFuel.exists()) {
 		FM.Burn         .addRecipe0(T, -128,  9, FL.JetFuel.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);

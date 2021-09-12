@@ -455,6 +455,19 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , MD.IE, "ore", 2);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag                     , MD.IE, "ore", 3);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ni                     , MD.IE, "ore", 4);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.IronMagnetic           , MD.SC2, "ItemMachinePart", 3);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.IronCast               , MD.SC2, "ItemMetalNugget", 7);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.IronCast               , MD.SC2, "ItemIngot", 7);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.IronCast               , MD.SC2, "BlockMetal", 7);
+		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.IronCast               , MD.SC2, "ItemMetalSheet", 7);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.IronCast               , MD.SC2, "ItemMachinePart", 0);
+		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2SO4                  , MD.SC2, "ItemResource", 2);
+		OreDictManager.INSTANCE.setTarget(OP.cluster        , MT.Al2O3                  , MD.SC2, "ItemSteamcraftCluster", 0);
+		OreDictManager.INSTANCE.setTarget(OP.cluster        , MT.Zn                     , MD.SC2, "ItemSteamcraftCluster", 1);
+		
+		
+		
+		
 		OreDictManager.INSTANCE.setTarget(OP.oreLimestone   , MT.Phosphorus             , MD.MIN, "phosphorous_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Gypsum                 , MD.MIN, "gypsum", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.S                      , MD.MIN, "sulfur_ore", 0);

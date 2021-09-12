@@ -289,6 +289,7 @@ public class GT6_Main extends Abstract_Mod {
 		new Compat_Recipes_CandyCraft           (MD.CANDY         , this);
 		new Compat_Recipes_JABBA                (MD.JABBA         , this);
 		new Compat_Recipes_Factorization        (MD.FZ            , this);
+		new Compat_Recipes_Steamcraft2          (MD.SC2           , this);
 		new Compat_Recipes_MineFactoryReloaded  (MD.MFR           , this); // Has to be after RC!
 		new Compat_Recipes_AppliedEnergistics   (MD.AE            , this);
 		new Compat_Recipes_Bluepower            (MD.BP            , this);

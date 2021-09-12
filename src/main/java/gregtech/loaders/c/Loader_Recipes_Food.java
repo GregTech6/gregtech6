@@ -351,24 +351,11 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener("foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!ST.isGT(aEvent.mStack)) FoodsGT.put(aEvent.mStack, 0, 0, 4, 0,12);
 			
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			
-			if (IL.FZ_Sludge.exists()) {
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.FZ_Sludge            .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.FZ_Sludge            .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			}
-			if (IL.IE_Slag.exists()) {
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.IE_Slag              .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.IE_Slag              .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			}
-			if (IL.TE_Slag.exists()) {
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.TE_Slag              .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.TE_Slag              .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			}
-			if (IL.TE_Slag_Rich.exists()) {
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.TE_Slag_Rich         .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
-			RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.TE_Slag_Rich         .get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish.make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
+			for (ItemStack tStack : ST.array(IL.Food_Potato_Poisonous.get(1), IL.FZ_Sludge.get(1), IL.IE_Slag.get(1), IL.TE_Slag.get(1), IL.TE_Slag_Rich.get(1))) if (ST.valid(tStack)) {
+				RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish .make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
+				RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Fish .make(1000)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
+				RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.MeatRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Whale.make( 500)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
+				RM.Mixer.addRecipeX(T, 16,  256, ST.array(aEvent.mStack, ST.make(Items.fermented_spider_eye, 1, W), OM.dust(MT.FishRotten), OM.dust(MT.Bone), IL.Food_Potato_Poisonous.get(1), IL.IC2_Scrap.get(1, ST.make(Blocks.red_mushroom, 1, W))), FL.array(FL.Purple_Drink.make(1000), FL.Oil_Whale.make( 500)), FL.Sludge.make(1000), IL.Food_Chum.get(8));
 			}
 		}});
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -663,6 +650,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Lin      .make(1), FL.Oil_Frying.make(1), ZL_IS);
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Seed     .make(1), FL.Oil_Frying.make(1), ZL_IS);
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Fish     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Whale    .make(1), FL.Oil_Frying.make(1), ZL_IS);
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Ice          .make(1), FL.Water     .make(1), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.FlourGrains.mToThis) {

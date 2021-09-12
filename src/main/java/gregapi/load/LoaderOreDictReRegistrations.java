@@ -774,6 +774,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("dustSoylentGreen"                , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration("dustTofu"                        , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration(OD.itemEgg                        , "listAllegg");
+		OreDictManager.INSTANCE.addReRegistration("foodWhaleoil"                    , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodFishoil"                     , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodSeedoil"                     , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodHempoil"                     , "listAllcookingoil");
@@ -826,6 +827,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.HempOil)         , "foodHempoil");
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.LinOil)          , "foodLinoil");
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.FishOil)         , "foodFishoil");
+		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.WhaleOil)        , "foodWhaleoil");
 		OreDictManager.INSTANCE.addReRegistration("foodApplecider"                  , "foodCider");
 		OreDictManager.INSTANCE.addReRegistration("foodPeachcider"                  , "foodCider");
 		OreDictManager.INSTANCE.addReRegistration("foodPearcider"                   , "foodCider");

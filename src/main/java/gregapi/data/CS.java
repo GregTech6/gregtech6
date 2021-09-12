@@ -1969,6 +1969,7 @@ public class CS {
 		
 		, MFR               = "MineFactoryReloaded"
 		, PnC               = "PneumaticCraft"
+		, SC2               = "steamcraft2"
 		, ExU               = "ExtraUtilities"
 		, ExS               = "ExtraSimple"
 		, EIO               = "EnderIO"

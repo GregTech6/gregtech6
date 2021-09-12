@@ -143,8 +143,10 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			
 			if (ST.block(aEvent.mStack) == BlocksGT.Log1) return;
 			
-			if (IL.MaCu_Polished_Logs.exists())
-			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Fish.make(3000), NF  , IL.MaCu_Polished_Logs.get(1));
+			if (IL.MaCu_Polished_Logs.exists()) {
+			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Fish .make(3000), NF , IL.MaCu_Polished_Logs.get(1));
+			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Whale.make(1500), NF , IL.MaCu_Polished_Logs.get(1));
+			}
 			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.Water.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
 			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.SpDew.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
 			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.DistW.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
@@ -210,8 +212,10 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			
 			if (WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack))) return;
 			
-			if (IL.MaCu_Polished_Planks.exists())
+			if (IL.MaCu_Polished_Planks.exists()) {
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Fish      .make(1000), NF, IL.MaCu_Polished_Planks.get(1));
+			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Whale     .make( 500), NF, IL.MaCu_Polished_Planks.get(1));
+			}
 			ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Seed      .make( 100), NF, tTreated);
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Lin       .make( 100), NF, tTreated);
