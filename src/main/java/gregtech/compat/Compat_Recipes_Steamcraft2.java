@@ -26,10 +26,12 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -51,9 +53,12 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 			RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
 		}
 		
+		CR.shaped(ST.make(MD.SC2, "ItemMachinePart"     , 1, 8), CR.DEF_REM_REV, "CRC", 'C', OP.plate.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber));
+		CR.shaped(ST.make(MD.SC2, "ItemElectricJarSmall", 1, 0), CR.DEF_REM_REV, "RCR", "GCG", "GGG", 'C', OP.stickLong.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber), 'G', OP.plate.dat(MT.Glass));
 		
 		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		
+		RM.packunpack(ST.make(MD.SC2, "ItemSlimeRubber", 1, 0), 9, ST.make(MD.SC2, "BlockCongealedSlime", 1, 0));
 		
 		if (IL.SC2_Hammer.exists()) {
 			ArrayListNoNulls tRecipesToRemove = new ArrayListNoNulls();

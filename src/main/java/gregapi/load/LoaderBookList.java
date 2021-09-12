@@ -386,6 +386,16 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.FM, "MeteorProxDet"                        ,   W, (byte) 43);
 			BooksGT.BOOK_REGISTER  .put(MD.FM, "MeteorCrashDet"                       ,   W, (byte) 44);
 		}
+		if (MD.FSP.mLoaded) {
+			BooksGT.BOOKS_NORMAL   .add(MD.FSP, "book"                                ,   W);
+			BooksGT.BOOK_REGISTER  .put(MD.FSP, "book"                                ,   W, (byte)  1);
+		}
+		if (MD.SC2.mLoaded) {
+			BooksGT.BOOKS_NORMAL   .add(MD.SC2, "ItemHandBook"                        ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.SC2, "ItemLoreBook"                        ,   W);
+			BooksGT.BOOK_REGISTER  .put(MD.SC2, "ItemHandBook"                        ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER  .put(MD.SC2, "ItemLoreBook"                        ,   W, (byte)  1);
+		}
 		if (MD.HBM.mLoaded) {
 			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.bobmazon_materials"             ,   W);
 			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.bobmazon_machines"              ,   W);

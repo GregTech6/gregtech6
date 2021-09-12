@@ -181,7 +181,7 @@ public enum IL implements IItemContainer {
 	RC_Crowbar_Iron, RC_Crowbar_Steel, RC_Crowbar_Thaumium, RC_Crowbar_Voidmetal,
 	RC_Creosote_Bottle, RC_Creosote_Bucket, RC_Creosote_Cell, RC_Creosote_Can, RC_Creosote_Capsule, RC_Creosote_RefractoryCapsule,
 	IE_Creosote_Bottle, IE_Creosote_Bucket, IE_Hammer, IE_Slag, IE_Blueprint_Projectiles_Common, IE_Blueprint_Projectiles_Specialized, IE_Blueprint_Projectiles_Electrodes, IE_Crate, IE_Treated_Planks, IE_Treated_Slab, IE_Treated_Stairs,
-	SC2_Hammer, SC2_Hammer_Gilded,
+	SC2_Wrench, SC2_Hammer, SC2_Hammer_Gilded,
 	FZ_Sludge,
 	HBM_Mercury_Bottle, HBM_Mercury_Drop,
 	ICBM_Concrete,

@@ -866,6 +866,9 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC_PLANETS, "item.schematic"                     , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.GC_GALAXYSPACE, "item.ItemSchematics"            , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.TROPIC, "encTropica"                             , 1,   W, MT.Paper              , U*3);
+		OM.data(MD.FSP, "book"                                      , 1,   W, MT.Paper              , U*3);
+		OM.data(MD.SC2, "ItemHandBook"                              , 1,   W, MT.Paper              , U*3);
+		OM.data(MD.SC2, "ItemLoreBook"                              , 1,   W, MT.Paper              , U*3);
 		
 		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));
 		
@@ -1744,6 +1747,17 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.HaC, "rabbitcookedItem"                  , 1,   W, MT.MeatCooked         ,  U * 1, MT.Bone,  U4);
 		OM.data(MD.HaC, "venisonrawItem"                    , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone,  U9);
 		OM.data(MD.HaC, "venisoncookedItem"                 , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone,  U9);
+		
+		
+		OM.data(MD.FSP, "steamedBeef"                       , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U9);
+		OM.data(MD.FSP, "steamedPorkchop"                   , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U9);
+		OM.data(MD.FSP, "steamedChicken"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U9);
+		OM.data(MD.FSP, "steamedFish"                       , 1,   W, MT.FishCooked         ,  U * 2, MT.Bone, U9);
+		OM.data(MD.FSP, "steamedSalmon"                     , 1,   W, MT.FishCooked         ,  U * 2, MT.Bone, U9);
+		
+		
+		OM.data(MD.SC2, "ItemWhaleMeat"                     , 1,   W, MT.FishRaw            ,  U * 2, MT.Bone, U9);
+		OM.data(MD.SC2, "ItemCookedWhaleMeat"               , 1,   W, MT.FishCooked         ,  U * 2, MT.Bone, U9);
 		
 		
 		OM.data(MD.HBM, "item.apple_lead"                   , 1,   0, MT.Pb                 ,  OP.nugget.mAmount * 8);

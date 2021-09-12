@@ -851,6 +851,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Juicer       .addRecipe1(T, 16,   32, 10000, ST.make(Items.fish              , 1, 3), NF, FL.Potion_Poison_2.make(125), OM.dust(MT.FishRaw, U));
 		RM.Juicer       .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, FL.make("squidink", 3*L/2), NI);
 		
+		
 		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.golden_apple , 1, 0), MT.Au.liquid(U*64, T), NF, ST.make(Items.golden_apple, 1, 1));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.carrot       , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.golden_carrot, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.melon        , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.speckled_melon, 1, 0));
