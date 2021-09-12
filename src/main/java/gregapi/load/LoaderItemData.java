@@ -397,6 +397,13 @@ public class LoaderItemData implements Runnable {
 		OM.reg("seedQuartzBerry"                    , ST.make(MD.GaNe, "quarzBerrySeeds", 1, 0));
 		OM.reg("seedHellBush"                       , ST.make(MD.GaNe, "hellBushSeeds", 1, 0));
 		OM.reg(OD.itemEgg                           , ST.make(Items.egg, 1, 0));
+		OM.reg("listAllbeefcooked"                  , ST.make(MD.FSP, "steamedBeef", 1, 0));
+		OM.reg("listAllporkcooked"                  , ST.make(MD.FSP, "steamedPorkchop", 1, 0));
+		OM.reg("listAllchickencooked"               , ST.make(MD.FSP, "steamedChicken", 1, 0));
+		OM.reg("listAllfishcooked"                  , ST.make(MD.FSP, "steamedFish", 1, 0));
+		OM.reg("listAllfishcooked"                  , ST.make(MD.FSP, "steamedSalmon", 1, 0));
+		OM.reg("listAllfishraw"                     , ST.make(MD.SC2, "ItemWhaleMeat", 1, 0));
+		OM.reg("listAllfishcooked"                  , ST.make(MD.SC2, "ItemCookedWhaleMeat", 1, 0));
 		OM.reg("listAllbeefraw"                     , ST.make(Items.beef, 1, 0));
 		OM.reg("listAllbeefcooked"                  , ST.make(Items.cooked_beef, 1, 0));
 		OM.reg("listAllporkraw"                     , ST.make(Items.porkchop, 1, 0));
@@ -1622,6 +1629,9 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.dat2(MD.EBXL, "extrabiomes.logturner"            , 1     , ANY.Wood      ,  5* U2);
+		
+		
+		OM.data(MD.SC2, "ItemWhalebone"                     , 1,   W, MT.Bone               ,  U * 1);
 		
 		
 		OM.data(MD.UB, "fossilPiece"                        , 1,   W, MT.Bone               ,  U * 1); // Metadata 0 to 7

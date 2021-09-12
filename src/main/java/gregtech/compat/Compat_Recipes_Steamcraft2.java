@@ -26,6 +26,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -49,6 +50,10 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 		} else {
 			RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
 		}
+		
+		
+		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
+		
 		
 		if (IL.SC2_Hammer.exists()) {
 			ArrayListNoNulls tRecipesToRemove = new ArrayListNoNulls();
