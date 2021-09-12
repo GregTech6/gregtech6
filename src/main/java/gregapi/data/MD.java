@@ -123,6 +123,7 @@ public class MD {
 	
 	, MFR               = new ModData(ModIDs.MFR                , "MineFactory Reloaded")
 	, PnC               = new ModData(ModIDs.PnC                , "PneumaticCraft")
+	, FSP               = new ModData(ModIDs.FSP                , "Flaxbeard's Steam Power")
 	, SC2               = new ModData(ModIDs.SC2                , "Steamcraft 2")
 	, ExU               = new ModData(ModIDs.ExU                , "Extra Utilities")
 	, ExS               = new ModData(ModIDs.ExS                , "Extra Simple")

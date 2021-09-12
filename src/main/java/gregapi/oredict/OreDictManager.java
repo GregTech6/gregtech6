@@ -439,6 +439,8 @@ public final class OreDictManager {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.ore) {
 							addItemData_(aEvent.Ore, aPrefix.dat(aMaterial));
+						} else if (aPrefix == OP.plateSteamcraft) {
+							// Skip these, the only valid ones are the ones from Flaxbeard's Steam Power itself.
 						} else if (aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, F, T);
 						}

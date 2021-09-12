@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.IL;
@@ -31,10 +32,13 @@ import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Compat_Recipes_Steamcraft2 extends CompatMods {
 	public Compat_Recipes_Steamcraft2(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Steamcraft 2 Recipes.");
 		CR.delate(ST.make(MD.SC2, "ItemResource", 1, 2));
 		if (MD.FZ.mLoaded) {
@@ -44,6 +48,32 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 			CR.shaped(ST.make(MD.FZ , "acid"        , 1, 0), CR.DEF_NAC, "  ", " X", 'X', ST.make(MD.SC2, "ItemResource", 1, 2));
 		} else {
 			RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
+		}
+		
+		if (IL.SC2_Hammer.exists()) {
+			ArrayListNoNulls tRecipesToRemove = new ArrayListNoNulls();
+			for (Object tRecipe : CR.list()) {
+				if (tRecipe instanceof ShapelessOreRecipe) {
+					for (Object tInput : ((ShapelessOreRecipe)tRecipe).getInput()) {
+						if (tInput instanceof Iterable) {
+							for (Object iInput : (Iterable)tInput) {
+								if (iInput instanceof ItemStack) {
+									if (IL.SC2_Hammer.equal(iInput, T, T)) {
+										tRecipesToRemove.add(tRecipe);
+										break;
+									}
+								}
+							}
+						} else if (tInput instanceof ItemStack) {
+							if (IL.SC2_Hammer.equal(tInput, T, T)) {
+								tRecipesToRemove.add(tRecipe);
+								break;
+							}
+						}
+					}
+				}
+			}
+			CR.list().removeAll(tRecipesToRemove);
 		}
 	}
 }

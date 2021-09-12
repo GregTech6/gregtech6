@@ -71,9 +71,20 @@ public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
 			for (Object tRecipe : CR.list()) {
 				if (tRecipe instanceof ShapelessOreRecipe) {
 					for (Object tInput : ((ShapelessOreRecipe)tRecipe).getInput()) {
-						if (tInput instanceof ItemStack && IL.IE_Hammer.equal(tInput, F, T)) {
-							tRecipesToRemove.add(tRecipe);
-							break;
+						if (tInput instanceof Iterable) {
+							for (Object iInput : (Iterable)tInput) {
+								if (iInput instanceof ItemStack) {
+									if (IL.IE_Hammer.equal(iInput, T, T)) {
+										tRecipesToRemove.add(tRecipe);
+										break;
+									}
+								}
+							}
+						} else if (tInput instanceof ItemStack) {
+							if (IL.IE_Hammer.equal(tInput, T, T)) {
+								tRecipesToRemove.add(tRecipe);
+								break;
+							}
 						}
 					}
 				}

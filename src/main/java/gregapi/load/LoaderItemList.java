@@ -806,6 +806,10 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodTreated, 8*U), OD.craftingChest);
 		
 		
+		IL.SC2_Hammer                           .set(ST.make(MD.SC2, "ItemHammer"                           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.SC2_Hammer.wild(1));
+		IL.SC2_Hammer_Gilded                    .set(ST.make(MD.SC2, "ItemBugHammer"                        , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.SC2_Hammer_Gilded.wild(1));
+		
+		
 		IL.A97_Hammer                           .set(ST.make(MD.A97, "wrench"                               , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.A97_Hammer.wild(1));
 		
 		

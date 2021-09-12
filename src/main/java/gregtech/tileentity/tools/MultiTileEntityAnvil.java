@@ -164,16 +164,16 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (tData != null) {
 						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
 						if (tData.mPrefix != null) {
-							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
-							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
-							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
-							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
-							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
-							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
+							if (tData.mPrefix.containsAny(TD.Prefix.INGOT_BASED)) mShapeA = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate" )) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank" )) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick" )) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire"  )) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk" )) mShapeA = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring"  )) mShapeA = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"   )) mShapeA = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"   )) mShapeA = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock"  )) mShapeA = 7; else
 							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
 							mShapeA = 0;
 						}
@@ -197,16 +197,16 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (tData != null) {
 						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
 						if (tData.mPrefix != null) {
-							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
-							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
-							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
-							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
-							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
-							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
+							if (tData.mPrefix.containsAny(TD.Prefix.INGOT_BASED)) mShapeB = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate" )) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank" )) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick" )) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire"  )) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk" )) mShapeB = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring"  )) mShapeB = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"   )) mShapeB = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"   )) mShapeB = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock"  )) mShapeB = 7; else
 							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
 							mShapeB = 0;
 						}
