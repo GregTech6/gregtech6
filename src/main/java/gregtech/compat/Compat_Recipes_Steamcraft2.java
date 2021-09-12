@@ -29,12 +29,21 @@ import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.RM;
+import gregapi.util.CR;
 import gregapi.util.ST;
 
 public class Compat_Recipes_Steamcraft2 extends CompatMods {
 	public Compat_Recipes_Steamcraft2(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Steamcraft 2 Recipes.");
-		RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
+		CR.delate(ST.make(MD.SC2, "ItemResource", 1, 2));
+		if (MD.FZ.mLoaded) {
+			RM.generify(ST.make(MD.FZ , "acid"        , 1, 0), ST.make(MD.SC2, "ItemResource", 1, 2));
+			RM.generify(ST.make(MD.SC2, "ItemResource", 1, 2), ST.make(MD.FZ , "acid"        , 1, 0));
+			CR.shaped(ST.make(MD.SC2, "ItemResource", 1, 2), CR.DEF_NAC, "  ", " X", 'X', ST.make(MD.FZ , "acid"        , 1, 0));
+			CR.shaped(ST.make(MD.FZ , "acid"        , 1, 0), CR.DEF_NAC, "  ", " X", 'X', ST.make(MD.SC2, "ItemResource", 1, 2));
+		} else {
+			RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
+		}
 	}
 }

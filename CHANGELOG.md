@@ -18,6 +18,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.21: (Not released yet, released whenever it needs to be)
+[COMPAT] Steamcraft 2
+[COMPAT] Flaxbeards Steam Power
+[COMPAT] HBM's Nuclear Tech
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
 [CHANGED] IC2 Circuits are now made from GT6 Circuits.

@@ -47,7 +47,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 247 is next! There is no Gaps in this List!
+		// 251 is next! There is no Gaps in this List!
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
@@ -374,6 +374,20 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 1), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 1));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 2), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 2));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 3), WoodDictionary.WOODS.get(MD.EBXL, "log2", 0), ST.make(MD.EBXL, "leaves_2", 1, 3));
+		}
+		// Steamcraft 2 Trees, weirdly none seem to have Saplings.
+		if (MD.SC2.mLoaded) {
+			new LeafEntry(ST.make(MD.SC2, "BlockBrassLeaves"    , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockWillowLeaves"   , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockRedwoodLeaves"  , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockMangroveLeaves" , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockDeadLeaves"     , 1, W));
+			
+			new WoodEntry(ST.make(MD.SC2, "BlockBrassLog"    , 1, W));
+			new WoodEntry(ST.make(MD.SC2, "BlockWillowLog"   , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockWillowPlanks"   , 1, W), ST.make(MD.SC2, "BlockWillowSlab"   , 1, W), ST.make(MD.SC2, "BlockWillowStairs"   , 1, W), MT.WOODS.Willow  , 247), 2, 500);
+			new WoodEntry(ST.make(MD.SC2, "BlockRedwoodLog"  , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockRedwoodPlanks"  , 1, W), ST.make(MD.SC2, "BlockRedwoodSlab"  , 1, W), ST.make(MD.SC2, "BlockRedwoodStairs"  , 1, W), MT.WOODS.Redwood , 248));
+			new WoodEntry(ST.make(MD.SC2, "BlockMangroveLog" , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockMangrovePlanks" , 1, W), ST.make(MD.SC2, "BlockMangroveSlab" , 1, W), ST.make(MD.SC2, "BlockMangroveStairs" , 1, W), MT.WOODS.Mangrove, 249));
+			new WoodEntry(ST.make(MD.SC2, "BlockPetrifiedLog", 1, W), new PlankEntry(ST.make(MD.SC2, "BlockPetrifiedPlanks", 1, W), ST.make(MD.SC2, "BlockPetrifiedSlab", 1, W), ST.make(MD.SC2, "BlockPetrifiedStairs", 1, W), MT.PetrifiedWood , 250), 0, 0);
 		}
 		// Biomes o' Plenty Trees
 		if (MD.BoP.mLoaded) {
