@@ -253,7 +253,12 @@ public class Loader_OreProcessing implements Runnable {
 			List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 			if (aEvent.mItemData.mPrefix == null) {
 				for (OreDictMaterialStack tMaterial : aEvent.mItemData.getAllMaterialStacks()) {
-					if ((tMaterial.mMaterial == MT.Paper || tMaterial.mMaterial == MT.Bone) && tMaterial.mAmount >= OP.dustDiv72.mAmount) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMaterial.mMaterial, tMaterial.mAmount));
+					if (tMaterial.mAmount >= OP.dustDiv72.mAmount) {
+						if (tMaterial.mMaterial == MT.Paper) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMaterial.mMaterial, tMaterial.mAmount));
+						if (aEvent.mItemData.mByProducts.length <= 0) {
+							if (tMaterial.mMaterial == MT.Bone) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMaterial.mMaterial, tMaterial.mAmount));
+						}
+					}
 					if (tMaterial.mMaterial.mTargetSmelting.mAmount > 0 && tMaterial.mMaterial.contains(MELTING) && !tMaterial.mMaterial.contains(BLACKLISTED_SMELTER)) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F), tMaterial.mMaterial.mTargetSmelting.mMaterial).addToList(tList);
 				}
 			} else {

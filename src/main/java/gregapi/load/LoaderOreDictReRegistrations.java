@@ -918,6 +918,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.HempOil)         , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.LinOil)          , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.FishOil)         , OD.itemLubricantEarly);
+		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.WhaleOil)        , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000water             , "fz.waterBucketLike");
 		OreDictManager.INSTANCE.addReRegistration("fz.waterBucketLike"              , "listAllwater");
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000lava              , "listAlllava");
@@ -1277,6 +1278,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("seedCoca"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedHops"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedHemp"                        , "listAllseed");
+		OreDictManager.INSTANCE.addReRegistration("seedTea"                         , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedRice"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedOats"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedAbyssalOats"                 , "listAllseed");

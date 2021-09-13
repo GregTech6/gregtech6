@@ -156,6 +156,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropChilipepper"                    , ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 2));
 		OM.reg("cropTomato"                         , ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 8));
 		OM.reg("cropGrape"                          , ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 4));
+		OM.reg("seedTea"                            , ST.make(MD.SC2, "ItemTeaSeed", 1, 0));
+		OM.reg("cropTea"                            , ST.make(MD.SC2, "ItemTeaLeaf", 1, 0));
 		OM.reg("cropTea"                            , ST.make(MD.GaSu, "teaLeaves", 1, 0));
 		OM.reg("cropHeartberry"                     , ST.make(MD.ERE, "heartBerries", 1, 0));
 		OM.reg("cropBambooshoot"                    , ST.make(MD.ERE, "materials", 1, 11));
@@ -867,7 +869,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC_GALAXYSPACE, "item.ItemSchematics"            , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.TROPIC, "encTropica"                             , 1,   W, MT.Paper              , U*3);
 		OM.data(MD.FSP, "book"                                      , 1,   W, MT.Paper              , U*3);
-		OM.data(MD.SC2, "ItemHandBook"                              , 1,   W, MT.Paper              , U*3);
+		OM.data(MD.SC2, "ItemHandbook"                              , 1,   W, MT.Paper              , U*3);
 		OM.data(MD.SC2, "ItemLoreBook"                              , 1,   W, MT.Paper              , U*3);
 		
 		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));

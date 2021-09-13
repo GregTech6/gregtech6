@@ -391,9 +391,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.FSP, "book"                                ,   W, (byte)  1);
 		}
 		if (MD.SC2.mLoaded) {
-			BooksGT.BOOKS_NORMAL   .add(MD.SC2, "ItemHandBook"                        ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.SC2, "ItemHandbook"                        ,   W);
 			BooksGT.BOOKS_NORMAL   .add(MD.SC2, "ItemLoreBook"                        ,   W);
-			BooksGT.BOOK_REGISTER  .put(MD.SC2, "ItemHandBook"                        ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER  .put(MD.SC2, "ItemHandbook"                        ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER  .put(MD.SC2, "ItemLoreBook"                        ,   W, (byte)  1);
 		}
 		if (MD.HBM.mLoaded) {

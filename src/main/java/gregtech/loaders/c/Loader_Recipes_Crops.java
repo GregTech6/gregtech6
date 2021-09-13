@@ -255,7 +255,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(30), ZL_IS);
 		}});
-		addListener(new String[] {"seedRice", "seedApple", "seedGrape", "seedCabbage", "seedPurplePear"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedRice", "seedApple", "seedGrape", "seedTea", "seedCabbage", "seedPurplePear"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(40), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(40), ZL_IS);
