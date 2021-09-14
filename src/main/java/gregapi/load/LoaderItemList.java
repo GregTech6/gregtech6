@@ -811,6 +811,10 @@ public class LoaderItemList implements Runnable {
 		IL.SC2_Wrench                           .set(ST.make(MD.SC2, "ItemSpanner"                          , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.SC2_Wrench.wild(1));
 		IL.SC2_Hammer                           .set(ST.make(MD.SC2, "ItemHammer"                           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.SC2_Hammer.wild(1));
 		IL.SC2_Hammer_Gilded                    .set(ST.make(MD.SC2, "ItemBugHammer"                        , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.SC2_Hammer_Gilded.wild(1));
+		IL.SC2_Teapot_Empty                     .set(ST.make(MD.SC2, "ItemTeapot"                           , 1, 0));
+		IL.SC2_Teapot_Water                     .set(ST.make(MD.SC2, "ItemTeapot"                           , 1, 1));
+		IL.SC2_Teapot_Boiling                   .set(ST.make(MD.SC2, "ItemTeapot"                           , 1, 2));
+		IL.SC2_Teapot_Full                      .set(ST.make(MD.SC2, "ItemTeapot"                           , 1,12));
 		
 		
 		IL.A97_Hammer                           .set(ST.make(MD.A97, "wrench"                               , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.A97_Hammer.wild(1));

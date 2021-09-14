@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,8 @@ import java.util.List;
 import gregapi.GT_API_Proxy;
 import gregapi.computer.ITileEntityComputerizable;
 import gregapi.data.BI;
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
@@ -89,6 +91,12 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 		if (mIndex != 0) aNBT.setInteger("gt.sensor.index", mIndex);
 		if (mValues.length > 1) aNBT.setIntArray("gt.sensor.array", new int[mValues.length]);
 		return aNBT;
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 	}
 	
 	private boolean mHasToAddTimer = T;

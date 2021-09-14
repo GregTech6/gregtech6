@@ -645,6 +645,21 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Water             .make(1000), IL.AETHER_Bucket_Water          .get(1), IL.AETHER_Bucket_Empty.get(1));
 		FL.reg(FL.Milk              .make(1000), IL.AETHER_Bucket_Milk           .get(1), IL.AETHER_Bucket_Empty.get(1));
 		FL.reg(FL.SpDew             .make(1000), IL.NeLi_Bucket_Spectral_Dew     .get(1), ST.make(Items.bucket, 1, 0), F, T, T);
+		FL.reg(FL.Water             .make(5000), IL.SC2_Teapot_Water             .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
+		FL.reg(FL.DistW             .make(5000), IL.SC2_Teapot_Water             .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
+		FL.reg(FL.SpDew             .make(5000), IL.SC2_Teapot_Water             .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
+		FL.reg(FL.Water_Boiling     .make(5000), IL.SC2_Teapot_Boiling           .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
+		FL.reg(FL.Water_Hot         .make(5000), IL.SC2_Teapot_Boiling           .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
+		FL.reg(FL.Tea_Sweet         .make(5000), IL.SC2_Teapot_Full              .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
+		FL.reg(FL.Tea_Sweet         .make( 500), ST.make(MD.SC2, "ItemTeapot"    , 1, 3), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(1000), ST.make(MD.SC2, "ItemTeapot"    , 1, 4), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(1500), ST.make(MD.SC2, "ItemTeapot"    , 1, 5), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(2000), ST.make(MD.SC2, "ItemTeapot"    , 1, 6), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(2500), ST.make(MD.SC2, "ItemTeapot"    , 1, 7), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(3000), ST.make(MD.SC2, "ItemTeapot"    , 1, 8), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(3500), ST.make(MD.SC2, "ItemTeapot"    , 1, 9), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(4000), ST.make(MD.SC2, "ItemTeapot"    , 1,10), IL.SC2_Teapot_Empty.get(1), F, F, T);
+		FL.reg(FL.Tea_Sweet         .make(4500), ST.make(MD.SC2, "ItemTeapot"    , 1,11), IL.SC2_Teapot_Empty.get(1), F, F, T);
 		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Empty.get(1));

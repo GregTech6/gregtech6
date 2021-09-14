@@ -43,6 +43,7 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Steamcraft 2 Recipes.");
+		CR.delate(ST.make(MD.SC2, "ItemTeapot"  , 1, 1));
 		CR.delate(ST.make(MD.SC2, "ItemResource", 1, 2));
 		if (MD.FZ.mLoaded) {
 			RM.generify(ST.make(MD.FZ , "acid"        , 1, 0), ST.make(MD.SC2, "ItemResource", 1, 2));
