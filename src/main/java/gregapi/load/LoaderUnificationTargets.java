@@ -484,7 +484,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Au                     , MD.FSP, "steamcraftPlate", 3);
 		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Brass                  , MD.FSP, "steamcraftPlate", 4);
 		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Thaumium               , MD.FSP, "steamcraftPlate", 5);
+		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Terrasteel             , MD.FSP, "steamcraftPlate", 6);
+		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.ElvenElementium        , MD.FSP, "steamcraftPlate", 7);
+		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.FierySteel             , MD.FSP, "steamcraftPlate", 8);
 		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Pb                     , MD.FSP, "steamcraftPlate", 9);
+		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.VibrantAlloy           , MD.FSP, "steamcraftPlate",10);
+		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.Enderium               , MD.FSP, "steamcraftPlate",11);
 		OreDictManager.INSTANCE.setTarget(OP.plateSteamcraft, MT.GildedIron             , MD.FSP, "steamcraftPlate",12);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Al2O3                  , MD.SC2, "BlockSteamcraftOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.SC2, "BlockSteamcraftOre", 1);
