@@ -756,7 +756,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Mingrade               , MD.HBM, "item.powder_red_copper"          , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Mingrade               , MD.HBM, "item.ingot_red_copper"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Mingrade               , MD.HBM, "tile.block_red_copper"           , 0);
-		OreDictManager.INSTANCE.setTarget(OP.scrapGt        , MT.MeteoricIron           , MD.HBM, "item.fragment_meteorite"         , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Phosphorus             , MD.HBM, "item.powder_fire"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Iron                   , MD.HBM, "item.plate_iron"                 , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.MeteoricIron           , MD.HBM, "item.powder_meteorite_tiny"      , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.MeteoricIron           , MD.HBM, "item.powder_meteorite"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreSpace       , MT.Al2O3                  , MD.HBM, "tile.ore_meteor_aluminium"       , 0);
