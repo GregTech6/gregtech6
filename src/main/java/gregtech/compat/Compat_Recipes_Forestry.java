@@ -196,6 +196,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBronze"          , 1), OP.ingot.mat(MT.Bronze, 9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPeat"            , 1), OP.ingot.mat(MT.Peat, 9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRubber"          , 1), OP.ingot.mat(MT.Rubber, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPhosphor"        , 1), OP.dust.mat(MT.PhosphorusBlue, 9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAsh"             , 1), OP.dust.mat(MT.Ash, 9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBeeswax"         , 1), OP.dust.mat(MT.WaxBee, 9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRefractoryWax"   , 1), OP.dust.mat(MT.WaxRefractory, 9));
@@ -228,7 +229,6 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCacti"           , 1), ST.make(Blocks.cactus, 9, 0));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedScrap"           , 1), IL.IC2_Scrap.get(9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedResin"           , 1), IL.IC2_Resin.get(9, IL.Resin.get(9)));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPhosphor"        , 1), IL.FR_Phosphor.get(9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedFertilizer"      , 1), IL.FR_Fertilizer.get(9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMulch"           , 1), IL.FR_Mulch.get(9));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHoneycombs"      , 1), IL.FR_Comb_Honey.get(9));
@@ -270,7 +270,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Juicer       .addRecipe1(T, 16,   64                                     , IL.FR_Ice_Shard           .get(1), NF, FL.Ice.make(1000), ZL_IS);
 		
 		RM.Squeezer     .addRecipe1(T, 16,   64                                     , IL.FR_Ice_Shard           .get(1), NF, FL.Ice.make(1000), ZL_IS);
-		RM.Squeezer     .addRecipe1(T, 16,   64                                     , IL.FR_Phosphor            .get(1), NF, FL.Lava.make(1000), ZL_IS);
+		RM.Squeezer     .addRecipe1(T, 16,   64                                     , OP.dust.mat(MT.PhosphorusBlue, 1), NF, FL.Lava.make(1000), ZL_IS);
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis            .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), ZL_IS);
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis_Sticky     .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make(1000)), ZL_IS);
@@ -279,7 +279,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 //      RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Honey          .get(1), NF, FL.Honey   .make( 90), OM.dust(MT.WaxBee));
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Cocoa          .get(1)                           , OM.dust(MT.WaxBee), OM.dust(MT.Cocoa, U2));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  7000}          , IL.FR_Comb_Simmering      .get(1)                           , OM.dust(MT.WaxRefractory), IL.FR_Phosphor.get(2));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000,  7000}          , IL.FR_Comb_Simmering      .get(1)                           , OM.dust(MT.WaxRefractory), OP.dust.mat(MT.PhosphorusBlue, 2));
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Stringy        .get(1), NF, FL.Honey   .make( 40), IL.FR_Propolis.get(1));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000, 10000,  2000}   , IL.FR_Comb_Frozen         .get(1), NF, FL.Honey   .make( 70), OM.dust(MT.WaxBee, 3*U4), OM.dust(MT.Snow, U9), IL.FR_Pollen_Cluster_Crystalline.get(1));
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Dripping       .get(1), NF, FL.Honeydew.make(100), IL.FR_Propolis_Sticky.get(1));

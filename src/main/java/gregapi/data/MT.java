@@ -1112,6 +1112,9 @@ public class MT {
 	Graphite                = oredustdcmp   ( 9174, "Graphite"              , SET_DULL              , 128, 128, 128, 255, BLACKLISTED_SMELTER, BRITTLE, MORTAR, STICKS)                                                                                             .uumMcfg( 0, C              , 1*U)                                                                                                                          .qual(1, 5.0, 32, 2).setSmelting(C, U2).setBurning(Ash, U4).heat(1700, C.mBoilingPoint),
 	Niter                   = oredustcent   ( 8206, "Niter"                 , SET_FLINT             , 255, 200, 200, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, "Nitre")                                                                                 .uumMcfg( 0, KNO3           , 1*U, NaNO3            , 1*U)                                                                                                  .heat(607),
 	Phosphorus              = cent          ( 8208, "Phosphorus"            , SET_FLINT             , 255, 255,   0, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE, "Phosphorous")                                                                         .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
+	PhosphorusBlue          = cent          ( 8458, "Blue Phosphorus"       , SET_FLINT             , 155, 227, 228, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE)                                                                                        .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
+	PhosphorusRed           = cent          ( 8459, "Red Phosphorus"        , SET_FLINT             , 119,   4,  14, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE)                                                                                        .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
+	PhosphorusWhite         = cent          ( 8460, "White Phosphorus"      , SET_FLINT             , 236, 234, 221, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE)                                                                                        .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
 	Apatite                 = elec          ( 8209, "Apatite"               , SET_DIAMOND           , 120, 180, 250, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE)                                                                          .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, Cl               , 1*U)                                                                          .aspects(TC.MESSIS, 2),
 	Phosphorite             = elec          ( 8226, "Phosphorite"           , SET_DIAMOND           ,  50,  50,  65, 255, G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE)                                                                          .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, F                , 1*U)                                                                          .aspects(TC.MESSIS, 2),
 	Obsidian                = elec          ( 8214, "Obsidian"              , SET_STONE             ,  80,  50, 100, 255, G_STONE, STONE, BRITTLE, MORTAR, UNBURNABLE)                                                                                              .setMcfg(64, Mg             , 1*U, Fe               , 1*U, SiO2             , 6*U, O                , 4*U)                                                  .aspects(TC.TENEBRAE, 1, TC.IGNIS, 2, TC.TERRA, 2).setSmelting(Lava, U).heat(1300, 4000).qual(1, 3.0, 32, 3),
@@ -1781,6 +1784,9 @@ public class MT {
 			Monazite                .setOreMultiplier( 2);
 			Scabyst                 .setOreMultiplier( 2);
 			Phosphorus              .setOreMultiplier( 3);
+			PhosphorusBlue          .setOreMultiplier( 3);
+			PhosphorusRed           .setOreMultiplier( 3);
+			PhosphorusWhite         .setOreMultiplier( 3);
 			NaNO3                   .setOreMultiplier( 3);
 			KNO3                    .setOreMultiplier( 3);
 			Apatite                 .setOreMultiplier( 4);
@@ -1910,7 +1916,8 @@ public class MT {
 			Zn                      .put(MD.GT, COMMON_ORE);
 			Be                      .put(MD.GT, COMMON_ORE);
 			Th                      .put(MD.GT, COMMON_ORE);
-			Li                      .put(MD.GT);
+			Li                      .put(MD.GT, COMMON_ORE);
+			Phosphorus              .put(MD.GT, COMMON_ORE);
 			Craponite               .put(MD.GT);
 			NitroCarbon             .put(MD.GT);
 			NitroFuel               .put(MD.GT);
@@ -2020,7 +2027,7 @@ public class MT {
 			Peat                    .put(MD.FR);
 			PeatBituminous          .put(MD.FR);
 			Apatite                 .put(MD.FR);
-			Phosphorus              .put(MD.FR);
+			PhosphorusBlue          .put(MD.FR);
 			Biomass                 .put(MD.FR);
 			BioFuel                 .put(MD.FR);
 			Ethanol                 .put(MD.FR);
@@ -2132,6 +2139,8 @@ public class MT {
 			Mingrade                .put(MD.HBM).visDefault();
 			Asbestos                .put(MD.HBM, COMMON_ORE);
 			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
+			PhosphorusRed           .put(MD.HBM);
+			PhosphorusWhite         .put(MD.HBM);
 			Ta                      .put(MD.HBM);
 			Nd                      .put(MD.HBM);
 			
@@ -2706,11 +2715,14 @@ public class MT {
 			OREMATS.Columbite               .addOreByProducts(OREMATS.Tantalite         , OREMATS.Coltan            , MnO2                  , OREMATS.Ilmenite      );
 			OREMATS.Coltan                  .addOreByProducts(OREMATS.Tantalite         , OREMATS.Columbite         , MnO2                  , OREMATS.Ilmenite      );
 			
-			Apatite                         .addOreByProducts(Phosphorite               , Phosphorus                , FluoriteBlue          , PO4                   );
-			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   );
-			Phosphorite                     .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   );
-			P                               .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   );
-			PO4                             .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , Phosphorite           );
+			Apatite                         .addOreByProducts(Phosphorite               , PhosphorusBlue            , FluoriteBlue          , PO4                   );
+			Phosphorus                      .addOreByProducts(Phosphorite               , Apatite                   , FluoriteYellow        , PO4                   , PhosphorusRed         , PhosphorusWhite       );
+			PhosphorusBlue                  .addOreByProducts(Phosphorite               , Apatite                   , FluoriteBlue          , PO4                   , PhosphorusRed         , PhosphorusWhite       );
+			PhosphorusRed                   .addOreByProducts(Phosphorite               , Apatite                   , FluoriteRed           , PO4                   , PhosphorusBlue        , PhosphorusWhite       );
+			PhosphorusWhite                 .addOreByProducts(Phosphorite               , Apatite                   , FluoriteWhite         , PO4                   , PhosphorusRed         , PhosphorusBlue        );
+			Phosphorite                     .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   , PhosphorusRed         , PhosphorusWhite       );
+			P                               .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , PO4                   , PhosphorusRed         , PhosphorusWhite       );
+			PO4                             .addOreByProducts(Phosphorus                , Apatite                   , FluoriteYellow        , Phosphorite           , PhosphorusRed         , PhosphorusWhite       );
 			
 			OREMATS.Zeolite                 .addOreByProducts(OREMATS.Pollucite         , NaCl                      );
 			OREMATS.Pollucite               .addOreByProducts(OREMATS.Zeolite           , Cs                        , Rb                    );

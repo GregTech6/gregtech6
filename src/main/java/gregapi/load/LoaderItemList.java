@@ -1622,7 +1622,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Slabs                             .set(ST.make(MD.FR, "slabs"                                 , 1, 0));
 		IL.FR_Logs_Fireproof                    .set(ST.make(MD.FR, "logsFireproof"                         , 1, 0));
 		IL.FR_Logs                              .set(ST.make(MD.FR, "logs"                                  , 1, 0));
-		IL.FR_Phosphor                          .set(ST.make(MD.FR, "phosphor"                              , 1, 0), new OreDictItemData(MT.P, U));
+		IL.FR_Phosphor                          .set(ST.make(MD.FR, "phosphor"                              , 1, 0));
 		IL.FR_Royal_Jelly                       .set(ST.make(MD.FR, "royalJelly"                            , 1, 0), null, "dropRoyalJelly");
 		IL.FR_Propolis                          .set(ST.make(MD.FR, "propolis"                              , 1, 0), null, OD.listAllpropolis);
 		IL.FR_Propolis_Sticky                   .set(ST.make(MD.FR, "propolis"                              , 1, 1), null, OD.listAllpropolis);

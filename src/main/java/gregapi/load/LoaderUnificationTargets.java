@@ -715,6 +715,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.TungstenAlloy          , MD.RoC, "rotarycraft_item_gearcraft",112);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Corn                   , MD.PMP, "foodCornFlour", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Rice                   , MD.PMP, "foodCookedRice", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.PhosphorusBlue         , MD.FR, "phosphor", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Wood                   , MD.FR, "woodPulp", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , MD.FR, "beeswax", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxRefractory          , MD.FR, "refractoryWax", 0);
@@ -818,10 +819,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Niter                  , MD.HBM, "tile.ore_niter"                  , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Niter                  , MD.HBM, "item.niter"                      , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Niter                  , MD.HBM, "tile.block_niter"                , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Phosphorus             , MD.HBM, "tile.ore_nether_fire"            , 0); // RED Phosphorus!
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Phosphorus             , MD.HBM, "item.powder_fire"                , 0); // RED Phosphorus!
-	//  OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Phosphorus             , MD.HBM, "tile.block_white_phosphorus"     , 0); // WHITE Phosphorus!
-	//  OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Phosphorus             , MD.HBM, "item.ingot_phosphorus"           , 0); // WHITE Phosphorus!
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.PhosphorusRed          , MD.HBM, "tile.ore_nether_fire"            , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.PhosphorusRed          , MD.HBM, "item.powder_fire"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.PhosphorusRed          , MD.HBM, "tile.block_red_phosphorus"       , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.PhosphorusWhite        , MD.HBM, "item.ingot_phosphorus"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.PhosphorusWhite        , MD.HBM, "tile.block_white_phosphorus"     , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Cinnabar       , MD.HBM, "tile.ore_cinnebar"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.OREMATS.Cinnabar       , MD.HBM, "item.cinnebar"                   , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Coltan         , MD.HBM, "tile.ore_coltan"                 , 0);

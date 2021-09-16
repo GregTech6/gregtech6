@@ -212,12 +212,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedPurified   .dat(MT.P));
 			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedCentrifuged.dat(MT.P));
 			
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', oreRaw            .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', gem               .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', dust              .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushed           .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedPurified   .dat(MT.Phosphorus));
-			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedCentrifuged.dat(MT.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', oreRaw            .dat(ANY.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', gem               .dat(ANY.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', dust              .dat(ANY.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushed           .dat(ANY.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedPurified   .dat(ANY.Phosphorus));
+			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', crushedCentrifuged.dat(ANY.Phosphorus));
 			
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', rockGt            .dat(MT.Peat));
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', oreRaw            .dat(MT.Peat));
