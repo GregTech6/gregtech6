@@ -510,6 +510,9 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushed                     , crushedTiny               , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedPurified             , crushedPurifiedTiny       , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedCentrifuged          , crushedCentrifugedTiny    , 9, F));
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushed                     , gemFlawed                 , 1, F));
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedPurified             , gemFlawed                 , 1, F));
+		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushedCentrifuged          , gemFlawed                 , 1, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(ingot                       , nugget                    , 9, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(ingot                       , chunkGt                   , 4, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(billet                      , nugget                    , 6, F));

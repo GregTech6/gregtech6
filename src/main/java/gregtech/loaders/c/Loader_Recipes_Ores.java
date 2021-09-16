@@ -35,7 +35,6 @@ import gregapi.data.MT.OREMATS;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -112,7 +111,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(tMat, 1), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GrayVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(tMat, 9), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GrayVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		}
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Cr, MT.Ad, MT.Pyrite, MT.Andradite, MT.PigIron, MT.Steel, MT.DarkIron, MT.DeepIron, MT.ShadowIron, MT.MeteoricIron, MT.OREMATS.Ilmenite, MT.OREMATS.Wolframite, MT.OREMATS.Chromite, MT.OREMATS.Magnetite, MT.OREMATS.BasalticMineralSand, MT.OREMATS.GraniticMineralSand}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Fe2O3, MT.Cr, MT.Ad, MT.Pyrite, MT.Andradite, MT.PigIron, MT.Steel, MT.DarkIron, MT.DeepIron, MT.ShadowIron, MT.MeteoricIron, MT.OREMATS.Ilmenite, MT.OREMATS.Wolframite, MT.OREMATS.Chromite, MT.OREMATS.Magnetite, MT.OREMATS.BasalticMineralSand, MT.OREMATS.GraniticMineralSand}) {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(tMat, 1), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(tMat, 9), FL.array(MT.H2SO4.fluid(7* U2, T)), FL.array(MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)), crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2), crushedCentrifugedTiny.mat(tMat, 2));
 		}
@@ -331,8 +330,6 @@ public class Loader_Recipes_Ores implements Runnable {
 			
 			ItemStack tCrushed = crushed.mat(aMat, 1), tCrushedTiny = crushedTiny.mat(aMat, 1);
 			if (ST.valid(tCrushed) && ST.valid(tCrushedTiny)) {
-				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushed.dat(aMat)});
-				
 				ItemStack tByProductMercury = null, tByproductPersulfate = null;
 				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY   ) && ST.valid(tByProductMercury    = OM.crushedPurifiedTiny(tByProduct, 1))) break;
 				if (ST.invalid(tByProductMercury)                          && aMat.contains(WASHING_MERCURY   ))            tByProductMercury    = OM.crushedPurifiedTiny(aMat      , 1);
@@ -379,8 +376,6 @@ public class Loader_Recipes_Ores implements Runnable {
 			
 			ItemStack tPurified = crushedPurified.mat(aMat, 1), tPurifiedTiny = crushedPurifiedTiny.mat(aMat, 1);
 			if (ST.valid(tPurified) && ST.valid(tPurifiedTiny)) {
-				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushedPurified.dat(aMat)});
-				
 				if (ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES) {
 				RM.ic2_centrifuge(tPurified                 , (int)Math.min(5000, Math.abs(aMat.getMass() * 20)), OM.crushedCentrifuged(aMat, 1), OM.crushedCentrifugedTiny(UT.Code.select(1, aMat, aMat.mByProducts), 1));
 				RM.ic2_centrifuge(ST.amount(9,tPurifiedTiny), (int)Math.min(5000, Math.abs(aMat.getMass() * 20)), OM.crushedCentrifuged(aMat, 1), OM.crushedCentrifugedTiny(UT.Code.select(1, aMat, aMat.mByProducts), 1));
