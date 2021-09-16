@@ -444,10 +444,13 @@ public class GT_API extends Abstract_Mod {
 			MT.RedSteel.setLocal("Rad Style");
 			MT.BlueSteel.setLocal("Blu Style");
 			MT.BlackSteel.setLocal("Afroamerican Style");
+			MT.MeteoricSteel.setLocal("Metaur Style");
+			MT.MeteoricRedSteel.setLocal("Metaur Rad Style");
+			MT.MeteoricBlueSteel.setLocal("Metaur Blu Style");
+			MT.MeteoricBlackSteel.setLocal("Metaur Afroamerican Style");
 			MT.DamascusSteel.setLocal("Dank Style");
 			MT.VanadiumSteel.setLocal("Vandalium Style");
 			MT.TungstenSteel.setLocal("Wolf Style");
-			MT.MeteoricSteel.setLocal("Metaur Style");
 			MT.ShadowSteel.setLocal("Shade Style");
 			MT.Steeleaf.setLocal("Style Leave");
 			MT.Knightmetal.setLocal("Night Metal");

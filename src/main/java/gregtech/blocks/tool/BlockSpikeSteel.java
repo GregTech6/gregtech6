@@ -25,8 +25,8 @@ import java.util.List;
 
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.damage.DamageSources;
+import gregapi.data.ANY;
 import gregapi.data.LH;
-import gregapi.data.MT;
 import gregapi.util.WD;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,7 +37,7 @@ import net.minecraft.world.World;
 
 public class BlockSpikeSteel extends BlockBaseSpike {
 	public BlockSpikeSteel(String aNameInternal) {
-		super(aNameInternal, MT.BlueSteel, MT.RedSteel); // If you were looking for the regular Steel Spike, that one is with the Sharp Spikes.
+		super(aNameInternal, ANY.BlueSteel, ANY.RedSteel); // If you were looking for the regular Steel Spike, that one is with the Sharp Spikes.
 		LH.add(getUnlocalizedName()+ ".0.name" , "Blue Steel Wall Spike");
 		LH.add(getUnlocalizedName()+ ".1.name" , "Blue Steel Wall Spike");
 		LH.add(getUnlocalizedName()+ ".2.name" , "Blue Steel Wall Spike");

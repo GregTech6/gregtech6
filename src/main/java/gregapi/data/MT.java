@@ -1538,12 +1538,17 @@ public class MT {
 	SteelMagnetic           = metalmachnd   ( 8646, "SteelMagnetic"         , SET_MAGNETIC          , 128, 128, 128     , LAYERED, MORTAR, MAGNETIC_ACTIVE)                                                                                                         .uumMcfg( 0, Steel          , 1*U)                                                                                                                          .aspects(TC.METALLUM, 1, TC.ORDO, 1, TC.MAGNETO, 1).setBending(Steel, U).setCompressing(Steel   , U).setPulver(Steel, U).setSmashing(Steel, U).setSmelting(Steel, U).setWorking(Steel, U).setForging(Steel, U).steal(Steel      ).setLocal("Magnetic Steel"),
 	NeodymiumMagnetic       = metalmachnd   ( 8647, "NeodymiumMagnetic"     , SET_MAGNETIC          , 100, 100, 100     , LAYERED, MORTAR, MAGNETIC_ACTIVE)                                                                                                         .uumMcfg( 0, Nd             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 1, TC.MAGNETO, 3            ).setBending(Fe   , U).setCompressing(Nd      , U).setPulver(Nd   , U).setSmashing(Nd   , U).setSmelting(Nd   , U).setWorking(Nd   , U).setForging(Nd   , U).steal(Nd         ).setLocal("Magnetic Neodymium"),
 	DarkIron                = metalmachore  ( 8648, "Dark Iron"             , SET_DULL              ,  55,  40,  60     , MAGNETIC_PASSIVE, "FzDarkIron", "FZDarkIron")                                                                                             .setMcfg( 0, Fe             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.IGNIS, 1).steal(Fe).qual(3, 7.0, 384, 3).heat(Steel.mMeltingPoint + 200, Fe.mBoilingPoint),
-	MeteoricIron            = metalmachore  ( 8649, "Meteoric Iron"         , SET_SPACE             , 150, 140, 120     , MOLTEN, MAGNETIC_ACTIVE, RAILS, DECOMPOSABLE)                                                                                             .uumMcfg( 0, Fe             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MAGNETO, 1).steal(WroughtIron).qual(3, 7.0, 896, 2).heat(Fe.mMeltingPoint + 200, Fe.mBoilingPoint + 200),
-	MeteoricSteel           = alloymachine  ( 8650, "Meteoric Steel"        , SET_SPACE             , 130, 120, 100     , MOLTEN, MAGNETIC_ACTIVE, RAILS)                                                                                                           .uumMcfg( 0, MeteoricIron   , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MAGNETO, 1, TC.ORDO, 1).steal(Steel).qual(3, 8.0, 1280, 2).heat(Steel.mMeltingPoint + 200, Steel.mBoilingPoint + 200),
 	SteelGalvanized         = alloymachine  ( 8651, "SteelGalvanized"       , SET_COPPER            , 250, 240, 240     , COATED, CENTRIFUGE).qual(3,  7.0, 768, 2)                                                                                                 .setMcfg( 9, Steel          , 9*U, Zn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.SANO, 1).setSmelting(Steel, U).setForging(Steel, U).setLocal("Galvanized Steel"),
 	TungstenSintered        = alloymachnd   ( 8652, "TungstenSintered"      , SET_METALLIC          ,  70,  70,  70     , RAILS, UNBURNABLE).qual(3, 8.0, 5120, 3)                                                                                                  .uumMcfg( 0, W              , 1*U)                                                                                                                          .aspects(TC.METALLUM, 3, TC.TUTAMEN, 1).steal(W).setAllToTheOutputOf(W).setForging(null, U).setCutting(null, U).setWorking(null, U).setSmashing(null, U).setLocal("Sintered Tungsten"),
 	TitaniumGold            = alloymachine  ( 8654, "Titanium-Gold"                                 , 222, 222, 255     , MOLTEN).qual(3, 12.0, 5120, 4)                                                                                                            .uumAloy( 0, Ti             , 3*U, Au               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 3, TC.LUCRUM, 1),
 	Ta4HfC5                 = alloymachine  ( 8802, "Tantalum Hafnium Carbide"                      ,  32, 128,  32     , UNBURNABLE)                                                                                                                               .uumAloy( 0, Ta             , 4*U, Hf               , 1*U, C                , 5*U)                                                                          .aspects(TC.METALLUM, 2, TC.GELUM, 2).qual(2).heat(4263),
+	
+	
+	MeteoricIron            = metalmachore  ( 8649, "Meteoric Iron"         , SET_SPACE             , 150, 140, 120     , MOLTEN, MAGNETIC_ACTIVE, RAILS, DECOMPOSABLE)                                                                                             .uumMcfg( 0, Fe             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MAGNETO, 1).steal(WroughtIron).qual(3, 7.0, 896, 2).heat(Fe.mMeltingPoint + 200, Fe.mBoilingPoint + 200),
+	MeteoricSteel           = alloymachine  ( 8650, "Meteoric Steel"        , SET_SPACE             , 130, 120, 100     , MOLTEN, MAGNETIC_ACTIVE, RAILS)                                                                                                           .uumMcfg( 0, MeteoricIron   , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.MAGNETO, 1, TC.ORDO, 1).steal(Steel).qual(3, 8.0, 1280, 2).heat(Steel.mMeltingPoint + 200, Steel.mBoilingPoint + 200),
+	MeteoricBlackSteel      = alloymachine  ( 8690, "Meteoric Black Steel"                          ,  85,  85,  85     , MOLTEN, MAGNETIC_ACTIVE).qual(3,  8.0, 1280, 2)                                                                                           .uumAloy( 0, Ni             , 1*U, BlackBronze      , 1*U, MeteoricSteel    , 3*U)                                                                          .aspects(TC.METALLUM, 2, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1),
+	MeteoricBlueSteel       = alloymachine  ( 8691, "Meteoric Blue Steel"                           ,  95,  95, 135     , MOLTEN, MAGNETIC_ACTIVE).qual(3,  8.5, 1408, 2)                                                                                           .setAloy( 0, SterlingSilver , 1*U, BismuthBronze    , 1*U, MeteoricSteel    , 2*U, MeteoricBlackSteel,4*U)                                                  .aspects(TC.METALLUM, 2, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1),
+	MeteoricRedSteel        = alloymachine  ( 8692, "Meteoric Red Steel"                            , 135,  95,  95     , MOLTEN, MAGNETIC_ACTIVE).qual(3,  9.0, 1536, 2)                                                                                           .uumAloy( 0, RoseGold       , 1*U, Brass            , 1*U, MeteoricSteel    , 2*U, MeteoricBlackSteel,4*U)                                                  .aspects(TC.METALLUM, 2, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1),
 	
 	
 	RedAlloy                = alloy         ( 8660, "Red Alloy"             , SET_COPPER            , 200,   0,   0     , MORTAR, WIRES, FURNACE, EXTRUDER_SIMPLE, MOLTEN)                                                                                          .uumAloy( 1, Cu             , 1*U, Redstone         , 4*U)                                                                                                  .aspects(TC.MACHINA, 3).heat(1400, Cu.mBoilingPoint),
@@ -2124,6 +2129,7 @@ public class MT {
 			
 			Pu_238                  .put(MD.HBM).visDefault();
 			Pu_240                  .put(MD.HBM).visDefault();
+			Mingrade                .put(MD.HBM).visDefault();
 			Asbestos                .put(MD.HBM, COMMON_ORE);
 			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
 			Ta                      .put(MD.HBM);
@@ -2486,6 +2492,7 @@ public class MT {
 			Hepatizon               .addEnchantmentForTools(Enchantment.smite, 2);
 			BlackBronze             .addEnchantmentForTools(Enchantment.smite, 2);
 			RedSteel                .addEnchantmentForTools(Enchantment.smite, 3);
+			MeteoricRedSteel        .addEnchantmentForTools(Enchantment.smite, 3);
 			Au                      .addEnchantmentForTools(Enchantment.smite, 3);
 			TitaniumGold            .addEnchantmentForTools(Enchantment.smite, 3);
 			Electrum                .addEnchantmentForTools(Enchantment.smite, 3);
@@ -2547,8 +2554,11 @@ public class MT {
 			DeepIron                .addEnchantmentForTools(Enchantment.sharpness, 3);
 			ShadowIron              .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlackSteel              .addEnchantmentForTools(Enchantment.sharpness, 3);
+			MeteoricBlackSteel      .addEnchantmentForTools(Enchantment.sharpness, 3);
 			RedSteel                .addEnchantmentForTools(Enchantment.sharpness, 3);
+			MeteoricRedSteel        .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlueSteel               .addEnchantmentForTools(Enchantment.sharpness, 3);
+			MeteoricBlueSteel       .addEnchantmentForTools(Enchantment.sharpness, 3);
 			Ti                      .addEnchantmentForTools(Enchantment.sharpness, 3);
 			TitaniumGold            .addEnchantmentForTools(Enchantment.sharpness, 3);
 			TungstenAlloy           .addEnchantmentForTools(Enchantment.sharpness, 3);
@@ -2977,9 +2987,6 @@ public class MT {
 			}
 			Ultimet                 .addAlloyingRecipe(new OreDictConfigurationComponent(36, OM.stack(Co                            ,20*U), OM.stack(Nichrome           , 5*U), OM.stack(Cr, 7*U), OM.stack(Mo, 4*U)));
 			StainlessSteel          .addAlloyingRecipe(new OreDictConfigurationComponent(36, OM.stack(WroughtIron                   ,24*U), OM.stack(Nichrome           , 5*U), OM.stack(Cr, 3*U), OM.stack(Mn, 4*U)));
-			BlackSteel              .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Ni                            , 1*U), OM.stack(BlackBronze        , 1*U), OM.stack(MeteoricSteel, 3*U)));
-			BlueSteel               .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(SterlingSilver                , 1*U), OM.stack(BismuthBronze      , 1*U), OM.stack(MeteoricSteel, 2*U), OM.stack(BlackSteel , 4*U)));
-			RedSteel                .addAlloyingRecipe(new OreDictConfigurationComponent( 8, OM.stack(RoseGold                      , 1*U), OM.stack(Brass              , 1*U), OM.stack(MeteoricSteel, 2*U), OM.stack(BlackSteel , 4*U)));
 			TungstenSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(MeteoricSteel                 , 1*U), OM.stack(W                  , 1*U)));
 			TungstenSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(MeteoricSteel                 , 1*U), OM.stack(TungstenSintered   , 1*U)));
 			TungstenSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(Steel                         , 1*U), OM.stack(TungstenSintered   , 1*U)));
@@ -2989,6 +2996,7 @@ public class MT {
 			ObsidianSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Steel                         , 1*U), OM.stack(Lava               , 9*U)));
 			Alumite                 .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(Al                            , 5*U), OM.stack(WroughtIron        , 2*U), OM.stack(Lava,18*U)));
 			Hepatizon               .addAlloyingRecipe(new OreDictConfigurationComponent(24, OM.stack(Bronze                        , 8*U), OM.stack(Sn                 , 1*U), OM.stack(RoseGold,15*U)));
+			RedAlloy                .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(Mingrade                      , 2*U), OM.stack(Redstone           , 3*U)));
 			RedAlloy                .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(AnnealedCopper                , 1*U), OM.stack(Redstone           , 4*U)));
 			RoseGold                .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Au                 , 4*U)));
 			SterlingSilver          .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 1*U), OM.stack(Ag                 , 4*U)));

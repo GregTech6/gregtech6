@@ -39,21 +39,24 @@ public class Enchantment_EnderDamage extends EnchantmentDamage {
 	public Enchantment_EnderDamage() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Disjunction", 15), 2, -1);
 		LH.add(getName(), "Disjunction");
-		MT.Hg               .addEnchantmentForTools(this, 3);
-		MT.Ag               .addEnchantmentForTools(this, 4);
-		MT.RedMeteor        .addEnchantmentForTools(this, 3);
-		MT.Electrum         .addEnchantmentForTools(this, 3);
-		MT.BlackBronze      .addEnchantmentForTools(this, 2);
-		MT.BlackSteel       .addEnchantmentForTools(this, 2);
-		MT.RedSteel         .addEnchantmentForTools(this, 1);
-		MT.BlueSteel        .addEnchantmentForTools(this, 3);
-		MT.ElectrumFlux     .addEnchantmentForTools(this, 3);
-		MT.Meutoite         .addEnchantmentForTools(this, 3);
-		MT.SterlingSilver   .addEnchantmentForTools(this, 4);
-		MT.AstralSilver     .addEnchantmentForTools(this, 5);
-		MT.Desichalkos      .addEnchantmentForTools(this, 6);
-		MT.VibraniumSilver  .addEnchantmentForTools(this,10);
-		MT.Infinity         .addEnchantmentForTools(this,10);
+		MT.Hg                .addEnchantmentForTools(this, 3);
+		MT.Ag                .addEnchantmentForTools(this, 4);
+		MT.RedMeteor         .addEnchantmentForTools(this, 3);
+		MT.Electrum          .addEnchantmentForTools(this, 3);
+		MT.BlackBronze       .addEnchantmentForTools(this, 2);
+		MT.BlackSteel        .addEnchantmentForTools(this, 2);
+		MT.MeteoricBlackSteel.addEnchantmentForTools(this, 2);
+		MT.RedSteel          .addEnchantmentForTools(this, 1);
+		MT.MeteoricRedSteel  .addEnchantmentForTools(this, 1);
+		MT.BlueSteel         .addEnchantmentForTools(this, 3);
+		MT.MeteoricBlueSteel .addEnchantmentForTools(this, 3);
+		MT.ElectrumFlux      .addEnchantmentForTools(this, 3);
+		MT.Meutoite          .addEnchantmentForTools(this, 3);
+		MT.SterlingSilver    .addEnchantmentForTools(this, 4);
+		MT.AstralSilver      .addEnchantmentForTools(this, 5);
+		MT.Desichalkos       .addEnchantmentForTools(this, 6);
+		MT.VibraniumSilver   .addEnchantmentForTools(this,10);
+		MT.Infinity          .addEnchantmentForTools(this,10);
 		INSTANCE = this;
 	}
 	

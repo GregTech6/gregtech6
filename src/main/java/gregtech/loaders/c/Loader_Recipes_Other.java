@@ -87,6 +87,10 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		}
 		
+		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu   , 1), dust     .mat(MT.Redstone, 1), dust     .mat(MT.Mingrade, 2));
+		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu   , 1), dustSmall.mat(MT.Redstone, 1), dustSmall.mat(MT.Mingrade, 2));
+		RM.Mixer.addRecipe2(T, 16,  8, dustTiny .mat(MT.Cu   , 1), dustTiny .mat(MT.Redstone, 1), dustTiny .mat(MT.Mingrade, 2));
+		
 		for (OreDictMaterial tSapphire : ANY.Sapphire.mToThis) {
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Redstone, 5*U ), OM.dust(MT.EnergiumRed , 9*U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone, 5*U9), OM.dust(MT.EnergiumRed ,   U));
@@ -96,8 +100,8 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis) {
-			RM.Mixer   .addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), OP.dust.mat(MT.RefinedObsidian, 1));
-			RM.Injector.addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
+		RM.Mixer   .addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), OP.dust.mat(MT.RefinedObsidian, 1));
+		RM.Injector.addRecipe2(T, 16, 256, OP.dust.mat(MT.Obsidian, 1), OP.dust.mat(tMat, 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedObsidian, 1));
 		}
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis)
 		RM.Injector.addRecipe1(T, 16, 256, OP.dust.mat(tMat              , 1), MT.Ge.liquid(U, T), NF, OP.ingot.mat(MT.RefinedGlowstone, 1));
@@ -346,6 +350,7 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(x = dust.mat(MT.Fe, 1), x, y);
 		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Sn        , 1));
 		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Zn        , 1));
+		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Redstone  , 1));
 		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Mn        , 1));
 		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Bronze    , 1));
 		CR.remove(dust.mat(MT.Au         , 1), dust.mat(MT.Bronze    , 1));

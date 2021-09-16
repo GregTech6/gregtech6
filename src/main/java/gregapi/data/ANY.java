@@ -57,6 +57,9 @@ public class ANY {
 	Fe              = any("Any Iron"            ),
 	Iron            = any("Any Iron Or Steel"   ),
 	Steel           = any("Any Iron-Steel"      ),
+	BlackSteel      = any("Any Black Steel"     ),
+	BlueSteel       = any("Any Blue Steel"      ),
+	RedSteel        = any("Any Red Steel"       ),
 	Cu              = any("Any Copper"          ),
 	Ash             = any("Any Ashes"           ),
 	C               = any("Any Carbon"          ),
@@ -107,6 +110,9 @@ public class ANY {
 		Fe              .stealLooks(MT.Fe             ).steal(MT.Fe             ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe             ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.IronCast, MT.IronCompressed, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori);
 		Iron            .stealLooks(MT.Fe             ).steal(MT.Fe             ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe             ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.IronCast, MT.IronCompressed, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori, MT.Steel, MT.Knightmetal, MT.MeteoricSteel);
 		Steel           .stealLooks(MT.Steel          ).steal(MT.Steel          ).setLocal("Steel"              ).setAllToTheOutputOf(MT.Steel          ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.Steel, MT.Knightmetal, MT.MeteoricSteel);
+		BlackSteel      .stealLooks(MT.BlackSteel     ).steal(MT.BlackSteel     ).setLocal("Black Steel"        ).setAllToTheOutputOf(MT.BlackSteel     ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.BlackSteel, MT.MeteoricBlackSteel);
+		BlueSteel       .stealLooks(MT.BlueSteel      ).steal(MT.BlueSteel      ).setLocal("Blue Steel"         ).setAllToTheOutputOf(MT.BlueSteel      ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.BlueSteel, MT.MeteoricBlueSteel);
+		RedSteel        .stealLooks(MT.RedSteel       ).steal(MT.RedSteel       ).setLocal("Red Steel"          ).setAllToTheOutputOf(MT.RedSteel       ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.RedSteel, MT.MeteoricRedSteel);
 		Cu              .stealLooks(MT.Cu             ).steal(MT.Cu             ).setLocal("Copper"             ).setAllToTheOutputOf(MT.Cu             ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.Cu, MT.AnnealedCopper);
 		Ash             .stealLooks(MT.Ash            ).steal(MT.Ash            ).setLocal("Ashes"              ).setAllToTheOutputOf(MT.Ash            ).put(BRITTLE                                ).addReRegistrationToThis(MT.Ash, MT.DarkAsh, MT.VolcanicAsh);
 		C               .stealLooks(MT.C              ).steal(MT.C              ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C              ).put(                                       ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene);
