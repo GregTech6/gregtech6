@@ -157,11 +157,11 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onServerTickPost(boolean aFirst) {
+		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord), tHash = mContent.hashCode();
+		
 		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord+PX_P[2], yCoord+PX_P[2], zCoord+PX_P[2], PX_N[4], 1, PX_N[4]));
 		
 		ItemStack tStack = slot(0);
-		
-		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
 		
 		if (ST.valid(tStack)) {
 			OreDictItemData tData = OM.anydata_(tStack);
@@ -196,6 +196,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		OreDictMaterial tPreferredAlloy = null;
 		IOreDictConfigurationComponent tPreferredRecipe = null;
 		long tMaxConversions = 0;
+		boolean tNewContent = (tHash != mContent.hashCode());
 		
 		for (OreDictMaterialStack tMaterial : mContent) {
 			if (mTemperature >= tMaterial.mMaterial.mMeltingPoint) {
@@ -270,10 +271,10 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				setToAir();
 				return;
-			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <  tMaterial.mMaterial.mMeltingPoint) {
+			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && (oTemperature <  tMaterial.mMaterial.mMeltingPoint || tNewContent)) {
 				mContent.remove(i--);
 				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(tToBeAdded);
-			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && oTemperature >= tMaterial.mMaterial.mMeltingPoint) {
+			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && (oTemperature >= tMaterial.mMaterial.mMeltingPoint || tNewContent)) {
 				mContent.remove(i--);
 				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(tToBeAdded);
 			}

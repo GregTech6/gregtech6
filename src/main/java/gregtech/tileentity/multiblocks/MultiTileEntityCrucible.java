@@ -197,7 +197,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onServerTickPost(boolean aFirst) {
-		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
+		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord), tHash = mContent.hashCode();
 		
 		if (!checkStructure(F)) {
 			if (SERVER_TIME % 10 == 0) {if (mTemperature > tTemperature) mTemperature--; if (mTemperature < tTemperature) mTemperature++;}
@@ -242,6 +242,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		OreDictMaterial tPreferredAlloy = null;
 		IOreDictConfigurationComponent tPreferredRecipe = null;
 		long tMaxConversions = 0;
+		boolean tNewContent = (tHash != mContent.hashCode());
 		
 		for (OreDictMaterialStack tMaterial : mContent) {
 			if (mTemperature >= tMaterial.mMaterial.mMeltingPoint) {
@@ -316,10 +317,10 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				setToAir();
 				return;
-			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <  tMaterial.mMaterial.mMeltingPoint) {
+			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && (oTemperature <  tMaterial.mMaterial.mMeltingPoint || tNewContent)) {
 				mContent.remove(i--);
 				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(tToBeAdded);
-			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && oTemperature >= tMaterial.mMaterial.mMeltingPoint) {
+			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && (oTemperature >= tMaterial.mMaterial.mMeltingPoint || tNewContent)) {
 				mContent.remove(i--);
 				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(tToBeAdded);
 			}
