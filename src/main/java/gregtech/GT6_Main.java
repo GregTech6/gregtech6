@@ -309,6 +309,7 @@ public class GT6_Main extends Abstract_Mod {
 		new Compat_Recipes_Highlands            (MD.HiL           , this);
 		new Compat_Recipes_Mariculture          (MD.MaCu          , this);
 		new Compat_Recipes_ImmersiveEngineering (MD.IE            , this);
+		new Compat_Recipes_HBM                  (MD.HBM           , this);
 		new Compat_Recipes_Reika                (MD.DRGN          , this);
 		new Compat_Recipes_Voltz                (MD.VOLTZ         , this);
 		new Compat_Recipes_Mekanism             (MD.Mek           , this);

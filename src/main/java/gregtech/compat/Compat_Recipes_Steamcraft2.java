@@ -59,7 +59,7 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 		
 		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		
-		RM.packunpack(ST.make(MD.SC2, "ItemSlimeRubber", 1, 0), 9, ST.make(MD.SC2, "BlockCongealedSlime", 1, 0));
+		RM.packunpack(ST.make(MD.SC2, "ItemSlimeRubber", 9, 0), ST.make(MD.SC2, "BlockCongealedSlime", 1, 0));
 		
 		if (IL.SC2_Hammer.exists()) {
 			ArrayListNoNulls tRecipesToRemove = new ArrayListNoNulls();

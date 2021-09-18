@@ -65,8 +65,9 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	public MultiItemBumbles() {
 		super(MD.GT.mID, "gt.multiitem.bumblebee");
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Bumblebees", this, (short)2));
+		if (!SHOW_BUMBLEBEES) ST.hide(this);
 	}
-
+	
 	@Override
 	public void addItems() {
 		make(    0, "Wild Bumblebee"            , "");
@@ -495,9 +496,9 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tTooltip = getFlowerTooltip(ST.meta_(aStack));
 		if (UT.Code.stringValid(tTooltip)) aList.add(LH.Chat.CYAN + "Requirement: " + LH.Chat.WHITE + tTooltip);
-		
-		NBTTagCompound aBumbleTag = Util.getBumbleTag(aStack);
-		if (aBumbleTag.hasNoTags()) {
+		NBTTagCompound aBumbleTag = null;
+		if (aStack.hasTagCompound()) aBumbleTag = aStack.getTagCompound().getCompoundTag("gt.bumble");
+		if (aBumbleTag == null || aBumbleTag.hasNoTags()) {
 			aList.add(LH.Chat.BLINKING_RED + "No Genetic Data to display");
 			aList.add(LH.Chat.CYAN + "Generates random 'Outsider-Plains-Biome' Genes when used");
 		} else {

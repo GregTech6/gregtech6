@@ -30,7 +30,7 @@ Did Unification Targets and Wood Dictionary as always. Weirdly it did not have a
 Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting one.
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
-[FIXED] Crucibles should be able to melt Snow properly now.
+[FIXED] Crucibles should be able to melt Snow properly now. This Fix should leave melting Plastic and Rubber working the same way they did before.
 [CHANGED] IC2 Circuits are now made from GT6 Circuits.
 [CHANGED] Villagers that get converted to Zombies now stay persistent and keep their Name Tags.
 [CHANGED] Desh now has a different Melting and Boiling Point.

@@ -498,6 +498,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , MD.SC2, "BlockSteamcraftOre", 4);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.S                      , MD.SC2, "BlockSteamcraftOre", 5);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.PO4                    , MD.SC2, "BlockSteamcraftOre", 6);
+		OreDictManager.INSTANCE.setTarget(OP.spring         , MT.Fe                     , MD.SC2, "ItemIronParts" , 2);
+		OreDictManager.INSTANCE.setTarget(OP.bolt           , MT.Fe                     , MD.SC2, "ItemIronParts" , 5);
+		OreDictManager.INSTANCE.setTarget(OP.round          , MT.Fe                     , MD.SC2, "ItemIronParts" , 7);
+		OreDictManager.INSTANCE.setTarget(OP.screw          , MT.Fe                     , MD.SC2, "ItemIronParts" , 8);
+		OreDictManager.INSTANCE.setTarget(OP.spring         , MT.Steel                  , MD.SC2, "ItemSteelParts", 2);
+		OreDictManager.INSTANCE.setTarget(OP.bolt           , MT.Steel                  , MD.SC2, "ItemSteelParts", 5);
+		OreDictManager.INSTANCE.setTarget(OP.round          , MT.Steel                  , MD.SC2, "ItemSteelParts", 7);
+		OreDictManager.INSTANCE.setTarget(OP.screw          , MT.Steel                  , MD.SC2, "ItemSteelParts", 8);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.IronMagnetic           , MD.SC2, "ItemMachinePart", 3);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.IronCast               , MD.SC2, "ItemMetalNugget", 7);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.IronCast               , MD.SC2, "ItemIngot", 7);
@@ -925,6 +933,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Ce                     , MD.HBM, "item.powder_cerium_tiny"         , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ce                     , MD.HBM, "item.powder_cerium"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Ce                     , MD.HBM, "item.fragment_cerium"            , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Br                     , MD.HBM, "item.powder_bromine"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.WaxBee                 , MD.GrC_Bees, "grcbees.BeesWax", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Eudialyte              , MD.TROPIC, "tile.oreEudialyte", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Zircon                 , MD.TROPIC, "tile.oreZircon", 0);
