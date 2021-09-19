@@ -197,9 +197,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateLapis"                 , "plateGemLapis");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateLazurite"              , "plateGemLazurite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateSodalite"              , "plateGemSodalite");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateSteamcraftElementium"  , "plateSteamcraftElvenElementium");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateSteamcraftFiery"       , "plateSteamcraftFierySteel");
-		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateSteamcraftVibrant"     , "plateSteamcraftVibrantAlloy");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("stoneAndesitePolished"      , "stonePolishedAndesite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("stoneAndesiteChiseled"      , "stoneChiseledAndesite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("stoneAndesiteBricks"        , "stoneBricksAndesite");
