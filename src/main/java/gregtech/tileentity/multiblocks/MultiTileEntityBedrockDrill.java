@@ -92,7 +92,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	public boolean checkStructure2() {
 		if (yCoord < 5) return F;
 		mList.clear();
-		boolean tSuccess = T, tBedrock = T;
+		boolean tSuccess = T, tBedrock = T, tOverride = F;
 		
 		for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
 			Block tBlock = getBlockOffset(i, -5, j);
@@ -102,6 +102,12 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			} else if (tBlock == BlocksGT.oreSmallBedrock) {
 				OreDictMaterialStack tMaterial = BlocksGT.oreSmallBedrock.getMaterialAtSide(worldObj, xCoord+i, yCoord-5, zCoord+j, SIDE_TOP);
 				mList.add(tMaterial.mMaterial);
+			} else if (IL.HBM_Bedrock_Coltan.equal(tBlock)) {
+				mList.add(MT.OREMATS.Coltan);
+				mList.add(MT.OREMATS.Coltan);
+				mList.add(MT.OREMATS.Columbite);
+				mList.add(MT.OREMATS.Tantalite);
+				tOverride = T;
 			} else if (!WD.bedrock(tBlock)) {
 				tBedrock = F;
 			}
@@ -115,24 +121,27 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			}
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,  0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 		}
-		return tSuccess && tBedrock;
+		return tSuccess && (tBedrock || tOverride);
 	}
 	
 	static {
 		LH.add("gt.tooltip.multiblock.bedrockdrill.1", "3x3 Base of Bedrock Mining Drill Heads centered ontop Bedrock Ores");
 		LH.add("gt.tooltip.multiblock.bedrockdrill.2", "Full 3x4x3 of Dense Titanium Walls ontop");
 		LH.add("gt.tooltip.multiblock.bedrockdrill.3", "Main top-center inside the Titanium Tower facing upwards");
-		LH.add("gt.tooltip.multiblock.bedrockdrill.4", "Requires Lubricant, Power and a place on Bedrock to mine");
+		LH.add("gt.tooltip.multiblock.bedrockdrill.4", "Requires Lubricant, Power and a 3x3 place on Bedrock(-Ore) to mine");
+		LH.add("gt.tooltip.multiblock.bedrockdrill.5", "Also works on HBM's Bedrock Coltan, even if it's not a full 3x3 of Bedrock");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.1"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.3"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(Chat.CYAN          + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.1"));
+		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
+		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.3"));
+		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
+		if (IL.HBM_Bedrock_Coltan.exists())
+		aList.add(Chat.BLINKING_CYAN + LH.get("gt.tooltip.multiblock.bedrockdrill.5"));
+		aList.add(Chat.GREEN         + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t (up to 32768 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t total)");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

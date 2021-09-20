@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_LOSSLESS) + " (" + TD.Energy.LU.getChatFormat()+TD.Energy.LU.getLocalisedNameShort()+Chat.CYAN + ")");
+		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_LOSSLESS) + " (" + TD.Energy.LU.getLocalisedChatNameShort()+Chat.CYAN + ")");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

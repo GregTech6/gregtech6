@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -106,8 +106,8 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.7"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.lightningrod.8"));
 		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.lightningrod.9"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + " " + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
-		aList.add(Chat.WHITE    + mCapacity + " " + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.GRAY + " per Lightning Strike");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + " " + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
+		aList.add(Chat.WHITE    + mCapacity + " " + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.GRAY + " per Lightning Strike");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -47,7 +47,7 @@ public class MultiTileEntityZPM extends TileEntityBase08Battery implements IMTE_
 			super.addToolTips(aList, aStack, aF3_H);
 		} else {
 			aList.add(LH.Chat.CYAN + "An Ancient Artifact of huge Power");
-			aList.add(LH.Chat.WHITE + "Capacity: " + mCapacity + mType.getChatFormat() + mType.getLocalisedNameShort());
+			aList.add(LH.Chat.WHITE + "Capacity: " + mCapacity + mType.getLocalisedChatNameShort());
 		}
 	}
 	

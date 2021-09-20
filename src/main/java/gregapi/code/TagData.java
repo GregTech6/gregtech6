@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -85,12 +85,20 @@ public final class TagData implements ICondition<ITagDataContainer> {
 		return LH.get(getTranslatableNameLong(), mName);
 	}
 	
+	public String getLocalisedChatNameLong() {
+		return getChatFormat() + getLocalisedNameLong();
+	}
+	
 	public String getTranslatableNameShort() {
 		return "gt.td.short."+mName.toLowerCase();
 	}
 	
 	public String getLocalisedNameShort() {
 		return LH.get(getTranslatableNameShort(), mName);
+	}
+	
+	public String getLocalisedChatNameShort() {
+		return getChatFormat() + getLocalisedNameShort();
 	}
 	
 	public String getChatFormat() {

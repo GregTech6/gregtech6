@@ -183,7 +183,7 @@ public enum IL implements IItemContainer {
 	IE_Creosote_Bottle, IE_Creosote_Bucket, IE_Hammer, IE_Slag, IE_Blueprint_Projectiles_Common, IE_Blueprint_Projectiles_Specialized, IE_Blueprint_Projectiles_Electrodes, IE_Crate, IE_Treated_Planks, IE_Treated_Slab, IE_Treated_Stairs,
 	SC2_Wrench, SC2_Hammer, SC2_Hammer_Gilded, SC2_Teapot_Empty, SC2_Teapot_Water, SC2_Teapot_Boiling, SC2_Teapot_Full,
 	FZ_Sludge,
-	HBM_Mercury_Bottle, HBM_Mercury_Drop,
+	HBM_Mercury_Bottle, HBM_Mercury_Drop, HBM_Bedrock_Coltan,
 	ICBM_Concrete,
 	IC2_Debug,
 	IC2_Fertilizer, IC2_Grin_Powder, IC2_Spray_WeedEx,

@@ -177,7 +177,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.8"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.9"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.10"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "256 to 1024 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "256 to 1024 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

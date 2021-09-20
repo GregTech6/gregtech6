@@ -250,7 +250,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				} else {
 					for (TagData tEnergyType : tEnergyStats.getEnergyTypes(aStack)) {
 						long tCapacity = tEnergyStats.getEnergyCapacity(tEnergyType, aStack);
-						aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getChatFormat() + tEnergyType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack));
+						aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(tCapacity, tEnergyStats.getEnergyStored(tEnergyType, aStack))) + " / " + UT.Code.makeString(tCapacity) + " " + tEnergyType.getLocalisedChatNameShort() + LH.Chat.WHITE + " - Size: " + tEnergyStats.getEnergySizeInputRecommended(tEnergyType, aStack));
 					}
 				}
 			}
