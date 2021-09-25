@@ -835,6 +835,10 @@ public class ST {
 			if (IL.SC2_Teapot_Empty.equal(aStack, F, T)) return NI;
 			if (IL.SC2_Teapot_Empty.equal(aStack, T, T)) return IL.SC2_Teapot_Empty.get(1);
 		}
+		if (IL.SC2_Teacup_Empty.exists()) {
+			if (IL.SC2_Teacup_Empty.equal(aStack, F, T)) return NI;
+			if (IL.SC2_Teacup_Empty.equal(aStack, T, T)) return IL.SC2_Teacup_Empty.get(1);
+		}
 		if (aCheckIFluidContainerItems && item_(aStack) instanceof IFluidContainerItem && ((IFluidContainerItem)item_(aStack)).getCapacity(aStack) > 0) {
 			ItemStack tStack = amount(1, aStack);
 			((IFluidContainerItem)item_(aStack)).drain(tStack, Integer.MAX_VALUE, T);
