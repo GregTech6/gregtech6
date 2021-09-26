@@ -757,7 +757,7 @@ Due to me experimenting with Rendering and not wanting to go back on it (way too
 [CHANGED] Bars Block now lets Items, XP Orbs and Projectiles (Arrows and such, somehow Enderpearls and Snowballs don't work) go through from all directions, making it more useful for Mob Grinders and physical Defenses.
 [CHANGED] Cryo Distillation Tower now Outputs condensed Ice. Let's just assume that no matter where the Air comes from, there is at least a little bit of humidity. Also Dark Ash for Nether Air.
 [ADDED] Recipe for Carbon Pipes in the Nanoscale Fabricator.
-[ADDED] Tantalum Hafnium Carbide, Green colored Alloy, Melting Point 4263K. Crucible Equipment, Burning Boxes, Pipes, Drums and Capsule Cell Containers included. I only got notified far later that TaHfC could also be shortened to THC, and the Alloy happens to be Green too. Coincidences...
+[ADDED] Tantalum Hafnium Carbide, Green colored Alloy, Melting Point 4263K. Crucible Equipment, Burning Boxes, Pipes, Drums and Capsule Cell Containers included. I only got notified far later that Ta4HfC5 could also be shortened to THC, and the Alloy happens to be Green too. Coincidences...
 
 
 6.11.15:
