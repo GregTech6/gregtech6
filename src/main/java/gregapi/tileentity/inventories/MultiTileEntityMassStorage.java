@@ -222,6 +222,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 		if (tCoords[0] < PX_P[1] || tCoords[0] > PX_N[1] || tCoords[1] < PX_P[1] || tCoords[1] > PX_N[1]) return F;
 		if (isServerSide() && aPlayer != null) {
+			updatePartialContent();
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (slotHas(1)) {
 				int tAmount = 0;
@@ -302,6 +303,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 					}
 				}
 			}
+			updatePartialContent();
 		}
 		return T;
 	}
@@ -627,6 +629,10 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public boolean updatePartialContent(long aAmountAdded) {
 		if (aAmountAdded <= 0) return F;
 		mPartialUnits += aAmountAdded;
+		return updatePartialContent();
+	}
+	
+	public boolean updatePartialContent() {
 		int tMaxStorage = getMaxContent();
 		ItemStack tContent = slot(1);
 		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
