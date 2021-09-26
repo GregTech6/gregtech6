@@ -8,7 +8,7 @@ buildscript {
 		//}
 		maven {
 			name = "gt"
-			url = "https://gregtech.overminddl1.com/"
+			url = "https://gregtech.mechaenetia.com/"
 		}
 		maven {
 			name = "sonatype"
@@ -86,7 +86,7 @@ idea{
 repositories {
 	maven {
 		name = "gt"
-		url = "https://gregtech.overminddl1.com/"
+		url = "https://gregtech.mechaenetia.com/"
 	}
 	maven {
 		name = "sonatype"
