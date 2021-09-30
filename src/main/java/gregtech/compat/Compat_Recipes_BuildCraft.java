@@ -100,15 +100,13 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 			CR.shaped(ST.make(MD.BC_TRANSPORT, "gateCopier", 1, 0), tBits, "PGP", "PPP", " P ", 'G', MD.BC_SILICON.mLoaded ? ST.make(MD.BC_SILICON, "redstoneChipset", 1, W) : OD.itemRedstone, 'P', OP.plate.dat(ANY.Iron));
 			
 			CR.delate(MD.BC_TRANSPORT, "pipeWaterproof");
-			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
-			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.SpDew.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
-			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.DistW.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
+			for (FluidStack tWater : FL.waters(50))
+			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), tWater, NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.ic2_extractor(IL.Dye_Cactus.get(1), ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			
 			for (OreDictMaterial tMat : ANY.Wax.mToThis) {
-			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
-			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.SpDew.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
-			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), FL.DistW.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
+			for (FluidStack tWater : FL.waters(50))
+			RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(tMat), tWater, NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.ic2_extractor(OM.dust(tMat), ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			}
 			

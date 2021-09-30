@@ -310,10 +310,8 @@ public class RM {
 	public static boolean debarking(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {return debarking(aEUt, aDuration, 1000, aInput, aOutputs);}
 	public static boolean debarking(long aEUt, long aDuration, long aWater, ItemStack aInput, ItemStack... aOutputs) {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;
-		if (aWater <= 0) aWater = 1;
-		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.Water.make(aWater), NF, aOutputs);
-		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.SpDew.make(aWater), NF, aOutputs);
-		Debarker.addRecipe1(T, aEUt, aDuration, aInput, FL.DistW.make(aWater), NF, aOutputs);
+		for (FluidStack tWater : FL.waters(aWater < 1 ? 1 : aWater))
+		Debarker.addRecipe1(T, aEUt, aDuration, aInput, tWater, NF, aOutputs);
 		return T;
 	}
 	

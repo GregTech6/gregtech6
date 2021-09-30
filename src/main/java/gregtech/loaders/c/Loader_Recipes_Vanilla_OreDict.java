@@ -46,6 +46,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 	@Override
@@ -84,9 +85,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 		}});
 		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.Water.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
 			
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
@@ -104,9 +104,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			}
 			
 			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.Water.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
 			
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
 			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
@@ -151,9 +150,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Fish .make(3000), NF , IL.MaCu_Polished_Logs.get(1));
 			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Whale.make(1500), NF , IL.MaCu_Polished_Logs.get(1));
 			}
-			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.Water.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
-			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.SpDew.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
-			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.DistW.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
+			for (FluidStack tWater : FL.waters(1000))
+			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, tWater, NF                  , ST.make(BlocksGT.Log1, 1, 3));
 			RM.Drying       .addRecipe1(T, 16,  128, aEvent.mStack, NF, FL.DistW.make(64)       , ST.make(BlocksGT.Log1, 1, 0));
 			RM.Fermenter    .addRecipe1(T, 16,  128, aEvent.mStack                              , ST.make(BlocksGT.Log1, 1, 1));
 			

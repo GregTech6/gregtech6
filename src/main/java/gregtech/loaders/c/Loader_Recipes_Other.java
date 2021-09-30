@@ -116,9 +116,8 @@ public class Loader_Recipes_Other implements Runnable {
 		for (byte i = 0; i < 16; i++) {final byte aIndex = i;
 		addListener(DYE_OREDICTS_MIXABLE[aIndex], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null) {
-				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
-				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.SpDew.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
-				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(L), FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
+				for (FluidStack tWater : FL.waters(L))
+				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, tWater, FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
 				
 				ItemStack tStack = dust.mat(MT.DATA.Dye_Materials[aIndex], 1);
 				if (!ST.equal(tStack, aEvent.mStack, T)) RM.generify(aEvent.mStack, tStack);
@@ -162,9 +161,8 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.Juicer           .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L/2), NI);
 			RM.Squeezer         .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L  ), NI);
 			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L  ), FL.Glue.make(250));
-			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.Water.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.SpDew.make(250), FL.Glue.make(250), ZL_IS);
-			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
+			for (FluidStack tWater : FL.waters(250))
+			RM.Mixer            .addRecipe1(T, 16,   16, aEvent.mStack, tWater, FL.Glue.make(250), ZL_IS);
 			RM.Laminator        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
 		}});
 		addListener(OD.itemClay, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -178,21 +176,18 @@ public class Loader_Recipes_Other implements Runnable {
 		}});
 		addListener(dustTiny.dat(ANY.Wood), dustTiny.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U9,T), NF, OM.dust(MT.Dynamite,2*U9));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
+			for (FluidStack tWater : FL.waters(125, 100))
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), tWater, NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(dustSmall.dat(ANY.Wood), dustSmall.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U4,T), NF, OM.dust(MT.Dynamite,  U2));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
+			for (FluidStack tWater : FL.waters(125, 100))
+			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), tWater, NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U ,T), NF, OM.dust(MT.Dynamite,2*U ));
-			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.Water     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.SpDew     .make(125), NF, ST.make(Items.paper, 1, 0));
-			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , FL.DistW     .make(100), NF, ST.make(Items.paper, 1, 0));
+			for (FluidStack tWater : FL.waters(125, 100))
+			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , tWater, NF, ST.make(Items.paper, 1, 0));
 		}});
 		addListener(stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom         .addRecipe2(T, 16,   16, ST.make(Blocks.wool  , 1, W), ST.amount(8, aEvent.mStack), ST.make(Items.painting, 1, 0));
@@ -208,7 +203,7 @@ public class Loader_Recipes_Other implements Runnable {
 			if (FL.Resin_Spruce.exists()) RM.Distillery.addRecipe1(T, 16, 16, ST.tag(0), FL.Resin_Spruce.make(10), FL.Turpentine.make(6), FL.DistW.make(3));
 		}
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
+		for (FluidStack tWater : FL.waters(1000)) {
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Coal), FL.mul(tWater, 1, 8, T), NF, OM.dust(MT.HydratedCoal));
 		
 		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone    ), OM.dust(MT.Blizz, U9  ), OM.dust(MT.NaNO3     )), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));

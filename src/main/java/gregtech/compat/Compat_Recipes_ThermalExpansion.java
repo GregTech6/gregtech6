@@ -179,8 +179,8 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,12)                          , FL.Glowstone_TE.make(1000), NF, ST.make(MD.TE, "Light", 1, 0));
 			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.Glowstone_TE.make(1000), NF, ST.make(MD.TE, "Plate", 1, 2));
 			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,12)                          , FL.Glowstone_TE.make(1000), NF, ST.make(MD.TE, "Light", 1, 0));
-
-			for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(800))) {
+			
+			for (FluidStack tWater : FL.waters(1000, 800)) {
 			if (IL.FZ_Sludge.exists())
 			RM.Mixer            .addRecipe2(T, 16,   16, IL.FZ_Sludge   .get(2), ST.make(Blocks.dirt, 1, W), tWater, NF, ST.make(Items.clay_ball, 4, 0));
 			if (IL.IE_Slag.exists())

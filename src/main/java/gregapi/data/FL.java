@@ -669,6 +669,10 @@ public enum FL {
 		return NBT.set(rStack, tNBT);
 	}
 	
+	public static FluidStack[] waters(long aWater) {return waters(aWater, aWater, aWater);}
+	public static FluidStack[] waters(long aWater, long aDistilled) {return waters(aWater, aDistilled, aWater);}
+	public static FluidStack[] waters(long aWater, long aDistilled, long aSpectralDew) {return FL.array(FL.Water.make(aWater), FL.DistW.make(aDistilled), FL.SpDew.make(aSpectralDew));}
+	
 	/** @return if that Liquid is Water or Distilled Water */
 	public static boolean water(IFluidTank aFluid) {return aFluid != null && water(aFluid.getFluid());}
 	/** @return if that Liquid is Water or Distilled Water */

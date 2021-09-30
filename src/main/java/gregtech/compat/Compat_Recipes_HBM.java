@@ -25,6 +25,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -35,6 +36,9 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_HBM extends CompatMods {
 	public Compat_Recipes_HBM(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -53,6 +57,28 @@ public class Compat_Recipes_HBM extends CompatMods {
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_schrabidium", 1, 0), MT.UNUSED.Schrabidium.liquid(64*U9, T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 1));
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_schrabidium", 1, 1), MT.UNUSED.Schrabidium.liquid(64*U , T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 2));
+		
+		
+		for (FluidStack tWater : FL.waters(250))
+		RM.Mixer.addRecipe1(T, 16, 16, IL.HBM_Poison_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
+		
+		if (IL.ERE_Herbicide.exists())
+		RM.pulverizing(IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.pulverizing(IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.pulverizing(ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
+		RM.pulverizing(ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
+		RM.pulverizing(ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
+		
+		if (IL.ERE_Herbicide.exists())
+		RM.Shredder.addRecipe1(T, 16, 16, IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.Shredder.addRecipe1(T, 16, 16, IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
+		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
+		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
+		
+		RM.generify(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
+		RM.generify(IL.HBM_Poison_Powder.get(1), IL.IC2_Grin_Powder.get(1));
+		
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropApple", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

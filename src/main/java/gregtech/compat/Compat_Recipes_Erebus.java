@@ -91,7 +91,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));
 		
-		for (FluidStack tFluid : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250)))
+		for (FluidStack tFluid : FL.waters(250))
 		RM.Mixer        .addRecipe1(T, 16, 16, IL.ERE_Herbicide.get(1), tFluid, FL.Potion_Poison_2.make(250), ZL_IS);
 		
 		RM.Squeezer     .addRecipe1(T, 16, 16,  ST.make(MD.ERE, "weepingBlue"   , 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.ERE, "materials", 2,26));

@@ -229,7 +229,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Weathered_Waxed.wild(1), OP.ingot.mat(MT.Cu, 3), F, F, T);
 				RM.add_smelting(IL.EtFu_Stair_Copper_Cut_Oxidized_Waxed .wild(1), OP.ingot.mat(MT.Cu, 3), F, F, T);
 				
-				for (FluidStack tWater : FL.array(FL.Water.make(100), FL.SpDew.make(100), FL.DistW.make(100))) {
+				for (FluidStack tWater : FL.waters(100)) {
 					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper              .get(1), tWater, NF, IL.EtFu_Block_Copper_Exposed      .get(1));
 					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Exposed      .get(1), tWater, NF, IL.EtFu_Block_Copper_Weathered    .get(1));
 					RM.Bath.addRecipe1(T, 0, 64, IL.EtFu_Block_Copper_Weathered    .get(1), tWater, NF, IL.EtFu_Block_Copper_Oxidized     .get(1));

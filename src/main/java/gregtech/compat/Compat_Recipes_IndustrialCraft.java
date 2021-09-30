@@ -166,9 +166,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1)), FL.Potion_Poison_2.make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer",  3, 0));
 		RM.Mixer        .addRecipeX(T, 16,  192, ST.array(IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)        ), FL.Potion_Poison_2.make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer", 12, 0));
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.Water.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.SpDew.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), FL.DistW.make(1000), NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
+		for (FluidStack tWater : FL.waters(1000))
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(tMat), OM.dust(MT.Redstone)), tWater, NF, ST.make(MD.IC2, "constructionFoam",  3, 0));
 		}
 		
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(MD.IC2, "item.itemScrapMetal", 8, 0), ST.make(MD.IC2, "item.scrapMetalChunk", 1, 0));
@@ -332,7 +331,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) if (tMat != MT.Enori)
 		RM.RollFormer   .addRecipe1(T,256,   16, OP.blockSolid.mat(tMat, 1)                         , IL.IC2_ShaftIron.get(1));
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.SpDew.make(1000), FL.DistW.make(1000))) {
+		for (FluidStack tWater : FL.waters(1000)) {
 		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tWater, FL.CFoam.make(1000), ZL_IS);
 		}
 		
@@ -397,10 +396,14 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		} // IC2 in general
 		//====================================================================================================
 		
+		if (!IL.HBM_Poison_Powder.exists()) {
 		if (IL.ERE_Herbicide.exists())
-		RM.pulverizing(IL.ERE_Herbicide.get(1), IL.IC2_Grin_Powder.get(1));
-		RM.pulverizing(ST.make(Blocks.red_mushroom, 1, W), IL.IC2_Grin_Powder.get(1));
-		RM.pulverizing(ST.make(Items.spider_eye, 1, W), IL.IC2_Grin_Powder.get(2));
+		RM.pulverizing(IL.ERE_Herbicide                  .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.pulverizing(IL.Food_Potato_Poisonous          .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.pulverizing(ST.make(Blocks.red_mushroom       , 1, W), IL.IC2_Grin_Powder.get(1));
+		RM.pulverizing(ST.make(Items.spider_eye          , 1, W), IL.IC2_Grin_Powder.get(2));
+		RM.pulverizing(ST.make(Items.fermented_spider_eye, 1, W), IL.IC2_Grin_Powder.get(3));
+		}
 		RM.pulverizing(ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay, U));
 		RM.pulverizing(ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));
 		RM.pulverizing(IL.Clay_Ball_Brown .get(1), OM.dust(MT.ClayBrown, U));
@@ -449,10 +452,14 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Boxinator        .addRecipe2(T, 16,   16, IL.IC2_Scrap.get(9), ST.tag(9), IL.IC2_Scrapbox.get(1));
 		RM.Unboxinator      .addFakeRecipe(F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(IL.IC2_Scrapbox.getWithName(1, "Random Drops, see Scrapbox Handler")), null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
 		
+		if (!IL.HBM_Poison_Powder.exists()) {
 		if (IL.ERE_Herbicide.exists())
-		RM.Shredder         .addRecipe1(T, 16,   16, IL.ERE_Herbicide.get(1)                        , IL.IC2_Grin_Powder.get(1));
-		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Blocks.red_mushroom, 1, W)             , IL.IC2_Grin_Powder.get(1));
-		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye, 1, W)                , IL.IC2_Grin_Powder.get(2));
+		RM.Shredder         .addRecipe1(T, 16,   16, IL.ERE_Herbicide                            .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.Shredder         .addRecipe1(T, 16,   16, IL.Food_Potato_Poisonous                    .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Blocks.red_mushroom                 , 1, W), IL.IC2_Grin_Powder.get(1));
+		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye                    , 1, W), IL.IC2_Grin_Powder.get(2));
+		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.fermented_spider_eye          , 1, W), IL.IC2_Grin_Powder.get(3));
+		}
 		
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 		RM.Press            .addRecipeX(T, 64,  256, ST.array(IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)), IL.IC2_Iridium_Alloy.get(1));
@@ -489,6 +496,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		if (IL.ERE_Herbicide.exists())
 		RM.Canner           .addRecipe2(T, 16,   16, IL.ERE_Herbicide.get(1)                            , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
+		if (IL.HBM_Poison_Powder.exists())
+		RM.Canner           .addRecipe2(T, 16,   16, IL.HBM_Poison_Powder.get(1)                        , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
 		RM.Canner           .addRecipe2(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
 		RM.Canner           .addRecipe1(T, 16,   16, IL.Spray_Empty.get(1)                              , FL.Potion_Poison_2.make(250)      , NF, IL.IC2_Spray_WeedEx.get(1));
 		
@@ -503,14 +512,13 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Electrolyzer     .addRecipe2(T, 16, 1000, ST.tag(0), IL.Cell_Water.get(1)                    , ST.mkic("electrolyzedWaterCell", 1));
 		
-		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.Water.make(1000)          , NF, ST.mkic("hydratingCell", 1));
-		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.SpDew.make(1000)          , NF, ST.mkic("hydratingCell", 1));
-		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), FL.DistW.make(1000)          , NF, ST.mkic("hydratingCell", 1));
+		for (FluidStack tWater : FL.waters(1000))
+		RM.Injector         .addRecipe1(T, 16,   16, IL.Cell_Empty.get(1), tWater                       , NF, ST.mkic("hydratingCell", 1));
 		
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250)))
+		for (FluidStack tWater : FL.waters(250))
 		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
 		
 		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1           ), OM.dust(MT.SoylentGreen   ), IL.IC2_Fertilizer.get(2));
@@ -588,9 +596,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("blockSolidObsidian", "blockDustObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Press.addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), aEvent.mStack, IL.IC2_Compressed_Coal_Chunk.get(1));
-		}});
-		addListener("cropIvy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.pulverizing(aEvent.mStack, IL.IC2_Grin_Powder.get(1));
 		}});
 		addListener(OD.flower, OD.itemPlantRemains, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));

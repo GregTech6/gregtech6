@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -90,7 +90,7 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockIngot  .mat(tMat       , 1), ST.tag(0), OP.blockGem.mat(MT.Enori       , 1));
 		}
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.SpDew.make(250), FL.DistW.make(250))) {
+		for (FluidStack tWater : FL.waters(250)) {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Rice), tWater, NF, IL.AA_Dough_Rice.get(1));
 		RM.Mixer        .addRecipe1(T, 16,   16, IL.AA_Dough_Rice.get(1), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 12));
 		}

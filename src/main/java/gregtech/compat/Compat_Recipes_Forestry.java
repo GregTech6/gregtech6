@@ -46,6 +46,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Forestry extends CompatMods {
 	public Compat_Recipes_Forestry(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -362,15 +363,12 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxPlant     .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
 		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin  .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
 		
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.Water.make(1000), NF, IL.FR_Mulch.get(1));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.SpDew.make(1000), NF, IL.FR_Mulch.get(1));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.DistW.make( 800), NF, IL.FR_Mulch.get(1));
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.Water.make( 250), FL.Glue.make( 250), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.SpDew.make( 250), FL.Glue.make( 250), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , FL.DistW.make( 200), FL.Glue.make( 250), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.Water.make(1000), FL.Glue.make(1000), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.SpDew.make(1000), FL.Glue.make(1000), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , FL.DistW.make( 800), FL.Glue.make(1000), ZL_IS);
+		for (FluidStack tWater : FL.waters(1000,  800))
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , tWater, NF, IL.FR_Mulch.get(1));
+		for (FluidStack tWater : FL.waters( 250,  200))
+		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis.get(1)              , tWater, FL.Glue.make( 250), ZL_IS);
+		for (FluidStack tWater : FL.waters(1000,  800))
+		RM.Mixer        .addRecipe1(T, 16,   16, IL.FR_Propolis_Sticky.get(1)       , tWater, FL.Glue.make(1000), ZL_IS);
 		
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Ash, 4*U)               , ST.make(Blocks.dirt, 1, W), IL.FR_Compost.get(1));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.DarkAsh, 3*U)           , ST.make(Blocks.dirt, 1, W), IL.FR_Compost.get(1));

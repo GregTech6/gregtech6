@@ -47,17 +47,14 @@ public class Compat_Recipes_Atum extends CompatMods {
 		long[] tChances = new long[] {1666, 1666, 1666, 1666, 1666, 1666};
 		for (int i = 0; i < 5; i++) {
 		ItemStack[] tInputs = ST.array(ST.make(MD.ATUM, "item.loot", 1, 1+(i*32))), tOutputs = ST.array(ST.make(MD.ATUM, "item.loot", 1, 2+(i*32)), ST.make(MD.ATUM, "item.loot", 1, 4+(i*32)), ST.make(MD.ATUM, "item.loot", 1, 6+(i*32)), ST.make(MD.ATUM, "item.loot", 1, 8+(i*32)), ST.make(MD.ATUM, "item.loot", 1, 10+(i*32)), ST.make(MD.ATUM, "item.loot", 1, 12+(i*32)));
-		RM.Bath.addFakeRecipe(F, tInputs, tOutputs, null, tChances, FL.array(FL.Water.make(100)), ZL_FS, 512, 0, 0);
-		RM.Bath.addFakeRecipe(F, tInputs, tOutputs, null, tChances, FL.array(FL.SpDew.make(100)), ZL_FS, 512, 0, 0);
-		RM.Bath.addFakeRecipe(F, tInputs, tOutputs, null, tChances, FL.array(FL.DistW.make(100)), ZL_FS, 512, 0, 0);
-		for (int j = 0; j < 6; j++) {
-		RM.Bath.addRecipe1(F, 0, 512, ST.make(MD.ATUM, "item.loot", 1, 3+2*j+(i*32)), FL.Water.make(100), NF, ST.make(MD.ATUM, "item.loot", 1, 2+2*j+(i*32)));
-		RM.Bath.addRecipe1(F, 0, 512, ST.make(MD.ATUM, "item.loot", 1, 3+2*j+(i*32)), FL.SpDew.make(100), NF, ST.make(MD.ATUM, "item.loot", 1, 2+2*j+(i*32)));
-		RM.Bath.addRecipe1(F, 0, 512, ST.make(MD.ATUM, "item.loot", 1, 3+2*j+(i*32)), FL.DistW.make(100), NF, ST.make(MD.ATUM, "item.loot", 1, 2+2*j+(i*32)));
+		for (FluidStack tWater : FL.waters(100)) {
+		RM.Bath.addFakeRecipe(F, tInputs, tOutputs, null, tChances, FL.array(tWater), ZL_FS, 512, 0, 0);
+		for (int j = 0; j < 6; j++)
+		RM.Bath.addRecipe1(F, 0, 512, ST.make(MD.ATUM, "item.loot", 1, 3+2*j+(i*32)), tWater, NF, ST.make(MD.ATUM, "item.loot", 1, 2+2*j+(i*32)));
 		}
 		}
 		
-		for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(125)))
+		for (FluidStack tWater : FL.waters(125))
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), tWater, NF, ST.make(Items.paper, 1, 0));
 		RM.Shredder     .addRecipe1(T, 16,   16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), IL.Remains_Plant.get(1));
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), ST.make(Items.paper, 1, 0));

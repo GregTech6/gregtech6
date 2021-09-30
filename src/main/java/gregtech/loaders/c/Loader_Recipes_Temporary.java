@@ -315,7 +315,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shaped(IL.NeLi_Glass_Yellow         .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteYellow ), 'G', OD.blockGlassColorless);
 			CR.shaped(IL.NeLi_Glass_Magenta        .get(1), DEF_NCC, " F ", "FGF", " F ", 'F', OP.gem.dat(MT.FluoriteMagenta), 'G', OD.blockGlassColorless);
 			
-			for (FluidStack tWater : FL.array(FL.Water.make(125), FL.SpDew.make(125), FL.DistW.make(100)))
+			for (FluidStack tWater : FL.waters(125, 100))
 			RM.Bath    .addRecipe1(T,  0, 16           , IL.NeLi_Reed.get(1), tWater, NF, ST.make(Items.paper, 1, 0));
 			RM.Loom    .addRecipe2(T, 16, 16, ST.tag(0), IL.NeLi_Reed.get(1), ST.make(Items.paper, 1, 0));
 			RM.Squeezer.addRecipe1(T, 16, 16,      4000, IL.NeLi_Reed.get(1), NF, FL.Juice_Reed.make(10), IL.Remains_Plant.get(1));

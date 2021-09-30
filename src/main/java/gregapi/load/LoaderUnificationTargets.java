@@ -931,6 +931,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Nb                     , MD.HBM, "item.powder_niobium_tiny"        , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nb                     , MD.HBM, "item.powder_niobium"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Nb                     , MD.HBM, "item.fragment_niobium"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Nb                     , MD.HBM, "item.ingot_niobium"              , 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Nb                     , MD.HBM, "tile.block_niobium"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Nd                     , MD.HBM, "item.powder_neodymium_tiny"      , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nd                     , MD.HBM, "item.powder_neodymium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Nd                     , MD.HBM, "item.fragment_neodymium"         , 0);

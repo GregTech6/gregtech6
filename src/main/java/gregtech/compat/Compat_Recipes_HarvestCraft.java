@@ -49,6 +49,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -130,9 +131,8 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T,  0,   32, OM.dust(MT.Mint, U4), MT.Sugar.liquid(  U2, T), NF, ST.make(MD.HaC, "peppermintItem", 2));
 		RM.Mixer    .addRecipe1(T,  0,  128, OM.dust(MT.Mint, U ), MT.Sugar.liquid(9*U4, T), NF, ST.make(MD.HaC, "peppermintItem", 9));
 		
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.Water.make(1000), NF, IL.Food_Dough.get(1));
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.SpDew.make(1000), NF, IL.Food_Dough.get(1));
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.DistW.make(1000), NF, IL.Food_Dough.get(1));
+		for (FluidStack tWater : FL.waters(1000))
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), tWater, NF, IL.Food_Dough.get(1));
 		
 		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.RoyalJelly.make(10), NF, ST.make(MD.HaC, "marzipanItem", 1));
 		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond    ), FL.RoyalJelly.make(40), NF, ST.make(MD.HaC, "marzipanItem", 4));

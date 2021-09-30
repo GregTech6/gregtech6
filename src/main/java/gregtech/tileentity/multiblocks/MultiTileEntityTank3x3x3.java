@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,7 +41,7 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 	static {
-		LH.add("gt.tooltip.multiblock.tank3x3x3.1", "3x3x3 Hollow of the Block Walls you crafted this one with");
+		LH.add("gt.tooltip.multiblock.tank3x3x3.1", "3x3x3 Hollow of the corresponding Walls made of this Material");
 		LH.add("gt.tooltip.multiblock.tank3x3x3.2", "This Block centered on Side/Top/Bottom and facing outwards");
 		LH.add("gt.tooltip.multiblock.tank3x3x3.3", "Auto-Emits Fluids from the Main Block if not against Gravity");
 	}
