@@ -307,18 +307,18 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 			if (aStack == null) {
 				aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);
 				slotKill(0);
-				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1);
+				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 				return T;
 			}
 			if (ST.equal(aStack, tOutputStack) && aStack.stackSize < aStack.getMaxStackSize()) {
 				int tDifference = Math.min(tOutputStack.stackSize, aStack.getMaxStackSize() - aStack.stackSize);
 				aStack.stackSize+=tDifference;
 				decrStackSize(0, tDifference);
-				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1);
+				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 				return T;
 			}
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(0), F)) {
-				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1);
+				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 				slotKill(0);
 				return T;
 			}
@@ -553,7 +553,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	
 	@Override
 	public void onEntityCollidedWithBlock(Entity aEntity) {
-		if (mTemperature > C + 40) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mTemperature / 100.0F));
+		UT.Entities.applyTemperatureDamage(aEntity, mTemperature, 1, 5.0F);
 	}
 	
 	@Override

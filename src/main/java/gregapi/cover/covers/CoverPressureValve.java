@@ -58,7 +58,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 					FL.move(tTank, tDelegator);
 				} else if (FL.gas(tTank) && !tDelegator.hasCollisionBox()) {
 					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_FIZZ, 1.0F, 1.0F, aData.mTileEntity.getCoords());
-					try {for (Entity tEntity : (ArrayList<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(Entity.class, aData.box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, FL.temperature(tTank.getFluid()), 2.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+					try {for (Entity tEntity : (ArrayList<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(Entity.class, aData.box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, FL.temperature(tTank.getFluid()), 2.0F, 10.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 					GarbageGT.trash(tTank);
 				}
 			}

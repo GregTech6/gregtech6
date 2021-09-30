@@ -34,6 +34,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
 [FIXED] Crucibles should be able to melt Snow properly now. This Fix should leave melting Plastic and Rubber working the same way they did before.
 [FIXED] Mass Storages should no longer keep surplus Partial Amounts until something else is inserted.
+[CHANGED] The way Crucibles, Molds and Pipes calculate Heat Damage to Entities interacting with them.
 [CHANGED] Bumblebees will no longer show up in NEI by default. Their Creative Tab still exists though.
 [CHANGED] IC2 Circuits are now made from GT6 Circuits.
 [CHANGED] Villagers that get converted to Zombies now stay persistent and keep their Name Tags.

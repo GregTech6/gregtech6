@@ -262,7 +262,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			} else if (mTemperature >= tMaterial.mMaterial.mBoilingPoint || (mTemperature > C + 40 && tMaterial.mMaterial.contains(TD.Properties.FLAMMABLE) && !tMaterial.mMaterial.containsAny(TD.Properties.UNBURNABLE, TD.Processing.MELTING))) {
 				GarbageGT.trash(mContent.remove(i--));
 				UT.Sounds.send(SFX.MC_FIZZ, this);
-				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (tMaterial.mMaterial.mBoilingPoint - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, tMaterial.mMaterial.mBoilingPoint, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 				if (tMaterial.mMaterial.mBoilingPoint >= 2000) for (int j = 0, k = Math.max(1, UT.Code.bindInt((9 * tMaterial.mAmount) / U)); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 				if (tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) explode(UT.Code.scale(tMaterial.mAmount, MAX_AMOUNT, 6, F));
 				return;
@@ -320,7 +320,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
 			GarbageGT.trash(mContent);
-			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (mTemperature - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, mTemperature, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 			return;
@@ -398,7 +398,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (mTemperature >= 1300 && isServerSide() && !UT.Entities.isCreative(aPlayer)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
 			GarbageGT.trash(mContent);
-			try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, mTemperature / 20.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+			try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, mTemperature);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 			return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 		}
@@ -424,7 +424,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				if (slotHas(0)) {
 					if (aStack == null) {
 						aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, slotTake(0));
-						if (mTemperature > 40 + C) UT.Entities.applyHeatDamage(aPlayer, Math.min(10.0F, mTemperature / 100.0F));
+						UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 						return T;
 					}
 				} else {
@@ -433,21 +433,21 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 						if (tOutputStack == null || tLightest.mAmount < OP.scrapGt.mAmount) {
 							tLightest.mAmount = 0;
 							aPlayer.addExhaustion(0.1F);
-							if (mTemperature > 40 + C) UT.Entities.applyHeatDamage(aPlayer, Math.min(10.0F, mTemperature / 100.0F));
+							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
 						if (aStack == null) {
 							aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);
 							tLightest.mAmount-=OP.scrapGt.mAmount;
 							aPlayer.addExhaustion(0.1F);
-							if (mTemperature > 40 + C) UT.Entities.applyHeatDamage(aPlayer, Math.min(10.0F, mTemperature / 100.0F));
+							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
 						if (ST.equal(aStack, tOutputStack) && aStack.stackSize < aStack.getMaxStackSize()) {
 							aStack.stackSize++;
 							tLightest.mAmount-=OP.scrapGt.mAmount;
 							aPlayer.addExhaustion(0.1F);
-							if (mTemperature > 40 + C) UT.Entities.applyHeatDamage(aPlayer, Math.min(10.0F, mTemperature / 100.0F));
+							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
 					}
@@ -625,7 +625,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	
 	@Override
 	public void onEntityCollidedWithBlock(Entity aEntity) {
-		if (mTemperature > 320 && UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mTemperature / 100.0F))) {
+		if (UT.Entities.applyTemperatureDamage(aEntity, mTemperature, 1, 10.0F) && mTemperature > 320) {
 			if (aEntity instanceof EntityLivingBase && !((EntityLivingBase)aEntity).isEntityAlive()) {
 				if (aEntity instanceof EntityVillager || aEntity instanceof EntityWitch) {
 					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(2*U, MT.SoylentGreen)), C+37);

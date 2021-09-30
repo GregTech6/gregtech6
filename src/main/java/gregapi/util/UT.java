@@ -3138,9 +3138,18 @@ public class UT {
 			return isWearingFullGasHazmat(aEntity);
 		}
 		
+		
+		public static boolean applyTemperatureDamage(Entity aEntity, long aTemperature) {
+			return applyTemperatureDamage(aEntity, aTemperature, 1);
+		}
 		public static boolean applyTemperatureDamage(Entity aEntity, long aTemperature, float aMultiplier) {
 			if (aTemperature > 320) return applyHeatDamage (aEntity, (aMultiplier * (aTemperature - 300)) / 50.0F);
 			if (aTemperature < 260) return applyFrostDamage(aEntity, (aMultiplier * (270 - aTemperature)) / 25.0F);
+			return F;
+		}
+		public static boolean applyTemperatureDamage(Entity aEntity, long aTemperature, float aMultiplier, float aCap) {
+			if (aTemperature > 320) return applyHeatDamage (aEntity, Math.max(1, Math.min(aCap, (aMultiplier * (aTemperature - 300)) / 50.0F)));
+			if (aTemperature < 260) return applyFrostDamage(aEntity, Math.max(1, Math.min(aCap, (aMultiplier * (270 - aTemperature)) / 25.0F)));
 			return F;
 		}
 		
