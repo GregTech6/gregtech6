@@ -29,6 +29,7 @@ My Brick Slab Recipe screwed over its Blank Mold Recipe, I fixed that by just ma
 [COMPAT] Steamcraft 2
 Did Unification Targets and Wood Dictionary as always. Weirdly it did not have any Saplings at all for some reason, nor did any Saplings drop from my Leaf Test.
 Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting one.
+[FIXED] Rubber Pipes were still blocking Faces of the Blocks they were placed in front of. Flexible Pipes (only Rubber so far) should not block the Faces from being rightclicked.
 [FIXED] Problems with Funky Locomotion and its shipped broken RF-API.
 [FIXED] All of the TFC Damage Multipliers are now applied properly to GT6 Stuff.
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
