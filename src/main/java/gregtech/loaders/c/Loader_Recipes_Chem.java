@@ -388,9 +388,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Stannite        ), FL.make(tOxygen,  1188), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Sn, 1*U8), OM.dust(MT.Fe2O3, 5*U16));
 		RM.Roasting     .addRecipe1(T, 16,  512, OM.dust(MT.OREMATS.Kesterite       ), FL.make(tOxygen,  1000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu   , 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn   , 1*U8));
 		
-		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Li                      ), FL.make(tOxygen,   500), NF                   , OM.dust(MT.Li2O, 3*U2));
-		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.V2O5, 7*U2));
-		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Cr                      ), FL.make(tOxygen,  2000), NF                   , OM.dust(MT.CrO2,   U ));
+		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Li                      ), FL.make(tOxygen,   500), NF                   , OM.dust(MT.Li2O , 3*U2));
+		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.V2O5 , 7*U2));
+		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Nb                      ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.Nb2O5, 7*U2));
+		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Ta                      ), FL.make(tOxygen,  2500), NF                   , OM.dust(MT.Ta2O5, 7*U2));
+		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Cr                      ), FL.make(tOxygen,  2000), NF                   , OM.dust(MT.CrO2 ,   U ));
 		RM.Roasting     .addRecipe1(T, 16,   16, OP.dust.mat(MT.S                , 1), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,  144, OP.blockDust.mat(MT.S           , 1), FL.make(tOxygen,  2000), MT.SO2.gas( 3*U  , F), ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OP.dustTiny.mat(MT.Blaze        , 1), FL.make(tOxygen, 18000), MT.SO2.gas(27*U  , F), ZL_IS);

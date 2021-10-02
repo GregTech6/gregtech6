@@ -174,17 +174,17 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(OD.itemGrassDry, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom             .addRecipe2(T, 16,   16, ST.tag(10), ST.amount(7, aEvent.mStack), IL.Rope_Grass.get(1));
 		}});
-		addListener(dustTiny.dat(ANY.Wood), dustTiny.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dustTiny.dat(ANY.Wood), dustTiny.dat(MT.Bark), dustTiny.dat(MT.Paper), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U9,T), NF, OM.dust(MT.Dynamite,2*U9));
 			for (FluidStack tWater : FL.waters(125, 100))
 			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(9, aEvent.mStack), tWater, NF, ST.make(Items.paper, 1, 0));
 		}});
-		addListener(dustSmall.dat(ANY.Wood), dustSmall.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dustSmall.dat(ANY.Wood), dustSmall.dat(MT.Bark), dustSmall.dat(MT.Paper), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U4,T), NF, OM.dust(MT.Dynamite,  U2));
 			for (FluidStack tWater : FL.waters(125, 100))
 			RM.Bath             .addRecipe1(T,  0,   16, ST.amount(4, aEvent.mStack), tWater, NF, ST.make(Items.paper, 1, 0));
 		}});
-		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), dust.dat(MT.Paper), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32,              aEvent.mStack , MT.Glyceryl.fluid(U ,T), NF, OM.dust(MT.Dynamite,2*U ));
 			for (FluidStack tWater : FL.waters(125, 100))
 			RM.Bath             .addRecipe1(T,  0,   16,              aEvent.mStack , tWater, NF, ST.make(Items.paper, 1, 0));
