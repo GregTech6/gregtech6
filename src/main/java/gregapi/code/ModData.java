@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,6 +44,8 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 		mName = aName;
 		mLoaded = Loader.isModLoaded(mID);
 		MODS.put(aID, this);
+		MODS.put(aID.toLowerCase(), this);
+		MODS.put(aID.toUpperCase(), this);
 	}
 	
 	public ModData setLoaded(boolean aLoaded) {

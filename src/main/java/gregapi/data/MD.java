@@ -28,6 +28,9 @@ import gregapi.data.CS.ModIDs;
  * @author Gregorius Techneticies
  */
 public class MD {
+	public static final ModData UNKNOWN = new ModData("UNKNOWN", "Unknown or Invalid Mod!").setLoaded(F);
+	static {ModData.MODS.put(null, UNKNOWN);}
+	
 	public static final ModData MC = new ModData(ModIDs.MC, "Minecraft").setLoaded(T)
 	
 	, GT                = new ModData(ModIDs.GT                 , "GregTech")

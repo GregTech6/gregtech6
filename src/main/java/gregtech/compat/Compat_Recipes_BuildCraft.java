@@ -55,7 +55,7 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 		CR.shaped(ST.make(MD.BC, "woodenGearItem" , 1, 0), tBits, " X ", "X X", " X ", 'X', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(MD.BC, "stoneGearItem"  , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.stone, 'G', OP.gear.dat(ANY.Wood));
 		CR.shaped(ST.make(MD.BC, "stoneGearItem"  , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.cobblestone, 'G', OP.gear.dat(ANY.Wood));
-		CR.shaped(ST.make(MD.BC, "ironGearItem"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Fe), 'G', OP.gear.dat(MT.Stone));
+		CR.shaped(ST.make(MD.BC, "ironGearItem"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Fe), 'G', OP.gear.dat(ANY.Stone));
 		CR.shaped(ST.make(MD.BC, "goldGearItem"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Au), 'G', OP.gear.dat(ANY.Fe));
 		CR.shaped(ST.make(MD.BC, "diamondGearItem", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.gem.dat(ANY.Diamond), 'G', OP.gear.dat(MT.Au));
 		CR.shapeless(ST.make(MD.BC, "woodenGearItem" , 1, 0), new Object[] {OP.gearGt.dat(ANY.Wood)});

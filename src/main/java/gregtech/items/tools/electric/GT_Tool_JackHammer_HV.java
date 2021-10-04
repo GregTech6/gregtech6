@@ -145,7 +145,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? Textures.ItemIcons.JACKHAMMER : Textures.ItemIcons.VOID;
+		return aIsToolHead ? Textures.ItemIcons.VOID : Textures.ItemIcons.JACKHAMMER;
 	}
 	
 	@Override

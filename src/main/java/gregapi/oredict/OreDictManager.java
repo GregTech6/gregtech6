@@ -202,6 +202,8 @@ public final class OreDictManager {
 	}
 	
 	public boolean addAutoBlackListingForMod(Object aAutoBlackListedMod) {
+		mAutoBlackListedMods.add(aAutoBlackListedMod.toString().toLowerCase());
+		mAutoBlackListedMods.add(aAutoBlackListedMod.toString().toUpperCase());
 		return mAutoBlackListedMods.add(aAutoBlackListedMod.toString());
 	}
 	
@@ -272,11 +274,13 @@ public final class OreDictManager {
 	private static class OreDictEventContainer {
 		protected final String mModID, mRegName;
 		protected final OreRegisterEvent mEvent;
+		protected final ModData mMod;
 		
-		protected OreDictEventContainer(String aModID, String aRegName, OreRegisterEvent aEvent) {
+		protected OreDictEventContainer(String aModID, ModData aMod, String aRegName, OreRegisterEvent aEvent) {
 			mRegName = aRegName;
 			mModID = aModID;
 			mEvent = aEvent;
+			mMod = aMod;
 		}
 	}
 	
@@ -291,7 +295,7 @@ public final class OreDictManager {
 			UT.LoadingBar.start(MD.MaCu.mLoaded ? "(Lags because Mariculture) OreDict" : "OreDict", tBufferedRegistrations.size());
 			for (OreDictEventContainer tContainer : tBufferedRegistrations) {
 				UT.LoadingBar.step(tContainer.mEvent.Name);
-				onOreRegistration2(tContainer.mModID, tContainer.mRegName, tContainer.mEvent);
+				onOreRegistration2(tContainer.mModID, tContainer.mMod, tContainer.mRegName, tContainer.mEvent);
 			}
 			tBufferedRegistrations.clear();
 			UT.LoadingBar.finish();
@@ -308,8 +312,13 @@ public final class OreDictManager {
 	
 	@SubscribeEvent
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
+		String aModID = MD.UNKNOWN.mID;
+		ModData aMod = MD.UNKNOWN;
 		ModContainer tContainer = Loader.instance().activeModContainer();
-		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
+		if (!mIsRunningInIterationMode && tContainer != null) {
+			aModID = tContainer.getModId();
+			aMod = ModData.MODS.get(aModID);
+		}
 		
 		// I am very sure the OreDict actually checks for these cases, so I do not think this will ever trigger.
 		if (aEvent.Ore == null) {ERR.println("ERROR: A NULL STACK from the Mod '" + aModID + "' has been registered to the OreDict as: " + aEvent.Name); return;}
@@ -324,10 +333,10 @@ public final class OreDictManager {
 		if (GT != null && isRegisteringOre != 1) {
 			String tLowerCase = aEvent.Name.toLowerCase();
 			// Preventing Blizz, Blitz and Basalz Stuff from being registered wrongly to GT6.
-			if (MD.TE_FOUNDATION.owns(aRegName, "material") && UT.Code.inside(1024, 1029, ST.meta_(aEvent.Ore)) && MD.TE_FOUNDATION.mID.equalsIgnoreCase(aModID)) return;
+			if (MD.TE_FOUNDATION == aMod && MD.TE_FOUNDATION.owns(aRegName, "material") && UT.Code.inside(1024, 1029, ST.meta_(aEvent.Ore))) return;
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
-			if (MD.TC .owns(aRegName) &&  tLowerCase.endsWith("uicksilver")) return;
+			if (MD.TC == aMod && tLowerCase.endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
 			if (MD.HBM.owns(aRegName) && (tLowerCase.endsWith("redalloy") || tLowerCase.endsWith("redstonealloy") || tLowerCase.startsWith("platedense"))) return;
 			// Ignore Congealed Slime being registered as Rubber. TODO Whenever I decide to add Materials for Slime, this needs to be revisited.
@@ -375,9 +384,9 @@ public final class OreDictManager {
 		} else {
 			if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
 				if (mBufferedRegistrations == null) {
-					onOreRegistration2(aModID, aRegName, aEvent);
+					onOreRegistration2(aModID, aMod, aRegName, aEvent);
 				} else {
-					mBufferedRegistrations.add(new OreDictEventContainer(aModID, aRegName, aEvent));
+					mBufferedRegistrations.add(new OreDictEventContainer(aModID, aMod, aRegName, aEvent));
 				}
 			}
 			
@@ -388,7 +397,7 @@ public final class OreDictManager {
 		aEvent.Ore.stackSize = 1;
 	}
 	
-	public void onOreRegistration2(String aModID, String aRegName, OreRegisterEvent aEvent) {
+	public void onOreRegistration2(String aModID, ModData aMod, String aRegName, OreRegisterEvent aEvent) {
 		OreDictPrefix aPrefix = null;
 		OreDictMaterial aMaterial = null;
 		
@@ -435,14 +444,16 @@ public final class OreDictManager {
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 						if (aPrefix == OP.rockGt && aMaterial.contains(TD.Properties.STONE)) registerOreSafe(OD.itemRock, aEvent.Ore);
 						if (aPrefix != OP.ore && aPrefix.contains(TD.Prefix.STANDARD_ORE) && aMaterial.contains(TD.Properties.COMMON_ORE)) registerOreSafe(OP.ore.mNameInternal + aMaterial.mNameInternal, aEvent.Ore);
-						if ((MD.TFC.mLoaded || MD.TFCP.mLoaded) && (aModID.equalsIgnoreCase(MD.TFC.mID) || aModID.equalsIgnoreCase(MD.TFCP.mID)) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
+						if ((aMod == MD.TFC || aMod == MD.TFCP) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
-						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID) && (!MD.ReC.mLoaded || aMaterial == MT.FluoriteBlack || !ANY.CaF2.mToThis.contains(aMaterial))) {
+						} else if (aPrefix == OP.gem && aMod == MD.RH && (!MD.ReC.mLoaded || aMaterial == MT.FluoriteBlack || !ANY.CaF2.mToThis.contains(aMaterial))) {
+							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
+						} else if (aPrefix == OP.billet && aMod == MD.HBM) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.ore) {
 							addItemData_(aEvent.Ore, aPrefix.dat(aMaterial));
 						} else if (aPrefix == OP.plateSteamcraft) {
-							// Skip these, the only valid ones are the ones from Flaxbeard's Steam Power itself.
+							// Skip these, the only valid ones are the ones from Flaxbeard's Steam Power itself, and I manually added those to Unification.
 						} else if (aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, F, T);
 						}
@@ -461,10 +472,6 @@ public final class OreDictManager {
 		
 		mGlobalRegistrations.add(tRegistration);
 	}
-	
-	// ================================================================ //
-	// A lot of the Code was copy-pasted from the old OreDictUnificator //
-	// ================================================================ //
 	
 	private final Map<String, ItemStack> sName2StackMap = new HashMap<>();
 	private final Map<ItemStackContainer, OreDictItemData> sItemStack2DataMap = new ItemStackMap<>();
