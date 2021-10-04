@@ -62,7 +62,7 @@ public interface IItemBumbleBee {
 	/** @return ItemStack with a mutated variant of this Bumblebee. Used for random Mutations, when two Bumblebees of the same Species breed. */
 	public ItemStack bumbleMutate(ItemStack aBumbleBee, short aMetaData, Random aRandom);
 	/**
-	 * This is only called in quarter of all cases for aBumbleBeeA (this), another quarter goes to aBumbleBeeB, the remaining half goes to selecting the same species as one of the Parents.
+	 * This is only called in quarter of all cases for aBumbleBeeA, another quarter goes to aBumbleBeeB, the remaining half goes to selecting the same species as one of the Parents.
 	 * It is not called when two Bumblebees of the same Species breed.
 	 * @return ItemStack with a special Offspring for this combination and Stacksize 1 and no BumbleTag.
 	 */

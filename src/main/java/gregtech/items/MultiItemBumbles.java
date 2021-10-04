@@ -368,7 +368,13 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	@Override
 	public ItemStack bumbleCombine(ItemStack aBumbleBeeA, short aMetaDataA, ItemStack aBumbleBeeB, short aMetaDataB, byte aBumbleType, Random aRandom) {
+		// Special Case to give even chances to Addon Bumbles.
+		if (aBumbleBeeB.getItem() != ItemsGT.BUMBLEBEES) return ((IItemBumbleBee)aBumbleBeeB.getItem()).bumbleCombine(aBumbleBeeA, aMetaDataA, aBumbleBeeB, aMetaDataB, aBumbleType, aRandom);
+		if (aBumbleBeeA.getItem() != ItemsGT.BUMBLEBEES) return ((IItemBumbleBee)aBumbleBeeA.getItem()).bumbleCombine(aBumbleBeeA, aMetaDataA, aBumbleBeeB, aMetaDataB, aBumbleType, aRandom);
+		// The Normal Case if the other Bumble does not match. Should not be possible to call this one in my own class anymore though, because above.
 		if (aBumbleBeeB.getItem() != this) return ST.copyAmountAndMeta(1, (aMetaDataA/10)*10+aBumbleType, aBumbleBeeA);
+		if (aBumbleBeeA.getItem() != this) return ST.copyAmountAndMeta(1, (aMetaDataB/10)*10+aBumbleType, aBumbleBeeB);
+		// And all the GT6 Bumblebee breeding cases.
 		switch(aMetaDataA / 10) {
 		case    3:
 			switch(aMetaDataB / 10) {
@@ -578,7 +584,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		RM.Bumblelyzer.addFakeRecipe(F, ST.array(ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")), ST.array(ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")), null, null, null, null,  1, 16, 0);
 		RM.Bumblelyzer.addFakeRecipe(F, ST.array(ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")), ST.array(ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")), null, null, null, null,  1, 16, 0);
 		}
-
+		
 		addItem(aSpeciesID+0, aName + " Drone"              , aTooltip, "gt:bumbledrone"    , TC.stack(TC.BESTIA , 1));
 		addItem(aSpeciesID+1, aName + " Princess"           , aTooltip, "gt:bumbleprincess" , TC.stack(TC.BESTIA , 2));
 		addItem(aSpeciesID+2, aName + " Queen"              , aTooltip, "gt:bumblequeen"    , TC.stack(TC.BESTIA , 2), TD.Creative.HIDDEN);
@@ -587,15 +593,15 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		addItem(aSpeciesID+6, aName + " Princess (Scanned)" , aTooltip, "gt:bumbleprincess" , TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITIO, 1), new OreDictItemData(MT.Paper, U9));
 		addItem(aSpeciesID+7, aName + " Queen (Scanned)"    , aTooltip, "gt:bumblequeen"    , TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITIO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
 		addItem(aSpeciesID+9, aName + " (Dead & Scanned)"   , aTooltip, "gt:bumbledead"     , TC.stack(TC.MORTUUS, 1), TC.stack(TC.COGNITIO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
-
+		
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+0), ST.make(this, 1, aSpeciesID+2));
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+1), ST.make(this, 1, aSpeciesID+2));
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+4), ST.make(this, 1, aSpeciesID+2));
-
+		
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+5), ST.make(this, 1, aSpeciesID+7));
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+6), ST.make(this, 1, aSpeciesID+7));
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+9), ST.make(this, 1, aSpeciesID+7));
-
+		
 		ItemStack[] tOutputs = new ItemStack[bumbleProductCount(NI, (short)(aSpeciesID+2))];
 		long[] tChances = new long[tOutputs.length];
 		for (int i = 0; i < tOutputs.length; i++) {
@@ -654,7 +660,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		default: return 1;
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister aIconRegister) {
@@ -667,7 +673,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			mIconList[aMeta][0] = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/" + aMeta);
 		}
 	}
-
+	
 	@Override
 	public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {
 		if (aRenderPass == 0) return getIconFromDamage(aMetaData);
