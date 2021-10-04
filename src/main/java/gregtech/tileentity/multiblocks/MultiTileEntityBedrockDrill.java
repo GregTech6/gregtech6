@@ -108,6 +108,11 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				mList.add(MT.OREMATS.Columbite);
 				mList.add(MT.OREMATS.Tantalite);
 				tOverride = T;
+			} else if (IL.HBM_Bedrock_Oil.equal(tBlock)) {
+				mList.add(MT.Oilshale);
+				mList.add(MT.Oilshale);
+				mList.add(MT.Oilshale);
+				tOverride = T;
 			} else if (!WD.bedrock(tBlock)) {
 				tBedrock = F;
 			}
@@ -129,7 +134,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		LH.add("gt.tooltip.multiblock.bedrockdrill.2", "Full 3x4x3 of Dense Titanium Walls ontop");
 		LH.add("gt.tooltip.multiblock.bedrockdrill.3", "Main top-center inside the Titanium Tower facing upwards");
 		LH.add("gt.tooltip.multiblock.bedrockdrill.4", "Requires Lubricant, Power and a 3x3 place on Bedrock(-Ore) to mine");
-		LH.add("gt.tooltip.multiblock.bedrockdrill.5", "Also works on HBM's Bedrock Coltan, even if it's not a full 3x3 of Bedrock");
+		LH.add("gt.tooltip.multiblock.bedrockdrill.5", "Also works on HBM's Bedrock Ores, even if it's not a full 3x3 of Bedrock");
 	}
 	
 	@Override
@@ -139,7 +144,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
 		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.3"));
 		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
-		if (IL.HBM_Bedrock_Coltan.exists())
+		if (IL.HBM_Bedrock_Coltan.exists() || IL.HBM_Bedrock_Oil.exists())
 		aList.add(Chat.BLINKING_CYAN + LH.get("gt.tooltip.multiblock.bedrockdrill.5"));
 		aList.add(Chat.GREEN         + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t (up to 32768 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t total)");
 		super.addToolTips(aList, aStack, aF3_H);

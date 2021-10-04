@@ -88,18 +88,46 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		
 		addListener(OD.baleGrassRotten, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.biomass(ST.amount(1, aEvent.mStack), 16);
 			RM.unpack(aEvent.mStack, IL.Grass_Rotten.get(9));
 		}});
 		addListener(OD.baleGrassMoldy, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.biomass(ST.amount(1, aEvent.mStack), 16);
 			RM.unpack(aEvent.mStack, IL.Grass_Moldy.get(9));
 		}});
 		addListener(OD.baleGrassDry, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Grass_Dry.get(9));
 		}});
 		addListener(OD.baleGrass, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.Drying.addRecipe1(T, 16, 360, aEvent.mStack, NF, FL.DistW.make(180), IL.Bale_Dry.get(1));
 			RM.biomass(ST.amount(1, aEvent.mStack));
 			RM.unpack(aEvent.mStack, IL.Grass.get(9));
@@ -122,6 +150,13 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.compact(aEvent.mStack, 9, IL.Bale.get(1));
 		}});
 		addListener(OD.itemPlantRemains, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.biomass(ST.amount(8, aEvent.mStack));
 			RM.generify(aEvent.mStack, IL.Remains_Plant.get(1));
 		}});
@@ -866,6 +901,13 @@ public class Loader_Recipes_Crops implements Runnable {
 		crop.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData == null || !tData.hasValidPrefixMaterialData()) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.Shredder     .addRecipe1(T, 16, 16, 9000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
 			RM.Mortar       .addRecipe1(T, 16, 16, 4500, aEvent.mStack, IL.Remains_Plant.get(1));
 			}
@@ -873,15 +915,36 @@ public class Loader_Recipes_Crops implements Runnable {
 		flower.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData == null || !tData.hasValidPrefixMaterialData()) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.Shredder     .addRecipe1(T, 16, 16, 4000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
 			RM.Mortar       .addRecipe1(T, 16, 16, 2000, aEvent.mStack, IL.Remains_Plant.get(1));
 			}
 		}});
 		treeLeaves.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.Shredder     .addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
 			RM.Mortar       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(1));
 		}});
 		treeSapling.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (IL.IC2_Plantball.exists()) {
+			RM.ic2_compressor(ST.amount( 4, aEvent.mStack), IL.IC2_Plantball.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(4, aEvent.mStack), IL.IC2_Plantball.get(1));
+			} else if (IL.HBM_Biomass.exists()) {
+			RM.ic2_compressor(ST.amount( 4, aEvent.mStack), IL.HBM_Biomass.get(1));
+			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(4, aEvent.mStack), IL.HBM_Biomass.get(1));
+			}
 			RM.Shredder     .addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(2));
 			RM.Mortar       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(2));
 		}});

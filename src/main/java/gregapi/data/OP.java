@@ -505,7 +505,7 @@ public class OP {
 	fertilizer                  = unused("fertilizer"                   ).setCategoryName("Fertilizers"),
 	chest                       = unused("chest"                        ).setCategoryName("Chests"),
 	raw                         = unused("raw"                          ).setCategoryName("Raw Things"),
-	stainedGlass                = unused("stainedGlass"                 ).setCategoryName("Stained Glasses"),
+	stainedGlass                = unused("stainedGlass"                 ).setCategoryName("Stained Glass"),
 	mystic                      = unused("mystic"                       ).setCategoryName("Mystic Stuff"),
 	mana                        = unused("mana"                         ).setCategoryName("Mana Stuff"),
 	rune                        = unused("rune"                         ).setCategoryName("Runes"),
@@ -533,6 +533,7 @@ public class OP {
 	boule                       = unused("boule"                        ).setCategoryName("Boules"),
 	lump                        = unused("lump"                         ).setCategoryName("Lumps"),
 	pellet                      = unused("pellet"                       ).setCategoryName("Pellets"),
+	tiny                        = unused("tiny"                         ).setCategoryName("Tiny"),
 	bars                        = unused("bars"                         ).setCategoryName("Bars"),
 	bar                         = unused("bar"                          ).setCategoryName("Bars");
 	

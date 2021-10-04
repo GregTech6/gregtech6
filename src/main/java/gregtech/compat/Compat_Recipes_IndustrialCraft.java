@@ -38,7 +38,6 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.GT_BaseCrop;
-import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
@@ -351,6 +350,10 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder     .addRecipe1(T, 16,   16, IL.IC2_Plantball.get(1)                            , IL.IC2_Biochaff.get(1));
 		RM.Shredder     .addRecipe1(T, 16,   16, 300, ST.mkic("weed", 1)                            , IL.IC2_Biochaff.get(1));
 		RM.Shredder     .addRecipe1(T, 16,   16, 600, ST.make(Blocks.vine, 1, W)                    , IL.IC2_Biochaff.get(1));
+		if (IL.HBM_Biomass.exists())
+		RM.Shredder     .addRecipe1(T, 16,   16, IL.HBM_Biomass.get(1)                              , IL.IC2_Biochaff.get(1));
+		if (IL.HBM_Biomass_Compressed.exists())
+		RM.Shredder     .addRecipe1(T, 16,   16, IL.HBM_Biomass_Compressed.get(1)                   , IL.IC2_Biochaff.get(1));
 		
 		RM.biomass(IL.IC2_Biochaff.get(1), 32);
 		
@@ -597,31 +600,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		addListener("blockSolidObsidian", "blockDustObsidian", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Press.addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), aEvent.mStack, IL.IC2_Compressed_Coal_Chunk.get(1));
 		}});
-		addListener(OD.flower, OD.itemPlantRemains, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		addListener(OD.baleGrass, OD.baleGrassDry, OD.baleGrassMoldy, OD.baleGrassRotten, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
 		}};
 		
-		OP.treeSapling.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.ic2_compressor(ST.amount( 4, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(4, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		OP.treeLeaves.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		OP.crop.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			OreDictItemData tData = OM.data(aEvent.mStack);
-			if (tData == null || !tData.hasValidPrefixMaterialData()) {
-			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			}
-		}});
 		
 		//                                                                                                                                                                                                                                                                                                                                                 TIER,SIZE,    ,AH,HA,CH,FD,DF,CO,WD
 		new GT_BaseCrop("Indigo"                , "Eloraam"                 , OP.plantGtBlossom.mat(MT.Indigo, 1)               , null                                                                                                                                                                  , OP.plantGtBlossom.mat(MT.Indigo, 4)               , 2, 4,     0, 1, 4, 1, 1, 0, 4, 0, new String[] {"Flower"      , "Color", "Ingredient"});

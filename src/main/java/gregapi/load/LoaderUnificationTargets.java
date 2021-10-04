@@ -847,7 +847,13 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Zr                     , MD.HBM, "item.powder_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Zr                     , MD.HBM, "item.nugget_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Zr                     , MD.HBM, "item.ingot_zirconium"            , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Be                     , MD.HBM, "item.powder_beryllium"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Be                     , MD.HBM, "item.nugget_beryllium"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Be                     , MD.HBM, "item.billet_beryllium"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Be                     , MD.HBM, "item.ingot_beryllium"            , 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Be                     , MD.HBM, "tile.block_beryllium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Bi                     , MD.HBM, "item.nugget_bismuth"             , 0);
+		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Bi                     , MD.HBM, "item.billet_bismuth"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Bi                     , MD.HBM, "item.ingot_bismuth"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Bi                     , MD.HBM, "tile.block_bismuth"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Co_60                  , MD.HBM, "item.powder_co60"                , 0);

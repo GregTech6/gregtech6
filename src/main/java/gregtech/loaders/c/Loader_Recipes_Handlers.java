@@ -238,6 +238,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtBlossom                  , 8, NF,  16,16,     0, NF, null, 0, NI, IL.IC2_Plantball.get(1), F, F, F, ANTIMATTER.NOT));
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtTwig                     , 4, NF,  16,16,     0, NF, null, 0, NI, IL.IC2_Plantball.get(1), F, F, F, ANTIMATTER.NOT));
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtWart                     , 8, NF,  16,16,     0, NF, null, 0, NI, IL.IC2_Plantball.get(1), F, F, F, ANTIMATTER.NOT));
+		} else if (IL.HBM_Biomass.exists()) {
+		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtBerry                    ,16, NF,  16,16,     0, NF, null, 0, NI, IL.HBM_Biomass.get(1), F, F, F, ANTIMATTER.NOT));
+		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtBlossom                  , 8, NF,  16,16,     0, NF, null, 0, NI, IL.HBM_Biomass.get(1), F, F, F, ANTIMATTER.NOT));
+		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtTwig                     , 4, NF,  16,16,     0, NF, null, 0, NI, IL.HBM_Biomass.get(1), F, F, F, ANTIMATTER.NOT));
+		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtWart                     , 8, NF,  16,16,     0, NF, null, 0, NI, IL.HBM_Biomass.get(1), F, F, F, ANTIMATTER.NOT));
 		}
 		
 		RM.Press                .add(new RecipeMapHandlerPrefix(toolHeadArrow                   , 1, NF,  16,16,     0, NF, arrowGtWood     , 1, OP.arrowGtWood     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
