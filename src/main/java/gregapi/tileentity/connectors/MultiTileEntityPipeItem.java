@@ -131,6 +131,10 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_monkeywrench)) {
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			if (getAdjacentTileEntity(aTargetSide).mTileEntity instanceof ITileEntityItemPipe) {
+				if (aChatReturn != null) aChatReturn.add("Will not work between two Item Pipes!");
+				return 0;
+			}
 			if (FACE_CONNECTED[aTargetSide][mDisabledInputs]) {
 				if (FACE_CONNECTED[aTargetSide][mDisabledOutputs]) {
 					mDisabledInputs  ^= B[aTargetSide];
