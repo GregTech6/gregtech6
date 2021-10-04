@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.FL;
 import gregapi.data.IL;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -41,8 +40,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
-	public MultiItemBottles() {
-		super(MD.GT.mID, "gt.multiitem.bottles");
+	public MultiItemBottles(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Bottles", this, (short)1600));
 	}
 	

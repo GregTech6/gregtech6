@@ -409,15 +409,15 @@ public final class OreDictManager {
 		
 		if (mAutoBlackListedNames.contains(aEvent.Name) || mAutoBlackListedMods.contains(aModID)) addToBlacklist_(aEvent.Ore);
 		
-		if (aPrefix == null) aPrefix = OreDictPrefix.get(aEvent.Name);
-		
 		addItemData_(aEvent.Ore, OreDictItemData.copy(mStringToItemDataMappings.get(aEvent.Name)));
 		
 		boolean aNotAlreadyRegisteredName = mAlreadyRegisteredNames.add(aEvent.Name);
 		
+		if (aPrefix == null) aPrefix = OreDictPrefix.get(aEvent.Name);
 		if (aPrefix == null) {
 			if (addKnownName(aEvent.Name)) mUnknownNames.add(aEvent.Name);
 		} else {
+			if (aPrefix == OP.nugget) registerOreSafe(aEvent.Name.replaceFirst(aPrefix.mNameInternal, OP.tiny.mNameInternal), aEvent.Ore);
 			if (aPrefix != aPrefix.mTargetRegistration) {
 				registerOreSafe(aEvent.Name.replaceFirst(aPrefix.mNameInternal, aPrefix.mTargetRegistration.mNameInternal), aEvent.Ore);
 				return;

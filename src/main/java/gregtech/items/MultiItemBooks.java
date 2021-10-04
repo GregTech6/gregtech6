@@ -27,7 +27,6 @@ import java.util.Random;
 import gregapi.data.CS.BooksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.TC;
@@ -46,8 +45,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 
 public class MultiItemBooks extends MultiItemRandom {
-	public MultiItemBooks() {
-		super(MD.GT.mID, "gt.multiitem.books");
+	public MultiItemBooks(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		OM.reg(OD.craftingBook, ST.make(this, 1, W));
 		BooksGT.BOOK_REGISTER.put(this, W, (byte)3);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Books", this, (short)32000));

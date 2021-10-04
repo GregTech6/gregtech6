@@ -41,8 +41,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 
 public class MultiItemTechnological extends MultiItemRandom {
-	public MultiItemTechnological() {
-		super(MD.GT.mID, "gt.multiitem.technological");
+	public MultiItemTechnological(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Technology", this, (short)30501));
 	}
 	

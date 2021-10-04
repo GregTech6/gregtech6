@@ -45,13 +45,13 @@ public class Loader_Items implements Runnable {
 	public void run() {
 		PrefixItem tItem;
 		
-		ItemsGT.TECH       = new MultiItemTechnological();
-		ItemsGT.TOOLS      = new MultiItemRandomTools();
-		ItemsGT.CANS       = new MultiItemCans();
-		ItemsGT.FOOD       = new MultiItemFood();
-		ItemsGT.BOTTLES    = new MultiItemBottles();
-		ItemsGT.BOOKS      = new MultiItemBooks();
-		ItemsGT.BUMBLEBEES = new MultiItemBumbles();
+		ItemsGT.TECH       = new MultiItemTechnological(MD.GT.mID, "gt.multiitem.technological");
+		ItemsGT.TOOLS      = new MultiItemRandomTools  (MD.GT.mID, "gt.multiitem.randomtools");
+		ItemsGT.CANS       = new MultiItemCans         (MD.GT.mID, "gt.multiitem.cans");
+		ItemsGT.FOOD       = new MultiItemFood         (MD.GT.mID, "gt.multiitem.food");
+		ItemsGT.BOTTLES    = new MultiItemBottles      (MD.GT.mID, "gt.multiitem.bottles");
+		ItemsGT.BOOKS      = new MultiItemBooks        (MD.GT.mID, "gt.multiitem.books");
+		ItemsGT.BUMBLEBEES = new MultiItemBumbles      (MD.GT.mID, "gt.multiitem.bumblebee");
 		
 		ItemsGT.ALL_MULTI_ITEMS[0] = ItemsGT.TECH;
 		ItemsGT.ALL_MULTI_ITEMS[1] = ItemsGT.TOOLS;

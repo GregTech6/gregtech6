@@ -62,8 +62,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
 public class MultiItemRandomTools extends MultiItemRandom implements IItemRottable {
-	public MultiItemRandomTools() {
-		super(MD.GT.mID, "gt.multiitem.randomtools");
+	public MultiItemRandomTools(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Equipment", this, (short)5008));
 	}
 	

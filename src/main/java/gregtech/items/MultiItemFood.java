@@ -21,7 +21,7 @@ package gregtech.items;
 
 import static gregapi.data.CS.*;
 
-import gregapi.data.*;
+import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.BushesGT;
 import gregapi.data.CS.FluidsGT;
@@ -31,6 +31,14 @@ import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.CS.ToolsGT;
+import gregapi.data.FL;
+import gregapi.data.IL;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.OP;
+import gregapi.data.RM;
+import gregapi.data.TC;
+import gregapi.data.TD;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -57,8 +65,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
 public class MultiItemFood extends MultiItemRandom implements IItemRottable {
-	public MultiItemFood() {
-		super(MD.GT.mID, "gt.multiitem.food");
+	public MultiItemFood(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Nature & Foods", this, (short)12000));
 	}
 

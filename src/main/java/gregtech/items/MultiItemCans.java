@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import gregapi.data.CS.Sandwiches;
 import gregapi.data.IL;
-import gregapi.data.MD;
 import gregapi.data.TC;
 import gregapi.data.TD;
 import gregapi.item.CreativeTab;
@@ -40,8 +39,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 
 public class MultiItemCans extends MultiItemRandom implements IItemRottable {
-	public MultiItemCans() {
-		super(MD.GT.mID, "gt.multiitem.cans");
+	public MultiItemCans(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Cans", this, (short)74));
 	}
 	

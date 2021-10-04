@@ -62,8 +62,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee {
-	public MultiItemBumbles() {
-		super(MD.GT.mID, "gt.multiitem.bumblebee");
+	public MultiItemBumbles(String aModID, String aUnlocalized) {
+		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Bumblebees", this, (short)2));
 		if (!SHOW_BUMBLEBEES) ST.hide(this);
 	}

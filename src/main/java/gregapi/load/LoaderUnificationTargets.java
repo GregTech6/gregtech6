@@ -839,13 +839,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.OREMATS.Coltan         , MD.HBM, "item.fragment_coltan"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.OREMATS.Coltan         , MD.HBM, "tile.block_coltan"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.OREMATS.Tantalite      , MD.HBM, "item.powder_coltan"              , 0);
-	//  OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ta                     , MD.HBM, "item.powder_tantalium"           , 0); // Does not exist (yet?)
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ta                     , MD.HBM, "item.powder_tantalium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ta                     , MD.HBM, "item.gem_tantalium"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Ta                     , MD.HBM, "item.nugget_tantalium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ta                     , MD.HBM, "item.ingot_tantalium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Ta                     , MD.HBM, "tile.block_tantalium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Zr                     , MD.HBM, "item.powder_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Zr                     , MD.HBM, "item.nugget_zirconium"           , 0);
+		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Zr                     , MD.HBM, "item.billet_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Zr                     , MD.HBM, "item.ingot_zirconium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Be                     , MD.HBM, "item.powder_beryllium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Be                     , MD.HBM, "item.nugget_beryllium"           , 0);
