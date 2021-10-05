@@ -612,7 +612,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		RM.BumbleQueens.addFakeRecipe(F, ST.array(ST.make(this, 1, aSpeciesID+2), ST.make(this, 1, aSpeciesID+7)), tOutputs, null, tChances, null, null, 0, 0, 0);
 	}
 	
-	private static boolean checkFlowers(World aWorld, int aX, int aY, int aZ) {
+	public static boolean checkFlowers(World aWorld, int aX, int aY, int aZ) {
 		Block aBlock = WD.block(aWorld, aX, aY, aZ, F);
 		if (aBlock == NB) return F;
 		if (aBlock == Blocks.flower_pot) {
