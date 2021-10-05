@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.misc;
+package gregtech.tileentity.placeables;
 
 import static gregapi.data.CS.*;
 

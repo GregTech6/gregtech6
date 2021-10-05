@@ -37,7 +37,7 @@ import gregapi.data.MT;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
-import gregtech.tileentity.misc.MultiTileEntityCoin;
+import gregtech.tileentity.placeables.MultiTileEntityCoin;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;

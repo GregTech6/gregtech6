@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.misc;
+package gregtech.tileentity.placeables;
 
 import static gregapi.data.CS.*;
 
@@ -36,10 +36,10 @@ import net.minecraft.util.MovingObjectPosition;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPlate extends MultiTileEntityPlaceable {
+public class MultiTileEntityPlateGem extends MultiTileEntityPlaceable {
 	public static IIconContainer
-	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/placeables/plate/sides"),
-	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/placeables/plate/top");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/placeables/plateGem/sides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/placeables/plateGem/top");
 	
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
@@ -63,8 +63,8 @@ public class MultiTileEntityPlate extends MultiTileEntityPlaceable {
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, 0, 0, 1, UT.Code.divup(mSize, 4) / 16.0F, 1);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return mSize < 4 ? null : box(0, 0, 0, 1, (mSize / 4) / 16.0F, 1);}
 	
-	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget) {return OP.plate.mat(mMaterial, 1);}
-	@Override public ItemStack getStackFromBlock(byte aSide) {return OP.plate.mat(mMaterial, 1);}
+	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget) {return OP.plateGem.mat(mMaterial, 1);}
+	@Override public ItemStack getStackFromBlock(byte aSide) {return OP.plateGem.mat(mMaterial, 1);}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.plate";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.plategem";}
 }

@@ -29,7 +29,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregtech.tileentity.misc.MultiTileEntityCoin;
+import gregtech.tileentity.placeables.MultiTileEntityCoin;
 import gregtech.worldgen.ChestGenHooksChestReplacer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

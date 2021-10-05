@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -17,15 +17,20 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.misc;
+package gregtech.tileentity.placeables;
 
-import gregapi.data.IL;
+import static gregapi.data.CS.*;
+
+import gregapi.code.ArrayListNoNulls;
 import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityStickPlaced extends MultiTileEntityStick {
-	@Override public ItemStack getDefaultStick(int aAmount) {return IL.Stick.get(1);}
-	@Override public String getTileEntityName() {return "gt.multitileentity.stick.placed";}
+public class MultiTileEntityRockPlaced extends MultiTileEntityRock {
+	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return new ArrayListNoNulls<>(F, mRock);}
+	
+	@Override public ItemStack getDefaultRock(int aAmount) {return mRock;}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.rock.placed";}
 }

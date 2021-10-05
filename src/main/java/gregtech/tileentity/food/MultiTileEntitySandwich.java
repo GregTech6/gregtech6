@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.misc;
+package gregtech.tileentity.food;
 
 import static gregapi.data.CS.*;
 
@@ -34,6 +34,7 @@ import gregapi.data.CS.Sandwiches;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
+import gregapi.data.OD;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.food.FoodStatFluid;
@@ -59,14 +60,17 @@ import squeek.applecore.api.food.FoodValues;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_CanPlace, IMTE_OnItemRightClick, IMTE_AddToolTips, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
+public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_IsProvidingWeakPower, IMTE_IsProvidingStrongPower, IMTE_GetComparatorInputOverride, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_CanPlace, IMTE_OnItemRightClick, IMTE_AddToolTips, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
 	public ItemStack[] mStacks = new ItemStack[16];
 	public byte[] mDisplay = {(byte)254, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255, (byte)255};
-	public byte mSize = 2;
+	public byte mSize = 1;
+	public boolean mRedstone = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_REDSTONE)) mRedstone = aNBT.getBoolean(NBT_REDSTONE);
+		
 		for (int i = 0; i < mStacks.length; i++) mStacks[i] = ST.load(aNBT, "sandwich."+i);
 		
 		// Default Sandwich
@@ -90,12 +94,14 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_REDSTONE, mRedstone);
 		for (int i = 0; i < mStacks.length; i++) ST.save(aNBT, "sandwich."+i, mStacks[i]);
 	}
 	
 	@Override
 	public final NBTTagCompound writeItemNBT(NBTTagCompound aNBT) {
 		aNBT = super.writeItemNBT(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_REDSTONE, mRedstone);
 		for (int i = 0; i < mStacks.length; i++) ST.save(aNBT, "sandwich."+i, ST.amount(1, mStacks[i]));
 		return aNBT;
 	}
@@ -138,16 +144,31 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	
 	public int addIngredient(ItemStack aStack) {
-		// Do not allow invalid Stacks or adding the same ingredient twice.
-		if (ST.invalid(aStack) || ST.equal(getIngredientTop(), aStack)) return 0;
+		// Do not allow invalid Stacks.
+		if (ST.invalid(aStack)) return 0;
+		// Make sure the Sandwich actually is properly set up before trying to do Stuff to it.
+		updateSandwich();
+		// Do not allow adding the same ingredient twice in a row.
+		if (ST.equal(getIngredientTop(), aStack)) return 0;
 		// Make sure to deduct the proper amount of Stuff.
 		int rStackSize = getIngredientCount();
-		// Bottles coutn as 4 times the value! :D
+		// Bottles count as 4 times the value! :D
 		if (IL.Bottle_Empty.equal(ST.container(aStack, T), T, T)) rStackSize = (int)UT.Code.divup(rStackSize, 4);
 		// Check if the Stacksize is correct.
 		if (aStack.stackSize < rStackSize) return 0;
-		// Make sure the Sandwich actually is properly set up before trying to do Stuff to it.
-		updateSandwich();
+		// Special Case for Redstone.
+		if (!mRedstone && OD.itemRedstone.is(aStack)) {
+			// Make the Sandwich output Redstone depending on Size.
+			mRedstone = T;
+			// Update the Sandwich.
+			updateSandwich();
+			// Update Blocks.
+			causeBlockUpdate();
+			// Play the Sound of Collecting an Item.
+			playCollect();
+			// Return how much Redstone was used.
+			return rStackSize;
+		}
 		// More than a full Block is not really an option.
 		if (mSize >= 16) return 0;
 		// This should never ever happen again...
@@ -169,6 +190,8 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		mStacks[mSize] = ST.amount(rStackSize, aStack);
 		// Update the Sandwich.
 		updateSandwich();
+		// Update Blocks.
+		causeBlockUpdate();
 		// Play the Sound of Collecting an Item.
 		playCollect();
 		// Return how many of the Ingredient was used.
@@ -209,9 +232,13 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	}
 	public void updateSandwichSize() {
 		for (byte i = 0; i < mDisplay.length; i++) if (mDisplay[i] != (byte)255) {
-			mSize = (byte)UT.Code.bind(0, 16, i + Math.max(1, Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]));
+			mSize = (byte)UT.Code.bind(1, 16, i + Math.max(1, Sandwiches.INGREDIENT_MODEL_THICKNESS[UT.Code.unsignB(mDisplay[i])]));
 		}
 	}
+	
+	@Override public int getComparatorInputOverride(byte         aSide) {return             UT.Code.bind4(mSize-1)    ;}
+	@Override public int isProvidingStrongPower    (byte aOppositeSide) {return mRedstone ? UT.Code.bind4(mSize-1) : 0;}
+	@Override public int isProvidingWeakPower      (byte aOppositeSide) {return mRedstone ? UT.Code.bind4(mSize-1) : 0;}
 	
 	@Override
 	public boolean canPlace(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {

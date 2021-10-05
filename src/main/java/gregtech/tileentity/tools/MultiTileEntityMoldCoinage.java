@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -47,7 +47,7 @@ import gregapi.tileentity.machines.ITileEntityAnvil;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregtech.tileentity.misc.MultiTileEntityCoin;
+import gregtech.tileentity.placeables.MultiTileEntityCoin;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

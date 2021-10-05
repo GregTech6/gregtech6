@@ -42,7 +42,7 @@ import gregapi.tileentity.base.TileEntityBase10Attachment;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregtech.tileentity.misc.MultiTileEntitySandwich;
+import gregtech.tileentity.food.MultiTileEntitySandwich;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.item.EntityXPOrb;
