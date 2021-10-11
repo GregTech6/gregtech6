@@ -49,7 +49,7 @@ public class Behavior_Plunger_Essentia extends AbstractBehaviorDefault {
 		if (aWorld.isRemote) return F;
 		TileEntity aTileEntity = WD.te(aWorld, aX, aY, aZ, T);
 		if (aTileEntity instanceof IEssentiaTransport) {
-			if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, T)) {
+			if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
 				UT.Sounds.send(aWorld, SFX.IC_TRAMPOLINE, 1.0F, -1, aX, aY, aZ);
 				for (ForgeDirection tDirection : ForgeDirection.VALID_DIRECTIONS) ((IEssentiaTransport)aTileEntity).takeEssentia(((IEssentiaTransport)aTileEntity).getEssentiaType(tDirection), ((IEssentiaTransport)aTileEntity).getEssentiaAmount(tDirection), tDirection);
 				return T;

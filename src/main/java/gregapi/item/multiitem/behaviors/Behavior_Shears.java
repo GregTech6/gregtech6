@@ -46,7 +46,7 @@ public class Behavior_Shears extends AbstractBehaviorDefault {
 	public boolean onLeftClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		if (aEntity instanceof IShearable) {
 			if (aPlayer.worldObj.isRemote) return T;
-			if (((IShearable)aEntity).isShearable(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ) && ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, T)) {
+			if (((IShearable)aEntity).isShearable(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ) && ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
 				for(ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, aStack))) {
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
 				}

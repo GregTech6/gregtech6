@@ -50,7 +50,7 @@ public class Behavior_Plunger_Fluid extends AbstractBehaviorDefault {
 		TileEntity aTileEntity = WD.te(aWorld, aX, aY, aZ, T);
 		if (aTileEntity instanceof IFluidHandler) {
 			for (ForgeDirection tDirection : ForgeDirection.VALID_DIRECTIONS) if (((IFluidHandler)aTileEntity).drain(tDirection, 1000, F) != null) {
-				if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, T)) {
+				if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
 					((IFluidHandler)aTileEntity).drain(tDirection, 1000, T);
 					UT.Sounds.send(aWorld, SFX.IC_TRAMPOLINE, 1.0F, -1, aX, aY, aZ);
 					return T;

@@ -258,12 +258,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 						}
 						if (tDamageToDeal < tFullDamage) {
 							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, T);
+							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
 						}
 					} else {
 						if (aEntity.attackEntityFrom(tStats.getDamageSource(aPlayer, aEntity), tFullDamage)) {
 							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, T);
+							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
 						}
 					}
 				}
