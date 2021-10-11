@@ -405,6 +405,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return F;
 	}
 	
+	@Override
+	public boolean destroyCheck(ItemStack aStack, EntityPlayer aPlayer) {
+		if (getToolDamage(aStack) >= getToolMaxDamage(aStack)) doDamage(aStack, 0, aPlayer, T);
+		return super.destroyCheck(aStack, aPlayer);
+	}
+	
 	public boolean doDamage(ItemStack aStack, long aAmount) {return doDamage(aStack, aAmount, null, T);}
 	public boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer) {return doDamage(aStack, aAmount, aPlayer, T);}
 	public boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer, boolean aAllowBreaking) {

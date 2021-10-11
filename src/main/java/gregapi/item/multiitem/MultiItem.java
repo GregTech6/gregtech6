@@ -145,14 +145,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public boolean itemInteractionForEntity(ItemStack aStack, EntityPlayer aPlayer, EntityLivingBase aEntity) {
 		if (!aPlayer.worldObj.isRemote) useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		if (!isItemStackUsable(aStack)) return F;
+		if (destroyCheck(aStack, aPlayer)) return F;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onRightClickEntity(this, aStack, aPlayer, aEntity)) {
-				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+				destroyCheck(aStack, aPlayer);
 				return T;
 			}
-			if (aStack.stackSize <= 0) {
-				aPlayer.destroyCurrentEquippedItem();
+			if (destroyCheck(aStack, aPlayer)) {
 				return F;
 			}
 		} catch(Throwable e) {
@@ -165,14 +165,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		if (!aPlayer.worldObj.isRemote) useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		if (!isItemStackUsable(aStack)) return F;
+		if (destroyCheck(aStack, aPlayer)) return F;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onLeftClickEntity(this, aStack, aPlayer, aEntity)) {
-				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+				destroyCheck(aStack, aPlayer);
 				return T;
 			}
-			if (aStack.stackSize <= 0) {
-				aPlayer.destroyCurrentEquippedItem();
+			if (destroyCheck(aStack, aPlayer)) {
 				return F;
 			}
 		} catch(Throwable e) {
@@ -186,14 +186,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (MD.BbLC.owns(aWorld, aX, aY, aZ)) return F;
 		if (!aWorld.isRemote) useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		if (!isItemStackUsable(aStack)) return F;
+		if (destroyCheck(aStack, aPlayer)) return F;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onItemUse(this, aStack, aPlayer, aWorld, aX, aY, aZ, UT.Code.side(aSide), hitX, hitY, hitZ)) {
-				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+				destroyCheck(aStack, aPlayer);
 				return T;
 			}
-			if (aStack.stackSize <= 0) {
-				aPlayer.destroyCurrentEquippedItem();
+			if (destroyCheck(aStack, aPlayer)) {
 				return F;
 			}
 		} catch(Throwable e) {
@@ -207,18 +207,26 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (MD.BbLC.owns(aWorld, aX, aY, aZ)) return F;
 		if (!aWorld.isRemote) useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		if (!isItemStackUsable(aStack)) return F;
+		if (destroyCheck(aStack, aPlayer)) return F;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 		if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) try {
 			if (tBehavior.onItemUseFirst(this, aStack, aPlayer, aWorld, aX, aY, aZ, UT.Code.side(aSide), hitX, hitY, hitZ)) {
-				if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
+				destroyCheck(aStack, aPlayer);
 				return T;
 			}
-			if (aStack.stackSize <= 0) {
-				aPlayer.destroyCurrentEquippedItem();
+			if (destroyCheck(aStack, aPlayer)) {
 				return F;
 			}
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
+		}
+		return F;
+	}
+	
+	public boolean destroyCheck(ItemStack aStack, EntityPlayer aPlayer) {
+		if (aStack.stackSize <= 0) {
+			if (aPlayer != null) aPlayer.destroyCurrentEquippedItem();
+			return T;
 		}
 		return F;
 	}
