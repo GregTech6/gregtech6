@@ -86,7 +86,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.StannicChloride   .liquid(U * 5, T), FL.mul(tWater, 6      )), FL.array(MT.HCl  .gas   ( 8*U , T), MT.O.gas(2*U , F)), OM.dust(MT.Sn));
 		
 		for (String tOxygen : FluidsGT.OXYGEN) if (FL.exists(tOxygen)) {
-		RM.Lightning    .addRecipe1(T,256,   64, ST.tag(1), FL.array(FL.mul(tWater, 3), FL.make(tOxygen, 1000)), MT.H2O2.liquid(U*4, F), ZL_IS);
+		RM.Lightning    .addRecipe1(T, 64, 1024, ST.tag(1), FL.array(FL.mul(tWater, 3), FL.make(tOxygen, 1000)), MT.H2O2.liquid(U*4, F), ZL_IS);
 		}
 		
 		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Mn), FL.mul(tWater, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
