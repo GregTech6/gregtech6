@@ -792,6 +792,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("dustSoylentGreen"                , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration("dustTofu"                        , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration(OD.itemEgg                        , "listAllegg");
+		OreDictManager.INSTANCE.addReRegistration(OD.container250seedoil            , "listAllcookingoil");
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000seedoil           , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodWhaleoil"                    , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodFishoil"                     , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodSeedoil"                     , "listAllcookingoil");
@@ -911,6 +913,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("bucketSoymilk"                   , OD.container1000soymilk);
 		OreDictManager.INSTANCE.addReRegistration("bucketSoyMilk"                   , OD.container1000soymilk);
 		OreDictManager.INSTANCE.addReRegistration("bucketLatex"                     , OD.container1000latex);
+		OreDictManager.INSTANCE.addReRegistration("bucketSeedoil"                   , OD.container1000seedoil);
 		OreDictManager.INSTANCE.addReRegistration("bucketCreosote"                  , OD.container1000creosote);
 		OreDictManager.INSTANCE.addReRegistration("bucketLubricant"                 , OD.container1000lubricant);
 		OreDictManager.INSTANCE.addReRegistration("cellWater"                       , OD.container1000water);
@@ -920,6 +923,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cellSoymilk"                     , OD.container1000soymilk);
 		OreDictManager.INSTANCE.addReRegistration("cellSoyMilk"                     , OD.container1000soymilk);
 		OreDictManager.INSTANCE.addReRegistration("cellLatex"                       , OD.container1000latex);
+		OreDictManager.INSTANCE.addReRegistration("cellSeedoil"                     , OD.container1000seedoil);
 		OreDictManager.INSTANCE.addReRegistration("cellCreosote"                    , OD.container1000creosote);
 		OreDictManager.INSTANCE.addReRegistration("cellLubricant"                   , OD.container1000lubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250glue               , OD.itemGlue);
@@ -928,6 +932,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000poison            , OD.itemPoison);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250lubricant          , OD.itemLubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000lubricant         , OD.itemLubricant);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250seedoil            , OD.itemLubricantEarly);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000seedoil           , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLubricant                  , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.OliveOil)        , OD.itemLubricantEarly);
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.SunflowerOil)    , OD.itemLubricantEarly);

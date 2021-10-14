@@ -43,6 +43,7 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Steamcraft 2 Recipes.");
+		CR.delate(MD.SC2, "BlockSlate", "BlockLightSlate", "BlockRawBlackSlateStairs", "BlockRawBlueSlateStairs", "BlockRawGreySlateStairs", "BlockRawLightBlueSlateStairs", "BlockRawLightRedSlateStairs", "BlockRawRedSlateStairs", "BlockBrickBlackSlateStairs", "BlockBrickBlueSlateStairs", "BlockBrickGreySlateStairs", "BlockBrickLightBlueSlateStairs", "BlockBrickLightRedSlateStairs", "BlockBrickRedSlateStairs", "BlockCobbleBlackSlateStairs", "BlockCobbleBlueSlateStairs", "BlockCobbleGreySlateStairs", "BlockCobbleLightBlueSlateStairs", "BlockCobbleLightRedSlateStairs", "BlockCobbleRedSlateStairs");
 		CR.delate(ST.make(MD.SC2, "ItemTeapot"  , 1, 1));
 		CR.delate(ST.make(MD.SC2, "ItemResource", 1, 2));
 		if (MD.FZ.mLoaded) {
@@ -63,6 +64,32 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 3), ST.make(MD.SC2, "BlockLightSlate", 1, 0));
 		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 4), ST.make(MD.SC2, "BlockLightSlate", 1, 1));
 		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 5), ST.make(MD.SC2, "BlockLightSlate", 1, 2));
+		
+		CR.shaped(ST.make(MD.SC2, "BlockSlate"                     , 4, 6), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 0));
+		CR.shaped(ST.make(MD.SC2, "BlockSlate"                     , 4, 7), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 1));
+		CR.shaped(ST.make(MD.SC2, "BlockSlate"                     , 4, 8), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 2));
+		CR.shaped(ST.make(MD.SC2, "BlockLightSlate"                , 4, 6), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 0));
+		CR.shaped(ST.make(MD.SC2, "BlockLightSlate"                , 4, 7), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 1));
+		CR.shaped(ST.make(MD.SC2, "BlockLightSlate"                , 4, 8), CR.DEF    , "SS", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 2));
+		
+		CR.shaped(ST.make(MD.SC2, "BlockRawBlueSlateStairs"        , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 0));
+		CR.shaped(ST.make(MD.SC2, "BlockRawBlackSlateStairs"       , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 1));
+		CR.shaped(ST.make(MD.SC2, "BlockRawRedSlateStairs"         , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 2));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleBlueSlateStairs"     , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 3));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleBlackSlateStairs"    , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 4));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleRedSlateStairs"      , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 5));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickBlueSlateStairs"      , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 6));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickBlackSlateStairs"     , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 7));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickRedSlateStairs"       , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockSlate"     , 1, 8));
+		CR.shaped(ST.make(MD.SC2, "BlockRawLightBlueSlateStairs"   , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 0));
+		CR.shaped(ST.make(MD.SC2, "BlockRawGreySlateStairs"        , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 1));
+		CR.shaped(ST.make(MD.SC2, "BlockRawLightRedSlateStairs"    , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 2));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleLightBlueSlateStairs", 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 3));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleGreySlateStairs"     , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 4));
+		CR.shaped(ST.make(MD.SC2, "BlockCobbleLightRedSlateStairs" , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 5));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickLightBlueSlateStairs" , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 6));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickGreySlateStairs"      , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 7));
+		CR.shaped(ST.make(MD.SC2, "BlockBrickLightRedSlateStairs"  , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 8));
 		
 		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		

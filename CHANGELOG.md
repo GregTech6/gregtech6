@@ -54,6 +54,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [ADDED] Better Drying and Smelting Recipes for Snow and Ice related Stuffs.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
 [ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
+[ADDED] Wooden Seed Oil Bucket. Should be mostly compatible with Forestry.
 [ADDED] A large variety of Dusts can be used as Sandwich Ingredient now. Most will default to having a Food Value of 1, if they dont happen to be normally edible.
 [ADDED] Redstone can be used as Sandwich Ingredient now. It will make Sandwich Blocks emit strong Redstone depending on their Tallness. It's a special case and technically does NOT count as edible nor visible Ingredient.
 [ADDED] Some Egg related Food Items, most of which are Sandwich Compatible. Mayo now needs Egg Yolk instead of Egg by the way.

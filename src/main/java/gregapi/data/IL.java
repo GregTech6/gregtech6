@@ -59,7 +59,7 @@ public enum IL implements IItemContainer {
 	FR_Candle,
 	FR_Mulch, FR_Fertilizer, FR_Compost,
 	FR_HoneyPot, FR_Ambrosia, FR_TinCapsule, FR_WaxCapsule, FR_RefractoryCapsule, FR_MagicCapsule,
-	FR_Water_Can, FR_Water_Capsule, FR_Water_RefractoryCapsule, FR_Lava_RefractoryCapsule, FR_Honey_Bucket, FR_Honey_Can, FR_Honey_Capsule, FR_Honey_RefractoryCapsule,
+	FR_Water_Can, FR_Water_Capsule, FR_Water_RefractoryCapsule, FR_Lava_RefractoryCapsule, FR_Honey_Bucket, FR_Honey_Can, FR_Honey_Capsule, FR_Honey_RefractoryCapsule, FR_SeedOil_Bucket, FR_SeedOil_Can, FR_SeedOil_Capsule, FR_SeedOil_RefractoryCapsule,
 	FR_Stick,
 	FR_Scoop,
 	FR_Casing_Impregnated, FR_Casing_Sturdy, FR_Casing_Hardened,

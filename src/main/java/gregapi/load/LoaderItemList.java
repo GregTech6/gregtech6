@@ -1877,6 +1877,10 @@ public class LoaderItemList implements Runnable {
 		IL.FR_WaxCapsule                        .set(ST.make(MD.FR, "waxCapsule"                            , 1, 0), new OreDictItemData(MT.WaxBee, 3*U4));
 		IL.FR_RefractoryCapsule                 .set(ST.make(MD.FR, "refractoryEmpty"                       , 1, 0), new OreDictItemData(MT.WaxRefractory, 3*U4));
 		IL.FR_MagicCapsule                      .set(ST.make(MD.FRMB, "capsule.magic"                       , 1, 0), new OreDictItemData(MT.WaxMagic, 3*U4));
+		IL.FR_SeedOil_Bucket                    .set(ST.make(MD.FR, "bucketSeedOil"                         , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000seedoil, "bucketSeedoil");
+		IL.FR_SeedOil_Can                       .set(ST.make(MD.FR, "canSeedOil"                            , 1, 0), null, OD.container1000seedoil);
+		IL.FR_SeedOil_Capsule                   .set(ST.make(MD.FR, "waxCapsuleSeedOil"                     , 1, 0), null, OD.container1000seedoil);
+		IL.FR_SeedOil_RefractoryCapsule         .set(ST.make(MD.FR, "refractorySeedOil"                     , 1, 0), null, OD.container1000seedoil);
 		IL.FR_Honey_Bucket                      .set(ST.make(MD.FR, "bucketHoney"                           , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000honey, "bucketHoney");
 		IL.FR_Honey_Can                         .set(ST.make(MD.FR, "canHoney"                              , 1, 0), null, OD.container1000honey);
 		IL.FR_Honey_Capsule                     .set(ST.make(MD.FR, "waxCapsuleHoney"                       , 1, 0), null, OD.container1000honey);

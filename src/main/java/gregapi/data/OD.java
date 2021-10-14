@@ -63,6 +63,8 @@ public enum OD {
 	, container250soymilk
 	, container1000honey
 	, container250honey
+	, container1000seedoil
+	, container250seedoil
 	, container1000creosote
 	, container250creosote
 	, container1000rubbertreesap
