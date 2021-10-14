@@ -380,6 +380,7 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(null, MT.STONES.Gneiss, ST.block(MD.HBM, "tile.stone_gneiss")
 		, new StoneLayerOres(MT.Graphite                , U8 ,  0, 64)
 		, new StoneLayerOres(MT.Asbestos                , U8 ,  0, 48, ST.block(MD.HBM, "tile.ore_gneiss_asbestos"))
+		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.CH4               , U6 ,  0, 48, ST.block(MD.HBM, "tile.ore_gneiss_gas"    )) : null
 		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.OREMATS.Uraninite , U16,  0, 48, ST.block(MD.HBM, "tile.ore_gneiss_uranium")) : null
 		));
 		

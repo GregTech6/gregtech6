@@ -578,6 +578,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_coltan"                 , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_copper"                 , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_fluorite"               , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_gneiss_gas"             , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_gneiss_asbestos"        , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_gneiss_copper"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_gneiss_gold"            , null));
