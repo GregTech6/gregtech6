@@ -48,6 +48,8 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [CHANGED] Some Metals (typically the ones that the Furnace can do) were much cheaper to process in the Extruder than in Bending Machines, Wiremills and the likes. This is now fixed by making the other Machines cheaper in Power Usage for such Metals.
 [CHANGED] Stone Layers such as Coal, Salt, Bauxite and similar Ores, will now no longer generate below Y=24. They will generate (Deep)Slate instead in such cases. The (Deep)Slate Layer near Bedrock got removed again in favour of this Mechanic.
 [CHANGED] Bumblelyzer and Plantalyzer now use the actual parallel processing System instead of their own custom Variant.
+[CHANGED] If you break a Tool due to loss of Durability, you will now get Mining Fatique III and Weakness III applied for 15 seconds. This is so people stop using Stone Tools...
+[CHANGED] Anvils (and the used Hammers) will now lose much more Durability if you are under the Effect of Mining Fatique. The Effect of Haste will make the Anvil (and the used Hammers) lose less Durability though, making a Haste Beacon somewhat useful for example.
 [ADDED] Black, Blue and Red Versions of Meteoric Steel. Yes they are slightly better for Tools, than the regular colored Steel Variants and are ofcourse Magnetic.
 [ADDED] Better Drying and Smelting Recipes for Snow and Ice related Stuffs.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.

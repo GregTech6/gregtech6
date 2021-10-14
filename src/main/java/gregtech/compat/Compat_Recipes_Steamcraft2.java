@@ -57,6 +57,13 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 		CR.shaped(ST.make(MD.SC2, "ItemMachinePart"     , 1, 8), CR.DEF_REM_REV, "CRC", 'C', OP.plate.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber));
 		CR.shaped(ST.make(MD.SC2, "ItemElectricJarSmall", 1, 0), CR.DEF_REM_REV, "RCR", "GCG", "GGG", 'C', OP.stickLong.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber), 'G', OP.plate.dat(MT.Glass));
 		
+		RM.add_smelting(ST.make(MD.SC2, "BlockSlate"     , 1, 3), ST.make(MD.SC2, "BlockSlate"     , 1, 0));
+		RM.add_smelting(ST.make(MD.SC2, "BlockSlate"     , 1, 4), ST.make(MD.SC2, "BlockSlate"     , 1, 1));
+		RM.add_smelting(ST.make(MD.SC2, "BlockSlate"     , 1, 5), ST.make(MD.SC2, "BlockSlate"     , 1, 2));
+		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 3), ST.make(MD.SC2, "BlockLightSlate", 1, 0));
+		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 4), ST.make(MD.SC2, "BlockLightSlate", 1, 1));
+		RM.add_smelting(ST.make(MD.SC2, "BlockLightSlate", 1, 5), ST.make(MD.SC2, "BlockLightSlate", 1, 2));
+		
 		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		
 		RM.packunpack(ST.make(MD.SC2, "ItemSlimeRubber", 9, 0), ST.make(MD.SC2, "BlockCongealedSlime", 1, 0));

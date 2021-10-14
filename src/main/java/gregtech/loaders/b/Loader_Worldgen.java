@@ -414,7 +414,12 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.MIN, "slate")));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 4, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 4));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.PFAA, "mediumStone"), 3, ST.block(MD.PFAA, "mediumCobble"), 3));
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockSlate"), 0, ST.block(MD.SC2, "BlockSlate"), 3));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockSlate"), 1, ST.block(MD.SC2, "BlockSlate"), 4));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockSlate"), 2, ST.block(MD.SC2, "BlockSlate"), 5));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockLightSlate"), 0, ST.block(MD.SC2, "BlockLightSlate"), 3));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockLightSlate"), 1, ST.block(MD.SC2, "BlockLightSlate"), 4));
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate, MT.STONES.Slate, ST.block(MD.SC2, "BlockLightSlate"), 2, ST.block(MD.SC2, "BlockLightSlate"), 5));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Slate));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Quartzite, MT.RedSand, ST.block(MD.PFAA, "strongStone"), 9, ST.block(MD.PFAA, "strongCobble"), 9

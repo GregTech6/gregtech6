@@ -313,8 +313,8 @@ public class FluidTankGT implements IFluidTank {
 	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
 	
 	public String content() {return content("Empty");}
-	public String content(String aEmptyMessage) {return  mFluid == null ? aEmptyMessage : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
-	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+UT.Code.makeString(capacity())+" L)";}
+	public String content(String aEmptyMessage) {return  mFluid == null ? aEmptyMessage                     : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
+	public String contentcap() {return mFluid == null ? "Capacity: " + UT.Code.makeString(mCapacity) + " L" : UT.Code.makeString(amount()) + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+UT.Code.makeString(capacity())+" L)";}
 	
 	public Fluid fluid() {return mFluid == null ? null : mFluid.getFluid();}
 	

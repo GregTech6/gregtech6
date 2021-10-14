@@ -1068,6 +1068,18 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.SpaceRock                , ST.make(MD.GC_GALAXYSPACE, "barnardaEsubgrunt", 1, 0));
 		}
 		
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 0)); // Blue
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 1)); // Black
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 2)); // Red
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 3)); // Blue, Cobble
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 4)); // Black, Cobble
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockSlate"          , 1, 5)); // Red, Cobble
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 0)); // Light Blue
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 1)); // Gray
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 2)); // Light Red
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 3)); // Light Blue, Cobble
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 4)); // Gray, Cobble
+		OM.reg(OP.stone, MT.STONES.Slate                        , ST.make(MD.SC2, "BlockLightSlate"     , 1, 5)); // Light Red, Cobble
 		OM.reg(OP.stone, MT.STONES.Gneiss                       , ST.make(MD.HBM, "tile.stone_gneiss"   , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.HBM, "tile.basalt_smooth"  , 1, 0));
 		OM.reg(OP.stone, MT.STONES.Basalt                       , ST.make(MD.HBM, "tile.basalt"         , 1, 0));

@@ -103,14 +103,14 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				OreDictMaterialStack tMaterial = BlocksGT.oreSmallBedrock.getMaterialAtSide(worldObj, xCoord+i, yCoord-5, zCoord+j, SIDE_TOP);
 				mList.add(tMaterial.mMaterial);
 			} else if (IL.HBM_Bedrock_Coltan.equal(tBlock)) {
+				// These generate as single Blocks as far as I saw.
 				mList.add(MT.OREMATS.Coltan);
 				mList.add(MT.OREMATS.Coltan);
 				mList.add(MT.OREMATS.Columbite);
 				mList.add(MT.OREMATS.Tantalite);
 				tOverride = T;
 			} else if (IL.HBM_Bedrock_Oil.equal(tBlock)) {
-				mList.add(MT.Oilshale);
-				mList.add(MT.Oilshale);
+				// There is giant blobs of these, so I gotta make sure to not produce too much.
 				mList.add(MT.Oilshale);
 				tOverride = T;
 			} else if (!WD.bedrock(tBlock)) {

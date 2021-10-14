@@ -126,7 +126,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				ItemStack[] tOutputItems = tRecipe.getOutputs();
 				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
-				long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.getAbsoluteTotalPower()), 4));
+				// You lose more Durability if you are Fatiqued, but you lose less if you work with Haste.
+				long tDurability = UT.Entities.getDurabilityUse(aPlayer, Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.getAbsoluteTotalPower()), 4)));
 				mDurability -= tDurability;
 				if (mDurability <= 0) {
 					UT.Sounds.send(SFX.MC_BREAK, this);

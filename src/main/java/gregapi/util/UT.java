@@ -3212,6 +3212,18 @@ public class UT {
 			return F;
 		}
 		
+		public static int getPotionLevel(Entity aEntity, Potion aPotion) {
+			if (aPotion != null && aEntity instanceof EntityLivingBase) {
+				PotionEffect tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(aPotion);
+				return tEffect == null ? -1 : tEffect.getAmplifier();
+			}
+			return -1;
+		}
+		
+		public static long getDurabilityUse(Entity aEntity, long aOriginalDurabilityUsed) {
+			return UT.Code.divup(aOriginalDurabilityUsed * (getPotionLevel(aEntity, Potion.digSlowdown)+2), getPotionLevel(aEntity, Potion.digSpeed)+2);
+		}
+		
 		/** checks if a Player is actually a Player and not a FakePlayer or something. */
 		public static boolean isPlayer(Object aPlayer) {
 			return aPlayer instanceof EntityPlayerMP && !(aPlayer instanceof FakePlayer);
