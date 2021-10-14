@@ -107,14 +107,14 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 			// Do only once per second because the Item Callback can be slightly laggy. Even for GT6 Items.
 			if (SERVER_TIME % 20 == 1) {
 				if (COMPAT_EU_ITEM == null || mEnergyType != TD.Energy.EU) {
-					switch(UT.Code.bind3(mEnergy / (mInput * 40 * getSizeInventory()))) {
+					switch(UT.Code.bind3(mEnergy / (mInput * 40 * invsize()))) {
 					case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 40, this, worldObj, xCoord, yCoord, zCoord, T); break;
 					case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 20, this, worldObj, xCoord, yCoord, zCoord, T); break;
 					case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 20, this, worldObj, xCoord, yCoord, zCoord, T); break;
 					case 7: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)    && tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 40, this, worldObj, xCoord, yCoord, zCoord, T); break;
 					}
 				} else {
-					switch(UT.Code.bind3(mEnergy / (mInput * 40 * getSizeInventory()))) {
+					switch(UT.Code.bind3(mEnergy / (mInput * 40 * invsize()))) {
 					case 0: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 40, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack) && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput / 2, mOutput * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput * 40, T);} break;
 					case 1: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy += mOutput * ((IItemEnergy)tStack.getItem()).doEnergyExtraction(mEnergyType, tStack, mOutput, 20, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack) && COMPAT_EU_ITEM.provider(tStack) && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mOutput / 2, mOutput * 2)) mEnergy += COMPAT_EU_ITEM.decharge(tStack, mOutput * 20, T);} break;
 					case 6: for (ItemStack tStack : getInventory()) if (ST.valid(tStack)) {if (tStack.getItem() instanceof IItemEnergy) mEnergy -= mInput  * ((IItemEnergy)tStack.getItem()).doEnergyInjection (mEnergyType, tStack, mInput , 20, this, worldObj, xCoord, yCoord, zCoord, T); else if (COMPAT_EU_ITEM.is(tStack)                                    && !IL.IC2_EnergyCrystal.equal(tStack, T, T) && !IL.IC2_LapotronCrystal.equal(tStack, T, T) && COMPAT_EU_ITEM.insidevolt(tStack, mInput  / 2, mInput  * 2)) mEnergy -= COMPAT_EU_ITEM.charge  (tStack, mInput  * 20, T);} break;
@@ -160,7 +160,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		byte tActiveState = mActiveState;
 		if (mEnergy < mOutput) {
 			mActiveState = 0;
-		} else if (mEnergy >= mInput * 300 * getSizeInventory()) {
+		} else if (mEnergy >= mInput * 300 * invsize()) {
 			mActiveState = 1;
 		} else {
 			mActiveState = 2;
@@ -182,8 +182,8 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 			if (aDoInject) overcharge(aSize, aEnergyType);
 			return aAmount;
 		}
-		if (mEnergy >= mInput * 320 * getSizeInventory()) return 0;
-		long tInput = Math.min(mInput * 320 * getSizeInventory() - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
+		if (mEnergy >= mInput * 320 * invsize()) return 0;
+		long tInput = Math.min(mInput * 320 * invsize() - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 		while (tConsumed > 1 && (tConsumed-1) * aSize > mReceivablePower) tConsumed--;
 		if (aDoInject) {
 			mReceivablePower -= tConsumed * aSize;
@@ -195,7 +195,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientDefault(aPlayer.inventory, this, aGUIID);}
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonDefault(aPlayer.inventory, this, aGUIID);}
 	
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(invsize());}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aStack.getItem() instanceof IItemEnergy && (((IItemEnergy)aStack.getItem()).isEnergyType(mEnergyType, aStack, F) || ((IItemEnergy)aStack.getItem()).isEnergyType(mEnergyType, aStack, T));}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	
@@ -213,9 +213,10 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public long getProgressValue(byte aSide) {return mEnergy;}
-	@Override public long getProgressMax(byte aSide) {return mInput * 320 * getSizeInventory();}
+	@Override public long getProgressMax(byte aSide) {return mInput * 320 * invsize();}
 	
 	@Override public int getInventoryStackLimit() {return 1;}
+	@Override public int getMinimumInventorySize() {return 1;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
 	@Override public boolean getStateRunningPossible() {return mEnergy > mOutput;}

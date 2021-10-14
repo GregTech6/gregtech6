@@ -68,7 +68,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	}
 	
 	public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {
-		short tSize = aNBT.getShort(NBT_INV_SIZE);
+		int tSize = Math.max(getMinimumInventorySize(), aNBT.getShort(NBT_INV_SIZE));
 		return tSize > 0 ? new ItemStack[tSize] : ZL_IS;
 	}
 	
@@ -103,6 +103,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	@Override public void setInventorySlotContents(int aSlot, ItemStack aStack) {updateInventory(); mInventory[aSlot] = OM.get(aStack);}
 	@Override public boolean hasCustomInventoryName() {return getCustomName() != null;}
 	@Override public boolean isItemValidForSlot(int aSlot, ItemStack aStack) {return T;}
+	public int getMinimumInventorySize() {return 0;}
 	public boolean allowZeroStacks(int aSlot) {return F;}
 	public ItemStack[] getInventory() {return mInventory;}
 	public void setInventory(ItemStack[] aInventory) {mInventory = aInventory;}

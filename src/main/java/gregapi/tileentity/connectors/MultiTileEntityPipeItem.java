@@ -252,7 +252,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	
 	protected long getPipeContent() {return mTransferredItems;}
 	protected long getMaxPipeCapacity() {return Math.max(1, getPipeCapacity());}
-	protected long getPipeCapacity() {return getSizeInventory();}
+	protected long getPipeCapacity() {return invsize();}
 	
 	@Override
 	public void onConnectionChange(byte aPreviousConnections) {
@@ -266,6 +266,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	
 	protected int[] ACCESSIBLE_SLOTS;
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
+	@Override public int getMinimumInventorySize() {return 1;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public boolean isObstructingBlockAt(byte aSide) {return mBlocking;} // Btw, Wires have this but Pipes don't. This is because Wires are flexible, while Pipes aren't.
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {if (!connected(aSide) || FACE_CONNECTED[aSide][mDisabledInputs]) return F; if (!UT.Code.containsSomething(getInventory())) mLastReceivedFrom = aSide; return mLastReceivedFrom == aSide && !slotHas(aSlot);}
