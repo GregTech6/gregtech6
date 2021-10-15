@@ -124,7 +124,7 @@ public class BlockSwamp extends BlockWaterlike {
 			}
 		} else {
 			if (tSwampCounter >= 2) {
-				aWorld.setBlock(aX, aY, aZ, this, 0, 2);
+				aWorld.setBlock(aX, aY, aZ, this, 0, WATER_UPDATE_FLAGS);
 			}
 		}
 		
@@ -143,7 +143,7 @@ public class BlockSwamp extends BlockWaterlike {
 		}
 		
 		for (ChunkCoordinates tCoords : tList) {
-			if (aWorld.setBlock(tCoords.posX, tCoords.posY, tCoords.posZ, this, 0, 2)) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
+			if (aWorld.setBlock(tCoords.posX, tCoords.posY, tCoords.posZ, this, 0, WATER_UPDATE_FLAGS)) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
 				if (aWorld.blockExists(tCoords.posX+i, tCoords.posY, tCoords.posZ+j)) {
 					tBlock = aWorld.getBlock(tCoords.posX+i, tCoords.posY, tCoords.posZ+j);
 					if (tBlock instanceof BlockSwamp) aWorld.scheduleBlockUpdate(tCoords.posX+i, tCoords.posY, tCoords.posZ+j, this, tickRate);

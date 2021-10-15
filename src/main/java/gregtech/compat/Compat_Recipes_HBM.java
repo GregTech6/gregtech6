@@ -77,9 +77,9 @@ public class Compat_Recipes_HBM extends CompatMods {
 		RM.generify(IL.HBM_Poison_Powder.get(1), IL.IC2_Grin_Powder.get(1));
 		
 		
-		RM.Compressor   .addRecipe1(T, 16,   16, IL.HBM_Biomass           .get(1), IL.HBM_Biomass_Compressed.get(1));
-		RM.Shredder     .addRecipe1(T, 16,   16, IL.HBM_Biomass           .get(1), ST.make(Blocks.dirt, 1, 0));
-		RM.Shredder     .addRecipe1(T, 16,   16, IL.HBM_Biomass_Compressed.get(1), ST.make(Blocks.dirt, 1, 0));
+		RM.Compressor.addRecipe1(T, 16, 16, IL.HBM_Biomass           .get(1), IL.HBM_Biomass_Compressed.get(1));
+		RM.Shredder  .addRecipe1(T, 16, 16, IL.HBM_Biomass           .get(1), ST.make(Blocks.dirt, 1, 0));
+		RM.Shredder  .addRecipe1(T, 16, 16, IL.HBM_Biomass_Compressed.get(1), ST.make(Blocks.dirt, 1, 0));
 		RM.biomass(IL.HBM_Biomass           .get(1), 32);
 		RM.biomass(IL.HBM_Biomass_Compressed.get(1), 32);
 		RM.generify(IL.IC2_Plantball.get(1), IL.HBM_Biomass.get(1));

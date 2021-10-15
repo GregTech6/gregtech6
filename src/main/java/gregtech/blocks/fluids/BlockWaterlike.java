@@ -57,6 +57,8 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock, IItemGT, IBlockOnHeadInside {
+	public static int WATER_UPDATE_FLAGS = 0;
+	
 	public final Fluid mFluid;
 	
 	public BlockWaterlike(String aName, Fluid aFluid) {

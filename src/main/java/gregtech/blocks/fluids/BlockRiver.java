@@ -89,7 +89,7 @@ public class BlockRiver extends BlockWaterlike {
 		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
 			byte tRiverCounter = 0;
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (WD.block(aWorld, aX, aY, aZ, tSide) == this && WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tRiverCounter++;
-			if (tRiverCounter >= 2) aWorld.setBlock(aX, aY, aZ, this, 0, 2);
+			if (tRiverCounter >= 2) aWorld.setBlock(aX, aY, aZ, this, 0, WATER_UPDATE_FLAGS);
 		}
 		updateFlow(aWorld, aX, aY, aZ, aRandom);
 		PLACEMENT_ALLOWED = F;

@@ -120,18 +120,18 @@ public class BlockOcean extends BlockWaterlike {
 			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		} else if (WD.anywater(tBlock)) {
 			tHasNoOceanAround = F;
-			if (aWorld.setBlock(aX, aY-1, aZ, this, 0, 2)) tOceanCounter++;
+			if (aWorld.setBlock(aX, aY-1, aZ, this, 0, WATER_UPDATE_FLAGS)) tOceanCounter++;
 		}
 		
 		if (tHasNoOceanAround && WD.block(aWorld, aX, aY+1, aZ) != this) {
-			aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
+			aWorld.setBlock(aX, aY, aZ, NB, 0, WATER_UPDATE_FLAGS);
 			PLACEMENT_ALLOWED = F;
 			return;
 		}
 		
 		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
 			if (tOceanCounter >= 2 || (SPREAD_TO_AIR && tHasOceanBiome) || (aWorld.getBlock(aX, aY+1, aZ) == this && WD.meta(aWorld, aX, aY+1, aZ) == 0)) {
-				aWorld.setBlock(aX, aY, aZ, this, 0, 2);
+				aWorld.setBlock(aX, aY, aZ, this, 0, WATER_UPDATE_FLAGS);
 			}
 		}
 		
@@ -150,7 +150,7 @@ public class BlockOcean extends BlockWaterlike {
 		}
 		
 		for (ChunkCoordinates tCoords : tList) {
-			if (aWorld.setBlock(tCoords.posX, tCoords.posY, tCoords.posZ, this, 0, 2)) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
+			if (aWorld.setBlock(tCoords.posX, tCoords.posY, tCoords.posZ, this, 0, WATER_UPDATE_FLAGS)) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
 				if (aWorld.blockExists(tCoords.posX+i, tCoords.posY, tCoords.posZ+j)) {
 					tBlock = aWorld.getBlock(tCoords.posX+i, tCoords.posY, tCoords.posZ+j);
 					if (tBlock == this) aWorld.scheduleBlockUpdate(tCoords.posX+i, tCoords.posY, tCoords.posZ+j, this, tickRate);
