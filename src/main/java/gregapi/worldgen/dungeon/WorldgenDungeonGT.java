@@ -102,7 +102,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	);
 	
 	public int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
-	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mMiningBedrock, mZPM;
+	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mFarmMobs, mMiningBedrock, mZPM;
 	
 	@SafeVarargs
 	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
@@ -117,11 +117,12 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		mPortalEnd          =                       getConfigFile().get(mCategory, "PortalEnd"       , aPortalEnd);
 		mPortalTwilight     =                       getConfigFile().get(mCategory, "PortalTwilight"  , aPortalTwilight);
 		mPortalMyst         =                       getConfigFile().get(mCategory, "PortalMyst"      , aPortalMyst);
+		mFarmMobs           =                       getConfigFile().get(mCategory, "FarmMobs"        , T);
 		mMiningBedrock      =                       getConfigFile().get(mCategory, "MiningBedrock"   , T);
 		mZPM                =                       getConfigFile().get(mCategory, "ZPMs"            , T);
 	}
 	
-	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
+	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F, F);}
 	
 	public static final int ROOM_ID_COUNT = 1, IMPORTANT_ROOM_COUNT = 2;
 	
@@ -147,13 +148,13 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		byte[][] tRoomLayout = new byte[2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)][2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)];
 		
-		boolean[] tGeneratedKeys = new boolean[5];
+		boolean[] tGeneratedKeys = new boolean[6];
 		
 		if (!(mPortalNether                      && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))) tTags.add(TAG_PORTAL_NETHER);
 		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
 		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
 		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
-		
+		if (!mFarmMobs) tTags.add(TAG_FARM_MOBS);
 		if (!mMiningBedrock) tTags.add(TAG_MINING_BEDROCK);
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
