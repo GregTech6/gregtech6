@@ -64,10 +64,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	public final int mFlammability;
 	public final Fluid mFluid;
 	
+	public BlockBaseFluid(String aNameInternal, FL aFluid, int aFlammability) {
+		this(aNameInternal, aFluid.fluid(), aFlammability);
+	}
+	public BlockBaseFluid(String aNameInternal, FL aFluid, int aFlammability, Material aMaterial) {
+		this(aNameInternal, aFluid.fluid(), aFlammability, aMaterial);
+	}
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability) {
 		this(aNameInternal, aFluid, aFlammability, aFluid.isGaseous()?MaterialGas.instance:aFluid.getTemperature()>500?Material.lava:Material.water);
 	}
-	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability, Material aMaterial) {
 		super(aFluid, aMaterial);
 		mFluid = aFluid;

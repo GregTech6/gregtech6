@@ -54,6 +54,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [CHANGED] Anvils (and the used Hammers) will now lose much more Durability if you are under the Effect of Mining Fatique. The Effect of Haste will make the Anvil (and the used Hammers) lose less Durability though, making a Haste Beacon somewhat useful for example.
 [ADDED] Black, Blue and Red Versions of Meteoric Steel. Yes they are slightly better for Tools, than the regular colored Steel Variants and are ofcourse Magnetic.
 [ADDED] Better Drying and Smelting Recipes for Snow and Ice related Stuffs.
+[ADDED] Hot Spring Water, it gives the Regeneration and the Resistance III Potion Effects when you are in it. It is also pretty much Water. And it is usable as Power Source similar to Lava.
 [ADDED] Adamantium Rails which have a Rail Top Speed of 10x (Railcraft only lets Carts go up to 3x when installed!). Osmium is its Booster Material. They are very blast resistant.
 [ADDED] Coltan and Columbite Ore, which will be in the same Areas as Tantalite. All three have each other as Byproducts.
 [ADDED] Wooden Seed Oil Bucket. Should be mostly compatible with Forestry.

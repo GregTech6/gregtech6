@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,7 +49,6 @@ public class WorldgenFluidSpring extends WorldgenFluid {
 	@Override
 	public boolean doBedrockStuff(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		if (aY == 0 && mSpringFluid != null && aRandom.nextInt(mSpringChance) == 0 && MultiTileEntityFluidSpring.setBlock(aWorld, aX, aY, aZ, mSpringFluid) && aWorld.setBlock(aX, aY+1, aZ, mBlock, mBlockMeta, 0)) {
-//          DEB.println("Generated Spring for " + UT.Fluids.name(mSpringFluid, T) + " at X:" + aX + "; Z:" + aZ);
 			return T;
 		}
 		return F;

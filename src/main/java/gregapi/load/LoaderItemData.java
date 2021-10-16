@@ -505,6 +505,12 @@ public class LoaderItemData implements Runnable {
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.GaEn, "infiniteBucket", 1, W));
 		OM.reg(OD.container1000water                , ST.make(MD.GaEn, "infiniteBucket", 1, W));
 		OM.reg(OD.container250water                 , ST.make(MD.GaEn, "infiniteBucket", 1, W));
+		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.HBM, "item.inf_water", 1, W));
+		OM.reg(OD.container1000water                , ST.make(MD.HBM, "item.inf_water", 1, W));
+		OM.reg(OD.container250water                 , ST.make(MD.HBM, "item.inf_water", 1, W));
+		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
+		OM.reg(OD.container1000water                , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
+		OM.reg(OD.container250water                 , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
 		OM.reg(OD.itemResin                         , ST.make(MD.ERE, "materials", 1, 41));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 4));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 5));

@@ -294,9 +294,10 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener(OD.itemEgg, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			if (FL.Water_Hot.exists())
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot    .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			if (FL.Water_Boiling.exists())
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Boiling.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Boiling   .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Geothermal.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			RM.Autoclave        .addRecipe2(T,  0,  128, aEvent.mStack, ST.tag(0), FL.Steam.make(800), FL.DistW.make(5), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OP.stick.mat(MT.WoodTreated, 0), IL.Food_Egg_Scrambled.get(1));
 			RM.Juicer           .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1)); // There not gonna be a Squeezer Recipe!
