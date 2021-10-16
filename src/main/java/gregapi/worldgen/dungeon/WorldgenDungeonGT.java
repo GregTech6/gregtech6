@@ -148,7 +148,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		byte[][] tRoomLayout = new byte[2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)][2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)];
 		
-		boolean[] tGeneratedKeys = new boolean[6];
+		boolean[] tGeneratedKeys = new boolean[5];
 		
 		if (!(mPortalNether                      && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))) tTags.add(TAG_PORTAL_NETHER);
 		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
