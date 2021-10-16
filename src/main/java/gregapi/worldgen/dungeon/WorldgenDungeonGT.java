@@ -154,6 +154,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
 		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
 		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
+		
 		if (!mFarmMobs) tTags.add(TAG_FARM_MOBS);
 		if (!mMiningBedrock) tTags.add(TAG_MINING_BEDROCK);
 		
