@@ -115,14 +115,14 @@ public enum FL {
 	
 	, Ender_Goo                 ("endergoo"                                                 , LIQUID)
 	
-	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
-	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
-	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
-	, SpDew                     ("spectral_dew"                                             , SIMPLE, LIQUID, FOOD, WATER, INFINITE) // Something is broken with its Fluid Icon and its Bucket Registration. It is "Nether Water" from Netherlicious btw.
-	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
-	, Water_Boiling             ("boilingwater"                                             , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
-	, Water_Geothermal          ("watergeothermal"                                          , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
-	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
+	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER, BATH)
+	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER, BATH)
+	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER, BATH)
+	, SpDew                     ("spectral_dew"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, INFINITE) // Something is broken with its Fluid Icon and its Bucket Registration. It is "Nether Water" from Netherlicious btw.
+	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
+	, Water_Boiling             ("boilingwater"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
+	, Water_Geothermal          ("watergeothermal"                                          , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
+	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Heavy_Reiker              ("rc heavy water"                                           , SIMPLE, LIQUID)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
@@ -679,7 +679,7 @@ public enum FL {
 	/** @return if that Liquid is Water or Distilled Water */
 	public static boolean water(FluidStack aFluid) {return aFluid != null && water(aFluid.getFluid());}
 	/** @return if that Liquid is Water or Distilled Water */
-	public static boolean water(Fluid aFluid) {return aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid) || FL.SpDew.is(aFluid);}
+	public static boolean water(Fluid aFluid) {return aFluid != null && WATER.contains(aFluid.getName());}
 	
 	/** @return if that Liquid is distilled Water */
 	public static boolean distw(IFluidTank aFluid) {return aFluid != null && distw(aFluid.getFluid());}

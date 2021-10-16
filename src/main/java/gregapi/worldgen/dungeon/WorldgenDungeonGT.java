@@ -71,15 +71,15 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, TAG_PORTAL_END      = TagData.createTagData("gt.dungeon.portal.end")
 	, TAG_PORTAL_TWILIGHT = TagData.createTagData("gt.dungeon.portal.twilight")
 	, TAG_PORTAL_MYST     = TagData.createTagData("gt.dungeon.portal.myst")
-	, TAG_FARM_MOBS       = TagData.createTagData("gt.dungeon.farm.mobs")
-	, TAG_FARM_CROP       = TagData.createTagData("gt.dungeon.farm.crop")
-	, TAG_FARM_FISH       = TagData.createTagData("gt.dungeon.farm.fish")
+	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
 	, TAG_MINING_BEDROCK  = TagData.createTagData("gt.dungeon.mining.bedrock")
 	, TAG_LIBRARY         = TagData.createTagData("gt.dungeon.library")
 	, TAG_LIBRARY_NORMAL  = TagData.createTagData("gt.dungeon.library.normal")
 	, TAG_LIBRARY_THAUM   = TagData.createTagData("gt.dungeon.library.thaumcraft")
 	, TAG_LIBRARY_MYST    = TagData.createTagData("gt.dungeon.library.mystcraft")
-	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
+	, TAG_FARM_MOBS       = TagData.createTagData("gt.dungeon.farm.mobs")
+	, TAG_FARM_CROP       = TagData.createTagData("gt.dungeon.farm.crop")
+	, TAG_FARM_FISH       = TagData.createTagData("gt.dungeon.farm.fish")
 	;
 	
 	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<IDungeonChunk>(F
@@ -88,9 +88,9 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, new DungeonChunkRoomLibraryNormal()
 	, new DungeonChunkRoomLibraryMystcraft()
 	, new DungeonChunkRoomLibraryThaumcraft()
-	, new DungeonChunkRoomFarmFish()
-	, new DungeonChunkRoomFarmCrop()
 	, new DungeonChunkRoomFarmMobs()
+	, new DungeonChunkRoomFarmCrop()
+	, new DungeonChunkRoomFarmFish()
 	);
 	
 	public static final List<IDungeonChunk> DEAD_END = new ArrayListNoNulls<IDungeonChunk>(F
@@ -102,23 +102,32 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	);
 	
 	public int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
-	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mMiningBedrock, mZPM;
+	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
+	public HashSetNoNulls<TagData> mTags = new HashSetNoNulls<>();
 	
 	@SafeVarargs
 	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mProbability        = Math.max(1,           getConfigFile().get(mCategory, "Probability"     , aProbability));
-		mMinSize            = Math.max(2,           getConfigFile().get(mCategory, "MinSize"         , aMinSize));
-		mMaxSize            = Math.max(mMinSize,    getConfigFile().get(mCategory, "MaxSize"         , aMaxSize));
-		mMinY               = Math.max(5,           getConfigFile().get(mCategory, "MinY"            , aMinY));
-		mMaxY               = Math.max(mMinY,       getConfigFile().get(mCategory, "MaxY"            , aMaxY));
-		mRoomChance         = Math.max(1,           getConfigFile().get(mCategory, "RoomChance"      , aRoomChance));
-		mPortalNether       =                       getConfigFile().get(mCategory, "PortalNether"    , aPortalNether);
-		mPortalEnd          =                       getConfigFile().get(mCategory, "PortalEnd"       , aPortalEnd);
-		mPortalTwilight     =                       getConfigFile().get(mCategory, "PortalTwilight"  , aPortalTwilight);
-		mPortalMyst         =                       getConfigFile().get(mCategory, "PortalMyst"      , aPortalMyst);
-		mMiningBedrock      =                       getConfigFile().get(mCategory, "MiningBedrock"   , T);
-		mZPM                =                       getConfigFile().get(mCategory, "ZPMs"            , T);
+		mProbability        = Math.max(1,           getConfigFile().get(mCategory, "Probability"      , aProbability   ));
+		mMinSize            = Math.max(2,           getConfigFile().get(mCategory, "MinSize"          , aMinSize       ));
+		mMaxSize            = Math.max(mMinSize,    getConfigFile().get(mCategory, "MaxSize"          , aMaxSize       ));
+		mMinY               = Math.max(5,           getConfigFile().get(mCategory, "MinY"             , aMinY          ));
+		mMaxY               = Math.max(mMinY,       getConfigFile().get(mCategory, "MaxY"             , aMaxY          ));
+		mRoomChance         = Math.max(1,           getConfigFile().get(mCategory, "RoomChance"       , aRoomChance    ));
+		mPortalNether       =                       getConfigFile().get(mCategory, "PortalNether"     , aPortalNether  );
+		mPortalEnd          =                       getConfigFile().get(mCategory, "PortalEnd"        , aPortalEnd     );
+		mPortalTwilight     =                       getConfigFile().get(mCategory, "PortalTwilight"   , aPortalTwilight);
+		mPortalMyst         =                       getConfigFile().get(mCategory, "PortalMyst"       , aPortalMyst    );
+		mZPM                =                       getConfigFile().get(mCategory, "ZPMs"             , T);
+		
+		if (!getConfigFile().get(mCategory, "Room.Workshop"          , T)) mTags.add(TAG_WORKSHOP);
+		if (!getConfigFile().get(mCategory, "Room.Mining.Bedrock"    , T)) mTags.add(TAG_MINING_BEDROCK);
+		if (!getConfigFile().get(mCategory, "Room.Library.Normal"    , T)) mTags.add(TAG_LIBRARY_NORMAL);
+		if (!getConfigFile().get(mCategory, "Room.Library.Thaumcraft", T)) mTags.add(TAG_LIBRARY_THAUM);
+		if (!getConfigFile().get(mCategory, "Room.Library.Mystcraft" , T)) mTags.add(TAG_LIBRARY_MYST);
+		if (!getConfigFile().get(mCategory, "Room.Farming.Mobs"      , T)) mTags.add(TAG_FARM_MOBS);
+		if (!getConfigFile().get(mCategory, "Room.Farming.Crop"      , T)) mTags.add(TAG_FARM_CROP);
+		if (!getConfigFile().get(mCategory, "Room.Farming.Fish"      , T)) mTags.add(TAG_FARM_FISH);
 	}
 	
 	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
@@ -143,7 +152,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		tSecondaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)];
 		
 		HashSetNoNulls<ChunkCoordinates> tLightUpdateCoords = new HashSetNoNulls<>();
-		HashSetNoNulls<TagData> tTags = new HashSetNoNulls<>();
+		HashSetNoNulls<TagData> tTags = new HashSetNoNulls<>(mTags);
 		
 		byte[][] tRoomLayout = new byte[2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)][2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)];
 		
@@ -153,8 +162,6 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
 		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
 		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
-		
-		if (!mMiningBedrock) tTags.add(TAG_MINING_BEDROCK);
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
 		tKeyIDs[0] = 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime());

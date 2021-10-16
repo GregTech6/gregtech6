@@ -618,6 +618,9 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Steam_IC2               .make( 1), FL.Steam.make(1));
 		RM.generify   (FL.DistW                   .make( 1), FL.Water.make(1));
 		RM.generify   (FL.SpDew                   .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Water_Geothermal        .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Water_Boiling           .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Water_Hot               .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(1));
