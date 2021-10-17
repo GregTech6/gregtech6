@@ -123,8 +123,8 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 			if (!isDead() && tIsServerSide && mTimer > 2 && (mSendClientData || onTickCheck(mTimer))) {
 				sendClientData(mSendClientData, null);
 				mSendClientData = F;
-				onTickResetChecks(mTimer, tIsServerSide);
 			}
+			if (!isDead()) onTickResetChecks(mTimer, tIsServerSide);
 			if (!isDead()) onTickEnd(mTimer, tIsServerSide);
 		} catch(Throwable e1) {
 			e1.printStackTrace(ERR);
