@@ -695,8 +695,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
 		}
 		
+		int tInputItemsCount = 0, tInputFluidsCount = 0;
 		ItemStack[] tInputs = new ItemStack[mRecipes.mInputItemsCount];
-		for (int i = 0; i < mRecipes.mInputItemsCount; i++) tInputs[i] = slot(i);
+		for (int i = 0; i < mRecipes.mInputItemsCount; i++) {
+			tInputs[i] = slot(i);
+			if (ST.valid(tInputs[i])) tInputItemsCount++;
+		}
 		
 		tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
 		if (aUseAutoInputs && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
@@ -708,6 +712,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				}
 			}
 		}
+		for (FluidTankGT tTank : mTanksInput) if (tTank.has()) tInputFluidsCount++;
+		
+		if (tInputItemsCount                     < mRecipes.mMinimalInputItems ) return DID_NOT_FIND_RECIPE;
+		if (tInputFluidsCount                    < mRecipes.mMinimalInputFluids) return DID_NOT_FIND_RECIPE;
+		if (tInputItemsCount + tInputFluidsCount < mRecipes.mMinimalInputs     ) return DID_NOT_FIND_RECIPE;
 		
 		Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyTypeAccepted == TD.Energy.RF ? mInputMax / RF_PER_EU : mInputMax, slot(mRecipes.mInputItemsCount+mRecipes.mOutputItemsCount), mTanksInput, tInputs);
 		

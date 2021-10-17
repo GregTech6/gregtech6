@@ -38,6 +38,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [FIXED] GT6 Hoppers no longer accept Redstone Signals that come directly from Rails. This will fix the Issue of Hoppers not being able to "work" on Detector Rails.
 [FIXED] Crucibles should be able to melt Snow properly now. This Fix should leave melting Plastic and Rubber working the same way they did before.
 [FIXED] Mass Storages should no longer keep surplus Partial Amounts until something else is inserted.
+[FIXED] I did something that might fix some Lag Issues on Servers when it comes to Ocean, Swamp and River Water. But not sure how much it helped.
 [CHANGED] A lot of Recipes for Furnace-able Materials such as Copper got a lot cheaper to process in Machines like Lathes, Benders and such. So now the Extruder isn't the best choice for those anymore.
 [CHANGED] The way Crucibles, Molds and Pipes calculate Heat Damage to Entities interacting with them.
 [CHANGED] Bumblebees will no longer show up in NEI by default. Their Creative Tab still exists though.
