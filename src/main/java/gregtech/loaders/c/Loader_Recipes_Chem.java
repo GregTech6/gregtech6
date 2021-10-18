@@ -192,9 +192,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.FeCl3, U*4), FL.Steam.make(9000*STEAM_PER_WATER), MT.HCl.fluid(U*6, T), OM.dust(MT.FeO3H3, U*7));
 		
 		
-		ItemStack tBromine = OM.ingotOrDust(MT.Br, U);
-		if (ST.valid(tBromine))
-		RM.Freezer      .addRecipe1(T, 16,  512, ST.tag(0), MT.Br.liquid(U, T), NF, tBromine);
+		ItemStack tFrozen;
+		if (ST.valid(tFrozen = OM.ingotOrDust(MT.Br, U))) RM.Freezer.addRecipe1(T, 16,  512, ST.tag(0), MT.Br.liquid(U, T), NF, tFrozen);
+		if (ST.valid(tFrozen = OM.ingotOrDust(MT.Hg, U))) RM.Freezer.addRecipe1(T, 16,  512, ST.tag(0), MT.Hg.liquid(U, T), NF, tFrozen);
 		
 		
 		for (String tOxygen : FluidsGT.OXYGEN) if (FL.exists(tOxygen)) {

@@ -57,7 +57,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
 public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTileEntities implements ITileEntitySurface, ITileEntityDelegating, IFluidHandler, ISidedInventory, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_OnToolClick, IMTE_IsProvidingWeakPower, IMTE_GetComparatorInputOverride, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_SyncDataByte {
-	protected boolean mActive = F, oActive = F;
+	protected boolean mActive = F;
 	
 	public MultiTileEntityMiniPortal mTarget = null;
 	public final byte[] mRedstone = new byte[] {0,0,0,0,0,0}, mComparator = new byte[] {0,0,0,0,0,0}, xRedstone = new byte[] {0,0,0,0,0,0}, xComparator = new byte[] {0,0,0,0,0,0}, wRedstone = new byte[] {0,0,0,0,0,0}, wComparator = new byte[] {0,0,0,0,0,0};
@@ -180,23 +180,12 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 		}
 	}
 	
-	public void setPortalActive() {if (!mActive) {mActive = T; addThisPortalToLists(); causeBlockUpdate();}}
-	public void setPortalInactive() {if (mActive) {disableThisPortal(); causeBlockUpdate();}}
+	public void setPortalActive() {if (!mActive) {mActive = T; addThisPortalToLists(); causeBlockUpdate(); updateClientData();}}
+	public void setPortalInactive() {if (mActive) {disableThisPortal(); causeBlockUpdate(); updateClientData();}}
 	
 	public void removeThisPortalFromLists() {
 		if (getPortalListA().remove(this)) for (MultiTileEntityMiniPortal tPortal : getPortalListB()) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (getPortalListB().remove(this)) for (MultiTileEntityMiniPortal tPortal : getPortalListA()) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-	}
-	
-	@Override
-	public boolean onTickCheck(long aTimer) {
-		return mActive != oActive || super.onTickCheck(aTimer);
-	}
-	
-	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oActive = mActive;
 	}
 	
 	@Override

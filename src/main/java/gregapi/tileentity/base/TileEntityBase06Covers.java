@@ -203,14 +203,14 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override public IPacket getClientDataPacketByteArray(boolean aSendAll, byte... aByteArray) {return aSendAll ? hasCovers() ? new PacketSyncDataByteArrayAndIDsAndCovers (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray    , mCovers) : new PacketSyncDataByteArrayAndIDs  (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray    ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataByteArrayAndCoverVisuals  (getCoords(), aByteArray    , mCovers) : new PacketSyncDataByteArray    (getCoords(), aByteArray    );}
 	
 	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
+	public void onTickChecked(long aTimer) {
+		super.onTickChecked(aTimer);
 		if (hasCovers()) mCovers.resetSync();
 	}
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return super.onTickCheck(aTimer) || (hasCovers() && mCovers.requiresSync());
+		return (hasCovers() && mCovers.requiresSync()) || super.onTickCheck(aTimer);
 	}
 	
 	@Override

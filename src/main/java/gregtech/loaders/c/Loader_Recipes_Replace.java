@@ -169,10 +169,10 @@ public class Loader_Recipes_Replace implements Runnable {
 				if (!tAlreadyScannedItems.add(tObject)) continue;
 				OreDictItemData tData = null;
 				if (tObject instanceof ItemStack) {
-					if (IL.Stick.equal(tObject)) {tRod = ANY.Wood; continue;}
+					if (IL.Stick.equal(tObject, T, T)) {tRod = ANY.Wood; continue;}
 					tData = OM.anyassociation((ItemStack)tObject);
 				} else if (MD.IC2.mLoaded && tObject instanceof ic2.api.recipe.RecipeInputItemStack) {
-					if (IL.Stick.equal(((ic2.api.recipe.RecipeInputItemStack)tObject).input)) {tRod = ANY.Wood; continue;}
+					if (IL.Stick.equal(((ic2.api.recipe.RecipeInputItemStack)tObject).input, T, T)) {tRod = ANY.Wood; continue;}
 					tData = OM.anyassociation(((ic2.api.recipe.RecipeInputItemStack)tObject).input);
 				} else if (MD.IC2.mLoaded && tObject instanceof ic2.api.recipe.RecipeInputOreDict) {
 					if (OD.stickWood   .toString().equals(((ic2.api.recipe.RecipeInputOreDict)tObject).input)) {tRod = ANY.Wood; continue;}

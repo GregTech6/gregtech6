@@ -1638,7 +1638,7 @@ public class MT {
 	Efrine                  = metalore      ( 8747, "Efrine"                                        ,  80, 107,  72     ,            UNBURNABLE, MAGNETIC_PASSIVE, WITHER_PROOF, MOLTEN, WASHING_MERCURY).qual(3, 9.0,  500, 3)                                                                                                                                                                                                 .aspects(TC.METALLUM, 2, TC.GELUM, 2).heat(MeteoricSteel),
 	
 	
-	Desh                    = alloymachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  4.0,   1280,  3)                                                                                                                 .uumAloy(36, C              ,36*U, Hg               , 9*U, B, 8*U, La, 8*U, Nd, 4*U, Nb, 4*U, Co, 4*U, Ce, 4*U, Li, 4*U)                                    .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1),
+	Desh                    = alloymachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  9.0,   1536,  3)                                                                                                                 .uumAloy(36, C              ,36*U, Hg               , 9*U, B, 8*U, La, 8*U, Nd, 4*U, Nb, 4*U, Co, 4*U, Ce, 4*U, Li, 4*U)                                    .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1),
 	DuraniumAlloy           = alloymachine  ( 8751, "Duranium"                                      ,  75, 175, 175     ).qual(3,  8.0,   1280,  4)                                                                                                                 .uumAloy( 0, Dn             , 7*U, Mg               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 2).setLocal("Duranium Alloy"), // That Info with Magnesium/Magnesite was pretty hard to find, but I found it!
 	TritaniumAlloy          = alloymachine  ( 8752, "Tritanium"                                     ,  55, 155, 155     ).qual(3, 12.0,   2560,  5)                                                                                                                 .uumAloy( 0, Tn             , 3*U, Dn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TUTAMEN, 3, TC.VITREUS, 1).setLocal("Tritanium Alloy"),
 	Dolamide                = oredust       ( 8753, "Dolamide"              , SET_METALLIC          , 188, 100, 122, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.POTENTIA, 3, TC.RADIO, 2),
@@ -3148,6 +3148,14 @@ public class MT {
 			  "Iridium, a very rare Metal used in only the most advanced Technology. Its properties are very versatile and used in many advanced Devices."
 			, "Iridium is a Metal that can stabilise a Tesseract, so that it can transfer much larger Amounts of Matter and Energy."
 			, "As Weapon it is very useful in order to kill Shapeshifters, since it is highly Toxic to them. Now, if there were Shapeshifters in our World this Information would be more useful."
+			};
+			
+			Desh.mDescription = new String[] {
+			// ========================================================================================================================================================================================================
+			  "Desh is a Material that is very hard to alloy, which is typically only found naturally on Mars (the Planet, not the God, Pokemon Trainer or Candy Bar)."
+			, "In order to create this Alloy, it is advised to insert Materials with a low Boiling Point such as Lithium and Mercury very last and all at once into the Crucible."
+			, "It is also advised to use a Crucible with a high Heat Capacity as well as drip feeding low Amounts of Material, so the Temperature does not go down too much upon insertion."
+			, "Desh is a completely fictional Material made up by Galacticraft, and is only used by Galacticraft itself, it's Addons and also HBM's Mods."
 			};
 			
 			Tc.mDescription = new String[] {

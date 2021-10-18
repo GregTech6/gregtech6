@@ -123,6 +123,7 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 			if (!isDead() && tIsServerSide && mTimer > 2 && (mSendClientData || onTickCheck(mTimer))) {
 				sendClientData(mSendClientData, null);
 				mSendClientData = F;
+				onTickChecked(mTimer);
 			}
 			if (!isDead()) onTickResetChecks(mTimer, tIsServerSide);
 			if (!isDead()) onTickEnd(mTimer, tIsServerSide);
@@ -153,6 +154,9 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 	
 	/** Use this to check if it is required to send an update to the Clients. If you want you can call "updateClientData", but then you need to return true in order for it to work.*/
 	public boolean onTickCheck(long aTimer) {return F;}
+	
+	/** Called when onTickCheck returns true. A super Call is important for this one! */
+	public void onTickChecked(long aTimer) {/**/}
 	
 	/** The absolutely last Part of the Tick. */
 	public void onTickEnd(long aTimer, boolean aIsServerSide) {/**/}

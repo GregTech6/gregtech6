@@ -81,7 +81,7 @@ import net.minecraftforge.common.ChestGenHooks;
 public class MultiTileEntityChest extends TileEntityBase05Inventories implements IItemColorableRGB, ITileEntityDecolorable, ITileEntitySurface, IMTE_OnRegistrationClient, IMTE_OnRegistrationFirstClient, IMTE_SyncDataByte, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetSubItems, IMTE_SyncDataByteArray, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetComparatorInputOverride, IMTE_GetSelectedBoundingBoxFromPool, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnPlaced, IMTE_OnToolClick {
 	protected boolean mIsPainted = F;
 	protected int mRGBa = UNCOLORED;
-	protected byte mFacing = 3, mUsingPlayers = 0, oUsingPlayers = 0;
+	protected byte mFacing = 3, mUsingPlayers = 0;
 	protected float mLidAngle = 0, oLidAngle = 0, mHardness = 6, mResistance = 3;
 	protected OreDictMaterial mMaterial = MT.NULL;
 	
@@ -118,20 +118,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	}
 	
 	@Override
-	public boolean onTickCheck(long aTimer) {
-		return mUsingPlayers != oUsingPlayers || super.onTickCheck(aTimer);
-	}
-	
-	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oUsingPlayers = mUsingPlayers;
-	}
-	
-	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(aSendAll, mFacing, mUsingPlayers, (byte)getSizeInventory(), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		return getClientDataPacketByte(aSendAll, mUsingPlayers);
+		return getClientDataPacketByteArray(aSendAll, mFacing, mUsingPlayers, (byte)getSizeInventory(), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
 	}
 	
 	@Override
@@ -152,7 +140,10 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 					}
 				}
 			}
-			if (mUsingPlayers > 0 && aTimer % 1200 == 0) mUsingPlayers = UT.Code.bind7(getOpenGUIs());
+			if (mUsingPlayers > 0 && aTimer % 1200 == 0) {
+				mUsingPlayers = UT.Code.bind7(getOpenGUIs());
+				updateClientData();
+			}
 		}
 		oLidAngle = mLidAngle;
 		if (mUsingPlayers > 0 && mLidAngle == 0.0F) worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.chestopen", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
@@ -188,8 +179,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.chest";}
-	@Override public void openInventoryGUI () {mUsingPlayers++;}
-	@Override public void closeInventoryGUI() {mUsingPlayers--;}
+	@Override public void openInventoryGUI () {mUsingPlayers++; updateClientData();}
+	@Override public void closeInventoryGUI() {mUsingPlayers--; updateClientData();}
 	@Override public float getExplosionResistance2() {return mResistance;}
 	@Override public float getBlockHardness() {return mHardness;}
 	@Override public int getComparatorInputOverride(byte aSide) {return Container.calcRedstoneFromInventory(this);}
