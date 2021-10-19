@@ -44,7 +44,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [CHANGED] Bumblebees will no longer show up in NEI by default. Their Creative Tab still exists though.
 [CHANGED] IC2 Circuits are now made from GT6 Circuits.
 [CHANGED] Villagers that get converted to Zombies now stay persistent and keep their Name Tags.
-[CHANGED] Desh now has a different Melting and Boiling Point.
+[CHANGED] Desh now has a different Melting and Boiling Point. Desh Ore can also be processed into Martian Vitriol now. Figured that pun would go well. Not like Martian Vitriol is any good compared to Green Vitriol though.
 [CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
 [CHANGED] GT6 Redstone Wires will no longer accept Input from Stuff like Droppers and Dispensers. This should reduce confusion when those Blocks transmit Redstone Signals from other Sources.
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.

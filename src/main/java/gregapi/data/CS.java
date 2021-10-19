@@ -112,7 +112,7 @@ public class CS {
 	
 	/** The first 32 Bits */
 	public static final int[] B = {1<<0,1<<1,1<<2,1<<3,1<<4,1<<5,1<<6,1<<7,1<<8,1<<9,1<<10,1<<11,1<<12,1<<13,1<<14,1<<15,1<<16,1<<17,1<<18,1<<19,1<<20,1<<21,1<<22,1<<23,1<<24,1<<25,1<<26,1<<27,1<<28,1<<29,1<<30,1<<31};
-
+	
 	/**
 	 * Renamed from "MATERIAL_UNIT" to just "U"
 	 *
@@ -128,39 +128,39 @@ public class CS {
 	public static final long U = 648648000, U2 = U/2, U3 = U/3, U4 = U/4, U5 = U/5, U6 = U/6, U7 = U/7, U8 = U/8, U9 = U/9, U10 = U/10, U11 = U/11, U12 = U/12, U13 = U/13, U14 = U/14, U15 = U/15, U16 = U/16, U17 = U/17, U18 = U/18, U20 = U/20, U24 = U/24, U25 = U/25, U32 = U/32, U36 = U/36, U40 = U/40, U48 = U/48, U50 = U/50, U64 = U/64, U72 = U/72, U80 = U/80, U96 = U/96, U100 = U/100, U128 = U/128, U144 = U/144, U192 = U/192, U200 = U/200, U240 = U/240, U256 = U/256, U288 = U/288, U480 = U/480, U500 = U/500, U512 = U/512, U1000 = U/1000, U1440 = U/1440;
 	/** The Double Version of the Material Unit "U" */
 	public static final double UD = U;
-
+	
 	/**
 	 * Renamed from "FLUID_MATERIAL_UNIT" to just "L"
 	 *
 	 * Fluid per Material Unit (Prime Factors: 3 * 3 * 2 * 2 * 2 * 2)
 	 */
 	public static final long L = 144;
-
+	
 	/** The offset between Celsius and Kelvin. */
 	public static final long C = 273; // 273.15 IRL
-
+	
 	/** The Default Environment Temperature in Kelvin */
 	public static final long DEF_ENV_TEMP = C + 20, DEFAULT_ENVIRONMENT_TEMPERATURE = C + 20; // 293.15 IRL
-
+	
 	/** The Item WildCard Tag. Even shorter than the "-1" of the past */
 	public static final short W = OreDictionary.WILDCARD_VALUE;
-
+	
 	/** Used Client Side as a placeholder for "is owned by someone other than you" */
 	public static final UUID NOT_YOU = new UUID(+1, -1);
-
+	
 	/** The Size of an infinite NEI ItemStack */
 	public static final byte NEI_INFINITE = 111;
-
+	
 	/** The Voltage Tiers. */
 	public static final long[]
 	VMIN    = { 1, 16,  64,  256, 1024,  4096, 16384,  65536,  262144, 1048576,  4194304, 16777216,  67108864,  268435456, 1073741824L,  4294967296L},
 	VREC    = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L},
 	VMAX    = {16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824, 4294967296L, 17179869184L},
 	V       = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L};
-
+	
 	/** The short Names for the Voltages */
 	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
-
+	
 	/** The long Names for the Voltages */
 	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage", "Omega Voltage"};
 	

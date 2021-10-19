@@ -868,9 +868,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ti                     , MD.HBM, "item.ingot_titanium"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Ti                     , MD.HBM, "item.plate_titanium"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TungstenCarbide        , MD.HBM, "item.neutron_reflector"          , 0);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Desh                   , MD.HBM, "item.powder_desh"                , 0);
-		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Desh                   , MD.HBM, "item.nugget_desh"                , 0);
-		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Desh                   , MD.HBM, "item.ingot_desh"                 , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.DeshAlloy              , MD.HBM, "item.powder_desh"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.DeshAlloy              , MD.HBM, "item.nugget_desh"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DeshAlloy              , MD.HBM, "item.ingot_desh"                 , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Np                     , MD.HBM, "item.powder_neptunium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Np                     , MD.HBM, "item.nugget_neptunium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Np                     , MD.HBM, "item.billet_neptunium"           , 0);

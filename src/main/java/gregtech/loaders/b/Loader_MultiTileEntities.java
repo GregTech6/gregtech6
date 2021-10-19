@@ -106,13 +106,25 @@ import gregtech.tileentity.extenders.MultiTileEntityFilter;
 import gregtech.tileentity.extenders.MultiTileEntityFilterPrefix;
 import gregtech.tileentity.food.MultiTileEntitySandwich;
 import gregtech.tileentity.inventories.*;
-import gregtech.tileentity.misc.*;
+import gregtech.tileentity.misc.MultiTileEntityBumbleHive;
+import gregtech.tileentity.misc.MultiTileEntityCFoam;
+import gregtech.tileentity.misc.MultiTileEntityCertificate;
+import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
+import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
 import gregtech.tileentity.multiblocks.*;
 import gregtech.tileentity.panels.MultiTileEntityPanelAsphalt;
 import gregtech.tileentity.panels.MultiTileEntityPanelCFoam;
 import gregtech.tileentity.panels.MultiTileEntityPanelConcrete;
 import gregtech.tileentity.panels.MultiTileEntityPanelWood;
-import gregtech.tileentity.placeables.*;
+import gregtech.tileentity.placeables.MultiTileEntityCoin;
+import gregtech.tileentity.placeables.MultiTileEntityIngot;
+import gregtech.tileentity.placeables.MultiTileEntityPlate;
+import gregtech.tileentity.placeables.MultiTileEntityPlateGem;
+import gregtech.tileentity.placeables.MultiTileEntityRock;
+import gregtech.tileentity.placeables.MultiTileEntityRockPlaced;
+import gregtech.tileentity.placeables.MultiTileEntityScrap;
+import gregtech.tileentity.placeables.MultiTileEntityStick;
+import gregtech.tileentity.placeables.MultiTileEntityStickPlaced;
 import gregtech.tileentity.plants.MultiTileEntityBush;
 import gregtech.tileentity.plants.MultiTileEntityResinHoleRubber;
 import gregtech.tileentity.plants.MultiTileEntitySapHoleMaple;
@@ -266,6 +278,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DuraniumAlloy         ,   31,  20.0F,  20.0F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Draconium             ,   35,  50.0F,  50.0F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ultimet               ,   48,  12.5F,  12.5F, 27);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DeshAlloy             ,   55,  15.0F,  15.0F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Os                    ,   29,   3.0F,   3.0F, 36);
@@ -275,7 +288,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 55 is next
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 56 is next
 	}
 	
 	private static void crucible(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {
@@ -1766,6 +1779,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.W;                 OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32615, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, F, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Ta4HfC5;           OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32633, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, F, NBT_GASPROOF, T, NBT_ACIDPROOF, F, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Desh;              OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32632, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, F, NBT_GASPROOF, T, NBT_ACIDPROOF, F, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
+		aMat = MT.DeshAlloy;         OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32638, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, F, NBT_GASPROOF, T, NBT_ACIDPROOF, F, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Ke;                OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32616, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, F, NBT_GASPROOF, T, NBT_ACIDPROOF, F, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Trinitanium;       OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32617, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, F, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Ad;                OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32618, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
@@ -1781,7 +1795,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Draconium;         OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32622, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.DraconiumAwakened; OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32623, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		aMat = MT.Infinity;          OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32631, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, Integer.MAX_VALUE     )), T, F, T);
-		// 32638 is next
+		// 32639 is next
 		
 		
 		
@@ -1836,6 +1850,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeFluid.addFluidPipes(26700, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenAlloy);
 		MultiTileEntityPipeFluid.addFluidPipes(26180, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ti);
 		MultiTileEntityPipeFluid.addFluidPipes(26660, 26142,        300, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Netherite);
+		MultiTileEntityPipeFluid.addFluidPipes(26760, 26142,        350, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.DeshAlloy);
 		MultiTileEntityPipeFluid.addFluidPipes(26200, 26142,        350, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.W);
 		MultiTileEntityPipeFluid.addFluidPipes(26740, 26142,        400, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.VanadiumSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26220, 26142,        400, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenSteel);

@@ -58,6 +58,12 @@ public class Compat_Recipes_HBM extends CompatMods {
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_schrabidium", 1, 0), MT.UNUSED.Schrabidium.liquid(64*U9, T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 1));
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_schrabidium", 1, 1), MT.UNUSED.Schrabidium.liquid(64*U , T), NF, ST.make(MD.HBM, "item.apple_schrabidium", 1, 2));
 		
+		RM.Bath.addRecipe1(T, 0, 512, ST.make(MD.HBM, "item.powder_desh_ready", 1, 0), MT.H2O2.fluid(U2, T), NF, OM.dust(MT.DeshAlloy, U*1));
+		
+		RM.Mixer.addRecipe2(T, 16, 36, OP.dust.mat(MT.Desh                      , 1), OP.dust.mat(MT.C, 1), MT.Hg.fluid(U4, T), NF, ST.make(MD.HBM, "item.powder_desh_ready", 1, 0));
+		RM.Mixer.addRecipe2(T, 16, 36, ST.make(MD.HBM, "item.powder_desh_mix", 1, 0), OP.dust.mat(MT.C, 1), MT.Hg.fluid(U4, T), NF, ST.make(MD.HBM, "item.powder_desh_ready", 1, 0));
+		
+		RM.Injector.addRecipe1(T, 16, 256, ST.make(MD.HBM, "item.powder_desh_mix", 1, 0), FL.array(MT.Hg.fluid(U5, T), FL.Fuel.make(400)), ZL_FS, OM.dust(MT.DeshAlloy));
 		
 		for (FluidStack tWater : FL.waters(250))
 		RM.Mixer.addRecipe1(T, 16, 16, IL.HBM_Poison_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
