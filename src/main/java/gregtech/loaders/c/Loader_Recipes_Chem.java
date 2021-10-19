@@ -361,7 +361,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Injector         .addRecipe1(T, 64, 256, OM.dust(MT.Th), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(9216), ZL_IS);
 		
-		RM.Injector         .addRecipe1(T, 16, 256, OM.dust(MT.Desh), FL.array(MT.Hg.fluid(U5, T), FL.Fuel.make(400)), ZL_FS, OM.dust(MT.DeshAlloy));
+		RM.Injector         .addRecipe1(T, 16, 256, OM.dust(MT.Desh), FL.array(MT.Hg.fluid(U, T), FL.Fuel.make(400)), ZL_FS, OM.dust(MT.DeshAlloy));
 		
 		
 		for (OreDictMaterial tMat : ANY.C.mToThis) if (tMat != MT.Graphene)
