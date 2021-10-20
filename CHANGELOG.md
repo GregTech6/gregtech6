@@ -17,7 +17,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.21: (Not released yet, released whenever it needs to be, might take a while until it is tested well enough)
+6.14.21:
+[NOTE] Sorry for this taking even longer than I anticipated, but I did not want to release this untested, and my Test Bear had ISP Issues.
 [COMPAT] HBM's Nuclear Tech (it doesn't lag on startup anymore! :D )
 Its Curse Version is a bit outdated, I would recommend the GitHub Releases https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases
 Dynamite works properly on its Depth Rock now.
