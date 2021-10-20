@@ -341,8 +341,8 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	}
 	
 	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
+	public void onTickChecked(long aTimer) {
+		super.onTickChecked(aTimer);
 		oStacksize = slotHas(1) ? slot(1).stackSize : 0;
 	}
 	

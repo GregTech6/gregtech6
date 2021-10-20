@@ -111,8 +111,8 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	}
 	
 	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
+	public void onTickChecked(long aTimer) {
+		super.onTickChecked(aTimer);
 		oDisplayedNumber = mDisplayedNumber;
 	}
 	

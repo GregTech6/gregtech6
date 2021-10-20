@@ -140,7 +140,7 @@ public class MD {
 	
 	, MgC               = new ModData(ModIDs.MgC                , "Magneticraft")
 	, BR                = new ModData(ModIDs.BR                 , "Big Reactors")
-	, HBM               = new ModData(ModIDs.HBM                , "HBM's Nuclear Tech")
+	, HBM               = new ModData(ModIDs.HBM                , "HBM's Nuclear Tech Mod")
 	, ELN               = new ModData(ModIDs.ELN                , "Electrical Age")
 	
 	, DRGN              = new ModData(ModIDs.DRGN               , "Dragon API")

@@ -39,7 +39,7 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [FIXED] Crucibles should be able to melt Snow properly now. This Fix should leave melting Plastic and Rubber working the same way they did before.
 [FIXED] Mass Storages should no longer keep surplus Partial Amounts until something else is inserted.
 [FIXED] I did something that might fix some Lag Issues on Servers when it comes to Ocean, Swamp and River Water. But not sure how much it helped.
-[CHANGED] A lot of Recipes for Furnace-able Materials such as Copper got a lot cheaper to process in Machines like Lathes, Benders and such. So now the Extruder isn't the best choice for those anymore.
+[CHANGED] Some Metals (typically the ones that the Furnace can do) were much cheaper to process in the Extruder than in Bending Machines, Wiremills and the likes. This is now fixed by making the other Machines cheaper in Power Usage for such Metals. So now the Extruder isn't the best choice for those anymore.
 [CHANGED] The way Crucibles, Molds and Pipes calculate Heat Damage to Entities interacting with them.
 [CHANGED] Bumblebees will no longer show up in NEI by default. Their Creative Tab still exists though.
 [CHANGED] IC2 Circuits are now made from GT6 Circuits.
@@ -48,7 +48,6 @@ Needed to remove its Hammer Recipes, especially the Aluminium Dust outputting on
 [CHANGED] All GT5 Style Ore veins are now in their own aptly named Config File.
 [CHANGED] GT6 Redstone Wires will no longer accept Input from Stuff like Droppers and Dispensers. This should reduce confusion when those Blocks transmit Redstone Signals from other Sources.
 [CHANGED] GT6 Rails now have a slightly better Speed Cap in order for Titanium to be on par with Railcrafts High Speed Rails and Tungstensteel/Tungstencarbide to be better than that.
-[CHANGED] Some Metals (typically the ones that the Furnace can do) were much cheaper to process in the Extruder than in Bending Machines, Wiremills and the likes. This is now fixed by making the other Machines cheaper in Power Usage for such Metals.
 [CHANGED] Stone Layers such as Coal, Salt, Bauxite and similar Ores, will now no longer generate below Y=24. They will generate (Deep)Slate instead in such cases. The (Deep)Slate Layer near Bedrock got removed again in favour of this Mechanic.
 [CHANGED] Bumblelyzer and Plantalyzer now use the actual parallel processing System instead of their own custom Variant.
 [CHANGED] If you break a Tool due to loss of Durability, you will now get Mining Fatique III and Weakness III applied for 15 seconds. This is so people stop using Stone Tools...
