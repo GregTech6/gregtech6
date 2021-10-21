@@ -1939,6 +1939,7 @@ public class CS {
 		
 		, NePl              = "netheriteplus"
 		, NeLi              = "netherlicious"
+		, EnLi              = "enderlicious"
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
 		, DYNAMIC_TREES     = "dynamictrees"

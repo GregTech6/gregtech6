@@ -96,6 +96,7 @@ public class MD {
 	
 	, NePl              = new ModData(ModIDs.NePl               , "Netherite Plus")
 	, NeLi              = new ModData(ModIDs.NeLi               , "Netherlicious")
+	, EnLi              = new ModData(ModIDs.EnLi               , "Enderlicious")
 	, EtFu              = new ModData(ModIDs.EtFu               , "Et Futurum")
 	, BB                = new ModData(ModIDs.BB                 , "Better Beginnings")
 	, DYNAMIC_TREES     = new ModData(ModIDs.DYNAMIC_TREES      , "Dynamic Trees")

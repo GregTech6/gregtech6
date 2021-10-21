@@ -795,6 +795,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.trinium"          , T,  10,  80,  12, MT.Ke                  , GEN_END, GEN_ASTEROIDS, GEN_MARS, GEN_PLANETS);
 		new WorldgenOresSmall("ore.small.dolamide"         , T,   5, 250,   8, MT.Dolamide                     , GEN_ASTEROIDS, GEN_MARS, GEN_PLANETS);
 		new WorldgenOresSmall("ore.small.endium"           , T,  10,  80,  32, MT.Endium              , GEN_END);
+		new WorldgenOresSmall("ore.small.sugilite"         , T,  10,  80,  16, MT.Sugilite            , GEN_END);
 		new WorldgenOresSmall("ore.small.ambrosium"        , T,  30, 120,  64, MT.Ambrosium           , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.zanite"           , T,  30, 120,  16, MT.Zanite              , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.sulfur"           , T,   5,  15,   8, MT.S                   , GEN_OVERWORLD, GEN_GT, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS);
