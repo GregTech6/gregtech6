@@ -90,7 +90,9 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 					}
 				}
 			}
+			boolean tFull = mFull;
 			mFull = (mTank.has() || slotHas(0));
+			if (tFull != mFull) updateClientData();
 		}
 	}
 	

@@ -27,7 +27,6 @@ import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.OP;
-import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -90,6 +89,6 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 		
 		if (tIngots.isEmpty()) return null;
-		return RM.CrucibleSmelting.addFakeRecipe(T, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
+		return new Recipe(T, F, F, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, ZL_FS, ZL_FS, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
 	}
 }

@@ -27,11 +27,12 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
+import gregapi.tileentity.energy.ITileEntityEnergyFluxHandler;
 import gregapi.tileentity.energy.TileEntityBase10EnergyConverter;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import net.minecraft.block.Block;
 
-public class MultiTileEntityDynamoFlux extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
+public class MultiTileEntityDynamoFlux extends TileEntityBase10EnergyConverter implements ITileEntityEnergyFluxHandler, ITileEntityAdjacentOnOff {
 	@Override public boolean isInput (byte aSide) {return mFacing == OPOS[aSide];}
 	@Override public boolean isOutput(byte aSide) {return mFacing == aSide;}
 	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_BACK);}
