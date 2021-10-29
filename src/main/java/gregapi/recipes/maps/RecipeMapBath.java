@@ -107,6 +107,8 @@ public class RecipeMapBath extends RecipeMap {
 						addRecipe1(F, 0,  72, aEntry.mSlab, FL.mul(tFluid, 1, 2, T), NF, tTreated);
 					}
 				}
+				
+				rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 			}
 			
 			if (MD.ATUM.mLoaded) {

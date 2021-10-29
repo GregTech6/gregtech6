@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.22: (Not released yet, released whenever it needs to be)
 [FIXED] Flux Dynamo was not working properly.
+[FIXED] Baths would sometimes fail finding the Recipes for Treated Planks.
 
 
 6.14.21:

@@ -179,7 +179,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.sawing(16, 128, F, 4,     aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			RM.lathing(16, 80,           aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			if (IL.RC_Creosote_Wood.exists())
-			RM.Bath.addRecipe1(T, 0, 16, aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
+			RM.Bath.addRecipe1(T, 0,144, aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
 			
 			CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB, aEntry.mMaterialWood, MT.Wood), CR.DEF_MIR, " L", "S ", 'L', aEntry.mLog, 'S', OD.stickAnyWood);
 			
