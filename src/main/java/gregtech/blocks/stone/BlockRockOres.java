@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import gregapi.block.BlockBaseMeta;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -81,6 +82,9 @@ public class BlockRockOres extends BlockBaseMeta {
 		COMPAT_IC2.valuable(this, 14, 0);
 		COMPAT_IC2.valuable(this, 15, 0);
 		}
+		
+		BlocksGT.drillableDynamite.add(this);
+		BlocksGT.harvestableJackhammer.add(this);
 		
 		StoneLayer.LAYERS.add(new StoneLayer(this, 0, ORE_MATERIALS[0]).setNoDeep());
 		StoneLayer.LAYERS.add(new StoneLayer(this, 1, ORE_MATERIALS[1]).setNoDeep());

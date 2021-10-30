@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,6 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSilverfish;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 
 public class GT_Tool_JackHammer_HV_No_Ores extends GT_Tool_JackHammer_HV {
 	public GT_Tool_JackHammer_HV_No_Ores(int aSwitchIndex) {
@@ -37,8 +36,9 @@ public class GT_Tool_JackHammer_HV_No_Ores extends GT_Tool_JackHammer_HV {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		if (aBlock instanceof IPrefixBlock) return F;
+		if (aBlock instanceof BlockSilverfish || BlocksGT.harvestableJackhammer.contains(aBlock)) return T;
 		if (aBlock instanceof BlockStones) return aMetaData < 3;
-		return (WD.stone(aBlock, aMetaData) && aBlock.getMaterial() == Material.rock) || aBlock == BlocksGT.RockOres || aBlock == Blocks.sandstone || aBlock == Blocks.stone || aBlock == Blocks.cobblestone || aBlock == Blocks.mossy_cobblestone || aBlock instanceof BlockSilverfish;
+		if (aBlock instanceof IPrefixBlock) return F;
+		return WD.stone(aBlock, aMetaData) && aBlock.getMaterial() == Material.rock;
 	}
 }

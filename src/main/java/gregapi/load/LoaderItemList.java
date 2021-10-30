@@ -413,6 +413,9 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.drillableDynamite.add(ST.block(MD.HBM, "tile.ore_depth_zirconium"           , null));
 		
 		
+		BlocksGT.harvestableJackhammer.add(ST.block(MD.EtFu, "stone"                         , null));
+		
+		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"           , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"          , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.TF, "tile.UberousSoil"                     , null));
