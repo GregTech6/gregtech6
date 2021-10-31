@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.22: (Not released yet, released whenever it needs to be)
 [FIXED] Flux Dynamo was not working properly.
 [FIXED] Baths would sometimes fail finding the Recipes for Treated Planks.
+[ADDED] Configs for replacing Mob Drops with variety Meat, their Iron Drops with Lead (Iron Golems are always going to drop Iron, don't worry), adding "Junk" Drops to Mobs, adding Books to Villager Zombies, and adding named Name Tag Drops to named Mobs.
 
 
 6.14.21:

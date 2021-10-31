@@ -543,6 +543,11 @@ public class GT_API extends Abstract_Mod {
 		SPAWN_HOSTILES_ONLY_IN_DARKNESS         = ConfigsGT.GREGTECH.get("general", "PreventMobSpawnsAboveLightLevel0" , T);
 		DISABLE_GT6_CRAFTING_RECIPES            = ConfigsGT.GREGTECH.get("general", "DisableGT6CraftingRecipesDEBUG"   , F);
 		TOOL_SOUNDS                             = ConfigsGT.GREGTECH.get("general", "sound_tools"                      , T);
+		MOBS_DROP_LEAD                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_lead_instead_of_iron"   , T);
+		MOBS_DROP_MEAT                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_variety_meats"          , T);
+		MOBS_DROP_JUNK                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_random_junk"            , T);
+		MOBS_DROP_BOOK                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_books_and_manuals"      , T);
+		MOBS_DROP_NAME                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_nametags_when_named"    , T);
 		ZOMBIES_DIG_WITH_TOOLS                  = ConfigsGT.GREGTECH.get("general", "Zombies_Dig_With_Tools"           , F);
 		ZOMBIES_DIG_TILEENTITIES                = ConfigsGT.GREGTECH.get("general", "Zombies_Dig_TileEntities"         , F);
 		ZOMBIES_HOLD_PICKAXES                   = ConfigsGT.GREGTECH.get("general", "Zombies_Hold_Pickaxes"            , F);
