@@ -1594,7 +1594,7 @@ public class CS {
 		public static BlockBase Planks, PlanksFireProof, Planks2, Planks2FireProof;
 		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass;
-		public static BlockBase Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium;
+		public static BlockBase Bars_Wood, Bars_Brass, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium;
 		public static BlockBase Spikes_Sharp, Spikes_Steel, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
 		

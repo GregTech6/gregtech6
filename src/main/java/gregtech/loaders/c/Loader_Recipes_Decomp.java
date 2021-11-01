@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,7 @@ public class Loader_Recipes_Decomp implements Runnable {
 				if (aMaterial.contains(TD.Processing.CENTRIFUGE)) tRecipeMaps.add(RM.Centrifuge);
 				if (aMaterial.contains(TD.Processing.ELECTROLYSER)) tRecipeMaps.add(RM.Electrolyzer);
 				if (!tRecipeMaps.isEmpty()) {
-					ArrayListNoNulls<ItemStack> tStackOutputs = new ArrayListNoNulls<>();
+					ArrayListNoNulls<ItemStack>  tStackOutputs = new ArrayListNoNulls<>();
 					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls<>();
 					long tAmount = 0;
 					

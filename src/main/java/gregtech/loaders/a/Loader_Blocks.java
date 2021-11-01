@@ -110,11 +110,13 @@ public class Loader_Blocks implements Runnable {
 		
 		
 		BlocksGT.Bars_Wood                                                      = new BlockBarsWood             ("gt.block.bars.wood");
+		BlocksGT.Bars_Brass                                                     = new BlockBarsSteel            ("gt.block.bars.brass");
 		BlocksGT.Bars_Steel                                                     = new BlockBarsSteel            ("gt.block.bars.steel");
 		BlocksGT.Bars_Titanium                                                  = new BlockBarsTitanium         ("gt.block.bars.titanium");
 		BlocksGT.Bars_TungstenSteel                                             = new BlockBarsTungstenSteel    ("gt.block.bars.tungstensteel");
 		BlocksGT.Bars_Adamantium                                                = new BlockBarsAdamantium       ("gt.block.bars.adamantium");
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Wood         , 1, W), F, TC.stack(TC.VINCULUM, 2), TC.stack(TC.ARBOR, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Brass        , 1, W), F, TC.stack(TC.VINCULUM, 3), TC.stack(TC.METALLUM, 2));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Steel        , 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Titanium     , 1, W), F, TC.stack(TC.VINCULUM, 6), TC.stack(TC.METALLUM, 5));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_TungstenSteel, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 7));
