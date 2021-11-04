@@ -227,8 +227,8 @@ public class GT6_Main extends Abstract_Mod {
 		new Loader_Fluids().run();
 		new Loader_Tools().run();
 		new Loader_Items().run();
-		new Loader_Blocks().run();
 		new Loader_PrefixBlocks().run();
+		new Loader_Blocks().run();
 		new Loader_Rocks().run();
 		new Loader_Woods().run();
 		new Loader_Rails().run();
