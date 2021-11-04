@@ -60,8 +60,8 @@ public class RecipeMapBath extends RecipeMap {
 	@Override
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
-		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || aFluids.length < 1 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
-		if (rRecipe == null) for (ItemStack aInput : aInputs) if (aInput != null) {
+		if (aInputs == null || aInputs.length < 1 || aFluids.length < 1 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
+		if (rRecipe == null) for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(aInput);
 			if (aEntry != null && (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank) || MD.MC.owns(aInput))) {
 				if (ST.valid(aEntry.mPlank)) {
