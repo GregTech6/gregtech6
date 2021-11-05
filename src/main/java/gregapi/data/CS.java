@@ -1412,6 +1412,16 @@ public class CS {
 			if (aTanks == null || aIndex < 0 || aIndex >= aTanks.length) return 0;
 			return trash(aTanks[aIndex]);
 		}
+		public static long trash(FluidStack[] aFluids) {
+			if (aFluids == null) return 0;
+			long rTrashed = 0;
+			for (int i = 0; i < aFluids.length; i++) rTrashed += trash(aFluids[i]);
+			return rTrashed;
+		}
+		public static long trash(FluidStack[] aFluids, int aIndex) {
+			if (aFluids == null || aIndex < 0 || aIndex >= aFluids.length) return 0;
+			return trash(aFluids[aIndex]);
+		}
 
 
 		public static void onServerSave(File aSaveLocation) {

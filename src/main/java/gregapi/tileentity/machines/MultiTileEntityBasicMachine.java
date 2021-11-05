@@ -610,6 +610,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		setStateOnOff(T);
 		GarbageGT.trash(mTanksInput);
 		GarbageGT.trash(mTanksOutput);
+		GarbageGT.trash(mOutputItems);
+		GarbageGT.trash(mOutputFluids);
 		return super.breakBlock();
 	}
 	

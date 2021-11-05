@@ -1780,6 +1780,8 @@ public class MT {
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
 			U_238                   .setOreMultiplier( 2).setCrushing(OREMATS.Uraninite, U);
 			F                       .setOreMultiplier( 2).setCrushing(CaF2, U);
+			Ta                      .setOreMultiplier( 2).setCrushing(OREMATS.Tantalite, U);
+			Nb                      .setOreMultiplier( 2).setCrushing(OREMATS.Columbite, U);
 			Meteorite               .setOreMultiplier( 2);
 			MeteoricIron            .setOreMultiplier( 2);
 			MeteoricSteel           .setOreMultiplier( 2);
@@ -2149,11 +2151,14 @@ public class MT {
 			Pu_238                  .put(MD.HBM).visDefault();
 			Pu_240                  .put(MD.HBM).visDefault();
 			Mingrade                .put(MD.HBM).visDefault();
-			Asbestos                .put(MD.HBM, COMMON_ORE);
-			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
 			PhosphorusRed           .put(MD.HBM);
 			PhosphorusWhite         .put(MD.HBM);
-			Ta                      .put(MD.HBM);
+			Asbestos                .put(MD.HBM, COMMON_ORE);
+			OREMATS.Columbite       .put(MD.HBM, COMMON_ORE);
+			OREMATS.Tantalite       .put(MD.HBM, COMMON_ORE);
+			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
+			Ta                      .put(MD.HBM, COMMON_ORE);
+			Nb                      .put(MD.HBM, COMMON_ORE);
 			Nd                      .put(MD.HBM);
 			DeshAlloy               .put(MD.HBM);
 			
