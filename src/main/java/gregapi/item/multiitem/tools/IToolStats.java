@@ -197,6 +197,11 @@ public interface IToolStats {
 	 */
 	public void afterDealingDamage(float aNormalDamage, float aMagicDamage, int aFireAspect, boolean aCriticalHit, Entity aEntity, ItemStack aStack, EntityPlayer aPlayer);
 	
+	/**
+	 * Gets called right before the Tool gets removed from the Inventory.
+	 */
+	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer);
+	
 	public int getRenderPasses();
 	public IIcon getIcon(ItemStack aStack, int aRenderPass);
 	public short[] getRGBa(ItemStack aStack, int aRenderPass);

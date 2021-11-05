@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,6 +30,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import gregtech.items.behaviors.Behavior_Builderwand;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Builderwand extends ToolStats {
@@ -64,5 +65,10 @@ public class GT_Tool_Builderwand extends ToolStats {
 	@Override
 	public String getDeathMessage() {
 		return "[VICTIM] has been poofed out of existence by [KILLER]";
+	}
+	
+	@Override
+	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer) {
+		// No bad Effects for breaking this.
 	}
 }

@@ -44,6 +44,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ChatComponentText;
@@ -264,6 +266,13 @@ public abstract class ToolStats implements IToolStats {
 		if (aEntity instanceof EntityLivingBase) aPlayer.addStat(StatList.damageDealtStat, Math.round((aNormalDamage+aMagicDamage) * 10));
 		aEntity.hurtResistantTime = Math.max(1, getHurtResistanceTime(aEntity.hurtResistantTime, aEntity));
 		aPlayer.addExhaustion(getExhaustionPerAttack(aEntity));
+	}
+	
+	@Override
+	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer) {
+		// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
+		aPlayer.addPotionEffect(new PotionEffect(Potion.weakness   .id, 300, 2, F));
+		aPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 300, 2, F));
 	}
 	
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

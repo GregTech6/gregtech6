@@ -85,6 +85,7 @@ import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.item.IItemRottable.RottingUtil;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.tools.IToolStats;
 import gregapi.network.packets.PacketConfig;
 import gregapi.network.packets.PacketDeathPoint;
 import gregapi.network.packets.PacketPrefix;
@@ -812,10 +813,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		// No Creative Mode Refill!
 		if (UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) return;
 		// Tool Break Fatique.
-		if (TOOL_BREAK_FATIQUE && (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool || ST.item_(aEvent.original) instanceof MultiItemTool)) {
-			// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
-			aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.weakness   .id, 300, 2, F));
-			aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 300, 2, F));
+		if (TOOL_BREAK_FATIQUE) {
+			if (ST.item_(aEvent.original) instanceof MultiItemTool) {
+				IToolStats tStats = ((MultiItemTool)ST.item_(aEvent.original)).getToolStats(aEvent.original);
+				if (tStats != null) tStats.afterBreaking(aEvent.original, aEvent.entityPlayer);
+			} else
+			if (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool) {
+				// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
+				aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.weakness   .id, 300, 2, F));
+				aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 300, 2, F));
+			}
 		}
 		// 
 		ItemStack[] tInv = aEvent.entityPlayer.inventory.mainInventory;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,6 +29,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_MagnifyingGlass extends ToolStats {
@@ -95,5 +96,10 @@ public class GT_Tool_MagnifyingGlass extends ToolStats {
 	@Override
 	public String getDeathMessage() {
 		return "[VICTIM] got investigated very closely by [KILLER]";
+	}
+	
+	@Override
+	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer) {
+		// No bad Effects for breaking this.
 	}
 }
