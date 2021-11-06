@@ -448,6 +448,7 @@ public class LoaderUnificationTargets implements Runnable {
 //      OreDictManager.INSTANCE.setTarget(OP.plate          , MT.WoodTreated            , MD.IE, "treatedWood", 0);
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WoodTreated            , MD.IE, "material", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CoalCoke               , MD.IE, "material", 6);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Steel                  , MD.IE, "metal",  7);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.CoalCoke               , MD.IE, "metal", 17);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NetherQuartz           , MD.IE, "metal", 18);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , MD.IE, "ore", 0);
