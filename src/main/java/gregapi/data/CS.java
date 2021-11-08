@@ -1422,22 +1422,22 @@ public class CS {
 			if (aFluids == null || aIndex < 0 || aIndex >= aFluids.length) return 0;
 			return trash(aFluids[aIndex]);
 		}
-
-
+		
+		
 		public static void onServerSave(File aSaveLocation) {
 			File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.items.dat");
 			if (!aTargetFile.exists()) {try {aTargetFile.createNewFile();} catch (Throwable e) {e.printStackTrace(ERR);}}
 			NBTTagCompound aNBT = UT.NBT.make();
 			for (int i = 0; i < GARBAGE_ITEMS.size(); i++) ST.save(aNBT, ""+i, GARBAGE_ITEMS.get(i));
 			try {CompressedStreamTools.write(aNBT, aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
-
+			
 			aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.fluids.dat");
 			if (!aTargetFile.exists()) {try {aTargetFile.createNewFile();} catch (Throwable e) {e.printStackTrace(ERR);}}
 			aNBT = UT.NBT.make();
 			for (int i = 0; i < GARBAGE_FLUIDS.size(); i++) GARBAGE_FLUIDS.get(i).writeToNBT(aNBT, ""+i);
 			try {CompressedStreamTools.write(aNBT, aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
 		}
-
+		
 		public static void onServerLoad(File aSaveLocation) {
 			GARBAGE_ITEMS.clear();
 			File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.items.dat");
@@ -1467,11 +1467,11 @@ public class CS {
 			}
 		}
 	}
-
+	
 	public static class DrinksGT {
 		public static Map<String, IFoodStat> REGISTER = new HashMap<>();
 	}
-
+	
 	public static class FluidsGT {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
 		

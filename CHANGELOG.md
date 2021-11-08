@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.22: (Not released yet, released whenever it needs to be)
+[FIXED] Save Files were sometimes not loaded properly, leading to the Ender Garbage Dump containing Items from different Worlds, when you load multiple Savegames in a row.
 [FIXED] Flux Dynamo was not working properly.
 [FIXED] Baths would sometimes fail finding the Recipes for Treated Planks.
 [ADDED] Brass Bars. I probably wont waste any more Block IDs on adding more Colors though!
