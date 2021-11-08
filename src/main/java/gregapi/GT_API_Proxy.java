@@ -215,7 +215,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	private File mSaveLocation = null;
 	
-	public boolean changeSaveLocation(File aSaveLocation) {
+	/**
+	 * Check if the Save Location passed in matches the current Save Location.
+	 * Passing null will just force a save.
+	 */
+	public boolean checkSaveLocation(File aSaveLocation) {
 		// No Save File selected yet?
 		if (mSaveLocation == null) {
 			// And I guess it wont be selected either if this one is the case.
@@ -228,14 +232,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
 			return T;
 		}
-		// Server is shutting down or something?
+		// Server is shutting down or autosaving.
 		if (aSaveLocation == null) {
-			OUT.println("Saving World!   " + mSaveLocation);
+			OUT.println("Saving  World!   " + mSaveLocation);
 			// Save everything to the old Location!
 			new File(mSaveLocation, "gregtech").mkdirs();
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
-			mSaveLocation = null;
 			return T;
 		}
 		// Somehow someone loaded one World while the other World has not been shut down properly.
@@ -263,12 +266,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
-		changeSaveLocation(null);
+		checkSaveLocation(null);
 	}
 	
-	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {changeSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
-	@SubscribeEvent public void onWorldLoad  (WorldEvent.Load   aEvent) {changeSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
-	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {changeSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
+	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
+	@SubscribeEvent public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
+	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
@@ -646,7 +649,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			
 			if (SERVER_TIME % 20 == 1) {
-				changeSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());
+				checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
