@@ -217,46 +217,31 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	/**
 	 * Check if the Save Location passed in matches the current Save Location.
-	 * Passing null will just force a save.
 	 */
-	public boolean checkSaveLocation(File aSaveLocation) {
-		// No Save File selected yet?
-		if (mSaveLocation == null) {
-			// And I guess it wont be selected either if this one is the case.
-			if (aSaveLocation == null) return F;
-			// Loading a new World for the first time since Minecraft Launched.
-			OUT.println("Loading World!   " + aSaveLocation);
-			mSaveLocation = aSaveLocation;
-			new File(mSaveLocation, "gregtech").mkdirs();
-			GarbageGT.onServerLoad(mSaveLocation);
-			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
-			return T;
-		}
-		// Server is shutting down or autosaving.
+	public boolean checkSaveLocation(File aSaveLocation, boolean aSaveTheWorldIfNull) {
+		boolean tSave = F, tLoad = F;
 		if (aSaveLocation == null) {
-			OUT.println("Saving  World!   " + mSaveLocation);
-			// Save everything to the old Location!
-			new File(mSaveLocation, "gregtech").mkdirs();
-			GarbageGT.onServerSave(mSaveLocation);
-			MultiTileEntityRegistry.onServerSave(mSaveLocation);
-			return T;
+			tSave = (aSaveTheWorldIfNull && mSaveLocation != null);
+		} else if (mSaveLocation == null) {
+			tLoad = T;
+		} else {
+			tSave = tLoad = !mSaveLocation.equals(aSaveLocation);
 		}
-		// Somehow someone loaded one World while the other World has not been shut down properly.
-		if (!mSaveLocation.equals(aSaveLocation)) {
-			ERR.println("Incorrect way of loading a Save File!   " + aSaveLocation);
-			ERR.println("A World was still running in the Background!   " + mSaveLocation);
-			// Save everything to the old Location!
+		
+		if (tSave) {
+			OUT.println("Saving  World! " + mSaveLocation);
 			new File(mSaveLocation, "gregtech").mkdirs();
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
-			// Load everything from the new Location!
+		}
+		if (tLoad) {
+			OUT.println("Loading World! " + aSaveLocation);
 			mSaveLocation = aSaveLocation;
 			new File(mSaveLocation, "gregtech").mkdirs();
 			GarbageGT.onServerLoad(mSaveLocation);
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
-			return T;
 		}
-		return F;
+		return tSave || tLoad;
 	}
 	
 	@Override
@@ -266,12 +251,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
-		checkSaveLocation(null);
+		checkSaveLocation(null, T);
 	}
 	
-	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
-	@SubscribeEvent public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
-	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());}
+	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
+	@SubscribeEvent public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
+	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
@@ -649,7 +634,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			
 			if (SERVER_TIME % 20 == 1) {
-				checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory());
+				checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), T);
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
