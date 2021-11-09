@@ -32,7 +32,6 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.oredict.event.OreDictListenerEvent_ThreeNames;
 import gregapi.util.CR;
@@ -50,18 +49,6 @@ public class Compat_Recipes_ArsMagica extends CompatMods {
 		CR.shaped(ST.make(MD.ARS, "crystal_wrench", 1, 0), CR.DEF_REV_MIR | CR.DEL_OTHER_NATIVE_RECIPES, "I I", "CVD", " I ", 'C', "flowerCerublossom", 'D', "flowerDesertNova", 'V', OP.dust.dat(MT.Vinteum), 'I', OP.ingot.dat(ANY.Fe));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
-		addListener(OP.dustDiv72.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, OP.dustDiv72.mat(MT.ArcaneAsh, 2), F, F, F);
-		}});
-		addListener(OP.dustTiny.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, OP.dustTiny.mat(MT.ArcaneAsh, 2), F, F, F);
-		}});
-		addListener(OP.dustSmall.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, OP.dustSmall.mat(MT.ArcaneAsh, 2), F, F, F);
-		}});
-		addListener(OP.dust.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, OP.dust.mat(MT.ArcaneAsh, 2), F, F, F);
-		}});
 		addListener(new OreDictListenerEvent_ThreeNames("flowerCerublossom", "flowerDesertNova", "foodSugarDough") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2, ItemStack aStack3) {
 			RM.Mixer.addRecipeX(T, 16, 16, ST.array(aStack1, aStack2, ST.amount(2, aStack3)), ST.make(MD.ARS, "manaCake", 3, 0));
 		}});

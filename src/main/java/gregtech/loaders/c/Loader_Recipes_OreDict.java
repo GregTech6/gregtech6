@@ -48,7 +48,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
+public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 	@Override
 	public void addAllListeners() {
 		addListener(OP.dust.dat(MT.Glass), OP.dust.dat(MT.Sand), OP.dust.dat(MT.RedSand), OP.dust.dat(MT.EndSand), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -59,6 +59,21 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 		}});
 		addListener(OP.blockDust.dat(MT.Stone), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, ST.make(Blocks.stone, 1, 0), F, F, F);
+		}});
+		addListener(OP.dustDiv72.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.dustDiv72.mat(MT.ArcaneAsh, 2), F, F, F);
+		}});
+		addListener(OP.dustTiny.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.dustTiny.mat(MT.ArcaneAsh, 2), F, F, F);
+		}});
+		addListener(OP.dustSmall.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.dustSmall.mat(MT.ArcaneAsh, 2), F, F, F);
+		}});
+		addListener(OP.dust.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.dust.mat(MT.ArcaneAsh, 2), F, F, F);
+		}});
+		addListener(OP.blockDust.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.blockDust.mat(MT.ArcaneAsh, 2), F, F, F);
 		}});
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.LaserEngraver    .addRecipe2(T, 16,  64, ST.make(Blocks.stone, 1, W), ST.amount(0, aEvent.mStack), ST.make(Blocks.stonebrick, 1, 3));

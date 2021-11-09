@@ -351,8 +351,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.SteamCracking    .addRecipe0(F, 16,  64, FL.array(FL.Steam.make(1000), FL.Butane .make(100)), FL.array(FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 3)), ZL_IS);
 		
 		// TODO proper Ratios
-		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Petrol.make(100)), FL.array(FL.Ethylene.make(30), FL.Propylene.make(20)), ZL_IS);
-		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Fuel  .make(100)), FL.array(FL.Ethylene.make(40), FL.Propylene.make(10)), ZL_IS);
+		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Petrol    .make(100)), FL.array(FL.Ethylene.make(30), FL.Propylene.make(20)), ZL_IS);
+		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Fuel      .make(100)), FL.array(FL.Ethylene.make(40), FL.Propylene.make(10)), ZL_IS);
+		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.BioEthanol.make(100)), FL.array(FL.Ethylene.make(20), FL.Propylene.make( 5)), ZL_IS);
 		
 		// TODO Fluidized Bed Reactor
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Ethylene .make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));

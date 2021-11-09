@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -34,7 +34,7 @@ import net.minecraft.util.AxisAlignedBB;
 public abstract class TileEntityBase11ConnectorStraight extends TileEntityBase10ConnectorRendered {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		if (worldObj == null) mConnections = (byte)(SBIT_S|SBIT_N);
+		if (worldObj == null && !hasCovers()) mConnections = (byte)(SBIT_S|SBIT_N);
 		return mFoam && !mFoamDried ? 2 : 1;
 	}
 	

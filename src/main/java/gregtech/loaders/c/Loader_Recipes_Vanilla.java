@@ -951,6 +951,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(plantGtFiber.mat(MT.White    , 1), ST.make(Items.string, 1, 0));
 		RM.generify(plantGtFiber.mat(MT.Cu       , 1), ST.make(Items.string, 1, 0));
 		
-		new Loader_Recipes_Vanilla_OreDict();
+		new Loader_Recipes_OreDict();
 	}
 }

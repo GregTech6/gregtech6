@@ -106,7 +106,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		if (worldObj == null) mConnections = (byte)(SBIT_S|SBIT_N);
+		if (worldObj == null && !hasCovers()) mConnections = (byte)(SBIT_S|SBIT_N);
 		return mFoamDried || mDiameter >= 1.0F ? 1 : mFoam ? 8 : mConnections == 0 ? 1 : 7;
 	}
 	
