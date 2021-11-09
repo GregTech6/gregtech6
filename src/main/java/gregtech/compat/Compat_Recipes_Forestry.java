@@ -71,7 +71,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemGrassMoldy, OD.itemGrassMoldy});
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemGrassRotten});
-		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_NCC, new Object[] {IL.Food_Bread_Sliced, OP.bottle.dat(MT.Honey)});
+		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_NCC, new Object[] {IL.Food_Bread_Sliced, OD.container250honey});
 		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NCC, "G", "P", 'P', OD.paperEmpty, 'G', OD.itemGlue);
 		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NCC, "G", "P", 'P', OD.paperEmpty, 'G', "listAllpropolis");
 		

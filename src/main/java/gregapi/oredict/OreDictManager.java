@@ -565,7 +565,10 @@ public final class OreDictManager {
 	
 	public ItemStack getStack(Object aName, ItemStack aReplacement, long aAmount, boolean aMentionPossibleTypos, boolean aNoInvalidAmounts) {
 		if (aNoInvalidAmounts && aAmount < 1) return aReplacement;
-		if (!sName2StackMap.containsKey(aName.toString()) && aMentionPossibleTypos) ERR.println("Unknown Key for Unification, Typo? " + aName);
+		if (!sName2StackMap.containsKey(aName.toString()) && aMentionPossibleTypos) {
+			ERR.println("Unknown Key for Unification, Typo? " + aName);
+			int i = 0; for (StackTraceElement tElement : new Exception().getStackTrace()) if (i++<1 && i<11) ERR.println("\tat " + tElement); else break;
+		}
 		ItemStack rStack = sName2StackMap.get(aName.toString());
 		if (rStack == null) rStack = getFirstOre(aName, aAmount);
 		return rStack == null ? aReplacement : ST.amount(aAmount, rStack);
