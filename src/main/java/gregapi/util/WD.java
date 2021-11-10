@@ -516,7 +516,7 @@ public class WD {
 	public static int evenness(ChunkCoordinates aCoords) {return evenness(aCoords.posX, aCoords.posY, aCoords.posZ);}
 	public static int evenness(int... aCoords) {int i = 0; for (int tCoord : aCoords) {i <<= 1; if (tCoord % 2 != 0) i++;} return i;}
 	
-	public static boolean setIfDiff(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMetaData, int aFlags) {return (aWorld.getBlock(aX, aY, aZ) != aBlock || aWorld.getBlockMetadata(aX, aY, aZ) != aMetaData) && aWorld.setBlock(aX, aY, aZ, aBlock, aMetaData, aFlags);}
+	public static boolean setIfDiff(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags) {return (aWorld.getBlock(aX, aY, aZ) != aBlock || aWorld.getBlockMetadata(aX, aY, aZ) != aMeta) && aWorld.setBlock(aX, aY, aZ, aBlock, aMeta, aFlags);}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, ItemStack aStack) {
 		Block tBlock = ST.block(aStack);
@@ -550,10 +550,10 @@ public class WD {
 	public static boolean liquid(World aWorld, int aX, int aY, int aZ) {return liquid(aWorld.getBlock(aX, aY, aZ));}
 	public static boolean liquid(Block aBlock) {return aBlock instanceof BlockLiquid || aBlock instanceof IFluidBlock;}
 	
-	public static boolean stone(Block aBlock, short aMetaData) {
+	public static boolean stone(Block aBlock, short aMeta) {
 		if (aBlock == NB) return F;
 		if (aBlock == Blocks.obsidian) return T;
-		ItemStackContainer tStack = new ItemStackContainer(aBlock, 1, aMetaData);
+		ItemStackContainer tStack = new ItemStackContainer(aBlock, 1, aMeta);
 		return BlocksGT.stoneToNormalOres.containsKey(tStack) || BlocksGT.stoneToBrokenOres.containsKey(tStack) || BlocksGT.stoneToSmallOres.containsKey(tStack);
 	}
 	
@@ -562,8 +562,8 @@ public class WD {
 	public static boolean floor(Block aBlock) {return aBlock.isOpaqueCube() || aBlock instanceof BlockSlab || aBlock instanceof BlockStairs || aBlock instanceof BlockMetaType;}
 	
 	@SuppressWarnings("unlikely-arg-type")
-	public static boolean ore(Block aBlock, short aMetaData) {return (aBlock instanceof IBlockPlacable && (BlocksGT.stoneToBrokenOres.containsValue(aBlock) || BlocksGT.stoneToNormalOres.containsValue(aBlock) || BlocksGT.stoneToSmallOres.containsValue(aBlock)) || OM.prefixcontains(ST.make(aBlock, 1, aMetaData), TD.Prefix.ORE));}
-	public static boolean ore_stone(Block aBlock, short aMetaData) {return ore(aBlock, aMetaData) || stone(aBlock, aMetaData);}
+	public static boolean ore(Block aBlock, short aMeta) {return (aBlock instanceof IBlockPlacable && (BlocksGT.stoneToBrokenOres.containsValue(aBlock) || BlocksGT.stoneToNormalOres.containsValue(aBlock) || BlocksGT.stoneToSmallOres.containsValue(aBlock)) || OM.prefixcontains(ST.make(aBlock, 1, aMeta), TD.Prefix.ORE));}
+	public static boolean ore_stone(Block aBlock, short aMeta) {return ore(aBlock, aMeta) || stone(aBlock, aMeta);}
 	
 	public static boolean visOcc(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks, boolean aDefault) {return visOpq(aWorld, aX+1, aY, aZ, aLoadUnloadedChunks || !border(aX, aZ, aX+1, aZ), aDefault) && visOpq(aWorld, aX-1, aY, aZ, aLoadUnloadedChunks || !border(aX, aZ, aX-1, aZ), aDefault) && visOpq(aWorld, aX, aY+1, aZ, T, aDefault) && visOpq(aWorld, aX, aY-1, aZ, T, aDefault) && visOpq(aWorld, aX, aY, aZ+1, aLoadUnloadedChunks || !border(aX, aZ, aX, aZ+1), aDefault) && visOpq(aWorld, aX, aY, aZ-1, aLoadUnloadedChunks || !border(aX, aZ, aX, aZ-1), aDefault);}
 	public static boolean visOpq(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks, boolean aDefault) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? visOpq(aWorld.getBlock(aX, aY, aZ)) : aDefault;}
@@ -647,9 +647,9 @@ public class WD {
 	public static boolean oreGenReplaceable(World aWorld, int aX, int aY, int aZ, boolean aAllowAir) {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == NB) return aAllowAir;
-		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
-		if (BlocksGT.stoneToNormalOres.containsKey(new ItemStackContainer(aBlock, 1, aMetaData))) return T;
+		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMeta))) return F;
+		if (BlocksGT.stoneToNormalOres.containsKey(new ItemStackContainer(aBlock, 1, aMeta))) return T;
 		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) return T;
 		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) return T;
 		if (Blocks.sand       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand      )) return T;
@@ -666,9 +666,9 @@ public class WD {
 		if (aID <= 0 && aID == W) return F;
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == NB) return F;
-		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
-		IBlockPlacable tBlock = BlocksGT.stoneToNormalOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
+		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMeta))) return F;
+		IBlockPlacable tBlock = BlocksGT.stoneToNormalOres.get(new ItemStackContainer(aBlock, 1, aMeta));
 		if (tBlock == null) {
 		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) tBlock = BlocksGT.ore; else
 		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) tBlock = BlocksGT.oreGravel; else
@@ -687,9 +687,9 @@ public class WD {
 		if (aID <= 0 && aID == W) return F;
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == NB || WD.bedrock(aBlock)) return F;
-		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
-		IBlockPlacable tBlock = BlocksGT.stoneToSmallOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
+		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMeta))) return F;
+		IBlockPlacable tBlock = BlocksGT.stoneToSmallOres.get(new ItemStackContainer(aBlock, 1, aMeta));
 		if (tBlock == null) {
 		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) tBlock = BlocksGT.oreSmall; else
 		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) tBlock = BlocksGT.oreSmallGravel; else

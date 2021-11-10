@@ -664,9 +664,15 @@ public class GT_API_Post extends Abstract_Mod {
 			if (tMaterial.contains(TD.Processing.CRUCIBLE_ALLOY)) if (tMaterial.mComponents != null) tMaterial.addAlloyingRecipe(tMaterial.mComponents); else ERR.println("ERROR: Alloying Recipe for " + tMaterial.mNameLocal + " cannot be added due to lack of Component Information");
 		}
 		
-		MT.P .mTooltipChemical += "\u2084";
-		MT.S .mTooltipChemical += "\u2088";
-		MT.Se.mTooltipChemical += "\u2088";
+		MT.P     .mTooltipChemical += "\u2084";
+		MT.S     .mTooltipChemical += "\u2088";
+		MT.Se    .mTooltipChemical += "\u2088";
+		MT.UF4   .mTooltipChemical  = "UF\u2084";
+		MT.UF6   .mTooltipChemical  = "UF\u2086";
+		MT.U235F4.mTooltipChemical  = "U-235F\u2084";
+		MT.U235F6.mTooltipChemical  = "U-235F\u2086";
+		MT.U238F4.mTooltipChemical  = "U-238F\u2084";
+		MT.U238F6.mTooltipChemical  = "U-238F\u2086";
 		
 		// And now to stop CoFH-Core from crashing and lagging the Game in Singleplayer with the FMLProxyPacket race condition Bug.
 		// I hate having to do this, but there is no other proper way to actually fix this Issue...
