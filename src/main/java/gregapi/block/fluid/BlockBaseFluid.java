@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
-	public static int FLUID_UPDATE_FLAGS = 0;
+	public static int FLUID_UPDATE_FLAGS = 2;
 	
 	public final String mNameInternal;
 	public final int mFlammability;
@@ -130,7 +130,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
-		
+		/*
 		tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
 			if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
@@ -150,7 +150,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
-		
+		*/
 		
 		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
