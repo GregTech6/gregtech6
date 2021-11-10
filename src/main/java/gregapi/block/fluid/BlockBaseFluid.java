@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
-	public static int FLUID_UPDATE_FLAGS = 2;
+	public static int FLUID_UPDATE_FLAGS = 0;
 	
 	public final String mNameInternal;
 	public final int mFlammability;
