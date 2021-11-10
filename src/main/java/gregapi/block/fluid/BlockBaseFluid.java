@@ -133,17 +133,17 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
-			if (tChanged && WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate);
+			if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
 			
 			for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
 				if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& canDisplace        (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
 				&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
-				//  aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
+					aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
 					aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-				//  updateFluidBlocks (aWorld, aX            , aY           , aZ            );
-				//  updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
+					updateFluidBlocks (aWorld, aX            , aY           , aZ            );
+					updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
 					return;
 				}
 			}
