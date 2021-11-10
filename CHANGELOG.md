@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.22: (Not released yet, released whenever it needs to be)
+[IMPROVED] Fluid Blocks like Oils, Natural Gas and Thermal Water will now flow a bit better and also submit themselves to the Ender Garbage, if they reach the upper or lower Boundary of the World.
 [FIXED] Save Files were sometimes not loaded properly, leading to the Ender Garbage Dump containing Items from different Worlds, when you load multiple Savegames in a row.
 [FIXED] Flux Dynamo was not working properly.
 [FIXED] Baths would sometimes fail finding the Recipes for Treated Planks.
