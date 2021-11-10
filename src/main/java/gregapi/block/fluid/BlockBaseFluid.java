@@ -121,7 +121,6 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			}
 		}
 		
-		boolean tChanged = F;
 		int tRemainingQuanta = WD.meta(aWorld, aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
 		
 		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
@@ -131,15 +130,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			return;
 		}
 		
-		tChanged = (tRemainingQuanta != oRemainingQuanta);
+		boolean tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
-			if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
+		//  if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
 			
 			for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
 				if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& canDisplace        (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
 				&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, 1, FLUID_UPDATE_FLAGS)) {
+				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
 				//  aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
 					aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
 				//  updateFluidBlocks (aWorld, aX            , aY           , aZ            );
