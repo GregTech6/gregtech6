@@ -140,16 +140,17 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				&& canDisplace        (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
 				&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
-					aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
+				//  aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
 					aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-					updateFluidBlocks (aWorld, aX            , aY           , aZ            );
-					updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
+				//  updateFluidBlocks (aWorld, aX            , aY           , aZ            );
+				//  updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
 					return;
 				}
 			}
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
+		
 		
 		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
