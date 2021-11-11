@@ -463,13 +463,13 @@ public class WorldgenStreets extends WorldgenObject {
 				aWorld.setBlock( -8, k, aMinZ+7, BlocksGT.Concrete, DYE_INDEX_Gray, 0);
 			} else {
 				for (int i = 6; i <= 9; i++) for (int j = -9; j <= -6; j++) {
-					aWorld.setBlock(j, k+3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k+2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k+1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k  , aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-3) aWorld.setBlock(j, k+3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-2) aWorld.setBlock(j, k+2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-1) aWorld.setBlock(j, k+1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k> 0) aWorld.setBlock(j, k  , aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+1) aWorld.setBlock(j, k-1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+2) aWorld.setBlock(j, k-2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+3) aWorld.setBlock(j, k-3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 				}
 				break;
 			}
@@ -480,13 +480,13 @@ public class WorldgenStreets extends WorldgenObject {
 				aWorld.setBlock(  7, k, aMinZ+7, BlocksGT.Concrete, DYE_INDEX_Gray, 0);
 			} else {
 				for (int i = 6; i <= 9; i++) for (int j = 5; j <= 8; j++) {
-					aWorld.setBlock(j, k+3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k+2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k+1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k  , aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(j, k-3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-3) aWorld.setBlock(j, k+3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-2) aWorld.setBlock(j, k+2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-1) aWorld.setBlock(j, k+1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k> 0) aWorld.setBlock(j, k  , aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+1) aWorld.setBlock(j, k-1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+2) aWorld.setBlock(j, k-2, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+3) aWorld.setBlock(j, k-3, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 				}
 				break;
 			}
@@ -704,13 +704,13 @@ public class WorldgenStreets extends WorldgenObject {
 				aWorld.setBlock(aMinX+8, k,  -7, BlocksGT.Concrete, DYE_INDEX_Gray, 0);
 			} else {
 				for (int i = 6; i <= 9; i++) for (int j = -9; j <= -6; j++) {
-					aWorld.setBlock(aMinX+i, k+3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k+2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k+1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k  , j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-3) aWorld.setBlock(aMinX+i, k+3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-2) aWorld.setBlock(aMinX+i, k+2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-1) aWorld.setBlock(aMinX+i, k+1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k> 0) aWorld.setBlock(aMinX+i, k  , j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+1) aWorld.setBlock(aMinX+i, k-1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+2) aWorld.setBlock(aMinX+i, k-2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+3) aWorld.setBlock(aMinX+i, k-3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 				}
 				break;
 			}
@@ -721,13 +721,13 @@ public class WorldgenStreets extends WorldgenObject {
 				aWorld.setBlock(aMinX+8, k,   6, BlocksGT.Concrete, DYE_INDEX_Gray, 0);
 			} else {
 				for (int i = 6; i <= 9; i++) for (int j = 5; j <= 8; j++) {
-					aWorld.setBlock(aMinX+i, k+3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k+2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k+1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k  , j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
-					aWorld.setBlock(aMinX+i, k-3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-3) aWorld.setBlock(aMinX+i, k+3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-2) aWorld.setBlock(aMinX+i, k+2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>-1) aWorld.setBlock(aMinX+i, k+1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k> 0) aWorld.setBlock(aMinX+i, k  , j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+1) aWorld.setBlock(aMinX+i, k-1, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+2) aWorld.setBlock(aMinX+i, k-2, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
+					if (k>+3) aWorld.setBlock(aMinX+i, k-3, j, BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 				}
 				break;
 			}
