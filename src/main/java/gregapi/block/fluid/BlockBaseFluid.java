@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
-	public static int FLUID_UPDATE_FLAGS = 2;
+	public static int FLUID_UPDATE_FLAGS = 2, AMOUNT_PER_QUANTA = 125;
 	
 	public final String mNameInternal;
 	public final int mFlammability;
@@ -91,7 +91,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
-		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * 125);
+		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * AMOUNT_PER_QUANTA);
 		if (aDoDrain) {
 			aWorld.setBlock(aX, aY, aZ, NB, 0, 3);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
@@ -121,7 +121,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			}
 		}
 		
-		int tRemainingQuanta = WD.meta(aWorld, aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
+		int tRemainingQuanta = WD.meta(aWorld, aX, aY, aZ)+1;
+		
+		// Trash Fluid Blocks that get in contact with the vertical World Limits.
+		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
+			if (aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * AMOUNT_PER_QUANTA));
+			return;
+		}
+		
+		int oRemainingQuanta = tRemainingQuanta;
 		
 		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
 		
@@ -205,15 +213,6 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	
 	@Override
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
-		if (aY <= 0 || aY+2 >= aWorld.getHeight()) {
-			if (aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) {
-				// Well, that is voided otherwise I guess. XD
-				GarbageGT.trash(FL.make(getFluid(), aAmount * 125));
-				return aAmount;
-			}
-			return 0;
-		}
-		
 		// First do the Water specific check.
 		if (mLighterThanWater) {
 			int tY = aY;
