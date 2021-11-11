@@ -132,20 +132,25 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		boolean tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
-			for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
-				if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-				&& canDisplace        (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
-				&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
-					aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
-					aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-					updateFluidBlocks (aWorld, aX            , aY           , aZ            );
-					updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
-					return;
+			if (tChanged) {
+				WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
+				updateFluidBlocks(aWorld, aX, aY, aZ);
+				return;
+			}
+			if (WD.block(aWorld, aX, aY+densityDir, aZ, F) != this && WD.block(aWorld, aX, aY-densityDir, aZ, F) != this) {
+				for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
+					if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
+					&& !WD.hasCollide     (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
+					&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
+					&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
+						aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
+						aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
+						updateFluidBlocks (aWorld, aX            , aY           , aZ            );
+						updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
+						return;
+					}
 				}
 			}
-			if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
-			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
 		
