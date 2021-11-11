@@ -132,29 +132,27 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		boolean tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
-			/*
 			for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
 				if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& canDisplace        (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
 				&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 				&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
-				//  aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
+					aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
 					aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-				//  updateFluidBlocks (aWorld, aX            , aY           , aZ            );
-				//  updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
+					updateFluidBlocks (aWorld, aX            , aY           , aZ            );
+					updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
 					return;
 				}
-			}*/
+			}
 			if (tChanged) WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
 		
-		
-		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX-1, aY, aZ  ) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlock(aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX+1, aY, aZ  ) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlock(aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) WD.setIfDiff(aWorld, aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) WD.setIfDiff(aWorld, aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX-1, aY, aZ  ) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) WD.setIfDiff(aWorld, aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX+1, aY, aZ  ) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) WD.setIfDiff(aWorld, aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		
 		int tTotal = tRemainingQuanta, tCount = 1;
 		
@@ -180,22 +178,22 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (north >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != north) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ-1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ-1, this, tickRate);} else aWorld.setBlock(aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != north) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ-1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ-1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (south >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != south) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ+1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ+1, this, tickRate);} else aWorld.setBlock(aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != south) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ+1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ+1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (west >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != west ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX-1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else aWorld.setBlock(aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != west ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX-1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (east >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else aWorld.setBlock(aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainder > 0 ? tSpread : tSpread - 1, FLUID_UPDATE_FLAGS);
 	}
