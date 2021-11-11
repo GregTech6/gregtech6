@@ -205,7 +205,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	
 	@Override
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
-		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
+		if (aY <= 0 || aY+2 >= aWorld.getHeight()) {
 			if (aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) {
 				// Well, that is voided otherwise I guess. XD
 				GarbageGT.trash(FL.make(getFluid(), aAmount * 125));
