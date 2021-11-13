@@ -93,7 +93,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
 		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * AMOUNT_PER_QUANTA);
 		if (aDoDrain) {
-			aWorld.setBlock(aX, aY, aZ, NB, 0, 3);
+			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 		}
 		return rFluid;
@@ -125,7 +125,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		// Trash Fluid Blocks that get in contact with the vertical World Limits.
 		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
-			if (aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * AMOUNT_PER_QUANTA));
+			if (WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * AMOUNT_PER_QUANTA));
 			return;
 		}
 		
@@ -141,7 +141,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		boolean tChanged = (tRemainingQuanta != oRemainingQuanta);
 		if (tRemainingQuanta == 1) {
 			if (tChanged) {
-				WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
+				set(aWorld, aX, aY, aZ, tRemainingQuanta-1, F);
 				updateFluidBlocks(aWorld, aX, aY, aZ);
 				return;
 			}
@@ -150,9 +150,9 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 					if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 					&& !WD.hasCollide     (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
 					&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-					&& WD.setIfDiff       (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS)) {
+					&& set                (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], tRemainingQuanta-1, F)) {
 						aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
-						aWorld.setBlock           (aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
+						WD.set            (aWorld, aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
 						updateFluidBlocks (aWorld, aX            , aY           , aZ            );
 						updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
 						return;
@@ -181,7 +181,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		if (tCount == 1) {
 			if (tChanged) {
-				WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, FLUID_UPDATE_FLAGS);
+				set(aWorld, aX, aY, aZ, tRemainingQuanta-1, F);
 				updateFluidBlocks(aWorld, aX, aY, aZ);
 			}
 			return;
@@ -191,24 +191,24 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (north >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != north) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ-1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ-1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != north) if (tNew > 0) {if (set(aWorld, aX  , aY, aZ-1, tNew-1, F)) aWorld.scheduleBlockUpdate(aX  , aY, aZ-1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ-1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (south >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != south) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ+1, this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX  , aY, aZ+1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != south) if (tNew > 0) {if (set(aWorld, aX  , aY, aZ+1, tNew-1, F)) aWorld.scheduleBlockUpdate(aX  , aY, aZ+1, this, tickRate);} else WD.setIfDiff(aWorld, aX  , aY, aZ+1, NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (west >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != west ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX-1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != west ) if (tNew > 0) {if (set(aWorld, aX-1, aY, aZ  , tNew-1, F)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (east >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ  , this, tNew-1, FLUID_UPDATE_FLAGS)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
+			if (tNew != east ) if (tNew > 0) {if (set(aWorld, aX+1, aY, aZ  , tNew-1, F)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
-		WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainder > 0 ? tSpread : tSpread - 1, FLUID_UPDATE_FLAGS);
+		set(aWorld, aX, aY, aZ, tRemainder > 0 ? tSpread : tSpread - 1, F);
 	}
 	
 	@Override
@@ -222,21 +222,21 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				if (tBlock == this) {
 					int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
 					if (tAmount > 16) {
-						aWorld.setBlock(aX, tY, aZ, this, 16 - 1, FLUID_UPDATE_FLAGS | 1);
+						set(aWorld, aX, tY, aZ, 16 - 1, T);
 						aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 						return tAmount - 16;
 					}
 					if (tAmount > 0) {
-						aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, FLUID_UPDATE_FLAGS | 1);
+						set(aWorld, aX, tY, aZ, tAmount - 1, T);
 						// Called by the Block Update caused by setBlockToAir
 						// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-						aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
+						WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
 						return 0;
 					}
 					return aAmount;
 				}
 				if (WD.air(aWorld, aX, tY, aZ, tBlock) || displaceIfPossible(aWorld, aX, tY, aZ)) {
-					aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, FLUID_UPDATE_FLAGS | 1);
+					set(aWorld, aX, tY, aZ, aAmount - 1, T);
 					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 					return 0;
 				}
@@ -252,15 +252,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			if (tBlock instanceof BlockFluidFinite) {
 				int tMeta = aWorld.getBlockMetadata(aX, tY, aZ);
 				if (tMeta > 8) return aAmount;
-				aWorld.setBlock(aX, aY, aZ, tBlock, tMeta, FLUID_UPDATE_FLAGS | 1);
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, FLUID_UPDATE_FLAGS | 1);
+				WD.set(aWorld, aX, aY, aZ, tBlock, tMeta, FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;
 			}
 			// Swap with GT6 Water Blocks.
 			if (!mLighterThanWater && WD.anywater(tBlock)) {
-				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, FLUID_UPDATE_FLAGS | 1);
+				WD.set(aWorld, aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;
 			}
@@ -269,7 +269,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				// The Block left behind should stay for a bit.
 				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 128 - aAmount * 4);
 				// All but one Quanta will move up!
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, aAmount - 2, T);
 				// Since it is a Jump, we will give it a fast reaction time!
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
 				// Leaving a minimal Block at the original location to make it more Fountain like.
@@ -283,23 +283,23 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (tBlock == this) {
 			int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
 			if (tAmount > 8) {
-				aWorld.setBlock(aX, tY, aZ, this, 8 - 1, FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, 8 - 1, T);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return tAmount - 8;
 			}
 			if (tAmount > 0) {
-				aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, tAmount - 1, T);
 				// Called by the Block Update caused by setBlockToAir
 				// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-				aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
+				WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
 				return 0;
 			}
 			return aAmount;
 		}
 		if (tBlock instanceof BlockFluidBase) {
 			if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
-				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, FLUID_UPDATE_FLAGS | 1);
+				WD.set(aWorld, aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
+				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				// And don't just cast the result of world.getBlock directly like Forge does.
 				// Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
 				// Even worse I noticed that the Block Update caused by the second setBlock will schedule the update for the Block ANYWAYS!!!
@@ -310,10 +310,10 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			return aAmount;
 		}
 		if (WD.air(aWorld, aX, tY, aZ, tBlock) || displaceIfPossible(aWorld, aX, tY, aZ)) {
-			aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, FLUID_UPDATE_FLAGS | 1);
+			set(aWorld, aX, tY, aZ, aAmount - 1, T);
 			// Called by the Block Update caused by setBlockToAir
 			// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-			aWorld.setBlock(aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
+			WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1);
 			return 0;
 		}
 		return aAmount;
@@ -368,6 +368,11 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		return this;
 	}
 	
+	public boolean set(World aWorld, int aX, int aY, int aZ, int aMeta, boolean aBlockUpdate) {
+		if (aWorld.getBlock(aX, aY, aZ) != this) return WD.set(aWorld, aX, aY, aZ, this, aMeta, aBlockUpdate ? 3 : 2);
+		byte tMeta = WD.meta(aWorld, aX, aY, aZ);
+		return aMeta == tMeta || WD.set(aWorld, aX, aY, aZ, this, aMeta, aMeta >= 7 && tMeta >= 7 ? aBlockUpdate ? 5 : 4 : aBlockUpdate ? 3 : 2);
+	}
 	
 	/** This Function has been named wrong. It should be onEntityOverlapWithBlock */
 	@Override
