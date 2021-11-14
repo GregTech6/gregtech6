@@ -315,7 +315,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			return aAmount;
 		}
 		if (tBlock instanceof BlockFluidBase) {
-			if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
+			if (densityDir > 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
 				WD.set(aWorld, aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
 				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				// And don't just cast the result of world.getBlock directly like Forge does.

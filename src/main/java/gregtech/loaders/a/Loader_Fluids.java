@@ -63,12 +63,12 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		FL.create("liquid_extra_heavy_oil"   , "Very Heavy Oil"      , null                  , 1);
-		FL.create("liquid_heavy_oil"         , "Heavy Oil"           , null                  , 1);
-		FL.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1);
-		FL.create("liquid_light_oil"         , "Light Oil"           , null                  , 1);
-		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1);
-		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2); // ~95% methane, ~5% ethane and trace amounts of propane and butane
+		FL.create("liquid_extra_heavy_oil"   , "Very Heavy Oil"      , null                  , 1).setDensity(  900);
+		FL.create("liquid_heavy_oil"         , "Heavy Oil"           , null                  , 1).setDensity(  800);
+		FL.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1).setDensity(  700);
+		FL.create("liquid_light_oil"         , "Light Oil"           , null                  , 1).setDensity(  600);
+		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1).setDensity(  650);
+		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2).setDensity(- 500); // ~95% methane, ~5% ethane and trace amounts of propane and butane
 		
 		MT.O.gas(FL.Reikygen.make(1000));
 		MT.O.liquid(FL.Liquid_Reikygen.make(1000));
