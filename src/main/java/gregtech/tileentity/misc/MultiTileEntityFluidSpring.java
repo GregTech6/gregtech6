@@ -52,17 +52,20 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntities implements IMTE_OnRegistration, ITileEntitySurface, IMTE_IsSideSolid, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetLightOpacity, IMTE_SyncDataShort {
 	public FluidStack mFluid = FL.Water.make(1);
+	public boolean mActive = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey("gt.spring")) mFluid = FL.load(aNBT, "gt.spring");
+		if (aNBT.hasKey(NBT_ACTIVE)) mActive = aNBT.getBoolean(NBT_ACTIVE);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		FL.save(aNBT, "gt.spring", mFluid);
+		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mActive);
 	}
 	
 	@Override
@@ -100,35 +103,41 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	public void onTick(long aTimer, boolean aIsServerSide) {
 		super.onTick(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			if (rng(mFluid.amount) == 0) {
-				Block tBlock = mFluid.getFluid().getBlock(), tAbove = getBlockAtSide(SIDE_UP);
-				if (tBlock instanceof BlockFluidFinite) {
-					if (tAbove == tBlock) {
-						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
-					} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
-					}
-				} else {
-					if (tAbove == tBlock) {
-						if (getMetaDataAtSide(SIDE_UP) == 0) {
-							for (byte tSide : ALL_SIDES_HORIZONTAL) {
-								tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
-								if (tAbove == tBlock) {
-									if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+			if (mActive) {
+				if (rng(mFluid.amount) == 0) {
+					Block tBlock = mFluid.getFluid().getBlock(), tAbove = getBlockAtSide(SIDE_UP);
+					if (tBlock instanceof BlockFluidFinite) {
+						if (tAbove == tBlock) {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
+						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
+						}
+					} else {
+						if (tAbove == tBlock) {
+							if (getMetaDataAtSide(SIDE_UP) == 0) {
+								for (byte tSide : ALL_SIDES_HORIZONTAL) {
+									tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
+									if (tAbove == tBlock) {
+										if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+											worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
+											break;
+										}
+									} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
 										worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
 										break;
 									}
-								} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
-									worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
-									break;
 								}
+							} else {
+								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 							}
-						} else {
+						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
 							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 						}
-					} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 					}
+				}
+			} else {
+				if (!WD.liquid(getBlockAtSide(SIDE_UP))) {
+					mActive = T;
 				}
 			}
 		}

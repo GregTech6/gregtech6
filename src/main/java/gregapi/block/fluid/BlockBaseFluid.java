@@ -269,7 +269,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			// Swap with any finite Fluid Blocks "above" this one unless they are also compressed.
 			if (tBlock instanceof BlockFluidFinite) {
 				int tMeta = aWorld.getBlockMetadata(aX, tY, aZ);
-				if (tMeta > 8) return aAmount;
+				if (tMeta > 7) return aAmount;
 				WD.set(aWorld, aX, aY, aZ, tBlock, tMeta, FLUID_UPDATE_FLAGS | 1);
 				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
