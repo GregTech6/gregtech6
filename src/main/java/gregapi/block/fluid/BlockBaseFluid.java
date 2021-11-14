@@ -130,7 +130,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 					// Finite Fluids are safe.
 				} else if (tBlock instanceof BlockLiquid || tBlock instanceof BlockFluidClassic) {
 					// Get rid of Flowing Water adjacent to my Fluids, because Forge is fucked up.
-					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0) WD.set(aWorld, aX, aY, aZ, NB, 0, 2);
+					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0) WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2);
 				}
 			}
 		}
