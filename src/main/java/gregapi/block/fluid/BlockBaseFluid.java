@@ -103,7 +103,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	}
 	
 	@Override
-	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
+	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aUselessBlock) {
 		// Do the update in a few ticks.
 		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate);
 		// Remove Flowing Water/Lava from adjacent Blocks!
@@ -172,7 +172,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				updateFluidBlocks(aWorld, aX, aY, aZ);
 				return;
 			}
-			if (WD.block(aWorld, aX, aY+densityDir, aZ, F) != this && WD.block(aWorld, aX, aY-densityDir, aZ, F) != this) {
+			if (!WD.liquid(aWorld, aX, aY+densityDir, aZ)) {
 				for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
 					if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
 					&& !WD.hasCollide     (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
