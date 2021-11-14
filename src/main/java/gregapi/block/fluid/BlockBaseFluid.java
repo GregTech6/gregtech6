@@ -102,6 +102,30 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		return rFluid;
 	}
 	
+	@Override
+	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
+		// Do the update in a few ticks.
+		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate);
+		// Remove Flowing Water/Lava from adjacent Blocks!
+		for (byte tSide : ALL_SIDES_VALID) {
+			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
+			// Only check when it is the same Material.
+			if (tBlock.getMaterial() == getMaterial()) {
+				if (tBlock instanceof BlockWaterlike) {
+					// My own Water should play nicely.
+				} else if (tBlock instanceof BlockFluidFinite) {
+					// Finite Fluids are safe.
+				} else if (tBlock instanceof BlockLiquid || tBlock instanceof BlockFluidClassic) {
+					// Get rid of Flowing Water/Lava adjacent to my Fluids, because Forge is fucked up.
+					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0 && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2)) {
+						// The Water might have blocked a previous path.
+						updateFluidBlocks(aWorld, aX, aY, aZ);
+					}
+				}
+			}
+		}
+	}
+	
 	public void updateFluidBlocks(World aWorld, int aX, int aY, int aZ) {
 		for (int j = densityDir > 0 ? -1 : 0; j < (densityDir > 0 ? 1 : 2); j++) if (UT.Code.inside(0, aWorld.getHeight(), aY+j)) for (int i = -4; i < 5; i++) for (int k = -4; k < 5; k++) if (i != 0 || j != 0 || k != 0) {
 			if (aWorld.getBlock(aX+i, aY+j, aZ+k) == this && aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) > (j == 0 ? Math.abs(i)+Math.abs(j) : 0)) {
@@ -113,25 +137,14 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		// Flammability checks.
-		for (byte tSide : ALL_SIDES_VALID) {
+		if (mFlammability > 0) for (byte tSide : ALL_SIDES_VALID) {
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
-			if (mFlammability > 0 && (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire)) {
+			if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) {
 				WD.burn(aWorld, aX, aY, aZ, T, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				return;
-			}
-			// Only check when it is the same Material.
-			if (tBlock.getMaterial() == getMaterial()) {
-				if (tBlock instanceof BlockWaterlike) {
-					// My own Water should play nicely.
-				} else if (tBlock instanceof BlockFluidFinite) {
-					// Finite Fluids are safe.
-				} else if (tBlock instanceof BlockLiquid || tBlock instanceof BlockFluidClassic) {
-					// Get rid of Flowing Water adjacent to my Fluids, because Forge is fucked up.
-					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0) WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2);
-				}
 			}
 		}
 		
