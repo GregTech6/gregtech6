@@ -98,6 +98,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -549,6 +551,15 @@ public class WD {
 	
 	public static boolean liquid(World aWorld, int aX, int aY, int aZ) {return liquid(aWorld.getBlock(aX, aY, aZ));}
 	public static boolean liquid(Block aBlock) {return aBlock instanceof BlockLiquid || aBlock instanceof IFluidBlock;}
+	
+	public static boolean liquid_classic(World aWorld, int aX, int aY, int aZ) {return liquid_classic(aWorld.getBlock(aX, aY, aZ));}
+	public static boolean liquid_classic(Block aBlock) {return aBlock instanceof BlockLiquid || aBlock instanceof BlockFluidClassic;}
+	
+	public static boolean liquid_finite(World aWorld, int aX, int aY, int aZ) {return liquid_finite(aWorld.getBlock(aX, aY, aZ));}
+	public static boolean liquid_finite(Block aBlock) {return aBlock instanceof BlockFluidFinite;}
+	
+	public static boolean liquid_borken(World aWorld, int aX, int aY, int aZ) {return liquid_borken(aWorld.getBlock(aX, aY, aZ));}
+	public static boolean liquid_borken(Block aBlock) {return !(aBlock instanceof IItemGT) && liquid_classic(aBlock);}
 	
 	public static boolean stone(Block aBlock, short aMeta) {
 		if (aBlock == NB) return F;

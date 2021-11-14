@@ -3200,16 +3200,40 @@ public class UT {
 		public static boolean applyRadioactivity(Entity aEntity, int aLevel, int aAmountOfItems) {
 			if (aLevel > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD && !isWearingFullRadioHazmat(((EntityLivingBase)aEntity))) {
 				PotionEffect tEffect = null;
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id , aLevel * 140 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.moveSlowdown                         ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.digSlowdown.id  , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.digSlowdown                          ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.confusion.id    , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.confusion                            ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.weakness.id     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.weakness                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.hunger.id       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.hunger                               ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
-				if (PotionsGT.ID_RADIATION > 0)
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]  ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 4, (5*aLevel) / 7))); // can only be between 0 and 4, or else IC2 WILL crash!!!
+				applyPotion(aEntity, Potion.moveSlowdown    , aLevel * 140 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.moveSlowdown                         ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.digSlowdown     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.digSlowdown                          ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.confusion       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.confusion                            ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.weakness        , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.weakness                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.hunger          , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.hunger                               ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
+				if (PotionsGT.ID_RADIATION >= 0)
+				applyPotion(aEntity, PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]  ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 4, (5*aLevel) / 7), F); // can only be between 0 and 4, or else IC2 WILL crash!!!
 				return T;
 			}
 			return F;
+		}
+		
+		public static boolean applyPotion(Entity aEntity, Potion aPotion, int aDuration, int aLevel, boolean aInvisibleParticles) {return aPotion != null && applyPotion(aEntity, aPotion.id, aDuration, aLevel, aInvisibleParticles);}
+		public static boolean applyPotion(Entity aEntity, int aID, int aDuration, int aLevel, boolean aInvisibleParticles) {
+			if (!(aEntity instanceof EntityLivingBase)) return F;
+			if (aID < -1) switch(aID) {
+				case - 2: aID = PotionsGT.ID_RADIATION  ; break;
+				case - 3: aID = PotionsGT.ID_HYPOTHERMIA; break;
+				case - 4: aID = PotionsGT.ID_HEATSTROKE ; break;
+				case - 5: aID = PotionsGT.ID_FROSTBITE  ; break;
+				case - 6: aID = PotionsGT.ID_DEHYDRATION; break;
+				case - 7: aID = PotionsGT.ID_INSANITY   ; break;
+				case - 8: aID = PotionsGT.ID_FLAMMABLE  ; break;
+				case - 9: aID = PotionsGT.ID_SLIPPERY   ; break;
+				case -10: aID = PotionsGT.ID_CONDUCTIVE ; break;
+				case -11: aID = PotionsGT.ID_STICKY     ; break;
+			}
+			if (aID < 0) return F;
+			if (aLevel >= 0) {
+				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(aID, aDuration, aLevel, aInvisibleParticles));
+				return T;
+			}
+			((EntityLivingBase)aEntity).removePotionEffect(aID);
+			return T;
 		}
 		
 		public static int getPotionLevel(Entity aEntity, Potion aPotion) {

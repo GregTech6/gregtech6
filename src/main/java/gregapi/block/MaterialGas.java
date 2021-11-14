@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,9 +22,9 @@ package gregapi.block;
 import static gregapi.data.CS.*;
 
 import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialLiquid;
 
-public class MaterialGas extends Material {
+public class MaterialGas extends MaterialLiquid {
 	public static MaterialGas instance = new MaterialGas();
 	
 	private MaterialGas() {

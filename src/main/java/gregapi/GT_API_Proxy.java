@@ -76,7 +76,6 @@ import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.SFX;
 import gregapi.enchants.Enchantment_WerewolfDamage;
 import gregapi.item.IItemNoGTOverride;
@@ -881,37 +880,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (tStats != null) {
 			EntityFoodTracker tTracker = EntityFoodTracker.get(aEvent.entityPlayer);
 			if (tTracker != null) {
-				if (tStats.length > 0 && tStats[0] != 0) tTracker.changeAlcohol(tStats[0]);
-				if (tStats.length > 1 && tStats[1] != 0) tTracker.changeCaffeine(tStats[1]);
+				if (tStats.length > 0 && tStats[0] != 0) tTracker.changeAlcohol    (tStats[0]);
+				if (tStats.length > 1 && tStats[1] != 0) tTracker.changeCaffeine   (tStats[1]);
 				if (tStats.length > 2 && tStats[2] != 0) tTracker.changeDehydration(tStats[2]);
-				if (tStats.length > 3 && tStats[3] != 0) tTracker.changeSugar(tStats[3]);
-				if (tStats.length > 4 && tStats[4] != 0) tTracker.changeFat(tStats[4]);
+				if (tStats.length > 3 && tStats[3] != 0) tTracker.changeSugar      (tStats[3]);
+				if (tStats.length > 4 && tStats[4] != 0) tTracker.changeFat        (tStats[4]);
 			}
 		}
 		
 		NBTTagCompound tNBT = aEvent.item.getTagCompound();
 		if (tNBT != null && tNBT.hasKey(NBT_EFFECTS)) {
 			tNBT = tNBT.getCompoundTag(NBT_EFFECTS);
-			int tID = tNBT.getInteger("id"), tTime = tNBT.getInteger("time"), tLevel = tNBT.getInteger("lvl"), tChance = tNBT.getInteger("chance");
-			if (tID < -1) switch(tID) {
-			case - 2: tID = PotionsGT.ID_RADIATION; break;
-			case - 3: tID = PotionsGT.ID_HYPOTHERMIA; break;
-			case - 4: tID = PotionsGT.ID_HEATSTROKE; break;
-			case - 5: tID = PotionsGT.ID_FROSTBITE; break;
-			case - 6: tID = PotionsGT.ID_DEHYDRATION; break;
-			case - 7: tID = PotionsGT.ID_INSANITY; break;
-			case - 8: tID = PotionsGT.ID_FLAMMABLE; break;
-			case - 9: tID = PotionsGT.ID_SLIPPERY; break;
-			case -10: tID = PotionsGT.ID_CONDUCTIVE; break;
-			case -11: tID = PotionsGT.ID_STICKY; break;
-			}
-			if (tID >= 0 && RNGSUS.nextInt(100) < tChance) {
-				if (tLevel >= 0) {
-					aEvent.entityPlayer.addPotionEffect(new PotionEffect(tID, tTime, tLevel, F));
-				} else {
-					aEvent.entityPlayer.removePotionEffect(tID);
-				}
-			}
+			if (RNGSUS.nextInt(100) < tNBT.getInteger("chance")) UT.Entities.applyPotion(aEvent.entityPlayer, tNBT.getInteger("id"), tNBT.getInteger("time"), tNBT.getInteger("lvl"), F);
 		}
 		
 		if (aEvent.item.getItem() == Items.apple) {

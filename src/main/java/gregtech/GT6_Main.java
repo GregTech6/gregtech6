@@ -56,7 +56,6 @@ import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.ToolsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -548,15 +547,6 @@ public class GT6_Main extends Abstract_Mod {
 		, NI
 		, NI
 		), ZL_IS, null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
-		
-		
-		if (PotionsGT.ID_FLAMMABLE >= 0) {
-			BlocksGT.OilExtraHeavy.addEffect(PotionsGT.ID_FLAMMABLE, 300, 1);
-			BlocksGT.OilHeavy     .addEffect(PotionsGT.ID_FLAMMABLE, 300, 1);
-			BlocksGT.OilMedium    .addEffect(PotionsGT.ID_FLAMMABLE, 300, 1);
-			BlocksGT.OilLight     .addEffect(PotionsGT.ID_FLAMMABLE, 300, 1);
-			BlocksGT.GasNatural   .addEffect(PotionsGT.ID_FLAMMABLE, 100, 1);
-		}
 		
 		
 		if (CODE_CLIENT) {

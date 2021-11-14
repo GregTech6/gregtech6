@@ -39,9 +39,7 @@ import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -55,7 +53,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -64,10 +61,10 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
-	public static int FLUID_UPDATE_FLAGS = 2, AMOUNT_PER_QUANTA = 125;
+	public static int FLUID_UPDATE_FLAGS = 2;
 	
 	public final String mNameInternal;
-	public final int mFlammability;
+	public final int mFlammability, mAmountPerQuanta = 125;
 	public final Fluid mFluid;
 	
 	public BlockBaseFluid(String aNameInternal, FL aFluid, int aFlammability) {
@@ -94,7 +91,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
-		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * AMOUNT_PER_QUANTA);
+		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * mAmountPerQuanta);
 		if (aDoDrain) {
 			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
@@ -109,18 +106,12 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		// Remove Flowing Water/Lava from adjacent Blocks!
 		for (byte tSide : ALL_SIDES_VALID) {
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
-			// Only check when it is the same Material.
-			if (tBlock.getMaterial() == getMaterial()) {
-				if (tBlock instanceof BlockWaterlike) {
-					// My own Water should play nicely.
-				} else if (tBlock instanceof BlockFluidFinite) {
-					// Finite Fluids are safe.
-				} else if (tBlock instanceof BlockLiquid || tBlock instanceof BlockFluidClassic) {
-					// Get rid of Flowing Water/Lava adjacent to my Fluids, because Forge is fucked up.
-					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0 && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2)) {
-						// The Water might have blocked a previous path.
-						updateFluidBlocks(aWorld, aX, aY, aZ);
-					}
+			// Check for broken Fluids of the same Material as this Fluid.
+			if (tBlock.getMaterial() == getMaterial() && WD.liquid_borken(tBlock)) {
+				// Get rid of Flowing Water/Lava adjacent to my Fluids, because Forge is fucked up.
+				if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0 && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2)) {
+					// The Water might have blocked a previous path.
+					updateFluidBlocks(aWorld, aX, aY, aZ);
 				}
 			}
 		}
@@ -139,7 +130,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		// Flammability checks.
 		if (mFlammability > 0) for (byte tSide : ALL_SIDES_VALID) {
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
-			if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) {
+			if (tBlock != this && (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire)) {
 				WD.burn(aWorld, aX, aY, aZ, T, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
@@ -152,7 +143,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		// Trash Fluid Blocks that get in contact with the vertical World Limits.
 		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
-			if (WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * AMOUNT_PER_QUANTA));
+			if (WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * mAmountPerQuanta));
 			return;
 		}
 		
@@ -227,12 +218,12 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		}
 		if (west >= 0) {
 			int tNew = tSpread;
-			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
+			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
 			if (tNew != west ) if (tNew > 0) {if (set(aWorld, aX-1, aY, aZ  , tNew-1, F)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX-1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		if (east >= 0) {
 			int tNew = tSpread;
-			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
+			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
 			if (tNew != east ) if (tNew > 0) {if (set(aWorld, aX+1, aY, aZ  , tNew-1, F)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else WD.setIfDiff(aWorld, aX+1, aY, aZ  , NB, 0, FLUID_UPDATE_FLAGS | 1);
 		}
 		set(aWorld, aX, aY, aZ, tRemainder > 0 ? tSpread : tSpread - 1, F);
@@ -373,7 +364,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
 	@Override public boolean canCollideCheck(int aMeta, boolean aFullHit) {return aFullHit && aMeta >= 7;}
-	@Override public boolean getBlocksMovement(IBlockAccess aWorld, int aX, int aY, int aZ) {return mActLikeWeb || !mEffects.isEmpty();}
+	@Override public boolean getBlocksMovement(IBlockAccess aWorld, int aX, int aY, int aZ) {return mActLikeWeb || !mEffectsBathing.isEmpty() || !mEffectsBreathing.isEmpty();}
 	@Override public boolean isNormalCube() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean func_149730_j() {return F;}
@@ -405,19 +396,27 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		if (mActLikeWeb) aEntity.setInWeb();
-	}
-	
-	
-	public List<int[]> mEffects = new ArrayListNoNulls<>();
-	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
-		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
-		return this;
+		if (!mEffectsBathing.isEmpty() && aEntity instanceof EntityLivingBase && !UT.Entities.isWearingFullChemHazmat((EntityLivingBase)aEntity)) {
+			for (int[] tEffects : mEffectsBathing) ((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
+		}
 	}
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (!mEffects.isEmpty() && (FL.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGases(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
-			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
+		if (!mEffectsBreathing.isEmpty() && !UT.Entities.isImmuneToBreathingGases(aEntity)) {
+			for (int[] tEffects : mEffectsBreathing) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
 			if (getMaterial() != Material.water && SERVER_TIME % 20 == 0) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}
+	}
+	
+	public List<int[]> mEffectsBathing = new ArrayListNoNulls<>();
+	public BlockBaseFluid addEffectBathing(int aEffectID, int aEffectDuration, int aEffectLevel) {
+		mEffectsBathing.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+		return this;
+	}
+	
+	public List<int[]> mEffectsBreathing = new ArrayListNoNulls<>();
+	public BlockBaseFluid addEffectBreathing(int aEffectID, int aEffectDuration, int aEffectLevel) {
+		mEffectsBreathing.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+		return this;
 	}
 }

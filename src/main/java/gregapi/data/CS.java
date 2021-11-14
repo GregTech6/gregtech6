@@ -1478,7 +1478,9 @@ public class CS {
 		
 		public static Set<String>
 		  SIMPLE = new HashSetNoNulls<>(F, "poison")
-		, ACID = new HashSetNoNulls<>(F, "acid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
+		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
+		, TOXIC = new HashSetNoNulls<>(F, "toxic_fluid", "bacterialsludge", "sludge", "fluiddeath")
+		, THAUMIC_FLUX = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()
 		, PLASMA = new HashSetNoNulls<>(F, "rc fusion plasma")
@@ -1486,7 +1488,7 @@ public class CS {
 		, AIR = new HashSetNoNulls<>()
 		, OXYGEN = new HashSetNoNulls<>()
 		, LIQUID_OXYGEN = new HashSetNoNulls<>()
-		, ENCHANTED_EFFECT = new HashSetNoNulls<>()
+		, ENCHANTED_EFFECT = new HashSetNoNulls<>(F, "fluidpure")
 		, VOID_OVERFLOW = new HashSetNoNulls<>()
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()
@@ -1510,6 +1512,7 @@ public class CS {
 		, TEA = new HashSetNoNulls<>()
 		, COOKING_OIL = new HashSetNoNulls<>()
 		, SLIME = new HashSetNoNulls<>()
+		, BLOOD = new HashSetNoNulls<>(F, "blood")
 		
 		, ALCOHOLIC = new HashSetNoNulls<>()
 		, VINEGAR = new HashSetNoNulls<>()

@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.damage.DamageSources;
-import gregapi.data.CS.PotionsGT;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.player.EntityFoodTracker;
@@ -36,7 +35,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 
 public class FoodStat implements IFoodStat {
 	private final int mFoodLevel, mAlcohol, mCaffeine, mDehydration, mSugar, mFat;
@@ -144,26 +142,8 @@ public class FoodStat implements IFoodStat {
 		if (!aPlayer.worldObj.isRemote) {
 			if (mExtinguish) aPlayer.extinguish();
 			if (mMilk) aPlayer.curePotionEffects(ST.make(Items.milk_bucket, 1, 0));
-			for (int i = 3; i < mPotionEffects.length; i+=4) {
-				if (mPotionEffects[i-3] < -1) switch(mPotionEffects[i-3]) {
-					case - 2: mPotionEffects[i-3] = PotionsGT.ID_RADIATION; break;
-					case - 3: mPotionEffects[i-3] = PotionsGT.ID_HYPOTHERMIA; break;
-					case - 4: mPotionEffects[i-3] = PotionsGT.ID_HEATSTROKE; break;
-					case - 5: mPotionEffects[i-3] = PotionsGT.ID_FROSTBITE; break;
-					case - 6: mPotionEffects[i-3] = PotionsGT.ID_DEHYDRATION; break;
-					case - 7: mPotionEffects[i-3] = PotionsGT.ID_INSANITY; break;
-					case - 8: mPotionEffects[i-3] = PotionsGT.ID_FLAMMABLE; break;
-					case - 9: mPotionEffects[i-3] = PotionsGT.ID_SLIPPERY; break;
-					case -10: mPotionEffects[i-3] = PotionsGT.ID_CONDUCTIVE; break;
-					case -11: mPotionEffects[i-3] = PotionsGT.ID_STICKY; break;
-				}
-				if (mPotionEffects[i-3] >= 0 && RNGSUS.nextInt(100) < mPotionEffects[i]) {
-					if (mPotionEffects[i-1] >= 0) {
-						aPlayer.addPotionEffect(new PotionEffect(mPotionEffects[i-3], mPotionEffects[i-2], mPotionEffects[i-1], mInvisibleParticles));
-					} else {
-						aPlayer.removePotionEffect(mPotionEffects[i-3]);
-					}
-				}
+			for (int i = 3; i < mPotionEffects.length; i+=4) if (RNGSUS.nextInt(100) < mPotionEffects[i]) {
+				UT.Entities.applyPotion(aPlayer, mPotionEffects[i-3], mPotionEffects[i-2], mPotionEffects[i-1], mInvisibleParticles);
 			}
 			if (mExplosive) {
 				aPlayer.worldObj.newExplosion(aPlayer, aPlayer.posX, aPlayer.posY, aPlayer.posZ, 4, T, T);
