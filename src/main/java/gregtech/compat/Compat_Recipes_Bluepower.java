@@ -58,6 +58,8 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 		RM.Mixer.addRecipe0(T, 16, 16, FL.array(MT.Glass.liquid(U*9, T), MT.Al2O3.liquid(U4, T)), ZL_FS, ST.make(MD.BP, "sapphire_glass", 1, 0));
 		RM.Mixer.addRecipe1(T, 16, 16, ST.make(MD.BP, "sapphire_glass", 1, 0), FL.Lava         .make(1000), NF, ST.make(MD.BP, "reinforced_sapphire_glass", 1, 0));
 		RM.Mixer.addRecipe1(T, 16, 16, ST.make(MD.BP, "sapphire_glass", 1, 0), FL.Lava_Pahoehoe.make(1000), NF, ST.make(MD.BP, "reinforced_sapphire_glass", 1, 0));
+		if (FL.Lava_Volcanic.exists())
+		RM.Mixer.addRecipe1(T, 16, 16, ST.make(MD.BP, "sapphire_glass", 1, 0), FL.Lava_Volcanic.make(1000), NF, ST.make(MD.BP, "reinforced_sapphire_glass", 1, 0));
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));

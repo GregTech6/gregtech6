@@ -1478,8 +1478,8 @@ public class CS {
 		
 		public static Set<String>
 		  SIMPLE = new HashSetNoNulls<>(F, "poison")
-		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
-		, TOXIC = new HashSetNoNulls<>(F, "toxic_fluid", "bacterialsludge", "sludge", "fluiddeath")
+		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
+		, TOXIC = new HashSetNoNulls<>(F, "poison", "toxic_fluid", "mud_fluid", "bacterialsludge", "sludge", "fluiddeath")
 		, THAUMIC_FLUX = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()

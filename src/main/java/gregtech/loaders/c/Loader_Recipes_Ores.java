@@ -86,6 +86,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		RM.Centrifuge       .addRecipe0(T, 64,  288, new long[] {8000,  250,  250,  250,  250,  250}, FL.Lava           .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
 		RM.Centrifuge       .addRecipe0(T, 64,  144, new long[] {9000,  300,  300,  300,  300,  300}, FL.Lava_Pahoehoe  .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
+		if (FL.Lava_Volcanic.exists())
+		RM.Centrifuge       .addRecipe0(T, 64,  144, new long[] {9500, 1000, 1000, 1000, 1000, 1000}, FL.Lava_Volcanic  .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 4), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
 		if (IL.NePl_SoulSoil.exists())
 		RM.Centrifuge       .addRecipe1(T, 64,  144, new long[] {9000, 1000, 1000, 1000            }, IL.NePl_SoulSoil       .wild(1), NF, FL.Oil_Soulsand.make(45), dust.mat(MT.Sand, 9), dustTiny.mat(MT.Niter, 9), dustTiny.mat(MT.Coal, 9), dustTiny.mat(MT.Bone, 9));
 		if (IL.NeLi_SoulSoil.exists())

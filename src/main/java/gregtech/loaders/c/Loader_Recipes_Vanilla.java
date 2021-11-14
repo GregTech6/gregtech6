@@ -853,10 +853,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.carrot       , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.golden_carrot, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.melon        , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.speckled_melon, 1, 0));
 		RM.Mixer        .addRecipe2(T, 16,   16, ST.make(Items.melon        , 1, W), nugget.mat(MT.Au, 8), ST.make(Items.speckled_melon, 1, 0));
-		for (FluidStack tWater : FL.waters(50))
+		for (FluidStack tWater : FL.waters(50)) {
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(tWater, FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
-		for (FluidStack tWater : FL.waters(50))
+		if (FL.Lava_Volcanic.exists())
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(tWater, FL.Lava_Volcanic.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(tWater, FL.Lava_Pahoehoe.make(1000)), NF, ST.make(BlocksGT.Basalt, 1, BlockStones.STONE));
+		}
 		for (FluidStack tWater : FL.waters(3000))
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.STONES.Redrock), tWater, NF, IL.Clay_Ball_Red.get(4));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.EnderPearl     ), OM.dust(MT.Blaze, U9), OM.dust(MT.EnderEye     ));

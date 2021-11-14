@@ -55,6 +55,10 @@ public class Compat_Recipes_Mariculture extends CompatMods {
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.brick            , 1, W), FL.Lava         .make( 250), NF, ST.make(MD.MaCu, "crafting", 1,14));
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.netherbrick      , 1, W), FL.Lava_Pahoehoe.make( 200), NF, ST.make(MD.MaCu, "crafting", 1,14));
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.brick            , 1, W), FL.Lava_Pahoehoe.make( 500), NF, ST.make(MD.MaCu, "crafting", 1,14));
+		if (FL.Lava_Volcanic.exists()) {
+		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.netherbrick      , 1, W), FL.Lava_Volcanic.make( 200), NF, ST.make(MD.MaCu, "crafting", 1,14));
+		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.brick            , 1, W), FL.Lava_Volcanic.make( 500), NF, ST.make(MD.MaCu, "crafting", 1,14));
+		}
 		
 		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.Milk   .make(500), FL.make("custard", 500), ZL_IS);
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.Milk   .make(125), FL.make("custard", 125), ZL_IS);
