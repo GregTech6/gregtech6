@@ -39,7 +39,9 @@ import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -53,6 +55,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -110,14 +113,25 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		// Flammability checks.
-		if (mFlammability > 0) for (byte tSide : ALL_SIDES_VALID) {
+		for (byte tSide : ALL_SIDES_VALID) {
 			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide, F);
-			if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) {
+			if (mFlammability > 0 && (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire)) {
 				WD.burn(aWorld, aX, aY, aZ, T, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				WD.burn(aWorld, aX-4+aRandom.nextInt(9), aY-4+aRandom.nextInt(9), aZ-4+aRandom.nextInt(9), F, F);
 				return;
+			}
+			// Only check when it is the same Material.
+			if (tBlock.getMaterial() == getMaterial()) {
+				if (tBlock instanceof BlockWaterlike) {
+					// My own Water should play nicely.
+				} else if (tBlock instanceof BlockFluidFinite) {
+					// Finite Fluids are safe.
+				} else if (tBlock instanceof BlockLiquid || tBlock instanceof BlockFluidClassic) {
+					// Get rid of Flowing Water adjacent to my Fluids, because Forge is fucked up.
+					if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0) WD.set(aWorld, aX, aY, aZ, NB, 0, 2);
+				}
 			}
 		}
 		
