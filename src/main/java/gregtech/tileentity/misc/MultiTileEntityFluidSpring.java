@@ -136,7 +136,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 					}
 				}
 			} else {
-				if (!WD.liquid(getBlockAtSide(SIDE_UP))) {
+				if (SERVER_TIME % 20 == 1 && !WD.liquid(getBlockAtSide(SIDE_UP))) {
 					mActive = T;
 				}
 			}

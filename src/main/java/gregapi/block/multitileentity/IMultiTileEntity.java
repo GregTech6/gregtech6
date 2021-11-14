@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -334,6 +334,16 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_GetFoodValues extends IMultiTileEntity {
 		@Optional.Method(modid = ModIDs.APC)
 		public squeek.applecore.api.food.FoodValues getFoodValues(MultiTileEntityItemInternal aItem, ItemStack aStack);
+	}
+	
+	public static interface IMTE_OnServerStart extends IMultiTileEntity {
+		/** Gets called once per class when the Server starts. */
+		public void onServerStart();
+	}
+	
+	public static interface IMTE_OnServerStop extends IMultiTileEntity {
+		/** Gets called once per class when the Server stops. */
+		public void onServerStop();
 	}
 	
 	public static interface IMTE_OnServerLoad extends IMultiTileEntity {

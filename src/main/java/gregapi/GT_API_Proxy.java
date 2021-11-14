@@ -246,11 +246,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@Override
 	public void onProxyBeforeServerStarted(Abstract_Mod aMod, FMLServerStartedEvent aEvent) {
 		SERVER_TIME = 0;
+		MultiTileEntityRegistry.onServerStart();
 	}
 	
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
 		checkSaveLocation(null, T);
+		MultiTileEntityRegistry.onServerStop();
 	}
 	
 	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}

@@ -26,14 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationClient;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirst;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstClient;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstOfRegister;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstOfRegisterClient;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnServerLoad;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnServerSave;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
@@ -264,6 +257,9 @@ public class MultiTileEntityRegistry {
 		((IMultiTileEntity)rContainer.mTileEntity).initFromNBT(aNBT == null || aNBT.hasNoTags() ? tClass.mParameters : UT.NBT.fuse(aNBT, tClass.mParameters), (short)aID, (short)Block.getIdFromBlock(mBlock));
 		return rContainer;
 	}
+	
+	public static void onServerStart() {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerStart.class.isAssignableFrom(tClass)) try {((IMTE_OnServerStart)tClass.newInstance()).onServerStart();} catch (Throwable e) {e.printStackTrace(ERR);}}
+	public static void onServerStop () {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerStop .class.isAssignableFrom(tClass)) try {((IMTE_OnServerStop )tClass.newInstance()).onServerStop ();} catch (Throwable e) {e.printStackTrace(ERR);}}
 	
 	public static void onServerLoad(File aSaveLocation) {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerLoad.class.isAssignableFrom(tClass)) try {((IMTE_OnServerLoad)tClass.newInstance()).onServerLoad(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
 	public static void onServerSave(File aSaveLocation) {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerSave.class.isAssignableFrom(tClass)) try {((IMTE_OnServerSave)tClass.newInstance()).onServerSave(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
