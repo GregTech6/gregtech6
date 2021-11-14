@@ -41,6 +41,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.UT.Code;
 import gregapi.util.UT.NBT;
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -871,6 +872,8 @@ public enum FL {
 		for (int i = 0; i < aFluids.length; i++) if (aFluids[i] != null) rStacks[i] = aFluids[i].copy();
 		return rStacks;
 	}
+	
+	public static final Map<String, Block> BLOCKS = new HashMap<>();
 	
 	public static final Map<ItemStackContainer, FluidContainerData> FULL_TO_DATA = new ItemStackMap<>();
 	public static final Map<ItemStackContainer, Map<String, FluidContainerData>> EMPTY_TO_FLUID_TO_DATA = new ItemStackMap<>();

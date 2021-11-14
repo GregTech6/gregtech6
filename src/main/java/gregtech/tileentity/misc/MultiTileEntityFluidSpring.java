@@ -38,6 +38,7 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase04MultiTileEntities;
 import gregapi.tileentity.data.ITileEntitySurface;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -105,33 +106,38 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 		if (aIsServerSide) {
 			if (mActive) {
 				if (rng(mFluid.amount) == 0) {
-					Block tBlock = mFluid.getFluid().getBlock(), tAbove = getBlockAtSide(SIDE_UP);
-					if (tBlock instanceof BlockFluidFinite) {
-						if (tAbove == tBlock) {
-							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
-						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
-						}
-					} else {
-						if (tAbove == tBlock) {
-							if (getMetaDataAtSide(SIDE_UP) == 0) {
-								for (byte tSide : ALL_SIDES_HORIZONTAL) {
-									tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
-									if (tAbove == tBlock) {
-										if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+					Block tBlock = FL.BLOCKS.get(mFluid.getFluid().getName()), tAbove = getBlockAtSide(SIDE_UP);
+					if (ST.invalid(tBlock)) tBlock = mFluid.getFluid().getBlock();
+					if (ST.valid(tBlock)) {
+						if (tBlock instanceof BlockFluidFinite) {
+							if (tAbove == tBlock) {
+								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
+								tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
+							} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
+								tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
+							}
+						} else {
+							if (tAbove == tBlock) {
+								if (getMetaDataAtSide(SIDE_UP) == 0) {
+									for (byte tSide : ALL_SIDES_HORIZONTAL) {
+										tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
+										if (tAbove == tBlock) {
+											if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+												worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
+												break;
+											}
+										} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
 											worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
 											break;
 										}
-									} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
-										worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
-										break;
 									}
+								} else {
+									worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 								}
-							} else {
+							} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
 								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 							}
-						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 						}
 					}
 				}

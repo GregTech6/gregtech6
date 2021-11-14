@@ -83,6 +83,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		mFlammability = aFlammability;
 		setBlockName(mNameInternal = aNameInternal);
 		ST.register(this, mNameInternal, ItemBlock.class);
+		FL.BLOCKS.put(mFluid.getName(), this);
+		displacements.put(this, F);
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		// Speaking of retarded, only allowing one type of Block per Fluid is retarded too! So I guess I gotta override all pre-existing Fluids with my Version to make sure shit works.
 		UT.Reflection.setField(Fluid.class, aFluid, "block", this);

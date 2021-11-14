@@ -402,6 +402,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.bobmazon_weapons"               ,   W);
 			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.bobmazon_tools"                 ,   W);
 			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.bobmazon_hidden"                ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.book_guide"                     ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.book_secret"                    ,   W);
+			BooksGT.BOOKS_NORMAL   .add(MD.HBM, "item.book_of_"                       ,   W);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_stone_flat"               ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_stone_plate"              ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_stone_wire"               ,   W, (byte) 55);
@@ -440,6 +443,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.bobmazon_weapons"               ,   W, (byte)  3); // Technically Gray instead of Black
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.bobmazon_tools"                 ,   W, (byte)  6);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.bobmazon_hidden"                ,   W, (byte)  9);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.book_guide"                     ,   W, (byte)  3); // Technically Gray instead of Black
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.book_secret"                    ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.book_of_"                       ,   W, (byte)  3);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.key"                            ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.key_red"                        ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.key_kit"                        ,   W, (byte)  1);
