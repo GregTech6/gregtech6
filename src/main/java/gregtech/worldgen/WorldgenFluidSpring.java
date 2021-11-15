@@ -26,6 +26,7 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.data.IL;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
@@ -61,12 +62,15 @@ public class WorldgenFluidSpring extends WorldgenObject {
 		if (GENERATING_SPECIAL) return F;
 		WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE = F;
 		
+		Block tDeepslate = (aDimType == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
+		if (ST.invalid(tDeepslate)) tDeepslate = Blocks.stone;
+		
 		for (int i = 0; i <= 6; i++) for (int tX = aMinX+i; tX <= aMaxX-i; tX++) for (int tZ = aMinZ+i; tZ <= aMaxZ-i; tZ++) {
-			if (!WD.opq(aWorld, tX, i+1, tZ, F, T)) aWorld.setBlock(tX, i+1, tZ, IL.EtFu_Deepslate.exists() ? IL.EtFu_Deepslate.block() : Blocks.stone, 0, 0);
+			if (!WD.opq(aWorld, tX, i+1, tZ, F, T)) aWorld.setBlock(tX, i+1, tZ, tDeepslate, 0, 0);
 			
-			aWorld.setBlock(tX, i, tZ, mBlock, mMeta, 0);
+			if (i > 0) aWorld.setBlock(tX, i, tZ, mBlock, mMeta, 0);
 			
-			if (mSpringFluid != null && i >= 1 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
+			if (mSpringFluid != null && i > 1 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
 				MultiTileEntityFluidSpring.setBlock(aWorld, tX, 0, tZ, mSpringFluid);
 			}
 		}
