@@ -21,36 +21,56 @@ package gregtech.worldgen;
 
 import static gregapi.data.CS.*;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
-import gregapi.worldgen.WorldgenFluid;
+import gregapi.data.IL;
+import gregapi.util.UT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOresBedrock;
 import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenFluidSpring extends WorldgenFluid {
+public class WorldgenFluidSpring extends WorldgenObject {
+	public final int mMeta, mProbability;
 	public final FluidStack mSpringFluid;
-	public final int mSpringChance;
+	public final Block mBlock;
 	
 	@SafeVarargs
-	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, FluidStack aSpringFluid, int aSpringChance, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aBlock, aBlockMeta, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid, aLists);
-		mSpringFluid = aSpringFluid;
-		mSpringChance = aSpringChance;
+	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aMeta, int aProbability, FluidStack aSpringFluid, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aLists);
+		mSpringFluid    = aSpringFluid;
+		mBlock          = aBlock==null?Blocks.cobblestone:aBlock;
+		mMeta           = UT.Code.bind4(aMeta);
+		mProbability    = getConfigFile().get(mCategory, "Probability", aProbability);
 	}
 	
 	@Override
-	public boolean doBedrockStuff(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		if (aY == 0 && mSpringFluid != null && aRandom.nextInt(mSpringChance) == 0 && MultiTileEntityFluidSpring.setBlock(aWorld, aX, aY, aZ, mSpringFluid) && aWorld.setBlock(aX, aY+1, aZ, mBlock, mBlockMeta, 0)) {
-			return T;
+	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (!WorldgenOresBedrock.GENERATED_NO_BEDROCK_ORE || !WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
+		if (GENERATING_SPECIAL) return F;
+		WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE = F;
+		
+		for (int i = 0; i <= 6; i++) for (int tX = aMinX+i; tX <= aMaxX-i; tX++) for (int tZ = aMinZ+i; tZ <= aMaxZ-i; tZ++) {
+			if (!WD.opq(aWorld, tX, i+1, tZ, F, T)) aWorld.setBlock(tX, i+1, tZ, IL.EtFu_Deepslate.exists() ? IL.EtFu_Deepslate.block() : Blocks.stone, 0, 0);
+			
+			aWorld.setBlock(tX, i, tZ, mBlock, mMeta, 0);
+			
+			if (mSpringFluid != null && i >= 1 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
+				MultiTileEntityFluidSpring.setBlock(aWorld, tX, 0, tZ, mSpringFluid);
+			}
 		}
-		return F;
+		
+		return T;
 	}
 }

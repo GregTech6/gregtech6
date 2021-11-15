@@ -55,7 +55,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	public final Block mFlower;
 	public final byte mFlowerMeta;
 	
-	public static boolean GENERATED_NO_BEDROCK_ORE = T;
+	public static boolean GENERATED_NO_BEDROCK_ORE = T, CAN_GENERATE_BEDROCK_ORE = T;
 	
 	@SafeVarargs
 	public WorldgenOresBedrock(String aName, boolean aDefault, int aProbability, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
@@ -134,13 +134,12 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	
 	@Override
 	public void reset(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		GENERATED_NO_BEDROCK_ORE = T;
+		GENERATED_NO_BEDROCK_ORE = CAN_GENERATE_BEDROCK_ORE = T;
 	}
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(mProbability) != 0) return F;
-		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
+		if (GENERATING_SPECIAL || !CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
 		if (!generateVein(mMaterial, aWorld, aDimType, aMinX, aMinZ, aRandom)) return F;
 		
 		GENERATED_NO_BEDROCK_ORE = F;

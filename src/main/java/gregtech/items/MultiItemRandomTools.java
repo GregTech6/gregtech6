@@ -283,9 +283,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Spray_Foam_Hardener_Used        .set(addItem(1199, "Hardening Spray", "Used", TC.stack(TC.TERRA, 1), TC.stack(TC.TUTAMEN, 1), TD.Creative.HIDDEN));
 		tBehaviour = new Behavior_Spray_Foam_Hardener(IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener_Used.get(1), IL.Spray_Foam_Hardener.get(1), 256);
 		addItemBehavior(1198, tBehaviour); addItemBehavior(1199, tBehaviour);
-		RM.Canner.addRecipe2(T, 16, 256, ST.make(Blocks.sand, 16, W), IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-		RM.Canner.addRecipe2(T, 16, 256, OM.dust(tMat, 16*U), IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
+		RM.Canner.addRecipe2(T, 16, 256, ST.make(Blocks.sand, 7, W), IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
+		for (OreDictMaterial tMat : ANY.SiO2.mToThis) for (ItemStack tDust : ST.array(OP.dust.mat(tMat, 63), OP.blockDust.mat(tMat, 7))) if (ST.valid(tDust))
+		RM.Canner.addRecipe2(T, 16, 256, tDust, IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
 		ItemsGT.addNEIRedirects(IL.Spray_Foam_Hardener_Used.get(1), IL.Spray_Foam_Hardener.get(1));
 		
 		

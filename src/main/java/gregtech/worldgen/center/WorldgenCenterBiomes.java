@@ -60,6 +60,11 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 	}
 	
 	@Override
+	public void reset(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) GENERATING_SPECIAL = T;
+	}
+	
+	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) {
 			if (GENERATE_STREETS && aMinX >= -32 && aMinX <= 16 && aMinZ >= -32 && aMinZ <= 16) {

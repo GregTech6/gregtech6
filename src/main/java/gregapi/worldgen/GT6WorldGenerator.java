@@ -70,6 +70,8 @@ public class GT6WorldGenerator {
 					}
 				}
 				
+				GENERATING_SPECIAL = F;
+				
 				// Yes, it has to be looped twice in a row, this cannot be optimized into one Loop!
 				for (WorldgenObject tWorldGen : mGenNormal) tWorldGen.reset(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);
 				for (WorldgenObject tWorldGen : mGenNormal) if (tWorldGen.enabled(mWorld, mDimType)) {

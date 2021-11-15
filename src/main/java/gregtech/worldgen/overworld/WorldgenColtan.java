@@ -55,7 +55,7 @@ public class WorldgenColtan extends WorldgenObject {
 		int tX = (int)(tRandom.nextGaussian()*1500), tZ = (int)(tRandom.nextGaussian()*1500);
 		// Generate Bedrock Vein where the Coltass points to.
 		if ((tX>>4) == (aMinX>>4) && (tZ>>4) == (aMinZ>>4)) WorldgenOresBedrock.generateVein(MT.OREMATS.Coltan, aWorld, aDimType, aMinX, aMinZ, aRandom);
-		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
+		if (GENERATING_SPECIAL) return F;
 		int tDistance = (tX-aMinX)*(tX-aMinX) + (tZ-aMinZ)*(tZ-aMinZ);
 		
 		// Generate Coltan a the large Area around the Center Point of Coltan Contention.

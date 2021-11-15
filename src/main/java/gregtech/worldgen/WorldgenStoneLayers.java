@@ -56,7 +56,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (GENERATE_BIOMES && aDimType == DIM_OVERWORLD && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
+		if (GENERATING_SPECIAL) return F;
 		
 		//final boolean tSlime = (aChunk.getRandomWithSeed(987234911L).nextInt(10) == 0);
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);

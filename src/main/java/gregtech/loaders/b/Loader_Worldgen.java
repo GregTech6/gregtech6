@@ -618,15 +618,6 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
-		new WorldgenFluidSpring("overworld.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy  ,  7,  1, 50,200, 0, 16, null, F, tInfiniteOil ? FL.Oil_ExtraHeavy  .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.oil.heavy"     , T, BlocksGT.OilHeavy       ,  7,  1, 60,150, 0, 16, null, F, tInfiniteOil ? FL.Oil_Heavy       .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.oil.medium"    , T, BlocksGT.OilMedium      ,  7,  1, 70,100, 0, 16, null, F, tInfiniteOil ? FL.Oil_Medium      .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.oil.light"     , T, BlocksGT.OilLight       ,  7,  1, 80, 50, 0, 16, null, F, tInfiniteOil ? FL.Oil_Light       .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.gas.natural"   , T, BlocksGT.GasNatural     ,  7,  1, 80, 25, 0, 16, null, F, tInfiniteGas ? FL.Gas_Natural     .make( 3000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.water"         , T, BlocksGT.WaterGeothermal,  7,  1, 50, 50, 0,  8, null, F,                FL.Water_Geothermal.make(  500)     , 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.lava"          , T, Blocks.lava             ,  0,  1, 50, 50, 0,  8, null, F,                FL.Lava            .make( 1000)     , 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT);
-		new WorldgenFluidSpring("nether.fluid.lava"             , T, Blocks.lava             ,  0,  1, 90, 25, 0,  8, null, F,                FL.Lava            .make(  500)     , 10, GEN_NETHER);
-		
 		for (BlockBase tStone : BlocksGT.stones) if (tStone != BlocksGT.PrismarineDark && tStone != BlocksGT.PrismarineLight) {
 		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA, GEN_A97, GEN_TFC, GEN_ENVM, GEN_CW2_AquaCavern, GEN_CW2_Caveland, GEN_CW2_Cavenia, GEN_CW2_Cavern, GEN_CW2_Caveworld);
 		new WorldgenStone("nether.stone."   + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 200, 0, 120, null, F, GEN_NETHER);
@@ -697,6 +688,7 @@ public class Loader_Worldgen implements Runnable {
 		}
 		
 		
+		// Bedrock Ores.
 		new WorldgenOresBedrock("ore.bedrock.diamond"      , T, T, 128000, MT.Diamond             , BlocksGT.FlowersB, 6, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.tungstate"    , T, T,  96000, MT.OREMATS.Tungstate   , BlocksGT.FlowersB, 7, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.ferberite"    , T, T,  96000, MT.OREMATS.Ferberite   , BlocksGT.FlowersB, 7, GEN_FLOOR);
@@ -749,8 +741,20 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.custom" + (i<10?"0":"") + i, F, T, 100000, MT.NULL, BlocksGT.FlowersA, 7, GEN_FLOOR);
 		}
 		
+		// Special Bedrock Ore Generator just for HBMs Coltan.
 		new WorldgenColtan ("ore.special.coltan"           , T,  20,  40,  32, 480, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
+		// Has to be after Bedrock Ores, because it would reduce Ore chances too much otherwise.
+		new WorldgenFluidSpring("overworld.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy  , 15, 64, tInfiniteOil ? FL.Oil_ExtraHeavy  .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.oil.heavy"     , T, BlocksGT.OilHeavy       , 15, 64, tInfiniteOil ? FL.Oil_Heavy       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.oil.medium"    , T, BlocksGT.OilMedium      , 15, 64, tInfiniteOil ? FL.Oil_Medium      .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.oil.light"     , T, BlocksGT.OilLight       , 15, 64, tInfiniteOil ? FL.Oil_Light       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.gas.natural"   , T, BlocksGT.GasNatural     , 15, 64, tInfiniteGas ? FL.Gas_Natural     .make( 3000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.water"         , T, BlocksGT.WaterGeothermal, 15, 32,                FL.Water_Geothermal.make(  500)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.lava"          , T, Blocks.lava             ,  0, 32,                FL.Lava            .make( 1000)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT);
+		new WorldgenFluidSpring("nether.fluid.lava"             , T, Blocks.lava             ,  0, 32,                FL.Lava            .make(  500)     , GEN_NETHER);
+		
+		// Small Ores.
 		new WorldgenOresSmall("ore.small.copper"           , T,  60, 120,  16, MT.Cu                  , GEN_OVERWORLD, GEN_GT          , GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER            , GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
 		new WorldgenOresSmall("ore.small.chalcopyrite"     , T,  60, 120,  16, MT.OREMATS.Chalcopyrite, GEN_OVERWORLD, GEN_GT          , GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                                     , GEN_END, GEN_MARS);
 		new WorldgenOresSmall("ore.small.malachite"        , T,  40,  70,   8, MT.OREMATS.Malachite   , GEN_OVERWORLD, GEN_GT          , GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                                     , GEN_END, GEN_MARS);
