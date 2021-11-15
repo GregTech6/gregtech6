@@ -95,7 +95,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * mAmountPerQuanta);
 		if (aDoDrain) {
 			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
-			updateFluidBlocks(aWorld, aX, aY, aZ);
+			updateFluidBlocks(aWorld, aX, aY, aZ, T);
 		}
 		return rFluid;
 	}
@@ -112,15 +112,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				// Get rid of Flowing Water/Lava adjacent to my Fluids, because Forge is fucked up.
 				if (WD.meta(aWorld, aX, aY, aZ, tSide, F) != 0 && WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], NB, 0, 2)) {
 					// The Water might have blocked a previous path.
-					updateFluidBlocks(aWorld, aX, aY, aZ);
+					updateFluidBlocks(aWorld, aX, aY, aZ, T);
 				}
 			}
 		}
 	}
 	
-	public void updateFluidBlocks(World aWorld, int aX, int aY, int aZ) {
-		for (int j = densityDir > 0 ? -1 : 0; j < (densityDir > 0 ? 1 : 2); j++) if (UT.Code.inside(0, aWorld.getHeight(), aY+j)) for (int i = -4; i < 5; i++) for (int k = -4; k < 5; k++) if (i != 0 || j != 0 || k != 0) {
-			if (aWorld.getBlock(aX+i, aY+j, aZ+k) == this && aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) > (j == 0 ? Math.abs(i)+Math.abs(j) : 0)) {
+	public void updateFluidBlocks(World aWorld, int aX, int aY, int aZ, boolean aAll) {
+		for (int j = densityDir > 0 ? -1 : 0; j < (densityDir > 0 ? 1 : 2); j++) if (UT.Code.inside(0, aWorld.getHeight(), aY+j)) for (int i = -4; i <= 4; i++) for (int k = -4; k <= 4; k++) if (i != 0 || j != 0 || k != 0) {
+			if (aWorld.getBlock(aX+i, aY+j, aZ+k) == this && (aAll || aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) > (j == 0 ? Math.abs(i)+Math.abs(j) : 0))) {
 				aWorld.scheduleBlockUpdate(aX+i, aY+j, aZ+k, this, tickRate);
 			}
 		}
@@ -153,7 +153,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
 		
 		if (tRemainingQuanta < 1) {
-			updateFluidBlocks(aWorld, aX, aY, aZ);
+			updateFluidBlocks(aWorld, aX, aY, aZ, F);
 			return;
 		}
 		
@@ -161,7 +161,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (tRemainingQuanta == 1) {
 			if (tChanged) {
 				set(aWorld, aX, aY, aZ, tRemainingQuanta-1, F);
-				updateFluidBlocks(aWorld, aX, aY, aZ);
+				updateFluidBlocks(aWorld, aX, aY, aZ, F);
 				return;
 			}
 			if (!WD.liquid(aWorld, aX, aY+densityDir, aZ)) {
@@ -172,8 +172,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 					&& set                (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], tRemainingQuanta-1, F)) {
 						aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
 						WD.set            (aWorld, aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-						updateFluidBlocks (aWorld, aX            , aY           , aZ            );
-						updateFluidBlocks (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide]);
+						updateFluidBlocks (aWorld, aX            , aY           , aZ            , T);
 						return;
 					}
 				}
@@ -201,7 +200,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		if (tCount == 1) {
 			if (tChanged) {
 				set(aWorld, aX, aY, aZ, tRemainingQuanta-1, F);
-				updateFluidBlocks(aWorld, aX, aY, aZ);
+				updateFluidBlocks(aWorld, aX, aY, aZ, F);
 			}
 			return;
 		}
@@ -291,6 +290,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				set(aWorld, aX, tY, aZ, aAmount - 2, T);
 				// Since it is a Jump, we will give it a fast reaction time!
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
+				// Update all Fluid Blocks around this, since they might have been very compressed before too.
+				updateFluidBlocks(aWorld, aX, aY, aZ, T);
 				// Leaving a minimal Block at the original location to make it more Fountain like.
 				return 1;
 			}
