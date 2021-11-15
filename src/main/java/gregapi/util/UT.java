@@ -3214,7 +3214,7 @@ public class UT {
 		
 		public static boolean applyPotion(Entity aEntity, Potion aPotion, int aDuration, int aLevel, boolean aInvisibleParticles) {return aPotion != null && applyPotion(aEntity, aPotion.id, aDuration, aLevel, aInvisibleParticles);}
 		public static boolean applyPotion(Entity aEntity, int aID, int aDuration, int aLevel, boolean aInvisibleParticles) {
-			if (!(aEntity instanceof EntityLivingBase)) return F;
+			if (aDuration <= 0 || !(aEntity instanceof EntityLivingBase)) return F;
 			if (aID < -1) switch(aID) {
 				case - 2: aID = PotionsGT.ID_RADIATION  ; break;
 				case - 3: aID = PotionsGT.ID_HYPOTHERMIA; break;

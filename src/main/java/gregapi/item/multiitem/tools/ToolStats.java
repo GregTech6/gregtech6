@@ -45,7 +45,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ChatComponentText;
@@ -271,8 +270,8 @@ public abstract class ToolStats implements IToolStats {
 	@Override
 	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer) {
 		// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
-		aPlayer.addPotionEffect(new PotionEffect(Potion.weakness   .id, 300, 2, F));
-		aPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 300, 2, F));
+		UT.Entities.applyPotion(aPlayer, Potion.weakness   , 300, 2, F);
+		UT.Entities.applyPotion(aPlayer, Potion.digSlowdown, 300, 2, F);
 	}
 	
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

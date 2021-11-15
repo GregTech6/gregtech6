@@ -716,7 +716,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							if (tData != null && tData.hasValidMaterialData()) {
 								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.mPrefix != null || tData.mByProducts.length <= 0)) {
 									PotionEffect tEffect = null;
-									aEvent.player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3));
+									UT.Entities.applyPotion(aEvent.player, Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3, F);
 								}
 								if (tData.mMaterial.mMaterial == MT.Craponite) {
 									tCraponite++;
@@ -733,7 +733,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if ("Bear989Sr".equalsIgnoreCase(aEvent.player.getCommandSenderName())) {
 						if (tCraponite > 0) {
 							// Crazy started to give Bear her Craponite Arrows, lets not let him have those.
-							aEvent.player.addPotionEffect(new PotionEffect(Potion.poison.id, 1200, tCraponite, T));
+							UT.Entities.applyPotion(aEvent.player, Potion.poison, 1200, tCraponite, T);
 						}
 						if (--BEAR_INVENTORY_COOL_DOWN < 0 && tEmptySlots < 4) {
 							BEAR_INVENTORY_COOL_DOWN = 100;
@@ -832,8 +832,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			} else
 			if (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool) {
 				// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
-				aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.weakness   .id, 300, 2, F));
-				aEvent.entityPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 300, 2, F));
+				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.weakness   , 300, 2, F);
+				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.digSlowdown, 300, 2, F);
 			}
 		}
 		// 

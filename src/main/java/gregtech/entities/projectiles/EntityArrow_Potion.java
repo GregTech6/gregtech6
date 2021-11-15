@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,11 +21,11 @@ package gregtech.entities.projectiles;
 
 import static gregapi.data.CS.*;
 
+import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class EntityArrow_Potion extends EntityArrow_Material {
@@ -80,7 +80,7 @@ public class EntityArrow_Potion extends EntityArrow_Material {
 	public int[] onHitEntity(Entity aHitEntity, Entity aShootingEntity, ItemStack aArrow, int aRegularDamage, int aMagicDamage, int aKnockback, int aFireDamage, int aHitTimer) {
 		if (aHitEntity instanceof EntityLivingBase) for (int i = 3; i < mPotions.length; i+=4) {
 			if (RNGSUS.nextInt(100) < mPotions[i]) {
-				((EntityLivingBase)aHitEntity).addPotionEffect(new PotionEffect(mPotions[i-3], mPotions[i-2], mPotions[i-1], F));
+				UT.Entities.applyPotion(aHitEntity, mPotions[i-3], mPotions[i-2], mPotions[i-1], F);
 			}
 		}
 		return super.onHitEntity(aHitEntity, aShootingEntity, aArrow, 1, aMagicDamage, aKnockback, aFireDamage, aHitTimer);

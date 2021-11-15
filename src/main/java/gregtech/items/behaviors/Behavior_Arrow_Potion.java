@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,13 +24,13 @@ import static gregapi.data.CS.*;
 import gregapi.code.TagData;
 import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.item.multiitem.MultiItem;
+import gregapi.util.UT;
 import gregtech.entities.projectiles.EntityArrow_Potion;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class Behavior_Arrow_Potion extends Behavior_Arrow {
@@ -48,7 +48,7 @@ public class Behavior_Arrow_Potion extends Behavior_Arrow {
 	
 	@Override
 	public boolean onLeftClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-		if (aEntity instanceof EntityLivingBase) for (int i = 3; i < mPotions.length; i+=4) if (RNGSUS.nextInt(100) < mPotions[i]) ((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(mPotions[i-3], mPotions[i-2], mPotions[i-1], false));
+		if (aEntity instanceof EntityLivingBase) for (int i = 3; i < mPotions.length; i+=4) if (RNGSUS.nextInt(100) < mPotions[i]) UT.Entities.applyPotion(aEntity, mPotions[i-3], mPotions[i-2], mPotions[i-1], F);
 		return super.onLeftClickEntity(aItem, aStack, aPlayer, aEntity);
 	}
 	
