@@ -216,6 +216,7 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_TNT = "gt.lang.blast.resist.tnt.proof"
 	, TOOLTIP_BLAST_RESISTANCE_DYNAMITE = "gt.lang.blast.resist.dynamite.proof"
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
+	, TOOLTIP_ENCHANT_BONUS = "gt.lang.enchantment.bonus"
 	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
 	, TOOLTIP_TWILIGHT_MAZE_BREAKING = "gt.lang.twilightforest.mazebreaking"
 	, TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING = "gt.lang.twilightforest.mazehedgebreaking"
@@ -543,6 +544,7 @@ public class LH {
 		add(TOOLTIP_BLAST_RESISTANCE_TNT                , "(TNT Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes can still go through!)");
+		add(TOOLTIP_ENCHANT_BONUS                       , "Can influence an Enchanting Table like a Bookshelf");
 		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the rotting Effects of the Betweenlands");
 		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Tools made of this can break Twilight Forest Mazes");
 		add(TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING        , "Can break Twilight Forest Maze Hedges");

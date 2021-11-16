@@ -70,7 +70,7 @@ public class WorldgenFluidSpring extends WorldgenObject {
 			
 			if (i > 0) aWorld.setBlock(tX, i, tZ, mBlock, mMeta, 0);
 			
-			if (mSpringFluid != null && i > 1 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
+			if (mSpringFluid != null && i > 2 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
 				MultiTileEntityFluidSpring.setBlock(aWorld, tX, 0, tZ, mSpringFluid);
 			}
 		}

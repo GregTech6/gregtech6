@@ -116,6 +116,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		if (tTileEntityContainer == null) {aList.add("INVALID ITEM! THIS IS A BUG IF ACQUIRED IN A LEGIT WAY!"); return;}
 		if (tTileEntityContainer.mTileEntity instanceof IMTE_AddToolTips) try {((IMTE_AddToolTips)tTileEntityContainer.mTileEntity).addToolTips(aList, aStack, aF3_H);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (tTileEntityContainer.mTileEntity instanceof IMTE_GetFlammability ? ((IMTE_GetFlammability)tTileEntityContainer.mTileEntity).getFlammability(SIDE_ANY, tTileEntityContainer.mBlock.getMaterial().getCanBurn()) > 0 : tTileEntityContainer.mBlock.getMaterial().getCanBurn()) aList.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
+		if (tTileEntityContainer.mTileEntity instanceof IMTE_GetEnchantPowerBonus) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_ENCHANT_BONUS));
 		if (tTileEntityContainer.mTileEntity instanceof ITileEntityCoverable) {
 			CoverData tCoverData = ((ITileEntityCoverable)tTileEntityContainer.mTileEntity).getCoverData();
 			if (tCoverData != null) for (byte tSide : ALL_SIDES_VALID) if (tCoverData.mBehaviours[tSide] != null) {aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_UNCOVER_CROWBAR)); break;}
