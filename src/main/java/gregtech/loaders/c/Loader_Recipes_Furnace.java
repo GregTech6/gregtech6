@@ -119,7 +119,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U * 2, T));
 		OP.rubble                .addListener(new Listener_Furnace_Smelting(U * 2, T));
 		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U * 2, T));
-		OP.cluster               .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.cluster               .addListener(new Listener_Furnace_Smelting(U * 3, T));
 		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
 		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
 		OP.crystalline           .addListener(new Listener_Furnace_Smelting(   -1, T));

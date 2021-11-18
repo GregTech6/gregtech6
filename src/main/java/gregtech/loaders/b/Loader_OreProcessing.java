@@ -136,7 +136,7 @@ public class Loader_OreProcessing implements Runnable {
 		chunk                       .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
 		rubble                      .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
 		pebbles                     .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
-		cluster                     .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		cluster                     .addListener(new OreProcessing_Maceration(dust          , 3, ANTIMATTER.NOT));
 		crushed                     .addListener(new OreProcessing_Maceration(dust          , 1, ANTIMATTER.NOT));
 		crushedTiny                 .addListener(new OreProcessing_Maceration(dustTiny      , 1, ANTIMATTER.NOT));
 		crushedPurified             .addListener(new OreProcessing_Maceration(dust          , 1, ANTIMATTER.NOT));
