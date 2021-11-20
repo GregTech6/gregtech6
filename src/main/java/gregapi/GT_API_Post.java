@@ -434,6 +434,28 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg(OD.record, ST.make(MD.BETTER_RECORDS, "urlmultirecord", 1, 0));
 		}
 		
+		// Oh look what Ars Magica 2 does late too...
+		if (MD.ARS.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Vinteum          , MD.ARS, "vinteumOre", 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Chimerite        , MD.ARS, "vinteumOre", 1);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueTopaz        , MD.ARS, "vinteumOre", 2);
+			OreDictManager.INSTANCE.setTarget(OP.ore            , MT.Sunstone         , MD.ARS, "vinteumOre", 3);
+			OreDictManager.INSTANCE.setTarget(OP.oreMoon        , MT.Moonstone        , MD.ARS, "vinteumOre", 4);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Moonstone        , MD.ARS, "vinteumOre", 5);
+			OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Vinteum          , MD.ARS, "vinteumOre", 6);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.BlueTopaz        , MD.ARS, "vinteumOre", 7);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Sunstone         , MD.ARS, "vinteumOre", 8);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Chimerite        , MD.ARS, "vinteumOre", 9);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Vinteum          , MD.ARS, "itemOre", 0);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneCompound   , MD.ARS, "itemOre", 1);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneAsh        , MD.ARS, "itemOre", 2);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.VinteumPurified  , MD.ARS, "itemOre", 3);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Chimerite        , MD.ARS, "itemOre", 4);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.BlueTopaz        , MD.ARS, "itemOre", 5);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sunstone         , MD.ARS, "itemOre", 6);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Moonstone        , MD.ARS, "itemOre", 7);
+		}
+		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn               , MD.VOLTZ, "veStoneOre", 0);

@@ -183,12 +183,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			break;
 		}
 	}
-
+	
 	@Override
 	public void onProxyBeforeInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) LH.add("gt.material." + tMaterial.mNameInternal, tMaterial.mNameLocal);
 	}
-
+	
 	@Override
 	public void onProxyAfterInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
@@ -196,7 +196,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			tPrefix.mNameLocal = LH.get("oredict.prefix." + tPrefix.mNameInternal, tPrefix.mNameLocal);
 		}
 	}
-
+	
 	@Override
 	public void onProxyAfterPostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
 		// Initialising the List of Decorative Plank Icons
@@ -205,25 +205,23 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tBlock != null && tBlock != NB) PlankData.PLANK_ICONS[i] = new IconContainerCopied(tBlock, ST.meta_(PlankData.PLANKS[i]), SIDE_ANY);
 		}
 	}
-
+	
 	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sRainbowFast = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
-
+	
 	@SubscribeEvent
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
 		// You should thank me for fixing this Fluid Bug. Seriously, some people just don't set the Icons of their registered Fluids...
 		for (Fluid aFluid : FluidRegistry.getRegisteredFluids().values()) {
-			if (aFluid.getIcon() == null || FluidsGT.BROKEN.contains(aFluid.getName())) {
-				try {
-					Block tBlock = aFluid.getBlock();
-					aFluid.setIcons((tBlock != null && tBlock != NB ? tBlock : Blocks.water).getIcon(0, 0));
-				} catch(Throwable e) {
-					e.printStackTrace(ERR);
-					try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(ERR);}
-				}
+			if (aFluid.getIcon() == null || FluidsGT.BROKEN.contains(aFluid.getName())) try {
+				Block tBlock = aFluid.getBlock();
+				aFluid.setIcons((ST.valid(tBlock) ? tBlock : Blocks.water).getIcon(0, 0));
+			} catch(Throwable e) {
+				e.printStackTrace(ERR);
+				try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(ERR);}
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI || ST.invalid(aEvent.itemStack)) return;
