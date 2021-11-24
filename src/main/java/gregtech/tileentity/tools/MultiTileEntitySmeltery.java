@@ -634,7 +634,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				} else if (aEntity instanceof EntityIronGolem) {
 					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(4*U, MT.Fe)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntitySkeleton) {
-					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.Bone), ((EntitySkeleton)aEntity).getSkeletonType() == 1 ? OM.stack(1*U, MT.Coal) : null), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, ((EntitySkeleton)aEntity).getSkeletonType() == 1 ? MT.BoneWither : MT.Bone), ((EntitySkeleton)aEntity).getSkeletonType() == 1 ? OM.stack(1*U, MT.Coal) : null), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntityZombie) {
 					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.MeatRotten)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntityMooshroom || aEntity instanceof EntityCow || aEntity instanceof EntityHorse) {

@@ -50,10 +50,10 @@ public class WorldgenFluidSpring extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aMeta, int aProbability, FluidStack aSpringFluid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mSpringFluid    = aSpringFluid;
-		mBlock          = ST.valid(aBlock)?aBlock:Blocks.water;
-		mMeta           = UT.Code.bind4(aMeta);
-		mProbability    = getConfigFile().get(mCategory, "Probability", aProbability);
+		mSpringFluid = aSpringFluid;
+		mBlock       = ST.valid(aBlock)?aBlock:Blocks.water;
+		mMeta        = UT.Code.bind4(aMeta);
+		mProbability = getConfigFile().get(mCategory, "Probability", aProbability);
 	}
 	
 	@Override
