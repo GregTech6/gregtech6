@@ -81,7 +81,7 @@ import net.minecraftforge.common.ChestGenHooks;
 public class MultiTileEntityChest extends TileEntityBase05Inventories implements IItemColorableRGB, ITileEntityDecolorable, ITileEntitySurface, IMTE_OnRegistrationClient, IMTE_OnRegistrationFirstClient, IMTE_SyncDataByte, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetSubItems, IMTE_SyncDataByteArray, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_GetComparatorInputOverride, IMTE_GetSelectedBoundingBoxFromPool, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnPlaced, IMTE_OnToolClick {
 	protected boolean mIsPainted = F;
 	protected int mRGBa = UNCOLORED;
-	protected byte mFacing = 3, mUsingPlayers = 0;
+	protected byte mFacing = 3, mUsingPlayers = 0, oUsingPlayers = 0;
 	protected float mLidAngle = 0, oLidAngle = 0, mHardness = 6, mResistance = 3;
 	protected OreDictMaterial mMaterial = MT.NULL;
 	
@@ -131,7 +131,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override
 	public void onTick(long aTimer, boolean aIsServerSide) {
 		super.onTick(aTimer, aIsServerSide);
-		if (isServerSide()) {
+		if (aIsServerSide) {
 			if (mInventoryChanged) {
 				for (byte tSide : ALL_SIDES_VALID) {
 					DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
@@ -142,25 +142,27 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			}
 			if (mUsingPlayers > 0 && aTimer % 1200 == 0) {
 				mUsingPlayers = UT.Code.bind7(getOpenGUIs());
-				updateClientData();
-			}
-		}
-		oLidAngle = mLidAngle;
-		if (mUsingPlayers > 0) {
-			if (mLidAngle >= 1.0F) {
-				mLidAngle = 1.0F;
-			} else {
-				mLidAngle = Math.min(1, mLidAngle+0.005F);
-				if (mLidAngle > 0.1F && oLidAngle <= 0.1F) UT.Sounds.play("random.chestopen"  , 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 			}
 		} else {
-			if (mLidAngle <= 0.0F) {
-				mLidAngle = 0.0F;
+			oLidAngle = mLidAngle;
+			if (mUsingPlayers > 0) {
+				mLidAngle = Math.min(1, mLidAngle+0.1F);
+				if (mLidAngle > 0.1F && oLidAngle <= 0.1F) UT.Sounds.play("random.chestopen"  , 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 			} else {
-				mLidAngle = Math.max(0, mLidAngle-0.005F);
+				mLidAngle = Math.max(0, mLidAngle-0.1F);
 				if (mLidAngle < 0.5F && oLidAngle >= 0.5F) UT.Sounds.play("random.chestclosed", 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 			}
 		}
+	}
+	
+	@Override
+	public boolean onTickCheck(long aTimer) {
+		return mUsingPlayers != oUsingPlayers || super.onTickCheck(aTimer);
+	}
+	@Override
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
+		super.onTickResetChecks(aTimer, aIsServerSide);
+		oUsingPlayers = mUsingPlayers;
 	}
 	
 	@Override
@@ -188,8 +190,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.chest";}
-	@Override public void openInventoryGUI () {mUsingPlayers++; updateClientData();}
-	@Override public void closeInventoryGUI() {mUsingPlayers--; updateClientData();}
+	@Override public void openInventoryGUI () {mUsingPlayers++;}
+	@Override public void closeInventoryGUI() {mUsingPlayers--;}
 	@Override public float getExplosionResistance2() {return mResistance;}
 	@Override public float getBlockHardness() {return mHardness;}
 	@Override public int getComparatorInputOverride(byte aSide) {return Container.calcRedstoneFromInventory(this);}
@@ -224,7 +226,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 		mUsingPlayers = aData[1];
 		if (UT.Code.unsignB(aData[2]) != getSizeInventory()) setInventory(new ItemStack[UT.Code.unsignB(aData[2])]);
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4]), UT.Code.unsignB(aData[5])});
-		return true;
+		return T;
 	}
 	
 	@Override public boolean unpaint() {if (mIsPainted) {mIsPainted=F; mRGBa=UT.Code.getRGBInt(mMaterial.fRGBaSolid); updateClientData(); return T;} return F;}
