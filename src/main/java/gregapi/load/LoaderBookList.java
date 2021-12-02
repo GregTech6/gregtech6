@@ -417,6 +417,10 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_steel_plate"              ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_steel_wire"               ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_steel_circuit"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_desh_flat"                ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_desh_plate"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_desh_wire"                ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_desh_circuit"             ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_titanium_flat"            ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_titanium_plate"           ,   W, (byte) 55);
 			BooksGT.BOOK_REGISTER  .put(MD.HBM, "item.stamp_titanium_wire"            ,   W, (byte) 55);

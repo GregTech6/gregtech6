@@ -857,6 +857,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ti                     , MD.HBM, "item.powder_titanium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ti                     , MD.HBM, "item.ingot_titanium"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Ti                     , MD.HBM, "item.plate_titanium"             , 0);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Osmiridium             , MD.HBM, "item.nugget_osmiridium"          , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Osmiridium             , MD.HBM, "item.ingot_osmiridium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TungstenCarbide        , MD.HBM, "item.neutron_reflector"          , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.DeshAlloy              , MD.HBM, "item.powder_desh"                , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.DeshAlloy              , MD.HBM, "item.nugget_desh"                , 0);
