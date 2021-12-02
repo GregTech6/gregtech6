@@ -146,11 +146,14 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			}
 		}
 		oLidAngle = mLidAngle;
-		if (mUsingPlayers > 0 && mLidAngle == 0.0F) worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.chestopen", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
-		if (mUsingPlayers == 0 && mLidAngle > 0.0F || mUsingPlayers > 0 && mLidAngle < 1.0F) {
-			if (mUsingPlayers > 0) mLidAngle += 0.1F; else mLidAngle -= 0.1F;
-			if (mLidAngle > 1.0F) mLidAngle = 1.0F; else if (mLidAngle < 0.0F) mLidAngle = 0.0F;
-			if (mLidAngle < 0.5F && oLidAngle >= 0.5F) worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.chestclosed", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
+		if (mUsingPlayers > 0) {
+			mLidAngle += 0.02F;
+			if (mLidAngle >  1.0F) mLidAngle = 1.0F;
+			if (mLidAngle == 0.1F) UT.Sounds.play("random.chestopen"  , 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
+		} else {
+			mLidAngle -= 0.02F;
+			if (mLidAngle <  0.0F) mLidAngle = 0.0F;
+			if (mLidAngle == 0.5F) UT.Sounds.play("random.chestclosed", 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 		}
 	}
 	

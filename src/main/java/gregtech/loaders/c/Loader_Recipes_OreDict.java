@@ -57,8 +57,14 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 		addListener(OP.blockDust.dat(MT.Glass), OP.blockDust.dat(MT.Sand), OP.blockDust.dat(MT.RedSand), OP.blockDust.dat(MT.EndSand), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, ST.make(Blocks.glass, 1, 0), F, F, F);
 		}});
+		addListener(OP.dust.dat(MT.Stone), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, OP.plate.mat(MT.Stone, 1), T, F, F);
+		}});
 		addListener(OP.blockDust.dat(MT.Stone), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(Blocks.stone, 1, 0), F, F, F);
+			RM.add_smelting(aEvent.mStack, ST.make(Blocks.stone, 1, 0), T, F, F);
+		}});
+		addListener(OP.blockDust.dat(MT.Concrete), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, ST.make(MD.CHSL, "concrete", 1, 0, ST.make(Blocks.stone, 1, 0)), F, F, F);
 		}});
 		addListener(OP.dustDiv72.dat(MT.ArcaneCompound), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, OP.dustDiv72.mat(MT.ArcaneAsh, 2), F, F, F);

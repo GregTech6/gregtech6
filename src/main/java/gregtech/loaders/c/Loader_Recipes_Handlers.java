@@ -743,6 +743,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 			addExtruderRecipe(tInput, capcellcon                , T, IL.Shape_Extruder_CCC              .get(0));
 			addExtruderRecipe(tInput, plateTiny                 , T, IL.Shape_Extruder_Plate_Tiny       .get(0));
 			addExtruderRecipe(tInput, foil                      , T, IL.Shape_Extruder_Foil             .get(0), SMITHABLE.NOT);
+			addExtruderRecipe(tInput, wireFine                  , T, IL.Shape_Extruder_Wire_Fine        .get(0), SMITHABLE.NOT);
 		}
 		// Making sure that simple Stuff like Plastic can still be extruded using Dust even if Dusts are lacking the EXTRUDER_FODDER Tag, since there is absolutely no other way to process these Materials losslessly other than Dust in Extruder.
 		// Yes I know this special case is exclusively using the Simple Extruder Shapes not the normal ones. Makes it easier to code on my end, and people who wanna use Dusts will end up having to use the Simple Shapes, but only in the event that Dusts no longer count as general Extruder Fodder for whatever reason at all. ;D
@@ -775,6 +776,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 			addExtruderRecipe(tInput, capcellcon                , F, IL.Shape_SimpleEx_CCC              .get(0));
 			addExtruderRecipe(tInput, plateTiny                 , F, IL.Shape_SimpleEx_Plate_Tiny       .get(0));
 			addExtruderRecipe(tInput, foil                      , F, IL.Shape_SimpleEx_Foil             .get(0), SMITHABLE.NOT);
+			addExtruderRecipe(tInput, wireFine                  , F, IL.Shape_SimpleEx_Wire_Fine        .get(0), SMITHABLE.NOT);
 		}
 	}
 	

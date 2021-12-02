@@ -217,6 +217,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_Extruder_CCC              .set(addItem(tLastID = 10028, "Extruder Shape (Capsule-Cell-Container)"  , "Extruder Shape for making Capsule-Cell-Containers"   , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_Foil             .set(addItem(tLastID = 10029, "Extruder Shape (Foil)"                    , "Extruder Shape for making Foils from Non-Metals"     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_Plate_Tiny       .set(addItem(tLastID = 10030, "Extruder Shape (Tiny Plate)"              , "Extruder Shape for making Tiny Plates"               , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
+		IL.Shape_Extruder_Wire_Fine        .set(addItem(tLastID = 10031, "Extruder Shape (Fine Wire)"               , "Extruder Shape for making Fine Wires from Non-Metals", TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
 		
 		CR.shaped(IL.Shape_Extruder_Ingot           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
 		CR.shaped(IL.Shape_Extruder_Plate_Tiny      .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
@@ -228,6 +229,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_Extruder_Bolt            .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
 		CR.shaped(IL.Shape_Extruder_Wire            .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
 		CR.shaped(IL.Shape_Extruder_Rod_Long        .get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
+		CR.shaped(IL.Shape_Extruder_Wire_Fine       .get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Rod);
 		
 		CR.shaped(IL.Shape_Extruder_Block           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
 		CR.shaped(IL.Shape_Extruder_Pickaxe         .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
@@ -286,6 +288,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_CCC.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Foil.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Plate_Tiny.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Wire_Fine.get(1)), (byte)45);
 		
 		
 		
@@ -323,6 +326,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_SimpleEx_CCC              .set(addItem(tLastID = 10228, "Low Heat Extruder Shape (Capsule-Cell-Container)" , "Extruder Shape for making Capsule-Cell-Containers"   , TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_Foil             .set(addItem(tLastID = 10229, "Low Heat Extruder Shape (Foil)"                   , "Extruder Shape for making Foils from Non-Metals"     , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_Plate_Tiny       .set(addItem(tLastID = 10230, "Low Heat Extruder Shape (Tiny Plate)"             , "Extruder Shape for making Tiny Plates"               , TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
+		IL.Shape_SimpleEx_Wire_Fine        .set(addItem(tLastID = 10231, "Low Heat Extruder Shape (Fine Wire)"              , "Extruder Shape for making Fine Wires from Non-Metals", TC.stack(TC.FABRICO, 1), TC.stack(TC.METALLUM, 2)));
 		
 		CR.shaped(IL.Shape_SimpleEx_Ingot           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
 		CR.shaped(IL.Shape_SimpleEx_Plate_Tiny      .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
@@ -334,6 +338,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_SimpleEx_Bolt            .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
 		CR.shaped(IL.Shape_SimpleEx_Wire            .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
 		CR.shaped(IL.Shape_SimpleEx_Rod_Long        .get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
+		CR.shaped(IL.Shape_SimpleEx_Wire_Fine       .get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Rod);
 		
 		CR.shaped(IL.Shape_SimpleEx_Block           .get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
 		CR.shaped(IL.Shape_SimpleEx_Pickaxe         .get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
@@ -392,6 +397,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_CCC.get(1)), (byte)55);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Foil.get(1)), (byte)55);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Plate_Tiny.get(1)), (byte)55);
+		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Wire_Fine.get(1)), (byte)55);
 		
 		
 		IL.Shape_Foodmold_Empty            .set(addItem(tLastID = 10800, "Empty Food Grade Mold"            , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
