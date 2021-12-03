@@ -104,46 +104,46 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	public void onTick(long aTimer, boolean aIsServerSide) {
 		super.onTick(aTimer, aIsServerSide);
 		if (aIsServerSide) {
+			boolean tProduce = F;
 			if (mActive) {
-				if (rng(mFluid.amount) == 0) {
-					Block tBlock = FL.BLOCKS.get(mFluid.getFluid().getName()), tAbove = getBlockAtSide(SIDE_UP);
-					if (ST.invalid(tBlock)) tBlock = mFluid.getFluid().getBlock();
-					if (ST.valid(tBlock)) {
-						if (tBlock instanceof BlockFluidFinite) {
-							if (tAbove == tBlock) {
-								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
-								tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
-							} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
-								tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
-							}
-						} else {
-							if (tAbove == tBlock) {
-								if (getMetaDataAtSide(SIDE_UP) == 0) {
-									for (byte tSide : ALL_SIDES_HORIZONTAL) {
-										tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
-										if (tAbove == tBlock) {
-											if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
-												worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
-												break;
-											}
-										} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+				tProduce = (rng(mFluid.amount) == 0);
+			} else if (SERVER_TIME % 20 == 1 && !WD.liquid(getBlockAtSide(SIDE_UP))) {
+				tProduce = mActive = T;
+			}
+			if (tProduce) {
+				Block tBlock = FL.BLOCKS.get(mFluid.getFluid().getName()), tAbove = getBlockAtSide(SIDE_UP);
+				if (ST.invalid(tBlock)) tBlock = mFluid.getFluid().getBlock();
+				if (ST.valid(tBlock)) {
+					if (tBlock instanceof BlockFluidFinite) {
+						if (tAbove == tBlock) {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
+							tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
+						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
+							tBlock.updateTick(worldObj, xCoord, yCoord+1, zCoord, RNGSUS);
+						}
+					} else {
+						if (tAbove == tBlock) {
+							if (getMetaDataAtSide(SIDE_UP) == 0) {
+								for (byte tSide : ALL_SIDES_HORIZONTAL) {
+									tAbove = getBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide]);
+									if (tAbove == tBlock) {
+										if (0 != getMetaData(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
 											worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
 											break;
 										}
+									} else if (tAbove.isAir(worldObj, xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide])) {
+										worldObj.setBlock(xCoord+OFFX[tSide], yCoord+1, zCoord+OFFZ[tSide], tBlock, 0, 3);
+										break;
 									}
-								} else {
-									worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 								}
-							} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+							} else {
 								worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 							}
+						} else if (WD.liquid(tAbove) || tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 						}
 					}
-				}
-			} else {
-				if (SERVER_TIME % 20 == 1 && !WD.liquid(getBlockAtSide(SIDE_UP))) {
-					mActive = T;
 				}
 			}
 		}
