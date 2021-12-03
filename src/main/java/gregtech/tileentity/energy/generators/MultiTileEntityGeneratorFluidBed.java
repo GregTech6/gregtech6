@@ -269,7 +269,7 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
 	@Override public boolean getStateRunningPassively() {return mBurning;}
-	@Override public boolean getStateRunningPossible() {return mBurning;}
+	@Override public boolean getStateRunningPossible() {return mBurning || (slotHas(0) && mTank.has());}
 	@Override public boolean getStateRunningActively() {return mBurning;}
 	
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {

@@ -18,7 +18,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Save Files were sometimes not loaded properly, leading to the Ender Garbage Dump containing Items from different Worlds, when you load multiple Savegames in a row.
 [FIXED] Flux Dynamo was not working properly.
 [FIXED] Baths would sometimes fail finding the Recipes for Treated Planks.
-[FIXED] The Concrete Block of Chisel can now be made by smelting Blocks of Concrete Powder. Et-Futurum Concrete Powder is compatible with this too.
+[FIXED] The Concrete Block of Chisel can now be made by smelting Blocks of Concrete Powder. Et-Futurum Concrete Powder is compatible with this too.#
+[FIXED] The "Running Possible" Detector should work properly with most Fuel consuming things now.
 [CHANGED] Distillation (Tower) Recipes for Oil now take 25L of Input per Recipe instead of 50L, which makes it run evenly divisible with the 125L of Fluid you can get from an Oil Fluid Block. Some Outputs have been rounded up due to this.
 [CHANGED] Fluid Springs now generate differently and should cause less Issues with Caves. They also only start generating more Fluid if they have been exposed to Air once, making them inactive until someone actually finds them to make use of, so that should lag a bit less.
 [ADDED] Extruder Shape for Fine Wires. Same Rules apply as for Foils, in that you cannot put Smithable things through those Shapes.

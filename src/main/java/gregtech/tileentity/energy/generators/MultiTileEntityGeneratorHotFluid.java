@@ -240,7 +240,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
 	@Override public boolean getStateRunningPassively() {return mActivity.mActive;}
-	@Override public boolean getStateRunningPossible() {return mActivity.mActive;}
+	@Override public boolean getStateRunningPossible() {return mActivity.mActive || mTanks[0].has();}
 	@Override public boolean getStateRunningActively() {return mActivity.mActive;}
 	
 	// Icons

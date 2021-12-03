@@ -231,7 +231,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
 	@Override public boolean getStateRunningPassively() {return mActivity.mActive;}
-	@Override public boolean getStateRunningPossible() {return mActivity.mActive;}
+	@Override public boolean getStateRunningPossible() {return mActivity.mActive || (mTanks[0].has() && !mTanks[1].isFull());}
 	@Override public boolean getStateRunningActively() {return mActivity.mActive;}
 	@Override public boolean setAdjacentOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
