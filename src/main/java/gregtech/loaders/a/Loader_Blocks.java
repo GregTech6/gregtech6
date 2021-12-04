@@ -111,7 +111,7 @@ public class Loader_Blocks implements Runnable {
 		
 		
 		BlocksGT.Bars_Wood                                                      = new BlockBarsWood             ("gt.block.bars.wood");
-		BlocksGT.Bars_Brass                                                     = new BlockBarsSteel            ("gt.block.bars.brass");
+		BlocksGT.Bars_Brass                                                     = new BlockBarsBrass            ("gt.block.bars.brass");
 		BlocksGT.Bars_Steel                                                     = new BlockBarsSteel            ("gt.block.bars.steel");
 		BlocksGT.Bars_Titanium                                                  = new BlockBarsTitanium         ("gt.block.bars.titanium");
 		BlocksGT.Bars_TungstenSteel                                             = new BlockBarsTungstenSteel    ("gt.block.bars.tungstensteel");
