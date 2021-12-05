@@ -110,7 +110,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (mTank.has()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
+			if (mTank.has()) for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (mTank.has()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
 			
 			mNextCheck--;
 			
@@ -290,7 +290,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 1; mChecked.clear(); mCheckList.clear(); mPumpList.clear(); mPumpedFluids.clear();}
 	
-	@Override public boolean getStateRunningPossible() {return !mPumpList.isEmpty() || WD.liquid(getBlockAtSide(mFacing));}
+	@Override public boolean getStateRunningPossible() {return (mActiveData != 0 || !mTank.has()) && (!mPumpList.isEmpty() || WD.liquid(getBlockAtSide(mFacing)));}
 	@Override public boolean getStateRunningPassively() {return mActiveData != 0;}
 	@Override public boolean getStateRunningActively() {return mActiveData != 0 && !mPumpedFluids.isEmpty();}
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}

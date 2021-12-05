@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.14.26: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.14.25: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -10,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.23: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
 
 
 6.14.22:
