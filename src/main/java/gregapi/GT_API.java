@@ -523,8 +523,9 @@ public class GT_API extends Abstract_Mod {
 		
 		
 		// Test if the log4j exploit has been mitigated by Java itself in 2018, the used Minecraft Launcher, or any of the dedicated Fixer Mods.
-		UT.LoadingBar.start("is log4j exploit fixed: ", 2);
-		UT.LoadingBar.step("should be near instant, so it isn't fixed if you can read this!");
+		UT.LoadingBar.start("log4j exploit check", 4);
+		UT.LoadingBar.step("dont try to read this line, it should be too fast for you!");
+		UT.LoadingBar.step("not fixed if you can actually read this!!!");
 		org.apache.logging.log4j.Logger tLogger = org.apache.logging.log4j.LogManager.getLogger("log4j-vulnerability-detector");
 		tLogger.info("Checking if the log4j Exploit has been fixed.");
 		tLogger.info("If the Game Crashes from this following check there are a few ways to fix it:");
@@ -534,10 +535,11 @@ public class GT_API extends Abstract_Mod {
 		tLogger.info("Now performing the actual check! Don't worry, these are IPs which loop back to your own Computer, and dont go to your Network!");
 		tLogger.info("${jndi:ldap://127.0.0.1:8000/test}");
 		tLogger.info("${jndi:rmi://localhost:8000/test}");
-		tLogger.info("Seems like it is fixed on your Instance. Have fun playing! :D");
-		UT.LoadingBar.step("done.");
+		UT.LoadingBar.step("lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...");
+		UT.LoadingBar.step("done with the check.");
 		UT.LoadingBar.finish();
-		
+		// I can't properly reproduce the Issue myself, because my Java 8 install is rather borked, thanks to Oracle taking down the Java 8 Packages.
+		// And I installed Linux on my Computer (and therefore Java 8) a few months after Oracle fixed this exploit already...
 		
 		
 		
