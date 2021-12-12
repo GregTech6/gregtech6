@@ -525,14 +525,14 @@ public class GT_API extends Abstract_Mod {
 		// Test if the log4j exploit has been mitigated by Java itself in 2018, the used Minecraft Launcher, or any of the dedicated Fixer Mods.
 		org.apache.logging.log4j.Logger tLogger = org.apache.logging.log4j.LogManager.getLogger("log4j-vulnerability-detector");
 		tLogger.info("Checking if the log4j Exploit has been fixed.");
-		if (!("true".equalsIgnoreCase(System.getProperty("com.sun.jndi.ldap.object.trustURLCodebase")) && "true".equalsIgnoreCase(System.getProperty("com.sun.jndi.cosnaming.object.trustURLCodebase")))) {
-			tLogger.fatal                  ("Java is not updated enough to mitigate the Issue! Update Java more than just once every 3 years!");
-			tLogger.fatal                  ("Please update Java to one of the following Versions or later: Java 7 – 7u202+, Java 8 – 8u192+, Java 11 - 11.0.2+, or whichever Java equivalent has the log4j exploit fixed. Yes, Oracle fixed this exploit back in 2018 already, but people like you seem to not update Java a lot, and would rather have a rootkit installed on their Computer when joining an infected Multiplayer server...");
-			throw new IllegalStateException("Please update Java to one of the following Versions or later: Java 7 – 7u202+, Java 8 – 8u192+, Java 11 - 11.0.2+, or whichever Java equivalent has the log4j exploit fixed. Yes, Oracle fixed this exploit back in 2018 already, but people like you seem to not update Java a lot, and would rather have a rootkit installed on their Computer when joining an infected Multiplayer server...");
-		}
+		tLogger.info("If the Game Crashes from this following check there are a few ways to fix it:");
+		tLogger.info("1. Update Java to one of the following Versions or later: Java 7 – 7u202+, Java 8 – 8u192+, Java 11 - 11.0.2+, or whichever Java equivalent you use that has the log4j exploit fixed. Yes, Oracle fixed this exploit back in 2018 already.");
+		tLogger.info("2. Use a Minecraft Launcher that automatically updates log4j for you to a patched Version, such as the official Launcher or MultiMC");
+		tLogger.info("3. Install one of the many Patcher Mods that fix this Issue in one way or another.");
+		tLogger.info("Now performing the actual check! Don't worry, these are IPs which loop back to your own Computer, and go to your Network!");
 		tLogger.info("${jndi:ldap://127.0.0.1:8000/test}");
 		tLogger.info("${jndi:rmi://localhost:8000/test}");
-		tLogger.info("Seems like it is fixed on this Instance.");
+		tLogger.info("Seems like it is fixed on your Instance. Have fun playing! :D");
 		
 		
 		
