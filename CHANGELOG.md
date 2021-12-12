@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.23: (Not released yet, released whenever it needs to be)
+[NOTE] Checks for if the log4j exploit has been patched in any of the many possible ways. Heck, even updating Java to a Version that is less than 3-4 years old helps, as I frustratingly found out while trying to replicate it! Yep, Oracle fixed this shit mid 2018 already!
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
 
 
