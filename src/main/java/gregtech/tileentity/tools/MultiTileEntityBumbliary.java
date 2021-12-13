@@ -58,7 +58,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implements IMTE_AddToolTips, ITileEntityRunningSuccessfully {
 	public boolean mSky = F, mEndedQueen = F;
-	public long mLife = 0, mBreedingCountDown = 1200, mTemperature = DEFAULT_ENVIRONMENT_TEMPERATURE;
+	public long mLife = 0, mBreedingCountDown = 0, mTemperature = DEFAULT_ENVIRONMENT_TEMPERATURE;
 	public float mHumidity = 1.0F;
 	public ItemStack[] mOffSpring = ZL_IS;
 	
@@ -66,7 +66,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_PROGRESS)) mLife = aNBT.getLong(NBT_PROGRESS);
-		
+		if (aNBT.hasKey(NBT_COOLDOWN)) mBreedingCountDown = aNBT.getLong(NBT_COOLDOWN);
 		if (aNBT.hasKey(NBT_INV_OUT)) {
 			mOffSpring = new ItemStack[aNBT.getInteger(NBT_INV_OUT)];
 			for (int i = 0; i < mOffSpring.length; i++) mOffSpring[i] = ST.load(aNBT, NBT_INV_OUT+"."+i);
@@ -77,6 +77,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mLife);
+		UT.NBT.setNumber(aNBT, NBT_COOLDOWN, mBreedingCountDown);
 		if (mOffSpring.length > 0) {
 			UT.NBT.setNumber(aNBT, NBT_INV_OUT, mOffSpring.length);
 			for (int i = 0; i < mOffSpring.length; i++) ST.save(aNBT, NBT_INV_OUT+"."+i, mOffSpring[i]);
@@ -284,7 +285,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 					openGUI(aPlayer, 1);
 					return T;
 				}
-				mBreedingCountDown = 1200;
+				mBreedingCountDown = 6000;
 				attackEntity(aPlayer);
 				openGUI(aPlayer, 0);
 			}
@@ -302,7 +303,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 		}
 		if (aTool.equals(TOOL_scoop)) {
 			if (SIDES_TOP[aSide]) {
-				mBreedingCountDown = 1200;
+				mBreedingCountDown = 6000;
 				if (aPlayer instanceof EntityLivingBase) attackEntity((EntityLivingBase)aPlayer);
 				if (aPlayer instanceof EntityPlayer) openGUI((EntityPlayer)aPlayer, 1);
 				return 10000;

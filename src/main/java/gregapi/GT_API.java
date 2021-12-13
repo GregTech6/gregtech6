@@ -521,15 +521,15 @@ public class GT_API extends Abstract_Mod {
 		}
 		
 		
-		
 		// Test if the log4j exploit has been mitigated by Java itself in 2018, the used Minecraft Launcher, or any of the dedicated Fixer Mods.
 		UT.LoadingBar.start("log4j exploit check", 4);
 		UT.LoadingBar.step("dont try to read this line, it should be too fast for you!");
-		UT.LoadingBar.step("not fixed if you can actually read this!!!");
+		UT.LoadingBar.step("It's not fixed, if you can actually read this!!!");
 		org.apache.logging.log4j.Logger tLogger = org.apache.logging.log4j.LogManager.getLogger("log4j-vulnerability-detector");
 		tLogger.info("Checking if the log4j Exploit has been fixed.");
 		tLogger.info("If the Game Crashes from this following check there are a few ways to fix it:");
-		tLogger.info("1. Update Java to one of the following Versions or later: Java 7 – 7u202+, Java 8 – 8u192+, Java 11 - 11.0.2+, or whichever Java equivalent you use that has the log4j exploit fixed. Yes, Oracle fixed this exploit back in 2018 already.");
+		// Java 6 – 6u212, Java 7 – 7u202, Java 8 – 8u192, Java 11 - 11.0.2
+		tLogger.info("1. Update Java to one of the following Versions or later: Java 7 – 7u202+, Java 8 – 8u192+, or whichever Java equivalent you use that has the log4j exploit fixed. Yes, Oracle fixed this exploit back in 2018 already.");
 		tLogger.info("2. Use a Minecraft Launcher that automatically updates log4j for you to a patched Version, such as the official Launcher or MultiMC");
 		tLogger.info("3. Install one of the many Patcher Mods that fix this Issue in one way or another.");
 		tLogger.info("Now performing the actual check! Don't worry, these are IPs which loop back to your own Computer, and dont go to your Network!");
@@ -540,10 +540,6 @@ public class GT_API extends Abstract_Mod {
 		UT.LoadingBar.finish();
 		// I can't properly reproduce the Issue myself, because my Java 8 install is rather borked, thanks to Oracle taking down the Java 8 Packages.
 		// And I installed Linux on my Computer (and therefore Java 8) a few months after Oracle fixed this exploit already...
-		
-		
-		
-		
 		
 		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (!tPrefix.contains(TD.Prefix.PREFIX_UNUSED)) {

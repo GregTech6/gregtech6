@@ -365,8 +365,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Lighter_Invar_Full         .set(addItem(5006, "Lighter (Full)"                   , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1), 100, 10000);
 		addItemBehavior(5005, tBehaviour); addItemBehavior(5006, tBehaviour);
-		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Invar_Empty.get(1), FL.Butane .make(100), NF, IL.Tool_Lighter_Invar_Full.get(1));
-		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Invar_Empty.get(1), FL.Propane.make(100), NF, IL.Tool_Lighter_Invar_Full.get(1));
+		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Invar_Empty.get(1), FL.Butane.make(100), NF, IL.Tool_Lighter_Invar_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1));
 		
 		
@@ -376,8 +375,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Lighter_Platinum_Full      .set(addItem(5009, "Shiny Lighter (Full)"             , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1), 1000, 10000);
 		addItemBehavior(5008, tBehaviour); addItemBehavior(5009, tBehaviour);
-		RM.Canner.addRecipe1(T, 16, 64, IL.Tool_Lighter_Platinum_Empty.get(1), FL.Butane .make(1000), NF, IL.Tool_Lighter_Platinum_Full.get(1));
-		RM.Canner.addRecipe1(T, 16, 64, IL.Tool_Lighter_Platinum_Empty.get(1), FL.Propane.make(1000), NF, IL.Tool_Lighter_Platinum_Full.get(1));
+		RM.Canner.addRecipe1(T, 16, 64, IL.Tool_Lighter_Platinum_Empty.get(1), FL.Butane.make(1000), NF, IL.Tool_Lighter_Platinum_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1));
 		
 		
@@ -389,8 +387,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Plastic_Broken.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), 100, 9000);
 		addItemBehavior(5011, tBehaviour); addItemBehavior(5012, tBehaviour);
 		CR.shaped(IL.Tool_Lighter_Plastic_Empty.get(1), CR.DEF_NCC, "IF", "dP", "xP", 'F', OD.itemFlint, 'P', OP.plateCurved.dat(MT.Plastic), 'I', OP.screw.dat(ANY.Iron));
-		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Butane .make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
-		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Propane.make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
+		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Butane.make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Plastic_Empty.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), IL.Tool_Lighter_Plastic_Broken.get(1));
 		
 		
