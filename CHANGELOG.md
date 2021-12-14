@@ -16,6 +16,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.23: (Not released yet, released whenever it needs to be)
 [NOTE] Checks for if the log4j exploit has been patched in any of the many possible ways. Heck, even updating Java to a Version that is less than 3-4 years old helps, as I frustratingly found out while trying to replicate it! Yep, Oracle fixed this shit mid 2018 already!
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
+[FIXED] Thaumcrafts Arcane Workbench stupidly prioritizing Vanilla Crafting Recipes over Thaumcrafts special Recipes. The "Golem Mace" was one of the easiest examples of a broken Recipe.
+[FIXED] GT6 Firestone Items are now burning your surroundings just like Railcrafts Firestone does, maybe a bit less bad but still dangerous as Hell.
 [ADDED] Metal Pipes can now be made in the Welder.
 
 

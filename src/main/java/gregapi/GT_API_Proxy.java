@@ -719,12 +719,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (tHeat != 0.0F) if (tHeat > 0) UT.Entities.applyHeatDamage(aEvent.player, tHeat); else UT.Entities.applyFrostDamage(aEvent.player, -tHeat);
 							}
 							if (tData != null && tData.hasValidMaterialData()) {
-								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.mPrefix != null || tData.mByProducts.length <= 0)) {
+								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.hasValidPrefixData() || tData.mByProducts.length <= 0)) {
 									PotionEffect tEffect = null;
 									UT.Entities.applyPotion(aEvent.player, Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3, F);
 								}
 								if (tData.mMaterial.mMaterial == MT.Craponite) {
 									tCraponite++;
+								}
+								if (tData.mMaterial.mMaterial == MT.Firestone && tData.hasValidPrefixData() && !MD.RC.owns(tStack)) for (int j = tStack.stackSize; j > 0; j--) {
+									WD.fire(aEvent.player.worldObj, UT.Code.roundDown(aEvent.player.posX)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posY)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posZ)-5+RNGSUS.nextInt(11), RNGSUS.nextInt(8) != 0);
 								}
 							}
 							if (tHungerEffect) tCount+=(tStack.stackSize * 64) / Math.max(1, tStack.getMaxStackSize());
