@@ -38,12 +38,14 @@ public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 	
 	public ContainerArcaneWorkbenchFixed(ContainerArcaneWorkbench aOriginal) {
 		super((InventoryPlayer)UT.Reflection.getFieldContent(aOriginal, "ip"), (TileArcaneWorkbench)UT.Reflection.getFieldContent(aOriginal, "tileEntity"));
-		mTileEntity = (TileArcaneWorkbench)UT.Reflection.getFieldContent(this, "tileEntity");
-		mInventoryPlayer = (InventoryPlayer)UT.Reflection.getFieldContent(this, "ip");
+		mInventoryPlayer = (InventoryPlayer)UT.Reflection.getFieldContent(aOriginal, "ip");
+		mTileEntity  = (TileArcaneWorkbench)UT.Reflection.getFieldContent(aOriginal, "tileEntity");
+		onCraftMatrixChanged(mTileEntity);
 	}
 	
 	@Override
 	public void onCraftMatrixChanged(IInventory aInventory) {
+		if (mInventoryPlayer == null || mTileEntity == null) return;
 		mTileEntity.setInventorySlotContentsSoftly(9, CR.getany(mTileEntity.getWorldObj(), mTileEntity.stackList));
 		Item tWand = ST.item(mTileEntity.getStackInSlot(10));
 		if (tWand instanceof ItemWandCasting && ((ItemWandCasting)tWand).consumeAllVisCrafting(mTileEntity.getStackInSlot(10), mInventoryPlayer.player, ThaumcraftCraftingManager.findMatchingArcaneRecipeAspects(mTileEntity, mInventoryPlayer.player), F)) {

@@ -132,7 +132,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -658,10 +657,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onPlayerTickEvent(PlayerTickEvent aEvent) {
 		if (!aEvent.player.isDead && aEvent.phase == Phase.END) {
 			
-			if (MD.TC.mLoaded && aEvent.player.openContainer != null && aEvent.player.openContainer.getClass() == ContainerArcaneWorkbench.class) {
-				aEvent.player.openContainer = (Container)UT.Reflection.callConstructor("gregapi.compat.thaumcraft.ContainerArcaneWorkbenchFixed", 0, null, T, aEvent.player.openContainer);
+			if (COMPAT_TC != null && aEvent.player.openContainer != null && aEvent.player.openContainer.getClass() == ContainerArcaneWorkbench.class) {
+				aEvent.player.openContainer = COMPAT_TC.getFixedArcaneWorkbench(aEvent.player);
 			}
-			
 			for (Object tPotion : aEvent.player.getActivePotionEffects()) {
 				if (tPotion instanceof PotionEffect && ((PotionEffect)tPotion).getDuration() <= 0) {
 					aEvent.player.removePotionEffect(((PotionEffect)tPotion).getPotionID());

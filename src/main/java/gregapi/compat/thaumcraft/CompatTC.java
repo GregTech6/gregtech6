@@ -40,6 +40,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -55,6 +57,7 @@ import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.container.ContainerArcaneWorkbench;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
 
 public class CompatTC extends CompatBase implements ICompatTC {
@@ -274,5 +277,10 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	public boolean registerPortholeBlacklistedBlock(Block aBlock) {
 		ThaumcraftApi.portableHoleBlackList.add(aBlock);
 		return T;
+	}
+	
+	@Override
+	public Container getFixedArcaneWorkbench(EntityPlayer aPlayer) {
+		return new ContainerArcaneWorkbenchFixed((ContainerArcaneWorkbench)aPlayer.openContainer);
 	}
 }

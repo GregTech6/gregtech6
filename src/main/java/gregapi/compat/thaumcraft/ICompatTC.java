@@ -24,6 +24,8 @@ import java.util.List;
 import gregapi.compat.ICompat;
 import gregapi.data.TC.TC_AspectStack;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 
 public interface ICompatTC extends ICompat {
@@ -68,4 +70,6 @@ public interface ICompatTC extends ICompat {
 	
 	public Object getAspectList(List<TC_AspectStack> aAspects);
 	public Object getAspectList(TC_AspectStack... aAspects);
+	
+	public Container getFixedArcaneWorkbench(EntityPlayer aPlayer);
 }
