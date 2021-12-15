@@ -727,6 +727,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.gloomstone"   , T, T,   4000, MT.Gloomstone                                , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.efrine"       , T, T,   2000, MT.Efrine                                    , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.netherquartz" , T, T,   2000, MT.NetherQuartz                              , GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.firestone"    , T, T,   8000, MT.Firestone                                 , GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.ancientdebris", T, T,   4000, MT.AncientDebris                             , GEN_NETHER, GEN_MARS);
 		new WorldgenOresBedrock("ore.bedrock.naquadah"     , T, T,  10000, MT.Nq                                        , GEN_MARS);
 		new WorldgenOresBedrock("ore.bedrock.desh"         , T, T,   2000, MT.Desh                                      , GEN_MARS);

@@ -205,7 +205,7 @@ public class MT {
 	static OreDictMaterial jasper       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,150, aRandomData).lens(aColor).put(ANY.Jasper    , MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 2, TC.METALLUM, 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 2*U, Fe, 1*U);}
 	static OreDictMaterial tigereye     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200, aRandomData).lens(aColor).put(ANY.TigerEye  , MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.TERRA   , 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 1*U);}
 	static OreDictMaterial aventurine   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200, aRandomData).lens(aColor).put(ANY.Aventurine, MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.POTENTIA, 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 1*U);}
-	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255, aRandomData)             .put(ANY.CaF2      , COMMON_ORE, MD.ReC , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .uumMcfg( 0, Ca, 1*U, F, 2*U).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MORTAR, BRITTLE, CRYSTALLISABLE).setSmelting("Fluorite".equals(aNameOreDict) ? null : MT.CaF2, U);}
+	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255, aRandomData)             .put(ANY.CaF2      , COMMON_ORE, MD.ReC , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .uumMcfg( 0, Ca, 1*U, F, 2*U).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MORTAR, BRITTLE, CRYSTALLISABLE).setSmelting("Fluorite".equals(aNameOreDict) ? null : CaF2, U);}
 	static OreDictMaterial blaze        (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return create          (aID, aNameOreDict, SET_POWDER      , aR, aG, aB,255, aRandomData)             .put(ANY.Blaze     , COMMON_ORE                               )         .aspects(TC.PRAECANTIO, 2                            ).qual(1, 2.0,  16, 1).handle(ANY.Blaze).put(G_BLAZE, GLOWING, MAGICAL, BRITTLE, MORTAR);}
 	static OreDictMaterial clay         (int aID, String aNameOreDict         , long aR, long aG, long aB, OreDictMaterial aTrace, Object... aRandomData)  {return oredustelec     (aID, aNameOreDict, SET_ROUGH       , aR, aG, aB,255, aRandomData)             .put(ANY.Clay      , MORTAR, PLATES                           )         .aspects(TC.TERRA, 1                                 ).uumMcfg(18, aTrace, 1*U, Clay, 18*U).heat(2000).setSmelting(Ceramic, U);}
 	static OreDictMaterial mix          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dcmp            (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
@@ -2850,18 +2850,19 @@ public class MT {
 			Endstone                        .addOreByProducts(He_3                      , Be                        );
 			Endium                          .addOreByProducts(OREMATS.Wolframite        , OREMATS.Sperrylite        , OREMATS.Coltan        , Ke);
 			
-			Glowstone                       .addOreByProducts(Redstone                  , Au                        , Gloomstone            , MT.FluoriteYellow     );
+			Glowstone                       .addOreByProducts(Redstone                  , Au                        , Gloomstone            , FluoriteYellow        );
 			GlowstoneCeres                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneIo                     .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneEnceladus              .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstoneProteus                .addOreByProducts(Redstone                  , Au                        , Glowstone             );
 			GlowstonePluto                  .addOreByProducts(Redstone                  , Au                        , Glowstone             );
-			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             , MT.FluoriteBlue       );
-			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon                , MT.FluoriteGreen);
-			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    );
+			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             , FluoriteBlue          );
+			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon                , FluoriteGreen);
+			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    , Firestone             );
+			Firestone                       .addOreByProducts(NetherQuartz              , Efrine                    , VoidQuartz            , FluoriteRed           );
 			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone            );
-			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz            , MT.FluoriteWhite      );
-			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz          , MT.FluoriteMagenta    );
+			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz            , FluoriteWhite         );
+			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz          , FluoriteMagenta       );
 			STONES.Quartzite                .addOreByProducts(CertusQuartz              , OREMATS.Barite            , Fe2O3                 );
 			MilkyQuartz                     .addOreByProducts(CertusQuartz              , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz               , OREMATS.Barite            );
@@ -3492,7 +3493,7 @@ public class MT {
 		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  42, 141, 133, 3.5, 32, MD.NeLi, UNBURNABLE),
 		Foxfire             = woodnormal( 9408, "Foxfirewood"             , "Foxfire"             ,  51,  51, 101, 4.0, 24, MD.NeLi, UNBURNABLE),
 		
-		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, 1.5,  8, MD.GT).setPulver(MT.Wood, U),
+		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25, 1.5,  8, MD.GT).setPulver(Wood, U),
 		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63, 1.5,  8, MD.BoP),
 		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15, 1.0,  8, MD.GT),
 		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0, 1.5,  8, MD.GT),
