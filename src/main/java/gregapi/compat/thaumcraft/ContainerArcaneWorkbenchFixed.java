@@ -41,6 +41,7 @@ public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 		mInventoryPlayer = (InventoryPlayer)UT.Reflection.getFieldContent(aOriginal, "ip");
 		mTileEntity  = (TileArcaneWorkbench)UT.Reflection.getFieldContent(aOriginal, "tileEntity");
 		onCraftMatrixChanged(mTileEntity);
+		detectAndSendChanges();
 	}
 	
 	@Override
