@@ -116,6 +116,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.block.mDefaultStackSize);}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
 	
+	public boolean checkNoEntityCollision(World aWorld, int aX, int aY, int aZ, byte aMeta, Entity aExceptThisOne) {return aWorld.checkNoEntityCollision(AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1), aExceptThisOne);}
 	public boolean isSideSolid(int aMeta, byte aSide) {return T;}
 	public void updateTick2(World aWorld, int aX, int aY, int aZ, Random aRandom) {/**/}
 	public void onNeighborBlockChange2(World aWorld, int aX, int aY, int aZ, Block aBlock) {/**/}
@@ -155,10 +156,13 @@ public abstract class BlockBase extends Block implements IBlockBase {
 			aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];
 		}
 		
-		if (!aWorld.getBlock(aX, aY, aZ).isReplaceable(aWorld, aX, aY, aZ) || !canReplace(aWorld, aX, aY, aZ, aSide, aStack) || !aWorld.checkNoEntityCollision(AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1))) return F;
+		if (!aWorld.getBlock(aX, aY, aZ).isReplaceable(aWorld, aX, aY, aZ)) return F;
+		if (!canReplace(aWorld, aX, aY, aZ, aSide, aStack)) return F;
+		byte aMeta = UT.Code.bind4(aItem.getMetadata(ST.meta(aStack)));
+		if (!checkNoEntityCollision(aWorld, aX, aY, aZ, aMeta, null)) return F;
 		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || (aY == 255 && getMaterial().isSolid()) || !aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
 		
-		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, onBlockPlaced(aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, aItem.getMetadata(aStack.getItemDamage())))) {
+		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, onBlockPlaced(aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, aMeta))) {
 			aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
 			aStack.stackSize--;
 		}

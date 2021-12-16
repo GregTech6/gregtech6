@@ -2859,7 +2859,7 @@ public class MT {
 			Gloomstone                      .addOreByProducts(Redstone                  , Au                        , Glowstone             , FluoriteBlue          );
 			Efrine                          .addOreByProducts(SoulSand                  , Be                        , OREMATS.Pentlandite   , Zircon                , FluoriteGreen);
 			AncientDebris                   .addOreByProducts(SoulSand                  , Efrine                    , OREMATS.Huebnerite    , Firestone             );
-			Firestone                       .addOreByProducts(NetherQuartz              , Efrine                    , VoidQuartz            , FluoriteRed           );
+			Firestone                       .addOreByProducts(NetherQuartz              , VoidQuartz                , PhosphorusRed         , FluoriteRed           );
 			SoulSand                        .addOreByProducts(Coal                      , NetherQuartz              , Niter                 , Gloomstone            );
 			NetherQuartz                    .addOreByProducts(OREMATS.Barite            , Efrine                    , VoidQuartz            , FluoriteWhite         );
 			VoidQuartz                      .addOreByProducts(OREMATS.Barite            , Efrine                    , NetherQuartz          , FluoriteMagenta       );
