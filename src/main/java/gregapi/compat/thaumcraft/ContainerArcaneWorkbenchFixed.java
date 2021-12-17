@@ -32,6 +32,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import thaumcraft.common.tiles.TileArcaneWorkbench;
 
+@Deprecated
+/** Was a bad Idea that does not work well. It works but the GUI loses persistence and Item dupes may randomly happen. */
 public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 	public TileArcaneWorkbench mTileEntity;
 	public InventoryPlayer mInventoryPlayer;
@@ -51,6 +53,5 @@ public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 		if (tWand instanceof ItemWandCasting && ((ItemWandCasting)tWand).consumeAllVisCrafting(mTileEntity.getStackInSlot(10), mInventoryPlayer.player, ThaumcraftCraftingManager.findMatchingArcaneRecipeAspects(mTileEntity, mInventoryPlayer.player), F)) {
 			mTileEntity.setInventorySlotContentsSoftly(9, ThaumcraftCraftingManager.findMatchingArcaneRecipe(mTileEntity, mInventoryPlayer.player));
 		}
-		detectAndSendChanges();
 	}
 }

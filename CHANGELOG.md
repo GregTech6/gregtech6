@@ -15,7 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.23: (Not released yet, released whenever it needs to be)
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
-[FIXED] Thaumcrafts Arcane Workbench stupidly prioritizing Vanilla Crafting Recipes over Thaumcrafts special Recipes. The "Golem Mace" was one of the easiest examples of a broken Recipe.
+[FIXED] Thaumcrafts Arcane Workbench will now no longer accept GT6 Shapeless Recipes that turn things like Nuggets into Ingots or Billets and vice versa.
 [FIXED] GT6 Firestone Items are now burning your surroundings just like Railcrafts Firestone does, maybe a bit less bad but still dangerous as Hell.
 [FIXED] An Issue where GT6 Saplings could not be placed by Thaumcraft Golems.
 [ADDED] Metal Pipes can now be made in the Welder.

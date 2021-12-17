@@ -104,7 +104,7 @@ public class Loader_Books implements Runnable {
 		, "Burning Boxes of any kind are always a Fire Hazard, make sure to only have Fireproof Stuff around them! The only ways to turn those Boxes off are placing a solid Block in front of them or the Fire Extinguishers."
 		, "You want to move Water or get Milk, but don't have an Iron Bucket? Try making a Wooden Bucket for that Task, it's cheaper, even if it only works for a small sortiment Liquids."
 		, "If you need a Printer Manual, then just insert Chemical Black Dye and an empty vanilla Book into it and apply Energy. It will instantly print that Manual."
-		, "The Bathing Pot and the Bath can dye Leather Armor using Liquid Dyes.\nYou can wash Ores early on by throwing them into a filled vanilla Cauldron. Also GT Pipes can fill Cauldrons with Water."
+		, "The Bathing Pot and the Bath can dye Leather Armor and GT6 Blocks using Liquid Dyes.\nYou can wash Ores early on by throwing them into a filled vanilla Cauldron. Also GT Pipes with a cap of 334L and higher can fill Cauldrons with Water."
 		, "Space out Machines a little in order to be able to automate them later without causing a huge Clusterfuck. Always have enough space for 2 Blocks inbetween each Machine, if not 3! Disregard the eventual Loss of Power, it's not worth it."
 		});
 		
