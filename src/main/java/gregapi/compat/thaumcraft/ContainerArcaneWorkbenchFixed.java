@@ -41,7 +41,6 @@ public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 		mInventoryPlayer = (InventoryPlayer)UT.Reflection.getFieldContent(aOriginal, "ip");
 		mTileEntity  = (TileArcaneWorkbench)UT.Reflection.getFieldContent(aOriginal, "tileEntity");
 		onCraftMatrixChanged(mTileEntity);
-		detectAndSendChanges();
 	}
 	
 	@Override
@@ -52,5 +51,6 @@ public class ContainerArcaneWorkbenchFixed extends ContainerArcaneWorkbench {
 		if (tWand instanceof ItemWandCasting && ((ItemWandCasting)tWand).consumeAllVisCrafting(mTileEntity.getStackInSlot(10), mInventoryPlayer.player, ThaumcraftCraftingManager.findMatchingArcaneRecipeAspects(mTileEntity, mInventoryPlayer.player), F)) {
 			mTileEntity.setInventorySlotContentsSoftly(9, ThaumcraftCraftingManager.findMatchingArcaneRecipe(mTileEntity, mInventoryPlayer.player));
 		}
+		detectAndSendChanges();
 	}
 }
