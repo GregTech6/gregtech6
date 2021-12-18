@@ -149,6 +149,10 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		
 		RM.Drying.addRecipe1(T, 16,  16, IL.RC_Rebar.get(1), FL.Concrete.make(L), FL.DistW.make(8), IL.RC_Concrete.get(2));
 		
+		RM.Injector.addRecipe1(T, 16, 2048, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava         .make(5000000), FL.Lava_Pahoehoe.make(5000000), IL.RC_Firestone_Refined.get(1));
+		RM.Injector.addRecipe1(T, 16,  128, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava_Volcanic.make( 312500), FL.Lava_Pahoehoe.make( 312500), IL.RC_Firestone_Refined.get(1));
+		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava         .make(5000000), FL.Lava_Pahoehoe.make(5000000), IL.RC_Firestone_Cracked.get(1));
+		RM.Injector.addRecipe1(T, 16,  256, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava_Volcanic.make( 312500), FL.Lava_Pahoehoe.make( 312500), IL.RC_Firestone_Cracked.get(1));
 		
 		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(TD.Prefix.ORE)) tPrefix.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

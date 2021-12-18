@@ -14,11 +14,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.23: (Not released yet, released whenever it needs to be)
+[NOTE] Please make sure your log4j Version is 2.16 or greater, yes 2.16, not 2.15, alternatively make sure its Version ends on the word "fixed". Just look inside of your ".minecraft/libraries/org/apache/logging/log4j/log4j-core/" Directory to see which Versions exist. Most Launchers like MultiMC should have fixed it for you though.
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
 [FIXED] Thaumcrafts Arcane Workbench will now no longer accept GT6 Shapeless Recipes that turn things like Nuggets into Ingots or Billets and vice versa.
 [FIXED] GT6 Firestone Items are now burning your surroundings just like Railcrafts Firestone does, maybe a bit less bad but still dangerous as Hell.
 [FIXED] An Issue where GT6 Saplings could not be placed by Thaumcraft Golems.
 [ADDED] Metal Pipes can now be made in the Welder.
+[ADDED] Firestones can now be recharged using the Injector.
 
 
 6.14.22:
