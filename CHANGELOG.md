@@ -20,7 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] GT6 Firestone Items are now burning your surroundings just like Railcrafts Firestone does, maybe a bit less bad but still dangerous as Hell.
 [FIXED] An Issue where GT6 Saplings could not be placed by Thaumcraft Golems.
 [ADDED] Metal Pipes can now be made in the Welder.
-[ADDED] Firestones can now be recharged using the Injector.
+[ADDED] Firestones can now be recharged using the Injector. This works with regular Lava, and also with Heatant, so Nuclear Firestones are definitely an option now - if you have 20_000 Lapis/Sodalite/Lazurite that is.
 
 
 6.14.22:
@@ -344,7 +344,7 @@ I made sure all Ores actually work. Realgar (Red Gem Ore made of Arsenic + Sulfu
 [FIXED] The Collect Sound for autocollecting Tools is now matching the vanilla Sound in Pitch and Volume.
 [FIXED] Battery Boxes were not able to charge Tools unless a Battery was inside of them to make them able to accept Power. (their internal buffer would eventually reach zero when charging tools only)
 [FIXED] Aqua Regia Processing Ores emitted too much Water, effectively turning Oxygen into Hydrogen.
-[CHANGED] Air Vents now do 256000L per 360 ticks at a time, instead of only 16000. They have an Offset for ticking too now, so you can use multiple Vents on one Pipe/Drum/etc now.
+[CHANGED] Air Vents now do 256_000L per 360 ticks at a time, instead of only 16_000. They have an Offset for ticking too now, so you can use multiple Vents on one Pipe/Drum/etc now.
 [CHANGED] There is now more Galena Veins in the World, and visible on the Surface in Mountains.
 [CHANGED] A bunch of Ores, that I deemed way too useless years ago, has been added back. None of them are required for anything, old Worlds are safe as always.
 [ADDED] NEI Handler for putting Toolheads on Handles. I used the Machine Recipe Handler and Fake Recipes for that one.
@@ -858,7 +858,7 @@ Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
 [CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
-[CHANGED] Note: Later nerfed back again! - Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36 000 000 000 HU per Unit of U-235 at Max Efficiency.
+[CHANGED] Note: Later nerfed back again! - Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36_000_000_000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
 [WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
@@ -1020,7 +1020,7 @@ You will need Small Lasers in the Crafting Recipe and Electricity for this to wo
 
 6.10.25:
 [NOTE] Soul Forest is not going to get Compat, it's just too bad of a Mod... Putting Titanium Gems on Sticks to make Titanium Rods just overdid it for me, along with giving each item its own ID and not registering literally anything to the OreDict, not that I would want it considering all the exploits that would cause...
-[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64000 EU (= 256000 RF).
+[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64_000 EU (= 256_000 RF).
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
 [FIXED] Fluid Densities did not match up with the Material Densities, but now they do.
 [FIXED] Electrolyzation of Eudialite is now possible.
@@ -1040,7 +1040,7 @@ Explosives Supported are Vanilla TNT (8), IC2 ITNT (4), GT6 Dynamite (2) and GT6
 [ADDED] The Generifier can now turn IC2 Steam and IC2 Superheated Steam into regular Steam. It will go by the Power Value instead of the Water Amount, so no Power is lost, but it might lead to an infinite Water Recipe Loop or at least a "Turn Power into Water" Loop.
 [ADDED]
 Heat Exchangers
-Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant (20HU/L).
+Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80_000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant (20HU/L).
 Be aware that IC2 Hot Coolant cannot be stored in GT6 Tanks, as it is a power conducting Fluid just like Steam!
 
 
@@ -1054,7 +1054,7 @@ Be aware that IC2 Hot Coolant cannot be stored in GT6 Tanks, as it is a power co
 Duct Tape!
 For the purpose of making Mass Storages carryable.
 Note that depending on the amount of stored Items more durability is used in order to make the Mass Storage moveable.
-There is multiple Tiers of Tape, the basic one having a Limit of 10000, Duct Tape having 100000 and "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84" having a Limit of 10 Million.
+There is multiple Tiers of Tape, the basic one having a Limit of 10_000, Duct Tape having 100_000 and "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84" having a Limit of 10 Million.
 The Tapes act like Tools, similar to Sprays, so I might add a functionality for using Tape on other things.
 You have to manually remove the Tape from a placed Mass Storage or Item Barrel again to use them. For this you can use Scissors or Knives.
 Partial Dusts and Stuff will not be picked up and just drop on the Floor.
@@ -1099,7 +1099,7 @@ Found so far: The Number "1" on Sensors and Mass Storages, all crushed Ores, Ber
 [WARNING] IC2 Hazmat Suits wont protect against Heat, Frost or Bumblebees anymore. I now have my own Suits that are better "suit"ed.
 [FIXED] GT6 Fluid Rendering Height, I also fixed it for a lot of Default Forge Fluids aswell, because the Default Rendering ID of them was easy to change.
 [CHANGED] Al2O3 (Alumina) in Fluid form has now 504 Liters per Unit instead of 144 Liters. This is to make it divisible by 7.
-[CHANGED] GT6 Fluid Springs for Oil and Natural Gas will now place more compressed 2000L Fluids per Block. In case of Oil the Fluid will turn into a short Fountain.
+[CHANGED] GT6 Fluid Springs for Oil and Natural Gas will now place more compressed 2_000L Fluids per Block. In case of Oil the Fluid will turn into a short Fountain.
 [CHANGED] Oil and Natural Gas Fluid Blocks are now more flammable, when coming in contact with Lava or Fire Blocks. (but still not explosive in any way, also still wont do this for Torches, that would be too cruel)
 [ADDED] Redstone Conductor Covers, one of them takes Redstone in from the outside, the other emits whatever that Cover receives outwards. This should fix the Issue of not being able to Redstone Control Multiblocks by just adding those Covers to the Multiblock Walls to transmit Redstone through them.
 [ADDED]
@@ -1328,7 +1328,7 @@ The Button Panel itself can also be screwdrivered so that it automatically reset
 6.10.02:
 [NOTE] Got "sick" earlier this week, though unsure if that is counted as sick or an injury, wont eat certain types of Chocolate ever again because of that. At least I did not get any Blood Poisoning from that shit happening, and I'm fine again by now.
 [FIXED] Tiny Covers should no longer intercept Tool Interactions.
-[ADDED] Barometer Gas Cylinder, which is a Measuring Pot but for Gasses with a Capacity of 8000 Liters (because Compressed Gas)
+[ADDED] Barometer Gas Cylinder, which is a Measuring Pot but for Gasses with a Capacity of 8_000 Liters (because Compressed Gas)
 
 
 6.10.01:
@@ -1644,7 +1644,7 @@ Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT
 [COMPAT] Immersive Engineering got a few new Recipes and Material Data, and you can now copy its Blueprints.
 [COMPAT] Railcraft: added Shapeless Recipes for "GT Iron/Steel Gear + RC Tin Gear Bushing = RC Iron/Steel Gear" and "Railbeds back to 4 Ties". And also a Bathing Pot Recipe for Wooden Slabs + Creosote = Wooden Ties.
 [FIXED] GT6 Dynamite Sticks blowing up the wrong way regarding drops and their Metadata.
-[FIXED] Melting Point of Latex being insanely high. (it defaulted to 1000 Kelvin)
+[FIXED] Melting Point of Latex being insanely high. (it defaulted to 1_000 Kelvin)
 [CHANGED] Thaumcraft Aluminium Duplication now costs Lucrum instead of Ignis.
 [CHANGED] The "Auto Redstone Machine Switch" Cover can now use Redstone Pulse Inputs as "produce one Process" Signal. A constant Redstone Signal will be "produce until Redstone turns off, but finish the last Process at least". Remember that certain Machines do multiple things in parallel, and they will still do that with this Cover regardless.
 [CHANGED] When Railcraft is not installed, all Rails cost Treated Sticks instead of Regular Wooden Sticks.
@@ -2055,7 +2055,7 @@ Should be placed in a way that covers up most of the local Bedrock Ores.
 Once active it will emit "Semi-Crushed-Ore-Ore-Stone-Block-Items-Of-Random-GT-Or-Vanilla-Background-Rock" through the Main Block at the Top.
 Depending on the Ratio of Bedrock Ore to Small Bedrock Ore to Bedrock there will either be a new Ore Block or a random Cobblestone Block outputted per Process.
 The Ore Block will have one of the five GT6 Stones or vanilla Stone as background Rock, and the Ore will be of the "broken" non-silktouched State. Cobblestone emitted will be of either of those six Rock Types too.
-The Rock Type used for that, will change around every ~1000 Processes on average, to "simulate drilling through different Rock Layers". Except for the Nether, where all the Rock will be Netherrack related.
+The Rock Type used for that, will change around every ~1_000 Processes on average, to "simulate drilling through different Rock Layers". Except for the Nether, where all the Rock will be Netherrack related.
 There is a Chance that instead of a Cobblestone Block you will get a Impure Pile of Bedrock Dust (Put that in a 64MU/t Magnetic Separator). I am sure this is far enough back in the Tech Tree to not mess with RotaryCraft too much.
 As for where exactly to place this Bedrock Drill with a 3x3 Range, since Bedrock Veins have a 5x5 or possible Ore Spots: Regular Bedrock Ores count 2, Small Bedrock Ores count 1. The More Points, the better the Outcome.
 Placing this Bedrock Drill just on a 3x3 of pure non-ore Bedrock will result in it just producing Rocks but no Ores. It will work for Bedrock Dust too.
@@ -2373,7 +2373,7 @@ This change also fixes the Niobium-Titanium Crucible in the Tech Tree, so that i
 My own Type of 3D Universal Fluid Cells that follows my standard set of Rules for Fluid Containers, and are all stackable up to 64 and Gas Proof.
 Since I was not able to settle for a specific Name of them, due to "Cell", "Capsule" and "Container" being already taken by other Mods and "Can" not really fitting the purpose, I decided to go for "Capsule-Cell-Container".
 There is 22 different possible Materials they can be made of, which includes Plastic, all the Wax Types and lots of Metals.
-1 Unit of the Material it is made of equals 1000L of Fluid. Usually Drums are better, but those can't be made of Wax or Tin.
+1 Unit of the Material it is made of equals 1_000L of Fluid. Usually Drums are better, but those can't be made of Wax or Tin.
 They can only be made using the Extruder and the Capsule-Cell-Container Shape.
 Did I mention that you can paint them too, just like all the other GT6 Containers?
 
@@ -2687,7 +2687,7 @@ They will generate in Forests and Plains with random Berry Type.
 [CHANGED] Flint Tools can now not only be made with Sticks but also with Bones.
 [IMPROVED] Ore Byproduct List in NEI.
 [ADDED] Coal and Graphite Ores can now be bathed in HF to get more Graphite out of them.
-[ADDED] A Ceramic Jug for early drinkable Fluid Storage, that stores up to 2000L (can be filled by clicking Fluid Blocks, but won't place them in World). Also changed the Measuring Pot Recipe to no longer require a Bending Cylinder. Note, that a Jug can contain 2000L of Lava, what is more than a Crucible can hold at once (18 Units overall), so you cannot dump a full Jug into the Crucible.
+[ADDED] A Ceramic Jug for early drinkable Fluid Storage, that stores up to 2_000L (can be filled by clicking Fluid Blocks, but won't place them in World). Also changed the Measuring Pot Recipe to no longer require a Bending Cylinder. Note, that a Jug can contain 2_000L of Lava, what is more than a Crucible can hold at once (18 Units overall), so you cannot dump a full Jug into the Crucible.
 [ADDED] A Club (weapon) so that Bear989 can go full Caveman on Mobs with slightly higher Damage than a Sword. It works like a slow Pickaxe too, and it costs 6 Units of Material and crushes Blocks, just like the Hammer.
 [ADDED] Ore Blocks for PFAA Stones, even though GT6 disables Ores per default if PFAA is loaded. It somehow only grabs the 16x16 Textures when copying them. I guess that is some weird PFAA Render thing and therefore not really something to fix on my side without way too much effort.
 [ADDED] Vanilla Furnaces now require some sort of Firestarter in their Recipe to be crafted. (Matches, Flint&Tinder, Flint&Steel, Fire Charges and Lighters work too)
@@ -2996,7 +2996,7 @@ Blue Mahoe Tree. (Blue Planks)
 The Leaves will drop Sticks in addition to Saplings when broken, similar to Willows.
 [ADDED]
 Thermos Can.
-You can store up to 16 Drinks in it (4000L), and it is not stackable.
+You can store up to 16 Drinks in it (4_000L), and it is not stackable.
 It can be placed in World using sneaking, and rightclicked to drink from it, kinda like the vanilla MC Cake.
 But you do not have to place it in order to drink from it, it works like normal Bottles if you don't sneak.
 Since it can be placed, you can also paint it if you want.
@@ -3244,7 +3244,7 @@ Tomato Juice and Ketchup are two different things now. And yes, I added both of 
 [FIXED] Bug that caused certain reverse Recipes not to generate. This did affect Stone Crucibles for example, but also some Wood things.
 [FIXED] Sensors, Buttons, Taps, Funnels and some other things obstructing adjacent GT Blocks regarding Rightclicks.
 [CHANGED] Wooden Fluid Barrels and Wooden Multiblock Tanks no longer accept any Gasses and also certain Liquids. I manually selected the Liquids that are allowed. The Fluid Display Items will have a new Line in their Tooltip that lets you know which. Not all of them would go in there though, since their Temperature might burn it up, despite being simple Liquids.
-[ADDED] Adamantium Drums with insane high Capacity of 4096000L. Yes, I know Adamantium isn't obtainable yet at all and won't be anytime soon.
+[ADDED] Adamantium Drums with insane high Capacity of 4_096_000L. Yes, I know Adamantium isn't obtainable yet at all and won't be anytime soon.
 [ADDED] "Functionality" to certain Acidous Fluids. This means that Acids need special care when using Pipes and Tanks. Tungsten (not the Carbide!), Stainless Steel, Thaumium, Voidmetal and Adamantium are the only Acid Proof Pipe/Tank Materials.
 [ADDED] Cheaper Wooden Barrels (both, Item and Fluid) made with Lead and regular Planks. They have half the Capacity of the ones made with Steel and Sealed Wood.
 [ADDED] Overflow Mode to the Mass Storages and Item Barrels (Wirecutter), which will cause them to accept 256 Items more than usually allowed, but everything going over their regular Capacity, will be emitted to the Bottom automatically. That way you don't need shitty Void Upgrades anymore, which destroy all your hard earned Resources, and you can decide yourself where the overflow will go towards, instead of forcing the deletion of Items, like every other Mod does. Seriously all Barrel and Drawer Mods I know, have a stupid Void Upgrade and no way to redirect overflowing Items like I have now... Yes, I sincerely HATE voiding Resources.
@@ -3306,12 +3306,12 @@ Tomato Juice and Ketchup are two different things now. And yes, I added both of 
 [ADDED] The Measuring Pot can now pick up Fluid Blocks in World. This might be useful for the tiny Oil puddles.
 [ADDED] The Gas Burning Box and with that I mean ONLY THE GAS ONE, can now be turned OFF (but not ON, for that you still need an Igniter) using Controller Covers. This makes Gas burners easier to use than the other two Methods.
 [ADDED] The Activity Detectors can now detect if a Burning Box of any Type is currently burning.
-[ADDED] Item Barrel, made of Sealed Wood and a bit of Steel, for 10000 Items instead of the usual 1000000 from the Mass Storage. It's a cheap alternative.
+[ADDED] Item Barrel, made of Sealed Wood and a bit of Steel, for 10_000 Items instead of the usual 1_000_000 from the Mass Storage. It's a cheap alternative.
 [ADDED]
 Wood Barrels, Plastic Cans and Metal Drums for storing Fluids.
 The Wooden Barrel and the Plastic Can won't accept Covers on it.
 They keep their Fluid when mined, but are not stackable in Inventory.
-Capacities are 16000L for the Wood one, 32000L for the Plastic one, 64000L for the Stainless Steel one and 256000L for the Tungstensteel and Tungsten ones.
+Capacities are 16_000L for the Wood one, 32_000L for the Plastic one, 64_000L for the Stainless Steel one and 256_000L for the Tungstensteel and Tungsten ones.
 They will auto-emit Fluids to either the top or the bottom direction depending on Fluid density. But it has to be enabled via Monkey Wrench or regular Wrench (yes, both Types work).
 Canning Machines can empty and fill the Barrels, Cans and Drums, so they don't have to be placed to do that manually.
 The Drums and Barrels can be sealed, using a Soft Hammer, to ferment their contained Fluids over time (instead of by using heat).
@@ -3369,7 +3369,7 @@ Wooden Tank.
 Unlike the Railcraft one, it's not made out of "Rocks that look like Wood, but still have to be mined with a Pickaxe", and it won't generate Water out of nothing, that's what the Drain Cover is for.
 Shape is a hollow 3x3x3 of Wood Walls, with the Main Block centered on a Side, just like the GT Coke Oven. (those are partially made of any kind of Steel!)
 It does NOT have a GUI, just so you know. Magnifying Glass might help if you want to see exact amounts.
-Holds 432000L or 432 Buckets, so 16 Buckets per Block, similar to a BC Tank.
+Holds 432_000L or 432 Buckets, so 16 Buckets per Block, similar to a BC Tank.
 It is made of Sealed Wood and a bit of Steel to keep it in place like a large Barrel.
 There are Temperature Limits to this Tank though. So don't burn it up with Lava or something.
 It auto-emits Fluids towards the Main Block if the Gravity doesn't work against it.
@@ -3522,7 +3522,7 @@ Control Related Stuff
 [ADDED] Mode Selector Covers now work on Electric Engines to adjust their Speed. Possible Modes for this are 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29 and 31. The Mode of a freshly placed Engine would be 15. You need an Extender to relay the Command due to the Engine not accepting Covers.
 Tool Related Stuff
 [ADDED] Improved Wrenching/Wirecutting Overlay, which actually shows the Connections and Facings now. Very useful for huge Pipes, Wires and anything that has a secondary Facing.
-[ADDED] Special Plunger Support for my Basic Machines. They will try to clear the Fluid Output first and then the Fluid Input, 1000L at a time.
+[ADDED] Special Plunger Support for my Basic Machines. They will try to clear the Fluid Output first and then the Fluid Input, 1_000L at a time.
 [ADDED] You can now use a Chisel to decalcify a Boiler. But for that you need to turn that thing off (the Steam inside has to be in the white Barometer Area, same for the stored Heat, but Water can be inside no problem). Hazmat or Fire Resistance Potion recommended if your Boiler is still hot. :P
 Data Related Stuff
 [ADDED] The Autocrafter can now accept USB Input for Recipe selection and works with the USB Switch aswell.
@@ -3544,7 +3544,7 @@ The regular IC2 Users aren't affected by this at all.
 [CHANGED] Flax and Cotton Seeds now give Lubricant instead of Seed Oil.
 [ADDED] Magnifying Glass can be used on an Advanced Button to reveal its settings.
 [ADDED] Crystal Chargers (Laser equivalent of Battery Box). Some old folks may know a similar thing from IndustrialCraft 1.
-[ADDED] 5 Tiers of Energium Crystals (going from 3200000LU to 819200000LU). They are charged with Laser Energy (LU) instead of Electricity (EU) and store a lot more Energy than Batteries.
+[ADDED] 5 Tiers of Energium Crystals (going from 3_200_000LU to 819_200_000LU). They are charged with Laser Energy (LU) instead of Electricity (EU) and store a lot more Energy than Batteries.
 [ADDED] Laser Energy Absorbers, which convert Lasers to Electricity with a 50% Loss.
 [ADDED]
 Redstone Selector Covers and Manual Selector Covers. They can be used to select:
@@ -3914,7 +3914,7 @@ When broken the normal way it will drop a max of 512 Stacks (of the respective i
 
 
 6.02.04:
-[FIXED] Exploit with Cauldrons being filled by pipes (and then emptied for 1000 Liters of Water using a Bucket), by increasing the amount to be filled from 250 to 334 Liters of Water.
+[FIXED] Exploit with Cauldrons being filled by Pipes (and then emptied for 1_000 Liters of Water using a Bucket), by increasing the amount to be filled from 250 to 334 Liters of Water.
 [FIXED] Sliced Ham Recipes.
 [CHANGED] Design of regular Metal Plates (and their multiplate variants). Decided to go RC Style, but I made my own Textures for them.
 [CHANGED] Converters that convert from Electricity to any other Energy form, now have an Amperage Limiter, so they don't attempt to consume more than they can convert (what would lead to an explosion). This fixes a lot of explosive Electricity Issues.
@@ -4384,7 +4384,7 @@ Makes a "Hammer Rightclick" on the Block it is facing and is powered by KU (Stea
 Can also crush Blocks in World. This includes Ores ofcourse, wow that rhymed. Note, that the Tool Quality is still important on this one.
 Note, that it requires the Engine to alternate between positive and negative Energy in order to work (GT Engines always do that).
 There are not only Hammer Qualities, but also Hammer Power, which depends on the Engine used, and also on the current Speed of the Engine.
-1 KU is worth 10 Hammering points, 2000 Hammering Points are needed for the Coinage Mold (every GT Steam Engine can power that) and 10000 Points being one regular use of the Hammer.
+1 KU is worth 10 Hammering points, 2_000 Hammering Points are needed for the Coinage Mold (every GT Steam Engine can power that) and 10_000 Points being one regular use of the Hammer.
 [ADDED]
 Electric Engines to convert EU into GT-KU. (the stuff the auto-hammer uses)
 Speed and therefore also Power can be adjusted with a Screwdriver to a certain extend depending on the Engine.
@@ -4591,7 +4591,7 @@ Chronometer for measuring Time of Day (Serverside. This also means you can detec
 Item-O-Meter for counting Items in an Inventory
 Stack-O-Meter for counting Stacks in an Inventory (anything with a stacksize > 0 is considered a Stack)
 Fluid-O-Meter for measuring Fluids in Liters (Or as some would call, Millibuckets)
-Bucket-O-Meter for measuring Fluids in Cubic Meters (aka Buckets or 1000 Liters)
+Bucket-O-Meter for measuring Fluids in Cubic Meters (aka Buckets or 1_000 Liters)
 Weight-O-Meters for measuring Inventory Weight of all Items which have a Weight assigned to them. (in either Gramm, Kilogramme, Tons or Kilotons)
 ---
 The Display itself can be set to either Decimal or Hexadecimal by screwdrivering the displaying Part of the Sensor.
@@ -4602,8 +4602,8 @@ The checked Values can be changed using the 6 Buttons to increment and decrement
 The Sensors do not emit Redstone into the Direction the scanned Block is at, in order to not disturb any potentially Redstone controlled things inside it.
 ---
 The Thermometer Block also works on IC² Nuclear Reactors (including the up to 6 Chambers).
-Note, that it displays between 0 and 2000 instead of 0 and 10000 on IC² Reactors, since it measures in Kelvin and not Reactor Heat Units.
-A Meltdown at 2000 Kelvin seems most realistic, since it is mostly made of Steel.
+Note, that it displays between 0 and 2_000 instead of 0 and 10_000 on IC² Reactors, since it measures in Kelvin and not Reactor Heat Units.
+A Meltdown at 2_000 Kelvin seems most realistic, since it is mostly made of Steel.
 
 
 6.00.35:
@@ -4785,7 +4785,7 @@ Currently no fancy Piston Animation on the Engine.
 [ADDED]
 The Boiler Blocks. I think I got everything done right, now.
 It is simple: Don't let the Barometer reach the Red Section due to risk of Explosions, and don't let the Boiler run completely out of Water as it melts otherwise.
-Currently only supports Water Buckets and Fluid Transport Mechanisms (such as Pipes or adjacent RC Water Tanks) to refill the Water. Every Boiler has a Water Capacity of 4 Buckets (4000L).
+Currently only supports Water Buckets and Fluid Transport Mechanisms (such as Pipes or adjacent RC Water Tanks) to refill the Water. Every Boiler has a Water Capacity of 4 Buckets (4_000L).
 Use distilled Water if possible or you risk calcification and therefore decreased Efficiency. Every Boiler starts at 100% Efficiency amd slowly degrades with every bit of non-distilled Water getting converted to Steam. Break and replace the Boiler to clean it, but NOT while it is full of Steam!
 
 
@@ -4824,7 +4824,7 @@ Use distilled Water if possible or you risk calcification and therefore decrease
 Multiple different "Burning Boxes" and "Dense Burning Boxes" (Lead and Bismuth Versions being the most early Game variants), which convert Furnace Fuel into Heat Energy.
 Their Efficiency depends on the Material used to contain the Heat (Invar being the only 100% one but on a low Rate, Tungsten 95% with a very high Rate)
 The Dense ones cost about 4-5 times the Material but also have a 4 times the Output Rate, without >>ANY<< change in overall Efficiency. In order to make them you need a Dense Copper Plate, and therefore a way to compress them, meaning it is higher Tech.
-At 100% one Furnace Smelting equals 5000 Heat Units, so Coal/Charcoal would be 40000 HU, Coal Coke 80000 HU and Alumentum 160000 HU for example, it also accepts Wooden things (7500 HU), Saplings (2500 HU) and all the other Furnace Fuels.
+At 100% one Furnace Smelting equals 5_000 Heat Units, so Coal/Charcoal would be 40_000 HU, Coal Coke 80_000 HU and Alumentum 160_000 HU for example, it also accepts Wooden things (7_500 HU), Saplings (2_500 HU) and all the other Furnace Fuels.
 Many Fuel Materials have some kind of Ashes, which are left behind when burning them. These Ashes has to be removed regularly from the Burning Box in order for it to work. Coal Coke and Alumentum don't have those Ashes for example.
 The Burning Box is very primitive, meaning it has no GUI and won't receive any GUI. Anything you insert for burning by rightclicking the front of the Box with it will get burnt without mercy (if it is a valid Fuel, and if you don't happen to wrench the Box right afterwards, and only when the Box is actually active).
 In order to work, it also needs a Block without Collision Box in front of it (Air is such a Block without Collision Box).
