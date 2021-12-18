@@ -31,8 +31,6 @@ import gregapi.oredict.OreDictPrefix;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -173,9 +171,6 @@ public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 	
 	@Override
 	public boolean matches(InventoryCrafting aGrid, World aWorld) {
-		Container tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "field_70465_c"); if (tContainer == null) tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "eventHandler");
-		if (tContainer != null && tContainer.getClass().getName().startsWith("thaumcraft")) return F;
-		
 		ItemStack tStack = null;
 		OreDictMaterial rMaterial = null;
 		
