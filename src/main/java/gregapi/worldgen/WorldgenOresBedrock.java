@@ -209,6 +209,29 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				case 1: case 2: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
 				}
 			}
+			
+			for (int i = 4 + aRandom.nextInt(4); i-->0;) {
+				int tX = 5+aRandom.nextInt(6);
+				int tZ = 5+aRandom.nextInt(6);
+				
+				for (int tY = tD1.length; tY < 64; tY++) {
+					switch (aRandom.nextInt(8)) {
+					case 0: tX++; break;
+					case 1: tX--; break;
+					}
+					switch (aRandom.nextInt(8)) {
+					case 0: tZ++; break;
+					case 1: tZ--; break;
+					}
+					switch(aRandom.nextInt(4)) {
+					case 0:         WD.setOre     (aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
+					case 1: case 2: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
+					}
+					
+					if (tX <= 0 || tX >= 15 || tZ <= 0 || tZ >= 15) break;
+				}
+			}
+			
 			return T;
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		return F;
