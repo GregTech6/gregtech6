@@ -58,7 +58,7 @@ public class WorldgenColtan extends WorldgenObject {
 		if (GENERATING_SPECIAL) return F;
 		int tDistance = (tX-aMinX)*(tX-aMinX) + (tZ-aMinZ)*(tZ-aMinZ);
 		
-		// Generate Coltan a the large Area around the Center Point of Coltan Contention.
+		// Generate Coltan at the large Area around the Center Point of Coltan Contention.
 		if (tDistance > mRange*mRange) return F;
 		for (int i = 0, j = Math.max(1, mAmount/2 + aRandom.nextInt(1+mAmount)/2); i < j; i++) {
 			switch(aRandom.nextInt(5)) {
