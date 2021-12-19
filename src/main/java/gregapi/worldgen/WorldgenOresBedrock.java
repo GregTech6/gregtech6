@@ -210,23 +210,12 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				}
 			}
 			
-			for (int i = 5 + aRandom.nextInt(5); i-->0;) {
-				int tX = 6+aRandom.nextInt(4), tZ = 6+aRandom.nextInt(4), tW = WD.waterLevel(aWorld);
+			for (int i = 7+aRandom.nextInt(7); i-->0;) {
+				int tX = 5+aRandom.nextInt(6), tZ = 5+aRandom.nextInt(6), tW = WD.waterLevel(aWorld);
 				
 				for (int tY = tD1.length; tY < tW; tY++) {
-					switch (aRandom.nextInt(5)) {
-					case 0: tX++; break;
-					case 1: tX--; break;
-					}
-					switch (aRandom.nextInt(5)) {
-					case 0: tZ++; break;
-					case 1: tZ--; break;
-					}
-					switch(aRandom.nextInt(5)) {
-					case 0:                 WD.setOre     (aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
-					case 1: case 2: case 3: WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial); break;
-					}
-					
+					switch(aRandom.nextInt(7)) {case 0: tX++; break; case 1: tX--; break; case 2: tZ++; break; case 3: tZ--; break;}
+					WD.setSmallOre(aWorld, aMinX+tX, tY, aMinZ+tZ, aMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : aMaterial);
 					if (tX <= 0 || tX >= 15 || tZ <= 0 || tZ >= 15) break;
 				}
 			}
