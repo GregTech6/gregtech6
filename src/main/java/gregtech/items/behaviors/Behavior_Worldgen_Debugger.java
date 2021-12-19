@@ -45,7 +45,7 @@ public class Behavior_Worldgen_Debugger extends AbstractBehaviorDefault {
 		for (int tX = (aX&~15), eX = (aX&~15)+16; tX < eX; tX++) for (int tZ = (aZ&~15), eZ = (aZ&~15)+16; tZ < eZ; tZ++) for (int tY = 1; tY < 250; tY++) {
 			Block tBlock = WD.block(aWorld, tX, tY, tZ);
 			if (tBlock instanceof IPrefixBlock) {
-				TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+				TileEntity aTileEntity = aWorld.getTileEntity(tX, tY, tZ);
 				if (aTileEntity instanceof ITileEntity) ((ITileEntity)aTileEntity).onAdjacentBlockChange(tX, tY, tZ);
 			} else {
 				WD.set(aWorld, tX, tY, tZ, NB, 0, 2);
