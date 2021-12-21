@@ -263,7 +263,7 @@ public class ST {
 	}
 	public static ItemStack update_(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
 		if (aStack.hasTagCompound() && aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
-		if (item_(aStack) instanceof IItemUpdatable) ((IItemUpdatable)item_(aStack)).updateItemStack(aStack);
+		if (item_(aStack) instanceof IItemUpdatable) ((IItemUpdatable)item_(aStack)).updateItemStack(aStack, aWorld, aX, aY, aZ);
 		return aStack;
 	}
 	public static ItemStack update (ItemStack aStack, Entity aEntity) {

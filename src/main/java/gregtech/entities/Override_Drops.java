@@ -431,8 +431,8 @@ public class Override_Drops {
 			, IL.Bottle_Milk.get(1)
 			, IL.Bottle_Milk.get(1)
 			, IL.Bottle_Milk.get(1)
-			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricIron, 1):OP.arrowGtWood.mat(MT.Bronze, 1))
-			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricIron, 1):OP.arrowGtWood.mat(MT.Bronze, 1))
+			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricIron , 1):OP.arrowGtWood.mat(MT.Bronze, 1))
+			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricIron , 1):OP.arrowGtWood.mat(MT.Bronze, 1))
 			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricSteel, 1):OP.arrowGtWood.mat(MT.Bronze, 1))
 			, ST.update(aSpace?OP.arrowGtPlastic.mat(MT.MeteoricSteel, 1):OP.arrowGtWood.mat(MT.DamascusSteel, 1))
 			)));

@@ -126,7 +126,7 @@ public class EnergyStat implements IItemEnergy {
 	
 	@Override
 	public ItemStack setEnergyStored(TagData aEnergyType, ItemStack aStack, long aAmount) {
-		if (aEnergyType != mType && aEnergyType != null) return aStack;
+		if ((aEnergyType != mType && aEnergyType != null) || ST.size(aStack) <= 0) return aStack;
 		
 		NBTTagCompound tNBT = aStack.getTagCompound();
 		if (tNBT == null) tNBT = UT.NBT.make(); else tNBT.removeTag(NBT_ENERGY);

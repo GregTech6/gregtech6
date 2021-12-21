@@ -536,6 +536,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
+	public void updateItemStack(ItemStack aStack) {
+		super.updateItemStack(aStack);
+		destroyCheck(aStack, null);
+	}
+	
+	@Override
 	public boolean isItemStackUsable(ItemStack aStack) {
 		if (aStack.stackSize <= 0) return F;
 		

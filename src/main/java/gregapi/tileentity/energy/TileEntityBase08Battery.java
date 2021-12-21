@@ -210,7 +210,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	
 	@Override
 	public ItemStack setEnergyStored(TagData aEnergyType, ItemStack aStack, long aAmount) {
-		if (aEnergyType != mType && aEnergyType != null) return aStack;
+		if ((aEnergyType != mType && aEnergyType != null) || ST.size(aStack) <= 0) return aStack;
 		mEnergy = aAmount;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return ST.update_(aStack);

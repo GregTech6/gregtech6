@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Thaumcrafts Arcane Workbench will now no longer accept GT6 Shapeless Recipes that turn things like Nuggets into Ingots or Billets and vice versa. Recipes that take exactly 1 or 9 Items will still work though.
 [FIXED] GT6 Firestone Items are now burning your surroundings just like Railcrafts Firestone does, maybe a slight bit less bad but still dangerous as Hell.
 [FIXED] An Issue where GT6 Saplings could not be placed by Thaumcraft Golems.
+[FIXED] Tools sometimes did not break after harvesting specific shitty Blocks that are based on Vanilla Leaves and dont fire the Harvest Event...
 [ADDED] Bedrock Veins now generate actual Veins of their Ore above them, which go up to the "Water" Level of the Dimension they are in. This should make Bedrock Ores slightly easier to find in the Nether.
 [ADDED] Metal Pipes can now be made in the Welder.
 [ADDED] Firestones can now be recharged using the Injector. This works with regular Lava, and also with Heatant, so Nuclear Firestones are definitely an option now - if you have 20_000 Lapis/Sodalite/Lazurite that is.
