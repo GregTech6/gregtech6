@@ -61,7 +61,7 @@ public class Behavior_Worldgen_Debugger extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.get("gt.behaviour.worldgendebug"));
-		aList.add("Currently deletes a single Chunk, except for bottom most Bedrock");
+		aList.add("Currently deletes a single Chunk, except for bottom most Bedrock and GT6 Ores");
 		return aList;
 	}
 }

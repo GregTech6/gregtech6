@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.23: (Not released yet, released whenever it needs to be)
+6.14.23:
 [NOTE] Please make sure your log4j Version is 2.16 or greater, yes 2.16, not 2.15, alternatively make sure its Version ends on the word "fixed". Just look inside of your ".minecraft/libraries/org/apache/logging/log4j/log4j-core/" Directory to see which Versions exist. Most Launchers like MultiMC should have fixed it for you though.
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
 [FIXED] Thaumcrafts Arcane Workbench will now no longer accept GT6 Shapeless Recipes that turn things like Nuggets into Ingots or Billets and vice versa. Recipes that take exactly 1 or 9 Items will still work though.
