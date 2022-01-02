@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.TD;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

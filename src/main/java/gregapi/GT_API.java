@@ -288,6 +288,9 @@ public class GT_API extends Abstract_Mod {
 		
 		DirectoriesGT.CONFIG_GT = new File(DirectoriesGT.CONFIG, "GregTech");
 		if (!DirectoriesGT.CONFIG_GT.exists()) DirectoriesGT.CONFIG_GT = new File(DirectoriesGT.CONFIG, "gregtech");
+
+		DirectoriesGT.CONFIG_GTCH = new File(DirectoriesGT.CONFIG, "GregTechCH");
+		if (!DirectoriesGT.CONFIG_GTCH.exists()) DirectoriesGT.CONFIG_GTCH = new File(DirectoriesGT.CONFIG, "gregtechCH");
 		
 		DirectoriesGT.CONFIG_RECIPES = new File(DirectoriesGT.CONFIG, "Recipes");
 		if (!DirectoriesGT.CONFIG_RECIPES.exists()) DirectoriesGT.CONFIG_RECIPES = new File(DirectoriesGT.CONFIG, "recipes");
@@ -347,6 +350,10 @@ public class GT_API extends Abstract_Mod {
 		ConfigsGT.OREPROCESSING = new Config("OreProcessing.cfg");
 		// Deprecated Config Files.
 		ConfigsGT.OVERPOWERED = ConfigsGT.MACHINES = ConfigsGT.SPECIAL = ConfigsGT.GREGTECH;
+
+		//CH config
+		ConfigsGTCH.MACHINES    = new Config(DirectoriesGT.CONFIG_GTCH, "Machines.cfg");
+		ConfigsGTCH.REACTORS    = new Config(DirectoriesGT.CONFIG_GTCH, "Reactors.cfg");
 		
 		
 		tFile = new File(DirectoriesGT.CONFIG_GT, "Stacksizes.cfg");

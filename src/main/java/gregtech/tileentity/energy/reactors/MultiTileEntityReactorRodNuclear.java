@@ -23,9 +23,9 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.data.FL;
-import gregapi.data.LH;
-import gregapi.data.MT;
+import gregapi.config.ConfigCategories;
+import gregapi.config.ConfigDataCH;
+import gregapi.data.*;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
@@ -42,7 +42,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronMax = 128;
 	public short mDepleted = -1;
 	public boolean mModerated = F, oModerated = F;
-	
+
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -71,7 +72,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		UT.NBT.setBoolean(aNBT, NBT_NUCLEAR_MOD+".o", oModerated);
 		return super.writeItemNBT2(aNBT);
 	}
-	
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
@@ -107,7 +108,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 				break;
 			case 3:
 				aList.add(LH.Chat.CYAN + "When used with Industrial Coolant:");
-				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther * 4 + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + (UT.Code.divup(mNeutronOther * 4 * ConfigDataCH.adjustCoolantOtherMul, ConfigDataCH.adjustCoolantOtherDiv)) + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 4 + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv * 2);
@@ -147,12 +148,14 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 				break;
 		}
 	}
-	
+
 	@Override
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
 			mNeutronOther *= 4;
+			mNeutronOther *= ConfigDataCH.adjustCoolantOtherMul;
+			mNeutronOther = (int)UT.Code.divup(mNeutronOther, ConfigDataCH.adjustCoolantOtherDiv);
 			mNeutronSelf *= 4;
 			mNeutronDiv *= 2;
 		} else if (MT.CO2.mGas.isFluidEqual(aReactor.mTanks[0].getFluid())) {

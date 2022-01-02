@@ -50,20 +50,13 @@ import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
+import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.behaviors.Behavior_Turn_Into;
@@ -338,6 +331,7 @@ public class GT6_Main extends Abstract_Mod {
 	
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
+
 		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
 		
 		new Loader_Late_Items_And_Blocks().run();

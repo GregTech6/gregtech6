@@ -47,14 +47,20 @@ import net.minecraftforge.fluids.IFluidTank;
 
 public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implements IFluidHandler {
 	public FluidTankGT mTank = new FluidTankGT();
-	public long mSteamCounter = 0, mEnergyProducedNextTick = 0;
-	public static final int STEAM_PER_WATER = 200;
+	public long mSteamCounter = 0, mOutputSU = 0;
+	private int STEAM_PER_WATER_SELF = 200;
+	private short mEfficiencyWater = 8000;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
+//		if (aNBT.hasKey(NBT_INPUT_SU)) aNBT.setLong(NBT_INPUT, aNBT.getLong(NBT_ENERGY_SU)/STEAM_PER_EU);
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_ENERGY_SU)) mSteamCounter = aNBT.getLong(NBT_ENERGY_SU);
-		if (aNBT.hasKey(NBT_OUTPUT_SU)) mEnergyProducedNextTick = aNBT.getLong(NBT_OUTPUT_SU);
+		if (aNBT.hasKey(NBT_OUTPUT_SU)) mOutputSU = aNBT.getLong(NBT_OUTPUT_SU);
+
+		if (aNBT.hasKey(NBT_EFFICIENCY_WATER)) mEfficiencyWater = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY_WATER));
+		STEAM_PER_WATER_SELF = (int)UT.Code.units(STEAM_PER_WATER, mEfficiencyWater, 10000, T);
+
 		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
 		mTank.setCapacity(mConverter.mEnergyIN.mMax*4);
 	}
@@ -63,14 +69,17 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY_SU, mSteamCounter);
-		UT.NBT.setNumber(aNBT, NBT_OUTPUT_SU, mEnergyProducedNextTick);
+		UT.NBT.setNumber(aNBT, NBT_OUTPUT_SU, mOutputSU); // 保留兼容
 		mTank.writeToNBT(aNBT, NBT_TANK+"."+0);
+
+		UT.NBT.setNumber(aNBT, NBT_OUTPUT_REC, mConverter.mEnergyOUT.mRec); // for OmniOcular usage
+		UT.NBT.setNumber(aNBT, NBT_INPUT_REC, mConverter.mEnergyIN.mRec);  // for OmniOcular usage
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(Chat.ORANGE + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 80%)");
+		aList.add(Chat.ORANGE + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", " + LH.getToolTipEfficiencySimple(mEfficiencyWater) + ")");
 	}
 	
 	@Override
@@ -86,23 +95,21 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 	
 	@Override
 	public void doConversion(long aTimer) {
-		if (mEnergyProducedNextTick > 0) {
-			mStorage.mEnergy += mEnergyProducedNextTick;
-			mEnergyProducedNextTick = 0;
-		} else if (mTank.has(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY) * 2)) {
+		if (mTank.has(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY))) {
 			long tSteam = mTank.amount();
-			mSteamCounter += tSteam;
-			mStorage.mEnergy += tSteam / STEAM_PER_EU;
-			mEnergyProducedNextTick += tSteam / STEAM_PER_EU;
 			mTank.setEmpty();
-			if (mSteamCounter >= STEAM_PER_WATER) {
-				FluidStack tDistilledWater = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
+			if (STEAM_PER_WATER_SELF > 0) mSteamCounter += tSteam;
+			mStorage.mEnergy += tSteam;
+			mOutputSU = mStorage.mEnergy;
+
+			if (mSteamCounter >= STEAM_PER_WATER_SELF && STEAM_PER_WATER_SELF > 0) {
+				FluidStack tDistilledWater = FL.DistW.make(mSteamCounter / STEAM_PER_WATER_SELF);
 				for (byte tDir : FACING_SIDES[mFacing]) {
 					tDistilledWater.amount -= FL.fill(getAdjacentTank(tDir), tDistilledWater.copy(), T);
 					if (tDistilledWater.amount <= 0) break;
 				}
 				GarbageGT.trash(tDistilledWater);
-				mSteamCounter %= STEAM_PER_WATER;
+				mSteamCounter %= STEAM_PER_WATER_SELF;
 			}
 		}
 		super.doConversion(aTimer);
