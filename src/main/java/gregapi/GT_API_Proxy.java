@@ -979,7 +979,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Instant breaking for those Wrenches.
 					if (IL.BC_Wrench.equal(aStack, T, T) || IL.FR_Wrench.equal(aStack, T, T) || IL.SC2_Wrench.equal(aStack, T, T) || IL.AE_Wrench_Certus.equal(aStack, T, T) || IL.AE_Wrench_Quartz.equal(aStack, T, T) || IL.TE_Wrench.equal(aStack, T, T) || IL.TE_Wrench_Battle.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_wrench, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_wrench, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
@@ -991,7 +991,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Instant breaking for those Soft Hammers.
 					if (IL.MFR_Hammer.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_softhammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_softhammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
@@ -1003,7 +1003,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Instant breaking for those Hard Hammers.
 					if (IL.IE_Hammer.equal(aStack, F, T) || IL.A97_Hammer.equal(aStack, T, T) || IL.SC2_Hammer.equal(aStack, T, T) || IL.SC2_Hammer_Gilded.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_hammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_hammer, Long.MAX_VALUE, 3, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
@@ -1015,7 +1015,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Make Railcrafts Crowbars work on GT6 Stuff.
 					if (IL.RC_Crowbar_Iron.equal(aStack, T, T) || IL.RC_Crowbar_Steel.equal(aStack, T, T) || IL.RC_Crowbar_Thaumium.equal(aStack, T, T) || IL.RC_Crowbar_Voidmetal.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_crowbar, Long.MAX_VALUE, 2, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_crowbar, Long.MAX_VALUE, 2, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
@@ -1027,7 +1027,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Make Forestry Scoops work on GT6 Stuff.
 					if (IL.FR_Scoop.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
@@ -1039,7 +1039,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Make Railcrafts Firestone work as Flint and Steel on TNT and GT6 Machines
 					if (IL.RC_Firestone_Refined.equal(aStack, T, T) || IL.RC_Firestone_Cracked.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
-						long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, Long.MAX_VALUE, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						long tDamage = IBlockToolable.Util.onToolClickWithoutCompat(TOOL_igniter, Long.MAX_VALUE, Long.MAX_VALUE, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
