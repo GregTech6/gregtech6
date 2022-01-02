@@ -4,6 +4,8 @@
 
 [OmniOcular](https://github.com/CHanzyLazer/OmniOcular_GT6CHE)
 
+不推荐在 1.0 版本之前正式游玩，因为后续更新可能会对前期的机器进行大改，可能会让存档的机器失效
+
 # License
 
 This Mod is licensed under the [GNU Lesser General Public License](LICENSE).
@@ -15,7 +17,7 @@ derivative of it are licensed under the
 
 # Changelog
 ## CH-0.1
-- 配置文件：额外添加配置文件在 config/gregtechCH 文件夹，可以大部分调整数据
+- 配置文件：额外添加配置文件在 config/gregtechCH 文件夹，可以调整大部分数据
 - 燃油引擎：现在可以在在配置文件选择禁用
 - 燃油引擎：效率减少到 30%
 - 燃油引擎：修改了合成表，现在耗材增加到了 80.5 个相应的材料
@@ -27,8 +29,8 @@ derivative of it are licensed under the
 - 燃烧室：  除了砖头燃烧室和流化床燃烧室，其余所有燃烧室的产热翻倍
 - 核反应堆：工业冷却剂下燃料棒向周围释放中子数的 4 倍消弱到原来的 3/8，即 1.5 倍
 
-# Start
-目前我发现的指令：
+# 加入项目
+如果你也有魔改 GT6 的想法，欢迎加入这个项目，目前我发现的指令：
 - `./gradlew setupDevWorkspace setupDecompWorkspace` 设置工作环境
 - `./gradlew assemble` 打包到 `build\lib`
 - `./gradlew clean` 清理工作区
