@@ -2,6 +2,8 @@
 
 下载地址 [Release](https://github.com/CHanzyLazer/gregtech6-CH_Edition/releases)
 
+[OmniOcular](https://github.com/CHanzyLazer/OmniOcular_GT6CHE)
+
 # License
 
 This Mod is licensed under the [GNU Lesser General Public License](LICENSE).
