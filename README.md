@@ -9,11 +9,21 @@ Any assets containing the [GregTech logo](src/main/resources/logos) or any
 derivative of it are licensed under the
 [Creative Commons Attribution-NonCommercial 4.0 International Public License](src/main/resources/LICENSE.logos).
 
+# Start
+目前我发现的指令：
+- `./gradlew setupDevWorkspace setupDecompWorkspace` 设置工作环境
+- `./gradlew assemble` 打包到 `build\lib`
+- `./gradlew clean` 清理工作区
+- `./gradlew runClient` 在客户端上运行
+- `./gradlew runServer` 在服务端上运行
+- 可以组合使用，例如 `./gradlew clean setupDevWorkspace setupDecompWorkspace`，清理并重新设置工作环境
+
 # TODO
 所有能量生成机器效率降低，让后期换用效率更高设备存在感知。
 
 ## 配置文件方面
-虽然另写一个 mod 实现修改我做不到，但是把这些修改能通过配置文件实现应该是可以的，因此打算所有修改能通过配置文件实现自定义
+自定义合成表有点难实现暂时不做
+我额外添加的配置文件都在 config/gregtechCH 文件下
 
 ## RU 产生
 - 燃油引擎效率减少到 30%
@@ -29,3 +39,6 @@ derivative of it are licensed under the
 - 小发电机效率 60%
 - 大发电机效率 95%
 - 红石通量发电机效率 10%，主要由于 rf 的变态机器太多
+
+## 核反应堆
+- 工业冷却剂下燃料棒向周围释放中子数的 4 倍消弱到原来的 3/8，即 1.5 倍
