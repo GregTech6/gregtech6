@@ -249,6 +249,8 @@ public class TD {
 		public static final TagData DUST_BASED                              = TagData.createTagData("PREFIX.DUST_BASED", "Dust");
 		/** If this Prefix is Ingot based and a simple Ingot thing (so not used for Multi-Ingots or Crates) */
 		public static final TagData INGOT_BASED                             = TagData.createTagData("PREFIX.INGOT_BASED", "Ingot");
+		/** If this Prefix is Wire based and a simple Wire thing (so not used for Cables) */
+		public static final TagData WIRE_BASED                              = TagData.createTagData("PREFIX.WIRE_BASED", "Wire");
 		/** If this Prefix is only Unificatable in Recipes */
 		public static final TagData UNIFICATABLE_RECIPES                    = TagData.createTagData("PREFIX.UNIFICATABLE_RECIPES", "Recipe Unificatable");
 		/** If this Prefix can be used in an Extruder. */

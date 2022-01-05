@@ -432,6 +432,23 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				for (ItemStack tStack : OreDictManager.getOres(OP.billet                , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 				for (ItemStack tStack : OreDictManager.getOres(OP.chunkGt               , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 				for (ItemStack tStack : OreDictManager.getOres(OP.nugget                , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix.contains(TD.Prefix.WIRE_BASED)) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt01              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt02              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt03              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt04              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt05              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt06              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt07              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt08              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt09              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt10              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt11              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt12              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt13              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt14              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt15              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.wireGt16              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 			} else if (tData.mPrefix == OP.gem || tData.mPrefix == OP.blockGem) {
 				for (ItemStack tStack : OreDictManager.getOres(OP.gem                   , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 				for (ItemStack tStack : OreDictManager.getOres(OP.blockGem              , tData.mMaterial, F)) mLogisticsCache.add(tStack);
@@ -557,6 +574,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		
 		if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) return OM.dust(mData.mMaterial.mMaterial, mPartialUnits);
 		if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) return OM.ingot(mData.mMaterial.mMaterial, mPartialUnits);
+		if (mData.mPrefix.contains(TD.Prefix.WIRE_BASED)) return OP.wireGt01.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.wireGt01.mAmount);
 		
 		if (mData.mPrefix == OP.gem || mData.mPrefix == OP.blockGem) {
 			return OP.gem.mat(mData.mMaterial.mMaterial, mPartialUnits / OP.gem.mAmount);
@@ -594,6 +612,9 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			}
 			if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
 				return aData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? aData.mPrefix.mAmount : 0;
+			}
+			if (mData.mPrefix.contains(TD.Prefix.WIRE_BASED)) {
+				return aData.mPrefix.contains(TD.Prefix.WIRE_BASED) ? aData.mPrefix.mAmount : 0;
 			}
 			if (mData.mPrefix == OP.gem || mData.mPrefix == OP.blockGem) {
 				return aData.mPrefix == OP.gem || aData.mPrefix == OP.blockGem ? aData.mPrefix.mAmount : 0;
