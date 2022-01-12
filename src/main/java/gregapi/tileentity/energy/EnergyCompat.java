@@ -151,7 +151,6 @@ public class EnergyCompat {
 			if (FL_ENERGY) {
 				if (aReceiver instanceof com.rwtema.funkylocomotion.blocks.TilePusher ) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.rwtema.funkylocomotion.blocks.TilePusher )aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU * 10), F), aSize * RF_PER_EU * 10);
 				if (aReceiver instanceof com.rwtema.funkylocomotion.blocks.TileBooster) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.rwtema.funkylocomotion.blocks.TileBooster)aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU * 10), F), aSize * RF_PER_EU * 10);
-				return 0;
 			}
 			
 			// GalactiCraft and its Addons
