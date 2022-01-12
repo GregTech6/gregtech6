@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,7 +54,7 @@ public class RecipeMapScannerMolecular extends RecipeMap {
 				assert tScanned != null; // just to make eclipse shut the fuck up
 				OreDictItemData aData = OM.anydata_(tScanned);
 				if (aData.mPrefix != null && aData.mMaterial != null && aData.mMaterial.mMaterial.mID > 0 && aData.mPrefix.contains(TD.Prefix.SCANNABLE)) {
-					rRecipe = new Recipe(F, F, F, ST.array(ST.amount(Math.max(1, U / aData.mMaterial.mAmount), tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB)), null, null, null, null, (aData.mMaterial.mMaterial.mProtons+aData.mMaterial.mMaterial.mNeutrons) * 512, 512, 0);
+					rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB)), null, null, null, null, (aData.mMaterial.mMaterial.mProtons+aData.mMaterial.mMaterial.mNeutrons) * 512, 512, 0);
 					if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
 					rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, UT.NBT.makeShort(NBT_REPLICATOR_DATA, aData.mMaterial.mMaterial.mID));
 					rRecipe.mOutputs[0].getTagCompound().setByte(NBT_USB_TIER, (byte)3);

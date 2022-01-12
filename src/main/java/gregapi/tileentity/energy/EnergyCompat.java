@@ -156,7 +156,7 @@ public class EnergyCompat {
 			
 			// GalactiCraft and its Addons
 			if (GC_ENERGY && COMPAT_GC != null) {
-				if (aReceiver instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC) {
+				if (aReceiver instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && !(RF_ENERGY && isElectricRFReceiver(aReceiver))) {
 					if (!(aReceiver instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aReceiver).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER)) {
 						if (checkOverCharge(aSize, aReceiver)) return aAmount;
 						float tSizeToReceive = aSize * micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler.IC2_RATIO, tStored = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).getEnergyStoredGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSide));
