@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -58,15 +59,18 @@ public class WorldgenFluidSpring extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (!WorldgenOresBedrock.GENERATED_NO_BEDROCK_ORE || !WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
-		if (GENERATING_SPECIAL) return F;
+		if (GENERATING_SPECIAL || !WorldgenOresBedrock.GENERATED_NO_BEDROCK_ORE || !WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
+		
 		WorldgenOresBedrock.CAN_GENERATE_BEDROCK_ORE = F;
 		
-		Block tDeepslate = (aDimType == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
-		if (ST.invalid(tDeepslate)) tDeepslate = Blocks.stone;
+		Block tBlock = WD.block(aWorld, aMinX+8, 0, aMinZ+8);
+		if (tBlock != BlocksGT.oreBedrock && tBlock != BlocksGT.oreSmallBedrock && !WD.bedrock(tBlock)) return F;
+		
+		tBlock = (aDimType == DIM_NETHER ? Blocks.netherrack : IL.EtFu_Deepslate.block());
+		if (ST.invalid(tBlock)) tBlock = Blocks.stone;
 		
 		for (int i = 0; i <= 6; i++) for (int tX = aMinX+i; tX <= aMaxX-i; tX++) for (int tZ = aMinZ+i; tZ <= aMaxZ-i; tZ++) {
-			if (!WD.opq(aWorld, tX, i+1, tZ, F, T)) aWorld.setBlock(tX, i+1, tZ, tDeepslate, 0, 0);
+			if (!WD.opq(aWorld, tX, i+1, tZ, F, T)) aWorld.setBlock(tX, i+1, tZ, tBlock, 0, 0);
 			
 			if (i > 0) aWorld.setBlock(tX, i, tZ, mBlock, mMeta, 0);
 			
