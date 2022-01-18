@@ -176,10 +176,6 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		}
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
-		long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
-		if (oModerated) tDurabilityLoss *= 4;
-		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
-		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return UT.Code.bindInt(tEmission);
 	}
 	
@@ -187,6 +183,12 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	// Gets called every Tick.
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
+
+		long tDurabilityLoss = aReactor.oNeutronCounts[aSlot] < mNeutronMax ? 100 : UT.Code.divup(400 * aReactor.oNeutronCounts[aSlot], mNeutronMax);
+		if (oModerated) tDurabilityLoss *= 4;
+		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
+		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+
 		if (mDurability <= 0) {
 			ST.meta(aStack, mDepleted);
 			ST.nbt(aStack, null);
