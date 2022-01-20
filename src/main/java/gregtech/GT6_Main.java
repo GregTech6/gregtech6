@@ -351,6 +351,9 @@ public class GT6_Main extends Abstract_Mod {
 			new Loader_Worldgen(),
 			new Loader_ItemIterator()
 		);
+		
+		if (MD.MO.mLoaded) try {ST.block(MD.MO, "molten_tritanium").setBlockTextureName(MD.MO.mID + ":" + "molten_tritanium_still");} catch(Throwable e) {e.printStackTrace(ERR);}
+		
 		for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
