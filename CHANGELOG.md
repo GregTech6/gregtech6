@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.24: (Not released yet, released whenever it needs to be)
+[NOTE] Erik3003 changed how durability loss of Reactor Rods works. Nothing should be able to explode from this already tested change.
 [FIXED] OpenComputers did not accept Electric GT6 Power even though it should, but ONLY if Galacticraft or Funky Locomotion were installed. But now it works.
 [FIXED] Tools of other Mods being single use on NON-GT6 Stuff too, instead of only being single use on GT6 Stuff.
 [FIXED] A Bug with Bedrock Fluid Springs also spawning in Void Worlds.
