@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Tools of other Mods being single use on NON-GT6 Stuff too, instead of only being single use on GT6 Stuff.
 [FIXED] A Bug with Bedrock Fluid Springs also spawning in Void Worlds.
 [FIXED] Some weird Bug with GT6 Items and Creative Tabs.
+[CHANGED] Shredder now has better Output Management for certain things.
 [CHANGED] You can get Niobium from smelting Coltan or Columbite now.
 [ADDED] Mass Storages and Item Barrels can now bundle and unbundle bare GT6 Wires. (Wires does NOT mean Cables!)
 
