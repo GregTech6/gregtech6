@@ -44,8 +44,22 @@ public class MultiTileEntityReactorRodProduct extends MultiTileEntityReactorRodB
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+		aList.add(LH.Chat.CYAN + "Emits half the Heat per Neutron on this Rod");
+		aList.add(LH.Chat.CYAN + "Can be centrifuged to get valuable materials");
 		if (mBreedingName.equals(""))  mBreedingName = ST.meta(aStack.copy(), mBreeding).getDisplayName();
-		aList.add(LH.Chat.YELLOW + "Breed from " + mBreedingName);
+		aList.add(LH.Chat.GREEN + "Breed from " + mBreedingName);
+	}
+
+	@Override
+	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot] / 2;
+		return T;
+	}
+
+	@Override
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+		return 0;
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.product";}
