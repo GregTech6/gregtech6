@@ -360,9 +360,12 @@ public class Loader_Recipes_Chem implements Runnable {
 		// TODO Fluidized Bed Reactor
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Ethylene .make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Propylene.make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
-		
-		
-		RM.Injector         .addRecipe1(T, 64, 256, OM.dust(MT.Th), MT.LiCl.liquid(U*64, T), FL.Thorium_Salt.make(9216), ZL_IS);
+
+
+		RM.Injector         .addRecipe1(T, 64, 1152, OP.dust     .mat(MT.Th, 1), MT.LiCl.liquid(U*144, T), FL.Thorium_Salt.make(20736), ZL_IS);
+		RM.Injector         .addRecipe1(T, 64,  288, OP.dustSmall.mat(MT.Th, 1), MT.LiCl.liquid( U*36, T), FL.Thorium_Salt.make( 5184), ZL_IS);
+		RM.Injector         .addRecipe1(T, 64,  128, OP.dustTiny .mat(MT.Th, 1), MT.LiCl.liquid( U*16, T), FL.Thorium_Salt.make( 2304), ZL_IS);
+		RM.Injector         .addRecipe1(T, 64,   16, OP.dustDiv72.mat(MT.Th, 1), MT.LiCl.liquid(  U*2, T), FL.Thorium_Salt.make(  288), ZL_IS);
 		
 		RM.Injector         .addRecipe1(T, 16, 256, OM.dust(MT.Desh), FL.array(MT.Hg.fluid(U, T), FL.Fuel.make(400)), ZL_FS, OM.dust(MT.DeshAlloy));
 		
