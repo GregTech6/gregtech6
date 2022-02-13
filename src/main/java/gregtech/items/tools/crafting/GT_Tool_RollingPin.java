@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2021 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,12 +37,12 @@ public class GT_Tool_RollingPin extends ToolStats {
 	
 	@Override
 	public int getToolDamagePerDropConversion() {
-		return 100;
+		return 50;
 	}
 	
 	@Override
 	public int getToolDamagePerContainerCraft() {
-		return 400;
+		return 50;
 	}
 	
 	@Override

@@ -504,6 +504,7 @@ public class GT_API extends Abstract_Mod {
 			MT.MilkyQuartz.setLocal("Milk Quartz");
 			MT.CertusQuartz.setLocal("Citrus Quartz");
 			MT.ChargedCertusQuartz.setLocal("Charged Citrus Quartz");
+			MT.Firestone.setLocal("Hot Garbage");
 			MT.UUMatter.setLocal("UwU-Matter");
 			MT.UUAmplifier.setLocal("UwU-Amplifier");
 			MT.OREMATS.Galena.setLocal("Silverlead");

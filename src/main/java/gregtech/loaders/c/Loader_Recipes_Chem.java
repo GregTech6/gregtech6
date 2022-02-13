@@ -78,7 +78,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.WhiteVitriol      .liquid(U * 6, T), FL.mul(tWater, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Zn));
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.GrayVitriol       .liquid(U * 6, T), FL.mul(tWater, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Mn));
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.GreenVitriol      .liquid(U * 6, T), FL.mul(tWater, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Fe));
-		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), FL.array(MT.MartianVitriol    .liquid(U * 6, T), FL.mul(tWater, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.Fe, 2*U3));
+		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), FL.array(MT.MartianVitriol    .liquid(U * 6, T), FL.mul(tWater, 3      )), FL.array(MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)), OM.dust(MT.MeteoricIron, 2*U3));
 		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), FL.array(MT.VitriolOfClay     .liquid(U2*17, T), FL.mul(tWater, 9, 2, T)), FL.array(MT.H2SO4.liquid(21*U2, T)                   ), OM.dust(MT.Al2O3, 5*U2));
 		
 		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), FL.array(MT.ChloroauricAcid   .liquid(U * 6, T), FL.mul(tWater, 9, 2, T)), FL.array(MT.HCl  .gas   ( 8*U , T), MT.O.gas(3*U2, F)), OM.dust(MT.Au));

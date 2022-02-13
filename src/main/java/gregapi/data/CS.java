@@ -798,7 +798,7 @@ public class CS {
 	/** Zero-Length Array to save on Memory. */ public static final byte                    [] ZL_BYTE              = new byte[0];
 	/** Zero-Length Array to save on Memory. */ public static final short                   [] ZL_SHORT             = new short[0];
 	/** Zero-Length Array to save on Memory. */ public static final int                     [] ZL_INTEGER           = new int[0];
-	/** Zero-Length Array to save on Memory. */ public static final long                    [] ZL_LONG              = new long[0];
+	/** Zero-Length Array to save on Memory. */ public static final long                    [] ZL_LONG              = new long[0], L12_LONG_1 = new  long[] {1,1,1,1,1,1,1,1,1,1,1,1};
 	/** Zero-Length Array to save on Memory. */ public static final float                   [] ZL_FLOAT             = new float[0];
 	/** Zero-Length Array to save on Memory. */ public static final double                  [] ZL_DOUBLE            = new double[0];
 	/** Zero-Length Array to save on Memory. */ public static final String                  [] ZL_STRING            = new String[0];
@@ -1155,9 +1155,9 @@ public class CS {
 	, NBT_NUCLEAR_SELF              = "gt.nuclear.self"             // Number
 	, NBT_NUCLEAR_OTHER             = "gt.nuclear.other"            // Number
 	, NBT_NUCLEAR_DIV               = "gt.nuclear.div"              // Number
-	, NBT_NUCLEAR_MAX               = "gt.nuclear.max"				// Number
-	, NBT_NUCLEAR_MOD               = "gt.nuclear.mod"				// Number
-	, NBT_NUCLEAR_LOSS				= "gt.nuclear.loss"				// Number
+	, NBT_NUCLEAR_MAX               = "gt.nuclear.max"              // Number
+	, NBT_NUCLEAR_MOD               = "gt.nuclear.mod"              // Number
+	, NBT_NUCLEAR_LOSS              = "gt.nuclear.loss"             // Number
 	, NBT_DURABILITY                = "gt.durability"               // Number
 	, NBT_MAXDURABILITY             = "gt.maxdurability"            // Number
 	, NBT_QUALITY                   = "gt.quality"                  // Byte
