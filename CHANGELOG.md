@@ -36,6 +36,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Molten Thorium Salt is now slightly cheaper to produce and able to be produced with all sizes of dust.
 [ADDED] A config option (EasyU235Extraction) to enable centrifuging U-238 from refined uranium ore. Disabled by default.
 [ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
+[FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
 
 
 6.14.23:
