@@ -24,7 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Breeder rods now have a new stat, the neutron loss, which gets subtracted from any amount of neutrons put onto the rod from any side.
 [CHANGED] Removed exponentially scaling bonus neutrons on breeder rods completely. The number of neutrons needed for any breeder rod got rebalanced for these system changes.
 [CHANGED] Breeding now produces "enriched" rods rather than fuel rods directly. This allows for slightly easier and less tedious automation. Enriched rods will like breeder rods output only half the heat, but have no neutron loss, which allows detecting that a breeder rod turned into an enriched rod.
-[ADDED] Lithium-6 breeder rod, breeding into Tritium.
+[ADDED] Lithium breeder rod, breeding into Tritium.
 [NOTE] Reactor designs with coolants other than Industrial Coolant, Distilled Water, Semiheavy Water, Molten LiCl or Molten Thorium Salt may require changes to accommodate the following stat changes. 
 [CHANGED] Cobalt-60 fuel rod now has an emission of zero, making it useless for power production.
 [CHANGED] Output of better nuclear fuel from processing depleted fuel rods slightly halved, now six depleted rods will allow you to get a new better one.
