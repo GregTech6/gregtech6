@@ -38,6 +38,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
 [FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
 [ADDED] 9 Guide Books for designing and operating the fission reactors and another less helpful one about fission reactors.
+[CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.
 
 
 6.14.23:
