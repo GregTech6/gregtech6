@@ -10,7 +10,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.24: (Not released yet, released whenever it needs to be)
-[NOTE] Erik3003 changed how durability loss of Reactor Rods works, and how Breeder Rods work. Nothing should be able to explode from this already tested change.
+[WARNING] Helium, Molten Tin and Molten Sodium as a reactor coolant has been buffed, your old reactor designs using these coolants might be able to "explode" (reactor explosions are still disabled, they will just delete their inventory) when running. Shut those reactors down before updating and evaluate that they will explode before turning them back on. Reactors running other coolants are not in danger of exploding, but might not produce as many neutrons as before.
+[NOTE] Neutrons needed for breeder rods got reduced, but this change is not retroactive, already crafted breeder rods might take a good bit longer to breed.
 [FIXED] OpenComputers did not accept Electric GT6 Power even though it should, but ONLY if Galacticraft or Funky Locomotion were installed. But now it works.
 [FIXED] Tools of other Mods being single use on NON-GT6 Stuff too, instead of only being single use on GT6 Stuff.
 [FIXED] A Bug with Bedrock Fluid Springs also spawning in Void Worlds.
@@ -18,6 +19,26 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Shredder now has better Output Management for certain things.
 [CHANGED] You can get Niobium from smelting Coltan or Columbite now.
 [ADDED] Mass Storages and Item Barrels can now bundle and unbundle bare GT6 Wires. (Wires does NOT mean Cables!)
+[CHANGED] Fuel rod maximum stat now relates to the number of neutrons on a fuel rod rather than its neutron output.
+[NOTE] Because of changes to the fission breeding system, old fully automatic breeder reactor designs might not work anymore. There is however no risk of "explosions" from this change.
+[CHANGED] Breeder rods now have a new stat, the neutron loss, which gets subtracted from any amount of neutrons put onto the rod from any side.
+[CHANGED] Removed exponentially scaling bonus neutrons on breeder rods completely. The number of neutrons needed for any breeder rod got rebalanced for these system changes.
+[CHANGED] Breeding now produces "enriched" rods rather than fuel rods directly. This allows for slightly easier and less tedious automation. Enriched rods will like breeder rods output only half the heat, but have no neutron loss, which allows detecting that a breeder rod turned into an enriched rod.
+[ADDED] Lithium breeder rod, breeding into Tritium.
+[NOTE] Reactor designs with coolants other than Industrial Coolant, Distilled Water, Semiheavy Water, Molten LiCl or Molten Thorium Salt may require changes to accommodate the following stat changes. 
+[CHANGED] Cobalt-60 fuel rod now has an emission of zero, making it useless for power production.
+[CHANGED] Output of better nuclear fuel from processing depleted fuel rods slightly halved, now six depleted rods will allow you to get a new better one.
+[CHANGED] Depleted Co-60 rods now processes into Thorium (instead of U-238), Depleted Naquadria now processes into Co-60 (instead of Thorium). 
+[CHANGED] Heavy Water/Tritiated Water as a reactor coolant will now reduce the neutron maximum of fuel rods in it by 8/16 times. This allows for building much faster burner reactors.
+[CHANGED] Carbon Dioxide as a reactor coolant now doesn't increase the factor of fuel rods inside anymore, now just offering an increase to the self stat.
+[CHANGED] Helium as a reactor coolant now doesn't decrease the factor of fuel rods inside as well as not increasing the self stat anymore, now just offering a lower emission stat.
+[CHANGED] Molten Tin/Molten Sodium as a reactor coolant will now increase the neutron maximum of fuel rods in it in addition to their previous effects.
+[CHANGED] Molten Thorium Salt is now slightly cheaper to produce and able to be produced with all sizes of dust.
+[ADDED] A config option (EasyU235Extraction) to enable centrifuging U-235 from refined uranium ore. Disabled by default.
+[ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
+[FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
+[ADDED] 9 Guide Books for designing and operating the fission reactors and another less helpful one about fission reactors.
+[CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.
 
 
 6.14.23:

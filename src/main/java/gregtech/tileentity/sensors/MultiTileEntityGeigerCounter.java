@@ -52,10 +52,8 @@ public class MultiTileEntityGeigerCounter extends MultiTileEntitySensorTE {
 	
 	@Override
 	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
-		// TODO: Remove special case for Coolant Reactor once durability system is forwarded to it
 		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
 			MultiTileEntityReactorCore TE = (MultiTileEntityReactorCore)aDelegator.mTileEntity;
-			if (FL.Coolant_IC2.is(TE.mTanks[0])) return TE.mTanks[0].getCapacity();
 			int tMaximum = 0;
 			tMaximum += TE.slotHas(0) && ST.item(TE.slot(0)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(0))).getReactorRodNeutronMaximum(TE, 0, TE.slot(0)) : 0;
 			if (TE instanceof MultiTileEntityReactorCore2x2) {
