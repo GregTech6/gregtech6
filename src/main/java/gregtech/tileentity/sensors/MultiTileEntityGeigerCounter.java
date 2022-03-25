@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,7 +22,6 @@ package gregtech.tileentity.sensors;
 import static gregapi.data.CS.*;
 
 import gregapi.data.BI;
-import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.item.IItemReactorRod;
 import gregapi.old.Textures;

@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Shredder now has better Output Management for certain things.
 [CHANGED] You can get Niobium from smelting Coltan or Columbite now.
 [ADDED] Mass Storages and Item Barrels can now bundle and unbundle bare GT6 Wires. (Wires does NOT mean Cables!)
+All the Reactor Stuff Erik did:
 [CHANGED] Fuel rod maximum stat now relates to the number of neutrons on a fuel rod rather than its neutron output.
 [NOTE] Because of changes to the fission breeding system, old fully automatic breeder reactor designs might not work anymore. There is however no risk of "explosions" from this change.
 [CHANGED] Breeder rods now have a new stat, the neutron loss, which gets subtracted from any amount of neutrons put onto the rod from any side.

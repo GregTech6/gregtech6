@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
@@ -36,6 +31,11 @@ import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
+@SuppressWarnings("ALL")
 public class Loader_Books implements Runnable {
 	@Override
 	public void run() {
@@ -469,8 +469,9 @@ public class Loader_Books implements Runnable {
 		});
 		
 		//-----
-
-		UT.Books.createWrittenBook("Manual_Reactors_1", "Introduction and Safety Instructions | Fission Reactors I", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		
+		UT.Books.createWrittenBook("Manual_Reactors", "Fission Reactor Manual", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32005), new String[] {
+		"\n\n===================\nIntroduction and Safety Instructions\n===================\n",
 		"[Transcript]\nCongratulations [Insert employee name] for graduating in nuclear physics!\nYou are now fit for your job at Apature Atomics as a reactor operator.",
 		"First, I'll introduce you to what you'll be operating, hopefully without unplanned explosions:\nThe core of any fission reactor, the 2x2 nuclear reactor core.",
 		"Some of our engineers would argue that it is just a metal box with four pistons to push the rods either in or up, that we've gone overboard with the processing power on these puppies, that four damn wires would have been sufficient.",
@@ -482,10 +483,8 @@ public class Loader_Books implements Runnable {
 		"In the unlikely case you might stumble upon such a core, which won't happen, if they existed we would have already send them to robot hell were they would reside in constant agony, which they don't because they don't exist.",
 		"Anyway, safety, I'm obliged to give you this information, so I'll go over it quickly: Wear you radiation hazard suit at all times. Do not explode the reactor core. Do not explode. Do not cause a nuclear meltdown.",
 		"Do not deny causing a nuclear meltdown in case of a nuclear meltdown. Do not touch the running reactor. Do not break the running reactor. Do not lick the running reactor. Do not let flamingos get near the reactor.",
-		"Do not eat the nuclear fuel. Do not cook on the nuclear reactor. In case of tumors, do eat the nuclear fuel. That should be everything you need to know, now go at it and make some science!"
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_2", "Reactor Operation Basics | Fission Reactors II", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Do not eat the nuclear fuel. Do not cook on the nuclear reactor. In case of tumors, do eat the nuclear fuel. That should be everything you need to know, now go at it and make some science!",
+		"\n\n===================\nReactor Operation Basics\n===================\n",
 		"The Nuclear Reactor Core (2x2) has slots for four reactor rods. Rods inserted into the reactor will only directly interact with directly adjacent reactor rods, also including adjacent slots on different, but adjacent, reactor core blocks.",
 		"Rods can be manually inserted into a slot by right clicking it with the rod. Right clicking a slot with Pincers will pull out the reactor rod inside the slot.",
 		"The reactor rods can also be automatically inserted on the top side when the reactor block is off. It is also possible to automatically extract them from the bottom side when the block is off.",
@@ -499,10 +498,8 @@ public class Loader_Books implements Runnable {
 		"100% of the percentage modes of the sensor refers to the sum of neutron maximums of all fuel rods inside the reactor core. A reactor will also emit radiation with a ranged based on the highest number of neutrons on any reactor rod.",
 		"Building the reactor far away from any settlements and wearing a radiation hazard suit is strongly advised. Any reactor core can store up to 10_000 HU without exploding. Any stored HU are directly used to convert cold into hot coolant.",
 		"Should the number of stored HU exceed 10_000, which can happen when running out of coolant, the reactor will violently disintegrate.",
-		"Should there be no space for the produced hot coolant remaining in the reactor, the reactor will be undergo rapid unplanned disassembly."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_3", "Guide to Reactor Rods | Fission Reactors III", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Should there be no space for the produced hot coolant remaining in the reactor, the reactor will be undergo rapid unplanned disassembly.",
+		"\n\n===================\nGuide to Reactor Rods\n===================\n",
 		"Empty Reactor Rod\n===================\nDoes nothing when inside a reactor. Doesn't accept neutrons.",
 		"Fuel Rod\n===================\nFuel rods emit Neutrons onto themselves and adjacent reactor rods. They have several stats that vary based on the material of the rod and the coolant that is used in the reactor.",
 		"The Self stat describes how many Neutrons the rod outputs onto its own slot.\nThe Emission stat describes how many Neutrons it outputs onto each adjacent reactor rod.",
@@ -519,10 +516,8 @@ public class Loader_Books implements Runnable {
 		"making them deplete four times faster and unable to put neutrons onto breeder rods. Moderated fuel rods will also make adjacent active fuel rods moderated.",
 		"Breeder Rod\n===================\nEach tick, the number of neutrons on this rod get subtracted from the neutrons needed. If the needed neutrons reach zero, the rod will turn into an enriched rod.",
 		"Breeder rods will not accept neutrons from moderated fuel rods. The loss stat gets subtracted from each number of neutrons emitted onto this rod,",
-		"meaning the loss applies to the neutrons coming from any fuel rod emitting onto it and not just once for the breeder rod."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_4", "Guide to Reactor Coolants | Fission Reactors IV", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"meaning the loss applies to the neutrons coming from any fuel rod emitting onto it and not just once for the breeder rod.",
+		"\n\n===================\nGuide to Reactor Coolants\n===================\n",
 		"Distilled Water\n===================\nConverts directly into steam, doesn't need a heat exchanger. 80 HU turns 1L of Distilled Water into 160L of Steam. Moderates any fuel rods inside. No fuel rod stat changes.",
 		"Semi-heavy Water\n===================\n40 HU turns 1L of Semi-heavy Water into 1L of Hot Semi-heavy Water. Moderates any fuel rods inside. No fuel rod stat changes.",
 		"Heavy Water\n===================\n50 HU turns 1L of Heavy Water into 1L of Hot Heavy Water. Moderates any fuel rods inside. Divides maximum stat of fuel rods by 8.",
@@ -534,10 +529,8 @@ public class Loader_Books implements Runnable {
 		"Molten Lithium Chloride\n===================\n15 HU turns 1L of Molten Lithium Chloride into 1L of Hot Molten Lithium Chloride. Multiplies self stat of fuel rods by 5. Divides emission stat of fuel rods by 2. Increases maximum stat of fuel rods by 25%",
 		"Molten Tin\n===================\n40 HU turns 1L of Molten Tin into 1L of Hot Molten Tin. Neutrons only convert only to a third of the HU. Decreases divisor of factor stat of fuel rods by 1.",
 		"Molten Sodium\n===================\n30 HU turns 1L of Molten Sodium into 1L of Hot Molten Sodium. Neutrons only convert only to a sixth of the HU. Decreases divisor of factor stat of fuel rods by 1.",
-		"Molten Thorium Salt\n===================\n10_000 HU turns 1L of Molten Thorium Salt into 1L of Molten Lithium Chloride. Sets self stat of fuel rods to 0. Divides emission stat of fuel rods by 2. Multiplies maximum stat of fuel rods by 4."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_5", "Stable Reactor Design Guidelines | Fission Reactors V", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Molten Thorium Salt\n===================\n10_000 HU turns 1L of Molten Thorium Salt into 1L of Molten Lithium Chloride. Sets self stat of fuel rods to 0. Divides emission stat of fuel rods by 2. Multiplies maximum stat of fuel rods by 4.",
+		"\n\n===================\nStable Reactor Design Guidelines\n===================\n",
 		"Stable nuclear fission reactors, also commonly called subcritical reactors, are a design of fission reactor that have no critical fuel rods. This means that the neutron count and thus heat output doesn't constantly increase while the reactor is running.",
 		"The advantages of stable reactors are:\n- No external control required\n- Stable neutron/HU output\n- Increased Safety\n- Easy to design\n- Function with any nuclear fuel",
 		"Disadvantages of stable reactors are:\n- Not very fuel efficient\n- Only really usable as power generating reactors\n- Generally bigger than comparable critical reactors",
@@ -548,10 +541,8 @@ public class Loader_Books implements Runnable {
 		"You can generally adhere to these four rules to get your stable reactor to the best efficiency:\nIf the fuel used has a factor lesser than 1/8, surrounding fuel rods with absorber rods yields the greatest HU output.",
 		"If the fuel used has a factor of 1/8, surrounding your fuel rods with absorber, reflector or other fuel rods yields to the exact same HU output.",
 		"If the fuel used has a factor greater than 1/8, surrounding your fuel rods with reflectors or other fuel rods yields the greatest HU output.",
-		"Don't use water based coolant or moderator rods in stable reactors, as they massively decrease the duration and therefore efficiency of fuel rods by moderating them without any real benefit in stable reactor designs."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_6", "Critical Reactor Design Guidelines | Fission Reactors VI", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Don't use water based coolant or moderator rods in stable reactors, as they massively decrease the duration and therefore efficiency of fuel rods by moderating them without any real benefit in stable reactor designs.",
+		"\n\n===================\nCritical Reactor Design Guidelines\n===================\n",
 		"Critical nuclear fission reactors, also commonly called supercritical reactors, are a design of fission reactor that have critical fuel rods. This means that the neutron count and thus heat output constantly increases while the reactor is running.",
 		"The advantages of critical reactors are:\n- Greater efficiency\n- Completely configurable neutron output\n- Generally smaller than comparable stable reactors\n- Able to work as burner or breeder reactors",
 		"Disadvantages of stable reactors are:\n- Need external control\n- Constantly fluctuation HU output\n- Harder to design\n- Decreased safety\n- Need fuel with higher factors",
@@ -563,10 +554,8 @@ public class Loader_Books implements Runnable {
 		"For the greatest efficiency you want your neutron count one the fuel rod stay beneath the maximum stat of that fuel rod at all times, while coming as close to it as you can.",
 		"You'd also want the neutron count to shrink as little as possible when controlling the reactor, so your average HU output stays as high as possible.",
 		"Therefore you need a fuel with a factor of at least 1/4 to be able to build a critical reactor without the use of moderator rods.",
-		"The easiest to acquire fuel that fulfills this condition is Uranium 235. You can get it by processing Uraninite. When using moderator rods the fuel can have a factor down to 1/16, so using Uranium 238 is possible."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_7", "Burner Reactor Design Guidelines | Fission Reactors VII", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"The easiest to acquire fuel that fulfills this condition is Uranium 235. You can get it by processing Uraninite. When using moderator rods the fuel can have a factor down to 1/16, so using Uranium 238 is possible.",
+		"\n\n===================\nBurner Reactor Design Guidelines\n===================\n",
 		"Burner Reactors are a type of nuclear fission design, with the purpose of burning through fuel rods as quickly as possible, allowing the depleted fuel rods to be processed for better nuclear fuel materials.",
 		"There are two ways to make fuel rod depletion significantly quicker:\n- Moderating the fuel rod\n- Running above the neutron maximum",
 		"A fuel rod can be moderated by either by having it placed in reactor cooled with Distilled/Semi-Heavy/Heavy/Tritiated Water or placing it next to a moderator rod or moderated fuel rod. When moderated, the fuel rod will deplete four times faster.",
@@ -577,10 +566,8 @@ public class Loader_Books implements Runnable {
 		"Instead of significantly increasing the neutron count on the fuel rod, it is also possible to lower the neutron maximum to take advantage of this effect.",
 		"This can be easily done by using either Heavy or Tritiated Water, which lower the maximum stat by 8 and 16 times respectively and additionally also moderate all fuel rods because they are water based.",
 		"To archive really high neutron counts, it is advisable to utilize a critical reactor design, though it is also feasible to run a burner reactor as a stable design.",
-		"Cobalt 60, while being almost useless as a reactor fuel itself, is really easy to burn into Thorium, which is much more useful."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_8", "Breeder Reactor Design Guidelines | Fission Reactors VIII", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Cobalt 60, while being almost useless as a reactor fuel itself, is really easy to burn into Thorium, which is much more useful.",
+		"\n\n===================\nBreeder Reactor Design Guidelines\n===================\n",
 		"Breeder reactors have the goal of turning breeder rods into enriched rods. They allow getting really good nuclear fuel from lesser, more abundant fuels, like Thorium and Uranium 238.",
 		"However while similar to burner reactors, they are much harder to build, requiring a non-moderated, critical reactor design. Breeder rods have a stat called loss. It describes how many neutrons are subtracted from any amount of neutrons put onto it.",
 		"So when you have a breeder rod with a loss of 500 neutrons and try to emit 300 neutrons onto it from a single adjacent fuel rod, the breeder rod receive no neutrons, which means that the breeding process won't be advanced.",
@@ -593,10 +580,8 @@ public class Loader_Books implements Runnable {
 		"Molten metal coolants like Molten Tin or Molten Sodium are therefore best for breeder reactors, since they raise the factor of fuel rods inside,",
 		"making breeding possible with more common fuel materials like Uranium 235 or allowing better fuel materials to breed more breeder rods at once.",
 		"They also have the advantage of lowering the HU output of the neutrons, which means higher neutron counts are possible with less cooling.",
-		"Emitting higher neutrons counts onto the breeder rods amounts to a quicker and also more efficient breeding process, as the neutron loss would be applied over a shorter time, resulting in fewer neutrons lost in total."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_9", "Thorium Salt Reactor Design Guidelines | Fission Reactors IX", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Emitting higher neutrons counts onto the breeder rods amounts to a quicker and also more efficient breeding process, as the neutron loss would be applied over a shorter time, resulting in fewer neutrons lost in total.",
+		"\n\n===================\nThorium Salt Reactor Design Guidelines\n===================\n",
 		"Thorium Salt is a really special kind of coolant. In fact, it can't even be considered a coolant, as it doesn't get converted into an energy carrying liquid.",
 		"Instead it can be seen more of as a fuel itself, since it turns into Molten Lithium Chloride, meaning that essentially the thorium inside the thorium salt gets used up as a fuel.",
 		"Thorium salt also depletes really slowly into Molten Lithium Chloride, only for every 10_000 neutrons one liter of Thorium Salt gets turned into Molten Lithium Chloride.",
@@ -605,10 +590,8 @@ public class Loader_Books implements Runnable {
 		"A reactor design utilizing Thorium Salt needs to be using at least one other, additional coolants instead.",
 		"The reactor core filled with Thorium Salt would house the fuel rods,  while adjacent reactor cores filled with another coolant would capture the neutrons emitted from that reactor with neutron absorber rods.",
 		"Since the Thorium Salt main advantage is how it massively raises the maximum stat of fuel rods inside, it generally only really makes sense as a critical reactor design.",
-		"Critical Thorium Salt reactors are the most efficient power generating reactors possible, but also among the hardest to build."
-		});
-
-		UT.Books.createWrittenBook("Manual_Reactors_10", "Advanced Fission Reactors | Fission Reactors X", "Apature Atomics", ST.make(ItemsGT.BOOKS, 1, 32004), new String[] {
+		"Critical Thorium Salt reactors are the most efficient power generating reactors possible, but also among the hardest to build.",
+		"\n\n===================\nAdvanced Fission Reactors\n===================\n",
 		"This book will give you some tips and the mathematical formulas to build the most advanced and efficient reactors possible.",
 		"Calculating the neutron emission\n===================\nA fuel rod will emit more neutrons onto its neighbors when it has a higher neutron count on it.",
 		"The exact amount of neutrons any fuel rod would emit onto one adjacent neighbor can be calculated like this:\n\ne_n = e + ((n – s) * f)",
@@ -621,7 +604,7 @@ public class Loader_Books implements Runnable {
 		"rather than the moderator rod itself to control the neutron counts. Robot arms allow for precise automation of reactor cores.\nFilters can be used for easier automation of burner and breeder reactors.",
 		"A higher self stat is bad in critical reactor designs, as contributes to the maximum without effecting the neutron emission.\nThe emission stat is mostly irrelevant for efficiency in critical reactor designs."
 		});
-
+		
 		//-----
 		
 		for (int i = 1; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) if (OreDictMaterial.MATERIAL_ARRAY[i] != null && OreDictMaterial.MATERIAL_ARRAY[i].mID == i && (!OreDictMaterial.MATERIAL_ARRAY[i].mHidden || OreDictMaterial.MATERIAL_ARRAY[i].mDescription != null)) {

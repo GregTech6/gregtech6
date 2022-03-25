@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,7 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -36,6 +32,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
+
+import static gregapi.data.CS.*;
 
 
 public class Loader_Loot implements Runnable {
@@ -140,16 +138,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Steam"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Tools"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Reactors_1"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_2"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_3"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_4"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_5"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_6"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_7"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_8"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_9"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Reactors_10"));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Reactors"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
@@ -318,16 +307,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Printer"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Steam"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Random"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_1"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_2"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_3"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_4"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_5"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_6"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_7"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_8"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_9"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors_10"));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 1,10, ST.make(ItemsGT.BOOKS, 1, 32002));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 9, IL.Paper_Magic_Research_0.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 8, IL.Paper_Magic_Research_1.get(1));

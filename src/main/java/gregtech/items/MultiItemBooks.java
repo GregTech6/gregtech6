@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,7 @@
 
 package gregtech.items;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
-import gregapi.data.CS.BooksGT;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.TC;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
@@ -43,6 +32,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 public class MultiItemBooks extends MultiItemRandom {
 	public MultiItemBooks(String aModID, String aUnlocalized) {
@@ -64,8 +58,10 @@ public class MultiItemBooks extends MultiItemRandom {
 		
 		BooksGT.BOOK_REGISTER.put(addItem(32002, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
 		BooksGT.BOOK_REGISTER.put(addItem(32003, "Material Dictionary"     , "Contains Data about a Material"  , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32004, "Large Book"              , "With a Radiation Symbol on it"   , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
-
+		
+		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                    , "With a Radiation Symbol on it"   , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"              , "With a Radiation Symbol on it"   , OD.bookWritten, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
+		
 		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
 		CR.shapeless(ST.make(this, 1,     2), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
