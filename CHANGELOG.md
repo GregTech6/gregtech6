@@ -38,7 +38,7 @@ All the Reactor Stuff Erik did:
 [ADDED] A config option (EasyU235Extraction) to enable centrifuging U-235 from refined uranium ore. Disabled by default.
 [ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
 [FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
-[ADDED] 9 Guide Books for designing and operating the fission reactors and another less helpful one about fission reactors.
+[ADDED] Guide Book for designing and operating the fission reactors.
 [CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.
 
 
