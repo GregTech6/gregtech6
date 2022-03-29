@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,13 @@
 
 package gregtech.blocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import gregapi.block.BlockBaseMeta;
 import gregapi.block.IBlockOnWalkOver;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IRenderedBlock;
-import gregapi.render.IRenderedBlockObject;
-import gregapi.render.ITexture;
-import gregapi.render.RendererBlockTextured;
+import gregapi.render.*;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -47,6 +38,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRenderedBlock {
 	public BlockPath(String aUnlocalised) {
@@ -118,6 +113,17 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 		return aWorld.getBlock(aX+1, aY-1, aZ) == this || aWorld.getBlock(aX, aY-1, aZ+1) == this || aWorld.getBlock(aX-1, aY-1, aZ) == this || aWorld.getBlock(aX, aY-1, aZ-1) == this;
 	}
 	
+	@Override
+	public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
+		aEntity.motionX *= 1.1; aEntity.motionZ *= 1.1;
+		// Convert Et Futurum Grass Paths to this when adjacent.
+		if (IL.EtFu_Path.exists()) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+			if (IL.EtFu_Path.equal(aWorld.getBlock(aX+i, aY+j, aZ+k))) {
+				aWorld.setBlock(aX+i, aY+j, aZ+k, this, 0, 2);
+			}
+		}
+	}
+	
 	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack                                                                     ) {return T;}
 	@Override public boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {return T;}
 	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack                                                                     ) {setBlockBounds(0, 0, 0, 1,                                                PIXELS_NEG[1] , 1); return T;}
@@ -127,7 +133,6 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack                                                                  ) {return null;}
 	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ                                       ) {return null;}
 	
-	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {aEntity.motionX *= 1.1; aEntity.motionZ *= 1.1;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH_TOP:Textures.BlockIcons.DIRTS[aMeta % 16]).getIcon(0);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+(isHalfBlock(aWorld, aX, aY, aZ)?0.5:1), aZ+1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool (World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+(isHalfBlock(aWorld, aX, aY, aZ)?0.5:1), aZ+1);}
