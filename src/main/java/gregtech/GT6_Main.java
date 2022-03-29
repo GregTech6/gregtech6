@@ -115,8 +115,9 @@ public class GT6_Main extends Abstract_Mod {
 		gt_proxy.mDisableVanillaLakes    = ConfigsGT.GREGTECH.get("general", "DisableVanillaLakes"   , T);
 		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
 		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);
-		BlockSwamp.FLOW_ON_WATER         = ConfigsGT.GREGTECH.get("general", "SwampBlocksFlowOnWater", T);
-		BlockRiver.FLOW_ON_WATER         = ConfigsGT.GREGTECH.get("general", "RiverBlocksFlowOnWater", T);
+		BlockOcean.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "OceanBlocksFlowOutFar" , F);
+		BlockSwamp.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "SwampBlocksFlowOutFar" , F);
+		BlockRiver.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "RiverBlocksFlowOutFar" , F);
 		
 		if (ConfigsGT.GREGTECH.get("general", "IncreaseDungeonLoot", T)) {
 			ChestGenHooks tChest;

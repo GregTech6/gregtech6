@@ -63,7 +63,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOut) {
 		super(aFluid, Material.water);
 		mFluid = aFluid;
-		quantaPerBlock = (aFlowsOut ? 8 : 2);
+		quantaPerBlock = (aFlowsOut ? 8 : 3);
 		quantaPerBlockFloat = quantaPerBlock;
 		setResistance(30);
 		setBlockName(aName);

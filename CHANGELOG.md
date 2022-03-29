@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A Bug with Bedrock Fluid Springs also spawning in Void Worlds.
 [FIXED] Some weird Bug with GT6 Items and Creative Tabs.
 [FIXED] Grass Path conversion from Et Futurum to GT6 was a little bit iffy.
+[CHANGED] Waterlike Non-Source Blocks will now only spread 2 instead of 7 Blocks. This should reduce Cave Flooding in Non-Ocean Biomes.
 [CHANGED] Shredder now has better Output Management for certain things.
 [CHANGED] You can get Niobium from smelting Coltan or Columbite now.
 [ADDED] Mass Storages and Item Barrels can now bundle and unbundle bare GT6 Wires. (Wires does NOT mean Cables!)

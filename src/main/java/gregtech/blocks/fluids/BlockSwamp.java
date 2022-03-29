@@ -40,10 +40,10 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class BlockSwamp extends BlockWaterlike {
-	public static boolean PLACEMENT_ALLOWED = F, FLOW_ON_WATER = T;
+	public static boolean PLACEMENT_ALLOWED = F, FLOWS_OUT = T;
 	
 	public BlockSwamp(String aName, Fluid aFluid) {
-		super(aName, aFluid, FLOW_ON_WATER);
+		super(aName, aFluid, FLOWS_OUT);
 		tickRate = 10;
 	}
 	
