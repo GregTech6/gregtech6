@@ -124,8 +124,9 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 			return;
 		}
 		
-		int tFlowMeta  = (mFlowsOnWater && aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
+		int tFlowMeta  = (aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
 		if (tFlowMeta >= quantaPerBlock) return;
+		if (mFlowsOnWater) tFlowMeta = quantaPerBlock-1;
 		
 		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
 		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
