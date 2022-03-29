@@ -60,10 +60,10 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	public final Fluid mFluid;
 	
-	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOnWater) {
+	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOut) {
 		super(aFluid, Material.water);
 		mFluid = aFluid;
-		quantaPerBlock = (aFlowsOnWater ? 2 : 8);
+		quantaPerBlock = (aFlowsOut ? 8 : 2);
 		quantaPerBlockFloat = quantaPerBlock;
 		setResistance(30);
 		setBlockName(aName);
@@ -171,7 +171,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	public int getQuantaValue(IBlockAccess aWorld, int aX, int aY, int aZ) {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == NB) return 0;
-		if (aBlock instanceof BlockWaterlike) return quantaPerBlock - aWorld.getBlockMetadata(aX, aY, aZ);
+		if (aBlock == this) return quantaPerBlock - aWorld.getBlockMetadata(aX, aY, aZ);
+		if (aBlock instanceof BlockWaterlike) return 8-aWorld.getBlockMetadata(aX, aY, aZ);
 		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) return 8-aWorld.getBlockMetadata(aX, aY, aZ);
 		return -1;
 	}
