@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,11 @@
 
 package gregtech.tileentity.plants;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanPlace;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnOxygenRemoved;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.BushesGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.OP;
@@ -57,6 +51,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -107,7 +105,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			if (mBlockUpdated || SERVER_TIME % 128 == 0) {
+			if (mBlockUpdated || SERVER_TIME % 128 == 64) {
 				if (!WD.oxygen(worldObj, xCoord, yCoord, zCoord)) {
 					setToAir();
 					return;
@@ -125,7 +123,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 						mSpeed = ((MultiTileEntityBush)tTileEntity).mSpeed;
 					} else {
 						mSpeed = 0;
-						popOff();
+						if (getBlockAtSide(mFacing) != getBlockOffset(0, 0, 0)) popOff();
 						return;
 					}
 				} else {

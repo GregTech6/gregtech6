@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,38 +19,19 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.BlockBase;
 import gregapi.block.metatype.BlockStones;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.TD;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
-import gregapi.worldgen.StoneLayer;
-import gregapi.worldgen.StoneLayerOres;
-import gregapi.worldgen.WorldgenFlowers;
-import gregapi.worldgen.WorldgenOresBedrock;
-import gregapi.worldgen.WorldgenOresLarge;
-import gregapi.worldgen.WorldgenOresSmall;
-import gregapi.worldgen.WorldgenOresVanilla;
-import gregapi.worldgen.WorldgenStone;
+import gregapi.worldgen.*;
 import gregapi.worldgen.dungeon.WorldgenDungeonGT;
 import gregtech.worldgen.*;
 import gregtech.worldgen.aether.WorldgenAetherRocks;
 import gregtech.worldgen.alfheim.WorldgenAlfheimRocks;
-import gregtech.worldgen.center.WorldgenBeacon;
-import gregtech.worldgen.center.WorldgenCenterBiomes;
-import gregtech.worldgen.center.WorldgenNexus;
-import gregtech.worldgen.center.WorldgenStreets;
-import gregtech.worldgen.center.WorldgenTesting;
+import gregtech.worldgen.center.*;
 import gregtech.worldgen.erebus.WorldgenErebusRocks;
 import gregtech.worldgen.mars.WorldgenMarsRocks;
 import gregtech.worldgen.moon.WorldgenMoonRocks;
@@ -63,6 +44,8 @@ import gregtech.worldgen.planets.WorldgenPlanetRocks;
 import gregtech.worldgen.tree.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -193,9 +176,9 @@ public class Loader_Worldgen implements Runnable {
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Kimberlite
-		, new StoneLayerOres(MT.Diamond                 ,U128,  0, 12)
-		, new StoneLayerOres(MT.Spinel                  , U64, 24, 48, BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.BalasRuby               , U64, 24, 48, BIOMES_JUNGLE)
+		, new StoneLayerOres(MT.Diamond                 , U48,  0, 12)
+		, new StoneLayerOres(MT.Spinel                  , U48, 24, 48, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.BalasRuby               , U48, 24, 48, BIOMES_JUNGLE)
 		));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt, MT.STONES.Basalt, ST.block(MD.GaSu, "basalt")));
