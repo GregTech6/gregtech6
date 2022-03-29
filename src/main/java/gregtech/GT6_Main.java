@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,27 +19,9 @@
 
 package gregtech;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map.Entry;
-
 import appeng.api.AEApi;
-import cpw.mods.fml.common.LoadController;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppedEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
@@ -50,20 +32,7 @@ import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.behaviors.Behavior_Turn_Into;
@@ -81,18 +50,14 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.blocks.fluids.BlockOcean;
+import gregtech.blocks.fluids.BlockRiver;
+import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.compat.*;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.entities.projectiles.EntityArrow_Potion;
 import gregtech.items.tools.early.GT_Tool_Scoop;
 import gregtech.loaders.a.*;
-import gregtech.loaders.b.Loader_Books;
-import gregtech.loaders.b.Loader_Fuels;
-import gregtech.loaders.b.Loader_ItemIterator;
-import gregtech.loaders.b.Loader_Late_Items_And_Blocks;
-import gregtech.loaders.b.Loader_MultiTileEntities;
-import gregtech.loaders.b.Loader_OreProcessing;
-import gregtech.loaders.b.Loader_Worldgen;
+import gregtech.loaders.b.*;
 import gregtech.loaders.c.*;
 import ic2.core.Ic2Items;
 import net.minecraft.block.Block;
@@ -107,6 +72,13 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -143,6 +115,8 @@ public class GT6_Main extends Abstract_Mod {
 		gt_proxy.mDisableVanillaLakes    = ConfigsGT.GREGTECH.get("general", "DisableVanillaLakes"   , T);
 		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
 		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);
+		BlockSwamp.FLOW_ON_WATER         = ConfigsGT.GREGTECH.get("general", "SwampBlocksFlowOnWater", T);
+		BlockRiver.FLOW_ON_WATER         = ConfigsGT.GREGTECH.get("general", "RiverBlocksFlowOnWater", T);
 		
 		if (ConfigsGT.GREGTECH.get("general", "IncreaseDungeonLoot", T)) {
 			ChestGenHooks tChest;

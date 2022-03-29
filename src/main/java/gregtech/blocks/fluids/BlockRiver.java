@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.blocks.fluids;
 
-import static gregapi.data.CS.*;
-
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.FL;
@@ -35,14 +31,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class BlockRiver extends BlockWaterlike {
-	public static boolean PLACEMENT_ALLOWED = F;
+	public static boolean PLACEMENT_ALLOWED = F, FLOW_ON_WATER = T;
 	
 	public BlockRiver(String aName, Fluid aFluid) {
-		super(aName, aFluid);
+		super(aName, aFluid, FLOW_ON_WATER);
 		tickRate = 20;
 	}
 	

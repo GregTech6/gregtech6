@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregtech.blocks.fluids;
 
-import static gregapi.data.CS.*;
-
-import java.util.Random;
-
 import gregapi.block.IBlockExtendedMetaData;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -37,14 +32,18 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.Fluid;
 
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class BlockSwamp extends BlockWaterlike {
-	public static boolean PLACEMENT_ALLOWED = F;
+	public static boolean PLACEMENT_ALLOWED = F, FLOW_ON_WATER = T;
 	
 	public BlockSwamp(String aName, Fluid aFluid) {
-		super(aName, aFluid);
+		super(aName, aFluid, FLOW_ON_WATER);
 		tickRate = 10;
 	}
 	

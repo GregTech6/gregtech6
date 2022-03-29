@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregtech.blocks.fluids;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
 
 import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
@@ -52,6 +47,11 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -59,10 +59,12 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	public static int WATER_UPDATE_FLAGS = 0;
 	
 	public final Fluid mFluid;
+	public boolean mFlowsOnWater = T;
 	
-	public BlockWaterlike(String aName, Fluid aFluid) {
+	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOnWater) {
 		super(aFluid, Material.water);
 		mFluid = aFluid;
+		mFlowsOnWater = aFlowsOnWater;
 		setResistance(30);
 		setBlockName(aName);
 		ST.register(this, aName, ItemBlock.class);
@@ -122,7 +124,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 			return;
 		}
 		
-		int tFlowMeta  = (aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
+		int tFlowMeta  = (mFlowsOnWater && aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
 		if (tFlowMeta >= quantaPerBlock) return;
 		
 		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
@@ -143,12 +145,12 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 					tOtherDecay = quantaPerBlock - getQuantaValue(aWorld, tX, aY-1, tZ);
 					if (tOtherDecay >= 0) {
 						int tPower = tOtherDecay - (tDecay - quantaPerBlock);
-						rVector = rVector.addVector((tX - aX) * tPower, (aY - aY) * tPower, (tZ - aZ) * tPower);
+						rVector = rVector.addVector((tX - aX) * tPower, 0, (tZ - aZ) * tPower);
 					}
 				}
 			} else if (tOtherDecay >= 0) {
 				int power = tOtherDecay - tDecay;
-				rVector = rVector.addVector((tX - aX) * power, (aY - aY) * power, (tZ - aZ) * power);
+				rVector = rVector.addVector((tX - aX) * power, 0, (tZ - aZ) * power);
 			}
 		}
 		if (aWorld.getBlock(aX, aY+1, aZ) instanceof BlockWaterlike && (
