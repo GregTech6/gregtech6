@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,12 @@
 
 package gregapi.util;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.ItemBlockBase;
 import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -49,11 +39,7 @@ import gregapi.oredict.OreDictManager;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import ic2.api.item.IC2Items;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
-import net.minecraft.block.BlockRailBase;
-import net.minecraft.block.BlockRedstoneTorch;
-import net.minecraft.block.BlockTorch;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -63,13 +49,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryLargeChest;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -79,12 +59,20 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class ST {
 	public static boolean TE_PIPES = F, BC_PIPES = F;
 	
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void checkAvailabilities() {
 		try {
 			cofh.api.transport.IItemDuct.class.getCanonicalName();
@@ -583,6 +571,7 @@ public class ST {
 	}
 	public static int move_(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
 		aCount = Math.min(aCount, aStackFrom.stackSize);
+		if (aCount < 0) return 0;
 		ItemStack tStack = aInventory.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
 		aCount = Math.min(aCount, tStack.stackSize);
@@ -605,6 +594,7 @@ public class ST {
 		if (aStackFrom == aStackTo) return 0;
 		if (aFrom == aTo && aSlotFrom == aSlotTo) return 0;
 		aCount = Math.min(aCount, aStackFrom.stackSize);
+		if (aCount < 0) return 0;
 		ItemStack tStack = aFrom.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
 		aCount = Math.min(aCount, tStack.stackSize);
