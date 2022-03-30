@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,14 @@
 
 package gregapi.tileentity.energy;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.TagData;
 import gregapi.data.MD;
 import gregapi.data.TD;
 import gregapi.util.UT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -37,6 +37,7 @@ public class EnergyCompat {
 	public static boolean RF_ENERGY = F, RF_ENERGY_NEW = F, AE_ENERGY = F, FL_ENERGY = F, IC_ENERGY = F, BB_ENERGY = F, GC_ENERGY = F, BC_LASER = F;
 	
 	/** Gets Called once during postInit to see which Interfaces are there and Classloaded. */
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void checkAvailabilities() {
 		try {
 			com.rwtema.funkylocomotion.blocks.TilePusher                 .class.getCanonicalName();
@@ -83,7 +84,7 @@ public class EnergyCompat {
 	public static boolean isElectricRFReceiver(TileEntity aReceiver) {
 		if (aReceiver == null) return F;
 		String tClass = null;
-		if (MD.OMT.mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
+		if (MD.OMT.mLoaded) {                    tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
 		if (MD.TG .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("techguns"                       )) return T;}
 		if (MD.IE .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("blusunrize.immersiveengineering")) return T;}
 		if (MD.OC .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("li.cil.oc"                      )) return T;}
@@ -179,7 +180,10 @@ public class EnergyCompat {
 			// Voltz Stuff
 			if (BB_ENERGY && aReceiver instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider) {
 				Object tEnergyBuffer = ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aReceiver).getEnergyBuffer(FORGE_DIR[aSide]);
-				if (tEnergyBuffer != null) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.builtbroken.mc.api.energy.IEnergyBuffer)tEnergyBuffer).addEnergyToStorage(UT.Code.bind31(aSize * aAmount) * J_PER_EU, T), aSize * J_PER_EU);
+				if (tEnergyBuffer != null) {
+					//noinspection CastCanBeRemovedNarrowingVariableType
+					return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.builtbroken.mc.api.energy.IEnergyBuffer)tEnergyBuffer).addEnergyToStorage(UT.Code.bind31(aSize * aAmount) * J_PER_EU, T), aSize * J_PER_EU);
+				}
 			}
 			
 			// Electricity alike RF Receivers that are whitelisted for my Power System.
