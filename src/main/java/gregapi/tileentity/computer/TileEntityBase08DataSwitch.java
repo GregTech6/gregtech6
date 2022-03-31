@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.tileentity.computer;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -34,6 +30,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -77,8 +77,10 @@ public abstract class TileEntityBase08DataSwitch extends TileEntityBase07Paintab
 			if (OM.is(OD_USB_STICKS[0], aHeldItem)) {
 				if (aHeldItem.hasTagCompound() && aHeldItem.getTagCompound().hasKey(NBT_USB_TIER)) {
 					setUSBData(aSide, aHeldItem.getTagCompound().getByte(NBT_USB_TIER), aHeldItem.getTagCompound().getCompoundTag(NBT_USB_DATA));
+					playClick();
 				} else {
 					setUSBData(aSide, 0, null);
+					playClick();
 				}
 			} else {
 				openGUI(aPlayer);
