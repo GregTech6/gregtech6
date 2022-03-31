@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.util;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import gregapi.GT_API;
 import gregapi.block.IBlockDebugable;
@@ -35,13 +29,7 @@ import gregapi.block.metatype.BlockMetaType;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.SFX;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.event.BlockScanningEvent;
 import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictMaterial;
@@ -57,12 +45,7 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityDelegating;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
-import gregapi.tileentity.machines.ITileEntityRunningActively;
-import gregapi.tileentity.machines.ITileEntityRunningPassively;
-import gregapi.tileentity.machines.ITileEntityRunningPossible;
-import gregapi.tileentity.machines.ITileEntityRunningSuccessfully;
-import gregapi.tileentity.machines.ITileEntitySwitchableMode;
-import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
+import gregapi.tileentity.machines.*;
 import gregapi.util.UT.Code;
 import gregtech.blocks.fluids.BlockWaterlike;
 import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
@@ -85,11 +68,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
@@ -98,13 +77,15 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.BlockFluidFinite;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.fluids.*;
 import thaumcraft.api.nodes.INode;
 import twilightforest.TwilightForestMod;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -615,6 +596,9 @@ public class WD {
 		if (IL.TF_Tall_Grass.equal(aBlock)) return aMeta ==  8 || aMeta == 10;
 		return IL.AETHER_Tall_Grass.equal(aBlock);
 	}
+	
+	public static boolean irrelevant(World aWorld, int aX, int aY, int aZ) {return irrelevant(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
+	public static boolean irrelevant(World aWorld, int aX, int aY, int aZ, Block aBlock) {return air(aWorld, aX, aY, aZ, aBlock) || aBlock == Blocks.vine || aBlock == Blocks.snow_layer || aBlock == Blocks.fire || grass(aWorld, aX, aY, aZ) || anywater(aBlock);}
 	
 	public static boolean easyRep(World aWorld, int aX, int aY, int aZ) {return easyRep(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean easyRep(World aWorld, int aX, int aY, int aZ, Block aBlock) {return air(aWorld, aX, aY, aZ, aBlock) || aBlock instanceof BlockBush || aBlock instanceof BlockSnow || aBlock instanceof BlockFire || aBlock.isLeaves(aWorld, aX, aY, aZ) || aBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);}
