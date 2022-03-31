@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.MT;
@@ -43,6 +37,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -88,7 +88,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = T;
 				// Place Rock if on Opaque Surface.
 				} else if (aBlock == NB) {
-					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre.mTargetCrushing.mMaterial:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Stone and Ore Generation in vanilla Stone.
@@ -174,7 +174,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = (aStorage.getExtBlockMetadata(i, tY & 15, j) < 3);
 				// Place Rock if on Opaque Surface.
 				} else if (WD.easyRep(aWorld, tX, tY, tZ, aBlock)) {
-					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre.mTargetCrushing.mMaterial:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Just check if the last Block was Opaque and of the right kind of Material.

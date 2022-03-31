@@ -123,7 +123,9 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 						mSpeed = ((MultiTileEntityBush)tTileEntity).mSpeed;
 					} else {
 						mSpeed = 0;
+						mIgnoreUnloadedChunks = F;
 						if (getBlockAtSide(mFacing) != getBlockOffset(0, 0, 0)) popOff();
+						mIgnoreUnloadedChunks = T;
 						return;
 					}
 				} else {

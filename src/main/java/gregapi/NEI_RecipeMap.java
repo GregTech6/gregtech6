@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,33 +19,16 @@
 
 package gregapi;
 
-import static gregapi.data.CS.*;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerInputHandler;
 import codechicken.nei.guihook.IContainerTooltipHandler;
-import codechicken.nei.recipe.GuiCraftingRecipe;
-import codechicken.nei.recipe.GuiRecipe;
-import codechicken.nei.recipe.GuiUsageRecipe;
-import codechicken.nei.recipe.RecipeInfo;
-import codechicken.nei.recipe.TemplateRecipeHandler;
+import codechicken.nei.recipe.*;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -68,6 +51,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
+import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class NEI_RecipeMap extends TemplateRecipeHandler {
 	protected final RecipeMap mRecipeMap;
@@ -693,8 +685,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 		}
 		if (tDuration > 0)
-		drawText(10,113, "Time: " + (tDuration < 1200 ? tDuration + " ticks" : tDuration < 36000 ? (tDuration/20) + " secs" : (tDuration/1200) + " mins"), 0xFF000000);
+		drawText(10,113, "Time: " + (tDuration < 1200 ? UT.Code.makeString(tDuration) + " ticks" : tDuration < 36000 ? UT.Code.makeString(tDuration/20) + " secs" : UT.Code.makeString(tDuration/1200) + " mins"), 0xFF000000);
 		if (UT.Code.stringValid(mRecipeMap.mNEISpecialValuePre) || UT.Code.stringValid(mRecipeMap.mNEISpecialValuePost))
-		drawText(10,123, mRecipeMap.mNEISpecialValuePre + (((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mSpecialValue * mRecipeMap.mNEISpecialValueMultiplier) + mRecipeMap.mNEISpecialValuePost, 0xFF000000);
+		drawText(10,123, mRecipeMap.mNEISpecialValuePre + UT.Code.makeString(((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mSpecialValue * mRecipeMap.mNEISpecialValueMultiplier) + mRecipeMap.mNEISpecialValuePost, 0xFF000000);
 	}
 }
