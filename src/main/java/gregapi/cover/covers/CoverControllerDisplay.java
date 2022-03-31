@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
@@ -37,11 +33,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class CoverControllerDisplay extends AbstractCoverAttachmentController {
-	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof ITileEntityRunningPossible || aData.mTileEntity instanceof ITileEntityRunningPassively || aData.mTileEntity instanceof ITileEntityRunningActively || aData.mTileEntity instanceof ITileEntitySwitchableOnOff);}
+	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof ITileEntityRunningPossible || aData.mTileEntity instanceof ITileEntitySwitchableOnOff);}
 	
 	@Override
 	public long onToolClick(byte aSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
@@ -119,6 +119,6 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 	
 	@Override
 	public boolean getStateOnOff(byte aSide, CoverData aData) {
-		return F;
+		return ((ITileEntitySwitchableOnOff)aData.mTileEntity).getStateOnOff();
 	}
 }
