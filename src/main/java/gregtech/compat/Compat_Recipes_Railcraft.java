@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,26 +19,12 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -50,6 +36,9 @@ import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 public class Compat_Recipes_Railcraft extends CompatMods {
 	public Compat_Recipes_Railcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -150,12 +139,13 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.Drying.addRecipe1(T, 16,  16, IL.RC_Rebar.get(1), FL.Concrete.make(L), FL.DistW.make(8), IL.RC_Concrete.get(2));
 		
 		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Coolant_IC2_Hot.make(20000000), FL.Coolant_IC2  .make(20000000), IL.RC_Firestone_Refined.get(1));
-		RM.Injector.addRecipe1(T, 16, 2048, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava           .make( 5000000), FL.Lava_Pahoehoe.make( 5000000), IL.RC_Firestone_Refined.get(1));
-		RM.Injector.addRecipe1(T, 16,  128, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16, 8192, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Coolant_IC2_Hot.make(20000000), FL.Coolant_IC2  .make(20000000), IL.RC_Firestone_Cracked.get(1));
+		RM.Injector.addRecipe1(T, 16, 2048, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava           .make( 5000000), FL.Lava_Pahoehoe.make( 5000000), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava           .make( 5000000), FL.Lava_Pahoehoe.make( 5000000), IL.RC_Firestone_Cracked.get(1));
+		if (FL.Lava_Volcanic.exists()) {
+		RM.Injector.addRecipe1(T, 16,  128, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16,  256, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Cracked.get(1));
-		
+		}
 		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(TD.Prefix.ORE)) tPrefix.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.isGT(aEvent.mStack)) return;
