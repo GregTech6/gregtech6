@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,26 +19,14 @@
 
 package gregapi.tileentity.machines;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import buildcraft.api.tiles.IHasWork;
 import cpw.mods.fml.common.Optional;
 import gregapi.GT_API;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.TagData;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.SFX;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
 import gregapi.gui.ContainerClientBasicMachine;
 import gregapi.gui.ContainerCommonBasicMachine;
@@ -67,11 +55,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -452,7 +441,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void onTickFirst2(boolean aIsServerSide) {
 		super.onTickFirst2(aIsServerSide);
 		if (aIsServerSide) {
-			updateAdjacentToggleableEnergySources();
 			if (checkStructure(T) && !mActive) checkRecipe(F, mRunning || mStopped);
 		}
 	}
