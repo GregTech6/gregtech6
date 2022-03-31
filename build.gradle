@@ -210,6 +210,7 @@ dependencies {
 	compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	compileOnly "iguanaman:HungerOverhaul:1.7.10-1.0.0-basic:deobf"
 	compileOnly "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
+	compileOnly "mekanism:MekanismAll:1.7.10-9.1.1.283:dev"
 	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not right...  This only works because of CodeChickenCore Magic being included up above...
 	compileOnly "dan200.computercraft:ComputerCraft:1.75"
 	compileOnly "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,29 +19,15 @@
 
 package gregapi.block.multitileentity;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import cpw.mods.fml.common.Optional;
-import gregapi.block.IBlock;
-import gregapi.block.IBlockDebugable;
-import gregapi.block.IBlockErrorable;
-import gregapi.block.IBlockMaterial;
-import gregapi.block.IBlockOnWalkOver;
-import gregapi.block.IBlockRetrievable;
+import gregapi.block.*;
 import gregapi.block.IBlockSyncData.IBlockSyncDataAndCoversAndIDs;
-import gregapi.block.IBlockToolable;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.galacticraft.IBlockSealable;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.item.IItemGT;
 import gregapi.network.INetworkHandler;
 import gregapi.old.Textures;
@@ -57,6 +43,7 @@ import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mekanism.api.MekanismAPI;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -76,12 +63,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -90,6 +72,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
 import openblocks.api.IPaintableBlock;
 import vazkii.botania.api.mana.IManaTrigger;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -160,6 +146,8 @@ public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlo
 		
 		opaque = isOpaqueCube();
 		lightOpacity = isOpaqueCube() ? 255 : 0;
+		
+		if (MD.Mek.mLoaded) try {MekanismAPI.addBoxBlacklist(this, W);} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		ST.hide(this);
 	}
