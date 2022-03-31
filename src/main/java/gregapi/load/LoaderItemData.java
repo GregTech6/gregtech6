@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,14 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -2216,7 +2212,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Items.speckled_melon, 1, 0)                 , MT.Au                 ,  OP.nugget.mAmount * 8);
 		OM.data(ST.make(Items.bucket, 1, W)                         , ANY.Fe                ,  U * 3);
 		OM.data(ST.make(Items.minecart, 1, 0)                       , ANY.Fe                ,  U * 5);
-		OM.data(ST.make(Items.iron_door, 1, W)                      , ANY.Fe                ,  U * 2);
+		OM.data(ST.make(Items.iron_door, 1, W)                      , ANY.Fe                ,  U * 6);
 		OM.data(ST.make(Items.cauldron, 1, W)                       , ANY.Fe                ,  U * 7);
 		OM.data(ST.make(Blocks.iron_bars, 1, W)                     , ANY.Fe                ,  3* U8);
 		OM.data(ST.make(Blocks.light_weighted_pressure_plate, 1, W) , MT.Au                 ,  U * 2);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,29 +19,8 @@
 
 package gregapi;
 
-import static gregapi.data.CS.*;
-
-import java.io.File;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import cpw.mods.fml.common.LoadController;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLModIdMappingEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppedEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -70,19 +49,7 @@ import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.cover.covers.CoverRedstoneRepeater;
 import gregapi.cover.covers.CoverRedstoneTorch;
-import gregapi.data.BI;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.DirectoriesGT;
-import gregapi.data.CS.IconsGT;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.PotionsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.dummies.DummyWorld;
 import gregapi.enchants.Enchantment_EnderDamage;
 import gregapi.enchants.Enchantment_Radioactivity;
@@ -96,46 +63,16 @@ import gregapi.load.LoaderOreDictReRegistrations;
 import gregapi.log.LogBuffer;
 import gregapi.log.LoggerPlayerActivity;
 import gregapi.network.NetworkHandler;
-import gregapi.network.packets.PacketBlockError;
-import gregapi.network.packets.PacketBlockEvent;
-import gregapi.network.packets.PacketConfig;
-import gregapi.network.packets.PacketDeathPoint;
-import gregapi.network.packets.PacketItemStackChat;
-import gregapi.network.packets.PacketPrefix;
-import gregapi.network.packets.PacketSound;
-import gregapi.network.packets.covers.PacketSyncDataByteAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataByteArrayAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataIntegerAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataLongAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataShortAndIDsAndCovers;
-import gregapi.network.packets.covervisuals.PacketSyncDataByteAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataByteArrayAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataIntegerAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataLongAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataShortAndCoverVisuals;
-import gregapi.network.packets.data.PacketSyncDataByte;
-import gregapi.network.packets.data.PacketSyncDataByteArray;
-import gregapi.network.packets.data.PacketSyncDataInteger;
-import gregapi.network.packets.data.PacketSyncDataLong;
-import gregapi.network.packets.data.PacketSyncDataName;
-import gregapi.network.packets.data.PacketSyncDataShort;
-import gregapi.network.packets.ids.PacketSyncDataByteAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataByteArrayAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataIDs;
-import gregapi.network.packets.ids.PacketSyncDataIntegerAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataLongAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataShortAndIDs;
+import gregapi.network.packets.*;
+import gregapi.network.packets.covers.*;
+import gregapi.network.packets.covervisuals.*;
+import gregapi.network.packets.data.*;
+import gregapi.network.packets.ids.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
-import gregapi.recipes.AdvancedCrafting1ToY;
-import gregapi.recipes.AdvancedCraftingShaped;
-import gregapi.recipes.AdvancedCraftingShapeless;
-import gregapi.recipes.AdvancedCraftingTool;
-import gregapi.recipes.AdvancedCraftingXToY;
+import gregapi.recipes.*;
 import gregapi.render.IRenderedBlockObject.ErrorRenderer;
 import gregapi.render.ITexture;
 import gregapi.render.TextureSet;
@@ -155,6 +92,12 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.RecipeSorter;
 import team.chisel.carving.Carving;
 import thaumcraft.api.ThaumcraftApi;
+
+import java.io.File;
+import java.io.PrintStream;
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -272,12 +215,13 @@ public class GT_API extends Abstract_Mod {
 			e.printStackTrace(ERR);
 		}
 		
-		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
+		Set<Block>
+		tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T); assert tSet != null;
 		tSet.add(Blocks.bed);
 		tSet.add(Blocks.hay_block);
 		tSet.add(Blocks.sponge);
 		
-		tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
+		tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T); assert tSet != null;
 		tSet.add(Blocks.monster_egg);
 		tSet.add(Blocks.tnt);
 	}

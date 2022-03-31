@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,9 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.util.CR.*;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -43,6 +30,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+import static gregapi.util.CR.*;
 
 public class Loader_Recipes_Vanilla implements Runnable {
 	@Override public void run() {
@@ -92,10 +83,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			CR.shaped(ST.make(Items.compass, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, " X ", "XRX", " X ", 'X', ingot.dat(ANY.Fe), 'R', OD.itemRedstone);
 		}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Door", T)) {
-			CR.shaped(ST.make(Items.iron_door, 3, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "XX ", "XXh", "XX ", 'X', plate.dat(ANY.Fe));
+			CR.shaped(ST.make(Items.iron_door, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "XX ", "XXh", "XX ", 'X', plate.dat(ANY.Fe));
 		} else {
-			CR.shaped(ST.make(Items.iron_door, 3, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "II" , "II" , "II" , 'I', ingot.dat(ANY.Fe));
+			CR.shaped(ST.make(Items.iron_door, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES | ONLY_IF_HAS_OTHER_RECIPES, "II" , "II" , "II" , 'I', ingot.dat(ANY.Fe));
 		}
+		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Cauldron", T))         if (null != (tStack = CR.remove(tMat, null, tMat, tMat, null, tMat, tMat, tMat, tMat))) {
 			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "X X", "XhX", "XXX", 'X', plate.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', ingot.dat(ANY.Fe));
 		}
