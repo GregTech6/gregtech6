@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,26 +19,13 @@
 
 package gregapi.item;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.FL;
-import gregapi.data.FM;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.fluid.FluidGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -59,6 +46,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -141,13 +133,13 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				if (aFluid.isGaseous(tFluid)) aList.add(LH.Chat.BLINKING_RED + " (Warning: Considered a Gas by Mods other than GT!)");
 			}
 			
-			float tDensity = aFluid.getDensity(tFluid);
+			int tDensity = aFluid.getDensity(tFluid);
 			if (tDensity > 0) {
-				aList.add(LH.Chat.GREEN + "Heavier than Air (typically moves down)");
+				aList.add(LH.Chat.GREEN + "Density Value: " + tDensity + " - Heavier than Air (typically moves down)");
 			} else if (tDensity < 0) {
-				aList.add(LH.Chat.GREEN + "Lighter than Air (typically moves up)");
+				aList.add(LH.Chat.GREEN + "Density Value: " + tDensity + " - Lighter than Air (typically moves up)");
 			} else {
-				aList.add(LH.Chat.GREEN + "As dense as Air (typically still moves down)");
+				aList.add(LH.Chat.GREEN + "Density Value: 0 - As dense as Air (typically still moves down)");
 			}
 			
 			if (FL.powerconducting(aFluid)) {
@@ -155,14 +147,14 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				aList.add(LH.Chat.ORANGE + "Cannot be stored in any normal GT6 Storage Tanks!");
 			}
 			if (FL.simple(aFluid)) {
-				aList.add(LH.Chat.DGREEN + "This is a simple Fluid");
+				aList.add(LH.Chat.DGREEN + "This is a simple Fluid that is easy to handle");
 			}
 			if (FL.acid(aFluid)) {
 				aList.add(LH.Chat.ORANGE + "Acidic! Handle with Care!");
 			}
 			if (FL.Lubricant.is(aFluid) || FL.LubRoCant.is(aFluid)) {
 				aList.add(LH.Chat.ORANGE + "Industrial Use ONLY!");
-				aList.add(LH.Chat.RED + "Not Motherf***ing Flammable!");
+				aList.add(LH.Chat.RED + "Not Flammable!");
 			} else {
 				Collection<Recipe>
 				tRecipes = FM.Burn.mRecipeFluidMap.get(aName);
