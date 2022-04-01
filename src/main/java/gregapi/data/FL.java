@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,8 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.CS.FluidsGT.*;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.IconsGT;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
 import gregapi.old.Textures;
@@ -45,15 +35,16 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidContainerItem;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.CS.FluidsGT.*;
 
 /**
  * @author Gregorius Techneticies

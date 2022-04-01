@@ -135,12 +135,18 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			
 			int tDensity = aFluid.getDensity(tFluid);
 			if (tDensity > 0) {
-				aList.add(LH.Chat.GREEN + "Density Value: " + tDensity + " - Heavier than Air (typically moves down)");
+				aList.add(LH.Chat.GREEN + "Density: " + tDensity + " ; Heavier than Air (typically moves down)");
 			} else if (tDensity < 0) {
-				aList.add(LH.Chat.GREEN + "Density Value: " + tDensity + " - Lighter than Air (typically moves up)");
+				aList.add(LH.Chat.GREEN + "Density: " + tDensity + " ; Lighter than Air (typically moves up)");
 			} else {
-				aList.add(LH.Chat.GREEN + "Density Value: 0 - As dense as Air (typically still moves down)");
+				aList.add(LH.Chat.GREEN + "Density: 0 ; As dense as Air (typically still moves down)");
 			}
+			
+			int tLuminosity = aFluid.getLuminosity(tFluid);
+			if (tLuminosity != 0) aList.add(LH.Chat.YELLOW + "Luminosity: " + tLuminosity);
+			
+			int tViscosity = aFluid.getViscosity(tFluid);
+			if (tViscosity != 0) aList.add(LH.Chat.BLUE + "Viscosity: " + tViscosity);
 			
 			if (FL.powerconducting(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a Power Conducting Fluid");
