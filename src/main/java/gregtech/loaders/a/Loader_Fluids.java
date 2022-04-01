@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,7 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.IconsGT;
-import gregapi.data.CS.PotionsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.multiitem.food.FoodStatDrink;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
@@ -40,6 +30,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Fluids implements Runnable {
 	@Override
@@ -134,10 +126,10 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		MT.Pyrotheum .liquid(FL.make("pyrotheum" , 250));
-		MT.Cryotheum .liquid(FL.make("cryotheum" , 250));
-		MT.Petrotheum.liquid(FL.make("petrotheum", 250));
-		MT.Aerotheum .gas   (FL.make("aerotheum" , 250));
+		FL.create("pyrotheum"          , "Blazing Pyrotheum"  , MT.Pyrotheum , 1, 250, 4000).setDensity(2000).setViscosity(1200).setLuminosity(15);
+		FL.create("cryotheum"          , "Gelid Cryotheum"    , MT.Cryotheum , 1, 250,   50).setDensity(4000).setViscosity(3000);
+		FL.create("petrotheum"         , "Tectonic Petrotheum", MT.Petrotheum, 1, 250,  400).setDensity(4000).setViscosity(1500);
+		FL.create("aerotheum"          , "Zephyrean Aerotheum", MT.Aerotheum , 2, 250,  300).setDensity(-800).setViscosity( 100);
 		
 		FluidStack
 		tFluid = FL.make("mana", 250);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,42 +19,35 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.data.TD.Atomic.*;
-import static gregapi.data.TD.Compounds.*;
-import static gregapi.data.TD.Prefix.*;
-import static gregapi.data.TD.Processing.*;
-import static gregapi.data.TD.Properties.*;
-import static gregapi.oredict.OreDictMaterialCondition.*;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
 import gregapi.code.ICondition.Nor;
 import gregapi.code.ICondition.Or;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
-import gregapi.recipes.handlers.RecipeMapHandlerCrushing;
-import gregapi.recipes.handlers.RecipeMapHandlerMaterial;
-import gregapi.recipes.handlers.RecipeMapHandlerPrefix;
-import gregapi.recipes.handlers.RecipeMapHandlerPrefixForging;
-import gregapi.recipes.handlers.RecipeMapHandlerPrefixShredding;
+import gregapi.recipes.handlers.*;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.loaders.b.Loader_OreProcessing.OreProcessing_CraftFrom;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+import static gregapi.data.TD.Atomic.ANTIMATTER;
+import static gregapi.data.TD.Compounds.COATED;
+import static gregapi.data.TD.Compounds.LAYERED;
+import static gregapi.data.TD.Prefix.*;
+import static gregapi.data.TD.Processing.*;
+import static gregapi.data.TD.Properties.*;
+import static gregapi.oredict.OreDictMaterialCondition.fullforge;
+import static gregapi.oredict.OreDictMaterialCondition.selfcrush;
 
 /**
  * @author Gregorius Techneticies
@@ -637,6 +630,9 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Fish     .make(1000),   0, 144, NF, MT.WoodPolished, NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Whale    .make( 500),   0, 144, NF, MT.WoodPolished, NI, T, tConditionP));
 		}
+		
+		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 2, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
+		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 2, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
 		
 		if (FL.Mana_TE.exists()) {
 		OreDictManager.INSTANCE.triggerVisibility("ingotThaumium");

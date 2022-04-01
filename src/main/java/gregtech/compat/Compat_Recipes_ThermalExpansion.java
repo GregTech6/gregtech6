@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,27 +19,15 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.data.TD.Atomic.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
-import gregapi.recipes.handlers.RecipeMapHandlerPrefix;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -49,6 +37,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
+import static gregapi.data.CS.*;
+
 public class Compat_Recipes_ThermalExpansion extends CompatMods {
 	public Compat_Recipes_ThermalExpansion(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
@@ -57,51 +47,6 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		CR.remove(IL.TE_Rod_Blitz .get(1));
 		CR.remove(IL.TE_Rod_Basalz.get(1));
 		CR.delate(MD.TE_FOUNDATION, "material", 512, 513, 514, 515);
-		
-		RM.Sluice.add(new RecipeMapHandlerPrefix(crushed    , 1, null, 0, MT.Petrotheum.liquid(9*U50, T), 16, 144, 0, NF, crushedPurified    , 2, crushedPurifiedTiny, 9, NI, OM.dust(MT.SluiceSand    ), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
-		RM.Sluice.add(new RecipeMapHandlerPrefix(crushedTiny, 1, null, 0, MT.Petrotheum.liquid(  U50, T), 16,  16, 0, NF, crushedPurifiedTiny, 2, crushedPurifiedTiny, 1, NI, OM.dust(MT.SluiceSand, U9), T, F, T, ANTIMATTER.NOT).chances(10000, 5000, 10000));
-		
-		RM.Bath.addRecipe1(T,  0,  128, OP.crushed    .mat(MT.OREMATS.Cinnabar, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
-		RM.Bath.addRecipe1(T,  0,  128, OP.crushedTiny.mat(MT.OREMATS.Cinnabar, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
-		
-		FluidStack tPyrotheum = MT.Pyrotheum.liquid(U2, T);
-		if (!FL.Error.is(tPyrotheum)) {
-		ItemStack tStack;
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,  3000}, OP.crushed.mat(MT.Au           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Au           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,  2250}, OP.crushed.mat(MT.Ni           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ni           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,  1500}, OP.crushed.mat(MT.Co           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Co           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Pb           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Pb           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Fe           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Fe           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Sn           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Sn           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Cu           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Cu           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Pt           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Pt           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ir           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ir           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Os           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Os           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Hg           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Hg           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Cr           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Cr           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Mn           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Mn           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Mo           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Mo           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Nd           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Nd           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ag           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ag           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Bi           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Bi           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Zn           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Zn           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Al           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Al           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Cd           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Cd           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Pd           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Pd           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.In           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.In           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Si           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Si           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ti           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ti           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.W            , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.W            , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ge           , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ge           , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.AncientDebris, 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.AncientDebris, 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Electrum     , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Electrum     , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.AstralSilver , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.AstralSilver , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Midasium     , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Midasium     , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Mithril      , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Mithril      , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Cheese       , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Cheese       , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Ardite       , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Ardite       , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Desh         , 1), tPyrotheum, NF, tStack = OP.chunkGt.mat(MT.Desh         , 1), tStack, tStack, tStack, tStack, IL.TE_Slag_Rich.get(1));
-		}
 		
 		FL.set(new FluidContainerData(FL.Redstone.make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
 		FL.set(new FluidContainerData(FL.Ender   .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
