@@ -40,7 +40,7 @@ All the Reactor Stuff Erik did:
 [CHANGED] Molten Tin/Molten Sodium as a reactor coolant will now increase the neutron maximum of fuel rods in it in addition to their previous effects.
 [CHANGED] Molten Thorium Salt is now slightly cheaper to produce and able to be produced with all sizes of dust.
 [ADDED] A config option (EasyU235Extraction) to enable centrifuging U-235 from refined uranium ore. Disabled by default.
-[ADDED] A config option (Enable1x1ReactorCore) to disable the crafting recipe for the 1x1 reactor core. Enabled by default.
+[ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
 [FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
 [ADDED] Guide Book for designing and operating the fission reactors.
 [CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.

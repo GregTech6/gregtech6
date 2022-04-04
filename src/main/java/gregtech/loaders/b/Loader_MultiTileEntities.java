@@ -28,7 +28,6 @@ import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverAsphalt;
 import gregapi.cover.covers.CoverTextureSimple;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -700,7 +699,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		// Reactor Stuffs
-		if (ConfigsGT.GREGTECH.get("general", "Enable1x1ReactorCore", T)) {
+		if (ConfigsGT.GREGTECH.get("general", "Enable1x1ReactorCore", F)) {
 			aMat = MT.Pb;               aRegistry.add("Nuclear Reactor Core (1x1)"                    , "Reactors",  9300,  9200, MultiTileEntityReactorCore1x1.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F), "CP" , "wM"        , 'M', OP.casingMachineDense.dat(aMat), 'C', IL.Processor_Crystal_Ruby, 'P', IL.PISTONS[4]); ItemsGT.addNEIRedirects(aRegistry.getItem(), FL.Coolant_IC2.display(), FL.Coolant_IC2_Hot.display());
 		} else {
 			aMat = MT.Pb;               aRegistry.add("Nuclear Reactor Core (1x1)"                    , "Reactors",  9300,  9200, MultiTileEntityReactorCore1x1.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F));
