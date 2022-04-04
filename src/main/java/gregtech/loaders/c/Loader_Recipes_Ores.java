@@ -420,12 +420,12 @@ public class Loader_Recipes_Ores implements Runnable {
 				
 				if (tByproductFirestone != null) for (OreDictMaterial tFirestone : new OreDictMaterial[] {MT.Firestone, MT.Pyrotheum, MT.Octine}) {
 				for (FluidStack tWater : FL.waters(900)) {
-				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, tCrushed                 , OP.dust    .mat(tFirestone , 1), tWater, NF, OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
-				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, ST.amount(9,tCrushedTiny), OP.dust    .mat(tFirestone , 1), tWater, NF, OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
-				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, tCrushed                 , OP.dustTiny.mat(tFirestone , 9), tWater, NF, OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
+				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, tCrushed                 , OP.dust    .mat(tFirestone , 1), tWater, FL.Steam.make(900*STEAM_PER_WATER), OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
+				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, ST.amount(9,tCrushedTiny), OP.dust    .mat(tFirestone , 1), tWater, FL.Steam.make(900*STEAM_PER_WATER), OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
+				RM.Bath.addRecipe2(T, T, F, F, T, 0, 144, tCrushed                 , OP.dustTiny.mat(tFirestone , 9), tWater, FL.Steam.make(900*STEAM_PER_WATER), OM.crushedPurified    (aMat, 1), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), ST.mul_(2, tByproductFirestone), tByproductFirestone);
 				}
 				for (FluidStack tWater : FL.waters(100))
-				RM.Bath.addRecipe2(T, T, F, F, T, 0,  16, tCrushedTiny             , OP.dustTiny.mat(tFirestone , 1), tWater, NF, OM.crushedPurifiedTiny(aMat, 1), tByproductFirestone);
+				RM.Bath.addRecipe2(T, T, F, F, T, 0,  16, tCrushedTiny             , OP.dustTiny.mat(tFirestone , 1), tWater, FL.Steam.make(100*STEAM_PER_WATER), OM.crushedPurifiedTiny(aMat, 1), tByproductFirestone);
 				}
 			}
 			
