@@ -19,8 +19,6 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.MaterialMachines;
 import gregapi.block.MaterialScoopable;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
@@ -30,26 +28,14 @@ import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverAsphalt;
 import gregapi.cover.covers.CoverTextureSimple;
 import gregapi.data.*;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.PlankData;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
-import gregapi.tileentity.connectors.ITileEntityRedstoneWire;
-import gregapi.tileentity.connectors.MultiTileEntityAxle;
-import gregapi.tileentity.connectors.MultiTileEntityPipeFluid;
-import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
-import gregapi.tileentity.connectors.MultiTileEntityWireElectric;
-import gregapi.tileentity.connectors.MultiTileEntityWireLaser;
-import gregapi.tileentity.connectors.MultiTileEntityWireLogistics;
-import gregapi.tileentity.connectors.MultiTileEntityWireRedstone;
-import gregapi.tileentity.connectors.MultiTileEntityWireRedstoneInsulated;
+import gregapi.tileentity.connectors.*;
 import gregapi.tileentity.inventories.MultiTileEntityBookShelf;
 import gregapi.tileentity.machines.MultiTileEntityBasicMachine;
 import gregapi.tileentity.machines.MultiTileEntityBasicMachineElectric;
@@ -63,31 +49,14 @@ import gregapi.util.UT;
 import gregtech.tileentity.autotools.MultiTileEntityAutoToolHammer;
 import gregtech.tileentity.autotools.MultiTileEntityAutoToolIgniter;
 import gregtech.tileentity.batteries.eu.*;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU128;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU2048;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU32;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU512;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU8;
-import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU8192;
+import gregtech.tileentity.batteries.lu.*;
 import gregtech.tileentity.batteries.qu.MultiTileEntityZPM;
 import gregtech.tileentity.computer.MultiTileEntityHDDSwitch;
 import gregtech.tileentity.computer.MultiTileEntityUSBSwitch;
 import gregtech.tileentity.energy.converters.*;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorBrick;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorFluidBed;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorGas;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorHotFluid;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorLiquid;
-import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorMetal;
-import gregtech.tileentity.energy.generators.MultiTileEntityMotorLiquid;
-import gregtech.tileentity.energy.generators.MultiTileEntitySolarPanelElectric;
+import gregtech.tileentity.energy.generators.*;
 import gregtech.tileentity.energy.reactors.*;
-import gregtech.tileentity.energy.storage.MultiTileEntityBatteryBox;
-import gregtech.tileentity.energy.storage.MultiTileEntityBatteryBoxLarge;
-import gregtech.tileentity.energy.storage.MultiTileEntityCrystalCharger;
-import gregtech.tileentity.energy.storage.MultiTileEntityCrystalChargerLarge;
-import gregtech.tileentity.energy.storage.MultiTileEntityZPMDechargerEU;
-import gregtech.tileentity.energy.storage.MultiTileEntityZPMDechargerQU;
+import gregtech.tileentity.energy.storage.*;
 import gregtech.tileentity.energy.transformers.MultiTileEntityGearBox;
 import gregtech.tileentity.energy.transformers.MultiTileEntityLongDistanceTransformer;
 import gregtech.tileentity.energy.transformers.MultiTileEntityTransformerElectric;
@@ -98,25 +67,13 @@ import gregtech.tileentity.extenders.MultiTileEntityFilter;
 import gregtech.tileentity.extenders.MultiTileEntityFilterPrefix;
 import gregtech.tileentity.food.MultiTileEntitySandwich;
 import gregtech.tileentity.inventories.*;
-import gregtech.tileentity.misc.MultiTileEntityBumbleHive;
-import gregtech.tileentity.misc.MultiTileEntityCFoam;
-import gregtech.tileentity.misc.MultiTileEntityCertificate;
-import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
-import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
+import gregtech.tileentity.misc.*;
 import gregtech.tileentity.multiblocks.*;
 import gregtech.tileentity.panels.MultiTileEntityPanelAsphalt;
 import gregtech.tileentity.panels.MultiTileEntityPanelCFoam;
 import gregtech.tileentity.panels.MultiTileEntityPanelConcrete;
 import gregtech.tileentity.panels.MultiTileEntityPanelWood;
-import gregtech.tileentity.placeables.MultiTileEntityCoin;
-import gregtech.tileentity.placeables.MultiTileEntityIngot;
-import gregtech.tileentity.placeables.MultiTileEntityPlate;
-import gregtech.tileentity.placeables.MultiTileEntityPlateGem;
-import gregtech.tileentity.placeables.MultiTileEntityRock;
-import gregtech.tileentity.placeables.MultiTileEntityRockPlaced;
-import gregtech.tileentity.placeables.MultiTileEntityScrap;
-import gregtech.tileentity.placeables.MultiTileEntityStick;
-import gregtech.tileentity.placeables.MultiTileEntityStickPlaced;
+import gregtech.tileentity.placeables.*;
 import gregtech.tileentity.plants.MultiTileEntityBush;
 import gregtech.tileentity.plants.MultiTileEntityResinHoleRubber;
 import gregtech.tileentity.plants.MultiTileEntitySapHoleMaple;
@@ -133,6 +90,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Loader_MultiTileEntities implements Runnable {
 	@Override
@@ -741,7 +700,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		// Reactor Stuffs
-		if (ConfigsGT.GREGTECH.get("general", "Enable1x1ReactorCore", F)) {
+		if (ConfigsGT.GREGTECH.get("general", "Enable1x1ReactorCore", T)) {
 			aMat = MT.Pb;               aRegistry.add("Nuclear Reactor Core (1x1)"                    , "Reactors",  9300,  9200, MultiTileEntityReactorCore1x1.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F), "CP" , "wM"        , 'M', OP.casingMachineDense.dat(aMat), 'C', IL.Processor_Crystal_Ruby, 'P', IL.PISTONS[4]); ItemsGT.addNEIRedirects(aRegistry.getItem(), FL.Coolant_IC2.display(), FL.Coolant_IC2_Hot.display());
 		} else {
 			aMat = MT.Pb;               aRegistry.add("Nuclear Reactor Core (1x1)"                    , "Reactors",  9300,  9200, MultiTileEntityReactorCore1x1.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F));
