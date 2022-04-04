@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,13 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
+import gregapi.code.ArrayListNoNulls;
+import gregapi.code.TagData;
 
 import java.util.Arrays;
 import java.util.List;
 
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.TagData;
+import static gregapi.data.CS.F;
 
 /**
  * @author Gregorius Techneticies
@@ -520,12 +520,14 @@ public class TD {
 		public static final TagData SOLDERING_MATERIAL_BAD                  = TagData.createTagData("PROCESSING.SOLDERING_MATERIAL_BAD", "Bad Soldering Metal");
 		public static final TagData SOLDERING_MATERIAL_GOOD                 = TagData.createTagData("PROCESSING.SOLDERING_MATERIAL_GOOD", "Good Soldering Metal");
 		
+		public static final TagData WASHING_FIRESTONE                       = TagData.createTagData("PROCESSING.WASHING_FIRESTONE", "Firestone Washable");
 		public static final TagData WASHING_PERSULFATE                      = TagData.createTagData("PROCESSING.WASHING_PERSULFATE", "Persulfate Washable"), WASHING_SODIUMPERSULFATE = WASHING_PERSULFATE;
 		public static final TagData WASHING_MERCURY                         = TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
+		
 		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Crystal from Pulverisation");
 		
 		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
-		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
+		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_FIRESTONE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	
 	/** For Materials and the Item Generator */
