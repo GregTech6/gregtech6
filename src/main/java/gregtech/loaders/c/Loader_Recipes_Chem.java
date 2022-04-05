@@ -207,6 +207,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Lightning    .addRecipe2(T,256,  512, ST.tag(2), OM.dust(MT.Na2S, U*3), FL.make(tOxygen, 4000), NF, OM.dust(MT.Na2SO4, U*7));
 		
 		RM.BurnMixer    .addRecipe0(T, 16,   24, FL.array(MT.H.gas(U, T), FL.make(tOxygen, 500)), FL.DistW.make(1500), ZL_IS);
+		RM.BurnMixer    .addRecipe0(T, 16,   24, FL.array(MT.T.gas(U, T), FL.make(tOxygen, 500)), MT.T2O.liquid(U2*3, T), ZL_IS);
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.Pt  , 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tOxygen,  250)), FL.array(MT.SO3.gas(U, F)), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.V2O5, 0), FL.array(MT.SO2.gas(3*U4, T), FL.make(tOxygen,  250)), FL.array(MT.SO3.gas(U, F)), ZL_IS);

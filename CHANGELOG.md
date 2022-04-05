@@ -31,7 +31,7 @@ All the Reactor Stuff Erik did:
 [CHANGED] Breeding now produces "enriched" rods rather than fuel rods directly. This allows for slightly easier and less tedious automation. Enriched rods will like breeder rods output only half the heat, but have no neutron loss, which allows detecting that a breeder rod turned into an enriched rod.
 [ADDED] Lithium breeder rod, breeding into Tritium.
 [NOTE] Reactor designs with coolants other than Industrial Coolant, Distilled Water, Semiheavy Water, Molten LiCl or Molten Thorium Salt may require changes to accommodate the following stat changes. 
-[CHANGED] Cobalt-60 fuel rod now has an emission of zero, making it useless for power production.
+[CHANGED] Cobalt-60 fuel rod now has an emission of zero, making it useless for power production. It also lasts a much lower duration, making it more useful in burner reactors.
 [CHANGED] Output of better nuclear fuel from processing depleted fuel rods slightly halved, now six depleted rods will allow you to get a new better one.
 [CHANGED] Depleted Co-60 rods now processes into Thorium (instead of U-238), Depleted Naquadria now processes into Co-60 (instead of Thorium). 
 [CHANGED] Heavy Water/Tritiated Water as a reactor coolant will now reduce the neutron maximum of fuel rods in it by 8/16 times. This allows for building much faster burner reactors.
@@ -44,6 +44,8 @@ All the Reactor Stuff Erik did:
 [FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
 [ADDED] Guide Book for designing and operating the fission reactors.
 [CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.
+[ADDED] Tritium can now be turned into Tritiated Water, useful as a reactor coolant when obtaining Tritium from Lithium breeder rods.
+[FIXED] Fuel rods with neutron counts at the exact neutron maximum now won't have their duration effected. 
 
 
 6.14.23:
