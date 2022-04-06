@@ -218,7 +218,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		} else if (FL.distw(aReactor.mTanks[0]) || MT.HDO.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
 			mModerated = oModerated = T;
 		}
-		long tDurabilityLoss = aReactor.oNeutronCounts[aSlot] < tNeutronMax ? 100 : UT.Code.divup(400 * aReactor.oNeutronCounts[aSlot], tNeutronMax);
+		long tDurabilityLoss = aReactor.oNeutronCounts[aSlot] <= tNeutronMax ? 100 : UT.Code.divup(400 * aReactor.oNeutronCounts[aSlot], tNeutronMax);
 		if (oModerated) tDurabilityLoss *= 4;
 		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));

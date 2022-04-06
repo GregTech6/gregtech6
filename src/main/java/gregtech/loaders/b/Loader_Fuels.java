@@ -156,7 +156,9 @@ public class Loader_Fuels implements Runnable {
 		
 		FM.Burn         .addRecipe0(T, - 16,  1, FL.make("hydrogen", 2)                      , FL.Water.make(3), ZL_IS);
 		FM.Gas          .addRecipe0(T, - 16,  2, FL.make("hydrogen", 2)                      , FL.Water.make(3), ZL_IS);
-		
+		FM.Burn         .addRecipe0(T, - 16,  1, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
+		FM.Gas          .addRecipe0(T, - 16,  2, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
+
 		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("methane", 5)                       , FL.Water.make(6), FL.CarbonDioxide.make(3));
 		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("gas_natural_gas", 5)               , FL.Water.make(6), FL.CarbonDioxide.make(3));
 		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("methane", 5)                       , FL.Water.make(6), FL.CarbonDioxide.make(3));
