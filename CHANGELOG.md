@@ -46,6 +46,7 @@ All the Reactor Stuff Erik did:
 [CHANGED] Setting the Secondary Facing of a Reactor Core to the same side as the Primary Facing will now disable the Secondary Facing.
 [ADDED] Tritium can now be turned into Tritiated Water, useful as a reactor coolant when obtaining Tritium from Lithium breeder rods.
 [FIXED] Fuel rods with neutron counts at the exact neutron maximum now won't have their duration effected. 
+[FIXED] First second of neutron output of fuel rods being potentially lower than emission stat (in some cases even negative)
 
 
 6.14.23:
