@@ -195,7 +195,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			tNeutronDiv -= 1;
 		}
 		aReactor.mNeutronCounts[aSlot] += tNeutronSelf;
-		long tEmission = tNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-tNeutronSelf, tNeutronDiv);
+		long tEmission = tNeutronOther + UT.Code.divup(Math.max(aReactor.oNeutronCounts[aSlot]-tNeutronSelf, 0), tNeutronDiv);
 		return UT.Code.bindInt(tEmission);
 	}
 	
