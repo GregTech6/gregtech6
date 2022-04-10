@@ -912,7 +912,7 @@ public class MT {
 	
 	
 	Al2O3                   = oredustdcmp   ( 8008, "Alumina"               , SET_METALLIC          , 120, 195, 235, 255, MELTING, INGOTS, "NaturalAluminum")                                                                                                       .uumMcfg( 0, Al             , 2*U, O                , 3*U)                                                                                                  .heat(2345, 3250),
-	AlF3                    = oredustdcmp   ( 8010, "Aluminium Fluoride"    , SET_DULL              , 200, 190, 190, 255, MELTING, MOLTEN, INGOTS, ACID)                                                                                                            .uumMcfg( 0, Al             , 1*U, F                , 3*U)                                                                                                  .heat(1560),
+	AlF3                    = dustdcmp      ( 8010, "Aluminium Fluoride"    , SET_DULL              , 200, 190, 190, 255, MELTING, MOLTEN, INGOTS, ACID)                                                                                                            .uumMcfg( 0, Al             , 1*U, F                , 3*U)                                                                                                  .heat(1560),
 	AlO3H3                  = oredustdcmp   ( 8014, "Aluminium Hydroxide"   , SET_DULL              , 190, 190, 200, 255, MELTING, "Gibbsite")                                                                                                                      .uumMcfg( 0, Al             , 1*U, O                , 3*U, H                , 3*U)                                                                          .heat( 573).setSmelting(Al2O3, 5*U14),
 	
 	

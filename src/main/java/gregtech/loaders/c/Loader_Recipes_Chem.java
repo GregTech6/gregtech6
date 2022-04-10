@@ -19,15 +19,7 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.FL;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -35,6 +27,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 public class Loader_Recipes_Chem implements Runnable {
 	@Override public void run() {
@@ -99,11 +94,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
 		RM.Mixer        .addRecipe1(T, 16,  240, OM.dust(tMat                   ,U * 3), FL.array(MT.HF.gas(U *12, T))                                                              , FL.array(MT.H2O.liquid(U * 6, F), MT.H2SiF6.liquid(U * 9, F)));
-		RM.Mixer        .addRecipe1(T, 16,  224, OM.dust(MT.Al2O3               ,U * 5), FL.array(MT.H2SiF6.liquid(U * 9, T))                                                       , FL.array(MT.H2O.liquid(U * 3, F)), OM.dust(MT.AlF3, U*8));//, OM.dust(MT.SiO2, U*3));
-		RM.Mixer        .addRecipe1(T, 16,  224, OM.ingot(MT.Al2O3              ,U * 5), FL.array(MT.H2SiF6.liquid(U * 9, T))                                                       , FL.array(MT.H2O.liquid(U * 3, F)), OM.dust(MT.AlF3, U*8));//, OM.dust(MT.SiO2, U*3));
-		RM.Mixer        .addRecipe2(T, 16,  752, OP.dust.mat(MT.NaOH            ,   18), OM.dust(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                               , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
+		RM.HeatMixer    .addRecipe1(T, 16,  224, OM.dust(MT.Al2O3               ,U * 5), FL.array(MT.H2SiF6.liquid(U * 9, T))                                                       , FL.array(MT.H2O.liquid(U * 3, F), MT.AlF3.liquid(U*8, F)), OM.dust(MT.SiO2, U*3));
+		RM.HeatMixer    .addRecipe1(T, 16,  224, OM.ingot(MT.Al2O3              ,U * 5), FL.array(MT.H2SiF6.liquid(U * 9, T))                                                       , FL.array(MT.H2O.liquid(U * 3, F), MT.AlF3.liquid(U*8, F)), OM.dust(MT.SiO2, U*3));
+		RM.Mixer        .addRecipe2(T, 16,  752, OP.dust.mat(MT.NaOH            ,   18), OM.dust (MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
 		RM.Mixer        .addRecipe2(T, 16,  752, OP.dust.mat(MT.NaOH            ,   18), OM.ingot(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
-		RM.Mixer        .addRecipe2(T, 16,  752, OP.blockDust.mat(MT.NaOH       ,    2), OM.dust(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                               , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
+		RM.Mixer        .addRecipe2(T, 16,  752, OP.blockDust.mat(MT.NaOH       ,    2), OM.dust (MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
 		RM.Mixer        .addRecipe2(T, 16,  752, OP.blockDust.mat(MT.NaOH       ,    2), OM.ingot(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
 		RM.Mixer        .addRecipe1(T, 16,  748, OP.dust.mat(MT.Sugar           ,   45), FL.array(MT.H2SO4.fluid(U4*7, T))                                                          , FL.array(MT.H2O.liquid(U4*135, F), MT.SO3.gas(U, F)), OM.dust(MT.C, U*12));
 		RM.Mixer        .addRecipe1(T, 16,  748, OP.blockDust.mat(MT.Sugar      ,    5), FL.array(MT.H2SO4.fluid(U4*7, T))                                                          , FL.array(MT.H2O.liquid(U4*135, F), MT.SO3.gas(U, F)), OM.dust(MT.C, U*12));
@@ -118,7 +113,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.HeatMixer    .addRecipe1(T, 16,  354, OM.dust(MT.LiOH                ,U *18), FL.array(MT.Cl.gas(U * 6, T))                                                              , FL.array(MT.H2O.liquid(U * 9, F), MT.LiClO3.liquid(U*5, F)), OM.dust(MT.LiCl, U*10));
 		for (OreDictMaterial tMat : ANY.CaF2.mToThis)
 		RM.Mixer        .addRecipe1(T, 16,  160, OM.dust(tMat                   ,U * 3), MT.H2SO4       .liquid(U* 7, T)                                                            , MT.HF             .gas  (U * 4, F), OM.dust(MT.CaSO4, U* 6));
-		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Al                  ,U * 1), MT.F           .gas  (U * 3, T)                                                            , NF                                , OM.dust(MT.AlF3, U*4));
+		RM.HeatMixer    .addRecipe1(T, 16,   64, OM.dust(MT.Al                  ,U * 1), MT.F           .gas  (U * 3, T)                                                            , MT.AlF3           .liquid(U* 8, F), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   48, OM.dust(MT.Ca                  ,U * 1), MT.F           .gas  (U * 2, T)                                                            , NF                                , OM.dust(MT.CaF2, U*3));
 		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.S                   ,U * 1), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
 		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.Blaze               ,U9   ), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
