@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1045,6 +1045,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Fe                     , MD.NeLi, "Chain", 0);
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , MD.NeLi, "ChainGold", 0);
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , MD.NeLi, "ChainEfrine", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , MD.NeLi, "BoneBlock", 1);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , MD.NeLi, "BoneBlock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.Sugilite               , MD.EnLi, "OreSugilite", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sugilite               , MD.EnLi, "material", 0);
