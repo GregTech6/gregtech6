@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,12 @@
 
 package gregapi;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MD;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.tileentity.tools.MultiTileEntityAdvancedCraftingTable.MultiTileEntityGUIClientAdvancedCraftingTable;
 import gregtech.BuildInfo;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -36,7 +36,7 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 	public void loadConfig() {
 		ADDED = F;
 		
-		for (RecipeMap tMap : RecipeMap.RECIPE_MAPS.values()) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
+		for (RecipeMap tMap : RecipeMap.RECIPE_MAP_LIST) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
 		
 		if (CODE_CLIENT) {
 			codechicken.nei.api.API.registerGuiOverlay(MultiTileEntityGUIClientAdvancedCraftingTable.class, "crafting", 55, 22);

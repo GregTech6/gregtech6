@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,28 +19,12 @@
 
 package gregapi.recipes;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.config.Config;
-import gregapi.data.CS.DirectoriesGT;
-import gregapi.data.FL;
-import gregapi.data.FM;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.gui.Slot_Base;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -54,6 +38,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.*;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -61,6 +49,8 @@ public class Recipe {
 	public static class RecipeMap implements Runnable {
 		/** RecipeMap-HashMap so that Machines can store their corresponding Recipe Lists as String NBT. */
 		public static final Map<String, RecipeMap> RECIPE_MAPS = new HashMap<>();
+		/** List of Recipe Maps in order of their creation. */
+		public static final List<RecipeMap> RECIPE_MAP_LIST = new ArrayList<>();
 		
 		/** List of Recipe Map Handlers. They will dynamically add regular Recipes when needed. */
 		public final List<IRecipeMapHandler> mRecipeMapHandlers = new ArrayListNoNulls<>();
@@ -145,6 +135,7 @@ public class Recipe {
 			LH.add(mNameInternal, mNameLocal);
 			if (RECIPE_MAPS.containsKey(mNameInternal)) throw new IllegalArgumentException("Recipe Map Name already exists: " + mNameInternal);
 			RECIPE_MAPS.put(mNameInternal, this);
+			RECIPE_MAP_LIST.add(this);
 			if (aConfigAllowed) if (GAPI.mBeforePreInit != null) GAPI.mBeforePreInit.add(this); else run();
 		}
 		
