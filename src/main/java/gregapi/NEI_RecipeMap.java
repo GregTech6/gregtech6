@@ -29,10 +29,7 @@ import codechicken.nei.recipe.*;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.FL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.gui.ContainerClient;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
@@ -525,11 +522,19 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			
 			if (tPrefixMaterial != null && !tPrefixMaterial.mBlackListed) {
 				if (tPrefixMaterial.mMaterial.mMaterial.mID > 0 && BlocksGT.ore != null && BlocksGT.oreBroken != null && tPrefixMaterial.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
-					tResults.add(ST.make((Block)BlocksGT.ore, 1, tPrefixMaterial.mMaterial.mMaterial.mID));
+					tResults.add(ST.make((Block)BlocksGT.ore      , 1, tPrefixMaterial.mMaterial.mMaterial.mID));
 					tResults.add(ST.make((Block)BlocksGT.oreBroken, 1, tPrefixMaterial.mMaterial.mMaterial.mID));
 				}
 				for (OreDictPrefix tPrefix : tPrefixMaterial.mPrefix.mFamiliarPrefixes) {
 					tResults.add(tPrefix.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+				}
+				if (tPrefixMaterial.mPrefix.containsAny(TD.Prefix.DUST_BASED) && tPrefixMaterial.mMaterial.mMaterial.mTargetPulver.mMaterial == tPrefixMaterial.mMaterial.mMaterial) {
+					tResults.add(OP.crushed               .mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+					tResults.add(OP.crushedTiny           .mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+					tResults.add(OP.crushedPurified       .mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+					tResults.add(OP.crushedPurifiedTiny   .mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+					tResults.add(OP.crushedCentrifuged    .mat(tPrefixMaterial.mMaterial.mMaterial, 1));
+					tResults.add(OP.crushedCentrifugedTiny.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
 				}
 			}
 			
