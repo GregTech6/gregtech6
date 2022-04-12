@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,7 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.ArmorsGT;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -43,6 +31,8 @@ import gregapi.util.ST;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -2073,6 +2063,15 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "diving_helmet"                       , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "diving_top"                          , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "diving_pants"                        , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "diving_boots"                        , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "scuba_mask"                          , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "scuba_tank"                          , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "scuba_suit"                          , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.MaCu, "swimfin"                             , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.BoP, "flippers"                             , 1, W));
 		
 		ArmorsGT.HAZMATS_GAS                    .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.mkic("hazmatChestplate"                             , 1, W));
@@ -2090,6 +2089,15 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "diving_helmet"                       , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "diving_top"                          , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "diving_pants"                        , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "diving_boots"                        , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "scuba_mask"                          , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "scuba_tank"                          , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "scuba_suit"                          , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.MaCu, "swimfin"                             , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.BoP, "flippers"                             , 1, W));
 		
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.mkic("hazmatChestplate"                             , 1, W));

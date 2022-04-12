@@ -157,6 +157,36 @@ public class Loader_Fluids implements Runnable {
 			MT.TritaniumAlloy.liquid(tFluid);
 		}
 		
+		tFluid = FL.make("ardite.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Ardite.mMeltingPoint); MT.Ardite.liquid(tFluid);}
+		tFluid = FL.make("manyullyn.molten"    , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Manyullyn.mMeltingPoint); MT.Manyullyn.liquid(tFluid);}
+		tFluid = FL.make("aluminumbrass.molten", 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.AluminiumBrass.mMeltingPoint); MT.AluminiumBrass.liquid(tFluid);}
+		tFluid = FL.make("bronze.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Bronze.mMeltingPoint); MT.Bronze.liquid(tFluid);}
+		tFluid = FL.make("steel.molten"        , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Steel.mMeltingPoint); MT.Steel.liquid(tFluid);}
+		tFluid = FL.make("electrum.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Electrum.mMeltingPoint); MT.Electrum.liquid(tFluid);}
+		tFluid = FL.make("invar.molten"        , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Invar.mMeltingPoint); MT.Invar.liquid(tFluid);}
+		tFluid = FL.make("alumite.molten"      , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Alumite.mMeltingPoint); MT.Alumite.liquid(tFluid);}
+		tFluid = FL.make("lumium.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Lumium.mMeltingPoint); MT.Lumium.liquid(tFluid);}
+		tFluid = FL.make("signalum.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Signalum.mMeltingPoint); MT.Signalum.liquid(tFluid);}
+		tFluid = FL.make("enderium.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Enderium.mMeltingPoint); MT.Enderium.liquid(tFluid);}
+		tFluid = FL.make("mithril.molten"      , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Mithril.mMeltingPoint); MT.Mithril.liquid(tFluid);}
+		tFluid = FL.make("pigiron.molten"      , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.PigIron.mMeltingPoint); MT.PigIron.liquid(tFluid);}
+		tFluid = FL.make("molten.aluminum"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Al.mMeltingPoint); MT.Al.liquid(tFluid);}
+		tFluid = FL.make("aluminium.molten"    , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Al.mMeltingPoint); MT.Al.liquid(tFluid);}
+		tFluid = FL.make("aluminum.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Al.mMeltingPoint); MT.Al.liquid(tFluid);}
+		tFluid = FL.make("titanium.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Ti.mMeltingPoint); MT.Ti.liquid(tFluid);}
+		tFluid = FL.make("magnesium.molten"    , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Mg.mMeltingPoint); MT.Mg.liquid(tFluid);}
+		tFluid = FL.make("zinc.molten"         , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Zn.mMeltingPoint); MT.Zn.liquid(tFluid);}
+		tFluid = FL.make("osmium.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Ge.mMeltingPoint); MT.Ge.liquid(tFluid);}
+		tFluid = FL.make("iron.molten"         , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Fe.mMeltingPoint); MT.Fe.liquid(tFluid);}
+		tFluid = FL.make("gold.molten"         , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Au.mMeltingPoint); MT.Au.liquid(tFluid);}
+		tFluid = FL.make("silver.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Ag.mMeltingPoint); MT.Ag.liquid(tFluid);}
+		tFluid = FL.make("lead.molten"         , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Pb.mMeltingPoint); MT.Pb.liquid(tFluid);}
+		tFluid = FL.make("copper.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Cu.mMeltingPoint); MT.Cu.liquid(tFluid);}
+		tFluid = FL.make("tin.molten"          , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Sn.mMeltingPoint); MT.Sn.liquid(tFluid);}
+		tFluid = FL.make("nickel.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Ni.mMeltingPoint); MT.Ni.liquid(tFluid);}
+		tFluid = FL.make("platinum.molten"     , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Pt.mMeltingPoint); MT.Pt.liquid(tFluid);}
+		tFluid = FL.make("cobalt.molten"       , 144); if (tFluid != null) {tFluid.getFluid().setTemperature((int)MT.Co.mMeltingPoint); MT.Co.liquid(tFluid);}
+		
 		FL.create("plastic"                  , "Molten Plastic"      , MT.Plastic        , 1, 1000,   423);
 		FL.create("glass"                    , "Molten Glass"        , MT.Glass          , 1,    L,  1200);
 		FL.create("molten.enderpearl"        , "Molten Enderpearls"  , MT.EnderPearl     , 1,    L,  2723).setLuminosity( 5);
