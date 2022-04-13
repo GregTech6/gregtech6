@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,13 @@
 
 package gregapi.data;
 
-import java.io.File;
-import java.io.PrintStream;
-import java.util.*;
-import java.util.concurrent.locks.ReentrantLock;
-
 import gregapi.api.Abstract_Mod;
 import gregapi.block.BlockBase;
 import gregapi.block.IBlockBase;
 import gregapi.block.IBlockPlacable;
 import gregapi.block.IPrefixBlock;
 import gregapi.block.fluid.BlockBaseFluid;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.BiomeNameSet;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackMap;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ObjectStack;
-import gregapi.code.TagData;
+import gregapi.code.*;
 import gregapi.compat.buildcraft.ICompatBC;
 import gregapi.compat.computercraft.ICompatCC;
 import gregapi.compat.forestry.ICompatFR;
@@ -77,12 +65,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.io.File;
+import java.io.PrintStream;
+import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Gregorius Techneticies
@@ -1479,7 +1468,7 @@ public class CS {
 		
 		public static Set<String>
 		  SIMPLE = new HashSetNoNulls<>(F, "poison")
-		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
+		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "sulfuric_acid_fluid", "nitricacid", "nitric_acid_fluid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
 		, TOXIC = new HashSetNoNulls<>(F, "poison", "toxic_fluid", "mud_fluid", "bacterialsludge", "sludge", "fluiddeath")
 		, THAUMIC_FLUX = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
