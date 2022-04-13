@@ -20,7 +20,6 @@
 package gregapi.load;
 
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
@@ -1037,6 +1036,11 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneHighlight"       , 1, 0));
 		}
 		
+		if (MD.HBM.mLoaded) {
+			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.HBM, "tile.moon_turf", 1, 0));
+			
+			OM.reg(OP.stone, MT.STONES.MoonTurf                 , ST.make(MD.HBM, "tile.moon_turf"              , 1, 0));
+		}
 		if (MD.GC.mLoaded) {
 			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.GC, "tile.moonBlock", 1, 5));
 			

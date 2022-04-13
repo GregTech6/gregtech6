@@ -1598,6 +1598,7 @@ public class LoaderItemList implements Runnable {
 		IL.HBM_Bedrock_Oil                      .set(ST.make(MD.HBM, "tile.ore_bedrock_oil"                 , 1, 0));
 		IL.HBM_Mercury_Bottle                   .set(ST.make(MD.HBM, "item.bottle_mercury"                  , 1, 0), new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg));
 		IL.HBM_Mercury_Drop                     .set(ST.make(MD.HBM, "item.nugget_mercury"                  , 1, 0), new OreDictItemData(MT.Hg, U8));
+		IL.HBM_Mercury_Drop_Tiny                .set(ST.make(MD.HBM, "item.nugget_mercury_tiny"             , 1, 0), new OreDictItemData(MT.Hg, U72));
 		IL.HBM_Poison_Powder                    .set(ST.make(MD.HBM, "item.powder_poison"                   , 1, 0));
 		IL.HBM_Biomass                          .set(ST.make(MD.HBM, "item.biomass"                         , 1, 0));
 		IL.HBM_Biomass_Compressed               .set(ST.make(MD.HBM, "item.biomass_compressed"              , 1, 0));
