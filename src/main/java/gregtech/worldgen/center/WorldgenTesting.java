@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregtech.worldgen.center;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -45,6 +37,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -234,12 +232,12 @@ public class WorldgenTesting extends WorldgenObject {
 			, ST.make(Items.iron_pickaxe   , 1, 0)
 			, ST.make(Items.diamond_pickaxe, 1, 0)
 			
-			, IL.Thermometer_Quicksilver.get(1)
+			, IL.Tool_Chunk_Remover.get(1)
 			, IL.Tool_Worldgen_Debugger.get(1)
 			, IL.Tool_Cheat.get(1)
 			, IL.IC2_Debug.get(1)
 			, IL.Pill_Cure_All.get(64)
-			, IL.Brain_Tape.get(64)
+			, IL.Thermometer_Quicksilver.get(1)
 			, IL.Circuit_Selector.getWithDamage(1, 0)
 			, IL.Circuit_Selector.getWithDamage(1, 1)
 			, IL.Circuit_Selector.getWithDamage(1, 2)
@@ -281,7 +279,7 @@ public class WorldgenTesting extends WorldgenObject {
 			, NI
 			, NI
 			, NI
-			, NI
+			, IL.Brain_Tape.get(64)
 			, IL.Dynamite_Strong.get(64)
 			
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.WRENCH_HV     , 1, MT.NetherizedDiamond, MT.Magenta, V[3] * 1000, V[3], Long.MAX_VALUE)

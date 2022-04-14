@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,28 +19,15 @@
 
 package gregtech.items;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
 import gregapi.GT_API;
 import gregapi.code.IItemContainer;
 import gregapi.cover.covers.CoverTextureCanvas;
 import gregapi.data.*;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.BooksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.CS.ToolsGT;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandom;
-import gregapi.item.multiitem.behaviors.Behavior_Bucket_Simple;
-import gregapi.item.multiitem.behaviors.Behavior_PrintedPages;
-import gregapi.item.multiitem.behaviors.Behavior_Switch_Metadata;
-import gregapi.item.multiitem.behaviors.Behavior_Tool;
-import gregapi.item.multiitem.behaviors.IBehavior;
+import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.energy.EnergyStat;
 import gregapi.item.multiitem.energy.EnergyStatDebug;
 import gregapi.old.Textures;
@@ -60,6 +47,9 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.chunkGt;
 
 public class MultiItemRandomTools extends MultiItemRandom implements IItemRottable {
 	public MultiItemRandomTools(String aModID, String aUnlocalized) {
@@ -494,6 +484,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Cheat                      .set(addItem(9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Scanner                    .set(addItem(9002, "Portable Scanner"         , "", Behavior_Cropnalyzer.INSTANCE, new Behavior_Scanner(2), EnergyStat.makeTool(TD.Energy.EU, V[3]*8000, V[3], 64, next()), TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Cropnalyzer                .set(addItem(9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 64, next()), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
+		IL.Tool_Chunk_Remover              .set(addItem(9998, "Chunk Eraser"             , "", Behavior_Chunk_Remover.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.VACUOS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Worldgen_Debugger          .set(addItem(9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
 		
 		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', OD.button);

@@ -452,7 +452,7 @@ public enum IL implements IItemContainer {
 	Tool_Lighter_Platinum_Empty, Tool_Lighter_Platinum_Used, Tool_Lighter_Platinum_Full,
 	Tool_Lighter_Plastic_Empty, Tool_Lighter_Plastic_Used, Tool_Lighter_Plastic_Full, Tool_Lighter_Plastic_Broken,
 	Tool_Fire_Starter, Tool_Fire_Starter_Bark,
-	Tool_Cheat, Tool_Worldgen_Debugger, Tool_Scanner, Tool_Cropnalyzer,
+	Tool_Cheat, Tool_Worldgen_Debugger, Tool_Chunk_Remover, Tool_Scanner, Tool_Cropnalyzer,
 	Tool_Sword_Bronze, Tool_Pickaxe_Bronze, Tool_Shovel_Bronze, Tool_Axe_Bronze, Tool_Hoe_Bronze, // IC2
 	Tool_Sword_Steel, Tool_Pickaxe_Steel, Tool_Shovel_Steel, Tool_Axe_Steel, Tool_Hoe_Steel, // RC
 	
