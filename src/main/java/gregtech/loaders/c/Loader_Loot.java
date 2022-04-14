@@ -19,7 +19,6 @@
 
 package gregtech.loaders.c;
 
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -368,7 +367,7 @@ public class Loader_Loot implements Runnable {
 			return F;
 		}
 		if (ConfigsGT.WORLDGEN.get("loot." + aType, aLoot, T)) {
-			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(aLoot, aMin, aMax, aChance));
+			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(ST.copy(aLoot), aMin, aMax, aChance));
 		}
 		return T;
 	}

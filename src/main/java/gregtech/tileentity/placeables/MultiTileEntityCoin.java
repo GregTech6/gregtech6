@@ -64,6 +64,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
+@SuppressWarnings("ALL")
 public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities implements IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_GetSubItems, IMTE_OnRegistration, IMTE_OnRegistrationClient, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SetBlockBoundsBasedOnState, IMTE_AddCollisionBoxesToList, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_GetLightOpacity, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataByteArray {
 	protected boolean mIsUnique = F;
 	protected boolean[][][] mShape = new boolean[2][16][16];
@@ -281,7 +282,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
 		INSTANCE = this;
 		MTE_REGISTRY = aRegistry;
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) {
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null) {
 			if ((tMaterial.mHidden || !OP.plateTiny.canGenerateItem(tMaterial)) && tMaterial != MT.Cu && tMaterial != MT.Ag && tMaterial != MT.Au && tMaterial != MT.Pt) continue;
 			
 			mMaterial = tMaterial;
@@ -322,13 +323,14 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 			{T,T,T,T,T,T,F,F,F,F,T,T,T,T,T,T}
 			}};
 			
-			COIN_MAP.put(tMaterial, getCoin(1, aRegistry, aID));
+			ItemStack tCoin = getCoin(1, aRegistry, aID);
+			COIN_MAP.put(tMaterial, tCoin);
 		}
 	}
 	
 	@Override
 	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		aList.addAll(COIN_MAP.values());
+		for (ItemStack tStack : COIN_MAP.values()) aList.add(ST.copy(tStack));
 		return F;
 	}
 	
