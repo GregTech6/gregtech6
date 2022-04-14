@@ -188,7 +188,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			while (b != tRoomLayout[a].length/2) {b+=(b>(tRoomLayout[a].length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
 		}
 		
-		NBTTagCompound tCoin = (NBTTagCompound)MultiTileEntityCoin.COIN_MAP.get(UT.Code.select(MT.NULL, MT.Cu, MT.Cu, MT.Cu, MT.Ag, MT.Ag, MT.Au, MT.Au, MT.Pt)).getTagCompound();
+		NBTTagCompound tCoin = (NBTTagCompound)MultiTileEntityCoin.COIN_MAP.get(UT.Code.select(MT.Electrum, MT.Cu, MT.Cu, MT.Cu, MT.Ag, MT.Ag, MT.Au, MT.Au, MT.Pt)).getTagCompound();
 		if (tCoin == null) tCoin = UT.NBT.make(); else tCoin = (NBTTagCompound)tCoin.copy();
 		
 		boolean

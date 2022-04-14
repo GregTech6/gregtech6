@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregtech.tileentity.placeables;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
@@ -34,7 +27,6 @@ import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -61,6 +53,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -282,7 +281,9 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
 		INSTANCE = this;
 		MTE_REGISTRY = aRegistry;
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (OP.plateTiny.canGenerateItem(tMaterial) && !tMaterial.mHidden) {
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) {
+			if ((tMaterial.mHidden || !OP.plateTiny.canGenerateItem(tMaterial)) && tMaterial != MT.Cu && tMaterial != MT.Ag && tMaterial != MT.Au && tMaterial != MT.Pt) continue;
+			
 			mMaterial = tMaterial;
 			mIsUnique = T;
 			mShape = new boolean[][][] {{
