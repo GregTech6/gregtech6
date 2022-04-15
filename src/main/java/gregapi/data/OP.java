@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.TD.ItemGenerator.*;
-import static gregapi.data.TD.Prefix.*;
-import static gregapi.data.TD.Processing.*;
-import static gregapi.data.TD.Properties.*;
-import static gregapi.oredict.OreDictMaterialCondition.*;
-
 import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
 import gregapi.code.ICondition.Or;
@@ -37,6 +30,15 @@ import gregapi.oredict.listeners.OreDictListenerItem_Washing;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.TD.ItemGenerator.*;
+import static gregapi.data.TD.Prefix.*;
+import static gregapi.data.TD.Processing.REACTS_WITH_GLASS;
+import static gregapi.data.TD.Processing.SMITHABLE;
+import static gregapi.data.TD.Properties.*;
+import static gregapi.oredict.OreDictMaterialCondition.qualmin;
+import static gregapi.oredict.OreDictMaterialCondition.typemin;
 
 /**
  * @author Gregorius Techneticies
@@ -110,9 +112,9 @@ public class OP {
 	
 	crushed                     = create("crushed"                      , "Crushed Ores"                    , "Crushed "                        , " Ore"                            ).setMaterialStats( 9*U8)     .setCondition(ORES)                                                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_DIRTY  ).aspects(TC.PERFODIO, 1),
 	crushedTiny                 = create("crushedTiny"                  , "Tiny Crushed Ores"               , "Tiny Crushed "                   , " Ore"                            ).setMaterialStats( 9*U72)    .setCondition(crushed)                                                                                      .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_DIRTY  ).aspects(TC.PERFODIO, 1),
-	crushedPurified             = create("crushedPurified"              , "Purified Ores"                   , "Purified "                       , " Ore"                            ).setMaterialStats(10*U8)     .setCondition(ORES)                                                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_CLEAN  ).aspects(TC.PERFODIO, 1),
+	crushedPurified             = create("crushedPurified"              , "Purified Ores"                   , "Purified "                       , " Ore"                            ).setMaterialStats(10*U8)     .setCondition(crushed)                                                                                      .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_CLEAN  ).aspects(TC.PERFODIO, 1),
 	crushedPurifiedTiny         = create("crushedPurifiedTiny"          , "Tiny Purified Ores"              , "Tiny Purified "                  , " Ore"                            ).setMaterialStats(10*U72)    .setCondition(crushedPurified)                                                                              .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_CLEAN  ).aspects(TC.PERFODIO, 1),
-	crushedCentrifuged          = create("crushedCentrifuged"           , "Refined Ores"                    , "Refined "                        , " Ore"                            ).setMaterialStats(11*U8)     .setCondition(ORES)                                                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_REFINED).aspects(TC.PERFODIO, 1),
+	crushedCentrifuged          = create("crushedCentrifuged"           , "Refined Ores"                    , "Refined "                        , " Ore"                            ).setMaterialStats(11*U8)     .setCondition(crushedPurified)                                                                              .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_REFINED).aspects(TC.PERFODIO, 1),
 	crushedCentrifugedTiny      = create("crushedCentrifugedTiny"       , "Tiny Refined Ores"               , "Tiny Refined "                   , " Ore"                            ).setMaterialStats(11*U72)    .setCondition(crushedCentrifuged)                                                                           .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_REFINED).aspects(TC.PERFODIO, 1),
 	rockGt                      = create("rockGt"                       , "Rocks"                           , ""                                , " bearing Rock"                   ).setMaterialStats( 9*U4   )  .setCondition(new Or(ORES, STONE))                                                                          .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_CLEAN  ).aspects(TC.TERRA, 1),
 	rawOreChunk                 = create("rawOreChunk"                  , "Raw Ore Chunks"                  , "Raw Chunk of "                   , " Ore"                            ).setMaterialStats(27*U72)    .setCondition(ORES)                                                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, ORE_PROCESSING_BASED, ORE_PROCESSING_DIRTY  ).aspects(TC.TERRA, 1), // Prefix of Harder Ores
@@ -585,11 +587,13 @@ public class OP {
 		bucket     .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
 		bottle     .disableItemGeneration(MT.Empty, MT.H2O);
 		
+		
 		gemChipped .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
 		gemFlawed  .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
-		gem        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		gem        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Ta);
 		bouleGt    .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy);
 		plateTiny  .forceItemGeneration(MT.Paper);
+		
 		
 		for (OreDictMaterial tMat : ANY.Sapphire.mToThis) bouleGt.forceItemGeneration(tMat);
 		for (OreDictMaterial tMat : ANY.Hexorium.mToThis) bouleGt.forceItemGeneration(tMat);

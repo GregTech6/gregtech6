@@ -178,8 +178,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Fe2O3                 , U* 5), MT.Al   .liquid(U* 2, T), MT.Fe   .liquid(U* 2, F), OM.dust(MT.Al2O3 ,U*5));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Nb2O5                 , U*21), MT.Al   .liquid(U*10, T), MT.Al2O3.liquid(U*25, F), OM.dust(MT.Nb   , U*6));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.K2TaF7                , U*10), MT.Na   .liquid(U* 5, T), NF, OM.dust(MT.Ta   , U*1), OM.dust(MT.NaF   ,U*10), OM.dust(MT.KF    , U*4));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Nb2O5                 , U* 7), MT.Al   .liquid(U3*10,T), MT.Al2O3.liquid(U3*25,F), OM.dust(MT.Nb   , U*2));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.K2TaF7                , U*10), MT.Na   .liquid(U* 5, T), NF, OP.gem.mat(MT.Ta, 1), OM.dust(MT.NaF   ,U*10), OM.dust(MT.KF    , U*4));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                  , U *4), MT.CaCO3.liquid(U* 5, T), NF, OM.dust(MT.CaCl2, U*3), OM.dust(MT.Na2CO3, U*3), OM.dust(MT.Na2CO3, U*3));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                  , U *4), MT.MgCO3.liquid(U* 5, T), NF, OM.dust(MT.MgCl2, U*3), OM.dust(MT.Na2CO3, U*3), OM.dust(MT.Na2CO3, U*3));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Scheelite     , U *6), MT.HCl   .fluid(U* 4, T), NF, OM.dust(MT.CaCl2, U*3), OM.dust(MT.H2WO4 , U*4), OM.dust(MT.H2WO4 , U*3));

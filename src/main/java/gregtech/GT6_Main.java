@@ -185,7 +185,7 @@ public class GT6_Main extends Abstract_Mod {
 		OP.gemFlawless .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemExquisite.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemLegendary.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		
+		OP.crushed     .disableItemGeneration(MT.Fe, MT.Al, MT.Ti, MT.W, MT.U_238, MT.F, MT.Ta, MT.Nb);
 		
 		RM.pulverizing(ST.make(Blocks.cobblestone, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.stone      , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
