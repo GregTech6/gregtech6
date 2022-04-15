@@ -581,7 +581,7 @@ public class GT6_Main extends Abstract_Mod {
 		ORD.println("============================");
 		for (String tUnknown : OreDictManager.INSTANCE.getUnknownMaterials()) ORD.println(tUnknown);
 		ORD.println("============================");
-
+		
 		if (CODE_CLIENT) {try {
 		ORD.println("============================");
 		ORD.println("Outputting Colors of unknown Materials");
@@ -597,13 +597,13 @@ public class GT6_Main extends Abstract_Mod {
 		}
 		ORD.println("============================");
 		} catch(Throwable e) {e.printStackTrace(ERR);}}
-
+		
 		ORD.println("================================");
 		ORD.println("Outputting Unknown OreDict Names");
 		ORD.println("================================");
 		for (String tUnknown : OreDictManager.INSTANCE.getUnknownNames()) ORD.println(tUnknown);
 		ORD.println("================================");
-
+		
 		/*
 		try {((CommandHandler)aEvent.getServer().getCommandManager()).registerCommand(new CommandBase() {
 			@Override public String getCommandName() {return "xyzd";}
@@ -617,7 +617,7 @@ public class GT6_Main extends Abstract_Mod {
 						try {
 							if (aPlayer.ridingEntity != null) aPlayer.mountEntity(null);
 							if (aPlayer.riddenByEntity != null) aPlayer.riddenByEntity.mountEntity(null);
-
+							
 							if (aParameters.length >= 4) {
 								GT_Utility.moveEntityToDimensionAtCoords(aPlayer, Integer.parseInt(aParameters[3]), Integer.parseInt(aParameters[0])+0.5, Integer.parseInt(aParameters[1])+0.5, Integer.parseInt(aParameters[2])+0.5);
 							} else {
@@ -718,7 +718,7 @@ public class GT6_Main extends Abstract_Mod {
 		}
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
-
+	
 	@Override public void onModServerStarted2(FMLServerStartedEvent aEvent) {/**/}
 	@Override public void onModServerStopped2(FMLServerStoppedEvent aEvent) {/**/}
 

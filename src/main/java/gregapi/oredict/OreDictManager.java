@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,32 +19,13 @@
 
 package gregapi.oredict;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import gregapi.api.Abstract_Mod;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackMap;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
+import gregapi.code.*;
 import gregapi.config.Config;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.IPrefixItem;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.IOreDictListenerEvent.OreDictRegistrationContainer;
@@ -66,6 +47,10 @@ import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerRegisterEv
 import net.minecraftforge.fluids.IFluidContainerItem;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreDictionary.OreRegisterEvent;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -264,11 +249,15 @@ public final class OreDictManager {
 	}
 	
 	public Collection<String> getUnknownMaterials() {
-		return new ArrayListNoNulls<>(mUnknownMaterials);
+		List<String> rList = new ArrayListNoNulls<>(mUnknownMaterials);
+		Collections.sort(rList);
+		return rList;
 	}
 	
 	public Collection<String> getUnknownNames() {
-		return new ArrayListNoNulls<>(mUnknownNames);
+		List<String> rList = new ArrayListNoNulls<>(mUnknownNames);
+		Collections.sort(rList);
+		return rList;
 	}
 	
 	private static class OreDictEventContainer {
