@@ -31,6 +31,7 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
+@SuppressWarnings("ALL")
 public class Loader_Recipes_Chem implements Runnable {
 	@Override public void run() {
 		for (FluidStack tWater : FL.waters(1000)) {
@@ -100,6 +101,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  752, OP.dust.mat(MT.NaOH            ,   18), OM.ingot(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
 		RM.Mixer        .addRecipe2(T, 16,  752, OP.blockDust.mat(MT.NaOH       ,    2), OM.dust (MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
 		RM.Mixer        .addRecipe2(T, 16,  752, OP.blockDust.mat(MT.NaOH       ,    2), OM.ingot(MT.Al2O3,U * 5), MT.HF.gas(U *24, T)                                              , FL.array(MT.H2O.liquid(U *27, F), MT.Na3AlF6.liquid(U *20, F)));
+		RM.Mixer        .addRecipe2(T, 16,  560, OP.dust.mat(MT.Ta2O5           ,    7), OM.dust (MT.KF,U * 8), MT.HF.gas(U *20, T)                                                 , MT.H2O.liquid(U *15, F), OM.dust(MT.K2TaF7, U*20));
 		RM.Mixer        .addRecipe1(T, 16,  748, OP.dust.mat(MT.Sugar           ,   45), FL.array(MT.H2SO4.fluid(U4*7, T))                                                          , FL.array(MT.H2O.liquid(U4*135, F), MT.SO3.gas(U, F)), OM.dust(MT.C, U*12));
 		RM.Mixer        .addRecipe1(T, 16,  748, OP.blockDust.mat(MT.Sugar      ,    5), FL.array(MT.H2SO4.fluid(U4*7, T))                                                          , FL.array(MT.H2O.liquid(U4*135, F), MT.SO3.gas(U, F)), OM.dust(MT.C, U*12));
 		RM.Mixer        .addRecipe1(T, 16,  752, OM.dust(MT.OREMATS.Borax       ,U *43), FL.array(MT.HCl.fluid(U * 4, T))                                                           , FL.array(MT.H2O.liquid(U * 3, F), MT.SaltWater.liquid(U*16, F)), OM.dust(MT.H3BO3, U*28));
@@ -108,6 +110,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.MgCO3               ,U * 5), FL.array(MT.HCl.fluid(U * 4, T))                                                           , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.MgCl2, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.CaCO3               ,U * 5), FL.array(MT.HF.gas(U * 4, T))                                                              , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.CaF2, U*3));
 //      RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.MgCO3               ,U * 5), FL.array(MT.HF.gas(U * 4, T))                                                              , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.MgF2, U*3));
+		RM.Mixer        .addRecipe1(T, 16,  160, OM.dust(MT.K2CO3               ,U * 6), FL.array(MT.HF.gas(U * 4, T))                                                              , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.KF, U*4));
+		RM.Mixer        .addRecipe1(T, 16,  160, OM.dust(MT.Na2CO3              ,U * 6), FL.array(MT.HF.gas(U * 4, T))                                                              , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.NaF, U*4));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.K2CO3               ,U * 6), FL.array(MT.HNO3.liquid(U *10, T))                                                         , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.KNO3, U*10));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Na2CO3              ,U * 6), FL.array(MT.HNO3.liquid(U *10, T))                                                         , FL.array(MT.H2O.liquid(U * 3, F), MT.CO2.gas(U * 3, F)), OM.dust(MT.NaNO3, U*10));
 		RM.HeatMixer    .addRecipe1(T, 16,  354, OM.dust(MT.LiOH                ,U *18), FL.array(MT.Cl.gas(U * 6, T))                                                              , FL.array(MT.H2O.liquid(U * 9, F), MT.LiClO3.liquid(U*5, F)), OM.dust(MT.LiCl, U*10));
@@ -171,6 +175,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Centrifuge   .addRecipe0(T, 512, 120, MT.UF6.gas(U*7, T), MT.U238F6.gas(U*5, T), MT.U235F6.gas(U*2, T));
 		
 		
+		
+		
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Fe2O3                 , U* 5), MT.Al   .liquid(U* 2, T), MT.Fe   .liquid(U* 2, F), OM.dust(MT.Al2O3 ,U*5));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.Nb2O5                 , U*21), MT.Al   .liquid(U*10, T), MT.Al2O3.liquid(U*25, F), OM.dust(MT.Nb   , U*6));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.K2TaF7                , U*10), MT.Na   .liquid(U* 5, T), NF, OM.dust(MT.Ta   , U*1), OM.dust(MT.NaF   ,U*10), OM.dust(MT.KF    , U*4));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                  , U *4), MT.CaCO3.liquid(U* 5, T), NF, OM.dust(MT.CaCl2, U*3), OM.dust(MT.Na2CO3, U*3), OM.dust(MT.Na2CO3, U*3));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                  , U *4), MT.MgCO3.liquid(U* 5, T), NF, OM.dust(MT.MgCl2, U*3), OM.dust(MT.Na2CO3, U*3), OM.dust(MT.Na2CO3, U*3));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Scheelite     , U *6), MT.HCl   .fluid(U* 4, T), NF, OM.dust(MT.CaCl2, U*3), OM.dust(MT.H2WO4 , U*4), OM.dust(MT.H2WO4 , U*3));
