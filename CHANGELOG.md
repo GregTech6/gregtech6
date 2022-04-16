@@ -41,7 +41,7 @@ All the Reactor Stuff Erik did:
 [CHANGED] Carbon Dioxide as a reactor coolant now doesn't increase the factor of fuel rods inside anymore, now just offering an increase to the self stat.
 [CHANGED] Helium as a reactor coolant now doesn't decrease the factor of fuel rods inside as well as not increasing the self stat anymore, now just offering a lower emission stat.
 [CHANGED] Molten Tin/Molten Sodium as a reactor coolant will now increase the neutron maximum of fuel rods in it in addition to their previous effects.
-[CHANGED] Molten Thorium Salt is now slightly cheaper to produce and able to be produced with all sizes of dust.
+[CHANGED] Molten Thorium Salt is now slightly cheaper to produce and lasts much longer and able to be produced with all sizes of dust.
 [ADDED] A config option (EasyU235Extraction) to enable centrifuging U-235 from refined uranium ore. Disabled by default.
 [ADDED] A config option (Enable1x1ReactorCore) to enable the crafting recipe for the 1x1 reactor core. Disabled by default.
 [FIXED] Neutron Sensor previously behaving differently in maximum related modes on reactors using industrial coolant.
