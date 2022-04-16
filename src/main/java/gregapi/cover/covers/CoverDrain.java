@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,8 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.cover.CoverData;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -57,6 +51,10 @@ import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidHandler;
 import openblocks.common.LiquidXpUtils;
 import openmods.utils.EnchantmentUtils;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -183,6 +181,14 @@ public class CoverDrain extends AbstractCoverAttachment {
 					String tClass = UT.Reflection.getLowercaseClass(aEntity);
 					if (tClass.equalsIgnoreCase("EntityTFMazeSlime")) {
 						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Green.make(Math.max(1, ((EntitySlime)aEntity).getSlimeSize())), T);
+						return T;
+					}
+					if (tClass.equalsIgnoreCase("KingBlueSlime")) {
+						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Blue.make(4), T);
+						return T;
+					}
+					if (tClass.equalsIgnoreCase("BlueSlime")) {
+						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Slime_Blue.make(1), T);
 						return T;
 					}
 					if (tClass.equalsIgnoreCase("EntityPinkSlime")) {

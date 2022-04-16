@@ -867,7 +867,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Electrolyzer .addRecipe2(T, 64,   64, ST.tag(0), OM.dust(MT.Sand), OM.dust(MT.SiO2));
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   16, OM.dust(MT.SlimyBone), NF, FL.Slime_Green.make(250), OM.dust(MT.Bone));
-		RM.Centrifuge   .addRecipe1(T, 16,   16, ST.make(Items.magma_cream, 1, W), NF, FL.Slime_Green.make(250), ST.make(Items.blaze_powder, 1, 0));
+		RM.Centrifuge   .addRecipe1(T, 16,   16, ST.make(Items.magma_cream, 1, W), NF, FL.Slime_Green.make(125), ST.make(Items.blaze_powder, 1, 0));
 		for (String tFluid : FluidsGT.SLIME) if (FL.exists(tFluid)) {
 		RM.Centrifuge   .addRecipe0(T, 16,   64, FL.make(tFluid, 250), FL.Latex.make(L/2), FL.Glue.make(250));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Blaze, U9), FL.make(tFluid, 250), NF, ST.make(Items.magma_cream, 1, 0));

@@ -543,6 +543,8 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.mul(tWater, 1, 4, T), MT.CO2.gas(U4, T)), FL.Soda.make(250), ZL_IS);
 		}
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Mineralwater.make(250), MT.CO2.gas(U4, T)), FL.Mineralsoda.make(250), ZL_IS);
+		if (FL.Slime_Blue.exists())
+		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Blue  .make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Green .make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
 		
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Milk.make (                                    50), FL.Milk_Spoiled                          .make(50), ZL_IS);

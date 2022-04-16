@@ -614,6 +614,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(FL.Oxygen                  .make( 1), FL.Reikygen.make(1));
 		RM.genericycle(FL.Liquid_Oxygen           .make( 1), FL.Liquid_Reikygen.make(1));
 		RM.genericycle(FL.make("molten.latex"          , 1), FL.Latex.make(1));
+		RM.generify   (FL.Slime_Blue              .make( 1), FL.Slime_Green.make(1));
 		RM.generify   (FL.Slime_Pink              .make( 1), FL.Slime_Green.make(1));
 		RM.generify   (FL.RoyalJelly              .make( 1), FL.Honey.make(10));
 		RM.genericycle(FL.Honey                   .make( 1), FL.HoneyGrC.make(1), FL.HoneyBoP.make(1));

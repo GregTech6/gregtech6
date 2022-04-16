@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
@@ -38,6 +31,8 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_Binnie extends CompatMods {
 	public Compat_Recipes_Binnie(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -133,7 +128,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Olivine    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Olivine, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Diamond    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Diamond, 1));
 			
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mucous     .get(1), ZL_FS, FL.Honey.make(20), FL.Slime_Green.make(200), FL.Slime_Pink.make(50));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mucous     .get(1), ZL_FS, FL.Honey.make(20), FL.Slime_Green.make(FL.Slime_Blue.exists() ? 100 : 200), FL.Slime_Pink.make(50), FL.Slime_Blue.make(100));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Blaze      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Blaze, U9*2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Shimmering .get(1), NF, FL.Honey.make(20), OM.dust(MT.EnderPearl, U2));
 			

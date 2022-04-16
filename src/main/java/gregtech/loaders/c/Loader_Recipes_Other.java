@@ -146,9 +146,9 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.rem_smelting(aEvent.mStack);
 			if (MD.TiC.owns(aEvent.mStack)) return;
 			RM.biomass(ST.amount(6, aEvent.mStack), 32);
-			RM.rem_smelting(aEvent.mStack);
 			RM.ic2_extractor(aEvent.mStack, OM.ingot(MT.Rubber, 7*U9));
 			RM.Juicer           .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L/2), NI);
 			RM.Squeezer         .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L  ), NI);
