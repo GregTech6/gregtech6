@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,6 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.data.TD.Atomic.*;
-import static gregapi.data.TD.Compounds.*;
-import static gregapi.data.TD.Prefix.*;
-import static gregapi.data.TD.Processing.*;
-import static gregapi.data.TD.Properties.*;
-import static gregapi.oredict.OreDictMaterialCondition.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import gregapi.block.BlockBase;
 import gregapi.block.metatype.BlockStones;
 import gregapi.code.ArrayListNoNulls;
@@ -40,19 +28,8 @@ import gregapi.config.ConfigCategories;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverTextureMulti;
 import gregapi.cover.covers.CoverTextureSimple;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.CS.SFX;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -73,6 +50,18 @@ import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+import static gregapi.data.TD.Atomic.ANTIMATTER;
+import static gregapi.data.TD.Compounds.COATED;
+import static gregapi.data.TD.Prefix.*;
+import static gregapi.data.TD.Processing.*;
+import static gregapi.data.TD.Properties.STONE;
+import static gregapi.oredict.OreDictMaterialCondition.meltmin;
 
 public class Loader_OreProcessing implements Runnable {
 	static final long RECIPE_BITS = CR.DEF_NCC | CR.ONLY_IF_HAS_RESULT;
@@ -135,7 +124,7 @@ public class Loader_OreProcessing implements Runnable {
 		rawOreChunk                 .addListener(new OreProcessing_Maceration(crushedTiny   , 3, ANTIMATTER.NOT));
 		chunk                       .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
 		rubble                      .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
-		pebbles                     .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		pebbles                     .addListener(new OreProcessing_Maceration(dust          , 3, ANTIMATTER.NOT));
 		cluster                     .addListener(new OreProcessing_Maceration(dust          , 3, ANTIMATTER.NOT));
 		crushed                     .addListener(new OreProcessing_Maceration(dust          , 1, ANTIMATTER.NOT));
 		crushedTiny                 .addListener(new OreProcessing_Maceration(dustTiny      , 1, ANTIMATTER.NOT));

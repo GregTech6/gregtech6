@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,7 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
-import java.util.Iterator;
-import java.util.Map.Entry;
-
-import gregapi.data.ANY;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -39,6 +29,11 @@ import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Recipes_Furnace implements Runnable {
 	public static boolean RUNNING = F;
@@ -118,7 +113,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 		OP.oreRaw                .addListener(new Listener_Furnace_Smelting(U    , T));
 		OP.chunk                 .addListener(new Listener_Furnace_Smelting(U * 2, T));
 		OP.rubble                .addListener(new Listener_Furnace_Smelting(U * 2, T));
-		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U * 2, T));
+		OP.pebbles               .addListener(new Listener_Furnace_Smelting(U * 3, T));
 		OP.cluster               .addListener(new Listener_Furnace_Smelting(U * 3, T));
 		OP.cleanGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
 		OP.dirtyGravel           .addListener(new Listener_Furnace_Smelting(   -1, T));
