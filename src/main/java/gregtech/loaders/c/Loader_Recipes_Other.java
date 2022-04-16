@@ -22,7 +22,6 @@ package gregtech.loaders.c;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -147,6 +146,7 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (MD.TiC.owns(aEvent.mStack)) return;
 			RM.biomass(ST.amount(6, aEvent.mStack), 32);
 			RM.rem_smelting(aEvent.mStack);
 			RM.ic2_extractor(aEvent.mStack, OM.ingot(MT.Rubber, 7*U9));

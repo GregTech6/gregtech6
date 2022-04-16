@@ -1932,9 +1932,6 @@ public class LoaderItemList implements Runnable {
 		if (MD.BINNIE.mLoaded) {Item
 		tItem = ST.item(MD.BINNIE, "containerGlass"     ); if (tItem != null) tItem.setContainerItem(Items.glass_bottle);
 		tItem = ST.item(MD.BINNIE, "containerBucket"    ); if (tItem != null) tItem.setContainerItem(Items.bucket);
-		tItem = ST.item(MD.BINNIE, "containerCan"       ); if (tItem != null) tItem.setContainerItem(IL.FR_TinCapsule.item());
-		tItem = ST.item(MD.BINNIE, "containerCapsule"   ); if (tItem != null) tItem.setContainerItem(IL.FR_WaxCapsule.item());
-		tItem = ST.item(MD.BINNIE, "containerRefractory"); if (tItem != null) tItem.setContainerItem(IL.FR_RefractoryCapsule.item());
 		}
 		
 		if (MD.IC2C.mLoaded) {
