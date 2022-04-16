@@ -31,6 +31,7 @@ import gregapi.util.ST;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 
 import static gregapi.data.CS.*;
 
@@ -721,6 +722,8 @@ public class LoaderItemList implements Runnable {
 		IL.Food_Potato                          .set(ST.make(Items.potato, 1, 0), null, "cropPotato");
 		IL.Food_Potato_Baked                    .set(ST.make(Items.baked_potato, 1, 0));
 		IL.Food_Potato_Poisonous                .set(ST.make(Items.poisonous_potato, 1, 0));
+		
+		IL.TiC_Stonetorch                       .set(ST.make(MD.TiC, "decoration.stonetorch", 1, 0), null, OD.blockTorch);
 		
 		IL.TFC_Torch                            .set(ST.make(MD.TFCP.mLoaded?MD.TFCP:MD.TFC, "Torch"        , 1, 0), null, OD.blockTorch);
 		IL.TFC_Stick                            .set(ST.make(MD.TFCP.mLoaded?MD.TFCP:MD.TFC, "item.stick"   , 1, 0));
@@ -1926,7 +1929,13 @@ public class LoaderItemList implements Runnable {
 		
 		IL.Ancient_Debris.set((IL.EtFu_Ancient_Debris.exists() ? IL.EtFu_Ancient_Debris : IL.NePl_Ancient_Debris).get(1));
 		
-		ST.item(MD.BINNIE, "containerGlass", Items.potionitem).setContainerItem(Items.glass_bottle);
+		if (MD.BINNIE.mLoaded) {Item
+		tItem = ST.item(MD.BINNIE, "containerGlass"     ); if (tItem != null) tItem.setContainerItem(Items.glass_bottle);
+		tItem = ST.item(MD.BINNIE, "containerBucket"    ); if (tItem != null) tItem.setContainerItem(Items.bucket);
+		tItem = ST.item(MD.BINNIE, "containerCan"       ); if (tItem != null) tItem.setContainerItem(IL.FR_TinCapsule.item());
+		tItem = ST.item(MD.BINNIE, "containerCapsule"   ); if (tItem != null) tItem.setContainerItem(IL.FR_WaxCapsule.item());
+		tItem = ST.item(MD.BINNIE, "containerRefractory"); if (tItem != null) tItem.setContainerItem(IL.FR_RefractoryCapsule.item());
+		}
 		
 		if (MD.IC2C.mLoaded) {
 		IL.IC2_Iridium_Shard                    .set(NI);

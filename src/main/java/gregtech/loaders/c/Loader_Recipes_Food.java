@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,8 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.FoodsGT;
-import gregapi.data.CS.Sandwiches;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
-import gregapi.oredict.OreDictItemData;
-import gregapi.oredict.OreDictManager;
-import gregapi.oredict.OreDictMaterial;
-import gregapi.oredict.OreDictMaterialStack;
-import gregapi.oredict.OreDictPrefix;
+import gregapi.data.*;
+import gregapi.oredict.*;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
@@ -48,6 +31,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 public class Loader_Recipes_Food implements Runnable {
 	@Override public void run() {
@@ -637,8 +623,15 @@ public class Loader_Recipes_Food implements Runnable {
 		tOutput = IL.FR_Royal_Jelly.get(1, IL.HaC_Royal_Jelly.get(1)); if (ST.valid(tOutput))
 		RM.Coagulator       .addRecipe0(T,  0,   16, FL.RoyalJelly.make(100), NF, tOutput);
 		
+		tOutput = ST.make(MD.TiC, "materials", 1, 36); if (ST.valid(tOutput))
+		RM.Coagulator       .addRecipe0(T,  0,   16, FL.Glue.make(144), NF, tOutput);
+		tOutput = ST.make(MD.TiC, "strangeFood", 1, 1); if (ST.valid(tOutput) && FL.Blood.exists())
+		RM.Coagulator       .addRecipe0(T,  0,   16, FL.Blood.make(160), NF, tOutput);
+		
 		if (FL.Slime_Pink.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballPink", 1);
 		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink .make(250), NF, ST.valid(tOutput) ? tOutput : OP.nugget.mat(MT.MeatRaw, 1));}
+		if (FL.Slime_Blue.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballBlue", 1);
+		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Blue .make(250), NF, ST.valid(tOutput) ? tOutput : ST.make(Items.slime_ball, 1, 0));}
 		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Green.make(250), NF, ST.make(Items.slime_ball, 1, 0));
 		
 		RM.Coagulator       .addRecipe0(T,  0, 1024, FL.Milk   .make(1000), NF, IL.Food_Cheese.get(1));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,7 @@
 
 package gregtech.items;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.Sandwiches;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.TC;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -38,6 +29,8 @@ import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.*;
 
 public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 	public MultiItemBottles(String aModID, String aUnlocalized) {
@@ -202,9 +195,25 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(tLastID =  2100, "Banana Juice"                 , "", "foodBananajuice"                 , FL.Juice_Banana           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		addItem(tLastID =  2105, "Banana Smoothie"              , "", "foodBananasmoothie"              , FL.Smoothie_Banana        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		
-		addItem(tLastID =  2200, "Green Slime Bottle"           , "Can be used as Glue too", "itemGlue" , FL.Slime_Green            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
-		addItem(tLastID =  2201, "Pink Slime Bottle"            , "Can be used as Glue too", "itemGlue" , FL.Slime_Pink             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS         , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Pink);
-		addItem(tLastID =  2210, "BAWLS"                        , ""                                    , FL.BAWLS                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE);
+		addItem(tLastID =  2200, "Green Slime Bottle"         , "Can be used as Glue too", OD.container250slimegreen, FL.Slime_Green.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
+		addItem(tLastID =  2201, "Pink Slime Bottle"          , "Can be used as Glue too", OD.container250slimepink , FL.Slime_Pink .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS         , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Pink);
+		addItem(tLastID =  2202, "Blue Slime Bottle"          , "Can be used as Glue too", OD.container250slimeblue , FL.Slime_Blue .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Blue);
+		addItem(tLastID =  2210, "BAWLS"                      , ""                                                  , FL.BAWLS      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE);
+		
+		CR.shapeless(make(4, 2200), CR.DEF, new Object[] {OD.container1000slimegreen, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3, 2200), CR.DEF, new Object[] {OD.container1000slimegreen, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2, 2200), CR.DEF, new Object[] {OD.container1000slimegreen, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1, 2200), CR.DEF, new Object[] {OD.container1000slimegreen, OP.bottle.dat(MT.Empty)});
+		
+		CR.shapeless(make(4, 2201), CR.DEF, new Object[] {OD.container1000slimepink, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3, 2201), CR.DEF, new Object[] {OD.container1000slimepink, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2, 2201), CR.DEF, new Object[] {OD.container1000slimepink, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1, 2201), CR.DEF, new Object[] {OD.container1000slimepink, OP.bottle.dat(MT.Empty)});
+		
+		CR.shapeless(make(4, 2202), CR.DEF, new Object[] {OD.container1000slimeblue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3, 2202), CR.DEF, new Object[] {OD.container1000slimeblue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2, 2202), CR.DEF, new Object[] {OD.container1000slimeblue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1, 2202), CR.DEF, new Object[] {OD.container1000slimeblue, OP.bottle.dat(MT.Empty)});
 		
 		addItem(tLastID =  2300, "Melon Juice"                  , "", "foodMelonjuice"                  , FL.Juice_Melon            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), FoodStatFluid.INSTANCE);
 		addItem(tLastID =  2305, "Melon Smoothie"               , "", "foodMelonsmoothie"               , FL.Smoothie_Melon         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 2), FoodStatFluid.INSTANCE);
@@ -328,29 +337,37 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(32132+i, "Bottled Flower Dye"   , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_FLOWER[i]);
 		}
 		
+		IL.Bottle_Blood.set(
+		addItem(tLastID = 32763, "Bottle o'Blood", "", "bottleBlood", OD.container250blood, FL.Blood.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS, 2), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		
+		CR.shapeless(make(4,tLastID), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3,tLastID), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2,tLastID), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty)});
+		
 		IL.Bottle_Lubricant.set(
 		addItem(tLastID = 32764, "Lubricant Bottle", "", OP.bottle.dat(MT.Lubricant), FL.LubRoCant.make(250), FL.Lubricant.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));
 		
-		CR.shapeless(make(4,32764), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(3,32764), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(2,32764), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(1,32764), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(4,tLastID), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3,tLastID), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2,tLastID), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty)});
 		
 		IL.Bottle_Mercury.set(
 		addItem(tLastID = 32765, "Mercury Bottle", "Also called Quicksilver", new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg).toString() /* <- yes that toString() is needed! */, OD.itemQuicksilver, MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM, 2), FoodStatFluid.INSTANCE));
 		
-		CR.shapeless(make(1,32765), CR.DEF, new Object[] {OD.itemQuicksilver, OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(1,32765), CR.DEF, new Object[] {OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(1,32765), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(2,32765), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OD.itemQuicksilver, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2,tLastID), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		
 		IL.Bottle_Glue.set(
 		addItem(tLastID = 32766, "Glue Bottle", "", OP.bottle.dat(MT.Glue), FL.Glue.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));
 		
-		CR.shapeless(make(4,32766), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(3,32766), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(2,32766), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(make(1,32766), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(4,tLastID), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3,tLastID), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2,tLastID), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OD.container1000glue, OP.bottle.dat(MT.Empty)});
 		
 		// TODO foodChocolatemilk
 	}

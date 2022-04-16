@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,11 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -926,6 +921,14 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cellSeedoil"                     , OD.container1000seedoil);
 		OreDictManager.INSTANCE.addReRegistration("cellCreosote"                    , OD.container1000creosote);
 		OreDictManager.INSTANCE.addReRegistration("cellLubricant"                   , OD.container1000lubricant);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250slimeblue          , OD.container250slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250slimepink          , OD.container250slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250slimegreen         , OD.container250slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000slimeblue         , OD.container1000slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000slimepink         , OD.container1000slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000slimegreen        , OD.container1000slime);
+		OreDictManager.INSTANCE.addReRegistration(OD.container250slime              , OD.itemGlue);
+		OreDictManager.INSTANCE.addReRegistration(OD.container1000slime             , OD.itemGlue);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250glue               , OD.itemGlue);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000glue              , OD.itemGlue);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250poison             , OD.itemPoison);

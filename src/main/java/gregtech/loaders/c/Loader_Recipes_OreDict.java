@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,10 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.code.ItemStackContainer;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.BooksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
@@ -47,6 +35,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 	@Override
@@ -114,24 +105,36 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 		}});
 		addListener(OD.slimeball, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.itemTar.is_(aEvent.mStack)) return;
-			if (ST.item_(aEvent.mStack) != Items.slime_ball) RM.generify(aEvent.mStack, ST.make(Items.slime_ball, 1, 0));
+			
 			RM.Mixer        .addRecipe2(T, 16,   16,              aEvent.mStack , OM.dust(MT.Blaze, U9), ST.make(Items.magma_cream, 1, 0));
 			RM.Mixer        .addRecipe2(T, 16,   16, ST.amount(9, aEvent.mStack), OM.dust(MT.Blaze    ), ST.make(Items.magma_cream, 9, 0));
-			if (!OD.slimeballSwet.is_(aEvent.mStack) && !OD.slimeballPink.is_(aEvent.mStack) && !OD.slimeballRice.is_(aEvent.mStack) && !OD.slimeballBorax.is_(aEvent.mStack)) {
+			
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
+			
+			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
+			
+			if (MD.TiC.owns(aEvent.mStack) || OD.slimeballSwet.is_(aEvent.mStack) || OD.slimeballPink.is_(aEvent.mStack) || OD.slimeballRice.is_(aEvent.mStack) || OD.slimeballBorax.is_(aEvent.mStack)) return;
+			
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
 			RM.Squeezer     .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(250), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(125), ZL_IS);
 			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));
 			RM.Drying       .addRecipe1(T, 16,  128,              aEvent.mStack , NF, FL.DistW.make(50), ST.make(MD.SC2, "ItemSlimeRubber", 1, 0));
-			}
-			
-			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
+		}});
+		addListener(OD.slimeballBlue, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			for (FluidStack tWater : FL.waters(250, 200))
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
-			
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make((Item)OP.plantGtFiber.mRegisteredPrefixItems.get(0), 4, W)), ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
+			RM.Squeezer     .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Blue.make(250, FL.Slime_Green), ZL_IS);
+			RM.Juicer       .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Blue.make(125, FL.Slime_Green), ZL_IS);
+			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));
+			RM.Drying       .addRecipe1(T, 16,  128,              aEvent.mStack , NF, FL.DistW.make(50), ST.make(MD.SC2, "ItemSlimeRubber", 1, 0));
+			RM.generify(aEvent.mStack, ST.make(Items.slime_ball, 1, 0));
 		}});
 		addListener(OD.slimeballPink, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
 			RM.Squeezer     .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Pink.make(250, FL.Slime_Green), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Pink.make(125, FL.Slime_Green), ZL_IS);
 			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));
@@ -139,6 +142,8 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			RM.generify(aEvent.mStack, ST.make(Items.slime_ball, 1, 0));
 		}});
 		addListener(OD.slimeballSwet, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
 			RM.Squeezer     .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(250), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Slime_Green.make(125), ZL_IS);
 			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));

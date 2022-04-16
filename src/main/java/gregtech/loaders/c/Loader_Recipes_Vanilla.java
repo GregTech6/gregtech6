@@ -183,8 +183,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(IL.Stick.get(1), DEF, "k", "X", 'X', treeSapling);
 		
 		// Normal Torches need to be the absolute last in this Array!
-		IL[] tItems = new IL[] {IL.NeLi_Bonetorch, IL.Torch};
-		Object[] tSticks = new Object[] {Items.bone, OD.stickAnyWood};
+		IL[] tItems = new IL[] {IL.NeLi_Bonetorch, IL.TiC_Stonetorch, IL.Torch};
+		Object[] tSticks = new Object[] {Items.bone, OP.stick.dat(ANY.Stone), OD.stickAnyWood};
 		
 		for (int i = 0; i < tItems.length; i++) if (tItems[i].exists()) {
 			// Torches, lots and lots of Torches.

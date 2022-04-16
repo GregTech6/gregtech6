@@ -274,6 +274,7 @@ public enum FL {
 	, Sauce_Snitches            ("potion.diablosauce.strong"                                , SIMPLE, LIQUID, FOOD)
 	, Sauce_BBQ                 ("bbqsauce"                                                 , SIMPLE, LIQUID, FOOD)
 	
+	, Slime_Blue                ("slime.blue"                                               , SIMPLE, LIQUID, FOOD, SLIME)
 	, Slime_Pink                ("pinkslime"                                                , SIMPLE, LIQUID, FOOD, SLIME)
 	, Slime_Green               ("slime"                                                    , SIMPLE, LIQUID, FOOD, SLIME)
 	, BAWLS                     ("bawls"                                                    , SIMPLE, LIQUID, FOOD)
@@ -285,6 +286,7 @@ public enum FL {
 	, Purple_Drink              ("purpledrink"              , "potion.purpledrink"          , SIMPLE, LIQUID, FOOD)
 	, Lemonade                  ("potion.lemonade"                                          , SIMPLE, LIQUID, FOOD)
 	, Grenade_Juice             ("potion.cavejohnsonsgrenadejuice"                          , SIMPLE, LIQUID, FOOD)
+	, Blood                     ("blood"                                                    , SIMPLE, LIQUID, FOOD)
 	
 	, Vinegar_Grape             ("vinegar"                  , "potion.vinegar"              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
 	, Vinegar_Apple             ("applevinegar"                                             , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
