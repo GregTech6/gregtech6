@@ -212,7 +212,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			if (tRecipe != ZL_IS) for (int i = 0; i < tRecipe.length; i++) if (!slotHas(i+21)) slot(i+21, ST.amount(0, tRecipe[i]));
 		}
 		ItemStack rStack = CR.getany(worldObj, aAllowCache, slot(21), slot(22), slot(23), slot(24), slot(25), slot(26), slot(27), slot(28), slot(29));
-		if (OM.materialcontains(rStack, TD.EXPLODES_IN_NONVANILLA_CRAFTING_GRID)) explode(4);
+		if (OM.materialcontains(rStack, TD.Properties.EXPLODES_IN_NONVANILLA_CRAFTING_GRID)) explode(4);
 		return slot(31, rStack);
 	}
 	

@@ -1672,6 +1672,7 @@ public class MT {
 	CrystalMatrix           = slloymachine  ( 8799, "Crystal Matrix"                                ,  83, 231, 234     , UNBURNABLE, WITHER_PROOF, ENDER_DRAGON_PROOF, VALUABLE, MAGICAL).qual(3,        20.0,     25600,  4)                                      .setMcfg( 1, Diamond        ,20*U, NetherStar       , 2*U)                                                                                                  .aspects(TC.VITREUS, 8, TC.PRAECANTIO, 4, TC.NEBRISUM, 4).heat(3896, 5127),
 	CosmicNeutronium        = setalmachine  ( 8800, "Cosmic Neutronium"                             ,  30,  10,  40     , UNBURNABLE, WITHER_PROOF, ENDER_DRAGON_PROOF, VALUABLE, MAGICAL).qual(3,        50.0,    100000, 10)                                                                                                                                                                                                  .aspects(TC.POTENTIA, 10, TC.NEBRISUM, 10, TC.RADIO, 10, TC.TENEBRAE, 10, TC.TERRA, 10).heat(100000),
 	Infinity                = setalmachine  ( 8801, "Infinity"                                      , 250, 250, 250     , UNBURNABLE, WITHER_PROOF, ENDER_DRAGON_PROOF, VALUABLE, MAGICAL, GLOWING, LIGHTING, MAGNETIC_ACTIVE).qual(3,1000000000.0,1000000000, 15)                                                                                                                                                              .aspects(TC.POTENTIA, 10, TC.NEBRISUM, 10, TC.PERMUTATIO, 10, TC.MAGNETO, 10, TC.PRAECANTIO, 10, TC.AURAM, 10).heat(100000),
+	Unstable                = setal         ( 8805, "Unstable"                                      , 255, 255, 255, 128, AUTO_BLACKLIST, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, "Unstableingot", MD.ExU)                                                                                                                                                                                                                        .aspects(TC.PERDITIO, 4),
 	
 	
 	Trinaquadalloy          = alloymachine  ( 8684, "Trinaquadalloy"                                , 146, 186, 146     , CENTRIFUGE, "NaquadahAlloy").qual(3, 14.0,  20480,  5)                                                                                    .uumAloy( 0, Ke             , 6*U, Nq               , 2*U, C                , 1*U)                                                                          .aspects(TC.METALLUM, 3, TC.TUTAMEN, 3, TC.NEBRISUM, 1),
@@ -2332,6 +2333,7 @@ public class MT {
 			Ectoplasm               .put(MD.RT);
 			
 			
+			Unstable                .put(MD.ExU, BETWEENLANDS).visDefault();
 			Bedrockium              .put(MD.ExU, BETWEENLANDS).visDefault();
 			
 			
@@ -3611,7 +3613,6 @@ public class MT {
 		TerrasteelAlloyRaw          = unused    ("TerrasteelAlloyRaw"         ).setPriorityPrefix(3).put(G_INGOT, MAGICAL, "RawTerrasteelAlloy").setLocal("Raw Terrasteel Alloy"),
 		TerrasteelAlloyStrengthened = unused    ("TerrasteelAlloyStrengthened").setPriorityPrefix(3).put(G_INGOT, MAGICAL, "StrengthenedTerrasteelAlloy").setLocal("Strengthened Terrasteel Alloy"),
 		Vis                         = unused    ("Vis"                        ).put(DECOMPOSABLE).setMcfg( 0, Ma, 1*U).aspects(TC.AURAM, 2, TC.PRAECANTIO, 1),
-		Unstable                    = unused    ("Unstable"                   ).put(AUTO_BLACKLIST, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, "Unstableingot", MD.ExU).aspects(TC.PERDITIO, 4),
 		Voidstone                   = unused    ("Voidstone"                  ).aspects(TC.VITREUS, 1, TC.VACUOS, 1),
 		Mercassium                  = unused    ("Mercassium"                 ).setPriorityPrefix(3).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),
 		Osmonium                    = unused    ("Osmonium"                   ).setPriorityPrefix(3).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),

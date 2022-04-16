@@ -580,8 +580,8 @@ public class OP {
 		dustTiny   .disableItemGeneration(MT.Blaze);
 		dustRefined.disableItemGeneration(MT.Obsidian, MT.Glowstone);
 		stick      .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
-		ingot      .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick);
-		nugget     .disableItemGeneration(MT.Au);
+		ingot      .disableItemGeneration(MT.Unstable, MT.Fe, MT.Au, MT.NetherBrick);
+		nugget     .disableItemGeneration(MT.Unstable, MT.Au);
 		plate      .disableItemGeneration(MT.Glass, MT.Paper);
 		plateGem   .disableItemGeneration(MT.Glass);
 		bucket     .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
