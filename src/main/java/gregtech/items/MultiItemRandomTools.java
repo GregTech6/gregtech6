@@ -390,21 +390,21 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		IL.Pellet_Wood                     .set(addItem(5999, "Wood Pellet"                      , ""                                            , new OreDictItemData(ANY.Wood, U), TICKS_PER_SMELT, TC.stack(TC.POTENTIA, 1)));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.LiveRoot   , U2), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.LiveRoot       ), FL.Glue.make(250), NF, IL.Pellet_Wood.get(2));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Livingwood , U2), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.Livingwood     ), FL.Glue.make(250), NF, IL.Pellet_Wood.get(2));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Greatwood  , U2), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.Greatwood      ), FL.Glue.make(250), NF, IL.Pellet_Wood.get(2));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Dreamwood  , U4), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Dreamwood      ), FL.Glue.make(500), NF, IL.Pellet_Wood.get(4));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Shimmerwood, U4), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Shimmerwood    ), FL.Glue.make(500), NF, IL.Pellet_Wood.get(4));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Silverwood , U4), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Silverwood     ), FL.Glue.make(500), NF, IL.Pellet_Wood.get(4));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.LiveRoot   , U2), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.LiveRoot       ), FL.Glue.make( 50), NF, IL.Pellet_Wood.get(2));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Livingwood , U2), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.Livingwood     ), FL.Glue.make( 50), NF, IL.Pellet_Wood.get(2));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Greatwood  , U2), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.Greatwood      ), FL.Glue.make( 50), NF, IL.Pellet_Wood.get(2));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Dreamwood  , U4), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Dreamwood      ), FL.Glue.make(100), NF, IL.Pellet_Wood.get(4));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Shimmerwood, U4), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Shimmerwood    ), FL.Glue.make(100), NF, IL.Pellet_Wood.get(4));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Silverwood , U4), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Silverwood     ), FL.Glue.make(100), NF, IL.Pellet_Wood.get(4));
 		for (OreDictMaterial tWood : ANY.Wood.mToThis)
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tWood             ), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
-		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Bark           ), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tWood             ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Bark           ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
 		RM.Compressor.addRecipe1(T, 16, 16, IL.Pellet_Wood.get(2), ST.make(BlocksGT.Planks, 1, 8));
 		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, FL.Oil_Creosote.make(25), chunkGt.mat(MT.Charcoal, 1));
 		

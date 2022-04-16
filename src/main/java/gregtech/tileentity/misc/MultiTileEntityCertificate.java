@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,7 @@
 
 package gregtech.tileentity.misc;
 
-import static gregapi.data.CS.*;
-
-import java.io.File;
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLifeSpan;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnDespawn;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnServerLoad;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnServerSave;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
@@ -42,6 +29,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.GT6_Main;
 import net.minecraft.block.Block;
@@ -53,6 +41,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+
+import java.io.File;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -132,6 +125,11 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
+			// This is simply a helper Function for quickly getting Registry Names of Items.
+			if (D1) for (ItemStack tStack : aPlayer.inventory.mainInventory) if (ST.valid(tStack)) {
+				DEB.println("ST.make(\"" + ST.regName(tStack) + "\"      , 1, " + ST.meta_(tStack) + ");       " + ST.namesAndSizes(tStack));
+			}
+			// Now for the actual thing that this needs to do on Rightclick.
 			if (mGold) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by " + LH.Chat.YELLOW + getCustomName()); return T;}
 			if (mSilver) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by " + LH.Chat.CYAN + getCustomName()); return T;}
 			UT.Entities.sendchat(aPlayer, "This Certificate is invalid!");
