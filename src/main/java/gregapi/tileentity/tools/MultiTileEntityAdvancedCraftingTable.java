@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,27 +19,15 @@
 
 package gregapi.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
-import gregapi.gui.ContainerClient;
-import gregapi.gui.ContainerClientDefault;
-import gregapi.gui.ContainerCommon;
-import gregapi.gui.ContainerCommonDefault;
-import gregapi.gui.Slot_Base;
-import gregapi.gui.Slot_Holo;
-import gregapi.gui.Slot_Normal;
+import gregapi.gui.*;
 import gregapi.item.IItemGTContainerTool;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
@@ -72,6 +60,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -218,7 +211,9 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			ItemStack[] tRecipe = UT.NBT.getBlueprintCrafting(slot(30));
 			if (tRecipe != ZL_IS) for (int i = 0; i < tRecipe.length; i++) if (!slotHas(i+21)) slot(i+21, ST.amount(0, tRecipe[i]));
 		}
-		return slot(31, CR.getany(worldObj, aAllowCache, slot(21), slot(22), slot(23), slot(24), slot(25), slot(26), slot(27), slot(28), slot(29)));
+		ItemStack rStack = CR.getany(worldObj, aAllowCache, slot(21), slot(22), slot(23), slot(24), slot(25), slot(26), slot(27), slot(28), slot(29));
+		if (OM.materialcontains(rStack, TD.EXPLODES_IN_NONVANILLA_CRAFTING_GRID)) explode(4);
+		return slot(31, rStack);
 	}
 	
 	public boolean canDoCraftingOutput() {

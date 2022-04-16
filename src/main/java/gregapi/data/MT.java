@@ -3611,7 +3611,7 @@ public class MT {
 		TerrasteelAlloyRaw          = unused    ("TerrasteelAlloyRaw"         ).setPriorityPrefix(3).put(G_INGOT, MAGICAL, "RawTerrasteelAlloy").setLocal("Raw Terrasteel Alloy"),
 		TerrasteelAlloyStrengthened = unused    ("TerrasteelAlloyStrengthened").setPriorityPrefix(3).put(G_INGOT, MAGICAL, "StrengthenedTerrasteelAlloy").setLocal("Strengthened Terrasteel Alloy"),
 		Vis                         = unused    ("Vis"                        ).put(DECOMPOSABLE).setMcfg( 0, Ma, 1*U).aspects(TC.AURAM, 2, TC.PRAECANTIO, 1),
-		Unstable                    = unused    ("Unstable"                   ).put(AUTO_BLACKLIST, "Unstableingot", MD.ExU).aspects(TC.PERDITIO, 4),
+		Unstable                    = unused    ("Unstable"                   ).put(AUTO_BLACKLIST, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, "Unstableingot", MD.ExU).aspects(TC.PERDITIO, 4),
 		Voidstone                   = unused    ("Voidstone"                  ).aspects(TC.VITREUS, 1, TC.VACUOS, 1),
 		Mercassium                  = unused    ("Mercassium"                 ).setPriorityPrefix(3).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),
 		Osmonium                    = unused    ("Osmonium"                   ).setPriorityPrefix(3).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),
