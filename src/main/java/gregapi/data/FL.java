@@ -60,6 +60,7 @@ public enum FL {
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	
 	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID, VOID_OVERFLOW)
+	, XP_Molten                 ("xp"                                                       , SIMPLE, LIQUID, VOID_OVERFLOW)
 	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID, VOID_OVERFLOW)
 	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)

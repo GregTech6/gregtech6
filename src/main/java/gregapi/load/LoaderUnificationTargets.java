@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -804,12 +804,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.FluoriteWhite          , MD.HBM, "tile.ore_fluorite"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.FluoriteWhite          , MD.HBM, "tile.basalt_fluorite"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.FluoriteWhite          , MD.HBM, "item.fluorite"                   , 0);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Alexandrite            , MD.HBM, "item.gem_alexandrite"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Asbestos               , MD.HBM, "tile.ore_asbestos"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Asbestos               , MD.HBM, "tile.basalt_asbestos"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreGneiss      , MT.Asbestos               , MD.HBM, "tile.ore_gneiss_asbestos"        , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Asbestos               , MD.HBM, "item.powder_asbestos"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Asbestos               , MD.HBM, "item.ingot_asbestos"             , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Asbestos               , MD.HBM, "tile.block_asbestos"             , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.OREMATS.Borax          , MD.HBM, "item.powder_borax"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.S                      , MD.HBM, "tile.basalt_sulfur"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreSpace       , MT.S                      , MD.HBM, "tile.ore_meteor_sulfur"          , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.S                      , MD.HBM, "tile.ore_nether_sulfur"          , 0);
@@ -834,6 +836,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Ta                     , MD.HBM, "item.nugget_tantalium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ta                     , MD.HBM, "item.ingot_tantalium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Ta                     , MD.HBM, "tile.block_tantalium"            , 0);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.As                     , MD.HBM, "item.nugget_arsenic"             , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.As                     , MD.HBM, "item.ingot_arsenic"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Zr                     , MD.HBM, "item.powder_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Zr                     , MD.HBM, "item.nugget_zirconium"           , 0);
 		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Zr                     , MD.HBM, "item.billet_zirconium"           , 0);
@@ -874,6 +878,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Th                     , MD.HBM, "item.nugget_th232"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Th                     , MD.HBM, "item.billet_th232"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Th                     , MD.HBM, "item.ingot_th232"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ra                     , MD.HBM, "item.powder_ra226"               , 0);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Ra                     , MD.HBM, "item.nugget_ra226"               , 0);
+		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.Ra                     , MD.HBM, "item.billet_ra226"               , 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Ra                     , MD.HBM, "item.ingot_ra226"                , 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Ra                     , MD.HBM, "tile.block_ra226"                , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.U_233                  , MD.HBM, "item.nugget_u233"                , 0);
 		OreDictManager.INSTANCE.setTarget(OP.billet         , MT.U_233                  , MD.HBM, "item.billet_u233"                , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.U_233                  , MD.HBM, "item.ingot_u233"                 , 0);
@@ -1045,6 +1054,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Fe                     , MD.NeLi, "Chain", 0);
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Au                     , MD.NeLi, "ChainGold", 0);
 		OreDictManager.INSTANCE.setTarget(OP.chain          , MT.Efrine                 , MD.NeLi, "ChainEfrine", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , MD.NeLi, "BoneBlock", 1);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , MD.NeLi, "BoneBlock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.Sugilite               , MD.EnLi, "OreSugilite", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sugilite               , MD.EnLi, "material", 0);

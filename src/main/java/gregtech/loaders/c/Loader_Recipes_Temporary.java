@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,23 +19,7 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.util.CR.*;
-
-import java.util.Map.Entry;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -47,6 +31,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+import static gregapi.util.CR.*;
 
 /**
  * @author Gregorius Techneticies
@@ -584,13 +574,38 @@ public class Loader_Recipes_Temporary implements Runnable {
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.
 		RM.generify   (FL.make("molten.meteoriciron"   , 1), FL.make("molten.iron", 1));
 		RM.generify   (FL.make("molten.wroughtiron"    , 1), FL.make("molten.iron", 1));
-		RM.generify   (FL.make("molten.osmiumelemental", 1), FL.make("molten.osmium", 1));
+		RM.genericycle(FL.make("molten.pigiron"        , 1), FL.make("pigiron.molten", 1));
+		RM.genericycle(FL.make("molten.iron"           , 1), FL.make("iron.molten", 1));
+		RM.genericycle(FL.make("molten.gold"           , 1), FL.make("gold.molten", 1));
+		RM.genericycle(FL.make("molten.silver"         , 1), FL.make("silver.molten", 1));
+		RM.genericycle(FL.make("molten.lead"           , 1), FL.make("lead.molten", 1));
+		RM.genericycle(FL.make("molten.copper"         , 1), FL.make("copper.molten", 1));
+		RM.genericycle(FL.make("molten.tin"            , 1), FL.make("tin.molten", 1));
+		RM.genericycle(FL.make("molten.zinc"           , 1), FL.make("zinc.molten", 1));
+		RM.genericycle(FL.make("molten.nickel"         , 1), FL.make("nickel.molten", 1));
+		RM.genericycle(FL.make("molten.platinum"       , 1), FL.make("platinum.molten", 1));
+		RM.genericycle(FL.make("molten.alumite"        , 1), FL.make("alumite.molten", 1));
+		RM.genericycle(FL.make("molten.aluminium"      , 1), FL.make("aluminum.molten", 1), FL.make("molten.aluminum", 1), FL.make("aluminium.molten", 1));
+		RM.genericycle(FL.make("molten.aluminiumbrass" , 1), FL.make("aluminumbrass.molten", 1), FL.make("molten.aluminumbrass", 1), FL.make("aluminiumbrass.molten", 1));
+		RM.genericycle(FL.make("molten.cobalt"         , 1), FL.make("cobalt.molten", 1));
+		RM.genericycle(FL.make("molten.ardite"         , 1), FL.make("ardite.molten", 1));
+		RM.genericycle(FL.make("molten.lumium"         , 1), FL.make("lumium.molten", 1));
+		RM.genericycle(FL.make("molten.signalum"       , 1), FL.make("signalum.molten", 1));
+		RM.genericycle(FL.make("molten.enderium"       , 1), FL.make("enderium.molten", 1));
+		RM.genericycle(FL.make("molten.mithril"        , 1), FL.make("mithril.molten", 1));
+		RM.genericycle(FL.make("molten.bronze"         , 1), FL.make("bronze.molten", 1));
+		RM.genericycle(FL.make("molten.invar"          , 1), FL.make("invar.molten", 1));
+		RM.genericycle(FL.make("molten.electrum"       , 1), FL.make("electrum.molten", 1));
+		RM.genericycle(FL.make("molten.steel"          , 1), FL.make("steel.molten", 1));
+		RM.genericycle(FL.make("molten.titanium"       , 1), FL.make("titanium.molten", 1));
+		RM.genericycle(FL.make("molten.magnesium"      , 1), FL.make("magnesium.molten", 1));
+		RM.genericycle(FL.make("molten.germanium"      , 1), FL.make("molten.osmium", 1), FL.make("osmium.molten", 1));
 		RM.generify   (FL.make("deuterium"             , 5), FL.make("rc deuterium", 1));
 		RM.generify   (FL.make("tritium"               , 5), FL.make("rc tritium", 1));
 		RM.generify   (FL.make("carbondioxide"         , 5), FL.make("rc co2", 1));
 		RM.generify   (FL.make("chlorine"              , 5), FL.make("rc chlorine", 1));
 		RM.generify   (FL.make("heavywater"            , 1), FL.Heavy_Reiker.make(1));
-		RM.genericycle(FL.XP                      .make( 3), FL.Mob.make(10));
+		RM.genericycle(FL.XP                      .make( 3), FL.Mob.make(10), FL.XP_Molten.make(3));
 		RM.genericycle(FL.Redstone_TE             .make(25), FL.Redstone.make(36));
 		RM.genericycle(FL.Lubricant               .make( 1), FL.LubRoCant.make(1));
 		RM.generify   (FL.Oil_Canola              .make( 2), FL.lube(1));
@@ -616,6 +631,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(FL.make("kerosine"              , 1), FL.make("kerosene", 1));
 		RM.genericycle(FL.make("petrol"                , 1), FL.make("gasoline", 1));
 		RM.genericycle(FL.make("fuel"                  , 1), FL.make("fueloil", 1));
+		RM.genericycle(FL.make("sulfuricacid"          , 1), FL.make("sulfuric_acid_fluid", 1));
 		RM.generify   (FL.Steam_IC2_Superheated   .make( 1), FL.Steam.make(3));
 		RM.generify   (FL.Steam_IC2               .make( 1), FL.Steam.make(1));
 		RM.generify   (FL.Lava_Volcanic           .make( 1), FL.Lava.make(1));

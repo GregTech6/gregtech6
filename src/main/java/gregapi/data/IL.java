@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-
 import gregapi.api.Abstract_Mod;
 import gregapi.code.IItemContainer;
 import gregapi.code.TagData;
@@ -33,6 +31,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -183,7 +183,7 @@ public enum IL implements IItemContainer {
 	IE_Creosote_Bottle, IE_Creosote_Bucket, IE_Hammer, IE_Slag, IE_Blueprint_Projectiles_Common, IE_Blueprint_Projectiles_Specialized, IE_Blueprint_Projectiles_Electrodes, IE_Crate, IE_Treated_Planks, IE_Treated_Slab, IE_Treated_Stairs,
 	SC2_Wrench, SC2_Hammer, SC2_Hammer_Gilded, SC2_Teapot_Empty, SC2_Teapot_Water, SC2_Teapot_Boiling, SC2_Teapot_Full, SC2_Teacup_Empty, SC2_Teacup_Full,
 	FZ_Sludge,
-	HBM_Mercury_Bottle, HBM_Mercury_Drop, HBM_Poison_Powder, HBM_Biomass, HBM_Biomass_Compressed,
+	HBM_Mercury_Bottle, HBM_Mercury_Drop, HBM_Mercury_Drop_Tiny, HBM_Poison_Powder, HBM_Biomass, HBM_Biomass_Compressed,
 	HBM_Bedrock_Coltan, HBM_Bedrock_Oil,
 	ICBM_Concrete,
 	IC2_Debug,
@@ -452,7 +452,7 @@ public enum IL implements IItemContainer {
 	Tool_Lighter_Platinum_Empty, Tool_Lighter_Platinum_Used, Tool_Lighter_Platinum_Full,
 	Tool_Lighter_Plastic_Empty, Tool_Lighter_Plastic_Used, Tool_Lighter_Plastic_Full, Tool_Lighter_Plastic_Broken,
 	Tool_Fire_Starter, Tool_Fire_Starter_Bark,
-	Tool_Cheat, Tool_Worldgen_Debugger, Tool_Scanner, Tool_Cropnalyzer,
+	Tool_Cheat, Tool_Worldgen_Debugger, Tool_Chunk_Remover, Tool_Scanner, Tool_Cropnalyzer,
 	Tool_Sword_Bronze, Tool_Pickaxe_Bronze, Tool_Shovel_Bronze, Tool_Axe_Bronze, Tool_Hoe_Bronze, // IC2
 	Tool_Sword_Steel, Tool_Pickaxe_Steel, Tool_Shovel_Steel, Tool_Axe_Steel, Tool_Hoe_Steel, // RC
 	

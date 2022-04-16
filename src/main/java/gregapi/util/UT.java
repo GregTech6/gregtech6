@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,41 +19,15 @@
 
 package gregapi.util;
 
-import static gregapi.data.CS.*;
-
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.util.*;
-import java.util.Map.Entry;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.GT_API;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ModData;
-import gregapi.code.ObjectStack;
-import gregapi.code.TagData;
+import gregapi.code.*;
 import gregapi.damage.DamageSources;
-import gregapi.data.ANY;
-import gregapi.data.CS.ArmorsGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.IconsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.PotionsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.RM;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
@@ -81,25 +55,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.EntityWither;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityIronGolem;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTBase.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
@@ -109,26 +71,24 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidContainerItem;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
 import twilightforest.TFAchievementPage;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.util.*;
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -2010,9 +1970,9 @@ public class UT {
 		/** Saves on Data Size by choosing the smallest possible Data Type, and by also not adding zeros or negative Numbers. The regular getLong() Function can also get the other Number Types. */
 		public static NBTTagCompound setPosNum(NBTTagCompound aNBT, Object aTag, long aValue) {
 			if (aValue <= 0) {aNBT.removeTag(aTag.toString()); return aNBT;}
-			if (aValue > Integer.MAX_VALUE || aValue < Integer.MIN_VALUE) {aNBT.setLong(aTag.toString(), aValue); return aNBT;}
-			if (aValue > Short.MAX_VALUE || aValue < Short.MIN_VALUE) {aNBT.setInteger(aTag.toString(), (int)aValue); return aNBT;}
-			if (aValue > Byte.MAX_VALUE || aValue < Byte.MIN_VALUE) {aNBT.setShort(aTag.toString(), (short)aValue); return aNBT;}
+			if (aValue > Integer.MAX_VALUE) {aNBT.setLong(aTag.toString(), aValue); return aNBT;}
+			if (aValue > Short.MAX_VALUE) {aNBT.setInteger(aTag.toString(), (int)aValue); return aNBT;}
+			if (aValue > Byte.MAX_VALUE) {aNBT.setShort(aTag.toString(), (short)aValue); return aNBT;}
 			aNBT.setByte(aTag.toString(), (byte)aValue);
 			return aNBT;
 		}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,13 +18,6 @@
  */
 
 package gregapi.block.multitileentity;
-
-import static gregapi.data.CS.*;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
@@ -47,6 +40,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -221,8 +221,8 @@ public class MultiTileEntityRegistry {
 	
 	public ItemStack getItem(int aID, long aAmount, NBTTagCompound aNBT) {
 		ItemStack rStack = ST.make(mBlock, (int)aAmount, aID);
-		if (aNBT == null || aNBT.hasNoTags()) {
-			aNBT = UT.NBT.make();
+		if (aNBT == null) aNBT = UT.NBT.make();
+		if (aNBT.hasNoTags()) {
 			MultiTileEntityContainer tTileEntityContainer = getNewTileEntityContainer(aID, aNBT);
 			if (tTileEntityContainer != null) ((IMultiTileEntity)tTileEntityContainer.mTileEntity).writeItemNBT(aNBT);
 		}

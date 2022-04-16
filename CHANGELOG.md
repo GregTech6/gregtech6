@@ -18,9 +18,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Some weird Bug with GT6 Items and Creative Tabs.
 [FIXED] Grass Path conversion from Et Futurum to GT6 was a little bit iffy.
 [FIXED] An internal Item mover Function duplicating Items when Stuff with a Stacksize greater than its normal Maximum Size is inserted. Typically happened with 19+ sized Stacks of Scrap in a Queue Hopper, but there was other ways too.
+[CHANGED] AlF3 will now exit the Mixer in MOLTEN State, which might end up melting or corroding your current Water Output Pipes! Also that one AlF3 Recipe wont void SiO2 anymore, since I now got space for that Output.
+[CHANGED] If you click a Dust in NEI to look at Recipes producing it, it will also show Crushed/purified/Refined Ores.
 [CHANGED] Waterlike Non-Source Blocks will now only spread 2 instead of 7 Blocks. This should reduce Cave Flooding in Non-Ocean Biomes.
 [CHANGED] Shredder now has better Output Management for certain things.
-[CHANGED] You can get Niobium from smelting Coltan or Columbite now.
+[CHANGED] Mariculture Diving and Scuba Gear counts as Chemical/Gas Protection.
+[CHANGED] Niobium and Tantalum now have a Chemical Processing Path after Aluminium Tier. Niobium may require you picking up molten Aluminium from a Crucible, if you dont have Tungsten for a Smelter yet.
 [ADDED] Mass Storages and Item Barrels can now bundle and unbundle bare GT6 Wires. (Wires does NOT mean Cables!)
 [ADDED] Firestone, Pyrotheum and Octine can now be used similar to Sodium Persulfate to process Refractory Metals.
 All the Reactor Stuff Erik did:
