@@ -496,7 +496,7 @@ public class Loader_Books implements Runnable {
 		"Generally, the number of neutrons is directly output as HU into the reactor each tick. Neutrons only last for one second and will therefore be updated only every second.",
 		"Neutron counts can be manually measured by right-clicking the reactor core with a Geiger Counter. The Geiger Counter Sensor can also be attached to the reactor core to measure the sum of all neutrons on the reactor rods.",
 		"100% of the percentage modes of the sensor refers to the sum of neutron maximums of all fuel rods inside the reactor core. A reactor will also emit radiation with a ranged based on the highest number of neutrons on any reactor rod.",
-		"Building the reactor far away from any settlements and wearing a radiation hazard suit is strongly advised. Any reactor core can store up to 10_000 HU without exploding. Any stored HU are directly used to convert cold into hot coolant.",
+		"Building the reactor far away from any settlements and wearing a radiation hazard suit is strongly advised. Any reactor core will explode when heat gets added without coolant being present.",
 		"Should the number of stored HU exceed 10_000, which can happen when running out of coolant, the reactor will violently disintegrate.",
 		"Should there be no space for the produced hot coolant remaining in the reactor, the reactor will be undergo rapid unplanned disassembly.",
 		"\n\n===================\nGuide to Reactor Rods\n===================\n",
@@ -529,7 +529,7 @@ public class Loader_Books implements Runnable {
 		"Molten Lithium Chloride\n===================\n15 HU turns 1L of Molten Lithium Chloride into 1L of Hot Molten Lithium Chloride. Multiplies self stat of fuel rods by 5. Divides emission stat of fuel rods by 2. Increases maximum stat of fuel rods by 25%",
 		"Molten Tin\n===================\n40 HU turns 1L of Molten Tin into 1L of Hot Molten Tin. Neutrons only convert only to a third of the HU. Decreases divisor of factor stat of fuel rods by 1.",
 		"Molten Sodium\n===================\n30 HU turns 1L of Molten Sodium into 1L of Hot Molten Sodium. Neutrons only convert only to a sixth of the HU. Decreases divisor of factor stat of fuel rods by 1.",
-		"Molten Thorium Salt\n===================\n10_000 HU turns 1L of Molten Thorium Salt into 1L of Molten Lithium Chloride. Sets self stat of fuel rods to 0. Divides emission stat of fuel rods by 2. Multiplies maximum stat of fuel rods by 4.",
+		"Molten Thorium Salt\n===================\n2_560_000 HU turns 1L of Molten Thorium Salt into 1L of Molten Lithium Chloride. Sets self stat of fuel rods to 0. Divides emission stat of fuel rods by 2. Multiplies maximum stat of fuel rods by 4.",
 		"\n\n===================\nStable Reactor Design Guidelines\n===================\n",
 		"Stable nuclear fission reactors, also commonly called subcritical reactors, are a design of fission reactor that have no critical fuel rods. This means that the neutron count and thus heat output doesn't constantly increase while the reactor is running.",
 		"The advantages of stable reactors are:\n- No external control required\n- Stable neutron/HU output\n- Increased Safety\n- Easy to design\n- Function with any nuclear fuel",
@@ -549,7 +549,7 @@ public class Loader_Books implements Runnable {
 		"A reactor rod can be considered critical when the number of neutrons reflected back onto the rod times the factor of the rod is greater or equal to the emission of the fuel rod.",
 		"This means that a rod is critical if the number of reflectors around it times the factor is greater or equal to 1. So a fuel rod with a factor of 1/3 needs at least 3 adjacent reflector rods to be critical.",
 		"Since the neutron count on the fuel rod will be indefinitely increasing, you need to control the reaction so you won't output more power than you can handle.",
-		"Neutron sensors allow such control in an automatic fashion when combined with redstone machine switches or selectors.",
+		"Geiger counter sensors allow such control in an automatic fashion when combined with redstone machine switches or selectors.",
 		"So when the neutron count gets too high you want to turn a reactor rod off to make the fuel rod subcritical again, making the neutron count shrink.",
 		"For the greatest efficiency you want your neutron count one the fuel rod stay beneath the maximum stat of that fuel rod at all times, while coming as close to it as you can.",
 		"You'd also want the neutron count to shrink as little as possible when controlling the reactor, so your average HU output stays as high as possible.",
@@ -584,7 +584,7 @@ public class Loader_Books implements Runnable {
 		"\n\n===================\nThorium Salt Reactor Design Guidelines\n===================\n",
 		"Thorium Salt is a really special kind of coolant. In fact, it can't even be considered a coolant, as it doesn't get converted into an energy carrying liquid.",
 		"Instead it can be seen more of as a fuel itself, since it turns into Molten Lithium Chloride, meaning that essentially the thorium inside the thorium salt gets used up as a fuel.",
-		"Thorium salt also depletes really slowly into Molten Lithium Chloride, only for every 10_000 neutrons one liter of Thorium Salt gets turned into Molten Lithium Chloride.",
+		"Thorium salt also depletes really slowly into Molten Lithium Chloride, only for every 2_560_000 neutrons one liter of Thorium Salt gets turned into Molten Lithium Chloride.",
 		"The main advantage of using Thorium Salt is how it effects the stats of any fuel rod inside, massively boosting them.",
 		"However, since power can't be extracted from the Thorium Salt, since it doesn't turn into an energy carrying liquid, you can't simply use Thorium Salt alone in any reactor design.",
 		"A reactor design utilizing Thorium Salt needs to be using at least one other, additional coolants instead.",
@@ -602,7 +602,8 @@ public class Loader_Books implements Runnable {
 		"Furthermore, having the fuel rod moderated will additionally multiply its depletion rate by a factor of 4. Divide the time remaining stat of the fuel rod by the calculated depletion rate to get the real time until depletion.",
 		"Tips and Tricks\n===================\nYou can build reactor designs using multiple coolants. For critical reactors using moderator rods it is smarter to control one adjacent fuel rod,",
 		"rather than the moderator rod itself to control the neutron counts. Robot arms allow for precise automation of reactor cores.\nFilters can be used for easier automation of burner and breeder reactors.",
-		"A higher self stat is bad in critical reactor designs, as contributes to the maximum without effecting the neutron emission.\nThe emission stat is mostly irrelevant for efficiency in critical reactor designs."
+		"A higher self stat is bad in critical reactor designs, as contributes to the maximum without effecting the neutron emission.\nThe emission stat is mostly irrelevant for efficiency in critical reactor designs.",
+		"Setting the geiger counter sensor to hexadecimal mode is useful when trying to control neutron counts greater than 9_999. In hexadecimal mode you can compare up to 65_535 neutrons."
 		});
 		
 		//-----
