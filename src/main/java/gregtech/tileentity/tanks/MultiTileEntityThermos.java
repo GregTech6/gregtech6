@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.tileentity.tanks;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetFoodValues;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetItemUseAction;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxItemUseDuration;
@@ -33,22 +31,19 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
+import gregapi.tileentity.ITileEntityTapFillable;
 import gregapi.tileentity.tank.TileEntityBase09FluidContainerSmall;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityThermos extends TileEntityBase09FluidContainerSmall implements ITileEntityFunnelAccessible, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
-	@Override
-	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		return SIDES_TOP[aSide] && isFluidAllowed(aFluid) ? mTank.fill(aFluid, aDoFill) : 0;
-	}
-	
+public class MultiTileEntityThermos extends TileEntityBase09FluidContainerSmall implements ITileEntityTapFillable, ITileEntityFunnelAccessible, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration, IItemRottable {
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return SIDES_HORIZONTAL[aSide] || aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa, mMaterial.contains(TD.Properties.GLOWING)), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]])) : null;

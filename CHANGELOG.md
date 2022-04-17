@@ -18,6 +18,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Some weird Bug with GT6 Items and Creative Tabs.
 [FIXED] Grass Path conversion from Et Futurum to GT6 was a little bit iffy.
 [FIXED] An internal Item mover Function duplicating Items when Stuff with a Stacksize greater than its normal Maximum Size is inserted. Typically happened with 19+ sized Stacks of Scrap in a Queue Hopper, but there was other ways too.
+[FIXED] Unstable Ingots will now explode in the Advanced Crafting Table.
+[CHANGED] Cups, Jugs and Measuring Pots along a few other but not all Fluid Containers can now be filled by a Tap placed above them.
 [CHANGED] AlF3 will now exit the Mixer in MOLTEN State, which might end up melting or corroding your current Water Output Pipes! Also that one AlF3 Recipe wont void SiO2 anymore, since I now got space for that Output.
 [CHANGED] If you click a Dust in NEI to look at Recipes producing it, it will also show Crushed/purified/Refined Ores.
 [CHANGED] Waterlike Non-Source Blocks will now only spread 2 instead of 7 Blocks. This should reduce Cave Flooding in Non-Ocean Biomes.

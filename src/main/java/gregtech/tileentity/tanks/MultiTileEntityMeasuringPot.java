@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,13 @@
 
 package gregtech.tileentity.tanks;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.old.Textures;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
+import gregapi.tileentity.ITileEntityTapFillable;
 import gregapi.tileentity.tank.TileEntityBase10FluidContainerSyncSmall;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -41,10 +34,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerSyncSmall implements IMTE_IgnorePlayerCollisionWhenPlacing {
+public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerSyncSmall implements ITileEntityTapFillable, IMTE_IgnorePlayerCollisionWhenPlacing {
 	public long mCapacity = 1000;
 	
 	@Override

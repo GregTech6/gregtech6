@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,12 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.BI;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
 import gregapi.fluid.FluidTankGT;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -45,13 +33,9 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
-import gregapi.render.BlockTextureCopied;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
 import gregapi.tileentity.ITileEntityConnectedTank;
+import gregapi.tileentity.ITileEntityTapFillable;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -66,17 +50,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable implements IFluidHandler, ITileEntityConnectedTank, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips {
+public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable implements IFluidHandler, ITileEntityConnectedTank, ITileEntityTapFillable, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips {
 	protected short mDisplay = 0, oDisplay = -1;
 	protected RecipeMap mRecipes = RM.Mixer;
 	protected Recipe mLastRecipe = null;
@@ -359,7 +342,12 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		for (int i = 0; i < mTanksOutput.length; i++) rTanks[mTanksInput.length+i] = mTanksOutput[i];
 		return rTanks;
 	}
-
+	
+	@Override
+	public int tapFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
+		return fill(FORGE_DIR[aSide], aFluid, aDoFill);
+	}
+	
 	@Override
 	public boolean breakBlock() {
 		GarbageGT.trash(mTanksInput);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -38,6 +33,7 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityTapAccessible;
+import gregapi.tileentity.ITileEntityTapFillable;
 import gregapi.tileentity.base.TileEntityBase10Attachment;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
@@ -54,6 +50,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import openblocks.common.LiquidXpUtils;
 import openmods.utils.EnchantmentUtils;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -103,11 +103,11 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 								}
 								return T;
 							}
-						} else if (tDelegator2.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator2.mTileEntity instanceof MultiTileEntityMixingBowl) {
+						} else if (tDelegator2.mTileEntity instanceof ITileEntityTapFillable) {
 							OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(aFluid.getFluid().getName());
 							aFluid = aFluid.copy();
 							aFluid.amount = Math.min(aFluid.amount, FL.lava(aFluid) ? 1000 : !FL.water(aFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
-							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(FL.fill_(tDelegator2, aFluid, T)), T) != null) {
+							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(((ITileEntityTapFillable)tDelegator2.mTileEntity).tapFill(tDelegator2.mSideOfTileEntity, aFluid, T)), T) != null) {
 								UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 								UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
 							}

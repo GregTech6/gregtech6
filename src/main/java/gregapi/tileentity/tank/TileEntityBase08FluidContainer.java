@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,10 @@
 
 package gregapi.tileentity.tank;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import enviromine.handlers.EM_StatusManager;
 import enviromine.trackers.EnviroDataTracker;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnItemRightClick;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnItemUseFirst;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnlyPlaceableWhenSneaking;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.DrinksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -67,6 +55,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import squeek.applecore.api.food.FoodValues;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -386,7 +378,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	
 	@Override
 	public int addFluidToConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated) {
-		if (aFluid == NF || (mTank.isEmpty() && aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated)) return 0;
+		if (aFluid == NF || !isFluidAllowed(aFluid) || (mTank.isEmpty() && aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated)) return 0;
 		return mTank.fill(aFluid, T);
 	}
 	
@@ -399,6 +391,14 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	@Override
 	public long getAmountOfFluidInConnectedTank(byte aSide, FluidStack aFluid) {
 		return mTank.contains(aFluid) ? mTank.amount() : 0;
+	}
+	
+	public int tapFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
+		return SIDES_TOP[aSide] && isFluidAllowed(aFluid) ? mTank.fill(aFluid, aDoFill) : 0;
+	}
+	
+	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
+		return SIDES_TOP[aSide] && isFluidAllowed(aFluid) ? mTank.fill(aFluid, aDoFill) : 0;
 	}
 	
 	public boolean isDrinkable() {

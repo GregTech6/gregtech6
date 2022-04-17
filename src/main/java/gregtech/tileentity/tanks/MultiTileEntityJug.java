@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,27 +19,24 @@
 
 package gregtech.tileentity.tanks;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetFoodValues;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetItemUseAction;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxItemUseDuration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEaten;
 import gregapi.data.TD;
 import gregapi.old.Textures;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
+import gregapi.tileentity.ITileEntityTapFillable;
 import gregapi.tileentity.tank.TileEntityBase10FluidContainerSyncSmall;
 import net.minecraft.block.Block;
 import net.minecraft.util.AxisAlignedBB;
 
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityJug extends TileEntityBase10FluidContainerSyncSmall implements IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration {
+public class MultiTileEntityJug extends TileEntityBase10FluidContainerSyncSmall implements ITileEntityTapFillable, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return mTank.has() ? 6 : 5;
