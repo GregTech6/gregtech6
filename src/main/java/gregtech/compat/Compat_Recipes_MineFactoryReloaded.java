@@ -46,8 +46,8 @@ public class Compat_Recipes_MineFactoryReloaded extends CompatMods {
 		CR.remove(OM.dust(MT.Plastic), OM.dust(MT.Plastic), NI, OM.dust(MT.Plastic), OM.dust(MT.Plastic));
 		CR.remove(ST.make(Items.milk_bucket, 1, 0), ST.make(Items.bucket, 1, 0), IL.Dye_Cocoa.get(1));
 		
-		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 0), CR.DEF_NCC, new Object[] {"CDC", "DMD", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachine.dat(MT.Ad)});
-		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 1), CR.DEF_NCC, new Object[] {"CSC", "LML", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachine.dat(MT.Ad), 'L', IL.Comp_Laser_Gas_CO2, 'S', ST.make(MD.MFR, "pinkslime", 1, 1)});
+		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 0), CR.DEF_REV_NCC, new Object[] {"CDC", "DMD", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachineQuadruple.dat(MT.Ad)});
+		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 1), CR.DEF_REV_NCC, new Object[] {"CSC", "LML", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachineQuadruple.dat(MT.Ad), 'L', IL.Comp_Laser_Gas_CO2, 'S', ST.make(MD.MFR, "pinkslime", 1, 1)});
 		
 		for (String tFluid : FluidsGT.MILK) if (FL.exists(tFluid)) {
 			RM.Mixer.addRecipe1(T, 16, 16, ST.make(Blocks.dirt, 1, 2), FL.array(FL.make(tFluid, 200), FL.Sewage.make(2000)), ZL_FS, ST.make(MD.MFR, "farmland", 1, 0));
