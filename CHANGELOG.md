@@ -59,6 +59,9 @@ All the Reactor Stuff Erik did:
 [FIXED] First second of neutron output of fuel rods being potentially lower than emission stat (in some cases even negative)
 
 
+//=== Version Number Jump due to changes in the way Reactors work, and because Greg had to re-setup a lot of Dev Stuff due to new Computer. ===//
+
+
 6.14.23:
 [NOTE] Please make sure your log4j Version is 2.16 or greater, yes 2.16, not 2.15, alternatively make sure its Version ends on the word "fixed". Just look inside of your ".minecraft/libraries/org/apache/logging/log4j/log4j-core/" Directory to see which Versions exist. Most Launchers like MultiMC should have fixed it for you though.
 [FIXED] The "Running Possible" Detector should work properly with Rotational Pumps now.
