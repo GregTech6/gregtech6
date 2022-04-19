@@ -1,19 +1,19 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.14.27: (Not released yet, released whenever it needs to be)
+6.15.03: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.26: (Not released yet, released whenever it needs to be)
+6.15.02: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.25: (Not released yet, released whenever it needs to be)
+6.15.01: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.24:
+6.15.00:
 [WARNING] Helium, Molten Tin and Molten Sodium as a reactor coolant has been buffed, your old reactor designs using these coolants might be able to "explode" (reactor explosions are still disabled, they will just delete their inventory) when running. Shut those reactors down before updating and evaluate that they will explode before turning them back on. Reactors running other coolants are not in danger of exploding, but might not produce as many neutrons as before.
 [NOTE] Neutrons needed for breeder rods got reduced, but this change is not retroactive, already crafted breeder rods might take a good bit longer to breed.
 [FIXED] OpenComputers did not accept Electric GT6 Power even though it should, but ONLY if Galacticraft or Funky Locomotion were installed. But now it works.
