@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
@@ -45,13 +35,19 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
+import static gregapi.data.CS.*;
+
 public class Compat_Recipes_MineFactoryReloaded extends CompatMods {
 	public Compat_Recipes_MineFactoryReloaded(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		OUT.println("GT_Mod: Doing MineFactory Reloaded Recipes.");
+		CR.delate(MD.MFR, "machine.2", 0, 1);
 		CR.remove(OM.dust(MT.Plastic), OM.dust(MT.Plastic), NI, OM.dust(MT.Plastic), OM.dust(MT.Plastic));
 		CR.remove(ST.make(Items.milk_bucket, 1, 0), ST.make(Items.bucket, 1, 0), IL.Dye_Cocoa.get(1));
+		
+		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 0), CR.DEF_NCC, new Object[] {"CDC", "DMD", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachine.dat(MT.Ad)});
+		CR.shaped(ST.make(MD.MFR, "machine.2" , 1, 1), CR.DEF_NCC, new Object[] {"CSC", "LML", "CDC", 'C', OD_CIRCUITS[6], 'D', OP.lens.dat(ANY.Diamond), 'M', OP.casingMachine.dat(MT.Ad), 'L', IL.Comp_Laser_Gas_CO2, 'S', ST.make(MD.MFR, "pinkslime", 1, 1)});
 		
 		for (String tFluid : FluidsGT.MILK) if (FL.exists(tFluid)) {
 			RM.Mixer.addRecipe1(T, 16, 16, ST.make(Blocks.dirt, 1, 2), FL.array(FL.make(tFluid, 200), FL.Sewage.make(2000)), ZL_FS, ST.make(MD.MFR, "farmland", 1, 0));

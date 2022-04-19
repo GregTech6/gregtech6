@@ -1776,8 +1776,7 @@ public class MT {
 			
 			
 			
-			Ad                      .visDefault(Adamantine);
-			
+			Ad                      .setOreMultiplier( 2).setCrushing(Adamantine, U);
 			Fe                      .setOreMultiplier( 3).setCrushing(Fe2O3, U);
 			Al                      .setOreMultiplier( 2).setCrushing(Al2O3, U);
 			Ti                      .setOreMultiplier( 2).setCrushing(TiO2, U);
