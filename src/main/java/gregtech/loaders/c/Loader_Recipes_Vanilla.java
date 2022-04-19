@@ -37,6 +37,9 @@ import static gregapi.util.CR.*;
 
 public class Loader_Recipes_Vanilla implements Runnable {
 	@Override public void run() {
+		RM.rem_smelting(ST.make(Items.bone, 1, W), ST.make(Items.slime_ball, 1, W));
+		RM.rem_smelting(ST.make(Items.dye , 1, W), ST.make(Items.slime_ball, 1, W));
+		
 		CR.remove(ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Blocks.cobblestone, 1, 0), ST.make(Items.quartz, 1, 0), NI, ST.make(Items.quartz, 1, 0), ST.make(Blocks.cobblestone, 1, 0));

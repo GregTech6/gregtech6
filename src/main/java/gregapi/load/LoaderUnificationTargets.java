@@ -561,6 +561,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.EndSteel               , MD.EIO, "itemAlloy"               , 8);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.PulsatingIron          , MD.EIO, "itemMaterial"            , 3);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.VibrantAlloy           , MD.EIO, "itemMaterial"            , 4);
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.EndSteel               , MD.EIO, "itemMaterial"            ,11);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.ElectricalSteel        , MD.EIO, "blockIngotStorage"       , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.EnergeticAlloy         , MD.EIO, "blockIngotStorage"       , 1);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.VibrantAlloy           , MD.EIO, "blockIngotStorage"       , 2);
