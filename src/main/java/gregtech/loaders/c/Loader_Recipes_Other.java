@@ -560,7 +560,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		// Other
-		RM.Lightning    .addRecipe2(T, 16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
+		RM.Lightning    .addRecipe2(T,  16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
 		
 		
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
