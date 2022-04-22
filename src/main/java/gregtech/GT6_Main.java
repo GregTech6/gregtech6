@@ -172,10 +172,10 @@ public class GT6_Main extends Abstract_Mod {
 			OUT.println(getModNameForLog() + ": Adding Scrap with a Weight of 200.0F to the Scrapbox Drops.");
 			COMPAT_IC2.scrapbox(200.0F, IL.IC2_Scrap.get(1));
 		}
-
+		
 		EntityRegistry.registerModEntity(EntityArrow_Material.class, "GT_Entity_Arrow"       , 1, GT, 160, 1, T);
 		EntityRegistry.registerModEntity(EntityArrow_Potion.class  , "GT_Entity_Arrow_Potion", 2, GT, 160, 1, T);
-
+		
 		for (OreDictMaterial tWood : ANY.Wood.mToThis) OP.plate.disableItemGeneration(tWood);
 		OP.blockDust             .disableItemGeneration(MT.OREMATS.Magnetite, MT.OREMATS.GraniticMineralSand, MT.OREMATS.BasalticMineralSand);
 		OP.ingot                 .disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
@@ -186,12 +186,12 @@ public class GT6_Main extends Abstract_Mod {
 		OP.gemExquisite          .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		OP.gemLegendary          .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		
-		OP.crushed               .disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
-		OP.crushedTiny           .disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
-		OP.crushedPurified       .disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
-		OP.crushedPurifiedTiny   .disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
-		OP.crushedCentrifuged    .disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
-		OP.crushedCentrifugedTiny.disableItemGeneration(MT.Ad, MT.Fe, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushed               .disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushedTiny           .disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushedPurified       .disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushedPurifiedTiny   .disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushedCentrifuged    .disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
+		OP.crushedCentrifugedTiny.disableItemGeneration(MT.Ad, MT.Fe, MT.Si, MT.Al, MT.Ti, MT.W, MT.F, MT.Ta, MT.Nb);
 		
 		RM.pulverizing(ST.make(Blocks.cobblestone, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.stone      , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);

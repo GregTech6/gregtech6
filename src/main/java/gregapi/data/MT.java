@@ -1986,7 +1986,7 @@ public class MT {
 			Empty                   .put(MD.MC);
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);
-			Fe                      .put(MD.MC, COMMON_ORE);
+			Fe                      .put(MD.MC); // don't COMMON_ORE this!
 			Au                      .put(MD.MC, COMMON_ORE);
 			Diamond                 .put(MD.MC, COMMON_ORE);
 			Emerald                 .put(MD.MC, COMMON_ORE);
@@ -2149,7 +2149,7 @@ public class MT {
 			
 			Vb                      .put(MD.GT);
 			VibraniumSilver         .put(MD.GT);
-			Ad                      .put(MD.GT, COMMON_ORE);
+			Ad                      .put(MD.GT); // don't COMMON_ORE this!
 			Vibramantium            .put(MD.GT);
 			Dn                      .put(MD.GT, COMMON_ORE);
 			DuraniumAlloy           .put(MD.GT);
@@ -2343,8 +2343,8 @@ public class MT {
 			OREMATS.Columbite       .put(MD.HBM, COMMON_ORE);
 			OREMATS.Tantalite       .put(MD.HBM, COMMON_ORE);
 			OREMATS.Coltan          .put(MD.HBM, COMMON_ORE);
-			Ta                      .put(MD.HBM, COMMON_ORE);
-			Nb                      .put(MD.HBM, COMMON_ORE);
+			Ta                      .put(MD.HBM); // don't COMMON_ORE this!
+			Nb                      .put(MD.HBM); // don't COMMON_ORE this!
 			Nd                      .put(MD.HBM);
 			DeshAlloy               .put(MD.HBM);
 			
@@ -2357,7 +2357,7 @@ public class MT {
 			Prismane                .put(MD.RoC).visDefault();
 			Lonsdaleite             .put(MD.RoC).visDefault();
 			Lubricant               .put(MD.RoC);
-			F                       .put(MD.RoC);
+			F                       .put(MD.RoC); // don't COMMON_ORE this!
 			CaF2                    .put(MD.RoC);
 			AgI                     .put(MD.RoC);
 			InductiveAlloy          .put(MD.RoC);
@@ -3082,8 +3082,7 @@ public class MT {
 			Zircon                          .addOreByProducts(TiO2                      , Hf                        , OREMATS.Uraninite     );
 			Eudialyte                       .addOreByProducts(Zircon                    , RareEarth                 , Hf                    , Pb                    );
 			Azurite                         .addOreByProducts(Zircon                    , OREMATS.Malachite         , Hf                    ); // Niccolite byproduct?
-			Ad                              .addOreByProducts(OREMATS.GraniticMineralSand, Adamantine               );
-			Adamantine                      .addOreByProducts(OREMATS.GraniticMineralSand, Ad                       );
+			Adamantine                      .addOreByProducts(OREMATS.GraniticMineralSand);
 			Diamond                         .addOreByProducts(Graphite                  , DiamondPink               );
 			DiamondPink                     .addOreByProducts(Graphite                  , Diamond                   );
 			ManaDiamond                     .addOreByProducts(Graphite                  , Diamond                   );
@@ -3115,7 +3114,6 @@ public class MT {
 			Opal                            .addOreByProducts(Tanzanite                 );
 			Topaz                           .addOreByProducts(BlueTopaz                 );
 			BlueTopaz                       .addOreByProducts(Topaz                     );
-			Si                              .addOreByProducts(SiO2                      );
 			In                              .addOreByProducts(Se                        );
 			Li                              .addOreByProducts(LiCl                      );
 			LiCl                            .addOreByProducts(Li                        );
