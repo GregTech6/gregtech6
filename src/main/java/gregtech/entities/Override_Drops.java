@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,7 @@
 
 package gregtech.entities;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -46,6 +38,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Override_Drops {
 	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
@@ -403,7 +399,8 @@ public class Override_Drops {
 					case 10: aDrops.add(ST.entity(aDead, ST.book("Manual_Extenders")));        break;
 					case 11: aDrops.add(ST.entity(aDead, ST.book("Manual_Printer")));          break;
 					case 12: aDrops.add(ST.entity(aDead, ST.book("Manual_Steam")));            break;
-					case 13: aDrops.add(ST.entity(aDead, ST.book("Manual_Random")));           break;
+					case 13: aDrops.add(ST.entity(aDead, ST.book("Manual_Reactors")));         break;
+					case 14: aDrops.add(ST.entity(aDead, ST.book("Manual_Random")));           break;
 					default: aDrops.add(ST.entity(aDead, ST.book(UT.Books.MATERIAL_DICTIONARIES.get(RNGSUS.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))))); break;
 					}
 				}
