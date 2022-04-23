@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,32 +19,9 @@
 
 package gregapi.oredict;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.ICondition;
-import gregapi.code.ITagDataContainer;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
-import gregapi.code.ObjectStack;
-import gregapi.code.TagData;
-import gregapi.data.CS.IconsGT;
-import gregapi.data.FL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.TC;
+import gregapi.code.*;
+import gregapi.data.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
 import gregapi.oredict.configurations.OreDictConfigurationComponent;
@@ -60,6 +37,10 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -418,33 +399,24 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return this;
 	}
 	
-	public OreDictMaterial alloyCentrifuge() {
-		return put(TD.Processing.CENTRIFUGE).alloySimple();
-	}
-	public OreDictMaterial alloyElectrolyzer() {
-		return put(TD.Processing.ELECTROLYSER).alloySimple();
-	}
+	public OreDictMaterial alloyCentrifuge() {return put(TD.Processing.CENTRIFUGE).alloySimple();}
+	public OreDictMaterial alloyElectrolyzer() {return put(TD.Processing.ELECTROLYSER).alloySimple();}
 	public OreDictMaterial alloySimple() {
+		mAlloyCreationRecipes.add(mComponents);
 		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY);
 	}
 	
-	public OreDictMaterial alloyCentrifuge(long aMelt) {
-		return put(TD.Processing.CENTRIFUGE).alloySimple(aMelt);
-	}
-	public OreDictMaterial alloyElectrolyzer(long aMelt) {
-		return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt);
-	}
+	public OreDictMaterial alloyCentrifuge(long aMelt) {return put(TD.Processing.CENTRIFUGE).alloySimple(aMelt);}
+	public OreDictMaterial alloyElectrolyzer(long aMelt) {return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt);}
 	public OreDictMaterial alloySimple(long aMelt) {
+		mAlloyCreationRecipes.add(mComponents);
 		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY).heat(aMelt);
 	}
 	
-	public OreDictMaterial alloyCentrifuge(long aMelt, long aBoil) {
-		return put(TD.Processing.CENTRIFUGE).alloySimple(aMelt, aBoil);
-	}
-	public OreDictMaterial alloyElectrolyzer(long aMelt, long aBoil) {
-		return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt, aBoil);
-	}
+	public OreDictMaterial alloyCentrifuge(long aMelt, long aBoil) {return put(TD.Processing.CENTRIFUGE).alloySimple(aMelt, aBoil);}
+	public OreDictMaterial alloyElectrolyzer(long aMelt, long aBoil) {return put(TD.Processing.ELECTROLYSER).alloySimple(aMelt, aBoil);}
 	public OreDictMaterial alloySimple(long aMelt, long aBoil) {
+		mAlloyCreationRecipes.add(mComponents);
 		return put(TD.Compounds.ALLOY, TD.Compounds.DECOMPOSABLE, TD.Processing.CRUCIBLE_ALLOY).heat(aMelt, aBoil);
 	}
 	

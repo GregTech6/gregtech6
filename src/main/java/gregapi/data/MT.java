@@ -2336,7 +2336,7 @@ public class MT {
 			
 			Pu_238                  .put(MD.HBM).visDefault();
 			Pu_240                  .put(MD.HBM).visDefault();
-			Mingrade                .put(MD.HBM).visDefault();
+			Mingrade                .put(MD.HBM);
 			PhosphorusRed           .put(MD.HBM);
 			PhosphorusWhite         .put(MD.HBM);
 			Asbestos                .put(MD.HBM, COMMON_ORE);
