@@ -17,20 +17,11 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.placeables;
-
-import gregapi.code.ArrayListNoNulls;
-import net.minecraft.item.ItemStack;
-
-import static gregapi.data.CS.F;
+package gregtech.tileentity.misc;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityRockPlaced extends gregtech.tileentity.misc.MultiTileEntityRock {
-	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return new ArrayListNoNulls<>(F, mRock);}
-	
-	@Override public ItemStack getDefaultRock(int aAmount) {return mRock;}
-	
-	@Override public String getTileEntityName() {return "gt.multitileentity.rock.placed";}
+public class MultiTileEntityRock extends gregtech.tileentity.placeables.MultiTileEntityRock {
+	// I need to pass this through because of an Addon.
 }

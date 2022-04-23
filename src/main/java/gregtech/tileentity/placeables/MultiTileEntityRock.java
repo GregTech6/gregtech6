@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,10 @@
 
 package gregtech.tileentity.placeables;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.ITexture;
@@ -54,6 +43,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
