@@ -138,6 +138,7 @@ public class GT_API extends Abstract_Mod {
 		// Guess what, I got a random Crash from one of those not being classloaded...
 		UT.Entities.class.toString();
 		IMTE_CanConnectRedstone.class.toString();
+		try {ic2.api.item.IBoxable.class.toString();} catch(Throwable e) {/**/}
 		
 		try {
 			DW = new DummyWorld();
