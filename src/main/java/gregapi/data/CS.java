@@ -1801,7 +1801,7 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = new ItemStackSet<>();
 	}
-
+	
 	/** Contains typical Tool OreDict Names. */
 	public static class OreDictToolNames {
 		public static final String
