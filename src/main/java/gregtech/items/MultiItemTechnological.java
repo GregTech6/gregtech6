@@ -22,7 +22,6 @@ package gregtech.items;
 import gregapi.code.ItemStackContainer;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
@@ -94,12 +93,12 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Retriever_Item                  .set(addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITIO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(0), FL.Air_Nether.make(0), FL.Air_End.make(0)), 0, 0, 0);
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(0), FL.Ocean.make(0), FL.Dirty_Water.make(0)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(0), FL.Air_Nether.make(0), FL.Air_End.make(0)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(0), FL.Ocean.make(0), FL.Dirty_Water.make(0)), 0, 0, 0);
 		if (FL.XP.exists() || FL.Mob.exists())
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.XP.make(20), FL.Mob.make(66)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.XP.make(20), FL.Mob.make(66)), 0, 0, 0);
 		if (FL.Sewage.exists())
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sewage.make(0)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sewage.make(0)), 0, 0, 0);
 		
 		
 		IL.Cover_Logistics_Display_CPU_Logic     .set(addItem(tLastID =  1086, "Logistics Display (CPU Logic)"         , "For use with Logistics Cores and Wiring"         , CoverLogisticsDisplayCPULogic.INSTANCE                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 2), TC.stack(TC.ITER, 1)));

@@ -56,7 +56,7 @@ import static gregapi.data.CS.*;
 @SuppressWarnings("deprecation")
 public class RM {
 	public static final RecipeMap
-	  Other                     = new RecipeMap                     (null, "gt.recipe.other"                        , "Did you know...?"                , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 0,/*IN-OUT-MIN-FLUID=*/ 3, 3, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, F, F, F, F)
+	  DidYouKnow                = new RecipeMap                     (null, "gt.recipe.other"                        , "Did you know...?"                , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 0,/*IN-OUT-MIN-FLUID=*/ 3, 3, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , F, T, F, F, F, F, F), Other = DidYouKnow
 	, Autocrafter               = new RecipeMapAutocrafting         (null, "gt.recipe.autocrafting"                 , "Crafting"                        , null, 0, 1, RES_PATH_GUI+"machines/Crafting"                  ,/*IN-OUT-MIN-ITEM=*/ 9,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, F, F, T, F, T, T)
 	
 	, DistillationTower         = new RecipeMap                     (null, "gt.recipe.distillationtower"            , "Distillation Tower"              , null, 0, 1, RES_PATH_GUI+"machines/DistillationTower"         ,/*IN-OUT-MIN-ITEM=*/ 1, 3, 0,/*IN-OUT-MIN-FLUID=*/ 1, 9, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, F, F)
