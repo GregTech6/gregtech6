@@ -454,7 +454,7 @@ public class GT6_Main extends Abstract_Mod {
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  ST.make(aRegistry.getItem(20271), "Get a cheap Printer and power it")
 		, ST.make(ItemsGT.BOTTLES, 1, 32116, "Fill it with expensive proprietary Ink")
-		, ST.make(Items.book, 1, W, "Insert a basic empty Book to get a Manual")
+		, ST.make(Items.book, 1, 0, "Insert a basic empty Book to get a Manual")
 		, NI
 		, NI
 		, NI
@@ -463,11 +463,11 @@ public class GT6_Main extends Abstract_Mod {
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  ST.make(aRegistry.getItem(7000), "Any of the GT6 Bookshelves")
 		, ST.make(Blocks.enchanting_table, 1, 0, "Place the Shelves around the Enchanting Table")
-		, ST.make(Items.book, 1, W, "Fill the Shelves with ANYTHING that looks like a Book or Scroll")
+		, ST.make(Items.book, 1, 0, "Fill the Shelves with ANYTHING that looks like a Book or Scroll")
 		, ST.make(aRegistry.getItem(7123), "Any of the GT6 Bookshelves")
-		, ST.make(Items.experience_bottle, 1, W, "Use your XP like normal")
-		, ST.make(Items.enchanted_book, 1, W, "Even counts DOUBLE if it is a magical thing!")
-		), ST.array(ST.make(Items.enchanted_book, 1, W, "Get a more compact Enchantment Power Bonus!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		, ST.make(Items.experience_bottle, 1, 0, "Use your XP like normal")
+		, ST.make(Items.enchanted_book, 1, 0, "Even counts DOUBLE if it is a magical thing!")
+		), ST.array(ST.make(Items.enchanted_book, 1, 0, "Get a more compact Enchantment Power Bonus!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  ST.make(BlocksGT.Saplings_AB, 1, 0, "Find a Rubber Tree in a Taiga Biome or similar")

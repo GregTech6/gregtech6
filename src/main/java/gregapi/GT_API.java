@@ -138,7 +138,12 @@ public class GT_API extends Abstract_Mod {
 		// Guess what, I got a random Crash from one of those not being classloaded...
 		UT.Entities.class.toString();
 		IMTE_CanConnectRedstone.class.toString();
-		try {ic2.api.item.IBoxable.class.toString();} catch(Throwable e) {/**/}
+		
+		// Somehow Railcraft fails to load for some reason, and I have no clue as to why,,,
+		try {ic2.api.item.IBoxable.class.toString();} catch(Throwable e) {e.printStackTrace(DEB);}
+		try {buildcraft.api.tools.IToolWrench.class.toString();} catch(Throwable e) {e.printStackTrace(DEB);}
+		try {mods.railcraft.api.core.items.IToolCrowbar.class.toString();} catch(Throwable e) {e.printStackTrace(DEB);}
+		try {mods.railcraft.common.items.ItemCrowbar.class.toString();} catch(Throwable e) {e.printStackTrace(DEB);}
 		
 		try {
 			DW = new DummyWorld();
