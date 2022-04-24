@@ -19,7 +19,15 @@
 
 package gregtech.entities;
 
-import gregapi.data.*;
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
+import gregapi.data.IL;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.OP;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -38,10 +46,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-
-import java.util.List;
-
-import static gregapi.data.CS.*;
 
 public class Override_Drops {
 	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
