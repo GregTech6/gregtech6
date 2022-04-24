@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.01: (Not released yet, released whenever it needs to be)
+[FIXED] An exploit with AlF3 due to a copypaste accident.
 [FIXED] GT6 Prospecting Journal Addon was crashing due to one of my refactors.
 [CHANGED] Adamantium Production is now slightly more difficult.
 
