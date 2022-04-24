@@ -19,11 +19,20 @@
 
 package gregtech.compat;
 
+import static gregapi.data.CS.*;
+
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.*;
+import gregapi.data.ANY;
+import gregapi.data.FL;
+import gregapi.data.IL;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.OP;
+import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
@@ -31,8 +40,6 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
-
-import static gregapi.data.CS.*;
 
 public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 	public Compat_Recipes_AppliedEnergistics(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}

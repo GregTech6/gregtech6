@@ -19,10 +19,13 @@
 
 package gregtech.items;
 
+import static gregapi.data.CS.*;
+
 import gregapi.code.ItemStackContainer;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
-import gregapi.data.CS.*;
+import gregapi.data.CS.BooksGT;
+import gregapi.data.CS.ItemsGT;
 import gregapi.item.CreativeTab;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictItemData;
@@ -36,8 +39,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-
-import static gregapi.data.CS.*;
 
 public class MultiItemTechnological extends MultiItemRandom {
 	public MultiItemTechnological(String aModID, String aUnlocalized) {
