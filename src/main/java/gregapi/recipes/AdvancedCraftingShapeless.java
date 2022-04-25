@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.recipes;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.TagData;
 import gregapi.item.IItemEnergy;
 import gregapi.item.IItemGTContainerTool;
@@ -34,6 +32,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -59,10 +61,19 @@ public class AdvancedCraftingShapeless extends ShapelessOreRecipe implements ICr
 			ItemStack tStack = null, tMainInput = ((getInput().get(0) instanceof ItemStack) ? (ItemStack)getInput().get(0) : null);
 			for (int i = 0; i < aGrid.getSizeInventory(); i++) {
 				if (aGrid.getStackInSlot(i) != null) {
-					if (tMainInput == null || ST.equal_(aGrid.getStackInSlot(i), tMainInput, T)) {
-						if (tStack != null && !ST.equal_(tStack, aGrid.getStackInSlot(i), F)) return F;
-						tStack = aGrid.getStackInSlot(i);
+					if (tMainInput == null) {
+						for (ItemStack iStack : (List<ItemStack>)getInput().get(0)) {
+							if (ST.equal(aGrid.getStackInSlot(i), iStack, T)) {
+								tMainInput = ST.amount(1, aGrid.getStackInSlot(i));
+							}
+						}
+					} else {
+						if (ST.equal_(aGrid.getStackInSlot(i), tMainInput, T)) {
+							if (tStack != null && !ST.equal_(tStack, aGrid.getStackInSlot(i), F)) return F;
+							tStack = aGrid.getStackInSlot(i);
+						}
 					}
+					
 				}
 			}
 		}

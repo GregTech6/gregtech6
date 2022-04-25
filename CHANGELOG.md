@@ -13,6 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] An exploit with AlF3 due to a copypaste accident.
 [FIXED] GT6 Prospecting Journal Addon was crashing due to one of my refactors.
 [CHANGED] Adamantium Production is now slightly more difficult.
+[ADDED] You can now dye written Books and empty Books if you dont like their Color. Though there are only 11 Colors available. I did add Brown to the List, so you can get rid of the enchantment glint that vanilla written Books have too.
 [ADDED] A DidYouKnow Page for Bookshelves.
 
 

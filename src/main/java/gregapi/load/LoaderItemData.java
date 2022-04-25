@@ -743,6 +743,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.blockSolid, MT.Obsidian           , ST.make(MD.TC, "blockCosmeticSolid", 1, 1));
 		OM.reg(OP.circuit.dat(MT.Basic)             , ST.mkic("electronicCircuit", 1));
 		OM.reg(OP.circuit.dat(MT.Advanced)          , ST.mkic("advancedCircuit", 1));
+		OM.reg("leafTobaccoDried"                   , ST.make(MD.HBM, "item.plant_item", 1, 0));
+		OM.reg("cropTobacco"                        , ST.make(MD.HBM, "tile.plant_flower", 1, 1));
+		OM.reg("cropHemp"                           , ST.make(MD.HBM, "tile.plant_flower", 1, 3));
 		OM.reg("cropHemp"                           , ST.make(MD.IE, "material", 1, 3));
 		OM.reg(OP.plate.dat(MT.WoodTreated)         , ST.make(MD.IE, "treatedWood", 1, 1));
 		OM.reg(OP.plate.dat(MT.WoodTreated)         , ST.make(MD.IE, "treatedWood", 1, 2));

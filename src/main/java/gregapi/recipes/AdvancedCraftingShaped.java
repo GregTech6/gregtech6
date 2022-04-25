@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.recipes;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.TagData;
 import gregapi.item.IItemEnergy;
 import gregapi.item.IItemGTContainerTool;
@@ -34,6 +32,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -58,9 +58,9 @@ public class AdvancedCraftingShaped extends ShapedOreRecipe implements ICrafting
 		if (mKeepingNBT) {
 			ItemStack tStack = null;
 			for (int i = 0; i < aGrid.getSizeInventory(); i++) {
-				if (aGrid.getStackInSlot(i) != null) {
+				if (aGrid.getStackInSlot(i) != null && aGrid.getStackInSlot(i).hasTagCompound()) {
 					if (tStack != null) {
-						if ((tStack.hasTagCompound() != aGrid.getStackInSlot(i).hasTagCompound()) || (tStack.hasTagCompound() && !tStack.getTagCompound().equals(aGrid.getStackInSlot(i).getTagCompound()))) return false;
+						if ((tStack.hasTagCompound() != aGrid.getStackInSlot(i).hasTagCompound()) || (tStack.hasTagCompound() && !tStack.getTagCompound().equals(aGrid.getStackInSlot(i).getTagCompound()))) return F;
 					}
 					tStack = aGrid.getStackInSlot(i);
 				}
