@@ -594,6 +594,12 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cableGt01AnyCopper"              , OD.craftingWireCopper);
 		OreDictManager.INSTANCE.addReRegistration("cableGt01Gold"                   , OD.craftingWireGold);
 		OreDictManager.INSTANCE.addReRegistration("cableGt01AnyIron"                , OD.craftingWireIron);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookEmptyBig                   , OD.bookEmpty);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookWrittenBig                 , OD.bookWritten);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookWritableBig                , OD.bookWritable);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookEmptySmall                 , OD.bookEmpty);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookWrittenSmall               , OD.bookWritten);
+		OreDictManager.INSTANCE.addReRegistration(OD.bookWritableSmall              , OD.bookWritable);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLeather                    , OD.craftingLeather);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLeatherTreated             , OD.craftingLeather);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLeatherHardened            , OD.craftingLeather);

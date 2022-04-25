@@ -122,8 +122,14 @@ public enum OD {
 	, paperWritten
 	, paperWritable
 	, paperEnchanted
+	, bookEmptySmall
+	, bookEmptyBig
 	, bookEmpty
+	, bookWrittenSmall
+	, bookWrittenBig
 	, bookWritten
+	, bookWritableSmall
+	, bookWritableBig
 	, bookWritable
 	, bookEnchanted
 	, stairWood

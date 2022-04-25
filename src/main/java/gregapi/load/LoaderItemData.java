@@ -444,9 +444,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.paperEmpty                        , ST.make(Items.paper, 1, W));
 		OM.reg(OD.paperMap                          , ST.make(Items.map, 1, W));
 		OM.reg(OD.paperMap                          , ST.make(Items.filled_map, 1, W));
-		OM.reg(OD.bookEmpty                         , ST.make(Items.book, 1, W));
-		OM.reg(OD.bookWritable                      , ST.make(Items.writable_book, 1, W));
-		OM.reg(OD.bookWritten                       , ST.make(Items.written_book, 1, W));
+		OM.reg(OD.bookEmptySmall                    , ST.make(Items.book, 1, W));
+		OM.reg(OD.bookWritableSmall                 , ST.make(Items.writable_book, 1, W));
+		OM.reg(OD.bookWrittenSmall                  , ST.make(Items.written_book, 1, W));
 		OM.reg(OD.bookEnchanted                     , ST.make(Items.enchanted_book, 1, W));
 		OM.reg(OD.craftingFirestarter               , ST.make(Items.fire_charge, 1, W));
 		OM.reg(OD.craftingFirestarter               , ST.make(Items.flint_and_steel, 1, W));
