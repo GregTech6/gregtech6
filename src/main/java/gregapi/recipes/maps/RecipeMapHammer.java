@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
-import java.util.Collection;
-import java.util.List;
-
+import gregapi.block.IPrefixBlock;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.OP;
@@ -36,7 +31,14 @@ import gregapi.recipes.Recipe;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 /**
  * @author Gregorius Techneticies
@@ -54,8 +56,12 @@ public class RecipeMapHammer extends RecipeMapSpecialSingleInput {
 		if (mBufferedDynamicRecipes == null) {
 			mBufferedDynamicRecipes = new ArrayListNoNulls<>();
 			for (OreDictMaterial tMaterial : OP.crushed.mRegisteredMaterials) {
-				for (ItemStackContainer tStack : tMaterial.mRegisteredItems) {
-					mBufferedDynamicRecipes.add(getRecipeFor(tStack.toStack()));
+				for (ItemStackContainer tThing : tMaterial.mRegisteredItems) {
+					ItemStack tStack = tThing.toStack();
+					Block tBlock = ST.block(tStack);
+					if (tBlock == NB) continue;
+					if (tBlock instanceof IPrefixBlock && tBlock != BlocksGT.ore) continue;
+					mBufferedDynamicRecipes.add(getRecipeFor(tStack));
 				}
 			}
 		}
