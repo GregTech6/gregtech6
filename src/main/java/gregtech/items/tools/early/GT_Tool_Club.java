@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -42,6 +37,10 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Club extends GT_Tool_HardHammer {
 	@Override public int getToolDamagePerBlockBreak()                                       {return  50;}
@@ -82,7 +81,7 @@ public class GT_Tool_Club extends GT_Tool_HardHammer {
 		}
 		if (aDrop == Blocks.obsidian || IL.NeLi_Obsidian.equal(aDrop) || IL.NePl_Obsidian.equal(aDrop) || IL.EtFu_Obsidian.equal(aDrop)) {
 			aDrops.clear();
-			aDrops.add(OP.rockGt.mat(MT.Obsidian, 1+RNGSUS.nextInt(8))); // Yep this is a huge waste to do it that way instead of using the Crucible!
+			aDrops.add(OP.rockGt.mat(MT.Obsidian, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
 		if (IL.NeLi_Basalt.equal(aDrop) || IL.NeLi_Basalt_Polished.equal(aDrop) || IL.NePl_Basalt.equal(aDrop) || IL.NePl_Basalt_Polished.equal(aDrop) || IL.GaSu_Basalt.equal(aDrop) || IL.GaSu_Basalt_Smooth.equal(aDrop) || IL.BOTA_Basalt.equal(aDrop) || IL.BOTA_Basalt_Bricks.equal(aDrop) || IL.BOTA_Basalt_Chiseled.equal(aDrop) || IL.BOTA_Basalt_Smooth.equal(aDrop)) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,6 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.CS.ToolsGT.*;
-import static gregapi.data.OP.*;
-import static gregapi.data.TD.Atomic.*;
-import static gregapi.data.TD.Compounds.*;
-import static gregapi.data.TD.Properties.*;
-import static gregapi.oredict.OreDictMaterialCondition.*;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
@@ -34,18 +26,7 @@ import gregapi.code.ICondition.Nor;
 import gregapi.code.ICondition.Or;
 import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.ArmorsGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.TC;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.IItemEnergy;
 import gregapi.item.ItemArmorBase;
 import gregapi.item.multiitem.MultiItemToolWithCompat;
@@ -63,17 +44,18 @@ import gregtech.items.tools.crafting.GT_Tool_RollingPin;
 import gregtech.items.tools.early.*;
 import gregtech.items.tools.electric.*;
 import gregtech.items.tools.machine.*;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Chisel;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Cutter;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_File;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Knife;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Multitool;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Saw;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Scissors;
-import gregtech.items.tools.pocket.GT_Tool_Pocket_Screwdriver;
+import gregtech.items.tools.pocket.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.CS.ToolsGT.*;
+import static gregapi.data.OP.*;
+import static gregapi.data.TD.Atomic.ANTIMATTER;
+import static gregapi.data.TD.Compounds.COATED;
+import static gregapi.data.TD.Properties.*;
+import static gregapi.oredict.OreDictMaterialCondition.*;
 
 public class Loader_Tools implements Runnable {
 	@Override
@@ -141,7 +123,7 @@ public class Loader_Tools implements Runnable {
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.FILE                      , "File"                            , "Harvests Iron Bars and similar faster"               , new GT_Tool_File()                                             .setMaterialAmount(toolHeadFile                      .mAmount), OreDictToolNames.file                                                                                                                    , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.FABRICO       , 2), TC.stack(TC.ORDO          , 2)                                ), TOOL_file);
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.CROWBAR                   , "Crowbar"                         , "Harvests anything that cannot be harvested otherwise", new GT_Tool_Crowbar()                                          .setMaterialAmount(3*U2                                      ), OreDictToolNames.crowbar                                                                                                                 , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.FABRICO       , 2), TC.stack(TC.TELUM         , 2)                                ), TOOL_crowbar);
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.SCREWDRIVER               , "Screwdriver"                     , ""                                                    , new GT_Tool_Screwdriver()                                      .setMaterialAmount(toolHeadScrewdriver               .mAmount), OreDictToolNames.screwdriver                                                                                                             , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.FABRICO       , 2), TC.stack(TC.ORDO          , 2)                                ), TOOL_screwdriver);
-		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.CLUB                      , "Club"                            , "A blunt primitive weapon with a lot of Power"        , new GT_Tool_Club()                                             .setMaterialAmount(6*U                                       )                                                                                                                                           , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.HUMANUS       , 2), TC.stack(TC.STRONTIO      , 2)                                ), TOOL_hammer);
+		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.CLUB                      , "Club"                            , "A blunt primitive Weapon and Rock Crusher"           , new GT_Tool_Club()                                             .setMaterialAmount(6*U                                       )                                                                                                                                           , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.HUMANUS       , 2), TC.stack(TC.STRONTIO      , 2)                                ), TOOL_hammer);
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.WIRECUTTER                , "Wire Cutter"                     , "Harvests Cables and Wires faster"                    , new GT_Tool_WireCutter()                                       .setMaterialAmount(4*U                                       ), OreDictToolNames.wirecutter                                                                                                              , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.FABRICO       , 2), TC.stack(TC.ORDO          , 2)                                ), TOOL_cutter);
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.SCOOP                     , "Scoop"                           , ""                                                    , new GT_Tool_Scoop()                                            .setMaterialAmount(3*U                                       ), OreDictToolNames.scoop                                                                                                                   , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.BESTIA        , 2), TC.stack(TC.PANNUS        , 2)                                ), TOOL_scoop);
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.BRANCHCUTTER              , "Branch Cutter"                   , ""                                                    , new GT_Tool_BranchCutter()                                     .setMaterialAmount(5*U                                       ), OreDictToolNames.branchcutter                                                                                                            , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.METO          , 2), TC.stack(TC.HERBA         , 2)                                ), TOOL_grafter);
