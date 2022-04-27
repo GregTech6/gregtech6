@@ -310,7 +310,7 @@ public class GT6_Main extends Abstract_Mod {
 		new CompatMods(MD.GT, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 				new Loader_Recipes_Replace(),
-				new Loader_Recipes_Copy(),
+				new Loader_Recipes_Foreign(),
 				new Loader_Recipes_Decomp(),
 				new Loader_Recipes_Handlers()
 			);
