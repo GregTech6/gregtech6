@@ -186,6 +186,7 @@ public enum IL implements IItemContainer {
 	FZ_Sludge,
 	HBM_Mercury_Bottle, HBM_Mercury_Drop, HBM_Mercury_Drop_Tiny, HBM_Poison_Powder, HBM_Biomass, HBM_Biomass_Compressed,
 	HBM_Bedrock_Coltan, HBM_Bedrock_Oil,
+	HBM_Crushed_Obsidian,
 	ICBM_Concrete,
 	IC2_Debug,
 	IC2_Fertilizer, IC2_Grin_Powder, IC2_Spray_WeedEx,

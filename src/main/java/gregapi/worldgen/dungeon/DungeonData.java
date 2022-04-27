@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,11 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
-import java.util.Random;
-
 import gregapi.block.IBlockPlacable;
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.OP;
@@ -48,6 +43,10 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.Fluid;
+
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -234,7 +233,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean obsidian(int aX, int aY, int aZ, boolean aGravity) {
-		return set(aX, aY, aZ, Blocks.obsidian, 0, IL.NeLi_Obsidian.exists() ? IL.NeLi_Obsidian.block() : IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, aGravity && IL.RC_Crushed_Obsidian.exists() ? IL.RC_Crushed_Obsidian.block() : Blocks.obsidian, aGravity && IL.RC_Crushed_Obsidian.exists() ? 4 : 0);
+		return set(aX, aY, aZ, Blocks.obsidian, 0, IL.NeLi_Obsidian.exists() ? IL.NeLi_Obsidian.block() : IL.NePl_Obsidian.block(), 0, IL.EtFu_Obsidian.block(), 0, !aGravity ? Blocks.obsidian : IL.RC_Crushed_Obsidian.exists() ? IL.RC_Crushed_Obsidian.block() : IL.HBM_Crushed_Obsidian.exists() ? IL.HBM_Crushed_Obsidian.block() : Blocks.obsidian, aGravity && IL.RC_Crushed_Obsidian.exists() ? 4 : 0);
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {

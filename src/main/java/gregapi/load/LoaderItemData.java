@@ -1813,6 +1813,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.SC2, "ItemCookedWhaleMeat"               , 1,   W, MT.FishCooked         ,  U * 2, MT.Bone, U9);
 		
 		
+		OM.data(MD.HBM, "item.coal_infernal"                , 1,   0, MT.Coal               ,  OP.gem.mAmount * 3);
 		OM.data(MD.HBM, "item.apple_lead"                   , 1,   0, MT.Pb                 ,  OP.nugget.mAmount * 8);
 		OM.data(MD.HBM, "item.apple_lead"                   , 1,   1, MT.Pb                 ,  OP.ingot.mAmount * 8);
 		OM.data(MD.HBM, "item.apple_lead"                   , 1,   2, MT.Pb                 ,  OP.blockIngot.mAmount * 8);

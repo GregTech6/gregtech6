@@ -570,6 +570,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}
 		}
 		
+		RM.generify(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
+		RM.generify(IL.HBM_Crushed_Obsidian.get(1), IL.RC_Crushed_Obsidian .get(1));
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.
 		RM.generify   (FL.make("molten.meteoriciron"   , 1), FL.make("molten.iron", 1));
