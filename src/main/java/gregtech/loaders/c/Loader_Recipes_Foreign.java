@@ -133,16 +133,22 @@ public class Loader_Recipes_Foreign implements Runnable {
 				CrusherRecipe.addRecipe(ST.make(Items.flint       , 2, 0), ST.make(Blocks.gravel             , 1, 0), 1600);
 				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Glowstone, 4), ST.make(Blocks.glowstone          , 1, 0), 3200);
 				CrusherRecipe.addRecipe(IL.Dye_Bonemeal           .get(4), ST.make(Items.bone                , 1, 0), 3200);
-				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Charcoal , 1), OP.gem       .dat(MT.Charcoal).toString(), 2400);
-				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Coal     , 1), OP.gem       .dat(MT.Coal    ).toString(), 2400);
-				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Glass    , 1), OP.blockSolid.dat(MT.Glass   ).toString(), 3200);
+				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Glass    , 1), OD.paneGlass                  .toString(), 1600);
+				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Glass    , 1), OD.blockGlass                 .toString(), 3200);
 				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Obsidian , 1), OP.blockSolid.dat(MT.Obsidian).toString(),14400);
-				for (OreDictMaterial tMat : ANY.Blaze.mToThis)
-				CrusherRecipe.addRecipe(OP.dustSmall.mat(tMat        , 2), OP.blockSolid.dat(tMat       ).toString(), 3200);
-				for (int i = 0; i < 16; i++)
+				for (OreDictMaterial tMat : ANY.Coal.mToThis) {
+				CrusherRecipe.addRecipe(OP.dust     .mat(tMat        , 1), OP.gem       .dat(tMat       ).toString(), 2400);
+				CrusherRecipe.addRecipe(OP.dust     .mat(tMat        , 1), OP.ingot     .dat(tMat       ).toString(), 2400);
+				}
+				for (OreDictMaterial tMat : ANY.Blaze.mToThis) {
+				CrusherRecipe.addRecipe(OP.dustSmall.mat(tMat        , 2), OP.stick     .dat(tMat       ).toString(), 3200);
+				}
+				for (int i = 0; i < 16; i++) {
 				CrusherRecipe.addRecipe(ST.make(Items.string      , 4, 0), ST.make(Blocks.wool, 1, i)               , 3200);
-				for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Au, MT.Ag, MT.Cu, MT.Sn, MT.Zn, MT.Ni, MT.Co, MT.Ardite, MT.Pt, MT.Pb, MT.Ge, MT.Os, MT.Ir, MT.W, MT.Al, MT.Ti, MT.Cr, MT.Mn, MT.Steel, MT.Bronze, MT.Brass, MT.Electrum, MT.Constantan, MT.TinAlloy, MT.Invar, MT.MeteoricIron, MT.MeteoricSteel, MT.Desh, MT.BlueAlloy, MT.ElectrotineAlloy, MT.RedAlloy, MT.PurpleAlloy, MT.AncientDebris, MT.Netherite})
+				}
+				for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Fe, MT.Au, MT.Ag, MT.Cu, MT.Sn, MT.Zn, MT.Ni, MT.Co, MT.Ardite, MT.Pt, MT.Pb, MT.Ge, MT.Os, MT.Ir, MT.W, MT.Al, MT.Ti, MT.Cr, MT.Mn, MT.Steel, MT.Bronze, MT.Brass, MT.Electrum, MT.Constantan, MT.TinAlloy, MT.Invar, MT.MeteoricIron, MT.MeteoricSteel, MT.Desh, MT.BlueAlloy, MT.ElectrotineAlloy, MT.RedAlloy, MT.PurpleAlloy, MT.AncientDebris, MT.Netherite}) {
 				CrusherRecipe.addRecipe(OP.dust.mat(tMat             , 1), OP.ingot     .dat(tMat       ).toString(), 6400);
+				}
 			} catch(Throwable e) {e.printStackTrace(ERR);}
 		}
 	}
