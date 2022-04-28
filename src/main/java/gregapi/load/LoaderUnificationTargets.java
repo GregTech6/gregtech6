@@ -1104,6 +1104,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Cu                     , MD.EtFu, "deepslate_copper_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Diamond                , MD.EtFu, "deepslate_diamond_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Lapis                  , MD.EtFu, "deepslate_lapis_ore", 0);
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Lapis                  , MD.EtFu, "deepslate_lapis_ore", 4);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , MD.EtFu, "deepslate_redstone_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Redstone               , MD.EtFu, "deepslate_lit_redstone_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Emerald                , MD.EtFu, "deepslate_emerald_ore", 0);
@@ -1113,6 +1114,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Fe                     , ST.make(Blocks.iron_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Lapis                  , ST.make(Blocks.lapis_ore, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Lapis                  , ST.make(Blocks.lapis_ore, 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Redstone               , ST.make(Blocks.redstone_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Redstone               , ST.make(Blocks.lit_redstone_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Au                     , ST.make(Blocks.gold_ore, 1, 0));
