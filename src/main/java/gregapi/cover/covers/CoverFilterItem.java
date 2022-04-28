@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -36,6 +31,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -116,7 +115,9 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	}
 	@Override
 	public boolean interceptConnect(byte aCoverSide, CoverData aData) {
-		return aData.mTileEntity instanceof ITileEntityItemPipe && aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof ITileEntityItemPipe;
+		boolean rIntercept = aData.mTileEntity instanceof ITileEntityItemPipe && aData.mTileEntity.getAdjacentTileEntity(aCoverSide).mTileEntity instanceof ITileEntityItemPipe;
+		if (rIntercept) ((ITileEntityItemPipe)aData.mTileEntity).disconnect(aCoverSide, T);
+		return rIntercept;
 	}
 	@Override
 	public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {
