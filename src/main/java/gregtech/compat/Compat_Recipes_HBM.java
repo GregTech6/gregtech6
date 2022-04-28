@@ -47,7 +47,7 @@ public class Compat_Recipes_HBM extends CompatMods {
 		RM.packunpack(OP.round.mat(MT.Pb, 6), ST.make(MD.HBM, "item.pellet_buckshot", 1, 0));
 		
 		
-		RM.Crusher.addRecipe1(F, 16, 512, ST.make(MD.HBM, "tile.ore_nether_coal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), OP.dust.mat(MT.Netherrack, 1));
+		RM.Crusher.addRecipe1(F, 16, 512, ST.make(MD.HBM, "tile.ore_nether_coal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), OP.dust.mat(MT.Netherrack, 1), OP.dust.mat(MT.Netherrack, 1));
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_lead", 1, 0), MT.Pb.liquid(64*U9, T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 1));
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_lead", 1, 1), MT.Pb.liquid(64*U , T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 2));

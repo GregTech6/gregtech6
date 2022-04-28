@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,43 +19,19 @@
 
 package gregapi;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppedEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
-import gregapi.load.LoaderBookList;
-import gregapi.load.LoaderItemData;
-import gregapi.load.LoaderItemList;
-import gregapi.load.LoaderUnificationTargets;
-import gregapi.load.LoaderWoodDictionary;
+import gregapi.data.*;
+import gregapi.load.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -64,6 +40,11 @@ import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -695,6 +676,9 @@ public class GT_API_Post extends Abstract_Mod {
 		MT.U235F6.mTooltipChemical  = "U-235F\u2086";
 		MT.U238F4.mTooltipChemical  = "U-238F\u2084";
 		MT.U238F6.mTooltipChemical  = "U-238F\u2086";
+		
+		// Adding all the things that belong to the "ore" Prefix to its registered List.
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DUST_ORE, TD.Prefix.DENSE_ORE)) OP.ore.mRegisteredItems.addAll(tPrefix.mRegisteredItems);
 		
 		// And now to stop CoFH-Core from crashing and lagging the Game in Singleplayer with the FMLProxyPacket race condition Bug.
 		// I hate having to do this, but there is no other proper way to actually fix this Issue...
