@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregapi.tileentity.connectors;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
@@ -42,6 +38,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -114,7 +114,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 		if (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptConnect(aSide, mCovers)) return F;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (tDelegator.mTileEntity instanceof ITileEntityConnector) {
-			if (tDelegator.mTileEntity instanceof ITileEntityCoverable && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData() != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity] != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity].interceptConnect(tDelegator.mSideOfTileEntity, mCovers)) return F;
+			if (tDelegator.mTileEntity instanceof ITileEntityCoverable && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData() != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity] != null && ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData().mBehaviours[tDelegator.mSideOfTileEntity].interceptConnect(tDelegator.mSideOfTileEntity, ((ITileEntityCoverable)tDelegator.mTileEntity).getCoverData())) return F;
 			if (SIDES_VALID[tDelegator.mSideOfTileEntity] && UT.Code.haveOneCommonElement(((ITileEntityConnector)tDelegator.mTileEntity).getConnectorTypes(tDelegator.mSideOfTileEntity), getConnectorTypes(aSide))) {
 				byte oConnections = mConnections;
 				mConnections |= SBIT[aSide];
