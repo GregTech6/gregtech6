@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
@@ -34,6 +27,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -46,7 +45,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(32) > 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
+		if (aRandom.nextInt(64) > 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		for (String tName : aBiomeNames) if (BIOMES_OCEAN_BEACH.contains(tName) || BIOMES_SWAMP.contains(tName)) return F;
 		boolean temp = T;
 		for (String tName : aBiomeNames) if (BIOMES_RIVER.contains(tName)) {temp = F; break;}
@@ -55,7 +54,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 		int tX = aMinX-16, tZ = aMinZ-16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12, aMeta = new NoiseGenerator(aWorld).get(aMinX/4, 360, aMinZ/4, 3);
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = WD.block(aWorld, tX+i, tUpperBound+1, tZ+j);
-			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 1; tY--, tLastBlock = tBlock) {
+			for (int tY = tUpperBound, tGenerated = 0; tY >= tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {
 				tBlock = WD.block(aWorld, tX+i, tY, tZ+j);
 				byte tMeta = WD.meta(aWorld, tX+i, tY, tZ+j);
 				if (tBlock == BlocksGT.Sands && tMeta == aMeta) {tGenerated++; continue;}

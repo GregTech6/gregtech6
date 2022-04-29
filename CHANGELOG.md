@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.15.01: (Not released yet, released whenever it needs to be)
 [FIXED] An exploit with AlF3 due to a copypaste accident.
 [FIXED] GT6 Prospecting Journal Addon was crashing due to one of my refactors.
+[CHANGED] River Black Sand now generates 2 times less often, but has two Layers again. This should avoid an edge case Bug that resulted in an infinite Worldgen Loop.
 [CHANGED] Most Immersive Engineering Crusher and Arc Furnace Recipes, because pretty much all of them were bad. And their Recipe System is as laggy as vanilla Crafting so I sure as heck wont add my own giant set of Recipes to it. But I will add a FEW Recipes so they are not completely dead.
 [CHANGED] Adamantium Production is now slightly more difficult.
 [CHANGED] The Prefix Filter Block will use the "ore" Prefix to include all regular "Ore Blocks" regardless of the Stone they are inside of.
