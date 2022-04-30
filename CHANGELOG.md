@@ -16,7 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Most Immersive Engineering Crusher and Arc Furnace Recipes, because pretty much all of them were bad. And their Recipe System is as laggy as vanilla Crafting so I sure as heck wont add my own giant set of Recipes to it. But I will add a FEW Recipes so they are not completely dead.
 [CHANGED] Adamantium Production is now slightly more difficult.
 [CHANGED] The Prefix Filter Block will use the "ore" Prefix to include all regular "Ore Blocks" regardless of the Stone they are inside of.
-[ADDED] You can now dye written Books and empty Books if you dont like their Color. Though there are only 11 Colors available. I did add Brown to the List, so you can get rid of the enchantment glint that vanilla written Books have too.
+[ADDED] You can now dye written Books and empty Books if you dont like their Color. Though there are only 11 Colors available. I did add Brown to the List, so you can get rid of the enchantment glint that vanilla written Books have too. It is Crafting only though, not Bathinng Pot though.
 [ADDED] A DidYouKnow Page for Bookshelves.
 
 

@@ -396,11 +396,11 @@ public class GT_API extends Abstract_Mod {
 			MT.Steel.setLocal("Style");
 			MT.RedSteel.setLocal("Rad Style");
 			MT.BlueSteel.setLocal("Blu Style");
-			MT.BlackSteel.setLocal("Afroamerican Style");
+			MT.BlackSteel.setLocal("Afro Style"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.MeteoricSteel.setLocal("Metaur Style");
 			MT.MeteoricRedSteel.setLocal("Metaur Rad Style");
 			MT.MeteoricBlueSteel.setLocal("Metaur Blu Style");
-			MT.MeteoricBlackSteel.setLocal("Metaur Afroamerican Style");
+			MT.MeteoricBlackSteel.setLocal("Metaur Afro Style"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.DamascusSteel.setLocal("Dank Style");
 			MT.VanadiumSteel.setLocal("Vandalium Style");
 			MT.TungstenSteel.setLocal("Wolf Style");
@@ -440,7 +440,7 @@ public class GT_API extends Abstract_Mod {
 			MT.PigIron.setLocal("Ferrobacon");
 			MT.TinAlloy.setLocal("Tin*");
 			MT.Bronze.setLocal("Tinkerers Alloy");
-			MT.BlackBronze.setLocal("Afroamerican Tinkerers Alloy");
+			MT.BlackBronze.setLocal("Afro Tinkerers Alloy"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.Constantan.setLocal("Cupronickel");
 			MT.Ge.setLocal("Platosmium");
 			MT.Amazonite.setLocal("Bezosite");

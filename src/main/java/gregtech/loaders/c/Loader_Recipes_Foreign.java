@@ -133,15 +133,15 @@ public class Loader_Recipes_Foreign implements Runnable {
 				CrusherRecipe.addRecipe(ST.make(Items.flint       , 2, 0), ST.make(Blocks.gravel             , 1, 0), 1600);
 				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Glowstone, 4), ST.make(Blocks.glowstone          , 1, 0), 3200);
 				CrusherRecipe.addRecipe(IL.Dye_Bonemeal           .get(4), ST.make(Items.bone                , 1, 0), 3200);
+				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Glass    , 1), OD.blockGlass                 .toString(), 6400);
 				CrusherRecipe.addRecipe(OP.dust     .mat(MT.Glass    , 1), OD.paneGlass                  .toString(), 1600);
-				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Glass    , 1), OD.blockGlass                 .toString(), 3200);
 				CrusherRecipe.addRecipe(OP.blockDust.mat(MT.Obsidian , 1), OP.blockSolid.dat(MT.Obsidian).toString(),14400);
 				for (OreDictMaterial tMat : ANY.Coal.mToThis) {
 				CrusherRecipe.addRecipe(OP.dust     .mat(tMat        , 1), OP.gem       .dat(tMat       ).toString(), 2400);
 				CrusherRecipe.addRecipe(OP.dust     .mat(tMat        , 1), OP.ingot     .dat(tMat       ).toString(), 2400);
 				}
 				for (OreDictMaterial tMat : ANY.Blaze.mToThis) {
-				CrusherRecipe.addRecipe(OP.dustSmall.mat(tMat        , 2), OP.stick     .dat(tMat       ).toString(), 3200);
+				CrusherRecipe.addRecipe(OP.dustTiny .mat(tMat        , 4), OP.stick     .dat(tMat       ).toString(), 3200);
 				}
 				for (int i = 0; i < 16; i++) {
 				CrusherRecipe.addRecipe(ST.make(Items.string      , 4, 0), ST.make(Blocks.wool, 1, i)               , 3200);
