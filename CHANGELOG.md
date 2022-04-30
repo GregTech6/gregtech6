@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.15.04: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.15.03: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.01: (Not released yet, released whenever it needs to be)
+6.15.01:
 [FIXED] An exploit with AlF3 due to a copypaste accident.
 [FIXED] GT6 Prospecting Journal Addon was crashing due to one of my refactors.
 [CHANGED] River Black Sand now generates 2 times less often, but has two Layers again. This should avoid an edge case Bug that resulted in an infinite Worldgen Loop.
