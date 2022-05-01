@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,9 @@
 
 package gregapi.tileentity.tank;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -49,11 +44,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidContainerItem;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -206,7 +201,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 						if ((mMode & B[0]) != 0) {
 							byte[] tSides = ZL_BYTE;
 							if (FL.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (FL.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
-							for (byte tSide : tSides) if (FL.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
+							for (byte tSide : tSides) if (mTank.has() && FL.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
 						}
 					}
 				}
