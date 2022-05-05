@@ -20,6 +20,7 @@
 package gregtech.tileentity.batteries.eu;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightValue;
+import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.old.Textures.BlockIcons;
@@ -29,10 +30,14 @@ import gregapi.tileentity.energy.TileEntityBase08Battery;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 import static gregapi.data.CS.*;
 
@@ -44,9 +49,21 @@ public class MultiTileEntityAneutronicFusion extends TileEntityBase08Battery imp
 	public ItemStack setEnergyStored(TagData aEnergyType, ItemStack aStack, long aAmount) {
 		if ((aEnergyType != mType && aEnergyType != null) || ST.size(aStack) <= 0) return aStack;
 		mEnergy = aAmount;
-		if (mEnergy <= 0) ST.set(aStack, IL.Aneutronic_Fusion_Empty.get(1), F, F);
+		if (mEnergy < mSizeMax) {
+			mEnergy = 0;
+			ST.set(aStack, IL.Aneutronic_Fusion_Empty.get(1), F, F);
+		}
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return ST.update_(aStack);
+	}
+	
+	@Override
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
+		if (mCapacity > 0)
+		aList.add(setEnergyStored(mType, aBlock.mMultiTileEntityRegistry.getItem(aID), mCapacity));
+		else
+		aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID));
+		return F;
 	}
 	
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
