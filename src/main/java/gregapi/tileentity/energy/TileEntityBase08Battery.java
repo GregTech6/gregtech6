@@ -52,7 +52,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IItemEnergy, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_AddToolTips {
-	public long mEnergy = 0, mSizeMin = 16, mSizeRec = 32, mSizeMax = 64, mCapacity = 32000;
+	public long mEnergy = 0, mSizeMin = 0, mSizeRec = 0, mSizeMax = 0, mCapacity = 0;
 	public byte mDisplayedEnergy = 0;
 	public TagData mType = TD.Energy.EU;
 	
