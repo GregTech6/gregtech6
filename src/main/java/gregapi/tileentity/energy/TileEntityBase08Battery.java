@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,7 @@
 
 package gregapi.tileentity.energy;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnlyPlaceableWhenSneaking;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
@@ -52,6 +42,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -107,7 +102,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(mCapacity, mEnergy)) + " / " + UT.Code.makeString(mCapacity) + " " + mType.getLocalisedChatNameShort() + LH.Chat.WHITE + " - Size: " + mSizeRec);
+		aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(mCapacity, mEnergy)) + " / " + UT.Code.makeString(mCapacity) + " " + mType.getLocalisedChatNameShort() + LH.Chat.WHITE + " - Size: " + (mSizeMin == mSizeMax ? mSizeRec : mSizeMin + " to " + mSizeMax));
 	}
 	
 	@Override

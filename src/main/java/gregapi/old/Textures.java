@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.old;
 
-import static gregapi.data.CS.*;
-
 import gregapi.GT_API;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
@@ -33,6 +31,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
+import static gregapi.data.CS.*;
+
 public class Textures {
 	public enum BlockIcons implements IIconContainer, Runnable {
 		  VOID, RENDERING_ERROR
@@ -41,6 +41,7 @@ public class Textures {
 		, FLUID_SPRING, GREG_O_LANTERN
 		
 		, ZPM_TOP, ZPM_SIDES, ZPM_BOTTOM
+		, ANEUTRONIC_FUSION_TOP, ANEUTRONIC_FUSION_SIDES, ANEUTRONIC_FUSION_BOTTOM
 		, DUCT_TAPE
 		
 		, MUD, CLAY_BROWN, TURF, CLAY_RED, CLAY_YELLOW, CLAY_BLUE, CLAY_WHITE

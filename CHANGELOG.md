@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.02: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1EU/t to 16384EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_000_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
 
 
 6.15.01:
