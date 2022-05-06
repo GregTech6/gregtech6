@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,6 @@
 
 package gregtech;
 
-import static gregapi.data.CS.*;
-
-import java.net.URL;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -40,17 +32,7 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
-import gregapi.config.ConfigCategories;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
@@ -63,7 +45,6 @@ import gregtech.entities.Override_Drops;
 import gregtech.entities.ai.EntityAIBetterAttackOnCollide;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.tileentity.misc.MultiTileEntityCertificate;
-import joptsimple.internal.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -95,11 +76,18 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate;
 import net.minecraftforge.fluids.Fluid;
 
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
+
 public abstract class GT_Proxy extends Abstract_Proxy {
 	public final HashSetNoNulls<String> mSupporterListSilver = new HashSetNoNulls<>();
 	public final HashSetNoNulls<String> mSupporterListGold = new HashSetNoNulls<>();
 	
-	public String mMessage = Strings.EMPTY;
+	public String mMessage = "";
 	
 	public boolean mDisableVanillaOres = T, mDisableVanillaLakes = T, mVersionOutdated = F;
 	public int mSkeletonsShootGTArrows = 16, mFlintChance = 30;
@@ -114,69 +102,24 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@Override
 	public void onProxyBeforePreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
 		super.onProxyBeforePreInit(aMod, aEvent);
-		new Thread(new Runnable() {@Override public void run() {
 		
-		List<String>
-		tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlist.txt", T);
-		if (tTextFile != null && tTextFile.size() > 3) {
-			mSupporterListSilver.addAll(tTextFile);
-		} else try {
+		// Because of the whole ban wave Mojang did with their new Microsoft Bullshit Auth System, I am not going to
+		// ever add more people to these Lists anymore. So I decided to no longer check those Text Files on my Server.
+		// Of-course the Server will still contain said Text Files, I just stop downloading them.
+		
+		try {
 			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlist.txt"));
 			while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
-			OUT.println("GT_DL_Thread: Failed downloading Silver Supporter List, using interal List!");
 		} catch(Throwable e) {e.printStackTrace(ERR);}
-		
-		tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlistgold.txt", T);
-		if (tTextFile != null && tTextFile.size() > 3) {
-			mSupporterListGold.addAll(tTextFile);
-		} else try {
+		try {
 			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlistgold.txt"));
 			while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
-			OUT.println("GT_DL_Thread: Failed downloading Gold Supporter List, using interal List!");
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
+		// Just making sure there is no overlaps.
 		mSupporterListSilver.removeAll(mSupporterListGold);
-		
-		if (CODE_CLIENT) {
-			tTextFile = downloadTextFile("updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt", F);
-			if (tTextFile != null) {
-				for (String tLine : tTextFile) mMessage += tLine + " ";
-				if (mMessage.length() <= 5) mMessage = Strings.EMPTY;
-			}
-			
-			if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
-				String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("https://updates.gregtech.mechaenetia.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
-				// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
-				// And just ignore the first Versions of each Major Release, since that one is usually the buggiest or a quickfix.
-				mVersionOutdated = !tVersion.startsWith("6") && !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
-				
-				OUT.println("GT_DL_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
-			} catch(Throwable e) {
-				OUT.println("GT_DL_Thread: Failed Downloading Version Number of the latest Major Version!");
-				e.printStackTrace(ERR);
-			}
-		}
-		
-		}}).start();
-	}
-	
-	protected List<String> downloadTextFile(String aURL, boolean aLowercase) {
-		List<String> rList = new ArrayListNoNulls<>();
-		try {
-			Scanner tScanner = new Scanner(new URL(aURL.startsWith("http")?aURL:"https://"+aURL).openStream());
-			while (tScanner.hasNextLine()) rList.add(aLowercase ? tScanner.nextLine().toLowerCase() : tScanner.nextLine());
-			tScanner.close();
-			for (String tLine : rList) if (tLine.contains("a href")) {
-				ERR.println("GT_DL_Thread: Your Internet Connection has Issues, you should probably go check that your ISP or Network don't do stupid Stuff.");
-				return new ArrayListNoNulls<>();
-			}
-			return rList;
-		} catch(Throwable f) {
-			OUT.println("GT_DL_Thread: Failed to Connect.");
-		}
-		return null;
 	}
 	
 	@SubscribeEvent
