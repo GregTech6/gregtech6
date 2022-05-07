@@ -1073,7 +1073,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gemExquisite   , MT.EnergiumCyan, IL.Crystal_Energium_Cyan_EV.get(1));
 		OreDictManager.INSTANCE.setTarget(OP.gemLegendary   , MT.EnergiumCyan, IL.Crystal_Energium_Cyan_IV.get(1));
 		
-		IL.Aneutronic_Fusion_Empty      .set(aRegistry.add("Portable Aneutronic Fusion Reactor"             , "Portable Power Cells"                , 14600, 14600, MultiTileEntityAneutronicFusion.class, 0, 16, aUtilMetal, UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 1.0F, NBT_ENERGY_ACCEPTED, TD.Energy.EU)));
+		IL.Aneutronic_Fusion_Empty      .set(aRegistry.add("Portable Aneutronic Fusion Reactor"             , "Portable Power Cells"                , 14600, 14600, MultiTileEntityAneutronicFusion.class, 0, 16, aUtilMetal, UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 1.0F, NBT_ENERGY_ACCEPTED, TD.Energy.EU), "VPV", "GFG", "VGV", 'P', IL.Processor_Crystal_Ruby, 'V', OP.plateGemTiny.dat(MT.Vb), 'F', IL.FIELD_GENERATORS[5], 'G', OP.foil.dat(MT.Graphene)));
 		IL.Aneutronic_Fusion_He3        .set(aRegistry.add("Portable Aneutronic Fusion Reactor (Helium-3)"  , "Portable Power Cells"                , 14601, 14600, MultiTileEntityAneutronicFusion.class, 0, 16, aUtilMetal, UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 1.0F, NBT_ENERGY_ACCEPTED, TD.Energy.EU, NBT_INPUT_MIN, 1, NBT_INPUT, V[5], NBT_INPUT_MAX, V   [5], NBT_CAPACITY, 1_024_000_000L))); RM.Canner.addRecipe1(F, 16, 16, IL.Aneutronic_Fusion_Empty.get(1), MT.He_3.gas(U*200, T), NF, IL.Aneutronic_Fusion_He3.getWithNBT(1, UT.NBT.make(NBT_ACTIVE_ENERGY, T)));
 		
 		
