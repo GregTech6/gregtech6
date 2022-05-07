@@ -203,19 +203,13 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	// Gets called every Tick.
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
+		int tNeutronMax = getReactorRodNeutronMaximum(aReactor, aSlot, aStack);
 
-		int tNeutronMax = mNeutronMax;
-		if (MT.LiCl.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
-			tNeutronMax += UT.Code.divup(mNeutronMax, 4);
-		} else if (FL.Thorium_Salt.is(aReactor.mTanks[0])) {
-			tNeutronMax *= 4;
-		} else if (MT.D2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
-			tNeutronMax = (int)UT.Code.divup(mNeutronMax, 8);
-			mModerated = oModerated = T;
-		} else if (MT.T2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
-			tNeutronMax = (int)UT.Code.divup(mNeutronMax, 16);
-			mModerated = oModerated = T;
-		} else if (FL.distw(aReactor.mTanks[0]) || MT.HDO.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
+		if (FL.distw(aReactor.mTanks[0]) ||
+			MT.HDO.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()) ||
+			MT.D2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()) ||
+			MT.T2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()))
+		{
 			mModerated = oModerated = T;
 		}
 		long tDurabilityLoss = aReactor.oNeutronCounts[aSlot] <= tNeutronMax ? 100 : UT.Code.divup(400 * aReactor.oNeutronCounts[aSlot], tNeutronMax);
@@ -244,7 +238,17 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 
 	@Override
 	public int getReactorRodNeutronMaximum(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		return mNeutronMax;
+		if (MT.LiCl.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
+			return mNeutronMax + (int) UT.Code.divup(mNeutronMax, 4);
+		} else if (FL.Thorium_Salt.is(aReactor.mTanks[0])) {
+			return mNeutronMax * 4;
+		} else if (MT.D2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
+			return (int) UT.Code.divup(mNeutronMax, 8);
+		} else if (MT.T2O.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
+			return (int) UT.Code.divup(mNeutronMax, 16);
+		} else {
+			return mNeutronMax;
+		}
 	}
 
 	@Override
