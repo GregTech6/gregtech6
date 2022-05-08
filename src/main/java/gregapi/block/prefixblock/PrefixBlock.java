@@ -361,13 +361,33 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
+		TileEntity aTileEntity = null;
 		if (!LOCK) {
 			LOCK = T;
-			TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+			aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 			if (aTileEntity instanceof ITileEntity) ((ITileEntity)aTileEntity).onAdjacentBlockChange(aX, aY, aZ);
 			LOCK = F;
 		}
-		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2);
+		scheduleUpdateIfNeeded(aWorld, aX, aY, aZ, aTileEntity);
+	}
+	
+	public boolean scheduleUpdateIfNeeded(World aWorld, int aX, int aY, int aZ, TileEntity aTileEntity) {
+		if (mGravity && aY > 0 && BlockFalling.func_149831_e(aWorld, aX, aY - 1, aZ)) {
+			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2);
+			return T;
+		}
+		if (aTileEntity == null) return F;
+		if (!mCanBurn && !mCanExplode) return F;
+		if (mPrefix.contains(TD.Prefix.DUST_BASED)) {
+			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2);
+			return T;
+		}
+		OreDictMaterial aMaterial = getMetaMaterial(aTileEntity);
+		if (aMaterial.containsAny(TD.Properties.FLAMMABLE, TD.Properties.EXPLOSIVE, TD.Atomic.ALKALI_METAL)) {
+			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2);
+			return T;
+		}
+		return F;
 	}
 	
 	@Override
@@ -417,7 +437,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			// This darn TileEntity update is ruining World generation Code (infinite Loops when placing TileEntities on Chunk Borders). I'm glad I finally found a way to disable it.
 			TileEntity tTileEntity = createTileEntity(aWorld, aX, aY, aZ, aSide, aMetaData, aNBT);
 			WD.te(aWorld, aX, aY, aZ, tTileEntity, aCauseBlockUpdates);
-			aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2);
+			scheduleUpdateIfNeeded(aWorld, aX, aY, aZ, tTileEntity);
 			if (!aWorld.isRemote) GT_API_Proxy.SCHEDULED_TILEENTITY_UPDATES.add((PrefixBlockTileEntity)tTileEntity);
 			return T;
 		}
