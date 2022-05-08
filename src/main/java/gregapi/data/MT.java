@@ -1954,6 +1954,7 @@ public class MT {
 			F                       .setOreMultiplier( 2).setCrushing(CaF2, U);
 			Ta                      .setOreMultiplier( 2).setCrushing(OREMATS.Tantalite, U);
 			Nb                      .setOreMultiplier( 2).setCrushing(OREMATS.Columbite, U);
+			Dilithium               .setOreMultiplier( 2).setCrushing(Dolamide, U);
 			Meteorite               .setOreMultiplier( 2);
 			MeteoricIron            .setOreMultiplier( 2);
 			MeteoricSteel           .setOreMultiplier( 2);
@@ -2153,7 +2154,6 @@ public class MT {
 			Vibramantium            .put(MD.GT);
 			Dn                      .put(MD.GT, COMMON_ORE);
 			DuraniumAlloy           .put(MD.GT);
-			Dolamide                .put(MD.GT);
 			Ke                      .put(MD.GT, COMMON_ORE);
 			Trinitanium             .put(MD.GT);
 			Nq                      .put(MD.GT, COMMON_ORE);
@@ -2508,7 +2508,8 @@ public class MT {
 			
 			Tn                      .put(MD.MO); // don't COMMON_ORE this!
 			TritaniumAlloy          .put(MD.MO, COMMON_ORE);
-			Dilithium               .put(MD.MO, COMMON_ORE);
+			Dilithium               .put(MD.MO); // don't COMMON_ORE this!
+			Dolamide                .put(MD.MO);
 			
 			
 			SpectreIron             .put(MD.RT);

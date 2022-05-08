@@ -302,12 +302,10 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		RM.Lightning    .addRecipe2(T,512, 2304, ST.tag(1), crushedPurified       .mat(MT.Dolamide , 1), crushedCentrifuged    .mat(MT.Dolamide , 1));
 		RM.Lightning    .addRecipe2(T,512,  256, ST.tag(1), crushedPurifiedTiny   .mat(MT.Dolamide , 1), crushedCentrifugedTiny.mat(MT.Dolamide , 1));
-		RM.Lightning    .addRecipe2(T,512, 2304, ST.tag(1), crushedPurified       .mat(MT.Dilithium, 1), crushedCentrifuged    .mat(MT.Dilithium, 1));
-		RM.Lightning    .addRecipe2(T,512,  256, ST.tag(1), crushedPurifiedTiny   .mat(MT.Dilithium, 1), crushedCentrifugedTiny.mat(MT.Dilithium, 1));
 		RM.Nanofab      .addRecipe2(T, 64, 2048, ST.tag(0), crushedCentrifuged    .mat(MT.Dolamide , 1), gem.mat(MT.Dilithium, 2));
 		RM.Nanofab      .addRecipe2(T, 64, 2048, ST.tag(0), crushedCentrifugedTiny.mat(MT.Dolamide , 9), gem.mat(MT.Dilithium, 2));
-		RM.Nanofab      .addRecipe2(T, 64, 2048, ST.tag(0), crushedCentrifuged    .mat(MT.Dilithium, 1), gem.mat(MT.Dilithium, 2));
-		RM.Nanofab      .addRecipe2(T, 64, 2048, ST.tag(0), crushedCentrifugedTiny.mat(MT.Dilithium, 9), gem.mat(MT.Dilithium, 2));
+		RM.Nanofab      .addRecipe2(T,512, 2048, ST.tag(0), dust                  .mat(MT.Dolamide , 2), gem.mat(MT.Dilithium, 1)); // Maybe don't just turn everything you see into Dust ;)
+		RM.Nanofab      .addRecipe2(T,512, 4096, ST.tag(0), dust                  .mat(MT.Dilithium, 2), gem.mat(MT.Dilithium, 1)); // Maybe don't just turn everything you see into Dust ;)
 		
 		
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.Yellorite, 1), dust.mat(MT.Al, 1), crushedCentrifuged.mat(MT.Yellorium, 1));

@@ -13,6 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
 [ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_000_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
 [ADDED] Higher Tier Germanium Solar Panel that produces 16 EU/t instead of 8 EU/t.
+[ADDED] Dilithium can now be used to make Molten Ender. Also added a way to process Dolamide Dust, should you have made the mistake of turning your crushed Ore into that.
 
 
 6.15.01:
