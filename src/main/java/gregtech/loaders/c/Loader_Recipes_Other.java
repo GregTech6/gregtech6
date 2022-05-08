@@ -853,13 +853,19 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		if (FL.Redstone_TE.exists()) {
-		RM.Replicator.addRecipe1(T,  16, 144     , ST.tag(0), FL.Redstone_TE.make(100), NF, gem         .mat(MT.Redstone, 1));
-		RM.Replicator.addRecipe1(T,  16, 144*   2, ST.tag(1), FL.Redstone_TE.make(200), NF, gemFlawless .mat(MT.Redstone, 1));
-		RM.Replicator.addRecipe1(T,  16, 144*   4, ST.tag(2), FL.Redstone_TE.make(400), NF, gemExquisite.mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72/   4, ST.tag(0), FL.Redstone_TE.make( 25), NF, gemChipped  .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72/   2, ST.tag(1), FL.Redstone_TE.make( 50), NF, gemFlawed   .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72     , ST.tag(2), FL.Redstone_TE.make(100), NF, gem         .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   2, ST.tag(3), FL.Redstone_TE.make(200), NF, gemFlawless .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   4, ST.tag(4), FL.Redstone_TE.make(400), NF, gemExquisite.mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   8, ST.tag(5), FL.Redstone_TE.make(800), NF, gemLegendary.mat(MT.Redstone, 1));
 		}
-		RM.Replicator.addRecipe1(T,  16, 144     , ST.tag(0), FL.Redstone   .make(L  ), NF, gem         .mat(MT.Redstone, 1));
-		RM.Replicator.addRecipe1(T,  16, 144*   2, ST.tag(1), FL.Redstone   .make(L*2), NF, gemFlawless .mat(MT.Redstone, 1));
-		RM.Replicator.addRecipe1(T,  16, 144*   4, ST.tag(2), FL.Redstone   .make(L*4), NF, gemExquisite.mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72/   4, ST.tag(0), FL.Redstone   .make(L/4), NF, gemChipped  .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72/   2, ST.tag(1), FL.Redstone   .make(L/2), NF, gemFlawed   .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72     , ST.tag(2), FL.Redstone   .make(L  ), NF, gem         .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   2, ST.tag(3), FL.Redstone   .make(L*2), NF, gemFlawless .mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   4, ST.tag(4), FL.Redstone   .make(L*4), NF, gemExquisite.mat(MT.Redstone, 1));
+		RM.Replicator.addRecipe1(T,  16,  72*   8, ST.tag(5), FL.Redstone   .make(L*8), NF, gemLegendary.mat(MT.Redstone, 1));
 		
 		
 		RM.Fusion.addRecipe1(F, -8192,  730, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS             ).setSpecialNumber(  730L*8192L*16L);
