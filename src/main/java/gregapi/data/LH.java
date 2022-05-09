@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.TagData;
 import gregapi.lang.LanguageHandler;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Converter;
@@ -33,6 +29,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -174,6 +174,7 @@ public class LH {
 	, TOOLTIP_LIQUIDPROOF = "gt.lang.proof.liquid"
 	, TOOLTIP_PLASMAPROOF = "gt.lang.proof.plasma"
 	, TOOLTIP_HEATPROOF = "gt.lang.proof.heat"
+	, TOOLTIP_THERMALMASS = "gt.lang.thermal.mass"
 	, TOOLTIP_ONLY_SIMPLE = "gt.lang.only.simple"
 	, TOOLTIP_REMINDER_EXTENDERS = "gt.lang.reminder.extenders"
 	, TOOLTIP_SEALABLE_ANY = "gt.lang.sealable.any"
@@ -502,6 +503,7 @@ public class LH {
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");
 		add(TOOLTIP_HEATPROOF                           , "Can handle Temperatures up to: ");
+		add(TOOLTIP_THERMALMASS                         , "Thermal Mass: ");
 		add(TOOLTIP_ONLY_SIMPLE                         , "Only accepts simple Fluids!");
 		add(TOOLTIP_REMINDER_EXTENDERS                  , "Remember to use Universal Extenders if you need to literally cut Corners");
 		add(TOOLTIP_SEALABLE_ANY                        , "This Block can seal Air at any Side");
