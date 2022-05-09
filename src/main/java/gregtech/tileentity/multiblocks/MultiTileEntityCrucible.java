@@ -148,7 +148,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.3"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.4"));
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X) + " 1 " + TD.Energy.HU.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(TD.Energy.HU, SIDE_ANY)+" Units per Tick required!)");
-		aList.add(Chat.YELLOW   + LH.get(LH.TOOLTIP_THERMALMASS) + mMaterial.getWeight(U*100));
+		aList.add(Chat.YELLOW   + LH.get(LH.TOOLTIP_THERMALMASS) + mMaterial.getWeight(U*100) + " kg");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_ANY) + " K)");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.5"));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
