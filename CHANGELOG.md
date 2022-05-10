@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.02: (Not released yet, released whenever it needs to be)
+[FIXED] Basic Machines and their Multiblock Counterparts will no longer accept Fluid Input from the Side that they are Auto-Outputting to.
 [CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
 [CHANGED] Crucibles now have a Thermal Mass Tooltip, that way inconsistencies with how to interpret the F3+H Tooltip are avoided.
 [ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_000_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
@@ -160,7 +161,7 @@ Fake Osmium based Item Pipes turn into the (newly added) Germanium Item Pipes th
 Germanium is now attributed to Mekanism, even though it technically did not add it.
 Any mention of "Osmium" inside Mekanism Material Item Names is now turned into "Germanium". (I did the same thing to "Teslatite" and "Electrotine" in an earlier Release, to make them "Nikolite")
 Germanium now has the Byproducts and Tool Stats, that Fake Osmium had before.
-[FIXED] Burning Box were not being ignitable by Fire Blocks for some reason anymore.
+[FIXED] Burning Boxes were not being ignitable by Fire Blocks for some reason anymore.
 [FIXED] Large Turbines were allowing Output of Stuff on Blocks that are not at the Bottom Layer.
 [FIXED] Cauldrons were crashing the Game, when used with Ores that did not have any Byproducts.
 [FIXED] Higher Speed Rails of GT6 did not work on vertically sloped areas because the Minecart would somehow bonk into the wall the track is laid on. This means sloped Rails will cap out at 1x Speed.
