@@ -100,7 +100,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 		if (UT.Code.stringValid(tName)) {
 			ALREADY_RECEIVED.add(tName);
 			ALREADY_RECEIVED.add(tName.toLowerCase());
-			mGold = GT6_Main.gt_proxy.mSupporterListGold.contains(tName.toLowerCase());
+			mGold   = GT6_Main.gt_proxy.mSupporterListGold  .contains(tName.toLowerCase());
 			mSilver = GT6_Main.gt_proxy.mSupporterListSilver.contains(tName.toLowerCase());
 		}
 	}
@@ -109,7 +109,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	public void setCustomName(String aName) {
 		super.setCustomName(aName);
 		if (UT.Code.stringValid(aName)) {
-			mGold = GT6_Main.gt_proxy.mSupporterListGold.contains(aName.toLowerCase());
+			mGold   = GT6_Main.gt_proxy.mSupporterListGold  .contains(aName.toLowerCase());
 			mSilver = GT6_Main.gt_proxy.mSupporterListSilver.contains(aName.toLowerCase());
 		}
 	}
@@ -130,8 +130,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 				DEB.println("ST.make(\"" + ST.regName(tStack) + "\"      , 1, " + ST.meta_(tStack) + ");       " + ST.namesAndSizes(tStack));
 			}
 			// Now for the actual thing that this needs to do on Rightclick.
-			if (mGold) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by " + LH.Chat.YELLOW + getCustomName()); return T;}
-			if (mSilver) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by " + LH.Chat.CYAN + getCustomName()); return T;}
+			if (mGold  ) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by" + LH.Chat._YELLOW + getCustomName()); return T;}
+			if (mSilver) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by" + LH.Chat._CYAN   + getCustomName()); return T;}
 			UT.Entities.sendchat(aPlayer, "This Certificate is invalid!");
 			return T;
 		}

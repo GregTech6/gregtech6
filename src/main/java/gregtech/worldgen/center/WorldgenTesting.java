@@ -310,6 +310,7 @@ public class WorldgenTesting extends WorldgenObject {
 			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+3, -18, SIDE_UNKNOWN, (short)32735, null, T, T);
 			
 			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+2, -18, SIDE_UNKNOWN, (short) 5033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+4, -18, SIDE_UNKNOWN, (short)32764, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, "display", UT.NBT.makeString("Name", "Bear989Sr")), T, T);
 			
 			
 			tRegistry.mBlock.placeBlock(aWorld, 42, mHeight+2, -18, SIDE_UNKNOWN, (short)32703, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_STATE, 4), T, T);

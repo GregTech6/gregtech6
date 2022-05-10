@@ -215,6 +215,7 @@ public class MultiTileEntityRegistry {
 	public short mLastRegisteredID = W;
 	
 	public ItemStack getItem() {return getItem(mLastRegisteredID, 1, null);}
+	public ItemStack getItem(NBTTagCompound aNBT) {return getItem(mLastRegisteredID, 1, aNBT);}
 	public ItemStack getItem(int aID) {return getItem(aID, 1, null);}
 	public ItemStack getItem(int aID, NBTTagCompound aNBT) {return getItem(aID, 1, aNBT);}
 	public ItemStack getItem(int aID, long aAmount) {return getItem(aID, aAmount, null);}
