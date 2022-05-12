@@ -38,6 +38,7 @@ import static gregapi.data.CS.*;
 public class MultiTileEntityPowerCell extends TileEntityBase09PowerCell implements IMTE_GetLightValue {
 	@Override public ItemStack getEmptyPowerCell() {return IL.Power_Cell_Empty.get(1);}
 	
+	// TODO MODEL!
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return 1;
 	}

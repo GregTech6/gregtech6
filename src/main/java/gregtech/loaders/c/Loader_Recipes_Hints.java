@@ -37,13 +37,17 @@ public class Loader_Recipes_Hints implements Runnable {
 	@Override public void run() {
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
+		RM.Hammer.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.HARDHAMMER));
+		RM.Chisel.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.CHISEL));
+		RM.Chisel.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.POCKET_CHISEL));
+		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")
 		, IL.Ceramic_Crucible.getWithName(1, "Wait until it melts into Mercury")
 		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
 		, IL.TC_Shimmerleaf.getWithName(1, "Or just throw a Shimmerleaf into it")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
-		, NI
+		, ST.make(Blocks.redstone_ore, 1, 0, "Washing crushed Redstone Ore in a Cauldron gives Cinnabar")
 		), ST.array(IL.Bottle_Mercury.get(1), ST.make(OP.ingot.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!"), ST.make(OP.nugget.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!")), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
@@ -65,30 +69,44 @@ public class Loader_Recipes_Hints implements Runnable {
 		), ST.array(OP.plate.mat(MT.SteelGalvanized, 1), OP.plateCurved.mat(MT.SteelGalvanized, 1), OP.stick.mat(MT.SteelGalvanized, 1), OP.casingSmall.mat(MT.SteelGalvanized, 1), OP.gearGt.mat(MT.SteelGalvanized, 1), OP.screw.mat(MT.SteelGalvanized, 1)), null, ZL_LONG, FL.array(MT.Zn.liquid(1, T)), FL.array(MT.Zn.liquid(1, T)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
-		  ST.make(aRegistry.getItem(20271), "Get a cheap Printer and power it")
-		, ST.make(ItemsGT.BOTTLES, 1, 32116, "Fill it with expensive proprietary Ink")
-		, ST.make(Items.book, 1, 0, "Insert a basic empty Book to get a Manual")
+		  ST.make(aRegistry     .getItem(20271), "Get a cheap Printer and power it")
+		, ST.make(ItemsGT.BOTTLES    , 1, 32116, "Fill it with expensive proprietary Ink")
+		, ST.make(Items.book             , 1, 0, "Insert a basic empty Book to get a Manual")
 		, NI
 		, NI
 		, NI
 		), ST.array(ST.book("Manual_Printer", ST.make(Items.written_book, 1, 0))), null, ZL_LONG, FL.array(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black]), ZL_FS, 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
-		  ST.make(aRegistry.getItem(7000), "Any of the GT6 Bookshelves")
+		  ST.make(aRegistry     .getItem( 7000), "Any of the GT6 Bookshelves")
 		, ST.make(Blocks.enchanting_table, 1, 0, "Place the Shelves around the Enchanting Table")
-		, ST.make(Items.book, 1, 0, "Fill the Shelves with ANYTHING that looks like a Book or Scroll")
-		, ST.make(aRegistry.getItem(7123), "Any of the GT6 Bookshelves")
+		, ST.make(Items.book             , 1, 0, "Fill the Shelves with ANYTHING that looks like a Book or Scroll")
+		, ST.make(aRegistry     .getItem( 7123), "Any of the GT6 Bookshelves")
 		, ST.make(Items.experience_bottle, 1, 0, "Use your XP like normal")
-		, ST.make(Items.enchanted_book, 1, 0, "Even counts DOUBLE if it is a magical thing!")
+		, ST.make(Items.enchanted_book   , 1, 0, "Even counts DOUBLE if it is a magical thing!")
 		), ST.array(ST.make(Items.enchanted_book, 1, 0, "Get a more compact Enchantment Power Bonus!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
-		  ST.make(BlocksGT.Saplings_AB, 1, 0, "Find a Rubber Tree in a Taiga Biome or similar")
-		, ST.make(BlocksGT.Leaves_AB, 1, 0, "Make sure its natural Leaves stay intact!")
-		, ST.make(BlocksGT.LogA, 1, 0, "Look for a possible Resin Hole at the Tree")
+		  ST.make(aRegistry     .getItem(32714), "Have a Barrel or Drum filled with Liquid")
+		, ST.make(aRegistry     .getItem(32728), "Put a Tap on the Barrel/Drum")
+		, IL.Bottle_Empty        .getWithName(1, "Rightclick the Tap with a Fluid Container to fill it")
+		, ST.make(Items.cauldron         , 1, 0, "With enough Water, the Tap can fill vanilla Cauldrons below")
+		, ST.make(aRegistry     .getItem(32740), "Or have another top open Fluid Container below the Tap")
+		, ST.make(aRegistry     .getItem(32706), "Mixing Bowls and Bathing Pots are top open too!")
+		), ST.array(ST.make(Items.potionitem, 1, 0, "Ahh, bottled Tap Water!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		
+		
+		
+		
+		// Tree Stuff
+		
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(
+		  ST.make(BlocksGT.Saplings_AB   , 1, 0, "Find a Rubber Tree in a Taiga Biome or similar")
+		, ST.make(BlocksGT.Leaves_AB     , 1, 0, "Make sure its natural Leaves stay intact!")
+		, ST.make(BlocksGT.LogA          , 1, 0, "Look for a possible Resin Hole at the Tree")
 		, NI
 		, NI
-		, IL.Bag_Sap_Resin.getWithName(1, "Place Resin Bag at the Hole")
+		, IL.Bag_Sap_Resin       .getWithName(1, "Place Resin Bag at the Hole")
 		), ST.array(IL.Resin.get(1), IL.IC2_Resin.get(1)), null, ZL_LONG, ZL_FS, FL.array(FL.Resin_Rubber.make(250)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(

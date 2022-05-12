@@ -123,6 +123,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shaped(IL.Ceramic_Mold_Raw    .get(1), CR.DEF_NCC, "C C", "CCC", "k R", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Ceramic_Faucet_Raw  .get(1), CR.DEF_NCC, "C C", "kCR"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Ceramic_Crossing_Raw.get(1), CR.DEF_NCC, "kCR", "CCC", " C ", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
+		CR.shaped(IL.Ceramic_Crossing_Raw.get(1), CR.DEF_NCC, " C ", "CCC", "kCR", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Juicer_Raw          .get(1), CR.DEF_NCC, "kCR", "CCC"       , 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Ceramic_Bowl_Raw    .get(1), CR.DEF_NCC, "k R", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Ceramic_Jug_Raw     .get(1), CR.DEF_NCC, "kCR", "C C", "CCC", 'C', OD.itemClay, 'R', OreDictToolNames.rollingpin);
