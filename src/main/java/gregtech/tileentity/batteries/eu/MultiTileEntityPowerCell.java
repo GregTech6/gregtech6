@@ -35,8 +35,8 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAneutronicFusion extends TileEntityBase09PowerCell implements IMTE_GetLightValue {
-	@Override public ItemStack getEmptyPowerCell() {return IL.Aneutronic_Fusion_Empty.get(1);}
+public class MultiTileEntityPowerCell extends TileEntityBase09PowerCell implements IMTE_GetLightValue {
+	@Override public ItemStack getEmptyPowerCell() {return IL.Power_Cell_Empty.get(1);}
 	
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return 1;
@@ -51,5 +51,5 @@ public class MultiTileEntityAneutronicFusion extends TileEntityBase09PowerCell i
 	@Override public byte getDisplayScaleMax() {return 15;}
 	@Override public int getLightValue() {return mDisplayedEnergy;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.aneutronicfusion";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.powercell";}
 }

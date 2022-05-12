@@ -408,6 +408,7 @@ public enum IL implements IItemContainer {
 	Sensor_ULV, Sensor_LV, Sensor_MV, Sensor_HV, Sensor_EV, Sensor_IV, Sensor_LuV, Sensor_ZPM, Sensor_UV, Sensor_PUV1, Sensor_PUV2, Sensor_PUV3, Sensor_PUV4, Sensor_PUV5, Sensor_OMEGA,
 	Robot_Tip_Wrench, Robot_Tip_Screwdriver, Robot_Tip_Saw, Robot_Tip_Hammer, Robot_Tip_Cutter, Robot_Tip_Chisel, Robot_Tip_Rubber, Robot_Tip_Blade, Robot_Tip_Drill, Robot_Tip_File,
 	Battery_RE_ULV_Tantalum, ZPM,
+	Power_Cell_Empty, Power_Cell_H,
 	Aneutronic_Fusion_Empty, Aneutronic_Fusion_He3,
 	Comp_Laser_Gas_Empty, Comp_Laser_Gas_He, Comp_Laser_Gas_Ne, Comp_Laser_Gas_Ar, Comp_Laser_Gas_Kr, Comp_Laser_Gas_Xe, Comp_Laser_Gas_HeNe, Comp_Laser_Gas_CO, Comp_Laser_Gas_CO2,
 	Battery_Lead_Acid_Cell_Empty, Battery_Lead_Acid_Cell_Filled, Battery_Lead_Acid_ULV, Battery_Lead_Acid_LV, Battery_Lead_Acid_MV, Battery_Lead_Acid_HV, Battery_Lead_Acid_EV,

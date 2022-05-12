@@ -123,16 +123,17 @@ public class Loader_Worldgen implements Runnable {
 		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 7, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
-		, new StoneLayerOres(MT.Emerald                 , U64, 16, 60, Blocks.emerald_ore, BIOMES_MOUNTAINS)
-		, new StoneLayerOres(MT.Diamond                 , U64,  8, 24, Blocks.diamond_ore)
-		, new StoneLayerOres(MT.Lapis                   , U24, 16, 48, Blocks.lapis_ore)
-		, new StoneLayerOres(MT.Redstone                , U8 ,  8, 24, Blocks.redstone_ore)
-		, new StoneLayerOres(MT.Au                      , U32,  8, 32, Blocks.gold_ore)
+		, new StoneLayerOres(MT.Emerald                 , U48, 16, 60, Blocks.emerald_ore, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Diamond                 ,U128,  8, 24, Blocks.diamond_ore)
+		, new StoneLayerOres(MT.Lapis                   , U48, 16, 48, Blocks.lapis_ore)
+		, new StoneLayerOres(MT.Redstone                , U32,  8, 24, Blocks.redstone_ore)
+		, new StoneLayerOres(MT.OREMATS.Cinnabar        ,U128,  8, 24, ST.block(MD.TC, "blockCustomOre"), 0)
+		, new StoneLayerOres(MT.Au                      , U64,  8, 32, Blocks.gold_ore)
 		, new StoneLayerOres(MT.Au                      , U32, 33, 64, Blocks.gold_ore, BIOMES_MESA)
 		, new StoneLayerOres(MT.Cu                      , U16, 20, 50, ST.block(MD.EtFu, "copper_ore"), BIOMES_MESA, BIOMES_DESERT, BIOMES_SAVANNA)
-		, new StoneLayerOres(MT.Fe                      , U8 , 40, 80, Blocks.iron_ore)
+		, new StoneLayerOres(MT.Fe                      , U16, 40, 80, Blocks.iron_ore)
 		, new StoneLayerOres(MT.Coal                    , U8 , 60,100, Blocks.coal_ore)
-		, new StoneLayerOres(MT.Stone                   , U64,  0,255, Blocks.monster_egg)
+		, new StoneLayerOres(MT.Stone                   , U48,  0,255, Blocks.monster_egg)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Fe2O3                   , U6 , 30, 70)
