@@ -19,12 +19,14 @@
 
 package gregtech.items.tools.early;
 
+import gregapi.block.metatype.BlockStones;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -92,6 +94,16 @@ public class GT_Tool_Club extends GT_Tool_HardHammer {
 		if (IL.NeLi_Blackstone.equal(aDrop) || IL.NeLi_Blackstone_Bricks.equal(aDrop) || IL.NeLi_Blackstone_Chiseled.equal(aDrop) || IL.NeLi_Blackstone_Cracked.equal(aDrop) || IL.NeLi_Blackstone_Polished.equal(aDrop) || IL.NePl_Blackstone.equal(aDrop) || IL.NePl_Blackstone_Bricks.equal(aDrop) || IL.NePl_Blackstone_Chiseled.equal(aDrop) || IL.NePl_Blackstone_Cracked.equal(aDrop) || IL.NePl_Blackstone_Polished.equal(aDrop)) {
 			aDrops.clear();
 			aDrops.add(OP.rockGt.mat(MT.STONES.Blackstone, 1+RNGSUS.nextInt(4)));
+			return 0;
+		}
+		if (aBlock instanceof BlockStones && BlockStones.JUSTSTONE[aMetaData]) {
+			aDrops.clear();
+			aDrops.add(OP.rockGt.mat(((BlockStones)aBlock).mMaterial, 1+RNGSUS.nextInt(((BlockStones)aBlock).mOctantcount/2)));
+			return 0;
+		}
+		if (OM.is("oreRedstone", ST.make(aBlock, 1, aMetaData))) {
+			aDrops.clear();
+			aDrops.add(OP.dust.mat(MT.OREMATS.Cinnabar, 1));
 			return 0;
 		}
 		return super.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);

@@ -47,7 +47,7 @@ public class Loader_Recipes_Hints implements Runnable {
 		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
 		, IL.TC_Shimmerleaf.getWithName(1, "Or just throw a Shimmerleaf into it")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
-		, ST.make(Blocks.redstone_ore, 1, 0, "Washing crushed Redstone Ore in a Cauldron gives Cinnabar")
+		, ST.make(Blocks.redstone_ore, 1, 0, "Using a Club to mine Vanilla Redstone Ore gives Cinnabar")
 		), ST.array(IL.Bottle_Mercury.get(1), ST.make(OP.ingot.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!"), ST.make(OP.nugget.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!")), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,14 @@
 
 package gregapi.item.multiitem;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackSet;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
+import gregapi.data.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.item.IItemEnergy;
 import gregapi.item.IItemGTContainerTool;
@@ -71,6 +61,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies

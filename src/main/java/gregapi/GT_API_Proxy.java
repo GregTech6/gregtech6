@@ -1103,27 +1103,28 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();
+		Block aBlock = (aEvent.block == Blocks.lit_redstone_ore ? Blocks.redstone_ore : aEvent.block);
 		while (aDrops.hasNext()) {
 			ItemStack aDrop = aDrops.next();
 			if (ST.invalid(aDrop) || ItemsGT.ILLEGAL_DROPS.contains(aDrop, T)) {aDrops.remove(); continue;}
 			if (ST.item_(aDrop) == Items.gold_nugget) ST.meta_(aDrop, 0);
-			if (FORCE_GRAVEL_NO_FLINT && aEvent.block == Blocks.gravel && ST.item_(aDrop) == Items.flint) ST.set(aDrop, ST.make(Blocks.gravel, 1, 0), T, F);
+			if (FORCE_GRAVEL_NO_FLINT && aBlock == Blocks.gravel && ST.item_(aDrop) == Items.flint) ST.set(aDrop, ST.make(Blocks.gravel, 1, 0), T, F);
 		}
 		
-		if (aEvent.block == Blocks.dirt && aEvent.blockMetadata == 1) for (int i = 0, j = aEvent.drops.size(); i < j; i++) if (ST.block(aEvent.drops.get(0)) == Blocks.dirt) {
+		if (aBlock == Blocks.dirt && aEvent.blockMetadata == 1) for (int i = 0, j = aEvent.drops.size(); i < j; i++) if (ST.block(aEvent.drops.get(0)) == Blocks.dirt) {
 			aEvent.drops.set(i, ST.make(Blocks.dirt, aEvent.drops.get(i).stackSize, 1));
 		}
 		
 		if (aEvent.harvester != null) {
-			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.block, F, F);
+			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aBlock, F, F);
 			ItemStack aTool = aEvent.harvester.getCurrentEquippedItem();
 			if (aTool != null) {
 				boolean
 				tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aTool) >= 3),
-				tCanCollect = (aTool.getItem() instanceof MultiItemTool && ((MultiItemTool)aTool.getItem()).canCollectDropsDirectly(aTool, aEvent.block, (byte)aEvent.blockMetadata));
+				tCanCollect = (aTool.getItem() instanceof MultiItemTool && ((MultiItemTool)aTool.getItem()).canCollectDropsDirectly(aTool, aBlock, (byte)aEvent.blockMetadata));
 				
 				if (aTool.getItem() instanceof MultiItemTool) {
-					((MultiItemTool)aTool.getItem()).onHarvestBlockEvent(aEvent.drops, aTool, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
+					((MultiItemTool)aTool.getItem()).onHarvestBlockEvent(aEvent.drops, aTool, aEvent.harvester, aBlock, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
 				
 				for (ItemStack tDrop : aEvent.drops) {
