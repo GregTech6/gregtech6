@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
 [CHANGED] Crucibles now have a Thermal Mass Tooltip, that way inconsistencies with how to interpret the F3+H Tooltip are avoided.
 [ADDED] Power Cell, which can be filled with Hydrogen to directly produce electric Power in a Battery Box of up to HV Tier (1 EU/t to 512 EU/t). This is the most efficient way to turn Hydrogen into Electricity, even if a little bit cumbersome.
-[ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_000_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
+[ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_024_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
 [ADDED] Higher Tier Germanium Solar Panel that produces 16 EU/t instead of 8 EU/t.
 [ADDED] Dilithium can now be used to make Molten Ender. Also added a way to process Dolamide Dust, should you have made the mistake of turning your crushed Ore into that.
 

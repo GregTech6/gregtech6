@@ -80,12 +80,14 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		UT.NBT.setBoolean(aNBT, NBT_ACTIVE_ENERGY, F);
 		super.writeToNBT2(aNBT);
 	}
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		UT.NBT.setBoolean(aNBT, NBT_ACTIVE_ENERGY, F);
 		return super.writeItemNBT2(aNBT);
 	}
 	
