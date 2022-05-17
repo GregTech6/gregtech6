@@ -14,8 +14,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Basic Machines and their Multiblock Counterparts will no longer accept Fluid Input from the Side that they are Auto-Outputting to.
 [CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
 [CHANGED] Crucibles now have a Thermal Mass Tooltip, that way inconsistencies with how to interpret the F3+H Tooltip are avoided.
-[ADDED] Power Cell, which can be filled with Hydrogen to directly produce electric Power in a Battery Box of up to HV Tier (1 EU/t to 512 EU/t). This is the most efficient way to turn Hydrogen into Electricity, even if a little bit cumbersome.
-[ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_024_000_000 EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
+[ADDED] Power Cell, which can be filled with Hydrogen to directly produce electric Power in a Battery Box of up to HV Tier (1 EU/t to 512 EU/t). This is the most efficient way to turn 200_000L of Hydrogen into 3_200_000EU Electricity, even if a little bit cumbersome.
+[ADDED] Portable Aneutronic Fusion Reactor, which acts like a Power Cell of sorts, and can output anything from 1 EU/t to 8192 EU/t in a regular Battery Box. You have to fill it with 200_000L of Helium-3 to get 1_024_000_000EU total from it. It can only be made after you get Vibranium from a regular Fusion Reactor though.
 [ADDED] Higher Tier Germanium Solar Panel that produces 16 EU/t instead of 8 EU/t.
 [ADDED] Dilithium can now be used to make Molten Ender. Also added a way to process Dolamide Dust, should you have made the mistake of turning your crushed Ore into that.
 [FIXED] Some small errors in the reactor guide book.
@@ -929,7 +929,7 @@ Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
 [CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
-[CHANGED] Note: Later nerfed back again! - Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36_000_000_000 HU per Unit of U-235 at Max Efficiency.
+[CHANGED] Note: Later nerfed back again! - Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36_000_000_000HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
 [WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
@@ -1091,7 +1091,7 @@ You will need Small Lasers in the Crafting Recipe and Electricity for this to wo
 
 6.10.25:
 [NOTE] Soul Forest is not going to get Compat, it's just too bad of a Mod... Putting Titanium Gems on Sticks to make Titanium Rods just overdid it for me, along with giving each item its own ID and not registering literally anything to the OreDict, not that I would want it considering all the exploits that would cause...
-[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64_000 EU (= 256_000 RF).
+[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64_000EU (= 256_000 RF).
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
 [FIXED] Fluid Densities did not match up with the Material Densities, but now they do.
 [FIXED] Electrolyzation of Eudialite is now possible.
@@ -1111,7 +1111,7 @@ Explosives Supported are Vanilla TNT (8), IC2 ITNT (4), GT6 Dynamite (2) and GT6
 [ADDED] The Generifier can now turn IC2 Steam and IC2 Superheated Steam into regular Steam. It will go by the Power Value instead of the Water Amount, so no Power is lost, but it might lead to an infinite Water Recipe Loop or at least a "Turn Power into Water" Loop.
 [ADDED]
 Heat Exchangers
-Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80_000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant (20HU/L).
+Turns Lava into "Pahoehoe Lava" and generates 80HU/L or 80_000HU/Block from it. Same goes for IC2 Hot Coolant to Coolant (20HU/L).
 Be aware that IC2 Hot Coolant cannot be stored in GT6 Tanks, as it is a power conducting Fluid just like Steam!
 
 
@@ -4895,7 +4895,7 @@ Use distilled Water if possible or you risk calcification and therefore decrease
 Multiple different "Burning Boxes" and "Dense Burning Boxes" (Lead and Bismuth Versions being the most early Game variants), which convert Furnace Fuel into Heat Energy.
 Their Efficiency depends on the Material used to contain the Heat (Invar being the only 100% one but on a low Rate, Tungsten 95% with a very high Rate)
 The Dense ones cost about 4-5 times the Material but also have a 4 times the Output Rate, without >>ANY<< change in overall Efficiency. In order to make them you need a Dense Copper Plate, and therefore a way to compress them, meaning it is higher Tech.
-At 100% one Furnace Smelting equals 5_000 Heat Units, so Coal/Charcoal would be 40_000 HU, Coal Coke 80_000 HU and Alumentum 160_000 HU for example, it also accepts Wooden things (7_500 HU), Saplings (2_500 HU) and all the other Furnace Fuels.
+At 100% one Furnace Smelting equals 5_000 Heat Units, so Coal/Charcoal would be 40_000HU, Coal Coke 80_000HU and Alumentum 160_000HU for example, it also accepts Wooden things (7_500HU), Saplings (2_500HU) and all the other Furnace Fuels.
 Many Fuel Materials have some kind of Ashes, which are left behind when burning them. These Ashes has to be removed regularly from the Burning Box in order for it to work. Coal Coke and Alumentum don't have those Ashes for example.
 The Burning Box is very primitive, meaning it has no GUI and won't receive any GUI. Anything you insert for burning by rightclicking the front of the Box with it will get burnt without mercy (if it is a valid Fuel, and if you don't happen to wrench the Box right afterwards, and only when the Box is actually active).
 In order to work, it also needs a Block without Collision Box in front of it (Air is such a Block without Collision Box).

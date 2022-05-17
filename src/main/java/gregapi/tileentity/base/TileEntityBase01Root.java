@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.tileentity.base;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
@@ -33,9 +27,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightValue;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsProvidingStrongPower;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.TD;
 import gregapi.gui.ContainerCommon;
@@ -82,11 +73,13 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -626,13 +619,13 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	// A Default implementation of the MultiBlock related Fluid Tank behaviour.
 	
-	protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return getFluidTankFillable(aSide, aFluidToFill);}
-	protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return getFluidTankDrainable(aSide, aFluidToDrain);}
-	protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getFluidTanks(aSide);}
+	protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return getFluidTankFillable(SIDE_ANY, aFluidToFill);}
+	protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return getFluidTankDrainable(SIDE_ANY, aFluidToDrain);}
+	protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getFluidTanks(SIDE_ANY);}
 	
 	public int fill(MultiTileEntityMultiBlockPart aPart, byte aDirection, FluidStack aFluid, boolean aDoFill) {
 		if (aFluid == null || aFluid.amount <= 0) return 0;
-		IFluidTank tTank = getFluidTankFillable(aPart, UT.Code.side(aDirection), aFluid);
+		IFluidTank tTank = getFluidTankFillable(aPart, SIDE_ANY, aFluid);
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
 		if (rFilledAmount > 0 && aDoFill) updateInventory();
@@ -641,7 +634,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public FluidStack drain(MultiTileEntityMultiBlockPart aPart, byte aDirection, FluidStack aFluid, boolean aDoDrain) {
 		if (aFluid == null || aFluid.amount <= 0) return null;
-		IFluidTank tTank = getFluidTankDrainable(aPart, UT.Code.side(aDirection), aFluid);
+		IFluidTank tTank = getFluidTankDrainable(aPart, SIDE_ANY, aFluid);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0 || !tTank.getFluid().isFluidEqual(aFluid)) return null;
 		FluidStack rDrained = tTank.drain(aFluid.amount, aDoDrain);
 		if (rDrained != null && aDoDrain) updateInventory();
@@ -650,7 +643,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public FluidStack drain(MultiTileEntityMultiBlockPart aPart, byte aDirection, int aAmountToDrain, boolean aDoDrain) {
 		if (aAmountToDrain <= 0) return null;
-		IFluidTank tTank = getFluidTankDrainable(aPart, UT.Code.side(aDirection), null);
+		IFluidTank tTank = getFluidTankDrainable(aPart, SIDE_ANY, null);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0) return null;
 		FluidStack rDrained = tTank.drain(aAmountToDrain, aDoDrain);
 		if (rDrained != null && aDoDrain) updateInventory();
@@ -659,18 +652,18 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public boolean canFill(MultiTileEntityMultiBlockPart aPart, byte aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankFillable(aPart, UT.Code.side(aDirection), FL.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankFillable(aPart, SIDE_ANY, FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() == null || tTank.getFluid().getFluid() == aFluid);
 	}
 	
 	public boolean canDrain(MultiTileEntityMultiBlockPart aPart, byte aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankDrainable(aPart, UT.Code.side(aDirection), FL.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankDrainable(aPart, SIDE_ANY, FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() != null && tTank.getFluid().getFluid() == aFluid);
 	}
 	
 	public FluidTankInfo[] getTankInfo(MultiTileEntityMultiBlockPart aPart, byte aDirection) {
-		IFluidTank[] tTanks = getFluidTanks(aPart, UT.Code.side(aDirection));
+		IFluidTank[] tTanks = getFluidTanks(aPart, SIDE_ANY);
 		if (tTanks == null || tTanks.length <= 0) return ZL_FLUIDTANKINFO;
 		FluidTankInfo[] rInfo = new FluidTankInfo[tTanks.length];
 		for (int i = 0; i < tTanks.length; i++) rInfo[i] = new FluidTankInfo(tTanks[i]);
