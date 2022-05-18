@@ -76,6 +76,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Bucket", T))
 		CR.shaped(ST.make(Items.bucket, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "X X", " X ", 'X', ingot.dat(ANY.Fe));
 		
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.Anvil", T)) {
+			CR.shaped(ST.make(Blocks.anvil, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "BBB", " Ih", "III", 'B', blockIngot.dat(ANY.Fe), 'I', ingot.dat(ANY.Fe));
+		} else {
+			CR.shaped(ST.make(Blocks.anvil, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "BBB", " I ", "III", 'B', blockIngot.dat(ANY.Fe), 'I', ingot.dat(ANY.Fe));
+		}
+		
 		ItemStack tMat = ST.make(Items.iron_ingot, 1, 0), tStack;
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Iron.PressurePlate", T))    if (null != (tStack = CR.remove(tMat, tMat, null, null, null, null, null, null, null))) {
 			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "XXh", 'X', plate.dat(ANY.Fe), 'S', OD.stickAnyWood, 'I', ingot.dat(ANY.Fe));
