@@ -19,12 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
@@ -34,6 +28,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -65,10 +65,10 @@ public class WorldgenPit extends WorldgenObject {
 				if (tBlock == mBlock && mMeta == aWorld.getBlockMetadata(tX+i, tY, tZ+j)) {tGenerated++; continue;}
 				if (!tBlock.isOpaqueCube()) {if (tGenerated > 0) break; continue;}
 				if (tBlock == Blocks.dirt) {
-					if (tGenerated <= 0 && (tLastBlock.getMaterial() == Material.wood || tLastBlock.getMaterial() == Material.gourd)) continue;
-				} else if (tBlock != Blocks.sand && tBlock != Blocks.clay) {
+					if (tGenerated <= 0 && (tLastBlock.getMaterial() == Material.wood || tLastBlock.getMaterial() == Material.leaves || tLastBlock.getMaterial() == Material.gourd)) continue;
+				} else if (tBlock != Blocks.sand && tBlock != Blocks.clay && tBlock != BlocksGT.oreSand && tBlock != BlocksGT.oreSmallSand && tBlock != BlocksGT.oreRedSand && tBlock != BlocksGT.oreSmallRedSand) {
 					if (tGenerated > 0) {
-						if (tBlock.getMaterial() != Material.rock && tBlock != Blocks.gravel) break;
+						if (tBlock.getMaterial() != Material.rock && tBlock != Blocks.gravel && tBlock != BlocksGT.oreGravel && tBlock != BlocksGT.oreSmallGravel) break;
 					} else {
 						continue;
 					}
