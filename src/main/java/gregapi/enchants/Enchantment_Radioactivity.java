@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,12 +41,13 @@ public class Enchantment_Radioactivity extends EnchantmentDamage {
 		MT.Cyanite          .addEnchantmentForTools(this, 1).addEnchantmentForArmors(this, 1);
 		MT.Yellorium        .addEnchantmentForTools(this, 1).addEnchantmentForArmors(this, 1);
 		MT.Blutonium        .addEnchantmentForTools(this, 2).addEnchantmentForArmors(this, 2);
-		MT.Ludicrite        .addEnchantmentForTools(this, 2).addEnchantmentForArmors(this, 4);
+		MT.Ludicrite        .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Pu               .addEnchantmentForTools(this, 1).addEnchantmentForArmors(this, 1);
 		MT.U_235            .addEnchantmentForTools(this, 2).addEnchantmentForArmors(this, 2);
 		MT.Co_60            .addEnchantmentForTools(this, 2).addEnchantmentForArmors(this, 2);
 		MT.Pu_241           .addEnchantmentForTools(this, 3).addEnchantmentForArmors(this, 3);
 		MT.Pu_243           .addEnchantmentForTools(this, 3).addEnchantmentForArmors(this, 3);
+		MT.At               .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Am_241           .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Nq_528           .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Nq_522           .addEnchantmentForTools(this, 5).addEnchantmentForArmors(this, 5);
