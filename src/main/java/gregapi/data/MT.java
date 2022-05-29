@@ -2655,9 +2655,32 @@ public class MT {
 			Basalz                  .addEnchantmentForTools(Enchantment.fortune, 4);
 			Ma                      .addEnchantmentForTools(Enchantment.fortune, 4);
 			Haderoth                .addEnchantmentForTools(Enchantment.fortune, 4);
-			VibraniumSteel          .addEnchantmentForTools(Enchantment.fortune, 4);
+			VibraniumSteel          .addEnchantmentForTools(Enchantment.fortune, 5);
+			Vibramantium            .addEnchantmentForTools(Enchantment.fortune, 5);
 			Vb                      .addEnchantmentForTools(Enchantment.fortune, 5);
 			Infinity                .addEnchantmentForTools(Enchantment.fortune,10);
+			
+			Ad                      .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Adamantine              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Force                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Amber                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			AmberDominican          .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Ambrosium               .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			ManaQuartz              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			EnderPearl              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Enderium                .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Endium                  .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Blizz                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Frezarite               .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Inolashite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Sanguinite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			SpectreIron             .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			NetherStar              .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			InfusedOrder            .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			InfusedBalance          .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			NiflheimPower           .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Vibramantium            .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			Infinity                .addEnchantmentForTools(Enchantment.silkTouch,10);
 			
 			Flint                   .addEnchantmentForTools(Enchantment.fireAspect, 1);
 			Netherrack              .addEnchantmentForTools(Enchantment.fireAspect, 1);
@@ -2682,27 +2705,6 @@ public class MT {
 			NetherizedDiamond       .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Infinity                .addEnchantmentForTools(Enchantment.fireAspect,10);
 			
-			Ad                      .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Adamantine              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Force                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Amber                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			AmberDominican          .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Ambrosium               .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			ManaQuartz              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			EnderPearl              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Enderium                .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Endium                  .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Blizz                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Frezarite               .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Inolashite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Sanguinite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			SpectreIron             .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			NetherStar              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			InfusedOrder            .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			InfusedBalance          .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			NiflheimPower           .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Vibramantium            .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Infinity                .addEnchantmentForTools(Enchantment.silkTouch,10);
 			
 			
 			Hepatizon               .addEnchantmentForTools(Enchantment.smite, 2);
