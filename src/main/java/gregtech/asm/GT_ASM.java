@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,6 @@
 
 package gregtech.asm;
 
-import java.io.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.util.Printer;
-import org.objectweb.asm.util.Textifier;
-import org.objectweb.asm.util.TraceMethodVisitor;
-
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.IFMLCallHook;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
@@ -44,6 +28,17 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import gregtech.asm.transformers.*;
 import net.minecraft.launchwrapper.LaunchClassLoader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.objectweb.asm.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.util.Printer;
+import org.objectweb.asm.util.Textifier;
+import org.objectweb.asm.util.TraceMethodVisitor;
+
+import java.io.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Name("Greg-ASM®")
 @MCVersion("1.7.10")
@@ -159,7 +154,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 					String[] kwa = kw.split("=");
 					if (kwa.length != 2) throw new RuntimeException("Invalid Configuration entry in GT6 ASM configuration file, line " + lineno + ": " + line);
 					String classname = kwa[0].trim();
-					boolean enabled = kwa[1].trim() != "false";
+					boolean enabled = !kwa[1].contains("false");
 					if (transformers.containsKey(classname)) {
 						transformers.put(classname, enabled);
 						transformersInserted += 1;
