@@ -329,8 +329,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {
-		mRenderParameterTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		return mRenderingObjectBlock != null ? mRenderingObjectBlock : mRenderParameterTileEntity instanceof IRenderedBlockObject ? (IRenderedBlockObject)mRenderParameterTileEntity : null;
+		TileEntity tRenderParameterTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+		return mRenderingObjectBlock != null ? mRenderingObjectBlock : tRenderParameterTileEntity instanceof IRenderedBlockObject ? (IRenderedBlockObject)tRenderParameterTileEntity : null;
 	}
 	
 	@Override
@@ -338,7 +338,6 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		return mRenderingObjectStack;
 	}
 	
-	public TileEntity mRenderParameterTileEntity = null;
 	public IRenderedBlockObject mRenderingObjectBlock = null, mRenderingObjectStack = null;
 	
 	public PrefixBlock setRenderingObject(IRenderedBlockObject aBlock, IRenderedBlockObject aStack) {
