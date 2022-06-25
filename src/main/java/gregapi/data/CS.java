@@ -2123,6 +2123,7 @@ public class CS {
 		, GC_PLANETS        = "GalacticraftMars"
 		, GC_GALAXYSPACE    = "GalaxySpace"
 		, GC_ADV_ROCKETRY   = "advancedRocketry"
+		, GC_EXTRAPLANETS   = "ExtraPlanets"
 		, VULPES            = "libVulpes"
 		, MD8               = "Micdoodlecore"
 		;

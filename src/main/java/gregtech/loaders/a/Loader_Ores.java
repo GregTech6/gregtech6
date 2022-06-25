@@ -291,6 +291,114 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 2, "gc.asteroids.light"   , OP.oreSpace               , MT.STONES.SpaceRock);
 		}
 		
+		//rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 2, "ep.phobos.rock"       	, OP.orePhobos            , MT.STONES.PhobosRock);
+		
+		if (MD.GC_EXTRAPLANETS.mLoaded) {
+			
+			//T2
+			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 0, "ep.phobos.surface"    	, OP.orePhobos            , MT.STONES.PhobosRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 1, "ep.phobos.underground"	, OP.orePhobos            , MT.STONES.PhobosRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 2, "ep.phobos.rock"       	, OP.orePhobos            , MT.STONES.PhobosRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 0, "ep.deimos.surface"    	, OP.oreDeimos            , MT.STONES.DeimosRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 1, "ep.deimos.underground"	, OP.oreDeimos            , MT.STONES.DeimosRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 2, "ep.deimos.rock"       	, OP.oreDeimos            , MT.STONES.DeimosRock);
+			
+			//T3
+			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 0, "ep.Venus.surface"     	, OP.oreVenus             , MT.STONES.VenusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 1, "ep.Venus.underground" 	, OP.oreVenus             , MT.STONES.VenusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 2, "ep.Venus.rock"        	, OP.oreVenus             , MT.STONES.VenusRock);
+			
+			//T4
+			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 0, "ep.Mercury.surface"   	, OP.oreMercury           , MT.STONES.MercuryRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 1, "ep.Mercury.underground"	, OP.oreMercury           , MT.STONES.MercuryRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 2, "ep.Mercury.rock"      	, OP.oreMercury           , MT.STONES.MercuryRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 0, "ep.Ceres.surface"      	, OP.oreCeres             , MT.STONES.CeresRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 1, "ep.Ceres.underground"   , OP.oreCeres             , MT.STONES.CeresRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 2, "ep.Ceres.rock"      	, OP.oreCeres             , MT.STONES.CeresRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 0, "ep.Jupiter.surface"     , OP.oreJupiter           , MT.STONES.JupiterRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 1, "ep.Jupiter.underground" , OP.oreJupiter           , MT.STONES.JupiterRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 2, "ep.Jupiter.rock"      	, OP.oreJupiter           , MT.STONES.JupiterRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 0, "ep.Io.surface"      	, OP.oreIo             	  , MT.STONES.IoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 1, "ep.Io.underground"      , OP.oreIo                , MT.STONES.IoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 2, "ep.Io.rock"      		, OP.oreIo                , MT.STONES.IoRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 0, "ep.Europa.surface"      , OP.oreEuropa            , MT.STONES.EuropaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 1, "ep.Europa.underground"  , OP.oreEuropa            , MT.STONES.EuropaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 2, "ep.Europa.rock"      	, OP.oreEuropa            , MT.STONES.EuropaRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 0, "ep.Ganymede.surface"    , OP.oreGanymede          , MT.STONES.GanymedeRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 1, "ep.Ganymede.underground", OP.oreGanymede          , MT.STONES.GanymedeRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 2, "ep.Ganymede.rock"      	, OP.oreGanymede          , MT.STONES.GanymedeRock);
+		
+			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 0, "ep.Callisto.surface"    , OP.oreCallisto          , MT.STONES.CallistoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 1, "ep.Callisto.underground", OP.oreCallisto          , MT.STONES.CallistoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 2, "ep.Callisto.rock"      	, OP.oreCallisto          , MT.STONES.CallistoRock);
+			
+			//T5
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 0, "ep.Saturn.surface"      , OP.oreSaturn            , MT.STONES.SaturnRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 1, "ep.Saturn.underground"  , OP.oreSaturn            , MT.STONES.SaturnRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 2, "ep.Saturn.rock"      	, OP.oreSaturn            , MT.STONES.SaturnRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 0, "ep.Rhea.surface"      	, OP.oreRhea              , MT.STONES.RheaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 1, "ep.Rhea.underground"    , OP.oreRhea              , MT.STONES.RheaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 2, "ep.Rhea.rock"      		, OP.oreRhea              , MT.STONES.RheaRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 0, "ep.Titan.surface"      	, OP.oreTitan             , MT.STONES.TitanRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 1, "ep.Titan.underground"   , OP.oreTitan             , MT.STONES.TitanRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 2, "ep.Titan.rock"      	, OP.oreTitan             , MT.STONES.TitanRock);
+
+			rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 0, "ep.Oberon.surface"      , OP.oreOberon            , MT.STONES.OberonRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 1, "ep.Oberon.underground"  , OP.oreOberon            , MT.STONES.OberonRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 2, "ep.Oberon.rock"      	, OP.oreOberon            , MT.STONES.OberonRock);
+			
+			//T6
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 0, "ep.Iapetus.surface"     , OP.oreIapetus           , MT.STONES.IapetusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 1, "ep.Iapetus.underground" , OP.oreIapetus           , MT.STONES.IapetusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 2, "ep.Iapetus.rock"      	, OP.oreIapetus           , MT.STONES.IapetusRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 0, "ep.Uranus.surface"      , OP.oreUranus            , MT.STONES.UranusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 1, "ep.Uranus.underground"  , OP.oreUranus            , MT.STONES.UranusRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 2, "ep.Uranus.rock"      	, OP.oreUranus            , MT.STONES.UranusRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 0, "ep.Titania.surface"     , OP.oreTitania           , MT.STONES.TitaniaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 1, "ep.Titania.underground" , OP.oreTitania           , MT.STONES.TitaniaRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 2, "ep.Titania.rock"      	, OP.oreTitania           , MT.STONES.TitaniaRock);
+			
+			//T7
+			rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 0, "ep.Neptune.surface"     , OP.oreNeptune           , MT.STONES.NeptuneRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 1, "ep.Neptune.underground" , OP.oreNeptune           , MT.STONES.NeptuneRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 2, "ep.Neptune.rock"      	, OP.oreNeptune           , MT.STONES.NeptuneRock);
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 0, "ep.Triton.surface"      , OP.oreTriton            , MT.STONES.TritonRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 1, "ep.Triton.underground"  , OP.oreTriton            , MT.STONES.TritonRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 2, "ep.Triton.rock"      	, OP.oreTriton            , MT.STONES.TritonRock);
+			
+			
+			//T8
+			
+			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 0, "ep.Pluto.surface"      	, OP.orePluto             , MT.STONES.PlutoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 1, "ep.Pluto.underground"    , OP.orePluto             , MT.STONES.PlutoRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 2, "ep.Pluto.rock"      		, OP.orePluto             , MT.STONES.PlutoRock);
+			
+			
+			//T9
+			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 0, "ep.Eris.surface"      	, OP.oreEris              , MT.STONES.ErisRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 1, "ep.Eris.underground"      , OP.oreEris              , MT.STONES.ErisRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 2, "ep.Eris.rock"      		, OP.oreEris              , MT.STONES.ErisRock);
+			
+			
+			//T10
+			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 0, "ep.Kepler22b.surface", OP.oreKepler22b         , MT.STONES.Kepler22bRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 1, "ep.Kepler22b.underground", OP.oreKepler22b     , MT.STONES.Kepler22bRock);
+			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 2, "ep.Kepler22b.rock"   , OP.oreKepler22b         , MT.STONES.Kepler22bRock);
+
+			
 		/* Doesn't work so I won't waste Block IDs until I get it to work.
 		if (MD.GC_GALAXYSPACE.mLoaded) {
 		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"      , 2, "gs.mercury.rock"      , OP.oreSpace               , MT.SpaceRock);
@@ -358,6 +466,7 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_normal[7]);
 		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_broken[7]);
 		BlocksGT.stoneToSmallOres .put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_small [7]);
+		}
 		}
 	}
 	

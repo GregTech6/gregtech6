@@ -275,6 +275,7 @@ public class MD {
 	, GC_PLANETS        = new ModData(ModIDs.GC_PLANETS         , "Galacticraft Planets")
 	, GC_GALAXYSPACE    = new ModData(ModIDs.GC_GALAXYSPACE     , "Galaxy Space")
 	, GC_ADV_ROCKETRY   = new ModData(ModIDs.GC_ADV_ROCKETRY    , "Advanced Rocketry")
+	, GC_EXTRAPLANETS   = new ModData(ModIDs.GC_EXTRAPLANETS    , "Extra Planets")
 	, VULPES            = new ModData(ModIDs.VULPES             , "Lib Vulpes")
 	, MD8               = new ModData(ModIDs.MD8                , "Micdoodle8 Core")
 	;
