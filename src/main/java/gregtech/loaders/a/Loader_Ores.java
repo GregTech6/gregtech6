@@ -397,7 +397,7 @@ public class Loader_Ores implements Runnable {
 			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 0, "ep.Kepler22b.surface", OP.oreKepler22b         , MT.STONES.Kepler22bRock);
 			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 1, "ep.Kepler22b.underground", OP.oreKepler22b     , MT.STONES.Kepler22bRock);
 			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 2, "ep.Kepler22b.rock"   , OP.oreKepler22b         , MT.STONES.Kepler22bRock);
-
+		}
 			
 		/* Doesn't work so I won't waste Block IDs until I get it to work.
 		if (MD.GC_GALAXYSPACE.mLoaded) {
@@ -466,7 +466,6 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_normal[7]);
 		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_broken[7]);
 		BlocksGT.stoneToSmallOres .put(new ItemStackContainer(IL.BOTA_Andesite.get(1)), BlocksGT.ores_small [7]);
-		}
 		}
 	}
 	
