@@ -205,7 +205,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 				}
 			}
 		}
-		return aCheckValidity ? mTarget != null && mTarget.checkStructure(F) ? mTarget : null : mTarget;
+		return aCheckValidity ? mTarget != null && mTarget.checkStructureOnly(F) ? mTarget : null : mTarget;
 	}
 	
 	public void setTarget(ITileEntityMultiBlockController aTarget, int aDesign, int aMode) {

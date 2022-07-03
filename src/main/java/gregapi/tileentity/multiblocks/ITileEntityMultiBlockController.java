@@ -38,6 +38,7 @@ public interface ITileEntityMultiBlockController extends ITileEntityUnloadable, 
 	public boolean isInsideStructure(int aX, int aY, int aZ);
 	public boolean checkStructure(boolean aForceReset);
 	public void onStructureChange();
+	public boolean checkStructureOnly(boolean aForceReset);
 	public long onToolClickMultiBlock(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom);
 	
 	public static class Util {

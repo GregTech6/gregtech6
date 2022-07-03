@@ -158,15 +158,20 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
 		aChatReturn.add("Structure is formed already!");
 	}
-	
+
 	@Override
 	public boolean checkStructure(boolean aForceReset) {
+		boolean tOut = checkStructureOnly(aForceReset);
+		if (isServerSide()) mStructureChanged = F;
+		return tOut;
+	}
+	@Override
+	public boolean checkStructureOnly(boolean aForceReset) {
 		if (isClientSide()) return mStructureOkay;
 		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2()) {
 			mStructureOkay = !mStructureOkay;
 			updateClientData();
 		}
-		mStructureChanged = F;
 		return mStructureOkay;
 	}
 	
