@@ -189,7 +189,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Constantan            ,   37,   2.0F,   2.0F,  3);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Constantan            ,   37,   4.0F,   4.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Al                    ,    1,   2.0F,   2.0F,  4);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Brass                 ,    8,   2.5F,   2.5F,  4);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TinAlloy              ,    5,   3.0F,   3.0F,  4);
@@ -199,10 +199,10 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Invar                 ,    6,   4.0F,   4.0F,  5);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Steel                 ,   10,   6.0F,   6.0F,  5);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.HSLA                  ,   18,   6.0F,   6.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Au                    ,    2,   2.0F,   2.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ag                    ,    3,   2.0F,   2.0F,  6);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Au                    ,    2,   3.0F,   3.0F,  6);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ag                    ,    3,   3.0F,   3.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Mn                    ,   46,   6.0F,   6.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manyullyn             ,   39,   3.0F,   3.0F,  6);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manyullyn             ,   39,   4.0F,   4.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Lumium                ,   54,   2.0F,   2.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Knightmetal           ,   25,   7.0F,   7.0F,  7);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.SteelGalvanized       ,   19,   6.0F,   6.0F,  7);
@@ -211,7 +211,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.GildedIron            ,   20,   6.0F,   6.0F,  8);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Mo                    ,   49,   6.0F,   6.0F,  8);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Syrmorite             ,   44,   4.0F,   4.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Electrum              ,    7,   2.0F,   2.0F,  9);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Electrum              ,    7,   3.0F,   3.0F,  9);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.StainlessSteel        ,   11,   5.0F,   5.0F,  9);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Thaumium              ,   27,   9.0F,   9.0F,  9);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manasteel             ,   40,   9.0F,   9.0F,  9);
@@ -232,7 +232,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DeshAlloy             ,   55,  15.0F,  15.0F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Os                    ,   29,   3.0F,   3.0F, 36);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Os                    ,   29,   9.0F,   9.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.VoidMetal             ,   28,  30.0F,  30.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.ElvenElementium       ,   41,  30.0F,  30.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TritaniumAlloy        ,   32,  30.0F,  30.0F, 36);
