@@ -577,11 +577,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		for (int i = 0; i < tEnchants.length; i++) if (tLevels[i] > 0) {
 			boolean temp = T;
 			for (ObjectStack<Enchantment> tEnchantment : tEnchantments) if (tEnchantment.mObject == tEnchants[i]) {
-				if (tEnchantment.mAmount == tLevels[i]) {
-					tEnchantment.mAmount++;
-				} else if (tEnchantment.mAmount < tLevels[i]) {
-					tEnchantment.mAmount = tLevels[i];
-				}
+				tEnchantment.mAmount = 1+Math.max(tEnchantment.mAmount, tLevels[i]);
 				temp = F;
 				break;
 			}
