@@ -24,7 +24,9 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
@@ -129,5 +131,20 @@ public class Replacements {
 
 	public static boolean BlockStaticLiquid_isFlammable(World world, int x, int y, int z) {
 		return world.getBlock(x, y, z).isFlammable(world, x, y, z, ForgeDirection.UNKNOWN);
+	}
+
+	public static boolean EntityAICreeperSwell_shouldExecute(EntityCreeper swellingCreeper) {
+		EntityLivingBase target = swellingCreeper.getAttackTarget();
+		if(swellingCreeper.getCreeperState() > 0) return true;
+		if(target == null) return false;
+		double distSq = swellingCreeper.getDistanceSqToEntity(target);
+		if(distSq >= 9.0) return false;
+		// Do this last since it's the most 'work'
+		double facing = target
+				.getPosition(1.0F)
+				.subtract(swellingCreeper.getPosition(1.0F))
+				.normalize()
+				.dotProduct(target.getLookVec());
+		return facing >= -0.F;
 	}
 }
