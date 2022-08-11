@@ -549,10 +549,13 @@ task supporterlistgold(type: Copy) {
 }
 
 task defaultConfigPack(type: Zip) {
+	doFirst {
+		mkdir "${project.buildDir}/${project.libsDirName}"
+	}
 	from('./.defaultconfigs/')
 	include('**/')
 	classifier = 'defaultConfigPack'
-	destinationDir = new File('./build/libs/')
+	destinationDir = new File("${project.buildDir}/${project.libsDirName}")
 }
 
 jar.dependsOn supporterlist

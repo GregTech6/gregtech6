@@ -38,7 +38,7 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ARTIFACT_VERSION: SNAPSHOT
-      run: if [[ "$REF" == "refs/heads/master" ]]; then rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew setupCIWorkspace build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew setupCIWorkspace build uploadArchives --stacktrace; fi
     - name: Build RELEASE with Gradle
       env:
         REF: ${{ github.ref }}
