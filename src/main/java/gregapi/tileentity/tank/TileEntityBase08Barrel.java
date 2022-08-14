@@ -21,7 +21,6 @@ package gregapi.tileentity.tank;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -112,6 +111,9 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (aTool.equals(TOOL_softhammer)) {
 			if (mTank.amount() <= 0) {
 				mTank.setEmpty();
+				mMaxSealedTime = 0;
+				mSealedTime = 0;
+				mMode &= +B[1];
 				return 10000;
 			}
 			if (canBeSealed()) {
