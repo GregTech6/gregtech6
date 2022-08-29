@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,12 +18,6 @@
  */
 
 package gregapi.tileentity.multiblocks;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import gregapi.GT_API;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_BreakBlock;
@@ -48,14 +42,7 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.logistics.ITileEntityLogistics;
-import gregapi.tileentity.machines.ITileEntityCrucible;
-import gregapi.tileentity.machines.ITileEntityMold;
-import gregapi.tileentity.machines.ITileEntityRunningActively;
-import gregapi.tileentity.machines.ITileEntityRunningPassively;
-import gregapi.tileentity.machines.ITileEntityRunningPossible;
-import gregapi.tileentity.machines.ITileEntityRunningSuccessfully;
-import gregapi.tileentity.machines.ITileEntitySwitchableMode;
-import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
+import gregapi.tileentity.machines.*;
 import gregapi.tileentity.notick.TileEntityBase05Paintable;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -73,6 +60,12 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -174,7 +167,11 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	@Override
 	public boolean breakBlock() {
 		ITileEntityMultiBlockController tTarget = getTarget(F);
-		if (tTarget != null) tTarget.onStructureChange();
+		if (tTarget != null) {
+			mTargetPos = null;
+			mTarget = null;
+			tTarget.onStructureChange();
+		}
 		return F;
 	}
 	

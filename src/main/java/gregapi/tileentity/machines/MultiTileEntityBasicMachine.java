@@ -891,7 +891,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (!mDisabledItemOutput) doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
-		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer%1200 == 5) {
+		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer % 1200 == 5) {
 			if (!checkStructure(F)) checkStructure(T);
 			checkRecipe(F, T);
 		}

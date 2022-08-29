@@ -182,6 +182,10 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord), tHash = mContent.hashCode();
 		
 		if (!checkStructure(F)) {
+			if (mInventoryChanged || SERVER_TIME % 1200 == 5) {
+				if (checkStructure(T)) return;
+			}
+			
 			if (SERVER_TIME % 10 == 0) {if (mTemperature > tTemperature) mTemperature--; if (mTemperature < tTemperature) mTemperature++;}
 			mTemperature = Math.max(mTemperature, Math.min(200, tTemperature));
 			return;
