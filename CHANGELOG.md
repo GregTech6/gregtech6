@@ -24,6 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Geiger Counter Sensor now takes coolant into account for %-modes and not just use the base maximum of the fuel rods.
 [FIXED] Log Spam when having certain GT6 Crafting Recipes in Forestry Worktables.
 [FIXED] C-Foamed Pipes and Wires are no longer Flammable. You do not need to wait for the Foam to dry to get this Effect.
+[FIXED] The Daylight Detector Recipe did not accept any type of Quartz, and one of the Cookie Dough Recipes was not Slicer compatible.
 
 
 6.15.01:
