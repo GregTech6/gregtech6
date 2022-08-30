@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.tree.BlockBaseLeaves;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -38,6 +34,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_BranchCutter extends ToolStats {
 	@Override
@@ -87,6 +87,9 @@ public class GT_Tool_BranchCutter extends ToolStats {
 		} else if (aBlock == Blocks.leaves2) {
 			aDrops.clear();
 			aDrops.add(ST.make(Blocks.sapling, 1, (aMetaData & 3) + 4));
+		} else if (aBlock == Blocks.vine) {
+			aDrops.clear();
+			aDrops.add(ST.make(Blocks.vine, 1, 0));
 		} else if (aBlock instanceof BlockBaseLeaves) {
 			aDrops.clear();
 			aDrops.add(ST.make(aBlock.getItemDropped(aMetaData, RNGSUS, aFortune), 1, aBlock.damageDropped(aMetaData)));
