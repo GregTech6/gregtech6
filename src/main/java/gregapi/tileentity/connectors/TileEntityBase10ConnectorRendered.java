@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,11 @@
 
 package gregapi.tileentity.connectors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.UUID;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.IconsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -50,6 +43,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.UUID;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -204,6 +202,8 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		}
 	}
 	
+	@Override public int getFireSpreadSpeed         (byte aSide, boolean aDefault) {return mFoam ? 0 : super.getFireSpreadSpeed(aSide, aDefault);}
+	@Override public int getFlammability            (byte aSide, boolean aDefault) {return mFoam ? 0 : super.getFlammability   (aSide, aDefault);}
 	@Override public float getSurfaceSize           (byte aSide) {return mFoamDried ? 1.0F : mDiameter;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return mDiameter;}
 	@Override public float getSurfaceDistance       (byte aSide) {return mFoamDried || connected(aSide)?0.0F:(1.0F-mDiameter)/2.0F;}
