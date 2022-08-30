@@ -206,7 +206,7 @@ public class AdvancedCraftingXToY implements ICraftingRecipeGT {
 	@Override
 	public boolean matches(InventoryCrafting aGrid, World aWorld) {
 		if (mInputCount != 9) {
-			Container tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "field_70465_c", F, F); if (tContainer == null) tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "eventHandler");
+			Container tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "field_70465_c", F, F); if (tContainer == null) tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "eventHandler", F, F);
 			if (tContainer != null && tContainer.getClass().getName().startsWith("thaumcraft")) return F;
 		}
 		

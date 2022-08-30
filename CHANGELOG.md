@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.02: (Not released yet, released whenever it needs to be)
+6.15.02: (Sorry, the Summer kinda ended up with me playing Stellaris, I'm trying to get this Release done by September 1st)
 [NOTE] Be sure to update your Geiger Counter Sensors if using the %-mode for controlling your Thorium Salt or Lithium Chloride reactors.
 [FIXED] Basic Machines and their Multiblock Counterparts will no longer accept Fluid Input from the Side that they are Auto-Outputting to.
 [CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
