@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.recipes;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.ICondition;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictItemData;
@@ -41,6 +37,11 @@ import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import java.util.List;
+
+import static gregapi.data.CS.ERR;
+import static gregapi.data.CS.F;
 
 /**
  * @author Gregorius Techneticies
@@ -205,7 +206,7 @@ public class AdvancedCraftingXToY implements ICraftingRecipeGT {
 	@Override
 	public boolean matches(InventoryCrafting aGrid, World aWorld) {
 		if (mInputCount != 9) {
-			Container tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "field_70465_c"); if (tContainer == null) tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "eventHandler");
+			Container tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "field_70465_c", F, F); if (tContainer == null) tContainer = (Container)UT.Reflection.getFieldContent(aGrid, "eventHandler");
 			if (tContainer != null && tContainer.getClass().getName().startsWith("thaumcraft")) return F;
 		}
 		

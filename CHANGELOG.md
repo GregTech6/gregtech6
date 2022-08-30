@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Dilithium can now be used to make Molten Ender. Also added a way to process Dolamide Dust, should you have made the mistake of turning your crushed Ore into that.
 [FIXED] Some small errors in the reactor guide book.
 [FIXED] Geiger Counter Sensor now takes coolant into account for %-modes and not just use the base maximum of the fuel rods.
+[FIXED] Log Spam when having certain GT6 Crafting Recipes in Forestry Worktables.
 
 
 6.15.01:
