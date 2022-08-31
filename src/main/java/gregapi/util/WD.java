@@ -114,9 +114,10 @@ public class WD {
 		for (EntityItem tItem : tList) {
 			if (!tItem.isDead) {
 				aWorld.removeEntity(tItem);
-				rOutput.add(tItem.getEntityItem());
+				ItemStack rStack = tItem.getEntityItem();
 				tItem.setEntityItemStack(ST.amount(0, rStack));
 				tItem.setDead();
+				rOutput.add(rStack);
 			}
 		}
 		return rOutput;

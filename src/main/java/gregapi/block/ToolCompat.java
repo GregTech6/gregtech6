@@ -161,7 +161,7 @@ public class ToolCompat {
 			}
 			if (rReturn) {
 				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null, F, F);
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
+				UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tBark, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 			return 0;
@@ -171,7 +171,7 @@ public class ToolCompat {
 				int tDamage = 0;
 				for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if ((aTileEntity = WD.te(aWorld, aX+i, aY+j, aZ+k, T)) instanceof ICropTile && ((ICropTile)aTileEntity).harvest(T)) tDamage += 10000;
 				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tDrop, aWorld, aX, aY, aZ);
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
 				}
 				return tDamage;
 			}
@@ -185,7 +185,7 @@ public class ToolCompat {
 					}
 				}
 				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tDrop, aWorld, aX, aY, aZ);
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
 				}
 				return tDamage;
 			}
@@ -301,9 +301,9 @@ public class ToolCompat {
 						if (RNGSUS.nextInt(tDamage) < aRemainingDurability) {
 							for (ItemStack tStack : tDrops) {
 								if (tOutput == null) {
-									if (aPlayer instanceof EntityPlayer) UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, tStack, F); else ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tStack);
+									UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tStack, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
 								} else {
-									if (aPlayer instanceof EntityPlayer) UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, tOutput, F); else ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tOutput);
+									UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tOutput, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
 									tOutput = null;
 								}
 							}
