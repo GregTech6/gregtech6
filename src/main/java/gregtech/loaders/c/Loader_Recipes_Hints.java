@@ -113,8 +113,8 @@ public class Loader_Recipes_Hints implements Runnable {
 		  ST.make(BlocksGT.Saplings_AB, 1, 1, "Find a Maple Tree in a Forest")
 		, ST.make(BlocksGT.Leaves_AB, 1, 1, "Make sure its natural Leaves stay intact!")
 		, ST.make(BlocksGT.LogA, 1, 1, "Choose one of the Log Segments at the Base of the Tree")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.HAND_DRILL, "Drill only one Hole into the Tree")
-		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV  , "Drill only one Hole into the Tree")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.HAND_DRILL, "Drill only ONE Hole! Bronze is easiest to make this Tool")
+		, ST.make(ToolsGT.sMetaTool, 1, ToolsGT.DRILL_LV  , "Drill only ONE Hole! Electric might be a bit Late-game")
 		, IL.Bag_Sap_Resin.getWithName(1, "Place Sap Bag at the drilled Hole")
 		), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Sap_Maple.make(250)), 0, 0, 0);
 		

@@ -627,7 +627,7 @@ public class MT {
 	Ir      = iridium        ().qual(3,  6.0, 5120, 4).setRGBaLiquid(255, 128, 200, 255),
 	Pt      = platinum       ().qual(3, 15.0, 64, 2),
 	Au      = gold           ().qual(3, 12.5, 64, 2),
-	Au_198  = gold198        ().qual(3, 12.5, 64, 2),
+	Au_198  = gold198        (),
 	Hg      = mercury        (),
 	Tl      = thallium       (),
 	Pb      = lead           ().qual(2,  8.0, 64, 1),

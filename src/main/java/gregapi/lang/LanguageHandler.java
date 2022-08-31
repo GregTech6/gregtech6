@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregapi.lang;
 
-import static gregapi.data.CS.*;
-
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import gregapi.data.ANY;
 import gregapi.data.MT;
@@ -38,6 +33,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
@@ -373,15 +374,18 @@ public class LanguageHandler {
 			if (aPrefix == OP.plantGtBlossom)                               return "Steeleaf Leaf";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
-		if (aMaterial == MT.Bone) {
-			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Bonemeal";
-		} else
 		if (aMaterial == MT.Bark) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Tree Bark";
 		} else
 		if (aMaterial == MT.Tea || aMaterial == MT.Mint) {
 			if (aPrefix == OP.plantGtBlossom)                               return aMaterial.mNameLocal + " Leaf";
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
+		} else
+		if (aMaterial == MT.Bone) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Bonemeal";
+		} else
+		if (aMaterial == MT.Flint) {
+			if (aPrefix == OP.rockGt)                                       return "Mario";
 		} else
 		if (aMaterial == MT.Pyrite) {
 			if (aPrefix.contains(TD.Prefix.ORE))                            return aPrefix.mMaterialPre + MT.Au.mNameLocal + aPrefix.mMaterialPost;
