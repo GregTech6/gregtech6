@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,9 @@
 
 package gregapi.block;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.common.FMLLog;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
+import gregapi.item.multiitem.MultiItemTool;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.recipes.Recipe;
@@ -58,6 +46,13 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fluids.IFluidBlock;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -102,6 +97,8 @@ public class ToolCompat {
 		}
 		
 		if (aWorld.isRemote) return 0;
+		
+		boolean aCanCollect = (ST.item(aStack) instanceof MultiItemTool && ((MultiItemTool)ST.item_(aStack)).canCollectDropsDirectly(aStack));
 		
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			boolean rReturn = F;
@@ -173,6 +170,9 @@ public class ToolCompat {
 			if (IC_CROPTILE && aTileEntity instanceof ICropTile) {
 				int tDamage = 0;
 				for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if ((aTileEntity = WD.te(aWorld, aX+i, aY+j, aZ+k, T)) instanceof ICropTile && ((ICropTile)aTileEntity).harvest(T)) tDamage += 10000;
+				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) {
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tDrop, aWorld, aX, aY, aZ);
+				}
 				return tDamage;
 			}
 			if (aBlock.getClass().getName().endsWith("BlockPamCrop")) {
@@ -183,6 +183,9 @@ public class ToolCompat {
 						tBlock.onBlockActivated(aWorld, aX+i, aY+j, aZ+k, aEntityPlayer, aSide, aHitX, aHitY, aHitZ);
 						tDamage += 10000;
 					}
+				}
+				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) {
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tDrop, aWorld, aX, aY, aZ);
 				}
 				return tDamage;
 			}

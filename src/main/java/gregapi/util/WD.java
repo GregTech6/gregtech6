@@ -81,9 +81,7 @@ import net.minecraftforge.fluids.*;
 import thaumcraft.api.nodes.INode;
 import twilightforest.TwilightForestMod;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 import static gregapi.data.CS.*;
 
@@ -105,6 +103,23 @@ public class WD {
 			}
 		}
 		return null;
+	}
+	public static List<ItemStack> suckAll(IHasWorldAndCoords aCoordinates) {return suckAll(aCoordinates.getWorld(), aCoordinates.getX(), aCoordinates.getY(), aCoordinates.getZ());}
+	public static List<ItemStack> suckAll(World aWorld, double aX, double aY, double aZ) {return suckAll(aWorld, aX, aY, aZ, 1, 1, 1);}
+	@SuppressWarnings("unchecked")
+	public static List<ItemStack> suckAll(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {
+		List<EntityItem> tList = aWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+aL, aY+aH, aZ+aW));
+		if (tList.isEmpty()) return Collections.emptyList();
+		List<ItemStack> rOutput = new ArrayListNoNulls<>();
+		for (EntityItem tItem : tList) {
+			if (!tItem.isDead) {
+				aWorld.removeEntity(tItem);
+				rOutput.add(tItem.getEntityItem());
+				tItem.setEntityItemStack(ST.amount(0, rStack));
+				tItem.setDead();
+			}
+		}
+		return rOutput;
 	}
 	
 	public static boolean obstructed(World aWorld, int aX, int aY, int aZ, byte aSide) {
