@@ -23,6 +23,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightValue;
 import gregapi.data.IL;
 import gregapi.old.Textures.BlockIcons;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.energy.TileEntityBase09PowerCell;
 import gregapi.util.UT;
@@ -38,16 +39,15 @@ import static gregapi.data.CS.*;
 public class MultiTileEntityPowerCell extends TileEntityBase09PowerCell implements IMTE_GetLightValue {
 	@Override public ItemStack getEmptyPowerCell() {return IL.Power_Cell_Empty.get(1);}
 	
-	// TODO MODEL!
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return 1;
 	}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return BlockTextureDefault.get(SIDES_VERTICAL[aSide]?SIDES_TOP[aSide]?BlockIcons.ANEUTRONIC_FUSION_TOP:BlockIcons.ANEUTRONIC_FUSION_BOTTOM:BlockIcons.ANEUTRONIC_FUSION_SIDES, mDisplayedEnergy == 0 ? UT.Code.getRGBInt(UT.Code.getR(mRGBa) / 2, UT.Code.getG(mRGBa) / 2, UT.Code.getB(mRGBa) / 2) : mRGBa, 120+mDisplayedEnergy*8);}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return BlockTextureMulti.get(BlockTextureDefault.get(SIDES_VERTICAL[aSide]?BlockIcons.POWERCELL_TOP:BlockIcons.POWERCELL_SIDES, mDisplayedEnergy == 0 ? UT.Code.getRGBInt(UT.Code.getR(mRGBa) / 2, UT.Code.getG(mRGBa) / 2, UT.Code.getB(mRGBa) / 2) : mRGBa, 120+mDisplayedEnergy*8), BlockTextureDefault.get(SIDES_VERTICAL[aSide]?BlockIcons.POWERCELL_TOP_OVERLAY:BlockIcons.POWERCELL_SIDES_OVERLAY, UNCOLOURED));}
 	
-	@Override public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {return box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[12], PX_N[ 4]);}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box( PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[12], PX_N[ 4]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box( PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[12], PX_N[ 4]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock  , PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[12], PX_N[ 4]);}
+	@Override public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {return box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
 	
 	@Override public byte getDisplayScaleMax() {return 15;}
 	@Override public int getLightValue() {return mDisplayedEnergy;}
