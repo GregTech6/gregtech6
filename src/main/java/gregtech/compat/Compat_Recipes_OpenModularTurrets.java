@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,28 +19,20 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 	public Compat_Recipes_OpenModularTurrets(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -81,7 +73,7 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		CR.shaped   (ST.make(MD.OMT, "hardWallTierFive"         , 1, 0), CR.DEF_NCC        , "BeB", "BWB", 'B', OP.bolt.dat(ANY.Iron), 'W', ST.make(MD.OMT, "hardWallTierFour"     , 1, 0));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "open_modular_turrets", T)) {
-		CR.shaped   (ST.make(MD.OMT, "baseTierWood"             , 1, 0), CR.DEF_REM_REV_NCC, "wMr", "TWT", "xXd", 'E', IL.EMITTERS[0], 'R', IL.SENSORS[0], 'M', IL.MOTORS[0], 'W', MT.DATA.CABLES_04[0], 'T', OP.screw.dat(ANY.Iron), 'X', OD.craftingChest);
+		CR.shaped   (ST.make(MD.OMT, "baseTierWood"             , 1, 0), CR.DEF_REM_REV_NCC, "wMr", "TWT", "xXd", 'E', IL.EMITTERS[0], 'R', IL.SENSORS[0], 'M', IL.MOTORS[0], 'W', OP.wireGt04.dat(ANY.Cu), 'T', OP.screw.dat(ANY.Iron), 'X', OD.craftingChest);
 		CR.shaped   (ST.make(MD.OMT, "baseTierOneBlock"         , 1, 0), CR.DEF_REM_REV_NCC, "CMC", "EBR", "WXW", 'E', IL.EMITTERS[1], 'R', IL.SENSORS[1], 'M', IL.MOTORS[1], 'W', MT.DATA.CABLES_01[1], 'C', OD_CIRCUITS[0], 'B', "gt:re-battery1", 'X', OP.casingMachine.dat(MT.TinAlloy));
 		CR.shaped   (ST.make(MD.OMT, "baseTierTwoBlock"         , 1, 0), CR.DEF_REM_REV_NCC, "CMC", "EBR", "WXW", 'E', IL.EMITTERS[2], 'R', IL.SENSORS[2], 'M', IL.MOTORS[2], 'W', MT.DATA.CABLES_01[2], 'C', OD_CIRCUITS[2], 'B', "gt:re-battery2", 'X', OP.casingMachine.dat(ANY.Steel));
 		CR.shaped   (ST.make(MD.OMT, "baseTierThreeBlock"       , 1, 0), CR.DEF_REM_REV_NCC, "CMC", "EBR", "WXW", 'E', IL.EMITTERS[3], 'R', IL.SENSORS[3], 'M', IL.MOTORS[3], 'W', MT.DATA.CABLES_01[3], 'C', OD_CIRCUITS[4], 'B', "gt:re-battery3", 'X', OP.casingMachine.dat(MT.Ti));
