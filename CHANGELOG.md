@@ -9,10 +9,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.02: (Sorry, the Summer kinda ended up with me playing Stellaris, I'm trying to get this Release done by September 1st)
+6.15.02:
 [NOTE] Be sure to update your Geiger Counter Sensors if using the %-mode for controlling your Thorium Salt or Lithium Chloride reactors.
 [FIXED] Basic Machines and their Multiblock Counterparts will no longer accept Fluid Input from the Side that they are Auto-Outputting to.
-[CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
+[CHANGED] The old Supporter Lists and Update Checker Functionality are now removed, so GT6 is now using the internal Supporter Lists inside the Jar always. The Lists themselves are still on the Server for older Versions and alternative Ports to download them. This also means that the GT6 Update Notification you might have gotten is the last one you will ever receive.
 [CHANGED] Crucibles now have a Thermal Mass Tooltip, that way inconsistencies with how to interpret the F3+H Tooltip are avoided.
 [CHANGED] The way that Looting Enchantments stack with Butchery Knives and the likes is now always beneficial (whatever the higher level of the two options is, plus 1). This applies to all Tools that have a built in Enchantment Level.
 [CHANGED] Branch Cutters and Scissors should now harvest Vines as is.
@@ -24,7 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Some small errors in the reactor guide book.
 [FIXED] Geiger Counter Sensor now takes coolant into account for %-modes and not just use the base maximum of the fuel rods.
 [FIXED] Log Spam when having certain GT6 Crafting Recipes in Forestry Worktables.
-[FIXED] C-Foamed Pipes and Wires are no longer Flammable. You do not need to wait for the Foam to dry to get this Effect.
+[FIXED] C-Foamed Pipes and Wires are no longer Flammable by outside sources of Fire. You do not need to wait for the Foam to dry to get this Effect.
 [FIXED] The Daylight Detector Recipe did not accept any type of Quartz, and one of the Cookie Dough Recipes was not Slicer compatible.
 
 

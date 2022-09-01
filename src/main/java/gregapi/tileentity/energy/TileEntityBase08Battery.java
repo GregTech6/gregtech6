@@ -104,7 +104,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (mCapacity > 0) aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(mCapacity, mEnergy)) + " / " + UT.Code.makeString(mCapacity) + " " + mType.getLocalisedChatNameShort() + LH.Chat.WHITE + " - Size: " + mSizeRec);
+		if (mCapacity > 0) aList.add(LH.Chat.WHITE + UT.Code.makeString(Math.min(mCapacity, mEnergy)) + " / " + UT.Code.makeString(mCapacity) + " " + mType.getLocalisedChatNameShort() + LH.Chat.WHITE + (mSizeMin <= 1 ? " - Size: up to " + mSizeMax : " - Size: " + mSizeRec));
 	}
 	
 	@Override
