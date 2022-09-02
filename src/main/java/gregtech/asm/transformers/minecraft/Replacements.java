@@ -143,7 +143,7 @@ public class Replacements {
 		// Do this last since it's the most 'work'
 		double facing = Vec3
 				.createVectorHelper(target.posX, target.posY, target.posZ)
-				.subtract(swellingCreeper.getPosition(1.0F))
+				.subtract(Vec3.createVectorHelper(swellingCreeper.posX, swellingCreeper.posY, swellingCreeper.posZ))
 				.normalize()
 				.dotProduct(target.getLookVec());
 		return facing >= -0.F;
