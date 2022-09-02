@@ -930,6 +930,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.biomass(IL.Dye_Cactus.get(16));
 		RM.biomass(IL.Dye_Cocoa.get(16));
 		
+		RM.biomass(blockDust.mat(MT.MeatRotten, 1), 16);
+		RM.biomass(blockDust.mat(MT.FishRotten, 1), 16);
+		RM.biomass(dust.mat(MT.MeatRotten, 9), 16);
+		RM.biomass(dust.mat(MT.FishRotten, 9), 16);
+		
 		RM.add_smelting(ST.make(Blocks.sticky_piston, 1, W), ST.make(Blocks.piston    , 1, 0), F, T, F);
 		RM.add_smelting(ST.make(Items.glass_bottle  , 1, W), ST.make(Blocks.glass_pane, 1, 0), F, F, F);
 		
