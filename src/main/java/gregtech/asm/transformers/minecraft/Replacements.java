@@ -30,6 +30,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -140,8 +141,8 @@ public class Replacements {
 		double distSq = swellingCreeper.getDistanceSqToEntity(target);
 		if(distSq >= 9.0) return false;
 		// Do this last since it's the most 'work'
-		double facing = target
-				.getPosition(1.0F)
+		double facing = Vec3
+				.createVectorHelper(target.posX, target.posY, target.posZ)
 				.subtract(swellingCreeper.getPosition(1.0F))
 				.normalize()
 				.dotProduct(target.getLookVec());
