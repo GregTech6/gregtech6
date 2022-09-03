@@ -647,11 +647,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Soda                    .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Mineralsoda             .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Mineralwater            .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(2));
+		RM.generify   (FL.Oil_Nut                 .make( 1), FL.Oil_Seed.make(2));
 		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Sunflower           .make( 1), FL.Oil_Seed.make(1));
-		RM.generify   (FL.Oil_Nut                 .make( 1), FL.Oil_Seed.make(1));
 		
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 		

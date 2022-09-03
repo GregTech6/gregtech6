@@ -54,9 +54,9 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Nut.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Hemp.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Lin.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Hemp.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Seed.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_Canola.exists())
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Canola.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
