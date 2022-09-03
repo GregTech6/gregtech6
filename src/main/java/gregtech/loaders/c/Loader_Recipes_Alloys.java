@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,14 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.ZL_IS;
 
 public class Loader_Recipes_Alloys implements Runnable {
 	@Override public void run() {
@@ -39,12 +40,14 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tCopper                 ,  3, "molten.zinc"           ,  1                                                            , "molten.brass"            ,  4);
 		mix(tCopper                 ,  1, "molten.aluminium"      ,  3                                                            , "molten.aluminiumbrass"   ,  4);
 		mix(tCopper                 ,  1, "molten.redstone"       ,  4                                                            , "molten.redalloy"         ,  1);
+		mix(tCopper                 ,  1, "molten.silver"         ,  4                                                            , "molten.sterlingsilver"   ,  5);
 		mix(tCopper                 ,  1, "molten.silver"         ,  1, "molten.redstone"       ,  4, "molten.nikolite"       ,  4, "molten.purplealloy"      ,  2);
 		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.redstone"       , 10                              , "molten.signalum"         ,  4);
 		mix(tCopper                 ,  1, "molten.silver"         ,  2, "molten.redalloy"       ,  5                              , "molten.signalum"         ,  8);
-		mix(tCopper                 ,  3, "molten.electrum"       ,  2                                                            , "molten.blackbronze"      ,  5);
 		mix(tCopper                 ,  3, "molten.silver"         ,  1, "molten.gold"           ,  1                              , "molten.blackbronze"      ,  5);
 		mix(tCopper                 ,  3, "molten.tin"            ,  1, "molten.gold"           ,  4                              , "molten.hepatizon"        ,  8);
+		mix(tCopper                 ,  3, "molten.electrum"       ,  2                                                            , "molten.blackbronze"      ,  5);
+		mix(tCopper                 ,  1, "molten.gold"           ,  4                                                            , "molten.rosegold"         ,  5);
 		}
 		for (String tIron : new String[] {"molten.iron", "molten.wroughtiron", "molten.pigiron", "molten.meteoriciron"}) {
 		mix(tIron                   ,  2, "molten.nickel"         ,  1                                                            , "molten.invar"            ,  3);

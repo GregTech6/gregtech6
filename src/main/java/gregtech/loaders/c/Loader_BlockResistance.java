@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,16 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
+import gregapi.block.MaterialStorageDrawersMod;
 import gregapi.data.IL;
+import gregapi.data.MD;
+import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.NB;
+import static gregapi.data.CS.T;
 
 public class Loader_BlockResistance implements Runnable {
 	@Override
@@ -43,6 +48,20 @@ public class Loader_BlockResistance implements Runnable {
 		Blocks.water.setResistance(30);
 		Blocks.flowing_water.setResistance(30);
 		Blocks.lava.setResistance(30);
+		
+		if (MD.SD.mLoaded) {
+			Block
+			tBlock = ST.block(MD.SD, "fullDrawers1"); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "fullDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "fullDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "halfDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "halfDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "fullCustom1" ); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "fullCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "fullCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "halfCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+			tBlock = ST.block(MD.SD, "halfCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, T); UT.Reflection.setFieldContent(tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, T);}
+		}
 		
 		Block
 		tBlock = IL.EtFu_Obsidian      .block(); if (tBlock != null && tBlock != NB) tBlock.setResistance(60);
