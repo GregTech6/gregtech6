@@ -168,25 +168,29 @@ public class ToolCompat {
 		}
 		if (aTool.equals(TOOL_sense) || aTool.equals(TOOL_scythe)) {
 			if (IC_CROPTILE && aTileEntity instanceof ICropTile) {
+				IGNORE_HARVEST_EVENT_FOR_GT_TOOLS = T;
 				int tDamage = 0;
 				for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if ((aTileEntity = WD.te(aWorld, aX+i, aY+j, aZ+k, T)) instanceof ICropTile && ((ICropTile)aTileEntity).harvest(T)) {
 					UT.Sounds.send(aWorld, SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aX+i, aY+j, aZ+k);
 					tDamage += 10000;
 				}
 				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
+				IGNORE_HARVEST_EVENT_FOR_GT_TOOLS = F;
 				return tDamage;
 			}
-			if (aBlock.getClass().getName().endsWith("BlockPamCrop")) {
+			if (aBlock instanceof IGrowable) {
+				IGNORE_HARVEST_EVENT_FOR_GT_TOOLS = T;
 				int tDamage = 0;
 				for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if (aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) == 7) {
 					Block tBlock = aWorld.getBlock(aX+i, aY+j, aZ+k);
-					if (tBlock.getClass() == aBlock.getClass()) {
+					if (tBlock.getClass() == aBlock.getClass() && !((IGrowable)tBlock).func_149851_a(aWorld, aX+i, aY+j, aZ+k, F)) {
 						tBlock.onBlockActivated(aWorld, aX+i, aY+j, aZ+k, aEntityPlayer, aSide, aHitX, aHitY, aHitZ);
 						UT.Sounds.send(aWorld, SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aX+i, aY+j, aZ+k);
 						tDamage += 10000;
 					}
 				}
 				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
+				IGNORE_HARVEST_EVENT_FOR_GT_TOOLS = F;
 				return tDamage;
 			}
 		}
@@ -359,6 +363,7 @@ public class ToolCompat {
 		}
 		
 		} catch(Throwable e) {
+			IGNORE_HARVEST_EVENT_FOR_GT_TOOLS = F;
 			FMLLog.severe("Exception occured when ToolCompat was used at the Coordinates: [%d;%d;%d] at '%s' with TileEntity '%s' using the Tool '%s' %s", aX, aY, aZ, aBlock.getUnlocalizedName(), aTileEntity.getClass(), aTool, e.toString());
 			e.printStackTrace(ERR);
 		}
