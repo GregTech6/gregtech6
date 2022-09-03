@@ -19,9 +19,6 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.MT;
@@ -29,6 +26,8 @@ import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.UT;
+
+import static gregapi.data.CS.*;
 
 
 public class Loader_Fuels implements Runnable {
@@ -51,18 +50,18 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Creosote.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Biomass.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.BiomassIC2.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  8,  1, FL.Oil_Whale.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  4,  1, FL.Oil_Nut.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Hemp.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Lin.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Seed.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  8, FL.Oil_Whale.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Nut.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Hemp.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Lin.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Seed.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_Canola.exists())
-		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Canola.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Canola.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_Plant.exists())
-		FM.Burn         .addRecipe0(T, -  1,  1, FL.Oil_Plant.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  1, FL.Oil_Plant.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_Heavy2.exists())
 		FM.Burn         .addRecipe0(T, - 16, 36, FL.Oil_Heavy2.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
 		if (FL.Oil_HotCrude.exists())
