@@ -26,7 +26,6 @@ import gregapi.GT_API;
 import gregapi.code.*;
 import gregapi.damage.DamageSources;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.data.TC.TC_AspectStack;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
@@ -2429,6 +2428,18 @@ public class UT {
 				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
 				if (aPrivate) tField.setAccessible(T);
 				tField.set(aObject instanceof Class || aObject instanceof String ? null : aObject, aValue);
+				return T;
+			} catch (Throwable e) {
+				if (aLogErrors) e.printStackTrace(ERR);
+			}
+			return F;
+		}
+		public static boolean setFieldContent(Class<?> aClass, Object aObject, String aField, Object aValue) {return setFieldContent(aClass, aObject, aField, aValue, T, T);}
+		public static boolean setFieldContent(Class<?> aClass, Object aObject, String aField, Object aValue, boolean aPrivate, boolean aLogErrors) {
+			try {
+				Field tField = aClass.getDeclaredField(aField);
+				if (aPrivate) tField.setAccessible(T);
+				tField.set(aObject, aValue);
 				return T;
 			} catch (Throwable e) {
 				if (aLogErrors) e.printStackTrace(ERR);
