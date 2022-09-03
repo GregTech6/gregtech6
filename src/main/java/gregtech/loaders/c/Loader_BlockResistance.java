@@ -27,8 +27,7 @@ import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
-import static gregapi.data.CS.NB;
-import static gregapi.data.CS.T;
+import static gregapi.data.CS.*;
 
 public class Loader_BlockResistance implements Runnable {
 	@Override
