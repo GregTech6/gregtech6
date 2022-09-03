@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.04: (Not released yet, released whenever it needs to be)
-[FIXED] Scythe on Hunger Overhaul modified Crops.
+[FIXED] Scythe on Hunger Overhaul modified Crops. Requires Default Config Pack or setting "enableRightClickHarvesting=false" in the Hunger Overhaul Config.
 [FIXED] Creepers crashing Servers.
 
 
@@ -34,7 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.02:
-[NOTE] Human Error caused this to somehow be skipped. Damn Autosaving Script File before running it...
+[NOTE] Human Error caused this Number to somehow be skipped. Damn Autosaving Script File before running it...
 
 
 6.15.01:

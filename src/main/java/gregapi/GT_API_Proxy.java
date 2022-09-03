@@ -1123,7 +1123,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aTool) >= 3),
 				tCanCollect = (ST.item_(aTool) instanceof MultiItemTool && ((MultiItemTool)ST.item_(aTool)).canCollectDropsDirectly(aTool, aBlock, (byte)aEvent.blockMetadata));
 				
-				if (!IGNORE_HARVEST_EVENT_FOR_GT_TOOLS && ST.item_(aTool) instanceof MultiItemTool) {
+				if (ST.item_(aTool) instanceof MultiItemTool) {
 					((MultiItemTool)ST.item_(aTool)).onHarvestBlockEvent(aEvent.drops, aTool, aEvent.harvester, aBlock, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
 				
