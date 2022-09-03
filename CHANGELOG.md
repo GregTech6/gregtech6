@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.15.04: (Not released yet, released whenever it needs to be)
 [FIXED] Scythe on Hunger Overhaul modified Crops. Requires Default Config Pack or setting "enableRightClickHarvesting=false" in the Hunger Overhaul Config.
 [FIXED] Creepers crashing Servers.
+[FIXED] The Storage Drawers Mod was not working in Adventure Mode, unless you had an Axe or so in Hand while leftclicking the Drawers.
 [CHANGED] Seed Oils and the likes have a Burn Value similar to Biomass now, making them actually worth processing in the first place.
 
 
