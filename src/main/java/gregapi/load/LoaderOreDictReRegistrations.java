@@ -440,6 +440,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cobaltRod"                       , "stickCobalt");
 		OreDictManager.INSTANCE.addReRegistration("arditeRod"                       , "stickArdite");
 		OreDictManager.INSTANCE.addReRegistration("manyullynRod"                    , "stickManyullyn");
+		OreDictManager.INSTANCE.addReRegistration("stickWoodRubber"                 , OD.stickWood);
 		OreDictManager.INSTANCE.addReRegistration("seedIndustrialHemp"              , "seedHemp");
 		OreDictManager.INSTANCE.addReRegistration("nuggetThorium232"                , "tinyTh232");
 		OreDictManager.INSTANCE.addReRegistration("nuggetUranium233"                , "tinyU233");
