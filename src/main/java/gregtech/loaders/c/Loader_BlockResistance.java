@@ -19,7 +19,7 @@
 
 package gregtech.loaders.c;
 
-import gregapi.block.MaterialStorageDrawersMod;
+import gregapi.block.MaterialAdventure;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.util.ST;
@@ -50,16 +50,16 @@ public class Loader_BlockResistance implements Runnable {
 		
 		if (MD.SD.mLoaded) {
 			Block
-			tBlock = ST.block(MD.SD, "fullDrawers1"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "fullDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "fullDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "halfDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "halfDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "fullCustom1" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "fullCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "fullCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "halfCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
-			tBlock = ST.block(MD.SD, "halfCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialStorageDrawersMod.instance, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialStorageDrawersMod.instance, T, F);}
+			tBlock = ST.block(MD.SD, "fullDrawers1"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "fullDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "fullDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "halfDrawers2"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "halfDrawers4"); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "fullCustom1" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "fullCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "fullCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "halfCustom2" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
+			tBlock = ST.block(MD.SD, "halfCustom4" ); if (tBlock != NB) {UT.Reflection.setFieldContent(Block.class, tBlock, "field_149764_J", MaterialAdventure.WOOD, T, F); UT.Reflection.setFieldContent(Block.class, tBlock, "blockMaterial", MaterialAdventure.WOOD, T, F);}
 		}
 		
 		Block

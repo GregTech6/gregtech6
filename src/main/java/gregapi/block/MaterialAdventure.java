@@ -24,13 +24,14 @@ import net.minecraft.block.material.Material;
 
 import static gregapi.data.CS.F;
 
-public class MaterialStorageDrawersMod extends Material {
-	public static MaterialStorageDrawersMod instance = new MaterialStorageDrawersMod();
+public class MaterialAdventure extends Material {
+	public static Material
+	  WOOD = new MaterialAdventure(MapColor.woodColor).setBurning()
+	;
 	
-	private MaterialStorageDrawersMod() {
-		super(MapColor.woodColor);
+	private MaterialAdventure(MapColor aColor) {
+		super(aColor);
 		setAdventureModeExempt();
-		setBurning();
 	}
 	
 	@Override
