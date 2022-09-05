@@ -23,6 +23,7 @@ import gregapi.data.FL;
 import gregapi.util.WD;
 import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -48,34 +49,43 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 	
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		if (WD.meta(aWorld, aX, aY, aZ) != 0) {
-			// TODO Validate existing Flow.
+		Block[] aBlocks = new Block[6];
+		byte[]  aMetas  = new byte[6];
+		boolean aInvalid = T;
+		for (byte tSide : ALL_SIDES_VALID) {
+			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
+			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
+			// Check if this River Block has a Source.
+			if (aBlocks[tSide] == this && aMetas[tSide] == OPOS[tSide]) aInvalid = F;
+			if (aBlocks[tSide] == Blocks.bedrock) aInvalid = F; // TODO: Remove this if this River Block ever gets used!
+		};
+		
+		if (aInvalid) {
+			// No Source for this River Block, so remove it.
+			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			return;
 		}
 		
-		Block[] aBlocks = new Block[6];
+		// If it touches any of these, it has reached its goal and will stop.
 		for (byte tSide : ALL_SIDES_VALID) {
-			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
-			// If it touches any of these, it has reached its goal and will stop.
 			if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) return;
 		};
 		
 		// gravity goes down, usually
 		byte tDir = SIDE_DOWN;
 		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,    0, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , this, tDir, 3, T);
 			return;
 		}
 		
 		// try flowing straight
 		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
-			byte tMeta = (byte)(WD.meta(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])-1);
-			if (tMeta == OPOS[tSide]) {
+			if (aMetas[tSide] == OPOS[tSide]) {
 				tDir = tMeta;
 				if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-					WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
+					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,    0, 3, T);
+					WD.set(aWorld, aX           , aY           , aZ           , this, tDir, 3, T);
 					return;
 				}
 				break;
@@ -85,8 +95,8 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// select random direction
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (tDir != tSide) {
 			if (aBlocks[tSide] != this && displaceIfPossible(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {
-				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], this,       0, 3, T);
-				WD.set(aWorld, aX            , aY            , aZ            , this, tSide+1, 3, T);
+				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], this,     0, 3, T);
+				WD.set(aWorld, aX            , aY            , aZ            , this, tSide, 3, T);
 				return;
 			}
 		}
@@ -94,8 +104,8 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Well, then go upwards instead!
 		tDir = SIDE_UP;
 		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,    0, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , this, tDir, 3, T);
 			return;
 		}
 	}
