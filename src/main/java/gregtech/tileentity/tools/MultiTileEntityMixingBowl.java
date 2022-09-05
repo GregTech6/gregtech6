@@ -271,7 +271,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 			}
-			if (!slotHas(6)) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) {
+			if (!slotHas(6)) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
 				playCollect();
 				slotKill(i);
 				return T;

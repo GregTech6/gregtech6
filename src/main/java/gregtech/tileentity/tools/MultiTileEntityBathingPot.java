@@ -250,7 +250,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 			}
-			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) {
+			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
 				playCollect();
 				slotKill(i);
 				return T;
