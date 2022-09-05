@@ -82,7 +82,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// try flowing straight
 		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
 			if (aMetas[tSide] == OPOS[tSide]) {
-				tDir = tMeta;
+				tDir = aMetas[tSide];
 				if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
 					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,    0, 3, T);
 					WD.set(aWorld, aX           , aY           , aZ           , this, tDir, 3, T);
