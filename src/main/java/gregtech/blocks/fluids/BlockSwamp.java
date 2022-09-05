@@ -43,7 +43,7 @@ public class BlockSwamp extends BlockWaterlike {
 	public static boolean PLACEMENT_ALLOWED = F, FLOWS_OUT = T;
 	
 	public BlockSwamp(String aName, Fluid aFluid) {
-		super(aName, aFluid, FLOWS_OUT);
+		super(aName, aFluid, FLOWS_OUT, T);
 		tickRate = 10;
 	}
 	

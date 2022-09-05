@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,11 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.block.MaterialGas;
 import gregapi.block.MaterialOil;
 import gregapi.block.fluid.BlockBaseFluid;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.PotionsGT;
-import gregapi.data.FL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.TC;
+import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -49,11 +39,14 @@ import gregtech.blocks.stone.BlockCrystalOres;
 import gregtech.blocks.stone.BlockRockOres;
 import gregtech.blocks.stone.BlockVanillaOresA;
 import gregtech.blocks.tool.*;
+import gregtech.experiments.BlockRiverAdvanced;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.potion.Potion;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Blocks implements Runnable {
 	@Override
@@ -137,9 +130,11 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesGrass     , 1, W), F, TC.stack(TC.MESSIS, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesCrop      , 1, W), F, TC.stack(TC.MESSIS, 4));
 		
-		BlocksGT.River                                                          = new BlockRiver                ("gt.block.river", FL.River_Water.fluid());
-		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", FL.Ocean      .fluid());
-		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", FL.Dirty_Water.fluid()).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
+		if (EXPERIMENTS)
+		BlocksGT.RiverAdvanced                                                  = new BlockRiverAdvanced        ("gt.block.river.adv", FL.Soda       .fluid());
+		BlocksGT.River                                                          = new BlockRiver                ("gt.block.river"    , FL.River_Water.fluid());
+		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean"    , FL.Ocean      .fluid());
+		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp"    , FL.Dirty_Water.fluid()).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.River          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.MOTUS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));

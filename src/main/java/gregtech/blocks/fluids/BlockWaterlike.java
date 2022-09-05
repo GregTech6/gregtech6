@@ -19,6 +19,8 @@
 
 package gregtech.blocks.fluids;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
@@ -60,7 +62,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	public final Fluid mFluid;
 	
-	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOut) {
+	public BlockWaterlike(String aName, Fluid aFluid, boolean aFlowsOut, boolean aHide) {
 		super(aFluid, Material.water);
 		mFluid = aFluid;
 		quantaPerBlock = (aFlowsOut ? 8 : 3);
@@ -72,7 +74,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());
 		setFluidStack(FL.make(aFluid, 1000));
-		ST.hide(this);
+		if (aHide) ST.hide(this);
 	}
 	
 	@Override
@@ -193,10 +195,12 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
 	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	@Override public int getRenderBlockPass() {return 1;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
+	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
+	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return 0x00ffffff;}
+	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00ffffff;}
 	
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
