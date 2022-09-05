@@ -48,20 +48,56 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 	
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		byte aDir = WD.meta(aWorld, aX, aY, aZ);
-		
-		Block[] aBlocks = new Block[6]; for (byte tSide : ALL_SIDES_VALID) aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);;
-		if (aDir >= aBlocks.length) aDir = SIDE_DOWN;
-		
-		if (aBlocks[aDir] == BlocksGT.Ocean || aBlocks[aDir] == BlocksGT.River || aBlocks[aDir] == BlocksGT.Swamp) return;
-		
-		if (aBlocks[aDir] != this && displaceIfPossible(aWorld, aX+OFFX[aDir], aY+OFFY[aDir], aZ+OFFZ[aDir])) {
-			WD.set(aWorld, aX+OFFX[aDir], aY+OFFY[aDir], aZ+OFFZ[aDir], this, aDir, 3, T);
+		if (WD.meta(aWorld, aX, aY, aZ) != SIDE_UNKNOWN) {
+			// TODO Validate existing Flow.
 			return;
 		}
 		
+		Block[] aBlocks = new Block[6];
+		for (byte tSide : ALL_SIDES_VALID) {
+			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
+			// If it touches any of these, it has reached its goal and will stop.
+			if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) return;
+		};
 		
+		// gravity goes down, usually
+		byte tDir = SIDE_DOWN;
+		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this, SIDE_UNKNOWN, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , this, tDir        , 3, T);
+			return;
+		}
 		
+		// try flowing straight
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
+			byte tMeta = WD.meta(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide]);
+			if (tMeta == OPOS[tSide]) {
+				tDir = tMeta;
+				if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
+					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this, SIDE_UNKNOWN, 3, T);
+					WD.set(aWorld, aX           , aY           , aZ           , this, tDir        , 3, T);
+					return;
+				}
+				break;
+			}
+		}
+		
+		// select random direction
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(4)]) if (tDir != tSide) {
+			if (aBlocks[tSide] != this && displaceIfPossible(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {
+				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], this, SIDE_UNKNOWN, 3, T);
+				WD.set(aWorld, aX            , aY            , aZ            , this, tSide       , 3, T);
+				return;
+			}
+		}
+		
+		// Well, then go upwards instead!
+		tDir = SIDE_UP;
+		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this, SIDE_UNKNOWN, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , this, tDir        , 3, T);
+			return;
+		}
 	}
 	
 	@Override
