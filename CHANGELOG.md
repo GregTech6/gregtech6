@@ -13,6 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Scythe on Hunger Overhaul modified Crops. Requires Default Config Pack or setting "enableRightClickHarvesting=false" in the Hunger Overhaul Config.
 [FIXED] Creepers crashing Servers.
 [FIXED] The Storage Drawers Mod was not working in Adventure Mode, unless you had an Axe or so in Hand while leftclicking the Drawers.
+[CHANGED] Bathing Pot and Mixing Bowl should now output Items more nicely.
 [CHANGED] Seed Oils and the likes have a Burn Value similar to Biomass now, making them actually worth processing in the first place.
 
 

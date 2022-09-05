@@ -189,7 +189,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 				if (tCoords[0] <= PX_P[2] && tCoords[1] <= PX_P[2]) return T;
 				if (!UT.Entities.isPlayer(aPlayer)) return T;
-
+				
 				ItemStack [] tInputItems  = ST.array(slot(0), slot(1), slot(2), slot(3), slot(4), slot(5));
 				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], NI, mTanksInput, tInputItems);
 				if (tRecipe != null) {
@@ -207,14 +207,15 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 					}
 				}
 			}
-
-			for (int i = 6; i < 12; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
+			
+			for (int i = 6; i < 12; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) {
+				playCollect();
 				slotKill(i);
 				return T;
 			}
 			ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack = ST.container(ST.amount(1, aStack), T);
 			FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
-
+			
 			if (aStack != null && tFluid != null && FL.fillAll_(this, SIDE_ANY, tFluid, T)) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
@@ -249,7 +250,8 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 			}
-			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
+			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) {
+				playCollect();
 				slotKill(i);
 				return T;
 			}
