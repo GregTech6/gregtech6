@@ -57,7 +57,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			// Check if this River Block has a Source.
-			if (aBlocks[tSide] == this && aMetas[tSide] == OPOS[tSide]) aInvalid = F;
+			if (aBlocks[tSide] == this && aMetas[tSide]-1 == OPOS[tSide]) aInvalid = F;
 			if (aBlocks[tSide] == Blocks.bedrock) aInvalid = F; // TODO: Remove this if this River Block ever gets used!
 		};
 		
@@ -76,18 +76,18 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// gravity goes down, usually
 		byte tDir = SIDE_DOWN;
 		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,    0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir, 3, T);
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,      0, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir+1, 3, T);
 			return;
 		}
 		
 		// try flowing straight
 		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
-			if (aMetas[tSide] == OPOS[tSide]) {
-				tDir = aMetas[tSide];
+			if (aMetas[tSide]-1 == OPOS[tSide]) {
+				tDir = (byte)(aMetas[tSide]-1);
 				if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,    0, 3, T);
-					WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir, 3, T);
+					WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,      0, 3, T);
+					WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir+1, 3, T);
 					return;
 				}
 				break;
@@ -97,8 +97,8 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// select random direction
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (tDir != tSide) {
 			if (aBlocks[tSide] != this && displaceIfPossible(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {
-				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide],             this,     0, 3, T);
-				WD.set(aWorld, aX            , aY            , aZ            , aInvalid?NB:this, tSide, 3, T);
+				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide],             this,       0, 3, T);
+				WD.set(aWorld, aX            , aY            , aZ            , aInvalid?NB:this, tSide+1, 3, T);
 				return;
 			}
 		}
@@ -106,8 +106,8 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Well, then go upwards instead!
 		tDir = SIDE_UP;
 		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,    0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir, 3, T);
+			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir],             this,      0, 3, T);
+			WD.set(aWorld, aX           , aY           , aZ           , aInvalid?NB:this, tDir+1, 3, T);
 			return;
 		}
 		

@@ -462,18 +462,18 @@ public class WD {
 			Block tBlock = aWorld.getBlock(aX, aY-1, aZ);
 			if (tBlock == Blocks.grass || tBlock == Blocks.mycelium) aWorld.setBlock(aX, aY-1, aZ, Blocks.dirt, 0, (byte)aFlags);
 		}
-		return aWorld.setBlock(aX, aY, aZ, aBlock, Code.bind4(aMeta), (byte)aFlags);
+		return aWorld.setBlock(aX, aY, aZ, aBlock, aBlock==NB?0:Code.bind4(aMeta), (byte)aFlags);
 	}
 	
 	public static boolean set(Chunk aChunk, int aX, int aY, int aZ, Block aBlock, long aMeta) {
-		return aChunk.func_150807_a(aX, aY, aZ, aBlock, Code.bind4(aMeta));
+		return aChunk.func_150807_a(aX, aY, aZ, aBlock, aBlock==NB?0:Code.bind4(aMeta));
 	}
 	public static boolean set(Chunk aChunk, int aX, int aY, int aZ, Block aBlock, long aMeta, boolean aRemoveGrassBelow) {
 		if (aRemoveGrassBelow) {
 			Block tBlock = aChunk.getBlock(aX, aY-1, aZ);
 			if (tBlock == Blocks.grass || tBlock == Blocks.mycelium) aChunk.func_150807_a(aX, aY-1, aZ, Blocks.dirt, 0);
 		}
-		return aChunk.func_150807_a(aX, aY, aZ, aBlock, Code.bind4(aMeta));
+		return aChunk.func_150807_a(aX, aY, aZ, aBlock, aBlock==NB?0:Code.bind4(aMeta));
 	}
 	
 	public static boolean sign(World aWorld, int aX, int aY, int aZ, byte aSide, long aFlags, String aLine1, String aLine2, String aLine3, String aLine4) {
