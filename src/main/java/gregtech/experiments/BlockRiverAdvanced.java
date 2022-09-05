@@ -49,8 +49,9 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 	
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		Block[] aBlocks = new Block[6];
-		byte[]  aMetas  = new byte[6];
+		// Scan surroundings.
+		Block[] aBlocks  = new Block[6];
+		byte [] aMetas   = new byte [6];
 		boolean aInvalid = T;
 		for (byte tSide : ALL_SIDES_VALID) {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
@@ -60,16 +61,14 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			if (aBlocks[tSide] == Blocks.bedrock) aInvalid = F; // TODO: Remove this if this River Block ever gets used!
 		};
 		
-		if (aInvalid) {
-			// No Source for this River Block, so remove it.
-			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
-			return;
-		}
+		// No Source for this River Block, so remove it.
+		if (aInvalid) {WD.set(aWorld, aX, aY, aZ, NB, 0, 3); return;}
+		
+		// Well this is already flowing somewhere, so nothing to change.
+		if (aBlocks[WD.meta(aWorld, aX, aY, aZ, T) % aBlocks.length] == this) return;
 		
 		// If it touches any of these, it has reached its goal and will stop.
-		for (byte tSide : ALL_SIDES_VALID) {
-			if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) return;
-		};
+		for (byte tSide : ALL_SIDES_VALID) if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) return;
 		
 		// gravity goes down, usually
 		byte tDir = SIDE_DOWN;
