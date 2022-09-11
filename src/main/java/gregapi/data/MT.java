@@ -2844,17 +2844,19 @@ public class MT {
 			RedMatter               .addEnchantmentForArmors(Enchantment.blastProtection, 5);
 			Infinity                .addEnchantmentForArmors(Enchantment.blastProtection,10);
 			
-			Yellorite                       .addOreByProducts(Pb                        , Cyanite                   , Yellorium             , Ra                    , RareEarth             );
-			Yellorium                       .addOreByProducts(Pb                        , Cyanite                   , Blutonium             , Am                    );
-			Blutonium                       .addOreByProducts(Pb                        , Yellorium                 , Am                    );
-			Ludicrite                       .addOreByProducts(Pb                        , Blutonium                 , Yellorium             );
 			
-			OREMATS.Pitchblende             .addOreByProducts(Pb                        , Th                        , U_238                 , Ra                    , RareEarth             );
-			OREMATS.Uraninite               .addOreByProducts(Pb                        , Th                        , U_238                 , Ra                    , RareEarth             );
-			U_238                           .addOreByProducts(Pb                        , Th                        , Pu                    , Am                    );
-			Am                              .addOreByProducts(Pb                        , U_238                     , Pu                    );
-			Pu                              .addOreByProducts(Pb                        , U_238                     , Am                    );
-			Th                              .addOreByProducts(Pb                        , U_238                     );
+			OREMATS.Pitchblende             .addOreByProducts(Pb                        , Ra                        , RareEarth             , Th                    );
+			OREMATS.Uraninite               .addOreByProducts(Pb                        , Ra                        , RareEarth             , Th                    );
+			Yellorite                       .addOreByProducts(Pb                        , Ra                        , RareEarth             , Th                    );
+			
+			Th                              .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Cyanite                         .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			U_238                           .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Yellorium                       .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Pu                              .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Blutonium                       .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Am                              .addOreByProducts(Pb                        , Ra                        , RareEarth             );
+			Ludicrite                       .addOreByProducts(Pb                        , Ra                        , RareEarth             );
 			
 			for (OreDictMaterial tMat : ANY.CaF2.mToThis) tMat.addOreByProducts(OREMATS.Huebnerite, Y, Ce, Fe2O3, Na, Ba);
 			

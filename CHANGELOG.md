@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] The Storage Drawers Mod was not working in Adventure Mode, unless you had an Axe or so in Hand while leftclicking the Drawers.
 [CHANGED] Bathing Pot and Mixing Bowl should now output Items more nicely.
 [CHANGED] Seed Oils and the likes have a Burn Value similar to Biomass now, making them actually worth processing in the first place.
+[CHANGED] Radioactive Ore Byproducts got mostly removed or replaced. You will need to use the Reactor to get most of that Stuff now.
 
 
 6.15.03:
