@@ -921,6 +921,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.biomass(ST.make(Blocks.pumpkin, 2, W));
 		RM.biomass(ST.make(Blocks.cactus, 8, W));
 		RM.biomass(ST.make(Blocks.vine, 8, W));
+		RM.biomass(ST.make(Items.egg, 16, W));
 		RM.biomass(ST.make(Items.reeds, 8, W));
 		RM.biomass(ST.make(Items.melon, 9, W));
 		RM.biomass(ST.make(Items.wheat, 9, W));

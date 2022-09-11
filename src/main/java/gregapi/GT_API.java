@@ -125,6 +125,8 @@ public class GT_API extends Abstract_Mod {
 		
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
+		// TODO codechicken.multipart.package$.MODULE$.logger() = new LoggerFML("");
+		
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
 		MT.init();
 		BI.BAROMETER.toString();
