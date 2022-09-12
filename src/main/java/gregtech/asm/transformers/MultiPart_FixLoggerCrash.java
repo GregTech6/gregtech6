@@ -44,7 +44,7 @@ public class MultiPart_FixLoggerCrash implements IClassTransformer  {
 			if (m.name.equals("logger")) {
 				GT_ASM.logger.info("Transforming codechicken.multipart.handler.MultipartProxy_serverImpl.logger");
 				m.instructions.clear();
-				m.instructions.add(new FieldInsnNode(Opcodes.GETSTATIC, "gregtech/asm/transformers/MultiPart_FixLoggerCrash", "FAKE_LOGGER", "Lorg.apache.logging.log4j.Logger;"));
+				m.instructions.add(new FieldInsnNode(Opcodes.GETSTATIC, "gregtech/asm/transformers/MultiPart_FixLoggerCrash", "FAKE_LOGGER", "Lorg/apache/logging/log4j/Logger;"));
 				m.instructions.add(new InsnNode(Opcodes.ARETURN));
 			}
 		}
