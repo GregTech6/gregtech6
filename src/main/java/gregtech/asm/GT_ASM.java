@@ -93,6 +93,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			// Shouldn't happen, but sanity, and Java can't enforce this unlike decent programming languages...
 			if (mclocation == null) throw new RuntimeException("Failed to acquire `location` in GT6 CoreMod");
 			
+			transformers.put(MultiPart_FixLoggerCrash.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(ExtraUtils_FixThaumcraftAspects.class.getName(), true);
