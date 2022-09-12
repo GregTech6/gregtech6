@@ -37,7 +37,7 @@ public class MicroBlock_FixLoggerCrash implements IClassTransformer  {
 	
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
-		if (!transformedName.equals("codechicken.microblock.handler.MicroblockProxy")) return basicClass;
+		if (!transformedName.equals("codechicken.microblock.handler.MicroblockProxy_serverImpl")) return basicClass;
 		ClassNode classNode = GT_ASM.makeNodes(basicClass);
 		
 		for (MethodNode m: classNode.methods) {
