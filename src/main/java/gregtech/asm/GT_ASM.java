@@ -94,6 +94,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			if (mclocation == null) throw new RuntimeException("Failed to acquire `location` in GT6 CoreMod");
 			
 			transformers.put(MultiPart_FixLoggerCrash.class.getName(), true);
+			transformers.put(MicroBlock_FixLoggerCrash.class.getName(), true);
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
 			transformers.put(CoFHLib_HashFix.class.getName(), true);
 			transformers.put(ExtraUtils_FixThaumcraftAspects.class.getName(), true);
