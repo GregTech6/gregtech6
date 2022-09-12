@@ -61,6 +61,7 @@ import gregapi.item.ItemIntegratedCircuit;
 import gregapi.lang.LanguageHandler;
 import gregapi.load.LoaderOreDictReRegistrations;
 import gregapi.log.LogBuffer;
+import gregapi.log.LoggerFML;
 import gregapi.log.LoggerPlayerActivity;
 import gregapi.network.NetworkHandler;
 import gregapi.network.packets.*;
@@ -126,7 +127,7 @@ public class GT_API extends Abstract_Mod {
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
 		// TODO MAKE THIS SHIT WORK
-		//try {UT.Reflection.setFieldContent(codechicken.multipart.package$.MODULE$, "logger", new LoggerFML(""), T, T);} catch (Throwable e) {e.printStackTrace(ERR);}
+		try {codechicken.multipart.handler.MultipartProxy$.MODULE$.logger_$eq(new LoggerFML(""));} catch (Throwable e) {e.printStackTrace(ERR);}
 		
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
 		MT.init();
