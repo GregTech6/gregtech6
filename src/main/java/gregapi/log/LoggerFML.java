@@ -29,8 +29,12 @@ public class LoggerFML implements Logger {
 	public String mName = "";
 	
 	public LoggerFML(Object aName) {
-		mName = aName.toString();
+		if (aName != null) {
+			aName = aName.toString();
+			if (aName != null) mName = (String)aName;
+		}
 	}
+	
 	@Override
 	public MessageFactory getMessageFactory() {
 		return null;
