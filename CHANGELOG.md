@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.15.05: (Not released yet, released whenever it needs to be)
 [CHANGED] Enriched Naquadah will no longer generate. Also some Recipes to get that Stuff are now also Reactor Only.
+[ADDED] Naquadah Breeder Rod which breeds into the new Enriched Naquadah Enriched Rod, allowing enrichment of Naquadah.
 
 
 6.15.04:
