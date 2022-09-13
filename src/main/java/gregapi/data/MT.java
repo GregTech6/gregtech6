@@ -3124,9 +3124,9 @@ public class MT {
 			LiCl                            .addOreByProducts(Li                        );
 			
 			
-			Nq_528                          .addOreByProducts(Nq                        , Nq_522                      , OREMATS.DuraniumHexafluoride);
-			Nq_522                          .addOreByProducts(Nq                        , Nq_528                      , OREMATS.TritaniumHexafluoride);
-			Nq                              .addOreByProducts(Nq_528                    , OREMATS.DuraniumHexachloride);
+			Nq_528                          .addOreByProducts(Nq                        , OREMATS.DuraniumHexafluoride);
+			Nq_522                          .addOreByProducts(Nq                        , OREMATS.TritaniumHexafluoride);
+			Nq                              .addOreByProducts(                            OREMATS.DuraniumHexachloride);
 			Ke                              .addOreByProducts(Sn                        , TiO2                        , Fe2O3, OREMATS.DuraniumHexaiodide);
 			Dn                              .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
 			DuraniumAlloy                   .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
@@ -3505,15 +3505,13 @@ public class MT {
 			OP.circuit.dat(Quantum)
 		};
 		
+		public static final OreDictMaterial[]
+		Dye_Materials           = {Black, Red, Green, Brown, Blue, Purple, Cyan, LightGray, Gray, Pink, Lime, Yellow, LightBlue, Magenta, Orange, White},
 		
-		
-		public static final OreDictMaterial
-		Dye_Materials[]             = {Black, Red, Green, Brown, Blue, Purple, Cyan, LightGray, Gray, Pink, Lime, Yellow, LightBlue, Magenta, Orange, White},
-		
-		Heat_T[]                    = {ANY.Stone, ANY.Steel      , Invar    , Ti            , TungstenCarbide, ANY.W   , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          },
-		Kinetic_T[]                 = {ANY.Wood , Bronze         , ANY.Steel, Ti            , TungstenSteel  , Ir      , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             },
-		Electric_T[]                = {TinAlloy , SteelGalvanized, Al       , StainlessSteel, Cr             , Ti      , Ir             , Os             , Trinitanium    , Trinaquadalloy , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     },
-		Flux_T[]                    = {Sn       , Pb             , Invar    , Electrum      , EnderiumBase   , Enderium, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide};
+		Heat_T                  = {ANY.Stone, ANY.Steel      , Invar    , Ti            , TungstenCarbide, ANY.W   , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          , ANY.W          },
+		Kinetic_T               = {ANY.Wood , Bronze         , ANY.Steel, Ti            , TungstenSteel  , Ir      , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             , Os             },
+		Electric_T              = {TinAlloy , SteelGalvanized, Al       , StainlessSteel, Cr             , Ti      , Ir             , Os             , Trinitanium    , Trinaquadalloy , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     , Neutronium     },
+		Flux_T                  = {Sn       , Pb             , Invar    , Electrum      , EnderiumBase   , Enderium, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide, TungstenCarbide};
 	}
 	
 	/** The Section where I place regular Ores that are only used in advanced processing anyways due to complexity. */

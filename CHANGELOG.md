@@ -1,18 +1,26 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.15.08: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.15.07: (Not released yet, released whenever it needs to be)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.15.06: (Not released yet, released whenever it needs to be)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.05: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Enriched Naquadah will no longer generate. Also some Recipes to get that Stuff are now also Reactor Only.
 
 
 6.15.04:
+[FIXED] Creepers crashing Servers.
 [FIXED] A Crash with ForgeMultiPart that somehow happens for some Modpacks and some Launchers for no good damn reason.
 [FIXED] Scythe on Hunger Overhaul modified Crops. Requires Default Config Pack or setting "enableRightClickHarvesting=false" in the Hunger Overhaul Config.
-[FIXED] Creepers crashing Servers.
 [FIXED] The Storage Drawers Mod was not working in Adventure Mode, unless you had an Axe or so in Hand while leftclicking the Drawers.
 [CHANGED] Bathing Pot and Mixing Bowl should now output Items more nicely.
 [CHANGED] Seed Oils and the likes have a Burn Value similar to Biomass now, making them actually worth processing in the first place.
