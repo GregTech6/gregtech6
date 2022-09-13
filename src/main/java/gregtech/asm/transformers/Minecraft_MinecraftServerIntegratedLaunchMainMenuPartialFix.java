@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,11 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.LineNumberNode;
-import org.objectweb.asm.tree.MethodNode;
-
 import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.*;
 
 /**
  * @author OvermindDL1
@@ -37,6 +31,9 @@ import net.minecraft.launchwrapper.IClassTransformer;
 public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix implements IClassTransformer {
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
+		
+		// TODO This Transformer is currently commented out in GT_ASM!
+		
 		if (!transformedName.equals("net.minecraft.server.MinecraftServer")) return basicClass;
 		ClassNode classNode = GT_ASM.makeNodes(basicClass);
 		
@@ -79,6 +76,8 @@ public class Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix impleme
 				 */
 			}
 		}
+		
+		// TODO FIX THIS, see https://github.com/GregTech6/gregtech6/issues/95#issuecomment-1245004015
 		
 		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES) {
 			// Have to override this method because of Forge's classloader stuff, this one grabs the wrong one..

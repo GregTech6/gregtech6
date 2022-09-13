@@ -102,7 +102,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			transformers.put(Minecraft_Feature_CreeperSwellToward.class.getName(), true);
 			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
-			transformers.put(Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix.class.getName(), true);
+	// TODO transformers.put(Minecraft_MinecraftServerIntegratedLaunchMainMenuPartialFix.class.getName(), true);
 			transformers.put(Minecraft_RemoveCartSpeedCap.class.getName(), true);
 			transformers.put(Minecraft_ZombieVillagerConversion.class.getName(), true);
 			transformers.put(Railcraft_RemoveBoreSpam.class.getName(), true);
