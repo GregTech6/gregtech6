@@ -9,7 +9,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.04: (Not released yet, released whenever it needs to be)
+6.15.04:
+[FIXED] A Crash with ForgeMultiPart that somehow happens for some Modpacks and some Launchers for no good damn reason.
 [FIXED] Scythe on Hunger Overhaul modified Crops. Requires Default Config Pack or setting "enableRightClickHarvesting=false" in the Hunger Overhaul Config.
 [FIXED] Creepers crashing Servers.
 [FIXED] The Storage Drawers Mod was not working in Adventure Mode, unless you had an Axe or so in Hand while leftclicking the Drawers.
