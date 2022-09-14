@@ -370,7 +370,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
 							for (int j = 0; j < tInput.length; j++) {
 								if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
-//                                DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+//                                  DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 									tList.remove(i--);
 									break;
 								}
@@ -379,7 +379,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
 							for (int j = 0; j < tInput.size(); j++) {
 								if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
-//                                DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+//                                  DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 									tList.remove(i--);
 									break;
 								}

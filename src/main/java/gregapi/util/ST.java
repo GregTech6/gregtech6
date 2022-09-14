@@ -1091,7 +1091,7 @@ public class ST {
 		aStack = OM.get_(aStack);
 		rNBT.setShort("id", id(aStack));
 		UT.NBT.setNumber(rNBT, "Count", aStack.stackSize);
-		rNBT.setShort("Damage", meta_(aStack));
+		UT.NBT.setNumber(rNBT, "Damage", meta_(aStack));
 		if (aStack.hasTagCompound()) rNBT.setTag("tag", aStack.getTagCompound());
 		OreDictItemData tData = OM.anyassociation_(aStack);
 		if (tData != null) rNBT.setString("od", tData.toString());
