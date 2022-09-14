@@ -1973,6 +1973,7 @@ public class MT {
 			NaNO3                   .setOreMultiplier( 3);
 			KNO3                    .setOreMultiplier( 3);
 			Apatite                 .setOreMultiplier( 4);
+			Bone                    .setOreMultiplier( 4);
 			Lapis                   .setOreMultiplier( 5);
 			Sodalite                .setOreMultiplier( 5);
 			Lazurite                .setOreMultiplier( 5);
