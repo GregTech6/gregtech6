@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -37,17 +33,21 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class GT_Tool_Sense extends ToolStats {
-	private ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
+	private final ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
 	
-	@Override
-	public float getBaseDamage() {
-		return 3.00F;
+	@Override public float getBaseDamage() {
+		return 3.5F;
 	}
-	
-	@Override
-	public float getMaxDurabilityMultiplier() {
+	@Override public float getMaxDurabilityMultiplier() {
 		return 4.0F;
+	}
+	@Override public boolean isWeapon() {
+		return T;
 	}
 	
 	@Override
