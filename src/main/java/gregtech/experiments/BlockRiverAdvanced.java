@@ -90,7 +90,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// try flowing the same direction as surrounding River Blocks
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this && aMetas[tSide] != 0) {
 			tDir = (byte)(aMetas[tSide]-1);
 			if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
 				WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
