@@ -109,12 +109,13 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// Well, then go upwards instead!
-		tDir = SIDE_UP;
-		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
-			return;
-		}
+// Or not, this is not a good Idea.
+//      tDir = SIDE_UP;
+//      if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
+//          WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
+//          WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
+//          return;
+//      }
 		
 		// Wait we can't go ANYWHERE??? Guess we are not a River anymore then!
 		WD.set(aWorld, aX, aY, aZ, Blocks.water, 0, 3, T);
