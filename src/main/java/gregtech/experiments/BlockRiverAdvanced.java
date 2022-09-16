@@ -89,15 +89,14 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			return;
 		}
 		
-		// try flowing straight
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) if (aMetas[tSide]-1 == OPOS[tSide]) {
+		// try flowing the same direction as surrounding River Blocks
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
 			tDir = (byte)(aMetas[tSide]-1);
 			if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
 				WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
 				WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
 				return;
 			}
-			break;
 		}
 		
 		// select random direction
@@ -116,6 +115,9 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
 			return;
 		}
+		
+		// Wait we can't go ANYWHERE??? Guess we are not a River anymore then!
+		WD.set(aWorld, aX, aY, aZ, Blocks.water, 0, 3, T);
 	}
 	
 	@Override
