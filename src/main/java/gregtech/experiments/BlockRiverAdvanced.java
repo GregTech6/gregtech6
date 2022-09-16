@@ -76,49 +76,32 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// No Source for this River Block, so remove it.
-		if (aInvalid) {
-			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
-			return;
-		}
+		if (aInvalid) {WD.set(aWorld, aX, aY, aZ, NB, 0, 3); return;}
+		
+		// Stop once you reach the bottom of the Map.
+		if (aY <= 0) return;
 		
 		// gravity goes down, usually
-		byte tDir = SIDE_DOWN;
-		if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-			WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-			WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
-			return;
-		}
+		byte tDir = SIDE_DOWN; if (aBlocks[tDir] != this && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
+		
+		// Try flowing into a direction that is most likely to lead downwards in the short term.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
 		
 		// try flowing the same direction as surrounding River Blocks
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this && aMetas[tSide] != 0) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this && aMetas[tSide] != 0 && aMetas[tSide] <= 6) {
 			tDir = (byte)(aMetas[tSide]-1);
-			if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-				WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-				WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
-				return;
-			}
+			if (aBlocks[tDir] != this && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
 		}
 		
 		// select random direction
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (tDir != tSide) {
-			if (aBlocks[tSide] != this && displaceIfPossible(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide])) {
-				WD.set(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], this,       0, 3, T);
-				WD.set(aWorld, aX            , aY            , aZ            , this, tSide+1, 3, T);
-				return;
-			}
-		}
-		
-		// Well, then go upwards instead!
-// Or not, this is not a good Idea.
-//      tDir = SIDE_UP;
-//      if (aBlocks[tDir] != this && displaceIfPossible(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir])) {
-//          WD.set(aWorld, aX+OFFX[tDir], aY+OFFY[tDir], aZ+OFFZ[tDir], this,      0, 3, T);
-//          WD.set(aWorld, aX           , aY           , aZ           , this, tDir+1, 3, T);
-//          return;
-//      }
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (tDir != tSide && aBlocks[tSide] != this && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Wait we can't go ANYWHERE??? Guess we are not a River anymore then!
 		WD.set(aWorld, aX, aY, aZ, Blocks.water, 0, 3, T);
+	}
+	
+	public boolean goThisWay(World aWorld, int aX, int aY, int aZ, byte aSide) {
+		return displaceIfPossible(aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]) && WD.set(aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide], this, 0, 3, T) && WD.set(aWorld, aX, aY, aZ, this, aSide+1, 3, T);
 	}
 	
 	@Override
