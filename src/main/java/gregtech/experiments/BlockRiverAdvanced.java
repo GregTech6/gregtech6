@@ -78,14 +78,15 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Gravity goes down, usually
 		if (aBlocks[SIDE_DOWN] != this && goThisWay(aWorld, aX, aY, aZ, SIDE_DOWN)) {
 			// Additionally, carve out Dirt, Gravel, Sand and the likes.
-			for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
-				Block tBlock = WD.block(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]);
-				if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
-					WD.set(aWorld, aX            , aY  , aZ            , NB, 0, 3, T);
-					WD.set(aWorld, aX            , aY-1, aZ            , NB, 0, 3, T);
-					WD.set(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide], NB, 0, 3, T);
-				}
-			}
+//          for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
+//              Block tBlock = WD.block(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]);
+//              if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
+//                  WD.set(aWorld, aX            , aY  , aZ            , NB, 0, 3, T);
+//                  WD.set(aWorld, aX            , aY-1, aZ            , NB, 0, 3, T);
+//                  WD.set(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide], NB, 0, 3, T);
+//                  return;
+//              }
+//          }
 			return;
 		}
 		
