@@ -40,7 +40,7 @@ import static gregapi.data.CS.*;
 public class BlockRiverAdvanced extends BlockWaterlike {
 	public BlockRiverAdvanced(String aName, Fluid aFluid) {
 		super(aName, aFluid, F, F);
-		tickRate = 20;
+		tickRate = 5;
 	}
 	
 	@Override
