@@ -20,6 +20,7 @@
 package gregtech.experiments;
 
 import gregapi.data.FL;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
@@ -52,6 +53,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Scan surroundings.
 		Block[] aBlocks  = new Block[6];
 		byte [] aMetas   = new byte [6];
+		byte    aMeta    = (byte)UT.Code.bind(0, 6, WD.meta(aWorld, aX, aY, aZ, T));
 		boolean aInvalid = T;
 		for (byte tSide : ALL_SIDES_VALID) {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
@@ -62,7 +64,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		};
 		
 		// Well this is already flowing somewhere, so nothing to change.
-		if (aBlocks[WD.meta(aWorld, aX, aY, aZ, T) % aBlocks.length] == this) {
+		if (aMeta != 0 && aBlocks[aMeta - 1] == this) {
 			if (aInvalid) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			return;
 		}
@@ -74,7 +76,10 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// No Source for this River Block, so remove it.
-		if (aInvalid) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
+		if (aInvalid) {
+			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
+			return;
+		}
 		
 		// gravity goes down, usually
 		byte tDir = SIDE_DOWN;
