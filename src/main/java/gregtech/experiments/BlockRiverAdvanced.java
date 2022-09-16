@@ -90,13 +90,13 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// Try flowing into a direction that is most likely to lead downwards in the short term.
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Well this is already flowing somewhere, so nothing to change.
 		if (aMeta != 0 && aBlocks[aMeta - 1] == this) return;
 		
 		// Try flowing into a direction that is likely to lead downwards.
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide]*2, aY-1, aZ+OFFZ[tSide]*2) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide]*2, aY-1, aZ+OFFZ[tSide]*2) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Try flowing the same direction as surrounding River Blocks
 		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this && aMetas[tSide] != 0 && aMetas[tSide] <= 6) {
@@ -105,7 +105,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// select random direction
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Wait we can't go ANYWHERE??? Guess we are not a River anymore then!
 		WD.set(aWorld, aX, aY, aZ, Blocks.water, 0, 3, T);
