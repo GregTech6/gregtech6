@@ -40,7 +40,7 @@ import static gregapi.data.CS.*;
 public class BlockRiverAdvanced extends BlockWaterlike {
 	public BlockRiverAdvanced(String aName, Fluid aFluid) {
 		super(aName, aFluid, F, F);
-		tickRate = 5;
+		tickRate = 2;
 	}
 	
 	@Override
@@ -63,12 +63,6 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			if (aBlocks[tSide] == Blocks.bedrock) aInvalid = F; // TODO: Remove this if this River Block ever gets used!
 		};
 		
-		// Well this is already flowing somewhere, so nothing to change.
-		if (aMeta != 0 && aBlocks[aMeta - 1] == this) {
-			if (aInvalid) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
-			return;
-		}
-		
 		// If it touches any of these, it has reached its goal and will stop.
 		for (byte tSide : ALL_SIDES_VALID) if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) {
 			if (aInvalid) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
@@ -81,20 +75,35 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Stop once you reach the bottom of the Map.
 		if (aY <= 0) return;
 		
-		// gravity goes down, usually
-		byte tDir = SIDE_DOWN; if (aBlocks[tDir] != this && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
+		// Gravity goes down, usually
+		if (aBlocks[SIDE_DOWN] != this && goThisWay(aWorld, aX, aY, aZ, SIDE_DOWN)) {
+			// Additionally, carve out Dirt, Gravel, Sand and the likes.
+			for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
+				Block tBlock = WD.block(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]);
+				if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
+					WD.set(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide], NB, 0, 3, T);
+				}
+			}
+			return;
+		}
 		
 		// Try flowing into a direction that is most likely to lead downwards in the short term.
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
-		// try flowing the same direction as surrounding River Blocks
+		// Well this is already flowing somewhere, so nothing to change.
+		if (aMeta != 0 && aBlocks[aMeta - 1] == this) return;
+		
+		// Try flowing into a direction that is likely to lead downwards.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide]*2, aY-1, aZ+OFFZ[tSide]*2) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
+		
+		// Try flowing the same direction as surrounding River Blocks
 		for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this && aMetas[tSide] != 0 && aMetas[tSide] <= 6) {
-			tDir = (byte)(aMetas[tSide]-1);
+			byte tDir = (byte)(aMetas[tSide]-1);
 			if (aBlocks[tDir] != this && goThisWay(aWorld, aX, aY, aZ, tDir)) return;
 		}
 		
 		// select random direction
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (tDir != tSide && aBlocks[tSide] != this && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) if (aBlocks[tSide] != this && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Wait we can't go ANYWHERE??? Guess we are not a River anymore then!
 		WD.set(aWorld, aX, aY, aZ, Blocks.water, 0, 3, T);
