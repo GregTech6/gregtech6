@@ -78,23 +78,23 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Gravity goes down, usually
 		if (aBlocks[SIDE_DOWN] != this && goThisWay(aWorld, aX, aY, aZ, SIDE_DOWN)) {
 			// Additionally, carve out Dirt, Gravel, Sand and the likes.
-//          for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
-//              Block tBlock = WD.block(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]);
-//              if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
-//                  WD.set(aWorld, aX            , aY  , aZ            , NB, 0, 3, T);
-//                  WD.set(aWorld, aX            , aY-1, aZ            , NB, 0, 3, T);
-//                  WD.set(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide], NB, 0, 3, T);
-//                  return;
-//              }
-//          }
+			for (byte tSide : ALL_SIDES_HORIZONTAL) if (aBlocks[tSide] == this) {
+				Block tBlock = WD.block(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]);
+				if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
+					WD.set(aWorld, aX            , aY  , aZ            , NB, 0, 3, T);
+					WD.set(aWorld, aX            , aY-1, aZ            , NB, 0, 3, T);
+					WD.set(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide], NB, 0, 3, T);
+					return;
+				}
+			}
 			return;
 		}
 		
-		// Try flowing into a direction that is most likely to lead downwards in the short term.
-		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
-		
 		// Well this is already flowing somewhere, so nothing to change.
 		if (aMeta != 0 && aBlocks[aMeta - 1] == this) return;
+		
+		// Try flowing into a direction that is most likely to lead downwards in the short term.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
 		
 		// Try flowing into a direction that is likely to lead downwards.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide]*2, aY-1, aZ+OFFZ[tSide]*2) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
