@@ -58,6 +58,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
@@ -141,6 +142,13 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@SuppressWarnings("unchecked")
 	public void onServerTickPost(boolean aFirst) {
 		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord), tHash = mContent.hashCode();
+		
+		if (SERVER_TIME % 600 == 10 && worldObj.isRaining() && getRainOffset(0, 1, 0)) {
+			BiomeGenBase tBiome = getBiome();
+			if (tBiome.rainfall > 0 && tBiome.temperature >= 0.2) {
+				addMaterialStacks(Arrays.asList(OM.stack(MT.Water, U1000 * (long)Math.max(1, tBiome.rainfall*100) * (worldObj.isThundering()?2:1))), tTemperature);
+			}
+		}
 		
 		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord+PX_P[2], yCoord+PX_P[2], zCoord+PX_P[2], PX_N[4], 1, PX_N[4]));
 		

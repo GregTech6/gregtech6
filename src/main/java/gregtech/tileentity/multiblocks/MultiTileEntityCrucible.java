@@ -58,6 +58,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 
@@ -189,6 +190,13 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			if (SERVER_TIME % 10 == 0) {if (mTemperature > tTemperature) mTemperature--; if (mTemperature < tTemperature) mTemperature++;}
 			mTemperature = Math.max(mTemperature, Math.min(200, tTemperature));
 			return;
+		}
+		
+		if (SERVER_TIME % 600 == 10 && worldObj.isRaining() && getRainOffset(0, 1, 0)) {
+			BiomeGenBase tBiome = getBiome();
+			if (tBiome.rainfall > 0 && tBiome.temperature >= 0.2) {
+				addMaterialStacks(Arrays.asList(OM.stack(MT.Water, U100 * (long)Math.max(1, tBiome.rainfall*100) * (worldObj.isThundering()?2:1))), tTemperature);
+			}
 		}
 		
 		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord-0.5, yCoord+PX_P[2], zCoord-0.5, 2, 3, 2));

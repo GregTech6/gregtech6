@@ -38,7 +38,6 @@ import gregapi.util.WD;
 import ic2.api.crops.ICropTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -114,7 +113,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			BiomeGenBase tBiome = getBiome();
 			if (tBiome.rainfall > 0 && tBiome.temperature >= 0.2) {
 				Block tInFront = getBlockAtSide(SIDE_TOP);
-				if (!(tInFront instanceof BlockLiquid) && !(tInFront instanceof IFluidBlock) && !tInFront.isSideSolid(worldObj, xCoord, yCoord+1, zCoord, FORGE_DIR_OPPOSITES[SIDE_TOP]) && !tInFront.isSideSolid(worldObj, xCoord, yCoord+1, zCoord, FORGE_DIR[SIDE_TOP])) {
+				if (!WD.liquid(tInFront) && !tInFront.isSideSolid(worldObj, xCoord, yCoord+1, zCoord, FORGE_DIR_OPPOSITES[SIDE_TOP]) && !tInFront.isSideSolid(worldObj, xCoord, yCoord+1, zCoord, FORGE_DIR[SIDE_TOP])) {
 					mTank.fill(FL.Water.make((long)Math.max(1, tBiome.rainfall*100) * (worldObj.isThundering()?2:1)), T);
 				}
 			}
