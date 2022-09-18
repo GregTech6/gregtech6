@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.15.05: (Not released yet, released whenever it needs to be)
 [CHANGED] Scythes now count as Weapons, just like Axes do. So you can make use of corresponding Material Enchants.
+[CHANGED] Most "Stone" Crucibles are now hidden from Creative and NEI in order to not confuse Players into thinking those are viable.
 [CHANGED] Enriched Naquadah will no longer generate. Also some Recipes to get that Stuff are now also Reactor Only.
 [ADDED] Naquadah Breeder Rod which breeds into the new Enriched Naquadah Enriched Rod, allowing enrichment of Naquadah.
 
