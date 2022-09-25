@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.05: (Not released yet, released whenever it needs to be)
+6.15.05:
 [CHANGED] Scythes now count as Weapons, just like Axes do. So you can make use of corresponding Material Enchants.
 [CHANGED] Most "Stone" Crucibles are now hidden from Creative and NEI in order to not confuse Players into thinking those are viable.
 [CHANGED] Crucibles will collect Rainwater now, which might result in dangerous Steam if you use them with the Water inside.

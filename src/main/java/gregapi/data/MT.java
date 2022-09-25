@@ -1954,6 +1954,8 @@ public class MT {
 			F                       .setOreMultiplier( 2).setCrushing(CaF2, U);
 			Ta                      .setOreMultiplier( 2).setCrushing(OREMATS.Tantalite, U);
 			Nb                      .setOreMultiplier( 2).setCrushing(OREMATS.Columbite, U);
+			Nq_528                  .setOreMultiplier( 2).setCrushing(Nq, U);
+			Nq_522                  .setOreMultiplier( 4).setCrushing(Nq, U);
 			Dilithium               .setOreMultiplier( 2).setCrushing(Dolamide, U);
 			Meteorite               .setOreMultiplier( 2);
 			MeteoricIron            .setOreMultiplier( 2);
@@ -3127,7 +3129,7 @@ public class MT {
 			
 			Nq_528                          .addOreByProducts(Nq                        , OREMATS.DuraniumHexafluoride);
 			Nq_522                          .addOreByProducts(Nq                        , OREMATS.TritaniumHexafluoride);
-			Nq                              .addOreByProducts(                            OREMATS.DuraniumHexachloride);
+			Nq                              .addOreByProducts(OREMATS.DuraniumHexachloride, OREMATS.TritaniumHexafluoride);
 			Ke                              .addOreByProducts(Sn                        , TiO2                        , Fe2O3, OREMATS.DuraniumHexaiodide);
 			Dn                              .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
 			DuraniumAlloy                   .addOreByProducts(OREMATS.TritaniumDioxide  , Ke                          );
