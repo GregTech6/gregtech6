@@ -50,16 +50,21 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		// Scan surroundings.
-		Block[] aBlocks  = new Block[6];
-		byte [] aMetas   = new byte [6];
+		Block[] aBlocks  = new Block[7];
+		byte [] aMetas   = new byte [7];
 		byte    aMeta    = WD.meta(aWorld, aX, aY, aZ, T), aSource = SIDE_UNKNOWN, aFlow = META_TO_SIDE_1[aMeta];
+		
+		// Gather necessary Data.
 		for (byte tSide : ALL_SIDES_VALID) {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			// Check if this River Block has a Source.
 			if (aBlocks[tSide] == this && aMetas[tSide]-1 == OPOS[tSide]) aSource = tSide;
 			if (aBlocks[tSide] == Blocks.bedrock) aSource = tSide; // TODO: Remove this if this River Block ever gets used!
-		};
+		}
+		// Make sure whatever this flows into is actually a River Block.
+		if (aBlocks[aFlow] != this) aFlow = SIDE_INVALID;
+		
 		
 		// If it touches any of these, it has reached its goal and will stop.
 		for (byte tSide : ALL_SIDES_VALID) if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) {
@@ -88,9 +93,17 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			return;
 		}
 		
-		// Try forming a diagonal River to speed up the process.
-		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow] && !ALONG_AXIS[aFlow][aSource] && aMetas[aFlow] == aMeta) {
-			if (goThisWay(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], aFlow)) {
+		// Only if the Flow is horizontal in this Area.
+		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow]) {
+			// Get rid of all U-Turns.
+			if (aSource == aMetas[aFlow]-1) {
+				WD.set(aWorld, aX              , aY, aZ              , NB  , 0, 3, T);
+				WD.set(aWorld, aX+OFFX[aFlow  ], aY, aZ+OFFZ[aFlow  ], NB  , 0, 3, T);
+				WD.set(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], this, aMeta, 3, T);
+				return;
+			}
+			// Try forming a diagonal River to speed up the process.
+			if (!ALONG_AXIS[aFlow][aSource] && aMetas[aFlow] == aMeta && goThisWay(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], aFlow)) {
 				WD.set(aWorld, aX, aY, aZ, NB, 0, 3, T);
 				WD.set(aWorld, aX+OFFX[aSource]+OFFX[aFlow], aY, aZ+OFFZ[aSource]+OFFZ[aFlow], this, aMetas[aSource], 3, T);
 				return;
@@ -98,7 +111,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		}
 		
 		// Well this is already flowing somewhere, so nothing to change.
-		if (aMeta != 0 && aBlocks[aFlow] == this) return;
+		if (SIDES_VALID[aFlow]) return;
 		
 		// Try flowing into a direction that is most likely to lead downwards in the short term.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
