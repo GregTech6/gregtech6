@@ -53,24 +53,23 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Scan surroundings.
 		Block[] aBlocks  = new Block[6];
 		byte [] aMetas   = new byte [6];
-		byte    aMeta    = (byte)UT.Code.bind(0, 6, WD.meta(aWorld, aX, aY, aZ, T));
-		boolean aInvalid = T;
+		byte    aMeta    = (byte)UT.Code.bind(0, 6, WD.meta(aWorld, aX, aY, aZ, T)), aSource = SIDE_UNKNOWN, aFlow = (byte)(aMeta-1);
 		for (byte tSide : ALL_SIDES_VALID) {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			// Check if this River Block has a Source.
-			if (aBlocks[tSide] == this && aMetas[tSide]-1 == OPOS[tSide]) aInvalid = F;
-			if (aBlocks[tSide] == Blocks.bedrock) aInvalid = F; // TODO: Remove this if this River Block ever gets used!
+			if (aBlocks[tSide] == this && aMetas[tSide]-1 == OPOS[tSide]) aSource = tSide;
+			if (aBlocks[tSide] == Blocks.bedrock) aSource = tSide; // TODO: Remove this if this River Block ever gets used!
 		};
 		
 		// If it touches any of these, it has reached its goal and will stop.
 		for (byte tSide : ALL_SIDES_VALID) if (aBlocks[tSide] == BlocksGT.Ocean || aBlocks[tSide] == BlocksGT.River || aBlocks[tSide] == BlocksGT.Swamp) {
-			if (aInvalid) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
+			if (SIDES_INVALID[aSource]) WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			return;
 		}
 		
 		// No Source for this River Block, so remove it.
-		if (aInvalid) {WD.set(aWorld, aX, aY, aZ, NB, 0, 3); return;}
+		if (SIDES_INVALID[aSource]) {WD.set(aWorld, aX, aY, aZ, NB, 0, 3); return;}
 		
 		// Stop once you reach the bottom of the Map.
 		if (aY <= 0) return;
@@ -90,8 +89,17 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 			return;
 		}
 		
+		// Try forming a diagonal River to speed up the process.
+		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow] && !ALONG_AXIS[aFlow][aSource] && aMetas[aFlow] == aMeta) {
+			if (goThisWay(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], aFlow)) {
+				WD.set(aWorld, aX, aY, aZ, NB, 0, 3, T);
+				WD.set(aWorld, aX+OFFX[aSource]+OFFX[aFlow], aY, aZ+OFFZ[aSource]+OFFZ[aFlow], this, aMetas[aSource], 3, T);
+				return;
+			}
+		}
+		
 		// Well this is already flowing somewhere, so nothing to change.
-		if (aMeta != 0 && aBlocks[aMeta - 1] == this) return;
+		if (aMeta != 0 && aBlocks[aFlow] == this) return;
 		
 		// Try flowing into a direction that is most likely to lead downwards in the short term.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[aY % ALL_SIDES_HORIZONTAL_ORDER.length]) if (aBlocks[tSide] != this && canDisplace(aWorld, aX+OFFX[tSide], aY-1, aZ+OFFZ[tSide]) && goThisWay(aWorld, aX, aY, aZ, tSide)) return;
