@@ -95,13 +95,13 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		
 		// Only if the Flow is horizontal in this Area.
 		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow]) {
-			// Get rid of all U-Turns.
-			if (aSource == aMetas[aFlow]-1) {
-				WD.set(aWorld, aX              , aY, aZ              , NB  , 0, 3, T);
-				WD.set(aWorld, aX+OFFX[aFlow  ], aY, aZ+OFFZ[aFlow  ], NB  , 0, 3, T);
-				WD.set(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], this, aMeta, 3, T);
-				return;
-			}
+		//  // Get rid of all U-Turns. // This one does not work properly.
+		//  if (aSource == aMetas[aFlow]-1) {
+		//      WD.set(aWorld, aX              , aY, aZ              , NB  , 0, 3, T);
+		//      WD.set(aWorld, aX+OFFX[aFlow  ], aY, aZ+OFFZ[aFlow  ], NB  , 0, 3, T);
+		//      WD.set(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], this, aMeta, 3, T);
+		//      return;
+		//  }
 			// Try forming a diagonal River to speed up the process.
 			if (!ALONG_AXIS[aFlow][aSource] && aMetas[aFlow] == aMeta && goThisWay(aWorld, aX+OFFX[aSource], aY, aZ+OFFZ[aSource], aFlow)) {
 				WD.set(aWorld, aX, aY, aZ, NB, 0, 3, T);
