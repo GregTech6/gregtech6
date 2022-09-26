@@ -20,7 +20,6 @@
 package gregtech.experiments;
 
 import gregapi.data.FL;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
@@ -53,7 +52,7 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Scan surroundings.
 		Block[] aBlocks  = new Block[6];
 		byte [] aMetas   = new byte [6];
-		byte    aMeta    = (byte)UT.Code.bind(0, 6, WD.meta(aWorld, aX, aY, aZ, T)), aSource = SIDE_UNKNOWN, aFlow = (byte)(aMeta-1);
+		byte    aMeta    = WD.meta(aWorld, aX, aY, aZ, T), aSource = SIDE_UNKNOWN, aFlow = META_TO_SIDE_1[aMeta];
 		for (byte tSide : ALL_SIDES_VALID) {
 			aMetas [tSide] = WD.meta (aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
 			aBlocks[tSide] = WD.block(aWorld, aX+OFFX[tSide], aY+OFFY[tSide], aZ+OFFZ[tSide], T);
