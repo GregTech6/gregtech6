@@ -112,26 +112,26 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 			}
 			
 			if (tTracker.mRadiation >= 100) {
-				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.wither.id, 1200, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 2, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 2, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 2, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 2, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.wither.id, 100, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 100, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 100, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 100, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 100, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 100, 2, F);
 			} else if (tTracker.mRadiation >= 75) {
 				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 1, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 1, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 1, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 1, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 100, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 100, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 100, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 100, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 100, 1, F);
 			} else if (tTracker.mRadiation >= 50) {
 				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 0, F);
-				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 100, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 100, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 100, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 100, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 100, 0, F);
 			} else if (tTracker.mRadiation >= 25) {
 				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
 			}

@@ -1559,7 +1559,7 @@ public class CS {
 		public static int[] get(ItemStack aStack) {return MAP.containsKey(aStack, F) ? MAP.get(aStack) : MAP.get(new ItemStackContainer(aStack, 1, W));}
 		/** Alcohol, Caffeine, Dehydration, Sugar, Fat, Radiation */
 		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation) {if (!MAP.containsKey(aStack, F)) MAP.put(aStack, new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aRadiation});}
-		/** Alcohol, Caffeine, Dehydration, Sugar, Fat, Radiation */ @Deprecated
+		/** Alcohol, Caffeine, Dehydration, Sugar, Fat, Radiation */
 		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {if (!MAP.containsKey(aStack, F)) MAP.put(aStack, new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0});}
 		public static void override(ItemStack aStack, int... aStats) {MAP.put(aStack, aStats);}
 	}

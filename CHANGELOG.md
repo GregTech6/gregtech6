@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.06: (Not released yet, released whenever it needs to be)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Radiation now works with the same System that Food uses to apply Potion Effects. This makes the Rad-away Pill much more effective.
 
 
 6.15.05:
