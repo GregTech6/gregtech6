@@ -23,6 +23,7 @@ import gregapi.data.FL;
 import gregapi.util.WD;
 import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -134,6 +135,35 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 	
 	public boolean goThisWay(World aWorld, int aX, int aY, int aZ, byte aSide) {
 		return displaceIfPossible(aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]) && WD.set(aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide], this, 0, 3, T) && WD.set(aWorld, aX, aY, aZ, this, aSide+1, 3, T);
+	}
+	
+	public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		Block aBlock = aWorld.getBlock(aX, aY, aZ);
+		if (aBlock == this) return F;
+		if (WD.water(aBlock)) return aWorld.getBlockMetadata(aX, aY, aZ) > 0;
+		if (aBlock.isAir(aWorld, aX, aY, aZ)) return T;
+		if (displacements.containsKey(aBlock)) return displacements.get(aBlock);
+		Material aMaterial = aBlock.getMaterial();
+		if (aMaterial.blocksMovement() || aMaterial.isLiquid() || aMaterial == Material.portal) return F;
+		return T;
+	}
+	
+	public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {
+		Block aBlock = aWorld.getBlock(aX, aY, aZ);
+		if (aBlock == this) return F;
+		if (WD.water(aBlock)) return aWorld.getBlockMetadata(aX, aY, aZ) > 0;
+		if (aBlock.isAir(aWorld, aX, aY, aZ)) return T;
+		if (displacements.containsKey(aBlock)) {
+			if (displacements.get(aBlock)) {
+				aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aWorld.getBlockMetadata(aX, aY, aZ), 0);
+				return T;
+			}
+			return F;
+		}
+		Material aMaterial = aBlock.getMaterial();
+		if (aMaterial.blocksMovement() || aMaterial.isLiquid() || aMaterial == Material.portal) return F;
+		aBlock.dropBlockAsItem(aWorld, aX, aY, aZ, aWorld.getBlockMetadata(aX, aY, aZ), 0);
+		return T;
 	}
 	
 	@Override
