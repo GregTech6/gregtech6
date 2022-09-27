@@ -153,10 +153,12 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			if (!worldObj.getBlock(xCoord, yCoord-1, zCoord).isSideSolid(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_TOP])) {
 				ST.drop(worldObj, getCoords(), getDefaultRock(1));
 				setToAir();
+				return;
 			}
 			for (byte tSide : ALL_SIDES_HORIZONTAL_UP) if (WD.liquid(getBlockAtSide(tSide))) {
 				ST.drop(worldObj, getCoords(), getDefaultRock(1));
 				setToAir();
+				return;
 			}
 		}
 	}
