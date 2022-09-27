@@ -78,23 +78,23 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 		// Stop once you reach the bottom of the Map.
 		if (aY <= 0) return;
 		
-		// Gravity goes down, usually
-		if (aBlocks[SIDE_DOWN] != this && goThisWay(aWorld, aX, aY, aZ, SIDE_DOWN)) {
-			// Additionally, carve out Dirt, Gravel, Sand and the likes.
-			if (SIDES_HORIZONTAL[aSource]) {
-				Block tBlock = WD.block(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource]);
-				if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
-					WD.set(aWorld, aX              , aY  , aZ              , NB  , 0, 3, T);
-					WD.set(aWorld, aX+OFFX[aSource], aY  , aZ+OFFZ[aSource], this, 1+SIDE_DOWN    , 3, T);
-					WD.set(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource], this, 1+OPOS[aSource], 3, T);
-					return;
-				}
+		// We are going down? Carve out Dirt, Gravel, Sand and the likes.
+		if (SIDES_BOTTOM[aFlow] && SIDES_HORIZONTAL[aSource]) {
+			Block tBlock = WD.block(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource]);
+			if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
+				WD.set(aWorld, aX              , aY  , aZ              , NB  , 0, 3, T);
+				if (aBlocks[aSource] == this)
+				WD.set(aWorld, aX+OFFX[aSource], aY  , aZ+OFFZ[aSource], this, 1+aFlow        , 3, T);
+				WD.set(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource], this, 1+OPOS[aSource], 3, T);
+				return;
 			}
-			return;
 		}
 		
+		// Gravity goes down, usually
+		if (aBlocks[SIDE_DOWN] != this && goThisWay(aWorld, aX, aY, aZ, SIDE_DOWN)) return;
+		
 		// Only if the Flow is horizontal in this Area.
-		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow]) {
+		if (SIDES_HORIZONTAL[aSource] && SIDES_HORIZONTAL[aFlow] && aBlocks[aSource] == this) {
 		//  // Get rid of all U-Turns. // This one does not work properly.
 		//  if (aSource == aMetas[aFlow]-1) {
 		//      WD.set(aWorld, aX              , aY, aZ              , NB  , 0, 3, T);
