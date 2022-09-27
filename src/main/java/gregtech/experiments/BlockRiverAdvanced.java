@@ -39,7 +39,7 @@ import static gregapi.data.CS.*;
 public class BlockRiverAdvanced extends BlockWaterlike {
 	public BlockRiverAdvanced(String aName, Fluid aFluid) {
 		super(aName, aFluid, F, F);
-		tickRate = 2;
+		tickRate = 1;
 	}
 	
 	@Override
@@ -85,9 +85,8 @@ public class BlockRiverAdvanced extends BlockWaterlike {
 				Block tBlock = WD.block(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource]);
 				if (tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == Blocks.sand || tBlock == Blocks.gravel || tBlock == Blocks.snow) {
 					WD.set(aWorld, aX              , aY  , aZ              , NB  , 0, 3, T);
-					WD.set(aWorld, aX              , aY-1, aZ              , NB  , 0, 3, T);
-					WD.set(aWorld, aX+OFFX[aSource], aY  , aZ+OFFZ[aSource], this, SIDE_DOWN+1, 3, T);
-					WD.set(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource], this, aMetas[aSource], 3, T);
+					WD.set(aWorld, aX+OFFX[aSource], aY  , aZ+OFFZ[aSource], this, 1+SIDE_DOWN    , 3, T);
+					WD.set(aWorld, aX+OFFX[aSource], aY-1, aZ+OFFZ[aSource], this, 1+OPOS[aSource], 3, T);
 					return;
 				}
 			}
