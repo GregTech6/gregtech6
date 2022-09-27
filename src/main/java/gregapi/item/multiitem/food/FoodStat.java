@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.multiitem.food;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.damage.DamageSources;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -36,8 +32,12 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class FoodStat implements IFoodStat {
-	private final int mFoodLevel, mAlcohol, mCaffeine, mDehydration, mSugar, mFat;
+	private final int mFoodLevel, mAlcohol, mCaffeine, mDehydration, mSugar, mFat, mRadiation;
 	private final int[] mPotionEffects;
 	private final float mSaturation, mHydration, mTemperature, mTemperatureEffect;
 	private final EnumAction mAction;
@@ -60,7 +60,7 @@ public class FoodStat implements IFoodStat {
 	 * Level of the Effect. [0, 1, 2] are for [I, II, III], negative to remove existing levels.
 	 * The likelihood that this Potion Effect takes place upon being eaten [1 - 100]
 	 */
-	public FoodStat(int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, ItemStack aEmptyContainer, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, boolean aAutoDetectEmpty, int... aPotionEffects) {
+	public FoodStat(int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation, EnumAction aAction, ItemStack aEmptyContainer, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, boolean aAutoDetectEmpty, int... aPotionEffects) {
 		mFoodLevel = aFoodLevel;
 		mSaturation = aSaturation;
 		mHydration = aHydration;
@@ -71,6 +71,7 @@ public class FoodStat implements IFoodStat {
 		mDehydration = aDehydration;
 		mSugar = aSugar;
 		mFat = aFat;
+		mRadiation = aRadiation;
 		mAction = aAction==null?EnumAction.eat:aAction;
 		mPotionEffects = aPotionEffects;
 		mEmptyContainer = ST.copy(aEmptyContainer);
@@ -80,8 +81,11 @@ public class FoodStat implements IFoodStat {
 		mIsRotten = aIsRotten;
 	}
 	
+	public FoodStat(int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, ItemStack aEmptyContainer, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, boolean aAutoDetectEmpty, int... aPotionEffects) {
+		this(aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0, aAction, aEmptyContainer, aAlwaysEdible, aInvisibleParticles, aIsRotten, aAutoDetectEmpty, aPotionEffects);
+	}
 	public FoodStat(int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, EnumAction aAction, ItemStack aEmptyContainer, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, boolean aAutoDetectEmpty, int... aPotionEffects) {
-		this(aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, 0, 0, 0, 0, 0, aAction, aEmptyContainer, aAlwaysEdible, aInvisibleParticles, aIsRotten, aAutoDetectEmpty, aPotionEffects);
+		this(aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, 0, 0, 0, 0, 0, 0, aAction, aEmptyContainer, aAlwaysEdible, aInvisibleParticles, aIsRotten, aAutoDetectEmpty, aPotionEffects);
 	}
 	
 	public FoodStat setExplosive() {
@@ -156,6 +160,7 @@ public class FoodStat implements IFoodStat {
 				if (mDehydration    != 0) tTracker.changeDehydration(mDehydration);
 				if (mSugar          != 0) tTracker.changeSugar(mSugar);
 				if (mFat            != 0) tTracker.changeFat(mFat);
+				if (mRadiation      != 0) tTracker.changeRadiation(mRadiation);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,17 @@
 
 package gregapi.player;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.damage.DamageSources;
-import gregapi.data.CS.PotionsGT;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -39,7 +37,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 public class EntityFoodTracker implements IExtendedEntityProperties {
 	public static ArrayListNoNulls<EntityFoodTracker> TICK_LIST = new ArrayListNoNulls<>();
 	
-	public byte mAlcohol = 0, mCaffeine = 0, mDehydration = 0, mSugar = 0, mFat = 0;
+	public byte mAlcohol = 0, mCaffeine = 0, mDehydration = 0, mSugar = 0, mFat = 0, mRadiation = 0;
 	public final EntityLivingBase mEntity;
 	
 	public EntityFoodTracker(EntityLivingBase aEntity) {
@@ -54,6 +52,7 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 		if (mSugar       != 0) tNBT.setByte("s", mSugar      );
 		if (mDehydration != 0) tNBT.setByte("d", mDehydration);
 		if (mFat         != 0) tNBT.setByte("f", mFat        );
+		if (mRadiation   != 0) tNBT.setByte("r", mRadiation  );
 		if (tNBT.hasNoTags()) aNBT.removeTag("gt.props.food"); else aNBT.setTag("gt.props.food", tNBT);
 	}
 	
@@ -66,32 +65,16 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 		mDehydration = tNBT.getByte("d");
 		mSugar       = tNBT.getByte("s");
 		mFat         = tNBT.getByte("f");
+		mRadiation   = tNBT.getByte("r");
 	}
 	
-	@Override
-	public void init(Entity aEntity, World aWorld) {
-		TICK_LIST.add(this);
-	}
-	
-	public void changeAlcohol(long aAmount) {
-		mAlcohol = UT.Code.bind7(mAlcohol + aAmount);
-	}
-	
-	public void changeCaffeine(long aAmount) {
-		mCaffeine = UT.Code.bind7(mCaffeine + aAmount);
-	}
-	
-	public void changeDehydration(long aAmount) {
-		mDehydration = UT.Code.bind7(mDehydration + aAmount);
-	}
-	
-	public void changeSugar(long aAmount) {
-		mSugar = UT.Code.bind7(mSugar + aAmount);
-	}
-	
-	public void changeFat(long aAmount) {
-		mFat = UT.Code.bind7(mFat + aAmount);
-	}
+	@Override public void init(Entity aEntity, World aWorld) {TICK_LIST.add(this);}
+	public void changeAlcohol    (long aAmount) {mAlcohol     = UT.Code.bind7(mAlcohol     + aAmount);}
+	public void changeCaffeine   (long aAmount) {mCaffeine    = UT.Code.bind7(mCaffeine    + aAmount);}
+	public void changeDehydration(long aAmount) {mDehydration = UT.Code.bind7(mDehydration + aAmount);}
+	public void changeSugar      (long aAmount) {mSugar       = UT.Code.bind7(mSugar       + aAmount);}
+	public void changeFat        (long aAmount) {mFat         = UT.Code.bind7(mFat         + aAmount);}
+	public void changeRadiation  (long aAmount) {mRadiation   = UT.Code.bind7(mRadiation   + aAmount);}
 	
 	public static void tick() {
 		if (SERVER_TIME % 50 == 0) for (int i = 0; i < TICK_LIST.size(); i++) {
@@ -101,78 +84,103 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 			if (tTracker.mAlcohol >= 100) {
 				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
 				tTracker.mEntity.attackEntityFrom(DamageSources.getAlcoholDamage(), FOOD_OVERDOSE_DEATH?2:1);
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 2));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 3));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 1200, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.damageBoost, 300, 3, F);
 			} else if (tTracker.mAlcohol >= 75) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 1));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 2));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 1200, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.damageBoost, 300, 2, F);
 			} else if (tTracker.mAlcohol >= 50) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 0));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 1));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 1200, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.damageBoost, 300, 1, F);
 			} else if (tTracker.mAlcohol >= 25) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 0));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.damageBoost, 300, 0, F);
 			}
 			
 			if (tTracker.mCaffeine >= 100) {
 				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
 				tTracker.mEntity.attackEntityFrom(DamageSources.getCaffeineDamage(), FOOD_OVERDOSE_DEATH?2:1);
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 2));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 3));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 1200, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSpeed, 300, 3, F);
 			} else if (tTracker.mCaffeine >= 75) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 1));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 2));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 1200, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSpeed, 300, 2, F);
 			} else if (tTracker.mCaffeine >= 50) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 0));
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 1));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 1200, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSpeed, 300, 1, F);
 			} else if (tTracker.mCaffeine >= 25) {
-				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 0));
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSpeed, 300, 0, F);
+			}
+			
+			if (tTracker.mRadiation >= 100) {
+				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.wither.id, 1200, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 2, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 2, F);
+			} else if (tTracker.mRadiation >= 75) {
+				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 1, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 1, F);
+			} else if (tTracker.mRadiation >= 50) {
+				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.confusion, 300, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.hunger, 300, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 300, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 300, 0, F);
+				UT.Entities.applyPotion(tTracker.mEntity, Potion.weakness, 300, 0, F);
+			} else if (tTracker.mRadiation >= 25) {
+				UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_RADIATION >= 0 ? PotionsGT.ID_RADIATION : Potion.poison.id, 1200, 0, F);
 			}
 			
 			if (NUTRITION_SYSTEM) {
 				if (tTracker.mFat >= 100) {
 					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
 					tTracker.mEntity.attackEntityFrom(DamageSources.getFatDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 3));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 1200, 2, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.resistance, 300, 3, F);
 				} else if (tTracker.mFat >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 2));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 1200, 1, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.resistance, 300, 2, F);
 				} else if (tTracker.mFat >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 1));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSlowdown, 1200, 0, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.resistance, 300, 1, F);
 				} else if (tTracker.mFat >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 0));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.resistance, 300, 0, F);
 				}
 				
 				if (tTracker.mSugar >= 100) {
 					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
 					tTracker.mEntity.attackEntityFrom(DamageSources.getSugarDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 3));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 3));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 1200, 2, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSpeed, 300, 3, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.jump, 300, 3, F);
 				} else if (tTracker.mSugar >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 2));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 1200, 1, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSpeed, 300, 2, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.jump, 300, 2, F);
 				} else if (tTracker.mSugar >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 1));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.digSlowdown, 1200, 0, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSpeed, 300, 1, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.jump, 300, 1, F);
 				} else if (tTracker.mSugar >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 0));
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.moveSpeed, 300, 0, F);
+					UT.Entities.applyPotion(tTracker.mEntity, Potion.jump, 300, 0, F);
 				}
 				
 				if (tTracker.mDehydration >= 100) {
 					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
 					tTracker.mEntity.attackEntityFrom(DamageSources.getDehydrationDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 3));
+					UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 3, F);
 				} else if (tTracker.mDehydration >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 2));
+					UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 2, F);
 				} else if (tTracker.mDehydration >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 1));
+					UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 1, F);
 				} else if (tTracker.mDehydration >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 0));
+					UT.Entities.applyPotion(tTracker.mEntity, PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 0, F);
 				}
 			}
 			
@@ -181,6 +189,7 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 			if (tTracker.mDehydration > 0) tTracker.mDehydration--;
 			if (tTracker.mSugar       > 0) tTracker.mSugar--;
 			if (tTracker.mFat         > 0) tTracker.mFat--;
+			if (tTracker.mRadiation   > 0) tTracker.mRadiation--;
 		}
 	}
 	

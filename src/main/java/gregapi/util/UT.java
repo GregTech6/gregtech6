@@ -38,6 +38,7 @@ import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
+import gregapi.player.EntityFoodTracker;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
@@ -3125,9 +3126,9 @@ public class UT {
 		}
 		
 		public static boolean applyChemDamage(Entity aEntity, float aDamage) {
-			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && aEntity.getClass() != EntitySkeleton.class && !isWearingFullChemHazmat(((EntityLivingBase)aEntity))) {
+			if (aDamage > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && aEntity.getClass() != EntitySkeleton.class && !isWearingFullChemHazmat(((EntityLivingBase)aEntity))) {
 				aEntity.attackEntityFrom(DamageSources.getChemDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
-				PotionEffect tEffect = null;
+				PotionEffect tEffect;
 				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.poison.id, Math.max(20, (int)(aDamage * 100 + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.poison))==null?0:tEffect.getDuration())))), 1));
 				return T;
 			}
@@ -3135,7 +3136,7 @@ public class UT {
 		}
 		
 		public static boolean applyHeatDamage(Entity aEntity, float aDamage) {
-			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && aEntity.getClass() != EntityBlaze.class && ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.fireResistance) == null && !isWearingFullHeatHazmat(((EntityLivingBase)aEntity))) {
+			if (aDamage > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && aEntity.getClass() != EntityBlaze.class && ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.fireResistance) == null && !isWearingFullHeatHazmat(((EntityLivingBase)aEntity))) {
 				aEntity.attackEntityFrom(DamageSources.getHeatDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
@@ -3143,7 +3144,7 @@ public class UT {
 		}
 		
 		public static boolean applyFrostDamage(Entity aEntity, float aDamage) {
-			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullFrostHazmat(((EntityLivingBase)aEntity))) {
+			if (aDamage > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && !isWearingFullFrostHazmat(((EntityLivingBase)aEntity))) {
 				aEntity.attackEntityFrom(DamageSources.getFrostDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
@@ -3152,7 +3153,7 @@ public class UT {
 		
 		public static boolean applyElectricityDamage(Entity aEntity, long aVoltage, long aAmperage) {
 			long aDamage = Code.tierMax(aVoltage) * aAmperage * 4;
-			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
+			if (aDamage > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
 				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
@@ -3161,7 +3162,7 @@ public class UT {
 		
 		public static boolean applyElectricityDamage(Entity aEntity, long aWattage) {
 			long aDamage = Code.tierMax(aWattage) * 4;
-			if (aDamage > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
+			if (aDamage > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && !isWearingFullElectroHazmat(((EntityLivingBase)aEntity))) {
 				aEntity.attackEntityFrom(DamageSources.getElectricDamage(), TFC_DAMAGE_MULTIPLIER * aDamage);
 				return T;
 			}
@@ -3169,8 +3170,13 @@ public class UT {
 		}
 		
 		public static boolean applyRadioactivity(Entity aEntity, int aLevel, int aAmountOfItems) {
-			if (aLevel > 0 && aEntity instanceof EntityLivingBase && ((EntityLivingBase)aEntity).isEntityAlive() && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD && !isWearingFullRadioHazmat(((EntityLivingBase)aEntity))) {
-				PotionEffect tEffect = null;
+			if (aLevel > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD && !isWearingFullRadioHazmat(((EntityLivingBase)aEntity))) {
+				EntityFoodTracker tTracker = EntityFoodTracker.get(aEntity);
+				if (tTracker != null) {
+					tTracker.changeRadiation(aLevel * aAmountOfItems);
+					return T;
+				}
+				PotionEffect tEffect;
 				applyPotion(aEntity, Potion.moveSlowdown    , aLevel * 140 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.moveSlowdown                         ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
 				applyPotion(aEntity, Potion.digSlowdown     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.digSlowdown                          ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
 				applyPotion(aEntity, Potion.confusion       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.confusion                            ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);

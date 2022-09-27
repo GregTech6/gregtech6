@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregapi.item.multiitem.food;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.DrinksGT;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.util.UT;
@@ -33,22 +28,35 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class FoodStatDrink extends FoodStat {
 	public final String mFluid;
 	
-	public FoodStatDrink(FluidStack aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
-		this(aFluid.getFluid(), aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
+	public FoodStatDrink(FluidStack aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		this(aFluid.getFluid(), aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aRadiation, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
 	}
-	public FoodStatDrink(Fluid aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
-		this(aFluid.getName(), aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
+	public FoodStatDrink(Fluid aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		this(aFluid.getName(), aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aRadiation, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
 	}
-	public FoodStatDrink(String aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
-		super(aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aAction, NI, aAlwaysEdible || DRINKS_ALWAYS_DRINKABLE || MD.ENVM.mLoaded, aInvisibleParticles, aIsRotten, T, aPotionEffects);
+	public FoodStatDrink(String aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		super(aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aRadiation, aAction, NI, aAlwaysEdible || DRINKS_ALWAYS_DRINKABLE || MD.ENVM.mLoaded, aInvisibleParticles, aIsRotten, T, aPotionEffects);
 		mFluid = aFluid;
 		if (UT.Code.stringValid(mFluid)) {
 			LH.add("gt.drink." + mFluid, aToolTip);
 			DrinksGT.REGISTER.put(mFluid, this);
 		}
+	}
+	public FoodStatDrink(FluidStack aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		this(aFluid, aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
+	}
+	public FoodStatDrink(Fluid aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		this(aFluid, aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
+	}
+	public FoodStatDrink(String aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {
+		this(aFluid, aToolTip, aFoodLevel, aSaturation, aHydration, aTemperature, aTemperatureEffect, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0, aAction, aAlwaysEdible, aInvisibleParticles, aIsRotten, aPotionEffects);
 	}
 	
 	public FoodStatDrink(FluidStack aFluid, String aToolTip, int aFoodLevel, float aSaturation, float aHydration, float aTemperature, float aTemperatureEffect, EnumAction aAction, boolean aAlwaysEdible, boolean aInvisibleParticles, boolean aIsRotten, int... aPotionEffects) {

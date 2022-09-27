@@ -847,6 +847,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (tStats.length > 2 && tStats[2] != 0) tTracker.changeDehydration(tStats[2]);
 				if (tStats.length > 3 && tStats[3] != 0) tTracker.changeSugar      (tStats[3]);
 				if (tStats.length > 4 && tStats[4] != 0) tTracker.changeFat        (tStats[4]);
+				if (tStats.length > 5 && tStats[5] != 0) tTracker.changeRadiation  (tStats[5]);
 			}
 		}
 		

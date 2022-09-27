@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,7 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.FoodsGT;
-import gregapi.data.CS.Sandwiches;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -45,6 +32,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 public class Loader_Recipes_Crops implements Runnable {
 	@Override public void run() {
@@ -800,11 +790,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		
 		addListener("cropBanana", "cropRedBanana", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.crop_fruit(aEvent.mStack, FL.Juice_Banana, 100, 8000, "Canned Bananas", 0, 0, 0, 8, 0);
+			RM.crop_fruit(aEvent.mStack, FL.Juice_Banana, 100, 8000, "Canned Bananas", 0, 0, 0, 8, 0, 4);
 			RM.Slicer.addRecipe2(T, 16, 16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), IL.Food_Banana_Sliced.get(4));
 		}});
 		addListener("cropPlantain", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.crop_fruit(aEvent.mStack, FL.Juice_Banana, 100, 8000, "Canned Plantains", 0, 0, 0, 8, 0);
+			RM.crop_fruit(aEvent.mStack, FL.Juice_Banana, 100, 8000, "Canned Plantains", 0, 0, 0, 8, 0, 4);
 		}});
 		
 		
