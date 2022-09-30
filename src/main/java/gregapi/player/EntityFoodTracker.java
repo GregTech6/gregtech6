@@ -189,7 +189,7 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 			if (tTracker.mDehydration > 0) tTracker.mDehydration--;
 			if (tTracker.mSugar       > 0) tTracker.mSugar--;
 			if (tTracker.mFat         > 0) tTracker.mFat--;
-			if (tTracker.mRadiation   > 0) tTracker.mRadiation--;
+			//if (tTracker.mRadiation > 0) tTracker.mRadiation--; // The only one that does not decrease, so you will have to deal with it until you either die or get a Radaway,
 		}
 	}
 	
