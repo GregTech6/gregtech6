@@ -84,10 +84,11 @@ public class EnergyCompat {
 	public static boolean isElectricRFReceiver(TileEntity aReceiver) {
 		if (aReceiver == null) return F;
 		String tClass = null;
-		if (MD.OMT.mLoaded) {                    tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
-		if (MD.TG .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("techguns"                       )) return T;}
-		if (MD.IE .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("blusunrize.immersiveengineering")) return T;}
-		if (MD.OC .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("li.cil.oc"                      )) return T;}
+		if (MD.OMT .mLoaded) {                    tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
+		if (MD.IE  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("blusunrize.immersiveengineering")) return T;}
+		if (MD.WARP.mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("cr0s.warpdrive"                 )) return T;}
+		if (MD.OC  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("li.cil.oc"                      )) return T;}
+		if (MD.TG  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("techguns"                       )) return T;}
 		return F;
 	}
 	

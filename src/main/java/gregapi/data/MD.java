@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,11 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ModData;
 import gregapi.data.CS.ModIDs;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
@@ -270,6 +271,7 @@ public class MD {
 	, OMT               = new ModData(ModIDs.OMT                , "Open Modular Turrets")
 	, TG                = new ModData(ModIDs.TG                 , "Tech Guns")
 	
+	, WARP              = new ModData(ModIDs.WARP               , "Warp Drive")
 	, FM                = new ModData(ModIDs.FM                 , "Falling Meteors")
 	, GC                = new ModData(ModIDs.GC                 , "Galacticraft")
 	, GC_PLANETS        = new ModData(ModIDs.GC_PLANETS         , "Galacticraft Planets")

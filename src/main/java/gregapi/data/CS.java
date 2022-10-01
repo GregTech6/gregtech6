@@ -2132,6 +2132,7 @@ public class CS {
 		, OMT               = "openmodularturrets"
 		, TG                = "Techguns"
 		
+		, WARP              = "WarpDriveCore"
 		, FM                = "meteors"
 		, GC                = "GalacticraftCore"
 		, GC_PLANETS        = "GalacticraftMars"
