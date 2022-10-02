@@ -97,34 +97,34 @@ public class OP {
 	oreMud                      = create("oreMud"                       , "Mud Ores"                        , "Mud "                            , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, DUST_ORE    ).aspects(TC.TERRA      , 1).setTextureSetName("oreDust"),
 	
 	
-	orePhobos                  	= create("orePhobos"               		, "Phobos Ores"              	  	, "Phobos "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreDeimos                  	= create("oreDeimos"               		, "Deimos Ores"              	  	, "Deimos "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreVenus                  	= create("oreVenus"               		, "Venus Ores"              	  	, "Venus "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreMercury                  = create("oreMercury"               	, "Mercury Ores"              	  	, "Mercury "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreCeres                  	= create("oreCeres"               		, "Ceres Ores"              	  	, "Ceres "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreJupiter                  = create("oreJupiter"               	, "Jupiter Ores"              	  	, "Jupiter "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreIo                  	    = create("oreIo"               			, "Io Ores"              	  		, "Io "                        		, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),		
-	oreEuropa                  	= create("oreEuropa"               		, "Europa Ores"              	  	, "Europa "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreGanymede                 = create("oreGanymede"               	, "Ganymede Ores"              	  	, "Ganymede "                       , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreCallisto                 = create("oreCallisto"               	, "Callisto Ores"              	  	, "Callisto "                       , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	orePhobos                   = create("orePhobos"                    , "Phobos Ores"                     , "Phobos "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreDeimos                   = create("oreDeimos"                    , "Deimos Ores"                     , "Deimos "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreVenus                    = create("oreVenus"                     , "Venus Ores"                      , "Venus "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreMercury                  = create("oreMercury"                   , "Mercury Ores"                    , "Mercury "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreCeres                    = create("oreCeres"                     , "Ceres Ores"                      , "Ceres "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreJupiter                  = create("oreJupiter"                   , "Jupiter Ores"                    , "Jupiter "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreIo                       = create("oreIo"                        , "Io Ores"                         , "Io "                             , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),       
+	oreEuropa                   = create("oreEuropa"                    , "Europa Ores"                     , "Europa "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreGanymede                 = create("oreGanymede"                  , "Ganymede Ores"                   , "Ganymede "                       , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreCallisto                 = create("oreCallisto"                  , "Callisto Ores"                   , "Callisto "                       , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
 			
-	oreSaturn                  	= create("oreSaturn"               		, "Saturn Ores"              	  	, "Saturn "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),		
-	oreRhea                  	= create("oreRhea"               		, "Rhea Ores"              	  		, "Rhea "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreTitan                  	= create("oreTitan"               		, "Titan Ores"              	  	, "Titan "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreOberon                  	= create("oreOberon"               		, "Oberon Ores"              	  	, "Oberon "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreSaturn                   = create("oreSaturn"                    , "Saturn Ores"                     , "Saturn "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),       
+	oreRhea                     = create("oreRhea"                      , "Rhea Ores"                       , "Rhea "                           , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreTitan                    = create("oreTitan"                     , "Titan Ores"                      , "Titan "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreOberon                   = create("oreOberon"                    , "Oberon Ores"                     , "Oberon "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
 							
-	oreIapetus                  = create("oreIapetus"               	, "Iapetus Ores"              	  	, "Iapetus "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreUranus                  	= create("oreUranus"               		, "Uranus Ores"              	  	, "Uranus "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreTitania                  = create("oreTitania"               	, "Titania Ores"              	  	, "Titania "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreIapetus                  = create("oreIapetus"                   , "Iapetus Ores"                    , "Iapetus "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreUranus                   = create("oreUranus"                    , "Uranus Ores"                     , "Uranus "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreTitania                  = create("oreTitania"                   , "Titania Ores"                    , "Titania "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
 			
-	oreNeptune                  = create("oreNeptune"               	, "Neptune Ores"              	  	, "Neptune "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
-	oreTriton                  	= create("oreTriton"               		, "Triton Ores"              	  	, "Triton "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),				
+	oreNeptune                  = create("oreNeptune"                   , "Neptune Ores"                    , "Neptune "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreTriton                   = create("oreTriton"                    , "Triton Ores"                     , "Triton "                         , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),               
 			
-	orePluto                  	= create("orePluto"               		, "Pluto Ores"              	  	, "Pluto "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),						
+	orePluto                    = create("orePluto"                     , "Pluto Ores"                      , "Pluto "                          , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),                       
 			
-	oreEris                  	= create("oreEris"               		, "Eris Ores"              	  		, "Eris "                        	, " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),								
+	oreEris                     = create("oreEris"                      , "Eris Ores"                       , "Eris "                           , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),                               
 			
-	oreKepler22b                = create("oreKepler22b"               	, "Kepler22b Ores"              	, "Kepler22b "                      , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
+	oreKepler22b                = create("oreKepler22b"                 , "Kepler22b Ores"                  , "Kepler22b "                      , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS, STANDARD_ORE).aspects(TC.ALIENIS    , 1).setTextureSetName("ore"),
 							
 	
 	oreBedrock                  = create("oreBedrock"                   , "Bedrock Ores"                    , "Bedrock "                        , " Ore").setCondition(ORES).add(UNIFICATABLE, ORE, MATERIAL_BASED, BLOCK_BASED, TOOLTIP_ENCHANTS              ).aspects(TC.TERRA      ,10).setTextureSetName("oreBedrock"),
@@ -671,22 +671,22 @@ public class OP {
 		oreVenus                .mByProducts.add(OM.stack(MT.STONES.VenusRock   , dust.mAmount * 4));
 		oreCeres                .mByProducts.add(OM.stack(MT.STONES.CeresRock   , dust.mAmount * 4));
 		oreJupiter              .mByProducts.add(OM.stack(MT.STONES.JupiterRock , dust.mAmount * 4));
-		oreIo               	.mByProducts.add(OM.stack(MT.STONES.IoRock  	, dust.mAmount * 4));
+		oreIo                   .mByProducts.add(OM.stack(MT.STONES.IoRock      , dust.mAmount * 4));
 		oreGanymede             .mByProducts.add(OM.stack(MT.STONES.GanymedeRock, dust.mAmount * 4));
 		oreCallisto             .mByProducts.add(OM.stack(MT.STONES.CallistoRock, dust.mAmount * 4));
 		oreSaturn               .mByProducts.add(OM.stack(MT.STONES.SaturnRock  , dust.mAmount * 4));
-		oreRhea               	.mByProducts.add(OM.stack(MT.STONES.RheaRock  	, dust.mAmount * 4));
-		oreTitan               	.mByProducts.add(OM.stack(MT.STONES.TitanRock  	, dust.mAmount * 4));
+		oreRhea                 .mByProducts.add(OM.stack(MT.STONES.RheaRock    , dust.mAmount * 4));
+		oreTitan                .mByProducts.add(OM.stack(MT.STONES.TitanRock   , dust.mAmount * 4));
 		oreOberon               .mByProducts.add(OM.stack(MT.STONES.OberonRock  , dust.mAmount * 4));
 		oreIapetus              .mByProducts.add(OM.stack(MT.STONES.IapetusRock , dust.mAmount * 4));
 		oreUranus               .mByProducts.add(OM.stack(MT.STONES.UranusRock  , dust.mAmount * 4));
 		oreTitania              .mByProducts.add(OM.stack(MT.STONES.TitaniaRock , dust.mAmount * 4));
 		oreNeptune              .mByProducts.add(OM.stack(MT.STONES.NeptuneRock , dust.mAmount * 4));
 		oreTriton               .mByProducts.add(OM.stack(MT.STONES.TritonRock  , dust.mAmount * 4));
-		orePluto               	.mByProducts.add(OM.stack(MT.STONES.PlutoRock  	, dust.mAmount * 4));
-		oreEris               	.mByProducts.add(OM.stack(MT.STONES.ErisRock  	, dust.mAmount * 4));
+		orePluto                .mByProducts.add(OM.stack(MT.STONES.PlutoRock   , dust.mAmount * 4));
+		oreEris                 .mByProducts.add(OM.stack(MT.STONES.ErisRock    , dust.mAmount * 4));
 		oreKepler22b            .mByProducts.add(OM.stack(MT.STONES.Kepler22bRock , dust.mAmount * 4));
-		oreSpace                .mByProducts.add(OM.stack(MT.STONES.SpaceRock	, dust.mAmount*4));
+		oreSpace                .mByProducts.add(OM.stack(MT.STONES.SpaceRock   , dust.mAmount*4));
 		
 		oreHolystone            .mByProducts.add(OM.stack(MT.STONES.Holystone   , dust.mAmount * 4));
 		oreLivingrock           .mByProducts.add(OM.stack(MT.STONES.Livingrock  , dust.mAmount * 4));
