@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.06: (Not released yet, released whenever it needs to be)
+[COMPAT] Extra Planets now has some Material Data associated with it.
 [CHANGED] Radiation now works with the same System that Food uses to apply Potion Effects. This makes the Rad-away Pill much more effective, and by extension also the Cure-All Pill. Please be aware that Radiation will not decrease over time, like the Food related Stats do.
 
 

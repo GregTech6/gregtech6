@@ -408,6 +408,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.GlowstoneProteus       , MD.GC_GALAXYSPACE, "item.GlowstoneDusts", 3);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.GlowstonePluto         , MD.GC_GALAXYSPACE, "item.GlowstoneDusts", 4);
 		}
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Pb                     , MD.GC_EXTRAPLANETS, "item.ingotLead", 0);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.U_238                  , MD.GC_EXTRAPLANETS, "ingotUranium", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Hg                     , MD.GC_EXTRAPLANETS, "ingotMercury", 0);
 		OreDictManager.INSTANCE.setTarget(OP.compressed     , MT.Hg                     , MD.GC_EXTRAPLANETS, "compressedMercury", 0);
 		OreDictManager.INSTANCE.setTarget(OP.compressed     , MT.C                      , MD.GC_EXTRAPLANETS, "tier4Items", 4);
@@ -424,6 +426,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.W                      , MD.GC_EXTRAPLANETS, "tier9Items", 5);
 		OreDictManager.INSTANCE.setTarget(OP.compressed     , MT.DarkIron               , MD.GC_EXTRAPLANETS, "tier10Items", 4);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DarkIron               , MD.GC_EXTRAPLANETS, "tier10Items", 5);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondBlue            , MD.GC_EXTRAPLANETS, "tier11Items", 0);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondRed             , MD.GC_EXTRAPLANETS, "tier11Items", 1);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondPurple          , MD.GC_EXTRAPLANETS, "tier11Items", 2);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondYellow          , MD.GC_EXTRAPLANETS, "tier11Items", 3);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondGreen           , MD.GC_EXTRAPLANETS, "tier11Items", 4);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Pt                     , MD.GC_EXTRAPLANETS, "tier11Items", 11);
 		OreDictManager.INSTANCE.setTarget(OP.compressed     , MT.Pt                     , MD.GC_EXTRAPLANETS, "tier11Items", 12);
 		OreDictManager.INSTANCE.setTarget(OP.gearGt         , MT.TitaniumAluminide      , MD.GC_ADV_ROCKETRY, "advancedRocketryproductgear", 0);
