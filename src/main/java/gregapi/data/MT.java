@@ -2498,6 +2498,29 @@ public class MT {
 			STONES.SpaceRock        .put(MD.GC).visDefault();
 			Ultimate                .put(MD.GC);
 			
+			STONES.PhobosRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.DeimosRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.MercuryRock      .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.VenusRock        .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.CeresRock        .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.JupiterRock      .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.IoRock       	.put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.EuropaRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.GanymedeRock     .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.CallistoRock     .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.SaturnRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.RheaRock         .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.TitanRock        .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.OberonRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.IapetusRock      .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.UranusRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.TitaniaRock      .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.NeptuneRock      .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.TritonRock       .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.PlutoRock        .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.ErisRock         .put(MD.GC_EXTRAPLANETS).visDefault();
+			STONES.Kepler22bRock    .put(MD.GC_EXTRAPLANETS).visDefault();
+			
 			
 			Duralumin               .put(MD.GC_GALAXYSPACE, COMMON_ORE);
 			Oriharukon              .put(MD.GC_GALAXYSPACE, COMMON_ORE).visDefault();
@@ -3660,7 +3683,45 @@ public class MT {
 		Dacite       = stone    ( 9187, "Dacite"                  , 131, 131, 131, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
 		Slate        = stone    ( 9222, "Slate"                   , 148, 151, 156, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 0),
 		Deepslate    = stone    ( 9248, "Deepslate"               ,  57,  59,  61, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 32, 1),
-		Eclogite     = stone    ( 9191, "Eclogite"                ,  90,  40,  40, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1);
+		Eclogite     = stone    ( 9191, "Eclogite"                ,  90,  40,  40, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
+	
+		PhobosRock   = stone    ( 9517, "Phobos Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Phobos"),		
+		DeimosRock   = stone    ( 9518, "Deimos Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Deimos"),		
+		VenusRock  	 = stone    ( 9519, "Venus Stone"             , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Venus"),
+		MercuryRock  = stone    ( 9521, "Mercury Stone"           , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Mercury"),
+		CeresRock  	 = stone    ( 9522, "Ceres Stone"             , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Ceres"),
+		JupiterRock  = stone    ( 9523, "Jupiter Stone"           , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Jupiter"),
+		IoRock       = stone    ( 9524, "Io Stone"                , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Io"),		
+		EuropaRock   = stone    ( 9525, "Europa Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Europa"),		
+		GanymedeRock = stone    ( 9526, "Ganymede Stone"          , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Ganymede"),		
+		CallistoRock = stone    ( 9527, "Callisto Stone"          , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Callisto"),		
+																		
+				
+		SaturnRock   = stone    ( 9528, "Saturn Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Saturn"),
+		RheaRock     = stone    ( 9529, "Rhea Stone"              , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Rhea"),		
+		TitanRock    = stone    ( 9530, "Titan Stone"             , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Titan"),		
+				
+		OberonRock   = stone    ( 9531, "Oberon Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Oberon"),		
+
+				
+		IapetusRock  = stone    ( 9532, "Iapetus Stone"           , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Iapetus"),		
+		UranusRock   = stone    ( 9533, "Uranus Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Uranus"),				
+		TitaniaRock  = stone    ( 9534, "Titania Stone"           , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Titania"),		
+
+				
+		NeptuneRock  = stone    ( 9535, "Neptune Stone"           , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Neptune"),				
+		TritonRock   = stone    ( 9536, "Triton Stone"            , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Triton"),		
+
+				
+		PlutoRock    = stone    ( 9537, "Pluto Stone"             , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Pluto"),		
+
+				
+		ErisRock     = stone    ( 9538, "Eris Stone"              , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Eris"),		
+
+				
+		Kepler22bRock= stone    ( 9539, "Kepler22b Stone"         , 189, 189, 189, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Kepler22b");
+
+								
 	}
 	
 	/** Taking over Wood Materials from QwerTech, with major changes because damn that shit was broken. */
