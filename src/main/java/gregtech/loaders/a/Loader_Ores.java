@@ -19,8 +19,6 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.behaviors.Drops;
 import gregapi.block.behaviors.Drops_None;
 import gregapi.block.behaviors.Drops_SmallOre;
@@ -28,14 +26,7 @@ import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlock_;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.render.BlockTextureCopied;
@@ -44,6 +35,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Ores implements Runnable {
 	@Override
@@ -206,213 +199,174 @@ public class Loader_Ores implements Runnable {
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "veryStrongStone", i, i, "veryStrongCobble", i, "pfaa.verystrong."+i, tPrefix[i], tDrops[i], 2.0F, 2.0F, 2, F, F, T);
 		
 		
-		rockset(MD.CHSL, "granite"                                , 0, "chisel.granite"       , OP.oreVanillagranite      , MT.STONES.Granite);
-		rockset(MD.CHSL, "diorite"                                , 0, "chisel.diorite"       , OP.oreDiorite             , MT.STONES.Diorite);
-		rockset(MD.CHSL, "andesite"                               , 0, "chisel.andesite"      , OP.oreAndesite            , MT.STONES.Andesite);
+		rockset(MD.CHSL, "granite"                                , 0, "chisel.granite"         , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.CHSL, "diorite"                                , 0, "chisel.diorite"         , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.CHSL, "andesite"                               , 0, "chisel.andesite"        , OP.oreAndesite            , MT.STONES.Andesite);
 		
-		rockset(MD.CHSL, "marble"                                 , 0, "chisel.marble"        , OP.oreMarble              , MT.STONES.Marble);
-		rockset(MD.CHSL, "limestone"                              , 0, "chisel.limestone"     , OP.oreLimestone           , MT.STONES.Limestone);
+		rockset(MD.CHSL, "marble"                                 , 0, "chisel.marble"          , OP.oreMarble              , MT.STONES.Marble);
+		rockset(MD.CHSL, "limestone"                              , 0, "chisel.limestone"       , OP.oreLimestone           , MT.STONES.Limestone);
 		
-		rockset(MD.EtFu, "stone"                                  , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.STONES.Granite);
-		rockset(MD.EtFu, "stone"                                  , 3, "etfu.diorite"         , OP.oreDiorite             , MT.STONES.Diorite);
-		rockset(MD.EtFu, "stone"                                  , 5, "etfu.andesite"        , OP.oreAndesite            , MT.STONES.Andesite);
-		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate"   , 0, "etfu.deepslate"       , OP.oreDeepslate           , MT.STONES.Deepslate);
+		rockset(MD.EtFu, "stone"                                  , 1, "etfu.granite"           , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.EtFu, "stone"                                  , 3, "etfu.diorite"           , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.EtFu, "stone"                                  , 5, "etfu.andesite"          , OP.oreAndesite            , MT.STONES.Andesite);
+		rockset(MD.EtFu, "deepslate", 0, 0, "cobbled_deepslate"   , 0, "etfu.deepslate"         , OP.oreDeepslate           , MT.STONES.Deepslate);
 		
-		rockset(MD.BoP, "rocks"                                   , 0, "bop.limestone"        , OP.oreLimestone           , MT.STONES.Limestone);
-		rockset(MD.BoP, "rocks"                                   , 2, "bop.siltstone"        , OP.oreSiltstone           , MT.STONES.Siltstone);
-		rockset(MD.BoP, "rocks"                                   , 4, "bop.shale"            , OP.oreShale               , MT.STONES.Shale);
+		rockset(MD.BoP, "rocks"                                   , 0, "bop.limestone"          , OP.oreLimestone           , MT.STONES.Limestone);
+		rockset(MD.BoP, "rocks"                                   , 2, "bop.siltstone"          , OP.oreSiltstone           , MT.STONES.Siltstone);
+		rockset(MD.BoP, "rocks"                                   , 4, "bop.shale"              , OP.oreShale               , MT.STONES.Shale);
 		
-		rockset(MD.GaSu, "basalt"                                 , 0, "gasu.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.GaSu, "basalt"                                 , 0, "gasu.basalt"            , OP.oreBasalt              , MT.STONES.Basalt);
 		
-		rockset(MD.HBM, "tile.stone_gneiss"                       , 0, "hbm.gneiss"           , OP.oreGneiss              , MT.STONES.Gneiss);
-		rockset(MD.HBM, "tile.basalt_smooth"                      , 0, "hbm.basalt"           , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.HBM, "tile.stone_gneiss"                       , 0, "hbm.gneiss"             , OP.oreGneiss              , MT.STONES.Gneiss);
+		rockset(MD.HBM, "tile.basalt_smooth"                      , 0, "hbm.basalt"             , OP.oreBasalt              , MT.STONES.Basalt);
 		
-		rockset(MD.RC, "cube"                                     , 6, "rc.abyssal"           , OP.oreBasalt              , MT.STONES.Basalt);
-		rockset(MD.RC, "cube"                                     , 7, "rc.quarried"          , OP.oreMarble              , MT.STONES.Marble);
+		rockset(MD.RC, "cube"                                     , 6, "rc.abyssal"             , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.RC, "cube"                                     , 7, "rc.quarried"            , OP.oreMarble              , MT.STONES.Marble);
 		
-		rockset(MD.SC2, "BlockSlate"     , 0, 0, "BlockSlate"     , 3, "sc2.blueslate"        , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.SC2, "BlockSlate"     , 1, 1, "BlockSlate"     , 4, "sc2.redslate"         , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.SC2, "BlockSlate"     , 2, 2, "BlockSlate"     , 5, "sc2.blackslate"       , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.SC2, "BlockLightSlate", 0, 0, "BlockLightSlate", 3, "sc2.lightblueslate"   , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.SC2, "BlockLightSlate", 1, 1, "BlockLightSlate", 4, "sc2.grayslate"        , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.SC2, "BlockLightSlate", 2, 2, "BlockLightSlate", 5, "sc2.lightredslate"    , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockSlate"     , 0, 0, "BlockSlate"     , 3, "sc2.blueslate"          , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockSlate"     , 1, 1, "BlockSlate"     , 4, "sc2.redslate"           , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockSlate"     , 2, 2, "BlockSlate"     , 5, "sc2.blackslate"         , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockLightSlate", 0, 0, "BlockLightSlate", 3, "sc2.lightblueslate"     , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockLightSlate", 1, 1, "BlockLightSlate", 4, "sc2.grayslate"          , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.SC2, "BlockLightSlate", 2, 2, "BlockLightSlate", 5, "sc2.lightredslate"      , OP.oreSlate               , MT.STONES.Slate);
 		
-		rockset(MD.MIN, "basalt"                                  , 0, "min.basalt"           , OP.oreBasalt              , MT.STONES.Basalt);
-		rockset(MD.MIN, "granite"                                 , 0, "min.granite"          , OP.oreVanillagranite      , MT.STONES.Granite);
-		rockset(MD.MIN, "andesite"                                , 0, "min.andesite"         , OP.oreAndesite            , MT.STONES.Andesite);
-		rockset(MD.MIN, "diorite"                                 , 0, "min.diorite"          , OP.oreDiorite             , MT.STONES.Diorite);
-		rockset(MD.MIN, "limestone"                               , 0, "min.limestone"        , OP.oreLimestone           , MT.STONES.Limestone);
-		rockset(MD.MIN, "shale"                                   , 0, "min.shale"            , OP.oreShale               , MT.STONES.Shale);
-		rockset(MD.MIN, "slate"                                   , 0, "min.slate"            , OP.oreSlate               , MT.STONES.Slate);
-		rockset(MD.MIN, "schist"                                  , 0, "min.schist"           , OP.oreBlueschist          , MT.STONES.Blueschist);
-		rockset(MD.MIN, "gneiss"                                  , 0, "min.gneiss"           , OP.oreVanillastone        , MT.STONES.Gneiss);
-		rockset(MD.MIN, "dolomite"                                , 0, "min.dolomite"         , OP.oreLimestone           , MT.Dolomite);
-		rockset(MD.MIN, "rhyolite"                                , 0, "min.rhyolite"         , OP.oreAndesite            , MT.STONES.Rhyolite);
-		rockset(MD.MIN, "pumice"                                  , 0, "min.pumice"           , OP.oreVanillastone        , MT.STONES.Pumice);
-		rockset(MD.MIN, "conglomerate"                            , 0, "min.conglomerate"     , OP.oreVanillastone        , MT.Stone);
-		rockset(MD.MIN, "pegmatite"                               , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
-		rockset(MD.MIN, "chert"                                   , 0, "min.chert"            , OP.oreVanillastone        , MT.STONES.Chert);
+		rockset(MD.MIN, "basalt"                                  , 0, "min.basalt"             , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.MIN, "granite"                                 , 0, "min.granite"            , OP.oreVanillagranite      , MT.STONES.Granite);
+		rockset(MD.MIN, "andesite"                                , 0, "min.andesite"           , OP.oreAndesite            , MT.STONES.Andesite);
+		rockset(MD.MIN, "diorite"                                 , 0, "min.diorite"            , OP.oreDiorite             , MT.STONES.Diorite);
+		rockset(MD.MIN, "limestone"                               , 0, "min.limestone"          , OP.oreLimestone           , MT.STONES.Limestone);
+		rockset(MD.MIN, "shale"                                   , 0, "min.shale"              , OP.oreShale               , MT.STONES.Shale);
+		rockset(MD.MIN, "slate"                                   , 0, "min.slate"              , OP.oreSlate               , MT.STONES.Slate);
+		rockset(MD.MIN, "schist"                                  , 0, "min.schist"             , OP.oreBlueschist          , MT.STONES.Blueschist);
+		rockset(MD.MIN, "gneiss"                                  , 0, "min.gneiss"             , OP.oreVanillastone        , MT.STONES.Gneiss);
+		rockset(MD.MIN, "dolomite"                                , 0, "min.dolomite"           , OP.oreLimestone           , MT.Dolomite);
+		rockset(MD.MIN, "rhyolite"                                , 0, "min.rhyolite"           , OP.oreAndesite            , MT.STONES.Rhyolite);
+		rockset(MD.MIN, "pumice"                                  , 0, "min.pumice"             , OP.oreVanillastone        , MT.STONES.Pumice);
+		rockset(MD.MIN, "conglomerate"                            , 0, "min.conglomerate"       , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "pegmatite"                               , 0, "min.pegmatite"          , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "chert"                                   , 0, "min.chert"              , OP.oreVanillastone        , MT.STONES.Chert);
 		
 		if (MD.NePl.mLoaded) {
-		rockset(MD.NePl, "Blackstone"                             , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.STONES.Blackstone);
-		rockset(MD.NePl, "Basalt"                                 , 0, "nepl.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.NePl, "Blackstone"                             , 0, "nepl.blackstone"        , OP.oreBlackstone          , MT.STONES.Blackstone);
+		rockset(MD.NePl, "Basalt"                                 , 0, "nepl.basalt"            , OP.oreBasalt              , MT.STONES.Basalt);
 		}
 		if (MD.NeLi.mLoaded) {
-		rockset(MD.NeLi, "Blackstone"                             , 0, "neli.blackstone"      , OP.oreBlackstone          , MT.STONES.Blackstone);
-		rockset(MD.NeLi, "Basalt"                                 , 0, "neli.basalt"          , OP.oreBasalt              , MT.STONES.Basalt);
+		rockset(MD.NeLi, "Blackstone"                             , 0, "neli.blackstone"        , OP.oreBlackstone          , MT.STONES.Blackstone);
+		rockset(MD.NeLi, "Basalt"                                 , 0, "neli.basalt"            , OP.oreBasalt              , MT.STONES.Basalt);
 		}
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.STONES.Livingrock, 1.0F, 1.0F, 0, F, F, T);
 		}
 		if (MD.TF.mLoaded) {
-		rockset(MD.TF, "tile.TFDeadrock"                          , 2, "twilight.deadrock"    , OP.oreDeadrock            , MT.STONES.Deadrock);
+		rockset(MD.TF, "tile.TFDeadrock"                          , 2, "twilight.deadrock"      , OP.oreDeadrock            , MT.STONES.Deadrock);
 		}
 		if (MD.AETHER.mLoaded) {
-		rockset(MD.AETHER, "holystone", 1, 0, "holystone"         , 1, "aether.holystone"     , OP.oreHolystone           , MT.STONES.Holystone);
+		rockset(MD.AETHER, "holystone", 1, 0, "holystone"         , 1, "aether.holystone"       , OP.oreHolystone           , MT.STONES.Holystone);
 		}
 		if (MD.ERE.mLoaded) {
-		rockset(MD.ERE, "umberstone", 0, 0, "umberstone"          , 1, "erebus.umberstone"    , OP.oreUmberstone          , MT.STONES.Umber);
-		rockset(MD.ERE, "umberGravel"                             , 0, "erebus.umbergravel"   , OP.oreUmberstone          , MT.STONES.Umber, 1, 1, 0, T, F, F);
+		rockset(MD.ERE, "umberstone", 0, 0, "umberstone"          , 1, "erebus.umberstone"      , OP.oreUmberstone          , MT.STONES.Umber);
+		rockset(MD.ERE, "umberGravel"                             , 0, "erebus.umbergravel"     , OP.oreUmberstone          , MT.STONES.Umber, 1, 1, 0, T, F, F);
 		}
 		if (MD.BTL.mLoaded) {
-		rockset(MD.BTL, "betweenstone"                            , 0, "btl.betweenstone"     , OP.oreBetweenstone        , MT.STONES.Betweenstone);
-		rockset(MD.BTL, "pitstone"                                , 0, "btl.pitstone"         , OP.orePitstone            , MT.STONES.Pitstone);
+		rockset(MD.BTL, "betweenstone"                            , 0, "btl.betweenstone"       , OP.oreBetweenstone        , MT.STONES.Betweenstone);
+		rockset(MD.BTL, "pitstone"                                , 0, "btl.pitstone"           , OP.orePitstone            , MT.STONES.Pitstone);
 		}
 		if (MD.GC.mLoaded) {
-		rockset(MD.GC, "tile.moonBlock"                           , 3, "gc.moon.dirt"         , OP.oreMoon                , MT.STONES.MoonRock);
-		rockset(MD.GC, "tile.moonBlock"                           , 4, "gc.moon.rock"         , OP.oreMoon                , MT.STONES.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                           , 3, "gc.moon.dirt"           , OP.oreMoon                , MT.STONES.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                           , 4, "gc.moon.rock"           , OP.oreMoon                , MT.STONES.MoonRock);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
-		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars"     , 4, "gc.mars.rock"         , OP.oreMars                , MT.STONES.MarsRock);
-		rockset(MD.GC_PLANETS, "tile.mars"                        , 6, "gc.mars.dirt"         , OP.oreMars                , MT.STONES.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars"     , 4, "gc.mars.rock"           , OP.oreMars                , MT.STONES.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars"                        , 6, "gc.mars.dirt"           , OP.oreMars                , MT.STONES.MarsRock);
 		
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 0, "gc.asteroids.dark"    , OP.oreSpace               , MT.STONES.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 1, "gc.asteroids.gray"    , OP.oreSpace               , MT.STONES.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 2, "gc.asteroids.light"   , OP.oreSpace               , MT.STONES.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 0, "gc.asteroids.dark"      , OP.oreSpace               , MT.STONES.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 1, "gc.asteroids.gray"      , OP.oreSpace               , MT.STONES.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"              , 2, "gc.asteroids.light"     , OP.oreSpace               , MT.STONES.SpaceRock);
 		}
-		
-		//rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 2, "ep.phobos.rock"           , OP.orePhobos            , MT.STONES.PhobosRock);
-		
 		if (MD.GC_EXTRAPLANETS.mLoaded) {
-			
-			//T2
-			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 0, "ep.phobos.surface"      , OP.orePhobos            , MT.STONES.PhobosRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 1, "ep.phobos.underground"  , OP.orePhobos            , MT.STONES.PhobosRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 2, "ep.phobos.rock"         , OP.orePhobos            , MT.STONES.PhobosRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 0, "ep.deimos.surface"      , OP.oreDeimos            , MT.STONES.DeimosRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 1, "ep.deimos.underground"  , OP.oreDeimos            , MT.STONES.DeimosRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 2, "ep.deimos.rock"         , OP.oreDeimos            , MT.STONES.DeimosRock);
-			
-			//T3
-			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 0, "ep.Venus.surface"       , OP.oreVenus             , MT.STONES.VenusRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 1, "ep.Venus.underground"   , OP.oreVenus             , MT.STONES.VenusRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 2, "ep.Venus.rock"          , OP.oreVenus             , MT.STONES.VenusRock);
-			
-			//T4
-			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 0, "ep.Mercury.surface"     , OP.oreMercury           , MT.STONES.MercuryRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 1, "ep.Mercury.underground" , OP.oreMercury           , MT.STONES.MercuryRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 2, "ep.Mercury.rock"        , OP.oreMercury           , MT.STONES.MercuryRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 0, "ep.Ceres.surface"       , OP.oreCeres             , MT.STONES.CeresRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 1, "ep.Ceres.underground"   , OP.oreCeres             , MT.STONES.CeresRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 2, "ep.Ceres.rock"          , OP.oreCeres             , MT.STONES.CeresRock);
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 0, "ep.Jupiter.surface"     , OP.oreJupiter           , MT.STONES.JupiterRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 1, "ep.Jupiter.underground" , OP.oreJupiter           , MT.STONES.JupiterRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 2, "ep.Jupiter.rock"          , OP.oreJupiter           , MT.STONES.JupiterRock);
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 0, "ep.Io.surface"        , OP.oreIo                , MT.STONES.IoRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 1, "ep.Io.underground"      , OP.oreIo                , MT.STONES.IoRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 2, "ep.Io.rock"           , OP.oreIo                , MT.STONES.IoRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 0, "ep.Europa.surface"      , OP.oreEuropa            , MT.STONES.EuropaRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 1, "ep.Europa.underground"  , OP.oreEuropa            , MT.STONES.EuropaRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 2, "ep.Europa.rock"         , OP.oreEuropa            , MT.STONES.EuropaRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 0, "ep.Ganymede.surface"    , OP.oreGanymede          , MT.STONES.GanymedeRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 1, "ep.Ganymede.underground", OP.oreGanymede          , MT.STONES.GanymedeRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 2, "ep.Ganymede.rock"       , OP.oreGanymede          , MT.STONES.GanymedeRock);
-		
-			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 0, "ep.Callisto.surface"    , OP.oreCallisto          , MT.STONES.CallistoRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 1, "ep.Callisto.underground", OP.oreCallisto          , MT.STONES.CallistoRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 2, "ep.Callisto.rock"       , OP.oreCallisto          , MT.STONES.CallistoRock);
-			
-			//T5
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 0, "ep.Saturn.surface"      , OP.oreSaturn            , MT.STONES.SaturnRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 1, "ep.Saturn.underground"  , OP.oreSaturn            , MT.STONES.SaturnRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 2, "ep.Saturn.rock"       , OP.oreSaturn            , MT.STONES.SaturnRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 0, "ep.Rhea.surface"        , OP.oreRhea              , MT.STONES.RheaRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 1, "ep.Rhea.underground"    , OP.oreRhea              , MT.STONES.RheaRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 2, "ep.Rhea.rock"           , OP.oreRhea              , MT.STONES.RheaRock);
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 0, "ep.Titan.surface"       , OP.oreTitan             , MT.STONES.TitanRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 1, "ep.Titan.underground"   , OP.oreTitan             , MT.STONES.TitanRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 2, "ep.Titan.rock"          , OP.oreTitan             , MT.STONES.TitanRock);
-
-			//rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 0, "ep.Oberon.surface"      , OP.oreOberon            , MT.STONES.OberonRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 1, "ep.Oberon.underground"  , OP.oreOberon            , MT.STONES.OberonRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 2, "ep.Oberon.rock"       , OP.oreOberon            , MT.STONES.OberonRock);
-			
-			//T6
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 0, "ep.Iapetus.surface"     , OP.oreIapetus           , MT.STONES.IapetusRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 1, "ep.Iapetus.underground" , OP.oreIapetus           , MT.STONES.IapetusRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 2, "ep.Iapetus.rock"        , OP.oreIapetus           , MT.STONES.IapetusRock);
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 0, "ep.Uranus.surface"      , OP.oreUranus            , MT.STONES.UranusRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 1, "ep.Uranus.underground"  , OP.oreUranus            , MT.STONES.UranusRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 2, "ep.Uranus.rock"       , OP.oreUranus            , MT.STONES.UranusRock);
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 0, "ep.Titania.surface"     , OP.oreTitania           , MT.STONES.TitaniaRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 1, "ep.Titania.underground" , OP.oreTitania           , MT.STONES.TitaniaRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 2, "ep.Titania.rock"          , OP.oreTitania           , MT.STONES.TitaniaRock);
-			
-			//T7
-			//rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 0, "ep.Neptune.surface"     , OP.oreNeptune           , MT.STONES.NeptuneRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 1, "ep.Neptune.underground" , OP.oreNeptune           , MT.STONES.NeptuneRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 2, "ep.Neptune.rock"          , OP.oreNeptune           , MT.STONES.NeptuneRock);
-			
-			//rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 0, "ep.Triton.surface"      , OP.oreTriton            , MT.STONES.TritonRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 1, "ep.Triton.underground"  , OP.oreTriton            , MT.STONES.TritonRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 2, "ep.Triton.rock"       , OP.oreTriton            , MT.STONES.TritonRock);
-			
-			
-			//T8
-			
-			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 0, "ep.Pluto.surface"        , OP.orePluto             , MT.STONES.PlutoRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 1, "ep.Pluto.underground"    , OP.orePluto             , MT.STONES.PlutoRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                  , 2, "ep.Pluto.rock"           , OP.orePluto             , MT.STONES.PlutoRock);
-			
-			
-			//T9
-			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 0, "ep.Eris.surface"          , OP.oreEris              , MT.STONES.ErisRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 1, "ep.Eris.underground"      , OP.oreEris              , MT.STONES.ErisRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.eris"                  , 2, "ep.Eris.rock"             , OP.oreEris              , MT.STONES.ErisRock);
-			
-			
-			//T10
-			//rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 0, "ep.Kepler22b.surface", OP.oreKepler22b         , MT.STONES.Kepler22bRock);
-			rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 1, "ep.Kepler22b.underground", OP.oreKepler22b     , MT.STONES.Kepler22bRock);
-			//rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"                  , 2, "ep.Kepler22b.rock"   , OP.oreKepler22b         , MT.STONES.Kepler22bRock);
+		// The Topmost Layers should not have Ores and are therefore commented out. Would not want to make finding Ores THAT easy.
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 0, "ep.phobos.surface"      , OP.orePhobos              , MT.STONES.PhobosRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 1, "ep.phobos.subsurface"   , OP.orePhobos              , MT.STONES.PhobosRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.phobos"                  , 2, "ep.phobos.rock"         , OP.orePhobos              , MT.STONES.PhobosRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 0, "ep.deimos.surface"      , OP.oreDeimos              , MT.STONES.DeimosRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 1, "ep.deimos.subsurface"   , OP.oreDeimos              , MT.STONES.DeimosRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.deimos"                  , 2, "ep.deimos.rock"         , OP.oreDeimos              , MT.STONES.DeimosRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 0, "ep.venus.surface"       , OP.oreVenus               , MT.STONES.VenusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 1, "ep.venus.subsurface"    , OP.oreVenus               , MT.STONES.VenusRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.venus"                   , 2, "ep.venus.rock"          , OP.oreVenus               , MT.STONES.VenusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 0, "ep.mercury.surface"     , OP.oreMercury             , MT.STONES.MercuryRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 1, "ep.mercury.subsurface"  , OP.oreMercury             , MT.STONES.MercuryRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.mercury"                 , 2, "ep.mercury.rock"        , OP.oreMercury             , MT.STONES.MercuryRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 0, "ep.ceres.surface"       , OP.oreCeres               , MT.STONES.CeresRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 1, "ep.ceres.subsurface"    , OP.oreCeres               , MT.STONES.CeresRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.ceres"                   , 2, "ep.ceres.rock"          , OP.oreCeres               , MT.STONES.CeresRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 0, "ep.jupiter.surface"     , OP.oreJupiter             , MT.STONES.JupiterRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 1, "ep.jupiter.subsurface"  , OP.oreJupiter             , MT.STONES.JupiterRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.jupiter"                 , 2, "ep.jupiter.rock"        , OP.oreJupiter             , MT.STONES.JupiterRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 0, "ep.io.surface"          , OP.oreIo                  , MT.STONES.IoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 1, "ep.io.subsurface"       , OP.oreIo                  , MT.STONES.IoRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.io"                      , 2, "ep.io.rock"             , OP.oreIo                  , MT.STONES.IoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 0, "ep.europa.surface"      , OP.oreEuropa              , MT.STONES.EuropaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 1, "ep.europa.subsurface"   , OP.oreEuropa              , MT.STONES.EuropaRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.europa"                  , 2, "ep.europa.rock"         , OP.oreEuropa              , MT.STONES.EuropaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 0, "ep.ganymede.surface"    , OP.oreGanymede            , MT.STONES.GanymedeRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 1, "ep.ganymede.subsurface" , OP.oreGanymede            , MT.STONES.GanymedeRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.ganymede"                , 2, "ep.ganymede.rock"       , OP.oreGanymede            , MT.STONES.GanymedeRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 0, "ep.callisto.surface"    , OP.oreCallisto            , MT.STONES.CallistoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 1, "ep.callisto.subsurface" , OP.oreCallisto            , MT.STONES.CallistoRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.callisto"                , 2, "ep.callisto.rock"       , OP.oreCallisto            , MT.STONES.CallistoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 0, "ep.saturn.surface"      , OP.oreSaturn              , MT.STONES.SaturnRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 1, "ep.saturn.subsurface"   , OP.oreSaturn              , MT.STONES.SaturnRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.saturn"                  , 2, "ep.saturn.rock"         , OP.oreSaturn              , MT.STONES.SaturnRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 0, "ep.rhea.surface"        , OP.oreRhea                , MT.STONES.RheaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 1, "ep.rhea.subsurface"     , OP.oreRhea                , MT.STONES.RheaRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.rhea"                    , 2, "ep.rhea.rock"           , OP.oreRhea                , MT.STONES.RheaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 0, "ep.titan.surface"       , OP.oreTitan               , MT.STONES.TitanRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 1, "ep.titan.subsurface"    , OP.oreTitan               , MT.STONES.TitanRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.titan"                   , 2, "ep.titan.rock"          , OP.oreTitan               , MT.STONES.TitanRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 0, "ep.oberon.surface"      , OP.oreOberon              , MT.STONES.OberonRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 1, "ep.oberon.subsurface"   , OP.oreOberon              , MT.STONES.OberonRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.oberon"                  , 2, "ep.oberon.rock"         , OP.oreOberon              , MT.STONES.OberonRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 0, "ep.iapetus.surface"     , OP.oreIapetus             , MT.STONES.IapetusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 1, "ep.iapetus.subsurface"  , OP.oreIapetus             , MT.STONES.IapetusRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.iapetus"                 , 2, "ep.iapetus.rock"        , OP.oreIapetus             , MT.STONES.IapetusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 0, "ep.uranus.surface"      , OP.oreUranus              , MT.STONES.UranusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 1, "ep.uranus.subsurface"   , OP.oreUranus              , MT.STONES.UranusRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.uranus"                  , 2, "ep.uranus.rock"         , OP.oreUranus              , MT.STONES.UranusRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 0, "ep.titania.surface"     , OP.oreTitania             , MT.STONES.TitaniaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 1, "ep.titania.subsurface"  , OP.oreTitania             , MT.STONES.TitaniaRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.titania"                 , 2, "ep.titania.rock"        , OP.oreTitania             , MT.STONES.TitaniaRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 0, "ep.neptune.surface"     , OP.oreNeptune             , MT.STONES.NeptuneRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 1, "ep.neptune.subsurface"  , OP.oreNeptune             , MT.STONES.NeptuneRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.neptune"                 , 2, "ep.neptune.rock"        , OP.oreNeptune             , MT.STONES.NeptuneRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 0, "ep.triton.surface"      , OP.oreTriton              , MT.STONES.TritonRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 1, "ep.triton.subsurface"   , OP.oreTriton              , MT.STONES.TritonRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.triton"                  , 2, "ep.triton.rock"         , OP.oreTriton              , MT.STONES.TritonRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                   , 0, "ep.pluto.surface"       , OP.orePluto               , MT.STONES.PlutoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                   , 1, "ep.pluto.subsurface"    , OP.orePluto               , MT.STONES.PlutoRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.pluto"                   , 2, "ep.pluto.rock"          , OP.orePluto               , MT.STONES.PlutoRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.eris"                    , 0, "ep.eris.surface"        , OP.oreEris                , MT.STONES.ErisRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.eris"                    , 1, "ep.eris.subsurface"     , OP.oreEris                , MT.STONES.ErisRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.eris"                    , 2, "ep.eris.rock"           , OP.oreEris                , MT.STONES.ErisRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"               , 0, "ep.kepler22b.surface"   , OP.oreKepler22b           , MT.STONES.Kepler22bRock);
+	//  rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"               , 1, "ep.kepler22b.subsurface", OP.oreKepler22b           , MT.STONES.Kepler22bRock);
+		rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"               , 2, "ep.kepler22b.rock"      , OP.oreKepler22b           , MT.STONES.Kepler22bRock);
 		}
 			
 		/* Doesn't work so I won't waste Block IDs until I get it to work.
 		if (MD.GC_GALAXYSPACE.mLoaded) {
-		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"      , 2, "gs.mercury.rock"      , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ceresblocks"        , 1, "gs.ceres.rock"        , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "deimosblocks"       , 1, "gs.deimos.rock"       , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ioblocks"           , 2, "gs.io.rock"           , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "oberonblocks"       , 2, "gs.oberon.rock"       , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "proteusblocks"      , 2, "gs.proteus.rock"      , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "tritonblocks"       , 2, "gs.triton.rock"       , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "mirandablocks"      , 2, "gs.miranda.rock"      , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "venusblocks"        , 1, "gs.venus.rock"        , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "phobosblocks"       , 2, "gs.phobos.rock"       , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"     , 1, "gs.ganymede.rock"     , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"  , 0, "gs.barnarda.e.rock"   , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"                , 2, "gs.mercury.rock"        , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ceresblocks"                  , 1, "gs.ceres.rock"          , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "deimosblocks"                 , 1, "gs.deimos.rock"         , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ioblocks"                     , 2, "gs.io.rock"             , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "oberonblocks"                 , 2, "gs.oberon.rock"         , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "proteusblocks"                , 2, "gs.proteus.rock"        , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "tritonblocks"                 , 2, "gs.triton.rock"         , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "mirandablocks"                , 2, "gs.miranda.rock"        , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "venusblocks"                  , 1, "gs.venus.rock"          , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "phobosblocks"                 , 2, "gs.phobos.rock"         , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"               , 1, "gs.ganymede.rock"       , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"            , 0, "gs.barnarda.e.rock"     , OP.oreSpace               , MT.SpaceRock);
 		}*/
 		
 		if (MD.CHSL.mLoaded) {
