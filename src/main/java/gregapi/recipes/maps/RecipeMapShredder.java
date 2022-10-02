@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.TD;
@@ -34,6 +29,11 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -53,7 +53,7 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 		ItemStack[] tOutputs = new ItemStack[Math.min(tList.size(), mOutputItemsCount)];
 		int i = 0, tDuration = 0;
 		for (OreDictMaterialStack tMaterial : tList) {
-			tDuration += UT.Code.units(tMaterial.mAmount, U, 256*Math.max(1, tMaterial.mMaterial.mToolQuality+1), T);
+			tDuration += UT.Code.units(tMaterial.mAmount, U, (tMaterial.mMaterial.containsAny(TD.Properties.QUARTZ)?64:tMaterial.mMaterial.containsAny(TD.Properties.BRITTLE, TD.Properties.STRETCHY, TD.Properties.BOUNCY, TD.Properties.STONE, TD.Properties.WOOD, TD.Properties.FOOD, TD.Properties.MEAT, TD.Properties.ROTTEN)?2:256)*Math.max(1, tMaterial.mMaterial.mToolQuality+1), T);
 			if (i < tOutputs.length) {
 				ItemStack tStack = OM.dust(tMaterial);
 				if (tStack != null) tOutputs[i++] = tStack;
