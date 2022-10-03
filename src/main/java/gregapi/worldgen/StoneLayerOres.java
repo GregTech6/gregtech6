@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
-
 import gregapi.code.BiomeNameSet;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
@@ -33,7 +27,14 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+
 public class StoneLayerOres {
+	public boolean mGenerateIndicators;
 	public int mMinY, mMaxY;
 	public byte mMeta;
 	public OreDictMaterial mMaterial;
@@ -46,18 +47,31 @@ public class StoneLayerOres {
 	
 	@SuppressWarnings("rawtypes")
 	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY, Collection... aBiomes) {
-		this(aMaterial, aChance, aMinY, aMaxY, NB, 0, aBiomes);
+		this(aMaterial, T, aChance, aMinY, aMaxY, NB, 0, aBiomes);
 	}
 	@SuppressWarnings("rawtypes")
 	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY, Block aBlock, Collection... aBiomes) {
-		this(aMaterial, aChance, aMinY, aMaxY, aBlock, 0, aBiomes);
+		this(aMaterial, T, aChance, aMinY, aMaxY, aBlock, 0, aBiomes);
+	}
+	@SuppressWarnings("rawtypes")
+	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY, Block aBlock, long aMeta, Collection... aBiomes) {
+		this(aMaterial, T, aChance, aMinY, aMaxY, aBlock, aMeta, aBiomes);
+	}
+	@SuppressWarnings("rawtypes")
+	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Collection... aBiomes) {
+		this(aMaterial, aGenerateIndicators, aChance, aMinY, aMaxY, NB, 0, aBiomes);
+	}
+	@SuppressWarnings("rawtypes")
+	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Block aBlock, Collection... aBiomes) {
+		this(aMaterial, aGenerateIndicators, aChance, aMinY, aMaxY, aBlock, 0, aBiomes);
 	}
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY, Block aBlock, long aMeta, Collection... aBiomes) {
+	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Block aBlock, long aMeta, Collection... aBiomes) {
 		mMaterial = (aMaterial != null && aMaterial.mID > 0 ? aMaterial : MT.Empty);
 		mChance = UT.Code.bind(1, U, aChance);
 		mBlock = (aBlock == NB ? null : aBlock);
 		mMeta = UT.Code.bind4(aMeta);
+		mGenerateIndicators = aGenerateIndicators;
 		for (Collection aBiome : aBiomes) mTargetBiomes.addAll(aBiome);
 		if (aMinY > aMaxY) {mMinY = aMaxY; mMaxY = aMinY;} else {mMinY = aMinY; mMaxY = aMaxY;}
 	}

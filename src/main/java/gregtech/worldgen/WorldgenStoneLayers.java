@@ -97,13 +97,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					boolean temp = T;
 					if (tScan[5] == tScan[1]) {
 						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
-							tLastOre = tOres.mMaterial;
+							if (tOres.mGenerateIndicators) tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
 					} else {
 						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
-							tLastOre = tOres.mMaterial;
+							if (tOres.mGenerateIndicators) tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
@@ -146,13 +146,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					boolean temp = T;
 					if (tScan[5] == tScan[1]) {
 						for (StoneLayerOres tOres : tScan[3].mOres) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && (tScan[6] == tScan[0] ? tOres.normal(tScan[3], aWorld, tX, tY, tZ, aBiome) : tOres.small(tScan[3], aWorld, tX, tY, tZ, aBiome))) {
-							tLastOre = tOres.mMaterial;
+							if (tOres.mGenerateIndicators) tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
 					} else {
 						for (StoneLayerOres tOres : StoneLayer.get(tScan[5], tScan[1])) if (tOres.mMaterial.mID > 0 && tOres.check(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom) && tOres.set(tScan[3], aWorld, tX, tY, tZ, aBiome, aRandom)) {
-							tLastOre = tOres.mMaterial;
+							if (tOres.mGenerateIndicators) tLastOre = tOres.mMaterial;
 							temp = F;
 							break;
 						}
