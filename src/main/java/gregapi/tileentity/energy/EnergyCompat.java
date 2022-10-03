@@ -34,7 +34,7 @@ import static gregapi.data.CS.*;
  * For mostly Internal Use.
  */
 public class EnergyCompat {
-	public static boolean RF_ENERGY = F, RF_ENERGY_NEW = F, AE_ENERGY = F, FL_ENERGY = F, IC_ENERGY = F, BB_ENERGY = F, GC_ENERGY = F, BC_LASER = F;
+	public static boolean RF_ENERGY = F, RF_ENERGY_NEW = F, AE_ENERGY = F, FL_ENERGY = F, WD_ENERGY = F, IC_ENERGY = F, BB_ENERGY = F, GC_ENERGY = F, BC_LASER = F;
 	
 	/** Gets Called once during postInit to see which Interfaces are there and Classloaded. */
 	@SuppressWarnings("ResultOfMethodCallIgnored")
@@ -43,6 +43,10 @@ public class EnergyCompat {
 			com.rwtema.funkylocomotion.blocks.TilePusher                 .class.getCanonicalName();
 			com.rwtema.funkylocomotion.blocks.TileBooster                .class.getCanonicalName();
 			FL_ENERGY = T;
+		} catch(Throwable e) {/**/}
+		try {
+			cr0s.warpdrive.block.TileEntityAbstractEnergy                .class.getCanonicalName();
+			WD_ENERGY = T;
 		} catch(Throwable e) {/**/}
 		try {
 			cofh.api.energy.IEnergyHandler                               .class.getCanonicalName();
@@ -86,7 +90,6 @@ public class EnergyCompat {
 		String tClass = null;
 		if (MD.OMT .mLoaded) {                    tClass = aReceiver.getClass().getName(); if (tClass.startsWith("openmodularturrets"             )) return T;}
 		if (MD.IE  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("blusunrize.immersiveengineering")) return T;}
-		if (MD.WARP.mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("cr0s.warpdrive"                 )) return T;}
 		if (MD.OC  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("li.cil.oc"                      )) return T;}
 		if (MD.TG  .mLoaded) {if (tClass == null) tClass = aReceiver.getClass().getName(); if (tClass.startsWith("techguns"                       )) return T;}
 		return F;
@@ -102,6 +105,8 @@ public class EnergyCompat {
 		if (AE_ENERGY && aThis != null && aTarget instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aTarget).acceptsEnergyFrom    (aThis, FORGE_DIR[aSide]);
 		
 		if (FL_ENERGY && aTarget instanceof com.rwtema.funkylocomotion.blocks.TilePusher || aTarget instanceof com.rwtema.funkylocomotion.blocks.TileBooster) return T;
+		
+		if (WD_ENERGY && aTarget instanceof cr0s.warpdrive.block.TileEntityAbstractEnergy) return ((cr0s.warpdrive.block.TileEntityAbstractEnergy)aTarget).energy_canInput(FORGE_DIR[aSide]);
 		
 		if (GC_ENERGY && aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
 		
@@ -153,6 +158,17 @@ public class EnergyCompat {
 			if (FL_ENERGY) {
 				if (aReceiver instanceof com.rwtema.funkylocomotion.blocks.TilePusher ) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.rwtema.funkylocomotion.blocks.TilePusher )aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU * 10), F), aSize * RF_PER_EU * 10);
 				if (aReceiver instanceof com.rwtema.funkylocomotion.blocks.TileBooster) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.rwtema.funkylocomotion.blocks.TileBooster)aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU * 10), F), aSize * RF_PER_EU * 10);
+			}
+			
+			// WarpDrive does not include ANY of the APIs it uses inside its Jar, which is a good thing, but it does force me to do this special case...
+			if (WD_ENERGY) {
+				if (aReceiver instanceof cr0s.warpdrive.block.TileEntityAbstractEnergy) {
+					if (((cr0s.warpdrive.block.TileEntityAbstractEnergy)aReceiver).energy_getEnergyStored() >= ((cr0s.warpdrive.block.TileEntityAbstractEnergy)aReceiver).energy_getMaxStorage()) return 0;
+					if (checkOverCharge(aSize, aReceiver)) return aAmount;
+					// I love how this does not have any sanity checks, and not even a boolean to check if it worked XD
+					((cr0s.warpdrive.block.TileEntityAbstractEnergy)aReceiver).energy_consume(-aSize);
+					return 1;
+				}
 			}
 			
 			// GalactiCraft and its Addons
