@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,10 @@
 
 package gregapi.wooddict;
 
-import static gregapi.data.CS.*;
-
-import java.util.Set;
-
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.ANY;
-import gregapi.data.CS.PlankData;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -38,6 +34,10 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -72,6 +72,12 @@ public class PlankEntry {
 	}
 	public PlankEntry(ItemStack aPlank, OreDictMaterial aMaterialPlank, int aPlankIndex) {
 		this(aPlank, IL.Plank_Slab.get(1, ST.make(Blocks.wooden_slab, 1, 0)), aMaterialPlank, aPlankIndex, aMaterialPlank == MT.Wood ? IL.Stick.get(1) : OP.stick.mat(aMaterialPlank, 1));
+	}
+	public PlankEntry(ItemStack aPlank, OreDictMaterial aMaterialPlank, int aPlankIndex, ItemStack aStick) {
+		this(aPlank, IL.Plank_Slab.get(1, ST.make(Blocks.wooden_slab, 1, 0)), aMaterialPlank, aPlankIndex, aStick);
+	}
+	public PlankEntry(ItemStack aPlank, OreDictMaterial aMaterialPlank, int aPlankIndex, ItemStack aStick, int aStickCountHand, int aStickCountSaw, int aStickCountLathe) {
+		this(aPlank, IL.Plank_Slab.get(1, ST.make(Blocks.wooden_slab, 1, 0)), aMaterialPlank, aPlankIndex, aStick, aStickCountHand, aStickCountSaw, aStickCountLathe);
 	}
 	public PlankEntry(ItemStack aPlank, ItemStack aSlab, OreDictMaterial aMaterialPlank) {
 		this(aPlank, aSlab, aMaterialPlank, -1);

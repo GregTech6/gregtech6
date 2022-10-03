@@ -1352,7 +1352,7 @@ public class MT {
 	
 	
 	Diamond                 = diamond       ( 8300, "Diamond"                                       , 200, 255, 255, DYE_INDEX_White      )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
-	DiamondBlue             = diamond       ( 8464, "Blue Diamond"                                  ,   0,   0, 240, DYE_INDEX_Blue       )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
+	DiamondBlue             = diamond       ( 8464, "Blue Diamond"                                  , 100, 100, 240, DYE_INDEX_Blue       )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
 	DiamondGreen            = diamond       ( 8465, "Green Diamond"                                 ,   0, 240,   0, DYE_INDEX_Green      )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
 	DiamondPurple           = diamond       ( 8466, "Purple Diamond"                                , 120,   0, 240, DYE_INDEX_Purple     )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
 	DiamondRed              = diamond       ( 8467, "Red Diamond"                                   , 240,   0,   0, DYE_INDEX_Red        )                                                                                                                         .uumMcfg( 1, C              , 4*U)                                                                                                                                                     .setDensity(3.53).heat(4200, C.mBoilingPoint),
@@ -2503,6 +2503,12 @@ public class MT {
 			STONES.SpaceRock        .put(MD.GC).visDefault();
 			Ultimate                .put(MD.GC);
 			
+			
+			DiamondBlue             .put(MD.GC_EXTRAPLANETS);
+			DiamondGreen            .put(MD.GC_EXTRAPLANETS);
+			DiamondPurple           .put(MD.GC_EXTRAPLANETS);
+			DiamondRed              .put(MD.GC_EXTRAPLANETS);
+			DiamondYellow           .put(MD.GC_EXTRAPLANETS);
 			STONES.PhobosRock       .put(MD.GC_EXTRAPLANETS).visDefault();
 			STONES.DeimosRock       .put(MD.GC_EXTRAPLANETS).visDefault();
 			STONES.MercuryRock      .put(MD.GC_EXTRAPLANETS).visDefault();

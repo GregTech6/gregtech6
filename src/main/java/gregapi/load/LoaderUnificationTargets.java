@@ -431,6 +431,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondPurple          , MD.GC_EXTRAPLANETS, "tier11Items", 2);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondYellow          , MD.GC_EXTRAPLANETS, "tier11Items", 3);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondGreen           , MD.GC_EXTRAPLANETS, "tier11Items", 4);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 5);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 6);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 7);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 8);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 9);
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.WOODS.Maple            , MD.GC_EXTRAPLANETS, "tier11Items", 10);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Pt                     , MD.GC_EXTRAPLANETS, "tier11Items", 11);
 		OreDictManager.INSTANCE.setTarget(OP.compressed     , MT.Pt                     , MD.GC_EXTRAPLANETS, "tier11Items", 12);
 		OreDictManager.INSTANCE.setTarget(OP.gearGt         , MT.TitaniumAluminide      , MD.GC_ADV_ROCKETRY, "advancedRocketryproductgear", 0);
