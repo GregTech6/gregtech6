@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,35 +19,27 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.wooddict.BeamEntry;
-import gregapi.wooddict.LeafEntry;
-import gregapi.wooddict.PlankEntry;
-import gregapi.wooddict.SaplingEntry;
-import gregapi.wooddict.WoodDictionary;
-import gregapi.wooddict.WoodEntry;
+import gregapi.wooddict.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
+import static gregapi.data.CS.NI;
+import static gregapi.data.CS.W;
+
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 251 is next! There is no Gaps in this List!
+		// 257 is next! There is no Gaps in this List!
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
@@ -806,6 +798,15 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(tPlank, 1, 8), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksBamboo"    ));
 			CR.shaped(ST.make(tPlank, 1, 9), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksRotten"    ));
 			CR.shaped(ST.make(tPlank, 1,10), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksMarshwood" ));
+		}
+		// Extra Planets Trees
+		if (MD.GC_EXTRAPLANETS.mLoaded) {
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 0), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs" , 1, 0), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 0), MT.WOODS.Maple, 251), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves" , 1, 0)));
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 1), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs" , 1, 1), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 1), MT.WOODS.Maple, 252), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves" , 1, 1)));
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 2), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs" , 1, 2), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 2), MT.WOODS.Maple, 253), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves" , 1, 2)));
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 3), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs" , 1, 3), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 3), MT.WOODS.Maple, 254), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves" , 1, 3)));
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 4), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs2", 1, 0), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 4), MT.WOODS.Maple, 255), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves2", 1, 0)));
+			new SaplingEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleSaplings", 1, 5), new WoodEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bMapleLogs2", 1, 1), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1), new PlankEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bPlanks", 1, 5), MT.WOODS.Maple, 256), 2, 400), new LeafEntry(ST.make(MD.GC_EXTRAPLANETS, "tile.kepler22bNewMapleLeaves2", 1, 1)));
 		}
 		// Harvestcraft Trees
 		if (MD.HaC.mLoaded) {
