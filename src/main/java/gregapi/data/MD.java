@@ -271,7 +271,7 @@ public class MD {
 	, OMT               = new ModData(ModIDs.OMT                , "Open Modular Turrets")
 	, TG                = new ModData(ModIDs.TG                 , "Tech Guns")
 	
-	, WARP              = new ModData(ModIDs.WARP               , "Warp Drive")
+	, WARPDRIVE         = new ModData(ModIDs.WARPDRIVE          , "Warp Drive")
 	, FM                = new ModData(ModIDs.FM                 , "Falling Meteors")
 	, GC                = new ModData(ModIDs.GC                 , "Galacticraft")
 	, GC_PLANETS        = new ModData(ModIDs.GC_PLANETS         , "Galacticraft Planets")
