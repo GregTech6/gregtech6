@@ -82,7 +82,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-@Mod(modid=ModIDs.GT, name="GregTech", version="GT6-MC1710")
+@Mod(modid=ModIDs.GT, name="GregTech", version="GT6-MC1710", dependencies="required-after:"+ModIDs.GAPI+"; required-before:"+ModIDs.GAPI_POST)
 public class GT6_Main extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gt_proxy;
