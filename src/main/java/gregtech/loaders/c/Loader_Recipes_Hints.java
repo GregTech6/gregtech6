@@ -95,7 +95,14 @@ public class Loader_Recipes_Hints implements Runnable {
 		, ST.make(aRegistry     .getItem(32706), "Mixing Bowls and Bathing Pots are top open too!")
 		), ST.array(ST.make(Items.potionitem, 1, 0, "Ahh, bottled Tap Water!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
-		
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(
+		  ST.make(OP.dust           .mat(MT.Endstone, 1), "Can be centrifuged for Helium")
+		, ST.make(OP.dust           .mat(MT.Monazite, 1), "Can be smelted for Helium")
+		, ST.make(OP.crushedPurified.mat(MT.Biotite , 1), "Can be dried for Argon")
+		, ST.make(Blocks.end_stone                , 1, 0, "Once dustified it can be centrifuged for Helium")
+		, NI
+		, ST.make(aRegistry              .getItem(17111), "Cryo Distillation Towers also produce Noble Gasses")
+		), ST.array(ST.make(OP.boule.mat(MT.Si, 1), "Noble Gas is used for Crystallizing Boules"), ST.make(OP.plateGem.mat(MT.Si, 1), "Then cut into Plates"), ST.make(OP.plateGemTiny.mat(MT.Si, 1), "And cut in tinier Plates for Circuits"), ST.make(OP.boule.mat(MT.RedstoneAlloy, 1), "Noble Gas is used for Crystallizing Boules"), ST.make(OP.plateGem.mat(MT.RedstoneAlloy, 1), "Then cut into Plates"), ST.make(OP.plateGemTiny.mat(MT.RedstoneAlloy, 1), "And cut in tinier Plates for Circuits")), null, ZL_LONG, ZL_FS, FL.array(FL.Helium.make(1), FL.Neon.make(1), FL.Argon.make(1)), 0, 0, 0);
 		
 		
 		// Tree Stuff
