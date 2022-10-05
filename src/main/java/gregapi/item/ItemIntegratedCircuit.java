@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregapi.item;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,6 +38,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -56,14 +56,14 @@ public class ItemIntegratedCircuit extends ItemBase {
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
 		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {this});
 		
-		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 2), CR.DEF, " d ", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 3), CR.DEF, "  d", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 4), CR.DEF, "   ", " Pd", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 5), CR.DEF, "   ", " P ", "  d", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 6), CR.DEF, "   ", " P ", " d ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 7), CR.DEF, "   ", " P ", "d  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 8), CR.DEF, "   ", "dP ", "   ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d ", " P", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 2), CR.DEF, "d ", "P ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 3), CR.DEF, " d", "P ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 4), CR.DEF, "Pd", "  ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 5), CR.DEF, "P ", " d", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 6), CR.DEF, "P ", "d ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 7), CR.DEF, " P", "d ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 8), CR.DEF, "dP", "  ", 'P', ST.make(this, 1, W));
 		
 		CR.shaped(ST.make(this, 1, 9), CR.DEF, "P d", "   ", "   ", 'P', ST.make(this, 1, W));
 		CR.shaped(ST.make(this, 1,10), CR.DEF, "P  ", "  d", "   ", 'P', ST.make(this, 1, W));
