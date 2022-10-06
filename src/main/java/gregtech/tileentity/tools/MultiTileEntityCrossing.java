@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
@@ -39,16 +37,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityCrossing extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetSelectedBoundingBoxFromPool {
-	public boolean mLock = F, mRedstone = F;
+	public boolean mRedstone = F;
+	public long mLock = 0;
+	public static long sLockID = 0;
+	public static boolean sLock = F;
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			mLock = F;
+			mLock = sLockID = 0;
 			if (mBlockUpdated || SERVER_TIME % 50 == 0) {
 				if (getRedstoneIncoming(SIDE_TOP) > 0 || getRedstoneIncoming(SIDE_BOTTOM) > 0) {
 					if (!mRedstone) {mRedstone = T; causeBlockUpdate();}
@@ -61,17 +64,21 @@ public class MultiTileEntityCrossing extends TileEntityBase07Paintable implement
 	
 	@Override
 	public boolean fillMoldAtSide(ITileEntityMold aMold, byte aSide, byte aSideOfMold) {
-		if (mLock) return F;
-		mLock = T;
 		boolean rReturn = F;
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (tSide != aSide) {
-			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-			if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
-				rReturn = ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(aMold, tDelegator.mSideOfTileEntity, aSideOfMold);
-				if (rReturn) break;
+		if (sLock) {
+			if (mLock == sLockID) return F;
+			mLock = sLockID;
+			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tSide != aSide) {
+				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
+				if (tDelegator.mTileEntity instanceof ITileEntityCrucible && ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(aMold, tDelegator.mSideOfTileEntity, aSideOfMold)) return T;
 			}
+		} else {
+			mLock = 0;
+			sLockID++;
+			sLock = T;
+			rReturn = fillMoldAtSide(aMold, aSide, aSideOfMold);
+			sLock = F;
 		}
-		mLock = F;
 		return rReturn;
 	}
 	
