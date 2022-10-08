@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregtech.tileentity.inventories;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
 
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.LH;
@@ -55,6 +51,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -167,7 +167,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 			int tMovedItems = 0;
 			if (mCheck > 0) {
 				mCheck--;
-			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated || (mCheck < 0 && SYNC_SECOND)) && !hasRedstoneIncomingFromNonRail()) {
+			} else if ((mCheck == 0 || mInventoryChanged || mBlockUpdated || SYNC_SECOND) && !hasRedstoneIncomingFromNonRail()) {
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {

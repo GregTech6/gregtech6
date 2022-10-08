@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,16 @@
 
 package gregapi.tileentity.base;
 
-import static gregapi.data.CS.*;
-
-import java.util.UUID;
-
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.tileentity.ITileEntitySynchronising;
 import gregapi.util.WD;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+
+import java.util.UUID;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -140,9 +140,6 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 		mIsRunningTick = F;
 	}
 	
-	/** Used to reset all Variables which have something to do with the detection of Changes. A super Call is important for this one! */
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {mBlockUpdated = F;}
-	
 	/** The very first Tick happening to this TileEntity */
 	public void onTickFirst(boolean aIsServerSide) {/**/}
 	
@@ -157,6 +154,9 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 	
 	/** Called when onTickCheck returns true. A super Call is important for this one! */
 	public void onTickChecked(long aTimer) {/**/}
+	
+	/** Used to reset all Variables which have something to do with the detection of Changes. A super Call is important for this one! */
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {mBlockUpdated = F;}
 	
 	/** The absolutely last Part of the Tick. */
 	public void onTickEnd(long aTimer, boolean aIsServerSide) {/**/}

@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Crucible Crossings were looping exponentially by accident, instead of just doing a simple floodfill, resulting in lag when placing too many in a circle.
 [CHANGED] Radiation now works with the same System that Food uses to apply Potion Effects. This makes the Rad-away Pill much more effective, and by extension also the Cure-All Pill. Please be aware that Radiation will not decrease over time, like the Food related Stats do.
 [CHANGED] Vanilla Ores will no longer generate indicator Rocks.
+[CHANGED] Dust Funnel should now only update its top Texture once per second, in sync with all the other Stuff to reduce Render Update Lag.
 [ADDED] NEI Hint for how to get Noble Gasses.
 
 
