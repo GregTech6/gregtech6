@@ -116,9 +116,9 @@ public enum FL {
 	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Boiling             ("boilingwater"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Geothermal          ("watergeothermal"                                          , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
+	, MnWtr                     ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD, WATER)
 	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Heavy_Reiker              ("rc heavy water"                                           , SIMPLE, LIQUID)
-	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
 	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
 	, Tropics_Water             ("tropicswater"                                             , SIMPLE, LIQUID)
@@ -668,7 +668,7 @@ public enum FL {
 	
 	public static FluidStack[] waters(long aWater) {return waters(aWater, aWater, aWater);}
 	public static FluidStack[] waters(long aWater, long aDistilled) {return waters(aWater, aDistilled, aWater);}
-	public static FluidStack[] waters(long aWater, long aDistilled, long aSpectralDew) {return FL.array(FL.Water.make(aWater), FL.DistW.make(aDistilled), FL.SpDew.make(aSpectralDew));}
+	public static FluidStack[] waters(long aWater, long aDistilled, long aSpectralDew) {return FL.array(FL.Water.make(aWater), FL.MnWtr.make(aWater), FL.DistW.make(aDistilled), FL.SpDew.make(aSpectralDew));}
 	
 	/** @return if that Liquid is Water or Distilled Water */
 	public static boolean water(IFluidTank aFluid) {return aFluid != null && water(aFluid.getFluid());}

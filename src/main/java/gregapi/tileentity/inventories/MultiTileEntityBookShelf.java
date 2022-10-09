@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,13 @@
 
 package gregapi.tileentity.inventories;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetEnchantPowerBonus;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.BooksGT;
-import gregapi.data.CS.PlankData;
-import gregapi.data.LH;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MD;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.TD;
 import gregapi.dummies.DummyInventory;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -58,6 +49,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -356,9 +351,6 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public ItemStack getDefaultStack(int aSlot) {return ST.make(Items.book, 1, 0);}
 	
-	private static final int[] ACCESSIBLE_SLOTS = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
-	
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot)                                                 && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !OD.lever.is(slot(aSlot)) && !OD.button.is(slot(aSlot));}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && BooksGT.BOOK_REGISTER.containsKey(aStack, T) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !OD.lever.is(slot(aSlot)) && !OD.button.is(slot(aSlot));}
 	

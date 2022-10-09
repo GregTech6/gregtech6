@@ -620,37 +620,18 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Sodalite), plateGem.mat(MT.Sodalite, 1));
 		
 		
-		RM.Freezer      .addRecipe1(T, 16,   16, ST.tag(0), FL.Water.make( 250), FL.Ice.make(250), ZL_IS);
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(0), FL.SpDew.make( 250), FL.Ice.make(250), ZL_IS);
-		RM.Freezer      .addRecipe1(T, 16,   16, ST.tag(0), FL.DistW.make( 250), FL.Ice.make(250), ZL_IS);
-		RM.Freezer      .addRecipe1(T, 16,   16, ST.tag(1), FL.Water.make( 250), NF, ST.make(Items.snowball, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(1), FL.SpDew.make( 250), NF, ST.make(Items.snowball, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   16, ST.tag(1), FL.DistW.make( 250), NF, ST.make(Items.snowball, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   32, ST.tag(2), FL.Water.make( 500), NF, ST.make(Blocks.snow_layer, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(2), FL.SpDew.make( 500), NF, ST.make(Blocks.snow_layer, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   32, ST.tag(2), FL.DistW.make( 500), NF, ST.make(Blocks.snow_layer, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(3), FL.Water.make(1000), NF, ST.make(Blocks.snow, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(3), FL.SpDew.make(1000), NF, ST.make(Blocks.snow, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(3), FL.DistW.make(1000), NF, ST.make(Blocks.snow, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(4), FL.Water.make(1000), NF, ST.make(Blocks.ice, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,  512, ST.tag(4), FL.SpDew.make(1000), NF, ST.make(Blocks.ice, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(4), FL.DistW.make(1000), NF, ST.make(Blocks.ice, 1, 0));
-		RM.Freezer      .addRecipe1(T, 16,   32, ST.tag(5), FL.Water.make( 250), NF, gemChipped.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(5), FL.SpDew.make( 250), NF, gemChipped.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,   32, ST.tag(5), FL.DistW.make( 250), NF, gemChipped.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(6), FL.Water.make( 500), NF, gemFlawed.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(6), FL.SpDew.make( 500), NF, gemFlawed.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,   64, ST.tag(6), FL.DistW.make( 500), NF, gemFlawed.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(7), FL.Water.make(1000), NF, gem.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  512, ST.tag(7), FL.SpDew.make(1000), NF, gem.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(7), FL.DistW.make(1000), NF, gem.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(8), FL.Water.make(1000), NF, dust.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  512, ST.tag(8), FL.SpDew.make(1000), NF, dust.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(8), FL.DistW.make(1000), NF, dust.mat(MT.Ice, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.Water.make(1000), NF, dust.mat(MT.Snow, 1));
-		RM.Freezer      .addRecipe1(T, 16,  512, ST.tag(9), FL.SpDew.make(1000), NF, dust.mat(MT.Snow, 1));
-		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.DistW.make(1000), NF, dust.mat(MT.Snow, 1));
-		
+		for (FluidStack tWater : FL.waters(250)) {long tMul = FL.SpDew.is(tWater) ? 4 : 1;
+		RM.Freezer      .addRecipe1(T, 16,   16*tMul, ST.tag(0),        tWater    , FL.Ice.make(250), ZL_IS);
+		RM.Freezer      .addRecipe1(T, 16,   16*tMul, ST.tag(1),        tWater    , NF, ST.make(Items.snowball   , 1, 0));
+		RM.Freezer      .addRecipe1(T, 16,   32*tMul, ST.tag(2), FL.mul(tWater, 2), NF, ST.make(Blocks.snow_layer, 1, 0));
+		RM.Freezer      .addRecipe1(T, 16,   64*tMul, ST.tag(3), FL.mul(tWater, 4), NF, ST.make(Blocks.snow      , 1, 0));
+		RM.Freezer      .addRecipe1(T, 16,  128*tMul, ST.tag(4), FL.mul(tWater, 4), NF, ST.make(Blocks.ice       , 1, 0));
+		RM.Freezer      .addRecipe1(T, 16,   64*tMul, ST.tag(9), FL.mul(tWater, 4), NF, dust      .mat(MT.Snow, 1));
+		RM.Freezer      .addRecipe1(T, 16,  128*tMul, ST.tag(8), FL.mul(tWater, 4), NF, dust      .mat(MT.Ice, 1));
+		RM.Freezer      .addRecipe1(T, 16,   32*tMul, ST.tag(5),        tWater    , NF, gemChipped.mat(MT.Ice, 1));
+		RM.Freezer      .addRecipe1(T, 16,   64*tMul, ST.tag(6), FL.mul(tWater, 2), NF, gemFlawed .mat(MT.Ice, 1));
+		RM.Freezer      .addRecipe1(T, 16,  128*tMul, ST.tag(7), FL.mul(tWater, 4), NF, gem       .mat(MT.Ice, 1));
+		}
 		
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass             , 1, W), OM.dust(MT.Glass, U*9));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass, U*9));

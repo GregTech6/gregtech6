@@ -198,7 +198,7 @@ public class Loader_Fuels implements Runnable {
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
 		if (FL.Water_Boiling.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Boiling.make(1)                    , FL.Water.make(1), ZL_IS);
-		FM.Hot          .addRecipe0(T, - 16,  4, FL.Water_Geothermal.make(1)                 , FL.Water.make(1), ZL_IS);
+		FM.Hot          .addRecipe0(T, - 16,  4, FL.Water_Geothermal.make(1)                 , FL.MnWtr.make(1), ZL_IS);
 		
 		FM.Hot          .addRecipe0(T, -  1, EU_PER_COOLANT         , FL.Coolant_IC2_Hot.make(1)     , FL.Coolant_IC2.make(1)       , ZL_IS);
 		FM.Hot          .addRecipe0(T, -  1, EU_PER_SODIUM          , FL.Hot_Molten_Sodium.make(1)   , FL.amount(MT.Na.mLiquid, 1)  , ZL_IS);

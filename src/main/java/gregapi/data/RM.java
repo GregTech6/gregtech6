@@ -297,6 +297,7 @@ public class RM {
 		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Soup_Mushroom.make(             1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.WATER) if (FL.exists(tFluid))
 		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080    / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.MnWtr.make(              1080 / tSize), FL.BiomassIC2.make(1080    / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.MILK ) if (FL.exists(tFluid))
 		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160    / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid) && !"potion.idunsapplejuice".equals(tFluid) && !"potion.goldenapplejuice".equals(tFluid) && !"goldencarrotjuice".equals(tFluid))
@@ -325,6 +326,7 @@ public class RM {
 		if (aLubricantAmount <= 0) aLubricantAmount = 1;
 		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.Water.make(aLubricantAmount*4), NF, aOutputs);
 		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.SpDew.make(aLubricantAmount*4), NF, aOutputs);
+		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.MnWtr.make(aLubricantAmount*4), NF, aOutputs);
 		Cutter.addRecipe1(T, aEUt, aDuration*3, aInput, FL.DistW.make(aLubricantAmount*3), NF, aOutputs);
 		if (!aIsFoodItem) for (String tFluidName : FluidsGT.LUBRICANT) {
 			FluidStack tFluid = FL.make(tFluidName, aLubricantAmount);
@@ -371,8 +373,8 @@ public class RM {
 	public static boolean crop(ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains, long aChance, String aCannedName, IItemContainer[] aCans, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {return crop(aStack, aFluid, aAmount, aRemains, aChance, aCannedName, aCans, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, 0);}
 	public static boolean crop(ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains, long aChance, String aCannedName, IItemContainer[] aCans, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat, int aRadiation) {
 		if (aCans != null && UT.Code.stringValid(aCannedName)) food_can(aStack, Math.max(1, ST.food(aStack)), aCannedName, aCans);
-		if (aFluid   != null) Squeezer.addRecipe1(T, 16, 16, aChance-1000 , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount)                                               , aRemains);
-		if (aFluid   != null) Juicer  .addRecipe1(T, 16, 16, aChance      , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount-(aAmount<100?aAmount/3:1+(aAmount/250))*25)    , aRemains);
+		if (aFluid   != null) Squeezer.addRecipe1(T, 16, 16, aChance-1000 , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount)                                           , aRemains);
+		if (aFluid   != null) Juicer  .addRecipe1(T, 16, 16, aChance      , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount-(aAmount<100?aAmount/3:1+(aAmount/250))*25), aRemains);
 		if (aRemains != null) Shredder.addRecipe1(T, 16, 16, aChance      , aStack, aRemains);
 		if (aRemains != null) Mortar  .addRecipe1(T, 16, 16, aChance/2    , aStack, aRemains);
 		if (!(aStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aStack, aAlcohol, aCaffeine, aDehydration, aSugar, aFat, aRadiation);

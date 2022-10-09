@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,9 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-import static gregapi.util.CR.*;
-
-import java.util.Arrays;
-
 import gregapi.block.metatype.BlockMetaType;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -50,6 +34,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Arrays;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+import static gregapi.util.CR.DEF;
+import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Loader_Recipes_Woods implements Runnable {
 	@Override public void run() {
@@ -222,7 +213,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.pulverizing(aEntry.mPlank, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 1));
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 128, ST.amount(9, aEntry.mPlank), FL.Mineralwater.make(1000), NF, OP.rockGt.mat(MT.PetrifiedWood, 4));
+			RM.Injector.addRecipe1(T, 16, 128, ST.amount(9, aEntry.mPlank), FL.MnWtr.make(1000), NF, OP.rockGt.mat(MT.PetrifiedWood, 4));
 			
 			CR.shaped(gearGt             .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "BPB", "PsP", "BPB", 'P', aEntry.mPlank, 'B', bolt.dat(aEntry.mMaterialPlank));
 			CR.shaped(gearGtSmall        .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  " s"       , 'P', aEntry.mPlank);
@@ -291,7 +282,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 96, ST.amount(9, aEntry.mStair), FL.Mineralwater.make(750), NF, OP.rockGt.mat(MT.PetrifiedWood, 3));
+			RM.Injector.addRecipe1(T, 16, 96, ST.amount(9, aEntry.mStair), FL.MnWtr.make(750), NF, OP.rockGt.mat(MT.PetrifiedWood, 3));
 			
 			if (ST.valid(aEntry.mSlab)) {
 				CR.shaped(ST.validMeta_(1, aEntry.mSlab ), CR.DEF_NCC_MIR, "vP", 'P', aEntry.mStair);
@@ -308,7 +299,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.remove(aPlank, aPlank, aPlank);
 			
 			if (aEntry.mMaterialPlank != MT.PetrifiedWood)
-			RM.Injector.addRecipe1(T, 16, 64, ST.amount(9, aEntry.mSlab), FL.Mineralwater.make(500), NF, OP.rockGt.mat(MT.PetrifiedWood, 2));
+			RM.Injector.addRecipe1(T, 16, 64, ST.amount(9, aEntry.mSlab), FL.MnWtr.make(500), NF, OP.rockGt.mat(MT.PetrifiedWood, 2));
 			
 			if (ST.valid(aEntry.mStair)) {
 				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mSlab);

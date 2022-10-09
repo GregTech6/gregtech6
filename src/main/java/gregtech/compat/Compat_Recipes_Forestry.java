@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -47,6 +36,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 public class Compat_Recipes_Forestry extends CompatMods {
 	public Compat_Recipes_Forestry(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -419,13 +411,13 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)), ST.make(MD.FR, "soil", 8, 1));
 		
-		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.SpDew, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tFluid.exists()) {
+		for (FL tWater : new FL[] {FL.Water, FL.MnWtr, FL.DistW, FL.SpDew, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tWater.exists()) {
 		if (IL.IC2_Fertilizer.exists())
-		RM.Mixer        .addRecipe2(T, 16,   64, IL.IC2_Fertilizer.get(1)   , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
-		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Fertilizer.get(1)    , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
-		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Compost.get(1)       , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
-		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Mulch.get(1)         , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 9, 0));
-		RM.Mixer        .addRecipe2(T, 16,   16, ST.make(Blocks.sand, 1, W) , ST.make(Blocks.dirt, 1, W), tFluid.make( 250), NF, ST.make(MD.FR, "soil", 2, 1));
+		RM.Mixer        .addRecipe2(T, 16,   64, IL.IC2_Fertilizer.get(1)   , ST.make(Blocks.dirt, 8, W), tWater.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
+		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Fertilizer.get(1)    , ST.make(Blocks.dirt, 8, W), tWater.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
+		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Compost.get(1)       , ST.make(Blocks.dirt, 8, W), tWater.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
+		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Mulch.get(1)         , ST.make(Blocks.dirt, 8, W), tWater.make(1000), NF, ST.make(MD.FR, "soil", 9, 0));
+		RM.Mixer        .addRecipe2(T, 16,   16, ST.make(Blocks.sand, 1, W) , ST.make(Blocks.dirt, 1, W), tWater.make( 250), NF, ST.make(MD.FR, "soil", 2, 1));
 		}
 		if (IL.IC2_Fertilizer.exists())
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.IC2_Fertilizer.get(1)   , ST.make(Blocks.dirt, 8, W), FL.Dirty_Water.make(2000), NF, ST.make(MD.FR, "soil", 9, 0));

@@ -43,7 +43,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		@SuppressWarnings("unused")
 		int tLastID = 0;
 		
-		addItem(tLastID =     0, "Mineral Water"                , ""                                    , FL.Mineralwater           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem(tLastID =     0, "Mineral Water"                , ""                                    , FL.MnWtr.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(tLastID =     1, "Sea Water"                    , ""                                    , FL.Ocean                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 2), TC.stack(TC.FAMES     , 1), FoodStatFluid.INSTANCE, FL.OceanGrC.make(250), FL.Tropics_Water.make(250));
 		addItem(tLastID =     2, "Soda"                         , "", "foodBubblywater"                 , FL.Soda                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 2), TC.stack(TC.AQUA      , 1), FoodStatFluid.INSTANCE);
 		addItem(tLastID =     3, "Mineral Soda"                 , ""                                    , FL.Mineralsoda            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);

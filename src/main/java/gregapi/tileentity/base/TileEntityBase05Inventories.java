@@ -61,9 +61,20 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		if (mInventory != null && mInventory.length > 0) {
 			NBTTagList tList = new NBTTagList();
-			for (short tSlot = 0; tSlot < mInventory.length; tSlot++) if (mInventory[tSlot] != null && canSave(tSlot)) tList.appendTag(UT.NBT.makeShort(ST.save(mInventory[tSlot]), "s", tSlot));
+			for (short tSlot = 0; tSlot < mInventory.length; tSlot++) if (mInventory[tSlot] != null && canSave (tSlot)) tList.appendTag(UT.NBT.makeShort(ST.save(mInventory[tSlot]), "s", tSlot));
 			aNBT.setTag(NBT_INV_LIST, tList);
 		}
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT(NBTTagCompound aNBT) {
+		aNBT = super.writeItemNBT(aNBT);
+		if (mInventory != null && mInventory.length > 0) {
+			NBTTagList tList = new NBTTagList();
+			for (short tSlot = 0; tSlot < mInventory.length; tSlot++) if (mInventory[tSlot] != null && keepSlot(tSlot)) tList.appendTag(UT.NBT.makeShort(ST.save(mInventory[tSlot]), "s", tSlot));
+			aNBT.setTag(NBT_INV_LIST, tList);
+		}
+		return aNBT;
 	}
 	
 	public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {
@@ -108,9 +119,10 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	public void setInventory(ItemStack[] aInventory) {mInventory = aInventory;}
 	public void removeAllDroppableNullStacks() {for (int i = 0; i < mInventory.length; i++) if (canDrop(i) && mInventory[i] != null && mInventory[i].stackSize <= 0) mInventory[i] = NI;}
 	
-	public abstract boolean canDrop(int aSlot);
-	public boolean breakDrop(int aSlot) {return T;}
-	public boolean canSave  (int aSlot) {return T;}
+	public abstract boolean canDrop  (int aSlot);
+	public          boolean keepSlot (int aSlot) {return F;}
+	public          boolean breakDrop(int aSlot) {return T;}
+	public          boolean canSave  (int aSlot) {return T;}
 	/** Returns a Stack to be put into that Slot in case of a Mod being uninstalled causing a Loading Error for the original ItemStack. For example Shelves just replace the missing Item with a normal Book instead. */
 	public ItemStack getDefaultStack(int aSlot) {return null;}
 	

@@ -59,12 +59,15 @@ public class Loader_Recipes_Temporary implements Runnable {
 		// TODO: Better Coolant Item than Lapis.
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.MnWtr.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.MnWtr.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.SpDew.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.MnWtr.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		
 		
@@ -646,7 +649,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Water_Hot               .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Soda                    .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Mineralsoda             .make( 1), FL.Water.make(1));
-		RM.generify   (FL.Mineralwater            .make( 1), FL.Water.make(1));
+		RM.generify   (FL.MnWtr                   .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Oil_Olive               .make( 1), FL.Oil_Seed.make(2));
 		RM.generify   (FL.Oil_Nut                 .make( 1), FL.Oil_Seed.make(2));
 		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));

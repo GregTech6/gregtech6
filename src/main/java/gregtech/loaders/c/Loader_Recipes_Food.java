@@ -537,12 +537,12 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   36, OM.dust(MT.Tea     , U4), FL.mul(tWater,  1687, 1000, T), FL.Tea.make(1687), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.Tea         ), FL.mul(tWater,  6750, 1000, T), FL.Tea.make(6750), ZL_IS);
 		
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Mg          ), tWater, FL.Mineralwater.make(1000), ZL_IS);
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Ca          ), tWater, FL.Mineralwater.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Mg          ), tWater, FL.MnWtr.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Ca          ), tWater, FL.MnWtr.make(1000), ZL_IS);
 		
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.mul(tWater, 1, 4, T), MT.CO2.gas(U4, T)), FL.Soda.make(250), ZL_IS);
 		}
-		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Mineralwater.make(250), MT.CO2.gas(U4, T)), FL.Mineralsoda.make(250), ZL_IS);
+		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.MnWtr.make(250), MT.CO2.gas(U4, T)), FL.Mineralsoda.make(250), ZL_IS);
 		if (FL.Slime_Blue.exists())
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Blue  .make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.Slime_Green .make(250), MT.CO2.gas(U4, T)), FL.BAWLS.make(250), ZL_IS);
