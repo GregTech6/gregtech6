@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,12 @@
 
 package gregtech.items;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.damage.DamageSources;
 import gregapi.data.*;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.item.CreativeTab;
 import gregapi.item.bumble.IItemBumbleBee;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -60,6 +52,11 @@ import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee {
 	public MultiItemBumbles(String aModID, String aUnlocalized) {
@@ -645,7 +642,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	public IIcon PRINCESS, QUEEN, SCANNED, DEAD;
 	
-	@Override public IIcon getIconIndex(ItemStack aStack) {return mIconList[(ST.meta_(aStack)/10)*10][0];}
+	@Override public IIcon getIconIndex(ItemStack aStack) {return getIconFromDamage(ST.meta(aStack));}
 	@Override public IIcon getIconFromDamage(int aMetaData) {aMetaData /= 10; aMetaData *= 10; return UT.Code.exists(aMetaData, mIconList) ? mIconList[aMetaData][0] : Textures.ItemIcons.RENDERING_ERROR.getIcon(0);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIcon(aStack, aRenderPass);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}

@@ -23,7 +23,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetEnchantPowerBonus;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.*;
 import gregapi.data.*;
 import gregapi.data.LH.Chat;
 import gregapi.dummies.DummyInventory;
@@ -75,7 +74,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			if (UT.Code.exists(tShelfID, PlankData.PLANK_ICONS)) mShelfIcon = PlankData.PLANK_ICONS[tShelfID];
 		}
 		if (mShelfIcon == null || mShelfIcon == Textures.BlockIcons.RENDERING_ERROR) mShelfIcon = mMaterial.mTextureSetsBlock.get(OP.casingMachine.mIconIndexBlock);
-		for (int i = 0; i < 28; i++) {
+		for (int i = 0; i < mDisplay.length; i++) {
 			Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
 			if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
 			mDisplay[i] = (tID==null?0:tID);
@@ -143,7 +142,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	@Override
 	public float getEnchantPowerBonus() {
 		float tPoints = 0;
-		for (int i = 0; i < 28; i++) if (slotHas(i)) {
+		for (int i = 0; i < mDisplay.length; i++) if (slotHas(i)) {
 			if (BooksGT.BOOKS_ENCHANTED.contains(slot(i), T)) {tPoints += 2; continue;}
 			if (BooksGT.BOOKS_NORMAL   .contains(slot(i), T)) {tPoints += 1; continue;}
 		}
@@ -159,7 +158,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			if (mRedstoneDelay > 0) if (--mRedstoneDelay == 0) causeBlockUpdate();
 			
 			if (mInventoryChanged) {
-				for (int i = 0; i < 28; i++) {
+				for (int i = 0; i < mDisplay.length; i++) {
 					Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
 					if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
 					if (tID == null) tID = (byte)0;
@@ -254,7 +253,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
 		setDirectionData(aData[3]);
-		for (int i = 0; i < 28; i++) mDisplay[i] = aData[i+4];
+		for (int i = 0; i < mDisplay.length; i++) mDisplay[i] = aData[i+4];
 		return T;
 	}
 	
@@ -347,7 +346,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	// Inventory Stuff
 	@Override public int getInventoryStackLimit() {return 1;}
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return 1;}
-	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[28];}
+	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[mDisplay.length];}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public ItemStack getDefaultStack(int aSlot) {return ST.make(Items.book, 1, 0);}
 	

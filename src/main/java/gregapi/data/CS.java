@@ -485,7 +485,7 @@ public class CS {
 	/** Default Size Box. */
 	public static final float[] PX_BOX = {0,0,0,1,1,1};
 	
-	/** Array with length 17 containing the Coordinates of Pixels from 0/16 to 16/16 */
+	/** Array with length 17 and some overflow containing the Coordinates of Pixels from 0/16 to 16/16 */
 	public static final float[] PX_P = {
 		  0.0000F, 0.0625F, 0.1250F, 0.1875F
 		, 0.2500F, 0.3125F, 0.3750F, 0.4375F
@@ -497,7 +497,7 @@ public class CS {
 		, 1.7500F, 1.8125F, 1.8750F, 1.9375F
 		, 2.0000F}, PIXELS_POS = PX_P;
 	
-	/** Array with length 17 containing the Coordinates of Pixels from 16/16 to 0/16 */
+	/** Array with length 17 and some overflow containing the Coordinates of Pixels from 16/16 to 0/16 */
 	public static final float[] PX_N = {
 		  1.0000F, 0.9375F, 0.8750F, 0.8125F
 		, 0.7500F, 0.6875F, 0.6250F, 0.5625F

@@ -53,7 +53,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	public IIconContainer mIcon = Textures.BlockIcons.RENDERING_ERROR;
 	
-	@Override//TODO
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_TEXTURE)) {
@@ -61,62 +61,42 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 			if (UT.Code.exists(tShelfID, PlankData.PLANK_ICONS)) mIcon = PlankData.PLANK_ICONS[tShelfID];
 		}
 		if (mIcon == null || mIcon == Textures.BlockIcons.RENDERING_ERROR) mIcon = mMaterial.mTextureSetsBlock.get(OP.casingMachine.mIconIndexBlock);
-		for (int i = 0; i < 28; i++) {
-			Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
-			if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
-			mDisplay[i] = (tID==null?0:tID);
+		for (int i = 0; i < mDisplay.length; i++) {
+			//TODO
+			mDisplay[i] = 0;
 		}
 	}
 	
-	@Override//TODO
-	public void writeToNBT2(NBTTagCompound aNBT) {
-		super.writeToNBT2(aNBT);
-	}
-	
-	@Override//TODO dont forget to remove drops, maybe make a keep inventory function in the inventory thing, and use it for Mass Storages!
-	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		return super.writeItemNBT2(aNBT);
-	}
-	
-	@Override//TODO
+	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
-		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override//TODO
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide) {
-			if (mInventoryChanged) {
-				for (int i = 0; i < 28; i++) {
-					Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
-					if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
-					if (tID == null) tID = (byte)0;
-					if (tID != mDisplay[i]) {mDisplay[i] = tID; updateClientData();}
-				}
+		if (aIsServerSide && mInventoryChanged) {
+			for (int i = 0; i < mDisplay.length; i++) {
+				Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
+				if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
+				if (tID == null) tID = (byte)0;
+				if (tID != mDisplay[i]) {mDisplay[i] = tID; updateClientData();}
 			}
 		}
 	}
 	
-	@Override//TODO
+	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
-		if (tCoords[0] >= PX_P[1] && tCoords[0] <= PX_N[1] && tCoords[1] >= PX_P[1] && tCoords[1] <= PX_N[1]) {
-			if (aSide == mFacing) {
-				if (isServerSide()) swapBottles(aPlayer, (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1]))));
-				return T;
-			}
-			if (aSide == OPOS[mFacing]) {
-				if (isServerSide()) swapBottles(aPlayer, (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1]))));
-				return T;
-			}
+		if (!SIDES_TOP[aSide]) return F;
+		if (aHitX >= PX_P[1] && aHitX <= PX_N[1] && aHitZ >= PX_P[1] && aHitZ <= PX_N[1]) {
+			if (isServerSide()) swapBottles(aPlayer, (aHitX<PX_P[5]+PX_P[1]/2?0:aHitX<PX_P[10]+PX_P[1]/2?1:2) + (aHitZ<PX_P[5]+PX_P[1]/2?0:aHitZ<PX_P[10]+PX_P[1]/2?3:6));
+			return T;
 		}
 		return F;
 	}
 	
-	private boolean swapBottles(EntityPlayer aPlayer, int aSlot) {//TODO
+	private boolean swapBottles(EntityPlayer aPlayer, int aSlot) {
 		if (slotHas(aSlot)) {
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(aSlot), T)) {
 				slotKill(aSlot);
@@ -127,9 +107,9 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 			return F;
 		}
 		ItemStack tStack = aPlayer.getCurrentEquippedItem();
-		if (ST.valid(tStack) && BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
-			slot(aSlot, ST.amount(1, tStack));
-			tStack.stackSize--;
+		if (ST.valid(tStack) && canInsertItem2(aSlot, tStack, SIDE_TOP)) {
+			slot(aSlot, ST.copy(tStack));
+			tStack.stackSize = 0;
 			updateInventory();
 			playCollect();
 			return T;
@@ -146,7 +126,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
 		setDirectionData(aData[3]);
-		for (int i = 0; i < 9; i++) mDisplay[i] = UT.Code.combine(aData[i*2+4], aData[i*2+5]);
+		for (int i = 0; i < mDisplay.length; i++) mDisplay[i] = UT.Code.combine(aData[i*2+4], aData[i*2+5]);
 		return T;
 	}
 	
@@ -210,7 +190,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
-	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[9];}
+	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[mDisplay.length];}
 	@Override public boolean canDrop (int aSlot) {return F;}
 	@Override public boolean keepSlot(int aSlot) {return T;}
 	@Override public ItemStack getDefaultStack(int aSlot) {return IL.Bottle_Empty.get(1);}
