@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.tileentity.misc;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanEntityDestroy;
 import gregapi.data.LH;
@@ -41,6 +37,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -90,7 +90,7 @@ public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable impleme
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	
-	@Override public boolean canDrop(int aSlot) {return T;}
+	@Override public boolean canDrop(int aSlot) {return LAST_BROKEN_TILEENTITY.get() == this;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[9];}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.bumble.hive";}

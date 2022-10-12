@@ -518,6 +518,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Drying       .addRecipe0(T, 16,   16, FL.Stagnant_Water.make(10)     , FL.DistW.make(5), ZL_IS);
 		
 		RM.Drying       .addRecipe1(T, 16,60000, OP.dust.mat(MT.OREMATS.Mirabilite,  7), NF, FL.DistW.make(30000), OP.dust.mat(MT.Na2SO4  , 7));
+		RM.Drying       .addRecipe1(T, 16,18000, OP.dust.mat(MT.AlO3H3            , 14), NF, FL.DistW.make( 9000), OP.dust.mat(MT.Al2O3   , 5));
 		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4             ,  7), NF, FL.DistW.make( 3000), OP.dust.mat(MT.WO3     , 4));
 		RM.Drying       .addRecipe1(T, 16, 4000, OP.dust.mat(MT.OREMATS.Bischofite,  1), NF, FL.DistW.make( 2000), OP.dust.mat(MT.MgCl2   , 1));
 		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Trona     ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.Na2CO3  , 1));
