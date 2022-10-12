@@ -1345,7 +1345,7 @@ public class CS {
 			if (ST.invalid(aStack) || aStack.stackSize <= 0 || ST.meta_(aStack) == W || BLACKLIST.contains(aStack, T)) return 0;
 			if (aStack.hasTagCompound()) {
 				for (ItemStack tGarbage : GARBAGE_ITEMS) if (ST.equal(aStack, tGarbage)) {
-					tGarbage.stackSize = UT.Code.bindInt((long)tGarbage.stackSize + (long)aStack.stackSize);
+					tGarbage.stackSize = UT.Code.bind31((long)tGarbage.stackSize + (long)aStack.stackSize);
 					return aStack.stackSize;
 				}
 				GARBAGE_ITEMS.add(aStack.copy());
@@ -1353,7 +1353,7 @@ public class CS {
 			}
 			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(aStack);
 			if (ST.valid(tGarbage)) {
-				tGarbage.stackSize = UT.Code.bindInt((long)tGarbage.stackSize + (long)aStack.stackSize);
+				tGarbage.stackSize = UT.Code.bind31((long)tGarbage.stackSize + (long)aStack.stackSize);
 				return aStack.stackSize;
 			}
 			aStack = aStack.copy();
@@ -1403,7 +1403,7 @@ public class CS {
 		}
 		public static long trash(IFluidTank aTank, long aTrashed) {
 			if (aTank == null || aTrashed <= 0) return 0;
-			return aTank instanceof FluidTankGT ? trash(aTank.getFluid(), ((FluidTankGT)aTank).remove(aTrashed)) : trash(aTank.drain(UT.Code.bindInt(aTrashed), T));
+			return aTank instanceof FluidTankGT ? trash(aTank.getFluid(), ((FluidTankGT)aTank).remove(aTrashed)) : trash(aTank.drain(UT.Code.bind31(aTrashed), T));
 		}
 		public static long trash(IFluidTank[] aTanks) {
 			if (aTanks == null) return 0;
