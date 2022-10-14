@@ -30,6 +30,7 @@ import gregapi.data.OP;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
+import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -130,50 +131,29 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		return T;
 	}
 	
-	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return 27;}
-	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass < 9 || mDisplay[(aRenderPass-9)/2] == 0;}
+	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return 36;}
+	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass < 9 || mDisplay[(aRenderPass-9)/3] == 0;}
 	
-	@Override//TODO
+	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return F;
-		case  1: box(aBlock, PX_P[                         0], PX_P[                         0], PX_P[                         0], PX_N[                         0], PX_N[                        15], PX_N[                         0]); return T;
-		case  2: box(aBlock, PX_P[                         0], PX_P[                        15], PX_P[                         0], PX_N[                         0], PX_N[                         0], PX_N[                         0]); return T;
-		case  3: box(aBlock, PX_P[                         0], PX_P[                         1], PX_P[                         0], PX_N[SIDES_AXIS_Z[mFacing]?15:0], PX_N[                         1], PX_N[SIDES_AXIS_X[mFacing]?15:0]); return T;
-		case  4: box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]?15:0], PX_P[                         1], PX_P[SIDES_AXIS_X[mFacing]?15:0], PX_N[                         0], PX_N[                         1], PX_N[                         0]); return T;
-		case  5: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7:1], PX_P[                         1], PX_P[SIDES_AXIS_Z[mFacing]? 7:1], PX_N[SIDES_AXIS_X[mFacing]? 7:1], PX_N[                         1], PX_N[SIDES_AXIS_Z[mFacing]? 7:1]); return T;
-		case  6: box(aBlock, PX_P[                         1], PX_P[                         7], PX_P[                         1], PX_N[                         1], PX_N[                         7], PX_N[                         1]); return T;
-		default:
-			aRenderPass-=7;
-			switch(mFacing) {
-			case SIDE_X_POS:
-				if (aRenderPass <  7) {                box(aBlock, PX_P[               9], PX_P[               9], PX_N[15-aRenderPass*2], PX_N[               2], PX_N[               1], PX_N[13-aRenderPass*2]); return T;}
-				if (aRenderPass < 14) {aRenderPass%=7; box(aBlock, PX_P[               9], PX_P[               1], PX_N[15-aRenderPass*2], PX_N[               2], PX_N[               9], PX_N[13-aRenderPass*2]); return T;}
-				if (aRenderPass < 21) {aRenderPass%=7; box(aBlock, PX_P[               2], PX_P[               9], PX_N[ 3+aRenderPass*2], PX_N[               9], PX_N[               1], PX_N[ 1+aRenderPass*2]); return T;}
-									   aRenderPass%=7; box(aBlock, PX_P[               2], PX_P[               1], PX_N[ 3+aRenderPass*2], PX_N[               9], PX_N[               9], PX_N[ 1+aRenderPass*2]); return T;
-			case SIDE_X_NEG:
-				if (aRenderPass <  7) {                box(aBlock, PX_P[               2], PX_P[               9], PX_P[13-aRenderPass*2], PX_N[               9], PX_N[               1], PX_P[15-aRenderPass*2]); return T;}
-				if (aRenderPass < 14) {aRenderPass%=7; box(aBlock, PX_P[               2], PX_P[               1], PX_P[13-aRenderPass*2], PX_N[               9], PX_N[               9], PX_P[15-aRenderPass*2]); return T;}
-				if (aRenderPass < 21) {aRenderPass%=7; box(aBlock, PX_P[               9], PX_P[               9], PX_P[ 1+aRenderPass*2], PX_N[               2], PX_N[               1], PX_P[ 3+aRenderPass*2]); return T;}
-									   aRenderPass%=7; box(aBlock, PX_P[               9], PX_P[               1], PX_P[ 1+aRenderPass*2], PX_N[               2], PX_N[               9], PX_P[ 3+aRenderPass*2]); return T;
-			case SIDE_Z_POS:
-				if (aRenderPass <  7) {                box(aBlock, PX_N[ 3+aRenderPass*2], PX_P[               9], PX_P[               9], PX_N[ 1+aRenderPass*2], PX_N[               1], PX_N[               2]); return T;}
-				if (aRenderPass < 14) {aRenderPass%=7; box(aBlock, PX_N[ 3+aRenderPass*2], PX_P[               1], PX_P[               9], PX_N[ 1+aRenderPass*2], PX_N[               9], PX_N[               2]); return T;}
-				if (aRenderPass < 21) {aRenderPass%=7; box(aBlock, PX_N[15-aRenderPass*2], PX_P[               9], PX_P[               2], PX_N[13-aRenderPass*2], PX_N[               1], PX_N[               9]); return T;}
-									   aRenderPass%=7; box(aBlock, PX_N[15-aRenderPass*2], PX_P[               1], PX_P[               2], PX_N[13-aRenderPass*2], PX_N[               9], PX_N[               9]); return T;
-			case SIDE_Z_NEG:
-				if (aRenderPass <  7) {                box(aBlock, PX_P[ 1+aRenderPass*2], PX_P[               9], PX_P[               2], PX_P[ 3+aRenderPass*2], PX_N[               1], PX_N[               9]); return T;}
-				if (aRenderPass < 14) {aRenderPass%=7; box(aBlock, PX_P[ 1+aRenderPass*2], PX_P[               1], PX_P[               2], PX_P[ 3+aRenderPass*2], PX_N[               9], PX_N[               9]); return T;}
-				if (aRenderPass < 21) {aRenderPass%=7; box(aBlock, PX_P[13-aRenderPass*2], PX_P[               9], PX_P[               9], PX_P[15-aRenderPass*2], PX_N[               1], PX_N[               2]); return T;}
-									   aRenderPass%=7; box(aBlock, PX_P[13-aRenderPass*2], PX_P[               1], PX_P[               9], PX_P[15-aRenderPass*2], PX_N[               9], PX_N[               2]); return T;
-			}
+		case  0: return box(aBlock, PX_P[                          1], PX_P[                          0], PX_P[                          1], PX_N[                          1], PX_N[                         15], PX_N[                          1]);
+		case  1: return box(aBlock, PX_P[                          1], PX_P[                          1], PX_P[                          5], PX_N[                          1], PX_N[SIDES_AXIS_X[mFacing]?12:11], PX_N[                         10]);
+		case  2: return box(aBlock, PX_P[                          1], PX_P[                          1], PX_P[                         10], PX_N[                          1], PX_N[SIDES_AXIS_X[mFacing]?12:11], PX_N[                          5]);
+		case  3: return box(aBlock, PX_P[                          5], PX_P[                          1], PX_P[                          1], PX_N[                         10], PX_N[SIDES_AXIS_X[mFacing]?11:12], PX_N[                          1]);
+		case  4: return box(aBlock, PX_P[                         10], PX_P[                          1], PX_P[                          1], PX_N[                          5], PX_N[SIDES_AXIS_X[mFacing]?11:12], PX_N[                          1]);
+		case  5: return box(aBlock, PX_P[                          0], PX_P[                          0], PX_P[                          0], PX_N[SIDES_AXIS_X[mFacing]? 0:15], PX_N[                          8], PX_N[SIDES_AXIS_X[mFacing]?15: 0]);
+		case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0:15], PX_P[                          0], PX_P[SIDES_AXIS_X[mFacing]?15: 0], PX_N[                          0], PX_N[                          8], PX_N[                          0]);
+		case  7: return box(aBlock, PX_P[                          1], PX_P[                          6], PX_P[                          1], PX_N[SIDES_AXIS_X[mFacing]?14: 1], PX_N[                          8], PX_N[SIDES_AXIS_X[mFacing]? 1:14]);
+		case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 1], PX_P[                          6], PX_P[SIDES_AXIS_X[mFacing]? 1:14], PX_N[                          1], PX_N[                          8], PX_N[                          1]);
+		//TODO
 		}
 		return F;
 	}
 	
-	@Override//TODO
+	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return (BooksGT.BOOK_TEXTURES_SIDE)[UT.Code.unsignS(mDisplay[aRenderPass-7])];
+		return aRenderPass < 9 ? BlockTextureDefault.get(mIcon, mRGBa) : BlockTextureDefault.get(mIcon);//TODO
 	}
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_N[8],PX_N[0]);}

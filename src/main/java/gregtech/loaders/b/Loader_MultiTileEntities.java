@@ -131,22 +131,23 @@ public class Loader_MultiTileEntities implements Runnable {
 		misc       (aRegistry, aMetal, aMetalChips, aMetalWires, aMachine, aWooden, aBush, aStone, aWool, aTNT, aHive, aUtilMetal, aUtilStone, aUtilWood, aUtilWool, MT.NULL, null);
 	}
 	
-	private static void metalset(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, OreDictMaterial aMat, int aID, float aHardness, float aResistance, int aHopperSize) {
-		aRegistry.add(aMat.getLocal() + " Chest"                         , "Chests"         ,      aID, 32745, MultiTileEntityChest.class                , 0                , 16, aMetal  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, 54, NBT_TEXTURE, "metalchest"                         ), "sPw", "RSR", "PPP", 'P', OP.plate.dat(aMat), 'R', OP.ring.dat(aMat), 'S', OP.stick.dat(aMat));
-		aRegistry.add(aMat.getLocal() + " reinforced wooden Chest"       , "Chests"         ,  500+aID, 32745, MultiTileEntityChest.class                , 0                , 16, aWooden , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness/2, NBT_RESISTANCE, aResistance/2, NBT_INV_SIZE, 54, NBT_TEXTURE, "woodchest", NBT_FLAMMABILITY, 100   ), "sSw", "RCR", "SSS", 'C', OD.craftingChest, 'R', OP.ring.dat(aMat), 'S', OP.stick.dat(aMat));
-		aRegistry.add("Mechanical " + aMat.getLocal() + " Safe"          , "Safes"          , 2000+aID,  2010, MultiTileEntitySafeMechanical.class       , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness*2, NBT_RESISTANCE, aResistance*2, NBT_INV_SIZE, 15                                                    ), "PGP", "GOS", "PGP", 'P', OP.plateQuintuple.dat(aMat), 'G', OP.gearGtSmall.dat(aMat), 'O', OP.gearGt.dat(aMat), 'S', OP.stick.dat(aMat));
-		aRegistry.add("Key Locked " + aMat.getLocal() + " Safe"          , "Safes"          , 3000+aID,  2010, MultiTileEntitySafeKeyLocked.class        , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness*2, NBT_RESISTANCE, aResistance*2, NBT_INV_SIZE, 15                                                    ), "PGP", "OGS", "PGP", 'P', OP.plateQuintuple.dat(aMat), 'G', OP.gearGtSmall.dat(aMat), 'O', OP.gearGt.dat(aMat), 'S', OP.stick.dat(aMat));
-		aRegistry.add("Advanced Crafting Table ("    +aMat.getLocal()+")", "Crafting Tables", 5000+aID,  5010, MultiTileEntityAdvancedCraftingTable.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "PdP", "TWT", "PCP", 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat), 'W', OD.craftingWorkBench, 'C', OD.craftingChest);
-		aRegistry.add("Charging Crafting Table ("    +aMat.getLocal()+")", "Crafting Tables", 5500+aID,  5010, MultiTileEntityChargingCraftingTable.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_GUI, RES_PATH_GUI + "machines/AdvancedCraftingTableCharging.png"), "WTW", "dMx", "WTW", 'T', OP.screw.dat(aMat), 'M', aRegistry.getItem(5000+aID), 'W', MT.DATA.CABLES_04[3]);
-		aRegistry.add("Locker ("+ aMat.getLocal() + ")"                  , "Storage"        , 7300+aID, 32751, MultiTileEntityLocker.class               , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "SdS", "LCL", "TMT", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID), 'M', OP.casingMachine.dat(aMat), 'S', OP.stick.dat(aMat), 'L', OD.craftingLeather);
-		aRegistry.add("Charging Locker ("+ aMat.getLocal() + ")"         , "Storage"        , 7500+aID, 32751, MultiTileEntityLockerCharging.class       , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "WCW", "WMW", "WCW", 'M', aRegistry.getItem(7300+aID), 'W', MT.DATA.CABLES_01[3], 'C', OD_CIRCUITS[3]);
-		aRegistry.add("Compartment Drawer ("+ aMat.getLocal() + ")"      , "Storage"        , 4000+aID, 32751, MultiTileEntityDrawerQuad.class           , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "CTC", "TdT", "CTC", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID));
-		aRegistry.add("Mass Storage ("+ aMat.getLocal() + ")"            , "Storage"        , 6000+aID, 32751, MultiTileEntityMassStorageStandard.class  , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "TCT", "wMd", "TCT", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID), 'M', OP.casingMachine.dat(aMat));
-		aRegistry.add("Logistics Mass Storage ("+ aMat.getLocal() + ")"  , "Logistics"      , 6200+aID, 17997, MultiTileEntityMassStorageLogistics.class , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, MT.Black, NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "TQT", "wCd", "TMT", 'T', OP.screw.dat(aMat), 'M', aRegistry.getItem(6000+aID), 'Q', IL.Cover_Logistics_Generic_Storage, 'C', OD_CIRCUITS[4]);
-		aRegistry.add("Bookshelf ("                  +aMat.getLocal()+")", "Storage"        , 7100+aID, 32751, MultiTileEntityBookShelf.class            , aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "PTP", "sdh", "PTP", 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat));
-		aRegistry.add(aMat.getLocal() + " Hopper"                        , "Hoppers"        , 8000+aID,  8010, MultiTileEntityHopper.class               , 0                , 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, Math.max(1, aHopperSize)                              ), "PwP", "XCX", " Xh", 'P', OP.plate.dat(aMat), 'X', OP.plateCurved.dat(aMat), 'C', OD.craftingChest);
-		aRegistry.add(aMat.getLocal() + " Queue Hopper"                  , "Hoppers"        , 8200+aID,  8010, MultiTileEntityQueueHopper.class          , 0                , 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, Math.max(2, aHopperSize)                              ), "PCP", "XCX", "wXh", 'P', OP.plate.dat(aMat), 'X', OP.plateCurved.dat(aMat), 'C', OD.craftingChest);
-		aRegistry.add(aMat.getLocal() + " Scaffold"                      , "Scaffolds"      , 8400+aID,  8410, MultiTileEntityScaffold.class             , 0                , 64, aMachine, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, 5.0F       , NBT_RESISTANCE, aResistance                                                                        ), "TPT", "SdS"       , 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat), 'S', OP.stick.dat(aMat));
+	private static void metalset(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, OreDictMaterial aMat, int aID, float aHardness, float aResistance, int aHopperSize) {
+		aRegistry.add(aMat.getLocal()+" Chest"                           , "Chests"         ,      aID, 32745, MultiTileEntityChest.class                , 0                , 16, aMetal    , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, 54, NBT_TEXTURE, "metalchest"                         ), "sPw", "RSR", "PPP", 'P', OP.plate.dat(aMat), 'R', OP.ring.dat(aMat), 'S', OP.stick.dat(aMat));
+		aRegistry.add(aMat.getLocal()+" reinforced wooden Chest"         , "Chests"         ,  500+aID, 32745, MultiTileEntityChest.class                , 0                , 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness/2, NBT_RESISTANCE, aResistance/2, NBT_INV_SIZE, 54, NBT_TEXTURE, "woodchest", NBT_FLAMMABILITY, 100   ), "sSw", "RCR", "SSS", 'C', OD.craftingChest, 'R', OP.ring.dat(aMat), 'S', OP.stick.dat(aMat));
+		aRegistry.add("Mechanical "+aMat.getLocal()+" Safe"              , "Safes"          , 2000+aID,  2010, MultiTileEntitySafeMechanical.class       , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness*2, NBT_RESISTANCE, aResistance*2, NBT_INV_SIZE, 15                                                    ), "PGP", "GOS", "PGP", 'P', OP.plateQuintuple.dat(aMat), 'G', OP.gearGtSmall.dat(aMat), 'O', OP.gearGt.dat(aMat), 'S', OP.stick.dat(aMat));
+		aRegistry.add("Key Locked "+aMat.getLocal()+" Safe"              , "Safes"          , 3000+aID,  2010, MultiTileEntitySafeKeyLocked.class        , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness*2, NBT_RESISTANCE, aResistance*2, NBT_INV_SIZE, 15                                                    ), "PGP", "OGS", "PGP", 'P', OP.plateQuintuple.dat(aMat), 'G', OP.gearGtSmall.dat(aMat), 'O', OP.gearGt.dat(aMat), 'S', OP.stick.dat(aMat));
+		aRegistry.add("Advanced Crafting Table ("    +aMat.getLocal()+")", "Crafting Tables", 5000+aID,  5010, MultiTileEntityAdvancedCraftingTable.class, aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "PdP", "TWT", "PCP", 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat), 'W', OD.craftingWorkBench, 'C', OD.craftingChest);
+		aRegistry.add("Charging Crafting Table ("    +aMat.getLocal()+")", "Crafting Tables", 5500+aID,  5010, MultiTileEntityChargingCraftingTable.class, aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_GUI, RES_PATH_GUI + "machines/AdvancedCraftingTableCharging.png"), "WTW", "dMx", "WTW", 'T', OP.screw.dat(aMat), 'M', aRegistry.getItem(5000+aID), 'W', MT.DATA.CABLES_04[3]);
+		aRegistry.add("Locker ("                     +aMat.getLocal()+")", "Storage"        , 7300+aID, 32751, MultiTileEntityLocker.class               , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "SdS", "LCL", "TMT", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID), 'M', OP.casingMachine.dat(aMat), 'S', OP.stick.dat(aMat), 'L', OD.craftingLeather);
+		aRegistry.add("Charging Locker ("            +aMat.getLocal()+")", "Storage"        , 7500+aID, 32751, MultiTileEntityLockerCharging.class       , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "WCW", "WMW", "WCW", 'M', aRegistry.getItem(7300+aID), 'W', MT.DATA.CABLES_01[3], 'C', OD_CIRCUITS[3]);
+		aRegistry.add("Compartment Drawer ("         +aMat.getLocal()+")", "Storage"        , 4000+aID, 32751, MultiTileEntityDrawerQuad.class           , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "CTC", "TdT", "CTC", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID));
+		aRegistry.add("Mass Storage ("               +aMat.getLocal()+")", "Storage"        , 6000+aID, 32751, MultiTileEntityMassStorageStandard.class  , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "TCT", "wMd", "TCT", 'T', OP.screw.dat(aMat), 'C', aRegistry.getItem(aID), 'M', OP.casingMachine.dat(aMat));
+		aRegistry.add("Logistics Mass Storage ("     +aMat.getLocal()+")", "Logistics"      , 6200+aID, 17997, MultiTileEntityMassStorageLogistics.class , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, MT.Black, NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "TQT", "wCd", "TMT", 'T', OP.screw.dat(aMat), 'M', aRegistry.getItem(6000+aID), 'Q', IL.Cover_Logistics_Generic_Storage, 'C', OD_CIRCUITS[4]);
+		aRegistry.add("Bookshelf ("                  +aMat.getLocal()+")", "Storage"        , 7100+aID, 32751, MultiTileEntityBookShelf.class            , aMat.mToolQuality, 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance                                                                        ), "PTP", "sdh", "PTP", 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat));
+		aRegistry.add("Bottlecrate ("                +aMat.getLocal()+")", "Storage"        , 8600+aID, 32751, MultiTileEntityBottleCrate.class          , 0                , 16, aUtilMetal, UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, 1.0F       , NBT_RESISTANCE, aResistance                                                                        ), "CdC", "TCT"       , 'T', OP.screw.dat(aMat), 'C', OP.casingSmall.dat(aMat));
+		aRegistry.add(aMat.getLocal()+" Hopper"                          , "Hoppers"        , 8000+aID,  8010, MultiTileEntityHopper.class               , 0                , 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, Math.max(1, aHopperSize)                              ), "PwP", "XCX", " Xh", 'P', OP.plate.dat(aMat), 'X', OP.plateCurved.dat(aMat), 'C', OD.craftingChest);
+		aRegistry.add(aMat.getLocal()+" Queue Hopper"                    , "Hoppers"        , 8200+aID,  8010, MultiTileEntityQueueHopper.class          , 0                , 16, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, aHardness  , NBT_RESISTANCE, aResistance  , NBT_INV_SIZE, Math.max(2, aHopperSize)                              ), "PCP", "XCX", "wXh", 'P', OP.plate.dat(aMat), 'X', OP.plateCurved.dat(aMat), 'C', OD.craftingChest);
+		aRegistry.add(aMat.getLocal()+" Scaffold"                        , "Scaffolds"      , 8400+aID,  8410, MultiTileEntityScaffold.class             , 0                , 64, aMachine  , UT.NBT.make(NBT_MATERIAL, aMat    , NBT_HARDNESS, 5.0F       , NBT_RESISTANCE, aResistance                                                                        ), "TPT", "SdS"       , 'T', OP.screw.dat(aMat), 'P', OP.plate.dat(aMat), 'S', OP.stick.dat(aMat));
 	}
 	
 	private static void storages(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<?> aClass) {
@@ -180,66 +181,67 @@ public class Loader_MultiTileEntities implements Runnable {
 		CR.shapeless(aRegistry.getItem(6994), CR.DEF_NCC, new Object[] {aRegistry.getItem(6993)});
 		CR.shapeless(aRegistry.getItem(6993), CR.DEF_NCC, new Object[] {aRegistry.getItem(6996)});
 		
-		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7000, 32751, MultiTileEntityBookShelf.class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i    , NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i    ])), ST.invalid(PlankData.PLANKS[i    ]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i    ]});
-		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7900, 32751, MultiTileEntityBookShelf.class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+100, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+100])), ST.invalid(PlankData.PLANKS[i+100]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+100]});
-		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7800, 32751, MultiTileEntityBookShelf.class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+200, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+200])), ST.invalid(PlankData.PLANKS[i+200]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+200]});
+		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7000, 32751, MultiTileEntityBookShelf  .class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i    , NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i    ])), ST.invalid(PlankData.PLANKS[i    ]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i    ]});
+		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7900, 32751, MultiTileEntityBookShelf  .class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+100, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+100])), ST.invalid(PlankData.PLANKS[i+100]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+100]});
+		for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf"        , "Storage",i+7800, 32751, MultiTileEntityBookShelf  .class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+200, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+200])), ST.invalid(PlankData.PLANKS[i+200]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+200]});
+		for (int i = 0; i < 300; i++) aRegistry.add("Wooden Bottlecrate"      , "Storage",i+8700, 32751, MultiTileEntityBottleCrate.class, 0, 16, aWooden, UT.NBT.make(NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i    , NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i    ])), ST.invalid(PlankData.PLANKS[i    ]) ? ZL : new Object[] {"sfr", "PGP", "BPB", 'P', PlankData.PLANKS[i    ], 'B', OP.bolt.dat(ANY.Wood), 'G', OD.itemGlue});
 		
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Pb                    ,    0,   4.0F,   4.0F,  1);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bi                    ,   16,   4.0F,   4.0F,  2);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Constantan            ,   37,   4.0F,   4.0F,  3);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Al                    ,    1,   2.0F,   2.0F,  4);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Brass                 ,    8,   2.5F,   2.5F,  4);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TinAlloy              ,    5,   3.0F,   3.0F,  4);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Co                    ,   21,   4.0F,   4.0F,  4);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ardite                ,   38,   2.0F,   2.0F,  4);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ge                    ,   23,   4.0F,   4.0F,  5);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Invar                 ,    6,   4.0F,   4.0F,  5);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Steel                 ,   10,   6.0F,   6.0F,  5);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.HSLA                  ,   18,   6.0F,   6.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Au                    ,    2,   3.0F,   3.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ag                    ,    3,   3.0F,   3.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Mn                    ,   46,   6.0F,   6.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manyullyn             ,   39,   4.0F,   4.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Lumium                ,   54,   2.0F,   2.0F,  6);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Knightmetal           ,   25,   7.0F,   7.0F,  7);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.SteelGalvanized       ,   19,   6.0F,   6.0F,  7);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Meteorite             ,   43,   7.0F,   7.0F,  7);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.MeteoricSteel         ,   24,   8.0F,   8.0F,  8);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.GildedIron            ,   20,   6.0F,   6.0F,  8);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Mo                    ,   49,   6.0F,   6.0F,  8);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Syrmorite             ,   44,   4.0F,   4.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Electrum              ,    7,   3.0F,   3.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.StainlessSteel        ,   11,   5.0F,   5.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Thaumium              ,   27,   9.0F,   9.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manasteel             ,   40,   9.0F,   9.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Efrine                ,   53,   8.0F,   8.0F,  9);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TungstenAlloy         ,   52,   8.0F,   8.0F, 12);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ti                    ,   12,   9.0F,   9.0F, 12);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Netherite             ,   51,  10.0F,  10.0F, 12);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Cr                    ,   13,   4.0F,   4.0F, 14);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Pt                    ,    4,   2.0F,   2.0F, 18);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Octine                ,   45,   8.0F,   8.0F, 18);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Desh                  ,   30,  15.0F,  15.0F, 18);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Terrasteel            ,   42,  15.0F,  15.0F, 18);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TungstenSteel         ,   14,  12.5F,  12.5F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TungstenCarbide       ,   17,  12.5F,  12.5F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DuraniumAlloy         ,   31,  20.0F,  20.0F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Draconium             ,   35,  50.0F,  50.0F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ultimet               ,   48,  12.5F,  12.5F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DeshAlloy             ,   55,  15.0F,  15.0F, 27);
-		metalset(aRegistry, aMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Os                    ,   29,   9.0F,   9.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.VoidMetal             ,   28,  30.0F,  30.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.ElvenElementium       ,   41,  30.0F,  30.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TritaniumAlloy        ,   32,  30.0F,  30.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 56 is next
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Pb                    ,    0,   4.0F,   4.0F,  1);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bi                    ,   16,   4.0F,   4.0F,  2);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Constantan            ,   37,   4.0F,   4.0F,  3);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Al                    ,    1,   2.0F,   2.0F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Brass                 ,    8,   2.5F,   2.5F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TinAlloy              ,    5,   3.0F,   3.0F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Co                    ,   21,   4.0F,   4.0F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ardite                ,   38,   2.0F,   2.0F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ge                    ,   23,   4.0F,   4.0F,  5);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Invar                 ,    6,   4.0F,   4.0F,  5);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Steel                 ,   10,   6.0F,   6.0F,  5);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.HSLA                  ,   18,   6.0F,   6.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Au                    ,    2,   3.0F,   3.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ag                    ,    3,   3.0F,   3.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Mn                    ,   46,   6.0F,   6.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Manyullyn             ,   39,   4.0F,   4.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Lumium                ,   54,   2.0F,   2.0F,  6);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Knightmetal           ,   25,   7.0F,   7.0F,  7);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.SteelGalvanized       ,   19,   6.0F,   6.0F,  7);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Meteorite             ,   43,   7.0F,   7.0F,  7);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.MeteoricSteel         ,   24,   8.0F,   8.0F,  8);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.GildedIron            ,   20,   6.0F,   6.0F,  8);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Mo                    ,   49,   6.0F,   6.0F,  8);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Syrmorite             ,   44,   4.0F,   4.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Electrum              ,    7,   3.0F,   3.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.StainlessSteel        ,   11,   5.0F,   5.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Thaumium              ,   27,   9.0F,   9.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Manasteel             ,   40,   9.0F,   9.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Efrine                ,   53,   8.0F,   8.0F,  9);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TungstenAlloy         ,   52,   8.0F,   8.0F, 12);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ti                    ,   12,   9.0F,   9.0F, 12);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Netherite             ,   51,  10.0F,  10.0F, 12);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Cr                    ,   13,   4.0F,   4.0F, 14);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Pt                    ,    4,   2.0F,   2.0F, 18);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Octine                ,   45,   8.0F,   8.0F, 18);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Desh                  ,   30,  15.0F,  15.0F, 18);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Terrasteel            ,   42,  15.0F,  15.0F, 18);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TungstenSteel         ,   14,  12.5F,  12.5F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TungstenCarbide       ,   17,  12.5F,  12.5F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DuraniumAlloy         ,   31,  20.0F,  20.0F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Draconium             ,   35,  50.0F,  50.0F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ultimet               ,   48,  12.5F,  12.5F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DeshAlloy             ,   55,  15.0F,  15.0F, 27);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Os                    ,   29,   9.0F,   9.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.VoidMetal             ,   28,  30.0F,  30.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.ElvenElementium       ,   41,  30.0F,  30.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TritaniumAlloy        ,   32,  30.0F,  30.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 56 is next
 	}
 	
 	private static void crucible(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {
