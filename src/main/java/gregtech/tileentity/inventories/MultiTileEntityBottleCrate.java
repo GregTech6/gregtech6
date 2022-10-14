@@ -23,6 +23,7 @@ import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ItemStackContainer;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -30,7 +31,9 @@ import gregapi.data.OP;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureFluid;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -64,7 +67,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		if (mIcon == null || mIcon == Textures.BlockIcons.RENDERING_ERROR) mIcon = mMaterial.mTextureSetsBlock.get(OP.casingMachine.mIconIndexBlock);
 		for (int i = 0; i < mDisplay.length; i++) {
 			//TODO
-			mDisplay[i] = 0;
+			mDisplay[i] = (short)-i;
 		}
 	}
 	
@@ -131,8 +134,19 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		return T;
 	}
 	
-	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return 36;}
-	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass < 9 || mDisplay[(aRenderPass-9)/3] != 0;}
+	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {mTexture = BlockTextureDefault.get(mIcon, mRGBa); return 36;}
+	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {
+		if (aRenderPass < 9) return T;
+		short tDisplay = mDisplay[(aRenderPass-9)/3];
+		if (tDisplay == 0) return F;
+		if ((aRenderPass-9)%3==0) {
+			if (tDisplay == Short.MIN_VALUE) return F;
+			mTextureFluid = (tDisplay < 0 ? BlockTextureFluid.get(FL.make(-tDisplay-1, 250)) : UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)?OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten():null);
+		}
+		return T;
+	}
+	
+	private ITexture mTexture, mTextureFluid;
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
@@ -153,7 +167,13 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 9 ? BlockTextureDefault.get(mIcon, mRGBa) : BlockTextureDefault.get(mIcon);//TODO
+		if (aRenderPass < 9) return mTexture;
+		if (SIDES_BOTTOM[aSide]) return null;
+		switch ((aRenderPass-9)%3) {
+		default: return mTextureFluid;
+		case  1: return SIDES_TOP[aSide] ? null : Textures.BlockIcons.BOTTLECRATE_BOTTLE_SIDES.mTexture;
+		case  2: return SIDES_TOP[aSide] ? Textures.BlockIcons.BOTTLECRATE_BOTTLE_TOP.mTexture : Textures.BlockIcons.BOTTLECRATE_BOTTLE_SIDES.mTexture;
+		}
 	}
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_N[8],PX_N[0]);}
