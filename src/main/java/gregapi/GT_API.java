@@ -195,6 +195,7 @@ public class GT_API extends Abstract_Mod {
 		Items.experience_bottle.setContainerItem(Items.glass_bottle);
 		
 		// Fixing Max Stacksizes that don't make sense.
+		Items.bed.setMaxStackSize(64);
 		Items.cake.setMaxStackSize(64);
 		Items.wooden_door.setMaxStackSize(8);
 		Items.iron_door.setMaxStackSize(8);

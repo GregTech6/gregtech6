@@ -132,7 +132,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	}
 	
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return 36;}
-	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass < 9 || mDisplay[(aRenderPass-9)/3] == 0;}
+	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass < 9 || mDisplay[(aRenderPass-9)/3] != 0;}
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
@@ -144,8 +144,8 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		case  4: return box(aBlock, PX_P[                         10], PX_P[                          1], PX_P[                          1], PX_N[                          5], PX_N[SIDES_AXIS_X[mFacing]?11:12], PX_N[                          1]);
 		case  5: return box(aBlock, PX_P[                          0], PX_P[                          0], PX_P[                          0], PX_N[SIDES_AXIS_X[mFacing]? 0:15], PX_N[                          8], PX_N[SIDES_AXIS_X[mFacing]?15: 0]);
 		case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0:15], PX_P[                          0], PX_P[SIDES_AXIS_X[mFacing]?15: 0], PX_N[                          0], PX_N[                          8], PX_N[                          0]);
-		case  7: return box(aBlock, PX_P[                          1], PX_P[                          6], PX_P[                          1], PX_N[SIDES_AXIS_X[mFacing]?14: 1], PX_N[                          8], PX_N[SIDES_AXIS_X[mFacing]? 1:14]);
-		case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 1], PX_P[                          6], PX_P[SIDES_AXIS_X[mFacing]? 1:14], PX_N[                          1], PX_N[                          8], PX_N[                          1]);
+		case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 1], PX_P[                          5], PX_P[SIDES_AXIS_X[mFacing]? 1: 0], PX_N[SIDES_AXIS_X[mFacing]?15: 1], PX_N[                          9], PX_N[SIDES_AXIS_X[mFacing]? 1:15]);
+		case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?15: 1], PX_P[                          5], PX_P[SIDES_AXIS_X[mFacing]? 1:15], PX_N[SIDES_AXIS_X[mFacing]? 0: 1], PX_N[                          9], PX_N[SIDES_AXIS_X[mFacing]? 1: 0]);
 		//TODO
 		}
 		return F;

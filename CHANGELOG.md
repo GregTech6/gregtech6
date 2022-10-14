@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.15.06: (Not released yet, released whenever it needs to be)
 [COMPAT] WarpDrive should now accept GT6 Energy even if IC2 and CoFH are not installed.
 [COMPAT] Extra Planets now has some Material and Wood Data associated with it.
+[FIXED] Beds stack to 64 now, because what the actual fuck did Notch think when having its Max be ONE...
 [FIXED] Wild Bumblehives wont drop any Bumblebees anymore, when burned or destroyed by anything that is technically not a Player. This should also fix them showing up in the Ender Garbage List.
 [FIXED] Sifting Table will only make noise when there actually is an Input while operating it.
 [FIXED] Crucible Crossings were looping exponentially by accident, instead of just doing a simple floodfill, resulting in lag when placing too many in a circle.
