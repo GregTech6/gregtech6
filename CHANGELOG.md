@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Dust Funnel should now only update its top Texture once per second, in sync with all the other Stuff to reduce Render Update Lag.
 [ADDED] Rails can now be made on an Anvil using Item Casings.
 [ADDED] NEI Hint for how to get Noble Gasses.
+[ADDED] Bottle Crate, a portable Block that can store 9 stacks of (potentially filled) Glass Bottles. It is mostly decorative, because I felt like adding it, but it does has some minor purpose I guess.
 
 
 6.15.05:

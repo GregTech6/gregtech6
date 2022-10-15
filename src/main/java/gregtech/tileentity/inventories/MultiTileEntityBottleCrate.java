@@ -22,7 +22,6 @@ package gregtech.tileentity.inventories;
 import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.code.ItemStackContainer;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -41,9 +40,12 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
@@ -66,9 +68,12 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		}
 		if (mIcon == null || mIcon == Textures.BlockIcons.RENDERING_ERROR) mIcon = mMaterial.mTextureSetsBlock.get(OP.casingMachine.mIconIndexBlock);
 		for (int i = 0; i < mDisplay.length; i++) {
-			//TODO
-			mDisplay[i] = (short)-i;
-			mDisplay[0] = Short.MIN_VALUE;
+			if (!slotHas(i)) {mDisplay[i] = 0; continue;}
+			if (ST.item(slot(i)) == Items.glass_bottle) {mDisplay[i] = Short.MIN_VALUE; continue;}
+			FluidStack tFluid = FL.getFluid(slot(i), T);
+			if (tFluid != null) {mDisplay[i] = (short)-FL.id(tFluid); continue;}
+			if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Poison_1.id(); continue;}
+			mDisplay[i] = (short)-FL.Water.id();
 		}
 	}
 	
@@ -78,16 +83,19 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	@Override//TODO
+	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide && mInventoryChanged) {
 			for (int i = 0; i < mDisplay.length; i++) {
-				Byte tID = (slotHas(i)?BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i))):null);
-				if ((tID == null || tID == 0) && slotHas(i)) tID = BooksGT.BOOK_REGISTER.get(new ItemStackContainer(slot(i), W));
-				if (tID == null) tID = (byte)0;
-				if (tID != mDisplay[i]) {mDisplay[i] = tID; updateClientData();}
+				if (!slotHas(i)) {mDisplay[i] = 0; continue;}
+				if (ST.item(slot(i)) == Items.glass_bottle) {mDisplay[i] = Short.MIN_VALUE; continue;}
+				FluidStack tFluid = FL.getFluid(slot(i), T);
+				if (tFluid != null) {mDisplay[i] = (short)-FL.id(tFluid); continue;}
+				if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Poison_1.id(); continue;}
+				mDisplay[i] = (short)-FL.Water.id();
 			}
+			updateClientData();
 		}
 	}
 	
@@ -222,9 +230,15 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	@Override public boolean canDrop (int aSlot) {return F;}
 	@Override public boolean keepSlot(int aSlot) {return T;}
 	@Override public ItemStack getDefaultStack(int aSlot) {return IL.Bottle_Empty.get(1);}
-	
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return T;}//TODO
+	
+	@Override
+	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
+		Item aItem = ST.item(aStack);
+		if (aItem == null) return F;
+		if (aItem == Items.potionitem || aItem == Items.glass_bottle || aItem == ItemsGT.BOTTLES || aItem == Items.experience_bottle) return T;
+		return ST.item(ST.container(aStack, T)) == Items.glass_bottle;
+	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.crate.bottles";}
 }
