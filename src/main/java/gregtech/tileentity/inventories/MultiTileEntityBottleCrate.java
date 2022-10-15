@@ -139,7 +139,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
 		setDirectionData(aData[3]);
-		//TODO for (int i = 0; i < mDisplay.length; i++) mDisplay[i] = UT.Code.combine(aData[i*2+4], aData[i*2+5]);
+		for (int i = 0; i < mDisplay.length; i++) mDisplay[i] = UT.Code.combine(aData[i*2+4], aData[i*2+5]);
 		return T;
 	}
 	
