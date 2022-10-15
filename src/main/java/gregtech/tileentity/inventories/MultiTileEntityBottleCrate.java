@@ -160,7 +160,34 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0:15], PX_P[                          0], PX_P[SIDES_AXIS_X[mFacing]?15: 0], PX_N[                          0], PX_N[                          8], PX_N[                          0]);
 		case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 1], PX_P[                          5], PX_P[SIDES_AXIS_X[mFacing]? 1: 0], PX_N[SIDES_AXIS_X[mFacing]?15: 1], PX_N[                          9], PX_N[SIDES_AXIS_X[mFacing]? 1:15]);
 		case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?15: 1], PX_P[                          5], PX_P[SIDES_AXIS_X[mFacing]? 1:15], PX_N[SIDES_AXIS_X[mFacing]? 0: 1], PX_N[                          9], PX_N[SIDES_AXIS_X[mFacing]? 1: 0]);
-		//TODO
+		
+		case  9: return box(aBlock, PX_P[ 1]+PX_OFFSET*2, PX_P[ 1], PX_P[ 1]+PX_OFFSET*2, PX_P[ 5]-PX_OFFSET*2, PX_P[11], PX_P[ 5]-PX_OFFSET*2);
+		case 10: return box(aBlock, PX_P[ 1]+PX_OFFSET  , PX_P[ 1], PX_P[ 1]+PX_OFFSET  , PX_P[ 5]-PX_OFFSET  , PX_P[12], PX_P[ 5]-PX_OFFSET  );
+		case 11: return box(aBlock, PX_P[ 2]            , PX_P[12], PX_P[ 2]            , PX_P[ 4]            , PX_P[16], PX_P[ 4]            );
+		case 12: return box(aBlock, PX_P[ 6]+PX_OFFSET*2, PX_P[ 1], PX_P[ 1]+PX_OFFSET*2, PX_P[10]-PX_OFFSET*2, PX_P[11], PX_P[ 5]-PX_OFFSET*2);
+		case 13: return box(aBlock, PX_P[ 6]+PX_OFFSET  , PX_P[ 1], PX_P[ 1]+PX_OFFSET  , PX_P[10]-PX_OFFSET  , PX_P[12], PX_P[ 5]-PX_OFFSET  );
+		case 14: return box(aBlock, PX_P[ 7]            , PX_P[12], PX_P[ 2]            , PX_P[ 9]            , PX_P[16], PX_P[ 4]            );
+		case 15: return box(aBlock, PX_P[11]+PX_OFFSET*2, PX_P[ 1], PX_P[ 1]+PX_OFFSET*2, PX_P[15]-PX_OFFSET*2, PX_P[11], PX_P[ 5]-PX_OFFSET*2);
+		case 16: return box(aBlock, PX_P[11]+PX_OFFSET  , PX_P[ 1], PX_P[ 1]+PX_OFFSET  , PX_P[15]-PX_OFFSET  , PX_P[12], PX_P[ 5]-PX_OFFSET  );
+		case 17: return box(aBlock, PX_P[12]            , PX_P[12], PX_P[ 2]            , PX_P[14]            , PX_P[16], PX_P[ 4]            );
+		case 18: return box(aBlock, PX_P[ 1]+PX_OFFSET*2, PX_P[ 1], PX_P[ 6]+PX_OFFSET*2, PX_P[ 5]-PX_OFFSET*2, PX_P[11], PX_P[10]-PX_OFFSET*2);
+		case 19: return box(aBlock, PX_P[ 1]+PX_OFFSET  , PX_P[ 1], PX_P[ 6]+PX_OFFSET  , PX_P[ 5]-PX_OFFSET  , PX_P[12], PX_P[10]-PX_OFFSET  );
+		case 20: return box(aBlock, PX_P[ 2]            , PX_P[12], PX_P[ 7]            , PX_P[ 4]            , PX_P[16], PX_P[ 9]            );
+		case 21: return box(aBlock, PX_P[ 6]+PX_OFFSET*2, PX_P[ 1], PX_P[ 6]+PX_OFFSET*2, PX_P[10]-PX_OFFSET*2, PX_P[11], PX_P[10]-PX_OFFSET*2);
+		case 22: return box(aBlock, PX_P[ 6]+PX_OFFSET  , PX_P[ 1], PX_P[ 6]+PX_OFFSET  , PX_P[10]-PX_OFFSET  , PX_P[12], PX_P[10]-PX_OFFSET  );
+		case 23: return box(aBlock, PX_P[ 7]            , PX_P[12], PX_P[ 7]            , PX_P[ 9]            , PX_P[16], PX_P[ 9]            );
+		case 24: return box(aBlock, PX_P[11]+PX_OFFSET*2, PX_P[ 1], PX_P[ 6]+PX_OFFSET*2, PX_P[15]-PX_OFFSET*2, PX_P[11], PX_P[10]-PX_OFFSET*2);
+		case 25: return box(aBlock, PX_P[11]+PX_OFFSET  , PX_P[ 1], PX_P[ 6]+PX_OFFSET  , PX_P[15]-PX_OFFSET  , PX_P[12], PX_P[10]-PX_OFFSET  );
+		case 26: return box(aBlock, PX_P[12]            , PX_P[12], PX_P[ 7]            , PX_P[14]            , PX_P[16], PX_P[ 9]            );
+		case 27: return box(aBlock, PX_P[ 1]+PX_OFFSET*2, PX_P[ 1], PX_P[11]+PX_OFFSET*2, PX_P[ 5]-PX_OFFSET*2, PX_P[11], PX_P[15]-PX_OFFSET*2);
+		case 28: return box(aBlock, PX_P[ 1]+PX_OFFSET  , PX_P[ 1], PX_P[11]+PX_OFFSET  , PX_P[ 5]-PX_OFFSET  , PX_P[12], PX_P[15]-PX_OFFSET  );
+		case 29: return box(aBlock, PX_P[ 2]            , PX_P[12], PX_P[12]            , PX_P[ 4]            , PX_P[16], PX_P[14]            );
+		case 30: return box(aBlock, PX_P[ 6]+PX_OFFSET*2, PX_P[ 1], PX_P[11]+PX_OFFSET*2, PX_P[10]-PX_OFFSET*2, PX_P[11], PX_P[15]-PX_OFFSET*2);
+		case 31: return box(aBlock, PX_P[ 6]+PX_OFFSET  , PX_P[ 1], PX_P[11]+PX_OFFSET  , PX_P[10]-PX_OFFSET  , PX_P[12], PX_P[15]-PX_OFFSET  );
+		case 32: return box(aBlock, PX_P[ 7]            , PX_P[12], PX_P[12]            , PX_P[ 9]            , PX_P[16], PX_P[14]            );
+		case 33: return box(aBlock, PX_P[11]+PX_OFFSET*2, PX_P[ 1], PX_P[11]+PX_OFFSET*2, PX_P[15]-PX_OFFSET*2, PX_P[11], PX_P[15]-PX_OFFSET*2);
+		case 34: return box(aBlock, PX_P[11]+PX_OFFSET  , PX_P[ 1], PX_P[11]+PX_OFFSET  , PX_P[15]-PX_OFFSET  , PX_P[12], PX_P[15]-PX_OFFSET  );
+		case 35: return box(aBlock, PX_P[12]            , PX_P[12], PX_P[12]            , PX_P[14]            , PX_P[16], PX_P[14]            );
 		}
 		return F;
 	}
