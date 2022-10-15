@@ -146,7 +146,7 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		
 		//-----
 		
-		aData.set             (11, 1, 11, SIDE_UNKNOWN,  8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
+		aData.set             (11, 1, 14, SIDE_UNKNOWN,  8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
 		  aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
 		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
 		, aData.next1in2() ? IL.Bottle_Lubricant .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI

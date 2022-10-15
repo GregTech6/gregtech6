@@ -101,12 +101,8 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (!SIDES_TOP[aSide]) return F;
-		if (aHitX >= PX_P[1] && aHitX <= PX_N[1] && aHitZ >= PX_P[1] && aHitZ <= PX_N[1]) {
-			if (isServerSide()) swapBottles(aPlayer, (aHitX<PX_P[5]+PX_P[1]/2?0:aHitX<PX_P[10]+PX_P[1]/2?1:2) + (aHitZ<PX_P[5]+PX_P[1]/2?0:aHitZ<PX_P[10]+PX_P[1]/2?3:6));
-			return T;
-		}
-		return F;
+		if (isServerSide()) swapBottles(aPlayer, (aHitX<PX_P[5]+PX_P[1]/2?0:aHitX<PX_P[10]+PX_P[1]/2?1:2) + (aHitZ<PX_P[5]+PX_P[1]/2?0:aHitZ<PX_P[10]+PX_P[1]/2?3:6));
+		return T;
 	}
 	
 	private boolean swapBottles(EntityPlayer aPlayer, int aSlot) {
