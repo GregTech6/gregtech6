@@ -210,7 +210,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_N[6],PX_N[0]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_P[6],PX_N[0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock,PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_N[8],PX_N[0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock,PX_P[0],PX_P[0],PX_P[0],PX_N[0],PX_P[6],PX_N[0]);}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return 0;}
 	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?0.5F:0.0F;}
