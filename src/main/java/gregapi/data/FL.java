@@ -780,14 +780,14 @@ public enum FL {
 		return aFluid.getFluid().getTemperature(aFluid);
 	}
 	
-	public static FluidStack make (int aFluid, long aAmount) {return aFluid < 0 ? null : new FluidStack(fluid(aFluid), Code.bindInt(aAmount));}
+	public static FluidStack make (int aFluid, long aAmount) {return aFluid < 0 ? null : make(fluid(aFluid), Code.bindInt(aAmount));}
 	public static FluidStack make (Fluid aFluid, long aAmount) {return aFluid == null ? null : new FluidStack(aFluid, Code.bindInt(aAmount));}
 	public static FluidStack make (String aFluidName, long aAmount) {return make(fluid(aFluidName), aAmount);}
 	public static FluidStack make (String aFluidName, long aAmount, String aReplacementFluidName) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make(aReplacementFluidName, aAmount) : rFluid;}
 	public static FluidStack make (String aFluidName, long aAmount, String aReplacementFluidName, long aReplacementAmount) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make(aReplacementFluidName, aReplacementAmount) : rFluid;}
 	public static FluidStack make (String aFluidName, long aAmount, FluidStack aReplacementFluid) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? aReplacementFluid : rFluid;}
 	
-	public static FluidStack make_(int aFluid, long aAmount) {return aFluid < 0 ? FL.Error.make(0) : new FluidStack(fluid(aFluid), Code.bindInt(aAmount));}
+	public static FluidStack make_(int aFluid, long aAmount) {return aFluid < 0 ? FL.Error.make(0) : make(fluid(aFluid), Code.bindInt(aAmount));}
 	public static FluidStack make_(Fluid aFluid, long aAmount) {return aFluid == null ? FL.Error.make(0) : new FluidStack(aFluid, Code.bindInt(aAmount));}
 	public static FluidStack make_(String aFluidName, long aAmount) {return make_(fluid(aFluidName), aAmount);}
 	public static FluidStack make_(String aFluidName, long aAmount, String aReplacementFluidName) {FluidStack rFluid = make(aFluidName, aAmount); return rFluid == null ? make_(aReplacementFluidName, aAmount) : rFluid;}

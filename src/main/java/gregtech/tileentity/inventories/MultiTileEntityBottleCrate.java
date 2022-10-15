@@ -141,7 +141,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		if (tDisplay == 0) return F;
 		if ((aRenderPass-9)%3==0) {
 			if (tDisplay == Short.MIN_VALUE) return F;
-			mTextureFluid = (tDisplay < 0 ? BlockTextureFluid.get(FL.make(-tDisplay-1, 250)) : UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)?OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten():null);
+			mTextureFluid = (tDisplay < 0 ? BlockTextureFluid.get(FL.fluid(-tDisplay-1)) : UT.Code.exists(tDisplay, OreDictMaterial.MATERIAL_ARRAY)?OreDictMaterial.MATERIAL_ARRAY[tDisplay].getTextureMolten():null);
 		}
 		return T;
 	}
