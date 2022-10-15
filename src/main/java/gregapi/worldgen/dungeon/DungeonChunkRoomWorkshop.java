@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,7 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.ToolsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -33,9 +30,12 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.tools.MultiTileEntityMold;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -164,10 +164,25 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		FluidStack[] tDrinks = FL.array(FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Vodka.make(tAmount), FL.Mead.make(tAmount), FL.Whiskey_GlenMcKenner.make(tAmount), FL.Wine_Grape_Purple.make(tAmount));
 		
 		for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) {
-			if (aData.next1in2()) for (int k = 0; k < 3; k++) {
+			if (aData.next2in3()) for (int k = 0; k < 3; k++) {
+				if (aData.next1in3()) {
+					ItemStack tBottle = FL.fill(UT.Code.select(NF, tDrinks), IL.Bottle_Empty.get(1), F, F);
+					aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, 8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
+					  aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					)), T, T);
+					break;
+				}
 				aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-				if (aData.next1in2()) break;
-			} else if (aData.next1in2()) {
+				if (aData.next1in3()) break;
+			} else if (aData.next2in3()) {
 				switch(aData.next(3)) {
 				case 0: aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red      , NBT_PAINTED, T), NBT_TANK), T, T); break;
 				case 1: aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32056, new FluidTankGT(FL.Oxygen .make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_LightBlue, NBT_PAINTED, T), NBT_TANK), T, T); break;
