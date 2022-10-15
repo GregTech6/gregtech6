@@ -1843,7 +1843,7 @@ public class UT {
 		
 		public static NBTTagList makeInv(ItemStack... aStacks) {
 			NBTTagList rInventory = new NBTTagList();
-			for (int i = 0; i < aStacks.length; i++) rInventory.appendTag(makeShort(ST.save(aStacks[i]), "s", (short)i));
+			for (int i = 0; i < aStacks.length; i++) if (ST.valid(aStacks[i])) rInventory.appendTag(makeShort(ST.save(aStacks[i]), "s", (short)i));
 			return rInventory;
 		}
 		

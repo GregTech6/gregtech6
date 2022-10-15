@@ -146,6 +146,18 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		
 		//-----
 		
+		aData.set             (11, 1, 11, SIDE_UNKNOWN,  8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
+		  aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Lubricant .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Lubricant .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Glue      .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Glue      .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		, aData.next1in2() ? IL.Bottle_Holy_Water.get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		)), T, T);
+		
 		aData.set             (13, 1, 14, SIDE_UNKNOWN, 32705, null, T, T);
 		aData.smooth          (14, 1, 14);
 		aData.set             (14, 1, 13, Blocks.cauldron, aData.next(4), 0);
@@ -165,22 +177,23 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		
 		for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) {
 			if (aData.next2in3()) for (int k = 0; k < 3; k++) {
+				FluidStack tDrink = UT.Code.select(NF, tDrinks);
 				if (aData.next1in3()) {
-					ItemStack tBottle = FL.fill(UT.Code.select(NF, tDrinks), IL.Bottle_Empty.get(1), F, F);
+					ItemStack tBottle = FL.fill(tDrink, IL.Bottle_Empty.get(1), F, F);
 					aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, 8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
-					  aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
-					, aData.next1in3() ? tBottle : aData.next1in2() ? IL.Bottle_Empty.get(1) : NI
+					  aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+					, aData.next1in3() ? ST.amount(1+aData.next(4), tBottle) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
 					)), T, T);
 					break;
 				}
-				aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
+				aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(tDrink).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
 				if (aData.next1in3()) break;
 			} else if (aData.next2in3()) {
 				switch(aData.next(3)) {
