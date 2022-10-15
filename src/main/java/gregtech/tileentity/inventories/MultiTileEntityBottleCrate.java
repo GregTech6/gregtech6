@@ -225,6 +225,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[mDisplay.length];}
 	@Override public boolean canDrop (int aSlot) {return F;}
