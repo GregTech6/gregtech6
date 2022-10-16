@@ -53,7 +53,7 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (ItemStack aOutput : aOutputs) {
 			OreDictItemData aData = OM.anydata(aOutput);
 			if (aData == null || !aData.hasValidPrefixMaterialData() || !aData.mPrefix.contains(TD.Prefix.INGOT_BASED)) continue;
-			for (OreDictMaterial tMat : aData.mMaterial.mMaterial.mTargetedSmelting) if (tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) if (tSet.add(tMat)) {
+			for (OreDictMaterial tMat : aData.mMaterial.mMaterial.mTargetedSmelting) if (tSet.add(tMat) && !tMat.contains(TD.Properties.INVALID_MATERIAL) && tMat.mTargetSmelting.mMaterial == aData.mMaterial.mMaterial) {
 				if (tMat != aData.mMaterial.mMaterial) {
 				rList.add(getRecipeFor(OP.ingot             .mat(tMat, 1)));
 				rList.add(getRecipeFor(OP.blockIngot        .mat(tMat, 1)));
@@ -93,6 +93,6 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		ItemStack[] tOutputs = tOutputList.toArray(ZL_IS);
 		if (!ST.hasValid(tOutputs)) return null;
 		
-		return new Recipe(T, F, F, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
+		return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
 	}
 }
