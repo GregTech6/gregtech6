@@ -17,13 +17,18 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Sifting Table will only make noise when there actually is an Input while operating it.
 [FIXED] Crucible Crossings were looping exponentially by accident, instead of just doing a simple floodfill, resulting in lag when placing too many in a circle.
 [FIXED] All Pipes, Wires and Axles had wrong Hardness Values, resulting in them being harder to break than they were supposed to.
+[FIXED] Dust Funnel should now only update its top Texture once per second, in sync with all the other Stuff to reduce Render Update Lag.
 [CHANGED] Using Geothermal Hot Spring Water in a Heat Exchanger will net you Mineral Water now instead of regular Water. I added a Distillery/Dryer Recipe for making it into Distilled Water too, so some Setups wont need to be changed.
-[CHANGED] Radiation now works with the same System that Food uses to apply Potion Effects. This makes the Rad-away Pill much more effective, and by extension also the Cure-All Pill. Please be aware that Radiation will not decrease over time, like the Food related Stats do.
+[CHANGED] Radiation now works with the same System that Food uses to apply Potion Effects. This makes the Radaway Pill much more effective (and no longer hidden from NEI), and by extension also the Cure-All Pill. Please be aware that Radiation will not decrease over time, like the Food related Stats do.
 [CHANGED] Vanilla Ores will no longer generate indicator Rocks.
-[CHANGED] Dust Funnel should now only update its top Texture once per second, in sync with all the other Stuff to reduce Render Update Lag.
-[ADDED] Rails can now be made on an Anvil using Item Casings.
+[ADDED] Recipe for Aluminium Hydroxide to Alumina in the Dryer.
 [ADDED] NEI Hint for how to get Noble Gasses.
-[ADDED] Bottle Crate, a portable Block that can store 9 stacks of (potentially filled) Glass Bottles. It is mostly decorative, because I felt like adding it, but it does has some minor purpose I guess. Also supports HBM's Fallout Bottles, though they dont contain any actual Fluid, so I made them fallback to something that looks like Cola.
+[ADDED] Rails can now be made on an Anvil using Item Casings.
+[ADDED] Bottle Crate
+A portable Block that can store 9 stacks of (potentially filled) Glass Bottles.
+It is mostly decorative, because I felt like adding it, but it does have some minor purpose to it too, I guess.
+Also supports HBM's Fallout Bottles, though they dont contain any actual Fluid, so I made them fallback to something that looks like Cola.
+They also generate in Workshop Rooms in the GT6 Dungeons, potentially containing Mercury Bottles too.
 
 
 6.15.05:
