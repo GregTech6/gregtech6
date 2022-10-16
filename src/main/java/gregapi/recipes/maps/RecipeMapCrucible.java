@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.TD.Processing.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -36,6 +30,12 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.TD.Processing.MELTING;
 
 /**
  * @author Gregorius Techneticies
@@ -88,7 +88,9 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		ArrayListNoNulls<ItemStack> tIngots = new ArrayListNoNulls<>();
 		for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 		
-		if (tIngots.isEmpty()) return null;
-		return new Recipe(T, F, F, ST.array(ST.amount(1, aInput)), tIngots.toArray(ZL_IS), null, null, ZL_FS, ZL_FS, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
+		ItemStack[] tOutputs = tIngots.toArray(ZL_IS);
+		if (!ST.hasValid(tOutputs)) return null;
+		
+		return new Recipe(T, F, F, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, 0, 0, aData.mMaterial.mMaterial.mMeltingPoint);
 	}
 }

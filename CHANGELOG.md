@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.06: (Not released yet, released whenever it needs to be)
+6.15.06: (Soon)
 [COMPAT] WarpDrive should now accept GT6 Energy even if IC2 and CoFH are not installed.
 [COMPAT] Extra Planets now has some Material and Wood Data associated with it.
 [FIXED] Beds stack to 64 now, because what the actual fuck did Notch think when having its Max be ONE...
