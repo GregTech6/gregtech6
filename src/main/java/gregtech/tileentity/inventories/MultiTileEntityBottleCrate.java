@@ -22,11 +22,8 @@ package gregtech.tileentity.inventories;
 import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.OP;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
@@ -69,18 +66,13 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		if (mIcon == null || mIcon == Textures.BlockIcons.RENDERING_ERROR) mIcon = mMaterial.mTextureSetsBlock.get(OP.casingMachine.mIconIndexBlock);
 		for (int i = 0; i < mDisplay.length; i++) {
 			if (!slotHas(i)) {mDisplay[i] = 0; continue;}
-			if (ST.item(slot(i)) == Items.glass_bottle) {mDisplay[i] = Short.MIN_VALUE; continue;}
+			if (ST.item(slot(i)) == Items.glass_bottle || IL.HBM_Bottle_Empty_1.equal(slot(i), T, T) || IL.HBM_Bottle_Empty_2.equal(slot(i), T, T)) {mDisplay[i] = Short.MIN_VALUE; continue;}
 			FluidStack tFluid = FL.getFluid(slot(i), T);
 			if (tFluid != null) {mDisplay[i] = (short)-FL.id(tFluid); continue;}
-			if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Poison_1.id(); continue;}
+			if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Jump_1.id(); continue;}
+			if (MD.HBM.owns(slot(i))) {mDisplay[i] = (short)-FL.Potion_Harm_1.id(); continue;}
 			mDisplay[i] = (short)-FL.Water.id();
 		}
-	}
-	
-	@Override
-	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
-		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
@@ -89,14 +81,21 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 		if (aIsServerSide && mInventoryChanged) {
 			for (int i = 0; i < mDisplay.length; i++) {
 				if (!slotHas(i)) {mDisplay[i] = 0; continue;}
-				if (ST.item(slot(i)) == Items.glass_bottle) {mDisplay[i] = Short.MIN_VALUE; continue;}
+				if (ST.item(slot(i)) == Items.glass_bottle || IL.HBM_Bottle_Empty_1.equal(slot(i), T, T) || IL.HBM_Bottle_Empty_2.equal(slot(i), T, T)) {mDisplay[i] = Short.MIN_VALUE; continue;}
 				FluidStack tFluid = FL.getFluid(slot(i), T);
 				if (tFluid != null) {mDisplay[i] = (short)-FL.id(tFluid); continue;}
-				if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Poison_1.id(); continue;}
+				if (ST.item(slot(i)) == Items.experience_bottle) {mDisplay[i] = (short)-FL.Potion_Jump_1.id(); continue;}
+				if (MD.HBM.owns(slot(i))) {mDisplay[i] = (short)-FL.Potion_Harm_1.id(); continue;}
 				mDisplay[i] = (short)-FL.Water.id();
 			}
 			updateClientData();
 		}
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
+		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
@@ -233,8 +232,9 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		Item aItem = ST.item(aStack);
 		if (aItem == null) return F;
-		if (aItem == Items.potionitem || aItem == Items.glass_bottle || aItem == ItemsGT.BOTTLES || aItem == Items.experience_bottle) return T;
-		return ST.item(ST.container(aStack, T)) == Items.glass_bottle;
+		if (aItem == Items.potionitem || aItem == Items.glass_bottle || aItem == Items.experience_bottle || IL.HBM_Bottle_Empty_1.equal(aStack, T, T) || IL.HBM_Bottle_Empty_2.equal(aStack, T, T)) return T;
+		ItemStack aContainer = ST.container(aStack, T);
+		return ST.item(aContainer) == Items.glass_bottle || IL.HBM_Bottle_Empty_1.equal(aContainer, T, T) || IL.HBM_Bottle_Empty_2.equal(aContainer, T, T);
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.crate.bottles";}

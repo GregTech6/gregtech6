@@ -42,8 +42,8 @@ public class Compat_Recipes_HBM extends CompatMods {
 		CR.delate(MD.HBM, "item.apple_lead", "item.apple_schrabidium", "item.apple_euphemium");
 		
 		CR.shapeless(IL.HBM_Mercury_Drop.get(8), CR.DEF_NCC, new Object[] {IL.Bottle_Mercury});
-		RM.generify(IL.HBM_Mercury_Bottle.get(1), IL.Bottle_Mercury.get(1));
-		RM.generify(IL.Bottle_Mercury.get(1), IL.HBM_Mercury_Bottle.get(1));
+		RM.generify(IL.HBM_Bottle_Mercury.get(1), IL.Bottle_Mercury.get(1));
+		RM.generify(IL.Bottle_Mercury.get(1), IL.HBM_Bottle_Mercury.get(1));
 		RM.packunpack(OP.round.mat(MT.Pb, 6), ST.make(MD.HBM, "item.pellet_buckshot", 1, 0));
 		
 		
