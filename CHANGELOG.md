@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.15.08: (Not released yet)
 [FIXED] Empty NBT data was saved to dropped GT6 TileEntities.
+[FIXED] Mass Storages and Item Barrels were no longer saving their Mode Data when harvested.
 
 
 6.15.07:

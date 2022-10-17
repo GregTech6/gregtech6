@@ -86,13 +86,14 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
-		aNBT.setByte(NBT_MODE, mMode);
+		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
 		UT.NBT.setNumber(aNBT, NBT_INPUT, mPartialUnits);
 	}
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		if (isClientSide() && slotHas(1)) aNBT.setTag("display", UT.NBT.makeString(aNBT.getCompoundTag("display"), "Name", slot(1).getDisplayName()));
+		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
 		return super.writeItemNBT2(aNBT);
 	}
 	
