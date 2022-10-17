@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.08: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Empty NBT data was saved to dropped GT6 TileEntities.
 
 
 6.15.07:
