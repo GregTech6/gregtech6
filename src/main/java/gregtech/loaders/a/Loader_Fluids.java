@@ -291,25 +291,25 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("potion.invisibility.long.splash"            , "Stretched Splash Invisible Brew"         , null, 1, 1000, 300, ST.make(Items.potionitem, 1, 16462), IL.Bottle_Empty.get(1), 250).setLuminosity( 5)   , LH.Chat.CYAN  + "Invisibility (6:00)"     ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.invisibility     .id,7200, 0, 100);
 		
 		
-		// Those Potions are broken duplicates, which cannot be improved with Redstone or Glowstone anymore, so I need to at least add them for emptying the Bottles.
-		FL.reg(FL.make("potion.damage"               , 250), ST.make(Items.potionitem, 1,  8268), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.damage.splash"        , 250), ST.make(Items.potionitem, 1, 16460), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.health"               , 250), ST.make(Items.potionitem, 1,  8261), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.health.splash"        , 250), ST.make(Items.potionitem, 1, 16453), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.jump"                 , 250), ST.make(Items.potionitem, 1,  8267), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.jump.splash"          , 250), ST.make(Items.potionitem, 1, 16459), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.fireresistance"       , 250), ST.make(Items.potionitem, 1,  8227), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.fireresistance.splash", 250), ST.make(Items.potionitem, 1, 16419), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.nightvision"          , 250), ST.make(Items.potionitem, 1,  8230), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.nightvision.splash"   , 250), ST.make(Items.potionitem, 1, 16422), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.weakness"             , 250), ST.make(Items.potionitem, 1,  8232), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.weakness.splash"      , 250), ST.make(Items.potionitem, 1, 16424), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.slowness"             , 250), ST.make(Items.potionitem, 1,  8234), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.slowness.splash"      , 250), ST.make(Items.potionitem, 1, 16426), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.waterbreathing"       , 250), ST.make(Items.potionitem, 1,  8237), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.waterbreathing.splash", 250), ST.make(Items.potionitem, 1, 16429), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.invisibility"         , 250), ST.make(Items.potionitem, 1,  8238), IL.Bottle_Empty.get(1));
-		FL.reg(FL.make("potion.invisibility.splash"  , 250), ST.make(Items.potionitem, 1, 16430), IL.Bottle_Empty.get(1));
+		// Those Potions are broken duplicates, which have been improved with Redstone or Glowstone despite the lack of said upgrade availability in the first place, so I need to at least add them for emptying the Bottles.
+		FL.reg(FL.make("potion.damage"               , 250), ST.make(Items.potionitem, 1, 0b010000001001100), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.damage.splash"        , 250), ST.make(Items.potionitem, 1, 0b100000001001100), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.health"               , 250), ST.make(Items.potionitem, 1, 0b010000001000101), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.health.splash"        , 250), ST.make(Items.potionitem, 1, 0b100000001000101), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.jump"                 , 250), ST.make(Items.potionitem, 1, 0b010000001001011), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.jump.splash"          , 250), ST.make(Items.potionitem, 1, 0b100000001001011), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.fireresistance"       , 250), ST.make(Items.potionitem, 1, 0b010000000100011), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.fireresistance.splash", 250), ST.make(Items.potionitem, 1, 0b100000000100011), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.nightvision"          , 250), ST.make(Items.potionitem, 1, 0b010000000100110), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.nightvision.splash"   , 250), ST.make(Items.potionitem, 1, 0b100000000100110), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.weakness"             , 250), ST.make(Items.potionitem, 1, 0b010000000101000), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.weakness.splash"      , 250), ST.make(Items.potionitem, 1, 0b100000000101000), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.slowness"             , 250), ST.make(Items.potionitem, 1, 0b010000000101010), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.slowness.splash"      , 250), ST.make(Items.potionitem, 1, 0b100000000101010), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.waterbreathing"       , 250), ST.make(Items.potionitem, 1, 0b010000000101101), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.waterbreathing.splash", 250), ST.make(Items.potionitem, 1, 0b100000000101101), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.invisibility"         , 250), ST.make(Items.potionitem, 1, 0b010000000101110), IL.Bottle_Empty.get(1));
+		FL.reg(FL.make("potion.invisibility.splash"  , 250), ST.make(Items.potionitem, 1, 0b100000000101110), IL.Bottle_Empty.get(1));
 		
 		
 		// Et Futurum Lingering Potions
