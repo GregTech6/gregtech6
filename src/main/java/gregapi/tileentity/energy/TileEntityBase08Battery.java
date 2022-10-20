@@ -109,6 +109,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	
 	@Override
 	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
+		if (mMaterial.mHidden) return F;
 		aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID));
 		if (mCapacity > 0)
 		aList.add(setEnergyStored(mType, aBlock.mMultiTileEntityRegistry.getItem(aID), mCapacity));
