@@ -2149,7 +2149,6 @@ public class MT {
 			Al2O3                   .put(MD.GT);
 			Osmiridium              .put(MD.GT);
 			UUAmplifier             .put(MD.GT);
-			EnergiumCyan            .put(MD.GT).visDefault(Nikolite);
 			Primitive               .put(MD.GT);
 			Good                    .put(MD.GT);
 			Data                    .put(MD.GT);
@@ -2598,6 +2597,9 @@ public class MT {
 			
 			
 			PurpleAlloy             .put(MD.BP).visDefault(Nikolite);
+			
+			
+			EnergiumCyan            .put(MD.GT).visDefault(Nikolite);
 			
 			
 			Pb                      .put(MD.FZ, COMMON_ORE);
