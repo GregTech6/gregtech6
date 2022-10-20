@@ -26,7 +26,6 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.*;
 import gregapi.config.Config;
 import gregapi.data.*;
-import gregapi.item.IItemGT;
 import gregapi.item.IPrefixItem;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.IOreDictListenerEvent.OreDictRegistrationContainer;
@@ -227,7 +226,7 @@ public final class OreDictManager {
 		Collection<OreDictMaterial> tNames = mVisibilityTriggers.get(aName.toString());
 		if (tNames == null) mVisibilityTriggers.put(aName.toString(), tNames = new HashSetNoNulls<>());
 		if (tNames.add(aMaterial)) {
-			for (ItemStack tOreStack : OreDictionary.getOres(aName.toString(), F)) if (!(tOreStack.getItem() instanceof IItemGT)) aMaterial.mHidden = F;
+			for (ItemStack tOreStack : OreDictionary.getOres(aName.toString(), F)) if (!ST.isGT(tOreStack)) aMaterial.mHidden = F;
 			return T;
 		}
 		return F;

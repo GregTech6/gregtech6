@@ -2591,15 +2591,13 @@ public class MT {
 			Nikolite                .put(MD.RP, COMMON_ORE).visDefault();
 			NikolineAlloy           .put(MD.RP).visDefault(Nikolite);
 			BlueAlloy               .put(MD.RP).visDefault(Nikolite);
+			EnergiumCyan                       .visDefault(Nikolite);
 			
 			
 			ElectrotineAlloy        .put(MD.PR).visDefault(Nikolite);
 			
 			
 			PurpleAlloy             .put(MD.BP).visDefault(Nikolite);
-			
-			
-			EnergiumCyan            .put(MD.GT).visDefault(Nikolite);
 			
 			
 			Pb                      .put(MD.FZ, COMMON_ORE);
