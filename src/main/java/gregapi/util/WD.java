@@ -737,6 +737,59 @@ public class WD {
 		return F;
 	}
 	
+	public List<ChunkCoordinates> ray(int aX, int aY, int aZ, int eX, int eY, int eZ) {return ray(T, T, aX, aY, aZ, eX, eY, eZ);}
+	public List<ChunkCoordinates> ray(boolean aIncludeStart, boolean aIncludeEnd, int aX, int aY, int aZ, int eX, int eY, int eZ) {
+		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
+		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls<>();
+		if (aIncludeStart) rList.add(tCoords);
+		
+		int tSX=aX<eX?1:-1, tSY=aY<eY?1:-1, tSZ=aZ<eZ?1:-1;
+		int dx=Math.abs(eX-aX), dy=Math.abs(eY-aY), dz=Math.abs(eZ-aZ);
+		
+		double tH = Math.sqrt(dx*dx + dy*dy + dz*dz);
+		double tMX = (tH/2)/dx, tMY = (tH/2)/dy, tMZ = (tH/2)/dz;
+		double tDX =  tH   /dx, tDY =  tH   /dy, tDZ =  tH   /dz;
+		
+		while (aX!=eX || aY!=eY || aZ!=eZ) {
+			if (tCoords.posX!=aX || tCoords.posX!=aY || tCoords.posX!=aZ) rList.add(tCoords = new ChunkCoordinates(aX, aY, aZ));
+			
+			if (tMX < tMY) {
+				if (tMX < tMZ) {
+					aX+=tSX; tMX+=tDX;
+				} else if (tMX > tMZ) {
+					aZ+=tSZ; tMZ+=tDZ;
+				} else {
+					aX+=tSX; tMX+=tDX;
+					aZ+=tSZ; tMZ+=tDZ;
+				}
+			} else if (tMX > tMY) {
+				if (tMY < tMZ) {
+					aY+=tSY; tMY+=tDY;
+				} else if (tMY > tMZ) {
+					aZ+=tSZ; tMZ+=tDZ;
+				} else {
+					aY+=tSY; tMY+=tDY;
+					aZ+=tSZ; tMZ+=tDZ;
+				}
+			} else {
+				if (tMY < tMZ) {
+					aX+=tSX; tMX+=tDX;
+					aY+=tSY; tMY+=tDY;
+				} else if (tMY > tMZ) {
+					aZ+=tSZ; tMZ+=tDZ;
+				} else {
+					aX+=tSX; tMX+=tDX;
+					aY+=tSY; tMY+=tDY;
+					aZ+=tSZ; tMZ+=tDZ;
+				}
+			}
+		}
+		
+		if (aIncludeEnd) rList.add(new ChunkCoordinates(eX, eY, eZ));
+		return rList;
+	}
+	
+	
 	public static long scan(ArrayList<String> aList, EntityPlayer aPlayer, World aWorld, int aScanLevel, int aX, int aY, int aZ, byte aSide, float aClickX, float aClickY, float aClickZ) {
 		if (aList == null) return 0;
 		
