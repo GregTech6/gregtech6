@@ -2146,10 +2146,10 @@ public class MT {
 			TungstenSteel           .put(MD.GT);
 			NiobiumTitanium         .put(MD.GT);
 			Ta4HfC5                 .put(MD.GT);
+			Al2O3                   .put(MD.GT);
 			Osmiridium              .put(MD.GT);
 			UUAmplifier             .put(MD.GT);
-			Al2O3                   .put(MD.GT);
-			EnergiumCyan            .put(MD.GT);
+			EnergiumCyan            .put(MD.GT).visDefault(Nikolite);
 			Primitive               .put(MD.GT);
 			Good                    .put(MD.GT);
 			Data                    .put(MD.GT);
