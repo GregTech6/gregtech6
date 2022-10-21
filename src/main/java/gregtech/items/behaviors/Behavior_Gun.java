@@ -34,16 +34,17 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.BlockRail;
-import net.minecraft.block.BlockTorch;
+import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MovingObjectPosition;
@@ -131,6 +132,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
+		ST.update(aGun, aPlayer);
+		ST.update(aBullet, aPlayer);
+		
 		Vec3 tAim = aPlayer.getLookVec(), tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ);
 		tAim = tPos.addVector(tAim.xCoord * 100, tAim.yCoord * 100, tAim.zCoord * 100);
 		
@@ -138,12 +142,14 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
 		long tPower = 10000;
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		
 		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
 			if (tPower--<=0) {
 				// TODO Maybe drop the Round as an Item at ***oCoord***.
+				if (tFireAspect > 2) WD.burn(aPlayer.worldObj, oCoord, T, T);
 				break;
 			}
 			
@@ -158,15 +164,37 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
 				if (!tWater) {
 					tWater = T;
-					tPower -= 5000;
 					// TODO Bullet Splash Sound.
-					// TODO if Large Caliber, break it entirely.
+					
+					// if high velocity break entirely, otherwise half the remaining power.
+					if (tPower > 10000) tPower = 0; else tPower /= 2;
 				}
 				continue;
 			}
 			
 			tWater = F;
 			
+			if (aBlock instanceof BlockPumpkin || WD.te(aPlayer.worldObj, aCoord, T) instanceof MultiTileEntityGregOLantern) {
+				tPower-=3000;
+				if (RNGSUS.nextInt(3) == 0) {
+					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Blocks.pumpkin, 1, 0));
+				} else {
+					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.pumpkin_seeds, 1+RNGSUS.nextInt(3), 0));
+				}
+				// TODO Pumpkin splatter Sound.
+				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				continue;
+			}
+			if (aBlock == Blocks.melon_block) {
+				tPower-=3000;
+				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon      , 1+RNGSUS.nextInt(6), 0));
+				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon_seeds, 1+RNGSUS.nextInt(3), 0));
+				// TODO Melon splatter Sound.
+				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				continue;
+			}
 			if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
 				tPower-=1000;
 				
@@ -190,6 +218,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T) || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
 				tPower = 0;
+				// TODO Hit Wall Sound.
 				continue;
 			}
 			
