@@ -134,47 +134,66 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		Vec3 tAim = aPlayer.getLookVec(), tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ);
 		tAim = tPos.addVector(tAim.xCoord * 100, tAim.yCoord * 100, tAim.zCoord * 100);
 		
-		List<ChunkCoordinates> tCoords = WD.ray(T, T, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
-		ChunkCoordinates oCoord = null;
-		Block oBlock = NB;
-		byte  oMeta = 0;
+		List<ChunkCoordinates> aCoords = WD.ray(T, T, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
+		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		long tPower = 10000;
-		boolean tWater = F;
+		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		
-		for (ChunkCoordinates aCoord : tCoords) {
-			if (tPower <= 0) {
-				// TODO Maybe drop the Round as an Item.
+		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
+			if (tPower--<=0) {
+				// TODO Maybe drop the Round as an Item at ***oCoord***.
 				break;
 			}
 			
-			Block aBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-			byte  aMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-			// Ignore the very first Block.
-			if (oCoord == null) {
-				oCoord = aCoord;
-				oBlock = aBlock;
-				oMeta = aMeta;
-				tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			oCoord = aCoord;
+			oBlock = aBlock;
+			oMeta  = aMeta;
+			
+			aCoord = aCoords.get(i);
+			aBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			aMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			
+			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
+				if (!tWater) {
+					tWater = T;
+					tPower -= 5000;
+					// TODO Bullet Splash Sound.
+					// TODO if Large Caliber, break it entirely.
+				}
 				continue;
 			}
 			
-			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
-				if (tWater) {
-					tPower -= 5000;
-					// TODO have the Bullet make a Sound
-					// TODO if the Bullet is a Large Caliber, break it.
-				} else {
-					tWater = T;
+			tWater = F;
+			
+			if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
+				tPower-=1000;
+				
+				OreDictItemData tData = OM.anydata(ST.make(aBlock, 1, aMeta));
+				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
+					long tAmount = tMaterial.mAmount / OP.scrapGt.mAmount;
+					while (tAmount-->0) {
+						ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, OP.scrapGt.mat(tMaterial.mMaterial, 1));
+					}
 				}
-			} else {
-				tWater = F;
+				
+				// TODO Glass Shatter Sound.
+				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				continue;
 			}
 			
+			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
+				// Just ignore or assume the Player shot through them.
+				continue;
+			}
 			
+			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T) || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
+				tPower = 0;
+				continue;
+			}
 			
-			oCoord = aCoord;
-			oBlock = aBlock;
-			oMeta = aMeta;
+			// TODO Scan for Entities in this Block, yes this might be slightly laggy, but it's necessary to be done here.
 		}
 		return T;
 	}
