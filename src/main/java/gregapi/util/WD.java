@@ -737,8 +737,8 @@ public class WD {
 		return F;
 	}
 	
-	public static List<ChunkCoordinates> ray(double aX, double aY, double aZ, double eX, double eY, double eZ) {return ray(T, T, aX, aY, aZ, eX, eY, eZ);}
-	public static List<ChunkCoordinates> ray(boolean aIncludeStart, boolean aIncludeEnd, double aX, double aY, double aZ, double eX, double eY, double eZ) {
+	public static List<ChunkCoordinates> ray(double aX, double aY, double aZ, double eX, double eY, double eZ) {return ray(T, T, 1000, aX, aY, aZ, eX, eY, eZ);}
+	public static List<ChunkCoordinates> ray(boolean aIncludeStart, boolean aIncludeEnd, int aAbortAfter, double aX, double aY, double aZ, double eX, double eY, double eZ) {
 		int tSX=aX<eX?1:-1, tSY=aY<eY?1:-1, tSZ=aZ<eZ?1:-1;
 		int tAX = UT.Code.roundDown(aX), tAY = UT.Code.roundDown(aY), tAZ = UT.Code.roundDown(aZ);
 		int tBX = UT.Code.roundDown(eX), tBY = UT.Code.roundDown(eY), tBZ = UT.Code.roundDown(eZ);
@@ -754,6 +754,8 @@ public class WD {
 		
 		while (tAX!=tBX || tAY!=tBY || tAZ!=tBZ) {
 			if (tCoords.posX!=tAX || tCoords.posY!=tAY || tCoords.posZ!=tAZ) rList.add(tCoords = new ChunkCoordinates(tAX, tAY, tAZ));
+			
+			if (aAbortAfter--<0) return rList;
 			
 			if (tMX < tMY) {
 				if (tMX < tMZ) {

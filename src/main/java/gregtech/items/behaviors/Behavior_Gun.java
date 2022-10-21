@@ -134,7 +134,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		Vec3 tAim = aPlayer.getLookVec(), tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ);
 		tAim = tPos.addVector(tAim.xCoord * 100, tAim.yCoord * 100, tAim.zCoord * 100);
 		
-		List<ChunkCoordinates> aCoords = WD.ray(T, T, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		List<ChunkCoordinates> aCoords = WD.ray(T, T, 200, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
 		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
