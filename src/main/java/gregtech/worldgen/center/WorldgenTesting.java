@@ -301,6 +301,46 @@ public class WorldgenTesting extends WorldgenObject {
 			, IL.MOTORS[1].get(64)
 			, IL.MOTORS[2].get(64)
 			, IL.MOTORS[3].get(64)
+			
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PISTOL                , MT.Steel            , MT.WOODS.Spruce)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PISTOL                , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PISTOL                , MT.Thaumium         , MT.Magenta)
+			, OP.bulletGtSmall.mat(MT.Steel, 64)
+			, OP.bulletGtSmall.mat(MT.NetherizedDiamond, 64)
+			, OP.bulletGtSmall.mat(MT.Thaumium, 64)
+			, OP.bulletGtSmall.mat(MT.SterlingSilver, 64)
+			, OP.bulletGtSmall.mat(MT.RoseGold, 64)
+			, OP.bulletGtSmall.mat(MT.Rubber, 64)
+			
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
+			, NI
 			};
 			
 			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, UT.NBT.makeInv(tInventory)), T, T);

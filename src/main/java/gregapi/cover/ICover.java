@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.cover;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.render.ITexture;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,6 +27,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 
 /**
@@ -41,7 +41,6 @@ import net.minecraftforge.fluids.IFluidTank;
 public interface ICover {
 	/**
 	 * Called when the Cover got successfully loaded.
-	 * @param aPlayer CAN be null!
 	 */
 	public void onCoverLoaded(byte aCoverSide, CoverData aData);
 	
@@ -71,13 +70,11 @@ public interface ICover {
 	public boolean interceptCoverRemoval(byte aCoverSide, CoverData aData, Entity aPlayer);
 	
 	/**
-	 * @param aPlayer CAN be null!
 	 * @return true to prevent that a Connector can connect.
 	 */
 	public boolean interceptConnect(byte aCoverSide, CoverData aData);
 	
 	/**
-	 * @param aPlayer CAN be null!
 	 * @return true to prevent that a Connector can disconnect.
 	 */
 	public boolean interceptDisconnect(byte aCoverSide, CoverData aData);

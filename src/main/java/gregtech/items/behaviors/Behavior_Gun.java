@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,11 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.code.TagData;
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
@@ -49,9 +45,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
 	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL);
@@ -72,6 +73,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		while (tCount-- >= 0) {
 			Block aBlock = WD.block(aWorld, aAX, aAY, aAZ);
 			byte  aMeta  = WD.meta (aWorld, aAX, aAY, aAZ);
+			
+			
+			// TRIPWIRE!
 			
 			if (aBlock.getMaterial() == Material.water || aBlock.getMaterial() == Material.lava) {
 				return new MovingObjectPosition(aAX, aAY, aAZ, tSide, aPosA, T);
@@ -127,14 +131,51 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
+		Vec3 tAim = aPlayer.getLookVec(), tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ);
+		tAim = tPos.addVector(tAim.xCoord * 100, tAim.yCoord * 100, tAim.zCoord * 100);
 		
-		//MovingObjectPosition tTargetBlock = trace(aPlayer.worldObj, aPosA, aPosB, F);
+		List<ChunkCoordinates> tCoords = WD.ray(T, T, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		ChunkCoordinates oCoord = null;
+		Block oBlock = NB;
+		byte  oMeta = 0;
+		long tPower = 10000;
+		boolean tWater = F;
 		
-		
-		
-		
-		
-		
+		for (ChunkCoordinates aCoord : tCoords) {
+			if (tPower <= 0) {
+				// TODO Maybe drop the Round as an Item.
+				break;
+			}
+			
+			Block aBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			byte  aMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			// Ignore the very first Block.
+			if (oCoord == null) {
+				oCoord = aCoord;
+				oBlock = aBlock;
+				oMeta = aMeta;
+				tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+				continue;
+			}
+			
+			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
+				if (tWater) {
+					tPower -= 5000;
+					// TODO have the Bullet make a Sound
+					// TODO if the Bullet is a Large Caliber, break it.
+				} else {
+					tWater = T;
+				}
+			} else {
+				tWater = F;
+			}
+			
+			
+			
+			oCoord = aCoord;
+			oBlock = aBlock;
+			oMeta = aMeta;
+		}
 		return T;
 	}
 	
@@ -150,6 +191,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (aPlayer.isSneaking()) {
 				// TODO: Open GUI for reloading Gun
 			} else {
+				// TODO: Select Bullet!
+				shoot(aStack, OP.bulletGtSmall.mat(MT.Ag, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}

@@ -737,55 +737,57 @@ public class WD {
 		return F;
 	}
 	
-	public List<ChunkCoordinates> ray(int aX, int aY, int aZ, int eX, int eY, int eZ) {return ray(T, T, aX, aY, aZ, eX, eY, eZ);}
-	public List<ChunkCoordinates> ray(boolean aIncludeStart, boolean aIncludeEnd, int aX, int aY, int aZ, int eX, int eY, int eZ) {
-		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
+	public static List<ChunkCoordinates> ray(double aX, double aY, double aZ, double eX, double eY, double eZ) {return ray(T, T, aX, aY, aZ, eX, eY, eZ);}
+	public static List<ChunkCoordinates> ray(boolean aIncludeStart, boolean aIncludeEnd, double aX, double aY, double aZ, double eX, double eY, double eZ) {
+		int tSX=aX<eX?1:-1, tSY=aY<eY?1:-1, tSZ=aZ<eZ?1:-1;
+		int tAX = UT.Code.roundDown(aX), tAY = UT.Code.roundDown(aY), tAZ = UT.Code.roundDown(aZ);
+		int tBX = UT.Code.roundDown(eX), tBY = UT.Code.roundDown(eY), tBZ = UT.Code.roundDown(eZ);
+		
+		ChunkCoordinates tCoords = new ChunkCoordinates(tAX, tAY, tAZ);
 		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls<>();
 		if (aIncludeStart) rList.add(tCoords);
 		
-		int tSX=aX<eX?1:-1, tSY=aY<eY?1:-1, tSZ=aZ<eZ?1:-1;
-		int dx=Math.abs(eX-aX), dy=Math.abs(eY-aY), dz=Math.abs(eZ-aZ);
-		
+		double dx=Math.abs(eX-aX), dy=Math.abs(eY-aY), dz=Math.abs(eZ-aZ);
 		double tH = Math.sqrt(dx*dx + dy*dy + dz*dz);
 		double tMX = (tH/2)/dx, tMY = (tH/2)/dy, tMZ = (tH/2)/dz;
 		double tDX =  tH   /dx, tDY =  tH   /dy, tDZ =  tH   /dz;
 		
-		while (aX!=eX || aY!=eY || aZ!=eZ) {
-			if (tCoords.posX!=aX || tCoords.posX!=aY || tCoords.posX!=aZ) rList.add(tCoords = new ChunkCoordinates(aX, aY, aZ));
+		while (tAX!=tBX || tAY!=tBY || tAZ!=tBZ) {
+			if (tCoords.posX!=tAX || tCoords.posY!=tAY || tCoords.posZ!=tAZ) rList.add(tCoords = new ChunkCoordinates(tAX, tAY, tAZ));
 			
 			if (tMX < tMY) {
 				if (tMX < tMZ) {
-					aX+=tSX; tMX+=tDX;
+					tAX+=tSX; tMX+=tDX;
 				} else if (tMX > tMZ) {
-					aZ+=tSZ; tMZ+=tDZ;
+					tAZ+=tSZ; tMZ+=tDZ;
 				} else {
-					aX+=tSX; tMX+=tDX;
-					aZ+=tSZ; tMZ+=tDZ;
+					tAX+=tSX; tMX+=tDX;
+					tAZ+=tSZ; tMZ+=tDZ;
 				}
 			} else if (tMX > tMY) {
 				if (tMY < tMZ) {
-					aY+=tSY; tMY+=tDY;
+					tAY+=tSY; tMY+=tDY;
 				} else if (tMY > tMZ) {
-					aZ+=tSZ; tMZ+=tDZ;
+					tAZ+=tSZ; tMZ+=tDZ;
 				} else {
-					aY+=tSY; tMY+=tDY;
-					aZ+=tSZ; tMZ+=tDZ;
+					tAY+=tSY; tMY+=tDY;
+					tAZ+=tSZ; tMZ+=tDZ;
 				}
 			} else {
 				if (tMY < tMZ) {
-					aX+=tSX; tMX+=tDX;
-					aY+=tSY; tMY+=tDY;
+					tAX+=tSX; tMX+=tDX;
+					tAY+=tSY; tMY+=tDY;
 				} else if (tMY > tMZ) {
-					aZ+=tSZ; tMZ+=tDZ;
+					tAZ+=tSZ; tMZ+=tDZ;
 				} else {
-					aX+=tSX; tMX+=tDX;
-					aY+=tSY; tMY+=tDY;
-					aZ+=tSZ; tMZ+=tDZ;
+					tAX+=tSX; tMX+=tDX;
+					tAY+=tSY; tMY+=tDY;
+					tAZ+=tSZ; tMZ+=tDZ;
 				}
 			}
 		}
 		
-		if (aIncludeEnd) rList.add(new ChunkCoordinates(eX, eY, eZ));
+		if (aIncludeEnd) rList.add(new ChunkCoordinates(tBX, tBY, tBZ));
 		return rList;
 	}
 	
