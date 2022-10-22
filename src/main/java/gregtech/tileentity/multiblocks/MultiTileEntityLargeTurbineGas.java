@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregtech.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -37,6 +32,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -79,6 +78,11 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.gasturbine.3"));
 		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.gasturbine.4"));
 		super.addToolTips(aList, aStack, aF3_H);
+	}
+	
+	@Override
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		mEnergyOUT.addToolTips(aList, aStack, aF3_H, null, T);
 	}
 	
 	@Override
