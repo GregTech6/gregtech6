@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.09: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Gun, still in the works but by now it at least can shoot Pumpkins and Glass Panes, lol
 
 
 6.15.08:

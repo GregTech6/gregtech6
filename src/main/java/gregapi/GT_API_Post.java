@@ -662,20 +662,15 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			// Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
-			if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
+			if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += NUM_SUB[2];
 			// Simple automatically added Alloying Recipes.
 			if (tMaterial.contains(TD.Processing.CRUCIBLE_ALLOY)) if (tMaterial.mComponents != null) tMaterial.addAlloyingRecipe(tMaterial.mComponents); else ERR.println("ERROR: Alloying Recipe for " + tMaterial.mNameLocal + " cannot be added due to lack of Component Information");
 		}
 		
-		MT.P     .mTooltipChemical += "\u2084";
-		MT.S     .mTooltipChemical += "\u2088";
-		MT.Se    .mTooltipChemical += "\u2088";
-		MT.UF4   .mTooltipChemical  = "UF\u2084";
-		MT.UF6   .mTooltipChemical  = "UF\u2086";
-		MT.U235F4.mTooltipChemical  = "U-235F\u2084";
-		MT.U235F6.mTooltipChemical  = "U-235F\u2086";
-		MT.U238F4.mTooltipChemical  = "U-238F\u2084";
-		MT.U238F6.mTooltipChemical  = "U-238F\u2086";
+		// Polyatomic Elements get a Subscript 4 or 8 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
+		MT.P .mTooltipChemical += NUM_SUB[4];
+		MT.S .mTooltipChemical += NUM_SUB[8];
+		MT.Se.mTooltipChemical += NUM_SUB[8];
 		
 		// Adding all the things that belong to the "ore" Prefix to its registered List.
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DUST_ORE, TD.Prefix.DENSE_ORE)) OP.ore.mRegisteredItems.addAll(tPrefix.mRegisteredItems);
