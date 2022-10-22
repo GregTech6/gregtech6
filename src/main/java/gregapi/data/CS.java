@@ -2175,6 +2175,7 @@ public class CS {
 		, MC_FIREWORK_LARGE     = "fireworks.largeBlast"
 		, MC_FIREWORK_LARGE_FAR = "fireworks.largeBlast_far"
 		, MC_LIQUID_WATER       = "liquid.water"
+		, MC_LIQUID_SPLASH      = "game.neutral.swim"
 		, MC_HMM                = "mob.villager.idle"
 		, MC_AHA                = "mob.villager.haggle"
 		, MC_SHEARS             = "mob.sheep.shear"

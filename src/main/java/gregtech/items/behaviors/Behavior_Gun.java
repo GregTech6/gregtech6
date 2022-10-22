@@ -22,10 +22,7 @@ package gregtech.items.behaviors;
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.code.TagData;
-import gregapi.data.LH;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.oredict.OreDictItemData;
@@ -164,7 +161,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
 				if (!tWater) {
 					tWater = T;
-					// TODO Bullet Splash Sound.
+					UT.Sounds.send(SFX.MC_LIQUID_SPLASH, aPlayer.worldObj, aCoord);
 					
 					// if high velocity break entirely, otherwise half the remaining power.
 					if (tPower > 10000) tPower = 0; else tPower /= 2;
@@ -181,7 +178,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				} else {
 					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.pumpkin_seeds, 1+RNGSUS.nextInt(3), 0));
 				}
-				UT.Sounds.send(SFX.MC_DIG_WOOD, aPlayer.worldObj, aCoord);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
 				continue;
@@ -190,7 +187,15 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon      , 1+RNGSUS.nextInt(6), 0));
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon_seeds, 1+RNGSUS.nextInt(3), 0));
-				UT.Sounds.send(SFX.MC_DIG_WOOD, aPlayer.worldObj, aCoord);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				continue;
+			}
+			if (aBlock == Blocks.cocoa) {
+				tPower-=3000;
+				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, IL.Dye_Cocoa.get(1));
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
 				continue;
@@ -206,7 +211,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					}
 				}
 				
-				UT.Sounds.send(SFX.MC_DIG_GLASS, aPlayer.worldObj, aCoord);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				continue;
 			}
