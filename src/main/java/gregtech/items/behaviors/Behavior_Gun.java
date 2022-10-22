@@ -142,7 +142,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
+		int tFireAspect = Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun)) + Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aBullet), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet));
 		long tPower = 10000;
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		
@@ -181,7 +181,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				} else {
 					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.pumpkin_seeds, 1+RNGSUS.nextInt(3), 0));
 				}
-				// TODO Pumpkin splatter Sound.
+				UT.Sounds.send(SFX.MC_DIG_WOOD, aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
 				continue;
@@ -190,7 +190,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon      , 1+RNGSUS.nextInt(6), 0));
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon_seeds, 1+RNGSUS.nextInt(3), 0));
-				// TODO Melon splatter Sound.
+				UT.Sounds.send(SFX.MC_DIG_WOOD, aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
 				continue;
@@ -206,7 +206,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					}
 				}
 				
-				// TODO Glass Shatter Sound.
+				UT.Sounds.send(SFX.MC_DIG_GLASS, aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				continue;
 			}
@@ -218,7 +218,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T) || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
 				tPower = 0;
-				// TODO Hit Wall Sound.
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				continue;
 			}
 			

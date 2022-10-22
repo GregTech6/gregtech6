@@ -76,8 +76,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * <BR>[13000:13999] Qwertygiy
 	 * <BR>[14000:14999] Lauren
 	 * <BR>[15000:15999] Yuesha / GT6U
-	 * <BR>[16000:16999] the next one who asks me (do not use unless I personally tell you to use this larger Range)
-	 * <BR>[17000:17999] Free
+	 * <BR>[16000:16999] Altadoon
+	 * <BR>[17000:17999] the next one who asks me (do not use unless I personally tell you to use this larger Range)
 	 * <BR>[18000:18999] Free
 	 * <BR>[19000:19999] Free
 	 * 
@@ -977,6 +977,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	/** Sets the TextureSets for this Material, first Parameter = Block Icons, second Parameter = Item Icons. */
 	public OreDictMaterial setTextures(TextureSet... aSets) {
+		if (aSets == null || aSets.length < 2) return setTextures();
 		mTextureSetsBlock = aSets[0].mList;
 		mTextureSetsItems = aSets[1].mList;
 		return this;
