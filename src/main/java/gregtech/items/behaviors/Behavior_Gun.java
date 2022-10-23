@@ -37,6 +37,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -150,6 +151,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				break;
 			}
 			
+			// Yes I know this Function will be called up to 200 times, but this is the cleanest way to handle it, that I can currently think of.
+			for (Object tEntity : aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(aCoord.posX, aCoord.posY, aCoord.posZ, aCoord.posX+1, aCoord.posY+1, aCoord.posZ+1))) {
+				if (tEntity instanceof EntityLivingBase && hit(aGun, aBullet, (EntityLivingBase)tEntity)) return T;
+			}
+			
 			oCoord = aCoord;
 			oBlock = aBlock;
 			oMeta  = aMeta;
@@ -226,22 +232,17 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				continue;
 			}
-			
-			// Yes I know this Function will be called up to 200 times, but this is the cleanest way to handle it, that I can currently think of.
-			for (Object tEntity : aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(aCoord.posX, aCoord.posY, aCoord.posZ, aCoord.posX+1, aCoord.posY+1, aCoord.posZ+1))) {
-				if (tEntity instanceof Entity && hit(aGun, aBullet, (Entity)tEntity)) return T;
-			}
 		}
 		return T;
 	}
 	
-	public boolean hit(ItemStack aGun, ItemStack aBullet, Entity aTarget) {
+	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityLivingBase aTarget) {
 		
 		// TODO Return false for Endermen if not enchanted with Disjunction.
 		
 		// TODO Hit Logic
 		
-		aTarget.setFire(1); // TODO Remove this Test
+		aTarget.setFire(100); // TODO Remove this Test
 		
 		return T;
 	}
