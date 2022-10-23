@@ -37,12 +37,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -227,13 +227,21 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				continue;
 			}
 			
-			// TODO Scan for Entities in this Block, yes this might be slightly laggy, but it's necessary to be done here.
+			// Yes I know this Function will be called up to 200 times, but this is the cleanest way to handle it, that I can currently think of.
+			for (Object tEntity : aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(aCoord.posX, aCoord.posY, aCoord.posZ, aCoord.posX+1, aCoord.posY+1, aCoord.posZ+1))) {
+				if (tEntity instanceof Entity && hit(aGun, aBullet, (Entity)tEntity)) return T;
+			}
 		}
 		return T;
 	}
 	
-	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityLivingBase aTarget) {
+	public boolean hit(ItemStack aGun, ItemStack aBullet, Entity aTarget) {
 		
+		// TODO Return false for Endermen if not enchanted with Disjunction.
+		
+		// TODO Hit Logic
+		
+		aTarget.setFire(1); // TODO Remove this Test
 		
 		return T;
 	}
