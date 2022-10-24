@@ -37,7 +37,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -147,15 +146,14 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord), Math.min(tPos.yCoord, tAim.yCoord), Math.min(tPos.zCoord, tAim.zCoord), Math.max(tPos.xCoord, tAim.xCoord), Math.max(tPos.yCoord, tAim.yCoord), Math.max(tPos.zCoord, tAim.zCoord)));
 		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
 		
+		DEB.println("A: " + tEntities);
+		
 		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
-			AxisAlignedBB
-			tBox = ((EntityLivingBase)tEntity).getBoundingBox();
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
-			tBox = ((EntityLivingBase)tEntity).getCollisionBox((EntityLivingBase)tEntity);
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
-			tBox = ((EntityLivingBase)tEntity).getCollisionBox(aPlayer);
+			AxisAlignedBB tBox = ((EntityLivingBase)tEntity).boundingBox;
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
+		
+		DEB.println("B: " + tTargets);
 		
 		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
 			tPower--;
@@ -279,20 +277,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			}
 		}
 		return aStack;
-	}
-	
-	@Override
-	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-		if (aPlayer instanceof EntityPlayerMP) {
-			if (aPlayer.isSneaking()) {
-				// TODO: Open GUI for reloading Gun
-			} else {
-				// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage. And Remember the TFC Damage Multiplier!
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
-			}
-			return T;
-		}
-		return T;
 	}
 	
 	@Override
