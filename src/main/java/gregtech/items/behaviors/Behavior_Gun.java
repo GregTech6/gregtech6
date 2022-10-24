@@ -144,10 +144,18 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		int tFireAspect = Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun)) + Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aBullet), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet));
 		long tPower = 10000;
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord));
+		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord), Math.min(tPos.yCoord, tAim.yCoord), Math.min(tPos.zCoord, tAim.zCoord), Math.max(tPos.xCoord, tAim.xCoord), Math.max(tPos.yCoord, tAim.yCoord), Math.max(tPos.zCoord, tAim.zCoord)));
 		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
 		
-		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase && ((EntityLivingBase)tEntity).getBoundingBox().calculateIntercept(tPos, tAim) != null) tTargets.add((EntityLivingBase)tEntity);
+		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
+			AxisAlignedBB
+			tBox = ((EntityLivingBase)tEntity).getBoundingBox();
+			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
+			tBox = ((EntityLivingBase)tEntity).getCollisionBox((EntityLivingBase)tEntity);
+			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
+			tBox = ((EntityLivingBase)tEntity).getCollisionBox(aPlayer);
+			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
+		}
 		
 		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
 			tPower--;
