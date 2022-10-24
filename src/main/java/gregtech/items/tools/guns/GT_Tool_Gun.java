@@ -48,4 +48,9 @@ public class GT_Tool_Gun extends ToolStats {
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, Behavior_Gun.BULLETS_SMALL);
 	}
+	
+	@Override
+	public String getDeathMessage() {
+		return "[VICTIM] got pistol-whipped over the head by [KILLER]";
+	}
 }

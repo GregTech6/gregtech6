@@ -19,11 +19,14 @@
 
 package gregtech.items.behaviors;
 
+import com.mojang.authlib.GameProfile;
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
+import gregapi.damage.DamageSources;
 import gregapi.data.*;
+import gregapi.enchants.Enchantment_EnderDamage;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.oredict.OreDictItemData;
@@ -38,123 +41,72 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.S2BPacketChangeGameState;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 
 import java.util.List;
+import java.util.UUID;
 
 import static gregapi.data.CS.*;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
-	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL);
-	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM);
-	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE);
+	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000);
+	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 17500);
+	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 25000);
 	
 	public final TagData mBulletType;
+	public final long mPower;
 	
-	public Behavior_Gun(TagData aBulletType) {
+	public Behavior_Gun(TagData aBulletType, long aPower) {
 		mBulletType = aBulletType;
-	}
-	
-	public MovingObjectPosition trace(World aWorld, Vec3 aPosA, Vec3 aPosB, boolean aHitThings) {
-		if (Double.isNaN(aPosA.xCoord) || Double.isNaN(aPosA.yCoord) || Double.isNaN(aPosA.zCoord) || Double.isNaN(aPosB.xCoord) || Double.isNaN(aPosB.yCoord) || Double.isNaN(aPosB.zCoord)) return null;
-		int tCount = 1000, aAX = UT.Code.roundDown(aPosA.xCoord), aAY = UT.Code.roundDown(aPosA.yCoord), aAZ = UT.Code.roundDown(aPosA.zCoord), aBX = UT.Code.roundDown(aPosB.xCoord), aBY = UT.Code.roundDown(aPosB.yCoord), aBZ = UT.Code.roundDown(aPosB.zCoord);
-		byte tSide = SIDE_UNKNOWN;
-		
-		while (tCount-- >= 0) {
-			Block aBlock = WD.block(aWorld, aAX, aAY, aAZ);
-			byte  aMeta  = WD.meta (aWorld, aAX, aAY, aAZ);
-			
-			
-			// TRIPWIRE!
-			
-			if (aBlock.getMaterial() == Material.water || aBlock.getMaterial() == Material.lava) {
-				return new MovingObjectPosition(aAX, aAY, aAZ, tSide, aPosA, T);
-			} else if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
-				if (aHitThings) {
-					OreDictItemData tData = OM.anydata(ST.make(aBlock, 1, aMeta));
-					for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
-						long tAmount = tMaterial.mAmount / OP.scrapGt.mAmount;
-						while (tAmount-->0) ST.drop(aWorld, aAX+0.2+RNGSUS.nextFloat()*0.6, aAY+0.1+RNGSUS.nextFloat()*0.5, aAZ+0.2+RNGSUS.nextFloat()*0.6, OP.scrapGt.mat(tMaterial.mMaterial, 1));
-					}
-				}
-			} else if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
-				// Just ignore or assume the Player shot through them.
-			} else if (aBlock.canCollideCheck(aMeta, F)) {
-				MovingObjectPosition tPos = aBlock.collisionRayTrace(aWorld, aAX, aAY, aAZ, aPosA, aPosB);
-				if (tPos != null) return tPos;
-			}
-			
-			if (aAX == aBX && aAY == aBY && aAZ == aBZ) return null;
-			if (Double.isNaN(aPosA.xCoord) || Double.isNaN(aPosA.yCoord) || Double.isNaN(aPosA.zCoord)) return null;
-			
-			tSide = SIDE_UNKNOWN;
-			
-			double tAX = aAX, tAY = aAY, tAZ = aAZ, tBX = aAX, tBY = aAY, tBZ = aAZ;
-			double tDiffX = aPosB.xCoord - aPosA.xCoord, tDiffY = aPosB.yCoord - aPosA.yCoord, tDiffZ = aPosB.zCoord - aPosA.zCoord;
-			
-			if (aAX != aBX) {if (aBX > aAX) tAX++; tBX = (tAX - aPosA.xCoord) / tDiffX;}
-			if (aAY != aBY) {if (aBY > aAY) tAY++; tBY = (tAY - aPosA.yCoord) / tDiffY;}
-			if (aAZ != aBZ) {if (aBZ > aAZ) tAZ++; tBZ = (tAZ - aPosA.zCoord) / tDiffZ;}
-			
-			if (tBX < tBY && tBX < tBZ) {
-				if (aBX > aAX) tSide = SIDE_X_NEG; else tSide = SIDE_X_POS;
-				aPosA.xCoord  = tAX;
-				aPosA.yCoord += tDiffY * tBX;
-				aPosA.zCoord += tDiffZ * tBX;
-			} else if (tBY < tBZ) {
-				if (aBY > aAY) tSide = SIDE_Y_NEG; else tSide = SIDE_Y_POS;
-				aPosA.xCoord += tDiffX * tBY;
-				aPosA.yCoord  = tAY;
-				aPosA.zCoord += tDiffZ * tBY;
-			} else {
-				if (aBZ > aAZ) tSide = SIDE_Z_NEG; else tSide = SIDE_Z_POS;
-				aPosA.xCoord += tDiffX * tBZ;
-				aPosA.yCoord += tDiffY * tBZ;
-				aPosA.zCoord  = tAZ;
-			}
-			
-			aAX = UT.Code.roundDown(aPosA.xCoord); if (tSide == SIDE_X_POS) aAX--;
-			aAY = UT.Code.roundDown(aPosA.yCoord); if (tSide == SIDE_Y_POS) aAY--;
-			aAZ = UT.Code.roundDown(aPosA.zCoord); if (tSide == SIDE_Z_POS) aAZ--;
-		}
-		return null;
+		mPower = aPower;
 	}
 	
 	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
+		// Making sure all Data is correct.
 		ST.update(aGun, aPlayer);
 		ST.update(aBullet, aPlayer);
-		
-		Vec3 tAim = aPlayer.getLookVec(), tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ);
-		tAim = tPos.addVector(tAim.xCoord * 100, tAim.yCoord * 100, tAim.zCoord * 100);
-		
+		// Whats the Angle we are looking from and to?
+		Vec3
+		tDir = aPlayer.getLookVec(),
+		tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ),
+		tAim = tPos.addVector(tDir.xCoord * 100, tDir.yCoord * 100, tDir.zCoord * 100);
+		// List all the Blocks that are on the way.
 		List<ChunkCoordinates> aCoords = WD.ray(T, T, 200, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		// Gather random Information about the first Block.
 		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
-		long tPower = 10000;
+		// Are we shooting from under Water?
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+		// Bullet related Stats
+		long tPower = mPower;
+		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
+		
+		
+		
+		// Make a List of all possible Targets.
 		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord), Math.min(tPos.yCoord, tAim.yCoord), Math.min(tPos.zCoord, tAim.zCoord), Math.max(tPos.xCoord, tAim.xCoord), Math.max(tPos.yCoord, tAim.yCoord), Math.max(tPos.zCoord, tAim.zCoord)));
 		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
-		
-		DEB.println("A: " + tEntities);
-		
 		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
 			AxisAlignedBB tBox = ((EntityLivingBase)tEntity).boundingBox;
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
-		
-		DEB.println("B: " + tTargets);
-		
+		// Actually do the shooting now!
 		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
 			tPower--;
 			
@@ -174,7 +126,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			for (int j = 0; j < tTargets.size(); j++) {
 				if (tTargets.get(j).getDistanceSq(oCoord.posX, oCoord.posY, oCoord.posZ) < tTargets.get(j).getDistanceSq(aCoord.posX, aCoord.posY, aCoord.posZ)) {
-					if (hit(aGun, aBullet, tTargets.remove(j--))) {
+					if (hit(aGun, aBullet, aPlayer, tTargets.remove(j--), tPower, tDir)) {
 						tPower -= 10000;
 						// If the bullet hits an Entity it should not drop itself.
 						if (tPower<=0) return T;
@@ -254,14 +206,49 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		return F;
 	}
 	
-	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityLivingBase aTarget) {
-		
-		// TODO Return false for Endermen if not enchanted with Disjunction.
+	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, EntityLivingBase aTarget, long aPower, Vec3 aDir) {
+		// Player specific immunities, and friendly fire prevention too, I guess.
+		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
+		// Endermen require Disjunction Enchantment on the Bullet.
+		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) return F;
 		
 		// TODO Hit Logic
 		
-		aTarget.setFire(100); // TODO Remove this Test
+		OreDictItemData tData = OM.anydata(aBullet);
 		
+		
+		// TODO Calc tDamage properly using weight instead of tool quality
+		float
+		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
+		tDamage = (aPower/5000.0F) * (Math.max(0, tData != null && tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mToolQuality-1 : 1));
+		int
+		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
+		tKnockback  =     (EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback .effectId, aBullet));
+		
+		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
+		
+		if (!(aTarget instanceof EntityPlayer) && EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, aBullet) > 0) {
+			EntityPlayer tFakePlayer = null;
+			if (aPlayer.worldObj instanceof WorldServer) tFakePlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
+			if (tFakePlayer != null) {
+				tFakePlayer.inventory.currentItem = 0;
+				tFakePlayer.inventory.setInventorySlotContents(0, aBullet);
+				aPlayer = tFakePlayer;
+				tFakePlayer.setDead();
+			}
+		}
+		
+		DamageSource tDamageSource = DamageSources.getCombatDamage("player", aPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
+		
+		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
+			aTarget.hurtResistantTime = 1;
+			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
+			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/10000.0, 0.1, aDir.zCoord * tKnockback * aPower/10000.0);
+			UT.Enchantments.applyBullshitA(aTarget, aPlayer, aBullet);
+			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
+			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
+			if (tMagicDamage > 0.0F) aPlayer.onEnchantmentCritical(aTarget);
+		}
 		return T;
 	}
 	
@@ -272,7 +259,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				// TODO: Open GUI for reloading Gun
 			} else {
 				// TODO: Select Bullet!
-				shoot(aStack, OP.bulletGtSmall.mat(MT.Ag, 1), aPlayer);
+				shoot(aStack, OP.bulletGtSmall.mat(MT.Rubber, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,10 @@
 
 package gregapi.damage;
 
+import gregapi.util.UT;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.*;
 
 /**
  * @author Gregorius Techneticies
@@ -96,5 +97,24 @@ public class DamageSources {
 	
 	public static DamageSource getFatDamage() {
 		return new DamageSourceFat();
+	}
+	
+	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity, String aMessage) {
+		String aNamePlayer = aPlayer.getCommandSenderName(), aNameEntity = aEntity.getCommandSenderName();
+		if (UT.Code.stringInvalid(aNamePlayer) || UT.Code.stringInvalid(aEntity)) return new ChatComponentText("Death Message lacks names of involved Players");
+		aNamePlayer = aNamePlayer.trim(); aNameEntity = aNameEntity.trim();
+		if (aNamePlayer.equalsIgnoreCase("CrazyJ84") || aNamePlayer.equalsIgnoreCase("CrazyJ1984")) {
+			if (aNameEntity.equalsIgnoreCase("Bear989jr")) return new ChatComponentText("<"+ EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> Sorry "+EnumChatFormatting.RED+"Junior"+EnumChatFormatting.WHITE);
+			if (aNameEntity.equalsIgnoreCase("Bear989Sr")) return new ChatComponentText("<"+EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> Hush it!, "+EnumChatFormatting.RED+"Bear"+EnumChatFormatting.WHITE+"!");
+		}
+		if (aNamePlayer.equalsIgnoreCase("Bear989Sr") || aNamePlayer.equalsIgnoreCase("Bear989jr")) {
+			//
+		}
+		return getDeathMessage(aPlayer, aEntity, aNamePlayer, aNameEntity, aMessage);
+	}
+	
+	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity, String aNamePlayer, String aNameEntity, String aMessage) {
+		if (UT.Code.stringInvalid(aMessage)) return new EntityDamageSource(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer).func_151519_b(aEntity);
+		return new ChatComponentText(aMessage.replace("[KILLER]", EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE).replace("[VICTIM]", EnumChatFormatting.RED+aNameEntity+EnumChatFormatting.WHITE));
 	}
 }
