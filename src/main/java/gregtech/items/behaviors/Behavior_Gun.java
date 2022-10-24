@@ -28,8 +28,10 @@ import gregapi.damage.DamageSources;
 import gregapi.data.*;
 import gregapi.enchants.Enchantment_EnderDamage;
 import gregapi.item.multiitem.MultiItem;
+import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -214,9 +216,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		// TODO Calc tDamage properly using weight instead of tool quality
 		OreDictItemData tData = OM.anydata(aBullet);
+		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
+		
 		float
 		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
-		tDamage = (aPower/5000.0F) * (Math.max(0, tData != null && tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mToolQuality-1 : 1));
+		tDamage = (aPower/5000.0F) * (Math.max(0, tGunMat.mToolQuality*0.5F + (tData!=null&&tData.hasValidMaterialData()?(float)tData.mMaterial.weight() / 50.0F : 1)));
 		int
 		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
 		tKnockback  =     (EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback .effectId, aBullet));
@@ -229,14 +233,15 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
 				tPlayer.inventory.currentItem = 0;
 				tPlayer.inventory.setInventorySlotContents(0, aBullet);
+				tPlayer.setPositionAndRotation(aPlayer.posX, aPlayer.posY, aPlayer.posZ, aPlayer.rotationYaw, aPlayer.rotationPitch);
 				tPlayer.setDead();
 			}
 		}
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
-			aTarget.hurtResistantTime = 1;
+			aTarget.hurtResistantTime = 5;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
-			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/7500.0, 0.05, aDir.zCoord * tKnockback * aPower/7500.0);
+			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/5000.0, 0.05, aDir.zCoord * tKnockback * aPower/5000.0);
 			UT.Enchantments.applyBullshitA(aTarget, aPlayer, aBullet);
 			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
 			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
@@ -252,7 +257,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				// TODO: Open GUI for reloading Gun
 			} else {
 				// TODO: Select Bullet!
-				shoot(aStack, OP.bulletGtSmall.mat(MT.Thaumium, 1), aPlayer);
+				shoot(aStack, OP.bulletGtSmall.mat(MT.Rubber, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}
