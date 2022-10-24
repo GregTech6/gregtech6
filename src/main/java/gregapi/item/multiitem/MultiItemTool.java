@@ -593,7 +593,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				continue;
 			}
 			if (tEnchantment.mObject == Enchantment.fireAspect) {
-				if (tStats.isWeapon() || tEnchantment.mAmount > 2)
+				if (tStats.isWeapon() || (tEnchantment.mAmount > 2 && tStats.isMiningTool()))
 				aStack.addEnchantment(Enchantment.fireAspect, tEnchantment.amountShort());
 				continue;
 			}

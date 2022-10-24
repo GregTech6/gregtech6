@@ -212,12 +212,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Endermen require Disjunction Enchantment on the Bullet.
 		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) return F;
 		
-		// TODO Hit Logic
-		
-		OreDictItemData tData = OM.anydata(aBullet);
-		
-		
 		// TODO Calc tDamage properly using weight instead of tool quality
+		OreDictItemData tData = OM.anydata(aBullet);
 		float
 		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
 		tDamage = (aPower/5000.0F) * (Math.max(0, tData != null && tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mToolQuality-1 : 1));
@@ -227,23 +223,20 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
 		
-		if (!(aTarget instanceof EntityPlayer) && EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, aBullet) > 0) {
-			EntityPlayer tFakePlayer = null;
-			if (aPlayer.worldObj instanceof WorldServer) tFakePlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
-			if (tFakePlayer != null) {
-				tFakePlayer.inventory.currentItem = 0;
-				tFakePlayer.inventory.setInventorySlotContents(0, aBullet);
-				aPlayer = tFakePlayer;
-				tFakePlayer.setDead();
+		EntityPlayer tPlayer = aPlayer;
+		if (!(aTarget instanceof EntityPlayer) && aPlayer.worldObj instanceof WorldServer) {
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, aBullet) > 0) {
+				tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
+				tPlayer.inventory.currentItem = 0;
+				tPlayer.inventory.setInventorySlotContents(0, aBullet);
+				tPlayer.setDead();
 			}
 		}
-		
-		DamageSource tDamageSource = DamageSources.getCombatDamage("player", aPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
-		
+		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = 1;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
-			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/10000.0, 0.1, aDir.zCoord * tKnockback * aPower/10000.0);
+			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/7500.0, 0.05, aDir.zCoord * tKnockback * aPower/7500.0);
 			UT.Enchantments.applyBullshitA(aTarget, aPlayer, aBullet);
 			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
 			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
@@ -259,7 +252,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				// TODO: Open GUI for reloading Gun
 			} else {
 				// TODO: Select Bullet!
-				shoot(aStack, OP.bulletGtSmall.mat(MT.Rubber, 1), aPlayer);
+				shoot(aStack, OP.bulletGtSmall.mat(MT.Thaumium, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}
