@@ -80,17 +80,17 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	
 	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
 		// Making sure all Data is correct.
-		ST.update(aGun, aPlayer);
-		ST.update(aBullet, aPlayer);
+		aGun    = ST.update(aGun   , aPlayer);
+		aBullet = ST.update(aBullet, aPlayer);
 		// Whats the Angle we are looking from and to?
 		Vec3
 		tDir = aPlayer.getLookVec(),
 		tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ),
 		tAim = tPos.addVector(tDir.xCoord * 100, tDir.yCoord * 100, tDir.zCoord * 100);
 		// List all the Blocks that are on the way.
-		List<ChunkCoordinates> aCoords = WD.ray(T, T, 200, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		List<ChunkCoordinates> aCoords = WD.ray(T, T, 201, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
 		// Gather random Information about the first Block.
-		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
+		ChunkCoordinates oCoord = aCoords.get(0), aCoord = oCoord, nCoord = oCoord;
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		// Are we shooting from under Water?
@@ -109,7 +109,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
 		// Actually do the shooting now!
-		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
+		for (int i = 1, ii = aCoords.size()-1; i < ii; i++) {
 			tPower--;
 			
 			if (tPower<=0) {
@@ -118,19 +118,22 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				return T;
 			}
 			
-			oCoord = aCoord;
+			oCoord = aCoords.get(i-1);
+			aCoord = aCoords.get(i  );
+			nCoord = aCoords.get(i+1);
+			
 			oBlock = aBlock;
 			oMeta  = aMeta;
 			
-			aCoord = aCoords.get(i);
 			aBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 			aMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 			
+			
 			for (int j = 0; j < tTargets.size(); j++) {
-				if (tTargets.get(j).getDistanceSq(oCoord.posX, oCoord.posY, oCoord.posZ) < tTargets.get(j).getDistanceSq(aCoord.posX, aCoord.posY, aCoord.posZ)) {
+				if (tTargets.get(j).getDistanceSq(aCoord.posX+0.5, aCoord.posY+0.5, aCoord.posZ+0.5) < tTargets.get(j).getDistanceSq(nCoord.posX+0.5, nCoord.posY+0.5, nCoord.posZ+0.5)) {
 					if (hit(aGun, aBullet, aPlayer, tTargets.remove(j--), tPower, tDir)) {
 						tPower -= 10000;
-						// If the bullet hits an Entity it should not drop itself.
+						// If the bullet hits an Entity it should not possibly drop itself.
 						if (tPower<=0) return T;
 					}
 				}
@@ -214,7 +217,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Endermen require Disjunction Enchantment on the Bullet.
 		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) return F;
 		
-		// TODO Calc tDamage properly using weight instead of tool quality
 		OreDictItemData tData = OM.anydata(aBullet);
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
 		
@@ -239,9 +241,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		}
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
-			aTarget.hurtResistantTime = 5;
+			aTarget.hurtResistantTime = aTarget.maxHurtResistantTime;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
-			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower/5000.0, 0.05, aDir.zCoord * tKnockback * aPower/5000.0);
+			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower / 50000.0, 0.05, aDir.zCoord * tKnockback * aPower / 50000.0);
 			UT.Enchantments.applyBullshitA(aTarget, aPlayer, aBullet);
 			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
 			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
@@ -257,7 +259,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				// TODO: Open GUI for reloading Gun
 			} else {
 				// TODO: Select Bullet!
-				shoot(aStack, OP.bulletGtSmall.mat(MT.Rubber, 1), aPlayer);
+				shoot(aStack, OP.bulletGtSmall.mat(MT.Au, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}
