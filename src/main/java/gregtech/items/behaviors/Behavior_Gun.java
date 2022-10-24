@@ -21,6 +21,7 @@ package gregtech.items.behaviors;
 
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.block.misc.BlockBaseSpike;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.*;
 import gregapi.item.multiitem.MultiItem;
@@ -143,17 +144,18 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		int tFireAspect = Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun)) + Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aBullet), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet));
 		long tPower = 10000;
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord));
+		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
+		
+		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase && ((EntityLivingBase)tEntity).getBoundingBox().calculateIntercept(tPos, tAim) != null) tTargets.add((EntityLivingBase)tEntity);
 		
 		for (int i = 1, ii = aCoords.size(); i < ii; i++) {
-			if (tPower--<=0) {
+			tPower--;
+			
+			if (tPower<=0) {
 				// TODO Maybe drop the Round as an Item at ***oCoord***.
 				if (tFireAspect > 2) WD.burn(aPlayer.worldObj, oCoord, T, T);
-				break;
-			}
-			
-			// Yes I know this Function will be called up to 200 times, but this is the cleanest way to handle it, that I can currently think of.
-			for (Object tEntity : aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(aCoord.posX, aCoord.posY, aCoord.posZ, aCoord.posX+1, aCoord.posY+1, aCoord.posZ+1))) {
-				if (tEntity instanceof EntityLivingBase && hit(aGun, aBullet, (EntityLivingBase)tEntity)) return T;
+				return T;
 			}
 			
 			oCoord = aCoord;
@@ -163,6 +165,16 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			aCoord = aCoords.get(i);
 			aBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 			aMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+			
+			for (int j = 0; j < tTargets.size(); j++) {
+				if (tTargets.get(j).getDistanceSq(oCoord.posX, oCoord.posY, oCoord.posZ) < tTargets.get(j).getDistanceSq(aCoord.posX, aCoord.posY, aCoord.posZ)) {
+					if (hit(aGun, aBullet, tTargets.remove(j--))) {
+						tPower -= 10000;
+						// If the bullet hits an Entity it should not drop itself.
+						if (tPower<=0) return T;
+					}
+				}
+			}
 			
 			if (WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ)) {
 				if (!tWater) {
@@ -233,7 +245,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				continue;
 			}
 		}
-		return T;
+		return F;
 	}
 	
 	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityLivingBase aTarget) {
