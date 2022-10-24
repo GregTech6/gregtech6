@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.guns;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.tools.ToolStats;
@@ -30,13 +28,16 @@ import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
 public class GT_Tool_Gun extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                     {return 200;}
 	@Override public int getToolDamagePerDropConversion()                 {return 100;}
 	@Override public int getToolDamagePerContainerCraft()                 {return 200;}
 	@Override public int getToolDamagePerEntityAttack()                   {return 200;}
 	@Override public float getSpeedMultiplier()                           {return 0.25F;}
-	@Override public boolean isWeapon()                                   {return T;}
+	@Override public boolean isWeapon()                                   {return F;}
 	@Override public boolean isRangedWeapon()                             {return T;}
 	@Override public boolean isMiningTool()                               {return F;}
 	@Override public boolean isMinableBlock(Block aBlock, byte aMetaData) {return F;}

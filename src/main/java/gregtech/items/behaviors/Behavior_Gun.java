@@ -140,7 +140,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		ChunkCoordinates oCoord = null, aCoord = oCoord = aCoords.get(0);
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		byte  oMeta  =  0, aMeta  = oMeta  = WD.meta (aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-		int tFireAspect = Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aGun)) + Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aBullet), EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet));
+		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
 		long tPower = 10000;
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord), Math.min(tPos.yCoord, tAim.yCoord), Math.min(tPos.zCoord, tAim.zCoord), Math.max(tPos.xCoord, tAim.xCoord), Math.max(tPos.yCoord, tAim.yCoord), Math.max(tPos.zCoord, tAim.zCoord)));

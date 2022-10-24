@@ -593,8 +593,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				continue;
 			}
 			if (tEnchantment.mObject == Enchantment.fireAspect) {
-				if (tEnchantment.mAmount > 2 || tStats.isWeapon())
-				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
+				if (tStats.isWeapon() || tEnchantment.mAmount > 2)
+				aStack.addEnchantment(Enchantment.fireAspect, tEnchantment.amountShort());
 				continue;
 			}
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchantment.mObject.getName())) {
