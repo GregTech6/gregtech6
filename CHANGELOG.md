@@ -10,7 +10,18 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.09: (Not released yet)
-[WIP] Gun, still in the works but by now it at least can shoot Pumpkins and Glass Panes, lol
+[WIP] Gun, still in the works, only needs an actual Reload Mechanic though.
+It uses the GT6 Bullets as Ammo. Generally Heavier Bullets are better than Lighter ones (the Bullet Casing doesn't count towards the weight), and Tool Quality ONLY matters for the Gun itself and not the Bullets.
+Now that makes Lead and Gold obvious Bullet Materials, but do not forget that Steel, despite being much lighter, does have the Sharpness Enchantment on it, same goes for various Alloy Enchantments.
+Small Golden Bullets are perfect for one-shotting unarmored vanilla Undead as long as the Gun you use is made of a Tier 3 or higher Material.
+While Looting does indeed work on a Bullet, that does usually not make much economical sense to aim for, when selecting what you want to shoot. Do note the Guns themselves cant have Looting on them.
+Medium and Large Bullets can pierce through multiple Entities, and tend to deal much more Damage, since they are double or triple the weight.
+Glass, Pumpkins, Melons, Cocoa Beans, Cacti and similar can be shot through, breaking the Block into pieces, but slowing down the Bullet a little.
+Fire Aspect Bullets and Flame Enchanted Guns will set Entities on Fire, and if their combined Level is 3 or higher, the Bullet will also set Fire to whatever Block it hits.
+Shooting from Air into any Liquid will "slow down" Small Bullets and absolutely destroy Medium and Large Bullets. if you want to use Medium or Large Bullets under Water you will have to use the Gun while you are in the Water. Fleeing from another Player by diving into Water can be a viable method of avoiding Bullet related damage.
+If you shoot a Mob that has invulnerability Frames, it will ignore that Mob and shoot through it, hitting whatever is behind that Mob.
+Fences, Iron Bars, Leaves, Wool, Mob Spawners and similar will just let you shoot through without impeding the Bullet whatsoever.
+Endermen require the Bullet to have the Disjunction Enchantment, or them being affected by a Weakness Potion Effect in order to be hit.
 
 
 6.15.08:

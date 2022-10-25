@@ -66,16 +66,18 @@ import java.util.UUID;
 import static gregapi.data.CS.*;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
-	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000);
-	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 17500);
-	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 25000);
+	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000, 12);
+	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 17500,  8);
+	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 25000,  4);
 	
 	public final TagData mBulletType;
 	public final long mPower;
+	public final byte mAmmoPerMag;
 	
-	public Behavior_Gun(TagData aBulletType, long aPower) {
+	public Behavior_Gun(TagData aBulletType, long aPower, long aAmmoPerMag) {
 		mBulletType = aBulletType;
 		mPower = aPower;
+		mAmmoPerMag = UT.Code.bindStack(aAmmoPerMag);
 	}
 	
 	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
@@ -173,6 +175,14 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
 				continue;
 			}
+			if (aBlock == Blocks.cactus) {
+				tPower-=3000;
+				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Blocks.cactus, 1, 0));
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				continue;
+			}
 			if (aBlock == Blocks.cocoa) {
 				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, IL.Dye_Cocoa.get(1));
@@ -212,9 +222,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, EntityLivingBase aTarget, long aPower, Vec3 aDir) {
-		// Player specific immunities, and friendly fire prevention too, I guess.
+		// Just pretend we miss the Target if it is in its Invulnerability Frames, this will end up hitting whatever is behind the Target instead.
+		if (aTarget.hurtResistantTime > 0) return F;
+		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
-		// Endermen require Disjunction Enchantment on the Bullet.
+		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
 		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) return F;
 		
 		OreDictItemData tData = OM.anydata(aBullet);
@@ -222,7 +234,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		float
 		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
-		tDamage = (aPower/5000.0F) * (Math.max(0, tGunMat.mToolQuality*0.5F + (tData!=null&&tData.hasValidMaterialData()?(float)tData.mMaterial.weight() / 50.0F : 1)));
+		tDamage = Math.min(2.0F, aPower/5000.0F) * (Math.max(0, tGunMat.mToolQuality*0.5F + (tData!=null&&tData.hasValidMaterialData()?(float)tData.mMaterial.weight() / 50.0F : 1)));
 		int
 		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
 		tKnockback  =     (EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback .effectId, aBullet));
@@ -239,7 +251,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPlayer.setDead();
 			}
 		}
-		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun"));
+		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun")).setProjectile();
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = aTarget.maxHurtResistantTime;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
@@ -256,7 +268,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		if (aPlayer instanceof EntityPlayerMP) {
 			if (aPlayer.isSneaking()) {
-				// TODO: Open GUI for reloading Gun
+				// TODO: Reload/Unload Gun
 			} else {
 				// TODO: Select Bullet!
 				shoot(aStack, OP.bulletGtSmall.mat(MT.Au, 1), aPlayer);
@@ -269,6 +281,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
+		aList.add(LH.get(LH.WEAPON_HEAVIER_BULLETS_STRONGER));
 		return aList;
 	}
 }
