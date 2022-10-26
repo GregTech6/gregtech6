@@ -42,6 +42,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -110,7 +111,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
 		// Actually do the shooting now!
-		long tPower = mPower;
+		long tPower = mPower + 2000L*EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, aGun);
 		for (int i = 1, ii = aCoords.size()-1; i < ii; i++) {
 			
 			if (tPower<=0) {
@@ -282,24 +283,31 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		return T;
 	}
 	
+	@Override public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
+	@Override public boolean onItemUse         (MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
+	@Override public boolean onItemUseFirst    (MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {if (aWorld.isRemote) return F; onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
+	
 	@Override
-	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
+	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aGun, World aWorld, EntityPlayer aPlayer) {
 		if (aPlayer instanceof EntityPlayerMP) {
 			if (aPlayer.isSneaking()) {
 				// TODO: Reload/Unload Gun
 			} else {
+				if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, aGun)) == 0) {
+					// TODO Use up one Bullet!
+				}
 				// TODO: Select Bullet!
-				shoot(aStack, OP.bulletGtSmall.mat(MT.Au, 1), aPlayer);
+				shoot(aGun, OP.bulletGtSmall.mat(MT.Au, 1), aPlayer);
 				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}
-		return aStack;
+		return aGun;
 	}
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add(LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
-		aList.add(LH.get(LH.WEAPON_HEAVIER_BULLETS_STRONGER));
+		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
+		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_HEAVIER_BULLETS_STRONGER));
 		return aList;
 	}
 }

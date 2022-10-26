@@ -569,9 +569,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		
 		for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools) {
 			tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
-			if (tEnchantment.mObject == Enchantment.fortune   ) tEnchantments.add(new ObjectStack<>(Enchantment.looting, tEnchantment.mAmount));
-			if (tEnchantment.mObject == Enchantment.knockback ) tEnchantments.add(new ObjectStack<>(Enchantment.punch  , tEnchantment.mAmount));
-			if (tEnchantment.mObject == Enchantment.fireAspect) tEnchantments.add(new ObjectStack<>(Enchantment.flame  , tEnchantment.mAmount));
+			if (tEnchantment.mObject == Enchantment.fortune   ) {tEnchantments.add(new ObjectStack<>(Enchantment.looting, tEnchantment.mAmount)); tEnchantments.add(new ObjectStack<>(Enchantment.infinity, tEnchantment.mAmount));}
+			if (tEnchantment.mObject == Enchantment.knockback )  tEnchantments.add(new ObjectStack<>(Enchantment.punch  , tEnchantment.mAmount));
+			if (tEnchantment.mObject == Enchantment.fireAspect)  tEnchantments.add(new ObjectStack<>(Enchantment.flame  , tEnchantment.mAmount));
 		}
 		
 		Enchantment[] tEnchants = tStats.getEnchantments(aStack, aMaterial);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregapi;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -44,22 +37,8 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ObjectStack;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.BooksGT;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.PlankData;
-import gregapi.data.CS.Sandwiches;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
@@ -69,11 +48,7 @@ import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.listeners.IOreDictListenerItem;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
-import gregapi.render.ITexture;
-import gregapi.render.IconContainerCopied;
-import gregapi.render.RenderHelper;
-import gregapi.render.RendererBlockFluid;
-import gregapi.render.RendererBlockTextured;
+import gregapi.render.*;
 import gregapi.tileentity.render.ITileEntityOnDrawBlockHighlight;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -96,6 +71,13 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -381,7 +363,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 										aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
 										for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
 											if (tEnchantment.mObject == Enchantment.fortune) {
-												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting.getTranslatedName((int)tEnchantment.mAmount));
+												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.infinity.getTranslatedName((int)tEnchantment.mAmount));
 											} else if (tEnchantment.mObject == Enchantment.knockback) {
 												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch  .getTranslatedName((int)tEnchantment.mAmount));
 											} else if (tEnchantment.mObject == Enchantment.fireAspect) {

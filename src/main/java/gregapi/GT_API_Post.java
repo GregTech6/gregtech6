@@ -93,6 +93,7 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 1));
 		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 2));
+		OM.blacklist(ST.make(MD.TC, "ItemResource", 1, 6));
 		OM.blacklist(ST.make(MD.TC, "ItemResource", 1,18));
 		OM.blacklist(ST.make(MD.FZ, "diamond_shard", 1, W));
 		OM.blacklist(ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, W));
