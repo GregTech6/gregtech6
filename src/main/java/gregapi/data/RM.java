@@ -176,17 +176,23 @@ public class RM {
 		if (ST.invalid(aStack1) || ST.invalid(aStack2)) return F;
 		return RM.Generifier.addRecipe1(F, T, F, F, F, 0, 1, aStack1, aStack2) != null;
 	}
+	public static boolean genericycle(ItemStack... aStacks) {
+		ArrayListNoNulls<ItemStack> aStackList = new ArrayListNoNulls<>(F, aStacks);
+		for (int i = 0; i < aStackList.size(); i++) if (ST.invalid(aStackList.get(i))) aStackList.remove(i--);
+		if (aStackList.size() < 2) return F;
+		for (int i = 0; i < aStackList.size(); i++) generify(aStackList.get(i), aStackList.get((i+1) % aStackList.size()));
+		return T;
+	}
 	
 	public static boolean generify(FluidStack aFluid1, FluidStack aFluid2) {
 		if (aFluid1 == null || aFluid2 == null) return F;
 		return RM.Generifier.addRecipe0(F, T, F, F, F, 0, 1, aFluid1, aFluid2, ZL_IS) != null;
 	}
-	
 	public static boolean genericycle(FluidStack... aFluids) {
 		ArrayListNoNulls<FluidStack> aFluidList = new ArrayListNoNulls<>(F, aFluids);
 		for (int i = 0; i < aFluidList.size(); i++) if (FL.Error.is(aFluidList.get(i))) aFluidList.remove(i--);
 		if (aFluidList.size() < 2) return F;
-		for (int i = 0; i < aFluidList.size(); i++) RM.Generifier.addRecipe0(F, T, F, F, F, 0, 1, aFluidList.get(i), aFluidList.get((i+1) % aFluidList.size()), ZL_IS);
+		for (int i = 0; i < aFluidList.size(); i++) generify(aFluidList.get(i), aFluidList.get((i+1) % aFluidList.size()));
 		return T;
 	}
 	
