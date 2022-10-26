@@ -110,9 +110,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
 		// Actually do the shooting now!
-		long tPower = mPower+10;
+		long tPower = mPower;
 		for (int i = 1, ii = aCoords.size()-1; i < ii; i++) {
-			tPower -= 10;
 			
 			if (tPower<=0) {
 				// TODO Maybe drop the Round as an Item at ***oCoord***.
@@ -134,7 +133,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			for (int j = 0; j < tTargets.size(); j++) {
 				if (tTargets.get(j).getDistanceSq(aCoord.posX+0.5, aCoord.posY+0.5, aCoord.posZ+0.5) < tTargets.get(j).getDistanceSq(nCoord.posX+0.5, nCoord.posY+0.5, nCoord.posZ+0.5)) {
 					if (hit(aGun, aBullet, aPlayer, tTargets.remove(j--), tPower, tDir)) {
-						tPower -= 10000;
+						tPower-=10000;
 						// If the bullet hits an Entity it should not possibly drop itself.
 						if (tPower<=0) return T;
 					}
@@ -145,9 +144,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				if (!tWater) {
 					tWater = T;
 					UT.Sounds.send(SFX.MC_LIQUID_SPLASH, aPlayer.worldObj, aCoord);
-					
 					// if high velocity break entirely, otherwise half the remaining power.
-					if (tPower > 10000) tPower = 0; else tPower /= 2;
+					if (tPower>10000) tPower=0; else tPower/=2;
 				}
 				continue;
 			}
@@ -155,45 +153,52 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			tWater = F;
 			
 			if (aBlock instanceof BlockPumpkin || WD.te(aPlayer.worldObj, aCoord, T) instanceof MultiTileEntityGregOLantern) {
-				tPower-=3000;
 				if (RNGSUS.nextInt(3) == 0) {
 					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Blocks.pumpkin, 1, 0));
 				} else {
 					ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.pumpkin_seeds, 1+RNGSUS.nextInt(3), 0));
 				}
-				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=3000;
 				continue;
 			}
 			if (aBlock == Blocks.melon_block) {
-				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon      , 1+RNGSUS.nextInt(6), 0));
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Items.melon_seeds, 1+RNGSUS.nextInt(3), 0));
-				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=3000;
 				continue;
 			}
 			if (aBlock == Blocks.cactus) {
-				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, ST.make(Blocks.cactus, 1, 0));
-				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=3000;
 				continue;
 			}
 			if (aBlock == Blocks.cocoa) {
-				tPower-=3000;
 				ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, IL.Dye_Cocoa.get(1));
-				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				if (tFireAspect > 1) WD.fire(aPlayer.worldObj, aCoord, F);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=2000;
+				continue;
+			}
+			if (aBlock == Blocks.wool || aBlock.getMaterial() == Material.carpet) {
+				if (tFireAspect > 1) {
+					WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+					WD.fire(aPlayer.worldObj, aCoord, F);
+				}
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=4000;
 				continue;
 			}
 			if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
-				tPower-=1000;
-				
 				OreDictItemData tData = OM.anydata(ST.make(aBlock, 1, aMeta));
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
 					long tAmount = tMaterial.mAmount / OP.scrapGt.mAmount;
@@ -202,30 +207,34 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					}
 				}
 				
-				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
+				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower-=2000;
 				continue;
 			}
 			
 			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
 				// Just ignore or assume the Player shot through them.
+				tPower-=10;
 				continue;
 			}
 			
-			if (WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
-				tPower = 0;
+			if (aBlock instanceof BlockStairs || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
 				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+				tPower=0;
 				continue;
 			}
 			
 			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T)) {
 				AxisAlignedBB tBox = aBlock.getCollisionBoundingBoxFromPool(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 				if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {
-					tPower = 0;
 					UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+					tPower=0;
 					continue;
 				}
 			}
+			
+			tPower-=10;
 		}
 		return F;
 	}
