@@ -110,17 +110,18 @@ public class Loader_Worldgen implements Runnable {
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, MD.ARS     .mLoaded ? new StoneLayerOres(MT.Vinteum           , U64, 16, 40) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedOrder      , U64, 24, 40, ST.block(MD.TC, "blockCustomOre"), 5, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedWater      , U64, 48, 64, ST.block(MD.TC, "blockCustomOre"), 3, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEarth      , U64,  0, 16, ST.block(MD.TC, "blockCustomOre"), 4, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.OREMATS.Cinnabar  , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 0, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedOrder      , U64, 24, 40, ST.block(MD.TC , "blockCustomOre"  ), 5, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedWater      , U64, 48, 64, ST.block(MD.TC , "blockCustomOre"  ), 3, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEarth      , U64,  0, 16, ST.block(MD.TC , "blockCustomOre"  ), 4, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.OREMATS.Cinnabar  , U32, 16, 40, ST.block(MD.TC , "blockCustomOre"  ), 0, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
-		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.OREMATS.Uraninite , U16,  0, 48, ST.block(MD.HBM, "tile.ore_uranium")) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEntropy    , U64, 24, 40, ST.block(MD.TC, "blockCustomOre"), 6, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedAir        , U64, 48, 64, ST.block(MD.TC, "blockCustomOre"), 1, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedFire       , U64,  0, 16, ST.block(MD.TC, "blockCustomOre"), 2, BIOMES_MAGICAL_GOOD) : null
-		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC, "blockCustomOre"), 7, BIOMES_MAGICAL_GOOD) : null
+		, MD.HBM     .mLoaded ? new StoneLayerOres(MT.OREMATS.Uraninite , U16,  0, 48, ST.block(MD.HBM, "tile.ore_uranium"), 0) : null
+		, MD.BoP     .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.BoP, "gemOre"          ),14) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.Amber             , U32, 16, 40, ST.block(MD.TC , "blockCustomOre"  ), 7, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedEntropy    , U64, 24, 40, ST.block(MD.TC , "blockCustomOre"  ), 6, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedAir        , U64, 48, 64, ST.block(MD.TC , "blockCustomOre"  ), 1, BIOMES_MAGICAL_GOOD) : null
+		, MD.TC      .mLoaded ? new StoneLayerOres(MT.InfusedFire       , U64,  0, 16, ST.block(MD.TC , "blockCustomOre"  ), 2, BIOMES_MAGICAL_GOOD) : null
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Emerald                 , F, U48, 16, 60, Blocks.emerald_ore, BIOMES_MOUNTAINS)

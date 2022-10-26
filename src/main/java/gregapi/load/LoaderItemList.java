@@ -1465,12 +1465,12 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_Mud_Ball                         .set(ST.make(MD.BoP, "mudball"                              , 1, 0), null, OD.itemMud);
 		IL.BoP_Mud_Brick                        .set(ST.make(MD.BoP, "misc"                                 , 1, 0));
 		IL.BoP_Mud_Bricks                       .set(ST.make(MD.BoP, "mudBricks"                            , 1, 0));
-		IL.BoP_Ashes                            .set(ST.make(MD.BoP, "misc"                                 , 1, 1), new OreDictItemData(MT.VolcanicAsh, U), DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray]);
-		IL.BoP_Ashes_Block                      .set(ST.make(MD.BoP, "ash"                                  , 1, 0), new OreDictItemData(MT.VolcanicAsh, U*4));
-		IL.BoP_Ashstone                         .set(ST.make(MD.BoP, "ashStone"                             , 1, 0), new OreDictItemData(MT.VolcanicAsh, U));
+		IL.BoP_Ashes                            .set(ST.make(MD.BoP, "misc"                                 , 1, 1), new OreDictItemData(MT.VolcanicAsh, U4*9), DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray]);
+		IL.BoP_Ashes_Block                      .set(ST.make(MD.BoP, "ash"                                  , 1, 0), new OreDictItemData(MT.VolcanicAsh, U *9));
+		IL.BoP_Ashstone                         .set(ST.make(MD.BoP, "ashStone"                             , 1, 0), new OreDictItemData(MT.VolcanicAsh, U *9));
 		IL.BoP_Comb                             .set(ST.make(MD.BoP, "misc"                                 , 1, 2), null, OD.beeComb, OD.materialWaxcomb);
-		IL.BoP_Flesh                            .set(ST.make(MD.BoP, "misc"                                 , 1, 3), new OreDictItemData(MT.MeatRaw, U));
-		IL.BoP_Flesh_Block                      .set(ST.make(MD.BoP, "flesh"                                , 1, 0), new OreDictItemData(MT.MeatRaw, U*4));
+		IL.BoP_Flesh                            .set(ST.make(MD.BoP, "misc"                                 , 1, 3), new OreDictItemData(MT.MeatRaw, U4*9));
+		IL.BoP_Flesh_Block                      .set(ST.make(MD.BoP, "flesh"                                , 1, 0), new OreDictItemData(MT.MeatRaw, U *9));
 		IL.BoP_Celestial                        .set(ST.make(MD.BoP, "misc"                                 , 1, 4));
 		IL.BoP_Celestial_Block                  .set(ST.make(MD.BoP, "crystal"                              , 1, 0));
 		IL.BoP_Dye_Blue                         .set(ST.make(MD.BoP, "misc"                                 , 1, 5), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue]);

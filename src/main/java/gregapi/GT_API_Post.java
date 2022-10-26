@@ -98,6 +98,14 @@ public class GT_API_Post extends Abstract_Mod {
 		OM.blacklist(ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, W));
 		OM.blacklist(ST.make(MD.ERE, "encrustedDiamond", 1, W));
 		OM.blacklist(ST.make(MD.BTL, "groundStuff", 1, 16));
+		OM.blacklist(ST.make(MD.BoP, "gems", 0));
+		OM.blacklist(ST.make(MD.BoP, "gems", 1));
+		OM.blacklist(ST.make(MD.BoP, "gems", 2));
+		OM.blacklist(ST.make(MD.BoP, "gems", 3));
+		OM.blacklist(ST.make(MD.BoP, "gems", 4));
+		OM.blacklist(ST.make(MD.BoP, "gems", 5));
+		OM.blacklist(ST.make(MD.BoP, "gems", 6));
+		OM.blacklist(ST.make(MD.BoP, "gems", 7));
 		
 		new LoaderItemList().run();
 		new LoaderItemData().run();
