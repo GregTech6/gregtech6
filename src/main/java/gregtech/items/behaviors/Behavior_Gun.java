@@ -84,7 +84,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Making sure all Data is correct.
 		aGun    = ST.update(aGun   , aPlayer);
 		aBullet = ST.update(aBullet, aPlayer);
-		// Whats the Angle we are looking from and to?
+		// What's the Angle we are looking from and to?
 		Vec3
 		tDir = aPlayer.getLookVec(),
 		tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ),
@@ -98,7 +98,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Are we shooting from under Water?
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		// Bullet related Stats
-		long tPower = mPower;
 		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
 		
 		
@@ -111,8 +110,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
 		// Actually do the shooting now!
+		long tPower = mPower+10;
 		for (int i = 1, ii = aCoords.size()-1; i < ii; i++) {
-			tPower--;
+			tPower -= 10;
 			
 			if (tPower<=0) {
 				// TODO Maybe drop the Round as an Item at ***oCoord***.
@@ -212,10 +212,19 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				continue;
 			}
 			
-			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T) || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
+			if (WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
 				tPower = 0;
 				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				continue;
+			}
+			
+			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T)) {
+				AxisAlignedBB tBox = aBlock.getCollisionBoundingBoxFromPool(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
+				if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {
+					tPower = 0;
+					UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
+					continue;
+				}
 			}
 		}
 		return F;
