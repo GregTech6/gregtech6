@@ -355,6 +355,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			aBullet.stackSize--;
 			ST.save(aNBT, NBT_AMMO, aBullet.stackSize > 0 ? aBullet : NI);
 		}
+		((MultiItemTool)aItem).doDamage(aGun, 100, aPlayer, F);
 		return aGun;
 	}
 	
