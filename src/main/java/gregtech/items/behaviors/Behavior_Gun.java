@@ -243,8 +243,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, EntityLivingBase aTarget, long aPower, Vec3 aDir) {
-		// Just pretend we miss the Target if it is in its Invulnerability Frames, this will end up hitting whatever is behind the Target instead.
-		if (aTarget.hurtResistantTime > 0) return F;
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
@@ -281,7 +279,12 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
 			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
 			if (tMagicDamage > 0.0F) aPlayer.onEnchantmentCritical(aTarget);
+			return T;
 		}
+		
+		// Just pretend we miss the Target if it was in its Invulnerability Frames, this will end up hitting whatever is behind the Target instead.
+		if (aTarget.hurtResistantTime > 0) return F;
+		// It hits, but it doesn't seem to do anything.
 		return T;
 	}
 	
@@ -302,20 +305,20 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					if (i < 18 && isProjectile(aPlayer.inventory.mainInventory[i+18])) {
 					if (i <  9 && isProjectile(aPlayer.inventory.mainInventory[i+27])) {
 						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+27].stackSize);
-						aPlayer.inventory.decrStackSize(i+27, tConsumed);
 						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+27]));
+						aPlayer.inventory.decrStackSize(i+27, tConsumed);
 						ST.update(aPlayer);
 						return aGun;
 					}
 						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+18].stackSize);
-						aPlayer.inventory.decrStackSize(i+18, tConsumed);
 						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+18]));
+						aPlayer.inventory.decrStackSize(i+18, tConsumed);
 						ST.update(aPlayer);
 						return aGun;
 					}
 						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+ 9].stackSize);
-						aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
 						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+ 9]));
+						aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
 						ST.update(aPlayer);
 						return aGun;
 					}
@@ -323,8 +326,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				}
 				for (int i = aPlayer.inventory.mainInventory.length-1; i >= 0; i--) if (isProjectile(aPlayer.inventory.mainInventory[i])) {
 					int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i].stackSize);
-					aPlayer.inventory.decrStackSize(i, tConsumed);
 					ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i]));
+					aPlayer.inventory.decrStackSize(i, tConsumed);
 					ST.update(aPlayer);
 					return aGun;
 				}
