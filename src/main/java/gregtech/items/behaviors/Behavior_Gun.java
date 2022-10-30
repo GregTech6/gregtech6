@@ -43,7 +43,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -272,7 +271,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPlayer.setDead();
 			}
 		}
-		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, "[VICTIM] got shot by [KILLER] with a Gun")).setProjectile();
+		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = aTarget.maxHurtResistantTime;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
@@ -290,7 +289,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		return T;
 	}
 	
-	@Override public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
+//  @Override public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
 	@Override public boolean onItemUse         (MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
 	@Override public boolean onItemUseFirst    (MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {if (aWorld.isRemote) return F; onItemRightClick(aItem, aStack, aPlayer.worldObj, aPlayer); return T;}
 	

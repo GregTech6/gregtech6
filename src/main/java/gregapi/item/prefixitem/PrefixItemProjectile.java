@@ -74,11 +74,12 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
 		if (mIsBullet) {
 			OreDictMaterial tMat = getMaterial(ST.meta(aStack));
-			float tDamage = (float)(tMat == null ? 1.0 : tMat.getWeight(getPrefix(ST.meta(aStack)).mAmount) / 50.0) * 2.0F * TFC_DAMAGE_MULTIPLIER;
-			aList.add(LH.Chat.WHITE + "Bullet Damage: " + LH.Chat.RED + (int)(tDamage/2) + (TFC_DAMAGE_MULTIPLIER>1?"":" Hearts"));
+			int tDamage = (int)((tMat == null ? 1.0 : tMat.getWeight(getPrefix(ST.meta(aStack)).mAmount) / 50.0) * 2.0F * TFC_DAMAGE_MULTIPLIER)+1;
+			aList.add(LH.Chat.WHITE + "Bullet Damage: " + LH.Chat.RED + tDamage/2.0F + (TFC_DAMAGE_MULTIPLIER>1?"":" Hearts"));
 		}
 		super.addInformation(aStack, aPlayer, aList, aF3_H);
 	}
