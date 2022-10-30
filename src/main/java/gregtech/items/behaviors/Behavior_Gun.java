@@ -252,8 +252,10 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
 		
 		float
+		tMassFactor = (tData!=null&&tData.hasValidMaterialData() ? (float)tData.mMaterial.weight() / 50.0F : 1),
+		tSpeedFactor = Math.min(2.0F, aPower/5000.0F),
 		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
-		tDamage = Math.min(2.0F, aPower/5000.0F) * (Math.max(0, tGunMat.mToolQuality*0.5F + (tData!=null&&tData.hasValidMaterialData()?(float)tData.mMaterial.weight() / 50.0F : 1)));
+		tDamage = tSpeedFactor * Math.max(0, tGunMat.mToolQuality*0.5F + tMassFactor);
 		int
 		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
 		tKnockback  =     (EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback .effectId, aBullet));
@@ -351,9 +353,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 		if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, aGun)) == 0) {
 			OreDictItemData tData = OM.anydata(aBullet);
-			for (OreDictMaterialStack tMat : tData.mByProducts) if (tMat.mAmount >= OP.scrapGt.mAmount && !tMat.mMaterial.containsAny(TD.Properties.EXPLOSIVE, TD.Properties.FLAMMABLE)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, OP.scrapGt.mat(tMat.mMaterial, tMat.mAmount/OP.scrapGt.mAmount));
 			aBullet.stackSize--;
 			ST.save(aNBT, NBT_AMMO, aBullet.stackSize > 0 ? aBullet : NI);
+			for (OreDictMaterialStack tMat : tData.mByProducts) if (tMat.mAmount >= OP.scrapGt.mAmount && !tMat.mMaterial.containsAny(TD.Properties.EXPLOSIVE, TD.Properties.FLAMMABLE)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, OP.scrapGt.mat(tMat.mMaterial, tMat.mAmount/OP.scrapGt.mAmount));
 		}
 		((MultiItemTool)aItem).doDamage(aGun, 100, aPlayer, F);
 		return aGun;

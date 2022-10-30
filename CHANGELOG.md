@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Bottlecrates now accept Biomes o'Plenty Jars too. Also Unification now targets the Biomes o'Plenty Gems, except for Amber which might need the Generifier if Thaumcraft is installed.
 [WIP] Gun, still in the works, I think I only need to make the two bigger Guns now.
 It uses the GT6 Bullets as Ammo. Generally Heavier Bullets are better than Lighter ones (the Bullet Casing doesn't count towards the weight), and Tool Quality ONLY matters for the Gun itself and not the Bullets.
-Now that makes Lead and Gold obvious Bullet Materials, but do not forget that Steel, despite being much lighter, does have the Sharpness Enchantment on it, same goes for various Alloy Enchantments.
+Now that makes Lead and Gold obvious Bullet Materials, but do not forget that Steel, despite being much lighter, does have the Sharpness Enchantment on it, same goes for various Alloy Enchantments. Netherite, which is made of 4 Debris and 4 Gold per 1 Ingot is quite dense by the way.
 Small Golden Bullets are perfect for one-shotting unarmored vanilla Undead as long as the Gun you use is made of a Tier 4 or higher Material, such as Netherite. If you want to use Tier 2 Guns, Platinum Bullets do the trick too.
 While Looting does indeed work on a Bullet, that does usually not make much economical sense to aim for, when selecting what you want to shoot. Do note the Guns themselves cant have Looting on them.
 Medium and Large Bullets can pierce through multiple Entities, and tend to deal much more Damage, since they are double or triple the weight.
