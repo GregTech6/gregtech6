@@ -27,6 +27,7 @@ import gregapi.code.TagData;
 import gregapi.damage.DamageSources;
 import gregapi.data.*;
 import gregapi.enchants.Enchantment_EnderDamage;
+import gregapi.item.IItemProjectile;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -51,6 +52,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
@@ -289,17 +291,62 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	
 	@Override
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aGun, World aWorld, EntityPlayer aPlayer) {
-		if (aPlayer instanceof EntityPlayerMP) {
-			if (aPlayer.isSneaking()) {
-				// TODO: Reload/Unload Gun
-			} else {
-				if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, aGun)) == 0) {
-					// TODO Use up one Bullet!
+		if (!(aPlayer instanceof EntityPlayerMP)) return aGun;
+		
+		NBTTagCompound aNBT = UT.NBT.getOrCreate(aGun);
+		ItemStack aBullet = ST.load(aNBT, NBT_AMMO);
+		if (aPlayer.isSneaking()) {
+			if (ST.invalid(aBullet) || aBullet.stackSize <= 0) {
+				for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) if (aPlayer.inventory.mainInventory[i] == aGun) {
+					if (i < 27 && isProjectile(aPlayer.inventory.mainInventory[i+ 9])) {
+					if (i < 18 && isProjectile(aPlayer.inventory.mainInventory[i+18])) {
+					if (i <  9 && isProjectile(aPlayer.inventory.mainInventory[i+27])) {
+						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+27].stackSize);
+						aPlayer.inventory.decrStackSize(i+27, tConsumed);
+						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+27]));
+						ST.update(aPlayer);
+						return aGun;
+					}
+						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+18].stackSize);
+						aPlayer.inventory.decrStackSize(i+18, tConsumed);
+						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+18]));
+						ST.update(aPlayer);
+						return aGun;
+					}
+						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+ 9].stackSize);
+						aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
+						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+ 9]));
+						ST.update(aPlayer);
+						return aGun;
+					}
+					break;
 				}
-				// TODO: Select Bullet!
-				shoot(aGun, OP.bulletGtSmall.mat(MT.Au, 1), aPlayer);
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
+				for (int i = aPlayer.inventory.mainInventory.length-1; i >= 0; i--) if (isProjectile(aPlayer.inventory.mainInventory[i])) {
+					int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i].stackSize);
+					aPlayer.inventory.decrStackSize(i, tConsumed);
+					ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i]));
+					ST.update(aPlayer);
+					return aGun;
+				}
+				return aGun;
 			}
+			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, aBullet);
+			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			ST.save(aNBT, NBT_AMMO, NI);
+			return aGun;
+		}
+		if (ST.invalid(aBullet) || aBullet.stackSize <= 0) {
+			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			ST.save(aNBT, NBT_AMMO, NI);
+			return aGun;
+		}
+		shoot(aGun, ST.amount(1, aBullet), aPlayer);
+		UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
+		if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, aGun)) == 0) {
+			OreDictItemData tData = OM.anydata(aBullet);
+			for (OreDictMaterialStack tMat : tData.mByProducts) if (tMat.mAmount >= OP.scrapGt.mAmount && !tMat.mMaterial.containsAny(TD.Properties.EXPLOSIVE, TD.Properties.FLAMMABLE)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, OP.scrapGt.mat(tMat.mMaterial, tMat.mAmount/OP.scrapGt.mAmount));
+			aBullet.stackSize--;
+			ST.save(aNBT, NBT_AMMO, aBullet.stackSize > 0 ? aBullet : NI);
 		}
 		return aGun;
 	}
@@ -309,5 +356,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
 		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_HEAVIER_BULLETS_STRONGER));
 		return aList;
+	}
+	
+	public boolean isProjectile(ItemStack aStack) {
+		return ST.item(aStack) instanceof IItemProjectile && ((IItemProjectile)ST.item(aStack)).hasProjectile(mBulletType, aStack);
 	}
 }

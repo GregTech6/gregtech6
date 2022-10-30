@@ -990,98 +990,98 @@ public class ST {
 	public static NBTTagCompound save(String aTagName, Block aBlock) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize, long aMeta) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize, long aMeta) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, ItemStack aStack) {
 		NBTTagCompound aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(aStack);
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize, long aMeta) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize, long aMeta) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, ItemStack aStack) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(aStack);
-		if (tNBT != null) aNBT.setTag(aTagName, tNBT);
+		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */

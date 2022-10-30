@@ -1252,6 +1252,7 @@ public class CS {
 	, NBT_REPLICATOR_DATA           = "gt.replicator.data"          // Short
 	, NBT_REACTOR_SETUP             = "gt.reactor.setup"            // Short
 	, NBT_REACTOR_SETUP_NAME        = "gt.reactor.setup.name"       // String
+	, NBT_AMMO                      = "gt.ammo"                     // ItemStack, see ST.save or ST.load
 	
 	, NBT_RECYCLING_COMPS           = "gt.recycling.comps"          // List of Components for the Disassembler.
 	, NBT_RECYCLING_MATS            = "gt.recycling.mats"           // List of Materials this Item recycles into. OM.anydata(ItemStack aStack) will check for this NBT, but only AFTER the Server already started!
