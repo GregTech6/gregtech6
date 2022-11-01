@@ -38,7 +38,6 @@ import gregapi.code.ObjectStack;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
@@ -356,44 +355,43 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 							Collections.sort(tShapelessAmounts);
 							aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SHAPELESS_CRAFT) + LH.Chat.WHITE + tShapelessAmounts);
 						}
-						if (tData.mPrefix.contains(TD.Prefix.TOOLTIP_ENCHANTS)) {
-							if (!tData.mMaterial.mMaterial.mEnchantmentTools.isEmpty()) {
-								if (!tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE)) {
-									if (tData.mMaterial.mMaterial.mEnchantmentTools.size() <= 5) {
-										aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
-										for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
-											if (tEnchantment.mObject == Enchantment.fortune) {
-												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.infinity.getTranslatedName((int)tEnchantment.mAmount));
-											} else if (tEnchantment.mObject == Enchantment.knockback) {
-												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch  .getTranslatedName((int)tEnchantment.mAmount));
-											} else if (tEnchantment.mObject == Enchantment.fireAspect) {
-												if (tEnchantment.mAmount >= 3)
-												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame  .getTranslatedName((int)tEnchantment.mAmount) + " / Auto Smelt I");
-												else
-												aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame  .getTranslatedName((int)tEnchantment.mAmount));
-											} else {
-												aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject  .getTranslatedName((int)tEnchantment.mAmount));
-											}
-										}
-									} else {
-										aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_TOOL_ENCHANTS));
-									}
-								}
+						if (tData.mPrefix.contains(TD.Prefix.TOOLTIP_ENCHANTS) && !(tData.mMaterial.mMaterial.mEnchantmentTools.isEmpty() && tData.mMaterial.mMaterial.mEnchantmentWeapons.isEmpty() && tData.mMaterial.mMaterial.mEnchantmentRanged.isEmpty() && tData.mMaterial.mMaterial.mEnchantmentArmors.isEmpty())) {
+							aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_ENCHANTS));
+							StringBuilder
+							tToolTip = null;
+							for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
+								if (tToolTip == null) tToolTip = new StringBuilder(LH.Chat.PURPLE).append(LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS)).append(LH.Chat.PINK); else tToolTip.append(", ");
+								tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 							}
+							if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
+							tToolTip = null;
+							for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentWeapons) {
+								if (tToolTip == null) tToolTip = new StringBuilder(LH.Chat.PURPLE).append(LH.get(LH.TOOLTIP_POSSIBLE_WEAPON_ENCHANTS)).append(LH.Chat.PINK); else tToolTip.append(", ");
+								tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+							}
+							if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
+							tToolTip = null;
+							for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentRanged) {
+								if (tToolTip == null) tToolTip = new StringBuilder(LH.Chat.PURPLE).append(LH.get(LH.TOOLTIP_POSSIBLE_RANGED_ENCHANTS)).append(LH.Chat.PINK); else tToolTip.append(", ");
+								tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+							}
+							if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
+							
+							
 							if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 								aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 							}
+							
+							
 							if (!tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE)) {
-								if (!tData.mMaterial.mMaterial.mEnchantmentArmors.isEmpty()) {
-									if (tData.mMaterial.mMaterial.mEnchantmentArmors.size() <= 3) {
-										aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_ARMOR_ENCHANTS));
-										for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentArmors) {
-											aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
-										}
-									} else {
-										aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_ARMOR_ENCHANTS));
-									}
+								tToolTip = null;
+								for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentArmors) {
+									if (tToolTip == null) tToolTip = new StringBuilder(LH.Chat.PURPLE).append(LH.get(LH.TOOLTIP_POSSIBLE_ARMOR_ENCHANTS)).append(LH.Chat.PINK); else tToolTip.append(", ");
+									tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 								}
+								if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
+								
+								
 								if ((IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
 									aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
 								}

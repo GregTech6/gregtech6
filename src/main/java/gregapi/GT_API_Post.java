@@ -598,11 +598,11 @@ public class GT_API_Post extends Abstract_Mod {
 			if ("enchantment.Magnetization".equalsIgnoreCase(tEnchant.getName())) {
 				for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
 					if (tMaterial == MT.NeodymiumMagnetic) {
-						tMaterial.addEnchantmentForTools(tEnchant, 3).addEnchantmentForArmors(tEnchant, 3);
-					} else if (tMaterial == MT.SteelMagnetic || tMaterial == MT.MeteoricSteel || tMaterial == MT.Meteorite) {
-						tMaterial.addEnchantmentForTools(tEnchant, 2).addEnchantmentForArmors(tEnchant, 2);
+						tMaterial.addEnchantmentForTools(tEnchant, 3).addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForArmors(tEnchant, 3);
+					} else if (tMaterial == MT.SteelMagnetic || tMaterial == MT.MeteoricSteel || tMaterial == MT.MeteoricBlackSteel || tMaterial == MT.MeteoricBlueSteel || tMaterial == MT.MeteoricRedSteel || tMaterial == MT.Meteorite) {
+						tMaterial.addEnchantmentForTools(tEnchant, 2).addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForArmors(tEnchant, 2);
 					} else if (tMaterial.contains(TD.Properties.MAGNETIC_ACTIVE)) {
-						tMaterial.addEnchantmentForTools(tEnchant, 1).addEnchantmentForArmors(tEnchant, 1);
+						tMaterial.addEnchantmentForTools(tEnchant, 1).addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForArmors(tEnchant, 1);
 					}
 				}
 			}

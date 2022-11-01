@@ -306,31 +306,31 @@ public class WorldgenTesting extends WorldgenObject {
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PISTOL                , MT.NetherizedDiamond, MT.LightBlue)
 			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PISTOL                , MT.Thaumium         , MT.Magenta)
 			, OP.bulletGtSmall.mat(MT.Steel, 64)
-			, OP.bulletGtSmall.mat(MT.NetherizedDiamond, 64)
+			, OP.bulletGtSmall.mat(MT.Netherite, 64)
 			, OP.bulletGtSmall.mat(MT.Thaumium, 64)
 			, OP.bulletGtSmall.mat(MT.SterlingSilver, 64)
 			, OP.bulletGtSmall.mat(MT.RoseGold, 64)
 			, OP.bulletGtSmall.mat(MT.Rubber, 64)
 			
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CARBINE               , MT.Steel            , MT.WOODS.Spruce)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CARBINE               , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CARBINE               , MT.Thaumium         , MT.Magenta)
+			, OP.bulletGtMedium.mat(MT.Steel, 64)
+			, OP.bulletGtMedium.mat(MT.Netherite, 64)
+			, OP.bulletGtMedium.mat(MT.Thaumium, 64)
+			, OP.bulletGtMedium.mat(MT.SterlingSilver, 64)
+			, OP.bulletGtMedium.mat(MT.RoseGold, 64)
+			, OP.bulletGtMedium.mat(MT.Rubber, 64)
 			
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.RIFLE                 , MT.Steel            , MT.WOODS.Spruce)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.RIFLE                 , MT.NetherizedDiamond, MT.LightBlue)
+			, ToolsGT.sMetaTool.getToolWithStats(ToolsGT.RIFLE                 , MT.Thaumium         , MT.Magenta)
+			, OP.bulletGtLarge.mat(MT.Steel, 64)
+			, OP.bulletGtLarge.mat(MT.Netherite, 64)
+			, OP.bulletGtLarge.mat(MT.Thaumium, 64)
+			, OP.bulletGtLarge.mat(MT.SterlingSilver, 64)
+			, OP.bulletGtLarge.mat(MT.RoseGold, 64)
+			, OP.bulletGtLarge.mat(MT.Rubber, 64)
 			
 			, NI
 			, NI

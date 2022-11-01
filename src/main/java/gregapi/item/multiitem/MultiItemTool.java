@@ -27,7 +27,6 @@ import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
 import gregapi.data.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.item.IItemEnergy;
 import gregapi.item.IItemGTContainerTool;
 import gregapi.item.IItemGTHandTool;
@@ -564,16 +563,14 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		aNBT.setTag("ench", new NBTTagList());
 		
 		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
-		
 		List<ObjectStack<Enchantment>> tEnchantments = new ArrayListNoNulls<>();
 		
-		for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools) {
-			tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
-			if (tEnchantment.mObject == Enchantment.fortune   ) {tEnchantments.add(new ObjectStack<>(Enchantment.looting, tEnchantment.mAmount)); tEnchantments.add(new ObjectStack<>(Enchantment.infinity, tEnchantment.mAmount));}
-			if (tEnchantment.mObject == Enchantment.knockback )  tEnchantments.add(new ObjectStack<>(Enchantment.punch  , tEnchantment.mAmount));
-			if (tEnchantment.mObject == Enchantment.fireAspect)  tEnchantments.add(new ObjectStack<>(Enchantment.flame  , tEnchantment.mAmount));
-		}
+		// Get Material Specific Enchantments for applicable Tool Classes.
+		if (tStats.isMiningTool  ()) for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools  ) tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
+		if (tStats.isWeapon      ()) for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentWeapons) tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
+		if (tStats.isRangedWeapon()) for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentRanged ) tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
 		
+		// Get Tool Specific Enchantments.
 		Enchantment[] tEnchants = tStats.getEnchantments(aStack, aMaterial);
 		int[] tLevels = tStats.getEnchantmentLevels(aStack, aMaterial);
 		
@@ -586,36 +583,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			}
 			if (temp) tEnchantments.add(new ObjectStack<>(tEnchants[i], tLevels[i]));
 		}
-		
-		for (ObjectStack<Enchantment> tEnchantment : tEnchantments) {
-			if (tEnchantment.mObject == Enchantment.silkTouch || tEnchantment.mObject == Enchantment_Radioactivity.INSTANCE) {
-				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
-				continue;
-			}
-			if (tEnchantment.mObject == Enchantment.fireAspect) {
-				if (tStats.isWeapon() || (tEnchantment.mAmount > 2 && tStats.isMiningTool()))
-				aStack.addEnchantment(Enchantment.fireAspect, tEnchantment.amountShort());
-				continue;
-			}
-			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchantment.mObject.getName())) {
-				if (tStats.isWeapon())
-				aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort());
-				continue;
-			}
-			switch(tEnchantment.mObject.type) {
-			case all        :                              aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
-			case weapon     : if (tStats.isWeapon      ()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
-			case bow        : if (tStats.isRangedWeapon()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
-			case digger     : if (tStats.isMiningTool  ()) aStack.addEnchantment(tEnchantment.mObject, tEnchantment.amountShort()); break;
-			case armor      : break;
-			case armor_feet : break;
-			case armor_head : break;
-			case armor_legs : break;
-			case armor_torso: break;
-			case breakable  : break;
-			case fishing_rod: break;
-			}
-		}
+		for (ObjectStack<Enchantment> tEnchantment : tEnchantments) UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.amountShort());
 		return T;
 	}
 	

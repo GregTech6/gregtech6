@@ -43,7 +43,9 @@ import gregtech.items.tools.crafting.GT_Tool_File;
 import gregtech.items.tools.crafting.GT_Tool_RollingPin;
 import gregtech.items.tools.early.*;
 import gregtech.items.tools.electric.*;
-import gregtech.items.tools.guns.GT_Tool_Gun;
+import gregtech.items.tools.guns.GT_Tool_Carbine;
+import gregtech.items.tools.guns.GT_Tool_Pistol;
+import gregtech.items.tools.guns.GT_Tool_Rifle;
 import gregtech.items.tools.machine.*;
 import gregtech.items.tools.pocket.*;
 import net.minecraft.init.Blocks;
@@ -193,7 +195,9 @@ public class Loader_Tools implements Runnable {
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+7)%8)*2)
 		);
 		
-		ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL, "Pistol", "Single Shot, Moderate Damage", new GT_Tool_Gun().setMaterialAmount(U9*20), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
+		ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL , "Pistol" , "Single Shot, Moderate Damage", new GT_Tool_Pistol ().setMaterialAmount(U9*20), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
+		ToolsGT.sMetaTool.addTool(ToolsGT.CARBINE, "Carbine", "Single Shot, Big Damage"     , new GT_Tool_Carbine().setMaterialAmount(U9*20), TC.stack(TC.TELUM, 7), TC.stack(TC.FABRICO, 4), TC.stack(TC.IGNIS, 4));
+		ToolsGT.sMetaTool.addTool(ToolsGT.RIFLE  , "Rifle"  , "Single Shot, Massive Damage" , new GT_Tool_Rifle  ().setMaterialAmount(U9*20), TC.stack(TC.TELUM, 8), TC.stack(TC.FABRICO, 5), TC.stack(TC.IGNIS, 5));
 		
 		
 		

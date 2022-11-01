@@ -660,7 +660,13 @@ public class UT {
 			if (aMat.mComponents == null && !aMat.contains(TD.Atomic.ELEMENT)) tPages--;
 			
 			if (!aMat.mByProducts.isEmpty()) tPages++;
-			if (aMat.mToolTypes > 0 || !aMat.mEnchantmentTools.isEmpty() || !aMat.mEnchantmentArmors.isEmpty()) tPages++;
+			
+			if (aMat.mToolTypes > 0) tPages++;
+			if (!aMat.mEnchantmentTools  .isEmpty()) tPages++;
+			if (!aMat.mEnchantmentWeapons.isEmpty()) tPages++;
+			if (!aMat.mEnchantmentRanged .isEmpty()) tPages++;
+			if (!aMat.mEnchantmentArmors .isEmpty()) tPages++;
+			
 			if (aMat.mDescription != null) for (int i = 0; i < aMat.mDescription.length; i++) if (Code.stringValid(aMat.mDescription[i])) tPages++;
 			
 			for (TagData tTag : TD.Properties.ALL_RELEVANTS) if (aMat.contains(tTag)) {tPages++; break;}
@@ -802,15 +808,35 @@ public class UT {
 			
 			//----------
 			
-			tPage="Tool Properties\n===================\n";
 			
-			if (aMat.mToolTypes > 0) {temp = T; tPage+="Durability:\n"+aMat.mToolDurability+"\nQuality:\n"+aMat.mToolQuality+"\nSpeed:\n"+aMat.mToolSpeed+"\nHandle:\n"+aMat.mHandleMaterial.getLocal()+"\n";}
-			if (!aMat.mEnchantmentTools.isEmpty()) tPage += "Tool Enchantments:\n";
-			for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentTools ) {temp = T; tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";}
-			if (!aMat.mEnchantmentArmors.isEmpty()) tPage += "Armor Enchantments:\n";
-			for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentArmors) {temp = T; tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";}
-			
-			if (temp) {tBook.add(tPage+"===================\n"); temp = F;}
+			if (aMat.mToolTypes > 0) {
+				tPage="Tool Properties\n===================\n";
+				tPage+="Durability:\n"+aMat.mToolDurability;
+				tPage+="\nQuality:\n"+aMat.mToolQuality;
+				tPage+="\nSpeed:\n"+aMat.mToolSpeed;
+				tPage+="\nHandle:\n"+aMat.mHandleMaterial.getLocal()+"\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentTools  .isEmpty()) {
+				tPage = "Tool Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentTools  ) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentWeapons.isEmpty()) {
+				tPage = "Weapon Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentWeapons) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentRanged .isEmpty()) {
+				tPage = "Ranged Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentRanged ) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentArmors .isEmpty()) {
+				tPage = "Armor Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentArmors ) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
 			
 			//----------
 			
@@ -3099,8 +3125,10 @@ public class UT {
 		public static int getRadioactivityLevel(ItemStack aStack, OreDictItemData aData) {
 			long rLevel = 0;
 			if (aData != null && aData.hasValidMaterialData()) {
-				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentTools ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
-				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentArmors) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentTools  ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentWeapons) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentRanged ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentArmors ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 			}
 			rLevel = Math.max(rLevel, EnchantmentHelper.getEnchantmentLevel(Enchantment_Radioactivity.INSTANCE.effectId, aStack));
 			return Code.bindInt(rLevel);

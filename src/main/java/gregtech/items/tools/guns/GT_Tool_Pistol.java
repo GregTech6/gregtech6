@@ -31,7 +31,7 @@ import net.minecraft.item.ItemStack;
 import static gregapi.data.CS.F;
 import static gregapi.data.CS.T;
 
-public class GT_Tool_Gun extends ToolStats {
+public class GT_Tool_Pistol extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                     {return 200;}
 	@Override public int getToolDamagePerDropConversion()                 {return 100;}
 	@Override public int getToolDamagePerContainerCraft()                 {return 200;}
