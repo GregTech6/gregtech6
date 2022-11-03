@@ -68,7 +68,7 @@ import java.util.UUID;
 import static gregapi.data.CS.*;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
-	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000, 12);
+	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000, 16);
 	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 17500,  8);
 	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 25000,  4);
 	
