@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.guns;
 
-import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
@@ -27,8 +26,7 @@ import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.item.ItemStack;
 
 public class GT_Tool_Carbine extends GT_Tool_Pistol {
-	@Override public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? Textures.ItemIcons.PISTOL : Textures.ItemIcons.HANDLE_PISTOL;}
-	@Override public short[]        getRGBa(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mRGBaSolid;}
+	@Override public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? Textures.ItemIcons.CARBINE : Textures.ItemIcons.HANDLE_CARBINE;}
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {

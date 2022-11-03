@@ -363,7 +363,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
-		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_HEAVIER_BULLETS_STRONGER));
 		return aList;
 	}
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,20 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.FL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_TechGuns extends CompatMods {
 	public Compat_Recipes_TechGuns(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -57,15 +52,15 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NCC, new Object[] {"X  ", "  x", 'X', OP.wireGt01.dat(ANY.Cu)});
 		
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.Pb));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.HSLA));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.Pb));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.HSLA));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(MT.Pb));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(MT.HSLA));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtSmall.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtSmall.dat(MT.HSLA));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtSmall.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtMedium.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtMedium.dat(MT.HSLA));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtMedium.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtLarge.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtLarge.dat(MT.HSLA));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "  ", " X", 'X', OP.bulletGtLarge.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.Pb));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.HSLA));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(ANY.Iron));
