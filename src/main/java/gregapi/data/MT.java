@@ -2704,20 +2704,21 @@ public class MT {
 			AmberDominican          .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Ambrosium               .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			ManaQuartz              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			EnderPearl              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Enderium                .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			Endium                  .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Blizz                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Frezarite               .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Inolashite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Sanguinite              .addEnchantmentForTools(Enchantment.silkTouch, 1);
-			SpectreIron             .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			NetherStar              .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			InfusedOrder            .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			InfusedBalance          .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			NiflheimPower           .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Vibramantium            .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Infinity                .addEnchantmentForTools(Enchantment.silkTouch,10);
+			
+			EnderPearl              .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 1);;
+			Enderium                .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 2);;
+			Endium                  .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 3);;
+			SpectreIron             .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 3);;
 			
 			Flint                   .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
 			Netherrack              .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
@@ -2779,6 +2780,7 @@ public class MT {
 			
 			Fe                      .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
 			IronMagnetic            .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			IronWood                .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
 			Ice                     .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
 			Glass                   .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
 			Bronze                  .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
@@ -2801,6 +2803,7 @@ public class MT {
 			FrozenIron              .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
 			MeteoricIron            .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
 			MeteoricSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			Steeleaf                .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			VanadiumSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			StainlessSteel          .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			Knightmetal             .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
