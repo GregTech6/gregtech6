@@ -257,6 +257,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public final List<OreDictMaterial> mByProducts = new ArrayListNoNulls<>();
 	/** The List of Materials which have this as Alloy Component.*/
 	public final Set<OreDictMaterial> mAlloyComponentReferences = new HashSetNoNulls<>();
+	/** The Materials which this is typically a source of. For Tooltips. */
+	public final Set<OreDictMaterial> mSourceOf = new HashSetNoNulls<>();
 	/** The List of Alloy Recipes which can create this Material. */
 	public final List<IOreDictConfigurationComponent> mAlloyCreationRecipes = new ArrayListNoNulls<>();
 	/** List of Achievements you get for creating an instance of this Material. */
@@ -361,6 +363,11 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial setRegistration(OreDictMaterial aMaterial) {
 		mTargetRegistration = aMaterial == null ? this : aMaterial.mTargetRegistration;
 		put(TD.Properties.INVALID_MATERIAL);
+		return this;
+	}
+	
+	public OreDictMaterial addSourceOf(OreDictMaterial... aMaterials) {
+		mSourceOf.addAll(Arrays.asList(aMaterials));
 		return this;
 	}
 	
