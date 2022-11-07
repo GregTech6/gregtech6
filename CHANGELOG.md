@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Bottlecrates now accept Biomes o'Plenty Jars too. Also Unification now targets the Biomes o'Plenty Gems, except for Amber which might need the Generifier if Thaumcraft is installed.
 [CHANGED] The Enchanted Material System got some backend changes, nothing should be significantly changed or different! Except the Tooltips and Guide Books, which might be a bit more precise.
 [ADDED] Tooltips now show what Materials you can get from Ores and Crushed Ores, making things more easy to understand.
-[WIP] Gun, only crafting recipes for the two bigger ones missing
+[ADDED] Pistols, Carbines and Rifles (all singleshot semi-auto)
 It uses the GT6 Bullets as Ammo. Generally Heavier Bullets are better than Lighter ones (the Bullet Casing doesn't count towards the weight), and Tool Quality ONLY matters for the Gun itself and not the Bullets.
 Now that makes Lead, Gold and Uranium obvious Bullet Materials, but do not forget that Steel, despite being much lighter, does have the Sharpness Enchantment on it, same goes for various Alloy Enchantments. Netherite, which is made of 4 Debris and 4 Gold per 1 Ingot is quite dense by the way.
 Small Golden Bullets are perfect for one-shotting unarmored vanilla Undead as long as the Gun you use is made of a Tier 4 or higher Material, such as Netherite. If you want to use Tier 2 Guns, Platinum Bullets do the trick too.
