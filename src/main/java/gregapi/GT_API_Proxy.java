@@ -59,8 +59,10 @@ import gregapi.item.IItemNoGTOverride;
 import gregapi.item.IItemProjectile;
 import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.item.IItemRottable.RottingUtil;
+import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.multiitem.tools.IToolStats;
 import gregapi.network.packets.PacketConfig;
 import gregapi.network.packets.PacketDeathPoint;
@@ -76,6 +78,7 @@ import gregapi.tileentity.*;
 import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.*;
 import gregapi.worldgen.GT6WorldGenerator;
+import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHugeMushroom;
 import net.minecraft.block.BlockJukebox.TileEntityJukebox;
@@ -1040,13 +1043,30 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 		}
 		
-		// Make sure that shelvable Items don't do a Rightclick Action instead of being shelved.
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) {
 			if (ST.valid(aStack)) {
+				// Make sure that shelvable Items don't do a Rightclick Action instead of being shelved.
 				if (aTileEntity instanceof ITileEntityBookShelf && ((ITileEntityBookShelf)aTileEntity).isShelfFace((byte)aEvent.face)) {
 					aEvent.useBlock = Result.ALLOW;
 					if (BooksGT.BOOK_REGISTER.containsKey(aStack, T)) aEvent.useItem = Result.DENY;
 					return;
+				}
+				// Reload Guns with the potential Ammo in this Slot if applicable. Ugly Code, I know.
+				if (!aEvent.entityPlayer.worldObj.isRemote) {
+					for (int i = 0; i < aEvent.entityPlayer.inventory.mainInventory.length; i++) {
+						ItemStack tStack = aEvent.entityPlayer.inventory.mainInventory[i];
+						if (ST.item(tStack) instanceof MultiItem) {
+							List<IBehavior<MultiItem>> tList = ((MultiItem) ST.item_(tStack)).mItemBehaviors.get(ST.meta_(tStack));
+							if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) {
+								if (tBehavior instanceof Behavior_Gun) {
+									if (((Behavior_Gun) tBehavior).reloadGun(tStack, aEvent.entityPlayer, T)) {
+										aEvent.setCanceled(T);
+										return;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}

@@ -301,41 +301,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		ItemStack aBullet = ST.load(aNBT, NBT_AMMO);
 		if (aPlayer.isSneaking()) {
 			if (ST.invalid(aBullet) || aBullet.stackSize <= 0) {
-				for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) if (aPlayer.inventory.mainInventory[i] == aGun) {
-					if (i < 27 && isProjectile(aPlayer.inventory.mainInventory[i+27])) {
-					if (i < 18 && isProjectile(aPlayer.inventory.mainInventory[i+18])) {
-					if (i <  9 && isProjectile(aPlayer.inventory.mainInventory[i+ 9])) {
-						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+ 9].stackSize);
-						UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
-						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+ 9]));
-						aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
-						ST.update(aPlayer);
-						return aGun;
-					}
-						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+18].stackSize);
-						UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
-						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+18]));
-						aPlayer.inventory.decrStackSize(i+18, tConsumed);
-						ST.update(aPlayer);
-						return aGun;
-					}
-						int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+27].stackSize);
-						UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
-						ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+27]));
-						aPlayer.inventory.decrStackSize(i+27, tConsumed);
-						ST.update(aPlayer);
-						return aGun;
-					}
-					break;
-				}
-				for (int i = aPlayer.inventory.mainInventory.length-1; i >= 0; i--) if (isProjectile(aPlayer.inventory.mainInventory[i])) {
-					int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i].stackSize);
-					UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
-					ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i]));
-					aPlayer.inventory.decrStackSize(i, tConsumed);
-					ST.update(aPlayer);
-					return aGun;
-				}
+				reloadGun(aGun, aPlayer, F);
 				return aGun;
 			}
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, aBullet);
@@ -368,5 +334,56 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	
 	public boolean isProjectile(ItemStack aStack) {
 		return ST.item(aStack) instanceof IItemProjectile && ((IItemProjectile)ST.item(aStack)).hasProjectile(mBulletType, aStack);
+	}
+	
+	public boolean reloadGun(ItemStack aGun, EntityPlayer aPlayer, boolean aOnlyCheckHeld) {
+		NBTTagCompound aNBT = UT.NBT.getOrCreate(aGun);
+		ItemStack aBullet = ST.load(aNBT, NBT_AMMO);
+		if (ST.valid(aBullet) && aBullet.stackSize > 0) return F;
+		if (isProjectile(aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem])) {
+			int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem].stackSize);
+			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem]));
+			aPlayer.inventory.decrStackSize(aPlayer.inventory.currentItem, tConsumed);
+			ST.update(aPlayer);
+			return T;
+		}
+		if (aOnlyCheckHeld) return F;
+		for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) if (aPlayer.inventory.mainInventory[i] == aGun) {
+			if (i < 27 && isProjectile(aPlayer.inventory.mainInventory[i+27])) {
+			if (i < 18 && isProjectile(aPlayer.inventory.mainInventory[i+18])) {
+			if (i <  9 && isProjectile(aPlayer.inventory.mainInventory[i+ 9])) {
+				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+ 9].stackSize);
+				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+ 9]));
+				aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
+				ST.update(aPlayer);
+				return T;
+			}
+				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+18].stackSize);
+				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+18]));
+				aPlayer.inventory.decrStackSize(i+18, tConsumed);
+				ST.update(aPlayer);
+				return T;
+			}
+				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+27].stackSize);
+				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+27]));
+				aPlayer.inventory.decrStackSize(i+27, tConsumed);
+				ST.update(aPlayer);
+				return T;
+			}
+			break;
+		}
+		for (int i = aPlayer.inventory.mainInventory.length-1; i >= 0; i--) if (isProjectile(aPlayer.inventory.mainInventory[i])) {
+			int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i].stackSize);
+			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i]));
+			aPlayer.inventory.decrStackSize(i, tConsumed);
+			ST.update(aPlayer);
+			return T;
+		}
+		return F;
 	}
 }

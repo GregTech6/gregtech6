@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,10 @@
 
 package gregapi.item.multiitem;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 import cpw.mods.fml.common.Optional;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
-import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -54,6 +46,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.*;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  * 
@@ -72,7 +68,6 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	/**
 	 * Creates the Item using these Parameters.
 	 * @param aUnlocalized The Unlocalized Name of this Item. DO NOT START YOUR UNLOCALISED NAME WITH "gt."!!!
-	 * @param aGeneratedPrefixList The OreDict Prefixes you want to have generated.
 	 */
 	public MultiItem(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized, "Generated Item", null);
