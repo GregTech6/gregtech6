@@ -1,7 +1,6 @@
 buildscript {
 	repositories {
 		mavenCentral()
-		//jcenter()
 		//maven {
 		//	name = "forge"
 		//	url = "https://files.minecraftforge.net/maven"
@@ -593,9 +592,9 @@ if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES
 	task testIfUploadable {}
 
 	uploadArchives {
+		dependsOn jar
 		repositories {
 			mavenDeployer {
-				uniqueVersion = false
 				repository(url: mavenURL) {
 					authentication(userName: mavenUsername, password: mavenPassword)
 				}
