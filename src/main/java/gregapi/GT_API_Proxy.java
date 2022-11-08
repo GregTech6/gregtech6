@@ -1376,25 +1376,23 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public int getBurnTime(ItemStack aFuel) {
 		if (ST.invalid(aFuel) || FL.getFluid(aFuel, T) != null) return 0;
 		Block aBlock = ST.block(aFuel);
-		if (aBlock instanceof BlockRailBase    ) return 0; // Needed so Railcrafts Tunnel Bore works properly and doesn't try to burn its Rails while laying them.
-		if (aBlock instanceof BlockHugeMushroom) return (3 * TICKS_PER_SMELT) / 2;
-		if (aBlock == BlocksGT.BalesGrass      ) return (9 * TICKS_PER_SMELT) / ((ST.meta_(aFuel) & 3) == 1 ? 2 : 4);
-		if (aBlock instanceof BlockBaseBale    ) return (9 * TICKS_PER_SMELT) / 4;
-		if (aBlock instanceof BlockBasePlanks  ) return (3 * TICKS_PER_SMELT) / 2;
-		if (aBlock instanceof BlockBaseSapling ) return      TICKS_PER_SMELT  / 2;
-		if (aBlock instanceof BlockBaseBeam || aBlock instanceof BlockBaseLog) return TICKS_PER_SMELT * 6;
-		long rFuelValue = 0;
+		if (aBlock instanceof BlockRailBase                                  ) return 0; // Needed so Railcrafts Tunnel Bore works properly and doesn't try to burn its Rails while laying them.
+		if (aBlock instanceof BlockHugeMushroom                              ) return (3 * TICKS_PER_SMELT) / 2;
+		if (aBlock == BlocksGT.BalesGrass                                    ) return (9 * TICKS_PER_SMELT) / ((ST.meta_(aFuel) & 3) == 1 ? 2 : 4);
+		if (aBlock instanceof BlockBaseBale                                  ) return (9 * TICKS_PER_SMELT) / 4;
+		if (aBlock instanceof BlockBasePlanks                                ) return (3 * TICKS_PER_SMELT) / 2;
+		if (aBlock instanceof BlockBaseSapling                               ) return      TICKS_PER_SMELT  / 2;
+		if (aBlock instanceof BlockBaseBeam || aBlock instanceof BlockBaseLog) return  6 * TICKS_PER_SMELT     ;
+		long rFuelValue = UT.NBT.getNBT(aFuel).getLong(NBT_FUEL_VALUE);
 		if (aFuel.getItem() instanceof MultiItemRandom) {
 			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta_(aFuel));
 			if (tFuelValue != null) rFuelValue = Math.max(rFuelValue, tFuelValue);
 		} else {
-			if (OD.logWood  .is_(aFuel)) return TICKS_PER_SMELT * 6;
-			if (OD.itemResin.is_(aFuel)) return TICKS_PER_SMELT / 2;
+			if (OD.plankAnyWood.is_(aFuel)) return 3 * TICKS_PER_SMELT / 2;
+			if (OD.logWood     .is_(aFuel)) return 6 * TICKS_PER_SMELT    ;
+			if (OD.itemResin   .is_(aFuel)) return     TICKS_PER_SMELT / 2;
 		}
-		NBTTagCompound tNBT = aFuel.getTagCompound();
-		if (tNBT != null) {
-			rFuelValue = Math.max(rFuelValue, tNBT.getLong(NBT_FUEL_VALUE));
-		}
+		
 		OreDictItemData tData = OM.anydata_(aFuel);
 		if (tData != null) {
 			long tBurnTime = 0;
@@ -1403,12 +1401,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			} else if (tData.mPrefix == OP.blockRaw) {
 				tBurnTime = tData.mMaterial.mMaterial.mFurnaceBurnTime * 10;
 			} else if (tData.mPrefix == null || tData.mPrefix.contains(TD.Prefix.BURNABLE)) {
-				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += (tData.mPrefix == OP.oreRaw ? tMaterial.mMaterial.mFurnaceBurnTime : tData.mPrefix == OP.blockRaw ? tMaterial.mMaterial.mFurnaceBurnTime * 10 : UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F));
-				if (tData.mPrefix == OP.stick          && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT     /2, tBurnTime));
-				if (tData.mPrefix == OP.stickLong      && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT       , tBurnTime));
-				if (tData.mPrefix == OP.blockPlate     && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 27)/2, tBurnTime));
-				if (tData.mPrefix == OP.crateGtPlate   && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 51)/2, tBurnTime));
-				if (tData.mPrefix == OP.crateGt64Plate && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT*195)/2, tBurnTime));
+				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F);
+				if (tData.mPrefix == OP.stick          && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT      /2, tBurnTime));
+				if (tData.mPrefix == OP.stickLong      && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT        , tBurnTime));
+				if (tData.mPrefix == OP.blockPlate     && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 27L)/2, tBurnTime));
+				if (tData.mPrefix == OP.crateGtPlate   && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT* 51L)/2, tBurnTime));
+				if (tData.mPrefix == OP.crateGt64Plate && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max((TICKS_PER_SMELT*195L)/2, tBurnTime));
 			}
 			rFuelValue = Math.max(rFuelValue, tBurnTime);
 		}
