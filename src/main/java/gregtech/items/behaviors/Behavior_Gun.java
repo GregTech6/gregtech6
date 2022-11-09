@@ -90,9 +90,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		Vec3
 		tDir = aPlayer.getLookVec(),
 		tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ),
-		tAim = tPos.addVector(tDir.xCoord * 100, tDir.yCoord * 100, tDir.zCoord * 100);
+		tAim = tPos.addVector(tDir.xCoord * 200, tDir.yCoord * 200, tDir.zCoord * 200);
 		// List all the Blocks that are on the way.
-		List<ChunkCoordinates> aCoords = WD.ray(T, T, 201, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
+		List<ChunkCoordinates> aCoords = WD.ray(T, T, 600, tPos.xCoord, tPos.yCoord, tPos.zCoord, tAim.xCoord, tAim.yCoord, tAim.zCoord);
 		// Gather random Information about the first Block.
 		ChunkCoordinates oCoord = aCoords.get(0), aCoord = oCoord, nCoord = oCoord;
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);

@@ -26,7 +26,7 @@ If you shoot a Mob that has invulnerability Frames, it will ignore that Mob and 
 Fences, Iron Bars, Leaves, Wool, Mob Spawners and similar will just let you shoot through without impeding the Bullet whatsoever.
 Endermen require the Bullet to have the Disjunction Enchantment, or them being affected by a Weakness Potion Effect in order to be hit.
 The Power Enchantment increases the "speed" of the Bullet, which can make even the basic Pistol a piercing Gun. The Level of this Enchantment is similar to the Level of Sharpness that the Material you used for the Gun has.
-Infinity on the Gun will decrease the amount of Ammo you use, but NOT to zero. It will be based on the Fortune/Looting Level of the Material you make the Gun of.
+Infinity on the Gun will decrease the amount of Ammo you use, but NOT to zero. It will be based on the "Infinity" Level of the Material you make the Gun of.
 Radioactive Bullets that are stored inside the Gun itself will not irradiate you, so as long as you wear a Hazmat while loading that Gun you will be safe.
 Armor with Projectile Protection can make a major difference in PvP against Guns.
 

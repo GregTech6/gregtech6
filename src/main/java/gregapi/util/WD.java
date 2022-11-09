@@ -755,7 +755,7 @@ public class WD {
 		while (tAX!=tBX || tAY!=tBY || tAZ!=tBZ) {
 			if (tCoords.posX!=tAX || tCoords.posY!=tAY || tCoords.posZ!=tAZ) rList.add(tCoords = new ChunkCoordinates(tAX, tAY, tAZ));
 			
-			if (aAbortAfter--<0) return rList;
+			if (aAbortAfter--<0) return sortLine(rList);
 			
 			if (tMX < tMY) {
 				if (tMX < tMZ) {
@@ -790,9 +790,19 @@ public class WD {
 		}
 		
 		if (aIncludeEnd) rList.add(new ChunkCoordinates(tBX, tBY, tBZ));
-		return rList;
+		return sortLine(rList);
 	}
 	
+	public static List<ChunkCoordinates> sortLine(List<ChunkCoordinates> aList) {
+		for (int i = 3, j = aList.size(); i < j; i++) {
+			ChunkCoordinates tA = aList.get(i-2), tB = aList.get(i-1), tC = aList.get(i);
+			if (Math.abs(tA.posX-tB.posX) + Math.abs(tA.posY-tB.posY) + Math.abs(tA.posZ-tB.posZ) < 2) continue;
+			if (Math.abs(tA.posX-tC.posX) + Math.abs(tA.posY-tC.posY) + Math.abs(tA.posZ-tC.posZ) > 1) continue;
+			aList.set(i  ,tB);
+			aList.set(i-1,tC);
+		}
+		return aList;
+	}
 	
 	public static long scan(ArrayList<String> aList, EntityPlayer aPlayer, World aWorld, int aScanLevel, int aX, int aY, int aZ, byte aSide, float aClickX, float aClickY, float aClickZ) {
 		if (aList == null) return 0;
