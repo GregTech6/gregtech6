@@ -90,9 +90,9 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		Vec3
 		tDir = aPlayer.getLookVec(),
 		tPos = Vec3.createVectorHelper(aPlayer.posX, aPlayer.posY + aPlayer.getEyeHeight(), aPlayer.posZ),
-		tAim = tPos.addVector(tDir.xCoord * 200, tDir.yCoord * 200, tDir.zCoord * 200);
+		tAimAt = tPos.addVector(tDir.xCoord * 200, tDir.yCoord * 200, tDir.zCoord * 200);
 		// List all the Blocks that are on the way.
-		List<ChunkCoordinates> aCoords = WD.line(tPos, tAim);
+		List<ChunkCoordinates> aCoords = WD.lineGridIntersections(tPos, tAimAt);
 		// Gather random Information about the first Block.
 		ChunkCoordinates oCoord = aCoords.get(0), aCoord = oCoord, nCoord = oCoord;
 		Block oBlock = NB, aBlock = oBlock = WD.block(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
@@ -105,11 +105,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		
 		// Make a List of all possible Targets.
-		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord)-2, Math.min(tPos.yCoord, tAim.yCoord)-2, Math.min(tPos.zCoord, tAim.zCoord)-2, Math.max(tPos.xCoord, tAim.xCoord)+2, Math.max(tPos.yCoord, tAim.yCoord)+2, Math.max(tPos.zCoord, tAim.zCoord)+2));
+		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAimAt.xCoord)-2, Math.min(tPos.yCoord, tAimAt.yCoord)-2, Math.min(tPos.zCoord, tAimAt.zCoord)-2, Math.max(tPos.xCoord, tAimAt.xCoord)+2, Math.max(tPos.yCoord, tAimAt.yCoord)+2, Math.max(tPos.zCoord, tAimAt.zCoord)+2));
 		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
 		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
 			AxisAlignedBB tBox = ((EntityLivingBase)tEntity).boundingBox;
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
+			if (tBox != null && tBox.calculateIntercept(tPos, tAimAt) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
 		}
 		// Actually do the shooting now!
 		long tPower = mPower + 2000L*EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, aGun);
@@ -231,7 +231,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T)) {
 				AxisAlignedBB tBox = aBlock.getCollisionBoundingBoxFromPool(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
-				if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {
+				if (tBox != null && tBox.calculateIntercept(tPos, tAimAt) != null) {
 					UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 					tPower=0;
 					continue;
