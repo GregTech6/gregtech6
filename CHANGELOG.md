@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.09: (Not released yet)
+6.15.09: (Not released yet, still trying to find out why the block raycast is off by one no matter which direction it goes...)
 [COMPAT] Bottlecrates now accept Biomes o'Plenty Jars too. Also Unification now targets the Biomes o'Plenty Gems, except for Amber which might need the Generifier if Thaumcraft is installed.
 [CHANGED] The Enchanted Material System got some backend changes, nothing should be significantly changed or different! Except the Tooltips and Guide Books, which might be a bit more precise.
 [ADDED] Tooltips now show what Materials you can get from Ores and Crushed Ores, making things more easy to understand.
