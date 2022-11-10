@@ -738,7 +738,13 @@ public class WD {
 	}
 	
 	public static List<ChunkCoordinates> line(Vec3 aStart, Vec3 aEnd) {
-		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls<>();
+		List<ChunkCoordinates> rList = new ArrayListNoNulls<>(F
+			// TODO DUMMY COORDINATES FOR NOW, PLEASE REMOVE
+			, new ChunkCoordinates((int)aStart.xCoord, (int)aStart.yCoord, (int)aStart.zCoord)
+			, new ChunkCoordinates((int)aStart.xCoord, (int)aStart.yCoord, (int)aStart.zCoord)
+			, new ChunkCoordinates((int)aEnd.xCoord, (int)aEnd.yCoord, (int)aEnd.zCoord)
+			, new ChunkCoordinates((int)aEnd.xCoord, (int)aEnd.yCoord, (int)aEnd.zCoord)
+		);
 		return rList;
 	}
 	
