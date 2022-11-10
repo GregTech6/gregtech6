@@ -125,6 +125,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			aCoord = aCoords.get(i  );
 			nCoord = aCoords.get(i+1);
 			
+			WD.set(aPlayer.worldObj, oCoord.posX, oCoord.posY, oCoord.posZ, Blocks.stained_glass_pane, i&3, 3);
+			
 			oBlock = aBlock;
 			oMeta  = aMeta;
 			
