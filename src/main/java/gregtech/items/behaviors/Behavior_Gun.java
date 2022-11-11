@@ -328,6 +328,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
+		ItemStack aBullet = ST.load(UT.NBT.getNBT(aStack), NBT_AMMO);
+		if (ST.valid(aBullet)) aList.add(LH.Chat.YELLOW + aBullet.getDisplayName() + LH.Chat._WHITE + aBullet.stackSize);
 		return aList;
 	}
 	
