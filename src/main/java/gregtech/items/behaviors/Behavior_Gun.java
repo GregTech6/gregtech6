@@ -216,7 +216,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
 				// Just ignore or assume the Player shot through them.
-				tPower-=10;
+				tPower-=200;
 				continue;
 			}
 			
@@ -235,7 +235,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				}
 			}
 			
-			tPower-=10;
+			tPower-=200;
 		}
 		return F;
 	}

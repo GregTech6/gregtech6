@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.09: (Not released yet)
+6.15.09:
 [COMPAT] Bottlecrates now accept Biomes o'Plenty Jars too. Also Unification now targets the Biomes o'Plenty Gems, except for Amber which might need the Generifier if Thaumcraft is installed.
 [CHANGED] The Enchanted Material System got some backend changes, nothing should be significantly changed or different! Except the Tooltips and Guide Books, which might be a bit more precise.
 [ADDED] Tooltips now show what Materials you can get from Ores and Crushed Ores, making things more easy to understand.
@@ -25,7 +25,7 @@ Shooting from Air into any Liquid will "slow down" Small Bullets and absolutely 
 If you shoot a Mob that has invulnerability Frames, it will ignore that Mob and shoot through it, hitting whatever is behind that Mob.
 Fences, Iron Bars, Leaves, Wool, Mob Spawners and similar will just let you shoot through without impeding the Bullet whatsoever.
 Endermen require the Bullet to have the Disjunction Enchantment, or them being affected by a Weakness Potion Effect in order to be hit.
-The Power Enchantment increases the "speed" of the Bullet, which can make even the basic Pistol a piercing Gun. The Level of this Enchantment is similar to the Level of Sharpness that the Material you used for the Gun has.
+The Power Enchantment increases the "speed" of the Bullet, which can make even the basic Pistol a piercing Gun with slightly longer range. The Level of this Enchantment is similar to the Level of Sharpness that the Material you used for the Gun has.
 Infinity on the Gun will decrease the amount of Ammo you use, but NOT to zero. It will be based on the "Infinity" Level of the Material you make the Gun of.
 Radioactive Bullets that are stored inside the Gun itself will not irradiate you, so as long as you wear a Hazmat while loading that Gun you will be safe.
 Armor with Projectile Protection can make a major difference in PvP against Guns.
