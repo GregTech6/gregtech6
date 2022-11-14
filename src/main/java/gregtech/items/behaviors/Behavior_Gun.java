@@ -214,7 +214,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				continue;
 			}
 			
-			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
+			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
 				// Just ignore or assume the Player shot through them.
 				tPower-=200;
 				continue;
@@ -244,7 +244,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
-		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) return F;
+		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) {
+			((EntityEnderman)aTarget).getTeleportDirection();
+			return F;
+		}
+		
 		
 		OreDictItemData tData = OM.anydata(aBullet);
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);

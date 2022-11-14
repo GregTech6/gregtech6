@@ -1,3 +1,3 @@
 #!/bin/bash
 cd ..
-./gradlew setupDecompWorkspace build eclipse
+./gradlew setupDecompWorkspace build

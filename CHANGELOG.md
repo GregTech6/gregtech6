@@ -1,12 +1,16 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.15.12: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.15.11: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.10: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Bullets can also be made with Bolts now and not just Rounds. Though Bolts are just the slightest bit more wasteful. But hey, Blaze Bullets!
 
 
 6.15.09:
