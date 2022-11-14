@@ -249,7 +249,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
 		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) {
-			((EntityEnderman)aTarget).getTeleportDirection();
+			((EntityEnderman)aTarget).teleportRandomly();
 			return F;
 		}
 		
