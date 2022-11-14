@@ -39,24 +39,24 @@ public class Enchantment_EnderDamage extends EnchantmentDamage {
 	public Enchantment_EnderDamage() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Disjunction", 15), 2, -1);
 		LH.add(getName(), "Disjunction");
-		MT.Hg                .addEnchantmentForWeapons(this, 3);
-		MT.Ag                .addEnchantmentForWeapons(this, 4);
-		MT.RedMeteor         .addEnchantmentForWeapons(this, 3);
-		MT.Electrum          .addEnchantmentForWeapons(this, 3);
-		MT.BlackBronze       .addEnchantmentForWeapons(this, 2);
-		MT.BlackSteel        .addEnchantmentForWeapons(this, 2);
-		MT.MeteoricBlackSteel.addEnchantmentForWeapons(this, 2);
-		MT.RedSteel          .addEnchantmentForWeapons(this, 1);
-		MT.MeteoricRedSteel  .addEnchantmentForWeapons(this, 1);
-		MT.BlueSteel         .addEnchantmentForWeapons(this, 3);
-		MT.MeteoricBlueSteel .addEnchantmentForWeapons(this, 3);
-		MT.ElectrumFlux      .addEnchantmentForWeapons(this, 3);
-		MT.Meutoite          .addEnchantmentForWeapons(this, 3);
-		MT.SterlingSilver    .addEnchantmentForWeapons(this, 4);
-		MT.AstralSilver      .addEnchantmentForWeapons(this, 5);
-		MT.Desichalkos       .addEnchantmentForWeapons(this, 6);
-		MT.VibraniumSilver   .addEnchantmentForWeapons(this,10);
-		MT.Infinity          .addEnchantmentForWeapons(this,10);
+		MT.Hg                .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.Ag                .addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4);
+		MT.RedMeteor         .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.Electrum          .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.BlackBronze       .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
+		MT.BlackSteel        .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
+		MT.MeteoricBlackSteel.addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
+		MT.RedSteel          .addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1);
+		MT.MeteoricRedSteel  .addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1);
+		MT.BlueSteel         .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.MeteoricBlueSteel .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.ElectrumFlux      .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.Meutoite          .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
+		MT.SterlingSilver    .addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4);
+		MT.AstralSilver      .addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5);
+		MT.Desichalkos       .addEnchantmentForWeapons(this, 6).addEnchantmentForAmmo(this, 6);
+		MT.VibraniumSilver   .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
+		MT.Infinity          .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
 		INSTANCE = this;
 	}
 	

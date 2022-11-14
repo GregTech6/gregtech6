@@ -129,11 +129,11 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	public void updateItemStack(ItemStack aStack) {
 		super.updateItemStack(aStack);
 		short aMetaData = ST.meta_(aStack);
-		if (UT.Code.exists(aMetaData, mMaterialList) && !mMaterialList[aMetaData].mEnchantmentWeapons.isEmpty()) {
+		if (UT.Code.exists(aMetaData, mMaterialList) && !mMaterialList[aMetaData].mEnchantmentAmmo.isEmpty()) {
 			NBTTagCompound tNBT = UT.NBT.getOrCreate(aStack);
 			if (!tNBT.getBoolean("gt.u")) {
 				tNBT.setBoolean("gt.u", T);
-				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentWeapons) {
+				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentAmmo) {
 					UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mAmount);
 				}
 			}

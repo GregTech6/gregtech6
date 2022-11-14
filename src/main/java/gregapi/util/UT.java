@@ -664,6 +664,7 @@ public class UT {
 			if (aMat.mToolTypes > 0) tPages++;
 			if (!aMat.mEnchantmentTools  .isEmpty()) tPages++;
 			if (!aMat.mEnchantmentWeapons.isEmpty()) tPages++;
+			if (!aMat.mEnchantmentAmmo   .isEmpty()) tPages++;
 			if (!aMat.mEnchantmentRanged .isEmpty()) tPages++;
 			if (!aMat.mEnchantmentArmors .isEmpty()) tPages++;
 			
@@ -825,6 +826,11 @@ public class UT {
 			if (!aMat.mEnchantmentWeapons.isEmpty()) {
 				tPage = "Weapon Enchantments\n===================\n";
 				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentWeapons) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentAmmo   .isEmpty()) {
+				tPage = "Ammo Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentAmmo   ) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
 				tBook.add(tPage+"===================\n");
 			}
 			if (!aMat.mEnchantmentRanged .isEmpty()) {
@@ -3127,6 +3133,7 @@ public class UT {
 			if (aData != null && aData.hasValidMaterialData()) {
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentTools  ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentWeapons) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentAmmo   ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentRanged ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentArmors ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 			}
