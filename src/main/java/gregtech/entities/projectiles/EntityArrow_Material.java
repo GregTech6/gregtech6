@@ -170,6 +170,9 @@ public class EntityArrow_Material extends EntityProjectile {
 				if (tHitEntity != null) {
 					OreDictItemData tData = OM.anydata(mArrow);
 					
+					// To make Railcrafts Implosion Enchantment work...
+					if (tShootingEntity instanceof EntityPlayer) MinecraftForge.EVENT_BUS.post(new AttackEntityEvent((EntityPlayer)tShootingEntity, tHitEntity));
+					
 					float
 					tMagicDamage = tHitEntity instanceof EntityLivingBase?EnchantmentHelper.func_152377_a(mArrow, ((EntityLivingBase)tHitEntity).getCreatureAttribute()):0,
 					tDamage = UT.Code.roundUp(MathHelper.sqrt_double(motionX*motionX + motionY*motionY + motionZ*motionZ) * (getDamage() + Math.max(0, tData != null && tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mToolQuality-1 : 0)));
@@ -202,9 +205,6 @@ public class EntityArrow_Material extends EntityProjectile {
 								tPlayer.setDead();
 							}
 						}
-						
-						// To make Railcrafts Implosion Enchantment work...
-						if (tShootingEntity instanceof EntityPlayer) MinecraftForge.EVENT_BUS.post(new AttackEntityEvent((EntityPlayer)tShootingEntity, tHitEntity));
 						
 						// To make Looting work at all...
 						DamageSource tDamageSource = DamageSource.causeArrowDamage(this, tShootingEntity==null?this:tShootingEntity);

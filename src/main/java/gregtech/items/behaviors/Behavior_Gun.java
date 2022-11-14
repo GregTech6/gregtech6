@@ -253,6 +253,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			return F;
 		}
 		
+		// To make Railcrafts Implosion Enchantment work...
+		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
 		OreDictItemData tData = OM.anydata(aBullet);
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
@@ -278,9 +280,6 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPlayer.setDead();
 			}
 		}
-		
-		// To make Railcrafts Implosion Enchantment work...
-		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(tPlayer, aTarget));
 		
 		// To make Looting work at all...
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
