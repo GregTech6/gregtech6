@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,14 @@
 
 package gregtech.entities.projectiles;
 
-import static gregapi.data.CS.*;
-
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.*;
 
 public class EntityArrow_Potion extends EntityArrow_Material {
 	
@@ -60,7 +60,7 @@ public class EntityArrow_Potion extends EntityArrow_Material {
 	}
 	
 	/**
-	 * @param aPotionEffects An Array of Potion Effects with %4==0 Elements as follows
+	 * @param aPotions An Array of Potion Effects with %4==0 Elements as follows
 	 * ID of a Potion Effect. 0 for none
 	 * Duration of the Potion in Ticks
 	 * Level of the Effect. [0, 1, 2] are for [I, II, III]

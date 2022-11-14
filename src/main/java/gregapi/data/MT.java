@@ -2726,6 +2726,12 @@ public class MT {
 			Obsidian                .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForAmmo(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
 			STONES.Gneiss           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
 			NetherBrick             .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PO4                     .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Phosphorite             .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Phosphorus              .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusBlue          .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusRed           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusWhite         .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
 			ObsidianSteel           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
 			Ignatius                .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
 			Prometheum              .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);

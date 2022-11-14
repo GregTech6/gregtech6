@@ -60,7 +60,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 
 import java.util.List;
 import java.util.UUID;
@@ -241,6 +243,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, EntityLivingBase aTarget, long aPower, Vec3 aDir) {
+		// In case the Entity is Invulnerable.
+		if (aTarget.isEntityInvulnerable()) return F;
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
@@ -274,7 +278,13 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPlayer.setDead();
 			}
 		}
+		
+		// To make Railcrafts Implosion Enchantment work...
+		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(tPlayer, aTarget));
+		
+		// To make Looting work at all...
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
+		
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = aTarget.maxHurtResistantTime;
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();

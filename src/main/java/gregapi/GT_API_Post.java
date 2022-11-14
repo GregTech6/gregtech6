@@ -631,6 +631,9 @@ public class GT_API_Post extends Abstract_Mod {
 				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 2);
 				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
 				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
+				for (OreDictMaterial tMat : ANY.Phosphorus.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
+				MT.PO4                  .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
+				MT.Phosphorite          .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
 				MT.Spinel               .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
 				MT.BalasRuby            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
 				MT.OnyxBlack            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);

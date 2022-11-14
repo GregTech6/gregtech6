@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,7 @@
 
 package gregtech.entities.projectiles;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.UUID;
-
 import com.mojang.authlib.GameProfile;
-
 import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.OM;
@@ -49,14 +43,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+
+import java.util.List;
+import java.util.UUID;
+
+import static gregapi.data.CS.*;
 
 public class EntityArrow_Material extends EntityProjectile {
 	private int mHitBlockX = -1;
@@ -206,6 +203,10 @@ public class EntityArrow_Material extends EntityProjectile {
 							}
 						}
 						
+						// To make Railcrafts Implosion Enchantment work...
+						if (tShootingEntity instanceof EntityPlayer) MinecraftForge.EVENT_BUS.post(new AttackEntityEvent((EntityPlayer)tShootingEntity, tHitEntity));
+						
+						// To make Looting work at all...
 						DamageSource tDamageSource = DamageSource.causeArrowDamage(this, tShootingEntity==null?this:tShootingEntity);
 						
 						if (tDamage + tMagicDamage > 0 && tHitEntity.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
