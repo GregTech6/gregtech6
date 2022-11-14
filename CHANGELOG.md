@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.10: (Not released yet)
-[FIXED] Railcrafts Implosion Enchantment did not work with Arrows and Bullets.
+[FIXED] Railcrafts Implosion Enchantment did not work with Arrows and Bullets. Now those Projectiles will get +2 to the Implosion Enchant.
 [CHANGED] Newly created Looting Arrows and Bullets will now have twice the Looting Enchantment than Melee Weapons of the same Material have.
 [ADDED] Bullets can also be made with Bolts now and not just Rounds. Though Bolts are just the slightest bit more wasteful. But hey, Blaze Bullets!
 

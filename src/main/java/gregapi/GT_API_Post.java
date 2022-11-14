@@ -625,31 +625,31 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Cryotheum            .addEnchantmentForArmors(tEnchant, 1);
 			}
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchant.getName())) {
-				for (OreDictMaterial tMat : ANY.Emerald   .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				for (OreDictMaterial tMat : ANY.Sapphire  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				for (OreDictMaterial tMat : ANY.Garnet    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
-				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				for (OreDictMaterial tMat : ANY.Phosphorus.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.PO4                  .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.Phosphorite          .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.Spinel               .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.BalasRuby            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.OnyxBlack            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.OnyxRed              .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.Topaz                .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.BlueTopaz            .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.Tanzanite            .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
-				MT.Amazonite            .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.Alexandrite          .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
-				MT.Opal                 .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
-				MT.Olivine              .addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 2);
-				MT.Dioptase             .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.Jade                 .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.Craponite            .addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForAmmo(tEnchant, 1);
-				MT.Amethyst             .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.EnderAmethyst        .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Emerald   .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				for (OreDictMaterial tMat : ANY.Sapphire  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Garnet    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 4);
+				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 4);
+				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 6);
+				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Phosphorus.mToThis) tMat.addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.PO4                  .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.Phosphorite          .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.Spinel               .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.BalasRuby            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.OnyxBlack            .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.OnyxRed              .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.Topaz                .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.BlueTopaz            .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.Tanzanite            .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 6);
+				MT.Amazonite            .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.Alexandrite          .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
+				MT.Opal                 .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 6);
+				MT.Olivine              .addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 4);
+				MT.Dioptase             .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.Jade                 .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.Craponite            .addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForAmmo(tEnchant, 3);
+				MT.Amethyst             .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 5);
+				MT.EnderAmethyst        .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 7);
 			}
 		}
 		
