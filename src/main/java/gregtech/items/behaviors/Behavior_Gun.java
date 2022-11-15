@@ -248,7 +248,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
-		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) for (int i = 0; i < 10; i++) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
+		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
 		// To make Railcrafts Implosion Enchantment work...
 		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
