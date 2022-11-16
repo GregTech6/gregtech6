@@ -109,7 +109,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
 		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
 			AxisAlignedBB tBox = ((EntityLivingBase)tEntity).boundingBox;
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {tTargets.add((EntityLivingBase)tEntity); continue;}
+			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) tTargets.add((EntityLivingBase)tEntity);
 		}
 		
 		// Actually do the shooting now!
@@ -201,7 +201,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				tPower-=4000;
 				continue;
 			}
-			if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
+			if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.ice || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
 				OreDictItemData tData = OM.anydata(ST.make(aBlock, 1, aMeta));
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
 					long tAmount = tMaterial.mAmount / OP.scrapGt.mAmount;
@@ -209,25 +209,21 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 						ST.drop(aPlayer.worldObj, aCoord.posX+0.2+RNGSUS.nextFloat()*0.6, aCoord.posY+0.1+RNGSUS.nextFloat()*0.5, aCoord.posZ+0.2+RNGSUS.nextFloat()*0.6, OP.scrapGt.mat(tMaterial.mMaterial, 1));
 					}
 				}
-				
 				WD.set(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, NB, 0, 3);
 				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				tPower-=2000;
 				continue;
 			}
-			
-			if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
+			if (aBlock instanceof BlockFence || aBlock instanceof BlockFenceGate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {
 				// Just ignore or assume the Player shot through them.
 				tPower-=200;
 				continue;
 			}
-			
 			if (aBlock instanceof BlockStairs || WD.opq(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ, T, F)) {
 				UT.Sounds.send(aBlock.stepSound.getBreakSound(), aPlayer.worldObj, aCoord);
 				tPower=0;
 				continue;
 			}
-			
 			if (aBlock.canCollideCheck(aMeta, F) || aBlock.canCollideCheck(aMeta, T)) {
 				AxisAlignedBB tBox = aBlock.getCollisionBoundingBoxFromPool(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 				if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) {
@@ -236,7 +232,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					continue;
 				}
 			}
-			
+			// Well, just keep flying.
 			tPower-=200;
 		}
 		return F;
