@@ -1186,6 +1186,11 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return this;
 	}
 	
+	public OreDictMaterial ores(OreDictMaterial... aMaterials) {
+		mByProducts.addAll(Arrays.asList(aMaterials));
+		return this;
+	}
+	
 	public void addOreByProducts(OreDictMaterial... aMaterials) {
 		mByProducts.addAll(Arrays.asList(aMaterials));
 	}

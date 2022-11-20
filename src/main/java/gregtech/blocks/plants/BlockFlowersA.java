@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregtech.blocks.plants;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseFlower;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -35,6 +31,10 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public BlockFlowersA(String aUnlocalised) {
@@ -67,7 +67,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		case  3: aList.add("Indicates presence of a Zinc Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
 		case  4: aList.add("Indicates presence of a Nickel Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
 		case  5: aList.add("Indicates presence of an Uranium Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  6: aList.add("Indicates presence of a Cooperite Deposit nearby"); break;
+		case  6: aList.add("Indicates presence of a Platinum Deposit nearby" ); break;
 		case  7: aList.add("Indicates presence of an Ore Deposit nearby"     ); break;
 		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby" ); break;
 		case  9: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
