@@ -140,6 +140,9 @@ public class MultiTileEntityRegistry {
 		return tClassContainer.mCanonicalTileEntity;
 	}
 	
+	/** Returns the MultiTileEntityRegistry ID that is currently used by this World. */
+	public int currentID() {return ST.id(mBlock);}
+	
 	/** Adds a new MultiTileEntity. It is highly recommended to do this in either the PreInit or the Init Phase. PostInit might not work well.*/
 	public ItemStack add(String aLocalised, String aCategoricalName, int aID, int aCreativeTabID, Class<? extends TileEntity> aClass, int aBlockMetaData, int aStackSize, MultiTileEntityBlock aBlock, NBTTagCompound aParameters, Object... aRecipe) {
 		return add(aLocalised, aCategoricalName, new MultiTileEntityClassContainer(aID, aCreativeTabID, aClass, aBlockMetaData, aStackSize, aBlock, aParameters), aRecipe);

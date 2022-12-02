@@ -299,6 +299,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	
 	@Override
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aGun, World aWorld, EntityPlayer aPlayer) {
+		// TODO Particles!
 		if (!(aPlayer instanceof EntityPlayerMP)) return aGun;
 		
 		NBTTagCompound aNBT = UT.NBT.getOrCreate(aGun);
