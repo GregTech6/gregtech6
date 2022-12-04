@@ -136,6 +136,7 @@ public class ToolCompat {
 			}
 			if (!rReturn && BlocksGT.Beam3 != null) {
 				if (IL.TC_Greatwood_Log.equal(aBlock)) {
+					if ((aMeta & 3) < 2)
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam3, aMeta, 3);
 				} else if (IL.AETHER_Skyroot_Log.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam3, (aMeta&12)|2, 3);
