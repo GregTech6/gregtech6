@@ -178,7 +178,7 @@ public enum IL implements IItemContainer {
 	RC_Rail_Reinforced, RC_Rail_Electric, RC_Rail_Standard, RC_Rail_Wooden, RC_Rail_Adv, RC_Rail_HS,
 	RC_Tie_Wood, RC_Tie_Stone, RC_Bed_Wood, RC_Bed_Stone,
 	RC_Rebar, RC_Firestone_Cut, RC_Firestone_Cracked, RC_Firestone_Refined,
-	RC_Post_Metal, RC_Creosote_Wood, RC_Crushed_Obsidian, RC_Concrete, RC_Stone_Abyssal, RC_Stone_Quarried,
+	RC_Post_Metal, RC_Platform_Metal, RC_Creosote_Wood, RC_Crushed_Obsidian, RC_Concrete, RC_Stone_Abyssal, RC_Stone_Quarried,
 	RC_Crowbar_Iron, RC_Crowbar_Steel, RC_Crowbar_Thaumium, RC_Crowbar_Voidmetal,
 	RC_Creosote_Bottle, RC_Creosote_Bucket, RC_Creosote_Cell, RC_Creosote_Can, RC_Creosote_Capsule, RC_Creosote_RefractoryCapsule,
 	IE_Creosote_Bottle, IE_Creosote_Bucket, IE_Hammer, IE_Slag, IE_Blueprint_Projectiles_Common, IE_Blueprint_Projectiles_Specialized, IE_Blueprint_Projectiles_Electrodes, IE_Crate, IE_Treated_Planks, IE_Treated_Slab, IE_Treated_Stairs,

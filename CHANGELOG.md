@@ -10,7 +10,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.10: (Not released yet)
-[FIXED] Railcrafts Implosion Enchantment did not work with Arrows and Bullets. Now those Projectiles will get +2 to the Implosion Enchant.
+[COMPAT] Railcraft Platforms, Posts and Glass can now be dyed in the Bathing Pot and such. Paint Removal Recipes included, as well as a Press Recipe for those Platforms, so that you can use any Iron or Steel Plates.
+[FIXED] Railcrafts Implosion Enchantment did not work with Arrows and Bullets. Now those Projectiles will also get +2 to the Implosion Enchant.
 [FIXED] Flint and Tinder, and the other Igniters, can now do Forestry candles. Though remember the chance of ignition failure for the Flint and Steels. Also did you know Forestry Candles can be lit with a Flint too?, And that you can DYE those Candles too using Vanilla Dye Items?, And that it behaves differently depending on the candle being lit or unlit? I sure as heck did not know any of that until now.
 [CHANGED] Newly created Looting Arrows and Bullets will now have twice the Looting Enchantment than Melee Weapons of the same Material have.
 [CHANGED] If you shoot an Enderman with a Gun and no Teleportation Target is found after 64 tries you will actually hit the Enderman. Under normal circumstances this chance is extremely low.

@@ -36,6 +36,7 @@ import mods.railcraft.common.carts.EntityTunnelBore;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
 import static gregapi.util.CR.*;
@@ -53,9 +54,9 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		
 		CR.shaped(ST.make(MD.RC, "part.gear"   , 2,  3), tBits | MIR, tHammer+""+tFile, "XX" , "XX", 'X', tIngot.dat(MT.Sn));
 		
-		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  0), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', OP.nugget.dat(MT.Au) , 'G', ST.make(MD.RC, "part.gear", 1, 3));
-		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  1), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Fe   ), 'G', ST.make(MD.RC, "part.gear", 1, 3));
-		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  2), tBits, tHammer+"X "    , "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Steel), 'G', ST.make(MD.RC, "part.gear", 1, 3));
+		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  0), tBits, tHammer+"X ", "XGX", " X"+tFile, 'X', OP.nugget.dat(MT.Au) , 'G', ST.make(MD.RC, "part.gear", 1, 3));
+		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  1), tBits, tHammer+"X ", "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Fe   ), 'G', ST.make(MD.RC, "part.gear", 1, 3));
+		CR.shaped(ST.make(MD.RC, "part.gear"   , 1,  2), tBits, tHammer+"X ", "XGX", " X"+tFile, 'X', tIngot.dat(ANY.Steel), 'G', ST.make(MD.RC, "part.gear", 1, 3));
 		
 		CR.shaped(ST.make(MD.RC, "part.circuit", 1,  0), tBits, "dCW", "GAR", "WRL", 'W', ST.make(Blocks.wool, 1, 14), 'L', OP.gem.dat(MT.Lapis), 'A', tIngot.dat(MT.Au), 'C', Items.repeater, 'R', OD.itemRedstone, 'G', OD.itemGlue);
 		CR.shaped(ST.make(MD.RC, "part.circuit", 1,  1), tBits, "dCW", "GAR", "WRL", 'W', ST.make(Blocks.wool, 1, 13), 'L', OP.gem.dat(MT.Lapis), 'A', tIngot.dat(MT.Au), 'C', Items.repeater, 'R', OD.itemRedstone, 'G', OD.itemGlue);
@@ -147,6 +148,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.Injector.addRecipe1(T, 16,  256, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Cracked.get(1));
 		}
 		
+		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(TD.Prefix.ORE)) tPrefix.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.isGT(aEvent.mStack)) return;
 			Block tBlock = ST.block(aEvent.mStack);
@@ -155,6 +157,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 				EntityTunnelBore.addMineableBlock(tBlock, tMeta >= 16 ? -1 : tMeta);
 			} catch(Throwable e) {e.printStackTrace(ERR);}
 		}});
+		
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener(new Object[] {OP.stone, OP.cobblestone, OP.treeSapling, OP.treeLeaves, OP.tree, OP.log, OP.plank, OP.beam}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -173,6 +176,20 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		}});
 		}};
 		
+		
+		for (byte i = 0; i < 16; i++) for (FluidStack tDye : DYE_FLUIDS[i]) {
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "glass"              , 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.RC, "glass"              , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, IL.RC_Post_Metal                    .get(1), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.RC, "post.metal"         , 1, i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal"         , 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.RC, "post.metal"         , 1, i));
+			RM.Bath.addRecipe1(T, 0, 16, IL.RC_Platform_Metal                .get(1), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.RC, "post.metal.platform", 1, i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal.platform", 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.RC, "post.metal.platform", 1, i));
+		}
+		RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "glass"              , 1, W), MT.Cl.fluid(U20, T), NF, ST.make(MD.RC, "glass", 1, 0));
+		RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal"         , 1, W), MT.Cl.fluid(U20, T), NF, IL.RC_Post_Metal.get(1));
+		RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal.platform", 1, W), MT.Cl.fluid(U20, T), NF, IL.RC_Platform_Metal.get(1));
+		
+		for (OreDictMaterial tMat : ANY.Fe.mToThis)
+		RM.Press.addRecipe2(F, 16, 64, IL.RC_Post_Metal.get(1), OP.plate.mat(tMat, 4), IL.RC_Platform_Metal.get(4));
 		
 		
 		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Ag      , 4), OP.dust     .mat(MT.Redstone, 1)), IL.RC_Rail_Adv.get( 4));
