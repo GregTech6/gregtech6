@@ -188,8 +188,11 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal"         , 1, W), MT.Cl.fluid(U20, T), NF, IL.RC_Post_Metal.get(1));
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.RC, "post.metal.platform", 1, W), MT.Cl.fluid(U20, T), NF, IL.RC_Platform_Metal.get(1));
 		
-		for (OreDictMaterial tMat : ANY.Fe.mToThis)
-		RM.Press.addRecipe2(F, 16, 64, IL.RC_Post_Metal.get(1), OP.plate.mat(tMat, 4), IL.RC_Platform_Metal.get(4));
+		for (OreDictMaterial tMat : ANY.Fe.mToThis) if (tMat != MT.Enori) {
+		RM.Press.addRecipe2(F, 16, 64, IL.RC_Post_Metal.get(1), OP.plate         .mat(tMat, 4), IL.RC_Platform_Metal.get(4));
+		RM.Press.addRecipe2(F, 16, 64, IL.RC_Post_Metal.get(1), OP.plateDouble   .mat(tMat, 2), IL.RC_Platform_Metal.get(4));
+		RM.Press.addRecipe2(F, 16, 64, IL.RC_Post_Metal.get(1), OP.plateQuadruple.mat(tMat, 1), IL.RC_Platform_Metal.get(4));
+		}
 		
 		
 		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Ag      , 4), OP.dust     .mat(MT.Redstone, 1)), IL.RC_Rail_Adv.get( 4));
