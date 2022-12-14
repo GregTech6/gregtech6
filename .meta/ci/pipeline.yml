@@ -54,10 +54,10 @@ resources:
     put_url: ((maven.url))
     group: com.gregoriust.gregtech
     name: gregtech_1.7.10
-    version: SNAPSHOT
+    version: 6-SNAPSHOT
     cmd: "git-compile-only/.meta/ci/deploy.sh"
     env:
-      ARTIFACT_VERSION: SNAPSHOT
+      ARTIFACT_VERSION: 6-SNAPSHOT
       MAVEN_PASSWORD: ((maven.password))
       MAVEN_URL: ((maven.url))
       MAVEN_USERNAME: ((maven.username))
@@ -71,7 +71,7 @@ resources:
     name: gregtech_1.7.10
     cmd: "git-versioned/.meta/ci/deploy.sh"
     env:
-      VERSION_FALLBACK: SNAPSHOT
+      VERSION_FALLBACK: 6-SNAPSHOT
       MAVEN_PASSWORD: ((maven.password))
       MAVEN_URL: ((maven.url))
       MAVEN_USERNAME: ((maven.username))
@@ -182,7 +182,7 @@ jobs:
       unpack: true
   - put: deploy-snapshot
     #params:
-    #  version-cmd: "echo -n 'SNAPSHOT-' && cd git-compile-only && git describe"
+    #  version-cmd: "echo -n '6-SNAPSHOT-' && cd git-compile-only && git describe"
 
 - name: compile-versioned
   public: true
@@ -210,7 +210,7 @@ jobs:
         load_filedata: deploy-snapshot/version
         trim: true
       BUILD_STATUS: success
-      BUILD_TYPE: SNAPSHOT
+      BUILD_TYPE: 6-SNAPSHOT
 
 - name: broadcast-update-versioned
   public: true

@@ -37,7 +37,7 @@ jobs:
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
-        ARTIFACT_VERSION: SNAPSHOT
+        ARTIFACT_VERSION: 6-SNAPSHOT
       run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew setupCIWorkspace build uploadArchives --stacktrace; fi
     - name: Build RELEASE with Gradle
       env:
