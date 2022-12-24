@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.15.13: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.15.12: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -9,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.15.10: (Not released yet)
+6.15.10:
 [COMPAT] Railcraft Platforms, Posts and Glass can now be dyed in the Bathing Pot and such. Paint Removal Recipes included, as well as a Press Recipe for those Platforms, so that you can use any Iron or Steel Plates.
 [FIXED] Railcrafts Implosion Enchantment did not work with Arrows and Bullets. Now those Projectiles will also get +2 to the Implosion Enchant.
 [FIXED] Flint and Tinder, and the other Igniters, can now do Forestry candles. Though remember the chance of ignition failure for the Flint and Steels. Also did you know Forestry Candles can be lit with a Flint too?, And that you can DYE those Candles too using Vanilla Dye Items?, And that it behaves differently depending on the candle being lit or unlit? I sure as heck did not know any of that until now.
