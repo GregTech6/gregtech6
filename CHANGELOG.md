@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.15.11: (Not released yet)
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
+[FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 
 
 6.15.10:

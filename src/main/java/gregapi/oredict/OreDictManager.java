@@ -494,7 +494,7 @@ public final class OreDictManager {
 	
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ModData aMod, Object aName, long aMeta) {
 		ItemStack aStack = ST.make(aMod, aName.toString(), 1, aMeta);
-		if (aMod.mLoaded && aStack == null) DEB.println("Item does not exist for Unification Target despite being loaded: " + aMod.mID + ":" + aName);
+		if (aMod.mLoaded && aStack == null) ERR.println("Item does not exist for Unification Target despite Mod being loaded: " + aMod.mID + ":" + aName);
 		return setTarget(aPrefix, aMaterial, aStack, T, F, T);
 	}
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {

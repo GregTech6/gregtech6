@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2022 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregtech.tileentity.inventories;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.data.CS.GarbageGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
@@ -44,6 +40,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -76,6 +76,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
+		if (hasRedstoneIncoming()) return null;
 		for (int i = 0; i < GarbageGT.GARBAGE_FLUIDS.size(); i++) if (GarbageGT.GARBAGE_FLUIDS.get(i).contains(aFluidToFill)) return GarbageGT.GARBAGE_FLUIDS.get(i);
 		FluidTankGT tTank = new FluidTankGT().setPreventDraining().setVoidExcess();
 		GarbageGT.GARBAGE_FLUIDS.add(tTank);
