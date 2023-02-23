@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1394,13 +1394,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		
 		OreDictItemData tData = OM.anydata_(aFuel);
-		if (tData != null) {
+		if (tData != null && (tData.mFurnaceFuel || rFuelValue != 0)) {
 			long tBurnTime = 0;
-			if (tData.mPrefix == OP.oreRaw) {
+			if (tData.mPrefix == null) {
+				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F);
+			} else if (tData.mPrefix == OP.oreRaw) {
 				tBurnTime = tData.mMaterial.mMaterial.mFurnaceBurnTime;
 			} else if (tData.mPrefix == OP.blockRaw) {
 				tBurnTime = tData.mMaterial.mMaterial.mFurnaceBurnTime * 10;
-			} else if (tData.mPrefix == null || tData.mPrefix.contains(TD.Prefix.BURNABLE)) {
+			} else if (tData.mPrefix.contains(TD.Prefix.BURNABLE)) {
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) tBurnTime += UT.Code.units(tMaterial.mMaterial.mFurnaceBurnTime, U, tMaterial.mAmount, F);
 				if (tData.mPrefix == OP.stick          && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT      /2, tBurnTime));
 				if (tData.mPrefix == OP.stickLong      && ANY.Wood.mToThis.contains(tData.mMaterial.mMaterial)) return (int)UT.Code.bind(0, 32000, Math.max( TICKS_PER_SMELT        , tBurnTime));

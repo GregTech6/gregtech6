@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,14 @@
 
 package gregapi.oredict;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -40,6 +35,7 @@ public class OreDictItemData {
 	public boolean mBlackListed = F;
 	public boolean mBlocked = F;
 	public boolean mUseVanillaDamage = F;
+	public boolean mFurnaceFuel = T;
 	public ItemStack mUnificationTarget = null;
 	
 	/** The OreDictPrefix if there is one assigned to this. */
@@ -167,6 +163,11 @@ public class OreDictItemData {
 	
 	public OreDictItemData setUseVanillaDamage() {
 		mUseVanillaDamage = T;
+		return this;
+	}
+	
+	public OreDictItemData setNotFurnaceFuel() {
+		mFurnaceFuel = F;
 		return this;
 	}
 	

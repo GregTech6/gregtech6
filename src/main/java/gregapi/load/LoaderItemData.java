@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -2008,9 +2008,9 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.STONES.Livingrock  ,  U2* 3);
 		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
 		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
-		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(ANY.Glowstone, U * 4));
+		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(ANY.Glowstone       , U * 4));
 		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.STONES.Livingrock, U * 8));
-		OM.dat2(MD.BOTA, "glassPick"                        , 1     , MT.Manasteel          ,  U * 1, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glass, U * 2));
+		OM.dat2(MD.BOTA, "glassPick"                        , 1     , MT.Manasteel          ,  U * 1, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glass            , U * 2));
 		
 		
 		OM.data(MD.WTCH, "perpetualice"                     , 1,   W, MT.Ice                ,  U);
@@ -2250,7 +2250,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Items.speckled_melon, 1, 0)                 , MT.Au                 ,  OP.nugget.mAmount * 8);
 		OM.data(ST.make(Items.bucket, 1, W)                         , ANY.Fe                ,  U * 3);
 		OM.data(ST.make(Items.minecart, 1, 0)                       , ANY.Fe                ,  U * 5);
-		OM.data(ST.make(Items.iron_door, 1, W)                      , ANY.Fe                ,  U * 6);
+		OM.data(ST.make(Items.iron_door, 1, W)                      , ANY.Fe                ,  U * (MD.EtFu.mLoaded?2:6));
 		OM.data(ST.make(Items.cauldron, 1, W)                       , ANY.Fe                ,  U * 7);
 		OM.data(ST.make(Blocks.iron_bars, 1, W)                     , ANY.Fe                ,  3* U8);
 		OM.data(ST.make(Blocks.light_weighted_pressure_plate, 1, W) , MT.Au                 ,  U * 2);
