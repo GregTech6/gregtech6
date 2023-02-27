@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -3762,7 +3762,7 @@ public class MT {
 		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0, 2.0, 16, MD.FR),
 		BlueMahoe           = woodnormal( 9315, "BlueMahoe"               , "Blue Mahoe"          ,  15, 103, 254, 3.0, 24, MD.FR),
 		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175, 2.5, 16, MD.BINNIE),
-		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192, 1.5, 16, MD.HaC),
+		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnawood"           ,  65, 192, 192, 1.5, 16, MD.HaC),
 		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0, 3.0, 16, MD.TROPIC),
 		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbowood"          , 200,  64, 245, 4.0, 64, MD.GT, MAGICAL, UNBURNABLE),
 		BlueSpruce          = woodnormal( 9409, "BlueSpruce"              , "Blue Spruce"         , 213, 213, 217, 3.0, 24, MD.GT),
