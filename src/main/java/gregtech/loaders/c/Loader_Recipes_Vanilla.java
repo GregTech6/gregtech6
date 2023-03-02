@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -550,7 +550,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16,  16, F,   1, stickLong.mat(tMaterial, 1), stick.mat(tMaterial, 2));
 		}
 		for (byte i = 0; i < 16; i++) {
-		RM.sawing(16,  32, F,  50, ST.make(Blocks.stained_glass             , 3, i), ST.make(Blocks.stained_glass_pane, 8, i));
+		RM.sawing(16,  32, F,  50, ST.make(Blocks.stained_glass             , 1, i), ST.make(Blocks.stained_glass_pane, 9, i));
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.wool                      , 2, i), ST.make(Blocks.carpet, 3, i));
 		}
 		RM.sawing(16,  32, F,  50, ST.make(Blocks.glass                     , 1, 0), ST.make(Blocks.glass_pane, 9, 0));
