@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,6 +36,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
+import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityTemperature;
 import gregapi.tileentity.data.ITileEntityWeight;
 import gregapi.tileentity.energy.ITileEntityEnergy;
@@ -72,7 +73,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
 	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.10;
@@ -677,6 +678,9 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			}
 		}
 	}
+	
+	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent), U9);}
+	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT, U9);}
 	
 	@Override public byte getDefaultSide() {return SIDE_UP;}
 	@Override public boolean[] getValidSides() {return SIDES_NONE;}

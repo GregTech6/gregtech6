@@ -37,6 +37,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
+import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityTemperature;
 import gregapi.tileentity.data.ITileEntityWeight;
 import gregapi.tileentity.energy.ITileEntityEnergy;
@@ -71,7 +72,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_RemovedByPlayer, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
+public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_RemovedByPlayer, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
 	private static int GAS_RANGE = 3, FLAME_RANGE = 3;
 	private static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
@@ -668,6 +669,9 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public boolean isSurfaceSolid         (byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return !SIDES_TOP[aSide];}
+	
+	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent), U9);}
+	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT, U9);}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public boolean allowCovers(byte aSide) {return F;}
