@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,7 +129,7 @@ public class RM {
 	, Mortar                    = new RecipeMap                     (null, "gt.recipe.mortar"                       , "Mortar"                          , null, 0, 1, RES_PATH_GUI+"machines/Mortar"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Shredder                  = new RecipeMapShredder             (null, "gt.recipe.shredder"                     , "Shredder"                        , null, 0, 1, RES_PATH_GUI+"machines/Shredder"                  ,/*IN-OUT-MIN-ITEM=*/ 1,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Crusher                   = new RecipeMap                     (null, "gt.recipe.crusher"                      , "Crusher"                         , null, 0, 1, RES_PATH_GUI+"machines/Crusher"                   ,/*IN-OUT-MIN-ITEM=*/ 1,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
-	, Extruder                  = new RecipeMap                     (null, "gt.recipe.extruder"                     , "Extruder"                        , null, 0, 1, RES_PATH_GUI+"machines/Extruder"                  ,/*IN-OUT-MIN-ITEM=*/ 2, 1, 2,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
+	, Extruder                  = new RecipeMap                     (null, "gt.recipe.extruder"                     , "Extruder"                        , null, 0, 1, RES_PATH_GUI+"machines/Extruder"                  ,/*IN-OUT-MIN-ITEM=*/ 2, 2, 2,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Hammer                    = new RecipeMapHammer               (null, "gt.recipe.hammer"                       , "Hammer"                          , null, 6, 3, RES_PATH_GUI+"machines/Hammer"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Chisel                    = new RecipeMapChisel               (null, "gt.recipe.chisel"                       , "Chisel"                          , null, 0, 1, RES_PATH_GUI+"machines/Chisel"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, F, T, T, F, T, T)
 	

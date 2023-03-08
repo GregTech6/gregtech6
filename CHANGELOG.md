@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.15.11: (Not released yet)
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
+[FIXED] Extruder Recipes now have two Output Slots in case of certain Recipes that output more than one Stack worth of Stuff.
 [FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 [FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
