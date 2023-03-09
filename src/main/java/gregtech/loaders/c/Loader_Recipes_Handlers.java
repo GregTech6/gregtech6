@@ -518,6 +518,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(nugget                          , 9, NF,  16,16,     0, NF, ingot                   , 1, ST.tag( 9), NI, F, F, F, new And(ANTIMATTER.NOT, EXPLODES_IN_NONVANILLA_CRAFTING_GRID.NOT)));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         , 4, NF,  16,16,     0, NF, ingot                   , 1, ST.tag( 4), NI, F, F, F, new And(ANTIMATTER.NOT, EXPLODES_IN_NONVANILLA_CRAFTING_GRID.NOT)));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(billet                          , 3, NF,  16,16,     0, NF, ingot                   , 2, ST.tag( 3), NI, F, F, F, new And(ANTIMATTER.NOT, EXPLODES_IN_NONVANILLA_CRAFTING_GRID.NOT)));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateTiny                       , 9, NF,  16,16,     0, NF, casingSmall             , 2, ST.tag( 9), NI, F, F, F, new And(ANTIMATTER.NOT, EXPLODES_IN_NONVANILLA_CRAFTING_GRID.NOT)));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateGemTiny                    , 9, NF,  16,16,     0, NF, casingSmall             , 2, ST.tag( 9), NI, F, F, F, new And(ANTIMATTER.NOT, EXPLODES_IN_NONVANILLA_CRAFTING_GRID.NOT)));
 		
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(oreRaw                      , gem                       , 1, F));
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(oreRaw                      , rawOreChunk               , 3, F));
@@ -576,6 +578,10 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(gem                     ,  9, blockGem                  , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plate                   ,  9, blockPlate                , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateGem                ,  9, blockPlateGem             , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateTiny               ,  5, casingSmall               , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateTiny               ,  9, casingSmall               , 2, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateGemTiny            ,  5, casingSmall               , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(plateGemTiny            ,  9, casingSmall               , 2, F));
 		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix != OP.oreRaw) {
 			if (tPrefix.contains(STANDARD_ORE)) GameRegistry.addRecipe(new AdvancedCrafting1ToY(tPrefix, oreRaw, 1, F));
