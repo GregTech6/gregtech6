@@ -745,16 +745,16 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Redstone , 36), dustTiny .mat(tMat2, 36)), ST.make(Blocks.redstone_lamp, 1, 0));
 		}
 		for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) {
-		RM.Press        .addRecipeX(T, 16,  144, ST.array(ST.tag(1), blockDust.mat(MT.Gunpowder,  4), blockDust.mat(tMat2,  4)), ST.make(Blocks.tnt, 9, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder,  4), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, 16), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, 36), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder,  4), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, 16), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, 36), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder,  4), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, 16), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
-		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, 36), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,  144, ST.array(ST.tag(1), blockDust.mat(MT.Gunpowder, MD.HBM.mLoaded? 5: 4), blockDust.mat(tMat2,  4)), ST.make(Blocks.tnt, 9, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder, MD.HBM.mLoaded? 5: 4), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, MD.HBM.mLoaded?20:16), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, MD.HBM.mLoaded?45:36), dust     .mat(tMat2,  4)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder, MD.HBM.mLoaded? 5: 4), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, MD.HBM.mLoaded?20:16), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, MD.HBM.mLoaded?45:36), dustSmall.mat(tMat2, 16)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dust     .mat(MT.Gunpowder, MD.HBM.mLoaded? 5: 4), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustSmall.mat(MT.Gunpowder, MD.HBM.mLoaded?20:16), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipeX(T, 16,   16, ST.array(ST.tag(1), dustTiny .mat(MT.Gunpowder, MD.HBM.mLoaded?45:36), dustTiny .mat(tMat2, 36)), ST.make(Blocks.tnt, 1, 0));
 		}
 		
 		
