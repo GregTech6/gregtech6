@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -151,7 +151,7 @@ public class CS {
 	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
 	
 	/** The long Names for the Voltages */
-	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage", "Omega Voltage"};
+	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage of Doom", "Omega Voltage of Doom"};
 	
 	/** The short Names for the USB Sticks */
 	public static final String[] OD_USB_STICKS = {"gt:usbstick0", "gt:usbstick1", "gt:usbstick2", "gt:usbstick3", "gt:usbstick4", "gt:usbstick5", "gt:usbstick6", "gt:usbstick7", "gt:usbstick8", "gt:usbstick9"};
@@ -633,16 +633,16 @@ public class CS {
 	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0};
 	/** Meta -> Side+1 */
 	public static final byte[]              META_TO_SIDE_0          = { 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_1          = { 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_2          = { 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_3          = { 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_4          = { 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_5          = { 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6},
-	                                        META_TO_SIDE_6          = { 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6},
-	                                        META_TO_SIDE_7          = { 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6},
-	                                        META_TO_SIDE_8          = { 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6},
-	                                        META_TO_SIDE_9          = { 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6},
-	                                        META_TO_SIDE10          = { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5};
+											META_TO_SIDE_1          = { 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6},
+											META_TO_SIDE_2          = { 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6},
+											META_TO_SIDE_3          = { 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6},
+											META_TO_SIDE_4          = { 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6},
+											META_TO_SIDE_5          = { 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6},
+											META_TO_SIDE_6          = { 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6},
+											META_TO_SIDE_7          = { 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6, 6},
+											META_TO_SIDE_8          = { 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6, 6},
+											META_TO_SIDE_9          = { 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5, 6},
+											META_TO_SIDE10          = { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 1, 2, 3, 4, 5};
 	
 	/** Used for Meta => Side */
 	public static final byte[]              VALIDATE                = { 0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},

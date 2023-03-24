@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -203,11 +203,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			EntityTunnelBore.addMineableBlock(this, MCOBL);
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		if (COMPAT_FR != null) {
-			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, COBBL));
-			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, STONE));
-			COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, MCOBL));
-		}
+		if (COMPAT_FR != null) for (int i = 0; i < maxMeta(); i++) COMPAT_FR.addToBackpacks(SPAWNABLE[i]?"digger":"builder", ST.make(this, 1, i));
 	}
 	
 	@Override
