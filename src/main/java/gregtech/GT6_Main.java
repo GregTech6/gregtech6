@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -432,8 +432,9 @@ public class GT6_Main extends Abstract_Mod {
 						boolean tAddedSpecial = F;
 						if (tMaterial.mMaterial.mHidden) {temp = F; break;}
 						if (tMaterial.mMaterial == MT.Air) {
-							tDusts .add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
-							tIngots.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
+							tDusts  .add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
+							tIngots .add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
+							tSpecial.add(FL.Air.display(UT.Code.units(tMaterial.mAmount, U, 1000, T)));
 							continue;
 						}
 						if (tMaterial.mMaterial == MT.OREMATS.Magnetite          ) {tAddedSpecial = tSpecial.add(ST.make(BlocksGT.Sands, UT.Code.divup(tMaterial.mAmount, U*9), 0, "You probably want to craft it into Dust"));} else
