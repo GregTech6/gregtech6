@@ -681,7 +681,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (tData.mMaterial.mMaterial == MT.Craponite) {
 									tCraponite++;
 								}
-								if (tData.mMaterial.mMaterial == MT.Firestone && tData.hasValidPrefixData() && !MD.RC.owns(tStack)) for (int j = (int)UT.Code.divup(tData.mMaterial.mAmount, U) * tStack.stackSize; j > 0; j--) {
+								if (tData.mMaterial.mMaterial == MT.Firestone && tData.hasValidPrefixData() && !MD.RC.owns(tStack)) for (int j = (int)UT.Code.divup(tData.mMaterial.mAmount * tStack.stackSize, U); j > 0; j--) {
 									WD.fire(aEvent.player.worldObj, UT.Code.roundDown(aEvent.player.posX)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posY)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posZ)-5+RNGSUS.nextInt(11), RNGSUS.nextInt(8) != 0);
 								}
 							}
