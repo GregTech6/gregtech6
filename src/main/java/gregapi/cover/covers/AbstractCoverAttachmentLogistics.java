@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
@@ -32,6 +28,10 @@ import gregapi.tileentity.logistics.ITileEntityLogistics;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -60,10 +60,10 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide]&~3)|((aData.mValues[aCoverSide] + 1) & 3)));
 			if (aChatReturn != null) {
 				switch(aData.mValues[aCoverSide]) {
-				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
-				case 1: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Generic)"); break;
-				case 2: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Semi-Filtered)"); break;
-				case 3: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Filtered)"); break;
+				case 0: aChatReturn.add("Priority: Unmodified"); break;
+				case 1: aChatReturn.add("Priority: Generic"); break;
+				case 2: aChatReturn.add("Priority: Semi-Filtered"); break;
+				case 3: aChatReturn.add("Priority: Filtered"); break;
 				}
 			}
 			return 10000;
@@ -83,10 +83,10 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null && usePriorities()) {
 				switch(aData.mValues[aCoverSide]) {
-				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
-				case 1: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Generic)"); break;
-				case 2: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Semi-Filtered)"); break;
-				case 3: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Filtered)"); break;
+				case 0: aChatReturn.add("Priority: Unmodified"); break;
+				case 1: aChatReturn.add("Priority: Generic"); break;
+				case 2: aChatReturn.add("Priority: Semi-Filtered"); break;
+				case 3: aChatReturn.add("Priority: Filtered"); break;
 				}
 			}
 			if (aChatReturn != null && useTargetStackSize()) {

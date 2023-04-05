@@ -732,7 +732,7 @@ public final class OreDictManager {
 	
 	public static void registerOreSafe(Object aName, ItemStack aStack) {
 		try {
-			OreDictionary.registerOre(aName.toString(), aStack);
+			if (ST.valid(aStack)) OreDictionary.registerOre(aName.toString(), aStack);
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
