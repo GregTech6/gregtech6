@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,8 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
@@ -36,6 +30,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Recipes_Decomp implements Runnable {
 	@Override public void run() {try {
@@ -62,7 +58,7 @@ public class Loader_Recipes_Decomp implements Runnable {
 						if (temp && tRecipeMap.mInputFluidCount > 0) {
 							FluidStack
 							aFluid = aMaterial.liquid(tComponents.getCommonDivider() * U, T);
-							if (!FL.Error.is(aFluid)) {
+							if (FL.nonzero(aFluid)) {
 								temp = F;
 								if (tRecipeMap == RM.Electrolyzer) {
 									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
@@ -72,7 +68,7 @@ public class Loader_Recipes_Decomp implements Runnable {
 							}
 							
 							aFluid = aMaterial.gas(tComponents.getCommonDivider() * U, T);
-							if (!FL.Error.is(aFluid)) {
+							if (FL.nonzero(aFluid)) {
 								temp = F;
 								if (tRecipeMap == RM.Electrolyzer) {
 									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));

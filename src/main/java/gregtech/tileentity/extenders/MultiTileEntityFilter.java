@@ -285,17 +285,24 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 					tStack = tSlot.getStack();
 					if (aMouseclick == 0) {
 						tSlot.putStack(null);
-					} else {
-						if (tStack != null && !IL.Display_Fluid.equal(tStack, T, T)) {
-							FluidStack tFluid = FL.getFluid(tStack, T);
-							if (tFluid != null && (((MultiTileEntityFilter)mTileEntity).mModes & MODE_TANK) != 0) {
-								tSlot.putStack(FL.display(tFluid.getFluid()));
-							} else {
-								if (tStack.hasTagCompound()) {
-									tStack.setTagCompound(null);
-								} else {
-									ST.meta(tStack, W);
+					} else if (tStack != null && !IL.Display_Fluid.equal(tStack, T, T)) {
+						FluidStack tFluid = null;
+						if ((((MultiTileEntityFilter)mTileEntity).mModes & MODE_TANK) != 0) {
+							tFluid = FL.getFluid(tStack, T);
+							if (tFluid == null) {
+								OreDictItemData tData = OM.anyassociation_(tStack);
+								if (tData != null && tData.mPrefix.contains(TD.Prefix.IS_CONTAINER) && !tData.mPrefix.contains(TD.Prefix.IS_CRATE)) {
+									tFluid = tData.mMaterial.mMaterial.fluid(U, T);
 								}
+							}
+						}
+						if (FL.valid(tFluid)) {
+							tSlot.putStack(FL.display(tFluid.getFluid()));
+						} else {
+							if (tStack.hasTagCompound()) {
+								tStack.setTagCompound(null);
+							} else {
+								ST.meta(tStack, W);
 							}
 						}
 					}
@@ -306,11 +313,11 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 						FluidStack tFluid = FL.getFluid(tStack, T);
 						if (tFluid == null) {
 							OreDictItemData tData = OM.anyassociation_(tStack);
-							if (tData != null && tData.mPrefix.contains(TD.Prefix.IS_CONTAINER) && !tData.mPrefix.contains(TD.Prefix.IS_CRATE)) {
+							if (tData != null) {
 								tFluid = tData.mMaterial.mMaterial.fluid(U, T);
 							}
 						}
-						if (tFluid != null && tFluid.getFluid() != null && !FL.Error.is(tFluid)) {
+						if (FL.valid(tFluid)) {
 							tSlot.putStack(FL.display(tFluid.getFluid()));
 						}
 					}

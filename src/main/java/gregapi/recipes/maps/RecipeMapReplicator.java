@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
 import gregapi.data.FL;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -40,6 +36,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -91,7 +91,7 @@ public class RecipeMapReplicator extends RecipeMap {
 			long tPower = (aMaterial.mProtons+aMaterial.mNeutrons) * 256;
 			if (aMaterial.mMeltingPoint <= DEF_ENV_TEMP) {
 				FluidStack tFluidOutput = aMaterial.fluid(DEF_ENV_TEMP, U, F);
-				if (!FL.Error.is(tFluidOutput)) return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();
+				if (FL.nonzero(tFluidOutput)) return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();
 			}
 			ItemStack tOutput = NI;
 			if (aMaterial.mPriorityPrefix != null) tOutput = aMaterial.mPriorityPrefix.mat(aMaterial, 1);
@@ -102,9 +102,9 @@ public class RecipeMapReplicator extends RecipeMap {
 				&&  ST.invalid(tOutput = OP.dust     .mat(aMaterial, 1)) && ST.invalid(tOutput = OP.dustTiny.mat(aMaterial, 9))
 				&&  ST.invalid(tOutput = OP.dustSmall.mat(aMaterial, 4)) && ST.invalid(tOutput = OP.stick   .mat(aMaterial, 2))) {
 					FluidStack tFluidOutput = aMaterial.liquid(U, F);
-					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.gas(U, F);
-					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.plasma(U, F);
-					if (FL.Error.is(tFluidOutput)) return null;
+					if (FL.zero(tFluidOutput)) tFluidOutput = aMaterial.gas(U, F);
+					if (FL.zero(tFluidOutput)) tFluidOutput = aMaterial.plasma(U, F);
+					if (FL.zero(tFluidOutput)) return null;
 					return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();
 				}
 			}

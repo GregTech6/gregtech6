@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -427,9 +427,9 @@ public class Loader_Recipes_Ores implements Runnable {
 				
 				OreDictMaterial tMat1 = UT.Code.select(0, aMat, aMat.mByProducts), tMat2 = UT.Code.select(1, aMat, aMat.mByProducts), tMat3 = UT.Code.select(2, aMat, aMat.mByProducts);
 				FluidStack tFluid1 = tMat1.fluid(DEF_ENV_TEMP, U72, T), tFluid2 = tMat2.fluid(DEF_ENV_TEMP, U72, T), tFluid3 = tMat3.fluid(DEF_ENV_TEMP, U72, T);
-				if (FL.Error.is(tFluid1)) tFluid1 = null;
-				if (FL.Error.is(tFluid2)) tFluid2 = null;
-				if (FL.Error.is(tFluid3)) tFluid3 = null;
+				if (FL.zero(tFluid1)) tFluid1 = null;
+				if (FL.zero(tFluid2)) tFluid2 = null;
+				if (FL.zero(tFluid3)) tFluid3 = null;
 				RM.Centrifuge.addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, tCentrifuge, tPurified    , ZL_FS, FL.array(FL.mul(tFluid1, 9), FL.mul(tFluid2, 9), FL.mul(tFluid3, 9)), OM.crushedCentrifugedTiny(aMat, 9), tFluid1==null?OM.crushedCentrifugedTiny(tMat1, 9):null, tFluid2==null?OM.crushedCentrifugedTiny(tMat2, 9):null, tFluid3==null?OM.crushedCentrifugedTiny(tMat3, 9):null);
 				RM.Centrifuge.addRecipe1(T, 16,  16 +  16 * aMat.mToolQuality, tCentrifuge, tPurifiedTiny, ZL_FS, FL.array(       tFluid1    ,        tFluid2    ,        tFluid3    ), OM.crushedCentrifugedTiny(aMat, 1), tFluid1==null?OM.crushedCentrifugedTiny(tMat1, 1):null, tFluid2==null?OM.crushedCentrifugedTiny(tMat2, 1):null, tFluid3==null?OM.crushedCentrifugedTiny(tMat3, 1):null);
 			}

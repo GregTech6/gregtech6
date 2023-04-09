@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,6 @@ import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverTextureMulti;
 import gregapi.cover.covers.CoverTextureSimple;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -387,19 +386,19 @@ public class Loader_OreProcessing implements Runnable {
 				FluidStack tFluid1 = aEvent.mMaterial.fluid(DEF_ENV_TEMP, mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
 				FluidStack tFluid2 = aEvent.mMaterial.fluid(DEF_ENV_TEMP, mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, T);
 				
-				if (tFluid1 == null || tFluid1.amount <= 0 || FL.Error.is(tFluid1)) {
+				if (FL.zero(tFluid1)) {
 					tFluid1 = aEvent.mMaterial.liquid(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
 					tFluid2 = aEvent.mMaterial.liquid(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, T);
 				}
-				if (tFluid1 == null || tFluid1.amount <= 0 || FL.Error.is(tFluid1)) {
+				if (FL.zero(tFluid1)) {
 					tFluid1 = aEvent.mMaterial.gas   (mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
 					tFluid2 = aEvent.mMaterial.gas   (mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, T);
 				}
-				if (tFluid1 == null || tFluid1.amount <= 0 || FL.Error.is(tFluid1)) {
+				if (FL.zero(tFluid1)) {
 					tFluid1 = aEvent.mMaterial.plasma(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
 					tFluid2 = aEvent.mMaterial.plasma(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, T);
 				}
-				if (tFluid1 == null || tFluid1.amount <= 0 || FL.Error.is(tFluid1)) {
+				if (FL.zero(tFluid1)) {
 					tFluid1 = null;
 					tFluid2 = null;
 				}
@@ -435,7 +434,7 @@ public class Loader_OreProcessing implements Runnable {
 			if (mCondition.isTrue(aEvent.mMaterial)) {
 				FluidStack tFluid = aEvent.mMaterial.fluid(DEF_ENV_TEMP, mOutputMaterialAmount<0?aEvent.mPrefix.mAmount:mOutputMaterialAmount, F);
 				ItemStack  tStack = OM.dust(aEvent.mMaterial, mOutputMaterialAmount<0?aEvent.mPrefix.mAmount:mOutputMaterialAmount);
-				if (tFluid == null || tFluid.amount <= 0 || FL.Error.is(tFluid)) tFluid = null;
+				if (FL.zero(tFluid)) tFluid = null;
 				if (tStack != null || tFluid != null) {
 					RM.Squeezer.addRecipe1(T, 16, UT.Code.units(aEvent.mPrefix.mAmount, U, 256+256*aEvent.mMaterial.mToolQuality, T), aEvent.mStack, NF, tFluid, tFluid==null?tStack:null);
 				}

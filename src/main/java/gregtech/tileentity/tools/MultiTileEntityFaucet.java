@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -49,6 +44,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -124,11 +123,11 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl) {
 			if (aMaterial.mAmount < U) {
 				FluidStack tFluid = aMaterial.mMaterial.liquid(aMaterial.mAmount, F);
-				if (FL.Error.is(tFluid)) return 0;
+				if (FL.zero(tFluid)) return 0;
 				if (FL.fillAll(tDelegator, tFluid, T)) return aMaterial.mAmount;
 			} else {
 				FluidStack tFluid = aMaterial.mMaterial.liquid(U, F);
-				if (FL.Error.is(tFluid)) return 0;
+				if (FL.zero(tFluid)) return 0;
 				if (FL.fillAll(tDelegator, tFluid, T)) return U;
 			}
 			return 0;

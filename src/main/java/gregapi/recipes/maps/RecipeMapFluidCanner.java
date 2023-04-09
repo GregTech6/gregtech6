@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
-import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -36,6 +31,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -53,8 +52,8 @@ public class RecipeMapFluidCanner extends RecipeMap {
 		for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
 			FluidStack tFluid = FL.getFluid(tInput, T);
 			if (tFluid != null) {
-				return FL.Error.is(tFluid) ? null : new Recipe(F, F, F, ST.array(ST.amount(1, tInput)), ST.array(ST.container(tInput, T)), null, null, ZL_FS, FL.array(tFluid), Math.max(tFluid.amount / 64, 16), 16, 0);
-			} else if (aFluids != null && aFluids.length > 0 && aFluids[0] != null && !FL.Error.is(aFluids[0])) {
+				return FL.invalid(tFluid) ? null : new Recipe(F, F, F, ST.array(ST.amount(1, tInput)), ST.array(ST.container(tInput, T)), null, null, ZL_FS, FL.array(tFluid), Math.max(tFluid.amount / 64, 16), 16, 0);
+			} else if (aFluids != null && aFluids.length > 0 && FL.valid(aFluids[0])) {
 				if (MD.GC.mLoaded || MD.GC_GALAXYSPACE.mLoaded) {
 					if (FluidsGT.LIQUID_OXYGEN.contains(FL.regName(aFluids[0]))) {
 						if (IL.GC_OxyTank_1.equal(tInput, T, T) || IL.GC_OxyTank_2.equal(tInput, T, T) || IL.GC_OxyTank_3.equal(tInput, T, T) || IL.GC_OxyTank_4.equal(tInput, T, T) || IL.GC_OxyTank_5.equal(tInput, T, T) || IL.GC_OxyTank_6.equal(tInput, T, T) || IL.GC_OxyTank_7.equal(tInput, T, T) || IL.GC_OxyTank_Env.equal(tInput, T, T)) {

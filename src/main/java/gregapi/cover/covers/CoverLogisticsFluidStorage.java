@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.TD;
@@ -39,6 +35,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -96,7 +96,7 @@ public class CoverLogisticsFluidStorage extends AbstractCoverAttachmentLogistics
 							tFluid = tData.mMaterial.mMaterial.fluid(U, T);
 						}
 					}
-					if (tFluid != null && tFluid.getFluid() != null && !FL.Error.is(tFluid)) {
+					if (FL.valid(tFluid)) {
 						aData.mNBTs[aCoverSide] = FL.save(null, "gt.filter.fluid", tFluid);
 						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
 						UT.Entities.sendchat(aPlayer, "Stores: " + LH.Chat.CYAN + tFluid.getFluid().getName());

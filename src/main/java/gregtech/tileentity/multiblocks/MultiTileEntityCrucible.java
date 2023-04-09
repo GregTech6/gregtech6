@@ -499,7 +499,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 							long tTemperature = FL.temperature(tLightest.mMaterial.mLiquid);
 							if (mTemperature >= tLightest.mMaterial.mMeltingPoint && (tTemperature < 320 || mTemperature >= tTemperature)) {
 								tFluid = tLightest.mMaterial.liquid(tLightest.mAmount, F);
-								if (!FL.Error.is(tFluid)) {
+								if (FL.nonzero(tFluid)) {
 									int tAmount = tFluid.amount;
 									ItemStack tStack = FL.fill(tFluid, ST.amount(1, aStack), T, T, T, T);
 									if (ST.valid(tStack)) {

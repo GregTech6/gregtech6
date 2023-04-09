@@ -190,7 +190,7 @@ public class RM {
 	}
 	public static boolean genericycle(FluidStack... aFluids) {
 		ArrayListNoNulls<FluidStack> aFluidList = new ArrayListNoNulls<>(F, aFluids);
-		for (int i = 0; i < aFluidList.size(); i++) if (FL.Error.is(aFluidList.get(i))) aFluidList.remove(i--);
+		for (int i = 0; i < aFluidList.size(); i++) if (FL.invalid(aFluidList.get(i))) aFluidList.remove(i--);
 		if (aFluidList.size() < 2) return F;
 		for (int i = 0; i < aFluidList.size(); i++) generify(aFluidList.get(i), aFluidList.get((i+1) % aFluidList.size()));
 		return T;
