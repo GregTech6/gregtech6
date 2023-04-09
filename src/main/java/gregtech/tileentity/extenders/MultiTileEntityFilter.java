@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregtech.tileentity.extenders;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ItemStackContainer;
@@ -33,9 +27,11 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.TD;
 import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Holo;
+import gregapi.oredict.OreDictItemData;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFilteredItem;
 import gregapi.util.OM;
@@ -54,6 +50,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
+import org.lwjgl.opengl.GL11;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -285,25 +286,33 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 					if (aMouseclick == 0) {
 						tSlot.putStack(null);
 					} else {
-						if (tStack != null) {
+						if (tStack != null && !IL.Display_Fluid.equal(tStack, T, T)) {
 							FluidStack tFluid = FL.getFluid(tStack, T);
 							if (tFluid != null && (((MultiTileEntityFilter)mTileEntity).mModes & MODE_TANK) != 0) {
 								tSlot.putStack(FL.display(tFluid.getFluid()));
 							} else {
-								if (tStack.hasTagCompound() && ST.meta_(tStack) != W) {
+								if (tStack.hasTagCompound()) {
 									tStack.setTagCompound(null);
 								} else {
-									tStack.setItemDamage(W);
+									ST.meta(tStack, W);
 								}
 							}
 						}
 					}
 				} else {
-					FluidStack tFluid = FL.getFluid(tStack, T);
-					if (tFluid != null && (((MultiTileEntityFilter)mTileEntity).mModes & MODE_INV) == 0) {
-						tSlot.putStack(FL.display(tFluid.getFluid()));
-					} else {
+					if ((((MultiTileEntityFilter)mTileEntity).mModes & MODE_INV) != 0) {
 						tSlot.putStack(ST.amount(1, tStack));
+					} else {
+						FluidStack tFluid = FL.getFluid(tStack, T);
+						if (tFluid == null) {
+							OreDictItemData tData = OM.anyassociation_(tStack);
+							if (tData != null && tData.mPrefix.contains(TD.Prefix.IS_CONTAINER) && !tData.mPrefix.contains(TD.Prefix.IS_CRATE)) {
+								tFluid = tData.mMaterial.mMaterial.fluid(U, T);
+							}
+						}
+						if (tFluid != null && tFluid.getFluid() != null && !FL.Error.is(tFluid)) {
+							tSlot.putStack(FL.display(tFluid.getFluid()));
+						}
 					}
 				}
 			}

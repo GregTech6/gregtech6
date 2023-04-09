@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.15.11: (Not released yet)
+[FIXED] The Fluid Filter Block was slightly bugged in regards of its GUI. It should now work and have the same special cases as the Fluid Filter Cover.
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
 [FIXED] Extruder Recipes now have two Output Slots in case of certain Recipes that output more than one Stack worth of Stuff.
 [FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
