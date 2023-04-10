@@ -115,8 +115,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * <BR>[30700:30799] Briareos81
 	 * <BR>[30800:30899] SuperCoder79
 	 * <BR>[30900:30999] ManaMetal Mod
-	 * <BR>[31000:31099] the next one who asks me (do not use unless I personally tell you to use this smaller Range)
-	 * <BR>[31100:31199] Free
+	 * <BR>[31000:31099] BioAstroiner
+	 * <BR>[31100:31199] the next one who asks me (do not use unless I personally tell you to use this smaller Range)
 	 * <BR>[31200:31299] Free
 	 * <BR>[31300:31399] Free
 	 * <BR>[31400:31499] Free
