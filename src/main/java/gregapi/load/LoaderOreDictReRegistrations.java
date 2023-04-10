@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1441,6 +1441,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.logWood, new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.logRubber, new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankWood, new OreDictItemData(ANY.Wood, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankAnyWood, new OreDictItemData(ANY.Wood, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankWeedwood, new OreDictItemData(MT.Weedwood, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankSkyroot, new OreDictItemData(MT.Skyroot, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingChest, new OreDictItemData(ANY.Wood, U * 5));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingPiston, new OreDictItemData(MT.Stone, U * 4, ANY.Wood, U * 3));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingFurnace, new OreDictItemData(MT.Stone, U * 8));
