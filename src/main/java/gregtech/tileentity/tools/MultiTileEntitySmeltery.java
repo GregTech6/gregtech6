@@ -247,7 +247,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		for (int i = 0; i < mContent.size(); i++) {
 			OreDictMaterialStack tMaterial = mContent.get(i);
 			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mMaterial == MT.Air || tMaterial.mAmount <= 0) {
-				GarbageGT.trash(mContent.remove(i--));
+				mContent.remove(i--);
 			} else if (tMaterial.mMaterial.mGramPerCubicCentimeter <= WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
 				GarbageGT.trash(mContent.remove(i--));
 				UT.Sounds.send(SFX.MC_FIZZ, this);
@@ -257,11 +257,14 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, tMaterial.mMaterial.mBoilingPoint, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 				if (tMaterial.mMaterial.mBoilingPoint >= 2000) for (int j = 0, k = Math.max(1, UT.Code.bindInt((9 * tMaterial.mAmount) / U)); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 				if (tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
+					GarbageGT.trash(mContent);
+					GarbageGT.trash(tToBeAdded);
 					explode(UT.Code.scale(tMaterial.mAmount, MAX_AMOUNT, 6, F));
 					return;
 				}
 			} else if (!mAcidProof && tMaterial.mMaterial.contains(TD.Properties.ACID)) {
-				GarbageGT.trash(mContent.remove(i--));
+				GarbageGT.trash(mContent);
+				GarbageGT.trash(tToBeAdded);
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				setToAir();
 				return;
@@ -275,9 +278,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		}
 		for (int i = 0; i < tToBeAdded.size(); i++) {
 			OreDictMaterialStack tMaterial = tToBeAdded.get(i);
-			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mMaterial == MT.Air || tMaterial.mAmount <= 0) {
-				GarbageGT.trash(tToBeAdded.remove(i--));
-			} else {
+			if (tMaterial != null && tMaterial.mAmount > 0 && tMaterial.mMaterial != MT.NULL && tMaterial.mMaterial != MT.Air) {
 				tMaterial.addToList(mContent);
 			}
 		}
