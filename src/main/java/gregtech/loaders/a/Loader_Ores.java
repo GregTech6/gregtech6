@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -352,21 +352,21 @@ public class Loader_Ores implements Runnable {
 	//  rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"               , 1, "ep.kepler22b.subsurface", OP.oreKepler22b           , MT.STONES.Kepler22bRock);
 		rockset(MD.GC_EXTRAPLANETS,"tile.kepler22b"               , 2, "ep.kepler22b.rock"      , OP.oreKepler22b           , MT.STONES.Kepler22bRock);
 		}
-			
+		
 		/* Doesn't work so I won't waste Block IDs until I get it to work.
 		if (MD.GC_GALAXYSPACE.mLoaded) {
-		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"                , 2, "gs.mercury.rock"        , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ceresblocks"                  , 1, "gs.ceres.rock"          , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "deimosblocks"                 , 1, "gs.deimos.rock"         , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ioblocks"                     , 2, "gs.io.rock"             , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "oberonblocks"                 , 2, "gs.oberon.rock"         , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "proteusblocks"                , 2, "gs.proteus.rock"        , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "tritonblocks"                 , 2, "gs.triton.rock"         , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "mirandablocks"                , 2, "gs.miranda.rock"        , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "venusblocks"                  , 1, "gs.venus.rock"          , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "phobosblocks"                 , 2, "gs.phobos.rock"         , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"               , 1, "gs.ganymede.rock"       , OP.oreSpace               , MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"            , 0, "gs.barnarda.e.rock"     , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"                , 2, "gs.mercury.rock"        , OP.oreMercury             , MT.STONES.MercuryRock);
+		rockset(MD.GC_GALAXYSPACE, "ceresblocks"                  , 1, "gs.ceres.rock"          , OP.oreCeres               , MT.STONES.CeresRock);
+		rockset(MD.GC_GALAXYSPACE, "deimosblocks"                 , 1, "gs.deimos.rock"         , OP.oreDeimos              , MT.STONES.DeimosRock);
+		rockset(MD.GC_GALAXYSPACE, "ioblocks"                     , 2, "gs.io.rock"             , OP.oreIo                  , MT.STONES.IoRock);
+		rockset(MD.GC_GALAXYSPACE, "oberonblocks"                 , 2, "gs.oberon.rock"         , OP.oreOberon              , MT.STONES.OberonRock);
+		rockset(MD.GC_GALAXYSPACE, "proteusblocks"                , 2, "gs.proteus.rock"        , OP.oreProteus             , MT.STONES.ProteusRock);
+		rockset(MD.GC_GALAXYSPACE, "tritonblocks"                 , 2, "gs.triton.rock"         , OP.oreTriton              , MT.STONES.TritonRock);
+		rockset(MD.GC_GALAXYSPACE, "mirandablocks"                , 2, "gs.miranda.rock"        , OP.oreSpace               , MT.STONES.MirandaRock);
+		rockset(MD.GC_GALAXYSPACE, "venusblocks"                  , 1, "gs.venus.rock"          , OP.oreVenus               , MT.STONES.VenusRock);
+		rockset(MD.GC_GALAXYSPACE, "phobosblocks"                 , 2, "gs.phobos.rock"         , OP.orePhobos              , MT.STONES.PhobosRock);
+		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"               , 1, "gs.ganymede.rock"       , OP.oreGanymede            , MT.STONES.GanymedeRock);
+		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"            , 0, "gs.barnarda.e.rock"     , OP.oreBarnardaE           , MT.STONES.BarnardaERock);
 		}*/
 		
 		if (MD.CHSL.mLoaded) {
