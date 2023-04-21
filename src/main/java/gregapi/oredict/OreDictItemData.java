@@ -44,16 +44,20 @@ public class OreDictItemData {
 	public final OreDictMaterialStack mMaterial;
 	/** The OreDictMaterialStack containing the remaining Byproduct Materials of this Item. The Amount is in Material Units (U). */
 	public final OreDictMaterialStack[] mByProducts;
+	/** Caching the toString result. */
+	public final String mOreDictName;
 	
 	public OreDictItemData(OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
 		mPrefix = aPrefix;
 		mMaterial = aMaterial==null?null:OM.stack(aMaterial, aPrefix.mAmount);
+		mOreDictName = (aMaterial == null ? "" : aPrefix.mNameInternal + aMaterial.mNameInternal);
 		mByProducts = aPrefix.mByProducts.isEmpty()?ZL_MS:aPrefix.mByProducts.toArray(ZL_MS);
 	}
 	
 	public OreDictItemData(OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
 		mPrefix = null;
 		mMaterial = aMaterial==null?null:aMaterial.clone();
+		mOreDictName = "";
 		mBlackListed = T;
 		if (aByProducts == null) {
 			mByProducts = ZL_MS;
@@ -96,6 +100,7 @@ public class OreDictItemData {
 	
 	public OreDictItemData(OreDictItemData... aData) {
 		mPrefix = null;
+		mOreDictName = "";
 		mBlackListed = T;
 		
 		ArrayList<OreDictMaterialStack> aList = new ArrayListNoNulls<>(), rList = new ArrayListNoNulls<>();
@@ -155,26 +160,6 @@ public class OreDictItemData {
 		return mUnificationTarget == null ? mPrefix.mat(mMaterial.mMaterial, aAmount) : ST.amount(aAmount, mUnificationTarget);
 	}
 	
-	@Override
-	public String toString() {
-		if (mPrefix == null || mMaterial == null) return "";
-		return mPrefix.mNameInternal + mMaterial.mMaterial.mNameInternal;
-	}
-	
-	public OreDictItemData setUseVanillaDamage() {
-		mUseVanillaDamage = T;
-		return this;
-	}
-	
-	public OreDictItemData setNotFurnaceFuel() {
-		mFurnaceFuel = F;
-		return this;
-	}
-	
-	public static OreDictItemData copy(OreDictItemData aData) {
-		return aData == null ? null : aData.copy();
-	}
-	
 	public OreDictItemData copy() {
 		OreDictItemData rData = mPrefix == null ? new OreDictItemData(mMaterial, mByProducts) : new OreDictItemData(mPrefix, mMaterial.mMaterial);
 		rData.mUnificationTarget = mUnificationTarget;
@@ -183,4 +168,11 @@ public class OreDictItemData {
 		rData.mBlocked = mBlocked;
 		return rData;
 	}
+	
+	public static OreDictItemData copy(OreDictItemData aData) {return aData == null ? null : aData.copy();}
+	
+	public OreDictItemData setUseVanillaDamage() {mUseVanillaDamage = T; return this;}
+	public OreDictItemData setNotFurnaceFuel() {mFurnaceFuel = F; return this;}
+	
+	@Override public String toString() {return mOreDictName;}
 }
