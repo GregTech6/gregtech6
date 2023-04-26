@@ -634,7 +634,9 @@ public class MultiItemTechnological extends MultiItemRandom {
 		
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
 			ItemStack tDust = OP.dust.mat(tMat, 1);
-			if (ST.valid(tDust)) RM.Press.addRecipe2(T, F, F, F, T, 16, 64, OP.plate.mat(MT.Plastic, 1), tDust, IL.Circuit_Plate_Empty.get(1));
+			if (ST.valid(tDust)) for (OreDictMaterial tMt2 : ANY.Plastic.mToThis) {
+				RM.Press.addRecipe2(T, F, F, F, T, 16, 64, OP.plate.mat(tMt2, 1), tDust, IL.Circuit_Plate_Empty.get(1));
+			}
 		}
 		
 		IL.Circuit_Wire_Copper             .set(addItem(tLastID = 30001, "Circuit Wiring (Copper)"          , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Cu, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PERMUTATIO, 1)));

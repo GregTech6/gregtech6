@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Extruder Recipes now have two Output Slots in case of certain Recipes that output more than one Stack worth of Stuff.
 [FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 [FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
+[CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
 

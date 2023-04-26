@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -423,6 +423,7 @@ public class GT_API extends Abstract_Mod {
 			MT.DiamondPink.setLocal("Craponite");
 			MT.Bedrock.setLocal("Sofarock");
 			MT.Plastic.setLocal("LEGO");
+			MT.Teflon.setLocal("Polytetrafluoroethylene");
 			MT.Asbestos.setLocal("Bestos");
 			MT.AncientDebris.setLocal("Cinnabun");
 			MT.Cinnamon.setLocal("Ancient Debris");
