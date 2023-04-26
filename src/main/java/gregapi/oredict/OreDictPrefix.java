@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,29 +19,12 @@
 
 package gregapi.oredict;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.ICondition;
-import gregapi.code.ITagDataContainer;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
-import gregapi.code.TagData;
+import gregapi.code.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.item.IPrefixItem;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -57,6 +40,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
+import static gregapi.data.TD.ItemGenerator.ORES;
+import static gregapi.data.TD.Prefix.*;
+import static gregapi.data.TD.Properties.INVALID_MATERIAL;
 
 /**
  * @author Gregorius Techneticies
@@ -87,7 +77,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	/** The Indices of the Icons inside the Texture Sets. -1 if it doesn't have a Set */
 	public int mIconIndexBlock = -1, mIconIndexItem = -1;
 	public byte mConfigStackSize = 64, mDefaultStackSize = 64, mMinimumStackSize = 1, mState = STATE_SOLID;
-	public long mAmount = -1;
+	public long mAmount = -1, mWeight = U;
 	public List<AdvancedCrafting1ToY> mShapelessManagersSingle = new ArrayListNoNulls<>();
 	public List<AdvancedCraftingXToY> mShapelessManagers = new ArrayListNoNulls<>();
 	public float mHeatDamage = 0.0F;
@@ -160,15 +150,32 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	public OreDictPrefix setRegistration(OreDictPrefix aPrefix) {
 		if (aPrefix != null) {
 			mTargetRegistration = aPrefix;
-			add(TD.Prefix.PREFIX_UNUSED);
+			add(PREFIX_UNUSED);
 		}
 		return this;
 	}
 	
 	public OreDictPrefix setMaterialStats(long aMaterialAmount) {
-		add(TD.Prefix.MATERIAL_BASED);
+		add(MATERIAL_BASED);
 		mAmount = aMaterialAmount;
+		mWeight = aMaterialAmount;
 		setStacksize(mAmount < U * 2 ? 64 : 64 / (mAmount / U));
+		return this;
+	}
+	
+	public OreDictPrefix setMaterialStats(long aMaterialAmount, long aMaterialWeight) {
+		add(MATERIAL_BASED);
+		mAmount = aMaterialAmount;
+		mWeight = aMaterialWeight;
+		setStacksize(mAmount < U * 2 ? 64 : 64 / (mAmount / U));
+		return this;
+	}
+	
+	public OreDictPrefix setOreStats(long aMaterialWeight) {
+		add(MATERIAL_BASED, UNIFICATABLE, ORE, TOOLTIP_ENCHANTS);
+		mAmount = -1;
+		mWeight = aMaterialWeight;
+		setCondition(ORES);
 		return this;
 	}
 	
@@ -200,7 +207,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	}
 	
 	public OreDictPrefix applyStackSizes() {
-		if (contains(TD.Prefix.PREFIX_UNUSED)) return this;
+		if (contains(PREFIX_UNUSED)) return this;
 		if (this != OP.block && this != OP.stone && this != OP.scrapGt) addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (!aEvent.mStack.getItem().isDamageable() && aEvent.mStack.getMaxStackSize() > 1 && !ST.isGT_(aEvent.mStack)) aEvent.mStack.getItem().setMaxStackSize(aEvent.mPrefix.mDefaultStackSize);}});
 		
 		Items.glass_bottle      .setMaxStackSize(OP.bottle.mDefaultStackSize);
@@ -450,7 +457,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	@Override
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (aEvent.mMaterial == MT.NULL) {
-			if (!contains(TD.Prefix.MATERIAL_BASED)) {
+			if (!contains(MATERIAL_BASED)) {
 				if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom) && !MD.MC.owns(aEvent.mRegName) && !MD.TC.owns(aEvent.mRegName)) {
 					List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 					for (TC_AspectStack tAspect : mAspects) tAspect.addToAspectList(tAspects);
@@ -465,7 +472,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 			}
 		} else {
 			if (!mIgnoredRegistrations.contains(aEvent.mMaterial)) {
-				if (!aEvent.mMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+				if (!aEvent.mMaterial.contains(INVALID_MATERIAL)) {
 					if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom) && !MD.MC.owns(aEvent.mRegName) && !MD.TC.owns(aEvent.mRegName)) {
 						List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 						for (TC_AspectStack tAspect : mAspects) {

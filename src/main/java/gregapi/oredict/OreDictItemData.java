@@ -151,6 +151,20 @@ public class OreDictItemData {
 		return rList;
 	}
 	
+	/** Utility Function for getting a List containing both, the Main Material and all the Byproduct Materials. The Amount is in Material Units (U). */
+	public List<OreDictMaterialStack> getAllMaterialWeights() {
+		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls<>(mByProducts.length + 1);
+		if (hasValidMaterialData()) {
+			if (hasValidPrefixData()) {
+				rList.add(OM.stack(mMaterial.mMaterial, mPrefix.mWeight));
+			} else {
+				rList.add(mMaterial);
+			}
+		}
+		rList.addAll(Arrays.asList(mByProducts));
+		return rList;
+	}
+	
 	/** Utility Function for getting a Byproduct Material at a certain Index, if it exists. The Amount is in Material Units (U). */
 	public OreDictMaterialStack getByProduct(int aIndex) {
 		return aIndex>=0&&aIndex<mByProducts.length?mByProducts[aIndex]:null;
