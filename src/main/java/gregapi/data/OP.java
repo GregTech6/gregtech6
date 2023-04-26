@@ -637,11 +637,11 @@ public class OP {
 		pipeRestrictiveMedium   .mByProducts.add(OM.stack(ANY.Steel              , ring.mAmount * 3));
 		pipeRestrictiveLarge    .mByProducts.add(OM.stack(ANY.Steel              , ring.mAmount * 4));
 		pipeRestrictiveHuge     .mByProducts.add(OM.stack(ANY.Steel              , ring.mAmount * 5));
-		cableGt12               .mByProducts.add(OM.stack(MT.Rubber              , plate.mAmount * 4));
-		cableGt08               .mByProducts.add(OM.stack(MT.Rubber              , plate.mAmount * 3));
-		cableGt04               .mByProducts.add(OM.stack(MT.Rubber              , plate.mAmount * 2));
-		cableGt02               .mByProducts.add(OM.stack(MT.Rubber              , plate.mAmount));
-		cableGt01               .mByProducts.add(OM.stack(MT.Rubber              , plate.mAmount));
+		cableGt12               .mByProducts.add(OM.stack(ANY.Rubber             , plate.mAmount * 4));
+		cableGt08               .mByProducts.add(OM.stack(ANY.Rubber             , plate.mAmount * 3));
+		cableGt04               .mByProducts.add(OM.stack(ANY.Rubber             , plate.mAmount * 2));
+		cableGt02               .mByProducts.add(OM.stack(ANY.Rubber             , plate.mAmount));
+		cableGt01               .mByProducts.add(OM.stack(ANY.Rubber             , plate.mAmount));
 //      bucket                  .mByProducts.add(OM.stack(Any.Fe                 , ingot.mAmount * 3));
 		cell                    .mByProducts.add(OM.stack(MT.Sn                  , plateCurved.mAmount));
 		bottle                  .mByProducts.add(OM.stack(MT.Glass               , U));
@@ -725,7 +725,7 @@ public class OP {
 		crateGt64PlateGem       .mByProducts.add(OM.stack(ANY.Wood               , U));
 		plantGtTwig             .mByProducts.add(OM.stack(ANY.Wood               , stick.mAmount));
 		arrowGtWood             .mByProducts.add(OM.stack(ANY.Wood               , stick.mAmount));
-		arrowGtPlastic          .mByProducts.add(OM.stack(MT.Plastic             , stick.mAmount));
+		arrowGtPlastic          .mByProducts.add(OM.stack(ANY.Plastic            , stick.mAmount));
 		bulletGtSmall           .mByProducts.add(OM.stack(MT.Brass               ,   U9));
 		bulletGtMedium          .mByProducts.add(OM.stack(MT.Brass               , 2*U9));
 		bulletGtLarge           .mByProducts.add(OM.stack(MT.Brass               ,   U3));

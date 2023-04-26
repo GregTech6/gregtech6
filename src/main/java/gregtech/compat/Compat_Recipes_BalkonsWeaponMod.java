@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,15 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.ST;
+
+import static gregapi.data.CS.OUT;
 
 public class Compat_Recipes_BalkonsWeaponMod extends CompatMods {
 	public Compat_Recipes_BalkonsWeaponMod(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -44,8 +40,8 @@ public class Compat_Recipes_BalkonsWeaponMod extends CompatMods {
 		CR.shaped(ST.make(MD.BWM, "flintlock"           , 1, 0), CR.DEF_REM_REV_NCC , "PGF", "hSW", 'G', OP.gearGtSmall .dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel), 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
 		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_REM_REV_NCC ,  "Ss",  "F ", 'S', OP.stickLong   .dat(ANY.Steel), 'F', OD.craftingFeather);
 		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , "SsS", " F ", 'S', OP.stick       .dat(ANY.Steel), 'F', OD.craftingFeather);
-		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , " Ss", "F F", 'S', OP.stickLong   .dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
-		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , "SsS", "F F", 'S', OP.stick       .dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , " Ss", "F F", 'S', OP.stickLong   .dat(ANY.Steel), 'F', OP.plateTiny.dat(ANY.Plastic));
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , "SsS", "F F", 'S', OP.stick       .dat(ANY.Steel), 'F', OP.plateTiny.dat(ANY.Plastic));
 		CR.shaped(ST.make(MD.BWM, "bullet"              , 1, 0), CR.DEF_REM_REV_NCC ,  "R","G","P", 'R', OP.round.dat(MT.Pb), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
 		CR.shaped(ST.make(MD.BWM, "shot"                , 1, 0), CR.DEF_REM_REV_NCC ,  "R","G","P", 'R', OP.dustSmall.dat(ANY.Stone), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
 		

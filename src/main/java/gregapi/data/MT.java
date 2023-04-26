@@ -1290,7 +1290,11 @@ public class MT {
 	Obsidian                = elec          ( 8214, "Obsidian"              , SET_STONE             ,  80,  50, 100, 255, G_STONE, STONE, BRITTLE, MORTAR, UNBURNABLE)                                                                                              .setMcfg(64, Mg             , 1*U, Fe               , 1*U, SiO2             , 6*U, O                , 4*U)                                                  .aspects(TC.TENEBRAE, 1, TC.IGNIS, 2, TC.TERRA, 2).setSmelting(Lava, U).heat(1300, 4000).qual(1, 3.0, 32, 3),
 	Paper                   = dust          ( 8216, "Paper"                 , SET_PAPER             , 250, 250, 250, 255, TICKS_PER_SMELT/ 8, MULTIPLATES, MORTAR)                                                                                                                                                                                                                                                              .aspects(TC.COGNITIO, 1).setBurning(Ash, U9),
 	Rubber                  = create        ( 8217, "Rubber"                , SET_RUBBER            ,  20,  20,  20, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, STRETCHY, FURNACE)                             .uumMcfg( 0, C              , 5*U, H                , 8*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(410).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 0),
-	Plastic                 = create        ( 8218, "Plastic"               , SET_DULL              , 200, 200, 200, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, MD.MFR)                      .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	Plastic                 = create        ( 8218, "Plastic"               , SET_DULL              , 200, 200, 200, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	Teflon                  = create        ( 8196, "Teflon"                , SET_DULL              , 180, 180, 180, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, "Polymer")                   .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	PVC                     = create        ( 8197, "PVC"                   , SET_DULL              , 180, 180, 180, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	Bakelite                = create        ( 8198, "Bakelite"              , SET_DULL              , 180, 180, 180, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	Polycarbonate           = create        ( 8199, "Hard Plastic"          , SET_DULL              , 180, 180, 180, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, "Polycarbonate")             .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
 	Bone                    = oredustelec   ( 8219, "Bone"                  , SET_DULL              , 250, 250, 250, 255, MORTAR, "Fossil")                                                                                                                         .uumMcfg( 8, Ca             , 1*U)                                                                                                                          .aspects(TC.MORTUUS, 2, TC.CORPUS, 1).qual(1, 4.0,  64, 1), BoneWither = Bone,
 	SlimyBone               = gem           ( 8287, "Slimy Bone"            , SET_DULL              , 230, 250, 230, 255, MORTAR)                                                                                                                                   .uumMcfg( 8, Ca             , 1*U)                                                                                                                          .aspects(TC.MORTUUS, 2, TC.LIMUS , 1).qual(1, 5.0, 128, 1),
 	Gunpowder               = dust          ( 8220, "Gunpowder"             , SET_DULL              , 128, 128, 128, 255, EXPLOSIVE, FLAMMABLE)                                                                                                                     .uumMcfg( 4, C              , 2*U, S                , 1*U, NaNO3            , 1*U)                                                                          .aspects(TC.PERDITIO, 3, TC.IGNIS, 4).setBurning(Ash, U9),
@@ -1301,8 +1305,8 @@ public class MT {
 	Indigo                  = dust          ( 8228, "Indigo"                , SET_LEAF              , 255, 128, 255, 255, FLAMMABLE)                                                                                                                                                                                                                                                                                            .aspects(TC.SENSUS, 1),
 	
 	
-	MeatCooked              = meat          ( 9701, "MeatCooked"                                    , 150,  60,  20, 255, "Meat", MD.MFR)                                                                                                                                                                                                                                                                                       .aspects(TC.CORPUS, 2).heat(477, 550).setLocal("Cooked Meat"),
-	MeatRaw                 = meat          ( 9700, "MeatRaw"                                       , 255, 100, 100, 255, FURNACE, MD.MFR)                                                                                                                                                                                                                                                                                      .aspects(TC.CORPUS, 1).heat(477, 550).setLocal("Raw Meat").setSmelting(MeatCooked, U).setForging(MeatCooked, U),
+	MeatCooked              = meat          ( 9701, "MeatCooked"                                    , 150,  60,  20, 255, "Meat")                                                                                                                                                                                                                                                                                               .aspects(TC.CORPUS, 2).heat(477, 550).setLocal("Cooked Meat"),
+	MeatRaw                 = meat          ( 9700, "MeatRaw"                                       , 255, 100, 100, 255, FURNACE)                                                                                                                                                                                                                                                                                              .aspects(TC.CORPUS, 1).heat(477, 550).setLocal("Raw Meat").setSmelting(MeatCooked, U).setForging(MeatCooked, U),
 	MeatRotten              = meat          ( 9710, "MeatRotten"                                    , 255, 150, 100, 255, ROTTEN)                                                                                                                                                                                                                                                                                               .aspects(TC.CORPUS, 1, TC.MORTUUS, 1).heat(477, 550).setLocal("Rotten Meat"),
 	FishCooked              = meat          ( 9711, "FishCooked"                                    , 150, 120,  20, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.CORPUS, 2).heat(477, 550).setLocal("Cooked Fishmeal"),
 	FishRaw                 = meat          ( 9712, "FishRaw"                                       , 255, 150, 100, 255, FURNACE)                                                                                                                                                                                                                                                                                              .aspects(TC.CORPUS, 1).heat(477, 550).setLocal("Raw Fishmeal").setSmelting(FishCooked, U).setForging(FishCooked, U),
@@ -2335,6 +2339,12 @@ public class MT {
 			StellarAlloy            .put(MD.EIO);
 			VividAlloy              .put(MD.EIO);
 			
+			
+			MeatRaw                 .put(MD.MFR);
+			MeatCooked              .put(MD.MFR);
+			Plastic                 .put(MD.MFR);
+			
+			
 			Yellorium               .put(MD.BR, COMMON_ORE).visDefault();
 			Blutonium               .put(MD.BR, COMMON_ORE).visDefault();
 			Cyanite                 .put(MD.BR, COMMON_ORE).visDefault();
@@ -2355,6 +2365,10 @@ public class MT {
 			Nb                      .put(MD.HBM); // don't COMMON_ORE this!
 			Nd                      .put(MD.HBM);
 			DeshAlloy               .put(MD.HBM);
+			PVC                     .put(MD.HBM).visDefault();
+			Teflon                  .put(MD.HBM).visDefault();
+			Bakelite                .put(MD.HBM).visDefault();
+			Polycarbonate           .put(MD.HBM).visDefault();
 			
 			
 			In                      .put(MD.ReC);
@@ -2660,6 +2674,10 @@ public class MT {
 			
 			
 			Plastic                 .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			Bakelite                .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			Teflon                  .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			PVC                     .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			Polycarbonate           .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);          
 			Rubber                  .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
 			Kalendrite              .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
 			InfusedAir              .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
@@ -3937,7 +3955,6 @@ public class MT {
 		Dineutronium                = unused    ("Dineutronium"               ).setPriorityPrefix(3).put(G_INGOT_MACHINE, MD.HBM),
 		MagnetizedTungsten          = unused    ("Magnetized Tungsten"        ).setPriorityPrefix(3).put(G_INGOT, MD.HBM, MAGNETIC_ACTIVE),
 		Euphemium                   = unused    ("Euphemium"                  ).setPriorityPrefix(3).put(G_INGOT, MD.HBM, MELTING, MOLTEN).setRGBa(255, 150, 255, 255),
-		Polymer                     = unused    ("Polymer"                    ).put(MD.HBM),
 		Energized                   = unused    ("Energized"                  ),
 		Reinforced                  = unused    ("Reinforced"                 ),
 		Mud                         = unused    ("Mud"                        ).put(IGNORE_IN_COLOR_LOG),

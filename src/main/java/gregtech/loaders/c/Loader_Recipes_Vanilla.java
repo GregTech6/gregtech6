@@ -117,7 +117,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		}
 		tMat = ingot.mat(MT.Rubber, 1);
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, "Rubber.Sheet", T))          if (null != (tStack = CR.remove(tMat, tMat, tMat, tMat, tMat, tMat, null, null, null))) {
-			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "XXX", "XXX", 'X', plate.dat(MT.Rubber));
+			CR.shaped(tStack, DEF | DEL_OTHER_SHAPED_RECIPES, "XXX", "XXX", 'X', plate.dat(ANY.Rubber));
 		}
 		
 		CR.shaped(ST.make(Blocks.wooden_pressure_plate, 1, 0)   , DEF, "PP", 'P', OD.plankAnyWood);
@@ -465,9 +465,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(arrowGtWood .mat(MT.Empty, 1), DEF_NCC, new Object[] {Items.arrow});
 		
 		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(ANY.Wood), 'F', OD.craftingFeather);
-		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(MT.Plastic), 'F', OD.craftingFeather);
-		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(ANY.Wood), 'P', plateTiny.dat(MT.Plastic));
-		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(MT.Plastic), 'P', plateTiny.dat(MT.Plastic));
+		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(ANY.Plastic), 'F', OD.craftingFeather);
+		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(ANY.Wood), 'P', plateTiny.dat(ANY.Plastic));
+		CR.shaped(arrowGtPlastic .mat(MT.Empty, 1), CR.DEF_NCC_MIR, "PS", "sP", 'S', stick.dat(ANY.Plastic), 'P', plateTiny.dat(ANY.Plastic));
 		
 		CR.shaped(ST.make(Blocks.stained_glass, 8, 0), DEF, "GGG", "GDG", "GGG", 'G', Blocks.glass, 'D', DYE_OREDICTS[15]);
 		CR.shaped(ST.make(Items.speckled_melon, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "GGG", "GMG", "GGG", 'M', "cropMelon", 'G', nugget.dat(MT.Au));

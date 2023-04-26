@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,18 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_Steamcraft2 extends CompatMods {
 	public Compat_Recipes_Steamcraft2(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -55,8 +49,8 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 			RM.Canner.addRecipe1(T, 16, 16, IL.Bottle_Empty.get(1), MT.H2SO4.fluid(U, T), NF, ST.make(MD.SC2, "ItemResource", 1, 2));
 		}
 		
-		CR.shaped(ST.make(MD.SC2, "ItemMachinePart"     , 1, 8), CR.DEF_REM_REV, "CRC", 'C', OP.plate.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber));
-		CR.shaped(ST.make(MD.SC2, "ItemElectricJarSmall", 1, 0), CR.DEF_REM_REV, "RCR", "GCG", "GGG", 'C', OP.stickLong.dat(ANY.Cu), 'R', OP.plate.dat(MT.Rubber), 'G', OP.plate.dat(MT.Glass));
+		CR.shaped(ST.make(MD.SC2, "ItemMachinePart"     , 1, 8), CR.DEF_REM_REV, "CRC", 'C', OP.plate.dat(ANY.Cu), 'R', OP.plate.dat(ANY.Rubber));
+		CR.shaped(ST.make(MD.SC2, "ItemElectricJarSmall", 1, 0), CR.DEF_REM_REV, "RCR", "GCG", "GGG", 'C', OP.stickLong.dat(ANY.Cu), 'R', OP.plate.dat(ANY.Rubber), 'G', OP.plate.dat(MT.Glass));
 		
 		RM.add_smelting(ST.make(MD.SC2, "BlockSlate"     , 1, 3), ST.make(MD.SC2, "BlockSlate"     , 1, 0));
 		RM.add_smelting(ST.make(MD.SC2, "BlockSlate"     , 1, 4), ST.make(MD.SC2, "BlockSlate"     , 1, 1));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -91,17 +91,19 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 		OreDictManager.INSTANCE.setTarget_(OP.cableGt08, aMat, aRegistry.add( "8x " + aMat.getLocal() + " Cable", "Electric Wires", aID+23, aCreativeTabID, aClass, aMat.mToolQuality,  8, aBlock     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage* 8, NBT_CONTACTDAMAGE, aContactDamageCable, NBT_PIPELOSS, aLossCable)), T, F, T);
 		OreDictManager.INSTANCE.setTarget_(OP.cableGt12, aMat, aRegistry.add("12x " + aMat.getLocal() + " Cable", "Electric Wires", aID+27, aCreativeTabID, aClass, aMat.mToolQuality,  4, aBlock     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage*12, NBT_CONTACTDAMAGE, aContactDamageCable, NBT_PIPELOSS, aLossCable)), T, F, T);
 		
-		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(MT.Rubber, 1), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
-		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(MT.Rubber, 1), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
-		RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(MT.Rubber, 2), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
-		RM.Laminator.addRecipe2(T, 16, 48, OP.plate.mat(MT.Rubber, 3), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
-		RM.Laminator.addRecipe2(T, 16, 64, OP.plate.mat(MT.Rubber, 4), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
+		for (OreDictMaterial tMat : ANY.Rubber.mToThis) {
+		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(tMat, 1), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
+		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(tMat, 1), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
+		RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 2), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
+		RM.Laminator.addRecipe2(T, 16, 48, OP.plate.mat(tMat, 3), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
+		RM.Laminator.addRecipe2(T, 16, 64, OP.plate.mat(tMat, 4), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
 		
-		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(MT.Rubber, 4), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
-		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(MT.Rubber, 4), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
-		RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(MT.Rubber, 8), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
-		RM.Laminator.addRecipe2(T, 16, 48, OP.foil .mat(MT.Rubber,12), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
-		RM.Laminator.addRecipe2(T, 16, 64, OP.foil .mat(MT.Rubber,16), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
+		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 4), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
+		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 4), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
+		RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 8), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
+		RM.Laminator.addRecipe2(T, 16, 48, OP.foil .mat(tMat,12), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
+		RM.Laminator.addRecipe2(T, 16, 64, OP.foil .mat(tMat,16), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
+		}
 		}
 	}
 	
@@ -212,7 +214,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override public long getEnergyMaxPackets(TagData aEnergyType) {return aEnergyType == TD.Energy.EU ? mAmperage : 0;}
 	@Override public long getEnergyLossPerMeter(TagData aEnergyType) {return aEnergyType == TD.Energy.EU ? mLoss : 0;}
 	@Override public OreDictMaterial getEnergyConductorMaterial() {return mMaterial;}
-	@Override public OreDictMaterial getEnergyConductorInsulation() {switch(mRenderType) {case 1: case 2: return MT.Rubber; default: return MT.NULL;}}
+	@Override public OreDictMaterial getEnergyConductorInsulation() {switch(mRenderType) {case 1: case 2: return ANY.Rubber; default: return MT.NULL;}}
 	
 	public boolean canEmitEnergyTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptEnergyFrom                      (byte aSide) {return connected(aSide);}

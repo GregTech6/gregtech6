@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1918,7 +1918,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_ElectronTube_Diamond              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 5), new OreDictItemData(ANY.Diamond, 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Obsidian             .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 6), new OreDictItemData(MT.Obsidian, 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Blaze                .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 7), new OreDictItemData(MT.Blaze   , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Rubber               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 8), new OreDictItemData(MT.Rubber  , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Rubber               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 8), new OreDictItemData(ANY.Rubber , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Emerald              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 9), new OreDictItemData(ANY.Emerald, 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Apatite              .set(ST.make(MD.FR, "thermionicTubes"                       , 1,10), new OreDictItemData(MT.Apatite , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Lapis                .set(ST.make(MD.FR, "thermionicTubes"                       , 1,11), new OreDictItemData(MT.Lapis   , 5*U4, MT.Redstone, U2, MT.Glass, U8));

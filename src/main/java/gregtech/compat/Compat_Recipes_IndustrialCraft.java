@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,13 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.old.GT_BaseCrop;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -52,6 +41,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_IndustrialCraft extends CompatMods {
 	public Compat_Recipes_IndustrialCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -486,10 +477,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Wiremill         .addRecipe1(T, 16,  128, (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat, 1) , ST.mkic("ironCableItem", 6));
 		RM.Wiremill         .addRecipe1(T, 16,  128, OP.plate.mat(MT.Au, 1)                             , ST.mkic("goldCableItem", 6));
 		
-		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("tinCableItem"   , 1), ST.mkic("insulatedTinCableItem"   , 1));
-		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("copperCableItem", 1), ST.mkic("insulatedCopperCableItem", 1));
-		RM.Laminator        .addRecipe2(T, 16,  128, OP.plate.mat(MT.Rubber, 2), ST.mkic("goldCableItem"  , 1), ST.mkic("insulatedGoldCableItem"  , 1));
-		RM.Laminator        .addRecipe2(T, 16,  192, OP.plate.mat(MT.Rubber, 3), ST.mkic("ironCableItem"  , 1), ST.mkic("insulatedIronCableItem"  , 1));
+		for (OreDictMaterial tMat : ANY.Rubber.mToThis) {
+		RM.Laminator.addRecipe2(T, 16,  64, OP.plate.mat(tMat, 1), ST.mkic("tinCableItem"   , 1), ST.mkic("insulatedTinCableItem"   , 1));
+		RM.Laminator.addRecipe2(T, 16,  64, OP.plate.mat(tMat, 1), ST.mkic("copperCableItem", 1), ST.mkic("insulatedCopperCableItem", 1));
+		RM.Laminator.addRecipe2(T, 16, 128, OP.plate.mat(tMat, 2), ST.mkic("goldCableItem"  , 1), ST.mkic("insulatedGoldCableItem"  , 1));
+		RM.Laminator.addRecipe2(T, 16, 192, OP.plate.mat(tMat, 3), ST.mkic("ironCableItem"  , 1), ST.mkic("insulatedIronCableItem"  , 1));
+		}
 		
 		for (FluidStack tCFoam : DYED_C_FOAMS)
 		RM.Drying           .addRecipe1(T, 16,   16, IL.IC2_Scaffold_Iron.get(1)                        , tCFoam, NF, IL.IC2_Wall_Reinforced.get(1));

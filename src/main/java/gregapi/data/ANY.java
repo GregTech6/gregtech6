@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,11 @@
 
 package gregapi.data;
 
+import gregapi.oredict.OreDictMaterial;
+
 import static gregapi.data.CS.*;
 import static gregapi.data.TD.Processing.*;
 import static gregapi.data.TD.Properties.*;
-
-import gregapi.oredict.OreDictMaterial;
 
 /**
  * @author Gregorius Techneticies
@@ -79,6 +79,9 @@ public class ANY {
 	WoodTreated     = any("Any Treated Wood"    ),
 	WoodUntreated   = any("Any Untreated Wood"  ),
 	WoodPlastic     = any("Any Wood Or Plastic" ),
+	Rubber          = any("Any Rubber"          ),
+	Plastic         = any("Any Plastic"         ),
+	PlasticHard     = any("Any Hard Plastic"    ),
 	
 	_Steel          = any("Any Steel"           ),
 	_Bronze         = any("Any Bronze"          ),
@@ -132,7 +135,10 @@ public class ANY {
 		WoodTreated     .stealLooks(MT.WoodTreated    ).steal(MT.Wood           ).setLocal("Treated Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).addReRegistrationToThis(MT.WoodTreated, MT.WoodPolished).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		WoodUntreated   .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood           ).setLocal("Untreated Wood"     ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).addReRegistrationToThis(ANY.WoodMagical.mToThis.toArray(ZL_MT)).addReRegistrationToThis(ANY.WoodNormal.mToThis.toArray(ZL_MT)).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		Wood            .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood           ).setLocal("Wood"               ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).setFurnaceBurnTime(TICKS_PER_SMELT/2);
-		WoodPlastic     .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT                               ).addReRegistrationToThis(MT.Plastic, MT.PetrifiedWood);
+		PlasticHard     .stealLooks(MT.Polycarbonate  ).steal(MT.Polycarbonate                                  ).setAllToTheOutputOf(MT.Plastic        ).put(                                                       ).addReRegistrationToThis(MT.Polycarbonate, MT.PVC);
+		Plastic         .stealLooks(MT.Plastic        ).steal(MT.Plastic                                        ).setAllToTheOutputOf(MT.Plastic        ).put(                                                       ).addReRegistrationToThis(MT.Polycarbonate, MT.PVC, MT.Teflon, MT.Bakelite, MT.Plastic);
+		Rubber          .stealLooks(MT.Rubber         ).steal(MT.Rubber                                         ).setAllToTheOutputOf(MT.Rubber         ).put(                                                       ).addReRegistrationToThis(MT.Rubber);
+		WoodPlastic     .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT                               ).addReRegistrationToThis(ANY.Plastic, MT.PetrifiedWood);
 		
 		_Steel          .stealLooks(MT.Steel          ).put(DONT_SHOW_THIS_COMPONENT);
 		_Bronze         .stealLooks(MT.Bronze         ).put(DONT_SHOW_THIS_COMPONENT);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -360,13 +360,6 @@ public class LanguageHandler {
 			if (aPrefix == OP.nugget)                                               return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
 			if (aPrefix.mNameInternal.startsWith("plate"))                          return aPrefix.mMaterialPre + "Treated Plank";
 		} else
-		if (aMaterial == MT.Plastic || aMaterial == MT.Rubber) {
-			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pulp";
-			if (aPrefix.mNameInternal.startsWith("plate"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Sheet";
-			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
-			if (aPrefix == OP.nugget)                                               return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
-			if (aPrefix.mNameInternal.startsWith("foil"))                           return "Thin " + aMaterial.mNameLocal + " Sheet";
-		} else
 		if (aMaterial == MT.FierySteel) {
 			if (aPrefix.contains(TD.Prefix.IS_CONTAINER))                           return aPrefix.mMaterialPre + "Fiery Blood" + aPrefix.mMaterialPost;
 		} else
@@ -434,11 +427,6 @@ public class LanguageHandler {
 		if (aMaterial == MT.Butter || aMaterial == MT.ButterSalted) {
 			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
-		if (ANY.Blaze.mToThis.contains(aMaterial)) {
-			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
-			if (aPrefix.mNameInternal.startsWith("stick"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Rod";
-			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
-		} else
 		if (aMaterial == MT.Indigo || aMaterial == MT.ConstructionFoam || aMaterial == MT.Cocoa || aMaterial == MT.Curry || aMaterial == MT.Chocolate || aMaterial == MT.Coffee || aMaterial == MT.Chili || aMaterial == MT.Cheese || aMaterial == MT.Snow) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 		} else
@@ -494,8 +482,20 @@ public class LanguageHandler {
 			if (aPrefix == OP.scrapGt)                                              return "Brittle Ceramic Scraps";
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Dry Clay Powder";
 		} else
+		if (ANY.Blaze.mToThis.contains(aMaterial)) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
+			if (aPrefix.mNameInternal.startsWith("stick"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Rod";
+			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
+		} else
 		if (ANY.Clay.mToThis.contains(aMaterial)) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
+		} else
+		if (ANY.Plastic.mToThis.contains(aMaterial) || ANY.Rubber.mToThis.contains(aMaterial)) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pulp";
+			if (aPrefix.mNameInternal.startsWith("plate"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Sheet";
+			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
+			if (aPrefix == OP.nugget)                                               return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
+			if (aPrefix.mNameInternal.startsWith("foil"))                           return "Thin " + aMaterial.mNameLocal + " Sheet";
 		} else
 		if (aMaterial == MT.Dilithium) {
 			if (aPrefix.mNameInternal.startsWith("gem"))                            return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Crystal";

@@ -365,8 +365,10 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.shaped(ring          .mat(tWax               ,  1), CR.DEF, "k", "X", 'X', plate.dat(tWax));
 		CR.shaped(casingSmall   .mat(tWax               ,  1), CR.DEF, "X", "k", 'X', plate.dat(tWax));
 		}
-		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF, "k", "X", 'X', plate.dat(MT.Rubber));
-		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF, "X", "k", 'X', plate.dat(MT.Rubber));
+		for (OreDictMaterial tRubber : ANY.Rubber.mToThis) {
+		CR.shaped(ring          .mat(tRubber            ,  1), CR.DEF, "k", "X", 'X', plate.dat(tRubber));
+		CR.shaped(casingSmall   .mat(tRubber            ,  1), CR.DEF, "X", "k", 'X', plate.dat(tRubber));
+		}
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', OD.buttonStone);
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
