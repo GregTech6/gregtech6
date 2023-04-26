@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,8 @@
 
 package gregtech.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.GarbageGT;
+import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -37,6 +34,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -100,7 +101,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.steamturbine.1", "3x3x4 of the Walls you crafted this with");
+		LH.add("gt.tooltip.multiblock.steamturbine.1", "3x3x4 of 35 ");
 		LH.add("gt.tooltip.multiblock.steamturbine.2", "Main centered on the 3x3 facing outwards");
 		LH.add("gt.tooltip.multiblock.steamturbine.3", "Input only possible at frontal 3x3");
 		LH.add("gt.tooltip.multiblock.steamturbine.4", "Distilled Water can be pumped out at Bottom Layer");
@@ -109,7 +110,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.steamturbine.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.steamturbine.1") + MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID()).getLocal(mTurbineWalls));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.steamturbine.2"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.steamturbine.3"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.steamturbine.4"));
