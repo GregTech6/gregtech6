@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -719,8 +719,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	// A Default implementation for RF Stuff, so I don't have to implement those Interfaces manually every time I make an RF Emitter or Acceptor.
 	
 	public boolean canConnectEnergy  (ForgeDirection aDirection) {for (TagData tTag : TD.Energy.ALL_RF) if (isEnergyEmittingTo(tTag, UT.Code.side(aDirection), T)) return T; return isEnergyAcceptingFrom(TD.Energy.RF, UT.Code.side(aDirection), T);}
-	public int     receiveEnergy     (ForgeDirection aDirection, int aSize, boolean aSimulate) {return (int)doEnergyInjection (TD.Energy.RF, UT.Code.side(aDirection), aSize, 1, !aSimulate)*aSize;}
-	public int     extractEnergy     (ForgeDirection aDirection, int aSize, boolean aSimulate) {return (int)doEnergyExtraction(TD.Energy.RF, UT.Code.side(aDirection), aSize, 1, !aSimulate)*aSize;}
+	public int     receiveEnergy     (ForgeDirection aDirection, int aSize, boolean aSimulate) {return (int)doEnergyInjection (TD.Energy.RF, UT.Code.side(aDirection), 1, aSize, !aSimulate);}
+	public int     extractEnergy     (ForgeDirection aDirection, int aSize, boolean aSimulate) {return (int)doEnergyExtraction(TD.Energy.RF, UT.Code.side(aDirection), 1, aSize, !aSimulate);}
 	public int     getEnergyStored   (ForgeDirection aDirection) {return UT.Code.bindInt(getEnergyCapacity(TD.Energy.RF, UT.Code.side(aDirection)));}
 	public int     getMaxEnergyStored(ForgeDirection aDirection) {return UT.Code.bindInt(getEnergyCapacity(TD.Energy.RF, UT.Code.side(aDirection)));}
 	

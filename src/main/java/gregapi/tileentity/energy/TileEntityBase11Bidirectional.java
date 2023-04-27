@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregapi.tileentity.energy;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
-import gregapi.data.TD;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Converter;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
@@ -34,6 +29,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -56,8 +55,8 @@ public abstract class TileEntityBase11Bidirectional extends TileEntityBase10Ener
 		TE_Behavior_Energy_Stats
 		tEnergyIN  = new TE_Behavior_Energy_Stats(this, aNBT, mEnergyOUT.mType, mStorage, mEnergyOUT.mMin <= 8 ? 1 : mEnergyOUT.mMin, mEnergyIN.mRec, Math.max(mEnergyIN.mRec, mEnergyOUT.mMax*tMultiplier)),
 		tEnergyOUT = new TE_Behavior_Energy_Stats(this, aNBT, mEnergyIN .mType, mStorage, (mEnergyIN.mRec*3)/4, mEnergyIN.mRec, mEnergyIN.mMax);
-		mConverter = new TE_Behavior_Energy_Converter(this, aNBT, mStorage, mEnergyIN, mEnergyOUT, tMultiplier, aNBT.getBoolean(NBT_WASTE_ENERGY), F, aNBT.hasKey(NBT_LIMIT_CONSUMPTION) ? aNBT.getBoolean(NBT_LIMIT_CONSUMPTION) : TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType));
-		mConRevert = new TE_Behavior_Energy_Converter(this, aNBT, mStorage, tEnergyIN, tEnergyOUT,           1, aNBT.getBoolean(NBT_WASTE_ENERGY), F, aNBT.hasKey(NBT_LIMIT_CONSUMPTION) ? aNBT.getBoolean(NBT_LIMIT_CONSUMPTION) : TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType));
+		mConverter = new TE_Behavior_Energy_Converter(this, aNBT, mStorage, mEnergyIN, mEnergyOUT, tMultiplier, aNBT.getBoolean(NBT_WASTE_ENERGY), F, aNBT.getBoolean(NBT_LIMIT_CONSUMPTION));
+		mConRevert = new TE_Behavior_Energy_Converter(this, aNBT, mStorage, tEnergyIN, tEnergyOUT,           1, aNBT.getBoolean(NBT_WASTE_ENERGY), F, aNBT.getBoolean(NBT_LIMIT_CONSUMPTION));
 		if (mReversed) {TE_Behavior_Energy_Converter tConverter = mConverter; mConverter = mConRevert; mConRevert = tConverter;}
 	}
 	

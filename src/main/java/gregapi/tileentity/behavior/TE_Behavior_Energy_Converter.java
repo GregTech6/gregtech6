@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,13 @@
 
 package gregapi.tileentity.behavior;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.TD;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import static gregapi.data.CS.*;
 
 public class TE_Behavior_Energy_Converter extends TE_Behavior {
 	public TE_Behavior_Energy_Stats mEnergyIN, mEnergyOUT;
@@ -42,7 +42,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		mMultiplier = aMultiplier;
 		mWasteEnergy = aWasteEnergy;
 		mSizeIrrelevant = TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyOUT.mType);
-		mLimitConsumption = aLimitConsumption;
+		mLimitConsumption = aLimitConsumption || TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType);
 		if (aNegativeOutput) mFactor = -1;
 	}
 	
