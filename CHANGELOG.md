@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 [FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
 [FIXED] The RF to GT Converters should work slightly less overloady now.
+[FIXED] High End Extreme Nuclear Reactors were causing severe Lag due to the absurd range of their Radiation Damage ending up in loading Chunks.
 [CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
