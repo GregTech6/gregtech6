@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.00: (Not released yet)
+[IMPORTANT] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name" and "" BEFORE loading Minecraft, should fix it.
 [FIXED] Weight-O-Meter now works on Raw Ore Items in Chests and Stuff.
 [FIXED] The Fluid Filter Block was slightly bugged in regards of its GUI. It should now work and have the same special cases as the Fluid Filter Cover.
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
@@ -19,14 +20,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] The RF to GT Converters should work slightly less overloady now.
 [FIXED] Language File shouldn't show certain "localized fluid name to localized fluid name" Entries anymore.
 [FIXED] High End Extreme Nuclear Reactors were causing severe Lag due to the absurd range of their Radiation Damage ending up in loading Chunks.
-[CHANGED] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name" and "" should fix it.
 [CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
-[ADDED] Config to make GT6 Tree LEaves decay a lot slower. Don't know why anyone would want it but apparently this would fix Steves Carts Tree Automation.
+[ADDED] Config to make GT6 Tree Leaves decay a lot slower. Don't know why anyone would want it but apparently this would fix Steves Carts Tree Automation.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
 
 
-//=== Version Number Jump due to changes to the Lang File. To Fix your custom Lang File just recursively remove ".name" from it. ===//
+//=== Version Number Jump due to changes to the Lang File. To Fix your custom Lang File just recursively remove ".name" from the original one BEFORE loading Minecraft. ===//
 
 
 6.15.10:

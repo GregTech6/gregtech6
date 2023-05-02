@@ -102,9 +102,9 @@ public class LanguageHandler {
 	}
 	
 	public static String translate(String aKey, String aDefault) {
-		if (aKey == null) return "";
+		if (aKey == null || aKey.length() < 2) return "";
 		aKey = aKey.trim();
-		if (aKey.isEmpty()) return "";
+		if (aKey.length() < 2) return "";
 		String
 		rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;

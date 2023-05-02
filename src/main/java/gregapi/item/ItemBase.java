@@ -39,6 +39,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -110,7 +111,8 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
 	@Override public String toString() {return mName;}
 	@Override public final String getUnlocalizedName() {return mName;}
-	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+getDamage(aStack):mName;}
+	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+ST.meta_(aStack):mName;}
+	@Override public String getItemStackDisplayName(ItemStack aStack) {return StatCollector.translateToLocal(getUnlocalizedName(aStack));}
 	@Override public final boolean getShareTag() {return T;} // just to be sure.
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aIconRegister) {mIcon = aIconRegister.registerIcon(mModID + ":" + mName);}
 	@Override public IIcon getIconFromDamage(int aMeta) {return mIcon;}
