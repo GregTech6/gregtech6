@@ -44,9 +44,10 @@ import static gregapi.data.CS.*;
  */
 public class LanguageHandler {
 	public static Configuration sLangFile;
+	public static boolean sUseFile = F;
 	
 	private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>(), BACKUPMAP = new HashMap<>();
-	private static boolean mWritingEnabled = F, mUseFile = F;
+	private static boolean mWritingEnabled = F;
 	
 	public static void save() {
 		if (sLangFile != null) {
@@ -72,21 +73,24 @@ public class LanguageHandler {
 			BUFFERMAP.put(aKey, aEnglish);
 		} else {
 			if (!BUFFERMAP.isEmpty()) {
-				mUseFile = sLangFile.get("EnableLangFile", "UseThisFileAsLanguageFile", F).getBoolean(F);
 				for (Entry<String, String> tEntry : BUFFERMAP.entrySet()) {
+					String tKeyName = tEntry.getKey()+".name";
+					sLangFile.renameProperty("LanguageFile", tKeyName, tEntry.getKey());
 					Property tProperty = sLangFile.get("LanguageFile", tEntry.getKey(), tEntry.getValue());
-					TEMPMAP.put(tEntry.getKey()        , mUseFile?tProperty.getString():tEntry.getValue());
-					TEMPMAP.put(tEntry.getKey()+".name", mUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tEntry.getKey(), sUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tKeyName       , sUseFile?tProperty.getString():tEntry.getValue());
 					LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 					TEMPMAP.clear();
 				}
 				if (mWritingEnabled) sLangFile.save();
 				BUFFERMAP.clear();
 			}
+			String aKeyName = aKey+".name";
+			sLangFile.renameProperty("LanguageFile", aKeyName, aKey);
 			Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
 			if (!tProperty.wasRead() && mWritingEnabled) sLangFile.save();
-			TEMPMAP.put(aKey        , mUseFile?tProperty.getString():aEnglish);
-			TEMPMAP.put(aKey+".name", mUseFile?tProperty.getString():aEnglish);
+			TEMPMAP.put(aKey    , sUseFile?tProperty.getString():aEnglish);
+			TEMPMAP.put(aKeyName, sUseFile?tProperty.getString():aEnglish);
 			LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 			TEMPMAP.clear();
 		}

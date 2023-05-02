@@ -62,6 +62,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
@@ -98,7 +99,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	public String getItemStackDisplayName(ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IMTE_GetItemName) return ((IMTE_GetItemName)tTileEntityContainer.mTileEntity).getItemName(aStack, super.getItemStackDisplayName(aStack));
-		return super.getItemStackDisplayName(aStack);
+		return StatCollector.translateToLocal(getUnlocalizedName(aStack));
 	}
 	
 	@Override

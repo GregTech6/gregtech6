@@ -691,6 +691,7 @@ public class GT_API extends Abstract_Mod {
 			tFile = new File(DirectoriesGT.MINECRAFT, "GregTech.lang");
 			if (!tFile.exists()) tFile = new File(DirectoriesGT.MINECRAFT, "gregtech.lang");
 			LanguageHandler.sLangFile = new Configuration(tFile);
+			LanguageHandler.sUseFile = LanguageHandler.sLangFile.get("EnableLangFile", "UseThisFileAsLanguageFile", F).getBoolean(F);
 		} else {
 			sBlockIconload.clear();
 			sBlockIconload = null;
