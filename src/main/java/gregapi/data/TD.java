@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -505,7 +505,9 @@ public class TD {
 		public static final TagData FUSION                                  = TagData.createTagData("PROCESSING.FUSION_SYNTHESISABLE", "Fusion Synthesisable");
 		/** If this Material can be ground by a Mortar. */
 		public static final TagData MORTAR                                  = TagData.createTagData("PROCESSING.MORTAR_GRINDABLE", "Mortar Grindable");
-		
+		/** If this Material can be solidified into a Crystalline Structure, like Glass or Ice. */
+		public static final TagData COOL2CRYSTAL                            = TagData.createTagData("PROCESSING.COOL2CRYSTAL", "Cools into Crystalline Form");
+		/** If this Material can be processed by smithy Stuff. */
 		public static final TagData SMITHABLE                               = TagData.createTagData("PROCESSING.SMITHABLE", "Smithable");
 		/** If this Material can be directly cooked in a regular Furnace */
 		public static final TagData FURNACE                                 = TagData.createTagData("PROCESSING.FURNACE", "Furnace Smeltable");
@@ -528,7 +530,7 @@ public class TD {
 		
 		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Crystal from Pulverisation");
 		
-		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
+		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, COOL2CRYSTAL, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
 		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_FIRESTONE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	

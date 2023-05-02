@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,31 +19,12 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import gregapi.GT_API_Proxy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.TagData;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
-import gregapi.data.FL;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.TD;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictItemData;
@@ -78,6 +59,14 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -202,7 +191,10 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 				mDisplay = (short)~mDisplay;
 				if (mContent.mAmount > 0 && !slotHas(0)) {
 					OreDictPrefix tPrefix = getMoldRecipe(mShape);
-					if (tPrefix == OP.plate && mContent.mMaterial == MT.Glass) tPrefix = OP.plateGem;
+					if (mContent.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+						if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
+						if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
+					}
 					if (tPrefix != null) {
 						slot(0, tPrefix.mat(mContent.mMaterial, mContent.mAmount / tPrefix.mAmount));
 						mContent.mAmount = 0;
@@ -255,7 +247,10 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (aMaterial == null || aMaterial.mMaterial == null || (!mAcidProof && aMaterial.mMaterial.contains(TD.Properties.ACID))) return 0;
 		OreDictPrefix tPrefix = getMoldRecipe(mShape);
 		if (tPrefix != null && mContent == null && slot(0) == null && isMoldInputSide(aSide) && aMaterial.mAmount > 0) {
-			if (tPrefix == OP.plate && aMaterial.mMaterial == MT.Glass) tPrefix = OP.plateGem;
+			if (aMaterial.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+				if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
+				if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
+			}
 			if (tPrefix.mat(aMaterial.mMaterial.mTargetSolidifying.mMaterial, 1) != null) {
 				long tRequiredAmount = getMoldRequiredMaterialUnits(), rAmount = UT.Code.units(tRequiredAmount, U, aMaterial.mMaterial.mTargetSolidifying.mAmount, T);
 				if (aMaterial.mAmount >= rAmount) {
@@ -606,7 +601,10 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		aMaterial = OM.stack(aFluidRatio.mMaterial, UT.Code.units(aFluid.amount, aFluidRatio.mAmount, U, F));
 		if (aMaterial == null || aMaterial.mAmount <= 0) return 0;
 		OreDictPrefix tPrefix = getMoldRecipe(mShape);
-		if (tPrefix == OP.plate && aMaterial.mMaterial == MT.Glass) tPrefix = OP.plateGem;
+		if (aMaterial.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+			if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
+			if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
+		}
 		if (tPrefix == null || tPrefix.mat(aMaterial.mMaterial.mTargetSolidifying.mMaterial, 1) == null) return 0;
 		long tRequiredAmount = getMoldRequiredMaterialUnits();
 		long rAmount = UT.Code.units(tRequiredAmount, U, aMaterial.mMaterial.mTargetSolidifying.mAmount, T);
