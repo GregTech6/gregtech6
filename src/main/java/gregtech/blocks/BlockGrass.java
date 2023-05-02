@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -48,22 +48,22 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class BlockGrass extends BlockBaseMeta {
 	public BlockGrass(String aUnlocalised) {
 		super(null, aUnlocalised, Material.grass, soundTypeGrass, 4, Textures.BlockIcons.GRASSES_TOP);
-		LH.add(getUnlocalizedName()+ ".0.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".1.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".2.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".3.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".4.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".5.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".6.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".7.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".8.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".9.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".10.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".11.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".12.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".13.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".14.name", "Grass");
-		LH.add(getUnlocalizedName()+ ".15.name", "Grass");
+		LH.add(getUnlocalizedName()+ ".0", "Grass");
+		LH.add(getUnlocalizedName()+ ".1", "Grass");
+		LH.add(getUnlocalizedName()+ ".2", "Grass");
+		LH.add(getUnlocalizedName()+ ".3", "Grass");
+		LH.add(getUnlocalizedName()+ ".4", "Grass");
+		LH.add(getUnlocalizedName()+ ".5", "Grass");
+		LH.add(getUnlocalizedName()+ ".6", "Grass");
+		LH.add(getUnlocalizedName()+ ".7", "Grass");
+		LH.add(getUnlocalizedName()+ ".8", "Grass");
+		LH.add(getUnlocalizedName()+ ".9", "Grass");
+		LH.add(getUnlocalizedName()+".10", "Grass");
+		LH.add(getUnlocalizedName()+".11", "Grass");
+		LH.add(getUnlocalizedName()+".12", "Grass");
+		LH.add(getUnlocalizedName()+".13", "Grass");
+		LH.add(getUnlocalizedName()+".14", "Grass");
+		LH.add(getUnlocalizedName()+".15", "Grass");
 		
 		BlocksGT.drillableDynamite.add(this);
 		BlocksGT.harvestableSpade.add(this);

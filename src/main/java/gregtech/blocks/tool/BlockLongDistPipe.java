@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,8 +35,8 @@ public class BlockLongDistPipe extends BlockBaseMachineUpdate {
 	public BlockLongDistPipe(String aUnlocalised, IIconContainer[] aIcons, long[] aTemperatures) {
 		super(null, aUnlocalised, MaterialMachines.instance, soundTypeMetal, 5, aIcons, ~0);
 		mTemperatures = aTemperatures;
-		LH.add(aUnlocalised+".0.name" , "Long Distance Item Pipeline");
-		for (int i = 1; i < maxMeta(); i++) LH.add(aUnlocalised+"."+i+".name" , "Long Distance Fluid Pipeline ("+mTemperatures[i]+" K)");
+		LH.add(aUnlocalised+".0" , "Long Distance Item Pipeline");
+		for (int i = 1; i < maxMeta(); i++) LH.add(aUnlocalised+"."+i, "Long Distance Fluid Pipeline ("+mTemperatures[i]+" K)");
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_wrench;}

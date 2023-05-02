@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,24 +28,24 @@ public class BlockTreeBeamAFireProof extends BlockBaseBeam {
 	public BlockTreeBeamAFireProof(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.BEAMS_A);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Rubber Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Rubber Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Rubber Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".4", "Rubber Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".8", "Rubber Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".12", "Rubber Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".5.name", "Maple Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".9.name", "Maple Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".13.name", "Maple Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".5", "Maple Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".9", "Maple Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".13", "Maple Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Willow Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Willow Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Willow Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6", "Willow Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".10", "Willow Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".14", "Willow Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".7.name", "Blue Mahoe Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".15.name", "Blue Mahoe Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".7", "Blue Mahoe Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".11", "Blue Mahoe Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".15", "Blue Mahoe Beam (Fireproof)");
 	}
 }

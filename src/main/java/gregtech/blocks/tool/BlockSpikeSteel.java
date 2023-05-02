@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,22 +38,22 @@ import net.minecraft.world.World;
 public class BlockSpikeSteel extends BlockBaseSpike {
 	public BlockSpikeSteel(String aNameInternal) {
 		super(aNameInternal, ANY.BlueSteel, ANY.RedSteel); // If you were looking for the regular Steel Spike, that one is with the Sharp Spikes.
-		LH.add(getUnlocalizedName()+ ".0.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Blue Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Blue Steel Block Spike");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Falling Blue Steel Spike Block");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".10.name", "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".11.name", "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".12.name", "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".13.name", "Red Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".14.name", "Red Steel Block Spike");
-		LH.add(getUnlocalizedName()+ ".15.name", "Falling Red Steel Spike Block");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".1", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".2", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".4", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".5", "Blue Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".6", "Blue Steel Block Spike");
+		LH.add(getUnlocalizedName()+ ".7", "Falling Blue Steel Spike Block");
+		LH.add(getUnlocalizedName()+ ".8", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".9", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+".10", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+".11", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+".12", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+".13", "Red Steel Wall Spike");
+		LH.add(getUnlocalizedName()+".14", "Red Steel Block Spike");
+		LH.add(getUnlocalizedName()+".15", "Falling Red Steel Spike Block");
 	}
 	
 	@Override

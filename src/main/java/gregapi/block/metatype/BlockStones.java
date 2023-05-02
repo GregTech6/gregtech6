@@ -113,22 +113,22 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		GAPI_POST.mAfterInit.add(this);
 		
 		if (aDefaultLocalised != null) {
-			LH.add(getUnlocalizedName()+".0.name", aDefaultLocalised);
-			LH.add(getUnlocalizedName()+".1.name", aDefaultLocalised+" Cobblestone");
-			LH.add(getUnlocalizedName()+".2.name", "Mossy "+aDefaultLocalised+" Cobblestone");
-			LH.add(getUnlocalizedName()+".3.name", aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".4.name", "Cracked "+aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".5.name", "Mossy "+aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".6.name", "Chiseled "+aDefaultLocalised);
-			LH.add(getUnlocalizedName()+".7.name", "Smooth "+aDefaultLocalised);
-			LH.add(getUnlocalizedName()+".8.name", "Reinforced "+aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".9.name", "Redstoned "+aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".10.name", aDefaultLocalised+" Tiles");
-			LH.add(getUnlocalizedName()+".11.name", "Small "+aDefaultLocalised+" Tiles");
-			LH.add(getUnlocalizedName()+".12.name", "Small "+aDefaultLocalised+" Bricks");
-			LH.add(getUnlocalizedName()+".13.name", aDefaultLocalised+" Windmill Tiles A");
-			LH.add(getUnlocalizedName()+".14.name", aDefaultLocalised+" Windmill Tiles B");
-			LH.add(getUnlocalizedName()+".15.name", aDefaultLocalised+" Square Bricks");
+			LH.add(getUnlocalizedName()+".0", aDefaultLocalised);
+			LH.add(getUnlocalizedName()+".1", aDefaultLocalised+" Cobblestone");
+			LH.add(getUnlocalizedName()+".2", "Mossy "+aDefaultLocalised+" Cobblestone");
+			LH.add(getUnlocalizedName()+".3", aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".4", "Cracked "+aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".5", "Mossy "+aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".6", "Chiseled "+aDefaultLocalised);
+			LH.add(getUnlocalizedName()+".7", "Smooth "+aDefaultLocalised);
+			LH.add(getUnlocalizedName()+".8", "Reinforced "+aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".9", "Redstoned "+aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".10", aDefaultLocalised+" Tiles");
+			LH.add(getUnlocalizedName()+".11", "Small "+aDefaultLocalised+" Tiles");
+			LH.add(getUnlocalizedName()+".12", "Small "+aDefaultLocalised+" Bricks");
+			LH.add(getUnlocalizedName()+".13", aDefaultLocalised+" Windmill Tiles A");
+			LH.add(getUnlocalizedName()+".14", aDefaultLocalised+" Windmill Tiles B");
+			LH.add(getUnlocalizedName()+".15", aDefaultLocalised+" Square Bricks");
 		}
 		
 		OP.blockSolid.disableItemGeneration(mMaterial);
@@ -216,22 +216,22 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		mMaterial = (aMaterial == null ? ANY.Stone : aMaterial);
 		
 		if (aDefaultLocalised != null) {
-			LH.add(getUnlocalizedName()+".0.name", aDefaultLocalised+" Slab");
-			LH.add(getUnlocalizedName()+".1.name", aDefaultLocalised+" Cobblestone Slab");
-			LH.add(getUnlocalizedName()+".2.name", "Mossy "+aDefaultLocalised+" Cobblestone Slab");
-			LH.add(getUnlocalizedName()+".3.name", aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".4.name", "Cracked "+aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".5.name", "Mossy "+aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".6.name", "Chiseled "+aDefaultLocalised+" Slab");
-			LH.add(getUnlocalizedName()+".7.name", "Smooth "+aDefaultLocalised+" Slab");
-			LH.add(getUnlocalizedName()+".8.name", "Reinforced "+aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".9.name", "Redstoned "+aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".10.name", aDefaultLocalised+" Tiles Slab");
-			LH.add(getUnlocalizedName()+".11.name", "Small "+aDefaultLocalised+" Tiles Slab");
-			LH.add(getUnlocalizedName()+".12.name", "Small "+aDefaultLocalised+" Bricks Slab");
-			LH.add(getUnlocalizedName()+".13.name", aDefaultLocalised+" Windmill Tiles A Slab");
-			LH.add(getUnlocalizedName()+".14.name", aDefaultLocalised+" Windmill Tiles B Slab");
-			LH.add(getUnlocalizedName()+".15.name", aDefaultLocalised+" Square Bricks Slab");
+			LH.add(getUnlocalizedName()+".0", aDefaultLocalised+" Slab");
+			LH.add(getUnlocalizedName()+".1", aDefaultLocalised+" Cobblestone Slab");
+			LH.add(getUnlocalizedName()+".2", "Mossy "+aDefaultLocalised+" Cobblestone Slab");
+			LH.add(getUnlocalizedName()+".3", aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".4", "Cracked "+aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".5", "Mossy "+aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".6", "Chiseled "+aDefaultLocalised+" Slab");
+			LH.add(getUnlocalizedName()+".7", "Smooth "+aDefaultLocalised+" Slab");
+			LH.add(getUnlocalizedName()+".8", "Reinforced "+aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".9", "Redstoned "+aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".10", aDefaultLocalised+" Tiles Slab");
+			LH.add(getUnlocalizedName()+".11", "Small "+aDefaultLocalised+" Tiles Slab");
+			LH.add(getUnlocalizedName()+".12", "Small "+aDefaultLocalised+" Bricks Slab");
+			LH.add(getUnlocalizedName()+".13", aDefaultLocalised+" Windmill Tiles A Slab");
+			LH.add(getUnlocalizedName()+".14", aDefaultLocalised+" Windmill Tiles B Slab");
+			LH.add(getUnlocalizedName()+".15", aDefaultLocalised+" Square Bricks Slab");
 		}
 		OM.data(ST.make(this, 1, STONE), new OreDictItemData(mMaterial, 9*U2));
 		OM.data(ST.make(this, 1, COBBL), new OreDictItemData(mMaterial, 9*U2));

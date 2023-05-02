@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,7 +62,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	public ItemFluidDisplay() {
 		super();
 		mName = "gt.display.fluid";
-		LH.add(mName + ".name", "Fluid Display");
+		LH.add(mName, "Fluid Display");
 		GameRegistry.registerItem(this, mName, MD.GAPI.mID);
 		if (ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTFluidDisplay", F)) ST.hide(this);
 		ItemsGT.DEBUG_ITEMS.add(this);

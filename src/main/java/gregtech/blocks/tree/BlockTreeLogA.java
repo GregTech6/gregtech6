@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -48,37 +48,37 @@ public class BlockTreeLogA extends BlockBaseLogFlammable implements IBlockToolab
 	public BlockTreeLogA(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_A);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Log");
-		LH.add(getUnlocalizedName()+ ".4.name", "Rubber Log");
-		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Log");
-		LH.add(getUnlocalizedName()+".12.name", "Rubber Log");
+		LH.add(getUnlocalizedName()+ ".0", "Rubber Log");
+		LH.add(getUnlocalizedName()+ ".4", "Rubber Log");
+		LH.add(getUnlocalizedName()+ ".8", "Rubber Log");
+		LH.add(getUnlocalizedName()+".12", "Rubber Log");
 		OM.reg(ST.make(this, 1, 0), OD.logRubber);
 		OM.reg(ST.make(this, 1, 4), OD.logRubber);
 		OM.reg(ST.make(this, 1, 8), OD.logRubber);
 		OM.reg(ST.make(this, 1,12), OD.logRubber);
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Log");
-		LH.add(getUnlocalizedName()+ ".5.name", "Maple Log");
-		LH.add(getUnlocalizedName()+ ".9.name", "Maple Log");
-		LH.add(getUnlocalizedName()+".13.name", "Maple Log");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Log");
+		LH.add(getUnlocalizedName()+ ".5", "Maple Log");
+		LH.add(getUnlocalizedName()+ ".9", "Maple Log");
+		LH.add(getUnlocalizedName()+".13", "Maple Log");
 		OM.reg(ST.make(this, 1, 1), OD.logWood);
 		OM.reg(ST.make(this, 1, 5), OD.logWood);
 		OM.reg(ST.make(this, 1, 9), OD.logWood);
 		OM.reg(ST.make(this, 1,13), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Log");
-		LH.add(getUnlocalizedName()+ ".6.name", "Willow Log");
-		LH.add(getUnlocalizedName()+".10.name", "Willow Log");
-		LH.add(getUnlocalizedName()+".14.name", "Willow Log");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Log");
+		LH.add(getUnlocalizedName()+ ".6", "Willow Log");
+		LH.add(getUnlocalizedName()+".10", "Willow Log");
+		LH.add(getUnlocalizedName()+".14", "Willow Log");
 		OM.reg(ST.make(this, 1, 2), OD.logWood);
 		OM.reg(ST.make(this, 1, 6), OD.logWood);
 		OM.reg(ST.make(this, 1,10), OD.logWood);
 		OM.reg(ST.make(this, 1,14), OD.logWood);
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Log");
-		LH.add(getUnlocalizedName()+ ".7.name", "Blue Mahoe Log");
-		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Log");
-		LH.add(getUnlocalizedName()+".15.name", "Blue Mahoe Log");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Log");
+		LH.add(getUnlocalizedName()+ ".7", "Blue Mahoe Log");
+		LH.add(getUnlocalizedName()+".11", "Blue Mahoe Log");
+		LH.add(getUnlocalizedName()+".15", "Blue Mahoe Log");
 		OM.reg(ST.make(this, 1, 3), OD.logWood);
 		OM.reg(ST.make(this, 1, 7), OD.logWood);
 		OM.reg(ST.make(this, 1,11), OD.logWood);

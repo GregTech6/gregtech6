@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,18 +45,18 @@ public class BlockCrystalOres extends BlockBaseMeta {
 	
 	public BlockCrystalOres(String aUnlocalised) {
 		super(null, aUnlocalised, Material.glass, soundTypeGlass, ORE_MATERIALS.length, Textures.BlockIcons.CRYSTAL_ORES);
-		LH.add(getUnlocalizedName()+ ".0.name", "Arsenopyrite Crystal");
-		LH.add(getUnlocalizedName()+ ".1.name", "Chalcopyrite Crystal");
-		LH.add(getUnlocalizedName()+ ".2.name", "Cinnabar Crystal");
-		LH.add(getUnlocalizedName()+ ".3.name", "Cobaltite Crystal");
-		LH.add(getUnlocalizedName()+ ".4.name", "Galena Crystal");
-		LH.add(getUnlocalizedName()+ ".5.name", "Kesterite Crystal");
-		LH.add(getUnlocalizedName()+ ".6.name", "Molybdenite Crystal");
-		LH.add(getUnlocalizedName()+ ".7.name", "Pyrite Crystal");
-		LH.add(getUnlocalizedName()+ ".8.name", "Sphalerite Crystal");
-		LH.add(getUnlocalizedName()+ ".9.name", "Stannite Crystal");
-		LH.add(getUnlocalizedName()+".10.name", "Stibnite Crystal");
-		LH.add(getUnlocalizedName()+".11.name", "Tetrahedrite Crystal");
+		LH.add(getUnlocalizedName()+ ".0", "Arsenopyrite Crystal");
+		LH.add(getUnlocalizedName()+ ".1", "Chalcopyrite Crystal");
+		LH.add(getUnlocalizedName()+ ".2", "Cinnabar Crystal");
+		LH.add(getUnlocalizedName()+ ".3", "Cobaltite Crystal");
+		LH.add(getUnlocalizedName()+ ".4", "Galena Crystal");
+		LH.add(getUnlocalizedName()+ ".5", "Kesterite Crystal");
+		LH.add(getUnlocalizedName()+ ".6", "Molybdenite Crystal");
+		LH.add(getUnlocalizedName()+ ".7", "Pyrite Crystal");
+		LH.add(getUnlocalizedName()+ ".8", "Sphalerite Crystal");
+		LH.add(getUnlocalizedName()+ ".9", "Stannite Crystal");
+		LH.add(getUnlocalizedName()+".10", "Stibnite Crystal");
+		LH.add(getUnlocalizedName()+".11", "Tetrahedrite Crystal");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OP.oreDense.dat(ORE_MATERIALS[i]));

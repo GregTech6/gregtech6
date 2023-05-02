@@ -234,11 +234,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 				if (MD.RC.mLoaded && "Railcraft:part.plate".equalsIgnoreCase(aRegName)) {
 					switch(aMeta) {
-					case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateIron.name")); break;
-					case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateSteel.name")); break;
-					case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateTinAlloy.name")); break;
-					case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateCopper.name")); break;
-					case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateLead.name")); break;
+					case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateIron")); break;
+					case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateSteel")); break;
+					case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateTinAlloy")); break;
+					case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateCopper")); break;
+					case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateLead")); break;
 					}
 				}
 			}

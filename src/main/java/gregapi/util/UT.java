@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -538,7 +538,6 @@ public class UT {
 			aName = aName.toLowerCase();
 			Fluid rFluid = new FluidGT(aName, aTexture, aRGBa == null ? UNCOLOURED : aRGBa, aTemperatureK, aState == 2 || aState == 3);
 			LH.add(rFluid.getUnlocalizedName(), aLocalized==null?aName:aLocalized);
-			LH.add(rFluid.getUnlocalizedName()+".name", aLocalized==null?aName:aLocalized);
 			
 			for (Set<String> tSet : aFluidList) tSet.add(aName);
 			

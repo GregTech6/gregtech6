@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,11 +62,11 @@ public abstract class BlockBase extends Block implements IBlockBase {
 		setBlockName(mNameInternal = aNameInternal);
 		setCreativeTab(CreativeTabs.tabBlock);
 		ST.register(this, mNameInternal, aItemClass);
-		LH.add(mNameInternal+"."+W+".name", "Any Sub-Block of this one");
+		LH.add(mNameInternal+"."+W, "Any Sub-Block of this one");
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
-	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
+	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal);}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public boolean canSilkHarvest() {return canSilkHarvest((byte)0);}

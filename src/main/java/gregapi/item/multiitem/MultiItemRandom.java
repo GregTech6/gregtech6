@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -148,7 +148,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 			if (UT.Code.stringValid(aEnglish)) {
 				mEnabledItems.set(aID);
 				mVisibleItems.set(aID);
-				LH.add(getUnlocalizedName(aStack) + ".name", aEnglish);
+				LH.add(getUnlocalizedName(aStack), aEnglish);
 				LH.add(getUnlocalizedName(aStack) + ".tooltip", aToolTip);
 			}
 			List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();

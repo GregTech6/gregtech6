@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,9 @@
 
 package gregtech.blocks.plants;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseFlower;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -46,17 +36,21 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	public BlockFlowersB(String aUnlocalised) {
 		super(null, aUnlocalised, 8, Textures.BlockIcons.FLOWERS_B);
-		LH.add(getUnlocalizedName()+ ".0.name", "Artemisia Tridentata"); // Gold, Antimony, Arsenic
-		LH.add(getUnlocalizedName()+ ".1.name", "Atriplex Canescens"); // Gold, Antimony, Arsenic
-		LH.add(getUnlocalizedName()+ ".2.name", "Desert Trumpet"); // Gold, color might vary depending on other Minerals close by
-		LH.add(getUnlocalizedName()+ ".3.name", "Becium Homblei"); // Copper, Nickel
-		LH.add(getUnlocalizedName()+ ".4.name", "Prince's Plume"); // Selenium
-		LH.add(getUnlocalizedName()+ ".5.name", "Thompsons Locoweed"); // Uranium
-		LH.add(getUnlocalizedName()+ ".6.name", "Pandanus Candelabrum"); // Diamond
-		LH.add(getUnlocalizedName()+ ".7.name", "Tungstus"); // Tungsten
+		LH.add(getUnlocalizedName()+ ".0", "Artemisia Tridentata"); // Gold, Antimony, Arsenic
+		LH.add(getUnlocalizedName()+ ".1", "Atriplex Canescens"); // Gold, Antimony, Arsenic
+		LH.add(getUnlocalizedName()+ ".2", "Desert Trumpet"); // Gold, color might vary depending on other Minerals close by
+		LH.add(getUnlocalizedName()+ ".3", "Becium Homblei"); // Copper, Nickel
+		LH.add(getUnlocalizedName()+ ".4", "Prince's Plume"); // Selenium
+		LH.add(getUnlocalizedName()+ ".5", "Thompsons Locoweed"); // Uranium
+		LH.add(getUnlocalizedName()+ ".6", "Pandanus Candelabrum"); // Diamond
+		LH.add(getUnlocalizedName()+ ".7", "Tungstus"); // Tungsten
 		
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);

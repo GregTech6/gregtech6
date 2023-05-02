@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.blocks.tool;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.damage.DamageSources;
 import gregapi.data.LH;
@@ -37,25 +33,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.TFC_DAMAGE_MULTIPLIER;
+
 public class BlockSpikeSuper extends BlockBaseSpike {
 	public BlockSpikeSuper(String aNameInternal) {
 		super(aNameInternal, MT.TungstenSteel, MT.Ad);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Tungstensteel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Tungstensteel Block Spike");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Falling Tungstensteel Spike Block");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".10.name", "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".11.name", "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".12.name", "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".13.name", "Adamantium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".14.name", "Adamantium Block Spike");
-		LH.add(getUnlocalizedName()+ ".15.name", "Falling Adamantium Spike Block");
+		LH.add(getUnlocalizedName()+ ".0", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".1", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".2", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".3", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".4", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".5", "Tungstensteel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".6", "Tungstensteel Block Spike");
+		LH.add(getUnlocalizedName()+ ".7", "Falling Tungstensteel Spike Block");
+		LH.add(getUnlocalizedName()+ ".8", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+ ".9", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+".10", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+".11", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+".12", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+".13", "Adamantium Wall Spike");
+		LH.add(getUnlocalizedName()+".14", "Adamantium Block Spike");
+		LH.add(getUnlocalizedName()+".15", "Falling Adamantium Spike Block");
 	}
 	
 	@Override

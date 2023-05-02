@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,7 +51,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 		setMaxDamage(100);
 		setNoRepair();
 		setUnlocalizedName(aUnlocalized);
-		LH.add(getUnlocalizedName() + ".name", aEnglish);
+		LH.add(getUnlocalizedName(), aEnglish);
 		mCharge = Math.max(1, aCharge);
 		mTransfer = Math.max(1, aTransfer);
 		mTier = Math.max(1, aTier);

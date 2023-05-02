@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,22 +32,22 @@ import net.minecraft.world.IBlockAccess;
 public class BlockBarsAdamantium extends BlockBaseBars {
 	public BlockBarsAdamantium(String aNameInternal) {
 		super(aNameInternal, MT.Ad, Material.iron, Block.soundTypeMetal);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".10.name", "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".11.name", "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".12.name", "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".13.name", "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".14.name", "Adamantium Bars");
-		LH.add(getUnlocalizedName()+ ".15.name", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".0" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".1" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".2" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".3" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".4" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".5" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".6" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".7" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".8" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".9" , "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".10", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".11", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".12", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".13", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".14", "Adamantium Bars");
+		LH.add(getUnlocalizedName()+ ".15", "Adamantium Bars");
 	}
 	
 	@Override public float getExplosionResistance(byte aMeta) {return 100;}
