@@ -68,32 +68,30 @@ public class LanguageHandler {
 		if (aKey == null) return;
 		aKey = aKey.trim();
 		if (aKey.length() <= 0) return;
+		boolean tSave = F;
 		BACKUPMAP.put(aKey, aEnglish);
 		if (sLangFile == null) {
 			BUFFERMAP.put(aKey, aEnglish);
 		} else {
 			if (!BUFFERMAP.isEmpty()) {
+				tSave = T;
 				for (Entry<String, String> tEntry : BUFFERMAP.entrySet()) {
-					String tKeyName = tEntry.getKey()+".name";
-					sLangFile.renameProperty("LanguageFile", tKeyName, tEntry.getKey());
 					Property tProperty = sLangFile.get("LanguageFile", tEntry.getKey(), tEntry.getValue());
-					TEMPMAP.put(tEntry.getKey(), sUseFile?tProperty.getString():tEntry.getValue());
-					TEMPMAP.put(tKeyName       , sUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tEntry.getKey()        , sUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tEntry.getKey()+".name", sUseFile?tProperty.getString():tEntry.getValue());
 					LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 					TEMPMAP.clear();
 				}
-				if (mWritingEnabled) sLangFile.save();
 				BUFFERMAP.clear();
 			}
-			String aKeyName = aKey+".name";
-			sLangFile.renameProperty("LanguageFile", aKeyName, aKey);
 			Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
-			if (!tProperty.wasRead() && mWritingEnabled) sLangFile.save();
-			TEMPMAP.put(aKey    , sUseFile?tProperty.getString():aEnglish);
-			TEMPMAP.put(aKeyName, sUseFile?tProperty.getString():aEnglish);
+			tSave |= tProperty.wasRead();
+			TEMPMAP.put(aKey        , sUseFile?tProperty.getString():aEnglish);
+			TEMPMAP.put(aKey+".name", sUseFile?tProperty.getString():aEnglish);
 			LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 			TEMPMAP.clear();
 		}
+		if (tSave && mWritingEnabled) sLangFile.save();
 	}
 	
 	public static String get(String aKey, String aDefault) {
