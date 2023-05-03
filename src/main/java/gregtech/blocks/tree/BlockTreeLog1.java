@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.blocks.tree;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
 import gregapi.block.tree.BlockBaseBeamFlammable;
@@ -40,29 +36,33 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class BlockTreeLog1 extends BlockBaseBeamFlammable implements IBlockToolable {
 	public BlockTreeLog1(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_1);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Dead Log");
-		LH.add(getUnlocalizedName()+ ".4.name", "Dead Log");
-		LH.add(getUnlocalizedName()+ ".8.name", "Dead Log");
-		LH.add(getUnlocalizedName()+".12.name", "Dead Log");
+		LH.add(getUnlocalizedName()+ ".0", "Dead Log");
+		LH.add(getUnlocalizedName()+ ".4", "Dead Log");
+		LH.add(getUnlocalizedName()+ ".8", "Dead Log");
+		LH.add(getUnlocalizedName()+".12", "Dead Log");
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Rotten Log");
-		LH.add(getUnlocalizedName()+ ".5.name", "Rotten Log");
-		LH.add(getUnlocalizedName()+ ".9.name", "Rotten Log");
-		LH.add(getUnlocalizedName()+".13.name", "Rotten Log");
+		LH.add(getUnlocalizedName()+ ".1", "Rotten Log");
+		LH.add(getUnlocalizedName()+ ".5", "Rotten Log");
+		LH.add(getUnlocalizedName()+ ".9", "Rotten Log");
+		LH.add(getUnlocalizedName()+".13", "Rotten Log");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Mossy Log");
-		LH.add(getUnlocalizedName()+ ".6.name", "Mossy Log");
-		LH.add(getUnlocalizedName()+".10.name", "Mossy Log");
-		LH.add(getUnlocalizedName()+".14.name", "Mossy Log");
+		LH.add(getUnlocalizedName()+ ".2", "Mossy Log");
+		LH.add(getUnlocalizedName()+ ".6", "Mossy Log");
+		LH.add(getUnlocalizedName()+".10", "Mossy Log");
+		LH.add(getUnlocalizedName()+".14", "Mossy Log");
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Frozen Log");
-		LH.add(getUnlocalizedName()+ ".7.name", "Frozen Log");
-		LH.add(getUnlocalizedName()+".11.name", "Frozen Log");
-		LH.add(getUnlocalizedName()+".15.name", "Frozen Log");
+		LH.add(getUnlocalizedName()+ ".3", "Frozen Log");
+		LH.add(getUnlocalizedName()+ ".7", "Frozen Log");
+		LH.add(getUnlocalizedName()+".11", "Frozen Log");
+		LH.add(getUnlocalizedName()+".15", "Frozen Log");
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.blocks.tool;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseSpike;
 import gregapi.damage.DamageSources;
 import gregapi.data.ANY;
@@ -40,25 +36,29 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.TFC_DAMAGE_MULTIPLIER;
+
 public class BlockSpikeMetal extends BlockBaseSpike {
 	public BlockSpikeMetal(String aNameInternal) {
 		super(aNameInternal, ANY.Cu, MT.Pb);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Copper Wall Spike");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Copper Block Spike");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Falling Copper Spike Block");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".10.name", "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".11.name", "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".12.name", "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".13.name", "Lead Wall Spike");
-		LH.add(getUnlocalizedName()+ ".14.name", "Lead Block Spike");
-		LH.add(getUnlocalizedName()+ ".15.name", "Falling Lead Spike Block");
+		LH.add(getUnlocalizedName()+ ".0" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".1" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".2" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".3" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".4" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".5" , "Copper Wall Spike");
+		LH.add(getUnlocalizedName()+ ".6" , "Copper Block Spike");
+		LH.add(getUnlocalizedName()+ ".7" , "Falling Copper Spike Block");
+		LH.add(getUnlocalizedName()+ ".8" , "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".9" , "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".10", "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".11", "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".12", "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".13", "Lead Wall Spike");
+		LH.add(getUnlocalizedName()+ ".14", "Lead Block Spike");
+		LH.add(getUnlocalizedName()+ ".15", "Falling Lead Spike Block");
 	}
 	
 	@Override

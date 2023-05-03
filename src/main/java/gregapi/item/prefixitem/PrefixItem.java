@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,12 @@
 
 package gregapi.item.prefixitem;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ModData;
-import gregapi.data.ANY;
-import gregapi.data.LH;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.TD;
-import gregapi.item.CreativeTab;
-import gregapi.item.IItemGT;
-import gregapi.item.IItemNoGTOverride;
-import gregapi.item.IItemUpdatable;
-import gregapi.item.IPrefixItem;
+import gregapi.data.*;
+import gregapi.item.*;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -51,7 +39,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -89,8 +82,8 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		GameRegistry.registerItem(this, mNameInternal, aModIDOwner);
 		
 		mPrefix.addTextureSet(aModIDTextures, T);
-		LH.add("oredict." + mPrefix.dat(MT.Empty).toString() + ".name", getLocalName(mPrefix, MT.Empty));
-		LH.add(mNameInternal+"."+W+".name", "Any Sub-Item of this one"); // Local Name for the WildcardItem Variant.
+		LH.add("oredict." + mPrefix.dat(MT.Empty).toString(), getLocalName(mPrefix, MT.Empty));
+		LH.add(mNameInternal+"."+W, "Any Sub-Item of this one"); // Local Name for the WildcardItem Variant.
 		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
 		if (SHOW_HIDDEN_PREFIXES || !mPrefix.contains(TD.Creative.HIDDEN)) {
@@ -110,7 +103,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		boolean tUnificationAllowed = (mPrefix.contains(TD.Prefix.UNIFICATABLE) && !mPrefix.contains(TD.Prefix.UNIFICATABLE_RECIPES));
 		for (short i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) {
 			ItemStack tStack = ST.update_(ST.make(this, 1, i));
-			LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString() + ".name", getLocalName(mPrefix, mMaterialList[i]));
+			LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString(), getLocalName(mPrefix, mMaterialList[i]));
 			if (tUnificationAllowed) OreDictManager.INSTANCE.addTarget_(mPrefix, mMaterialList[i], tStack); else OreDictManager.INSTANCE.registerOre_(mPrefix, mMaterialList[i], tStack);
 		}
 	}
@@ -199,6 +192,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public String toString() {return mNameInternal;}
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
+	@Override public String getItemStackDisplayName(ItemStack aStack) {return StatCollector.translateToLocal(getUnlocalizedName(aStack));}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}

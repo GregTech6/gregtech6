@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,7 +41,7 @@ public class BlockLongDistWire extends BlockBaseMachineUpdate {
 	public BlockLongDistWire(String aUnlocalised, IIconContainer[] aIcons, byte[] aTiers) {
 		super(null, aUnlocalised, Material.iron, soundTypeCloth, 16, aIcons, ~0);
 		mTiers = aTiers;
-		for (byte i = 0; i < 16; i++) LH.add(aUnlocalised+"."+i+".name" , "Long Distance Electric Wire ("+VN[mTiers[i]]+")");
+		for (byte i = 0; i < 16; i++) LH.add(aUnlocalised+"."+i, "Long Distance Electric Wire ("+VN[mTiers[i]]+")");
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,22 +39,22 @@ import net.minecraft.world.World;
 public class BlockTreePlanks extends BlockBasePlanksFlammable {
 	public BlockTreePlanks(String aName) {
 		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", ANY.Wood, 1, 1, 0, 16, Textures.BlockIcons.PLANKS);
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubberwood Planks");
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Planks");
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Planks");
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Planks");
-		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Planks");
-		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Planks");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Planks");
-		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Planks");
-		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Planks");
-		LH.add(getUnlocalizedName()+ ".9.name", "Wood Planks");
-		LH.add(getUnlocalizedName()+".10.name", "Treated Planks");
-		LH.add(getUnlocalizedName()+".11.name", "Crate");
-		LH.add(getUnlocalizedName()+".12.name", "Dead Planks");
-		LH.add(getUnlocalizedName()+".13.name", "Rotten Planks");
-		LH.add(getUnlocalizedName()+".14.name", "Mossy Planks");
-		LH.add(getUnlocalizedName()+".15.name", "Frozen Planks");
+		LH.add(getUnlocalizedName()+ ".0", "Rubberwood Planks");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Planks");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Planks");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Planks");
+		LH.add(getUnlocalizedName()+ ".4", "Hazel Planks");
+		LH.add(getUnlocalizedName()+ ".5", "Cinnamon Planks");
+		LH.add(getUnlocalizedName()+ ".6", "Coconut Planks");
+		LH.add(getUnlocalizedName()+ ".7", "Rainbowood Planks");
+		LH.add(getUnlocalizedName()+ ".8", "Compressed Wood Planks");
+		LH.add(getUnlocalizedName()+ ".9", "Wood Planks");
+		LH.add(getUnlocalizedName()+".10", "Treated Planks");
+		LH.add(getUnlocalizedName()+".11", "Crate");
+		LH.add(getUnlocalizedName()+".12", "Dead Planks");
+		LH.add(getUnlocalizedName()+".13", "Rotten Planks");
+		LH.add(getUnlocalizedName()+".14", "Mossy Planks");
+		LH.add(getUnlocalizedName()+".15", "Frozen Planks");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			if (i != 10) OM.reg(ST.make(this, 1, i), OD.plankWood);
@@ -69,22 +69,22 @@ public class BlockTreePlanks extends BlockBasePlanksFlammable {
 	
 	protected BlockTreePlanks(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubberwood Slab");
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Slab");
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Slab");
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Slab");
-		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Slab");
-		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Slab");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Slab");
-		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Slab");
-		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Slab");
-		LH.add(getUnlocalizedName()+ ".9.name", "Wood Slab");
-		LH.add(getUnlocalizedName()+".10.name", "Treated Slab");
-		LH.add(getUnlocalizedName()+".11.name", "Crate Slab");
-		LH.add(getUnlocalizedName()+".12.name", "Dead Slab");
-		LH.add(getUnlocalizedName()+".13.name", "Rotten Slab");
-		LH.add(getUnlocalizedName()+".14.name", "Mossy Slab");
-		LH.add(getUnlocalizedName()+".15.name", "Frozen Slab");
+		LH.add(getUnlocalizedName()+ ".0", "Rubberwood Slab");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Slab");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Slab");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Slab");
+		LH.add(getUnlocalizedName()+ ".4", "Hazel Slab");
+		LH.add(getUnlocalizedName()+ ".5", "Cinnamon Slab");
+		LH.add(getUnlocalizedName()+ ".6", "Coconut Slab");
+		LH.add(getUnlocalizedName()+ ".7", "Rainbowood Slab");
+		LH.add(getUnlocalizedName()+ ".8", "Compressed Wood Slab");
+		LH.add(getUnlocalizedName()+ ".9", "Wood Slab");
+		LH.add(getUnlocalizedName()+".10", "Treated Slab");
+		LH.add(getUnlocalizedName()+".11", "Crate Slab");
+		LH.add(getUnlocalizedName()+".12", "Dead Slab");
+		LH.add(getUnlocalizedName()+".13", "Rotten Slab");
+		LH.add(getUnlocalizedName()+".14", "Mossy Slab");
+		LH.add(getUnlocalizedName()+".15", "Frozen Slab");
 	}
 	
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return (aWorld.getBlockMetadata(aX, aY, aZ) < 12 ? 1.0F : 0.5F) * super.getBlockHardness(aWorld, aX, aY, aZ);}

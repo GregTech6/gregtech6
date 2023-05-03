@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,22 +41,22 @@ import net.minecraft.world.World;
 public class BlockSpikeSharp extends BlockBaseSpike {
 	public BlockSpikeSharp(String aNameInternal) {
 		super(aNameInternal, ANY.Steel, MT.Ti);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Steel Wall Spike");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Steel Block Spike");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Falling Steel Spike Block");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".10.name", "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".11.name", "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".12.name", "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".13.name", "Titanium Wall Spike");
-		LH.add(getUnlocalizedName()+ ".14.name", "Titanium Block Spike");
-		LH.add(getUnlocalizedName()+ ".15.name", "Falling Titanium Spike Block");
+		LH.add(getUnlocalizedName()+ ".0", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".1", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".2", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".3", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".4", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".5", "Steel Wall Spike");
+		LH.add(getUnlocalizedName()+ ".6", "Steel Block Spike");
+		LH.add(getUnlocalizedName()+ ".7", "Falling Steel Spike Block");
+		LH.add(getUnlocalizedName()+ ".8", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+ ".9", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+".10", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+".11", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+".12", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+".13", "Titanium Wall Spike");
+		LH.add(getUnlocalizedName()+".14", "Titanium Block Spike");
+		LH.add(getUnlocalizedName()+".15", "Falling Titanium Spike Block");
 	}
 	
 	@Override

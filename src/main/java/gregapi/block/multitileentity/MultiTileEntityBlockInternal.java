@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -82,7 +82,7 @@ public class MultiTileEntityBlockInternal extends Block implements IBlock, IItem
 	@Override public final int getRenderType() {return RendererBlockTextured.INSTANCE==null?super.getRenderType():RendererBlockTextured.INSTANCE.mRenderID;}
 	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mMultiTileEntityRegistry.mNameInternal;}
-	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mMultiTileEntityRegistry.mNameInternal + ".name");}
+	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mMultiTileEntityRegistry.mNameInternal);}
 	
 	@Override
 	public boolean placeBlock(World aWorld, int aX, int aY, int aZ, byte aSide, short aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {

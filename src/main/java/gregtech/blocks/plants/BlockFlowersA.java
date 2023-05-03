@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregtech.blocks.plants;
 
 import gregapi.block.misc.BlockBaseFlower;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -39,15 +38,15 @@ import static gregapi.data.CS.*;
 public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public BlockFlowersA(String aUnlocalised) {
 		super(null, aUnlocalised, 9, Textures.BlockIcons.FLOWERS_A);
-		LH.add(getUnlocalizedName()+ ".0.name", "Altered Andesite Buckwheat"); // Gold, Silver
-		LH.add(getUnlocalizedName()+ ".1.name", "Crosby Buckwheat"); // Gold, Silver, Sulfur
-		LH.add(getUnlocalizedName()+ ".2.name", "Alpine Catchfly"); // Copper
-		LH.add(getUnlocalizedName()+ ".3.name", "Viola Calaminaria"); // Zinc and heavy Metals
-		LH.add(getUnlocalizedName()+ ".4.name", "Thlaspi Lereschianum"); // Nickel and Zinc
-		LH.add(getUnlocalizedName()+ ".5.name", "Tufted Evening Primrose"); // Uranium
-		LH.add(getUnlocalizedName()+ ".6.name", "Narcissus Sheldonia"); // Cooperite
-		LH.add(getUnlocalizedName()+ ".7.name", "Orechid"); // Any Random Ore that doesn't have a specific Flower
-		LH.add(getUnlocalizedName()+ ".8.name", "Hexalily"); // Hexorium
+		LH.add(getUnlocalizedName()+ ".0", "Altered Andesite Buckwheat"); // Gold, Silver
+		LH.add(getUnlocalizedName()+ ".1", "Crosby Buckwheat"); // Gold, Silver, Sulfur
+		LH.add(getUnlocalizedName()+ ".2", "Alpine Catchfly"); // Copper
+		LH.add(getUnlocalizedName()+ ".3", "Viola Calaminaria"); // Zinc and heavy Metals
+		LH.add(getUnlocalizedName()+ ".4", "Thlaspi Lereschianum"); // Nickel and Zinc
+		LH.add(getUnlocalizedName()+ ".5", "Tufted Evening Primrose"); // Uranium
+		LH.add(getUnlocalizedName()+ ".6", "Narcissus Sheldonia"); // Cooperite
+		LH.add(getUnlocalizedName()+ ".7", "Orechid"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".8", "Hexalily"); // Hexorium
 		
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);

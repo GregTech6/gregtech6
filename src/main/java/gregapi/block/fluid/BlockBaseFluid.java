@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,17 @@
 
 package gregapi.block.fluid;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.GarbageGT;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.item.IItemGT;
+import gregapi.lang.LanguageHandler;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -55,6 +51,11 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -84,7 +85,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		ST.register(this, mNameInternal, ItemBlock.class);
 		FL.BLOCKS.put(mFluid.getName(), this);
 		displacements.put(this, F);
-		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
+		LanguageHandler.set(getLocalizedName(), getLocalizedName()); // WAILA is retarded...
 		// Speaking of retarded, only allowing one type of Block per Fluid is retarded too! So I guess I gotta override all pre-existing Fluids with my Version to make sure shit works.
 		UT.Reflection.setField(Fluid.class, aFluid, "block", this);
 	}

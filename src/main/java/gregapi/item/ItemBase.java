@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregapi.item;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,7 +39,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -61,7 +62,7 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 		if (GAPI.mStartedInit) throw new IllegalStateException("Items can only be initialised within preInit!");
 		mName = aUnlocalized;
 		mModID = aModID;
-		LH.add(mName + ".name", aEnglish);
+		LH.add(mName, aEnglish);
 		if (UT.Code.stringValid(aEnglishTooltip)) LH.add(mTooltip = mName + ".tooltip_main", aEnglishTooltip); else mTooltip = null;
 		ST.register(this, mName);
 		BlockDispenser.dispenseBehaviorRegistry.putObject(this, new GT_Item_Dispense());
@@ -110,7 +111,8 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
 	@Override public String toString() {return mName;}
 	@Override public final String getUnlocalizedName() {return mName;}
-	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+getDamage(aStack):mName;}
+	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+ST.meta_(aStack):mName;}
+	@Override public String getItemStackDisplayName(ItemStack aStack) {return StatCollector.translateToLocal(getUnlocalizedName(aStack));}
 	@Override public final boolean getShareTag() {return T;} // just to be sure.
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aIconRegister) {mIcon = aIconRegister.registerIcon(mModID + ":" + mName);}
 	@Override public IIcon getIconFromDamage(int aMeta) {return mIcon;}

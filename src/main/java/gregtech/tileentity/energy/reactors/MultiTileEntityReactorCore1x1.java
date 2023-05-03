@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,23 +19,13 @@
 
 package gregtech.tileentity.energy.reactors;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -46,7 +36,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -92,9 +85,9 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 
 			// TODO Raycasting through Lead, Water and similar Blocks.
 			if (tCalc > 0 && SERVER_TIME % 20 == 10) {
-				for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
-					int tStrength = UT.Code.bindInt((long)(tCalc - tEntity.getDistance(xCoord, yCoord, zCoord)));
-					if (tStrength > 0) UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
+				for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
+					int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
+					if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 				}
 			}
 
@@ -178,8 +171,9 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 					slotKill(0);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
-					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
-						UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), (int)tCalc);
+					for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
+						int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
+						if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,22 +28,22 @@ import net.minecraft.block.material.Material;
 public class BlockBarsBrass extends BlockBaseBars {
 	public BlockBarsBrass(String aNameInternal) {
 		super(aNameInternal, MT.Brass, Material.iron, Block.soundTypeMetal);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".10.name", "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".11.name", "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".12.name", "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".13.name", "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".14.name", "Brass Bars");
-		LH.add(getUnlocalizedName()+ ".15.name", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".0", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".1", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".2", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".3", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".4", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".5", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".6", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".7", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".8", "Brass Bars");
+		LH.add(getUnlocalizedName()+ ".9", "Brass Bars");
+		LH.add(getUnlocalizedName()+".10", "Brass Bars");
+		LH.add(getUnlocalizedName()+".11", "Brass Bars");
+		LH.add(getUnlocalizedName()+".12", "Brass Bars");
+		LH.add(getUnlocalizedName()+".13", "Brass Bars");
+		LH.add(getUnlocalizedName()+".14", "Brass Bars");
+		LH.add(getUnlocalizedName()+".15", "Brass Bars");
 	}
 	
 	@Override public float getExplosionResistance(byte aMeta) {return 5;}

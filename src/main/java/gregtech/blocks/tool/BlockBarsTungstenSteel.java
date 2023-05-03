@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,22 +32,22 @@ import net.minecraft.world.IBlockAccess;
 public class BlockBarsTungstenSteel extends BlockBaseBars {
 	public BlockBarsTungstenSteel(String aNameInternal) {
 		super(aNameInternal, MT.TungstenSteel, Material.iron, Block.soundTypeMetal);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".10.name", "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".11.name", "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".12.name", "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".13.name", "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".14.name", "Tungstensteel Bars");
-		LH.add(getUnlocalizedName()+ ".15.name", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".0", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".1", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".2", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".3", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".4", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".5", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".6", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".7", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".8", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+ ".9", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".10", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".11", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".12", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".13", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".14", "Tungstensteel Bars");
+		LH.add(getUnlocalizedName()+".15", "Tungstensteel Bars");
 	}
 	
 	@Override public float getExplosionResistance(byte aMeta) {return 16;}

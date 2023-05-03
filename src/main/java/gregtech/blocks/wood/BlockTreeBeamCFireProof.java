@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -34,25 +34,25 @@ public class BlockTreeBeamCFireProof extends BlockBaseBeam {
 	public BlockTreeBeamCFireProof(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 1, Textures.BlockIcons.BEAMS_C);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Blue Spruce Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Blue Spruce Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Blue Spruce Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".4", "Blue Spruce Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".8", "Blue Spruce Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".12", "Blue Spruce Beam (Fireproof)");
 		
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".13.name", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".1", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".5", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".9", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".13", " Beam (Fireproof)");
 		
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".10.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".14.name", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".2", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".6", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".10", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".14", " Beam (Fireproof)");
 		
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".11.name", " Beam (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".15.name", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".3", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".7", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".11", " Beam (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".15", " Beam (Fireproof)");
 	}
 	
 	@Override

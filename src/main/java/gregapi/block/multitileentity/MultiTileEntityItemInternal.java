@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.block.multitileentity;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,18 +27,10 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.TD;
-import gregapi.item.CreativeTab;
-import gregapi.item.IItemColorableRGB;
-import gregapi.item.IItemEnergy;
-import gregapi.item.IItemGT;
-import gregapi.item.IItemNoGTOverride;
-import gregapi.item.IItemReactorRod;
-import gregapi.item.IItemRottable;
-import gregapi.item.IItemUpdatable;
+import gregapi.item.*;
 import gregapi.oredict.IOreDictItemDataOverrideItem;
 import gregapi.oredict.OreDictItemData;
 import gregapi.render.BlockTextureCopied;
@@ -76,11 +62,18 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import vazkii.botania.api.item.IFlowerPlaceable;
 import vazkii.botania.api.subtile.SubTileEntity;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -106,7 +99,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	public String getItemStackDisplayName(ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IMTE_GetItemName) return ((IMTE_GetItemName)tTileEntityContainer.mTileEntity).getItemName(aStack, super.getItemStackDisplayName(aStack));
-		return super.getItemStackDisplayName(aStack);
+		return StatCollector.translateToLocal(getUnlocalizedName(aStack));
 	}
 	
 	@Override

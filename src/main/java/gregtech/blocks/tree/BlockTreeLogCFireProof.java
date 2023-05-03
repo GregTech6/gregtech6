@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,10 @@
 
 package gregtech.blocks.tree;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
 import gregapi.block.tree.BlockBaseLog;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -42,41 +38,45 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class BlockTreeLogCFireProof extends BlockBaseLog implements IBlockToolable {
 	public BlockTreeLogCFireProof(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 1, Textures.BlockIcons.LOGS_C);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Blue Spruce Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Blue Spruce Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Blue Spruce Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".4", "Blue Spruce Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".8", "Blue Spruce Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".12", "Blue Spruce Log (Fireproof)");
 		OM.reg(ST.make(this, 1, 0), OD.logWood);
 		OM.reg(ST.make(this, 1, 4), OD.logWood);
 		OM.reg(ST.make(this, 1, 8), OD.logWood);
 		OM.reg(ST.make(this, 1,12), OD.logWood);
 		
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".13.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".1", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".5", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".9", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".13", " Log (Fireproof)");
 	//  OM.reg(ST.make(this, 1, 1), OD.logWood);
 	//  OM.reg(ST.make(this, 1, 5), OD.logWood);
 	//  OM.reg(ST.make(this, 1, 9), OD.logWood);
 	//  OM.reg(ST.make(this, 1,13), OD.logWood);
 		
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".10.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".14.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".2", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".6", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".10", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".14", " Log (Fireproof)");
 	//  OM.reg(ST.make(this, 1, 2), OD.logWood);
 	//  OM.reg(ST.make(this, 1, 6), OD.logWood);
 	//  OM.reg(ST.make(this, 1,10), OD.logWood);
 	//  OM.reg(ST.make(this, 1,14), OD.logWood);
 		
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".11.name", " Log (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".15.name", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".3", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".7", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".11", " Log (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".15", " Log (Fireproof)");
 	//  OM.reg(ST.make(this, 1, 3), OD.logWood);
 	//  OM.reg(ST.make(this, 1, 7), OD.logWood);
 	//  OM.reg(ST.make(this, 1,11), OD.logWood);

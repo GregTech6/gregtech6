@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,22 +44,22 @@ import net.minecraft.world.World;
 public class BlockTreeLeavesAB extends BlockBaseLeaves implements Runnable {
 	public BlockTreeLeavesAB(String aUnlocalised, Block aSaplings) {
 		super(null, aUnlocalised, Material.leaves, soundTypeGrass, 8, Textures.BlockIcons.LEAVES_AB, aSaplings, new Block[] {BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB}, new byte[] {0, 1, 2, 3, 0, 1, 2, 3});
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Leaves");
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Leaves");
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Leaves");
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Leaves");
-		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Leaves");
-		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Leaves");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Leaves");
-		LH.add(getUnlocalizedName()+ ".7.name", "Rainbow Leaves");
-		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Leaves");
-		LH.add(getUnlocalizedName()+ ".9.name", "Maple Leaves");
-		LH.add(getUnlocalizedName()+".10.name", "Willow Leaves");
-		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Leaves");
-		LH.add(getUnlocalizedName()+".12.name", "Hazel Leaves");
-		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Leaves");
-		LH.add(getUnlocalizedName()+".14.name", "Coconut Leaves");
-		LH.add(getUnlocalizedName()+".15.name", "Rainbow Leaves");
+		LH.add(getUnlocalizedName()+ ".0", "Rubber Leaves");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Leaves");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Leaves");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Leaves");
+		LH.add(getUnlocalizedName()+ ".4", "Hazel Leaves");
+		LH.add(getUnlocalizedName()+ ".5", "Cinnamon Leaves");
+		LH.add(getUnlocalizedName()+ ".6", "Coconut Leaves");
+		LH.add(getUnlocalizedName()+ ".7", "Rainbow Leaves");
+		LH.add(getUnlocalizedName()+ ".8", "Rubber Leaves");
+		LH.add(getUnlocalizedName()+ ".9", "Maple Leaves");
+		LH.add(getUnlocalizedName()+".10", "Willow Leaves");
+		LH.add(getUnlocalizedName()+".11", "Blue Mahoe Leaves");
+		LH.add(getUnlocalizedName()+".12", "Hazel Leaves");
+		LH.add(getUnlocalizedName()+".13", "Cinnamon Leaves");
+		LH.add(getUnlocalizedName()+".14", "Coconut Leaves");
+		LH.add(getUnlocalizedName()+".15", "Rainbow Leaves");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OP.treeLeaves);

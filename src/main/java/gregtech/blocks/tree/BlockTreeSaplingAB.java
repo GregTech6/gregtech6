@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -43,22 +43,22 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class BlockTreeSaplingAB extends BlockBaseSapling {
 	public BlockTreeSaplingAB(String aUnlocalised) {
 		super(null, aUnlocalised, Material.plants, soundTypeGrass, 8, Textures.BlockIcons.SAPLINGS_AB);
-		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Sapling");
-		LH.add(getUnlocalizedName()+ ".1.name", "Maple Sapling");
-		LH.add(getUnlocalizedName()+ ".2.name", "Willow Sapling");
-		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Sapling");
-		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Sapling");
-		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Sapling");
-		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Sapling");
-		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Sapling");
-		LH.add(getUnlocalizedName()+ ".9.name", "Maple Sapling");
-		LH.add(getUnlocalizedName()+".10.name", "Willow Sapling");
-		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Sapling");
-		LH.add(getUnlocalizedName()+".12.name", "Hazel Sapling");
-		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+".14.name", "Coconut Sapling");
-		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Sapling");
+		LH.add(getUnlocalizedName()+ ".0", "Rubber Sapling");
+		LH.add(getUnlocalizedName()+ ".1", "Maple Sapling");
+		LH.add(getUnlocalizedName()+ ".2", "Willow Sapling");
+		LH.add(getUnlocalizedName()+ ".3", "Blue Mahoe Sapling");
+		LH.add(getUnlocalizedName()+ ".4", "Hazel Sapling");
+		LH.add(getUnlocalizedName()+ ".5", "Cinnamon Sapling");
+		LH.add(getUnlocalizedName()+ ".6", "Coconut Sapling");
+		LH.add(getUnlocalizedName()+ ".7", "Rainbowood Sapling");
+		LH.add(getUnlocalizedName()+ ".8", "Rubber Sapling");
+		LH.add(getUnlocalizedName()+ ".9", "Maple Sapling");
+		LH.add(getUnlocalizedName()+".10", "Willow Sapling");
+		LH.add(getUnlocalizedName()+".11", "Blue Mahoe Sapling");
+		LH.add(getUnlocalizedName()+".12", "Hazel Sapling");
+		LH.add(getUnlocalizedName()+".13", "Cinnamon Sapling");
+		LH.add(getUnlocalizedName()+".14", "Coconut Sapling");
+		LH.add(getUnlocalizedName()+".15", "Rainbowood Sapling");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OP.treeSapling);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,22 +45,22 @@ import net.minecraft.world.World;
 public class BlockSpikeFancy extends BlockBaseSpike {
 	public BlockSpikeFancy(String aNameInternal) {
 		super(aNameInternal, MT.Au, MT.Ag);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Gold Wall Spike");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Gold Block Spike");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Falling Gold Spike Block");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".10.name", "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".11.name", "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".12.name", "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".13.name", "Silver Wall Spike");
-		LH.add(getUnlocalizedName()+ ".14.name", "Silver Block Spike");
-		LH.add(getUnlocalizedName()+ ".15.name", "Falling Silver Spike Block");
+		LH.add(getUnlocalizedName()+ ".0", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".1", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".2", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".3", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".4", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".5", "Gold Wall Spike");
+		LH.add(getUnlocalizedName()+ ".6", "Gold Block Spike");
+		LH.add(getUnlocalizedName()+ ".7", "Falling Gold Spike Block");
+		LH.add(getUnlocalizedName()+ ".8", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+ ".9", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+".10", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+".11", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+".12", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+".13", "Silver Wall Spike");
+		LH.add(getUnlocalizedName()+".14", "Silver Block Spike");
+		LH.add(getUnlocalizedName()+".15", "Falling Silver Spike Block");
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,22 +42,22 @@ import net.minecraft.item.ItemStack;
 public class BlockTreePlanks2FireProof extends BlockBasePlanks {
 	public BlockTreePlanks2FireProof(String aName) {
 		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", ANY.Wood, 1, 1, 0, 1, Textures.BlockIcons.PLANKS_2);
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".4.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".8.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".10.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".11.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".12.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".13.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".14.name", " Planks (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".15.name", " Planks (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".1", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".2", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".3", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".4", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".5", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".6", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".7", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".8", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".9", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".10", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".11", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".12", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".13", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".14", " Planks (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".15", " Planks (Fireproof)");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OD.plankWood);
@@ -72,22 +72,22 @@ public class BlockTreePlanks2FireProof extends BlockBasePlanks {
 	
 	protected BlockTreePlanks2FireProof(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".4.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".8.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".10.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".11.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".12.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".13.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".14.name", " Slab (Fireproof)");
-	//  LH.add(getUnlocalizedName()+".15.name", " Slab (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".1", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".2", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".3", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".4", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".5", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".6", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".7", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".8", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+ ".9", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".10", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".11", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".12", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".13", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".14", " Slab (Fireproof)");
+	//  LH.add(getUnlocalizedName()+".15", " Slab (Fireproof)");
 	}
 	
 	@Override

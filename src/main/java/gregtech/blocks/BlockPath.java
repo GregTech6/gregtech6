@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -47,22 +47,22 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	public BlockPath(String aUnlocalised) {
 		super(null, aUnlocalised, Material.grass, soundTypeGrass, 12, Textures.BlockIcons.DIRTS);
 		setCreativeTab(CreativeTabs.tabTransport);
-		LH.add(getUnlocalizedName()+  ".0.name", "Path");
-		LH.add(getUnlocalizedName()+  ".1.name", "Aether Path");
-		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Path");
-		LH.add(getUnlocalizedName()+  ".3.name", "Sandy Path");
-		LH.add(getUnlocalizedName()+  ".4.name", "Silty Path");
-		LH.add(getUnlocalizedName()+  ".5.name", "Alfisol Path");
-		LH.add(getUnlocalizedName()+  ".6.name", "Andisol Path");
-		LH.add(getUnlocalizedName()+  ".7.name", "Gelisol Path");
-		LH.add(getUnlocalizedName()+  ".8.name", "Histosol Path");
-		LH.add(getUnlocalizedName()+  ".9.name", "Inceptisol Path");
-		LH.add(getUnlocalizedName()+ ".10.name", "Mollisol Path");
-		LH.add(getUnlocalizedName()+ ".11.name", "Oxisol Path");
-		LH.add(getUnlocalizedName()+ ".12.name", "Path");
-		LH.add(getUnlocalizedName()+ ".13.name", "Path");
-		LH.add(getUnlocalizedName()+ ".14.name", "Path");
-		LH.add(getUnlocalizedName()+ ".15.name", "Path");
+		LH.add(getUnlocalizedName()+ ".0", "Path");
+		LH.add(getUnlocalizedName()+ ".1", "Aether Path");
+		LH.add(getUnlocalizedName()+ ".2", "Loamy Path");
+		LH.add(getUnlocalizedName()+ ".3", "Sandy Path");
+		LH.add(getUnlocalizedName()+ ".4", "Silty Path");
+		LH.add(getUnlocalizedName()+ ".5", "Alfisol Path");
+		LH.add(getUnlocalizedName()+ ".6", "Andisol Path");
+		LH.add(getUnlocalizedName()+ ".7", "Gelisol Path");
+		LH.add(getUnlocalizedName()+ ".8", "Histosol Path");
+		LH.add(getUnlocalizedName()+ ".9", "Inceptisol Path");
+		LH.add(getUnlocalizedName()+".10", "Mollisol Path");
+		LH.add(getUnlocalizedName()+".11", "Oxisol Path");
+		LH.add(getUnlocalizedName()+".12", "Path");
+		LH.add(getUnlocalizedName()+".13", "Path");
+		LH.add(getUnlocalizedName()+".14", "Path");
+		LH.add(getUnlocalizedName()+".15", "Path");
 		setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1);
 		
 		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, W));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -73,7 +73,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		setBlockName(mNameInternal = aNameInternal);
 		setCreativeTab(CreativeTabs.tabTransport);
 		ST.register(this, mNameInternal, aItemClass);
-		LH.add(mNameInternal+".name", aLocalName);
+		LH.add(mNameInternal, aLocalName);
 		mExplosionResistance = aExplosionResistance;
 		mHarvestLevel = aHarvestLevel;
 		mSpeed = aSpeed;
@@ -93,7 +93,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public String name(byte aMeta) {return mNameInternal;}
-	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
+	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal);}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.rail.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return mExplosionResistance;}
 	@Override public float getExplosionResistance(Entity aEntity) {return mExplosionResistance;}

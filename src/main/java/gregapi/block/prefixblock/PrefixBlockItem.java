@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,13 @@
 
 package gregapi.block.prefixblock;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import cpw.mods.fml.common.Optional;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.data.TD;
-import gregapi.item.CreativeTab;
-import gregapi.item.IItemGT;
-import gregapi.item.IItemNoGTOverride;
-import gregapi.item.IItemUpdatable;
-import gregapi.item.IPrefixItem;
+import gregapi.item.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -46,9 +37,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.botania.api.item.IFlowerPlaceable;
 import vazkii.botania.api.subtile.SubTileEntity;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -157,6 +153,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	@Optional.Method(modid = ModIDs.BOTA) @Override public void onBlockPlacedByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {/**/}
 	
 	@Override public final String getUnlocalizedName() {return mBlock.getUnlocalizedName();}
+	@Override public String getItemStackDisplayName(ItemStack aStack) {return StatCollector.translateToLocal(getUnlocalizedName(aStack));}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
 	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}

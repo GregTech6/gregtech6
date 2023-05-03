@@ -184,7 +184,7 @@ public class MultiTileEntityRegistry {
 			return null;
 		}
 		assert aClassContainer != null;
-		LH.add(mNameInternal+"."+aClassContainer.mID+".name", aLocalised);
+		LH.add(mNameInternal+"."+aClassContainer.mID, aLocalised);
 		mRegistry.put(aClassContainer.mID, aClassContainer);
 		mLastRegisteredID = aClassContainer.mID;
 		mRegistrations.add(aClassContainer);
@@ -235,7 +235,7 @@ public class MultiTileEntityRegistry {
 		return rStack;
 	}
 	
-	public String getLocal(int aID) {return LH.get(mNameInternal+"."+aID+".name");}
+	public String getLocal(int aID) {return LH.get(mNameInternal+"."+aID);}
 	
 	public MultiTileEntityClassContainer getClassContainer(int aID) {return mRegistry.get((short)aID);}
 	public MultiTileEntityClassContainer getClassContainer(ItemStack aStack) {return mRegistry.get(ST.meta_(aStack));}

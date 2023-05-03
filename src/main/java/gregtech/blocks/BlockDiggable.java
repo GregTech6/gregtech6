@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -56,13 +56,13 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	
 	public BlockDiggable(String aUnlocalised) {
 		super(null, aUnlocalised, Material.ground, soundTypeGravel, 7, Textures.BlockIcons.DIGGABLES);
-		LH.add(getUnlocalizedName()+ ".0.name", "Mud");
-		LH.add(getUnlocalizedName()+ ".1.name", "Brown Clay");
-		LH.add(getUnlocalizedName()+ ".2.name", "Turf");
-		LH.add(getUnlocalizedName()+ ".3.name", "Red Clay");
-		LH.add(getUnlocalizedName()+ ".4.name", "Yellow Clay");
-		LH.add(getUnlocalizedName()+ ".5.name", "Blue Clay");
-		LH.add(getUnlocalizedName()+ ".6.name", "White Clay");
+		LH.add(getUnlocalizedName()+ ".0", "Mud");
+		LH.add(getUnlocalizedName()+ ".1", "Brown Clay");
+		LH.add(getUnlocalizedName()+ ".2", "Turf");
+		LH.add(getUnlocalizedName()+ ".3", "Red Clay");
+		LH.add(getUnlocalizedName()+ ".4", "Yellow Clay");
+		LH.add(getUnlocalizedName()+ ".5", "Blue Clay");
+		LH.add(getUnlocalizedName()+ ".6", "White Clay");
 		
 		MT.UNUSED.Mud  .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 0);
 		MT.ClayBrown   .mTextureSolid = BlockTextureCopied.get(this, SIDE_TOP, 1);

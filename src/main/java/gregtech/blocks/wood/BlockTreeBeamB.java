@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,24 +28,24 @@ public class BlockTreeBeamB extends BlockBaseBeamFlammable {
 	public BlockTreeBeamB(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.BEAMS_B);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Hazel Beam");
-		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Beam");
-		LH.add(getUnlocalizedName()+ ".8.name", "Hazel Beam");
-		LH.add(getUnlocalizedName()+".12.name", "Hazel Beam");
+		LH.add(getUnlocalizedName()+ ".0", "Hazel Beam");
+		LH.add(getUnlocalizedName()+ ".4", "Hazel Beam");
+		LH.add(getUnlocalizedName()+ ".8", "Hazel Beam");
+		LH.add(getUnlocalizedName()+".12", "Hazel Beam");
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Cinnamon Beam");
-		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Beam");
-		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Beam");
-		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Beam");
+		LH.add(getUnlocalizedName()+ ".1", "Cinnamon Beam");
+		LH.add(getUnlocalizedName()+ ".5", "Cinnamon Beam");
+		LH.add(getUnlocalizedName()+ ".9", "Cinnamon Beam");
+		LH.add(getUnlocalizedName()+".13", "Cinnamon Beam");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Beam");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Beam");
-		LH.add(getUnlocalizedName()+".10.name", "Coconut Beam");
-		LH.add(getUnlocalizedName()+".14.name", "Coconut Beam");
+		LH.add(getUnlocalizedName()+ ".2", "Coconut Beam");
+		LH.add(getUnlocalizedName()+ ".6", "Coconut Beam");
+		LH.add(getUnlocalizedName()+".10", "Coconut Beam");
+		LH.add(getUnlocalizedName()+".14", "Coconut Beam");
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Beam");
-		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Beam");
-		LH.add(getUnlocalizedName()+".11.name", "Rainbowood Beam");
-		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Beam");
+		LH.add(getUnlocalizedName()+ ".3", "Rainbowood Beam");
+		LH.add(getUnlocalizedName()+ ".7", "Rainbowood Beam");
+		LH.add(getUnlocalizedName()+".11", "Rainbowood Beam");
+		LH.add(getUnlocalizedName()+".15", "Rainbowood Beam");
 	}
 }

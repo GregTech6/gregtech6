@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -199,8 +199,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		mHarvestLevelMinimum = Math.max(0, aHarvestLevelMinimum);
 		mHarvestLevelMaximum = Math.max(aHarvestLevelMinimum, aHarvestLevelMaximum);
 		mPrefix.addTextureSet(aModIDTextures, F);
-		LH.add("oredict." + mPrefix.dat(MT.Empty).toString() + ".name", getLocalName(mPrefix, MT.Empty));
-		LH.add(mNameInternal+"."+W+".name", "Any Sub-Block of this one"); // Local Name for the WildcardItem Variant.
+		LH.add("oredict." + mPrefix.dat(MT.Empty).toString(), getLocalName(mPrefix, MT.Empty));
+		LH.add(mNameInternal+"."+W, "Any Sub-Block of this one"); // Local Name for the WildcardItem Variant.
 		
 		opaque = mOpaque;
 		lightOpacity = mOpaque ? 255 : 0;
@@ -236,7 +236,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void run() {
 		for (short i = 0; i < mMaterialList.length; i++) if (mPrefix.isGeneratingItem(mMaterialList[i])) {
-			LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString() + ".name", getLocalName(mPrefix, mMaterialList[i]));
+			LH.add("oredict." + mPrefix.dat(mMaterialList[i]).toString(), getLocalName(mPrefix, mMaterialList[i]));
 		}
 		if (mRegisterToOreDict) {
 			boolean tUnificationAllowed = (mPrefix.contains(TD.Prefix.UNIFICATABLE) && !mPrefix.contains(TD.Prefix.UNIFICATABLE_RECIPES));
@@ -586,7 +586,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override public final TileEntity createTileEntity(World aWorld, int aMeta) {return null;}
 	@Override public String toString() {return mNameInternal;}
 	@Override public String getUnlocalizedName() {return mNameInternal;}
-	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal + ".name");}
+	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal);}
 	@Override public String getHarvestTool(int aMaterialToolQuality) {return mTool;}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return getHarvestTool(aMeta).equals(aType);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX + mMinX, aY + mMinY, aZ + mMinZ, aX + mMaxX, aY + mMaxY, aZ + mMaxZ);}

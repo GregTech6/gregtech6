@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,22 +42,22 @@ import net.minecraft.item.ItemStack;
 public class BlockTreePlanks2 extends BlockBasePlanksFlammable {
 	public BlockTreePlanks2(String aName) {
 		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", ANY.Wood, 1, 1, 0, 1, Textures.BlockIcons.PLANKS_2);
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Planks");
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".4.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".8.name", " Planks");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".10.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".11.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".12.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".13.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".14.name", " Planks");
-	//  LH.add(getUnlocalizedName()+".15.name", " Planks");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Planks");
+	//  LH.add(getUnlocalizedName()+ ".1", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".2", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".3", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".4", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".5", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".6", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".7", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".8", " Planks");
+	//  LH.add(getUnlocalizedName()+ ".9", " Planks");
+	//  LH.add(getUnlocalizedName()+".10", " Planks");
+	//  LH.add(getUnlocalizedName()+".11", " Planks");
+	//  LH.add(getUnlocalizedName()+".12", " Planks");
+	//  LH.add(getUnlocalizedName()+".13", " Planks");
+	//  LH.add(getUnlocalizedName()+".14", " Planks");
+	//  LH.add(getUnlocalizedName()+".15", " Planks");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OD.plankWood);
@@ -72,22 +72,22 @@ public class BlockTreePlanks2 extends BlockBasePlanksFlammable {
 	
 	protected BlockTreePlanks2(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, int aCount, IIconContainer[] aIcons, byte aSlabType, BlockMetaType aBlock) {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Slab");
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".4.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".8.name", " Slab");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".10.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".11.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".12.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".13.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".14.name", " Slab");
-	//  LH.add(getUnlocalizedName()+".15.name", " Slab");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Slab");
+	//  LH.add(getUnlocalizedName()+ ".1", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".2", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".3", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".4", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".5", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".6", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".7", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".8", " Slab");
+	//  LH.add(getUnlocalizedName()+ ".9", " Slab");
+	//  LH.add(getUnlocalizedName()+".10", " Slab");
+	//  LH.add(getUnlocalizedName()+".11", " Slab");
+	//  LH.add(getUnlocalizedName()+".12", " Slab");
+	//  LH.add(getUnlocalizedName()+".13", " Slab");
+	//  LH.add(getUnlocalizedName()+".14", " Slab");
+	//  LH.add(getUnlocalizedName()+".15", " Slab");
 	}
 	
 	@Override

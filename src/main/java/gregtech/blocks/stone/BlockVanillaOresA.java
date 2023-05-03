@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,22 +50,22 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	
 	public BlockVanillaOresA(String aUnlocalised) {
 		super(null, aUnlocalised, Material.rock, soundTypeStone, ORE_MATERIALS.length, Textures.BlockIcons.VANILLA_ORES_A);
-		LH.add(getUnlocalizedName()+  ".0.name", "Sulfur Ore"      );
-		LH.add(getUnlocalizedName()+  ".1.name", "Apatite Ore"     );
-		LH.add(getUnlocalizedName()+  ".2.name", "Ruby Ore"        );
-		LH.add(getUnlocalizedName()+  ".3.name", "Amber Ore"       );
-		LH.add(getUnlocalizedName()+  ".4.name", "Amethyst Ore"    );
-		LH.add(getUnlocalizedName()+  ".5.name", "Galena Ore"      );
-		LH.add(getUnlocalizedName()+  ".6.name", "Tetrahedrite Ore");
-		LH.add(getUnlocalizedName()+  ".7.name", "Cassiterite Ore" );
-		LH.add(getUnlocalizedName()+  ".8.name", "Sheldonite Ore"  );
-		LH.add(getUnlocalizedName()+  ".9.name", "Pentlandite Ore" );
-		LH.add(getUnlocalizedName()+ ".10.name", "Scheelite Ore"   );
-		LH.add(getUnlocalizedName()+ ".11.name", "Rutile Ore"      );
-		LH.add(getUnlocalizedName()+ ".12.name", "Bastnasite Ore"  );
-		LH.add(getUnlocalizedName()+ ".13.name", "Graphite Ore"    );
-		LH.add(getUnlocalizedName()+ ".14.name", "Pitchblende Ore" );
-		LH.add(getUnlocalizedName()+ ".15.name", "Borax Ore"       );
+		LH.add(getUnlocalizedName()+ ".0", "Sulfur Ore"      );
+		LH.add(getUnlocalizedName()+ ".1", "Apatite Ore"     );
+		LH.add(getUnlocalizedName()+ ".2", "Ruby Ore"        );
+		LH.add(getUnlocalizedName()+ ".3", "Amber Ore"       );
+		LH.add(getUnlocalizedName()+ ".4", "Amethyst Ore"    );
+		LH.add(getUnlocalizedName()+ ".5", "Galena Ore"      );
+		LH.add(getUnlocalizedName()+ ".6", "Tetrahedrite Ore");
+		LH.add(getUnlocalizedName()+ ".7", "Cassiterite Ore" );
+		LH.add(getUnlocalizedName()+ ".8", "Sheldonite Ore"  );
+		LH.add(getUnlocalizedName()+ ".9", "Pentlandite Ore" );
+		LH.add(getUnlocalizedName()+".10", "Scheelite Ore"   );
+		LH.add(getUnlocalizedName()+".11", "Rutile Ore"      );
+		LH.add(getUnlocalizedName()+".12", "Bastnasite Ore"  );
+		LH.add(getUnlocalizedName()+".13", "Graphite Ore"    );
+		LH.add(getUnlocalizedName()+".14", "Pitchblende Ore" );
+		LH.add(getUnlocalizedName()+".15", "Borax Ore"       );
 		
 		for (int i = 0; i < maxMeta(); i++) OM.reg(ST.make(this, 1, i), OP.oreVanillastone.dat(ORE_MATERIALS[i]));
 		

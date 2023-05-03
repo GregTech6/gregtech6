@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,24 +28,24 @@ public class BlockTreeBeam2FireProof extends BlockBaseBeam {
 	public BlockTreeBeam2FireProof(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.BEAMS_2);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Acacia Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Acacia Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Acacia Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Acacia Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Acacia Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".4", "Acacia Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".8", "Acacia Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".12", "Acacia Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Dark Oak Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".5.name", "Dark Oak Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".9.name", "Dark Oak Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".13.name", "Dark Oak Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".1", "Dark Oak Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".5", "Dark Oak Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".9", "Dark Oak Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".13", "Dark Oak Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Rubber Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Rubber Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Rubber Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Rubber Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2", "Rubber Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6", "Rubber Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".10", "Rubber Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".14", "Rubber Wood Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".7.name", "Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Wood Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".15.name", "Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".3", "Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".7", "Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".11", "Wood Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".15", "Wood Beam (Fireproof)");
 	}
 }

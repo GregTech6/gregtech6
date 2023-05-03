@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,22 +28,22 @@ import net.minecraft.block.material.Material;
 public class BlockBarsWood extends BlockBaseBars {
 	public BlockBarsWood(String aNameInternal) {
 		super(aNameInternal, ANY.Wood, Material.wood, Block.soundTypeWood);
-		LH.add(getUnlocalizedName()+ ".0.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".1.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".2.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".3.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".4.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".5.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".6.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".7.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".8.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".9.name" , "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".10.name", "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".11.name", "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".12.name", "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".13.name", "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".14.name", "Wood Bars");
-		LH.add(getUnlocalizedName()+ ".15.name", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".0", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".1", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".2", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".3", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".4", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".5", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".6", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".7", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".8", "Wood Bars");
+		LH.add(getUnlocalizedName()+ ".9", "Wood Bars");
+		LH.add(getUnlocalizedName()+".10", "Wood Bars");
+		LH.add(getUnlocalizedName()+".11", "Wood Bars");
+		LH.add(getUnlocalizedName()+".12", "Wood Bars");
+		LH.add(getUnlocalizedName()+".13", "Wood Bars");
+		LH.add(getUnlocalizedName()+".14", "Wood Bars");
+		LH.add(getUnlocalizedName()+".15", "Wood Bars");
 	}
 	
 	@Override public float getExplosionResistance(byte aMeta) {return 3;}

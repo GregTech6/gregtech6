@@ -44,9 +44,10 @@ import static gregapi.data.CS.*;
  */
 public class LanguageHandler {
 	public static Configuration sLangFile;
+	public static boolean sUseFile = F;
 	
 	private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>(), BACKUPMAP = new HashMap<>();
-	private static boolean mWritingEnabled = F, mUseFile = F;
+	private static boolean mWritingEnabled = F;
 	
 	public static void save() {
 		if (sLangFile != null) {
@@ -55,31 +56,42 @@ public class LanguageHandler {
 		}
 	}
 	
+	public static synchronized void set(String aKey, String aEnglish) {
+		BACKUPMAP.put(aKey, aEnglish);
+		TEMPMAP.put(aKey        , aEnglish);
+		TEMPMAP.put(aKey+".name", aEnglish);
+		LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
+		TEMPMAP.clear();
+	}
+	
 	public static synchronized void add(String aKey, String aEnglish) {
 		if (aKey == null) return;
 		aKey = aKey.trim();
 		if (aKey.length() <= 0) return;
+		boolean tSave = F;
 		BACKUPMAP.put(aKey, aEnglish);
 		if (sLangFile == null) {
 			BUFFERMAP.put(aKey, aEnglish);
 		} else {
 			if (!BUFFERMAP.isEmpty()) {
-				mUseFile = sLangFile.get("EnableLangFile", "UseThisFileAsLanguageFile", F).getBoolean(F);
+				tSave = T;
 				for (Entry<String, String> tEntry : BUFFERMAP.entrySet()) {
 					Property tProperty = sLangFile.get("LanguageFile", tEntry.getKey(), tEntry.getValue());
-					TEMPMAP.put(tEntry.getKey(), mUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tEntry.getKey()        , sUseFile?tProperty.getString():tEntry.getValue());
+					TEMPMAP.put(tEntry.getKey()+".name", sUseFile?tProperty.getString():tEntry.getValue());
 					LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 					TEMPMAP.clear();
 				}
-				if (mWritingEnabled) sLangFile.save();
 				BUFFERMAP.clear();
 			}
 			Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
-			if (!tProperty.wasRead() && mWritingEnabled) sLangFile.save();
-			TEMPMAP.put(aKey, mUseFile?tProperty.getString():aEnglish);
+			tSave |= tProperty.wasRead();
+			TEMPMAP.put(aKey        , sUseFile?tProperty.getString():aEnglish);
+			TEMPMAP.put(aKey+".name", sUseFile?tProperty.getString():aEnglish);
 			LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 			TEMPMAP.clear();
 		}
+		if (tSave && mWritingEnabled) sLangFile.save();
 	}
 	
 	public static String get(String aKey, String aDefault) {
@@ -92,9 +104,9 @@ public class LanguageHandler {
 	}
 	
 	public static String translate(String aKey, String aDefault) {
-		if (aKey == null) return "";
+		if (aKey == null || aKey.length() < 2) return "";
 		aKey = aKey.trim();
-		if (aKey.isEmpty()) return "";
+		if (aKey.length() < 2) return "";
 		String
 		rTranslation = LanguageRegistry.instance().getStringLocalization(aKey);
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;

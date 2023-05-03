@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,25 +44,25 @@ public class BlockTreeLog1FireProof extends BlockBaseBeam implements IBlockToola
 	public BlockTreeLog1FireProof(String aUnlocalised) {
 		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_1);
 		
-		LH.add(getUnlocalizedName()+ ".0.name", "Dead Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".4.name", "Dead Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".8.name", "Dead Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".12.name", "Dead Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".0", "Dead Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".4", "Dead Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".8", "Dead Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".12", "Dead Log (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".1.name", "Rotten Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".5.name", "Rotten Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".9.name", "Rotten Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".13.name", "Rotten Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".1", "Rotten Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".5", "Rotten Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".9", "Rotten Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".13", "Rotten Log (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Mossy Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Mossy Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Mossy Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Mossy Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2", "Mossy Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6", "Mossy Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".10", "Mossy Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".14", "Mossy Log (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".3.name", "Frozen Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".7.name", "Frozen Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".11.name", "Frozen Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".15.name", "Frozen Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".3", "Frozen Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".7", "Frozen Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".11", "Frozen Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".15", "Frozen Log (Fireproof)");
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.item.IItemGT;
+import gregapi.lang.LanguageHandler;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -70,9 +71,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		setResistance(30);
 		setBlockName(aName);
 		ST.register(this, aName, ItemBlock.class);
-		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
-		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());
+		LanguageHandler.set(getLocalizedName(), getLocalizedName()); // WAILA is retarded...
 		setFluidStack(FL.make(aFluid, 1000));
 		if (aHide) ST.hide(this);
 	}

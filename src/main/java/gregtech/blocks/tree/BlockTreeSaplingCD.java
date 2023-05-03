@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregtech.blocks.tree;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import gregapi.block.tree.BlockBaseSapling;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -39,25 +34,30 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+
 public class BlockTreeSaplingCD extends BlockBaseSapling {
 	public BlockTreeSaplingCD(String aUnlocalised) {
 		super(null, aUnlocalised, Material.plants, soundTypeGrass, 1, Textures.BlockIcons.SAPLINGS_CD);
-		LH.add(getUnlocalizedName()+ ".0.name", "Blue Spruce Sapling");
-	//  LH.add(getUnlocalizedName()+ ".1.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".2.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".3.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".4.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".5.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".6.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+ ".7.name", " Sapling");
-		LH.add(getUnlocalizedName()+ ".8.name", "Blue Spruce Sapling");
-	//  LH.add(getUnlocalizedName()+ ".9.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".10.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".11.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".12.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".13.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".14.name", " Sapling");
-	//  LH.add(getUnlocalizedName()+".15.name", " Sapling");
+		LH.add(getUnlocalizedName()+ ".0", "Blue Spruce Sapling");
+	//  LH.add(getUnlocalizedName()+ ".1", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".2", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".3", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".4", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".5", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".6", " Sapling");
+	//  LH.add(getUnlocalizedName()+ ".7", " Sapling");
+		LH.add(getUnlocalizedName()+ ".8", "Blue Spruce Sapling");
+	//  LH.add(getUnlocalizedName()+ ".9", " Sapling");
+	//  LH.add(getUnlocalizedName()+".10", " Sapling");
+	//  LH.add(getUnlocalizedName()+".11", " Sapling");
+	//  LH.add(getUnlocalizedName()+".12", " Sapling");
+	//  LH.add(getUnlocalizedName()+".13", " Sapling");
+	//  LH.add(getUnlocalizedName()+".14", " Sapling");
+	//  LH.add(getUnlocalizedName()+".15", " Sapling");
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			OM.reg(ST.make(this, 1, i), OP.treeSapling);

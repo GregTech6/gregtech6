@@ -1081,7 +1081,6 @@ public enum FL {
 		
 		Fluid rFluid = new FluidGT(aName, aTexture, aRGBa == null ? UNCOLOURED : aRGBa, aTemperatureK, aState == 2 || aState == 3);
 		LH.add(rFluid.getUnlocalizedName(), aLocalized);
-		LH.add(rFluid.getUnlocalizedName()+".name", aLocalized);
 		
 		for (Set<String> tSet : aFluidList) tSet.add(aName);
 		

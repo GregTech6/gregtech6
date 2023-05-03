@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ import net.minecraft.block.material.Material;
 public class BlockGlowtus extends BlockBaseLilyPad {
 	public BlockGlowtus(String aUnlocalised) {
 		super(null, aUnlocalised, Material.plants, soundTypeGrass, 16, Textures.BlockIcons.GLOWTUS);
-		for (int i = 0; i < 16; i++) LH.add(getUnlocalizedName()+"."+i+".name", DYE_NAMES[i] + " Glowtus");
+		for (int i = 0; i < 16; i++) LH.add(getUnlocalizedName()+"."+i, DYE_NAMES[i] + " Glowtus");
 	}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}

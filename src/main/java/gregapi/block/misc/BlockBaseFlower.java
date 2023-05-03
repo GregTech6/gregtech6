@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -83,7 +83,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public String name(byte aMeta) {return mNameInternal + "." + aMeta;}
-	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
+	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal);}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 0;}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return 0;}
 	@Override public float getExplosionResistance(Entity aEntity) {return 0;}

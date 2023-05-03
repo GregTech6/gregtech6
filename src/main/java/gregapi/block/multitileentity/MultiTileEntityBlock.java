@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -282,7 +282,7 @@ public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlo
 	@Override public final boolean canProvidePower() {return !mNormalCube;}
 	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
-	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal + ".name");}
+	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal);}
 	@Override public final String getHarvestTool(int aMeta) {return mTool;}
 	@Override public final boolean isToolEffective(String aType, int aMeta) {return getHarvestTool(aMeta).equals(aType);}
 	@Override public final int getHarvestLevel(int aMeta) {return (int)UT.Code.bind_(mHarvestLevelMinimum, mHarvestLevelMaximum, mHarvestLevelOffset + aMeta);}

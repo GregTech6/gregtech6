@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,7 +87,7 @@ public class ItemArmorBase extends ItemArmor implements IItemUpdatable, IItemGT,
 		mEnchantability = aEnchantability;
 		mMetalArmor = aMetalArmor;
 		mBeeArmor = aBeeArmor;
-		LH.add(mName + ".name", aEnglish);
+		LH.add(mName, aEnglish);
 		setMaxDamage(aDurability);
 		setCreativeTab(CreativeTabs.tabCombat);
 		if (UT.Code.stringValid(aEnglishTooltip)) LH.add(mTooltip = mName + ".tooltip_main", aEnglishTooltip); else mTooltip = null;
