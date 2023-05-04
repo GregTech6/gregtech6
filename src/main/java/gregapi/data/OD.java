@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -175,6 +175,7 @@ public enum OD {
 	, itemLubricantEarly
 	, itemResin
 	, itemRubber
+	, itemInsulator
 	, itemSalt
 	, itemRock
 	, itemFlint
