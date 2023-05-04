@@ -191,7 +191,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 				mDisplay = (short)~mDisplay;
 				if (mContent.mAmount > 0 && !slotHas(0)) {
 					OreDictPrefix tPrefix = getMoldRecipe(mShape);
-					if (mContent.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+					if (mContent.mMaterial.mTargetSolidifying.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
 						if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
 						if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
 					}
@@ -247,7 +247,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (aMaterial == null || aMaterial.mMaterial == null || (!mAcidProof && aMaterial.mMaterial.contains(TD.Properties.ACID))) return 0;
 		OreDictPrefix tPrefix = getMoldRecipe(mShape);
 		if (tPrefix != null && mContent == null && slot(0) == null && isMoldInputSide(aSide) && aMaterial.mAmount > 0) {
-			if (aMaterial.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+			if (aMaterial.mMaterial.mTargetSolidifying.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
 				if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
 				if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
 			}
@@ -601,7 +601,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		aMaterial = OM.stack(aFluidRatio.mMaterial, UT.Code.units(aFluid.amount, aFluidRatio.mAmount, U, F));
 		if (aMaterial == null || aMaterial.mAmount <= 0) return 0;
 		OreDictPrefix tPrefix = getMoldRecipe(mShape);
-		if (aMaterial.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
+		if (aMaterial.mMaterial.mTargetSolidifying.mMaterial.contains(TD.Processing.COOL2CRYSTAL)) {
 			if (tPrefix == OP.plate    ) tPrefix = OP.plateGem;
 			if (tPrefix == OP.plateTiny) tPrefix = OP.plateGemTiny;
 		}

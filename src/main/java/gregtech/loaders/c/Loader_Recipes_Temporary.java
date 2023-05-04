@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -655,6 +655,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Sunflower           .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Soulsand            .make( 6), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Light               .make( 5), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Light2              .make( 5), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Medium              .make( 4), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Heavy               .make( 3), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Heavy2              .make( 3), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_ExtraHeavy          .make( 2), FL.Oil_Normal.make(1));
 		
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 		
