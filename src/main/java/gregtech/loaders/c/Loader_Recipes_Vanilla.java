@@ -365,6 +365,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(plateDouble.mat(MT.Paper, 3), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
 		CR.shapeless(plateDouble.mat(MT.Paper, 4), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
 		
+		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_helmet    , 1, W));
+		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_chestplate, 1, W));
+		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_leggings  , 1, W));
+		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_boots     , 1, W));
 		
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);

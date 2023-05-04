@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] High End Extreme Nuclear Reactors were causing severe Lag due to the absurd range of their Radiation Damage ending up in loading Chunks.
 [CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
+[ADDED] Leather Armor + Knife = some Leather, in the Crafting Table.
 [ADDED] You can generify the different Mineral Oil Types into Basic Buildcraft Oil at a loss.
 [ADDED] Config to make GT6 Tree Leaves decay a lot slower. Don't know why anyone would want it but apparently this would fix Steves Carts Tree Automation.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
