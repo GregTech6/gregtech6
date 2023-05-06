@@ -145,7 +145,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 				mTransferredAmperes = 0;
 				if (EnergyCompat.IC_ENERGY) for (byte tSide : ALL_SIDES_VALID) if (canAcceptEnergyFrom(tSide)) {
 					DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-					if (!(tDelegator.mTileEntity instanceof ITileEntityEnergy) && !(tDelegator.mTileEntity instanceof gregapi.tileentity.ITileEntityEnergy)) {
+					if (!(tDelegator.mTileEntity instanceof gregapi.tileentity.ITileEntityEnergy)) {
 						TileEntity tEmitter = tDelegator.mTileEntity instanceof IEnergyTile || EnergyNet.instance == null ? tDelegator.mTileEntity : EnergyNet.instance.getTileEntity(tDelegator.mWorld, tDelegator.mX, tDelegator.mY, tDelegator.mZ);
 						if (tEmitter instanceof IEnergySource && ((IEnergySource)tEmitter).emitsEnergyTo(this, tDelegator.getForgeSideOfTileEntity())) {
 							long tEU = (long)((IEnergySource)tEmitter).getOfferedEnergy();
