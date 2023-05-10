@@ -47,11 +47,13 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', IL.BTL_Mud_Brick);
 		// Peat from Peat Blocks
 		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
+		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BTL_Mud});
 		
-		RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
-		if (!MD.BoP.mLoaded) {
-		RM.add_smelting(IL.Mud_Ball.get(1), IL.BTL_Mud_Brick.get(1), F, F, T);
-		RM.compactsmash(IL.BTL_Mud_Brick.get(4), 4, IL.BTL_Mud_Bricks.get(1));
+		if (MD.BoP.mLoaded) {
+			RM.add_smelting(IL.Mud_Ball.get(1), IL.BTL_Mud_Brick.get(1), F, F, T);
+			RM.compactsmash(IL.BTL_Mud_Brick.get(4), 4, IL.BTL_Mud_Bricks.get(1));
+		} else {
+			RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
 		}
 		
 		RM.compactsmash (IL.BTL_Coral_Mire.get(1), 1, ST.make(MD.BTL, "mireCoralBlock", 1, 0));
