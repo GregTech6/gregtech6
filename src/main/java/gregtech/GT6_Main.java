@@ -19,7 +19,6 @@
 
 package gregtech;
 
-import appeng.api.AEApi;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -177,8 +176,6 @@ public class GT6_Main extends Abstract_Mod {
 //      new Loader_Sonictron().run();
 		
 		new CompatMods(MD.MC, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
-			// Clearing the AE Grindstone Recipe List, so we don't need to worry about pre-existing Recipes.
-			if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
 			// We ain't got Water in that Water Bottle. That would be an infinite Water Exploit.
 			for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
 			

@@ -521,6 +521,16 @@ public class RM {
 		return F;
 	}
 	
+	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {
+		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
+		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput);
+		RM.Shredder.addRecipe1(T, 16, 16*aPower, aInput, aOutput);
+		ae_grinder   (UT.Code.bindInt(   5*aPower), aInput, aOutput);
+		te_pulverizer(UT.Code.bindInt(1000*aPower), aInput, aOutput);
+		ic2_macerator(aInput, aOutput);
+		return T;
+	}
+	
 	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
 	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), ST.copy(aOutput2), aChance2, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
 	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2, ItemStack aOutput3, float aChance3) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), ST.copy(aOutput2), aChance2, ST.copy(aOutput3), aChance3, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
@@ -571,6 +581,16 @@ public class RM {
 				}
 			}
 		}
+		return T;
+	}
+	public static boolean ic2_macerator(ItemStack aInput, ItemStack aOutput) {
+		if (!ENABLE_ADDING_IC2_MACERATOR_RECIPES || ST.invalid(aInput) || ST.invalid(aOutput)) return F;
+		aOutput = ST.validMeta(OM.get_(aOutput));
+		if (!ConfigsGT.RECIPES.get(ConfigCategories.Machines.extractor, aInput, T)) {
+			UT.removeSimpleIC2MachineRecipe(aInput, ic2.api.recipe.Recipes.macerator.getRecipes(), null);
+			return F;
+		}
+		UT.addSimpleIC2MachineRecipe(ic2.api.recipe.Recipes.macerator, aInput, null, aOutput);
 		return T;
 	}
 	public static boolean ic2_extractor(ItemStack aInput, ItemStack aOutput) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -65,17 +65,11 @@ public class Compat_Recipes_HBM extends CompatMods {
 		for (FluidStack tWater : FL.waters(250))
 		RM.Mixer.addRecipe1(T, 16, 16, IL.HBM_Poison_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
 		if (IL.ERE_Herbicide.exists())
-		RM.pulverizing(IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.pulverizing(IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.pulverizing(ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
-		RM.pulverizing(ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
-		RM.pulverizing(ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
-		if (IL.ERE_Herbicide.exists())
-		RM.Shredder.addRecipe1(T, 16, 16, IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.Shredder.addRecipe1(T, 16, 16, IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
-		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
-		RM.Shredder.addRecipe1(T, 16, 16, ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
+		RM.mortarize(1, IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.mortarize(1, IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
+		RM.mortarize(1, ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
+		RM.mortarize(1, ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
+		RM.mortarize(1, ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
 		RM.generify(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
 		RM.generify(IL.HBM_Poison_Powder.get(1), IL.IC2_Grin_Powder.get(1));
 		

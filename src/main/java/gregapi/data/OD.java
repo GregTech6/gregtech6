@@ -195,6 +195,7 @@ public enum OD {
 	, itemSkin
 	, itemFur
 	, itemPelt
+	, itemCompost
 	, itemFertilizer
 	, itemPlantRemains
 	, itemGhastTear

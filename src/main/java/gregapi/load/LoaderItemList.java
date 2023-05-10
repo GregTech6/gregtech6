@@ -1044,6 +1044,9 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Tainted_Potion                   .set(ST.make(MD.BTL, "taintedPotion"                        , 1, 0));
 		IL.BTL_Betweenstone                     .set(ST.make(MD.BTL, "betweenstone"                         , 1, 0), OP.stone.dat(MT.STONES.Betweenstone));
 		IL.BTL_Pitstone                         .set(ST.make(MD.BTL, "pitstone"                             , 1, 0), OP.stone.dat(MT.STONES.Pitstone));
+		IL.BTL_Cragrock                         .set(ST.make(MD.BTL, "genericStone"                         , 1, 1), OP.stone.dat(MT.STONES.Cragrock));
+		IL.BTL_Templebrick                      .set(ST.make(MD.BTL, "smoothTempleBrick"                    , 1, 0), OP.stone.dat(MT.STONES.Templerock));
+		IL.BTL_Limestone                        .set(ST.make(MD.BTL, "limestone"                            , 1, 0), OP.stone.dat(MT.STONES.Limestone));
 		IL.BTL_Bedrock                          .set(ST.make(MD.BTL, "bedrock"                              , 1, 0), OP.stone.dat(MT.Bedrock));
 		IL.BTL_Chest                            .set(ST.make(MD.BTL, "weedwoodChest"                        , 1, 0), new OreDictItemData(MT.Weedwood, 8*U), OD.craftingChest);
 		IL.BTL_Weedwood_Leaves                  .set(ST.make(MD.BTL, "weedwoodLeaves"                       , 1, 0), null, OP.treeLeaves);
@@ -1865,7 +1868,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Pollen_Cluster_Crystalline        .set(ST.make(MD.FR, "pollen"                                , 1, 1));
 		IL.FR_Mulch                             .set(ST.make(MD.FR, "mulch"                                 , 1, 0));
 		IL.FR_Fertilizer                        .set(ST.make(MD.FR, "fertilizerCompound"                    , 1, 0), null, OD.itemFertilizer);
-		IL.FR_Compost                           .set(ST.make(MD.FR, "fertilizerBio"                         , 1, 0));
+		IL.FR_Compost                           .set(ST.make(MD.FR, "fertilizerBio"                         , 1, 0), null, OD.itemCompost);
 		IL.FR_Pulsating_Dust                    .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 0), new OreDictItemData(MT.EnderPearl, U));
 		IL.FR_Pulsating_Mesh                    .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 1));
 		IL.FR_Silk                              .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 2));
