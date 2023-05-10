@@ -19,21 +19,11 @@
 
 package gregtech.blocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import gregapi.block.BlockBaseMeta;
 import gregapi.block.IBlockOnWalkOver;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureCopied;
 import gregapi.util.OM;
@@ -50,6 +40,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	public static boolean[] IS_CLAY = {F,T,F,T,T,T,T,F,F,F,F,F,F,F,F,F};
@@ -89,6 +83,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 		OM.data(ST.make(this, 1, 4), MT.Bentonite, U*4);
 		OM.data(ST.make(this, 1, 5), MT.Palygorskite, U*4);
 		OM.data(ST.make(this, 1, 6), MT.Kaolinite, U*4);
+		OM.reg(ST.make(this, 1, 0), OD.blockMud);
 		OM.reg(ST.make(this, 1, 1), OD.blockClay);
 		OM.reg(ST.make(this, 1, 3), OD.blockClay);
 		OM.reg(ST.make(this, 1, 4), OD.blockClay);

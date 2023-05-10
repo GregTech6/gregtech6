@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
@@ -43,15 +33,13 @@ import net.minecraft.init.Items;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.rockGt;
+
 public class Compat_Recipes_Erebus extends CompatMods {
 	public Compat_Recipes_Erebus(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Erebus Recipes.");
-		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.ERE_Mud_Brick.get(1), F, F, T);
-		
-		RM.generify(IL.BoP_Mud_Brick.get(1), IL.ERE_Mud_Brick.get(1));
-		RM.generify(IL.ERE_Mud_Brick.get(1), IL.BoP_Mud_Brick.get(1));
-		
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "fireBloom"           , 1, W), OM.dust(MT.Blaze, U72));
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "materials"           , 1,56), OM.dust(MT.Jade, U9));
 		RM.Mortar       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "materials"           , 1, 0), IL.Dye_Bonemeal.get(1));
@@ -79,14 +67,15 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
 		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
 		
+		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.ERE_Mud_Brick.get(1), F, F, T);
+		/* TODO Fix Mud Ratio first!
+		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.ERE_Mud_Brick.get(4), F, F, T);
+		RM.compactsmash(IL.ERE_Mud_Brick.get(4), 4, IL.ERE_Mud_Bricks.get(1));
+		 */
 		
 		CR.delate(MD.ERE, "mirbrick");
-		if (IL.BoP_Mud_Brick.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', OD.itemClay);
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', OD.itemClay);
-		if (IL.BoP_Mud_Bricks.exists())
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', IL.BoP_Mud_Bricks, 'Y', OD.blockClay);
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', OD.blockClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
 		
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));

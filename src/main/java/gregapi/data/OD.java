@@ -171,6 +171,7 @@ public enum OD {
 	, baleGrassRotten
 	, itemKey
 	, itemMud
+	, itemMudBrick
 	, itemTar
 	, itemMoss
 	, itemCoral
@@ -221,6 +222,8 @@ public enum OD {
 	, paneGlassColorless
 	, blockGlass
 	, blockGlassColorless
+	, blockMud
+	, blockMudBricks
 	, blockClay
 	, blockCandle
 	, blockTorch

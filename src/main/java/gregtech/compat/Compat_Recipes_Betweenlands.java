@@ -36,15 +36,17 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Betweenlands Recipes.");
 		CR.remove(IL.BTL_Weedwood_Bark.get(1));
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(IL.BTL_Bedrock.block());
+		
 		// Weedwood Bowl
 		CR.shaped(ST.make(MD.BTL, "unknownGeneric"  , 1,25), DEF     | DEL_OTHER_SHAPED_RECIPES,  "k" ,  "X" , 'X', OD.plankWeedwood);
-		
+		// Mud Bricks
 		CR.shaped(IL.BTL_Mud_Bricks                 .get(1), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.BTL_Mud_Brick);
 		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 1, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', IL.BTL_Mud_Brick);
 		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', IL.BTL_Mud_Brick);
 		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', IL.BTL_Mud_Brick);
-		
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(IL.BTL_Bedrock.block());
+		// Peat from Peat Blocks
+		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
 		
 		RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
 		if (!MD.BoP.mLoaded) {
