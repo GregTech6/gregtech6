@@ -256,9 +256,10 @@ public class Loader_Recipes_Woods implements Runnable {
 				}
 			}
 			
-			for (String tFluidName : FluidsGT.LUBRICANT) if (FL.exists(tFluidName)) {
+			ItemStack tGear = gearGt.mat(aEntry.mMaterialPlank, 1);
+			if (ST.valid(tGear)) for (String tFluidName : FluidsGT.LUBRICANT) if (FL.exists(tFluidName)) {
 				FluidStack tFluid = FL.make(tFluidName, 1);
-				RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), ST.tag(0), tFluid, NF, gearGt.mat(aEntry.mMaterialPlank, 1));
+				RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), ST.tag(0), tFluid, NF, tGear);
 			}
 			
 			if (ST.valid(aEntry.mStair)) {

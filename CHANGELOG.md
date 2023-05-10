@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.16.00: (Not released yet)
 [IMPORTANT] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name=" and "=" BEFORE loading Minecraft, should fix it.
+[COMPAT] I added more Betweenlands Data and Recipes. Also Limestone is marked as "Betweenlandsproof" since it exists in there too.
 [FIXED] Et Futurum Paths being converted to GT6 Paths shouldn't make you fall through the ground all that hard anymore.
 [FIXED] Weight-O-Meter now works on Raw Ore Items in Chests and Stuff.
 [FIXED] The Fluid Filter Block was slightly bugged in regards of its GUI. It should now work and have the same special cases as the Fluid Filter Cover.

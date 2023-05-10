@@ -155,7 +155,7 @@ public enum IL implements IItemContainer {
 	CANDY_Sapling_Chocolate, CANDY_Sapling_Caramel, CANDY_Sapling_White, CANDY_Sapling_Cherry,
 	CANDY_Leaves_Chocolate, CANDY_Leaves_Caramel, CANDY_Leaves_White, CANDY_Leaves_Cherry,
 	BTL_Swamp_Talisman, BTL_Tainted_Potion, BTL_Chest,
-	BTL_Bedrock, BTL_Betweenstone, BTL_Pitstone, BTL_Cragrock, BTL_Templebrick, BTL_Limestone, BTL_Mud, BTL_Peat, BTL_Weedwood_Log, BTL_Weedwood_Beam, BTL_Weedwood_Planks, BTL_Weedwood_Bark, BTL_Weedwood_Sapling, BTL_Weedwood_Leaves, BTL_Weedwood_RottenBark, BTL_Portal_Bark,
+	BTL_Bedrock, BTL_Betweenstone, BTL_Pitstone, BTL_Cragrock, BTL_Templebrick, BTL_Limestone, BTL_Mud, BTL_Mud_Brick, BTL_Mud_Bricks, BTL_Peat, BTL_Weedwood_Log, BTL_Weedwood_Beam, BTL_Weedwood_Planks, BTL_Weedwood_Bark, BTL_Weedwood_Sapling, BTL_Weedwood_Leaves, BTL_Weedwood_RottenBark, BTL_Portal_Bark,
 	BTL_Bark, BTL_Dry_Bark, BTL_Coral_Mire, BTL_Coral_Deep, BTL_Resin, BTL_Rubber, BTL_Skin, BTL_Tar, BTL_Compost,
 	ERE_Mud_Brick, ERE_Spray_Repellant, ERE_Herbicide, ERE_Compost, ERE_Bamboo, ERE_Gaean_Gem, ERE_Gaean_Staff, ERE_Umberstone, ERE_Umbercobble, ERE_White_Planks, ERE_White_Slab, ERE_White_Stairs, ERE_Crate, ERE_Pole, ERE_Ladder, ERE_Pot, ERE_Pot_Raw, ERE_Pot_Cooked,
 	ERE_Bambucket_Empty, ERE_Bambucket_Water, ERE_Bambucket_Milk, ERE_Bambucket_Honey, ERE_Bambucket_AntiVenom, ERE_Bambucket_FormicAcid, ERE_Bambucket_BeetleJuice,

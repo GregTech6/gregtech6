@@ -29,8 +29,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 
 import static gregapi.data.CS.*;
-import static gregapi.util.CR.DEF;
-import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
+import static gregapi.util.CR.*;
 
 public class Compat_Recipes_Betweenlands extends CompatMods {
 	public Compat_Recipes_Betweenlands(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -38,10 +37,20 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Betweenlands Recipes.");
 		CR.remove(IL.BTL_Weedwood_Bark.get(1));
 		// Weedwood Bowl
-		CR.shaped(ST.make(MD.BTL, "unknownGeneric", 1, 25), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankWeedwood);
+		CR.shaped(ST.make(MD.BTL, "unknownGeneric"  , 1,25), DEF     | DEL_OTHER_SHAPED_RECIPES,  "k" ,  "X" , 'X', OD.plankWeedwood);
+		
+		CR.shaped(IL.BTL_Mud_Bricks                 .get(1), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.BTL_Mud_Brick);
+		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 1, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', IL.BTL_Mud_Brick);
+		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', IL.BTL_Mud_Brick);
+		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', IL.BTL_Mud_Brick);
 		
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(IL.BTL_Bedrock.block());
 		
+		RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
+		if (!MD.BoP.mLoaded) {
+		RM.add_smelting(IL.Mud_Ball.get(1), IL.BTL_Mud_Brick.get(1), F, F, T);
+		RM.compactsmash(IL.BTL_Mud_Brick.get(4), 4, IL.BTL_Mud_Bricks.get(1));
+		}
 		
 		RM.compactsmash (IL.BTL_Coral_Mire.get(1), 1, ST.make(MD.BTL, "mireCoralBlock", 1, 0));
 		RM.compactsmash (IL.BTL_Coral_Deep.get(1), 1, ST.make(MD.BTL, "deepWaterCoralBlock", 1, 0));

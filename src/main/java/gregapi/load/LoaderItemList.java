@@ -1051,8 +1051,10 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Cragrock                         .set(ST.make(MD.BTL, "genericStone"                         , 1, 1), OP.stone.dat(MT.STONES.Cragrock));
 		IL.BTL_Templebrick                      .set(ST.make(MD.BTL, "smoothTempleBrick"                    , 1, 0), OP.stone.dat(MT.STONES.Templerock));
 		IL.BTL_Limestone                        .set(ST.make(MD.BTL, "limestone"                            , 1, 0), OP.stone.dat(MT.STONES.Limestone));
-		IL.BTL_Mud                              .set(ST.make(MD.BTL, "mud"                                  , 1, 0));
 		IL.BTL_Peat                             .set(ST.make(MD.BTL, "peat"                                 , 1, 0), new OreDictItemData(MT.Peat, U*4));
+		IL.BTL_Mud                              .set(ST.make(MD.BTL, "mud"                                  , 1, 0));
+		IL.BTL_Mud_Bricks                       .set(ST.make(MD.BTL, "mudBrick"                             , 1, 0));
+		IL.BTL_Mud_Brick                        .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,13));
 		IL.BTL_Bedrock                          .set(ST.make(MD.BTL, "bedrock"                              , 1, 0), OP.stone.dat(MT.Bedrock));
 		IL.BTL_Chest                            .set(ST.make(MD.BTL, "weedwoodChest"                        , 1, 0), new OreDictItemData(MT.Weedwood, 8*U), OD.craftingChest);
 		IL.BTL_Weedwood_Leaves                  .set(ST.make(MD.BTL, "weedwoodLeaves"                       , 1, 0), null, OP.treeLeaves);
