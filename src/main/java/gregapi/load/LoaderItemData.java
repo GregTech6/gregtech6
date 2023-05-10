@@ -608,6 +608,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingFurnace                   , ST.make(MD.NeLi, "FurnaceBlackstone", 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(MD.NeLi, "FurnaceBlackstoneLit", 1, W));
 		OM.reg(OD.craftingWorkBench                 , ST.make(Blocks.crafting_table, 1, W));
+		OM.reg(OD.craftingWorkBench                 , ST.make(MD.BTL, "weedwoodCraftingTable", 1, W));
 		OM.reg(OD.craftingWorkBench                 , ST.make(MD.NeLi, "NetherCraftingTable", 1, W));
 		OM.reg(OD.craftingWorkBench                 , ST.make(MD.BC_FACTORY, "autoWorkbenchBlock", 1, 0));
 		OM.reg(OD.buttonWood                        , ST.make(Blocks.wooden_button, 1, W));

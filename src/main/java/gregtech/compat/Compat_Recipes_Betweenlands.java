@@ -43,7 +43,10 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(IL.BTL_Bedrock.block());
 		
 		
-		
+		RM.compactsmash (IL.BTL_Coral_Mire.get(1), 1, ST.make(MD.BTL, "mireCoralBlock", 1, 0));
+		RM.compactsmash (IL.BTL_Coral_Deep.get(1), 1, ST.make(MD.BTL, "deepWaterCoralBlock", 1, 0));
+		RM.compactunpack(IL.BTL_Compost.get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
+		RM.compact      (IL.FR_Compost .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
 		
 		
 		//RM.pressurewash(ST.make(Blocks.mossy_cobblestone, 1, W), ST.make(Blocks.cobblestone, 1, 0));

@@ -272,6 +272,12 @@ public class RM {
 	public static boolean compactsmash(ItemStack aContent, long aAmount, ItemStack aFull) {
 		return compact(aContent, aAmount, aFull) && smash(aFull, aContent, aAmount);
 	}
+	public static boolean compactunpack(ItemStack aContent, ItemStack aFull) {
+		return compact(aContent, aFull) && unpack(aFull, aContent);
+	}
+	public static boolean compactunpack(ItemStack aContent, long aAmount, ItemStack aFull) {
+		return compact(aContent, aAmount, aFull) && unpack(aFull, ST.amount(aAmount, aContent));
+	}
 	
 	
 	public static boolean glowstone(ItemStack aBlock, OreDictMaterial aMaterial) {
