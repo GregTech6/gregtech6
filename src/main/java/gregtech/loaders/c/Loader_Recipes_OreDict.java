@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -187,9 +187,9 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			
 			if (aEvent.mOreDictName.equals(OD.logRubber.toString())) {
 				tWood = MT.WoodRubber;
-				RM.debarking(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 2), OM.dust(MT.Bark));
+				RM.pressurewash(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 2), OM.dust(MT.Bark));
 			} else {
-				RM.debarking(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 3), OM.dust(MT.Bark));
+				RM.pressurewash(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 3), OM.dust(MT.Bark));
 			}
 			
 			RM.Lathe        .addRecipe1(T, 16,   80, aEvent.mStack, stickLong.mat(tWood, 4), dust.mat(tWood, 2));

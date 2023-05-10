@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,7 +21,6 @@ package gregtech.loaders.c;
 
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -165,7 +164,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		// Log related Recipes
 		for (WoodEntry aEntry : WoodDictionary.LIST_WOODS) {
 			if (aEntry.mBeamEntry != null)
-			RM.debarking(                aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
+			RM.pressurewash(             aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
 			RM.pulverizing(              aEntry.mLog, OM.dust(aEntry.mMaterialWood.mTargetPulver, aEntry.mPlankCountBuzz, 1), aEntry.mBark, 50, F);
 			RM.sawing(16, 128, F, 4,     aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			RM.lathing(16, 80,           aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));

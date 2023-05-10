@@ -92,7 +92,7 @@ public class RM {
 	
 	, Slicer                    = new RecipeMap                     (null, "gt.recipe.slicer"                       , "Slicer"                          , null, 0, 1, RES_PATH_GUI+"machines/Slicer"                    ,/*IN-OUT-MIN-ITEM=*/ 2, 2, 2,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 2,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Lathe                     = new RecipeMap                     (null, "gt.recipe.lathe"                        , "Lathe"                           , null, 0, 1, RES_PATH_GUI+"machines/Lathe"                     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
-	, Debarker                  = new RecipeMap                     (null, "gt.recipe.debarker"                     , "Debarker"                        , null, 0, 1, RES_PATH_GUI+"machines/Debarker"                  ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
+	, PressureWasher            = new RecipeMap                     (null, "gt.recipe.pressurewasher"               , "Pressure Washer"                 , null, 0, 1, RES_PATH_GUI+"machines/PressureWasher"            ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T), Debarker = PressureWasher
 	, Press                     = new RecipeMapFormingPress         (null, "gt.recipe.press"                        , "Press"                           , null, 0, 1, RES_PATH_GUI+"machines/Press"                     ,/*IN-OUT-MIN-ITEM=*/ 3, 1, 2,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	
 	, Squeezer                  = new RecipeMap                     (null, "gt.recipe.squeezer"                     , "Squeezer"                        , null, 0, 1, RES_PATH_GUI+"machines/Squeezer"                  ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 0, 1, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
@@ -170,6 +170,8 @@ public class RM {
 		Furnace.mRecipeMachineList.add(ST.make(Blocks.furnace, 1, W));
 		Furnace.mRecipeMachineList.add(ST.make(Blocks.lit_furnace, 1, W));
 		ToolHeads.mRecipeMachineList.add(ST.make(Blocks.crafting_table, 1, W));
+		
+		RecipeMap.RECIPE_MAPS.put("gt.recipe.debarker", PressureWasher);
 	}
 	
 	public static boolean generify(ItemStack aStack1, ItemStack aStack2) {
@@ -318,14 +320,18 @@ public class RM {
 		return T;
 	}
 	
-	public static boolean debarking(ItemStack aInput, ItemStack... aOutputs) {return debarking(16, 64, 1000, aInput, aOutputs);}
-	public static boolean debarking(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {return debarking(aEUt, aDuration, 1000, aInput, aOutputs);}
-	public static boolean debarking(long aEUt, long aDuration, long aWater, ItemStack aInput, ItemStack... aOutputs) {
+	public static boolean pressurewash(ItemStack aInput, ItemStack... aOutputs) {return pressurewash(16, 64, 200, aInput, aOutputs);}
+	public static boolean pressurewash(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {return pressurewash(aEUt, aDuration, 1000, aInput, aOutputs);}
+	public static boolean pressurewash(long aEUt, long aDuration, long aWater, ItemStack aInput, ItemStack... aOutputs) {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;
 		for (FluidStack tWater : FL.waters(aWater < 1 ? 1 : aWater))
-		Debarker.addRecipe1(T, aEUt, aDuration, aInput, tWater, NF, aOutputs);
+		PressureWasher.addRecipe1(T, aEUt, aDuration, aInput, tWater, NF, aOutputs);
 		return T;
 	}
+	
+	@Deprecated public static boolean debarking(ItemStack aInput, ItemStack... aOutputs) {return pressurewash(16, 64, 1000, aInput, aOutputs);}
+	@Deprecated public static boolean debarking(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {return pressurewash(aEUt, aDuration, 1000, aInput, aOutputs);}
+	@Deprecated public static boolean debarking(long aEUt, long aDuration, long aWater, ItemStack aInput, ItemStack... aOutputs) {return pressurewash(aEUt, aDuration, aWater, aInput, aOutputs);}
 	
 	public static boolean sawing(long aEUt, long aDuration, boolean aIsFoodItem, long aLubricantAmount, ItemStack aInput, ItemStack... aOutputs) {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;

@@ -549,6 +549,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.glowstone(ST.make(Blocks.glowstone, 1, 0), MT.Glowstone);
 		
+		RM.pressurewash(ST.make(Blocks.mossy_cobblestone, 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.pressurewash(ST.make(Blocks.stonebrick       , 1, 2), ST.make(Blocks.stonebrick , 1, 0));
+		
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) {
 		RM.sawing(16,  16, F,   3, stick.mat(tMaterial, 1), bolt.mat(tMaterial, 4));
 		RM.sawing(16,  16, F,   1, stickLong.mat(tMaterial, 1), stick.mat(tMaterial, 2));
