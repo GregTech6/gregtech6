@@ -51,15 +51,14 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		
 		if (MD.BoP.mLoaded) {
 			RM.add_smelting(IL.Mud_Ball.get(1), IL.BTL_Mud_Brick.get(1), F, F, T);
-			RM.compactsmash(IL.BTL_Mud_Brick.get(4), 4, IL.BTL_Mud_Bricks.get(1));
 		} else {
 			RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
 		}
-		
+		RM.compactsmash (IL.BTL_Mud_Brick .get(4), 4, IL.BTL_Mud_Bricks.get(1));
 		RM.compactsmash (IL.BTL_Coral_Mire.get(1), 1, ST.make(MD.BTL, "mireCoralBlock", 1, 0));
 		RM.compactsmash (IL.BTL_Coral_Deep.get(1), 1, ST.make(MD.BTL, "deepWaterCoralBlock", 1, 0));
-		RM.compactunpack(IL.BTL_Compost.get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
-		RM.compact      (IL.FR_Compost .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
+		RM.compactunpack(IL.BTL_Compost   .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
+		RM.compact      (IL.FR_Compost    .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
 		
 		
 		//RM.pressurewash(ST.make(Blocks.mossy_cobblestone, 1, W), ST.make(Blocks.cobblestone, 1, 0));
