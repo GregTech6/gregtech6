@@ -45,6 +45,10 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 1, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', IL.BTL_Mud_Brick);
 		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', IL.BTL_Mud_Brick);
 		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', IL.BTL_Mud_Brick);
+		// Thatch Blocks
+		CR.shaped(ST.make(MD.BTL, "thatch"          , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
+		CR.shaped(ST.make(MD.BTL, "thatchSlope"     , 4, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
+		CR.shaped(ST.make(MD.BTL, "Thatch Slab"     , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
 		// Peat from Peat Blocks
 		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
 		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BTL_Mud});
