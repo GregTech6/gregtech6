@@ -19,6 +19,7 @@
 
 package gregtech.loaders.c;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.*;
 import gregapi.data.CS.*;
@@ -177,7 +178,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
-				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : flList.WoodTar.make(aEntry.mCreosoteAmount), tOutputs);
 			}
 			
 			CR.remove(ST.validMeta(1, aEntry.mLog));
@@ -198,7 +199,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
-				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : flList.WoodTar.make(aEntry.mCreosoteAmount), tOutputs);
 			}
 			
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NCC, "sBf", 'B', aEntry.mBeam);

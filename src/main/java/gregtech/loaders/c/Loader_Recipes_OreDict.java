@@ -19,6 +19,7 @@
 
 package gregtech.loaders.c;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.block.metatype.BlockStones;
 import gregapi.code.ItemStackContainer;
 import gregapi.config.ConfigCategories;
@@ -193,7 +194,7 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			}
 			
 			RM.Lathe        .addRecipe1(T, 16,   80, aEvent.mStack, stickLong.mat(tWood, 4), dust.mat(tWood, 2));
-			RM.CokeOven     .addRecipe1(T,  0, 3600, aEvent.mStack, NF, FL.Oil_Creosote.make(200), OP.gem.mat(MT.Charcoal, 1));
+			RM.CokeOven     .addRecipe1(T,  0, 3600, aEvent.mStack, NF, flList.WoodTar.make(200), OP.gem.mat(MT.Charcoal, 1));
 			
 			if (ST.meta_(aEvent.mStack) == W) {
 				ItemStack tPlank;

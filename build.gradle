@@ -582,15 +582,4 @@ if (!hasProperty("mavenURL")) {
 
 if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
 	task testIfUploadable {}
-
-	uploadArchives {
-		dependsOn jar
-		repositories {
-			mavenDeployer {
-				repository(url: mavenURL) {
-					authentication(userName: mavenUsername, password: mavenPassword)
-				}
-			}
-		}
-	}
 }

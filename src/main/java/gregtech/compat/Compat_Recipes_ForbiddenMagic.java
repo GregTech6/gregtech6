@@ -21,6 +21,7 @@ package gregtech.compat;
 
 import static gregapi.data.CS.*;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
@@ -42,6 +43,6 @@ public class Compat_Recipes_ForbiddenMagic extends CompatMods {
 		RM.ic2_extractor(ST.make(MD.TCFM, "UmbralBush"  , 1, W), ST.make(MD.TCFM, "FMResource", 6, 1));
 		
 		RM.rem_smelting(ST.make(MD.TCFM, "TaintLog", 1, W));
-		RM.CokeOven.addRecipe1(T, 0, 3600, ST.make(MD.TCFM, "TaintLog", 1, W), NF, FL.Oil_Creosote.make(666), ST.make(MD.TCFM, "TaintCoal", 1, 0), ST.make(MD.TCFM, "TaintCoal", 1, 0));
+		RM.CokeOven.addRecipe1(T, 0, 3600, ST.make(MD.TCFM, "TaintLog", 1, W), NF, flList.WoodTar.make(666), ST.make(MD.TCFM, "TaintCoal", 1, 0), ST.make(MD.TCFM, "TaintCoal", 1, 0));
 	}
 }

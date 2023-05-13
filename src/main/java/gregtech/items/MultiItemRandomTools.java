@@ -19,6 +19,7 @@
 
 package gregtech.items;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.GT_API;
 import gregapi.code.IItemContainer;
 import gregapi.cover.covers.CoverTextureCanvas;
@@ -407,7 +408,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tWood             ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Bark           ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
 		RM.Compressor.addRecipe1(T, 16, 16, IL.Pellet_Wood.get(2), ST.make(BlocksGT.Planks, 1, 8));
-		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, FL.Oil_Creosote.make(25), chunkGt.mat(MT.Charcoal, 1));
+		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, flList.WoodTar.make(25), chunkGt.mat(MT.Charcoal, 1));
 		
 		
 		IL.Module_Stone_Generator          .set(addItem(6000, "Stone Generator Module"           , "Generates Stone for Recipes, also known as a Cobble Generator", TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));

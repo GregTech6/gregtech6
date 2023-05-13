@@ -41,11 +41,11 @@ public class Loader_Fuels implements Runnable {
 		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) / 72, OP.dustDiv72.mat(tMat, 1), FL.Calcite.make(  1), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U72, F)));
 		}
 		
-		FM.Burn         .addRecipe0(T, - 16, 48, FL.Oil_ExtraHeavy.make(1)                   , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16, 36, FL.Oil_Heavy.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16, 24, FL.Oil_Medium.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16, 18, FL.Oil_Light.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16, 24, FL.Oil_Normal.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16, 48, FL.Oil_ExtraHeavy.make(1)                   , FL.CarbonDioxide.make(1), OP.dustDiv72.mat(MT.NaCl,2));
+		FM.Burn         .addRecipe0(T, - 16, 36, FL.Oil_Heavy.make(1)                        , FL.CarbonDioxide.make(1), OP.dustDiv72.mat(MT.NaCl,2));
+		FM.Burn         .addRecipe0(T, - 16, 24, FL.Oil_Medium.make(1)                       , FL.CarbonDioxide.make(1), OP.dustDiv72.mat(MT.NaCl,1));
+		FM.Burn         .addRecipe0(T, - 16, 18, FL.Oil_Light.make(1)                        , FL.CarbonDioxide.make(1), OP.dustDiv72.mat(MT.NaCl,1));
+		FM.Burn         .addRecipe0(T, - 16, 24, FL.Oil_Normal.make(1)                       , FL.CarbonDioxide.make(1), OP.dustDiv72.mat(MT.NaCl,1));
 		FM.Burn         .addRecipe0(T, - 16, 18, FL.Oil_Soulsand.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Creosote.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Biomass.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);

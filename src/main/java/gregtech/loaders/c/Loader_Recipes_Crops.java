@@ -19,6 +19,7 @@
 
 package gregtech.loaders.c;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.data.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -73,7 +74,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener(OD.bamboo, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.biomass(ST.amount(4, aEvent.mStack));
-			RM.CokeOven.addRecipe1(F, 0, 1800, ST.amount(1, aEvent.mStack), NF, FL.Oil_Creosote.make(50), IL.GrC_Bamboo_Charcoal.get(1, OP.stick.mat(MT.Charcoal, 1)));
+			RM.CokeOven.addRecipe1(F, 0, 1800, ST.amount(1, aEvent.mStack), NF, flList.WoodTar.make(50), IL.GrC_Bamboo_Charcoal.get(1, OP.stick.mat(MT.Charcoal, 1)));
 		}});
 		
 		
