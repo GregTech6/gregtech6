@@ -72,10 +72,58 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		
 		
 		//TODO other mossy things like betweenstone and pitstone
-		RM.pressurewash(ST.make(MD.BTL, "genericStone"     , 1, 3), ST.make(MD.BTL, "genericStone", 1, 1));
-		RM.pressurewash(ST.make(MD.BTL, "genericStone"     , 1, 2), ST.make(MD.BTL, "genericStone", 1, 1));
-		RM.pressurewash(ST.make(MD.BTL, "mossyTempleBrick" , 1, 0), ST.make(MD.BTL, "templeBrick" , 1, 0));
-		RM.pressurewash(ST.make(MD.BTL, "bloodyTempleBrick", 1, 0), ST.make(MD.BTL, "templeBrick" , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "genericStone"                    , 1, 3), ST.make(MD.BTL, "genericStone"               , 1, 1));
+		RM.pressurewash(ST.make(MD.BTL, "genericStone"                    , 1, 2), ST.make(MD.BTL, "genericStone"               , 1, 1));
+		RM.pressurewash(ST.make(MD.BTL, "mossyTempleBrick"                , 1, 0), ST.make(MD.BTL, "templeBrick"                , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "bloodyTempleBrick"               , 1, 0), ST.make(MD.BTL, "templeBrick"                , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "mossyLimestoneBricks"            , 1, 0), ST.make(MD.BTL, "limestoneBricks"            , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "Mossy Smooth Betweenstone Slab"  , 1, 0), ST.make(MD.BTL, "Smooth Betweenstone Slab"   , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneBrickStairsMossy"    , 1, 0), ST.make(MD.BTL, "betweenstoneBrickStairs"    , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneBrickWallMossy"      , 1, 0), ST.make(MD.BTL, "betweenstoneBrickWall"      , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneTilesMossyCollapsing", 1, 0), ST.make(MD.BTL, "betweenstoneTilesCollapsing", 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneSmoothStairsMossy"   , 1, 0), ST.make(MD.BTL, "smoothBetweenstoneStairs"   , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "Mossy Betweenstone Brick Slab"   , 1, 0), ST.make(MD.BTL, "Betweenstone Brick Slab"    , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "smoothBetweenstoneWallMossy"     , 1, 0), ST.make(MD.BTL, "smoothBetweenstoneWall"     , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneSmoothMossy"         , 1, 0), ST.make(MD.BTL, "smoothBetweenstone"         , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneTilesMossy"          , 1, 0), ST.make(MD.BTL, "betweenstoneTiles"          , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "betweenstoneBricksMossy"         , 1, 0), ST.make(MD.BTL, "betweenstoneBricks"         , 1, 0));
+		
+		ST.make(MD.BTL, "limestone"                        , 1, 0);// Limestone
+		ST.make(MD.BTL, "limestoneBricks"                  , 1, 0);// Limestone Bricks
+		ST.make(MD.BTL, "chiseledLimestone"                , 1, 0);// Chiseled Limestone
+		ST.make(MD.BTL, "crackedLimestoneBricks"           , 1, 0);// Cracked Limestone Bricks
+		ST.make(MD.BTL, "mossyLimestoneBricks"             , 1, 0);// Mossy Limestone Bricks
+		ST.make(MD.BTL, "polishedLimestone"                , 1, 0);// Polished Limestone
+		ST.make(MD.BTL, "polishedLimestoneCollapsing"      , 1, 0);// Weak Polished Limestone
+		ST.make(MD.BTL, "limestoneTiles"                   , 1, 0);// Limestone Tiles
+		
+		ST.make(MD.BTL, "limestonePillar"                  , 1, 0);// Limestone Pillar
+		ST.make(MD.BTL, "limestoneWall"                    , 1, 0);// Limestone Wall
+		ST.make(MD.BTL, "limestoneStairs"                  , 1, 0);// Limestone Stairs
+		ST.make(MD.BTL, "Limestone Slab"                   , 1, 0);// Limestone Slab
+		ST.make(MD.BTL, "limestoneBrickWall"               , 1, 0);// Limestone Brick Wall
+		ST.make(MD.BTL, "limestoneBrickStairs"             , 1, 0);// Limestone Brick Stairs
+		ST.make(MD.BTL, "Limestone Brick Slab"             , 1, 0);// Limestone Brick Slab
+		
+		
+		ST.make(MD.BTL, "pitstoneBrickStairs"              , 1, 0);// Pitstone Brick Stairs
+		ST.make(MD.BTL, "pitstoneBrickWall"                , 1, 0);// Pitstone Brick Wall
+		ST.make(MD.BTL, "Mossy Smooth Betweenstone Slab"   , 1, 0);// Mossy Smooth Betweenstone Slab
+		ST.make(MD.BTL, "Smooth Betweenstone Slab"         , 1, 0);// Smooth Betweenstone Slab
+		ST.make(MD.BTL, "betweenstonePillar"               , 1, 0);// Betweenstone Pillar
+		ST.make(MD.BTL, "betweenstoneBrickStairsMossy"     , 1, 0);// Mossy Betweenstone Brick Stairs
+		ST.make(MD.BTL, "betweenstoneBrickWallMossy"       , 1, 0);// Mossy Betweenstone Brick Wall
+		ST.make(MD.BTL, "smoothBetweenstoneWall"           , 1, 0);// Smooth Betweenstone Wall
+		ST.make(MD.BTL, "betweenstoneBrickWallCracked"     , 1, 0);// Cracked Betweenstone Brick Wall
+		ST.make(MD.BTL, "betweenstoneBrickStairsCracked"   , 1, 0);// Cracked Betweenstone Brick Stairs
+		
+		ST.make(MD.BTL, "smoothBetweenstoneButton"         , 1, 0);// Betweenstone Button
+		ST.make(MD.BTL, "betweenstonePressurePlate"        , 1, 0);// Betweenstone Pressure Plate
+		
+		ST.make(MD.BTL, "chiseledPitstone"                 , 1, 0);// Chiseled Pitstone
+		
+		ST.make(MD.BTL, "betweenstoneTiles"                , 1, 0);// Betweenstone Tiles
+		ST.make(MD.BTL, "betweenstoneTilesMossyCollapsing" , 1, 0);// Weak Mossy Betweenstone Tiles
 		
 		
 		
