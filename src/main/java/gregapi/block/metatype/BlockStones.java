@@ -373,6 +373,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
+		CR.shaped(ST.make(this, 1, CRACK), CR.DEF    , "y" , "X" , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 1, CRACK), CR.DEF    , "h" , "X" , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 1, RNFBR), CR.DEF_MIR, "Se", "X ", 'X', tStack.toStack(), 'S', OP.stick.dat(ANY.Iron));
 		CR.shaped(ST.make(this, 1, RSTBR), CR.DEF    , "Dh", "X ", 'X', tStack.toStack(), 'D', OD.itemRedstone);

@@ -71,7 +71,6 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		RM.compact      (IL.FR_Compost    .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
 		
 		
-		//TODO other mossy things like betweenstone and pitstone
 		RM.pressurewash(ST.make(MD.BTL, "genericStone"                    , 1, 3), ST.make(MD.BTL, "genericStone"               , 1, 1));
 		RM.pressurewash(ST.make(MD.BTL, "genericStone"                    , 1, 2), ST.make(MD.BTL, "genericStone"               , 1, 1));
 		RM.pressurewash(ST.make(MD.BTL, "mossyTempleBrick"                , 1, 0), ST.make(MD.BTL, "templeBrick"                , 1, 0));
@@ -88,12 +87,14 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		RM.pressurewash(ST.make(MD.BTL, "betweenstoneTilesMossy"          , 1, 0), ST.make(MD.BTL, "betweenstoneTiles"          , 1, 0));
 		RM.pressurewash(ST.make(MD.BTL, "betweenstoneBricksMossy"         , 1, 0), ST.make(MD.BTL, "betweenstoneBricks"         , 1, 0));
 		
-		ST.make(MD.BTL, "limestone"                        , 1, 0);// Limestone
-		ST.make(MD.BTL, "limestoneBricks"                  , 1, 0);// Limestone Bricks
-		ST.make(MD.BTL, "chiseledLimestone"                , 1, 0);// Chiseled Limestone
-		ST.make(MD.BTL, "crackedLimestoneBricks"           , 1, 0);// Cracked Limestone Bricks
+		
+		RM.stones(MT.STONES.Limestone   , F, ST.make(MD.BTL, "limestone"                        , 1, 0), NI, ST.make(MD.BTL, "limestoneBricks"                  , 1, 0), ST.make(MD.BTL, "crackedLimestoneBricks"           , 1, 0), ST.make(MD.BTL, "chiseledLimestone"                , 1, 0), ST.make(MD.BTL, "polishedLimestone"                , 1, 0));
+	//  RM.stones(MT.STONES.Betweenstone, F, NI, NI, NI, NI, NI, NI);
+	//  RM.stones(MT.STONES.Pitstone    , F, NI, NI, NI, NI, NI, NI);
+	//  RM.stones(MT.STONES.Cragrock    , F, NI, NI, NI, NI, NI, NI);
+	//  RM.stones(MT.STONES.Templerock  , F, NI, NI, NI, NI, NI, NI);
+		
 		ST.make(MD.BTL, "mossyLimestoneBricks"             , 1, 0);// Mossy Limestone Bricks
-		ST.make(MD.BTL, "polishedLimestone"                , 1, 0);// Polished Limestone
 		ST.make(MD.BTL, "polishedLimestoneCollapsing"      , 1, 0);// Weak Polished Limestone
 		ST.make(MD.BTL, "limestoneTiles"                   , 1, 0);// Limestone Tiles
 		

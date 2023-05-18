@@ -735,7 +735,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (OreDictMaterial tMat2 : ANY.Fe.mToThis) if (tMat2 != MT.Enori)
 		RM.RollBender   .addRecipe1(T, 16,  256, plateCurved.mat(tMat2, 3), ST.make(Items.bucket, 1, 0));
 		
-		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stone, 1, W), ST.make(Blocks.stonebrick, 1, 3));
+		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stone     , 1, W), ST.make(Blocks.stonebrick, 1, 3));
 		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stonebrick, 1, 0), ST.make(Blocks.stonebrick, 1, 2));
 		
 		
