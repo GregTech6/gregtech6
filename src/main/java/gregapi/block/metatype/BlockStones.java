@@ -434,7 +434,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shapeless(ST.make(this, 1, QBRIK), CR.DEF, new Object[] {tStack.toStack()});
 		}
@@ -443,7 +443,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		}
 		
@@ -451,7 +451,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		}
 		
@@ -459,7 +459,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shapeless(ST.make(this, 1, WINDB), CR.DEF, new Object[] {tStack.toStack()});
 		}
@@ -468,7 +468,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shapeless(ST.make(this, 1, WINDA), CR.DEF, new Object[] {tStack.toStack()});
 		}
@@ -477,7 +477,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shapeless(ST.make(this, 1, TILES), CR.DEF, new Object[] {tStack.toStack()});
 		}
