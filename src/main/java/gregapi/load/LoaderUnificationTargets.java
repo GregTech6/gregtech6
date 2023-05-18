@@ -553,8 +553,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Octine                 , MD.BTL, "unknownGeneric", 15);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Octine                 , MD.BTL, "octineBlock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreBetweenstone, MT.Octine                 , MD.BTL, "octineOre", 0);
-		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Betweenstone    , MD.BTL, "betweenstone", 0);
-		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Pitstone        , MD.BTL, "pitstone", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Betweenstone    , MD.BTL, "smoothBetweenstone", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Pitstone        , MD.BTL, "smoothPitstone", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Cragrock        , MD.BTL, "smoothCragrock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Templerock      , MD.BTL, "smoothTempleBrick", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Limestone       , MD.BTL, "limestone", 0);

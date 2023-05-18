@@ -1048,6 +1048,22 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		if (MD.BTL.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.Pitstone                 , ST.make(MD.BTL, "pitstoneTiles"               , 1, 0));// Pitstone Tiles
+			OM.reg(OP.stone, MT.STONES.Pitstone                 , ST.make(MD.BTL, "pitstone"                    , 1, 0));// Pitstone
+			OM.reg(OP.stone, MT.STONES.Pitstone                 , ST.make(MD.BTL, "pitstoneBricks"              , 1, 0));// Pitstone Bricks
+			OM.reg(OP.stone, MT.STONES.Pitstone                 , ST.make(MD.BTL, "smoothPitstone"              , 1, 0));// Smooth Pitstone
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "smoothBetweenstone"          , 1, 0));// Smooth Betweenstone
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstone"                , 1, 0));// Betweenstone
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneSmoothMossy"     , 1, 0));// Mossy Smooth Betweenstone
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneBricks"          , 1, 0));// Betweenstone Bricks
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneBricksCracked"   , 1, 0));// Cracked Betweenstone Brick
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneBricksMossy"     , 1, 0));// Mossy Betweenstone Bricks
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneTilesCollapsing" , 1, 0));// Weak Betweenstone Tiles
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneTilesCracked"    , 1, 0));// Cracked Betweenstone Tiles
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneTilesFortress"   , 1, 0));// Glowing Betweenstone Tile
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "chiseledBetweenstone"        , 1, 0));// Chiseled Betweenstone
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneTilesMossy"      , 1, 0));// Mossy Betweenstone Tiles
+			OM.reg(OP.stone, MT.STONES.Betweenstone             , ST.make(MD.BTL, "betweenstoneBricksMirage"    , 1, 0));// Betweenstone Bricks Mirage
 			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "smoothCragrock"              , 1, 0));// Smooth Cragrock
 			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "genericStone"                , 1, 1));// Cragrock
 			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "genericStone"                , 1, 3));// Mossy Cragrock Bottom
@@ -1771,6 +1787,18 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.ERE, "materials"                         , 1,  16, MT.Bone               ,  U * 9);
 		OM.data(MD.ERE, "reinExo"                           , 1,   0, MT.Bone               ,  U *36);
 		
+		OM.data(MD.BTL, "pitstonePillar"                    , 1,   0, MT.STONES.Pitstone    ,  U * 9);// Pitstone Pillar
+		OM.data(MD.BTL, "smoothPitstoneWall"                , 1,   0, MT.STONES.Pitstone    ,  U * 9);// Smooth Pitstone Wall
+		OM.data(MD.BTL, "smoothPitstoneStairs"              , 1,   0, MT.STONES.Pitstone    ,  U4*27);// Smooth Pitstone Stairs
+		OM.data(MD.BTL, "Smooth Pitstone Slab"              , 1,   0, MT.STONES.Pitstone    ,  U2* 9);// Smooth Pitstone Slab
+		OM.data(MD.BTL, "smoothBetweenstoneWallMossy"       , 1,   0, MT.STONES.Betweenstone,  U * 9);// Mossy Smooth Betweenstone Wall
+		OM.data(MD.BTL, "betweenstoneSmoothStairsMossy"     , 1,   0, MT.STONES.Betweenstone,  U4*27);// Mossy Smooth Betweenstone Stairs
+		OM.data(MD.BTL, "betweenstoneBrickWall"             , 1,   0, MT.STONES.Betweenstone,  U * 9);// Betweenstone Brick Wall
+		OM.data(MD.BTL, "betweenstoneBrickStairs"           , 1,   0, MT.STONES.Betweenstone,  U4*27);// Betweenstone Brick Stairs
+		OM.data(MD.BTL, "Betweenstone Brick Slab"           , 1,   0, MT.STONES.Betweenstone,  U2* 9);// Betweenstone Brick Slab
+		OM.data(MD.BTL, "smoothBetweenstoneStairs"          , 1,   0, MT.STONES.Betweenstone,  U4*27);// Smooth Betweenstone Stairs
+		OM.data(MD.BTL, "Cracked Betweenstone Brick Slab"   , 1,   0, MT.STONES.Betweenstone,  U2* 9);// Cracked Betweenstone Brick Slab
+		OM.data(MD.BTL, "Mossy Betweenstone Brick Slab"     , 1,   0, MT.STONES.Betweenstone,  U2* 9);// Mossy Betweenstone Brick Slab
 		OM.data(MD.BTL, "cragrockPillar"                    , 1,   0, MT.STONES.Cragrock    ,  U * 9);// Cragrock Pillar
 		OM.data(MD.BTL, "cragrockWall"                      , 1,   0, MT.STONES.Cragrock    ,  U * 9);// Cragrock Brick Wall
 		OM.data(MD.BTL, "cragrockBrickStairs"               , 1,   0, MT.STONES.Cragrock    ,  U4*27);// Cragrock Brick Stairs
@@ -1779,9 +1807,9 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BTL, "smoothCragrockStairs"              , 1,   0, MT.STONES.Cragrock    ,  U4*27);// Smooth Cragrock Stairs
 		OM.data(MD.BTL, "Smooth Cragrock Slab"              , 1,   0, MT.STONES.Cragrock    ,  U2* 9);// Smooth Cragrock Slab
 		OM.data(MD.BTL, "templePillar"                      , 1,   0, MT.STONES.Templerock  ,  U * 9);// Temple Pillar
+		OM.data(MD.BTL, "templeBrickWall"                   , 1,   0, MT.STONES.Templerock  ,  U * 9);// Temple Brick Wall
 		OM.data(MD.BTL, "templeBrickStairs"                 , 1,   0, MT.STONES.Templerock  ,  U4*27);// Temple Brick Stairs
 		OM.data(MD.BTL, "Temple Brick Slab"                 , 1,   0, MT.STONES.Templerock  ,  U2* 9);// Temple Brick Slab
-		OM.data(MD.BTL, "templeBrickWall"                   , 1,   0, MT.STONES.Templerock  ,  U * 9);// Temple Brick Wall
 		OM.data(MD.BTL, "bronzeCircleBrick"                 , 1,   0, MT.Bronze             ,  U * 1);
 		OM.data(MD.BTL, "silverCircleBrick"                 , 1,   0, MT.Ag                 ,  U * 1);
 		OM.data(MD.BTL, "goldCircleBrick"                   , 1,   0, MT.Au                 ,  U * 1);

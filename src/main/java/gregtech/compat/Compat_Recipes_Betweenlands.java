@@ -79,6 +79,45 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		
 		
 		
+		
+		
+		
+		ST.make(MD.BTL, "smoothPitstoneStairs"              , 1, 0);// Smooth Pitstone Stairs
+		ST.make(MD.BTL, "Smooth Pitstone Slab"              , 1, 0);// Smooth Pitstone Slab
+		ST.make(MD.BTL, "smoothPitstoneWall"                , 1, 0);// Smooth Pitstone Wall
+		ST.make(MD.BTL, "pitstonePillar"                    , 1, 0);// Pitstone Pillar
+		
+		ST.make(MD.BTL, "pitstoneTiles"                     , 1, 0);// Pitstone Tiles
+		ST.make(MD.BTL, "pitstone"                          , 1, 0);// Pitstone
+		ST.make(MD.BTL, "pitstoneBricks"                    , 1, 0);// Pitstone Bricks
+		
+		ST.make(MD.BTL, "smoothPitstone"                    , 1, 0);// Smooth Pitstone
+		
+		ST.make(MD.BTL, "smoothBetweenstoneStairs"          , 1, 0);// Smooth Betweenstone Stairs
+		ST.make(MD.BTL, "betweenstoneSmoothStairsMossy"     , 1, 0);// Mossy Smooth Betweenstone Stairs
+		ST.make(MD.BTL, "betweenstoneBrickStairs"           , 1, 0);// Betweenstone Brick Stairs
+		
+		ST.make(MD.BTL, "Betweenstone Brick Slab"           , 1, 0);// Betweenstone Brick Slab
+		ST.make(MD.BTL, "Cracked Betweenstone Brick Slab"   , 1, 0);// Cracked Betweenstone Brick Slab
+		ST.make(MD.BTL, "Mossy Betweenstone Brick Slab"     , 1, 0);// Mossy Betweenstone Brick Slab
+		
+		ST.make(MD.BTL, "betweenstoneBrickWall"             , 1, 0);// Betweenstone Brick Wall
+		ST.make(MD.BTL, "smoothBetweenstoneWallMossy"       , 1, 0);// Mossy Smooth Betweenstone Wall
+		
+		ST.make(MD.BTL, "smoothBetweenstone"                , 1, 0);// Smooth Betweenstone
+		ST.make(MD.BTL, "betweenstone"                      , 1, 0);// Betweenstone
+		ST.make(MD.BTL, "betweenstoneSmoothMossy"           , 1, 0);// Mossy Smooth Betweenstone
+		ST.make(MD.BTL, "betweenstoneBricks"                , 1, 0);// Betweenstone Bricks
+		ST.make(MD.BTL, "betweenstoneBricksCracked"         , 1, 0);// Cracked Betweenstone Brick
+		ST.make(MD.BTL, "betweenstoneBricksMossy"           , 1, 0);// Mossy Betweenstone Bricks
+		ST.make(MD.BTL, "betweenstoneTilesCollapsing"       , 1, 0);// Weak Betweenstone Tiles
+		ST.make(MD.BTL, "betweenstoneTilesCracked"          , 1, 0);// Cracked Betweenstone Tiles
+		ST.make(MD.BTL, "betweenstoneTilesFortress"         , 1, 0);// Glowing Betweenstone Tile
+		ST.make(MD.BTL, "chiseledBetweenstone"              , 1, 0);// Chiseled Betweenstone
+		ST.make(MD.BTL, "betweenstoneTilesMossy"            , 1, 0);// Mossy Betweenstone Tiles
+		
+		ST.make(MD.BTL, "betweenstoneBricksMirage"          , 1, 0);// Betweenstone Bricks Mirage
+		
 		ST.make(MD.BTL, "smoothCragrock"                    , 1, 0);// Smooth Cragrock
 		ST.make(MD.BTL, "genericStone"                      , 1, 1);// Cragrock
 		ST.make(MD.BTL, "genericStone"                      , 1, 3);// Mossy Cragrock Bottom
