@@ -3970,7 +3970,7 @@ public class MT {
 		Selenite                    = unused    ("Selenite"                   ),
 		Jet                         = unused    ("Jet"                        ),
 		Microcline                  = unused    ("Microcline"                 ),
-		Serpentine                  = unused    ("Serpentine"                 ),
+		Serpentine                  = unused    ("Serpentine"                 ),// byproduct pietersite, which is a fake? Tiger eye
 		Sylvite                     = unused    ("Sylvite"                    ),
 		Goshen                      = unused    ("Goshen"                     ),
 		Joshen                      = unused    ("Joshen"                     ),

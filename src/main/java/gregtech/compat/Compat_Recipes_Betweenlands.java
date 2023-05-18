@@ -49,6 +49,12 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		CR.shaped(ST.make(MD.BTL, "thatch"          , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
 		CR.shaped(ST.make(MD.BTL, "thatchSlope"     , 4, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
 		CR.shaped(ST.make(MD.BTL, "Thatch Slab"     , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
+		CR.shaped(ST.make(MD.BTL, "thatchSlope"     , 4, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', ST.make(MD.BTL, "thatch"        , 1, 0));
+		CR.shaped(ST.make(MD.BTL, "Thatch Slab"     , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', ST.make(MD.BTL, "thatch"        , 1, 0));
+		CR.shapeless(ST.make(MD.BTL, "unknownGeneric", 1, 9), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "thatch"     , 1, 0)});
+		CR.shapeless(ST.make(MD.BTL, "thatch"        , 1, 0), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "Thatch Slab", 1, 0), ST.make(MD.BTL, "Thatch Slab", 1, 0)});
+		CR.shapeless(ST.make(MD.BTL, "thatch"        , 3, 0), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0)});
+		CR.shapeless(ST.make(MD.BTL, "Thatch Slab"   , 3, 0), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0)});
 		// Peat from Peat Blocks
 		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
 		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BTL_Mud});
@@ -65,8 +71,44 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		RM.compact      (IL.FR_Compost    .get(9), 9, ST.make(MD.BTL, "blockOfCompost", 1, 0));
 		
 		
-		//RM.pressurewash(ST.make(Blocks.mossy_cobblestone, 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		//RM.pressurewash(ST.make(Blocks.stonebrick       , 1, 2), ST.make(Blocks.stonebrick , 1, 0));
+		//TODO other mossy things like betweenstone and pitstone
+		RM.pressurewash(ST.make(MD.BTL, "genericStone"     , 1, 3), ST.make(MD.BTL, "genericStone", 1, 1));
+		RM.pressurewash(ST.make(MD.BTL, "genericStone"     , 1, 2), ST.make(MD.BTL, "genericStone", 1, 1));
+		RM.pressurewash(ST.make(MD.BTL, "mossyTempleBrick" , 1, 0), ST.make(MD.BTL, "templeBrick" , 1, 0));
+		RM.pressurewash(ST.make(MD.BTL, "bloodyTempleBrick", 1, 0), ST.make(MD.BTL, "templeBrick" , 1, 0));
+		
+		
+		
+		ST.make(MD.BTL, "smoothCragrock"                    , 1, 0);// Smooth Cragrock
+		ST.make(MD.BTL, "genericStone"                      , 1, 1);// Cragrock
+		ST.make(MD.BTL, "genericStone"                      , 1, 3);// Mossy Cragrock Bottom
+		ST.make(MD.BTL, "genericStone"                      , 1, 2);// Mossy Cragrock Top
+		ST.make(MD.BTL, "cragrockBrick"                     , 1, 0);// Cragrock Bricks
+		ST.make(MD.BTL, "cragTiles"                         , 1, 0);// Cragrock Tiles
+		ST.make(MD.BTL, "carvedCrag"                        , 1, 0);// Chiseled Cragrock
+		ST.make(MD.BTL, "glowingSmoothCragrock"             , 1, 0);// Glowing Smooth Cragrock
+		ST.make(MD.BTL, "cragrockPillar"                    , 1, 0);// Cragrock Pillar
+		ST.make(MD.BTL, "cragrockBrickStairs"               , 1, 0);// Cragrock Brick Stairs
+		ST.make(MD.BTL, "Cragrock Brick Slab"               , 1, 0);// Cragrock Brick Slab
+		ST.make(MD.BTL, "cragrockWall"                      , 1, 0);// Cragrock Brick Wall
+		ST.make(MD.BTL, "smoothCragrockStairs"              , 1, 0);// Smooth Cragrock Stairs
+		ST.make(MD.BTL, "Smooth Cragrock Slab"              , 1, 0);// Smooth Cragrock Slab
+		ST.make(MD.BTL, "smoothCragrockWall"                , 1, 0);// Smooth Cragrock Wall
+		
+		ST.make(MD.BTL, "smoothTempleBrick"                 , 1, 0);// Smooth Temple Brick
+		ST.make(MD.BTL, "templeBrick"                       , 1, 0);// Temple Bricks
+		ST.make(MD.BTL, "crackedTempleBrick"                , 1, 0);// Cracked Temple Brick
+		ST.make(MD.BTL, "carvedTempleBrick"                 , 1, 0);// Chiseled Temple Brick
+		ST.make(MD.BTL, "bloodyTempleBrick"                 , 1, 0);// Bloody Temple Brick
+		ST.make(MD.BTL, "mossyTempleBrick"                  , 1, 0);// Mossy Temple Brick
+		ST.make(MD.BTL, "templePillar"                      , 1, 0);// Temple Pillar
+		ST.make(MD.BTL, "templeBrickStairs"                 , 1, 0);// Temple Brick Stairs
+		ST.make(MD.BTL, "Temple Brick Slab"                 , 1, 0);// Temple Brick Slab
+		ST.make(MD.BTL, "templeBrickWall"                   , 1, 0);// Temple Brick Wall
+		
+		
+		
+		
 		
 		
 		

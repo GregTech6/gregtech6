@@ -1047,6 +1047,23 @@ public class LoaderItemData implements Runnable {
 			}
 		}
 		
+		if (MD.BTL.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "smoothCragrock"              , 1, 0));// Smooth Cragrock
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "genericStone"                , 1, 1));// Cragrock
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "genericStone"                , 1, 3));// Mossy Cragrock Bottom
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "genericStone"                , 1, 2));// Mossy Cragrock Top
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "cragrockBrick"               , 1, 0));// Cragrock Bricks
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "cragTiles"                   , 1, 0));// Cragrock Tiles
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "carvedCrag"                  , 1, 0));// Chiseled Cragrock
+			OM.reg(OP.stone, MT.STONES.Cragrock                 , ST.make(MD.BTL, "glowingSmoothCragrock"       , 1, 0));// Glowing Smooth Cragrock
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "smoothTempleBrick"           , 1, 0));// Smooth Temple Brick
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "templeBrick"                 , 1, 0));// Temple Bricks
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "crackedTempleBrick"          , 1, 0));// Cracked Temple Brick
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "carvedTempleBrick"           , 1, 0));// Chiseled Temple Brick
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "bloodyTempleBrick"           , 1, 0));// Bloody Temple Brick
+			OM.reg(OP.stone, MT.STONES.Templerock               , ST.make(MD.BTL, "mossyTempleBrick"            , 1, 0));// Mossy Temple Brick
+		}
+		
 		if (MD.ERE.mLoaded) {
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 2));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 3));
@@ -1754,7 +1771,17 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.ERE, "materials"                         , 1,  16, MT.Bone               ,  U * 9);
 		OM.data(MD.ERE, "reinExo"                           , 1,   0, MT.Bone               ,  U *36);
 		
-		
+		OM.data(MD.BTL, "cragrockPillar"                    , 1,   0, MT.STONES.Cragrock    ,  U * 9);// Cragrock Pillar
+		OM.data(MD.BTL, "cragrockWall"                      , 1,   0, MT.STONES.Cragrock    ,  U * 9);// Cragrock Brick Wall
+		OM.data(MD.BTL, "cragrockBrickStairs"               , 1,   0, MT.STONES.Cragrock    ,  U4*27);// Cragrock Brick Stairs
+		OM.data(MD.BTL, "Cragrock Brick Slab"               , 1,   0, MT.STONES.Cragrock    ,  U2* 9);// Cragrock Brick Slab
+		OM.data(MD.BTL, "smoothCragrockWall"                , 1,   0, MT.STONES.Cragrock    ,  U * 9);// Smooth Cragrock Wall
+		OM.data(MD.BTL, "smoothCragrockStairs"              , 1,   0, MT.STONES.Cragrock    ,  U4*27);// Smooth Cragrock Stairs
+		OM.data(MD.BTL, "Smooth Cragrock Slab"              , 1,   0, MT.STONES.Cragrock    ,  U2* 9);// Smooth Cragrock Slab
+		OM.data(MD.BTL, "templePillar"                      , 1,   0, MT.STONES.Templerock  ,  U * 9);// Temple Pillar
+		OM.data(MD.BTL, "templeBrickStairs"                 , 1,   0, MT.STONES.Templerock  ,  U4*27);// Temple Brick Stairs
+		OM.data(MD.BTL, "Temple Brick Slab"                 , 1,   0, MT.STONES.Templerock  ,  U2* 9);// Temple Brick Slab
+		OM.data(MD.BTL, "templeBrickWall"                   , 1,   0, MT.STONES.Templerock  ,  U * 9);// Temple Brick Wall
 		OM.data(MD.BTL, "bronzeCircleBrick"                 , 1,   0, MT.Bronze             ,  U * 1);
 		OM.data(MD.BTL, "silverCircleBrick"                 , 1,   0, MT.Ag                 ,  U * 1);
 		OM.data(MD.BTL, "goldCircleBrick"                   , 1,   0, MT.Au                 ,  U * 1);
