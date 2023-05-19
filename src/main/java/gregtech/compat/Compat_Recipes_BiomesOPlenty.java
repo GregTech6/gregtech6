@@ -37,7 +37,7 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 	public Compat_Recipes_BiomesOPlenty(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing BoP Recipes.");
-		RM.add_smelting(IL.Mud_Ball    .get(1), IL.BoP_Mud_Brick.get(1), F, F, T);
+		RM.add_smelting(IL.BoP_Mud     .get(1), IL.BoP_Mud_Brick.get(1), T, F, T);
 		RM.add_smelting(IL.BoP_Mud_Ball.get(1), IL.BoP_Mud_Brick.get(1), T, F, T);
 		
 		RM.compactsmash(IL.BoP_Celestial.get(4), 4, IL.BoP_Celestial_Block.get(1));
@@ -45,6 +45,8 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.compactsmash(IL.BoP_Mud_Brick.get(4), 4, IL.BoP_Mud_Bricks.get(1));
 		RM.compact     (IL.BoP_Mud_Ball .get(4), 4, IL.BoP_Mud.get(1));
 		RM.compact     (IL.BoP_Ashes    .get(4), 4, IL.BoP_Ashes_Block.get(1));
+		
+		CR.shapeless(IL.BoP_Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BoP_Mud});
 		
 		RM.biomass(ST.make(MD.BoP, "flowers", 16, W));
 		RM.biomass(ST.make(MD.BoP, "flowers2", 16, W));

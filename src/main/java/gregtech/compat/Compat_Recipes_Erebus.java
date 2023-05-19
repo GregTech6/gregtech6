@@ -35,6 +35,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.rockGt;
+import static gregapi.util.CR.DEF;
+import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Compat_Recipes_Erebus extends CompatMods {
 	public Compat_Recipes_Erebus(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -67,15 +69,14 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
 		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
 		
-		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.ERE_Mud_Brick.get(1), F, F, T);
-		/* TODO Fix Mud Ratio first!
-		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.ERE_Mud_Brick.get(4), F, F, T);
+		// Mud Bricks
+		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.ERE_Mud});
 		RM.compactsmash(IL.ERE_Mud_Brick.get(4), 4, IL.ERE_Mud_Bricks.get(1));
-		 */
-		
+		RM.add_smelting(IL.ERE_Mud.get(1), IL.ERE_Mud_Brick.get(1), T, F, T);
 		CR.delate(MD.ERE, "mirbrick");
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
-		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
+		CR.shaped(IL.ERE_Mud_Bricks.get(1), DEF | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.ERE_Mud_Brick);
+		CR.shaped(ST.make(MD.ERE, "mirbrick", 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
+		CR.shaped(ST.make(MD.ERE, "mirbrick", 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
 		
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));

@@ -41,10 +41,20 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		// Weedwood Bowl
 		CR.shaped(ST.make(MD.BTL, "unknownGeneric"  , 1,25), DEF     | DEL_OTHER_SHAPED_RECIPES,  "k" ,  "X" , 'X', OD.plankWeedwood);
 		// Mud Bricks
+		RM.add_smelting(IL.BTL_Mud.get(1), IL.BTL_Mud_Brick.get(1), T, F, T);
+		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BTL_Mud});
 		CR.shaped(IL.BTL_Mud_Bricks                 .get(1), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.BTL_Mud_Brick);
-		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 1, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', IL.BTL_Mud_Brick);
-		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', IL.BTL_Mud_Brick);
-		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', IL.BTL_Mud_Brick);
+		CR.shaped(IL.BTL_Mud_Bricks                 .get(3), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', ST.make(MD.BTL, "mudBrickStairs", 1, 0));
+		CR.shaped(IL.BTL_Mud_Bricks                 .get(1), DEF     | DEL_OTHER_SHAPED_RECIPES,  "B" ,  "B" , 'B', ST.make(MD.BTL, "Mud Brick Slab", 1, 0));
+		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 2, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', ST.make(MD.BTL, "Mud Brick Slab", 1, 0));
+		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 1, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', OD.itemMudBrick);
+		CR.shaped(ST.make(MD.BTL, "mudBrickStairs"  , 4, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', OD.blockMudBricks);
+		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', OD.itemMudBrick);
+		CR.shaped(ST.make(MD.BTL, "Mud Brick Slab"  , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES,        "BB" , 'B', OD.blockMudBricks);
+		CR.shaped(ST.make(MD.BTL, "mudBrickWall"    , 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, " B ", "BBB", 'B', OD.itemMudBrick);
+		CR.shaped(ST.make(MD.BTL, "mudBrickWall"    , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, " B ", "BBB", 'B', OD.blockMudBricks);
+		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 1, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', OD.itemMudBrick);
+		CR.shaped(ST.make(MD.BTL, "mudFlowerPotItem", 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "B B", " B ", 'B', OD.blockMudBricks);
 		// Thatch Blocks
 		CR.shaped(ST.make(MD.BTL, "thatch"          , 4, 0), DEF     | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
 		CR.shaped(ST.make(MD.BTL, "thatchSlope"     , 4, 0), DEF_MIR | DEL_OTHER_SHAPED_RECIPES, " B" , "BB" , 'B', ST.make(MD.BTL, "unknownGeneric", 1, 9));
@@ -57,13 +67,8 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		CR.shapeless(ST.make(MD.BTL, "Thatch Slab"   , 3, 0), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0)});
 		// Peat from Peat Blocks
 		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
-		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.BTL_Mud});
 		
-		if (MD.BoP.mLoaded) {
-			RM.add_smelting(IL.Mud_Ball.get(1), IL.BTL_Mud_Brick.get(1), F, F, T);
-		} else {
-			RM.add_smelting(IL.BTL_Mud .get(1), IL.BTL_Mud_Brick.get(4), T, F, T);
-		}
+		
 		RM.compactsmash (IL.BTL_Mud_Brick .get(4), 4, IL.BTL_Mud_Bricks.get(1));
 		RM.compactsmash (IL.BTL_Coral_Mire.get(1), 1, ST.make(MD.BTL, "mireCoralBlock", 1, 0));
 		RM.compactsmash (IL.BTL_Coral_Deep.get(1), 1, ST.make(MD.BTL, "deepWaterCoralBlock", 1, 0));
