@@ -320,6 +320,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.cobblestone, 1, 0));
+		RM.growmoss(tStack.toStack(), ST.make(this, 1, MCOBL));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shaped(ST.make(mSlabs[0]          , 4, COBBL), CR.DEF    , "  " , "XX" , 'X', tStack.toStack());
 		CR.shaped(ST.make(Blocks.stone_stairs    , 4, 0), CR.DEF_MIR, " X" , "XX" , 'X', tStack.toStack()); // TODO Stairs
@@ -362,7 +363,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.mossy_cobblestone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
-		RM.pressurewash(tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.cleanmoss(ST.make(this, 1, COBBL), tStack.toStack());
 		}
 		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[BRICK]) {
@@ -372,6 +373,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
+		RM.growmoss(tStack.toStack(), ST.make(this, 1, MBRIK));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shaped(ST.make(this, 1, CRACK), CR.DEF    , "y" , "X" , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 1, CRACK), CR.DEF    , "h" , "X" , 'X', tStack.toStack());
@@ -384,6 +386,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 2));
+		RM.growmoss(tStack.toStack(), ST.make(this, 1, MBRIK));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		}
 		
@@ -393,7 +396,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 1));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
-		RM.pressurewash(tStack.toStack(), ST.make(this, 1, BRICK));
+		RM.cleanmoss(ST.make(this, 1, BRICK), tStack.toStack());
 		}
 		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[CHISL]) {

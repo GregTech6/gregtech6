@@ -1024,7 +1024,7 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Mud_Bricks                       .set(ST.make(MD.ERE, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);
 		IL.ERE_Spray_Repellant                  .set(ST.make(MD.ERE, "sprayCan"                             , 1, 0), null, CR.DELATE);
 		IL.ERE_Herbicide                        .set(ST.make(MD.ERE, "planticide"                           , 1, 0));
-		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
+		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemCompost);
 		IL.ERE_Bamboo                           .set(ST.make(MD.ERE, "materials"                            , 1, 3), new OreDictItemData(MT.Bamboo, U4), OD.bamboo);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));

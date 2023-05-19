@@ -73,10 +73,65 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shapeless(IL.Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.ERE_Mud});
 		RM.compactsmash(IL.ERE_Mud_Brick.get(4), 4, IL.ERE_Mud_Bricks.get(1));
 		RM.add_smelting(IL.ERE_Mud.get(1), IL.ERE_Mud_Brick.get(1), T, F, T);
-		CR.delate(MD.ERE, "mirbrick");
+		CR.delate(MD.ERE, "mirbrick", "petrifiedWoodPlanks");
 		CR.shaped(IL.ERE_Mud_Bricks.get(1), DEF | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.ERE_Mud_Brick);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
+		
+		
+		
+		
+		
+		
+		
+		ST.make(MD.ERE, "umberstonePillar"   , 1, 0);// Umberstone Pillar
+		ST.make(MD.ERE, "umberstone"         , 1, 3);// Webbed Umbercobble
+		ST.make(MD.ERE, "umberstone"         , 1, 4);// Umbricks
+		ST.make(MD.ERE, "umberstone"         , 1, 5);// Smooth Umbertile
+		ST.make(MD.ERE, "umberstone"         , 1, 6);// Smooth Umbertiles
+		ST.make(MD.ERE, "umberstone"         , 1, 0);// Umberstone
+		ST.make(MD.ERE, "umberstone"         , 1, 1);// Umbercobble
+		ST.make(MD.ERE, "umberstone"         , 1, 2);// Mossy Umbercobble
+		ST.make(MD.ERE, "umberPaver"         , 1, 1);// Mossy Umberpaver
+		ST.make(MD.ERE, "slab-umberstone2"   , 1, 0);// Mossy Umbercobble Slab
+		ST.make(MD.ERE, "slab-umberstone1"   , 1, 0);// Umbercobble Slab
+		ST.make(MD.ERE, "slab-umberstone4"   , 1, 0);// Umberstone Bricks Slab
+		ST.make(MD.ERE, "slab-umberstone3"   , 1, 0);// Webbed Umbercobble Slab
+		ST.make(MD.ERE, "umbercobbleStairs0" , 1, 0);// Umberstone Stairs
+		ST.make(MD.ERE, "wallErebus"         , 1, 0);// Umberstone Wall
+		ST.make(MD.ERE, "slab-umberstone0"   , 1, 0);// Umberstone Slab
+		ST.make(MD.ERE, "umberPaver"         , 1, 0);// Umberpaver
+		ST.make(MD.ERE, "wallErebus"         , 1, 1);// Umbercobble Wall
+		ST.make(MD.ERE, "wallErebus"         , 1, 5);// Umberpaver Wall
+		ST.make(MD.ERE, "wallErebus"         , 1, 6);// Mossy Umberpaver Wall
+		ST.make(MD.ERE, "wallErebus"         , 1, 3);// Webbed Umbercobble Wall
+		ST.make(MD.ERE, "wallErebus"         , 1, 2);// Mossy Umbercobble Wall
+		ST.make(MD.ERE, "umbercobbleStairs5" , 1, 0);// Smooth Umbertile Stairs
+		ST.make(MD.ERE, "umbercobbleStairs4" , 1, 0);// Umbricks Stairs
+		ST.make(MD.ERE, "umbercobbleStairs1" , 1, 0);// Umbercobble Stairs
+		ST.make(MD.ERE, "umbercobbleStairs6" , 1, 0);// Smooth Umbertiles Stairs
+		ST.make(MD.ERE, "umbercobbleStairs3" , 1, 0);// Webbed Umbercobble Stairs
+		ST.make(MD.ERE, "umbercobbleStairs2" , 1, 0);// Mossy Umbercobble Stairs
+		ST.make(MD.ERE, "oreQuartz"          , 1, 0);// Quartz Ore
+		ST.make(MD.ERE, "umberstoneButton"   , 1, 0);// Umberstone Button
+		ST.make(MD.ERE, "compost"            , 1, 0);// Compost
+		ST.make(MD.ERE, "gneiss"             , 1, 0);// Gneiss
+		ST.make(MD.ERE, "gneiss"             , 1, 1);// Carved Gneiss
+		ST.make(MD.ERE, "gneiss"             , 1, 2);// Layered Gneiss
+		ST.make(MD.ERE, "gneiss"             , 1, 3);// Gneiss Brick
+		ST.make(MD.ERE, "gneiss"             , 1, 4);// Smooth Gneiss
+		ST.make(MD.ERE, "gneiss"             , 1, 5);// Gneiss Tiles
+		ST.make(MD.ERE, "gneissStairs2"      , 1, 0);// Layered Gneiss Stairs
+		ST.make(MD.ERE, "gneissStairs1"      , 1, 0);// Carved Gneiss Stairs
+		ST.make(MD.ERE, "gneissStairs0"      , 1, 0);// Gneiss Stairs
+		ST.make(MD.ERE, "gneissStairs4"      , 1, 0);// Smooth Gneiss Stairs
+		ST.make(MD.ERE, "gneissStairs5"      , 1, 0);// Tiled Gneiss Stairs
+		ST.make(MD.ERE, "gneissStairs3"      , 1, 0);// Brick Gneiss Stairs
+		
+		
+		
+		
+		
 		
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));
