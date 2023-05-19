@@ -304,11 +304,15 @@ public class RM {
 		return T;
 	}
 	
-	public static boolean stoneshapes(OreDictMaterial aMat, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
+	public static boolean stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
 		
 		if (ST.valid(aBlock)) {
 			RM.Shredder.addRecipe1(T, 16, 16, aBlock, OP.blockDust.mat(aMat, 1));
 			
+			if (aIsCobbleTarget) {
+				RM.pack(OP.rockGt.mat(aMat, 4), aBlock);
+				CR.shaped(aBlock, CR.DEF_NCC_MIR, "BB", "BB", 'B', OP.rockGt.dat(aMat));
+			}
 			if (ST.valid(aStair)) {
 				CR.shaped(ST.amount(4, aStair), CR.DEF_NCC_MIR, "sB", "BB", 'B', aBlock);
 			}
@@ -328,6 +332,10 @@ public class RM {
 			CR.remout(aStair);
 			RM.Shredder.addRecipe1(T, 16, 16, aStair, OP.dustSmall.mat(aMat,27));
 			
+			if (aIsCobbleTarget) {
+				RM.pack(OP.rockGt.mat(aMat, 3), aStair);
+				CR.shaped(aStair, CR.DEF_NCC_MIR, " B", "BB", 'B', OP.rockGt.dat(aMat));
+			}
 			if (ST.valid(aSlabs)) {
 				CR.shaped(aSlabs, CR.DEF_NCC_MIR, "sB", 'B', aStair);
 				RM.sawing(16, 72, F, 3, aStair, aSlabs, OP.dustSmall.mat(aMat, 9));
@@ -338,6 +346,10 @@ public class RM {
 			CR.remout(aSlabs);
 			RM.Shredder.addRecipe1(T, 16, 16, aSlabs, OP.dustSmall.mat(aMat,18));
 			
+			if (aIsCobbleTarget) {
+				RM.pack(OP.rockGt.mat(aMat, 2), aSlabs);
+				CR.shaped(aSlabs, CR.DEF_NCC_MIR, "BB", 'B', OP.rockGt.dat(aMat));
+			}
 			if (ST.valid(aStair)) {
 				CR.shaped(ST.amount(2, aStair), CR.DEF_NCC_MIR, "sB", "BB", 'B', aSlabs);
 			}
@@ -346,11 +358,19 @@ public class RM {
 		if (ST.valid(aWalls)) {
 			CR.remout(aWalls);
 			RM.Shredder.addRecipe1(T, 16, 16, aWalls, OP.blockDust.mat(aMat, 1));
+			
+			if (aIsCobbleTarget) {
+				CR.shaped(aWalls, CR.DEF_NCC_MIR, " B ", "BBB", 'B', OP.rockGt.dat(aMat));
+			}
 		}
 		
 		if (ST.valid(aPillar)) {
 			CR.remout(aPillar);
 			RM.Shredder.addRecipe1(T, 16, 16, aPillar, OP.blockDust.mat(aMat, 1));
+			
+			if (aIsCobbleTarget) {
+				CR.shaped(aPillar, CR.DEF_NCC_MIR, "BBB", " B ", 'B', OP.rockGt.dat(aMat));
+			}
 		}
 		
 		return T;
@@ -441,10 +461,6 @@ public class RM {
 			RM.Hammer       .addRecipe1(T, 16, 16,  8000, aCobble, OP.rockGt.mat(aMat, 4));
 			RM.Crusher      .addRecipe1(T, 16, 16       , aCobble, OP.rockGt.mat(aMat, 4));
 			
-			if (aIsMatTarget) {
-				RM.pack(OP.rockGt.mat(aMat, 4), aCobble);
-				CR.shaped(aCobble, CR.DEF, "XX", "XX", 'X', OP.rockGt.dat(aMat));
-			}
 			if (ST.valid(aStone)) {
 				RM.add_smelting(aCobble, aStone, T, F, F);
 			} else if (ST.valid(aSmooth)) {

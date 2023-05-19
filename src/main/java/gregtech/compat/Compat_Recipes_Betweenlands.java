@@ -96,14 +96,14 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "polishedLimestone"                 , 1, 0)
 		, ST.make(MD.BTL, "limestoneTiles"                    , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Limestone
+		RM.stoneshapes(MT.STONES.Limestone, F
 		, ST.make(MD.BTL, "limestone"                         , 1, 0)
 		, ST.make(MD.BTL, "limestoneStairs"                   , 1, 0)
 		, ST.make(MD.BTL, "Limestone Slab"                    , 1, 0)
 		, ST.make(MD.BTL, "limestoneWall"                     , 1, 0)
 		, ST.make(MD.BTL, "limestonePillar"                   , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Limestone
+		RM.stoneshapes(MT.STONES.Limestone, F
 		, ST.make(MD.BTL, "limestoneBricks"                   , 1, 0)
 		, ST.make(MD.BTL, "limestoneBrickStairs"              , 1, 0)
 		, ST.make(MD.BTL, "Limestone Brick Slab"              , 1, 0)
@@ -119,35 +119,35 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, NI
 		, ST.make(MD.BTL, "betweenstoneTiles"                 , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Betweenstone
+		RM.stoneshapes(MT.STONES.Betweenstone, F
 		, ST.make(MD.BTL, "smoothBetweenstone"                , 1, 0)
 		, ST.make(MD.BTL, "smoothBetweenstoneStairs"          , 1, 0)
 		, ST.make(MD.BTL, "Smooth Betweenstone Slab"          , 1, 0)
 		, ST.make(MD.BTL, "smoothBetweenstoneWall"            , 1, 0)
 		, ST.make(MD.BTL, "betweenstonePillar"                , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Betweenstone
+		RM.stoneshapes(MT.STONES.Betweenstone, F
 		, ST.make(MD.BTL, "betweenstoneSmoothMossy"           , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneSmoothStairsMossy"     , 1, 0)
 		, ST.make(MD.BTL, "Mossy Smooth Betweenstone Slab"    , 1, 0)
 		, ST.make(MD.BTL, "smoothBetweenstoneWallMossy"       , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Betweenstone
+		RM.stoneshapes(MT.STONES.Betweenstone, F
 		, ST.make(MD.BTL, "betweenstoneBricks"                , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBrickStairs"           , 1, 0)
 		, ST.make(MD.BTL, "Betweenstone Brick Slab"           , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBrickWall"             , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Betweenstone
+		RM.stoneshapes(MT.STONES.Betweenstone, F
 		, ST.make(MD.BTL, "betweenstoneBricksCracked"         , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBrickStairsCracked"    , 1, 0)
 		, ST.make(MD.BTL, "Cracked Betweenstone Brick Slab"   , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBrickWallCracked"      , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Betweenstone
+		RM.stoneshapes(MT.STONES.Betweenstone, F
 		, ST.make(MD.BTL, "betweenstoneBricksMossy"           , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBrickStairsMossy"      , 1, 0)
 		, ST.make(MD.BTL, "Mossy Betweenstone Brick Slab"     , 1, 0)
@@ -163,14 +163,14 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "smoothPitstone"                    , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Pitstone
+		RM.stoneshapes(MT.STONES.Pitstone, F
 		, ST.make(MD.BTL, "smoothPitstone"                    , 1, 0)
 		, ST.make(MD.BTL, "smoothPitstoneStairs"              , 1, 0)
 		, ST.make(MD.BTL, "Smooth Pitstone Slab"              , 1, 0)
 		, ST.make(MD.BTL, "smoothPitstoneWall"                , 1, 0)
 		, ST.make(MD.BTL, "pitstonePillar"                    , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Pitstone
+		RM.stoneshapes(MT.STONES.Pitstone, T
 		, ST.make(MD.BTL, "pitstoneBricks"                    , 1, 0)
 		, ST.make(MD.BTL, "pitstoneBrickStairs"               , 1, 0)
 		, ST.make(MD.BTL, "Pitstone Brick Slab"               , 1, 0)
@@ -186,14 +186,14 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, NI
 		, ST.make(MD.BTL, "cragTiles"                         , 1, 0)
 		);
-		RM.stoneshapes(MT.STONES.Cragrock
+		RM.stoneshapes(MT.STONES.Cragrock, F
 		, ST.make(MD.BTL, "cragrockBrick"                     , 1, 0)
 		, ST.make(MD.BTL, "cragrockBrickStairs"               , 1, 0)
 		, ST.make(MD.BTL, "Cragrock Brick Slab"               , 1, 0)
 		, ST.make(MD.BTL, "cragrockWall"                      , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Cragrock
+		RM.stoneshapes(MT.STONES.Cragrock, F
 		, ST.make(MD.BTL, "smoothCragrock"                    , 1, 0)
 		, ST.make(MD.BTL, "smoothCragrockStairs"              , 1, 0)
 		, ST.make(MD.BTL, "Smooth Cragrock Slab"              , 1, 0)
@@ -209,7 +209,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "smoothTempleBrick"                 , 1, 0)
 		, NI
 		);
-		RM.stoneshapes(MT.STONES.Templerock
+		RM.stoneshapes(MT.STONES.Templerock, F
 		, ST.make(MD.BTL, "templeBrick"                       , 1, 0)
 		, ST.make(MD.BTL, "templeBrickStairs"                 , 1, 0)
 		, ST.make(MD.BTL, "Temple Brick Slab"                 , 1, 0)
