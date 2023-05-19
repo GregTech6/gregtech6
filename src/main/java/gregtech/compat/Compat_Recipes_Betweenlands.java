@@ -170,9 +170,16 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "smoothPitstoneWall"                , 1, 0)
 		, ST.make(MD.BTL, "pitstonePillar"                    , 1, 0)
 		);
+		RM.stoneshapes(MT.STONES.Pitstone
+		, ST.make(MD.BTL, "pitstoneBricks"                    , 1, 0)
+		, ST.make(MD.BTL, "pitstoneBrickStairs"               , 1, 0)
+		, ST.make(MD.BTL, "Pitstone Brick Slab"               , 1, 0)
+		, ST.make(MD.BTL, "pitstoneBrickWall"                 , 1, 0)
+		, NI
+		);
 		RM.stonetypes(MT.STONES.Cragrock, T
-		, ST.make(MD.BTL, "genericStone"                      , 1, 0)
 		, ST.make(MD.BTL, "smoothCragrock"                    , 1, 0)
+		, ST.make(MD.BTL, "genericStone"                      , 1, 1)
 		, ST.make(MD.BTL, "cragrockBrick"                     , 1, 0)
 		, NI
 		, ST.make(MD.BTL, "carvedCrag"                        , 1, 0)
@@ -228,9 +235,6 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		
 		ST.make(MD.BTL, "mossyLimestoneBricks"              , 1, 0);// Mossy Limestone Bricks
 		ST.make(MD.BTL, "polishedLimestoneCollapsing"       , 1, 0);// Weak Polished Limestone
-		
-		ST.make(MD.BTL, "pitstoneBrickStairs"               , 1, 0);// Pitstone Brick Stairs
-		ST.make(MD.BTL, "pitstoneBrickWall"                 , 1, 0);// Pitstone Brick Wall
 		
 		ST.make(MD.BTL, "smoothBetweenstoneButton"          , 1, 0);// Betweenstone Button
 		ST.make(MD.BTL, "betweenstonePressurePlate"         , 1, 0);// Betweenstone Pressure Plate

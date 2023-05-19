@@ -1809,6 +1809,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BTL, "pitstonePillar"                    , 1,   0, MT.STONES.Pitstone    ,  U * 9);// Pitstone Pillar
 		OM.data(MD.BTL, "pitstoneBrickWall"                 , 1,   0, MT.STONES.Pitstone    ,  U * 9);// Pitstone Brick Wall
 		OM.data(MD.BTL, "pitstoneBrickStairs"               , 1,   0, MT.STONES.Pitstone    ,  U4*27);// Pitstone Brick Stairs
+		OM.data(MD.BTL, "Pitstone Brick Slab"               , 1,   0, MT.STONES.Pitstone    ,  U2* 9);// Pitstone Brick Slab
 		OM.data(MD.BTL, "smoothPitstoneWall"                , 1,   0, MT.STONES.Pitstone    ,  U * 9);// Smooth Pitstone Wall
 		OM.data(MD.BTL, "smoothPitstoneStairs"              , 1,   0, MT.STONES.Pitstone    ,  U4*27);// Smooth Pitstone Stairs
 		OM.data(MD.BTL, "Smooth Pitstone Slab"              , 1,   0, MT.STONES.Pitstone    ,  U2* 9);// Smooth Pitstone Slab
