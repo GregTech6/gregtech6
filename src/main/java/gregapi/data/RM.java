@@ -291,8 +291,15 @@ public class RM {
 	}
 	
 	public static boolean moss(ItemStack aClean, ItemStack aMossy) {
+		return cleanmoss(aClean, aMossy) && growmoss(aClean, aMossy);
+	}
+	public static boolean cleanmoss(ItemStack aClean, ItemStack aMossy) {
 		if (ST.invalid(aClean) || ST.invalid(aMossy)) return F;
 		pressurewash(aMossy, aClean);
+		return T;
+	}
+	public static boolean growmoss(ItemStack aClean, ItemStack aMossy) {
+		if (ST.invalid(aClean) || ST.invalid(aMossy)) return F;
 		CR.shapeless(aMossy, CR.DEF_NCC, new Object[] {aClean, OD.itemMoss});
 		return T;
 	}

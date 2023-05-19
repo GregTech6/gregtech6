@@ -111,12 +111,12 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, NI
 		);
 		RM.stonetypes(MT.STONES.Betweenstone, T
+		, ST.make(MD.BTL, "smoothBetweenstone"                , 1, 0)
 		, ST.make(MD.BTL, "betweenstone"                      , 1, 0)
-		, NI
 		, ST.make(MD.BTL, "betweenstoneBricks"                , 1, 0)
 		, ST.make(MD.BTL, "betweenstoneBricksCracked"         , 1, 0)
 		, ST.make(MD.BTL, "chiseledBetweenstone"              , 1, 0)
-		, ST.make(MD.BTL, "smoothBetweenstone"                , 1, 0)
+		, NI
 		, ST.make(MD.BTL, "betweenstoneTiles"                 , 1, 0)
 		);
 		RM.stoneshapes(MT.STONES.Betweenstone
@@ -156,12 +156,12 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		);
 		RM.stonetypes(MT.STONES.Pitstone, T
 		, ST.make(MD.BTL, "pitstone"                          , 1, 0)
-		, NI
 		, ST.make(MD.BTL, "pitstoneBricks"                    , 1, 0)
+		, ST.make(MD.BTL, "pitstoneTiles"                     , 1, 0)
 		, NI
 		, ST.make(MD.BTL, "chiseledPitstone"                  , 1, 0)
 		, ST.make(MD.BTL, "smoothPitstone"                    , 1, 0)
-		, ST.make(MD.BTL, "pitstoneTiles"                     , 1, 0)
+		, NI
 		);
 		RM.stoneshapes(MT.STONES.Pitstone
 		, ST.make(MD.BTL, "smoothPitstone"                    , 1, 0)
@@ -218,7 +218,6 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		);
 		
 		
-		
 		ST.make(MD.BTL, "betweenstoneTilesCollapsing"       , 1, 0);// Weak Betweenstone Tiles
 		ST.make(MD.BTL, "betweenstoneTilesCracked"          , 1, 0);// Cracked Betweenstone Tiles
 		ST.make(MD.BTL, "betweenstoneTilesFortress"         , 1, 0);// Glowing Betweenstone Tile
@@ -226,23 +225,15 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		ST.make(MD.BTL, "betweenstoneTilesMossyCollapsing"  , 1, 0);// Weak Mossy Betweenstone Tiles
 		ST.make(MD.BTL, "betweenstoneBricksMirage"          , 1, 0);// Betweenstone Bricks Mirage
 		
-		ST.make(MD.BTL, "bloodyTempleBrick"                 , 1, 0);// Bloody Temple Brick
-		ST.make(MD.BTL, "mossyTempleBrick"                  , 1, 0);// Mossy Temple Brick
+		ST.make(MD.BTL, "mossyLimestoneBricks"              , 1, 0);// Mossy Limestone Bricks
+		ST.make(MD.BTL, "polishedLimestoneCollapsing"       , 1, 0);// Weak Polished Limestone
 		
 		ST.make(MD.BTL, "genericStone"                      , 1, 3);// Mossy Cragrock Bottom
 		ST.make(MD.BTL, "genericStone"                      , 1, 2);// Mossy Cragrock Top
 		ST.make(MD.BTL, "glowingSmoothCragrock"             , 1, 0);// Glowing Smooth Cragrock
 		
-		ST.make(MD.BTL, "mossyLimestoneBricks"              , 1, 0);// Mossy Limestone Bricks
-		ST.make(MD.BTL, "polishedLimestoneCollapsing"       , 1, 0);// Weak Polished Limestone
-		
-		ST.make(MD.BTL, "smoothBetweenstoneButton"          , 1, 0);// Betweenstone Button
-		ST.make(MD.BTL, "betweenstonePressurePlate"         , 1, 0);// Betweenstone Pressure Plate
-		
-		
-		
-		
-		
+		ST.make(MD.BTL, "bloodyTempleBrick"                 , 1, 0);// Bloody Temple Brick
+		ST.make(MD.BTL, "mossyTempleBrick"                  , 1, 0);// Mossy Temple Brick
 		
 		
 		RM.Drying.addRecipe1(T, 16, 128, ST.make(MD.BTL, "unknownGeneric", 1, 8), NF, FL.DistW.make(50), ST.make(MD.BTL, "unknownGeneric", 1, 9));
