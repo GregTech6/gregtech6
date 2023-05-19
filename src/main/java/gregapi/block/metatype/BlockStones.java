@@ -194,8 +194,8 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		
 		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 		
-		aMaterial.mTextureSolid  = BlockTextureCopied.get(this, SIDE_TOP, STONE);
-		aMaterial.mTextureSmooth = BlockTextureCopied.get(this, SIDE_TOP, SMOTH);
+		mMaterial.mTextureSolid  = BlockTextureCopied.get(this, SIDE_TOP, STONE);
+		mMaterial.mTextureSmooth = BlockTextureCopied.get(this, SIDE_TOP, SMOTH);
 		
 		if (MD.RC.mLoaded) try {
 			EntityTunnelBore.addMineableBlock(this, COBBL);
@@ -383,7 +383,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16,  7000           , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 1));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 2));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		}
 		
@@ -391,7 +391,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16,  7000           , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 2));
+		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 1));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		RM.pressurewash(tStack.toStack(), ST.make(this, 1, BRICK));
 		}
@@ -408,7 +408,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.Hammer       .addRecipe1(T, 16, 16                  , tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.Crusher      .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.Shredder     .addRecipe1(T, 16, 16+mHarvestLevel* 16, tStack.toStack(), OP.blockDust.mat(mMaterial, 1));
-		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
+		RM.generify(tStack.toStack(), ST.make(Blocks.double_stone_slab, 1, 8));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE), F, F, F);
 		CR.shaped(ST.make(this, 1, CHISL), CR.DEF, "y" , "X" , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 4, BRICK), CR.DEF, "XX", "XX", 'X', tStack.toStack());
@@ -545,6 +545,19 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		case  7: return UT.Code.bindStack(OP.stonePolished   .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
 		default: return UT.Code.bindStack(OP.stoneBricks     .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
 		}
+	}
+	
+	@Override
+	public boolean onBlockActivated(World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer, int aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aPlayer == null) return F;
+		ItemStack aStack = aPlayer.getCurrentEquippedItem();
+		if (ST.invalid(aStack)) return F;
+		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+		if (MOSSABLE[aMeta] && OD.itemMoss.is_(aStack) && ST.use(aPlayer, T, aStack)) {
+			WD.set(aWorld, aX, aY, aZ, this, MOSS_MAPPINGS[aMeta], 3);
+			return T;
+		}
+		return F;
 	}
 	
 	@Override
