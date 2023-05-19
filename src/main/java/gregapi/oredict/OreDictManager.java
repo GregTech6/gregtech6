@@ -722,8 +722,7 @@ public final class OreDictManager {
 	}
 	
 	public static boolean isItemStackInstanceOf(ItemStack aStack, Object aName) {
-		if (UT.Code.stringInvalid(aName) || ST.invalid(aStack)) return F;
-		return isItemStackInstanceOf_(aStack, aName);
+		return UT.Code.stringValid(aName) && ST.valid(aStack) && isItemStackInstanceOf_(aStack, aName);
 	}
 	public static boolean isItemStackInstanceOf_(ItemStack aStack, Object aName) {
 		for (ItemStack tOreStack : getOres(aName.toString(), F)) if (ST.equal(tOreStack, aStack, T)) return T;

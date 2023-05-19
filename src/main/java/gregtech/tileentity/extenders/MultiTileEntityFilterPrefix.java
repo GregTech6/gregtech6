@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregtech.tileentity.extenders;
-
-import static gregapi.data.CS.*;
-
-import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -52,6 +48,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -160,7 +160,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	
 	@Override
 	public boolean isItemValidForSlot(int aSlot, ItemStack aStack) {
-		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
+		if ((mModes & EXTENDER_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
 			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.isItemValidForSlot(aSlot, aStack);
 		}
@@ -170,7 +170,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
-		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
+		if ((mModes & EXTENDER_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
 			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canInsertItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
 			if (tTileEntity.mTileEntity != null) return T;
@@ -181,7 +181,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
 		mLastSide = aSide;
-		if ((mModes & MODE_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
+		if ((mModes & EXTENDER_INV) != 0 && ST.valid(aStack) && (mLastSide == mFacing || allowInput(aStack))) {
 			DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(getExtenderTargetSide(mLastSide), F, T);
 			if (tTileEntity.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)tTileEntity.mTileEntity).canExtractItem(aSlot, aStack, tTileEntity.mSideOfTileEntity);
 			if (tTileEntity.mTileEntity != null) return T;
@@ -192,7 +192,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
 		byte aSide = UT.Code.side(aDirection);
-		if ((mModes & MODE_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
+		if ((mModes & EXTENDER_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
 			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, aFluid)) return 0;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.fill(tTileEntity.getForgeSideOfTileEntity(), aFluid, aDoFill);
@@ -202,7 +202,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public FluidStack drain(ForgeDirection aDirection, FluidStack aFluid, boolean aDoDrain) {
 		byte aSide = UT.Code.side(aDirection);
-		if ((mModes & MODE_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
+		if ((mModes & EXTENDER_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
 			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aFluid)) return null;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.drain(tTileEntity.getForgeSideOfTileEntity(), aFluid, aDoDrain);
@@ -211,7 +211,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	}
 	@Override
 	public FluidStack drain(ForgeDirection aDirection, int aToDrain, boolean aDoDrain) {
-		if ((mModes & MODE_TANK) != 0) {
+		if ((mModes & EXTENDER_TANK) != 0) {
 			byte aSide = UT.Code.side(aDirection);
 			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, null)) return null;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
@@ -223,7 +223,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
 		byte aSide = UT.Code.side(aDirection);
-		if ((mModes & MODE_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
+		if ((mModes & EXTENDER_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
 			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canFill(tTileEntity.getForgeSideOfTileEntity(), aFluid);
@@ -233,7 +233,7 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender impleme
 	@Override
 	public boolean canDrain(ForgeDirection aDirection, Fluid aFluid) {
 		byte aSide = UT.Code.side(aDirection);
-		if ((mModes & MODE_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
+		if ((mModes & EXTENDER_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
 			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canDrain(tTileEntity.getForgeSideOfTileEntity(), aFluid);

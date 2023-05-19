@@ -48,7 +48,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".7", "Orechid"); // Any Random Ore that doesn't have a specific Flower
 		LH.add(getUnlocalizedName()+ ".8", "Hexalily"); // Hexorium
 		
-		GT.mAfterInit.add(this);
+		GT.mBeforePostInit.add(this);
 		BlocksGT.FLOWERS.add(this);
 		
 		OM.data(ST.make(this, 1, 0), MT.Wheat, U);
@@ -83,14 +83,8 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public void run() {
 		RM.biomass(ST.make(this, 8, W));
 		
-		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
-		
-		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
-		
-		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		RM.mortarize(1, ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.mortarize(1, ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));

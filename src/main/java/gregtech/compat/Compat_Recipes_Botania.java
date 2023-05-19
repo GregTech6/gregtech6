@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,26 +19,21 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.DEF_REV;
+import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Compat_Recipes_Botania extends CompatMods {
 	public Compat_Recipes_Botania(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -59,11 +54,10 @@ public class Compat_Recipes_Botania extends CompatMods {
 		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
 		for (int i = 0; i < 16; i++) {
 		ItemStack tPetal = ST.make(MD.BOTA, "petal", 1, i), tDye = ST.make(MD.BOTA, "dye", 1, i);
-		RM.Shredder.addRecipe1(T, 16, 16, tPetal, tDye);
 		RM.Squeezer.addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
 		RM.Juicer  .addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
 		RM.ic2_extractor(tPetal, tDye);
-		RM.pulverizing  (tPetal, tDye);
+		RM.mortarize (1, tPetal, tDye);
 		}
 		
 		RM.packunpack(ST.make(Items.blaze_rod, 9, 0), ST.make(MD.BOTA, "blazeBlock", 1, 0));

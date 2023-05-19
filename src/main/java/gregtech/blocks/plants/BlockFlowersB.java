@@ -20,7 +20,6 @@
 package gregtech.blocks.plants;
 
 import gregapi.block.misc.BlockBaseFlower;
-import gregapi.data.CS.*;
 import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.util.CR;
@@ -52,7 +51,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".6", "Pandanus Candelabrum"); // Diamond
 		LH.add(getUnlocalizedName()+ ".7", "Tungstus"); // Tungsten
 		
-		GT.mAfterInit.add(this);
+		GT.mBeforePostInit.add(this);
 		BlocksGT.FLOWERS.add(this);
 		
 		OM.data(ST.make(this, 1, 0), MT.WOODS.Acacia, U);
@@ -88,13 +87,9 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	public void run() {
 		RM.biomass(ST.make(this, 8, W));
 		
-		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.WOODS.Acacia));
-		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.WOODS.Acacia));
-		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 6), OM.dust(MT.WOODS.Palm  ));
-		
-		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.WOODS.Acacia));
-		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.WOODS.Acacia));
-		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 6), OM.dust(MT.WOODS.Palm  ));
+		RM.mortarize(1, ST.make(this, 1, 0), OM.dust(MT.WOODS.Acacia));
+		RM.mortarize(1, ST.make(this, 1, 1), OM.dust(MT.WOODS.Acacia));
+		RM.mortarize(1, ST.make(this, 1, 6), OM.dust(MT.WOODS.Palm  ));
 		
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));

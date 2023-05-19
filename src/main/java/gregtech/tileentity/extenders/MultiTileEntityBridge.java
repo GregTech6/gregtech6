@@ -20,6 +20,7 @@
 package gregtech.tileentity.extenders;
 
 import gregapi.GT_API;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetComparatorInputOverride;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.FL;
@@ -31,7 +32,7 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
-import gregapi.tileentity.base.TileEntityBase10FacingDouble;
+import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityDelegating;
@@ -57,8 +58,8 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implements ITileEntityDelegating, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_GetComparatorInputOverride {
-	public byte mComparator = 0, mRedstoneIn = 0, mRedstoneOut = 0, mModes = 0;
+public class MultiTileEntityBridge extends TileEntityBase07Paintable implements ITileEntityDelegating, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_GetComparatorInputOverride, IMTE_AddToolTips {
+	public byte mModes = 0;
 	
 	protected IIconContainer[] mTextures = L6_IICONCONTAINER;
 	
@@ -71,16 +72,12 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 			if (GT_API.sBlockIcons == null && aNBT.hasKey(NBT_TEXTURE)) {
 				String tTextureName = aNBT.getString(NBT_TEXTURE);
 				mTextures = new IIconContainer[] {
-				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/colored/in"),
-				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/colored/out"),
 				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/colored/side"),
-				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/overlay/in"),
-				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/overlay/out"),
 				new Textures.BlockIcons.CustomIcon("machines/extenders/"+tTextureName+"/overlay/side")};
 			} else {
 				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
-				if (tCanonicalTileEntity instanceof MultiTileEntityExtender) {
-					mTextures = ((MultiTileEntityExtender)tCanonicalTileEntity).mTextures;
+				if (tCanonicalTileEntity instanceof MultiTileEntityBridge) {
+					mTextures = ((MultiTileEntityBridge)tCanonicalTileEntity).mTextures;
 				}
 			}
 		}
@@ -98,31 +95,18 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 			if ((mModes & EXTENDER_OTHER   ) == EXTENDER_OTHER   ) aList.add(Chat.CYAN + LH.get(TOOLTIP_EXTENDER_OTHER));
 		}
 		aList.add(Chat.ORANGE + LH.get(TOOLTIP_EXTENDER_EXCLUSIVE));
-		super.addToolTips(aList, aStack, aF3_H);
+		
 	}
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide) {
-			byte oRedstoneIn = mRedstoneIn, oRedstoneOut = mRedstoneOut, oComparator = mComparator;
-			if ((mModes & EXTENDER_REDSTONE) == 0) {
-				mComparator = mRedstoneIn = mRedstoneOut = 0;
-			} else {
-				mRedstoneIn = getRedstoneIncoming  (mFacing);
-				mComparator = getComparatorIncoming(mFacing);
-				mRedstoneOut = 0;
-				for (byte tSide : ALL_SIDES_VALID_BUT[mFacing]) mRedstoneOut = (byte)Math.max(mRedstoneOut, getRedstoneIncoming(tSide));
-			}
-			if (oRedstoneIn != mRedstoneIn || oRedstoneOut != mRedstoneOut || oComparator != mComparator) causeBlockUpdate();
-		}
+		if (aIsServerSide && mBlockUpdated && (mModes & EXTENDER_REDSTONE) == 0) causeBlockUpdate();
 	}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		if (aSide == mFacing) return BlockTextureMulti.get(BlockTextureDefault.get(mTextures[0], mRGBa), BlockTextureDefault.get(mTextures[3]));
-		if (aSide == mSecondFacing) return BlockTextureMulti.get(BlockTextureDefault.get(mTextures[1], mRGBa), BlockTextureDefault.get(mTextures[4]));
-		return BlockTextureMulti.get(BlockTextureDefault.get(mTextures[2], mRGBa), BlockTextureDefault.get(mTextures[5]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(mTextures[0], mRGBa), BlockTextureDefault.get(mTextures[1]));
 	}
 	
 	@Override
@@ -133,8 +117,8 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 		}
 	}
 	
-	@Override public boolean useInversePlacementRotation() {return T;}
-	@Override public String getTileEntityName() {return "gt.multitileentity.extender";}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.bridge";}
 	
 	// Relay TileEntities
 	
@@ -151,15 +135,8 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	
 	// Relay Redstone
 	
-	@Override
-	public int getComparatorInputOverride(byte aSide) {
-		return mComparator;
-	}
-	
-	@Override
-	public byte isProvidingWeakPower2(byte aSide) {
-		return OPOS[aSide] == mFacing ? mRedstoneOut : mRedstoneIn;
-	}
+	@Override public int getComparatorInputOverride(byte aSide) {return (mModes & EXTENDER_REDSTONE) == 0 ? 0 : getComparatorIncoming(OPOS[aSide]);}
+	@Override public byte isProvidingWeakPower2    (byte aSide) {return (mModes & EXTENDER_REDSTONE) == 0 ? 0 : getRedstoneIncoming  (OPOS[aSide]);}
 	
 	// Relay Inventories
 	
@@ -414,7 +391,7 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	}
 	
 	
-	public byte getExtenderTargetSide(byte aSide) {return aSide == mFacing ? mSecondFacing : mFacing;}
+	public byte getExtenderTargetSide(byte aSide) {return OPOS[aSide];}
 	
 	@Override public boolean isUseableByPlayer(EntityPlayer aPlayer) {return aPlayer.getDistanceSq(xCoord+0.5, yCoord+0.5, zCoord+0.5) <= 64;}
 	@Override public void openInventory() {/**/}

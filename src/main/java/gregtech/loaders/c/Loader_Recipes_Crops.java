@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -341,11 +341,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("cropIvy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (IL.HBM_Poison_Powder.exists()) {
-			RM.pulverizing(aEvent.mStack, IL.HBM_Poison_Powder.get(1));
-			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, IL.HBM_Poison_Powder.get(1));
+			RM.mortarize(1, aEvent.mStack, IL.HBM_Poison_Powder.get(1));
 			} else if (IL.IC2_Grin_Powder.exists()) {
-			RM.pulverizing(aEvent.mStack, IL.IC2_Grin_Powder.get(1));
-			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, IL.IC2_Grin_Powder.get(1));
+			RM.mortarize(1, aEvent.mStack, IL.IC2_Grin_Powder.get(1));
 			}
 			RM.Squeezer     .addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Potion_Poison_1.make(500), IL.Remains_Plant.get(1));
 			RM.Juicer       .addRecipe1(T, 16, 16, 8000, aEvent.mStack, NF, FL.Potion_Poison_1.make(250), IL.Remains_Plant.get(1));

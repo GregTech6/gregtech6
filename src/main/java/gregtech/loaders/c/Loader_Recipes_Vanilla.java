@@ -365,6 +365,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(plateDouble.mat(MT.Paper, 3), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
 		CR.shapeless(plateDouble.mat(MT.Paper, 4), DEF, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.itemGlue});
 		
+		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_helmet    , 1, W));
+		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_chestplate, 1, W));
+		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_leggings  , 1, W));
+		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_boots     , 1, W));
 		
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
@@ -544,6 +548,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher.addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab       , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
 		
 		RM.glowstone(ST.make(Blocks.glowstone, 1, 0), MT.Glowstone);
+		
+		RM.pressurewash(ST.make(Blocks.mossy_cobblestone, 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.pressurewash(ST.make(Blocks.stonebrick       , 1, 2), ST.make(Blocks.stonebrick , 1, 0));
 		
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) {
 		RM.sawing(16,  16, F,   3, stick.mat(tMaterial, 1), bolt.mat(tMaterial, 4));
@@ -728,7 +735,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (OreDictMaterial tMat2 : ANY.Fe.mToThis) if (tMat2 != MT.Enori)
 		RM.RollBender   .addRecipe1(T, 16,  256, plateCurved.mat(tMat2, 3), ST.make(Items.bucket, 1, 0));
 		
-		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stone, 1, W), ST.make(Blocks.stonebrick, 1, 3));
+		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stone     , 1, W), ST.make(Blocks.stonebrick, 1, 3));
 		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stonebrick, 1, 0), ST.make(Blocks.stonebrick, 1, 2));
 		
 		

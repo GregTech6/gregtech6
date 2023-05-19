@@ -490,6 +490,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateGemMercury"                 , OD.itemQuicksilver);
 		OreDictManager.INSTANCE.addReRegistration("crystalMercury"                  , OD.itemQuicksilver);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemQuicksilver                , "quicksilver");
+		OreDictManager.INSTANCE.addReRegistration(OD.paperEmpty                     , OD.itemInsulator);
+		OreDictManager.INSTANCE.addReRegistration(OD.itemRubber                     , OD.itemInsulator);
 		OreDictManager.INSTANCE.addReRegistration("gearAnyIronOrSteel"              , "Gear");
 		OreDictManager.INSTANCE.addReRegistration("gearGtAnyIronOrSteel"            , "Gear");
 		OreDictManager.INSTANCE.addReRegistration("sprocketAnyIronOrSteel"          , "Sprocket");

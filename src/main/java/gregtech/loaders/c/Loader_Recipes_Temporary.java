@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -573,6 +573,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}
 		}
 		
+		RM.add_smelting(IL.Mud_Ball               .get(1), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
+		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
+		
+		RM.genericycle(IL.Mud_Ball.get(1), IL.BoP_Mud_Ball.get(1));
+		RM.genericycle(ST.make(BlocksGT.Diggables, 1, 0), IL.BoP_Mud.get(1), IL.ERE_Mud.get(1), IL.BTL_Mud.get(1));
+		RM.genericycle(IL.BoP_Mud_Brick .get(1), IL.BTL_Mud_Brick .get(1), IL.ERE_Mud_Brick .get(1));
+		RM.genericycle(IL.BoP_Mud_Bricks.get(1), IL.BTL_Mud_Bricks.get(1), IL.ERE_Mud_Bricks.get(1));
 		RM.genericycle(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
 		RM.genericycle(ST.make(MD.TC, "ItemResource", 1, 6), ST.make(MD.BoP, "gems", 1, 7));
 		
@@ -655,6 +662,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Oil_Lin                 .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Hemp                .make( 1), FL.Oil_Seed.make(1));
 		RM.generify   (FL.Oil_Sunflower           .make( 1), FL.Oil_Seed.make(1));
+		RM.generify   (FL.Oil_Soulsand            .make( 6), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Light               .make( 5), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Light2              .make( 5), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Medium              .make( 4), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Heavy               .make( 3), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_Heavy2              .make( 3), FL.Oil_Normal.make(1));
+		RM.generify   (FL.Oil_ExtraHeavy          .make( 2), FL.Oil_Normal.make(1));
 		
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 		
