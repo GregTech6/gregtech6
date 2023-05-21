@@ -892,8 +892,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodMayo"                        , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("foodKetchup"                     , "listAllcondiment");
 		OreDictManager.INSTANCE.addReRegistration("foodMaplesyrup"                  , "listAllcondiment");
+		OreDictManager.INSTANCE.addReRegistration("gemSugar"                        , "listAllsugar");
 		OreDictManager.INSTANCE.addReRegistration("dustSugar"                       , "listAllsugar");
-		OreDictManager.INSTANCE.addReRegistration("foodHoneydrop"                   , "listAllsugar");
 		OreDictManager.INSTANCE.addReRegistration("bottleAquaRegia"                 , OD.aquaRegia);
 		OreDictManager.INSTANCE.addReRegistration("bucketAquaRegia"                 , OD.aquaRegia);
 		OreDictManager.INSTANCE.addReRegistration("cellAquaRegia"                   , OD.aquaRegia);
