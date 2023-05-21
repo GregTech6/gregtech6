@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -165,6 +165,7 @@ public class MD {
 	
 	, TreeCap           = new ModData(ModIDs.TreeCap            , "Treecapitator")
 	, HaC               = new ModData(ModIDs.HaC                , "HarvestCraft")
+	, Salt              = new ModData(ModIDs.Salt               , "Salt Mod")
 	, CookBook          = new ModData(ModIDs.CookBook           , "Cooking for Blockheads")
 	, APC               = new ModData(ModIDs.APC                , "AppleCore")
 	, HO                = new ModData(ModIDs.HO                 , "Hunger Overhaul")

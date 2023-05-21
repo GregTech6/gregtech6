@@ -2027,6 +2027,7 @@ public class CS {
 		
 		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
+		, Salt              = "SaltMod"
 		, CookBook          = "cookingbook"
 		, APC               = "AppleCore"
 		, HO                = "HungerOverhaul"

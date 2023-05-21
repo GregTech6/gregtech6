@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,6 +67,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Cu                                      , F, U16,  0, 32, ST.block(MD.EtFu, "deepslate_copper_ore"), BIOMES_DESERT, BIOMES_SAVANNA)
 		, new StoneLayerOres(MT.Fe                                      , F, U16,  0, 32, ST.block(MD.EtFu, "deepslate_iron_ore"), BIOMES_SWAMP, BIOMES_WOODS)
 		, new StoneLayerOres(MT.Coal                                    , F, U16,  0, 32, ST.block(MD.EtFu, "deepslate_coal_ore"), BIOMES_PLAINS, BIOMES_SHROOM)
+		, MD.Salt    .mLoaded ? new StoneLayerOres(MT.NaCl              , F, U32, 20, 32, ST.block(MD.Salt, "saltDeepslateOre")) : null
 		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , F, U32,  0, 20) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , F, U32,  0, 16) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , F, U32,  0, 16) : null
@@ -131,10 +132,11 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Cinnabar        , F,U128,  8, 24, ST.block(MD.TC, "blockCustomOre"), 0)
 		, new StoneLayerOres(MT.Au                      , F, U64,  8, 32, Blocks.gold_ore)
 		, new StoneLayerOres(MT.Au                      , F, U32, 33, 64, Blocks.gold_ore, BIOMES_MESA)
-		, new StoneLayerOres(MT.Cu                      , F, U16, 20, 50, ST.block(MD.EtFu, "copper_ore"), BIOMES_MESA, BIOMES_DESERT, BIOMES_SAVANNA)
+		, new StoneLayerOres(MT.Cu                      , F, U16, 20, 50, ST.block(MD.EtFu, "copper_ore"), 0, BIOMES_MESA, BIOMES_DESERT, BIOMES_SAVANNA)
 		, new StoneLayerOres(MT.Fe                      , F, U16, 40, 80, Blocks.iron_ore)
 		, new StoneLayerOres(MT.Coal                    , F, U8 , 60,100, Blocks.coal_ore)
 		, new StoneLayerOres(MT.Stone                   , F, U48,  0,255, Blocks.monster_egg)
+		, new StoneLayerOres(MT.NaCl                    , F, U32, 50, 80, ST.block(MD.Salt, "saltOre"), 0)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(null
 		, new StoneLayerOres(MT.Fe2O3                   , U6 , 30, 70)
