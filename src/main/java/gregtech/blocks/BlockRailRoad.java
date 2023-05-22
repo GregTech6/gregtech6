@@ -51,6 +51,11 @@ public class BlockRailRoad extends BlockBaseRail {
 	}
 	
 	@Override
+	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
+		// NO-OP
+	}
+	
+	@Override
 	protected void func_150048_a(World aWorld, int aX, int aY, int aZ, int aMeta, int aData, Block aBlock) {
 		// NO-OP
 	}
