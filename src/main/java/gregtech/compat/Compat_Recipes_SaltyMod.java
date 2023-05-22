@@ -36,7 +36,7 @@ public class Compat_Recipes_SaltyMod extends CompatMods {
 	public Compat_Recipes_SaltyMod(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Salty Mod Recipes.");
-		CR.delate(MD.Salt, "saltStar", "mineralMud", "saltDirt");
+		CR.delate(MD.Salt, "saltStar", "saltDirt", "mineralMud", "mudBlock", "mudBrickWet");
 		
 		RM.packunpack(ST.make(MD.Salt, "mineralMud", 4, 0), 4, ST.make(MD.Salt, "mudBlock", 1, 0));
 		
