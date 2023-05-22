@@ -1017,6 +1017,11 @@ public class LoaderItemList implements Runnable {
 		IL.CANDY_Plank_Light                    .set(ST.make(MD.CANDY, "B3"                                 , 1, 2), new OreDictItemData(MT.Marshmallow, U), OP.plank.dat(MT.Marshmallow));
 		
 		
+		IL.Salt_Mud_Ball                        .set(ST.make(MD.Salt, "mineralMud"                          , 1, 0), null, OD.itemMud);
+		IL.Salt_Mud                             .set(ST.make(MD.Salt, "mudBlock"                            , 1, 0), null, OD.blockMud);
+		IL.Salt_Mud_Bricks                      .set(ST.make(MD.Salt, "mudBricks"                           , 1, 0), null, OD.blockMudBricks);
+		
+		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.STONES.Umber));
 		IL.ERE_Mud                              .set(ST.make(MD.ERE, "mud"                                  , 1, 0), null, OD.blockMud);

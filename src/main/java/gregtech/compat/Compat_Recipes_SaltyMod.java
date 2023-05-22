@@ -38,20 +38,20 @@ public class Compat_Recipes_SaltyMod extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Salty Mod Recipes.");
 		CR.delate(MD.Salt, "saltStar", "saltDirt", "mineralMud", "mudBlock", "mudBrickWet");
 		
+		RM.compactunpack(IL.Salt_Mud_Ball.get(4), 4, IL.Salt_Mud.get(1));
+		CR.shapeless(IL.Salt_Mud_Ball.get(4), CR.DEF_NCC, new Object[] {IL.Salt_Mud.get(1)});
+		CR.shaped(IL.Salt_Mud.get(1), CR.DEF_NCC, "BB", "BB", 'B', IL.Salt_Mud_Ball);
+		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', OD.blockMud, 'Y', OD.itemGrass);
+		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', OD.blockMud, 'Y', OD.itemGrassDry);
+		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', OD.blockMud, 'Y', OD.cropGrain);
+		
 		RM.mortarize(4, ST.make(MD.Salt, "saltCrystal", 1, 0), OP.dust.mat(MT.NaCl, 4));
-		
-		RM.packunpack(ST.make(MD.Salt, "mineralMud", 4, 0), 4, ST.make(MD.Salt, "mudBlock", 1, 0));
-		
-		CR.shapeless(ST.make(MD.Salt, "mineralMud", 4, 0), CR.DEF_NCC, new Object[] {ST.make(MD.Salt, "mudBlock", 1, 0)});
-		
-		CR.shaped(ST.make(MD.Salt, "mudBlock"   , 1, 0), CR.DEF_NCC    , "BB", "BB", 'B', ST.make(MD.Salt, "mineralMud", 1, 0));
-		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', ST.make(MD.Salt, "mudBlock", 1, 0), 'Y', OD.itemGrass);
-		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', ST.make(MD.Salt, "mudBlock", 1, 0), 'Y', OD.itemGrassDry);
-		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', ST.make(MD.Salt, "mudBlock", 1, 0), 'Y', OD.cropGrain);
 		
 		RM.Mixer.addRecipe2(T, 16, 144, ST.make(Blocks.dirt, 1, 0), OP.dust.mat(MT.NaCl, 1), ST.make(MD.Salt, "saltDirt", 1, 0));
 		RM.Mixer.addRecipeX(T, 16, 144, ST.array(OP.dust.mat(MT.NaHCO3, 4), OP.dust.mat(MT.NaCl, 4), OP.dust.mat(MT.Gunpowder, 1)), ST.make(MD.Salt, "saltStar", 1, 0));
-		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tCarbon : ANY.C.mToThis)
-		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OP.dust.mat(MT.NaHCO3, 1), OP.dust.mat(MT.NaCl, 1), OP.dust.mat(tClay, 1), OP.dust.mat(tCarbon, 1)), ST.make(MD.Salt, "mineralMud", 1, 0));
+		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tCarbon : ANY.C.mToThis) {
+		RM.Mixer.addRecipeX(T, 16,  16, ST.array(OP.dustSmall.mat(MT.NaHCO3, 1), OP.dustSmall.mat(MT.NaCl, 1), OP.dustSmall.mat(tClay, 1), OP.dustSmall.mat(tCarbon, 1)), IL.Salt_Mud_Ball.get(1));
+		RM.Mixer.addRecipeX(T, 16,  64, ST.array(OP.dust     .mat(MT.NaHCO3, 1), OP.dust     .mat(MT.NaCl, 1), OP.dust     .mat(tClay, 1), OP.dust     .mat(tCarbon, 1)), IL.Salt_Mud_Ball.get(4));
+		}
 	}
 }

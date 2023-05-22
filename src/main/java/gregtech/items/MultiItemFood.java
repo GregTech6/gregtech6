@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -158,44 +158,37 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless (IL.Clay_Ball_Blue         .get(4), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 5)});
 		CR.shapeless (IL.Clay_Ball_White        .get(4), CR.DEF_NCC, new Object[] {ST.make(BlocksGT.Diggables, 1, 6)});
 		CR.shapeless (ST.make(Items.clay_ball   , 4, 0), CR.DEF_NCC, new Object[] {Blocks.clay});
-		RM.packunpack(IL.Mud_Ball               .get(4), ST.make(BlocksGT.Diggables, 1, 0));
-		RM.packunpack(IL.Clay_Ball_Brown        .get(4), ST.make(BlocksGT.Diggables, 1, 1));
-		RM.packunpack(IL.Clay_Ball_Red          .get(4), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.packunpack(IL.Clay_Ball_Yellow       .get(4), ST.make(BlocksGT.Diggables, 1, 4));
-		RM.packunpack(IL.Clay_Ball_Blue         .get(4), ST.make(BlocksGT.Diggables, 1, 5));
-		RM.packunpack(IL.Clay_Ball_White        .get(4), ST.make(BlocksGT.Diggables, 1, 6));
-		RM.packunpack(ST.make(Items.clay_ball   , 4, 0), ST.make(Blocks.clay       , 1, 0));
-		RM.RollingMill.addRecipe1(T, 16, 32, ST.make(Items.clay_ball   , 1, 0), OP.plate.mat(MT.Clay        , 1));
-		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Brown        .get(1), OP.plate.mat(MT.ClayBrown   , 1));
-		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Red          .get(1), OP.plate.mat(MT.ClayRed     , 1));
-		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Yellow       .get(1), OP.plate.mat(MT.Bentonite   , 1));
-		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Blue         .get(1), OP.plate.mat(MT.Palygorskite, 1));
-		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_White        .get(1), OP.plate.mat(MT.Kaolinite   , 1));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Mud_Ball               .get(4), ST.make(BlocksGT.Diggables, 1, 0));
-		RM.Compressor .addRecipe1(T, 16, 32, ST.make(Items.clay_ball   , 4, 0), ST.make(Blocks.clay       , 1, 0));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Clay_Ball_Brown        .get(4), ST.make(BlocksGT.Diggables, 1, 1));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Clay_Ball_Red          .get(4), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Clay_Ball_Yellow       .get(4), ST.make(BlocksGT.Diggables, 1, 4));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Clay_Ball_Blue         .get(4), ST.make(BlocksGT.Diggables, 1, 5));
-		RM.Compressor .addRecipe1(T, 16, 32, IL.Clay_Ball_White        .get(4), ST.make(BlocksGT.Diggables, 1, 6));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.Clay           , 4* U), ST.make(Blocks.clay       , 1, 0));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.ClayBrown      , 4* U), ST.make(BlocksGT.Diggables, 1, 1));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.ClayRed        , 4* U), ST.make(BlocksGT.Diggables, 1, 3));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.Bentonite      , 4* U), ST.make(BlocksGT.Diggables, 1, 4));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.Palygorskite   , 4* U), ST.make(BlocksGT.Diggables, 1, 5));
-		RM.Compressor .addRecipe1(T, 16, 32, OM.dust(MT.Kaolinite      , 4* U), ST.make(BlocksGT.Diggables, 1, 6));
-		RM.Mortar     .addRecipe1(T, 16, 16, ST.make(Items.clay_ball   , 1, W), OM.dust(MT.Clay));
-		RM.Mortar     .addRecipe1(T, 16, 16, IL.Clay_Ball_Brown        .get(1), OM.dust(MT.ClayBrown));
-		RM.Mortar     .addRecipe1(T, 16, 16, IL.Clay_Ball_Red          .get(1), OM.dust(MT.ClayRed));
-		RM.Mortar     .addRecipe1(T, 16, 16, IL.Clay_Ball_Yellow       .get(1), OM.dust(MT.Bentonite));
-		RM.Mortar     .addRecipe1(T, 16, 16, IL.Clay_Ball_Blue         .get(1), OM.dust(MT.Palygorskite));
-		RM.Mortar     .addRecipe1(T, 16, 16, IL.Clay_Ball_White        .get(1), OM.dust(MT.Kaolinite));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(Blocks.clay       , 1, W), OM.dust(MT.Clay, U*4));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 4), OM.dust(MT.Bentonite, U*4));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 5), OM.dust(MT.Palygorskite, U*4));
-		RM.Mortar     .addRecipe1(T, 16, 64, ST.make(BlocksGT.Diggables, 1, 6), OM.dust(MT.Kaolinite, U*4));
+		RM.compactunpack(IL.Mud_Ball            .get(4), ST.make(BlocksGT.Diggables, 1, 0));
+		RM.compactunpack(IL.Clay_Ball_Brown     .get(4), ST.make(BlocksGT.Diggables, 1, 1));
+		RM.compactunpack(IL.Clay_Ball_Red       .get(4), ST.make(BlocksGT.Diggables, 1, 3));
+		RM.compactunpack(IL.Clay_Ball_Yellow    .get(4), ST.make(BlocksGT.Diggables, 1, 4));
+		RM.compactunpack(IL.Clay_Ball_Blue      .get(4), ST.make(BlocksGT.Diggables, 1, 5));
+		RM.compactunpack(IL.Clay_Ball_White     .get(4), ST.make(BlocksGT.Diggables, 1, 6));
+		RM.compactunpack(ST.make(Items.clay_ball, 4, 0), ST.make(Blocks.clay       , 1, 0));
+		RM.RollingMill.addRecipe1(T, 16, 32, ST.make(Items.clay_ball, 1, 0), OP.plate.mat(MT.Clay        , 1));
+		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Brown     .get(1), OP.plate.mat(MT.ClayBrown   , 1));
+		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Red       .get(1), OP.plate.mat(MT.ClayRed     , 1));
+		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Yellow    .get(1), OP.plate.mat(MT.Bentonite   , 1));
+		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_Blue      .get(1), OP.plate.mat(MT.Palygorskite, 1));
+		RM.RollingMill.addRecipe1(T, 16, 32, IL.Clay_Ball_White     .get(1), OP.plate.mat(MT.Kaolinite   , 1));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.Clay        ), ST.make(Items.clay_ball, 1, 0));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.ClayBrown   ), IL.Clay_Ball_Brown     .get(1));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.ClayRed     ), IL.Clay_Ball_Red       .get(1));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.Bentonite   ), IL.Clay_Ball_Yellow    .get(1));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.Palygorskite), IL.Clay_Ball_Blue      .get(1));
+		RM.Compressor .addRecipe1(T, 16, 16, OM.dust(MT.Kaolinite   ), IL.Clay_Ball_White     .get(1));
+		RM.mortarize(1, ST.make(Items.clay_ball   , 1, W), OM.dust(MT.Clay));
+		RM.mortarize(1, IL.Clay_Ball_Brown        .get(1), OM.dust(MT.ClayBrown));
+		RM.mortarize(1, IL.Clay_Ball_Red          .get(1), OM.dust(MT.ClayRed));
+		RM.mortarize(1, IL.Clay_Ball_Yellow       .get(1), OM.dust(MT.Bentonite));
+		RM.mortarize(1, IL.Clay_Ball_Blue         .get(1), OM.dust(MT.Palygorskite));
+		RM.mortarize(1, IL.Clay_Ball_White        .get(1), OM.dust(MT.Kaolinite));
+		RM.mortarize(4, ST.make(Blocks.clay       , 1, W), OM.dust(MT.Clay, U*4));
+		RM.mortarize(4, ST.make(BlocksGT.Diggables, 1, 1), OM.dust(MT.ClayBrown, U*4));
+		RM.mortarize(4, ST.make(BlocksGT.Diggables, 1, 3), OM.dust(MT.ClayRed, U*4));
+		RM.mortarize(4, ST.make(BlocksGT.Diggables, 1, 4), OM.dust(MT.Bentonite, U*4));
+		RM.mortarize(4, ST.make(BlocksGT.Diggables, 1, 5), OM.dust(MT.Palygorskite, U*4));
+		RM.mortarize(4, ST.make(BlocksGT.Diggables, 1, 6), OM.dust(MT.Kaolinite, U*4));
 		for (FluidStack tWater : FL.waters(125, 100)) {
 		RM.Bath       .addRecipe1(T,  0, 16, OM.dust(MT.Ceramic      ), FL.mul(tWater, 5), NF, ST.make(Items.clay_ball, 1, 0));
 		RM.Bath       .addRecipe1(T,  0, 16, OM.dust(MT.Clay         ),        tWater    , NF, ST.make(Items.clay_ball, 1, 0));
