@@ -163,7 +163,7 @@ public enum IL implements IItemContainer {
 	AETHER_Skyroot_Sapling_Gold, AETHER_Skyroot_Sapling_Green, AETHER_Skyroot_Sapling_Blue, AETHER_Skyroot_Sapling_Dark, AETHER_Skyroot_Sapling_Purple,
 	AETHER_Skyroot_Leaves_Gold, AETHER_Skyroot_Leaves_Green, AETHER_Skyroot_Leaves_Blue, AETHER_Skyroot_Leaves_Dark, AETHER_Skyroot_Leaves_Purple, AETHER_Skyroot_Leaves_Apple,
 	AETHER_Bucket_Empty, AETHER_Bucket_Water, AETHER_Bucket_Milk, AETHER_Bucket_Poison,
-	Salt_Mud_Ball, Salt_Mud, Salt_Mud_Bricks,
+	Salt_Mud_Ball, Salt_Mud, Salt_Mud_Bricks, Salt_Dirt_1, Salt_Dirt_2, Salt_Dirt_3, Salt_Grass,
 	GrC_Honey_Jar, GrC_Honey_Bucket, GrC_Honey_Bottle, GrC_Milk_Bucket, GrC_Milk_Bottle,
 	GrC_Applecore, GrC_Grape_Purple, GrC_Grape_Green, GrC_Grape_Red,
 	GrC_Cheese_Cheddar, GrC_Cheese_Gorgonzola, GrC_Cheese_Swiss, GrC_Cheese_Appenzeller, GrC_Cheese_Asiago, GrC_Cheese_Parmesan, GrC_Cheese_Monterey, GrC_Cheese_Ricotta,

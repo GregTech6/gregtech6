@@ -47,9 +47,14 @@ public class Compat_Recipes_SaltyMod extends CompatMods {
 		
 		RM.mortarize(4, ST.make(MD.Salt, "saltCrystal", 1, 0), OP.dust.mat(MT.NaCl, 4));
 		
-		RM.Mixer.addRecipe2(T, 16, 144, ST.make(Blocks.dirt, 1, 0), OP.dust.mat(MT.NaCl, 1), ST.make(MD.Salt, "saltDirt", 1, 0));
+		RM.Mixer.addRecipe2(T, 16,  64, ST.make(Blocks.dirt, 1, 0), OP.dustSmall.mat(MT.NaCl, 2), IL.Salt_Dirt_1.get(1));
+		RM.Mixer.addRecipe2(T, 16,  64, ST.make(Blocks.dirt, 2, 0), OP.dust     .mat(MT.NaCl, 1), IL.Salt_Dirt_1.get(2));
+		RM.Mixer.addRecipe2(T, 16,  64, IL.Salt_Dirt_1     .get(1), OP.dustSmall.mat(MT.NaCl, 2), IL.Salt_Dirt_2.get(1));
+		RM.Mixer.addRecipe2(T, 16,  64, IL.Salt_Dirt_1     .get(2), OP.dust     .mat(MT.NaCl, 1), IL.Salt_Dirt_2.get(2));
+		RM.Mixer.addRecipe2(T, 16,  64, IL.Salt_Dirt_2     .get(1), OP.dust     .mat(MT.NaCl, 1), IL.Salt_Dirt_3.get(1));
+		
 		RM.Mixer.addRecipeX(T, 16, 144, ST.array(OP.dust.mat(MT.NaHCO3, 4), OP.dust.mat(MT.NaCl, 4), OP.dust.mat(MT.Gunpowder, 1)), ST.make(MD.Salt, "saltStar", 1, 0));
-		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tCarbon : ANY.C.mToThis) {
+		for (OreDictMaterial tCarbon : ANY.C.mToThis) if (ST.valid(OP.dust.mat(tCarbon, 1))) for (OreDictMaterial tClay : ANY.Clay.mToThis) {
 		RM.Mixer.addRecipeX(T, 16,  16, ST.array(OP.dustSmall.mat(MT.NaHCO3, 1), OP.dustSmall.mat(MT.NaCl, 1), OP.dustSmall.mat(tClay, 1), OP.dustSmall.mat(tCarbon, 1)), IL.Salt_Mud_Ball.get(1));
 		RM.Mixer.addRecipeX(T, 16,  64, ST.array(OP.dust     .mat(MT.NaHCO3, 1), OP.dust     .mat(MT.NaCl, 1), OP.dust     .mat(tClay, 1), OP.dust     .mat(tCarbon, 1)), IL.Salt_Mud_Ball.get(4));
 		}

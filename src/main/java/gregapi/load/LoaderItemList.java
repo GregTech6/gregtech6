@@ -1020,6 +1020,10 @@ public class LoaderItemList implements Runnable {
 		IL.Salt_Mud_Ball                        .set(ST.make(MD.Salt, "mineralMud"                          , 1, 0), null, OD.itemMud);
 		IL.Salt_Mud                             .set(ST.make(MD.Salt, "mudBlock"                            , 1, 0), null, OD.blockMud);
 		IL.Salt_Mud_Bricks                      .set(ST.make(MD.Salt, "mudBricks"                           , 1, 0), null, OD.blockMudBricks);
+		IL.Salt_Dirt_1                          .set(ST.make(MD.Salt, "saltDirtLite"                        , 1, 0));
+		IL.Salt_Dirt_2                          .set(ST.make(MD.Salt, "saltDirt"                            , 1, 0));
+		IL.Salt_Dirt_3                          .set(ST.make(MD.Salt, "saltDirt"                            , 1, 1));
+		IL.Salt_Grass                           .set(ST.make(MD.Salt, "saltGrass"                           , 1, 0));
 		
 		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));

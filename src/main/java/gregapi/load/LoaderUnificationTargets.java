@@ -868,6 +868,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Ash                    , MD.BINNIE_BOTANY, "misc", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Wood                   , MD.BINNIE_BOTANY, "misc", 1);
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.S                      , MD.BINNIE_BOTANY, "misc", 3);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.NaCl                   , MD.Salt, "saltLake", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.NaCl                   , MD.Salt, "saltOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.NaCl                   , MD.Salt, "saltDeepslateOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreLimestone   , MT.NaCl                   , MD.HaC, "salt", 0);

@@ -143,6 +143,10 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.EB_Grass_Inceptisol          .equal(tStack, F, T)) {mDisplayedInput = -7;} else
 				if (IL.EB_Grass_Mollisol            .equal(tStack, F, T)) {mDisplayedInput = -7;} else
 				if (IL.EB_Grass_Oxisol              .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.Salt_Dirt_1                  .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.Salt_Dirt_2                  .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.Salt_Dirt_3                  .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.Salt_Grass                   .equal(tStack, F, T)) {mDisplayedInput = -7;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
@@ -208,6 +212,10 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.EB_Grass_Inceptisol          .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
 				if (IL.EB_Grass_Mollisol            .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
 				if (IL.EB_Grass_Oxisol              .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.Salt_Dirt_1                  .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.Salt_Dirt_2                  .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.Salt_Dirt_3                  .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.Salt_Grass                   .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
