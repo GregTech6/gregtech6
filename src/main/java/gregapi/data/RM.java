@@ -826,6 +826,7 @@ public class RM {
 		return F;
 	}
 	
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput);}
 	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput);

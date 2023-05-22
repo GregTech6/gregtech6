@@ -573,6 +573,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}
 		}
 		
+		RM.mortarize(IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2, IL.IC2_Grin_Powder.get(2)));
+		RM.mortarize(ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3, IL.IC2_Grin_Powder.get(3)));
+		
 		RM.add_smelting(IL.Mud_Ball               .get(1), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
 		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
 		
@@ -581,6 +587,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(IL.BoP_Mud_Brick .get(1), IL.BTL_Mud_Brick .get(1), IL.ERE_Mud_Brick .get(1));
 		RM.genericycle(IL.BoP_Mud_Bricks.get(1), IL.BTL_Mud_Bricks.get(1), IL.ERE_Mud_Bricks.get(1));
 		RM.genericycle(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
+		RM.genericycle(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
 		RM.genericycle(ST.make(MD.TC, "ItemResource", 1, 6), ST.make(MD.BoP, "gems", 1, 7));
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.

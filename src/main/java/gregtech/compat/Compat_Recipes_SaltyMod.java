@@ -38,6 +38,8 @@ public class Compat_Recipes_SaltyMod extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Salty Mod Recipes.");
 		CR.delate(MD.Salt, "saltStar", "saltDirt", "mineralMud", "mudBlock", "mudBrickWet");
 		
+		RM.mortarize(4, ST.make(MD.Salt, "saltCrystal", 1, 0), OP.dust.mat(MT.NaCl, 4));
+		
 		RM.packunpack(ST.make(MD.Salt, "mineralMud", 4, 0), 4, ST.make(MD.Salt, "mudBlock", 1, 0));
 		
 		CR.shapeless(ST.make(MD.Salt, "mineralMud", 4, 0), CR.DEF_NCC, new Object[] {ST.make(MD.Salt, "mudBlock", 1, 0)});

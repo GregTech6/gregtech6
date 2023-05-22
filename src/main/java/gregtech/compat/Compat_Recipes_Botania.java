@@ -57,7 +57,7 @@ public class Compat_Recipes_Botania extends CompatMods {
 		RM.Squeezer.addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
 		RM.Juicer  .addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
 		RM.ic2_extractor(tPetal, tDye);
-		RM.mortarize (1, tPetal, tDye);
+		RM.mortarize(tPetal, tDye);
 		}
 		
 		RM.packunpack(ST.make(Items.blaze_rod, 9, 0), ST.make(MD.BOTA, "blazeBlock", 1, 0));

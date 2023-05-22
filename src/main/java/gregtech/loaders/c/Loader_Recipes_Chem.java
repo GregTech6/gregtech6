@@ -132,7 +132,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  128, OM.dust(MT.NaOH                ,U * 3), MT.HNO3        .liquid(U* 5, T)                                                            , MT.H2O            .liquid(U* 3, F), OM.dust(MT.NaNO3, U*5));
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.KOH                 ,U * 6), MT.CO2         .gas  (U * 3, T)                                                            , MT.H2O            .liquid(U* 3, F), OM.dust(MT.K2CO3, U*6));
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.NaOH                ,U * 6), MT.CO2         .gas  (U * 3, T)                                                            , MT.H2O            .liquid(U* 3, F), OM.dust(MT.Na2CO3, U*6));
-		RM.Mixer        .addRecipe1(T, 16,  240, OM.dust(MT.OREMATS.Trona       ,U * 6), MT.CO2         .gas  (U * 3, T)                                                            , MT.H2O            .liquid(U* 3, F), OM.dust(MT.NaHCO3, U*12));
+		RM.Mixer        .addRecipe1(T, 16,   32, OM.dust(MT.OREMATS.Trona       ,U * 1), MT.CO2         .gas  (U2   , T)                                                            , MT.H2O            .liquid(U2  , F), OM.dust(MT.NaHCO3, U*2));
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.KOH                 ,U * 6), MT.H2S         .gas  (U * 3, T)                                                            , MT.H2O            .liquid(U* 6, F), OM.dust(MT.K2S, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.NaOH                ,U * 6), MT.H2S         .gas  (U * 3, T)                                                            , MT.H2O            .liquid(U* 6, F), OM.dust(MT.Na2S, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  192, OM.dust(MT.KNO3                ,U * 5), MT.H2SO4       .liquid(U* 7, T)                                                            , MT.HNO3           .liquid(U* 5, F), OM.dust(MT.KHSO4, U*7));
@@ -157,7 +157,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.Na  , 2), OP.dustTiny.mat(MT.Blaze , 1), OP.dust.mat(MT.Na2S, 3));
 		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.K   , 2), OP.dust    .mat(MT.S     , 1), OP.dust.mat(MT.K2S , 3));
 		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.K   , 2), OP.dustTiny.mat(MT.Blaze , 1), OP.dust.mat(MT.K2S , 3));
-		RM.Mixer        .addRecipe2(T, 16,  144, OP.dust.mat(MT.NaOH, 3), OP.dust    .mat(MT.NaHCO3, 6), NF, MT.H2O.liquid(U*3, F), OP.dust.mat(MT.Na2CO3, 6));
+		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.NaOH, 1), OP.dust    .mat(MT.NaHCO3, 2), NF, MT.H2O.liquid(U*1, F), OP.dust.mat(MT.Na2CO3, 2));
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {ItemStack tSiliconDioxide = OM.dust(tMat, U*3); if (ST.invalid(tSiliconDioxide)) continue;
 		RM.HeatMixer    .addRecipe2(T, 16,  144, tSiliconDioxide, OP.dust.mat(MT.CaSO4, 6), NF, MT.SO3.gas(U*4, F), OM.dust(MT.OREMATS.Wollastonite, U*5));
 		}
