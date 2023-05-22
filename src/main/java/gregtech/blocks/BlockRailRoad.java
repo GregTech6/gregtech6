@@ -56,6 +56,11 @@ public class BlockRailRoad extends BlockBaseRail {
 	}
 	
 	@Override
+	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
+		// NO-OP
+	}
+	
+	@Override
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		double tMotion = Math.sqrt(aCart.motionX*aCart.motionX + aCart.motionZ*aCart.motionZ);
 		if (tMotion > 0.01) {
