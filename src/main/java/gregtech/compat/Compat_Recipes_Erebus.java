@@ -35,8 +35,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.rockGt;
-import static gregapi.util.CR.DEF;
-import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Compat_Recipes_Erebus extends CompatMods {
 	public Compat_Recipes_Erebus(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -74,7 +72,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.compactsmash(IL.ERE_Mud_Brick.get(4), 4, IL.ERE_Mud_Bricks.get(1));
 		RM.add_smelting(IL.ERE_Mud.get(1), IL.ERE_Mud_Brick.get(1), T, F, T);
 		CR.delate(MD.ERE, "mirbrick", "petrifiedWoodPlanks");
-		CR.shaped(IL.ERE_Mud_Bricks.get(1), DEF | DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.ERE_Mud_Brick);
+		CR.shaped(IL.ERE_Mud_Bricks.get(1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "BB" , "BB" , 'B', IL.ERE_Mud_Brick);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
 		

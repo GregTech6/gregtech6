@@ -310,6 +310,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		addListener("listAllsugar", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData == null || tData.mMaterial == null) {
+			if (!MD.HaC.owns(aEvent.mStack))
 			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", 1), F, T, F);
 			} else if (tData.mMaterial.mMaterial == MT.Sugar && tData.mMaterial.mAmount >= U) {
 			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", tData.mMaterial.mAmount / U), F, T, F);

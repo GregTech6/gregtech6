@@ -611,6 +611,11 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OD.itemFur                        , OD.craftingFur);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemPelt                       , OD.craftingFur);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemGrassTall                  , OD.itemGrass);
+		OreDictManager.INSTANCE.addReRegistration("cropWheat"                       , OD.cropGrain);
+		OreDictManager.INSTANCE.addReRegistration("cropRice"                        , OD.cropGrain);
+		OreDictManager.INSTANCE.addReRegistration("cropOats"                        , OD.cropGrain);
+		OreDictManager.INSTANCE.addReRegistration("cropRye"                         , OD.cropGrain);
+		OreDictManager.INSTANCE.addReRegistration("cropBarley"                      , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("bouleGtAnySilicon"               , "bouleSilicon");
 		OreDictManager.INSTANCE.addReRegistration("plateGemAnySilicon"              , OD.itemSilicon);
 		OreDictManager.INSTANCE.addReRegistration("plateAnySilicon"                 , OD.itemSilicon);

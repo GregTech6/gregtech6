@@ -165,7 +165,7 @@ public class MD {
 	
 	, TreeCap           = new ModData(ModIDs.TreeCap            , "Treecapitator")
 	, HaC               = new ModData(ModIDs.HaC                , "HarvestCraft")
-	, Salt              = new ModData(ModIDs.Salt               , "Salt Mod")
+	, Salt              = new ModData(ModIDs.Salt               , "Salty Mod")
 	, CookBook          = new ModData(ModIDs.CookBook           , "Cooking for Blockheads")
 	, APC               = new ModData(ModIDs.APC                , "AppleCore")
 	, HO                = new ModData(ModIDs.HO                 , "Hunger Overhaul")

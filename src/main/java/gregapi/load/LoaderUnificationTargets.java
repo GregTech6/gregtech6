@@ -872,11 +872,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.NaCl                   , MD.Salt, "saltDeepslateOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreLimestone   , MT.NaCl                   , MD.HaC, "salt", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.NaCl                   , MD.HaC, "spamcompressedsaltBlockalt", 0);
-		//OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaCl                   , MD.Salt, "salt", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaCl                   , MD.Salt, "salt", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.NaCl                   , MD.Salt, "saltPinch", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.NaCl                   , MD.Salt, "saltBlock", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Sugar                  , MD.Salt, "sugarPinch", 0);
-		//OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaHCO3                 , MD.Salt, "soda", 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaHCO3                 , MD.Salt, "soda", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Milk                   , MD.Salt, "powderedMilk", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NaCl                   , MD.HaC, "saltItem", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nutmeg                 , MD.HaC, "groundnutmegItem", 0);

@@ -165,6 +165,7 @@ public enum OD {
 	, itemGrassDry
 	, itemGrassMoldy
 	, itemGrassRotten
+	, cropGrain
 	, baleGrass
 	, baleGrassDry
 	, baleGrassMoldy
