@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.compat.buildcraft;
 
-import static gregapi.data.CS.*;
-
 import buildcraft.api.core.BuildCraftAPI;
 import buildcraft.core.properties.WorldPropertyIsWood;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -35,6 +33,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHugeMushroom;
 import net.minecraft.world.IBlockAccess;
 
+import static gregapi.data.CS.T;
+
 
 public class CompatBC extends CompatBase implements ICompatBC {
 	public CompatBC() {
@@ -42,6 +42,8 @@ public class CompatBC extends CompatBase implements ICompatBC {
 		TriggerBC_Energy_Capacity_Partial.class.getCanonicalName();
 		TriggerBC_Energy_Capacity_NotFull.class.getCanonicalName();
 		TriggerBC_Energy_Capacity_Full.class.getCanonicalName();
+		WorldPropertyIsWood.class.getCanonicalName();
+		BuildCraftAPI.class.getCanonicalName();
 	}
 	
 	@Override
