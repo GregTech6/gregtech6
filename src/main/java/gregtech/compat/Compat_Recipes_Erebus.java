@@ -81,6 +81,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		
 		
 		
+		
 		// TODO
 		ST.make(MD.ERE, "umberstonePillar"   , 1, 0);// Umberstone Pillar
 		ST.make(MD.ERE, "umberstone"         , 1, 3);// Webbed Umbercobble

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,12 @@
 
 package gregtech.worldgen.center;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.code.HashSetNoNulls;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregtech.blocks.BlockRailRoad;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -45,6 +38,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -309,19 +308,17 @@ public class WorldgenStreets extends WorldgenObject {
 				}
 			}
 			
-			aWorld.setBlock(-12, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_LightGray, 0);
-			aWorld.setBlock(-12, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(-11, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_White, 0);
+			aWorld.setBlock(-12, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(-12, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(-11, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(-11, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, 0, 0);
 			aWorld.setBlock(-10, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(- 9, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(- 8, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(- 7, mHeight  , aMinZ+i, BlocksGT.Asphalt, ((i+2) / 4) % 2 == 0 ? DYE_INDEX_Gray : DYE_INDEX_White, 0);
+			aWorld.setBlock(- 7, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(- 7, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, ((i+2) / 4) % 2 == 0 ? 8 : 0, 0);
 			aWorld.setBlock(- 6, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(- 5, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(- 4, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(- 3, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_White, 0);
-			aWorld.setBlock(- 2, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(- 2, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(- 3, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(- 3, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, 0, 0);
+			aWorld.setBlock(- 2, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(- 2, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_LightGray, 0);
 			
 			if (aLand) {
 			WD.set(aWorld, - 1, mHeight-1, aMinZ+i, Blocks.cobblestone, 0, 0, T);
@@ -341,19 +338,17 @@ public class WorldgenStreets extends WorldgenObject {
 			WD.set(aWorld,   0, mHeight+1, aMinZ+i, BlocksGT.Concrete, DYE_INDEX_Gray, 0, F);
 			}
 			
-			aWorld.setBlock(  1, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_LightGray, 0);
-			aWorld.setBlock(  1, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(  2, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_White, 0);
+			aWorld.setBlock(  1, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(  1, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(  2, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(  2, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, 0, 0);
 			aWorld.setBlock(  3, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(  4, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(  5, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(  6, mHeight  , aMinZ+i, BlocksGT.Asphalt, ((i+2) / 4) % 2 == 0 ? DYE_INDEX_Gray : DYE_INDEX_White, 0);
+			aWorld.setBlock(  6, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(  6, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, ((i+2) / 4) % 2 == 0 ? 8 : 0, 0);
 			aWorld.setBlock(  7, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(  8, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(  9, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock( 10, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_White, 0);
-			aWorld.setBlock( 11, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock( 11, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock( 10, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock( 10, mHeight+1, aMinZ+i, (BlockRailRoad)BlocksGT.RailRoad, 0, 0);
+			aWorld.setBlock( 11, mHeight  , aMinZ+i, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock( 11, mHeight+1, aMinZ+i, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_LightGray, 0);
 		}
 		
 		if (aTunnel) {
@@ -550,19 +545,17 @@ public class WorldgenStreets extends WorldgenObject {
 				}
 			}
 			
-			aWorld.setBlock(aMinX+i, mHeight+1, -12, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_LightGray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  , -12, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  , -11, BlocksGT.Asphalt, DYE_INDEX_White, 0);
+			aWorld.setBlock(aMinX+i, mHeight  , -12, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1, -12, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(aMinX+i, mHeight  , -11, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1, -11, (BlockRailRoad)BlocksGT.RailRoad, 1, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , -10, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , - 9, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , - 8, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  , - 7, BlocksGT.Asphalt, ((i+2) / 4) % 2 == 0 ? DYE_INDEX_Gray : DYE_INDEX_White, 0);
+			aWorld.setBlock(aMinX+i, mHeight  , - 7, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1, - 7, (BlockRailRoad)BlocksGT.RailRoad, ((i+2) / 4) % 2 == 0 ? 9 : 1, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , - 6, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , - 5, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  , - 4, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  , - 3, BlocksGT.Asphalt, DYE_INDEX_White, 0);
-			aWorld.setBlock(aMinX+i, mHeight  , - 2, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(aMinX+i, mHeight  , - 3, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1, - 3, (BlockRailRoad)BlocksGT.RailRoad, 1, 0);
+			aWorld.setBlock(aMinX+i, mHeight  , - 2, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_LightGray, 0);
 			
 			if (aLand) {
 			WD.set(aWorld, aMinX+i, mHeight-1, - 1, Blocks.cobblestone, 0, 0, T);
@@ -582,19 +575,17 @@ public class WorldgenStreets extends WorldgenObject {
 			WD.set(aWorld, aMinX+i, mHeight+1,   0, BlocksGT.Concrete, DYE_INDEX_Gray, 0, F);
 			}
 			
-			aWorld.setBlock(aMinX+i, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_LightGray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  ,   1, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  ,   2, BlocksGT.Asphalt, DYE_INDEX_White, 0);
+			aWorld.setBlock(aMinX+i, mHeight  ,   1, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(aMinX+i, mHeight  ,   2, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1,   2, (BlockRailRoad)BlocksGT.RailRoad, 1, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   3, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   4, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   5, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  ,   6, BlocksGT.Asphalt, ((i+2) / 4) % 2 == 0 ? DYE_INDEX_Gray : DYE_INDEX_White, 0);
+			aWorld.setBlock(aMinX+i, mHeight  ,   6, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1,   6, (BlockRailRoad)BlocksGT.RailRoad, ((i+2) / 4) % 2 == 0 ? 9 : 1, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   7, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   8, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
 			aWorld.setBlock(aMinX+i, mHeight  ,   9, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight  ,  10, BlocksGT.Asphalt, DYE_INDEX_White, 0);
-			aWorld.setBlock(aMinX+i, mHeight  ,  11, BlocksGT.Asphalt, DYE_INDEX_Gray, 0);
-			aWorld.setBlock(aMinX+i, mHeight+1,  11, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_LightGray, 0);
+			aWorld.setBlock(aMinX+i, mHeight  ,  10, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1,  10, (BlockRailRoad)BlocksGT.RailRoad, 1, 0);
+			aWorld.setBlock(aMinX+i, mHeight  ,  11, BlocksGT.Asphalt, DYE_INDEX_Gray, 0); aWorld.setBlock(aMinX+i, mHeight+1,  11, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_LightGray, 0);
 		}
 		
 		if (aTunnel) {
