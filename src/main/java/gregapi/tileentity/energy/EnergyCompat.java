@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -112,10 +112,9 @@ public class EnergyCompat {
 		
 		if (BB_ENERGY && aTarget instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider && ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aTarget).getEnergyBuffer(FORGE_DIR[aSide]) != null) return T;
 		
-		if (IC_ENERGY && aThis != null) {
-			TileEntity tConnected = (aTarget instanceof ic2.api.energy.tile.IEnergyTile || ic2.api.energy.EnergyNet.instance == null ? aTarget : ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord));
-			if (tConnected instanceof ic2.api.energy.tile.IEnergySink   && ((ic2.api.energy.tile.IEnergySink  )tConnected).acceptsEnergyFrom(aThis, FORGE_DIR[aSide])) return T;
-			if (tConnected instanceof ic2.api.energy.tile.IEnergySource && ((ic2.api.energy.tile.IEnergySource)tConnected).emitsEnergyTo    (aThis, FORGE_DIR[aSide])) return T;
+		if (IC_ENERGY && aThis != null) {// the original side check that was here did not really do anything, and IC2 stuff connects to all 6 sides anyways, so connecting should not hurt and make things less buggy.
+			if (aTarget instanceof ic2.api.energy.tile.IEnergyTile) return T;
+			if (ic2.api.energy.EnergyNet.instance != null && ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord) instanceof ic2.api.energy.tile.IEnergyTile) return T;
 		}
 		
 		if (RF_ENERGY && (EMIT_EU_AS_RF || isElectricRFReceiver(aTarget)) && (aTarget instanceof cofh.api.energy.IEnergyHandler || (RF_ENERGY_NEW && aTarget instanceof cofh.api.energy.IEnergyReceiver))) return !(aTarget instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aTarget).canConnectEnergy(FORGE_DIR[aSide]);

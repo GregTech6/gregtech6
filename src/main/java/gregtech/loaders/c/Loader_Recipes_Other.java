@@ -466,7 +466,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Ag           ), OM.dust(MT.I    )), OM.dust(MT.AgI, 2*U  ));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Ag       , U4), OM.dust(MT.I, U4)), OM.dust(MT.AgI, 2* U4));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Ag       , U9), OM.dust(MT.I, U9)), OM.dust(MT.AgI, 2* U9));
-		for (OreDictMaterial tMat : ANY.Quartz.mToThis) {ItemStack tDust = dust.mat(tMat, 1), tGem = gem.mat(tMat, 1);
+		for (OreDictMaterial tMat : ANY.Quartz.mToThis) if (tMat != MT.BlackQuartz) {ItemStack tDust = dust.mat(tMat, 1), tGem = gem.mat(tMat, 1);
 		if (ST.valid(tDust)) {
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.C           ,U*2), tDust, OM.dust(MT.BlackQuartz));
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Coal            ), tDust, OM.dust(MT.BlackQuartz));

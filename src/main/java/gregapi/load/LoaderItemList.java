@@ -320,6 +320,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.NePl, "CryingObsidian"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.NePl, "AncientDebris"            , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BTL, "bedrock"                   , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BTL, "genericStone"              , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierOne"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierTwo"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierThree"         , 1, W));
@@ -383,10 +384,12 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.drillableDynamite.add(ST.block(MD.BoP, "overgrownNetherrack"                , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.ERE, "mud"                                , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "mud"                                , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "peat"                               , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "swampDirt"                          , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "swampGrass"                         , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "deadGrass"                          , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "slimyGrass"                         , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "genericStone"                       , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BOTA, "altGrass"                          , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherDirt"                      , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherGrass"                     , null));
@@ -420,6 +423,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "overgrownNetherrack"                 , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.ERE, "mud"                                 , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "mud"                                 , null));
+		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "peat"                                , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "swampDirt"                           , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "swampGrass"                          , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "deadGrass"                           , null));
@@ -1015,7 +1019,9 @@ public class LoaderItemList implements Runnable {
 		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.STONES.Umber));
-		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23));
+		IL.ERE_Mud                              .set(ST.make(MD.ERE, "mud"                                  , 1, 0), null, OD.blockMud);
+		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23), null, OD.itemMudBrick);
+		IL.ERE_Mud_Bricks                       .set(ST.make(MD.ERE, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);
 		IL.ERE_Spray_Repellant                  .set(ST.make(MD.ERE, "sprayCan"                             , 1, 0), null, CR.DELATE);
 		IL.ERE_Herbicide                        .set(ST.make(MD.ERE, "planticide"                           , 1, 0));
 		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
@@ -1044,6 +1050,13 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Tainted_Potion                   .set(ST.make(MD.BTL, "taintedPotion"                        , 1, 0));
 		IL.BTL_Betweenstone                     .set(ST.make(MD.BTL, "betweenstone"                         , 1, 0), OP.stone.dat(MT.STONES.Betweenstone));
 		IL.BTL_Pitstone                         .set(ST.make(MD.BTL, "pitstone"                             , 1, 0), OP.stone.dat(MT.STONES.Pitstone));
+		IL.BTL_Cragrock                         .set(ST.make(MD.BTL, "genericStone"                         , 1, 1), OP.stone.dat(MT.STONES.Cragrock));
+		IL.BTL_Templebrick                      .set(ST.make(MD.BTL, "smoothTempleBrick"                    , 1, 0), OP.stone.dat(MT.STONES.Templerock));
+		IL.BTL_Limestone                        .set(ST.make(MD.BTL, "limestone"                            , 1, 0), OP.stone.dat(MT.STONES.Limestone));
+		IL.BTL_Peat                             .set(ST.make(MD.BTL, "peat"                                 , 1, 0), new OreDictItemData(MT.Peat, U*4));
+		IL.BTL_Mud                              .set(ST.make(MD.BTL, "mud"                                  , 1, 0), null, OD.blockMud);
+		IL.BTL_Mud_Bricks                       .set(ST.make(MD.BTL, "mudBrick"                             , 1, 0), null, OD.blockMudBricks);
+		IL.BTL_Mud_Brick                        .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,13), null, OD.itemMudBrick);
 		IL.BTL_Bedrock                          .set(ST.make(MD.BTL, "bedrock"                              , 1, 0), OP.stone.dat(MT.Bedrock));
 		IL.BTL_Chest                            .set(ST.make(MD.BTL, "weedwoodChest"                        , 1, 0), new OreDictItemData(MT.Weedwood, 8*U), OD.craftingChest);
 		IL.BTL_Weedwood_Leaves                  .set(ST.make(MD.BTL, "weedwoodLeaves"                       , 1, 0), null, OP.treeLeaves);
@@ -1055,8 +1068,11 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Weedwood_RottenBark              .set(ST.make(MD.BTL, "rottenWeedwoodBark"                   , 1, 0), new OreDictItemData(MT.Bark, U));
 		IL.BTL_Portal_Bark                      .set(ST.make(MD.BTL, "portalBark"                           , 1, 0), new OreDictItemData(MT.Bark, U*9));
 		IL.BTL_Bark                             .set(ST.make(MD.BTL, "groundStuff"                          , 1,16), OP.dust.dat(MT.Bark));
+		IL.BTL_Coral_Mire                       .set(ST.make(MD.BTL, "plantDrop"                            , 1, 5), null, OD.itemCoral);
+		IL.BTL_Coral_Deep                       .set(ST.make(MD.BTL, "plantDrop"                            , 1, 6), null, OD.itemCoral);
 		IL.BTL_Resin                            .set(ST.make(MD.BTL, "sapBall"                              , 1, 0), null, OD.itemResin);
 		IL.BTL_Rubber                           .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,26), new OreDictItemData(MT.Rubber, U));
+		IL.BTL_Compost                          .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 5), null, OD.itemCompost);
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
 		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar);
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
@@ -1462,10 +1478,10 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_Shale                            .set(ST.make(MD.BoP, "rocks"                                , 1, 4), OP.stone.dat(MT.STONES.Shale));
 		IL.BoP_Shale_Polished                   .set(ST.make(MD.BoP, "rocks"                                , 1, 5), OP.stone.dat(MT.STONES.Shale));
 		IL.BoP_Quicksand                        .set(ST.make(MD.BoP, "mud"                                  , 1, 1));
-		IL.BoP_Mud                              .set(ST.make(MD.BoP, "mud"                                  , 1, 0));
+		IL.BoP_Mud                              .set(ST.make(MD.BoP, "mud"                                  , 1, 0), null, OD.blockMud);
 		IL.BoP_Mud_Ball                         .set(ST.make(MD.BoP, "mudball"                              , 1, 0), null, OD.itemMud);
-		IL.BoP_Mud_Brick                        .set(ST.make(MD.BoP, "misc"                                 , 1, 0));
-		IL.BoP_Mud_Bricks                       .set(ST.make(MD.BoP, "mudBricks"                            , 1, 0));
+		IL.BoP_Mud_Brick                        .set(ST.make(MD.BoP, "misc"                                 , 1, 0), null, OD.itemMudBrick);
+		IL.BoP_Mud_Bricks                       .set(ST.make(MD.BoP, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);
 		IL.BoP_Ashes                            .set(ST.make(MD.BoP, "misc"                                 , 1, 1), new OreDictItemData(MT.VolcanicAsh, U4*9), DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray]);
 		IL.BoP_Ashes_Block                      .set(ST.make(MD.BoP, "ash"                                  , 1, 0), new OreDictItemData(MT.VolcanicAsh, U *9));
 		IL.BoP_Ashstone                         .set(ST.make(MD.BoP, "ashStone"                             , 1, 0), new OreDictItemData(MT.VolcanicAsh, U *9));
@@ -1863,9 +1879,9 @@ public class LoaderItemList implements Runnable {
 		}
 		IL.FR_Pollen_Cluster                    .set(ST.make(MD.FR, "pollen"                                , 1, 0));
 		IL.FR_Pollen_Cluster_Crystalline        .set(ST.make(MD.FR, "pollen"                                , 1, 1));
-		IL.FR_Mulch                             .set(ST.make(MD.FR, "mulch"                                 , 1, 0));
+		IL.FR_Mulch                             .set(ST.make(MD.FR, "mulch"                                 , 1, 0), null, OD.itemMulch);
 		IL.FR_Fertilizer                        .set(ST.make(MD.FR, "fertilizerCompound"                    , 1, 0), null, OD.itemFertilizer);
-		IL.FR_Compost                           .set(ST.make(MD.FR, "fertilizerBio"                         , 1, 0));
+		IL.FR_Compost                           .set(ST.make(MD.FR, "fertilizerBio"                         , 1, 0), null, OD.itemCompost);
 		IL.FR_Pulsating_Dust                    .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 0), new OreDictItemData(MT.EnderPearl, U));
 		IL.FR_Pulsating_Mesh                    .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 1));
 		IL.FR_Silk                              .set(ST.make(MD.FR, "craftingMaterial"                      , 1, 2));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,12 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.util.CR;
@@ -42,6 +33,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_Ganys extends CompatMods {
 	public Compat_Recipes_Ganys(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -320,7 +313,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.ic2_extractor(                       ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
 		}
 		if (MD.GaNe.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Nether.");
-			RM.pulverizing(ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));
+			RM.mortarize(1, ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));
 			
 			CR.remove(OP.nugget.mat(MT.Blaze, 1), NI, NI, OP.nugget.mat(MT.Blaze, 1), NI, NI, OP.nugget.mat(MT.Blaze, 1));
 			

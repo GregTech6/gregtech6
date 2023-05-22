@@ -392,11 +392,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		if (!IL.HBM_Poison_Powder.exists()) {
 		if (IL.ERE_Herbicide.exists())
-		RM.pulverizing(IL.ERE_Herbicide                  .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.pulverizing(IL.Food_Potato_Poisonous          .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.pulverizing(ST.make(Blocks.red_mushroom       , 1, W), IL.IC2_Grin_Powder.get(1));
-		RM.pulverizing(ST.make(Items.spider_eye          , 1, W), IL.IC2_Grin_Powder.get(2));
-		RM.pulverizing(ST.make(Items.fermented_spider_eye, 1, W), IL.IC2_Grin_Powder.get(3));
+		RM.mortarize(1, IL.ERE_Herbicide                  .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.mortarize(1, IL.Food_Potato_Poisonous          .get(1), IL.IC2_Grin_Powder.get(1));
+		RM.mortarize(1, ST.make(Blocks.red_mushroom       , 1, W), IL.IC2_Grin_Powder.get(1));
+		RM.mortarize(1, ST.make(Items.spider_eye          , 1, W), IL.IC2_Grin_Powder.get(2));
+		RM.mortarize(1, ST.make(Items.fermented_spider_eye, 1, W), IL.IC2_Grin_Powder.get(3));
 		}
 		RM.pulverizing(ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay, U));
 		RM.pulverizing(ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));

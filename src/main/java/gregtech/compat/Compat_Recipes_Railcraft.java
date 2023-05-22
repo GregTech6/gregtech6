@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -91,7 +91,9 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 14), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Steel)                  , 'G', OD.paneGlassColorless);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 15), tBits | DEL_IF_NO_DYES                                , "BPB"          , "PLP"              , "BPB"              , 'P', OP.plate.dat(ANY.Steel)                  , 'B', Blocks.iron_bars, 'L', OD.lever);
 		
-		CR.shaped(IL.RC_ShuntingWireFrame.get(6)                  , tBits                                                 , "PPP"          , "R"+tWrench+"R"    , "RRR"              , 'P', OP.plate.dat(ANY.Fe)                     , 'R', IL.RC_Rebar.get(1));
+		CR.shaped(IL.RC_ShuntingWire.get(1)                       , DEF_REV                                               , "P"+tHammer    , "WI"                                    , 'P', OP.casingSmall.dat(MT.Pb)                , 'W', OP.wireGt01.dat(ANY.Cu), 'I', OD.itemInsulator);
+		CR.shaped(IL.RC_ShuntingWire.get(1)                       , DEF                                                   , "P"+tHammer    , "W "                                    , 'P', OP.casingSmall.dat(MT.Pb)                , 'W', OP.cableGt01.dat(ANY.Cu));
+		CR.shaped(IL.RC_ShuntingWireFrame.get(2)                  , tBits                                                 , "P"+tWrench    , "R "                                    , 'P', OP.plate.dat(ANY.Fe)                     , 'R', IL.RC_Rebar);
 		
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 1,  0), tBits                                                 , "IOI"          , "GEG"              , "IOI"              , 'I', tIngot.dat(MT.Au)                        , 'G', OP.gem.dat(ANY.Diamond), 'E', OP.gem.dat(MT.EnderPearl), 'O', OP.blockSolid.dat(MT.Obsidian));
 		CR.shaped(ST.make(MD.RC, "machine.alpha"          , 3,  1), tBits                                                 , "BPB"          , "P"+tWrench+"P"    , "BPB"              , 'P', OP.plate.dat(ANY.Steel)                  , 'B', OP.blockSolid.dat(ANY.Steel));

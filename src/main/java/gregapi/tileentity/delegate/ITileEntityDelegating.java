@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,24 @@
 
 package gregapi.tileentity.delegate;
 
+import gregapi.data.LH;
 import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Gregorius Techneticies
  */
 public interface ITileEntityDelegating extends ITileEntityCanDelegate {
+	public static final byte EXTENDER_INV = 1, EXTENDER_TANK = 2, EXTENDER_REDSTONE = 4, EXTENDER_OTHER = 8, EXTENDER_CONTROL = 16, EXTENDER_ALL = 31;
+	
+	public static final String
+	TOOLTIP_EXTENDER_EXCLUSIVE = LH.add("gt.tileentity.extender.tooltip.exclusive", "Cannot be attached to other Extenders!"),
+	TOOLTIP_EXTENDER_INVENTORY = LH.add("gt.tileentity.extender.tooltip.inv"      , "Relays Inventories"                    ),
+	TOOLTIP_EXTENDER_TANK      = LH.add("gt.tileentity.extender.tooltip.tank"     , "Relays Tanks"                          ),
+	TOOLTIP_EXTENDER_REDSTONE  = LH.add("gt.tileentity.extender.tooltip.redstone" , "Relays Redstone"                       ),
+	TOOLTIP_EXTENDER_OTHER     = LH.add("gt.tileentity.extender.tooltip.other"    , "Relays Misc Functions"                 ),
+	TOOLTIP_EXTENDER_CONTROL   = LH.add("gt.tileentity.extender.tooltip.control"  , "Relays Control Functions"              ),
+	TOOLTIP_EXTENDER_ALL       = LH.add("gt.tileentity.extender.tooltip.all"      , "Relays everything"                     );
+	
 	/** Gets the TileEntity which is responsible for handling this Side. DO NOT RETURN NULL! Return a DelegatorTileEntity Object without TileEntity, or a DelegatorTileEntity with the 'this' Object in order to not delegate. */
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide);
 }

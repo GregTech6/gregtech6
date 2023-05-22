@@ -714,6 +714,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Amethyst             , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Jasper.mToThis) if (tMaterial != MT.Jasper)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Jasper               , NI, T, tConditionP));
+		for (OreDictMaterial tMaterial : ANY.TigerEye.mToThis) if (tMaterial != MT.TigerEyeYellow)
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.TigerEyeYellow       , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.CaF2.mToThis) if (tMaterial != MT.CaF2)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.CaF2                 , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Rubber.mToThis) if (tMaterial != MT.Rubber)
