@@ -48,7 +48,7 @@ public class Compat_Recipes_SaltyMod extends CompatMods {
 		CR.shaped(ST.make(MD.Salt, "mudBrickWet", 2, 0), CR.DEF_NCC_MIR, "XY", "YX", 'X', ST.make(MD.Salt, "mudBlock", 1, 0), 'Y', OD.cropGrain);
 		
 		RM.Mixer.addRecipe2(T, 16, 144, ST.make(Blocks.dirt, 1, 0), OP.dust.mat(MT.NaCl, 1), ST.make(MD.Salt, "saltDirt", 1, 0));
-		RM.Mixer.addRecipeX(T, 16, 144, ST.array(OP.dust.mat(MT.Gunpowder, 1), OP.dust.mat(MT.NaHCO3, 4), OP.dust.mat(MT.NaCl, 4)), ST.make(MD.Salt, "saltStar", 1, 0));
+		RM.Mixer.addRecipeX(T, 16, 144, ST.array(OP.dust.mat(MT.NaHCO3, 4), OP.dust.mat(MT.NaCl, 4), OP.dust.mat(MT.Gunpowder, 1)), ST.make(MD.Salt, "saltStar", 1, 0));
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tCarbon : ANY.C.mToThis)
 		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OP.dust.mat(MT.NaHCO3, 1), OP.dust.mat(MT.NaCl, 1), OP.dust.mat(tClay, 1), OP.dust.mat(tCarbon, 1)), ST.make(MD.Salt, "mineralMud", 1, 0));
 	}
