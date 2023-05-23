@@ -20,15 +20,20 @@
 package gregtech.blocks;
 
 import gregapi.block.ItemBlockBase;
+import gregapi.block.ToolCompat;
 import gregapi.block.misc.BlockBaseRail;
 import gregapi.render.IIconContainer;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import static gregapi.data.CS.F;
-import static gregapi.data.CS.T;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -73,6 +78,14 @@ public class BlockRailRoad extends BlockBaseRail {
 	@Override
 	public void breakBlock(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMeta) {
 		// NO-OP
+	}
+	
+	@Override
+	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
+		if (!aWorld.isRemote) if (aTool.equals(TOOL_crowbar) || aTool.equals(TOOL_chisel) || aTool.equals(TOOL_shears) || aTool.equals(TOOL_scissors) || aTool.equals(TOOL_knife)) {
+			return aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0)?1000:0;
+		}
+		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
