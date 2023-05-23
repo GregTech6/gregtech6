@@ -23,10 +23,13 @@ import gregapi.block.ItemBlockBase;
 import gregapi.block.ToolCompat;
 import gregapi.block.misc.BlockBaseRail;
 import gregapi.render.IIconContainer;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -83,7 +86,7 @@ public class BlockRailRoad extends BlockBaseRail {
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		if (!aWorld.isRemote) if (aTool.equals(TOOL_crowbar) || aTool.equals(TOOL_chisel) || aTool.equals(TOOL_shears) || aTool.equals(TOOL_scissors) || aTool.equals(TOOL_knife)) {
-			return aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0)?1000:0;
+			return aWorld.setBlock(aX, aY, aZ, this, WD.meta(aWorld, aX, aY, aZ) ^ 8, 0)?1000:0;
 		}
 		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 	}
@@ -104,5 +107,25 @@ public class BlockRailRoad extends BlockBaseRail {
 				else if (aWorld.getBlock(aX, aY, aZ+1).isNormalCube(aWorld, aX, aY, aZ+1)) aCart.motionZ = -0.02;
 			}
 		}
+	}
+	
+	@Override
+	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aStack.stackSize == 0) return F;
+		
+		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		if (tBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
+			aSide = SIDE_UP;
+		} else if (tBlock != Blocks.vine && tBlock != Blocks.tallgrass && tBlock != Blocks.deadbush && !tBlock.isReplaceable(aWorld, aX, aY, aZ)) {
+			aX += OFFX[aSide]; aY += OFFY[aSide]; aZ += OFFZ[aSide];
+		}
+		
+		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || (aY == 255 && getMaterial().isSolid()) || !aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
+		
+		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, SIDES_AXIS_X[UT.Code.getHorizontalForPlayerPlacing(aPlayer)] ? aHitZ > 0.5 ? 9 : 1 : aHitX > 0.5 ? 8 : 0)) {
+			aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+			aStack.stackSize--;
+		}
+		return T;
 	}
 }

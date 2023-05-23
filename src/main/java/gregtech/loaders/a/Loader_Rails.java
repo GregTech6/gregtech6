@@ -36,7 +36,7 @@ import static gregapi.util.CR.*;
 public class Loader_Rails implements Runnable {
 	@Override
 	public void run() {
-		BlocksGT.RailRoad                    = new BlockRailRoad(null, "gt.block.rail.road"                    , "Road Track"                          , 0.50F, 20,                                 0, Textures.BlockIcons.RAIL_ROAD_STRIPE             , Textures.BlockIcons.RAIL_ROAD_REFLECTOR);
+		BlocksGT.RailRoad                    = new BlockRailRoad(null, "gt.block.rail.road"                    , "Road Stripe"                         , 0.50F, 20,                                 0, Textures.BlockIcons.RAIL_ROAD_STRIPE             , Textures.BlockIcons.RAIL_ROAD_REFLECTOR);
 		
 		BlocksGT.RailAluminium               = new BlockBaseRail(null, "gt.block.rail.aluminium"               , "Aluminium Track"               , F, F, 0.20F,  6, MT.Al             .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_ALUMINIUM      , Textures.BlockIcons.RAIL_TURNED_ALUMINIUM);
 		BlocksGT.RailBronze                  = new BlockBaseRail(null, "gt.block.rail.bronze"                  , "Bronze Track"                  , F, F, 0.30F,  8, MT.Bronze         .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_BRONZE         , Textures.BlockIcons.RAIL_TURNED_BRONZE);

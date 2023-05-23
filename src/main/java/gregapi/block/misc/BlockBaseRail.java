@@ -138,7 +138,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		if (!aWorld.isRemote) {
 			if (aTool.equals(TOOL_softhammer) && mPowerRail) {
 				aWorld.isRemote = T;
-				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0);
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, WD.meta(aWorld, aX, aY, aZ) ^ 8, 0);
 				aWorld.isRemote = F;
 				return tResult?10000:0;
 			}
