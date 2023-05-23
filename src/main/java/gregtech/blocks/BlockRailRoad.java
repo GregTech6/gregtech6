@@ -66,7 +66,12 @@ public class BlockRailRoad extends BlockBaseRail {
 	}
 	
 	@Override
-	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
+	public void onBlockAdded(World aWorld, int aX, int aY, int aZ) {
+		// NO-OP
+	}
+	
+	@Override
+	public void breakBlock(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMeta) {
 		// NO-OP
 	}
 	
