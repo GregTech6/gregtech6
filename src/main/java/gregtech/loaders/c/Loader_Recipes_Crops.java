@@ -342,9 +342,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		addListener("cropIvy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (IL.HBM_Poison_Powder.exists()) {
-			RM.mortarize(1, aEvent.mStack, IL.HBM_Poison_Powder.get(1));
+			RM.mortarize(aEvent.mStack, IL.HBM_Poison_Powder.get(1));
 			} else if (IL.IC2_Grin_Powder.exists()) {
-			RM.mortarize(1, aEvent.mStack, IL.IC2_Grin_Powder.get(1));
+			RM.mortarize(aEvent.mStack, IL.IC2_Grin_Powder.get(1));
 			}
 			RM.Squeezer     .addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Potion_Poison_1.make(500), IL.Remains_Plant.get(1));
 			RM.Juicer       .addRecipe1(T, 16, 16, 8000, aEvent.mStack, NF, FL.Potion_Poison_1.make(250), IL.Remains_Plant.get(1));

@@ -24,7 +24,6 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.util.CR;
@@ -313,7 +312,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.ic2_extractor(                       ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
 		}
 		if (MD.GaNe.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Nether.");
-			RM.mortarize(1, ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));
+			RM.mortarize(ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));
 			
 			CR.remove(OP.nugget.mat(MT.Blaze, 1), NI, NI, OP.nugget.mat(MT.Blaze, 1), NI, NI, OP.nugget.mat(MT.Blaze, 1));
 			

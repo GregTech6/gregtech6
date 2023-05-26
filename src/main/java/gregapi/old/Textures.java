@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -60,6 +60,9 @@ public class Textures {
 		, LONG_DIST_WIRE_EV, LONG_DIST_WIRE_IV, LONG_DIST_WIRE_LuV, LONG_DIST_WIRE_ZPM, LONG_DIST_WIRE_UV
 		, LONG_DIST_PIPE_ITEM
 		, LONG_DIST_PIPE_FLUID
+		
+		, RAIL_ROAD_STRIPE
+		, RAIL_ROAD_REFLECTOR
 		
 		, RAIL_STRAIGHT_ALUMINIUM
 		, RAIL_STRAIGHT_MAGNALIUM

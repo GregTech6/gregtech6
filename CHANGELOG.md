@@ -25,6 +25,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
 [CHANGED] The Debarker is now renamed to Pressure Washer. It can now also clean Moss off of Stone, and uses a less insane amount of Water overall.
+[ADDED] Road Stripes, which act like permanent Minecart Booster Tracks. They are integrated into the Streets Worldgen too, as a barely noticeable way of riding a Minecart along the Road. Please note that they are DIFFERENT from regular Rails in a lot of ways, such as lack of Curves or Slopes.
+[ADDED] Chemical Recipe for converting Trona to Baking Soda.
 [ADDED] Extender Bridges, which work like Extenders but instead of having configurable facings they always connect to the opposite side of the Extender. Good for Pipe Crossings.
 [ADDED] Leather Armor + Knife = some Leather, in the Crafting Table.
 [ADDED] You can generify the different Mineral Oil Types into Basic Buildcraft Oil at a loss.

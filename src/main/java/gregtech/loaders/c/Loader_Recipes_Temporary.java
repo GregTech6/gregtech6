@@ -526,26 +526,22 @@ public class Loader_Recipes_Temporary implements Runnable {
 			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 47), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  1)});
 			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 48), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  2)});
 			CR.shapeless (ST.make(MD.PFAA, "earthyClump", 4, 49), CR.DEF_NCC, new Object[] {ST.make(MD.PFAA, "weakOreClay", 1,  3)});
-			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
-			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
-			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
-			RM.packunpack(ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
 			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 45), OP.plate.mat(MT.ClayBrown   , 1));
 			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 47), OP.plate.mat(MT.Bentonite   , 1));
 			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 48), OP.plate.mat(MT.Palygorskite, 1));
 			RM.RollingMill.addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 1, 49), OP.plate.mat(MT.Kaolinite   , 1));
-			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
-			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
-			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
-			RM.Compressor .addRecipe1(T, 16, 32, ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
-			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 45), OM.dust(MT.ClayBrown));
-			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 47), OM.dust(MT.Bentonite));
-			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 48), OM.dust(MT.Palygorskite));
-			RM.Mortar     .addRecipe1(T, 16, 16, ST.make(MD.PFAA, "earthyClump", 1, 49), OM.dust(MT.Kaolinite));
-			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakClay"   , 1,  0), OM.dust(MT.ClayBrown, U*4));
-			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  1), OM.dust(MT.Bentonite, U*4));
-			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  2), OM.dust(MT.Palygorskite, U*4));
-			RM.Mortar     .addRecipe1(T, 16, 64, ST.make(MD.PFAA, "weakOreClay", 1,  3), OM.dust(MT.Kaolinite, U*4));
+			RM.compactunpack(ST.make(MD.PFAA, "earthyClump", 4, 45), ST.make(MD.PFAA, "weakClay"   , 1,  0));
+			RM.compactunpack(ST.make(MD.PFAA, "earthyClump", 4, 47), ST.make(MD.PFAA, "weakOreClay", 1,  1));
+			RM.compactunpack(ST.make(MD.PFAA, "earthyClump", 4, 48), ST.make(MD.PFAA, "weakOreClay", 1,  2));
+			RM.compactunpack(ST.make(MD.PFAA, "earthyClump", 4, 49), ST.make(MD.PFAA, "weakOreClay", 1,  3));
+			RM.mortarize(1, ST.make(MD.PFAA, "earthyClump", 1, 45), OM.dust(MT.ClayBrown));
+			RM.mortarize(1, ST.make(MD.PFAA, "earthyClump", 1, 47), OM.dust(MT.Bentonite));
+			RM.mortarize(1, ST.make(MD.PFAA, "earthyClump", 1, 48), OM.dust(MT.Palygorskite));
+			RM.mortarize(1, ST.make(MD.PFAA, "earthyClump", 1, 49), OM.dust(MT.Kaolinite));
+			RM.mortarize(4, ST.make(MD.PFAA, "weakClay"   , 1,  0), OM.dust(MT.ClayBrown, U*4));
+			RM.mortarize(4, ST.make(MD.PFAA, "weakOreClay", 1,  1), OM.dust(MT.Bentonite, U*4));
+			RM.mortarize(4, ST.make(MD.PFAA, "weakOreClay", 1,  2), OM.dust(MT.Palygorskite, U*4));
+			RM.mortarize(4, ST.make(MD.PFAA, "weakOreClay", 1,  3), OM.dust(MT.Kaolinite, U*4));
 			
 			
 			
@@ -573,14 +569,24 @@ public class Loader_Recipes_Temporary implements Runnable {
 			}
 		}
 		
+		RM.mortarize(IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1, IL.IC2_Grin_Powder.get(1)));
+		RM.mortarize(ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2, IL.IC2_Grin_Powder.get(2)));
+		RM.mortarize(ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3, IL.IC2_Grin_Powder.get(3)));
+		
 		RM.add_smelting(IL.Mud_Ball               .get(1), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
+		RM.add_smelting(IL.BoP_Mud_Ball           .get(1), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
+		RM.add_smelting(IL.Salt_Mud_Ball          .get(1), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
 		RM.add_smelting(ST.make(BlocksGT.Diggables, 1, 0), IL.BoP_Mud_Brick.get(1, IL.BTL_Mud_Brick.get(1, IL.ERE_Mud_Brick.get(1))), F, F, T);
 		
-		RM.genericycle(IL.Mud_Ball.get(1), IL.BoP_Mud_Ball.get(1));
+		RM.generify   (IL.Salt_Mud_Ball.get(1), IL.Mud_Ball.get(1));
+		RM.genericycle(IL.BoP_Mud_Ball .get(1), IL.Mud_Ball.get(1));
 		RM.genericycle(ST.make(BlocksGT.Diggables, 1, 0), IL.BoP_Mud.get(1), IL.ERE_Mud.get(1), IL.BTL_Mud.get(1));
 		RM.genericycle(IL.BoP_Mud_Brick .get(1), IL.BTL_Mud_Brick .get(1), IL.ERE_Mud_Brick .get(1));
-		RM.genericycle(IL.BoP_Mud_Bricks.get(1), IL.BTL_Mud_Bricks.get(1), IL.ERE_Mud_Bricks.get(1));
+		RM.genericycle(IL.BoP_Mud_Bricks.get(1), IL.BTL_Mud_Bricks.get(1), IL.ERE_Mud_Bricks.get(1), IL.Salt_Mud_Bricks.get(1));
 		RM.genericycle(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
+		RM.genericycle(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
 		RM.genericycle(ST.make(MD.TC, "ItemResource", 1, 6), ST.make(MD.BoP, "gems", 1, 7));
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.

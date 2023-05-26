@@ -1017,6 +1017,15 @@ public class LoaderItemList implements Runnable {
 		IL.CANDY_Plank_Light                    .set(ST.make(MD.CANDY, "B3"                                 , 1, 2), new OreDictItemData(MT.Marshmallow, U), OP.plank.dat(MT.Marshmallow));
 		
 		
+		IL.Salt_Mud_Ball                        .set(ST.make(MD.Salt, "mineralMud"                          , 1, 0), null, OD.itemMud);
+		IL.Salt_Mud                             .set(ST.make(MD.Salt, "mudBlock"                            , 1, 0), null, OD.blockMud);
+		IL.Salt_Mud_Bricks                      .set(ST.make(MD.Salt, "mudBricks"                           , 1, 0), null, OD.blockMudBricks);
+		IL.Salt_Dirt_1                          .set(ST.make(MD.Salt, "saltDirtLite"                        , 1, 0));
+		IL.Salt_Dirt_2                          .set(ST.make(MD.Salt, "saltDirt"                            , 1, 0));
+		IL.Salt_Dirt_3                          .set(ST.make(MD.Salt, "saltDirt"                            , 1, 1));
+		IL.Salt_Grass                           .set(ST.make(MD.Salt, "saltGrass"                           , 1, 0));
+		
+		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.STONES.Umber));
 		IL.ERE_Mud                              .set(ST.make(MD.ERE, "mud"                                  , 1, 0), null, OD.blockMud);
@@ -1024,7 +1033,7 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Mud_Bricks                       .set(ST.make(MD.ERE, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);
 		IL.ERE_Spray_Repellant                  .set(ST.make(MD.ERE, "sprayCan"                             , 1, 0), null, CR.DELATE);
 		IL.ERE_Herbicide                        .set(ST.make(MD.ERE, "planticide"                           , 1, 0));
-		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
+		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemCompost);
 		IL.ERE_Bamboo                           .set(ST.make(MD.ERE, "materials"                            , 1, 3), new OreDictItemData(MT.Bamboo, U4), OD.bamboo);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));

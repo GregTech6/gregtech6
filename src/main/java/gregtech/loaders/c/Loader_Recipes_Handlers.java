@@ -693,6 +693,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Aredrite               , NF                                ,   0,   1, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Chimerite              , NF                                ,   0,   1, NF, MT.Vinteum              , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.BlueTopaz              , NF                                ,   0,   1, NF, MT.Topaz                , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Zanite                 , NF                                ,   0,   1, NF, MT.Tanzanite            , NI, T, tConditionP));
 		
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Fe                   , NI, T, tConditionP));

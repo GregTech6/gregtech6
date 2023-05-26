@@ -390,14 +390,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		} // IC2 in general
 		//====================================================================================================
 		
-		if (!IL.HBM_Poison_Powder.exists()) {
-		if (IL.ERE_Herbicide.exists())
-		RM.mortarize(1, IL.ERE_Herbicide                  .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.mortarize(1, IL.Food_Potato_Poisonous          .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.mortarize(1, ST.make(Blocks.red_mushroom       , 1, W), IL.IC2_Grin_Powder.get(1));
-		RM.mortarize(1, ST.make(Items.spider_eye          , 1, W), IL.IC2_Grin_Powder.get(2));
-		RM.mortarize(1, ST.make(Items.fermented_spider_eye, 1, W), IL.IC2_Grin_Powder.get(3));
-		}
 		RM.pulverizing(ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay, U));
 		RM.pulverizing(ST.make(Blocks.clay, 1, W), OM.dust(MT.Clay, U*4));
 		RM.pulverizing(IL.Clay_Ball_Brown .get(1), OM.dust(MT.ClayBrown, U));
@@ -445,15 +437,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Boxinator        .addRecipe2(T, 16,   16, IL.IC2_Scrap.get(9), ST.tag(9), IL.IC2_Scrapbox.get(1));
 		RM.Unboxinator      .addFakeRecipe(F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(IL.IC2_Scrapbox.getWithName(1, "Random Drops, see Scrapbox Handler")), null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
-		
-		if (!IL.HBM_Poison_Powder.exists()) {
-		if (IL.ERE_Herbicide.exists())
-		RM.Shredder         .addRecipe1(T, 16,   16, IL.ERE_Herbicide                            .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.Shredder         .addRecipe1(T, 16,   16, IL.Food_Potato_Poisonous                    .get(1), IL.IC2_Grin_Powder.get(1));
-		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Blocks.red_mushroom                 , 1, W), IL.IC2_Grin_Powder.get(1));
-		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye                    , 1, W), IL.IC2_Grin_Powder.get(2));
-		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.fermented_spider_eye          , 1, W), IL.IC2_Grin_Powder.get(3));
-		}
 		
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 		RM.Press            .addRecipeX(T, 64,  256, ST.array(IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)), IL.IC2_Iridium_Alloy.get(1));

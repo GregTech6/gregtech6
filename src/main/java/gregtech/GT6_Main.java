@@ -234,6 +234,7 @@ public class GT6_Main extends Abstract_Mod {
 		new Compat_Recipes_OpenComputers        (MD.OC            , this);
 		new Compat_Recipes_GrowthCraft          (MD.GrC           , this);
 		new Compat_Recipes_HarvestCraft         (MD.HaC           , this);
+		new Compat_Recipes_SaltyMod             (MD.Salt          , this);
 		new Compat_Recipes_MoCreatures          (MD.MoCr          , this);
 		new Compat_Recipes_Lycanites            (MD.LycM          , this);
 		new Compat_Recipes_Erebus               (MD.ERE           , this);

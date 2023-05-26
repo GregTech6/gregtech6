@@ -67,7 +67,7 @@ public class RM {
 	, Distillery                = new RecipeMap                     (null, "gt.recipe.distillery"                   , "Distillery"                      , null, 0, 1, RES_PATH_GUI+"machines/Distillery"                ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 1, 2, 1,/*MIN*/ 2,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, F, F)
 	, Drying                    = new RecipeMap                     (null, "gt.recipe.drying"                       , "Dryer"                           , null, 0, 1, RES_PATH_GUI+"machines/Dryer"                     ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 0,/*IN-OUT-MIN-FLUID=*/ 1, 3, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Coagulator                = new RecipeMap                     (null, "gt.recipe.coagulator"                   , "Coagulator"                      , null, 0, 1, RES_PATH_GUI+"machines/Coagulator"                ,/*IN-OUT-MIN-ITEM=*/ 0, 1, 0,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
-	, CrystallisationCrucible   = new RecipeMap                     (null, "gt.recipe.crystallisationcrucible"      , "Crystallisation Crucible"        , null, 0, 1, RES_PATH_GUI+"machines/CrystallisationCrucible"   ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 2, 0, 1,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
+	, CrystallisationCrucible   = new RecipeMap                     (null, "gt.recipe.crystallisationcrucible"      , "Crystallisation Crucible"        , null, 0, 1, RES_PATH_GUI+"machines/CrystallisationCrucible"   ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 1,/*IN-OUT-MIN-FLUID=*/ 3, 0, 1,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Mixer                     = new RecipeMap                     (null, "gt.recipe.mixer"                        , "Mixer"                           , null, 0, 1, RES_PATH_GUI+"machines/Mixer"                     ,/*IN-OUT-MIN-ITEM=*/ 6, 1, 0,/*IN-OUT-MIN-FLUID=*/ 6, 2, 0,/*MIN*/ 2,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, HeatMixer                 = Mixer
 	, BurnMixer                 = new RecipeMap                     (null, "gt.recipe.burnmixer"                    , "Burner Mixer"                    , null, 0, 1, RES_PATH_GUI+"machines/BurnMixer"                 ,/*IN-OUT-MIN-ITEM=*/ 6, 1, 0,/*IN-OUT-MIN-FLUID=*/ 6, 2, 0,/*MIN*/ 2,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
@@ -826,6 +826,7 @@ public class RM {
 		return F;
 	}
 	
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput);}
 	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput);

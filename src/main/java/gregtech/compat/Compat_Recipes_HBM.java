@@ -30,7 +30,6 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
@@ -64,15 +63,6 @@ public class Compat_Recipes_HBM extends CompatMods {
 		
 		for (FluidStack tWater : FL.waters(250))
 		RM.Mixer.addRecipe1(T, 16, 16, IL.HBM_Poison_Powder.get(1), tWater, FL.Potion_Poison_2.make(250), ZL_IS);
-		if (IL.ERE_Herbicide.exists())
-		RM.mortarize(1, IL.ERE_Herbicide                  .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.mortarize(1, IL.Food_Potato_Poisonous          .get(1), IL.HBM_Poison_Powder.get(1));
-		RM.mortarize(1, ST.make(Blocks.red_mushroom       , 1, W), IL.HBM_Poison_Powder.get(1));
-		RM.mortarize(1, ST.make(Items.spider_eye          , 1, W), IL.HBM_Poison_Powder.get(2));
-		RM.mortarize(1, ST.make(Items.fermented_spider_eye, 1, W), IL.HBM_Poison_Powder.get(3));
-		RM.generify(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
-		RM.generify(IL.HBM_Poison_Powder.get(1), IL.IC2_Grin_Powder.get(1));
-		
 		
 		RM.Compressor.addRecipe1(T, 16, 16, IL.HBM_Biomass           .get(1), IL.HBM_Biomass_Compressed.get(1));
 		RM.Shredder  .addRecipe1(T, 16, 16, IL.HBM_Biomass           .get(1), ST.make(Blocks.dirt, 1, 0));

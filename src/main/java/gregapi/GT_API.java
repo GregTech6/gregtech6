@@ -375,7 +375,7 @@ public class GT_API extends Abstract_Mod {
 			MT.Sb.setLocal("Anti-Money");
 			MT.Tc.setLocal("Gregorium");
 			MT.Si.setLocal("Silicone");
-			MT.Cr.setLocal("Chrome");
+			MT.Cr.setLocal("Firefox");
 			MT.Cu.setLocal("Cooper");
 			MT.AnnealedCopper.setLocal("Anilled Cooper");
 			MT.Mg.setLocal("Manganesium");
@@ -428,6 +428,7 @@ public class GT_API extends Abstract_Mod {
 			MT.AncientDebris.setLocal("Cinnabun");
 			MT.Cinnamon.setLocal("Ancient Debris");
 			MT.WOODS.Cinnamon.setLocal("Ancient Debris");
+			MT.WOODS.Foxfire.setLocal("Chrome");
 			MT.Rb.setLocal("Ruby");
 			MT.Ruby.setLocal("Red Sapphire");
 			MT.KNO3.setLocal("Niter");
