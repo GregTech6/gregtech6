@@ -31,6 +31,7 @@ import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
 import gregapi.item.IItemProjectile;
+import gregapi.lang.LanguageHandler;
 import gregapi.network.packets.PacketSound;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
@@ -631,6 +632,7 @@ public class UT {
 		}
 		
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, String... aPages) {
+			for (int i = 0; i < aPages.length; i++) {aPages[i] = LanguageHandler.get(aMapping + ".page." + i, aPages[i]);}
 			return createWrittenBook(aMapping, aTitle, aAuthor, aDefaultBook, T, aPages);
 		}
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, boolean aLogging, String... aPages) {

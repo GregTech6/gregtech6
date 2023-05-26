@@ -428,6 +428,7 @@ public class GT_API extends Abstract_Mod {
 			MT.AncientDebris.setLocal("Cinnabun");
 			MT.Cinnamon.setLocal("Ancient Debris");
 			MT.WOODS.Cinnamon.setLocal("Ancient Debris");
+			MT.WOODS.Foxfire.setLocal("Chrome");
 			MT.Rb.setLocal("Ruby");
 			MT.Ruby.setLocal("Red Sapphire");
 			MT.KNO3.setLocal("Niter");
