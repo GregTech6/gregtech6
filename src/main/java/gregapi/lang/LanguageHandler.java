@@ -99,6 +99,12 @@ public class LanguageHandler {
 		return translate(aKey, aDefault);
 	}
 	
+	public static String langfile(String aKey, String aEnglish) {
+		Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
+		if (tProperty.wasRead() && mWritingEnabled) sLangFile.save();
+		return tProperty.getString();
+	}
+	
 	public static String translate(String aKey) {
 		return translate(aKey, aKey);
 	}
