@@ -83,8 +83,8 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public void run() {
 		RM.biomass(ST.make(this, 8, W));
 		
-		RM.mortarize(1, ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.mortarize(1, ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		RM.mortarize(ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.mortarize(ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));

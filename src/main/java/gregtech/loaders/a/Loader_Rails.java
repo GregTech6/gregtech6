@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,26 +19,25 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import gregapi.block.misc.BlockBaseRail;
-import gregapi.data.ANY;
+import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import gregtech.blocks.BlockRailRoad;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+import static gregapi.util.CR.*;
 
 public class Loader_Rails implements Runnable {
 	@Override
 	public void run() {
+		BlocksGT.RailRoad                    = new BlockRailRoad(null, "gt.block.rail.road"                    , "Road Stripe"                         , 0.50F, 20,                                 0, Textures.BlockIcons.RAIL_ROAD_STRIPE             , Textures.BlockIcons.RAIL_ROAD_REFLECTOR);
+		
 		BlocksGT.RailAluminium               = new BlockBaseRail(null, "gt.block.rail.aluminium"               , "Aluminium Track"               , F, F, 0.20F,  6, MT.Al             .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_ALUMINIUM      , Textures.BlockIcons.RAIL_TURNED_ALUMINIUM);
 		BlocksGT.RailBronze                  = new BlockBaseRail(null, "gt.block.rail.bronze"                  , "Bronze Track"                  , F, F, 0.30F,  8, MT.Bronze         .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_BRONZE         , Textures.BlockIcons.RAIL_TURNED_BRONZE);
 		BlocksGT.RailMagnalium               = new BlockBaseRail(null, "gt.block.rail.magnalium"               , "Magnalium Track"               , F, F, 0.60F, 12, MT.Magnalium      .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_MAGNALIUM      , Textures.BlockIcons.RAIL_TURNED_MAGNALIUM);

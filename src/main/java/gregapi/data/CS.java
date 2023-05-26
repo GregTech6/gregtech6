@@ -1620,7 +1620,8 @@ public class CS {
 		public static IBlockBase
 		RailAluminium, RailMagnalium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenSteel, RailTungstenCarbide, RailAdamantium,
 		RailAluminiumBooster, RailMagnaliumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenSteelBooster, RailTungstenCarbideBooster, RailAdamantiumBooster,
-		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenSteelDetector, RailTungstenCarbideDetector, RailAdamantiumDetector;
+		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenSteelDetector, RailTungstenCarbideDetector, RailAdamantiumDetector,
+		RailRoad;
 		
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale;
@@ -2027,6 +2028,7 @@ public class CS {
 		
 		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
+		, Salt              = "SaltMod"
 		, CookBook          = "cookingbook"
 		, APC               = "AppleCore"
 		, HO                = "HungerOverhaul"

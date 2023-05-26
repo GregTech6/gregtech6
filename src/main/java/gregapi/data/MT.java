@@ -1122,6 +1122,7 @@ public class MT {
 	NaCl                    = oredustdcmp   ( 8204, "Salt"                  , SET_CUBE              , 250, 250, 250, 255, BRITTLE, MORTAR, FOOD)                                                                                                                    .uumMcfg( 0, Na             , 1*U, Cl               , 1*U)                                                                                                  .aspects(TC.FAMES, 1).addSourceOf(Na).setPriorityPrefix(2).heat(1074, 1686),
 	NaNO3                   = oredustelec   ( 8019, "Sodium Nitrate"        , SET_FINE              , 230, 230, 230, 255, FLAMMABLE, BRITTLE, MORTAR)                                                                                                               .uumMcfg( 0, Na             , 1*U, N                , 1*U, O                , 3*U)                                                                          .aspects(TC.IGNIS, 2).addSourceOf(Na).setPriorityPrefix(2).heat(607),
 	NaOH                    = dustelec      ( 8268, "Sodium Hydroxide"      , SET_CUBE              , 220, 250, 220, 255)                                                                                                                                           .uumMcfg( 0, Na             , 1*U, O                , 1*U, H                , 1*U)                                                                          .heat( 596, 1661),
+	NaHCO3                  = oredustdcmp   ( 8039, "Sodium Hydrogencarbonate", SET_FINE            , 230, 235, 240, 255, "Soda").setLocal("Soda")                                                                                                                  .uumMcfg( 0, Na             , 1*U, H                , 1*U, C                , 1*U, O                , 3*U)                                                  , Soda = NaHCO3,
 	NaHSO4                  = dustdcmp      ( 8230, "Sodium Bisulfate"      , SET_FINE              , 240, 240, 255, 255, "SodiumBisulphate", "SodiumHydrogenSulfate", "SodiumHydrogenSulphate")                                                                    .uumMcfg( 0, Na             , 1*U, H                , 1*U, S                , 1*U, O                , 4*U)                                                  ,
 	NaSO4                   = dustdcmp      ( 9822, "Sodium Persulfate"     , SET_CUBE              , 130, 180, 250, 255, "SodiumPersulphate")                                                                                                                      .uumMcfg( 0, Na             , 1*U, S                , 1*U, O                , 4*U)                                                                          ,
 	Na2S                    = dustdcmp      ( 9823, "Sodium Sulfide"        , SET_CUBE              , 220, 220, 100, 255, "SodiumSulphide")                                                                                                                         .uumMcfg( 0, Na             , 2*U, S                , 1*U)                                                                                                  ,
@@ -2087,6 +2088,9 @@ public class MT {
 			OliveOil                .put(MD.HaC);
 			
 			
+			NaHCO3                  .put(MD.Salt);
+			
+			
 			Butter                  .put(MD.GrC);
 			
 			
@@ -2974,7 +2978,8 @@ public class MT {
 			Jade                            .ores(OREMATS.Mica              , Biotite                   , Talc                  , Asbestos              );
 			Gypsum                          .ores(OREMATS.Trona             , OREMATS.Mirabilite        , Asbestos              , Talc                  , S);
 			OREMATS.Mirabilite              .ores(OREMATS.Trona             , Gypsum                    );
-			OREMATS.Trona                   .ores(OREMATS.Mirabilite        , Gypsum                    );
+			OREMATS.Trona                   .ores(OREMATS.Mirabilite        , Gypsum                    , NaHCO3                );
+			NaHCO3                          .ores(OREMATS.Mirabilite        , Gypsum                    , OREMATS.Trona         );
 			
 			Lapis                           .ores(Lazurite                  , Sodalite                  , Pyrite                );
 			OREMATS.Cooperite               .ores(Pd                        , Ni                        , Ir                    );
@@ -3698,7 +3703,7 @@ public class MT {
 		Livingrock   = stone    ( 8521, "Livingrock"              , 195, 205, 195, 255)                                                                                                                                                                      .aspects(TC.VICTUS      , 1).qual(1, 5.0,128, 2).heat(1800),
 		Deadrock     = stone    ( 8523, "Deadrock"                , 153, 153, 168, 255, UNBURNABLE)                                                                                                                                                          .aspects(TC.MORTUUS     , 1).qual(1, 5.0,128, 2).heat(1800),
 		Betweenstone = stone    ( 8519, "Betweenstone"            , 100, 160, 110, 255)                                                                                                                                                                      .aspects(TC.MORTUUS     , 1).qual(1, 4.0, 32, 1).heat(1000),
-		Pitstone     = stone    ( 8520, "Pitstone"                ,  30,  50,  30, 255)                                                                                                                                                                      .aspects(TC.TENEBRAE    , 1).qual(1, 4.0, 32, 1).heat(1200),
+		Pitstone     = stone    ( 8520, "Pitstone"                ,  40,  50,  30, 255)                                                                                                                                                                      .aspects(TC.TENEBRAE    , 1).qual(1, 4.0, 32, 1).heat(1200),
 		Cragrock     = stone    ( 8524, "Cragrock"                ,  93,  96, 107, 255)                                                                                                                                                                      .aspects(TC.VENENUM     , 1).qual(1, 4.0, 32, 1).heat(1400),
 		Templerock   = stone    ( 8525, "Templerock"              , 171, 158, 106, 255)                                                                                                                                                                      .aspects(TC.VINCULUM    , 1).qual(1, 5.0,128, 1).heat(1600),
 		Umber        = stone    ( 8517, "Umber"                   , 111,  77,  11, 255, MD.ERE)                                                                                                                                                              .aspects(TC.BESTIA      , 1).qual(1, 3.0, 32, 1).heat( 987).setLocal("Umberstone"),
