@@ -632,7 +632,7 @@ public class UT {
 		}
 		
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, String... aPages) {
-			for (int i = 0; i < aPages.length; i++) {aPages[i] = LanguageHandler.get(aMapping + ".page." + i, aPages[i]);}
+			for (int i = 0; i < aPages.length; i++) {aPages[i] = LanguageHandler.get("written.book." + aMapping + ".page." + i, aPages[i]);}
 			return createWrittenBook(aMapping, aTitle, aAuthor, aDefaultBook, T, aPages);
 		}
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, boolean aLogging, String... aPages) {
