@@ -632,7 +632,7 @@ public class UT {
 		}
 		
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, String... aPages) {
-			for (int i = 0; i < aPages.length; i++) {aPages[i] = LanguageHandler.langfile("written.book." + aMapping + ".page." + i, aPages[i]).replaceAll("¶", "\n");}
+			for (int i = 0; i < aPages.length; i++) {aPages[i] = LanguageHandler.langfile("written.book." + aMapping + ".page." + i, aPages[i]);}
 			return createWrittenBook(aMapping, aTitle, aAuthor, aDefaultBook, T, aPages);
 		}
 		public static ItemStack createWrittenBook(String aMapping, String aTitle, String aAuthor, ItemStack aDefaultBook, boolean aLogging, String... aPages) {
@@ -645,7 +645,11 @@ public class UT {
 			rNBT.setString("author", aAuthor);
 			NBTTagList tNBTList = new NBTTagList();
 			for (short i = 0; i < aPages.length; i++) {
-				if (aPages[i].length() < 256) tNBTList.appendTag(new NBTTagString(aPages[i])); else if (aLogging) ERR.println("WARNING: String for Page of written Book too long! ->\n" + aPages[i]);
+				if (aPages[i].length() < 256) {
+					tNBTList.appendTag(new NBTTagString(aPages[i].replaceAll("¶", "\n")));
+				} else if (aLogging) {
+					ERR.println("WARNING: String for Page of written Book too long! ->\n" + aPages[i]);
+				}
 			}
 			rNBT.setTag("pages", tNBTList);
 			NBT.set(rStack, rNBT);
