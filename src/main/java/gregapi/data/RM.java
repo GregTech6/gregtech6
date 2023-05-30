@@ -826,14 +826,16 @@ public class RM {
 		return F;
 	}
 	
-	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput);}
-	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {
-		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput);
-		RM.Shredder.addRecipe1(T, 16, 16*aPower, aInput, aOutput);
-		ae_grinder   (UT.Code.bindInt(   5*aPower), aInput, aOutput);
-		te_pulverizer(UT.Code.bindInt(1000*aPower), aInput, aOutput);
-		ic2_macerator(aInput, aOutput);
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput, NI);}
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2) {return mortarize(1, aInput, aOutput1, aOutput2);}
+	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {return mortarize(aPower, aInput, aOutput, NI);}
+	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2) {
+		if (ST.invalid(aInput) || ST.invalid(aOutput1)) return F;
+		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput1, aOutput2);
+		RM.Shredder.addRecipe1(T, 16, 16*aPower, aInput, aOutput1, aOutput2);
+		ae_grinder   (UT.Code.bindInt(   5*aPower), aInput, aOutput1, aOutput2, 1.0F);
+		te_pulverizer(UT.Code.bindInt(1000*aPower), aInput, aOutput1, aOutput2);
+		ic2_macerator(aInput, aOutput1);
 		return T;
 	}
 	
