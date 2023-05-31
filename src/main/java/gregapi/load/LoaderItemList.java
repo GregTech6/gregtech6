@@ -1026,8 +1026,8 @@ public class LoaderItemList implements Runnable {
 		IL.Salt_Grass                           .set(ST.make(MD.Salt, "saltGrass"                           , 1, 0));
 		
 		
-		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));
-		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.STONES.Umber));
+		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), null, OP.stoneSmooth, OP.stone);
+		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), null, OP.stoneCobble, OP.cobblestone);
 		IL.ERE_Mud                              .set(ST.make(MD.ERE, "mud"                                  , 1, 0), null, OD.blockMud);
 		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23), null, OD.itemMudBrick);
 		IL.ERE_Mud_Bricks                       .set(ST.make(MD.ERE, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);

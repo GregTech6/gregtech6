@@ -623,6 +623,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_dark_oak", 1, W));
 		OM.reg(OD.buttonWood                        , ST.make(MD.EtFu, "button_acacia", 1, W));
 		OM.reg(OD.buttonStone                       , ST.make(Blocks.stone_button, 1, W));
+		OM.reg(OD.buttonStone                       , ST.make(MD.ERE, "umberstoneButton", 1, W));
 		OM.reg(OD.buttonStone                       , ST.make(MD.BTL, "smoothBetweenstoneButton", 1, W));
 		OM.reg(OD.buttonStone                       , ST.make(MD.NeLi, "blackstoneButton", 1, W));
 		OM.reg(OD.pressurePlateWood                 , ST.make(MD.NeLi, "pressurePlateCrimson", 1, W));
@@ -1094,11 +1095,16 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		if (MD.ERE.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 1));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 2));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 3));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 4));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 5));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 6));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberPaver"                  , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberPaver"                  , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstonePillar"            , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 1));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 2));
@@ -1799,7 +1805,26 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.ERE, "materials"                         , 1,   0, MT.Bone               ,  U * 1);
 		OM.data(MD.ERE, "materials"                         , 1,  16, MT.Bone               ,  U * 9);
 		OM.data(MD.ERE, "reinExo"                           , 1,   0, MT.Bone               ,  U *36);
-		
+		OM.data(MD.ERE, "gneissStairs0"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "gneissStairs1"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "gneissStairs2"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "gneissStairs3"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "gneissStairs4"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "gneissStairs5"                     , 1,   W, MT.STONES.Gneiss      ,  U4*27);
+		OM.data(MD.ERE, "umberstoneButton"                  , 1,   W, MT.STONES.Umber       ,  U * 1);
+		OM.data(MD.ERE, "wallErebus"                        , 1,   W, MT.STONES.Umber       ,  U * 9);
+		OM.data(MD.ERE, "slab-umberstone0"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberstone1"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberstone2"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberstone3"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberstone4"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "umbercobbleStairs0"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs1"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs2"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs3"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs4"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs5"                , 1,   W, MT.STONES.Umber       ,  U4*27);
+		OM.data(MD.ERE, "umbercobbleStairs6"                , 1,   W, MT.STONES.Umber       ,  U4*27);
 		
 		
 		OM.data(MD.BTL, "smoothBetweenstoneWallMossy"       , 1,   0, MT.STONES.Betweenstone,  U * 9);// Mossy Smooth Betweenstone Wall
