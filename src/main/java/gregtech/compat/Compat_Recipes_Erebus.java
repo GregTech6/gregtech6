@@ -49,22 +49,17 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "oreEncrustedDiamond" , 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0), OM.dust(MT.VolcanicAsh));
 		RM.Hammer       .addRecipe1(T, 16, 16,  7500, ST.make(MD.ERE, "oreEncrustedDiamond" , 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0));
 		
-		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.STONES.Umber, 4));
-		RM.Hammer       .addRecipe1(T, 16, 16,  7000, ST.make(MD.ERE, "umberstone"          , 1, 1), OP.rockGt.mat(MT.STONES.Umber, 4));
-		
 		RM.Crusher      .addRecipe1(T, 16, 64       , ST.make(MD.ERE, "volcanicRock"        , 1, 0), OM.dust(MT.VolcanicAsh));
 		RM.Hammer       .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "volcanicRock"        , 1, 0), OM.dust(MT.VolcanicAsh));
 		RM.Shredder     .addRecipe1(T, 16, 96       , ST.make(MD.ERE, "volcanicRock"        , 1, 0), OM.dust(MT.VolcanicAsh));
 		
 		RM.Sharpening   .addRecipe1(T, 16, 16       , ST.make(MD.ERE, "encrustedDiamond"    , 1, W), ST.make(Items.diamond, 1, 0), OM.dust(MT.VolcanicAsh, U2));
 		
-		RM.pack(rockGt.mat(MT.STONES.Umber     , 4), ST.make(MD.ERE, "umberstone", 1, 1));
 		RM.pack(rockGt.mat(MT.STONES.Gneiss    , 4), ST.make(MD.ERE, "gneiss", 1, 0));
 		
 		RM.pack(ST.make(Items.string, 9, 0), ST.make(MD.ERE, "blockSilk", 1, 0));
 		RM.unpack(ST.make(MD.ERE, "blockSilk", 1, 0), ST.make(Items.string, 9, 0));
 		
-		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Umber));
 		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF, "XX", "XX", 'X', rockGt.dat(MT.STONES.Gneiss));
 		
 		// Mud Bricks
@@ -76,14 +71,16 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
 		
-		RM.pressurewash(ST.make(MD.ERE, "umberstone" , 1, 3), ST.make(MD.ERE, "umberstone", 1, 1));
-		RM.pressurewash(ST.make(MD.ERE, "wallErebus" , 1, 3), ST.make(MD.ERE, "wallErebus", 1, 1));
-		RM.pressurewash(ST.make(MD.ERE, "slab-umberstone3" , 1, 3), ST.make(MD.ERE, "slab-umberstone1", 1, 0));
-		RM.pressurewash(ST.make(MD.ERE, "umbercobbleStairs3" , 1, 0), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0));
-		RM.moss(ST.make(MD.ERE, "umberstone"         , 1, 1), ST.make(MD.ERE, "umberstone", 1, 2));
-		RM.moss(ST.make(MD.ERE, "wallErebus"         , 1, 1), ST.make(MD.ERE, "wallErebus", 1, 2));
-		RM.moss(ST.make(MD.ERE, "wallErebus"         , 1, 5), ST.make(MD.ERE, "wallErebus", 1, 6));
-		RM.moss(ST.make(MD.ERE, "umberPaver"         , 1, 0), ST.make(MD.ERE, "umberPaver", 1, 1));
+		RM.pressurewash(ST.make(MD.ERE, "umberstone"        , 1, 3), ST.make(MD.ERE, "umberstone"        , 1, 1), ST.make(Items.string, 4, 0));
+		RM.pressurewash(ST.make(MD.ERE, "wallErebus"        , 1, 3), ST.make(MD.ERE, "wallErebus"        , 1, 1), ST.make(Items.string, 4, 0));
+		RM.pressurewash(ST.make(MD.ERE, "umbercobbleStairs3", 1, 0), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(Items.string, 3, 0));
+		RM.pressurewash(ST.make(MD.ERE, "slab-umberstone3"  , 1, 0), ST.make(MD.ERE, "slab-umberstone1"  , 1, 0), ST.make(Items.string, 2, 0));
+		RM.moss(ST.make(MD.ERE, "umberPaver"        , 1, 0), ST.make(MD.ERE, "umberPaver"        , 1, 1));
+		RM.moss(ST.make(MD.ERE, "umberstone"        , 1, 1), ST.make(MD.ERE, "umberstone"        , 1, 2));
+		RM.moss(ST.make(MD.ERE, "wallErebus"        , 1, 1), ST.make(MD.ERE, "wallErebus"        , 1, 2));
+		RM.moss(ST.make(MD.ERE, "wallErebus"        , 1, 5), ST.make(MD.ERE, "wallErebus"        , 1, 6));
+		RM.moss(ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "umbercobbleStairs2", 1, 0));
+		RM.moss(ST.make(MD.ERE, "slab-umberstone1"  , 1, 0), ST.make(MD.ERE, "slab-umberstone2"  , 1, 0));
 		
 		RM.stonetypes(MT.STONES.Umber, T
 		, ST.make(MD.ERE, "umberstone"         , 1, 0)// Umberstone
