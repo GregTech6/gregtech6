@@ -321,7 +321,7 @@ public class RM {
 				RM.sawing(16, 72, F, 3, aBlock, ST.amount(2, aSlabs));
 			}
 			if (ST.valid(aWalls)) {
-				CR.shaped(ST.amount(6, aWalls), CR.DEF_NCC, "BBB", "BBB", 'B', aBlock);
+				CR.shaped(ST.amount(4, aWalls), CR.DEF_NCC, " B ", "BBB", 'B', aBlock);
 			}
 			if (ST.valid(aPillar)) {
 				CR.shaped(ST.amount(2, aPillar), CR.DEF_NCC, " B", " B", 'B', aBlock);
