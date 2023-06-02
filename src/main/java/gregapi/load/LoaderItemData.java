@@ -1104,6 +1104,7 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstone"                  , 1, 6));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberPaver"                  , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberPaver"                  , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberPaver"                  , 1, 2));
 			OM.reg(OP.stone, MT.STONES.Umber                    , ST.make(MD.ERE, "umberstonePillar"            , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 1));
@@ -1818,6 +1819,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.ERE, "slab-umberstone2"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
 		OM.data(MD.ERE, "slab-umberstone3"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
 		OM.data(MD.ERE, "slab-umberstone4"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberPaver0"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
+		OM.data(MD.ERE, "slab-umberPaver1"                  , 1,   W, MT.STONES.Umber       ,  U2* 9);
 		OM.data(MD.ERE, "umbercobbleStairs0"                , 1,   W, MT.STONES.Umber       ,  U4*27);
 		OM.data(MD.ERE, "umbercobbleStairs1"                , 1,   W, MT.STONES.Umber       ,  U4*27);
 		OM.data(MD.ERE, "umbercobbleStairs2"                , 1,   W, MT.STONES.Umber       ,  U4*27);
