@@ -150,11 +150,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				if (ST.container(aEvent.mStack, T) == null)
+				if (ST.ingredable(aEvent.mStack))
 				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumBlack, 1), ST.make(MD.HEX, "itemHexoriumDye", 16, 0));
 			}});
 			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				if (ST.container(aEvent.mStack, T) == null)
+				if (ST.ingredable(aEvent.mStack))
 				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumWhite, 1), ST.make(MD.HEX, "itemHexoriumDyeWhite", 16, 0));
 			}});
 			addListener(OP.plateGem.dat(MT.HexoriumBlack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

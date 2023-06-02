@@ -726,7 +726,7 @@ public class RM {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		if (aRemoveOthers) rem_smelting(aInput);
 		aOutput = OM.get_(aOutput);
-		if (ST.container(aInput, F) != null || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
+		if (!ST.ingredable(aInput) || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
 		if (MD.EtFu.mLoaded) try {
 			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
@@ -854,7 +854,7 @@ public class RM {
 		aOutput1 = ST.validMeta(OM.get_(aOutput1));
 		aOutput2 = ST.validMeta(OM.get (aOutput2));
 		
-		if (ST.container(aInput, F) == null) {
+		if (ST.ingredable(aInput)) {
 			if (ENABLE_ADDING_IC2_MACERATOR_RECIPES) {
 				if (ConfigsGT.RECIPES.get(ConfigCategories.Machines.maceration, aInput, T)) {
 					UT.addSimpleIC2MachineRecipe(ic2.api.recipe.Recipes.macerator, aInput, null, aOutput1);

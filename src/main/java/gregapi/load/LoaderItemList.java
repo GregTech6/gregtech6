@@ -674,7 +674,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlue"            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlack"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreWhite"           , null));
-		
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "rupeeOre"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arlemiteOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "realmiteOre"                    , null));
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);

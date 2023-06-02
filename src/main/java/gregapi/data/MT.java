@@ -3998,6 +3998,17 @@ public class MT {
 		EnrichedCopper              = unused    ("Enriched Copper"            ),
 		DiamondCopper               = unused    ("Diamond Copper"             ),
 		Fairy                       = unused    ("Fairy"                      ),
-		Pokefennium                 = unused    ("Pokefennium"                );
+		Pokefennium                 = unused    ("Pokefennium"                ),
+		Rupee                       = unused    ("Rupee"                      ),
+		Arlemite                    = unused    ("Arlemite"                   ),
+		Realmite                    = unused    ("Realmite"                   ),
+		Bloodgem                    = unused    ("Bloodgem"                   ),
+		Netheryte                   = unused    ("Netheryte"                  ),
+		Eden                        = unused    ("Eden"                       ),
+		Wildwood                    = unused    ("Wildwood"                   ),
+		Apalachia                   = unused    ("Apalachia"                  ),
+		Skythern                    = unused    ("Skythern"                   ),
+		Mortum                      = unused    ("Mortum"                     ),
+		Arcanium                    = unused    ("Arcanium"                   );
 	}
 }

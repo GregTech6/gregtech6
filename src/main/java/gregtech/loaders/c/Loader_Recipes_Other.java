@@ -107,7 +107,7 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		for (byte i = 0; i < 16; i++) {final byte aIndex = i;
 		addListener(DYE_OREDICTS_MIXABLE[aIndex], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.container(aEvent.mStack, T) == null) {
+			if (ST.ingredable(aEvent.mStack)) {
 				for (FluidStack tWater : FL.waters(L))
 				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, tWater, FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
 				

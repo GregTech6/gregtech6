@@ -159,6 +159,9 @@ public class Loader_Worldgen implements Runnable {
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlue      , U64,  0, 64, ST.block(MD.HEX, "blockHexoriumOreBlue" )) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , U64,  0, 20, ST.block(MD.HEX, "blockHexoriumOreBlack")) : null
 		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , U64,  0, 20, ST.block(MD.HEX, "blockHexoriumOreWhite")) : null
+		, MD.DRPG    .mLoaded ? new StoneLayerOres(MT.UNUSED.Rupee      , U32,  5, 45, ST.block(MD.DRPG, "rupeeOre"            )) : null
+		, MD.DRPG    .mLoaded ? new StoneLayerOres(MT.UNUSED.Arlemite   , U32,  5, 45, ST.block(MD.DRPG, "arlemiteOre"         )) : null
+		, MD.DRPG    .mLoaded ? new StoneLayerOres(MT.UNUSED.Realmite   , U32,  5, 45, ST.block(MD.DRPG, "realmiteOre"         )) : null
 		));
 		
 		

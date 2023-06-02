@@ -236,7 +236,7 @@ public class Loader_OreProcessing implements Runnable {
 	public static class RecyclingProcessing implements IOreDictListenerRecyclable {
 		@Override
 		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
-			if (aEvent.mItemData == null || ST.container(aEvent.mStack, T) != null) return;
+			if (aEvent.mItemData == null || !ST.ingredable(aEvent.mStack)) return;
 			
 			List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 			if (aEvent.mItemData.mPrefix == null) {
