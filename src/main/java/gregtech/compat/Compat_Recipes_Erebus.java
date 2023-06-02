@@ -71,6 +71,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 1, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.itemMudBrick  , 'Y', OD.itemClay);
 		CR.shaped(ST.make(MD.ERE, "mirbrick", 4, 0), CR.DEF_MIR, "XY", "YX", 'X', OD.blockMudBricks, 'Y', OD.blockClay);
 		
+		
 		RM.pressurewash(ST.make(MD.ERE, "umberstone"        , 1, 3), ST.make(MD.ERE, "umberstone"        , 1, 1), ST.make(Items.string, 4, 0));
 		RM.pressurewash(ST.make(MD.ERE, "wallErebus"        , 1, 3), ST.make(MD.ERE, "wallErebus"        , 1, 1), ST.make(Items.string, 4, 0));
 		RM.pressurewash(ST.make(MD.ERE, "umbercobbleStairs3", 1, 0), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(Items.string, 3, 0));
@@ -82,43 +83,29 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.moss(ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "umbercobbleStairs2", 1, 0));
 		RM.moss(ST.make(MD.ERE, "slab-umberstone1"  , 1, 0), ST.make(MD.ERE, "slab-umberstone2"  , 1, 0));
 		
-		RM.stonetypes(MT.STONES.Umber, T
-		, ST.make(MD.ERE, "umberstone"         , 1, 0)// Umberstone
-		, ST.make(MD.ERE, "umberstone"         , 1, 1)// Umbercobble
-		, ST.make(MD.ERE, "umberstone"         , 1, 4)// Umbricks
-		, ST.make(MD.ERE, "umberPaver"         , 1, 0)// Umberpaver
-		, NI
-		, ST.make(MD.ERE, "umberstone"         , 1, 5)// Smooth Umbertile
-		, ST.make(MD.ERE, "umberstone"         , 1, 6)// Smooth Umbertiles
-		);
-		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 0), ST.make(MD.ERE, "umbercobbleStairs0", 1, 0), ST.make(MD.ERE, "slab-umberstone0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 0), NI);
-		RM.stoneshapes(MT.STONES.Umber, T, ST.make(MD.ERE, "umberstone", 1, 1), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "slab-umberstone1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 1), NI);
+		
 		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 2), ST.make(MD.ERE, "umbercobbleStairs2", 1, 0), ST.make(MD.ERE, "slab-umberstone2"   , 1, 0), NI                                          , NI);
 		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 3), ST.make(MD.ERE, "umbercobbleStairs3", 1, 0), ST.make(MD.ERE, "slab-umberstone3"   , 1, 0), NI                                          , NI);
-		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 4), ST.make(MD.ERE, "umbercobbleStairs4", 1, 0), ST.make(MD.ERE, "slab-umberstone4"   , 1, 0), NI                                          , NI);
-		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0));
-		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI);
-		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberPaver", 1, 0), NI                                         , NI                                          , ST.make(MD.ERE, "wallErebus"         , 1, 5), NI);
-		
-		
-		
+		RM.stonetypes(MT.STONES.Umber, T
+		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 0), ST.make(MD.ERE, "umbercobbleStairs0", 1, 0), ST.make(MD.ERE, "slab-umberstone0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 0), NI)
+		, RM.stoneshapes(MT.STONES.Umber, T, ST.make(MD.ERE, "umberstone", 1, 1), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "slab-umberstone1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 1), NI)
+		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 4), ST.make(MD.ERE, "umbercobbleStairs4", 1, 0), ST.make(MD.ERE, "slab-umberstone4"   , 1, 0), NI                                          , NI)
+		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberPaver", 1, 0), NI                                         , NI                                          , ST.make(MD.ERE, "wallErebus"         , 1, 5), NI)
+		, NI
+		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0))
+		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI)
+		);
 		
 		
 		RM.stonetypes(MT.STONES.Gneiss, F
-		, ST.make(MD.ERE, "gneiss", 1, 0)// Gneiss
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 0), ST.make(MD.ERE, "gneissStairs0", 1, 0), NI, NI, NI)
 		, NI
-		, ST.make(MD.ERE, "gneiss", 1, 3)// Gneiss Brick
-		, ST.make(MD.ERE, "gneiss", 1, 2)// Layered Gneiss
-		, ST.make(MD.ERE, "gneiss", 1, 1)// Carved Gneiss
-		, ST.make(MD.ERE, "gneiss", 1, 4)// Smooth Gneiss
-		, ST.make(MD.ERE, "gneiss", 1, 5)// Gneiss Tiles
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 3), ST.make(MD.ERE, "gneissStairs3", 1, 0), NI, NI, NI)
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 2), ST.make(MD.ERE, "gneissStairs2", 1, 0), NI, NI, NI)
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 1), ST.make(MD.ERE, "gneissStairs1", 1, 0), NI, NI, NI)
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 4), ST.make(MD.ERE, "gneissStairs4", 1, 0), NI, NI, NI)
+		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 5), ST.make(MD.ERE, "gneissStairs5", 1, 0), NI, NI, NI)
 		);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 0), ST.make(MD.ERE, "gneissStairs0", 1, 0), NI, NI, NI);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 1), ST.make(MD.ERE, "gneissStairs1", 1, 0), NI, NI, NI);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 2), ST.make(MD.ERE, "gneissStairs2", 1, 0), NI, NI, NI);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 3), ST.make(MD.ERE, "gneissStairs3", 1, 0), NI, NI, NI);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 4), ST.make(MD.ERE, "gneissStairs4", 1, 0), NI, NI, NI);
-		RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 5), ST.make(MD.ERE, "gneissStairs5", 1, 0), NI, NI, NI);
 		
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));

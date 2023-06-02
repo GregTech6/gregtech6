@@ -133,4 +133,6 @@ public class BlockRailRoad extends BlockBaseRail {
 		}
 		return T;
 	}
+	
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.rail.getBlockHardness(aWorld, aX, aY, aZ) / 2;}
 }
