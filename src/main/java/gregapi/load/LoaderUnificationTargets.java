@@ -523,6 +523,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.NetherQuartz           , MD.ERE, "oreQuartz", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Lapis                  , MD.ERE, "oreLapis", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreUmberstone  , MT.Jade                   , MD.ERE, "oreJade", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Umber           , MD.ERE, "umberstone", 5);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Gneiss          , MD.ERE, "gneiss", 4);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Scabyst                , MD.BTL, "unknownGeneric", 42);
 		OreDictManager.INSTANCE.setTarget(OP.orePitstone    , MT.Scabyst                , MD.BTL, "scabystOre", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.SlimyBone              , MD.BTL, "unknownGeneric", 17);

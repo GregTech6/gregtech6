@@ -85,9 +85,9 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * <BR>[20000:20499] BloodAsp
 	 * <BR>[20500:20999] Axelandre42
 	 * <BR>[21000:21499] IceFrezze
-	 * <BR>[21500:21999] the next one who asks me (do not use unless I personally tell you to use this medium Range)
-	 * <BR>[22000:22499] Free
-	 * <BR>[22500:22999] Free
+	 * <BR>[21500:21999] the next one who asks me (do not use unless I personally tell you to use this medium Range), yes this is still correct
+	 * <BR>[22000:22499] kuzuanpa
+	 * <BR>[22500:22999] reserved for now, unsure if needed.
 	 * <BR>[23000:23499] Free
 	 * <BR>[23500:23999] Free
 	 * <BR>[24000:24499] Free

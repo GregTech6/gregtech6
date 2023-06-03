@@ -674,7 +674,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlue"            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlack"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreWhite"           , null));
-		
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "rupeeOre"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arlemiteOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "realmiteOre"                    , null));
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
@@ -964,6 +966,11 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		
+		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, OD.itemTar);
+		
+		if (IL.DRPG_Bucket_Tar.exists()) IL.DRPG_Bucket_Tar.item().setContainerItem(Items.bucket);
+		
+		
 		IL.PFAA_Sands                           .set(ST.make(MD.PFAA, "weakOreSand"                         , 1, 0));
 		
 		
@@ -1026,8 +1033,8 @@ public class LoaderItemList implements Runnable {
 		IL.Salt_Grass                           .set(ST.make(MD.Salt, "saltGrass"                           , 1, 0));
 		
 		
-		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.STONES.Umber));
-		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.STONES.Umber));
+		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), null, OP.stoneSmooth, OP.stone);
+		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), null, OP.stoneCobble, OP.cobblestone);
 		IL.ERE_Mud                              .set(ST.make(MD.ERE, "mud"                                  , 1, 0), null, OD.blockMud);
 		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23), null, OD.itemMudBrick);
 		IL.ERE_Mud_Bricks                       .set(ST.make(MD.ERE, "mudBricks"                            , 1, 0), null, OD.blockMudBricks);

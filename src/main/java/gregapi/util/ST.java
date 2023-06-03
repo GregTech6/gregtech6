@@ -811,6 +811,17 @@ public class ST {
 		return aInvertFilter;
 	}
 	
+	public static boolean ingredable(ItemStack aStack) {
+		if (invalid(aStack)) return F;
+		if (item_(aStack) instanceof IItemGTContainerTool) return F;
+		if (item_(aStack) instanceof IFluidContainerItem && ((IFluidContainerItem)item_(aStack)).getCapacity(aStack) > 0) return F;
+		if (item_(aStack).hasContainerItem(aStack)) return F;
+		if (ItemsGT.CONTAINER_DURABILITY.contains(aStack, T)) return F;
+		if (IL.Cell_Empty.equal(aStack, F, T) || IL.SC2_Teapot_Empty.equal(aStack, F, T) || IL.SC2_Teacup_Empty.equal(aStack, F, T)) return T;
+		if (IL.Cell_Empty.equal(aStack, T, T) || IL.SC2_Teapot_Empty.equal(aStack, T, T) || IL.SC2_Teacup_Empty.equal(aStack, T, T)) return F;
+		return T;
+	}
+	
 	public static ItemStack container(ItemStack aStack, boolean aCheckIFluidContainerItems) {
 		if (invalid(aStack)) return NI;
 		// Decrease Durability by 1 for these Items.

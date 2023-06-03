@@ -29,6 +29,7 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -106,7 +107,7 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		for (byte i = 0; i < 16; i++) {final byte aIndex = i;
 		addListener(DYE_OREDICTS_MIXABLE[aIndex], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.container(aEvent.mStack, T) == null) {
+			if (ST.ingredable(aEvent.mStack)) {
 				for (FluidStack tWater : FL.waters(L))
 				RM.Mixer.addRecipe1(T, 16, 16, aEvent.mStack, tWater, FL.mul(DYE_FLUIDS_WATER[aIndex], 3, 2, F), ZL_IS);
 				
@@ -560,6 +561,9 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_Heavy2    .make(1000), FL.lube(5000), ZL_IS);
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tMat), FL.Oil_ExtraHeavy.make(1000), FL.lube(6000), ZL_IS);
 		}
+		
+		// Road Stripes
+		RM.Mixer.addRecipe2(F, 16, 64, OP.dust.mat(MT.Glass, 1), OP.dust.mat(MT.Asphalt, 1), FL.array(FL.Latex.make(L), DYE_FLUIDS_CHEMICAL[DYE_INDEX_White]), ZL_FLUIDSTACK, ST.make((Block)BlocksGT.RailRoad, 16, 0));
 		
 		// Other
 		RM.Lightning    .addRecipe2(T,  16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));

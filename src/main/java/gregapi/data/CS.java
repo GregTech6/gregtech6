@@ -2037,6 +2037,7 @@ public class CS {
 		, MaCu              = "Mariculture"
 		, MoCr              = "MoCreatures"
 		, GoG               = "GrimoireOfGaia"
+		, DRPG              = "divinerpg"
 		, PdC               = "psychedelicraft"
 		, Bamboo            = "BambooMod"
 		, PMP               = "plantmegapack"

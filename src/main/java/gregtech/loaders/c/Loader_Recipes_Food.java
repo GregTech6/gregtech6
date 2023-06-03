@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -298,7 +298,7 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		
 		addListener("listAllmeatraw", "foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (OD.listAllmeatsubstitute.is_(aEvent.mStack) || OM.is_("listAllfishraw", aEvent.mStack) || ST.container(aEvent.mStack, T) != null) return;
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack) || OM.is_("listAllfishraw", aEvent.mStack) || !ST.ingredable(aEvent.mStack)) return;
 			OreDictItemData tData = OM.anydata_(aEvent.mStack);
 			if (tData == null) {
 				RM.Fermenter.addRecipe1(T, 16, 288, aEvent.mStack, ST.make(Items.rotten_flesh, 1, 0));
@@ -317,7 +317,7 @@ public class Loader_Recipes_Food implements Runnable {
 		}});
 		
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (OD.listAllmeatsubstitute.is_(aEvent.mStack) || ST.container(aEvent.mStack, T) != null) return;
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack) || !ST.ingredable(aEvent.mStack)) return;
 			OreDictItemData tData = OM.anydata_(aEvent.mStack);
 			
 			RM.generify(aEvent.mStack, ST.make(Items.fish, 1, 0));
@@ -352,7 +352,7 @@ public class Loader_Recipes_Food implements Runnable {
 			OreDictItemData tData = OM.anydata_(aEvent.mStack);
 			if (OM.materialcontained(tData, MT.Tofu, MT.SoylentGreen)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Fish", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_FISH);
-			if (ST.container(aEvent.mStack, T) != null || ST.meta_(aEvent.mStack) == W) return;
+			if (!ST.ingredable(aEvent.mStack) || ST.meta_(aEvent.mStack) == W) return;
 			long tFishOilAmount = U;
 			OreDictMaterialStack tByProduct = null;
 			if (tData == null) tByProduct = OM.stack(MT.FishRaw, U); else for (OreDictMaterialStack tMat : tData.getAllMaterialStacks()) {
@@ -475,6 +475,7 @@ public class Loader_Recipes_Food implements Runnable {
 			}
 		}});
 		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.ingredable(aEvent.mStack)) return;
 			RM.Mixer        .addRecipe2(T, 16,   16, ingot.mat(MT.Peat, 1), aEvent.mStack, ingotDouble.mat(MT.PeatBituminous, 1));
 			RM.Mixer        .addRecipe2(T, 16,   16, dust .mat(MT.Peat, 1), aEvent.mStack, dust       .mat(MT.PeatBituminous, 2));
 		}});
