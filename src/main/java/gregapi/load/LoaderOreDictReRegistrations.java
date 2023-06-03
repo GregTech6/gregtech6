@@ -543,6 +543,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("dustBarley"                      , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustRye"                         , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustOat"                         , "foodFlour");
+		OreDictManager.INSTANCE.addReRegistration("dustAbyssalOats"                 , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustRice"                        , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustPotato"                      , "foodFlour");
 		OreDictManager.INSTANCE.addReRegistration("dustCorn"                        , "foodCornmeal");
@@ -614,6 +615,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropWheat"                       , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("cropRice"                        , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("cropOats"                        , OD.cropGrain);
+		OreDictManager.INSTANCE.addReRegistration("cropAbyssalOats"                 , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("cropRye"                         , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("cropBarley"                      , OD.cropGrain);
 		OreDictManager.INSTANCE.addReRegistration("bouleGtAnySilicon"               , "bouleSilicon");

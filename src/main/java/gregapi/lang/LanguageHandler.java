@@ -99,6 +99,12 @@ public class LanguageHandler {
 		return translate(aKey, aDefault);
 	}
 	
+	public static String langfile(String aKey, String aEnglish) {
+		Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
+		if (tProperty.wasRead() && mWritingEnabled) sLangFile.save();
+		return tProperty.getString();
+	}
+	
 	public static String translate(String aKey) {
 		return translate(aKey, aKey);
 	}
@@ -156,6 +162,18 @@ public class LanguageHandler {
 		if (aPrefix == OP.crateGtIngot    || aPrefix == OP.crateGt64Ingot    || aPrefix == OP.blockIngot   ) return aPrefix.mMaterialPre + getLocalName(OP.ingot   , aMaterial);
 		if (aPrefix == OP.crateGtPlate    || aPrefix == OP.crateGt64Plate    || aPrefix == OP.blockPlate   ) return aPrefix.mMaterialPre + getLocalName(OP.plate   , aMaterial);
 		if (aPrefix == OP.crateGtPlateGem || aPrefix == OP.crateGt64PlateGem || aPrefix == OP.blockPlateGem) return aPrefix.mMaterialPre + getLocalName(OP.plateGem, aMaterial);
+		
+		if (APRIL_FOOLS) {
+			if (aMaterial == MT.Empty) {
+			if (aPrefix == OP.bulletGtSmall)                                        return aPrefix.mMaterialPre + "Bolt Shaft";
+			if (aPrefix == OP.bulletGtMedium)                                       return aPrefix.mMaterialPre + "Bolt Shaft";
+			if (aPrefix == OP.bulletGtLarge)                                        return aPrefix.mMaterialPre + "Bolt Shaft";
+			} else {
+			if (aPrefix == OP.bulletGtSmall)                                        return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bolt";
+			if (aPrefix == OP.bulletGtMedium)                                       return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bolt";
+			if (aPrefix == OP.bulletGtLarge)                                        return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bolt";
+			}
+		}
 		
 		if (aMaterial == MT.Empty) {
 			if (aPrefix == OP.chemtube)                                             return "Empty Glass Tube";

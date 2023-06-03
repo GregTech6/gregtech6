@@ -60,7 +60,12 @@ public class BlockRailRoad extends BlockBaseRail {
 	
 	@Override
 	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
-		// TODO REMOVE TEMP NO-OP
+		if (!aWorld.isRemote) {
+			if (!World.doesBlockHaveSolidTopSurface(aWorld, aX, aY-1, aZ)) {
+				dropBlockAsItem(aWorld, aX, aY, aZ, 0, 0);
+				aWorld.setBlockToAir(aX, aY, aZ);
+			}
+		}
 	}
 	
 	@Override
@@ -128,4 +133,6 @@ public class BlockRailRoad extends BlockBaseRail {
 		}
 		return T;
 	}
+	
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.rail.getBlockHardness(aWorld, aX, aY, aZ) / 2;}
 }

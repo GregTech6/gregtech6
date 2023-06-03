@@ -195,9 +195,9 @@ public class Loader_Tools implements Runnable {
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+7)%8)*2)
 		);
 		
-		ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL , "Pistol" , "Single Shot, Moderate Damage", new GT_Tool_Pistol ().setMaterialAmount(U9*19), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
-		ToolsGT.sMetaTool.addTool(ToolsGT.CARBINE, "Carbine", "Single Shot, Big Damage"     , new GT_Tool_Carbine().setMaterialAmount(U9*19), TC.stack(TC.TELUM, 7), TC.stack(TC.FABRICO, 4), TC.stack(TC.IGNIS, 4));
-		ToolsGT.sMetaTool.addTool(ToolsGT.RIFLE  , "Rifle"  , "Single Shot, Massive Damage" , new GT_Tool_Rifle  ().setMaterialAmount(U9*28), TC.stack(TC.TELUM, 8), TC.stack(TC.FABRICO, 5), TC.stack(TC.IGNIS, 5));
+		ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL , APRIL_FOOLS?"Small Crossbow" :"Pistol" , "Single Shot, Moderate Damage", new GT_Tool_Pistol ().setMaterialAmount(U9*19), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
+		ToolsGT.sMetaTool.addTool(ToolsGT.CARBINE, APRIL_FOOLS?"Medium Crossbow":"Carbine", "Single Shot, Big Damage"     , new GT_Tool_Carbine().setMaterialAmount(U9*19), TC.stack(TC.TELUM, 7), TC.stack(TC.FABRICO, 4), TC.stack(TC.IGNIS, 4));
+		ToolsGT.sMetaTool.addTool(ToolsGT.RIFLE  , APRIL_FOOLS?"Big Crossbow"   :"Rifle"  , "Single Shot, Massive Damage" , new GT_Tool_Rifle  ().setMaterialAmount(U9*28), TC.stack(TC.TELUM, 8), TC.stack(TC.FABRICO, 5), TC.stack(TC.IGNIS, 5));
 		
 		
 		

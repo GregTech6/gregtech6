@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -709,6 +709,7 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Tea_Sweet               .make( 350), ST.make(MD.SC2, "ItemTeacup"                , 1, 7), IL.SC2_Teacup_Empty.get(1), F, F, T);
 		FL.reg(FL.Tea_Sweet               .make( 400), ST.make(MD.SC2, "ItemTeacup"                , 1, 8), IL.SC2_Teacup_Empty.get(1), F, F, T);
 		FL.reg(FL.Tea_Sweet               .make( 450), ST.make(MD.SC2, "ItemTeacup"                , 1, 9), IL.SC2_Teacup_Empty.get(1), F, F, T);
+		FL.reg(FL.Tar                     .make(1000), IL.DRPG_Bucket_Tar                          .get(1), ST.make(Items.bucket, 1, 0), F, T, T);
 		FL.reg(FL.make("sulfuric_acid_fluid"  , 1000), ST.make(MD.HBM, "item.bucket_sulfuric_acid" , 1, 0), ST.make(Items.bucket, 1, 0), F, T, F);
 		FL.reg(FL.make("sulfuricacid"         , 1000), ST.make(MD.HBM, "item.bucket_sulfuric_acid" , 1, 0), ST.make(Items.bucket, 1, 0), F, T, T);
 		

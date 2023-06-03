@@ -304,7 +304,7 @@ public class RM {
 		return T;
 	}
 	
-	public static boolean stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
+	public static ItemStack stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
 		
 		if (ST.valid(aBlock)) {
 			RM.Shredder.addRecipe1(T, 16, 16, aBlock, OP.blockDust.mat(aMat, 1));
@@ -321,7 +321,7 @@ public class RM {
 				RM.sawing(16, 72, F, 3, aBlock, ST.amount(2, aSlabs));
 			}
 			if (ST.valid(aWalls)) {
-				CR.shaped(ST.amount(6, aWalls), CR.DEF_NCC, "BBB", "BBB", 'B', aBlock);
+				CR.shaped(ST.amount(4, aWalls), CR.DEF_NCC, " B ", "BBB", 'B', aBlock);
 			}
 			if (ST.valid(aPillar)) {
 				CR.shaped(ST.amount(2, aPillar), CR.DEF_NCC, " B", " B", 'B', aBlock);
@@ -373,7 +373,7 @@ public class RM {
 			}
 		}
 		
-		return T;
+		return aBlock;
 	}
 	
 	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles) {
@@ -726,7 +726,7 @@ public class RM {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		if (aRemoveOthers) rem_smelting(aInput);
 		aOutput = OM.get_(aOutput);
-		if (ST.container(aInput, F) != null || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
+		if (!ST.ingredable(aInput) || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
 		if (MD.EtFu.mLoaded) try {
 			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
@@ -826,14 +826,16 @@ public class RM {
 		return F;
 	}
 	
-	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput);}
-	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {
-		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput);
-		RM.Shredder.addRecipe1(T, 16, 16*aPower, aInput, aOutput);
-		ae_grinder   (UT.Code.bindInt(   5*aPower), aInput, aOutput);
-		te_pulverizer(UT.Code.bindInt(1000*aPower), aInput, aOutput);
-		ic2_macerator(aInput, aOutput);
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput) {return mortarize(1, aInput, aOutput, NI);}
+	public static boolean mortarize(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2) {return mortarize(1, aInput, aOutput1, aOutput2);}
+	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput) {return mortarize(aPower, aInput, aOutput, NI);}
+	public static boolean mortarize(long aPower, ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2) {
+		if (ST.invalid(aInput) || ST.invalid(aOutput1)) return F;
+		RM.Mortar  .addRecipe1(T, 16, 16*aPower, aInput, aOutput1, aOutput2);
+		RM.Shredder.addRecipe1(T, 16, 16*aPower, aInput, aOutput1, aOutput2);
+		ae_grinder   (UT.Code.bindInt(   5*aPower), aInput, aOutput1, aOutput2, 1.0F);
+		te_pulverizer(UT.Code.bindInt(1000*aPower), aInput, aOutput1, aOutput2);
+		ic2_macerator(aInput, aOutput1);
 		return T;
 	}
 	
@@ -852,7 +854,7 @@ public class RM {
 		aOutput1 = ST.validMeta(OM.get_(aOutput1));
 		aOutput2 = ST.validMeta(OM.get (aOutput2));
 		
-		if (ST.container(aInput, F) == null) {
+		if (ST.ingredable(aInput)) {
 			if (ENABLE_ADDING_IC2_MACERATOR_RECIPES) {
 				if (ConfigsGT.RECIPES.get(ConfigCategories.Machines.maceration, aInput, T)) {
 					UT.addSimpleIC2MachineRecipe(ic2.api.recipe.Recipes.macerator, aInput, null, aOutput1);
