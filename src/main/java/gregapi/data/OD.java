@@ -100,6 +100,8 @@ public enum OD {
 	, container250slimeblue
 	, container250slimepink
 	, container250slime
+	, container1000tar
+	, container250tar
 	, aquaRegia
 	, sulfuricAcid
 	, enderChest

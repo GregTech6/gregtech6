@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -336,6 +336,15 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(32116+i, "Bottled Chemical Dye" , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_CHEMICAL[i]);
 		addItem(32132+i, "Bottled Flower Dye"   , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_FLOWER[i]);
 		}
+		
+		IL.Bottle_Tar.set(
+		addItem(tLastID = 32762, "Tar Bottle", "Can be used as Glue too", "bottleTar", FL.Tar.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 1), TC.stack(TC.IGNIS, 1), FoodStatFluid.INSTANCE));
+		
+		CR.shapeless(make(4,tLastID), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3,tLastID), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2,tLastID), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1,tLastID), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty)});
+		
 		
 		IL.Bottle_Blood.set(
 		addItem(tLastID = 32763, "Bottle o'Blood", "", "bottleBlood", OD.container250blood, FL.Blood.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS, 2), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);

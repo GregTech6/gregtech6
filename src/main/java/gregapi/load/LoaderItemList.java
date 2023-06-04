@@ -966,7 +966,7 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		
-		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, OD.itemTar);
+		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, "bucketTar");
 		
 		if (IL.DRPG_Bucket_Tar.exists()) IL.DRPG_Bucket_Tar.item().setContainerItem(Items.bucket);
 		

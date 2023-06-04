@@ -651,6 +651,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(FL.make("petrol"                , 1), FL.make("gasoline", 1));
 		RM.genericycle(FL.make("fuel"                  , 1), FL.make("fueloil", 1));
 		RM.genericycle(FL.make("sulfuricacid"          , 1), FL.make("sulfuric_acid_fluid", 1));
+		RM.generify   (FL.Tar                     .make( 1), FL.Glue.make(1));
 		RM.generify   (FL.Steam_IC2_Superheated   .make( 1), FL.Steam.make(3));
 		RM.generify   (FL.Steam_IC2               .make( 1), FL.Steam.make(1));
 		RM.generify   (FL.Lava_Volcanic           .make( 1), FL.Lava.make(1));
