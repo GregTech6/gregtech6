@@ -240,6 +240,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 			
 			CR.shaped(tItems[i].get(6), DEF, "X", "S", 'S', tSticks[i], 'X', IL.TF_Torchberries);
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', IL.NeLi_ShroomLight);
+			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OD.itemTar);
 			CR.shaped(tItems[i].get(4), DEF, "X", "S", 'S', tSticks[i], 'X', OD.itemResin);
 			CR.shaped(tItems[i].get(1), DEF, "X", "S", 'S', tSticks[i], 'X', OD.itemGrassDry);
 			
