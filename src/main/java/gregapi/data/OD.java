@@ -152,6 +152,9 @@ public enum OD {
 	, flowerWither
 	, bamboo
 	, record
+	, dropHoney
+	, dropHoneydew
+	, dropRoyalJelly
 	, beeComb
 	, beeCombCrossbred
 	, hardenedClay

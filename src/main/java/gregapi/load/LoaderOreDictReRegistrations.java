@@ -848,8 +848,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodCheeseParmesan"              , "foodCheese");
 		OreDictManager.INSTANCE.addReRegistration("foodCheeseMonterey"              , "foodCheese");
 		OreDictManager.INSTANCE.addReRegistration("foodCheeseRicotta"               , "foodCheese");
-		OreDictManager.INSTANCE.addReRegistration("gemHoney"                        , "dropHoney");
-		OreDictManager.INSTANCE.addReRegistration("dropHoney"                       , "foodHoneydrop");
+		OreDictManager.INSTANCE.addReRegistration("gemHoney"                        , OD.dropHoney);
+		OreDictManager.INSTANCE.addReRegistration(OD.dropHoney                      , "foodHoneydrop");
 		OreDictManager.INSTANCE.addReRegistration("bottleHoney"                     , "foodHoneydrop");
 		OreDictManager.INSTANCE.addReRegistration("bottleCream"                     , "foodHeavycream");
 		OreDictManager.INSTANCE.addReRegistration(OP.bottle.dat(MT.OliveOil)        , "foodOliveoil");

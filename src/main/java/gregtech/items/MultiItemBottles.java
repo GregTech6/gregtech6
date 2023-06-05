@@ -164,6 +164,9 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(make(2, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(1, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty)});
 		
+		CR.shapeless(make(1, 1300), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropHoney     , OD.dropHoney     , OD.dropHoney     });
+		CR.shapeless(make(1, 1301), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  });
+		CR.shapeless(make(1, 1302), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly});
 		
 		addItem( 1400, "Golden Apple Juice"           , "", "foodApplejuice"      , FL.make("potion.goldenapplejuice"  , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem( 1401, "Golden Cider"                 , "", "foodApplecider"      , FL.make("potion.goldencider"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
@@ -342,6 +345,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(last(2), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(last(1), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty)});
 		
+		CR.shapeless(last(1), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.itemTar});
 		
 		IL.Bottle_Blood.set(
 		addItem(32763, "Bottle o'Blood", "", "bottleBlood", OD.container250blood, FL.Blood.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS, 2), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
@@ -350,6 +354,8 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(last(3), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(last(2), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(last(1), CR.DEF, new Object[] {OD.container1000blood, OP.bottle.dat(MT.Empty)});
+		
+		CR.shapeless(last(1), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.itemBlood});
 		
 		IL.Bottle_Lubricant.set(
 		addItem(32764, "Lubricant Bottle", "", OP.bottle.dat(MT.Lubricant), FL.LubRoCant.make(250), FL.Lubricant.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));

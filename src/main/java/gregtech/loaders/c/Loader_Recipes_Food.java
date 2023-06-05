@@ -481,16 +481,18 @@ public class Loader_Recipes_Food implements Runnable {
 		}});
 		
 		
-		addListener("dropHoney", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (FL.getFluid(aEvent.mStack, T) != null || OM.is_("bucketHoney", aEvent.mStack) || OM.is_("bottleHoney", aEvent.mStack)) return;
+		addListener(OD.dropHoney, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.ingredable(aEvent.mStack)) return;
 			RM.Squeezer     .addRecipe1(T, 16,   16,   500, aEvent.mStack, NF, FL.Honey.make(100), IL.FR_Propolis.get(1));
 			RM.Juicer       .addRecipe1(T, 16,   16,   500, aEvent.mStack, NF, FL.Honey.make(100), IL.FR_Propolis.get(1));
 		}});
-		addListener("dropHoneydew", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.dropHoneydew, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.ingredable(aEvent.mStack)) return;
 			RM.Squeezer     .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.Honeydew.make(100), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.Honeydew.make(100), ZL_IS);
 		}});
-		addListener("dropRoyalJelly", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.dropRoyalJelly, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.ingredable(aEvent.mStack)) return;
 			RM.Mixer        .addRecipe1(T, 16,   16, aEvent.mStack, FL.Honeydew.make(200), FL.Ambrosia.make(400), ZL_IS);
 			RM.Squeezer     .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.RoyalJelly.make(100), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.RoyalJelly.make(100), ZL_IS);

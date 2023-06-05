@@ -279,13 +279,6 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	/**
 	 * @param aMetaValue the Meta Value of the Item you want to set it to. [0 - 32766]
-	 * @param aMaxCharge Maximum Charge. (if this is == 0 it will remove the Electric Behavior)
-	 * @param aTransferLimit Transfer Limit.
-	 * @param aTier The electric Tier.
-	 * @param aSpecialData If this Item has a Fixed Charge, like a SingleUse Battery (if > 0).
-	 * Use -1 if you want to make this Battery chargeable (the use and canUse Functions will still discharge if you just use this)
-	 * Use -2 if you want to make this Battery dischargeable.
-	 * Use -3 if you want to make this Battery charge/discharge-able.
 	 * @return the Item itself for convenience in constructing.
 	 */
 	public MultiItemRandom setFluidContainerStats(int aMetaValue, long aCapacity, long aStacksize) {
