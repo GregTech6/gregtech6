@@ -468,6 +468,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemPearl                         , ST.make(MD.MaCu, "pearls", 1, W));
 		OM.reg(OD.itemPearl                         , ST.make(MD.TROPIC, "pearl", 1, W));
 		OM.reg(OD.itemTar                           , ST.make(MD.HBM, "item.oil_tar", 1, W));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.HBM, "item.oil_tar", 1, W));
 		OM.reg(OD.itemFeather                       , ST.make(MD.TF, "item.tfFeather", 1, W));
 		OM.reg(OD.itemFeather                       , ST.make(Items.feather, 1, W));
 		OM.reg(OD.itemLeather                       , ST.make(Items.leather, 1, W));

@@ -1090,7 +1090,7 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Rubber                           .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,26), new OreDictItemData(MT.Rubber, U));
 		IL.BTL_Compost                          .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 5), null, OD.itemCompost);
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
-		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar);
+		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
 		
 		

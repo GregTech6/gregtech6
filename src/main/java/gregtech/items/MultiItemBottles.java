@@ -164,9 +164,12 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(make(2, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(1, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty)});
 		
-		CR.shapeless(make(1, 1300), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropHoney     , OD.dropHoney     , OD.dropHoney     });
-		CR.shapeless(make(1, 1301), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  });
-		CR.shapeless(make(1, 1302), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly});
+		CR.shapeless(make(1, 1300), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty)                         , OD.dropHoney     , OD.dropHoney     , OD.dropHoney     });
+		CR.shapeless(make(2, 1300), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OD.dropHoney     , OD.dropHoney     , OD.dropHoney     , OD.dropHoney     , OD.dropHoney     });
+		CR.shapeless(make(1, 1301), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty)                         , OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  });
+		CR.shapeless(make(2, 1301), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  , OD.dropHoneydew  });
+		CR.shapeless(make(1, 1302), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty)                         , OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly});
+		CR.shapeless(make(2, 1302), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly});
 		
 		addItem( 1400, "Golden Apple Juice"           , "", "foodApplejuice"      , FL.make("potion.goldenapplejuice"  , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem( 1401, "Golden Cider"                 , "", "foodApplecider"      , FL.make("potion.goldencider"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
