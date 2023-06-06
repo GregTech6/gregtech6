@@ -127,6 +127,30 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		//
 	}
 	
+	@Override
+	public void readFromNBT(NBTTagCompound aNBT) {
+		// load ID and Coords
+		if (aNBT.hasKey("x")) xCoord = aNBT.getInteger("x");
+		if (aNBT.hasKey("y")) yCoord = aNBT.getInteger("y");
+		if (aNBT.hasKey("z")) zCoord = aNBT.getInteger("z");
+		// make sure Y is not negative because this causes crashes.
+		if (yCoord < 0) WD.invalidateTileEntityWithNegativeYCoord(xCoord, yCoord, zCoord, this);
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound aNBT) {
+		// make sure Y is not negative because this causes crashes.
+		if (yCoord < 0) WD.invalidateTileEntityWithNegativeYCoord(xCoord, yCoord, zCoord, this);
+		// save ID and Coords
+		aNBT.setString("id", getTileEntityName());
+		aNBT.setInteger("x", xCoord);
+		aNBT.setInteger("y", yCoord);
+		aNBT.setInteger("z", zCoord);
+	}
+	
+	/** return the internal Name of this TileEntity to be registered. DO NOT START YOUR NAME WITH "gt."!!! */
+	public abstract String getTileEntityName();
+	
 	@Override public void markDirty() {/* Oh no, I won't let this do anything anymore! It's only useful for Comparators and that didn't work properly anyways! */}
 	@Override public World getWorld() {return worldObj;}
 	@Override public int getX() {return xCoord;}

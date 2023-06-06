@@ -357,9 +357,29 @@ public class WD {
 		return null;
 	}
 	
+	public static int WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD = 0;
+	
+	public static TileEntity invalidateTileEntityWithNegativeYCoord(int aX, int aY, int aZ, TileEntity aTileEntity) {
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 0) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a weird Error");
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD < 10) {
+			ERR.println("===============================");
+			ERR.println("X:" + aX);
+			ERR.println("Y:" + aY);
+			ERR.println("Z:" + aZ);
+			ERR.println("Class:" + aTileEntity.getClass());
+			new Throwable().printStackTrace(ERR);
+			ERR.println("===============================");
+		}
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 9) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a LOT of weird Errors");
+		WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD++;
+		aTileEntity.invalidate();
+		aTileEntity.yCoord = 0;
+		return aTileEntity;
+	}
 	
 	/** Sets the TileEntity at the passed position, with the option of turning adjacent TileEntity updates off. */
 	public static TileEntity te(World aWorld, int aX, int aY, int aZ, TileEntity aTileEntity, boolean aCauseTileEntityUpdates) {
+		if (aY < 0) return invalidateTileEntityWithNegativeYCoord(aX, aY, aZ, aTileEntity);
 		if (aCauseTileEntityUpdates) aWorld.setTileEntity(aX, aY, aZ, aTileEntity); else {
 			Chunk tChunk = aWorld.getChunkFromChunkCoords(aX >> 4, aZ >> 4);
 			if (tChunk != null) {
