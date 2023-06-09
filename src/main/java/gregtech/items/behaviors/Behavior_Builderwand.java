@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,7 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
+import gregapi.block.IBlockExtendedMetaData;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
@@ -34,15 +33,16 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import static gregapi.data.CS.*;
+
 public class Behavior_Builderwand extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aWorld.isRemote || aPlayer == null || !(aItem instanceof MultiItemTool) || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || WD.te(aWorld, aX, aY, aZ, T) != null) return F;
+		if (aWorld.isRemote || aPlayer == null || !(aItem instanceof MultiItemTool) || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ, T);
-		byte aMeta = WD.meta(aWorld, aX, aY, aZ, T);
-		
-		if (ST.invalid(aBlock)) return F;
+		if (ST.invalid(aBlock) || (aBlock instanceof IBlockExtendedMetaData == (WD.te(aWorld, aX, aY, aZ, T) == null))) return F;
+		short aMeta = (aBlock instanceof IBlockExtendedMetaData ? ((IBlockExtendedMetaData)aBlock).getExtendedMetaData(aWorld, aX, aY, aZ) : WD.meta(aWorld, aX, aY, aZ, T));
 		
 		int tDist = (MultiItemTool.getPrimaryMaterial(aStack).mToolQuality+1);
 		boolean rReturn = F;
@@ -50,7 +50,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 		for (int tX = (SIDES_AXIS_X[aSide]?0:-tDist); tX <= (SIDES_AXIS_X[aSide]?0:tDist); tX++)
 		for (int tY = (SIDES_AXIS_Y[aSide]?0:-tDist); tY <= (SIDES_AXIS_Y[aSide]?0:tDist); tY++)
 		for (int tZ = (SIDES_AXIS_Z[aSide]?0:-tDist); tZ <= (SIDES_AXIS_Z[aSide]?0:tDist); tZ++)
-		if (aBlock == WD.block(aWorld, aX+tX, aY+tY, aZ+tZ, T) && aMeta == WD.meta(aWorld, aX+tX, aY+tY, aZ+tZ, T)) {
+		if (aBlock == WD.block(aWorld, aX+tX, aY+tY, aZ+tZ, T) && (aBlock instanceof IBlockExtendedMetaData || aMeta == WD.meta(aWorld, aX+tX, aY+tY, aZ+tZ, T))) {
 			// Doublechecking Wand Permissions at that location.
 			if (!aPlayer.canPlayerEdit(aX+tX            , aY+tY            , aZ+tZ            , aSide, aStack)) continue;
 			if (!aPlayer.canPlayerEdit(aX+tX+OFFX[aSide], aY+tY+OFFY[aSide], aZ+tZ+OFFZ[aSide], aSide, aStack)) continue;
@@ -67,10 +67,10 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 				}
 				
 				if (aBlock == tBlock) {
-					if (aMeta != ST.meta(tStack)) continue;
+					if (aMeta != ST.meta_(tStack)) continue;
 				} else if (aBlock instanceof BlockMetaType && tBlock instanceof BlockMetaType) {
 					// This makes sure that GT Slabs can be placed with this Wand.
-					if (aMeta != ST.meta(tStack)) continue;
+					if (aMeta != ST.meta_(tStack)) continue;
 					if (((BlockMetaType)aBlock).mBlock   != ((BlockMetaType)tBlock).mBlock  ) continue;
 					if (((BlockMetaType)aBlock).mIsWall  != ((BlockMetaType)tBlock).mIsWall ) continue;
 					if (((BlockMetaType)aBlock).mIsSlab  != ((BlockMetaType)tBlock).mIsSlab ) continue;

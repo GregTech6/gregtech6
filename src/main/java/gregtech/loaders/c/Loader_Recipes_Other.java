@@ -563,7 +563,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		// Road Stripes
-		RM.Mixer.addRecipe2(F, 16, 64, OP.dust.mat(MT.Glass, 1), OP.dust.mat(MT.Asphalt, 1), FL.array(FL.Latex.make(L), DYE_FLUIDS_CHEMICAL[DYE_INDEX_White]), ZL_FLUIDSTACK, ST.make((Block)BlocksGT.RailRoad, 16, 0));
+		RM.Mixer.addRecipe2(F, 16, 64, OP.dust.mat(MT.Glass, 1), OP.dust.mat(MT.Asphalt, 1), FL.array(FL.Latex.make(L), DYE_FLUIDS_CHEMICAL[DYE_INDEX_White]), ZL_FLUIDSTACK, ST.make((Block)BlocksGT.RailRoad, 4, 0));
 		
 		// Other
 		RM.Lightning    .addRecipe2(T,  16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));

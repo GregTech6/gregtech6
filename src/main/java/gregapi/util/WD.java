@@ -357,7 +357,7 @@ public class WD {
 		return null;
 	}
 	
-	public static int WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD = 0;
+	public static byte WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD = 0;
 	
 	public static TileEntity invalidateTileEntityWithNegativeYCoord(int aX, int aY, int aZ, TileEntity aTileEntity) {
 		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 0) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a weird Error");
@@ -371,7 +371,7 @@ public class WD {
 			ERR.println("===============================");
 		}
 		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 9) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a LOT of weird Errors");
-		WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD++;
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD < 99) WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD++;
 		aTileEntity.invalidate();
 		aTileEntity.yCoord = 0;
 		return aTileEntity;
