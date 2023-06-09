@@ -677,6 +677,17 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "rupeeOre"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arlemiteOre"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "realmiteOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "bloodgemOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "netheriteOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "edenOre"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "wildwoodOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "apalachiaOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "skythernOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "mortumOre"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
+		
+		
+		
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
