@@ -428,9 +428,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				} else {
 					if (TOOL_SOUNDS) {
 						if (aPlayer != null) {
-							UT.Sounds.send(tStats.getBreakingSound(), aPlayer);
+							UT.Sounds.send(getPrimaryMaterial(aStack) == MT.NULL ? tStats.getCraftingSound() : tStats.getBreakingSound(), aPlayer);
 						} else {
-							UT.Sounds.play(tStats.getBreakingSound(), 100, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
+							UT.Sounds.play(getPrimaryMaterial(aStack) == MT.NULL ? tStats.getCraftingSound() : tStats.getBreakingSound(), 100, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
 						}
 					}
 					LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
