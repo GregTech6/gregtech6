@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -285,13 +285,11 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		try {FMLCommonHandler.instance().firePlayerCraftingEvent(aPlayer, ST.copy(slot(31)), new InventoryCrafting(null, 3, 3));} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		boolean tOldToolSounds = TOOL_SOUNDS;
-		
 		ItemStack[] tRecipeStacks = {ST.amount(1, slot(21)), ST.amount(1, slot(22)), ST.amount(1, slot(23)), ST.amount(1, slot(24)), ST.amount(1, slot(25)), ST.amount(1, slot(26)), ST.amount(1, slot(27)), ST.amount(1, slot(28)), ST.amount(1, slot(29))};
 		
 		for (int j = 0; j < tRecipeStacks.length; j++) if (ST.valid(tRecipeStacks[j])) {
 			boolean tNeeds = T;
-			TOOL_SOUNDS = isClientSide() && tOldToolSounds && !aSubsequentClick && mDoSound;
+			TOOL_SOUNDS = !aSubsequentClick && mDoSound && TOOL_SOUNDS_SETTING;
 			ItemStack tContainer = ST.container(tRecipeStacks[j], F);
 			TOOL_SOUNDS = F;
 			// Contains itself, so it's an infinite use Container Item anyways.
@@ -354,7 +352,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		MultiItemTool.LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
 		
-		TOOL_SOUNDS = tOldToolSounds;
+		TOOL_SOUNDS = TOOL_SOUNDS_SETTING;
 		
 		updateInventory();
 		

@@ -349,14 +349,14 @@ public class GT_API extends Abstract_Mod {
 		
 		ConfigsGT.CLIENT = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
 		
-		D1                        = ConfigsGT.CLIENT.get("debug" , "logs"               , F);
-		D2                        = ConfigsGT.CLIENT.get("debug" , "oredict"            , F);
-		D3                        = ConfigsGT.CLIENT.get("debug" , "misc"               , F);
-		EXPERIMENTS               = ConfigsGT.CLIENT.get("debug" , "experiments"        , F);
-		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get("debug" , "block_update_sounds", F);
-		if ( ConfigsGT.CLIENT.get("debug" , "april_fools"  , F)) APRIL_FOOLS = T;
-		if ( ConfigsGT.CLIENT.get("debug" , "xmas_july"    , F)) XMAS_IN_JULY = T;
-		if ( ConfigsGT.CLIENT.get("debug" , "xmas_december", F)) XMAS_IN_DECEMBER = T;
+		D1                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "logs"               , F);
+		D2                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "oredict"            , F);
+		D3                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "misc"               , F);
+		EXPERIMENTS               = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "experiments"        , F);
+		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "block_update_sounds", F);
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "april_fools"  , F)) APRIL_FOOLS = T;
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "xmas_july"    , F)) XMAS_IN_JULY = T;
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "xmas_december", F)) XMAS_IN_DECEMBER = T;
 		
 		if (APRIL_FOOLS) {
 			MT.W.setLocal("Wolframium");
@@ -502,7 +502,6 @@ public class GT_API extends Abstract_Mod {
 		SPAWN_NO_BATS                           = ConfigsGT.GREGTECH.get("general", "PreventBatSpawnsOnNonVanillaStone", T);
 		SPAWN_HOSTILES_ONLY_IN_DARKNESS         = ConfigsGT.GREGTECH.get("general", "PreventMobSpawnsAboveLightLevel0" , T);
 		DISABLE_GT6_CRAFTING_RECIPES            = ConfigsGT.GREGTECH.get("general", "DisableGT6CraftingRecipesDEBUG"   , F);
-		TOOL_SOUNDS                             = ConfigsGT.GREGTECH.get("general", "sound_tools"                      , T);
 		MOBS_DROP_LEAD                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_lead_instead_of_iron"   , T);
 		MOBS_DROP_MEAT                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_variety_meats"          , T);
 		MOBS_DROP_JUNK                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_random_junk"            , T);
@@ -608,6 +607,7 @@ public class GT_API extends Abstract_Mod {
 		SHOW_INTERNAL_NAMES                 = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "InternalNames"           , F);
 		SHOW_CHEM_FORMULAS                  = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "ChemTooltips"            , T);
 		
+		TOOL_SOUNDS_SETTING = TOOL_SOUNDS   = ConfigsGT.CLIENT.get(ConfigCategories.general, "sound_tools"             , TOOL_SOUNDS_SETTING);
 		ITexture.Util.GT_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useGTAlphaBlending"      , ITexture.Util.GT_ALPHA_BLENDING);
 		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		
