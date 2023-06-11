@@ -797,7 +797,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				IToolStats tStats = ((MultiItemTool)ST.item_(aEvent.original)).getToolStats(aEvent.original);
 				if (tStats != null) tStats.afterBreaking(aEvent.original, aEvent.entityPlayer);
 			} else
-			if (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool) {
+			if (!ItemsGT.NO_TOOL_FATIQUE.contains(aEvent.original, T) && (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool)) {
 				// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
 				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.weakness   , 300, 2, F);
 				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.digSlowdown, 300, 2, F);

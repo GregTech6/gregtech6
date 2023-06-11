@@ -68,6 +68,11 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I89"               , 1, W));
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I100"              , 1, W));
 		
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.wood"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.stone"               , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.iron"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.gold"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.diamond"             , 1, W));// These Daggers would give Fatique when thrown, for no reason.
 		
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge"                   , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge_incendiary"        , 1, W));
