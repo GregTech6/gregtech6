@@ -17,23 +17,10 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.compat;
+package gregapi.compat.warpdrive;
 
-import cpw.mods.fml.common.event.*;
-import gregapi.code.ArrayListNoNulls;
+import gregapi.compat.ICompat;
 
-import java.util.Collection;
-
-
-public interface ICompat {
-	public static final Collection<ICompat> COMPAT_CLASSES = new ArrayListNoNulls<>();
-	
-	public void onPreLoad       (FMLPreInitializationEvent aEvent);
-	public void onLoad          (FMLInitializationEvent aEvent);
-	public void onPostLoad      (FMLPostInitializationEvent aEvent);
-	public void onServerStarting(FMLServerStartingEvent aEvent);
-	public void onServerStarted (FMLServerStartedEvent aEvent);
-	public void onServerStopping(FMLServerStoppingEvent aEvent);
-	public void onServerStopped (FMLServerStoppedEvent aEvent);
-	public void onIDChanging    (FMLModIdMappingEvent aEvent);
+public interface ICompatWD extends ICompat {
+	//
 }
