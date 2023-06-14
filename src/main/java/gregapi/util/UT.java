@@ -1311,43 +1311,6 @@ public class UT {
 			return rData;
 		}
 		
-		public static boolean[] swap(int aIndexA, int aIndexB, boolean[] aArray) {
-			boolean tSwap   = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		public static byte[] swap(int aIndexA, int aIndexB, byte[] aArray) {
-			byte tSwap      = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		public static short[] swap(int aIndexA, int aIndexB, short[] aArray) {
-			short tSwap     = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		public static int[] swap(int aIndexA, int aIndexB, int[] aArray) {
-			int tSwap       = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		public static long[] swap(int aIndexA, int aIndexB, long[] aArray) {
-			long tSwap      = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		public static Object[] swap(int aIndexA, int aIndexB, Object[] aArray) {
-			Object tSwap    = aArray[aIndexA];
-			aArray[aIndexA] = aArray[aIndexB];
-			aArray[aIndexB] = tSwap;
-			return aArray;
-		}
-		
 		/** Converts a Number to a String with Underscores as Decimal Separators. Ignores Numbers with 4 Digits or less. */
 		public static String makeString(long aNumber) {
 			if (aNumber > -10000 && aNumber < 10000) return Long.toString(aNumber);
@@ -1385,10 +1348,14 @@ public class UT {
 			return F;
 		}
 		
-		public static <E> E[] fill(E aToFillIn, E[] rArray) {
-			for (int i = 0; i < rArray.length; i++) rArray[i] = aToFillIn;
-			return rArray;
-		}
+		public static boolean[] swap(int aIndexA, int aIndexB, boolean[] aArray) {boolean tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static byte   [] swap(int aIndexA, int aIndexB, byte   [] aArray) {byte    tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static short  [] swap(int aIndexA, int aIndexB, short  [] aArray) {short   tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static int    [] swap(int aIndexA, int aIndexB, int    [] aArray) {int     tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static long   [] swap(int aIndexA, int aIndexB, long   [] aArray) {long    tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static <E>   E[] swap(int aIndexA, int aIndexB, E      [] aArray) {E       tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		
+		public static <E>   E[] fill(E aToFillIn, E[] rArray) {Arrays.fill(rArray, aToFillIn); return rArray;}
 		
 		@SafeVarargs
 		public static <E> E[] makeArray(E[] rArray, E... aArray) {

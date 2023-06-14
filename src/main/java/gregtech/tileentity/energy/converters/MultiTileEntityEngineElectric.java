@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregtech.tileentity.energy.converters;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
@@ -47,6 +42,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle implements ITileEntityAdjacentOnOff, ITileEntityEnergyFluxHandler, ITileEntityEnergyElectricityAcceptor, ITileEntityRunningActively, ITileEntitySwitchableMode {
 	/** The Array containing the different Engine State Colours from Blue over Green to Red */
@@ -101,12 +101,16 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (TD.Energy.ALL_EU.contains(mEnergyTypeAccepted)) {
 			if (TD.Energy.ALL_EU.contains(mEnergyTypeEmitted)) {
-				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput, mOutput*2, F)));
+				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput, mOutput, F)));
 			} else {
-				if (mEnergyTypeEmitted == TD.Energy.RF) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput*4, mOutput*2, F)));
+				if (mEnergyTypeEmitted == TD.Energy.RF) {
+					aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput*RF_PER_EU, mOutput, F)));
+				}
 			}
 		} else {
-			if (TD.Energy.ALL_EU.contains(mEnergyTypeEmitted) && mEnergyTypeAccepted == TD.Energy.RF) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput, mOutput*8, F)));
+			if (TD.Energy.ALL_EU.contains(mEnergyTypeEmitted) && mEnergyTypeAccepted == TD.Energy.RF) {
+				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput, mOutput*RF_PER_EU, F)));
+			}
 		}
 	}
 	

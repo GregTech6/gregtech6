@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
 [FIXED] Extruder Recipes now have two Output Slots in case of certain Recipes that output more than one Stack worth of Stuff.
 [FIXED] The RF to GT Converters should work slightly less overloady now.
+[FIXED] Efficiency Tooltip of the Electric Engines showed double of what it was supposed to be, because of old code factoring in the push/pull Stuff a second time.
 [FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
 [FIXED] Language File shouldn't show certain "localized fluid name to localized fluid name" Entries anymore.
 [FIXED] High End Extreme Nuclear Reactors were causing severe Lag due to the absurd range of their Radiation Damage ending up in loading Chunks.
