@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.16.00: (Not released yet)
 [IMPORTANT] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name=" and "=" BEFORE loading Minecraft, should fix it.
 [COMPAT] I added more Betweenlands and Erebus Data and Recipes. Also Limestone is marked as "Betweenlandsproof" since it exists in there too.
+[COMPAT] Warp Drive Mod should work with GT6 Machines, Pipes, Wires and Covers and such when it comes to rotating your Ship.
 [FIXED] A Tool Crafting Sound Issue on the GT Crafting Table supposedly related to Blueprints. I rewrote the thing so the old Issue is fixed, but I have no Idea if any other Issues showed up that I did not find in testing.
 [FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 [FIXED] Weight-O-Meter now works on Raw Ore Items in Chests and Stuff.

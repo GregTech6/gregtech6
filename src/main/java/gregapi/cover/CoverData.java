@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,16 @@
 
 package gregapi.cover;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -38,7 +38,7 @@ public class CoverData {
 	public boolean mVisualsToSync[] = new boolean[] {F,F,F,F,F,F}, mStopped = F;
 	public NBTTagCompound mNBTs[];
 	public ICover mBehaviours[] = new ICover[6];
-	public ITileEntityCoverable mTileEntity = null;
+	public ITileEntityCoverable mTileEntity;
 	
 	public CoverData(ITileEntityCoverable aTileEntity) {
 		mIDs = new short[6]; mMetas = new short[6]; mVisuals = new short[6]; mValues = new short[6]; mNBTs = new NBTTagCompound[6];
@@ -51,7 +51,7 @@ public class CoverData {
 		setIDs(aIDs, aMetas);
 		mStopped = aStopped;
 		mTileEntity = aTileEntity;
-		try {for (byte tSide : ALL_SIDES_VALID) if (mBehaviours[tSide] != null) mBehaviours[tSide].onCoverLoaded(tSide, this);} catch(Throwable e) {e.printStackTrace(ERR); mTileEntity.setError("Cover Loaded:" + e);}
+		if (mTileEntity != null) try {for (byte tSide : ALL_SIDES_VALID) if (mBehaviours[tSide] != null) mBehaviours[tSide].onCoverLoaded(tSide, this);} catch(Throwable e) {e.printStackTrace(ERR); mTileEntity.setError("Cover Loaded:" + e);}
 	}
 	
 	public CoverData(ITileEntityCoverable aTileEntity, NBTTagCompound aNBT) {
@@ -64,6 +64,7 @@ public class CoverData {
 			, aTileEntity);
 	}
 	
+	public NBTTagCompound writeToNBT() {return writeToNBT(UT.NBT.make(), T);}
 	public NBTTagCompound writeToNBT(NBTTagCompound aNBT, boolean aIncludeVisuals) {
 		byte i = 0;
 		if (mIDs[  i] != 0) {
