@@ -81,12 +81,12 @@ public class CompatWD extends CompatBase implements ICompatWD, IBlockTransformer
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mValues    );
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mNBTs      );
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mBehaviours);
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mIDs       );
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mMetas     );
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mVisuals   );
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mValues    );
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mNBTs      );
-			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mBehaviours);
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mIDs       );
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mMetas     );
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mVisuals   );
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mValues    );
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mNBTs      );
+			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mBehaviours);
 			aNBT.setTag(NBT_COVERS, tCovers.writeToNBT());
 			}
 			return aMeta;
@@ -143,12 +143,12 @@ public class CompatWD extends CompatBase implements ICompatWD, IBlockTransformer
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mValues    );
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mNBTs      );
 			UT.Code.swap(SIDE_SOUTH, SIDE_WEST , tCovers.mBehaviours);
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mIDs       );
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mMetas     );
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mVisuals   );
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mValues    );
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mNBTs      );
-			UT.Code.swap(SIDE_SOUTH, SIDE_NORTH, tCovers.mBehaviours);
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mIDs       );
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mMetas     );
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mVisuals   );
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mValues    );
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mNBTs      );
+			UT.Code.swap(SIDE_EAST , SIDE_WEST , tCovers.mBehaviours);
 			aNBT.setTag(NBT_COVERS, tCovers.writeToNBT());
 			}
 			return aMeta;
