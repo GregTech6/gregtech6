@@ -33,6 +33,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
+import gregapi.tileentity.connectors.ITileEntityItemPipe;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityDelegating;
@@ -124,8 +125,12 @@ public class MultiTileEntityBridge extends TileEntityBase07Paintable implements 
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {
-		if ((mModes & EXTENDER_ALL) != EXTENDER_ALL) return delegator(aSide);
-		return getAdjacentTileEntity(getExtenderTargetSide(aSide), F, T);
+		if ((mModes & EXTENDER_ALL) == EXTENDER_ALL) return getAdjacentTileEntity(getExtenderTargetSide(aSide), F, T);
+		if ((mModes & EXTENDER_INV) != 0) {
+			DelegatorTileEntity<TileEntity> rDelegator = getAdjacentTileEntity(getExtenderTargetSide(aSide), F, T);
+			if (rDelegator.mTileEntity instanceof ITileEntityItemPipe) return rDelegator;
+		}
+		return delegator(aSide);
 	}
 	
 	@Override

@@ -45,6 +45,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -86,6 +87,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 		return super.writeItemNBT2(aNBT);
 	}
 	
+	@Override public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {return delegator(aSide);}
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUIClientFilter(aPlayer.inventory, this, aGUIID);}
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUICommonFilter(aPlayer.inventory, this, aGUIID);}
 	@Override public int getSizeInventoryGUI() {return mFilter==null?0:mFilter.length;}
