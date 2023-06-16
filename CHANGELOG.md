@@ -33,7 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Chemical Recipe for converting Trona to Baking Soda.
 [ADDED] Extender Bridges, which work like Extenders but instead of having configurable facings they always connect to the opposite side of the Extender. Good for Pipe Crossings.
 [ADDED] Leather Armor + Knife = some Leather, in the Crafting Table.
-[ADDED] You can generify the different Mineral Oil Types into Basic Buildcraft Oil at a loss.
+[ADDED] You can generify the various different Light/Medium/Heavy Oil Types into Basic (Buildcraft) Oil at a loss.
 [ADDED] Moss Items from other Mods can be rightclicked onto GT6 Stones, if there is a Mossy Version of them.
 [ADDED] Config to make GT6 Tree Leaves decay a lot slower. Don't know why anyone would want it but apparently this would fix Steves Carts Tree Automation.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
