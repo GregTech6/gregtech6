@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.00: (Not released yet)
+6.16.00:
 [IMPORTANT] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name=" and "=" BEFORE loading Minecraft, should fix it.
 [COMPAT] I added more Betweenlands and Erebus Data and Recipes. Also Limestone is marked as "Betweenlandsproof" since it exists in there too.
 [COMPAT] Warp Drive Mod should work with GT6 Machines, Pipes, Wires and Covers and such when it comes to rotating your Ship.
