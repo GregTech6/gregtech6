@@ -61,6 +61,7 @@ public class EnergyCompat {
 			AE_ENERGY = T;
 		} catch(Throwable e) {/**/}
 		try {
+			ic2.api.energy.tile.IEnergyTile                              .class.getCanonicalName();
 			ic2.api.energy.tile.IEnergySink                              .class.getCanonicalName();
 			ic2.api.energy.tile.IEnergySource                            .class.getCanonicalName();
 			ic2.api.energy.tile.IEnergyConductor                         .class.getCanonicalName();
@@ -104,15 +105,15 @@ public class EnergyCompat {
 		
 		if (AE_ENERGY && aThis != null && aTarget instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aTarget).acceptsEnergyFrom    (aThis, FORGE_DIR[aSide]);
 		
-		if (FL_ENERGY && aTarget instanceof com.rwtema.funkylocomotion.blocks.TilePusher || aTarget instanceof com.rwtema.funkylocomotion.blocks.TileBooster) return T;
+		if (FL_ENERGY && (aTarget instanceof com.rwtema.funkylocomotion.blocks.TilePusher || aTarget instanceof com.rwtema.funkylocomotion.blocks.TileBooster)) return T;
 		
-		if (WD_ENERGY && aTarget instanceof cr0s.warpdrive.block.TileEntityAbstractEnergy) return ((cr0s.warpdrive.block.TileEntityAbstractEnergy)aTarget).energy_canInput(FORGE_DIR[aSide]);
+		if (WD_ENERGY &&  aTarget instanceof cr0s.warpdrive.block.TileEntityAbstractEnergy) return ((cr0s.warpdrive.block.TileEntityAbstractEnergy)aTarget).energy_canInput(FORGE_DIR[aSide]);
 		
-		if (GC_ENERGY && aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
+		if (GC_ENERGY &&  aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
 		
-		if (BB_ENERGY && aTarget instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider && ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aTarget).getEnergyBuffer(FORGE_DIR[aSide]) != null) return T;
+		if (BB_ENERGY &&  aTarget instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider && ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aTarget).getEnergyBuffer(FORGE_DIR[aSide]) != null) return T;
 		
-		if (IC_ENERGY && aThis != null) {// the original side check that was here did not really do anything, and IC2 stuff connects to all 6 sides anyways, so connecting should not hurt and make things less buggy.
+		if (IC_ENERGY) {// the original side check that was here did not really do anything, and IC2 stuff connects to all 6 sides anyways, so connecting should not hurt and make things less buggy.
 			if (aTarget instanceof ic2.api.energy.tile.IEnergyTile) return T;
 			if (ic2.api.energy.EnergyNet.instance != null && ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord) instanceof ic2.api.energy.tile.IEnergyTile) return T;
 		}

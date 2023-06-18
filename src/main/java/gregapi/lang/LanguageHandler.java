@@ -405,7 +405,9 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 		} else
 		if (aMaterial == MT.Bone) {
+			if (aPrefix.mNameInternal.startsWith("ore"))                            return aPrefix.mMaterialPre + "Fossil";
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Bonemeal";
+			if (aPrefix.mNameInternal.startsWith("crushed"))                        return aPrefix.mMaterialPre + "Bones";
 		} else
 		if (aMaterial == MT.Flint) {
 			if (aPrefix == OP.rockGt)                                               return "Mario";
