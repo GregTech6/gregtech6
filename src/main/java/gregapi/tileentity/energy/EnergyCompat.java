@@ -99,11 +99,12 @@ public class EnergyCompat {
 	@SuppressWarnings("deprecation")
 	public static boolean canConnectElectricity(TileEntity aThis, TileEntity aTarget, byte aSide) {
 		if (aTarget == null) return F;
-		if (aTarget instanceof ITileEntityEnergy                                      ) return ((ITileEntityEnergy                                               )aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((ITileEntityEnergy                                  )aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
-		if (aTarget instanceof gregapi.tileentity.ITileEntityEnergy                   ) return ((gregapi.tileentity.ITileEntityEnergy                            )aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((gregapi.tileentity.ITileEntityEnergy               )aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
-		if (aTarget instanceof gregtech.api.interfaces.tileentity.IEnergyConnected    ) return T; // return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).inputEnergyFrom      (aSide                 ) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).outputsEnergyTo(aSide);
+		if (aTarget instanceof ITileEntityEnergy                                  ) return ((ITileEntityEnergy                   )aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((ITileEntityEnergy                   )aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
+		if (aTarget instanceof gregapi.tileentity.ITileEntityEnergy               ) return ((gregapi.tileentity.ITileEntityEnergy)aTarget).isEnergyAcceptingFrom(TD.Energy.EU, aSide, T) || ((gregapi.tileentity.ITileEntityEnergy)aTarget).isEnergyEmittingTo(TD.Energy.EU, aSide, T);
+		// IMPORTANT: Ignore the Fact that this SEEMS to be unused. It does exist, SOMETIMES.
+		if (aTarget instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).inputEnergyFrom(aSide) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).outputsEnergyTo(aSide);
 		
-		if (AE_ENERGY && aThis != null && aTarget instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aTarget).acceptsEnergyFrom    (aThis, FORGE_DIR[aSide]);
+		if (AE_ENERGY &&  aTarget instanceof appeng.tile.powersink.IC2) return aThis == null || ((appeng.tile.powersink.IC2)aTarget).acceptsEnergyFrom(aThis, FORGE_DIR[aSide]);
 		
 		if (FL_ENERGY && (aTarget instanceof com.rwtema.funkylocomotion.blocks.TilePusher || aTarget instanceof com.rwtema.funkylocomotion.blocks.TileBooster)) return T;
 		
@@ -113,11 +114,13 @@ public class EnergyCompat {
 		
 		if (BB_ENERGY &&  aTarget instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider && ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aTarget).getEnergyBuffer(FORGE_DIR[aSide]) != null) return T;
 		
-		if (IC_ENERGY) {// the original side check that was here did not really do anything, and IC2 stuff connects to all 6 sides anyways, so connecting should not hurt and make things less buggy.
-			if (aTarget instanceof ic2.api.energy.tile.IEnergyTile) return T;
-			if (ic2.api.energy.EnergyNet.instance != null && ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord) instanceof ic2.api.energy.tile.IEnergyTile) return T;
+		if (IC_ENERGY) {
+			TileEntity tConnected = (aTarget instanceof ic2.api.energy.tile.IEnergyTile || ic2.api.energy.EnergyNet.instance == null ? aTarget : ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord));
+			if (tConnected instanceof ic2.api.energy.tile.IEnergySink   && (aThis == null || ((ic2.api.energy.tile.IEnergySink  )tConnected).acceptsEnergyFrom(aThis, FORGE_DIR[aSide]))) return T;
+			if (tConnected instanceof ic2.api.energy.tile.IEnergySource && (aThis == null || ((ic2.api.energy.tile.IEnergySource)tConnected).emitsEnergyTo    (aThis, FORGE_DIR[aSide]))) return T;
 		}
 		
+		// IMPORTANT: Ignore the Fact that IEnergyConnection is SUPPOSEDLY part of IEnergyHandler. There is versions of the RF API in circulation, where this is NOT the case!!!
 		if (RF_ENERGY && (EMIT_EU_AS_RF || isElectricRFReceiver(aTarget)) && (aTarget instanceof cofh.api.energy.IEnergyHandler || (RF_ENERGY_NEW && aTarget instanceof cofh.api.energy.IEnergyReceiver))) return !(aTarget instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aTarget).canConnectEnergy(FORGE_DIR[aSide]);
 		
 		return F;

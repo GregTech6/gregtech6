@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.01: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Electric Wires and cables did not connect properly to other Mods Blocks, especially IC2, but only when Funky Locomotion was NOT installed.
 
 
 6.16.00:
