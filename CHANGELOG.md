@@ -6,6 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.01: (Not released yet)
+[FIXED] a Serverside Only Crash because the Lang File does not exist on Servers. Happened while I made Books localizable, lol. But it's fixed now.
 [FIXED] Electric Wires and cables did not connect properly to other Mods Blocks, especially IC2, but only when Funky Locomotion was NOT installed.
 
 

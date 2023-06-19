@@ -100,6 +100,7 @@ public class LanguageHandler {
 	}
 	
 	public static String langfile(String aKey, String aEnglish) {
+		if (sLangFile == null) return aEnglish;
 		Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
 		if (tProperty.wasRead() && mWritingEnabled) sLangFile.save();
 		return tProperty.getString();
