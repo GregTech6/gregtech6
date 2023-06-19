@@ -1,17 +1,25 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.16.04: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.16.03: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.16.02: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.01: (Not released yet)
+6.16.01:
 [IMPROVED] The GT Wrenches can now harvest some Machines from other Mods too. Specifically Applied Energistics, Forestry, Funky Locomotion and Railcraft. Buildcraft and Minefactory Reloaded were already on that List.
 [FIXED] a Serverside Only Crash because the Lang File does not exist on Servers. Happened while I made Books localizable, lol. But it's fixed now.
 [FIXED] Electric Wires and cables did not connect properly to other Mods Blocks, especially IC2, but only when Funky Locomotion was NOT installed.
 [ADDED] AE Quartz Fixtures count as Torches to GT6 Tools now.
 [ADDED] Sensor Blocks can now be crafted into themselves to wipe their Settings.
-[ADDED] Clay Mold Recipes for Files and Chisels
+[ADDED] Clay Mold Recipes for Files and Chisels. It is a Stick and a Plank, or two Planks, along with the Clay Mold.
 
 
 6.16.00:
