@@ -20,6 +20,8 @@
 package gregtech.items.tools.machine;
 
 import gregapi.block.misc.BlockBaseBars;
+import gregapi.code.ArrayListNoNulls;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -27,6 +29,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -63,13 +66,16 @@ public class GT_Tool_Wrench extends ToolStats {
 	@Override public boolean canCollect()                                                   {return T;}
 	@Override public boolean isWrench()                                                     {return T;}
 	
+	public List<String> mRegistryNamePrefixes = new ArrayListNoNulls<>(F, "BuildCraft|", "Forestry:core", "Forestry:mail", "Forestry:alveary", "Forestry:factory", "Forestry:engine", "Forestry:ffarm", "Railcraft:machine", "progressiveautomation", "MineFactoryReloaded:machine", "MineFactoryReloaded:rednet", "MCFrames:", MD.FUNK.mID, MD.WARPDRIVE.mID);
+	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock instanceof BlockBaseBars || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
 		if (TOOL_wrench.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData))) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;
 		String tName = ST.regName(aBlock);
-		return tName != null && (tName.startsWith("BuildCraft|") || tName.startsWith("progressiveautomation") || tName.startsWith("MineFactoryReloaded:machine") || tName.startsWith("MineFactoryReloaded:rednet"));
+		if (UT.Code.stringValid(tName)) for (String tPrefix : mRegistryNamePrefixes) if (tName.startsWith(tPrefix)) return T;
+		return F;
 	}
 	
 	@Override

@@ -49,6 +49,11 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		char tHammer = ' ', tFile = ' ', tWrench = ' ';
 		OreDictPrefix tIngot = OP.ingot;
 		
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "railcraft-void-chests", T)) {
+			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.RC, "machine.beta", 1, 11));
+			CR.delate(MD.RC, "machine.beta", 11);
+		}
+		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_tools", T))  {tHammer = 'h'; tFile = 'f'; tWrench = 'w';}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "railcraft_stuff_use_plates", T)) {tIngot = OP.plate;}
 		
