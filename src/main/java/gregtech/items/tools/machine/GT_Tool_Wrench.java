@@ -74,7 +74,9 @@ public class GT_Tool_Wrench extends ToolStats {
 		if (TOOL_wrench.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData))) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;
 		String tName = ST.regName(aBlock);
-		if (UT.Code.stringValid(tName)) for (String tPrefix : mRegistryNamePrefixes) if (tName.startsWith(tPrefix)) return T;
+		if (UT.Code.stringInvalid(tName)) return F;
+		if (MD.AE.owns_(tName)) return aBlock.getMaterial() == Material.iron || aBlock.getMaterial() == Material.anvil;
+		for (String tPrefix : mRegistryNamePrefixes) if (tName.startsWith(tPrefix)) return T;
 		return F;
 	}
 	

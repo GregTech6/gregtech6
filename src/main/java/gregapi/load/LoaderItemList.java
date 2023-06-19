@@ -1669,6 +1669,7 @@ public class LoaderItemList implements Runnable {
 		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.AE_Wrench_Quartz.wild(1));
 		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Certus.wild(1));
 		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Quartz.wild(1));
+		IL.AE_Torch_Quartz                      .set(ST.make(MD.AE, "tile.BlockQuartzTorch"                 , 1, 0), null, OD.blockTorch);
 		
 		
 		IL.EIO_Wrench                           .set(ST.make(MD.EIO, "itemYetaWrench"                       , 1, 0), null, CR.DELATE); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.EIO_Wrench.wild(1));
