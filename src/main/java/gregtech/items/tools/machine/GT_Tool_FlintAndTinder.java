@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.tools.ToolStats;
@@ -30,6 +28,9 @@ import gregtech.items.behaviors.Behavior_FlintAndTinder;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.TOOL_igniter;
+import static gregapi.data.CS.UNCOLOURED;
 
 public class GT_Tool_FlintAndTinder extends ToolStats {
 	@Override
@@ -49,8 +50,7 @@ public class GT_Tool_FlintAndTinder extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_igniter);
+		return TOOL_igniter.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData));
 	}
 	
 	@Override

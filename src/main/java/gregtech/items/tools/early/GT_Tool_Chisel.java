@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
@@ -39,6 +35,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.TOOL_chisel;
 
 public class GT_Tool_Chisel extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                                       {return 50;}
@@ -79,8 +80,7 @@ public class GT_Tool_Chisel extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_chisel)) || aBlock instanceof BlockSilverfish || aBlock == Blocks.stone || aBlock == Blocks.stonebrick || aBlock instanceof BlockStones;
+		return TOOL_chisel.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock instanceof BlockSilverfish || aBlock == Blocks.stone || aBlock == Blocks.stonebrick || aBlock instanceof BlockStones;
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,7 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.List;
-
 import gregapi.block.misc.BlockBaseBars;
-import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -40,6 +34,11 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Wrench extends ToolStats {
 	public static final List<String> mEffectiveList = Arrays.asList(
@@ -67,11 +66,10 @@ public class GT_Tool_Wrench extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		if (aBlock.getMaterial() == Material.piston || aBlock.getMaterial() == Material.redstoneLight || aBlock instanceof BlockBaseBars || aBlock == Blocks.hopper || aBlock == Blocks.dispenser || aBlock == Blocks.dropper) return T;
-		String tString = aBlock.getHarvestTool(aMetaData);
-		if (tString != null && tString.equals(TOOL_wrench)) return T;
+		if (TOOL_wrench.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData))) return T;
 		if (aBlock.getMaterial().isLiquid()) return F;
-		tString = ST.regName(aBlock);
-		return tString != null && (tString.startsWith("BuildCraft|") || tString.startsWith("progressiveautomation") || tString.startsWith("MineFactoryReloaded:machine") || tString.startsWith("MineFactoryReloaded:rednet"));
+		String tName = ST.regName(aBlock);
+		return tName != null && (tName.startsWith("BuildCraft|") || tName.startsWith("progressiveautomation") || tName.startsWith("MineFactoryReloaded:machine") || tName.startsWith("MineFactoryReloaded:rednet"));
 	}
 	
 	@Override

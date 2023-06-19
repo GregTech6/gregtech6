@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -119,8 +119,7 @@ public class GT_Tool_BranchCutter extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase("grafter")) || aBlock == Blocks.vine || aBlock.getMaterial() == Material.leaves || IL.TF_Mazehedge.equal(aBlock);
+		return "grafter".equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock == Blocks.vine || aBlock.getMaterial() == Material.leaves || IL.TF_Mazehedge.equal(aBlock);
 	}
 	
 	@Override

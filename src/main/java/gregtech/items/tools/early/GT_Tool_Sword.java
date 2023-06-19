@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -36,6 +32,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.TOOL_sword;
 
 public class GT_Tool_Sword extends ToolStats {
 	@Override
@@ -98,8 +99,7 @@ public class GT_Tool_Sword extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_sword)) || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.web || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.cake || aBlock.getMaterial() == Material.tnt || aBlock.getMaterial() == Material.sponge || aBlock.getMaterial() == Material.water || IL.TC_Block_Flesh.equal(aBlock);
+		return TOOL_sword.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.web || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.cake || aBlock.getMaterial() == Material.tnt || aBlock.getMaterial() == Material.sponge || aBlock.getMaterial() == Material.water || IL.TC_Block_Flesh.equal(aBlock);
 	}
 	
 	@Override

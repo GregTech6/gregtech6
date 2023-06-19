@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.crafting;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -35,6 +33,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.TOOL_file;
 
 public class GT_Tool_File extends ToolStats {
 	@Override
@@ -79,8 +79,7 @@ public class GT_Tool_File extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_file)) || aBlock instanceof BlockBaseBars || (aBlock instanceof BlockPane && aBlock.getMaterial() == Material.iron);
+		return TOOL_file.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock instanceof BlockBaseBars || (aBlock instanceof BlockPane && aBlock.getMaterial() == Material.iron);
 	}
 	
 	@Override
