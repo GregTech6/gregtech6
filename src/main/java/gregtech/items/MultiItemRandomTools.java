@@ -140,6 +140,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_shovel});
 		CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_axe});
 		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_hoe});
+		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.paneGlass, OD.paneGlass});
+		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.plankAnyWood, OD.plankAnyWood});
+		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.FILE)});
 		CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.SWORD)});
 		CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.PICKAXE)});
 		CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.GEM_PICK)});
@@ -152,7 +155,6 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.SAW)});
 		CR.shapeless(IL.Ceramic_Hammer_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.SOFTHAMMER)});
 		CR.shapeless(IL.Ceramic_Hammer_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.HARDHAMMER)});
-		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.FILE)});
 		CR.shapeless(IL.Ceramic_Screwdriver_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.SCREWDRIVER)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.CHISEL)});
 		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.HOE)});
@@ -197,9 +199,13 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSaw.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Hammer_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadHammer.dat(tMat)});
 		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadFile.dat(tMat)});
+		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat), OP.plate.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Screwdriver_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadScrewdriver.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadChisel.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawChisel.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.paneGlass, OP.stick.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.plankAnyWood, OP.stick.dat(tMat)});
+		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat), OP.stick.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadArrow.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawArrow.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadHoe.dat(tMat)});
