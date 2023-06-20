@@ -140,6 +140,11 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_shovel});
 		CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_axe});
 		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.wooden_hoe});
+		CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.stone_sword});
+		CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.stone_pickaxe});
+		CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.stone_shovel});
+		CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.stone_axe});
+		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, Items.stone_hoe});
 		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.paneGlass, OD.paneGlass});
 		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.plankAnyWood, OD.plankAnyWood});
 		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.FILE)});

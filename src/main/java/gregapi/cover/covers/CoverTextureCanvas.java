@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,9 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
@@ -36,6 +32,10 @@ import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -68,6 +68,7 @@ public class CoverTextureCanvas extends AbstractCoverDefault {
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? mTexture : BlockTextureMulti.get(mTexture, getCoverTextureSurface(aSide, aData));}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return mTexture;}
 	@Override public boolean isSealable(byte aCoverSide, CoverData aData) {return F;}
+	@Override public boolean isDecorative(byte aCoverSide, CoverData aData) {return T;}
 	
 	public static final ITexture sCanvas = BlockTextureDefault.get("machines/covers/canvas");
 }

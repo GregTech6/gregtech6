@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.02: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them.
 
 
 6.16.01:
