@@ -10,7 +10,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.02: (Not released yet)
-[CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them.
+[CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
+[ADDED] Drain Covers can now partially drain GT Fluids.
 
 
 6.16.01:

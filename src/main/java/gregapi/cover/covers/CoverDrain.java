@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,6 +19,7 @@
 
 package gregapi.cover.covers;
 
+import gregapi.block.fluid.BlockBaseFluid;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.cover.CoverData;
 import gregapi.data.FL;
@@ -108,35 +109,48 @@ public class CoverDrain extends AbstractCoverAttachment {
 			if (aReceivedBlockUpdate || SERVER_TIME % 20 == 5) {
 				Block tBlock = aData.mTileEntity.getBlockAtSide(aCoverSide);
 				FluidStack tFluid = NF;
-				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-					if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) {
-						if (WD.infiniteWater(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide))) {
-							FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
-						} else {
-							tFluid = FL.Water.make(1000);
+				
+				if (tBlock instanceof BlockBaseFluid) {
+					byte tMeta = aData.mTileEntity.getMetaDataAtSide(aCoverSide);
+					BlockBaseFluid tFluidBlock = ((BlockBaseFluid)tBlock);
+					if (SIDES_HORIZONTAL[aCoverSide] || (tFluidBlock.mDensityDir>0?SIDES_BOTTOM:SIDES_TOP)[aCoverSide]) {
+						byte i = 0; while (i <= tMeta) if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluidBlock.mQuanta.copy(), T)) i++; else break;
+						if (i > 0) {
+							WD.set(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), i > tMeta ? NB : tBlock, i > tMeta ? 0 : tMeta-i, 3);
+							tFluidBlock.updateFluidBlocks(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), T);
 						}
 					}
-				} else
-				if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-					if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) tFluid = FL.Lava.make(1000);
-				} else
-				if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
-				} else
-				if (tBlock == BlocksGT.Ocean) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Ocean.make(16000), T);
-				} else
-				if (tBlock == BlocksGT.Swamp) {
-					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Dirty_Water.make(16000), T);
-				} else
-				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), F);
-				
-				if (tFluid != null && (SIDES_HORIZONTAL[aCoverSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aCoverSide])) {
-					if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) {
-						if (tBlock instanceof IFluidBlock) {
-							((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), T);
-						} else {
-							aData.mTileEntity.getWorld().setBlockToAir(aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide));
+				} else {
+					if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+						if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) {
+							if (WD.infiniteWater(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide))) {
+								FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
+							} else {
+								tFluid = FL.Water.make(1000);
+							}
+						}
+					} else
+					if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
+						if (aData.mTileEntity.getMetaDataAtSide(aCoverSide) == 0) tFluid = FL.Lava.make(1000);
+					} else
+					if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
+						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Water.make(16000), T);
+					} else
+					if (tBlock == BlocksGT.Ocean) {
+						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Ocean.make(16000), T);
+					} else
+					if (tBlock == BlocksGT.Swamp) {
+						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Dirty_Water.make(16000), T);
+					} else
+					if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), F);
+					
+					if (tFluid != null && (SIDES_HORIZONTAL[aCoverSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aCoverSide])) {
+						if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) {
+							if (tBlock instanceof IFluidBlock) {
+								((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), T);
+							} else {
+								aData.mTileEntity.getWorld().setBlockToAir(aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide));
+							}
 						}
 					}
 				}
