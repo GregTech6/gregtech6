@@ -1479,7 +1479,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Sand            ), new OreDictItemData(MT.Sand            , U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.RedSand         ), new OreDictItemData(MT.RedSand         , U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.SoulSand        ), new OreDictItemData(MT.SoulSand        , U*9));
-		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.EndSand         ), new OreDictItemData(MT.EndSand         , U*9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.EndSandWhite    ), new OreDictItemData(MT.EndSandWhite    , U*9));
+		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.EndSandBlack    ), new OreDictItemData(MT.EndSandBlack    , U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Bedrock         ), new OreDictItemData(MT.Bedrock         , U*1));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.Flint           ), new OreDictItemData(MT.Flint           , U*9));
 		OreDictManager.INSTANCE.setAutomaticItemData(OP.stone.dat(MT.CaCO3           ), new OreDictItemData(MT.CaCO3           , U*9));
