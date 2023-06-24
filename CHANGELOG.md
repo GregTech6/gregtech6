@@ -10,7 +10,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.02: (Not released yet)
+[FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
+[CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [ADDED] Drain Covers can now partially drain GT Fluids.
 
 

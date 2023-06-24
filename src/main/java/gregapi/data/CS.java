@@ -1994,6 +1994,7 @@ public class CS {
 		, LOSTBOOKS         = "LostBooks"
 		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
+		, VN4               = "VillageNames"
 		
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"

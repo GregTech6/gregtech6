@@ -110,6 +110,7 @@ public class MD {
 	, LOSTBOOKS         = new ModData(ModIDs.LOSTBOOKS          , "Lost Books")
 	, LOOTBAGS          = new ModData(ModIDs.LOOTBAGS           , "Lootbags")
 	, EUREKA            = new ModData(ModIDs.EUREKA             , "Eureka")
+	, VN4               = new ModData(ModIDs.VN4                , "Village Names")
 	
 	, UB                = new ModData(ModIDs.UB                 , "Underground Biomes")
 	, COG               = new ModData(ModIDs.COG                , "Custom Ore Generation")
