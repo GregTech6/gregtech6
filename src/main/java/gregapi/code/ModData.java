@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,15 @@
 
 package gregapi.code;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import cpw.mods.fml.common.Loader;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Gregorius Techneticies
@@ -37,11 +37,12 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 	
 	public boolean mLoaded;
 	
-	public final String mID, mName;
+	public final String mID, mName, mPrefix;
 	
 	public ModData(String aID, String aName) {
 		mID = aID;
 		mName = aName;
+		mPrefix = mID + ":";
 		mLoaded = Loader.isModLoaded(mID);
 		MODS.put(aID, this);
 		MODS.put(aID.toLowerCase(), this);
@@ -58,13 +59,13 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 	public boolean owns (Item         aItem                         ) {return mLoaded && owns_(ST.regName(aItem));}
 	public boolean owns (ItemStack    aStack                        ) {return mLoaded && owns_(ST.regName(aStack));}
 	public boolean owns (String       aRegName                      ) {return mLoaded && owns_(aRegName);}
-	public boolean owns_(String       aRegName                      ) {return aRegName != null && aRegName.startsWith(mID);}
+	public boolean owns_(String       aRegName                      ) {return aRegName != null && aRegName.startsWith(mPrefix);}
 	public boolean owns (IBlockAccess aWorld, int aX, int aY, int aZ, String aContains) {return mLoaded && owns_(ST.regName(aWorld.getBlock(aX, aY, aZ)), aContains);}
 	public boolean owns (Block        aBlock                        , String aContains) {return mLoaded && owns_(ST.regName(aBlock), aContains);}
 	public boolean owns (Item         aItem                         , String aContains) {return mLoaded && owns_(ST.regName(aItem), aContains);}
 	public boolean owns (ItemStack    aStack                        , String aContains) {return mLoaded && owns_(ST.regName(aStack), aContains);}
 	public boolean owns (String       aRegName                      , String aContains) {return mLoaded && owns_(aRegName, aContains);}
-	public boolean owns_(String       aRegName                      , String aContains) {return aRegName != null && aRegName.startsWith(mID) && aRegName.contains(aContains);}
+	public boolean owns_(String       aRegName                      , String aContains) {return aRegName != null && aRegName.startsWith(mPrefix) && aRegName.contains(aContains);}
 	
 	@Override
 	public String toString() {
