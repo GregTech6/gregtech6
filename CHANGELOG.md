@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [ADDED] Drain Covers can now partially drain GT Fluids.
+[ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
 
 
 6.16.01:

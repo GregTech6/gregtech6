@@ -564,7 +564,7 @@ public class LH {
 		add(PROSPECTING_TRACES                          , "Found traces of ");
 		add(PROSPECTING_NOTHING                         , "No traces of Ore found");
 		add(AUTOCRAFTING_INSERT_BLUEPRINT               , "Insert an autocraftable Blueprint here");
-		add(ADVCRAFTING_INSERT_BLUEPRINT                , "Insert a Blueprint here");
+		add(ADVCRAFTING_INSERT_BLUEPRINT                , "Insert Blueprint or Selector Tag 2 to 9");
 		add(ADVCRAFTING_PUT_TO_STORAGE                  , "Move Crafting Grid content to Storage Slots");
 		add(ADVCRAFTING_AUTOMATION_ACCESS               , "Allow Automation to extract from the Crafting Grid");
 		add(ADVCRAFTING_NEUTRAL_SLOT                    , "This Slot does ABSOLUTELY NOTHING! park Items here!");

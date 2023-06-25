@@ -176,7 +176,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	public void sortIntoTheInputSlots() {
 		for (int i : SLOTS_CRAFTING) if (slotHas(i)) {
-			if (slot(i).stackSize == 0) slotKill(i);
+			slotNull(i);
 			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (ST.equal(slot(i), slot(j))) ST.move(this, i, j);
 			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (!slotHas(j)) ST.move(this, i, j);
 		}
@@ -210,6 +210,17 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		if (IL.Paper_Blueprint_Used.equal(slot(30), F, T)) {
 			ItemStack[] tRecipe = UT.NBT.getBlueprintCrafting(slot(30));
 			if (tRecipe != ZL_IS) for (int i = 0; i < tRecipe.length; i++) if (!slotHas(i+21)) slot(i+21, ST.amount(0, tRecipe[i]));
+		} else if (IL.Circuit_Selector.equal(slot(30), F, T)) {
+			for (int i : SLOTS_CRAFTING) {
+				slotNull(i);
+				if (i == SLOTS_CRAFTING[0]) continue;
+				if (slotHas(i)) ST.move(this, i, SLOTS_CRAFTING[0]);
+				if (slotHas(i)) for (int j : SLOTS_STORAGE) if (ST.equal(slot(i), slot(j))) ST.move(this, i, j);
+				if (slotHas(i)) for (int j : SLOTS_STORAGE) if (!slotHas(j)) ST.move(this, i, j);
+			}
+			for (int i = 1, j = (int)UT.Code.bind(2, 9, ST.meta(slot(30))); i < j; i++) if (!slotHas(i)) {
+				slot(SLOTS_CRAFTING[i], ST.amount(0, slot(SLOTS_CRAFTING[0])));
+			}
 		}
 		ItemStack rStack = CR.getany(worldObj, aAllowCache, slot(21), slot(22), slot(23), slot(24), slot(25), slot(26), slot(27), slot(28), slot(29));
 		if (OM.materialcontains(rStack, TD.Properties.EXPLODES_IN_NONVANILLA_CRAFTING_GRID)) explode(4);
@@ -441,7 +452,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[71];}
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return aSlot == 30 ? 1 : 64;}
 	@Override public boolean allowCovers(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide] && !ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack) {return aSlot != 30 || IL.Paper_Blueprint_Empty.equal(aStack, F, T) || IL.Paper_Blueprint_Used.equal(aStack, F, T);}
+	@Override public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack) {return aSlot != 30 || ST.invalid(aStack) || IL.Paper_Blueprint_Empty.equal(aStack, F, T) || IL.Paper_Blueprint_Used.equal(aStack, F, T) || (IL.Circuit_Selector.equal(aStack, F, T) && UT.Code.inside(2, 9, ST.meta(aStack)));}
 	
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
