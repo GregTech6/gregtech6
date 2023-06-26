@@ -70,10 +70,15 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		CR.remove(IL.TF_Giant_Obsidian.get(1));
 		CR.remove(IL.TF_Giant_Leaves  .get(1));
 		
-		RM.sawing(64, 64, F, 50, IL.TF_Giant_Log     .get(1), ST.make(Blocks.log, 64, 0));
+		RM.sawing(64, 64, F, 50, IL.TF_Giant_Log     .get(1), ST.make(Blocks.log        , 64, 0));
 		RM.sawing(64,256, F, 50, IL.TF_Giant_Cobble  .get(1), ST.make(Blocks.cobblestone, 64, 0));
-		RM.sawing(64,512, F, 50, IL.TF_Giant_Obsidian.get(1), ST.make(Blocks.obsidian, 64, 0));
-		RM.sawing(64, 16, F, 50, IL.TF_Giant_Leaves  .get(1), ST.make(Blocks.leaves, 64, 0));
+		RM.sawing(64,512, F, 50, IL.TF_Giant_Obsidian.get(1), ST.make(Blocks.obsidian   , 64, 0));
+		RM.sawing(64, 16, F, 50, IL.TF_Giant_Leaves  .get(1), ST.make(Blocks.leaves     , 64, 0));
+		
+		RM.Boxinator.addRecipe2(T,128,128, ST.make(Blocks.log        , 64, 0), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Log     .get(1));
+		RM.Boxinator.addRecipe2(T,128,128, ST.make(Blocks.cobblestone, 64, 0), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Cobble  .get(1));
+		RM.Boxinator.addRecipe2(T,128,128, ST.make(Blocks.obsidian   , 64, 0), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Obsidian.get(1));
+		RM.Boxinator.addRecipe2(T,128,128, ST.make(Blocks.leaves     , 64, 0), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Leaves  .get(1));
 		
 		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), IL.TF_Carminite.get(1));
 		
@@ -103,7 +108,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		, ST.make(MD.TF, "tile.CastleBrick", 1, 2)
 		, NI
 		, NI
-		, NI
+		, ST.make(MD.TF, "tile.CastleBrick", 1, 3)
 		, NI
 		);
 		

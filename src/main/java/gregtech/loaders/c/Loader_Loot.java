@@ -163,6 +163,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.ingot.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.plate.mat(MT.Ag, 1));
@@ -183,6 +184,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
 		
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Bronze, 1));

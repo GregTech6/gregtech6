@@ -936,8 +936,8 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Venison_Cooked                    .set(ST.make(MD.TF, "item.venisonCooked"                    , 1, 0), new OreDictItemData(MT.MeatCooked          , U*2, MT.Bone, U9), "foodVenisoncooked");
 		IL.TF_Lamp_of_Cinders                   .set(ST.make(MD.TF, "item.lampOfCinders"                    , 1, 0), null, OD.craftingFirestarter, OreDictToolNames.flintandtinder);
 		IL.TF_Cube_of_Annihilation              .set(ST.make(MD.TF, "item.cubeOfAnnihilation"               , 1, 0));
-		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*192, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
-		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*128, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
+		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*1728, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
+		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*1152, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
 		IL.TF_Fiddlehead                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 8));
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(MT.Glowstone, U4), OD.listAllmushroom);
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
@@ -949,11 +949,11 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Deadrock                          .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 2), OP.stone.dat(MT.STONES.Deadrock));
 		IL.TF_Trollsteinn                       .set(ST.make(MD.TF, "tile.TrollSteinn"                      , 1, 0), OP.stone.dat(MT.Stone));
 		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0), OP.stone.dat(MT.Stone));
-		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0), OP.stone.dat(MT.Stone));
+		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0), null, CR.DELATE);
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
-		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U *64));
+		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U*576));
 		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
 		IL.TF_Giant_Log                         .set(ST.make(MD.TF, "tile.GiantLog"                         , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*512, MT.Bark, U*64));
 		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);

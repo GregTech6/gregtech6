@@ -42,9 +42,9 @@ public class Compat_Recipes_ProjectRed extends CompatMods {
 		RM.sawing(64, 64, F, 1000, ST.make(MD.PR, "projectred.core.part", 1, 11), ST.make(MD.PR, "projectred.core.part", 16, 12));
 		
 		RM.stonetypes(MT.STONES.Marble, F, OP.rockGt.mat(MT.STONES.Marble, 4), OP.blockDust.mat(MT.STONES.Marble, 1)
-		, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 0), NI)
 		, NI
-		, NI
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 1), NI)
 		, NI
 		, NI
 		, NI
@@ -53,9 +53,9 @@ public class Compat_Recipes_ProjectRed extends CompatMods {
 		);
 		
 		RM.stonetypes(MT.STONES.Basalt, F, OP.rockGt.mat(MT.STONES.Basalt, 4), OP.blockDust.mat(MT.STONES.Basalt, 1)
-		, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3)
-		, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2)
-		, NI
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 3), NI)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 2), NI)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 4), NI)
 		, NI
 		, NI
 		, NI

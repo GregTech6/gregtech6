@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [ADDED] Drain Covers can now partially drain GT Fluids.
 [ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
+[ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
 
 
 6.16.01:

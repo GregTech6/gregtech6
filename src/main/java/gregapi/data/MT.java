@@ -2312,6 +2312,7 @@ public class MT {
 			Cryotheum               .put(MD.TE);
 			
 			
+			STONES.SkyStone         .put(MD.AE).visDefault();
 			Si                      .put(MD.AE); // don't COMMON_ORE this!
 			CertusQuartz            .put(MD.AE, COMMON_ORE);
 			ChargedCertusQuartz     .put(MD.AE, COMMON_ORE);
