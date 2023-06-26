@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,20 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import twilightforest.item.TFItems;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.DEF;
 
 public class Compat_Recipes_TwilightForest extends CompatMods {
 	public Compat_Recipes_TwilightForest(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -86,6 +81,32 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.TF, "item.arcticFur", 8), ST.make(MD.TF, "item.arcticPlate", 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.TF, "item.arcticFur", 7), ST.make(MD.TF, "item.arcticLegs" , 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.TF, "item.arcticFur", 4), ST.make(MD.TF, "item.arcticBoots", 1));
+		
+		
+		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));
+		
+		RM.stonetypes(MT.STONES.Mazerock, T, OP.rockGt.mat(MT.STONES.Mazerock, 4), OP.blockDust.mat(MT.STONES.Mazerock, 1)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 0)
+		, NI
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 1)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 4)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 3)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 2)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 6)
+		, ST.make(MD.TF, "tile.TFMazestone", 1, 7)
+		);
+		
+		RM.stonetypes(MT.STONES.Castlerock, T, OP.rockGt.mat(MT.STONES.Castlerock, 4), OP.blockDust.mat(MT.STONES.Castlerock, 1)
+		, ST.make(MD.TF, "tile.CastleBrick", 1, 1)
+		, NI
+		, ST.make(MD.TF, "tile.CastleBrick", 1, 0)
+		, ST.make(MD.TF, "tile.CastleBrick", 1, 2)
+		, NI
+		, NI
+		, NI
+		, NI
+		);
+		
 		
 		// Those things are quite rare, so their low Durability is making them a tad bit too useless.
 		if (ConfigsGT.GREGTECH.get("general", "BetterTwilightDurability", T)) try {

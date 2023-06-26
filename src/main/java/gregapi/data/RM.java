@@ -301,6 +301,7 @@ public class RM {
 	public static boolean growmoss(ItemStack aClean, ItemStack aMossy) {
 		if (ST.invalid(aClean) || ST.invalid(aMossy)) return F;
 		CR.shapeless(aMossy, CR.DEF_NCC, new Object[] {aClean, OD.itemMoss});
+		CR.shapeless(aMossy, CR.DEF_NCC, new Object[] {aClean, Blocks.vine});
 		return T;
 	}
 	
@@ -343,7 +344,7 @@ public class RM {
 			}
 			if (ST.valid(aSlabs)) {
 				CR.shaped(aSlabs, CR.DEF_NCC, "sB", 'B', aStair);
-				RM.sawing(16, 72, F, 3, aStair, aSlabs, OP.dustSmall.mat(aMat, 9));
+				RM.sawing(16, 72, F, 3, aStair, aSlabs, aMat == null ? NI : OP.dustSmall.mat(aMat, 9));
 			}
 		}
 		

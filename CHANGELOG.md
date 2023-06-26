@@ -11,7 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.16.02: (Not released yet)
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
-[COMPAT] Bluepower, Project Red, Biomes O'Plenty and Applied Energiestics now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics and Twilight FOrest now have better Stone Type Support, and also some minor Recipe fixes.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
