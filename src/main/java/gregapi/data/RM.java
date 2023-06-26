@@ -376,9 +376,9 @@ public class RM {
 		return aBlock;
 	}
 	
-	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles) {
+	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles, ItemStack aBricks2) {
 		
-		for (ItemStack tStack : ST.array(aStone, aCobble, aBricks, aCracked, aChiseled, aSmooth, aTiles)) if (ST.valid(tStack)) {
+		for (ItemStack tStack : ST.array(aStone, aCobble, aBricks, aCracked, aChiseled, aSmooth, aTiles, aBricks2)) if (ST.valid(tStack)) {
 			RM.Shredder.addRecipe1(T, 16, 16, tStack, OP.blockDust.mat(aMat, 1));
 		}
 		
@@ -499,6 +499,9 @@ public class RM {
 				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "h" , "X" , 'X', aBricks);
 				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "y" , "X" , 'X', aBricks);
 			}
+			if (ST.valid(aBricks2)) {
+				CR.shaped(ST.amount(4, aBricks2), CR.DEF_REM, "XX", "XX", 'X', aBricks);
+			}
 		}
 		
 		if (ST.valid(aCracked)) {
@@ -587,6 +590,37 @@ public class RM {
 			}
 		}
 		
+		if (ST.valid(aBricks2)) {
+			CR.remout(aBricks2);
+			RM.generify(aBricks2, ST.make(Blocks.stonebrick, 1, 0));
+			
+			if (ST.valid(aStone)) {
+				RM.add_smelting(aBricks2, aStone, T, F, F);
+			} else if (ST.valid(aSmooth)) {
+				RM.add_smelting(aBricks2, aSmooth, T, F, F);
+			}
+			if (ST.valid(aBricks)) {
+				CR.shaped(ST.amount(4, aBricks), CR.DEF_REM, "XX", "XX", 'X', aBricks2);
+			}
+			if (ST.valid(aCracked)) {
+				RM.Chisel       .addRecipe1(T, 16, 16, aBricks2, aCracked);
+				RM.Hammer       .addRecipe1(T, 16, 16, aBricks2, aCracked);
+				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, aCracked);
+				CR.shaped(aCracked, CR.DEF_REM, "h" , "X" , 'X', aBricks2);
+				CR.shaped(aCracked, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
+			} else if (ST.valid(aCobble)) {
+				RM.Chisel       .addRecipe1(T, 16, 16, aBricks2, aCobble);
+				RM.Hammer       .addRecipe1(T, 16, 16, aBricks2, aCobble);
+				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, aCobble);
+				CR.shaped(aCobble, CR.DEF_REM, "h" , "X" , 'X', aBricks2);
+				CR.shaped(aCobble, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
+			} else {
+				RM.Hammer       .addRecipe1(T, 16, 16, aBricks2, OP.rockGt.mat(aMat, 4));
+				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, OP.rockGt.mat(aMat, 4));
+				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "h" , "X" , 'X', aBricks2);
+				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "y" , "X" , 'X', aBricks2);
+			}
+		}
 		return T;
 	}
 	

@@ -272,14 +272,16 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
 		if (MD.BP.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , MD.BP, "red_alloy_ingot", 0);
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.BlueAlloy                  , MD.BP, "blue_alloy_ingot", 0);
-			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.PurpleAlloy                , MD.BP, "purple_alloy_ingot", 0);
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Nikolite                   , MD.BP, "teslatite_dust", 0);
-			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , MD.BP, "infused_teslatite_dust", 0);
-			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.Stone                      , MD.BP, "stone_tile", 0);
+			OreDictManager.INSTANCE.setTarget(OP.ingot    , MT.RedAlloy                 , MD.BP, "red_alloy_ingot", 0);
+			OreDictManager.INSTANCE.setTarget(OP.ingot    , MT.BlueAlloy                , MD.BP, "blue_alloy_ingot", 0);
+			OreDictManager.INSTANCE.setTarget(OP.ingot    , MT.PurpleAlloy              , MD.BP, "purple_alloy_ingot", 0);
+			OreDictManager.INSTANCE.setTarget(OP.dust     , MT.Nikolite                 , MD.BP, "teslatite_dust", 0);
+			OreDictManager.INSTANCE.setTarget(OP.blockDust, MT.Nikolite                 , MD.BP, "teslatite_block", 0);
+			OreDictManager.INSTANCE.setTarget(OP.dust     , MT.UNUSED.Teslatite         , MD.BP, "infused_teslatite_dust", 0);
+			OreDictManager.INSTANCE.setTarget(OP.plate    , MT.Stone                    , MD.BP, "stone_tile", 0);
 			
 			OM.reg(OD.craftingWorkBench                  , ST.make(MD.BP, "project_table", 1, 0));
+			OM.reg(OD.craftingWorkBench                  , ST.make(MD.BP, "auto_project_table", 1, 0));
 			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
 			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 			OM.reg("cropIndigo"                          , ST.make(MD.BP, "indigo_flower", 1, 0));
@@ -305,8 +307,9 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.BP, "zincplate", 1, 0, ANY.Fe,   U2, MT.Zn,   U4);
 			OM.data(MD.BP, "paint_can", 1, W, ANY.Fe, 7*U2, MT.Zn, 7*U4);
 			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
-			OM.data(MD.BP, "tiles", 1, 0, MT.STONES.Marble, U2, MT.STONES.Basalt, U2);
+			OM.data(MD.BP, "tiles", 1, 0, MT.STONES.Marble, 2*U, MT.STONES.Basalt, 2*U);
 			
+			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BP, "tiles", 1, 0));
 			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BP, "sapphire_glass", 1, 0));
 			ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.BP, "reinforced_sapphire_glass", 1, 0));
 			

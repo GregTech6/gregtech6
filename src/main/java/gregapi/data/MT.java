@@ -3908,7 +3908,7 @@ public class MT {
 		Thyrium                     = unused    ("Thyrium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Zectium                     = unused    ("Zectium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Draconic                    = deprecated("Draconic"                   ).setPriorityPrefix(2).put(G_DUST),
-		InfusedTeslatite            = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST), // 1 Redstone + 1 Teslatite/Nikolite = 1 Infused
+		Teslatite                   = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST).setLocal("Teslatite"), // 1 Redstone + 1 Nikolite = 1 Teslatite; and 8 Teslatite + 1 Gold = 1 Purple Alloy;
 		IrridantUranium             = unused    ("Irridant Uranium"           ).setPriorityPrefix(3).put(G_INGOT),
 		IrridantReinforced          = unused    ("IrridantReinforced"         ).setPriorityPrefix(3).put(G_INGOT),
 		IronSharp                   = unused    ("IronSharp"                  ).setPriorityPrefix(3).put(G_INGOT).setLocal("Sharp Iron"),

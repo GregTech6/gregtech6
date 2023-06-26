@@ -100,6 +100,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "chiseledLimestone"                 , 1, 0)
 		, ST.make(MD.BTL, "polishedLimestone"                 , 1, 0)
 		, ST.make(MD.BTL, "limestoneTiles"                    , 1, 0)
+		, NI
 		);
 		
 		
@@ -113,6 +114,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "chiseledBetweenstone"              , 1, 0)
 		, NI
 		, ST.make(MD.BTL, "betweenstoneTiles"                 , 1, 0)
+		, NI
 		);
 		
 		
@@ -123,6 +125,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, NI
 		, ST.make(MD.BTL, "chiseledPitstone"                  , 1, 0)
 		, RM.stoneshapes(MT.STONES.Pitstone, F, ST.make(MD.BTL, "smoothPitstone"                    , 1, 0), ST.make(MD.BTL, "smoothPitstoneStairs"              , 1, 0), ST.make(MD.BTL, "Smooth Pitstone Slab"              , 1, 0), ST.make(MD.BTL, "smoothPitstoneWall"                , 1, 0), ST.make(MD.BTL, "pitstonePillar"                    , 1, 0))
+		, NI
 		, NI
 		);
 		
@@ -135,6 +138,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "carvedCrag"                        , 1, 0)
 		, NI
 		, ST.make(MD.BTL, "cragTiles"                         , 1, 0)
+		, NI
 		);
 		
 		
@@ -145,6 +149,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		, ST.make(MD.BTL, "crackedTempleBrick"                , 1, 0)
 		, ST.make(MD.BTL, "carvedTempleBrick"                 , 1, 0)
 		, ST.make(MD.BTL, "smoothTempleBrick"                 , 1, 0)
+		, NI
 		, NI
 		);
 		

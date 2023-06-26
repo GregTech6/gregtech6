@@ -97,6 +97,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		, NI
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0))
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI)
+		, NI
 		);
 		
 		
@@ -108,6 +109,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 1), ST.make(MD.ERE, "gneissStairs1", 1, 0), NI, NI, NI)
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 4), ST.make(MD.ERE, "gneissStairs4", 1, 0), NI, NI, NI)
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 5), ST.make(MD.ERE, "gneissStairs5", 1, 0), NI, NI, NI)
+		, NI
 		);
 		
 		
