@@ -307,11 +307,13 @@ public class RM {
 	public static ItemStack stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
 		
 		if (ST.valid(aBlock)) {
-			RM.Shredder.addRecipe1(T, 16, 16, aBlock, OP.blockDust.mat(aMat, 1));
-			
-			if (aIsCobbleTarget) {
-				RM.pack(OP.rockGt.mat(aMat, 4), aBlock);
-				CR.shaped(aBlock, CR.DEF_NCC, "BB", "BB", 'B', OP.rockGt.dat(aMat));
+			if (aMat != null) {
+				RM.Shredder.addRecipe1(T, 16, 16, aBlock, OP.blockDust.mat(aMat, 1));
+				
+				if (aIsCobbleTarget) {
+					RM.pack(OP.rockGt.mat(aMat, 4), aBlock);
+					CR.shaped(aBlock, CR.DEF_NCC, "BB", "BB", 'B', OP.rockGt.dat(aMat));
+				}
 			}
 			if (ST.valid(aStair)) {
 				CR.shaped(ST.amount(4, aStair), CR.DEF_NCC_MIR, "sB", "BB", 'B', aBlock);
@@ -330,11 +332,14 @@ public class RM {
 		
 		if (ST.valid(aStair)) {
 			CR.remout(aStair);
-			RM.Shredder.addRecipe1(T, 16, 16, aStair, OP.dustSmall.mat(aMat,27));
 			
-			if (aIsCobbleTarget) {
-				RM.pack(OP.rockGt.mat(aMat, 3), aStair);
-				CR.shaped(aStair, CR.DEF_NCC_MIR, " B", "BB", 'B', OP.rockGt.dat(aMat));
+			if (aMat != null) {
+				RM.Shredder.addRecipe1(T, 16, 16, aStair, OP.dustSmall.mat(aMat, 27));
+				
+				if (aIsCobbleTarget) {
+					RM.pack(OP.rockGt.mat(aMat, 3), aStair);
+					CR.shaped(aStair, CR.DEF_NCC_MIR, " B", "BB", 'B', OP.rockGt.dat(aMat));
+				}
 			}
 			if (ST.valid(aSlabs)) {
 				CR.shaped(aSlabs, CR.DEF_NCC, "sB", 'B', aStair);
@@ -344,11 +349,14 @@ public class RM {
 		
 		if (ST.valid(aSlabs)) {
 			CR.remout(aSlabs);
-			RM.Shredder.addRecipe1(T, 16, 16, aSlabs, OP.dustSmall.mat(aMat,18));
 			
-			if (aIsCobbleTarget) {
-				RM.pack(OP.rockGt.mat(aMat, 2), aSlabs);
-				CR.shaped(aSlabs, CR.DEF_NCC, "BB", 'B', OP.rockGt.dat(aMat));
+			if (aMat != null) {
+				RM.Shredder.addRecipe1(T, 16, 16, aSlabs, OP.dustSmall.mat(aMat, 18));
+				
+				if (aIsCobbleTarget) {
+					RM.pack(OP.rockGt.mat(aMat, 2), aSlabs);
+					CR.shaped(aSlabs, CR.DEF_NCC, "BB", 'B', OP.rockGt.dat(aMat));
+				}
 			}
 			if (ST.valid(aStair)) {
 				CR.shaped(ST.amount(2, aStair), CR.DEF_NCC_MIR, "sB", "BB", 'B', aSlabs);
@@ -357,58 +365,65 @@ public class RM {
 		
 		if (ST.valid(aWalls)) {
 			CR.remout(aWalls);
-			RM.Shredder.addRecipe1(T, 16, 16, aWalls, OP.blockDust.mat(aMat, 1));
 			
-			if (aIsCobbleTarget) {
-				CR.shaped(aWalls, CR.DEF_NCC, " B ", "BBB", 'B', OP.rockGt.dat(aMat));
+			if (aMat != null) {
+				RM.Shredder.addRecipe1(T, 16, 16, aWalls, OP.blockDust.mat(aMat, 1));
+				
+				if (aIsCobbleTarget) {
+					CR.shaped(aWalls, CR.DEF_NCC, " B ", "BBB", 'B', OP.rockGt.dat(aMat));
+				}
 			}
 		}
 		
 		if (ST.valid(aPillar)) {
 			CR.remout(aPillar);
-			RM.Shredder.addRecipe1(T, 16, 16, aPillar, OP.blockDust.mat(aMat, 1));
 			
-			if (aIsCobbleTarget) {
-				CR.shaped(aPillar, CR.DEF_NCC, "BBB", " B ", 'B', OP.rockGt.dat(aMat));
+			if (aMat != null) {
+				RM.Shredder.addRecipe1(T, 16, 16, aPillar, OP.blockDust.mat(aMat, 1));
+				
+				if (aIsCobbleTarget) {
+					CR.shaped(aPillar, CR.DEF_NCC, "BBB", " B ", 'B', OP.rockGt.dat(aMat));
+				}
 			}
 		}
 		
 		return aBlock;
 	}
 	
-	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles, ItemStack aBricks2) {
-		
+	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aFourRocks, ItemStack aDustBlock, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles, ItemStack aBricks2) {
 		for (ItemStack tStack : ST.array(aStone, aCobble, aBricks, aCracked, aChiseled, aSmooth, aTiles, aBricks2)) if (ST.valid(tStack)) {
-			RM.Shredder.addRecipe1(T, 16, 16, tStack, OP.blockDust.mat(aMat, 1));
+			RM.Shredder.addRecipe1(T, 16, 16, tStack, aDustBlock);
 		}
 		
-		for (ItemStack tStack : ST.array(aStone, aCobble, aSmooth)) if (ST.valid(tStack)) {
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(aMat, 18));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Rod_Long    .get(0), OP.stickLong.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Bolt        .get(0), OP.bolt.mat(aMat, 64));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Shovel      .get(0), OP.toolHeadRawShovel.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Sword       .get(0), OP.toolHeadRawSword.mat(aMat, 4));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Hoe         .get(0), OP.toolHeadRawHoe.mat(aMat, 4));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(aMat, 3));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Axe         .get(0), OP.toolHeadRawAxe.mat(aMat, 3));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Gear        .get(0), OP.gearGt.mat(aMat, 2));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Gear_Small  .get(0), OP.gearGtSmall.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Hammer      .get(0), OP.toolHeadHammer.mat(aMat, 1));
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Plate       .get(0), OP.plate.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Rod         .get(0), OP.stick.mat(aMat, 18));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Rod_Long    .get(0), OP.stickLong.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Bolt        .get(0), OP.bolt.mat(aMat, 64));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Shovel      .get(0), OP.toolHeadRawShovel.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Sword       .get(0), OP.toolHeadRawSword.mat(aMat, 4));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hoe         .get(0), OP.toolHeadRawHoe.mat(aMat, 4));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Pickaxe     .get(0), OP.toolHeadRawPickaxe.mat(aMat, 3));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Axe         .get(0), OP.toolHeadRawAxe.mat(aMat, 3));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Gear        .get(0), OP.gearGt.mat(aMat, 2));
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Gear_Small  .get(0), OP.gearGtSmall.mat(aMat, 9));
-			RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hammer      .get(0), OP.toolHeadHammer.mat(aMat, 1));
+		for (ItemStack tStack : ST.array(aStone, aCobble, aSmooth, aDustBlock)) if (ST.valid(tStack)) {
+			if (aMat != null) {
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Plate.get(0), OP.plate.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Rod.get(0), OP.stick.mat(aMat, 18));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Rod_Long.get(0), OP.stickLong.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Bolt.get(0), OP.bolt.mat(aMat, 64));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Shovel.get(0), OP.toolHeadRawShovel.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Sword.get(0), OP.toolHeadRawSword.mat(aMat, 4));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Hoe.get(0), OP.toolHeadRawHoe.mat(aMat, 4));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Pickaxe.get(0), OP.toolHeadRawPickaxe.mat(aMat, 3));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Axe.get(0), OP.toolHeadRawAxe.mat(aMat, 3));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Gear.get(0), OP.gearGt.mat(aMat, 2));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Gear_Small.get(0), OP.gearGtSmall.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_Extruder_Hammer.get(0), OP.toolHeadHammer.mat(aMat, 1));
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Plate.get(0), OP.plate.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Plate_Curved.get(0), OP.plateCurved.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Rod.get(0), OP.stick.mat(aMat, 18));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Rod_Long.get(0), OP.stickLong.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Bolt.get(0), OP.bolt.mat(aMat, 64));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Shovel.get(0), OP.toolHeadRawShovel.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Sword.get(0), OP.toolHeadRawSword.mat(aMat, 4));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hoe.get(0), OP.toolHeadRawHoe.mat(aMat, 4));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Pickaxe.get(0), OP.toolHeadRawPickaxe.mat(aMat, 3));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Axe.get(0), OP.toolHeadRawAxe.mat(aMat, 3));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Gear.get(0), OP.gearGt.mat(aMat, 2));
+			RM.Extruder.addRecipe2(F, F, F, F, T, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Gear_Small.get(0), OP.gearGtSmall.mat(aMat, 9));
+			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hammer.get(0), OP.toolHeadHammer.mat(aMat, 1));
+			}
 			
 			if (ST.valid(aStone)) {
 			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block       .get(0), aStone);
@@ -429,15 +444,15 @@ public class RM {
 		if (ST.valid(aStone)) {
 			RM.generify(aStone, ST.make(Blocks.stone, 1, 0));
 			
-			if (aIsMatTarget) {
-				RM.add_smelting(OP.blockDust.mat(aMat, 1), aStone, F, F, F);
+			if (aIsMatTarget && ST.valid(aDustBlock)) {
+				RM.add_smelting(aDustBlock, aStone, F, F, F);
 			}
 			if (ST.valid(aCobble)) {
 				RM.Hammer       .addRecipe1(T, 16, 16, aStone, aCobble);
 				RM.Crusher      .addRecipe1(T, 16, 16, aStone, aCobble);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aStone, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aStone, OP.rockGt.mat(aMat, 4));
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aStone, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aStone, aFourRocks);
 			}
 			if (ST.valid(aBricks)) {
 				CR.shaped(ST.amount(4, aBricks), CR.DEF_REM, "XX", "XX", 'X', aStone );
@@ -458,10 +473,11 @@ public class RM {
 		
 		if (ST.valid(aCobble)) {
 			RM.generify(aCobble, ST.make(Blocks.cobblestone, 1, 0));
-			RM.Hammer       .addRecipe1(T, 16, 16,  8000, aCobble, OP.rockGt.mat(aMat, 4));
-			RM.Crusher      .addRecipe1(T, 16, 16       , aCobble, OP.rockGt.mat(aMat, 4));
-			
-			if (aIsMatTarget) {
+			if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16,  8000, aCobble, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16       , aCobble, aFourRocks);
+			}
+			if (aIsMatTarget && aMat != null) {
 				RM.pack(OP.rockGt.mat(aMat, 4), aCobble);
 				CR.shaped(aCobble, CR.DEF_NCC, "BB", "BB", 'B', OP.rockGt.dat(aMat));
 			}
@@ -493,11 +509,11 @@ public class RM {
 				RM.Crusher      .addRecipe1(T, 16, 16, aBricks, aCobble);
 				CR.shaped(aCobble, CR.DEF_REM, "h" , "X" , 'X', aBricks);
 				CR.shaped(aCobble, CR.DEF_REM, "y" , "X" , 'X', aBricks);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aBricks, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aBricks, OP.rockGt.mat(aMat, 4));
-				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "h" , "X" , 'X', aBricks);
-				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "y" , "X" , 'X', aBricks);
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aBricks, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aBricks, aFourRocks);
+				CR.shaped(aFourRocks, CR.DEF_REM, "h" , "X" , 'X', aBricks);
+				CR.shaped(aFourRocks, CR.DEF_REM, "y" , "X" , 'X', aBricks);
 			}
 			if (ST.valid(aBricks2)) {
 				CR.shaped(ST.amount(4, aBricks2), CR.DEF_REM, "XX", "XX", 'X', aBricks);
@@ -507,8 +523,10 @@ public class RM {
 		if (ST.valid(aCracked)) {
 			CR.remout(aCracked);
 			RM.generify(aCracked, ST.make(Blocks.stonebrick, 1, 2));
-			RM.Hammer       .addRecipe1(T, 16, 16,  7000, aCracked, OP.rockGt.mat(aMat, 4));
 			
+			if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16,  7000, aCracked, aFourRocks);
+			}
 			if (ST.valid(aStone)) {
 				RM.add_smelting(aCracked, aStone, T, F, F);
 			} else if (ST.valid(aSmooth)) {
@@ -516,8 +534,8 @@ public class RM {
 			}
 			if (ST.valid(aCobble)) {
 				RM.Crusher      .addRecipe1(T, 16, 16, aCracked, aCobble);
-			} else {
-				RM.Crusher      .addRecipe1(T, 16, 16, aCracked, OP.rockGt.mat(aMat, 4));
+			} else if (ST.valid(aFourRocks)) {
+				RM.Crusher      .addRecipe1(T, 16, 16, aCracked, aFourRocks);
 			}
 		}
 		
@@ -533,9 +551,9 @@ public class RM {
 			if (ST.valid(aCobble)) {
 				RM.Hammer       .addRecipe1(T, 16, 16, aChiseled, aCobble);
 				RM.Crusher      .addRecipe1(T, 16, 16, aChiseled, aCobble);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aChiseled, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aChiseled, OP.rockGt.mat(aMat, 4));
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aChiseled, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aChiseled, aFourRocks);
 			}
 		}
 		
@@ -545,15 +563,15 @@ public class RM {
 			
 			if (ST.valid(aStone)) {
 				RM.add_smelting(aSmooth, aStone, T, F, F);
-			} else if (aIsMatTarget) {
-				RM.add_smelting(OP.blockDust.mat(aMat, 1), aSmooth, T, F, F);
+			} else if (aIsMatTarget && ST.valid(aDustBlock)) {
+				RM.add_smelting(aDustBlock, aSmooth, T, F, F);
 			}
 			if (ST.valid(aCobble)) {
 				RM.Hammer       .addRecipe1(T, 16, 16, aSmooth, aCobble);
 				RM.Crusher      .addRecipe1(T, 16, 16, aSmooth, aCobble);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aSmooth, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aSmooth, OP.rockGt.mat(aMat, 4));
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aSmooth, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aSmooth, aFourRocks);
 			}
 			if (ST.valid(aBricks)) {
 				CR.shaped(ST.amount(4, aBricks), CR.DEF_REM, "XX", "XX", 'X', aSmooth);
@@ -584,9 +602,9 @@ public class RM {
 			} else if (ST.valid(aCobble)) {
 				RM.Hammer       .addRecipe1(T, 16, 16, aTiles, aCobble);
 				RM.Crusher      .addRecipe1(T, 16, 16, aTiles, aCobble);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aTiles, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aTiles, OP.rockGt.mat(aMat, 4));
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aTiles, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aTiles, aFourRocks);
 			}
 		}
 		
@@ -614,11 +632,11 @@ public class RM {
 				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, aCobble);
 				CR.shaped(aCobble, CR.DEF_REM, "h" , "X" , 'X', aBricks2);
 				CR.shaped(aCobble, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
-			} else {
-				RM.Hammer       .addRecipe1(T, 16, 16, aBricks2, OP.rockGt.mat(aMat, 4));
-				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, OP.rockGt.mat(aMat, 4));
-				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "h" , "X" , 'X', aBricks2);
-				CR.shaped(OP.rockGt.mat(aMat, 4), CR.DEF_REM, "y" , "X" , 'X', aBricks2);
+			} else if (ST.valid(aFourRocks)) {
+				RM.Hammer       .addRecipe1(T, 16, 16, aBricks2, aFourRocks);
+				RM.Crusher      .addRecipe1(T, 16, 16, aBricks2, aFourRocks);
+				CR.shaped(aFourRocks, CR.DEF_REM, "h" , "X" , 'X', aBricks2);
+				CR.shaped(aFourRocks, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
 			}
 		}
 		return T;

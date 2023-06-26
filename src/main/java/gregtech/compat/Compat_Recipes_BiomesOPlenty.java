@@ -66,9 +66,9 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		CR.shapeless(OP.dust.mat(MT.White, 1), DEF, new Object[] {IL.BoP_Bone_Small});
 		CR.shapeless(OP.dust.mat(MT.White, 2), DEF, new Object[] {IL.BoP_Bone_Medium});
 		CR.shapeless(OP.dust.mat(MT.White, 4), DEF, new Object[] {IL.BoP_Bone_Large});
-		RM.Mortar       .addRecipe1(T, 16, 16, IL.BoP_Bone_Small.get(1), IL.Dye_Bonemeal.get(2));
-		RM.Mortar       .addRecipe1(T, 16, 32, IL.BoP_Bone_Medium.get(1), IL.Dye_Bonemeal.get(4));
-		RM.Mortar       .addRecipe1(T, 16, 64, IL.BoP_Bone_Large.get(1), IL.Dye_Bonemeal.get(8));
+		RM.mortarize(2, IL.BoP_Bone_Small.get(1), IL.Dye_Bonemeal.get(2));
+		RM.mortarize(4, IL.BoP_Bone_Medium.get(1), IL.Dye_Bonemeal.get(4));
+		RM.mortarize(8, IL.BoP_Bone_Large.get(1), IL.Dye_Bonemeal.get(8));
 		
 		RM.smash(IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
 		RM.Squeezer     .addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);
@@ -85,15 +85,14 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.Juicer       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 0), OM.dust(MT.WaxBee, U*4));
 		RM.Juicer       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 2), OM.dust(MT.WaxBee, U*4));
 		RM.Juicer       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 3), NF, FL.Honey.make(360), OM.dust(MT.WaxBee, U*4));
-		RM.Mortar       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 0), OM.dust(MT.WaxBee, U*4));
-		RM.Mortar       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 2), OM.dust(MT.WaxBee, U*4));
-		RM.Mortar       .addRecipe1(T, 16, 256, ST.make(MD.BoP, "hive", 1, 3), OM.dust(MT.WaxBee, U*4));
-		
+		RM.mortarize(4, ST.make(MD.BoP, "hive", 1, 0), OM.dust(MT.WaxBee, U*4));
+		RM.mortarize(4, ST.make(MD.BoP, "hive", 1, 2), OM.dust(MT.WaxBee, U*4));
+		RM.mortarize(4, ST.make(MD.BoP, "hive", 1, 3), OM.dust(MT.WaxBee, U*4));
 		RM.unpack(ST.make(MD.BoP, "hive", 1, 0), IL.BoP_Comb.get(4));
 		RM.unpack(ST.make(MD.BoP, "hive", 1, 2), IL.BoP_Comb.get(4));
 		RM.unpack(ST.make(MD.BoP, "hive", 1, 3), IL.BoP_HoneyComb.get(4));
 		
-		RM.Shredder.addRecipe1(T, 16, 16, ST.make(MD.BoP, "mushrooms"   , 1, 0), IL.BoP_ShroomPowder.get(2));
+		RM.mortarize(ST.make(MD.BoP, "mushrooms", 1, 0), IL.BoP_ShroomPowder.get(2));
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BoP, "mushrooms"   , 1, 0), IL.BoP_ShroomPowder.get(2));
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BoP, "mushrooms"   , 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], IL.BoP_Dye_Blue.get(1));
@@ -156,8 +155,39 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BoP, "flowers2"      , 1, 8), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ST.make(Items.dye, 1, DYE_INDEX_Red));
 		
 		
+		RM.stonetypes(MT.STONES.Limestone, F, OP.rockGt.mat(MT.STONES.Limestone, 4), OP.blockDust.mat(MT.STONES.Limestone, 1)
+		, ST.make(MD.BoP, "rocks", 1, 0)
+		, NI
+		, NI
+		, NI
+		, NI
+		, ST.make(MD.BoP, "rocks", 1, 1)
+		, NI
+		, NI
+		);
 		
-		RM.mortarize(ST.make(MD.BoP, "mushrooms", 1, 0), IL.BoP_ShroomPowder.get(2));
+		RM.stonetypes(MT.STONES.Siltstone, F, OP.rockGt.mat(MT.STONES.Siltstone, 4), OP.blockDust.mat(MT.STONES.Siltstone, 1)
+		, ST.make(MD.BoP, "rocks", 1, 2)
+		, NI
+		, NI
+		, NI
+		, NI
+		, ST.make(MD.BoP, "rocks", 1, 3)
+		, NI
+		, NI
+		);
+		
+		RM.stonetypes(MT.STONES.Shale, F, OP.rockGt.mat(MT.STONES.Shale, 4), OP.blockDust.mat(MT.STONES.Shale, 1)
+		, ST.make(MD.BoP, "rocks", 1, 4)
+		, NI
+		, NI
+		, NI
+		, NI
+		, ST.make(MD.BoP, "rocks", 1, 5)
+		, NI
+		, NI
+		);
+		
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(MD.BoP, "mushrooms"        , 1, 0), IL.BoP_ShroomPowder.get(2));
