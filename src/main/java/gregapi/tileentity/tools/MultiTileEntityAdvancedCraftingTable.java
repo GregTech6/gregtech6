@@ -232,7 +232,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 				if (!slotHas(SLOTS_CRAFTING[0])) slot(SLOTS_CRAFTING[0], ST.amount(0, slot(tDestination)));
 				break;
 			case  8:
-				// Because of the original Furnace Recipe.
+				// Because of the original Furnace and Chest Recipes.
 				if (!slotHas(SLOTS_CRAFTING[8])) slot(SLOTS_CRAFTING[8], ST.amount(0, slot(tDestination)));
 				if (!slotHas(SLOTS_CRAFTING[7])) slot(SLOTS_CRAFTING[7], ST.amount(0, slot(tDestination)));
 				if (!slotHas(SLOTS_CRAFTING[6])) slot(SLOTS_CRAFTING[6], ST.amount(0, slot(tDestination)));
@@ -251,7 +251,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 				if (!slotHas(SLOTS_CRAFTING[0])) slot(SLOTS_CRAFTING[0], ST.amount(0, slot(tDestination)));
 				break;
 			case  6:
-				// 3x2 because of the original  Wall and Trapdoor Recipes.
+				// 3x2 because of the original Wall and Trapdoor Recipes.
 				if (!slotHas(SLOTS_CRAFTING[5])) slot(SLOTS_CRAFTING[5], ST.amount(0, slot(tDestination)));
 				if (!slotHas(SLOTS_CRAFTING[4])) slot(SLOTS_CRAFTING[4], ST.amount(0, slot(tDestination)));
 				if (!slotHas(SLOTS_CRAFTING[2])) slot(SLOTS_CRAFTING[2], ST.amount(0, slot(tDestination)));

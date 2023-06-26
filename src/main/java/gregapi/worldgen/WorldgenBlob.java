@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregapi.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -33,6 +26,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
@@ -48,7 +49,7 @@ public abstract class WorldgenBlob extends WorldgenObject {
 		super(aName, aDefault, aLists);
 		mBlock          = aBlock==null?Blocks.cobblestone:aBlock;
 		mBlockMeta      = UT.Code.bind4(aBlockMeta);
-		mProbability    =                           getConfigFile().get(mCategory, "Probability"   , aProbability);
+		mProbability    = Math.max(1,               getConfigFile().get(mCategory, "Probability"   , aProbability));
 		mAmount         = (int)UT.Code.bind(1,  16, getConfigFile().get(mCategory, "Amount"        , aAmount));
 		mSize           = (int)UT.Code.bind(4, 250, getConfigFile().get(mCategory, "Size"          , aSize));
 		mMinY           =                           getConfigFile().get(mCategory, "MinHeight"     , aMinY);
@@ -64,7 +65,7 @@ public abstract class WorldgenBlob extends WorldgenObject {
 			for (String tName : aBiomeNames) if (mBiomeList.contains(tName)) {temp = F; break;}
 			if (temp) return F;
 		}
-		if (mProbability <= 1 || aRandom.nextInt(mProbability) == 0) {
+		if (aRandom.nextInt(mProbability) == 0) {
 			for (int i = 0; i < mAmount; i++) {
 				int tX = aMinX + aRandom.nextInt(16), tY = mMinY + aRandom.nextInt(mMaxY - mMinY), tZ = aMinZ + aRandom.nextInt(16);
 				if (mAllowToGenerateinVoid || !aWorld.getBlock(tX, tY, tZ).isAir(aWorld, tX, tY, tZ)) {
