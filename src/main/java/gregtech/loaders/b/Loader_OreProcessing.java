@@ -293,7 +293,7 @@ public class Loader_OreProcessing implements Runnable {
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (aEvent.mMaterial == MT.Oilsands) {
-				RM.Centrifuge.addRecipe1(T, 16, UT.Code.units(aEvent.mPrefix.mWeight, U, 64, T), aEvent.mStack, NF, FL.Oil_Normal.make(UT.Code.units(aEvent.mPrefix.mWeight, U, 250, T)), OM.dust(MT.Sand, aEvent.mPrefix.mWeight * 2));
+				RM.Centrifuge.addRecipe1(T, 16, UT.Code.units(aEvent.mPrefix.mWeight, U, 64, T), aEvent.mStack, NF, FL.Oil_Normal.make(UT.Code.units(aEvent.mPrefix.mWeight, U, 250, T)), OM.dust(MT.Sand, aEvent.mPrefix.mWeight * 2), OM.dust(aEvent.mPrefix.byproduct(0)), OM.dust(aEvent.mPrefix.byproduct(1)), OM.dust(aEvent.mPrefix.byproduct(2)), OM.dust(aEvent.mPrefix.byproduct(3)), OM.dust(aEvent.mPrefix.byproduct(4)));
 			} else {
 				registerStandardOreRecipes(aEvent.mPrefix, aEvent.mMaterial, aEvent.mStack, aEvent.mMaterial.mOreProcessingMultiplier * (aEvent.mPrefix.contains(TD.Prefix.DENSE_ORE)?2:1));
 			}

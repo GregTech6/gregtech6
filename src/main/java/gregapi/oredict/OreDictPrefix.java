@@ -454,6 +454,10 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		return OreDictManager.INSTANCE.getStack(this, aMaterial, aReplacement, aStackSize);
 	}
 	
+	public OreDictMaterialStack byproduct(int aIndex) {
+		return aIndex < mByProducts.size() ? mByProducts.get(aIndex) : null;
+	}
+	
 	@Override
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (aEvent.mMaterial == MT.NULL) {
