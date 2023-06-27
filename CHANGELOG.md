@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics and Twilight FOrest now have better Stone Type Support, and also some minor Recipe fixes.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
+[FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
