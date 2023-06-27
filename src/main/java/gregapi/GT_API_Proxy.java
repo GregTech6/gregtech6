@@ -505,13 +505,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		tY = UT.Code.roundDown(aEvent.entityLiving.posY + aEvent.entityLiving.getEyeHeight()),
 		tZ = UT.Code.roundDown(aEvent.entityLiving.posZ);
 		
+		if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) {
+			if (IL.EtFu_Path.equal(aEvent.entityLiving.worldObj.getBlock(tX+i, tY, tZ+j))) aEvent.entityLiving.worldObj.setBlock(tX+i, tY, tZ+j, BlocksGT.Paths, 0, 2);
+		}
+		
 		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 		if (tBlock instanceof IBlockOnHeadInside) ((IBlockOnHeadInside)tBlock).onHeadInside(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		
 		if (aEvent.entityLiving.onGround) {
 			tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
-			if (IL.EtFu_Path.equal(tBlock) && BlocksGT.Paths != null && aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, BlocksGT.Paths, 0, 2)) tBlock = BlocksGT.Paths;
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		}
 	}
