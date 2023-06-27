@@ -90,7 +90,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		
 		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));
 		
-		RM.stonetypes(MT.STONES.Mazerock, T, OP.rockGt.mat(MT.STONES.Mazerock, 4), OP.blockDust.mat(MT.STONES.Mazerock, 1)
+		RM.stonetypes(MT.STONES.Mazestone, T, OP.rockGt.mat(MT.STONES.Mazestone, 4), OP.blockDust.mat(MT.STONES.Mazestone, 1)
 		, ST.make(MD.TF, "tile.TFMazestone", 1, 0)
 		, NI
 		, ST.make(MD.TF, "tile.TFMazestone", 1, 1)

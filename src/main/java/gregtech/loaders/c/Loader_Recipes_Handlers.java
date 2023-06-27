@@ -658,19 +658,35 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		}
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U4, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
+		
+		
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricSteel          , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameSteel      , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricSteel          , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.MeteoflameSteel      , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricBlackSteel     , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameBlackSteel , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricBlackSteel     , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.MeteoflameBlackSteel , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricBlueSteel      , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameBlueSteel  , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricBlueSteel      , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.MeteoflameBlueSteel  , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricRedSteel       , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameRedSteel   , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricRedSteel       , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.MeteoflameRedSteel   , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.DamascusSteel          , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.FlamascusSteel       , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.DamascusSteel          , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.FlamascusSteel       , NI, T, tConditionP));
+		
+		
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) {
 		RM.Freezer      .add(new RecipeMapHandlerMaterial(tMat                      , NF                                , 128, 144, NF, MT.FrozenIron           , NI, T, tConditionP));
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(tMat                      , NF                                ,  16, 144, NF, MT.IronMagnetic         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , MT.Au             .liquid(U9, T)  ,   0, 144, NF, MT.GildedIron           , NI, T, tConditionP));
+		if (tMat != MT.MeteoricSteel) {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
-		}
+		}}
 		for (OreDictMaterial tMat : ANY.Steel.mToThis) {
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(tMat                      , NF                                ,  16, 144, NF, MT.SteelMagnetic        , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , MT.Zn             .liquid(U9, T)  ,   0, 144, NF, MT.SteelGalvanized      , NI, T, tConditionP));
+		if (tMat != MT.MeteoricSteel) {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
-		}
+		}}
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis) {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , MT.Netherite      .liquid(U4, T)  ,   0, 144, NF, MT.NetherizedDiamond    , NI, T, tConditionP));
 		}

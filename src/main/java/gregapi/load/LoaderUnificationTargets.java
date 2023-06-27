@@ -479,7 +479,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Manasteel              , MD.TCFM, "FMResource", 2);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.ElvenElementium        , MD.TCFM, "FMResource", 4);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.NetherStar             , MD.TCFM, "StarBlock", 0);
-		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Mazerock        , MD.TF, "tile.TFMazestone", 2);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Mazestone       , MD.TF, "tile.TFMazestone", 2);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.FierySteel             , MD.TF, "item.fieryIngot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Knightmetal            , MD.TF, "item.knightMetal", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Steeleaf               , MD.TF, "item.steeleafIngot", 0);

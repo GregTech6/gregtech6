@@ -490,6 +490,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 27));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 38));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BoP, "moss", 1, 0));
+		OM.reg(OD.itemMoss                          , ST.make(MD.TF, "TFPlant", 1, 3));
 		OM.reg(OD.blockGlass                        , ST.make(Blocks.stained_glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(Blocks.glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(MD.CHSL, "glass", 1, W));
@@ -1116,14 +1117,14 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		if (MD.TF.mLoaded) {
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 0));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 1));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 2));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 3));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 4));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 5));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 6));
-			OM.reg(OP.stone, MT.STONES.Mazerock                 , ST.make(MD.TF, "tile.TFMazestone"           , 1, 7));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 4));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 5));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 6));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 7));
 			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 1));
 			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 2));

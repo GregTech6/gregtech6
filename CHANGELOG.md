@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Drain Covers can now partially drain GT Fluids.
 [ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
 [ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
+[ADDED] Meteoric Steels and Damascus Steel can now be upgraded with Twilight Forests Fiery Blood and Fiery Tears for more Tool Quality, Mazebreaking, Fire Aspect and Autosmelt.
 
 
 6.16.01:
