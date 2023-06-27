@@ -700,6 +700,9 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Redstonia              , NF                                ,   0,   1, NF, MT.Redstone             , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Palis                  , NF                                ,   0,   1, NF, MT.Lapis                , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.VoidCrystal            , NF                                ,   0,   1, NF, MT.Coal                 , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Chimerite              , NF                                ,   0,   1, NF, MT.Vinteum              , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.BlueTopaz              , NF                                ,   0,   1, NF, MT.Topaz                , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Zanite                 , NF                                ,   0,   1, NF, MT.Tanzanite            , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.AnnealedCopper         , NF                                ,   0,   1, NF, MT.Cu                   , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.NeodymiumMagnetic      , NF                                ,   0,   1, NF, MT.Nd                   , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.AstralSilver           , NF                                ,   0,   1, NF, MT.Ag                   , NI, T, tConditionP));
@@ -707,13 +710,17 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Mithril                , NF                                ,   0,   1, NF, MT.Pt                   , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.TungstenSintered       , NF                                ,   0,   1, NF, MT.W                    , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Aredrite               , NF                                ,   0,   1, NF, MT.Ardite               , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Chimerite              , NF                                ,   0,   1, NF, MT.Vinteum              , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.BlueTopaz              , NF                                ,   0,   1, NF, MT.Topaz                , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Zanite                 , NF                                ,   0,   1, NF, MT.Tanzanite            , NI, T, tConditionP));
-		
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoricBlackSteel     , NF                                ,   0,   1, NF, MT.BlackSteel           , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoricBlueSteel      , NF                                ,   0,   1, NF, MT.BlueSteel            , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoricRedSteel       , NF                                ,   0,   1, NF, MT.RedSteel             , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameBlackSteel   , NF                                ,   0,   1, NF, MT.MeteoricBlackSteel   , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameBlueSteel    , NF                                ,   0,   1, NF, MT.MeteoricBlueSteel    , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameRedSteel     , NF                                ,   0,   1, NF, MT.MeteoricRedSteel     , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameSteel        , NF                                ,   0,   1, NF, MT.MeteoricSteel        , NI, T, tConditionP));
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.FlamascusSteel         , NF                                ,   0,   1, NF, MT.DamascusSteel        , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Fe                   , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal, MT.FierySteel})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Steel                , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.STONES.Betweenstone, MT.STONES.Pitstone, MT.STONES.Umber, MT.STONES.Diorite, MT.STONES.Redrock, MT.STONES.GraniteBlack, MT.STONES.GraniteRed, MT.STONES.Granite, MT.STONES.Limestone, MT.STONES.Marble, MT.STONES.Basalt, MT.STONES.Gabbro, MT.Concrete, MT.STONES.Eclogite, MT.STONES.Shale, MT.STONES.Andesite, MT.STONES.Dacite, MT.STONES.Chert, MT.STONES.Blueschist, MT.Epidote, MT.STONES.Migmatite, MT.STONES.Quartzite, MT.STONES.Gneiss, MT.STONES.Greenschist, MT.STONES.Greywacke, MT.STONES.Komatiite, MT.STONES.Kimberlite, MT.STONES.Siltstone, MT.STONES.Rhyolite, MT.STONES.MoonRock, MT.STONES.MoonTurf, MT.STONES.MarsRock, MT.STONES.MarsSand, MT.STONES.SpaceRock, MT.STONES.Livingrock, MT.STONES.Deadrock, MT.STONES.Holystone})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Stone                , NI, T, tConditionP));
