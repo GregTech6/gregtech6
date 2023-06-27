@@ -558,7 +558,7 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("plate"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Plank";
 		}
 		if (aMaterial.contains(TD.Properties.STONE)) {
-			if (aPrefix == OP.rockGt)                                               return aMaterial.mNameLocal + " Rock";
+			if (aPrefix == OP.rockGt)                                               return aMaterial.mNameLocal.endsWith("rock") ? (aMaterial.mNameLocal+" §§§").replaceFirst("rock §§§", " Rock") : aMaterial.mNameLocal + " Rock";
 			if (aPrefix == OP.scrapGt)                                              return aMaterial.mNameLocal + " Pebbles";
 		}
 		if (aMaterial.mID > 0 && aMaterial.mID <= 830 && aMaterial.mID % 10 == 0 && aMaterial.mMeltingPoint > C && aMaterial.mTargetCrushing.mMaterial == aMaterial && aMaterial.contains(TD.Processing.SMITHABLE)) {
