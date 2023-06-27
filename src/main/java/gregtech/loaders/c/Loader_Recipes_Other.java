@@ -213,6 +213,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.MilkyQuartz , 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.MilkyQuartz , 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
 		
+		RM.Mixer        .addRecipeX(T, 16,  144, ST.array(OM.dust(MT.Olivine, U*2), OM.dust(MT.RareEarth), OM.dust(MT.MeteoricIron), OM.dust(MT.Obsidian, U*5)), OP.dust.mat(MT.STONES.SkyStone, 9));
+		
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.ConstructionFoam), FL.mul(tWater, 1,10, T), FL.CFoam.make(100), ZL_IS);
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tSand : ANY.SiO2.mToThis) {

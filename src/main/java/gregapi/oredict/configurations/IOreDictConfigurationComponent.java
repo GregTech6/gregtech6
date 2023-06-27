@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,7 +40,7 @@ public interface IOreDictConfigurationComponent {
 	public ArrayListNoNulls<OreDictMaterialStack> getUndividedComponents();
 	
 	/**
-	 * @return a Number which can, when multiplied with the Material Amounts inside the List, give only whole Amounts of Material.
+	 * @return a Number which can, when multiplied with the Material Amounts inside the List, give only whole Amounts of Material. Do not return zero or negative Values.
 	 */
 	public long getCommonDivider();
 }

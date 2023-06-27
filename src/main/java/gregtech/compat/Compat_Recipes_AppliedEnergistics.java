@@ -112,6 +112,9 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		RM.smash(ST.make(MD.AE, "tile.FluixSlabBlock"           , 1, W), OP.gem.mat(MT.Fluix, 2));
 		
 		
+		RM.mortarize( 18, ST.make(MD.AE, "tile.BlockSkyStone", 1, W), OP.blockDust.mat(MT.STONES.SkyStone, 1));
+		RM.mortarize(144, ST.make(MD.AE, "tile.BlockSkyChest", 1, W), OP.blockDust.mat(MT.STONES.SkyStone, 8));
+		
 		RM.stonetypes(MT.STONES.SkyStone, T, OP.rockGt.mat(MT.STONES.SkyStone, 4), OP.blockDust.mat(MT.STONES.SkyStone, 1)
 		, RM.stoneshapes(MT.STONES.SkyStone, F, ST.make(MD.AE, "tile.BlockSkyStone", 1, 0), ST.make(MD.AE, "tile.SkyStoneStairBlock"          , 1, 0), ST.make(MD.AE, "tile.SkyStoneSlabBlock"          , 1, 0), NI, NI)
 		, NI
@@ -122,14 +125,6 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		, NI
 		, RM.stoneshapes(MT.STONES.SkyStone, F, ST.make(MD.AE, "tile.BlockSkyStone", 1, 3), ST.make(MD.AE, "tile.SkyStoneSmallBrickStairBlock", 1, 0), ST.make(MD.AE, "tile.SkyStoneSmallBrickSlabBlock", 1, 0), NI, NI)
 		);
-		
-		RM.mortarize( 18, ST.make(MD.AE, "tile.BlockSkyStone", 1, W), OP.blockDust.mat(MT.STONES.SkyStone, 1));
-		RM.mortarize(144, ST.make(MD.AE, "tile.BlockSkyChest", 1, W), OP.blockDust.mat(MT.STONES.SkyStone, 8));
-		
-		// TODO
-		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Olivine), OM.dust(MT.RareEarth), OM.dust(MT.STONES.Basalt), OM.dust(MT.Obsidian)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
-		RM.Centrifuge   .addRecipe1(T, 64,   16, new long[] {2000, 2000, 2000, 2000, 2000, 2000}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45), OP.dustSmall.mat(MT.OREMATS.BasalticMineralSand, 1), OP.dustSmall.mat(MT.Olivine, 1), OP.dustSmall.mat(MT.Obsidian, 1), OP.dustSmall.mat(MT.STONES.Basalt, 1), OP.dustSmall.mat(MT.Flint, 1), OP.dustSmall.mat(MT.RareEarth, 1));
-		
 		
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {

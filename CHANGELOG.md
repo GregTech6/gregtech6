@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
+[ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
 [ADDED] Drain Covers can now partially drain GT Fluids.
 [ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
 [ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
@@ -2976,7 +2977,7 @@ Now Growthcrafts Grape Juice is the Purple one, Binnies old Grape Juices are Red
 Also Purple Grape Juice now turns into Ricardo Sanchez, what is a Wine that is named very similarily to a character in Rick&Morty. I got that Idea, because I literally saw a Bottle of it at home. (because people are gifting random Bottles of Alcohol to others during Holidays, that no one ever drinks, or that just get re-gifted)
 [ADDED]
 It was time that those get a bit updated, so GT6 Dungeons now spawn with the following Stuff:
-Colored Porcellain Cups and Coins in the Barracks and Libraries*, some of the Cups even being filled with a random Drink. (* = only with the Thaumcraft Library Design, Cups in any Library Design always have stretched Night Vision Potions, because that makes total sense, being a place where you need your eyes to read stuff)
+Colored Porcellain Cups and Coins in the Sleeping Area and the Libraries*, some of the Cups even being filled with a random Drink. (* = only with the Thaumcraft Library Design, Cups in any Library Design always have stretched Night Vision Potions, because that makes total sense, being a place where you need your eyes to read stuff)
 A new un-lit Nether Portal Room, similar to the already existing End Portal Room. (Does not always have to generate)
 The Crate Room now also contains Barrels and Drums with useful raw Materials (including Stainless Drums full of different kinds of Raw Oil).
 A Room with a Pool and random Glowtus Pads in it, which can contain up to 4 Chests with the Bonus Chest Loot.
@@ -4015,7 +4016,7 @@ And because that stupid Question came up way too often on Forums and IRC: NO, I 
 [ADDED] Different Icons for different Forestry Letter Sizes in the GT Bookshelf.
 [ADDED] Redstoned Versions of the GT Bricks. (and used them to power the Redstone Lamps in the GT6 Dungeons)
 [ADDED] Spawn Height and Room Density Config for GT6 Dungeons.
-[ADDED] Barracks to the GT6 Dungeons.
+[ADDED] Sleeping Area to the GT6 Dungeons.
 [ADDED] Chests to "T" shaped Corridor Segments. Also improved Corridor placement by optimizing useless Corridors away.
 [ADDED] Surface Entrance, meaning it is visible on Surface now, meaning I can half the chance so it is 5% instead of 10% to be within the currently loaded chunks.
 [ADDED] End Portal Room. This can be turned off in the Config though.
