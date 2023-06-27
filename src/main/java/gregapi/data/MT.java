@@ -2167,11 +2167,6 @@ public class MT {
 			SteelGalvanized         .put(MD.GT);
 			StainlessSteel          .put(MD.GT);
 			TungstenSteel           .put(MD.GT);
-			MeteoflameSteel         .put(MD.GT, MAZEBREAKER).visDefault(FierySteel);
-			MeteoflameBlackSteel    .put(MD.GT, MAZEBREAKER).visDefault(FierySteel);
-			MeteoflameBlueSteel     .put(MD.GT, MAZEBREAKER).visDefault(FierySteel);
-			MeteoflameRedSteel      .put(MD.GT, MAZEBREAKER).visDefault(FierySteel);
-			FlamascusSteel          .put(MD.GT, MAZEBREAKER).visDefault(FierySteel);
 			NiobiumTitanium         .put(MD.GT);
 			Ta4HfC5                 .put(MD.GT);
 			Al2O3                   .put(MD.GT);
@@ -2280,9 +2275,12 @@ public class MT {
 			BlackSteel              .put(MD.TFC);
 			RedSteel                .put(MD.TFC);
 			BlueSteel               .put(MD.TFC);
+			MeteoricBlackSteel      .put(MD.TFC);
+			MeteoricBlueSteel       .put(MD.TFC);
+			MeteoricRedSteel        .put(MD.TFC);
 			
 			
-			STONES.Mazestone.put(MD.TF).visDefault();
+			STONES.Mazestone        .put(MD.TF).visDefault();
 			STONES.Castlerock       .put(MD.TF).visDefault();
 			STONES.Deadrock         .put(MD.TF).visDefault();
 			LiveRoot                .put(MD.TF);
@@ -2290,6 +2288,11 @@ public class MT {
 			Steeleaf                .put(MD.TF);
 			Knightmetal             .put(MD.TF, MAZEBREAKER).visDefault();
 			FierySteel              .put(MD.TF, MAZEBREAKER).visDefault();
+			MeteoflameSteel         .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameBlackSteel    .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameBlueSteel     .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameRedSteel      .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			FlamascusSteel          .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
 			
 			
 			STONES.Umber            .put(MD.ERE).visDefault();
@@ -2541,6 +2544,8 @@ public class MT {
 			BlueTopaz               .put(MD.ARS, COMMON_ORE);
 			
 			
+			MeteoricIron            .put(MD.GC);
+			MeteoricSteel           .put(MD.GC);
 			Desh                    .put(MD.GC, COMMON_ORE);
 			Cheese                  .put(MD.GC, COMMON_ORE);
 			STONES.MoonTurf         .put(MD.GC).visDefault();
@@ -2813,6 +2818,7 @@ public class MT {
 			BlackBronze             .addEnchantmentForWeapons(Enchantment.smite, 2).addEnchantmentForAmmo(Enchantment.smite, 2);
 			RedSteel                .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
 			MeteoricRedSteel        .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
+			MeteoflameRedSteel      .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
 			Au                      .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
 			TitaniumGold            .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
 			Electrum                .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);

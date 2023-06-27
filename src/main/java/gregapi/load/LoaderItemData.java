@@ -490,7 +490,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 27));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 38));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BoP, "moss", 1, 0));
-		OM.reg(OD.itemMoss                          , ST.make(MD.TF, "TFPlant", 1, 3));
+		OM.reg(OD.itemMoss                          , ST.make(MD.TF, "tile.TFPlant", 1, 3));
 		OM.reg(OD.blockGlass                        , ST.make(Blocks.stained_glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(Blocks.glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(MD.CHSL, "glass", 1, W));
