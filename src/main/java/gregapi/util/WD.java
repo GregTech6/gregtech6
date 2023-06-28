@@ -27,6 +27,7 @@ import gregapi.block.IBlockPlacable;
 import gregapi.block.IBlockTileEntity;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.*;
@@ -478,7 +479,7 @@ public class WD {
 	public static byte  meta (long aBitAnd, World        aWorld, int aX, int aY, int aZ, byte aSide) {return meta(aBitAnd, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags) {
-		return set(aWorld, aX, aY, aZ, aBlock, Code.bind4(aMeta), (byte)aFlags, aBlock.isOpaqueCube());
+		return set(aWorld, aX, aY, aZ, aBlock, aMeta, aFlags, aBlock.isOpaqueCube());
 	}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags, boolean aRemoveGrassBelow) {
@@ -498,6 +499,38 @@ public class WD {
 			if (tBlock == Blocks.grass || tBlock == Blocks.mycelium) aChunk.func_150807_a(aX, aY-1, aZ, Blocks.dirt, 0);
 		}
 		return aChunk.func_150807_a(aX, aY, aZ, aBlock, aBlock==NB?0:Code.bind4(aMeta));
+	}
+	
+	public static boolean replace(World aWorld, int aX, int aY, int aZ, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		if (aTargetBlock == null || aReplaceBlock == null) return F;
+		if (aReplaceBlock != block(aWorld, aX, aY, aZ)) return F;
+		if (aReplaceMeta != W && aReplaceMeta != meta(aWorld, aX, aY, aZ)) return F;
+		return aWorld.setBlock(aX, aY, aZ, aTargetBlock, Code.bind4(aTargetMeta), 2);
+	}
+	public static boolean replace(World aWorld, ChunkCoordinates aCoords, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		return replace(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta);
+	}
+	public static boolean replaceAll(World aWorld, int aX, int aY, int aZ, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		return replaceAll(aWorld, new ChunkCoordinates(aX, aY, aZ), aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta);
+	}
+	public static boolean replaceAll(World aWorld, ChunkCoordinates aCoords, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		if (!replace(aWorld, aCoords, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta)) return F;
+		HashSetNoNulls<ChunkCoordinates> tSwap,
+		tDone  = new HashSetNoNulls<>(F, aCoords),
+		tCheck = new HashSetNoNulls<>(F, aCoords),
+		tNext  = new HashSetNoNulls<>();
+		
+		while (!tCheck.isEmpty() && tDone.size() < 32768) {
+			tNext.clear();
+			for (ChunkCoordinates tChecking : tCheck) {
+				if (Math.abs(tChecking.posX - aCoords.posX) < 128 && Math.abs(tChecking.posZ - aCoords.posZ) < 128) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+					ChunkCoordinates tCoords = new ChunkCoordinates(tChecking.posX+i, tChecking.posY+j, tChecking.posZ+k);
+					if (tDone.add(tCoords) && replace(aWorld, tCoords, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta)) tNext.add(tCoords);
+				}
+			}
+			tSwap = tNext; tNext = tCheck; tCheck = tSwap;
+		}
+		return T;
 	}
 	
 	public static boolean sign(World aWorld, int aX, int aY, int aZ, byte aSide, long aFlags, String aLine1, String aLine2, String aLine3, String aLine4) {

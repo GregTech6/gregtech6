@@ -510,8 +510,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 		
-		if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote && IL.EtFu_Path.exists()) for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -1; k <= 1; k++) {
-			if (IL.EtFu_Path.equal(aEvent.entityLiving.worldObj.getBlock(tX+i, tY+k, tZ+j))) aEvent.entityLiving.worldObj.setBlock(tX+i, tY+k, tZ+j, BlocksGT.Paths, 0, 2);
+		if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote) {
+			Block tPath = IL.EtFu_Path.block();
+			if (ST.valid(tPath)) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+				if (tPath == aEvent.entityLiving.worldObj.getBlock(tX+i, tY+k, tZ+j)) WD.replaceAll(aEvent.entityLiving.worldObj, tX+i, tY+k, tZ+j, tPath, W, BlocksGT.Paths, 0);
+			}
 		}
 		
 		if (aEvent.entityLiving.onGround) {
