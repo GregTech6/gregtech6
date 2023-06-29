@@ -130,7 +130,7 @@ public class EnergyCompat {
 		if (aSize > VMAX[3]) {
 			World tWorld = aReceiver.getWorldObj();
 			tWorld.setBlockToAir(aReceiver.xCoord, aReceiver.yCoord, aReceiver.zCoord);
-			tWorld.newExplosion(null, aReceiver.xCoord, aReceiver.yCoord, aReceiver.zCoord, 5, F, T);
+			tWorld.newExplosion(null, aReceiver.xCoord+0.5, aReceiver.yCoord+0.5, aReceiver.zCoord+0.5, 5, F, T);
 			return T;
 		}
 		return F;
@@ -225,13 +225,13 @@ public class EnergyCompat {
 				TileEntity tReceiver = (aReceiver instanceof ic2.api.energy.tile.IEnergyTile || ic2.api.energy.EnergyNet.instance == null ? aReceiver : ic2.api.energy.EnergyNet.instance.getTileEntity(aReceiver.getWorldObj(), aReceiver.xCoord, aReceiver.yCoord, aReceiver.zCoord));
 				if (tReceiver instanceof ic2.api.energy.tile.IEnergySink && ((ic2.api.energy.tile.IEnergySink)tReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSide])) {
 					long rUsedAmount = 0;
-					while (aAmount > rUsedAmount && ((ic2.api.energy.tile.IEnergySink)tReceiver).getDemandedEnergy() >= aSize && ((ic2.api.energy.tile.IEnergySink)tReceiver).injectEnergy(FORGE_DIR[aSide], aSize, aSize) < aSize) rUsedAmount++;
+					while (aAmount > rUsedAmount && ((ic2.api.energy.tile.IEnergySink)tReceiver).getDemandedEnergy() >= (rUsedAmount <= 0 && aSize <= VMAX[0] ? 4 : aSize) && ((ic2.api.energy.tile.IEnergySink)tReceiver).injectEnergy(FORGE_DIR[aSide], aSize, aSize) < aSize) rUsedAmount++;
 					if (rUsedAmount > 0) {
 						int tTier = ((ic2.api.energy.tile.IEnergySink)tReceiver).getSinkTier();
 						if (tTier >= 0 && tTier < VMAX.length-1 && aSize > VMAX[tTier]) {
 							World tWorld = tReceiver.getWorldObj();
 							tWorld.setBlockToAir(tReceiver.xCoord, tReceiver.yCoord, tReceiver.zCoord);
-							tWorld.newExplosion(null, tReceiver.xCoord, tReceiver.yCoord, tReceiver.zCoord, tTier+1, F, T);
+							tWorld.newExplosion(null, tReceiver.xCoord+0.5, tReceiver.yCoord+0.5, tReceiver.zCoord+0.5, tTier+1, F, T);
 							return aAmount;
 						}
 					}
