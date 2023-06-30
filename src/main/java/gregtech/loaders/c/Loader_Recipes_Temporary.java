@@ -77,6 +77,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 		}
 		
 		
+		if (MD.OB.mLoaded) {
+			// That thing lags like hell and does not even help remove Water properly.
+			CR.delate(MD.OB, "sponge");
+		}
+		
+		
 		if (MD.BbLC.mLoaded) {
 			CR.delate(MD.BbLC, "item.BiblioClipboard");
 			CR.shaped(ST.make(MD.BbLC, "item.BiblioClipboard", 1, 0), DEF_REV_NCC, "I F", "PPP", " W ", 'F', OD.craftingFeather, 'W', OD.pressurePlateWood, 'P', OD.paperEmpty, 'I', DYE_OREDICTS[DYE_INDEX_Black]);
@@ -664,6 +670,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify   (FL.Water_Geothermal        .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Water_Boiling           .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Water_Hot               .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Hot_Water               .make( 1), FL.Water.make(1));
+		RM.generify   (FL.Cold_Water              .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Soda                    .make( 1), FL.Water.make(1));
 		RM.generify   (FL.Mineralsoda             .make( 1), FL.Water.make(1));
 		RM.generify   (FL.MnWtr                   .make( 1), FL.Water.make(1));

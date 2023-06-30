@@ -281,6 +281,8 @@ public class Loader_Recipes_Food implements Runnable {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			if (FL.Water_Hot.exists())
 			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			if (FL.Hot_Water.exists())
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Hot_Water       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			if (FL.Water_Boiling.exists())
 			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Boiling   .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
 			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Geothermal.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));

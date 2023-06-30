@@ -1125,6 +1125,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Diamond                , MD.ELN, "Eln.sharedItem",  580);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Rubber                 , MD.ELN, "Eln.sharedItem", 4097);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , MD.ELN, "Eln.sharedItem", 4420);
+		OreDictManager.INSTANCE.setTarget(OP.plateQuadruple , MT.Coal                   , MD.ELN, "Eln.sharedItem", 7692);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Si                     , MD.ELN, "Eln.sharedItem", 7697);
 		OreDictManager.INSTANCE.setTarget(OP.plateDouble    , MT.Paper                  , MD.BTRS, "cardboardSheet", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Netherite              , MD.NePl, "NetheriteIngot", 0);

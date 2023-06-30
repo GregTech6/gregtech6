@@ -308,7 +308,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(tWater                         ), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F)));
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Water_Geothermal.make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F))); if (FL.Water_Boiling.exists())
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Water_Boiling   .make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F))); if (FL.Water_Hot.exists())
-		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Water_Hot       .make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F)));
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Water_Hot       .make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F))); if (FL.Hot_Water.exists())
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Hot_Water       .make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F))); if (FL.Cold_Water.exists())
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Cold_Water      .make( 3000)), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F)));
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(MT.D2O          .liquid(U*3, T)), FL.array(MT.D.gas(U*2, F), MT.O.gas(U, F)));
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(MT.T2O          .liquid(U*3, T)), FL.array(MT.T.gas(U*2, F), MT.O.gas(U, F))); if (FL.Tropics_Water.exists())
 		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), FL.array(FL.Tropics_Water   .make(16000)), FL.array(MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)), OM.dust(MT.NaOH, 3*U8)); if (FL.OceanGrC.exists())
@@ -457,7 +459,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(tWater                          ), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water_Geothermal.make( 50000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS); if (FL.Water_Boiling.exists())
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water_Boiling   .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS); if (FL.Water_Hot.exists())
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water_Hot       .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water_Hot       .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS); if (FL.Hot_Water.exists())
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Hot_Water       .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS); if (FL.Cold_Water.exists())
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Cold_Water      .make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.HDO             .liquid(U, T)), FL.array(MT.D2O.liquid(U10, F), MT.T2O.liquid(U100, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O             .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
 		
@@ -497,13 +501,18 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Drying       .addRecipe0(T, 16,   16           , FL.MnWtr.make(10), FL.DistW.make( 8), ZL_IS);
 		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water_Geothermal.make(25), FL.DistW.make(20), ZL_IS); if (FL.Water_Boiling.exists())
 		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water_Boiling   .make(25), FL.DistW.make(20), ZL_IS); if (FL.Water_Hot.exists())
-		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water_Hot       .make(25), FL.DistW.make(20), ZL_IS);
+		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water_Hot       .make(25), FL.DistW.make(20), ZL_IS); if (FL.Hot_Water.exists())
+		RM.Drying       .addRecipe0(T, 16,   16           , FL.Hot_Water       .make(25), FL.DistW.make(20), ZL_IS); if (FL.Cold_Water.exists())
+		RM.Drying       .addRecipe0(T, 16,   16           , FL.Cold_Water      .make(25), FL.DistW.make(20), ZL_IS);
+		
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water           .make(10), FL.DistW.make( 8), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.SpDew           .make(10), FL.DistW.make( 8), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.MnWtr.make(10), FL.DistW.make( 8), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water_Geothermal.make(25), FL.DistW.make(20), ZL_IS); if (FL.Water_Boiling.exists())
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water_Boiling   .make(25), FL.DistW.make(20), ZL_IS); if (FL.Water_Hot.exists())
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water_Hot       .make(25), FL.DistW.make(20), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water_Hot       .make(25), FL.DistW.make(20), ZL_IS); if (FL.Hot_Water.exists())
+		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Hot_Water       .make(25), FL.DistW.make(20), ZL_IS); if (FL.Cold_Water.exists())
+		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Cold_Water      .make(25), FL.DistW.make(20), ZL_IS);
 		
 		
 		if (FL.Tropics_Water.exists())

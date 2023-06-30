@@ -2996,7 +2996,7 @@ public class MT {
 			OREMATS.Sperrylite              .ores(Sb                        , Cu                        , Fe2O3                 , Rh                    , OREMATS.Cooperite     );
 			OREMATS.Pentlandite             .ores(Fe2O3                     , S                         , OREMATS.Cobaltite     , OREMATS.Sperrylite    , Gypsum                );
 			OREMATS.Sphalerite              .ores(Cd                        , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
-			OREMATS.Tetrahedrite            .ores(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     );
+			OREMATS.Tetrahedrite            .ores(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     , As                    );
 			Pyrite                          .ores(S                         , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
 			Sn                              .ores(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteBlack         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
 			OREMATS.Cassiterite             .ores(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteWhite         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
