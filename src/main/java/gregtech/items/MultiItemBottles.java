@@ -45,73 +45,73 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(    2, "Soda"                         , "", "foodBubblywater"                 , FL.Soda                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 2), TC.stack(TC.AQUA      , 1), FoodStatFluid.INSTANCE);
 		addItem(    3, "Mineral Soda"                 , ""                                    , FL.Mineralsoda            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(    4, "Ice Water"                    , ""                                    , FL.Ice                    .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 2), TC.stack(TC.AQUA      , 1), FoodStatFluid.INSTANCE);
-		addItem(    5, "Dirty Water"                  , ""                                    , FL.Dirty_Water            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.VENENUM   , 1), FoodStatFluid.INSTANCE);
+		addItem(    5, "Dirty Water"                  , ""                                    , FL.Dirty_Water            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.VENEMUM   , 1), FoodStatFluid.INSTANCE);
 		addItem(    6, "Swampwater"                   , ""                                    , FL.Swampwater             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.MORTUUS   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem(    7, "Stagnant Water"               , ""                                    , FL.Stagnant_Water         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.MORTUUS   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem(    8, "Spectral Dew"                 , "", "listAllwater"                    , FL.SpDew                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 2), TC.stack(TC.SPIRITUS  , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		
 		addItem(  100, "Grape Juice"                  , "", "foodGrapejuice"                  , FL.Juice_Grape_White      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem(  101, "White Wine"                   , "", "foodGrapewine"                   , FL.Wine_Grape_White       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem(  102, "Grape Vinegar"                , "", "foodVinegar"                     , FL.Vinegar_Grape          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
+		addItem(  101, "White Wine"                   , "", "foodGrapewine"                   , FL.Wine_Grape_White       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem(  102, "Grape Vinegar"                , "", "foodVinegar"                     , FL.Vinegar_Grape          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
 		addItem(  103, "Grape Juice"                  , "", "foodGrapejuice"                  , FL.Juice_Grape_Red        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem(  104, "Red Wine"                     , "", "foodGrapewine"                   , FL.Wine_Grape_Red         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem(  104, "Red Wine"                     , "", "foodGrapewine"                   , FL.Wine_Grape_Red         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  105, "Grape Smoothie"               , "", "foodGrapesmoothie"               , FL.Smoothie_Grape_White   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  106, "Grape Smoothie"               , "", "foodGrapesmoothie"               , FL.Smoothie_Grape_Red     .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  107, "Grape Smoothie"               , "", "foodGrapesmoothie"               , FL.Smoothie_Grape_Green   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  108, "Grape Smoothie"               , "", "foodGrapesmoothie"               , FL.Smoothie_Grape_Purple  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  109, "Grape Juice"                  , "", "foodGrapejuice"                  , FL.Juice_Grape_Green      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(  110, "Grape Juice"                  , "", "foodGrapejuice"                  , FL.Juice_Grape_Purple     .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem(  111, "Wine"                         , "", "foodGrapewine"                   , FL.Wine_Grape_Green       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem(  112, "Ricardo Sanchez"              , "", "foodGrapewine"                   , FL.Wine_Grape_Purple      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.COGNITIO  , 1), FoodStatFluid.INSTANCE);
+		addItem(  111, "Wine"                         , "", "foodGrapewine"                   , FL.Wine_Grape_Green       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem(  112, "Ricardo Sanchez"              , "", "foodGrapewine"                   , FL.Wine_Grape_Purple      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.COGNITIO  , 1), FoodStatFluid.INSTANCE);
 		
 		
 		addItem(  200, "Lemon Juice"                  , "", "foodLemonjuice"                  , FL.Juice_Lemon            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
 		addItem(  201, "Lemonade"                     , "", "foodLemonade"                    , FL.Lemonade               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
-		addItem(  202, "Limoncello"                   , "", "foodLemonwine"                   , FL.Wine_Lemon             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
-		addItem(  203, "Alcopops"                     , "", "listAllbeverage"                 , FL.Alcopops               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.VINCULUM  , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem(  202, "Limoncello"                   , "", "foodLemonwine"                   , FL.Wine_Lemon             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
+		addItem(  203, "Alcopops"                     , "", "listAllbeverage"                 , FL.Alcopops               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.VINCULUM  , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem(  204, "Cave Johnson's Grenade Juice" , ""                                    , FL.Grenade_Juice          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.MORTUUS        , 1), TC.stack(TC.PERDITIO  , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Yellow);
 		addItem(  205, "Lemon Smoothie"               , "", "foodLemonsmoothie"               , FL.Smoothie_Lemon         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
 		
 		
 		addItem(  300, "Potato Juice"                 , ""                                    , FL.Juice_Potato           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.MESSIS    , 1), FoodStatFluid.INSTANCE);
-		addItem(  301, "Vodka"                        , "", "foodVodka"                       , FL.Vodka                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TELUM     , 1), FoodStatFluid.INSTANCE);
-		addItem(  302, "Leninade"                     , "", "listAllbeverage"                 , FL.Leninade               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.TELUM     , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem(  301, "Vodka"                        , "", "foodVodka"                       , FL.Vodka                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TELUM     , 1), FoodStatFluid.INSTANCE);
+		addItem(  302, "Leninade"                     , "", "listAllbeverage"                 , FL.Leninade               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.TELUM     , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		
 		addItem(  400, "Reedwater"                    , ""                                    , FL.Juice_Reed             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
-		addItem(  401, "Rum"                          , "", "foodRum"                         , FL.Rum_White              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
-		addItem(  402, "Pirate Brew"                  , "", "foodRum"                         , FL.Rum_Dark               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.LUCRUM    , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
-		addItem(  403, "Cane Vinegar"                 , "", "foodVinegar"                     , FL.Vinegar_Cane           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
-		addItem(  404, "Piña Colada"                  , ""                                    , FL.Pina_Colada            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.HERBA     , 2), FoodStatFluid.INSTANCE);
+		addItem(  401, "Rum"                          , "", "foodRum"                         , FL.Rum_White              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
+		addItem(  402, "Pirate Brew"                  , "", "foodRum"                         , FL.Rum_Dark               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.LUCRUM    , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem(  403, "Cane Vinegar"                 , "", "foodVinegar"                     , FL.Vinegar_Cane           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
+		addItem(  404, "Piña Colada"                  , ""                                    , FL.Pina_Colada            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.HERBA     , 2), FoodStatFluid.INSTANCE);
 		
 		
 		addItem(  500, "Hops Mash"                    , ""                                    , FL.Mash_Hops              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.MESSIS    , 1), FoodStatFluid.INSTANCE);
-		addItem(  501, "Dark Beer"                    , "", "foodBeer"                        , FL.Beer_Dark              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.POTENTIA  , 1), FoodStatFluid.INSTANCE);
-		addItem(  502, "Dragon Blood"                 , "", "foodBeer"                        , FL.Beer_Dragonblood       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.POTENTIA  , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem(  501, "Dark Beer"                    , "", "foodBeer"                        , FL.Beer_Dark              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.POTENTIA  , 1), FoodStatFluid.INSTANCE);
+		addItem(  502, "Dragon Blood"                 , "", "foodBeer"                        , FL.Beer_Dragonblood       .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.POTENTIA  , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		
 		addItem(  600, "Wheaty Mash"                  , ""                                    , FL.Mash_Wheat             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.MESSIS    , 1), FoodStatFluid.INSTANCE);
-		addItem(  601, "Scotch"                       , "", "foodWhiskey"                     , FL.Whiskey_Scotch         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
-		addItem(  602, "Glen McKenner"                , "", "foodWhiskey"                     , FL.Whiskey_GlenMcKenner   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.TUTAMEN   , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem(  601, "Scotch"                       , "", "foodWhiskey"                     , FL.Whiskey_Scotch         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
+		addItem(  602, "Glen McKenner"                , "", "foodWhiskey"                     , FL.Whiskey_GlenMcKenner   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.TUTAMEN   , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		
 		addItem(  700, "Wheaty Hops Mash"             , ""                                    , FL.Mash_WheatHops         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.MESSIS    , 2), FoodStatFluid.INSTANCE);
 		IL.Bottle_Beer.set(
-		addItem(  701, "Beer"                         , "", "foodBeer"                        , FL.Beer                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE));
+		addItem(  701, "Beer"                         , "", "foodBeer"                        , FL.Beer                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE));
 		
 		
-		addItem(  800, "Chili Sauce"                  , "", "foodHotsauce"                    , FL.Sauce_Chili            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.IGNIS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
-		addItem(  801, "Hot Sauce"                    , "", "foodHotsauce"                    , FL.Sauce_Hot              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.IGNIS     , 2), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
-		addItem(  802, "Diabolo Sauce"                , "", "foodHotsauce"                    , FL.Sauce_Diabolo          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.IGNIS     , 3), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
-		addItem(  803, "Diablo Sauce"                 , "", "foodHotsauce"                    , FL.Sauce_Diablo           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.IGNIS     , 4), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
-		addItem(  804, "Old Man Snitches glitchy Diablo Sauce", "", "foodHotsauce"            , FL.Sauce_Snitches         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 3), TC.stack(TC.IGNIS     , 5), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		addItem(  800, "Chili Sauce"                  , "", "foodHotsauce"                    , FL.Sauce_Chili            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.IGNIS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		addItem(  801, "Hot Sauce"                    , "", "foodHotsauce"                    , FL.Sauce_Hot              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.IGNIS     , 2), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		addItem(  802, "Diabolo Sauce"                , "", "foodHotsauce"                    , FL.Sauce_Diabolo          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.IGNIS     , 3), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		addItem(  803, "Diablo Sauce"                 , "", "foodHotsauce"                    , FL.Sauce_Diablo           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.IGNIS     , 4), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
+		addItem(  804, "Old Man Snitches glitchy Diablo Sauce", "", "foodHotsauce"            , FL.Sauce_Snitches         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 3), TC.stack(TC.IGNIS     , 5), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Red);
 		addItem(  805, "Barbecue Sauce"               , "", "foodBarbecuesauce"               , FL.Sauce_BBQ              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS          , 1), TC.stack(TC.FAMES     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Brown);
 		
 		
 		addItem(  900, "Apple Juice"                  , "", "foodApplejuice"                  , FL.Juice_Apple            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE, FL.Juice_AppleGrC.make(250));
-		addItem(  901, "Cider"                        , "", "foodApplecider"                  , FL.Cider_Apple            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
-		addItem(  902, "Apple Cider Vinegar"          , "", "foodVinegar"                     , FL.Vinegar_Apple          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
+		addItem(  901, "Cider"                        , "", "foodApplecider"                  , FL.Cider_Apple            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
+		addItem(  902, "Apple Cider Vinegar"          , "", "foodVinegar"                     , FL.Vinegar_Apple          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
 		addItem(  905, "Apple Smoothie"               , "", "foodApplesmoothie"               , FL.Smoothie_Apple         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		
 		
@@ -136,7 +136,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem( 1100, "Milk"                         , "", OP.bottle.dat(MT.Milk)            , FL.Milk                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, FL.MilkGrC.make(250)));
 		addItem( 1101, "Heavy Cream"                  , "", "bottleCream"                     , FL.Cream                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS          , 1), TC.stack(TC.POTENTIA  , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_White);
 		IL.Bottle_Milk_Spoiled.set(
-		addItem( 1102, "Milk"                         , ""                                    , FL.Milk_Spoiled           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.VENENUM   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN));
+		addItem( 1102, "Milk"                         , ""                                    , FL.Milk_Spoiled           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.VENEMUM   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN));
 		
 		CR.shapeless(make(4, 1100), CR.DEF, new Object[] {OD.container1000milk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(3, 1100), CR.DEF, new Object[] {OD.container1000milk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
@@ -156,8 +156,8 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem( 1301, "Honeydew"                     , "", OP.bottle.dat(MT.Honeydew)        , FL.Honeydew               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem( 1302, "Royal Jelly"                  , ""                                    , FL.RoyalJelly             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Yellow);
 		addItem( 1303, "Ambrosia"                     , "", "foodAmbrosia"                    , FL.Ambrosia               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 2), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Purple);
-		addItem( 1304, "Short Mead"                   , "", "foodMead"                        , FL.ShortMead              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-		addItem( 1305, "Mead"                         , "", "foodMead"                        , FL.Mead                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem( 1304, "Short Mead"                   , "", "foodMead"                        , FL.ShortMead              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem( 1305, "Mead"                         , "", "foodMead"                        , FL.Mead                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		
 		CR.shapeless(make(4, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(3, 1300), CR.DEF, new Object[] {OD.container1000honey, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
@@ -172,22 +172,22 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(make(2, 1302), CR.DEF, new Object[] {OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly, OD.dropRoyalJelly});
 		
 		addItem( 1400, "Golden Apple Juice"           , "", "foodApplejuice"      , FL.make("potion.goldenapplejuice"  , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
-		addItem( 1401, "Golden Cider"                 , "", "foodApplecider"      , FL.make("potion.goldencider"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem( 1401, "Golden Cider"                 , "", "foodApplecider"      , FL.make("potion.goldencider"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		addItem( 1500, "Idun's Apple Juice"           , "", "foodApplejuice"      , FL.make("potion.idunsapplejuice"   , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.NEBRISUM  , 9), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
-		addItem( 1501, "Notches Brew"                 , "", "foodApplecider"      , FL.make("potion.notchesbrew"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.NEBRISUM  , 9), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
+		addItem( 1501, "Notches Brew"                 , "", "foodApplecider"      , FL.make("potion.notchesbrew"       , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.NEBRISUM  , 9), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		
 		IL.Bottle_Purple_Drink.set(
 		addItem( 1600, "Purple Drink"                 , ""                                    , FL.Purple_Drink           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.VINCULUM  , 1), FoodStatFluid.INSTANCE));
 		IL.Bottle_Rotten_Drink.set(
-		addItem( 1601, "Rotten Drink"                 , ""                                    , FL.Rotten_Drink           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.MORTUUS   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN));
+		addItem( 1601, "Rotten Drink"                 , ""                                    , FL.Rotten_Drink           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.MORTUUS   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN));
 		
 		IL.Bottle_Holy_Water.set(
 		addItem( 1700, "Holy Water"                   , "", OP.bottle.dat(MT.HolyWater)       , MT.HolyWater          .liquid(U4, F), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.AURAM     , 1), FoodStatFluid.INSTANCE));
 		
 		addItem( 1800, "Rice Water"                   , ""                                    , FL.Mash_Rice              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
-		addItem( 1801, "Sake"                         , "", "foodSake"                        , FL.Sake                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TEMPESTAS , 1), FoodStatFluid.INSTANCE);
-		addItem( 1802, "Rice Vinegar"                 , "", "foodVinegar"                     , FL.Vinegar_Rice           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.TEMPESTAS , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
+		addItem( 1801, "Sake"                         , "", "foodSake"                        , FL.Sake                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TEMPESTAS , 1), FoodStatFluid.INSTANCE);
+		addItem( 1802, "Rice Vinegar"                 , "", "foodVinegar"                     , FL.Vinegar_Rice           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 2), TC.stack(TC.TEMPESTAS , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
 		
 		addItem( 1900, "Chocolate Cream"              , "", "foodChocolatecream"              , FL.Cream_Chocolate        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Brown);
 		addItem( 1901, "Nutella"                      , "", "foodNutella"                     , FL.Cream_Nutella          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS          , 1), TC.stack(TC.FAMES     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Brown);
@@ -272,7 +272,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem( 3805, "Cherry Smoothie"              , "", "foodCherrysmoothie"              , FL.Smoothie_Cherry        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		
 		addItem( 3900, "Ananas Juice"                 , "", "foodAnanasjuice"                 , FL.Juice_Ananas           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.ARBOR     , 1), FoodStatFluid.INSTANCE);
-		addItem( 3901, "Ananas Cider"                 , "", "foodAnanascider"                 , FL.Cider_Ananas           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
+		addItem( 3901, "Ananas Cider"                 , "", "foodAnanascider"                 , FL.Cider_Ananas           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TUTAMEN   , 1), FoodStatFluid.INSTANCE);
 		addItem( 3905, "Ananas Smoothie"              , "", "foodAnanassmoothie"              , FL.Smoothie_Ananas        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.ARBOR     , 1), FoodStatFluid.INSTANCE);
 		
 		addItem( 4000, "Currant Juice"                , "", "foodCurrantjuice"                , FL.Juice_Currant          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
@@ -369,7 +369,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		CR.shapeless(last(1), CR.DEF, new Object[] {OD.container1000lubricant, OP.bottle.dat(MT.Empty)});
 		
 		IL.Bottle_Mercury.set(
-		addItem(32765, "Mercury Bottle", "Also called Quicksilver", new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg).toString() /* <- yes that toString() is needed! */, OD.itemQuicksilver, MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM, 2), FoodStatFluid.INSTANCE));
+		addItem(32765, "Mercury Bottle", "Also called Quicksilver", new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg).toString() /* <- yes that toString() is needed! */, OD.itemQuicksilver, MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM, 2), FoodStatFluid.INSTANCE));
 		
 		CR.shapeless(last(4), CR.DEF, new Object[] {OD.itemQuicksilver, OP.bottle.dat(MT.Empty)});
 		CR.shapeless(last(3), CR.DEF, new Object[] {OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.bottle.dat(MT.Empty)});

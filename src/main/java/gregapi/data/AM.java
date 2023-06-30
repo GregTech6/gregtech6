@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,14 @@
 
 package gregapi.data;
 
+import gregapi.oredict.OreDictMaterial;
+import gregapi.render.TextureSet;
+
 import static gregapi.data.TD.Atomic.*;
 import static gregapi.data.TD.ItemGenerator.*;
 import static gregapi.data.TD.Processing.*;
-import static gregapi.data.TD.Properties.*;
+import static gregapi.data.TD.Properties.MAGICAL;
 import static gregapi.render.TextureSet.*;
-
-import gregapi.oredict.OreDictMaterial;
-import gregapi.render.TextureSet;
 
 /**
  * @author Gregorius Techneticies
@@ -106,7 +106,7 @@ public class AM {
 	Zn      , Zinc                  =   Zn      = transmetal    ( 4300, "Anti-Zinc"             ,  30,  35,   692,  1180,  7.134     , SET_METALLIC         , 250, 240, 240, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.SANO, 1                                          ),
 	Ga      , Gallium               =   Ga      = posttrans     ( 4310, "Anti-Gallium"          ,  31,  39,   302,  2477,  5.907     , SET_DULL             , 220, 220, 255, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.ELECTRUM, 1                                      ),
 	Ge      , Germanium             =   Ge      = metalloid     ( 4320, "Anti-Germanium"        ,  32,  40,  1211,  3106,  5.323     , SET_SHINY            , 256, 256, 256, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.ELECTRUM, 1                                      ),
-	As      , Arsenic               =   As      = metalloid     ( 4330, "Anti-Arsenic"          ,  33,  42,   887,  1090,  5.776     , SET_SHINY            , 256, 256, 256, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.VENENUM, 2                                       ),
+	As      , Arsenic               =   As      = metalloid     ( 4330, "Anti-Arsenic"          ,  33,  42,   887,  1090,  5.776     , SET_SHINY            , 256, 256, 256, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.VENEMUM, 2                                       ),
 	Se      , Selenium              =   Se      = polyatomic    ( 4340, "Anti-Selenium"         ,  34,  45,   453,   958,  4.809     , SET_DULL             , 256, 256, 256, 255).put(  G_CRYSTAL_ORES              , UUM                                               ).aspects(  TC.VITREUS, 1, TC.SPIRITUS, 2                                       ),
 	Br      , Bromine               =   Br      = diatomic      ( 4350, "Anti-Bromine"          ,  35,  45,   265,   332,  3.122     , SET_DULL             , 256, 256, 256, 255).put(  G_CRYSTAL_ORES              , UUM                                               ).aspects(  TC.VITREUS, 1, TC.TERRA, 2                                          ),
 	Kr      , Krypton               =   Kr      = noblegas      ( 4360, "Anti-Krypton"          ,  36,  48,   115,   119,  0.003733  , SET_DIAMOND          , 128, 255, 128,  15).put(  CONTAINERS_GAS              , UUM                                               ).aspects(  TC.AER, 3                                                           ),
@@ -121,7 +121,7 @@ public class AM {
 	Rh      , Rhodium               =   Rh      = transmetal    ( 4450, "Anti-Rhodium"          ,  45,  58,  2237,  3968, 12.41      , SET_SHINY            , 256, 256, 256, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 3                                                      ),
 	Pd      , Palladium             =   Pd      = transmetal    ( 4460, "Anti-Palladium"        ,  46,  60,  1828,  3236, 12.02      , SET_SHINY            , 128, 128, 128, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 3                                                      ),
 	Ag      , Silver                =   Ag      = transmetal    ( 4470, "Anti-Silver"           ,  47,  60,  1234,  2435, 10.501     , SET_SHINY            , 220, 220, 255, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.LUCRUM, 1                                        ),
-	Cd      , Cadmium               =   Cd      = transmetal    ( 4480, "Anti-Cadmium"          ,  48,  64,   594,  1040,  8.69      , SET_SHINY            ,  50,  50,  60, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.POTENTIA, 1, TC.VENENUM, 1                       ),
+	Cd      , Cadmium               =   Cd      = transmetal    ( 4480, "Anti-Cadmium"          ,  48,  64,   594,  1040,  8.69      , SET_SHINY            ,  50,  50,  60, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.POTENTIA, 1, TC.VENEMUM, 1                       ),
 	In      , Indium                =   In      = posttrans     ( 4490, "Anti-Indium"           ,  49,  65,   429,  2345,  7.31      , SET_SHINY            ,  64,   0, 128, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 3                                                      ),
 	Sn      , Tin                   =   Sn      = posttrans     ( 4500, "Anti-Tin"              ,  50,  68,   505,  2875,  7.287     , SET_DULL             , 220, 220, 220, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.VITREUS, 1                                       ),
 	Sb      , Antimony              =   Sb      = metalloid     ( 4510, "Anti-Antimony"         ,  51,  70,   903,  1860,  6.685     , SET_SHINY            , 220, 220, 240, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.AQUA, 1                                          ),
@@ -153,7 +153,7 @@ public class AM {
 	Ir      , Iridium               =   Ir      = transmetal    ( 4770, "Anti-Iridium"          ,  77, 115,  2719,  4701, 22.56      , SET_DULL             , 240, 240, 245, 255).put(  G_INGOT_MACHINE_ORES        , UUM                                               ).aspects(  TC.METALLUM, 2, TC.MACHINA, 1                                       ).setRGBaLiquid(255, 128, 200, 255),
 	Pt      , Platinum              =   Pt      = transmetal    ( 4780, "Anti-Platinum"         ,  78, 117,  2041,  4098, 21.46      , SET_SHINY            , 255, 255, 200, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.NEBRISUM, 1                                      ),
 	Au      , Gold                  =   Au      = transmetal    ( 4790, "Anti-Gold"             ,  79, 117,  1337,  3129, 19.282     , SET_SHINY            , 255, 230,  80, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.LUCRUM, 2                                        ),
-	Hg      , Mercury               =   Hg      = transmetal    ( 4800, "Anti-Mercury"          ,  80, 120,   234,   629, 13.5336    , SET_SHINY            , 230, 220, 220, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.AQUA, 1, TC.VENENUM, 1                           ), Quicksilver=Hg.addIdenticalNames("Anti-Quicksilver").addIdenticalNames("Anti-QuickSilver"),
+	Hg      , Mercury               =   Hg      = transmetal    ( 4800, "Anti-Mercury"          ,  80, 120,   234,   629, 13.5336    , SET_SHINY            , 230, 220, 220, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 1, TC.AQUA, 1, TC.VENEMUM, 1                           ), Quicksilver=Hg.addIdenticalNames("Anti-Quicksilver").addIdenticalNames("Anti-QuickSilver"),
 	Tl      , Thallium              =   Tl      = posttrans     ( 4810, "Anti-Thallium"         ,  81, 123,   577,  1746, 11.85      , SET_METALLIC         , 256, 256, 256, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 3                                                      ),
 	Pb      , Lead                  =   Pb      = posttrans     ( 4820, "Anti-Lead"             ,  82, 125,   600,  2022, 11.342     , SET_DULL             , 140, 100, 140, 255).put(  G_INGOT_ORES                , UUM                                               ).aspects(  TC.METALLUM, 2, TC.ORDO, 1                                          ),
 	Bi      , Bismuth               =   Bi      = posttrans     ( 4830, "Anti-Bismuth"          ,  83, 125,   544,  1837,  9.807     , SET_METALLIC         , 100, 160, 160, 255).put(  G_INGOT_ORES                                                                    ).aspects(  TC.METALLUM, 2, TC.MAGNETO, 1                                       ),
