@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,20 +38,20 @@ public class Enchantment_Radioactivity extends EnchantmentDamage {
 	public Enchantment_Radioactivity() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Radioactivity", 14), 0, -1);
 		LH.add(getName(), "Radioactivity");
-		MT.Cyanite          .addEnchantmentForTools(this, 1).addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
-		MT.Yellorium        .addEnchantmentForTools(this, 1).addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
-		MT.Blutonium        .addEnchantmentForTools(this, 2).addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
-		MT.Ludicrite        .addEnchantmentForTools(this, 4).addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
-		MT.Pu               .addEnchantmentForTools(this, 1).addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
-		MT.U_235            .addEnchantmentForTools(this, 2).addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
-		MT.Co_60            .addEnchantmentForTools(this, 2).addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
-		MT.Pu_241           .addEnchantmentForTools(this, 3).addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3).addEnchantmentForRanged(this, 3).addEnchantmentForArmors(this, 3);
-		MT.Pu_243           .addEnchantmentForTools(this, 3).addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3).addEnchantmentForRanged(this, 3).addEnchantmentForArmors(this, 3);
-		MT.At               .addEnchantmentForTools(this, 4).addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
-		MT.Am_241           .addEnchantmentForTools(this, 4).addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
-		MT.Nq_528           .addEnchantmentForTools(this, 4).addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
-		MT.Nq_522           .addEnchantmentForTools(this, 5).addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5).addEnchantmentForRanged(this, 5).addEnchantmentForArmors(this, 5);
-		MT.CosmicNeutronium .addEnchantmentForTools(this,10).addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10).addEnchantmentForRanged(this,10).addEnchantmentForArmors(this,10);
+		MT.Cyanite          .addEnchantmentForTools(this, 1).addEnchantmentForDamage(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
+		MT.Yellorium        .addEnchantmentForTools(this, 1).addEnchantmentForDamage(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
+		MT.Blutonium        .addEnchantmentForTools(this, 2).addEnchantmentForDamage(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
+		MT.Ludicrite        .addEnchantmentForTools(this, 4).addEnchantmentForDamage(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
+		MT.Pu               .addEnchantmentForTools(this, 1).addEnchantmentForDamage(this, 1).addEnchantmentForRanged(this, 1).addEnchantmentForArmors(this, 1);
+		MT.U_235            .addEnchantmentForTools(this, 2).addEnchantmentForDamage(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
+		MT.Co_60            .addEnchantmentForTools(this, 2).addEnchantmentForDamage(this, 2).addEnchantmentForRanged(this, 2).addEnchantmentForArmors(this, 2);
+		MT.Pu_241           .addEnchantmentForTools(this, 3).addEnchantmentForDamage(this, 3).addEnchantmentForRanged(this, 3).addEnchantmentForArmors(this, 3);
+		MT.Pu_243           .addEnchantmentForTools(this, 3).addEnchantmentForDamage(this, 3).addEnchantmentForRanged(this, 3).addEnchantmentForArmors(this, 3);
+		MT.At               .addEnchantmentForTools(this, 4).addEnchantmentForDamage(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
+		MT.Am_241           .addEnchantmentForTools(this, 4).addEnchantmentForDamage(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
+		MT.Nq_528           .addEnchantmentForTools(this, 4).addEnchantmentForDamage(this, 4).addEnchantmentForRanged(this, 4).addEnchantmentForArmors(this, 4);
+		MT.Nq_522           .addEnchantmentForTools(this, 5).addEnchantmentForDamage(this, 5).addEnchantmentForRanged(this, 5).addEnchantmentForArmors(this, 5);
+		MT.CosmicNeutronium .addEnchantmentForTools(this,10).addEnchantmentForDamage(this,10).addEnchantmentForRanged(this,10).addEnchantmentForArmors(this,10);
 		INSTANCE = this;
 	}
 	

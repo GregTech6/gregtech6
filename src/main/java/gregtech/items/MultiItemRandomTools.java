@@ -64,10 +64,14 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Compound_Bronze       .set(addItem(  0, "Bronze Compound"        , "Put in Furnace to smelt it" , new OreDictItemData(MT.Bronze       , U9), TC.stack(TC.METALLUM, 1)));
 		IL.Compound_Brass        .set(addItem(  1, "Brass Compound"         , "Put in Furnace to smelt it" , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
 		IL.Compound_BismuthBronze.set(addItem(  2, "Bismuth Bronze Compound", "Put in Furnace to smelt it" , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_ArsenicCopper.set(addItem(  3, "Arsenic Copper Compound", "Put in Furnace to smelt it" , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_ArsenicBronze.set(addItem(  4, "Arsenic Bronze Compound", "Put in Furnace to smelt it" , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
 		
 		RM.add_smelting(IL.Compound_Bronze       .get(1), OP.nugget.mat(MT.Bronze       , 1), F, F, T);
 		RM.add_smelting(IL.Compound_Brass        .get(1), OP.nugget.mat(MT.Brass        , 1), F, F, T);
 		RM.add_smelting(IL.Compound_BismuthBronze.get(1), OP.nugget.mat(MT.BismuthBronze, 1), F, F, T);
+		RM.add_smelting(IL.Compound_ArsenicCopper.get(1), OP.nugget.mat(MT.ArsenicCopper, 1), F, F, T);
+		RM.add_smelting(IL.Compound_ArsenicBronze.get(1), OP.nugget.mat(MT.ArsenicBronze, 1), F, F, T);
 		
 		IL.Porcelain_Cup_Raw               .set(addItem(899, "Modeled Porcelain Cup"    , "Put in Furnace to harden", new OreDictItemData(MT.Porcelain, U), TC.stack(TC.TERRA, 2), TC.stack(TC.VACUOS, 1))); CR.shapeless(OP.dust.mat(MT.Porcelain, 1), CR.DEF_NCC, new Object[] {last()});
 		

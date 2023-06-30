@@ -24,6 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
 [ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
 [ADDED] Meteoric Steels and Damascus Steel can now be upgraded with Twilight Forests Fiery Blood or Fiery Tears for improving Tool Quality, Tool Speed, Mazebreaking, Fire Aspect and Autosmelt.
+[ADDED] Arsenic Copper (Cu+Cu+Cu+As) and Arsenic Bronze (Cu+Cu+Cu+As+Sn), with Tool Quality between Bronze and Steel, the Decorative Blocks Set (Hoppers, Shelves etc), Item Pipes, Earlygame Furnace Compounds like regular Bronze, and a High Level Dissolving Enchantment against Slimes.
 
 
 6.16.01:

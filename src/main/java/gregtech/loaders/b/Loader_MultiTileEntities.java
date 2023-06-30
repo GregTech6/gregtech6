@@ -187,13 +187,15 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bi                    ,   16,   4.0F,   4.0F,  2);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
-		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Constantan            ,   37,   4.0F,   4.0F,  3);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.ArsenicCopper         ,   57,   7.5F,   7.5F,  4);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Al                    ,    1,   2.0F,   2.0F,  4);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Brass                 ,    8,   2.5F,   2.5F,  4);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.TinAlloy              ,    5,   3.0F,   3.0F,  4);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Co                    ,   21,   4.0F,   4.0F,  4);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ardite                ,   38,   2.0F,   2.0F,  4);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.ArsenicBronze         ,   58,   8.0F,   8.0F,  5);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.BismuthBronze         ,   56,   8.0F,   8.0F,  5);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ge                    ,   23,   4.0F,   4.0F,  5);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Invar                 ,    6,   4.0F,   4.0F,  5);
@@ -239,7 +241,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 57 is next
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 59 is next
 	}
 	
 	private static void crucible(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {
@@ -1763,6 +1765,8 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeItem.addItemPipes(25025, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Constantan);
 		MultiTileEntityPipeItem.addItemPipes(25050, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.CobaltBrass);
 		MultiTileEntityPipeItem.addItemPipes(25075, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Ge);
+		MultiTileEntityPipeItem.addItemPipes(25350, 25202, 16384,   1, T, T, aRegistry, aMachine    , aClass, MT.ArsenicCopper);
+		MultiTileEntityPipeItem.addItemPipes(25375, 25202, 32768,   2, T, T, aRegistry, aMachine    , aClass, MT.ArsenicBronze);
 		MultiTileEntityPipeItem.addItemPipes(25100, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.Electrum);
 		MultiTileEntityPipeItem.addItemPipes(25225, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.SterlingSilver);
 		MultiTileEntityPipeItem.addItemPipes(25250, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.RoseGold);

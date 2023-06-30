@@ -448,6 +448,8 @@ public class GT_API extends Abstract_Mod {
 			MT.PigIron.setLocal("Ferrobacon");
 			MT.TinAlloy.setLocal("Tin*");
 			MT.Bronze.setLocal("Tinkerers Alloy");
+			MT.ArsenicCopper.setLocal("Arsenine Alloy");
+			MT.ArsenicBronze.setLocal("Arsenine Tinkerers Alloy");
 			MT.BlackBronze.setLocal("Afro Tinkerers Alloy"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.Constantan.setLocal("Cupronickel");
 			MT.Ge.setLocal("Platosmium");

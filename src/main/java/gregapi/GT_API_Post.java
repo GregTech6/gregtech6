@@ -614,13 +614,13 @@ public class GT_API_Post extends Abstract_Mod {
 				}
 			}
 			if ("enchantment.Cold Touch".equalsIgnoreCase(tEnchant.getName())) {
-				MT.Ice                  .addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForAmmo(tEnchant, 1);
-				MT.Snow                 .addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForAmmo(tEnchant, 1);
-				MT.FrozenIron           .addEnchantmentForWeapons(tEnchant, 2).addEnchantmentForAmmo(tEnchant, 2);
-				MT.Blizz                .addEnchantmentForWeapons(tEnchant, 3).addEnchantmentForAmmo(tEnchant, 3);
-				MT.Frezarite            .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
-				MT.InfusedWater         .addEnchantmentForWeapons(tEnchant, 4).addEnchantmentForAmmo(tEnchant, 4);
-				MT.Cryotheum            .addEnchantmentForWeapons(tEnchant, 5).addEnchantmentForAmmo(tEnchant, 5);
+				MT.Ice                  .addEnchantmentForDamage(tEnchant, 1);
+				MT.Snow                 .addEnchantmentForDamage(tEnchant, 1);
+				MT.FrozenIron           .addEnchantmentForDamage(tEnchant, 2);
+				MT.Blizz                .addEnchantmentForDamage(tEnchant, 3);
+				MT.Frezarite            .addEnchantmentForDamage(tEnchant, 4);
+				MT.InfusedWater         .addEnchantmentForDamage(tEnchant, 4);
+				MT.Cryotheum            .addEnchantmentForDamage(tEnchant, 5);
 			}
 			if ("enchantment.frost_walker".equalsIgnoreCase(tEnchant.getName())) {
 				MT.Ice                  .addEnchantmentForArmors(tEnchant, 1);
