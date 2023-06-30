@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -33,7 +33,7 @@ public class TC {
 	, POTENTIA     = new TC(IGNIS       , ORDO        , "Potentia")
 	, VITREUS      = new TC(TERRA       , ORDO        , "Vitreus")
 	, VICTUS       = new TC(AQUA        , TERRA       , "Victus")
-	, VENENUM      = new TC(AQUA        , PERDITIO    , "Venemum")
+	, VENEMUM      = new TC(AQUA        , PERDITIO    , "Venemum")
 	, PERMUTATIO   = new TC(ORDO        , PERDITIO    , "Permutatio")
 	
 	// Tier 2
@@ -88,6 +88,9 @@ public class TC {
 	// Tier 8
 	, ELECTRUM     = new TC(MACHINA     , POTENTIA    , "Electrum")
 	;
+	
+	/** Whoops there was a Typo, lol. */
+	@Deprecated public static final TC VENENUM = VENEMUM;
 	
 	public TC(String aName) {
 		mName = aName;

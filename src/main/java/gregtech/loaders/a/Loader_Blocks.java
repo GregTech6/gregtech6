@@ -99,7 +99,7 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Sharp, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Steel, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Super, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 4), TC.stack(TC.FABRICO, 4));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.VENENUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.VENEMUM, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Fancy, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4), TC.stack(TC.LUCRUM, 4));
 		
 		
@@ -137,7 +137,7 @@ public class Loader_Blocks implements Runnable {
 		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp"    , FL.Dirty_Water.fluid()).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.River          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.MOTUS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp          , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENEMUM, 1));
 		NBTTagList tNBTList = new NBTTagList();
 		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.River)));
 		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.Ocean)));

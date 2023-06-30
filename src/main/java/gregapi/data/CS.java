@@ -33,6 +33,7 @@ import gregapi.compat.galacticraft.ICompatGC;
 import gregapi.compat.industrialcraft.ICompatIC2;
 import gregapi.compat.industrialcraft.ICompatIC2EUItem;
 import gregapi.compat.thaumcraft.ICompatTC;
+import gregapi.compat.warpdrive.ICompatWD;
 import gregapi.config.Config;
 import gregapi.dummies.DummyWorld;
 import gregapi.fluid.FluidTankGT;
@@ -148,7 +149,7 @@ public class CS {
 	V       = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L};
 	
 	/** The short Names for the Voltages */
-	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
+	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "ΩV", "ΩV"};
 	
 	/** The long Names for the Voltages */
 	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage of Doom", "Omega Voltage of Doom"};
@@ -523,13 +524,14 @@ public class CS {
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
 	 */
 	public static final byte[][] FACING_ROTATIONS = {
-		{0,1,2,3,4,5,6},
-		{0,1,2,3,4,5,6},
-		{0,1,3,5,4,2,6},
-		{0,1,5,3,2,4,6},
-		{0,1,2,4,3,5,6},
-		{0,1,4,2,5,3,6},
-		{0,1,2,3,4,5,6}
+		{0,1,2,3,4,5,6,6},
+		{0,1,2,3,4,5,6,6},
+		{0,1,3,5,4,2,6,6},
+		{0,1,5,3,2,4,6,6},
+		{0,1,2,4,3,5,6,6},
+		{0,1,4,2,5,3,6,6},
+		{0,1,2,3,4,5,6,6},
+		{0,1,2,3,4,5,6,6}
 	};
 	
 	/**
@@ -537,55 +539,59 @@ public class CS {
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
 	 */
 	public static final byte[][] FACING_TO_SIDE = {
-		{0,1,2,3,4,5,6},
-		{0,1,2,3,4,5,6},
-		{0,1,5,2,4,3,6},
-		{0,1,4,3,5,2,6},
-		{0,1,2,4,3,5,6},
-		{0,1,3,5,2,4,6},
-		{0,1,2,3,4,5,6}
+		{0,1,2,3,4,5,6,6},
+		{0,1,2,3,4,5,6,6},
+		{0,1,5,2,4,3,6,6},
+		{0,1,4,3,5,2,6,6},
+		{0,1,2,4,3,5,6,6},
+		{0,1,3,5,2,4,6,6},
+		{0,1,2,3,4,5,6,6},
+		{0,1,2,3,4,5,6,6}
 	};
-
+	
 	/** Gives you the Sides, which are not the Front nor the Back of the Facing. */
 	public static final byte[][] FACING_SIDES = {{2,3,4,5},{2,3,4,5},{0,1,4,5},{0,1,4,5},{0,1,2,3},{0,1,2,3},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Front being the first one. */
 	public static final byte[][] FACING_FRONT_BACK = {{0,1},{1,0},{2,3},{3,2},{4,5},{5,4},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Back being the first one. */
 	public static final byte[][] FACING_BACK_FRONT = {{1,0},{0,1},{3,2},{2,3},{5,4},{4,5},{}};
-
+	
 	/** Checks if two Sides are along the same Axis */
 	public static final boolean[][] ALONG_AXIS = {
-		{T,T,F,F,F,F,F},
-		{T,T,F,F,F,F,F},
-		{F,F,T,T,F,F,F},
-		{F,F,T,T,F,F,F},
-		{F,F,F,F,T,T,F},
-		{F,F,F,F,T,T,F},
-		{F,F,F,F,F,F,T}
+		{T,T,F,F,F,F,F,F},
+		{T,T,F,F,F,F,F,F},
+		{F,F,T,T,F,F,F,F},
+		{F,F,T,T,F,F,F,F},
+		{F,F,F,F,T,T,F,F},
+		{F,F,F,F,T,T,F,F},
+		{F,F,F,F,F,F,T,T},
+		{F,F,F,F,F,F,T,T}
 	};
-
+	
 	/** Checks if two Sides are along the shifted Axis */
 	public static final boolean[][] ALONG_AXIS_1 = {
-		{F,F,T,T,F,F,F},
-		{F,F,T,T,F,F,F},
-		{F,F,F,F,T,T,F},
-		{F,F,F,F,T,T,F},
-		{T,T,F,F,F,F,F},
-		{T,T,F,F,F,F,F},
-		{F,F,F,F,F,F,F}
+		{F,F,T,T,F,F,F,F},
+		{F,F,T,T,F,F,F,F},
+		{F,F,F,F,T,T,F,F},
+		{F,F,F,F,T,T,F,F},
+		{T,T,F,F,F,F,F,F},
+		{T,T,F,F,F,F,F,F},
+		{F,F,F,F,F,F,F,F},
+		{F,F,F,F,F,F,F,F}
 	};
-
+	
 	/** Checks if two Sides are along the double shifted Axis */
 	public static final boolean[][] ALONG_AXIS_2 = {
-		{F,F,F,F,T,T,F},
-		{F,F,F,F,T,T,F},
-		{T,T,F,F,F,F,F},
-		{T,T,F,F,F,F,F},
-		{F,F,T,T,F,F,F},
-		{F,F,T,T,F,F,F},
-		{F,F,F,F,F,F,F}
+		{F,F,F,F,T,T,F,F},
+		{F,F,F,F,T,T,F,F},
+		{T,T,F,F,F,F,F,F},
+		{T,T,F,F,F,F,F,F},
+		{F,F,T,T,F,F,F,F},
+		{F,F,T,T,F,F,F,F},
+		{F,F,F,F,F,F,F,F},
+		{F,F,F,F,F,F,F,F}
 	};
-
+	
 	/** Insert Facing and a Connectivity BitMask to see if it is connecting to that Side. Technically this is a simple Bit Operation, but accessing an Array with "FACE_CONNECTED[aSide][aConnections]" just looks nicer than "(aConnections & (1 << aSide) != 0)". */
 	public static final boolean[][] FACE_CONNECTED = {
 		{F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T},
@@ -601,19 +607,19 @@ public class CS {
 	public static final byte[]              FACE_CONNECTION_COUNT = {0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7};
 	
 	/** Side Bits for quick reference.*/
-	public static final byte                SBIT[] = { 1, 2, 4, 8,16,32,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
+	public static final byte                SBIT[] = { 1, 2, 4, 8,16,32,64,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
 	
 	/** Those are not representing actual directions! They are for the "FACING_ROTATIONS" Array-Map */
 	public static final byte                SIDE_LEFT = 2, SIDE_FRONT = 3, SIDE_RIGHT = 4, SIDE_BACK = 5;
 	
 	/** Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2] */
-	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2};
+	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2, 2};
 	/** Side->Opposite Mappings. */
-	public static final byte[]              OPOS = { 1, 0, 3, 2, 5, 4, 6};
+	public static final byte[]              OPOS = { 1, 0, 3, 2, 5, 4, 6, 6};
 	/** Side->Offset Mappings. */
-	public static final byte[]              OFFX = { 0, 0, 0, 0,-1,+1, 0},
-											OFFY = {-1,+1, 0, 0, 0, 0, 0},
-											OFFZ = { 0, 0,-1,+1, 0, 0, 0};
+	public static final byte[]              OFFX = { 0, 0, 0, 0,-1,+1, 0, 0},
+											OFFY = {-1,+1, 0, 0, 0, 0, 0, 0},
+											OFFZ = { 0, 0,-1,+1, 0, 0, 0, 0};
 	@Deprecated
 	public static final byte[]              OPPOSITES = OPOS, OFFSETS_X = OFFX, OFFSETS_Y = OFFY, OFFSETS_Z = OFFZ;
 	/** 3x3x3 Mappings. */
@@ -630,7 +636,13 @@ public class CS {
 	/** Compass alike Array for the proper ordering of North, East, South and West. */
 	public static final byte[]              COMPASS_DIRECTIONS      = {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
 	/** Side -> Compass Direction. Defaults to North if wrong value. */
-	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0};
+	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0, 0};
+	
+	/** Rotate */
+	public static final byte[]              ROTATE_090              = { 0, 1, 5, 4, 2, 3, 6, 6},
+											ROTATE_180              = { 0, 1, 3, 2, 5, 4, 6, 6},
+											ROTATE_270              = { 0, 1, 4, 5, 3, 2, 6, 6};
+	
 	/** Meta -> Side+1 */
 	public static final byte[]              META_TO_SIDE_0          = { 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
 											META_TO_SIDE_1          = { 6, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6},
@@ -675,65 +687,69 @@ public class CS {
 											ALL_SIDES_Z                  =  {2,3};
 	
 	/** For Facing Checks. */
-	public static final boolean[]           SIDES_BOTTOM            = {T,F,F,F,F,F,F},
-											SIDES_TOP               = {F,T,F,F,F,F,F},
-											SIDES_LEFT              = {F,F,T,F,F,F,F},
-											SIDES_FRONT             = {F,F,F,T,F,F,F},
-											SIDES_RIGHT             = {F,F,F,F,T,F,F},
-											SIDES_BACK              = {F,F,F,F,F,T,F},
-											SIDES_INVALID           = {F,F,F,F,F,F,T},
-											SIDES_VALID             = {T,T,T,T,T,T,F},
-											SIDES_ALL               = {T,T,T,T,T,T,T},
-											SIDES_NONE              = {F,F,F,F,F,F,F},
-											SIDES_LEFT_RIGHT        = {F,F,T,F,T,F,F},
-											SIDES_FRONT_BACK        = {F,F,F,T,F,T,F},
-											SIDES_AXIS_X            = {F,F,F,F,T,T,F},
-											SIDES_AXIS_Y            = {T,T,F,F,F,F,F},
-											SIDES_AXIS_Z            = {F,F,T,T,F,F,F},
-											SIDES_COMPASS           = {F,F,T,T,T,T,F},
-											SIDES_VERTICAL          = {T,T,F,F,F,F,F},
-											SIDES_HORIZONTAL        = {F,F,T,T,T,T,F},
-											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F},
-											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F},
-											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F};
+	public static final boolean[]           SIDES_BOTTOM            = {T,F,F,F,F,F,F,F},
+											SIDES_TOP               = {F,T,F,F,F,F,F,F},
+											SIDES_LEFT              = {F,F,T,F,F,F,F,F},
+											SIDES_FRONT             = {F,F,F,T,F,F,F,F},
+											SIDES_RIGHT             = {F,F,F,F,T,F,F,F},
+											SIDES_BACK              = {F,F,F,F,F,T,F,F},
+											SIDES_INVALID           = {F,F,F,F,F,F,T,T},
+											SIDES_VALID             = {T,T,T,T,T,T,F,F},
+											SIDES_ALL               = {T,T,T,T,T,T,T,T},
+											SIDES_NONE              = {F,F,F,F,F,F,F,F},
+											SIDES_LEFT_RIGHT        = {F,F,T,F,T,F,F,F},
+											SIDES_FRONT_BACK        = {F,F,F,T,F,T,F,F},
+											SIDES_AXIS_X            = {F,F,F,F,T,T,F,F},
+											SIDES_AXIS_Y            = {T,T,F,F,F,F,F,F},
+											SIDES_AXIS_Z            = {F,F,T,T,F,F,F,F},
+											SIDES_COMPASS           = {F,F,T,T,T,T,F,F},
+											SIDES_VERTICAL          = {T,T,F,F,F,F,F,F},
+											SIDES_HORIZONTAL        = {F,F,T,T,T,T,F,F},
+											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F,F},
+											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F,F},
+											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F,F};
 	
 	/** For Facing Checks. */
 	public static final boolean[][]
 	SIDES_ANY_BUT = {
-		{F,T,T,T,T,T,F},
-		{T,F,T,T,T,T,F},
-		{T,T,F,T,T,T,F},
-		{T,T,T,F,T,T,F},
-		{T,T,T,T,F,T,F},
-		{T,T,T,T,T,F,F},
-		{T,T,T,T,T,T,F}
+		{F,T,T,T,T,T,F,F},
+		{T,F,T,T,T,T,F,F},
+		{T,T,F,T,T,T,F,F},
+		{T,T,T,F,T,T,F,F},
+		{T,T,T,T,F,T,F,F},
+		{T,T,T,T,T,F,F,F},
+		{T,T,T,T,T,T,F,F},
+		{T,T,T,T,T,T,F,F}
 	},
 	SIDES_THIS = {
-		{T,F,F,F,F,F,F},
-		{F,T,F,F,F,F,F},
-		{F,F,T,F,F,F,F},
-		{F,F,F,T,F,F,F},
-		{F,F,F,F,T,F,F},
-		{F,F,F,F,F,T,F},
-		{F,F,F,F,F,F,F}
+		{T,F,F,F,F,F,F,F},
+		{F,T,F,F,F,F,F,F},
+		{F,F,T,F,F,F,F,F},
+		{F,F,F,T,F,F,F,F},
+		{F,F,F,F,T,F,F,F},
+		{F,F,F,F,F,T,F,F},
+		{F,F,F,F,F,F,F,F},
+		{F,F,F,F,F,F,F,F}
 	},
 	SIDES_EQUAL = {
-		{T,F,F,F,F,F,T},
-		{F,T,F,F,F,F,T},
-		{F,F,T,F,F,F,T},
-		{F,F,F,T,F,F,T},
-		{F,F,F,F,T,F,T},
-		{F,F,F,F,F,T,T},
-		{T,T,T,T,T,T,T}
+		{T,F,F,F,F,F,T,T},
+		{F,T,F,F,F,F,T,T},
+		{F,F,T,F,F,F,T,T},
+		{F,F,F,T,F,F,T,T},
+		{F,F,F,F,T,F,T,T},
+		{F,F,F,F,F,T,T,T},
+		{T,T,T,T,T,T,T,T},
+		{T,T,T,T,T,T,T,T}
 	},
 	SIDES_UNEQUAL = {
-		{F,T,T,T,T,T,F},
-		{T,F,T,T,T,T,F},
-		{T,T,F,T,T,T,F},
-		{T,T,T,F,T,T,F},
-		{T,T,T,T,F,T,F},
-		{T,T,T,T,T,F,F},
-		{F,F,F,F,F,F,F}
+		{F,T,T,T,T,T,F,F},
+		{T,F,T,T,T,T,F,F},
+		{T,T,F,T,T,T,F,F},
+		{T,T,T,F,T,T,F,F},
+		{T,T,T,T,F,T,F,F},
+		{T,T,T,T,T,F,F,F},
+		{F,F,F,F,F,F,F,F},
+		{F,F,F,F,F,F,F,F}
 	},
 	AXIS_XYZ = {
 		SIDES_NONE,
@@ -745,16 +761,16 @@ public class CS {
 	/** Pillar Stuff for more understandable references. */
 	public static final byte PILLAR_X = 4, PILLAR_Y = 0, PILLAR_Z = 8, PILLAR_BITS = 12, PILLAR_DATA = 3, PILLAR_RENDER = 31
 	, PILLARS_X[] = {4,5,6,7}, PILLARS_Y[] = {0,1,2,3}, PILLARS_Z[] = {8,9,10,11}
-	, PILLAR_BITS_SIDE[] = {0,0,8,8,4,4,0}
+	, PILLAR_BITS_SIDE[] = {0,0,8,8,4,4,0,0}
 	, PILLAR_DATA_SIDE[][] = {
-	  {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
+	  {0,0,8,8,4,4,0,0}, {1,1,9,9,5,5,1,1}, {2,2,10,10,6,6,2,2}, {3,3,11,11,7,7,3,3}
+	, {0,0,8,8,4,4,0,0}, {1,1,9,9,5,5,1,1}, {2,2,10,10,6,6,2,2}, {3,3,11,11,7,7,3,3}
+	, {0,0,8,8,4,4,0,0}, {1,1,9,9,5,5,1,1}, {2,2,10,10,6,6,2,2}, {3,3,11,11,7,7,3,3}
 	// Pillar Blocks that are fully covered in "Bark" (if they were Logs)
-	, {12,12,12,12,12,12,12}
-	, {13,13,13,13,13,13,13}
-	, {14,14,14,14,14,14,14}
-	, {15,15,15,15,15,15,15}
+	, {12,12,12,12,12,12,12,12}
+	, {13,13,13,13,13,13,13,13}
+	, {14,14,14,14,14,14,14,14}
+	, {15,15,15,15,15,15,15,15}
 	};
 	/** Pillar Axis Stuff for more understandable references. */
 	public static final boolean[][] PILLAR_TO_AXIS = {
@@ -845,7 +861,7 @@ public class CS {
 	public static final double WEIGHT_AIR_KG_PER_UNIT = WEIGHT_AIR_KG_PER_CUBIC_METER / 9;
 	
 	/** Not really Constants, but they set using the Config and therefore should be constant. */
-	public static boolean D1 = F, D2 = F, D3 = F, ALWAYS_TRUE = T, ALWAYS_FALSE = F, EXPERIMENTS = F, CLIENT_BLOCKUPDATE_SOUNDS = F, NEI = F, TOOL_SOUNDS = T, EMIT_EU_AS_RF = F, DISABLE_GT6_CRAFTING_RECIPES = F, ENABLE_ADDING_IC2_MACERATOR_RECIPES = T, DISABLE_ALL_IC2_MACERATOR_RECIPES = F, ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = T, DISABLE_ALL_IC2_EXTRACTOR_RECIPES = F, ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = T, DISABLE_ALL_IC2_COMPRESSOR_RECIPES = F, ENABLE_ADDING_IC2_OREWASHER_RECIPES = T, DISABLE_ALL_IC2_OREWASHER_RECIPES = F, ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = T, DISABLE_ALL_IC2_CENTRIFUGE_RECIPES = F, SLOW_LEAF_DECAY = F, FAST_LEAF_DECAY = T, FORCE_GRAVEL_NO_FLINT = F, NERFED_WOOD = T, FOOD_OVERDOSE_DEATH = T, NUTRITION_SYSTEM = T, OBSTRUCTION_CHECKS = T, OWNERSHIP_RESET = F, SPAWN_ZONE_MOB_PROTECTION = T, SPAWN_NO_BATS = T, SPAWN_HOSTILES_ONLY_IN_DARKNESS = T, CONSTANT_ENERGY = T, RAIN_EXPLOSIONS = F, WATER_EXPLOSIONS = F, THUNDER_EXPLOSIONS = F, FIRE_EXPLOSIONS = F, OVERCHARGE_EXPLOSIONS = F, FIRE_BREAKING = F, RAIN_BREAKING = F, WATER_BREAKING = F, THUNDER_BREAKING = F, OVERCHARGE_BREAKING = F, SHOW_MICROBLOCKS = F, SHOW_CHEM_FORMULAS = T, SHOW_INTERNAL_NAMES = F, SHOW_HIDDEN_MATERIALS = F, SHOW_HIDDEN_PREFIXES = F, SHOW_ORE_BLOCK_PREFIXES = F, SHOW_HIDDEN_ITEMS = F, SHOW_BUMBLEBEES = F, DRINKS_ALWAYS_DRINKABLE = F, HUNGER_BY_INVENTORY_WEIGHT = F, TOOL_BREAK_FATIQUE = T, INVENTORY_UNIFICATION = T, XP_ORB_COMBINING = T, ADVENTURE_MODE_KIT = F, SURVIVAL_INTO_ADVENTURE_MODE = F, MOBS_DROP_LEAD = T, MOBS_DROP_MEAT = T, MOBS_DROP_JUNK = T, MOBS_DROP_BOOK = T, MOBS_DROP_NAME = T, ZOMBIES_DIG_WITH_TOOLS = F, ZOMBIES_DIG_TILEENTITIES = F, ZOMBIES_HOLD_PICKAXES = T, ZOMBIES_HOLD_TNT = T, ZOMBIES_IGNITE_HELD_TNT = T, DISPLAY_TEMP_TOOLTIP = T, GENERATE_STONE = T, GENERATE_STREETS = F, GENERATE_NEXUS = F, GENERATE_TESTING = F, GENERATE_BEACON = F, GENERATE_BIOMES = F, GENERATING_SPECIAL = F;
+	public static boolean D1 = F, D2 = F, D3 = F, ALWAYS_TRUE = T, ALWAYS_FALSE = F, EXPERIMENTS = F, CLIENT_BLOCKUPDATE_SOUNDS = F, NEI = F, TOOL_SOUNDS = T, TOOL_SOUNDS_SETTING = T, EMIT_EU_AS_RF = F, DISABLE_GT6_CRAFTING_RECIPES = F, ENABLE_ADDING_IC2_MACERATOR_RECIPES = T, DISABLE_ALL_IC2_MACERATOR_RECIPES = F, ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = T, DISABLE_ALL_IC2_EXTRACTOR_RECIPES = F, ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = T, DISABLE_ALL_IC2_COMPRESSOR_RECIPES = F, ENABLE_ADDING_IC2_OREWASHER_RECIPES = T, DISABLE_ALL_IC2_OREWASHER_RECIPES = F, ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = T, DISABLE_ALL_IC2_CENTRIFUGE_RECIPES = F, SLOW_LEAF_DECAY = F, FAST_LEAF_DECAY = T, FORCE_GRAVEL_NO_FLINT = F, NERFED_WOOD = T, FOOD_OVERDOSE_DEATH = T, NUTRITION_SYSTEM = T, OBSTRUCTION_CHECKS = T, OWNERSHIP_RESET = F, SPAWN_ZONE_MOB_PROTECTION = T, SPAWN_NO_BATS = T, SPAWN_HOSTILES_ONLY_IN_DARKNESS = T, CONSTANT_ENERGY = T, RAIN_EXPLOSIONS = F, WATER_EXPLOSIONS = F, THUNDER_EXPLOSIONS = F, FIRE_EXPLOSIONS = F, OVERCHARGE_EXPLOSIONS = F, FIRE_BREAKING = F, RAIN_BREAKING = F, WATER_BREAKING = F, THUNDER_BREAKING = F, OVERCHARGE_BREAKING = F, SHOW_MICROBLOCKS = F, SHOW_CHEM_FORMULAS = T, SHOW_INTERNAL_NAMES = F, SHOW_HIDDEN_MATERIALS = F, SHOW_HIDDEN_PREFIXES = F, SHOW_ORE_BLOCK_PREFIXES = F, SHOW_HIDDEN_ITEMS = F, SHOW_BUMBLEBEES = F, DRINKS_ALWAYS_DRINKABLE = F, HUNGER_BY_INVENTORY_WEIGHT = F, TOOL_BREAK_FATIQUE = T, INVENTORY_UNIFICATION = T, XP_ORB_COMBINING = T, ADVENTURE_MODE_KIT = F, SURVIVAL_INTO_ADVENTURE_MODE = F, MOBS_DROP_LEAD = T, MOBS_DROP_MEAT = T, MOBS_DROP_JUNK = T, MOBS_DROP_BOOK = T, MOBS_DROP_NAME = T, ZOMBIES_DIG_WITH_TOOLS = F, ZOMBIES_DIG_TILEENTITIES = F, ZOMBIES_HOLD_PICKAXES = T, ZOMBIES_HOLD_TNT = T, ZOMBIES_IGNITE_HELD_TNT = T, DISPLAY_TEMP_TOOLTIP = T, GENERATE_STONE = T, GENERATE_STREETS = F, GENERATE_NEXUS = F, GENERATE_TESTING = F, GENERATE_BEACON = F, GENERATE_BIOMES = F, GENERATING_SPECIAL = F;
 	/** Date based Shenanigans */
 	@SuppressWarnings("deprecation")
 	public static boolean
@@ -1002,7 +1018,9 @@ public class CS {
 	public static ICompatFR         COMPAT_FR;
 	/** Used to register GalactiCraft Stuff, this Object might be null if GalactiCraft isn't installed. */
 	public static ICompatGC         COMPAT_GC;
-
+	/** Used to register Warpdrive Stuff, this Object might be null if Warpdrive isn't installed. */
+	public static ICompatWD         COMPAT_WD;
+	
 	/** Date and Time of when the Game launched. */
 	public static final String DATE_OF_GAME_START = UT.Code.dateAndTime();
 
@@ -1164,6 +1182,8 @@ public class CS {
 	, NBT_QUALITY                   = "gt.quality"                  // Byte
 	, NBT_FORTUNE                   = "gt.fortune"                  // Byte
 	, NBT_FACING                    = "gt.facing"                   // Byte
+	, NBT_FAC2NG                    = "gt.facing.2nd"               // Byte
+	, NBT_FAC3NG                    = "gt.facing.3rd"               // Byte
 	, NBT_CONNECTION                = "gt.connection"               // Byte
 	, NBT_DIAMETER                  = "gt.diameter"                 // Double
 	, NBT_PIPELOSS                  = "gt.pipeloss"                 // Long
@@ -1573,6 +1593,7 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> ILLEGAL_DROPS = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> DEBUG_ITEMS = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> AMMO_ITEMS = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> NO_TOOL_FATIQUE = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> NON_AUTO_INSERT_ITEMS = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = new ItemStackSet<>();
@@ -1973,6 +1994,7 @@ public class CS {
 		, LOSTBOOKS         = "LostBooks"
 		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
+		, VN4               = "VillageNames"
 		
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"

@@ -682,8 +682,8 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		}
 	}
 	
-	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent), U9);}
-	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT, U9);}
+	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent)*1000, U9);}
+	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT*1000, U9);}
 	
 	@Override public byte getDefaultSide() {return SIDE_UP;}
 	@Override public boolean[] getValidSides() {return SIDES_NONE;}

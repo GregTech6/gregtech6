@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,6 +36,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		
 		for (String tCopper : new String[] {"molten.copper", "molten.annealedcopper"}) {
 		mix(tCopper                 ,  1, "molten.nickel"         ,  1                                                            , "molten.constantan"       ,  2);
+		mix(tCopper                 ,  3, "molten.arsenic"        ,  1                                                            , "molten.arseniccopper"    ,  4);
 		mix(tCopper                 ,  3, "molten.tin"            ,  1                                                            , "molten.bronze"           ,  4);
 		mix(tCopper                 ,  3, "molten.zinc"           ,  1                                                            , "molten.brass"            ,  4);
 		mix(tCopper                 ,  1, "molten.aluminium"      ,  3                                                            , "molten.aluminiumbrass"   ,  4);
@@ -48,6 +49,8 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix(tCopper                 ,  3, "molten.tin"            ,  1, "molten.gold"           ,  4                              , "molten.hepatizon"        ,  8);
 		mix(tCopper                 ,  3, "molten.electrum"       ,  2                                                            , "molten.blackbronze"      ,  5);
 		mix(tCopper                 ,  1, "molten.gold"           ,  4                                                            , "molten.rosegold"         ,  5);
+		mix(tCopper                 ,  3, "molten.tin"            ,  1, "molten.arsenic"        ,  1                              , "molten.arsenicbronze"    ,  5);
+		mix(tCopper                 ,  3, "molten.zinc"           ,  1, "molten.bismuth"        ,  1                              , "molten.bismuthbronze"    ,  5);
 		}
 		for (String tIron : new String[] {"molten.iron", "molten.wroughtiron", "molten.pigiron", "molten.meteoriciron"}) {
 		mix(tIron                   ,  2, "molten.nickel"         ,  1                                                            , "molten.invar"            ,  3);
@@ -81,6 +84,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix("molten.magnesium"      ,  1, "molten.aluminium"      ,  2                                                            , "molten.magnalium"        ,  3);
 		mix("molten.brass"          ,  7, "molten.aluminium"      ,  1, "molten.cobalt"         ,  1                              , "molten.cobaltbrass"      ,  9);
 		mix("molten.brass"          ,  4, "molten.bismuth"        ,  1                                                            , "molten.bismuthbronze"    ,  5);
+		mix("molten.bronze"         ,  4, "molten.arsenic"        ,  1                                                            , "molten.arsenicbronze"    ,  5);
 		mix("molten.cobalt"         ,  5, "molten.chromium"       ,  2, "molten.nickel"         ,  1, "molten.molybdenum"     ,  1, "molten.ultimet"          ,  9);
 		mix("molten.cobalt"         , 20, "molten.chromium"       ,  7, "molten.nichrome"       ,  5, "molten.molybdenum"     ,  4, "molten.ultimet"          , 36);
 		mix("molten.osmiumelemental",  1, "molten.iridium"        ,  1                                                            , "molten.osmiridium"       ,  2);

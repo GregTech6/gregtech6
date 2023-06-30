@@ -113,6 +113,8 @@ public enum FL {
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER, BATH)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER, BATH)
 	, SpDew                     ("spectral_dew"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, INFINITE)
+	, Cold_Water                ("cold_water"                                               , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS) // 15°C
+	, Hot_Water                 ("hot_water"                                                , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS) // 60°C
 	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Boiling             ("boilingwater"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Geothermal          ("watergeothermal"                                          , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregapi.tileentity.base;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.MultiTileEntityContainer;
-import gregapi.data.CS.ToolsGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.ITileEntityMachineBlockUpdateable;
@@ -36,6 +32,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -45,13 +45,13 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_FACING + ".2nd")) mSecondFacing = aNBT.getByte(NBT_FACING + ".2nd");
+		if (aNBT.hasKey(NBT_FAC2NG)) mSecondFacing = aNBT.getByte(NBT_FAC2NG);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
-		aNBT.setByte(NBT_FACING + ".2nd", mSecondFacing);
+		aNBT.setByte(NBT_FAC2NG, mSecondFacing);
 	}
 	
 	@Override

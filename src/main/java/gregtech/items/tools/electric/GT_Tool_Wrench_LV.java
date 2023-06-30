@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.electric;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -33,6 +31,8 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Wrench_LV extends GT_Tool_Wrench {
 	public final int mSwitchIndex;
@@ -94,8 +94,7 @@ public class GT_Tool_Wrench_LV extends GT_Tool_Wrench {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		if (super.isMinableBlock(aBlock, aMetaData)) return T;
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equals(TOOL_monkeywrench));
+		return TOOL_monkeywrench.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData));
 	}
 	
 	@Override

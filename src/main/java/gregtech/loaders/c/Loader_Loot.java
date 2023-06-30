@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,6 +20,7 @@
 package gregtech.loaders.c;
 
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.util.ST;
@@ -40,12 +41,14 @@ public class Loader_Loot implements Runnable {
 	public void run() {
 		new ChestGenHooksChestReplacer(ChestGenHooks.DUNGEON_CHEST       , 32745);
 		new ChestGenHooksChestReplacer(ChestGenHooks.MINESHAFT_CORRIDOR  ,   500);
-		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH  ,    10);
 		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_LIBRARY  ,   508);
 		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CROSSING ,   509);
 		new ChestGenHooksChestReplacer(ChestGenHooks.STRONGHOLD_CORRIDOR ,   510);
 		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_DESERT_CHEST,     2);
 		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_JUNGLE_CHEST,   502);
+		if (!MD.VN4.mLoaded)
+		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH  ,    24);
+		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Glue.get(1));
@@ -160,6 +163,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.ingot.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 4,16, OP.plate.mat(MT.Ag, 1));
@@ -180,6 +184,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
 		
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Bronze, 1));

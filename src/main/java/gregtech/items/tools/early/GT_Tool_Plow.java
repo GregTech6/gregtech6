@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,7 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -38,6 +34,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Plow extends ToolStats {
 	private ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
@@ -61,8 +61,7 @@ public class GT_Tool_Plow extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_plow)) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow;
+		return TOOL_plow.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow;
 	}
 	
 	@Override

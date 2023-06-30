@@ -85,11 +85,17 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1,  8), tBits | MIR                                           , "PPP"          , tHammer+"G"+tWrench, "OTO"              , 'P', OP.plate.dat(ANY.Fe)                     , 'O', ST.make(MD.RC, "part.gear", 1, 1), 'G', OD.blockGlassColorless, 'T', OD.craftingPiston);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1,  9), tBits | MIR                                           , "PPP"          , tHammer+"G"+tWrench, "OTO"              , 'P', OP.plate.dat(ANY.Steel)                  , 'O', ST.make(MD.RC, "part.gear", 1, 2), 'G', OD.blockGlassColorless, 'T', OD.craftingPiston);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1, 10), tBits                                                 , " E "          , " O "              , "OIO"              , 'I', tIngot.dat(MT.Au)                        , 'E', OP.gem.dat(MT.EnderPearl), 'O', OP.blockSolid.dat(MT.Obsidian));
-		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1, 11), tBits                                                 , "OOO"          , "OEO"              , "OOO"              , 'E', OP.gem.dat(MT.EnderPearl)                , 'O', OP.blockSolid.dat(MT.Obsidian));
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 1, 12), tBits                                                 , "GPG"          , "PAP"              , "GPG"              , 'P', OD.craftingPiston                        , 'A', OD.craftingAnvil, 'G', ST.make(MD.RC, "part.gear", 1, 2));
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 13), tBits | DEL_IF_NO_DYES                                , tHammer+"PP"   , tWrench+"PP"                            , 'P', OP.plate.dat(ANY.Steel)                  );
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 14), tBits | DEL_IF_NO_DYES                                , "GPG"          , "PGP"              , "GPG"              , 'P', OP.plate.dat(ANY.Steel)                  , 'G', OD.paneGlassColorless);
 		CR.shaped(ST.make(MD.RC, "machine.beta"           , 8, 15), tBits | DEL_IF_NO_DYES                                , "BPB"          , "PLP"              , "BPB"              , 'P', OP.plate.dat(ANY.Steel)                  , 'B', Blocks.iron_bars, 'L', OD.lever);
+		
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "railcraft-void-chests", T)) {
+			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.RC, "machine.beta", 1, 11));
+			CR.delate(MD.RC, "machine.beta", 11);
+		} else {
+			CR.shaped(ST.make(MD.RC, "machine.beta", 1, 11), tBits, "OOO", "OEO", "OOO", 'E', OP.gem.dat(MT.EnderPearl), 'O', OP.blockSolid.dat(MT.Obsidian));
+		}
 		
 		CR.shaped(IL.RC_ShuntingWire.get(1)                       , DEF_REV                                               , "P"+tHammer    , "WI"                                    , 'P', OP.casingSmall.dat(MT.Pb)                , 'W', OP.wireGt01.dat(ANY.Cu), 'I', OD.itemInsulator);
 		CR.shaped(IL.RC_ShuntingWire.get(1)                       , DEF                                                   , "P"+tHammer    , "W "                                    , 'P', OP.casingSmall.dat(MT.Pb)                , 'W', OP.cableGt01.dat(ANY.Cu));

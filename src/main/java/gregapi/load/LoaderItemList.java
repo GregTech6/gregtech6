@@ -68,6 +68,11 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I89"               , 1, W));
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I100"              , 1, W));
 		
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.wood"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.stone"               , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.iron"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.gold"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.diamond"             , 1, W));// These Daggers would give Fatique when thrown, for no reason.
 		
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge"                   , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge_incendiary"        , 1, W));
@@ -677,6 +682,17 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "rupeeOre"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arlemiteOre"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "realmiteOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "bloodgemOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "netheriteOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "edenOre"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "wildwoodOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "apalachiaOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "skythernOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "mortumOre"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
+		
+		
+		
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
@@ -920,8 +936,8 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Venison_Cooked                    .set(ST.make(MD.TF, "item.venisonCooked"                    , 1, 0), new OreDictItemData(MT.MeatCooked          , U*2, MT.Bone, U9), "foodVenisoncooked");
 		IL.TF_Lamp_of_Cinders                   .set(ST.make(MD.TF, "item.lampOfCinders"                    , 1, 0), null, OD.craftingFirestarter, OreDictToolNames.flintandtinder);
 		IL.TF_Cube_of_Annihilation              .set(ST.make(MD.TF, "item.cubeOfAnnihilation"               , 1, 0));
-		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*192, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
-		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*128, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
+		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*1728, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
+		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*1152, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
 		IL.TF_Fiddlehead                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 8));
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(MT.Glowstone, U4), OD.listAllmushroom);
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
@@ -933,11 +949,11 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Deadrock                          .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 2), OP.stone.dat(MT.STONES.Deadrock));
 		IL.TF_Trollsteinn                       .set(ST.make(MD.TF, "tile.TrollSteinn"                      , 1, 0), OP.stone.dat(MT.Stone));
 		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0), OP.stone.dat(MT.Stone));
-		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0), OP.stone.dat(MT.Stone));
+		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0), null, CR.DELATE);
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
-		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U *64));
+		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U*576));
 		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
 		IL.TF_Giant_Log                         .set(ST.make(MD.TF, "tile.GiantLog"                         , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*512, MT.Bark, U*64));
 		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);
@@ -966,7 +982,7 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		
-		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, OD.itemTar);
+		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, "bucketTar");
 		
 		if (IL.DRPG_Bucket_Tar.exists()) IL.DRPG_Bucket_Tar.item().setContainerItem(Items.bucket);
 		
@@ -1090,7 +1106,7 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Rubber                           .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,26), new OreDictItemData(MT.Rubber, U));
 		IL.BTL_Compost                          .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 5), null, OD.itemCompost);
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
-		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar);
+		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
 		
 		
@@ -1653,6 +1669,7 @@ public class LoaderItemList implements Runnable {
 		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.AE_Wrench_Quartz.wild(1));
 		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Certus.wild(1));
 		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Quartz.wild(1));
+		IL.AE_Torch_Quartz                      .set(ST.make(MD.AE, "tile.BlockQuartzTorch"                 , 1, 0), null, OD.blockTorch);
 		
 		
 		IL.EIO_Wrench                           .set(ST.make(MD.EIO, "itemYetaWrench"                       , 1, 0), null, CR.DELATE); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.EIO_Wrench.wild(1));

@@ -113,8 +113,7 @@ public class GT_Tool_SoftHammer extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_softhammer) || aBlock.getMaterial() == Material.redstoneLight;
+		return TOOL_softhammer.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock.getMaterial() == Material.redstoneLight;
 	}
 	
 	@Override

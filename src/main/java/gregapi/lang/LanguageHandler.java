@@ -100,6 +100,7 @@ public class LanguageHandler {
 	}
 	
 	public static String langfile(String aKey, String aEnglish) {
+		if (sLangFile == null) return aEnglish;
 		Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
 		if (tProperty.wasRead() && mWritingEnabled) sLangFile.save();
 		return tProperty.getString();
@@ -202,7 +203,7 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Netherite Scrap Powder";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + "Netherite Scrap";
 		} else
-		if (aMaterial == MT.Sand || aMaterial == MT.RedSand || aMaterial == MT.SoulSand || aMaterial == MT.EndSand) {
+		if (aMaterial == MT.Sand || aMaterial == MT.RedSand || aMaterial == MT.SoulSand || aMaterial == MT.EndSandWhite || aMaterial == MT.EndSandBlack) {
 			if (aPrefix == OP.crushed)                                              return "Ground " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                          return "Tiny Ground " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("ore"))                            return aMaterial.mNameLocal;
@@ -405,7 +406,9 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Powder";
 		} else
 		if (aMaterial == MT.Bone) {
+			if (aPrefix.mNameInternal.startsWith("ore"))                            return aPrefix.mMaterialPre + "Fossil";
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Bonemeal";
+			if (aPrefix.mNameInternal.startsWith("crushed"))                        return aPrefix.mMaterialPre + "Bones";
 		} else
 		if (aMaterial == MT.Flint) {
 			if (aPrefix == OP.rockGt)                                               return "Mario";
@@ -555,7 +558,7 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("plate"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Plank";
 		}
 		if (aMaterial.contains(TD.Properties.STONE)) {
-			if (aPrefix == OP.rockGt)                                               return aMaterial.mNameLocal + " Rock";
+			if (aPrefix == OP.rockGt)                                               return aMaterial.mNameLocal.endsWith("rock") ? (aMaterial.mNameLocal+" §§§").replaceFirst("rock §§§", " Rock") : aMaterial.mNameLocal + " Rock";
 			if (aPrefix == OP.scrapGt)                                              return aMaterial.mNameLocal + " Pebbles";
 		}
 		if (aMaterial.mID > 0 && aMaterial.mID <= 830 && aMaterial.mID % 10 == 0 && aMaterial.mMeltingPoint > C && aMaterial.mTargetCrushing.mMaterial == aMaterial && aMaterial.contains(TD.Processing.SMITHABLE)) {

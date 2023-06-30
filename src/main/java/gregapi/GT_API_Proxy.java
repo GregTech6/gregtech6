@@ -229,6 +229,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTick(ServerTickEvent aEvent) {
+		TOOL_SOUNDS = TOOL_SOUNDS_SETTING;
+		
 		if (aEvent.side.isServer()) {
 			// Try acquiring the Lock within 10 Milliseconds. Otherwise fuck anyone who locks it up for too long, or any other faulty reason MC doesn't work.
 			try {TICK_LOCK.tryLock(10, TimeUnit.MILLISECONDS);} catch (Throwable e) {e.printStackTrace(ERR);} finally {if (TICK_LOCK.isHeldByCurrentThread()) TICK_LOCK.unlock();}
@@ -506,16 +508,25 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 		if (tBlock instanceof IBlockOnHeadInside) ((IBlockOnHeadInside)tBlock).onHeadInside(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		
+		tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
+		
+		if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote) {
+			Block tPath = IL.EtFu_Path.block();
+			if (ST.valid(tPath)) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+				if (tPath == aEvent.entityLiving.worldObj.getBlock(tX+i, tY+k, tZ+j)) WD.replaceAll(aEvent.entityLiving.worldObj, tX+i, tY+k, tZ+j, tPath, W, BlocksGT.Paths, 0);
+			}
+		}
+		
 		if (aEvent.entityLiving.onGround) {
-			tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
-			if (IL.EtFu_Path.equal(tBlock) && BlocksGT.Paths != null && aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, BlocksGT.Paths, 0, 2)) tBlock = BlocksGT.Paths;
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		}
 	}
 	
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent aEvent) {
+		TOOL_SOUNDS = TOOL_SOUNDS_SETTING;
+		
 		if (aEvent.side.isServer() && aEvent.phase == Phase.END) {
 			ArrayListNoNulls<EntityXPOrb> tOrbs = (XP_ORB_COMBINING && SERVER_TIME % 40 == 31 ? new ArrayListNoNulls<EntityXPOrb>(128) : null);
 			
@@ -793,7 +804,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				IToolStats tStats = ((MultiItemTool)ST.item_(aEvent.original)).getToolStats(aEvent.original);
 				if (tStats != null) tStats.afterBreaking(aEvent.original, aEvent.entityPlayer);
 			} else
-			if (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool) {
+			if (!ItemsGT.NO_TOOL_FATIQUE.contains(aEvent.original, T) && (ST.item_(aEvent.original) instanceof ItemSword || ST.item_(aEvent.original) instanceof ItemTool)) {
 				// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
 				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.weakness   , 300, 2, F);
 				UT.Entities.applyPotion(aEvent.entityPlayer, Potion.digSlowdown, 300, 2, F);

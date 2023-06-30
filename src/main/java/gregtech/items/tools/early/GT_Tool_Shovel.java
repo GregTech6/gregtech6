@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,18 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
-import gregapi.item.multiitem.behaviors.Behavior_Place_Paddy;
-import gregapi.item.multiitem.behaviors.Behavior_Place_Path;
-import gregapi.item.multiitem.behaviors.Behavior_Place_Torch;
-import gregapi.item.multiitem.behaviors.Behavior_Plug_Leak;
-import gregapi.item.multiitem.behaviors.Behavior_Tool;
+import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Shovel extends ToolStats {
 	@Override
@@ -79,8 +75,7 @@ public class GT_Tool_Shovel extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_shovel)) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.sand || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow || aBlock.getMaterial() == Material.clay;
+		return TOOL_shovel.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.sand || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow || aBlock.getMaterial() == Material.clay;
 	}
 	
 	@Override

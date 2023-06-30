@@ -100,6 +100,8 @@ public enum OD {
 	, container250slimeblue
 	, container250slimepink
 	, container250slime
+	, container1000tar
+	, container250tar
 	, aquaRegia
 	, sulfuricAcid
 	, enderChest
@@ -150,6 +152,9 @@ public enum OD {
 	, flowerWither
 	, bamboo
 	, record
+	, dropHoney
+	, dropHoneydew
+	, dropRoyalJelly
 	, beeComb
 	, beeCombCrossbred
 	, hardenedClay

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,7 +45,7 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		ItemStack tStack = ST.load(aStack.getTagCompound(), "gt.filter.item");
-		if (ST.valid(tStack)) aList.add(LH.Chat.CYAN + tStack.getDisplayName());
+		if (ST.valid(tStack)) try {aList.add(LH.Chat.CYAN + tStack.getDisplayName());} catch(Throwable e) {aList.add(LH.Chat.BLINKING_RED + "ERROR, CANNOT DISPLAY ITEM NAME");}
 		aList.add(LH.Chat.ORANGE + "Not NBT sensitive!");
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
@@ -76,7 +76,7 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 						aChatReturn.add("Filter is empty!");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
-						aChatReturn.add("Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
+						aChatReturn.add("Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + (ST.meta_(tStack) == W ? LH.Chat.GREEN + "Wildcard" : LH.Chat.CYAN + ST.meta_(tStack)));
 					}
 				}
 			}
@@ -88,17 +88,29 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	@Override
 	public boolean onCoverClickedRight(byte aCoverSide, CoverData aData, Entity aPlayer, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aPlayer instanceof EntityPlayer && aData.mTileEntity.isServerSide()) {
-			if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.item")) {
-				ItemStack tStack = ST.make(((EntityPlayer)aPlayer).getCurrentEquippedItem(), null, null);
-				if (ST.valid(tStack)) {
-					aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", tStack);
+			ItemStack tStack = ST.make(((EntityPlayer)aPlayer).getCurrentEquippedItem(), null, null);
+			if (ST.valid(tStack)) {
+				ItemStack tFilter = ST.load(aData.mNBTs[aCoverSide], "gt.filter.item");
+				if (ST.invalid(tFilter)) {
+					aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, ST.meta_(tStack)));
 					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
 					UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
+				} else if (ST.equal(tFilter, tStack, T)) {
+					if (ST.meta_(tFilter) == W) {
+						aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, ST.meta_(tStack)));
+						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+						UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
+					} else {
+						aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, W));
+						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+						UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.GREEN + "Wildcard");
+					}
 				}
 			}
 		}
 		return T;
 	}
+	
 	@Override
 	public boolean interceptItemInsert(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {
 		if (aCoverSide != aSide) return F;

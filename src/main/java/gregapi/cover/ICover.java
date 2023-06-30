@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -166,6 +166,11 @@ public interface ICover {
 	 * @return if this side is a Full Texture
 	 */
 	public boolean isFullTexture(byte aCoverSide, CoverData aData);
+	
+	/**
+	 * @return if this Cover is merely Decorative
+	 */
+	public boolean isDecorative(byte aCoverSide, CoverData aData);
 	
 	/**
 	 * @return if this side is Sealable

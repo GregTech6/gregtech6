@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,12 @@
 
 package gregapi.compat.thaumcraft;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import cpw.mods.fml.common.event.FMLModIdMappingEvent;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.compat.CompatBase;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.OD;
 import gregapi.data.TC;
@@ -56,6 +50,12 @@ import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class CompatTC extends CompatBase implements ICompatTC {
 	public CompatTC() {
@@ -115,7 +115,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		TC.TENEBRAE         .mAspect = Aspect.DARKNESS;
 		TC.TUTAMEN          .mAspect = Aspect.ARMOR;
 		TC.VACUOS           .mAspect = Aspect.VOID;
-		TC.VENENUM          .mAspect = Aspect.POISON;
+		TC.VENEMUM          .mAspect = Aspect.POISON;
 		TC.VICTUS           .mAspect = Aspect.LIFE;
 		TC.VINCULUM         .mAspect = Aspect.TRAP;
 		TC.VITIUM           .mAspect = Aspect.TAINT;

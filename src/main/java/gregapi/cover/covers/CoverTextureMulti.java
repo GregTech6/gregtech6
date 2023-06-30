@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.data.CS.SFX;
@@ -35,6 +31,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.TOOL_chisel;
 
 /**
  * @author Gregorius Techneticies
@@ -73,6 +74,7 @@ public class CoverTextureMulti extends AbstractCoverDefault {
 	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_SCREWDRIVER : mSound, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
 	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {if (mHasCollide) super.getCollisions(aCoverSide, aData, aAABB, aList, aEntity);}
+	@Override public boolean isDecorative(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); if (mTextures.length > 1) aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
 }

@@ -25,7 +25,6 @@ import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.item.IItemGT;
@@ -64,8 +63,9 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	public static int FLUID_UPDATE_FLAGS = 2;
 	
 	public final String mNameInternal;
-	public final int mFlammability, mAmountPerQuanta = 125;
+	public final int mFlammability, mAmountPerQuanta, mDensityDir;
 	public final Fluid mFluid;
+	public final FluidStack mQuanta;
 	
 	public BlockBaseFluid(String aNameInternal, FL aFluid, int aFlammability) {
 		this(aNameInternal, aFluid.fluid(), aFlammability);
@@ -77,11 +77,17 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		this(aNameInternal, aFluid, aFlammability, aFluid.isGaseous()?MaterialGas.instance:aFluid.getTemperature()>500?Material.lava:Material.water);
 	}
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability, Material aMaterial) {
+		this(aNameInternal, aFluid, 125, aFlammability, aMaterial);
+	}
+	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aAmountPerQuanta, int aFlammability, Material aMaterial) {
 		super(aFluid, aMaterial);
 		mFluid = aFluid;
-		setResistance(30);
+		mAmountPerQuanta = aAmountPerQuanta;
+		mQuanta = FL.make(mFluid, mAmountPerQuanta);
+		mDensityDir = densityDir;
 		mFlammability = aFlammability;
 		setBlockName(mNameInternal = aNameInternal);
+		setResistance(FL.gas(mFluid) ? 1 : 30);
 		ST.register(this, mNameInternal, ItemBlock.class);
 		FL.BLOCKS.put(mFluid.getName(), this);
 		displacements.put(this, F);
@@ -93,7 +99,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
-		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * mAmountPerQuanta);
+		FluidStack rFluid = FL.mul(mQuanta, WD.meta(aWorld, aX, aY, aZ)+1);
 		if (aDoDrain) {
 			WD.set(aWorld, aX, aY, aZ, NB, 0, 3);
 			updateFluidBlocks(aWorld, aX, aY, aZ, T);
@@ -120,8 +126,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	}
 	
 	public void updateFluidBlocks(World aWorld, int aX, int aY, int aZ, boolean aAll) {
-		for (int j = densityDir > 0 ? -1 : 0; j < (densityDir > 0 ? 1 : 2); j++) if (UT.Code.inside(0, aWorld.getHeight(), aY+j)) for (int i = -4; i <= 4; i++) for (int k = -4; k <= 4; k++) if (i != 0 || j != 0 || k != 0) {
-			if (aWorld.getBlock(aX+i, aY+j, aZ+k) == this && (aAll || aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) > (j == 0 ? Math.abs(i)+Math.abs(j) : 0))) {
+		for (int j = mDensityDir > 0 ? -1 : 0; j < (mDensityDir > 0 ? 1 : 2); j++) if (UT.Code.inside(0, aWorld.getHeight(), aY+j)) for (int i = -4; i <= 4; i++) for (int k = -4; k <= 4; k++) if (i != 0 || j != 0 || k != 0) {
+			if (aWorld.getBlock(aX+i, aY+j, aZ+k) == this && (aAll || aWorld.getBlockMetadata(aX+i, aY+j, aZ+k) > (j == 0 ? Math.abs(i) : 0))) {
 				aWorld.scheduleBlockUpdate(aX+i, aY+j, aZ+k, this, tickRate);
 			}
 		}
@@ -145,7 +151,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		// Trash Fluid Blocks that get in contact with the vertical World Limits.
 		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
-			if (WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.make(getFluid(), tRemainingQuanta * mAmountPerQuanta));
+			if (WD.set(aWorld, aX, aY, aZ, NB, 0, FLUID_UPDATE_FLAGS | 1)) GarbageGT.trash(FL.mul(mQuanta, tRemainingQuanta));
 			return;
 		}
 		
@@ -165,15 +171,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 				updateFluidBlocks(aWorld, aX, aY, aZ, F);
 				return;
 			}
-			if (!WD.liquid(aWorld, aX, aY+densityDir, aZ)) {
+			if (!WD.liquid(aWorld, aX, aY+mDensityDir, aZ)) {
 				for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
-					if (aWorld.blockExists        (aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-					&& !WD.hasCollide     (aWorld, aX+OFFX[tSide], aY+densityDir, aZ+OFFZ[tSide])
-					&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide])
-					&& set                (aWorld, aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], tRemainingQuanta-1, F)) {
-						aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY           , aZ+OFFZ[tSide], this, tickRate);
-						WD.set            (aWorld, aX            , aY           , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
-						updateFluidBlocks (aWorld, aX            , aY           , aZ            , T);
+					if (aWorld.blockExists        (aX+OFFX[tSide], aY            , aZ+OFFZ[tSide])
+					&& !WD.hasCollide     (aWorld, aX+OFFX[tSide], aY+mDensityDir, aZ+OFFZ[tSide])
+					&& displaceIfPossible (aWorld, aX+OFFX[tSide], aY            , aZ+OFFZ[tSide])
+					&& set                (aWorld, aX+OFFX[tSide], aY            , aZ+OFFZ[tSide], tRemainingQuanta-1, F)) {
+						aWorld.scheduleBlockUpdate(aX+OFFX[tSide], aY            , aZ+OFFZ[tSide], this, tickRate);
+						WD.set            (aWorld, aX            , aY            , aZ            , NB, 0, FLUID_UPDATE_FLAGS | 1);
+						updateFluidBlocks (aWorld, aX            , aY            , aZ            , T);
 						return;
 					}
 				}
@@ -264,7 +270,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 		
 		// Compressed Fluid Blocks behave a little bit "jumpier" than normal ones. ;)
 		if (aAmount > 8) {
-			int tY = aY - densityDir;
+			int tY = aY - mDensityDir;
 			Block tBlock = aWorld.getBlock(aX, tY, aZ);
 			
 			// Swap with any finite Fluid Blocks "above" this one unless they are also compressed.
@@ -298,7 +304,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			}
 		}
 		
-		int tY = aY + densityDir;
+		int tY = aY + mDensityDir;
 		Block tBlock = aWorld.getBlock(aX, tY, aZ);
 		
 		if (tBlock == this) {
@@ -318,7 +324,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 			return aAmount;
 		}
 		if (tBlock instanceof BlockFluidBase) {
-			if (densityDir > 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
+			if (mDensityDir > 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
 				WD.set(aWorld, aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), FLUID_UPDATE_FLAGS | 1);
 				set(aWorld, aX, tY, aZ, aAmount - 1, T);
 				// And don't just cast the result of world.getBlock directly like Forge does.
@@ -399,13 +405,13 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		if (mActLikeWeb) aEntity.setInWeb();
-		if (!mEffectsBathing.isEmpty() && aEntity instanceof EntityLivingBase && !UT.Entities.isWearingFullChemHazmat((EntityLivingBase)aEntity)) {
+		if (!aWorld.isRemote && !mEffectsBathing.isEmpty() && aEntity instanceof EntityLivingBase && !UT.Entities.isWearingFullChemHazmat((EntityLivingBase)aEntity)) {
 			for (int[] tEffects : mEffectsBathing) UT.Entities.applyPotion(aEntity, tEffects[0], tEffects[1], tEffects[2], F);
 		}
 	}
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (!mEffectsBreathing.isEmpty() && !UT.Entities.isImmuneToBreathingGases(aEntity)) {
+		if (!aWorld.isRemote && !mEffectsBreathing.isEmpty() && !UT.Entities.isImmuneToBreathingGases(aEntity)) {
 			for (int[] tEffects : mEffectsBreathing) UT.Entities.applyPotion(aEntity, tEffects[0], tEffects[1], tEffects[2], F);
 			if (getMaterial() != Material.water && SERVER_TIME % 20 == 0) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}

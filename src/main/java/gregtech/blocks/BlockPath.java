@@ -131,15 +131,23 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	
 	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack                                                                     ) {return T;}
 	@Override public boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {return T;}
-	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack                                                                     ) {setBlockBounds(0, 0, 0, 1,                                                PIXELS_NEG[1] , 1); return T;}
-	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {setBlockBounds(0, 0, 0, 1, (isHalfBlock(aWorld, aX, aY, aZ)?PIXELS_NEG[9]:PIXELS_NEG[1]), 1); return T;}
+	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack                                                                     ) {setBlockBounds(0, 0, 0, 1,                                          PX_N[1] , 1); return T;}
+	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {setBlockBounds(0, 0, 0, 1, (isHalfBlock(aWorld, aX, aY, aZ)?PX_N[9]:PX_N[1]), 1); return T;}
 	@Override public int getRenderPasses(ItemStack aStack                                                                                         ) {return 1;}
 	@Override public int getRenderPasses(IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered                             ) {return 1;}
 	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack                                                                  ) {return null;}
 	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ                                       ) {return null;}
-	
 	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH_TOP:Textures.BlockIcons.DIRTS[aMeta % 16]).getIcon(0);}
-	@Override @SuppressWarnings({"unchecked"}) public void addCollisionBoxesToList(World aWorld, int aX, int aY, int aZ, AxisAlignedBB aAABB, List aList, Entity aEntity) {AxisAlignedBB tAABB = AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+0.5, aZ+1); if (tAABB.intersectsWith(aAABB)) aList.add(tAABB); if (isHalfBlock(aWorld, aX, aY, aZ)) return; tAABB = AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1); if (tAABB.intersectsWith(aAABB)) aList.add(tAABB);}
+	
+	
+	@Override @SuppressWarnings({"unchecked"})
+	public void addCollisionBoxesToList(World aWorld, int aX, int aY, int aZ, AxisAlignedBB aAABB, List aList, Entity aEntity) {
+		AxisAlignedBB
+		tAABB = AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+0.5  , aZ+1); if (tAABB.intersectsWith(aAABB)) aList.add(tAABB);
+		if (isHalfBlock(aWorld, aX, aY, aZ)) return;
+		tAABB = AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+0.875, aZ+1); if (tAABB.intersectsWith(aAABB)) aList.add(tAABB);
+		tAABB = AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1    , aZ+1); if (tAABB.intersectsWith(aAABB)) aList.add(tAABB);
+	}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+(isHalfBlock(aWorld, aX, aY, aZ)?0.5:1), aZ+1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool (World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+(isHalfBlock(aWorld, aX, aY, aZ)?0.5:1), aZ+1);}
 	@Override public void setBlockBoundsBasedOnState(IBlockAccess aWorld, int aX, int aY, int aZ) {setBlockBounds(0, 0, 0, 1, (isHalfBlock(aWorld, aX, aY, aZ)?0.5F:1), 1);}

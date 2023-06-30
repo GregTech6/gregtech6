@@ -27,6 +27,7 @@ import gregapi.block.IBlockPlacable;
 import gregapi.block.IBlockTileEntity;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.*;
@@ -357,9 +358,29 @@ public class WD {
 		return null;
 	}
 	
+	public static byte WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD = 0;
+	
+	public static TileEntity invalidateTileEntityWithNegativeYCoord(int aX, int aY, int aZ, TileEntity aTileEntity) {
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 0) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a weird Error");
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD < 10) {
+			ERR.println("===============================");
+			ERR.println("X:" + aX);
+			ERR.println("Y:" + aY);
+			ERR.println("Z:" + aZ);
+			ERR.println("Class:" + aTileEntity.getClass());
+			new Throwable().printStackTrace(ERR);
+			ERR.println("===============================");
+		}
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD == 9) UT.Entities.chat(null, "Please provide the gregtech.log File to Greg, there was a LOT of weird Errors");
+		if (WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD < 99) WARN_ABOUT_TILEENTITY_NEGATIVE_Y_COORD++;
+		aTileEntity.invalidate();
+		aTileEntity.yCoord = 0;
+		return aTileEntity;
+	}
 	
 	/** Sets the TileEntity at the passed position, with the option of turning adjacent TileEntity updates off. */
 	public static TileEntity te(World aWorld, int aX, int aY, int aZ, TileEntity aTileEntity, boolean aCauseTileEntityUpdates) {
+		if (aY < 0) return invalidateTileEntityWithNegativeYCoord(aX, aY, aZ, aTileEntity);
 		if (aCauseTileEntityUpdates) aWorld.setTileEntity(aX, aY, aZ, aTileEntity); else {
 			Chunk tChunk = aWorld.getChunkFromChunkCoords(aX >> 4, aZ >> 4);
 			if (tChunk != null) {
@@ -458,7 +479,7 @@ public class WD {
 	public static byte  meta (long aBitAnd, World        aWorld, int aX, int aY, int aZ, byte aSide) {return meta(aBitAnd, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags) {
-		return set(aWorld, aX, aY, aZ, aBlock, Code.bind4(aMeta), (byte)aFlags, aBlock.isOpaqueCube());
+		return set(aWorld, aX, aY, aZ, aBlock, aMeta, aFlags, aBlock.isOpaqueCube());
 	}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags, boolean aRemoveGrassBelow) {
@@ -478,6 +499,38 @@ public class WD {
 			if (tBlock == Blocks.grass || tBlock == Blocks.mycelium) aChunk.func_150807_a(aX, aY-1, aZ, Blocks.dirt, 0);
 		}
 		return aChunk.func_150807_a(aX, aY, aZ, aBlock, aBlock==NB?0:Code.bind4(aMeta));
+	}
+	
+	public static boolean replace(World aWorld, int aX, int aY, int aZ, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		if (aTargetBlock == null || aReplaceBlock == null) return F;
+		if (aReplaceBlock != block(aWorld, aX, aY, aZ)) return F;
+		if (aReplaceMeta != W && aReplaceMeta != meta(aWorld, aX, aY, aZ)) return F;
+		return aWorld.setBlock(aX, aY, aZ, aTargetBlock, Code.bind4(aTargetMeta), 2);
+	}
+	public static boolean replace(World aWorld, ChunkCoordinates aCoords, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		return replace(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta);
+	}
+	public static boolean replaceAll(World aWorld, int aX, int aY, int aZ, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		return replaceAll(aWorld, new ChunkCoordinates(aX, aY, aZ), aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta);
+	}
+	public static boolean replaceAll(World aWorld, ChunkCoordinates aCoords, Block aReplaceBlock, long aReplaceMeta, Block aTargetBlock, long aTargetMeta) {
+		if (!replace(aWorld, aCoords, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta)) return F;
+		HashSetNoNulls<ChunkCoordinates> tSwap,
+		tDone  = new HashSetNoNulls<>(F, aCoords),
+		tCheck = new HashSetNoNulls<>(F, aCoords),
+		tNext  = new HashSetNoNulls<>();
+		
+		while (!tCheck.isEmpty() && tDone.size() < 32768) {
+			tNext.clear();
+			for (ChunkCoordinates tChecking : tCheck) {
+				if (Math.abs(tChecking.posX - aCoords.posX) < 128 && Math.abs(tChecking.posZ - aCoords.posZ) < 128) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+					ChunkCoordinates tCoords = new ChunkCoordinates(tChecking.posX+i, tChecking.posY+j, tChecking.posZ+k);
+					if (tDone.add(tCoords) && replace(aWorld, tCoords, aReplaceBlock, aReplaceMeta, aTargetBlock, aTargetMeta)) tNext.add(tCoords);
+				}
+			}
+			tSwap = tNext; tNext = tCheck; tCheck = tSwap;
+		}
+		return T;
 	}
 	
 	public static boolean sign(World aWorld, int aX, int aY, int aZ, byte aSide, long aFlags, String aLine1, String aLine2, String aLine3, String aLine4) {

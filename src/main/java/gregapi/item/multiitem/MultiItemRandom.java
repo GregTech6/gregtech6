@@ -19,13 +19,6 @@
 
 package gregapi.item.multiitem;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.List;
-
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,14 +30,8 @@ import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.item.IItemEnergy;
 import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.multiitem.energy.EnergyStatDebug;
@@ -70,6 +57,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -127,15 +121,16 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	}
 	
 	protected short mLastID = W;
-	public ItemStack last() {return ST.make(this, 1, mLastID);}
-	public ItemStack next() {return ST.make(this, 1, mLastID+1);}
+	public ItemStack last() {return last(1);}
+	public ItemStack last(int aAmount) {return ST.make(this, aAmount, mLastID);}
+	public ItemStack next() {return next(1);}
+	public ItemStack next(int aAmount) {return ST.make(this, aAmount, mLastID+1);}
 	
 	/**
 	 * This adds a Custom Item.
 	 * @param aID The Id of the assigned Item [0 - 32766]
 	 * @param aEnglish The Default Localised Name of the created Item
 	 * @param aToolTip The Default ToolTip of the created Item, you can also insert null for having no ToolTip
-	 * @param aFoodBehavior The Food Value of this Item. Can be null aswell. Just a convenience thing.
 	 * @param aRandomData The OreDict Names you want to give the Item. Also used for TC Aspects and some other things.
 	 * @return An ItemStack containing the newly created Item.
 	 */
@@ -284,13 +279,6 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	/**
 	 * @param aMetaValue the Meta Value of the Item you want to set it to. [0 - 32766]
-	 * @param aMaxCharge Maximum Charge. (if this is == 0 it will remove the Electric Behavior)
-	 * @param aTransferLimit Transfer Limit.
-	 * @param aTier The electric Tier.
-	 * @param aSpecialData If this Item has a Fixed Charge, like a SingleUse Battery (if > 0).
-	 * Use -1 if you want to make this Battery chargeable (the use and canUse Functions will still discharge if you just use this)
-	 * Use -2 if you want to make this Battery dischargeable.
-	 * Use -3 if you want to make this Battery charge/discharge-able.
 	 * @return the Item itself for convenience in constructing.
 	 */
 	public MultiItemRandom setFluidContainerStats(int aMetaValue, long aCapacity, long aStacksize) {

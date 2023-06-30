@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,28 +39,34 @@ public class Enchantment_SlimeDamage extends EnchantmentDamage {
 	public Enchantment_SlimeDamage() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Dissolving", 13), 2, -1);
 		LH.add(getName(), "Dissolving");
-		MT.KCl               .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.KIO3              .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.NaCl              .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.Cu                .addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4);
-		MT.Brass             .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.CobaltBrass       .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.BismuthBronze     .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.RoseGold          .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.SterlingSilver    .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.Bronze            .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.BlackBronze       .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.BlackSteel        .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.MeteoricBlackSteel.addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.RedSteel          .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.MeteoricRedSteel  .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.BlueSteel         .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.MeteoricBlueSteel .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.Constantan        .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.AnnealedCopper    .addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5);
-		MT.Hepatizon         .addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5);
-		MT.Vyroxeres         .addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5);
-		MT.Infinity          .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
+		MT.KCl                 .addEnchantmentForDamage(this, 2);
+		MT.KIO3                .addEnchantmentForDamage(this, 3);
+		MT.NaCl                .addEnchantmentForDamage(this, 3);
+		MT.As                  .addEnchantmentForDamage(this, 3);
+		MT.Cu                  .addEnchantmentForDamage(this, 4);
+		MT.Brass               .addEnchantmentForDamage(this, 2);
+		MT.CobaltBrass         .addEnchantmentForDamage(this, 2);
+		MT.BismuthBronze       .addEnchantmentForDamage(this, 2);
+		MT.RoseGold            .addEnchantmentForDamage(this, 2);
+		MT.SterlingSilver      .addEnchantmentForDamage(this, 2);
+		MT.Bronze              .addEnchantmentForDamage(this, 2);
+		MT.BlackBronze         .addEnchantmentForDamage(this, 2);
+		MT.BlackSteel          .addEnchantmentForDamage(this, 2);
+		MT.MeteoricBlackSteel  .addEnchantmentForDamage(this, 2);
+		MT.MeteoflameBlackSteel.addEnchantmentForDamage(this, 2);
+		MT.RedSteel            .addEnchantmentForDamage(this, 2);
+		MT.MeteoricRedSteel    .addEnchantmentForDamage(this, 2);
+		MT.MeteoflameRedSteel  .addEnchantmentForDamage(this, 2);
+		MT.BlueSteel           .addEnchantmentForDamage(this, 2);
+		MT.MeteoricBlueSteel   .addEnchantmentForDamage(this, 2);
+		MT.MeteoflameBlueSteel .addEnchantmentForDamage(this, 2);
+		MT.Constantan          .addEnchantmentForDamage(this, 3);
+		MT.AnnealedCopper      .addEnchantmentForDamage(this, 4);
+		MT.Hepatizon           .addEnchantmentForDamage(this, 5);
+		MT.Vyroxeres           .addEnchantmentForDamage(this, 5);
+		MT.ArsenicCopper       .addEnchantmentForDamage(this, 5);
+		MT.ArsenicBronze       .addEnchantmentForDamage(this, 7);
+		MT.Infinity            .addEnchantmentForDamage(this,10);
 		INSTANCE = this;
 	}
 	

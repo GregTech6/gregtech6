@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.cover.ICover;
 import gregapi.cover.ITileEntityCoverable;
@@ -40,10 +36,15 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
 /**
  * @author Gregorius Techneticies
  * 
- * A Default implementations that is used for all regular Covers.
+ * A Default implementation that is used for all regular Covers.
  */
 public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return F;}
@@ -66,6 +67,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean isOpaque(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean isSealable(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean isFullTexture(byte aCoverSide, CoverData aData) {return T;}
+	@Override public boolean isDecorative(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean needsVisualsSaved(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {return T;}

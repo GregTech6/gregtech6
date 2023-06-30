@@ -19,7 +19,6 @@
 
 package gregtech.tileentity.energy.reactors;
 
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
@@ -87,7 +86,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
-
+					
 					tNeutronCount = getReactorRodNeutronEmission(3);
 					tModerated = isReactorRodModerated(3);
 					if (tNeutronCount != 0 || tModerated) {
@@ -105,9 +104,9 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				updateReactorRodModeration(2);
 				updateReactorRodModeration(3);
 			}
-
+			
 			long tCalc = UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
-
+			
 			// TODO Raycasting through Lead, Water and similar Blocks.
 			if (tCalc > 0 && SERVER_TIME % 20 == 10) {
 				for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
@@ -115,23 +114,23 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 				}
 			}
-
+			
 			mRunning = (tCalc != 0);
-
+			
 			long tEnergy = mEnergy;
-
+			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
 			if (getReactorRodNeutronReaction(1)) mRunning = T;
 			if (getReactorRodNeutronReaction(2)) mRunning = T;
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
-
+			
 			int tDivider = 1;
 			if (MT.Na.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider = 6;
 			else if (MT.Sn.mLiquid.isFluidEqual(mTanks[0].getFluid())) tDivider = 3;
 			mEnergy = UT.Code.divup(mEnergy - tEnergy, tDivider) + tEnergy;
-
+			
 			oEnergy = mEnergy - tEnergy;
-
+			
 			if (mEnergy > 0) {
 				boolean tIsExploding = F;
 				if (FL.Coolant_IC2.is(mTanks[0])) {

@@ -43,6 +43,7 @@ import gregapi.compat.galacticraft.ICompatGC;
 import gregapi.compat.industrialcraft.ICompatIC2;
 import gregapi.compat.industrialcraft.ICompatIC2EUItem;
 import gregapi.compat.thaumcraft.ICompatTC;
+import gregapi.compat.warpdrive.ICompatWD;
 import gregapi.config.Config;
 import gregapi.config.ConfigCategories;
 import gregapi.cover.CoverRegistry;
@@ -349,14 +350,14 @@ public class GT_API extends Abstract_Mod {
 		
 		ConfigsGT.CLIENT = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
 		
-		D1                        = ConfigsGT.CLIENT.get("debug" , "logs"               , F);
-		D2                        = ConfigsGT.CLIENT.get("debug" , "oredict"            , F);
-		D3                        = ConfigsGT.CLIENT.get("debug" , "misc"               , F);
-		EXPERIMENTS               = ConfigsGT.CLIENT.get("debug" , "experiments"        , F);
-		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get("debug" , "block_update_sounds", F);
-		if ( ConfigsGT.CLIENT.get("debug" , "april_fools"  , F)) APRIL_FOOLS = T;
-		if ( ConfigsGT.CLIENT.get("debug" , "xmas_july"    , F)) XMAS_IN_JULY = T;
-		if ( ConfigsGT.CLIENT.get("debug" , "xmas_december", F)) XMAS_IN_DECEMBER = T;
+		D1                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "logs"               , F);
+		D2                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "oredict"            , F);
+		D3                        = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "misc"               , F);
+		EXPERIMENTS               = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "experiments"        , F);
+		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get(ConfigCategories.debug  , "block_update_sounds", F);
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "april_fools"  , F)) APRIL_FOOLS = T;
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "xmas_july"    , F)) XMAS_IN_JULY = T;
+		if ( ConfigsGT.CLIENT.get(ConfigCategories.debug, "xmas_december", F)) XMAS_IN_DECEMBER = T;
 		
 		if (APRIL_FOOLS) {
 			MT.W.setLocal("Wolframium");
@@ -427,6 +428,9 @@ public class GT_API extends Abstract_Mod {
 			MT.Asbestos.setLocal("Bestos");
 			MT.AncientDebris.setLocal("Cinnabun");
 			MT.Cinnamon.setLocal("Ancient Debris");
+			MT.WOODS.Acacia.setLocal("A Cha Cha");
+			MT.WOODS.DarkOak.setLocal("Dork Oak");
+			MT.WOODS.Darkwood.setLocal("Dork Wood");
 			MT.WOODS.Cinnamon.setLocal("Ancient Debris");
 			MT.WOODS.Foxfire.setLocal("Chrome");
 			MT.Rb.setLocal("Ruby");
@@ -434,7 +438,7 @@ public class GT_API extends Abstract_Mod {
 			MT.KNO3.setLocal("Niter");
 			MT.NaNO3.setLocal("Nitre");
 			MT.Glyceryl.setLocal("Nitro");
-			MT.Gunpowder.setLocal("Boompowder");
+			MT.Gunpowder.setLocal("Crossbow Powder");
 			MT.Lubricant.setLocal("Lube");
 			MT.H2SO4.setLocal("Sulphuric Acid");
 			MT.H2S2O7.setLocal("Disulphuric Acid");
@@ -444,6 +448,8 @@ public class GT_API extends Abstract_Mod {
 			MT.PigIron.setLocal("Ferrobacon");
 			MT.TinAlloy.setLocal("Tin*");
 			MT.Bronze.setLocal("Tinkerers Alloy");
+			MT.ArsenicCopper.setLocal("Arsenine Alloy");
+			MT.ArsenicBronze.setLocal("Arsenine Tinkerers Alloy");
 			MT.BlackBronze.setLocal("Afro Tinkerers Alloy"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.Constantan.setLocal("Cupronickel");
 			MT.Ge.setLocal("Platosmium");
@@ -502,7 +508,6 @@ public class GT_API extends Abstract_Mod {
 		SPAWN_NO_BATS                           = ConfigsGT.GREGTECH.get("general", "PreventBatSpawnsOnNonVanillaStone", T);
 		SPAWN_HOSTILES_ONLY_IN_DARKNESS         = ConfigsGT.GREGTECH.get("general", "PreventMobSpawnsAboveLightLevel0" , T);
 		DISABLE_GT6_CRAFTING_RECIPES            = ConfigsGT.GREGTECH.get("general", "DisableGT6CraftingRecipesDEBUG"   , F);
-		TOOL_SOUNDS                             = ConfigsGT.GREGTECH.get("general", "sound_tools"                      , T);
 		MOBS_DROP_LEAD                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_lead_instead_of_iron"   , T);
 		MOBS_DROP_MEAT                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_variety_meats"          , T);
 		MOBS_DROP_JUNK                          = ConfigsGT.GREGTECH.get("general", "mobs_drop_random_junk"            , T);
@@ -596,6 +601,7 @@ public class GT_API extends Abstract_Mod {
 		if (ConfigsGT.GREGTECH.get("compat", "ComputerCraft"       , T)) ICompat.COMPAT_CLASSES.add(COMPAT_CC        = (ICompatCC        )UT.Reflection.callConstructor("gregapi.compat.computercraft.CompatCC"          , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "Forestry"            , T)) ICompat.COMPAT_CLASSES.add(COMPAT_FR        = (ICompatFR        )UT.Reflection.callConstructor("gregapi.compat.forestry.CompatFR"               , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "GalactiCraft"        , T)) ICompat.COMPAT_CLASSES.add(COMPAT_GC        = (ICompatGC        )UT.Reflection.callConstructor("gregapi.compat.galacticraft.CompatGC"           , 0, null, D2));
+		if (ConfigsGT.GREGTECH.get("compat", "WarpDrive"           , T)) ICompat.COMPAT_CLASSES.add(COMPAT_WD        = (ICompatWD        )UT.Reflection.callConstructor("gregapi.compat.warpdrive.CompatWD"              , 0, null, D2));
 		
 		if (MD.TC.mLoaded) try {ThaumcraftApi.objectTags.isEmpty();} catch(NoSuchFieldError e) {throw new RuntimeException("Please uninstall ThaumicFixer, GregTech-6 itself by now fixes the Thaumometer Lag Issue in a far better and less 'Thaumcraft-Addons breaking' way than Thaumic Fixer.");}
 		
@@ -608,6 +614,7 @@ public class GT_API extends Abstract_Mod {
 		SHOW_INTERNAL_NAMES                 = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "InternalNames"           , F);
 		SHOW_CHEM_FORMULAS                  = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "ChemTooltips"            , T);
 		
+		TOOL_SOUNDS_SETTING = TOOL_SOUNDS   = ConfigsGT.CLIENT.get(ConfigCategories.general, "sound_tools"             , TOOL_SOUNDS_SETTING);
 		ITexture.Util.GT_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useGTAlphaBlending"      , ITexture.Util.GT_ALPHA_BLENDING);
 		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		

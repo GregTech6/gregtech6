@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,7 +21,6 @@ package gregtech.items.tools.early;
 
 import gregapi.block.MaterialAdventure;
 import gregapi.block.tree.BlockBaseBeam;
-import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -97,8 +96,7 @@ public class GT_Tool_Axe extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMeta) {
-		String tTool = aBlock.getHarvestTool(aMeta);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_axe)) || aBlock instanceof BlockHugeMushroom || aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == MaterialAdventure.WOOD || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.coral;
+		return TOOL_axe.equalsIgnoreCase(aBlock.getHarvestTool(aMeta)) || aBlock instanceof BlockHugeMushroom || aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == MaterialAdventure.WOOD || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.coral;
 	}
 	
 	private static boolean LOCK = T;

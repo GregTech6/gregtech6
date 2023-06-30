@@ -686,8 +686,10 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Water                   .make(5000), IL.SC2_Teapot_Water                         .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
 		FL.reg(FL.DistW                   .make(5000), IL.SC2_Teapot_Water                         .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
 		FL.reg(FL.SpDew                   .make(5000), IL.SC2_Teapot_Water                         .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
+		FL.reg(FL.Cold_Water              .make(5000), IL.SC2_Teapot_Water                         .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
 		FL.reg(FL.Water_Boiling           .make(5000), IL.SC2_Teapot_Boiling                       .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
 		FL.reg(FL.Water_Hot               .make(5000), IL.SC2_Teapot_Boiling                       .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
+		FL.reg(FL.Hot_Water               .make(5000), IL.SC2_Teapot_Boiling                       .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
 		FL.reg(FL.Water_Geothermal        .make(5000), IL.SC2_Teapot_Boiling                       .get(1), IL.SC2_Teapot_Empty.get(1), F, T, F);
 		FL.reg(FL.Tea_Sweet               .make(5000), IL.SC2_Teapot_Full                          .get(1), IL.SC2_Teapot_Empty.get(1), F, T, T);
 		FL.reg(FL.Tea_Sweet               .make( 500), ST.make(MD.SC2, "ItemTeapot"                , 1, 3), IL.SC2_Teapot_Empty.get(1), F, F, T);

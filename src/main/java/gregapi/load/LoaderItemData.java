@@ -468,6 +468,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemPearl                         , ST.make(MD.MaCu, "pearls", 1, W));
 		OM.reg(OD.itemPearl                         , ST.make(MD.TROPIC, "pearl", 1, W));
 		OM.reg(OD.itemTar                           , ST.make(MD.HBM, "item.oil_tar", 1, W));
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.HBM, "item.oil_tar", 1, W));
 		OM.reg(OD.itemFeather                       , ST.make(MD.TF, "item.tfFeather", 1, W));
 		OM.reg(OD.itemFeather                       , ST.make(Items.feather, 1, W));
 		OM.reg(OD.itemLeather                       , ST.make(Items.leather, 1, W));
@@ -489,6 +490,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 27));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "groundStuff", 1, 38));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BoP, "moss", 1, 0));
+		OM.reg(OD.itemMoss                          , ST.make(MD.TF, "tile.TFPlant", 1, 3));
 		OM.reg(OD.blockGlass                        , ST.make(Blocks.stained_glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(Blocks.glass, 1, W));
 		OM.reg(OD.blockGlassColorless               , ST.make(MD.CHSL, "glass", 1, W));
@@ -532,6 +534,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
 		OM.reg(OD.container1000water                , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
 		OM.reg(OD.container250water                 , ST.make(MD.HBM, "item.inf_water_mk2", 1, W));
+		OM.reg(OD.itemResin                         , ST.make(MD.ELN, "Eln.sharedItem", 1, 4096));
 		OM.reg(OD.itemResin                         , ST.make(MD.ERE, "materials", 1, 41));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 4));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 5));
@@ -1112,6 +1115,28 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 3));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 4));
 			OM.reg(OP.stone, MT.STONES.Gneiss                   , ST.make(MD.ERE, "gneiss"                      , 1, 5));
+		}
+		
+		if (MD.TF.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 4));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 5));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 6));
+			OM.reg(OP.stone, MT.STONES.Mazestone                , ST.make(MD.TF, "tile.TFMazestone"           , 1, 7));
+			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Castlerock               , ST.make(MD.TF, "tile.CastleBrick"           , 1, 3));
+		}
+		
+		if (MD.AE.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.SkyStone                 , ST.make(MD.AE, "tile.BlockSkyStone"           , 1, 0));
+			OM.reg(OP.stone, MT.STONES.SkyStone                 , ST.make(MD.AE, "tile.BlockSkyStone"           , 1, 1));
+			OM.reg(OP.stone, MT.STONES.SkyStone                 , ST.make(MD.AE, "tile.BlockSkyStone"           , 1, 2));
+			OM.reg(OP.stone, MT.STONES.SkyStone                 , ST.make(MD.AE, "tile.BlockSkyStone"           , 1, 3));
 		}
 		
 		if (MD.AETHER.mLoaded) {
@@ -1782,8 +1807,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);
 		OM.data(MD.TF, "item.knightmetalRing"               , 1,   0, MT.Knightmetal        ,  U * 4);
 		OM.dat2(MD.TF, "item.chainBlock"                    , 1     , MT.Knightmetal        ,  U *16);
-		OM.data(MD.TF, "tile.TFNagastone"                   , 1,   W, ANY.Stone             ,  U);
-		OM.data(MD.TF, "tile.TFMazestone"                   , 1,   W, ANY.Stone             ,  U);
+		OM.data(MD.TF, "tile.TFNagastone"                   , 1,   W, ANY.Stone             ,  U * 9);
 		
 		
 		OM.data(MD.ERE, "fireBloom"                         , 1,   W, MT.Blaze              ,  U72);

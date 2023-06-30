@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.electric;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -30,6 +28,8 @@ import gregapi.render.IIconContainer;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Mixer_LV extends ToolStats {
 	@Override
@@ -79,8 +79,7 @@ public class GT_Tool_Mixer_LV extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_mixer);
+		return TOOL_mixer.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData));
 	}
 	
 	@Override

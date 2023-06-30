@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,11 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.BI;
-import gregapi.data.CS.SFX;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
@@ -51,6 +40,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -108,7 +101,12 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 							mClickCount = 0;
 							mStone = 16;
 						}
-					} else if (OM.is(OP.stone.dat(MT.EndSand), aStack)) {
+					} else if (OM.is(OP.stone.dat(MT.EndSandWhite), aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone = 16;
+						}
+					} else if (OM.is(OP.stone.dat(MT.EndSandBlack), aStack)) {
 						if (ST.use(aPlayer, aStack)) {
 							mClickCount = 0;
 							mStone = 16;

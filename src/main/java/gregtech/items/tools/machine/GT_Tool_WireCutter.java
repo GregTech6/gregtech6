@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,7 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -33,6 +31,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_WireCutter extends ToolStats {
 	@Override
@@ -84,8 +84,7 @@ public class GT_Tool_WireCutter extends ToolStats {
 			String tClass = UT.Reflection.getLowercaseClass(aBlock);
 			if (tClass.contains("cable") || tClass.contains("wire")) return T;
 		}
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_cutter);
+		return TOOL_cutter.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData));
 	}
 	
 	@Override

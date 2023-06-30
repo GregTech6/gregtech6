@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregtech.items.tools.electric;
 
 import gregapi.block.misc.BlockBaseBars;
 import gregapi.data.CS.SFX;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -71,7 +72,7 @@ public class GT_Tool_BuzzSaw_LV extends GT_Tool_Saw {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		return aBlock instanceof BlockBaseBars || (aBlock instanceof BlockPane && aBlock.getMaterial() == Material.iron);
+		return MD.CARP.owns(aBlock) || aBlock instanceof BlockBaseBars || (aBlock instanceof BlockPane && aBlock.getMaterial() == Material.iron);
 	}
 	
 	@Override

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,25 +46,28 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 	public Enchantment_WerewolfDamage() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Werebane", 12), 2, -1);
 		LH.add(getName(), "Werebane");
-		MT.Ir                .addEnchantmentForWeapons(this, 6).addEnchantmentForAmmo(this, 6);
-		MT.Osmiridium        .addEnchantmentForWeapons(this, 6).addEnchantmentForAmmo(this, 6);
-		MT.HSSS              .addEnchantmentForWeapons(this, 6).addEnchantmentForAmmo(this, 6);
-		MT.Ag                .addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4);
-		MT.Electrum          .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.BlackBronze       .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.BlackSteel        .addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.MeteoricBlackSteel.addEnchantmentForWeapons(this, 2).addEnchantmentForAmmo(this, 2);
-		MT.RedSteel          .addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1);
-		MT.MeteoricRedSteel  .addEnchantmentForWeapons(this, 1).addEnchantmentForAmmo(this, 1);
-		MT.BlueSteel         .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.MeteoricBlueSteel .addEnchantmentForWeapons(this, 3).addEnchantmentForAmmo(this, 3);
-		MT.SterlingSilver    .addEnchantmentForWeapons(this, 4).addEnchantmentForAmmo(this, 4);
-		MT.AstralSilver      .addEnchantmentForWeapons(this, 5).addEnchantmentForAmmo(this, 5);
-		MT.VibraniumSilver   .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
-		MT.Craponite         .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
-		MT.Tc                .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
-		MT.Infinity          .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
-		MT.DiamondPink       .addEnchantmentForWeapons(this,10).addEnchantmentForAmmo(this,10);
+		MT.Ir                  .addEnchantmentForDamage(this, 6);
+		MT.Osmiridium          .addEnchantmentForDamage(this, 6);
+		MT.HSSS                .addEnchantmentForDamage(this, 6);
+		MT.Ag                  .addEnchantmentForDamage(this, 4);
+		MT.Electrum            .addEnchantmentForDamage(this, 3);
+		MT.BlackBronze         .addEnchantmentForDamage(this, 2);
+		MT.BlackSteel          .addEnchantmentForDamage(this, 2);
+		MT.MeteoricBlackSteel  .addEnchantmentForDamage(this, 2);
+		MT.MeteoflameBlackSteel.addEnchantmentForDamage(this, 2);
+		MT.RedSteel            .addEnchantmentForDamage(this, 1);
+		MT.MeteoricRedSteel    .addEnchantmentForDamage(this, 1);
+		MT.MeteoflameRedSteel  .addEnchantmentForDamage(this, 1);
+		MT.BlueSteel           .addEnchantmentForDamage(this, 3);
+		MT.MeteoricBlueSteel   .addEnchantmentForDamage(this, 3);
+		MT.MeteoflameBlueSteel .addEnchantmentForDamage(this, 3);
+		MT.SterlingSilver      .addEnchantmentForDamage(this, 4);
+		MT.AstralSilver        .addEnchantmentForDamage(this, 5);
+		MT.VibraniumSilver     .addEnchantmentForDamage(this,10);
+		MT.Craponite           .addEnchantmentForDamage(this,10);
+		MT.Tc                  .addEnchantmentForDamage(this,10);
+		MT.Infinity            .addEnchantmentForDamage(this,10);
+		MT.DiamondPink         .addEnchantmentForDamage(this,10);
 		INSTANCE = this;
 	}
 	

@@ -1166,6 +1166,12 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return this;
 	}
 	
+	public OreDictMaterial addEnchantmentForDamage(Enchantment aEnchantment, int aEnchantmentLevel) {
+		addEnchantmentForWeapons(aEnchantment, aEnchantmentLevel);
+		addEnchantmentForAmmo(aEnchantment, aEnchantmentLevel);
+		return this;
+	}
+	
 	public OreDictMaterial addEnchantmentForWeapons(Enchantment aEnchantment, int aEnchantmentLevel) {
 		mEnchantmentWeapons.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		return this;

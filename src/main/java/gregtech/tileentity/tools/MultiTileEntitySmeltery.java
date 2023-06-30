@@ -673,8 +673,8 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return !SIDES_TOP[aSide];}
 	
-	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent), U9);}
-	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT, U9);}
+	@Override public long getGibblValue(byte aSide) {return UT.Code.divup(OM.total(mContent)*1000, U9);}
+	@Override public long getGibblMax  (byte aSide) {return UT.Code.divup(MAX_AMOUNT*1000, U9);}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	@Override public boolean allowCovers(byte aSide) {return F;}
