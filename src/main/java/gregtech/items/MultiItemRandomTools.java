@@ -505,16 +505,16 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Token_Drill                .set(addItem(8508, "Single Use Drill"        , "Non-Functional-Tool for Crafting only", OreDictToolNames.drill, OreDictToolNames.handdrill                               , TC.stack(TC.INSTRUMENTUM, 1)));
 		IL.Tool_Token_File                 .set(addItem(8509, "Single Use File"         , "Non-Functional-Tool for Crafting only", OreDictToolNames.file                                                            , TC.stack(TC.INSTRUMENTUM, 1)));
 		
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Wrench     .get(0), IL.Tool_Token_Wrench     .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Screwdriver.get(0), IL.Tool_Token_Screwdriver.get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Saw        .get(0), IL.Tool_Token_Saw        .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Hammer     .get(0), IL.Tool_Token_Hammer     .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Cutter     .get(0), IL.Tool_Token_Cutter     .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Chisel     .get(0), IL.Tool_Token_Chisel     .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.nugget   .mat(MT.Rubber, 1), IL.Robot_Tip_Rubber     .get(0), IL.Tool_Token_Rubber     .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Blade      .get(0), IL.Tool_Token_Blade      .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Drill      .get(0), IL.Tool_Token_Drill      .get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_File       .get(0), IL.Tool_Token_File       .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16* 2, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Wrench     .get(0), IL.Tool_Token_Wrench     .get( 2));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Screwdriver.get(0), IL.Tool_Token_Screwdriver.get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Saw        .get(0), IL.Tool_Token_Saw        .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16* 2, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Hammer     .get(0), IL.Tool_Token_Hammer     .get( 2));
+		RM.Boxinator.addRecipe2(T, 16, 16* 4, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Cutter     .get(0), IL.Tool_Token_Cutter     .get( 4));
+		RM.Boxinator.addRecipe2(T, 16, 16* 9, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Chisel     .get(0), IL.Tool_Token_Chisel     .get( 9));
+		RM.Boxinator.addRecipe2(T, 16, 16* 4, OP.nugget   .mat(MT.Rubber, 1), IL.Robot_Tip_Rubber     .get(0), IL.Tool_Token_Rubber     .get( 4));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Blade      .get(0), IL.Tool_Token_Blade      .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Drill      .get(0), IL.Tool_Token_Drill      .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16* 9, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_File       .get(0), IL.Tool_Token_File       .get( 9));
 		
 		
 		IL.Tool_Remote_Activator           .set(addItem(9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
