@@ -483,16 +483,39 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Robot_Tip_Drill                 .set(addItem(8008, "Robot Arm Drill Tip"          , "Infinitely usable inside an Autocrafter", OreDictToolNames.drill, OreDictToolNames.handdrill                               , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		IL.Robot_Tip_File                  .set(addItem(8009, "Robot Arm File Tip"           , "Infinitely usable inside an Autocrafter", OreDictToolNames.file                                                            , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		
-		CR.shaped(IL.Robot_Tip_Wrench       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadWrench.dat(MT.Cr));
-		CR.shaped(IL.Robot_Tip_Screwdriver  .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadScrewdriver.dat(MT.StainlessSteel));
-		CR.shaped(IL.Robot_Tip_Saw          .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(ANY.Diamond));
-		CR.shaped(IL.Robot_Tip_Hammer       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(MT.TungstenCarbide));
-		CR.shaped(IL.Robot_Tip_Cutter       .get(1), CR.DEF_REV, "wPh", "CMC", "XfX", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.plate.dat(MT.StainlessSteel));
-		CR.shaped(IL.Robot_Tip_Chisel       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadChisel.dat(MT.TungstenSteel));
-		CR.shaped(IL.Robot_Tip_Rubber       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(ANY.Rubber));
-		CR.shaped(IL.Robot_Tip_Blade        .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadSword.dat(MT.Bronze));
-		CR.shaped(IL.Robot_Tip_Drill        .get(1), CR.DEF_REV, "wPh", "CMC", "fX ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.stick.dat(ANY.Steel));
-		CR.shaped(IL.Robot_Tip_File         .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS   [3], 'X', OP.dust.dat(ANY.Diamond));
+		CR.shaped(IL.Robot_Tip_Wrench      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadWrench.dat(MT.Cr));
+		CR.shaped(IL.Robot_Tip_Screwdriver .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadScrewdriver.dat(MT.StainlessSteel));
+		CR.shaped(IL.Robot_Tip_Saw         .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(ANY.Diamond));
+		CR.shaped(IL.Robot_Tip_Hammer      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadHammer.dat(MT.TungstenCarbide));
+		CR.shaped(IL.Robot_Tip_Cutter      .get(1), CR.DEF_REV, "wPh", "CMC", "XfX", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.plate.dat(MT.StainlessSteel));
+		CR.shaped(IL.Robot_Tip_Chisel      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadChisel.dat(MT.TungstenSteel));
+		CR.shaped(IL.Robot_Tip_Rubber      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadHammer.dat(ANY.Rubber));
+		CR.shaped(IL.Robot_Tip_Blade       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadSword.dat(MT.Bronze));
+		CR.shaped(IL.Robot_Tip_Drill       .get(1), CR.DEF_REV, "wPh", "CMC", "fX ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.stick.dat(ANY.Steel));
+		CR.shaped(IL.Robot_Tip_File        .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS[3], 'X', OP.dust.dat(ANY.Diamond));
+		
+		IL.Tool_Token_Wrench               .set(addItem(8500, "Single Use Wrench"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.wrench                                                          , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Screwdriver          .set(addItem(8501, "Single Use Screwdriver"  , "Non-Functional-Tool for Crafting only", OreDictToolNames.screwdriver                                                     , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Saw                  .set(addItem(8502, "Single Use Saw"          , "Non-Functional-Tool for Crafting only", OreDictToolNames.saw                                                             , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Hammer               .set(addItem(8503, "Single Use Hammer"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.hammer, OreDictToolNames.hac_mortar                             , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Cutter               .set(addItem(8504, "Single Use Cutter"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.wirecutter, OreDictToolNames.scissors                           , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Chisel               .set(addItem(8505, "Single Use Chisel"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.chisel                                                          , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Rubber               .set(addItem(8506, "Single Use Rubber Hammer", "Non-Functional-Tool for Crafting only", OreDictToolNames.softhammer                                                      , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Blade                .set(addItem(8507, "Single Use Blade"        , "Non-Functional-Tool for Crafting only", OreDictToolNames.sword, OreDictToolNames.blade, OreDictToolNames.hac_cuttingboard, TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Drill                .set(addItem(8508, "Single Use Drill"        , "Non-Functional-Tool for Crafting only", OreDictToolNames.drill, OreDictToolNames.handdrill                               , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_File                 .set(addItem(8509, "Single Use File"         , "Non-Functional-Tool for Crafting only", OreDictToolNames.file                                                            , TC.stack(TC.INSTRUMENTUM, 1)));
+		
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Wrench     .get(0), IL.Tool_Token_Wrench     .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Screwdriver.get(0), IL.Tool_Token_Screwdriver.get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Saw        .get(0), IL.Tool_Token_Saw        .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Hammer     .get(0), IL.Tool_Token_Hammer     .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Cutter     .get(0), IL.Tool_Token_Cutter     .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Chisel     .get(0), IL.Tool_Token_Chisel     .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.nugget   .mat(MT.Rubber, 1), IL.Robot_Tip_Rubber     .get(0), IL.Tool_Token_Rubber     .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Blade      .get(0), IL.Tool_Token_Blade      .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Drill      .get(0), IL.Tool_Token_Drill      .get(1));
+		RM.Boxinator.addRecipe2(T, 16, 16, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_File       .get(0), IL.Tool_Token_File       .get(1));
+		
 		
 		IL.Tool_Remote_Activator           .set(addItem(9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Tool_Cheat                      .set(addItem(9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
