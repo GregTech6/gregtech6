@@ -510,16 +510,21 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 		
-		if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote) {
-			Block tPath = IL.EtFu_Path.block();
-			if (ST.valid(tPath)) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
-				if (tPath == aEvent.entityLiving.worldObj.getBlock(tX+i, tY+k, tZ+j)) WD.replaceAll(aEvent.entityLiving.worldObj, tX+i, tY+k, tZ+j, tPath, W, BlocksGT.Paths, 0);
+		if (aEvent.entityLiving instanceof EntityPlayer) {
+			if (BlocksGT.Paths != null && !aEvent.entityLiving.worldObj.isRemote) {
+				Block tPath = IL.EtFu_Path.block();
+				if (ST.valid(tPath)) for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+					if (tPath == aEvent.entityLiving.worldObj.getBlock(tX+i, tY+k, tZ+j)) WD.replaceAll(aEvent.entityLiving.worldObj, tX+i, tY+k, tZ+j, tPath, W, BlocksGT.Paths, 0);
+				}
 			}
 		}
 		
 		if (aEvent.entityLiving.onGround) {
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
+			if (tBlock == Blocks.farmland && aEvent.entityLiving instanceof EntityZombie) {
+				aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, Blocks.dirt, 0, 3);
+			}
 		}
 	}
 	
