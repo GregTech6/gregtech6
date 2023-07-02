@@ -12,14 +12,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.16.02: (Not released yet)
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
-[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics and Twilight FOrest now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics, The Betweenlands and Twilight Forest now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
-[CHANGED] Zombies now always trample Farmland.
+[CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
 [ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
 [ADDED] Non-Functional-Tools, which are similar to the Robot Arm Tips in that they can be used as Single Use Tools in Crafting, but look uglier. This is mostly only useful for things like Applied Energistics or Logistics Pipes, which cannot handle NBT very well. You can mint them by putting Tiny Steel or Rubber Plates and Robot Arm Tips into a Boxinator. The Robot Arm Tips will not be used up.
 [ADDED] Drain Covers can now partially drain GT Fluids.

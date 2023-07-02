@@ -43,7 +43,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		
 		// Since the Cube gives all Progress related TF Achievements with GT6, it is not that bad that you use up the 5 Trophies in co-op Multiplayer. Oh and yes I know the Lamp of Cinders has itself as Container Item, that is intended as you just need to "have" it.
 		CR.shapeless(IL.TF_Cube_of_Annihilation.get(1), new Object[] {IL.TF_Lamp_of_Cinders, ST.make(MD.TF, "tile.TFTowerDevice", 1, 12), IL.TF_Transformation_Powder, IL.TF_Giant_Obsidian, IL.TF_Trophy_Hydra, IL.TF_Trophy_Urghast, IL.TF_Trophy_Naga, IL.TF_Trophy_Lich, IL.TF_Trophy_Snowqueen});
-		// Make it as resistant as Obsidian is, after GT6/IC2 nerfed it. This way Strong Dynamite can break it.
+		// Make it as resistant as Obsidian after GT6/IC2 nerfed it. This way Strong Dynamite can break it.
 		IL.TF_Deadrock.block().setResistance(60);
 		
 		if (COMPAT_IC2 != null) {
@@ -122,17 +122,17 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 //      Doesnt work right, stuff will miss the enchants.
-//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryBlood.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
-//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryTears.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
-//      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate   , 1, 0), FL.FieryBlood.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
-//      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate   , 1, 0), FL.FieryTears.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
-//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryBlood.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
-//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryTears.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
-//      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots        , 1, 0), FL.FieryBlood.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
-//      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots        , 1, 0), FL.FieryTears.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
-//      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword        , 1, 0), FL.FieryBlood.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
-//      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword        , 1, 0), FL.FieryTears.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
-//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryBlood.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
-//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
+//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet    , 1, 0), FL.FieryBlood.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
+//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet    , 1, 0), FL.FieryTears.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
+//      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate, 1, 0), FL.FieryBlood.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
+//      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate, 1, 0), FL.FieryTears.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
+//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings  , 1, 0), FL.FieryBlood.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
+//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings  , 1, 0), FL.FieryTears.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
+//      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots     , 1, 0), FL.FieryBlood.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
+//      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots     , 1, 0), FL.FieryTears.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
+//      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword     , 1, 0), FL.FieryBlood.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
+//      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword     , 1, 0), FL.FieryTears.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
+//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe   , 1, 0), FL.FieryBlood.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
+//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe   , 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
 	}
 }
