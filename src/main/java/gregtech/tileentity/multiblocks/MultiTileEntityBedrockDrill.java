@@ -54,7 +54,7 @@ import static gregapi.data.CS.*;
  */
 public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
 	public long mEnergy = 0;
-	public int mType = 0;
+	public int mType = rng(BlocksGT.stones.length+(IL.EtFu_Deepslate_Cobble.exists() ? 2 : 1));
 	public TagData mEnergyTypeAccepted = TD.Energy.RU;
 	public FluidTankGT mTank = new FluidTankGT(16000);
 	public final List<OreDictMaterial> mList = new ArrayListNoNulls<>();
