@@ -1971,6 +1971,7 @@ public class CS {
 		, TE                = "ThermalExpansion"
 		, TE_FOUNDATION     = "ThermalFoundation"
 		, TE_DYNAMICS       = "ThermalDynamics"
+		, TE_DRILLS         = "rfdrills"
 		
 		, AE                = "appliedenergistics2"
 		, MO                = "mo"

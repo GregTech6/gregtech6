@@ -160,13 +160,13 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		}
 		if (aTool.equals(TOOL_tachometer)) {
 			if (aChatReturn != null) {
-				aChatReturn.add(mTransferredLast + " RU/t");
 				if (FACE_CONNECTED[0][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][0]) aChatReturn.add(FACE_CONNECTED[0][mInputtedSides] ? "Accepts from Bottom" : "Emits to Bottom");
 				if (FACE_CONNECTED[1][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][1]) aChatReturn.add(FACE_CONNECTED[1][mInputtedSides] ? "Accepts from Top"    : "Emits to Top");
 				if (FACE_CONNECTED[2][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][2]) aChatReturn.add(FACE_CONNECTED[2][mInputtedSides] ? "Accepts from North"  : "Emits to North");
 				if (FACE_CONNECTED[3][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][3]) aChatReturn.add(FACE_CONNECTED[3][mInputtedSides] ? "Accepts from South"  : "Emits to South");
 				if (FACE_CONNECTED[4][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][4]) aChatReturn.add(FACE_CONNECTED[4][mInputtedSides] ? "Accepts from West"   : "Emits to West");
 				if (FACE_CONNECTED[5][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][5]) aChatReturn.add(FACE_CONNECTED[5][mInputtedSides] ? "Accepts from East"   : "Emits to East");
+				aChatReturn.add(mTransferredLast + " RU/t");
 			}
 			return 1;
 		}

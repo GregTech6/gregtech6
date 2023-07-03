@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
 [COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics, The Betweenlands and Twilight Forest now have better Stone Type Support, and also some minor Recipe fixes.
 [COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
+[COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.

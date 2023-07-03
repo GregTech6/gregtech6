@@ -194,6 +194,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.ic2_extractor(ST.make(MD.HEE, "crossed_decoration", 1,13), ST.make(Items.dye, 3, DYE_INDEX_Purple));
 		}
 		
+		if (MD.TE_DRILLS.mLoaded) {
+			RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TE_DRILLS, "motor_te", 1, 3), FL.Redstone   .make(5760), NF, ST.make(MD.TE_DRILLS, "motor_te", 1, 2));
+			RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TE_DRILLS, "motor_te", 1, 3), FL.Redstone_TE.make(4000), NF, ST.make(MD.TE_DRILLS, "motor_te", 1, 2));
+			RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TE_DRILLS, "motor_te", 1, 5), FL.Cryotheum  .make(4000), NF, ST.make(MD.TE_DRILLS, "motor_te", 1, 4));
+		}
 		
 		if (MD.MO.mLoaded) {
 			RM.LaserEngraver.addRecipe2(T, 16, 1000, ST.make(MD.MO, "isolinear_circuit", 1, 0), OP.plate.mat(MT.Au, 1), ST.make(MD.MO, "isolinear_circuit", 1, 1));

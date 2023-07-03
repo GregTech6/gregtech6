@@ -81,6 +81,7 @@ public class MD {
 	, TE                = new ModData(ModIDs.TE                 , "Thermal Expansion")
 	, TE_FOUNDATION     = new ModData(ModIDs.TE_FOUNDATION      , "Thermal Foundation")
 	, TE_DYNAMICS       = new ModData(ModIDs.TE_DYNAMICS        , "Thermal Dynamics")
+	, TE_DRILLS         = new ModData(ModIDs.TE_DRILLS          , "RF Drills")
 	
 	, AE                = new ModData(ModIDs.AE                 , "Applied Energistics")
 	, MO                = new ModData(ModIDs.MO                 , "Matter Overdrive")

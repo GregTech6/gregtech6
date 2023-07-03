@@ -537,9 +537,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tacho_Meter                     .set(addItem(10004, "Tachometer"               , "Measures Rotation Speed"                , new Behavior_Tool(TOOL_tachometer   ), TC.stack(TC.SENSUS, 5), TC.stack(TC.MOTUS, 5)));
 		
 		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
-		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.capcellcon .dat(MT.Al   ), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
-		CR.shaped(IL.Electro_Meter              .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.wireFine   .dat(ANY.Cu  ), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
-		CR.shaped(IL.Tacho_Meter                .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.gearGtSmall.dat(MT.Brass), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.capcellcon .dat(MT.Al   ), 'P', OP.plate.dat(MT.Al             ), 'T', OP.screw.dat(MT.Al             ), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Electro_Meter              .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.wireFine   .dat(ANY.Cu  ), 'P', OP.plate.dat(MT.SteelGalvanized), 'T', OP.screw.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Tacho_Meter                .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.gearGtSmall.dat(MT.Brass), 'P', OP.plate.dat(MT.Brass          ), 'T', OP.screw.dat(MT.Brass          ), 'C', OD.itemRedstone);
 		
 		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
