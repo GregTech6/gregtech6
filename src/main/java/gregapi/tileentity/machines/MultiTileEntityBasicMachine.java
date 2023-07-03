@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -617,6 +617,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public int canOutput(Recipe aRecipe) {
 		int rMaxTimes = mParallel;
 		
+		doOutputItems();
+		
 		// Don't do more than 30 to 120 Seconds worth of Input at a time, when doing Chain Processing.
 		if (mParallelDuration) {
 			// Ugh, I do not feel like Maths right now, but the previous incarnation of this seemed a tiny bit wrong, so I will make sure it works properly.
@@ -675,15 +677,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	 * Funny how Eclipse marks the word Enum as not correctly spelled.
 	 * @return see constants above
 	 */
-	public int checkRecipe(boolean aApplyRecipe, boolean aUseAutoInputs) {
+	public int checkRecipe(boolean aApplyRecipe, boolean aUseAutoIO) {
 		mCouldUseRecipe = F;
 		if (mRecipes == null) return DID_NOT_FIND_RECIPE;
 		
-		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
-		
-		if (aUseAutoInputs && !mDisabledItemInput && SIDES_VALID[tAutoInput]) {
-			ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
-		}
+		if (aUseAutoIO) doInputItems();
 		
 		int tInputItemsCount = 0, tInputFluidsCount = 0;
 		ItemStack[] tInputs = new ItemStack[mRecipes.mInputItemsCount];
@@ -692,8 +690,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (ST.valid(tInputs[i])) tInputItemsCount++;
 		}
 		
-		tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
-		if (aUseAutoInputs && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
+		byte tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
+		if (aUseAutoIO && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getFluidInputTarget(tAutoInput);
 			if (tTileEntity != null && tTileEntity.mTileEntity != null) {
 				FluidTankInfo[] tInfos = tTileEntity.mTileEntity.getTankInfo(FORGE_DIR[tTileEntity.mSideOfTileEntity]);
@@ -888,7 +886,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public boolean doInactive(long aTimer) {
 		if (mActive) {
 			doSoundInterrupt();
-			if (!mDisabledItemOutput) doOutputItems();
+			doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
 		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer % 1200 == 5) {
@@ -978,9 +976,16 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		return getAdjacentTank(aSide);
 	}
 	
+	public void doInputItems() {
+		if (mDisabledItemInput) return;
+		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
+		if (SIDES_VALID[tAutoInput]) ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
+	}
+	
 	public void doOutputItems() {
+		if (mDisabledItemOutput) return;
 		byte tAutoOutput = FACING_TO_SIDE[mFacing][mItemAutoOutput];
-		ST.moveAll(delegator(tAutoOutput), getItemOutputTarget(tAutoOutput));
+		if (SIDES_VALID[tAutoOutput]) ST.moveAll(delegator(tAutoOutput), getItemOutputTarget(tAutoOutput));
 	}
 	
 	public void doOutputFluids() {

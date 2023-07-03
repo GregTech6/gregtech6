@@ -530,17 +530,22 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 //      CR.shaped(IL.Tool_Scanner               .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_HV, 'X', OP.plate.dat(MT.Cr), 'U', OD_USB_STICKS[3], 'C', OD_USB_CABLES[3], 'E', IL.EMITTERS[4], 'R', IL.SENSORS[4], 'P', IL.Processor_Crystal_Sapphire);
 //      CR.shaped(IL.Tool_Cropnalyzer           .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_MV, 'X', OP.plate.dat(MT.Al), 'U', OD_USB_STICKS[1], 'C', OD_USB_CABLES[1], 'E', IL.EMITTERS[2], 'R', IL.SENSORS[2], 'P', OD_CIRCUITS[6]);
 		
-		IL.Thermometer_Quicksilver         .set(addItem(10000, "Quicksilver Thermometer"  , "", new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.VENEMUM, 1), TC.stack(TC.VITREUS, 1)));
-		IL.Geiger_Counter_Empty            .set(addItem(10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"             , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
-		IL.Geiger_Counter                  .set(addItem(10002, "Geiger Counter"           , "", new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
+		IL.Thermometer_Quicksilver         .set(addItem(10000, "Quicksilver Thermometer"  , "Measures Temperature"                   , new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.SENSUS, 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.GELUM, 2)));
+		IL.Geiger_Counter_Empty            .set(addItem(10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"                                                    , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
+		IL.Geiger_Counter                  .set(addItem(10002, "Geiger Counter"           , "Measures Neutron Count"                 , new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
+		IL.Electro_Meter                   .set(addItem(10003, "Electrometer"             , "Measures Electricity"                   , new Behavior_Tool(TOOL_electrometer ), TC.stack(TC.SENSUS, 5), TC.stack(TC.ELECTRUM, 5)));
+		IL.Tacho_Meter                     .set(addItem(10004, "Tachometer"               , "Measures Rotation Speed"                , new Behavior_Tool(TOOL_tachometer   ), TC.stack(TC.SENSUS, 5), TC.stack(TC.MOTUS, 5)));
+		
+		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
+		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.capcellcon .dat(MT.Al   ), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Electro_Meter              .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.wireFine   .dat(ANY.Cu  ), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Tacho_Meter                .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.gearGtSmall.dat(MT.Brass), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
+		
+		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Helium.make(1000), NF, IL.Geiger_Counter.get(1));
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Neon  .make(1000), NF, IL.Geiger_Counter.get(1));
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Argon .make(1000), NF, IL.Geiger_Counter.get(1));
-		
-		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
-		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TUT", "PCP", "TdT", 'U', OP.capcellcon.dat(MT.Al), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
-		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
 		
 		IL.Compass_North                   .set(addItem(11000, "Compass (NORTH)" , "Points to Zed Negative"                             , OD.itemCompass, new Behavior_Switch_Metadata(11001, T, T), OM.data(ST.make(Items.compass, 1, 0)), TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO                                              , 2))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {last()});
