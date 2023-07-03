@@ -26,6 +26,7 @@ import gregapi.cover.CoverData;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.cover.ITileEntityCoverable;
+import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.network.packets.covers.*;
@@ -344,8 +345,8 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override
 	protected final IFluidTank getFluidTankFillable(byte aSide, FluidStack aFluidToFill) {
 		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null) {
-			if (mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, aFluidToFill)) return null;
 			if (mCovers.mBehaviours[aSide].getFluidTankFillableOverride(aSide, mCovers, aSide, aFluidToFill)) return mCovers.mBehaviours[aSide].getFluidTankFillable(aSide, mCovers, aSide, aFluidToFill, getFluidTankFillable2(aSide, aFluidToFill));
+			if (mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, aFluidToFill)) return null;
 		}
 		return getFluidTankFillable2(aSide, aFluidToFill);
 	}
@@ -353,8 +354,13 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override
 	protected final IFluidTank getFluidTankDrainable(byte aSide, FluidStack aFluidToDrain) {
 		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null) {
-			if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aFluidToDrain)) return null;
 			if (mCovers.mBehaviours[aSide].getFluidTankDrainableOverride(aSide, mCovers, aSide, aFluidToDrain)) return mCovers.mBehaviours[aSide].getFluidTankDrainable(aSide, mCovers, aSide, aFluidToDrain, getFluidTankDrainable2(aSide, aFluidToDrain));
+			if (aFluidToDrain == null) {
+				IFluidTank rTank = getFluidTankDrainable2(aSide, null);
+				if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.mul(rTank.getFluid(), 1))) return null;
+				return rTank;
+			}
+			if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aFluidToDrain)) return null;
 		}
 		return getFluidTankDrainable2(aSide, aFluidToDrain);
 	}
