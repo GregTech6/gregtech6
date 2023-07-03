@@ -357,6 +357,7 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 			if (mCovers.mBehaviours[aSide].getFluidTankDrainableOverride(aSide, mCovers, aSide, aFluidToDrain)) return mCovers.mBehaviours[aSide].getFluidTankDrainable(aSide, mCovers, aSide, aFluidToDrain, getFluidTankDrainable2(aSide, aFluidToDrain));
 			if (aFluidToDrain == null) {
 				IFluidTank rTank = getFluidTankDrainable2(aSide, null);
+				if (rTank == null) return null;
 				if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.mul(rTank.getFluid(), 1))) return null;
 				return rTank;
 			}
