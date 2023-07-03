@@ -144,7 +144,7 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanksOutput.length; i++) if (!mTanksOutput[i].isEmpty()) return mTanksOutput[i];
+			for (int i=0,j; i < mTanksOutput.length; i++) if (mTanksOutput[j = ((int)(SERVER_TIME/20)+i) % mTanksOutput.length].has()) return mTanksOutput[j];
 		} else {
 			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aFluidToDrain)) return mTanksOutput[i];
 		}

@@ -17,6 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
+[FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
