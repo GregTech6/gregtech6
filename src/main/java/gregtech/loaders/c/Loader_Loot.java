@@ -140,6 +140,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Steam"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Tools"));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Enchantments"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Reactors"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
@@ -306,6 +307,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Elements"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Alloys"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Tools"));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Enchantments"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Smeltery"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Extenders"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Printer"));
