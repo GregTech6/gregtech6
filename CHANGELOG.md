@@ -17,12 +17,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
-[FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now.
+[FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
+[CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also hit the Ender Dragon and End Crystals too, finally.
 [ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
 [ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
 [ADDED] Non-Functional-Tools, which are similar to the Robot Arm Tips in that they can be used as Single Use Tools in Crafting, but look uglier. This is mostly only useful for things like Applied Energistics or Logistics Pipes, which cannot handle NBT very well. You can mint them by putting Tiny Steel or Rubber Plates and Robot Arm Tips into a Boxinator. The Robot Arm Tips will not be used up.

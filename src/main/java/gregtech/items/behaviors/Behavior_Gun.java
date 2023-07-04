@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -43,7 +43,10 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
@@ -106,10 +109,10 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		// Make a List of all possible Targets.
 		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord)-2, Math.min(tPos.yCoord, tAim.yCoord)-2, Math.min(tPos.zCoord, tAim.zCoord)-2, Math.max(tPos.xCoord, tAim.xCoord)+2, Math.max(tPos.yCoord, tAim.yCoord)+2, Math.max(tPos.zCoord, tAim.zCoord)+2));
-		List<EntityLivingBase> tTargets = new ArrayListNoNulls<>();
-		for (Object tEntity : tEntities) if (tEntity instanceof EntityLivingBase) {
-			AxisAlignedBB tBox = ((EntityLivingBase)tEntity).boundingBox;
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) tTargets.add((EntityLivingBase)tEntity);
+		List<Entity> tTargets = new ArrayListNoNulls<>();
+		for (Object tEntity : tEntities) if (tEntity instanceof Entity) {
+			AxisAlignedBB tBox = ((Entity)tEntity).boundingBox;
+			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) tTargets.add((Entity)tEntity);
 		}
 		
 		// Actually do the shooting now!
@@ -238,13 +241,15 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		return F;
 	}
 	
-	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, EntityLivingBase aTarget, long aPower, Vec3 aDir) {
+	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, Entity aTarget, long aPower, Vec3 aDir) {
 		// In case the Entity is Invulnerable.
 		if (aTarget.isEntityInvulnerable()) return F;
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
-		if (aTarget instanceof EntityEnderman && aTarget.getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
+		if (aTarget instanceof EntityEnderman && ((EntityEnderman)aTarget).getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
+		// EntityLivingBase, Ender Dragon and End Crystals only.
+		if (!(aTarget instanceof EntityLivingBase || aTarget instanceof EntityDragonPart || aTarget instanceof EntityEnderCrystal)) return F;
 		// To make Railcrafts Implosion Enchantment work...
 		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
@@ -254,7 +259,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		float
 		tMassFactor = (tData!=null&&tData.hasValidMaterialData() ? (float)tData.mMaterial.weight() / 50.0F : 1),
 		tSpeedFactor = Math.min(2.0F, aPower/5000.0F),
-		tMagicDamage = EnchantmentHelper.func_152377_a(aBullet, aTarget.getCreatureAttribute()),
+		tMagicDamage = (aTarget instanceof EntityLivingBase ? EnchantmentHelper.func_152377_a(aBullet, ((EntityLivingBase)aTarget).getCreatureAttribute()) : aTarget instanceof EntityDragonPart ? EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) : 0),
 		tDamage = tSpeedFactor * Math.max(0, tGunMat.mToolQuality*0.5F + tMassFactor);
 		int
 		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
@@ -263,7 +268,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
 		
 		EntityPlayer tPlayer = aPlayer;
-		if (!(aTarget instanceof EntityPlayer) && aPlayer.worldObj instanceof WorldServer) {
+		
+		if (aTarget instanceof EntityPlayer) {
+			// Guns are quite overkill against Players otherwise.
+			tDamage /= 2; tMagicDamage /= 2;
+		} else if (aPlayer.worldObj instanceof WorldServer) {
 			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, aBullet) > 0) {
 				tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
 				tPlayer.inventory.currentItem = 0;
@@ -277,11 +286,12 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
 		
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
-			aTarget.hurtResistantTime = aTarget.maxHurtResistantTime;
+			aTarget.hurtResistantTime = (aTarget instanceof EntityLivingBase ? ((EntityLivingBase)aTarget).maxHurtResistantTime : 20);
 			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
 			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower / 50000.0, 0.05, aDir.zCoord * tKnockback * aPower / 50000.0);
-			UT.Enchantments.applyBullshitA(aTarget, aPlayer, aBullet);
-			UT.Enchantments.applyBullshitB(aPlayer, aTarget, aBullet);
+			if (aTarget instanceof EntityLivingBase)
+			UT.Enchantments.applyBullshitA((EntityLivingBase)aTarget, aPlayer, aBullet);
+			UT.Enchantments.applyBullshitB(                  aPlayer, aTarget, aBullet);
 			if (aTarget instanceof EntityPlayer && aPlayer instanceof EntityPlayerMP) ((EntityPlayerMP)aPlayer).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
 			if (tMagicDamage > 0.0F) aPlayer.onEnchantmentCritical(aTarget);
 			return T;
