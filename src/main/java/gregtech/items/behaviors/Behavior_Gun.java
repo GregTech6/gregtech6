@@ -112,7 +112,10 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		List<Entity> tTargets = new ArrayListNoNulls<>();
 		for (Object tEntity : tEntities) if (tEntity instanceof Entity) {
 			AxisAlignedBB tBox = ((Entity)tEntity).boundingBox;
-			if (tBox != null && tBox.calculateIntercept(tPos, tAim) != null) tTargets.add((Entity)tEntity);
+			if (tBox != null) {
+				if (tEntity instanceof EntityEnderCrystal) tBox = tBox.getOffsetBoundingBox(0, 1, 0);
+				if (tBox.calculateIntercept(tPos, tAim) != null) tTargets.add((Entity)tEntity);
+			}
 		}
 		
 		// Actually do the shooting now!
