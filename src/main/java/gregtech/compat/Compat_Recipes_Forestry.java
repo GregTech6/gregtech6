@@ -46,7 +46,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Forestry Recipes.");
 		CR.remove(OM.ingot(MT.Sn), OM.ingot(MT.Cu), NI, OM.ingot(MT.Cu), OM.ingot(MT.Cu));
-		CR.delate(MD.FR, "honeyedSlice", "letters");
+		CR.delate(MD.FR, "honeyedSlice", "letters", "soil");
 		RM.generify(IL. FR_Royal_Jelly.get(1), IL.HaC_Royal_Jelly.get(1));
 		RM.generify(IL.HaC_Royal_Jelly.get(1), IL. FR_Royal_Jelly.get(1));
 		

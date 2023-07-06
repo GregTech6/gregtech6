@@ -910,7 +910,7 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Block_Tallow                      .set(ST.make(MD.TC, "blockCosmeticSolid"                    , 1, 5), new OreDictItemData(MT.Tallow, 9*U));
 		IL.TC_Block_Flesh                       .set(ST.make(MD.TC, "blockTaint"                            , 1, 2), new OreDictItemData(MT.MeatRotten, 18*U, MT.Bone, U));
 		IL.TC_Block_Air                         .set(ST.make(MD.TC, "blockAiry"                             , 1, 0));
-		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U8, MT.Glass, U), CR.DELATE);
+		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U8, MT.Glass, 3*U8), CR.DELATE);
 		IL.TC_Knowledge_Fragment                .set(ST.make(MD.TC, "ItemResource"                          , 1, 9), new OreDictItemData(MT.Paper, U9), "paperResearchFragment");
 		IL.TC_Thaumonomicon                     .set(ST.make(MD.TC, "ItemThaumonomicon"                     , 1, 0), new OreDictItemData(MT.Paper, 9*U));
 		IL.TC_Crimson_Rites                     .set(ST.make(MD.TC, "ItemEldritchObject"                    , 1, 1), new OreDictItemData(MT.Paper, 9*U));
@@ -1072,7 +1072,7 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Bambucket_Honey                  .set(ST.make(MD.ERE, "bambucketHoney"                       , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000honey);
 		IL.ERE_Bambucket_AntiVenom              .set(ST.make(MD.ERE, "bambucketAntiVenom"                   , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
 		IL.ERE_Bambucket_FormicAcid             .set(ST.make(MD.ERE, "bambucketFormicAcid"                  , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
-		IL.ERE_Bambucket_BeetleJuice            .set(ST.make(MD.ERE, "bambucketBeetleJuice"                 , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		IL.ERE_Bambucket_BeetleJuice            .set(ST.make(MD.ERE, "bambucketBeetleJuice"                 , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000juice);
 		IL.ERE_Pot                              .set(ST.make(MD.ERE, "materials"                            , 1,62), new OreDictItemData(ANY.Fe, 7*U));
 		IL.ERE_Pot_Raw                          .set(ST.make(MD.ERE, "materials"                            , 1,63), new OreDictItemData(ANY.Fe, 7*U));
 		IL.ERE_Pot_Cooked                       .set(ST.make(MD.ERE, "food"                                 , 1,16), new OreDictItemData(ANY.Fe, 7*U));
@@ -1316,7 +1316,7 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Strider_Flank_Cooked            .set(ST.make(MD.NeLi, "StriderFlankCooked"                  , 1, 0), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U9), "listAllmeatcooked");
 		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, CR.DELATE, "foodBread");
 		IL.NeLi_Cookie                          .set(ST.make(MD.NeLi, "CookieHellderberry"                  , 1, 0), null, CR.DELATE, "foodCookie");
-		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, CR.DELATE, "foodHellderberryjuice");
+		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, CR.DELATE, "foodHellderberryjuice", OD.container250juice);
 		IL.NeLi_Bucket_Spectral_Dew             .set(ST.make(MD.NeLi, "SpectralBucket"                      , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000water);
 		IL.NeLi_Bowl_DevilishMaize              .set(ST.make(MD.NeLi, "DevilishPopcornRaw"                  , 1, 0));
 		IL.NeLi_Bowl_DevilishPopcorn            .set(ST.make(MD.NeLi, "DevilishPopcorn"                     , 1, 0));
@@ -1936,9 +1936,14 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Honey_Can                         .set(ST.make(MD.FR, "canHoney"                              , 1, 0), null, OD.container1000honey);
 		IL.FR_Honey_Capsule                     .set(ST.make(MD.FR, "waxCapsuleHoney"                       , 1, 0), null, OD.container1000honey);
 		IL.FR_Honey_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryHoney"                       , 1, 0), null, OD.container1000honey);
+		IL.FR_Juice_Bucket                      .set(ST.make(MD.FR, "bucketJuice"                           , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000juice, "bucketJuice");
+		IL.FR_Juice_Can                         .set(ST.make(MD.FR, "canJuice"                              , 1, 0), null, OD.container1000juice);
+		IL.FR_Juice_Capsule                     .set(ST.make(MD.FR, "waxCapsuleJuice"                       , 1, 0), null, OD.container1000juice);
+		IL.FR_Juice_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryJuice"                       , 1, 0), null, OD.container1000juice);
 		IL.FR_Water_Can                         .set(ST.make(MD.FR, "canWater"                              , 1, 0), null, OD.container1000water);
 		IL.FR_Water_Capsule                     .set(ST.make(MD.FR, "waxCapsuleWater"                       , 1, 0), null, OD.container1000water);
 		IL.FR_Water_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryWater"                       , 1, 0), null, OD.container1000water);
+		IL.FR_Lava_Can                          .set(ST.make(MD.FR, "canLava"                               , 1, 0), null, OD.container1000lava);
 		IL.FR_Lava_RefractoryCapsule            .set(ST.make(MD.FR, "refractoryLava"                        , 1, 0), null, OD.container1000lava);
 		IL.FR_Candle                            .set(ST.make(MD.FR, "candle"                                , 1, 0), null, OD.blockCandle);
 		IL.FR_Bee_Drone                         .set(ST.make(MD.FR, "beeDroneGE"                            , 1, 0));

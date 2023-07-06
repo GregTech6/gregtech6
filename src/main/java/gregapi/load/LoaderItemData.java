@@ -207,6 +207,25 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.container1000spruceresin          , ST.make(MD.BINNIE, "containerBucket", 1,129));
 		OM.reg(OD.container1000latex                , ST.make(MD.BINNIE, "containerBucket", 1,130));
 	//  OM.reg(OD.container1000turpentine           , ST.make(MD.BINNIE, "containerBucket", 1,131));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,256));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,257));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,258));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,259));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,260));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,261));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,262));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,263));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,264));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,265));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,266));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,267));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,268));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,269));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,270));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,271));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,272));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,273));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,274));
 		OM.reg("foodApplejuice"                     , ST.make(MD.BINNIE, "containerGlass", 1,256));
 		OM.reg("foodApricotjuice"                   , ST.make(MD.BINNIE, "containerGlass", 1,257));
 		OM.reg("foodBananajuice"                    , ST.make(MD.BINNIE, "containerGlass", 1,258));
@@ -770,7 +789,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropCoconut"                        , ST.make(MD.TROPIC, "tile.coconut", 1, W));
 		OM.reg("cropCoffee"                         , ST.make(MD.TROPIC, "coffeeBean", 1, W));
 		OM.reg("cropHellderberry"                   , ST.make(MD.NeLi, "HellderBerryItem", 1, 0));
-		OM.reg("foodHellderberryjuice"              , ST.make(MD.NeLi, "JuiceHellderberry", 1, 0));
 		
 		
 		OM.reg(OP.dustSmall.dat(MT.Fe)              , ST.make(MD.BINNIE_BEE, "misc", 1, 6));
