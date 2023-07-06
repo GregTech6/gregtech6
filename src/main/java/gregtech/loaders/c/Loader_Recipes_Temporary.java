@@ -601,6 +601,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(IL.BoP_Mud_Bricks.get(1), IL.BTL_Mud_Bricks.get(1), IL.ERE_Mud_Bricks.get(1), IL.Salt_Mud_Bricks.get(1));
 		RM.genericycle(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
 		RM.genericycle(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
+		RM.genericycle(IL.FR_Royal_Jelly.get(1), IL.HaC_Royal_Jelly.get(1));
 		RM.genericycle(ST.make(MD.TC, "ItemResource", 1, 6), ST.make(MD.BoP, "gems", 1, 7));
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.

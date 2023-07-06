@@ -350,6 +350,7 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(NI, NI, NI, NI, y = ingot.mat(MT.Al, 1), NI, NI, y, NI);
 		CR.remove(NI, NI, NI, NI, y = ingot.mat(MT.Steel, 1), NI, NI, y, NI);
 		CR.remove(x, x, x, x, ingot.mat(MT.W, 1), x, x, x, x);
+		CR.remove(x = ingot.mat(MT.Cu, 1), x, x, y = ingot.mat(MT.Sn, 1));
 		CR.remove(x = dust.mat(MT.Cu, 1), x, x, y = dust.mat(MT.Sn, 1));
 		CR.remove(x, y, x, y, x, y, x, y, x);
 		CR.remove(x, x, x, dust.mat(MT.Zn, 1));
