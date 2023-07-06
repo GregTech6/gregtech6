@@ -224,6 +224,12 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem( 2400, "Juice"                        , "", "foodJuice"                       , FL.Juice                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE, OD.container250juice);
 		addItem( 2405, "Froot Smoothie"               , "", "foodFruitsmoothie"               , FL.Smoothie_Fruit         .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		
+		CR.shapeless(make(4, 2400), CR.DEF, new Object[] {OD.container1000juice, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(3, 2400), CR.DEF, new Object[] {OD.container1000juice, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(2, 2400), CR.DEF, new Object[] {OD.container1000juice, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1, 2400), CR.DEF, new Object[] {OD.container1000juice, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(make(1, 2400), CR.DEF, new Object[] {OD.container250juice , OP.bottle.dat(MT.Empty)});
+		
 		addItem( 2500, "Kiwi Juice"                   , "", "foodKiwijuice"                   , FL.Juice_Kiwi             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE, OD.container250juice);
 		addItem( 2505, "Kiwi Smoothie"                , "", "foodKiwismoothie"                , FL.Smoothie_Kiwi          .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.PERFODIO  , 1), FoodStatFluid.INSTANCE);
 		
