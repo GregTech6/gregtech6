@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -33,8 +33,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import java.util.List;
-
 import static gregapi.data.CS.*;
 
 /**
@@ -62,7 +60,7 @@ public class AdvancedCraftingShapeless extends ShapelessOreRecipe implements ICr
 			for (int i = 0; i < aGrid.getSizeInventory(); i++) {
 				if (aGrid.getStackInSlot(i) != null) {
 					if (tMainInput == null) {
-						if (getInput().get(0) instanceof List) for (Object tObject : (List)getInput().get(0)) if (tObject instanceof  ItemStack) {
+						if (getInput().get(0) instanceof Iterable) for (Object tObject : (Iterable)getInput().get(0)) if (tObject instanceof ItemStack) {
 							if (ST.equal(aGrid.getStackInSlot(i), (ItemStack)tObject, T)) {
 								tMainInput = ST.amount(1, aGrid.getStackInSlot(i));
 							}

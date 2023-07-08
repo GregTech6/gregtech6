@@ -128,7 +128,7 @@ public class Loader_Books implements Runnable {
 		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
 		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Arrows and Bullets with this Enchantment invaluable in deposing them!"
 		, "Werebane¶===================¶Levels 1 to 5+¶Inflicts Withering and Poison to any Werecreatures it hits!"
-		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze, at Level 3 it can also smelt anything it harvests handily!"
+		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze for 4 Seconds per Level, at Level 3 it can also smelt anything it harvests blazingly fast!"
 		
 		
 		
