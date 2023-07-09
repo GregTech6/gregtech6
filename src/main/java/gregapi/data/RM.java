@@ -803,30 +803,35 @@ public class RM {
 			tIterator.remove();
 			rReturn = T;
 		}
-		if (MD.EtFu.mLoaded) try {
-			// TODO CALL THE REMOVE BY INPUT FUNCTION
-		} catch(NoSuchMethodError e) {
-			Map
-			tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
-			if (tMap != null) {
-				tIterator = tMap.entrySet().iterator();
-				while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-					tIterator.remove();
-					rReturn = T;
+		if (MD.EtFu.mLoaded) {
+			boolean tSuccess = F;
+			
+			try {
+				// TODO CALL THE NEW REMOVE BY INPUT FUNCTION
+				
+				// TODO SUCCESS?
+				//tSuccess = T;
+			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			
+			if (!tSuccess) try {
+				Map
+				tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
 				}
-			}
-			tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
-			if (tMap != null) {
-				tIterator = tMap.entrySet().iterator();
-				while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-					tIterator.remove();
-					rReturn = T;
+				tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
 				}
-			}
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one then
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
+			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		}
 		return rReturn;
 	}
@@ -842,36 +847,41 @@ public class RM {
 				rReturn = T;
 			}
 		}
-		if (MD.EtFu.mLoaded) try {
-			// TODO CALL THE REMOVE BY INPUT FUNCTION IF RESULT EQUAL
-		} catch(NoSuchMethodError e) {
-			Map
-			tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
-			if (tMap != null) {
-				tIterator = tMap.entrySet().iterator();
-				while (tIterator.hasNext()) {
-					Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-					if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-						tIterator.remove();
-						rReturn = T;
+		if (MD.EtFu.mLoaded) {
+			boolean tSuccess = F;
+			
+			try {
+				// TODO CALL THE NEW REMOVE BY INPUT FUNCTION IF RESULT EQUAL
+				
+				// TODO SUCCESS?
+				//tSuccess = T;
+			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			
+			if (!tSuccess) try {
+				Map
+				tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) {
+						Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+						if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+							tIterator.remove();
+							rReturn = T;
+						}
 					}
 				}
-			}
-			tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
-			if (tMap != null) {
-				tIterator = tMap.entrySet().iterator();
-				while (tIterator.hasNext()) {
-					Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-					if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-						tIterator.remove();
-						rReturn = T;
+				tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) {
+						Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+						if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+							tIterator.remove();
+							rReturn = T;
+						}
 					}
 				}
-			}
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one then
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
+			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		}
 		return rReturn;
 	}

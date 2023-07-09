@@ -625,6 +625,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "CrimsonBarrel", 1, W));
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "WarpedBarrel", 1, W));
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "FoxfireBarrel", 1, W));
+		OM.reg(OD.craftingChest                     , ST.make(MD.BbLC, "tile.BiblioFramedChest", 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(Blocks.furnace, 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(Blocks.lit_furnace, 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(MD.NeLi, "FurnaceBlackstone", 1, W));

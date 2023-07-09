@@ -332,17 +332,28 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					
 					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 					
-					if (MD.EtFu.mLoaded) try {
-						// TODO REFACTOR THIS ONCE UPDATED!!!
-						for (Object tStack : SmokerRecipes      .smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-						for (Object tStack : BlastFurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-					} catch(NoSuchMethodError e) {
-						Map
-						tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
-						if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
-						tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
-						if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
-					} catch(Throwable e) {e.printStackTrace(ERR);}
+					if (MD.EtFu.mLoaded) {
+						boolean tSuccess = F;
+						
+						// TODO REMOVE IF FALSE
+						if (F) try {
+							// TODO REFACTOR THIS ONCE UPDATED!!!
+							for (Object tStack : SmokerRecipes      .smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+							for (Object tStack : BlastFurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+							tSuccess = T;
+						} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+						
+						if (!tSuccess) try {
+							Map
+								tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+							if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
+							tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+							if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
+							tSuccess = T;
+						} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+						
+						if (!tSuccess) ERR.println("Et Futurum Requiem needs to be updated!");
+					}
 					
 					for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());
 					
