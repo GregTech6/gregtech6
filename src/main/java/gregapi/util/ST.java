@@ -865,6 +865,11 @@ public class ST {
 		return item_(aStack) == Items.rotten_flesh || OM.materialcontained(aStack, MT.MeatRotten, MT.FishRotten);
 	}
 	
+	public static boolean edible(ItemStack aStack) {
+		if (invalid(aStack)) return F;
+		if (item_(aStack) instanceof MultiItemRandom) return ((MultiItemRandom)item_(aStack)).mFoodStats.get(meta_(aStack)) != null;
+		return item_(aStack) instanceof ItemFood;
+	}
 	public static int food(ItemStack aStack) {
 		if (invalid(aStack)) return 0;
 		if (item_(aStack) instanceof ItemFood) {try {return ((ItemFood)item_(aStack)).func_150905_g(aStack);} catch(Throwable e) {return 1;}}
