@@ -333,8 +333,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 					
 					if (MD.EtFu.mLoaded) try {
+						// TODO REFACTOR THIS ONCE UPDATED!!!
 						for (Object tStack : SmokerRecipes      .smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 						for (Object tStack : BlastFurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+					} catch(NoSuchMethodError e) {
+						Map
+						tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+						if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
+						tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+						if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
 					} catch(Throwable e) {e.printStackTrace(ERR);}
 					
 					for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());

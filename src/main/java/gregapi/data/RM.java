@@ -44,6 +44,7 @@ import net.minecraftforge.fluids.FluidStack;
 import team.chisel.carving.Carving;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import static gregapi.data.CS.*;
@@ -803,20 +804,27 @@ public class RM {
 			rReturn = T;
 		}
 		if (MD.EtFu.mLoaded) try {
-			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-				tIterator.remove();
-				rReturn = T;
-			}
-			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-				tIterator.remove();
-				rReturn = T;
-			}
+			// TODO CALL THE REMOVE BY INPUT FUNCTION
 		} catch(NoSuchMethodError e) {
-			// Ignore that one
+			Map
+			tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+			if (tMap != null) {
+				tIterator = tMap.entrySet().iterator();
+				while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+					tIterator.remove();
+					rReturn = T;
+				}
+			}
+			tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+			if (tMap != null) {
+				tIterator = tMap.entrySet().iterator();
+				while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+					tIterator.remove();
+					rReturn = T;
+				}
+			}
 		} catch(NoClassDefFoundError e) {
-			// Ignore that one
+			// Ignore that one then
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
@@ -835,24 +843,33 @@ public class RM {
 			}
 		}
 		if (MD.EtFu.mLoaded) try {
-			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) {
-				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-					tIterator.remove();
-					rReturn = T;
+			// TODO CALL THE REMOVE BY INPUT FUNCTION IF RESULT EQUAL
+		} catch(NoSuchMethodError e) {
+			Map
+			tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+			if (tMap != null) {
+				tIterator = tMap.entrySet().iterator();
+				while (tIterator.hasNext()) {
+					Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+					if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
 				}
 			}
-			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) {
-				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-					tIterator.remove();
-					rReturn = T;
+			tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+			if (tMap != null) {
+				tIterator = tMap.entrySet().iterator();
+				while (tIterator.hasNext()) {
+					Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+					if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
 				}
 			}
 		} catch(NoClassDefFoundError e) {
-			// Ignore that one
+			// Ignore that one then
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
