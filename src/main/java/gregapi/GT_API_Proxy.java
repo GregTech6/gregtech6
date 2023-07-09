@@ -345,11 +345,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						
 						if (!tSuccess) try {
 							Map
-								tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
-							if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
-							tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
-							if (tMap != null) for (Object tStack : tMap.values()) tStacks.add((ItemStack)tStack);
-							tSuccess = T;
+							tMap = ((Map)UT.Reflection.getFieldContent(SmokerRecipes.smelting(), "smeltingList", T, D1));
+							if (tMap != null) {for (Object tStack : tMap.values()) tSuccess |= tStacks.add((ItemStack)tStack);}
+							tMap = ((Map)UT.Reflection.getFieldContent(BlastFurnaceRecipes.smelting(), "smeltingList", T, D1));
+							if (tMap != null) {for (Object tStack : tMap.values()) tSuccess |= tStacks.add((ItemStack)tStack);}
 						} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 						
 						if (!tSuccess) ERR.println("Et Futurum Requiem needs to be updated!");

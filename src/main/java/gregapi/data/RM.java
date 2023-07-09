@@ -815,21 +815,23 @@ public class RM {
 			
 			if (!tSuccess) try {
 				Map
-				tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+				tMap = ((Map)UT.Reflection.getFieldContent(SmokerRecipes.smelting(), "smeltingList", T, D1));
 				if (tMap != null) {
 					tIterator = tMap.entrySet().iterator();
 					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
 						tIterator.remove();
 						rReturn = T;
 					}
+					tSuccess = T;
 				}
-				tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+				tMap = ((Map)UT.Reflection.getFieldContent(BlastFurnaceRecipes.smelting(), "smeltingList", T, D1));
 				if (tMap != null) {
 					tIterator = tMap.entrySet().iterator();
 					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
 						tIterator.remove();
 						rReturn = T;
 					}
+					tSuccess = T;
 				}
 			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		}
@@ -859,7 +861,7 @@ public class RM {
 			
 			if (!tSuccess) try {
 				Map
-				tMap = ((Map)UT.Reflection.callMethod(SmokerRecipes.smelting(), "getSmeltingList", F, F, D1));
+				tMap = ((Map)UT.Reflection.getFieldContent(SmokerRecipes.smelting(), "smeltingList", T, D1));
 				if (tMap != null) {
 					tIterator = tMap.entrySet().iterator();
 					while (tIterator.hasNext()) {
@@ -869,8 +871,9 @@ public class RM {
 							rReturn = T;
 						}
 					}
+					tSuccess = T;
 				}
-				tMap = ((Map)UT.Reflection.callMethod(BlastFurnaceRecipes.smelting(), "getSmeltingList", F, F, D1));
+				tMap = ((Map)UT.Reflection.getFieldContent(BlastFurnaceRecipes.smelting(), "smeltingList", T, D1));
 				if (tMap != null) {
 					tIterator = tMap.entrySet().iterator();
 					while (tIterator.hasNext()) {
@@ -880,6 +883,7 @@ public class RM {
 							rReturn = T;
 						}
 					}
+					tSuccess = T;
 				}
 			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		}
