@@ -50,8 +50,7 @@ import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -2021,6 +2020,10 @@ public class UT {
 			return aNBT;
 		}
 		
+		public static ItemStack check(ItemStack aStack) {
+			return set(aStack, aStack.getTagCompound());
+		}
+		
 		public static ItemStack set(ItemStack aStack, NBTTagCompound aNBT) {
 			if (aNBT == null || aNBT.hasNoTags()) {aStack.setTagCompound(null); return aStack;}
 			ArrayList<String> tTagsToRemove = new ArrayListNoNulls<>();
@@ -2276,6 +2279,67 @@ public class UT {
 			return aList;
 		}
 		
+		
+		public static int getEnchantmentXP(ItemStack aStack) {
+			if (ST.invalid(aStack) || !aStack.hasTagCompound() || ST.isGT(aStack)) return 0;
+			return getEnchantmentXP(getNBT(aStack));
+		}
+		public static int getEnchantmentXP(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("ench", 9)) return 0;
+			NBTTagList aList = aNBT.getTagList("ench", 10);
+			
+			int rXP = 0;
+			
+			for (int i = 0; i < aList.tagCount(); i++) {
+				NBTTagCompound tEnchantmentTag = aList.getCompoundTagAt(i);
+				
+				Enchantment tEnchantment = Enchantment.enchantmentsList[tEnchantmentTag.getShort("id")];
+				
+				if (UT.Reflection.getLowercaseClass(tEnchantment).contains("curse")) return 0;
+				
+				short tLevel = tEnchantmentTag.getShort("lvl");
+				
+				if (tEnchantment == Enchantment.sharpness || tEnchantment == Enchantment.protection) {
+					rXP += (tLevel * 11 - 10);
+				} else if (tEnchantment == Enchantment.fireAspect || tEnchantment == Enchantment.thorns) {
+					rXP += (tLevel * 20 - 10);
+				} else if (tEnchantment == Enchantment.punch) {
+					rXP += (tLevel * 20 -  8);
+				} else if (tEnchantment == Enchantment.respiration) {
+					rXP += (tLevel * 10     );
+				} else if (tEnchantment == Enchantment.silkTouch || tEnchantment == Enchantment.field_151369_A) {
+					rXP += (tLevel *  9 +  6);
+				} else if (tEnchantment == Enchantment.knockback) {
+					rXP += (tLevel * 20 - 15);
+				} else if (tEnchantment == Enchantment.fireProtection) {
+					rXP += (tLevel *  8 +  2);
+				} else if (tEnchantment == Enchantment.projectileProtection) {
+					rXP += (tLevel *  6 -  3);
+				} else if (tEnchantment == Enchantment.featherFalling) {
+					rXP += (tLevel *  6 -  1);
+				} else if (tEnchantment == Enchantment.aquaAffinity || tEnchantment == Enchantment.power || tEnchantment == Enchantment.efficiency) {
+					rXP += (tLevel * 10 -  9);
+				} else if (tEnchantment == Enchantment.flame || tEnchantment == Enchantment.infinity) {
+					rXP += (tLevel * 10 + 10);
+				} else if (tEnchantment == Enchantment.unbreaking || tEnchantment == Enchantment.blastProtection) {
+					rXP += (tLevel *  8 -  3);
+				} else if (tEnchantment instanceof EnchantmentLootBonus) {
+					rXP += (tLevel *  9 +  6);
+				} else if (tEnchantment instanceof EnchantmentDamage || tEnchantment instanceof EnchantmentProtection) {
+					rXP += (tLevel *  8 -  3);
+				} else {
+					rXP += (tLevel * 10 -  5);
+				}
+			}
+			return UT.Code.bindInt(UT.Code.divup(rXP, 2));
+		}
+		public static ItemStack removeEnchantments(ItemStack aStack) {
+			removeEnchantments(getOrCreate(aStack));
+			return check(aStack);
+		}
+		public static void removeEnchantments(NBTTagCompound aNBT) {
+			aNBT.removeTag("ench");
+		}
 		public static ItemStack addEnchantment(ItemStack aStack, Enchantment aEnchantment, long aLevel) {
 			NBTTagCompound tNBT = getNBT(aStack), tEnchantmentTag;
 			if (!tNBT.hasKey("ench", 9)) tNBT.setTag("ench", new NBTTagList());

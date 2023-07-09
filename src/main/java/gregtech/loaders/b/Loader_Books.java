@@ -128,12 +128,15 @@ public class Loader_Books implements Runnable {
 		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
 		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Arrows and Bullets with this Enchantment invaluable in deposing them!"
 		, "Werebane¶===================¶Levels 1 to 5+¶Inflicts Withering and Poison to any Werecreatures it hits!"
+		, "Knockback¶===================¶Levels 1 to 2+¶This will yeet anyone you hit with it, decreasing your own horizontal velocity by 40% in the process, which is only noticeable midair. Its Level increases by one while sprinting."
 		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze for 4 Seconds per Level, at Level 3 it can also smelt anything it harvests blazingly fast!"
-		
+		, "Looting¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Mobs. It may increase the total drops themselves or the chance that you get some rare drop at all."
+		, "Fortune¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Blocks. It may increase the total drops themselves or the chance that you get some rare drop at all. Almost only works on Ores."
+		, "Silk Touch¶===================¶Only 1 Level¶Will make sure that the Block you harvest with the proper Tool, will drop itself instead of what it would normally drop otherwise. Small Ores get a better chance for bigger Gems."
 		
 		
 		, ""
-		, "¶¶¶¶There is missing Pages torn out of this Book..."// Seems like Greg was a bit Lazy here.
+		, "¶¶¶There is missing Pages torn out of this Book...¶¶maybe they will appear later?"// Seems like Greg was a bit Lazy here.
 		});
 		
 		

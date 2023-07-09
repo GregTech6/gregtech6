@@ -813,6 +813,8 @@ public class RM {
 				tIterator.remove();
 				rReturn = T;
 			}
+		} catch(NoSuchMethodError e) {
+			// Ignore that one
 		} catch(NoClassDefFoundError e) {
 			// Ignore that one
 		} catch(Throwable e) {

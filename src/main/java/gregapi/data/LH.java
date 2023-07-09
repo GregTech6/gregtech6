@@ -386,7 +386,7 @@ public class LH {
 		add(RECIPES_SIFTER_USAGE                        , "Place Input on Top and rightclick it");
 		add(RECIPES_MIXINGBOWL_USAGE                    , "Place Input in Center, Fill with Fluid on the Rim, then rightclick it");
 		add(RECIPES_BATHINGPOT_USAGE                    , "Place Input in Center, Fill with Fluid on the Rim, then rightclick it");
-		add(RECIPES_GRINDSTONE_USAGE                    , "Click multiple times with the Object you want to sharpen");
+		add(RECIPES_GRINDSTONE_USAGE                    , "Click multiple times with the Object to Sharpen or remove Enchantments");
 		add(RECIPES_GRINDSTONE_INIT                     , "Add Sandstone Block in order to be able to use this");
 		add(RECIPES_DUSTFUNNEL                          , "Turns all differently sized Dusts into the specified Size");
 		add(RECIPES_AUTOHAMMER                          , "Performs Hammer Rightclicks and crushes Blocks");
