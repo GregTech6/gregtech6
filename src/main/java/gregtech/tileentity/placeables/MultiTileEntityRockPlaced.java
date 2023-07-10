@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,15 +20,14 @@
 package gregtech.tileentity.placeables;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
-
-import static gregapi.data.CS.F;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityRockPlaced extends gregtech.tileentity.misc.MultiTileEntityRock {
-	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return new ArrayListNoNulls<>(F, mRock);}
+	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return ST.arraylist(mRock);}
 	
 	@Override public ItemStack getDefaultRock(int aAmount) {return mRock;}
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -45,6 +41,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_HardHammer extends ToolStats {
 	public static final List<String> mEffectiveList = new ArrayListNoNulls<>(F
@@ -96,7 +96,7 @@ public class GT_Tool_HardHammer extends ToolStats {
 		int rConversions = 0;
 		Recipe tRecipe;
 		if (aBlock.hasTileEntity(aMetaData) || null == (tRecipe = RM.Hammer.findRecipe(null, null, T, Integer.MAX_VALUE, null, ZL_FS, ST.make(aBlock, 1, aMetaData)))) {
-			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			List<ItemStack> tDrops = ST.arraylist();
 			for (int i = 0; i < aDrops.size(); i++) {
 				tRecipe = RM.Hammer.findRecipe(null, null, T, Integer.MAX_VALUE, null, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

@@ -55,7 +55,7 @@ public class Recipe {
 		/** List of Recipe Map Handlers. They will dynamically add regular Recipes when needed. */
 		public final List<IRecipeMapHandler> mRecipeMapHandlers = new ArrayListNoNulls<>();
 		/** List of Machines that can perform/use the Recipes of this Map. */
-		public final List<ItemStack> mRecipeMachineList = new ArrayListNoNulls<>();
+		public final List<ItemStack> mRecipeMachineList = ST.arraylist();
 		/** HashMap of Recipes based on their Items */
 		public final ItemStackMap<ItemStackContainer, Collection<Recipe>> mRecipeItemMap = new ItemStackMap<>();
 		/** HashMap of Recipes based on their Fluids */

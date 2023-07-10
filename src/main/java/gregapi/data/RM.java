@@ -180,7 +180,7 @@ public class RM {
 		return RM.Generifier.addRecipe1(F, T, F, F, F, 0, 1, aStack1, aStack2) != null;
 	}
 	public static boolean genericycle(ItemStack... aStacks) {
-		ArrayListNoNulls<ItemStack> aStackList = new ArrayListNoNulls<>(F, aStacks);
+		ArrayListNoNulls<ItemStack> aStackList = ST.arraylist(aStacks);
 		for (int i = 0; i < aStackList.size(); i++) if (ST.invalid(aStackList.get(i))) aStackList.remove(i--);
 		if (aStackList.size() < 2) return F;
 		for (int i = 0; i < aStackList.size(); i++) generify(aStackList.get(i), aStackList.get((i+1) % aStackList.size()));

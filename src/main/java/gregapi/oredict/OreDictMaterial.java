@@ -31,6 +31,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.render.TextureSet;
 import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
@@ -1376,7 +1377,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	/** List of all valid Items, which are registered for this Material. */
-	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
+	public final ItemStackSet<ItemStackContainer> mRegisteredItems = ST.hashset();
 	/** This is used to determine if any of the ItemStacks belongs to this Material. */
 	public boolean contains(ItemStack... aStacks) {
 		if (aStacks == null) return F;

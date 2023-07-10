@@ -1359,7 +1359,7 @@ public class CS {
 	public static final HashSetNoNulls<Block> REDSTONE_SINKS = new HashSetNoNulls<>(F, Blocks.tnt, Blocks.golden_rail, Blocks.noteblock, Blocks.trapdoor, Blocks.wooden_door, Blocks.iron_door, Blocks.piston, Blocks.sticky_piston, Blocks.dispenser, Blocks.dropper, Blocks.redstone_lamp, Blocks.lit_redstone_lamp);
 	
 	public static class GarbageGT {
-		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
+		public static ItemStackSet<ItemStackContainer> BLACKLIST = ST.hashset();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
@@ -1592,16 +1592,16 @@ public class CS {
 		/** The MultiItems */
 		public static MultiItemRandom TECH, TOOLS, CANS, FOOD, BOTTLES, BOOKS, BUMBLEBEES;
 		public static MultiItemRandom[] ALL_MULTI_ITEMS = new MultiItemRandom[] {TECH, TOOLS, CANS, FOOD, BOTTLES, BOOKS, BUMBLEBEES};
-		public static final ItemStackSet<ItemStackContainer> ILLEGAL_DROPS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> DEBUG_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> AMMO_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NO_TOOL_FATIQUE = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NON_AUTO_INSERT_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> ILLEGAL_DROPS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> DEBUG_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> AMMO_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NO_TOOL_FATIQUE = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NON_AUTO_INSERT_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = ST.hashset();
 		
 		public static boolean addNEIRedirect(ItemStack aStack, ItemStack... aRedirects) {if (aStack == null) return F; ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(aStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(aStack), tList = new ArrayListNoNulls<>()); return tList.addAll(Arrays.asList(aRedirects));}
 		public static boolean addNEIRedirects(Block aBlock) {ItemStack[] tRedirects = new ItemStack[16]; for (int i = 0; i < tRedirects.length; i++) tRedirects[i] = ST.make(aBlock, 1, i); return addNEIRedirects(tRedirects);}
@@ -1679,7 +1679,7 @@ public class CS {
 		public static final Set<Object> plantableGrass        = new HashSetNoNulls<Object>(F, Blocks.grass);
 		
 		/** Blocks to not generate Ores in. */
-		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
+		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = ST.hashset();
 		
 		public static final Set<Object> FLOWERS = new HashSetNoNulls<Object>(F, Blocks.yellow_flower, Blocks.red_flower);
 		
@@ -1695,14 +1695,14 @@ public class CS {
 	public static class ArmorsGT {
 		/** The List of Hazmat Armors */
 		public static final ItemStackSet<ItemStackContainer>
-		  HAZMATS_GAS = new ItemStackSet<>()
-		, HAZMATS_BIO = new ItemStackSet<>()
-		, HAZMATS_CHEM = new ItemStackSet<>()
-		, HAZMATS_INSECTS = new ItemStackSet<>()
-		, HAZMATS_FROST = new ItemStackSet<>()
-		, HAZMATS_HEAT = new ItemStackSet<>()
-		, HAZMATS_RADIOACTIVE = new ItemStackSet<>()
-		, HAZMATS_LIGHTNING = new ItemStackSet<>()
+		  HAZMATS_GAS = ST.hashset()
+		, HAZMATS_BIO = ST.hashset()
+		, HAZMATS_CHEM = ST.hashset()
+		, HAZMATS_INSECTS = ST.hashset()
+		, HAZMATS_FROST = ST.hashset()
+		, HAZMATS_HEAT = ST.hashset()
+		, HAZMATS_RADIOACTIVE = ST.hashset()
+		, HAZMATS_LIGHTNING = ST.hashset()
 		;
 
 		public static ItemArmorBase[]
@@ -1728,9 +1728,9 @@ public class CS {
 		
 		// If you plan do use this to detect Crafting Items, DON'T! Use OreDict for detecting Crafting Items being Tools!
 		
-		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = new ItemStackSet<>();
+		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = ST.hashset();
 		private static final Map<String, ItemStackSet<ItemStackContainer>> TOOL_LISTS = new HashMap<>();
-		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = new ItemStackSet<>()); return rSet;}
+		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = ST.hashset()); return rSet;}
 		public static boolean contains(String aToolType, ItemStack aStack) {return get(aToolType).contains(aStack, T);}
 		public static boolean contains(String aToolType, ItemStackContainer aStack) {return get(aToolType).contains(aStack, T);}
 		public static boolean add(String aToolType, ItemStackContainer aStack) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
@@ -1837,8 +1837,8 @@ public class CS {
 		
 		public static final ItemStackMap<ItemStackContainer, Byte> BOOK_REGISTER = new ItemStackMap<>();
 		
-		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = ST.hashset();
 	}
 	
 	/** Contains typical Tool OreDict Names. */

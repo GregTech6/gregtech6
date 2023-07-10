@@ -19,6 +19,7 @@
 
 package gregapi.data;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.fluid.FluidGT;
@@ -622,7 +623,7 @@ public enum FL {
 	
 	
 	
-	
+	public static ArrayListNoNulls<FluidStack> arraylist(FluidStack... aFluids) {return new ArrayListNoNulls<>(F, aFluids);}
 	public static FluidStack[] array(FluidStack... aFluids) {return aFluids;}
 	
 	public static String regName (IFluidTank aTank) {return aTank == null ? null : regName_(aTank);}

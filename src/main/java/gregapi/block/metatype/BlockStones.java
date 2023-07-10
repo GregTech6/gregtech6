@@ -21,7 +21,6 @@ package gregapi.block.metatype;
 
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.data.*;
@@ -85,7 +84,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	
 	public final OreDictMaterial mMaterial;
 	@SuppressWarnings("rawtypes")
-	public final ItemStackSet[] mEqualBlocks = {new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet()};
+	public final ItemStackSet[] mEqualBlocks = {ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset(), ST.hashset()};
 	
 	public BlockStones(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, IIconContainer[] aIcons) {
 		super(aItemClass, aVanillaMaterial == null ? Material.rock : aVanillaMaterial, aVanillaSoundType == null ? soundTypeStone : aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, 16, aIcons == null ? new IIconContainer[] {
@@ -659,7 +658,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		}
 	}
 	
-	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, ST.make(this, 1, mBlock == this && aMeta == STONE ? COBBL : aMeta));}
+	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return ST.arraylist(ST.make(this, 1, mBlock == this && aMeta == STONE ? COBBL : aMeta));}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return SEALABLE[aMeta] && super.isSealable(aMeta, aSide);}
 	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return WD.meta(aWorld, aX, aY, aZ) == RSTBR ? 15 : 0;}
 	@Override public boolean shouldCheckWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mBlock == this && WD.meta(aWorld, aX, aY, aZ) != RSTBR;}

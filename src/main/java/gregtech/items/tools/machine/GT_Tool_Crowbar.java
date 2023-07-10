@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.RM;
@@ -46,6 +39,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Crowbar extends ToolStats {
 	@Override
@@ -125,7 +122,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		if (BlocksGT.openableCrowbar.contains(aBlock)) {
-			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			List<ItemStack> tDrops = ST.arraylist();
 			for (int i = 0; i < aDrops.size(); i++) {
 				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

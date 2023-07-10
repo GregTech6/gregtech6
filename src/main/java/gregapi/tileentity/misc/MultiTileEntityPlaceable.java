@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,7 @@
 
 package gregapi.tileentity.misc;
 
-import static gregapi.data.CS.*;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanEntityDestroy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByteArray;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.MT;
 import gregapi.network.INetworkHandler;
@@ -49,6 +39,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -78,7 +70,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls<>(F, mStack);
+		return ST.arraylist(mStack);
 	}
 	
 	@Override

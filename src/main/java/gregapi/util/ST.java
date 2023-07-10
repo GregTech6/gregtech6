@@ -21,10 +21,7 @@ package gregapi.util;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.ItemBlockBase;
-import gregapi.code.IItemContainer;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
+import gregapi.code.*;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -323,6 +320,8 @@ public class ST {
 	public static boolean hasValid(ItemStack... aStacks) {if (aStacks != null) for (ItemStack aStack : aStacks) if (valid(aStack)) return T; return F;}
 	
 	
+	public static ItemStackSet<ItemStackContainer> hashset(ItemStack... aStacks) {return new ItemStackSet<>(aStacks);}
+	public static ArrayListNoNulls<ItemStack> arraylist(ItemStack... aStacks) {return new ArrayListNoNulls<>(F, aStacks);}
 	public static ItemStack[] array(ItemStack... aStacks) {return aStacks;}
 	
 	public static ItemStack make_(Item  aItem , long aSize, long aMeta) {return new ItemStack(aItem , UT.Code.bindInt(aSize), UT.Code.bindShort(aMeta));}

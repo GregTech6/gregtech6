@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -97,7 +97,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		public void generatePermutations() {
 			if (permutated) return;
 			
-			ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
+			ArrayList<ItemStack> tDisplayStacks = ST.arraylist();
 			for (ItemStack tStack : items) if (ST.valid(tStack)) {
 				if (ST.meta_(tStack) == W) {
 					List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
@@ -510,7 +510,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
 			
-			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
+			ArrayList<ItemStack> tResults = ST.arraylist();
 			tResults.add(aResult);
 			tResults.add(OM.get_(aResult));
 			
@@ -564,7 +564,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
 			
-			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
+			ArrayList<ItemStack> tInputs = ST.arraylist();
 			tInputs.add(aInput);
 			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
 			

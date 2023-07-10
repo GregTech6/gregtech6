@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.block.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlockTileEntity;
 import gregapi.code.ArrayListNoNulls;
@@ -33,6 +29,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -66,11 +66,11 @@ public class Drops {
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, int aFortune, boolean aSilkTouch) {
 		TileEntity aTileEntity = WD.te(aWorld, aX, aY, aZ, T);
 		if (aTileEntity instanceof PrefixBlockTileEntity) return getDrops(aBlock, aWorld, aX, aY, aZ, aBlock.getMetaDataValue(aTileEntity), aTileEntity, aFortune, aSilkTouch);
-		return new ArrayListNoNulls<>();
+		return ST.arraylist();
 	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rList = ST.arraylist();
 		rList.add(ST.update(ST.make(aFortune>0?aSilkTouch?mDropFortune:mDropSilkFortune:aSilkTouch?mDropSilkTouch:mDropNormal, mPreferSilk&&aSilkTouch?1:mFortunable?1+RNGSUS.nextInt(aFortune+1):1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null)));
 		return rList;
 	}

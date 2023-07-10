@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -71,7 +71,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls<>(F, getDefaultStick(1+rng(1+aFortune)));
+		return ST.arraylist(getDefaultStick(1+rng(1+aFortune)));
 	}
 	
 	@Override

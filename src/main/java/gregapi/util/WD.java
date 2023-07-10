@@ -111,7 +111,7 @@ public class WD {
 	public static List<ItemStack> suckAll(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {
 		List<EntityItem> tList = aWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+aL, aY+aH, aZ+aW));
 		if (tList.isEmpty()) return Collections.emptyList();
-		List<ItemStack> rOutput = new ArrayListNoNulls<>();
+		List<ItemStack> rOutput = ST.arraylist();
 		for (EntityItem tItem : tList) {
 			if (!tItem.isDead) {
 				aWorld.removeEntity(tItem);

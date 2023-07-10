@@ -154,7 +154,7 @@ public abstract class TileEntityBase03MultiTileEntities extends TileEntityBase02
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rList = ST.arraylist();
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID());
 		if (tRegistry != null) rList.add(tRegistry.getItem(getMultiTileEntityID(), writeItemNBT(UT.NBT.make())));
 		return rList;

@@ -21,7 +21,6 @@ package gregtech.blocks;
 
 import gregapi.block.BlockBaseMeta;
 import gregapi.block.IBlockOnWalkOver;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureCopied;
@@ -114,14 +113,14 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
 		switch(aMeta) {
-		case  0: return new ArrayListNoNulls<>(F, IL.Mud_Ball.get(4));
-		case  1: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
-		case  2: return new ArrayListNoNulls<>(F, OP.ingot.mat(MT.Peat, 4));
-		case  3: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Red.get(4));
-		case  4: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Yellow.get(4));
-		case  5: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Blue.get(4));
-		case  6: return new ArrayListNoNulls<>(F, IL.Clay_Ball_White.get(4));
-		default: return new ArrayListNoNulls<>(F, ST.make(this, 1, aMeta));
+		case  0: return ST.arraylist(IL.Mud_Ball.get(4));
+		case  1: return ST.arraylist(IL.Clay_Ball_Brown.get(4));
+		case  2: return ST.arraylist(OP.ingot.mat(MT.Peat, 4));
+		case  3: return ST.arraylist(IL.Clay_Ball_Red.get(4));
+		case  4: return ST.arraylist(IL.Clay_Ball_Yellow.get(4));
+		case  5: return ST.arraylist(IL.Clay_Ball_Blue.get(4));
+		case  6: return ST.arraylist(IL.Clay_Ball_White.get(4));
+		default: return ST.arraylist(ST.make(this, 1, aMeta));
 		}
 	}
 	

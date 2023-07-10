@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,19 @@
 
 package gregapi.gui;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.tileentity.ITileEntityInventoryGUI;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
  */
 public class Slot_Whitelist extends Slot_Base {
-	private ItemStackSet<ItemStackContainer> mWhiteList = new ItemStackSet<>();
+	private ItemStackSet<ItemStackContainer> mWhiteList = ST.hashset();
 	
 	public Slot_Whitelist(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY, ItemStack... aValidStacks) {
 		super(aInventory, aIndex, aX, aY);

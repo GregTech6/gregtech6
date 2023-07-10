@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,8 +20,6 @@
 package gregtech.items.tools.early;
 
 import gregapi.block.MaterialAdventure;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -99,7 +97,7 @@ public class GT_Tool_UniversalSpade extends ToolStats {
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		if (BlocksGT.openableCrowbar.contains(aBlock)) {
-			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			List<ItemStack> tDrops = ST.arraylist();
 			for (int i = 0; i < aDrops.size(); i++) {
 				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

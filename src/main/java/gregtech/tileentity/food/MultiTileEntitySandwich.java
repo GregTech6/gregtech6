@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,13 @@
 
 package gregtech.tileentity.food;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import enviromine.handlers.EM_StatusManager;
 import enviromine.trackers.EnviroDataTracker;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.CS.Sandwiches;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -56,6 +51,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import squeek.applecore.api.food.FoodValues;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -118,7 +117,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rList = ST.arraylist();
 		int tCount = 0;
 		for (int i = 0; i < mStacks.length; i++) if (ST.valid(mStacks[i])) tCount++;
 		if (tCount == 1) if (ST.valid(mStacks[0]) && ST.container(mStacks[0], T) == null) rList.add(mStacks[0]);

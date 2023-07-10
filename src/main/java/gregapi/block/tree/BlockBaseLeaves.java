@@ -89,7 +89,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_LEAVES;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.treeLeaves.mDefaultStackSize);}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[(aMeta&7)|(Blocks.leaves.isOpaqueCube()?8:0)].getIcon(0);}
-	@Override public ArrayList<ItemStack> onSheared(ItemStack aItem, IBlockAccess aWorld, int aX, int aY, int aZ, int aFortune) {return new ArrayListNoNulls<>(F, ST.make(this, 1, WD.meta(aWorld, aX, aY, aZ) & 7));}
+	@Override public ArrayList<ItemStack> onSheared(ItemStack aItem, IBlockAccess aWorld, int aX, int aY, int aZ, int aFortune) {return ST.arraylist(ST.make(this, 1, WD.meta(aWorld, aX, aY, aZ) & 7));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return MD.TFC.mLoaded || MD.TFCP.mLoaded ? null : super.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);}
 	@Override public void onOxygenAdded(World aWorld, int aX, int aY, int aZ) {/**/}
 	@Override public void onOxygenRemoved(World aWorld, int aX, int aY, int aZ) {if (!aWorld.isRemote) {aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 201+RNGSUS.nextInt(100)); return;}}
@@ -132,7 +132,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rDrops = ST.arraylist();
 		int tChance = 50;
 		if (aFortune > 0) {
 			tChance -= 5 << aFortune;

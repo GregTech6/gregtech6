@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,23 +19,9 @@
 
 package gregapi.util;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 import cpw.mods.fml.common.registry.GameRegistry;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.IItemContainer;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
+import gregapi.code.*;
 import gregapi.data.CS;
-import gregapi.data.CS.OreDictToolNames;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.recipes.AdvancedCraftingShaped;
@@ -57,6 +43,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import java.util.*;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -112,7 +102,7 @@ public class CR {
 	private static final ArrayListNoNulls<List<ItemStack>> OREDICT_DYE_LISTS = new ArrayListNoNulls<>();
 	static {for (String tDye : DYE_OREDICTS) OREDICT_DYE_LISTS.add(OreDictionary.getOres(tDye));}
 	
-	public static final ItemStackSet<ItemStackContainer> RECIPES_TO_DELATE = new ItemStackSet<>();
+	public static final ItemStackSet<ItemStackContainer> RECIPES_TO_DELATE = ST.hashset();
 	
 	public static boolean BUFFERING = T;
 	public static final List<IRecipe> BUFFER = new ArrayListNoNulls<>(1000);
@@ -579,7 +569,7 @@ public class CR {
 	public static List<ItemStack> outputs(List<IRecipe> aList, boolean aDeleteFromList, ItemStack... aRecipe) {
 		if (aList == null || !ST.hasValid(aRecipe)) return Collections.emptyList();
 		InventoryCrafting aCrafting = crafting(aRecipe);
-		ArrayList<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayList<ItemStack> rList = ST.arraylist();
 		for (int i = 0; i < aList.size(); i++) try {if (aList.get(i).matches(aCrafting, CS.DW)) rList.add(ST.copy(ST.valisize((aDeleteFromList ? aList.remove(i--) : aList.get(i)).getCraftingResult(aCrafting))));} catch(Throwable e) {e.printStackTrace(ERR);}
 		return rList;
 	}

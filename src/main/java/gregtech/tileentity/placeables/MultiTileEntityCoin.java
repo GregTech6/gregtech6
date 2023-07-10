@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -110,7 +110,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rList = ST.arraylist();
 		short tCoinAmount = 0;
 		for (int i = 0; i < mCoinStackSizes.length; i++) tCoinAmount += mCoinStackSizes[i];
 		while (tCoinAmount > 0) {

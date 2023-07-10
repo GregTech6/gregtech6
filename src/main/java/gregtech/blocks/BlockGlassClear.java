@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,12 @@
 
 package gregtech.blocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.metatype.BlockColored;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -45,6 +40,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 public class BlockGlassClear extends BlockColored {
 	public BlockGlassClear(String aUnlocalised) {
@@ -70,7 +69,7 @@ public class BlockGlassClear extends BlockColored {
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
 	@Override public boolean isBlockSolid(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return F;}
-	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 80 : 40));}
+	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return ST.arraylist(OP.scrapGt.mat(MT.Glass, mBlock == this ? 80 : 40));}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

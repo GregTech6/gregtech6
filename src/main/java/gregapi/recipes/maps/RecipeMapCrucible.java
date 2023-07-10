@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,7 +87,7 @@ public class RecipeMapCrucible extends RecipeMapSpecialSingleInput {
 		for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (tMaterial.mMaterial.mTargetSmelting.mAmount > 0 && tMaterial.mMaterial.contains(MELTING)) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F), tMaterial.mMaterial.mTargetSmelting.mMaterial).addToList(tMaterialList);
 		if (tMaterialList.isEmpty()) return null;
 		
-		ArrayListNoNulls<ItemStack> tOutputList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> tOutputList = ST.arraylist();
 		for (OreDictMaterialStack tMaterial : tMaterialList) tOutputList.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 		
 		ItemStack[] tOutputs = tOutputList.toArray(ZL_IS);

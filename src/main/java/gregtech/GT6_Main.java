@@ -424,7 +424,7 @@ public class GT6_Main extends Abstract_Mod {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
 					boolean temp = T, tAddSpecial = F;
-					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls<>(), tIngots = new ArrayListNoNulls<>(), tSpecial = new ArrayListNoNulls<>();
+					ArrayListNoNulls<ItemStack> tDusts = ST.arraylist(), tIngots = ST.arraylist(), tSpecial = ST.arraylist();
 					ArrayListNoNulls<Long> tMeltingPoints = new ArrayListNoNulls<>();
 					for (OreDictMaterialStack tMaterial : tAlloy.getUndividedComponents()) {
 						boolean tAddedSpecial = F;
