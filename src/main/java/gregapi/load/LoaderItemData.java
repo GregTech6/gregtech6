@@ -2425,7 +2425,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.anvil, 1, 0)                         , ANY.Fe                ,  U *30);
 		OM.data(ST.make(Blocks.anvil, 1, 1)                         , ANY.Fe                ,  U *25);
 		OM.data(ST.make(Blocks.anvil, 1, 2)                         , ANY.Fe                ,  U *20);
-		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 5);
+		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 4);
 		OM.data(ST.make(Blocks.tripwire_hook, 1, W)                 , ANY.Fe                ,  OP.ring.mAmount * 2, ANY.Wood, U);
 		OM.data(ST.make(Blocks.stained_glass        , 1, W)         , MT.Glass              ,  U*9);
 		OM.data(ST.make(Blocks.glass                , 1, W)         , MT.Glass              ,  U*9);
