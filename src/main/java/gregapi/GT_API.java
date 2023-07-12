@@ -141,6 +141,14 @@ public class GT_API extends Abstract_Mod {
 		IMTE_CanConnectRedstone.class.toString();
 		
 		try {
+			// What the fuck is wrong with Railcraft sometimes...
+			ic2.api.item.IBoxable.class.getCanonicalName();
+			mods.railcraft.common.items.ItemCrowbar.class.getCanonicalName();
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
+		
+		try {
 			DW = new DummyWorld();
 		} catch(Throwable e) {
 			ERR.println("======================================================================================================");

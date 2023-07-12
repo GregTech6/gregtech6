@@ -31,7 +31,6 @@ public class CompatIC2EUItem extends CompatBase implements ICompatIC2EUItem {
 	public CompatIC2EUItem() {
 		ic2.api.item.IElectricItem.class.getCanonicalName();
 		ic2.api.item.ElectricItem.class.getCanonicalName();
-		ic2.api.item.IBoxable.class.getCanonicalName();
 	}
 	
 	@Override
