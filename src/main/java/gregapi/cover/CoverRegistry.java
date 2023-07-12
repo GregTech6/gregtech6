@@ -41,6 +41,11 @@ public class CoverRegistry {
 		return aStack==null?null:get(ST.id(aStack), ST.meta_(aStack));
 	}
 	
+	@Deprecated
+	public static void put(ItemStackContainer aStack, ICover aCover) {
+		if (aStack != null && ST.valid(aStack.toStack())) COVERS.javasucks(aStack, aCover);
+	}
+	
 	public static void put(ItemStack aStack, ICover aCover) {
 		if (ST.valid(aStack)) COVERS.put(aStack, aCover);
 	}
