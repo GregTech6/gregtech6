@@ -97,7 +97,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		public void generatePermutations() {
 			if (permutated) return;
 			
-			ArrayList<ItemStack> tDisplayStacks = ST.arraylist();
+			ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
 			for (ItemStack tStack : items) if (ST.valid(tStack)) {
 				if (ST.meta_(tStack) == W) {
 					List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
@@ -510,7 +510,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
 			
-			ArrayList<ItemStack> tResults = ST.arraylist(aResult, OM.get_(aResult));
+			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
+			tResults.add(aResult);
+			tResults.add(OM.get_(aResult));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult));
@@ -562,7 +564,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
 			
-			ArrayList<ItemStack> tInputs = ST.arraylist(aInput, OreDictManager.INSTANCE.getStack_(F, aInput));
+			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
+			tInputs.add(aInput);
+			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput));
