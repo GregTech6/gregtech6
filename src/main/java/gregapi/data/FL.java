@@ -444,8 +444,8 @@ public enum FL {
 	, InkMyst                   ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
 	
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit, 250 per Bottle
+	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit, 250 per Bottle
 	, Pyrotheum                 ("pyrotheum"                                                , LIQUID) // 250 per Unit
 	, Cryotheum                 ("cryotheum"                                                , LIQUID) // 250 per Unit
 	, Petrotheum                ("petrotheum"                                               , LIQUID) // 250 per Unit

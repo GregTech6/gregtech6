@@ -669,8 +669,8 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Air_End                 .make(1000), IL.Cell_Air                                 .get(1), IL.Cell_Empty.get(1), F, T, F);
 		FL.reg(FL.Air_End                 .make(1000), IL.BOTA_Ender_Air_Bottle                    .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.Juice_Hellderberry      .make( 250), IL.NeLi_Bottle_Hellderberryjuice            .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryTears              .make(   L), IL.TF_Vial_FieryTears                       .get(1), IL.Bottle_Empty.get(1));
-		FL.reg(FL.FieryBlood              .make(   L), IL.TF_Vial_FieryBlood                       .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryTears              .make( 250), IL.TF_Vial_FieryTears                       .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(FL.FieryBlood              .make( 250), IL.TF_Vial_FieryBlood                       .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(MT.Hg                    .liquid(U, T), IL.HBM_Bottle_Mercury.get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.XP                      .make( 160), ST.make(Items.experience_bottle             , 1, 0), IL.Bottle_Empty.get(1), F, T, T);
 		FL.reg(FL.Mob                     .make( 534), ST.make(Items.experience_bottle             , 1, 0), IL.Bottle_Empty.get(1), F, T, F);
