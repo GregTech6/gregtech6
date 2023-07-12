@@ -31,10 +31,7 @@ import static gregapi.data.CS.*;
 public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Runnable {
 	public static boolean ADDED;
 	
-	@Override
-	public void loadConfig() {
-		if (GAPI_POST.mFinishedPostInit) run(); else GAPI_POST.mAfterPostInit.add(this);
-	}
+	@Override public void loadConfig() {NEI = T; if (GAPI_POST.mFinishedPostInit) run(); else GAPI_POST.mAfterPostInit.add(this);}
 	
 	@Override
 	public void run() {
@@ -46,8 +43,6 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Run
 			codechicken.nei.api.API.registerGuiOverlay(MultiTileEntityGUIClientAdvancedCraftingTable.class, "crafting", 55, 22);
 			codechicken.nei.api.API.registerGuiOverlayHandler(MultiTileEntityGUIClientAdvancedCraftingTable.class, new codechicken.nei.recipe.DefaultOverlayHandler(55, 22), "crafting");
 		}
-		
-		NEI = T;
 		
 		ADDED = T;
 	}

@@ -94,7 +94,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Hydra    .get(0), FL.Blaze     .make(16000), FL.FieryBlood.make(L), IL.TF_Hydrachop_Raw.get(1));
 		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Propane   .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(1));
 		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Butane    .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(1));
-		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), FL.Ice       .make(16000), NF, IL.TF_Trollsteinn.get(1));
+		//RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), FL.Ice       .make(16000), NF, IL.TF_Trollsteinn.get(1));
 		
 		
 		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));
