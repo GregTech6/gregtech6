@@ -32,9 +32,7 @@ import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanConnectRedstone;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
 import gregapi.block.prefixblock.PrefixBlockTileEntity;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
-import gregapi.code.ItemStackContainer;
+import gregapi.code.*;
 import gregapi.compat.ICompat;
 import gregapi.compat.buildcraft.ICompatBC;
 import gregapi.compat.computercraft.ICompatCC;
@@ -142,6 +140,9 @@ public class GT_API extends Abstract_Mod {
 		
 		// Attempt at fixing a RAILCRAFT yes RAILCRAFT crash because the ClassLoader is fucked up.
 		ItemStackContainer.class.toString();
+		ArrayListNoNulls.class.toString();
+		ItemStackMap.class.toString();
+		ItemStackSet.class.toString();
 		
 		try {
 			DW = new DummyWorld();
