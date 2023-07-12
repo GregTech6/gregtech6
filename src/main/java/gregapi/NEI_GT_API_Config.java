@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,18 +22,22 @@ package gregapi;
 import gregapi.data.MD;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.tileentity.tools.MultiTileEntityAdvancedCraftingTable.MultiTileEntityGUIClientAdvancedCraftingTable;
-import gregtech.BuildInfo;
 
 import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
  */
-public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
+public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Runnable {
 	public static boolean ADDED = T;
 	
 	@Override
 	public void loadConfig() {
+		if (GAPI_POST.mFinishedPostInit) run(); else GAPI_POST.mAfterPostInit.add(this);
+	}
+	
+	@Override
+	public void run() {
 		ADDED = F;
 		
 		for (RecipeMap tMap : RecipeMap.RECIPE_MAP_LIST) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
@@ -48,13 +52,6 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 		ADDED = T;
 	}
 	
-	@Override
-	public String getName() {
-		return MD.GAPI.mName + " NEI Plugin";
-	}
-	
-	@Override
-	public String getVersion() {
-		return BuildInfo.version;
-	}
+	@Override public String getName() {return MD.GAPI.mName + " NEI Plugin";}
+	@Override public String getVersion() {return "6.16.02";}
 }
