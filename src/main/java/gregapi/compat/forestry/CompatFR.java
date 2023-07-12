@@ -41,16 +41,11 @@ import net.minecraft.world.World;
 import static gregapi.data.CS.*;
 
 public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
-	public static ItemStackSet<ItemStackContainer> mWindfalls = ST.hashset();
+	public ItemStackSet<ItemStackContainer> mWindfalls = ST.hashset();
 	
 	@Override
 	public void onPostLoad(FMLPostInitializationEvent aEvent) {
 		Farmables.farmables.get("farmArboreal").add(this);
-	}
-	
-	@Override
-	public void addWindfall(ItemStack aStack) {
-		if (ST.valid(aStack)) mWindfalls.add(aStack);
 	}
 	
 	@Override
@@ -77,6 +72,9 @@ public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
 	public boolean isGermling(ItemStack aStack) {
 		return aStack.getItem() instanceof ItemBlockBase && ((ItemBlockBase)aStack.getItem()).mPlaceable instanceof BlockBaseSapling;
 	}
+	
+	@Override
+	public void addWindfall(ItemStack aStack) {mWindfalls.add(aStack);}
 	
 	@Override
 	public boolean isWindfall(ItemStack aStack) {
