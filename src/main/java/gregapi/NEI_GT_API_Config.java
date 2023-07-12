@@ -29,7 +29,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Runnable {
-	public static boolean ADDED = T;
+	public static boolean ADDED;
 	
 	@Override
 	public void loadConfig() {
