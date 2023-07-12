@@ -139,10 +139,13 @@ public class GT_API extends Abstract_Mod {
 		IMTE_CanConnectRedstone.class.toString();
 		
 		// Attempt at fixing a RAILCRAFT yes RAILCRAFT crash because the ClassLoader is fucked up.
+		ST.class.toString();
 		ItemStackContainer.class.toString();
 		ArrayListNoNulls.class.toString();
 		ItemStackMap.class.toString();
 		ItemStackSet.class.toString();
+		BlocksGT.class.toString();
+		ItemsGT.class.toString();
 		
 		try {
 			DW = new DummyWorld();
