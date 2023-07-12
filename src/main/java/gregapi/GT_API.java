@@ -32,7 +32,9 @@ import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanConnectRedstone;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
 import gregapi.block.prefixblock.PrefixBlockTileEntity;
-import gregapi.code.*;
+import gregapi.code.ArrayListNoNulls;
+import gregapi.code.HashSetNoNulls;
+import gregapi.code.ItemStackContainer;
 import gregapi.compat.ICompat;
 import gregapi.compat.buildcraft.ICompatBC;
 import gregapi.compat.computercraft.ICompatCC;
@@ -137,18 +139,6 @@ public class GT_API extends Abstract_Mod {
 		// Guess what, I got a random Crash from one of those not being classloaded...
 		UT.Entities.class.toString();
 		IMTE_CanConnectRedstone.class.toString();
-		
-		// Attempt at fixing a RAILCRAFT yes RAILCRAFT crash because the ClassLoader is fucked up.
-		ST.class.toString();
-		ItemStackContainer.class.toString();
-		ArrayListNoNulls.class.toString();
-		ItemStackMap.class.toString();
-		ItemStackSet.class.toString();
-		BlocksGT.class.toString();
-		ItemsGT.class.toString();
-		try {mods.railcraft.common.core.Railcraft.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
-		try {ic2.api.item.IBoxable.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
-		try {mods.railcraft.common.items.ItemCrowbar.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		
 		try {

@@ -510,9 +510,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
 			
-			ArrayList<ItemStack> tResults = ST.arraylist();
-			tResults.add(aResult);
-			tResults.add(OM.get_(aResult));
+			ArrayList<ItemStack> tResults = ST.arraylist(aResult, OM.get_(aResult));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult));
@@ -564,9 +562,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
 			
-			ArrayList<ItemStack> tInputs = ST.arraylist();
-			tInputs.add(aInput);
-			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
+			ArrayList<ItemStack> tInputs = ST.arraylist(aInput, OreDictManager.INSTANCE.getStack_(F, aInput));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput));
