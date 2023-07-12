@@ -29,7 +29,6 @@ import gregapi.config.ConfigCategories;
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.cover.covers.CoverTextureCanvas;
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.util.OM;
