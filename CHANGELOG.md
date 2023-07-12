@@ -24,7 +24,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
 [CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also hit the Ender Dragon and End Crystals too, finally.
-[CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things.
+[CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles.
+[ADDED] Recipes to perpetually get otherwise non-renewable Loot Stuff out of Twilight Forest Trophies. The Trophies act as Catalysts and you have to supply some other Material to the Replicator to convert it.
 [ADDED] The Grindstone can now disenchant Tools and give XP for doing so. Does not work on GT Tools for obvious reasons.
 [ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
 [ADDED] Salted Water, which is just the KCl version of Saltwater. Adjusted and added some Chemistry Recipes for that.

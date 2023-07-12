@@ -88,6 +88,15 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.TF, "item.arcticFur", 4), ST.make(MD.TF, "item.arcticBoots", 1));
 		
 		
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), FL.Biomass   .make(16000), NF, IL.TF_NagaScale.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), FL.BiomassIC2.make(16000), NF, IL.TF_NagaScale.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Lich     .get(0), FL.Milk      .make(16000), NF, IL.TF_Transformation_Powder.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Hydra    .get(0), FL.Blaze     .make(16000), FL.FieryBlood.make(L), IL.TF_Hydrachop_Raw.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Propane   .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Butane    .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), FL.Ice       .make(16000), NF, IL.TF_Trollsteinn.get(1));
+		
+		
 		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));
 		
 		RM.stonetypes(MT.STONES.Mazestone, T, OP.rockGt.mat(MT.STONES.Mazestone, 4), OP.blockDust.mat(MT.STONES.Mazestone, 1)
