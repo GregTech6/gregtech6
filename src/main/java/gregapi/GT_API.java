@@ -146,6 +146,10 @@ public class GT_API extends Abstract_Mod {
 		ItemStackSet.class.toString();
 		BlocksGT.class.toString();
 		ItemsGT.class.toString();
+		try {mods.railcraft.common.core.Railcraft.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {ic2.api.item.IBoxable.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {mods.railcraft.common.items.ItemCrowbar.class.toString();} catch(Throwable e) {e.printStackTrace(ERR);}
+		
 		
 		try {
 			DW = new DummyWorld();
