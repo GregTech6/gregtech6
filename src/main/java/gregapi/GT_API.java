@@ -140,13 +140,8 @@ public class GT_API extends Abstract_Mod {
 		UT.Entities.class.toString();
 		IMTE_CanConnectRedstone.class.toString();
 		
-		try {
-			// What the fuck is wrong with Railcraft sometimes...
-			ic2.api.item.IBoxable.class.getCanonicalName();
-			mods.railcraft.common.items.ItemCrowbar.class.getCanonicalName();
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
-		}
+		// Attempt at fixing a RAILCRAFT yes RAILCRAFT crash because the ClassLoader is fucked up.
+		ItemStackContainer.class.toString();
 		
 		try {
 			DW = new DummyWorld();
