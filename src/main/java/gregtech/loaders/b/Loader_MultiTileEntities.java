@@ -899,7 +899,6 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.DATA.Electric_T[2];   aRegistry.add("Solar Panel (Germanium)"                             , "Solar Panels"                        , 10051, 10050, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_OUTPUT, 16, NBT_ENERGY_EMITTED, TD.Energy.EU), "SWS", "CMC", "SWS", 'M', OP.casingMachine.dat(aMat), 'W', OP.cableGt01.dat(MT.AnnealedCopper), 'C', OD_CIRCUITS[6], 'S', OP.plateGem.dat(MT.Ge));
 		
 		
-		
 		// Long Distance Transfer
 		aMat = MT.Pt;                   aRegistry.add("Long Distance Item Pipeline Endpoint"                , "Long Distance Transport"             , 10060, 10060, MultiTileEntityLongDistancePipelineItem.class, aMat.mToolQuality, 16, aMachine      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  16.0F, NBT_RESISTANCE,  16.0F), "ZPZ", "PMP", "ZPZ", 'M', OP.casingMachine.dat(aMat), 'P', OP.pipeMedium.dat(aMat), 'Z', OP.plate.dat(ANY.Plastic));
 		aMat = ANY.W;                   aRegistry.add("Long Distance Fluid Pipeline Endpoint"               , "Long Distance Transport"             , 10061, 10060, MultiTileEntityLongDistancePipelineFluid.class, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  16.0F, NBT_RESISTANCE,  16.0F), "ZPZ", "PMP", "ZPZ", 'M', OP.casingMachine.dat(aMat), 'P', OP.pipeMedium.dat(aMat), 'Z', OP.plate.dat(ANY.Plastic));
@@ -998,6 +997,8 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Osmiridium;           aRegistry.add("ZPM Decharger (Quantum)"                             , "ZPM"                                 , 11170, 14999, MultiTileEntityZPMDechargerQU.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 50.0F, NBT_INPUT, V[7], NBT_OUTPUT, V[7], NBT_ENERGY_ACCEPTED, TD.Energy.QU, NBT_ENERGY_EMITTED, TD.Energy.QU, NBT_INV_SIZE, 1), "PCP", "CMC", "FCF", 'C', OD_CIRCUITS[6], 'P', IL.Processor_Crystal_Ruby    , 'F', IL.FIELD_GENERATORS[6], 'M', OP.casingMachineDense.dat(aMat));
 		aMat = MT.Osmiridium;           aRegistry.add("ZPM Decharger (Electric)"                            , "ZPM"                                 , 11171, 14999, MultiTileEntityZPMDechargerEU.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 50.0F, NBT_INPUT, V[7], NBT_OUTPUT, V[7], NBT_ENERGY_ACCEPTED, TD.Energy.QU, NBT_ENERGY_EMITTED, TD.Energy.EU, NBT_INV_SIZE, 1), "PCP", "CMC", "FCF", 'C', OD_CIRCUITS[6], 'P', IL.Processor_Crystal_Sapphire, 'F', IL.FIELD_GENERATORS[6], 'M', OP.casingMachineDense.dat(aMat));
 		
+		// Magic Energy Production Stuffs
+		aMat = MT.DATA.Electric_T[2];   aRegistry.add("Magic Energy Absorber"                               , "Magic Energy Production"             , 10180, 10180, MultiTileEntityMagicEnergyAbsorber.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F), "   ", "   ", " M ", 'M', OP.casingMachine.dat(aMat), 'W', OP.cableGt01.dat(MT.AnnealedCopper), 'C', OD_CIRCUITS[6], 'S', OP.plateGem.dat(MT.Ge));
 		
 		
 		// Batteries
