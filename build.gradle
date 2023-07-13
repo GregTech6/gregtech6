@@ -236,7 +236,7 @@ dependencies {
 	compileOnly "com.celestek.hexcraft:HEXCraft:1.7.10-0.13.1:dev"
 	compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
 	compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
-	compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.1.2:dev"
+	compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.5.0:dev"
 	compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
 	compileOnly "com.rwtema.funkylocomotion:funky-locomotion-1.7.10:beta-7:deobf"
 	
@@ -291,7 +291,7 @@ dependencies {
 	//compileOnly "dan200.computercraft:ComputerCraft:1.75" // Hack
 	//compileOnly "delvr.streams:Streams:1.7.10-0.3.4:deobf"
 	//compileOnly "enviromine:EnviroMine:1.3.124:deobf"
-	//compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.1.2:dev"
+	//compileOnly "ganymedes01.etfuturum:Et_Futurum_Requiem:2.5.0:dev"
 	//compileOnly "extracells:ExtraCells:1.7.10-2.3.14b200:deobf"
 	//compileOnly "ic2:IC2Classic:1.2.1.8:dev"
 	//compileOnly "iguanaman:HungerOverhaul:1.7.10-1.0.0-basic:deobf"

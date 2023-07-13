@@ -338,8 +338,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						// TODO REMOVE IF FALSE
 						if (F) try {
 							// TODO REFACTOR THIS ONCE UPDATED!!!
-							for (Object tStack : SmokerRecipes      .smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-							for (Object tStack : BlastFurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+						//  for (Object tStack : SmokerRecipes      .smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+						//  for (Object tStack : BlastFurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 							tSuccess = T;
 						} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 						
