@@ -46,7 +46,7 @@ import static gregapi.data.CS.*;
 public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
 	protected boolean mStopped = F, mActive = F, mCheck = T;
 	protected long mOutput = 64;
-	protected TagData mEnergyTypeEmitted = TD.Energy.QU;
+	protected TagData mEnergyTypeEmitted = TD.Energy.TU;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -71,7 +71,7 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide && !mStopped) {
-			if ((mCheck || mBlockUpdated || SERVER_TIME % 600 == 5)) {
+			if ((mCheck || mBlockUpdated || aTimer % 600 == 5)) {
 				boolean tActive = mActive;
 				mCheck = F;
 				mActive = F;
@@ -79,6 +79,8 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 				Block tBlock = getBlockAtSide(SIDE_TOP);
 				if (tBlock == Blocks.dragon_egg) {
 					mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.QU;
+				} else if (tBlock == Blocks.skull) {
+					mActive = T; mOutput = 1; mEnergyTypeEmitted = TD.Energy.TU; // I can't forsee this getting OP as heck. XD
 				} else if (IL.TF_Trophy.equal(tBlock)) {
 					switch(tBlock.getDamageValue(worldObj, xCoord, yCoord+1, zCoord)) {
 					case  1: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.KU; break; // Naga
@@ -93,7 +95,7 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 			
 			if (mActive) {
 				if (mEnergyTypeEmitted == TD.Energy.KU) {
-					Util.emitEnergyToNetwork(mEnergyTypeEmitted, aTimer % 32 < 16 ? -mOutput : mOutput, 1, this);
+					Util.emitEnergyToNetwork(mEnergyTypeEmitted, aTimer % 128 < 64 ? -mOutput : mOutput, 1, this);
 				} else if (TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyTypeEmitted)) {
 					Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, mOutput, this);
 				} else {
