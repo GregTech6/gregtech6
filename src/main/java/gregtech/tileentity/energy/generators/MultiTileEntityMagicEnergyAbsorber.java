@@ -108,12 +108,12 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 	@Override public void setVisualData(byte aData) {mActive = ((aData & 1) != 0);}
 	@Override public byte getVisualData() {return (byte)(mActive?1:0);}
 	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && TD.Energy.ALL_EU.contains(aEnergyType);}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting;}
 	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergySizeOutputMin            (TagData aEnergyType, byte aSide) {return mOutput;}
 	@Override public long getEnergySizeOutputMax            (TagData aEnergyType, byte aSide) {return mOutput;}
 	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mOutput;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL_EU;}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL_GT;}
 	
 	@Override public boolean getStateRunningPossible() {return T;}
 	@Override public boolean getStateRunningPassively() {return mActive;}
