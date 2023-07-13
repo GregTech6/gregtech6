@@ -427,19 +427,21 @@ public class RM {
 			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hammer.get(0), OP.toolHeadHammer.mat(aMat, 1));
 			}
 			
-			if (ST.valid(aStone)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block       .get(0), aStone);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block       .get(0), aStone);
-			} else if (ST.valid(aSmooth)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block       .get(0), aSmooth);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block       .get(0), aSmooth);
-			}
-			if (ST.valid(aBricks)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot       .get(0), aBricks);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot       .get(0), aBricks);
-			} else if (ST.valid(aCracked)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot       .get(0), aCracked);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot       .get(0), aCracked);
+			if (tStack != aDustBlock || aIsMatTarget) {
+				if (ST.valid(aStone)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block.get(0), aStone);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block.get(0), aStone);
+				} else if (ST.valid(aSmooth)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block.get(0), aSmooth);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block.get(0), aSmooth);
+				}
+				if (ST.valid(aBricks)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot.get(0), aBricks);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot.get(0), aBricks);
+				} else if (ST.valid(aCracked)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot.get(0), aCracked);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot.get(0), aCracked);
+				}
 			}
 		}
 		

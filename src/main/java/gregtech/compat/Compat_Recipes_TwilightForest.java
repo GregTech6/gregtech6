@@ -100,7 +100,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Replicator.addRecipe2(T, 16,     64, IL.TF_Trophy_Naga     .get(0), ST.tag(0), FL.Lava      .make( 1000), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1,  1));
 		RM.Replicator.addRecipe2(T, 16,     64, IL.TF_Trophy_Naga     .get(0), ST.tag(1), MT.Stone  .liquid(U*9, T), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1, 13));
 		RM.Replicator.addRecipe2(T, 16,     64, IL.TF_Trophy_Naga     .get(0), ST.tag(1), FL.Lava      .make( 1000), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1, 13));
-		RM.Replicator.addRecipe2(T, 16,     64, IL.TF_Trophy_Snowqueen.get(0), ST.tag(0), FL.Ice       .make( 1000), NF                   , ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0));
+		RM.Replicator.addRecipe2(T, 16,     64, IL.TF_Trophy_Snowqueen.get(0), ST.tag(0), FL.Ice       .make( 9000), NF                   , ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0));
 		
 		
 		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));
