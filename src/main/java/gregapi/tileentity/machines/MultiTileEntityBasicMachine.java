@@ -775,7 +775,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void doWork(long aTimer) {
-		if ((mEnergy >= mInputMin || mEnergyTypeAccepted == TD.Energy.TU) && mEnergy >= mMinEnergy && checkStructure(F)) {
+		if (mEnergy >= mInputMin && mEnergy >= mMinEnergy && checkStructure(F)) {
 			mActive = doActive(aTimer, Math.min(mInputMax, mEnergy));
 			mRunning = T;
 		} else {
