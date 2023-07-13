@@ -455,8 +455,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			
 			if (!mDisabledFluidOutput && SIDES_VALID[mFluidAutoOutput]) doOutputFluids();
 			
-			DEB.println(mEnergy);
-			
 			doWork(aTimer);
 			
 			if (mTimer % 600 == 5 && mRunning) doDefaultStructuralChecks();

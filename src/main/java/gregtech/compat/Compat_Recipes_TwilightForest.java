@@ -127,12 +127,12 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		, NI
 		);
 		
-		RM.stonetypes(null, F, NI, NI
+		RM.stonetypes(MT.Ice, F, OP.gem.mat(MT.Ice, 9), OP.blockDust.mat(MT.Ice, 1)
 		, ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0)
 		, NI
 		, NI
 		, NI
-		, RM.stoneshapes(null, F, ST.make(MD.TF, "tile.AuroraPillar", 1, 0), NI, ST.make(MD.TF, "tile.AuroraSlab", 1, 0), NI, NI)
+		, RM.stoneshapes(MT.Ice, F, ST.make(MD.TF, "tile.AuroraPillar", 1, 0), NI, ST.make(MD.TF, "tile.AuroraSlab", 1, 0), NI, NI)
 		, NI
 		, NI
 		, NI
