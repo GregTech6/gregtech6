@@ -997,8 +997,9 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Osmiridium;           aRegistry.add("ZPM Decharger (Quantum)"                             , "ZPM"                                 , 11170, 14999, MultiTileEntityZPMDechargerQU.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 50.0F, NBT_INPUT, V[7], NBT_OUTPUT, V[7], NBT_ENERGY_ACCEPTED, TD.Energy.QU, NBT_ENERGY_EMITTED, TD.Energy.QU, NBT_INV_SIZE, 1), "PCP", "CMC", "FCF", 'C', OD_CIRCUITS[6], 'P', IL.Processor_Crystal_Ruby    , 'F', IL.FIELD_GENERATORS[6], 'M', OP.casingMachineDense.dat(aMat));
 		aMat = MT.Osmiridium;           aRegistry.add("ZPM Decharger (Electric)"                            , "ZPM"                                 , 11171, 14999, MultiTileEntityZPMDechargerEU.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 50.0F, NBT_INPUT, V[7], NBT_OUTPUT, V[7], NBT_ENERGY_ACCEPTED, TD.Energy.QU, NBT_ENERGY_EMITTED, TD.Energy.EU, NBT_INV_SIZE, 1), "PCP", "CMC", "FCF", 'C', OD_CIRCUITS[6], 'P', IL.Processor_Crystal_Sapphire, 'F', IL.FIELD_GENERATORS[6], 'M', OP.casingMachineDense.dat(aMat));
 		
-		// Magic Energy Production Stuffs
-		aMat = MT.DATA.Electric_T[2];   aRegistry.add("Magic Energy Absorber"                               , "Magic Energy Production"             , 10180, 10180, MultiTileEntityMagicEnergyAbsorber.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F), "   ", "   ", " M ", 'M', OP.casingMachine.dat(aMat), 'W', OP.cableGt01.dat(MT.AnnealedCopper), 'C', OD_CIRCUITS[6], 'S', OP.plateGem.dat(MT.Ge));
+		
+		// Magical Energy Production Stuffs
+		aMat = MT.DATA.Electric_T[2];   aRegistry.add("Magic Energy Absorber"                               , "Magical Energy Production"           , 10180, 10180, MultiTileEntityMagicEnergyAbsorber.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F), "GOG", "LBL", "CMC", 'M', OP.casingMachine.dat(aMat), 'C', IL.Circuit_Magic, 'G', OP.wireFine.dat(MT.Au), 'O', OP.plate.dat(MT.Obsidian), 'L', OP.gem.dat(MT.Lapis), 'B', Blocks.beacon);
 		
 		
 		// Batteries

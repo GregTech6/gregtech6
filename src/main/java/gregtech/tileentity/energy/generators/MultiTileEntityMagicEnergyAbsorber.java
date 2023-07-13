@@ -64,7 +64,7 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.RED + LH.get(LH.ENERGY_OUTPUT) + ": " + LH.Chat.WHITE + mOutput + " ?U/t");
+		aList.add(LH.Chat.RED + LH.get(LH.ENERGY_OUTPUT) + ": " + LH.Chat.WHITE + mOutput + LH.Chat.RAINBOW + " ?U" + LH.Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -72,6 +72,7 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide && !mStopped) {
 			if ((mCheck || mBlockUpdated || SERVER_TIME % 600 == 5)) {
+				boolean tActive = mActive;
 				mCheck = F;
 				mActive = F;
 				mOutput = 64;
@@ -83,10 +84,11 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 					case  1: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.KU; break; // Naga
 					case  2: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.QU; break; // Lich
 					default: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.HU; break; // Hydra
-					case  3: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.LU; break; // Urghast
-					case  4: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.CU; break; // Snowqueen
+					case  3: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.LU; break; // Ur-Ghast
+					case  4: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.CU; break; // Snow Queen
 					}
 				}
+				if (tActive != mActive) updateClientData();
 			}
 			
 			if (mActive) {
