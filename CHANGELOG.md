@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.02: (Not released yet, reasons why I did not release yet include "Greg needs to fix Et Futurum Requiem Compat" and "Railcraft somehow committed sudoku by classloader crash in my offline Modpack")
+6.16.02: (Not released yet, I did not release yet because Railcraft somehow committed sudoku by classloader crash in my offline Modpack)
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
 [COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics, The Betweenlands and Twilight Forest now have better Stone Type Support, and also some minor Recipe fixes.

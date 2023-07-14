@@ -113,9 +113,10 @@ public class Loader_Recipes_Food implements Runnable {
 			// Annoying multi-registration that was necessary for Compat is causing Issues with Furnace Recipes.
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData != null && tData.hasValidMaterialData()) {
-			RM.add_smelting(aEvent.mStack, ingot.mat(tData.mMaterial.mMaterial, 1), T, T, F);
+				RM.add_smelting(aEvent.mStack, ingot.mat(tData.mMaterial.mMaterial, 1), T, T, F);
+			} else {
+				RM.add_smelting(aEvent.mStack, ingot.mat(MT.WaxBee, 1), T, T, F);
 			}
-			RM.add_smelting(aEvent.mStack, ingot.mat(MT.WaxBee, 1), T, T, F);
 		}});
 		
 		addListener("foodVanilla", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
