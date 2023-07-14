@@ -785,11 +785,12 @@ public class RM {
 		if (!ST.ingredable(aInput) || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
 		if (MD.EtFu.mLoaded) try {
-			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
-			if (aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one
+			if ( aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+			if ( aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+			if (!aSmoker) SmokerRecipes      .smelting().smeltingBlacklist.add(aInput);
+			if (!aBlast ) BlastFurnaceRecipes.smelting().smeltingBlacklist.add(aInput);
 		} catch(Throwable e) {
+			ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
 			e.printStackTrace(ERR);
 		}
 		return T;
@@ -813,7 +814,10 @@ public class RM {
 				SmokerRecipes      .smelting().removeRecipe(aInput);
 				BlastFurnaceRecipes.smelting().removeRecipe(aInput);
 				tSuccess = T;
-			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
+			}
 			
 			if (!tSuccess) try {
 				Map
@@ -835,7 +839,10 @@ public class RM {
 					}
 					tSuccess = T;
 				}
-			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
+			}
 		}
 		return rReturn;
 	}
@@ -859,7 +866,10 @@ public class RM {
 				if (ST.equal(aOutput, SmokerRecipes      .smelting().getSmeltingResult(aInput), T)) SmokerRecipes      .smelting().removeRecipe(aInput);
 				if (ST.equal(aOutput, BlastFurnaceRecipes.smelting().getSmeltingResult(aInput), T)) BlastFurnaceRecipes.smelting().removeRecipe(aInput);
 				tSuccess = T;
-			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
+			}
 			
 			if (!tSuccess) try {
 				Map
@@ -887,7 +897,10 @@ public class RM {
 					}
 					tSuccess = T;
 				}
-			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
+			}
 		}
 		return rReturn;
 	}
