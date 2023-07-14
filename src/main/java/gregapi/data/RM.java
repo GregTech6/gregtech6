@@ -794,7 +794,8 @@ public class RM {
 		}
 		return T;
 	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static boolean rem_smelting(ItemStack aInput) {
 		if (ST.invalid(aInput)) return F;
 		ItemStack tPyrotheum = OP.dust.mat(MT.Pyrotheum, 1);
@@ -809,10 +810,9 @@ public class RM {
 			boolean tSuccess = F;
 			
 			try {
-				// TODO CALL THE NEW REMOVE BY INPUT FUNCTION
-				
-				// TODO SUCCESS?
-				//tSuccess = T;
+				SmokerRecipes      .smelting().removeRecipe(aInput);
+				BlastFurnaceRecipes.smelting().removeRecipe(aInput);
+				tSuccess = T;
 			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 			
 			if (!tSuccess) try {
@@ -839,7 +839,8 @@ public class RM {
 		}
 		return rReturn;
 	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static boolean rem_smelting(ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		boolean rReturn = F;
@@ -855,10 +856,9 @@ public class RM {
 			boolean tSuccess = F;
 			
 			try {
-				// TODO CALL THE NEW REMOVE BY INPUT FUNCTION IF RESULT EQUAL
-				
-				// TODO SUCCESS?
-				//tSuccess = T;
+				if (ST.equal(aOutput, SmokerRecipes      .smelting().getSmeltingResult(aInput), T)) SmokerRecipes      .smelting().removeRecipe(aInput);
+				if (ST.equal(aOutput, BlastFurnaceRecipes.smelting().getSmeltingResult(aInput), T)) BlastFurnaceRecipes.smelting().removeRecipe(aInput);
+				tSuccess = T;
 			} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 			
 			if (!tSuccess) try {
