@@ -121,6 +121,12 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 	public V get(ModData aMod, String aName, long aMeta) {
 		return aMod.mLoaded ? get(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta))) : null;
 	}
+	
+	@Override
+	public V put(ItemStackContainer aKey, V aValue) {
+		if (aKey.mMetaData == W) mHasWildcards = T;
+		return super.put(aKey, aValue);
+	}
 	public V put(IItemContainer aKey, V aValue) {
 		ItemStackContainer tKey = new ItemStackContainer(aKey.get(1));
 		if (tKey.mMetaData == W) mHasWildcards = T;
@@ -146,18 +152,5 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 	public V put(ModData aMod, String aName, long aMeta, V aValue) {
 		if (aMeta == W) mHasWildcards = T;
 		return put(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta)), aValue);
-	}
-	// WHY THE FUCK DOES THIS OVERRIDE FAIL IN JAVA!?!
-	// GIVE ME A PROPER ERROR MESSAGE DAMNIT!!!
-	// CLEARLY I CAN DO A SUPER CALL TO THAT FUNCTION SO WHY WON'T IT ACCEPT IT?!
-	// @Override
-	public V put(K aKey, V aValue) {
-		if (aKey.mMetaData == W) mHasWildcards = T;
-		return super.put(aKey, aValue);
-	}
-	/** exists purely because Java fucking sucks... */
-	public V javasucks(K aKey, V aValue) {
-		if (aKey.mMetaData == W) mHasWildcards = T;
-		return super.put(aKey, aValue);
 	}
 }

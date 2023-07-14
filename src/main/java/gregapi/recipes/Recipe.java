@@ -628,7 +628,7 @@ public class Recipe {
 			for (ItemStack aStack : aRecipe.mInputs) if (aStack != null) {
 				ItemStackContainer tStack = new ItemStackContainer(aStack);
 				Collection<Recipe> tList = mRecipeItemMap.get(tStack);
-				if (tList == null) mRecipeItemMap.javasucks(tStack, tList = new HashSet<>(1));
+				if (tList == null) mRecipeItemMap.put(tStack, tList = new HashSet<>(1));
 				tList.add(aRecipe);
 			}
 			return aRecipe;

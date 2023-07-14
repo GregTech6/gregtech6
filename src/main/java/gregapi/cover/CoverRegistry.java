@@ -57,5 +57,5 @@ public class CoverRegistry {
 		return aNBT == null ? new CoverData(aTileEntity) : new CoverData(aTileEntity, aNBT);
 	}
 	
-	@Deprecated public static void put(ItemStackContainer aStack, ICover aCover) {if (aStack != null && ST.valid(aStack.toStack())) COVERS.javasucks(aStack, aCover);}
+	@Deprecated public static void put(ItemStackContainer aStack, ICover aCover) {if (aStack != null && ST.valid(aStack.toStack())) COVERS.put(aStack, aCover);}
 }

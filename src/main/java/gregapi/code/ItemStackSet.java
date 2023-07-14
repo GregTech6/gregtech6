@@ -34,8 +34,8 @@ import static gregapi.data.CS.W;
 /**
  * @author Gregorius Techneticies
  */
-public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
-	private transient ItemStackMap<ItemStackContainer, Object> mMap;
+public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<ItemStackContainer> {
+	private final ItemStackMap<ItemStackContainer, Object> mMap;
 	private static final Object OBJECT = new Object();
 	
 	public ItemStackSet() {
@@ -49,8 +49,8 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	}
 	@Override
 	@SuppressWarnings("unchecked")
-	public Iterator<E> iterator() {
-		return (Iterator<E>)mMap.keySet().iterator();
+	public Iterator<ItemStackContainer> iterator() {
+		return (Iterator<ItemStackContainer>)mMap.keySet().iterator();
 	}
 	@Override
 	public int size() {
@@ -89,11 +89,11 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 		return aItem != null && mMap.put(aItem, W, OBJECT) == null;
 	}
 	@Override
-	public boolean add(E aStack) {
-		return aStack != null && mMap.javasucks(aStack, OBJECT) == null;
+	public boolean add(ItemStackContainer aStack) {
+		return aStack != null && mMap.put(aStack, OBJECT) == null;
 	}
 	@Override
-	public boolean addAll(Collection<? extends E> c) {
+	public boolean addAll(Collection<? extends ItemStackContainer> c) {
 		return c != null && super.addAll(c);
 	}
 	@Override
