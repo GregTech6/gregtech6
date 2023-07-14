@@ -109,9 +109,14 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener(dustSmall.dat(MT.FishRaw ), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, dustSmall.mat(MT.FishCooked, 1), F, T, F);}});
 		addListener(dustTiny .dat(MT.FishRaw ), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, dustTiny .mat(MT.FishCooked, 1), F, T, F);}});
 		
-		// Some Bug somewhere is swapping the Outputs of these two Recipes in the Furnace. After an hour of searching I still have no Idea where the fuck that could happen...
-		addListener(dust     .dat(MT.WaxBee  ), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, ingot    .mat(MT.WaxBee    , 1), F, T, F);}});
-		addListener(dust     .dat(MT.WaxPlant), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, ingot    .mat(MT.WaxPlant  , 1), F, T, F);}});
+		addListener(dust.dat(MT.WaxBee), dust.dat(MT.WaxPlant), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			// Annoying multi-registration that was necessary for Compat is causing Issues with Furnace Recipes.
+			OreDictItemData tData = OM.data(aEvent.mStack);
+			if (tData != null && tData.hasValidMaterialData()) {
+			RM.add_smelting(aEvent.mStack, ingot.mat(tData.mMaterial.mMaterial, 1), T, T, F);
+			}
+			RM.add_smelting(aEvent.mStack, ingot.mat(MT.WaxBee, 1), T, T, F);
+		}});
 		
 		addListener("foodVanilla", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!OM.prefixcontains(aEvent.mStack, TD.Prefix.DUST_BASED)) {
