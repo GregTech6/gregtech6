@@ -55,6 +55,9 @@ public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 				cur = cur.getNext();
 				while(!(cur instanceof LabelNode)) cur = cur.getNext();
 
+				// Skip the line number label to the next label
+				cur = cur.getNext();
+
 				// Now wipe the rest of the function and replace with a static call to the replacement
 				cur = cur.getNext();
 				while(cur != null) {
