@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,9 +37,11 @@ public class Loader_Recipes_Hints implements Runnable {
 	@Override public void run() {
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
-		RM.Hammer.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.HARDHAMMER));
-		RM.Chisel.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.CHISEL));
-		RM.Chisel.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.POCKET_CHISEL));
+		RM.Hammer    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.HARDHAMMER));
+		RM.Chisel    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.CHISEL));
+		RM.Chisel    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.POCKET_CHISEL));
+		RM.ToolHeads .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.PICKAXE));
+		RM.DidYouKnow.mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.MAGNIFYING_GLASS));
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  ST.make(OP.dust.mat(MT.OREMATS.Cinnabar, 3), "Throw three Units of Cinnabar into Crucible")

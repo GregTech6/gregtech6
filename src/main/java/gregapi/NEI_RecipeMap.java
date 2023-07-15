@@ -45,6 +45,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
@@ -66,6 +67,18 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public NEI_RecipeMap(RecipeMap aRecipeMap) {
 		mRecipeMap = aRecipeMap;
 		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
+		
+		NBTTagCompound tNBT = UT.NBT.make();
+		tNBT.setString ("modId"            , MD.GT.mID);
+		tNBT.setString ("modName"          , MD.GT.mName);
+		tNBT.setString ("handler"          , mRecipeMap.mNameNEI);
+		tNBT.setString ("itemName"         , ST.regMeta(mRecipeMap.mRecipeMachineList.get(0)));
+		tNBT.setInteger("handlerHeight"    , 135);
+		tNBT.setInteger("handlerWidth"     , 166);
+		tNBT.setInteger("maxRecipesPerPage",   2);
+		tNBT.setInteger("yShift"           ,   6);
+		tNBT.setBoolean("modRequired"      ,   T);
+		FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
 		
 		if (!NEI_GT_API_Config.ADDED) {
 			FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());

@@ -202,6 +202,11 @@ public class ST {
 	public static String regName (Item      aItem ) {return aItem == null ? null : regName_(aItem);}
 	public static String regName_(Item      aItem ) {return Item.itemRegistry.getNameForObject(aItem);}
 	
+	public static String regMeta (ItemStack aStack) {return invalid(aStack) ? "" : regName(item_(aStack))+":"+meta_(aStack);}
+	public static String regMeta (Block     aBlock) {return aBlock  == null ? "" : regName(item_(aBlock))+":0";}
+	public static String regMeta (Item      aItem ) {return aItem   == null ? "" : regName(aItem)+":0";}
+	public static String regMeta_(Item      aItem ) {return regName(aItem)+":0";}
+	
 	public static boolean ownedBy (ModData aMod, IBlockAccess aWorld, int aX, int aY, int aZ) {return aMod.mLoaded && ownedBy(aMod.mID, aWorld, aX, aY, aZ);}
 	public static boolean ownedBy (ModData aMod, ItemStack    aStack                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aStack);}
 	public static boolean ownedBy (ModData aMod, Block        aBlock                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aBlock);}
