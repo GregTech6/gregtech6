@@ -37,6 +37,7 @@ public class Loader_Recipes_Hints implements Runnable {
 	@Override public void run() {
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
+		RM.Trees     .mRecipeMachineList.add(ST.make(BlocksGT.Saplings_AB, 1, 0));
 		RM.Hammer    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.HARDHAMMER));
 		RM.Chisel    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.CHISEL));
 		RM.Chisel    .mRecipeMachineList.add(ToolsGT.sMetaTool.make(ToolsGT.POCKET_CHISEL));
