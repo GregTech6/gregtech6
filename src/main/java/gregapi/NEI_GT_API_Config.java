@@ -29,22 +29,16 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Runnable {
-	public static boolean ADDED;
-	
 	@Override public void loadConfig() {NEI = T; run(); if (GAPI_POST.mFinishedPostInit) run(); else GAPI_POST.mAfterPostInit.add(this);}
 	
 	@Override
 	public void run() {
-		ADDED = F;
-		
-		for (RecipeMap tMap : RecipeMap.RECIPE_MAP_LIST) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
+		for (RecipeMap tMap : RecipeMap.RECIPE_MAP_LIST) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap).init();
 		
 		if (CODE_CLIENT) {
 			codechicken.nei.api.API.registerGuiOverlay(MultiTileEntityGUIClientAdvancedCraftingTable.class, "crafting", 55, 22);
 			codechicken.nei.api.API.registerGuiOverlayHandler(MultiTileEntityGUIClientAdvancedCraftingTable.class, new codechicken.nei.recipe.DefaultOverlayHandler(55, 22), "crafting");
 		}
-		
-		ADDED = T;
 	}
 	
 	@Override public String getName() {return MD.GAPI.mName + " NEI Plugin";}
