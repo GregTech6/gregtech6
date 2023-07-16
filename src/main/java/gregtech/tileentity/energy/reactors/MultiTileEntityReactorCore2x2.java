@@ -206,28 +206,28 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			}
 		}
 	}
-
+	
 	@Override
 	public int getReactorRodNeutronEmission(int aSlot) {
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronEmission(this, aSlot, slot(aSlot));
 		mNeutronCounts[aSlot] = 0;
 		return 0;
 	}
-
+	
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
 		if (SERVER_TIME % 20 == 18) mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
 		return F;
 	}
-
+	
 	@Override
 	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, boolean aModerated) {
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod)
 			return ((IItemReactorRod) ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons, aModerated);
 		return 0;
 	}
-
+	
 	@Override
 	public boolean isReactorRodModerated(int aSlot) {
 		if (slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) {
@@ -244,7 +244,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			((IItemReactorRod) ST.item(slot(aSlot))).updateModeration(this, aSlot, slot(aSlot));
 		}
 	}
-
+	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -270,7 +270,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		}
 		return 0;
 	}
-
+	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide() && SIDES_TOP[aSide]) {
@@ -287,7 +287,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		}
 		return T;
 	}
-
+	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), UT.Code.toByteS(FL.id_(mTanks[0]), 0), UT.Code.toByteS(FL.id_(mTanks[0]), 1)
@@ -298,7 +298,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		);
 		return getClientDataPacketByte(aSendAll, getVisualData());
 	}
-
+	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		super.receiveDataByteArray(aData, aNetworkHandler);
@@ -311,9 +311,9 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		slot(3, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
 		return T;
 	}
-
+	
 	public ITexture mTextures[] = new ITexture[15];
-
+	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextures[ 0] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get(sOverlays[0]));
@@ -404,12 +404,6 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_2x2/overlay/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_2x2/overlay/face2")
 	};
-	
-	@Override
-	public void updateInventory() {
-		super.updateInventory();
-		updateClientData();
-	}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[4];}
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? UT.Code.getAscendingArray(4) : ZL_INTEGER;}

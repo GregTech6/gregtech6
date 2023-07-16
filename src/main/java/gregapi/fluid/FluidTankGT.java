@@ -304,9 +304,10 @@ public class FluidTankGT implements IFluidTank {
 	/** Sets Tank capacity Map, should it be needed. */
 	public FluidTankGT setCapacity(Map<String, Long> aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap; mAdjustableMultiplier = aCapacityMultiplier; return this;}
 	
-	public boolean isEmpty() {return mFluid == null;}
-	public boolean isFull () {return mFluid != null && mAmount     >= capacity();}
-	public boolean isHalf () {return mFluid != null && mAmount * 2 >= capacity();}
+	public boolean isEmpty () {return mFluid == null;}
+	public boolean isFull  () {return mFluid != null && mAmount     >= capacity();}
+	public boolean isHalf  () {return mFluid != null && mAmount * 2 >= capacity();}
+	public boolean overHalf() {return mFluid != null && mAmount * 2 >  capacity();}
 	
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
 	public boolean contains(FluidStack aFluid) {return FL.equal(mFluid, aFluid);}
