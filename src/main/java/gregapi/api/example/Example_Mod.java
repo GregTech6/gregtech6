@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		// No Problem, you can add single Items too, if you just need those.
 		// Assets go into "/assets/insert_your_modid_here/textures/items/example.multiitem.resources/..."
 		// The Textures themselves are just the IDs you insert down there. So "0.png" for the Tiny Pile of Examplium Dust.
-		new gregapi.item.multiitem.MultiItemRandom(MOD_ID, "example.multiitem.resources") {@Override public void addItems() {
+		new gregapi.item.multiitem.MultiItemRandomWithCompat(MOD_ID, "example.multiitem.resources") {@Override public void addItems() {
 		// Did you know that you can use a variable from outside this Block by just making it "final"? I didn't, but now I know more and use tExamplium, even though it wouldn't be accessible otherwise.
 		// And yes you can use all the 32766 possible Meta-IDs of this Item.
 		addItem(    0, "Tiny Pile of Examplium Dust"    , "", gregapi.data.OP.dustTiny  .dat(tExamplium));
