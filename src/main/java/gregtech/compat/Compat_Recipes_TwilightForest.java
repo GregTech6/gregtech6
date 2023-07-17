@@ -96,10 +96,10 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Butane    .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(4));
 		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), FL.DistW     .make(32000), FL.Ice   .make( 7500), ST.make(MD.TF, "item.iceBomb"      , 1,  0));
 		
-		RM.LaserEngraver.addRecipe2(T, 16, 128, IL.Module_Stone_Generator        .get(0), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
-		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stone             , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
-		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stonebrick        , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
-		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(MD.TF, "tile.TFNagastone", 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
+		RM.LaserEngraver.addRecipe2(T, 16, 128, IL.Module_Stone_Generator        .get(0), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stone             , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stonebrick        , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(MD.TF, "tile.TFNagastone", 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
 		
 		RM.Freezer.addRecipe1(T, 16, 144, IL.TF_Trophy_Snowqueen.get(0), FL.Ice.make(9000), NF, ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0));
 		

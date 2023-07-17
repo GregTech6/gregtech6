@@ -66,11 +66,10 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	public NEI_RecipeMap(RecipeMap aRecipeMap) {
 		mRecipeMap = aRecipeMap;
+		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
 	}
 	
 	public NEI_RecipeMap init() {
-		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
-		
 		GuiCraftingRecipe.craftinghandlers.add(this);
 		GuiUsageRecipe.usagehandlers.add(this);
 		
@@ -87,7 +86,6 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
 		
 		FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
-		
 		return this;
 	}
 	
