@@ -22,7 +22,7 @@ package gregtech.items;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
@@ -37,7 +37,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemTechnological extends MultiItemRandom {
+public class MultiItemTechnological extends MultiItemRandomWithCompat {
 	public MultiItemTechnological(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Technology", this, (short)30501));

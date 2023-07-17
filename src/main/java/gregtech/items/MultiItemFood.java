@@ -22,7 +22,7 @@ package gregtech.items;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.food.FoodStat;
 import gregapi.oredict.OreDictItemData;
@@ -42,7 +42,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemFood extends MultiItemRandom implements IItemRottable {
+public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRottable {
 	public MultiItemFood(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Nature & Foods", this, (short)12000));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,7 @@ import gregapi.damage.DamageSources;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.bumble.IItemBumbleBee;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.OM;
@@ -58,7 +58,7 @@ import java.util.Random;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee {
+public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItemBumbleBee {
 	public MultiItemBumbles(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Bumblebees", this, (short)2));

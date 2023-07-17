@@ -27,7 +27,7 @@ import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.IPrefixItem;
 import gregapi.item.multiitem.MultiItem;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.energy.EnergyStat;
 import gregapi.item.multiitem.energy.EnergyStatDebug;
@@ -52,7 +52,7 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.chunkGt;
 
-public class MultiItemRandomTools extends MultiItemRandom implements IItemRottable {
+public class MultiItemRandomTools extends MultiItemRandomWithCompat implements IItemRottable {
 	public MultiItemRandomTools(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Equipment", this, (short)5008));

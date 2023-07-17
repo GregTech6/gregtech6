@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.02: (Not released yet)
+6.16.02: (Not released yet, the Minecraft Forge MCP Java Class Loader is fucked up in way too many ways, now galacticraft causes GT6 to crash somehow!)
 [NOTE] If Railcraft is installed, it may have to be Version 9.14.6 or later, at least it has to if you crash, if you dont then you are lucky and dont need to do anything. https://github.com/GTNewHorizons/Railcraft/releases
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.

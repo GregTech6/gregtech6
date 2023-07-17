@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,7 +21,7 @@ package gregtech.items;
 
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -38,7 +38,7 @@ import java.util.Random;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemBooks extends MultiItemRandom {
+public class MultiItemBooks extends MultiItemRandomWithCompat {
 	public MultiItemBooks(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		OM.reg(OD.craftingBook, ST.make(this, 1, W));
