@@ -88,19 +88,21 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.TF, "item.arcticFur", 4), ST.make(MD.TF, "item.arcticBoots", 1));
 		
 		
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), ST.tag(0), FL.Biomass   .make(16000), NF                   , IL.TF_NagaScale.get(1));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), ST.tag(0), FL.BiomassIC2.make(16000), NF                   , IL.TF_NagaScale.get(1));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Lich     .get(0), ST.tag(0), FL.Milk      .make(16000), NF                   , IL.TF_Transformation_Powder.get(1), ST.make(MD.TF, "item.charmOfLife1", 1, 0));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Hydra    .get(0), ST.tag(0), FL.Blaze     .make(16000), FL.FieryBlood.make(L), IL.TF_Hydrachop_Raw.get(1), ST.make(MD.TF, "item.charmOfKeeping1", 1, 0));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), ST.tag(0), FL.Propane   .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(4));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), ST.tag(0), FL.Butane    .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(4));
-		RM.Replicator.addRecipe2(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), ST.tag(0), FL.DistW     .make(32000), FL.Ice   .make( 7500), ST.make(MD.TF, "item.iceBomb"      , 1,  0));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), FL.Biomass   .make(16000), NF                   , IL.TF_NagaScale.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Naga     .get(0), FL.BiomassIC2.make(16000), NF                   , IL.TF_NagaScale.get(1));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Lich     .get(0), FL.Milk      .make(16000), NF                   , IL.TF_Transformation_Powder.get(1), ST.make(MD.TF, "item.charmOfLife1", 1, 0));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Hydra    .get(0), FL.Blaze     .make(16000), FL.FieryBlood.make(L), IL.TF_Hydrachop_Raw.get(1), ST.make(MD.TF, "item.charmOfKeeping1", 1, 0));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Propane   .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(4));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Urghast  .get(0), FL.Butane    .make(16000), FL.FieryTears.make(L), IL.TF_BorerEssence.get(4));
+		RM.Replicator.addRecipe1(T, 16, 288000, IL.TF_Trophy_Snowqueen.get(0), FL.DistW     .make(32000), FL.Ice   .make( 7500), ST.make(MD.TF, "item.iceBomb"      , 1,  0));
 		
-		RM.Replicator.addRecipe2(T, 16,    144, IL.TF_Trophy_Naga     .get(0), ST.tag(0), MT.Stone  .liquid(U*9, T), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1,  1));
-		RM.Replicator.addRecipe2(T, 16,    144, IL.TF_Trophy_Naga     .get(0), ST.tag(0), FL.Lava      .make( 1000), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1,  1));
-		RM.Replicator.addRecipe2(T, 16,    144, IL.TF_Trophy_Naga     .get(0), ST.tag(1), MT.Stone  .liquid(U*9, T), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1, 13));
-		RM.Replicator.addRecipe2(T, 16,    144, IL.TF_Trophy_Naga     .get(0), ST.tag(1), FL.Lava      .make( 1000), NF                   , ST.make(MD.TF, "tile.TFNagastone"  , 1, 13));
-		RM.Replicator.addRecipe2(T, 16,    144, IL.TF_Trophy_Snowqueen.get(0), ST.tag(0), FL.Ice       .make( 9000), NF                   , ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0));
+		RM.LaserEngraver.addRecipe2(T, 16, 128, IL.Module_Stone_Generator        .get(0), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stone             , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1,  1));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(Blocks.stonebrick        , 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
+		RM.LaserEngraver.addRecipe2(T, 16,  64, ST.make(MD.TF, "tile.TFNagastone", 1, W), IL.TF_Trophy_Naga.get(0), ST.make(MD.TF, "tile.TFNagastone", 1, 13));
+		
+		RM.Freezer.addRecipe1(T, 16, 144, IL.TF_Trophy_Snowqueen.get(0), FL.Ice.make(9000), NF, ST.make(MD.TF, "tile.TFAuroraBrick", 1, 0));
+		
 		
 		
 		RM.moss(ST.make(MD.TF, "tile.TFMazestone", 1, 1), ST.make(MD.TF, "tile.TFMazestone", 1, 5));

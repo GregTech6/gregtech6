@@ -29,6 +29,8 @@ import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.recipes.maps.*;
 import gregapi.util.CR;
@@ -306,7 +308,7 @@ public class RM {
 		return T;
 	}
 	
-	public static ItemStack stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
+	public static ItemStack stoneshapes(final OreDictMaterial aMat, boolean aIsCobbleTarget, final ItemStack aBlock, final ItemStack aStair, final ItemStack aSlabs, final ItemStack aWalls, final ItemStack aPillar) {
 		
 		if (ST.valid(aBlock)) {
 			if (aMat != null) {
@@ -392,7 +394,7 @@ public class RM {
 		return aBlock;
 	}
 	
-	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aFourRocks, ItemStack aDustBlock, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles, ItemStack aBricks2) {
+	public static boolean stonetypes(final OreDictMaterial aMat, boolean aIsMatTarget, final ItemStack aFourRocks, final ItemStack aDustBlock, final ItemStack aStone, final ItemStack aCobble, final ItemStack aBricks, final ItemStack aCracked, final ItemStack aChiseled, final ItemStack aSmooth, final ItemStack aTiles, final ItemStack aBricks2) {
 		for (ItemStack tStack : ST.array(aStone, aCobble, aBricks, aCracked, aChiseled, aSmooth, aTiles, aBricks2)) if (ST.valid(tStack)) {
 			RM.Shredder.addRecipe1(T, 16, 16, tStack, aDustBlock);
 		}
@@ -643,6 +645,26 @@ public class RM {
 				CR.shaped(aFourRocks, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
 			}
 		}
+		
+		if (ST.valid(aStone) || ST.valid(aSmooth)) new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
+		if (ST.valid(aChiseled)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aChiseled));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aChiseled));
+		}});
+		if (ST.valid(aTiles)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Red], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aTiles));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aTiles));
+		}});
+		if (ST.valid(aBricks)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Cyan], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks));
+		}});
+		if (ST.valid(aBricks2)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Magenta], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks2));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks2));
+		}});
+		}};
+		
 		return T;
 	}
 	
