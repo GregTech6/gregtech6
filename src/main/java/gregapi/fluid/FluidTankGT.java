@@ -304,10 +304,11 @@ public class FluidTankGT implements IFluidTank {
 	/** Sets Tank capacity Map, should it be needed. */
 	public FluidTankGT setCapacity(Map<String, Long> aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap; mAdjustableMultiplier = aCapacityMultiplier; return this;}
 	
-	public boolean isEmpty () {return mFluid == null;}
-	public boolean isFull  () {return mFluid != null && mAmount     >= capacity();}
-	public boolean isHalf  () {return mFluid != null && mAmount * 2 >= capacity();}
-	public boolean overHalf() {return mFluid != null && mAmount * 2 >  capacity();}
+	public boolean isEmpty  () {return mFluid == null;}
+	public boolean isFull   () {return mAmount     >= capacity();}
+	public boolean isHalf   () {return mAmount * 2 >= capacity();}
+	public boolean overHalf () {return mAmount * 2 >  capacity();}
+	public boolean underHalf() {return mAmount * 2 <  capacity();}
 	
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
 	public boolean contains(FluidStack aFluid) {return FL.equal(mFluid, aFluid);}
@@ -320,7 +321,7 @@ public class FluidTankGT implements IFluidTank {
 	public boolean changed() {return mChangedFluids;}
 	
 	public long amount() {return isEmpty() ? 0 : mAmount;}
-	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : mAmount < aMax ? mAmount : aMax;}
+	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : Math.min(mAmount, aMax);}
 	
 	public long capacity (                 ) {return mAdjustableCapacity == null ? mCapacity : capacity_(mFluid);}
 	public long capacity (FluidStack aFluid) {return mAdjustableCapacity == null ? mCapacity : capacity_(aFluid);}
