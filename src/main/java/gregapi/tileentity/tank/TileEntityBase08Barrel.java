@@ -165,11 +165,12 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 				if (FL.temperature(tFluid) >= mMeltingPoint && meltdown()) return;
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
+					// TODO UNCOMMENT
 					if (SERVER_TIME % 100 == 40) // <-- TODO REMOVE THIS LINE
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					//GarbageGT.trash(mTank);
-					//setToAir(); // TODO REPLACE WITH THAUMCRAFT FLUX BLOCK
-					return;
+					//WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
+					//return;
 				}
 				if (!mAcidProof && FL.acid(tFluid)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());

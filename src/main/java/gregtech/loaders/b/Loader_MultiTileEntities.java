@@ -233,6 +233,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ultimet               ,   48,  12.5F,  12.5F, 27);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DeshAlloy             ,   55,  15.0F,  15.0F, 27);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Pd                    ,   59,  15.0F,  15.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Os                    ,   29,   9.0F,   9.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.VoidMetal             ,   28,  30.0F,  30.0F, 36);
@@ -241,7 +242,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 59 is next
+		metalset(aRegistry, aMetal, aUtilMetal, aMachine, aWooden, MT.Infinity              ,   50, 100.0F, 100.0F, 36); // 60 is next
 	}
 	
 	private static void crucible(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {

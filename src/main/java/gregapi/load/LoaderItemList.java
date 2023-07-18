@@ -914,6 +914,8 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Knowledge_Fragment                .set(ST.make(MD.TC, "ItemResource"                          , 1, 9), new OreDictItemData(MT.Paper, U9), "paperResearchFragment");
 		IL.TC_Thaumonomicon                     .set(ST.make(MD.TC, "ItemThaumonomicon"                     , 1, 0), new OreDictItemData(MT.Paper, 9*U));
 		IL.TC_Crimson_Rites                     .set(ST.make(MD.TC, "ItemEldritchObject"                    , 1, 1), new OreDictItemData(MT.Paper, 9*U));
+		IL.TC_Flux_Goo                          .set(ST.make(MD.TC, "blockFluxGoo"                          , 1, 0));
+		IL.TC_Flux_Gas                          .set(ST.make(MD.TC, "blockFluxGas"                          , 1, 0));
 		IL.TC_Bucket_Death                      .set(ST.make(MD.TC, "ItemBucketDeath"                       , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.itemPoison);
 		IL.TC_Bucket_Pure                       .set(ST.make(MD.TC, "ItemBucketPure"                        , 1, 0), new OreDictItemData(ANY.Fe, U*3));
 		
