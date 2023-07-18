@@ -78,7 +78,8 @@ public abstract class TileEntityBase11Bidirectional extends TileEntityBase10Ener
 		
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_monkeywrench)) {
-			mReversed=!mReversed;
+			mStorage.mEnergy = 0; // Makes it less likely to cause overcharge when switching Modes by accident.
+			mReversed = !mReversed;
 			TE_Behavior_Energy_Converter tConverter = mConverter; mConverter = mConRevert; mConRevert = tConverter;
 			if (aChatReturn != null) aChatReturn.add(mReversed ? "Reversed" : "Normal");
 			causeBlockUpdate();

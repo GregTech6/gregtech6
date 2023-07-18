@@ -78,7 +78,8 @@ public abstract class TileEntityBase11Motor extends TileEntityBase10EnergyConver
 		if (isClientSide()) return 0;
 		
 		if (aTool.equals(TOOL_monkeywrench)) {
-			mCounterClockwise=!mCounterClockwise;
+			mStorage.mEnergy = 0; // Makes it less likely to cause overcharge when switching Modes by accident.
+			mCounterClockwise = !mCounterClockwise;
 			TE_Behavior_Energy_Converter tConverter = mConverter;
 			mConverter = mConRevert;
 			mConRevert = tConverter;
