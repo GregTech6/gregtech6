@@ -999,7 +999,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		// Magical Energy Production Stuffs
-		aMat = MT.DATA.Electric_T[2];   aRegistry.add("Magic Energy Absorber"                               , "Magical Energy Production"           , 10180, 10180, MultiTileEntityMagicEnergyAbsorber.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F), "GOG", "LBL", "CMC", 'M', OP.casingMachine.dat(aMat), 'C', IL.Circuit_Magic, 'G', OP.wireFine.dat(MT.Au), 'O', OP.plate.dat(MT.Obsidian), 'L', OP.gem.dat(MT.Lapis), 'B', Blocks.beacon);
+		aMat = MT.Pd;                   aRegistry.add("Magic Energy Field Absorber"                         , "Magical Energy Production"           , 10180, 10180, MultiTileEntityMagicEnergyAbsorber.class, aMat.mToolQuality, 16, aMachine, UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F), "GOG", "LBL", "CMC", 'M', OP.casingMachine.dat(aMat), 'C', IL.Circuit_Magic, 'G', OP.wireFine.dat(MT.Au), 'O', OP.plate.dat(MT.Obsidian), 'L', OP.gem.dat(MT.Lapis), 'B', Blocks.beacon);
 		
 		
 		// Batteries
