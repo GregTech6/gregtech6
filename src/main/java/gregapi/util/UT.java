@@ -2281,7 +2281,7 @@ public class UT {
 		
 		
 		public static int getEnchantmentXP(ItemStack aStack) {
-			if (ST.invalid(aStack) || !aStack.hasTagCompound() || ST.isGT(aStack)) return 0;
+			if (ST.invalid(aStack) || !aStack.hasTagCompound() || ST.isGT_(aStack) || (COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(aStack))) return 0;
 			return getEnchantmentXP(getNBT(aStack));
 		}
 		public static int getEnchantmentXP(NBTTagCompound aNBT) {
