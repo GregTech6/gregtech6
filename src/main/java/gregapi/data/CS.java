@@ -1196,6 +1196,7 @@ public class CS {
 	, NBT_LIQUIDPROOF               = "gt.liquidproof"              // Boolean
 	, NBT_GASPROOF                  = "gt.gasproof"                 // Boolean
 	, NBT_ACIDPROOF                 = "gt.acidproof"                // Boolean
+	, NBT_MAGICPROOF                = "gt.magicproof"               // Boolean
 	, NBT_PLASMAPROOF               = "gt.plasmaproof"              // Boolean
 	, NBT_CONTACTDAMAGE             = "gt.contactdamage"            // Boolean
 	, NBT_OPAQUE                    = "gt.opaque"                   // Boolean
@@ -1505,6 +1506,7 @@ public class CS {
 		  SIMPLE = new HashSetNoNulls<>(F, "poison")
 		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "sulfuric_acid_fluid", "nitricacid", "nitric_acid_fluid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
 		, TOXIC = new HashSetNoNulls<>(F, "poison", "toxic_fluid", "mud_fluid", "bacterialsludge", "sludge", "fluiddeath")
+		, MAGIC = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas", "fluiddeath", "fluidpure")
 		, THAUMIC_FLUX = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()

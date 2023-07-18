@@ -171,6 +171,7 @@ public class LH {
 	, HAZARD_LEAKING_GAS = "gt.lang.hazard.leak.gas"
 	, TOOLTIP_GASPROOF = "gt.lang.proof.gas"
 	, TOOLTIP_ACIDPROOF = "gt.lang.proof.acid"
+	, TOOLTIP_MAGICPROOF = "gt.lang.proof.magic"
 	, TOOLTIP_LIQUIDPROOF = "gt.lang.proof.liquid"
 	, TOOLTIP_PLASMAPROOF = "gt.lang.proof.plasma"
 	, TOOLTIP_HEATPROOF = "gt.lang.proof.heat"
@@ -503,6 +504,7 @@ public class LH {
 		add(HAZARD_LEAKING_GAS                          , "Leaks when used with Gases!");
 		add(TOOLTIP_GASPROOF                            , "Can handle Gases");
 		add(TOOLTIP_ACIDPROOF                           , "Can handle Acids");
+		add(TOOLTIP_MAGICPROOF                          , "Can handle Magic");
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");
 		add(TOOLTIP_HEATPROOF                           , "Can handle Temperatures up to: ");

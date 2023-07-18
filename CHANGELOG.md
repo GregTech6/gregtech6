@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.02: (Not released yet)
+[NOTE] I will introduce Magic Proofness to Pipes and Tanks. Right now you will only hear a fizzing noise and Poison Effect to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained.
 [NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregtech.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -35,6 +29,10 @@ import gregapi.util.WD;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -85,6 +83,18 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
 				if (FL.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
+				
+				if (!mMagicProof && FL.magic(tFluid)) {
+					if (SERVER_TIME % 100 == 60) // <-- TODO REMOVE THIS LINE
+					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					//GarbageGT.trash(mTank);
+					//int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
+					//for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+					//  if (rng(3) == 0) worldObj.setBlockToAir(tX+i, tY+j, tZ+k); // TODO REPLACE WITH THAUMCRAFT FLUX BLOCK
+					//}
+					//setToAir(); // TODO REPLACE WITH THAUMCRAFT FLUX BLOCK
+					return;
+				}
 				if (!mAcidProof && FL.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);

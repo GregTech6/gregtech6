@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,7 +64,7 @@ import static gregapi.data.CS.*;
  */
 public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Paintable implements ITileEntityConnectedTank, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_OnItemRightClick, IMTE_OnItemUseFirst, IMTE_AddToolTips, IFluidContainerItem {
 	public FluidTankGT mTank = new FluidTankGT(1000);
-	public boolean mLiquidProof = T, mGasProof = F, mAcidProof = F, mPlasmaProof = F;
+	public boolean mLiquidProof = T, mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F;
 	public long mTemperatureMax = 0;
 	
 	@Override
@@ -72,6 +72,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
+		if (aNBT.hasKey(NBT_MAGICPROOF)) mMagicProof = aNBT.getBoolean(NBT_MAGICPROOF);
 		if (aNBT.hasKey(NBT_LIQUIDPROOF)) mLiquidProof = aNBT.getBoolean(NBT_LIQUIDPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperatureMax = aNBT.getLong(NBT_TEMPERATURE); else mTemperatureMax = mMaterial.mMeltingPoint - 50;
@@ -104,6 +105,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof      ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		if (mPlasmaProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
+		if (mMagicProof     ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_MAGICPROOF));
 	}
 	
 	@Override
@@ -405,7 +407,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	}
 	
 	public boolean isFluidAllowed(FluidStack aFluid) {
-		return aFluid != null && !FL.powerconducting(aFluid) && (FL.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !FL.acid(aFluid)) && (mPlasmaProof || !FL.plasma(aFluid) && FL.temperature(aFluid) <= mTemperatureMax);
+		return aFluid != null && !FL.powerconducting(aFluid) && (FL.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !FL.acid(aFluid)) && (mPlasmaProof || !FL.plasma(aFluid)) && (mMagicProof || !FL.magic(aFluid)) && FL.temperature(aFluid) <= mTemperatureMax;
 	}
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}
