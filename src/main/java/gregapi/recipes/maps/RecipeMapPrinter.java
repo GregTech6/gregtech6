@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregapi.recipes.maps;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
 
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -43,6 +39,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -55,7 +55,7 @@ public class RecipeMapPrinter extends RecipeMap {
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		
-		if (rRecipe != null || aInputs == null || aInputs.length <= 0 || aInputs[0] == null || aFluids == null || aFluids.length <= 0 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
+		if (rRecipe != null || aInputs == null || aInputs.length <= 0 || aInputs[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		
 		ItemStack tUSB = null, tPaper = null;
 		NBTTagCompound tData = null;
