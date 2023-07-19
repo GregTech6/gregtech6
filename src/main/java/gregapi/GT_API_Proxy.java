@@ -1166,7 +1166,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			ItemStack aTool = aEvent.harvester.getCurrentEquippedItem();
 			if (aTool != null) {
 				boolean
-				tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aTool) >= 3),
+				tFireAspect = (UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, aTool) >= 3),
 				tCanCollect = (ST.item_(aTool) instanceof MultiItemTool && ((MultiItemTool)ST.item_(aTool)).canCollectDropsDirectly(aTool, aBlock, (byte)aEvent.blockMetadata));
 				
 				if (ST.item_(aTool) instanceof MultiItemTool) {
@@ -1375,11 +1375,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (tSpeed >= 1.0F) tArrowEntity.setIsCritical(T);
 			
 			int
-			tLevel = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, aEvent.bow);
+			tLevel = UT.NBT.getEnchantmentLevel(Enchantment.power, aEvent.bow);
 			if (tLevel > 0) tArrowEntity.setDamage(tArrowEntity.getDamage() + tLevel * 0.5D + 0.5D);
-			tLevel = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aEvent.bow);
+			tLevel = UT.NBT.getEnchantmentLevel(Enchantment.punch, aEvent.bow);
 			if (tLevel > 0) tArrowEntity.setKnockbackStrength(tLevel);
-			tLevel = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aEvent.bow);
+			tLevel = UT.NBT.getEnchantmentLevel(Enchantment.flame, aEvent.bow);
 			if (tLevel > 0) tArrowEntity.setFire(tLevel * 100);
 			
 			aEvent.bow.damageItem(1, aEvent.entityPlayer);

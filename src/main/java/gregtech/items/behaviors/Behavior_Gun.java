@@ -39,6 +39,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
+import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
@@ -106,7 +107,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Are we shooting from under Water?
 		boolean tWater = WD.liquid(aPlayer.worldObj, aCoord.posX, aCoord.posY, aCoord.posZ);
 		// Bullet related Stats
-		int tFireAspect = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet);
+		int tFireAspect = UT.NBT.getEnchantmentLevel(Enchantment.flame, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, aBullet);
 		
 		// Make a List of all possible Targets.
 		List tEntities = aPlayer.worldObj.getEntitiesWithinAABBExcludingEntity(aPlayer, AxisAlignedBB.getBoundingBox(Math.min(tPos.xCoord, tAim.xCoord)-2, Math.min(tPos.yCoord, tAim.yCoord)-2, Math.min(tPos.zCoord, tAim.zCoord)-2, Math.max(tPos.xCoord, tAim.xCoord)+2, Math.max(tPos.yCoord, tAim.yCoord)+2, Math.max(tPos.zCoord, tAim.zCoord)+2));
@@ -120,7 +121,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		}
 		
 		// Actually do the shooting now!
-		long tPower = mPower + 2000L*EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, aGun);
+		long tPower = mPower + 2000L*UT.NBT.getEnchantmentLevel(Enchantment.power, aGun);
 		for (int i = 1, ii = aCoords.size()-1; i < ii; i++) {
 			
 			if (tPower<=0) {
@@ -251,23 +252,30 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// Player specific immunities, and I guess friendly fire prevention too.
 		if (aTarget instanceof EntityPlayer && (((EntityPlayer)aTarget).capabilities.disableDamage || !aPlayer.canAttackPlayer((EntityPlayer)aTarget))) return F;
 		// Endermen require Disjunction Enchantment on the Bullet, or having a Weakness Potion Effect on them.
-		if (aTarget instanceof EntityEnderman && ((EntityEnderman)aTarget).getActivePotionEffect(Potion.weakness) == null && EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
+		if (aTarget instanceof EntityEnderman && ((EntityEnderman)aTarget).getActivePotionEffect(Potion.weakness) == null && UT.NBT.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
 		// EntityLivingBase, Ender Dragon and End Crystals only.
 		if (!(aTarget instanceof EntityLivingBase || aTarget instanceof EntityDragonPart || aTarget instanceof EntityEnderCrystal)) return F;
-		// To make Railcrafts Implosion Enchantment work...
+		// To make Railcrafts Damage Enchantments work...
 		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
 		OreDictItemData tData = OM.anydata(aBullet);
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
 		
+		
+		
+		
 		float
 		tMassFactor = (tData!=null&&tData.hasValidMaterialData() ? (float)tData.mMaterial.weight() / 50.0F : 1),
 		tSpeedFactor = Math.min(2.0F, aPower/5000.0F),
-		tMagicDamage = (aTarget instanceof EntityLivingBase ? EnchantmentHelper.func_152377_a(aBullet, ((EntityLivingBase)aTarget).getCreatureAttribute()) : aTarget instanceof EntityDragonPart ? EnchantmentHelper.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE.effectId, aBullet) : 0),
+		tMagicDamage = (aTarget instanceof EntityLivingBase ? EnchantmentHelper.func_152377_a(aBullet, ((EntityLivingBase)aTarget).getCreatureAttribute()) : aTarget instanceof EntityDragonPart ? UT.NBT.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE, aBullet) : 0),
 		tDamage = tSpeedFactor * Math.max(0, tGunMat.mToolQuality*0.5F + tMassFactor);
 		int
-		tFireDamage = 4 * (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aBullet)),
-		tKnockback  =     (EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, aGun) + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback .effectId, aBullet));
+		tImplosion  =     (MD.RC.mLoaded ? UT.NBT.getEnchantmentLevel(RailcraftEnchantments.implosion, aBullet) : 0),
+		tFireDamage = 4 * (UT.NBT.getEnchantmentLevel(Enchantment.flame, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, aBullet)),
+		tKnockback  =     (UT.NBT.getEnchantmentLevel(Enchantment.punch, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.knockback , aBullet));
+		
+		// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
+		if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aTarget) && !EntityCreeper.class.isInstance(aTarget)) tMagicDamage += 1.5F * tImplosion;
 		
 		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
 		
@@ -277,7 +285,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			// Guns are quite overkill against Players otherwise.
 			tDamage /= 2; tMagicDamage /= 2;
 		} else if (aPlayer.worldObj instanceof WorldServer) {
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, aBullet) > 0) {
+			if (UT.NBT.getEnchantmentLevel(Enchantment.looting, aBullet) > 0) {
 				tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
 				tPlayer.inventory.currentItem = 0;
 				tPlayer.inventory.setInventorySlotContents(0, aBullet);
@@ -290,11 +298,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
 		
 		// Smite 3+ Bullets will break one Lich Shield each, in order to make this somewhat beatable in Multiplayer.
-		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && EnchantmentHelper.getEnchantmentLevel(Enchantment.smite.effectId, aBullet) >= 3) tDamageSource.setDamageBypassesArmor();
+		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && UT.NBT.getEnchantmentLevel(Enchantment.smite, aBullet) >= 3) tDamageSource.setDamageBypassesArmor();
 		
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = (aTarget instanceof EntityLivingBase ? ((EntityLivingBase)aTarget).maxHurtResistantTime : 20);
-			if (aTarget instanceof EntityCreeper && tFireDamage > 0) ((EntityCreeper)aTarget).func_146079_cb();
+			if (aTarget instanceof EntityCreeper && tFireDamage > 0 && tImplosion <= 0) ((EntityCreeper)aTarget).func_146079_cb();
 			if (tKnockback > 0) aTarget.addVelocity(aDir.xCoord * tKnockback * aPower / 50000.0, 0.05, aDir.zCoord * tKnockback * aPower / 50000.0);
 			if (aTarget instanceof EntityLivingBase)
 			UT.Enchantments.applyBullshitA((EntityLivingBase)aTarget, aPlayer, aBullet);
@@ -338,7 +346,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		}
 		shoot(aGun, ST.amount(1, aBullet), aPlayer);
 		UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
-		if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, aGun)) == 0) {
+		if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+UT.NBT.getEnchantmentLevel(Enchantment.infinity, aGun)) == 0) {
 			OreDictItemData tData = OM.anydata(aBullet);
 			aBullet.stackSize--;
 			ST.save(aNBT, NBT_AMMO, aBullet.stackSize > 0 ? aBullet : NI);

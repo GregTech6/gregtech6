@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,6 +20,7 @@
 package gregtech.entities.projectiles;
 
 import com.mojang.authlib.GameProfile;
+import gregapi.data.MD;
 import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.OM;
@@ -27,6 +28,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.UT.Enchantments;
 import gregapi.util.WD;
+import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
@@ -180,22 +182,26 @@ public class EntityArrow_Material extends EntityProjectile {
 					if (getIsCritical()) tDamage += rand.nextInt((int)(tDamage / 2.0 + 2.0));
 					
 					int
-					tFireDamage = (isBurning()?5:0) + 4 * EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow),
-					tKnockback = mKnockback + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback.effectId, mArrow),
-					tHitTimer = -1;
+					tImplosion  = (MD.RC.mLoaded ? UT.NBT.getEnchantmentLevel(RailcraftEnchantments.implosion, mArrow) : 0),
+					tFireDamage = (isBurning()?5:0) + 4 * UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, mArrow),
+					tKnockback  = mKnockback + UT.NBT.getEnchantmentLevel(Enchantment.knockback, mArrow),
+					tHitTimer   = -1;
+					
+					// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
+					if (tImplosion > 0 && UT.Entities.isExplosiveCreature(tHitEntity) && !EntityCreeper.class.isInstance(tHitEntity)) tMagicDamage += 1.5F * tImplosion;
 					
 					int[] tDamages = onHitEntity(tHitEntity, tShootingEntity==null?this:tShootingEntity, mArrow==null?ST.make(Items.arrow, 1, 0):mArrow, (int)(tDamage*2), (int)(tMagicDamage*2), tKnockback, tFireDamage, tHitTimer);
 					
 					if (tDamages != null) {
-						tDamage = tDamages[0] / 2.0F;
+						tDamage      = tDamages[0] / 2.0F;
 						tMagicDamage = tDamages[1] / 2.0F;
-						tKnockback = tDamages[2];
-						tFireDamage = tDamages[3];
-						tHitTimer = tDamages[4];
+						tKnockback   = tDamages[2];
+						tFireDamage  = tDamages[3];
+						tHitTimer    = tDamages[4];
 						
 						if (tFireDamage > 0 && !(tHitEntity instanceof EntityEnderman)) tHitEntity.setFire(tFireDamage);
 						
-						if (!(tHitEntity instanceof EntityPlayer) && EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, mArrow) > 0) {
+						if (!(tHitEntity instanceof EntityPlayer) && UT.NBT.getEnchantmentLevel(Enchantment.looting, mArrow) > 0) {
 							EntityPlayer tPlayer = null;
 							if (worldObj instanceof WorldServer) tPlayer = FakePlayerFactory.get((WorldServer)worldObj, new GameProfile(new UUID(0, 0), tShootingEntity instanceof EntityLivingBase?((EntityLivingBase)tShootingEntity).getCommandSenderName():"Arrow"));
 							if (tPlayer != null) {
@@ -213,7 +219,7 @@ public class EntityArrow_Material extends EntityProjectile {
 							if (tHitEntity instanceof EntityLivingBase) {
 								if (tHitTimer >= 0) tHitEntity.hurtResistantTime = tHitTimer;
 								
-								if (tHitEntity instanceof EntityCreeper && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 0) ((EntityCreeper)tHitEntity).func_146079_cb();
+								if (tHitEntity instanceof EntityCreeper && UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, mArrow) > 0 && tImplosion <= 0) ((EntityCreeper)tHitEntity).func_146079_cb();
 								
 								EntityLivingBase tHitLivingEntity = (EntityLivingBase)tHitEntity;
 								
@@ -268,7 +274,7 @@ public class EntityArrow_Material extends EntityProjectile {
 					
 					if (mHitBlock.getMaterial() != Material.air) mHitBlock.onEntityCollidedWithBlock(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, this);
 					
-					if (!worldObj.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, T, F);
+					if (!worldObj.isRemote && UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, T, F);
 					
 					if (breaksOnImpact()) setDead();
 				}

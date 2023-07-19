@@ -2280,6 +2280,10 @@ public class UT {
 		}
 		
 		
+		public static int getEnchantmentLevel(Enchantment aEnchantment, ItemStack aStack) {
+			if (aEnchantment == null || aEnchantment.effectId < 0) return 0;
+			return EnchantmentHelper.getEnchantmentLevel(aEnchantment.effectId, aStack);
+		}
 		public static int getEnchantmentXP(ItemStack aStack) {
 			if (ST.invalid(aStack) || !aStack.hasTagCompound() || ST.isGT_(aStack) || (COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(aStack))) return 0;
 			return getEnchantmentXP(getNBT(aStack));
@@ -3174,14 +3178,23 @@ public class UT {
 		
 		
 		
-		public static boolean isSlimeCreature(EntityLivingBase aEntity) {
+		public static boolean isSlimeCreature(Entity aEntity) {
 			return aEntity instanceof EntitySlime || UT.Reflection.getLowercaseClass(aEntity).contains("slime");
 		}
-		public static boolean isEnderCreature(EntityLivingBase aEntity) {
+		public static boolean isEnderCreature(Entity aEntity) {
 			return aEntity instanceof EntityEnderman || UT.Reflection.getLowercaseClass(aEntity).contains("ender");
 		}
-		public static boolean isZombieCreature(EntityLivingBase aEntity) {
+		public static boolean isZombieCreature(Entity aEntity) {
 			return aEntity instanceof EntityZombie || UT.Reflection.getLowercaseClass(aEntity).contains("zombie");
+		}
+		public static boolean isCreeperCreature(Entity aEntity) {
+			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("creeper");
+		}
+		public static boolean isGhastCreature(Entity aEntity) {
+			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("ghast");
+		}
+		public static boolean isExplosiveCreature(Entity aEntity) {
+			return isGhastCreature(aEntity) || isCreeperCreature(aEntity);
 		}
 		public static boolean isWereCreature(EntityLivingBase aEntity) {
 			if (aEntity instanceof EntityPlayer) {
