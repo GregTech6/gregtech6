@@ -123,7 +123,7 @@ public class Loader_Books implements Runnable {
 		, "Magical Power¶===================¶You can acquire this by killing the many Creatures in this World, by cooking Food or messing with Ores! This is quite the Experience to be had, which is why many people call it XP or EXP!"
 		, "List¶===================¶What follows is a List of the Enchantments that I know of and their Effects."
 		, "Sharpness¶===================¶Levels 1 to 5+¶Deals 0.625 Hearts of Extra Damage per Level and works on pretty much everything!"
-		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches!"
+		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches! Smite 3+ Bullets can even penetrate a Lich Barrier!"
 		, "Bane of Arthropods¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on things that have 6 or more Legs, like those pesky Spiders, Mites, Insects or Silverfish!"
 		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
 		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Arrows and Bullets with this Enchantment invaluable in deposing them!"
