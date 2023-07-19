@@ -1822,7 +1822,6 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1     , MT.Diamond            ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
-		OM.data(MD.TF, "item.armorShards"                   , 1,   0, MT.Knightmetal        ,  U9);
 		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);
 		OM.data(MD.TF, "item.knightmetalRing"               , 1,   0, MT.Knightmetal        ,  U * 4);
 		OM.dat2(MD.TF, "item.chainBlock"                    , 1     , MT.Knightmetal        ,  U *16);
