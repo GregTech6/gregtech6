@@ -75,22 +75,22 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		if (Loader.instance().getIndexedModList().get("NotEnoughItems").getVersion().contains("-GTNH")) {
 			API.registerRecipeHandler(this);
 			API.registerUsageHandler(this);
+			
+			NBTTagCompound tNBT = UT.NBT.make();
+			tNBT.setString ("modId"            , MD.GT.mID);
+			tNBT.setString ("modName"          , MD.GT.mName);
+			tNBT.setString ("handler"          , mRecipeMap.mNameNEI);
+			tNBT.setString ("itemName"         , ST.regMeta(mRecipeMap.mRecipeMachineList.isEmpty() ? ST.make(Blocks.lit_furnace, 1, 0) : mRecipeMap.mRecipeMachineList.get(0)));
+			tNBT.setInteger("handlerHeight"    , 135);
+			tNBT.setInteger("handlerWidth"     , 166);
+			tNBT.setInteger("maxRecipesPerPage",   2);
+			tNBT.setInteger("yShift"           ,   6);
+			tNBT.setBoolean("modRequired"      ,   T);
+			FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
 		} else {
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
 		}
-		
-		NBTTagCompound tNBT = UT.NBT.make();
-		tNBT.setString ("modId"            , MD.GT.mID);
-		tNBT.setString ("modName"          , MD.GT.mName);
-		tNBT.setString ("handler"          , mRecipeMap.mNameNEI);
-		tNBT.setString ("itemName"         , ST.regMeta(mRecipeMap.mRecipeMachineList.isEmpty() ? ST.make(Blocks.lit_furnace, 1, 0) : mRecipeMap.mRecipeMachineList.get(0)));
-		tNBT.setInteger("handlerHeight"    , 135);
-		tNBT.setInteger("handlerWidth"     , 166);
-		tNBT.setInteger("maxRecipesPerPage",   2);
-		tNBT.setInteger("yShift"           ,   6);
-		tNBT.setBoolean("modRequired"      ,   T);
-		FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
 		
 		FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
 		return this;
