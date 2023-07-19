@@ -36,7 +36,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
 [CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also hit the Ender Dragon and End Crystals too, finally.
-[CHANGED] Smite 3+ Bullets can penetrate the Lich Barrier, making it possible to actually harm the Lich in Multiplayer when your ping's ass.
+[CHANGED] Smite 3+ Bullets can break the Twilight Lich Barrier, making it possible to actually harm the Lich in Multiplayer when your ping's ass.
 [CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles in the Bath.
 [ADDED] Recipes to perpetually get otherwise non-renewable Loot Stuff out of Twilight Forest Trophies. The Trophies act as Catalysts and you have to supply some other Material to convert it.
 [ADDED] Magic Field Absorber. It generates 64 of whatever Energy the thing placed ontop of it makes. Dragon Eggs are Quantum Units and Twilight Forest Trophies have KU, QU, HU, LU and CU in this order.

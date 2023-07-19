@@ -289,7 +289,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		// To make Looting work at all...
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
 		
-		// Smite 3+ Bullets will penetrate the Lich Shield, in order to make this somewhat beatable in Multiplayer.
+		// Smite 3+ Bullets will break one Lich Shield each, in order to make this somewhat beatable in Multiplayer.
 		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && EnchantmentHelper.getEnchantmentLevel(Enchantment.smite.effectId, aBullet) >= 3) tDamageSource.setDamageBypassesArmor();
 		
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {

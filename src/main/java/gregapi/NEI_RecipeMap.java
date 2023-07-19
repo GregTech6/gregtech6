@@ -22,6 +22,7 @@ package gregapi;
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
+import codechicken.nei.api.API;
 import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerInputHandler;
 import codechicken.nei.guihook.IContainerTooltipHandler;
@@ -70,8 +71,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	}
 	
 	public NEI_RecipeMap init() {
-		GuiCraftingRecipe.craftinghandlers.add(this);
-		GuiUsageRecipe.usagehandlers.add(this);
+		API.registerRecipeHandler(this);
+		API.registerUsageHandler(this);
 		
 		NBTTagCompound tNBT = UT.NBT.make();
 		tNBT.setString ("modId"            , MD.GT.mID);
