@@ -621,7 +621,11 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public String getOverlayIdentifier() {
 		return mRecipeMap.mNameNEI;
 	}
-
+	
+	public String getHandlerId() {
+		return mRecipeMap.mNameNEI;
+	}
+	
 	@Override
 	public void drawBackground(int recipe) {
 		GL11.glColor4f(1, 1, 1, 1);
