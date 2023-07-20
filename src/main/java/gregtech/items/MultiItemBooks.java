@@ -64,7 +64,7 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"              , "With a Radiation Symbol on it"   , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		
 		
-		RM.generify(ST.make(this, 1, W), ST.make(Items.book, 1, 0));
+		RM.generify(ST.make(this, 1, W), ST.make(Items.written_book, 1, 0));
 		
 		
 		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {OD.bookWrittenSmall, DYE_OREDICTS[DYE_INDEX_Black]});

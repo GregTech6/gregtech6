@@ -74,16 +74,18 @@ import java.util.UUID;
 import static gregapi.data.CS.*;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
-	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 10000, 16);
-	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 17500,  8);
-	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 25000,  4);
+	public static Behavior_Gun BULLETS_SMALL  = new Behavior_Gun(TD.Projectiles.BULLET_SMALL , 1.00F, 10000, 16);
+	public static Behavior_Gun BULLETS_MEDIUM = new Behavior_Gun(TD.Projectiles.BULLET_MEDIUM, 2.00F, 17500,  8);
+	public static Behavior_Gun BULLETS_LARGE  = new Behavior_Gun(TD.Projectiles.BULLET_LARGE , 3.00F, 25000,  4);
 	
 	public final TagData mBulletType;
 	public final long mPower;
+	public final float mMagic;
 	public final byte mAmmoPerMag;
 	
-	public Behavior_Gun(TagData aBulletType, long aPower, long aAmmoPerMag) {
+	public Behavior_Gun(TagData aBulletType, float aMagic, long aPower, long aAmmoPerMag) {
 		mBulletType = aBulletType;
+		mMagic = aMagic;
 		mPower = aPower;
 		mAmmoPerMag = UT.Code.bindStack(aAmmoPerMag);
 	}
@@ -283,13 +285,18 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (aTarget instanceof EntityPlayer) {
 			// Guns are quite overkill against Players otherwise.
 			tDamage /= 2; tMagicDamage /= 2;
-		} else if (aPlayer.worldObj instanceof WorldServer) {
-			if (UT.NBT.getEnchantmentLevel(Enchantment.looting, aBullet) > 0) {
-				tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
-				tPlayer.inventory.currentItem = 0;
-				tPlayer.inventory.setInventorySlotContents(0, aBullet);
-				tPlayer.setPositionAndRotation(aPlayer.posX, aPlayer.posY, aPlayer.posZ, aPlayer.rotationYaw, aPlayer.rotationPitch);
-				tPlayer.setDead();
+		} else {
+			// Bigger Bullets deal more Magic Damage just like they already do for Normal Damage, but not against Players.
+			tMagicDamage *= mMagic;
+			
+			if (aPlayer.worldObj instanceof WorldServer) {
+				if (UT.NBT.getEnchantmentLevel(Enchantment.looting, aBullet) > 0) {
+					tPlayer = FakePlayerFactory.get((WorldServer)aPlayer.worldObj, new GameProfile(new UUID(0, 0), ((EntityLivingBase)aPlayer).getCommandSenderName()));
+					tPlayer.inventory.currentItem = 0;
+					tPlayer.inventory.setInventorySlotContents(0, aBullet);
+					tPlayer.setPositionAndRotation(aPlayer.posX, aPlayer.posY, aPlayer.posZ, aPlayer.rotationYaw, aPlayer.rotationPitch);
+					tPlayer.setDead();
+				}
 			}
 		}
 		

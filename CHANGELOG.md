@@ -35,7 +35,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
 [CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
-[CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also hit the Ender Dragon and End Crystals too, finally.
+[CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also hit the Ender Dragon and End Crystals too, finally. Also Magical Damage from Enchantments will now be doubled or tripled for the Medium and Large Bullets, to correspond with the increased Normal Damage.
 [CHANGED] Smite 3+ Bullets can break the Twilight Lich Barrier, making it possible to actually harm the Lich in Multiplayer when your ping's ass.
 [CHANGED] Railcrafts Implosion Enchantment (if on a GT6 Item) is now more Effective against all kinds of Ghasts. Also if you have Implosion and Fire Aspect on the same Projectile, the Fire Aspect will NOT ignite the Creeper like it usually would.
 [CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles in the Bath.

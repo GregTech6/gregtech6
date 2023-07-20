@@ -457,7 +457,7 @@ public class Loader_Books implements Runnable {
 		tBook.add("File"                +"¶===================¶OXXXO¶OXXXO¶OXXXO¶OOXOO¶OOXOO¶===================¶1.500 Units required");
 		tBook.add("Screwdriver"         +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OOXOO¶OOXOO¶===================¶1.000 Units required");
 		tBook.add("Chisel"              +"¶===================¶OXXXO¶OOXOO¶OOXOO¶OOXOO¶OOXOO¶===================¶1.500 Units required");
-		tBook.add("Arrow"               +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OXXXO¶OOOOO¶===================¶0.250 Units required");
+		tBook.add("Arrow"               +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OXXXO¶OOOOO¶===================¶0.125 Units required");
 		tBook.add("Hoe"                 +"¶===================¶OOOOO¶OOXXO¶OXXXO¶OOOOO¶OOOOO¶===================¶2.000 Units required");
 		tBook.add("Sense/Scythe"        +"¶===================¶OOOOO¶OXXXX¶XXXXX¶OOOOO¶OOOOO¶===================¶3.000 Units required");
 		tBook.add("Plow"                +"¶===================¶XXXXX¶XXXXX¶XXXXX¶XXXXX¶OOXOO¶===================¶4.000 Units required");
