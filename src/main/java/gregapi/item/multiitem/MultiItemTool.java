@@ -46,6 +46,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
@@ -234,13 +235,18 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getEntityHitSound(), 20, 1, aEntity);
 		if (super.onLeftClickEntity(aStack, aPlayer, aEntity)) return T;
 		if (aEntity.canAttackWithItem()) {
-			int tFireAspect = EnchantmentHelper.getFireAspectModifier(aPlayer);
+			int
+			tImplosion  = UT.NBT.getEnchantmentLevelImplosion(aStack),
+			tFireAspect = EnchantmentHelper.getFireAspectModifier(aPlayer);
 			boolean tIgnitesFire = !aEntity.isBurning() && tFireAspect > 0 && aEntity instanceof EntityLivingBase;
 			if (tIgnitesFire) aEntity.setFire(1);
 			if (aEntity.hitByEntity(aPlayer)) {
 				if (tIgnitesFire) aEntity.extinguish();
 			} else {
 				float tMagicDamage = tStats.getMagicDamageAgainstEntity(aEntity instanceof EntityLivingBase?EnchantmentHelper.getEnchantmentModifierLiving(aPlayer, (EntityLivingBase)aEntity):0, aEntity, aStack, aPlayer), tDamage = tStats.getNormalDamageAgainstEntity((float)aPlayer.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue() + getToolCombatDamage(aStack), aEntity, aStack, aPlayer);
+				// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
+				if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aEntity) && !EntityCreeper.class.isInstance(aEntity)) tMagicDamage += 1.5F * tImplosion;
+				
 				if (tDamage + tMagicDamage > 0) {
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;

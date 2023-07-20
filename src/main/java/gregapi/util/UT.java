@@ -48,9 +48,11 @@ import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IMachineRecipeManagerExt;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
+import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.enchantment.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -2280,6 +2282,10 @@ public class UT {
 		}
 		
 		
+		public static int getEnchantmentLevelDestruction(ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.destruction, aStack) : 0;}
+		public static int getEnchantmentLevelWrecking   (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.wrecking   , aStack) : 0;}
+		public static int getEnchantmentLevelImplosion  (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.implosion  , aStack) : 0;}
+		
 		public static int getEnchantmentLevel(Enchantment aEnchantment, ItemStack aStack) {
 			if (aEnchantment == null || aEnchantment.effectId < 0) return 0;
 			return EnchantmentHelper.getEnchantmentLevel(aEnchantment.effectId, aStack);
@@ -2290,50 +2296,13 @@ public class UT {
 		}
 		public static int getEnchantmentXP(NBTTagCompound aNBT) {
 			if (!aNBT.hasKey("ench", 9)) return 0;
-			NBTTagList aList = aNBT.getTagList("ench", 10);
-			
 			int rXP = 0;
-			
+			NBTTagList aList = aNBT.getTagList("ench", 10);
 			for (int i = 0; i < aList.tagCount(); i++) {
 				NBTTagCompound tEnchantmentTag = aList.getCompoundTagAt(i);
-				
 				Enchantment tEnchantment = Enchantment.enchantmentsList[tEnchantmentTag.getShort("id")];
-				
 				if (UT.Reflection.getLowercaseClass(tEnchantment).contains("curse")) return 0;
-				
-				short tLevel = tEnchantmentTag.getShort("lvl");
-				
-				if (tEnchantment == Enchantment.sharpness || tEnchantment == Enchantment.protection) {
-					rXP += (tLevel * 11 - 10);
-				} else if (tEnchantment == Enchantment.fireAspect || tEnchantment == Enchantment.thorns) {
-					rXP += (tLevel * 20 - 10);
-				} else if (tEnchantment == Enchantment.punch) {
-					rXP += (tLevel * 20 -  8);
-				} else if (tEnchantment == Enchantment.respiration) {
-					rXP += (tLevel * 10     );
-				} else if (tEnchantment == Enchantment.silkTouch || tEnchantment == Enchantment.field_151369_A) {
-					rXP += (tLevel *  9 +  6);
-				} else if (tEnchantment == Enchantment.knockback) {
-					rXP += (tLevel * 20 - 15);
-				} else if (tEnchantment == Enchantment.fireProtection) {
-					rXP += (tLevel *  8 +  2);
-				} else if (tEnchantment == Enchantment.projectileProtection) {
-					rXP += (tLevel *  6 -  3);
-				} else if (tEnchantment == Enchantment.featherFalling) {
-					rXP += (tLevel *  6 -  1);
-				} else if (tEnchantment == Enchantment.aquaAffinity || tEnchantment == Enchantment.power || tEnchantment == Enchantment.efficiency) {
-					rXP += (tLevel * 10 -  9);
-				} else if (tEnchantment == Enchantment.flame || tEnchantment == Enchantment.infinity) {
-					rXP += (tLevel * 10 + 10);
-				} else if (tEnchantment == Enchantment.unbreaking || tEnchantment == Enchantment.blastProtection) {
-					rXP += (tLevel *  8 -  3);
-				} else if (tEnchantment instanceof EnchantmentLootBonus) {
-					rXP += (tLevel *  9 +  6);
-				} else if (tEnchantment instanceof EnchantmentDamage || tEnchantment instanceof EnchantmentProtection) {
-					rXP += (tLevel *  8 -  3);
-				} else {
-					rXP += (tLevel * 10 -  5);
-				}
+				rXP += tEnchantment.getMinEnchantability(tEnchantmentTag.getShort("lvl"));
 			}
 			return UT.Code.bindInt(UT.Code.divup(rXP, 2));
 		}

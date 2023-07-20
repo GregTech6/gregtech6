@@ -20,7 +20,6 @@
 package gregtech.entities.projectiles;
 
 import com.mojang.authlib.GameProfile;
-import gregapi.data.MD;
 import gregapi.item.IItemProjectile.EntityProjectile;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.OM;
@@ -28,7 +27,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.UT.Enchantments;
 import gregapi.util.WD;
-import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
@@ -182,7 +180,7 @@ public class EntityArrow_Material extends EntityProjectile {
 					if (getIsCritical()) tDamage += rand.nextInt((int)(tDamage / 2.0 + 2.0));
 					
 					int
-					tImplosion  = (MD.RC.mLoaded ? UT.NBT.getEnchantmentLevel(RailcraftEnchantments.implosion, mArrow) : 0),
+					tImplosion  = UT.NBT.getEnchantmentLevelImplosion(mArrow),
 					tFireDamage = (isBurning()?5:0) + 4 * UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, mArrow),
 					tKnockback  = mKnockback + UT.NBT.getEnchantmentLevel(Enchantment.knockback, mArrow),
 					tHitTimer   = -1;

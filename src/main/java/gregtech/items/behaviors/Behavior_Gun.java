@@ -39,7 +39,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
-import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
@@ -270,7 +269,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		tMagicDamage = (aTarget instanceof EntityLivingBase ? EnchantmentHelper.func_152377_a(aBullet, ((EntityLivingBase)aTarget).getCreatureAttribute()) : aTarget instanceof EntityDragonPart ? UT.NBT.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE, aBullet) : 0),
 		tDamage = tSpeedFactor * Math.max(0, tGunMat.mToolQuality*0.5F + tMassFactor);
 		int
-		tImplosion  =     (MD.RC.mLoaded ? UT.NBT.getEnchantmentLevel(RailcraftEnchantments.implosion, aBullet) : 0),
+		tImplosion  =      UT.NBT.getEnchantmentLevelImplosion(aBullet),
 		tFireDamage = 4 * (UT.NBT.getEnchantmentLevel(Enchantment.flame, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, aBullet)),
 		tKnockback  =     (UT.NBT.getEnchantmentLevel(Enchantment.punch, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.knockback , aBullet));
 		

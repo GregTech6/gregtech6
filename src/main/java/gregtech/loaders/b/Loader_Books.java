@@ -126,14 +126,14 @@ public class Loader_Books implements Runnable {
 		, "Wrecking¶===================¶Levels 1 to 5+¶IDeals 0.75 Hearts of Extra Damage per Level and works on pretty much everything! Can normally only be applied to Railcraft Crowbars."
 		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches! Smite 3+ Bullets can even penetrate a Lich Barrier!"
 		, "Bane of Arthropods¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on things that have 6 or more Legs, like those pesky Spiders, Mites, Insects or Silverfish!"
-		, "Implosion¶===================¶Levels 1 to 5+¶IDeals 1.5 Hearts of Extra Damage per Level and works on any Creepers! Can normally only be applied to Railcraft Crowbars. Ammunition with this also hurts other explosive Mobs like Ghasts!"
+		, "Implosion¶===================¶Levels 1 to 5+¶IDeals 1.5 Hearts of Extra Damage per Level and works on any Creepers! Can normally only be applied to Railcraft Crowbars. It often also hurts other explosive Mobs like Ghasts!"
 		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
-		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Arrows and Bullets with this Enchantment invaluable in deposing them!"
+		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Projectiles with this Enchantment invaluable in deposing them!"
 		, "Werebane¶===================¶Levels 1 to 5+¶Inflicts Withering and Poison to any Werecreatures and similar that it hits! Works on Minotaurs too!"
 		, "Knockback¶===================¶Levels 1 to 2+¶This will yeet anyone you hit with it, decreasing your own horizontal velocity by 40% in the process, which is only noticeable midair. Its Level increases by one while sprinting."
-		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze for 4 Seconds per Level, at Level 3 it can also smelt anything it harvests blazingly fast!"
+		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze for 4 Seconds per Level, sometimes even cooking their drops and at Level 3 it can also smelt any Block it harvests blazingly fast!"
 		, "Looting¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Mobs. It may increase the total drops themselves or the chance that you get some rare drop at all."
-		, "Fortune¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Blocks. It may increase the total drops themselves or the chance that you get some rare drop at all. Almost only works on Ores."
+		, "Fortune¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Blocks. It may increase the total drops themselves or the chance that you get some rare drop at all. Works on Ores, Crops, Gravel, and Glowstone."
 		, "Silk Touch¶===================¶Only 1 Level¶Will make sure that the Block you harvest with the proper Tool, will drop itself instead of what it would normally drop otherwise. Small Ores get a better chance for bigger Gems."
 		
 		
