@@ -141,8 +141,21 @@ public class Loader_Books implements Runnable {
 		, "Projectile Protection¶===================¶Levels 1 to 4+¶Reduces amount of Ranged Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. Be aware that Explosive Projectiles may only be reduced partially!"
 		, "Feather Falling¶===================¶Levels 1 to 4+¶Reduces amount of Enderpearl and Falling Damage taken by 12 Percent per Level per Armor Piece, it caps with Protection. Does not work if you are crashing into a Wall though."
 		
+		// respiration = new EnchantmentOxygen(5, 2);
+		// aquaAffinity = new EnchantmentWaterWorker(6, 2);
+		// thorns = new EnchantmentThorns(7, 1);
+		// knockback = new EnchantmentKnockback(19, 5);
+		// efficiency = new EnchantmentDigging(32, 10);
+		// unbreaking = new EnchantmentDurability(34, 5);
+		// power = new EnchantmentArrowDamage(48, 10);
+		// punch = new EnchantmentArrowKnockback(49, 2);
+		// flame = new EnchantmentArrowFire(50, 2);
+		// infinity = new EnchantmentArrowInfinite(51, 1);
+		// luck = new EnchantmentLootBonus(61, 2, EnumEnchantmentType.fishing_rod);
+		// lure = new EnchantmentFishingSpeed(62, 2, EnumEnchantmentType.fishing_rod);
+		
 		, ""
-		, "¶¶¶There is missing Pages torn out of this Book...¶¶maybe they will appear later?"// Seems like Greg was a bit Lazy here.
+		, "¶¶¶There is at least 12 missing Pages torn out of this Book...¶¶maybe they will appear later?"// Seems like Greg was a bit Lazy here.
 		});
 		
 		

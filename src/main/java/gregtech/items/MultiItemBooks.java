@@ -28,6 +28,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -61,6 +62,10 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 		
 		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                    , "With a Radiation Symbol on it"   , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"              , "With a Radiation Symbol on it"   , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
+		
+		
+		RM.generify(ST.make(this, 1, W), ST.make(Items.book, 1, 0));
+		
 		
 		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {OD.bookWrittenSmall, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {OD.bookWrittenSmall, DYE_OREDICTS[DYE_INDEX_White]});
