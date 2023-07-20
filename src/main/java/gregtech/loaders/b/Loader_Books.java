@@ -135,7 +135,11 @@ public class Loader_Books implements Runnable {
 		, "Looting¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Mobs. It may increase the total drops themselves or the chance that you get some rare drop at all."
 		, "Fortune¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Blocks. It may increase the total drops themselves or the chance that you get some rare drop at all. Works on Ores, Crops, Gravel, and Glowstone."
 		, "Silk Touch¶===================¶Only 1 Level¶Will make sure that the Block you harvest with the proper Tool, will drop itself instead of what it would normally drop otherwise. Small Ores get a better chance for bigger Gems."
-		
+		, "Protection¶===================¶Levels 1 to 4+¶Reduces amount of overall Damage taken by 4 Percent per Level per Armor Piece, it caps at a combined 80 Percent Reduction, which includes all the other Protection Enchantment Types!"
+		, "Fire Protection¶===================¶Levels 1 to 4+¶Reduces amount of Fire Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. It will reduce time on Fire by 15 Percent per best uncombined Level."
+		, "Blast Protection¶===================¶Levels 1 to 4+¶Reduces amount of Explosion Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. It will reduce Explosion Knockback by 15 Percent per best uncombined Level."
+		, "Projectile Protection¶===================¶Levels 1 to 4+¶Reduces amount of Ranged Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. Be aware that Explosive Projectiles may only be reduced partially!"
+		, "Feather Falling¶===================¶Levels 1 to 4+¶Reduces amount of Enderpearl and Falling Damage taken by 12 Percent per Level per Armor Piece, it caps with Protection. Does not work if you are crashing into a Wall though."
 		
 		, ""
 		, "¶¶¶There is missing Pages torn out of this Book...¶¶maybe they will appear later?"// Seems like Greg was a bit Lazy here.
