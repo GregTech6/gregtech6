@@ -393,6 +393,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 								tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 							}
 							if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
+							tToolTip = null;
+							for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentFishing) {
+								if (tToolTip == null) tToolTip = new StringBuilder(LH.Chat.PURPLE).append(LH.get(LH.TOOLTIP_POSSIBLE_FISHING_ENCHANTS)).append(LH.Chat.PINK); else tToolTip.append(", ");
+								tToolTip.append(tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
+							}
+							if (tToolTip != null) aEvent.toolTip.add(tToolTip.toString());
 							
 							if (!tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE)) {
 								tToolTip = null;

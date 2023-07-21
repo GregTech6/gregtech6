@@ -207,6 +207,7 @@ public class LH {
 	, TOOLTIP_POSSIBLE_WEAPON_ENCHANTS = "gt.lang.weapon.enchants"
 	, TOOLTIP_POSSIBLE_AMMO_ENCHANTS = "gt.lang.ammo.enchants"
 	, TOOLTIP_POSSIBLE_RANGED_ENCHANTS = "gt.lang.ranged.enchants"
+	, TOOLTIP_POSSIBLE_FISHING_ENCHANTS = "gt.lang.fishing.enchants"
 	, TOOLTIP_POSSIBLE_ARMOR_ENCHANTS = "gt.lang.armor.enchants"
 	, TOOLTIP_TOO_MANY_TOOL_ENCHANTS = "gt.lang.tool.enchants.too.many"
 	, TOOLTIP_TOO_MANY_ARMOR_ENCHANTS = "gt.lang.armor.enchants.too.many"
@@ -540,6 +541,7 @@ public class LH {
 		add(TOOLTIP_POSSIBLE_WEAPON_ENCHANTS            , "Weapon: ");
 		add(TOOLTIP_POSSIBLE_AMMO_ENCHANTS              , "Ammo: ");
 		add(TOOLTIP_POSSIBLE_RANGED_ENCHANTS            , "Ranged: ");
+		add(TOOLTIP_POSSIBLE_FISHING_ENCHANTS           , "Fishing: ");
 		add(TOOLTIP_POSSIBLE_ARMOR_ENCHANTS             , "Armor: ");
 		add(TOOLTIP_TOO_MANY_TOOL_ENCHANTS              , "Too Many Tool Enchantments to List");
 		add(TOOLTIP_TOO_MANY_ARMOR_ENCHANTS             , "Too Many Armor Enchantments to List");
