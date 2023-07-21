@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -125,6 +125,13 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 		return F;
 	}
 	
+	public int mLootingMultiplier = 1;
+	
+	public PrefixItemProjectile setLootingMultiplier(int aLootingMultiplier) {
+		mLootingMultiplier = aLootingMultiplier;
+		return this;
+	}
+	
 	@Override
 	public void updateItemStack(ItemStack aStack) {
 		super.updateItemStack(aStack);
@@ -134,7 +141,7 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 			if (!tNBT.getBoolean("gt.u")) {
 				tNBT.setBoolean("gt.u", T);
 				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentAmmo) {
-					UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mAmount);
+					UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mObject == Enchantment.looting ? tEnchantment.mAmount * mLootingMultiplier : tEnchantment.mAmount);
 				}
 			}
 		}
