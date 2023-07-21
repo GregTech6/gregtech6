@@ -366,6 +366,26 @@ public class LH {
 	}
 	
 	static {
+		add("enchantment.level.11"                      , "XI");
+		add("enchantment.level.12"                      , "XII");
+		add("enchantment.level.13"                      , "XIII");
+		add("enchantment.level.14"                      , "XIV");
+		add("enchantment.level.15"                      , "XV");
+		add("enchantment.level.16"                      , "XVI");
+		add("enchantment.level.17"                      , "XVII");
+		add("enchantment.level.18"                      , "XVIII");
+		add("enchantment.level.19"                      , "XIX");
+		add("enchantment.level.20"                      , "XX");
+		add("enchantment.level.21"                      , "XXI");
+		add("enchantment.level.22"                      , "XXII");
+		add("enchantment.level.23"                      , "XXIII");
+		add("enchantment.level.24"                      , "XXIV");
+		add("enchantment.level.25"                      , "XXV");
+		add("enchantment.level.26"                      , "XXVI");
+		add("enchantment.level.27"                      , "XXVII");
+		add("enchantment.level.28"                      , "XXVIII");
+		add("enchantment.level.29"                      , "XXIX");
+		add("enchantment.level.30"                      , "XXX");
 		add("loot.mineshaftCorridor"                    , "Mineshaft");
 		add("loot.pyramidDesertyChest"                  , "Desert Pyramid");
 		add("loot.pyramidJungleChest"                   , "Jungle Temple");
