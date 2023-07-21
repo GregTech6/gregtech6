@@ -246,6 +246,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	}
 	
 	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer, Entity aTarget, long aPower, Vec3 aDir) {
+		try {
 		// In case the Entity is Invulnerable.
 		if (aTarget.isEntityInvulnerable()) return F;
 		// Player specific immunities, and I guess friendly fire prevention too.
@@ -254,7 +255,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (aTarget instanceof EntityEnderman && ((EntityEnderman)aTarget).getActivePotionEffect(Potion.weakness) == null && UT.NBT.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
 		// EntityLivingBase, Ender Dragon and End Crystals only.
 		if (!(aTarget instanceof EntityLivingBase || aTarget instanceof EntityDragonPart || aTarget instanceof EntityEnderCrystal)) return F;
-	//  // To make Railcrafts Damage Enchantments work...
+	//  // To make Railcrafts Damage Enchantments work... // I later figured I'd just hardcode it in.
 	//  MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
 		OreDictItemData tData = OM.anydata(aBullet);
@@ -270,9 +271,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		tFireDamage = 4 * (UT.NBT.getEnchantmentLevel(Enchantment.flame, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.fireAspect, aBullet)),
 		tKnockback  =     (UT.NBT.getEnchantmentLevel(Enchantment.punch, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.knockback , aBullet));
 		
-		// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
-		if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aTarget)) tMagicDamage += 1.5F * tImplosion;
-		
+		if (tImplosion  > 0 && UT.Entities.isExplosiveCreature(aTarget)) tMagicDamage += 1.5F*tImplosion;
 		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
 		
 		EntityPlayer tPlayer = aPlayer;
@@ -299,7 +298,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		
 		// To make Looting work at all...
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.hasValidMaterialData() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
-		
+		// Extremely Fast Bullets will penetrate Armor. You need a Rifle with the Power Enchantment for this. A Power 5 Carbine at point-blank could do too though.
+		if (aPower > 25000) tDamageSource.setDamageBypassesArmor();
 		// Smite 3+ Bullets will break one Lich Shield each, in order to make this somewhat beatable in Multiplayer.
 		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && UT.NBT.getEnchantmentLevel(Enchantment.smite, aBullet) >= 3) tDamageSource.setDamageBypassesArmor();
 		
@@ -314,7 +314,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (tMagicDamage > 0.0F) aPlayer.onEnchantmentCritical(aTarget);
 			return T;
 		}
-		
+		// Print Errors to the Log and send a Chat Message informing about its existence.
+		} catch(Throwable e) {e.printStackTrace(ERR); UT.Entities.sendchat(aPlayer, "See gregtech.log for details: " + e.toString()); aTarget.setDead(); return T;}
 		// Just pretend we miss the Target if it was in its Invulnerability Frames, this will end up hitting whatever is behind the Target instead.
 		if (aTarget.hurtResistantTime > 0) return F;
 		// It hits, but it doesn't seem to do anything.
