@@ -63,9 +63,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import twilightforest.entity.boss.EntityTFLich;
 
 import java.util.List;
@@ -256,14 +254,11 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (aTarget instanceof EntityEnderman && ((EntityEnderman)aTarget).getActivePotionEffect(Potion.weakness) == null && UT.NBT.getEnchantmentLevel(Enchantment_EnderDamage.INSTANCE, aBullet) <= 0) for (int i = 0; i < 64; ++i) if (((EntityEnderman)aTarget).teleportRandomly()) return F;
 		// EntityLivingBase, Ender Dragon and End Crystals only.
 		if (!(aTarget instanceof EntityLivingBase || aTarget instanceof EntityDragonPart || aTarget instanceof EntityEnderCrystal)) return F;
-		// To make Railcrafts Damage Enchantments work...
-		MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
+	//  // To make Railcrafts Damage Enchantments work...
+	//  MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(aPlayer, aTarget));
 		
 		OreDictItemData tData = OM.anydata(aBullet);
 		OreDictMaterial tGunMat = MultiItemTool.getPrimaryMaterial(aGun, MT.Steel);
-		
-		
-		
 		
 		float
 		tMassFactor = (tData!=null&&tData.hasValidMaterialData() ? (float)tData.mMaterial.weight() / 50.0F : 1),
@@ -276,7 +271,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		tKnockback  =     (UT.NBT.getEnchantmentLevel(Enchantment.punch, aGun) + UT.NBT.getEnchantmentLevel(Enchantment.knockback , aBullet));
 		
 		// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
-		if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aTarget) && !EntityCreeper.class.isInstance(aTarget)) tMagicDamage += 1.5F * tImplosion;
+		if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aTarget)) tMagicDamage += 1.5F * tImplosion;
 		
 		if (tFireDamage > 0) aTarget.setFire(tFireDamage);
 		
@@ -295,6 +290,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 					tPlayer.inventory.currentItem = 0;
 					tPlayer.inventory.setInventorySlotContents(0, aBullet);
 					tPlayer.setPositionAndRotation(aPlayer.posX, aPlayer.posY, aPlayer.posZ, aPlayer.rotationYaw, aPlayer.rotationPitch);
+					// Bypasses Twilight Forest Progression Checks. Yeah this is needed or else any Looting Bullet would do ZERO Damage.
+					if (WD.dimTF(aPlayer.worldObj)) tPlayer.capabilities.isCreativeMode = T;
 					tPlayer.setDead();
 				}
 			}

@@ -205,6 +205,8 @@ public class EntityArrow_Material extends EntityProjectile {
 							if (tPlayer != null) {
 								tPlayer.inventory.currentItem = 0;
 								tPlayer.inventory.setInventorySlotContents(0, getArrowItem());
+								// Bypasses Twilight Forest Progression Checks. Yeah this is needed or else any Looting Arrow would do ZERO Damage.
+								if (WD.dimTF(worldObj)) tPlayer.capabilities.isCreativeMode = T;
 								tShootingEntity = tPlayer;
 								tPlayer.setDead();
 							}

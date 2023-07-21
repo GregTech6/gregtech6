@@ -31,6 +31,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
+[FIXED] Looting Bullets and Arrows were not working in Twilight Forest due to the Fake Player not having Progression Achievements.
 [CHANGED] Werebane Enchantment now also works on Minotaurs. Good for Twilight Mazes.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
