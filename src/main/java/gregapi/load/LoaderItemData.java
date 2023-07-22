@@ -870,12 +870,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.FR, "letters"                                    , 1,   W, MT.Paper              , U);
 		OM.data(MD.FR, "stamps"                                     , 1,   W, MT.Paper              , U9);
 		OM.data(MD.TE, "diagram"                                    , 1,   W, MT.Paper              , U*2);
-		OM.data(MD.TF, "item.emptyMagicMap"                         , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.emptyMazeMap"                          , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.emptyOreMap"                           , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.magicMap"                              , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.mazeMap"                               , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.oreMap"                                , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  46, MT.Paper              , U*3);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  47, MT.Paper              , U*3);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  48, MT.Paper              , U*3);

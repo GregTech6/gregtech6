@@ -2180,6 +2180,26 @@ public class UT {
 			return aNBT.getShort("maze_map_id");
 		}
 		
+		public static NBTTagCompound setOreMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("ore_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getOreMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("ore_map_id")) return -1;
+			return tNBT.getShort("ore_map_id");
+		}
+		public static NBTTagCompound setOreMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("ore_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getOreMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("ore_map_id")) return -1;
+			return aNBT.getShort("ore_map_id");
+		}
+		
 		public static NBTTagCompound setBookMapping(ItemStack aStack, String aTitle) {
 			NBTTagCompound tNBT = getNBT(aStack);
 			tNBT.setString("book", aTitle);
@@ -2313,6 +2333,11 @@ public class UT {
 			tMapID = getMazeMapID(aData);
 			if (tMapID >= 0) {
 				aList.add(LH.Chat.CYAN + "Maze Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getOreMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Ore Map ID: " + tMapID);
 				return aList;
 			}
 			tString = getPunchCardData(aData);

@@ -26,7 +26,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
 [COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
 [COMPAT] Et Futurum Requiem should be updated to latest if you dont have already.
-[COMPAT] Twilight Forest Magic Maps and Maze Maps now have Scanner and Printer Recipes respectively. By the way did you know the Maze Map works literally ANYWHERE and not just Mazes? You just need a relatively flat Dungeon or Mineshaft to go through, or maybe even your Base!
+[COMPAT] Twilight Forest Magic Maps, Maze Maps and Ore Maps now have Scanner and Printer Recipes respectively. By the way did you know the Maze Map works literally ANYWHERE and not just Mazes? You just need a relatively flat Dungeon or Mineshaft to go through, or maybe even your Base!
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.

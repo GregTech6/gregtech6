@@ -162,7 +162,12 @@ public class RecipeMapPrinter extends RecipeMap {
 			if (IL.TF_Maze_Map_Empty.equal(tPaper, T, T)) {
 				short tMapID = UT.NBT.getMazeMapID(tData);
 				if (tMapID < 0) return rRecipe;
-				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Maze_Map.getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Maze_Map .getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
+			}
+			if (IL.TF_Ore_Map_Empty.equal(tPaper, T, T)) {
+				short tMapID = UT.NBT.getOreMapID(tData);
+				if (tMapID < 0) return rRecipe;
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Ore_Map  .getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
 			}
 			return rRecipe;
 		}
