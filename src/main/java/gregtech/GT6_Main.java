@@ -346,7 +346,7 @@ public class GT6_Main extends Abstract_Mod {
 		RM.ScannerVisuals.addFakeRecipe(F, ST.array(IL.IE_Blueprint_Projectiles_Common.wild(1), IL.USB_Stick_1.get(1))          , ST.array(IL.USB_Stick_1.getWithName(1, "Containing scanned Engineer's Blueprint"  ), IL.IE_Blueprint_Projectiles_Common.wild(1)), null, null, ZL_FS, ZL_FS, 1024, 16, 0);
 		
 		
-		RM.Boxinator.addRecipe2(T, 16, 64, ST.make(Items.paper, 8, W), ST.make(Items.compass, 1, W), NF, NF, ST.make(Items.map, 1, 0));
+		RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.paper, 8, W), ST.make(Items.compass, 1, W), NF, NF, ST.make(Items.map, 1, 0));
 		
 		RM.Printer.addRecipe1(T, 16, 256, ST.make(Items.book, 1, W), DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], NF, ST.book("Manual_Printer", ST.make(ItemsGT.BOOKS, 1, 8)));
 		

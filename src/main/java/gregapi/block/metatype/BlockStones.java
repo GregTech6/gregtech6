@@ -280,6 +280,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, SMOTH), F, F, F);
 		CR.shaped(ST.make(this, 4, BRICK), CR.DEF, "XX", "XX", 'X', tStack.toStack());
+		if (IL.TF_Pick_Giant.exists()) RM.Boxinator.addRecipe2(T,128,128, ST.amount(64, tStack.toStack()), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Cobble.get(1));
 		RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(mMaterial, 9));
 		RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 9));
 		RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(mMaterial, 18));
@@ -324,6 +325,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		CR.shaped(ST.make(mSlabs[0]          , 4, COBBL), CR.DEF    , "  " , "XX" , 'X', tStack.toStack());
 		CR.shaped(ST.make(Blocks.stone_stairs    , 4, 0), CR.DEF_MIR, " X" , "XX" , 'X', tStack.toStack()); // TODO Stairs
 		CR.shaped(ST.make(Blocks.cobblestone_wall, 6, 0), CR.DEF_MIR, "XXX", "XXX", 'X', tStack.toStack()); // TODO Walls
+		if (IL.TF_Pick_Giant.exists()) RM.Boxinator.addRecipe2(T,128,128, ST.amount(64, tStack.toStack()), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Cobble.get(1));
 		RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate       .get(0), OP.plate.mat(mMaterial, 9));
 		RM.Extruder.addRecipe2(F, F, F, F, F, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Plate_Curved.get(0), OP.plateCurved.mat(mMaterial, 9));
 		RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack.toStack()), IL.Shape_Extruder_Rod         .get(0), OP.stick.mat(mMaterial, 18));

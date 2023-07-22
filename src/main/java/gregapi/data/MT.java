@@ -2911,6 +2911,7 @@ public class MT {
 			Elvorium                .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
 			InfusedEntropy          .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
 			Ke                      .addEnchantmentForDamage(Enchantment.sharpness, 6).addEnchantmentForRanged(Enchantment.power, 6);
+			Ad                      .addEnchantmentForDamage(Enchantment.sharpness, 7).addEnchantmentForRanged(Enchantment.power, 7);
 			Trinitanium             .addEnchantmentForDamage(Enchantment.sharpness, 7).addEnchantmentForRanged(Enchantment.power, 7);
 			Trinaquadalloy          .addEnchantmentForDamage(Enchantment.sharpness, 8).addEnchantmentForRanged(Enchantment.power, 8);
 			Infinity                .addEnchantmentForDamage(Enchantment.sharpness,10).addEnchantmentForRanged(Enchantment.power,10);

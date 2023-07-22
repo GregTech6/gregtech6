@@ -81,6 +81,7 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			RM.Hammer       .addRecipe1(T, 16,   64,                           aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))));
 			RM.Crusher      .addRecipe1(T, 16,  600, new long[] {10000, 2500}, aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))), OP.dust.mat(MT.Obsidian, 1));
 			RM.pulverizing(                                                    aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))), OP.dust.mat(MT.Obsidian, 1), 25, T);
+			if (IL.TF_Pick_Giant.exists()) RM.Boxinator.addRecipe2(T,128,128, ST.amount(64, aEvent.mStack), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Obsidian.get(1));
 		}});
 		addListener("stoneNetherBrick", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Hammer       .addRecipe1(T, 16,   16, aEvent.mStack, ST.make(Items.netherbrick, 3, 0));

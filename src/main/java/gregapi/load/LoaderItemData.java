@@ -142,6 +142,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
 		OM.reg("foodCookie"                         , ST.make(Items.cookie, 1, 0));
 		OM.reg("foodCookie"                         , ST.make(MD.BOTA, "manaCookie", 1, 0));
+		OM.reg("foodCookie"                         , ST.make(MD.TF, "item.mazeWafer", 1, 0));
 		OM.reg("cropAppleRed"                       , ST.make(Items.apple, 1, 0));
 		OM.reg("cropMelon"                          , ST.make(Items.melon, 1, 0));
 		OM.reg("cropPumpkin"                        , ST.make(Blocks.pumpkin, 1, 0));
@@ -1816,7 +1817,8 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1     , MT.Diamond            ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
-		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);
+		OM.data(MD.TF, "item.ironwoodRaw"                   , 1,   0, MT.IronWood           ,  U * 2);
+		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U * 2);
 		OM.data(MD.TF, "item.knightmetalRing"               , 1,   0, MT.Knightmetal        ,  U * 4);
 		OM.dat2(MD.TF, "item.chainBlock"                    , 1     , MT.Knightmetal        ,  U *16);
 		OM.data(MD.TF, "tile.TFNagastone"                   , 1,   W, ANY.Stone             ,  U * 9);
