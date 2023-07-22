@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,7 @@
 
 package gregtech.entities;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -47,6 +39,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class Override_Drops {
 	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
 		if (UT.Code.stringInvalid(aClass) || "EntityTFLichMinion".equalsIgnoreCase(aClass) || "EntitySkeletonBoss".equalsIgnoreCase(aClass)) return;
@@ -54,6 +50,7 @@ public class Override_Drops {
 		boolean tReplaceIron = aClass.startsWith("entitygaia");
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
+		
 		
 		if (aDead instanceof EntityAnimal && aDead.isChild()) {
 			tReplaceIron = T;
@@ -446,6 +443,16 @@ public class Override_Drops {
 			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityStrider")) {
 			tReplaceIron = T;
+		} else if (aClass.equalsIgnoreCase("EntityTFIceCrystal")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(2);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blizz, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFIceShooter") || aClass.equalsIgnoreCase("EntityTFIceExploder")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(3);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blizz, 1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
