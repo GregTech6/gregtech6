@@ -976,6 +976,14 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Lich                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 2));
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
+		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, 0));
+		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, 0));
+		IL.TF_Magic_Map_Focus                   .set(ST.make(MD.TF, "item.magicMapFocus"                    , 1, 0));
+		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, 0));
+		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, 0));
+		IL.TF_Maze_Map_Focus                    .set(ST.make(MD.TF, "item.mazeMapFocus"                     , 1, 0));
+		
+		
 		
 		// These Bottles should actually have an empty Variant.
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);

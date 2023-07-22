@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [IMPORTANT]
 There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
 Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
-Magical Materials like Ironwood, Thaumium, Netherite and Mana Steel will be abke to hold Magical Fluids.
+Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
 The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
 Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
 Wooden Buckets will still be able to handle Rainbow Tree Sap.
@@ -26,6 +26,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
 [COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
 [COMPAT] Et Futurum Requiem should be updated to latest if you dont have already.
+[COMPAT] Twilight Forest Magic Maps and Maze Maps now have Scanner and Printer Recipes respectively. By the way did you know the Maze Map works literally ANYWHERE and not just Mazes? You just need a relatively flat Dungeon or Mineshaft to go through, or maybe even your Base!
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
 [FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.
@@ -42,6 +43,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles in the Bath.
 [ADDED] Recipes to perpetually get otherwise non-renewable Loot Stuff out of Twilight Forest Trophies. The Trophies act as Catalysts and you have to supply some other Material to convert it.
 [ADDED] Magic Field Absorber. It generates 64 of whatever Energy the thing placed ontop of it makes. Dragon Eggs are Quantum Units and Twilight Forest Trophies have KU, QU, HU, LU and CU in this order.
+[ADDED] Boxinator can now assemble empty Maps. Also applies to the two Twilight Forest Maps.
 [ADDED] The Grindstone can now disenchant Tools and give XP for doing so. Does not work on GT Tools for obvious reasons.
 [ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
 [ADDED] Salted Water, which is just the KCl version of Saltwater. Adjusted and added some Chemistry Recipes for that.

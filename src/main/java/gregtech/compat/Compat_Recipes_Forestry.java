@@ -381,6 +381,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		}});
 		}};
 		
+		RM.genericycle(OP.casingMachine.mat(MT.Bronze, 1), IL.FR_Casing_Sturdy.get(1));
+		
 		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.Wax        .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
 		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxBee     .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
 		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxPlant   .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));

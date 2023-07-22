@@ -281,6 +281,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			tDamage /= 2; tMagicDamage /= 2;
 		} else {
 			// Bigger Bullets deal more Magic Damage just like they already do for Normal Damage, but not against Players.
+			// The Reason I didn't just up the Enchantment Level like I did with Looting is because that would increase the Side Effects too.
 			tMagicDamage *= mMagic;
 			
 			if (aPlayer.worldObj instanceof WorldServer) {

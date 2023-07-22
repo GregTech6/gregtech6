@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,7 @@
 
 package gregtech.old;
 
-import static gregapi.data.CS.*;
-
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -32,6 +29,8 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 @SuppressWarnings("deprecation")
 public class Loader_MachineRecipes implements Runnable {
@@ -57,9 +56,9 @@ public class Loader_MachineRecipes implements Runnable {
 		
 //      RA.addAssemblerRecipe(ST.make(Blocks.redstone_torch, 2, W) , OM.get(OP.dust, MT.Redstone, 1)     , MT.Concrete.getMolten(L)  , ST.make(Items.repeater, 1, 0)    , 800,  1);
 //      RA.addAssemblerRecipe(ST.make(Items.leather, 1, W)         , ST.make(Items.lead, 1, W)           , MT.Glue.getFluid( 50)     , ST.make(Items.name_tag, 1, 0)    , 100,  8);
-		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Paper, 8)        , ST.make(Items.compass, 1, W)        , NF                        , ST.make(Items.map, 1, 0)         , 100,  8);
+//      RA.addAssemblerRecipe(OM.get(OP.plate, MT.Paper, 8)        , ST.make(Items.compass, 1, W)        , NF                        , ST.make(Items.map, 1, 0)         , 100,  8);
 //      RA.addAssemblerRecipe(ST.make(MD.FR, "sturdyMachine", 1, 0), OM.get(OP.gem, MT.Diamond, 4)       , MT.Water.getFluid(5000)   , IL.FR_Casing_Hardened.get(1)     ,  64, 32);
-		RA.addAssemblerRecipe(OM.get(OP.ingot, MT.Bronze, 8)       , ST.tag(8)                           , NF                        , IL.FR_Casing_Sturdy.get(1)       ,  32, 16);
+//      RA.addAssemblerRecipe(OM.get(OP.ingot, MT.Bronze, 8)       , ST.tag(8)                           , NF                        , IL.FR_Casing_Sturdy.get(1)       ,  32, 16);
 //      RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood, 1)         , ST.make(Blocks.wool, 1, W)          , MT.Creosote.getFluid(1000), ST.make(Blocks.torch, 6, 0)      , 400,  1);
 //      RA.addAssemblerRecipe(OM.get(OP.plate, MT.Rubber, 3)       , ST.makeIC2("carbonMesh", 3)         , MT.Glue.getFluid(300)     , IL.Duct_Tape.get(1)              , 100, 64);
 //      RA.addAssemblerRecipe(OM.get(OP.plate, MT.Paper, 3)        , ST.make(Items.leather, 1, W)        , MT.Glue.getFluid( 20)     , ST.make(Items.book, 1, 0)        ,  32,  8);

@@ -2140,6 +2140,46 @@ public class UT {
 			return aNBT.getShort("map_id");
 		}
 		
+		public static NBTTagCompound setMagicMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("magic_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getMagicMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("magic_map_id")) return -1;
+			return tNBT.getShort("magic_map_id");
+		}
+		public static NBTTagCompound setMagicMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("magic_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getMagicMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("magic_map_id")) return -1;
+			return aNBT.getShort("magic_map_id");
+		}
+		
+		public static NBTTagCompound setMazeMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("maze_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getMazeMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("maze_map_id")) return -1;
+			return tNBT.getShort("maze_map_id");
+		}
+		public static NBTTagCompound setMazeMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("maze_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getMazeMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("maze_map_id")) return -1;
+			return aNBT.getShort("maze_map_id");
+		}
+		
 		public static NBTTagCompound setBookMapping(ItemStack aStack, String aTitle) {
 			NBTTagCompound tNBT = getNBT(aStack);
 			tNBT.setString("book", aTitle);
@@ -2259,9 +2299,20 @@ public class UT {
 				}
 				return aList;
 			}
-			short tMapID = getMapID(aData);
+			short
+			tMapID = getMapID(aData);
 			if (tMapID >= 0) {
 				aList.add(LH.Chat.CYAN + "Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getMagicMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Magic Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getMazeMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Maze Map ID: " + tMapID);
 				return aList;
 			}
 			tString = getPunchCardData(aData);
