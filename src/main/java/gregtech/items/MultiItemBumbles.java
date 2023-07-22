@@ -231,8 +231,11 @@ public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItem
 		case   2:
 			if (BIOMES_MAGICAL.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName)) return new ChunkCoordinates(aX, aY, aZ);
 			Block tThaumcraft = ST.block(MD.TC, "blockCustomPlant");
-			if (tThaumcraft != NB) for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
-				if (WD.block(aWorld, aX+i, aY+j, aZ+k, F) == tThaumcraft) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
+				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
+				if (tBlock == NB) continue;
+				if (tBlock == tThaumcraft) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == BlocksGT.Leaves_AB && (WD.meta(aWorld, aX+i, aY+j, aZ+k, F) & 7) == 7) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 			}
 			return null;
 		case   3: case 200:
@@ -348,7 +351,7 @@ public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItem
 	public String getFlowerTooltip(short aMetaData) {
 		switch(aMetaData / 100) {
 		case   1:           return "Water";
-		case   2:           return "Magical Biome or Thaumic Flowers";
+		case   2:           return "Magical Biome, Thaumic Flowers or Rainbow Leaves";
 		case   3: case 200: return MD.BoP.mLoaded ? "Netherwart or Burning Blossoms" : "Netherwart";
 		case   4: case 202: return MD.EtFu.mLoaded ? "Chorus Flower or Dragon Egg" : "End Portal, End Biome or Dragon Egg";
 		case   5: case 203: return "Stone, Cobble or Mossy";
