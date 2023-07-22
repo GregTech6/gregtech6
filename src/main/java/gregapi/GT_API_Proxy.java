@@ -692,12 +692,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (ST.invalid(tRotten)) {tStack.stackSize = 0; aEvent.player.inventory.setInventorySlotContents(i, null); continue;}
 								if (tStack != tRotten) ST.set(tStack, tRotten);
 							}
-							OreDictItemData tData = OM.anydata_(tStack);
+							// You can't detect properly when you pick things up out of a Chest, so part of the Inventory scan it is!
+							if (IL.TF_Trophy_Urghast.equal(tStack, T, T)) {
+								UT.Inventories.checkAchievements(aEvent.player, tStack);
+							}
+							// Radiation and Heat Damage.
 							if (!UT.Entities.isInvincible(aEvent.player)) {
 								UT.Entities.applyRadioactivity(aEvent.player, UT.Entities.getRadioactivityLevel(tStack), tStack.stackSize);
 								float tHeat = UT.Entities.getHeatDamageFromItem(tStack);
 								if (tHeat != 0.0F) if (tHeat > 0) UT.Entities.applyHeatDamage(aEvent.player, tHeat); else UT.Entities.applyFrostDamage(aEvent.player, -tHeat);
 							}
+							// Data based checks.
+							OreDictItemData tData = OM.anydata_(tStack);
 							if (tData != null && tData.hasValidMaterialData()) {
 								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.hasValidPrefixData() || tData.mByProducts.length <= 0)) {
 									PotionEffect tEffect = null;
@@ -903,6 +909,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
 		Block aBlock = WD.block(aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
+		
+		// You cant detect properly when you pick things up out of a Chest.
+		if (IL.TF_Trophy_Urghast.equal(aStack, T, T)) {
+			UT.Inventories.checkAchievements(aEvent.entityPlayer, aStack);
+		}
 		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
 			// Fixing a Vanilla Dupe Bug with stacked Music Discs and the Jukebox.
