@@ -47,6 +47,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [ADDED] Boxinator can now assemble empty Maps. Also applies to the two Twilight Forest Maps.
 [ADDED] The Grindstone can now disenchant Tools and give XP for doing so. Does not work on GT Tools for obvious reasons.
 [ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
+[ADDED] Vine Ropes. Also you can now harvest Vines with GT6 Swords and Knifes.
 [ADDED] Salted Water, which is just the KCl version of Saltwater. Adjusted and added some Chemistry Recipes for that.
 [ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
 [ADDED] Non-Functional-Tools, which are similar to the Robot Arm Tips in that they can be used as Single Use Tools in Crafting, but look uglier. This is mostly only useful for things like Applied Energistics or Logistics Pipes, which cannot handle NBT very well. You can mint them by putting Tiny Steel or Rubber Plates and Robot Arm Tips into a Boxinator. The Robot Arm Tips will not be used up.

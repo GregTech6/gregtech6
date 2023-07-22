@@ -453,6 +453,11 @@ public class Override_Drops {
 			int tAmount = RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blizz, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFTowerGolem")) {
+			for (EntityItem tEntity : aDrops) {
+				ItemStack tStack = tEntity.getEntityItem();
+				if (OM.is("ingotAnyIronOrSteel", tStack)) ST.set(tStack, OP.ingot.mat(MT.IronWood, 1), F, F);
+			}
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));

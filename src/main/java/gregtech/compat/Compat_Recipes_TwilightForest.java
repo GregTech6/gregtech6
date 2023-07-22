@@ -195,6 +195,6 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Bath.addRecipe1(T, 0, 2*144, ST.make(MD.TF, "item.knightlySword", 1, 0), FL.FieryBlood.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
 		RM.Bath.addRecipe1(T, 0, 2*144, ST.make(MD.TF, "item.knightlySword", 1, 0), FL.FieryTears.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
 		RM.Bath.addRecipe1(T, 0, 3*144, ST.make(MD.TF, "item.knightlyPick" , 1, 0), FL.FieryBlood.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
-		RM.Bath.addRecipe1(T, 0, 3*144, ST.make(MD.TF, "item.knightlyPick ", 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
+		RM.Bath.addRecipe1(T, 0, 3*144, ST.make(MD.TF, "item.knightlyPick" , 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
 	}
 }
