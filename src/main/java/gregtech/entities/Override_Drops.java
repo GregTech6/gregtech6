@@ -554,7 +554,7 @@ public class Override_Drops {
 			if (MOBS_DROP_MEAT && !OD.listAllmeatsubstitute.is(tStack)) {
 				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
 				if (ST.item_(tStack) == Items.fish) {
-					if (aBurn) ST.set(tStack, ST.make(Items.cooked_fished, 1, 9), F, F);
+					if (aBurn) ST.set(tStack, RM.get_smelting(tStack), F, F); break;
 				}
 				if (ST.item_(tStack) == Items.porkchop) {
 					switch(tRandomNumber%3) {
@@ -565,7 +565,7 @@ public class Override_Drops {
 				if (ST.item_(tStack) == Items.cooked_porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, IL.Food_Ham_Cooked.get(1), F, F); break;
-					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
+					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3L+RNGSUS.nextInt(3)))), T, F); break;
 					}
 				} else
 				if (OM.is("listAllbeefraw", tStack)) {

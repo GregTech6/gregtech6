@@ -776,6 +776,7 @@ public class RM {
 		return T;
 	}
 	
+	public static ItemStack get_smelting(ItemStack aInput) {return get_smelting(aInput, F, NI);}
 	public static ItemStack get_smelting(ItemStack aInput, boolean aRemoveInput, ItemStack aOutputSlot) {
 		if (aInput == null || aInput.stackSize < 1) return NI;
 		ItemStack rStack = OM.get(FurnaceRecipes.smelting().getSmeltingResult(aInput));

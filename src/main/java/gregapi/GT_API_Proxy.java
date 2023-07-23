@@ -1194,7 +1194,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					
 					if (!tFireAspect) continue;
 					
-					tTarget = RM.get_smelting(tDrop, F, null);
+					tTarget = RM.get_smelting(tDrop);
 					if (ST.invalid(tTarget)) continue;
 					tDrop.stackSize *= tTarget.stackSize;
 					OM.set(ST.set(tDrop, tTarget, F, T));
