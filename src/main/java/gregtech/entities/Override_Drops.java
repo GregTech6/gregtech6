@@ -553,6 +553,9 @@ public class Override_Drops {
 			// Give Meat more variety! :D
 			if (MOBS_DROP_MEAT && !OD.listAllmeatsubstitute.is(tStack)) {
 				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
+				if (ST.item_(tStack) == Items.fish) {
+					if (aBurn) ST.set(tStack, ST.make(Items.cooked_fished, 1, 9), F, F);
+				}
 				if (ST.item_(tStack) == Items.porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, (aBurn?IL.Food_Ham_Cooked:IL.Food_Ham_Raw).get(1), F, F); break;
