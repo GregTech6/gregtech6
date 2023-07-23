@@ -297,7 +297,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		ItemStack tOutputStack = slot(0);
 		if (tOutputStack != null) {
 			OreDictItemData tData = OM.anyassociation(tOutputStack);
-			if (tData != null) for (Achievement tAchievement : tData.mMaterial.mMaterial.mAchievementsForCreation) aPlayer.triggerAchievement(tAchievement);
+			if (tData != null) for (Achievement tAchievement : tData.mMaterial.mMaterial.mAchievementsForCreation) UT.Inventories.unlockAchievement(aPlayer, tAchievement);
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (aStack == null) {
 				aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);

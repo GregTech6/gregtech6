@@ -71,6 +71,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -2702,18 +2703,18 @@ public class UT {
 			}
 		}
 		
+		public static boolean unlockAchievement(EntityPlayer aPlayer, Achievement aAchievement) {
+			if (aAchievement == null || aPlayer == null) return F;
+			unlockAchievement(aPlayer, aAchievement.parentAchievement);
+			aPlayer.triggerAchievement(aAchievement);
+			return T;
+		}
+		
 		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
 			if (aPlayer == null) return F;
 			
 			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-				aPlayer.triggerAchievement(AchievementList.buildFurnace);
-				aPlayer.triggerAchievement(AchievementList.acquireIron);
-				aPlayer.triggerAchievement(AchievementList.diamonds);
-				aPlayer.triggerAchievement(AchievementList.portal);
+				unlockAchievement(aPlayer, AchievementList.portal);
 			}
 			
 			if (ST.invalid(aStack)) return F;
@@ -2724,223 +2725,76 @@ public class UT {
 			String aRegName = ST.regName(aItem);
 			
 			if (WoodDictionary.WOODS.containsKey(aStack, T) || WoodDictionary.BEAMS.containsKey(aStack, T) || WoodDictionary.PLANKS_ANY.containsKey(aStack, T) || OD.logWood.is_(aStack) || OD.logRubber.is_(aStack)) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
+				unlockAchievement(aPlayer, AchievementList.mineWood);
 			}
 			
 			if (aItem instanceof ItemHoe) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildHoe);
+				unlockAchievement(aPlayer, AchievementList.buildHoe);
 			} else
 			if (aItem instanceof ItemSword) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildSword);
+				unlockAchievement(aPlayer, AchievementList.buildSword);
 			} else
 			if (aItem instanceof ItemPickaxe) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-				if (aItem != Items.wooden_pickaxe)
-				aPlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
+				unlockAchievement(aPlayer, aItem != Items.wooden_pickaxe ? AchievementList.buildBetterPickaxe : AchievementList.buildPickaxe);
 			}
 			
 			if (MD.MC.owns(aRegName)) {
 				if (aItem == Items.cooked_fished) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.cookFish);
+					unlockAchievement(aPlayer, AchievementList.cookFish);
 				} else
 				if (aItem == Items.bread) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildHoe);
-					aPlayer.triggerAchievement(AchievementList.makeBread);
+					unlockAchievement(aPlayer, AchievementList.makeBread);
 				} else
 				if (aItem == Items.leather || aItem == Items.beef || aItem == Items.cooked_beef || aItem == Items.saddle) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killCow);
+					unlockAchievement(aPlayer, AchievementList.killCow);
 				} else
 				if (aBlock == Blocks.cake || aItem == Items.cake) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildHoe);
-					aPlayer.triggerAchievement(AchievementList.bakeCake);
+					unlockAchievement(aPlayer, AchievementList.bakeCake);
 				} else
 				if (aBlock == Blocks.furnace || aBlock == Blocks.lit_furnace) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
+					unlockAchievement(aPlayer, AchievementList.buildFurnace);
 				} else
-				if (aItem == Items.ghast_tear || aItem == Items.blaze_rod || aItem == Items.blaze_powder) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.portal);
+				if (aItem == Items.ghast_tear) {
+					unlockAchievement(aPlayer, AchievementList.portal);
 				} else
-				if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.ender_eye) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.portal);
-					aPlayer.triggerAchievement(AchievementList.blazeRod);
+				if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.blaze_rod || aItem == Items.blaze_powder || aItem == Items.ender_eye) {
+					unlockAchievement(aPlayer, AchievementList.blazeRod);
 				} else
 				if (aBlock == Blocks.enchanting_table) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.enchantments);
+					unlockAchievement(aPlayer, AchievementList.enchantments);
 				} else
 				if (aBlock == Blocks.bookshelf) {
-					aPlayer.triggerAchievement(AchievementList.bookcase);
+					unlockAchievement(aPlayer, AchievementList.bookcase);
 				}
 			}
 			
-			if (MD.TF.owns(aRegName)) try {
+			if (MD.TF.owns(aRegName)) {
 				if (IL.TF_Trophy_Naga.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressNaga);
-				} else
-				if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLich);
-				} else
-				if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLabyrinth);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
-				} else
-				if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTrophyPedestal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressKnights);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressUrghast);
-				} else
-				if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressYeti);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressGlacier);
-				} else
-				if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTroll);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressThorns);
-				} else
-				if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLabyrinth);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTrophyPedestal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressKnights);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressUrghast);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressYeti);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressGlacier);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTroll);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressThorns);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressCastle);
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressNaga);
+				} else if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressLich);
+				} else if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
+				} else if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressUrghast);
+				} else if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressGlacier);
+				} else if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressThorns);
+				} else if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressCastle);
 				}
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+			}
 			
 			if (tData != null && !tData.mPrefix.containsAny(TD.Prefix.ORE_PROCESSING_BASED, TD.Prefix.ORE)) {
 				if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
+					unlockAchievement(aPlayer, AchievementList.diamonds);
 				}
 				if (ANY.Iron.mToThis.contains(tData.mMaterial.mMaterial)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
+					unlockAchievement(aPlayer, AchievementList.acquireIron);
+				}
+				if (MD.TF.mLoaded && tData.mMaterial.mMaterial.mOriginalMod == MD.TF && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
 				}
 			}
 			return T;

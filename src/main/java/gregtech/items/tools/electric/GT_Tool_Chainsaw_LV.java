@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregtech.items.tools.electric;
 
 import gregapi.block.MaterialAdventure;
-import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -31,6 +30,7 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import gregtech.items.tools.early.GT_Tool_Axe;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -68,12 +68,7 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	@Override
 	public DamageSource getDamageSource(EntityLivingBase aPlayer, Entity aEntity) {
 		if (MD.IC2.mLoaded && aPlayer instanceof EntityPlayer && aEntity instanceof EntityCreeper) try {
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.openInventory);
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.mineWood);
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.buildWorkBench);
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.buildPickaxe);
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.buildFurnace);
-		((EntityPlayer)aPlayer).triggerAchievement(AchievementList.acquireIron);
+		UT.Inventories.unlockAchievement(((EntityPlayer)aPlayer), AchievementList.acquireIron);
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildCable");
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildGenerator");
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildBatBox");
