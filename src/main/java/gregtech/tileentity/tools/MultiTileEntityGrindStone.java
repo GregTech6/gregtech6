@@ -147,7 +147,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 					int tXP = UT.NBT.getEnchantmentXP(aStack);
 					if (tXP > 0) {
 						ItemStack tOutput = ST.amount(1, aStack);
-						ST.use(aPlayer, T, aStack, 1);
+						ST.use(aPlayer, T, F, aStack, 1);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
 						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
 						aPlayer.addExhaustion(0.25F);

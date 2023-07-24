@@ -269,21 +269,24 @@ public class ST {
 	}
 	
 	public static boolean use(Entity aPlayer, ItemStack aStack) {
-		return use(aPlayer, F, aStack, 1);
+		return use(aPlayer, F, T, aStack, 1);
 	}
 	public static boolean use(Entity aPlayer, ItemStack aStack, long aAmount) {
-		return use(aPlayer, F, aStack, aAmount);
+		return use(aPlayer, F, T, aStack, aAmount);
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack) {
-		return use(aPlayer, aRemove, aStack, 1);
+		return use(aPlayer, aRemove, T, aStack, 1);
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack, long aAmount) {
+		return use(aPlayer, aRemove, T, aStack, aAmount);
+	}
+	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
 		if (aStack.stackSize < aAmount) return F;
 		aStack.stackSize -= aAmount;
 		if (!(aPlayer instanceof EntityPlayer)) return T;
 		if (aStack.stackSize <= 0) {
-			ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
+			if (aTriggerEvent) ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
 			if (aRemove) for (int i = 0; i < ((EntityPlayer)aPlayer).inventory.mainInventory.length; i++) {
 				if (((EntityPlayer)aPlayer).inventory.mainInventory[i] == aStack) {
 					((EntityPlayer)aPlayer).inventory.mainInventory[i] = null;
