@@ -527,11 +527,17 @@ public class Loader_Recipes_Other implements Runnable {
 		if (FL.Mana_TE.exists())
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(4)), ZL_IS);
 		
-		RM.Mixer            .addRecipe2(T, 16,   32,          OM.dust(MT.GildedIron                 ), OM.dust(MT.LiveRoot     )                       , OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe                         ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.BrownLimonite , 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.YellowLimonite, 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Fe2O3                 , 5*U), OM.dust(MT.LiveRoot, 2*U), OM.dust(MT.Au, 2*U9)), OM.dust(MT.IronWood, U*4));
+		// Ironwood should be roughly the same difficulty as Iron itself.
+		RM.Mixer            .addRecipe2(T, 16,   32,          OM.dust(MT.GildedIron                      ), OM.dust(MT.LiveRoot     )                       , OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe                              ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Steel                           ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Knightmetal                     ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.BrownLimonite      , 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.YellowLimonite     , 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Fe2O3                      , 5*U), OM.dust(MT.LiveRoot, 2*U), OM.dust(MT.Au, 2*U9)), OM.dust(MT.IronWood, U*4));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.Magnetite          , 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.BasalticMineralSand, 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.GraniticMineralSand, 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
 		
 		// Dyes
 		for (FluidStack[] tDyes : new FluidStack[][] {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL}) {
