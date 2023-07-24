@@ -758,9 +758,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									} else {
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "I'm not trying to tell you what to do, but please don't hurt Bear."));
 									}
-								} else if ("GregoriusT".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtPlastic.mat(MT.Tc, 1), aEvent.player), F);
-									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
+								} else if ("TooShyShy78".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
+									if (ST.valid(tArrow)) {
+										UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "People around Bear always seem to suffer a severe case of Craponite Arrow in Inventory, I don't know why."));
+									} else {
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Aaaaand Bears Inventory is full again isn't it..."));
+									}
 								} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
 								} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
