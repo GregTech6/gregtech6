@@ -131,7 +131,7 @@ public enum IL implements IItemContainer {
 	TC_Nitor, TC_Alumentum, TC_Tallow, TC_Phial,
 	TC_Bucket_Death, TC_Bucket_Pure,
 	TC_Flux_Goo, TC_Flux_Gas,
-	TF_Roots, TF_Liveroots,
+	TF_Roots, TF_Liveroots, TF_Firefly, TF_Firefly_Jar,
 	TF_LiveRoot, TF_Torchberries, TF_NagaScale, TF_BorerEssence, TF_Carminite, TF_Mushgloom, TF_Tall_Grass, TF_Fiddlehead, TF_Dry_Bush,
 	TF_Vial_FieryBlood, TF_Vial_FieryTears, TF_Transformation_Powder,
 	TF_Hydrachop_Raw, TF_Meef_Raw, TF_Meef_Cooked, TF_Venison_Raw, TF_Venison_Cooked,

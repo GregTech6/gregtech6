@@ -925,6 +925,8 @@ public class LoaderItemList implements Runnable {
 		
 		IL.TF_LiveRoot                          .set(ST.make(MD.TF, "item.liveRoot"                         , 1, 0), new OreDictItemData(MT.LiveRoot, U));
 		IL.TF_Torchberries                      .set(ST.make(MD.TF, "item.torchberries"                     , 1, 0));
+		IL.TF_Firefly                           .set(ST.make(MD.TF, "tile.TFFirefly"                        , 1, 0));
+		IL.TF_Firefly_Jar                       .set(ST.make(MD.TF, "tile.TFFireflyJar"                     , 1, 0));
 		IL.TF_NagaScale                         .set(ST.make(MD.TF, "item.nagaScale"                        , 1, 0));
 		IL.TF_BorerEssence                      .set(ST.make(MD.TF, "item.borerEssence"                     , 1, 0));
 		IL.TF_Carminite                         .set(ST.make(MD.TF, "item.carminite"                        , 1, 0), null, CR.DELATE);
@@ -991,6 +993,7 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Maze_Map .exists()) IL.TF_Maze_Map .item().setMaxStackSize(64);
 		if (IL.TF_Ore_Map  .exists()) IL.TF_Ore_Map  .item().setMaxStackSize(64);
 		// These Bottles should actually have an empty Variant.
+		if (IL.TF_Firefly_Jar    .exists()) IL.TF_Firefly_Jar    .item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.exists()) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		// Make this work as infinite Lighter in Crafting Recipes. It is absolutely useless otherwise since the Final Castle isn't finished.
