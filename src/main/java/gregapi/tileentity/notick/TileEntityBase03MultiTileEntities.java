@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,35 +19,17 @@
 
 package gregapi.tileentity.notick;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.registry.GameRegistry;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDrops;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPickBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetStackFromBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockActivated;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPainting;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirst;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RecolourBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_ShouldSideBeRendered;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityClassContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.network.IPacket;
-import gregapi.network.packets.data.PacketSyncDataByte;
-import gregapi.network.packets.data.PacketSyncDataByteArray;
-import gregapi.network.packets.data.PacketSyncDataInteger;
-import gregapi.network.packets.data.PacketSyncDataLong;
-import gregapi.network.packets.data.PacketSyncDataName;
-import gregapi.network.packets.data.PacketSyncDataShort;
-import gregapi.network.packets.ids.PacketSyncDataByteAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataByteArrayAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataIDs;
-import gregapi.network.packets.ids.PacketSyncDataIntegerAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataLongAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataShortAndIDs;
+import gregapi.network.packets.data.*;
+import gregapi.network.packets.ids.*;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.IRenderedBlockObjectSideCheck;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,6 +38,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.util.FakePlayer;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -122,7 +106,8 @@ public abstract class TileEntityBase03MultiTileEntities extends TileEntityBase02
 		if (aNBT.hasKey("x")) xCoord = aNBT.getInteger("x");
 		if (aNBT.hasKey("y")) yCoord = aNBT.getInteger("y");
 		if (aNBT.hasKey("z")) zCoord = aNBT.getInteger("z");
-		
+		// make sure Y is not negative because this causes crashes.
+		if (yCoord < 0) WD.invalidateTileEntityWithNegativeYCoord(xCoord, yCoord, zCoord, this);
 		// read the custom Name.
 		if (aNBT.hasKey("display")) mCustomName = aNBT.getCompoundTag("display").getString("Name");
 		// And now your custom readFromNBT.
@@ -170,7 +155,7 @@ public abstract class TileEntityBase03MultiTileEntities extends TileEntityBase02
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rList = ST.arraylist();
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry(getMultiTileEntityRegistryID());
 		if (tRegistry != null) rList.add(tRegistry.getItem(getMultiTileEntityID(), writeItemNBT(UT.NBT.make())));
 		return rList;

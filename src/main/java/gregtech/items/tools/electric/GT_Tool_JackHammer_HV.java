@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregtech.items.tools.electric;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.SFX;
 import gregapi.data.RM;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Switch_Metadata;
@@ -38,6 +32,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 	public final int mSwitchIndex;
@@ -105,8 +103,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase("pickaxe")) || aBlock instanceof BlockSilverfish || aBlock.getMaterial() == Material.rock || aBlock.getMaterial() == Material.glass || aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce;
+		return TOOL_pickaxe.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock instanceof BlockSilverfish || aBlock.getMaterial() == Material.rock || aBlock.getMaterial() == Material.glass || aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce;
 	}
 	
 	@Override
@@ -114,7 +111,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 		int rConversions = 0;
 		Recipe tRecipe;
 		if (aBlock.hasTileEntity(aMetaData) || null == (tRecipe = RM.Hammer.findRecipe(null, null, true, Integer.MAX_VALUE, null, ZL_FS, ST.make(aBlock, 1, aMetaData)))) {
-			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			List<ItemStack> tDrops = ST.arraylist();
 			for (int i = 0; i < aDrops.size(); i++) {
 				tRecipe = RM.Hammer.findRecipe(null, null, true, Integer.MAX_VALUE, null, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

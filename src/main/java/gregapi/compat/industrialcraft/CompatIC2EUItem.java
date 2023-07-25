@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,13 @@
 
 package gregapi.compat.industrialcraft;
 
-import static gregapi.data.CS.*;
-
 import gregapi.compat.CompatBase;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import ic2.api.item.IElectricItem;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class CompatIC2EUItem extends CompatBase implements ICompatIC2EUItem {
 	public CompatIC2EUItem() {

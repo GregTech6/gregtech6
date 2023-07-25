@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,31 +19,23 @@
 
 package gregtech.compat;
 
-import static gregapi.compat.thaumcraft.ICompatTC.*;
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.CS.FoodsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TC;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+
+import java.util.Arrays;
+
+import static gregapi.compat.thaumcraft.ICompatTC.*;
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_Thaumcraft extends CompatMods {
 	public Compat_Recipes_Thaumcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -63,7 +55,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		
 		CR.shapeless(OP.ingot.mat(MT.Hg, 1), new Object[] {IL.Bottle_Mercury.get(1)});
 		
-		CR.shaped(IL.TC_Phial.get(8), CR.DEF_NCC, " C ", "G G", " G ", 'C', OD.itemClay, 'G', OD.blockGlassColorless);
+		CR.shaped(IL.TC_Phial.get(8), CR.DEF_NCC, " C ", "G G", " G ", 'C', OD.itemClay, 'G', OD.paneGlass);
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.string, 1, W), MT.Tallow.liquid(U*2, T), NF, ST.make(MD.TC, "blockCandle", 1, 0), ST.make(MD.TC, "blockCandle", 1, 0), ST.make(MD.TC, "blockCandle", 1, 0));
 		

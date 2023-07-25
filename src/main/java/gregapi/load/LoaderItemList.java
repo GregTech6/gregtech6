@@ -68,6 +68,11 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I89"               , 1, W));
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I100"              , 1, W));
 		
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.wood"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.stone"               , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.iron"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.gold"                , 1, W));// These Daggers would give Fatique when thrown, for no reason.
+		ItemsGT.NO_TOOL_FATIQUE.add(ST.make(MD.BWM, "knife.diamond"             , 1, W));// These Daggers would give Fatique when thrown, for no reason.
 		
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge"                   , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge_incendiary"        , 1, W));
@@ -677,6 +682,17 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "rupeeOre"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arlemiteOre"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "realmiteOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "bloodgemOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "netheriteOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "edenOre"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "wildwoodOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "apalachiaOre"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "skythernOre"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "mortumOre"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
+		
+		
+		
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
@@ -894,10 +910,12 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Block_Tallow                      .set(ST.make(MD.TC, "blockCosmeticSolid"                    , 1, 5), new OreDictItemData(MT.Tallow, 9*U));
 		IL.TC_Block_Flesh                       .set(ST.make(MD.TC, "blockTaint"                            , 1, 2), new OreDictItemData(MT.MeatRotten, 18*U, MT.Bone, U));
 		IL.TC_Block_Air                         .set(ST.make(MD.TC, "blockAiry"                             , 1, 0));
-		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U8, MT.Glass, U), CR.DELATE);
+		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U8, MT.Glass, 3*U8), CR.DELATE);
 		IL.TC_Knowledge_Fragment                .set(ST.make(MD.TC, "ItemResource"                          , 1, 9), new OreDictItemData(MT.Paper, U9), "paperResearchFragment");
 		IL.TC_Thaumonomicon                     .set(ST.make(MD.TC, "ItemThaumonomicon"                     , 1, 0), new OreDictItemData(MT.Paper, 9*U));
 		IL.TC_Crimson_Rites                     .set(ST.make(MD.TC, "ItemEldritchObject"                    , 1, 1), new OreDictItemData(MT.Paper, 9*U));
+		IL.TC_Flux_Goo                          .set(ST.make(MD.TC, "blockFluxGoo"                          , 1, 0));
+		IL.TC_Flux_Gas                          .set(ST.make(MD.TC, "blockFluxGas"                          , 1, 0));
 		IL.TC_Bucket_Death                      .set(ST.make(MD.TC, "ItemBucketDeath"                       , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.itemPoison);
 		IL.TC_Bucket_Pure                       .set(ST.make(MD.TC, "ItemBucketPure"                        , 1, 0), new OreDictItemData(ANY.Fe, U*3));
 		
@@ -907,6 +925,8 @@ public class LoaderItemList implements Runnable {
 		
 		IL.TF_LiveRoot                          .set(ST.make(MD.TF, "item.liveRoot"                         , 1, 0), new OreDictItemData(MT.LiveRoot, U));
 		IL.TF_Torchberries                      .set(ST.make(MD.TF, "item.torchberries"                     , 1, 0));
+		IL.TF_Firefly                           .set(ST.make(MD.TF, "tile.TFFirefly"                        , 1, 0));
+		IL.TF_Firefly_Jar                       .set(ST.make(MD.TF, "tile.TFFireflyJar"                     , 1, 0));
 		IL.TF_NagaScale                         .set(ST.make(MD.TF, "item.nagaScale"                        , 1, 0));
 		IL.TF_BorerEssence                      .set(ST.make(MD.TF, "item.borerEssence"                     , 1, 0));
 		IL.TF_Carminite                         .set(ST.make(MD.TF, "item.carminite"                        , 1, 0), null, CR.DELATE);
@@ -920,8 +940,8 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Venison_Cooked                    .set(ST.make(MD.TF, "item.venisonCooked"                    , 1, 0), new OreDictItemData(MT.MeatCooked          , U*2, MT.Bone, U9), "foodVenisoncooked");
 		IL.TF_Lamp_of_Cinders                   .set(ST.make(MD.TF, "item.lampOfCinders"                    , 1, 0), null, OD.craftingFirestarter, OreDictToolNames.flintandtinder);
 		IL.TF_Cube_of_Annihilation              .set(ST.make(MD.TF, "item.cubeOfAnnihilation"               , 1, 0));
-		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*192, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
-		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*128, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
+		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*1728, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
+		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*1152, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
 		IL.TF_Fiddlehead                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 8));
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(MT.Glowstone, U4), OD.listAllmushroom);
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
@@ -933,11 +953,12 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Deadrock                          .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 2), OP.stone.dat(MT.STONES.Deadrock));
 		IL.TF_Trollsteinn                       .set(ST.make(MD.TF, "tile.TrollSteinn"                      , 1, 0), OP.stone.dat(MT.Stone));
 		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0), OP.stone.dat(MT.Stone));
-		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0), OP.stone.dat(MT.Stone));
+		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
+		IL.TF_Towerwood                         .set(ST.make(MD.TF, "tile.TFTowerStone"                     , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0), null, CR.DELATE);
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
-		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U *64));
+		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U*576));
 		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
 		IL.TF_Giant_Log                         .set(ST.make(MD.TF, "tile.GiantLog"                         , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*512, MT.Bark, U*64));
 		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);
@@ -958,15 +979,28 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Lich                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 2));
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
+		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map_Focus                   .set(ST.make(MD.TF, "item.magicMapFocus"                    , 1, 0), null, OD.itemFeather);
+		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map_Focus                    .set(ST.make(MD.TF, "item.mazeMapFocus"                     , 1, 0));
+		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		
+		// Vanilla Maps are stackable, TF forgot to fix that lol.
+		if (IL.TF_Magic_Map.exists()) IL.TF_Magic_Map.item().setMaxStackSize(64);
+		if (IL.TF_Maze_Map .exists()) IL.TF_Maze_Map .item().setMaxStackSize(64);
+		if (IL.TF_Ore_Map  .exists()) IL.TF_Ore_Map  .item().setMaxStackSize(64);
 		// These Bottles should actually have an empty Variant.
+		if (IL.TF_Firefly_Jar    .exists()) IL.TF_Firefly_Jar    .item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.exists()) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		// Make this work as infinite Lighter in Crafting Recipes. It is absolutely useless otherwise since the Final Castle isn't finished.
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		
-		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, OD.itemTar);
+		IL.DRPG_Bucket_Tar                      .set(ST.make(MD.DRPG, "bucketOfTar"                         , 1, 0), null, "bucketTar");
 		
 		if (IL.DRPG_Bucket_Tar.exists()) IL.DRPG_Bucket_Tar.item().setContainerItem(Items.bucket);
 		
@@ -1056,7 +1090,7 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Bambucket_Honey                  .set(ST.make(MD.ERE, "bambucketHoney"                       , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000honey);
 		IL.ERE_Bambucket_AntiVenom              .set(ST.make(MD.ERE, "bambucketAntiVenom"                   , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
 		IL.ERE_Bambucket_FormicAcid             .set(ST.make(MD.ERE, "bambucketFormicAcid"                  , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
-		IL.ERE_Bambucket_BeetleJuice            .set(ST.make(MD.ERE, "bambucketBeetleJuice"                 , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		IL.ERE_Bambucket_BeetleJuice            .set(ST.make(MD.ERE, "bambucketBeetleJuice"                 , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000juice);
 		IL.ERE_Pot                              .set(ST.make(MD.ERE, "materials"                            , 1,62), new OreDictItemData(ANY.Fe, 7*U));
 		IL.ERE_Pot_Raw                          .set(ST.make(MD.ERE, "materials"                            , 1,63), new OreDictItemData(ANY.Fe, 7*U));
 		IL.ERE_Pot_Cooked                       .set(ST.make(MD.ERE, "food"                                 , 1,16), new OreDictItemData(ANY.Fe, 7*U));
@@ -1090,7 +1124,7 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Rubber                           .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,26), new OreDictItemData(MT.Rubber, U));
 		IL.BTL_Compost                          .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 5), null, OD.itemCompost);
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
-		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar);
+		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
 		
 		
@@ -1300,7 +1334,7 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Strider_Flank_Cooked            .set(ST.make(MD.NeLi, "StriderFlankCooked"                  , 1, 0), new OreDictItemData(MT.MeatCooked, U*2, MT.Bone, U9), "listAllmeatcooked");
 		IL.NeLi_Bread                           .set(ST.make(MD.NeLi, "AbyssalBread"                        , 1, 0), null, CR.DELATE, "foodBread");
 		IL.NeLi_Cookie                          .set(ST.make(MD.NeLi, "CookieHellderberry"                  , 1, 0), null, CR.DELATE, "foodCookie");
-		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, CR.DELATE, "foodHellderberryjuice");
+		IL.NeLi_Bottle_Hellderberryjuice        .set(ST.make(MD.NeLi, "JuiceHellderberry"                   , 1, 0), null, CR.DELATE, "foodHellderberryjuice", OD.container250juice);
 		IL.NeLi_Bucket_Spectral_Dew             .set(ST.make(MD.NeLi, "SpectralBucket"                      , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000water);
 		IL.NeLi_Bowl_DevilishMaize              .set(ST.make(MD.NeLi, "DevilishPopcornRaw"                  , 1, 0));
 		IL.NeLi_Bowl_DevilishPopcorn            .set(ST.make(MD.NeLi, "DevilishPopcorn"                     , 1, 0));
@@ -1653,6 +1687,7 @@ public class LoaderItemList implements Runnable {
 		IL.AE_Wrench_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzWrench"           , 1, 0)); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.AE_Wrench_Quartz.wild(1));
 		IL.AE_Cutter_Certus                     .set(ST.make(MD.AE, "item.ToolCertusQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Certus.wild(1));
 		IL.AE_Cutter_Quartz                     .set(ST.make(MD.AE, "item.ToolNetherQuartzCuttingKnife"     , 1, 0)); ItemsGT.CONTAINER_DURABILITY.add(IL.AE_Cutter_Quartz.wild(1));
+		IL.AE_Torch_Quartz                      .set(ST.make(MD.AE, "tile.BlockQuartzTorch"                 , 1, 0), null, OD.blockTorch);
 		
 		
 		IL.EIO_Wrench                           .set(ST.make(MD.EIO, "itemYetaWrench"                       , 1, 0), null, CR.DELATE); ItemsGT.SPECIAL_CASE_TOOLS.add(IL.EIO_Wrench.wild(1));
@@ -1919,9 +1954,14 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Honey_Can                         .set(ST.make(MD.FR, "canHoney"                              , 1, 0), null, OD.container1000honey);
 		IL.FR_Honey_Capsule                     .set(ST.make(MD.FR, "waxCapsuleHoney"                       , 1, 0), null, OD.container1000honey);
 		IL.FR_Honey_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryHoney"                       , 1, 0), null, OD.container1000honey);
+		IL.FR_Juice_Bucket                      .set(ST.make(MD.FR, "bucketJuice"                           , 1, 0), new OreDictItemData(ANY.Fe, U*3), OD.container1000juice, "bucketJuice");
+		IL.FR_Juice_Can                         .set(ST.make(MD.FR, "canJuice"                              , 1, 0), null, OD.container1000juice);
+		IL.FR_Juice_Capsule                     .set(ST.make(MD.FR, "waxCapsuleJuice"                       , 1, 0), null, OD.container1000juice);
+		IL.FR_Juice_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryJuice"                       , 1, 0), null, OD.container1000juice);
 		IL.FR_Water_Can                         .set(ST.make(MD.FR, "canWater"                              , 1, 0), null, OD.container1000water);
 		IL.FR_Water_Capsule                     .set(ST.make(MD.FR, "waxCapsuleWater"                       , 1, 0), null, OD.container1000water);
 		IL.FR_Water_RefractoryCapsule           .set(ST.make(MD.FR, "refractoryWater"                       , 1, 0), null, OD.container1000water);
+		IL.FR_Lava_Can                          .set(ST.make(MD.FR, "canLava"                               , 1, 0), null, OD.container1000lava);
 		IL.FR_Lava_RefractoryCapsule            .set(ST.make(MD.FR, "refractoryLava"                        , 1, 0), null, OD.container1000lava);
 		IL.FR_Candle                            .set(ST.make(MD.FR, "candle"                                , 1, 0), null, OD.blockCandle);
 		IL.FR_Bee_Drone                         .set(ST.make(MD.FR, "beeDroneGE"                            , 1, 0));

@@ -19,12 +19,7 @@
 
 package gregtech.blocks.stone;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import gregapi.block.BlockBaseMeta;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -39,6 +34,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 public class BlockCrystalOres extends BlockBaseMeta {
 	public static OreDictMaterial[] ORE_MATERIALS = {MT.OREMATS.Arsenopyrite, MT.OREMATS.Chalcopyrite, MT.OREMATS.Cinnabar, MT.OREMATS.Cobaltite, MT.OREMATS.Galena, MT.OREMATS.Kesterite, MT.OREMATS.Molybdenite, MT.Pyrite, MT.OREMATS.Sphalerite, MT.OREMATS.Stannite, MT.OREMATS.Stibnite, MT.OREMATS.Tetrahedrite};
@@ -69,7 +68,7 @@ public class BlockCrystalOres extends BlockBaseMeta {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		return new ArrayListNoNulls<>(F, OP.oreRaw.mat(ORE_MATERIALS[aMeta], aFortune>0?2+RNGSUS.nextInt(aFortune*2+2):2));
+		return ST.arraylist(OP.oreRaw.mat(ORE_MATERIALS[aMeta], aFortune>0?2+RNGSUS.nextInt(aFortune*2+2):2));
 	}
 	
 	@Override

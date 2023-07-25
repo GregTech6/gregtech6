@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,8 +18,6 @@
  */
 
 package gregapi.block.prefixblock;
-
-import static gregapi.data.CS.*;
 
 import gregapi.network.INetworkHandler;
 import gregapi.network.packets.data.PacketSyncDataName;
@@ -40,6 +38,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.world.IBlockAccess;
 
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -49,6 +49,8 @@ public class PrefixBlockTileEntity extends TileEntityBase01Root implements IRend
 	public NBTTagCompound mItemNBT = null;
 	
 	public PrefixBlockTileEntity() {super(F);}
+	
+	@Override public String getTileEntityName() {return "gt.MetaBlockTileEntity";}
 	
 	@Override
 	public void onScheduledUpdate() {

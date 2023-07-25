@@ -46,6 +46,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
@@ -234,13 +235,18 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getEntityHitSound(), 20, 1, aEntity);
 		if (super.onLeftClickEntity(aStack, aPlayer, aEntity)) return T;
 		if (aEntity.canAttackWithItem()) {
-			int tFireAspect = EnchantmentHelper.getFireAspectModifier(aPlayer);
+			int
+			tImplosion  = UT.NBT.getEnchantmentLevelImplosion(aStack),
+			tFireAspect = EnchantmentHelper.getFireAspectModifier(aPlayer);
 			boolean tIgnitesFire = !aEntity.isBurning() && tFireAspect > 0 && aEntity instanceof EntityLivingBase;
 			if (tIgnitesFire) aEntity.setFire(1);
 			if (aEntity.hitByEntity(aPlayer)) {
 				if (tIgnitesFire) aEntity.extinguish();
 			} else {
 				float tMagicDamage = tStats.getMagicDamageAgainstEntity(aEntity instanceof EntityLivingBase?EnchantmentHelper.getEnchantmentModifierLiving(aPlayer, (EntityLivingBase)aEntity):0, aEntity, aStack, aPlayer), tDamage = tStats.getNormalDamageAgainstEntity((float)aPlayer.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue() + getToolCombatDamage(aStack), aEntity, aStack, aPlayer);
+				// Also work on Ghasts and such. But no double dipping on Anti Creeper Damage!
+				if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aEntity) && !EntityCreeper.class.isInstance(aEntity)) tMagicDamage += 1.5F * tImplosion;
+				
 				if (tDamage + tMagicDamage > 0) {
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
@@ -322,9 +328,10 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMat1.mToolSpeed));
 				aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : Math.min(getEnergyStored(TD.Energy.EU, aStack), getEnergyCapacity(TD.Energy.EU, aStack)), tStats.getToolDamagePerContainerCraft()));
 				if (MD.BTL.mLoaded && tMat1.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
-				if ((IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tMat1.contains(TD.Properties.MAZEBREAKER)) {
+				if (MD.TF .mLoaded && tMat1.contains(TD.Properties.MAZEBREAKER)) {
 					if (canHarvestBlock(IL.TF_Mazestone.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING));
 					if (canHarvestBlock(IL.TF_Mazehedge.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING));
+					if (canHarvestBlock(IL.TF_Towerwood.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_TOWER_WOOD_BREAKING));
 				}
 				if (tMat1.contains(TD.Properties.UNBURNABLE) || tMat2.contains(TD.Properties.UNBURNABLE)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
 				if (tStats.canCollect() || tMat1.contains(TD.Properties.MAGNETIC_ACTIVE) || tMat2.contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
@@ -428,9 +435,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				} else {
 					if (TOOL_SOUNDS) {
 						if (aPlayer != null) {
-							UT.Sounds.send(tStats.getBreakingSound(), aPlayer);
+							UT.Sounds.send(getPrimaryMaterial(aStack) == MT.NULL ? tStats.getCraftingSound() : tStats.getBreakingSound(), aPlayer);
 						} else {
-							UT.Sounds.play(tStats.getBreakingSound(), 100, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
+							UT.Sounds.play(getPrimaryMaterial(aStack) == MT.NULL ? tStats.getCraftingSound() : tStats.getBreakingSound(), 100, 1, LAST_TOOL_COORDS_BEFORE_DAMAGE);
 						}
 					}
 					LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
@@ -459,7 +466,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (!isItemStackUsable(aStack)) return 0;
 		float tMultiplier = 1.0F;
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
-		if ((IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock)) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
+		if ((IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock) || IL.TF_Towerwood.equal(aBlock)) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null || tStats.getBaseQuality() + tMaterial.mToolQuality < UT.Code.bind4(aBlock.getHarvestLevel(aMeta))) return 0;
 		return tStats.getMiningSpeed(aBlock, (byte)aMeta) * Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMultiplier * tMaterial.mToolSpeed);
@@ -485,19 +492,24 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return F;
 		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getMiningSound(), 5, 1, aX, aY, aZ);
+		String aRegName = ST.regName(aBlock);
 		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		boolean rReturn = (getDigSpeed(aStack, aBlock, aMeta) > 0);
 		double tDamage = tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ);
-		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
-		if (WD.dimBTL(aWorld) && tMaterial.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
-		if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
-		if (IL.TF_Mazehedge.equal(aBlock)) {
-			if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
-			if (!aWorld.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, aStack) <= 0) {
-				if (aPlayer instanceof EntityPlayer && canCollectDropsDirectly(aStack, aBlock, aMeta)) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
-				} else {
-					ST.drop(aWorld, aX, aY, aZ, IL.TF_Mazehedge.get(1));
+		OreDictMaterial aMat1 = getPrimaryMaterial(aStack);
+		if (WD.dimBTL(aWorld) && !aMat1.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
+		if (MD.TFC.owns(aRegName) || MD.TFCP.owns(aRegName)) {
+			tDamage /= 4;
+		} else {
+			if (IL.TF_Mazestone.equal(aBlock)) if (aMat1.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+			if (IL.TF_Mazehedge.equal(aBlock)) {
+				if (aMat1.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+				if (!aWorld.isRemote && UT.NBT.getEnchantmentLevel(Enchantment.silkTouch, aStack) <= 0) {
+					if (aPlayer instanceof EntityPlayer && canCollectDropsDirectly(aStack, aBlock, aMeta)) {
+						UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
+					} else {
+						ST.drop(aWorld, aX, aY, aZ, IL.TF_Mazehedge.get(1));
+					}
 				}
 			}
 		}

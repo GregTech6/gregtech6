@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,23 +41,21 @@ public class CoverRegistry {
 		return aStack==null?null:get(ST.id(aStack), ST.meta_(aStack));
 	}
 	
-	public static void put(ItemStackContainer aStack, ICover aCover) {
-		if (aStack != null && ST.valid(aStack.toStack())) COVERS.put(aStack, aCover);
-	}
-	
 	public static void put(ItemStack aStack, ICover aCover) {
-		put(new ItemStackContainer(aStack), aCover);
+		if (ST.valid(aStack)) COVERS.put(aStack, aCover);
 	}
 	
 	public static void put(Item aItem, long aMetaData, ICover aCover) {
-		put(new ItemStackContainer(aItem, 1, aMetaData), aCover);
+		if (aItem != null) COVERS.put(aItem, aMetaData, aCover);
 	}
 	
 	public static void put(Block aBlock, long aMetaData, ICover aCover) {
-		put(new ItemStackContainer(aBlock, 1, aMetaData), aCover);
+		if (aBlock != null) COVERS.put(aBlock, aMetaData, aCover);
 	}
 	
 	public static CoverData coverdata(ITileEntityCoverable aTileEntity, NBTTagCompound aNBT) {
 		return aNBT == null ? new CoverData(aTileEntity) : new CoverData(aTileEntity, aNBT);
 	}
+	
+	@Deprecated public static void put(ItemStackContainer aStack, ICover aCover) {if (aStack != null && ST.valid(aStack.toStack())) COVERS.put(aStack, aCover);}
 }

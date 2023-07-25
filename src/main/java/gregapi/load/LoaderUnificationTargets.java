@@ -479,6 +479,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Manasteel              , MD.TCFM, "FMResource", 2);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.ElvenElementium        , MD.TCFM, "FMResource", 4);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.NetherStar             , MD.TCFM, "StarBlock", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.Mazestone       , MD.TF, "tile.TFMazestone", 2);
+		OreDictManager.INSTANCE.setTarget(OP.scrapGt        , MT.Knightmetal            , MD.TF, "item.armorShards", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.FierySteel             , MD.TF, "item.fieryIngot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Knightmetal            , MD.TF, "item.knightMetal", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Steeleaf               , MD.TF, "item.steeleafIngot", 0);
@@ -791,6 +793,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Gypsum                 , MD.MIN, "gypsum", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.S                      , MD.MIN, "sulfur_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDense       , MT.Niter                  , MD.MIN, "nitrate_ore", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockSolid     , MT.STONES.SkyStone        , MD.AE, "tile.BlockSkyStone", 1);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.STONES.SkyStone        , MD.AE, "item.ItemMultiMaterial", 45);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.ChargedCertusQuartz    , MD.AE, "item.ItemMultiMaterial", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.ChargedCertusQuartz    , MD.AE, "tile.OreQuartzCharged" , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.CertusQuartz           , MD.AE, "tile.OreQuartz"        , 0);
@@ -1122,6 +1126,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Diamond                , MD.ELN, "Eln.sharedItem",  580);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Rubber                 , MD.ELN, "Eln.sharedItem", 4097);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , MD.ELN, "Eln.sharedItem", 4420);
+		OreDictManager.INSTANCE.setTarget(OP.plateQuadruple , MT.Coal                   , MD.ELN, "Eln.sharedItem", 7692);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Si                     , MD.ELN, "Eln.sharedItem", 7697);
 		OreDictManager.INSTANCE.setTarget(OP.plateDouble    , MT.Paper                  , MD.BTRS, "cardboardSheet", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Netherite              , MD.NePl, "NetheriteIngot", 0);
@@ -1149,7 +1154,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.Sugilite               , MD.EnLi, "OreSugilite", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sugilite               , MD.EnLi, "material", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Sugilite               , MD.EnLi, "BlockMaterial", 0);
-		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.EndSand                , MD.EnLi, "EndSand", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.EndSandWhite           , MD.EnLi, "EndSand", 0);
+		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.EndSandBlack           , MD.EnLi, "EndSand", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.Cu                     , MD.EtFu, "raw_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.Fe                     , MD.EtFu, "raw_ore", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.Au                     , MD.EtFu, "raw_ore", 2);

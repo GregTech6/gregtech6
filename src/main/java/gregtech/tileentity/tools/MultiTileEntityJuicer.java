@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,12 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.BI;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -40,12 +35,7 @@ import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
-import gregapi.render.BlockTextureCopied;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
 import gregapi.tileentity.ITileEntityConnectedTank;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
@@ -63,6 +53,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -208,7 +202,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanks.length; i++) if (mTanks[i].has()) return mTanks[i];
+			for (int i=0,j; i < mTanks.length; i++) if (mTanks[j = ((int)(SERVER_TIME/20)+i) % mTanks.length].has()) return mTanks[j];
 		} else {
 			for (int i = 0; i < mTanks.length; i++) if (mTanks[i].contains(aFluidToDrain)) return mTanks[i];
 		}

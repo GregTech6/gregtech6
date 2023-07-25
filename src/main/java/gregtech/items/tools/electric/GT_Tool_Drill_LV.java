@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,7 @@
 
 package gregtech.items.tools.electric;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.List;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -39,6 +34,11 @@ import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Drill_LV extends ToolStats {
 	public static final List<String> mEffectiveList = Arrays.asList(
@@ -107,8 +107,7 @@ public class GT_Tool_Drill_LV extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_drill);
+		return TOOL_drill.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData));
 	}
 	
 	@Override

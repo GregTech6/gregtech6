@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,13 +21,14 @@ package gregtech.items;
 
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -38,7 +39,7 @@ import java.util.Random;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemBooks extends MultiItemRandom {
+public class MultiItemBooks extends MultiItemRandomWithCompat {
 	public MultiItemBooks(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		OM.reg(OD.craftingBook, ST.make(this, 1, W));
@@ -61,6 +62,10 @@ public class MultiItemBooks extends MultiItemRandom {
 		
 		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                    , "With a Radiation Symbol on it"   , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"              , "With a Radiation Symbol on it"   , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
+		
+		
+		RM.generify(ST.make(this, 1, W), ST.make(Items.written_book, 1, 0));
+		
 		
 		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {OD.bookWrittenSmall, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {OD.bookWrittenSmall, DYE_OREDICTS[DYE_INDEX_White]});

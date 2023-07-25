@@ -48,6 +48,7 @@ import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IMachineRecipeManagerExt;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
+import mods.railcraft.common.items.enchantment.RailcraftEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
@@ -70,6 +71,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -671,6 +673,7 @@ public class UT {
 			if (!aMat.mEnchantmentWeapons.isEmpty()) tPages++;
 			if (!aMat.mEnchantmentAmmo   .isEmpty()) tPages++;
 			if (!aMat.mEnchantmentRanged .isEmpty()) tPages++;
+			if (!aMat.mEnchantmentFishing.isEmpty()) tPages++;
 			if (!aMat.mEnchantmentArmors .isEmpty()) tPages++;
 			
 			if (aMat.mDescription != null) for (int i = 0; i < aMat.mDescription.length; i++) if (Code.stringValid(aMat.mDescription[i])) tPages++;
@@ -841,6 +844,11 @@ public class UT {
 			if (!aMat.mEnchantmentRanged .isEmpty()) {
 				tPage = "Ranged Enchantments\n===================\n";
 				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentRanged ) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
+				tBook.add(tPage+"===================\n");
+			}
+			if (!aMat.mEnchantmentFishing.isEmpty()) {
+				tPage = "Fishing Enchantments\n===================\n";
+				for (ObjectStack<Enchantment> tEnchantment : aMat.mEnchantmentFishing) tPage += tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount) + "\n";
 				tBook.add(tPage+"===================\n");
 			}
 			if (!aMat.mEnchantmentArmors .isEmpty()) {
@@ -1348,10 +1356,14 @@ public class UT {
 			return F;
 		}
 		
-		public static <E> E[] fill(E aToFillIn, E[] rArray) {
-			for (int i = 0; i < rArray.length; i++) rArray[i] = aToFillIn;
-			return rArray;
-		}
+		public static boolean[] swap(int aIndexA, int aIndexB, boolean[] aArray) {boolean tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static byte   [] swap(int aIndexA, int aIndexB, byte   [] aArray) {byte    tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static short  [] swap(int aIndexA, int aIndexB, short  [] aArray) {short   tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static int    [] swap(int aIndexA, int aIndexB, int    [] aArray) {int     tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static long   [] swap(int aIndexA, int aIndexB, long   [] aArray) {long    tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		public static <E>   E[] swap(int aIndexA, int aIndexB, E      [] aArray) {E       tSwap = aArray[aIndexA]; aArray[aIndexA] = aArray[aIndexB]; aArray[aIndexB] = tSwap; return aArray;}
+		
+		public static <E>   E[] fill(E aToFillIn, E[] rArray) {Arrays.fill(rArray, aToFillIn); return rArray;}
 		
 		@SafeVarargs
 		public static <E> E[] makeArray(E[] rArray, E... aArray) {
@@ -2017,6 +2029,10 @@ public class UT {
 			return aNBT;
 		}
 		
+		public static ItemStack check(ItemStack aStack) {
+			return set(aStack, aStack.getTagCompound());
+		}
+		
 		public static ItemStack set(ItemStack aStack, NBTTagCompound aNBT) {
 			if (aNBT == null || aNBT.hasNoTags()) {aStack.setTagCompound(null); return aStack;}
 			ArrayList<String> tTagsToRemove = new ArrayListNoNulls<>();
@@ -2123,6 +2139,66 @@ public class UT {
 		public static short getMapID(NBTTagCompound aNBT) {
 			if (!aNBT.hasKey("map_id")) return -1;
 			return aNBT.getShort("map_id");
+		}
+		
+		public static NBTTagCompound setMagicMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("magic_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getMagicMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("magic_map_id")) return -1;
+			return tNBT.getShort("magic_map_id");
+		}
+		public static NBTTagCompound setMagicMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("magic_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getMagicMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("magic_map_id")) return -1;
+			return aNBT.getShort("magic_map_id");
+		}
+		
+		public static NBTTagCompound setMazeMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("maze_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getMazeMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("maze_map_id")) return -1;
+			return tNBT.getShort("maze_map_id");
+		}
+		public static NBTTagCompound setMazeMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("maze_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getMazeMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("maze_map_id")) return -1;
+			return aNBT.getShort("maze_map_id");
+		}
+		
+		public static NBTTagCompound setOreMapID(ItemStack aStack, short aMapID) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			tNBT.setShort("ore_map_id", aMapID);
+			set(aStack, tNBT);
+			return tNBT;
+		}
+		public static short getOreMapID(ItemStack aStack) {
+			NBTTagCompound tNBT = getNBT(aStack);
+			if (!tNBT.hasKey("ore_map_id")) return -1;
+			return tNBT.getShort("ore_map_id");
+		}
+		public static NBTTagCompound setOreMapID(NBTTagCompound aNBT, short aMapID) {
+			aNBT.setShort("ore_map_id", aMapID);
+			return aNBT;
+		}
+		public static short getOreMapID(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("ore_map_id")) return -1;
+			return aNBT.getShort("ore_map_id");
 		}
 		
 		public static NBTTagCompound setBookMapping(ItemStack aStack, String aTitle) {
@@ -2244,9 +2320,25 @@ public class UT {
 				}
 				return aList;
 			}
-			short tMapID = getMapID(aData);
+			short
+			tMapID = getMapID(aData);
 			if (tMapID >= 0) {
 				aList.add(LH.Chat.CYAN + "Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getMagicMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Magic Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getMazeMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Maze Map ID: " + tMapID);
+				return aList;
+			}
+			tMapID = getOreMapID(aData);
+			if (tMapID >= 0) {
+				aList.add(LH.Chat.CYAN + "Ore Map ID: " + tMapID);
 				return aList;
 			}
 			tString = getPunchCardData(aData);
@@ -2272,6 +2364,38 @@ public class UT {
 			return aList;
 		}
 		
+		
+		public static int getEnchantmentLevelDestruction(ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.destruction, aStack) : 0;}
+		public static int getEnchantmentLevelWrecking   (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.wrecking   , aStack) : 0;}
+		public static int getEnchantmentLevelImplosion  (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.implosion  , aStack) : 0;}
+		
+		public static int getEnchantmentLevel(Enchantment aEnchantment, ItemStack aStack) {
+			if (aEnchantment == null || aEnchantment.effectId < 0) return 0;
+			return EnchantmentHelper.getEnchantmentLevel(aEnchantment.effectId, aStack);
+		}
+		public static int getEnchantmentXP(ItemStack aStack) {
+			if (ST.invalid(aStack) || !aStack.hasTagCompound() || ST.isGT_(aStack) || (COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(aStack))) return 0;
+			return getEnchantmentXP(getNBT(aStack));
+		}
+		public static int getEnchantmentXP(NBTTagCompound aNBT) {
+			if (!aNBT.hasKey("ench", 9)) return 0;
+			int rXP = 0;
+			NBTTagList aList = aNBT.getTagList("ench", 10);
+			for (int i = 0; i < aList.tagCount(); i++) {
+				NBTTagCompound tEnchantmentTag = aList.getCompoundTagAt(i);
+				Enchantment tEnchantment = Enchantment.enchantmentsList[tEnchantmentTag.getShort("id")];
+				if (UT.Reflection.getLowercaseClass(tEnchantment).contains("curse")) return 0;
+				rXP += tEnchantment.getMinEnchantability(tEnchantmentTag.getShort("lvl"));
+			}
+			return UT.Code.bindInt(UT.Code.divup(rXP, 2));
+		}
+		public static ItemStack removeEnchantments(ItemStack aStack) {
+			removeEnchantments(getOrCreate(aStack));
+			return check(aStack);
+		}
+		public static void removeEnchantments(NBTTagCompound aNBT) {
+			aNBT.removeTag("ench");
+		}
 		public static ItemStack addEnchantment(ItemStack aStack, Enchantment aEnchantment, long aLevel) {
 			NBTTagCompound tNBT = getNBT(aStack), tEnchantmentTag;
 			if (!tNBT.hasKey("ench", 9)) tNBT.setTag("ench", new NBTTagList());
@@ -2579,18 +2703,18 @@ public class UT {
 			}
 		}
 		
+		public static boolean unlockAchievement(EntityPlayer aPlayer, Achievement aAchievement) {
+			if (aAchievement == null || aPlayer == null) return F;
+			unlockAchievement(aPlayer, aAchievement.parentAchievement);
+			aPlayer.triggerAchievement(aAchievement);
+			return T;
+		}
+		
 		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
 			if (aPlayer == null) return F;
 			
 			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-				aPlayer.triggerAchievement(AchievementList.buildFurnace);
-				aPlayer.triggerAchievement(AchievementList.acquireIron);
-				aPlayer.triggerAchievement(AchievementList.diamonds);
-				aPlayer.triggerAchievement(AchievementList.portal);
+				unlockAchievement(aPlayer, AchievementList.portal);
 			}
 			
 			if (ST.invalid(aStack)) return F;
@@ -2601,223 +2725,76 @@ public class UT {
 			String aRegName = ST.regName(aItem);
 			
 			if (WoodDictionary.WOODS.containsKey(aStack, T) || WoodDictionary.BEAMS.containsKey(aStack, T) || WoodDictionary.PLANKS_ANY.containsKey(aStack, T) || OD.logWood.is_(aStack) || OD.logRubber.is_(aStack)) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
+				unlockAchievement(aPlayer, AchievementList.mineWood);
 			}
 			
 			if (aItem instanceof ItemHoe) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildHoe);
+				unlockAchievement(aPlayer, AchievementList.buildHoe);
 			} else
 			if (aItem instanceof ItemSword) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildSword);
+				unlockAchievement(aPlayer, AchievementList.buildSword);
 			} else
 			if (aItem instanceof ItemPickaxe) {
-				aPlayer.triggerAchievement(AchievementList.openInventory);
-				aPlayer.triggerAchievement(AchievementList.mineWood);
-				aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-				aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-				if (aItem != Items.wooden_pickaxe)
-				aPlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
+				unlockAchievement(aPlayer, aItem != Items.wooden_pickaxe ? AchievementList.buildBetterPickaxe : AchievementList.buildPickaxe);
 			}
 			
 			if (MD.MC.owns(aRegName)) {
 				if (aItem == Items.cooked_fished) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.cookFish);
+					unlockAchievement(aPlayer, AchievementList.cookFish);
 				} else
 				if (aItem == Items.bread) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildHoe);
-					aPlayer.triggerAchievement(AchievementList.makeBread);
+					unlockAchievement(aPlayer, AchievementList.makeBread);
 				} else
 				if (aItem == Items.leather || aItem == Items.beef || aItem == Items.cooked_beef || aItem == Items.saddle) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killCow);
+					unlockAchievement(aPlayer, AchievementList.killCow);
 				} else
 				if (aBlock == Blocks.cake || aItem == Items.cake) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildHoe);
-					aPlayer.triggerAchievement(AchievementList.bakeCake);
+					unlockAchievement(aPlayer, AchievementList.bakeCake);
 				} else
 				if (aBlock == Blocks.furnace || aBlock == Blocks.lit_furnace) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
+					unlockAchievement(aPlayer, AchievementList.buildFurnace);
 				} else
-				if (aItem == Items.ghast_tear || aItem == Items.blaze_rod || aItem == Items.blaze_powder) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.portal);
+				if (aItem == Items.ghast_tear) {
+					unlockAchievement(aPlayer, AchievementList.portal);
 				} else
-				if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.ender_eye) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.portal);
-					aPlayer.triggerAchievement(AchievementList.blazeRod);
+				if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.blaze_rod || aItem == Items.blaze_powder || aItem == Items.ender_eye) {
+					unlockAchievement(aPlayer, AchievementList.blazeRod);
 				} else
 				if (aBlock == Blocks.enchanting_table) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
-					aPlayer.triggerAchievement(AchievementList.enchantments);
+					unlockAchievement(aPlayer, AchievementList.enchantments);
 				} else
 				if (aBlock == Blocks.bookshelf) {
-					aPlayer.triggerAchievement(AchievementList.bookcase);
+					unlockAchievement(aPlayer, AchievementList.bookcase);
 				}
 			}
 			
-			if (MD.TF.owns(aRegName)) try {
+			if (MD.TF.owns(aRegName)) {
 				if (IL.TF_Trophy_Naga.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressNaga);
-				} else
-				if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLich);
-				} else
-				if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLabyrinth);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
-				} else
-				if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTrophyPedestal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressKnights);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressUrghast);
-				} else
-				if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressYeti);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressGlacier);
-				} else
-				if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTroll);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressThorns);
-				} else
-				if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildSword);
-					aPlayer.triggerAchievement(AchievementList.killEnemy);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightPortal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightArrival);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightHunter);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressNaga);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLich);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressLabyrinth);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightKillHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressHydra);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTrophyPedestal);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressKnights);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressUrghast);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressYeti);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressGlacier);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressTroll);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressThorns);
-					aPlayer.triggerAchievement(TFAchievementPage.twilightProgressCastle);
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressNaga);
+				} else if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressLich);
+				} else if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
+				} else if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressUrghast);
+				} else if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressGlacier);
+				} else if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressThorns);
+				} else if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressCastle);
 				}
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+			}
 			
 			if (tData != null && !tData.mPrefix.containsAny(TD.Prefix.ORE_PROCESSING_BASED, TD.Prefix.ORE)) {
 				if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
-					aPlayer.triggerAchievement(AchievementList.diamonds);
+					unlockAchievement(aPlayer, AchievementList.diamonds);
 				}
 				if (ANY.Iron.mToThis.contains(tData.mMaterial.mMaterial)) {
-					aPlayer.triggerAchievement(AchievementList.openInventory);
-					aPlayer.triggerAchievement(AchievementList.mineWood);
-					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
-					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
-					aPlayer.triggerAchievement(AchievementList.buildFurnace);
-					aPlayer.triggerAchievement(AchievementList.acquireIron);
+					unlockAchievement(aPlayer, AchievementList.acquireIron);
+				}
+				if (MD.TF.mLoaded && tData.mMaterial.mMaterial.mOriginalMod == MD.TF && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
 				}
 			}
 			return T;
@@ -3106,14 +3083,23 @@ public class UT {
 		
 		
 		
-		public static boolean isSlimeCreature(EntityLivingBase aEntity) {
+		public static boolean isSlimeCreature(Entity aEntity) {
 			return aEntity instanceof EntitySlime || UT.Reflection.getLowercaseClass(aEntity).contains("slime");
 		}
-		public static boolean isEnderCreature(EntityLivingBase aEntity) {
+		public static boolean isEnderCreature(Entity aEntity) {
 			return aEntity instanceof EntityEnderman || UT.Reflection.getLowercaseClass(aEntity).contains("ender");
 		}
-		public static boolean isZombieCreature(EntityLivingBase aEntity) {
+		public static boolean isZombieCreature(Entity aEntity) {
 			return aEntity instanceof EntityZombie || UT.Reflection.getLowercaseClass(aEntity).contains("zombie");
+		}
+		public static boolean isCreeperCreature(Entity aEntity) {
+			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("creeper");
+		}
+		public static boolean isGhastCreature(Entity aEntity) {
+			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("ghast");
+		}
+		public static boolean isExplosiveCreature(Entity aEntity) {
+			return isGhastCreature(aEntity) || isCreeperCreature(aEntity);
 		}
 		public static boolean isWereCreature(EntityLivingBase aEntity) {
 			if (aEntity instanceof EntityPlayer) {
@@ -3125,7 +3111,7 @@ public class UT {
 			}
 			if (aEntity.getClass().getName().indexOf(".") < 0) return F;
 			String tClassName = UT.Reflection.getLowercaseClass(aEntity);
-			return tClassName.contains("wwolf") || tClassName.contains("villagerwere") || tClassName.contains("wolfman") || tClassName.contains("werewolf") || tClassName.contains("alphawolf") || tClassName.contains("tamewere");
+			return tClassName.contains("wwolf") || tClassName.contains("villagerwere") || tClassName.contains("wolfman") || tClassName.contains("werewolf") || tClassName.contains("alphawolf") || tClassName.contains("tamewere") || tClassName.contains("minotaur") || tClassName.contains("minoshroom");
 		}
 		
 		public static float getHeatDamageFromItem(ItemStack aStack) {
@@ -3143,6 +3129,7 @@ public class UT {
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentWeapons) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentAmmo   ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentRanged ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
+				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentFishing) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentArmors ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 			}
 			rLevel = Math.max(rLevel, EnchantmentHelper.getEnchantmentLevel(Enchantment_Radioactivity.INSTANCE.effectId, aStack));
@@ -3214,19 +3201,21 @@ public class UT {
 		
 		public static boolean applyRadioactivity(Entity aEntity, int aLevel, int aAmountOfItems) {
 			if (aLevel > 0 && aEntity instanceof EntityLivingBase && aEntity.isEntityAlive() && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)aEntity).getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD && !isWearingFullRadioHazmat(((EntityLivingBase)aEntity))) {
+				
 				EntityFoodTracker tTracker = EntityFoodTracker.get(aEntity);
-				if (tTracker != null) {
-					tTracker.changeRadiation(aLevel * aAmountOfItems);
-					return T;
-				}
+				if (tTracker != null) {tTracker.changeRadiation(aLevel * aAmountOfItems); return T;}
+				
 				PotionEffect tEffect;
-				applyPotion(aEntity, Potion.moveSlowdown    , aLevel * 140 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.moveSlowdown                         ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
-				applyPotion(aEntity, Potion.digSlowdown     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.digSlowdown                          ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
-				applyPotion(aEntity, Potion.confusion       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.confusion                            ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
-				applyPotion(aEntity, Potion.weakness        , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.weakness                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
-				applyPotion(aEntity, Potion.hunger          , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.hunger                               ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7), F);
-				if (PotionsGT.ID_RADIATION >= 0)
-				applyPotion(aEntity, PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]  ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 4, (5*aLevel) / 7), F); // can only be between 0 and 4, or else IC2 WILL crash!!!
+				applyPotion(aEntity, Potion.moveSlowdown    , aLevel * 140 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.moveSlowdown                       ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.digSlowdown     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.digSlowdown                        ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.confusion       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.confusion                          ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.weakness        , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.weakness                           ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				applyPotion(aEntity, Potion.hunger          , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.hunger                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				if (PotionsGT.ID_RADIATION >= 0) {
+				applyPotion(aEntity, PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 4, (5L*aLevel) / 7), F); // can only be between 0 and 4, or else IC2 WILL crash!!!
+				} else {
+				applyPotion(aEntity, Potion.wither          , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.wither                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5L*aLevel) / 7), F);
+				}
 				return T;
 			}
 			return F;

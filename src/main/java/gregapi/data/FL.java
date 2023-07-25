@@ -19,6 +19,7 @@
 
 package gregapi.data;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.fluid.FluidGT;
@@ -59,9 +60,9 @@ public enum FL {
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	
-	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID, VOID_OVERFLOW)
-	, XP_Molten                 ("xp"                                                       , SIMPLE, LIQUID, VOID_OVERFLOW)
-	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID, VOID_OVERFLOW)
+	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID, MAGIC, VOID_OVERFLOW)
+	, XP_Molten                 ("xp"                                                       , SIMPLE, LIQUID, MAGIC, VOID_OVERFLOW)
+	, Mob                       ("mobessence"                                               , SIMPLE, LIQUID, MAGIC, VOID_OVERFLOW)
 	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
 	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)
@@ -107,12 +108,14 @@ public enum FL {
 	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
 	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
 	
-	, Ender_Goo                 ("endergoo"                                                 , LIQUID)
+	, Ender_Goo                 ("endergoo"                                                 , LIQUID, MAGIC)
 	
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER, BATH)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER, BATH)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER, BATH)
 	, SpDew                     ("spectral_dew"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, INFINITE)
+	, Cold_Water                ("cold_water"                                               , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS) // 15°C
+	, Hot_Water                 ("hot_water"                                                , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS) // 60°C
 	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Boiling             ("boilingwater"                                             , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
 	, Water_Geothermal          ("watergeothermal"                                          , SIMPLE, LIQUID, FOOD, WATER, BATH, THERMOS)
@@ -129,7 +132,7 @@ public enum FL {
 	, Swampwater                ("swampwater"                                               , SIMPLE, LIQUID)
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)
 	, Brine                     ("brine"                                                    , SIMPLE, LIQUID)
-	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID)
+	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID, MAGIC)
 	
 	, Milk                      ("milk"                                                     , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkSoy                   ("soymilk"                  , "potion.soymilk"              , SIMPLE, LIQUID, FOOD, MILK)
@@ -148,6 +151,41 @@ public enum FL {
 	
 	, Lubricant                 ("lubricant"                                                , SIMPLE, LIQUID, LUBRICANT)
 	, LubRoCant                 ("rc lubricant"                                             , SIMPLE, LIQUID, LUBRICANT)
+	
+	, Smoothie_Fruit            ("fruitsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Melon            ("melonsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Kiwi             ("kiwismoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Currant          ("currantsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Raspberry        ("raspberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Blackberry       ("blackberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Blueberry        ("blueberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Gooseberry       ("gooseberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Strawberry       ("strawberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Plum             ("plumsmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Peach            ("peachsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Elderberry       ("elderberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Grapefruit       ("grapefruitsmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Lime             ("limesmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Orange           ("orangesmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Persimmon        ("persimmonsmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Apricot          ("apricotsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Pear             ("pearsmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Grape_Red        ("redgrapesmoothie"                                         , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Grape_White      ("whitegrapesmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Grape_Green      ("grapesmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Grape_Purple     ("purplegrapesmoothie"                                      , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Apple            ("applesmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Ananas           ("pineapplesmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Banana           ("bananasmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Cherry           ("cherrysmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Cranberry        ("cranberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Lemon            ("lemonsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Mango            ("mangosmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Pomegranate      ("pomegranatesmoothie"                                      , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Starfruit        ("starfruitsmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Papaya           ("papayasmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Fig              ("figsmoothie"                                              , SIMPLE, LIQUID, FOOD, THERMOS)
+	, Smoothie_Coconut          ("coconutsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
 	
 	, Juice                     ("juice"                                                    , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Kiwi                ("kiwijuice"                                                , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE, CITRUS_JUICE)
@@ -188,41 +226,6 @@ public enum FL {
 	, Juice_Coconut             ("coconutmilk"                                              , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Date                ("datejuice"                                                , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	
-	, Smoothie_Fruit            ("fruitsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Melon            ("melonsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Kiwi             ("kiwismoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Currant          ("currantsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Raspberry        ("raspberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Blackberry       ("blackberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Blueberry        ("blueberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Gooseberry       ("gooseberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Strawberry       ("strawberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Plum             ("plumsmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Peach            ("peachsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Elderberry       ("elderberrysmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Grapefruit       ("grapefruitsmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Lime             ("limesmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Orange           ("orangesmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Persimmon        ("persimmonsmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Apricot          ("apricotsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Pear             ("pearsmoothie"                                             , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Grape_Red        ("redgrapesmoothie"                                         , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Grape_White      ("whitegrapesmoothie"                                       , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Grape_Green      ("grapesmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Grape_Purple     ("purplegrapesmoothie"                                      , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Apple            ("applesmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Ananas           ("pineapplesmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Banana           ("bananasmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Cherry           ("cherrysmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Cranberry        ("cranberrysmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Lemon            ("lemonsmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Mango            ("mangosmoothie"                                            , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Pomegranate      ("pomegranatesmoothie"                                      , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Starfruit        ("starfruitsmoothie"                                        , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Papaya           ("papayasmoothie"                                           , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Fig              ("figsmoothie"                                              , SIMPLE, LIQUID, FOOD, THERMOS)
-	, Smoothie_Coconut          ("coconutsmoothie"                                          , SIMPLE, LIQUID, FOOD, THERMOS)
-	
 	, Juice_Carrot              ("binnie.juicecarrot"       , "carrotjuice"                 , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Tomato              ("binnie.juicetomato"       , "tomatojuice"                 , SIMPLE, LIQUID, FOOD, JUICE)
 	, Juice_Beet                ("beetjuice"                                                , SIMPLE, LIQUID, FOOD, JUICE)
@@ -248,7 +251,7 @@ public enum FL {
 	, Turpentine                ("turpentine"                                               , SIMPLE, LIQUID)
 	
 	, Sap                       ("sap"                                                      , SIMPLE, LIQUID, FOOD)
-	, Sap_Rainbow               ("rainbowsap"                                               , SIMPLE, LIQUID, FOOD)
+	, Sap_Rainbow               ("rainbowsap"                                               , SIMPLE, LIQUID, FOOD, MAGIC)
 	, Sap_Maple                 ("maplesap"                                                 , SIMPLE, LIQUID, FOOD)
 	
 	, Syrup_Maple               ("maplesyrup"                                               , SIMPLE, LIQUID, FOOD)
@@ -266,6 +269,8 @@ public enum FL {
 	, Dressing                  ("potion.dressing"                                          , SIMPLE, LIQUID, FOOD)
 	
 	, Soup_Mushroom             ("mushroomsoup"                                             , SIMPLE, LIQUID, FOOD)
+	
+	, Blood                     ("blood"                                                    , SIMPLE, LIQUID, FOOD)
 	
 	, Sauce_Chili               ("chillysauce"              , "potion.chillysauce"          , SIMPLE, LIQUID, FOOD)
 	, Sauce_Hot                 ("potion.hotsauce"                                          , SIMPLE, LIQUID, FOOD)
@@ -286,7 +291,6 @@ public enum FL {
 	, Purple_Drink              ("purpledrink"              , "potion.purpledrink"          , SIMPLE, LIQUID, FOOD)
 	, Lemonade                  ("potion.lemonade"                                          , SIMPLE, LIQUID, FOOD)
 	, Grenade_Juice             ("potion.cavejohnsonsgrenadejuice"                          , SIMPLE, LIQUID, FOOD)
-	, Blood                     ("blood"                                                    , SIMPLE, LIQUID, FOOD)
 	
 	, Vinegar_Grape             ("vinegar"                  , "potion.vinegar"              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
 	, Vinegar_Apple             ("applevinegar"                                             , SIMPLE, LIQUID, FOOD, ALCOHOLIC, VINEGAR)
@@ -371,11 +375,11 @@ public enum FL {
 	, Beer_Rye                  ("binnie.beerrye"                                           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, BEER)
 	, Beer_Stout                ("binnie.beerstout"                                         , SIMPLE, LIQUID, FOOD, ALCOHOLIC, BEER)
 	, Beer_Wheat                ("binnie.beerwheat"                                         , SIMPLE, LIQUID, FOOD, ALCOHOLIC, BEER)
-
+	
 	, Rum_White                 ("binnie.rumwhite"          , "potion.rum", "rum"           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
 	, Rum_Dark                  ("binnie.rumdark"           , "potion.piratebrew"           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
 	, Pina_Colada               ("pina.colada"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
-
+	
 	, Vodka                     ("binnie.vodka"             , "potion.vodka", "vodka"       , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Leninade                  ("potion.leninade"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Mead                      ("mead"                                                     , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
@@ -383,7 +387,7 @@ public enum FL {
 	, Sake                      ("potion.sake"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Tequila                   ("binnie.tequila"           , "tequila"                     , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Alcopops                  ("potion.alcopops"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
-
+	
 	, Oil_Frying                ("hotfryingoil"                                             , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Seed                  ("seedoil"                                                  , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
 	, Oil_Plant                 ("plantoil"                                                 , SIMPLE, LIQUID, FOOD, COOKING_OIL, BATH)
@@ -438,21 +442,21 @@ public enum FL {
 	, Indigo                    ("indigo"                                                   , SIMPLE, LIQUID, DYE)
 	
 	, InkSquid                  ("squidink"                                                 , SIMPLE, LIQUID, DYE)
-	, InkMyst                   ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
+	, InkMyst                   ("myst.ink.black"                                           , SIMPLE, LIQUID, MAGIC, ENCHANTED_EFFECT)
 	
-	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, Pyrotheum                 ("pyrotheum"                                                , LIQUID) // 250 per Unit
-	, Cryotheum                 ("cryotheum"                                                , LIQUID) // 250 per Unit
-	, Petrotheum                ("petrotheum"                                               , LIQUID) // 250 per Unit
-	, Aerotheum                 ("aerotheum"                                                , GAS) // 250 per Unit
-	, Mana_TE                   ("mana"                                                     , LIQUID, ENCHANTED_EFFECT) // 250 per Unit
-	, Ender                     ("molten.enderpearl"                                        , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
-	, Ender_TE                  ("ender"                                                    , LIQUID, ENCHANTED_EFFECT) // 250 per Unit
+	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, MAGIC, ENCHANTED_EFFECT) // 144 per Unit
+	, FieryBlood                ("fieryblood"                                               , LIQUID, MAGIC, ENCHANTED_EFFECT) // 144 per Unit, 250 per Bottle
+	, FieryTears                ("fierytears"                                               , LIQUID, MAGIC, ENCHANTED_EFFECT) // 144 per Unit, 250 per Bottle
+	, Pyrotheum                 ("pyrotheum"                                                , LIQUID, MAGIC) // 250 per Unit
+	, Cryotheum                 ("cryotheum"                                                , LIQUID, MAGIC) // 250 per Unit
+	, Petrotheum                ("petrotheum"                                               , LIQUID, MAGIC) // 250 per Unit
+	, Aerotheum                 ("aerotheum"                                                , GAS   , MAGIC) // 250 per Unit
+	, Mana_TE                   ("mana"                                                     , LIQUID, MAGIC, ENCHANTED_EFFECT) // 250 per Unit
+	, Ender                     ("molten.enderpearl"                                        , LIQUID, MAGIC, ENCHANTED_EFFECT) // 144 per Unit
+	, Ender_TE                  ("ender"                                                    , LIQUID, MAGIC, ENCHANTED_EFFECT) // 250 per Unit
 	, Redstone                  ("molten.redstone"                                          , LIQUID) // 144 per Unit
 	, Redstone_TE               ("redstone"                                                 , LIQUID) // 100 per Unit
-	, Glowstone_TE              ("glowstone"                                                , GAS) // 250 per Unit
+	, Glowstone_TE              ("glowstone"                                                , GAS   ) // 250 per Unit
 	
 	, Calcite                   ("molten.calcite"                                           , LIQUID) // 144 per Unit
 	
@@ -464,102 +468,102 @@ public enum FL {
 	
 	, Rotten_Drink              ("rottendrink"                                              , SIMPLE, LIQUID, FOOD)
 	
-	, Dragon_Breath             ("dragonbreath"                                             , SIMPLE, GAS, BATH)
+	, Dragon_Breath             ("dragonbreath"                                             , SIMPLE, MAGIC, GAS, BATH)
 	
-	, Potion_Tainted            ("potion.tainted"                                           , SIMPLE, LIQUID, POTION)
 	, Potion_Awkward            ("potion.awkward"                                           , SIMPLE, LIQUID, POTION)
 	, Potion_Thick              ("potion.thick"                                             , SIMPLE, LIQUID, POTION)
 	, Potion_Mundane            ("potion.mundane"                                           , SIMPLE, LIQUID, POTION)
-	, Potion_Harm_1             ("potion.damage"                                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC, BATH)
-	, Potion_Harm_2             ("potion.damage.strong"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC, BATH)
-	, Potion_Harm_1S            ("potion.damage.splash"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Harm_2S            ("potion.damage.strong.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Harm_1D            ("potion.damage.lingering"                                  , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Harm_2D            ("potion.damage.strong.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Heal_1             ("potion.health"                                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Heal_2             ("potion.health.strong"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Heal_1S            ("potion.health.splash"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Heal_2S            ("potion.health.strong.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Heal_1D            ("potion.health.lingering"                                  , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Heal_2D            ("potion.health.strong.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Jump_1             ("potion.jump"                                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Jump_2             ("potion.jump.strong"                                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Jump_1S            ("potion.jump.splash"                                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Jump_2S            ("potion.jump.strong.splash"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Jump_1D            ("potion.jump.lingering"                                    , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Jump_2D            ("potion.jump.strong.lingering"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_1            ("potion.speed"                                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Speed_2            ("potion.speed.strong"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Speed_1L           ("potion.speed.long"                                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Speed_1S           ("potion.speed.splash"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_2S           ("potion.speed.strong.splash"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_1LS          ("potion.speed.long.splash"                                 , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_1D           ("potion.speed.lingering"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_2D           ("potion.speed.strong.lingering"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Speed_1LD          ("potion.speed.long.lingering"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_1         ("potion.strength"                                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Strength_2         ("potion.strength.strong"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Strength_1L        ("potion.strength.long"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Strength_1S        ("potion.strength.splash"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_2S        ("potion.strength.strong.splash"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_1LS       ("potion.strength.long.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_1D        ("potion.strength.lingering"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_2D        ("potion.strength.strong.lingering"                         , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Strength_1LD       ("potion.strength.long.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_1            ("potion.regen"                                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Regen_2            ("potion.regen.strong"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Regen_1L           ("potion.regen.long"                                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Regen_1S           ("potion.regen.splash"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_2S           ("potion.regen.strong.splash"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_1LS          ("potion.regen.long.splash"                                 , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_1D           ("potion.regen.lingering"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_2D           ("potion.regen.strong.lingering"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Regen_1LD          ("potion.regen.long.lingering"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Poison_1           ("potion.poison"                                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC, BATH)
-	, Potion_Poison_2           ("potion.poison.strong"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC, BATH)
-	, Potion_Poison_1L          ("potion.poison.long"                                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC, BATH)
-	, Potion_Poison_1S          ("potion.poison.splash"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Poison_2S          ("potion.poison.strong.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Poison_1LS         ("potion.poison.long.splash"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Poison_1D          ("potion.poison.lingering"                                  , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Poison_2D          ("potion.poison.strong.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_Poison_1LD         ("potion.poison.long.lingering"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, TOXIC)
-	, Potion_FireResistance_1   ("potion.fireresistance"                                    , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_FireResistance_1L  ("potion.fireresistance.long"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_FireResistance_1S  ("potion.fireresistance.splash"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_FireResistance_1LS ("potion.fireresistance.long.splash"                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_FireResistance_1D  ("potion.fireresistance.lingering"                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_FireResistance_1LD ("potion.fireresistance.long.lingering"                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_NightVision_1      ("potion.nightvision"                                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_NightVision_1L     ("potion.nightvision.long"                                  , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_NightVision_1S     ("potion.nightvision.splash"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_NightVision_1LS    ("potion.nightvision.long.splash"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_NightVision_1D     ("potion.nightvision.lingering"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_NightVision_1LD    ("potion.nightvision.long.lingering"                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Weakness_1         ("potion.weakness"                                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Weakness_1L        ("potion.weakness.long"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Weakness_1S        ("potion.weakness.splash"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Weakness_1LS       ("potion.weakness.long.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Weakness_1D        ("potion.weakness.lingering"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Weakness_1LD       ("potion.weakness.long.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Slowness_1         ("potion.slowness"                                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Slowness_1L        ("potion.slowness.long"                                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Slowness_1S        ("potion.slowness.splash"                                   , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Slowness_1LS       ("potion.slowness.long.splash"                              , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Slowness_1D        ("potion.slowness.lingering"                                , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Slowness_1LD       ("potion.slowness.long.lingering"                           , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_WaterBreathing_1   ("potion.waterbreathing"                                    , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_WaterBreathing_1L  ("potion.waterbreathing.long"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_WaterBreathing_1S  ("potion.waterbreathing.splash"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_WaterBreathing_1LS ("potion.waterbreathing.long.splash"                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_WaterBreathing_1D  ("potion.waterbreathing.lingering"                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_WaterBreathing_1LD ("potion.waterbreathing.long.lingering"                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Invisibility_1     ("potion.invisibility"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1L    ("potion.invisibility.long"                                 , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1S    ("potion.invisibility.splash"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Invisibility_1LS   ("potion.invisibility.long.splash"                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Invisibility_1D    ("potion.invisibility.lingering"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
-	, Potion_Invisibility_1LD   ("potion.invisibility.long.lingering"                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT)
+	, Potion_Tainted            ("potion.tainted"                                           , SIMPLE, LIQUID, POTION, MAGIC, TOXIC)
+	, Potion_Harm_1             ("potion.damage"                                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC, BATH)
+	, Potion_Harm_2             ("potion.damage.strong"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC, BATH)
+	, Potion_Harm_1S            ("potion.damage.splash"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Harm_2S            ("potion.damage.strong.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Harm_1D            ("potion.damage.lingering"                                  , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Harm_2D            ("potion.damage.strong.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Heal_1             ("potion.health"                                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Heal_2             ("potion.health.strong"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Heal_1S            ("potion.health.splash"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Heal_2S            ("potion.health.strong.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Heal_1D            ("potion.health.lingering"                                  , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Heal_2D            ("potion.health.strong.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Jump_1             ("potion.jump"                                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Jump_2             ("potion.jump.strong"                                       , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Jump_1S            ("potion.jump.splash"                                       , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Jump_2S            ("potion.jump.strong.splash"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Jump_1D            ("potion.jump.lingering"                                    , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Jump_2D            ("potion.jump.strong.lingering"                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_1            ("potion.speed"                                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Speed_2            ("potion.speed.strong"                                      , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Speed_1L           ("potion.speed.long"                                        , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Speed_1S           ("potion.speed.splash"                                      , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_2S           ("potion.speed.strong.splash"                               , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_1LS          ("potion.speed.long.splash"                                 , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_1D           ("potion.speed.lingering"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_2D           ("potion.speed.strong.lingering"                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Speed_1LD          ("potion.speed.long.lingering"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_1         ("potion.strength"                                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Strength_2         ("potion.strength.strong"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Strength_1L        ("potion.strength.long"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Strength_1S        ("potion.strength.splash"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_2S        ("potion.strength.strong.splash"                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_1LS       ("potion.strength.long.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_1D        ("potion.strength.lingering"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_2D        ("potion.strength.strong.lingering"                         , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Strength_1LD       ("potion.strength.long.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_1            ("potion.regen"                                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Regen_2            ("potion.regen.strong"                                      , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Regen_1L           ("potion.regen.long"                                        , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Regen_1S           ("potion.regen.splash"                                      , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_2S           ("potion.regen.strong.splash"                               , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_1LS          ("potion.regen.long.splash"                                 , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_1D           ("potion.regen.lingering"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_2D           ("potion.regen.strong.lingering"                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Regen_1LD          ("potion.regen.long.lingering"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Poison_1           ("potion.poison"                                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC, BATH)
+	, Potion_Poison_2           ("potion.poison.strong"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC, BATH)
+	, Potion_Poison_1L          ("potion.poison.long"                                       , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC, BATH)
+	, Potion_Poison_1S          ("potion.poison.splash"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Poison_2S          ("potion.poison.strong.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Poison_1LS         ("potion.poison.long.splash"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Poison_1D          ("potion.poison.lingering"                                  , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Poison_2D          ("potion.poison.strong.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_Poison_1LD         ("potion.poison.long.lingering"                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, TOXIC)
+	, Potion_FireResistance_1   ("potion.fireresistance"                                    , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_FireResistance_1L  ("potion.fireresistance.long"                               , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_FireResistance_1S  ("potion.fireresistance.splash"                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_FireResistance_1LS ("potion.fireresistance.long.splash"                        , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_FireResistance_1D  ("potion.fireresistance.lingering"                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_FireResistance_1LD ("potion.fireresistance.long.lingering"                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_NightVision_1      ("potion.nightvision"                                       , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_NightVision_1L     ("potion.nightvision.long"                                  , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_NightVision_1S     ("potion.nightvision.splash"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_NightVision_1LS    ("potion.nightvision.long.splash"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_NightVision_1D     ("potion.nightvision.lingering"                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_NightVision_1LD    ("potion.nightvision.long.lingering"                        , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Weakness_1         ("potion.weakness"                                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Weakness_1L        ("potion.weakness.long"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Weakness_1S        ("potion.weakness.splash"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Weakness_1LS       ("potion.weakness.long.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Weakness_1D        ("potion.weakness.lingering"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Weakness_1LD       ("potion.weakness.long.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Slowness_1         ("potion.slowness"                                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Slowness_1L        ("potion.slowness.long"                                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Slowness_1S        ("potion.slowness.splash"                                   , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Slowness_1LS       ("potion.slowness.long.splash"                              , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Slowness_1D        ("potion.slowness.lingering"                                , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Slowness_1LD       ("potion.slowness.long.lingering"                           , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_WaterBreathing_1   ("potion.waterbreathing"                                    , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_WaterBreathing_1L  ("potion.waterbreathing.long"                               , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_WaterBreathing_1S  ("potion.waterbreathing.splash"                             , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_WaterBreathing_1LS ("potion.waterbreathing.long.splash"                        , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_WaterBreathing_1D  ("potion.waterbreathing.lingering"                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_WaterBreathing_1LD ("potion.waterbreathing.long.lingering"                     , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Invisibility_1     ("potion.invisibility"                                      , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Invisibility_1L    ("potion.invisibility.long"                                 , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT, BATH)
+	, Potion_Invisibility_1S    ("potion.invisibility.splash"                               , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Invisibility_1LS   ("potion.invisibility.long.splash"                          , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Invisibility_1D    ("potion.invisibility.lingering"                            , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
+	, Potion_Invisibility_1LD   ("potion.invisibility.long.lingering"                       , SIMPLE, LIQUID, POTION, MAGIC, ENCHANTED_EFFECT)
 	;
 	
 	public final String mName;
@@ -620,7 +624,7 @@ public enum FL {
 	
 	
 	
-	
+	public static ArrayListNoNulls<FluidStack> arraylist(FluidStack... aFluids) {return new ArrayListNoNulls<>(F, aFluids);}
 	public static FluidStack[] array(FluidStack... aFluids) {return aFluids;}
 	
 	public static String regName (IFluidTank aTank) {return aTank == null ? null : regName_(aTank);}
@@ -748,6 +752,10 @@ public enum FL {
 	public static boolean plasma(IFluidTank aFluid) {return aFluid != null && plasma(aFluid.getFluid());}
 	public static boolean plasma(FluidStack aFluid) {return aFluid != null && plasma(aFluid.getFluid());}
 	public static boolean plasma(Fluid aFluid) {return aFluid != null && FluidsGT.PLASMA.contains(aFluid.getName());}
+	
+	public static boolean magic(IFluidTank aFluid) {return aFluid != null && magic(aFluid.getFluid());}
+	public static boolean magic(FluidStack aFluid) {return aFluid != null && magic(aFluid.getFluid());}
+	public static boolean magic(Fluid aFluid) {return aFluid != null && FluidsGT.MAGIC.contains(aFluid.getName());}
 	
 	public static boolean gas(IFluidTank aFluid, boolean aDefault) {return gas(aFluid.getFluid(), aDefault);}
 	public static boolean gas(IFluidTank aFluid) {return gas(aFluid.getFluid(), F);}
@@ -1102,6 +1110,7 @@ public enum FL {
 		
 		if (aMaterial != null) {
 			if (aMaterial.contains(TD.Properties.ACID    )) FluidsGT.ACID.add(aName);
+			if (aMaterial.contains(TD.Properties.MAGICAL )) FluidsGT.MAGIC.add(aName);
 			if (aMaterial.contains(TD.Properties.GLOWING )) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 5));
 			if (aMaterial.contains(TD.Properties.LIGHTING)) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 15));
 			switch (aState) {

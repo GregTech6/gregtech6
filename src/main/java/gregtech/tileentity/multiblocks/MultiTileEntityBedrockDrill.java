@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,7 +54,7 @@ import static gregapi.data.CS.*;
  */
 public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
 	public long mEnergy = 0;
-	public int mType = 0;
+	public int mType = rng(BlocksGT.stones.length+(IL.EtFu_Deepslate_Cobble.exists() ? 2 : 1));
 	public TagData mEnergyTypeAccepted = TD.Energy.RU;
 	public FluidTankGT mTank = new FluidTankGT(16000);
 	public final List<OreDictMaterial> mList = new ArrayListNoNulls<>();
@@ -172,6 +172,8 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 					if (worldObj.provider.dimensionId == DIM_NETHER) {
 						// Netherrack Ore.
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
+					} else if (WD.dimTF(worldObj)) {
+						// Default to Vanilla Ores only.
 					} else if (WD.dimERE(worldObj)) {
 						// Erebus Umberstone Ore.
 						Object tBlock = BlocksGT.stoneToBrokenOres.get(new ItemStackContainer(IL.ERE_Umberstone.get(1)));
@@ -189,7 +191,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						slot(0, ST.make((Block)BlocksGT.ores_broken[mType], 1, tMaterial.mID));
 					}
 					if (ST.invalid(slot(0)) && mType%2==0 && IL.EtFu_Deepslate_Cobble.exists()) {
-						// Make Deepslate Ore 50% of the time.
+						// Make Deepslate Ore roughly 50% of the time.
 						slot(0, ST.make((Block)StoneLayer.DEEPSLATE.mOreBroken, 1, tMaterial.mID));
 					}
 					if (ST.invalid(slot(0))) {
@@ -204,6 +206,15 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 					} else if (worldObj.provider.dimensionId == DIM_NETHER) {
 						// Netherrack.
 						slot(0, ST.make(Blocks.netherrack, 1, 0));
+					} else if (WD.dimTF(worldObj)) {
+						// Twilight Stones sometimes, otherwise default to vanilla.
+						switch (mType) {
+						case  0: slot(0, ST.make(Blocks.obsidian, 1, 0)); break;
+						case  1: slot(0, OP.blockDust.mat(MT.STONES.Mazestone, 1)); break;
+						case  2: slot(0, IL.TF_Trollsteinn.get(1)); break;
+						case  3: slot(0, OP.blockDust.mat(MT.STONES.Castlerock, 1)); break;
+						case  4: slot(0, IL.TF_Deadrock.get(1)); break;
+						}
 					} else if (WD.dimERE(worldObj)) {
 						// Erebus Umberstone.
 						slot(0, IL.ERE_Umbercobble.get(1));
@@ -212,13 +223,20 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						slot(0, IL.ATUM_Limecobble.get(1));
 					} else if (WD.dimBTL(worldObj)) {
 						// Betweenlands Stones.
-						slot(0, (mType%2==0?IL.BTL_Pitstone:IL.BTL_Betweenstone).get(1));
+						if (mType == 0) {
+						slot(0, OP.blockDust.mat(MT.STONES.Templerock, 1));
+						} else switch (mType % 4) {
+						case  0: slot(0, IL.BTL_Cragrock.get(1)); break;
+						case  1: slot(0, IL.BTL_Limestone.get(1)); break;
+						case  2: slot(0, IL.BTL_Pitstone.get(1)); break;
+						case  3: slot(0, IL.BTL_Betweenstone.get(1)); break;
+						}
 					} else if (mType < BlocksGT.stones.length) {
 						// This might be the Overworld or some Overworld alike Dimension.
 						slot(0, ST.make(BlocksGT.stones[mType], 1, 1));
 					}
 					if (ST.invalid(slot(0)) && mType%2==0 && IL.EtFu_Deepslate_Cobble.exists()) {
-						// Make Deepslate 50% of the time.
+						// Make Deepslate roughly 50% of the time.
 						slot(0, IL.EtFu_Deepslate_Cobble.get(1));
 					}
 					if (ST.invalid(slot(0))) {

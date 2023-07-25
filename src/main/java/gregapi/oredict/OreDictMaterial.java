@@ -31,6 +31,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.render.TextureSet;
 import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
@@ -307,7 +308,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** The Tags for this Material */
 	private final Set<TagData> mTags = new HashSetNoNulls<>();
 	/** Stores the Tool and Armor Enchants */
-	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls<>(1), mEnchantmentWeapons = new ArrayListNoNulls<>(1), mEnchantmentAmmo = new ArrayListNoNulls<>(1), mEnchantmentRanged = new ArrayListNoNulls<>(1), mEnchantmentArmors = new ArrayListNoNulls<>(1);
+	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls<>(1), mEnchantmentWeapons = new ArrayListNoNulls<>(1), mEnchantmentAmmo = new ArrayListNoNulls<>(1), mEnchantmentRanged = new ArrayListNoNulls<>(1), mEnchantmentFishing = new ArrayListNoNulls<>(1), mEnchantmentArmors = new ArrayListNoNulls<>(1);
 	
 	private OreDictMaterial(short aID, String aNameInternal, String aNameLocal) {
 		mID = aID;
@@ -1166,6 +1167,12 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return this;
 	}
 	
+	public OreDictMaterial addEnchantmentForDamage(Enchantment aEnchantment, int aEnchantmentLevel) {
+		addEnchantmentForWeapons(aEnchantment, aEnchantmentLevel);
+		addEnchantmentForAmmo(aEnchantment, aEnchantmentLevel);
+		return this;
+	}
+	
 	public OreDictMaterial addEnchantmentForWeapons(Enchantment aEnchantment, int aEnchantmentLevel) {
 		mEnchantmentWeapons.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		return this;
@@ -1178,6 +1185,11 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	public OreDictMaterial addEnchantmentForRanged(Enchantment aEnchantment, int aEnchantmentLevel) {
 		mEnchantmentRanged.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
+		return this;
+	}
+	
+	public OreDictMaterial addEnchantmentForFishing(Enchantment aEnchantment, int aEnchantmentLevel) {
+		mEnchantmentFishing.add(new ObjectStack<>(aEnchantment, aEnchantment == Enchantment.field_151369_A ? Math.min(5, aEnchantmentLevel) : aEnchantmentLevel));
 		return this;
 	}
 	
@@ -1370,7 +1382,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	/** List of all valid Items, which are registered for this Material. */
-	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
+	public final ItemStackSet<ItemStackContainer> mRegisteredItems = ST.hashset();
 	/** This is used to determine if any of the ItemStacks belongs to this Material. */
 	public boolean contains(ItemStack... aStacks) {
 		if (aStacks == null) return F;

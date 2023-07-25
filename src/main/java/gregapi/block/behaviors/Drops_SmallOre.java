@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,7 @@
 
 package gregapi.block.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Random;
-
 import gregapi.block.prefixblock.PrefixBlock;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
@@ -33,6 +27,11 @@ import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import static gregapi.data.CS.SIDE_ANY;
 
 /**
  * @author Gregorius Techneticies
@@ -47,7 +46,7 @@ public class Drops_SmallOre extends Drops {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
-		ArrayList<ItemStack> rList = new ArrayListNoNulls<>();
+		ArrayList<ItemStack> rList = ST.arraylist();
 		OreDictMaterial aMaterial = aBlock.getMetaMaterial(aMetaData);
 		if (aMaterial != null) aMaterial = aMaterial.mTargetCrushing.mMaterial;
 		
@@ -66,7 +65,7 @@ public class Drops_SmallOre extends Drops {
 				if (tStack != null && tRandom.nextInt(aSilkTouch?5000:10000) <= aFortune) {
 					rList.add(ST.update(tStack));
 				} else {
-					ArrayList<ItemStack> tSelector = new ArrayListNoNulls<>();
+					ArrayList<ItemStack> tSelector = ST.arraylist();
 					tStack = OP.gemExquisite.mat(aMaterial, OP.gem.mat(aMaterial, 4), 1);
 					if (tStack != null) for (int i = 0, j = (aSilkTouch? 3: 1); i < j; i++) tSelector.add(tStack);
 					tStack = OP.gemFlawless.mat(aMaterial, OP.gem.mat(aMaterial, 2), 1);

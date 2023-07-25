@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,52 +19,20 @@
 
 package gregapi.tileentity.base;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddCollisionBoxesToList;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsProvidingStrongPower;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsProvidingWeakPower;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSealable;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnToolClick;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnWalkOver;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_ShouldCheckWeakPower;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataCovers;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.cover.CoverData;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
+import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
-import gregapi.network.packets.covers.PacketSyncDataByteAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataByteArrayAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataIntegerAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataLongAndIDsAndCovers;
-import gregapi.network.packets.covers.PacketSyncDataShortAndIDsAndCovers;
-import gregapi.network.packets.covervisuals.PacketSyncDataByteAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataByteArrayAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataIntegerAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataLongAndCoverVisuals;
-import gregapi.network.packets.covervisuals.PacketSyncDataShortAndCoverVisuals;
-import gregapi.network.packets.data.PacketSyncDataByte;
-import gregapi.network.packets.data.PacketSyncDataByteArray;
-import gregapi.network.packets.data.PacketSyncDataInteger;
-import gregapi.network.packets.data.PacketSyncDataLong;
-import gregapi.network.packets.data.PacketSyncDataShort;
-import gregapi.network.packets.ids.PacketSyncDataByteAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataByteArrayAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataIDs;
-import gregapi.network.packets.ids.PacketSyncDataIntegerAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataLongAndIDs;
-import gregapi.network.packets.ids.PacketSyncDataShortAndIDs;
+import gregapi.network.packets.covers.*;
+import gregapi.network.packets.covervisuals.*;
+import gregapi.network.packets.data.*;
+import gregapi.network.packets.ids.*;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.data.ITileEntitySurface;
@@ -83,6 +51,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -247,6 +219,10 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override public boolean isWaterProof       (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
 	@Override public boolean isThunderProof     (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
 	
+	public boolean allowCover(byte aSide, ICover aCover) {
+		return allowCovers(aSide);
+	}
+	
 	public boolean allowCovers(byte aSide) {
 		return T;
 	}
@@ -317,7 +293,7 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 			} else {
 				if (mCovers.mBehaviours[aSide] != null) return !checkIfCoversEmptyAndDeleteIfNeeded();
 				ICover tCover = CoverRegistry.get(aStack);
-				if (tCover == null || tCover.interceptCoverPlacement(aSide, mCovers, aPlayer)) return !checkIfCoversEmptyAndDeleteIfNeeded();
+				if (tCover == null || !allowCover(aSide, tCover) || tCover.interceptCoverPlacement(aSide, mCovers, aPlayer)) return !checkIfCoversEmptyAndDeleteIfNeeded();
 			}
 		}
 		
@@ -369,8 +345,8 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override
 	protected final IFluidTank getFluidTankFillable(byte aSide, FluidStack aFluidToFill) {
 		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null) {
-			if (mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, aFluidToFill)) return null;
 			if (mCovers.mBehaviours[aSide].getFluidTankFillableOverride(aSide, mCovers, aSide, aFluidToFill)) return mCovers.mBehaviours[aSide].getFluidTankFillable(aSide, mCovers, aSide, aFluidToFill, getFluidTankFillable2(aSide, aFluidToFill));
+			if (mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, aFluidToFill)) return null;
 		}
 		return getFluidTankFillable2(aSide, aFluidToFill);
 	}
@@ -378,8 +354,14 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	@Override
 	protected final IFluidTank getFluidTankDrainable(byte aSide, FluidStack aFluidToDrain) {
 		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null) {
-			if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aFluidToDrain)) return null;
 			if (mCovers.mBehaviours[aSide].getFluidTankDrainableOverride(aSide, mCovers, aSide, aFluidToDrain)) return mCovers.mBehaviours[aSide].getFluidTankDrainable(aSide, mCovers, aSide, aFluidToDrain, getFluidTankDrainable2(aSide, aFluidToDrain));
+			if (aFluidToDrain == null) {
+				IFluidTank rTank = getFluidTankDrainable2(aSide, null);
+				if (rTank == null) return null;
+				if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.mul(rTank.getFluid(), 1))) return null;
+				return rTank;
+			}
+			if (mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aFluidToDrain)) return null;
 		}
 		return getFluidTankDrainable2(aSide, aFluidToDrain);
 	}

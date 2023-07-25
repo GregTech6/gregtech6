@@ -343,12 +343,6 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/overlay/face2")
 	};
 	
-	@Override
-	public void updateInventory() {
-		super.updateInventory();
-		updateClientData();
-	}
-	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? UT.Code.getAscendingArray(1) : ZL_INTEGER;}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0 && !slotHas(aSlot) && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod)ST.item_(aStack)).isReactorRod(aStack);}

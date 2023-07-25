@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,7 @@
 
 package gregtech.tileentity.tanks;
 
-import static gregapi.data.CS.*;
-
+import gregapi.cover.ICover;
 import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -30,11 +29,14 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.tank.TileEntityBase08Barrel;
 import net.minecraft.block.Block;
 
+import static gregapi.data.CS.FACES_TBS;
+import static gregapi.data.CS.T;
+
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityBarrelWood extends TileEntityBase08Barrel {
-	@Override public boolean allowCovers(byte aSide) {return F;}
+	@Override public boolean allowCover(byte aSide, ICover aCover) {return aCover.isDecorative(aSide, getCoverData());}
 	@Override public boolean onlySimple() {return T;}
 	
 	@Override

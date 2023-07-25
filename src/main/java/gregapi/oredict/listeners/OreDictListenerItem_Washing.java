@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.oredict.listeners;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.lang.LanguageHandler;
@@ -33,6 +31,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.RNGSUS;
 
 /**
  * @author Gregorius Techneticies
@@ -65,7 +65,7 @@ public class OreDictListenerItem_Washing extends OreDictListenerItem {
 				if (tStack != null) {
 					((BlockCauldron)tBlock).func_150024_a(aItem.worldObj, tX, tY, tZ, tMetaData-1);
 					if (mByProductPrefixes.length > 0 && RNGSUS.nextInt(mChance) > 0) {
-						ArrayListNoNulls<ItemStack> tStacks = new ArrayListNoNulls<>();
+						ArrayListNoNulls<ItemStack> tStacks = ST.arraylist();
 						for (OreDictPrefix tPrefix : mByProductPrefixes) tStacks.add(tPrefix.mat(UT.Code.select(aMaterial, aMaterial.mByProducts), 1));
 						if (tStacks.size() > 0) ST.drop(aItem.worldObj, aItem.posX, aItem.posY, aItem.posZ, tStacks.get(RNGSUS.nextInt(tStacks.size())));
 					}

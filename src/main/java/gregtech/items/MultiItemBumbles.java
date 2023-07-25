@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,7 @@ import gregapi.damage.DamageSources;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.bumble.IItemBumbleBee;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.OM;
@@ -58,7 +58,7 @@ import java.util.Random;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee {
+public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItemBumbleBee {
 	public MultiItemBumbles(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Bumblebees", this, (short)2));
@@ -231,8 +231,11 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		case   2:
 			if (BIOMES_MAGICAL.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName)) return new ChunkCoordinates(aX, aY, aZ);
 			Block tThaumcraft = ST.block(MD.TC, "blockCustomPlant");
-			if (tThaumcraft != NB) for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
-				if (WD.block(aWorld, aX+i, aY+j, aZ+k, F) == tThaumcraft) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
+				Block tBlock = WD.block(aWorld, aX+i, aY+j, aZ+k, F);
+				if (tBlock == NB) continue;
+				if (tBlock == tThaumcraft) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (tBlock == BlocksGT.Leaves_AB && (WD.meta(aWorld, aX+i, aY+j, aZ+k, F) & 7) == 7) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 			}
 			return null;
 		case   3: case 200:
@@ -348,7 +351,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	public String getFlowerTooltip(short aMetaData) {
 		switch(aMetaData / 100) {
 		case   1:           return "Water";
-		case   2:           return "Magical Biome or Thaumic Flowers";
+		case   2:           return "Magical Biome, Thaumic Flowers or Rainbow Leaves";
 		case   3: case 200: return MD.BoP.mLoaded ? "Netherwart or Burning Blossoms" : "Netherwart";
 		case   4: case 202: return MD.EtFu.mLoaded ? "Chorus Flower or Dragon Egg" : "End Portal, End Biome or Dragon Egg";
 		case   5: case 203: return "Stone, Cobble or Mossy";

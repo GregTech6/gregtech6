@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,23 +19,13 @@
 
 package gregtech.loaders.c;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Set;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -57,9 +47,14 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import java.util.List;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
+
 public class Loader_Recipes_Replace implements Runnable {
 	public static final Set<String> sNonReplaceableNames = new HashSetNoNulls<>(F, "ic2.itemwoodrotor", "ic2.itemironrotor", "ic2.itemsteelrotor", "ic2.itemcarbonrotor", "ic2.itemwcarbonrotor", "ic2.itemSteamTurbine", "ic2.itemLathingTool", "item.ItemToolThermometer");
-	public static final ItemStackSet<ItemStackContainer> NON_REPLACEABLE = new ItemStackSet<>();
+	public static final ItemStackSet<ItemStackContainer> NON_REPLACEABLE = ST.hashset();
 	
 	@SuppressWarnings("rawtypes")
 	@Override public void run() {OUT.println("GT_Mod: Replacing Vanilla alike Recipes.");

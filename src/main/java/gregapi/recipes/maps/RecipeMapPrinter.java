@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,10 +18,6 @@
  */
 
 package gregapi.recipes.maps;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
 
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -43,6 +39,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -55,7 +55,7 @@ public class RecipeMapPrinter extends RecipeMap {
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		
-		if (rRecipe != null || aInputs == null || aInputs.length <= 0 || aInputs[0] == null || aFluids == null || aFluids.length <= 0 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
+		if (rRecipe != null || aInputs == null || aInputs.length <= 0 || aInputs[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		
 		ItemStack tUSB = null, tPaper = null;
 		NBTTagCompound tData = null;
@@ -149,12 +149,25 @@ public class RecipeMapPrinter extends RecipeMap {
 				}
 				return rRecipe;
 			}
-			if (tPaper.getItem() == Items.map) {
+			if (ST.item_(tPaper) == Items.map) {
 				short tMapID = UT.NBT.getMapID(tData);
-				if (tMapID >= 0) {
-					return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(ST.make(Items.filled_map, 1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
-				}
-				return rRecipe;
+				if (tMapID < 0) return rRecipe;
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(ST.make(Items.filled_map, 1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
+			}
+			if (IL.TF_Magic_Map_Empty.equal(tPaper, T, T)) {
+				short tMapID = UT.NBT.getMagicMapID(tData);
+				if (tMapID < 0) return rRecipe;
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Magic_Map.getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
+			}
+			if (IL.TF_Maze_Map_Empty.equal(tPaper, T, T)) {
+				short tMapID = UT.NBT.getMazeMapID(tData);
+				if (tMapID < 0) return rRecipe;
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Maze_Map .getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
+			}
+			if (IL.TF_Ore_Map_Empty.equal(tPaper, T, T)) {
+				short tMapID = UT.NBT.getOreMapID(tData);
+				if (tMapID < 0) return rRecipe;
+				return new Recipe(F, F, F, ST.array(ST.amount(1, tPaper), ST.amount(0, tUSB)), ST.array(IL.TF_Ore_Map  .getWithMeta(1, tMapID)), null, null, FL.array(FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), FL.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T)), null, 64, 16, 0);
 			}
 			return rRecipe;
 		}

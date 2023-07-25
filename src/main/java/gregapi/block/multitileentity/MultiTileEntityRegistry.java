@@ -111,7 +111,7 @@ public class MultiTileEntityRegistry {
 		mNameInternal = aNameInternal;
 		mBlock = aBlock;
 		mBlock.mMultiTileEntityRegistry = this;
-		REGISTRIES.put(new ItemStackContainer(mBlock, 1, W), this);
+		REGISTRIES.put(mBlock, W, this);
 		NAMED_REGISTRIES.put(mNameInternal, this);
 	}
 	

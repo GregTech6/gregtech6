@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.render;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.GT_API;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.MD;
@@ -30,6 +26,10 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /** 
  * @author Gregorius Techneticies
@@ -203,6 +203,7 @@ public class TextureSet {
 	, SET_PLASMA                    = new TextureSet[] {addTextureSet(MD.GT.mID, F, "PLASMA")        , addTextureSet(MD.GT.mID, T, "PLASMA")        }
 	, SET_ROUGH                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "ROUGH")         , addTextureSet(MD.GT.mID, T, "ROUGH")         }
 	, SET_STONE                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "STONE")         , addTextureSet(MD.GT.mID, T, "STONE")         }
+	, SET_BRICK                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "BRICK")         , addTextureSet(MD.GT.mID, T, "BRICK")         }
 	, SET_SPACE                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "SPACE")         , addTextureSet(MD.GT.mID, T, "SPACE")         }
 	, SET_PAPER                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "PAPER")         , addTextureSet(MD.GT.mID, T, "PAPER")         }
 	, SET_GLASS                     = new TextureSet[] {addTextureSet(MD.GT.mID, F, "GLASS")         , addTextureSet(MD.GT.mID, T, "GLASS")         }

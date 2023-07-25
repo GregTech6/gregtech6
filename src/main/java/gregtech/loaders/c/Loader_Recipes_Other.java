@@ -51,32 +51,49 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.ic2_compressor(OM.dust(tWax, U4), foil .mat(tWax, 1));
 		}
 		
-		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu   , 3), dust     .mat(MT.Sn, 1), IL.Compound_Bronze       .get(36));
-		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu   , 3), dust     .mat(MT.Zn, 1), IL.Compound_Brass        .get(36));
-		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Brass, 4), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Brass .get(36), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu   , 3), dustSmall.mat(MT.Sn, 1), IL.Compound_Bronze       .get( 9));
-		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu   , 3), dustSmall.mat(MT.Zn, 1), IL.Compound_Brass        .get( 9));
-		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Brass,16), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Brass .get(36), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu    , 3), dust     .mat(MT.Sn, 1), IL.Compound_Bronze       .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu    , 3), dust     .mat(MT.Zn, 1), IL.Compound_Brass        .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, dust     .mat(MT.Cu    , 3), dust     .mat(MT.As, 1), IL.Compound_ArsenicCopper.get(36));
+		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Bronze, 4), dust     .mat(MT.As, 1), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Bronze .get(36), dust     .mat(MT.As, 1), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Brass , 4), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Brass  .get(36), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu    , 3), dustSmall.mat(MT.Sn, 1), IL.Compound_Bronze       .get( 9));
+		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu    , 3), dustSmall.mat(MT.Zn, 1), IL.Compound_Brass        .get( 9));
+		RM.Mixer.addRecipe2(T, 16, 16, dustSmall.mat(MT.Cu    , 3), dustSmall.mat(MT.As, 1), IL.Compound_ArsenicCopper.get( 9));
+		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Bronze,16), dustSmall.mat(MT.As, 4), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Bronze .get(36), dustSmall.mat(MT.As, 4), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Brass ,16), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, IL.Compound_Brass  .get(36), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
 		for (OreDictPrefix tPrefixA : new OreDictPrefix[] {dustTiny, nugget, scrapGt}) {
-		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu   ,27), dust     .mat(MT.Sn, 1), IL.Compound_Bronze       .get(36));
-		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu   ,27), dust     .mat(MT.Zn, 1), IL.Compound_Brass        .get(36));
-		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Brass,36), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu   ,27), dustSmall.mat(MT.Sn, 4), IL.Compound_Bronze       .get(36));
-		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu   ,27), dustSmall.mat(MT.Zn, 4), IL.Compound_Brass        .get(36));
-		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Brass,36), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 22, dust     .mat(MT.Cu   , 1), tPrefixA .mat(MT.Sn, 3), IL.Compound_Bronze       .get(12));
-		RM.Mixer.addRecipe2(T, 16, 22, dust     .mat(MT.Cu   , 1), tPrefixA .mat(MT.Zn, 3), IL.Compound_Brass        .get(12));
-		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Brass, 4), tPrefixA .mat(MT.Bi, 9), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 22, dustSmall.mat(MT.Cu   , 4), tPrefixA .mat(MT.Sn, 3), IL.Compound_Bronze       .get(12));
-		RM.Mixer.addRecipe2(T, 16, 22, dustSmall.mat(MT.Cu   , 4), tPrefixA .mat(MT.Zn, 3), IL.Compound_Brass        .get(12));
-		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Brass,16), tPrefixA .mat(MT.Bi, 9), IL.Compound_BismuthBronze.get(45));
-		RM.Mixer.addRecipe2(T, 16, 10, IL.Compound_Brass .get( 4), tPrefixA .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get( 5));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dust     .mat(MT.Sn, 1), IL.Compound_Bronze       .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dust     .mat(MT.Zn, 1), IL.Compound_Brass        .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dust     .mat(MT.As, 1), IL.Compound_ArsenicCopper.get(36));
+		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Bronze,36), dust     .mat(MT.As, 1), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Brass ,36), dust     .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dustSmall.mat(MT.Sn, 4), IL.Compound_Bronze       .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dustSmall.mat(MT.Zn, 4), IL.Compound_Brass        .get(36));
+		RM.Mixer.addRecipe2(T, 16, 64, tPrefixA .mat(MT.Cu    ,27), dustSmall.mat(MT.As, 4), IL.Compound_ArsenicCopper.get(36));
+		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Bronze,36), dustSmall.mat(MT.As, 4), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, tPrefixA .mat(MT.Brass ,36), dustSmall.mat(MT.Bi, 4), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 22, dust     .mat(MT.Cu    , 1), tPrefixA .mat(MT.Sn, 3), IL.Compound_Bronze       .get(12));
+		RM.Mixer.addRecipe2(T, 16, 22, dust     .mat(MT.Cu    , 1), tPrefixA .mat(MT.Zn, 3), IL.Compound_Brass        .get(12));
+		RM.Mixer.addRecipe2(T, 16, 22, dust     .mat(MT.Cu    , 1), tPrefixA .mat(MT.As, 3), IL.Compound_ArsenicCopper.get(12));
+		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Bronze, 4), tPrefixA .mat(MT.As, 9), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 80, dust     .mat(MT.Brass , 4), tPrefixA .mat(MT.Bi, 9), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 22, dustSmall.mat(MT.Cu    , 4), tPrefixA .mat(MT.Sn, 3), IL.Compound_Bronze       .get(12));
+		RM.Mixer.addRecipe2(T, 16, 22, dustSmall.mat(MT.Cu    , 4), tPrefixA .mat(MT.Zn, 3), IL.Compound_Brass        .get(12));
+		RM.Mixer.addRecipe2(T, 16, 22, dustSmall.mat(MT.Cu    , 4), tPrefixA .mat(MT.As, 3), IL.Compound_ArsenicCopper.get(12));
+		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Bronze,16), tPrefixA .mat(MT.As, 9), IL.Compound_ArsenicBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 10, IL.Compound_Bronze .get( 4), tPrefixA .mat(MT.As, 1), IL.Compound_ArsenicBronze.get( 5));
+		RM.Mixer.addRecipe2(T, 16, 80, dustSmall.mat(MT.Brass ,16), tPrefixA .mat(MT.Bi, 9), IL.Compound_BismuthBronze.get(45));
+		RM.Mixer.addRecipe2(T, 16, 10, IL.Compound_Brass  .get( 4), tPrefixA .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get( 5));
 		for (OreDictPrefix tPrefixB : new OreDictPrefix[] {dustTiny, nugget, scrapGt}) {
-		RM.Mixer.addRecipe2(T, 16,  8, tPrefixA .mat(MT.Cu   , 3), tPrefixB .mat(MT.Sn, 1), IL.Compound_Bronze       .get( 4));
-		RM.Mixer.addRecipe2(T, 16,  8, tPrefixA .mat(MT.Cu   , 3), tPrefixB .mat(MT.Zn, 1), IL.Compound_Brass        .get( 4));
-		RM.Mixer.addRecipe2(T, 16, 10, tPrefixA .mat(MT.Brass, 4), tPrefixB .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get( 5));
+		RM.Mixer.addRecipe2(T, 16,  8, tPrefixA .mat(MT.Cu    , 3), tPrefixB .mat(MT.Sn, 1), IL.Compound_Bronze       .get( 4));
+		RM.Mixer.addRecipe2(T, 16,  8, tPrefixA .mat(MT.Cu    , 3), tPrefixB .mat(MT.Zn, 1), IL.Compound_Brass        .get( 4));
+		RM.Mixer.addRecipe2(T, 16,  8, tPrefixA .mat(MT.Cu    , 3), tPrefixB .mat(MT.As, 1), IL.Compound_ArsenicCopper.get( 4));
+		RM.Mixer.addRecipe2(T, 16, 10, tPrefixA .mat(MT.Bronze, 4), tPrefixB .mat(MT.As, 1), IL.Compound_ArsenicBronze.get( 5));
+		RM.Mixer.addRecipe2(T, 16, 10, tPrefixA .mat(MT.Brass , 4), tPrefixB .mat(MT.Bi, 1), IL.Compound_BismuthBronze.get( 5));
 		}
 		}
 		
@@ -135,6 +152,7 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Thaumium           , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Magic.get(1));
 			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Manasteel          , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Magic.get(1));
 			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Mithril            , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Magic.get(1));
+			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Netherite          , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Magic.get(1));
 			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Enderium           , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Enderium.get(1));
 			RM.LaserEngraver    .addRecipe2(T, 16,   64, foil.mat(MT.Signalum           , 4), ST.amount(0, aEvent.mStack), IL.Circuit_Wire_Signalum.get(1));
 		}});
@@ -144,7 +162,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(rockGt.dat(MT.Netherrack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, rockGt.mat(MT.NetherBrick, 1), F, F, T);}});
 		
 		
-		addListener(new Object[] {OD.itemRubber, "crushedDraconium", "gemHexorium", "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreBrownLimonite", "oreYellowLimonite", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreRutile", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new Object[] {OD.itemRubber, "crushedDraconium", "gemHexorium", "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreBrownLimonite", "oreYellowLimonite", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreRawAluminium", "oreRutile", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -214,6 +232,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.MilkyQuartz , 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.MilkyQuartz , 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
 		
+		RM.Mixer        .addRecipeX(T, 16,  144, ST.array(OM.dust(MT.Olivine, U*2), OM.dust(MT.RareEarth), OM.dust(MT.MeteoricIron), OM.dust(MT.Obsidian, U*5)), OP.dust.mat(MT.STONES.SkyStone, 9));
+
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.ConstructionFoam), FL.mul(tWater, 1,10, T), FL.CFoam.make(100), ZL_IS);
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tSand : ANY.SiO2.mToThis) {
@@ -221,7 +241,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
 		}
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Marble, MT.Chalk, MT.CaCO3, MT.Endstone, MT.STONES.Livingrock, MT.STONES.Holystone}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Marble, MT.Chalk, MT.CaCO3, MT.Endstone, MT.STONES.Livingrock, MT.STONES.Holystone, MT.STONES.Castlerock}) {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 40), ZL_IS);
 		}
@@ -229,7 +249,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 40), ZL_IS);
 		}
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Migmatite, MT.STONES.Eclogite, MT.STONES.SpaceRock, MT.STONES.Slate}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Migmatite, MT.STONES.Eclogite, MT.STONES.SpaceRock, MT.STONES.Slate, MT.STONES.Cragrock}) {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 40), ZL_IS);
 		}
@@ -245,7 +265,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 40), ZL_IS);
 		}
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Pitstone, MT.PrismarineDark}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Pitstone, MT.PrismarineDark, MT.STONES.Mazestone}) {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 40), ZL_IS);
 		}
@@ -253,7 +273,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 40), ZL_IS);
 		}
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Komatiite}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Komatiite, MT.STONES.Templerock}) {
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 40), ZL_IS);
 		}
@@ -293,11 +313,11 @@ public class Loader_Recipes_Other implements Runnable {
 		// Asphalt
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Talc, MT.STONES.Rhyolite, MT.STONES.Gneiss, MT.STONES.Shale, MT.Oilshale, MT.Dolomite, MT.STONES.Chert})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Gray));
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Marble, MT.Chalk, MT.CaCO3, MT.Endstone, MT.STONES.Livingrock, MT.STONES.Holystone})
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Marble, MT.Chalk, MT.CaCO3, MT.Endstone, MT.STONES.Livingrock, MT.STONES.Holystone, MT.STONES.Castlerock})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_White));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Basalt, MT.STONES.Gabbro, MT.STONES.GraniteBlack, MT.STONES.Deepslate})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Black));
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Migmatite, MT.STONES.Eclogite, MT.STONES.SpaceRock, MT.STONES.Slate})
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Migmatite, MT.STONES.Eclogite, MT.STONES.SpaceRock, MT.STONES.Slate, MT.STONES.Cragrock})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Gray));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Dacite, MT.STONES.Deadrock, MT.STONES.Greywacke, MT.STONES.MoonRock, MT.STONES.MoonTurf})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_LightGray));
@@ -305,11 +325,11 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_LightBlue));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Greenschist, MT.STONES.Betweenstone, MT.PrismarineLight})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Lime));
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Pitstone, MT.PrismarineDark})
-		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Lime));
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Pitstone, MT.PrismarineDark, MT.STONES.Mazestone})
+		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Green));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Redrock, MT.STONES.MarsRock, MT.STONES.MarsSand, MT.Netherrack, MT.STONES.GraniteRed, MT.STONES.Granite})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Red));
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Komatiite})
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Komatiite, MT.STONES.Templerock})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Yellow));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Limestone})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Orange));
@@ -332,6 +352,7 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(NI, NI, NI, NI, y = ingot.mat(MT.Al, 1), NI, NI, y, NI);
 		CR.remove(NI, NI, NI, NI, y = ingot.mat(MT.Steel, 1), NI, NI, y, NI);
 		CR.remove(x, x, x, x, ingot.mat(MT.W, 1), x, x, x, x);
+		CR.remove(x = ingot.mat(MT.Cu, 1), x, x, y = ingot.mat(MT.Sn, 1));
 		CR.remove(x = dust.mat(MT.Cu, 1), x, x, y = dust.mat(MT.Sn, 1));
 		CR.remove(x, y, x, y, x, y, x, y, x);
 		CR.remove(x, x, x, dust.mat(MT.Zn, 1));
@@ -507,8 +528,17 @@ public class Loader_Recipes_Other implements Runnable {
 		if (FL.Mana_TE.exists())
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(4)), ZL_IS);
 		
-		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe), OM.dust(MT.LiveRoot), OM.dust(MT.Au,  U9)), OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.GildedIron ), OM.dust(MT.LiveRoot), OM.dust(MT.IronWood, U*2));
+		// Ironwood should be roughly the same difficulty as Iron itself.
+		RM.Mixer            .addRecipe2(T, 16,   32,          OM.dust(MT.GildedIron                      ), OM.dust(MT.LiveRoot     )                       , OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe                              ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Steel                           ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Knightmetal                     ), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.BrownLimonite      , 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.OREMATS.YellowLimonite     , 4*U), OM.dust(MT.LiveRoot     ), OM.dust(MT.Au,   U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Fe2O3                      , 5*U), OM.dust(MT.LiveRoot, 2*U), OM.dust(MT.Au, 2*U9)), OM.dust(MT.IronWood, U*4));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.Magnetite          , 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.BasalticMineralSand, 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
+		RM.Mixer            .addRecipeX(T, 16,   96, ST.array(OM.dust(MT.OREMATS.GraniticMineralSand, 7*U), OM.dust(MT.LiveRoot, 3*U), OM.dust(MT.Au, 3*U9)), OM.dust(MT.IronWood, U*6));
 		
 		// Dyes
 		for (FluidStack[] tDyes : new FluidStack[][] {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL}) {
@@ -564,7 +594,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		// Road Stripes
-		RM.Mixer.addRecipe2(F, 16, 64, OP.dust.mat(MT.Glass, 1), OP.dust.mat(MT.Asphalt, 1), FL.array(FL.Latex.make(L), DYE_FLUIDS_CHEMICAL[DYE_INDEX_White]), ZL_FLUIDSTACK, ST.make((Block)BlocksGT.RailRoad, 16, 0));
+		RM.Mixer.addRecipe2(F, 16, 64, OP.dust.mat(MT.Glass, 1), OP.dust.mat(MT.Asphalt, 1), FL.array(FL.Latex.make(L), DYE_FLUIDS_CHEMICAL[DYE_INDEX_White]), ZL_FLUIDSTACK, ST.make((Block)BlocksGT.RailRoad, 4, 0));
 		
 		// Other
 		RM.Lightning    .addRecipe2(T,  16, 2048, ST.tag(1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1));
@@ -700,6 +730,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Loom    .addRecipe2(T, 16,   16, ST.tag(10), plantGtFiber.mat(MT.Cu, 4), IL.Rope.get(1));
 		RM.Loom    .addRecipe2(T, 16,   16, ST.tag(10), ST.make(Items.string, 4, W), IL.Rope_Silk.get(1));
 		RM.Loom    .addRecipe2(T, 16,   16, ST.tag(10), wireFine.mat(MT.Plastic, 4), IL.Rope_Plastic.get(1));
+		RM.Loom    .addRecipe2(T, 16,   16, ST.tag(10), ST.make(Blocks.vine, 4, W), IL.Rope_Vine.get(1));
 
 
 		RM.CokeOven.addRecipe1(T,  0,  3600, gem                   .mat(MT.Coal    , 1), NF, flList.CoalTar.make(   500), gem       .mat(MT.CoalCoke, 1));

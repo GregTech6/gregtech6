@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,18 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.FL;
 import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.ChestGenHooks;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -61,36 +63,36 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 			aData.smooth(10, tY, 10);
 			aData.smooth(10, tY, 11);
 			aData.smooth(11, tY, 10);
-			
-			aData.set( 3, 1,  5, Blocks.iron_door, 1, 2);
-			aData.set( 3, 2,  5, Blocks.iron_door, 8, 2);
-			aData.set(12, 1,  5, Blocks.iron_door, 1, 2);
-			aData.set(12, 2,  5, Blocks.iron_door, 9, 2);
-			aData.set( 3, 1, 10, Blocks.iron_door, 3, 2);
-			aData.set( 3, 2, 10, Blocks.iron_door, 9, 2);
-			aData.set(12, 1, 10, Blocks.iron_door, 3, 2);
-			aData.set(12, 2, 10, Blocks.iron_door, 8, 2);
-			aData.set( 4, 2,  6, Blocks.stone_button, 3, 2);
-			aData.set(11, 2,  6, Blocks.stone_button, 3, 2);
-			aData.set( 4, 2,  9, Blocks.stone_button, 4, 2);
-			aData.set(11, 2,  9, Blocks.stone_button, 4, 2);
-			aData.set( 3, 1,  4, Blocks.stone_pressure_plate, 0, 2);
-			aData.set(12, 1,  4, Blocks.stone_pressure_plate, 0, 2);
-			aData.set( 3, 1, 11, Blocks.stone_pressure_plate, 0, 2);
-			aData.set(12, 1, 11, Blocks.stone_pressure_plate, 0, 2);
-			aData.set( 1, 1,  1, Blocks.bed,10, 2);
-			aData.set( 1, 1,  2, Blocks.bed, 2, 2);
-			aData.set( 1, 1, 13, Blocks.bed, 0, 2);
-			aData.set( 1, 1, 14, Blocks.bed, 8, 2);
-			aData.set(14, 1,  1, Blocks.bed,10, 2);
-			aData.set(14, 1,  2, Blocks.bed, 2, 2);
-			aData.set(14, 1, 13, Blocks.bed, 0, 2);
-			aData.set(14, 1, 14, Blocks.bed, 8, 2);
-			aData.set( 1, 1,  4, Blocks.crafting_table, 0, 2);
-			aData.set( 1, 1, 11, Blocks.crafting_table, 0, 2);
-			aData.set(14, 1,  4, Blocks.crafting_table, 0, 2);
-			aData.set(14, 1, 11, Blocks.crafting_table, 0, 2);
 		}
+		
+		aData.set( 3, 1,  5, Blocks.iron_door, 1, 2);
+		aData.set( 3, 2,  5, Blocks.iron_door, 8, 2);
+		aData.set(12, 1,  5, Blocks.iron_door, 1, 2);
+		aData.set(12, 2,  5, Blocks.iron_door, 9, 2);
+		aData.set( 3, 1, 10, Blocks.iron_door, 3, 2);
+		aData.set( 3, 2, 10, Blocks.iron_door, 9, 2);
+		aData.set(12, 1, 10, Blocks.iron_door, 3, 2);
+		aData.set(12, 2, 10, Blocks.iron_door, 8, 2);
+		aData.set( 4, 2,  6, Blocks.stone_button, 3, 2);
+		aData.set(11, 2,  6, Blocks.stone_button, 3, 2);
+		aData.set( 4, 2,  9, Blocks.stone_button, 4, 2);
+		aData.set(11, 2,  9, Blocks.stone_button, 4, 2);
+		aData.set( 3, 1,  4, Blocks.stone_pressure_plate, 0, 2);
+		aData.set(12, 1,  4, Blocks.stone_pressure_plate, 0, 2);
+		aData.set( 3, 1, 11, Blocks.stone_pressure_plate, 0, 2);
+		aData.set(12, 1, 11, Blocks.stone_pressure_plate, 0, 2);
+		aData.set( 1, 1,  1, Blocks.bed,10, 2);
+		aData.set( 1, 1,  2, Blocks.bed, 2, 2);
+		aData.set( 1, 1, 13, Blocks.bed, 0, 2);
+		aData.set( 1, 1, 14, Blocks.bed, 8, 2);
+		aData.set(14, 1,  1, Blocks.bed,10, 2);
+		aData.set(14, 1,  2, Blocks.bed, 2, 2);
+		aData.set(14, 1, 13, Blocks.bed, 0, 2);
+		aData.set(14, 1, 14, Blocks.bed, 8, 2);
+		aData.set( 1, 1,  4, Blocks.crafting_table, 0, 2);
+		aData.set( 1, 1, 11, Blocks.crafting_table, 0, 2);
+		aData.set(14, 1,  4, Blocks.crafting_table, 0, 2);
+		aData.set(14, 1, 11, Blocks.crafting_table, 0, 2);
 		
 		FL[] tDrinks = new FL[] {null, null, null, null, null, FL.Purple_Drink, FL.Grenade_Juice, FL.Vodka, FL.Leninade, FL.Mead, FL.BAWLS, FL.Whiskey_GlenMcKenner, FL.Wine_Grape_Purple};
 		
@@ -101,8 +103,7 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		aData.cup( 1, 2,  4, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
 		aData.cup( 1, 2, 11, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
 		aData.cup(14, 2,  4, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
-		aData.cup(14, 2, 11, UT.Code.select(null, tDrinks), aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
-		
+		aData.set(14, 2, 11, SIDE_UNKNOWN, 32074, ST.save(NBT_VALUE, OP.rockGt.mat(MT.STONES.SkyStone, 16+aData.next(49))), T, T);// You need 4 Blocks of Sky Stone to start an AE System, so these 16+ Rocks will guarantee that you have enough, even when AE Meteors are disabled, or if AE got added to the Modpack later.
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
 		
@@ -111,24 +112,25 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", (short)aData.next(28)));}
 		aData.set( 4, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
 		aData.set( 3, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		if (aData.next1in2()) aData.coins( 4, 2,  1);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", (short)aData.next(28)));}
 		aData.set( 4, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
 		aData.set( 3, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
-		if (aData.next1in2()) aData.coins( 4, 2, 14);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", (short)aData.next(28)));}
 		aData.set(11, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
 		aData.set(12, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		if (aData.next1in2()) aData.coins(11, 2,  1);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", (short)aData.next(28)));}
 		aData.set(11, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
 		aData.set(12, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
+		
+		if (aData.next1in2()) aData.coins( 4, 2,  1);
+		if (aData.next1in2()) aData.coins( 4, 2, 14);
+		if (aData.next1in2()) aData.coins(11, 2,  1);
 		if (aData.next1in2()) aData.coins(11, 2, 14);
 		
 		return T;

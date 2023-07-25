@@ -213,7 +213,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			if (checkStructure(F) && mEnergy >= 128L + mCPU_Logic * 64L * mCPU_Conversion) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
-				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
+				ItemStackSet<ItemStackContainer> tFilteredFor = ST.hashset();
 				
 				final List<LogisticsData>
 				  tStackImportsGeneric  = new ArrayListNoNulls<>()
@@ -556,7 +556,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (aImport.mItemFilter != null) {
 			if (aExport.mItemFilter != null) {
 				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, ST.hashset(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
@@ -567,7 +567,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, ST.hashset(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
@@ -580,7 +580,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		} else {
 			if (aExport.mItemFilter != null) {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, ST.hashset(aExport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;

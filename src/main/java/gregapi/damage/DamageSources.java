@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,9 @@
 package gregapi.damage;
 
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragonPart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.*;
 
@@ -99,7 +101,7 @@ public class DamageSources {
 		return new DamageSourceFat();
 	}
 	
-	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity, String aMessage) {
+	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, Entity aEntity, String aMessage) {
 		String aNamePlayer = aPlayer.getCommandSenderName(), aNameEntity = aEntity.getCommandSenderName();
 		if (UT.Code.stringInvalid(aNamePlayer) || UT.Code.stringInvalid(aEntity)) return new ChatComponentText("Death Message lacks names of involved Players");
 		aNamePlayer = aNamePlayer.trim(); aNameEntity = aNameEntity.trim();
@@ -113,8 +115,14 @@ public class DamageSources {
 		return getDeathMessage(aPlayer, aEntity, aNamePlayer, aNameEntity, aMessage);
 	}
 	
-	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity, String aNamePlayer, String aNameEntity, String aMessage) {
-		if (UT.Code.stringInvalid(aMessage)) return new EntityDamageSource(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer).func_151519_b(aEntity);
-		return new ChatComponentText(aMessage.replace("[KILLER]", EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE).replace("[VICTIM]", EnumChatFormatting.RED+aNameEntity+EnumChatFormatting.WHITE));
+	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, Entity aEntity, String aNamePlayer, String aNameEntity, String aMessage) {
+		if (UT.Code.stringValid(aMessage)) {
+			return new ChatComponentText(aMessage.replace("[KILLER]", EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE).replace("[VICTIM]", EnumChatFormatting.RED+aNameEntity+EnumChatFormatting.WHITE));
+		} else if (aEntity instanceof EntityLivingBase) {
+			return new EntityDamageSource(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer).func_151519_b((EntityLivingBase)aEntity);
+		} else if (aEntity instanceof EntityDragonPart) {
+			return new EntityDamageSource(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer).func_151519_b((EntityLivingBase)((EntityDragonPart)aEntity).entityDragonObj);
+		}
+		return new ChatComponentText(EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE+" has killed "+EnumChatFormatting.RED+aNameEntity+EnumChatFormatting.WHITE);
 	}
 }

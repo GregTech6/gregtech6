@@ -188,6 +188,13 @@ public class MT {
 	static OreDictMaterial stonedcmp    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return stonedcmp       (aID, aNameOreDict, SET_STONE       , aR, aG, aB, aA, aRandomData);}
 	static OreDictMaterial stonecent    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return stonecent       (aID, aNameOreDict, SET_STONE       , aR, aG, aB, aA, aRandomData);}
 	static OreDictMaterial stoneelec    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return stoneelec       (aID, aNameOreDict, SET_STONE       , aR, aG, aB, aA, aRandomData);}
+	static OreDictMaterial brickdcmp    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return stone           (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(DECOMPOSABLE);}
+	static OreDictMaterial brickcent    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return brickdcmp       (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
+	static OreDictMaterial brickelec    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return brickdcmp       (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(ELECTROLYSER);}
+	static OreDictMaterial brick        (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return stone           (aID, aNameOreDict, SET_BRICK       , aR, aG, aB, aA, aRandomData);}
+	static OreDictMaterial brickdcmp    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return brickdcmp       (aID, aNameOreDict, SET_BRICK       , aR, aG, aB, aA, aRandomData);}
+	static OreDictMaterial brickcent    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return brickcent       (aID, aNameOreDict, SET_BRICK       , aR, aG, aB, aA, aRandomData);}
+	static OreDictMaterial brickelec    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return brickelec       (aID, aNameOreDict, SET_BRICK       , aR, aG, aB, aA, aRandomData);}
 	static OreDictMaterial crystal      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return create          (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(G_GEM_ORES_TRANSPARENT, CRYSTAL).setPriorityPrefix(1);}
 	static OreDictMaterial crystaldcmp  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return crystal         (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(DECOMPOSABLE);}
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
@@ -205,7 +212,7 @@ public class MT {
 	static OreDictMaterial jasper       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,150, aRandomData).lens(aColor).put(ANY.Jasper    , MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 2, TC.METALLUM, 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 2*U, Fe, 1*U);}
 	static OreDictMaterial tigereye     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200, aRandomData).lens(aColor).put(ANY.TigerEye  , MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.TERRA   , 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 1*U);}
 	static OreDictMaterial aventurine   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor, Object... aRandomData)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200, aRandomData).lens(aColor).put(ANY.Aventurine, MD.RH              , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.POTENTIA, 1).qual(3, 7.0, 256, 2).uumMcfg( 0, SiO2, 1*U);}
-	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255, aRandomData)             .put(ANY.CaF2      , COMMON_ORE, MD.ReC , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .uumMcfg( 0, Ca, 1*U, F, 2*U).addSourceOf(F).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MORTAR, BRITTLE, CRYSTALLISABLE).setSmelting("Fluorite".equals(aNameOreDict) ? null : CaF2, U);}
+	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255, aRandomData)             .put(ANY.CaF2      , COMMON_ORE, MD.ReC , RANDOM_SMALL_GEM_ORE)         .aspects(TC.VITREUS, 2, TC.VENEMUM, 2                )                     .uumMcfg( 0, Ca, 1*U, F, 2*U).addSourceOf(F).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MORTAR, BRITTLE, CRYSTALLISABLE).setSmelting("Fluorite".equals(aNameOreDict) ? null : CaF2, U);}
 	static OreDictMaterial blaze        (int aID, String aNameOreDict                    , long aR, long aG, long aB             , Object... aRandomData)  {return create          (aID, aNameOreDict, SET_POWDER      , aR, aG, aB,255, aRandomData)             .put(ANY.Blaze     , COMMON_ORE                               )         .aspects(TC.PRAECANTIO, 2                            ).qual(1, 2.0,  16, 1).handle(ANY.Blaze).put(G_BLAZE, GLOWING, MAGICAL, BRITTLE, MORTAR);}
 	static OreDictMaterial clay         (int aID, String aNameOreDict         , long aR, long aG, long aB, OreDictMaterial aTrace, Object... aRandomData)  {return oredustelec     (aID, aNameOreDict, SET_ROUGH       , aR, aG, aB,255, aRandomData)             .put(ANY.Clay      , MORTAR, PLATES                           )         .aspects(TC.TERRA, 1                                 ).uumMcfg(18, aTrace, 1*U, Clay, 18*U).heat(2000).setSmelting(Ceramic, U);}
 	static OreDictMaterial mix          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dcmp            (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
@@ -412,7 +419,7 @@ public class MT {
 	static OreDictMaterial zinc           () {return transmetal  ( 300, "Zinc"           , "Zn"    ,  30,  35,   692,  1180,  7.134     , SET_COPPER  , 250, 240, 240, 255, UUM        , ZINC_GROUP                           , WASHING_PERSULFATE, WASHING_MERCURY, MOLTEN                                            ).aspects(TC.METALLUM, 2, TC.SANO, 1                     );}
 	static OreDictMaterial gallium        () {return posttrans   ( 310, "Gallium"        , "Ga"    ,  31,  39,   302,  2477,  5.907     , SET_COPPER  , 220, 220, 255     , UUM        , ICOSAGEN                             , BRITTLE                                                                                ).aspects(TC.METALLUM, 2, TC.ELECTRUM, 1                 );}
 	static OreDictMaterial germanium      () {return metalloid   ( 320, "Germanium"      , "Ge"    ,  32,  40,  1211,  3106,  5.323     , SET_COPPER  , 212, 212, 212, 255, UUM        , CRYSTALLOGEN   , G_INGOT_MACHINE_ORES, FURNACE, EXTRUDER_SIMPLE, MORTAR, "Osmium"                                             ).aspects(TC.METALLUM, 2, TC.ELECTRUM, 1                 );}
-	static OreDictMaterial arsenic        () {return metalloid   ( 330, "Arsenic"        , "As"    ,  33,  42,   887,  1090,  5.776     , SET_SHINY   , 103, 103,  86, 255, UUM        , PNICTOGEN                                                                                                                     ).aspects(TC.METALLUM, 1, TC.VENENUM, 2                  );}
+	static OreDictMaterial arsenic        () {return metalloid   ( 330, "Arsenic"        , "As"    ,  33,  42,   887,  1090,  5.776     , SET_SHINY   , 103, 103,  86, 255, UUM        , PNICTOGEN                                                                                                                     ).aspects(TC.METALLUM, 1, TC.VENEMUM, 2                  );}
 	static OreDictMaterial selenium       () {return polyatomic  ( 340, "Selenium"       , "Se"    ,  34,  45,   453,   958,  4.809     , SET_DULL    , 111,  20,  20, 255, UUM        , CHALCOGEN      , G_CRYSTAL_ORES      , BRITTLE                                                                                ).aspects(TC.VITREUS, 1, TC.SPIRITUS, 2                  );}
 	static OreDictMaterial bromine        () {return diatomic    ( 350, "Bromine"        , "Br"    ,  35,  45,   265,   332,  3.122     , SET_FLUID   ,  80,  10,  10, 255, UUM        , HALOGEN        , CONTAINERS_FLUID    , LIQUID, MELTING                                                                        ).aspects(TC.METALLUM, 1, TC.AQUA, 1, TC.TEMPESTAS, 1    );}
 	static OreDictMaterial krypton        () {return noblegas    ( 360, "Krypton"        , "Kr"    ,  36,  48,   115,   119,  0.003733  , SET_DIAMOND , 128, 255, 128     , UUM                         , CONTAINERS_GAS                                                                                               ).aspects(TC.AER, 3                                      );}
@@ -427,7 +434,7 @@ public class MT {
 	static OreDictMaterial rhodium        () {return platingroup ( 450, "Rhodium"        , "Rh"    ,  45,  58,  2237,  3968, 12.41      , SET_SHINY   , 144, 144, 144     , UUM        , COBALT_GROUP                                                                                                                  ).aspects_met_rad(3, 0                                   );}
 	static OreDictMaterial palladium      () {return platingroup ( 460, "Palladium"      , "Pd"    ,  46,  60,  1828,  3236, 12.02      , SET_SHINY   , 128, 128, 128     , UUM        , NICKEL_GROUP   , G_INGOT_MACHINE_ORES                                                                                         ).aspects_met_rad(3, 0                                   );}
 	static OreDictMaterial silver         () {return noblemetal  ( 470, "Silver"         , "Ag"    ,  47,  60,  1234,  2435, 10.501     , SET_SHINY   , 220, 220, 255     , UUM        , COPPER_GROUP   , G_INGOT_MACHINE_ORES, RAILS, WASHING_MERCURY, MORTAR, MOLTEN, VALUABLE, ENDER_DRAGON_PROOF                   ).aspects(TC.METALLUM, 2, TC.LUCRUM, 1                   );}
-	static OreDictMaterial cadmium        () {return transmetal  ( 480, "Cadmium"        , "Cd"    ,  48,  64,   594,  1040,  8.69      , SET_SHINY   ,  50,  50,  60, 255, UUM        , ZINC_GROUP                                                                                                                    ).aspects(TC.METALLUM, 1, TC.POTENTIA, 1, TC.VENENUM, 1  );}
+	static OreDictMaterial cadmium        () {return transmetal  ( 480, "Cadmium"        , "Cd"    ,  48,  64,   594,  1040,  8.69      , SET_SHINY   ,  50,  50,  60, 255, UUM        , ZINC_GROUP                                                                                                                    ).aspects(TC.METALLUM, 1, TC.POTENTIA, 1, TC.VENEMUM, 1  );}
 	static OreDictMaterial indium         () {return posttrans   ( 490, "Indium"         , "In"    ,  49,  65,   429,  2345,  7.31      , SET_SHINY   ,  64,   0, 128     , UUM        , ICOSAGEN                                                                                                                      ).aspects_met_rad(3, 0                                   );}
 	static OreDictMaterial tin            () {return posttrans   ( 500, "Tin"            , "Sn"    ,  50,  68,   505,  2875,  7.287     , SET_COPPER  , 220, 220, 220     , UUM        , CRYSTALLOGEN   , G_INGOT_MACHINE_ORES, SOLDERING_MATERIAL, MOLTEN                                                             ).aspects(TC.METALLUM, 2, TC.VITREUS, 1                  );}
 	static OreDictMaterial antimony       () {return metalloid   ( 510, "Antimony"       , "Sb"    ,  51,  70,   903,  1860,  6.685     , SET_COPPER  , 220, 220, 240, 255, UUM        , PNICTOGEN      , G_INGOT_MACHINE_ORES                                                                                         ).aspects(TC.METALLUM, 2, TC.AQUA, 1                     );}
@@ -460,7 +467,7 @@ public class MT {
 	static OreDictMaterial platinum       () {return platingroup ( 780, "Platinum"       , "Pt"    ,  78, 117,  2041,  4098, 21.46      , SET_SHINY   , 100, 180, 250     , UUM        , NICKEL_GROUP   , G_INGOT_MACHINE_ORES, WASHING_MERCURY, MOLTEN, VALUABLE, RAILS, MORTAR                                       ).aspects(TC.METALLUM, 2, TC.NEBRISUM, 1                 );}
 	static OreDictMaterial gold           () {return noblemetal  ( 790, "Gold"           , "Au"    ,  79, 117,  1337,  3129, 19.282     , SET_SHINY   , 255, 230,  80     , UUM        , COPPER_GROUP   , G_INGOT_MACHINE_ORES, WASHING_MERCURY, MOLTEN, VALUABLE, RAILS, MORTAR, WITHER_PROOF                         ).aspects(TC.METALLUM, 2, TC.LUCRUM, 2                   );}
 	static OreDictMaterial gold198        () {return noblemetal  ( 791, "Gold-198"       , "Au-198",  79, 119,  1337,  3129, 19.282     , SET_SHINY   , 255, 230,  80                  , COPPER_GROUP   , G_INGOT_ORES        , WASHING_MERCURY, MOLTEN, VALUABLE, WITHER_PROOF, "Gol198"                     , "Au198").aspects_met_rad(2, 1                                   );}
-	static OreDictMaterial mercury        () {return precmetal   ( 800, "Mercury"        , "Hg"    ,  80, 120,   234,   629, 13.5336    , SET_COPPER  , 230, 220, 220     , UUM        , ZINC_GROUP                           , "Quicksilver", "QuickSilver", PULVERIZING_CINNABAR                                     ).aspects(TC.METALLUM, 1, TC.AQUA, 1, TC.VENENUM, 1      );}
+	static OreDictMaterial mercury        () {return precmetal   ( 800, "Mercury"        , "Hg"    ,  80, 120,   234,   629, 13.5336    , SET_COPPER  , 230, 220, 220     , UUM        , ZINC_GROUP                           , "Quicksilver", "QuickSilver", PULVERIZING_CINNABAR                                     ).aspects(TC.METALLUM, 1, TC.AQUA, 1, TC.VENEMUM, 1      );}
 	static OreDictMaterial thallium       () {return posttrans   ( 810, "Thallium"       , "Tl"    ,  81, 123,   577,  1746, 11.85      , SET_METALLIC                    , UUM        , ICOSAGEN                                                                                                                      ).aspects_met_rad(3, 0                                   );}
 	static OreDictMaterial lead           () {return posttrans   ( 820, "Lead"           , "Pb"    ,  82, 125,   600,  2022, 11.342     , SET_DULL    ,  60,  40, 110     , UUM        , CRYSTALLOGEN   , G_INGOT_MACHINE_ORES, SOLDERING_MATERIAL, SOLDERING_MATERIAL_BAD, MOLTEN                                     ).aspects(TC.METALLUM, 2, TC.ORDO, 1                     );}
 	static OreDictMaterial bismuth        () {return posttrans   ( 830, "Bismuth"        , "Bi"    ,  83, 125,   544,  1837,  9.807     , SET_COPPER  , 100, 160, 160                  , PNICTOGEN      , G_INGOT_MACHINE_ORES, MAGNETIC_PASSIVE, MOLTEN                                                               ).aspects(TC.METALLUM, 2, TC.MAGNETO, 1                  );}
@@ -1133,7 +1140,7 @@ public class MT {
 	NaAlO2                  = dustdcmp      ( 8012, "Sodium Aluminate"      , SET_CUBE              , 230, 230, 250, 255)                                                                                                                                           .uumMcfg( 0, Na             , 1*U, Al               , 1*U, O                , 2*U)                                                                          .heat(1920),
 	NaF                     = dustelec      ( 8037, "Sodium Fluoride"       , SET_CUBE              ,  64, 200, 225, 255)                                                                                                                                           .uumMcfg( 0, Na             , 1*U, F                , 1*U)                                                                                                  .heat(1266),
 	Na3AlF6                 = oredustdcmp   ( 8009, "Cryolite"              , SET_DULL              , 200, 190, 190, 255, MELTING, MOLTEN, INGOTS, ACID)                                                                                                            .uumMcfg( 0, Na             , 3*U, Al               , 1*U, F                , 6*U)                                                                          .heat(1285).addSourceOf(Na,F), Cryolite = Na3AlF6,
-	SaltWater               = lqudelec      ( 9804, "Saltwater"                                     , 255,   0, 255, 255, LIQUID, UNRECYCLABLE, "SaltWater", "Brine")                                                                                               .uumMcfg( 0, H2O            , 3*U, NaCl             , 1*U)                                                                                                  .aspects(TC.AQUA, 2).heat(CS.C, CS.C+100).setDensity(1.0),
+	SaltWater               = lqudelec      ( 9804, "Saltwater"                                     , 255,   0, 255, 255, LIQUID, UNRECYCLABLE, "SaltWater", "Brine")                                                                                               .uumMcfg( 0, H2O            , 3*U, NaCl             , 1*U)                                                                                                  .aspects(TC.AQUA, 2).heat(CS.C, CS.C+90).setDensity(1.0),
 	
 	
 	KIO3                    = oredustelec   ( 8242, "Iodine Salt"           , SET_CUBE              , 240, 200, 240, 255, BRITTLE, MORTAR)                                                                                                                          .uumMcfg( 0, K              , 1*U, I                , 1*U, O                , 3*U)                                                                          .aspects(TC.TEMPESTAS, 1).addSourceOf(K).heat(300, 370), IodineSalt = KIO3,
@@ -1149,7 +1156,8 @@ public class MT {
 	K2CO3                   = dustdcmp      ( 8020, "Potassium Carbonate"   , SET_FINE              , 230, 225, 225, 255, MELTING, MOLTEN, INGOTS)                                                                                                                  .uumMcfg( 0, K              , 2*U, CO3              , 4*U)                                                                                                  .heat(1164),
 	KAlO2                   = dustdcmp      ( 8023, "Potassium Aluminate"   , SET_CUBE              , 250, 230, 230, 255)                                                                                                                                           .uumMcfg( 0, K              , 1*U, Al               , 1*U, O                , 2*U)                                                                          .heat(1920),
 	KF                      = dustelec      ( 8036, "Potassium Fluoride"    , SET_CUBE              , 200,  64, 225, 255)                                                                                                                                           .uumMcfg( 0, K              , 1*U, F                , 1*U)                                                                                                  .heat(1131),
-	K2TaF7                  = dustdcmp      ( 8038, "Potassium Heptafluorotantalate" , SET_FINE     , 164, 200, 225, 255)                                                                                                                                           .uumMcfg( 0, K              , 2*U, Ta               , 1*U, F                , 7*U)                                                                          ,
+	K2TaF7                  = dustdcmp      ( 8038, "Potassium Heptafluorotantalate", SET_FINE      , 164, 200, 225, 255)                                                                                                                                           .uumMcfg( 0, K              , 2*U, Ta               , 1*U, F                , 7*U)                                                                          ,
+	SaltedWater             = lqudelec      ( 9815, "Salted Water"                                  , 255,   0, 200, 255, LIQUID, UNRECYCLABLE, "Saltedwater")                                                                                                      .uumMcfg( 0, H2O            , 3*U, KCl              , 1*U)                                                                                                  .aspects(TC.AQUA, 2).heat(CS.C, CS.C+90).setDensity(1.0),
 	
 	
 	ChloroauricAcid         = lqudaciddcmp  ( 8400, "Chloroauric Acid"                              , 255, 200,  70, 255, LIQUID)                                                                                                                                   .uumMcfg( 0, Au             , 1*U, Cl               , 4*U, H                , 1*U)                                                                          .heat( 200,  400),
@@ -1248,11 +1256,11 @@ public class MT {
 	Peanutwood              = wood          ( 8227, "Peanut Wood"                                   , 120,  60,   0, 255, TICKS_PER_SMELT/ 2, FLAMMABLE, "Peanutwood")                                                                                              .uumMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1                   ).steal(Wood).heat(350, 450),
 	Marshmallow             = wood          ( 9715, "Marshmallow"           , SET_FINE              , 255, 220, 220, 255, FOOD)                                                                                                                                                                                                                                                                                                 .aspects(TC.FAMES, 1                   ).qual(1, 3.0, 24, 0),
 	LiveRoot                = dustcent      ( 8223, "LiveRoot"              , SET_WOOD              , 220, 200,   0, 255, TICKS_PER_SMELT   , WOOD, MORTAR, MAGICAL, MORTAR)                                                                                        .setMcfg( 3, Wood           , 3*U, Ma               , 1*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setLocal("Liveroot").setBurning(Ash, U9).heat(1178, 2465),
-	PetrifiedWood           = create        ( 8277, "Petrified Wood"        , SET_WOOD              , 110,  50,  35, 255, TICKS_PER_SMELT/ 4, G_STONE, STONE, WOOD, MORTAR, FLAMMABLE, MD.ERE)                                                                      .setMcfg( 0, Wood           , 1*U)                                                                                                                          .aspects(TC.ARBOR, 1, TC.TERRA      , 1).qual(1, 2.0, 24, 1).heat(350, 450),
+	PetrifiedWood           = create        ( 8277, "Petrified Wood"        , SET_WOOD              , 110,  50,  35, 255, TICKS_PER_SMELT/ 4, G_STONE, STONE, WOOD, MORTAR, FLAMMABLE)                                                                              .setMcfg( 0, Wood           , 1*U)                                                                                                                          .aspects(TC.ARBOR, 1, TC.TERRA      , 1).qual(1, 2.0, 24, 1).heat(350, 450),
 	
 	
 	Wax                     = wax           ( 8235, "Wax"                                           , 250, 250, 250, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.PERDITIO    , 1).heat( 350),
-	WaxBee                  = wax           ( 8236, "WaxBee"                                        , 250, 250, 100, 255, FOOD, "BeesWax", "Beeswax", "BeeWax", "Beewax")                                                                                                                                                                                                                                                       .aspects(TC.BESTIA      , 1).heat( 350).setLocal("Bees Wax"),
+	WaxBee                  = wax           ( 8236, "WaxBee"                                        , 250, 220, 110, 255, FOOD, "BeesWax", "Beeswax", "BeeWax", "Beewax")                                                                                                                                                                                                                                                       .aspects(TC.BESTIA      , 1).heat( 350).setLocal("Bees Wax"),
 	WaxRefractory           = wax           ( 8237, "WaxRefractory"                                 , 250,  50,  50, 255, UNBURNABLE, "RefractoryWax", "Refractorywax")                                                                                                                                                                                                                                                         .aspects(TC.GELUM       , 1).heat(2600).setLocal("Refractory Wax"),
 	WaxParaffin             = wax           ( 8238, "WaxParaffin"                                   , 210, 210, 250, 255, "ParaffinWax", "Paraffinwax")                                                                                                                                                                                                                                                                         .aspects(TC.FABRICO     , 1).heat( 400).setLocal("Paraffin Wax"),
 	WaxPlant                = wax           ( 8239, "WaxPlant"                                      , 210, 250, 210, 255, FOOD)                                                                                                                                                                                                                                                                                                 .aspects(TC.HERBA       , 1).heat( 350).setLocal("Plant Wax"),
@@ -1301,7 +1309,7 @@ public class MT {
 	Gunpowder               = dust          ( 8220, "Gunpowder"             , SET_DULL              , 128, 128, 128, 255, EXPLOSIVE, FLAMMABLE)                                                                                                                     .uumMcfg( 4, C              , 2*U, S                , 1*U, NaNO3            , 1*U)                                                                          .aspects(TC.PERDITIO, 3, TC.IGNIS, 4).setBurning(Ash, U9),
 	Dynamite                = dust          ( 8249, "Dynamite"              , SET_ROUGH             , 111, 131, 111, 255, EXPLOSIVE, FLAMMABLE)                                                                                                                     .uumMcfg( 0, Glyceryl       , 1*U, Wood             , 1*U)                                                                                                  .aspects(TC.PERDITIO, 4, TC.IGNIS, 3).setBurning(Ash, U9),
 	Asphalt                 = dust          ( 8266, "Asphalt"               , SET_ROUGH             ,  88,  88,  99, 255, FURNACE, MELTING, EXTRUDER, EXTRUDER_SIMPLE, MOLTEN)                                                                                                                                                                                                                                                  .aspects(TC.TERRA, 1, TC.ITER, 1),
-	Tallow                  = dust          ( 8244, "Tallow"                , SET_FOOD              , 220, 200, 100, 255, MELTING, MAGICAL, MOLTEN)                                                                                                                                                                                                                                                                             .aspects(TC.CORPUS, 2, TC.HUMANUS, 1, TC.PRAECANTIO, 1).heat(350).setLocal("Magic Tallow"),
+	Tallow                  = dust          ( 8244, "Tallow"                , SET_FOOD              , 220, 200, 100, 255, MELTING, MOLTEN)                                                                                                                                                                                                                                                                                      .aspects(TC.CORPUS, 2, TC.HUMANUS, 1, TC.PRAECANTIO, 1).heat(350).setLocal("Magic Tallow"),
 	Leather                 = create        ( 8241, "Leather"               , SET_ROUGH             , 141,  65,  37, 255, FLAMMABLE)                                                                                                                                                                                                                                                                                            .aspects(TC.PANNUS, 1, TC.TUTAMEN, 1).setBurning(Ash, U9).setSmelting(Ash, U9),
 	Indigo                  = dust          ( 8228, "Indigo"                , SET_LEAF              , 255, 128, 255, 255, FLAMMABLE)                                                                                                                                                                                                                                                                                            .aspects(TC.SENSUS, 1),
 	
@@ -1349,7 +1357,8 @@ public class MT {
 	
 	Sand                    = dust          ( 8100, "Sand"                  , SET_SAND              , 250, 250, 200, 255, FURNACE, UNRECYCLABLE)                                                                                                                                                                                                                                                                                .setSmelting(Glass, U).setForging(Glass, U),
 	RedSand                 = dust          ( 8104, "Red Sand"              , SET_SAND              , 170,  86,  35, 255, FURNACE)                                                                                                                                                                                                                                                                                              .setSmelting(Glass, U).setForging(Glass, U),
-	EndSand                 = dust          ( 8105, "End Sand"              , SET_SAND              , 250, 250, 250, 255, FURNACE)                                                                                                                                                                                                                                                                                              .setSmelting(Glass, U).setForging(Glass, U),
+	EndSandWhite            = dust          ( 8105, "White End Sand"        , SET_SAND              , 230, 250, 250, 255, FURNACE)                                                                                                                                                                                                                                                                                              .aspects(TC.ALIENIS, 1).setSmelting(Glass, U).setForging(Glass, U),
+	EndSandBlack            = dust          ( 8106, "Black End Sand"        , SET_SAND              ,  40,  60,  60, 255, FURNACE)                                                                                                                                                                                                                                                                                              .aspects(TC.ALIENIS, 1).setSmelting(Glass, U).setForging(Glass, U),
 	SoulSand                = oredust       ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.SPIRITUS, 1, TC.VINCULUM, 1),
 	SluiceSand              = dust          ( 8102, "Sluice Sand"           , SET_SAND              , 165, 165, 120, 255)                                                                                                                                                                                                                                                                                                       .aspects(TC.TERRA, 1),
 	PlatinumGroupSludge     = oredust       ( 8103, "Platinum Group Sludge" , SET_SAND              ,  50,  50,  80, 255)                                                                                                                                                                                                                                                                                                       .addSourceOf(Ru,Rh,Pd,Os,Ir,Pt).aspects(TC.LUCRUM, 2),
@@ -1438,7 +1447,7 @@ public class MT {
 	Amber                   = valgem        ( 8310, "Amber"                 , SET_RUBY              , 255, 180,   0, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Orange     )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 1, TC.VINCULUM                 , 2).qual(3,  4.0,   256,  3).heat(473),
 	AmberDominican          = valgem        ( 8422, "Dominican Amber"       , SET_RUBY              ,  80,  80, 240, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Blue       )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 1, TC.VINCULUM, 2, TC.SENSUS   , 2).qual(3,  5.0,   384,  3).heat(473),
 	Craponite               = valgem        ( 8322, "Craponite"             , SET_FLINT             , 255, 170, 185, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Magenta    )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 3, TC.LUCRUM, 3, TC.STRONTIO   , 2).qual(3,  7.0,   256,  2),
-	Jade                    = valgem        ( 8321, "Jade"                  , SET_LAPIS             , 100, 255, 125, 255, RANDOM_SMALL_GEM_ORE, MORTAR, CRYSTALLISABLE, MD.ERE).lens(DYE_INDEX_Green      )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 3, TC.LUCRUM                   , 6).qual(3,  8.0,   512,  2),
+	Jade                    = valgem        ( 8321, "Jade"                  , SET_LAPIS             , 100, 255, 125, 255, RANDOM_SMALL_GEM_ORE, MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Green      )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 3, TC.LUCRUM                   , 6).qual(3,  8.0,   512,  2),
 	
 	
 	/*
@@ -1663,7 +1672,7 @@ public class MT {
 	Orichalcum              = metalore      ( 8769, "Orichalcum"                                    ,  84, 122,  56     )                                                                                                                                           .steal(Ti)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.TERRA                               , 1).qual(3,  4.5, 3456, 3).heat(2897),
 	Carmot                  = metalore      ( 8770, "Carmot"                                        , 217, 205, 140     )                                                                                                                                           .steal(Zn)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.NEBRISUM                            , 1).qual(3, 16.0,  128, 1).heat(1178),
 	Sanguinite              = metalore      ( 8771, "Sanguinite"                                    , 185,   0,   0     )                                                                                                                                           .steal(Hg)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.SANO                                , 1).qual(3,  3.0, 4480, 4).heat(3104),
-	Vyroxeres               = metalore      ( 8772, "Vyroxeres"                                     ,  85, 224,   1     )                                                                                                                                           .steal(Cu)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.VENENUM                             , 1).qual(3,  9.0,  768, 3).heat(2348),
+	Vyroxeres               = metalore      ( 8772, "Vyroxeres"                                     ,  85, 224,   1     )                                                                                                                                           .steal(Cu)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.VENEMUM                             , 1).qual(3,  9.0,  768, 3).heat(2348),
 	Eximite                 = metalore      ( 8773, "Eximite"                                       , 124,  90, 150     )                                                                                                                                           .steal(Mn)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.ITER                                , 1).qual(3,  5.0, 2560, 3).heat(2758),
 	Prometheum              = metalore      ( 8774, "Prometheum"                                    ,  90, 129,  86     )                                                                                                                                           .steal(Co)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.POTENTIA                            , 1).qual(3,  8.0,  512, 1).heat(1067),
 	Ignatius                = metalore      ( 8775, "Ignatius"                                      , 255, 169,  83     )                                                                                                                                           .steal(Sn)                                                                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS                               , 1).qual(3, 12.0,  512, 2).heat(1978),
@@ -1697,10 +1706,12 @@ public class MT {
 	AluminiumAlloy          = clloymachine  ( 8622, "Aluminium Alloy"                               , 200, 200, 180     , CENTRIFUGE)                                                                                                                               .uumMcfg(45, Al             ,45*U, Si               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 1).qual(Al),
 	
 	
-	Bronze                  = clloymachine  ( 8610, "Bronze"                                        , 210, 130,  60     , RAILS, FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN).qual(3, 6.0,  448, 2)                                                                    .uumAloy( 0, Cu             , 3*U, Sn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1).heat(Cu.mMeltingPoint, Cu.mBoilingPoint),
+	Bronze                  = clloymachine  ( 8610, "Bronze"                                        , 210, 130,  60     , RAILS, FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN).qual(3, 5.5,  448, 2)                                                                    .uumAloy( 0, Cu             , 3*U, Sn               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1).heat(Cu.mMeltingPoint, Cu.mBoilingPoint),
 	BlackBronze             = clloymachine  ( 8611, "Black Bronze"                                  , 100,  50, 125     , MORTAR, MOLTEN).qual(3, 12.0,  512, 2)                                                                                                    .uumAloy( 0, Cu             , 3*U, Electrum         , 2*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1),
 	BismuthBronze           = clloymachine  ( 8612, "Bismuth Bronze"                                , 100, 125, 125     , FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN).qual(3,  8.0,  512, 2)                                                                          .setAloy( 0, Bi             , 1*U, Brass            , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1),
 	Hepatizon               = alloymachine  ( 8613, "Hepatizon"                                     , 117,  94, 117     , MORTAR, MOLTEN).qual(3, 12.0,  256, 2)                                                                                                    .uumAloy( 0, Au             , 1*U, Bronze           , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.INSTRUMENTUM, 1),
+	ArsenicCopper           = clloymachine  ( 8614, "Arsenic Copper"                                , 210, 160,  60     , FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN).qual(3, 5.5,  448, 2)                                                                           .uumAloy( 0, Cu             , 3*U, As               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.VENEMUM, 1).heat(Cu.mMeltingPoint, Cu.mBoilingPoint),
+	ArsenicBronze           = clloymachine  ( 8615, "Arsenic Bronze"                                , 200, 200, 222     , FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN).qual(3, 6.0,  480, 2)                                                                           .uumAloy( 0, As             , 1*U, Bronze           , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.VENEMUM, 1).heat(Cu.mMeltingPoint, Cu.mBoilingPoint),
 	
 	
 	Steel                   = alloymachore  ( 8630, "Steel"                                         , 130, 130, 130     , MOLTEN, RAILS, MORTAR, MAGNETIC_PASSIVE).qual(3,  6.0,  512, 2)                                                                           .uumMcfg( 0, WroughtIron    , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.ORDO, 1).heat(2046, Fe.mBoilingPoint, Fe.mPlasmaPoint).setRGBaLiquid(255, 20, 10, 255),
@@ -1752,10 +1763,15 @@ public class MT {
 	BatteryAlloy            = alloy         ( 8668, "Battery Alloy"         , SET_DULL              , 156, 124, 160     , MORTAR, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                                 .uumAloy( 0, Pb             , 4*U, Sb               , 1*U)                                                                                                  ,
 	SolderingAlloy          = clloy         ( 8669, "Soldering Alloy"                               , 220, 220, 230     , MORTAR, MOLTEN, BRITTLE, SOLDERING_MATERIAL, SOLDERING_MATERIAL_GOOD, WIRES)                                                              .uumAloy( 0, Sn             , 9*U, Sb               , 1*U)                                                                                                  ,
 	IronWood                = alloymachine  ( 8672, "Ironwood"              , SET_WOOD              , 150, 140, 110     , MAGICAL, WOOD, FURNACE, EXTRUDER_SIMPLE, MORTAR, MAGNETIC_PASSIVE, MOLTEN, "IronWood").qual(2, 6.5, 512, 2)                               .setAloy(18, WroughtIron    , 8*U, LiveRoot         , 9*U, Angmallen        , 2*U)                                                                          .aspects(TC.METALLUM, 2, TC.ARBOR, 1, TC.PRAECANTIO, 1),
-	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2, 8.0, 131, 3).setSmelting(Steel, U4)                                          .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
-	Knightmetal             = alloymachine  ( 8674, "Knightmetal"                                   , 210, 240, 200     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, MORTAR, "KnightMetal").qual(3, 8.0, 512, 3)                                                .setMcfg( 2, Steel          , 2*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TELUM, 1, TC.PRAECANTIO, 1).heat(Steel.mMeltingPoint+100, Steel.mBoilingPoint+100).visDefault(),
-	FierySteel              = alloymachine  ( 8675, "Fiery Steel"           , SET_FIERY             ,  64,   0,   0     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, UNBURNABLE, BURNING, GLOWING, "Fiery").qual(3, 9.0, 1024, 4)                               .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500).visDefault(),
-	Thaumium                = alloymachore  ( 8679, "Thaumium"                                      , 150, 100, 200     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   256,  3)                                                                   .setMcfg( 1, Fe             , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 1).heat(Fe.mMeltingPoint+500, Fe.mBoilingPoint+1000),
+	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2, 8.0, 144, 3).setSmelting(Steel, U4)                                          .setMcfg( 1, Steel             , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
+	Knightmetal             = alloymachine  ( 8674, "Knightmetal"                                   , 210, 240, 200     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, MORTAR, "KnightMetal").qual(3, 8.0, 512, 3)                                                .setMcfg( 2, Steel             , 2*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TELUM, 1, TC.PRAECANTIO, 1).heat(Steel.mMeltingPoint+100, Steel.mBoilingPoint+100),
+	FierySteel              = alloymachine  ( 8675, "Fiery Steel"           , SET_FIERY             ,  64,   0,   0     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING, "Fiery").qual(3, 9.0, 1024, 4)                 .setMcfg( 1, Steel             , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500),
+	MeteoflameSteel         = alloymachine  ( 8693, "Meteoflame Steel"      , SET_FIERY             , 130, 120, 100     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 12.0, 1280, 4)                         .setMcfg( 1, MeteoricSteel     , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1).heat(MeteoricSteel.mBoilingPoint-200, MeteoricSteel.mBoilingPoint+500),
+	MeteoflameBlackSteel    = alloymachine  ( 8694, "Meteoflame Black Steel", SET_FIERY             ,  85,  85,  85     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 12.0, 1280, 4)                         .setMcfg( 1, MeteoricBlackSteel, 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1).heat(MeteoricBlackSteel.mBoilingPoint-200, MeteoricBlackSteel.mBoilingPoint+500),
+	MeteoflameBlueSteel     = alloymachine  ( 8695, "Meteoflame Blue Steel" , SET_FIERY             ,  95,  95, 135     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 13.0, 1408, 4)                         .setMcfg( 1, MeteoricBlueSteel , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1).heat(MeteoricBlueSteel .mBoilingPoint-200, MeteoricBlueSteel .mBoilingPoint+500),
+	MeteoflameRedSteel      = alloymachine  ( 8696, "Meteoflame Red Steel"  , SET_FIERY             , 135,  95,  95     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 14.0, 1536, 4)                         .setMcfg( 1, MeteoricRedSteel  , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1).heat(MeteoricRedSteel  .mBoilingPoint-200, MeteoricRedSteel  .mBoilingPoint+500),
+	FlamascusSteel          = alloymachine  ( 8697, "Flamascus Steel"       , SET_FIERY             , 110, 110, 110     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 12.0, 1280, 4)                         .setMcfg( 1, DamascusSteel     , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1, TC.TELUM, 1).heat(DamascusSteel.mBoilingPoint-200, DamascusSteel.mBoilingPoint+500),
+	Thaumium                = alloymachore  ( 8679, "Thaumium"                                      , 150, 100, 200     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   256,  3)                                                                   .setMcfg( 1, Fe                , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 1).heat(Fe.mMeltingPoint+500, Fe.mBoilingPoint+1000),
 	DarkThaumium            = alloymachine  ( 8680, "Dark Thaumium"                                 , 100,  75,  75     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   512,  3)                                                                                                                                                                                                                               ,
 	VoidMetal               = alloymachine  ( 8681, "Void Metal"                                    ,  30,  10,  30     , MAGICAL, CENTRIFUGE, MOLTEN, "Void").qual(3, 12.0,    2048,  4)                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 7, TC.TENEBRAE, 8, TC.VACUOS, 8, TC.ALIENIS, 2, TC.HERBA, 1).heat(3000, 5000),
 	Osmiridium              = alloymachine  ( 8682, "Osmiridium"                                    , 100, 100, 255     , VALUABLE, MOLTEN).qual(3, 11.0, 3840, 4)                                                                                                  .uumAloy( 0, Os             , 1*U, Ir               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.MACHINA, 2, TC.NEBRISUM, 1),
@@ -1784,7 +1800,7 @@ public class MT {
 	Cyanite                 = setalore      ( 8717, "Cyanite"                                       ,  50, 110, 150     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 1),
 	Ludicrite               = setalore      ( 8723, "Ludicrite"                                     , 180, 120, 150     )                                                                                                                                                                                                                                                                                                       .aspects(TC.RADIO, 5),
 	Yellorite               = oredustelec   ( 8724, "Yellorite"             , SET_METALLIC          , 150, 140,  40, 255, BLACKLISTED_SMELTER).setSmelting(Yellorium,U3)                                                                                            .setMcfg( 1, Yellorium      , 1*U, O                , 2*U)                                                                                                  .aspects(TC.RADIO, 1),
-	Bedrock_HSLA_Alloy      = alloy         ( 8718, "Bedrock-HSLA-Alloy"    , SET_STONE             ,  64,  64,  64     , CENTRIFUGE, MAGNETIC_PASSIVE)                                                                                                             .setMcfg( 1, Bedrock        , 4*U, HSLA             , 1*U)                                                                                                  .aspects(TC.TERRA, 5).qual(3, 10.0, 2560, 5).heat(4000),
+	Bedrock_HSLA_Alloy      = alloy         ( 8718, "Bedrock-HSLA-Alloy"    , SET_BRICK             ,  64,  64,  64     , CENTRIFUGE, MAGNETIC_PASSIVE)                                                                                                             .setMcfg( 1, Bedrock        , 4*U, HSLA             , 1*U)                                                                                                  .aspects(TC.TERRA, 5).qual(3, 10.0, 2560, 5).heat(4000),
 	
 	ObsidianSteel           = alloy         ( 8731, "Obsidian Steel"                                ,  60,  60,  60     , MAGNETIC_PASSIVE, RAILS, UNBURNABLE, "DarkSteel", MD.TG).qual(Steel)                                                                      .setAloy( 1, Steel          , 1*U, Obsidian         , 9*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.TENEBRAE, 1),
 	PulsatingIron           = alloy         ( 8725, "Pulsating Iron"                                , 100, 160, 110     , MAGNETIC_PASSIVE, "PhasedIron").qual(WroughtIron)                                                                                         .setAloy( 1, WroughtIron    , 1*U, EnderPearl       , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ALIENIS, 1),
@@ -1794,7 +1810,7 @@ public class MT {
 	ElectrumFlux            = slloy         ( 8711, "Electrum Flux"                                 , 255, 255, 120     ).qual(3, 14.0,  64, 2)                                                                                                                     .uumAloy( 1, Electrum       , 1*U, Redstone         , 2*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.PERMUTATIO, 2),
 	ElectricalSteel         = alloy         ( 8730, "Electrical Steel"                              , 140, 140, 140     , MAGNETIC_PASSIVE).qual(Steel)                                                                                                             .uumAloy( 1, Steel          , 1*U, Si               , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ELECTRUM, 1),
 	Soularium               = alloy         ( 8732, "Soularium"             , SET_DULL              ,  90,  70,  50     ).qual(3, 15.0, 128, 2)                                                                                                                     .setAloy( 1, SoulSand       , 9*U, Au               , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.SPIRITUS, 1),
-	CrudeSteel              = alloy         ( 8806, "Clay Compound"         , SET_STONE             , 132, 127, 123     , "CrudeSteel")                                                                                                                             .setAloy( 1, Stone          , 2*U, Ceramic          , 1*U)                                                                                                  .aspects(TC.TERRA, 4),
+	CrudeSteel              = alloy         ( 8806, "Clay Compound"         , SET_BRICK             , 132, 127, 123     , "CrudeSteel")                                                                                                                             .setAloy( 1, Stone          , 2*U, Ceramic          , 1*U)                                                                                                  .aspects(TC.TERRA, 4),
 	EndSteel                = alloy         ( 8807, "End Steel"                                     , 164, 157, 116     )                                                                                                                                           .setAloy( 1, Endstone       , 1*U, ObsidianSteel    , 1*U, Obsidian         , 9*U)                                                                          .aspects(TC.METALLUM, 2, TC.ALIENIS, 1),
 	EnergeticSilver         = alloy         ( 8808, "Energetic Silver"                              ,  93, 126, 151     )                                                                                                                                           .uumAloy( 1, Ag             , 1*U, Redstone         , 1*U, Glowstone        , 1*U)                                                                          .aspects(TC.METALLUM, 2, TC.POTENTIA, 1),
 	MelodicAlloy            = alloy         ( 8809, "Melodic Alloy"                                 , 138,  92, 138     )                                                                                                                                           .setAloy( 1, EndSteel       , 1*U, EnderEye         , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.SENSUS, 1),
@@ -2114,7 +2130,8 @@ public class MT {
 			
 			
 			Sugilite                .put(MD.EnLi, COMMON_ORE);
-			EndSand                 .put(MD.EnLi);
+			EndSandWhite            .put(MD.EnLi);
+			EndSandBlack            .put(MD.EnLi);
 			
 			
 			Zn                      .put(MD.GT, COMMON_ORE);
@@ -2164,10 +2181,11 @@ public class MT {
 			Master                  .put(MD.GT);
 			
 			
-			Vb                      .put(MD.GT);
-			VibraniumSilver         .put(MD.GT);
-			Ad                      .put(MD.GT); // don't COMMON_ORE this!
-			Vibramantium            .put(MD.GT);
+			Vb                      .put(MD.GT, BETWEENLANDS, MAZEBREAKER);
+			VibraniumSilver         .put(MD.GT, BETWEENLANDS, MAZEBREAKER);
+			Ad                      .put(MD.GT, BETWEENLANDS, MAZEBREAKER); // don't COMMON_ORE this!
+			Vibramantium            .put(MD.GT, BETWEENLANDS, MAZEBREAKER);
+			VibraniumSteel          .put(MD.GT, BETWEENLANDS, MAZEBREAKER);
 			Dn                      .put(MD.GT, COMMON_ORE);
 			DuraniumAlloy           .put(MD.GT);
 			Ke                      .put(MD.GT, COMMON_ORE);
@@ -2260,14 +2278,30 @@ public class MT {
 			BlackSteel              .put(MD.TFC);
 			RedSteel                .put(MD.TFC);
 			BlueSteel               .put(MD.TFC);
+			MeteoricBlackSteel      .put(MD.TFC);
+			MeteoricBlueSteel       .put(MD.TFC);
+			MeteoricRedSteel        .put(MD.TFC);
 			
 			
-			STONES.Deadrock         .put(MD.TF);
+			STONES.Mazestone        .put(MD.TF).visDefault();
+			STONES.Castlerock       .put(MD.TF).visDefault();
+			STONES.Deadrock         .put(MD.TF).visDefault();
 			LiveRoot                .put(MD.TF);
 			IronWood                .put(MD.TF);
 			Steeleaf                .put(MD.TF);
-			Knightmetal             .put(MD.TF, MAZEBREAKER);
-			FierySteel              .put(MD.TF, MAZEBREAKER);
+			Knightmetal             .put(MD.TF, MAZEBREAKER).visDefault();
+			FierySteel              .put(MD.TF, MAZEBREAKER).visDefault();
+			MeteoflameSteel         .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameBlackSteel    .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameBlueSteel     .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			MeteoflameRedSteel      .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			FlamascusSteel          .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
+			
+			
+			STONES.Umber            .put(MD.ERE).visDefault();
+			STONES.Gneiss           .put(MD.ERE);
+			PetrifiedWood           .put(MD.ERE);
+			Jade                    .put(MD.ERE);
 			
 			
 			K                       .put(MD.RC);
@@ -2302,6 +2336,7 @@ public class MT {
 			Cryotheum               .put(MD.TE);
 			
 			
+			STONES.SkyStone         .put(MD.AE).visDefault();
 			Si                      .put(MD.AE); // don't COMMON_ORE this!
 			CertusQuartz            .put(MD.AE, COMMON_ORE);
 			ChargedCertusQuartz     .put(MD.AE, COMMON_ORE);
@@ -2512,6 +2547,8 @@ public class MT {
 			BlueTopaz               .put(MD.ARS, COMMON_ORE);
 			
 			
+			MeteoricIron            .put(MD.GC);
+			MeteoricSteel           .put(MD.GC);
 			Desh                    .put(MD.GC, COMMON_ORE);
 			Cheese                  .put(MD.GC, COMMON_ORE);
 			STONES.MoonTurf         .put(MD.GC).visDefault();
@@ -2679,49 +2716,49 @@ public class MT {
 			Forcillium              .put(COMMON_ORE).visDefault(); // And this was ANOTHER Force Field Mod.
 			
 			
-			Plastic                 .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
-			Bakelite                .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
-			Teflon                  .addEnchantmentForWeapons(Enchantment.knockback, 1).addEnchantmentForAmmo(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
-			PVC                     .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
-			Polycarbonate           .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);          
-			Rubber                  .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
-			Kalendrite              .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
-			InfusedAir              .addEnchantmentForWeapons(Enchantment.knockback, 2).addEnchantmentForAmmo(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
-			Blitz                   .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			Gravitite               .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			DarkIron                .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			Tartarite               .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			DarkMatter              .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			RedMeteor               .addEnchantmentForWeapons(Enchantment.knockback, 3).addEnchantmentForAmmo(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
-			Infinity                .addEnchantmentForWeapons(Enchantment.knockback,10).addEnchantmentForAmmo(Enchantment.knockback,10).addEnchantmentForRanged(Enchantment.punch,10);
+			Plastic                 .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			Bakelite                .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			Teflon                  .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
+			PVC                     .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			Polycarbonate           .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);          
+			Rubber                  .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			Kalendrite              .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			InfusedAir              .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			Blitz                   .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			Gravitite               .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			DarkIron                .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			Tartarite               .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			DarkMatter              .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			RedMeteor               .addEnchantmentForDamage(Enchantment.knockback, 3).addEnchantmentForRanged(Enchantment.punch, 3);
+			Infinity                .addEnchantmentForDamage(Enchantment.knockback,10).addEnchantmentForRanged(Enchantment.punch,10);
 			
-			Skyroot                 .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1);
-			IronWood                .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1);
-			Steeleaf                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			Efrine                  .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			Soularium               .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			Midasium                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			Mithril                 .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			ElvenQuartz             .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Vinteum                 .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1);
-			Thaumium                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			DarkThaumium            .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2);
-			VoidMetal               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			InfusedWater            .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Eximite                 .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			DarkMatter              .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			RedMatter               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Jade                    .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Sugilite                .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			EnderAmethyst           .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Continuum               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3);
-			Basalz                  .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4);
-			Ma                      .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4);
-			Haderoth                .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4);
-			VibraniumSteel          .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5);
-			Vibramantium            .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5);
-			Vb                      .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5);
-			Infinity                .addEnchantmentForTools(Enchantment.fortune,10).addEnchantmentForWeapons(Enchantment.looting,10).addEnchantmentForAmmo(Enchantment.looting,20).addEnchantmentForRanged(Enchantment.infinity,10);
+			Skyroot                 .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1).addEnchantmentForFishing(Enchantment.field_151370_z, 1);
+			IronWood                .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1).addEnchantmentForFishing(Enchantment.field_151370_z, 1);
+			Steeleaf                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			Efrine                  .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			Soularium               .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			Midasium                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			Mithril                 .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			ElvenQuartz             .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Vinteum                 .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1).addEnchantmentForFishing(Enchantment.field_151370_z, 1);
+			Thaumium                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			DarkThaumium            .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			VoidMetal               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			InfusedWater            .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Eximite                 .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			DarkMatter              .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			RedMatter               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Jade                    .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Sugilite                .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			EnderAmethyst           .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Continuum               .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 6).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
+			Basalz                  .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4).addEnchantmentForFishing(Enchantment.field_151370_z, 4);
+			Ma                      .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4).addEnchantmentForFishing(Enchantment.field_151370_z, 4);
+			Haderoth                .addEnchantmentForTools(Enchantment.fortune, 4).addEnchantmentForWeapons(Enchantment.looting, 4).addEnchantmentForAmmo(Enchantment.looting, 8).addEnchantmentForRanged(Enchantment.infinity, 4).addEnchantmentForFishing(Enchantment.field_151370_z, 4);
+			VibraniumSteel          .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5).addEnchantmentForFishing(Enchantment.field_151370_z, 5);
+			Vibramantium            .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5).addEnchantmentForFishing(Enchantment.field_151370_z, 5);
+			Vb                      .addEnchantmentForTools(Enchantment.fortune, 5).addEnchantmentForWeapons(Enchantment.looting, 5).addEnchantmentForAmmo(Enchantment.looting,10).addEnchantmentForRanged(Enchantment.infinity, 5).addEnchantmentForFishing(Enchantment.field_151370_z, 5);
+			Infinity                .addEnchantmentForTools(Enchantment.fortune,10).addEnchantmentForWeapons(Enchantment.looting,10).addEnchantmentForAmmo(Enchantment.looting,20).addEnchantmentForRanged(Enchantment.infinity,10).addEnchantmentForFishing(Enchantment.field_151370_z,10);
 			
 			Ad                      .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Adamantine              .addEnchantmentForTools(Enchantment.silkTouch, 1);
@@ -2746,124 +2783,138 @@ public class MT {
 			Endium                  .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 3);;
 			SpectreIron             .addEnchantmentForTools(Enchantment.silkTouch, 1).addEnchantmentForRanged(Enchantment.infinity, 3);;
 			
-			Flint                   .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForAmmo(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
-			Netherrack              .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForAmmo(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
-			Obsidian                .addEnchantmentForWeapons(Enchantment.fireAspect, 1).addEnchantmentForAmmo(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
-			STONES.Gneiss           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			NetherBrick             .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			PO4                     .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			Phosphorite             .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			Phosphorus              .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			PhosphorusBlue          .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			PhosphorusRed           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			PhosphorusWhite         .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			ObsidianSteel           .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			Ignatius                .addEnchantmentForWeapons(Enchantment.fireAspect, 2).addEnchantmentForAmmo(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
-			Prometheum              .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Octine                  .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Kreknorite              .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Firestone               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			FierySteel              .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Pyrotheum               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Blaze                   .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			InfusedFire             .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Vulcanite               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Amordrine               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			MuspelheimPower         .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			RedMatter               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Netherite               .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			NetherizedDiamond       .addEnchantmentForWeapons(Enchantment.fireAspect, 3).addEnchantmentForAmmo(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
-			Infinity                .addEnchantmentForWeapons(Enchantment.fireAspect,10).addEnchantmentForAmmo(Enchantment.fireAspect,10).addEnchantmentForRanged(Enchantment.flame,10).addEnchantmentForTools(Enchantment.fireAspect,10);
+			Flint                   .addEnchantmentForDamage(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
+			Netherrack              .addEnchantmentForDamage(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
+			Obsidian                .addEnchantmentForDamage(Enchantment.fireAspect, 1).addEnchantmentForRanged(Enchantment.flame, 1);
+			STONES.Gneiss           .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			NetherBrick             .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PO4                     .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Phosphorite             .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Phosphorus              .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusBlue          .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusRed           .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			PhosphorusWhite         .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			ObsidianSteel           .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Ignatius                .addEnchantmentForDamage(Enchantment.fireAspect, 2).addEnchantmentForRanged(Enchantment.flame, 2);
+			Prometheum              .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Octine                  .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Kreknorite              .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Firestone               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			FierySteel              .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MeteoflameSteel         .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MeteoflameBlackSteel    .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MeteoflameBlueSteel     .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MeteoflameRedSteel      .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			FlamascusSteel          .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Pyrotheum               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Blaze                   .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			InfusedFire             .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Vulcanite               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Amordrine               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MuspelheimPower         .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			RedMatter               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Netherite               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			NetherizedDiamond       .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Infinity                .addEnchantmentForDamage(Enchantment.fireAspect,10).addEnchantmentForRanged(Enchantment.flame,10).addEnchantmentForTools(Enchantment.fireAspect,10);
 			
-			Hepatizon               .addEnchantmentForWeapons(Enchantment.smite, 2).addEnchantmentForAmmo(Enchantment.smite, 2);
-			BlackBronze             .addEnchantmentForWeapons(Enchantment.smite, 2).addEnchantmentForAmmo(Enchantment.smite, 2);
-			RedSteel                .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			MeteoricRedSteel        .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			Au                      .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			TitaniumGold            .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			Electrum                .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			GildedIron              .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			STONES.Holystone        .addEnchantmentForWeapons(Enchantment.smite, 3).addEnchantmentForAmmo(Enchantment.smite, 3);
-			RoseGold                .addEnchantmentForWeapons(Enchantment.smite, 4).addEnchantmentForAmmo(Enchantment.smite, 4);
-			EnergeticAlloy          .addEnchantmentForWeapons(Enchantment.smite, 4).addEnchantmentForAmmo(Enchantment.smite, 4);
-			SpectreIron             .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			VibrantAlloy            .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			Mauftrium               .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			Carmot                  .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			Pt                      .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			Mithril                 .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			InfusedVis              .addEnchantmentForWeapons(Enchantment.smite, 5).addEnchantmentForAmmo(Enchantment.smite, 5);
-			Infinity                .addEnchantmentForWeapons(Enchantment.smite,10).addEnchantmentForAmmo(Enchantment.smite,10);
+			Hepatizon               .addEnchantmentForDamage(Enchantment.smite, 2);
+			BlackBronze             .addEnchantmentForDamage(Enchantment.smite, 2);
+			RedSteel                .addEnchantmentForDamage(Enchantment.smite, 3);
+			MeteoricRedSteel        .addEnchantmentForDamage(Enchantment.smite, 3);
+			MeteoflameRedSteel      .addEnchantmentForDamage(Enchantment.smite, 3);
+			Au                      .addEnchantmentForDamage(Enchantment.smite, 3);
+			TitaniumGold            .addEnchantmentForDamage(Enchantment.smite, 3);
+			Electrum                .addEnchantmentForDamage(Enchantment.smite, 3);
+			GildedIron              .addEnchantmentForDamage(Enchantment.smite, 3);
+			STONES.Holystone        .addEnchantmentForDamage(Enchantment.smite, 3);
+			RoseGold                .addEnchantmentForDamage(Enchantment.smite, 4);
+			EnergeticAlloy          .addEnchantmentForDamage(Enchantment.smite, 4);
+			SpectreIron             .addEnchantmentForDamage(Enchantment.smite, 5);
+			VibrantAlloy            .addEnchantmentForDamage(Enchantment.smite, 5);
+			Mauftrium               .addEnchantmentForDamage(Enchantment.smite, 5);
+			Carmot                  .addEnchantmentForDamage(Enchantment.smite, 5);
+			Pt                      .addEnchantmentForDamage(Enchantment.smite, 5);
+			Mithril                 .addEnchantmentForDamage(Enchantment.smite, 5);
+			InfusedVis              .addEnchantmentForDamage(Enchantment.smite, 5);
+			Infinity                .addEnchantmentForDamage(Enchantment.smite,10);
 			
-			Pb                      .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 2).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 2);
-			Ni                      .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 2).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 2);
-			Constantan              .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 2).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 2);
-			Nichrome                .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 2).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 2);
-			Invar                   .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 3).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 3);
-			Sb                      .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 3).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 3);
-			Aredrite                .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 3).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 3);
-			BatteryAlloy            .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 4).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 4);
-			Bi                      .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 4).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 4);
-			Orichalcum              .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 4).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 4);
-			BismuthBronze           .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 4).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 4);
-			InfusedEarth            .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 5).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 5);
-			Celenegil               .addEnchantmentForWeapons(Enchantment.baneOfArthropods, 5).addEnchantmentForAmmo(Enchantment.baneOfArthropods, 5);
-			Infinity                .addEnchantmentForWeapons(Enchantment.baneOfArthropods,10).addEnchantmentForAmmo(Enchantment.baneOfArthropods,10);
+			Pb                      .addEnchantmentForDamage(Enchantment.baneOfArthropods, 2);
+			Ni                      .addEnchantmentForDamage(Enchantment.baneOfArthropods, 2);
+			Constantan              .addEnchantmentForDamage(Enchantment.baneOfArthropods, 2);
+			Nichrome                .addEnchantmentForDamage(Enchantment.baneOfArthropods, 2);
+			Invar                   .addEnchantmentForDamage(Enchantment.baneOfArthropods, 3);
+			Sb                      .addEnchantmentForDamage(Enchantment.baneOfArthropods, 3);
+			Aredrite                .addEnchantmentForDamage(Enchantment.baneOfArthropods, 3);
+			BatteryAlloy            .addEnchantmentForDamage(Enchantment.baneOfArthropods, 4);
+			Bi                      .addEnchantmentForDamage(Enchantment.baneOfArthropods, 4);
+			Orichalcum              .addEnchantmentForDamage(Enchantment.baneOfArthropods, 4);
+			BismuthBronze           .addEnchantmentForDamage(Enchantment.baneOfArthropods, 4);
+			InfusedEarth            .addEnchantmentForDamage(Enchantment.baneOfArthropods, 5);
+			Celenegil               .addEnchantmentForDamage(Enchantment.baneOfArthropods, 5);
+			Infinity                .addEnchantmentForDamage(Enchantment.baneOfArthropods,10);
 			
-			Fe                      .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			IronMagnetic            .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			IronWood                .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			Ice                     .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			Glass                   .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			Bronze                  .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			GildedIron              .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			PulsatingIron           .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			ConductiveIron          .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			RedstoneAlloy           .addEnchantmentForWeapons(Enchantment.sharpness, 1).addEnchantmentForAmmo(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
-			ElectricalSteel         .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			Brass                   .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			CobaltBrass             .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			HSLA                    .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			Steel                   .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			SteelMagnetic           .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			SteelGalvanized         .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			Syrmorite               .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			WroughtIron             .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			PigIron                 .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			Meteorite               .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			FierySteel              .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			FrozenIron              .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			MeteoricIron            .addEnchantmentForWeapons(Enchantment.sharpness, 2).addEnchantmentForAmmo(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
-			MeteoricSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			Steeleaf                .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			VanadiumSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			StainlessSteel          .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			Knightmetal             .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			DeepIron                .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			ShadowIron              .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			BlackSteel              .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			MeteoricBlackSteel      .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			RedSteel                .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			MeteoricRedSteel        .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			BlueSteel               .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			MeteoricBlueSteel       .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			Ti                      .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			TitaniumGold            .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			TungstenAlloy           .addEnchantmentForWeapons(Enchantment.sharpness, 3).addEnchantmentForAmmo(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
-			TungstenSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			NetherizedDiamond       .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			HSSG                    .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			HSSE                    .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			HSSS                    .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			ShadowSteel             .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			Zanite                  .addEnchantmentForWeapons(Enchantment.sharpness, 4).addEnchantmentForAmmo(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
-			DamascusSteel           .addEnchantmentForWeapons(Enchantment.sharpness, 5).addEnchantmentForAmmo(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
-			Elvorium                .addEnchantmentForWeapons(Enchantment.sharpness, 5).addEnchantmentForAmmo(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
-			InfusedEntropy          .addEnchantmentForWeapons(Enchantment.sharpness, 5).addEnchantmentForAmmo(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
-			Ke                      .addEnchantmentForWeapons(Enchantment.sharpness, 6).addEnchantmentForAmmo(Enchantment.sharpness, 6).addEnchantmentForRanged(Enchantment.power, 6);
-			Trinitanium             .addEnchantmentForWeapons(Enchantment.sharpness, 7).addEnchantmentForAmmo(Enchantment.sharpness, 7).addEnchantmentForRanged(Enchantment.power, 7);
-			Trinaquadalloy          .addEnchantmentForWeapons(Enchantment.sharpness, 8).addEnchantmentForAmmo(Enchantment.sharpness, 8).addEnchantmentForRanged(Enchantment.power, 8);
-			Infinity                .addEnchantmentForWeapons(Enchantment.sharpness,10).addEnchantmentForAmmo(Enchantment.sharpness,10).addEnchantmentForRanged(Enchantment.power,10);
+			Fe                      .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			IronMagnetic            .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			IronWood                .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			Ice                     .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			Glass                   .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			Bronze                  .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			ArsenicCopper           .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			ArsenicBronze           .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			GildedIron              .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			PulsatingIron           .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			ConductiveIron          .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			RedstoneAlloy           .addEnchantmentForDamage(Enchantment.sharpness, 1).addEnchantmentForRanged(Enchantment.power, 1);
+			ElectricalSteel         .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			Brass                   .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			CobaltBrass             .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			HSLA                    .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			Steel                   .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			SteelMagnetic           .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			SteelGalvanized         .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			Syrmorite               .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			WroughtIron             .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			PigIron                 .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			Meteorite               .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			FierySteel              .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			FrozenIron              .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			MeteoricIron            .addEnchantmentForDamage(Enchantment.sharpness, 2).addEnchantmentForRanged(Enchantment.power, 2);
+			MeteoricSteel           .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoflameSteel         .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			Steeleaf                .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			VanadiumSteel           .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			StainlessSteel          .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			Knightmetal             .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			DeepIron                .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			ShadowIron              .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			BlackSteel              .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoricBlackSteel      .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoflameBlackSteel    .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			RedSteel                .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoricRedSteel        .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoflameRedSteel      .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			BlueSteel               .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoricBlueSteel       .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			MeteoflameBlueSteel     .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			Ti                      .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			TitaniumGold            .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			TungstenAlloy           .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			TungstenSteel           .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			NetherizedDiamond       .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			HSSG                    .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			HSSE                    .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			HSSS                    .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			ShadowSteel             .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			Zanite                  .addEnchantmentForDamage(Enchantment.sharpness, 4).addEnchantmentForRanged(Enchantment.power, 4);
+			DamascusSteel           .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
+			FlamascusSteel          .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
+			Elvorium                .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
+			InfusedEntropy          .addEnchantmentForDamage(Enchantment.sharpness, 5).addEnchantmentForRanged(Enchantment.power, 5);
+			Ke                      .addEnchantmentForDamage(Enchantment.sharpness, 6).addEnchantmentForRanged(Enchantment.power, 6);
+			Ad                      .addEnchantmentForDamage(Enchantment.sharpness, 7).addEnchantmentForRanged(Enchantment.power, 7);
+			Trinitanium             .addEnchantmentForDamage(Enchantment.sharpness, 7).addEnchantmentForRanged(Enchantment.power, 7);
+			Trinaquadalloy          .addEnchantmentForDamage(Enchantment.sharpness, 8).addEnchantmentForRanged(Enchantment.power, 8);
+			Infinity                .addEnchantmentForDamage(Enchantment.sharpness,10).addEnchantmentForRanged(Enchantment.power,10);
 			
 			
 			Oureclase               .addEnchantmentForArmors(Enchantment.respiration, 3);
@@ -2947,7 +2998,7 @@ public class MT {
 			OREMATS.Sperrylite              .ores(Sb                        , Cu                        , Fe2O3                 , Rh                    , OREMATS.Cooperite     );
 			OREMATS.Pentlandite             .ores(Fe2O3                     , S                         , OREMATS.Cobaltite     , OREMATS.Sperrylite    , Gypsum                );
 			OREMATS.Sphalerite              .ores(Cd                        , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
-			OREMATS.Tetrahedrite            .ores(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     );
+			OREMATS.Tetrahedrite            .ores(Cu                        , Sb                        , Zn                    , OREMATS.Kesterite     , As                    );
 			Pyrite                          .ores(S                         , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
 			Sn                              .ores(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteBlack         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
 			OREMATS.Cassiterite             .ores(OREMATS.Molybdenite       , OREMATS.Wolframite        , FluoriteWhite         , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline
@@ -2964,7 +3015,7 @@ public class MT {
 			Co_60                           .ores(OREMATS.Cobaltite         , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Pentlandite   , OREMATS.YellowLimonite);
 			Co                              .ores(OREMATS.Cobaltite         , OREMATS.Realgar           , FluoriteOrange        , OREMATS.Pentlandite   , OREMATS.YellowLimonite);
 			OREMATS.Realgar                 .ores(OREMATS.Cobaltite         , OREMATS.Arsenopyrite      );
-			Cu                              .ores(OREMATS.Cobaltite         , Au                        , Ni                    , OREMATS.Malachite     );
+			Cu                              .ores(OREMATS.Cobaltite         , Au                        , Ni                    , OREMATS.Malachite     , As                    );
 			Ni                              .ores(OREMATS.Cobaltite         , OREMATS.Cooperite         , Fe2O3                 , OREMATS.Pentlandite   );
 			OREMATS.Stannite                .ores(Ge                        , Pyrite                    , OREMATS.Kesterite     );
 			OREMATS.Kesterite               .ores(Ge                        , Pyrite                    , OREMATS.Stannite      );
@@ -3080,7 +3131,7 @@ public class MT {
 			OREMATS.Wollastonite            .ores(Fe2O3                     , MgCO3                     , MnO2                  );
 			
 			Redstone                        .ores(OREMATS.Cinnabar          , RareEarth                 , Glowstone             );
-			Nikolite                        .ores(Cu                        , RareEarth                 , Azurite               );
+			Nikolite                        .ores(Cu                        , RareEarth                 , Azurite               , As);
 			
 			Re                              .ores(OREMATS.Chalcopyrite      , OREMATS.Molybdenite       );
 			Os                              .ores(Ir                        , Pt                        , Ru                    );
@@ -3100,7 +3151,7 @@ public class MT {
 			OREMATS.Wulfenite               .ores(OREMATS.Powellite         , OREMATS.Scheelite         , OREMATS.Molybdenite   , OREMATS.Galena        );
 			Mo                              .ores(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , OREMATS.Wulfenite     , Os);
 			OREMATS.Molybdenite             .ores(OREMATS.Powellite         , OREMATS.Scheelite         , Re                    , OREMATS.Wulfenite     , Os);
-			OREMATS.Malachite               .ores(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , Azurite);
+			OREMATS.Malachite               .ores(Cu                        , OREMATS.BrownLimonite     , CaCO3                 , Azurite               , As);
 			OREMATS.BrownLimonite           .ores(OREMATS.Malachite         , OREMATS.YellowLimonite    );
 			OREMATS.YellowLimonite          .ores(Ni                        , OREMATS.BrownLimonite     , OREMATS.Cobaltite     );
 			OREMATS.Garnierite              .ores(Ni                        , OREMATS.Sperrylite        );
@@ -3149,8 +3200,8 @@ public class MT {
 			OREMATS.Smithsonite             .ores(Zn                        , OREMATS.Bromargyrite      );
 			Pb                              .ores(Ag                        , S                         );
 			Electrum                        .ores(Au                        , Ag                        );
-			Bronze                          .ores(Cu                        , Sn                        );
-			Brass                           .ores(Cu                        , Zn                        );
+			Bronze                          .ores(Cu                        , Sn                        , As                    );
+			Brass                           .ores(Cu                        , Zn                        , As                    );
 			Coal                            .ores(Lignite                   , S                         );
 			Lignite                         .ores(Coal                      , S                         , Ge                    );
 			
@@ -3295,6 +3346,8 @@ public class MT {
 			AluminiumBrass          .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 1*U), OM.stack(Al                 , 3*U)));
 			Brass                   .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(Zn                 , 1*U)));
 			Bronze                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(Sn                 , 1*U)));
+			ArsenicCopper           .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(AnnealedCopper                , 3*U), OM.stack(As                 , 1*U)));
+			ArsenicBronze           .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(ArsenicCopper                 , 4*U), OM.stack(Sn                 , 1*U)));
 			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent( 5, OM.stack(AnnealedCopper                , 3*U), OM.stack(Electrum           , 2*U)));
 			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(Cu                            ,11*U), OM.stack(RoseGold           , 5*U), OM.stack(Ag, 4*U)));
 			BlackBronze             .addAlloyingRecipe(new OreDictConfigurationComponent(20, OM.stack(AnnealedCopper                ,11*U), OM.stack(RoseGold           , 5*U), OM.stack(Ag, 4*U)));
@@ -3475,7 +3528,7 @@ public class MT {
 			
 			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = Thaumium.mHandleMaterial = ANY.WoodMagical;
 			GaiaSpirit.mHandleMaterial = ElvenElementium;
-			FierySteel.mHandleMaterial = Firestone.mHandleMaterial = ANY.Blaze;
+			FierySteel.mHandleMaterial = MeteoflameSteel.mHandleMaterial = MeteoflameBlackSteel.mHandleMaterial = MeteoflameBlueSteel.mHandleMaterial = MeteoflameRedSteel.mHandleMaterial = FlamascusSteel.mHandleMaterial = Firestone.mHandleMaterial = ANY.Blaze;
 			Endium.mHandleMaterial = Endstone;
 			SpectreIron.mHandleMaterial = Obsidian;
 			EnderAmethyst.mHandleMaterial = Meteorite.mHandleMaterial = Kreknorite.mHandleMaterial = Sugilite.mHandleMaterial = ANY.Iron;
@@ -3611,7 +3664,7 @@ public class MT {
 		Stibnite                = oredustdcmp( 9131, "Stibnite"                  , SET_METALLIC  ,  70,  70,  70, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(Sb   ,   U4).addSourceOf(Sb       ).uumMcfg( 0, Sb             , 2*U, S                , 3*U)                                                                                                .heat(823),
 		Pentlandite             = oredustdcmp( 9145, "Pentlandite"               , SET_DULL      , 165, 150,   5, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, MAGNETIC_PASSIVE, WASHING_PERSULFATE  ).setSmelting(Ni   ,   U3).addSourceOf(Ni       ).uumMcfg( 0, Ni             , 9*U, S                , 8*U)                                                                                                .qual(0), // (Fe,Ni)9S8
 		Chalcopyrite            = oredustdcmp( 9111, "Chalcopyrite"              , SET_DULL      , 160, 120,  40, 255, G_GEM_ORES, MORTAR, FURNACE                                                    ).setSmelting(Cu   , 2*U9).addSourceOf(Cu,Fe    ).uumMcfg( 0, Cu             , 1*U, Fe               , 1*U, S                , 2*U)                                                                        .qual(0),
-		Arsenopyrite            = oredustdcmp( 9216, "Arsenopyrite"              , SET_CUBE_SHINY, 250, 240,  30, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        )                         .addSourceOf(Fe,As    ).uumMcfg( 0, Fe             , 1*U, As               , 1*U, S                , 1*U)                                                                        .qual(0),
+		Arsenopyrite            = oredustdcmp( 9216, "Arsenopyrite"              , SET_CUBE_SHINY, 250, 240,  30, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER                                        ).setSmelting(As   ,   U4).addSourceOf(Fe,As    ).uumMcfg( 0, Fe             , 1*U, As               , 1*U, S                , 1*U)                                                                        .qual(0),
 		Cobaltite               = oredustdcmp( 9115, "Cobaltite"                 , SET_METALLIC  ,  80,  80, 250, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, MAGNETIC_PASSIVE, WASHING_PERSULFATE  ).setSmelting(Co   ,   U4).addSourceOf(Co,As    ).uumMcfg( 0, Co             , 1*U, As               , 1*U, S                , 1*U)                                                                        .qual(0),
 		Galena                  = oredustdcmp( 9117, "Galena"                    , SET_DULL      , 100,  60, 100, 255, G_GEM_ORES, MORTAR, FURNACE                                                    ).setSmelting(Pb   ,   U3).addSourceOf(Pb,Ag    ).uumMcfg( 0, Pb             , 3*U, Ag               , 3*U, S                , 2*U)                                                                        ,
 		Cooperite               = oredustdcmp( 9116, "Cooperite"                 , SET_METALLIC  , 130, 160, 230, 255, G_GEM_ORES, MORTAR, BLACKLISTED_SMELTER, WASHING_MERCURY, "Sheldonite"         ).setSmelting(Pt   ,   U3).addSourceOf(Pt,Ni,Pd ).uumMcfg( 0, Pt             , 3*U, Ni               , 1*U, Pd               , 1*U, S                , 1*U)                                                .setLocal("Sheldonite"),
@@ -3699,14 +3752,17 @@ public class MT {
 		MoonTurf     = stone    ( 8514, "Moon Turf"               , 207, 207, 207, 255)                                                                                                                                                                      .aspects(TC.ALIENIS     , 1).qual(1, 3.0, 16, 1).addSourceOf(He,He_3),
 		MarsRock     = stone    ( 8515, "Mars Stone"              , 189,  77,  77, 255, MELTING, MOLTEN)                                                                                                                                                     .aspects(TC.ALIENIS     , 1).qual(1, 5.0, 32, 1).setLocal("Mars"),
 		MarsSand     = stone    ( 8516, "Mars Sand"               , 207,  66,  66, 255)                                                                                                                                                                      .aspects(TC.ALIENIS     , 1).qual(1, 3.0, 16, 1),
+		SkyStone     = stonecent( 8528, "Sky Stone"               ,  81,  92,  96, 255)                                                            .setMcfg( 0, Olivine        , 2*U, RareEarth        , 1*U, MeteoricIron     , 1*U, Obsidian         , 5*U).aspects(TC.VOLATUS     , 1).qual(1, 5.0, 64, 2).heat(2200),
 		Holystone    = stone    ( 8522, "Holystone"               , 172, 172, 172, 255)                                                                                                                                                                      .aspects(TC.LUX         , 1).qual(1, 5.0,128, 1).heat(2000),
 		Livingrock   = stone    ( 8521, "Livingrock"              , 195, 205, 195, 255)                                                                                                                                                                      .aspects(TC.VICTUS      , 1).qual(1, 5.0,128, 2).heat(1800),
 		Deadrock     = stone    ( 8523, "Deadrock"                , 153, 153, 168, 255, UNBURNABLE)                                                                                                                                                          .aspects(TC.MORTUUS     , 1).qual(1, 5.0,128, 2).heat(1800),
 		Betweenstone = stone    ( 8519, "Betweenstone"            , 100, 160, 110, 255)                                                                                                                                                                      .aspects(TC.MORTUUS     , 1).qual(1, 4.0, 32, 1).heat(1000),
 		Pitstone     = stone    ( 8520, "Pitstone"                ,  40,  50,  30, 255)                                                                                                                                                                      .aspects(TC.TENEBRAE    , 1).qual(1, 4.0, 32, 1).heat(1200),
-		Cragrock     = stone    ( 8524, "Cragrock"                ,  93,  96, 107, 255)                                                                                                                                                                      .aspects(TC.VENENUM     , 1).qual(1, 4.0, 32, 1).heat(1400),
-		Templerock   = stone    ( 8525, "Templerock"              , 171, 158, 106, 255)                                                                                                                                                                      .aspects(TC.VINCULUM    , 1).qual(1, 5.0,128, 1).heat(1600),
-		Umber        = stone    ( 8517, "Umber"                   , 111,  77,  11, 255, MD.ERE)                                                                                                                                                              .aspects(TC.BESTIA      , 1).qual(1, 3.0, 32, 1).heat( 987).setLocal("Umberstone"),
+		Cragrock     = stone    ( 8524, "Cragrock"                ,  93,  96, 107, 255)                                                                                                                                                                      .aspects(TC.VENEMUM     , 1).qual(1, 4.0, 32, 1).heat(1400),
+		Templerock   = brick    ( 8525, "Templerock"              , 171, 158, 106, 255, WITHER_PROOF)                                                                                                                                                        .aspects(TC.VINCULUM    , 1).qual(1, 5.0,128, 1).heat(1600),
+		Mazestone    = brick    ( 8526, "Mazestone"               , 110, 120, 110, 255, WITHER_PROOF)                                                                                                                                                        .aspects(TC.ITER        , 1).qual(1, 5.0,128, 3).heat(2000),
+		Castlerock   = brick    ( 8527, "Castlerock"              , 198, 185, 186, 255, WITHER_PROOF)                                                                                                                                                        .aspects(TC.TUTAMEN     , 1).qual(1, 5.0,128, 3).heat(2000),
+		Umber        = stone    ( 8517, "Umber"                   , 111,  77,  11, 255)                                                                                                                                                                      .aspects(TC.BESTIA      , 1).qual(1, 3.0, 32, 1).heat( 987).setLocal("Umberstone"),
 		Shale        = stonecent( 9190, "Shale"                   , 142, 142, 168, 255)                                                            .setMcfg( 0, CaCO3          , 2*U, MilkyQuartz      , 1*U, Clay             , 1*U)                        .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 0),
 		Redrock      = stonecent( 8509, "Redrock"                 , 255,  80,  50, 255, "RedRock")                                                 .setMcfg( 0, CaCO3          , 2*U, Flint            , 1*U, ClayRed          , 1*U)                        .aspects(TC.TERRA       , 1).qual(1, 2.5, 16, 1),
 		Komatiite    = stonecent( 9177, "Komatiite"               , 190, 190, 105, 255, UNBURNABLE)                                                .setMcfg( 0, Olivine        , 1*U, MgCO3            , 2*U, Flint            , 6*U, DarkAsh          , 3*U).aspects(TC.SANO        , 1).qual(1, 3.0, 32, 2).heat(1673),
@@ -3719,7 +3775,7 @@ public class MT {
 		Blueschist   = stone    ( 9184, "Blueschist"              , 105, 105, 190, 255, MD.UB)                                                                                                                                                               .aspects(TC.TERRA       , 1).qual(1, 2.0, 24, 1).setLocal("Blue Schist"),
 		Grayschist   = stone    ( 9244, "Grayschist"              , 145, 140, 145, 255, MD.EB)                                                                                                                                                               .aspects(TC.TERRA       , 1).qual(1, 2.0, 24, 1).setLocal("Gray Schist"),
 		Pinkschist   = stone    ( 9245, "Pinkschist"              , 220, 195, 195, 255, MD.PFAA)                                                                                                                                                             .aspects(TC.TERRA       , 1).qual(1, 2.0, 24, 1).setLocal("Pink Schist"),
-		Gneiss       = stone    ( 9170, "Gneiss"                  , 255, 201, 134, 255, MD.ERE)                                                                                                                                                              .aspects(TC.TERRA       , 1).qual(1, 2.0, 24, 1),
+		Gneiss       = stone    ( 9170, "Gneiss"                  , 255, 201, 134, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 24, 1),
 		Kimberlite   = stone    ( 9218, "Kimberlite"              , 100,  70,  10, 255)                                                                                                                                                                      .aspects(TC.VITREUS     , 1).qual(1, 2.0, 24, 2),
 		Quartzite    = stone    ( 9180, "Quartzite"   , SET_QUARTZ, 230, 205, 205, 255, G_QUARTZ_ORES, CRYSTALLISABLE, QUARTZ, BLACKLISTED_SMELTER)                                                                                                          .aspects(TC.POTENTIA    , 1).qual(1, 1.7, 32, 1).setSmelting(SiO2, U),
 		GraniteRed   = stoneelec( 8507, "GraniteRed"              , 160,  60,  70, 255)                                                            .setMcfg( 0, Biotite        , 1*U, PotassiumFeldspar, 1*U, Flint            , 1*U)                        .aspects(TC.TUTAMEN     , 1).qual(1, 3.0, 64, 3).heat(1500).setLocal("Red Granite"),
@@ -3727,7 +3783,7 @@ public class MT {
 		Granite      = stoneelec( 8518, "Granite"                 , 160, 120, 130, 255)                                                            .setMcfg( 0, Biotite        , 1*U, PotassiumFeldspar, 1*U, Flint            , 1*U)                        .aspects(TC.TERRA       , 1).qual(1, 3.0, 64, 1).heat(1500),
 		Andesite     = stone    ( 9188, "Andesite"                , 191, 191, 191, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.5, 16, 1),
 		Diorite      = stone    ( 8511, "Diorite"                 , 240, 240, 240, 255, UNBURNABLE)                                                                                                                                                          .aspects(TC.TERRA       , 1).qual(1, 2.5, 16, 1),
-		Blackstone   = stone    ( 9223, "Blackstone"              ,  30,  20,  20, 255, UNRECYCLABLE)                                                                                                                                                        .aspects(TC.TENEBRAE    , 1).qual(1, 5.0, 64, 1),
+		Blackstone   = brick    ( 9223, "Blackstone"              ,  30,  20,  20, 255, UNRECYCLABLE)                                                                                                                                                        .aspects(TC.TENEBRAE    , 1).qual(1, 5.0, 64, 1),
 		Greywacke    = stone    ( 9173, "Greywacke"               , 176, 176, 176, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
 		Siltstone    = stone    ( 9178, "Siltstone"               , 250, 205, 205, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 0),
 		Rhyolite     = stone    ( 9179, "Rhyolite"                , 121, 121, 121, 255)                                                                                                                                                                      .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
@@ -3906,7 +3962,7 @@ public class MT {
 		Thyrium                     = unused    ("Thyrium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Zectium                     = unused    ("Zectium"                    ).setPriorityPrefix(3).put(G_INGOT_ORES),
 		Draconic                    = deprecated("Draconic"                   ).setPriorityPrefix(2).put(G_DUST),
-		InfusedTeslatite            = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST), // 1 Redstone + 1 Teslatite/Nikolite = 1 Infused
+		Teslatite                   = unused    ("InfusedTeslatite"           ).setPriorityPrefix(2).put(G_DUST).setLocal("Teslatite"), // 1 Redstone + 1 Nikolite = 1 Teslatite; and 8 Teslatite + 1 Gold = 1 Purple Alloy;
 		IrridantUranium             = unused    ("Irridant Uranium"           ).setPriorityPrefix(3).put(G_INGOT),
 		IrridantReinforced          = unused    ("IrridantReinforced"         ).setPriorityPrefix(3).put(G_INGOT),
 		IronSharp                   = unused    ("IronSharp"                  ).setPriorityPrefix(3).put(G_INGOT).setLocal("Sharp Iron"),
@@ -3964,6 +4020,17 @@ public class MT {
 		Dineutronium                = unused    ("Dineutronium"               ).setPriorityPrefix(3).put(G_INGOT_MACHINE, MD.HBM),
 		MagnetizedTungsten          = unused    ("Magnetized Tungsten"        ).setPriorityPrefix(3).put(G_INGOT, MD.HBM, MAGNETIC_ACTIVE),
 		Euphemium                   = unused    ("Euphemium"                  ).setPriorityPrefix(3).put(G_INGOT, MD.HBM, MELTING, MOLTEN).setRGBa(255, 150, 255, 255),
+		Rupee                       = unused    ("Rupee"                      ).put(MD.DRPG),
+		Arlemite                    = unused    ("Arlemite"                   ).put(MD.DRPG),
+		Realmite                    = unused    ("Realmite"                   ).put(MD.DRPG),
+		Bloodgem                    = unused    ("Bloodgem"                   ).put(MD.DRPG),
+		Netheryte                   = unused    ("Netheryte"                  ).put(MD.DRPG),
+		Eden                        = unused    ("Eden"                       ).put(MD.DRPG),
+		Wildwood                    = unused    ("Wildwood"                   ).put(MD.DRPG),
+		Apalachia                   = unused    ("Apalachia"                  ).put(MD.DRPG),
+		Skythern                    = unused    ("Skythern"                   ).put(MD.DRPG),
+		Mortum                      = unused    ("Mortum"                     ).put(MD.DRPG),
+		Arcanium                    = unused    ("Arcanium"                   ).put(MD.DRPG),
 		Energized                   = unused    ("Energized"                  ),
 		Reinforced                  = unused    ("Reinforced"                 ),
 		Mud                         = unused    ("Mud"                        ).put(IGNORE_IN_COLOR_LOG),
@@ -3998,17 +4065,6 @@ public class MT {
 		EnrichedCopper              = unused    ("Enriched Copper"            ),
 		DiamondCopper               = unused    ("Diamond Copper"             ),
 		Fairy                       = unused    ("Fairy"                      ),
-		Pokefennium                 = unused    ("Pokefennium"                ),
-		Rupee                       = unused    ("Rupee"                      ),
-		Arlemite                    = unused    ("Arlemite"                   ),
-		Realmite                    = unused    ("Realmite"                   ),
-		Bloodgem                    = unused    ("Bloodgem"                   ),
-		Netheryte                   = unused    ("Netheryte"                  ),
-		Eden                        = unused    ("Eden"                       ),
-		Wildwood                    = unused    ("Wildwood"                   ),
-		Apalachia                   = unused    ("Apalachia"                  ),
-		Skythern                    = unused    ("Skythern"                   ),
-		Mortum                      = unused    ("Mortum"                     ),
-		Arcanium                    = unused    ("Arcanium"                   );
+		Pokefennium                 = unused    ("Pokefennium"                );
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,13 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.BI;
 import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.render.BlockTextureCopied;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
-import gregapi.render.IconContainerDefault;
+import gregapi.render.*;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -41,6 +34,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -48,7 +43,7 @@ public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
-		if (FL.temperature(aFluidToFill) > mMaterial.mMeltingPoint || !FL.heavier(aFluidToFill) || !FL.simple(aFluidToFill) || FL.gas(aFluidToFill) || FL.acid(aFluidToFill)) return null;
+		if (FL.temperature(aFluidToFill) > mMaterial.mMeltingPoint || !FL.heavier(aFluidToFill) || !FL.simple(aFluidToFill) || FL.gas(aFluidToFill) || FL.acid(aFluidToFill) || FL.magic(aFluidToFill)) return null;
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].isEmpty()) return mTanksInput[i];
 		return null;
 	}

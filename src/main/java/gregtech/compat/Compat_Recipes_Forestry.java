@@ -39,26 +39,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
 
 public class Compat_Recipes_Forestry extends CompatMods {
 	public Compat_Recipes_Forestry(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Forestry Recipes.");
-		CR.remove(OM.ingot(MT.Sn), OM.ingot(MT.Cu), NI, OM.ingot(MT.Cu), OM.ingot(MT.Cu));
-		CR.delate(MD.FR, "honeyedSlice", "letters");
-		RM.generify(IL. FR_Royal_Jelly.get(1), IL.HaC_Royal_Jelly.get(1));
-		RM.generify(IL.HaC_Royal_Jelly.get(1), IL. FR_Royal_Jelly.get(1));
+		CR.delate(MD.FR, "honeyedSlice", "letters", "soil", "gearTin", "gearCopper", "gearBronze");
 		
 		OM.data(CR.get(null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, null, null), new OreDictItemData(MT.Sn, U * 3));
 		
-		long tBits = DEF | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
-		CR.shaped(ST.make(MD.FR, "gearTin"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Sn), 'G', OP.gear.dat(ANY.Stone));
-		CR.shaped(ST.make(MD.FR, "gearCopper", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Cu), 'G', OP.gear.dat(ANY.Stone));
-		CR.shaped(ST.make(MD.FR, "gearBronze", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Bronze), 'G', OP.gear.dat(ANY.Stone));
-		CR.shapeless(ST.make(MD.FR, "gearTin"   , 1, 0), new Object[] {OP.gearGt.dat(MT.Sn)});
-		CR.shapeless(ST.make(MD.FR, "gearCopper", 1, 0), new Object[] {OP.gearGt.dat(ANY.Cu)});
-		CR.shapeless(ST.make(MD.FR, "gearBronze", 1, 0), new Object[] {OP.gearGt.dat(MT.Bronze)});
+		CR.shapeless(ST.make(MD.FR, "gearTin"   , 1, 0), new Object[] {OP.gearGt.dat(MT.Sn    ), OP.gear.dat(ANY.Stone)});
+		CR.shapeless(ST.make(MD.FR, "gearCopper", 1, 0), new Object[] {OP.gearGt.dat(ANY.Cu   ), OP.gear.dat(ANY.Stone)});
+		CR.shapeless(ST.make(MD.FR, "gearBronze", 1, 0), new Object[] {OP.gearGt.dat(MT.Bronze), OP.gear.dat(ANY.Stone)});
 		
 		
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
@@ -71,42 +63,42 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Printer.addRecipe2(F, 16,128, ST.make(Items.paper, 1, W), ST.tag(0), FL.Glue.make(200), NF, ST.make(MD.FR, "letters", 1, 0));
 		
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 0))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OM.dust(MT.Apatite                    ,U9), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 0));
-		RM.Printer.addRecipe2(F, 16,128, OP.plateTiny.mat(MT.Paper, 9)  , OM.dust(MT.Apatite                    , U), FL.Glue.make(225), NF, ST.make(MD.FR, "stamps", 9, 0));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Zn                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 0));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OM.dust(MT.Apatite               ,U9), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 0));
+		RM.Printer.addRecipe2(F, 16,128, OP.plateTiny.mat(MT.Paper, 9), OM.dust(MT.Apatite               , U), FL.Glue.make(225), NF, ST.make(MD.FR, "stamps", 9, 0));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Zn           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 0));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 1))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Pb                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 1));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Pb           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 1));
 		for (OreDictMaterial tMat : ANY.Cu.mToThis)
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(tMat                 , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 1));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(tMat            , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 1));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 2))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Sn                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Bi                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Bronze            , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Sn           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Bi           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Bronze       , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 2));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 3))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Au                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Ag                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Electrum          , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Au           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Ag           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Electrum     , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 3));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 4))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Pt                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Pt           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
 		for (OreDictMaterial tMat : ANY.W.mToThis)
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(tMat                 , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(tMat            , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateGemTiny.mat(tMat              , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateGemTiny.mat(tMat         , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 5))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Os                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Ir                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Os           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Ir           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
 		for (OreDictMaterial tMat : ANY.Emerald.mToThis)
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateGemTiny.mat(tMat              , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateGemTiny.mat(tMat         , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 5));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 6))) {
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Nq                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Ke                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
-		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateGemTiny.mat(MT.NetherStar     , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Nq           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateTiny.mat(MT.Ke           , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
+		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1), OP.plateGemTiny.mat(MT.NetherStar, 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 6));
 		}
 		
 		
@@ -114,11 +106,11 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		for (int i = 0; i < 29; i++) {
 		ItemStack
-		  tLogA     = ST.make(MD.FR, "logs"     , 1, i), tLogB      = ST.make(MD.FR, "logsFireproof"    , 1, i)
-		, tPlankA   = ST.make(MD.FR, "planks"   , 1, i), tPlankB    = ST.make(MD.FR, "planksFireproof"  , 1, i)
-		, tStairA   = ST.make(MD.FR, "stairs"   , 1, i), tStairB    = ST.make(MD.FR, "stairsFireproof"  , 1, i)
-		, tSlabA    = ST.make(MD.FR, "slabs"    , 1, i), tSlabB     = ST.make(MD.FR, "slabsFireproof"   , 1, i)
-		, tFenceA   = ST.make(MD.FR, "fences"   , 1, i), tFenceB    = ST.make(MD.FR, "fencesFireproof"  , 1, i);
+		  tLogA   = ST.make(MD.FR, "logs"  , 1, i), tLogB   = ST.make(MD.FR, "logsFireproof"  , 1, i)
+		, tPlankA = ST.make(MD.FR, "planks", 1, i), tPlankB = ST.make(MD.FR, "planksFireproof", 1, i)
+		, tStairA = ST.make(MD.FR, "stairs", 1, i), tStairB = ST.make(MD.FR, "stairsFireproof", 1, i)
+		, tSlabA  = ST.make(MD.FR, "slabs" , 1, i), tSlabB  = ST.make(MD.FR, "slabsFireproof" , 1, i)
+		, tFenceA = ST.make(MD.FR, "fences", 1, i), tFenceB = ST.make(MD.FR, "fencesFireproof", 1, i);
 		
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), tLogA, tLogB);
 		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory, 1), tPlankA, tPlankB);
@@ -133,133 +125,133 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Laminator    .addRecipe2(T, 16,   64, OP.foil.mat(MT.WaxRefractory,  8), tFenceA, tFenceB);
 		}
 		
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"          , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.WOODS.Maple));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof" , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.WOODS.Maple));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"         , 1, 22), NF, FL.Sap_Maple.make(25), OM.dust(MT.WOODS.Maple));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof", 1, 22), NF, FL.Sap_Maple.make(25), OM.dust(MT.WOODS.Maple));
 		
-		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Sn                             , 1), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Tin      .get(1));
-		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Bronze                         , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Bronze   .get(1));
+		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Sn                            , 1), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Tin   .get(1));
+		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Bronze                        , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Bronze.get(1));
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
-		RM.Press        .addRecipe2(T, 16,   64, (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Iron     .get(1));
-		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Au                             , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Gold     .get(1));
+		RM.Press        .addRecipe2(T, 16,   64, (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat, 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Iron  .get(1));
+		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Au                            , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Gold  .get(1));
 		
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Copper    .get(8), IL.FR_ElectronTube_Copper.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Copper    .get(4), IL.FR_ElectronTube_Copper.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Copper    .get(1), IL.FR_ElectronTube_Copper.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Tin       .get(8), IL.FR_ElectronTube_Tin.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Tin       .get(4), IL.FR_ElectronTube_Tin.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Tin       .get(1), IL.FR_ElectronTube_Tin.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Bronze    .get(8), IL.FR_ElectronTube_Bronze.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Bronze    .get(4), IL.FR_ElectronTube_Bronze.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Bronze    .get(1), IL.FR_ElectronTube_Bronze.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Iron      .get(8), IL.FR_ElectronTube_Iron.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Iron      .get(4), IL.FR_ElectronTube_Iron.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Iron      .get(1), IL.FR_ElectronTube_Iron.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Gold      .get(8), IL.FR_ElectronTube_Gold.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Gold      .get(4), IL.FR_ElectronTube_Gold.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Gold      .get(1), IL.FR_ElectronTube_Gold.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Diamond   .get(8), IL.FR_ElectronTube_Diamond.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Diamond   .get(4), IL.FR_ElectronTube_Diamond.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Diamond   .get(1), IL.FR_ElectronTube_Diamond.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Obsidian  .get(8), IL.FR_ElectronTube_Obsidian.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Obsidian  .get(4), IL.FR_ElectronTube_Obsidian.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Obsidian  .get(1), IL.FR_ElectronTube_Obsidian.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Blaze     .get(8), IL.FR_ElectronTube_Blaze.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Blaze     .get(4), IL.FR_ElectronTube_Blaze.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Blaze     .get(1), IL.FR_ElectronTube_Blaze.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Rubber    .get(8), IL.FR_ElectronTube_Rubber.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Rubber    .get(4), IL.FR_ElectronTube_Rubber.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Rubber    .get(1), IL.FR_ElectronTube_Rubber.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Emerald   .get(8), IL.FR_ElectronTube_Emerald.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Emerald   .get(4), IL.FR_ElectronTube_Emerald.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Emerald   .get(1), IL.FR_ElectronTube_Emerald.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Apatite   .get(8), IL.FR_ElectronTube_Apatite.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Apatite   .get(4), IL.FR_ElectronTube_Apatite.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Apatite   .get(1), IL.FR_ElectronTube_Apatite.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Lapis     .get(8), IL.FR_ElectronTube_Lapis.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Lapis     .get(4), IL.FR_ElectronTube_Lapis.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Lapis     .get(1), IL.FR_ElectronTube_Lapis.get(1));
-		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)       , IL.Electrode_FR_Ender     .get(8), IL.FR_ElectronTube_Ender.get(8));
-		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1)    , IL.Electrode_FR_Ender     .get(4), IL.FR_ElectronTube_Ender.get(4));
-		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W)   , IL.Electrode_FR_Ender     .get(1), IL.FR_ElectronTube_Ender.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Copper  .get(8), IL.FR_ElectronTube_Copper.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Copper  .get(4), IL.FR_ElectronTube_Copper.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Copper  .get(1), IL.FR_ElectronTube_Copper.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Tin     .get(8), IL.FR_ElectronTube_Tin.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Tin     .get(4), IL.FR_ElectronTube_Tin.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Tin     .get(1), IL.FR_ElectronTube_Tin.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Bronze  .get(8), IL.FR_ElectronTube_Bronze.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Bronze  .get(4), IL.FR_ElectronTube_Bronze.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Bronze  .get(1), IL.FR_ElectronTube_Bronze.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Iron    .get(8), IL.FR_ElectronTube_Iron.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Iron    .get(4), IL.FR_ElectronTube_Iron.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Iron    .get(1), IL.FR_ElectronTube_Iron.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Gold    .get(8), IL.FR_ElectronTube_Gold.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Gold    .get(4), IL.FR_ElectronTube_Gold.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Gold    .get(1), IL.FR_ElectronTube_Gold.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Diamond .get(8), IL.FR_ElectronTube_Diamond.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Diamond .get(4), IL.FR_ElectronTube_Diamond.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Diamond .get(1), IL.FR_ElectronTube_Diamond.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Obsidian.get(8), IL.FR_ElectronTube_Obsidian.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Obsidian.get(4), IL.FR_ElectronTube_Obsidian.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Obsidian.get(1), IL.FR_ElectronTube_Obsidian.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Blaze   .get(8), IL.FR_ElectronTube_Blaze.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Blaze   .get(4), IL.FR_ElectronTube_Blaze.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Blaze   .get(1), IL.FR_ElectronTube_Blaze.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Rubber  .get(8), IL.FR_ElectronTube_Rubber.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Rubber  .get(4), IL.FR_ElectronTube_Rubber.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Rubber  .get(1), IL.FR_ElectronTube_Rubber.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Emerald .get(8), IL.FR_ElectronTube_Emerald.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Emerald .get(4), IL.FR_ElectronTube_Emerald.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Emerald .get(1), IL.FR_ElectronTube_Emerald.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Apatite .get(8), IL.FR_ElectronTube_Apatite.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Apatite .get(4), IL.FR_ElectronTube_Apatite.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Apatite .get(1), IL.FR_ElectronTube_Apatite.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Lapis   .get(8), IL.FR_ElectronTube_Lapis.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Lapis   .get(4), IL.FR_ElectronTube_Lapis.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Lapis   .get(1), IL.FR_ElectronTube_Lapis.get(1));
+		RM.Laminator    .addRecipe2(T, 16,  128, OP.plateGem.mat(MT.Glass, 1)    , IL.Electrode_FR_Ender   .get(8), IL.FR_ElectronTube_Ender.get(8));
+		RM.Laminator    .addRecipe2(T, 16,   64, OP.casingSmall.mat(MT.Glass, 1) , IL.Electrode_FR_Ender   .get(4), IL.FR_ElectronTube_Ender.get(4));
+		RM.Laminator    .addRecipe2(T, 16,   48, ST.make(Blocks.glass_pane, 1, W), IL.Electrode_FR_Ender   .get(1), IL.FR_ElectronTube_Ender.get(1));
 		
 		ItemStack tEmptyCrate = ST.make(MD.FR, "crate", 1);
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedTin"             , 1), OP.ingot.mat(MT.Sn, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCopper"          , 1), OP.ingot.mat(MT.Cu, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSilver"          , 1), OP.ingot.mat(MT.Ag, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBrass"           , 1), OP.ingot.mat(MT.Bronze, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBronze"          , 1), OP.ingot.mat(MT.Bronze, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPeat"            , 1), OP.ingot.mat(MT.Peat, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRubber"          , 1), OP.ingot.mat(MT.Rubber, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPhosphor"        , 1), OP.dust.mat(MT.PhosphorusBlue, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAsh"             , 1), OP.dust.mat(MT.Ash, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBeeswax"         , 1), OP.dust.mat(MT.WaxBee, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRefractoryWax"   , 1), OP.dust.mat(MT.WaxRefractory, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRedstone"        , 1), OP.dust.mat(MT.Redstone, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedGlowstone"       , 1), OP.dust.mat(MT.Glowstone, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedApatite"         , 1), OP.gem.mat(MT.Apatite, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedLapis"           , 1), OP.gem.mat(MT.Lapis, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCoal"            , 1), OP.gem.mat(MT.Coal, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCharcoal"        , 1), OP.gem.mat(MT.Charcoal, 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCarrots"         , 1), IL.Food_Carrot.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPotatoes"        , 1), IL.Food_Potato.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherwart"      , 1), ST.make(Items.nether_wart, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCookies"         , 1), ST.make(Items.cookie, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWheat"           , 1), IL.Crop_Wheat.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSeeds"           , 1), ST.make(Items.wheat_seeds, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedReeds"           , 1), ST.make(Items.reeds, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedApples"          , 1), IL.Food_Apple_Red.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedClay"            , 1), ST.make(Items.clay_ball, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedTin"              , 1), OP.ingot.mat(MT.Sn, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCopper"           , 1), OP.ingot.mat(MT.Cu, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSilver"           , 1), OP.ingot.mat(MT.Ag, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBrass"            , 1), OP.ingot.mat(MT.Bronze, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBronze"           , 1), OP.ingot.mat(MT.Bronze, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPeat"             , 1), OP.ingot.mat(MT.Peat, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRubber"           , 1), OP.ingot.mat(MT.Rubber, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPhosphor"         , 1), OP.dust.mat(MT.PhosphorusBlue, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAsh"              , 1), OP.dust.mat(MT.Ash, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBeeswax"          , 1), OP.dust.mat(MT.WaxBee, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRefractoryWax"    , 1), OP.dust.mat(MT.WaxRefractory, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRedstone"         , 1), OP.dust.mat(MT.Redstone, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedGlowstone"        , 1), OP.dust.mat(MT.Glowstone, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedApatite"          , 1), OP.gem.mat(MT.Apatite, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedLapis"            , 1), OP.gem.mat(MT.Lapis, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCoal"             , 1), OP.gem.mat(MT.Coal, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCharcoal"         , 1), OP.gem.mat(MT.Charcoal, 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCarrots"          , 1), IL.Food_Carrot.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPotatoes"         , 1), IL.Food_Potato.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherwart"       , 1), ST.make(Items.nether_wart, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCookies"          , 1), ST.make(Items.cookie, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWheat"            , 1), IL.Crop_Wheat.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSeeds"            , 1), ST.make(Items.wheat_seeds, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedReeds"            , 1), ST.make(Items.reeds, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedApples"           , 1), IL.Food_Apple_Red.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedClay"             , 1), ST.make(Items.clay_ball, 9, 0));
 		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCrystallinePollen", 1), IL.FR_Pollen_Cluster_Crystalline.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPollen"          , 1), IL.FR_Pollen_Cluster.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPropolis"        , 1), IL.FR_Propolis.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRoyalJelly"      , 1), IL.FR_Royal_Jelly.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHoneydew"        , 1), ST.make(MD.FR, "honeydew", 9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSaplings"        , 1), ST.make(Blocks.sapling, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSpruceSapling"   , 1), ST.make(Blocks.sapling, 9, 1));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBirchSapling"    , 1), ST.make(Blocks.sapling, 9, 2));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedJungleSapling"   , 1), ST.make(Blocks.sapling, 9, 3));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAcaciaSapling"   , 1), ST.make(Blocks.sapling, 9, 4));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDarkOakSapling"  , 1), ST.make(Blocks.sapling, 9, 5));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCacti"           , 1), ST.make(Blocks.cactus, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedScrap"           , 1), IL.IC2_Scrap.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedResin"           , 1), IL.IC2_Resin.get(9, IL.Resin.get(9)));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedFertilizer"      , 1), IL.FR_Fertilizer.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMulch"           , 1), IL.FR_Mulch.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHoneycombs"      , 1), IL.FR_Comb_Honey.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedStringyCombs"    , 1), IL.FR_Comb_Stringy.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSimmeringCombs"  , 1), IL.FR_Comb_Simmering.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCocoaComb"       , 1), IL.FR_Comb_Cocoa.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPowderyCombs"    , 1), IL.FR_Comb_Powdery.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMossyCombs"      , 1), IL.FR_Comb_Mossy.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMellowCombs"     , 1), IL.FR_Comb_Mellow.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWheatenCombs"    , 1), IL.FR_Comb_Wheaten.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedFrozenCombs"     , 1), IL.FR_Comb_Frozen.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDrippingCombs"   , 1), IL.FR_Comb_Dripping.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSilkyCombs"      , 1), IL.FR_Comb_Silky.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedParchedCombs"    , 1), IL.FR_Comb_Parched.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMysteriousCombs" , 1), IL.FR_Comb_Mysterious.get(9));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDirt"            , 1), ST.make(Blocks.dirt, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPodzol"          , 1), ST.make(Blocks.dirt, 9, 2));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMycelium"        , 1), ST.make(Blocks.mycelium, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedStone"           , 1), ST.make(Blocks.stone, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCobblestone"     , 1), ST.make(Blocks.cobblestone, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedGravel"          , 1), ST.make(Blocks.gravel, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSoulsand"        , 1), ST.make(Blocks.soul_sand, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherrack"      , 1), ST.make(Blocks.netherrack, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherbrick"     , 1), ST.make(Blocks.nether_brick, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedObsidian"        , 1), ST.make(Blocks.obsidian, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSand"            , 1), ST.make(Blocks.sand, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRedSand"         , 1), ST.make(Blocks.sand, 9, 1));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSandstone"       , 1), ST.make(Blocks.sandstone, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBrick"           , 1), ST.make(Blocks.brick_block, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWood"            , 1), ST.make(Blocks.log, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSpruceWood"      , 1), ST.make(Blocks.log, 9, 1));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBirchWood"       , 1), ST.make(Blocks.log, 9, 2));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedJungleWood"      , 1), ST.make(Blocks.log, 9, 3));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAcaciaWood"      , 1), ST.make(Blocks.log2, 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDarkOakWood"     , 1), ST.make(Blocks.log2, 9, 1));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHumus"           , 1), ST.make(MD.FR, "soil", 9, 0));
-		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBogearth"        , 1), ST.make(MD.FR, "soil", 9, 1));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPollen"           , 1), IL.FR_Pollen_Cluster.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPropolis"         , 1), IL.FR_Propolis.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRoyalJelly"       , 1), IL.FR_Royal_Jelly.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHoneydew"         , 1), ST.make(MD.FR, "honeydew", 9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSaplings"         , 1), ST.make(Blocks.sapling, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSpruceSapling"    , 1), ST.make(Blocks.sapling, 9, 1));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBirchSapling"     , 1), ST.make(Blocks.sapling, 9, 2));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedJungleSapling"    , 1), ST.make(Blocks.sapling, 9, 3));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAcaciaSapling"    , 1), ST.make(Blocks.sapling, 9, 4));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDarkOakSapling"   , 1), ST.make(Blocks.sapling, 9, 5));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCacti"            , 1), ST.make(Blocks.cactus, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedScrap"            , 1), IL.IC2_Scrap.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedResin"            , 1), IL.IC2_Resin.get(9, IL.Resin.get(9)));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedFertilizer"       , 1), IL.FR_Fertilizer.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMulch"            , 1), IL.FR_Mulch.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHoneycombs"       , 1), IL.FR_Comb_Honey.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedStringyCombs"     , 1), IL.FR_Comb_Stringy.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSimmeringCombs"   , 1), IL.FR_Comb_Simmering.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCocoaComb"        , 1), IL.FR_Comb_Cocoa.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPowderyCombs"     , 1), IL.FR_Comb_Powdery.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMossyCombs"       , 1), IL.FR_Comb_Mossy.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMellowCombs"      , 1), IL.FR_Comb_Mellow.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWheatenCombs"     , 1), IL.FR_Comb_Wheaten.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedFrozenCombs"      , 1), IL.FR_Comb_Frozen.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDrippingCombs"    , 1), IL.FR_Comb_Dripping.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSilkyCombs"       , 1), IL.FR_Comb_Silky.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedParchedCombs"     , 1), IL.FR_Comb_Parched.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMysteriousCombs"  , 1), IL.FR_Comb_Mysterious.get(9));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDirt"             , 1), ST.make(Blocks.dirt, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedPodzol"           , 1), ST.make(Blocks.dirt, 9, 2));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedMycelium"         , 1), ST.make(Blocks.mycelium, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedStone"            , 1), ST.make(Blocks.stone, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedCobblestone"      , 1), ST.make(Blocks.cobblestone, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedGravel"           , 1), ST.make(Blocks.gravel, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSoulsand"         , 1), ST.make(Blocks.soul_sand, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherrack"       , 1), ST.make(Blocks.netherrack, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedNetherbrick"      , 1), ST.make(Blocks.nether_brick, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedObsidian"         , 1), ST.make(Blocks.obsidian, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSand"             , 1), ST.make(Blocks.sand, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedRedSand"          , 1), ST.make(Blocks.sand, 9, 1));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSandstone"        , 1), ST.make(Blocks.sandstone, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBrick"            , 1), ST.make(Blocks.brick_block, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedWood"             , 1), ST.make(Blocks.log, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedSpruceWood"       , 1), ST.make(Blocks.log, 9, 1));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBirchWood"        , 1), ST.make(Blocks.log, 9, 2));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedJungleWood"       , 1), ST.make(Blocks.log, 9, 3));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedAcaciaWood"       , 1), ST.make(Blocks.log2, 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedDarkOakWood"      , 1), ST.make(Blocks.log2, 9, 1));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedHumus"            , 1), ST.make(MD.FR, "soil", 9, 0));
+		RM.boxunbox(tEmptyCrate, ST.make(MD.FR, "cratedBogearth"         , 1), ST.make(MD.FR, "soil", 9, 1));
 		
 		RM.Juicer       .addRecipe1(T, 16,   64                                     , IL.FR_Ice_Shard           .get(1), NF, FL.Ice.make(1000), ZL_IS);
 		
@@ -389,14 +381,16 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		}});
 		}};
 		
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.Wax            .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxBee         .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxPlant       .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxParaffin    .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.Wax          .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxBee       .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxPlant     .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin  .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.genericycle(OP.casingMachine.mat(MT.Bronze, 1), IL.FR_Casing_Sturdy.get(1));
+		
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.Wax        .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxBee     .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxPlant   .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxParaffin.liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.Wax        .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxBee     .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxPlant   .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin.liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
 		
 		for (FluidStack tWater : FL.waters(1000,  800))
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , tWater, NF, IL.FR_Mulch.get(1));

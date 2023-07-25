@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,15 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.ST;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_ProjectRed extends CompatMods {
 	public Compat_Recipes_ProjectRed(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -45,5 +40,27 @@ public class Compat_Recipes_ProjectRed extends CompatMods {
 		CR.shaped(ST.make(MD.PR, "projectred.core.part", 4, 13), CR.DEF_NCC, " X", "s ", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
 		
 		RM.sawing(64, 64, F, 1000, ST.make(MD.PR, "projectred.core.part", 1, 11), ST.make(MD.PR, "projectred.core.part", 16, 12));
+		
+		RM.stonetypes(MT.STONES.Marble, F, OP.rockGt.mat(MT.STONES.Marble, 4), OP.blockDust.mat(MT.STONES.Marble, 1)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 0), NI)
+		, NI
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 1), NI)
+		, NI
+		, NI
+		, NI
+		, NI
+		, NI
+		);
+		
+		RM.stonetypes(MT.STONES.Basalt, F, OP.rockGt.mat(MT.STONES.Basalt, 4), OP.blockDust.mat(MT.STONES.Basalt, 1)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 3), NI)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 2), NI)
+		, RM.stoneshapes(MT.STONES.Basalt, F, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4), NI, NI, ST.make(MD.PR_EXPLORATION, "projectred.exploration.stonewalls", 1, 4), NI)
+		, NI
+		, NI
+		, NI
+		, NI
+		, NI
+		);
 	}
 }

@@ -19,14 +19,6 @@
 
 package gregapi.item.multiitem;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.List;
-
-import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import enviromine.handlers.EM_StatusManager;
@@ -37,14 +29,8 @@ import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
-import gregapi.data.CS.ModIDs;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.item.IItemEnergy;
 import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.multiitem.energy.EnergyStatDebug;
@@ -56,9 +42,6 @@ import gregapi.oredict.OreDictManager;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import ic2.api.item.IElectricItemManager;
-import ic2.api.item.ISpecialElectricItem;
-import micdoodle8.mods.galacticraft.api.item.IItemElectric;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,20 +54,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  * 
  * For Custom Items.
  */
-@Optional.InterfaceList(value = {
-  @Optional.Interface(iface = "squeek.applecore.api.food.IEdible", modid = ModIDs.APC)
-, @Optional.Interface(iface = "ic2.api.item.IItemReactorPlanStorage", modid = ModIDs.IC2C)
-, @Optional.Interface(iface = "ic2.api.item.IBoxable", modid = ModIDs.IC2)
-, @Optional.Interface(iface = "ic2.api.item.ISpecialElectricItem", modid = ModIDs.IC2)
-, @Optional.Interface(iface = "ic2.api.item.IElectricItemManager", modid = ModIDs.IC2)
-, @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.item.IItemElectric", modid = ModIDs.GC)
-})
-public abstract class MultiItemRandom extends MultiItem implements Runnable, squeek.applecore.api.food.IEdible, ic2.api.item.IBoxable, ic2.api.item.IItemReactorPlanStorage, ISpecialElectricItem, IElectricItemManager, IItemElectric {
+public abstract class MultiItemRandom extends MultiItem implements Runnable {
 	public final BitSet mEnabledItems = new BitSet(32767);
 	public final BitSet mVisibleItems = new BitSet(32767);
 	public final IIcon[][] mIconList = new IIcon[32767][1];
@@ -127,15 +109,16 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	}
 	
 	protected short mLastID = W;
-	public ItemStack last() {return ST.make(this, 1, mLastID);}
-	public ItemStack next() {return ST.make(this, 1, mLastID+1);}
+	public ItemStack last() {return last(1);}
+	public ItemStack last(int aAmount) {return ST.make(this, aAmount, mLastID);}
+	public ItemStack next() {return next(1);}
+	public ItemStack next(int aAmount) {return ST.make(this, aAmount, mLastID+1);}
 	
 	/**
 	 * This adds a Custom Item.
 	 * @param aID The Id of the assigned Item [0 - 32766]
 	 * @param aEnglish The Default Localised Name of the created Item
 	 * @param aToolTip The Default ToolTip of the created Item, you can also insert null for having no ToolTip
-	 * @param aFoodBehavior The Food Value of this Item. Can be null aswell. Just a convenience thing.
 	 * @param aRandomData The OreDict Names you want to give the Item. Also used for TC Aspects and some other things.
 	 * @return An ItemStack containing the newly created Item.
 	 */
@@ -284,13 +267,6 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	/**
 	 * @param aMetaValue the Meta Value of the Item you want to set it to. [0 - 32766]
-	 * @param aMaxCharge Maximum Charge. (if this is == 0 it will remove the Electric Behavior)
-	 * @param aTransferLimit Transfer Limit.
-	 * @param aTier The electric Tier.
-	 * @param aSpecialData If this Item has a Fixed Charge, like a SingleUse Battery (if > 0).
-	 * Use -1 if you want to make this Battery chargeable (the use and canUse Functions will still discharge if you just use this)
-	 * Use -2 if you want to make this Battery dischargeable.
-	 * Use -3 if you want to make this Battery charge/discharge-able.
 	 * @return the Item itself for convenience in constructing.
 	 */
 	public MultiItemRandom setFluidContainerStats(int aMetaValue, long aCapacity, long aStacksize) {
@@ -352,15 +328,6 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	@Override
 	public Long[] getFluidContainerStats(ItemStack aStack) {
 		return mFluidContainerStats.get(ST.meta_(aStack));
-	}
-	
-	@Override
-	@Optional.Method(modid = ModIDs.APC)
-	public squeek.applecore.api.food.FoodValues getFoodValues(ItemStack aStack) {
-		IFoodStat tStat = mFoodStats.get((short)getDamage(aStack));
-		if (tStat == null) return null;
-		int tFoodLevel = tStat.getFoodLevel(this, aStack, null);
-		return tFoodLevel > 0 ? new squeek.applecore.api.food.FoodValues(tFoodLevel, tStat.getSaturation(this, aStack, null)) : null;
 	}
 	
 	@Override
@@ -439,17 +406,14 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 		if (tStat != null) tStat.addAdditionalToolTips(this, aList, aStack, aF3_H);
 	}
 	
-	@Override
 	public boolean canBeStoredInToolbox(ItemStack aStack) {
 		return mElectricStats.get(ST.meta(aStack)) != null;
 	}
 	
-	@Override
 	public boolean isPlanStorage(ItemStack aStack) {
 		return OM.is(OD_USB_STICKS[2], aStack);
 	}
 	
-	@Override
 	public boolean setSetup(ItemStack aStack, String aSetup) {
 		if (OM.is(OD_USB_STICKS[2], aStack)) {
 			if (!aStack.hasTagCompound()) aStack.setTagCompound(UT.NBT.make());
@@ -460,21 +424,15 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 		return F;
 	}
 	
-	@Override
 	public void setPlanName(ItemStack aStack, String aName) {
 		aStack.getTagCompound().getCompoundTag(NBT_USB_DATA).setString(NBT_REACTOR_SETUP_NAME, aName);
 	}
 	
-	@Override
 	public boolean hasSetup(ItemStack aStack) {
 		return OM.is(OD_USB_STICKS[2], aStack) && aStack.hasTagCompound() && aStack.getTagCompound().getCompoundTag(NBT_USB_DATA).hasKey(NBT_REACTOR_SETUP);
 	}
 	
-	@Override
 	public String getSetup(ItemStack aStack) {
 		return aStack.getTagCompound().getCompoundTag(NBT_USB_DATA).getString(NBT_REACTOR_SETUP);
 	}
-	
-	@Override @Optional.Method(modid = ModIDs.IC2)
-	public IElectricItemManager getManager(ItemStack aStack) {return this;}
 }

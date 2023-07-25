@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,22 +19,11 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.BI;
-import gregapi.data.CS.SFX;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
@@ -47,10 +36,15 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -100,7 +94,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 			}
 			if (SIDES_VERTICAL[aSide] || ALONG_AXIS[mFacing][aSide]) {
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				if (aStack == null || mRecipes == null || !UT.Entities.isPlayer(aPlayer)) {
+				if (ST.invalid(aStack) || mRecipes == null || !UT.Entities.isPlayer(aPlayer)) {
 					mClickCount = 0;
 				} else if (mStone <= 0) {
 					if (OM.is(OP.stone.dat(MT.SoulSand), aStack)) {
@@ -108,7 +102,12 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 							mClickCount = 0;
 							mStone = 16;
 						}
-					} else if (OM.is(OP.stone.dat(MT.EndSand), aStack)) {
+					} else if (OM.is(OP.stone.dat(MT.EndSandWhite), aStack)) {
+						if (ST.use(aPlayer, aStack)) {
+							mClickCount = 0;
+							mStone = 16;
+						}
+					} else if (OM.is(OP.stone.dat(MT.EndSandBlack), aStack)) {
 						if (ST.use(aPlayer, aStack)) {
 							mClickCount = 0;
 							mStone = 16;
@@ -130,22 +129,37 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						}
 					}
 				} else if (UT.Entities.hasInfiniteItems(aPlayer)) {
-					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
-					if (tRecipe != null) {
-						mLastRecipe = tRecipe;
-						if (tRecipe.isRecipeInputEqual(F, T, ZL_FS, ST.array(aStack))) {
-							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+					int tXP = UT.NBT.getEnchantmentXP(aStack);
+					if (tXP > 0) {
+						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(ST.amount(1, aStack)), F);
+						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
+					} else {
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+						if (tRecipe != null) {
+							mLastRecipe = tRecipe;
+							if (tRecipe.isRecipeInputEqual(F, T, ZL_FS, ST.array(aStack))) {
+								for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+							}
 						}
 					}
-				} else if (++mClickCount >= 20) {
+				} else if (++mClickCount >= 10) {
 					mClickCount = 0;
-					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
-					if (tRecipe != null) {
-						mLastRecipe = tRecipe;
-						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
-							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
-							aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
-							mStone--;
+					int tXP = UT.NBT.getEnchantmentXP(aStack);
+					if (tXP > 0) {
+						ItemStack tOutput = ST.amount(1, aStack);
+						ST.use(aPlayer, T, F, aStack, 1);
+						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
+						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
+						aPlayer.addExhaustion(0.25F);
+					} else {
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+						if (tRecipe != null) {
+							mLastRecipe = tRecipe;
+							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
+								for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+								aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
+								mStone--;
+							}
 						}
 					}
 				}

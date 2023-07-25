@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -194,6 +194,8 @@ public class Loader_Fuels implements Runnable {
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
 		if (FL.Lava_Volcanic.exists())
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA, FL.Lava_Volcanic.make(1)           , FL.Lava_Pahoehoe.make(1), ZL_IS);
+		if (FL.Hot_Water.exists())
+		FM.Hot          .addRecipe0(T, -  2,  1, FL.Hot_Water.make(1)                        , FL.Water.make(1), ZL_IS);
 		if (FL.Water_Hot.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
 		if (FL.Water_Boiling.exists())

@@ -19,16 +19,12 @@
 
 package gregapi.item;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import forestry.api.apiculture.IArmorApiarist;
 import gregapi.GT_API;
-import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
@@ -54,9 +50,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.util.EnumHelper;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -150,7 +151,8 @@ public class ItemArmorBase extends ItemArmor implements IItemUpdatable, IItemGT,
 	@Override public final Item setUnlocalizedName(String aName) {return this;}
 	@Override public String toString() {return mName;}
 	@Override public final String getUnlocalizedName() {return mName;}
-	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+getDamage(aStack):mName;}
+	@Override public String getUnlocalizedName(ItemStack aStack) {return getHasSubtypes()?mName+"."+ST.meta_(aStack):mName;}
+	@Override public String getItemStackDisplayName(ItemStack aStack) {return StatCollector.translateToLocal(getUnlocalizedName(aStack));}
 	@Override public final boolean getShareTag() {return T;} // just to be sure.
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aIconRegister) {mIcon = aIconRegister.registerIcon(mModID + ":" + "armor/" + mArmorName + "/" + armorType);}
 	@Override public IIcon getIconFromDamage(int aMeta) {return mIcon;}

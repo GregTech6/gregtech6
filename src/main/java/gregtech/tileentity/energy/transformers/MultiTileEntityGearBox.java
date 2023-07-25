@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,9 @@
 
 package gregtech.tileentity.energy.transformers;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetOreDictItemData;
 import gregapi.code.TagData;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -54,6 +47,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -61,7 +59,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public boolean mJammed = F, mUsedGear = F, mGearsWork = F;
 	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredLast = 0;
 	public short mAxleGear = 0;
-	public byte mInputtedSides = 0, mOrder = 0, mRotationData = 0, oRotationData = 0, mIgnorePower = 0;
+	public byte mInputtedSides = 0, oInputtedSides = 0, mOrder = 0, mRotationData = 0, oRotationData = 0, mIgnorePower = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -128,7 +126,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			if (aPlayerInventory != null) for (int i = 0, j = aPlayerInventory.getSizeInventory(); i < j; i++) {
 				OreDictItemData tData = OM.data(aPlayerInventory.getStackInSlot(i));
-				if (tData != null && tData.mPrefix == OP.gearGt && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
+				if (tData != null && tData.mPrefix == OP.gearGt && tData.mMaterial != null && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					if (aPlayer == null) aPlayerInventory.decrStackSize(i, 1); else ST.use(aPlayer, T, aPlayerInventory.getStackInSlot(i));
 					mAxleGear |= B[tSide];
 					mJammed = F;
@@ -159,6 +157,18 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			updateClientData();
 			causeBlockUpdate();
 			return 10000;
+		}
+		if (aTool.equals(TOOL_tachometer)) {
+			if (aChatReturn != null) {
+				if (FACE_CONNECTED[0][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][0]) aChatReturn.add(FACE_CONNECTED[0][mInputtedSides] ? "Accepts from Bottom" : "Emits to Bottom");
+				if (FACE_CONNECTED[1][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][1]) aChatReturn.add(FACE_CONNECTED[1][mInputtedSides] ? "Accepts from Top"    : "Emits to Top");
+				if (FACE_CONNECTED[2][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][2]) aChatReturn.add(FACE_CONNECTED[2][mInputtedSides] ? "Accepts from North"  : "Emits to North");
+				if (FACE_CONNECTED[3][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][3]) aChatReturn.add(FACE_CONNECTED[3][mInputtedSides] ? "Accepts from South"  : "Emits to South");
+				if (FACE_CONNECTED[4][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][4]) aChatReturn.add(FACE_CONNECTED[4][mInputtedSides] ? "Accepts from West"   : "Emits to West");
+				if (FACE_CONNECTED[5][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][5]) aChatReturn.add(FACE_CONNECTED[5][mInputtedSides] ? "Accepts from East"   : "Emits to East");
+				aChatReturn.add(mTransferredLast + " RU/t");
+			}
+			return 1;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			mGearsWork = checkGears();
@@ -206,6 +216,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			mTransferredLast -= Math.abs(mCurrentPower * mCurrentSpeed);
 			if (!mUsedGear) mRotationData &= ~B[6];
+			oInputtedSides = mInputtedSides;
 			mInputtedSides = 0;
 			mUsedGear = F;
 		}

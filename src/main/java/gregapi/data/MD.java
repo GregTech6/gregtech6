@@ -81,6 +81,7 @@ public class MD {
 	, TE                = new ModData(ModIDs.TE                 , "Thermal Expansion")
 	, TE_FOUNDATION     = new ModData(ModIDs.TE_FOUNDATION      , "Thermal Foundation")
 	, TE_DYNAMICS       = new ModData(ModIDs.TE_DYNAMICS        , "Thermal Dynamics")
+	, TE_DRILLS         = new ModData(ModIDs.TE_DRILLS          , "RF Drills")
 	
 	, AE                = new ModData(ModIDs.AE                 , "Applied Energistics")
 	, MO                = new ModData(ModIDs.MO                 , "Matter Overdrive")
@@ -110,6 +111,7 @@ public class MD {
 	, LOSTBOOKS         = new ModData(ModIDs.LOSTBOOKS          , "Lost Books")
 	, LOOTBAGS          = new ModData(ModIDs.LOOTBAGS           , "Lootbags")
 	, EUREKA            = new ModData(ModIDs.EUREKA             , "Eureka")
+	, VN4               = new ModData(ModIDs.VN4                , "Village Names")
 	
 	, UB                = new ModData(ModIDs.UB                 , "Underground Biomes")
 	, COG               = new ModData(ModIDs.COG                , "Custom Ore Generation")
@@ -175,7 +177,7 @@ public class MD {
 	, MoCr              = new ModData(ModIDs.MoCr               , "Mo'Creatures")
 	, GoG               = new ModData(ModIDs.GoG                , "Grimoire of Gaia")
 	, DRPG              = new ModData(ModIDs.DRPG               , "Divine RPG")
-	, PdC               = new ModData(ModIDs.PdC                , "Psychedelicraft") // Wait, why did I add some compat to this Drug Mod again!?!
+	, PdC               = new ModData(ModIDs.PdC                , "Psychedelicraft") // Wait, why did I add some compat to this Drug Mod again?
 	, Bamboo            = new ModData(ModIDs.Bamboo             , "Bamboo Mod")
 	, PMP               = new ModData(ModIDs.PMP                , "Plant Mega Pack")
 	, Fossil            = new ModData(ModIDs.Fossil             , "Fossils and Archeology")

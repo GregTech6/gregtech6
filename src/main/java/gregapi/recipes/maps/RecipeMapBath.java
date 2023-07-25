@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
-import gregapi.data.ANY;
-import gregapi.data.CS.FluidsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.item.IItemColorableRGB;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
@@ -46,6 +38,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -136,7 +132,7 @@ public class RecipeMapBath extends RecipeMap {
 					return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, FL.array(FL.mul(aDye, 1, 8, T)), ZL_FS, 512, 0, 0);
 				}
 			}
-			if (ST.food(aInput) > 0 && FL.getFluid(aInput, T) == null) {
+			if (ST.edible(aInput) && FL.getFluid(aInput, T) == null) {
 				ItemStack tOutput = ST.amount(1, aInput);
 				NBTTagCompound tNBT = UT.NBT.getNBT(tOutput);
 				tOutput.setTagCompound(tNBT);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregapi.recipes.maps;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
@@ -50,6 +45,11 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -108,8 +108,8 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		
 		if (ST.invalid(tOutput)) return null; 
 		
-		ArrayListNoNulls<ItemStack> tInputs  = new ArrayListNoNulls<>();
-		ArrayListNoNulls<ItemStack> tOutputs = new ArrayListNoNulls<>(F, tOutput);
+		ArrayListNoNulls<ItemStack> tInputs  = ST.arraylist();
+		ArrayListNoNulls<ItemStack> tOutputs = ST.arraylist(tOutput);
 		
 		for (ItemStack tPlan : tBlueprint) if (tPlan != null) {
 			boolean temp = T;

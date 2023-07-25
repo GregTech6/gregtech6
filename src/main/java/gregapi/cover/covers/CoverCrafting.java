@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
 import gregapi.cover.CoverData;
 import gregapi.render.ITexture;
 import net.minecraft.entity.Entity;
@@ -28,6 +26,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
@@ -54,5 +55,6 @@ public class CoverCrafting extends CoverTextureMulti {
 	}
 	
 	@Override public boolean isSealable(byte aCoverSide, CoverData aData) {return F;}
+	@Override public boolean isDecorative(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,7 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItem;
@@ -35,6 +33,8 @@ import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Scoop extends ToolStats {
 	public static Material sBeeHiveMaterial;
@@ -83,8 +83,7 @@ public class GT_Tool_Scoop extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_scoop)) || aBlock.getMaterial() == sBeeHiveMaterial;
+		return TOOL_scoop.equalsIgnoreCase(aBlock.getHarvestTool(aMetaData)) || aBlock.getMaterial() == sBeeHiveMaterial;
 	}
 	
 	@Override

@@ -1,35 +1,97 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.16.04: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.16.03: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.16.02: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
+[IMPORTANT]
+There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
+Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
+The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
+Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
+Wooden Buckets will still be able to handle Rainbow Tree Sap.
+Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained.
+Once the next Update is out, Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
+[IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
+[IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
+[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics, The Betweenlands and Twilight Forest now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
+[COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
+[COMPAT] Et Futurum Requiem should be updated to latest if you dont have already.
+[COMPAT] Twilight Forest Magic Maps, Maze Maps and Ore Maps now have Scanner and Printer Recipes respectively. By the way did you know the Maze Map works literally ANYWHERE and not just Mazes? You just need a relatively flat Dungeon or Mineshaft to go through, or maybe even your Base!
+[FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
+[FIXED] Village Names should no longer crash with the Blacksmith Chest.
+[FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.
+[FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
+[FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
+[FIXED] Looting Bullets and Arrows were not working in Twilight Forest due to the Fake Player not having Progression Achievements.
+[FIXED] Magical Bumblebees can now use (placed) Rainbow Leaves as their Flowers, so that they now also work without any other Mods.
+[CHANGED] Werebane Enchantment now also works on Minotaurs. Good for Twilight Mazes.
+[CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
+[CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
+[CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
+[CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also finally hit the Ender Dragon and End Crystals too. Also Magical Damage from Enchantments will now be doubled or tripled for the Medium and Large Bullets, to correspond with the increased Normal Damage.
+[CHANGED] Smite 3+ Bullets can break the Twilight Lich Barrier, making it possible to actually harm the Lich in Multiplayer when your ping's ass.
+[CHANGED] Railcrafts Implosion Enchantment (if on a GT6 Item) is now more Effective against all kinds of Ghasts. Also if you have Implosion and Fire Aspect on the same Projectile, the Fire Aspect will NOT ignite the Creeper like it usually would.
+[CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles in the Bath.
+[ADDED] Recipes to perpetually get otherwise non-renewable Loot Stuff out of Twilight Forest Trophies. The Trophies act as Catalysts and you have to supply some other Material to convert it.
+[ADDED] Magic Field Absorber. It generates 64 of whatever Energy the thing placed ontop of it makes. Dragon Eggs are Quantum Units and Twilight Forest Trophies have KU, QU, HU, LU and CU in this order.
+[ADDED] Boxinator can now assemble empty Maps. Also applies to the two Twilight Forest Maps.
+[ADDED] The Grindstone can now disenchant Tools and give XP for doing so. Does not work on GT Tools for obvious reasons.
+[ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
+[ADDED] Vine Ropes. Also you can now harvest Vines with GT6 Swords and Knifes.
+[ADDED] Salted Water, which is just the KCl version of Saltwater. Adjusted and added some Chemistry Recipes for that.
+[ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
+[ADDED] Non-Functional-Tools, which are similar to the Robot Arm Tips in that they can be used as Single Use Tools in Crafting, but look uglier. This is mostly only useful for things like Applied Energistics or Logistics Pipes, which cannot handle NBT very well. You can mint them by putting Tiny Steel or Rubber Plates and Robot Arm Tips into a Boxinator. The Robot Arm Tips will not be used up.
+[ADDED] Drain Covers can now partially drain GT6 Fluid Blocks.
+[ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
+[ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
+[ADDED] Meteoric Steels and Damascus Steel can now be upgraded with Twilight Forests Fiery Blood or Fiery Tears for improving Tool Quality, Tool Speed, Mazebreaking, Fire Aspect and Autosmelt.
+[ADDED] Arsenic Copper (Cu+Cu+Cu+As) and Arsenic Bronze (Cu+Cu+Cu+As+Sn), with Tool Quality between Bronze and Steel, the Decorative Blocks Set (Hoppers, Shelves etc), Item Pipes, Boilers, Burning Boxes, Steam Engines, Anvils, Earlygame Furnace Compounds like regular Bronze, and a High Level Dissolving Enchantment against Slimes.
 
 
-6.16.01: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.16.01:
+[IMPROVED] The GT Wrenches can now harvest some Machines from other Mods too. Specifically Applied Energistics, Forestry, Funky Locomotion and Railcraft. Buildcraft and Minefactory Reloaded were already on that List.
+[FIXED] a Serverside Only Crash because the Lang File does not exist on Servers. Happened while I made Books localizable, lol. But it's fixed now.
+[FIXED] Electric Wires and cables did not connect properly to other Mods Blocks, especially IC2, but only when Funky Locomotion was NOT installed.
+[ADDED] AE Quartz Fixtures count as Torches to GT6 Tools now.
+[ADDED] Sensor Blocks can now be crafted into themselves to wipe their Settings.
+[ADDED] Clay Mold Recipes for Files and Chisels. It is a Stick and a Plank, or two Planks, along with the Clay Mold.
 
 
-6.16.00: (Not released yet)
+6.16.00:
 [IMPORTANT] I removed ".name" from pretty much all Lang File Entries, because it was absolutely redundant and caused duplicate Entries at times. A simple Search&Replace with ".name=" and "=" BEFORE loading Minecraft, should fix it.
 [COMPAT] I added more Betweenlands and Erebus Data and Recipes. Also Limestone is marked as "Betweenlandsproof" since it exists in there too.
-[FIXED] Et Futurum Paths being converted to GT6 Paths shouldn't make you fall through the ground all that hard anymore.
+[COMPAT] Warp Drive Mod should work with GT6 Machines, Pipes, Wires and Covers and such when it comes to rotating your Ship.
+[FIXED] A Tool Crafting Sound Issue on the GT Crafting Table supposedly related to Blueprints. I rewrote the thing so the old Issue is fixed, but I have no Idea if any other Issues showed up that I did not find in testing.
+[FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
 [FIXED] Weight-O-Meter now works on Raw Ore Items in Chests and Stuff.
 [FIXED] The Fluid Filter Block was slightly bugged in regards of its GUI. It should now work and have the same special cases as the Fluid Filter Cover.
 [FIXED] Basic Machines outputted Items in a bad way, resulting in them getting stuck with their Garbage in the Output Slots.
 [FIXED] Extruder Recipes now have two Output Slots in case of certain Recipes that output more than one Stack worth of Stuff.
-[FIXED] Ender Garbage Bin did not respect its Redstoned State in regards to preventing Fluid Input.
-[FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
 [FIXED] The RF to GT Converters should work slightly less overloady now.
+[FIXED] Efficiency Tooltip of the Electric Engines showed double of what it was supposed to be, because of old code factoring in the push/pull Stuff a second time.
+[FIXED] Botania Tools sometimes being eaten by Botania Flowers that happen to consume Furnace Fuel, due to me adding Furnace Fuel Data to their Livingwood Handles.
 [FIXED] Language File shouldn't show certain "localized fluid name to localized fluid name" Entries anymore.
 [FIXED] High End Extreme Nuclear Reactors were causing severe Lag due to the absurd range of their Radiation Damage ending up in loading Chunks.
+[FIXED] Et Futurum Paths being converted to GT6 Paths shouldn't make you fall through the ground all that hard anymore.
 [CHANGED] A bunch of Plastic and Rubber consuming Recipes are now more oredict sensitive. If anything went wrong with the conversion please report.
 [CHANGED] Gibbl-O-Meter can now read how many Nuggets worth of Material are in a Crucible. It rounds up for partial Nuggets. Yes Multiblock Crucible works too for this.
 [CHANGED] The Debarker is now renamed to Pressure Washer. It can now also clean Moss off of Stone, and uses a less insane amount of Water overall.
+[CHANGED] GT Builder Wand can now place PrefixBlocks, as in the 9xBlocks, the Crates and ofcourse the Ores (might help with placing silktouched Ores for Dynamite use).
 [ADDED] Road Stripes, which act like permanent Minecart Booster Tracks. They are integrated into the Streets Worldgen too, as a barely noticeable way of riding a Minecart along the Road. Please note that they are DIFFERENT from regular Rails in a lot of ways, such as lack of Curves or Slopes.
 [ADDED] Chemical Recipe for converting Trona to Baking Soda.
-[ADDED] Extender Bridges, which work like Extenders but instead of having configurable facings they always connect to the opposite side of the Extender. Good for Pipe Crossings.
+[ADDED] Extender Bridges, which work like Extenders but instead of having configurable facings they always connect to the opposite side of the Extender. Good for Pipe Crossings. The Item Pipe Network will NOT be "split up" by using an Inventory Bridge, it will path through it as if its a zero length path.
 [ADDED] Leather Armor + Knife = some Leather, in the Crafting Table.
-[ADDED] You can generify the different Mineral Oil Types into Basic Buildcraft Oil at a loss.
+[ADDED] You can generify the various different Light/Medium/Heavy Oil Types into Basic (Buildcraft) Oil at a loss.
 [ADDED] Moss Items from other Mods can be rightclicked onto GT6 Stones, if there is a Mossy Version of them.
 [ADDED] Config to make GT6 Tree Leaves decay a lot slower. Don't know why anyone would want it but apparently this would fix Steves Carts Tree Automation.
 [ADDED] Small Item Casing Recipe using Tiny Plates on the Crafting Table or the Boxinator.
@@ -2951,7 +3013,7 @@ Now Growthcrafts Grape Juice is the Purple one, Binnies old Grape Juices are Red
 Also Purple Grape Juice now turns into Ricardo Sanchez, what is a Wine that is named very similarily to a character in Rick&Morty. I got that Idea, because I literally saw a Bottle of it at home. (because people are gifting random Bottles of Alcohol to others during Holidays, that no one ever drinks, or that just get re-gifted)
 [ADDED]
 It was time that those get a bit updated, so GT6 Dungeons now spawn with the following Stuff:
-Colored Porcellain Cups and Coins in the Barracks and Libraries*, some of the Cups even being filled with a random Drink. (* = only with the Thaumcraft Library Design, Cups in any Library Design always have stretched Night Vision Potions, because that makes total sense, being a place where you need your eyes to read stuff)
+Colored Porcellain Cups and Coins in the Sleeping Area and the Libraries*, some of the Cups even being filled with a random Drink. (* = only with the Thaumcraft Library Design, Cups in any Library Design always have stretched Night Vision Potions, because that makes total sense, being a place where you need your eyes to read stuff)
 A new un-lit Nether Portal Room, similar to the already existing End Portal Room. (Does not always have to generate)
 The Crate Room now also contains Barrels and Drums with useful raw Materials (including Stainless Drums full of different kinds of Raw Oil).
 A Room with a Pool and random Glowtus Pads in it, which can contain up to 4 Chests with the Bonus Chest Loot.
@@ -3990,7 +4052,7 @@ And because that stupid Question came up way too often on Forums and IRC: NO, I 
 [ADDED] Different Icons for different Forestry Letter Sizes in the GT Bookshelf.
 [ADDED] Redstoned Versions of the GT Bricks. (and used them to power the Redstone Lamps in the GT6 Dungeons)
 [ADDED] Spawn Height and Room Density Config for GT6 Dungeons.
-[ADDED] Barracks to the GT6 Dungeons.
+[ADDED] Sleeping Area to the GT6 Dungeons.
 [ADDED] Chests to "T" shaped Corridor Segments. Also improved Corridor placement by optimizing useless Corridors away.
 [ADDED] Surface Entrance, meaning it is visible on Surface now, meaning I can half the chance so it is 5% instead of 10% to be within the currently loaded chunks.
 [ADDED] End Portal Room. This can be turned off in the Config though.

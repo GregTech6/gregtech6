@@ -42,8 +42,8 @@ public class Loader_Recipes_Decomp implements Runnable {
 				if (aMaterial.contains(TD.Processing.CENTRIFUGE)) tRecipeMaps.add(RM.Centrifuge);
 				if (aMaterial.contains(TD.Processing.ELECTROLYSER)) tRecipeMaps.add(RM.Electrolyzer);
 				if (!tRecipeMaps.isEmpty()) {
-					ArrayListNoNulls<ItemStack>  tStackOutputs = new ArrayListNoNulls<>();
-					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls<>();
+					ArrayListNoNulls<ItemStack>  tStackOutputs = ST.arraylist();
+					ArrayListNoNulls<FluidStack> tFluidOutputs = FL.arraylist();
 					long tAmount = 0;
 					
 					for (OreDictMaterialStack tMaterial : tComponents.getUndividedComponents()) {
@@ -88,6 +88,16 @@ public class Loader_Recipes_Decomp implements Runnable {
 									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T)           , aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								}
 							}
+							if (tComponents.getCommonDivider() % 9 == 0) {
+							aStack = OP.blockDust.mat(aMaterial, tComponents.getCommonDivider() / 9);
+							if (aStack != null) {
+								temp = F;
+								if (tRecipeMap == RM.Electrolyzer) {
+									tRecipeMap.addRecipe2(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
+								} else {
+									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T)           , aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
+								}
+							}}
 						}
 					}
 				}

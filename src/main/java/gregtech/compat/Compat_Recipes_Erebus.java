@@ -89,7 +89,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 3), ST.make(MD.ERE, "umbercobbleStairs3", 1, 0), ST.make(MD.ERE, "slab-umberstone3"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 3), NI);
 		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberPaver", 1, 1), NI                                         , ST.make(MD.ERE, "slab-umberPaver1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 6), NI);
 		RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberPaver", 1, 2), NI                                         , NI                                          , ST.make(MD.ERE, "wallErebus"         , 1, 7), NI);
-		RM.stonetypes(MT.STONES.Umber, T
+		RM.stonetypes(MT.STONES.Umber, T, OP.rockGt.mat(MT.STONES.Umber, 4), OP.blockDust.mat(MT.STONES.Umber, 1)
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 0), ST.make(MD.ERE, "umbercobbleStairs0", 1, 0), ST.make(MD.ERE, "slab-umberstone0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 0), NI)
 		, RM.stoneshapes(MT.STONES.Umber, T, ST.make(MD.ERE, "umberstone", 1, 1), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "slab-umberstone1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 1), NI)
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 4), ST.make(MD.ERE, "umbercobbleStairs4", 1, 0), ST.make(MD.ERE, "slab-umberstone4"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 4), NI)
@@ -97,10 +97,11 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		, NI
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0))
 		, RM.stoneshapes(MT.STONES.Umber, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI)
+		, NI
 		);
 		
 		
-		RM.stonetypes(MT.STONES.Gneiss, F
+		RM.stonetypes(MT.STONES.Gneiss, F, OP.rockGt.mat(MT.STONES.Gneiss, 4), OP.blockDust.mat(MT.STONES.Gneiss, 1)
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 0), ST.make(MD.ERE, "gneissStairs0", 1, 0), NI, NI, NI)
 		, NI
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 3), ST.make(MD.ERE, "gneissStairs3", 1, 0), NI, NI, NI)
@@ -108,6 +109,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 1), ST.make(MD.ERE, "gneissStairs1", 1, 0), NI, NI, NI)
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 4), ST.make(MD.ERE, "gneissStairs4", 1, 0), NI, NI, NI)
 		, RM.stoneshapes(MT.STONES.Gneiss, F, ST.make(MD.ERE, "gneiss", 1, 5), ST.make(MD.ERE, "gneissStairs5", 1, 0), NI, NI, NI)
+		, NI
 		);
 		
 		
