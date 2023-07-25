@@ -19,11 +19,10 @@
 
 package gregtech.items;
 
-import gregapi.code.ItemStackContainer;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
@@ -38,7 +37,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 
 import static gregapi.data.CS.*;
 
-public class MultiItemTechnological extends MultiItemRandom {
+public class MultiItemTechnological extends MultiItemRandomWithCompat {
 	public MultiItemTechnological(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Technology", this, (short)30501));
@@ -255,38 +254,38 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_Extruder_Pipe_Large      .get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
 		CR.shaped(IL.Shape_Extruder_Pipe_Huge       .get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_Extruder_Plate_Curved);
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Empty.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Plate.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Rod_Long.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Bolt.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Ring.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Cell.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Ingot.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Wire.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Casing.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pipe_Tiny.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pipe_Small.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pipe_Medium.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pipe_Large.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pipe_Huge.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Block.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Sword.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Pickaxe.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Shovel.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Axe.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Hoe.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Hammer.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_File.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Saw.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Gear.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Bottle.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Plate_Curved.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Gear_Small.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Rod.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_CCC.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Foil.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Plate_Tiny.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Wire_Fine.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Empty, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Plate, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Rod_Long, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Bolt, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Ring, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Cell, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Ingot, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Wire, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Casing, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pipe_Tiny, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pipe_Small, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pipe_Medium, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pipe_Large, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pipe_Huge, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Block, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Sword, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Pickaxe, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Shovel, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Axe, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Hoe, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Hammer, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_File, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Saw, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Gear, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Bottle, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Plate_Curved, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Gear_Small, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Rod, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_CCC, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Foil, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Plate_Tiny, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Extruder_Wire_Fine, (byte)45);
 		
 		
 		
@@ -364,38 +363,38 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_SimpleEx_Pipe_Large      .get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
 		CR.shaped(IL.Shape_SimpleEx_Pipe_Huge       .get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_SimpleEx_Plate_Curved);
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Empty.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Plate.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Rod_Long.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Bolt.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Ring.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Cell.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Ingot.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Wire.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Casing.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pipe_Tiny.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pipe_Small.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pipe_Medium.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pipe_Large.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pipe_Huge.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Block.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Sword.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Pickaxe.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Shovel.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Axe.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Hoe.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Hammer.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_File.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Saw.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Gear.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Bottle.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Plate_Curved.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Gear_Small.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Rod.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_CCC.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Foil.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Plate_Tiny.get(1)), (byte)55);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Wire_Fine.get(1)), (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Empty, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Plate, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Rod_Long, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Bolt, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Ring, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Cell, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Ingot, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Wire, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Casing, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pipe_Tiny, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pipe_Small, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pipe_Medium, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pipe_Large, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pipe_Huge, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Block, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Sword, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Pickaxe, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Shovel, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Axe, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Hoe, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Hammer, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_File, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Saw, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Gear, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Bottle, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Plate_Curved, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Gear_Small, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Rod, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_CCC, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Foil, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Plate_Tiny, (byte)55);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_SimpleEx_Wire_Fine, (byte)55);
 		
 		
 		IL.Shape_Foodmold_Empty            .set(addItem(tLastID = 10800, "Empty Food Grade Mold"            , "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
@@ -414,12 +413,12 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_Foodmold_Cylinder        .get(1), CR.DEF_REV, "   ", " Ph", "   ", 'P', IL.Shape_Foodmold_Empty);
 		CR.shaped(IL.Shape_Foodmold_Toast           .get(1), CR.DEF_REV, "   ", " P ", "  h", 'P', IL.Shape_Foodmold_Empty);
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Empty.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bun.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bread.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Baguette.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Cylinder.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Toast.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Empty, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Bun, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Bread, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Baguette, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Cylinder, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Foodmold_Toast, (byte)45);
 		
 		
 		
@@ -432,9 +431,9 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_Press_Bullet_Casing_Medium.get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateTriple.dat(ANY.Steel));
 		CR.shaped(IL.Shape_Press_Bullet_Casing_Large .get(1), CR.DEF_REV, "TPT", "dyh", "SPS", 'S', OP.stick.dat(ANY.Steel), 'T', OP.screw.dat(ANY.Steel), 'P', OP.plateQuadruple.dat(ANY.Steel));
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Small .get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Medium.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Press_Bullet_Casing_Large .get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Press_Bullet_Casing_Small , (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Press_Bullet_Casing_Medium, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Press_Bullet_Casing_Large , (byte)45);
 		
 		
 		
@@ -458,14 +457,14 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Shape_Slicer_Quarters          .get(1), CR.DEF_REV, "fB ", "B s", " O ", 'O', IL.Shape_Slicer_Empty, 'B', OP.plateTiny.dat(MT.StainlessSteel));
 		CR.shaped(IL.Shape_Slicer_Quarters_Hollow   .get(1), CR.DEF_REV, "fB ", "BRs", " O ", 'O', IL.Shape_Slicer_Empty, 'B', OP.plateTiny.dat(MT.StainlessSteel), 'R', OP.ring.dat(MT.StainlessSteel));
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Empty.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Flat.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Grid.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Eigths.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Eigths_Hollow.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Split.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Quarters.get(1)), (byte)45);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Slicer_Quarters_Hollow.get(1)), (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Empty, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Flat, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Grid, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Eigths, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Eigths_Hollow, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Split, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Quarters, (byte)45);
+		BooksGT.BOOK_REGISTER.put(IL.Shape_Slicer_Quarters_Hollow, (byte)45);
 		
 		
 		IL.Comp_Laser_Gas_Empty            .set(addItem(tLastID = 11000, "Empty Gas Laser Emitter"          , "For Electric Lasers"                             , TC.stack(TC.LUX, 1), TC.stack(TC.VACUOS, 2)));
@@ -711,6 +710,9 @@ public class MultiItemTechnological extends MultiItemRandom {
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Mithril       , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Si           , 1)), IL.Circuit_Part_Magic        .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Mithril       , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Ge           , 1)), IL.Circuit_Part_Magic        .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Mithril       , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Magic        .get(1));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Netherite     , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Si           , 1)), IL.Circuit_Part_Magic        .get(1));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Netherite     , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Ge           , 1)), IL.Circuit_Part_Magic        .get(1));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Netherite     , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Magic        .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Enderium      , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Enderium     .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Signalum      , 9), OP.dust    .mat(MT.Redstone, 1), OP.plateGemTiny.mat(MT.Si           , 9)), IL.Circuit_Part_Signalum     .get(9));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Signalum      , 9), OP.dust    .mat(MT.Redstone, 1), OP.plateGemTiny.mat(MT.Ge           , 9)), IL.Circuit_Part_Signalum     .get(9));
@@ -882,10 +884,10 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.USB_Stick_3.get(1), CR.DEF_REV, "xWd", "PCP", "TCT", 'C', OD_CIRCUITS[5], 'W', MT.DATA.WIRES_01[5], 'P', OP.plate.dat(MT.Cr            ), 'T', OP.screw.dat(MT.Cr            ));
 		CR.shaped(IL.USB_Stick_4.get(1), CR.DEF_REV, "xWd", "PCP", "TCT", 'C', OD_CIRCUITS[6], 'W', MT.DATA.WIRES_01[6], 'P', OP.plate.dat(MT.Ti            ), 'T', OP.screw.dat(MT.Ti            ));
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_Stick_1.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_Stick_2.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_Stick_3.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_Stick_4.get(1)), (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_Stick_1, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_Stick_2, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_Stick_3, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_Stick_4, (byte)54);
 		
 		
 		IL.USB_Cable_1                     .set(addItem(tLastID = 32011, "USB 1.0 Cable"                    , "Replaces USB Sticks when connected to USB Ports" , OD_USB_CABLES[1], TC.stack(TC.COGNITIO, 2), TC.stack(TC.ELECTRUM, 1)));
@@ -909,9 +911,9 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.USB_HDD_3.get(1), CR.DEF_REV, "PLT", "dRW", "TCP", 'C', OD_CIRCUITS[5], 'W', IL.USB_Cable_3, 'L', IL.Comp_Laser_Gas_He, 'R', OD.record, 'P', OP.plate.dat(MT.Cr            ), 'T', OP.screw.dat(MT.Cr            ));
 		CR.shaped(IL.USB_HDD_4.get(1), CR.DEF_REV, "PLT", "dRW", "TCP", 'C', OD_CIRCUITS[6], 'W', IL.USB_Cable_4, 'L', IL.Comp_Laser_Gas_He, 'R', OD.record, 'P', OP.plate.dat(MT.Ti            ), 'T', OP.screw.dat(MT.Ti            ));
 		
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_HDD_1.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_HDD_2.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_HDD_3.get(1)), (byte)54);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.USB_HDD_4.get(1)), (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_HDD_1, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_HDD_2, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_HDD_3, (byte)54);
+		BooksGT.BOOK_REGISTER.put(IL.USB_HDD_4, (byte)54);
 	}
 }

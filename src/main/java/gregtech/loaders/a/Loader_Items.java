@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,6 @@
 
 package gregtech.loaders.a;
 
-import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -164,10 +163,10 @@ public class Loader_Items implements Runnable {
 		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadBuzzSaw"             , OP.toolHeadBuzzSaw                ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("forester", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadRawArrow"            , OP.toolHeadRawArrow               ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.toolHeadArrow"               , OP.toolHeadArrow                  ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtWood"       , OP.arrowGtWood        , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.00F, 6.00F, T, T, F); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtPlastic"    , OP.arrowGtPlastic     , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.50F, 6.00F, T, T, F); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtSmall"     , OP.bulletGtSmall      , TD.Projectiles.BULLET_SMALL   , EntityArrow_Material.class, 1.50F, 3.00F, F, F, T); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtMedium"    , OP.bulletGtMedium     , TD.Projectiles.BULLET_MEDIUM  , EntityArrow_Material.class, 1.75F, 2.50F, F, F, T); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
-		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtLarge"     , OP.bulletGtLarge      , TD.Projectiles.BULLET_LARGE   , EntityArrow_Material.class, 2.00F, 2.00F, F, F, T); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtWood"       , OP.arrowGtWood        , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.00F, 6.00F, T, T, F).setLootingMultiplier(1); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.arrowGtPlastic"    , OP.arrowGtPlastic     , TD.Projectiles.ARROW          , EntityArrow_Material.class, 1.50F, 6.00F, T, T, F).setLootingMultiplier(1); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtSmall"     , OP.bulletGtSmall      , TD.Projectiles.BULLET_SMALL   , EntityArrow_Material.class, 1.50F, 3.00F, F, F, T).setLootingMultiplier(1); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtMedium"    , OP.bulletGtMedium     , TD.Projectiles.BULLET_MEDIUM  , EntityArrow_Material.class, 1.75F, 2.50F, F, F, T).setLootingMultiplier(2); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
+		tItem = new PrefixItemProjectile(MD.GT, "gt.meta.bulletGtLarge"     , OP.bulletGtLarge      , TD.Projectiles.BULLET_LARGE   , EntityArrow_Material.class, 2.00F, 2.00F, F, F, T).setLootingMultiplier(3); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", ST.make(tItem, 1, W));
 	}
 }

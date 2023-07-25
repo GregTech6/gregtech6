@@ -142,6 +142,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.EtFu, "dye", 1, 3));
 		OM.reg("foodCookie"                         , ST.make(Items.cookie, 1, 0));
 		OM.reg("foodCookie"                         , ST.make(MD.BOTA, "manaCookie", 1, 0));
+		OM.reg("foodCookie"                         , ST.make(MD.TF, "item.mazeWafer", 1, 0));
 		OM.reg("cropAppleRed"                       , ST.make(Items.apple, 1, 0));
 		OM.reg("cropMelon"                          , ST.make(Items.melon, 1, 0));
 		OM.reg("cropPumpkin"                        , ST.make(Blocks.pumpkin, 1, 0));
@@ -207,6 +208,25 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.container1000spruceresin          , ST.make(MD.BINNIE, "containerBucket", 1,129));
 		OM.reg(OD.container1000latex                , ST.make(MD.BINNIE, "containerBucket", 1,130));
 	//  OM.reg(OD.container1000turpentine           , ST.make(MD.BINNIE, "containerBucket", 1,131));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,256));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,257));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,258));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,259));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,260));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,261));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,262));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,263));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,264));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,265));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,266));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,267));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,268));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,269));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,270));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,271));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,272));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,273));
+		OM.reg(OD.container1000juice                , ST.make(MD.BINNIE, "containerGlass", 1,274));
 		OM.reg("foodApplejuice"                     , ST.make(MD.BINNIE, "containerGlass", 1,256));
 		OM.reg("foodApricotjuice"                   , ST.make(MD.BINNIE, "containerGlass", 1,257));
 		OM.reg("foodBananajuice"                    , ST.make(MD.BINNIE, "containerGlass", 1,258));
@@ -606,6 +626,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "CrimsonBarrel", 1, W));
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "WarpedBarrel", 1, W));
 		OM.reg(OD.craftingChest                     , ST.make(MD.NeLi, "FoxfireBarrel", 1, W));
+		OM.reg(OD.craftingChest                     , ST.make(MD.BbLC, "tile.BiblioFramedChest", 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(Blocks.furnace, 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(Blocks.lit_furnace, 1, W));
 		OM.reg(OD.craftingFurnace                   , ST.make(MD.NeLi, "FurnaceBlackstone", 1, W));
@@ -770,7 +791,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropCoconut"                        , ST.make(MD.TROPIC, "tile.coconut", 1, W));
 		OM.reg("cropCoffee"                         , ST.make(MD.TROPIC, "coffeeBean", 1, W));
 		OM.reg("cropHellderberry"                   , ST.make(MD.NeLi, "HellderBerryItem", 1, 0));
-		OM.reg("foodHellderberryjuice"              , ST.make(MD.NeLi, "JuiceHellderberry", 1, 0));
 		
 		
 		OM.reg(OP.dustSmall.dat(MT.Fe)              , ST.make(MD.BINNIE_BEE, "misc", 1, 6));
@@ -851,12 +871,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.FR, "letters"                                    , 1,   W, MT.Paper              , U);
 		OM.data(MD.FR, "stamps"                                     , 1,   W, MT.Paper              , U9);
 		OM.data(MD.TE, "diagram"                                    , 1,   W, MT.Paper              , U*2);
-		OM.data(MD.TF, "item.emptyMagicMap"                         , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.emptyMazeMap"                          , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.emptyOreMap"                           , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.magicMap"                              , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.mazeMap"                               , 1,   W, MT.Paper              , U*8);
-		OM.data(MD.TF, "item.oreMap"                                , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  46, MT.Paper              , U*3);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  47, MT.Paper              , U*3);
 		OM.data(MD.WTCH, "ingredient"                               , 1,  48, MT.Paper              , U*3);
@@ -1803,8 +1817,8 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1     , MT.Diamond            ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
-		OM.data(MD.TF, "item.armorShards"                   , 1,   0, MT.Knightmetal        ,  U9);
-		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);
+		OM.data(MD.TF, "item.ironwoodRaw"                   , 1,   0, MT.IronWood           ,  U * 2);
+		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U * 2);
 		OM.data(MD.TF, "item.knightmetalRing"               , 1,   0, MT.Knightmetal        ,  U * 4);
 		OM.dat2(MD.TF, "item.chainBlock"                    , 1     , MT.Knightmetal        ,  U *16);
 		OM.data(MD.TF, "tile.TFNagastone"                   , 1,   W, ANY.Stone             ,  U * 9);
@@ -2406,7 +2420,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.anvil, 1, 0)                         , ANY.Fe                ,  U *30);
 		OM.data(ST.make(Blocks.anvil, 1, 1)                         , ANY.Fe                ,  U *25);
 		OM.data(ST.make(Blocks.anvil, 1, 2)                         , ANY.Fe                ,  U *20);
-		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 5);
+		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 4);
 		OM.data(ST.make(Blocks.tripwire_hook, 1, W)                 , ANY.Fe                ,  OP.ring.mAmount * 2, ANY.Wood, U);
 		OM.data(ST.make(Blocks.stained_glass        , 1, W)         , MT.Glass              ,  U*9);
 		OM.data(ST.make(Blocks.glass                , 1, W)         , MT.Glass              ,  U*9);

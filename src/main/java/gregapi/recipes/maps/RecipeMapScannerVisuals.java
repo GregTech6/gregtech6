@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.OD;
 import gregapi.random.IHasWorldAndCoords;
@@ -41,38 +36,42 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class RecipeMapScannerVisuals extends RecipeMap {
 	public RecipeMapScannerVisuals(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs, boolean aCombinePower, boolean aUseBucketSizeIn, boolean aUseBucketSizeOut) {
 		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs, aCombinePower, aUseBucketSizeIn, aUseBucketSizeOut);
-		mMappings.put(new ItemStackContainer(Items.flint_and_steel, 1, W), ST.make(Blocks.fire, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.reeds, 1, W), ST.make(Blocks.reeds, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.snowball, 1, W), ST.make(Blocks.snow, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.wheat_seeds, 1, W), ST.make(Blocks.wheat, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.wheat, 1, W), ST.make(Blocks.wheat, 1, 7));
-		mMappings.put(new ItemStackContainer(Items.carrot, 1, W), ST.make(Blocks.carrots, 1, 7));
-		mMappings.put(new ItemStackContainer(Items.poisonous_potato, 1, W), ST.make(Blocks.potatoes, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.potato, 1, W), ST.make(Blocks.potatoes, 1, 7));
-		mMappings.put(new ItemStackContainer(Items.melon_seeds, 1, W), ST.make(Blocks.melon_stem, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.melon, 1, W), ST.make(Blocks.melon_stem, 1, 7));
-		mMappings.put(new ItemStackContainer(Items.pumpkin_seeds, 1, W), ST.make(Blocks.pumpkin_stem, 1, 7));
-		mMappings.put(new ItemStackContainer(Items.dye, 1, 3), ST.make(Blocks.cocoa, 1, 8));
-		mMappings.put(new ItemStackContainer(Items.string, 1, W), ST.make(Blocks.web, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.nether_wart, 1, W), ST.make(Blocks.nether_wart, 1, 3));
-		mMappings.put(new ItemStackContainer(Items.comparator, 1, W), ST.make(Blocks.powered_comparator, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.repeater, 1, W), ST.make(Blocks.powered_repeater, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.bed, 1, W), ST.make(Blocks.bed, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.iron_door, 1, W), ST.make(Blocks.iron_door, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.wooden_door, 1, W), ST.make(Blocks.wooden_door, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.ender_pearl, 1, W), ST.make(Blocks.portal, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.ender_eye, 1, W), ST.make(Blocks.end_portal_frame, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.water_bucket, 1, W), ST.make(Blocks.water, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.lava_bucket, 1, W), ST.make(Blocks.lava, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.cauldron, 1, W), ST.make(Blocks.cauldron, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.brewing_stand, 1, W), ST.make(Blocks.brewing_stand, 1, 0));
-		mMappings.put(new ItemStackContainer(Items.flower_pot, 1, W), ST.make(Blocks.flower_pot, 1, 0));
+		mMappings.put(Items.flint_and_steel , W, ST.make(Blocks.fire, 1, 0));
+		mMappings.put(Items.reeds           , W, ST.make(Blocks.reeds, 1, 0));
+		mMappings.put(Items.snowball        , W, ST.make(Blocks.snow, 1, 0));
+		mMappings.put(Items.wheat_seeds     , W, ST.make(Blocks.wheat, 1, 0));
+		mMappings.put(Items.wheat           , W, ST.make(Blocks.wheat, 1, 7));
+		mMappings.put(Items.carrot          , W, ST.make(Blocks.carrots, 1, 7));
+		mMappings.put(Items.poisonous_potato, W, ST.make(Blocks.potatoes, 1, 0));
+		mMappings.put(Items.potato          , W, ST.make(Blocks.potatoes, 1, 7));
+		mMappings.put(Items.melon_seeds     , W, ST.make(Blocks.melon_stem, 1, 0));
+		mMappings.put(Items.melon           , W, ST.make(Blocks.melon_stem, 1, 7));
+		mMappings.put(Items.pumpkin_seeds   , W, ST.make(Blocks.pumpkin_stem, 1, 7));
+		mMappings.put(Items.dye             , 3, ST.make(Blocks.cocoa, 1, 8));
+		mMappings.put(Items.string          , W, ST.make(Blocks.web, 1, 0));
+		mMappings.put(Items.nether_wart     , W, ST.make(Blocks.nether_wart, 1, 3));
+		mMappings.put(Items.comparator      , W, ST.make(Blocks.powered_comparator, 1, 0));
+		mMappings.put(Items.repeater        , W, ST.make(Blocks.powered_repeater, 1, 0));
+		mMappings.put(Items.bed             , W, ST.make(Blocks.bed, 1, 0));
+		mMappings.put(Items.iron_door       , W, ST.make(Blocks.iron_door, 1, 0));
+		mMappings.put(Items.wooden_door     , W, ST.make(Blocks.wooden_door, 1, 0));
+		mMappings.put(Items.ender_pearl     , W, ST.make(Blocks.portal, 1, 0));
+		mMappings.put(Items.ender_eye       , W, ST.make(Blocks.end_portal_frame, 1, 0));
+		mMappings.put(Items.water_bucket    , W, ST.make(Blocks.water, 1, 0));
+		mMappings.put(Items.lava_bucket     , W, ST.make(Blocks.lava, 1, 0));
+		mMappings.put(Items.cauldron        , W, ST.make(Blocks.cauldron, 1, 0));
+		mMappings.put(Items.brewing_stand   , W, ST.make(Blocks.brewing_stand, 1, 0));
+		mMappings.put(Items.flower_pot      , W, ST.make(Blocks.flower_pot, 1, 0));
 	}
 	
 	public final ItemStackMap<ItemStackContainer, ItemStack> mMappings = new ItemStackMap<>();
@@ -122,6 +121,27 @@ public class RecipeMapScannerVisuals extends RecipeMap {
 						rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB), ST.amount(1, tScanned)), null, null, null, null, 64, 16, 0);
 						if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
 						rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, UT.NBT.setMapID(UT.NBT.make(), ST.meta_(tScanned)));
+						rRecipe.mOutputs[0].getTagCompound().setByte(NBT_USB_TIER, (byte)1);
+						return rRecipe;
+					}
+					if (IL.TF_Magic_Map.equal(tScanned, T, T)) {
+						rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB), ST.amount(1, tScanned)), null, null, null, null, 64, 16, 0);
+						if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
+						rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, UT.NBT.setMagicMapID(UT.NBT.make(), ST.meta_(tScanned)));
+						rRecipe.mOutputs[0].getTagCompound().setByte(NBT_USB_TIER, (byte)1);
+						return rRecipe;
+					}
+					if (IL.TF_Maze_Map.equal(tScanned, T, T)) {
+						rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB), ST.amount(1, tScanned)), null, null, null, null, 64, 16, 0);
+						if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
+						rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, UT.NBT.setMazeMapID(UT.NBT.make(), ST.meta_(tScanned)));
+						rRecipe.mOutputs[0].getTagCompound().setByte(NBT_USB_TIER, (byte)1);
+						return rRecipe;
+					}
+					if (IL.TF_Ore_Map.equal(tScanned, T, T)) {
+						rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB), ST.amount(1, tScanned)), null, null, null, null, 64, 16, 0);
+						if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
+						rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, UT.NBT.setOreMapID(UT.NBT.make(), ST.meta_(tScanned)));
 						rRecipe.mOutputs[0].getTagCompound().setByte(NBT_USB_TIER, (byte)1);
 						return rRecipe;
 					}

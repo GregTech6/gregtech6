@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,7 @@
 
 package gregtech.entities;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -47,6 +39,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class Override_Drops {
 	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
 		if (UT.Code.stringInvalid(aClass) || "EntityTFLichMinion".equalsIgnoreCase(aClass) || "EntitySkeletonBoss".equalsIgnoreCase(aClass)) return;
@@ -54,6 +50,7 @@ public class Override_Drops {
 		boolean tReplaceIron = aClass.startsWith("entitygaia");
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
+		
 		
 		if (aDead instanceof EntityAnimal && aDead.isChild()) {
 			tReplaceIron = T;
@@ -446,6 +443,21 @@ public class Override_Drops {
 			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityStrider")) {
 			tReplaceIron = T;
+		} else if (aClass.equalsIgnoreCase("EntityTFIceCrystal")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(2);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blizz, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFIceShooter") || aClass.equalsIgnoreCase("EntityTFIceExploder")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(3);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blizz, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFTowerGolem")) {
+			for (EntityItem tEntity : aDrops) {
+				ItemStack tStack = tEntity.getEntityItem();
+				if (OM.is("ingotAnyIronOrSteel", tStack)) ST.set(tStack, OP.ingot.mat(MT.IronWood, 1), F, F);
+			}
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
@@ -541,6 +553,9 @@ public class Override_Drops {
 			// Give Meat more variety! :D
 			if (MOBS_DROP_MEAT && !OD.listAllmeatsubstitute.is(tStack)) {
 				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
+				if (ST.item_(tStack) == Items.fish) {
+					if (aBurn) ST.set(tStack, RM.get_smelting(tStack), F, F); break;
+				}
 				if (ST.item_(tStack) == Items.porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, (aBurn?IL.Food_Ham_Cooked:IL.Food_Ham_Raw).get(1), F, F); break;
@@ -550,7 +565,7 @@ public class Override_Drops {
 				if (ST.item_(tStack) == Items.cooked_porkchop) {
 					switch(tRandomNumber%3) {
 					case 0: ST.set(tStack, IL.Food_Ham_Cooked.get(1), F, F); break;
-					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
+					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3L+RNGSUS.nextInt(3)))), T, F); break;
 					}
 				} else
 				if (OM.is("listAllbeefraw", tStack)) {

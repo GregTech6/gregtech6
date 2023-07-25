@@ -20,7 +20,6 @@
 package gregtech.loaders.c;
 
 import gregapi.block.metatype.BlockStones;
-import gregapi.code.ItemStackContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
@@ -82,6 +81,7 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			RM.Hammer       .addRecipe1(T, 16,   64,                           aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))));
 			RM.Crusher      .addRecipe1(T, 16,  600, new long[] {10000, 2500}, aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))), OP.dust.mat(MT.Obsidian, 1));
 			RM.pulverizing(                                                    aEvent.mStack, IL.RC_Crushed_Obsidian.get(1, IL.HBM_Crushed_Obsidian.get(1, OP.dust.mat(MT.Obsidian, 8))), OP.dust.mat(MT.Obsidian, 1), 25, T);
+			if (IL.TF_Pick_Giant.exists()) RM.Boxinator.addRecipe2(T,128,128, ST.amount(64, aEvent.mStack), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Obsidian.get(1));
 		}});
 		addListener("stoneNetherBrick", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Hammer       .addRecipe1(T, 16,   16, aEvent.mStack, ST.make(Items.netherbrick, 3, 0));
@@ -157,7 +157,7 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			RM.Centrifuge   .addRecipe1(T, 16,   16       , aEvent.mStack, NF, FL.Glue.make(500), ZL_IS);
 		}});
 		addListener(OD.record, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!BooksGT.BOOK_REGISTER.containsKey(aEvent.mStack, T)) BooksGT.BOOK_REGISTER.put(new ItemStackContainer(aEvent.mStack), (byte)30);
+			if (!BooksGT.BOOK_REGISTER.containsKey(aEvent.mStack, T)) BooksGT.BOOK_REGISTER.put(aEvent.mStack, (byte)30);
 		}});
 		addListener(OP.treeSapling, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.sawing(16, 16, F, 1, aEvent.mStack, OP.stick.mat(MT.Wood, 1));

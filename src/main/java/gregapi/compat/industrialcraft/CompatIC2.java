@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.compat.industrialcraft;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -31,8 +29,6 @@ import gregapi.config.ConfigCategories;
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.cover.covers.CoverTextureCanvas;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.util.OM;
@@ -52,6 +48,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
+
+import static gregapi.data.CS.*;
 
 public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	public CompatIC2() {
@@ -135,7 +133,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 		return T;
 	}
 	
-	private ItemStackSet<ItemStackContainer> mToBlacklist = new ItemStackSet<>();
+	private ItemStackSet<ItemStackContainer> mToBlacklist = ST.hashset();
 	
 	@Override
 	public boolean blacklist(ItemStack aBlacklisted) {

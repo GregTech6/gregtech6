@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,20 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.CS.*;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 	public Compat_Recipes_IndustrialCraft_Scrap(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -170,7 +166,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.blacklist(ST.make(Blocks.sandstone_stairs  , 1, W));
 			COMPAT_IC2.blacklist(ST.make(Blocks.stone_stairs      , 1, W));
 			COMPAT_IC2.blacklist(ST.make(Blocks.stone_brick_stairs, 1, W));
-			COMPAT_IC2.blacklist(RM.get_smelting(ST.make(Blocks.stone, 1, 0), F, null));
+			COMPAT_IC2.blacklist(RM.get_smelting(ST.make(Blocks.stone, 1, 0)));
 			COMPAT_IC2.blacklist(CR.get(ST.make(Blocks.glass, 1, 0), null, null, ST.make(Blocks.glass, 1, 0)));
 			COMPAT_IC2.blacklist(CR.get(ST.make(Blocks.stone, 1, 0), null, null, ST.make(Blocks.stone, 1, 0)));
 			COMPAT_IC2.blacklist(CR.get(ST.make(Blocks.cobblestone, 1, 0), null, null, ST.make(Blocks.cobblestone, 1, 0)));

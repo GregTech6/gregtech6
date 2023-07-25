@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -78,7 +78,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls<>(F, mRock == null ? getDefaultRock(1+rng(1+aFortune)) : ST.amount(1+rng(1+aFortune), mRock));
+		return ST.arraylist(mRock == null ? getDefaultRock(1+rng(1+aFortune)) : ST.amount(1+rng(1+aFortune), mRock));
 	}
 	
 	@Override

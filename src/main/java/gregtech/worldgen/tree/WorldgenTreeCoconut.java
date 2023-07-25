@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregtech.worldgen.tree;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.tree.BlockBaseSapling;
-import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregapi.worldgen.WorldgenOnSurface;
@@ -34,6 +27,12 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -47,8 +46,15 @@ public class WorldgenTreeCoconut extends WorldgenOnSurface {
 	@Override
 	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
-		for (String tName : aBiomeNames) if (BIOMES_COCONUT.contains(tName)) return mAmount;
-		return 0;
+		boolean temp = F;
+		for (String tName : aBiomeNames) {
+			if (BIOMES_COCONUT.contains(tName)) {temp = T; continue;}
+			if (BIOMES_MOUNTAINS.contains(tName)) return 0;
+			if (BIOMES_FROZEN.contains(tName)) return 0;
+			if (BIOMES_TAIGA.contains(tName)) return 0;
+			if (BIOMES_SWAMP.contains(tName)) return 0;
+		}
+		return temp ? mAmount : 0;
 	}
 	
 	@Override

@@ -259,10 +259,10 @@ public class CS {
 	, BIOMES_SAVANNA        = new BiomeNameSet(BiomeGenBase.savanna, BiomeGenBase.savannaPlateau, "Steppe", "Subterranean Savannah", "Oak Savanna", "Savannah", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie")
 	
 	, BIOMES_SWAMP          = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
-	, BIOMES_WILLOW         = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
+	, BIOMES_WILLOW         = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp")
 	
-	, BIOMES_TAIGA          = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands")
-	, BIOMES_RUBBER         = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands")
+	, BIOMES_TAIGA          = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands", "Snowy Forest")
+	, BIOMES_RUBBER         = new BiomeNameSet(BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, BiomeGenBase.megaTaiga, BiomeGenBase.megaTaigaHills, "Mountain Taiga", "Pinelands", "Tall Pine Forest", "Shield", "Cold Boreal Forest", "Cold Cypress Forest", "Cold Fir Forest", "Cold Pine Forest", "Boreal Archipelago", "Boreal Forest", "Boreal Plateau", "Twilight Highlands", "Snowy Forest")
 	
 	, BIOMES_FROZEN         = new BiomeNameSet(BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.coldTaiga, BiomeGenBase.coldTaigaHills, "Snow Island", "Ice Plains Spikes", "Ice Wasteland", "Frost Forest", "Snowy Rainforest", "Snow Forest", "Snowy Forest", "Twilight Glacier", "Alpine", "Glacier", "Tundra", "Snowy Desert", "Snowy Plateau", "Snowy Ranges", "Snowy Wastelands", "Polar Desert", "Ice Sheet", "Frozen Archipelago", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Tundra")
 	
@@ -1065,6 +1065,8 @@ public class CS {
 	, TOOL_thermometer      = "thermometer"
 	, TOOL_magnifyingglass  = "magnifyingglass"
 	, TOOL_geigercounter    = "geigercounter"
+	, TOOL_electrometer     = "electrometer"
+	, TOOL_tachometer       = "tachometer"
 	, TOOL_prospector       = "prospector"
 	, TOOL_ducttape         = "ducttape"
 	;
@@ -1194,6 +1196,7 @@ public class CS {
 	, NBT_LIQUIDPROOF               = "gt.liquidproof"              // Boolean
 	, NBT_GASPROOF                  = "gt.gasproof"                 // Boolean
 	, NBT_ACIDPROOF                 = "gt.acidproof"                // Boolean
+	, NBT_MAGICPROOF                = "gt.magicproof"               // Boolean
 	, NBT_PLASMAPROOF               = "gt.plasmaproof"              // Boolean
 	, NBT_CONTACTDAMAGE             = "gt.contactdamage"            // Boolean
 	, NBT_OPAQUE                    = "gt.opaque"                   // Boolean
@@ -1357,7 +1360,7 @@ public class CS {
 	public static final HashSetNoNulls<Block> REDSTONE_SINKS = new HashSetNoNulls<>(F, Blocks.tnt, Blocks.golden_rail, Blocks.noteblock, Blocks.trapdoor, Blocks.wooden_door, Blocks.iron_door, Blocks.piston, Blocks.sticky_piston, Blocks.dispenser, Blocks.dropper, Blocks.redstone_lamp, Blocks.lit_redstone_lamp);
 	
 	public static class GarbageGT {
-		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
+		public static ItemStackSet<ItemStackContainer> BLACKLIST = ST.hashset();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
@@ -1500,54 +1503,55 @@ public class CS {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
 		
 		public static Set<String>
-		  SIMPLE = new HashSetNoNulls<>(F, "poison")
-		, ACID = new HashSetNoNulls<>(F, "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "sulfuric_acid_fluid", "nitricacid", "nitric_acid_fluid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
-		, TOXIC = new HashSetNoNulls<>(F, "poison", "toxic_fluid", "mud_fluid", "bacterialsludge", "sludge", "fluiddeath")
-		, THAUMIC_FLUX = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
-		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
-		, GAS = new HashSetNoNulls<>()
-		, PLASMA = new HashSetNoNulls<>(F, "rc fusion plasma")
-		, HIDDEN = new HashSetNoNulls<>(F, "heliumplasma", "nitrogenplasma")
-		, AIR = new HashSetNoNulls<>()
-		, OXYGEN = new HashSetNoNulls<>()
-		, LIQUID_OXYGEN = new HashSetNoNulls<>()
+		  SIMPLE           = new HashSetNoNulls<>(F, "poison")
+		, ACID             = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas", "acid", "acid_fluid", "creeper_acid", "schrabidic_fluid", "sulfuricacid", "sulfuric_acid_fluid", "nitricacid", "nitric_acid_fluid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
+		, TOXIC            = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas", "poison", "toxic_fluid", "mud_fluid", "bacterialsludge", "sludge", "fluiddeath")
+		, MAGIC            = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas", "fluiddeath", "fluidpure")
+		, THAUMIC_FLUX     = new HashSetNoNulls<>(F, "fluxgoo", "fluxgas")
+		, LIQUID           = new HashSetNoNulls<>(F, "fluxgoo", "fluiddeath", "fluidpure", "poison", "liquidnitrogen", "liquiddna")
+		, GAS              = new HashSetNoNulls<>(F, "fluxgas")
+		, PLASMA           = new HashSetNoNulls<>(F, "heliumplasma", "nitrogenplasma", "rc fusion plasma")
+		, HIDDEN           = new HashSetNoNulls<>(F, "heliumplasma", "nitrogenplasma")
+		, AIR              = new HashSetNoNulls<>()
+		, OXYGEN           = new HashSetNoNulls<>()
+		, LIQUID_OXYGEN    = new HashSetNoNulls<>()
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>(F, "fluidpure")
-		, VOID_OVERFLOW = new HashSetNoNulls<>()
-		, NONSTANDARD = new HashSetNoNulls<>()
-		, BROKEN = new HashSetNoNulls<>()
-		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
-		, BATH = new HashSetNoNulls<>()
-		, DYE = new HashSetNoNulls<>()
+		, VOID_OVERFLOW    = new HashSetNoNulls<>()
+		, NONSTANDARD      = new HashSetNoNulls<>()
+		, BROKEN           = new HashSetNoNulls<>()
+		, INFINITE         = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
+		, BATH             = new HashSetNoNulls<>()
+		, DYE              = new HashSetNoNulls<>()
 		
-		, STEAM = new HashSetNoNulls<>()
+		, STEAM            = new HashSetNoNulls<>()
 		, POWER_CONDUCTING = new HashSetNoNulls<>(F, "rc fusion plasma")
-		, LUBRICANT = new HashSetNoNulls<>()
-		, THERMOS = new HashSetNoNulls<>(F, "coffee")
-		, POTION = new HashSetNoNulls<>()
+		, LUBRICANT        = new HashSetNoNulls<>()
+		, THERMOS          = new HashSetNoNulls<>(F, "coffee")
+		, POTION           = new HashSetNoNulls<>()
 		
-		, FOOD = new HashSetNoNulls<>(F, "coffee")
-		, JUICE = new HashSetNoNulls<>()
-		, FRUIT_JUICE = new HashSetNoNulls<>()
-		, CITRUS_JUICE = new HashSetNoNulls<>()
-		, WATER = new HashSetNoNulls<>()
-		, HONEY = new HashSetNoNulls<>()
-		, MILK = new HashSetNoNulls<>()
-		, TEA = new HashSetNoNulls<>()
-		, COOKING_OIL = new HashSetNoNulls<>()
-		, SLIME = new HashSetNoNulls<>()
-		, BLOOD = new HashSetNoNulls<>(F, "blood")
+		, FOOD             = new HashSetNoNulls<>(F, "coffee")
+		, JUICE            = new HashSetNoNulls<>()
+		, FRUIT_JUICE      = new HashSetNoNulls<>()
+		, CITRUS_JUICE     = new HashSetNoNulls<>()
+		, WATER            = new HashSetNoNulls<>()
+		, HONEY            = new HashSetNoNulls<>()
+		, MILK             = new HashSetNoNulls<>()
+		, TEA              = new HashSetNoNulls<>()
+		, COOKING_OIL      = new HashSetNoNulls<>()
+		, SLIME            = new HashSetNoNulls<>()
+		, BLOOD            = new HashSetNoNulls<>(F, "blood")
 		
-		, ALCOHOLIC = new HashSetNoNulls<>()
-		, VINEGAR = new HashSetNoNulls<>()
-		, RUM = new HashSetNoNulls<>()
-		, WINE = new HashSetNoNulls<>()
-		, BEER = new HashSetNoNulls<>()
-		, CIDER = new HashSetNoNulls<>()
-		, SPIRIT = new HashSetNoNulls<>()
-		, BRANDY = new HashSetNoNulls<>()
-		, LIQUOR = new HashSetNoNulls<>()
-		, LIQUEUR = new HashSetNoNulls<>()
-		, WHISKEY = new HashSetNoNulls<>()
+		, ALCOHOLIC        = new HashSetNoNulls<>()
+		, VINEGAR          = new HashSetNoNulls<>()
+		, RUM              = new HashSetNoNulls<>()
+		, WINE             = new HashSetNoNulls<>()
+		, BEER             = new HashSetNoNulls<>()
+		, CIDER            = new HashSetNoNulls<>()
+		, SPIRIT           = new HashSetNoNulls<>()
+		, BRANDY           = new HashSetNoNulls<>()
+		, LIQUOR           = new HashSetNoNulls<>()
+		, LIQUEUR          = new HashSetNoNulls<>()
+		, WHISKEY          = new HashSetNoNulls<>()
 		;
 		
 		static {
@@ -1590,16 +1594,16 @@ public class CS {
 		/** The MultiItems */
 		public static MultiItemRandom TECH, TOOLS, CANS, FOOD, BOTTLES, BOOKS, BUMBLEBEES;
 		public static MultiItemRandom[] ALL_MULTI_ITEMS = new MultiItemRandom[] {TECH, TOOLS, CANS, FOOD, BOTTLES, BOOKS, BUMBLEBEES};
-		public static final ItemStackSet<ItemStackContainer> ILLEGAL_DROPS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> DEBUG_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> AMMO_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NO_TOOL_FATIQUE = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NON_AUTO_INSERT_ITEMS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> ILLEGAL_DROPS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> DEBUG_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> AMMO_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NO_TOOL_FATIQUE = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NON_AUTO_INSERT_ITEMS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = ST.hashset();
 		
 		public static boolean addNEIRedirect(ItemStack aStack, ItemStack... aRedirects) {if (aStack == null) return F; ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(aStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(aStack), tList = new ArrayListNoNulls<>()); return tList.addAll(Arrays.asList(aRedirects));}
 		public static boolean addNEIRedirects(Block aBlock) {ItemStack[] tRedirects = new ItemStack[16]; for (int i = 0; i < tRedirects.length; i++) tRedirects[i] = ST.make(aBlock, 1, i); return addNEIRedirects(tRedirects);}
@@ -1677,7 +1681,7 @@ public class CS {
 		public static final Set<Object> plantableGrass        = new HashSetNoNulls<Object>(F, Blocks.grass);
 		
 		/** Blocks to not generate Ores in. */
-		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
+		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = ST.hashset();
 		
 		public static final Set<Object> FLOWERS = new HashSetNoNulls<Object>(F, Blocks.yellow_flower, Blocks.red_flower);
 		
@@ -1693,14 +1697,14 @@ public class CS {
 	public static class ArmorsGT {
 		/** The List of Hazmat Armors */
 		public static final ItemStackSet<ItemStackContainer>
-		  HAZMATS_GAS = new ItemStackSet<>()
-		, HAZMATS_BIO = new ItemStackSet<>()
-		, HAZMATS_CHEM = new ItemStackSet<>()
-		, HAZMATS_INSECTS = new ItemStackSet<>()
-		, HAZMATS_FROST = new ItemStackSet<>()
-		, HAZMATS_HEAT = new ItemStackSet<>()
-		, HAZMATS_RADIOACTIVE = new ItemStackSet<>()
-		, HAZMATS_LIGHTNING = new ItemStackSet<>()
+		  HAZMATS_GAS = ST.hashset()
+		, HAZMATS_BIO = ST.hashset()
+		, HAZMATS_CHEM = ST.hashset()
+		, HAZMATS_INSECTS = ST.hashset()
+		, HAZMATS_FROST = ST.hashset()
+		, HAZMATS_HEAT = ST.hashset()
+		, HAZMATS_RADIOACTIVE = ST.hashset()
+		, HAZMATS_LIGHTNING = ST.hashset()
 		;
 
 		public static ItemArmorBase[]
@@ -1726,9 +1730,9 @@ public class CS {
 		
 		// If you plan do use this to detect Crafting Items, DON'T! Use OreDict for detecting Crafting Items being Tools!
 		
-		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = new ItemStackSet<>();
+		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = ST.hashset();
 		private static final Map<String, ItemStackSet<ItemStackContainer>> TOOL_LISTS = new HashMap<>();
-		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = new ItemStackSet<>()); return rSet;}
+		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = ST.hashset()); return rSet;}
 		public static boolean contains(String aToolType, ItemStack aStack) {return get(aToolType).contains(aStack, T);}
 		public static boolean contains(String aToolType, ItemStackContainer aStack) {return get(aToolType).contains(aStack, T);}
 		public static boolean add(String aToolType, ItemStackContainer aStack) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
@@ -1835,8 +1839,8 @@ public class CS {
 		
 		public static final ItemStackMap<ItemStackContainer, Byte> BOOK_REGISTER = new ItemStackMap<>();
 		
-		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = new ItemStackSet<>();
-		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = new ItemStackSet<>();
+		public static final ItemStackSet<ItemStackContainer> BOOKS_NORMAL = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> BOOKS_ENCHANTED = ST.hashset();
 	}
 	
 	/** Contains typical Tool OreDict Names. */
@@ -1969,6 +1973,7 @@ public class CS {
 		, TE                = "ThermalExpansion"
 		, TE_FOUNDATION     = "ThermalFoundation"
 		, TE_DYNAMICS       = "ThermalDynamics"
+		, TE_DRILLS         = "rfdrills"
 		
 		, AE                = "appliedenergistics2"
 		, MO                = "mo"

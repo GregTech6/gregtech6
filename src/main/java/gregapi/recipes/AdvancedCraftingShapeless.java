@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,14 +26,11 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import java.util.List;
 
 import static gregapi.data.CS.*;
 
@@ -62,7 +59,7 @@ public class AdvancedCraftingShapeless extends ShapelessOreRecipe implements ICr
 			for (int i = 0; i < aGrid.getSizeInventory(); i++) {
 				if (aGrid.getStackInSlot(i) != null) {
 					if (tMainInput == null) {
-						if (getInput().get(0) instanceof List) for (Object tObject : (List)getInput().get(0)) if (tObject instanceof  ItemStack) {
+						if (getInput().get(0) instanceof Iterable) for (Object tObject : (Iterable)getInput().get(0)) if (tObject instanceof ItemStack) {
 							if (ST.equal(aGrid.getStackInSlot(i), (ItemStack)tObject, T)) {
 								tMainInput = ST.amount(1, aGrid.getStackInSlot(i));
 							}
@@ -125,7 +122,7 @@ public class AdvancedCraftingShapeless extends ShapelessOreRecipe implements ICr
 			}
 			
 			// Add Enchantments
-			for (int i = 0; i < mEnchantmentsAdded.length; i++) UT.NBT.addEnchantment(rStack, mEnchantmentsAdded[i], EnchantmentHelper.getEnchantmentLevel(mEnchantmentsAdded[i].effectId, rStack) + mEnchantmentLevelsAdded[i]);
+			for (int i = 0; i < mEnchantmentsAdded.length; i++) UT.NBT.addEnchantment(rStack, mEnchantmentsAdded[i], UT.NBT.getEnchantmentLevel(mEnchantmentsAdded[i], rStack) + mEnchantmentLevelsAdded[i]);
 			
 			// Update the Stack again
 			ST.update(rStack);

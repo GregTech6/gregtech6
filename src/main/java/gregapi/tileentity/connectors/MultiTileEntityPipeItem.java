@@ -23,7 +23,6 @@ import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
 import gregapi.cover.CoverData;
 import gregapi.cover.covers.CoverFilterItem;
@@ -231,7 +230,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 					CoverData tCovers = getCoverData();
 					if (tCovers != null && tCovers.mBehaviours[aSide] instanceof CoverFilterItem && tCovers.mNBTs[aSide] != null) {
 						ItemStack tStack = ST.load(tCovers.mNBTs[aSide], "gt.filter.item");
-						return ST.valid(tStack) && ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, new ItemStackSet<>(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
+						return ST.valid(tStack) && ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, ST.hashset(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
 					}
 					// well normal case is this.
 					return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator) > 0;

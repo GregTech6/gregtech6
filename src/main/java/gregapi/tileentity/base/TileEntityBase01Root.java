@@ -534,6 +534,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@SideOnly(Side.CLIENT) public IRenderedBlockObject passRenderingToObject2(ItemStack aStack) {return (IRenderedBlockObject)this;}
 	@SideOnly(Side.CLIENT) public IRenderedBlockObject passRenderingToObject2(IBlockAccess aWorld, int aX, int aY, int aZ) {return (IRenderedBlockObject)this;}
 	
+	public void updateTanks() {/**/}
 	public void updateInventory() {/**/}
 	public void updateAdjacentInventories() {for (byte tSide : ALL_SIDES_VALID) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide); if (tDelegator.mTileEntity instanceof ITileEntityAdjacentInventoryUpdatable) ((ITileEntityAdjacentInventoryUpdatable)tDelegator.mTileEntity).adjacentInventoryUpdated(tDelegator.mSideOfTileEntity, (IInventory)this);}}
 	
@@ -599,7 +600,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankFillable(UT.Code.side(aDirection), aFluid);
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
-		if (rFilledAmount > 0 && aDoFill) updateInventory();
+		if (rFilledAmount > 0 && aDoFill) updateTanks();
 		return rFilledAmount;
 	}
 	
@@ -608,7 +609,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankDrainable(UT.Code.side(aDirection), aFluid);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0 || !tTank.getFluid().isFluidEqual(aFluid)) return null;
 		FluidStack rDrained = tTank.drain(aFluid.amount, aDoDrain);
-		if (rDrained != null && aDoDrain) updateInventory();
+		if (rDrained != null && aDoDrain) updateTanks();
 		return rDrained;
 	}
 	
@@ -617,7 +618,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankDrainable(UT.Code.side(aDirection), null);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0) return null;
 		FluidStack rDrained = tTank.drain(aAmountToDrain, aDoDrain);
-		if (rDrained != null && aDoDrain) updateInventory();
+		if (rDrained != null && aDoDrain) updateTanks();
 		return rDrained;
 	}
 	
@@ -652,7 +653,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankFillable(aPart, SIDE_ANY, aFluid);
 		if (tTank == null) return 0;
 		int rFilledAmount = tTank.fill(aFluid, aDoFill);
-		if (rFilledAmount > 0 && aDoFill) updateInventory();
+		if (rFilledAmount > 0 && aDoFill) updateTanks();
 		return rFilledAmount;
 	}
 	
@@ -661,7 +662,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankDrainable(aPart, SIDE_ANY, aFluid);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0 || !tTank.getFluid().isFluidEqual(aFluid)) return null;
 		FluidStack rDrained = tTank.drain(aFluid.amount, aDoDrain);
-		if (rDrained != null && aDoDrain) updateInventory();
+		if (rDrained != null && aDoDrain) updateTanks();
 		return rDrained;
 	}
 	
@@ -670,7 +671,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		IFluidTank tTank = getFluidTankDrainable(aPart, SIDE_ANY, null);
 		if (tTank == null || tTank.getFluid() == null || tTank.getFluidAmount() == 0) return null;
 		FluidStack rDrained = tTank.drain(aAmountToDrain, aDoDrain);
-		if (rDrained != null && aDoDrain) updateInventory();
+		if (rDrained != null && aDoDrain) updateTanks();
 		return rDrained;
 	}
 	

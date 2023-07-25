@@ -21,7 +21,6 @@ package gregtech.blocks;
 
 import gregapi.block.BlockBaseMeta;
 import gregapi.block.IBlockOnWalkOver;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
@@ -73,18 +72,18 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
 		switch(aMeta) {
-		case  1: return new ArrayListNoNulls<>(F, IL.AETHER_Dirt.get(1));
-		case  2: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Loamy.get(1));
-		case  3: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Sandy.get(1));
-		case  4: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Silty.get(1));
-		case  5: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Alfisol.get(1));
-		case  6: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Andisol.get(1));
-		case  7: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Gelisol.get(1));
-		case  8: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Histosol.get(1));
-		case  9: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Inceptisol.get(1));
-		case 10: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Mollisol.get(1));
-		case 11: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Oxisol.get(1));
-		default: return new ArrayListNoNulls<>(F, ST.make(Blocks.dirt, 1, 0));
+		case  1: return ST.arraylist(IL.AETHER_Dirt.get(1));
+		case  2: return ST.arraylist(IL.BoP_Dirt_Loamy.get(1));
+		case  3: return ST.arraylist(IL.BoP_Dirt_Sandy.get(1));
+		case  4: return ST.arraylist(IL.BoP_Dirt_Silty.get(1));
+		case  5: return ST.arraylist(IL.EB_Dirt_Alfisol.get(1));
+		case  6: return ST.arraylist(IL.EB_Dirt_Andisol.get(1));
+		case  7: return ST.arraylist(IL.EB_Dirt_Gelisol.get(1));
+		case  8: return ST.arraylist(IL.EB_Dirt_Histosol.get(1));
+		case  9: return ST.arraylist(IL.EB_Dirt_Inceptisol.get(1));
+		case 10: return ST.arraylist(IL.EB_Dirt_Mollisol.get(1));
+		case 11: return ST.arraylist(IL.EB_Dirt_Oxisol.get(1));
+		default: return ST.arraylist(ST.make(Blocks.dirt, 1, 0));
 		}
 	}
 	

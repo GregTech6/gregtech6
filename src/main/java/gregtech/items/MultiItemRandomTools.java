@@ -25,8 +25,9 @@ import gregapi.cover.covers.CoverTextureCanvas;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
+import gregapi.item.IPrefixItem;
 import gregapi.item.multiitem.MultiItem;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.energy.EnergyStat;
 import gregapi.item.multiitem.energy.EnergyStatDebug;
@@ -51,7 +52,7 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.chunkGt;
 
-public class MultiItemRandomTools extends MultiItemRandom implements IItemRottable {
+public class MultiItemRandomTools extends MultiItemRandomWithCompat implements IItemRottable {
 	public MultiItemRandomTools(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Equipment", this, (short)5008));
@@ -171,7 +172,44 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.PLOW)});
 		CR.shapeless(IL.Ceramic_Builderwand_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, ToolsGT.sMetaTool.make(ToolsGT.BUILDERWAND)});
 		
-		for (OreDictMaterial tMat : new OreDictMaterial[] {ANY.WoodPlastic, ANY.Stone, MT.Glass, ANY.Wax, ANY.Iron, ANY.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.BismuthBronze, MT.Au}) {
+		
+		for (IPrefixItem tItem : OP.toolHeadSword            .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawSword         .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadPickaxe          .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawPickaxe       .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadSpade            .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Spade_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawSpade         .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Spade_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadShovel           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawShovel        .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadUniversalSpade   .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Universal_Spade_Mold_Raw.get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawUniversalSpade.mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Universal_Spade_Mold_Raw.get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadAxe              .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawAxe           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadAxe              .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawAxe           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem, tItem});
+		for (IPrefixItem tItem : OP.toolHeadAxeDouble        .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawAxeDouble     .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadSaw              .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawSaw           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadHammer           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Hammer_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadFile             .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadScrewdriver      .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Screwdriver_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadChisel           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawChisel        .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadArrow            .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawArrow         .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.arrowGtWood              .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.arrowGtPlastic           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadHoe              .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawHoe           .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadSense            .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawSense         .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadPlow             .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadRawPlow          .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		for (IPrefixItem tItem : OP.toolHeadBuilderwand      .mRegisteredPrefixItems) CR.shapeless(IL.Ceramic_Builderwand_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, tItem});
+		
+		
+		for (OreDictMaterial tMat : new OreDictMaterial[] {ANY.WoodPlastic, ANY.Stone, MT.Glass, ANY.Wax, ANY.Iron, ANY.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.ArsenicCopper, MT.ArsenicBronze, MT.BismuthBronze, MT.Au}) {
 		CR.shapeless(IL.Ceramic_Ingot_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.ingot.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Billet_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.billet.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chunk_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.chunkGt.dat(tMat)});
@@ -188,42 +226,10 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Ceramic_Ring_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.ring.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Gear_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.gearGt.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Small_Gear_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.gearGtSmall.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadSword.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Sword_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSword.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadPickaxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Pickaxe_Mold_Raw        .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawPickaxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Spade_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadSpade.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Spade_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSpade.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadShovel.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Shovel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawShovel.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Universal_Spade_Mold_Raw.get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadUniversalSpade.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Universal_Spade_Mold_Raw.get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawUniversalSpade.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadAxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Axe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawAxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadAxe.dat(tMat), OP.toolHeadAxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawAxe.dat(tMat), OP.toolHeadRawAxe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadAxeDouble.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Double_Axe_Mold_Raw     .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawAxeDouble.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadSaw.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Saw_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSaw.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Hammer_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadHammer.dat(tMat)});
-		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadFile.dat(tMat)});
 		CR.shapeless(IL.Ceramic_File_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat), OP.plate.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Screwdriver_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadScrewdriver.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadChisel.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawChisel.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.paneGlass, OP.stick.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OD.plankAnyWood, OP.stick.dat(tMat)});
 		CR.shapeless(IL.Ceramic_Chisel_Mold_Raw         .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.plate.dat(tMat), OP.stick.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadArrow.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Arrow_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawArrow.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadHoe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Hoe_Mold_Raw            .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawHoe.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadSense.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Sense_Mold_Raw          .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawSense.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadPlow.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Plow_Mold_Raw           .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadRawPlow.dat(tMat)});
-		CR.shapeless(IL.Ceramic_Builderwand_Mold_Raw    .get(1), CR.DEF_NCC, new Object[] {IL.Ceramic_Mold_Raw, OP.toolHeadBuilderwand.dat(tMat)});
 		}
 		
 		IL.Food_Can_Empty.set(addItem(998, "Empty Food Can" , "Used for canning Food" , new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
@@ -483,16 +489,39 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Robot_Tip_Drill                 .set(addItem(8008, "Robot Arm Drill Tip"          , "Infinitely usable inside an Autocrafter", OreDictToolNames.drill, OreDictToolNames.handdrill                               , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		IL.Robot_Tip_File                  .set(addItem(8009, "Robot Arm File Tip"           , "Infinitely usable inside an Autocrafter", OreDictToolNames.file                                                            , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		
-		CR.shaped(IL.Robot_Tip_Wrench       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadWrench.dat(MT.Cr));
-		CR.shaped(IL.Robot_Tip_Screwdriver  .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadScrewdriver.dat(MT.StainlessSteel));
-		CR.shaped(IL.Robot_Tip_Saw          .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(ANY.Diamond));
-		CR.shaped(IL.Robot_Tip_Hammer       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(MT.TungstenCarbide));
-		CR.shaped(IL.Robot_Tip_Cutter       .get(1), CR.DEF_REV, "wPh", "CMC", "XfX", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.plate.dat(MT.StainlessSteel));
-		CR.shaped(IL.Robot_Tip_Chisel       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadChisel.dat(MT.TungstenSteel));
-		CR.shaped(IL.Robot_Tip_Rubber       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(ANY.Rubber));
-		CR.shaped(IL.Robot_Tip_Blade        .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadSword.dat(MT.Bronze));
-		CR.shaped(IL.Robot_Tip_Drill        .get(1), CR.DEF_REV, "wPh", "CMC", "fX ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.stick.dat(ANY.Steel));
-		CR.shaped(IL.Robot_Tip_File         .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS   [3], 'X', OP.dust.dat(ANY.Diamond));
+		CR.shaped(IL.Robot_Tip_Wrench      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadWrench.dat(MT.Cr));
+		CR.shaped(IL.Robot_Tip_Screwdriver .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadScrewdriver.dat(MT.StainlessSteel));
+		CR.shaped(IL.Robot_Tip_Saw         .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(ANY.Diamond));
+		CR.shaped(IL.Robot_Tip_Hammer      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadHammer.dat(MT.TungstenCarbide));
+		CR.shaped(IL.Robot_Tip_Cutter      .get(1), CR.DEF_REV, "wPh", "CMC", "XfX", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.plate.dat(MT.StainlessSteel));
+		CR.shaped(IL.Robot_Tip_Chisel      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadChisel.dat(MT.TungstenSteel));
+		CR.shaped(IL.Robot_Tip_Rubber      .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadHammer.dat(ANY.Rubber));
+		CR.shaped(IL.Robot_Tip_Blade       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS  [3], 'X', OP.toolHeadSword.dat(MT.Bronze));
+		CR.shaped(IL.Robot_Tip_Drill       .get(1), CR.DEF_REV, "wPh", "CMC", "fX ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS   [3], 'X', OP.stick.dat(ANY.Steel));
+		CR.shaped(IL.Robot_Tip_File        .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS[3], 'X', OP.dust.dat(ANY.Diamond));
+		
+		IL.Tool_Token_Wrench               .set(addItem(8500, "Single Use Wrench"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.wrench                                                          , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Screwdriver          .set(addItem(8501, "Single Use Screwdriver"  , "Non-Functional-Tool for Crafting only", OreDictToolNames.screwdriver                                                     , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Saw                  .set(addItem(8502, "Single Use Saw"          , "Non-Functional-Tool for Crafting only", OreDictToolNames.saw                                                             , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Hammer               .set(addItem(8503, "Single Use Hammer"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.hammer, OreDictToolNames.hac_mortar                             , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Cutter               .set(addItem(8504, "Single Use Cutter"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.wirecutter, OreDictToolNames.scissors                           , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Chisel               .set(addItem(8505, "Single Use Chisel"       , "Non-Functional-Tool for Crafting only", OreDictToolNames.chisel                                                          , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Rubber               .set(addItem(8506, "Single Use Rubber Hammer", "Non-Functional-Tool for Crafting only", OreDictToolNames.softhammer                                                      , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Blade                .set(addItem(8507, "Single Use Blade"        , "Non-Functional-Tool for Crafting only", OreDictToolNames.sword, OreDictToolNames.blade, OreDictToolNames.hac_cuttingboard, TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_Drill                .set(addItem(8508, "Single Use Drill"        , "Non-Functional-Tool for Crafting only", OreDictToolNames.drill, OreDictToolNames.handdrill                               , TC.stack(TC.INSTRUMENTUM, 1)));
+		IL.Tool_Token_File                 .set(addItem(8509, "Single Use File"         , "Non-Functional-Tool for Crafting only", OreDictToolNames.file                                                            , TC.stack(TC.INSTRUMENTUM, 1)));
+		
+		RM.Boxinator.addRecipe2(T, 16, 16* 2, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Wrench     .get(0), IL.Tool_Token_Wrench     .get( 2));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Screwdriver.get(0), IL.Tool_Token_Screwdriver.get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Saw        .get(0), IL.Tool_Token_Saw        .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16* 2, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Hammer     .get(0), IL.Tool_Token_Hammer     .get( 2));
+		RM.Boxinator.addRecipe2(T, 16, 16* 4, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Cutter     .get(0), IL.Tool_Token_Cutter     .get( 4));
+		RM.Boxinator.addRecipe2(T, 16, 16* 9, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Chisel     .get(0), IL.Tool_Token_Chisel     .get( 9));
+		RM.Boxinator.addRecipe2(T, 16, 16* 4, OP.nugget   .mat(MT.Rubber, 1), IL.Robot_Tip_Rubber     .get(0), IL.Tool_Token_Rubber     .get( 4));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Blade      .get(0), IL.Tool_Token_Blade      .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16*32, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_Drill      .get(0), IL.Tool_Token_Drill      .get(32));
+		RM.Boxinator.addRecipe2(T, 16, 16* 9, OP.plateTiny.mat(MT.Steel , 1), IL.Robot_Tip_File       .get(0), IL.Tool_Token_File       .get( 9));
+		
 		
 		IL.Tool_Remote_Activator           .set(addItem(9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Tool_Cheat                      .set(addItem(9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
@@ -507,17 +536,22 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 //      CR.shaped(IL.Tool_Scanner               .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_HV, 'X', OP.plate.dat(MT.Cr), 'U', OD_USB_STICKS[3], 'C', OD_USB_CABLES[3], 'E', IL.EMITTERS[4], 'R', IL.SENSORS[4], 'P', IL.Processor_Crystal_Sapphire);
 //      CR.shaped(IL.Tool_Cropnalyzer           .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_MV, 'X', OP.plate.dat(MT.Al), 'U', OD_USB_STICKS[1], 'C', OD_USB_CABLES[1], 'E', IL.EMITTERS[2], 'R', IL.SENSORS[2], 'P', OD_CIRCUITS[6]);
 		
-		IL.Thermometer_Quicksilver         .set(addItem(10000, "Quicksilver Thermometer"  , "", new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.VENEMUM, 1), TC.stack(TC.VITREUS, 1)));
-		IL.Geiger_Counter_Empty            .set(addItem(10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"             , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
-		IL.Geiger_Counter                  .set(addItem(10002, "Geiger Counter"           , "", new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
+		IL.Thermometer_Quicksilver         .set(addItem(10000, "Quicksilver Thermometer"  , "Measures Temperature"                   , new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.SENSUS, 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.GELUM, 2)));
+		IL.Geiger_Counter_Empty            .set(addItem(10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"                                                    , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
+		IL.Geiger_Counter                  .set(addItem(10002, "Geiger Counter"           , "Measures Neutron Count"                 , new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
+		IL.Electro_Meter                   .set(addItem(10003, "Electrometer"             , "Measures Electricity"                   , new Behavior_Tool(TOOL_electrometer ), TC.stack(TC.SENSUS, 5), TC.stack(TC.ELECTRUM, 5)));
+		IL.Tacho_Meter                     .set(addItem(10004, "Tachometer"               , "Measures Rotation Speed"                , new Behavior_Tool(TOOL_tachometer   ), TC.stack(TC.SENSUS, 5), TC.stack(TC.MOTUS, 5)));
+		
+		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
+		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.capcellcon .dat(MT.Al   ), 'P', OP.plate.dat(MT.Al             ), 'T', OP.screw.dat(MT.Al             ), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Electro_Meter              .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.wireFine   .dat(ANY.Cu  ), 'P', OP.plate.dat(MT.SteelGalvanized), 'T', OP.screw.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[1]);
+		CR.shaped(IL.Tacho_Meter                .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.gearGtSmall.dat(MT.Brass), 'P', OP.plate.dat(MT.Brass          ), 'T', OP.screw.dat(MT.Brass          ), 'C', OD.itemRedstone);
+		
+		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Helium.make(1000), NF, IL.Geiger_Counter.get(1));
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Neon  .make(1000), NF, IL.Geiger_Counter.get(1));
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Argon .make(1000), NF, IL.Geiger_Counter.get(1));
-		
-		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
-		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TUT", "PCP", "TdT", 'U', OP.capcellcon.dat(MT.Al), 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[1]);
-		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		
 		
 		IL.Compass_North                   .set(addItem(11000, "Compass (NORTH)" , "Points to Zed Negative"                             , OD.itemCompass, new Behavior_Switch_Metadata(11001, T, T), OM.data(ST.make(Items.compass, 1, 0)), TC.stack(TC.METALLUM, 2), TC.stack(TC.MAGNETO                                              , 2))); CR.shapeless(ST.make(Items.compass, 1, 0), CR.DEF, new Object[] {last()});

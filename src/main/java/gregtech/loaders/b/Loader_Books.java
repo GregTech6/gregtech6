@@ -114,8 +114,47 @@ public class Loader_Books implements Runnable {
 		, "Step 2: All you need to do to activate that Portal, is throwing a Diamond into that Water Pool, and you are ready to go. Yep, it is that simple. I did all the work for you and summoned the Blocks of the Portal in the right configuration."
 		});
 		
-		String tAlexGryllsIntro = "Hi, I'm Alex Grylls, Adventurer and experienced Hunter of the several Mobs you encounter in our World. In this Guide I will explain you easy Methods to hunt for wild Mobs in their natural Habitats.";
+		UT.Books.createWrittenBook("Manual_Enchantments", "The vexing World of Enchantments", "Evoker Number 42", ST.make(ItemsGT.BOOKS, 1, 10), new String[] {
+		  "I cant believe how hard it is to find Information on these ancient Enchantments! But here I am, finally having collected everything there is to know about this Magic!"
+		, "Enchanting Table¶===================¶You need one of these Tables, typically made of 2 Diamonds, 4 Obsidian and a Book. Then you can use your Magical Power and sometimes Lapis Lazuli to put random Enchantments onto Tools and Books!"
+		, "Book Shelves¶===================¶To increase the Power of these previously mentioned random Enchantments, you merely need any Book Shelves filled with Books. Can even be some fancy Metal Shelves! The Books can even be on the backside!"
+		, "Iron Anvils¶===================¶But random Enchantments cant just be removed from Tools. The Anvil will help with that, since it lets you put Enchantments that are in Books onto your Tools and even give them a Name!"
+		, "Grindstone¶===================¶There supposedly is Grindstones that can remove Enchantments, but I have never seen any of those! Must be like those Brains in Jars I keep hearing about!"
+		, "Magical Power¶===================¶You can acquire this by killing the many Creatures in this World, by cooking Food or messing with Ores! This is quite the Experience to be had, which is why many people call it XP or EXP!"
+		, "List¶===================¶What follows is a List of the Enchantments that I know of and their Effects."
+		, "Sharpness¶===================¶Levels 1 to 5+¶Deals 0.625 Hearts of Extra Damage per Level and works on pretty much everything!"
+		, "Wrecking¶===================¶Levels 1 to 5+¶IDeals 0.75 Hearts of Extra Damage per Level and works on pretty much everything! Can normally only be applied to Railcraft Crowbars."
+		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches! Smite 3+ Bullets can even penetrate a Lich Barrier!"
+		, "Bane of Arthropods¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on things that have 6 or more Legs, like those pesky Spiders, Mites, Insects or Silverfish!"
+		, "Implosion¶===================¶Levels 1 to 5+¶IDeals 1.5 Hearts of Extra Damage per Level and works on any Creepers! Can normally only be applied to Railcraft Crowbars. It often also hurts other explosive Mobs like Ghasts!"
+		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
+		, "Disjunction¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any Ender Creatures it hits! Weakened Endermen cant Teleport anymore, making Projectiles with this Enchantment invaluable in deposing them!"
+		, "Werebane¶===================¶Levels 1 to 5+¶Inflicts Withering and Poison to any Werecreatures and similar that it hits! Works on Minotaurs too!"
+		, "Knockback¶===================¶Levels 1 to 2+¶This will yeet anyone you hit with it, decreasing your own horizontal velocity by 40% in the process, which is only noticeable midair. Its Level increases by one while sprinting."
+		, "Fire Aspect¶===================¶Levels 1 to 2+¶Not only does this Enchantment set the Enemy ablaze for 4 Seconds per Level, sometimes even cooking their drops and at Level 3 it can also smelt any Block it harvests blazingly fast!"
+		, "Looting¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Mobs. It may increase the total drops themselves or the chance that you get some rare drop at all."
+		, "Fortune¶===================¶Levels 1 to 3+¶Increases the amount of drops you get from Blocks. It may increase the total drops themselves or the chance that you get some rare drop at all. Works on Ores, Crops, Gravel, and Glowstone."
+		, "Silk Touch¶===================¶Only 1 Level¶Will make sure that the Block you harvest with the proper Tool, will drop itself instead of what it would normally drop otherwise. Small Ores get a better chance for bigger Gems."
+		, "Infinity¶===================¶Levels 1+¶Bows will be able to shoot Infinite Arrows as long as you have one Arrow on you. Guns will have a 50%, 66%, 75%, 80%, 84% or higher chance to not consume Ammo based on the Level."
+		, "Power¶===================¶Levels 1 to 5+¶Arrows shot will deal 25 percent more damage per Level. Bullets shot will fly faster and therefore have a higher piercing rate and higher Damage at longer range."
+		, "Flame¶===================¶Levels 1+¶Your Ranged Weapon will set its Projectile on Fire, dealing Fire Damage similar to or combined with Fire Aspect. You can ignite TNT and some other things with it too."
+		, "Punch¶===================¶Levels 1 to 2+¶Your Ranged Weapon will yeet anyone you hit with its Projectile about +3 additional Blocks per Level."
+		, "Luck of the Sea¶===================¶Levels 1 to 3+¶Increases the chance of fishing up Treasure, decreases the chance of fishing up Junk, slightly decreases the chance of fishing up an actual Fish."
+		, "Lure¶===================¶Levels 1 to 3+¶Reduces wait time for a Bite by 5 Seconds per Level up to Level 5, Level 6 or higher will instead make the Fishing Rod useless for fishing."
+		, "Protection¶===================¶Levels 1 to 4+¶Reduces amount of overall Damage taken by 4 Percent per Level per Armor Piece, it caps at a combined 80 Percent Reduction, which includes all the other Protection Enchantment Types!"
+		, "Fire Protection¶===================¶Levels 1 to 4+¶Reduces amount of Fire Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. It will reduce time on Fire by 15 Percent per best uncombined Level."
+		, "Blast Protection¶===================¶Levels 1 to 4+¶Reduces amount of Explosion Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. It will reduce Explosion Knockback by 15 Percent per best uncombined Level."
+		, "Projectile Protection¶===================¶Levels 1 to 4+¶Reduces amount of Ranged Damage taken by 8 Percent per Level per Armor Piece, it caps with Protection. Be aware that Explosive Projectiles may only be reduced partially!"
+		, "Feather Falling¶===================¶Levels 1 to 4+¶Reduces amount of Enderpearl and Falling Damage taken by 12 Percent per Level per Armor Piece, it caps with Protection. Does not work if you are crashing into a Wall though."
+		, "Thorns¶===================¶Levels 1 to 3+¶Each individual piece of Armor has the chance of 15 Percent per Level to deal between 0.5 and 2 Hearts of Damage to any Melee or Ranged Attacker. The Armor Piece will lose some more Durability though."
+		, "Respiration¶===================¶Levels 1 to 3+¶Each Level adds 15 seconds worth of Oxygen underwater, which makes it twice, thrice or quarce the normal time. It also reduces Drowning Damage with a chance of 50%, 66% or 75% respectively."
+		, "Aqua Affinity¶===================¶Only 1 Level¶Makes it so you can mine at normal Speed while standing underwater instead of five times slower. You do still have to stand on the ground though or else you are slowed down by five times."
+		, "Efficiency¶===================¶Levels 1 to 5+¶Tools with this Enchantment get a flat Bonus to the Mining Speed of Level squared plus 1, so +2, +5, +10, +17 or +26. Tool Materials never have this Enchantment because it would be pointless."
+		, "Unbreaking¶===================¶Levels 1 to 3+¶Tools with this Enchantment on average last longer by +100% per Level. Armors will only last +25%, +34% or +43% longer. Tool Materials never have this Enchantment because it would be pointless."
+		});
 		
+		
+		String tAlexGryllsIntro = "Hi, I'm Alex Grylls, Adventurer and experienced Hunter of the several Mobs you encounter in our World. In this Guide I will explain you easy Methods to hunt for wild Mobs in their natural Habitats.";
 		
 		UT.Books.createWrittenBook("Manual_Hunting_Creeper", "Hunting Guide for Creepers", "Alex Grylls, Survival Specialist", ST.make(ItemsGT.BOOKS, 1, 3), new String[] {tAlexGryllsIntro
 		, "Creepers¶===================¶Creepers are sneaky, suicidal, leafy sticks on 4 short Legs, which will blow up when they are close by. They drop Gunpowder and will not deal any damage aside from the explosion when you let them come close."
@@ -123,7 +162,9 @@ public class Loader_Books implements Runnable {
 		, "Creepers¶===================¶In order to detonate, a Creeper needs to see the Player, due to this it is always recommended to take the high Ground as you can hide behind the Cliff you are standing on more easily."
 		, "Creepers¶===================¶Water is also a good place to melee a Creeper, as knockback will get it out of explosion Range, and even if it explodes it will not cause Damage to the ground, due to the Water absorbing the shock."
 		, "Creepers¶===================¶For Melee Combat in general it is adviced to have Weapons with a strong Knockback so you don't need to sprint to knock the Creeper out of the Detonation Zone. You can also just shoot an Arrow first and then melee."
-		, "Creepers¶===================¶Last but not least, you can always just drop Water between you and the Creeper, it will slow it down considerable and if its about to explode anyways, then it won't damage the Terrain."
+		, "Creepers¶===================¶The Implosion Enchantment does a great deal of Damage to Creepers. It can however only be gotten by enchanting Crowbars, or by using Tool Materials that have the Enchantment on them normally."
+		, "Creepers¶===================¶You can manually ignite Creepers with Flint and Steel or a Lighter, and Ammunition with the Fire Aspect Enchantment will ignite Creepers at a distance if Implosion is not also on the same Arrow or Bullet."
+		, "Creepers¶===================¶Last but not least, you can always just drop Water between you and the Creeper, it will slow it down considerably and if its about to explode anyways, then it won't damage the Terrain."
 		});
 		
 		UT.Books.createWrittenBook("Manual_Hunting_Skeleton", "Hunting Guide for Skeletons", "Alex Grylls, Survival Specialist", ST.make(ItemsGT.BOOKS, 1, 3), new String[] {tAlexGryllsIntro
@@ -242,7 +283,7 @@ public class Loader_Books implements Runnable {
 		, "Ghasts¶===================¶Ghasts, flying, ghost alike, crying Tentacle Monsters with explosive Projectiles. Their Tears are hard to get due to them being airborne and the Nether being all like 'The Floor is Lava!'."
 		, "Ghasts¶===================¶Their Projectiles can literally be punched back at them kinda like a Baseball, what will yield the 'Return to Sender' Achievement. What is a Baseball, you ask? I don't know either."
 		, "Ghasts¶===================¶Punching their Fireballs back at them can be hard to do, especially with Lag, but Arrows can deflect the fireballs aswell, meaning you can shoot Arrows at the Fireballs as a defense."
-		, "Ghasts¶===================¶In general any form of ranged Attack is advised, because it happens very rarely, that a Ghastis close enough to the ground to actually melee it."
+		, "Ghasts¶===================¶In general any form of ranged Attack is advised, because it happens very rarely, that a Ghast is close enough to the ground to actually melee it. The Implosion Enchantment works well on them too."
 		, "Ghasts¶===================¶It can happen very often that you are unprepared and a Ghast shows up trying to blow you into smithereens. In that case, run away and hide, first."
 		, "Ghasts¶===================¶After you are done finding a hiding Spot, look at where exactly the Ghast is right now, so you can stay out of its Range. Then either continue your business or shoot the Ghast."
 		, "Ghasts¶===================¶If you are going to deflect a Ghast Blast the melee way, then use a Sword for that, as it gives you a slightly increased Range. This is especially useful if you cant use a Bow."
@@ -413,7 +454,7 @@ public class Loader_Books implements Runnable {
 		tBook.add("File"                +"¶===================¶OXXXO¶OXXXO¶OXXXO¶OOXOO¶OOXOO¶===================¶1.500 Units required");
 		tBook.add("Screwdriver"         +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OOXOO¶OOXOO¶===================¶1.000 Units required");
 		tBook.add("Chisel"              +"¶===================¶OXXXO¶OOXOO¶OOXOO¶OOXOO¶OOXOO¶===================¶1.500 Units required");
-		tBook.add("Arrow"               +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OXXXO¶OOOOO¶===================¶0.250 Units required");
+		tBook.add("Arrow"               +"¶===================¶OOOOO¶OOXOO¶OOXOO¶OXXXO¶OOOOO¶===================¶0.125 Units required");
 		tBook.add("Hoe"                 +"¶===================¶OOOOO¶OOXXO¶OXXXO¶OOOOO¶OOOOO¶===================¶2.000 Units required");
 		tBook.add("Sense/Scythe"        +"¶===================¶OOOOO¶OXXXX¶XXXXX¶OOOOO¶OOOOO¶===================¶3.000 Units required");
 		tBook.add("Plow"                +"¶===================¶XXXXX¶XXXXX¶XXXXX¶XXXXX¶OOXOO¶===================¶4.000 Units required");

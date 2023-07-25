@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,10 +22,12 @@ package gregapi;
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
+import codechicken.nei.api.API;
 import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerInputHandler;
 import codechicken.nei.guihook.IContainerTooltipHandler;
 import codechicken.nei.recipe.*;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
@@ -45,6 +47,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
@@ -66,12 +69,31 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public NEI_RecipeMap(RecipeMap aRecipeMap) {
 		mRecipeMap = aRecipeMap;
 		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
-		
-		if (!NEI_GT_API_Config.ADDED) {
-			FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
+	}
+	
+	public NEI_RecipeMap init() {
+		if (Loader.instance().getIndexedModList().get("NotEnoughItems").getVersion().contains("-GTNH")) {
+			API.registerRecipeHandler(this);
+			API.registerUsageHandler(this);
+			
+			NBTTagCompound tNBT = UT.NBT.make();
+			tNBT.setString ("modId"            , MD.GT.mID);
+			tNBT.setString ("modName"          , MD.GT.mName);
+			tNBT.setString ("handler"          , mRecipeMap.mNameNEI);
+			tNBT.setString ("itemName"         , ST.regMeta(mRecipeMap.mRecipeMachineList.isEmpty() ? ST.make(Blocks.lit_furnace, 1, 0) : mRecipeMap.mRecipeMachineList.get(0)));
+			tNBT.setInteger("handlerHeight"    , 135);
+			tNBT.setInteger("handlerWidth"     , 166);
+			tNBT.setInteger("maxRecipesPerPage",   2);
+			tNBT.setInteger("yShift"           ,   6);
+			tNBT.setBoolean("modRequired"      ,   T);
+			FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
+		} else {
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
 		}
+		
+		FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
+		return this;
 	}
 	
 	@Override
@@ -97,7 +119,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		public void generatePermutations() {
 			if (permutated) return;
 			
-			ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
+			ArrayList<ItemStack> tDisplayStacks = ST.arraylist();
 			for (ItemStack tStack : items) if (ST.valid(tStack)) {
 				if (ST.meta_(tStack) == W) {
 					List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
@@ -510,9 +532,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
 			
-			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
-			tResults.add(aResult);
-			tResults.add(OM.get_(aResult));
+			ArrayList<ItemStack> tResults = ST.arraylist(aResult, OM.get_(aResult));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult));
@@ -564,9 +584,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
 			
-			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
-			tInputs.add(aInput);
-			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
+			ArrayList<ItemStack> tInputs = ST.arraylist(aInput, OreDictManager.INSTANCE.getStack_(F, aInput));
 			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput));
@@ -603,7 +621,11 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public String getOverlayIdentifier() {
 		return mRecipeMap.mNameNEI;
 	}
-
+	
+	public String getHandlerId() {
+		return mRecipeMap.mNameNEI;
+	}
+	
 	@Override
 	public void drawBackground(int recipe) {
 		GL11.glColor4f(1, 1, 1, 1);

@@ -19,15 +19,11 @@
 
 package gregtech.blocks.tree;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.tree.BlockBaseLeaves;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
@@ -40,6 +36,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+import static gregapi.data.CS.*;
 
 public class BlockTreeLeavesAB extends BlockBaseLeaves implements Runnable {
 	public BlockTreeLeavesAB(String aUnlocalised, Block aSaplings) {
@@ -106,7 +106,7 @@ public class BlockTreeLeavesAB extends BlockBaseLeaves implements Runnable {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> rDrops = ST.arraylist();
 		int tChance = 50;
 		if (aFortune > 0) {
 			tChance -= 5 << aFortune;

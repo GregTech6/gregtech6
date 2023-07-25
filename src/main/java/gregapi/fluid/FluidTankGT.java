@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.fluid;
 
-import static gregapi.data.CS.*;
-
-import java.util.Map;
-
 import gregapi.data.FL;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.UT;
@@ -31,6 +27,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.Map;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class FluidTankGT implements IFluidTank {
 	public final FluidTankGT[] AS_ARRAY = new FluidTankGT[] {this};
@@ -256,13 +257,36 @@ public class FluidTankGT implements IFluidTank {
 	}
 	
 	/** Resets Tank Contents entirely */
-	public FluidTankGT setEmpty() {mFluid = null; mChangedFluids = T; mAmount = 0; return this;}
+	public FluidTankGT setEmpty() {
+		if (mFluid != null) mChangedFluids = T;
+		mFluid  = null;
+		mAmount = 0;
+		return this;
+	}
 	/** Sets Fluid Content, taking Amount from the Fluid Parameter  */
-	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
+	public FluidTankGT setFluid(FluidStack aFluid) {
+		if (aFluid == null) return setEmpty();
+		if (!FL.equal(mFluid, aFluid)) mChangedFluids = T;
+		mFluid  = aFluid;
+		mAmount = mFluid.amount;
+		return this;
+	}
 	/** Sets Fluid Content and Amount */
-	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aAmount); return this;}
+	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {
+		if (aFluid == null) return setEmpty();
+		if (!FL.equal(mFluid, aFluid)) mChangedFluids = T;
+		mFluid  = aFluid;
+		mAmount = aAmount;
+		return this;
+	}
 	/** Sets Fluid Content, taking Amount from the Tank Parameter  */
-	public FluidTankGT setFluid(FluidTankGT aTank) {mFluid = FL.amount(aTank.mFluid, aTank.mAmount); mChangedFluids = T; mAmount = aTank.mAmount; return this;}
+	public FluidTankGT setFluid(FluidTankGT aTank) {
+		if (aTank == null || aTank.mFluid == null) return setEmpty();
+		if (!FL.equal(mFluid, aTank.mFluid)) mChangedFluids = T;
+		mFluid  = FL.amount(aTank.mFluid, aTank.mAmount);
+		mAmount = aTank.mAmount;
+		return this;
+	}
 	/** Sets the Tank Index for easier Reverse Mapping. */
 	public FluidTankGT setIndex(int aIndex) {mIndex = aIndex; return this;}
 	/** Sets the Capacity, and yes it accepts 63 Bit Numbers */
@@ -280,9 +304,11 @@ public class FluidTankGT implements IFluidTank {
 	/** Sets Tank capacity Map, should it be needed. */
 	public FluidTankGT setCapacity(Map<String, Long> aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap; mAdjustableMultiplier = aCapacityMultiplier; return this;}
 	
-	public boolean isEmpty() {return mFluid == null;}
-	public boolean isFull () {return mFluid != null && mAmount     >= capacity();}
-	public boolean isHalf () {return mFluid != null && mAmount * 2 >= capacity();}
+	public boolean isEmpty  () {return mFluid == null;}
+	public boolean isFull   () {return mAmount     >= capacity();}
+	public boolean isHalf   () {return mAmount * 2 >= capacity();}
+	public boolean overHalf () {return mAmount * 2 >  capacity();}
+	public boolean underHalf() {return mAmount * 2 <  capacity();}
 	
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
 	public boolean contains(FluidStack aFluid) {return FL.equal(mFluid, aFluid);}
@@ -295,7 +321,7 @@ public class FluidTankGT implements IFluidTank {
 	public boolean changed() {return mChangedFluids;}
 	
 	public long amount() {return isEmpty() ? 0 : mAmount;}
-	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : mAmount < aMax ? mAmount : aMax;}
+	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : Math.min(mAmount, aMax);}
 	
 	public long capacity (                 ) {return mAdjustableCapacity == null ? mCapacity : capacity_(mFluid);}
 	public long capacity (FluidStack aFluid) {return mAdjustableCapacity == null ? mCapacity : capacity_(aFluid);}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -571,7 +571,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (!FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mFluidOutputs]) return null;
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].has()) return mTanksOutput[i];
+			for (int i=0,j; i < mTanksOutput.length; i++) if (mTanksOutput[j = ((int)(SERVER_TIME/20)+i) % mTanksOutput.length].has()) return mTanksOutput[j];
 		} else {
 			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aFluidToDrain)) return mTanksOutput[i];
 		}
@@ -616,6 +616,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public int canOutput(Recipe aRecipe) {
 		int rMaxTimes = mParallel;
+		
+		doOutputItems();
 		
 		// Don't do more than 30 to 120 Seconds worth of Input at a time, when doing Chain Processing.
 		if (mParallelDuration) {
@@ -675,15 +677,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	 * Funny how Eclipse marks the word Enum as not correctly spelled.
 	 * @return see constants above
 	 */
-	public int checkRecipe(boolean aApplyRecipe, boolean aUseAutoInputs) {
+	public int checkRecipe(boolean aApplyRecipe, boolean aUseAutoIO) {
 		mCouldUseRecipe = F;
 		if (mRecipes == null) return DID_NOT_FIND_RECIPE;
 		
-		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
-		
-		if (aUseAutoInputs && !mDisabledItemInput && SIDES_VALID[tAutoInput]) {
-			ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
-		}
+		if (aUseAutoIO) doInputItems();
 		
 		int tInputItemsCount = 0, tInputFluidsCount = 0;
 		ItemStack[] tInputs = new ItemStack[mRecipes.mInputItemsCount];
@@ -692,8 +690,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (ST.valid(tInputs[i])) tInputItemsCount++;
 		}
 		
-		tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
-		if (aUseAutoInputs && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
+		byte tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
+		if (aUseAutoIO && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getFluidInputTarget(tAutoInput);
 			if (tTileEntity != null && tTileEntity.mTileEntity != null) {
 				FluidTankInfo[] tInfos = tTileEntity.mTileEntity.getTankInfo(FORGE_DIR[tTileEntity.mSideOfTileEntity]);
@@ -763,13 +761,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			mMinEnergy = 0;
 		} else {
 			if (mParallelDuration) {
-				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt));
+				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU : tRecipe.mEUt));
 				mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration) * tMaxProcessCount, mEfficiency, 10000, T));
 			} else {
 				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU * tMaxProcessCount : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt * tMaxProcessCount));
 				mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration), mEfficiency, 10000, T));
 			}
-			if (mMinEnergy > 0 && !mCheapOverclocking) while (mMinEnergy < mInputMin && mMinEnergy * 4 <= mInputMax) {mMinEnergy *= 4; mMaxProgress *= 2;}
+			if (!mCheapOverclocking) while (mMinEnergy < mInputMin && mMinEnergy * 4 <= mInputMax) {mMinEnergy *= 4; mMaxProgress *= 2;}
 		}
 		
 		removeAllDroppableNullStacks();
@@ -777,7 +775,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void doWork(long aTimer) {
-		if ((mEnergy >= mInputMin || mEnergyTypeAccepted == TD.Energy.TU) && mEnergy >= mMinEnergy && checkStructure(F)) {
+		if (mEnergy >= mInputMin && mEnergy >= mMinEnergy && checkStructure(F)) {
 			mActive = doActive(aTimer, Math.min(mInputMax, mEnergy));
 			mRunning = T;
 		} else {
@@ -888,7 +886,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public boolean doInactive(long aTimer) {
 		if (mActive) {
 			doSoundInterrupt();
-			if (!mDisabledItemOutput) doOutputItems();
+			doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
 		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer % 1200 == 5) {
@@ -978,9 +976,16 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		return getAdjacentTank(aSide);
 	}
 	
+	public void doInputItems() {
+		if (mDisabledItemInput) return;
+		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
+		if (SIDES_VALID[tAutoInput]) ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
+	}
+	
 	public void doOutputItems() {
+		if (mDisabledItemOutput) return;
 		byte tAutoOutput = FACING_TO_SIDE[mFacing][mItemAutoOutput];
-		ST.moveAll(delegator(tAutoOutput), getItemOutputTarget(tAutoOutput));
+		if (SIDES_VALID[tAutoOutput]) ST.moveAll(delegator(tAutoOutput), getItemOutputTarget(tAutoOutput));
 	}
 	
 	public void doOutputFluids() {
@@ -1007,8 +1012,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
 	@Override public boolean hasWork() {return mMaxProgress > 0 || mChargeRequirement > 0;}
-	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) : mMinEnergy < 1 ? mProgress    : mProgress    / mMinEnergy + (mProgress    % mMinEnergy == 0 ? 0 : 1) ;}
-	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                           mMinEnergy < 1 ? mMaxProgress : mMaxProgress / mMinEnergy + (mMaxProgress % mMinEnergy == 0 ? 0 : 1));}
+	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) : mMinEnergy < 1 ? mProgress    : UT.Code.divup(mProgress    , mMinEnergy ) ;}
+	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                           mMinEnergy < 1 ? mMaxProgress : UT.Code.divup(mMaxProgress , mMinEnergy ));}
 	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
 	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	

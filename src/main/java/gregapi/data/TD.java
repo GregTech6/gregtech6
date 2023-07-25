@@ -195,6 +195,8 @@ public class TD {
 		public static final List<TagData> ALL_RF                            = new ArrayListNoNulls<>(F, MJ, RF, KU);
 		/** Contains all known Energy Tags, which are worth exactly 1 EU. */
 		public static final List<TagData> ALL_EU                            = new ArrayListNoNulls<>(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, CU);
+		/** Contains all known Energy Tags, which are actually used by GT6. */
+		public static final List<TagData> ALL_GT                            = new ArrayListNoNulls<>(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, CU, TU);
 		/** Contains all known Energy Tags, which are kinetic. */
 		public static final List<TagData> ALL_KINETIC                       = new ArrayListNoNulls<>(F, KU, RU);
 		/** Contains all known Energy Tags, which are electric. */

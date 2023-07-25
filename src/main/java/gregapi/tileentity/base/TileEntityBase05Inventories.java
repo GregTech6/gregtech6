@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -99,6 +99,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	@Override public final int invsize() {return mInventory.length;}
 	@Override public final NBTTagCompound slotNBT(int aIndex) {return mInventory[aIndex] != null ? mInventory[aIndex].getTagCompound() : null;}
 	
+	@Override public void updateTanks() {mInventoryChanged = T;}
 	@Override public void updateInventory() {mInventoryChanged = T;}
 	@Override public boolean isUseableByPlayer(EntityPlayer aPlayer) {return !isDead() && allowInteraction(aPlayer) && aPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64D;}
 	@Override public void openInventory () {/**/}

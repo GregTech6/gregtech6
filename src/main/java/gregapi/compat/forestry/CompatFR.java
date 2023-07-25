@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,8 +18,6 @@
  */
 
 package gregapi.compat.forestry;
-
-import static gregapi.data.CS.*;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import forestry.api.farming.Farmables;
@@ -40,17 +38,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import static gregapi.data.CS.*;
+
 public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
-	public static ItemStackSet<ItemStackContainer> mWindfalls = new ItemStackSet<>();
+	public ItemStackSet<ItemStackContainer> mWindfalls = ST.hashset();
 	
 	@Override
 	public void onPostLoad(FMLPostInitializationEvent aEvent) {
 		Farmables.farmables.get("farmArboreal").add(this);
-	}
-	
-	@Override
-	public void addWindfall(ItemStack aStack) {
-		if (ST.valid(aStack)) mWindfalls.add(aStack);
 	}
 	
 	@Override
@@ -77,6 +72,9 @@ public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
 	public boolean isGermling(ItemStack aStack) {
 		return aStack.getItem() instanceof ItemBlockBase && ((ItemBlockBase)aStack.getItem()).mPlaceable instanceof BlockBaseSapling;
 	}
+	
+	@Override
+	public void addWindfall(ItemStack aStack) {mWindfalls.add(aStack);}
 	
 	@Override
 	public boolean isWindfall(ItemStack aStack) {

@@ -464,7 +464,7 @@ public final class OreDictManager {
 	
 	private final Map<String, ItemStack> sName2StackMap = new HashMap<>();
 	private final Map<ItemStackContainer, OreDictItemData> sItemStack2DataMap = new ItemStackMap<>();
-	private final ItemStackSet<ItemStackContainer> sNoUnificationSet = new ItemStackSet<>();
+	private final ItemStackSet<ItemStackContainer> sNoUnificationSet = ST.hashset();
 	private int isRegisteringOre = 0, isAddingOre = 0;
 	
 	/**

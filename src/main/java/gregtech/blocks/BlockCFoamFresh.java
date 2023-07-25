@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,16 @@
 
 package gregtech.blocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Random;
-
 import gregapi.block.IBlockFoamable;
 import gregapi.block.metatype.BlockColored;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -41,6 +36,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 public class BlockCFoamFresh extends BlockColored implements IBlockFoamable {
 	public BlockCFoamFresh(String aUnlocalised) {
@@ -68,7 +68,7 @@ public class BlockCFoamFresh extends BlockColored implements IBlockFoamable {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		return new ArrayListNoNulls<>();
+		return ST.arraylist();
 	}
 	
 	@Override

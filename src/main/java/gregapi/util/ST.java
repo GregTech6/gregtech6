@@ -21,10 +21,7 @@ package gregapi.util;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.ItemBlockBase;
-import gregapi.code.IItemContainer;
-import gregapi.code.ItemStackContainer;
-import gregapi.code.ItemStackSet;
-import gregapi.code.ModData;
+import gregapi.code.*;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -205,6 +202,11 @@ public class ST {
 	public static String regName (Item      aItem ) {return aItem == null ? null : regName_(aItem);}
 	public static String regName_(Item      aItem ) {return Item.itemRegistry.getNameForObject(aItem);}
 	
+	public static String regMeta (ItemStack aStack) {return invalid(aStack) ? "" : regName(item_(aStack))+":"+meta_(aStack);}
+	public static String regMeta (Block     aBlock) {return aBlock  == null ? "" : regName(item_(aBlock))+":0";}
+	public static String regMeta (Item      aItem ) {return aItem   == null ? "" : regName(aItem)+":0";}
+	public static String regMeta_(Item      aItem ) {return regName(aItem)+":0";}
+	
 	public static boolean ownedBy (ModData aMod, IBlockAccess aWorld, int aX, int aY, int aZ) {return aMod.mLoaded && ownedBy(aMod.mID, aWorld, aX, aY, aZ);}
 	public static boolean ownedBy (ModData aMod, ItemStack    aStack                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aStack);}
 	public static boolean ownedBy (ModData aMod, Block        aBlock                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aBlock);}
@@ -267,21 +269,24 @@ public class ST {
 	}
 	
 	public static boolean use(Entity aPlayer, ItemStack aStack) {
-		return use(aPlayer, F, aStack, 1);
+		return use(aPlayer, F, T, aStack, 1);
 	}
 	public static boolean use(Entity aPlayer, ItemStack aStack, long aAmount) {
-		return use(aPlayer, F, aStack, aAmount);
+		return use(aPlayer, F, T, aStack, aAmount);
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack) {
-		return use(aPlayer, aRemove, aStack, 1);
+		return use(aPlayer, aRemove, T, aStack, 1);
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack, long aAmount) {
+		return use(aPlayer, aRemove, T, aStack, aAmount);
+	}
+	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
 		if (aStack.stackSize < aAmount) return F;
 		aStack.stackSize -= aAmount;
 		if (!(aPlayer instanceof EntityPlayer)) return T;
 		if (aStack.stackSize <= 0) {
-			ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
+			if (aTriggerEvent) ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
 			if (aRemove) for (int i = 0; i < ((EntityPlayer)aPlayer).inventory.mainInventory.length; i++) {
 				if (((EntityPlayer)aPlayer).inventory.mainInventory[i] == aStack) {
 					((EntityPlayer)aPlayer).inventory.mainInventory[i] = null;
@@ -323,6 +328,8 @@ public class ST {
 	public static boolean hasValid(ItemStack... aStacks) {if (aStacks != null) for (ItemStack aStack : aStacks) if (valid(aStack)) return T; return F;}
 	
 	
+	public static ItemStackSet<ItemStackContainer> hashset(ItemStack... aStacks) {return new ItemStackSet<>(aStacks);}
+	public static ArrayListNoNulls<ItemStack> arraylist(ItemStack... aStacks) {return new ArrayListNoNulls<>(F, aStacks);}
 	public static ItemStack[] array(ItemStack... aStacks) {return aStacks;}
 	
 	public static ItemStack make_(Item  aItem , long aSize, long aMeta) {return new ItemStack(aItem , UT.Code.bindInt(aSize), UT.Code.bindShort(aMeta));}
@@ -781,7 +788,7 @@ public class ST {
 		return torch(aBlock, 1); // that "1" is totally not hacky at all. XD
 	}
 	public static boolean torch(Block aBlock, long aMeta) {
-		if (IL.TFC_Torch.equal(aBlock) || IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || IL.AE_Torch_Quartz.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;
+		if (IL.TFC_Torch.equal(aBlock) || IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || IL.AE_Torch_Quartz.equal(aBlock) || IL.TF_Firefly_Jar.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;
 		return aBlock instanceof BlockTorch && !(aBlock instanceof BlockRedstoneTorch);
 	}
 	public static boolean torch(ItemStack aStack) {
@@ -791,13 +798,13 @@ public class ST {
 	public static boolean ammo(ItemStack aStack) {
 		if (ItemsGT.AMMO_ITEMS.contains(aStack, T)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.mPrefix != null && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean nonautoinsert(ItemStack aStack) {
 		if (ItemsGT.NON_AUTO_INSERT_ITEMS.contains(aStack, T) || torch(aStack)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.mPrefix != null && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean listed(Collection<ItemStack> aList, ItemStack aStack, boolean aTrueIfListEmpty, boolean aInvertFilter) {
@@ -865,6 +872,11 @@ public class ST {
 		return item_(aStack) == Items.rotten_flesh || OM.materialcontained(aStack, MT.MeatRotten, MT.FishRotten);
 	}
 	
+	public static boolean edible(ItemStack aStack) {
+		if (invalid(aStack)) return F;
+		if (item_(aStack) instanceof MultiItemRandom) return ((MultiItemRandom)item_(aStack)).mFoodStats.get(meta_(aStack)) != null;
+		return item_(aStack) instanceof ItemFood;
+	}
 	public static int food(ItemStack aStack) {
 		if (invalid(aStack)) return 0;
 		if (item_(aStack) instanceof ItemFood) {try {return ((ItemFood)item_(aStack)).func_150905_g(aStack);} catch(Throwable e) {return 1;}}

@@ -504,7 +504,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	}
 	
 	/** List of all valid Items, which are registered for this Prefix. */
-	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
+	public final ItemStackSet<ItemStackContainer> mRegisteredItems = ST.hashset();
 	public final List<IPrefixItem> mRegisteredPrefixItems = new ArrayListNoNulls<>();
 	public final Set<OreDictMaterial> mRegisteredMaterials = new HashSetNoNulls<>();
 	/** This is used to determine if any of the ItemStacks belongs to this Prefix. */

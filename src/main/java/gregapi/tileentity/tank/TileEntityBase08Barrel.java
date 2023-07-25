@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -57,13 +57,14 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	public byte mMode = 0;
 	public long mSealedTime = 0, mMaxSealedTime = 0, mMeltingPoint = Long.MAX_VALUE;
 	public Recipe mRecipe = null;
-	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F;
+	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
+		if (aNBT.hasKey(NBT_MAGICPROOF)) mMagicProof = aNBT.getBoolean(NBT_MAGICPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
 		if (aNBT.hasKey(NBT_CAPACITY_HU)) mMeltingPoint = aNBT.getLong(NBT_CAPACITY_HU); else mMeltingPoint = (long)(mMaterial.mMeltingPoint * 1.25);
 		mMode = aNBT.getByte(NBT_MODE);
@@ -97,6 +98,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (mGasProof   ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof  ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		if (mPlasmaProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
+		if (mMagicProof ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_MAGICPROOF));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + mMeltingPoint + " K)");
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
@@ -161,23 +163,32 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
 				if (FL.temperature(tFluid) >= mMeltingPoint && meltdown()) return;
-				if (!mAcidProof && FL.acid(tFluid)) {
-					GarbageGT.trash(mTank);
+				
+				if (!mMagicProof && FL.magic(tFluid)) {
+					// TODO UNCOMMENT
+					if (SERVER_TIME % 100 == 40) // <-- TODO REMOVE THIS LINE
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					//GarbageGT.trash(mTank);
+					//WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
+					//return;
+				}
+				if (!mAcidProof && FL.acid(tFluid)) {
+					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					GarbageGT.trash(mTank);
 					setToAir();
 					return;
 				}
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
+					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
 				if (!mGasProof && FL.gas(tFluid)) {
+					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
 				if (!allowFluid(tFluid)) {
+					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else {
 					if ((mMode & B[1]) != 0) {
 						if (mMaxSealedTime <= 0 || mRecipe == null) {
@@ -244,6 +255,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (!allowFluid(aFluid)) return 0;
 		if (!mGasProof && FL.gas(aFluid)) return 0;
 		if (!mAcidProof && FL.acid(aFluid)) return 0;
+		if (!mMagicProof && FL.magic(aFluid)) return 0;
 		if (!mPlasmaProof && FL.plasma(aFluid)) return 0;
 		int tFilled = mTank.fill(aFluid, aDoFill);
 		if (tFilled > 0 && aDoFill) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));

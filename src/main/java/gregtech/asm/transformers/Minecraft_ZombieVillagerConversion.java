@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,6 +54,9 @@ public class Minecraft_ZombieVillagerConversion implements IClassTransformer  {
 				// Skip the super call to the next label
 				cur = cur.getNext();
 				while(!(cur instanceof LabelNode)) cur = cur.getNext();
+
+				// Skip the line number label to the next label
+				cur = cur.getNext();
 
 				// Now wipe the rest of the function and replace with a static call to the replacement
 				cur = cur.getNext();

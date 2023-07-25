@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -37,6 +33,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Collection;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -49,7 +50,7 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
 		if (aInputs == null || aInputs.length <= 0 || aInputs[0] == null) return null;
 		if (aRecipe != null && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe;
-		ItemStack tOutput = RM.get_smelting(aInputs[0], F, null);
+		ItemStack tOutput = RM.get_smelting(aInputs[0]);
 		
 		if (ST.equal(aInputs[0], Items.book)) {
 			return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(ST.book("Manual_Microwave")), null, null, null, null, 32, 4, 0);
@@ -102,5 +103,5 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 		return tOutput == null ? null : new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, null, null, 32, 4, 0);
 	}
 	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack, F, null) != null;}
+	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack) != null;}
 }

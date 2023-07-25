@@ -29,6 +29,8 @@ import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.recipes.maps.*;
 import gregapi.util.CR;
@@ -44,6 +46,7 @@ import net.minecraftforge.fluids.FluidStack;
 import team.chisel.carving.Carving;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import static gregapi.data.CS.*;
@@ -179,7 +182,7 @@ public class RM {
 		return RM.Generifier.addRecipe1(F, T, F, F, F, 0, 1, aStack1, aStack2) != null;
 	}
 	public static boolean genericycle(ItemStack... aStacks) {
-		ArrayListNoNulls<ItemStack> aStackList = new ArrayListNoNulls<>(F, aStacks);
+		ArrayListNoNulls<ItemStack> aStackList = ST.arraylist(aStacks);
 		for (int i = 0; i < aStackList.size(); i++) if (ST.invalid(aStackList.get(i))) aStackList.remove(i--);
 		if (aStackList.size() < 2) return F;
 		for (int i = 0; i < aStackList.size(); i++) generify(aStackList.get(i), aStackList.get((i+1) % aStackList.size()));
@@ -305,7 +308,7 @@ public class RM {
 		return T;
 	}
 	
-	public static ItemStack stoneshapes(OreDictMaterial aMat, boolean aIsCobbleTarget, ItemStack aBlock, ItemStack aStair, ItemStack aSlabs, ItemStack aWalls, ItemStack aPillar) {
+	public static ItemStack stoneshapes(final OreDictMaterial aMat, boolean aIsCobbleTarget, final ItemStack aBlock, final ItemStack aStair, final ItemStack aSlabs, final ItemStack aWalls, final ItemStack aPillar) {
 		
 		if (ST.valid(aBlock)) {
 			if (aMat != null) {
@@ -391,7 +394,7 @@ public class RM {
 		return aBlock;
 	}
 	
-	public static boolean stonetypes(OreDictMaterial aMat, boolean aIsMatTarget, ItemStack aFourRocks, ItemStack aDustBlock, ItemStack aStone, ItemStack aCobble, ItemStack aBricks, ItemStack aCracked, ItemStack aChiseled, ItemStack aSmooth, ItemStack aTiles, ItemStack aBricks2) {
+	public static boolean stonetypes(final OreDictMaterial aMat, boolean aIsMatTarget, final ItemStack aFourRocks, final ItemStack aDustBlock, final ItemStack aStone, final ItemStack aCobble, final ItemStack aBricks, final ItemStack aCracked, final ItemStack aChiseled, final ItemStack aSmooth, final ItemStack aTiles, final ItemStack aBricks2) {
 		for (ItemStack tStack : ST.array(aStone, aCobble, aBricks, aCracked, aChiseled, aSmooth, aTiles, aBricks2)) if (ST.valid(tStack)) {
 			RM.Shredder.addRecipe1(T, 16, 16, tStack, aDustBlock);
 		}
@@ -426,19 +429,21 @@ public class RM {
 			RM.Extruder.addRecipe2(F, F, F, F, F, 16, 32, ST.amount(1, tStack), IL.Shape_SimpleEx_Hammer.get(0), OP.toolHeadHammer.mat(aMat, 1));
 			}
 			
-			if (ST.valid(aStone)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block       .get(0), aStone);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block       .get(0), aStone);
-			} else if (ST.valid(aSmooth)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block       .get(0), aSmooth);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block       .get(0), aSmooth);
-			}
-			if (ST.valid(aBricks)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot       .get(0), aBricks);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot       .get(0), aBricks);
-			} else if (ST.valid(aCracked)) {
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot       .get(0), aCracked);
-			RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot       .get(0), aCracked);
+			if (tStack != aDustBlock || aIsMatTarget) {
+				if (ST.valid(aStone)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block.get(0), aStone);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block.get(0), aStone);
+				} else if (ST.valid(aSmooth)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Block.get(0), aSmooth);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Block.get(0), aSmooth);
+				}
+				if (ST.valid(aBricks)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot.get(0), aBricks);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot.get(0), aBricks);
+				} else if (ST.valid(aCracked)) {
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_Extruder_Ingot.get(0), aCracked);
+					RM.Extruder.addRecipe2(F, F, F, F, T, 16,  32, ST.amount(1, tStack), IL.Shape_SimpleEx_Ingot.get(0), aCracked);
+				}
 			}
 		}
 		
@@ -640,6 +645,26 @@ public class RM {
 				CR.shaped(aFourRocks, CR.DEF_REM, "y" , "X" , 'X', aBricks2);
 			}
 		}
+		
+		if (ST.valid(aStone) || ST.valid(aSmooth)) new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
+		if (ST.valid(aChiseled)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aChiseled));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aChiseled));
+		}});
+		if (ST.valid(aTiles)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Red], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aTiles));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aTiles));
+		}});
+		if (ST.valid(aBricks)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Cyan], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks));
+		}});
+		if (ST.valid(aBricks2)) addListener(DYE_OREDICTS_LENS[DYE_INDEX_Magenta], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (ST.valid(aStone )) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aStone ), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks2));
+			if (ST.valid(aSmooth)) RM.LaserEngraver.addRecipe2(T, 16, 64, ST.amount(1, aSmooth), ST.amount(0, aEvent.mStack), ST.amount(1, aBricks2));
+		}});
+		}};
+		
 		return T;
 	}
 	
@@ -751,6 +776,7 @@ public class RM {
 		return T;
 	}
 	
+	public static ItemStack get_smelting(ItemStack aInput) {return get_smelting(aInput, F, NI);}
 	public static ItemStack get_smelting(ItemStack aInput, boolean aRemoveInput, ItemStack aOutputSlot) {
 		if (aInput == null || aInput.stackSize < 1) return NI;
 		ItemStack rStack = OM.get(FurnaceRecipes.smelting().getSmeltingResult(aInput));
@@ -782,16 +808,18 @@ public class RM {
 		if (!ST.ingredable(aInput) || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
 		if (MD.EtFu.mLoaded) try {
-			if (aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
-			if (aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one
+			if ( aSmoker) SmokerRecipes      .smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+			if ( aBlast ) BlastFurnaceRecipes.smelting().addRecipe(aInput, ST.copy_(aOutput), aEXP);
+			if (!aSmoker) SmokerRecipes      .smelting().smeltingBlacklist.add(aInput);
+			if (!aBlast ) BlastFurnaceRecipes.smelting().smeltingBlacklist.add(aInput);
 		} catch(Throwable e) {
+			ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
 			e.printStackTrace(ERR);
 		}
 		return T;
 	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static boolean rem_smelting(ItemStack aInput) {
 		if (ST.invalid(aInput)) return F;
 		ItemStack tPyrotheum = OP.dust.mat(MT.Pyrotheum, 1);
@@ -802,25 +830,47 @@ public class RM {
 			tIterator.remove();
 			rReturn = T;
 		}
-		if (MD.EtFu.mLoaded) try {
-			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-				tIterator.remove();
-				rReturn = T;
+		if (MD.EtFu.mLoaded) {
+			boolean tSuccess = F;
+			
+			try {
+				SmokerRecipes      .smelting().removeRecipe(aInput);
+				BlastFurnaceRecipes.smelting().removeRecipe(aInput);
+				tSuccess = T;
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
 			}
-			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
-				tIterator.remove();
-				rReturn = T;
+			
+			if (!tSuccess) try {
+				Map
+				tMap = ((Map)UT.Reflection.getFieldContent(SmokerRecipes.smelting(), "smeltingList", T, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
+					tSuccess = T;
+				}
+				tMap = ((Map)UT.Reflection.getFieldContent(BlastFurnaceRecipes.smelting(), "smeltingList", T, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
+						tIterator.remove();
+						rReturn = T;
+					}
+					tSuccess = T;
+				}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
 			}
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
 		}
 		return rReturn;
 	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static boolean rem_smelting(ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
 		boolean rReturn = F;
@@ -832,27 +882,48 @@ public class RM {
 				rReturn = T;
 			}
 		}
-		if (MD.EtFu.mLoaded) try {
-			tIterator = SmokerRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) {
-				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-					tIterator.remove();
-					rReturn = T;
-				}
+		if (MD.EtFu.mLoaded) {
+			boolean tSuccess = F;
+			
+			try {
+				if (ST.equal(aOutput, SmokerRecipes      .smelting().getSmeltingResult(aInput), T)) SmokerRecipes      .smelting().removeRecipe(aInput);
+				if (ST.equal(aOutput, BlastFurnaceRecipes.smelting().getSmeltingResult(aInput), T)) BlastFurnaceRecipes.smelting().removeRecipe(aInput);
+				tSuccess = T;
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
 			}
-			tIterator = BlastFurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) {
-				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
-					tIterator.remove();
-					rReturn = T;
+			
+			if (!tSuccess) try {
+				Map
+				tMap = ((Map)UT.Reflection.getFieldContent(SmokerRecipes.smelting(), "smeltingList", T, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) {
+						Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+						if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+							tIterator.remove();
+							rReturn = T;
+						}
+					}
+					tSuccess = T;
 				}
+				tMap = ((Map)UT.Reflection.getFieldContent(BlastFurnaceRecipes.smelting(), "smeltingList", T, D1));
+				if (tMap != null) {
+					tIterator = tMap.entrySet().iterator();
+					while (tIterator.hasNext()) {
+						Entry<ItemStack, ItemStack> tEntry = tIterator.next();
+						if (ST.equal(aInput, tEntry.getKey(), T) && ST.equal(aOutput, tEntry.getValue(), T)) {
+							tIterator.remove();
+							rReturn = T;
+						}
+					}
+					tSuccess = T;
+				}
+			} catch(Throwable e) {
+				ERR.println("If you did not update Et Futurum Requiem, maybe you should.");
+				e.printStackTrace(ERR);
 			}
-		} catch(NoClassDefFoundError e) {
-			// Ignore that one
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
 		}
 		return rReturn;
 	}

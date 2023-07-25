@@ -42,8 +42,8 @@ public class Loader_Recipes_Decomp implements Runnable {
 				if (aMaterial.contains(TD.Processing.CENTRIFUGE)) tRecipeMaps.add(RM.Centrifuge);
 				if (aMaterial.contains(TD.Processing.ELECTROLYSER)) tRecipeMaps.add(RM.Electrolyzer);
 				if (!tRecipeMaps.isEmpty()) {
-					ArrayListNoNulls<ItemStack>  tStackOutputs = new ArrayListNoNulls<>();
-					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls<>();
+					ArrayListNoNulls<ItemStack>  tStackOutputs = ST.arraylist();
+					ArrayListNoNulls<FluidStack> tFluidOutputs = FL.arraylist();
 					long tAmount = 0;
 					
 					for (OreDictMaterialStack tMaterial : tComponents.getUndividedComponents()) {

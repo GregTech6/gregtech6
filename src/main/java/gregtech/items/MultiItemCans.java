@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,13 @@
 
 package gregtech.items;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.Sandwiches;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.TC;
 import gregapi.data.TD;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
-import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.Behavior_FeedCat;
 import gregapi.item.multiitem.behaviors.Behavior_FeedDog;
 import gregapi.item.multiitem.food.FoodStat;
@@ -38,7 +36,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 
-public class MultiItemCans extends MultiItemRandom implements IItemRottable {
+import static gregapi.data.CS.*;
+
+public class MultiItemCans extends MultiItemRandomWithCompat implements IItemRottable {
 	public MultiItemCans(String aModID, String aUnlocalized) {
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Cans", this, (short)74));

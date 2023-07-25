@@ -370,6 +370,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_chestplate, 1, W));
 		CR.shaped(ST.make(Items.leather                 , 2, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_leggings  , 1, W));
 		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', ST.make(Items.leather_boots     , 1, W));
+		CR.shaped(ST.make(Items.leather                 , 1, 0), DEF                            ,         "Ak"       , 'A', OD.craftingFur);
 		
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemTar);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_MIR                        , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);

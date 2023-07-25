@@ -10,21 +10,52 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.16.02: (Not released yet)
+[NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
+[IMPORTANT]
+There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
+Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
+The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
+Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
+Wooden Buckets will still be able to handle Rainbow Tree Sap.
+Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained.
+Once the next Update is out, Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
-[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics and Twilight FOrest now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] Bluepower, Project Red, Biomes O'Plenty, Applied Energiestics, The Betweenlands and Twilight Forest now have better Stone Type Support, and also some minor Recipe fixes.
+[COMPAT] The Bedrock Drill in Twilight Forest will now prefer to produce Vanilla Stone (and Deepslate, should it exist), along with Obsidian, Deadrock, Trollsteinn, Castlerock and Mazestone.
+[COMPAT] RF Drills Motors can now be made in a GT6 Canning Machine.
+[COMPAT] Et Futurum Requiem should be updated to latest if you dont have already.
+[COMPAT] Twilight Forest Magic Maps, Maze Maps and Ore Maps now have Scanner and Printer Recipes respectively. By the way did you know the Maze Map works literally ANYWHERE and not just Mazes? You just need a relatively flat Dungeon or Mineshaft to go through, or maybe even your Base!
 [FIXED] My Betweenlands Durability usage check for GT Tools did the opposite of what it was actually supposed to do, and made "Betweenlands Material GT Tools" worse instead of making "NON-Betweenlands Material GT Tools" Worse.
 [FIXED] Village Names should no longer crash with the Blacksmith Chest.
+[FIXED] I did something about the inability to use Pumps with Fluid Filters, it should somewhat work now. It will NOT work on Multiblocks unless you do it at their Main Block.
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
+[FIXED] Looting Bullets and Arrows were not working in Twilight Forest due to the Fake Player not having Progression Achievements.
+[FIXED] Magical Bumblebees can now use (placed) Rainbow Leaves as their Flowers, so that they now also work without any other Mods.
+[CHANGED] Werebane Enchantment now also works on Minotaurs. Good for Twilight Mazes.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
+[CHANGED] Zombies now always trample Farmland, whenever they happen to walk on it. They don't "intentionally" trample it.
+[CHANGED] When Guns are used against other Players they will only do half Damage, because Guns are way overkill otherwise. You can also finally hit the Ender Dragon and End Crystals too. Also Magical Damage from Enchantments will now be doubled or tripled for the Medium and Large Bullets, to correspond with the increased Normal Damage.
+[CHANGED] Smite 3+ Bullets can break the Twilight Lich Barrier, making it possible to actually harm the Lich in Multiplayer when your ping's ass.
+[CHANGED] Railcrafts Implosion Enchantment (if on a GT6 Item) is now more Effective against all kinds of Ghasts. Also if you have Implosion and Fire Aspect on the same Projectile, the Fire Aspect will NOT ignite the Creeper like it usually would.
+[CHANGED] Bottles of Fiery Blood and Fiery Tiers now contain 250L instead of 144L of their respective Liquids. This makes it cheaper to use the new Fiery Steels for things when using the dropped Bottles in the Bath.
+[ADDED] Recipes to perpetually get otherwise non-renewable Loot Stuff out of Twilight Forest Trophies. The Trophies act as Catalysts and you have to supply some other Material to convert it.
+[ADDED] Magic Field Absorber. It generates 64 of whatever Energy the thing placed ontop of it makes. Dragon Eggs are Quantum Units and Twilight Forest Trophies have KU, QU, HU, LU and CU in this order.
+[ADDED] Boxinator can now assemble empty Maps. Also applies to the two Twilight Forest Maps.
+[ADDED] The Grindstone can now disenchant Tools and give XP for doing so. Does not work on GT Tools for obvious reasons.
+[ADDED] Handheld Tachometer and Electrometer which work on Wires, Axles and Custom Gearboxes only.
+[ADDED] Vine Ropes. Also you can now harvest Vines with GT6 Swords and Knifes.
+[ADDED] Salted Water, which is just the KCl version of Saltwater. Adjusted and added some Chemistry Recipes for that.
 [ADDED] Some AE Sky Stone is now in every GT6 Dungeon, enough for at least one Controller. It can be found somewhere in the Sleeping Area.
-[ADDED] Drain Covers can now partially drain GT Fluids.
+[ADDED] Non-Functional-Tools, which are similar to the Robot Arm Tips in that they can be used as Single Use Tools in Crafting, but look uglier. This is mostly only useful for things like Applied Energistics or Logistics Pipes, which cannot handle NBT very well. You can mint them by putting Tiny Steel or Rubber Plates and Robot Arm Tips into a Boxinator. The Robot Arm Tips will not be used up.
+[ADDED] Drain Covers can now partially drain GT6 Fluid Blocks.
 [ADDED] Allowing Selector Tags 2 to 9 in the Blueprint Slot of the Advanced Crafting Table for helping with Shapeless Recipes. The Slot's Tooltip has been changed to mention that too.
 [ADDED] The Tier 2 Boxinator can now make Twilight Forests Giant Blocks, as long as you use a Giant Pickaxe as "Catalyst". The Giant Pickaxe will not be used up, and it will accept damaged ones too.
 [ADDED] Meteoric Steels and Damascus Steel can now be upgraded with Twilight Forests Fiery Blood or Fiery Tears for improving Tool Quality, Tool Speed, Mazebreaking, Fire Aspect and Autosmelt.
-[ADDED] Arsenic Copper (Cu+Cu+Cu+As) and Arsenic Bronze (Cu+Cu+Cu+As+Sn), with Tool Quality between Bronze and Steel, the Decorative Blocks Set (Hoppers, Shelves etc), Item Pipes, Earlygame Furnace Compounds like regular Bronze, and a High Level Dissolving Enchantment against Slimes.
+[ADDED] Arsenic Copper (Cu+Cu+Cu+As) and Arsenic Bronze (Cu+Cu+Cu+As+Sn), with Tool Quality between Bronze and Steel, the Decorative Blocks Set (Hoppers, Shelves etc), Item Pipes, Boilers, Burning Boxes, Steam Engines, Anvils, Earlygame Furnace Compounds like regular Bronze, and a High Level Dissolving Enchantment against Slimes.
 
 
 6.16.01:

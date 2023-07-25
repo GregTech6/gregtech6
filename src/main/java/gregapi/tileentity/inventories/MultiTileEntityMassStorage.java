@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -414,7 +414,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide) {
 		if (!slotHas(1)) return mLogisticsCache = null;
 		if (mLogisticsCache != null) return mLogisticsCache;
-		mLogisticsCache = new ItemStackSet<>(slot(1));
+		mLogisticsCache = ST.hashset(slot(1));
 		OreDictItemData tData = OM.data_(slot(1));
 		if (tData != null && tData.hasValidPrefixMaterialData()) {
 			if (tData.mPrefix.contains(TD.Prefix.DUST_BASED)) {

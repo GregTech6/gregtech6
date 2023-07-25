@@ -114,7 +114,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 	
 	@Override
 	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide) {
-		return mInverted ? null : new ItemStackSet<>(mFilter);
+		return mInverted ? null : ST.hashset(mFilter);
 	}
 	
 	@Override
