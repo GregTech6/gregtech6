@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,7 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.IPrefixBlock;
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -32,6 +29,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -57,11 +56,11 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
 		FluidStack[][] tFluids = {
-		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.lube(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Holywater.make(16000), FL.Purple_Drink.make(16000)}
+		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.lube(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Water.make(16000), FL.Purple_Drink.make(16000)}
 		, {FL.Oil_Creosote.make(32000), FL.Oil_Seed.make(32000), FL.lube(32000), FL.Glue.make(32000), FL.Latex.make(32000), FL.Holywater.make(32000), FL.Purple_Drink.make(32000)}
 		, {FL.Oil_Normal.make(64000), FL.Oil_Normal.make(64000), FL.Oil_Soulsand.make(64000), FL.Oil_Light.make(64000), FL.Oil_Medium.make(64000), FL.Oil_Heavy.make(64000), FL.Oil_ExtraHeavy.make(64000)}
 		};
-		short[] tIDs = new short[] {32714, 32734, 32716};
+		short[] tIDs = new short[] {32714, 32734, 32102};
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
 			if (aData.next1in2()) {
