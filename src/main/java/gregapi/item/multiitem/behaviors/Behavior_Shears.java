@@ -23,9 +23,11 @@ import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IShearable;
 
@@ -49,7 +51,7 @@ public class Behavior_Shears extends AbstractBehaviorDefault {
 				String tClass = UT.Reflection.getLowercaseClass(aEntity);
 				boolean tDropIncrease = ((tFortune > 0) && ("EntitySheep".equalsIgnoreCase(tClass) || "EntityTFBighorn".equalsIgnoreCase(tClass) || "EntityTaintSheep".equalsIgnoreCase(tClass) || "EntitySheepuff".equalsIgnoreCase(tClass)));
 				for (ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, tFortune)) {
-					if (tDropIncrease) {
+					if (tDropIncrease && ST.block(tStack) == Blocks.wool) {
 						tStack.stackSize += RNGSUS.nextInt(1+tFortune);
 						if (tStack.stackSize > 64) tStack.stackSize = 64;
 					}
