@@ -24,7 +24,6 @@ import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.UT;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,8 +31,7 @@ import net.minecraftforge.common.IShearable;
 
 import java.util.List;
 
-import static gregapi.data.CS.F;
-import static gregapi.data.CS.T;
+import static gregapi.data.CS.*;
 
 public class Behavior_Shears extends AbstractBehaviorDefault {
 	private final int mCosts;
@@ -47,7 +45,14 @@ public class Behavior_Shears extends AbstractBehaviorDefault {
 		if (aEntity instanceof IShearable) {
 			if (aPlayer.worldObj.isRemote) return T;
 			if (((IShearable)aEntity).isShearable(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ) && ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
-				for(ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, UT.NBT.getEnchantmentLevel(Enchantment.fortune, aStack))) {
+				int tFortune = UT.NBT.getEnchantmentLevelLootingFortune(aStack);
+				String tClass = UT.Reflection.getLowercaseClass(aEntity);
+				boolean tDropIncrease = ((tFortune > 0) && ("EntitySheep".equalsIgnoreCase(tClass) || "EntityTFBighorn".equalsIgnoreCase(tClass) || "EntityTaintSheep".equalsIgnoreCase(tClass) || "EntitySheepuff".equalsIgnoreCase(tClass)));
+				for (ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, tFortune)) {
+					if (tDropIncrease) {
+						tStack.stackSize += RNGSUS.nextInt(1+tFortune);
+						if (tStack.stackSize > 64) tStack.stackSize = 64;
+					}
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
 				}
 				return T;
