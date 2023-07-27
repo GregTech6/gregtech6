@@ -17,8 +17,8 @@ Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
 Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
 The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
 Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
-Wooden Buckets will still be able to handle Rainbow Tree Sap.
-Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained.
+Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in general is also not affected by this Change.
+Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained. Things like Barrels inside of Inventories are not hit by this until you place them down.
 Once the next Update is out, Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.

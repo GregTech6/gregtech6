@@ -979,14 +979,14 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Lich                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 2));
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
-		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		IL.TF_Magic_Map_Focus                   .set(ST.make(MD.TF, "item.magicMapFocus"                    , 1, 0), null, OD.itemFeather);
-		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		IL.TF_Maze_Map_Focus                    .set(ST.make(MD.TF, "item.mazeMapFocus"                     , 1, 0));
-		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		
 		// Vanilla Maps are stackable, TF forgot to fix that lol.
 		if (IL.TF_Magic_Map.exists()) IL.TF_Magic_Map.item().setMaxStackSize(64);

@@ -565,6 +565,7 @@ public enum IL implements IItemContainer {
 			return this;
 		}
 		mStack = ST.amount(1, aStack);
+		if (ST.meta_(mStack) == W) ST.meta_(mStack, 0);
 		if (aData != null && !OM.reg(aData.toString(), ST.amount(1, aStack))) OM.data(ST.amount(1, aStack), aData);
 		for (Object tOreDict : aOreDict) OM.reg(tOreDict, ST.amount(1, aStack));
 		return this;
