@@ -68,7 +68,7 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.WHITE + LH.get("gt.tooltip.magicenergyabsorber"));
+		aList.add(LH.Chat.CYAN + LH.get("gt.tooltip.magicenergyabsorber"));
 		aList.add(LH.Chat.RED + LH.get(LH.ENERGY_OUTPUT) + ": " + LH.Chat.WHITE + mOutput + LH.Chat.RAINBOW + " ?U" + LH.Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
