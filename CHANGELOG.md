@@ -1,15 +1,23 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.16.04: (Not released yet)
+6.17.03: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.03: (Not released yet)
+6.17.02: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.02: (Not released yet, waiting for Bear to finally make a Stream/Video about this big Release. I'm playing Twilight-Dimension-Only with GregTech-6 and some other Stuff in the meantime, tweaking/adding some Recipes as I see fit, while watching Lanipator play Dave the Diver which seems to be a good calm rogue-like.)
+6.17.01: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.17.00: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.16.02:
 [NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
 [IMPORTANT]
 There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
