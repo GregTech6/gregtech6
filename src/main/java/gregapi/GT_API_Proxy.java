@@ -1429,9 +1429,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta_(aFuel));
 			if (tFuelValue != null) rFuelValue = Math.max(rFuelValue, tFuelValue);
 		} else {
-			if (OD.plankAnyWood.is_(aFuel)) return 3 * TICKS_PER_SMELT / 2;
-			if (OD.logWood     .is_(aFuel)) return 6 * TICKS_PER_SMELT    ;
-			if (OD.itemResin   .is_(aFuel)) return     TICKS_PER_SMELT / 2;
+			if (OD.plankAnyWood.is_(aFuel      )) return 3 * TICKS_PER_SMELT / 2;
+			if (OD.logWood     .is_(aFuel      )) return 6 * TICKS_PER_SMELT    ;
+			if (OD.itemResin   .is_(aFuel      )) return     TICKS_PER_SMELT / 2;
+			if (IL.TF_Sapling.equal(aFuel, T, T)) return     TICKS_PER_SMELT / 2;
 		}
 		
 		OreDictItemData tData = OM.anydata_(aFuel);
