@@ -20,6 +20,7 @@
 package gregtech.tileentity.multiblocks;
 
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
@@ -85,16 +86,14 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 				if (FL.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
-					// TODO UNCOMMENT
-					if (SERVER_TIME % 100 == 80) // <-- TODO REMOVE THIS LINE
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
-					//GarbageGT.trash(mTank);
-					//int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
-					//for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
-						//if (rng(3) == 0) WD.set(worldObj, tX+i, tY+j, tZ+k, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
-					//}
-					//WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
-					//return;
+					GarbageGT.trash(mTank);
+					int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
+						if (rng(3) == 0) WD.set(worldObj, tX+i, tY+j, tZ+k, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
+					}
+					WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
+					return;
 				}
 				if (!mAcidProof && FL.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());

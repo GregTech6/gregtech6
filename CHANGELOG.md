@@ -14,7 +14,18 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.00: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[IMPORTANT]
+There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
+Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
+The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
+Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
+Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in general is also not affected by this Change.
+Things like Barrels inside of Inventories are not hit by this until you place them down.
+Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
+
+
+//=== Version Number Jump due to changes to the Magic Resistance of Pipes and Tanks. ===//
 
 
 6.16.02:

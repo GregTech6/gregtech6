@@ -27,11 +27,8 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
-import gregapi.data.FL;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.OP;
-import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictManager;
@@ -286,15 +283,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				tCheckTemperature = F;
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
-					// TODO UNCOMMENT
-					//mTransferredAmount += GarbageGT.trash(tTank, FL.gas(tFluid) ? 16 : 4);
-					if (SERVER_TIME % 100 == 20) // <-- TODO REMOVE THIS LINE
+					mTransferredAmount += GarbageGT.trash(tTank, FL.gas(tFluid) ? 16 : 4);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
-					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyPotion(tEntity, Potion.poison, 1200, 1, F);} catch(Throwable e) {e.printStackTrace(ERR);}
+					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-3, -3, -3, +4, +4, +4))) UT.Entities.applyPotion(tEntity, Potion.poison, 1200, 1, F);} catch(Throwable e) {e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
-						//GarbageGT.trash(mTanks);
-						//WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
-						//return;
+						GarbageGT.trash(mTanks);
+						WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
+						return;
 					}
 				}
 				
