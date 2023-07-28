@@ -490,6 +490,20 @@ public class Override_Drops {
 			int tAmount = 24+RNGSUS.nextInt(8);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting*8+1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFBunny")) {
+			for(int i = 0, j = RNGSUS.nextInt(2) + RNGSUS.nextInt(1 + aLooting); i < j; ++i) {
+				aDrops.add(ST.entity(aDead, MD.EtFu, "rabbit_hide", 1, 0));
+			}
+			for(int i = 0, j = RNGSUS.nextInt(2); i < j; ++i) {
+				if (MD.EtFu.mLoaded) {
+					aDrops.add(ST.entity(aDead, MD.EtFu, aBurn ? "rabbit_cooked" : "rabbit_raw", 1, 0));
+				} else {
+					aDrops.add(ST.entity(aDead, MD.HaC, aBurn ? "rabbitcookedItem" : "rabbitrawItem", 1, 0));
+				}
+			}
+			if (RNGSUS.nextInt(100) <= 10 + aLooting) {
+				aDrops.add(ST.entity(aDead, MD.EtFu, "rabbit_foot", 1, 0));
+			}
 		} else if (aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("EntityHellhound") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
 			tReplaceIron = T;
 			int tAmount = 1+RNGSUS.nextInt(4);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -248,8 +248,8 @@ public abstract class ToolStats implements IToolStats {
 	@Override
 	public void afterBreaking(ItemStack aStack, EntityPlayer aPlayer) {
 		// If you work so hard that your Tool breaks, you should probably take a break yourself. :P
-		UT.Entities.applyPotion(aPlayer, Potion.weakness   , 300, 2, F);
-		UT.Entities.applyPotion(aPlayer, Potion.digSlowdown, 300, 2, F);
+		UT.Entities.applyPotion(aPlayer, Potion.weakness   ,  300, 2, F);
+		UT.Entities.applyPotion(aPlayer, Potion.digSlowdown, 1200, 2, F);
 	}
 	
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
