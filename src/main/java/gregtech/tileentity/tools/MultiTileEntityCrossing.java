@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,7 +51,7 @@ public class MultiTileEntityCrossing extends TileEntityBase07Paintable implement
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			mLock = sLockID = 0;
+			mLock = 0;
 			if (mBlockUpdated || SERVER_TIME % 50 == 0) {
 				if (getRedstoneIncoming(SIDE_TOP) > 0 || getRedstoneIncoming(SIDE_BOTTOM) > 0) {
 					if (!mRedstone) {mRedstone = T; causeBlockUpdate();}
