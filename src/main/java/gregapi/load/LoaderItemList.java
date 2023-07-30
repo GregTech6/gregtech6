@@ -1402,6 +1402,9 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));
 		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0), null, OD.gravel);
+		IL.EtFu_Amethyst                        .set(ST.make(MD.EtFu, "amethyst_block"                      , 1, 0), new OreDictItemData(MT.Amethyst        , U*4));
+		IL.EtFu_Basalt                          .set(ST.make(MD.EtFu, "smooth_basalt"                       , 1, 0), new OreDictItemData(MT.STONES.Basalt   , U*9), OP.stone.dat(MT.STONES.Basalt   ));
+		IL.EtFu_Calcite                         .set(ST.make(MD.EtFu, "calcite"                             , 1, 0), new OreDictItemData(MT.CaCO3           , U*9), OP.stone.dat(MT.CaCO3           ));
 		IL.EtFu_Tuff                            .set(ST.make(MD.EtFu, "tuff"                                , 1, 0), new OreDictItemData(MT.Stone           , U*9), OP.stone.dat(MT.Stone           ));
 		IL.EtFu_Deepslate                       .set(ST.make(MD.EtFu, "deepslate"                           , 1, 0), new OreDictItemData(MT.STONES.Deepslate, U*9), OP.stone.dat(MT.STONES.Deepslate));
 		IL.EtFu_Deepslate_Cobble                .set(ST.make(MD.EtFu, "cobbled_deepslate"                   , 1, 0), new OreDictItemData(MT.STONES.Deepslate, U*9), OP.stone.dat(MT.STONES.Deepslate));

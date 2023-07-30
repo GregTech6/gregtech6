@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.00: (Not released yet)
+[NOTE] There has been a hackable exploit going around in the modded minecraft landscape that is called PipeBleed. GregTech was never affected by this but I still deem it important that you look into your Mods to see if it is fixed in your Modpack. This shit is just as bad as the log4shell exploit.
 [IMPORTANT]
 There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
 Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
