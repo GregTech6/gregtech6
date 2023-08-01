@@ -197,6 +197,28 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		RM.Bath       .addRecipe1(T,  0, 16, OM.dust(MT.Kaolinite    ),        tWater    , NF, IL.Clay_Ball_White.get(1));
 		}
 		
+		IL.Tusk         .set(addItem(12400, "Tusk"         , ""                 , OD.itemTusk  , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2)));
+		IL.Tusk_Hoglin  .set(addItem(12401, "Hoglin Tusk"  , ""                 , OD.itemTusk  , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2))); RM.generify(last(), IL.Tusk.get(1));
+		IL.Tusk_Boar    .set(addItem(12402, "Boar Tusk"    , ""                 , OD.itemTusk  , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2))); RM.generify(last(), IL.Tusk.get(1));
+		
+		IL.Hoof         .set(addItem(12500, "Hoof"         , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
+		IL.Hoof_Cow     .set(addItem(12501, "Cow Hoof"     , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		IL.Hoof_Horse   .set(addItem(12502, "Horse Hoof"   , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		IL.Hoof_Deer    .set(addItem(12503, "Deer Hoof"    , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		
+		IL.Horn         .set(addItem(12600, "Horn"         , ""                 , OD.itemHorn  , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2)));
+		IL.Horn_Cow     .set(addItem(12601, "Cow Horn"     , ""                 , OD.itemHorn  , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); RM.generify(last(), IL.Horn.get(1));
+		IL.Horn_Sheep   .set(addItem(12602, "Sheep Horn"   , "From horned Sheep", OD.itemHorn  , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); RM.generify(last(), IL.Horn.get(1));
+		
+		IL.Antler       .set(addItem(12700, "Antler"       , ""                 , OD.itemAntler, TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2)));
+		IL.Antler_Deer  .set(addItem(12701, "Deer Antler"  , ""                 , OD.itemAntler, TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2))); RM.generify(last(), IL.Antler.get(1));
+		
+		
+		
+		
+		
+		
+		
 		IL.Comb_Honey   .set(addItem(30000, "Honey Comb"   , "", OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb", TC.stack(TC.LIMUS, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.SANO, 1), new FoodStat( 1, 0.1F, 20, C+37, 0.50F,  0,  0,  0, 20,  0, EnumAction.eat, null, F, T, F, T))); Sandwiches.INGREDIENTS.put(last(), (byte)22);
 		IL.Comb_Water   .set(addItem(30001, "Water Comb"   , "", OD.beeComb, TC.stack(TC.AQUA, 2), new FoodStat( 1, 0.1F, 20, C+37, 0.50F,  0,  0,  0, 20,  0, EnumAction.eat, null, F, T, F, T))); Sandwiches.INGREDIENTS.put(last(), (byte)22);
 		IL.Comb_Magic   .set(addItem(30002, "Magic Comb"   , "", OD.beeComb, TC.stack(TC.PRAECANTIO, 2)));
