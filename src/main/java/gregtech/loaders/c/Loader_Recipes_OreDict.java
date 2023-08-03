@@ -115,7 +115,7 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			
 			RM.Laminator    .addRecipe2(T, 16,   16,              aEvent.mStack , ST.make(Blocks.piston, 1, W), ST.make(Blocks.sticky_piston, 1, 0));
 			
-			if (MD.TiC.owns(aEvent.mStack) || OD.slimeballSwet.is_(aEvent.mStack) || OD.slimeballPink.is_(aEvent.mStack) || OD.slimeballRice.is_(aEvent.mStack) || OD.slimeballBorax.is_(aEvent.mStack)) return;
+			if (MD.TiC.owns(aEvent.mStack) || OD.slimeballSwet.is_(aEvent.mStack) || OD.slimeballPink.is_(aEvent.mStack) || OD.slimeballRice.is_(aEvent.mStack) || OD.slimeballBorax.is_(aEvent.mStack) || OD.slimeballAnimal.is_(aEvent.mStack)) return;
 			
 			for (FluidStack tWater : FL.waters(250, 200))
 			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
@@ -150,6 +150,11 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Latex.make(L/2), FL.Glue.make(250));
 			RM.Drying       .addRecipe1(T, 16,  128,              aEvent.mStack , NF, FL.DistW.make(50), ST.make(MD.SC2, "ItemSlimeRubber", 1, 0));
 			RM.generify(aEvent.mStack, ST.make(Items.slime_ball, 1, 0));
+		}});
+		addListener(OD.slimeballAnimal, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			for (FluidStack tWater : FL.waters(250, 200))
+			RM.Mixer        .addRecipe1(T, 16,   16,              aEvent.mStack , tWater, FL.Glue.make(250), ZL_IS);
+			RM.Centrifuge   .addRecipe1(T, 16,   64,              aEvent.mStack , NF, FL.Glue.make(250), ZL_IS);
 		}});
 		addListener("foodJellyfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Squeezer     .addRecipe1(T, 16,   16,  9000, aEvent.mStack, NF, NF, ST.make(Items.slime_ball, 1, 0));

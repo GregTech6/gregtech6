@@ -261,7 +261,7 @@ public enum IL implements IItemContainer {
 	Hoof, Hoof_Horse, Hoof_Mule, Hoof_Donkey, Hoof_Cow, Hoof_Deer,
 	Horn, Horn_Sheep, Horn_Cow,
 	Antler, Antler_Deer,
-	Cerublossom, DesertNova, Resin,
+	Cerublossom, DesertNova, Resin, Sticky_Goo,
 	Comb_Honey, Comb_Water, Comb_Magic, Comb_Nether, Comb_End, Comb_Rock, Comb_Jungle, Comb_Frozen, Comb_Shroom, Comb_Sandy, Comb_Clay, Comb_Sticky, Comb_Royal, Comb_Soul, Comb_Amnesic, Comb_Military, Comb_Pyro, Comb_Cryo, Comb_Aero, Comb_Tera,
 	PlasticCan, Crate, Crate_Fireproof,
 	ThermosCan_Empty,
