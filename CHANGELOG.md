@@ -25,6 +25,7 @@ Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in gen
 Things like Barrels inside of Inventories are not hit by this until you place them down.
 Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
 [FIXED] Crucible Crossings did not always work all that well when multiple Faucets and Molds tried to pour at the same time.
+[FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
 
@@ -1882,7 +1883,7 @@ Skyroot is now a dedicated Wood Type similar to Weedwood.
 Small Ores now generate in it. Note that none of the Sulfur containing Small Ores are up there.
 Small Rocks now generate properly, as opposed to having the Default Overworld ones. The probability of finding a Meteorite is larger up there.
 Ambrosium Torches can now be placed with GT Pickaxes, Shovels etc.
-Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT6 Bottle of Holy Water to be activated.
+Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT6 Glass Bottle of Holy Water to be activated.
 [FIXED] Config File Error with /config/gregtech/gregtech.cfg
 [ADDED] Crucible Sets for Umberstone, Livingrock, Holystone and Betweenstone.
 

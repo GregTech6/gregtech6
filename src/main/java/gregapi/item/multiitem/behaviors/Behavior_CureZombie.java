@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.multiitem.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -34,6 +30,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_CureZombie extends AbstractBehaviorDefault {
 	public final int mAverageCureTime;
@@ -49,16 +49,16 @@ public class Behavior_CureZombie extends AbstractBehaviorDefault {
 		if (aEntity instanceof EntityZombie && ((EntityZombie)aEntity).isVillager()) {
 			if (!mNeedsWeakness || ((EntityZombie)aEntity).isPotionActive(Potion.weakness)) {
 				UT.Entities.consumeCurrentItem(aPlayer);
-				if (!((EntityZombie)aEntity).worldObj.isRemote) {
+				if (!(aEntity).worldObj.isRemote) {
 					int tCureTime = RNGSUS.nextInt(mAverageCureTime * 2) + 500;
 					NBTTagCompound tNBT = UT.NBT.make();
 					aEntity.writeToNBT(tNBT);
 					tNBT.setInteger("ConversionTime", tCureTime);
 					aEntity.readFromNBT(tNBT);
-					((EntityZombie)aEntity).getDataWatcher().updateObject(14, Byte.valueOf((byte)1));
+					aEntity.getDataWatcher().updateObject(14, Byte.valueOf((byte)1));
 					((EntityZombie)aEntity).removePotionEffect(Potion.weakness.id);
 					((EntityZombie)aEntity).addPotionEffect(new PotionEffect(Potion.damageBoost.id, tCureTime, Math.min(((EntityZombie)aEntity).worldObj.difficultySetting.getDifficultyId() - 1, 0)));
-					((EntityZombie)aEntity).worldObj.setEntityState(aEntity, (byte)16);
+					aEntity.worldObj.setEntityState(aEntity, (byte)16);
 				}
 				return T;
 			}

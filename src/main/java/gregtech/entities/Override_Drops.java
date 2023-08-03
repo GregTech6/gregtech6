@@ -570,14 +570,11 @@ public class Override_Drops {
 			if (RNGSUS.nextInt(Math.max(1, 10-(int)(((EntityHorse)aDead).getHorseJumpStrength()*10.0))) == 0) tAmount += 1+RNGSUS.nextInt(aLooting + 1)/2;
 			if (RNGSUS.nextInt(Math.max(1, 30-(int)(((EntityHorse)aDead).getMaxHealth()))) == 0) tAmount += 1+RNGSUS.nextInt(aLooting + 1)/2;
 			switch(((EntityHorse)aDead).getHorseType()) {
-			case 0: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Horse_Cooked.get(1):IL.Food_Horse_Raw.get(1))); break;
-			case 1: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Donkey_Cooked.get(1):IL.Food_Donkey_Raw.get(1))); break;
-			case 2: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mule_Cooked.get(1):IL.Food_Mule_Raw.get(1))); break;
-			case 3: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.rotten_flesh, 1, 0))); break;
-			case 4: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.bone, 1, 0))); break;
-			}
-			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
-				aDrops.add(ST.entity(aDead, IL.Hoof_Horse.get(1)));
+			default: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Horse_Cooked .get(1):IL.Food_Horse_Raw .get(1))); for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) aDrops.add(ST.entity(aDead, IL.Hoof_Horse .get(1))); break;
+			case  1: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Donkey_Cooked.get(1):IL.Food_Donkey_Raw.get(1))); for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) aDrops.add(ST.entity(aDead, IL.Hoof_Donkey.get(1))); break;
+			case  2: while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mule_Cooked  .get(1):IL.Food_Mule_Raw  .get(1))); for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) aDrops.add(ST.entity(aDead, IL.Hoof_Mule  .get(1))); break;
+			case  3: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.rotten_flesh                           , 1, 0))); for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(200) <= 25 + aLooting * 5) aDrops.add(ST.entity(aDead, IL.Hoof_Horse .get(1))); break;
+			case  4: while (tAmount-->0) aDrops.add(ST.entity(aDead, ST.make(Items.bone                                   , 1, 0))); for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(200) <= 25 + aLooting * 5) aDrops.add(ST.entity(aDead, IL.Hoof_Horse .get(1))); break;
 			}
 		} else if (aDead instanceof EntitySheep) {
 			tReplaceIron = T;

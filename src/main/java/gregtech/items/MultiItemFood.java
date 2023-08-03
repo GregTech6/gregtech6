@@ -204,7 +204,9 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		IL.Hoof         .set(addItem(12500, "Hoof"         , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
 		IL.Hoof_Cow     .set(addItem(12501, "Cow Hoof"     , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
 		IL.Hoof_Horse   .set(addItem(12502, "Horse Hoof"   , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
-		IL.Hoof_Deer    .set(addItem(12503, "Deer Hoof"    , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		IL.Hoof_Mule    .set(addItem(12503, "Mule Hoof"    , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		IL.Hoof_Donkey  .set(addItem(12504, "Donkey Hoof"  , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
+		IL.Hoof_Deer    .set(addItem(12505, "Deer Hoof"    , ""                 , OD.itemHoof  , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); RM.generify(last(), IL.Hoof.get(1));
 		
 		IL.Horn         .set(addItem(12600, "Horn"         , ""                 , OD.itemHorn  , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2)));
 		IL.Horn_Cow     .set(addItem(12601, "Cow Horn"     , ""                 , OD.itemHorn  , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); RM.generify(last(), IL.Horn.get(1));
