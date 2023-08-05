@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -184,12 +184,14 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 				}
 			}
 			
-			if (tTracker.mAlcohol     > 0) tTracker.mAlcohol--;
-			if (tTracker.mCaffeine    > 0) tTracker.mCaffeine--;
-			if (tTracker.mDehydration > 0) tTracker.mDehydration--;
-			if (tTracker.mSugar       > 0) tTracker.mSugar--;
-			if (tTracker.mFat         > 0) tTracker.mFat--;
-			//if (tTracker.mRadiation > 0) tTracker.mRadiation--; // The only one that does not decrease, so you will have to deal with it until you either die or get a Radaway,
+			if (SERVER_TIME % 100 == 0) {
+				if (tTracker.mAlcohol     > 0) tTracker.mAlcohol--;
+				if (tTracker.mCaffeine    > 0) tTracker.mCaffeine--;
+				if (tTracker.mDehydration > 0) tTracker.mDehydration--;
+				if (tTracker.mSugar       > 0) tTracker.mSugar--;
+				if (tTracker.mFat         > 0) tTracker.mFat--;
+				//if (tTracker.mRadiation > 0) tTracker.mRadiation--; // The only one that does not decrease, so you will have to deal with it until you either die or get a Radaway,
+			}
 		}
 	}
 	

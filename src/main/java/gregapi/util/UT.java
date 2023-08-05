@@ -2365,9 +2365,10 @@ public class UT {
 		}
 		
 		
-		public static int getEnchantmentLevelDestruction(ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.destruction, aStack) : 0;}
-		public static int getEnchantmentLevelWrecking   (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.wrecking   , aStack) : 0;}
-		public static int getEnchantmentLevelImplosion  (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.implosion  , aStack) : 0;}
+		public static int getEnchantmentLevelDestruction   (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.destruction, aStack) : 0;}
+		public static int getEnchantmentLevelWrecking      (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.wrecking   , aStack) : 0;}
+		public static int getEnchantmentLevelImplosion     (ItemStack aStack) {return MD.RC.mLoaded ? getEnchantmentLevel(RailcraftEnchantments.implosion  , aStack) : 0;}
+		public static int getEnchantmentLevelLootingFortune(ItemStack aStack) {return Math.max(getEnchantmentLevel(Enchantment.fortune, aStack), getEnchantmentLevel(Enchantment.looting, aStack));}
 		
 		public static int getEnchantmentLevel(Enchantment aEnchantment, ItemStack aStack) {
 			if (aEnchantment == null || aEnchantment.effectId < 0) return 0;
@@ -2809,6 +2810,14 @@ public class UT {
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {
 			if (aInventory != null && ST.valid(aStack)) {
 				UT.Inventories.checkAchievements(aPlayer, aStack);
+				
+				// wait no, i cant do this one because of the boolean return!
+				//
+				// To make sure no accidents cause NEI to make 111 infinite Stacks.
+				//if (aStack.stackSize > 64) {
+				//addStackToPlayerInventory(aPlayer, aInventory, ST.amount(64, aStack), F);
+				//aStack.stackSize -= 64;
+				//}
 				
 				for (int i = 0; i < 36; i++) if (aPlayer == null || i != aPlayer.inventory.currentItem) {
 					ItemStack tStack = aInventory.getStackInSlot(i);

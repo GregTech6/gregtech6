@@ -307,6 +307,30 @@ public class Loader_Recipes_Food implements Runnable {
 			for (OreDictMaterial tMat : ANY.Flour.mToThis)
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(tMat), IL.Food_Dough_Egg.get(1));
 		}});
+		addListener(OD.itemTusk, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
+			RM.add_smelting(aEvent.mStack, IL.Sticky_Goo.get(1), F, T, F);
+			RM.mortarize(aEvent.mStack, IL.Dye_Bonemeal.get(1));
+			RM.generify(aEvent.mStack, IL.Tusk.get(1));
+		}});
+		addListener(OD.itemHoof, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
+			RM.add_smelting(aEvent.mStack, IL.Sticky_Goo.get(1), F, T, F);
+			RM.mortarize(aEvent.mStack, IL.Dye_Bonemeal.get(1));
+			RM.generify(aEvent.mStack, IL.Hoof.get(1));
+		}});
+		addListener(OD.itemHorn, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
+			RM.add_smelting(aEvent.mStack, IL.Sticky_Goo.get(1), F, T, F);
+			RM.mortarize(aEvent.mStack, IL.Dye_Bonemeal.get(1));
+			RM.generify(aEvent.mStack, IL.Horn.get(1));
+		}});
+		addListener(OD.itemAntler, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
+			RM.add_smelting(aEvent.mStack, IL.Sticky_Goo.get(1), F, T, F);
+			RM.mortarize(aEvent.mStack, IL.Dye_Bonemeal.get(1));
+			RM.generify(aEvent.mStack, IL.Antler_Deer.get(1));
+		}});
 		
 		
 		addListener("listAllmeatraw", "foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

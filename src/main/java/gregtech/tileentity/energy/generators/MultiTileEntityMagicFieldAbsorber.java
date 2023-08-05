@@ -43,7 +43,7 @@ import java.util.List;
 
 import static gregapi.data.CS.*;
 
-public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
+public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
 	protected boolean mStopped = F, mActive = F, mCheck = T;
 	protected long mOutput = 64;
 	protected TagData mEnergyTypeEmitted = TD.Energy.TU;
@@ -62,8 +62,13 @@ public class MultiTileEntityMagicEnergyAbsorber extends TileEntityBase09FacingSi
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
 	}
 	
+	static {
+		LH.add("gt.tooltip.magicenergyabsorber", "Generates Power from Magical Trophies on top of it.");
+	}
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(LH.Chat.CYAN + LH.get("gt.tooltip.magicenergyabsorber"));
 		aList.add(LH.Chat.RED + LH.get(LH.ENERGY_OUTPUT) + ": " + LH.Chat.WHITE + mOutput + LH.Chat.RAINBOW + " ?U" + LH.Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}

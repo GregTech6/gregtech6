@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -152,7 +152,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Electrum   .get(1), NF, FL.Honey.make(20), OM.dust(MT.Electrum, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Zinc       .get(1), NF, FL.Honey.make(20), OM.dust(MT.Zn, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Titanium   .get(1), NF, FL.Honey.make(20), OM.dust(MT.TiO2, U2));
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Tungsten   .get(1), NF, FL.Honey.make(20), OM.dust(MT.W, U2));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Tungsten   .get(1), NF, FL.Honey.make(20), OM.dust(MT.WO3, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Steel      .get(1), NF, FL.Honey.make(20), OM.dust(MT.Steel, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Iridium    .get(1), NF, FL.Honey.make(20), OM.dust(MT.Ir, U2));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Platinum   .get(1), NF, FL.Honey.make(20), OM.dust(MT.Pt, U2));

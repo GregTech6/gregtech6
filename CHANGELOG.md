@@ -1,15 +1,39 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.16.04: (Not released yet)
+6.17.03: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.03: (Not released yet)
+6.17.02: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.16.02: (Not released yet)
+6.17.01: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.17.00: (Not released yet)
+[NOTE] There has been a hackable exploit going around in the modded minecraft landscape that is called PipeBleed. GregTech was never affected by this but I still deem it important that you look into your Mods to see if it is fixed in your Modpack. This shit is just as bad as the log4shell exploit.
+[IMPORTANT]
+There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
+Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
+The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
+Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
+Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in general is also not affected by this Change.
+Things like Barrels inside of Inventories are not hit by this until you place them down.
+Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
+[FIXED] Crucible Crossings did not always work all that well when multiple Faucets and Molds tried to pour at the same time.
+[FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
+[CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
+[ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
+
+
+//=== Version Number Jump due to changes to the Magic Resistance of Pipes and Tanks. ===//
+
+
+6.16.02:
 [NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
 [IMPORTANT]
 There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
@@ -17,8 +41,8 @@ Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
 Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
 The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
 Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
-Wooden Buckets will still be able to handle Rainbow Tree Sap.
-Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained.
+Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in general is also not affected by this Change.
+Right now you will only hear a fizzing noise to warn you ahead of that later update, if what your Pipes, Containers and Stuff handle might not be safely contained. Things like Barrels inside of Inventories are not hit by this until you place them down.
 Once the next Update is out, Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
 [IMPROVED] Terrafirmacraft Blocks when harvested with GT Tools will use four times less durability, in order to make my Tools on par with TFC Axes/Pickaxes/Shovels. Better Solution than just mindlessly buffing my Tools for everything.
 [IMPROVED] Item Filter Covers can now also do Wildcard. Just click a second time with the same Item.
@@ -33,7 +57,7 @@ Once the next Update is out, Tanks will behave as if you stored Acid in a non-ac
 [FIXED] Et Futurum Grass Path Conversion should work better, and even if you DO get stuck you can at least walk out of it easier now.
 [FIXED] Oil Sands were not outputting the right amount of Oil ever since I added the vanilla "Raw Ore" Items. It went unnoticed because GT6 itself does not generate Oil Sands.
 [FIXED] Looting Bullets and Arrows were not working in Twilight Forest due to the Fake Player not having Progression Achievements.
-[FIXED] Magical Bumblebees can now use (placed) Rainbow Leaves as their Flowers, so that they now also work without any other Mods.
+[FIXED] Magical Bumblebees can now use (placed or not) Rainbow Leaves as their Flowers, so that they now also work without any other Mods.
 [CHANGED] Werebane Enchantment now also works on Minotaurs. Good for Twilight Mazes.
 [CHANGED] Wooden Barrels and Plastic Canisters can now have decorative nonfunctional Covers attached to them. Now you can put Hazard Stickers on them, lol.
 [CHANGED] Blacksmith Loot Chest is now made of Meteoric Steel instead of regular Steel, unless Village Names is installed.
@@ -1859,7 +1883,7 @@ Skyroot is now a dedicated Wood Type similar to Weedwood.
 Small Ores now generate in it. Note that none of the Sulfur containing Small Ores are up there.
 Small Rocks now generate properly, as opposed to having the Default Overworld ones. The probability of finding a Meteorite is larger up there.
 Ambrosium Torches can now be placed with GT Pickaxes, Shovels etc.
-Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT6 Bottle of Holy Water to be activated.
+Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT6 Glass Bottle of Holy Water to be activated.
 [FIXED] Config File Error with /config/gregtech/gregtech.cfg
 [ADDED] Crucible Sets for Umberstone, Livingrock, Holystone and Betweenstone.
 

@@ -70,6 +70,9 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.sawing(16, 16, F,  2, IL.TF_Roots    .get(1), IL.Stick.get(6));
 		RM.sawing(16, 16, F,  6, IL.TF_Liveroots.get(1), IL.TF_LiveRoot.get(2), IL.Stick.get(2));
 		
+		RM.mortarize(IL.TF_LiveRoot .get(1), OP.dust     .mat(MT.LiveRoot , 1));
+		RM.mortarize(IL.TF_Mushgloom.get(1), OP.dustSmall.mat(MT.Glowstone, 1));
+		
 		CR.remove(IL.TF_Giant_Log     .get(1));
 		CR.remove(IL.TF_Giant_Cobble  .get(1));
 		CR.remove(IL.TF_Giant_Obsidian.get(1));

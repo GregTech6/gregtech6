@@ -957,6 +957,7 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
 		IL.TF_Towerwood                         .set(ST.make(MD.TF, "tile.TFTowerStone"                     , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0), null, CR.DELATE);
+		IL.TF_Sapling                           .set(ST.make(MD.TF, "tile.TFSapling"                        , 1, W), null, OP.treeSapling);     
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
 		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U*576));
 		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
@@ -979,14 +980,14 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Lich                       .set(ST.make(MD.TF, "item.trophy"                           , 1, 2));
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
-		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map                         .set(ST.make(MD.TF, "item.magicMap"                         , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Magic_Map_Empty                   .set(ST.make(MD.TF, "item.emptyMagicMap"                    , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		IL.TF_Magic_Map_Focus                   .set(ST.make(MD.TF, "item.magicMapFocus"                    , 1, 0), null, OD.itemFeather);
-		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map                          .set(ST.make(MD.TF, "item.mazeMap"                          , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Maze_Map_Empty                    .set(ST.make(MD.TF, "item.emptyMazeMap"                     , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		IL.TF_Maze_Map_Focus                    .set(ST.make(MD.TF, "item.mazeMapFocus"                     , 1, 0));
-		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
-		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, 0), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		
 		// Vanilla Maps are stackable, TF forgot to fix that lol.
 		if (IL.TF_Magic_Map.exists()) IL.TF_Magic_Map.item().setMaxStackSize(64);
@@ -1401,6 +1402,9 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Path                            .set(ST.make(MD.EtFu, "grass_path"                          , 1, 0));
 		IL.EtFu_Dirt                            .set(ST.make(MD.EtFu, "coarse_dirt"                         , 1, 0));
 		IL.EtFu_Gravel                          .set(ST.make(MD.EtFu, "old_gravel"                          , 1, 0), null, OD.gravel);
+		IL.EtFu_Amethyst                        .set(ST.make(MD.EtFu, "amethyst_block"                      , 1, 0), new OreDictItemData(MT.Amethyst        , U*4));
+		IL.EtFu_Basalt                          .set(ST.make(MD.EtFu, "smooth_basalt"                       , 1, 0), new OreDictItemData(MT.STONES.Basalt   , U*9), OP.stone.dat(MT.STONES.Basalt   ));
+		IL.EtFu_Calcite                         .set(ST.make(MD.EtFu, "calcite"                             , 1, 0), new OreDictItemData(MT.CaCO3           , U*9), OP.stone.dat(MT.CaCO3           ));
 		IL.EtFu_Tuff                            .set(ST.make(MD.EtFu, "tuff"                                , 1, 0), new OreDictItemData(MT.Stone           , U*9), OP.stone.dat(MT.Stone           ));
 		IL.EtFu_Deepslate                       .set(ST.make(MD.EtFu, "deepslate"                           , 1, 0), new OreDictItemData(MT.STONES.Deepslate, U*9), OP.stone.dat(MT.STONES.Deepslate));
 		IL.EtFu_Deepslate_Cobble                .set(ST.make(MD.EtFu, "cobbled_deepslate"                   , 1, 0), new OreDictItemData(MT.STONES.Deepslate, U*9), OP.stone.dat(MT.STONES.Deepslate));
