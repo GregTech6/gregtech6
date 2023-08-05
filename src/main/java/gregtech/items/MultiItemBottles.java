@@ -23,6 +23,7 @@ import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandomWithCompat;
+import gregapi.item.multiitem.behaviors.Behavior_CureZombie;
 import gregapi.item.multiitem.food.FoodStatFluid;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
@@ -183,7 +184,7 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem( 1601, "Rotten Drink"                 , ""                                    , FL.Rotten_Drink           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.MORTUUS   , 1), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN));
 		
 		IL.Bottle_Holy_Water.set(
-		addItem( 1700, "Holy Water"                   , "", OP.bottle.dat(MT.HolyWater)       , MT.HolyWater          .liquid(U4, F), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.AURAM     , 1), FoodStatFluid.INSTANCE));
+		addItem( 1700, "Holy Water"                   , "", OP.bottle.dat(MT.HolyWater)       , MT.HolyWater          .liquid(U4, F), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.AURAM     , 1), FoodStatFluid.INSTANCE, new Behavior_CureZombie(500, T)));
 		
 		addItem( 1800, "Rice Water"                   , ""                                    , FL.Mash_Rice              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		addItem( 1801, "Sake"                         , "", "foodSake"                        , FL.Sake                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM        , 1), TC.stack(TC.TEMPESTAS , 1), FoodStatFluid.INSTANCE);

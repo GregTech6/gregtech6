@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -111,7 +111,7 @@ public class GT_Tool_Scissors extends ToolStats {
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_knife, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock(), T));
-		aItem.addItemBehavior(aID, new Behavior_Shears(100));
+		aItem.addItemBehavior(aID, new Behavior_Shears(20));
 		aItem.addItemBehavior(aID, new Behavior_TripwireCutting(100));
 	}
 	

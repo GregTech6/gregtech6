@@ -56,6 +56,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.sawing(16, 16, F, 100,               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(MD.EtFu, "red_sandstone_slab", 2, 0));
 			RM.Compressor.addRecipe1(T, 16, 32,     ST.make(Blocks.sand, 4, 1), ST.make(MD.EtFu, "red_sandstone", 1, 0));
 			RM.smash(                               IL.EtFu_Quartz_Bricks.get(1), OP.gem.mat(MT.NetherQuartz, 4));
+			RM.compactsmash(                        OP.gem.mat(MT.Amethyst, 4), IL.EtFu_Amethyst.get(1));
 			RM.generify(                            ST.make(Blocks.sponge, 1, W), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.generify(                            ST.make(MD.EtFu, "sponge", 1, 0), ST.make(Blocks.sponge, 1, 0));
 			RM.generify(                            ST.make(Blocks.double_plant, 1, 4), ST.make(MD.EtFu, "rose", 6, 0));

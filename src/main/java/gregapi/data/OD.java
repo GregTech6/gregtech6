@@ -167,6 +167,7 @@ public enum OD {
 	, slimeballRice
 	, slimeballSwet
 	, slimeballBorax
+	, slimeballAnimal
 	, itemGrassTall
 	, itemGrass
 	, itemGrassDry
@@ -212,6 +213,10 @@ public enum OD {
 	, itemSkin
 	, itemFur
 	, itemPelt
+	, itemTusk
+	, itemHoof
+	, itemHorn
+	, itemAntler
 	, itemMulch
 	, itemCompost
 	, itemFertilizer

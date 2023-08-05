@@ -230,7 +230,7 @@ public class Loader_Books implements Runnable {
 		, "Zombie Villagers¶===================¶First of all, you need a good place to actually cure that Zombie without other Zombies turning the Villager right back into the undead Green."
 		, "Zombie Villagers¶===================¶For that you need to know, that the Transformation back into a Villager for some reason goes by faster if you use vanilla Iron Bars for the Cage."
 		, "Zombie Villagers¶===================¶Once you got the Cage, there are multiple Options on the Item you use to cure the Villager Zombie. There are multiple options."
-		, "Zombie Villagers¶===================¶Splash Potions of Weakness + Golden Apples are one way. Holy Water or the rainbow colored Cure-All Pill are other alternatives. Get the Item of your choice and continue."
+		, "Zombie Villagers¶===================¶Splash Potions of Weakness + Golden Apples are one way. Glass Bottles of Holy Water can replace that Golden Apple. The rainbow colored Cure-All Pill is an alternative that does not need Weakness."
 		, "Zombie Villagers¶===================¶Now you need to somehow lure the Zombie Villager into your Cage. Don't worry, the Villager won't remember that you punched them while they were a Zombie."
 		, "Zombie Villagers¶===================¶A fishing Rod can also work wonders on moving the Zombie into the right directions. Punching them into a pit and closing it off, will work aswell."
 		, "Zombie Villagers¶===================¶If your Cage is outside (or improvised), then make sure the Sun won't burn the Villager before you can heal them. Add a Roof or something to your Cage, once you caught them."
