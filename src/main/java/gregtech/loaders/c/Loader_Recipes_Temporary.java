@@ -658,9 +658,9 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(FL.Oil_Plant               .make( 2), FL.Oil_Seed.make(1));
 		RM.genericycle(FL.Biomass                 .make( 1), FL.BiomassIC2.make(1));
 		RM.genericycle(FL.Methane                 .make( 1), FL.make("ic2biogas", 4));
-		RM.generify   (FL.make("gas_natural_gas"       , 1), FL.Methane.make(1));
-		RM.generify   (FL.make("naturalgas"            , 1), FL.Methane.make(1));
-		RM.generify   (FL.make("gas.natural"           , 1), FL.Methane.make(1));
+		//RM.generify   (FL.make("gas_natural_gas"       , 1), FL.Methane.make(1));
+		//RM.generify   (FL.make("naturalgas"            , 1), FL.Methane.make(1));
+		//RM.generify   (FL.make("gas.natural"           , 1), FL.Methane.make(1));
 		RM.generify   (FL.Liquid_Methane          .make( 1), FL.Methane.make(643));
 		RM.genericycle(FL.make("kerosine"              , 1), FL.make("kerosene", 1));
 		RM.genericycle(FL.make("petrol"                , 1), FL.make("gasoline", 1));

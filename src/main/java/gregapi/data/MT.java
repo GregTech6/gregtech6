@@ -2404,9 +2404,9 @@ public class MT {
 			Nb                      .put(MD.HBM); // don't COMMON_ORE this!
 			Nd                      .put(MD.HBM);
 			DeshAlloy               .put(MD.HBM);
-			PVC                     .put(MD.HBM).visDefault();
-			Teflon                  .put(MD.HBM).visDefault();
-			Bakelite                .put(MD.HBM).visDefault();
+			PVC                     .put(MD.HBM);
+			Teflon                  .put(MD.HBM);
+			Bakelite                .put(MD.HBM);
 			Polycarbonate           .put(MD.HBM).visDefault();
 			
 			
@@ -3699,7 +3699,7 @@ public class MT {
 		
 		Ilmenite                = oredustdcmp( 9120, "Ilmenite"                  , SET_METALLIC  ,  70,  55,  50, 255, MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE, WASHING_FIRESTONE, "Illmenite", "TitaniumIron")               .addSourceOf(Ti,Fe    ).uumMcfg( 0, Fe             , 1*U, Ti               , 1*U, O                , 3*U)                                                                        .qual(2),
 		Bauxite                 = oredustdcmp( 9105, "Bauxite"                   , SET_DULL      , 200, 100,   0, 255, MORTAR, BLACKLISTED_SMELTER, APPROXIMATE                                       )                         .addSourceOf(Al,Ti    ).setMcfg( 0, TiO2           , 1*U, Ilmenite         , 2*U, Al2O3            , 2*U)                                                                        .qual(2).heat(2800),
-		Chromite                = oredustelec( 9113, "Chromite"                  , SET_METALLIC  ,  35,  20,  15, 255, MORTAR, BLACKLISTED_SMELTER, WASHING_FIRESTONE                                 ).setSmelting(Cr   , 2*U9).addSourceOf(Cr,Fe    ).setMcfg( 0, Fe             , 1*U, Cr               , 2*U, O                , 4*U)                                                                        .qual(0),
+		Chromite                = oredustdcmp( 9113, "Chromite"                  , SET_METALLIC  ,  35,  20,  15, 255, MORTAR, BLACKLISTED_SMELTER, WASHING_FIRESTONE                                 )                         .addSourceOf(Cr,Fe    ).setMcfg( 0, Fe             , 1*U, Cr               , 2*U, O                , 4*U)                                                                        .qual(0),
 		Powellite               = oredustcent( 9124, "Powellite"                 , SET_DULL      , 255, 255,   0, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Mo   ,   U9).addSourceOf(Mo       ).setMcfg( 0, Ca             , 1*U, Mo               , 1*U, O                , 4*U)                                                                        ,
 		Wulfenite               = oredustcent( 9136, "Wulfenite"                 , SET_DULL      , 255, 128,   0, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Mo   ,   U9).addSourceOf(Mo,Pb    ).setMcfg( 0, Pb             , 1*U, Mo               , 1*U, O                , 4*U)                                                                        ,
 		Bastnasite              = oredustelec( 9144, "Bastnasite"                , SET_FINE      , 200, 110,  45, 255, MORTAR, BLACKLISTED_SMELTER                                                    ).setSmelting(Ce   ,   U9).addSourceOf(Ce,F     ).setMcfg( 0, Ce             , 1*U, C                , 1*U, F                , 1*U, O                , 3*U)                                                , // (Ce, La, Y)CO3F

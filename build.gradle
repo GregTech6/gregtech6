@@ -155,7 +155,7 @@ apply plugin: 'forge'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 group = "com.gregoriust.gregtech"
-archivesBaseName = "gregtech_1.7.10"
+archivesBaseName = "gregtech_TFRU_1.7.10"
 version = "<UNKNOWN>"
 
 if (JavaVersion.current() != JavaVersion.VERSION_1_8) {
